@@ -68,3 +68,24 @@ Status: approved for track initialization
 - Static analysis, coverage enforcement, and the repository-wide gate are
   intentionally owned by the next sequential Phase 1 task and are not claimed
   by this task.
+
+## Task self-review: Establish the repository-wide assurance harness
+
+- One cross-platform Python command runs the locked stages in a deterministic
+  order and stops at the first failure.
+- The gate has no shell interpolation and receives only repository-owned command
+  tuples.
+- Strict type checking remains enabled; the jsonschema typing gap has one
+  expression-scoped suppression at the third-party boundary.
+- Ruff's full ruleset is enabled. Exceptions are scoped to explicit CLI output,
+  controlled subprocess calls, test assertions, standalone tool layout, and
+  the repository's licence-file copyright model.
+- Coverage failed closed before direct tests were added and now reports 100%
+  line and branch coverage for measured production modules.
+- Hypothesis and JSON Schema are executed, not merely declared dependencies.
+- The CLI schema uses Draft 2020-12, forbids additional properties, and pins
+  command, status, and schema-version constants.
+- No archive payload, network, credential, hosted CI, or publication action
+  occurs in this gate.
+- Supply-chain, licence, vulnerability, secret, SBOM, and hosted workflow checks
+  remain the next sequential task and are not claimed here.

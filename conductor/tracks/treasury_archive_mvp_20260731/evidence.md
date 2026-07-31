@@ -72,3 +72,22 @@ Changed implementation files are `pyproject.toml`, `uv.lock`, `README.md`, and
 Configuration currently accepts an explicit state directory only; environment
 and file formats will be introduced with typed schema and precedence tests in a
 later bounded task.
+
+## Task evidence: Establish the repository-wide assurance harness
+
+| Stage | State | Evidence |
+| --- | --- | --- |
+| Lock | passed local | `uv lock --check`; 26-package resolved environment |
+| Format | passed local | Ruff reported 31 files already formatted |
+| Lint | passed local | Ruff full ruleset reported all checks passed |
+| Types | passed local | strict Pyright: 0 errors, 0 warnings, 0 information |
+| Tests | passed local | 14 tests passed in 4.93 seconds |
+| Coverage | passed local | 50/50 statements and 6/6 branches; 100% overall |
+| Property testing | passed local | Hypothesis generated exit-state invariant examples |
+| Schema | passed local | Draft 2020-12 CLI envelope schema and fixture validated |
+| Fail-closed gate | passed local | first nonzero stage stops later stages and preserves status |
+| Hosted CI | not configured | supply-chain and CI tasks remain open |
+
+The only coverage omission is `src/archive_govt_nz/__main__.py`, a declarative
+two-line module wrapper already exercised through subprocess CLI contract tests.
+This is narrow and does not contain decision logic.

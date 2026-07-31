@@ -63,3 +63,28 @@
 - Build check: `uv build --no-sources` produced the source distribution and
   platform-independent wheel successfully. Generated `dist/` content remains
   ignored and is not repository evidence.
+
+## 2026-07-31 - Task: Establish the repository-wide assurance harness
+
+- Red command:
+  `uv run --locked pytest tests/test_assurance_harness.py -q`
+- Expected red result: four failures for absent assurance dependencies, policy,
+  gate script, and importable gate orchestration.
+- Added locked Ruff 0.16.1, Pyright 1.1.411, pytest-cov 7.1.0, Hypothesis
+  6.164.0, and jsonschema 4.26.0.
+- Configured Ruff's full ruleset with narrow documented boundary exceptions,
+  strict Pyright, strict pytest configuration, branch coverage, and a 95%
+  fail-under threshold.
+- Added `uv run --locked python tools/check.py` as the single portable,
+  non-interactive gate.
+- Added fail-fast stage tests. A simulated status 23 stopped the later stage
+  and was returned unchanged; successful stages ran in order.
+- Intermediate full-gate runs correctly stopped on lint findings, strict
+  third-party JSON typing boundaries, and 64% subprocess-only coverage.
+- Resolved findings without weakening strict typing or the coverage threshold.
+- Final gate command:
+  `uv run --locked python tools/check.py`
+- Final result: lock consistent; 31 files formatted; Ruff passed; Pyright
+  reported 0 errors and 0 warnings; 14 tests passed; overall line and branch
+  coverage was 100%; the final recorded test run took 4.93 seconds; one Draft
+  2020-12 schema and fixture validated.

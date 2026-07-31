@@ -1,7 +1,12 @@
 """Deterministic bootstrap configuration."""
 
+from __future__ import annotations
+
 from dataclasses import dataclass
-from pathlib import Path
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from pathlib import Path
 
 
 @dataclass(frozen=True, slots=True)
@@ -11,6 +16,6 @@ class Settings:
     state_directory: Path
 
     @classmethod
-    def from_state_directory(cls, state_directory: Path) -> "Settings":
+    def from_state_directory(cls, state_directory: Path) -> Settings:
         """Normalize an explicit state directory without ambient discovery."""
         return cls(state_directory=state_directory.expanduser().resolve())

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/edithatogo/archive-govt-nz/schemas/cli-envelope-v1.schema.json",
+  "title": "archive-govt-nz CLI version envelope",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "command",
+    "schema_version",
+    "status",
+    "version"
+  ],
+  "properties": {
+    "command": {
+      "const": "version"
+    },
+    "schema_version": {
+      "const": "archive-govt-nz.cli/v1"
+    },
+    "status": {
+      "const": "success"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:[a-zA-Z0-9.+-]*)$"
+    }
+  }
+}

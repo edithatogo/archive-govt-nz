@@ -31,12 +31,12 @@
   - [x] Add deterministic configuration loading
   - [x] Make bootstrap tests green
 
-- [ ] Task: Establish the repository-wide assurance harness [M-01, M-18]
-  - [ ] Configure Ruff, strict typing, pytest, and branch coverage
-  - [ ] Configure Hypothesis and JSON Schema validation
-  - [ ] Add one non-interactive repository gate command
-  - [ ] Test the gate against representative violations
-  - [ ] Run and record the green gate
+- [x] Task: Establish the repository-wide assurance harness [M-01, M-18]
+  - [x] Configure Ruff, strict typing, pytest, and branch coverage
+  - [x] Configure Hypothesis and JSON Schema validation
+  - [x] Add one non-interactive repository gate command
+  - [x] Test the gate against representative violations
+  - [x] Run and record the green gate
 
 - [ ] Task: Establish supply-chain and repository controls [M-15, S-03]
   - [ ] Configure dependency, licence, vulnerability, and secret scans

@@ -19,8 +19,53 @@ archive-govt-nz = "archive_govt_nz.cli:main"
 
 [dependency-groups]
 dev = [
+  "hypothesis>=6.164.0,<7",
+  "jsonschema>=4.25.1,<5",
+  "pyright>=1.1.411,<2",
   "pytest>=9.1.1,<10",
+  "pytest-cov>=7.1.0,<8",
+  "ruff>=0.16.1,<0.17",
 ]
 
 [tool.uv]
 package = true
+
+[tool.ruff]
+line-length = 88
+target-version = "py314"
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+  "COM812",
+  "CPY001",
+  "D203",
+  "D213",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"src/archive_govt_nz/assurance.py" = ["S603", "T201"]
+"src/archive_govt_nz/cli.py" = ["A002", "T201"]
+"tests/**/*.py" = ["INP001", "PLR2004", "S101", "S603"]
+"tools/**/*.py" = ["INP001", "T201"]
+
+[tool.pyright]
+include = ["src", "tests", "tools"]
+pythonVersion = "3.14"
+typeCheckingMode = "strict"
+venvPath = "."
+venv = ".venv"
+
+[tool.pytest.ini_options]
+addopts = ["--strict-config", "--strict-markers"]
+testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["archive_govt_nz"]
+omit = ["*/__main__.py"]
+
+[tool.coverage.report]
+fail_under = 95
+show_missing = true
+skip_covered = false

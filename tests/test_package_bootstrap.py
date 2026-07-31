@@ -1,10 +1,15 @@
 """Bootstrap contract tests for the installable package."""
 
+from __future__ import annotations
+
 from importlib.metadata import version
-from pathlib import Path
+from typing import TYPE_CHECKING
 
 import archive_govt_nz
 from archive_govt_nz.config import Settings
+
+if TYPE_CHECKING:
+    from pathlib import Path
 
 
 def test_package_version_matches_distribution_metadata() -> None:

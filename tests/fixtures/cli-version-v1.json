@@ -1,0 +1,6 @@
+{
+  "command": "version",
+  "schema_version": "archive-govt-nz.cli/v1",
+  "status": "success",
+  "version": "0.1.0"
+}
