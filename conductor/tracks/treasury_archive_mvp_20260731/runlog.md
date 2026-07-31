@@ -585,6 +585,15 @@
 - It verifies the production lock, runs tests, and records pre-release mode as
   observational; it cannot rewrite `uv.lock` or publish artifacts.
 
+## 2026-07-31 - Current assurance reconciliation
+
+- The aggregate `tools/check.py` invocation exceeded the shell's 120-second
+  timeout after the dependency/tooling expansion; it is not claimed as a
+  single-command pass.
+- Decomposed authoritative stages passed: 167 tests, strict lint/types,
+  schemas, 8/8 resource-policy mutants, 3/3 version mutants, dependency audit,
+  licence inventory, secret scan, and an 82-component SBOM.
+
 ## 2026-07-31 - Derivative dependency security correction
 
 - The first full gate identified the published Apache Arrow advisory in
