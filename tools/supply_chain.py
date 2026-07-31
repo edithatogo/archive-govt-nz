@@ -25,7 +25,10 @@ EXCLUDED_PATH_PATTERN = (
     r"|uv\.lock$"
     r"|conductor[\\/]tracks[\\/].*[\\/](?:evidence|runlog)\.md$"
 )
-RECEIPT_EXCLUSION_PATTERN = r'"(?:source_revision|remote_revision|[a-z_]*sha256)"\s*:'
+RECEIPT_EXCLUSION_PATTERN = (
+    r'"(?:(?:source|remote|local)_revision(?:_before_checkpoint)?'
+    r'|[a-z_]*sha256)"\s*:'
+)
 
 
 def run(command: Sequence[str], *, capture: bool = False) -> str:
