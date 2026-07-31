@@ -1,6 +1,6 @@
 {
   "schema_version": "archive-govt-nz.publication-taxonomy/v1",
-  "status": "provisional-awaiting-estate-reconciliation",
+  "status": "observed-conventions-awaiting-final-estate-decision",
   "dataset_slug": "archive-govt-nz-treasury",
   "source_catalogue": "data.govt.nz",
   "source_platform": "CKAN",
@@ -10,8 +10,8 @@
   "subtopic": "new-zealand-treasury",
   "coverage": {"country": "NZ", "language": "en"},
   "roles": ["original-metadata", "original-resource", "provenance", "derivative", "validation-evidence"],
-  "planned_huggingface_collection": null,
-  "planned_huggingface_namespace": null,
+  "planned_huggingface_collection": "requires estate registry decision",
+  "planned_huggingface_namespace": "edithatogo",
   "license": "unknown-until-rights-review",
-  "alignment_blockers": ["existing-estate-taxonomy-not-yet-reconciled", "collection-membership-not-yet-confirmed"]
+  "alignment_blockers": ["collection-membership-not-yet-confirmed", "source-license-not-yet-reviewed"]
 }

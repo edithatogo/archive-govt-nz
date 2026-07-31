@@ -1,0 +1,19 @@
+{
+  "schema_version": "archive-govt-nz.hf-estate-observation/v1",
+  "observed_at": "2026-07-31",
+  "source": "Hugging Face Hub authenticated read-only dataset listing",
+  "namespace": "edithatogo",
+  "reference_registry": "edithatogo/dataset-estate-registry",
+  "conventions": {
+    "language_tag": "language:en",
+    "license_tag": "license:other when source rights are not a standard SPDX grant",
+    "region_tag": "region:us observed across existing estate; not semantically suitable for NZ source jurisdiction",
+    "jurisdiction_tag": "new-zealand for NZ collections, with domain-specific tags",
+    "formats": ["format:parquet", "format:json"],
+    "modalities": ["modality:tabular", "modality:text"],
+    "libraries": ["library:datasets", "library:pandas", "library:polars", "library:mlcroissant"],
+    "archival_tags": ["source-archive", "archive", "provenance", "metadata", "warc", "wacz"]
+  },
+  "candidate_treasury_tags": ["new-zealand", "government", "treasury", "public-finance", "source-archive", "ckan", "metadata", "provenance", "modality:tabular"],
+  "unresolved": ["collection membership requires estate registry decision", "source licence requires rights review", "region tag must not imply hosting or source jurisdiction"]
+}

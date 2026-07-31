@@ -23,12 +23,12 @@ This is a prepared, evidence-first archive preview. It is not published yet.
 ## Scope
 
 - Treasury discovery: `observed`
-- Capture: `not-yet-complete`
+- Capture: `12-resources-captured-locally`
 - Validation: `software-gates-passed`
 - Transformation: `derivative-foundation`
 - Publication: `not-authorized`
 
 Original metadata and source files remain distinct from derivatives. Rights,
 withdrawal, restriction, and transformation decisions are recorded in the
-versioned manifests and evidence ledger. Collection membership and namespace
-remain provisional pending estate reconciliation.
+versioned manifests and evidence ledger. The namespace is aligned to
+`edithatogo`; collection membership and source licence remain gated decisions.
