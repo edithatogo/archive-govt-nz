@@ -1,0 +1,25 @@
+{
+  "id": "treasury_archive_mvp_20260731",
+  "title": "Treasury Archive MVP",
+  "type": "mvp",
+  "status": "new",
+  "created_at": "2026-07-31T13:25:47+10:00",
+  "updated_at": "2026-07-31T13:25:47+10:00",
+  "requirements_method": "MoSCoW",
+  "github": {
+    "repository": "edithatogo/archive-govt-nz",
+    "parent_issue": null,
+    "phase_subissues": []
+  },
+  "external_gates": [
+    "github_repository_creation",
+    "github_issue_creation",
+    "credentials",
+    "hugging_face_publication",
+    "zenodo_deposition",
+    "zenodo_doi_publication",
+    "rights_exception",
+    "quarantine_release",
+    "destructive_action"
+  ]
+}
