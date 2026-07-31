@@ -496,3 +496,10 @@
   observation/object/version/derivative closure checks.
 - Focused result: 2 provenance tests passed; transformation, validation, and
   publication receipt fields remain open for the next manifest increment.
+
+## 2026-07-31 - Core derivative foundation
+
+- Added deterministic normalized JSONL and Zstandard-compressed Parquet
+  derivatives with DuckDB row-count reconciliation.
+- Unknown CKAN fields are explicitly reported as information loss rather than
+  silently presented as preserved data. Focused derivative test passed.

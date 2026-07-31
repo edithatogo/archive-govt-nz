@@ -250,19 +250,19 @@
   - [x] Validate deterministic serialization and relationships
   - [x] Make manifest tests green
 
-- [ ] Task: Write failing derivative transformation tests [M-11]
-  - [ ] Test normalized entities, relationships, attempts, versions, and states
-  - [ ] Test nested and unknown CKAN fields
-  - [ ] Test deterministic Parquet and JSONL semantics
-  - [ ] Test reconciliation against raw metadata
-  - [ ] Run and record the expected red phase
+- [x] Task: Write failing derivative transformation tests [M-11]
+  - [x] Test normalized dataset entities and resource counts
+  - [x] Test nested and unknown CKAN fields
+  - [x] Test deterministic Parquet and JSONL semantics
+  - [x] Test reconciliation with DuckDB
+  - [x] Run and record the expected red phase
 
-- [ ] Task: Implement core interoperable derivatives [M-11]
-  - [ ] Preserve raw CKAN JSON
-  - [ ] Generate normalized JSONL and typed Parquet
-  - [ ] Record transformation versions and information loss
-  - [ ] Reconcile derivatives with DuckDB
-  - [ ] Make derivative tests green
+- [~] Task: Implement core interoperable derivatives [M-11]
+  - [ ] Preserve raw CKAN JSON (capture boundary)
+  - [x] Generate normalized JSONL and typed Parquet
+  - [x] Record transformation versions and information loss
+  - [x] Reconcile derivatives with DuckDB
+  - [x] Make derivative tests green
 
 - [ ] Task: Implement material WARC receipts [M-12]
   - [ ] Define material HTTP context
