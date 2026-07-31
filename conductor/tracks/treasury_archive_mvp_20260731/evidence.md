@@ -267,3 +267,25 @@ The authoritative bounded summary is
 `evidence/phase-2-live-observation.json`; its Markdown companion states the
 same limitations. Exact raw responses are intentionally not committed and have
 not been uploaded or remotely verified.
+
+## Phase 2 checkpoint
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Full repository gate | passed local/live | all ten stages in 103.3 seconds |
+| Tests | passed local | 80 |
+| Coverage | passed local | 476/476 statements; 100/100 branches |
+| Schemas | passed local | 2 schemas and representative documents |
+| Vulnerabilities | passed live lookup | OSV: no known vulnerabilities |
+| Licences | passed local | 79-package environment; documented alternative |
+| Secrets | passed local | zero candidates |
+| SBOM | passed local | CycloneDX 1.6; 79 components |
+| Live capability | observed local/live | CKAN 2.10.9; Action API v3 |
+| Live Treasury scope | reconciled local/live | 54 unique datasets across 3 pages |
+| Raw provenance | retained local | five exact ignored files with SHA-256 |
+| Remote ref before checkpoint | remotely verified | `github/main` = `d04aeccf...ab80a1` |
+| Resource capture | not started | Phase 3–6 controls remain |
+| Publication | not started | Hugging Face and Zenodo gates remain |
+
+The paired machine-readable checkpoint is
+`evidence/phase-2-checkpoint.json`.

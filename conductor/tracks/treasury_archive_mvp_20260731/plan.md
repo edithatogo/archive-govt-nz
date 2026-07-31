@@ -117,11 +117,11 @@
   - [x] Prevent live count drift from causing false failures
   - [x] Document source-friendly operation
 
-- [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
-  - [ ] Run deterministic and bounded live checks
-  - [ ] Verify complete live scope reconciliation
-  - [ ] Review response redaction and provenance
-  - [ ] Record phase evidence and checkpoint
+- [x] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+  - [x] Run deterministic and bounded live checks
+  - [x] Verify complete live scope reconciliation
+  - [x] Review response redaction and provenance
+  - [x] Record phase evidence and checkpoint
 
 ## Phase 3: Schemas, policy, and content-addressed storage
 

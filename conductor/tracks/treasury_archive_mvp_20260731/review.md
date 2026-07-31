@@ -268,3 +268,26 @@ Status: approved for track initialization
   classifiers remains denied.
 - Metadata observation is not resource capture, rights eligibility, hosted
   scheduling, upload, remote verification, or publication.
+
+## Phase 2 checkpoint self-review
+
+- Every Phase 2 behavior has deterministic contracts, a red implementation
+  boundary, green focused evidence, and 100% critical line and branch coverage.
+- Live observations were run only after deterministic bounds and receipts were
+  established.
+- The page-size-25 live run proves deployed pagination rather than relying on a
+  single large response.
+- The live count matches the dated baseline of 54, but no code treats 54 as a
+  success condition.
+- Raw-source preservation is exact and hash-verified; derived JSON and Markdown
+  reports never masquerade as raw CKAN responses.
+- Response receipts allowlist headers and exclude cookies, signed values,
+  unrestricted exception text, and credentials.
+- Supply-chain failure was not suppressed. The dual-licence metadata was
+  investigated, documented, selected package-specifically, tested against a
+  synthetic unreviewed package, and re-run through the complete gate.
+- Hosted CI and scheduled checks are still unimplemented; local live evidence
+  does not claim a hosted run.
+- No dataset resource file, quarantine decision, rights decision, credential,
+  upload, deposition, DOI, or publication boundary was crossed.
+- No critical self-review finding remains open for Phase 2.

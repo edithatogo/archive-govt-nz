@@ -1,0 +1,44 @@
+{
+  "schema_version": "archive-govt-nz.phase-checkpoint/v1",
+  "phase": 2,
+  "status": "complete_local_with_bounded_live_observation",
+  "observed_at": "2026-07-31T15:34:56+10:00",
+  "source_observation": {
+    "catalogue_url": "https://catalogue.data.govt.nz",
+    "ckan_version": "2.10.9",
+    "action_api_version": "3",
+    "treasury_dataset_count": 54,
+    "reported_counts": [54, 54, 54],
+    "page_starts": [0, 25, 50],
+    "scope_sha256": "bb72d7fbad84b04aca6f39b39c76cf8e1d835887d86ac88a51b663a475f8414c"
+  },
+  "repository_gate": {
+    "command": "uv run --locked python tools/check.py",
+    "duration_seconds": 103.3,
+    "stages_passed": 10,
+    "tests_passed": 80,
+    "statements_covered": 476,
+    "statements_total": 476,
+    "branches_covered": 100,
+    "branches_total": 100,
+    "schemas_validated": 2,
+    "known_vulnerabilities": 0,
+    "secret_candidates": 0,
+    "sbom_components": 79
+  },
+  "git": {
+    "local_revision_before_checkpoint": "d04aeccf315ed5cf3f0f715e368bf42f74ab80a1",
+    "remote_revision_before_checkpoint": "d04aeccf315ed5cf3f0f715e368bf42f74ab80a1",
+    "remote": "github",
+    "branch": "main"
+  },
+  "limitations": [
+    "resource_capture_not_started",
+    "rights_and_quarantine_policy_not_implemented",
+    "hosted_ci_not_implemented",
+    "scheduled_verification_not_implemented",
+    "hugging_face_not_uploaded",
+    "zenodo_not_deposited",
+    "publication_not_started"
+  ]
+}

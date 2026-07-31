@@ -302,3 +302,23 @@
   licence string for every unreviewed package.
 - Focused licence, secret, and SBOM gates pass with 79 components. Resource
   downloads and external publication remain unstarted.
+
+## 2026-07-31 - Phase 2 verification and checkpoint
+
+- Re-ran the complete deterministic suite after the live evidence task and
+  licence-control correction.
+- Full command: `uv run --locked python tools/check.py`.
+- All ten stages passed in 103.3 seconds: lock, format, lint, strict types, 80
+  tests, schemas, OSV audit, licences, secrets, and validated CycloneDX SBOM.
+- Measured production coverage is 100% across 476 statements and 100 branches.
+- Reconciled the live page-size-25 scope: 54 unique sorted dataset IDs; three
+  reported counts of 54; starts 0, 25, and 50; no duplicate, missing, or
+  out-of-order ID.
+- Reviewed receipts: exact raw bytes remain local and ignored; committed
+  evidence contains bounded hashes, byte counts, times, safe identifiers, and
+  explicit limitations.
+- Verified local and `github/main` both referenced
+  `d04aeccf315ed5cf3f0f715e368bf42f74ab80a1` before the checkpoint commit.
+- Phase 2 is complete for capability and metadata scope discovery only.
+  Resource policy, capture, hosted scheduling, and publication remain later
+  phases and are not implied.
