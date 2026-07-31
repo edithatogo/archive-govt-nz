@@ -10,9 +10,10 @@ Local read-only query:
 ```powershell
 uv run --locked python tools/query_treasury_derivative.py `
   --parquet build/derivatives/treasury/datasets.parquet `
-  --sql "SELECT organization, count(*) AS datasets FROM read_parquet(?) GROUP BY organization"
+  --sql "SELECT organization, count(*) AS datasets FROM treasury GROUP BY organization"
 ```
 
-The command rejects mutating SQL, requires a local Parquet file, and bounds
-output to 1,000 rows. Source objects, provenance, and rights evidence remain
+The command preloads the Parquet file into an in-memory `treasury` table,
+disables external access, accepts exactly one `SELECT`, and bounds output to
+1,000 rows. Source objects, provenance, and rights evidence remain
 in the preservation archive and Zenodo snapshot.

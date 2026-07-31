@@ -14,6 +14,17 @@ def main() -> int:
     """Build a checksum-pinned candidate without publication side effects."""
     parser = argparse.ArgumentParser()
     parser.add_argument("--output-dir", type=Path, required=True)
+    parser.add_argument(
+        "--raw-dir",
+        type=Path,
+        default=Path("build/live/reconcile-20260731T164949/raw"),
+    )
+    parser.add_argument("--object-root", type=Path, default=Path("build/objects"))
+    parser.add_argument(
+        "--derivatives-dir",
+        type=Path,
+        default=Path("build/derivatives/treasury"),
+    )
     args = parser.parse_args()
     root = Path.cwd()
     files = [
@@ -24,13 +35,19 @@ def main() -> int:
         root / "evidence/release-attestation.json",
         root / "evidence/preservation-packaging-evaluation.json",
         root / "evidence/phase-6-capture-summary.json",
+        root / "evidence/phase-6-rights-classification.json",
         root / "evidence/phase-8-hf-publication-verification.json",
+        root / "evidence/phase-8-hf-derivative-viewer-diagnosis.json",
+        root / "evidence/phase-8-hf-csv-viewer-diagnosis.json",
         root / "evidence/publication-metadata/README.md",
         root / "evidence/publication-metadata/zenodo.json",
         root / "evidence/publication-metadata/taxonomy.json",
         root / "evidence/publication-metadata/hf-estate-observation.json",
         root / "build/sbom.cdx.json",
     ]
+    files.extend(sorted((root / args.raw_dir).glob("*.json")))
+    files.extend(sorted((root / args.object_root).glob("sha256/*/*")))
+    files.extend(sorted((root / args.derivatives_dir).glob("*")))
     if any(not file.is_file() for file in files):
         missing = [str(file) for file in files if not file.is_file()]
         print(json.dumps({"status": "incomplete", "missing": missing}))
@@ -65,7 +82,6 @@ def main() -> int:
         ],
         "limitations": [
             "payload_capture_not_complete",
-            "captured_objects_remain_in_local_content_addressed_store",
             "rights_review_incomplete",
             "no_doi",
             "no_remote_upload",

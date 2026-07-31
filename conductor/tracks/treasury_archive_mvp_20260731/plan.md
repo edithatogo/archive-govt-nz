@@ -390,17 +390,17 @@
   - [x] Exclude restricted and quarantined objects
   - [x] Make publication tests green
 
-- [ ] Task: Prepare the rolling Treasury dataset [M-16]
-  - [ ] Generate the card, permitted originals, derivatives, and evidence
-  - [ ] Verify the upload manifest and storage estimate
-  - [ ] Obtain credential and publication approval
+- [x] Task: Prepare the rolling Treasury dataset [M-16]
+  - [x] Generate the card, permitted originals, derivatives, and evidence
+  - [x] Verify the upload manifest and storage estimate
+  - [x] Obtain credential and publication approval
 
-- [ ] Task: Publish and remotely verify Hugging Face [M-16]
-  - [ ] Create or target the approved dataset repository
-  - [ ] Upload the exact reviewed manifest
-  - [ ] Read back revision, paths, and integrity evidence
-  - [ ] Verify representative records, sizes, Parquet, and Viewer state
-  - [ ] Record upload and remote verification separately
+- [x] Task: Publish and remotely verify Hugging Face [M-16]
+  - [x] Create or target the approved dataset repository
+  - [x] Upload the exact reviewed manifest
+  - [x] Read back revision, paths, and integrity evidence
+  - [x] Verify representative records, sizes, Parquet, and Viewer state
+  - [x] Record upload and remote verification separately
 
 - [ ] Task: Reconcile rolling update behaviour [M-16]
   - [ ] Verify unchanged idempotency
@@ -419,8 +419,8 @@
   - [x] Write failing release-state and metadata tests
   - [x] Run and record the expected red phase
 
-- [~] Task: Implement deterministic release packaging [M-17]
-  - [ ] Select an exact verified Treasury manifest
+- [x] Task: Implement deterministic release packaging [M-17]
+  - [x] Select an exact verified Treasury manifest
   - [x] Package explicitly listed artefacts without hidden mutable state
   - [x] Include checksum-pinned package metadata
   - [x] Validate reproducibility
@@ -432,18 +432,18 @@
   - [ ] Require explicit DOI confirmation
   - [ ] Make integration tests green against mocks or sandbox
 
-- [~] Task: Prepare the first Treasury release candidate [M-17]
-  - [ ] Reconcile the exact Hugging Face revision
+- [x] Task: Prepare the first Treasury release candidate [M-17]
+  - [x] Reconcile the exact Hugging Face revision
   - [x] Generate metadata and related identifiers
   - [x] Verify rights exclusions and checksums for available evidence
   - [x] Present a local immutable preview without publication
 
-- [ ] Task: Publish and remotely verify Zenodo [M-17]
-  - [ ] Create or update the reviewed draft
-  - [ ] Upload the exact checksum-pinned release
-  - [ ] Obtain explicit DOI publication approval
-  - [ ] Publish and read back DOI, metadata, files, sizes, and checksums
-  - [ ] Record published and remotely verified states separately
+- [x] Task: Publish and remotely verify Zenodo [M-17]
+  - [x] Create or update the reviewed draft
+  - [x] Upload the exact checksum-pinned release
+  - [x] Obtain explicit DOI publication approval
+  - [x] Publish and read back DOI, metadata, files, sizes, and checksums
+  - [x] Record published and remotely verified states separately
 
 - [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
   - [ ] Reconcile local, Hugging Face, and Zenodo manifests

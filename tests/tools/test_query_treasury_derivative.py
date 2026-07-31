@@ -17,7 +17,7 @@ def test_query_command_reads_derivative() -> None:
             "--parquet",
             "build/derivatives/treasury/datasets.parquet",
             "--sql",
-            "SELECT count(*) AS n FROM read_parquet(?)",
+            "SELECT count(*) AS n FROM treasury",
         ],
         cwd=root,
         check=True,
@@ -25,3 +25,27 @@ def test_query_command_reads_derivative() -> None:
         text=True,
     )
     assert '"n": 54' in result.stdout
+
+
+def test_query_command_rejects_non_select_and_external_reads() -> None:
+    """Only one SELECT over the preloaded Treasury table is accepted."""
+    root = Path(__file__).parents[2]
+    base = [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "tools/query_treasury_derivative.py",
+        "--parquet",
+        "build/derivatives/treasury/datasets.parquet",
+        "--sql",
+    ]
+    for query in ("PRAGMA version", "SELECT * FROM read_csv_auto('secret.csv')"):
+        result = subprocess.run(
+            [*base, query],
+            cwd=root,
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        assert result.returncode != 0

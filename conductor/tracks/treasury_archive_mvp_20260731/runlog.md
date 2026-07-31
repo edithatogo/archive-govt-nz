@@ -612,6 +612,15 @@
 - Uploaded the checksum-pinned preservation candidate tar; package SHA-256 is recorded in `evidence/phase-9-zenodo-publication.json`.
 - The record explicitly documents Hugging Face Viewer HTTP 500 and is not claimed as the analytical Viewer release.
 
+## 2026-08-01 - Viewer recovery and corrective preservation release
+
+- Verified Viewer/search/filter/statistics recovery for the source, Parquet, and CSV repositories; both derivatives expose 54 rows and six columns.
+- Closed GitHub issue #21. The earlier HTTP 500 was a transient service-side conversion/cache failure.
+- Audit found Zenodo v1 omitted raw CKAN responses, 12 captured objects, and derivatives because the release test asserted a fixed evidence-file count instead of preservation roles.
+- Hardened release preparation to include raw responses, every content-addressed captured object, derivatives, rights evidence, and Viewer receipts.
+- Published corrective version DOI `10.5281/zenodo.21728726` under concept DOI `10.5281/zenodo.21718047`; v1 remains auditable and explicitly superseded.
+- Hardened the DuckDB fallback to preload an in-memory table, disable external access, and accept exactly one SELECT statement.
+
 ## 2026-07-31 - Recovery reconciliation foundation
 
 - Added restart-safe ledger/object-store reconciliation reporting verified,

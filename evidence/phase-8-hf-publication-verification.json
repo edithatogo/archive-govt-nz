@@ -16,7 +16,7 @@
   },
   "derivative_repository": "edithatogo/archive-govt-nz-treasury-data",
   "derivative_revision": "dfb18d76aaf66fc770d9555464b87b2af33a036c",
-  "viewer_status": "remote-parquet-endpoint-500",
+  "viewer_status": "verified-recovered-2026-08-01",
   "viewer_diagnosis": {
     "initial_cause": "Viewer selected evidence/preservation-packaging-evaluation.json as default/test instead of Treasury derivatives.",
     "corrections": ["moved raw extensionless objects out of data/", "removed evidence and metadata JSON files from Hub", "removed duplicate derivative sources", "retained data/treasury.parquet as sole Viewer source"],
@@ -24,5 +24,10 @@
     "remaining_cause": "Dataset Viewer conversion endpoint continues returning HTTP 500 after layout correction; likely remote conversion/cache failure rather than invalid Parquet.",
     "direct_download_verified": true
   },
-  "viewer_note": "Viewer readiness remains unverified despite a locally valid and directly downloadable Parquet file."
+  "viewer_recovery": {
+    "source_archive": {"viewer": true, "search": true, "filter": true, "statistics": true},
+    "parquet_derivative": {"rows": 54, "columns": 6, "split": "train"},
+    "csv_fallback": {"rows": 54, "columns": 6, "split": "train"}
+  },
+  "viewer_note": "The prior HTTP 500 was transient service-side conversion/cache unavailability; readback recovered without further data changes."
 }

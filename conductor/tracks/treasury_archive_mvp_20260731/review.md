@@ -393,3 +393,10 @@ Status: approved for track initialization
 - Native third-party mutation tools were not silently treated as passing: their
   Windows/WSL and Python 3.14 limitations were recorded, and the bounded
   repository-owned runner provides the executable evidence available here.
+
+## 2026-08-01 corrective publication review
+
+- Critical finding resolved: the first Zenodo package contained evidence but omitted captured source objects, raw CKAN responses, and derivatives. Role-based release assertions and the corrected package now include all three layers.
+- Critical finding resolved: the DuckDB fallback used keyword substring filtering, which allowed PRAGMA and did not reliably contain external reads. It now preloads only the approved Parquet file, disables external access, and accepts exactly one SELECT.
+- External finding resolved: all Hugging Face Viewer endpoints recovered and representative 54-row readback passed. The failure was transient service state, not invalid archive data.
+- Remaining finding: Zenodo network operations were executed through a bounded credential-safe script path but still need a repository-owned, mocked integration adapter before scheduled publication can be claimed automated.

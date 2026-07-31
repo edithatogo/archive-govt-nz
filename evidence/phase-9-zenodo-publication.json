@@ -1,14 +1,16 @@
 {
   "schema_version": "archive-govt-nz.phase-9-zenodo-publication/v1",
-  "record_id": 21718048,
-  "doi": "10.5281/zenodo.21718048",
-  "doi_url": "https://doi.org/10.5281/zenodo.21718048",
-  "record_url": "https://zenodo.org/records/21718048",
+  "record_id": 21728726,
+  "doi": "10.5281/zenodo.21728726",
+  "concept_doi": "10.5281/zenodo.21718047",
+  "doi_url": "https://doi.org/10.5281/zenodo.21728726",
+  "record_url": "https://zenodo.org/records/21728726",
   "state": "published",
-  "package_sha256": "e2314b8b47e0148f42ea936af71e22331beecde7a3466aab07444d6a0e89dde7",
-  "file": "archive-govt-nz-treasury-preservation-2026.07.31.tar",
-  "file_size": 174080,
-  "zenodo_checksum": "md5:20a650358abe4c797c4e62c51a1a88fb",
-  "viewer_limitation": "Dataset Viewer HTTP 500 documented; direct Hugging Face downloads verified.",
-  "release_type": "preservation-only; analytical Viewer publication remains separate"
+  "package_sha256": "472fe84275dac37966e95ea5cfd73d1ecf65f2330f7f5322ba3231b7ce21a6b7",
+  "file": "archive-govt-nz-treasury-preservation-2026.08.01.tar",
+  "file_size": 5785600,
+  "zenodo_checksum": "md5:4467732c0faf36e59ad7bcdc769cbf9e",
+  "viewer_state": "recovered and verified on 2026-08-01",
+  "release_type": "preservation snapshot with source objects, raw CKAN metadata, evidence, and analytical derivatives",
+  "supersedes": {"doi": "10.5281/zenodo.21718048", "reason": "v1 omitted source payload objects and derivatives"}
 }
