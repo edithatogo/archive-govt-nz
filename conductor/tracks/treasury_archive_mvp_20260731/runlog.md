@@ -112,3 +112,26 @@
 - Final command: `uv run --locked python tools/check.py`.
 - Final post-documentation result: all ten stages passed in 85.6 seconds; 17
   tests passed in 5.46 seconds with 100% measured line and branch coverage.
+
+## 2026-07-31 - Phase 1 verification and checkpoint
+
+- Reused the final ten-stage repository-gate result from the completed
+  supply-chain task.
+- Isolated verification:
+  `uv run --isolated --locked python -m archive_govt_nz --help`.
+- Isolated test command:
+  `uv run --isolated --locked pytest --cov=archive_govt_nz --cov-branch --cov-report=term-missing`.
+- The isolated environment installed 69 packages; 17 tests passed in 10.60
+  seconds with 100% measured line and branch coverage.
+- `uv build --no-sources` rebuilt the `0.1.0` sdist and platform-independent
+  wheel successfully.
+- Read back the public, unarchived GitHub repository, default `main`, open
+  parent #1, and all ten native phase subissues.
+- `github/main` exactly matched local
+  `45420f3c153b95628fabfd8de83f92a3f5054fba` before checkpoint evidence.
+- The post-checkpoint secret scan identified the explicit Git hash in
+  `source_revision`. Added a key-scoped line exclusion for only
+  `source_revision` and `remote_revision`; the complete source scan then passed
+  with zero candidates.
+- Phase 1 issue #2 remains open until this checkpoint commit is pushed and read
+  back; its close action is an external receipt, not assumed local state.

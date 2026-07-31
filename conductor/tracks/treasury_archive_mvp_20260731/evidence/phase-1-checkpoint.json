@@ -1,0 +1,66 @@
+{
+  "schema_version": "archive-govt-nz.conductor-checkpoint/v1",
+  "track_id": "treasury_archive_mvp_20260731",
+  "phase": 1,
+  "status": "passed_local_and_remote_ref_verified",
+  "observed_at": "2026-07-31T14:17:02+10:00",
+  "source_revision": "45420f3c153b95628fabfd8de83f92a3f5054fba",
+  "verification": {
+    "repository_gate": {
+      "status": "passed_local",
+      "stages": 10,
+      "tests": 17,
+      "line_coverage_percent": 100.0,
+      "branch_coverage_percent": 100.0
+    },
+    "isolated_environment": {
+      "status": "passed_local",
+      "python": "3.14.6",
+      "installed_packages": 69,
+      "tests": 17,
+      "line_coverage_percent": 100.0,
+      "branch_coverage_percent": 100.0
+    },
+    "build": {
+      "status": "passed_local",
+      "version": "0.1.0",
+      "artifacts": [
+        "archive_govt_nz-0.1.0.tar.gz",
+        "archive_govt_nz-0.1.0-py3-none-any.whl"
+      ],
+      "committed": false
+    },
+    "github": {
+      "status": "remotely_verified",
+      "repository": "edithatogo/archive-govt-nz",
+      "visibility": "public",
+      "archived": false,
+      "default_branch": "main",
+      "remote_revision": "45420f3c153b95628fabfd8de83f92a3f5054fba",
+      "parent_issue": 1,
+      "phase_subissues": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    }
+  },
+  "not_verified": [
+    "hosted_ci",
+    "ckan_capability",
+    "treasury_scope_completeness",
+    "resource_capture",
+    "recovery",
+    "hugging_face_upload",
+    "hugging_face_remote_verification",
+    "zenodo_deposition",
+    "zenodo_doi"
+  ]
+}

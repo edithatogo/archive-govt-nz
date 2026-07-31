@@ -23,6 +23,7 @@ EXCLUDED_PATH_PATTERN = (
     r"|uv\.lock$"
     r"|conductor[\\/]tracks[\\/].*[\\/](?:evidence|runlog)\.md$"
 )
+REVISION_LINE_PATTERN = r'"(?:source_revision|remote_revision)"\s*:'
 DENIED_LICENCE_TERMS = (
     "affero",
     "gnu general public license",
@@ -99,6 +100,8 @@ def secrets() -> None:
             "--force-use-all-plugins",
             "--exclude-files",
             EXCLUDED_PATH_PATTERN,
+            "--exclude-lines",
+            REVISION_LINE_PATTERN,
         ),
         capture=True,
     )

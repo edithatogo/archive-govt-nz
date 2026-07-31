@@ -45,11 +45,11 @@
   - [x] Add a project-specific Rust guide before any Rust code
   - [x] Enforce benchmark evidence before Rust adoption
 
-- [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
-  - [ ] Run the full repository gate
-  - [ ] Verify setup from a clean environment
-  - [ ] Reconcile Conductor and GitHub state
-  - [ ] Record phase evidence and checkpoint
+- [x] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+  - [x] Run the full repository gate
+  - [x] Verify setup from a clean environment
+  - [x] Reconcile Conductor and GitHub state
+  - [x] Record phase evidence and checkpoint
 
 ## Phase 2: CKAN capability and Treasury scope discovery
 

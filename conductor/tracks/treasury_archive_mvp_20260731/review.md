@@ -108,3 +108,20 @@ Status: approved for track initialization
   mutation, and benchmark evidence before adoption.
 - Local scanner success does not claim hosted CodeQL, GitHub secret scanning,
   attestations, CI, or publication.
+
+## Phase 1 checkpoint self-review
+
+- Every Phase 1 implementation task has an observed red phase, a green local
+  result, track evidence, a coherent commit, a pushed remote match, and an issue
+  comment.
+- A separate isolated environment reproduced package installation, CLI startup,
+  tests, and coverage from the lock.
+- The source distribution and wheel build without untracked payload content.
+- Machine-readable Git revisions use a key-scoped secret-scan exclusion; the
+  remainder of each checkpoint receipt remains scanned.
+- The GitHub hierarchy and remote ref were read back; Conductor does not infer
+  them from local metadata.
+- Phase 1 establishes local assurance and supply-chain foundations only.
+  Hosted CI, CKAN capability, Treasury completeness, capture, recovery, Hugging
+  Face upload, and Zenodo release remain explicitly unverified.
+- No critical self-review finding remains open for Phase 1.

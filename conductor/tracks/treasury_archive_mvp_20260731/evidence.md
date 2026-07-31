@@ -112,3 +112,22 @@ Generated audit, licence, secret-scan, and SBOM receipts are under ignored
 uploaded, or remotely verified. The timed-out PyPI advisory attempt is a
 network-route limitation, not a vulnerability result; OSV supplied the recorded
 successful lookup.
+
+## Phase 1 checkpoint
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Full local gate | passed local | ten stages; 17 tests; 100% measured line and branch coverage |
+| Isolated install | passed local | locked Python 3.14 environment installed 69 packages |
+| Isolated CLI | passed local | help identified product and version command |
+| Isolated tests | passed local | 17 tests in 10.60 seconds; 100% measured coverage |
+| Distribution build | passed local | `0.1.0` sdist and `py3-none-any` wheel |
+| GitHub repository | remotely verified | public, unarchived, default branch `main` |
+| Remote ref | remotely verified | `github/main` equals local `45420f3c153b95628fabfd8de83f92a3f5054fba` before checkpoint commit |
+| Issue hierarchy | remotely verified | parent #1 plus native subissues #2 through #11 |
+| Phase 1 issue | pending close | close only after checkpoint commit push and readback |
+| Hosted CI | not implemented | planned Phase 7 work; no hosted-pass claim |
+| Archive/publication | not started | no source payload, Hugging Face, or Zenodo action |
+
+The paired machine-readable checkpoint is
+`evidence/phase-1-checkpoint.json`.
