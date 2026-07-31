@@ -32,6 +32,7 @@ def build_manifest(
     objects: list[dict[str, Any]],
     versions: list[dict[str, Any]],
     derivatives: list[dict[str, Any]] | None = None,
+    warc_records: list[dict[str, Any]] | None = None,
 ) -> ManifestReceipt:
     """Build a deterministic manifest and reject dangling relationships."""
     if not archive_id.strip():
@@ -49,6 +50,9 @@ def build_manifest(
             raise ProvenanceError("dangling_source_object")
         if derivative.get("version_id") not in version_ids:
             raise ProvenanceError("dangling_version")
+    for warc in warc_records or []:
+        if warc.get("object_id") not in object_ids:
+            raise ProvenanceError("dangling_warc_object")
     document = {
         "schema_version": "archive-govt-nz.manifest/v1",
         "archive_id": archive_id,
@@ -59,6 +63,9 @@ def build_manifest(
         "versions": sorted(versions, key=lambda item: str(item["version_id"])),
         "derivatives": sorted(
             derivatives or [], key=lambda item: str(item.get("derivative_id", ""))
+        ),
+        "warc_records": sorted(
+            warc_records or [], key=lambda item: str(item.get("record_id", ""))
         ),
     }
     canonical = json.dumps(

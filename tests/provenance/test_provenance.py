@@ -38,3 +38,16 @@ def test_manifest_rejects_dangling_relationships() -> None:
             ],
         )
     assert raised.value.error_class == "dangling_source_object"
+
+
+def test_manifest_rejects_warc_without_captured_object() -> None:
+    """A WARC receipt cannot become detached preservation evidence."""
+    with pytest.raises(ProvenanceError) as raised:
+        build_manifest(
+            archive_id="treasury",
+            observations=[{"observation_id": "o1"}],
+            objects=[],
+            versions=[{"version_id": "v1", "observation_id": "o1"}],
+            warc_records=[{"record_id": "w1", "object_id": "missing"}],
+        )
+    assert raised.value.error_class == "dangling_warc_object"

@@ -519,6 +519,13 @@
 - Decision recorded as `evaluate-before-adopt`; none is silently promoted to a
   release requirement. The evaluation receipt is generated and tested.
 
+## 2026-07-31 - WARC manifest closure
+
+- Extended provenance manifests with explicit WARC-record-to-object
+  relationships and deterministic ordering.
+- Added a failing/green closure test for detached WARC evidence; 3 provenance
+  tests now pass.
+
 ## 2026-07-31 - Derivative dependency security correction
 
 - The first full gate identified the published Apache Arrow advisory in

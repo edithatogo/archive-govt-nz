@@ -269,7 +269,7 @@
   - [x] Write failing WARC round-trip and redaction tests
   - [x] Generate bounded WARC 1.1 records
   - [x] Verify sensitive-value absence
-  - [ ] Verify object relationships in release manifests
+  - [x] Verify object relationships in release manifests
 
 - [x] Task: Evaluate preservation packaging standards [S-01]
   - [x] Create bounded evaluation scope for Treasury-derived fixtures
