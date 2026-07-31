@@ -2,32 +2,38 @@
 
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-OUTPUT = ROOT / "evidence" / "release-attestation.json"
-INPUTS = (
-    ROOT / "evidence/archive-evidence-ledger.json",
-    ROOT / "evidence/preservation-packaging-evaluation.json",
-    ROOT / "build/sbom.cdx.json",
-)
 
 
 def main() -> int:
     """Hash available release evidence and fail closed on missing inputs."""
-    missing = [str(path.relative_to(ROOT)) for path in INPUTS if not path.is_file()]
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--root", type=Path, default=ROOT)
+    parser.add_argument("--output", type=Path)
+    args = parser.parse_args()
+    root = args.root.resolve()
+    output = args.output or root / "evidence" / "release-attestation.json"
+    inputs = (
+        root / "evidence/archive-evidence-ledger.json",
+        root / "evidence/preservation-packaging-evaluation.json",
+        root / "build/sbom.cdx.json",
+    )
+    missing = [str(path.relative_to(root)) for path in inputs if not path.is_file()]
     if missing:
         print(json.dumps({"status": "incomplete", "missing": missing}))
         return 1
     files = [
         {
-            "path": str(path.relative_to(ROOT)),
+            "path": str(path.relative_to(root)),
             "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
             "bytes": path.stat().st_size,
         }
-        for path in INPUTS
+        for path in inputs
     ]
     document = {
         "schema_version": "archive-govt-nz.release-attestation/v1",
@@ -39,11 +45,11 @@ def main() -> int:
             "reason": "signing key and release approval are external gates",
         },
     }
-    OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    OUTPUT.write_text(
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(
         json.dumps(document, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
     )
-    print(f"wrote {OUTPUT.relative_to(ROOT)}")
+    print(f"wrote {output.relative_to(root)}")
     return 0
 
 
