@@ -26,7 +26,7 @@ The parent issue must link to:
     - [#18 Complete publication metadata and provenance records](https://github.com/edithatogo/archive-govt-nz/issues/18)
     - [#19 Rolling Hugging Face publication](https://github.com/edithatogo/archive-govt-nz/issues/19)
     - [#20 Immutable Zenodo release](https://github.com/edithatogo/archive-govt-nz/issues/20)
-    - Pending GitHub issue: Hugging Face Dataset Viewer HTTP 500 diagnosis (creation blocked by GitHub API rate limit; see run log)
+    - [#21 Hugging Face Dataset Viewer HTTP 500 diagnosis](https://github.com/edithatogo/archive-govt-nz/issues/21)
 10. [#11 MVP closeout and next-scope handoff](https://github.com/edithatogo/archive-govt-nz/issues/11)
 
 ## Cross-cutting subissues

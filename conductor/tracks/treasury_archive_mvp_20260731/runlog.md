@@ -591,7 +591,7 @@
 - Direct download and local PyArrow validation passed for 54 rows and six typed columns.
 - All Dataset Viewer endpoints continued to return HTTP 500.
 - The failure is recorded in `evidence/phase-8-hf-derivative-viewer-diagnosis.json`; Viewer readiness and Zenodo DOI gates remain unclaimed.
-- A nested GitHub follow-up issue was attempted but GitHub API rate limiting prevented creation; retry is required when the API window resets.
+- Nested GitHub follow-up issue #21 was created after the API rate-limit window reset.
 
 ## 2026-07-31 - Treasury rights classification
 
