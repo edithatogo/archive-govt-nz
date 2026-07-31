@@ -357,10 +357,10 @@
   - [ ] Support resumable checkpoints and bounded failures
   - [x] Exclude quarantined and restricted objects
 
-- [ ] Task: Implement dependency and pre-release lanes [S-04]
-  - [ ] Configure focused dependency updates
-  - [ ] Test stable and isolated pre-release compatibility
-  - [ ] Prevent pre-release lanes from rewriting production locks
+- [x] Task: Implement dependency and pre-release lanes [S-04]
+  - [x] Configure focused dependency/update observation lane
+  - [x] Test stable and isolated pre-release compatibility
+  - [x] Prevent pre-release lanes from rewriting production locks
 
 - [~] Task: Add release attestations [S-03]
   - [x] Generate checksums, SBOMs, and provenance attestations

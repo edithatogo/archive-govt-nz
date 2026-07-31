@@ -579,6 +579,12 @@
   token fails closed, and remote side effects are not implemented implicitly.
 - Two publication safety tests pass.
 
+## 2026-07-31 - Dependency lane foundation
+
+- Added a read-only scheduled dependency/pre-release compatibility lane.
+- It verifies the production lock, runs tests, and records pre-release mode as
+  observational; it cannot rewrite `uv.lock` or publish artifacts.
+
 ## 2026-07-31 - Derivative dependency security correction
 
 - The first full gate identified the published Apache Arrow advisory in
