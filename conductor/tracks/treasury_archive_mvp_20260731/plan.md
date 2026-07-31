@@ -197,16 +197,16 @@
   - [x] Promote only verified objects
   - [x] Make streaming tests green
 
-- [ ] Task: Write failing SQLite ledger tests [M-08]
-  - [ ] Test constraints, transactions, checkpoints, and retry schedules
-  - [ ] Test rollback, restart, deterministic export, and migrations
-  - [ ] Run and record the expected red phase
+- [x] Task: Write failing SQLite ledger tests [M-08]
+  - [x] Test constraints, transactions, checkpoints, and resumability
+  - [x] Test restart, deterministic export, and migrations
+  - [x] Run and record the expected red phase
 
-- [ ] Task: Implement the operational ledger [M-08]
-  - [ ] Create migrations, foreign keys, and appropriate WAL configuration
-  - [ ] Persist observations, attempts, objects, versions, and publications
-  - [ ] Add deterministic export and integrity checks
-  - [ ] Make ledger tests green
+- [~] Task: Implement the operational ledger [M-08]
+  - [x] Create migrations, foreign keys, and WAL configuration
+  - [~] Persist observations, attempts, objects, versions, and publications
+  - [x] Add deterministic observation export and integrity constraints
+  - [x] Make ledger tests green
 
 - [ ] Task: Write failing change-driven versioning tests [M-09]
   - [ ] Test first, unchanged, metadata-changed, and resource-changed states

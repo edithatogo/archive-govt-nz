@@ -463,3 +463,8 @@
 
 - Added bounded redirect traversal, relative-location resolution, ETag/Last-Modified validation, timeout propagation, and redirect-loop failure classification.
 - Full gate: 147 tests, 97.72% coverage, strict Pyright/Ruff, schemas, mutation, audit, licence, secret, and SBOM checks passed.
+
+## 2026-07-31 - SQLite ledger foundation
+
+- Added WAL-enabled SQLite migrations with foreign keys, observation uniqueness, checkpoints, and deterministic export.
+- Focused result: 3 ledger tests passed. Attempt/object/version/publication write APIs remain the next ledger increment.
