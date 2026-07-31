@@ -11,6 +11,9 @@
 ## Workflow
 
 -   [Workflow](./workflow.md)
+-   [Continuous Autonomous Execution](./autonomy.md)
+-   [Machine Autonomy Policy](./autonomy-policy.json)
+-   [Upstream Autonomy Evaluation](./upstream-evaluation.md)
 -   [Code Style Guides](./code_styleguides/)
 
 ## Tracks

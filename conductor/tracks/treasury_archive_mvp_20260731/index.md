@@ -10,6 +10,7 @@
 
 ## Delivery evidence
 
+- [Continuous Autonomous Execution](../../autonomy.md)
 - [Run Log](./runlog.md)
 - [Evidence](./evidence.md)
 - [Self-review](./review.md)

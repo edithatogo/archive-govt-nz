@@ -16,8 +16,16 @@ type JsonValue = (
 )
 
 REPOSITORY_ROOT = Path(__file__).parents[1]
-SCHEMA_PATH = REPOSITORY_ROOT / "schemas" / "cli-envelope-v1.schema.json"
-FIXTURE_PATH = REPOSITORY_ROOT / "tests" / "fixtures" / "cli-version-v1.json"
+VALIDATION_PAIRS = (
+    (
+        REPOSITORY_ROOT / "schemas" / "cli-envelope-v1.schema.json",
+        REPOSITORY_ROOT / "tests" / "fixtures" / "cli-version-v1.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "conductor-autonomy-policy-v1.schema.json",
+        REPOSITORY_ROOT / "conductor" / "autonomy-policy.json",
+    ),
+)
 
 
 def load_json_object(path: Path) -> dict[str, JsonValue]:
@@ -31,21 +39,22 @@ def load_json_object(path: Path) -> dict[str, JsonValue]:
 
 
 def validate() -> None:
-    """Validate the schema itself and its representative document."""
-    schema = load_json_object(SCHEMA_PATH)
-    fixture = load_json_object(FIXTURE_PATH)
-    Draft202012Validator.check_schema(schema)
-    validate_document = cast(
-        "Callable[[object], None]",
-        Draft202012Validator(schema).validate,  # pyright: ignore[reportUnknownMemberType]
-    )
-    validate_document(fixture)
+    """Validate each schema itself and its representative document."""
+    for schema_path, document_path in VALIDATION_PAIRS:
+        schema = load_json_object(schema_path)
+        document = load_json_object(document_path)
+        Draft202012Validator.check_schema(schema)
+        validate_document = cast(
+            "Callable[[object], None]",
+            Draft202012Validator(schema).validate,  # pyright: ignore[reportUnknownMemberType]
+        )
+        validate_document(document)
 
 
 def main() -> int:
     """Run schema validation as a process-safe gate."""
     validate()
-    print("validated 1 schema and 1 fixture")
+    print(f"validated {len(VALIDATION_PAIRS)} schemas and documents")
     return 0
 
 

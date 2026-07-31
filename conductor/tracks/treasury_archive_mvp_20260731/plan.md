@@ -3,6 +3,10 @@
 ## Track controls
 
 - Track type: MVP / Bootstrap
+- Execution mode: continuous autonomous across tasks, phases, checkpoints,
+  reviews, and approved subsequent tracks
+- Decision protocol: ask only at defined decision gates; provide options,
+  recommendation, rationale, evidence, and continuing safe work
 - GitHub model: one parent issue with one nested subissue per phase
 - Coverage: 100% line and branch for critical logic; at least 95% overall
 - Commit policy: one coherent commit after each completed task and its evidence
@@ -50,6 +54,17 @@
   - [x] Verify setup from a clean environment
   - [x] Reconcile Conductor and GitHub state
   - [x] Record phase evidence and checkpoint
+
+## Phase 1A: Autonomous execution governance
+
+- [x] Task: Establish continuous autonomous Conductor execution [M-19]
+  - [x] Define uninterrupted task, phase, and track progression
+  - [x] Define the minimal decision-gate taxonomy
+  - [x] Require options, recommendation, rationale, and evidence for decisions
+  - [x] Add bounded retry, recovery, resumability, and isolation controls
+  - [x] Add paired human-readable and machine-readable policy artefacts
+  - [x] Validate policy and current-track inheritance
+  - [x] Reconcile the GitHub issue hierarchy
 
 ## Phase 2: CKAN capability and Treasury scope discovery
 

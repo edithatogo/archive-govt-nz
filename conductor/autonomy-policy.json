@@ -1,0 +1,76 @@
+{
+  "schema_version": "archive-govt-nz.conductor-autonomy/v1",
+  "mode": "continuous_autonomous",
+  "authorization_scope": "approved_project_requirements_and_registered_tracks",
+  "continuation": {
+    "between_tasks": "automatic",
+    "between_phases": "automatic",
+    "between_tracks": "automatic",
+    "after_checkpoint": "automatic"
+  },
+  "stop_conditions": [
+    "decision_required_and_no_independent_work",
+    "safety_or_scope_violation",
+    "same_blocker_after_bounded_recovery_and_no_independent_work",
+    "all_approved_work_complete"
+  ],
+  "decision_gates": [
+    "credentials_or_secret_access",
+    "public_or_irreversible_release",
+    "legal_rights_privacy_security_or_quarantine_exception",
+    "destructive_or_materially_nonrecoverable_action",
+    "material_scope_or_incompatible_architecture_without_approved_default",
+    "conflicting_must_requirements",
+    "external_communication_beyond_approved_repository_traceability"
+  ],
+  "decision_protocol": {
+    "minimum_options": 2,
+    "maximum_options": 4,
+    "recommended_option_position": "first",
+    "other_option_supported": true,
+    "required_fields": [
+      "decision_id",
+      "question",
+      "blocking_scope",
+      "options",
+      "recommendation",
+      "rationale",
+      "evidence",
+      "safe_while_waiting"
+    ],
+    "continue_independent_work_while_waiting": true,
+    "record_choice_and_receipt_before_resume": true
+  },
+  "recovery": {
+    "maximum_distinct_self_correction_attempts": 3,
+    "repeat_requires_changed_hypothesis": true,
+    "classify_failure": true,
+    "bounded_timeouts_and_backoff": true,
+    "preserve_unrelated_work": true,
+    "checkpoint_before_risky_change": true
+  },
+  "state_ledger": {
+    "authorities": [
+      "conductor/tracks.md",
+      "track/plan.md",
+      "track/metadata.json",
+      "track/runlog.md",
+      "track/evidence.md",
+      "git_local_and_remote_refs",
+      "github_issue_state"
+    ],
+    "resume_without_reconfirmation": true,
+    "reconcile_before_claiming_completion": true
+  },
+  "isolation": {
+    "default": "current_clean_checkout",
+    "branch_prefix": "codex/",
+    "use_worktree_when": [
+      "overlapping_work",
+      "dirty_checkout",
+      "high_risk_experiment",
+      "review_or_reversion_safety"
+    ],
+    "experimental_upstream_commands_adopted": false
+  }
+}

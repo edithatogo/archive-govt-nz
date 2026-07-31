@@ -23,6 +23,10 @@ The parent issue must link to:
 9. [#10 Immutable Zenodo release](https://github.com/edithatogo/archive-govt-nz/issues/10)
 10. [#11 MVP closeout and next-scope handoff](https://github.com/edithatogo/archive-govt-nz/issues/11)
 
+## Cross-cutting subissues
+
+- [#12 Continuous autonomous Conductor execution](https://github.com/edithatogo/archive-govt-nz/issues/12)
+
 Each issue body must include:
 
 - the track ID;
@@ -33,4 +37,5 @@ Each issue body must include:
 - links back to the parent issue and track index.
 
 The repository is public with default branch `main`. On 2026-07-31 the GitHub
-subissues API returned exactly issues #2 through #11 beneath parent #1.
+subissues API returned phase issues #2 through #11 and cross-cutting issue #12
+beneath parent #1.

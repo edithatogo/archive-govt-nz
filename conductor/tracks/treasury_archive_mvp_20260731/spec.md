@@ -46,6 +46,9 @@ Implementation must reconcile the live scope at each run.
     credential approval.
 11. Prepare and, only after explicit approval, publish a checksum-pinned
     immutable Zenodo release.
+12. Execute continuously across tasks, phases, reviews, and approved subsequent
+    tracks, engaging the maintainer only for a material decision or new
+    authority.
 
 ## Users
 
@@ -377,6 +380,12 @@ The track is accepted only when:
 If external credentials or approval are not supplied, implementation may be
 locally complete but the track remains explicitly gated rather than falsely
 marked fully accepted.
+
+The affected publication branch waits for that decision while independent safe
+work continues. Routine task, phase, checkpoint, review, and track boundaries
+must not require renewed confirmation. Every required decision provides
+mutually exclusive options, the recommended option first, and an
+evidence-supported rationale.
 
 ## Out of scope
 

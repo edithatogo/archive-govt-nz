@@ -68,6 +68,14 @@ acceptance criteria without silently weakening any Must requirement.
 
 ### Planning and traceability
 
+- Continue autonomously across task, phase, checkpoint, review, and approved
+  track boundaries without requiring renewed confirmation.
+- Ask the user only for a material decision or authority that lacks an approved
+  safe default; continue independent safe work while a decision is pending.
+- Present every decision with two to four options, the recommended option first,
+  and an evidence-based rationale and trade-offs.
+- Persist enough repository, Conductor, evidence, and remote state to resume
+  after interruption without re-asking whether to continue.
 - Give every implementation track a MoSCoW `requirements.md`.
 - Give every design-bearing track a `design.md` with Mermaid diagrams.
 - Cross-reference Conductor tracks with GitHub parent issues and nested

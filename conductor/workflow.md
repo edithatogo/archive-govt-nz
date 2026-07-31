@@ -27,6 +27,59 @@
 10. **Commands are non-interactive and CI-aware.** Prefer deterministic,
     scriptable commands with bounded execution and structured outputs.
 
+## Continuous autonomous execution
+
+The project policy in `autonomy.md` is the project-local execution authority.
+One implementation authorisation applies continuously to all safe work already
+approved by project requirements and registered tracks.
+
+- Do not ask whether to start the next task, phase, checkpoint, review, or
+  approved track.
+- Do not stop merely to report a commit, push, phase completion, review result,
+  or track completion. Record the receipt and select the next work item.
+- Run Conductor review automatically when a track completes. Append and resolve
+  required review-fix tasks before advancing when findings are actionable.
+- Synchronize project documents automatically when the change is a direct,
+  evidence-backed consequence of approved work. Use a decision gate only for a
+  strategic product-identity change or material new scope.
+- When the registry has no prepared next track, create the smallest bounded
+  track for the next already-approved roadmap priority and continue.
+- After host interruption or context compaction, reconcile the state ledger and
+  resume without reconfirmation.
+
+Upstream Conductor's routine track-selection, documentation-sync, completion,
+and review confirmation questions are intentionally replaced by this continuous
+loop for this repository.
+
+### Decision boundary
+
+Ask only for credentials/new authority, public or irreversible release, legal
+or rights judgment, privacy/security/quarantine exception, destructive action,
+conflicting Must requirements, or a material scope/architecture choice without
+an approved safe default.
+
+Every decision request must follow `autonomy.md`: one question, two to four
+mutually exclusive options, the recommended option first, option impacts,
+evidence-backed rationale, exact blocking scope, and safe work that continues
+while waiting. Never ask a bare open-ended question or a routine `continue?`
+question.
+
+Block only the affected branch. Continue independent safe tasks, phases, or
+tracks. A decision request pauses the overall run only when no independent
+in-scope work remains.
+
+### Bounded recovery
+
+For a failed command or check, make up to three materially distinct corrective
+attempts. Each attempt must change the hypothesis, input, tool, or environment;
+repeating the same failing action does not consume progress. Classify and record
+the failure, retain bounded timeouts/backoff, preserve unrelated work, and
+checkpoint before a risky correction.
+
+After the budget, continue independent work. Ask the user only when an actual
+choice or new authority can resolve the blocker. Otherwise record an external
+blocker and resume when its state changes.
+
 ## Track contract
 
 Each implementation track contains, at minimum:
@@ -168,6 +221,9 @@ When all relevant gates pass:
 Commit only after the task is green. Do not combine unrelated completed tasks
 in one commit.
 
+Immediately select the next unblocked task after commit and remote verification.
+Task completion is not a user handoff.
+
 ## Correction workflow
 
 ### In-flight refinement
@@ -205,6 +261,28 @@ When the last task in a phase completes:
 
 A phase is not complete while a Must requirement lacks evidence or an
 unresolved critical self-review finding remains.
+
+After a phase checkpoint is committed and remotely reconciled, close or update
+its GitHub issue and begin the next phase immediately. Do not ask for permission
+to continue.
+
+## Track completion and automatic handoff
+
+When the last phase completes:
+
+1. run Conductor review automatically;
+2. append and complete review-fix tasks for actionable findings;
+3. reconcile requirements, design, evidence, metadata, Git history, remote
+   refs, hosted state, and GitHub issues;
+4. synchronize evidence-backed project documentation;
+5. mark and commit the completed track state;
+6. close the track issue only after remote readback;
+7. select the next approved track in registry order, or create a bounded track
+   for the next explicit project priority;
+8. continue implementation without a new confirmation prompt.
+
+Stop only when the autonomy policy's decision/safety conditions block all useful
+work or all approved work is genuinely complete.
 
 ## Quality gates
 

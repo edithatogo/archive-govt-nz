@@ -4,8 +4,15 @@
   "type": "mvp",
   "status": "in_progress",
   "created_at": "2026-07-31T13:25:47+10:00",
-  "updated_at": "2026-07-31T14:17:02+10:00",
+  "updated_at": "2026-07-31T14:43:48+10:00",
   "requirements_method": "MoSCoW",
+  "autonomy": {
+    "policy": "../../autonomy-policy.json",
+    "mode": "continuous_autonomous",
+    "stop_between_phases": false,
+    "stop_between_tracks": false,
+    "resume_without_reconfirmation": true
+  },
   "github": {
     "repository": "edithatogo/archive-govt-nz",
     "url": "https://github.com/edithatogo/archive-govt-nz",
@@ -26,6 +33,13 @@
       {"phase": 8, "number": 9, "url": "https://github.com/edithatogo/archive-govt-nz/issues/9"},
       {"phase": 9, "number": 10, "url": "https://github.com/edithatogo/archive-govt-nz/issues/10"},
       {"phase": 10, "number": 11, "url": "https://github.com/edithatogo/archive-govt-nz/issues/11"}
+    ],
+    "cross_cutting_issues": [
+      {
+        "kind": "autonomous_execution",
+        "number": 12,
+        "url": "https://github.com/edithatogo/archive-govt-nz/issues/12"
+      }
     ]
   },
   "external_gates": [

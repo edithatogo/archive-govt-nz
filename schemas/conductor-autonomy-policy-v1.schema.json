@@ -1,0 +1,205 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/edithatogo/archive-govt-nz/schemas/conductor-autonomy-policy-v1.schema.json",
+  "title": "Archive Govt NZ Conductor autonomy policy",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "mode",
+    "authorization_scope",
+    "continuation",
+    "stop_conditions",
+    "decision_gates",
+    "decision_protocol",
+    "recovery",
+    "state_ledger",
+    "isolation"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "archive-govt-nz.conductor-autonomy/v1"
+    },
+    "mode": {
+      "const": "continuous_autonomous"
+    },
+    "authorization_scope": {
+      "type": "string",
+      "minLength": 1
+    },
+    "continuation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "between_tasks",
+        "between_phases",
+        "between_tracks",
+        "after_checkpoint"
+      ],
+      "properties": {
+        "between_tasks": {
+          "const": "automatic"
+        },
+        "between_phases": {
+          "const": "automatic"
+        },
+        "between_tracks": {
+          "const": "automatic"
+        },
+        "after_checkpoint": {
+          "const": "automatic"
+        }
+      }
+    },
+    "stop_conditions": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "decision_gates": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "decision_protocol": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "minimum_options",
+        "maximum_options",
+        "recommended_option_position",
+        "other_option_supported",
+        "required_fields",
+        "continue_independent_work_while_waiting",
+        "record_choice_and_receipt_before_resume"
+      ],
+      "properties": {
+        "minimum_options": {
+          "type": "integer",
+          "minimum": 2
+        },
+        "maximum_options": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 4
+        },
+        "recommended_option_position": {
+          "const": "first"
+        },
+        "other_option_supported": {
+          "const": true
+        },
+        "required_fields": {
+          "type": "array",
+          "minItems": 8,
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "continue_independent_work_while_waiting": {
+          "const": true
+        },
+        "record_choice_and_receipt_before_resume": {
+          "const": true
+        }
+      }
+    },
+    "recovery": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "maximum_distinct_self_correction_attempts",
+        "repeat_requires_changed_hypothesis",
+        "classify_failure",
+        "bounded_timeouts_and_backoff",
+        "preserve_unrelated_work",
+        "checkpoint_before_risky_change"
+      ],
+      "properties": {
+        "maximum_distinct_self_correction_attempts": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "repeat_requires_changed_hypothesis": {
+          "const": true
+        },
+        "classify_failure": {
+          "const": true
+        },
+        "bounded_timeouts_and_backoff": {
+          "const": true
+        },
+        "preserve_unrelated_work": {
+          "const": true
+        },
+        "checkpoint_before_risky_change": {
+          "const": true
+        }
+      }
+    },
+    "state_ledger": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authorities",
+        "resume_without_reconfirmation",
+        "reconcile_before_claiming_completion"
+      ],
+      "properties": {
+        "authorities": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "resume_without_reconfirmation": {
+          "const": true
+        },
+        "reconcile_before_claiming_completion": {
+          "const": true
+        }
+      }
+    },
+    "isolation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "default",
+        "branch_prefix",
+        "use_worktree_when",
+        "experimental_upstream_commands_adopted"
+      ],
+      "properties": {
+        "default": {
+          "const": "current_clean_checkout"
+        },
+        "branch_prefix": {
+          "const": "codex/"
+        },
+        "use_worktree_when": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "experimental_upstream_commands_adopted": {
+          "const": false
+        }
+      }
+    }
+  }
+}

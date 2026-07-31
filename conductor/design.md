@@ -60,6 +60,41 @@ flowchart LR
 The optional graph and vector projections are downstream of validated tabular
 derivatives. They cannot overwrite originals, manifests, or publication state.
 
+## Autonomous delivery control
+
+```mermaid
+stateDiagram-v2
+    [*] --> Reconcile
+    Reconcile --> Execute: next safe task
+    Execute --> Verify
+    Verify --> Recover: check fails
+    Recover --> Execute: changed hypothesis within budget
+    Recover --> IndependentWork: affected branch blocked
+    Verify --> Commit: evidence passes
+    Commit --> Checkpoint: phase complete
+    Commit --> Reconcile: more tasks
+    Checkpoint --> Review: track complete
+    Checkpoint --> Reconcile: next phase
+    Review --> Fixes: actionable findings
+    Fixes --> Verify
+    Review --> NextTrack: review clean
+    NextTrack --> Reconcile: approved work remains
+    Execute --> Decision: new authority or material choice required
+    Decision --> IndependentWork: safe work remains
+    Decision --> Reconcile: decision receipt recorded
+    IndependentWork --> Reconcile: work available
+    IndependentWork --> Waiting: only blocked scope remains
+    NextTrack --> Complete: all approved work complete
+    Waiting --> Reconcile: external state or decision changes
+    Complete --> [*]
+```
+
+Task, phase, checkpoint, review, and track boundaries automatically return to
+`Reconcile`; they are not handoff stops. Decision gates block only the affected
+branch, and repository evidence provides the resumable state ledger. The
+human-readable and machine-readable authority is linked from
+`conductor/index.md`.
+
 ## Observation and publication states
 
 ```mermaid

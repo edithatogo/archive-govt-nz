@@ -108,6 +108,11 @@ necessary.
 ## Interface and automation conventions
 
 - Commands should be non-interactive by default and support dry-run operation.
+- Conductor implementation proceeds continuously across tasks, phases, and
+  approved tracks; routine boundaries do not trigger confirmation questions.
+- A required decision is presented as one concise question with mutually
+  exclusive options, the recommended option first, its rationale and evidence,
+  and the safe work that can continue while waiting.
 - Destructive, public, credentialed, or irreversible actions require explicit
   flags and clear previews.
 - Repeated operations should be idempotent or provide deterministic

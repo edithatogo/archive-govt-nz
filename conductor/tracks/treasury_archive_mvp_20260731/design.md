@@ -7,6 +7,12 @@ sources, immutable originals, operational state, reproducible derivatives, and
 external publication. No hosted platform or rebuildable database is the sole
 source of preservation truth.
 
+Execution follows the project-level
+[`continuous autonomous execution`](../../autonomy.md) state machine. Phase
+checkpoints and this track's completion automatically advance to the next
+approved work; only the publication, rights, security, destructive, credential,
+or material-scope gates shown below can require a user decision.
+
 ## Component architecture
 
 ```mermaid

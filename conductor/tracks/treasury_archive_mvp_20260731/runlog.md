@@ -135,3 +135,34 @@
   with zero candidates.
 - Phase 1 issue #2 remains open until this checkpoint commit is pushed and read
   back; its close action is an external receipt, not assumed local state.
+
+## 2026-07-31 - Task: Establish continuous autonomous Conductor execution
+
+- Red command:
+  `uv run --locked pytest tests/test_conductor_autonomy.py -q`.
+- Expected red result: four failures for absent policy, schema, and track
+  inheritance.
+- Compared bundled Conductor `0.3.0` at `fb6212e8` with live upstream `main`
+  `0.3.0` at `99ba10e1`.
+- Evaluated open draft PR #86 (Ralph/architect loop) and draft PR #161
+  (worktree isolation). Adopted bounded-loop, completion-state, isolation, and
+  recovery concepts without vendoring experimental Gemini/shell code.
+- Added paired `conductor/autonomy.md` and schema-validated
+  `conductor/autonomy-policy.json`.
+- Updated the project workflow, requirements, design, product guidance,
+  registry, active track specification, requirements, plan, design, index, and
+  metadata.
+- Added automatic review/fix/document synchronization and approved-track
+  handoff without routine confirmation.
+- Added three distinct corrective attempts, failure classification,
+  branch-local blocking, continued independent work, resumability, and
+  conditional branch/worktree isolation.
+- Green focused result: four autonomy tests passed; two schemas and documents
+  validated.
+- Created and read back native parent subissue
+  [#12](https://github.com/edithatogo/archive-govt-nz/issues/12).
+- Final command: `uv run --locked python tools/check.py`.
+- Final result: all ten stages passed in 103.6 seconds; 21 tests passed in 8.03
+  seconds with 100% measured line and branch coverage; two schemas validated;
+  OSV reported no known vulnerabilities; licence, secret, and 69-component
+  CycloneDX SBOM controls passed.

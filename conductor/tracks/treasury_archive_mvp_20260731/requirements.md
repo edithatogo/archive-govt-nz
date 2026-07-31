@@ -121,6 +121,12 @@ Cross-reference this track with one GitHub parent issue, nested phase subissues,
 pull requests, and task commits. Do not require a second-person review,
 CODEOWNERS approval, team assignment, or reviewer count.
 
+Continue implementation autonomously across every task, phase, checkpoint,
+review, and approved subsequent track. Pause only for a decision defined by the
+project autonomy policy, present the recommended option first with rationale and
+evidence, and continue independent safe work while the decision is pending.
+Persist schema-validated policy and resumable state references.
+
 ## Should
 
 ### S-01: Preservation-standard evaluation

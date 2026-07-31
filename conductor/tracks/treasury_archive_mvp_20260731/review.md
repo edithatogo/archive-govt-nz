@@ -125,3 +125,20 @@ Status: approved for track initialization
   Hosted CI, CKAN capability, Treasury completeness, capture, recovery, Hugging
   Face upload, and Zenodo release remain explicitly unverified.
 - No critical self-review finding remains open for Phase 1.
+
+## Task self-review: Continuous autonomous Conductor execution
+
+- Routine task, phase, checkpoint, review, documentation, and approved-track
+  boundaries no longer request confirmation.
+- The policy does not broaden authority: credentials, publication, DOI,
+  legal/rights/privacy/security exceptions, destructive actions, and material
+  unapproved scope remain decisions.
+- Decision requests must be actionable and evidence-backed, with the
+  recommendation first and independent work continuing where possible.
+- Retry budgets require materially changed hypotheses and cannot become an
+  infinite loop.
+- Repository evidence, not conversational memory, is the resumption authority.
+- Experimental upstream code was not copied, installed, or represented as
+  stable. Its useful concepts are implemented through tested local contracts.
+- Conditional worktrees avoid imposing experimental isolation on the current
+  clean sequential Windows/OneDrive checkout.

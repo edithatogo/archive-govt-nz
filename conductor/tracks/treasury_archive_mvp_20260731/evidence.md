@@ -131,3 +131,23 @@ successful lookup.
 
 The paired machine-readable checkpoint is
 `evidence/phase-1-checkpoint.json`.
+
+## Task evidence: Continuous autonomous Conductor execution
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Human policy | verified local | `conductor/autonomy.md` |
+| Machine policy | schema validated | `archive-govt-nz.conductor-autonomy/v1` |
+| Continuation | verified local | automatic across tasks, phases, checkpoints, reviews, and tracks |
+| Decision contract | verified local | 2–4 options, recommendation first, rationale, evidence, blocking scope |
+| Recovery | verified local | three distinct attempts; changed hypothesis required |
+| Resumability | verified local | repository, Conductor, Git, remote, and issue state reconciled |
+| Isolation | policy verified | conditional `codex/` branch/worktree; upstream draft code not adopted |
+| Focused tests | passed local | 4 tests |
+| Schema suite | passed local | 2 schemas and representative documents |
+| Full repository gate | passed local/live | 10 stages; 21 tests; 100% measured coverage; OSV clean |
+| GitHub traceability | remotely verified | native parent subissue [#12](https://github.com/edithatogo/archive-govt-nz/issues/12) |
+
+Upstream observation is recorded in
+`conductor/upstream-evaluation.md`. Draft PRs #86 and #161 are research inputs,
+not installed dependencies or supported-feature claims.
