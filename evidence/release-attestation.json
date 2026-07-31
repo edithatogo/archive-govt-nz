@@ -1,0 +1,26 @@
+{
+  "schema_version": "archive-govt-nz.release-attestation/v1",
+  "status": "prepared-not-published",
+  "publication_authorized": false,
+  "files": [
+    {
+      "path": "evidence\\archive-evidence-ledger.json",
+      "sha256": "4210493aea64b30f08e87da017da86fd53c90b21f5a75b850b57d2954ae04d5f",
+      "bytes": 1463
+    },
+    {
+      "path": "evidence\\preservation-packaging-evaluation.json",
+      "sha256": "e3d4c3253131b9eecb5693953c8ca84f44d34ee68775ad5b09256a6b65f1b2d7",
+      "bytes": 1298
+    },
+    {
+      "path": "build\\sbom.cdx.json",
+      "sha256": "5f36707a1b900215079932e1b3ce199c5ba94bdc266ef9aa9661425947467fb1",
+      "bytes": 98400
+    }
+  ],
+  "signature": {
+    "status": "not-signed",
+    "reason": "signing key and release approval are external gates"
+  }
+}

@@ -558,6 +558,13 @@
 - Workflow policy test initially caught missing CI concurrency and now passes
   after the correction.
 
+## 2026-07-31 - Release attestation foundation
+
+- Added deterministic checksums over the paired evidence ledger, preservation
+  evaluation, and SBOM.
+- Attestation state is explicitly `prepared-not-published`, unsigned, and
+  unauthorized until release credentials and approval gates are satisfied.
+
 ## 2026-07-31 - Derivative dependency security correction
 
 - The first full gate identified the published Apache Arrow advisory in

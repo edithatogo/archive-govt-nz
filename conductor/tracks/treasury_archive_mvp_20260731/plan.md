@@ -361,8 +361,8 @@
   - [ ] Test stable and isolated pre-release compatibility
   - [ ] Prevent pre-release lanes from rewriting production locks
 
-- [ ] Task: Add release attestations [S-03]
-  - [ ] Generate checksums, SBOMs, and provenance attestations
+- [~] Task: Add release attestations [S-03]
+  - [x] Generate checksums, SBOMs, and provenance attestations
   - [ ] Sign where supported and verify before publication
 
 - [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)

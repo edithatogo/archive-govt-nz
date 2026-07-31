@@ -77,8 +77,10 @@ ignore = [
 "tools/mutation_versioning.py" = ["D103", "EM102", "S607", "TRY003"]
 "tools/evaluate_preservation.py" = ["E501"]
 "tools/generate_evidence_ledger.py" = []
+"tools/release_attestation.py" = []
 "tests/tools/test_preservation_evaluation.py" = ["S607"]
 "tests/tools/test_evidence_ledger.py" = ["S607"]
+"tests/tools/test_release_attestation.py" = ["S607"]
 
 [tool.pyright]
 include = ["src", "tests", "tools"]
