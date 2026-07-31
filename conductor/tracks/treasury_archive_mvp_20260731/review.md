@@ -89,3 +89,22 @@ Status: approved for track initialization
   occurs in this gate.
 - Supply-chain, licence, vulnerability, secret, SBOM, and hosted workflow checks
   remain the next sequential task and are not claimed here.
+
+## Task self-review: Establish supply-chain and repository controls
+
+- Vulnerability lookup fails closed and uses a current OSV response; a network
+  timeout is not reported as a clean audit.
+- Licence policy rejects unresolved and strong-copyleft terms while preserving
+  a complete machine-readable local inventory.
+- Secret scanning covers source files and excludes only generated, ignored
+  environments, caches, receipts, locks, and track evidence containing hashes.
+- No candidate secret was baselined or waived.
+- The SBOM is reproducibly generated and validated against CycloneDX 1.6, not
+  merely checked for file existence.
+- Generated receipts remain outside Git and do not contain credentials.
+- Policies describe the real solo-maintainer model and retain explicit rights,
+  credential, quarantine, publication, and upstream-contribution gates.
+- Rust remains absent. Its guide requires equivalence, safety, property,
+  mutation, and benchmark evidence before adoption.
+- Local scanner success does not claim hosted CodeQL, GitHub secret scanning,
+  attestations, CI, or publication.

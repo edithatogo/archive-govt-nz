@@ -19,8 +19,12 @@ archive-govt-nz = "archive_govt_nz.cli:main"
 
 [dependency-groups]
 dev = [
+  "cyclonedx-bom>=7.3.0,<8",
+  "detect-secrets>=1.5.0,<2",
   "hypothesis>=6.164.0,<7",
   "jsonschema>=4.25.1,<5",
+  "pip-audit>=2.10.1,<3",
+  "pip-licenses>=5.5.5,<6",
   "pyright>=1.1.411,<2",
   "pytest>=9.1.1,<10",
   "pytest-cov>=7.1.0,<8",
@@ -48,6 +52,7 @@ ignore = [
 "src/archive_govt_nz/cli.py" = ["A002", "T201"]
 "tests/**/*.py" = ["INP001", "PLR2004", "S101", "S603"]
 "tools/**/*.py" = ["INP001", "T201"]
+"tools/supply_chain.py" = ["S603"]
 
 [tool.pyright]
 include = ["src", "tests", "tools"]

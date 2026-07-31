@@ -38,12 +38,12 @@
   - [x] Test the gate against representative violations
   - [x] Run and record the green gate
 
-- [ ] Task: Establish supply-chain and repository controls [M-15, S-03]
-  - [ ] Configure dependency, licence, vulnerability, and secret scans
-  - [ ] Add SBOM generation and validation
-  - [ ] Add security, contribution, authorship, and AI guidance
-  - [ ] Add a project-specific Rust guide before any Rust code
-  - [ ] Enforce benchmark evidence before Rust adoption
+- [x] Task: Establish supply-chain and repository controls [M-15, S-03]
+  - [x] Configure dependency, licence, vulnerability, and secret scans
+  - [x] Add SBOM generation and validation
+  - [x] Add security, contribution, authorship, and AI guidance
+  - [x] Add a project-specific Rust guide before any Rust code
+  - [x] Enforce benchmark evidence before Rust adoption
 
 - [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
   - [ ] Run the full repository gate

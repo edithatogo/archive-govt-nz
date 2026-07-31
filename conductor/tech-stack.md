@@ -245,6 +245,12 @@ Required automated checks should include, as applicable:
 - environment-scoped publication credentials;
 - remote post-publication verification.
 
+The bootstrap local gate uses `pip-audit` with the OSV advisory service,
+`pip-licenses` with a fail-closed denied-term policy, `detect-secrets` over
+source scope, and `cyclonedx-bom` with strict CycloneDX 1.6 validation.
+Machine-readable receipts are generated under ignored `build/` paths and are
+not treated as hosted evidence.
+
 Dependency automation opens focused updates and runs the full relevant harness.
 Pre-release compatibility lanes do not silently update production locks.
 

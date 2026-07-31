@@ -88,3 +88,27 @@
   reported 0 errors and 0 warnings; 14 tests passed; overall line and branch
   coverage was 100%; the final recorded test run took 4.93 seconds; one Draft
   2020-12 schema and fixture validated.
+
+## 2026-07-31 - Task: Establish supply-chain and repository controls
+
+- Red command:
+  `uv run --locked pytest tests/test_supply_chain_controls.py -q`
+- Expected red result: three failures for missing gate stages, governance
+  documents, and supply-chain tool.
+- Verified current upstream releases before locking: pip-audit 2.10.1,
+  pip-licenses 5.5.5, CycloneDX BOM 7.3.x, and detect-secrets 1.5.0.
+- Added dependency vulnerability, licence, secret, and SBOM stages to the
+  authoritative repository gate.
+- The initial PyPI advisory lookup timed out during TLS after 15 seconds. The
+  bounded OSV backend completed successfully and found no known vulnerabilities.
+- The first secret scan reported two generated cache-tag hashes. Added explicit
+  exclusions for ignored `.pytest_cache` and `.ruff_cache` content; the source
+  scan then passed with zero candidates.
+- Licence inventory passed the denied-term policy.
+- Generated a reproducible CycloneDX 1.6 JSON SBOM with 69 components and
+  validated it with the library's strict official-schema validator.
+- Added Apache-2.0 licence text, security reporting, contribution, authorship,
+  AI-use, Rust engineering, and benchmark-evidence policies.
+- Final command: `uv run --locked python tools/check.py`.
+- Final post-documentation result: all ten stages passed in 85.6 seconds; 17
+  tests passed in 5.46 seconds with 100% measured line and branch coverage.

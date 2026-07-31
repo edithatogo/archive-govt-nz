@@ -34,6 +34,22 @@ STAGES = (
         "schemas",
         ("uv", "run", "--locked", "python", "tools/validate_schemas.py"),
     ),
+    GateStage(
+        "audit",
+        ("uv", "run", "--locked", "python", "tools/supply_chain.py", "audit"),
+    ),
+    GateStage(
+        "licenses",
+        ("uv", "run", "--locked", "python", "tools/supply_chain.py", "licenses"),
+    ),
+    GateStage(
+        "secrets",
+        ("uv", "run", "--locked", "python", "tools/supply_chain.py", "secrets"),
+    ),
+    GateStage(
+        "sbom",
+        ("uv", "run", "--locked", "python", "tools/supply_chain.py", "sbom"),
+    ),
 )
 
 Runner = Callable[[tuple[str, ...]], int]

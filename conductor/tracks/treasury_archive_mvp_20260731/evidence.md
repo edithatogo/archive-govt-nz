@@ -91,3 +91,24 @@ later bounded task.
 The only coverage omission is `src/archive_govt_nz/__main__.py`, a declarative
 two-line module wrapper already exercised through subprocess CLI contract tests.
 This is narrow and does not contain decision logic.
+
+## Task evidence: Establish supply-chain and repository controls
+
+| Control | State | Evidence |
+| --- | --- | --- |
+| Dependency resolution | passed local | locked environment contains 69 packages |
+| Vulnerability audit | passed live lookup | pip-audit 2.10.1 via OSV: no known vulnerabilities |
+| Licence inventory | passed local | no unknown, GPL, or AGPL terms in installed inventory |
+| Secret scan | passed local | zero candidates in bounded source scope |
+| SBOM generation | passed local | reproducible CycloneDX 1.6 JSON; 69 components |
+| SBOM validation | passed local | strict CycloneDX schema validator returned no error |
+| Governance documents | verified local | security, contribution, authorship, AI, and Apache-2.0 files present |
+| Rust policy | verified local | no Rust code; adoption requires measured template evidence |
+| Full gate | passed local | all ten stages; 17 tests; 100% measured line and branch coverage |
+| Hosted security | not configured | CodeQL, GitHub secret scanning, attestations, and Actions remain later tasks |
+
+Generated audit, licence, secret-scan, and SBOM receipts are under ignored
+`build/`. They describe the current local environment and are not committed,
+uploaded, or remotely verified. The timed-out PyPI advisory attempt is a
+network-route limitation, not a vulnerability result; OSV supplied the recorded
+successful lookup.
