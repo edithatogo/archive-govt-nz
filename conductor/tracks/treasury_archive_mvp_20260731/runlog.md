@@ -579,6 +579,13 @@
   token fails closed, and remote side effects are not implemented implicitly.
 - Two publication safety tests pass.
 
+## 2026-07-31 - Deterministic Zenodo package foundation
+
+- Added reproducible, gzip-free tar packaging from an explicit file list with
+  normalized paths, timestamps, modes, and a package SHA-256.
+- Package state is `prepared-not-published`; no DOI or remote side effect is
+  created. Focused reproducibility test passed.
+
 ## 2026-07-31 - Dependency lane foundation
 
 - Added a read-only scheduled dependency/pre-release compatibility lane.

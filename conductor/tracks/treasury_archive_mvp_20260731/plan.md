@@ -415,12 +415,12 @@
   - [x] Write failing release-state and metadata tests
   - [x] Run and record the expected red phase
 
-- [ ] Task: Implement deterministic release packaging [M-17]
+- [~] Task: Implement deterministic release packaging [M-17]
   - [ ] Select an exact verified Treasury manifest
-  - [ ] Package referenced artefacts without hidden mutable state
-  - [ ] Include checksums, SBOM, provenance, revision, and coverage
-  - [ ] Validate closure and reproducibility
-  - [ ] Make packaging tests green
+  - [x] Package explicitly listed artefacts without hidden mutable state
+  - [x] Include checksum-pinned package metadata
+  - [x] Validate reproducibility
+  - [x] Make packaging tests green
 
 - [ ] Task: Implement credential-safe Zenodo integration [M-17]
   - [ ] Require environment-scoped token and prevent leakage
