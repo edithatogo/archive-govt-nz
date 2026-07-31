@@ -237,3 +237,19 @@
   and 70 branches. Source secret scan passed.
 - No live request, Treasury discovery, credential, capture, upload, or release
   occurred.
+
+## 2026-07-31 - Task: Write failing Treasury discovery tests
+
+- Added deterministic contracts that resolve the `the-treasury` slug through
+  `organization_show` and retain the returned stable organisation ID.
+- Required sorted, organisation-filtered pagination driven by live result
+  counts rather than the dated 54-dataset baseline.
+- Defined count-drift evidence, exact raw organisation/page observations,
+  deterministic newline-terminated scope JSON, and stable page hashes.
+- Required duplicate IDs, missing IDs, and premature page exhaustion to fail
+  closed without leaking affected identifiers into exception text.
+- Red command: `uv run --locked pytest tests/ckan/test_discovery.py -q`.
+- Expected red result: collection stops at `ModuleNotFoundError` for the absent
+  `archive_govt_nz.ckan.discovery` implementation.
+- Ruff passes for the red contract file. All fixtures are in memory and no live
+  catalogue operation occurred.

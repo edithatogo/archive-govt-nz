@@ -204,3 +204,21 @@ Status: approved for track initialization
   safety bounds are archive-critical behavior.
 - Critical and overall line and branch coverage are 100%, with no exclusion in
   the client module.
+
+## Task self-review: Write failing Treasury discovery tests
+
+- The Treasury slug is a configured discovery starting point, not accepted as
+  sufficient identity evidence; `organization_show` must return a stable ID and
+  the expected canonical name.
+- Package search is explicitly sorted by stable ID so page ordering is
+  reproducible within a live observation.
+- Rising counts extend discovery and are retained as evidence. The historical
+  count of 54 is not an executable invariant.
+- Duplicate and missing stable dataset IDs cannot be silently deduplicated or
+  omitted.
+- An empty page before the latest reported count prevents a completeness claim.
+- Raw page bytes and their transport hashes remain available alongside a
+  smaller deterministic scope manifest.
+- Errors expose bounded classes rather than affected dataset identifiers or
+  raw payload detail.
+- The observed red failure is the intended absent-discovery-module condition.

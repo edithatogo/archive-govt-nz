@@ -210,3 +210,16 @@ The implementation retains exact received response bytes under identity
 encoding and records their SHA-256 separately from the parsed CKAN envelope.
 It does not claim that the catalogue supports a particular CKAN version until a
 later bounded live observation is captured and hashed.
+
+## Task evidence: Write failing Treasury discovery tests
+
+| Contract | Expected red result | Observed |
+| --- | --- | --- |
+| Discovery import | Treasury discovery module absent | `ModuleNotFoundError` |
+| Collection outcome | implementation cannot be imported | 1 collection error |
+| Scope baseline | live count drives pagination | no hard-coded 54 acceptance |
+| Raw evidence | organisation and every search page retained | test contract only |
+| Reconciliation | duplicate, missing ID, premature exhaustion terminal | test contract only |
+
+The red phase uses typed in-memory Action observations. It proves neither the
+current number of Treasury datasets nor live catalogue completeness.

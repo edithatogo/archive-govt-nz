@@ -95,12 +95,12 @@
   - [x] Record catalogue and CKAN capability observations
   - [x] Make bounded client tests green
 
-- [ ] Task: Write failing Treasury discovery tests [M-03]
-  - [ ] Test organisation name and stable-ID resolution
-  - [ ] Test pagination, count drift, duplicates, and missing identifiers
-  - [ ] Test deterministic raw-page and scope manifests
-  - [ ] Test changed counts without hard-coding 54
-  - [ ] Run and record the expected red phase
+- [x] Task: Write failing Treasury discovery tests [M-03]
+  - [x] Test organisation name and stable-ID resolution
+  - [x] Test pagination, count drift, duplicates, and missing identifiers
+  - [x] Test deterministic raw-page and scope manifests
+  - [x] Test changed counts without hard-coding 54
+  - [x] Run and record the expected red phase
 
 - [ ] Task: Implement complete Treasury discovery [M-03, M-04]
   - [ ] Resolve and verify `the-treasury`
