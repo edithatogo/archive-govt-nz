@@ -1,0 +1,67 @@
+"""Generate paired Hugging Face card and Zenodo metadata previews."""
+
+from __future__ import annotations
+
+import json
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def main() -> int:
+    """Write publication metadata previews with explicit limitations."""
+    ledger = json.loads((ROOT / "evidence/archive-evidence-ledger.json").read_text())
+    states = {item["stage"]: item["state"] for item in ledger["stages"]}
+    card = f"""---
+dataset_info:
+  config_name: treasury-evidence
+  features:
+    - name: dataset_id
+      dtype: string
+  homepage: https://catalogue.data.govt.nz/organization/the-treasury
+  license: unknown
+---
+
+# Archive Govt NZ — Treasury evidence preview
+
+This is a prepared, evidence-first archive preview. It is not published yet.
+
+## Scope
+
+- Treasury discovery: `{states.get("discovered")}`
+- Capture: `{states.get("captured")}`
+- Validation: `{states.get("validated")}`
+- Transformation: `{states.get("transformed")}`
+- Publication: `{states.get("uploaded")}`
+
+Original metadata and source files remain distinct from derivatives. Rights,
+withdrawal, restriction, and transformation decisions are recorded in the
+versioned manifests and evidence ledger.
+"""
+    zenodo = {
+        "title": "Archive Govt NZ — Treasury evidence preview",
+        "description": "Evidence-first, checksum-pinned Treasury archive preview; not yet published.",
+        "upload_type": "dataset",
+        "access_right": "open",
+        "license": "other",
+        "version": "preview-0.1",
+        "publication_state": "prepared-not-published",
+        "doi_authorized": False,
+        "limitations": [
+            "payload_capture_not_complete",
+            "rights_review_incomplete",
+            "no_remote_upload",
+        ],
+    }
+    output = ROOT / "evidence/publication-metadata"
+    output.mkdir(parents=True, exist_ok=True)
+    (output / "README.md").write_text(card, encoding="utf-8")
+    (output / "zenodo.json").write_text(
+        json.dumps(zenodo, indent=2) + "\n", encoding="utf-8"
+    )
+    print("wrote publication metadata previews")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

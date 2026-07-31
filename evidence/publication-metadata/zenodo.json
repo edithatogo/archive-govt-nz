@@ -1,0 +1,15 @@
+{
+  "title": "Archive Govt NZ \u2014 Treasury evidence preview",
+  "description": "Evidence-first, checksum-pinned Treasury archive preview; not yet published.",
+  "upload_type": "dataset",
+  "access_right": "open",
+  "license": "other",
+  "version": "preview-0.1",
+  "publication_state": "prepared-not-published",
+  "doi_authorized": false,
+  "limitations": [
+    "payload_capture_not_complete",
+    "rights_review_incomplete",
+    "no_remote_upload"
+  ]
+}
