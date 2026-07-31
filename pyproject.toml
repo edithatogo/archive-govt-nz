@@ -16,6 +16,7 @@ dependencies = [
   "cyclopts>=4.22.3,<5",
   "httpx>=0.28.1,<1",
   "jsonschema>=4.25.1,<5",
+  "blake3>=1.0.8,<2",
 ]
 
 [project.scripts]
@@ -53,7 +54,9 @@ ignore = [
 [tool.ruff.lint.per-file-ignores]
 "src/archive_govt_nz/assurance.py" = ["S603", "T201"]
 "src/archive_govt_nz/cli.py" = ["A002", "T201"]
+"src/archive_govt_nz/object_store.py" = ["BLE001", "EM101", "TRY301"]
 "tests/**/*.py" = ["INP001", "PLR2004", "S101", "S603"]
+"tests/object_store/**/*.py" = ["ANN202", "EM101", "TC003", "TRY003"]
 "tools/**/*.py" = ["INP001", "T201"]
 "tools/supply_chain.py" = ["S603"]
 "tools/mutation_resource_policy.py" = ["S603", "S607"]

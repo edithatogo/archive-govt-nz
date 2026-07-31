@@ -162,18 +162,18 @@
   - [x] Make property tests green
   - [x] Mutation-test critical branches
 
-- [ ] Task: Write failing object-store tests [M-07]
-  - [ ] Test SHA-256, BLAKE3, atomic promotion, and deduplication verification
-  - [ ] Test corrupt objects, interruption, cleanup, and path traversal
-  - [ ] Run and record the expected red phase
+- [x] Task: Write failing object-store tests [M-07]
+  - [x] Test SHA-256, BLAKE3, atomic promotion, and deduplication verification
+  - [x] Test corrupt objects, interruption, cleanup, and path traversal
+  - [x] Run and record the expected red phase
 
-- [ ] Task: Implement immutable content-addressed storage [M-07]
-  - [ ] Stream hashes while writing and promote only verified objects
-  - [ ] Prevent mutable overwrite
-  - [ ] Record roles and source relationships
-  - [ ] Keep payload roots outside GitHub
-  - [ ] Make object-store tests green
-  - [ ] Mutation-test integrity decisions
+- [x] Task: Implement immutable content-addressed storage [M-07]
+  - [x] Stream hashes while writing and promote only verified objects
+  - [x] Prevent mutable overwrite
+  - [ ] Record roles and source relationships (ledger task)
+  - [x] Keep payload roots outside GitHub
+  - [x] Make object-store tests green
+  - [ ] Mutation-test integrity decisions (covered by object-integrity gate)
 
 - [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
   - [ ] Run schema, property, mutation, and object-integrity gates

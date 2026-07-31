@@ -439,3 +439,17 @@
 - Result: 8/8 mutants killed; receipt is generated under ignored `build/`.
 - Integrated the mutation runner as the repository assurance gate stage after
   schema validation.
+
+## 2026-07-31 - Immutable object-store vertical slice
+
+- Red phase: six tests specified hashing, atomic promotion, deduplication,
+  corruption detection, interruption cleanup, and object-ID traversal defence.
+- Added `ContentAddressedStore` with SHA-256 addressing, BLAKE3 receipts,
+  durable temporary writes, atomic promotion, fail-closed verification, and
+  immutable overwrite protection. Payload roots remain outside Git tracking.
+- Green focused result: 6 object-store tests passed. Full assurance result:
+  143 tests, strict Pyright, Ruff, schema validation, 8/8 policy mutants
+  killed, dependency/licence/secret audits, and an 80-component SBOM passed.
+- Object-store coverage is 92% locally; repository total is 99.24%. The
+  remaining uncovered branches are defensive filesystem/type failures and are
+  retained as explicit future mutation-hardening work.
