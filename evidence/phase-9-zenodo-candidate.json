@@ -1,0 +1,17 @@
+{
+  "schema_version": "archive-govt-nz.phase-9-zenodo-candidate/v1",
+  "candidate_manifest": "build/release-candidate/manifest.json",
+  "package": "build/release-candidate/treasury-release-candidate.tar",
+  "package_sha256": "6a548ff0add806b36a550dbc5d9c2d2d8f344fdd77aed79584145abfa253d17e",
+  "huggingface_repository": "edithatogo/archive-govt-nz-treasury",
+  "huggingface_revision": "e82319823d8fe56b8160e49907006dfc8b6bc83e",
+  "state": "prepared-not-published",
+  "doi": null,
+  "deposition_authorized": false,
+  "limitations": [
+    "payload_capture_not_complete",
+    "rights_review_incomplete",
+    "parquet_jsonl_viewer_derivatives_not_uploaded",
+    "no_zenodo_deposition"
+  ]
+}

@@ -24,6 +24,7 @@ def main() -> int:
         root / "evidence/release-attestation.json",
         root / "evidence/preservation-packaging-evaluation.json",
         root / "evidence/phase-6-capture-summary.json",
+        root / "evidence/phase-8-hf-publication-verification.json",
         root / "evidence/publication-metadata/README.md",
         root / "evidence/publication-metadata/zenodo.json",
         root / "evidence/publication-metadata/taxonomy.json",
@@ -38,6 +39,9 @@ def main() -> int:
     package = build_release_package(
         files, args.output_dir / "treasury-release-candidate.tar", root
     )
+    hf_verification = json.loads(
+        (root / "evidence/phase-8-hf-publication-verification.json").read_text()
+    )
     manifest = {
         "schema_version": "archive-govt-nz.treasury-release-candidate/v1",
         "status": "prepared-not-published",
@@ -46,6 +50,11 @@ def main() -> int:
             "path": str(package.path),
             "sha256": package.sha256,
             "files": package.files,
+        },
+        "huggingface": {
+            "repository": hf_verification["repository"],
+            "revision": hf_verification["revision"],
+            "remote_verification": hf_verification["publication_state"],
         },
         "file_checksums": [
             {

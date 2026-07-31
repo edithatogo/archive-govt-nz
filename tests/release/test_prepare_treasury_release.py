@@ -29,4 +29,8 @@ def test_treasury_candidate_is_checksum_pinned_and_not_published(
     manifest = json.loads((tmp_path / "manifest.json").read_text())
     assert manifest["publication_authorized"] is False
     assert "payload_capture_not_complete" in manifest["limitations"]
-    assert len(manifest["file_checksums"]) == 12
+    assert len(manifest["file_checksums"]) == 13
+    assert (
+        manifest["huggingface"]["revision"]
+        == "e82319823d8fe56b8160e49907006dfc8b6bc83e"
+    )
