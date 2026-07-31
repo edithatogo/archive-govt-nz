@@ -1,7 +1,7 @@
 {
   "schema_version": "archive-govt-nz.phase-8-hf-publication-verification/v1",
   "repository": "edithatogo/archive-govt-nz-treasury",
-  "revision": "9924909441a33db06c796e4b9fd668c247793d36",
+  "revision": "9406a3b0f877f0251c1baf89665cacc0c30dbae0",
   "remote_url": "https://huggingface.co/datasets/edithatogo/archive-govt-nz-treasury",
   "verified_at": "2026-07-31",
   "file_count": 28,
@@ -14,6 +14,8 @@
     "parquet_sha256": "81343e70e5d4129d2539fc1f622cb6ec4b0742e5f9a3e99f594e387c8401cf00",
     "row_count": 54
   },
+  "derivative_repository": "edithatogo/archive-govt-nz-treasury-data",
+  "derivative_revision": "dfb18d76aaf66fc770d9555464b87b2af33a036c",
   "viewer_status": "remote-parquet-endpoint-500",
   "viewer_diagnosis": {
     "initial_cause": "Viewer selected evidence/preservation-packaging-evaluation.json as default/test instead of Treasury derivatives.",
