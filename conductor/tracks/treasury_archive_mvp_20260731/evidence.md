@@ -380,3 +380,14 @@ Mutation hardening is now passed: the integrated gate killed 8/8 targeted
 critical-policy mutants in isolated temporary package copies. Native mutmut was
 not used because its Windows/WSL requirement is unavailable; mutatest was not
 used because its Python 3.14 runtime path fails before mutation execution.
+
+## Phase 7 hosted CI checkpoint - 2026-08-01
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Local aggregate gate | passed | 179 tests; 96.78% coverage; Ruff/Pyright; schemas; 11/11 mutants; supply-chain controls |
+| Clean-runner fixtures | passed | release package, DuckDB query, and attestation tests generate isolated inputs |
+| Hosted Linux CI | passed | GitHub Actions run `30669731935`; head `b0fe541e7077c96e4817767ab5e0e168d32453bd` |
+| Codecov | passed | tokenless OIDC upload succeeded in the hosted run |
+| Secret scan | passed | receipt hashes/revisions narrowly excluded by field name; no candidates |
+| Action runtime warning | observed | pinned actions target Node.js 20 and are currently forced to Node.js 24; upstream pin refresh remains warranted |

@@ -622,6 +622,14 @@
 - Published corrective version DOI `10.5281/zenodo.21728726` under concept DOI `10.5281/zenodo.21718047`; v1 remains auditable and explicitly superseded.
 - Hardened the DuckDB fallback to preload an in-memory table, disable external access, and accept exactly one SELECT statement.
 
+## 2026-08-01 - Hosted CI closure and clean-runner corrections
+
+- Full local gate passed: 179 tests, 96.78% branch-aware coverage, strict Ruff/Pyright, schemas, 11/11 targeted mutants, audit, licences, secret scan, and 82-component SBOM.
+- Hosted run `30669485798` proved Codecov OIDC successful and exposed an attestation test that depended on an ignored local SBOM.
+- Replaced release-package, DuckDB, and attestation tests with generated clean-runner fixtures; closed a leaked SQLite failure-path connection.
+- Restricted high-entropy scan exclusions to explicit checksum and revision receipt fields; the complete secret scan passes.
+- Hosted Linux run `30669731935` passed at commit `b0fe541e7077c96e4817767ab5e0e168d32453bd`, including the locked assurance gate and Codecov upload.
+
 ## 2026-07-31 - Recovery reconciliation foundation
 
 - Added restart-safe ledger/object-store reconciliation reporting verified,

@@ -344,7 +344,7 @@
   - [x] Test logs and artefacts for sensitive values
   - [x] Run and record the expected red phase
 
-- [~] Task: Implement pull-request and main CI [M-15, S-03]
+- [x] Task: Implement pull-request and main CI [M-15, S-03]
   - [x] Run quality, coverage, schema, dependency, licence, and security gates
   - [x] Generate SBOM and bounded evidence artefacts
   - [x] Make workflow-policy tests green
@@ -370,11 +370,11 @@
   - [x] Generate checksums, SBOMs, and provenance attestations
   - [ ] Sign where supported and verify before publication
 
-- [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
-  - [ ] Run local workflow policy checks
-  - [ ] Verify hosted CI separately after push
-  - [ ] Record run identifiers and evidence
-  - [ ] Record phase checkpoint
+- [x] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+  - [x] Run local workflow policy checks
+  - [x] Verify hosted CI separately after push
+  - [x] Record run identifiers and evidence
+  - [x] Record phase checkpoint
 
 ## Phase 8: Rolling Hugging Face publication
 
