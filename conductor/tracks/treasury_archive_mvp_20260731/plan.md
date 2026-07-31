@@ -125,10 +125,10 @@
 
 ## Phase 3: Schemas, policy, and content-addressed storage
 
-- [ ] Task: Define versioned archive schemas [M-10]
-  - [ ] Define capability, scope, dataset, resource, attempt, object, version,
+- [x] Task: Define versioned archive schemas [M-10]
+  - [x] Define capability, scope, dataset, resource, attempt, object, version,
         transformation, validation, and publication schemas
-  - [ ] Define compatibility and migration rules
+  - [x] Define compatibility and migration rules
 
 - [ ] Task: Write failing schema and invariant tests [M-10]
   - [ ] Test valid minimal and complete records

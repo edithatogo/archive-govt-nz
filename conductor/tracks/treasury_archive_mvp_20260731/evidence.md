@@ -289,3 +289,17 @@ not been uploaded or remotely verified.
 
 The paired machine-readable checkpoint is
 `evidence/phase-2-checkpoint.json`.
+
+## Task evidence: Define versioned archive schemas
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Schema catalogue | specified | 10 versioned record kinds |
+| Relationship model | specified | Mermaid source-to-publication graph |
+| Common invariants | specified | IDs, UTC, state, evidence, hashes, redaction |
+| Object roles | specified | originals and derivatives remain distinct |
+| Publication gates | specified | prepared/uploaded/verified/released separated |
+| Compatibility | specified | immutable published versions; fail-closed readers |
+| Migration | specified | non-destructive receipt-bearing transformation |
+| Canonical bytes | specified | deterministic UTF-8 JSON plus newline |
+| Runtime schemas | not implemented | next red/green tasks |

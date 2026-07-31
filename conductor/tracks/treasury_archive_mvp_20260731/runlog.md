@@ -322,3 +322,20 @@
 - Phase 2 is complete for capability and metadata scope discovery only.
   Resource policy, capture, hosted scheduling, and publication remain later
   phases and are not implied.
+
+## 2026-07-31 - Task: Define versioned archive schemas
+
+- Defined the Phase 3 schema catalogue for capability, scope, dataset,
+  resource, attempt, content-addressed object, archive version,
+  transformation, validation, and publication records.
+- Added a Mermaid relationship diagram and common identifier, UTC time, digest,
+  evidence, state, redaction, and role invariants.
+- Kept raw source observations, original resource objects, WARC receipts,
+  manifests, and derivatives as explicit distinct roles.
+- Defined publication state constraints so upload, remote verification,
+  release, and DOI are separate evidence states.
+- Defined immutable schema versions, fail-closed readers, explicit
+  non-destructive migrations, canonical JSON bytes, and reconstruction without
+  SQLite or Parquet.
+- The contract is in `schema-design.md`. No schema implementation or stored
+  resource record is claimed by this documentation task.

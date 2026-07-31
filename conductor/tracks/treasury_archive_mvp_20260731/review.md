@@ -291,3 +291,23 @@ Status: approved for track initialization
 - No dataset resource file, quarantine decision, rights decision, credential,
   upload, deposition, DOI, or publication boundary was crossed.
 - No critical self-review finding remains open for Phase 2.
+
+## Task self-review: Define versioned archive schemas
+
+- The catalogue covers every record kind named in M-10 without combining
+  operational attempts, immutable objects, versions, or publications.
+- Stable record relationships do not depend on filesystem paths, ledger row
+  IDs, DuckDB, or Parquet.
+- Source metadata, source resources, receipts, manifests, and derivatives have
+  separate roles, preventing normalized output from replacing an original.
+- State enums separate observation, eligibility, capture, validation, upload,
+  remote verification, and release.
+- Publication constraints prohibit early DOI or remote-verification claims.
+- Published schema files cannot be silently loosened; any document change
+  creates a new version and retains the original record bytes.
+- Migrations produce new records and transformation receipts and cannot erase
+  restriction, quarantine, rights, or publication history.
+- The design sets exact testable canonicalization rules and explicitly rejects
+  non-finite numbers.
+- This task is a contract only. The next task must demonstrate the intended red
+  boundary before models or JSON Schemas are implemented.
