@@ -55,6 +55,7 @@ def main() -> int:
             for file in files
         ],
         "limitations": [
+            "payload_capture_not_complete",
             "captured_objects_remain_in_local_content_addressed_store",
             "rights_review_incomplete",
             "no_doi",
