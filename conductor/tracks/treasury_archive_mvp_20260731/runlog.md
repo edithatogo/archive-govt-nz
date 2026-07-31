@@ -606,6 +606,12 @@
 - This rules out Parquet compression, mixed repository layout, evidence JSON, and raw-object placement as the sole cause.
 - Receipt: `evidence/phase-8-hf-csv-viewer-diagnosis.json`.
 
+## 2026-07-31 - Preservation-only Zenodo publication
+
+- Published Zenodo record `21718048` / DOI `10.5281/zenodo.21718048`.
+- Uploaded the checksum-pinned preservation candidate tar; package SHA-256 is recorded in `evidence/phase-9-zenodo-publication.json`.
+- The record explicitly documents Hugging Face Viewer HTTP 500 and is not claimed as the analytical Viewer release.
+
 ## 2026-07-31 - Recovery reconciliation foundation
 
 - Added restart-safe ledger/object-store reconciliation reporting verified,
