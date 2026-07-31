@@ -585,6 +585,14 @@
 - No publication was attempted; 403 and non-HTTPS resources remain explicitly unavailable/restricted.
 - Paired evidence is in `evidence/phase-6-capture-summary.*` and the run receipt is `build/live/capture-20260731.json`.
 
+## 2026-07-31 - Hugging Face Viewer diagnosis and bounded blocker
+
+- Tested the dedicated derivative repository with derivative-only layouts, canonical split naming, minimal cards, and both Zstandard and Snappy Parquet.
+- Direct download and local PyArrow validation passed for 54 rows and six typed columns.
+- All Dataset Viewer endpoints continued to return HTTP 500.
+- The failure is recorded in `evidence/phase-8-hf-derivative-viewer-diagnosis.json`; Viewer readiness and Zenodo DOI gates remain unclaimed.
+- A nested GitHub follow-up issue was attempted but GitHub API rate limiting prevented creation; retry is required when the API window resets.
+
 ## 2026-07-31 - Recovery reconciliation foundation
 
 - Added restart-safe ledger/object-store reconciliation reporting verified,
