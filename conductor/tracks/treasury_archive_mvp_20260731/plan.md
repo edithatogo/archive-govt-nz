@@ -12,12 +12,12 @@
 
 ## Phase 1: Repository and assurance foundation
 
-- [ ] Task: Establish GitHub and Conductor traceability [M-19]
-  - [ ] Create or confirm `edithatogo/archive-govt-nz`
-  - [ ] Configure and verify the local `github` remote
-  - [ ] Create the parent issue referencing this track
-  - [ ] Create and read back nested phase subissues
-  - [ ] Record repository and issue identifiers in track evidence
+- [x] Task: Establish GitHub and Conductor traceability [M-19]
+  - [x] Create or confirm `edithatogo/archive-govt-nz`
+  - [x] Configure and verify the local `github` remote
+  - [x] Create the parent issue referencing this track
+  - [x] Create and read back nested phase subissues
+  - [x] Record repository and issue identifiers in track evidence
 
 - [ ] Task: Write failing package and CLI bootstrap tests [M-01]
   - [ ] Test package import and version metadata

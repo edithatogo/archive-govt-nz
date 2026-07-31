@@ -4,7 +4,7 @@ Target repository: `edithatogo/archive-govt-nz`
 
 ## Parent issue
 
-**Treasury Archive MVP**
+**[#1 Treasury Archive MVP](https://github.com/edithatogo/archive-govt-nz/issues/1)**
 
 The parent issue must link to:
 
@@ -12,16 +12,16 @@ The parent issue must link to:
 
 ## Nested phase subissues
 
-1. Repository and assurance foundation
-2. CKAN capability and Treasury scope discovery
-3. Schemas, policy, and content-addressed storage
-4. Streaming capture, ledger, and versioning
-5. Provenance, derivatives, and preservation evaluation
-6. Complete Treasury capture and recovery proof
-7. Hardened CI/CD and scheduled archival
-8. Rolling Hugging Face publication
-9. Immutable Zenodo release
-10. MVP closeout and next-scope handoff
+1. [#2 Repository and assurance foundation](https://github.com/edithatogo/archive-govt-nz/issues/2)
+2. [#3 CKAN capability and Treasury scope discovery](https://github.com/edithatogo/archive-govt-nz/issues/3)
+3. [#4 Schemas, policy, and content-addressed storage](https://github.com/edithatogo/archive-govt-nz/issues/4)
+4. [#5 Streaming capture, ledger, and versioning](https://github.com/edithatogo/archive-govt-nz/issues/5)
+5. [#6 Provenance, derivatives, and preservation evaluation](https://github.com/edithatogo/archive-govt-nz/issues/6)
+6. [#7 Complete Treasury capture and recovery proof](https://github.com/edithatogo/archive-govt-nz/issues/7)
+7. [#8 Hardened CI/CD and scheduled archival](https://github.com/edithatogo/archive-govt-nz/issues/8)
+8. [#9 Rolling Hugging Face publication](https://github.com/edithatogo/archive-govt-nz/issues/9)
+9. [#10 Immutable Zenodo release](https://github.com/edithatogo/archive-govt-nz/issues/10)
+10. [#11 MVP closeout and next-scope handoff](https://github.com/edithatogo/archive-govt-nz/issues/11)
 
 Each issue body must include:
 
@@ -32,5 +32,5 @@ Each issue body must include:
 - credential, publication, rights, or other external gates;
 - links back to the parent issue and track index.
 
-Issue numbers and URLs remain unset until the target GitHub repository exists
-and the issue hierarchy is created and read back successfully.
+The repository is public with default branch `main`. On 2026-07-31 the GitHub
+subissues API returned exactly issues #2 through #11 beneath parent #1.
