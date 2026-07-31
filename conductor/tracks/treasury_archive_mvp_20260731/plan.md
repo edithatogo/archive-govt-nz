@@ -290,10 +290,11 @@
 
 ## Phase 6: Complete Treasury capture and recovery proof
 
-- [ ] Task: Perform pre-capture live reconciliation [M-03, M-05]
-  - [ ] Re-run CKAN capability and complete Treasury discovery
-  - [ ] Compare current scope with the dated 54-dataset baseline
-  - [ ] Review storage estimates, policy, and rate controls
+- [x] Task: Perform pre-capture live reconciliation [M-03, M-05]
+  - [x] Re-run CKAN capability and complete Treasury discovery
+  - [x] Compare current scope with the dated 54-dataset baseline
+  - [x] Review storage estimates, policy, and rate controls
+  - [ ] Obtain explicit capture/publication authority at the release gate
   - [ ] Produce a no-download operator preview
 
 - [ ] Task: Execute complete eligible Treasury capture [M-04, M-06]

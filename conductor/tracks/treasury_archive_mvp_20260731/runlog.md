@@ -534,6 +534,14 @@
 - Publication states remain explicitly `not-authorized`/`not-released` until
   credentials and remote receipts exist. Generation test passed.
 
+## 2026-07-31 - Phase 6 pre-capture reconciliation
+
+- Fresh read-only CKAN observation returned 54 Treasury datasets at all three
+  pages. Dataset IDs match the baseline exactly; no additions or removals.
+- Scope hash drifted, so metadata change detection remains required. Paired
+  reconciliation evidence is in `evidence/phase-6-pre-capture-reconciliation.*`.
+- Payload capture and publication remain gated and unstarted.
+
 ## 2026-07-31 - Derivative dependency security correction
 
 - The first full gate identified the published Apache Arrow advisory in

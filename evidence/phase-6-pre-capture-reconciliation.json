@@ -1,0 +1,24 @@
+{
+  "schema_version": "archive-govt-nz.phase-6-pre-capture-reconciliation/v1",
+  "status": "reconciled",
+  "baseline": {
+    "observed_at": "2026-07-31T05:22:16.284413Z",
+    "dataset_count": 54,
+    "reported_counts": [54, 54, 54],
+    "scope_sha256": "bb72d7fbad84b04aca6f39b39c76cf8e1d835887d86ac88a51b663a475f8414c"
+  },
+  "current": {
+    "observed_at": "2026-07-31T06:49:49Z",
+    "dataset_count": 54,
+    "reported_counts": [54, 54, 54],
+    "scope_sha256": "3ea2438245ecf4ce526646b87c5eeceabac813d2f4bad093aa675670d17baebf",
+    "raw_evidence": "build/live/reconcile-20260731T164949"
+  },
+  "dataset_id_reconciliation": {
+    "added": [],
+    "removed": [],
+    "same_id_count": 54
+  },
+  "interpretation": "Dataset membership is stable; scope hash drift indicates metadata changes and must be versioned, not treated as a new dataset population.",
+  "limitations": ["metadata_discovery_only", "resource_capture_not_started", "publication_not_started"]
+}
