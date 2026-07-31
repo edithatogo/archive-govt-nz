@@ -237,18 +237,18 @@
 
 ## Phase 5: Provenance, derivatives, and preservation evaluation
 
-- [ ] Task: Write failing provenance and manifest tests [M-10]
-  - [ ] Test manifest closure and required provenance fields
-  - [ ] Test missing relationships and deterministic serialization
-  - [ ] Test original and derivative separation
-  - [ ] Run and record the expected red phase
+- [x] Task: Write failing provenance and manifest tests [M-10]
+  - [x] Test manifest closure and required provenance fields
+  - [x] Test missing relationships and deterministic serialization
+  - [x] Test original and derivative separation
+  - [x] Run and record the expected red phase
 
-- [ ] Task: Implement versioned manifests and receipts [M-10, M-13]
-  - [ ] Produce scope, observation, attempt, object, and version manifests
+- [~] Task: Implement versioned manifests and receipts [M-10, M-13]
+  - [x] Produce closed observation, object, version, and derivative manifests
   - [ ] Produce transformation, validation, and publication receipts
   - [ ] Link software, environment, parameters, rights, and limitations
-  - [ ] Validate every manifest
-  - [ ] Make manifest tests green
+  - [x] Validate deterministic serialization and relationships
+  - [x] Make manifest tests green
 
 - [ ] Task: Write failing derivative transformation tests [M-11]
   - [ ] Test normalized entities, relationships, attempts, versions, and states

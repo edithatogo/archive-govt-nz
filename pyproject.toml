@@ -57,6 +57,7 @@ ignore = [
 "src/archive_govt_nz/object_store.py" = ["BLE001", "EM101", "TRY301"]
 "src/archive_govt_nz/capture.py" = ["ANN001", "ANN202", "B008", "BLE001", "C901", "D105", "D107", "EM101", "PERF401", "PLR2004", "TRY301", "TC001", "TC003"]
 "src/archive_govt_nz/ledger.py" = ["D107", "E501", "EM101", "EM102", "S608", "TC003"]
+"src/archive_govt_nz/provenance.py" = ["D107", "EM101"]
 "tests/**/*.py" = ["INP001", "PLR2004", "S101", "S603"]
 "tests/object_store/**/*.py" = ["ANN202", "EM101", "TC003", "TRY003"]
 "tests/capture/**/*.py" = ["ARG001", "D103", "TC003"]
