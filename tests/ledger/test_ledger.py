@@ -32,9 +32,11 @@ def test_checkpoint_is_resumable_and_updates_transactionally(tmp_path: Path) -> 
 
 
 def test_blank_checkpoint_is_rejected(tmp_path: Path) -> None:
+    ledger = Ledger(tmp_path / "ledger.sqlite")
     with pytest.raises(LedgerError) as raised:
-        Ledger(tmp_path / "ledger.sqlite").checkpoint(" ", "x")
+        ledger.checkpoint(" ", "x")
     assert raised.value.error_class == "invalid_checkpoint"
+    ledger.close()
 
 
 def test_related_entities_are_transactionally_linked(tmp_path: Path) -> None:

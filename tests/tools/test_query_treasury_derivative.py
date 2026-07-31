@@ -3,8 +3,22 @@
 import subprocess
 from pathlib import Path
 
+import duckdb
 
-def test_query_command_reads_derivative() -> None:
+
+def derivative_fixture(tmp_path: Path) -> Path:
+    """Create a clean-runner-safe analytical fixture."""
+    path = tmp_path / "datasets.parquet"
+    with duckdb.connect(":memory:") as connection:
+        connection.execute(
+            "COPY (SELECT * FROM VALUES ('a'), ('b') AS t(dataset_id)) "
+            "TO ? (FORMAT PARQUET)",
+            [str(path)],
+        )
+    return path
+
+
+def test_query_command_reads_derivative(tmp_path: Path) -> None:
     """The command returns the expected row count from the canonical derivative."""
     root = Path(__file__).parents[2]
     result = subprocess.run(
@@ -15,7 +29,7 @@ def test_query_command_reads_derivative() -> None:
             "python",
             "tools/query_treasury_derivative.py",
             "--parquet",
-            "build/derivatives/treasury/datasets.parquet",
+            str(derivative_fixture(tmp_path)),
             "--sql",
             "SELECT count(*) AS n FROM treasury",
         ],
@@ -24,10 +38,10 @@ def test_query_command_reads_derivative() -> None:
         capture_output=True,
         text=True,
     )
-    assert '"n": 54' in result.stdout
+    assert '"n": 2' in result.stdout
 
 
-def test_query_command_rejects_non_select_and_external_reads() -> None:
+def test_query_command_rejects_non_select_and_external_reads(tmp_path: Path) -> None:
     """Only one SELECT over the preloaded Treasury table is accepted."""
     root = Path(__file__).parents[2]
     base = [
@@ -37,7 +51,7 @@ def test_query_command_rejects_non_select_and_external_reads() -> None:
         "python",
         "tools/query_treasury_derivative.py",
         "--parquet",
-        "build/derivatives/treasury/datasets.parquet",
+        str(derivative_fixture(tmp_path)),
         "--sql",
     ]
     for query in ("PRAGMA version", "SELECT * FROM read_csv_auto('secret.csv')"):

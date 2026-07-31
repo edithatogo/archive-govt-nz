@@ -24,3 +24,5 @@ def test_workflows_have_read_only_permissions_and_concurrency() -> None:
     assert "coverage xml" in ci
     assert "codecov/codecov-action@" in ci
     assert "fail_ci_if_error: true" in ci
+    assert "id-token: write" in ci
+    assert "use_oidc: true" in ci

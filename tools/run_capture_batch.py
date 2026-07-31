@@ -36,8 +36,7 @@ async def _run(args: argparse.Namespace) -> int:
     observed: set[object] = {
         item.get("resource_id")
         for item in preflight_results
-        if item.get("state") == "observed"
-        and item.get("status_code") == HTTP_OK
+        if item.get("state") == "observed" and item.get("status_code") == HTTP_OK
     }
     eligible = [
         item
