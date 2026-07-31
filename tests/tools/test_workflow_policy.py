@@ -20,3 +20,7 @@ def test_workflows_have_read_only_permissions_and_concurrency() -> None:
     )
     assert "enable_capture" in capture
     assert "exit 1" in capture
+    ci = (root / ".github/workflows/ci.yml").read_text(encoding="utf-8")
+    assert "coverage xml" in ci
+    assert "codecov/codecov-action@" in ci
+    assert "fail_ci_if_error: true" in ci
