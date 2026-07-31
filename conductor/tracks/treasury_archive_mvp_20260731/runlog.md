@@ -474,3 +474,10 @@
 - Added transactional attempt, object, version, and publication inserts with
   foreign-key linkage and stable duplicate/orphan error classes.
 - Focused ledger result: 4 tests passed, including relationship enforcement.
+
+## 2026-07-31 - Change-driven versioning foundation
+
+- Added canonical SHA-256 fingerprints over metadata/resource evidence and
+  explicit initial, unchanged, changed, and tombstone decisions.
+- Focused result: 2 versioning tests passed. Resource disappearance and policy
+  transition mutation coverage remain open.

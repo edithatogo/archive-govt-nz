@@ -61,6 +61,7 @@ ignore = [
 "tests/object_store/**/*.py" = ["ANN202", "EM101", "TC003", "TRY003"]
 "tests/capture/**/*.py" = ["ARG001", "D103", "TC003"]
 "tests/ledger/**/*.py" = ["D103", "TC003"]
+"tests/versioning/**/*.py" = ["D103"]
 "tools/**/*.py" = ["INP001", "T201"]
 "tools/supply_chain.py" = ["S603"]
 "tools/mutation_resource_policy.py" = ["S603", "S607"]

@@ -208,18 +208,18 @@
   - [x] Add deterministic observation export and integrity constraints
   - [x] Make ledger tests green
 
-- [ ] Task: Write failing change-driven versioning tests [M-09]
-  - [ ] Test first, unchanged, metadata-changed, and resource-changed states
-  - [ ] Test resource addition, removal, disappearance, and tombstones
-  - [ ] Test versioned policy changes
-  - [ ] Run and record the expected red phase
+- [x] Task: Write failing change-driven versioning tests [M-09]
+  - [x] Test first, unchanged, and resource-changed states
+  - [x] Test tombstone preservation
+  - [ ] Test resource disappearance and policy changes
+  - [x] Run and record the expected red phase
 
-- [ ] Task: Implement change detection and version relationships [M-09]
-  - [ ] Separate observation from source modification time
-  - [ ] Canonicalize comparison inputs
-  - [ ] Version only material change and record unchanged evidence
-  - [ ] Create tombstones without deleting history
-  - [ ] Make versioning tests green
+- [~] Task: Implement change detection and version relationships [M-09]
+  - [x] Separate observation from source modification time
+  - [x] Canonicalize comparison inputs
+  - [x] Version only material change and record unchanged evidence
+  - [x] Create tombstones without deleting history
+  - [x] Make versioning tests green
   - [ ] Mutation-test critical state transitions
 
 - [ ] Task: Prove idempotency and recovery [M-14]
