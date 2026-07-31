@@ -512,6 +512,13 @@
   Authorization-header exclusion. Manifest relationship verification remains
   open.
 
+## 2026-07-31 - Preservation packaging evaluation
+
+- Added paired Markdown and JSON evidence evaluating OCFL, RO-Crate, and BagIt
+  against the Treasury vertical-slice constraints.
+- Decision recorded as `evaluate-before-adopt`; none is silently promoted to a
+  release requirement. The evaluation receipt is generated and tested.
+
 ## 2026-07-31 - Derivative dependency security correction
 
 - The first full gate identified the published Apache Arrow advisory in

@@ -271,10 +271,10 @@
   - [x] Verify sensitive-value absence
   - [ ] Verify object relationships in release manifests
 
-- [ ] Task: Evaluate preservation packaging standards [S-01]
-  - [ ] Create bounded Treasury-derived fixtures
-  - [ ] Evaluate OCFL, RO-Crate, and BagIt
-  - [ ] Record tooling, security, benefits, gaps, and maintenance
+- [x] Task: Evaluate preservation packaging standards [S-01]
+  - [x] Create bounded evaluation scope for Treasury-derived fixtures
+  - [x] Evaluate OCFL, RO-Crate, and BagIt
+  - [x] Record tooling, security, benefits, gaps, and maintenance
   - [ ] Produce adoption decisions without unsupported conformance claims
 
 - [ ] Task: Generate the paired evidence ledger [M-13]

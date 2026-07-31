@@ -1,0 +1,48 @@
+{
+  "schema_version": "archive-govt-nz.preservation-evaluation/v1",
+  "scope": "bounded Treasury vertical-slice fixtures",
+  "decision": "evaluate-before-adopt",
+  "criteria": [
+    "content-addressed integrity",
+    "manifest closure and provenance",
+    "streaming/resumable operation",
+    "portable analysis derivatives",
+    "tooling and security maintenance"
+  ],
+  "standards": [
+    {
+      "name": "OCFL",
+      "status": "candidate",
+      "benefits": [
+        "immutable versioned object layout",
+        "strong fixity semantics"
+      ],
+      "gaps": [
+        "additional profile and tooling work for operational ledger integration"
+      ]
+    },
+    {
+      "name": "RO-Crate",
+      "status": "candidate",
+      "benefits": [
+        "rich research provenance graph",
+        "human and machine-readable metadata"
+      ],
+      "gaps": [
+        "does not replace content store or resumable ledger"
+      ]
+    },
+    {
+      "name": "BagIt",
+      "status": "candidate",
+      "benefits": [
+        "widely understood transfer package",
+        "simple payload/tag manifests"
+      ],
+      "gaps": [
+        "snapshot-oriented; requires external change-driven version ledger"
+      ]
+    }
+  ],
+  "release_requirement": false
+}
