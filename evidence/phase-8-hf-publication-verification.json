@@ -1,0 +1,13 @@
+{
+  "schema_version": "archive-govt-nz.phase-8-hf-publication-verification/v1",
+  "repository": "edithatogo/archive-govt-nz-treasury",
+  "revision": "e82319823d8fe56b8160e49907006dfc8b6bc83e",
+  "remote_url": "https://huggingface.co/datasets/edithatogo/archive-govt-nz-treasury",
+  "verified_at": "2026-07-31",
+  "file_count": 25,
+  "captured_object_count": 12,
+  "publication_state": "uploaded-remotely-verified",
+  "collection_membership": "not-set",
+  "zenodo_state": "not-published",
+  "viewer_note": "Raw content-addressed objects are preserved; Parquet/JSONL derivatives are not yet uploaded, so Viewer compatibility remains incomplete."
+}
