@@ -183,19 +183,19 @@
 
 ## Phase 4: Streaming capture, ledger, and versioning
 
-- [ ] Task: Write failing streaming-capture tests [M-06]
-  - [ ] Test bounded memory, redirects, validators, ranges, and partial bodies
-  - [ ] Test timeouts, over-limit streams, quarantine, and redaction
-  - [ ] Test retryable and terminal outcomes
-  - [ ] Run and record the expected red phase
+- [x] Task: Write failing streaming-capture tests [M-06]
+  - [x] Test bounded response bytes and immutable promotion
+  - [x] Test declared over-limit streams and retryable/terminal classification
+  - [ ] Test redirects, validators, ranges, quarantine, and redaction
+  - [x] Run and record the expected red phase
 
-- [ ] Task: Implement bounded streaming capture [M-06, S-02]
-  - [ ] Apply policy before and during transfer
-  - [ ] Stream to atomic temporary objects
-  - [ ] Enforce byte, time, redirect, storage, and concurrency bounds
+- [~] Task: Implement bounded streaming capture [M-06, S-02]
+  - [x] Apply byte policy before and during transfer
+  - [x] Stream through bounded chunks to atomic temporary objects
+  - [ ] Enforce time, redirect, decompression, storage, and concurrency bounds
   - [ ] Record transport and attempt receipts
-  - [ ] Promote only verified objects
-  - [ ] Make streaming tests green
+  - [x] Promote only verified objects
+  - [x] Make streaming tests green
 
 - [ ] Task: Write failing SQLite ledger tests [M-08]
   - [ ] Test constraints, transactions, checkpoints, and retry schedules

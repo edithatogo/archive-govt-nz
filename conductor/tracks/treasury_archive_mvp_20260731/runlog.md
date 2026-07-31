@@ -453,3 +453,8 @@
 - Object-store coverage is 92% locally; repository total is 99.24%. The
   remaining uncovered branches are defensive filesystem/type failures and are
   retained as explicit future mutation-hardening work.
+
+## 2026-07-31 - Streaming capture foundation
+
+- Added bounded httpx capture with status classification, byte limits, and immutable promotion.
+- Focused result: 2 tests passed; redirect, validator, decompression, type, and quarantine controls remain open.
