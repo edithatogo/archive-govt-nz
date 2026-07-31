@@ -542,6 +542,13 @@
   reconciliation evidence is in `evidence/phase-6-pre-capture-reconciliation.*`.
 - Payload capture and publication remain gated and unstarted.
 
+## 2026-07-31 - Recovery reconciliation foundation
+
+- Added restart-safe ledger/object-store reconciliation reporting verified,
+  missing, corrupt, and orphan payload states separately.
+- Local recovery fixture passed; interruption-at-every-boundary and repeated
+  unchanged-run proof remain open.
+
 ## 2026-07-31 - Derivative dependency security correction
 
 - The first full gate identified the published Apache Arrow advisory in

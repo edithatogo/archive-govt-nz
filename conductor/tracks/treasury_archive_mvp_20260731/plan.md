@@ -222,11 +222,11 @@
   - [x] Make versioning tests green
   - [x] Mutation-test critical state transitions
 
-- [ ] Task: Prove idempotency and recovery [M-14]
+- [~] Task: Prove idempotency and recovery [M-14]
   - [ ] Interrupt every persistent boundary
   - [ ] Resume without duplicate objects or versions
-  - [ ] Reconcile ledger and manifests
-  - [ ] Detect orphaned and corrupt objects
+  - [x] Reconcile ledger and object store
+  - [x] Detect orphaned and missing/corrupt objects
   - [ ] Verify repeated unchanged runs
 
 - [x] Task: Phase Verification & Checkpoint (Refer to workflow.md)
