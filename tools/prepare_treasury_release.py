@@ -17,14 +17,15 @@ def main() -> int:
     parser.add_argument(
         "--raw-dir",
         type=Path,
-        default=Path("build/live/reconcile-20260731T164949/raw"),
+        required=True,
     )
-    parser.add_argument("--object-root", type=Path, default=Path("build/objects"))
+    parser.add_argument("--object-root", type=Path, required=True)
     parser.add_argument(
         "--derivatives-dir",
         type=Path,
-        default=Path("build/derivatives/treasury"),
+        required=True,
     )
+    parser.add_argument("--capture-receipt", type=Path, required=True)
     args = parser.parse_args()
     root = Path.cwd()
     files = [
@@ -45,12 +46,27 @@ def main() -> int:
         root / "evidence/publication-metadata/hf-estate-observation.json",
         root / "build/sbom.cdx.json",
     ]
-    files.extend(sorted((root / args.raw_dir).glob("*.json")))
-    files.extend(sorted((root / args.object_root).glob("sha256/*/*")))
-    files.extend(sorted((root / args.derivatives_dir).glob("*")))
+    raw_files = sorted((root / args.raw_dir).glob("*.json"))
+    object_files = sorted((root / args.object_root).glob("sha256/*/*"))
+    derivative_files = sorted((root / args.derivatives_dir).glob("*"))
+    capture_receipt = root / args.capture_receipt
+    files.extend(raw_files)
+    files.extend(object_files)
+    files.extend(derivative_files)
+    files.append(capture_receipt)
     if any(not file.is_file() for file in files):
         missing = [str(file) for file in files if not file.is_file()]
         print(json.dumps({"status": "incomplete", "missing": missing}))
+        return 1
+    capture = json.loads(capture_receipt.read_text(encoding="utf-8"))
+    expected_objects = {
+        result["object_id"].removeprefix("sha256:")
+        for result in capture["results"]
+        if result["state"] == "captured"
+    }
+    actual_objects = {path.name for path in object_files}
+    if actual_objects != expected_objects:
+        print(json.dumps({"status": "incomplete", "reason": "object_receipt_mismatch"}))
         return 1
     args.output_dir.mkdir(parents=True, exist_ok=True)
     package = build_release_package(
@@ -72,6 +88,11 @@ def main() -> int:
             "repository": hf_verification["repository"],
             "revision": hf_verification["revision"],
             "remote_verification": hf_verification["publication_state"],
+        },
+        "layer_counts": {
+            "raw_ckan_responses": len(raw_files),
+            "captured_objects": len(object_files),
+            "derivatives": len(derivative_files),
         },
         "file_checksums": [
             {

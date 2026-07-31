@@ -20,6 +20,14 @@ def test_treasury_candidate_is_checksum_pinned_and_not_published(
             "tools/prepare_treasury_release.py",
             "--output-dir",
             str(tmp_path),
+            "--raw-dir",
+            "build/live/reconcile-20260731T164949/raw",
+            "--object-root",
+            "build/objects",
+            "--derivatives-dir",
+            "build/derivatives/treasury",
+            "--capture-receipt",
+            "build/live/capture-20260731.json",
         ],
         cwd=root,
         check=True,
@@ -40,3 +48,6 @@ def test_treasury_candidate_is_checksum_pinned_and_not_published(
     assert any(name.startswith("build/objects/sha256/") for name in names)
     assert any(name.endswith("raw/package_search-00000000.json") for name in names)
     assert "build/derivatives/treasury/datasets.parquet" in names
+    assert "build/live/capture-20260731.json" in names
+    assert manifest["layer_counts"]["captured_objects"] == 12
+    assert manifest["layer_counts"]["raw_ckan_responses"] == 5

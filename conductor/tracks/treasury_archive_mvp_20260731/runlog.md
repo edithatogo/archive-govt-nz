@@ -618,6 +618,7 @@
 - Closed GitHub issue #21. The earlier HTTP 500 was a transient service-side conversion/cache failure.
 - Audit found Zenodo v1 omitted raw CKAN responses, 12 captured objects, and derivatives because the release test asserted a fixed evidence-file count instead of preservation roles.
 - Hardened release preparation to include raw responses, every content-addressed captured object, derivatives, rights evidence, and Viewer receipts.
+- Removed the timestamped raw-directory default and now require explicit raw, object, derivative, and capture-receipt inputs; package creation fails unless object hashes exactly close against the capture receipt.
 - Published corrective version DOI `10.5281/zenodo.21728726` under concept DOI `10.5281/zenodo.21718047`; v1 remains auditable and explicitly superseded.
 - Hardened the DuckDB fallback to preload an in-memory table, disable external access, and accept exactly one SELECT statement.
 
