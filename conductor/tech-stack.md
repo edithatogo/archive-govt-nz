@@ -68,8 +68,11 @@ need and must not become the sole route to archive evidence.
 - `uv` for Python acquisition, dependency resolution, lockfiles, environments,
   scripts, builds, and dependency groups.
 - `pyproject.toml` as the package and tool configuration authority.
-- `ckanapi` for CKAN Action API interoperability.
-- `httpx` with `anyio` for async, streamed HTTP retrieval.
+- `ckanapi` 4.11 or newer compatible 4.x for CKAN Action API
+  interoperability.
+- Stable `httpx` 0.28.1 with `anyio` 4.14.2 or newer compatible 4.x for async,
+  streamed HTTP retrieval; exercise HTTPX 1.0 prereleases only in the isolated
+  compatibility lane until stable.
 - `pydantic` and `pydantic-settings` for typed contracts and configuration.
 - `cyclopts` for the typed CLI, non-interactive command contracts, and
   structured JSON output.

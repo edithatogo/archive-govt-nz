@@ -164,3 +164,19 @@ Status: approved for track initialization
 - Redaction copies mappings/lists and cannot mutate captured originals.
 - Raw-byte receipts, async transport, timing, user agent, and retry scheduling
   are explicitly not claimed and remain in the next red/green task pair.
+
+## Task self-review: Write failing bounded CKAN HTTP client tests
+
+- Contracts exercise public transport behavior through HTTPX's in-memory async
+  transport rather than implementation-private functions.
+- Clock, sleep, and jitter are injected so retry evidence is deterministic and
+  does not slow the suite.
+- Attempt receipts require stable error classes and prohibit private transport
+  exception text.
+- Raw source bytes remain distinct from the parsed Action response and receive
+  a deterministic SHA-256 receipt.
+- Response metadata uses an allowlist contract that excludes cookies.
+- Oversized responses fail before Action interpretation.
+- The production lock uses current stable releases; prerelease compatibility
+  remains an isolated later lane and cannot rewrite the production lock.
+- The observed red failure is the intended absent-client-module condition.

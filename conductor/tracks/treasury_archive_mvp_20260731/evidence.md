@@ -176,3 +176,17 @@ contracts green.
 | Redaction | verified local | five sensitive values removed; safe evidence retained |
 | Source immutability | verified local | input document unchanged |
 | Live CKAN | not accessed | HTTP client remains the next bounded tasks |
+
+## Task evidence: Write failing bounded CKAN HTTP client tests
+
+| Contract | Expected red result | Observed |
+| --- | --- | --- |
+| Client import | bounded client module absent | `ModuleNotFoundError` |
+| Collection outcome | implementation cannot be imported | 1 collection error |
+| Retry controls | deterministic injected schedule | 3 attempts; 0.5/1.0 second contract |
+| Receipt controls | exact bytes and bounded safe metadata | test contract only |
+| Runtime dependencies | current stable Python 3.14-compatible releases | lock resolved 79 packages |
+
+The red phase failed at the intended missing implementation boundary. The
+contracts use only an in-memory transport; they do not establish live CKAN,
+Treasury scope, archive capture, or publication evidence.

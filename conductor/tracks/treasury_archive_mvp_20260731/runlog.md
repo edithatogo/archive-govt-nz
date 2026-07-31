@@ -198,3 +198,19 @@
 - Refined the remaining async HTTP client work into separate red and green tasks
   so raw transport, retry, timing, user-agent, and observation contracts are not
   claimed by this kernel.
+
+## 2026-07-31 - Task: Write failing bounded CKAN HTTP client tests
+
+- Locked AnyIO 4.14.2, ckanapi 4.11, and HTTPX 0.28.1 for the Python 3.14
+  runtime; HTTPX 1.0 development releases remain outside the production lock.
+- Added deterministic `httpx.MockTransport` contracts for the versioned Action
+  path, identifiable user agent, bounded attempts, exponential backoff,
+  timeout classification, exact raw bytes, SHA-256, safe response headers,
+  response-size rejection, and CKAN capability observations.
+- Retry tests inject clock, sleep, and jitter dependencies and make no live
+  request or elapsed-time assumption.
+- Red command: `uv run --locked pytest tests/ckan/test_client.py -q`.
+- Expected red result: collection stops at `ModuleNotFoundError` for the absent
+  `archive_govt_nz.ckan.client` implementation.
+- Ruff passes for the red contract file. No catalogue access, credential,
+  payload capture, or publication action occurred.
