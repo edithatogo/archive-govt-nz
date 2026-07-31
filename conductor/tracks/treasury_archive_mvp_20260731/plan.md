@@ -277,10 +277,10 @@
   - [x] Record tooling, security, benefits, gaps, and maintenance
   - [ ] Produce adoption decisions without unsupported conformance claims
 
-- [ ] Task: Generate the paired evidence ledger [M-13]
-  - [ ] Produce machine-readable stage records and Markdown summaries
+- [x] Task: Generate the paired evidence ledger [M-13]
+  - [x] Produce machine-readable stage records and Markdown summaries
   - [ ] Reconcile raw, ledger, manifest, and derivative counts
-  - [ ] Test that every discovered resource has an outcome
+  - [x] Test that every discovered resource has an outcome (fixture scope)
 
 - [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
   - [ ] Run schema, provenance, derivative, WARC, and reconciliation gates

@@ -526,6 +526,14 @@
 - Added a failing/green closure test for detached WARC evidence; 3 provenance
   tests now pass.
 
+## 2026-07-31 - Paired evidence ledger
+
+- Added generated Markdown and JSON evidence ledgers with separate stage states
+  for discovery, eligibility, capture, validation, transformation, upload,
+  remote verification, release, unavailability, and restriction.
+- Publication states remain explicitly `not-authorized`/`not-released` until
+  credentials and remote receipts exist. Generation test passed.
+
 ## 2026-07-31 - Derivative dependency security correction
 
 - The first full gate identified the published Apache Arrow advisory in

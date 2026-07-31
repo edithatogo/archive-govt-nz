@@ -1,0 +1,67 @@
+{
+  "schema_version": "archive-govt-nz.evidence-ledger/v1",
+  "generated_at": "2026-07-31T06:48:35.323109+00:00",
+  "stages": [
+    {
+      "stage": "discovered",
+      "state": "observed",
+      "evidence": [
+        "evidence/phase-2-live-observation.json"
+      ]
+    },
+    {
+      "stage": "eligible",
+      "state": "policy-implemented",
+      "evidence": [
+        "src/archive_govt_nz/resource_policy.py"
+      ]
+    },
+    {
+      "stage": "captured",
+      "state": "not-yet-complete",
+      "evidence": []
+    },
+    {
+      "stage": "validated",
+      "state": "software-gates-passed",
+      "evidence": [
+        "build/pip-audit.json",
+        "build/sbom.cdx.json"
+      ]
+    },
+    {
+      "stage": "transformed",
+      "state": "derivative-foundation",
+      "evidence": [
+        "src/archive_govt_nz/derivatives.py"
+      ]
+    },
+    {
+      "stage": "uploaded",
+      "state": "not-authorized",
+      "evidence": []
+    },
+    {
+      "stage": "remotely-verified",
+      "state": "not-run",
+      "evidence": []
+    },
+    {
+      "stage": "released",
+      "state": "not-released",
+      "evidence": []
+    },
+    {
+      "stage": "unavailable",
+      "state": "recorded-per-attempt",
+      "evidence": []
+    },
+    {
+      "stage": "restricted",
+      "state": "policy-controlled",
+      "evidence": [
+        "src/archive_govt_nz/resource_policy.py"
+      ]
+    }
+  ]
+}
