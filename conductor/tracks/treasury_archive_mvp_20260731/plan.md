@@ -19,11 +19,11 @@
   - [x] Create and read back nested phase subissues
   - [x] Record repository and issue identifiers in track evidence
 
-- [ ] Task: Write failing package and CLI bootstrap tests [M-01]
-  - [ ] Test package import and version metadata
-  - [ ] Test non-interactive CLI help and structured JSON output
-  - [ ] Test documented exit-state semantics
-  - [ ] Run and record the expected red phase
+- [x] Task: Write failing package and CLI bootstrap tests [M-01]
+  - [x] Test package import and version metadata
+  - [x] Test non-interactive CLI help and structured JSON output
+  - [x] Test documented exit-state semantics
+  - [x] Run and record the expected red phase
 
 - [ ] Task: Implement the Python 3.14 project foundation [M-01]
   - [ ] Create `pyproject.toml`, dependency groups, and `uv.lock`

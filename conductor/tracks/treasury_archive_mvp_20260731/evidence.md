@@ -39,3 +39,14 @@ reconcile the full live scope at each run.
 - The connected GitHub app returned 403 for issue creation in the newly created
   repository, so the authenticated GitHub CLI completed the issue writes. No
   duplicates were created; exact-title checks made the fallback idempotent.
+
+## Task evidence: Write failing package and CLI bootstrap tests
+
+| Check | Expected red result | Observed |
+| --- | --- | --- |
+| Package import | `archive_govt_nz` is absent | `ModuleNotFoundError` |
+| CLI contract collection | package exit-code module is absent | `ModuleNotFoundError` |
+| Failure count | both bootstrap modules fail collection | 2 collection errors |
+
+The red phase failed for the intended missing-implementation reason before any
+package code or dependency manifest existed.

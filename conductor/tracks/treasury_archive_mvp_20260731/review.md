@@ -41,3 +41,12 @@ Status: approved for track initialization
 - No publication, Hugging Face, Zenodo, or dataset payload action occurred.
 - Connector access lag is recorded as a bounded limitation with an authenticated
   CLI fallback.
+
+## Task self-review: Write failing package and CLI bootstrap tests
+
+- Tests describe public behaviour rather than implementation details.
+- CLI tests execute a separate Python process and detect prompts or extra output.
+- JSON output has an explicit schema version.
+- Exit states are unique and leave conventional usage errors available.
+- The observed red failure was the intended absent-package condition.
+- No network, credential, publication, or payload access occurs in these tests.

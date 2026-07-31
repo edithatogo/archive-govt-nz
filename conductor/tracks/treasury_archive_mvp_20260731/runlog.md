@@ -29,3 +29,15 @@
   remote head.
 - GitHub connector issue creation returned 403 for the new repository; used the
   authenticated CLI fallback with exact-title idempotency checks.
+
+## 2026-07-31 - Task: Write failing package and CLI bootstrap tests
+
+- Added bootstrap tests for package/distribution version agreement.
+- Added subprocess tests for non-interactive help and structured version JSON.
+- Defined the expected stable process exit-code contract.
+- Red command:
+  `uvx --python 3.14 --from pytest pytest tests/test_package_bootstrap.py tests/test_cli_bootstrap.py -q`
+- Expected red result: two collection errors because `archive_govt_nz` did not
+  yet exist.
+- Observed a non-fatal transient Windows `uv` cache rename warning after pytest
+  installation; it did not change the failure cause.
