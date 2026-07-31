@@ -1,0 +1,12 @@
+{
+  "schema_version": "archive-govt-nz.phase-6-capture-plan-summary/v1",
+  "resource_count": 91,
+  "dispositions": {
+    "eligible": 0,
+    "terminal": 74,
+    "restricted": 17
+  },
+  "declared_eligible_bytes": 0,
+  "payload_transfer_started": false,
+  "interpretation": "Metadata-only preflight lacks transport/type evidence; fail-closed terminal/restricted decisions require bounded live preflight before any payload attempt."
+}

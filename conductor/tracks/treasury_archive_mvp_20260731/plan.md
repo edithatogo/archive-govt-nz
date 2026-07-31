@@ -301,6 +301,7 @@
   - [x] Enumerate every resource under the approved policy
   - [x] Enforce total-byte, resource-count, and concurrency budgets before transfer
   - [x] Provide explicitly enabled resumable batch runner with JSON outcomes
+  - [x] Record fail-closed metadata-only dispositions before live preflight
   - [ ] Attempt every resource under the approved policy
   - [ ] Preserve every raw dataset response
   - [ ] Record captured, unavailable, restricted, oversized, quarantined,

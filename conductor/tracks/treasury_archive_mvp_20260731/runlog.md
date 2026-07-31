@@ -562,6 +562,14 @@
   budgets, and writes per-resource outcome JSON outside Git-tracked payloads.
 - Offline no-transfer contract test passes.
 
+## 2026-07-31 - Capture gate sizing evidence
+
+- The 91-resource metadata-only plan currently resolves to 74 terminal and 17
+  restricted outcomes, with zero eligible bytes. This is intentionally
+  fail-closed because transport/type preflight has not run; no payload transfer
+  was started.
+- A bounded live preflight is required before any resource can become eligible.
+
 ## 2026-07-31 - Recovery reconciliation foundation
 
 - Added restart-safe ledger/object-store reconciliation reporting verified,
