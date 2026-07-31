@@ -1,0 +1,38 @@
+# Local environments and caches
+.venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+coverage.xml
+htmlcov/
+__pycache__/
+*.py[cod]
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+
+# Archive payload boundary
+data/raw/
+data/extracts/
+data/profile/
+*.accdb
+*.mdb
+*.accde
+*.mde
+*.laccdb
+*.ldb
+
+# Temporary and generated local outputs
+.tmp/
+tmp/
+dist/
+build/
+
+# Operating-system and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
