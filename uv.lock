@@ -23,6 +23,7 @@ dependencies = [
     { name = "ckanapi" },
     { name = "cyclopts" },
     { name = "httpx" },
+    { name = "jsonschema" },
 ]
 
 [package.dev-dependencies]
@@ -30,7 +31,6 @@ dev = [
     { name = "cyclonedx-bom" },
     { name = "detect-secrets" },
     { name = "hypothesis" },
-    { name = "jsonschema" },
     { name = "pip-audit" },
     { name = "pip-licenses" },
     { name = "pyright" },
@@ -45,6 +45,7 @@ requires-dist = [
     { name = "ckanapi", specifier = ">=4.11,<5" },
     { name = "cyclopts", specifier = ">=4.22.3,<5" },
     { name = "httpx", specifier = ">=0.28.1,<1" },
+    { name = "jsonschema", specifier = ">=4.25.1,<5" },
 ]
 
 [package.metadata.requires-dev]
@@ -52,7 +53,6 @@ dev = [
     { name = "cyclonedx-bom", specifier = ">=7.3.0,<8" },
     { name = "detect-secrets", specifier = ">=1.5.0,<2" },
     { name = "hypothesis", specifier = ">=6.164.0,<7" },
-    { name = "jsonschema", specifier = ">=4.25.1,<5" },
     { name = "pip-audit", specifier = ">=2.10.1,<3" },
     { name = "pip-licenses", specifier = ">=5.5.5,<6" },
     { name = "pyright", specifier = ">=1.1.411,<2" },

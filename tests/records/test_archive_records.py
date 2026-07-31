@@ -1,10 +1,15 @@
 """Versioned archive record schema and canonicalization contracts."""
 
+import json
 from copy import deepcopy
+from pathlib import Path
 
 import pytest
+
 from archive_govt_nz.records import (
     ArchiveRecordError,
+    RecordHeader,
+    archive_schema_documents,
     canonical_record_bytes,
     load_archive_schema,
     validate_archive_record,
@@ -159,6 +164,14 @@ def test_every_v1_schema_accepts_its_minimal_record(
 
 
 @pytest.mark.parametrize("kind", minimal_records())
+def test_committed_schema_matches_the_typed_catalogue(kind: str) -> None:
+    """Generated schema files cannot drift from the validation authority."""
+    path = Path("schemas/archive/v1") / f"{kind}.schema.json"
+
+    assert json.loads(path.read_bytes()) == load_archive_schema(kind)
+
+
+@pytest.mark.parametrize("kind", minimal_records())
 def test_missing_id_unknown_field_and_non_utc_time_fail_closed(kind: str) -> None:
     """Common provenance fields have identical strict behavior in every schema."""
     record = minimal_records()[kind]
@@ -225,3 +238,41 @@ def test_canonical_bytes_are_stable_and_reject_non_finite_numbers() -> None:
     invalid["evidence"] = [{"score": float("nan")}]
     with pytest.raises(ArchiveRecordError):
         canonical_record_bytes(invalid)
+
+
+def test_schema_documents_are_defensive_and_header_is_typed() -> None:
+    """Callers cannot mutate the catalogue shared by later validations."""
+    documents = archive_schema_documents()
+    documents["capability"]["title"] = "mutated"
+
+    assert load_archive_schema("capability")["title"] != "mutated"
+    header = RecordHeader(
+        schema_version="archive-govt-nz.capability/v1",
+        record_id="capability-record",
+        observed_at=OBSERVED_AT,
+        state="observed",
+    )
+    assert header.evidence == ()
+
+
+@pytest.mark.parametrize(
+    "record",
+    [
+        {},
+        {"schema_version": "other.capability/v1"},
+        {"schema_version": "archive-govt-nz.capability/v2"},
+        {"schema_version": "archive-govt-nz.unknown/v1"},
+    ],
+)
+def test_unknown_or_missing_schema_versions_fail_closed(
+    record: dict[str, object],
+) -> None:
+    """Readers reject missing, foreign, newer, and unknown schema identifiers."""
+    with pytest.raises(ArchiveRecordError):
+        validate_archive_record(record)
+
+
+def test_unknown_schema_catalogue_key_fails_closed() -> None:
+    """A caller cannot infer a schema from an undeclared kind."""
+    with pytest.raises(ArchiveRecordError):
+        load_archive_schema("unknown")

@@ -1,0 +1,94 @@
+{
+  "$id": "https://github.com/edithatogo/archive-govt-nz/schemas/archive/v1/scope.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "catalogue_url": {
+      "format": "uri",
+      "pattern": "^https?://",
+      "type": "string"
+    },
+    "dataset_ids": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "evidence": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "observation_ended_at": {
+      "format": "date-time",
+      "pattern": "Z$",
+      "type": "string"
+    },
+    "observation_started_at": {
+      "format": "date-time",
+      "pattern": "Z$",
+      "type": "string"
+    },
+    "observed_at": {
+      "format": "date-time",
+      "pattern": "Z$",
+      "type": "string"
+    },
+    "organization_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "organization_name": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "page_sha256": {
+      "items": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "record_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "reported_counts": {
+      "items": {
+        "minimum": 0,
+        "type": "integer"
+      },
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "archive-govt-nz.scope/v1"
+    },
+    "state": {
+      "enum": [
+        "reconciled",
+        "drifted",
+        "incomplete"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "record_id",
+    "observed_at",
+    "state",
+    "evidence",
+    "catalogue_url",
+    "organization_id",
+    "organization_name",
+    "dataset_ids",
+    "page_sha256",
+    "reported_counts",
+    "observation_started_at",
+    "observation_ended_at"
+  ],
+  "title": "Archive Govt NZ scope record v1",
+  "type": "object"
+}

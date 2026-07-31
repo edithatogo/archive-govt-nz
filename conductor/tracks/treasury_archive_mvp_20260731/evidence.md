@@ -317,3 +317,18 @@ The paired machine-readable checkpoint is
 
 The red phase fails only at the absent implementation boundary. Existing CKAN
 records and live evidence remain unchanged.
+
+## Task evidence: Implement typed domain models and schemas
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Typed records | implemented | common header plus 10 record kinds |
+| Runtime validation | passed local | strict Draft 2020-12 with format checks |
+| Generated schemas | passed local | 10 immutable files match typed catalogue |
+| Repository schema gate | passed local | 12 schemas; 2 representative documents |
+| Focused contracts | passed local | 31 tests |
+| Critical coverage | passed local | 189/189 statements; 10/10 branches |
+| Complete suite | passed local | 121 tests; 100% measured coverage |
+| Static assurance | passed local | Ruff and strict Pyright: zero findings |
+| Secret scan | passed local | zero candidates |
+| Archive payloads | not created | schemas and synthetic records only |

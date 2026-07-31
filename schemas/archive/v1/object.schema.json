@@ -1,0 +1,86 @@
+{
+  "$id": "https://github.com/edithatogo/archive-govt-nz/schemas/archive/v1/object.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "blake3": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "byte_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "evidence": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "media_type": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "object_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "observed_at": {
+      "format": "date-time",
+      "pattern": "Z$",
+      "type": "string"
+    },
+    "record_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "role": {
+      "enum": [
+        "source_metadata",
+        "source_resource",
+        "warc_receipt",
+        "manifest",
+        "derivative"
+      ]
+    },
+    "schema_version": {
+      "const": "archive-govt-nz.object/v1"
+    },
+    "sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "source_record_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "state": {
+      "enum": [
+        "verified",
+        "quarantined"
+      ]
+    },
+    "verified_at": {
+      "format": "date-time",
+      "pattern": "Z$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "record_id",
+    "observed_at",
+    "state",
+    "evidence",
+    "object_id",
+    "sha256",
+    "blake3",
+    "byte_count",
+    "media_type",
+    "role",
+    "verified_at",
+    "source_record_id"
+  ],
+  "title": "Archive Govt NZ object record v1",
+  "type": "object"
+}

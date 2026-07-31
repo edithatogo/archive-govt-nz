@@ -8,6 +8,8 @@ from typing import TYPE_CHECKING, cast
 
 from jsonschema import Draft202012Validator
 
+from archive_govt_nz.records import archive_schema_documents
+
 if TYPE_CHECKING:
     from collections.abc import Callable
 
@@ -26,6 +28,7 @@ VALIDATION_PAIRS = (
         REPOSITORY_ROOT / "conductor" / "autonomy-policy.json",
     ),
 )
+ARCHIVE_SCHEMA_DIRECTORY = REPOSITORY_ROOT / "schemas" / "archive" / "v1"
 
 
 def load_json_object(path: Path) -> dict[str, JsonValue]:
@@ -49,12 +52,22 @@ def validate() -> None:
             Draft202012Validator(schema).validate,  # pyright: ignore[reportUnknownMemberType]
         )
         validate_document(document)
+    for kind, expected_schema in archive_schema_documents().items():
+        schema = load_json_object(ARCHIVE_SCHEMA_DIRECTORY / f"{kind}.schema.json")
+        Draft202012Validator.check_schema(schema)
+        if schema != expected_schema:
+            message = f"generated archive schema drift: {kind}"
+            raise ValueError(message)
 
 
 def main() -> int:
     """Run schema validation as a process-safe gate."""
     validate()
-    print(f"validated {len(VALIDATION_PAIRS)} schemas and documents")
+    archive_count = len(archive_schema_documents())
+    print(
+        f"validated {len(VALIDATION_PAIRS) + archive_count} schemas "
+        f"and {len(VALIDATION_PAIRS)} representative documents"
+    )
     return 0
 
 

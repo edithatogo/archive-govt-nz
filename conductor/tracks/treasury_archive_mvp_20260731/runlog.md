@@ -355,3 +355,26 @@
   `archive_govt_nz.records` implementation.
 - Ruff passes for the red contract file. No archive record or resource payload
   was created by the red phase.
+
+## 2026-07-31 - Task: Implement typed domain models and schemas
+
+- Added typed common, capability, scope, dataset, resource, attempt, object,
+  version, transformation, validation, and publication record definitions.
+- Added a strict runtime schema catalogue and bounded validation errors that do
+  not retain record payload detail.
+- Generated ten immutable Draft 2020-12 schema files under
+  `schemas/archive/v1/` and made the repository schema gate compare every file
+  with the typed catalogue.
+- Enforced closed properties, non-empty IDs, UTC `Z` times, lower-case SHA-256
+  and BLAKE3, URLs, byte bounds, unique identifier arrays, record-specific
+  states, explicit object roles, and publication evidence transitions.
+- Canonical serialization validates first, rejects NaN/infinity and unsupported
+  objects, sorts keys, preserves Unicode, uses compact separators, and appends
+  exactly one newline.
+- Moved JSON Schema validation into runtime dependencies because archive record
+  validation is a library behavior, while retaining its assurance-gate test.
+- Focused result: 31 schema/invariant tests; record logic 100% across 189
+  statements and 10 branches.
+- Full result: 121 tests and 100% across 665 statements and 110 branches; 12
+  schemas and two representative documents validated; Ruff, strict Pyright,
+  and secret scan passed.

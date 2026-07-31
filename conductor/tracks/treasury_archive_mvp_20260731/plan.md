@@ -137,11 +137,11 @@
   - [x] Test deterministic canonical serialization
   - [x] Run and record the expected red phase
 
-- [ ] Task: Implement typed domain models and schemas [M-10]
-  - [ ] Map typed models to JSON Schema
-  - [ ] Enforce identifiers, UTC times, states, and limitations
-  - [ ] Generate and validate deterministic schemas
-  - [ ] Make schema tests green
+- [x] Task: Implement typed domain models and schemas [M-10]
+  - [x] Map typed models to JSON Schema
+  - [x] Enforce identifiers, UTC times, states, and limitations
+  - [x] Generate and validate deterministic schemas
+  - [x] Make schema tests green
 
 - [ ] Task: Define the fail-closed resource policy [M-05]
   - [ ] Version scheme, redirect, time, byte, storage, and concurrency rules

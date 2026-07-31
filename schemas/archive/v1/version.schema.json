@@ -1,0 +1,110 @@
+{
+  "$id": "https://github.com/edithatogo/archive-govt-nz/schemas/archive/v1/version.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "change_reasons": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "comparison_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "created_at": {
+      "format": "date-time",
+      "pattern": "Z$",
+      "type": "string"
+    },
+    "dataset_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "evidence": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "metadata_object_ids": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "observed_at": {
+      "format": "date-time",
+      "pattern": "Z$",
+      "type": "string"
+    },
+    "policy_version": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "predecessor_version_id": {
+      "oneOf": [
+        {
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "record_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "resource_object_ids": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "schema_version": {
+      "const": "archive-govt-nz.version/v1"
+    },
+    "state": {
+      "enum": [
+        "material",
+        "unchanged_evidence",
+        "tombstone"
+      ]
+    },
+    "tombstone": {
+      "type": "boolean"
+    },
+    "version_id": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "record_id",
+    "observed_at",
+    "state",
+    "evidence",
+    "dataset_id",
+    "version_id",
+    "comparison_sha256",
+    "predecessor_version_id",
+    "change_reasons",
+    "metadata_object_ids",
+    "resource_object_ids",
+    "policy_version",
+    "created_at",
+    "tombstone"
+  ],
+  "title": "Archive Govt NZ version record v1",
+  "type": "object"
+}

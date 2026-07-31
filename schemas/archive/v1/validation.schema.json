@@ -1,0 +1,88 @@
+{
+  "$id": "https://github.com/edithatogo/archive-govt-nz/schemas/archive/v1/validation.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "checks": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "ended_at": {
+      "format": "date-time",
+      "pattern": "Z$",
+      "type": "string"
+    },
+    "evidence": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "findings": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "observed_at": {
+      "format": "date-time",
+      "pattern": "Z$",
+      "type": "string"
+    },
+    "record_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "archive-govt-nz.validation/v1"
+    },
+    "started_at": {
+      "format": "date-time",
+      "pattern": "Z$",
+      "type": "string"
+    },
+    "state": {
+      "enum": [
+        "passed",
+        "failed",
+        "partial"
+      ]
+    },
+    "subject_ids": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "validator_name": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "validator_version": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "record_id",
+    "observed_at",
+    "state",
+    "evidence",
+    "validator_name",
+    "validator_version",
+    "subject_ids",
+    "checks",
+    "findings",
+    "started_at",
+    "ended_at"
+  ],
+  "title": "Archive Govt NZ validation record v1",
+  "type": "object"
+}

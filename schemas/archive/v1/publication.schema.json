@@ -1,0 +1,165 @@
+{
+  "$id": "https://github.com/edithatogo/archive-govt-nz/schemas/archive/v1/publication.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "state": {
+            "enum": [
+              "remotely_verified",
+              "released"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "remote_identifier": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "remote_revision": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "verified_at": {
+            "format": "date-time",
+            "pattern": "Z$",
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "doi": {
+            "type": "string"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "state": {
+            "const": "released"
+          },
+          "target": {
+            "const": "zenodo"
+          }
+        }
+      }
+    }
+  ],
+  "properties": {
+    "doi": {
+      "oneOf": [
+        {
+          "pattern": "^10\\.",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "evidence": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "local_version_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "manifest_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "observed_at": {
+      "format": "date-time",
+      "pattern": "Z$",
+      "type": "string"
+    },
+    "record_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "remote_identifier": {
+      "oneOf": [
+        {
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "remote_revision": {
+      "oneOf": [
+        {
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "requested_at": {
+      "format": "date-time",
+      "pattern": "Z$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "archive-govt-nz.publication/v1"
+    },
+    "state": {
+      "enum": [
+        "prepared",
+        "uploaded",
+        "remotely_verified",
+        "released",
+        "failed"
+      ]
+    },
+    "target": {
+      "enum": [
+        "hugging_face",
+        "zenodo"
+      ]
+    },
+    "verified_at": {
+      "oneOf": [
+        {
+          "format": "date-time",
+          "pattern": "Z$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "record_id",
+    "observed_at",
+    "state",
+    "evidence",
+    "target",
+    "local_version_id",
+    "manifest_sha256",
+    "requested_at",
+    "remote_identifier",
+    "remote_revision",
+    "verified_at",
+    "doi"
+  ],
+  "title": "Archive Govt NZ publication record v1",
+  "type": "object"
+}

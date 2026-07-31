@@ -326,3 +326,22 @@ Status: approved for track initialization
 - Non-standard JSON floating-point values fail rather than producing
   platform-dependent hashes.
 - The red failure is the intended absent-record-module condition.
+
+## Task self-review: Implement typed domain models and schemas
+
+- TypedDict definitions give Python callers kind-specific required and optional
+  fields; JSON Schema remains the cross-language persisted-record authority.
+- Generated files are checked back against the in-code catalogue, preventing
+  hand-edited schema drift.
+- Defensive schema copies prevent callers from mutating later validations.
+- Readers infer kind only from the exact
+  `archive-govt-nz.<kind>/v1` identifier and reject missing, foreign, newer, and
+  unknown versions.
+- Format checking is active, so URL and RFC 3339 fields are executable
+  constraints rather than annotations.
+- Publication conditionals require complete remote identity, revision, and
+  time evidence, and restrict a DOI to a released Zenodo record.
+- The schema layer does not grant rights, release quarantine, create an object,
+  or perform a publication.
+- All record validation and canonicalization branches are covered without
+  exclusions.

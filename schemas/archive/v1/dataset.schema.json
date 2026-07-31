@@ -1,0 +1,88 @@
+{
+  "$id": "https://github.com/edithatogo/archive-govt-nz/schemas/archive/v1/dataset.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "dataset_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "evidence": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "name": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "observed_at": {
+      "format": "date-time",
+      "pattern": "Z$",
+      "type": "string"
+    },
+    "organization_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "raw_metadata_object_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "record_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "resource_ids": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "schema_version": {
+      "const": "archive-govt-nz.dataset/v1"
+    },
+    "source_modified_at": {
+      "oneOf": [
+        {
+          "format": "date-time",
+          "pattern": "Z$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "state": {
+      "enum": [
+        "discovered",
+        "observed",
+        "unavailable",
+        "restricted",
+        "tombstoned"
+      ]
+    },
+    "tombstone": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "schema_version",
+    "record_id",
+    "observed_at",
+    "state",
+    "evidence",
+    "dataset_id",
+    "name",
+    "organization_id",
+    "raw_metadata_object_id",
+    "resource_ids",
+    "tombstone"
+  ],
+  "title": "Archive Govt NZ dataset record v1",
+  "type": "object"
+}

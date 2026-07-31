@@ -1,0 +1,123 @@
+{
+  "$id": "https://github.com/edithatogo/archive-govt-nz/schemas/archive/v1/attempt.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "byte_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "ended_at": {
+      "format": "date-time",
+      "pattern": "Z$",
+      "type": "string"
+    },
+    "error_class": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "evidence": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "object_id": {
+      "oneOf": [
+        {
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "observed_at": {
+      "format": "date-time",
+      "pattern": "Z$",
+      "type": "string"
+    },
+    "ordinal": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "record_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "retry_disposition": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "safe_request": {
+      "additionalProperties": {
+        "type": [
+          "string",
+          "integer",
+          "null"
+        ]
+      },
+      "type": "object"
+    },
+    "safe_response": {
+      "additionalProperties": {
+        "type": [
+          "string",
+          "integer",
+          "null"
+        ]
+      },
+      "type": "object"
+    },
+    "schema_version": {
+      "const": "archive-govt-nz.attempt/v1"
+    },
+    "started_at": {
+      "format": "date-time",
+      "pattern": "Z$",
+      "type": "string"
+    },
+    "state": {
+      "enum": [
+        "succeeded",
+        "retryable",
+        "terminal"
+      ]
+    },
+    "status_code": {
+      "maximum": 599,
+      "minimum": 100,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "target_record_id": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "record_id",
+    "observed_at",
+    "state",
+    "evidence",
+    "target_record_id",
+    "ordinal",
+    "error_class",
+    "started_at",
+    "ended_at",
+    "status_code",
+    "safe_request",
+    "safe_response",
+    "byte_count",
+    "retry_disposition",
+    "object_id"
+  ],
+  "title": "Archive Govt NZ attempt record v1",
+  "type": "object"
+}

@@ -1,0 +1,77 @@
+{
+  "$id": "https://github.com/edithatogo/archive-govt-nz/schemas/archive/v1/capability.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "action_api_version": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "attempt_ids": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "catalogue_url": {
+      "format": "uri",
+      "pattern": "^https?://",
+      "type": "string"
+    },
+    "ckan_version": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "evidence": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "observed_at": {
+      "format": "date-time",
+      "pattern": "Z$",
+      "type": "string"
+    },
+    "raw_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "record_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "archive-govt-nz.capability/v1"
+    },
+    "site_url": {
+      "format": "uri",
+      "pattern": "^https?://",
+      "type": "string"
+    },
+    "state": {
+      "enum": [
+        "observed",
+        "unavailable",
+        "invalid"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "record_id",
+    "observed_at",
+    "state",
+    "evidence",
+    "catalogue_url",
+    "action_api_version",
+    "ckan_version",
+    "site_url",
+    "raw_sha256",
+    "attempt_ids"
+  ],
+  "title": "Archive Govt NZ capability record v1",
+  "type": "object"
+}

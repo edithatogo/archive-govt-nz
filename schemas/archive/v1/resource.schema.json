@@ -1,0 +1,111 @@
+{
+  "$id": "https://github.com/edithatogo/archive-govt-nz/schemas/archive/v1/resource.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "dataset_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "declared_bytes": {
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "declared_format": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "declared_media_type": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "disposition": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "evidence": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "independent_type": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "observed_at": {
+      "format": "date-time",
+      "pattern": "Z$",
+      "type": "string"
+    },
+    "policy_version": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "record_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "resource_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "rights_evidence": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "archive-govt-nz.resource/v1"
+    },
+    "source_filename": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source_url": {
+      "format": "uri",
+      "pattern": "^https?://",
+      "type": "string"
+    },
+    "state": {
+      "enum": [
+        "eligible",
+        "unavailable",
+        "restricted",
+        "oversized",
+        "quarantined",
+        "retryable",
+        "terminal"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "record_id",
+    "observed_at",
+    "state",
+    "evidence",
+    "resource_id",
+    "dataset_id",
+    "source_url",
+    "source_filename",
+    "declared_format",
+    "declared_media_type",
+    "policy_version",
+    "disposition"
+  ],
+  "title": "Archive Govt NZ resource record v1",
+  "type": "object"
+}

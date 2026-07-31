@@ -1,0 +1,103 @@
+{
+  "$id": "https://github.com/edithatogo/archive-govt-nz/schemas/archive/v1/transformation.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "deterministic": {
+      "type": "boolean"
+    },
+    "ended_at": {
+      "format": "date-time",
+      "pattern": "Z$",
+      "type": "string"
+    },
+    "environment_sbom_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "evidence": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "implementation_revision": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "information_loss": {
+      "type": "string"
+    },
+    "input_object_ids": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "name": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "observed_at": {
+      "format": "date-time",
+      "pattern": "Z$",
+      "type": "string"
+    },
+    "output_object_ids": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "parameters": {
+      "type": "object"
+    },
+    "record_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "archive-govt-nz.transformation/v1"
+    },
+    "started_at": {
+      "format": "date-time",
+      "pattern": "Z$",
+      "type": "string"
+    },
+    "state": {
+      "enum": [
+        "succeeded",
+        "failed",
+        "not_applicable"
+      ]
+    },
+    "version": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "record_id",
+    "observed_at",
+    "state",
+    "evidence",
+    "name",
+    "version",
+    "implementation_revision",
+    "input_object_ids",
+    "output_object_ids",
+    "parameters",
+    "environment_sbom_id",
+    "started_at",
+    "ended_at",
+    "information_loss",
+    "deterministic"
+  ],
+  "title": "Archive Govt NZ transformation record v1",
+  "type": "object"
+}

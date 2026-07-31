@@ -29,7 +29,8 @@ def test_assurance_dependencies_are_locked_in_the_development_group() -> None:
     assert any(item.startswith("pyright") for item in dependencies)
     assert any(item.startswith("pytest-cov") for item in dependencies)
     assert any(item.startswith("hypothesis") for item in dependencies)
-    assert any(item.startswith("jsonschema") for item in dependencies)
+    runtime_dependencies = pyproject["project"]["dependencies"]
+    assert any(item.startswith("jsonschema") for item in runtime_dependencies)
 
 
 def test_static_and_coverage_policy_is_fail_closed() -> None:
