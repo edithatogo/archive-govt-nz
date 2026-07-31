@@ -102,13 +102,13 @@
   - [x] Test changed counts without hard-coding 54
   - [x] Run and record the expected red phase
 
-- [ ] Task: Implement complete Treasury discovery [M-03, M-04]
-  - [ ] Resolve and verify `the-treasury`
-  - [ ] Enumerate and reconcile all organisation-filtered datasets
-  - [ ] Preserve raw discovery responses
-  - [ ] Produce dated scope and coverage manifests
-  - [ ] Produce paired Markdown and JSON discovery reports
-  - [ ] Make discovery tests green
+- [x] Task: Implement complete Treasury discovery [M-03, M-04]
+  - [x] Resolve and verify `the-treasury`
+  - [x] Enumerate and reconcile all organisation-filtered datasets
+  - [x] Preserve raw discovery responses
+  - [x] Produce dated scope and coverage manifests
+  - [x] Produce paired Markdown and JSON discovery reports
+  - [x] Make discovery tests green
 
 - [ ] Task: Add bounded live read-only contract checks [M-02, M-03]
   - [ ] Separate deterministic fixtures from live tests

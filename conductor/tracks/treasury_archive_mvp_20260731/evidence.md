@@ -223,3 +223,23 @@ later bounded live observation is captured and hashed.
 
 The red phase uses typed in-memory Action observations. It proves neither the
 current number of Treasury datasets nor live catalogue completeness.
+
+## Task evidence: Implement complete Treasury discovery
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Focused contracts | passed local | 20 tests |
+| Critical coverage | passed local | 138/138 statements; 24/24 branches |
+| Complete repository suite | passed local | 78 tests; 100% measured coverage |
+| Static assurance | passed local | Ruff and strict Pyright: zero findings |
+| Source secret scan | passed local | zero candidates |
+| Organisation identity | verified fixture | slug, stable ID, name, and title required |
+| Pagination | verified fixture | sorted starts, live count drift, progress reconciliation |
+| Raw evidence | verified fixture | exact bytes, hash, time, start, and page IDs |
+| Paired reports | verified fixture | canonical JSON plus Markdown limitation report |
+| Live Treasury scope | not observed | bounded live checks are the next task |
+
+The discovery model represents a genuine zero-dataset result and retains
+optional CKAN labels without using them as identity. It refuses to report
+completeness when page ordering, identifiers, or live counts cannot be
+reconciled.

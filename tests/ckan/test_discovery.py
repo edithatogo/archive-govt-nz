@@ -6,14 +6,15 @@ import json
 from datetime import UTC, datetime
 
 import pytest
+
+from archive_govt_nz.ckan.client import ActionObservation, TransportAttempt
 from archive_govt_nz.ckan.discovery import (
     TreasuryDiscovery,
     TreasuryDiscoveryError,
     TreasuryScope,
     canonical_scope_manifest,
+    scope_report_markdown,
 )
-
-from archive_govt_nz.ckan.client import ActionObservation, TransportAttempt
 from archive_govt_nz.ckan.envelope import ActionResponse
 
 OBSERVED_AT = datetime(2026, 7, 31, 5, 20, tzinfo=UTC)
@@ -156,13 +157,19 @@ def test_preserves_raw_pages_and_builds_deterministic_scope_manifest() -> None:
     first = canonical_scope_manifest(scope)
     second = canonical_scope_manifest(scope)
     manifest = json.loads(first)
+    markdown = scope_report_markdown(scope)
 
     assert first == second
     assert first.endswith(b"\n")
+    assert markdown.startswith(b"# Treasury discovery scope\n")
+    assert markdown.endswith(b"\n")
+    assert first_page.raw_sha256.encode() in markdown
+    assert b"does not claim resource capture or publication" in markdown
     assert scope.organization.raw_body == organization_response.raw_body
     assert scope.pages[0].raw_body == first_page.raw_body
     assert scope.pages[0].raw_sha256 == first_page.raw_sha256
     assert manifest["schema_version"] == "archive-govt-nz.treasury-scope/v1"
+    assert manifest["observed_at"] == "2026-07-31T05:20:00Z"
     assert manifest["discovered_count"] == 2
     assert manifest["dataset_ids"] == ["dataset-a", "dataset-b"]
     assert manifest["pages"][0]["raw_sha256"] == first_page.raw_sha256
@@ -201,3 +208,113 @@ def test_exhausted_page_before_reported_count_fails_reconciliation() -> None:
         discover(client)
 
     assert raised.value.error_class == "count_reconciliation"
+
+
+def test_page_size_must_preserve_a_positive_progress_bound() -> None:
+    """Zero-sized pagination cannot enter the discovery loop."""
+    with pytest.raises(TreasuryDiscoveryError) as raised:
+        TreasuryDiscovery(FakeActionClient(), page_size=0)
+
+    assert raised.value.error_class == "page_size"
+
+
+def test_out_of_order_ids_fail_before_a_scope_is_accepted() -> None:
+    """The requested stable sort is verified rather than merely trusted."""
+    client = FakeActionClient(organisation(), page(2, "dataset-b", "dataset-a"))
+
+    with pytest.raises(TreasuryDiscoveryError) as raised:
+        discover(client)
+
+    assert raised.value.error_class == "dataset_order"
+
+
+def test_count_falling_below_already_observed_results_fails_closed() -> None:
+    """A downward drift cannot silently discard an already observed dataset."""
+    client = FakeActionClient(
+        organisation(),
+        make_observation(
+            {
+                "count": 1,
+                "results": [dataset("dataset-a"), dataset("dataset-b")],
+            }
+        ),
+    )
+
+    with pytest.raises(TreasuryDiscoveryError) as raised:
+        discover(client)
+
+    assert raised.value.error_class == "count_reconciliation"
+
+
+@pytest.mark.parametrize(
+    "result",
+    [
+        {"id": 7, "name": "the-treasury", "title": "The Treasury"},
+        {"id": "", "name": "the-treasury", "title": "The Treasury"},
+        {"id": "stable-id", "name": 7, "title": "The Treasury"},
+        {"id": "stable-id", "name": "the-treasury", "title": 7},
+    ],
+)
+def test_incomplete_organization_identity_is_terminal(
+    result: dict[str, object],
+) -> None:
+    """Every stable organisation identity field is required."""
+    with pytest.raises(TreasuryDiscoveryError) as raised:
+        discover(FakeActionClient(make_observation(result)))
+
+    assert raised.value.error_class == "organization_protocol"
+
+
+def test_resolved_organization_name_must_match_requested_slug() -> None:
+    """A valid but different organization cannot redefine Treasury scope."""
+    wrong = make_observation(
+        {"id": "stable-id", "name": "other-agency", "title": "Other Agency"}
+    )
+
+    with pytest.raises(TreasuryDiscoveryError) as raised:
+        discover(FakeActionClient(wrong))
+
+    assert raised.value.error_class == "organization_mismatch"
+
+
+@pytest.mark.parametrize(
+    "result",
+    [
+        {"count": "1", "results": []},
+        {"count": True, "results": []},
+        {"count": -1, "results": []},
+        {"count": 1, "results": {}},
+        {"count": 1, "results": ["not-a-dataset"]},
+    ],
+)
+def test_malformed_search_pages_are_terminal(result: dict[str, object]) -> None:
+    """Counts and results use exact CKAN-compatible structural types."""
+    client = FakeActionClient(organisation(), make_observation(result))
+
+    with pytest.raises(TreasuryDiscoveryError) as raised:
+        discover(client)
+
+    assert raised.value.error_class == "search_protocol"
+
+
+def test_empty_scope_and_optional_dataset_labels_are_representable() -> None:
+    """A genuine zero count and absent optional labels remain valid evidence."""
+    empty_scope = discover(FakeActionClient(organisation(), page(0)))
+    assert empty_scope.discovered_count == 0
+
+    search = make_observation(
+        {
+            "count": 1,
+            "results": [
+                {
+                    "id": "dataset-a",
+                    "name": 7,
+                    "metadata_modified": None,
+                }
+            ],
+        }
+    )
+    labelled_scope = discover(FakeActionClient(organisation(), search))
+
+    assert labelled_scope.datasets[0].name is None
+    assert labelled_scope.datasets[0].metadata_modified is None

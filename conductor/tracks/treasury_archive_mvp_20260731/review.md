@@ -222,3 +222,24 @@ Status: approved for track initialization
 - Errors expose bounded classes rather than affected dataset identifiers or
   raw payload detail.
 - The observed red failure is the intended absent-discovery-module condition.
+
+## Task self-review: Implement complete Treasury discovery
+
+- The Action protocol is narrow enough for deterministic fixtures and is
+  structurally compatible with the bounded production client.
+- The canonical organisation name is verified before being interpolated into
+  the CKAN filter; source results cannot redirect the scope to another agency.
+- Pagination advances by observed result length and verifies the requested
+  ascending stable-ID order.
+- Count increases are evidence, not errors. Counts below already observed
+  unique datasets are inconsistent and fail closed.
+- Duplicate IDs fail before ordering checks so the diagnostic class remains
+  precise; distinct descending IDs receive a separate ordering class.
+- Search counts reject booleans despite Python's integer subtype relationship.
+- Exact raw observations remain separate from compact reports; neither report
+  reserializes itself as claimed source bytes.
+- The paired reports use one observation time and stable hashes and explicitly
+  state that metadata discovery is not resource capture or publication.
+- All discovery branches are covered without exclusions.
+- Current live scope remains unclaimed until the separately bounded live task
+  observes and persists catalogue evidence.

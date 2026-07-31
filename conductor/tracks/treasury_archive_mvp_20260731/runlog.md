@@ -253,3 +253,23 @@
   `archive_govt_nz.ckan.discovery` implementation.
 - Ruff passes for the red contract file. All fixtures are in memory and no live
   catalogue operation occurred.
+
+## 2026-07-31 - Task: Implement complete Treasury discovery
+
+- Added a narrow Action-client protocol, stable organisation and dataset
+  records, exact raw page observations, reconciled scope records, and bounded
+  discovery errors.
+- Resolves `the-treasury`, verifies the returned canonical name and stable ID,
+  and uses the verified name in sorted `package_search` pagination.
+- Drives progress from every live reported count. Rising counts extend the run;
+  falling counts below observed results, premature empty pages, duplicate IDs,
+  missing IDs, and out-of-order results fail closed.
+- Preserves exact organisation and page bytes, SHA-256 values, UTC observation
+  times, page starts, page dataset IDs, and all reported counts.
+- Generates paired deterministic UTF-8 JSON and Markdown scope artefacts with a
+  dated observation, page receipts, and an explicit metadata-only limitation.
+- Focused result: 20 discovery tests and 100% of 138 statements and 24 branches.
+- Full result: 78 tests and 100% of 430 statements and 94 branches; Ruff,
+  strict Pyright, and source secret scan passed.
+- These results establish deterministic discovery machinery only. No current
+  live Treasury count or completeness claim is made.
