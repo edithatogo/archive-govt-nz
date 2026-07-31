@@ -56,6 +56,7 @@ ignore = [
 "tests/**/*.py" = ["INP001", "PLR2004", "S101", "S603"]
 "tools/**/*.py" = ["INP001", "T201"]
 "tools/supply_chain.py" = ["S603"]
+"tools/mutation_resource_policy.py" = ["S603", "S607"]
 
 [tool.pyright]
 include = ["src", "tests", "tools"]

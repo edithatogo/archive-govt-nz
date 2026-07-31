@@ -359,3 +359,24 @@ records and live evidence remain unchanged.
 | Canonical receipt | deterministic newline JSON | test contract only |
 
 The red phase fails only at the intended absent evaluator boundary.
+
+## Task evidence: Implement resource-policy evaluation
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Policy evaluator | passed local | pure typed `resource-policy/v1` kernel |
+| Dispositions | passed local | 7 explicit states |
+| Critical coverage | passed local | 127/127 statements; 44/44 branches |
+| Full suite | passed local | 137 tests; 100% measured coverage |
+| URL/redirect bounds | passed local | scheme, credentials, host, loop, count |
+| Rights/size/type/archive | passed local | restricted, oversized, quarantine, retry |
+| Filename handling | passed local | sanitized metadata; no path construction |
+| Static assurance | passed local | Ruff and strict Pyright: zero findings |
+| Secret scan | passed local | zero candidates after fixture redaction |
+| Mutation testing | passed local | 8/8 targeted critical mutants killed |
+| Payload access | none | evaluator remains side-effect free |
+
+Mutation hardening is now passed: the integrated gate killed 8/8 targeted
+critical-policy mutants in isolated temporary package copies. Native mutmut was
+not used because its Windows/WSL requirement is unavailable; mutatest was not
+used because its Python 3.14 runtime path fails before mutation execution.

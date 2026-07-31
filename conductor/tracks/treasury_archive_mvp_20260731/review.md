@@ -376,3 +376,20 @@ Status: approved for track initialization
 - Canonical decision bytes and explicit outcome closure establish the manifest
   contract needed for later ledger and publication stages.
 - The observed red failure is the intended absent policy-module condition.
+
+## Task self-review: Implement resource-policy evaluation
+
+- The evaluator is pure and cannot silently download, write, decompress, or
+  publish content; it consumes only bounded preflight evidence.
+- URL credentials, cleartext/local schemes, redirect downgrades, cross-host
+  redirects, loops, and excessive hops receive terminal bounded reasons.
+- Rights ambiguity is restricted, transient rate limiting is retryable, and
+  type/archive safety conflicts are quarantined rather than eligible.
+- Sanitized filenames are returned only as display metadata and never used as
+  object paths.
+- Policy overrides validate their own bounds and preserve the policy version.
+- Every critical branch is covered and eight targeted mutations were killed by
+  the integrated assurance stage in isolated temporary package copies.
+- Native third-party mutation tools were not silently treated as passing: their
+  Windows/WSL and Python 3.14 limitations were recorded, and the bounded
+  repository-owned runner provides the executable evidence available here.

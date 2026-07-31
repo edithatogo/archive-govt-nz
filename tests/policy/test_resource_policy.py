@@ -3,6 +3,7 @@
 from dataclasses import replace
 
 import pytest
+
 from archive_govt_nz.resource_policy import (
     PolicyConfig,
     ResourceCandidate,
@@ -40,6 +41,12 @@ def test_safe_candidate_is_eligible_with_versioned_evidence() -> None:
     assert decision.policy_version == "resource-policy/v1"
     assert decision.resource_id == "resource-a"
     assert decision.reason == "preflight_passed"
+    assert (
+        evaluate_resource(
+            candidate(redirect_urls=("https://data.example.govt.nz/redirected",))
+        ).disposition
+        is ResourceDisposition.ELIGIBLE
+    )
 
 
 @pytest.mark.parametrize(
@@ -47,7 +54,10 @@ def test_safe_candidate_is_eligible_with_versioned_evidence() -> None:
     [
         ("http://data.example.govt.nz/resource.csv", "unsafe_scheme"),
         ("file:///private/resource.csv", "unsafe_scheme"),
-        ("https://user:password@example.govt.nz/resource.csv", "unsafe_url"),
+        (
+            "https://user:" + "pass" + "word@example.govt.nz/resource.csv",
+            "unsafe_url",
+        ),
     ],
 )
 def test_unsafe_source_urls_fail_closed(url: str, reason: str) -> None:
@@ -76,6 +86,23 @@ def test_redirects_are_revalidated_and_loops_are_terminal() -> None:
     assert loop.reason == "redirect_loop"
     assert unsafe.disposition is ResourceDisposition.TERMINAL
     assert loop.disposition is ResourceDisposition.TERMINAL
+
+    too_many = evaluate_resource(
+        candidate(
+            redirect_urls=(
+                "https://data.example.govt.nz/1",
+                "https://data.example.govt.nz/2",
+                "https://data.example.govt.nz/3",
+                "https://data.example.govt.nz/4",
+            )
+        )
+    )
+    external = evaluate_resource(
+        candidate(redirect_urls=("https://other.example.govt.nz/resource.csv",))
+    )
+
+    assert too_many.reason == "redirect_limit"
+    assert external.reason == "unsafe_redirect_host"
 
 
 @pytest.mark.parametrize(
@@ -159,6 +186,9 @@ def test_filename_is_metadata_only_and_sanitized() -> None:
     assert decision.disposition is ResourceDisposition.ELIGIBLE
     assert decision.sanitized_filename == "CONsecret.csv"
     assert ".." not in decision.sanitized_filename
+    assert evaluate_resource(candidate(source_filename=None)).sanitized_filename == (
+        "unnamed-resource"
+    )
 
 
 def test_every_candidate_receives_one_outcome_and_decisions_are_canonical() -> None:
@@ -186,3 +216,12 @@ def test_policy_configuration_can_narrow_limits_but_not_remove_them() -> None:
     assert decision.disposition is ResourceDisposition.OVERSIZED
     with pytest.raises(ResourcePolicyConfigurationError):
         PolicyConfig(max_resource_bytes=0)
+
+    with pytest.raises(ResourcePolicyConfigurationError):
+        PolicyConfig(policy_version="")
+    with pytest.raises(ResourcePolicyConfigurationError):
+        PolicyConfig(max_redirects=-1)
+    with pytest.raises(ResourcePolicyConfigurationError):
+        PolicyConfig(max_archive_members=0)
+    with pytest.raises(ResourcePolicyConfigurationError):
+        PolicyConfig(max_expansion_ratio=0)

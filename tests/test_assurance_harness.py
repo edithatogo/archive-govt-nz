@@ -62,6 +62,7 @@ def test_repository_gate_lists_all_required_stages() -> None:
         "types",
         "tests",
         "schemas",
+        "mutation",
         "audit",
         "licenses",
         "secrets",

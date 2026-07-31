@@ -155,12 +155,12 @@
   - [x] Test that every resource receives an explicit outcome
   - [x] Run and record the expected red phase
 
-- [ ] Task: Implement resource-policy evaluation [M-05]
-  - [ ] Implement preflight and independent type evidence
-  - [ ] Sanitize source filenames as metadata only
-  - [ ] Produce versioned decisions
-  - [ ] Make property tests green
-  - [ ] Mutation-test critical branches
+- [x] Task: Implement resource-policy evaluation [M-05]
+  - [x] Implement preflight and independent type evidence
+  - [x] Sanitize source filenames as metadata only
+  - [x] Produce versioned decisions
+  - [x] Make property tests green
+  - [x] Mutation-test critical branches
 
 - [ ] Task: Write failing object-store tests [M-07]
   - [ ] Test SHA-256, BLAKE3, atomic promotion, and deduplication verification

@@ -407,3 +407,35 @@
 - Expected red result: collection stops at `ModuleNotFoundError` for the absent
   `archive_govt_nz.resource_policy` implementation.
 - Ruff passes for the red contract file. No resource payload was accessed.
+
+## 2026-07-31 - Task: Implement resource-policy evaluation
+
+- Added a pure typed evaluator with `resource-policy/v1`, seven closed
+  dispositions, bounded configuration, and canonical decision receipts.
+- Enforced HTTPS, credential-free URLs, same-host redirect revalidation,
+  redirect loops and limits, rights states, declared byte limits, retryable
+  rate limits, terminal not-found, independent media-type conflict quarantine,
+  archive member and expansion-ratio quarantine, and metadata-only filename
+  sanitization.
+- No network, filesystem payload, decompression, or publication action occurs
+  in the evaluator; those boundaries remain owned by later capture/storage
+  stages.
+- Green focused result: 16 policy tests; evaluator 100% across 127 statements
+  and 44 branches.
+- Full result: 137 tests and 100% across 792 statements and 154 branches; Ruff,
+  strict Pyright, and secret scan passed.
+- Mutation testing remains an explicit hardening subtask before the Phase 3
+  checkpoint and is not claimed complete by this commit.
+
+## 2026-07-31 - Resource-policy mutation hardening
+
+- Native `mutmut` was assessed and rejected for this Windows environment because
+  it requires WSL. `mutatest` was assessed and rejected after a reproducible
+  Python 3.14 set-sampling incompatibility.
+- Added a repository-owned isolated mutation runner with eight targeted
+  critical-policy mutants. Each mutant runs the policy tests against a copied
+  package tree; the source worktree is never modified.
+- Mutation command: `uv run --locked python tools/mutation_resource_policy.py`.
+- Result: 8/8 mutants killed; receipt is generated under ignored `build/`.
+- Integrated the mutation runner as the repository assurance gate stage after
+  schema validation.

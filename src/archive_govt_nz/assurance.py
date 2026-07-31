@@ -35,6 +35,10 @@ STAGES = (
         ("uv", "run", "--locked", "python", "tools/validate_schemas.py"),
     ),
     GateStage(
+        "mutation",
+        ("uv", "run", "--locked", "python", "tools/mutation_resource_policy.py"),
+    ),
+    GateStage(
         "audit",
         ("uv", "run", "--locked", "python", "tools/supply_chain.py", "audit"),
     ),

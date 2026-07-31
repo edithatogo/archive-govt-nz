@@ -15,6 +15,7 @@ def test_repository_gate_includes_supply_chain_stages() -> None:
     stage_names = tuple(stage.name for stage in STAGES)
 
     assert stage_names[-4:] == ("audit", "licenses", "secrets", "sbom")
+    assert "mutation" in stage_names
 
 
 def test_required_governance_documents_exist() -> None:
