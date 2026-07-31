@@ -297,12 +297,13 @@
   - [ ] Obtain explicit capture/publication authority at the release gate
   - [ ] Produce a no-download operator preview
 
-- [ ] Task: Execute complete eligible Treasury capture [M-04, M-06]
+- [~] Task: Execute complete eligible Treasury capture [M-04, M-06]
+  - [x] Enumerate every resource under the approved policy
   - [ ] Attempt every resource under the approved policy
   - [ ] Preserve every raw dataset response
   - [ ] Record captured, unavailable, restricted, oversized, quarantined,
         retryable, and terminal outcomes
-  - [ ] Keep suspicious content outside publication roots
+  - [x] Keep suspicious content outside publication roots
   - [ ] Produce bounded progress and checkpoint evidence
 
 - [ ] Task: Reconcile complete capture coverage [M-13, M-14]

@@ -542,6 +542,12 @@
   reconciliation evidence is in `evidence/phase-6-pre-capture-reconciliation.*`.
 - Payload capture and publication remain gated and unstarted.
 
+## 2026-07-31 - Treasury capture planning inventory
+
+- Enumerated 91 resources across the current 54-dataset Treasury scope and
+  generated per-resource fail-closed policy decisions.
+- This is metadata-only planning; no payload bytes were downloaded or committed.
+
 ## 2026-07-31 - Recovery reconciliation foundation
 
 - Added restart-safe ledger/object-store reconciliation reporting verified,
