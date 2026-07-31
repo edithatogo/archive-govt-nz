@@ -43,6 +43,7 @@ def main() -> int:
                     {
                         "dataset_id": dataset.get("id"),
                         "resource_id": resource.get("id"),
+                        "source_url": resource.get("url"),
                         "decision": decision.as_dict(),
                     }
                 )

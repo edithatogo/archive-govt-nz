@@ -18,7 +18,7 @@ async def _probe(
     """Probe one HTTPS URL with HEAD and bounded redirect handling."""
     async with semaphore:
         decision = cast("dict[str, Any]", resource["decision"])
-        url = decision.get("source_url")
+        url = resource.get("source_url")
         if not isinstance(url, str) or not url.startswith("https://"):
             return {"resource_id": resource.get("resource_id"), "state": "unsafe_url"}
         current = url

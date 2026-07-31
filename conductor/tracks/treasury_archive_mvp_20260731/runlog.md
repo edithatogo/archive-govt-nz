@@ -570,6 +570,13 @@
   was started.
 - A bounded live preflight is required before any resource can become eligible.
 
+## 2026-07-31 - Authorized Treasury resource preflight
+
+- Ran the authorized HTTPS `HEAD` preflight over all 91 resources with no body
+  transfer. Results: 17 HTTPS observations, 12 status-200 candidates, 5 status
+  403 unavailable, and 74 non-HTTPS policy-restricted URLs.
+- Paired summary evidence is in `evidence/phase-6-preflight-summary.*`.
+
 ## 2026-07-31 - Recovery reconciliation foundation
 
 - Added restart-safe ledger/object-store reconciliation reporting verified,

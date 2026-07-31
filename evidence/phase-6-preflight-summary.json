@@ -1,0 +1,15 @@
+{
+  "schema_version": "archive-govt-nz.phase-6-preflight-summary/v1",
+  "preflight": "build/live/preflight-20260731T173027.json",
+  "body_transfer": false,
+  "probed": 91,
+  "states": {
+    "observed": 17,
+    "unsafe_url": 74
+  },
+  "observed_status_codes": {
+    "200": 12,
+    "403": 5
+  },
+  "interpretation": "Twelve HTTPS resources are candidates for bounded capture after independent type checks; five HTTPS targets returned 403 and remain unavailable; 74 non-HTTPS source URLs remain restricted by policy."
+}
