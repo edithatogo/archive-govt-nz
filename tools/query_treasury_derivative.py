@@ -8,6 +8,8 @@ from pathlib import Path
 
 import duckdb
 
+MAX_ROWS = 1000
+
 
 def main() -> int:
     """Execute one read-only query and emit JSON rows."""
@@ -16,17 +18,18 @@ def main() -> int:
     parser.add_argument("--sql", default="SELECT * FROM read_parquet(?) LIMIT 100")
     parser.add_argument("--limit", type=int, default=100)
     args = parser.parse_args()
-    if args.limit < 1 or args.limit > 1000:
-        raise SystemExit("limit must be between 1 and 1000")
+    if args.limit < 1 or args.limit > MAX_ROWS:
+        parser.error(f"limit must be between 1 and {MAX_ROWS}")
     if not args.parquet.is_file():
-        raise SystemExit("parquet file does not exist")
+        parser.error("parquet file does not exist")
     forbidden = ("insert ", "update ", "delete ", "copy ", "create ", "drop ", "alter ")
     if any(token in args.sql.lower() for token in forbidden):
-        raise SystemExit("mutating SQL is not permitted")
+        parser.error("mutating SQL is not permitted")
     with duckdb.connect(":memory:") as connection:
         rows = connection.execute(args.sql, [str(args.parquet)]).fetchmany(args.limit)
         columns = [item[0] for item in connection.description]
-    print(json.dumps([dict(zip(columns, row, strict=True)) for row in rows], default=str))
+    output = [dict(zip(columns, row, strict=True)) for row in rows]
+    print(json.dumps(output, default=str))
     return 0
 
 

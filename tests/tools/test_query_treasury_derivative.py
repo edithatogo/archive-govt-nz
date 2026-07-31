@@ -5,9 +5,10 @@ from pathlib import Path
 
 
 def test_query_command_reads_derivative() -> None:
+    """The command returns the expected row count from the canonical derivative."""
     root = Path(__file__).parents[2]
     result = subprocess.run(
-        [
+        [  # noqa: S607
             "uv",
             "run",
             "--locked",
