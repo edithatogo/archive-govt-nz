@@ -1,0 +1,9 @@
+{
+  "schema_version": "archive-govt-nz.phase-6-rights-classification/v1",
+  "source": "build/live/reconcile-20260731T164949/raw/package_search-*.json",
+  "dataset_count": 54,
+  "license_counts": {"CC-BY-4.0": 54},
+  "rights_state": "dataset-level licence observed; resource-level and legal exception review remains open",
+  "publication_candidate": "CC-BY-4.0 attribution required",
+  "limitations": ["resource-specific rights exceptions not independently reviewed", "withdrawal/privacy/security checks remain required"]
+}

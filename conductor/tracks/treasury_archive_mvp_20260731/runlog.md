@@ -593,6 +593,12 @@
 - The failure is recorded in `evidence/phase-8-hf-derivative-viewer-diagnosis.json`; Viewer readiness and Zenodo DOI gates remain unclaimed.
 - A nested GitHub follow-up issue was attempted but GitHub API rate limiting prevented creation; retry is required when the API window resets.
 
+## 2026-07-31 - Treasury rights classification
+
+- Read-only reconciliation found `CC-BY-4.0` at dataset level for all 54 Treasury datasets.
+- This supports attribution-based publication candidates but does not waive resource-specific rights, privacy, security, withdrawal, or exception review.
+- Receipt: `evidence/phase-6-rights-classification.json`.
+
 ## 2026-07-31 - Recovery reconciliation foundation
 
 - Added restart-safe ledger/object-store reconciliation reporting verified,
