@@ -179,3 +179,22 @@
   `uv run --locked pytest tests/ckan/test_envelope.py tests/ckan/test_redaction.py -q`.
 - Expected red result: two collection errors because
   `archive_govt_nz.ckan` does not exist.
+
+## 2026-07-31 - Task: Implement the CKAN envelope and redaction kernel
+
+- Added typed immutable successful Action responses and bounded exception
+  classes for protocol, Action, HTTP-status, timeout, and unknown transport
+  outcomes.
+- HTTP and CKAN envelope states are validated independently. Unknown failures
+  default terminal and exception text is not retained.
+- Added recursive copy-on-redact behavior for mappings and lists, normalized
+  sensitive field matching, and query-aware URL redaction.
+- Corrected the redaction assertion from four to five markers: the fixture
+  contains Authorization, Cookie, API key, token, and AWS signature values.
+- Green command:
+  `uv run --locked pytest tests/ckan/test_envelope.py tests/ckan/test_redaction.py -q`.
+- Final focused result: 19 tests passed in 0.92 seconds with 100% line and
+  branch coverage for CKAN modules; strict Pyright reported no errors.
+- Refined the remaining async HTTP client work into separate red and green tasks
+  so raw transport, retry, timing, user-agent, and observation contracts are not
+  claimed by this kernel.

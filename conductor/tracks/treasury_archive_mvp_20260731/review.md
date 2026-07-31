@@ -152,3 +152,15 @@ Status: approved for track initialization
 - Redaction tests preserve safe query/identifier evidence and source
   immutability while removing headers, nested keys, and signed URL values.
 - The red failure is the intended absent-module condition.
+
+## Task self-review: Implement the CKAN envelope and redaction kernel
+
+- Complete envelopes are required before HTTP or Action classification.
+- Unknown transport exceptions fail terminal and do not enter retry loops.
+- Diagnostic exceptions retain stable classes and bounded parsed evidence, not
+  private source exception text.
+- URL redaction operates on parsed query keys and retains non-sensitive
+  parameters.
+- Redaction copies mappings/lists and cannot mutate captured originals.
+- Raw-byte receipts, async transport, timing, user agent, and retry scheduling
+  are explicitly not claimed and remain in the next red/green task pair.

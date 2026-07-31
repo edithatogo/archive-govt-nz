@@ -1,6 +1,7 @@
 """CKAN Action API envelope and transport classification contracts."""
 
 import pytest
+
 from archive_govt_nz.ckan.envelope import (
     CkanActionError,
     CkanProtocolError,
@@ -34,6 +35,17 @@ def test_error_envelope_on_http_200_is_an_action_failure() -> None:
 
     assert raised.value.retryable is False
     assert raised.value.error_type == "Validation Error"
+
+
+def test_success_envelope_on_non_200_remains_a_transport_failure() -> None:
+    """A success-shaped document cannot override a failed HTTP transport status."""
+    document = {"success": True, "result": {"ckan_version": "2.10.9"}}
+
+    with pytest.raises(CkanTransportError) as raised:
+        interpret_action_response(503, document)
+
+    assert raised.value.retryable is True
+    assert raised.value.response_document == document
 
 
 @pytest.mark.parametrize("status_code", [429, 500, 502, 503, 504])

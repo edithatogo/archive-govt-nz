@@ -74,12 +74,26 @@
   - [x] Test sensitive-value redaction
   - [x] Run and record the expected red phase
 
-- [ ] Task: Implement the bounded CKAN client [M-02, S-02]
-  - [ ] Use the versioned Action API and identifiable user agent
-  - [ ] Implement time bounds, retry limits, backoff, and jitter
-  - [ ] Preserve raw responses and bounded transport metadata
+- [x] Task: Implement the CKAN envelope and redaction kernel [M-02, S-02]
+  - [x] Validate success and error envelopes independently of HTTP status
+  - [x] Classify retryable, terminal, timeout, and unknown failures
+  - [x] Redact sensitive headers, nested values, and signed query parameters
+  - [x] Preserve source documents without mutation
+  - [x] Make focused capability contracts green
+
+- [ ] Task: Write failing bounded CKAN HTTP client tests [M-02, S-02]
+  - [ ] Test the versioned Action API path and identifiable user agent
+  - [ ] Test time bounds, retry limits, backoff, and jitter
+  - [ ] Test raw response and bounded transport receipts
+  - [ ] Test capability observation records
+  - [ ] Run and record the expected red phase
+
+- [ ] Task: Implement the bounded CKAN HTTP client [M-02, S-02]
+  - [ ] Use async streamed HTTP with explicit resource bounds
+  - [ ] Apply retry policy only to classified safe failures
+  - [ ] Preserve raw responses and redacted transport metadata
   - [ ] Record catalogue and CKAN capability observations
-  - [ ] Make capability tests green
+  - [ ] Make bounded client tests green
 
 - [ ] Task: Write failing Treasury discovery tests [M-03]
   - [ ] Test organisation name and stable-ID resolution

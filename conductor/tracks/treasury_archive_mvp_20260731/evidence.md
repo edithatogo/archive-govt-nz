@@ -163,3 +163,16 @@ not installed dependencies or supported-feature claims.
 No live request, source payload, credential, or publication action occurred.
 The next task owns the smallest bounded implementation that makes these
 contracts green.
+
+## Task evidence: Implement the CKAN envelope and redaction kernel
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Focused tests | passed local | 19 tests in 0.92 seconds |
+| Critical coverage | passed local | 100% line and branch for CKAN modules |
+| Strict typing | passed local | 0 errors |
+| Envelope semantics | verified local | HTTP and CKAN states classified independently |
+| Retry semantics | verified local | only explicit transient statuses and timeouts retryable |
+| Redaction | verified local | five sensitive values removed; safe evidence retained |
+| Source immutability | verified local | input document unchanged |
+| Live CKAN | not accessed | HTTP client remains the next bounded tasks |
