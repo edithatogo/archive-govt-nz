@@ -1,7 +1,7 @@
 {
   "schema_version": "archive-govt-nz.phase-8-hf-publication-verification/v1",
   "repository": "edithatogo/archive-govt-nz-treasury",
-  "revision": "770865bed626711b6bab773061892822270a0f98",
+  "revision": "9924909441a33db06c796e4b9fd668c247793d36",
   "remote_url": "https://huggingface.co/datasets/edithatogo/archive-govt-nz-treasury",
   "verified_at": "2026-07-31",
   "file_count": 28,
@@ -15,5 +15,12 @@
     "row_count": 54
   },
   "viewer_status": "remote-parquet-endpoint-500",
-  "viewer_note": "Parquet/JSONL derivatives are uploaded; Dataset Viewer parquet discovery returned HTTP 500 and requires follow-up diagnosis."
+  "viewer_diagnosis": {
+    "initial_cause": "Viewer selected evidence/preservation-packaging-evaluation.json as default/test instead of Treasury derivatives.",
+    "corrections": ["moved raw extensionless objects out of data/", "removed evidence and metadata JSON files from Hub", "removed duplicate derivative sources", "retained data/treasury.parquet as sole Viewer source"],
+    "local_parquet_validation": "54 rows and six typed columns read successfully",
+    "remaining_cause": "Dataset Viewer conversion endpoint continues returning HTTP 500 after layout correction; likely remote conversion/cache failure rather than invalid Parquet.",
+    "direct_download_verified": true
+  },
+  "viewer_note": "Viewer readiness remains unverified despite a locally valid and directly downloadable Parquet file."
 }
