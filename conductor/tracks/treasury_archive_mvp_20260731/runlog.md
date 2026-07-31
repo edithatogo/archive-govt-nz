@@ -601,6 +601,15 @@
 - Candidate preparation test passes; exact Hugging Face revision reconciliation
   remains open because no remote publication has occurred.
 
+## 2026-07-31 - Expanded assurance methods
+
+- Added deterministic simulation primitives with permutation and addition
+  metamorphic tests.
+- Added explicit publication contract tests covering both Hugging Face and
+  Zenodo state invariants.
+- Existing Hypothesis property tests, branch coverage, and mutation suites
+  remain active; CI now exports Cobertura XML and uploads it to Codecov.
+
 ## 2026-07-31 - Dependency lane foundation
 
 - Added a read-only scheduled dependency/pre-release compatibility lane.
