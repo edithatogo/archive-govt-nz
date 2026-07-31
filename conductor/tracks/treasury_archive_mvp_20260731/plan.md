@@ -68,11 +68,11 @@
 
 ## Phase 2: CKAN capability and Treasury scope discovery
 
-- [ ] Task: Write failing CKAN envelope and capability tests [M-02]
-  - [ ] Test CKAN success and error envelopes independently of HTTP status
-  - [ ] Test non-200, malformed, timeout, retryable, and terminal outcomes
-  - [ ] Test sensitive-value redaction
-  - [ ] Run and record the expected red phase
+- [x] Task: Write failing CKAN envelope and capability tests [M-02]
+  - [x] Test CKAN success and error envelopes independently of HTTP status
+  - [x] Test non-200, malformed, timeout, retryable, and terminal outcomes
+  - [x] Test sensitive-value redaction
+  - [x] Run and record the expected red phase
 
 - [ ] Task: Implement the bounded CKAN client [M-02, S-02]
   - [ ] Use the versioned Action API and identifiable user agent

@@ -151,3 +151,15 @@ The paired machine-readable checkpoint is
 Upstream observation is recorded in
 `conductor/upstream-evaluation.md`. Draft PRs #86 and #161 are research inputs,
 not installed dependencies or supported-feature claims.
+
+## Task evidence: Write failing CKAN envelope and capability tests
+
+| Contract | Expected red result | Observed |
+| --- | --- | --- |
+| Envelope classification | CKAN module absent | `ModuleNotFoundError` |
+| Sensitive-value redaction | CKAN module absent | `ModuleNotFoundError` |
+| Collection outcome | both contract modules fail | 2 collection errors |
+
+No live request, source payload, credential, or publication action occurred.
+The next task owns the smallest bounded implementation that makes these
+contracts green.

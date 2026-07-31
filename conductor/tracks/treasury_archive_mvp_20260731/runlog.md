@@ -166,3 +166,16 @@
   seconds with 100% measured line and branch coverage; two schemas validated;
   OSV reported no known vulnerabilities; licence, secret, and 69-component
   CycloneDX SBOM controls passed.
+
+## 2026-07-31 - Task: Write failing CKAN envelope and capability tests
+
+- Added public contracts for CKAN Action success and error envelopes independent
+  of HTTP transport status.
+- Added retryable 429/5xx, terminal 404, malformed document, timeout, unknown
+  transport failure, nested credential, header, and signed-URL cases.
+- Required unknown failures to default terminal and diagnostic strings to omit
+  private exception details.
+- Red command:
+  `uv run --locked pytest tests/ckan/test_envelope.py tests/ckan/test_redaction.py -q`.
+- Expected red result: two collection errors because
+  `archive_govt_nz.ckan` does not exist.

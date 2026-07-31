@@ -142,3 +142,13 @@ Status: approved for track initialization
   stable. Its useful concepts are implemented through tested local contracts.
 - Conditional worktrees avoid imposing experimental isolation on the current
   clean sequential Windows/OneDrive checkout.
+
+## Task self-review: Write failing CKAN envelope and capability tests
+
+- Tests separate CKAN's envelope-level `success` value from HTTP status.
+- Retryable and terminal statuses are explicit and bounded.
+- Malformed documents cannot become successful results.
+- Timeout and unknown transport errors do not expose source exception text.
+- Redaction tests preserve safe query/identifier evidence and source
+  immutability while removing headers, nested keys, and signed URL values.
+- The red failure is the intended absent-module condition.
