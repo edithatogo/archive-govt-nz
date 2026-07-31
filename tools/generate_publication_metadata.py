@@ -20,6 +20,14 @@ dataset_info:
       dtype: string
   homepage: https://catalogue.data.govt.nz/organization/the-treasury
   license: unknown
+  language:
+    - en
+tags:
+  - new-zealand
+  - government-data
+  - treasury
+  - public-finance
+  - ckan
 ---
 
 # Archive Govt NZ — Treasury evidence preview
@@ -36,11 +44,12 @@ This is a prepared, evidence-first archive preview. It is not published yet.
 
 Original metadata and source files remain distinct from derivatives. Rights,
 withdrawal, restriction, and transformation decisions are recorded in the
-versioned manifests and evidence ledger.
+versioned manifests and evidence ledger. Collection membership and namespace
+remain provisional pending estate reconciliation.
 """
     zenodo = {
         "title": "Archive Govt NZ — Treasury evidence preview",
-        "description": "Evidence-first, checksum-pinned Treasury archive preview; not yet published.",
+        "description": "Evidence-first, checksum-pinned Treasury archive preview with 12 locally captured resources; not yet published.",
         "upload_type": "dataset",
         "access_right": "open",
         "license": "other",
@@ -48,7 +57,7 @@ versioned manifests and evidence ledger.
         "publication_state": "prepared-not-published",
         "doi_authorized": False,
         "limitations": [
-            "payload_capture_not_complete",
+            "payload_capture_scope_limited_to_12_preflight_approved_resources",
             "rights_review_incomplete",
             "no_remote_upload",
         ],

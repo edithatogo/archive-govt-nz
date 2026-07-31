@@ -1,6 +1,6 @@
 {
   "title": "Archive Govt NZ \u2014 Treasury evidence preview",
-  "description": "Evidence-first, checksum-pinned Treasury archive preview; not yet published.",
+  "description": "Evidence-first, checksum-pinned Treasury archive preview with 12 locally captured resources; not yet published.",
   "upload_type": "dataset",
   "access_right": "open",
   "license": "other",
@@ -8,7 +8,7 @@
   "publication_state": "prepared-not-published",
   "doi_authorized": false,
   "limitations": [
-    "payload_capture_not_complete",
+    "payload_capture_scope_limited_to_12_preflight_approved_resources",
     "rights_review_incomplete",
     "no_remote_upload"
   ]

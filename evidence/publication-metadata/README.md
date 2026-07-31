@@ -6,6 +6,14 @@ dataset_info:
       dtype: string
   homepage: https://catalogue.data.govt.nz/organization/the-treasury
   license: unknown
+  language:
+    - en
+tags:
+  - new-zealand
+  - government-data
+  - treasury
+  - public-finance
+  - ckan
 ---
 
 # Archive Govt NZ — Treasury evidence preview
@@ -22,4 +30,5 @@ This is a prepared, evidence-first archive preview. It is not published yet.
 
 Original metadata and source files remain distinct from derivatives. Rights,
 withdrawal, restriction, and transformation decisions are recorded in the
-versioned manifests and evidence ledger.
+versioned manifests and evidence ledger. Collection membership and namespace
+remain provisional pending estate reconciliation.

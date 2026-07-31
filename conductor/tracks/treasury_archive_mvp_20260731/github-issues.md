@@ -21,6 +21,11 @@ The parent issue must link to:
 7. [#8 Hardened CI/CD and scheduled archival](https://github.com/edithatogo/archive-govt-nz/issues/8)
 8. [#9 Rolling Hugging Face publication](https://github.com/edithatogo/archive-govt-nz/issues/9)
 9. [#10 Immutable Zenodo release](https://github.com/edithatogo/archive-govt-nz/issues/10)
+10. [#16 Publication metadata, taxonomy, and remote archival readiness](https://github.com/edithatogo/archive-govt-nz/issues/16)
+    - [#17 Shared dataset taxonomy and collection alignment](https://github.com/edithatogo/archive-govt-nz/issues/17)
+    - [#18 Complete publication metadata and provenance records](https://github.com/edithatogo/archive-govt-nz/issues/18)
+    - [#19 Rolling Hugging Face publication](https://github.com/edithatogo/archive-govt-nz/issues/19)
+    - [#20 Immutable Zenodo release](https://github.com/edithatogo/archive-govt-nz/issues/20)
 10. [#11 MVP closeout and next-scope handoff](https://github.com/edithatogo/archive-govt-nz/issues/11)
 
 ## Cross-cutting subissues
