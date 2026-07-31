@@ -105,6 +105,76 @@ class Ledger:
         except sqlite3.IntegrityError:
             raise LedgerError("duplicate_observation") from None
 
+    def record_attempt(
+        self,
+        attempt_id: str,
+        observation_id: str,
+        state: str,
+        payload: dict[str, object],
+    ) -> None:
+        """Record one capture attempt linked to an observation."""
+        self._insert_entity(
+            "attempts",
+            (attempt_id, observation_id, state, _canonical(payload)),
+            "attempt",
+        )
+
+    def record_object(
+        self, object_id: str, sha256: str, blake3: str, byte_count: int, role: str
+    ) -> None:
+        """Record one immutable object receipt."""
+        if byte_count < 0:
+            raise LedgerError("invalid_object")
+        try:
+            with self.connection:
+                self.connection.execute(
+                    "INSERT INTO objects(object_id,sha256,blake3,byte_count,role) VALUES (?,?,?,?,?)",
+                    (object_id, sha256, blake3, byte_count, role),
+                )
+        except sqlite3.IntegrityError:
+            raise LedgerError("duplicate_object") from None
+
+    def record_version(
+        self,
+        version_id: str,
+        observation_id: str,
+        state: str,
+        payload: dict[str, object],
+    ) -> None:
+        """Record one version linked to an observation."""
+        self._insert_entity(
+            "versions",
+            (version_id, observation_id, state, _canonical(payload)),
+            "version",
+        )
+
+    def record_publication(
+        self,
+        publication_id: str,
+        version_id: str,
+        target: str,
+        state: str,
+        payload: dict[str, object],
+    ) -> None:
+        """Record one gated publication outcome linked to a version."""
+        self._insert_entity(
+            "publications",
+            (publication_id, version_id, target, state, _canonical(payload)),
+            "publication",
+        )
+
+    def _insert_entity(
+        self, table: str, values: tuple[object, ...], label: str
+    ) -> None:
+        try:
+            with self.connection:
+                placeholders = ",".join("?" for _ in values)
+                self.connection.execute(
+                    f"INSERT INTO {table} VALUES ({placeholders})", values
+                )
+        except sqlite3.IntegrityError:
+            raise LedgerError(f"invalid_or_duplicate_{label}") from None
+
     def export(self) -> list[dict[str, object]]:
         """Export observations and checkpoints deterministically."""
         rows = self.connection.execute(

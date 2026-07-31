@@ -35,3 +35,17 @@ def test_blank_checkpoint_is_rejected(tmp_path: Path) -> None:
     with pytest.raises(LedgerError) as raised:
         Ledger(tmp_path / "ledger.sqlite").checkpoint(" ", "x")
     assert raised.value.error_class == "invalid_checkpoint"
+
+
+def test_related_entities_are_transactionally_linked(tmp_path: Path) -> None:
+    """Attempts, objects, versions, and publications retain relationships."""
+    ledger = Ledger(tmp_path / "ledger.sqlite")
+    ledger.record_observation("obs", {"dataset": "treasury"})
+    ledger.record_attempt("attempt", "obs", "captured", {"status": 200})
+    ledger.record_object("sha256:x", "x", "y", 2, "source")
+    ledger.record_version("version", "obs", "material", {"object_id": "sha256:x"})
+    ledger.record_publication("publication", "version", "huggingface", "prepared", {})
+    with pytest.raises(LedgerError) as raised:
+        ledger.record_attempt("orphan", "missing", "failed", {})
+    assert raised.value.error_class == "invalid_or_duplicate_attempt"
+    ledger.close()

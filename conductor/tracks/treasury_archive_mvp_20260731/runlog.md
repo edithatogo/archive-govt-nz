@@ -468,3 +468,9 @@
 
 - Added WAL-enabled SQLite migrations with foreign keys, observation uniqueness, checkpoints, and deterministic export.
 - Focused result: 3 ledger tests passed. Attempt/object/version/publication write APIs remain the next ledger increment.
+
+## 2026-07-31 - Ledger relationship writes
+
+- Added transactional attempt, object, version, and publication inserts with
+  foreign-key linkage and stable duplicate/orphan error classes.
+- Focused ledger result: 4 tests passed, including relationship enforcement.
