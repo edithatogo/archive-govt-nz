@@ -3,7 +3,7 @@
   "description": "Evidence-first, checksum-pinned Treasury archive preview with 12 locally captured resources; not yet published.",
   "upload_type": "dataset",
   "access_right": "open",
-  "license": "other",
+  "license": "cc-by-4.0",
   "version": "preview-0.1",
   "publication_state": "prepared-not-published",
   "doi_authorized": false,

@@ -19,7 +19,7 @@ dataset_info:
     - name: dataset_id
       dtype: string
   homepage: https://catalogue.data.govt.nz/organization/the-treasury
-  license: unknown
+  license: cc-by-4.0
   language:
     - en
 tags:
@@ -45,14 +45,15 @@ This is a prepared, evidence-first archive preview. It is not published yet.
 Original metadata and source files remain distinct from derivatives. Rights,
 withdrawal, restriction, and transformation decisions are recorded in the
 versioned manifests and evidence ledger. The namespace is aligned to
-`edithatogo`; collection membership and source licence remain gated decisions.
+`edithatogo`. Dataset-level licensing is observed as CC-BY-4.0; resource-level
+rights, withdrawal, privacy, and security exceptions remain gated.
 """
     zenodo = {
         "title": "Archive Govt NZ — Treasury evidence preview",
         "description": "Evidence-first, checksum-pinned Treasury archive preview with 12 locally captured resources; not yet published.",
         "upload_type": "dataset",
         "access_right": "open",
-        "license": "other",
+        "license": "cc-by-4.0",
         "version": "preview-0.1",
         "publication_state": "prepared-not-published",
         "doi_authorized": False,
