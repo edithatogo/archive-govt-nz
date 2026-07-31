@@ -586,6 +586,14 @@
 - Package state is `prepared-not-published`; no DOI or remote side effect is
   created. Focused reproducibility test passed.
 
+## 2026-07-31 - Treasury release candidate preview
+
+- Prepared a checksum-pinned local candidate from seven verified evidence/SBOM
+  artefacts. The manifest explicitly records no DOI, no remote upload, and
+  incomplete payload capture.
+- Candidate preparation test passes; exact Hugging Face revision reconciliation
+  remains open because no remote publication has occurred.
+
 ## 2026-07-31 - Dependency lane foundation
 
 - Added a read-only scheduled dependency/pre-release compatibility lane.

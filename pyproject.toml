@@ -75,6 +75,7 @@ ignore = [
 "tests/recovery/**/*.py" = ["TC003"]
 "tests/publication/**/*.py" = ["TC003"]
 "tests/release/**/*.py" = ["TC003"]
+"tests/release/test_prepare_treasury_release.py" = ["S607"]
 "tools/**/*.py" = ["INP001", "T201"]
 "tools/supply_chain.py" = ["S603"]
 "tools/mutation_resource_policy.py" = ["S603", "S607"]

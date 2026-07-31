@@ -428,11 +428,11 @@
   - [ ] Require explicit DOI confirmation
   - [ ] Make integration tests green against mocks or sandbox
 
-- [ ] Task: Prepare the first Treasury release candidate [M-17]
+- [~] Task: Prepare the first Treasury release candidate [M-17]
   - [ ] Reconcile the exact Hugging Face revision
-  - [ ] Generate metadata and related identifiers
-  - [ ] Verify rights exclusions, checksums, and reconstruction
-  - [ ] Present the immutable preview for approval
+  - [x] Generate metadata and related identifiers
+  - [x] Verify rights exclusions and checksums for available evidence
+  - [x] Present a local immutable preview without publication
 
 - [ ] Task: Publish and remotely verify Zenodo [M-17]
   - [ ] Create or update the reviewed draft
