@@ -214,3 +214,26 @@
   `archive_govt_nz.ckan.client` implementation.
 - Ruff passes for the red contract file. No catalogue access, credential,
   payload capture, or publication action occurred.
+
+## 2026-07-31 - Task: Implement the bounded CKAN HTTP client
+
+- Added an async context-managed HTTPX client with an explicit catalogue URL,
+  user agent, timeout, maximum attempts, exponential backoff, jitter, response
+  byte limit, disabled redirects, and identity content encoding.
+- Streamed unbuffered bodies incrementally and bounded pre-buffered test
+  responses independently of trusted `Content-Length` metadata.
+- Restricted Action names to stable identifiers so caller input cannot alter
+  the versioned `/api/3/action/` path.
+- Classified timeouts and network errors as bounded retry candidates. Unknown
+  HTTPX failures and terminal statuses fail without retry or private exception
+  text.
+- Preserved exact received bytes, SHA-256, UTC observation time, safe response
+  headers, and per-attempt status/error-class receipts.
+- Added typed capability observations requiring string CKAN version and site
+  identity fields.
+- Green focused result: 18 client tests; 100% of 165 statements and 40
+  branches; Ruff and strict Pyright clean.
+- Green CKAN result: 37 tests. Full result: 58 tests and 100% of 292 statements
+  and 70 branches. Source secret scan passed.
+- No live request, Treasury discovery, credential, capture, upload, or release
+  occurred.

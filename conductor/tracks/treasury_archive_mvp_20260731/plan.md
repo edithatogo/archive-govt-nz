@@ -88,12 +88,12 @@
   - [x] Test capability observation records
   - [x] Run and record the expected red phase
 
-- [ ] Task: Implement the bounded CKAN HTTP client [M-02, S-02]
-  - [ ] Use async streamed HTTP with explicit resource bounds
-  - [ ] Apply retry policy only to classified safe failures
-  - [ ] Preserve raw responses and redacted transport metadata
-  - [ ] Record catalogue and CKAN capability observations
-  - [ ] Make bounded client tests green
+- [x] Task: Implement the bounded CKAN HTTP client [M-02, S-02]
+  - [x] Use async streamed HTTP with explicit resource bounds
+  - [x] Apply retry policy only to classified safe failures
+  - [x] Preserve raw responses and redacted transport metadata
+  - [x] Record catalogue and CKAN capability observations
+  - [x] Make bounded client tests green
 
 - [ ] Task: Write failing Treasury discovery tests [M-03]
   - [ ] Test organisation name and stable-ID resolution

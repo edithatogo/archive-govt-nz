@@ -180,3 +180,27 @@ Status: approved for track initialization
 - The production lock uses current stable releases; prerelease compatibility
   remains an isolated later lane and cannot rewrite the production lock.
 - The observed red failure is the intended absent-client-module condition.
+
+## Task self-review: Implement the bounded CKAN HTTP client
+
+- All configured resource controls reject zero, negative, absent, or unsupported
+  values before a request.
+- Disabling redirects prevents an Action call from silently crossing catalogue
+  boundaries; later resource capture owns separately bounded redirect policy.
+- Identity content encoding makes the retained body meaningful as the received
+  entity bytes and avoids transparent decompression ambiguity.
+- `Content-Length` is used only as an early rejection signal. Missing or invalid
+  values still traverse the incremental byte counter.
+- Buffered mock responses and unbuffered transport streams exercise distinct
+  limit branches.
+- Retries require both a known-safe class and remaining budget. There is no
+  unbounded loop, and deterministic tests prove exhaustion.
+- Attempt records contain stable classes, status codes, and times but never
+  source exception strings, cookies, or unrestricted headers.
+- Capability evidence requires both deployed CKAN version and site identity;
+  incomplete status output is terminal protocol failure.
+- ckanapi remains locked for upstream-compatible utilities, while the raw
+  Action transport is intentionally owned here because evidence receipts and
+  safety bounds are archive-critical behavior.
+- Critical and overall line and branch coverage are 100%, with no exclusion in
+  the client module.

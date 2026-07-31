@@ -190,3 +190,23 @@ contracts green.
 The red phase failed at the intended missing implementation boundary. The
 contracts use only an in-memory transport; they do not establish live CKAN,
 Treasury scope, archive capture, or publication evidence.
+
+## Task evidence: Implement the bounded CKAN HTTP client
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Focused contracts | passed local | 18 tests |
+| Critical coverage | passed local | 165/165 statements; 40/40 branches |
+| Complete CKAN suite | passed local | 37 tests |
+| Complete repository suite | passed local | 58 tests; 100% measured coverage |
+| Static assurance | passed local | Ruff and strict Pyright: zero findings |
+| Source secret scan | passed local | zero candidates |
+| Streaming bound | verified local | declared and incremental over-limit paths fail closed |
+| Retry bound | verified local | terminal, exhaustion, timeout, network, and unknown paths |
+| Receipt redaction | verified local | allowlisted headers; no cookie or exception detail |
+| Live CKAN | not accessed | deterministic in-memory transport only |
+
+The implementation retains exact received response bytes under identity
+encoding and records their SHA-256 separately from the parsed CKAN envelope.
+It does not claim that the catalogue supports a particular CKAN version until a
+later bounded live observation is captured and hashed.
