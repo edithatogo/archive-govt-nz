@@ -1,13 +1,19 @@
 {
   "schema_version": "archive-govt-nz.phase-8-hf-publication-verification/v1",
   "repository": "edithatogo/archive-govt-nz-treasury",
-  "revision": "e82319823d8fe56b8160e49907006dfc8b6bc83e",
+  "revision": "770865bed626711b6bab773061892822270a0f98",
   "remote_url": "https://huggingface.co/datasets/edithatogo/archive-govt-nz-treasury",
   "verified_at": "2026-07-31",
-  "file_count": 25,
+  "file_count": 28,
   "captured_object_count": 12,
   "publication_state": "uploaded-remotely-verified",
   "collection_membership": "not-set",
   "zenodo_state": "not-published",
-  "viewer_note": "Raw content-addressed objects are preserved; Parquet/JSONL derivatives are not yet uploaded, so Viewer compatibility remains incomplete."
+  "derivatives": {
+    "jsonl_sha256": "811a92eda6856e251e889ce5db131ab48cd1259ae620c53be84199458954d7ef",
+    "parquet_sha256": "81343e70e5d4129d2539fc1f622cb6ec4b0742e5f9a3e99f594e387c8401cf00",
+    "row_count": 54
+  },
+  "viewer_status": "remote-parquet-endpoint-500",
+  "viewer_note": "Parquet/JSONL derivatives are uploaded; Dataset Viewer parquet discovery returned HTTP 500 and requires follow-up diagnosis."
 }
