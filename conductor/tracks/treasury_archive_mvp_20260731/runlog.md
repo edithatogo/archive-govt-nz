@@ -503,3 +503,10 @@
   derivatives with DuckDB row-count reconciliation.
 - Unknown CKAN fields are explicitly reported as information loss rather than
   silently presented as preserved data. Focused derivative test passed.
+
+## 2026-07-31 - Derivative dependency security correction
+
+- The first full gate identified the published Apache Arrow advisory in
+  `pyarrow 22.0.0`; release progression stopped at the audit stage.
+- Upgraded to fixed `pyarrow 23.0.1`; dependency audit now passes with no known
+  vulnerabilities. This correction is required before derivative publication.
