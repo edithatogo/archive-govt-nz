@@ -130,12 +130,12 @@
         transformation, validation, and publication schemas
   - [x] Define compatibility and migration rules
 
-- [ ] Task: Write failing schema and invariant tests [M-10]
-  - [ ] Test valid minimal and complete records
-  - [ ] Test missing identifiers, invalid times, and invalid transitions
-  - [ ] Test original and derivative role separation
-  - [ ] Test deterministic canonical serialization
-  - [ ] Run and record the expected red phase
+- [x] Task: Write failing schema and invariant tests [M-10]
+  - [x] Test valid minimal and complete records
+  - [x] Test missing identifiers, invalid times, and invalid transitions
+  - [x] Test original and derivative role separation
+  - [x] Test deterministic canonical serialization
+  - [x] Run and record the expected red phase
 
 - [ ] Task: Implement typed domain models and schemas [M-10]
   - [ ] Map typed models to JSON Schema

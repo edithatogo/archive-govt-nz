@@ -311,3 +311,18 @@ Status: approved for track initialization
   non-finite numbers.
 - This task is a contract only. The next task must demonstrate the intended red
   boundary before models or JSON Schemas are implemented.
+
+## Task self-review: Write failing schema and invariant tests
+
+- Every planned record kind has a representative record; no kind can be omitted
+  while still passing the parameterized catalogue contract.
+- Common provenance failures are tested uniformly across all ten schemas.
+- The object-role contract prevents an invented hybrid role from obscuring
+  whether bytes are original or derived.
+- Publication tests distinguish prepared, uploaded, remotely verified, and DOI
+  states without claiming that any remote action occurred.
+- Canonicalization is compared across reversed insertion order and requires a
+  trailing newline.
+- Non-standard JSON floating-point values fail rather than producing
+  platform-dependent hashes.
+- The red failure is the intended absent-record-module condition.

@@ -339,3 +339,19 @@
   SQLite or Parquet.
 - The contract is in `schema-design.md`. No schema implementation or stored
   resource record is claimed by this documentation task.
+
+## 2026-07-31 - Task: Write failing schema and invariant tests
+
+- Added representative records for all ten v1 schema kinds and required an
+  executable Draft 2020-12 schema for each.
+- Applied common missing-ID, undeclared-field, and non-UTC-time rejection
+  contracts across every record kind.
+- Added object-role separation, early DOI rejection, complete remote
+  verification, stable canonical bytes, trailing newline, and non-finite-number
+  rejection contracts.
+- Red command:
+  `uv run --locked pytest tests/records/test_archive_records.py -q`.
+- Expected red result: collection stops at `ModuleNotFoundError` for the absent
+  `archive_govt_nz.records` implementation.
+- Ruff passes for the red contract file. No archive record or resource payload
+  was created by the red phase.

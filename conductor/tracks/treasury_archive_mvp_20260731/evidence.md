@@ -303,3 +303,17 @@ The paired machine-readable checkpoint is
 | Migration | specified | non-destructive receipt-bearing transformation |
 | Canonical bytes | specified | deterministic UTF-8 JSON plus newline |
 | Runtime schemas | not implemented | next red/green tasks |
+
+## Task evidence: Write failing schema and invariant tests
+
+| Contract | Expected red result | Observed |
+| --- | --- | --- |
+| Record module | archive record API absent | `ModuleNotFoundError` |
+| Collection outcome | implementation cannot be imported | 1 collection error |
+| Schema catalogue | all 10 v1 kinds executable | test contract only |
+| Common invariants | ID, UTC, closed properties | test contract only |
+| State invariants | object role and publication evidence | test contract only |
+| Canonicalization | stable JSON; NaN terminal | test contract only |
+
+The red phase fails only at the absent implementation boundary. Existing CKAN
+records and live evidence remain unchanged.
