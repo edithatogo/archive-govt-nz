@@ -14,6 +14,8 @@ from archive_govt_nz.batch_capture import BatchBudget, admit_batch
 from archive_govt_nz.capture import CaptureConfig, CaptureError, capture_url
 from archive_govt_nz.object_store import ContentAddressedStore
 
+HTTP_OK = 200
+
 
 async def _run(args: argparse.Namespace) -> int:
     """Capture eligible URLs under one bounded budget."""
@@ -22,8 +24,28 @@ async def _run(args: argparse.Namespace) -> int:
         return 0
     plan = json.loads(args.plan.read_text(encoding="utf-8"))
     outcomes = plan.get("outcomes", [])
+    preflight: dict[str, Any] | None = None
+    if args.preflight:
+        preflight = cast(
+            "dict[str, Any]",
+            json.loads(args.preflight.read_text(encoding="utf-8")),
+        )
+    preflight_results = cast(
+        "list[dict[str, Any]]", (preflight or {}).get("results", [])
+    )
+    observed: set[object] = {
+        item.get("resource_id")
+        for item in preflight_results
+        if item.get("state") == "observed"
+        and item.get("status_code") == HTTP_OK
+    }
     eligible = [
-        item for item in outcomes if item["decision"]["disposition"] == "eligible"
+        item
+        for item in outcomes
+        if (
+            item["decision"]["disposition"] == "eligible"
+            or (preflight is not None and item.get("resource_id") in observed)
+        )
     ]
     decision = admit_batch(
         BatchBudget(
@@ -47,7 +69,7 @@ async def _run(args: argparse.Namespace) -> int:
         async with semaphore:
             resource = item["resource_id"]
             decision_record = cast("dict[str, Any]", item["decision"])
-            url = decision_record.get("source_url")
+            url = item.get("source_url") or decision_record.get("source_url")
             if not isinstance(url, str) or not url.startswith("https://"):
                 results.append(
                     {
@@ -108,6 +130,7 @@ def main() -> int:
     parser.add_argument("--plan", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--object-root", type=Path, required=True)
+    parser.add_argument("--preflight", type=Path)
     parser.add_argument("--enable", action="store_true")
     parser.add_argument("--max-total-bytes", type=int, default=10 * 1024 * 1024 * 1024)
     parser.add_argument("--max-resources", type=int, default=1000)

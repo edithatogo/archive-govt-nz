@@ -577,6 +577,14 @@
   403 unavailable, and 74 non-HTTPS policy-restricted URLs.
 - Paired summary evidence is in `evidence/phase-6-preflight-summary.*`.
 
+## 2026-07-31 - Bounded Treasury payload capture
+
+- Captured all 12 HTTP-200 HTTPS resources selected by the authorized preflight.
+- Enforced 512 MiB per-resource, 10 GiB batch, and concurrency-4 limits.
+- Stored 12 content-addressed objects under the ignored local object store.
+- No publication was attempted; 403 and non-HTTPS resources remain explicitly unavailable/restricted.
+- Paired evidence is in `evidence/phase-6-capture-summary.*` and the run receipt is `build/live/capture-20260731.json`.
+
 ## 2026-07-31 - Recovery reconciliation foundation
 
 - Added restart-safe ledger/object-store reconciliation reporting verified,

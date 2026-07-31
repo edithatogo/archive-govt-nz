@@ -1,0 +1,16 @@
+{
+  "schema_version": "archive-govt-nz.phase-6-capture-summary/v1",
+  "capture_run": "build/live/capture-20260731.json",
+  "preflight": "build/live/preflight-20260731T173027.json",
+  "payload_transfer": true,
+  "attempted": 12,
+  "captured": 12,
+  "failed": 0,
+  "object_store": "build/objects",
+  "limits": {
+    "max_resource_bytes": 536870912,
+    "max_total_bytes": 10737418240,
+    "concurrency": 4
+  },
+  "publication": "not attempted"
+}
