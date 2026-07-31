@@ -1,0 +1,63 @@
+"""Run isolated targeted mutants against critical version decisions."""
+
+from __future__ import annotations
+
+import json
+import os
+import shutil
+import subprocess
+import tempfile
+from pathlib import Path
+from typing import Any
+
+ROOT = Path(__file__).resolve().parents[1]
+SOURCE = ROOT / "src/archive_govt_nz/versioning.py"
+MUTANTS = {
+    "withdrawal_state": ("VersionState.TOMBSTONE,", "VersionState.CHANGED,"),
+    "unchanged_state": ("VersionState.UNCHANGED,", "VersionState.CHANGED,"),
+    "change_reason": ('"material_change"', '"no_material_change"'),
+}
+
+
+def main() -> int:
+    """Run all targeted mutants and emit a machine-readable receipt."""
+    results: list[dict[str, Any]] = []
+    for name, (needle, replacement) in MUTANTS.items():
+        with tempfile.TemporaryDirectory(prefix="archive-version-mutant-") as directory:
+            root = Path(directory)
+            package = root / "archive_govt_nz"
+            shutil.copytree(ROOT / "src/archive_govt_nz", package)
+            mutated = package / "versioning.py"
+            text = mutated.read_text(encoding="utf-8")
+            if needle not in text:
+                raise RuntimeError(f"mutant target missing: {name}")
+            mutated.write_text(text.replace(needle, replacement, 1), encoding="utf-8")
+            result = subprocess.run(
+                [
+                    "uv",
+                    "run",
+                    "--locked",
+                    "pytest",
+                    "tests/versioning/test_versioning.py",
+                    "-q",
+                ],
+                cwd=ROOT,
+                env={"PYTHONPATH": str(root), **os.environ},
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            results.append({"name": name, "killed": result.returncode != 0})
+    payload = {
+        "schema_version": "archive-govt-nz.mutation-versioning/v1",
+        "source": str(SOURCE.relative_to(ROOT)),
+        "mutants": results,
+        "killed": sum(item["killed"] for item in results),
+        "total": len(results),
+    }
+    print(json.dumps(payload, separators=(",", ":")))
+    return 0 if payload["killed"] == payload["total"] else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

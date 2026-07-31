@@ -23,6 +23,7 @@ def test_material_change_and_tombstone_preserve_previous() -> None:
     )
     tombstone = decide_version(previous, previous, withdrawn=True)
     assert changed.state == VersionState.CHANGED
+    assert changed.reason == "material_change"
     assert tombstone.state == VersionState.TOMBSTONE
     assert tombstone.previous_fingerprint == tombstone.fingerprint
     assert tombstone.reason == "source_withdrawn"

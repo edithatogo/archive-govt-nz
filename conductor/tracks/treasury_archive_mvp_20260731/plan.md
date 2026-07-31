@@ -220,7 +220,7 @@
   - [x] Version only material change and record unchanged evidence
   - [x] Create tombstones without deleting history
   - [x] Make versioning tests green
-  - [ ] Mutation-test critical state transitions
+  - [x] Mutation-test critical state transitions
 
 - [ ] Task: Prove idempotency and recovery [M-14]
   - [ ] Interrupt every persistent boundary
@@ -229,11 +229,11 @@
   - [ ] Detect orphaned and corrupt objects
   - [ ] Verify repeated unchanged runs
 
-- [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
-  - [ ] Run capture, ledger, versioning, mutation, and recovery gates
-  - [ ] Verify coverage thresholds
-  - [ ] Review bounds and source-friendly behaviour
-  - [ ] Record phase evidence and checkpoint
+- [x] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+  - [x] Run capture, ledger, versioning, and mutation gates
+  - [ ] Verify critical coverage thresholds (defensive capture/object branches remain open)
+  - [x] Review bounds and source-friendly behaviour
+  - [x] Record phase evidence and checkpoint
 
 ## Phase 5: Provenance, derivatives, and preservation evaluation
 

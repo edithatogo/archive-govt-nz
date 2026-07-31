@@ -481,3 +481,11 @@
   explicit initial, unchanged, changed, and tombstone decisions.
 - Focused result: 2 versioning tests passed. Resource disappearance and policy
   transition mutation coverage remain open.
+
+## 2026-07-31 - Phase 4 verification checkpoint
+
+- Added isolated version-transition mutation testing: 3/3 targeted mutants
+  killed and integrated it as an assurance stage.
+- Full gate passed: 153 tests, 97.60% total coverage, schemas, both mutation
+  suites, audits, secrets, and SBOM. Defensive capture/object-store branches
+  remain below the critical 100% target and are recorded explicitly.
