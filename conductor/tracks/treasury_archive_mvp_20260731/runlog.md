@@ -565,6 +565,14 @@
 - Attestation state is explicitly `prepared-not-published`, unsigned, and
   unauthorized until release credentials and approval gates are satisfied.
 
+## 2026-07-31 - Publication contract foundation
+
+- Added a shared credential-safe contract for Hugging Face rolling archives and
+  Zenodo immutable releases.
+- Default preparation is non-mutating; enabled publication without the target
+  token fails closed, and remote side effects are not implemented implicitly.
+- Two publication safety tests pass.
+
 ## 2026-07-31 - Derivative dependency security correction
 
 - The first full gate identified the published Apache Arrow advisory in

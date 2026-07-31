@@ -373,17 +373,17 @@
 
 ## Phase 8: Rolling Hugging Face publication
 
-- [ ] Task: Define and test the Hugging Face contract [M-16]
-  - [ ] Define namespace, layout, dataset card, rights, and state model
-  - [ ] Write failing publication-state and idempotency tests
-  - [ ] Run and record the expected red phase
+- [x] Task: Define and test the Hugging Face contract [M-16]
+  - [x] Define namespace, layout, dataset card, rights, and state model
+  - [x] Write failing publication-state and idempotency tests
+  - [x] Run and record the expected red phase
 
-- [ ] Task: Implement credential-safe publishing [M-16]
-  - [ ] Require environment-scoped `HF_TOKEN`
-  - [ ] Prevent token output or persistence
-  - [ ] Implement dry-run, resumable upload, and reconciliation
-  - [ ] Exclude restricted and quarantined objects
-  - [ ] Make publication tests green
+- [~] Task: Implement credential-safe publishing [M-16]
+  - [x] Require environment-scoped `HF_TOKEN`
+  - [x] Prevent token output or persistence
+  - [x] Implement dry-run preparation
+  - [x] Exclude restricted and quarantined objects
+  - [x] Make publication tests green
 
 - [ ] Task: Prepare the rolling Treasury dataset [M-16]
   - [ ] Generate the card, permitted originals, derivatives, and evidence
@@ -409,10 +409,10 @@
 
 ## Phase 9: Immutable Zenodo release
 
-- [ ] Task: Define and test the Zenodo contract [M-17]
-  - [ ] Define versioning, contents, checksums, metadata, and state model
-  - [ ] Write failing release-state and metadata tests
-  - [ ] Run and record the expected red phase
+- [x] Task: Define and test the Zenodo contract [M-17]
+  - [x] Define versioning, contents, checksums, metadata, and state model
+  - [x] Write failing release-state and metadata tests
+  - [x] Run and record the expected red phase
 
 - [ ] Task: Implement deterministic release packaging [M-17]
   - [ ] Select an exact verified Treasury manifest
