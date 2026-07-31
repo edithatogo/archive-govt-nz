@@ -1,0 +1,11 @@
+{
+  "schema_version": "archive-govt-nz.phase-8-hf-derivative-viewer-diagnosis/v1",
+  "repository": "edithatogo/archive-govt-nz-treasury-data",
+  "latest_revision": "dfb18d76aaf66fc770d9555464b87b2af33a036c",
+  "direct_download": "verified",
+  "local_parquet": {"rows": 54, "columns": 6, "compression_tested": ["zstd", "snappy"]},
+  "viewer_endpoints": {"is_valid": "HTTP 500", "splits": "HTTP 500", "parquet": "HTTP 500", "first_rows": "HTTP 500", "size": "HTTP 500", "statistics": "HTTP 500"},
+  "attempted_layouts": ["minimal derivative-only repository", "canonical train-00000-of-00001.parquet", "minimal dataset card", "Snappy-compressed Parquet"],
+  "conclusion": "The artifact is locally valid and directly downloadable; the Dataset Viewer conversion service rejects this repository independently of layout, card complexity, or Parquet compression.",
+  "next_action": "retain Viewer-unverified state, open/support or wait for service diagnosis, and do not claim Viewer readiness"
+}
