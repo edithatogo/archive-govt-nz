@@ -378,3 +378,19 @@
 - Full result: 121 tests and 100% across 665 statements and 110 branches; 12
   schemas and two representative documents validated; Ruff, strict Pyright,
   and secret scan passed.
+
+## 2026-07-31 - Task: Define the fail-closed resource policy
+
+- Defined `resource-policy/v1` decision order, network and storage bounds,
+  redirect revalidation, decompression and archive-member controls, independent
+  type evidence, source-filename handling, rights states, retry classes,
+  quarantine behavior, tombstones, and exception requirements.
+- Defaults are explicit: HTTPS, three redirects, bounded 10-second connect and
+  60-second read timeouts, 15-minute total transfer, 512 MiB compressed and
+  1 GiB decompressed bytes, 10,000 archive members, 100:1 expansion ratio,
+  three retries, four concurrent resources, and 2 GiB temporary storage.
+- The policy prohibits silent omission, credential or cookie retention,
+  publication of restricted/quarantined bytes, history deletion, and DOI
+  creation through an override.
+- The policy contract is in `resource-policy.md`. Evaluation and property
+  tests are the next red/green task; no resource payload was downloaded.

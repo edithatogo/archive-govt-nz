@@ -332,3 +332,16 @@ records and live evidence remain unchanged.
 | Static assurance | passed local | Ruff and strict Pyright: zero findings |
 | Secret scan | passed local | zero candidates |
 | Archive payloads | not created | schemas and synthetic records only |
+
+## Task evidence: Define the fail-closed resource policy
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Policy version | specified | `resource-policy/v1` |
+| Network bounds | specified | schemes, redirects, time, bytes, retries |
+| Archive safety | specified | decompression, members, ratios, paths |
+| Type evidence | specified | independent magic/content inspection |
+| Rights states | specified | eligible, restricted, unavailable, quarantine |
+| Exception gate | specified | bounded, expiring, auditable, no destructive bypass |
+| Property evaluator | not implemented | next red/green task |
+| Resource payloads | not accessed | metadata and policy documentation only |

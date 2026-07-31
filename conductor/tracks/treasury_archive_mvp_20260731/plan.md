@@ -143,11 +143,11 @@
   - [x] Generate and validate deterministic schemas
   - [x] Make schema tests green
 
-- [ ] Task: Define the fail-closed resource policy [M-05]
-  - [ ] Version scheme, redirect, time, byte, storage, and concurrency rules
-  - [ ] Define decompression, archive-member, type, and filename rules
-  - [ ] Define rights, access, quarantine, retry, and exception states
-  - [ ] Document operator override and audit requirements
+- [x] Task: Define the fail-closed resource policy [M-05]
+  - [x] Version scheme, redirect, time, byte, storage, and concurrency rules
+  - [x] Define decompression, archive-member, type, and filename rules
+  - [x] Define rights, access, quarantine, retry, and exception states
+  - [x] Document operator override and audit requirements
 
 - [ ] Task: Write failing resource-policy property tests [M-05, M-18]
   - [ ] Generate unsafe schemes, redirects, names, types, sizes, and archives

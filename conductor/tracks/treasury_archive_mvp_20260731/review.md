@@ -345,3 +345,20 @@ Status: approved for track initialization
   or perform a publication.
 - All record validation and canonicalization branches are covered without
   exclusions.
+
+## Task self-review: Define the fail-closed resource policy
+
+- The policy applies before and during transfer, so a safe preflight cannot
+  remove streaming bounds.
+- Redirect destinations are independently rechecked for scheme and host policy;
+  downgrade and loop behavior cannot become implicit acceptance.
+- Filename metadata is separated from object paths, preventing traversal and
+  reserved-name issues from becoming storage writes.
+- Independent type evidence, archive member limits, expansion ratio, links, and
+  encrypted members address common archive and content-confusion hazards.
+- Rights ambiguity, privacy, security, quarantine, and withdrawal are explicit
+  states, while tombstones preserve prior history.
+- Exceptions require bounded authority and expiry and cannot cross destructive,
+  credential, quarantine, or DOI gates.
+- The documented defaults are implementation inputs, not yet runtime evidence;
+  the next task must test every critical branch and generated disposition.
