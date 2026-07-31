@@ -23,6 +23,11 @@ def main() -> int:
         root / "evidence/archive-evidence-ledger.json",
         root / "evidence/release-attestation.json",
         root / "evidence/preservation-packaging-evaluation.json",
+        root / "evidence/phase-6-capture-summary.json",
+        root / "evidence/publication-metadata/README.md",
+        root / "evidence/publication-metadata/zenodo.json",
+        root / "evidence/publication-metadata/taxonomy.json",
+        root / "evidence/publication-metadata/hf-estate-observation.json",
         root / "build/sbom.cdx.json",
     ]
     if any(not file.is_file() for file in files):
@@ -49,7 +54,12 @@ def main() -> int:
             }
             for file in files
         ],
-        "limitations": ["payload_capture_not_complete", "no_doi", "no_remote_upload"],
+        "limitations": [
+            "captured_objects_remain_in_local_content_addressed_store",
+            "rights_review_incomplete",
+            "no_doi",
+            "no_remote_upload",
+        ],
     }
     (args.output_dir / "manifest.json").write_text(
         json.dumps(manifest, indent=2) + "\n", encoding="utf-8"
