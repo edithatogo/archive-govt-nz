@@ -1,0 +1,9 @@
+{
+  "schema_version": "archive-govt-nz.phase-8-hf-csv-viewer-diagnosis/v1",
+  "repository": "edithatogo/archive-govt-nz-treasury-csv",
+  "revision": "ee45a8a4377935099b0146671b80e9771022d8c9",
+  "rows": 54,
+  "direct_download": "uploaded",
+  "viewer_endpoints": {"is_valid": "HTTP 500", "splits": "HTTP 500", "rows": "HTTP 500"},
+  "conclusion": "A fresh CSV-only repository also fails all Viewer endpoints, demonstrating the fault is not specific to Parquet, repository layout, evidence files, or compression."
+}

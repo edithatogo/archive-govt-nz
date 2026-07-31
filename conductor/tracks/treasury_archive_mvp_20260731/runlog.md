@@ -599,6 +599,13 @@
 - This supports attribution-based publication candidates but does not waive resource-specific rights, privacy, security, withdrawal, or exception review.
 - Receipt: `evidence/phase-6-rights-classification.json`.
 
+## 2026-07-31 - CSV Viewer fallback diagnosis
+
+- Created fresh `edithatogo/archive-govt-nz-treasury-csv` with only a minimal card and 54-row CSV.
+- Viewer `is-valid`, `splits`, and `rows` endpoints all returned HTTP 500.
+- This rules out Parquet compression, mixed repository layout, evidence JSON, and raw-object placement as the sole cause.
+- Receipt: `evidence/phase-8-hf-csv-viewer-diagnosis.json`.
+
 ## 2026-07-31 - Recovery reconciliation foundation
 
 - Added restart-safe ledger/object-store reconciliation reporting verified,
