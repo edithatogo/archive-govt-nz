@@ -548,6 +548,13 @@
   generated per-resource fail-closed policy decisions.
 - This is metadata-only planning; no payload bytes were downloaded or committed.
 
+## 2026-07-31 - Batch capture budget controls
+
+- Added fail-closed batch admission decisions for total bytes, resource count,
+  and concurrency. Budget overruns are explicit and cannot start partial
+  unbounded work.
+- Three focused budget tests pass.
+
 ## 2026-07-31 - Recovery reconciliation foundation
 
 - Added restart-safe ledger/object-store reconciliation reporting verified,

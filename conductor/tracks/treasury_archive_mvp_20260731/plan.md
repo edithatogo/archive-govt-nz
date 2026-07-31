@@ -299,6 +299,7 @@
 
 - [~] Task: Execute complete eligible Treasury capture [M-04, M-06]
   - [x] Enumerate every resource under the approved policy
+  - [x] Enforce total-byte, resource-count, and concurrency budgets before transfer
   - [ ] Attempt every resource under the approved policy
   - [ ] Preserve every raw dataset response
   - [ ] Record captured, unavailable, restricted, oversized, quarantined,
