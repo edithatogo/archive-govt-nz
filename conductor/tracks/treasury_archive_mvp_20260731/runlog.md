@@ -555,6 +555,13 @@
   unbounded work.
 - Three focused budget tests pass.
 
+## 2026-07-31 - Explicit bounded capture runner
+
+- Added a resumable batch-runner seam consuming the 91-resource plan. It
+  defaults to no transfer, requires `--enable`, applies byte/count/concurrency
+  budgets, and writes per-resource outcome JSON outside Git-tracked payloads.
+- Offline no-transfer contract test passes.
+
 ## 2026-07-31 - Recovery reconciliation foundation
 
 - Added restart-safe ledger/object-store reconciliation reporting verified,
