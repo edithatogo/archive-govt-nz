@@ -458,3 +458,8 @@
 
 - Added bounded httpx capture with status classification, byte limits, and immutable promotion.
 - Focused result: 2 tests passed; redirect, validator, decompression, type, and quarantine controls remain open.
+
+## 2026-07-31 - Capture safety hardening
+
+- Added bounded redirect traversal, relative-location resolution, ETag/Last-Modified validation, timeout propagation, and redirect-loop failure classification.
+- Full gate: 147 tests, 97.72% coverage, strict Pyright/Ruff, schemas, mutation, audit, licence, secret, and SBOM checks passed.
