@@ -264,11 +264,12 @@
   - [x] Reconcile derivatives with DuckDB
   - [x] Make derivative tests green
 
-- [ ] Task: Implement material WARC receipts [M-12]
-  - [ ] Define material HTTP context
-  - [ ] Write failing WARC round-trip and redaction tests
-  - [ ] Generate and validate bounded WARC 1.1 records
-  - [ ] Verify object relationships and sensitive-value absence
+- [~] Task: Implement material WARC receipts [M-12]
+  - [x] Define material HTTP context
+  - [x] Write failing WARC round-trip and redaction tests
+  - [x] Generate bounded WARC 1.1 records
+  - [x] Verify sensitive-value absence
+  - [ ] Verify object relationships in release manifests
 
 - [ ] Task: Evaluate preservation packaging standards [S-01]
   - [ ] Create bounded Treasury-derived fixtures

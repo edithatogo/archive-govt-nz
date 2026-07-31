@@ -504,6 +504,14 @@
 - Unknown CKAN fields are explicitly reported as information loss rather than
   silently presented as preserved data. Focused derivative test passed.
 
+## 2026-07-31 - WARC transaction receipt foundation
+
+- Added bounded WARC 1.1 response receipts with payload digests, safe origin
+  URLs, and an allowlist of non-sensitive response headers.
+- Focused result: 2 WARC tests passed, including signed-query and
+  Authorization-header exclusion. Manifest relationship verification remains
+  open.
+
 ## 2026-07-31 - Derivative dependency security correction
 
 - The first full gate identified the published Apache Arrow advisory in
