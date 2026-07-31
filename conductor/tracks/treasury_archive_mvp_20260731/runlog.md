@@ -394,3 +394,16 @@
   creation through an override.
 - The policy contract is in `resource-policy.md`. Evaluation and property
   tests are the next red/green task; no resource payload was downloaded.
+
+## 2026-07-31 - Task: Write failing resource-policy property tests
+
+- Added deterministic contracts for unsafe schemes, embedded credentials,
+  redirect downgrade and loops, rights restriction, size limits, rate limiting,
+  source absence, independent type conflict, archive member and expansion
+  bounds, filename sanitization, explicit dispositions, canonical decisions,
+  and bounded configuration overrides.
+- Red command:
+  `uv run --locked pytest tests/policy/test_resource_policy.py -q`.
+- Expected red result: collection stops at `ModuleNotFoundError` for the absent
+  `archive_govt_nz.resource_policy` implementation.
+- Ruff passes for the red contract file. No resource payload was accessed.

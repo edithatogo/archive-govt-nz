@@ -362,3 +362,17 @@ Status: approved for track initialization
   credential, quarantine, or DOI gates.
 - The documented defaults are implementation inputs, not yet runtime evidence;
   the next task must test every critical branch and generated disposition.
+
+## Task self-review: Write failing resource-policy property tests
+
+- Tests cover both preflight and safety evidence and do not call the network or
+  inspect unbounded payloads.
+- Unsafe URL evidence includes cleartext, local schemes, and embedded
+  credentials; redirects are tested independently for downgrade and loops.
+- Rights ambiguity, rate limiting, not-found, size, type, and archive safety
+  outcomes are distinct dispositions rather than a generic skipped state.
+- Filename tests verify sanitization is metadata-only and cannot imply a storage
+  path.
+- Canonical decision bytes and explicit outcome closure establish the manifest
+  contract needed for later ledger and publication stages.
+- The observed red failure is the intended absent policy-module condition.

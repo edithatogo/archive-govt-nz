@@ -345,3 +345,17 @@ records and live evidence remain unchanged.
 | Exception gate | specified | bounded, expiring, auditable, no destructive bypass |
 | Property evaluator | not implemented | next red/green task |
 | Resource payloads | not accessed | metadata and policy documentation only |
+
+## Task evidence: Write failing resource-policy property tests
+
+| Contract | Expected red result | Observed |
+| --- | --- | --- |
+| Policy module | resource evaluator absent | `ModuleNotFoundError` |
+| URL safety | unsafe schemes and credentials terminal | test contract only |
+| Redirect safety | downgrade and loop terminal | test contract only |
+| Rights/limits | restricted, oversized, retryable explicit | test contract only |
+| Type/archive | conflict and bomb quarantine | test contract only |
+| Outcome closure | every candidate receives a disposition | test contract only |
+| Canonical receipt | deterministic newline JSON | test contract only |
+
+The red phase fails only at the intended absent evaluator boundary.

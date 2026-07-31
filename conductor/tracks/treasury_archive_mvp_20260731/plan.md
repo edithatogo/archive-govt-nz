@@ -149,11 +149,11 @@
   - [x] Define rights, access, quarantine, retry, and exception states
   - [x] Document operator override and audit requirements
 
-- [ ] Task: Write failing resource-policy property tests [M-05, M-18]
-  - [ ] Generate unsafe schemes, redirects, names, types, sizes, and archives
-  - [ ] Test restricted, oversized, quarantine, and retry transitions
-  - [ ] Test that every resource receives an explicit outcome
-  - [ ] Run and record the expected red phase
+- [x] Task: Write failing resource-policy property tests [M-05, M-18]
+  - [x] Generate unsafe schemes, redirects, names, types, sizes, and archives
+  - [x] Test restricted, oversized, quarantine, and retry transitions
+  - [x] Test that every resource receives an explicit outcome
+  - [x] Run and record the expected red phase
 
 - [ ] Task: Implement resource-policy evaluation [M-05]
   - [ ] Implement preflight and independent type evidence
