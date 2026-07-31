@@ -50,3 +50,21 @@ Status: approved for track initialization
 - Exit states are unique and leave conventional usage errors available.
 - The observed red failure was the intended absent-package condition.
 - No network, credential, publication, or payload access occurs in these tests.
+
+## Task self-review: Implement the Python 3.14 project foundation
+
+- The package installs from a locked Python 3.14 environment and builds as both
+  an sdist and a platform-independent wheel.
+- The public package version derives from distribution metadata, avoiding a
+  duplicated version constant.
+- CLI help and JSON version output are non-interactive and stable.
+- Exit-state values are explicit and tested as a public automation contract.
+- Configuration requires explicit caller input; no credentials or uncontrolled
+  environment values are loaded.
+- Cyclopts is a material stack decision and is now named in the project
+  technology guide.
+- No network, catalogue capture, payload, credential, or publication boundary
+  is crossed.
+- Static analysis, coverage enforcement, and the repository-wide gate are
+  intentionally owned by the next sequential Phase 1 task and are not claimed
+  by this task.

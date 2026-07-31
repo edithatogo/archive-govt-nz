@@ -25,11 +25,11 @@
   - [x] Test documented exit-state semantics
   - [x] Run and record the expected red phase
 
-- [ ] Task: Implement the Python 3.14 project foundation [M-01]
-  - [ ] Create `pyproject.toml`, dependency groups, and `uv.lock`
-  - [ ] Create the typed package and CLI entrypoint
-  - [ ] Add deterministic configuration loading
-  - [ ] Make bootstrap tests green
+- [x] Task: Implement the Python 3.14 project foundation [M-01]
+  - [x] Create `pyproject.toml`, dependency groups, and `uv.lock`
+  - [x] Create the typed package and CLI entrypoint
+  - [x] Add deterministic configuration loading
+  - [x] Make bootstrap tests green
 
 - [ ] Task: Establish the repository-wide assurance harness [M-01, M-18]
   - [ ] Configure Ruff, strict typing, pytest, and branch coverage

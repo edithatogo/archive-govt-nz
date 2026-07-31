@@ -50,3 +50,25 @@ reconcile the full live scope at each run.
 
 The red phase failed for the intended missing-implementation reason before any
 package code or dependency manifest existed.
+
+## Task evidence: Implement the Python 3.14 project foundation
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Runtime | verified local | CPython 3.14.6 selected by `uv` |
+| Resolution | verified local | `uv lock --python 3.14` resolved 14 packages |
+| Package | verified local | distribution metadata and import version agree |
+| CLI help | verified local | identifies `archive-govt-nz` and `version`; exit 0 |
+| CLI JSON | verified local | schema `archive-govt-nz.cli/v1`; deterministic compact JSON; exit 0 |
+| Exit states | verified local | six unique documented values from 0 through 50 |
+| Focused tests | passed local | 5 passed in 1.84 seconds |
+| Build | passed local | sdist and `py3-none-any` wheel built from locked sources |
+| Hosted CI | not configured | Phase 1 assurance and workflow tasks remain open |
+| Archive capture | not started | no catalogue metadata or resource payload was captured |
+| Publication | not started | no Hugging Face or Zenodo action occurred |
+
+Changed implementation files are `pyproject.toml`, `uv.lock`, `README.md`, and
+`src/archive_govt_nz/`. Cyclopts is recorded in `conductor/tech-stack.md`.
+Configuration currently accepts an explicit state directory only; environment
+and file formats will be introduced with typed schema and precedence tests in a
+later bounded task.

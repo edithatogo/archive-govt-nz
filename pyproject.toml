@@ -1,0 +1,26 @@
+[build-system]
+requires = ["uv_build>=0.11.29,<0.12.0"]
+build-backend = "uv_build"
+
+[project]
+name = "archive-govt-nz"
+version = "0.1.0"
+description = "Evidence-first archival tooling for New Zealand government data."
+readme = "README.md"
+requires-python = ">=3.14"
+license = "Apache-2.0"
+authors = [{ name = "edithatogo" }]
+dependencies = [
+  "cyclopts>=4.22.3,<5",
+]
+
+[project.scripts]
+archive-govt-nz = "archive_govt_nz.cli:main"
+
+[dependency-groups]
+dev = [
+  "pytest>=9.1.1,<10",
+]
+
+[tool.uv]
+package = true

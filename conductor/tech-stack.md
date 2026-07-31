@@ -71,7 +71,8 @@ need and must not become the sole route to archive evidence.
 - `ckanapi` for CKAN Action API interoperability.
 - `httpx` with `anyio` for async, streamed HTTP retrieval.
 - `pydantic` and `pydantic-settings` for typed contracts and configuration.
-- A typed CLI framework with structured JSON output and shell completion.
+- `cyclopts` for the typed CLI, non-interactive command contracts, and
+  structured JSON output.
 - `tenacity` or an equivalent bounded retry policy where retries are safe.
 - `orjson` only where benchmarks justify it; standards-compatible canonical
   serialization remains authoritative.

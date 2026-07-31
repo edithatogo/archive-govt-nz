@@ -41,3 +41,25 @@
   yet exist.
 - Observed a non-fatal transient Windows `uv` cache rename warning after pytest
   installation; it did not change the failure cause.
+
+## 2026-07-31 - Task: Implement the Python 3.14 project foundation
+
+- Added the `archive-govt-nz` distribution and `archive_govt_nz` source
+  package with a Python `>=3.14` runtime contract.
+- Selected Cyclopts 4.22.3 as the typed CLI framework and resolved the
+  production and development environment into `uv.lock`.
+- Added stable process outcome codes and deterministic JSON for
+  `version --format json`.
+- Added an immutable settings value object that resolves only explicit caller
+  input; ambient configuration discovery is intentionally deferred.
+- Green command:
+  `uv run --locked pytest tests/test_package_bootstrap.py tests/test_cli_bootstrap.py -q`
+- Final green result: 5 tests passed in 1.84 seconds on CPython 3.14.6,
+  including explicit configuration resolution.
+- Console-script checks:
+  `uv run --locked archive-govt-nz version --format json` and
+  `uv run --locked archive-govt-nz --help`; both exited successfully without
+  standard-error output.
+- Build check: `uv build --no-sources` produced the source distribution and
+  platform-independent wheel successfully. Generated `dist/` content remains
+  ignored and is not repository evidence.
