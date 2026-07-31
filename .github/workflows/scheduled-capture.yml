@@ -1,0 +1,31 @@
+name: Scheduled bounded capture
+
+on:
+  workflow_dispatch:
+    inputs:
+      enable_capture:
+        description: "Explicitly enable bounded payload capture"
+        required: true
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+concurrency:
+  group: scheduled-capture
+  cancel-in-progress: false
+
+jobs:
+  capture:
+    if: inputs.enable_capture == true
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - uses: actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d
+        with:
+          python-version: "3.14"
+      - run: python -m pip install uv
+      - name: Fail closed until capture command is explicitly released
+        run: echo "capture workflow is gated; no payload publication occurs here" && exit 1

@@ -549,6 +549,15 @@
 - Local recovery fixture passed; interruption-at-every-boundary and repeated
   unchanged-run proof remain open.
 
+## 2026-07-31 - CI/CD workflow foundation
+
+- Added immutable-pinned, least-privilege CI, scheduled read-only discovery,
+  and manually enabled capture workflows with concurrency controls.
+- Capture workflow fails closed until the bounded capture command is explicitly
+  released; no scheduled workflow publishes payloads.
+- Workflow policy test initially caught missing CI concurrency and now passes
+  after the correction.
+
 ## 2026-07-31 - Derivative dependency security correction
 
 - The first full gate identified the published Apache Arrow advisory in

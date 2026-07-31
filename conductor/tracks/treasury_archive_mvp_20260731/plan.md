@@ -333,28 +333,28 @@
 
 ## Phase 7: Hardened CI/CD and scheduled archival
 
-- [ ] Task: Write failing workflow-policy tests [M-15]
-  - [ ] Test permissions, immutable Action pins, and publication gates
-  - [ ] Test credential-free pull-request CI and payload exclusions
-  - [ ] Test logs and artefacts for sensitive values
-  - [ ] Run and record the expected red phase
+- [x] Task: Write failing workflow-policy tests [M-15]
+  - [x] Test permissions, immutable Action pins, and publication gates
+  - [x] Test credential-free pull-request CI and payload exclusions
+  - [x] Test logs and artefacts for sensitive values
+  - [x] Run and record the expected red phase
 
-- [ ] Task: Implement pull-request and main CI [M-15, S-03]
-  - [ ] Run quality, coverage, schema, dependency, licence, and security gates
-  - [ ] Generate SBOM and bounded evidence artefacts
-  - [ ] Make workflow-policy tests green
+- [~] Task: Implement pull-request and main CI [M-15, S-03]
+  - [x] Run quality, coverage, schema, dependency, licence, and security gates
+  - [x] Generate SBOM and bounded evidence artefacts
+  - [x] Make workflow-policy tests green
 
-- [ ] Task: Implement safe scheduled discovery [M-15]
-  - [ ] Use least-privilege read-only defaults
-  - [ ] Reconcile capability and Treasury scope
-  - [ ] Produce drift evidence without payload commits or publication
-  - [ ] Test concurrency controls
+- [x] Task: Implement safe scheduled discovery [M-15]
+  - [x] Use least-privilege read-only defaults
+  - [x] Reconcile capability and Treasury scope
+  - [x] Produce drift evidence without payload commits or publication
+  - [x] Test concurrency controls
 
-- [ ] Task: Implement scheduled capture controls [M-15]
-  - [ ] Require explicit enablement
+- [~] Task: Implement scheduled capture controls [M-15]
+  - [x] Require explicit enablement
   - [ ] Enforce storage, duration, concurrency, and source-rate budgets
   - [ ] Support resumable checkpoints and bounded failures
-  - [ ] Exclude quarantined and restricted objects
+  - [x] Exclude quarantined and restricted objects
 
 - [ ] Task: Implement dependency and pre-release lanes [S-04]
   - [ ] Configure focused dependency updates
