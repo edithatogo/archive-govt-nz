@@ -134,7 +134,10 @@ class CapabilityObservation:
     ckan_version: str
     site_url: str
     observed_at: datetime
+    raw_body: bytes
     raw_sha256: str
+    attempts: tuple[TransportAttempt, ...]
+    response_headers: Mapping[str, str]
 
 
 def _utc_now() -> datetime:
@@ -269,7 +272,10 @@ class BoundedCkanClient:
             ckan_version=ckan_version,
             site_url=site_url,
             observed_at=observation.observed_at,
+            raw_body=observation.raw_body,
             raw_sha256=observation.raw_sha256,
+            attempts=observation.attempts,
+            response_headers=observation.response_headers,
         )
 
     async def _request(
@@ -326,7 +332,7 @@ class BoundedCkanClient:
     def _decode_document(raw_body: bytes) -> JsonObject:
         try:
             document = json.loads(raw_body)
-        except (UnicodeDecodeError, json.JSONDecodeError):
+        except UnicodeDecodeError, json.JSONDecodeError:
             raise CkanProtocolError from None
         if not isinstance(document, dict):
             raise CkanProtocolError

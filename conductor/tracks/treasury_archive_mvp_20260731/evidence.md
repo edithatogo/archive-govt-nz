@@ -243,3 +243,27 @@ The discovery model represents a genuine zero-dataset result and retains
 optional CKAN labels without using them as identity. It refuses to report
 completeness when page ordering, identifiers, or live counts cannot be
 reconciled.
+
+## Task evidence: Add bounded live read-only contract checks
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Capability | observed local/live | CKAN 2.10.9; Action API v3 |
+| Catalogue identity | observed local/live | `https://catalogue.data.govt.nz` |
+| Treasury identity | observed local/live | stable ID `4d08a178-e03b-4e97-b79d-83d9a7a35744` |
+| Treasury scope | reconciled local/live | 54 unique datasets |
+| Pagination | reconciled local/live | starts 0, 25, 50; results 25, 25, 4 |
+| Count stability | observed local/live | reported 54 on all three pages |
+| Raw receipts | hashed local | 5 responses; about 277 KiB |
+| Scope report | hashed local | SHA-256 `bb72d7fb...75f8414c` |
+| Evidence writer | passed deterministic | atomic raw and paired report promotion |
+| Licence inventory | passed local | explicit Artistic alternative for `text-unidecode` 1.3 |
+| Secret scan | passed local | checksum receipt lines classified separately |
+| SBOM | passed local | validated CycloneDX 1.6; 79 components |
+| Resource payloads | not requested | metadata-only operation |
+| Hosted schedule | not configured | planned Phase 7 work |
+
+The authoritative bounded summary is
+`evidence/phase-2-live-observation.json`; its Markdown companion states the
+same limitations. Exact raw responses are intentionally not committed and have
+not been uploaded or remotely verified.

@@ -116,7 +116,7 @@ class TreasuryDiscovery:
         """Resolve Treasury and reconcile all organisation-filtered datasets."""
         organization_action = await self._client.action(
             "organization_show",
-            {"id": _TREASURY_SLUG},
+            {"id": _TREASURY_SLUG, "include_datasets": False},
         )
         organization = self._parse_organization(organization_action)
         datasets: list[DatasetReference] = []
@@ -227,9 +227,7 @@ class TreasuryDiscovery:
         name_value = result.get("name")
         modified_value = result.get("metadata_modified")
         name = name_value if isinstance(name_value, str) else None
-        metadata_modified = (
-            modified_value if isinstance(modified_value, str) else None
-        )
+        metadata_modified = modified_value if isinstance(modified_value, str) else None
         return DatasetReference(
             id=identifier,
             name=name,

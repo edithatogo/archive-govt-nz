@@ -31,8 +31,7 @@ def make_config(  # noqa: PLR0913
     *,
     base_url: str = "https://catalogue.data.govt.nz",
     user_agent: str = (
-        "archive-govt-nz/0.1.0 "
-        "(+https://github.com/edithatogo/archive-govt-nz)"
+        "archive-govt-nz/0.1.0 (+https://github.com/edithatogo/archive-govt-nz)"
     ),
     timeout_seconds: float = 7.0,
     max_attempts: int = 3,
@@ -399,7 +398,10 @@ def test_status_observation_records_capability_and_catalogue_identity() -> None:
     assert observation.ckan_version == "2.10.9"
     assert observation.site_url == "https://catalogue.data.govt.nz"
     assert observation.observed_at == OBSERVED_AT
+    assert observation.raw_body.startswith(b'{"success"')
     assert len(observation.raw_sha256) == 64
+    assert observation.attempts[0].status_code == 200
+    assert observation.response_headers["content-type"].startswith("application/json")
 
 
 @pytest.mark.parametrize(

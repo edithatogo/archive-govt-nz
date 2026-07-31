@@ -110,12 +110,12 @@
   - [x] Produce paired Markdown and JSON discovery reports
   - [x] Make discovery tests green
 
-- [ ] Task: Add bounded live read-only contract checks [M-02, M-03]
-  - [ ] Separate deterministic fixtures from live tests
-  - [ ] Probe deployed CKAN and representative Treasury metadata
-  - [ ] Record observation times and response hashes
-  - [ ] Prevent live count drift from causing false failures
-  - [ ] Document source-friendly operation
+- [x] Task: Add bounded live read-only contract checks [M-02, M-03]
+  - [x] Separate deterministic fixtures from live tests
+  - [x] Probe deployed CKAN and representative Treasury metadata
+  - [x] Record observation times and response hashes
+  - [x] Prevent live count drift from causing false failures
+  - [x] Document source-friendly operation
 
 - [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
   - [ ] Run deterministic and bounded live checks

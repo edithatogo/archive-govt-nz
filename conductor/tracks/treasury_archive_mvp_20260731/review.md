@@ -243,3 +243,28 @@ Status: approved for track initialization
 - All discovery branches are covered without exclusions.
 - Current live scope remains unclaimed until the separately bounded live task
   observes and persists catalogue evidence.
+
+## Task self-review: Add bounded live read-only contract checks
+
+- Live access is an explicit tool invocation and cannot make the deterministic
+  test suite dependent on catalogue availability or count stability.
+- The live tool inherits all client time, attempt, byte, redirect, user-agent,
+  raw-byte, and redaction controls.
+- Organisation lookup disables embedded datasets, avoiding redundant source
+  volume before the sorted package search.
+- The second live observation intentionally uses a smaller page size to verify
+  deployed pagination and completeness independently of the one-page result.
+- The live count is reported as time-bounded evidence, not a permanent
+  executable expectation. A future change from 54 is not itself failure.
+- Raw observations are written only after complete scope reconciliation and are
+  atomically promoted within an ignored output directory.
+- The committed receipt includes hashes and sizes but not the source payloads,
+  cookies, unrestricted headers, or transport exception strings.
+- Checksum-specific secret-scan exclusion cannot baseline an arbitrary
+  credential line; credential-like values outside revision and SHA-256 receipt
+  keys still fail.
+- The `text-unidecode` decision selects its declared Artistic alternative by
+  exact package name. A synthetic unreviewed package with identical aggregated
+  classifiers remains denied.
+- Metadata observation is not resource capture, rights eligibility, hosted
+  scheduling, upload, remote verification, or publication.

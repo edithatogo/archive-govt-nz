@@ -273,3 +273,32 @@
   strict Pyright, and source secret scan passed.
 - These results establish deterministic discovery machinery only. No current
   live Treasury count or completeness claim is made.
+
+## 2026-07-31 - Task: Add bounded live read-only contract checks
+
+- Added an explicit non-interactive live observation tool, separate from the
+  deterministic default suite, with 20-second attempts, three-attempt maximum,
+  source-identifying user agent, disabled redirects, 8 MiB metadata-response
+  bound, page-size control, and compact JSON status output.
+- Extended capability observations to retain exact raw bytes, attempts, and
+  allowlisted response headers.
+- Reduced organisation response volume with `include_datasets=false`; package
+  search remains the single authoritative paginated scope.
+- Added an atomic evidence writer for exact raw capability, organisation, and
+  page responses plus paired JSON and Markdown reports. Its deterministic
+  contract passes without network access.
+- First live run at page size 100 reconciled 54 unique datasets in one page.
+- Independent deployed-pagination run at page size 25 reconciled 25, 25, and 4
+  unique datasets. All three live counts were 54.
+- Observed CKAN 2.10.9 and Treasury stable organisation ID
+  `4d08a178-e03b-4e97-b79d-83d9a7a35744`.
+- Exact raw live responses remain ignored under
+  `build/live/treasury-20260731T152100+1000-p25`. The paired committed receipt
+  records five source hashes and byte counts; the canonical scope report hash
+  is `bb72d7fbad84b04aca6f39b39c76cf8e1d835887d86ac88a51b663a475f8414c`.
+- The full gate initially stopped on aggregated dual-licence classifiers for
+  `text-unidecode` 1.3. Installed metadata declares Artistic License; the gate
+  now records that package-specific alternative and still rejects the same
+  licence string for every unreviewed package.
+- Focused licence, secret, and SBOM gates pass with 79 components. Resource
+  downloads and external publication remain unstarted.

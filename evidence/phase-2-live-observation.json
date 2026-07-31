@@ -1,0 +1,58 @@
+{
+  "schema_version": "archive-govt-nz.phase-2-live-observation/v1",
+  "status": "observed_locally",
+  "catalogue_url": "https://catalogue.data.govt.nz",
+  "action_api_version": "3",
+  "ckan_version": "2.10.9",
+  "site_url": "https://catalogue.data.govt.nz",
+  "capability_observed_at": "2026-07-31T05:22:09.632168Z",
+  "treasury_scope_observed_at": "2026-07-31T05:22:16.284413Z",
+  "treasury_organization": {
+    "id": "4d08a178-e03b-4e97-b79d-83d9a7a35744",
+    "name": "the-treasury",
+    "title": "The Treasury"
+  },
+  "treasury_dataset_count": 54,
+  "reported_counts": [54, 54, 54],
+  "page_size": 25,
+  "page_count": 3,
+  "scope_sha256": "bb72d7fbad84b04aca6f39b39c76cf8e1d835887d86ac88a51b663a475f8414c",
+  "raw_receipts": [
+    {
+      "path": "raw/status_show.json",
+      "bytes": 1004,
+      "sha256": "3ec56ae0f729566d654e25985b681742716c1dd5295c39a8b7fb34b9cb874ea4"
+    },
+    {
+      "path": "raw/organization_show.json",
+      "bytes": 1007,
+      "sha256": "0fb4adba460ee35b7652f996a26dc9f32e8c30a2093059ff6533e98db1ce63c4"
+    },
+    {
+      "path": "raw/package_search-00000000.json",
+      "bytes": 135360,
+      "sha256": "26f0c1b6a31bbb9b41cac1a7460cf4159b93b9ad7d03d05ceb697fe08769d2f4"
+    },
+    {
+      "path": "raw/package_search-00000025.json",
+      "bytes": 121900,
+      "sha256": "c561559a433ce34cd3e96ae8bb371b49dac03d93b38167985c5594da7516c4c0"
+    },
+    {
+      "path": "raw/package_search-00000050.json",
+      "bytes": 19087,
+      "sha256": "b9feaef13650e0436691a218c195bd41940062e5625d2b20499926773fc26ac5"
+    }
+  ],
+  "local_raw_evidence": {
+    "path": "build/live/treasury-20260731T152100+1000-p25",
+    "committed": false,
+    "reason": "generated exact source observations remain outside Git"
+  },
+  "limitations": [
+    "metadata_discovery_only",
+    "resource_capture_not_started",
+    "publication_not_started",
+    "hosted_live_check_not_configured"
+  ]
+}

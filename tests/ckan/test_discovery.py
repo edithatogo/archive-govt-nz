@@ -113,7 +113,10 @@ def test_resolves_treasury_and_uses_stable_organisation_filter() -> None:
     assert scope.organization.name == "the-treasury"
     assert scope.organization.title == "The Treasury"
     assert client.requests == [
-        ("organization_show", {"id": "the-treasury"}),
+        (
+            "organization_show",
+            {"id": "the-treasury", "include_datasets": False},
+        ),
         (
             "package_search",
             {

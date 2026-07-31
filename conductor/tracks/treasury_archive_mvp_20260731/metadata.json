@@ -4,7 +4,7 @@
   "type": "mvp",
   "status": "in_progress",
   "created_at": "2026-07-31T13:25:47+10:00",
-  "updated_at": "2026-07-31T15:18:16+10:00",
+  "updated_at": "2026-07-31T15:31:12+10:00",
   "requirements_method": "MoSCoW",
   "autonomy": {
     "policy": "../../autonomy-policy.json",

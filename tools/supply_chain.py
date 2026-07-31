@@ -11,6 +11,8 @@ from typing import TYPE_CHECKING, cast
 from cyclonedx.schema import SchemaVersion
 from cyclonedx.validation.json import JsonStrictValidator
 
+from archive_govt_nz.licensing import licence_denial
+
 if TYPE_CHECKING:
     from collections.abc import Sequence
 
@@ -23,12 +25,7 @@ EXCLUDED_PATH_PATTERN = (
     r"|uv\.lock$"
     r"|conductor[\\/]tracks[\\/].*[\\/](?:evidence|runlog)\.md$"
 )
-REVISION_LINE_PATTERN = r'"(?:source_revision|remote_revision)"\s*:'
-DENIED_LICENCE_TERMS = (
-    "affero",
-    "gnu general public license",
-    "unknown",
-)
+RECEIPT_EXCLUSION_PATTERN = r'"(?:source_revision|remote_revision|[a-z_]*sha256)"\s*:'
 
 
 def run(command: Sequence[str], *, capture: bool = False) -> str:
@@ -73,9 +70,11 @@ def licenses() -> None:
     records = cast("list[dict[str, object]]", json.loads(output))
     denied: list[str] = []
     for record in records:
-        licence = str(record.get("License", "")).casefold()
-        if any(term in licence for term in DENIED_LICENCE_TERMS):
-            denied.append(f"{record.get('Name', '<unnamed>')}: {licence}")
+        name = str(record.get("Name", "<unnamed>"))
+        licence = str(record.get("License", ""))
+        denial = licence_denial(name, licence)
+        if denial is not None:
+            denied.append(f"{name}: {licence.casefold()} ({denial})")
     output_path = BUILD_DIRECTORY / "python-licenses.json"
     output_path.write_text(
         json.dumps(records, indent=2, sort_keys=True) + "\n",
@@ -101,7 +100,7 @@ def secrets() -> None:
             "--exclude-files",
             EXCLUDED_PATH_PATTERN,
             "--exclude-lines",
-            REVISION_LINE_PATTERN,
+            RECEIPT_EXCLUSION_PATTERN,
         ),
         capture=True,
     )

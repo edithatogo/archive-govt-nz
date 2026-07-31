@@ -5,6 +5,7 @@ import sys
 from pathlib import Path
 
 from archive_govt_nz.assurance import STAGES
+from archive_govt_nz.licensing import licence_denial
 
 REPOSITORY_ROOT = Path(__file__).parents[1]
 
@@ -49,3 +50,16 @@ def test_supply_chain_tool_lists_non_mutating_checks() -> None:
         "secrets",
         "sbom",
     ]
+
+
+def test_licence_gate_selects_only_a_documented_package_alternative() -> None:
+    """A package-specific dual licence does not become a general GPL bypass."""
+    dual = (
+        "Artistic License; GNU General Public License (GPL); "
+        "GNU General Public License v2 or later (GPLv2+)"
+    )
+
+    assert licence_denial("text-unidecode", dual) is None
+    assert licence_denial("unreviewed-package", dual) is not None
+    assert licence_denial("ordinary-package", "Apache Software License") is None
+    assert licence_denial("ordinary-package", "UNKNOWN") == "unknown"
