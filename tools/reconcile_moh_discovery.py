@@ -12,9 +12,9 @@ def _load(path: Path) -> dict[str, Any]:
     """Load and validate a discovery receipt."""
     value = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(value, dict):
-        raise TypeError("invalid discovery receipt")
+        raise TypeError("invalid discovery receipt")  # noqa: EM101, TRY003
     if value.get("schema") != "archive-govt-nz.moh-discovery/v1":
-        raise ValueError("invalid discovery receipt")
+        raise ValueError("invalid discovery receipt")  # noqa: EM101, TRY003
     return cast("dict[str, Any]", value)
 
 
