@@ -1,7 +1,10 @@
 """Tests for the safe publisher-resolution request packet."""
 
 import importlib.util
+import json
 from pathlib import Path
+
+from jsonschema import Draft202012Validator
 
 _MODULE_PATH = (
     Path(__file__).parents[2] / "tools" / "build_publisher_resolution_request.py"
@@ -13,6 +16,36 @@ _MODULE = importlib.util.module_from_spec(_SPEC)
 _SPEC.loader.exec_module(_MODULE)
 build_packet = _MODULE.build_packet
 render_markdown = _MODULE.render_markdown
+
+
+def test_response_schema_accepts_replacement_and_rejects_http() -> None:
+    """The handoff contract requires HTTPS for publisher replacements."""
+    schema_path = (
+        Path(__file__).parents[2]
+        / "schemas"
+        / "archive"
+        / "publisher-resolution-response-v1.schema.json"
+    )
+    schema = json.loads(schema_path.read_text(encoding="utf-8"))
+    Draft202012Validator.check_schema(schema)
+    valid = {
+        "schema_version": "archive-govt-nz.publisher-resolution-response/v1",
+        "received_at": "2026-08-01T00:00:00Z",
+        "sender": {"organisation": "New Zealand Treasury"},
+        "request_receipt": "sha256:request",
+        "responses": [
+            {
+                "resource_id": "r-1",
+                "disposition": "replacement",
+                "replacement_url": "https://example.govt.nz/data.csv",
+                "evidence_receipt": "sha256:message",
+            }
+        ],
+    }
+    Draft202012Validator(schema).validate(valid)
+    valid["responses"][0]["replacement_url"] = "http://example.invalid/data.csv"
+    errors = list(Draft202012Validator(schema).iter_errors(valid))
+    assert errors
 
 
 def test_packet_is_metadata_only_and_preserves_resource_statuses() -> None:
