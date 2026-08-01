@@ -16,7 +16,7 @@ ALLOWED_DISPOSITIONS = frozenset(
 )
 
 
-def validate_publisher_response(
+def validate_publisher_response(  # noqa: C901
     document: Mapping[str, object], expected_ids: set[str]
 ) -> list[str]:  # noqa: C901
     """Return actionable validation errors for an untrusted response document."""
@@ -37,17 +37,18 @@ def validate_publisher_response(
         if not isinstance(raw, Mapping):
             errors.append(f"resources[{index}] must be an object")
             continue
-        identifier = raw.get("resource_id")
+        typed_raw = cast("Mapping[str, Any]", raw)
+        identifier = typed_raw.get("resource_id")
         if not isinstance(identifier, str) or not identifier:
             errors.append(f"resources[{index}].resource_id must be non-empty")
             continue
         if identifier in seen:
             errors.append(f"duplicate resource_id: {identifier}")
         seen.add(identifier)
-        disposition = raw.get("disposition")
+        disposition = typed_raw.get("disposition")
         if disposition not in ALLOWED_DISPOSITIONS:
             errors.append(f"{identifier}: invalid disposition")
-        replacement = raw.get("replacement_url")
+        replacement = typed_raw.get("replacement_url")
         if disposition == "authoritative-replacement":
             if (
                 not isinstance(replacement, str)

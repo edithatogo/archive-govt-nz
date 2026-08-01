@@ -50,3 +50,4 @@ def test_awaiting_receipt_is_explicitly_no_contact() -> None:
 
 
 """Tests for fail-closed publisher response validation."""
+"""Tests for fail-closed publisher response validation."""
