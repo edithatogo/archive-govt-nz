@@ -412,3 +412,13 @@ used because its Python 3.14 runtime path fails before mutation execution.
 | Zenodo DOI | verified | `10.5281/zenodo.21728726` |
 | Remote recovery receipt | verified | file size and Zenodo checksum recorded |
 | Recovered tar closure | verified | raw, object, and derivative layers present; member paths safe |
+
+## Phase 10 acceptance checkpoint - 2026-08-01
+
+| Acceptance state | gated-incomplete |
+| --- | --- |
+| Must requirements verified | 14/19 |
+| Must requirements partial | M-09, M-12 |
+| Must requirements blocked | M-06, M-14, M-18 |
+| Evidence | `evidence/phase-10-acceptance.json` |
+| Publication claim | No MVP-complete or complete-source-capture claim permitted |

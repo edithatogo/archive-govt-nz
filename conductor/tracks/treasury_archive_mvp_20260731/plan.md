@@ -452,18 +452,18 @@
 
 ## Phase 10: MVP closeout and next-scope handoff
 
-- [ ] Task: Run complete acceptance verification [M-01 through M-19]
-  - [ ] Run every deterministic quality gate
-  - [ ] Run bounded live CKAN verification
-  - [ ] Reconcile complete current Treasury scope and outcomes
-  - [ ] Verify local recovery and remote publication states
-  - [ ] Confirm no Must requirement lacks evidence
+- [~] Task: Run complete acceptance verification [M-01 through M-19]
+  - [x] Run every deterministic quality gate
+  - [x] Run bounded live CKAN verification
+  - [x] Reconcile complete current Treasury scope and outcomes
+  - [x] Verify local recovery and remote publication states
+  - [ ] Confirm no Must requirement lacks evidence; acceptance remains gated-incomplete
 
-- [ ] Task: Complete security and provenance self-review [M-18]
-  - [ ] Review secrets, logs, fixtures, resource policy, quarantine, and rights
-  - [ ] Review dependency and workflow findings
-  - [ ] Review completeness and publication claims
-  - [ ] Resolve or explicitly block every critical finding
+- [~] Task: Complete security and provenance self-review [M-18]
+  - [x] Review secrets, logs, fixtures, resource policy, quarantine, and rights
+  - [x] Review dependency and workflow findings
+  - [x] Review completeness and publication claims
+  - [ ] Resolve or explicitly block every critical finding; three Must gaps remain
 
 - [ ] Task: Publish final evidence ledger [M-13, M-19]
   - [ ] Generate final Markdown and JSON reports

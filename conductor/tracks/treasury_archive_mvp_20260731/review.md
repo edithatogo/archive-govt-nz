@@ -405,3 +405,11 @@ Status: approved for track initialization
 - Zenodo integration finding resolved: repository-owned client now isolates credentials, uses multipart artifact upload, reconciles draft state, and requires explicit DOI equality before publication; mocked integration tests pass.
 - Additional transport review: upload and response sizes are fail-closed and tested. True chunked multipart streaming remains a justified follow-up only if release artefacts exceed the bounded 256 MiB envelope.
 - Phase 9 closure review: local candidate, Hugging Face revision, Zenodo DOI, remote receipt, and recovered tar layers reconcile successfully in the new offline evidence check.
+
+## Phase 10 acceptance review - 2026-08-01
+
+- Acceptance remains explicitly `gated-incomplete`; the package and publication evidence are strong, but three Must-level areas remain unresolved.
+- M-06 is not complete because source-level 403 and non-HTTPS outcomes are restricted/unavailable and cannot be represented as complete capture.
+- M-14 is only partially complete: package reconstruction is verified, while interruption-at-every-boundary and unchanged-rerun proof remain open.
+- M-18 is not complete: the aggregate threshold passes, but newly added publication/reconciliation branches do not yet meet the 100% critical-logic target.
+- No public completeness or MVP-complete claim is authorized until these findings are resolved or explicitly re-scoped by decision.
