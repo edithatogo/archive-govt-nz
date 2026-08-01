@@ -1,0 +1,11 @@
+{
+  "id": "health_broader_discovery_20260801",
+  "title": "Broader Health and Healthcare Discovery",
+  "type": "discovery",
+  "status": "proposed",
+  "created_at": "2026-08-01T00:00:00Z",
+  "requirements_method": "MoSCoW",
+  "autonomy": {"mode": "continuous_autonomous", "stop_between_phases": false, "stop_between_tracks": false, "decision_policy": "../../autonomy-policy.json"},
+  "scope": {"catalogue": "https://catalogue.data.govt.nz", "queries": ["health", "group:health"], "organisations": "all matching organisations", "mode": "metadata_only"},
+  "external_gates": ["github_issue_creation", "rights_exception", "credential_use", "payload_capture", "publication", "destructive_action"]
+}
