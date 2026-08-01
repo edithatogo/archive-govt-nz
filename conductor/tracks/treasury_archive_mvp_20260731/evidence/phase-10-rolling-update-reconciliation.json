@@ -1,0 +1,47 @@
+{
+  "schema_version": "archive-govt-nz.rolling-update-evidence/v1",
+  "generated_at": "2026-08-01",
+  "scope": "offline-rolling-reconciliation",
+  "publication": {
+    "target": "huggingface",
+    "remote_upload": false
+  },
+  "assertions": {
+    "initial": true,
+    "unchanged_idempotent": true,
+    "changed_creates_version": true,
+    "tombstone_preserves_history": true,
+    "manifest_reconciles": true
+  },
+  "history": [
+    {
+      "fingerprint": "15622549f23a65839302b2c7dcd0a6aae7b0c9fa8dd9d3d5c68c97d9d06d0be7",
+      "state": "initial",
+      "reason": "first_observation",
+      "manifest_sha256": "88c7275ef3ef13f6eb8bf6a201c972557ab952d4d6ebe115ca80d40a1c9b64c3",
+      "previous_fingerprint": null
+    },
+    {
+      "fingerprint": "15622549f23a65839302b2c7dcd0a6aae7b0c9fa8dd9d3d5c68c97d9d06d0be7",
+      "state": "unchanged",
+      "reason": "no_material_change",
+      "manifest_sha256": "88c7275ef3ef13f6eb8bf6a201c972557ab952d4d6ebe115ca80d40a1c9b64c3",
+      "previous_fingerprint": "15622549f23a65839302b2c7dcd0a6aae7b0c9fa8dd9d3d5c68c97d9d06d0be7"
+    },
+    {
+      "fingerprint": "9728c93e365e23f1bbad9be170e840f7c495853ca9a47836290c5c9ba82875d9",
+      "state": "changed",
+      "reason": "material_change",
+      "manifest_sha256": "e02a8112e5979f47860ade9df4bfd634c9ae8f29039baa2e4077a968f93a3d4b",
+      "previous_fingerprint": "15622549f23a65839302b2c7dcd0a6aae7b0c9fa8dd9d3d5c68c97d9d06d0be7"
+    },
+    {
+      "fingerprint": "15622549f23a65839302b2c7dcd0a6aae7b0c9fa8dd9d3d5c68c97d9d06d0be7",
+      "state": "tombstone",
+      "reason": "source_disappeared",
+      "manifest_sha256": "8f17d21c4c07985a6c1b51763cb933cfa3ffe7a2ca3beadb9fe1d319992886e5",
+      "previous_fingerprint": "9728c93e365e23f1bbad9be170e840f7c495853ca9a47836290c5c9ba82875d9"
+    }
+  ],
+  "limitation": "Offline deterministic proof; no remote publication or live Treasury change is claimed."
+}

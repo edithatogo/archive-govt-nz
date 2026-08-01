@@ -310,14 +310,14 @@
   - [x] Keep suspicious content outside publication roots
   - [ ] Produce bounded progress and checkpoint evidence
 
-- [ ] Task: Reconcile complete capture coverage [M-13, M-14]
+- [~] Task: Reconcile complete capture coverage [M-13, M-14]
   - [ ] Compare discovery, attempts, objects, versions, and derivatives
   - [ ] Verify no dataset or resource disappeared silently
   - [ ] Resolve safe retries within policy
   - [ ] Record unresolved limitations
   - [ ] Generate final local coverage reports
 
-- [ ] Task: Prove unchanged rerun behaviour [M-09, M-14]
+- [~] Task: Prove unchanged rerun behaviour [M-09, M-14]
   - [ ] Repeat discovery and eligible capture
   - [ ] Verify no duplicate objects or material versions
   - [ ] Verify unchanged evidence and avoided transfers

@@ -1,0 +1,18 @@
+{
+  "schema_version": "archive-govt-nz.capture-rerun-reconciliation/v1",
+  "generated_at": "2026-08-01",
+  "scope": "Treasury capture coverage and repeated-run idempotency",
+  "source": "tests/capture/test_capture_reconciliation.py",
+  "checks": {
+    "complete_resource_outcomes": true,
+    "unchanged_observations_avoid_duplicate_objects": true,
+    "material_changes_create_successor_versions": true,
+    "disappearance_and_policy_change_create_tombstones": true,
+    "prior_fingerprints_preserved": true
+  },
+  "live_material_change_observed": false,
+  "status": "contract-verified-live-observation-pending",
+  "limitations": [
+    "Live source changes and payload accessibility remain externally gated; fixture and deterministic contracts do not claim live capture."
+  ]
+}
