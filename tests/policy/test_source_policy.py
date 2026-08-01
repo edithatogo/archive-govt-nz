@@ -25,5 +25,7 @@ def test_tombstone_receipt_schedules_retry_and_preserves_history() -> None:
     row = receipt["tombstones"][0]
     assert row["next_probe_at"] == "2026-08-08T00:00:00+00:00"
     assert row["retention"] == "preserve-prior-history"
+
+
 """Tests for source alternative and tombstone scheduling policy."""
 """Tests for source alternative and tombstone scheduling policy."""

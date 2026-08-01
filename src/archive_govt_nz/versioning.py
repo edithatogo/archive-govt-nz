@@ -43,8 +43,11 @@ def decide_version(  # noqa: PLR0913
     previous_fingerprint = None if previous is None else _fingerprint(previous)
     if withdrawn or disappeared or policy_changed:
         reason = (
-            "source_withdrawn" if withdrawn else
-            "source_disappeared" if disappeared else "policy_changed"
+            "source_withdrawn"
+            if withdrawn
+            else "source_disappeared"
+            if disappeared
+            else "policy_changed"
         )
         return VersionDecision(
             VersionState.TOMBSTONE,
