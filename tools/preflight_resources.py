@@ -6,9 +6,14 @@ import argparse
 import asyncio
 import json
 from pathlib import Path
+from typing import cast
 from urllib.parse import urljoin
 
 import httpx
+
+from archive_govt_nz.source_resolution import resolve_secure_sources
+
+ELIGIBLE_STATUS_BOUNDARY = 400
 
 
 async def _probe(
@@ -58,6 +63,46 @@ async def _probe(
             }
 
 
+async def _probe_resolved(
+    client: httpx.AsyncClient, resource: dict[str, object], semaphore: asyncio.Semaphore
+) -> dict[str, object]:
+    """Probe every fail-closed HTTPS candidate and retain an audit trail."""
+    resolution = resolve_secure_sources(resource)
+    base = {
+        "resource_id": resource.get("resource_id"),
+        "source_url": resource.get("source_url"),
+        "candidates": list(resolution.candidates),
+    }
+    if not resolution.candidates:
+        return {
+            **base,
+            "state": "tombstone-required",
+            "reason": resolution.reason,
+            "attempts": [],
+        }
+    attempts = await asyncio.gather(
+        *(
+            _probe(client, {**resource, "source_url": candidate}, semaphore)
+            for candidate in resolution.candidates
+        )
+    )
+    usable = [
+        item
+        for item in attempts
+        if item.get("state") == "observed"
+        and isinstance(item.get("status_code"), int)
+        and cast("int", item["status_code"]) < ELIGIBLE_STATUS_BOUNDARY
+    ]
+    return {
+        **base,
+        "state": "secure-source-observed" if usable else "tombstone-required",
+        "reason": "at least one secure candidate returned an eligible status"
+        if usable
+        else "no secure candidate returned an eligible status",
+        "attempts": attempts,
+    }
+
+
 async def _run(plan: Path, output: Path, concurrency: int, timeout: float) -> int:
     """Probe all planned resources without transferring response bodies."""
     document = json.loads(plan.read_text(encoding="utf-8"))
@@ -67,13 +112,13 @@ async def _run(plan: Path, output: Path, concurrency: int, timeout: float) -> in
     )
     async with httpx.AsyncClient(timeout=timeout, limits=limits) as client:
         results = await asyncio.gather(
-            *(_probe(client, item, semaphore) for item in document["outcomes"])
+            *(_probe_resolved(client, item, semaphore) for item in document["outcomes"])
         )
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(
         json.dumps(
             {
-                "schema_version": "archive-govt-nz.preflight/v1",
+                "schema_version": "archive-govt-nz.secure-source-probe/v1",
                 "body_transfer": False,
                 "results": results,
             },

@@ -743,3 +743,8 @@
   `pyarrow 22.0.0`; release progression stopped at the audit stage.
 - Upgraded to fixed `pyarrow 23.0.1`; dependency audit now passes with no known
   vulnerabilities. This correction is required before derivative publication.
+### 2026-08-01 — bounded secure-source probe
+
+- Ran the candidate-aware HTTPS HEAD probe against all 91 Treasury resources with no response-body transfer, four-way concurrency, eight-second timeout, and four-redirect limit.
+- Receipt: `evidence/phase-10-secure-source-probe.json`; full per-resource attempts: `build/live/secure-source-probe-20260801.json`.
+- Outcome: 12 resources returned HTTP 200 over HTTPS; 78 returned 403 and one returned 404. M-06 remains blocked; those 79 outcomes are tombstone-required under the fail-closed policy.

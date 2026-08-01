@@ -1,0 +1,18 @@
+{
+  "schema_version": "archive-govt-nz.secure-source-probe/v1",
+  "captured_at": "2026-08-01T00:00:00Z",
+  "input": "evidence/phase-6-treasury-capture-plan.json",
+  "resource_count": 91,
+  "body_transfer": false,
+  "method": "bounded HTTPS HEAD; maximum four redirects; eight-second timeout; concurrency four",
+  "outcomes": {
+    "secure_source_observed": 12,
+    "tombstone_required": 79,
+    "http_status_200": 12,
+    "http_status_403": 78,
+    "http_status_404": 1,
+    "transport_or_timeout": 0
+  },
+  "interpretation": "Twelve resources have an HTTPS candidate that returned status 200. Seventy-nine remain tombstone-required: 78 returned 403 and one returned 404. No HTTP source was accepted directly and no response body was transferred.",
+  "full_receipt": "build/live/secure-source-probe-20260801.json"
+}
