@@ -36,19 +36,37 @@ async def _discover(base_url: str, page_size: int) -> dict[str, object]:
             start = 0
             ids: list[str] = []
             count = 0
+            attempt_rows = tuple(dict.fromkeys((page_size, min(page_size, 25), 1)))
             while True:
-                try:
-                    page = await client.action(
-                        "package_search", {**params, "rows": page_size, "start": start}
-                    )
-                except CkanTransportError as error:
+                page = None
+                last_error: CkanTransportError | None = None
+                for rows_limit in attempt_rows:
+                    try:
+                        page = await client.action(
+                            "package_search",
+                            {**params, "rows": rows_limit, "start": start},
+                        )
+                        break
+                    except CkanTransportError as error:
+                        last_error = error
+                        receipts.append(
+                            {
+                                "scope": scope["id"],
+                                "start": start,
+                                "rows": rows_limit,
+                                "status": "unavailable",
+                                "status_code": error.status_code,
+                                "error_class": error.__class__.__name__,
+                            }
+                        )
+                if page is None and last_error is not None:
                     return {
                         "schema": "archive-govt-nz.health-discovery/v1",
                         "observed_at": datetime.now(tz=UTC).isoformat(),
                         "catalogue_url": base_url,
                         "status": "unavailable",
-                        "error_class": error.__class__.__name__,
-                        "status_code": error.status_code,
+                        "error_class": last_error.__class__.__name__,
+                        "status_code": last_error.status_code,
                         "scopes_attempted": list(scopes),
                         "policy": {
                             "metadata_only": True,
@@ -57,6 +75,7 @@ async def _discover(base_url: str, page_size: int) -> dict[str, object]:
                             "max_page_size": page_size,
                         },
                     }
+                assert page is not None
                 result = cast("dict[str, Any]", page.response.result)
                 rows = cast("list[dict[str, Any]]", result.get("results", []))
                 count = int(result.get("count", 0))
