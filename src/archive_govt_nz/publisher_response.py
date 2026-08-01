@@ -18,7 +18,7 @@ ALLOWED_DISPOSITIONS = frozenset(
 
 def validate_publisher_response(  # noqa: C901
     document: Mapping[str, object], expected_ids: set[str]
-) -> list[str]:  # noqa: C901
+) -> list[str]:
     """Return actionable validation errors for an untrusted response document."""
     errors: list[str] = []
     if (
