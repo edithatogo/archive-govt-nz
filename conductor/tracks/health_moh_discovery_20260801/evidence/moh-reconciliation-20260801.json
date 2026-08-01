@@ -1,0 +1,20 @@
+{
+  "counts": {
+    "added_dataset_ids": [],
+    "changed_dataset_ids": [],
+    "first_datasets": 28,
+    "first_resources": 158,
+    "removed_dataset_ids": [],
+    "second_datasets": 28,
+    "second_resources": 158
+  },
+  "first_observed_at": "2026-08-01T10:47:05.585367+00:00",
+  "policy": {
+    "metadata_only": true,
+    "payload_capture": false,
+    "publication": false
+  },
+  "schema": "archive-govt-nz.moh-discovery-reconciliation/v1",
+  "second_observed_at": "2026-08-01T10:48:00.853275+00:00",
+  "stable": true
+}
