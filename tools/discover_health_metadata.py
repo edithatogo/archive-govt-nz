@@ -75,8 +75,8 @@ async def _discover(base_url: str, page_size: int) -> dict[str, object]:
                             "max_page_size": page_size,
                         },
                     }
-                assert page is not None
-                result = cast("dict[str, Any]", page.response.result)
+                page_value = cast("Any", page)
+                result = cast("dict[str, Any]", page_value.response.result)
                 rows = cast("list[dict[str, Any]]", result.get("results", []))
                 count = int(result.get("count", 0))
                 ids.extend(
@@ -90,8 +90,8 @@ async def _discover(base_url: str, page_size: int) -> dict[str, object]:
                         "start": start,
                         "count": count,
                         "returned": len(rows),
-                        "sha256": page.raw_sha256,
-                        "observed_at": page.observed_at.isoformat(),
+                        "sha256": page_value.raw_sha256,
+                        "observed_at": page_value.observed_at.isoformat(),
                     }
                 )
                 if start + len(rows) >= count or not rows:
