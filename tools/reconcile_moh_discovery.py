@@ -13,9 +13,10 @@ def _load(path: Path) -> dict[str, Any]:
     value = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(value, dict):
         raise TypeError("invalid discovery receipt")  # noqa: EM101, TRY003
-    if value.get("schema") != "archive-govt-nz.moh-discovery/v1":
+    typed_value = cast("dict[str, Any]", value)
+    if typed_value.get("schema") != "archive-govt-nz.moh-discovery/v1":
         raise ValueError("invalid discovery receipt")  # noqa: EM101, TRY003
-    return cast("dict[str, Any]", value)
+    return typed_value
 
 
 def reconcile(first: dict[str, Any], second: dict[str, Any]) -> dict[str, Any]:
