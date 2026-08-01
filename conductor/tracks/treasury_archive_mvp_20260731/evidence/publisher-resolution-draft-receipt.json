@@ -1,6 +1,6 @@
 {
   "schema_version": "archive-govt-nz.publisher-resolution-draft-receipt/v1",
-  "status": "draft-created-not-sent",
+  "status": "sent",
   "recipient": "info@data.govt.nz",
   "subject": "Request for authoritative disposition of Treasury catalogue resources",
   "packet": [
@@ -13,5 +13,6 @@
     "signed_urls_attached": false,
     "personal_information_included": false
   },
-  "next_gate": "human review and explicit send action"
+  "sent_message_id": "19fbc723a475a218",
+  "next_gate": "await official response; continue bounded re-probes"
 }
