@@ -15,6 +15,8 @@ if TYPE_CHECKING:
     from pathlib import Path
 
 HTTP_ERROR_STATUS = 400
+MAX_UPLOAD_BYTES = 256 * 1024 * 1024
+MAX_RESPONSE_BYTES = 4 * 1024 * 1024
 
 
 def _fail(error_class: str) -> NoReturn:
@@ -47,6 +49,8 @@ class ZenodoConfig:
 
     base_url: str = "https://zenodo.org"
     token_variable: str = "ZENODO_" + "TOKEN"
+    max_upload_bytes: int = MAX_UPLOAD_BYTES
+    max_response_bytes: int = MAX_RESPONSE_BYTES
 
 
 @dataclass(frozen=True, slots=True)
@@ -109,6 +113,8 @@ class ZenodoClient:
         """Upload one existing file; callers must reconcile the response."""
         if not deposition_id or not artifact.is_file():
             _fail("invalid_upload_input")
+        if artifact.stat().st_size > self.config.max_upload_bytes:
+            _fail("upload_size_limit")
         path = f"/api/deposit/depositions/{quote(deposition_id)}/files"
         boundary = f"archive-govt-nz-{secrets.token_hex(12)}"
         payload = artifact.read_bytes()
@@ -176,7 +182,10 @@ class ZenodoClient:
         )
         try:
             with urlopen(request, timeout=30) as response:  # noqa: S310
-                payload = json.loads(response.read())
+                raw_payload = response.read(self.config.max_response_bytes + 1)
+                if len(raw_payload) > self.config.max_response_bytes:
+                    _fail("response_size_limit")
+                payload = json.loads(raw_payload)
                 return ZenodoResponse(response.status, payload)
         except Exception:  # noqa: BLE001
             _fail("transport_failure")

@@ -7,6 +7,7 @@ import pytest
 
 from archive_govt_nz.zenodo import (
     ZenodoClient,
+    ZenodoConfig,
     ZenodoError,
     ZenodoResponse,
 )
@@ -90,3 +91,24 @@ def test_zenodo_client_fails_closed_at_credential_and_doi_gates(
     monkeypatch.setenv("ZENODO_TOKEN", "token")
     with pytest.raises(ZenodoError, match="doi_confirmation_required"):
         client.publish("7", confirm_doi=None)
+
+
+def test_zenodo_client_rejects_oversized_artifacts(tmp_path: Path) -> None:
+    """Upload bounds fail before any transport call."""
+    artifact = tmp_path / "large.tar"
+    artifact.write_bytes(b"0123456789")
+
+    def no_remote(
+        _method: str,
+        _path: str,
+        _headers: Mapping[str, str],
+        _body: bytes | None,
+    ) -> ZenodoResponse:
+        pytest.fail("remote call")
+
+    client = ZenodoClient(
+        config=ZenodoConfig(max_upload_bytes=4),
+        transport=no_remote,
+    )
+    with pytest.raises(ZenodoError, match="upload_size_limit"):
+        client.upload("7", artifact)

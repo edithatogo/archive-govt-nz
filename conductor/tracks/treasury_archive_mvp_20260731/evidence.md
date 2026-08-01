@@ -401,3 +401,4 @@ used because its Python 3.14 runtime path fails before mutation execution.
 | DOI publication gate | passed | Publication requires explicit DOI confirmation and rejects mismatches |
 | Network boundary | implemented | HTTPS default, bounded timeout, stable redacted transport errors |
 | Remote deposition | unchanged | Existing DOI `10.5281/zenodo.21728726` remains authoritative; adapter tests do not create a new record |
+| Transport bounds | passed | 256 MiB upload cap and 4 MiB response cap; oversized upload rejected before transport |

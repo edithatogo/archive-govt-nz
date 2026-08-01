@@ -635,6 +635,7 @@
 - Added `archive_govt_nz.zenodo.ZenodoClient` with environment-scoped `ZENODO_TOKEN`, redacted stable error classes, HTTPS transport, draft creation, multipart upload, read-back reconciliation, and DOI-confirmed publication.
 - Injected transport seams keep integration tests fully mocked; two tests cover the complete draft/upload/reconcile/publish path, credential absence, and DOI confirmation gate.
 - Publication remains an explicit caller decision; the adapter does not publish merely because CI or packaging succeeds.
+- Added upload and response-size bounds; oversized artifacts fail before transport and HTTP responses are capped at 4 MiB. This keeps the current 256 MiB package path bounded while leaving true streaming multipart transport as a future scale-up task.
 
 ## 2026-07-31 - Recovery reconciliation foundation
 
