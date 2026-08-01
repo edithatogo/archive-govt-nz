@@ -1,0 +1,12 @@
+{
+  "id": "preservation_conformance_20260801",
+  "title": "Preservation packaging conformance",
+  "type": "bounded_evaluation",
+  "status": "in_progress",
+  "created_at": "2026-08-01T20:45:00+10:00",
+  "requirements_method": "MoSCoW",
+  "autonomy": {"mode": "continuous_autonomous", "stop_between_phases": false, "stop_between_tracks": false},
+  "scope": ["RO-Crate", "BagIt", "OCFL"],
+  "decision_boundary": "Evaluate fixtures and interoperability evidence before making any format a release requirement.",
+  "external_gates": ["rights_exception", "release_approval", "destructive_action"]
+}

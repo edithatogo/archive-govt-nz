@@ -1,0 +1,10 @@
+# Implementation plan
+
+1. Create fixture manifest and immutable fixture hashes.
+2. Build minimal RO-Crate metadata package and validate JSON-LD shape.
+3. Build BagIt package and verify payload manifest and tag manifest closure.
+4. Build OCFL object/layout fixture and validate required inventory/version links.
+5. Run available reference validators; record unavailable tools without substituting claims.
+6. Test extraction, checksum closure, provenance linkage, and deterministic reruns.
+7. Compare results and publish an adoption recommendation with explicit limits.
+8. Update the track and GitHub issue hierarchy only from receipts.

@@ -1,0 +1,10 @@
+{
+  "schema": "archive-govt-nz.preservation-fixture/v1",
+  "fixture_id": "preservation-conformance-20260801",
+  "synthetic": true,
+  "files": [
+    {"path": "metadata.json", "media_type": "application/json", "sha256": "8174d6021ea4656c644cbef040bfe1938227281f9a43683f4cfbaae161f04c49"},
+    {"path": "payload.txt", "media_type": "text/plain", "sha256": "c6f21033a67b60a326d220edc35b9f4bcd77a112810a01733d0284cadd7376d9"}
+  ],
+  "formats": {"ro_crate": "planned", "bagit": "planned", "ocfl": "planned"}
+}
