@@ -2,6 +2,7 @@
 
 import json
 import subprocess
+import sys
 from pathlib import Path
 
 from archive_govt_nz.object_store import ContentAddressedStore
@@ -12,12 +13,9 @@ def test_verify_object_store_emits_integrity_receipt(tmp_path: Path) -> None:
     root = tmp_path / "objects"
     ContentAddressedStore(root).put_bytes(b"fixture")
     output = tmp_path / "receipt.json"
-    result = subprocess.run(  # noqa: S603
+    result = subprocess.run(
         [
-            "uv",
-            "run",
-            "--locked",
-            "python",
+            sys.executable,
             "tools/verify_object_store.py",
             "--root",
             str(root),
