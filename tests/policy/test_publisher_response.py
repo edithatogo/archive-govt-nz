@@ -1,3 +1,5 @@
+"""Tests for fail-closed publisher response validation."""
+
 from archive_govt_nz.publisher_response import (
     awaiting_response_receipt,
     validate_publisher_response,
