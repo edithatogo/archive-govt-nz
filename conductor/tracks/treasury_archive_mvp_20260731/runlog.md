@@ -661,6 +661,12 @@
 - A forced transport disconnect leaves no partial object; retry succeeds; unchanged rerun resolves to the same object; duplicate ledger insertion fails closed.
 - Combined with the six-boundary deterministic simulation, M-14 is now verified.
 
+## 2026-08-01 - Secure source resolution foundation
+
+- Added a pure resolver that orders explicit HTTPS alternatives, derives HTTPS probes from HTTP URLs without accepting HTTP, and emits `tombstone-required` when no secure candidate exists.
+- Added contracts proving mirror ordering and fail-closed handling of local/non-URL sources.
+- M-06 remains open because live source-level alternatives must still be probed and recorded individually.
+
 ## 2026-07-31 - Recovery reconciliation foundation
 
 - Added restart-safe ledger/object-store reconciliation reporting verified,

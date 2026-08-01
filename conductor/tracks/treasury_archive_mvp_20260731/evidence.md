@@ -423,6 +423,15 @@ used because its Python 3.14 runtime path fails before mutation execution.
 | Unchanged rerun | passed deterministic simulation | repeated run remains unchanged |
 | Production-path recovery | open | simulation still needs coupling to capture, object store, and ledger integration |
 
+## M-06 secure-source resolution checkpoint - 2026-08-01
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| HTTPS alternative ordering | passed | explicit secure alternatives are retained in deterministic order |
+| HTTP handling | passed | HTTP is converted only to an HTTPS probe candidate; it is never accepted directly |
+| Tombstone fallback | passed | no secure candidate produces `tombstone-required` |
+| Live alternative probing | open | source-level 403/non-HTTPS outcomes still require bounded re-probe evidence |
+
 ## Phase 10 acceptance checkpoint - 2026-08-01
 
 | Acceptance state | gated-incomplete |
