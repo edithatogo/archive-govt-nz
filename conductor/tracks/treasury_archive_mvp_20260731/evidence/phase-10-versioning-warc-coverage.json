@@ -1,0 +1,20 @@
+{
+  "schema_version": "archive-govt-nz.phase-10-versioning-warc/v1",
+  "scope": "deterministic contracts and representative transaction fixtures",
+  "versioning": {
+    "states": ["initial", "unchanged", "changed", "tombstone", "changed"],
+    "history_preserved": true,
+    "live_material_change": "not_observed"
+  },
+  "warc": {
+    "fixtures": ["200", "302", "403", "404"],
+    "https_only": true,
+    "safe_header_allowlist": true,
+    "query_redaction": true,
+    "provenance_closure": true,
+    "live_transaction_coverage": "not_complete"
+  },
+  "limitations": [
+    "Fixtures establish deterministic safety and closure contracts; they do not claim complete live Treasury transaction coverage."
+  ]
+}

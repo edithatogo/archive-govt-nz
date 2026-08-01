@@ -6,6 +6,7 @@ from archive_govt_nz.simulation import (
     RECOVERY_STAGES,
     simulate_capture,
     simulate_recovery,
+    simulate_versioning_lifecycle,
 )
 
 
@@ -39,3 +40,11 @@ def test_recovery_simulation_rejects_unknown_stage() -> None:
     """Fault injection cannot silently accept an unmodelled boundary."""
     with pytest.raises(ValueError, match="invalid_recovery_stage"):
         simulate_recovery(["r1"], interrupt_stage="unknown")
+
+
+def test_versioning_lifecycle_preserves_history_across_tombstone() -> None:
+    """Material change and withdrawal retain the prior fingerprint."""
+    receipt = simulate_versioning_lifecycle()
+    assert receipt.states == ("initial", "unchanged", "changed", "tombstone", "changed")
+    assert receipt.history_preserved is True
+    assert len(set(receipt.fingerprints)) == 3

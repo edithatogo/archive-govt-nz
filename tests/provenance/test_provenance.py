@@ -1,10 +1,12 @@
 """Provenance closure and deterministic serialization contracts."""
 
+from pathlib import Path
 from typing import Any
 
 import pytest
 
 from archive_govt_nz.provenance import ProvenanceError, build_manifest
+from archive_govt_nz.warc import write_response_record
 
 
 def test_manifest_is_closed_sorted_and_hashed() -> None:
@@ -51,3 +53,31 @@ def test_manifest_rejects_warc_without_captured_object() -> None:
             warc_records=[{"record_id": "w1", "object_id": "missing"}],
         )
     assert raised.value.error_class == "dangling_warc_object"
+
+
+def test_warc_receipt_closes_to_captured_object(tmp_path: Path) -> None:
+    """A material transaction is linked to its content-addressed object."""
+    body = b"id,value\n1,ok\n"
+    receipt = write_response_record(
+        tmp_path / "response.warc",
+        url="https://catalogue.data.govt.nz/resource.csv?token=redacted",
+        status_code=200,
+        headers={"Content-Type": "text/csv"},
+        body=body,
+        record_id="urn:uuid:receipt",
+    )
+    manifest = build_manifest(
+        archive_id="treasury",
+        observations=[{"observation_id": "o1"}],
+        objects=[{"object_id": "sha256:payload", "sha256": "payload"}],
+        versions=[{"version_id": "v1", "observation_id": "o1"}],
+        warc_records=[
+            {
+                "record_id": receipt.record_id,
+                "object_id": "sha256:payload",
+                "sha256": receipt.sha256,
+                "byte_count": receipt.byte_count,
+            }
+        ],
+    )
+    assert manifest.document["warc_records"][0]["sha256"] == receipt.sha256

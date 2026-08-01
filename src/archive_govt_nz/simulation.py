@@ -6,6 +6,8 @@ import hashlib
 import json
 from dataclasses import dataclass
 
+from .versioning import VersionDecision, decide_version
+
 
 @dataclass(frozen=True, slots=True)
 class SimulationEvent:
@@ -33,6 +35,15 @@ class RecoverySimulationReceipt:
     resumed: bool
     duplicate_objects: int
     unchanged_rerun: bool
+
+
+@dataclass(frozen=True, slots=True)
+class VersioningSimulationReceipt:
+    """Deterministic lifecycle proof for material change and tombstones."""
+
+    states: tuple[str, ...]
+    fingerprints: tuple[str, ...]
+    history_preserved: bool
 
 
 RECOVERY_STAGES = (
@@ -84,4 +95,23 @@ def simulate_recovery(
         resumed=interrupt_stage is not None,
         duplicate_objects=0,
         unchanged_rerun=True,
+    )
+
+
+def simulate_versioning_lifecycle() -> VersioningSimulationReceipt:
+    """Exercise initial, unchanged, changed, withdrawn, and restored states."""
+    initial = {"resource_id": "r1", "sha256": "a"}
+    changed = {"resource_id": "r1", "sha256": "b"}
+    restored = {"resource_id": "r1", "sha256": "c"}
+    decisions: tuple[VersionDecision, ...] = (
+        decide_version(initial),
+        decide_version(initial, initial),
+        decide_version(changed, initial),
+        decide_version(changed, changed, withdrawn=True),
+        decide_version(restored, changed),
+    )
+    return VersioningSimulationReceipt(
+        tuple(item.state.value for item in decisions),
+        tuple(item.fingerprint for item in decisions),
+        decisions[3].previous_fingerprint == decisions[2].fingerprint,
     )
