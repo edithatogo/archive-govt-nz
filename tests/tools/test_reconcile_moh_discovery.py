@@ -2,6 +2,7 @@
 
 import importlib.util
 from pathlib import Path
+from typing import Any, cast
 
 _SPEC = importlib.util.spec_from_file_location(
     "reconcile_moh_discovery",
@@ -15,7 +16,7 @@ reconcile = _MODULE.reconcile
 
 
 def _receipt(
-    datasets: list[dict[str, object]], observed: str = "2026-08-01T00:00:00Z"
+    datasets: list[dict[str, Any]], observed: str = "2026-08-01T00:00:00Z"
 ) -> dict[str, object]:
     return {
         "schema": "archive-govt-nz.moh-discovery/v1",
@@ -29,7 +30,10 @@ def _receipt(
 
 def test_reconcile_reports_stable_dataset_inventory() -> None:
     """Identical inventories reconcile as stable."""
-    datasets = [{"id": "a", "resource_count": 2}, {"id": "b", "resource_count": 1}]
+    datasets = cast(
+        "list[dict[str, Any]]",
+        [{"id": "a", "resource_count": 2}, {"id": "b", "resource_count": 1}],
+    )
     result = reconcile(_receipt(datasets), _receipt(datasets, "2026-08-02T00:00:00Z"))
     assert result["stable"] is True
     assert result["counts"]["first_resources"] == 3

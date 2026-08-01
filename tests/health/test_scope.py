@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import pytest
+from typing import Any, cast
 
 from archive_govt_nz.health_scope import deduplicate_dataset_ids, scope_manifest
 
@@ -11,7 +12,7 @@ def test_scope_manifest_is_https_metadata_only() -> None:
     assert manifest["schema_version"] == "archive-govt-nz.health-scope/v1"
     assert manifest["catalogue"] == "https://catalogue.data.govt.nz"
     assert manifest["payload_capture"] == "prohibited"
-    assert len(manifest["scopes"]) == 2
+    assert len(cast("list[Any]", manifest["scopes"])) == 2
 
 
 def test_scope_manifest_rejects_unbounded_page_size() -> None:
