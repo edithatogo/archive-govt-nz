@@ -1,0 +1,31 @@
+{
+  "schema_version": "archive-govt-nz.release-reconciliation/v1",
+  "state": "reconciled",
+  "checks": [
+    {
+      "name": "package_sha256",
+      "state": "matched",
+      "detail": "local candidate and Zenodo receipt share the package hash"
+    },
+    {
+      "name": "huggingface_revision",
+      "state": "verified",
+      "detail": "9406a3b0f877f0251c1baf89665cacc0c30dbae0"
+    },
+    {
+      "name": "zenodo_release",
+      "state": "verified",
+      "detail": "10.5281/zenodo.21728726"
+    },
+    {
+      "name": "recovery_receipt",
+      "state": "verified",
+      "detail": "remote file size and checksum recorded"
+    },
+    {
+      "name": "recovery_archive",
+      "state": "verified",
+      "detail": "checksum and preservation layers verified"
+    }
+  ]
+}

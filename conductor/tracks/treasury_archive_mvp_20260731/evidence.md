@@ -402,3 +402,13 @@ used because its Python 3.14 runtime path fails before mutation execution.
 | Network boundary | implemented | HTTPS default, bounded timeout, stable redacted transport errors |
 | Remote deposition | unchanged | Existing DOI `10.5281/zenodo.21728726` remains authoritative; adapter tests do not create a new record |
 | Transport bounds | passed | 256 MiB upload cap and 4 MiB response cap; oversized upload rejected before transport |
+
+## Phase 9 reconciliation and recovery checkpoint - 2026-08-01
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Local/Zenodo package hash | matched | `472fe842...21a6b7` matches the published receipt |
+| Hugging Face revision | verified | `9406a3b0...c30dbae0` |
+| Zenodo DOI | verified | `10.5281/zenodo.21728726` |
+| Remote recovery receipt | verified | file size and Zenodo checksum recorded |
+| Recovered tar closure | verified | raw, object, and derivative layers present; member paths safe |

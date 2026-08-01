@@ -404,3 +404,4 @@ Status: approved for track initialization
 - Residual CI warning: pinned third-party actions currently target Node.js 20 and are force-run on Node.js 24 by GitHub. This is not a failed control, but action-version upgrades should be tracked when upstream releases are reviewed and pinned.
 - Zenodo integration finding resolved: repository-owned client now isolates credentials, uses multipart artifact upload, reconciles draft state, and requires explicit DOI equality before publication; mocked integration tests pass.
 - Additional transport review: upload and response sizes are fail-closed and tested. True chunked multipart streaming remains a justified follow-up only if release artefacts exceed the bounded 256 MiB envelope.
+- Phase 9 closure review: local candidate, Hugging Face revision, Zenodo DOI, remote receipt, and recovered tar layers reconcile successfully in the new offline evidence check.

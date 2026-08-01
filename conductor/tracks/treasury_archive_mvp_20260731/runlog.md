@@ -637,6 +637,12 @@
 - Publication remains an explicit caller decision; the adapter does not publish merely because CI or packaging succeeds.
 - Added upload and response-size bounds; oversized artifacts fail before transport and HTTP responses are capped at 4 MiB. This keeps the current 256 MiB package path bounded while leaving true streaming multipart transport as a future scale-up task.
 
+## 2026-08-01 - Cross-target release reconciliation and recovery proof
+
+- Added an offline reconciliation command comparing the exact local v2 candidate, Hugging Face revision receipt, and Zenodo publication receipt.
+- Verified package SHA-256 equality (`472fe842...21a6b7`), Hugging Face revision `9406a3b0...c30dbae0`, DOI `10.5281/zenodo.21728726`, remote size/checksum, and tar preservation-layer closure.
+- Evidence: `conductor/tracks/treasury_archive_mvp_20260731/evidence/phase-9-release-reconciliation.json`.
+
 ## 2026-07-31 - Recovery reconciliation foundation
 
 - Added restart-safe ledger/object-store reconciliation reporting verified,

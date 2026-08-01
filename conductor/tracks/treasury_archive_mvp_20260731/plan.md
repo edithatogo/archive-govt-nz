@@ -445,10 +445,10 @@
   - [x] Publish and read back DOI, metadata, files, sizes, and checksums
   - [x] Record published and remotely verified states separately
 
-- [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
-  - [ ] Reconcile local, Hugging Face, and Zenodo manifests
-  - [ ] Verify immutable release recovery
-  - [ ] Record deposition, DOI, remote evidence, and checkpoint
+- [x] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+  - [x] Reconcile local, Hugging Face, and Zenodo manifests
+  - [x] Verify immutable release recovery
+  - [x] Record deposition, DOI, remote evidence, and checkpoint
 
 ## Phase 10: MVP closeout and next-scope handoff
 
