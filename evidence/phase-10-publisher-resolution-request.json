@@ -1,6 +1,6 @@
 {
   "schema_version": "archive-govt-nz.publisher-resolution-request/v1",
-  "captured_at": "2026-08-01T08:05:37.311905+00:00",
+  "captured_at": "2026-08-01T07:56:10.373163+00:00",
   "recipient": {
     "organisations": [
       "New Zealand Treasury",
@@ -19,18 +19,926 @@
     "undocumented_mirrors_requested": false,
     "http_exception_requested": false
   },
-  "delivery": {
-    "status": "draft-not-sent",
-    "external_request_sent": false,
-    "approval_required": true,
-    "send_command": null
-  },
   "summary": {
-    "resource_count": 0,
-    "state_counts": {},
+    "resource_count": 91,
+    "state_counts": {
+      "tombstone-required": 79,
+      "secure-source-observed": 12
+    },
     "requested_response": "For each listed resource, provide an authoritative HTTPS replacement, confirm withdrawal, or explain access restrictions and intended access path."
   },
-  "resources": [],
+  "resources": [
+    {
+      "resource_id": "b00c9d9c-3d35-4c08-bfa3-6fb2b8e70788",
+      "source_url": "http://www.nzdmo.govt.nz/publications/data",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "164dd7be-f1ee-4981-8aef-1398bf7360e9",
+      "source_url": "http://www.treasury.govt.nz/budget/2016/data",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "4d97e2cf-1e9e-49c2-a582-7dd388ce2322",
+      "source_url": "https://catalogue.data.govt.nz/dataset/0641a23e-5741-45d6-bd4f-1b41fcabe381/resource/4d97e2cf-1e9e-49c2-a582-7dd388ce2322/download/ce-gifts-benefits-expenses-disclosure-workbook-iain-rennie-1-july-2025-30-june-2026.xlsx",
+      "state": "secure-source-observed",
+      "http_statuses": [
+        200
+      ],
+      "candidate_count": 1,
+      "reason": "at least one secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "f060ba29-2be8-4b1b-88b2-d16e2d2ccb87",
+      "source_url": "https://catalogue.data.govt.nz/dataset/0641a23e-5741-45d6-bd4f-1b41fcabe381/resource/f060ba29-2be8-4b1b-88b2-d16e2d2ccb87/download/treasury-chief-executive-expenses-18-november-2024-30-june-2025.xlsx",
+      "state": "secure-source-observed",
+      "http_statuses": [
+        200
+      ],
+      "candidate_count": 1,
+      "reason": "at least one secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "426f5d36-f286-41c8-9062-d4471259f1ad",
+      "source_url": "https://catalogue.data.govt.nz/dataset/0641a23e-5741-45d6-bd4f-1b41fcabe381/resource/426f5d36-f286-41c8-9062-d4471259f1ad/download/treasury-chief-executive-expenses-4-november-2024-17-november-2024.xlsx",
+      "state": "secure-source-observed",
+      "http_statuses": [
+        200
+      ],
+      "candidate_count": 1,
+      "reason": "at least one secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "1f7ebba6-61e4-4659-9756-b364b4f296ec",
+      "source_url": "https://catalogue.data.govt.nz/dataset/0641a23e-5741-45d6-bd4f-1b41fcabe381/resource/1f7ebba6-61e4-4659-9756-b364b4f296ec/download/treasury-chief-executive-expenses-16-september-2024-3-november-2024.xlsx",
+      "state": "secure-source-observed",
+      "http_statuses": [
+        200
+      ],
+      "candidate_count": 1,
+      "reason": "at least one secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "7d649908-d794-4e0f-abf3-df82abdd065d",
+      "source_url": "https://catalogue.data.govt.nz/dataset/0641a23e-5741-45d6-bd4f-1b41fcabe381/resource/7d649908-d794-4e0f-abf3-df82abdd065d/download/treasury-chief-executive-expenses-1-july-2024-15-september-2024.xlsx",
+      "state": "secure-source-observed",
+      "http_statuses": [
+        200
+      ],
+      "candidate_count": 1,
+      "reason": "at least one secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "6eb42275-8de2-409c-8a3d-81ab20483512",
+      "source_url": "https://catalogue.data.govt.nz/dataset/0641a23e-5741-45d6-bd4f-1b41fcabe381/resource/6eb42275-8de2-409c-8a3d-81ab20483512/download/the-treasury-chief-executive-expenses-1-july-2023-30-june-2024.xlsx",
+      "state": "secure-source-observed",
+      "http_statuses": [
+        200
+      ],
+      "candidate_count": 1,
+      "reason": "at least one secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "f46fbfe8-9098-4461-a7a7-8a27516287c1",
+      "source_url": "https://www.treasury.govt.nz/publications/information-release/chief-executive-expenses-information-release",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "121b0cc4-b480-496f-bb8f-ac34af9d8dd7",
+      "source_url": "https://catalogue.data.govt.nz/dataset/0641a23e-5741-45d6-bd4f-1b41fcabe381/resource/121b0cc4-b480-496f-bb8f-ac34af9d8dd7/download/ce-gifts-benefits-expenses-disclosure-workbook-caralee-mcliesh-2021-2022.xlsx",
+      "state": "secure-source-observed",
+      "http_statuses": [
+        200
+      ],
+      "candidate_count": 1,
+      "reason": "at least one secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "2d429f70-a496-4cfe-bade-46f2b4b1568a",
+      "source_url": "https://www.treasury.govt.nz/publications/information-release/chief-executive-expenses-information-release",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "cd9975ae-34b5-45c1-a4dd-4c58016a3d59",
+      "source_url": "https://catalogue.data.govt.nz/dataset/0641a23e-5741-45d6-bd4f-1b41fcabe381/resource/cd9975ae-34b5-45c1-a4dd-4c58016a3d59/download/tsy-ceep-sep19-jun20.xlsx",
+      "state": "secure-source-observed",
+      "http_statuses": [
+        200
+      ],
+      "candidate_count": 1,
+      "reason": "at least one secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "62b655ed-5ad0-4eea-9117-58233773ec10",
+      "source_url": "https://catalogue.data.govt.nz/dataset/0641a23e-5741-45d6-bd4f-1b41fcabe381/resource/62b655ed-5ad0-4eea-9117-58233773ec10/download/tsy-ceep-jul19-sep19.xlsx",
+      "state": "secure-source-observed",
+      "http_statuses": [
+        200
+      ],
+      "candidate_count": 1,
+      "reason": "at least one secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "3379cc83-4ea5-477f-84d4-7e5195830e97",
+      "source_url": "https://treasury.govt.nz/publications/information-release/chief-executive-expenses-information-release",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "a17343e9-eb3b-4403-b4e5-f72fcb3b6dfe",
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/befu2011/003.htm",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "9eceb529-82a3-45eb-9ef9-503857d839fe",
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/befu2011/003.htm",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "0f69dd85-3a37-49f5-ba6c-428fd56ff2ca",
+      "source_url": "http://www.treasury.govt.nz/budget/2016/bps",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "51c7dbf7-3de1-44bf-944b-691bbf99104a",
+      "source_url": "http://www.treasury.govt.nz/budget/2016/bps",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "f86b85e2-6d35-4a83-a2f8-04931ae00758",
+      "source_url": "http://www.treasury.govt.nz/budget/2012/data",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "f1d8a2e8-8f42-4a43-8c25-01b17f5fda1c",
+      "source_url": "http://www.treasury.govt.nz/government/fiscalstrategy/model",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "61a03083-ee92-4950-bcd1-b666c9251438",
+      "source_url": "http://www.treasury.govt.nz/government/fiscalstrategy/model",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "678ae89d-934d-4be6-aefc-4aeeaf446eab",
+      "source_url": "http://www.treasury.govt.nz/budget/2014/data",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "56f9adfa-68b2-46d6-8fe8-2ede877fae70",
+      "source_url": "http://www.treasury.govt.nz/publications/briefings/2011",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "75fa2272-ad0c-4912-92ca-93ef5848c638",
+      "source_url": "http://www.treasury.govt.nz/economy/mei/archive",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "e3b98e40-9792-4df8-9092-4fa795871294",
+      "source_url": "http://www.treasury.govt.nz/economy/mei/archive",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "3ebcd20c-6885-4baf-b8e1-29cb30d3d0bc",
+      "source_url": "http://www.treasury.govt.nz/economy/mei/archive",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "ff9fd67e-785d-4c3c-b9ae-5a168ce49ff0",
+      "source_url": "http://www.treasury.govt.nz/government/revenue/taxoutturn",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "322112b9-8071-4783-8a12-1a3cf3c27a3a",
+      "source_url": "http://www.treasury.govt.nz/budget/2011/data",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "f585d974-8cb8-43f4-a40c-6cd1583c2c16",
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/hyefu2016",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "d114c01d-07f4-453e-9e7f-c2c2de09b535",
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/hyefu2016",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "77c545d6-a379-41e3-aeac-82f6fa31ca85",
+      "source_url": "http://www.treasury.govt.nz/budget/2014/fsr",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "6a599602-c335-48e9-874a-fbb3c6e22d66",
+      "source_url": "http://www.treasury.govt.nz/budget/2014/fsr",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "9a4be4b0-14ad-4a0b-b3af-dde0c000d486",
+      "source_url": "http://www.treasury.govt.nz/statesector/performance/bass/benchmarking/2011-12",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "919d3554-938a-4d90-b6ab-949d1005f15a",
+      "source_url": "http://www.treasury.govt.nz/statesector/performance/bass/benchmarking/2011-12",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "4f4ac9fd-106e-4df8-9881-381202b7d842",
+      "source_url": "http://www.treasury.govt.nz/budget/2010/data",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "8a0b2404-6730-4143-a2bc-a11141fda937",
+      "source_url": "https://www.treasury.govt.nz/sites/default/files/2024-08/pc-tsy-website-urls.xlsx",
+      "state": "secure-source-observed",
+      "http_statuses": [
+        200
+      ],
+      "candidate_count": 1,
+      "reason": "at least one secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "00ed2ecd-897f-4018-8551-490c60bccb19",
+      "source_url": "https://www.treasury.govt.nz/sites/default/files/2024-08/pc-tsy-website-urls.csv",
+      "state": "secure-source-observed",
+      "http_statuses": [
+        200
+      ],
+      "candidate_count": 1,
+      "reason": "at least one secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "8c8ae7bd-b708-4f64-8bca-357299782177",
+      "source_url": "http://www.treasury.govt.nz/budget/2015/data",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "2b5b5365-6218-4314-bf26-d932070d36ab",
+      "source_url": "http://www.treasury.govt.nz/budget/2009/data",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "2f7cc72a-46a3-4db3-b369-de4d1c4f0dac",
+      "source_url": "http://www.treasury.govt.nz/budget/2016/fsr",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "11465b50-aabc-4056-8fd4-dbde821b888d",
+      "source_url": "http://www.treasury.govt.nz/budget/2016/fsr",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "a90e9023-f0f8-47e1-a5a7-cab78f01b373",
+      "source_url": "http://www.treasury.govt.nz/government/fiscalstrategy/model",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "9a040505-ec80-4ebb-b094-f2e78d87e245",
+      "source_url": "http://www.treasury.govt.nz/budget/2010/data",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "9b4938a2-1bdf-43c9-8568-bb680f57f0d0",
+      "source_url": "http://www.treasury.govt.nz/government/revenue/taxoutturn",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "e722caf6-5335-4faa-9918-6f3b39216e11",
+      "source_url": "http://www.treasury.govt.nz/government/fiscalstrategy/model/archive",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "d7279df1-1109-44f6-8785-d74328150b80",
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/befu2012/003.htm",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "6fcf9e0d-aad6-4c49-8fa0-74e9abc8e28c",
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/befu2012/003.htm",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "91b8a9da-7ee1-4522-be6a-0ec03998afa3",
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/prefu2011/05.htm",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "79305bd8-30a6-4972-8441-9c2a85999b87",
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/prefu2011/05.htm",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "ab55249d-d7b8-4950-bc6d-567133e15a54",
+      "source_url": "http://www.treasury.govt.nz/budget/2009/data",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "ccaf5ba3-c0d0-4e42-b763-1e523293887d",
+      "source_url": "https://www.nzdmo.govt.nz/analyst-centre/data",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "1bd87f07-d065-4660-8e45-764da7ea3f1e",
+      "source_url": "http://www.treasury.govt.nz/budget/2011/data",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "49d397cb-4bdc-4bf7-b31b-2cc715bf23f9",
+      "source_url": "http://www.treasury.govt.nz/government/fiscalstrategy/model",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "fc9b90c8-0a18-4ab3-9c6f-fb6a6133c643",
+      "source_url": "https://www.nzdmo.govt.nz/analyst-centre/data",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "fa4be840-60cb-460c-bf1c-ab198438ceef",
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/hyefu2016",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "42d6ff6d-5e5e-4acd-881e-264419d36908",
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/hyefu2016",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "c21fa3ff-d828-4d3f-a243-a401c34bc49b",
+      "source_url": "https://www.treasury.govt.nz/sites/default/files/2016-12/hyefu16-charts-data.xlsx",
+      "state": "secure-source-observed",
+      "http_statuses": [
+        200
+      ],
+      "candidate_count": 1,
+      "reason": "at least one secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "d187ad59-d72e-4c7c-8b0c-5b35852502db",
+      "source_url": "http://www.treasury.govt.nz/government/longterm/fiscalmodel",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "c94ade11-1994-4260-889d-f12f91eb12a1",
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/befu2010/005.htm",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "568bdc7c-8973-48e6-ac3b-fb9f37523309",
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/befu2010/005.htm",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "25748899-1473-434b-9c0a-74958ed33c38",
+      "source_url": "http://www.treasury.govt.nz/statesector/performance/bass/benchmarking/2010-11",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "da3d51d5-f012-4285-ad1a-8b8a7ee49a88",
+      "source_url": "http://www.treasury.govt.nz/statesector/performance/bass/benchmarking/2010-11",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "bfa77487-55b7-4fa9-9f92-ffe536b656be",
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/befu2016",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "a628c0b9-7809-4bbb-b45b-54fad3785436",
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/befu2016",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "606c5a38-9a0f-4d17-97b4-50911f9c5151",
+      "source_url": "http://www.treasury.govt.nz/budget/2012/data",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "5364925a-b2cb-44d4-bfac-8985cc1ba3ee",
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/befu2012/010.htm",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "e6a23b3e-bfc3-478d-91fb-3eee3b2d8f3b",
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/befu2012/010.htm",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "2ca0c847-f3b5-4cc5-a7f3-d44cb80d7f92",
+      "source_url": "http://www.treasury.govt.nz/budget/2013/data",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "424bc348-7ce9-4bce-ada6-a3bf1a78a51d",
+      "source_url": "http://www.treasury.govt.nz/statesector/performance/bass/benchmarking/2008-10",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "a2562b54-50bc-424a-9e7c-1ef4bab20c1b",
+      "source_url": "http://www.treasury.govt.nz/statesector/performance/bass/benchmarking/2008-10",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "b465f452-1a51-46d6-a6b7-852154dcf5f9",
+      "source_url": "http://www.treasury.govt.nz/statesector/performance/bass/benchmarking/2008-10",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "b4096ea0-2f00-40c7-bcb2-777818e35cc4",
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/prefu2011/09.htm",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "6724e3eb-02cc-4e71-9034-a4c60bd02ccc",
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/prefu2011/09.htm",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "1f1d59f5-5191-445e-aef9-cc9f2bfeb8db",
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/befu2015",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "93e4ef0a-c0c0-4f3a-ba0a-0202d07d6a7b",
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/befu2015",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "64b2d17b-43ad-412b-9c3d-7d29868a7895",
+      "source_url": "http://www.treasury.govt.nz/government/revenue/taxoutturn",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "a360bfd6-2968-4f2b-9043-54ae120df424",
+      "source_url": "http://www.treasury.govt.nz/budget/2017/bps",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "f58453f0-ac52-4447-98f0-fcac63d911c1",
+      "source_url": "http://www.treasury.govt.nz/budget/2017/bps",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "29787155-f999-4862-b638-20bcea70e5c1",
+      "source_url": "http://www.treasury.govt.nz/government/data",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "932cedeb-fe28-42b0-b07c-4ce8dcbc75dd",
+      "source_url": "http://www.treasury.govt.nz/government/fiscalstrategy/model",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "710d2924-f94f-47a8-91a5-a71d15f31295",
+      "source_url": "http://www.treasury.govt.nz/budget/2015/fsr",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "7a8ddfe7-aa9a-47b8-9a2d-cfe2df9c57bc",
+      "source_url": "http://www.treasury.govt.nz/budget/2015/fsr",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "465bf214-62ff-46f6-8ebd-29a3aee17536",
+      "source_url": "http://www.treasury.govt.nz/budget/2013/data",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "ed656f3e-7a9d-4da1-acde-e79abdb383b7",
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/hyefu2015",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "c5790716-2a44-4a8d-bb3a-54a03d9e6ddd",
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/hyefu2015",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "36b05f4b-4b97-405d-a656-30e59747c04a",
+      "source_url": "http://www.treasury.govt.nz/government/fiscalstrategy/model",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "57e960b7-efeb-46da-990c-b1b8adde03a9",
+      "source_url": "http://www.treasury.govt.nz/government/fiscalstrategy/model",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "a1f4ce15-a7f8-4d40-9a94-6df583681ee1",
+      "source_url": "http://www.treasury.govt.nz/government/financialstatements/monthend",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "918abfce-f9ed-4760-9d27-b38cda65f624",
+      "source_url": "http://www.treasury.govt.nz/government/financialstatements/monthend",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "77c0d960-4657-47e1-89b4-7b68294cc237",
+      "source_url": "http://www.treasury.govt.nz/government/fiscalstrategy/model",
+      "state": "tombstone-required",
+      "http_statuses": [
+        403
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    },
+    {
+      "resource_id": "08a34d7d-ee30-4562-b37d-b4dbc529b3e7",
+      "source_url": "http://www.treasury.govt.nz/government/investmentstatements/2014/is14-charts-data.xls",
+      "state": "tombstone-required",
+      "http_statuses": [
+        404
+      ],
+      "candidate_count": 1,
+      "reason": "no secure candidate returned an eligible status"
+    }
+  ],
   "evidence": [
     "evidence/phase-10-secure-source-probe.json",
     "evidence/phase-10-tombstone-reprobe.json",
