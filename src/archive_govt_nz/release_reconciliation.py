@@ -114,9 +114,8 @@ def reconcile_release_records(
         ReconciliationCheck(
             "recovery_receipt",
             "verified"
-            if _positive_int(zenodo.get("file_size")) and _has_text(
-                zenodo.get("zenodo_checksum")
-            )
+            if _positive_int(zenodo.get("file_size"))
+            and _has_text(zenodo.get("zenodo_checksum"))
             else "unavailable",
             "remote file size and checksum recorded"
             if zenodo.get("file_size") and zenodo.get("zenodo_checksum")
