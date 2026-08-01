@@ -1,3 +1,5 @@
+"""Contracts for the object-integrity verification CLI."""
+
 import json
 import subprocess
 from pathlib import Path
@@ -10,7 +12,7 @@ def test_verify_object_store_emits_integrity_receipt(tmp_path: Path) -> None:
     root = tmp_path / "objects"
     ContentAddressedStore(root).put_bytes(b"fixture")
     output = tmp_path / "receipt.json"
-    result = subprocess.run(
+    result = subprocess.run(  # noqa: S603
         [
             "uv",
             "run",
