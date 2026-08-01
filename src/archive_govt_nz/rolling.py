@@ -6,7 +6,7 @@ import hashlib
 import json
 from collections.abc import Mapping
 from dataclasses import dataclass
-from typing import Any
+from typing import Any, cast
 
 from .versioning import VersionDecision, VersionState, decide_version
 
@@ -84,14 +84,16 @@ def reconcile_manifests(
 
 
 def _ids(manifest: Mapping[str, Any]) -> set[str]:
-    values = manifest.get("items", manifest.get("records", []))
-    if not isinstance(values, list):
+    raw_values = manifest.get("items", manifest.get("records", []))
+    if not isinstance(raw_values, list):
         return set()
-    return {
-        str(item["id"])
-        for item in values
-        if isinstance(item, Mapping) and "id" in item
-    }
+    values = cast("list[Any]", raw_values)
+    identifiers: set[str] = set()
+    for item in values:
+        if isinstance(item, Mapping) and "id" in item:
+            typed_item = cast("Mapping[str, Any]", item)
+            identifiers.add(str(typed_item["id"]))
+    return identifiers
 
 
 def _canonical(value: Mapping[str, Any]) -> bytes:
