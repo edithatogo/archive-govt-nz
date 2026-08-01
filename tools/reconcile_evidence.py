@@ -99,8 +99,10 @@ def main() -> int:
             ),
         },
         "limitations": [
-            "Payload availability and live WARC coverage remain externally gated; "
-            "reconciliation does not assert complete capture."
+            (
+                "Payload availability and live WARC coverage remain externally gated; "
+                "reconciliation does not assert complete capture."
+            )
         ],
     }
     args.output.parent.mkdir(parents=True, exist_ok=True)
@@ -119,8 +121,10 @@ def main() -> int:
     lines.extend(f"- `{k}`: {'PASS' if v else 'FAIL'}" for k, v in checks.items())
     lines += [
         "",
-        "Live payload and WARC completeness remain explicitly gated; "
-        "no external request was sent.",
+        (
+            "Live payload and WARC completeness remain explicitly gated; "
+            "no external request was sent."
+        ),
         "",
     ]
     args.markdown.write_text("\n".join(lines), encoding="utf-8")
