@@ -1,0 +1,17 @@
+{
+  "schema_version": "archive-govt-nz.versioning-simulation/v1",
+  "generated_at": "2026-08-01",
+  "scope": "deterministic-contracts",
+  "command": "uv run --locked pytest -q tests/publication/test_rolling.py",
+  "result": "passed",
+  "tests": 6,
+  "assertions": [
+    "unchanged observations are idempotent within the bounded history tail",
+    "material fingerprints produce changed versions",
+    "withdrawals preserve predecessor fingerprints as tombstones",
+    "resource disappearance produces an explicit source_disappeared tombstone",
+    "policy changes produce an explicit policy_changed tombstone",
+    "manifest reconciliation detects missing and unexpected identifiers"
+  ],
+  "limitation": "This is a deterministic simulation; it does not claim that all live Treasury resources were captured."
+}

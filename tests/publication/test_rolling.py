@@ -33,6 +33,20 @@ def test_tombstone_retains_previous_fingerprint() -> None:
     assert history[0].previous_fingerprint == history[0].fingerprint
 
 
+@pytest.mark.parametrize(
+    ("flag", "reason"),
+    [("disappeared", "source_disappeared"), ("policy_changed", "policy_changed")],
+)
+def test_nonmaterial_withdrawal_causes_are_explicitly_versioned(
+    flag: str, reason: str
+) -> None:
+    """Disappearance and policy changes retain history with explicit causes."""
+    current = {"id": "r1", "value": 1}
+    decision = decide_version(current, current, **{flag: True})
+    assert decision.state == VersionState.TOMBSTONE
+    assert decision.reason == reason
+
+
 def test_history_requires_positive_bound_and_sha256() -> None:
     """Invalid bounds and checksums fail closed."""
     decision = decide_version({"id": "r1"})

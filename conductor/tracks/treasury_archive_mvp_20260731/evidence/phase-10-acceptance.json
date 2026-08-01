@@ -11,7 +11,7 @@
     "M-06": "blocked-resource-outcomes-not-complete",
     "M-07": "verified",
     "M-08": "verified",
-    "M-09": "partial-material-change-and-tombstone-run-not-complete",
+    "M-09": "partial-live-material-run-not-complete-contracts-verified",
     "M-10": "verified",
     "M-11": "verified",
     "M-12": "partial-material-transaction-coverage-not-complete",
@@ -27,7 +27,7 @@
     "Resource-level 403 and non-HTTPS outcomes remain explicitly restricted or unavailable; complete eligible-resource capture is not claimed."
   ],
   "safe_next_actions": [
-    "Run bounded capture and recovery simulations across every interruption boundary.",
+    "Run bounded capture and recovery simulations across every interruption boundary; versioning contract simulation is evidenced in phase-10-versioning-simulation.json.",
     "Add material WARC transaction fixtures and reconcile their object relationships.",
     "Resolve remaining inaccessible resource outcomes and re-run the acceptance ledger."
   ]

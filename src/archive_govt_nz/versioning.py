@@ -35,16 +35,22 @@ def decide_version(
     *,
     policy_version: str = "version-policy/v1",
     withdrawn: bool = False,
-) -> VersionDecision:
+    disappeared: bool = False,
+    policy_changed: bool = False,
+) -> VersionDecision:  # noqa: PLR0913
     """Compare canonical metadata/resource evidence and preserve withdrawal."""
     fingerprint = _fingerprint(current)
     previous_fingerprint = None if previous is None else _fingerprint(previous)
-    if withdrawn:
+    if withdrawn or disappeared or policy_changed:
+        reason = (
+            "source_withdrawn" if withdrawn else
+            "source_disappeared" if disappeared else "policy_changed"
+        )
         return VersionDecision(
             VersionState.TOMBSTONE,
             fingerprint,
             previous_fingerprint,
-            "source_withdrawn",
+            reason,
             policy_version,
         )
     if previous is None:
