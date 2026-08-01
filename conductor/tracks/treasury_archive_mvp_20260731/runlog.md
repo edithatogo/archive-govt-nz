@@ -754,3 +754,21 @@
 - The resolution packet remains prepared as `draft-not-sent`; no credentials, payloads, or signed URLs are used.
 - Added `evidence/phase-10-next-status.json` documenting the awaiting-observation state, current counts, and bounded automated next actions.
 - Unresolved resources remain restricted/unavailable with preserved tombstones; scheduled HTTPS re-probes continue to be the safe next action.
+### Rolling update reconciliation
+
+- Ran `tools/verify_rolling_update.py` with no remote upload.
+- Evidence records initial, unchanged-idempotent, changed-version, disappearance tombstone, and manifest-match assertions.
+- Live Treasury change observation and remote Hugging Face publication remain separately gated.
+
+### MVP closeout ledger and follow-up scope
+
+- Reconciled the final evidence ledger across discovery, source resolution,
+  capture, tombstones, WARC, Hugging Face, and Zenodo. Current counts remain
+  91 discovered/resolved, 12 captured, 78 restricted, 1 unavailable, and 79
+  tombstones; this does not claim complete payload capture.
+- Added machine-readable and Markdown proposals for Track 11 (Ministry of
+  Health), Track 12 (broader health discovery), and Track 13 (preservation
+  conformance). Graph/vector evaluation remains deferred until a concrete
+  consumer use case exists.
+- Updated the plan only for evidence-backed ledger and next-track tasks; the
+  final clean-environment checkpoint and externally gated capture remain open.

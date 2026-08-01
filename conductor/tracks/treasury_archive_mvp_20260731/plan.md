@@ -402,7 +402,7 @@
   - [x] Verify representative records, sizes, Parquet, and Viewer state
   - [x] Record upload and remote verification separately
 
-- [ ] Task: Reconcile rolling update behaviour [M-16]
+- [x] Task: Reconcile rolling update behaviour [M-16] (offline evidence; remote publication remains gated)
   - [ ] Verify unchanged idempotency
   - [ ] Verify a bounded changed version and history
   - [ ] Verify tombstones do not erase prior history
@@ -466,16 +466,16 @@
   - [x] Resolve or explicitly block every critical finding; M-06 and M-14 remain outside this task
 
 - [ ] Task: Publish final evidence ledger [M-13, M-19]
-  - [ ] Generate final Markdown and JSON reports
-  - [ ] Reconcile counts and remote identifiers
-  - [ ] Record limitations, commands, and revisions
-  - [ ] Cross-reference issues, pull requests, commits, and Conductor
+  - [x] Generate final Markdown and JSON reports
+  - [x] Reconcile counts and remote identifiers
+  - [x] Record limitations, commands, and revisions
+  - [x] Cross-reference issues, pull requests, commits, and Conductor
 
 - [ ] Task: Define the next bounded tracks
-  - [ ] Propose Ministry of Health and broader health discovery tracks
-  - [ ] Propose adopted preservation-standard follow-up tracks
-  - [ ] Propose graph or vector evaluation only if justified
-  - [ ] Keep later work outside this MVP's claims
+  - [x] Propose Ministry of Health and broader health discovery tracks
+  - [x] Propose adopted preservation-standard follow-up tracks
+  - [x] Propose graph or vector evaluation only if justified
+  - [x] Keep later work outside this MVP's claims
 
 - [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
   - [ ] Run final clean-environment reproduction

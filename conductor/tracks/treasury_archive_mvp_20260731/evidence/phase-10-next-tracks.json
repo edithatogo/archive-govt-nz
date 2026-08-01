@@ -1,0 +1,42 @@
+{
+  "schema_version": "archive-govt-nz.next-track-proposals/v1",
+  "generated_at": "2026-08-01",
+  "status": "proposed",
+  "proposals": [
+    {
+      "track_id": "health_moh_discovery_20260801",
+      "sequence": 11,
+      "title": "Ministry of Health discovery and eligibility",
+      "priority": "must",
+      "scope": "Enumerate Ministry of Health CKAN datasets and resources, preserve raw metadata, and produce policy-scoped eligibility and source-resolution evidence before capture.",
+      "dependencies": ["treasury_archive_mvp_20260731"],
+      "publication_boundary": "No payload publication until rights, source eligibility, and local reconciliation gates pass.",
+      "decision_gates": ["capture authority", "rights exceptions", "publication approval"]
+    },
+    {
+      "track_id": "health_broader_discovery_20260801",
+      "sequence": 12,
+      "title": "Broader health and healthcare discovery",
+      "priority": "should",
+      "scope": "Discover health-themed and health-group datasets, deduplicate organisation and resource identities, and rank follow-up capture work using reproducible scope evidence.",
+      "dependencies": ["health_moh_discovery_20260801"],
+      "publication_boundary": "Discovery and metadata first; payload capture remains independently policy-gated.",
+      "decision_gates": ["scope approval", "capture authority", "rights exceptions"]
+    },
+    {
+      "track_id": "preservation_conformance_20260801",
+      "sequence": 13,
+      "title": "Preservation packaging conformance",
+      "priority": "should",
+      "scope": "Turn the bounded RO-Crate and BagIt evaluation into executable conformance fixtures and release checks; keep OCFL deferred until representative production-corpus fixtures justify adoption.",
+      "dependencies": ["treasury_archive_mvp_20260731"],
+      "publication_boundary": "Conformance evidence only; no repackaging of immutable releases without an approved migration.",
+      "decision_gates": ["adoption requirement", "release migration approval"]
+    }
+  ],
+  "deferred_evaluation": {
+    "track_id": "graph_vector_evaluation_20260801",
+    "status": "deferred",
+    "rationale": "No concrete archive consumer currently requires a graph or vector index; evaluate only after a query, provenance-navigation, or semantic-retrieval use case is evidenced."
+  }
+}
