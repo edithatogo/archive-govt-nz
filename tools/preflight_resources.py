@@ -11,7 +11,10 @@ from urllib.parse import urljoin
 
 import httpx
 
-from archive_govt_nz.source_resolution import resolve_secure_sources
+from archive_govt_nz.source_resolution import (
+    derive_ckan_api_candidates,
+    resolve_secure_sources,
+)
 
 ELIGIBLE_STATUS_BOUNDARY = 400
 
@@ -74,16 +77,29 @@ async def _probe_resolved(
         "candidates": list(resolution.candidates),
     }
     if not resolution.candidates:
+        api_attempts = await asyncio.gather(
+            *(
+                _probe(client, {**resource, "source_url": candidate}, semaphore)
+                for candidate in derive_ckan_api_candidates(resource)
+            )
+        )
         return {
             **base,
             "state": "tombstone-required",
             "reason": resolution.reason,
             "attempts": [],
+            "ckan_api_attempts": api_attempts,
         }
     attempts = await asyncio.gather(
         *(
             _probe(client, {**resource, "source_url": candidate}, semaphore)
             for candidate in resolution.candidates
+        )
+    )
+    api_attempts = await asyncio.gather(
+        *(
+            _probe(client, {**resource, "source_url": candidate}, semaphore)
+            for candidate in derive_ckan_api_candidates(resource)
         )
     )
     usable = [
@@ -100,6 +116,7 @@ async def _probe_resolved(
         if usable
         else "no secure candidate returned an eligible status",
         "attempts": attempts,
+        "ckan_api_attempts": api_attempts,
     }
 
 

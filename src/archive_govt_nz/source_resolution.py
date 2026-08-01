@@ -5,7 +5,7 @@ from __future__ import annotations
 from collections.abc import Mapping  # noqa: TC003
 from dataclasses import dataclass
 from typing import cast
-from urllib.parse import urlparse, urlunparse
+from urllib.parse import urlencode, urlparse, urlunparse
 
 
 @dataclass(frozen=True, slots=True)
@@ -16,6 +16,30 @@ class SourceResolution:
     candidates: tuple[str, ...]
     state: str
     reason: str
+
+
+def derive_ckan_api_candidates(resource: Mapping[str, object]) -> tuple[str, ...]:
+    """Return read-only CKAN API endpoints for metadata/DataStore diagnostics.
+
+    These endpoints are deliberately separate from payload candidates: a reachable
+    ``package_show`` or ``datastore_search`` response never makes the original
+    resource eligible for capture.  They provide evidence that CKAN metadata or a
+    tabular DataStore representation is available when a download URL is not.
+    """
+    dataset_id = resource.get("dataset_id")
+    resource_id = resource.get("resource_id")
+    candidates: list[str] = []
+    if isinstance(dataset_id, str) and dataset_id:
+        candidates.append(
+            "https://catalogue.data.govt.nz/api/3/action/package_show?"
+            + urlencode({"id": dataset_id})
+        )
+    if isinstance(resource_id, str) and resource_id:
+        candidates.append(
+            "https://catalogue.data.govt.nz/api/3/action/datastore_search?"
+            + urlencode({"resource_id": resource_id, "limit": 0})
+        )
+    return tuple(candidates)
 
 
 def resolve_secure_sources(resource: Mapping[str, object]) -> SourceResolution:

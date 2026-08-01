@@ -1,6 +1,9 @@
 """Secure source resolution and tombstone contracts."""
 
-from archive_govt_nz.source_resolution import resolve_secure_sources
+from archive_govt_nz.source_resolution import (
+    derive_ckan_api_candidates,
+    resolve_secure_sources,
+)
 
 
 def test_source_resolution_upgrades_http_and_preserves_explicit_https() -> None:
@@ -26,3 +29,12 @@ def test_source_resolution_requires_tombstone_without_authoritative_source() -> 
     )
     assert result.state == "tombstone-required"
     assert result.candidates == ()
+
+
+def test_ckan_api_candidates_are_diagnostics_not_payload_sources() -> None:
+    """CKAN metadata/DataStore endpoints are deterministic and read-only."""
+    assert derive_ckan_api_candidates({"dataset_id": "d1", "resource_id": "r1"}) == (
+        "https://catalogue.data.govt.nz/api/3/action/package_show?id=d1",
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=r1&limit=0",
+    )
+    assert derive_ckan_api_candidates({}) == ()

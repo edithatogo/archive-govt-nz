@@ -1,0 +1,15 @@
+{
+  "schema_version": "archive-govt-nz.ckan-api-probe/v1",
+  "captured_at": "2026-08-01T06:42:30Z",
+  "input": "evidence/phase-6-treasury-capture-plan.json",
+  "resource_count": 91,
+  "body_transfer": false,
+  "method": "bounded HTTPS HEAD; CKAN package_show and datastore_search?limit=0; maximum four redirects; eight-second timeout; concurrency four",
+  "outcomes": {
+    "package_show_200": 91,
+    "datastore_search_200": 44,
+    "datastore_search_404": 47
+  },
+  "interpretation": "CKAN package metadata was reachable for all 91 planned resources. DataStore was available for 44 resource IDs and returned 404 for 47. API reachability is diagnostic only and never promotes a download payload to eligible capture.",
+  "full_receipt": "build/live/secure-source-probe-ckan-20260801.json"
+}
