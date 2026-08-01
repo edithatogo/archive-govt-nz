@@ -29,7 +29,7 @@ class VersionDecision:
     policy_version: str
 
 
-def decide_version(
+def decide_version(  # noqa: PLR0913
     current: dict[str, Any],
     previous: dict[str, Any] | None = None,
     *,
@@ -37,7 +37,7 @@ def decide_version(
     withdrawn: bool = False,
     disappeared: bool = False,
     policy_changed: bool = False,
-) -> VersionDecision:  # noqa: PLR0913
+) -> VersionDecision:
     """Compare canonical metadata/resource evidence and preserve withdrawal."""
     fingerprint = _fingerprint(current)
     previous_fingerprint = None if previous is None else _fingerprint(previous)
