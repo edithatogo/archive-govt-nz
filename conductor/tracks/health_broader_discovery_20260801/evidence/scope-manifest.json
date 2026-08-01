@@ -1,0 +1,16 @@
+{
+  "schema_version": "archive-govt-nz.health-scope/v1",
+  "catalogue": "https://catalogue.data.govt.nz",
+  "observed_at": "2026-08-01T00:00:00Z",
+  "mode": "metadata_only",
+  "page_size": 100,
+  "max_pages_per_scope": 1000,
+  "scopes": [
+    {"id": "text-health", "q": "health", "sort": "score desc, metadata_modified desc"},
+    {"id": "group-health", "groups": "health", "sort": "score desc, metadata_modified desc"}
+  ],
+  "organisation_facets": {"enabled": true, "include": "all matching organisations"},
+  "payload_capture": "prohibited",
+  "status": "contract_only",
+  "limitations": ["No live query was run", "No resource payloads were downloaded"]
+}
