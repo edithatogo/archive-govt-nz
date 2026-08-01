@@ -1,0 +1,17 @@
+{
+  "catalogue_url": "https://catalogue.data.govt.nz",
+  "error_class": "CkanTransportError",
+  "observed_at": "2026-08-01T12:17:36.710877+00:00",
+  "policy": {
+    "max_page_size": 100,
+    "metadata_only": true,
+    "payload_capture": false,
+    "publication": false
+  },
+  "schema": "archive-govt-nz.health-discovery/v1",
+  "scopes_attempted": [
+    "text-health"
+  ],
+  "status": "unavailable",
+  "status_code": 400
+}

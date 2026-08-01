@@ -18,7 +18,7 @@ USER_AGENT = "archive-govt-nz/0.1.0 (+https://github.com/edithatogo/archive-govt
 MAX_PAGE_SIZE = 1000
 
 
-async def _discover(base_url: str, page_size: int) -> dict[str, object]:
+async def _discover(base_url: str, page_size: int) -> dict[str, object]:  # noqa: C901
     config = CkanClientConfig(
         base_url=base_url,
         user_agent=USER_AGENT,
@@ -37,28 +37,36 @@ async def _discover(base_url: str, page_size: int) -> dict[str, object]:
             ids: list[str] = []
             count = 0
             attempt_rows = tuple(dict.fromkeys((page_size, min(page_size, 25), 1)))
+            parameter_variants = (
+                params,
+                {key: value for key, value in params.items() if key != "sort"},
+            )
             while True:
                 page = None
                 last_error: CkanTransportError | None = None
-                for rows_limit in attempt_rows:
-                    try:
-                        page = await client.action(
-                            "package_search",
-                            {**params, "rows": rows_limit, "start": start},
-                        )
+                for variant_index, parameter_set in enumerate(parameter_variants):
+                    for rows_limit in attempt_rows:
+                        try:
+                            page = await client.action(
+                                "package_search",
+                                {**parameter_set, "rows": rows_limit, "start": start},
+                            )
+                            break
+                        except CkanTransportError as error:
+                            last_error = error
+                            receipts.append(
+                                {
+                                    "scope": scope["id"],
+                                    "start": start,
+                                    "rows": rows_limit,
+                                    "parameter_variant": variant_index,
+                                    "status": "unavailable",
+                                    "status_code": error.status_code,
+                                    "error_class": error.__class__.__name__,
+                                }
+                            )
+                    if page is not None:
                         break
-                    except CkanTransportError as error:
-                        last_error = error
-                        receipts.append(
-                            {
-                                "scope": scope["id"],
-                                "start": start,
-                                "rows": rows_limit,
-                                "status": "unavailable",
-                                "status_code": error.status_code,
-                                "error_class": error.__class__.__name__,
-                            }
-                        )
                 if page is None and last_error is not None:
                     return {
                         "schema": "archive-govt-nz.health-discovery/v1",
