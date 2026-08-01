@@ -187,5 +187,7 @@ class ZenodoClient:
                     _fail("response_size_limit")
                 payload = json.loads(raw_payload)
                 return ZenodoResponse(response.status, payload)
+        except ZenodoError:
+            raise
         except Exception:  # noqa: BLE001
             _fail("transport_failure")

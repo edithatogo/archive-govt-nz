@@ -2,9 +2,11 @@
 
 from collections.abc import Mapping
 from pathlib import Path
+from typing import Self
 
 import pytest
 
+import archive_govt_nz.zenodo as zenodo_module
 from archive_govt_nz.zenodo import (
     ZenodoClient,
     ZenodoConfig,
@@ -112,3 +114,105 @@ def test_zenodo_client_rejects_oversized_artifacts(tmp_path: Path) -> None:
     )
     with pytest.raises(ZenodoError, match="upload_size_limit"):
         client.upload("7", artifact)
+
+
+def test_zenodo_client_rejects_invalid_upload_and_remote_errors(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Invalid paths and HTTP errors remain explicit and credential-safe."""
+    monkeypatch.setenv("ZENODO_TOKEN", "token")
+
+    def error_transport(
+        _method: str,
+        _path: str,
+        _headers: Mapping[str, str],
+        _body: bytes | None,
+    ) -> ZenodoResponse:
+        return ZenodoResponse(500, {})
+
+    client = ZenodoClient(transport=error_transport)
+    with pytest.raises(ZenodoError, match="invalid_upload_input"):
+        client.upload("", tmp_path / "missing")
+    with pytest.raises(ZenodoError, match="remote_http_500"):
+        client.reconcile("7")
+
+
+def test_zenodo_client_rejects_doi_mismatch_and_invalid_remote_response(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """A mismatched DOI or malformed deposition response cannot publish."""
+    monkeypatch.setenv("ZENODO_TOKEN", "token")
+
+    def mismatch_transport(
+        _method: str,
+        _path: str,
+        _headers: Mapping[str, str],
+        _body: bytes | None,
+    ) -> ZenodoResponse:
+        return ZenodoResponse(200, {"id": 7, "doi": "10.5281/zenodo/other"})
+
+    client = ZenodoClient(transport=mismatch_transport)
+    with pytest.raises(ZenodoError, match="doi_mismatch"):
+        client.publish("7", confirm_doi="10.5281/zenodo/expected")
+
+    def malformed_transport(
+        _method: str,
+        _path: str,
+        _headers: Mapping[str, str],
+        _body: bytes | None,
+    ) -> ZenodoResponse:
+        return ZenodoResponse(200, {})
+
+    malformed = ZenodoClient(transport=malformed_transport)
+    with pytest.raises(ZenodoError, match="invalid_remote_response"):
+        malformed.reconcile("7")
+
+
+def test_zenodo_default_transport_bounds_response_and_redacts_failures(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """The real transport caps responses and converts failures to stable errors."""
+    monkeypatch.setenv("ZENODO_TOKEN", "token")
+
+    class Response:
+        status = 200
+
+        def __enter__(self) -> Self:
+            return self
+
+        def __exit__(self, *_args: object) -> None:
+            return None
+
+        def read(self, size: int) -> bytes:
+            return b"x" * size
+
+    def response_open(_request: object, *, timeout: int) -> Response:
+        assert timeout == 30
+        return Response()
+
+    monkeypatch.setattr(zenodo_module, "urlopen", response_open)
+    client = ZenodoClient(config=ZenodoConfig(max_response_bytes=4))
+    with pytest.raises(ZenodoError, match="response_size_limit"):
+        client.reconcile("7")
+
+    class GoodResponse(Response):
+        def read(self, size: int) -> bytes:
+            assert size > 0
+            return b'{"id": 7}'
+
+    def good_open(_request: object, *, timeout: int) -> GoodResponse:
+        assert timeout == 30
+        return GoodResponse()
+
+    monkeypatch.setattr(zenodo_module, "urlopen", good_open)
+    good_client = ZenodoClient(config=ZenodoConfig(max_response_bytes=100))
+    assert good_client.reconcile("7").deposition_id == "7"
+
+    def fail(_request: object, *, timeout: int) -> None:
+        assert timeout == 30
+        message = "secret-token-not-in-error"
+        raise OSError(message)
+
+    monkeypatch.setattr(zenodo_module, "urlopen", fail)
+    with pytest.raises(ZenodoError, match="transport_failure"):
+        client.reconcile("7")

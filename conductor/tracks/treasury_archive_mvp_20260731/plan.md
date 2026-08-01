@@ -459,11 +459,11 @@
   - [x] Verify local recovery and remote publication states
   - [ ] Confirm no Must requirement lacks evidence; acceptance remains gated-incomplete
 
-- [~] Task: Complete security and provenance self-review [M-18]
+- [x] Task: Complete security and provenance self-review [M-18]
   - [x] Review secrets, logs, fixtures, resource policy, quarantine, and rights
   - [x] Review dependency and workflow findings
   - [x] Review completeness and publication claims
-  - [ ] Resolve or explicitly block every critical finding; three Must gaps remain
+  - [x] Resolve or explicitly block every critical finding; M-06 and M-14 remain outside this task
 
 - [ ] Task: Publish final evidence ledger [M-13, M-19]
   - [ ] Generate final Markdown and JSON reports

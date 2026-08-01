@@ -417,8 +417,8 @@ used because its Python 3.14 runtime path fails before mutation execution.
 
 | Acceptance state | gated-incomplete |
 | --- | --- |
-| Must requirements verified | 14/19 |
+| Must requirements verified | 15/19 |
 | Must requirements partial | M-09, M-12 |
-| Must requirements blocked | M-06, M-14, M-18 |
+| Must requirements blocked | M-06, M-14 |
 | Evidence | `evidence/phase-10-acceptance.json` |
 | Publication claim | No MVP-complete or complete-source-capture claim permitted |

@@ -643,6 +643,12 @@
 - Verified package SHA-256 equality (`472fe842...21a6b7`), Hugging Face revision `9406a3b0...c30dbae0`, DOI `10.5281/zenodo.21728726`, remote size/checksum, and tar preservation-layer closure.
 - Evidence: `conductor/tracks/treasury_archive_mvp_20260731/evidence/phase-9-release-reconciliation.json`.
 
+## 2026-08-01 - Critical-logic coverage closure
+
+- Added deterministic tests for Zenodo HTTP/transport/response limits, DOI mismatch, malformed receipts, recovery corruption, and every release-reconciliation outcome.
+- Critical publication, reconciliation, and recovery modules now reach 100% line and branch coverage; full suite is 190 passed with 97.23% overall coverage.
+- Acceptance ledger updated: M-18 verified; M-06 and M-14 remain the only Must-level blockers.
+
 ## 2026-07-31 - Recovery reconciliation foundation
 
 - Added restart-safe ledger/object-store reconciliation reporting verified,

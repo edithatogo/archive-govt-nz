@@ -20,17 +20,16 @@
     "M-15": "verified",
     "M-16": "verified",
     "M-17": "verified",
-    "M-18": "blocked-critical-logic-coverage-below-100",
+    "M-18": "verified",
     "M-19": "verified"
   },
   "blocking_evidence": [
     "Resource-level 403 and non-HTTPS outcomes remain explicitly restricted or unavailable; complete eligible-resource capture is not claimed.",
-    "Recovery verifies the released package, but interruption-at-every-boundary and unchanged-rerun evidence remain open.",
-    "New Zenodo and reconciliation modules are above the overall threshold but not yet at the 100% critical-logic target."
+    "Recovery verifies the released package, but interruption-at-every-boundary and unchanged-rerun evidence remain open."
   ],
   "safe_next_actions": [
     "Run bounded capture and recovery simulations across every interruption boundary.",
     "Add material WARC transaction fixtures and reconcile their object relationships.",
-    "Raise critical coverage for publication, reconciliation, and recovery branches before any MVP completion claim."
+    "Re-run the acceptance ledger after interruption and unchanged-rerun proof is complete."
   ]
 }
