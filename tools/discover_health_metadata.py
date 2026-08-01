@@ -48,6 +48,7 @@ async def _discover(base_url: str, page_size: int) -> dict[str, object]:
                         "catalogue_url": base_url,
                         "status": "unavailable",
                         "error_class": error.__class__.__name__,
+                        "status_code": error.status_code,
                         "scopes_attempted": list(scopes),
                         "policy": {
                             "metadata_only": True,
