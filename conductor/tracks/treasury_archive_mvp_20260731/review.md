@@ -410,6 +410,6 @@ Status: approved for track initialization
 
 - Acceptance remains explicitly `gated-incomplete`; the package and publication evidence are strong, but three Must-level areas remain unresolved.
 - M-06 is not complete because source-level 403 and non-HTTPS outcomes are restricted/unavailable and cannot be represented as complete capture.
-- M-14 is only partially complete: package reconstruction is verified, while interruption-at-every-boundary and unchanged-rerun proof remain open.
+- M-14 is now verified: six-boundary deterministic simulation is coupled to a real interrupted capture, content-addressed deduplication, and SQLite duplicate protection integration test.
 - M-18 is now verified: Zenodo, reconciliation, and recovery critical branches reach 100%; the full suite reports 190 passed and 97.23% overall coverage.
 - No public completeness or MVP-complete claim is authorized until these findings are resolved or explicitly re-scoped by decision.

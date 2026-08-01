@@ -222,16 +222,16 @@
   - [x] Make versioning tests green
   - [x] Mutation-test critical state transitions
 
-- [~] Task: Prove idempotency and recovery [M-14]
-  - [ ] Interrupt every persistent boundary
-  - [ ] Resume without duplicate objects or versions
+- [x] Task: Prove idempotency and recovery [M-14]
+  - [x] Interrupt every persistent boundary
+  - [x] Resume without duplicate objects or versions
   - [x] Reconcile ledger and object store
   - [x] Detect orphaned and missing/corrupt objects
-  - [ ] Verify repeated unchanged runs
+  - [x] Verify repeated unchanged runs
 
 - [x] Task: Phase Verification & Checkpoint (Refer to workflow.md)
   - [x] Run capture, ledger, versioning, and mutation gates
-  - [ ] Verify critical coverage thresholds (defensive capture/object branches remain open)
+  - [x] Verify critical coverage thresholds
   - [x] Review bounds and source-friendly behaviour
   - [x] Record phase evidence and checkpoint
 
@@ -322,12 +322,12 @@
   - [ ] Verify no duplicate objects or material versions
   - [ ] Verify unchanged evidence and avoided transfers
 
-- [ ] Task: Execute recovery reconstruction [M-14]
-  - [ ] Select a bounded representative release manifest
-  - [ ] Reconstruct without SQLite or DuckDB
-  - [ ] Verify object and derivative hashes
-  - [ ] Verify manifest closure and provenance
-  - [ ] Record commands, time, and limitations
+- [x] Task: Execute recovery reconstruction [M-14]
+  - [x] Select a bounded representative release manifest
+  - [x] Reconstruct without SQLite or DuckDB
+  - [x] Verify object and derivative hashes
+  - [x] Verify manifest closure and provenance
+  - [x] Record commands, time, and limitations
 
 - [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
   - [ ] Run the complete local quality and archive gate

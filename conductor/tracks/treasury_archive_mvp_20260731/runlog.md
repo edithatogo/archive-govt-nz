@@ -655,6 +655,12 @@
 - Each boundary is simulated with sorted/deduplicated resources and asserts resumed completion, zero duplicate objects, and unchanged rerun behaviour.
 - The simulation is strong deterministic evidence, but M-14 remains gated until it is coupled to the real capture/object-store/ledger path rather than the pure scheduler model.
 
+## 2026-08-01 - Real recovery-path coupling
+
+- Added an integration test using the actual async capture, content-addressed store, and SQLite ledger.
+- A forced transport disconnect leaves no partial object; retry succeeds; unchanged rerun resolves to the same object; duplicate ledger insertion fails closed.
+- Combined with the six-boundary deterministic simulation, M-14 is now verified.
+
 ## 2026-07-31 - Recovery reconciliation foundation
 
 - Added restart-safe ledger/object-store reconciliation reporting verified,
