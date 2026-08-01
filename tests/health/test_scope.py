@@ -1,8 +1,9 @@
 # ruff: noqa: D100,D103
 from __future__ import annotations
 
-import pytest
 from typing import Any, cast
+
+import pytest
 
 from archive_govt_nz.health_scope import deduplicate_dataset_ids, scope_manifest
 
