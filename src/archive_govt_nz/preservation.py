@@ -27,22 +27,32 @@ def validate_fixture(root: Path) -> dict[str, Any]:
     for item in manifest.get("files", []):
         path = root / str(item["path"])
         exists = path.is_file()
-        checks.append({
-            "path": item["path"],
-            "exists": exists,
-            "sha256": _sha256(path) if exists else None,
-            "expected_sha256": item.get("sha256"),
-            "valid": exists and _sha256(path) == item.get("sha256"),
-        })
-    return {"fixture_id": manifest.get("fixture_id"), "checks": checks,
-            "valid": all(item["valid"] for item in checks), "synthetic": True}
+        checks.append(
+            {
+                "path": item["path"],
+                "exists": exists,
+                "sha256": _sha256(path) if exists else None,
+                "expected_sha256": item.get("sha256"),
+                "valid": exists and _sha256(path) == item.get("sha256"),
+            }
+        )
+    return {
+        "fixture_id": manifest.get("fixture_id"),
+        "checks": checks,
+        "valid": all(item["valid"] for item in checks),
+        "synthetic": True,
+    }
 
 
 def validate_ro_crate(root: Path) -> dict[str, Any]:
     """Perform bounded RO-Crate JSON-LD envelope checks."""
     metadata = root / "ro-crate-metadata.jsonld"
-    result: dict[str, Any] = {"standard": "RO-Crate", "profile": "bounded",
-                              "metadata_present": metadata.is_file(), "valid": False}
+    result: dict[str, Any] = {
+        "standard": "RO-Crate",
+        "profile": "bounded",
+        "metadata_present": metadata.is_file(),
+        "valid": False,
+    }
     if not metadata.is_file():
         return result
     document = json.loads(metadata.read_text(encoding="utf-8"))
@@ -62,9 +72,13 @@ def validate_bagit(root: Path) -> dict[str, Any]:
     """Perform bounded BagIt manifest and payload closure checks."""
     payload = root / "data"
     manifest = root / "manifest-sha256.txt"
-    result: dict[str, Any] = {"standard": "BagIt", "profile": "bounded",
-                              "bagit_txt": (root / "bagit.txt").is_file(),
-                              "manifest_present": manifest.is_file(), "valid": False}
+    result: dict[str, Any] = {
+        "standard": "BagIt",
+        "profile": "bounded",
+        "bagit_txt": (root / "bagit.txt").is_file(),
+        "manifest_present": manifest.is_file(),
+        "valid": False,
+    }
     if not manifest.is_file() or not payload.is_dir():
         return result
     checks: list[bool] = []
@@ -80,9 +94,13 @@ def validate_bagit(root: Path) -> dict[str, Any]:
 def validate_ocfl(root: Path) -> dict[str, Any]:
     """Perform bounded OCFL inventory/version-link checks (not full conformance)."""
     inventory = root / "inventory.json"
-    result: dict[str, Any] = {"standard": "OCFL", "profile": "bounded",
-                              "inventory_present": inventory.is_file(), "valid": False,
-                              "conformance_claim": "none"}
+    result: dict[str, Any] = {
+        "standard": "OCFL",
+        "profile": "bounded",
+        "inventory_present": inventory.is_file(),
+        "valid": False,
+        "conformance_claim": "none",
+    }
     if not inventory.is_file():
         return result
     document = cast("dict[str, Any]", json.loads(inventory.read_text(encoding="utf-8")))

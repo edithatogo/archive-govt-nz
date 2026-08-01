@@ -75,7 +75,11 @@ def main() -> int:
             "OCFL remains non-blocking until conformance fixtures are available",
         ],
         "fixture_validation": validate_fixture(
-            ROOT / "conductor" / "tracks" / "preservation_conformance_20260801" / "fixtures"
+            ROOT
+            / "conductor"
+            / "tracks"
+            / "preservation_conformance_20260801"
+            / "fixtures"
         ),
         "conformance_claim": "bounded-structural-evaluation-only",
     }
