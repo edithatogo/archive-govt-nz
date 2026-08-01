@@ -391,3 +391,13 @@ used because its Python 3.14 runtime path fails before mutation execution.
 | Codecov | passed | tokenless OIDC upload succeeded in the hosted run |
 | Secret scan | passed | receipt hashes/revisions narrowly excluded by field name; no candidates |
 | Action runtime warning | observed | pinned actions target Node.js 20 and are currently forced to Node.js 24; upstream pin refresh remains warranted |
+
+## Zenodo integration checkpoint - 2026-08-01
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Environment credential gate | passed | Missing `ZENODO_TOKEN` returns `credential_missing`; token is never included in errors or receipts |
+| Draft/upload/reconcile flow | passed | Injected transport test covers draft creation, multipart upload, and read-back state |
+| DOI publication gate | passed | Publication requires explicit DOI confirmation and rejects mismatches |
+| Network boundary | implemented | HTTPS default, bounded timeout, stable redacted transport errors |
+| Remote deposition | unchanged | Existing DOI `10.5281/zenodo.21728726` remains authoritative; adapter tests do not create a new record |

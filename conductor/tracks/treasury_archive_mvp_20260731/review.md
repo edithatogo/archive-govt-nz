@@ -402,3 +402,4 @@ Status: approved for track initialization
 - Remaining finding: Zenodo network operations were executed through a bounded credential-safe script path but still need a repository-owned, mocked integration adapter before scheduled publication can be claimed automated.
 - Hosted CI finding resolved: tests no longer depend on ignored local build outputs; Linux run `30669731935` passed the full locked gate and Codecov OIDC upload.
 - Residual CI warning: pinned third-party actions currently target Node.js 20 and are force-run on Node.js 24 by GitHub. This is not a failed control, but action-version upgrades should be tracked when upstream releases are reviewed and pinned.
+- Zenodo integration finding resolved: repository-owned client now isolates credentials, uses multipart artifact upload, reconciles draft state, and requires explicit DOI equality before publication; mocked integration tests pass.

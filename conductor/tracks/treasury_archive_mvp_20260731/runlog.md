@@ -630,6 +630,12 @@
 - Restricted high-entropy scan exclusions to explicit checksum and revision receipt fields; the complete secret scan passes.
 - Hosted Linux run `30669731935` passed at commit `b0fe541e7077c96e4817767ab5e0e168d32453bd`, including the locked assurance gate and Codecov upload.
 
+## 2026-08-01 - Credential-safe Zenodo integration
+
+- Added `archive_govt_nz.zenodo.ZenodoClient` with environment-scoped `ZENODO_TOKEN`, redacted stable error classes, HTTPS transport, draft creation, multipart upload, read-back reconciliation, and DOI-confirmed publication.
+- Injected transport seams keep integration tests fully mocked; two tests cover the complete draft/upload/reconcile/publish path, credential absence, and DOI confirmation gate.
+- Publication remains an explicit caller decision; the adapter does not publish merely because CI or packaging succeeds.
+
 ## 2026-07-31 - Recovery reconciliation foundation
 
 - Added restart-safe ledger/object-store reconciliation reporting verified,

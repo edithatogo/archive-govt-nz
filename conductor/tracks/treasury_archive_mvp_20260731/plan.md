@@ -426,11 +426,11 @@
   - [x] Validate reproducibility
   - [x] Make packaging tests green
 
-- [ ] Task: Implement credential-safe Zenodo integration [M-17]
-  - [ ] Require environment-scoped token and prevent leakage
-  - [ ] Implement dry-run, draft creation, and upload reconciliation
-  - [ ] Require explicit DOI confirmation
-  - [ ] Make integration tests green against mocks or sandbox
+- [x] Task: Implement credential-safe Zenodo integration [M-17]
+  - [x] Require environment-scoped token and prevent leakage
+  - [x] Implement dry-run, draft creation, and upload reconciliation
+  - [x] Require explicit DOI confirmation
+  - [x] Make integration tests green against mocks or sandbox
 
 - [x] Task: Prepare the first Treasury release candidate [M-17]
   - [x] Reconcile the exact Hugging Face revision
