@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive-govt-nz.org/schemas/publisher-resolution-response-v1.schema.json",
+  "title": "Publisher resolution response",
+  "description": "Metadata-only response record for an official source-owner resolution request.",
+  "type": "object",
+  "required": ["schema_version", "received_at", "sender", "request_receipt", "responses"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": "archive-govt-nz.publisher-resolution-response/v1"},
+    "received_at": {"type": "string", "format": "date-time"},
+    "sender": {
+      "type": "object",
+      "required": ["organisation"],
+      "additionalProperties": false,
+      "properties": {
+        "organisation": {"type": "string", "minLength": 1},
+        "contact_role": {"type": "string", "minLength": 1},
+        "message_receipt": {"type": "string", "minLength": 1}
+      }
+    },
+    "request_receipt": {"type": "string", "minLength": 1},
+    "responses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["resource_id", "disposition"],
+        "additionalProperties": false,
+        "properties": {
+          "resource_id": {"type": "string", "minLength": 1},
+          "disposition": {
+            "enum": ["replacement", "withdrawn", "restricted", "no-change", "unknown"]
+          },
+          "replacement_url": {"type": "string", "format": "uri", "pattern": "^https://"},
+          "successor_resource_id": {"type": "string", "minLength": 1},
+          "effective_at": {"type": "string", "format": "date-time"},
+          "rights_or_access_note": {"type": "string", "maxLength": 2000},
+          "evidence_receipt": {"type": "string", "minLength": 1}
+        },
+        "allOf": [
+          {
+            "if": {"properties": {"disposition": {"const": "replacement"}}},
+            "then": {"required": ["replacement_url", "evidence_receipt"]}
+          },
+          {
+            "if": {"properties": {"disposition": {"const": "withdrawn"}}},
+            "then": {"required": ["evidence_receipt"]}
+          }
+        ]
+      }
+    }
+  }
+}
