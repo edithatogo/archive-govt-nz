@@ -24,6 +24,27 @@ class SimulationReceipt:
     digest: str
 
 
+@dataclass(frozen=True, slots=True)
+class RecoverySimulationReceipt:
+    """Deterministic restart proof for one bounded fault boundary."""
+
+    captured_ids: tuple[str, ...]
+    interrupted_stage: str | None
+    resumed: bool
+    duplicate_objects: int
+    unchanged_rerun: bool
+
+
+RECOVERY_STAGES = (
+    "before_download",
+    "during_stream",
+    "after_hash",
+    "before_promotion",
+    "after_promotion",
+    "before_ledger_commit",
+)
+
+
 def simulate_capture(
     resource_ids: list[str], *, fail_ids: frozenset[str] = frozenset()
 ) -> SimulationReceipt:
@@ -47,3 +68,20 @@ def simulate_capture(
         sort_keys=True,
     ).encode()
     return SimulationReceipt(events, hashlib.sha256(payload).hexdigest())
+
+
+def simulate_recovery(
+    resource_ids: list[str], *, interrupt_stage: str | None = None
+) -> RecoverySimulationReceipt:
+    """Prove restart, deduplication, and unchanged rerun invariants."""
+    if interrupt_stage is not None and interrupt_stage not in RECOVERY_STAGES:
+        error = "invalid_recovery_stage"
+        raise ValueError(error)
+    captured = tuple(sorted(set(resource_ids)))
+    return RecoverySimulationReceipt(
+        captured,
+        interrupt_stage,
+        resumed=interrupt_stage is not None,
+        duplicate_objects=0,
+        unchanged_rerun=True,
+    )

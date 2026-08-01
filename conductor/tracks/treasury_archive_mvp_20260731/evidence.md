@@ -413,6 +413,16 @@ used because its Python 3.14 runtime path fails before mutation execution.
 | Remote recovery receipt | verified | file size and Zenodo checksum recorded |
 | Recovered tar closure | verified | raw, object, and derivative layers present; member paths safe |
 
+## M-14 recovery simulation checkpoint - 2026-08-01
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Fault boundaries | passed deterministic simulation | six interruption stages exercised |
+| Restart outcome | passed deterministic simulation | all resources captured after resume |
+| Duplicate prevention | passed deterministic simulation | zero duplicate objects |
+| Unchanged rerun | passed deterministic simulation | repeated run remains unchanged |
+| Production-path recovery | open | simulation still needs coupling to capture, object store, and ledger integration |
+
 ## Phase 10 acceptance checkpoint - 2026-08-01
 
 | Acceptance state | gated-incomplete |

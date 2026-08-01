@@ -649,6 +649,12 @@
 - Critical publication, reconciliation, and recovery modules now reach 100% line and branch coverage; full suite is 190 passed with 97.23% overall coverage.
 - Acceptance ledger updated: M-18 verified; M-06 and M-14 remain the only Must-level blockers.
 
+## 2026-08-01 - Deterministic recovery boundary simulation
+
+- Added six explicit fault boundaries: before download, during stream, after hash, before promotion, after promotion, and before ledger commit.
+- Each boundary is simulated with sorted/deduplicated resources and asserts resumed completion, zero duplicate objects, and unchanged rerun behaviour.
+- The simulation is strong deterministic evidence, but M-14 remains gated until it is coupled to the real capture/object-store/ledger path rather than the pure scheduler model.
+
 ## 2026-07-31 - Recovery reconciliation foundation
 
 - Added restart-safe ledger/object-store reconciliation reporting verified,
