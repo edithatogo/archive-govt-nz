@@ -22,6 +22,8 @@ async def test_capture_streams_to_object_store(tmp_path: Path) -> None:
         )
     assert result.receipt.byte_count == 8
     assert result.content_type == "text/csv"
+    assert result.attempts == 1
+    assert result.redirects == 0
 
 
 @pytest.mark.anyio
@@ -55,6 +57,7 @@ async def test_capture_follows_bounded_redirects_and_validates(tmp_path: Path) -
             CaptureConfig(expected_etag="v1"),
         )
     assert result.url.endswith("/final")
+    assert result.redirects == 1
 
 
 @pytest.mark.anyio

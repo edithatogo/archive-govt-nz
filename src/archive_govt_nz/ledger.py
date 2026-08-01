@@ -53,6 +53,13 @@ class Ledger:
               object_id TEXT PRIMARY KEY, sha256 TEXT NOT NULL UNIQUE,
               blake3 TEXT NOT NULL, byte_count INTEGER NOT NULL, role TEXT NOT NULL
             );
+            CREATE TABLE IF NOT EXISTS object_sources (
+              object_id TEXT NOT NULL REFERENCES objects(object_id),
+              source_id TEXT NOT NULL,
+              relation TEXT NOT NULL,
+              payload_json TEXT NOT NULL,
+              PRIMARY KEY(object_id, source_id, relation)
+            );
             CREATE TABLE IF NOT EXISTS versions (
               id TEXT PRIMARY KEY, observation_id TEXT NOT NULL REFERENCES
               observations(id),
@@ -148,6 +155,29 @@ class Ledger:
             "version",
         )
 
+    def record_object_source(
+        self,
+        object_id: str,
+        source_id: str,
+        relation: str,
+        payload: dict[str, object] | None = None,
+    ) -> None:
+        """Link an immutable object to its source with an explicit role.
+
+        The relationship is append-only and keyed by object, source, and
+        relation so retries cannot create duplicate provenance edges.
+        """
+        if not object_id.strip() or not source_id.strip() or not relation.strip():
+            raise LedgerError("invalid_object_source")
+        try:
+            with self.connection:
+                self.connection.execute(
+                    "INSERT INTO object_sources(object_id,source_id,relation,payload_json) VALUES (?,?,?,?)",
+                    (object_id, source_id, relation, _canonical(payload or {})),
+                )
+        except sqlite3.IntegrityError:
+            raise LedgerError("invalid_or_duplicate_object_source") from None
+
     def record_publication(
         self,
         publication_id: str,
@@ -182,6 +212,22 @@ class Ledger:
         ).fetchall()
         return [
             {"id": row["id"], "payload": json.loads(row["payload_json"])}
+            for row in rows
+        ]
+
+    def export_object_sources(self) -> list[dict[str, object]]:
+        """Export provenance edges deterministically for manifests."""
+        rows = self.connection.execute(
+            "SELECT object_id,source_id,relation,payload_json FROM object_sources "
+            "ORDER BY object_id,source_id,relation"
+        ).fetchall()
+        return [
+            {
+                "object_id": row["object_id"],
+                "source_id": row["source_id"],
+                "relation": row["relation"],
+                "payload": json.loads(row["payload_json"]),
+            }
             for row in rows
         ]
 

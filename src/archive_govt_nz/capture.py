@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from collections.abc import AsyncIterable
 from dataclasses import dataclass
+from time import monotonic
 from urllib.parse import urljoin
 
 import httpx
@@ -26,6 +27,7 @@ class CaptureConfig:
     max_bytes: int = 512 * 1024 * 1024
     chunk_bytes: int = 1024 * 1024
     timeout_seconds: float = 60.0
+    max_duration_seconds: float | None = None
     max_redirects: int = 3
     expected_etag: str | None = None
     expected_last_modified: str | None = None
@@ -36,6 +38,10 @@ class CaptureConfig:
             or self.chunk_bytes < 1
             or self.timeout_seconds <= 0
             or self.max_redirects < 0
+            or (
+                self.max_duration_seconds is not None
+                and self.max_duration_seconds <= 0
+            )
         ):
             raise ValueError("invalid_capture_bound")
 
@@ -48,6 +54,9 @@ class CaptureResult:
     status_code: int
     content_type: str | None
     receipt: ObjectStoreReceipt
+    attempts: int = 1
+    redirects: int = 0
+    elapsed_seconds: float = 0.0
 
 
 async def capture_url(
@@ -58,7 +67,11 @@ async def capture_url(
 ) -> CaptureResult:
     """Stream one URL, enforcing status, length, and byte limits."""
     current_url = url
+    started = monotonic()
+    max_duration = config.max_duration_seconds or config.timeout_seconds
     for redirect_count in range(config.max_redirects + 1):
+        if monotonic() - started >= max_duration:
+            raise CaptureError("timeout")
         try:
             async with client.stream(
                 "GET",
@@ -94,6 +107,8 @@ async def capture_url(
                 async def chunks():
                     total = 0
                     async for chunk in response.aiter_bytes(config.chunk_bytes):
+                        if monotonic() - started >= max_duration:
+                            raise CaptureError("timeout")
                         total += len(chunk)
                         if total > config.max_bytes:
                             raise CaptureError("size_limit")
@@ -105,6 +120,9 @@ async def capture_url(
                     response.status_code,
                     response.headers.get("content-type"),
                     receipt,
+                    redirect_count + 1,
+                    redirect_count,
+                    monotonic() - started,
                 )
         except CaptureError:
             raise
