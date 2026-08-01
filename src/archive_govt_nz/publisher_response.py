@@ -77,7 +77,7 @@ def awaiting_response_receipt(
         "next_review_at": next_review_at,
         "state": "awaiting-authoritative-response",
         "external_request_sent": False,
-        "request_hash": request_hash,
+        "request_sha256": request_hash,
         "action": "continue-bounded-reprobe",
         "safety": {"outbound_contact": False, "body_transfer": False},
     }
