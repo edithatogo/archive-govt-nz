@@ -42,7 +42,11 @@ def test_nonmaterial_withdrawal_causes_are_explicitly_versioned(
 ) -> None:
     """Disappearance and policy changes retain history with explicit causes."""
     current = {"id": "r1", "value": 1}
-    decision = decide_version(current, current, **{flag: True})
+    decision = (
+        decide_version(current, current, disappeared=True)
+        if flag == "disappeared"
+        else decide_version(current, current, policy_changed=True)
+    )
     assert decision.state == VersionState.TOMBSTONE
     assert decision.reason == reason
 
