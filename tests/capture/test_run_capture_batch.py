@@ -30,3 +30,49 @@ def test_capture_runner_defaults_to_no_transfer(tmp_path: Path) -> None:
     )
     assert "not-enabled" in result.stdout
     assert not output.exists()
+
+
+def test_capture_runner_writes_resumable_checkpoint_and_skips_completed(
+    tmp_path: Path,
+) -> None:
+    """Unsafe work is receipt-backed and a rerun does not duplicate it."""
+    plan = tmp_path / "plan.json"
+    plan.write_text(
+        json.dumps(
+            {
+                "outcomes": [
+                    {
+                        "resource_id": "r1",
+                        "source_url": "http://unsafe.example/data",
+                        "decision": {"disposition": "eligible", "declared_size": 1},
+                    }
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+    output = tmp_path / "run.json"
+    checkpoint = tmp_path / "checkpoint.json"
+    command = [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "tools/run_capture_batch.py",
+        "--plan",
+        str(plan),
+        "--output",
+        str(output),
+        "--object-root",
+        str(tmp_path / "objects"),
+        "--checkpoint",
+        str(checkpoint),
+        "--enable",
+    ]
+    subprocess.run(command, check=True, capture_output=True, text=True)
+    first = json.loads(checkpoint.read_text(encoding="utf-8"))
+    assert first["schema_version"] == "archive-govt-nz.capture-checkpoint/v1"
+    assert first["results"][0]["error_class"] == "unsafe_url"
+    subprocess.run(command, check=True, capture_output=True, text=True)
+    second = json.loads(checkpoint.read_text(encoding="utf-8"))
+    assert len(second["results"]) == 1

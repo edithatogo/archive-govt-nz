@@ -6,6 +6,7 @@ import argparse
 import asyncio
 import json
 from pathlib import Path
+from time import monotonic
 from typing import Any, cast
 
 import httpx
@@ -17,7 +18,7 @@ from archive_govt_nz.object_store import ContentAddressedStore
 HTTP_OK = 200
 
 
-async def _run(args: argparse.Namespace) -> int:
+async def _run(args: argparse.Namespace) -> int:  # noqa: C901, PLR0915
     """Capture eligible URLs under one bounded budget."""
     if not args.enable:
         print(json.dumps({"status": "not-enabled", "payload_transfer": False}))
@@ -63,9 +64,53 @@ async def _run(args: argparse.Namespace) -> int:
     semaphore = asyncio.Semaphore(args.concurrency)
     store = ContentAddressedStore(args.object_root)
     results: list[dict[str, object]] = []
+    started = monotonic()
+    checkpoint_path = args.checkpoint
+    if checkpoint_path and checkpoint_path.exists():
+        try:
+            previous = json.loads(checkpoint_path.read_text(encoding="utf-8"))
+            results.extend(previous.get("results", []))
+        except OSError, ValueError, TypeError:
+            print(
+                json.dumps({"status": "checkpoint-invalid", "payload_transfer": False})
+            )
+            return 2
+    completed = {item.get("resource_id") for item in results}
+    checkpoint_lock = asyncio.Lock()
+
+    async def persist() -> None:
+        if checkpoint_path is None:
+            return
+        checkpoint_path.parent.mkdir(parents=True, exist_ok=True)
+        temporary = checkpoint_path.with_suffix(checkpoint_path.suffix + ".tmp")
+        temporary.write_text(
+            json.dumps(
+                {
+                    "schema_version": "archive-govt-nz.capture-checkpoint/v1",
+                    "results": results,
+                },
+                indent=2,
+            )
+            + "\n",
+            encoding="utf-8",
+        )
+        temporary.replace(checkpoint_path)
 
     async def one(item: dict[str, object]) -> None:
         async with semaphore:
+            if item["resource_id"] in completed:
+                return
+            if monotonic() - started >= args.max_duration_seconds:
+                results.append(
+                    {
+                        "resource_id": item["resource_id"],
+                        "state": "deferred",
+                        "error_class": "duration_budget",
+                    }
+                )
+                async with checkpoint_lock:
+                    await persist()
+                return
             resource = item["resource_id"]
             decision_record = cast("dict[str, Any]", item["decision"])
             url = item.get("source_url") or decision_record.get("source_url")
@@ -77,6 +122,8 @@ async def _run(args: argparse.Namespace) -> int:
                         "error_class": "unsafe_url",
                     }
                 )
+                async with checkpoint_lock:
+                    await persist()
                 return
             try:
                 async with httpx.AsyncClient(timeout=args.timeout_seconds) as client:
@@ -101,6 +148,8 @@ async def _run(args: argparse.Namespace) -> int:
                         "error_class": error.error_class,
                     }
                 )
+            async with checkpoint_lock:
+                await persist()
 
     await asyncio.gather(*(one(item) for item in eligible))
     args.output.parent.mkdir(parents=True, exist_ok=True)
@@ -136,6 +185,8 @@ def main() -> int:
     parser.add_argument("--concurrency", type=int, default=4)
     parser.add_argument("--max-resource-bytes", type=int, default=512 * 1024 * 1024)
     parser.add_argument("--timeout-seconds", type=float, default=60.0)
+    parser.add_argument("--max-duration-seconds", type=float, default=3600.0)
+    parser.add_argument("--checkpoint", type=Path)
     return asyncio.run(_run(parser.parse_args()))
 
 

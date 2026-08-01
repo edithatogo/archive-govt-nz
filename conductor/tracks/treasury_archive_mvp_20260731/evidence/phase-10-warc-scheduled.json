@@ -1,0 +1,21 @@
+{
+  "schema_version": "archive-govt-nz.warc-scheduled-evidence/v1",
+  "recorded_at": "2026-08-01T07:00:00Z",
+  "warc_fixtures": {
+    "statuses": [200, 302, 403, 404],
+    "payload_digest": "verified",
+    "query_and_authorization_redaction": "verified",
+    "transport_policy": "HTTPS only"
+  },
+  "scheduled_capture": {
+    "checkpoint_schema": "archive-govt-nz.capture-checkpoint/v1",
+    "atomic_replace": true,
+    "resume_deduplication": "verified",
+    "duration_budget": "bounded and deferred fail-closed",
+    "payload_transfer": "only when explicitly enabled"
+  },
+  "tests": {
+    "warc_and_runner_focused": "passed"
+  },
+  "interpretation": "M-12 material transaction fixture coverage and scheduled checkpoint controls are verified locally; live source accessibility remains separately gated."
+}
