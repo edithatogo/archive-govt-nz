@@ -25,7 +25,7 @@ def test_verify_object_store_emits_integrity_receipt(tmp_path: Path) -> None:
         cwd=Path(__file__).parents[2],
         check=True,
         capture_output=True,
-        text=True,  # noqa: S607
+        text=True,
     )
     assert result.returncode == 0
     document = json.loads(output.read_text())
