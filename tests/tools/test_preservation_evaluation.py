@@ -20,8 +20,13 @@ def test_preservation_evaluation_is_bounded_and_non_adopting() -> None:
         (root / "evidence/preservation-packaging-evaluation.json").read_text()
     )
     assert document["release_requirement"] is False
-    assert {item["name"] for item in document["standards"]} == {
+    assert document["decision"] == "bounded-profile-adoption"
+    standards = {item["name"]: item for item in document["standards"]}
+    assert set(standards) == {
         "OCFL",
         "RO-Crate",
         "BagIt",
     }
+    assert standards["RO-Crate"]["status"] == "adopted-profile"
+    assert standards["BagIt"]["status"] == "adopted-at-release"
+    assert standards["OCFL"]["status"] == "deferred"
