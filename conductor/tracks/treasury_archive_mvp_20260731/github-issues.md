@@ -21,13 +21,20 @@ The parent issue must link to:
 7. [#8 Hardened CI/CD and scheduled archival](https://github.com/edithatogo/archive-govt-nz/issues/8)
 8. [#9 Rolling Hugging Face publication](https://github.com/edithatogo/archive-govt-nz/issues/9)
 9. [#10 Immutable Zenodo release](https://github.com/edithatogo/archive-govt-nz/issues/10)
-10. [#16 Publication metadata, taxonomy, and remote archival readiness](https://github.com/edithatogo/archive-govt-nz/issues/16)
+## Follow-up publication subtrack
+
+The following follow-up issue is intentionally separate from the ten MVP phase
+subissues. It is tracked beneath the same parent but must not be counted as a
+phase or used to infer MVP phase completion.
+
+- [#16 Publication metadata, taxonomy, and remote archival readiness](https://github.com/edithatogo/archive-govt-nz/issues/16)
     - [#17 Shared dataset taxonomy and collection alignment](https://github.com/edithatogo/archive-govt-nz/issues/17)
     - [#18 Complete publication metadata and provenance records](https://github.com/edithatogo/archive-govt-nz/issues/18)
     - [#19 Rolling Hugging Face publication](https://github.com/edithatogo/archive-govt-nz/issues/19)
     - [#20 Immutable Zenodo release](https://github.com/edithatogo/archive-govt-nz/issues/20)
     - [#21 Hugging Face Dataset Viewer HTTP 500 diagnosis](https://github.com/edithatogo/archive-govt-nz/issues/21)
-10. [#11 MVP closeout and next-scope handoff](https://github.com/edithatogo/archive-govt-nz/issues/11)
+
+11. [#11 MVP closeout and next-scope handoff](https://github.com/edithatogo/archive-govt-nz/issues/11)
 
 ## Cross-cutting subissues
 
@@ -44,4 +51,5 @@ Each issue body must include:
 
 The repository is public with default branch `main`. On 2026-07-31 the GitHub
 subissues API returned phase issues #2 through #11 and cross-cutting issue #12
-beneath parent #1.
+beneath parent #1. Follow-up publication issue #16 and its children #17–#21 are
+tracked separately and do not alter the ten-phase MVP numbering.

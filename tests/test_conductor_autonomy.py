@@ -1,6 +1,7 @@
 """Contracts for continuous autonomous Conductor execution."""
 
 import json
+import re
 from pathlib import Path
 from typing import cast
 
@@ -72,3 +73,23 @@ def test_current_track_explicitly_inherits_continuous_execution() -> None:
     assert autonomy["mode"] == "continuous_autonomous"
     assert autonomy["stop_between_phases"] is False
     assert autonomy["stop_between_tracks"] is False
+
+
+def test_track_issue_manifest_matches_machine_registry() -> None:
+    """Issue traceability stays aligned without counting follow-up issues as phases."""
+    track_root = CONDUCTOR_ROOT / "tracks" / "treasury_archive_mvp_20260731"
+    metadata = load_json_object(track_root / "metadata.json")
+    github = cast("dict[str, object]", metadata["github"])
+    parent = cast("dict[str, object]", github["parent_issue"])
+    phases = cast("list[dict[str, object]]", github["phase_subissues"])
+    issues = (track_root / "github-issues.md").read_text(encoding="utf-8")
+
+    assert f"issues/{parent['number']}" in issues
+    assert [phase["phase"] for phase in phases] == list(range(1, 11))
+    assert [phase["number"] for phase in phases] == list(range(2, 12))
+    for issue in [parent, *phases]:
+        assert f"issues/{issue['number']}" in issues
+
+    phase_lines = re.findall(r"^\d+\. \[#\d+ .*?issues/(\d+)\)", issues, re.MULTILINE)
+    assert phase_lines == [str(number) for number in range(2, 12)]
+    assert "Follow-up publication subtrack" in issues
