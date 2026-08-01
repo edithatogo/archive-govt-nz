@@ -43,11 +43,12 @@ def test_response_schema_accepts_replacement_and_rejects_http() -> None:
             }
         ],
     }
-    Draft202012Validator(schema).validate(valid)
+    validator = cast("Any", Draft202012Validator(schema))
+    validator.validate(valid)
     invalid = cast("dict[str, Any]", valid.copy())
     invalid_responses = cast("list[dict[str, Any]]", invalid["responses"])
     invalid_responses[0]["replacement_url"] = "http://example.invalid/data.csv"
-    errors = list(Draft202012Validator(schema).iter_errors(invalid))
+    errors = list(validator.iter_errors(invalid))
     assert errors
 
 
