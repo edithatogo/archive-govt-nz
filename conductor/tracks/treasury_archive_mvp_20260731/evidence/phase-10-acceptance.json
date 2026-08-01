@@ -29,6 +29,6 @@
   "safe_next_actions": [
     "Run bounded capture and recovery simulations across every interruption boundary; versioning contract simulation is evidenced in phase-10-versioning-simulation.json.",
     "Add material WARC transaction fixtures and reconcile their object relationships.",
-    "Resolve remaining inaccessible resource outcomes and re-run the acceptance ledger."
+    "Continue bounded re-probes and retain unresolved resources as tombstones; no outbound publisher communication is authorised."
   ]
 }

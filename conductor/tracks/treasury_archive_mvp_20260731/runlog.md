@@ -748,3 +748,9 @@
 - Ran the candidate-aware HTTPS HEAD probe against all 91 Treasury resources with no response-body transfer, four-way concurrency, eight-second timeout, and four-redirect limit.
 - Receipt: `evidence/phase-10-secure-source-probe.json`; full per-resource attempts: `build/live/secure-source-probe-20260801.json`.
 - Outcome: 12 resources returned HTTP 200 over HTTPS; 78 returned 403 and one returned 404. M-06 remains blocked; those 79 outcomes are tombstone-required under the fail-closed policy.
+## 2026-08-01 — outbound escalation skipped; observation mode retained
+
+- Per user direction, no publisher email or other outbound communication is authorised for the next phase.
+- The resolution packet remains prepared as `draft-not-sent`; no credentials, payloads, or signed URLs are used.
+- Added `evidence/phase-10-next-status.json` documenting the awaiting-observation state, current counts, and bounded automated next actions.
+- Unresolved resources remain restricted/unavailable with preserved tombstones; scheduled HTTPS re-probes continue to be the safe next action.

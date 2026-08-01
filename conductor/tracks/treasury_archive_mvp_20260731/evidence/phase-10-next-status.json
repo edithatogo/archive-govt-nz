@@ -1,0 +1,27 @@
+{
+  "schema_version": "archive-govt-nz.phase-10-next-status/v1",
+  "generated_at": "2026-08-01",
+  "state": "awaiting-observation",
+  "outbound_communication": {
+    "status": "sent-before-later-stop instruction",
+    "publisher_packet": "prepared",
+    "send_action": "no further outbound communication"
+  },
+  "current_counts": {
+    "discovered": 91,
+    "captured": 12,
+    "restricted": 78,
+    "unavailable": 1,
+    "tombstones": 79
+  },
+  "next_automatable_actions": [
+    "Run bounded scheduled HTTPS re-probes for unresolved resources.",
+    "Promote only independently validated authoritative replacements.",
+    "Preserve tombstones and prior versions when sources remain unavailable.",
+    "Reconcile manifests and publication receipts after any eligible change."
+  ],
+  "blocked_actions": [
+    "Authoritative source-owner disposition remains unavailable without an outbound request.",
+    "Live material-change and complete live WARC verification require future source changes or access."
+  ]
+}
