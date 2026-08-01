@@ -44,6 +44,25 @@ def test_reconciliation_reports_missing_package_hashes() -> None:
     assert report.checks[0].state == "unavailable"
 
 
+def test_reconciliation_rejects_truthy_malformed_remote_receipts() -> None:
+    """Publication evidence must use typed, non-empty receipt fields."""
+    report = reconcile_release_records(
+        {"package": {"sha256": "abc"}},
+        {"revision": 123},
+        {
+            "package_sha256": "abc",
+            "state": "published",
+            "doi": ["10.5281/zenodo.7"],
+            "file_size": "10",
+            "zenodo_checksum": {"value": "md5:abc"},
+        },
+    )
+    assert report.state == "incomplete"
+    assert report.checks[1].state == "unavailable"
+    assert report.checks[2].state == "unavailable"
+    assert report.checks[3].state == "unavailable"
+
+
 def test_recovery_verification_checks_checksum_and_layer_closure(
     tmp_path: Path,
 ) -> None:

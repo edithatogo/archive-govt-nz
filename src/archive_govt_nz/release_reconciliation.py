@@ -97,7 +97,7 @@ def reconcile_release_records(
     checks.append(
         ReconciliationCheck(
             "huggingface_revision",
-            "verified" if huggingface.get("revision") else "unavailable",
+            "verified" if _has_text(huggingface.get("revision")) else "unavailable",
             str(huggingface.get("revision", "no revision receipt")),
         )
     )
@@ -105,7 +105,7 @@ def reconcile_release_records(
         ReconciliationCheck(
             "zenodo_release",
             "verified"
-            if zenodo.get("state") == "published" and zenodo.get("doi")
+            if zenodo.get("state") == "published" and _has_text(zenodo.get("doi"))
             else "unavailable",
             str(zenodo.get("doi", "no published DOI")),
         )
@@ -114,7 +114,9 @@ def reconcile_release_records(
         ReconciliationCheck(
             "recovery_receipt",
             "verified"
-            if zenodo.get("file_size") and zenodo.get("zenodo_checksum")
+            if _positive_int(zenodo.get("file_size")) and _has_text(
+                zenodo.get("zenodo_checksum")
+            )
             else "unavailable",
             "remote file size and checksum recorded"
             if zenodo.get("file_size") and zenodo.get("zenodo_checksum")
@@ -132,3 +134,13 @@ def reconcile_release_records(
 def _mapping(value: object) -> Mapping[str, object]:
     """Return a typed mapping or an empty mapping for bounded receipts."""
     return cast("Mapping[str, object]", value) if isinstance(value, Mapping) else {}
+
+
+def _has_text(value: object) -> bool:
+    """Accept only bounded, non-empty textual receipt fields."""
+    return isinstance(value, str) and bool(value.strip())
+
+
+def _positive_int(value: object) -> bool:
+    """Require a genuine positive byte count, not a truthy string or float."""
+    return isinstance(value, int) and not isinstance(value, bool) and value > 0
