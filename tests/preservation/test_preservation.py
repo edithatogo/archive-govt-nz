@@ -1,5 +1,7 @@
 """Bounded preservation fixture validator tests."""
 
+import hashlib
+import json
 from pathlib import Path
 
 from archive_govt_nz.preservation import (
@@ -25,3 +27,43 @@ def test_missing_profiles_are_explicitly_bounded(tmp_path: Path) -> None:
     result = validate_ocfl(tmp_path)
     assert result["valid"] is False
     assert result["conformance_claim"] == "none"
+
+
+def test_valid_profile_closures_and_invalid_entries(tmp_path: Path) -> None:
+    """Bounded validators accept closed fixtures and reject broken entries."""
+    payload = tmp_path / "data"
+    payload.mkdir()
+    source = payload / "value.txt"
+    source.write_text("value", encoding="utf-8")
+    digest = hashlib.sha256(source.read_bytes()).hexdigest()
+
+    ro = tmp_path / "ro"
+    ro.mkdir()
+    (ro / "ro-crate-metadata.jsonld").write_text(
+        json.dumps({"@graph": [{"@type": "CreativeWork"}]}), encoding="utf-8"
+    )
+    assert validate_ro_crate(ro)["valid"] is True
+    (ro / "ro-crate-metadata.jsonld").write_text("{}", encoding="utf-8")
+    assert validate_ro_crate(ro)["valid"] is False
+
+    bag = tmp_path / "bag"
+    (bag / "data").mkdir(parents=True)
+    (bag / "data" / "value.txt").write_text("value", encoding="utf-8")
+    (bag / "bagit.txt").write_text("BagIt-Version: 1.0\n", encoding="utf-8")
+    (bag / "manifest-sha256.txt").write_text(
+        f"{digest}  data/value.txt\n", encoding="utf-8"
+    )
+    assert validate_bagit(bag)["valid"] is True
+    (bag / "manifest-sha256.txt").write_text("bad  data/value.txt\n", encoding="utf-8")
+    assert validate_bagit(bag)["valid"] is False
+
+    ocfl = tmp_path / "ocfl"
+    ocfl.mkdir()
+    (ocfl / "inventory.json").write_text(
+        json.dumps({"id": "obj-1", "versions": {"v1": {}}}), encoding="utf-8"
+    )
+    assert validate_ocfl(ocfl)["valid"] is True
+    (ocfl / "inventory.json").write_text(
+        json.dumps({"id": "obj-1", "versions": {}}), encoding="utf-8"
+    )
+    assert validate_ocfl(ocfl)["valid"] is False
