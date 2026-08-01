@@ -5,6 +5,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from archive_govt_nz.preservation import validate_fixture
+
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "evidence" / "preservation-packaging-evaluation.json"
 
@@ -72,6 +74,10 @@ def main() -> int:
             "BagIt payload manifests must verify before any Zenodo upload",
             "OCFL remains non-blocking until conformance fixtures are available",
         ],
+        "fixture_validation": validate_fixture(
+            ROOT / "conductor" / "tracks" / "preservation_conformance_20260801" / "fixtures"
+        ),
+        "conformance_claim": "bounded-structural-evaluation-only",
     }
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(

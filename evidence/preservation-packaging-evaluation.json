@@ -53,5 +53,27 @@
     "RO-Crate metadata must reference immutable object IDs and manifests",
     "BagIt payload manifests must verify before any Zenodo upload",
     "OCFL remains non-blocking until conformance fixtures are available"
-  ]
+  ],
+  "fixture_validation": {
+    "fixture_id": "preservation-conformance-20260801",
+    "checks": [
+      {
+        "path": "metadata.json",
+        "exists": true,
+        "sha256": "8174d6021ea4656c644cbef040bfe1938227281f9a43683f4cfbaae161f04c49",
+        "expected_sha256": "8174d6021ea4656c644cbef040bfe1938227281f9a43683f4cfbaae161f04c49",
+        "valid": true
+      },
+      {
+        "path": "payload.txt",
+        "exists": true,
+        "sha256": "c6f21033a67b60a326d220edc35b9f4bcd77a112810a01733d0284cadd7376d9",
+        "expected_sha256": "c6f21033a67b60a326d220edc35b9f4bcd77a112810a01733d0284cadd7376d9",
+        "valid": true
+      }
+    ],
+    "valid": true,
+    "synthetic": true
+  },
+  "conformance_claim": "bounded-structural-evaluation-only"
 }
