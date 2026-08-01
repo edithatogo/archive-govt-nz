@@ -1,6 +1,6 @@
 {
   "catalogue_url": "https://catalogue.data.govt.nz",
-  "observed_at": "2026-08-01T10:48:00.853275+00:00",
+  "observed_at": "2026-08-01T11:15:23.109691+00:00",
   "policy": {
     "max_page_size": 100,
     "metadata_only": true,
@@ -213,7 +213,7 @@
     "pages": [
       {
         "count": 28,
-        "observed_at": "2026-08-01T10:48:00.721444+00:00",
+        "observed_at": "2026-08-01T11:15:23.027135+00:00",
         "returned": 28,
         "sha256": "4b2825ba95569d9c028447e70d630c8f3114a22b6ac8114436c2ec41b58653c1",
         "start": 0
