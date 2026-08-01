@@ -45,7 +45,9 @@ def test_related_entities_are_transactionally_linked(tmp_path: Path) -> None:
     ledger.record_observation("obs", {"dataset": "treasury"})
     ledger.record_attempt("attempt", "obs", "captured", {"status": 200})
     ledger.record_object("sha256:x", "x", "y", 2, "source")
-    ledger.record_object_source("sha256:x", "resource-1", "captured-from", {"url": "https://example.test"})
+    ledger.record_object_source(
+        "sha256:x", "resource-1", "captured-from", {"url": "https://example.test"}
+    )
     assert ledger.export_object_sources()[0]["relation"] == "captured-from"
     with pytest.raises(LedgerError) as raised:
         ledger.record_object_source("sha256:x", "resource-1", "captured-from")

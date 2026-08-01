@@ -39,8 +39,7 @@ class CaptureConfig:
             or self.timeout_seconds <= 0
             or self.max_redirects < 0
             or (
-                self.max_duration_seconds is not None
-                and self.max_duration_seconds <= 0
+                self.max_duration_seconds is not None and self.max_duration_seconds <= 0
             )
         ):
             raise ValueError("invalid_capture_bound")
