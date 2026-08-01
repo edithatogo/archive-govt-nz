@@ -49,15 +49,11 @@ def reconcile_capture_observations(
             policy_changed=resource_id in policy_changed,
         )
     groups = {
-        "initial": tuple(
-            k for k, v in decisions.items() if v.state.value == "initial"
-        ),
+        "initial": tuple(k for k, v in decisions.items() if v.state.value == "initial"),
         "unchanged": tuple(
             k for k, v in decisions.items() if v.state.value == "unchanged"
         ),
-        "changed": tuple(
-            k for k, v in decisions.items() if v.state.value == "changed"
-        ),
+        "changed": tuple(k for k, v in decisions.items() if v.state.value == "changed"),
         "tombstone": tuple(
             k for k, v in decisions.items() if v.state.value == "tombstone"
         ),
