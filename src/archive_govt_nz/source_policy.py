@@ -42,11 +42,12 @@ def load_allowlist(document: Mapping[str, object]) -> dict[str, tuple[str, ...]]
     return result
 
 
-def schedule_tombstone_reprobe(
+def schedule_tombstone_reprobe(  # noqa: C901
     probe: Mapping[str, object],
     *,
     now: datetime,
     interval: timedelta = timedelta(days=7),
+    prior: Mapping[str, object] | None = None,
 ) -> dict[str, object]:
     """Return a deterministic receipt for each inaccessible resource."""
     if now.tzinfo is None:
@@ -57,6 +58,14 @@ def schedule_tombstone_reprobe(
     if not isinstance(raw, list):
         raise TypeError("probe results must be an array")
     tombstones: list[dict[str, object]] = []
+    prior_rows: dict[str, Mapping[str, object]] = {}
+    if prior is not None:
+        raw_prior: Any = prior.get("tombstones", [])
+        if not isinstance(raw_prior, list):
+            raise TypeError("prior tombstones must be an array")
+        for row in raw_prior:
+            if isinstance(row, dict) and isinstance(row.get("resource_id"), str):
+                prior_rows[row["resource_id"]] = row
     seen: set[str] = set()
     for item in raw:
         if not isinstance(item, dict) or item.get("state") != "tombstone-required":
@@ -67,6 +76,10 @@ def schedule_tombstone_reprobe(
         if resource_id in seen:
             continue
         seen.add(resource_id)
+        previous = prior_rows.get(resource_id, {})
+        attempts = previous.get("attempt_count", 0)
+        if not isinstance(attempts, int) or attempts < 0:
+            attempts = 0
         tombstones.append(
             {
                 "resource_id": resource_id,
@@ -74,6 +87,8 @@ def schedule_tombstone_reprobe(
                 "reason": item.get("reason", "no eligible secure source"),
                 "observed_at": now.isoformat(),
                 "next_probe_at": (now + interval).isoformat(),
+                "attempt_count": attempts + 1,
+                "retry_state": "scheduled",
                 "retention": "preserve-prior-history",
             }
         )
@@ -83,6 +98,33 @@ def schedule_tombstone_reprobe(
         "interval_seconds": int(interval.total_seconds()),
         "tombstones": tombstones,
     }
+
+
+def validate_tombstone_reprobe_receipt(
+    receipt: Mapping[str, object], *, expected_count: int | None = None
+) -> None:
+    """Validate a re-probe receipt before it is published as evidence."""
+    if receipt.get("schema_version") != "archive-govt-nz.tombstone-reprobe/v1":
+        raise ValueError("unexpected re-probe schema")
+    rows = receipt.get("tombstones")
+    if not isinstance(rows, list):
+        raise TypeError("tombstones must be an array")
+    if expected_count is not None and len(rows) != expected_count:
+        raise ValueError("unexpected tombstone count")
+    ids: set[str] = set()
+    for row in rows:
+        if not isinstance(row, dict):
+            raise TypeError("tombstone rows must be objects")
+        resource_id = row.get("resource_id")
+        if not isinstance(resource_id, str) or not resource_id or resource_id in ids:
+            raise ValueError("tombstone resource IDs must be unique non-empty strings")
+        ids.add(resource_id)
+        if row.get("state") != "tombstone-required":
+            raise ValueError("invalid tombstone state")
+        if row.get("retry_state") != "scheduled":
+            raise ValueError("invalid retry state")
+        if not isinstance(row.get("attempt_count"), int) or row["attempt_count"] < 1:
+            raise ValueError("invalid attempt count")
 
 
 def classify_metadata_fallback(

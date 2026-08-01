@@ -47,6 +47,12 @@ def build_packet(probe: dict[str, Any], *, captured_at: str) -> dict[str, Any]:
             "undocumented_mirrors_requested": False,
             "http_exception_requested": False,
         },
+        "delivery": {
+            "status": "draft-not-sent",
+            "external_request_sent": False,
+            "approval_required": True,
+            "send_command": None,
+        },
         "summary": {
             "resource_count": len(resources),
             "state_counts": counts,

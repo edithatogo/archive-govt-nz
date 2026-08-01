@@ -9,6 +9,7 @@ from archive_govt_nz.source_policy import (
     classify_metadata_fallback,
     load_allowlist,
     schedule_tombstone_reprobe,
+    validate_tombstone_reprobe_receipt,
 )
 
 
@@ -30,6 +31,45 @@ def test_tombstone_receipt_schedules_retry_and_preserves_history() -> None:
     row = cast("list[dict[str, Any]]", receipt["tombstones"])[0]
     assert row["next_probe_at"] == "2026-08-08T00:00:00+00:00"
     assert row["retention"] == "preserve-prior-history"
+    assert row["attempt_count"] == 1
+    assert row["retry_state"] == "scheduled"
+    validate_tombstone_reprobe_receipt(receipt, expected_count=1)
+
+
+def test_reprobe_preserves_attempt_count_from_prior_receipt() -> None:
+    """Retries remain bounded and auditable across scheduler runs."""
+    now = datetime(2026, 8, 1, tzinfo=UTC)
+    receipt = schedule_tombstone_reprobe(
+        {"results": [{"resource_id": "r1", "state": "tombstone-required"}]},
+        now=now,
+        prior={"tombstones": [{"resource_id": "r1", "attempt_count": 4}]},
+    )
+    row = cast("list[dict[str, Any]]", receipt["tombstones"])[0]
+    assert row["attempt_count"] == 5
+
+
+def test_reprobe_validator_rejects_duplicate_or_wrong_state() -> None:
+    """Malformed evidence cannot be published as a valid schedule."""
+    with pytest.raises(ValueError, match="unique"):
+        validate_tombstone_reprobe_receipt(
+            {
+                "schema_version": "archive-govt-nz.tombstone-reprobe/v1",
+                "tombstones": [
+                    {
+                        "resource_id": "r1",
+                        "state": "tombstone-required",
+                        "retry_state": "scheduled",
+                        "attempt_count": 1,
+                    },
+                    {
+                        "resource_id": "r1",
+                        "state": "tombstone-required",
+                        "retry_state": "scheduled",
+                        "attempt_count": 1,
+                    },
+                ],
+            }
+        )
 
 
 def test_metadata_and_datastore_success_never_promote_payload() -> None:
