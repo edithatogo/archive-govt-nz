@@ -11,7 +11,7 @@ must never silently broaden capture scope.
 from __future__ import annotations
 
 from datetime import UTC, datetime, timedelta
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING, Any, cast
 from urllib.parse import urlparse
 
 HTTP_OK = 200
@@ -42,7 +42,7 @@ def load_allowlist(document: Mapping[str, object]) -> dict[str, tuple[str, ...]]
     return result
 
 
-def schedule_tombstone_reprobe(  # noqa: C901
+def schedule_tombstone_reprobe(
     probe: Mapping[str, object],
     *,
     now: datetime,
@@ -58,14 +58,7 @@ def schedule_tombstone_reprobe(  # noqa: C901
     if not isinstance(raw, list):
         raise TypeError("probe results must be an array")
     tombstones: list[dict[str, object]] = []
-    prior_rows: dict[str, Mapping[str, object]] = {}
-    if prior is not None:
-        raw_prior: Any = prior.get("tombstones", [])
-        if not isinstance(raw_prior, list):
-            raise TypeError("prior tombstones must be an array")
-        for row in raw_prior:
-            if isinstance(row, dict) and isinstance(row.get("resource_id"), str):
-                prior_rows[row["resource_id"]] = row
+    prior_rows = _prior_tombstones(prior)
     seen: set[str] = set()
     for item in raw:
         if not isinstance(item, dict) or item.get("state") != "tombstone-required":
@@ -100,15 +93,31 @@ def schedule_tombstone_reprobe(  # noqa: C901
     }
 
 
+def _prior_tombstones(
+    prior: Mapping[str, object] | None,
+) -> dict[str, Mapping[str, object]]:
+    if prior is None:
+        return {}
+    raw_prior: Any = prior.get("tombstones", [])
+    if not isinstance(raw_prior, list):
+        raise TypeError("prior tombstones must be an array")
+    return {
+        row["resource_id"]: row
+        for row in raw_prior
+        if isinstance(row, dict) and isinstance(row.get("resource_id"), str)
+    }
+
+
 def validate_tombstone_reprobe_receipt(
     receipt: Mapping[str, object], *, expected_count: int | None = None
 ) -> None:
     """Validate a re-probe receipt before it is published as evidence."""
     if receipt.get("schema_version") != "archive-govt-nz.tombstone-reprobe/v1":
         raise ValueError("unexpected re-probe schema")
-    rows = receipt.get("tombstones")
-    if not isinstance(rows, list):
+    raw_rows = receipt.get("tombstones")
+    if not isinstance(raw_rows, list):
         raise TypeError("tombstones must be an array")
+    rows = cast("list[object]", raw_rows)
     if expected_count is not None and len(rows) != expected_count:
         raise ValueError("unexpected tombstone count")
     ids: set[str] = set()
