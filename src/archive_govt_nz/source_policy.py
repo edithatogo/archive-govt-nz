@@ -14,6 +14,8 @@ from datetime import UTC, datetime, timedelta
 from typing import TYPE_CHECKING, Any
 from urllib.parse import urlparse
 
+HTTP_OK = 200
+
 if TYPE_CHECKING:
     from collections.abc import Mapping
 
@@ -49,16 +51,22 @@ def schedule_tombstone_reprobe(
     """Return a deterministic receipt for each inaccessible resource."""
     if now.tzinfo is None:
         raise ValueError("now must be timezone-aware")
+    if interval <= timedelta(0) or interval > timedelta(days=365):
+        raise ValueError("interval must be positive and no greater than 365 days")
     raw: Any = probe.get("results", [])
     if not isinstance(raw, list):
         raise TypeError("probe results must be an array")
     tombstones: list[dict[str, object]] = []
+    seen: set[str] = set()
     for item in raw:
         if not isinstance(item, dict) or item.get("state") != "tombstone-required":
             continue
         resource_id = item.get("resource_id")
         if not isinstance(resource_id, str) or not resource_id:
             continue
+        if resource_id in seen:
+            continue
+        seen.add(resource_id)
         tombstones.append(
             {
                 "resource_id": resource_id,
@@ -74,6 +82,42 @@ def schedule_tombstone_reprobe(
         "generated_at": now.isoformat(),
         "interval_seconds": int(interval.total_seconds()),
         "tombstones": tombstones,
+    }
+
+
+def classify_metadata_fallback(
+    resource: Mapping[str, object],
+    *,
+    package_status: int | None,
+    datastore_status: int | None,
+) -> dict[str, object]:
+    """Classify CKAN metadata/DataStore reachability without promoting payloads.
+
+    CKAN API responses are diagnostic representations only.  Even a successful
+    ``package_show`` or DataStore response cannot make a blocked download URL
+    eligible for capture; callers must still pass the source through secure
+    resolution and payload policy checks.
+    """
+    resource_id = resource.get("resource_id")
+    if not isinstance(resource_id, str) or not resource_id:
+        raise ValueError("resource_id is required")
+    package_ok = package_status == HTTP_OK
+    datastore_ok = datastore_status == HTTP_OK
+    if datastore_ok:
+        state = "datastore-diagnostic-available"
+    elif package_ok:
+        state = "metadata-diagnostic-available"
+    else:
+        state = "metadata-diagnostic-unavailable"
+    return {
+        "resource_id": resource_id,
+        "state": state,
+        "package_status": package_status,
+        "datastore_status": datastore_status,
+        "payload_eligible": False,
+        "eligibility_reason": (
+            "metadata/DataStore diagnostics never promote payload eligibility"
+        ),
     }
 
 
