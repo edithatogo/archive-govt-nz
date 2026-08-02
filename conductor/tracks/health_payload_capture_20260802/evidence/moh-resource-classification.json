@@ -1,0 +1,1118 @@
+{
+  "counts": {
+    "decision-required": 158
+  },
+  "metadata_only": true,
+  "payload_capture": false,
+  "publication": false,
+  "records": [
+    {
+      "classification": "decision-required",
+      "dataset_id": "1e3838ae-bf34-404c-961b-f35aa55e56fa",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "118d7365-8678-4fc2-b036-dcf6b16ca4b3"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "1e3838ae-bf34-404c-961b-f35aa55e56fa",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "8d8439d3-e0f6-422d-86fc-7de00c377a82"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "1e3838ae-bf34-404c-961b-f35aa55e56fa",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "25af5f70-44e1-4d0a-ac97-22865781c122"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "1e3838ae-bf34-404c-961b-f35aa55e56fa",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "bb39af8a-9825-4625-b489-556d78db5dad"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "1e3838ae-bf34-404c-961b-f35aa55e56fa",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "030012b9-111a-40ac-8c00-718bff7913ae"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "1e3838ae-bf34-404c-961b-f35aa55e56fa",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "b33c4878-98e2-4295-96a4-5609dfffab94"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "1e3838ae-bf34-404c-961b-f35aa55e56fa",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "ee1c59b5-130d-4d33-9c5e-89daa1d90b11"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "1e3838ae-bf34-404c-961b-f35aa55e56fa",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "afce276a-ee84-40f3-8982-56d53ef6883c"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "1e3838ae-bf34-404c-961b-f35aa55e56fa",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "5efd6a00-ee19-49d4-9cb7-66e253a4123d"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "1e3838ae-bf34-404c-961b-f35aa55e56fa",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "a3cbbe2e-c6a2-4a8d-897a-de471d223654"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "1e3838ae-bf34-404c-961b-f35aa55e56fa",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "39709cb6-f59f-43b2-9df6-7528eeb05fdc"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "1e3838ae-bf34-404c-961b-f35aa55e56fa",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "a9462433-8b09-41d9-b9d5-fb5fff9c99fb"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "1e3838ae-bf34-404c-961b-f35aa55e56fa",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "7e20b795-b572-4b1e-94ce-a8ab964aa922"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "1e3838ae-bf34-404c-961b-f35aa55e56fa",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "12c92c4e-fc17-4fa4-88b6-7c94e57fa22a"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "1e3838ae-bf34-404c-961b-f35aa55e56fa",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "b79c0a6d-f356-43f8-ab6d-249f163362aa"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "1e3838ae-bf34-404c-961b-f35aa55e56fa",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "37ba6458-cd22-4cc5-bedc-e8616a320072"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "1e3838ae-bf34-404c-961b-f35aa55e56fa",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "f90a8708-d066-4abb-9c70-bbefa88fb836"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "1e3838ae-bf34-404c-961b-f35aa55e56fa",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "5aa1186e-388a-48e2-8c76-3e0f622332c2"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "1e3838ae-bf34-404c-961b-f35aa55e56fa",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "e22d570d-9748-4243-93dd-05e4b606845a"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "1e3838ae-bf34-404c-961b-f35aa55e56fa",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "b512a79d-91f1-468a-b751-e77239754405"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "1e3838ae-bf34-404c-961b-f35aa55e56fa",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "1ececf82-d638-4526-b831-f80116f24cd2"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "1e3838ae-bf34-404c-961b-f35aa55e56fa",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "b794a831-5130-433c-9ab8-1406b02ac869"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "1e3838ae-bf34-404c-961b-f35aa55e56fa",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "101f075a-15ab-48a1-8c29-43066a1132c7"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "1e3838ae-bf34-404c-961b-f35aa55e56fa",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "8cadd945-5565-4d86-b276-55b93c66f8ee"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "1e3838ae-bf34-404c-961b-f35aa55e56fa",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "2530e132-9544-411a-8979-f77c3af33cfc"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "b047ae0c-4fad-4b7d-9a80-6007397b6e34",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "a8d5044e-3b94-4525-98cf-236cba8b36ef"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "b047ae0c-4fad-4b7d-9a80-6007397b6e34",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "13f48a52-fa03-43b1-94a9-7f3791d2c8af"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "b047ae0c-4fad-4b7d-9a80-6007397b6e34",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "43098fda-2ead-4c35-9dad-a48fa180647a"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "b047ae0c-4fad-4b7d-9a80-6007397b6e34",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "09298fda-87d4-469f-a3d8-7c02c141efe7"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "bb80952a-8c94-4181-8f9d-3553069fe84a",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "47386f90-30d0-482f-8506-31113d15a7cb"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "bb80952a-8c94-4181-8f9d-3553069fe84a",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "7cb26cf5-c08a-45a3-a9f2-2550804add1a"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "a9df07aa-bc6e-40c6-9d34-f7032f67b095",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "a67c4180-92e2-42da-9941-0e160c8ac21c"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "a9df07aa-bc6e-40c6-9d34-f7032f67b095",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "013b008f-c9f7-4762-b7b6-c8b570eeef8d"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "3b0defd2-bae3-43ff-b478-bc31fe2600b0",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "9b3fee23-8d15-4f9f-9a53-9f85e8c58d30"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "3b0defd2-bae3-43ff-b478-bc31fe2600b0",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "445b2c3b-317c-45b8-86f4-ea0fa26a62b3"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "95432dbf-a91d-498c-bc6b-ad5f5bc525f8",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "025045df-f6a6-4a9b-a6b2-efea00aa1af3"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "3daf2920-8cba-43e3-abc0-11eee400dc50",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "63b337ff-8a7d-44c8-8caf-733ce194a28a"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "3daf2920-8cba-43e3-abc0-11eee400dc50",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "89d20aed-fd59-4837-acb5-5fb997223cd0"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "3daf2920-8cba-43e3-abc0-11eee400dc50",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "3880dfe3-0087-46be-a5c1-742d2abb1ffe"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "3daf2920-8cba-43e3-abc0-11eee400dc50",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "792d2028-2d3d-4177-adf7-f028ae655e50"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "c17043c4-8110-4e5b-a1d7-982dba74251d",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "1856a59d-e8a4-443e-b505-4dd7bc10c4fb"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "c17043c4-8110-4e5b-a1d7-982dba74251d",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "8b908f7c-cca3-4221-b915-1b78b0243c17"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "c17043c4-8110-4e5b-a1d7-982dba74251d",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "f64fc4c5-5515-4c67-b2ec-75edf068d42d"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "c17043c4-8110-4e5b-a1d7-982dba74251d",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "b8fed70f-f920-47f2-bd8b-9b16ea67cd6d"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "c17043c4-8110-4e5b-a1d7-982dba74251d",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "0530cf10-d25f-4693-87e6-41eaf457d9e0"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "c17043c4-8110-4e5b-a1d7-982dba74251d",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "0c1b985e-3d13-4661-859a-465f05fecc5e"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "c17043c4-8110-4e5b-a1d7-982dba74251d",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "9bae3792-ad94-4147-97d1-f845c7a75df8"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "c17043c4-8110-4e5b-a1d7-982dba74251d",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "5f9d3ca6-40e8-4cd4-8737-3188a04de181"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "c17043c4-8110-4e5b-a1d7-982dba74251d",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "ab986349-6c42-4299-82c8-3815cfcae94c"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "c17043c4-8110-4e5b-a1d7-982dba74251d",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "43399ed9-2f83-4cfd-a9b4-4f59ba7e991a"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "c17043c4-8110-4e5b-a1d7-982dba74251d",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "cfcd1d46-0d87-425a-bf3d-8e570e66560a"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "67d99f05-1175-4659-8f66-dfce63182e5b",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "ff95df01-a948-4fbe-a3b8-18c5b8aaedd6"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "67d99f05-1175-4659-8f66-dfce63182e5b",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "4c765e2c-2ea6-4c17-ae95-0fc14fb8bba6"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "67d99f05-1175-4659-8f66-dfce63182e5b",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "f3855d3e-1a42-4010-8b8b-26492b4f235e"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "256200e6-fdb3-4049-9003-8f741707fddc",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "21f3eb69-2630-4493-b28e-c106d78d8f96"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "b0a63899-86cc-43ae-bb3e-78286df02382",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "f5a8e5fa-0886-4ced-8191-35f5522e28e0"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "b0a63899-86cc-43ae-bb3e-78286df02382",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "54c001a5-e512-4225-a74e-cba71464f211"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "b0a63899-86cc-43ae-bb3e-78286df02382",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "62e23b0b-021d-4d40-810a-9040709892c0"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "b0a63899-86cc-43ae-bb3e-78286df02382",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "450a88b3-7f43-4307-a8e7-1b426c19c3f3"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "b0a63899-86cc-43ae-bb3e-78286df02382",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "819b989b-78a9-4a6b-885f-107057186ead"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "b0a63899-86cc-43ae-bb3e-78286df02382",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "b6b3f9db-9896-4c18-adf1-5107863ac496"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "b0a63899-86cc-43ae-bb3e-78286df02382",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "02d7dc09-718c-4cdf-8d9c-1748dd199ec7"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "b0a63899-86cc-43ae-bb3e-78286df02382",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "a61bf9d4-7bf5-4faa-bcc8-86cd3af58052"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "b0a63899-86cc-43ae-bb3e-78286df02382",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "5918efb7-5971-449d-b0b9-e9cab30c568b"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "b0a63899-86cc-43ae-bb3e-78286df02382",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "0e97c9d6-91a1-486d-ad04-bb3cb326b48d"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "6b85cf82-4fa7-4870-a58a-04550ad8e4ca",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "053dee09-4a5d-4488-acd5-fe67c0923107"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "6b85cf82-4fa7-4870-a58a-04550ad8e4ca",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "d39d1698-0ca9-46c8-bf96-609592cbefb2"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "6b85cf82-4fa7-4870-a58a-04550ad8e4ca",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "246da3a7-3658-4769-b888-daaa2541324c"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "6b85cf82-4fa7-4870-a58a-04550ad8e4ca",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "9182bb1c-d1f4-4e2f-bb9d-4a28f3799aef"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "6b85cf82-4fa7-4870-a58a-04550ad8e4ca",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "65958d6d-2c1d-4656-8b1c-efa99c2d70d3"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "6b85cf82-4fa7-4870-a58a-04550ad8e4ca",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "3598dbc9-5335-4f63-8186-97853bf058cd"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "6b85cf82-4fa7-4870-a58a-04550ad8e4ca",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "6f6b39c4-7702-4cf1-bb5b-d95da35b6827"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "6b85cf82-4fa7-4870-a58a-04550ad8e4ca",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "61bbf41a-e2c3-4b96-ad64-26976446ed60"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "6b85cf82-4fa7-4870-a58a-04550ad8e4ca",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "732ffb24-9585-4b52-8a88-8a5955cff541"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "6b85cf82-4fa7-4870-a58a-04550ad8e4ca",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "ea831e96-0c08-463c-a87b-c788da25e072"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "6b85cf82-4fa7-4870-a58a-04550ad8e4ca",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "a9ab9831-03b5-4533-a573-eb6ee7e434e5"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "6b85cf82-4fa7-4870-a58a-04550ad8e4ca",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "033fdd40-c287-42c4-8356-db70dcf8d129"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "944c6583-2af0-499d-90bb-b41e13a52f4e",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "9ead1582-671b-4402-aed3-6d57b34d8dbd"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "944c6583-2af0-499d-90bb-b41e13a52f4e",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "376cb7f2-ff1f-4994-81a1-0f10092f627a"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "944c6583-2af0-499d-90bb-b41e13a52f4e",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "e3bb56d6-3548-4e9e-80c4-fd91a74f19fa"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "944c6583-2af0-499d-90bb-b41e13a52f4e",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "a47d8196-1ad9-495e-87ca-be75fd18fd8b"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "944c6583-2af0-499d-90bb-b41e13a52f4e",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "f2bb41a2-6461-4d07-b875-2ce718188a49"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "944c6583-2af0-499d-90bb-b41e13a52f4e",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "80173b1b-8f9d-468a-8c0f-f311df71dc53"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "944c6583-2af0-499d-90bb-b41e13a52f4e",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "c3df9ae7-814b-4d09-b742-cc67f4de2e4b"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "944c6583-2af0-499d-90bb-b41e13a52f4e",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "791dfb6e-1a99-408b-ada6-87017f865f0f"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "944c6583-2af0-499d-90bb-b41e13a52f4e",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "a31c198e-886e-443b-95fb-4d466f755259"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "944c6583-2af0-499d-90bb-b41e13a52f4e",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "ad2eaa98-7508-4930-8810-c830f144f208"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "944c6583-2af0-499d-90bb-b41e13a52f4e",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "a128ba54-b1c5-436c-b3c3-f139f6c8f193"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "944c6583-2af0-499d-90bb-b41e13a52f4e",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "8aa2fec4-6b92-4500-a612-9af946c88992"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "944c6583-2af0-499d-90bb-b41e13a52f4e",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "ed95504f-3478-43ed-aeb6-43d6bf29331c"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "944c6583-2af0-499d-90bb-b41e13a52f4e",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "dd5a4a4a-3354-40d6-b8ee-f357deb49276"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "944c6583-2af0-499d-90bb-b41e13a52f4e",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "0a4258f0-b917-466e-bf3c-c6d518e0742c"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "0a493d64-5c50-4fe1-9066-a6808bb6dd3f",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "8a5a68e1-d8b1-419d-97d2-f1b1143a6207"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "0a493d64-5c50-4fe1-9066-a6808bb6dd3f",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "d93fa5ed-654f-4f13-b2d6-86b4da2e4472"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "0a493d64-5c50-4fe1-9066-a6808bb6dd3f",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "f0f9fce0-4a21-458e-889d-299e7a482847"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "0a493d64-5c50-4fe1-9066-a6808bb6dd3f",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "9d114874-54f4-4835-938b-91d0e9ad93d1"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "0a493d64-5c50-4fe1-9066-a6808bb6dd3f",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "d79e8d91-ff9a-46ae-987f-5605433cba08"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "0a493d64-5c50-4fe1-9066-a6808bb6dd3f",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "4627d8da-58f7-45be-abaa-1207d1203a66"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "0a493d64-5c50-4fe1-9066-a6808bb6dd3f",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "ec9b2331-c934-4ca2-84bb-cadc574a6d85"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "0a493d64-5c50-4fe1-9066-a6808bb6dd3f",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "efa69e48-2180-4d39-89a8-c086759e6e7c"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "0a493d64-5c50-4fe1-9066-a6808bb6dd3f",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "174d8156-0885-4e2e-a8d2-b092e7457419"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "0a493d64-5c50-4fe1-9066-a6808bb6dd3f",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "49431693-67dc-498c-ada3-478ffcaf0cc6"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "0a493d64-5c50-4fe1-9066-a6808bb6dd3f",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "c5a675d9-ea32-4c42-ae20-0bd4c4e7bc35"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "0a493d64-5c50-4fe1-9066-a6808bb6dd3f",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "f2f204a0-5075-4732-bcde-83f19fa079b5"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "0a493d64-5c50-4fe1-9066-a6808bb6dd3f",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "1d0c76e2-88c3-4237-8a5c-ed4aa96118e3"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "0a493d64-5c50-4fe1-9066-a6808bb6dd3f",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "5142769d-3f87-4b63-bff8-634e6c83dbac"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "f13c902a-d78a-4e75-b744-f1637ddce198",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "f7ddc6fc-2519-40bf-9556-f29ba2f97e76"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "35f87251-8fb6-4695-a0dd-36aada0c227d",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "40395d70-82f6-4e80-be7a-5d755f52a343"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "a5ffcbb5-e1d2-4433-b850-e7abdcc0edd8",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "848a361b-65b8-4872-bdd9-71fe299c6f01"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "a5ffcbb5-e1d2-4433-b850-e7abdcc0edd8",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "2bfa461a-e3ae-4129-8ee4-288047d47d72"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "a5ffcbb5-e1d2-4433-b850-e7abdcc0edd8",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "7b4764fb-64eb-4317-a8e1-214f544ed2c0"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "a5ffcbb5-e1d2-4433-b850-e7abdcc0edd8",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "9e5106a4-572c-4458-8b08-021e075de24e"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "434752c0-5631-4833-b53f-62c5d048afc3",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "1045f16a-4498-469d-a56b-37d259c3b354"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "434752c0-5631-4833-b53f-62c5d048afc3",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "de1b886a-b264-4011-b471-d2fa1b17d481"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "434752c0-5631-4833-b53f-62c5d048afc3",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "5f5e2cdb-9186-45de-8051-e29d0337f45d"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "434752c0-5631-4833-b53f-62c5d048afc3",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "0d054d59-d5f7-4877-ab12-2989abc34329"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "434752c0-5631-4833-b53f-62c5d048afc3",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "7cd8d575-add6-40d3-92dd-dca601e53767"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "a509f7e2-668e-49f8-8452-84014c7eac23",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "e029950b-90ba-475c-951b-dab800244832"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "a509f7e2-668e-49f8-8452-84014c7eac23",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "7bae4c9b-9437-4ec1-bf41-e52cbb8fea5c"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "a509f7e2-668e-49f8-8452-84014c7eac23",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "043cfbf1-10df-416a-9e3e-5a4f0f4d6f47"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "a509f7e2-668e-49f8-8452-84014c7eac23",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "56991417-111c-4e71-9db7-45f54cdd8693"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "48bc86e9-b1c1-4fe6-8e92-b7f83e0e66c7",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "1b70a016-a4dc-4dd4-b2a2-d863879b2e98"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "88b663fd-49c6-4bfe-a352-187c76b45513",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "26269930-7bf9-4f4c-9274-da8607460b15"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "97a16c27-3bb7-4ea7-88b3-fe7f36bfff53",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "7db10f5e-56e2-46d5-8860-b9747400efde"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "97a16c27-3bb7-4ea7-88b3-fe7f36bfff53",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "d55dc6f3-ea02-4be3-b2dc-a62385335037"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "97a16c27-3bb7-4ea7-88b3-fe7f36bfff53",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "07b0f271-39cd-42d1-97d4-1c2b018b0e32"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "e89f9807-ede5-4181-99c3-81d7abf9d340",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "7a32103a-c7a6-40ce-80b9-a8df713dc177"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "285c3926-31c2-447b-9a35-5014d2b3c96e",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "d7150091-776e-47c1-afb2-ba5cb0de77a0"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "285c3926-31c2-447b-9a35-5014d2b3c96e",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "1184e5e0-b165-4709-9429-977331f77caf"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "285c3926-31c2-447b-9a35-5014d2b3c96e",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "55094ba5-3d11-474f-95e7-1f2571b6963c"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "285c3926-31c2-447b-9a35-5014d2b3c96e",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "64f1adfc-8410-454a-becf-7e6e5ef3ceb6"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "51f12ad9-e3de-44a8-89da-e2a02430b679",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "9adb71e0-ee1b-421e-98e0-f4288df97768"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "51f12ad9-e3de-44a8-89da-e2a02430b679",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "5cd6e271-8436-4b04-8062-4926613ef97c"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "51f12ad9-e3de-44a8-89da-e2a02430b679",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "a75edae7-14ff-4a26-8559-3fc3f4891142"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "51f12ad9-e3de-44a8-89da-e2a02430b679",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "7116940c-1929-4fe4-a3d3-20566c260c94"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "51f12ad9-e3de-44a8-89da-e2a02430b679",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "aa64a59f-7205-4d74-a9ab-9aa220666c89"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "51f12ad9-e3de-44a8-89da-e2a02430b679",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "579fe12f-e82f-4fa7-bb48-e5a4f556f084"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "51f12ad9-e3de-44a8-89da-e2a02430b679",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "77739ef2-6593-45d8-b7c4-c25caeee7286"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "51f12ad9-e3de-44a8-89da-e2a02430b679",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "a49c3f96-57aa-47c7-a34a-a853e8b391c8"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "51f12ad9-e3de-44a8-89da-e2a02430b679",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "577c78b7-77fe-4a11-8549-b38d5dc6aa76"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "51f12ad9-e3de-44a8-89da-e2a02430b679",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "c33355e1-ab14-424e-81d3-a432e3d309be"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "51f12ad9-e3de-44a8-89da-e2a02430b679",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "9b38b055-8f97-44e5-b9c5-cd12fcc80e8b"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "43758f86-44c3-401a-892a-f0ab032f3fed",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "a6f82c44-dce3-4ea0-b938-fffba431ee45"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "43758f86-44c3-401a-892a-f0ab032f3fed",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "83342e1e-2c83-4538-bf06-5c83c83b324f"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "43758f86-44c3-401a-892a-f0ab032f3fed",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "8b38a09a-305b-4627-8a0c-9a972467551a"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "060a8116-577c-43a1-a43f-11751fe1cb07",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "dccdddd8-708d-4798-adaf-609c31f93414"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "060a8116-577c-43a1-a43f-11751fe1cb07",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "d8430bdf-696b-442c-a24e-5389dc443af4"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "060a8116-577c-43a1-a43f-11751fe1cb07",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "ef9242b0-cac1-4d26-82a1-6273d41beaa2"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "060a8116-577c-43a1-a43f-11751fe1cb07",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "1c3bc030-57cd-4a4e-ba22-4496f4ded0b1"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "c826888f-b6ce-49ae-b90a-59c01ced977c",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "33cf27a9-9ed9-467a-aa79-63819682486b"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "c826888f-b6ce-49ae-b90a-59c01ced977c",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "85f694f0-81fd-4bdb-9e71-660970c72427"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "c826888f-b6ce-49ae-b90a-59c01ced977c",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "29262869-3ad4-4517-bc7f-b88ae47a9c93"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "c826888f-b6ce-49ae-b90a-59c01ced977c",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "edcde092-0e69-4a22-b925-23c03a230fe1"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "c826888f-b6ce-49ae-b90a-59c01ced977c",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "e3d402fc-846a-48db-b2df-556ae9fa7d5c"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "c826888f-b6ce-49ae-b90a-59c01ced977c",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "3767a385-1315-463a-810c-87910310dd0c"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "c826888f-b6ce-49ae-b90a-59c01ced977c",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "4c9f6486-dd89-4785-9705-ee03a3f989de"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "c826888f-b6ce-49ae-b90a-59c01ced977c",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "91b8790c-0b98-4459-90fb-f08fe29407e0"
+    },
+    {
+      "classification": "decision-required",
+      "dataset_id": "c826888f-b6ce-49ae-b90a-59c01ced977c",
+      "download_authorized": false,
+      "reason": "explicit resource-level rights evidence absent",
+      "resource_id": "e1a299ee-fdeb-4bfc-b0f4-d1ac48283bb7"
+    }
+  ],
+  "schema": "archive-govt-nz.moh-capture-classification/v1",
+  "source_schema": "archive-govt-nz.moh-resource-metadata/v1"
+}

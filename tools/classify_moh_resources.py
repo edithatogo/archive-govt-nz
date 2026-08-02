@@ -10,6 +10,46 @@ from typing import Any, cast
 
 def classify(document: dict[str, Any]) -> dict[str, object]:
     """Produce fail-closed dataset classifications from metadata only."""
+    if isinstance(document.get("resources"), list):
+        records: list[dict[str, object]] = []
+        for item in cast("list[dict[str, Any]]", document["resources"]):
+            url = str(item.get("url") or "")
+            rights = item.get("rights")
+            fmt = str(item.get("format") or item.get("mimetype") or "")
+            if rights and url.startswith("https://") and fmt:
+                state = "eligible"
+                reason = "HTTPS URL, explicit rights, and declared type present"
+                authorized = True
+            elif not url.startswith("https://"):
+                state = "restricted"
+                reason = "resource URL is absent or not HTTPS"
+                authorized = False
+            else:
+                state = "decision-required"
+                reason = "explicit resource-level rights evidence absent"
+                authorized = False
+            records.append(
+                {
+                    "dataset_id": item.get("dataset_id"),
+                    "resource_id": item.get("resource_id"),
+                    "classification": state,
+                    "reason": reason,
+                    "download_authorized": authorized,
+                }
+            )
+        counts = {
+            state: sum(1 for item in records if item["classification"] == state)
+            for state in {str(item["classification"]) for item in records}
+        }
+        return {
+            "schema": "archive-govt-nz.moh-capture-classification/v1",
+            "source_schema": document.get("schema"),
+            "metadata_only": True,
+            "payload_capture": False,
+            "publication": False,
+            "records": records,
+            "counts": counts,
+        }
     scope = cast("dict[str, Any]", document.get("scope", {}))
     datasets = cast("list[dict[str, Any]]", scope.get("datasets", []))
     records = [
