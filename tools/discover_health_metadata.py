@@ -76,6 +76,7 @@ async def _discover(base_url: str, page_size: int) -> dict[str, object]:  # noqa
                         "error_class": last_error.__class__.__name__,
                         "status_code": last_error.status_code,
                         "scopes_attempted": list(scopes),
+                        "attempts": receipts,
                         "policy": {
                             "metadata_only": True,
                             "payload_capture": False,

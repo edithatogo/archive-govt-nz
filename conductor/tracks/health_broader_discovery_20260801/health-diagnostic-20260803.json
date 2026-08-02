@@ -1,0 +1,145 @@
+{
+  "attempts": [
+    {
+      "count": 812,
+      "observed_at": "2026-08-02T14:17:48.088671+00:00",
+      "returned": 100,
+      "scope": "text-health",
+      "sha256": "72f78047af8af3a1c4474af171e6059d6f6d81bea3f5ddcc4585e2019a93e0e1",
+      "start": 0
+    },
+    {
+      "count": 812,
+      "observed_at": "2026-08-02T14:17:48.463024+00:00",
+      "returned": 100,
+      "scope": "text-health",
+      "sha256": "d93d1682ef69afb3733caa03f368803f6cbed5b8f0603a88fc8aecd2f4a92888",
+      "start": 100
+    },
+    {
+      "count": 812,
+      "observed_at": "2026-08-02T14:17:48.614498+00:00",
+      "returned": 100,
+      "scope": "text-health",
+      "sha256": "cafb20570161dcef8254b71c8161812549848f79bc7b5be6fedea196d6726cda",
+      "start": 200
+    },
+    {
+      "count": 812,
+      "observed_at": "2026-08-02T14:17:48.887408+00:00",
+      "returned": 100,
+      "scope": "text-health",
+      "sha256": "6f10dba274544a6fe439f3790e7de788f9d0fea55c7e98926060b1e889a80e3a",
+      "start": 300
+    },
+    {
+      "count": 812,
+      "observed_at": "2026-08-02T14:17:49.076494+00:00",
+      "returned": 100,
+      "scope": "text-health",
+      "sha256": "7679f97eab8d4acd4cf5693ffdd2dce1db380c9f35d3495fa74bf892cfc75568",
+      "start": 400
+    },
+    {
+      "count": 812,
+      "observed_at": "2026-08-02T14:17:49.241005+00:00",
+      "returned": 100,
+      "scope": "text-health",
+      "sha256": "24a4787fbc41ba7505def9c71a3dbdbeda0ec5d9f99b231604f30d0ac73798c6",
+      "start": 500
+    },
+    {
+      "count": 812,
+      "observed_at": "2026-08-02T14:17:49.658804+00:00",
+      "returned": 100,
+      "scope": "text-health",
+      "sha256": "584c08a2468a9bac6613bc148317a664182200ee272e9ef247a9e949f803e53a",
+      "start": 600
+    },
+    {
+      "count": 812,
+      "observed_at": "2026-08-02T14:17:49.857144+00:00",
+      "returned": 100,
+      "scope": "text-health",
+      "sha256": "7e2c433c9abf4f9b839357a5d9b00fb4912b80ffe49219ad3083407c75e9c097",
+      "start": 700
+    },
+    {
+      "count": 812,
+      "observed_at": "2026-08-02T14:17:50.209281+00:00",
+      "returned": 12,
+      "scope": "text-health",
+      "sha256": "6c0dd604492b75122ff72772349bfe8a2660998d281e05f9e1bbc4782f50ae59",
+      "start": 800
+    },
+    {
+      "error_class": "CkanTransportError",
+      "parameter_variant": 0,
+      "rows": 100,
+      "scope": "group-health",
+      "start": 0,
+      "status": "unavailable",
+      "status_code": 400
+    },
+    {
+      "error_class": "CkanTransportError",
+      "parameter_variant": 0,
+      "rows": 25,
+      "scope": "group-health",
+      "start": 0,
+      "status": "unavailable",
+      "status_code": 400
+    },
+    {
+      "error_class": "CkanTransportError",
+      "parameter_variant": 0,
+      "rows": 1,
+      "scope": "group-health",
+      "start": 0,
+      "status": "unavailable",
+      "status_code": 400
+    },
+    {
+      "error_class": "CkanTransportError",
+      "parameter_variant": 1,
+      "rows": 100,
+      "scope": "group-health",
+      "start": 0,
+      "status": "unavailable",
+      "status_code": 400
+    },
+    {
+      "error_class": "CkanTransportError",
+      "parameter_variant": 1,
+      "rows": 25,
+      "scope": "group-health",
+      "start": 0,
+      "status": "unavailable",
+      "status_code": 400
+    },
+    {
+      "error_class": "CkanTransportError",
+      "parameter_variant": 1,
+      "rows": 1,
+      "scope": "group-health",
+      "start": 0,
+      "status": "unavailable",
+      "status_code": 400
+    }
+  ],
+  "catalogue_url": "https://catalogue.data.govt.nz",
+  "error_class": "CkanTransportError",
+  "observed_at": "2026-08-02T14:17:50.483548+00:00",
+  "policy": {
+    "max_page_size": 100,
+    "metadata_only": true,
+    "payload_capture": false,
+    "publication": false
+  },
+  "schema": "archive-govt-nz.health-discovery/v1",
+  "scopes_attempted": [
+    "text-health"
+  ],
+  "status": "unavailable",
+  "status_code": 400
+}
