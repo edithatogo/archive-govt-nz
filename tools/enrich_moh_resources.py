@@ -12,10 +12,7 @@ from typing import Any, cast
 from archive_govt_nz.ckan.client import BoundedCkanClient, CkanClientConfig
 
 
-async def _run(input_path: Path, output_path: Path) -> dict[str, object]:  # noqa: ARG001
-    source = cast(  # noqa: ASYNC240
-        "dict[str, Any]", json.loads(input_path.read_text(encoding="utf-8"))
-    )
+async def _run(source: dict[str, Any]) -> dict[str, object]:
     datasets = cast("dict[str, Any]", source["scope"])["datasets"]
     config = CkanClientConfig(
         base_url="https://catalogue.data.govt.nz",
@@ -63,7 +60,8 @@ def main() -> int:
     parser.add_argument("--input", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
-    result = asyncio.run(_run(args.input, args.output))
+    source = cast("dict[str, Any]", json.loads(args.input.read_text(encoding="utf-8")))
+    result = asyncio.run(_run(source))
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(
         json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8"
