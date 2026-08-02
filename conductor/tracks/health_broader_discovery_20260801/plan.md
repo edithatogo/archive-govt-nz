@@ -12,3 +12,11 @@
 8. Run clean-environment validation and review evidence.
 9. Hand eligible candidates to a separately approved capture track; do not
    capture or publish from this track.
+
+## Transport compatibility remediation
+
+- [ ] Add bounded GET fallback after POST JSON failure.
+- [ ] Record method, parameter variant, page size, status, and response hash.
+- [ ] Reconcile GET and POST IDs/counts before accepting a fallback result.
+- [ ] Add contract and metamorphic tests for transport equivalence.
+- [ ] Run hosted validation before changing the discovery state from unavailable.
