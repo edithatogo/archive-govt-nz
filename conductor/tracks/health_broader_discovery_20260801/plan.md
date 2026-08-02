@@ -35,6 +35,18 @@
 Recommendation: implement Option A first. Use Option C only when an official
 endpoint is documented and equivalence is evidenced. Do not use Option B.
 
+### Approved implementation contract
+
+- [ ] Add a shared request executor inside `BoundedCkanClient`.
+- [ ] Parameterize only HTTP method and encoding: POST JSON or GET URL query.
+- [ ] Preserve retry, timeout, response-size, hashing, and error handling in
+  the shared executor.
+- [ ] Add public bounded `action_get()`.
+- [ ] Add contract tests for POST/GET parity, HTTP-400 fallback, mismatched
+  results, and deterministic receipts.
+- [ ] Wire broader-health discovery to use GET only after POST failure.
+- [ ] Run complete local and hosted assurance gates.
+
 Contingencies:
 
 1. If GET succeeds and normalized IDs/counts match POST probes, retain both
