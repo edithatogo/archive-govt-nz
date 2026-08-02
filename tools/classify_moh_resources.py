@@ -18,7 +18,9 @@ def classify(document: dict[str, Any]) -> dict[str, object]:
             "title": item.get("title"),
             "resource_count": item.get("resource_count", 0),
             "classification": "decision-required",
-            "reason": "resource-level rights, sensitivity, URL, and type evidence absent",
+            "reason": (
+                "resource-level rights, sensitivity, URL, and type evidence absent"
+            ),
             "download_authorized": False,
         }
         for item in datasets
