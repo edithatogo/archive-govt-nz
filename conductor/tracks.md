@@ -25,3 +25,8 @@ active only after the MVP checkpoint and their stated decision gates pass.
   *Link: [tracks/health_payload_capture_20260802/index.md](./tracks/health_payload_capture_20260802/index.md)*
 - [ ] **Deferred evaluation: graph/vector indexing**
   *Proposed slug: `graph_vector_evaluation_20260801`*
+
+Deferral gate: do not activate OCFL or graph/vector implementation until the
+archive has a materially larger corpus, stable provenance joins, demonstrated
+query workloads that exceed SQLite/Parquet/DuckDB, and an evidence-backed
+assessment of interoperability, retention, security, and operating cost.
