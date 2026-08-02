@@ -1,0 +1,7 @@
+{
+  "track_id": "health_payload_capture_20260802",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-08-02T00:00:00Z",
+  "scope": "separately gated health payload capture"
+}
