@@ -55,3 +55,22 @@ Contingencies:
    remain `unavailable`.
 3. If both fail, retain the bounded diagnostic receipt and continue scheduled
    monitoring without capture or publication.
+
+## Cross-track blocker remediation
+
+- [ ] Inspect and reconcile the untracked `.entire/` worktree state without
+  deleting user data.
+- [ ] Complete shared-client POST/GET transport executor and contract tests.
+- [ ] Run local and hosted compatibility matrix; retain normalized conflict
+  receipts when results differ.
+- [ ] Resume broader-health discovery only after a stable reconciled receipt.
+- [ ] Reclassify Ministry of Health resources from resource-level rights and
+  sensitivity evidence.
+- [ ] Authorize capture only for explicitly eligible resources.
+- [ ] Keep Treasury restricted resources as metadata/tombstone outcomes until
+  official access changes.
+- [ ] Revalidate staged Hugging Face and Zenodo packages without uploading.
+- [ ] Require credentials, rights approval, and release approval before any
+  remote publication or DOI creation.
+- [ ] Keep OCFL and graph/vector work deferred until the corpus/workload gate
+  in `conductor/tracks.md` is met.
