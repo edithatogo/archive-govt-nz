@@ -1,9 +1,10 @@
 # Implementation plan
 
-- [ ] Phase 1: Freeze candidate, rights, sensitivity, and safety contracts.
-  - [ ] Write failing tests for eligibility and fail-closed states.
-  - [ ] Define manifest and tombstone schemas.
-  - [ ] Phase verification checkpoint.
+- [x] Phase 1: Freeze candidate, rights, sensitivity, and safety contracts.
+  - [x] Write failing tests for eligibility and fail-closed states.
+  - [x] Define manifest and tombstone schemas.
+  - [x] Record 158 decision-required resource classifications.
+  - [x] Phase verification checkpoint.
 - [ ] Phase 2: Implement bounded retrieval and quarantine.
   - [ ] Add resumable streaming with byte/time/redirect limits.
   - [ ] Add independent type and archive-expansion checks.
