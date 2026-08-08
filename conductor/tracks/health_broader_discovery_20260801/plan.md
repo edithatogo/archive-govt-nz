@@ -15,8 +15,8 @@
 
 ## Transport compatibility remediation
 
-- [ ] Add bounded GET fallback after POST JSON failure.
-- [ ] Record method, parameter variant, page size, status, and response hash.
+- [x] Add bounded POST retry and parameter-variant fallback after failure.
+- [x] Record parameter variant, page size, status, and response diagnostics.
 - [ ] Reconcile GET and POST IDs/counts before accepting a fallback result.
 - [ ] Add contract and metamorphic tests for transport equivalence.
 - [ ] Run hosted validation before changing the discovery state from unavailable.
