@@ -1,0 +1,224 @@
+{
+  "catalogue_url": "https://catalogue.data.govt.nz",
+  "observed_at": "2026-08-01T11:15:23.109691+00:00",
+  "policy": {
+    "max_page_size": 100,
+    "metadata_only": true,
+    "payload_capture": false,
+    "publication": false
+  },
+  "schema": "archive-govt-nz.moh-discovery/v1",
+  "scope": {
+    "dataset_count": 28,
+    "datasets": [
+      {
+        "id": "1e3838ae-bf34-404c-961b-f35aa55e56fa",
+        "metadata_modified": "2026-07-31T04:22:38.493805",
+        "name": "ministry-of-health-director-generals-expenses",
+        "resource_count": 25,
+        "title": "Ministry of Health Director-General's Expenses"
+      },
+      {
+        "id": "b047ae0c-4fad-4b7d-9a80-6007397b6e34",
+        "metadata_modified": "2026-05-03T22:04:58.772047",
+        "name": "regional-data-release-new-zealand-health-survey",
+        "resource_count": 4,
+        "title": "Regional Data Release: New Zealand Health Survey"
+      },
+      {
+        "id": "bb80952a-8c94-4181-8f9d-3553069fe84a",
+        "metadata_modified": "2026-05-03T22:04:21.262458",
+        "name": "covid-19-and-long-covid-2024-25-new-zealand-health-survey",
+        "resource_count": 2,
+        "title": "COVID-19 and long COVID 2024/25: New Zealand Health Survey"
+      },
+      {
+        "id": "a9df07aa-bc6e-40c6-9d34-f7032f67b095",
+        "metadata_modified": "2026-05-03T22:03:52.315584",
+        "name": "migraine-2023-24-new-zealand-health-survey",
+        "resource_count": 2,
+        "title": "Migraine 2023/24: New Zealand Health Survey"
+      },
+      {
+        "id": "3b0defd2-bae3-43ff-b478-bc31fe2600b0",
+        "metadata_modified": "2026-05-03T22:03:27.774609",
+        "name": "racial-discrimination-2023-24-new-zealand-health-survey",
+        "resource_count": 2,
+        "title": "Racial Discrimination 2023/24: New Zealand Health Survey"
+      },
+      {
+        "id": "95432dbf-a91d-498c-bc6b-ad5f5bc525f8",
+        "metadata_modified": "2025-11-19T21:24:09.624397",
+        "name": "annual-update-of-key-results-new-zealand-health-survey",
+        "resource_count": 1,
+        "title": "Annual Update of Key Results 2024/25: New Zealand Health Survey"
+      },
+      {
+        "id": "3daf2920-8cba-43e3-abc0-11eee400dc50",
+        "metadata_modified": "2025-09-22T03:16:00.489737",
+        "name": "health-and-independence-report-2024",
+        "resource_count": 4,
+        "title": "Health and Independence Report 2024"
+      },
+      {
+        "id": "c17043c4-8110-4e5b-a1d7-982dba74251d",
+        "metadata_modified": "2025-07-17T00:12:20.243973",
+        "name": "tupu-ola-moui-pacific-health-chart-book-2025",
+        "resource_count": 11,
+        "title": "Tupu Ola Moui: Pacific Health Chart Book 2025"
+      },
+      {
+        "id": "67d99f05-1175-4659-8f66-dfce63182e5b",
+        "metadata_modified": "2025-07-16T01:55:26.485789",
+        "name": "health-independence-report-2020",
+        "resource_count": 3,
+        "title": "Health and Independence Report 2020"
+      },
+      {
+        "id": "256200e6-fdb3-4049-9003-8f741707fddc",
+        "metadata_modified": "2025-07-16T01:39:49.390153",
+        "name": "understanding-health-and-healthcare-2017-18-new-zealand-health-survey",
+        "resource_count": 1,
+        "title": "Understanding health and healthcare: 2017/18 New Zealand Health Survey"
+      },
+      {
+        "id": "b0a63899-86cc-43ae-bb3e-78286df02382",
+        "metadata_modified": "2025-07-16T01:17:43.680571",
+        "name": "our-oral-health-key-findings-of-the-2009-new-zealand-oral-health-survey",
+        "resource_count": 10,
+        "title": "Our Oral Health: Key findings of the 2009 New Zealand Oral Health Survey"
+      },
+      {
+        "id": "6b85cf82-4fa7-4870-a58a-04550ad8e4ca",
+        "metadata_modified": "2025-07-16T01:12:13.250652",
+        "name": "dietary-habits-2008-09-nz-adult-nutrition-survey",
+        "resource_count": 12,
+        "title": "Dietary Habits - 2008/09 NZ Adult Nutrition survey"
+      },
+      {
+        "id": "944c6583-2af0-499d-90bb-b41e13a52f4e",
+        "metadata_modified": "2025-07-16T01:07:32.277744",
+        "name": "nutrient-intakes-and-dietary-sources-micronutrients-2008-09-nz-adult-nutrition-survey",
+        "resource_count": 15,
+        "title": "Nutrient Intakes and Dietary Sources: Micronutrients - 2008/09 NZ Adult Nutrition survey"
+      },
+      {
+        "id": "0a493d64-5c50-4fe1-9066-a6808bb6dd3f",
+        "metadata_modified": "2025-07-16T01:00:54.576427",
+        "name": "nutrient-intakes-and-dietary-sources-energy-and-macronutrients-2008-09-nz-adult-nutrition-surve",
+        "resource_count": 14,
+        "title": "Nutrient intakes and dietary sources: Energy and macronutrients - 2008/09 NZ Adult Nutrition survey"
+      },
+      {
+        "id": "f13c902a-d78a-4e75-b744-f1637ddce198",
+        "metadata_modified": "2025-07-15T23:49:28.735171",
+        "name": "ala-mo-ui-progress-report-december-2015",
+        "resource_count": 1,
+        "title": "’Ala Mo’ui Progress Report: December 2015"
+      },
+      {
+        "id": "35f87251-8fb6-4695-a0dd-36aada0c227d",
+        "metadata_modified": "2025-07-15T23:49:17.032728",
+        "name": "ala-moui-progress-report-june-2015",
+        "resource_count": 1,
+        "title": "'Ala Mo'ui Progress Report June 2015"
+      },
+      {
+        "id": "a5ffcbb5-e1d2-4433-b850-e7abdcc0edd8",
+        "metadata_modified": "2025-07-15T22:34:07.305672",
+        "name": "health-independence-report-2023",
+        "resource_count": 4,
+        "title": "Health and Independence Report 2023"
+      },
+      {
+        "id": "434752c0-5631-4833-b53f-62c5d048afc3",
+        "metadata_modified": "2025-07-15T22:28:16.992826",
+        "name": "health-independence-report-2022",
+        "resource_count": 5,
+        "title": "Health and Independence Report 2022"
+      },
+      {
+        "id": "a509f7e2-668e-49f8-8452-84014c7eac23",
+        "metadata_modified": "2025-07-15T22:23:29.813421",
+        "name": "health-indepedence-report-2021",
+        "resource_count": 4,
+        "title": "Health and Independence Report 2021"
+      },
+      {
+        "id": "48bc86e9-b1c1-4fe6-8e92-b7f83e0e66c7",
+        "metadata_modified": "2025-07-02T01:34:56.105653",
+        "name": "sexual-and-reproductive-health-2014-15-new-zealand-health-survey",
+        "resource_count": 1,
+        "title": "Sexual and Reproductive Health 2014/15: New Zealand Health Survey"
+      },
+      {
+        "id": "88b663fd-49c6-4bfe-a352-187c76b45513",
+        "metadata_modified": "2025-07-02T01:31:22.802170",
+        "name": "biomedical-results-2014-15-new-zealand-health-survey",
+        "resource_count": 1,
+        "title": "Biomedical results 2014/15: New Zealand Health Survey"
+      },
+      {
+        "id": "97a16c27-3bb7-4ea7-88b3-fe7f36bfff53",
+        "metadata_modified": "2025-07-02T01:21:45.203387",
+        "name": "racial-discrimination-2011-12-2016-17-and-2020-21-new-zealand-health-survey",
+        "resource_count": 3,
+        "title": "Racial Discrimination 2011/12, 2016/17 and 2020/21: New Zealand Health Survey"
+      },
+      {
+        "id": "e89f9807-ede5-4181-99c3-81d7abf9d340",
+        "metadata_modified": "2025-07-01T03:19:04.189903",
+        "name": "mental-health-and-problematic-substance-use-new-zealand-health-survey",
+        "resource_count": 1,
+        "title": "Mental Health and Problematic Substance Use: New Zealand Health Survey"
+      },
+      {
+        "id": "285c3926-31c2-447b-9a35-5014d2b3c96e",
+        "metadata_modified": "2025-06-26T23:03:33.432042",
+        "name": "tatau-kahukura-maori-health-chart-book-2024",
+        "resource_count": 4,
+        "title": "Tatau Kahukura: Māori Health Chart Book 2024"
+      },
+      {
+        "id": "51f12ad9-e3de-44a8-89da-e2a02430b679",
+        "metadata_modified": "2025-06-26T03:17:53.696938",
+        "name": "tobacco-use-2012-13-new-zealand-health-survey",
+        "resource_count": 11,
+        "title": "Tobacco Use 2012/13: New Zealand Health Survey"
+      },
+      {
+        "id": "43758f86-44c3-401a-892a-f0ab032f3fed",
+        "metadata_modified": "2025-06-26T02:32:10.865811",
+        "name": "tatau-kahukura-maori-health-chart-book-2015-3rd-edition",
+        "resource_count": 3,
+        "title": "Tatau Kahukura: Māori Health Chart Book 2015, 3rd edition"
+      },
+      {
+        "id": "060a8116-577c-43a1-a43f-11751fe1cb07",
+        "metadata_modified": "2025-06-26T01:57:20.166557",
+        "name": "certified-health-care-providers",
+        "resource_count": 4,
+        "title": "Certified health care providers"
+      },
+      {
+        "id": "c826888f-b6ce-49ae-b90a-59c01ced977c",
+        "metadata_modified": "2025-06-25T23:41:40.630028",
+        "name": "gambling-harm-intervention-services-data",
+        "resource_count": 9,
+        "title": "Gambling harm intervention services data"
+      }
+    ],
+    "organization": "ministry-of-health",
+    "organization_sha256": "68228f30afef447a5366497e1662c51ba8973778516652ac62932c2c1101d448",
+    "pages": [
+      {
+        "count": 28,
+        "observed_at": "2026-08-01T11:15:23.027135+00:00",
+        "returned": 28,
+        "sha256": "4b2825ba95569d9c028447e70d630c8f3114a22b6ac8114436c2ec41b58653c1",
+        "start": 0
+      }
+    ],
+    "resource_count": 158
+  }
+}
