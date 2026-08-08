@@ -1,5 +1,12 @@
 # Run log
 
+## 2026-08-08 — bounded handoff
+
+Discovery evidence is stable at 28 datasets and 158 resources. The receipt was
+handed to `health_payload_capture_20260802` for resource-level rights and
+sensitivity classification. No payload download or publication authorization
+was granted.
+
 ## 2026-08-01 — metadata-only discovery
 
 - Ran `tools/discover_moh_metadata.py` against the official HTTPS CKAN catalogue.
