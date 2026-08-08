@@ -29,6 +29,36 @@ Status: approved for track initialization
 - No remote repository or publication state is yet verified.
 - Preservation-standard conformance remains an evaluation task.
 
+## 2026-08-08 implementation review
+
+### Summary
+
+Core automated assurance is green, but Track 1 is not complete or archive-ready.
+
+### Verification checks
+
+- Plan compliance: **Partial** — streaming bounds, ledger persistence,
+  manifest receipts, complete capture, reconciliation, and checkpoints remain
+  incomplete.
+- Style compliance: **Pass** — Ruff and Pyright pass.
+- Tests: **Pass** — 243 tests passed.
+- Coverage: **Pass** — 95.54% total branch coverage.
+- Schema validation: **Pass** — 12 schemas and 2 representative documents.
+
+### Findings
+
+- **High:** Track completion cannot be claimed while capture and operational
+  ledger tasks remain incomplete.
+- **Medium:** The full `tools/check.py` gate timed out; supply-chain and other
+  long-running stages require a separate bounded run.
+- **External:** Rights, source access, credentials, and publication remain
+  explicit gates.
+
+### Review decision
+
+Do not archive or mark complete. Preserve the active track and continue the
+remaining implementation tasks with evidence-first checkpoints.
+
 ## Task self-review: Establish GitHub and Conductor traceability
 
 - Repository owner, name, visibility, default branch, and remote were read back.
