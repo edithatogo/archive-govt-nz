@@ -65,7 +65,10 @@ Runner = Callable[[tuple[str, ...]], int]
 
 def run_command(command: tuple[str, ...]) -> int:
     """Run one stage without a shell and return its process status."""
-    return subprocess.run(command, check=False).returncode
+    try:
+        return subprocess.run(command, check=False, timeout=180).returncode
+    except subprocess.TimeoutExpired:
+        return 124
 
 
 def run_stages(
