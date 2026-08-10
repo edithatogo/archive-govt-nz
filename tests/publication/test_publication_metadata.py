@@ -22,3 +22,12 @@ def test_metadata_previews_share_nonpublication_state() -> None:
     assert "not published" in card
     assert zenodo["publication_state"] == "prepared-not-published"
     assert zenodo["doi_authorized"] is False
+    assert zenodo["publication_receipts"]["hugging_face"]["publication_state"] in {
+        "not_verified",
+        "uploaded-remotely-verified",
+    }
+    assert zenodo["publication_receipts"]["zenodo"]["state"] in {"draft", "published"}
+    assert zenodo["rights"]["dataset_rights_state"]
+    assert zenodo["resource_summary"]["counts"]
+    assert zenodo["resource_summary"]["stage_counts"]
+    assert "resource_summary" in card
