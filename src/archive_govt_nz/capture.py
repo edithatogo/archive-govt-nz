@@ -197,14 +197,31 @@ async def capture_url(  # noqa: PLR0915, PLR0912
                     )
                     raise CaptureError("validator_mismatch", tuple(attempt_receipts))
 
-                async def chunks():
+                attempt_url = current_url
+
+                async def chunks(bound_url: str = attempt_url):
                     total = 0
+                    encoded = response.headers.get("content-encoding", "").lower()
+                    decompression_bound = encoded not in {"", "identity"}
                     async for chunk in response.aiter_bytes(config.chunk_bytes):
                         if monotonic() - started >= max_duration:
                             raise CaptureError("timeout", tuple(attempt_receipts))
                         total += len(chunk)
                         if total > config.max_bytes:
-                            raise CaptureError("size_limit")
+                            error_class = (
+                                "decompression_limit"
+                                if decompression_bound
+                                else "size_limit"
+                            )
+                            attempt_receipts.append(
+                                CaptureAttempt(
+                                    redact_url(bound_url),
+                                    response.status_code,
+                                    error_class,
+                                    monotonic() - started,
+                                )
+                            )
+                            raise CaptureError(error_class, tuple(attempt_receipts))
                         yield chunk
 
                 temporary: Path | None = None

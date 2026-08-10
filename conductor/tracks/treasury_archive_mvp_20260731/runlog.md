@@ -919,4 +919,6 @@
   produce redacted `storage_failed` receipts.
 - Material WARC bodies are capped by `CaptureConfig.max_warc_bytes`; larger
   payloads remain archived while WARC emission is explicitly omitted.
-- Capture contracts passed: 8 focused tests; Ruff and strict Pyright passed.
+- Decoded compressed streams now fail closed as `decompression_limit` when the
+  post-decompression byte bound is exceeded.
+- Capture contracts passed: 9 focused tests; Ruff and strict Pyright passed.

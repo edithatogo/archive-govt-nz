@@ -586,5 +586,5 @@ Receipt: `evidence/phase-5-layer-reconciliation.json` and `.md`.
 | Async safety | passed | Blocking promotion and WARC I/O are delegated off the event loop |
 | Storage failures | passed | Object-store/temporary-file failures emit `storage_failed` receipts |
 | WARC bound | passed | `max_warc_bytes` prevents unbounded WARC body buffering; payload capture remains separate |
-| Capture contracts | passed | 8 focused tests; Ruff and strict Pyright passed |
-| Remaining bounds | open | Transport decompression ratio and authorized payload transfer remain external follow-up gates |
+| Capture contracts | passed | 9 focused tests; Ruff and strict Pyright passed |
+| Remaining bounds | open | Compression-ratio telemetry and authorized payload transfer remain external follow-up gates |

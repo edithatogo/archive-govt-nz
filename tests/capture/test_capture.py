@@ -1,5 +1,6 @@
 """Bounded streaming capture contracts."""
 
+import gzip
 from pathlib import Path
 
 import httpx
@@ -41,6 +42,26 @@ async def test_capture_rejects_declared_oversize(tmp_path: Path) -> None:
                 CaptureConfig(max_bytes=10),
             )
     assert raised.value.error_class == "size_limit"
+
+
+@pytest.mark.anyio
+async def test_capture_bounds_decoded_compressed_payload(tmp_path: Path) -> None:
+    async def handler(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(
+            200,
+            headers={"content-encoding": "gzip", "content-length": "1"},
+            content=gzip.compress(b"expanded"),
+        )
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+        with pytest.raises(CaptureError) as raised:
+            await capture_url(
+                client,
+                "https://example.test/compressed",
+                ContentAddressedStore(tmp_path),
+                CaptureConfig(max_bytes=2),
+            )
+    assert raised.value.error_class == "decompression_limit"
 
 
 @pytest.mark.anyio
