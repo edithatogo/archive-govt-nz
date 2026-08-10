@@ -772,3 +772,14 @@
   consumer use case exists.
 - Updated the plan only for evidence-backed ledger and next-track tasks; the
   final clean-environment checkpoint and externally gated capture remain open.
+
+### 2026-08-10 — Phase 3 object-store assurance slice
+
+- Added negative-path contracts for invalid chunks, inconsistent deduplication
+  receipts, missing objects, and unreadable objects.
+- Focused object-store gate passed: 10 tests, 100% line and branch coverage
+  for `object_store.py`.
+- Schema and policy/object focused gates passed: 77 tests and 12 schemas.
+- The aggregate mutation invocation exceeded the bounded tool window before a
+  receipt was emitted; the prior recorded 8/8 policy mutant receipt remains
+  evidence, but no new mutation claim is made from the timed-out invocation.

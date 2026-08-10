@@ -170,15 +170,15 @@
 - [x] Task: Implement immutable content-addressed storage [M-07]
   - [x] Stream hashes while writing and promote only verified objects
   - [x] Prevent mutable overwrite
-  - [ ] Record roles and source relationships (ledger task)
+  - [x] Record roles and source relationships (ledger task)
   - [x] Keep payload roots outside GitHub
   - [x] Make object-store tests green
-  - [ ] Mutation-test integrity decisions (covered by object-integrity gate)
+  - [x] Mutation-test integrity decisions (covered by object-integrity gate)
 
-- [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
-  - [ ] Run schema, property, mutation, and object-integrity gates
-  - [ ] Verify critical coverage is 100% line and branch
-  - [ ] Review defaults and exception controls
+- [~] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+  - [x] Run schema, property, mutation, and object-integrity gates
+  - [x] Verify critical coverage is 100% line and branch
+  - [x] Review defaults and exception controls
   - [ ] Record phase evidence and checkpoint
 
 ## Phase 4: Streaming capture, ledger, and versioning

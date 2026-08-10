@@ -441,3 +441,13 @@ used because its Python 3.14 runtime path fails before mutation execution.
 | Must requirements blocked | M-06 |
 | Evidence | `evidence/phase-10-acceptance.json` |
 | Publication claim | No MVP-complete or complete-source-capture claim permitted |
+
+## Phase 3 object-store assurance slice - 2026-08-10
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Object-store negative paths | passed | Invalid chunks, inconsistent deduplication receipts, missing objects, and unreadable objects are classified fail-closed |
+| Critical object-store coverage | passed | 100% line and branch coverage; 10 focused tests |
+| Schema and policy/object gates | passed | 77 focused tests; 12 schemas and 2 representative documents validated |
+| Mutation receipt | prior evidence | Existing 8/8 policy mutants and 3/3 version mutants remain recorded; the current aggregate invocation timed out before emitting a new receipt |
+| Phase checkpoint | open | Checkpoint bookkeeping remains pending; no capture, rights, or publication gate was bypassed |
