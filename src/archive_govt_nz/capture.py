@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from collections.abc import AsyncIterable
 from dataclasses import dataclass
+from pathlib import Path
 from time import monotonic
 from urllib.parse import urljoin
 
@@ -11,6 +12,7 @@ import httpx
 
 from archive_govt_nz.ckan.redaction import redact_url
 from archive_govt_nz.object_store import ContentAddressedStore, ObjectStoreReceipt
+from archive_govt_nz.warc import WarcReceipt, write_response_record
 
 
 class CaptureError(RuntimeError):
@@ -67,6 +69,7 @@ class CaptureResult:
     status_code: int
     content_type: str | None
     receipt: ObjectStoreReceipt
+    warc_receipt: WarcReceipt | None = None
     attempts: int = 1
     redirects: int = 0
     elapsed_seconds: float = 0.0
@@ -78,6 +81,8 @@ async def capture_url(  # noqa: PLR0915, PLR0912
     url: str,
     store: ContentAddressedStore,
     config: CaptureConfig = CaptureConfig(),
+    *,
+    transaction_warc_path: Path | None = None,
 ) -> CaptureResult:
     """Stream one URL, enforcing status, length, and byte limits."""
     current_url = url
@@ -195,7 +200,19 @@ async def capture_url(  # noqa: PLR0915, PLR0912
                             raise CaptureError("size_limit")
                         yield chunk
 
-                receipt = store.put_stream(await _collect(chunks()))
+                payload_chunks = await _collect(chunks())
+                receipt = store.put_stream(payload_chunks)
+                warc_receipt = None
+                if transaction_warc_path is not None:
+                    warc_receipt = write_response_record(
+                        transaction_warc_path,
+                        url=current_url,
+                        status_code=response.status_code,
+                        headers=(
+                            {k: str(v) for k, v in dict(response.headers).items()}
+                        ),
+                        body=b"".join(payload_chunks),
+                    )
                 attempt_receipts.append(
                     CaptureAttempt(
                         redact_url(current_url),
@@ -209,6 +226,7 @@ async def capture_url(  # noqa: PLR0915, PLR0912
                     response.status_code,
                     response.headers.get("content-type"),
                     receipt,
+                    warc_receipt,
                     redirect_count + 1,
                     redirect_count,
                     monotonic() - started,
