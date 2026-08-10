@@ -279,7 +279,7 @@
 
 - [x] Task: Generate the paired evidence ledger [M-13]
   - [x] Produce machine-readable stage records and Markdown summaries
-  - [ ] Reconcile raw, ledger, manifest, and derivative counts
+  - [x] Reconcile raw, ledger, manifest, and derivative counts
   - [x] Test that every discovered resource has an outcome (fixture scope)
 
 - [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)

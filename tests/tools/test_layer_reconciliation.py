@@ -14,11 +14,24 @@ def test_layer_counts_reconcile_without_claiming_complete_capture() -> None:
         raw_count=7,
         captured_count=12,
         derivative_count=3,
+        ledger_counts={
+            "observations": 91,
+            "attempts": 91,
+            "objects": 12,
+            "versions": 91,
+        },
+        expected_ledger_counts={
+            "observations": 91,
+            "attempts": 91,
+            "objects": 12,
+            "versions": 91,
+        },
     )
 
     assert result["status"] == "reconciled"
     assert all(result["checks"].values())
     assert "complete source capture" in result["limitations"][0]
+    assert all(result["ledger"]["checks"].values())
 
 
 def test_layer_count_drift_is_a_discrepancy() -> None:

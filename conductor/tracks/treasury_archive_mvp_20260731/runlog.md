@@ -801,6 +801,15 @@
 - Added disappearance and policy-change tombstone contracts.
 - Versioning contracts passed: 3 tests; Ruff and strict Pyright passed.
 
+### 2026-08-10 — durable Treasury ledger materialization
+
+- Built `build/treasury-ledger.sqlite` from the existing 91-resource capture
+  plan and 12-object capture receipt without network access.
+- Ledger counts reconcile: 91 observations, 91 attempts, 91 versions, and 12
+  captured objects.
+- Layer reconciliation now includes the durable ledger and passes across raw,
+  ledger, manifest, and derivative counts.
+
 ### 2026-08-10 — Phase 5 layer-count reconciliation
 
 - Added executable reconciliation across release-manifest, raw CKAN,

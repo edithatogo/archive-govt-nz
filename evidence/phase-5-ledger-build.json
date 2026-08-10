@@ -1,0 +1,11 @@
+{
+  "schema_version": "archive-govt-nz.ledger-build/v1",
+  "ledger": "build/treasury-ledger.sqlite",
+  "counts": {
+    "observations": 91,
+    "attempts": 91,
+    "objects": 12,
+    "versions": 91
+  },
+  "publication": "not attempted"
+}
