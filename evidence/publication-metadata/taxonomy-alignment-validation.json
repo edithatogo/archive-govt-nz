@@ -1,0 +1,64 @@
+{
+  "schema_version": "archive-govt-nz.treasury-taxonomy-alignment/v1",
+  "status": "validation-blocked",
+  "catalogue_scope": {
+    "source": "data.govt.nz CKAN (The Treasury)",
+    "organization_slug": "the-treasury",
+    "dataset_count": 54,
+    "source_type": "government-fiscal-open-data",
+    "temporal_coverage": {
+      "from": "2021-07-01",
+      "to": "2026-06-30",
+      "source": "phase-10 capture window"
+    },
+    "spatial_coverage": "New Zealand",
+    "license_observed": "CC-BY-4.0",
+    "access": "restricted-by-resource-exception-review"
+  },
+  "target_platforms": {
+    "hugging_face": {
+      "namespace": "edithatogo",
+      "dataset_slug": "archive-govt-nz-treasury",
+      "planned_collection": "not-set",
+      "candidate_dataset_slug": "archive-govt-nz-treasury"
+    },
+    "zenodo": {
+      "collection": "not-set",
+      "record_owner": "not-set"
+    }
+  },
+  "source_dataset_mapping": [
+    {
+      "dataset_slug": "archive-govt-nz-treasury",
+      "roles": [
+        "source-metadata",
+        "source-resource",
+        "derivative",
+        "validation-evidence"
+      ],
+      "ckan_id_hint": "0641a23e-5741-45d6-bd4f-1b41fcabe381",
+      "hf_id_hint": "edithatogo/archive-govt-nz-treasury"
+    }
+  ],
+  "validation": {
+    "collection_membership": {
+      "status": "blocked",
+      "reason": "collection membership still requires estate registry decision",
+      "evidence": [
+        "evidence/publication-metadata/hf-estate-observation.json",
+        "evidence/phase-8-hf-publication-verification.json"
+      ]
+    },
+    "rights_and_access": {
+      "status": "blocked",
+      "reason": "resource-level rights exceptions and publication permissions remain pending",
+      "evidence": [
+        "evidence/phase-6-rights-classification.json"
+      ]
+    }
+  },
+  "next_required_actions": [
+    "Confirm Hugging Face collection membership in estate registry",
+    "Resolve resource-level rights exceptions and update access posture"
+  ]
+}

@@ -31,3 +31,30 @@ def test_metadata_previews_share_nonpublication_state() -> None:
     assert zenodo["resource_summary"]["counts"]
     assert zenodo["resource_summary"]["stage_counts"]
     assert "resource_summary" in card
+
+
+def test_taxonomy_alignment_validation_file_is_machine_readable() -> None:
+    """Canonical taxonomy alignment evidence remains explicit before publish."""
+    root = Path(__file__).parents[2]
+    taxonomy = json.loads(
+        (root / "evidence/publication-metadata/taxonomy.json").read_text()
+    )
+    taxonomy_validation = json.loads(
+        (
+            root / "evidence/publication-metadata/taxonomy-alignment-validation.json"
+        ).read_text()
+    )
+
+    assert taxonomy["schema_version"] == "archive-govt-nz.publication-taxonomy/v1"
+    assert taxonomy["namespace"]["huggingface"] == "edithatogo"
+    assert taxonomy["namespace"]["ckan"] == "the-treasury"
+    assert taxonomy["domain"]["discipline"] == "government-data"
+    assert "alignment_validations" in taxonomy
+    assert taxonomy_validation["status"] == "validation-blocked"
+    assert (
+        taxonomy_validation["validation"]["collection_membership"]["status"]
+        == "blocked"
+    )
+    assert taxonomy_validation["validation"]["rights_and_access"]["status"] == "blocked"
+    assert taxonomy_validation["validation"]["collection_membership"]["evidence"]
+    assert taxonomy_validation["validation"]["rights_and_access"]["evidence"]

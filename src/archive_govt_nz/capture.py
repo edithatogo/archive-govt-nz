@@ -9,14 +9,18 @@ from urllib.parse import urljoin
 
 import httpx
 
+from archive_govt_nz.ckan.redaction import redact_url
 from archive_govt_nz.object_store import ContentAddressedStore, ObjectStoreReceipt
 
 
 class CaptureError(RuntimeError):
     """Fail-closed capture outcome with a stable class."""
 
-    def __init__(self, error_class: str) -> None:
+    def __init__(
+        self, error_class: str, attempts: tuple[CaptureAttempt, ...] = ()
+    ) -> None:
         self.error_class = error_class
+        self.attempts = attempts
         super().__init__(error_class)
 
 
@@ -46,6 +50,16 @@ class CaptureConfig:
 
 
 @dataclass(frozen=True, slots=True)
+class CaptureAttempt:
+    """Redacted deterministic receipt for one bounded HTTP attempt."""
+
+    url: str
+    status_code: int | None
+    outcome: str
+    elapsed_seconds: float
+
+
+@dataclass(frozen=True, slots=True)
 class CaptureResult:
     """Bounded response evidence and the promoted immutable object."""
 
@@ -56,9 +70,10 @@ class CaptureResult:
     attempts: int = 1
     redirects: int = 0
     elapsed_seconds: float = 0.0
+    attempt_receipts: tuple[CaptureAttempt, ...] = ()
 
 
-async def capture_url(
+async def capture_url(  # noqa: PLR0915
     client: httpx.AsyncClient,
     url: str,
     store: ContentAddressedStore,
@@ -67,10 +82,11 @@ async def capture_url(
     """Stream one URL, enforcing status, length, and byte limits."""
     current_url = url
     started = monotonic()
+    attempt_receipts: list[CaptureAttempt] = []
     max_duration = config.max_duration_seconds or config.timeout_seconds
     for redirect_count in range(config.max_redirects + 1):
         if monotonic() - started >= max_duration:
-            raise CaptureError("timeout")
+            raise CaptureError("timeout", tuple(attempt_receipts))
         try:
             async with client.stream(
                 "GET",
@@ -81,39 +97,103 @@ async def capture_url(
                 if response.is_redirect:
                     location = response.headers.get("location")
                     if location is None or redirect_count >= config.max_redirects:
-                        raise CaptureError("redirect_limit")
+                        attempt_receipts.append(
+                            CaptureAttempt(
+                                redact_url(current_url),
+                                response.status_code,
+                                "redirect_limit",
+                                monotonic() - started,
+                            )
+                        )
+                        raise CaptureError("redirect_limit", tuple(attempt_receipts))
+                    attempt_receipts.append(
+                        CaptureAttempt(
+                            redact_url(current_url),
+                            response.status_code,
+                            "redirect",
+                            monotonic() - started,
+                        )
+                    )
                     current_url = urljoin(current_url, location)
                     continue
                 if response.status_code in {429, 500, 502, 503, 504}:
-                    raise CaptureError("retryable_status")
+                    attempt_receipts.append(
+                        CaptureAttempt(
+                            redact_url(current_url),
+                            response.status_code,
+                            "retryable_status",
+                            monotonic() - started,
+                        )
+                    )
+                    raise CaptureError("retryable_status", tuple(attempt_receipts))
                 if response.status_code >= 400:
-                    raise CaptureError("terminal_status")
+                    attempt_receipts.append(
+                        CaptureAttempt(
+                            redact_url(current_url),
+                            response.status_code,
+                            "terminal_status",
+                            monotonic() - started,
+                        )
+                    )
+                    raise CaptureError("terminal_status", tuple(attempt_receipts))
                 length = response.headers.get("content-length")
                 if length is not None and int(length) > config.max_bytes:
-                    raise CaptureError("size_limit")
+                    attempt_receipts.append(
+                        CaptureAttempt(
+                            redact_url(current_url),
+                            response.status_code,
+                            "size_limit",
+                            monotonic() - started,
+                        )
+                    )
+                    raise CaptureError("size_limit", tuple(attempt_receipts))
                 if (
                     config.expected_etag is not None
                     and response.headers.get("etag") != config.expected_etag
                 ):
-                    raise CaptureError("validator_mismatch")
+                    attempt_receipts.append(
+                        CaptureAttempt(
+                            redact_url(current_url),
+                            response.status_code,
+                            "validator_mismatch",
+                            monotonic() - started,
+                        )
+                    )
+                    raise CaptureError("validator_mismatch", tuple(attempt_receipts))
                 if (
                     config.expected_last_modified is not None
                     and response.headers.get("last-modified")
                     != config.expected_last_modified
                 ):
-                    raise CaptureError("validator_mismatch")
+                    attempt_receipts.append(
+                        CaptureAttempt(
+                            redact_url(current_url),
+                            response.status_code,
+                            "validator_mismatch",
+                            monotonic() - started,
+                        )
+                    )
+                    raise CaptureError("validator_mismatch", tuple(attempt_receipts))
 
                 async def chunks():
                     total = 0
                     async for chunk in response.aiter_bytes(config.chunk_bytes):
                         if monotonic() - started >= max_duration:
-                            raise CaptureError("timeout")
+                            raise CaptureError("timeout", tuple(attempt_receipts))
                         total += len(chunk)
                         if total > config.max_bytes:
                             raise CaptureError("size_limit")
                         yield chunk
 
                 receipt = store.put_stream(await _collect(chunks()))
+                attempt_receipts.append(
+                    CaptureAttempt(
+                        redact_url(current_url),
+                        response.status_code,
+                        "captured",
+                        monotonic() - started,
+                    )
+                )
                 return CaptureResult(
                     current_url,
                     response.status_code,
@@ -122,14 +202,31 @@ async def capture_url(
                     redirect_count + 1,
                     redirect_count,
                     monotonic() - started,
+                    tuple(attempt_receipts),
                 )
         except CaptureError:
             raise
         except httpx.TimeoutException, httpx.NetworkError:
-            raise CaptureError("transport_retryable") from None
+            attempt_receipts.append(
+                CaptureAttempt(
+                    redact_url(current_url),
+                    None,
+                    "transport_retryable",
+                    monotonic() - started,
+                )
+            )
+            raise CaptureError("transport_retryable", tuple(attempt_receipts)) from None
         except ValueError, httpx.HTTPError:
-            raise CaptureError("capture_failed") from None
-    raise CaptureError("redirect_limit")
+            attempt_receipts.append(
+                CaptureAttempt(
+                    redact_url(current_url),
+                    None,
+                    "capture_failed",
+                    monotonic() - started,
+                )
+            )
+            raise CaptureError("capture_failed", tuple(attempt_receipts)) from None
+    raise CaptureError("redirect_limit", tuple(attempt_receipts))
 
 
 async def _collect(chunks: AsyncIterable[bytes]) -> list[bytes]:

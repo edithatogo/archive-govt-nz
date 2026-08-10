@@ -24,6 +24,7 @@ async def test_capture_streams_to_object_store(tmp_path: Path) -> None:
     assert result.content_type == "text/csv"
     assert result.attempts == 1
     assert result.redirects == 0
+    assert [item.outcome for item in result.attempt_receipts] == ["captured"]
 
 
 @pytest.mark.anyio
@@ -58,6 +59,10 @@ async def test_capture_follows_bounded_redirects_and_validates(tmp_path: Path) -
         )
     assert result.url.endswith("/final")
     assert result.redirects == 1
+    assert [item.outcome for item in result.attempt_receipts] == [
+        "redirect",
+        "captured",
+    ]
 
 
 @pytest.mark.anyio
@@ -74,3 +79,23 @@ async def test_capture_rejects_redirect_loop(tmp_path: Path) -> None:
                 CaptureConfig(max_redirects=1),
             )
     assert raised.value.error_class == "redirect_limit"
+    assert raised.value.attempts[-1].outcome == "redirect_limit"
+
+
+@pytest.mark.anyio
+async def test_capture_error_receipt_redacts_transport_details(tmp_path: Path) -> None:
+    async def handler(request: httpx.Request) -> httpx.Response:
+        detail = "private transport detail"
+        raise httpx.ReadTimeout(detail, request=request)
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+        with pytest.raises(CaptureError) as raised:
+            await capture_url(
+                client,
+                "https://example.test/data?token=secret",
+                ContentAddressedStore(tmp_path),
+            )
+
+    assert raised.value.error_class == "transport_retryable"
+    assert "token=[REDACTED]" in raised.value.attempts[0].url
+    assert "private transport detail" not in str(raised.value)
