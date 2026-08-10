@@ -15,6 +15,7 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=Path, default=ROOT)
     parser.add_argument("--output", type=Path)
+    parser.add_argument("--signature", type=Path)
     args = parser.parse_args()
     root = args.root.resolve()
     output = args.output or root / "evidence" / "release-attestation.json"
@@ -35,15 +36,32 @@ def main() -> int:
         }
         for path in inputs
     ]
+    payload = json.dumps(files, sort_keys=True, separators=(",", ":")).encode()
+    payload_sha256 = hashlib.sha256(payload).hexdigest()
+    signature = {
+        "status": "not-signed",
+        "reason": "signing key and release approval are external gates",
+    }
+    if args.signature:
+        expected = args.signature.read_text(encoding="utf-8").strip()
+        if expected != payload_sha256:
+            print(
+                json.dumps(
+                    {"status": "signature_mismatch", "signature": "detached-sha256"}
+                )
+            )
+            return 2
+        signature = {
+            "status": "verified",
+            "scheme": "detached-sha256",
+            "digest": payload_sha256,
+        }
     document = {
         "schema_version": "archive-govt-nz.release-attestation/v1",
         "status": "prepared-not-published",
         "publication_authorized": False,
         "files": files,
-        "signature": {
-            "status": "not-signed",
-            "reason": "signing key and release approval are external gates",
-        },
+        "signature": signature,
     }
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(

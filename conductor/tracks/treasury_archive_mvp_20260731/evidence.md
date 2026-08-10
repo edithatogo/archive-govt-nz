@@ -514,6 +514,14 @@ transfer: 0 eligible, 74 terminal, and 17 restricted.
 | Source-rate budget | passed | Positive requests-per-second interval limiter |
 | Resumability | passed | Atomic checkpoint and completed-resource skip contracts |
 
+## Attestation verification hardening - 2026-08-10
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Detached digest verification | passed | Optional SHA-256 digest mismatch fails closed |
+| Cryptographic signing | external gate | No signing key or release approval is present |
+| Publication safety | preserved | Verification does not authorize publication |
+
 ## Phase 5 layer-count reconciliation - 2026-08-10
 
 | Layer | Manifest | Observed | State |
