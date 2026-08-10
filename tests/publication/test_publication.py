@@ -1,5 +1,6 @@
 """Credential-safe publication contract tests."""
 
+import json
 from pathlib import Path
 
 import pytest
@@ -34,3 +35,28 @@ def test_enabled_publication_fails_closed_without_credential(
             PublicationConfig("huggingface", "repo", enabled=True), [artifact]
         )
     assert raised.value.error_class == "credential_missing"
+
+
+def test_zenodo_release_is_reconciled_before_claimed_ready() -> None:
+    """Issue #10: finalize Zenodo evidence only when release is reconciled."""
+    root = Path(__file__).parents[2]
+    phase_9 = json.loads(
+        (root / "evidence" / "phase-9-zenodo-publication.json").read_text()
+    )
+    phase_10 = json.loads(
+        (
+            root
+            / "conductor"
+            / "tracks"
+            / "treasury_archive_mvp_20260731"
+            / "evidence"
+            / "phase-10-final-reconciliation.json"
+        ).read_text()
+    )
+
+    assert phase_10["status"] == "reconciled"
+    assert phase_10["checks"]["release_reconciled"] is True
+    assert phase_10["publication"]["zenodo"] == phase_9["doi"]
+    assert phase_9["state"] == "published"
+    assert phase_9["record_url"].startswith("https://zenodo.org/records/")
+    assert phase_9["viewer_state"]
