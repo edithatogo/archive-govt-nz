@@ -1,0 +1,30 @@
+{
+  "schema_version": "archive-govt-nz.phase-checkpoint/v1",
+  "phase": "phase-5-provenance-derivatives-preservation",
+  "status": "passed-with-limitations",
+  "gates": {
+    "provenance_derivative_warc_preservation": {
+      "tests": 23,
+      "status": "passed"
+    },
+    "layer_reconciliation": {
+      "receipt": "evidence/phase-5-layer-reconciliation.json",
+      "status": "reconciled"
+    },
+    "bounded_recovery": {
+      "tests": 12,
+      "object_integrity": "12/12 verified",
+      "status": "passed"
+    },
+    "preservation_review": {
+      "receipt": "evidence/preservation-packaging-evaluation.json",
+      "status": "bounded-adoption-decision"
+    }
+  },
+  "limitations": [
+    "No complete source-capture claim is made.",
+    "Restricted and unavailable resources remain policy-controlled.",
+    "Live WARC coverage remains limited to material captured fixtures.",
+    "The release candidate is prepared-not-published."
+  ]
+}

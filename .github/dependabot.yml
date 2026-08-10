@@ -1,0 +1,26 @@
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+      time: "03:15"
+    open-pull-requests-limit: 5
+    target-branch: "main"
+
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+      time: "03:30"
+    open-pull-requests-limit: 5
+    target-branch: "main"
+    groups:
+      patch-updates:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
