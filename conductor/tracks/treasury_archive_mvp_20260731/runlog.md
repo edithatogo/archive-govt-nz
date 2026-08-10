@@ -801,6 +801,21 @@
 - Added disappearance and policy-change tombstone contracts.
 - Versioning contracts passed: 3 tests; Ruff and strict Pyright passed.
 
+### 2026-08-10 — manifest receipts and execution context
+
+- Extended deterministic provenance manifests with transformation, validation,
+  and publication receipt collections.
+- Added explicit software, environment/SBOM, parameter, rights, and limitation
+  context fields with stable receipt identifiers and deterministic ordering.
+- Provenance-focused contracts passed: 6 tests; Ruff and strict Pyright passed.
+
+### 2026-08-10 — preservation packaging adoption decision
+
+- Adopted RO-Crate metadata as a bounded provenance envelope, emit BagIt only
+  at release boundaries, and defer OCFL until corpus and conformance fixtures
+  justify adoption.
+- No unsupported conformance claim or release requirement was introduced.
+
 ### 2026-08-10 — bounded capture attempt receipts
 
 - Added typed, redacted attempt receipts for redirects, successful captures,
@@ -810,3 +825,11 @@
 - Existing byte, timeout, redirect, and validator bounds remain enforced.
 - Decompression, range, quarantine, and batch-level concurrency/storage
   evidence remain open and are not claimed complete.
+
+### 2026-08-10 — raw CKAN derivative boundary
+
+- Derivative preparation now writes a canonical `raw-ckan.json` alongside
+  normalized JSONL and Parquet outputs.
+- The raw layer is independently SHA-256 addressed in the derivative receipt;
+  unknown CKAN fields remain preserved in that original layer.
+- Derivative-focused tests, Ruff, and strict Pyright passed.

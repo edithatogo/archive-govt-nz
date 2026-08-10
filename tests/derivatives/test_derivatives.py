@@ -23,3 +23,6 @@ def test_derivatives_are_deterministic_and_duckdb_reconciled(tmp_path: Path) -> 
     assert first.transformation_version == "derivatives/v1"
     assert "unknown_ckan_fields_not_projected" in first.information_loss
     assert first.parquet_path.read_bytes() == second.parquet_path.read_bytes()
+    assert first.raw_ckan_path.read_bytes() == second.raw_ckan_path.read_bytes()
+    assert b'"unknown"' in first.raw_ckan_path.read_bytes()
+    assert len(first.raw_ckan_sha256) == 64

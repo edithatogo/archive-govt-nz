@@ -245,8 +245,8 @@
 
 - [~] Task: Implement versioned manifests and receipts [M-10, M-13]
   - [x] Produce closed observation, object, version, and derivative manifests
-  - [ ] Produce transformation, validation, and publication receipts
-  - [ ] Link software, environment, parameters, rights, and limitations
+  - [x] Produce transformation, validation, and publication receipts
+  - [x] Link software, environment, parameters, rights, and limitations
   - [x] Validate deterministic serialization and relationships
   - [x] Make manifest tests green
 
@@ -258,7 +258,7 @@
   - [x] Run and record the expected red phase
 
 - [~] Task: Implement core interoperable derivatives [M-11]
-  - [ ] Preserve raw CKAN JSON (capture boundary)
+  - [x] Preserve raw CKAN JSON (capture boundary)
   - [x] Generate normalized JSONL and typed Parquet
   - [x] Record transformation versions and information loss
   - [x] Reconcile derivatives with DuckDB
@@ -275,7 +275,7 @@
   - [x] Create bounded evaluation scope for Treasury-derived fixtures
   - [x] Evaluate OCFL, RO-Crate, and BagIt
   - [x] Record tooling, security, benefits, gaps, and maintenance
-  - [ ] Produce adoption decisions without unsupported conformance claims
+  - [x] Produce adoption decisions without unsupported conformance claims
 
 - [x] Task: Generate the paired evidence ledger [M-13]
   - [x] Produce machine-readable stage records and Markdown summaries

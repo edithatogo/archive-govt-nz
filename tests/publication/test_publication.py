@@ -36,7 +36,6 @@ def test_enabled_publication_fails_closed_without_credential(
         )
     assert raised.value.error_class == "credential_missing"
 
-
 def test_zenodo_release_is_reconciled_before_claimed_ready() -> None:
     """Issue #10: finalize Zenodo evidence only when release is reconciled."""
     root = Path(__file__).parents[2]
@@ -60,3 +59,26 @@ def test_zenodo_release_is_reconciled_before_claimed_ready() -> None:
     assert phase_9["state"] == "published"
     assert phase_9["record_url"].startswith("https://zenodo.org/records/")
     assert phase_9["viewer_state"]
+
+
+def test_huggingface_publication_receipt_remains_explicit() -> None:
+    """Issue #9: keep rolling Hugging Face publication receipts and limits explicit."""
+    root = Path(__file__).parents[2]
+    phase_8 = json.loads(
+        (root / "evidence" / "phase-8-hf-publication-verification.json").read_text()
+    )
+    phase_10 = json.loads(
+        (
+            root
+            / "conductor"
+            / "tracks"
+            / "treasury_archive_mvp_20260731"
+            / "evidence"
+            / "phase-10-final-reconciliation.json"
+        ).read_text()
+    )
+    assert phase_8["publication_state"] == "uploaded-remotely-verified"
+    assert phase_8["viewer_status"] == "verified-recovered-2026-08-01"
+    assert phase_8["collection_membership"] == "not-set"
+    assert phase_10["publication"]["huggingface_revision"] == phase_8["revision"]
+    assert phase_10["publication"]["huggingface_revision"] is not None

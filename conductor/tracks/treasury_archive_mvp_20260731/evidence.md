@@ -470,7 +470,26 @@ used because its Python 3.14 runtime path fails before mutation execution.
 | Policy-change tombstone | passed | Explicit `policy_changed` reason and preserved previous fingerprint |
 | Static assurance | passed | Ruff and strict Pyright passed for ledger/versioning contracts |
 
-## Bounded capture attempt receipts - 2026-08-10
+## Manifest receipts and execution context - 2026-08-10
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Transformation receipts | passed | Stable receipt IDs and deterministic ordering |
+| Validation receipts | passed | Validation outcomes remain distinct from publication state |
+| Publication receipts | passed | Prepared/remote states remain evidence fields, not implicit side effects |
+| Execution context | passed | Software, environment/SBOM, parameters, rights, and limitations are preserved |
+| Provenance contracts | passed | 6 focused tests; Ruff and strict Pyright passed |
+
+## 2026-08-10 — Preservation packaging adoption decision
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| RO-Crate | adopted bounded profile | Provenance envelope only; immutable object and manifest references required |
+| BagIt | release-boundary profile | Payload manifests must verify before Zenodo upload |
+| OCFL | deferred | Requires representative corpus, conformance fixtures, and workload evidence |
+| Conformance claims | bounded | No unsupported full-standard conformance claim made |
+
+## 2026-08-10 — Bounded capture attempt receipts
 
 | Evidence | State | Detail |
 | --- | --- | --- |
@@ -478,3 +497,12 @@ used because its Python 3.14 runtime path fails before mutation execution.
 | Capture contracts | passed | 12 focused tests |
 | Sensitive URL handling | passed | Query credentials are redacted in receipts |
 | Remaining bounds | open | Decompression, ranges, quarantine, and batch-level concurrency/storage evidence remain pending |
+
+## Raw CKAN derivative boundary - 2026-08-10
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Raw CKAN JSON | passed | Canonical `raw-ckan.json` emitted before normalized projections |
+| Raw integrity | passed | Independent SHA-256 recorded in `DerivativeReceipt` |
+| Information-loss boundary | passed | Unknown fields remain in raw layer and are listed as non-projected in derivatives |
+| Derivative contracts | passed | Focused tests, Ruff, and strict Pyright passed |
