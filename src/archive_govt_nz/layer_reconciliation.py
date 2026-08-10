@@ -18,9 +18,7 @@ def reconcile_layer_counts(
         "captured_objects": captured_count,
         "derivatives": derivative_count,
     }
-    checks = {
-        key: manifest_counts.get(key) == value for key, value in observed.items()
-    }
+    checks = {key: manifest_counts.get(key) == value for key, value in observed.items()}
     return {
         "schema_version": "archive-govt-nz.layer-reconciliation/v1",
         "manifest": dict(manifest_counts),
