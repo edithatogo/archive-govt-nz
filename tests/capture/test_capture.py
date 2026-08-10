@@ -88,6 +88,42 @@ async def test_capture_rejects_partial_content_ranges(tmp_path: Path) -> None:
 
 
 @pytest.mark.anyio
+async def test_capture_writes_material_warc_receipt_when_requested(
+    tmp_path: Path,
+) -> None:
+    """Successful material captures can emit bounded WARC receipts when requested."""
+
+    async def handler(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(
+            200,
+            headers={
+                "content-type": "text/csv",
+                "etag": '"v1"',
+                "authorization": "Bearer secret",
+            },
+            content=b"a,b\n1,2\n",
+        )
+
+    warc_path = tmp_path / "capture.warc"
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+        result = await capture_url(
+            client,
+            "https://example.test/resource.csv?token=secret",
+            ContentAddressedStore(tmp_path / "objects"),
+            transaction_warc_path=warc_path,
+        )
+    assert result.warc_receipt is not None
+    assert result.warc_receipt.path == warc_path
+    text = warc_path.read_text(encoding="utf-8")
+    assert "WARC/1.1" in text
+    assert "token=[REDACTED]" not in text
+    assert "resource.csv" in text
+    assert "?token=" not in text
+    assert "Authorization" not in text
+    assert result.warc_receipt.byte_count == warc_path.stat().st_size
+
+
+@pytest.mark.anyio
 async def test_capture_rejects_redirect_loop(tmp_path: Path) -> None:
     async def handler(request: httpx.Request) -> httpx.Response:
         return httpx.Response(302, headers={"location": "/loop"})
