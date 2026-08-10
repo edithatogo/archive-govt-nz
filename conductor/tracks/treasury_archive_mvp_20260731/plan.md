@@ -275,7 +275,7 @@
   - [x] Create bounded evaluation scope for Treasury-derived fixtures
   - [x] Evaluate OCFL, RO-Crate, and BagIt
   - [x] Record tooling, security, benefits, gaps, and maintenance
-  - [ ] Produce adoption decisions without unsupported conformance claims
+  - [x] Produce adoption decisions without unsupported conformance claims
 
 - [x] Task: Generate the paired evidence ledger [M-13]
   - [x] Produce machine-readable stage records and Markdown summaries

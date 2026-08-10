@@ -801,6 +801,13 @@
 - Added disappearance and policy-change tombstone contracts.
 - Versioning contracts passed: 3 tests; Ruff and strict Pyright passed.
 
+### 2026-08-10 — preservation packaging adoption decision
+
+- Adopted RO-Crate metadata as a bounded provenance envelope, emit BagIt only
+  at release boundaries, and defer OCFL until corpus and conformance fixtures
+  justify adoption.
+- No unsupported conformance claim or release requirement was introduced.
+
 ### 2026-08-10 — bounded capture attempt receipts
 
 - Added typed, redacted attempt receipts for redirects, successful captures,
