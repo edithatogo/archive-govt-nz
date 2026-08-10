@@ -488,6 +488,16 @@ The durable ledger records 91 observations, 91 attempts, 91 versions, and 12
 captured objects. Combined raw, ledger, manifest, and derivative reconciliation
 passes without claiming complete source capture.
 
+## Phase 5 checkpoint closure - 2026-08-10
+
+| Gate | State | Evidence |
+| --- | --- | --- |
+| Provenance/derivative/WARC/preservation | passed | 23 focused tests |
+| Recovery/simulation | passed | 12 tests |
+| Object integrity | passed | 12/12 verified |
+| Checkpoint | recorded | `evidence/phase-5-checkpoint.json` and `.md` |
+| Scope | limited | No complete capture or restricted/publication authorization claim |
+
 ## Phase 5 layer-count reconciliation - 2026-08-10
 
 | Layer | Manifest | Observed | State |

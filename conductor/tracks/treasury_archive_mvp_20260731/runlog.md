@@ -810,6 +810,15 @@
 - Layer reconciliation now includes the durable ledger and passes across raw,
   ledger, manifest, and derivative counts.
 
+### 2026-08-10 — Phase 5 checkpoint closure
+
+- Provenance, derivative, WARC, preservation, and reconciliation gates passed:
+  23 focused tests.
+- Recovery and deterministic simulation gates passed: 12 tests.
+- Object integrity verified 12/12 captured objects.
+- Paired checkpoint receipts recorded in `evidence/phase-5-checkpoint.json`
+  and `.md`; limitations remain explicit.
+
 ### 2026-08-10 — Phase 5 layer-count reconciliation
 
 - Added executable reconciliation across release-manifest, raw CKAN,

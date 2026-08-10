@@ -282,11 +282,11 @@
   - [x] Reconcile raw, ledger, manifest, and derivative counts
   - [x] Test that every discovered resource has an outcome (fixture scope)
 
-- [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
-  - [ ] Run schema, provenance, derivative, WARC, and reconciliation gates
-  - [ ] Verify bounded reconstruction
-  - [ ] Review preservation claims
-  - [ ] Record phase evidence and checkpoint
+- [x] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+  - [x] Run schema, provenance, derivative, WARC, and reconciliation gates
+  - [x] Verify bounded reconstruction
+  - [x] Review preservation claims
+  - [x] Record phase evidence and checkpoint
 
 ## Phase 6: Complete Treasury capture and recovery proof
 
