@@ -73,7 +73,7 @@ class CaptureResult:
     attempt_receipts: tuple[CaptureAttempt, ...] = ()
 
 
-async def capture_url(  # noqa: PLR0915
+async def capture_url(  # noqa: PLR0915, PLR0912
     client: httpx.AsyncClient,
     url: str,
     store: ContentAddressedStore,
@@ -116,6 +116,16 @@ async def capture_url(  # noqa: PLR0915
                     )
                     current_url = urljoin(current_url, location)
                     continue
+                if response.status_code == 206:
+                    attempt_receipts.append(
+                        CaptureAttempt(
+                            redact_url(current_url),
+                            response.status_code,
+                            "unsupported_range",
+                            monotonic() - started,
+                        )
+                    )
+                    raise CaptureError("unsupported_range", tuple(attempt_receipts))
                 if response.status_code in {429, 500, 502, 503, 504}:
                     attempt_receipts.append(
                         CaptureAttempt(

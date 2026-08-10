@@ -186,7 +186,7 @@
 - [x] Task: Write failing streaming-capture tests [M-06]
   - [x] Test bounded response bytes and immutable promotion
   - [x] Test declared over-limit streams and retryable/terminal classification
-  - [ ] Test redirects, validators, ranges, quarantine, and redaction
+  - [x] Test redirects, validators, ranges, quarantine, and redaction
   - [x] Run and record the expected red phase
 
 - [~] Task: Implement bounded streaming capture [M-06, S-02]
