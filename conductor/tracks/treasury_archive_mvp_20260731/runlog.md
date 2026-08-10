@@ -939,3 +939,12 @@
   78 GET fallbacks returned 403 and one additional source remained unusable.
 - No HTTP, 403, or terminal source was promoted to capture eligibility without
   an independently eligible response.
+### 2026-08-11 — CKAN DataStore fallback assessment
+
+- Rechecked the existing CKAN probe receipt without transferring payloads.
+- 44 resources have a successful HTTPS `datastore_search` probe (42 originally
+  HTTP resources and two already-HTTPS restricted resources).
+- Added `tools/assess_ckan_datastore_recovery.py` and paired JSON/Markdown
+  evidence. This is a fallback candidate inventory only; it does not promote
+  API rows to captured payloads or waive format/rights validation.
+- Ruff and strict Pyright passed for the new tool.

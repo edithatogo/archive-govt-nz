@@ -1,0 +1,458 @@
+{
+  "schema_version": "archive-govt-nz.ckan-datastore-recovery/v1",
+  "generated_at": "2026-08-10T19:46:26.170324+00:00",
+  "probe_source": "build/live/secure-source-probe-ckan-20260801.json",
+  "body_transfer": false,
+  "policy": "DataStore API evidence is a fallback candidate, not automatic source promotion",
+  "resource_count": 44,
+  "counts": {
+    "reachable_datastore": 44
+  },
+  "resources": [
+    {
+      "resource_id": "0f69dd85-3a37-49f5-ba6c-428fd56ff2ca",
+      "source_url": "http://www.treasury.govt.nz/budget/2016/bps",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=0f69dd85-3a37-49f5-ba6c-428fd56ff2ca&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "164dd7be-f1ee-4981-8aef-1398bf7360e9",
+      "source_url": "http://www.treasury.govt.nz/budget/2016/data",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=164dd7be-f1ee-4981-8aef-1398bf7360e9&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "1bd87f07-d065-4660-8e45-764da7ea3f1e",
+      "source_url": "http://www.treasury.govt.nz/budget/2011/data",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=1bd87f07-d065-4660-8e45-764da7ea3f1e&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "1f1d59f5-5191-445e-aef9-cc9f2bfeb8db",
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/befu2015",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=1f1d59f5-5191-445e-aef9-cc9f2bfeb8db&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "25748899-1473-434b-9c0a-74958ed33c38",
+      "source_url": "http://www.treasury.govt.nz/statesector/performance/bass/benchmarking/2010-11",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=25748899-1473-434b-9c0a-74958ed33c38&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "29787155-f999-4862-b638-20bcea70e5c1",
+      "source_url": "http://www.treasury.govt.nz/government/data",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=29787155-f999-4862-b638-20bcea70e5c1&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "2b5b5365-6218-4314-bf26-d932070d36ab",
+      "source_url": "http://www.treasury.govt.nz/budget/2009/data",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=2b5b5365-6218-4314-bf26-d932070d36ab&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "2ca0c847-f3b5-4cc5-a7f3-d44cb80d7f92",
+      "source_url": "http://www.treasury.govt.nz/budget/2013/data",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=2ca0c847-f3b5-4cc5-a7f3-d44cb80d7f92&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "2f7cc72a-46a3-4db3-b369-de4d1c4f0dac",
+      "source_url": "http://www.treasury.govt.nz/budget/2016/fsr",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=2f7cc72a-46a3-4db3-b369-de4d1c4f0dac&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "322112b9-8071-4783-8a12-1a3cf3c27a3a",
+      "source_url": "http://www.treasury.govt.nz/budget/2011/data",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=322112b9-8071-4783-8a12-1a3cf3c27a3a&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "3379cc83-4ea5-477f-84d4-7e5195830e97",
+      "source_url": "https://treasury.govt.nz/publications/information-release/chief-executive-expenses-information-release",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=3379cc83-4ea5-477f-84d4-7e5195830e97&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "36b05f4b-4b97-405d-a656-30e59747c04a",
+      "source_url": "http://www.treasury.govt.nz/government/fiscalstrategy/model",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=36b05f4b-4b97-405d-a656-30e59747c04a&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "424bc348-7ce9-4bce-ada6-a3bf1a78a51d",
+      "source_url": "http://www.treasury.govt.nz/statesector/performance/bass/benchmarking/2008-10",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=424bc348-7ce9-4bce-ada6-a3bf1a78a51d&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "465bf214-62ff-46f6-8ebd-29a3aee17536",
+      "source_url": "http://www.treasury.govt.nz/budget/2013/data",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=465bf214-62ff-46f6-8ebd-29a3aee17536&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "49d397cb-4bdc-4bf7-b31b-2cc715bf23f9",
+      "source_url": "http://www.treasury.govt.nz/government/fiscalstrategy/model",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=49d397cb-4bdc-4bf7-b31b-2cc715bf23f9&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "4f4ac9fd-106e-4df8-9881-381202b7d842",
+      "source_url": "http://www.treasury.govt.nz/budget/2010/data",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=4f4ac9fd-106e-4df8-9881-381202b7d842&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "56f9adfa-68b2-46d6-8fe8-2ede877fae70",
+      "source_url": "http://www.treasury.govt.nz/publications/briefings/2011",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=56f9adfa-68b2-46d6-8fe8-2ede877fae70&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "57e960b7-efeb-46da-990c-b1b8adde03a9",
+      "source_url": "http://www.treasury.govt.nz/government/fiscalstrategy/model",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=57e960b7-efeb-46da-990c-b1b8adde03a9&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "606c5a38-9a0f-4d17-97b4-50911f9c5151",
+      "source_url": "http://www.treasury.govt.nz/budget/2012/data",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=606c5a38-9a0f-4d17-97b4-50911f9c5151&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "62b655ed-5ad0-4eea-9117-58233773ec10",
+      "source_url": "https://catalogue.data.govt.nz/dataset/0641a23e-5741-45d6-bd4f-1b41fcabe381/resource/62b655ed-5ad0-4eea-9117-58233773ec10/download/tsy-ceep-jul19-sep19.xlsx",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=62b655ed-5ad0-4eea-9117-58233773ec10&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "64b2d17b-43ad-412b-9c3d-7d29868a7895",
+      "source_url": "http://www.treasury.govt.nz/government/revenue/taxoutturn",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=64b2d17b-43ad-412b-9c3d-7d29868a7895&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "678ae89d-934d-4be6-aefc-4aeeaf446eab",
+      "source_url": "http://www.treasury.govt.nz/budget/2014/data",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=678ae89d-934d-4be6-aefc-4aeeaf446eab&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "710d2924-f94f-47a8-91a5-a71d15f31295",
+      "source_url": "http://www.treasury.govt.nz/budget/2015/fsr",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=710d2924-f94f-47a8-91a5-a71d15f31295&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "75fa2272-ad0c-4912-92ca-93ef5848c638",
+      "source_url": "http://www.treasury.govt.nz/economy/mei/archive",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=75fa2272-ad0c-4912-92ca-93ef5848c638&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "77c0d960-4657-47e1-89b4-7b68294cc237",
+      "source_url": "http://www.treasury.govt.nz/government/fiscalstrategy/model",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=77c0d960-4657-47e1-89b4-7b68294cc237&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "77c545d6-a379-41e3-aeac-82f6fa31ca85",
+      "source_url": "http://www.treasury.govt.nz/budget/2014/fsr",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=77c545d6-a379-41e3-aeac-82f6fa31ca85&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "8c8ae7bd-b708-4f64-8bca-357299782177",
+      "source_url": "http://www.treasury.govt.nz/budget/2015/data",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=8c8ae7bd-b708-4f64-8bca-357299782177&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "932cedeb-fe28-42b0-b07c-4ce8dcbc75dd",
+      "source_url": "http://www.treasury.govt.nz/government/fiscalstrategy/model",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=932cedeb-fe28-42b0-b07c-4ce8dcbc75dd&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "9a040505-ec80-4ebb-b094-f2e78d87e245",
+      "source_url": "http://www.treasury.govt.nz/budget/2010/data",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=9a040505-ec80-4ebb-b094-f2e78d87e245&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "9a4be4b0-14ad-4a0b-b3af-dde0c000d486",
+      "source_url": "http://www.treasury.govt.nz/statesector/performance/bass/benchmarking/2011-12",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=9a4be4b0-14ad-4a0b-b3af-dde0c000d486&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "9b4938a2-1bdf-43c9-8568-bb680f57f0d0",
+      "source_url": "http://www.treasury.govt.nz/government/revenue/taxoutturn",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=9b4938a2-1bdf-43c9-8568-bb680f57f0d0&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "a1f4ce15-a7f8-4d40-9a94-6df583681ee1",
+      "source_url": "http://www.treasury.govt.nz/government/financialstatements/monthend",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=a1f4ce15-a7f8-4d40-9a94-6df583681ee1&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "a360bfd6-2968-4f2b-9043-54ae120df424",
+      "source_url": "http://www.treasury.govt.nz/budget/2017/bps",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=a360bfd6-2968-4f2b-9043-54ae120df424&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "a90e9023-f0f8-47e1-a5a7-cab78f01b373",
+      "source_url": "http://www.treasury.govt.nz/government/fiscalstrategy/model",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=a90e9023-f0f8-47e1-a5a7-cab78f01b373&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "ab55249d-d7b8-4950-bc6d-567133e15a54",
+      "source_url": "http://www.treasury.govt.nz/budget/2009/data",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=ab55249d-d7b8-4950-bc6d-567133e15a54&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "bfa77487-55b7-4fa9-9f92-ffe536b656be",
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/befu2016",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=bfa77487-55b7-4fa9-9f92-ffe536b656be&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "d187ad59-d72e-4c7c-8b0c-5b35852502db",
+      "source_url": "http://www.treasury.govt.nz/government/longterm/fiscalmodel",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=d187ad59-d72e-4c7c-8b0c-5b35852502db&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "e722caf6-5335-4faa-9918-6f3b39216e11",
+      "source_url": "http://www.treasury.govt.nz/government/fiscalstrategy/model/archive",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=e722caf6-5335-4faa-9918-6f3b39216e11&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "ed656f3e-7a9d-4da1-acde-e79abdb383b7",
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/hyefu2015",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=ed656f3e-7a9d-4da1-acde-e79abdb383b7&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "f1d8a2e8-8f42-4a43-8c25-01b17f5fda1c",
+      "source_url": "http://www.treasury.govt.nz/government/fiscalstrategy/model",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=f1d8a2e8-8f42-4a43-8c25-01b17f5fda1c&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "f585d974-8cb8-43f4-a40c-6cd1583c2c16",
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/hyefu2016",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=f585d974-8cb8-43f4-a40c-6cd1583c2c16&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "f86b85e2-6d35-4a83-a2f8-04931ae00758",
+      "source_url": "http://www.treasury.govt.nz/budget/2012/data",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=f86b85e2-6d35-4a83-a2f8-04931ae00758&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "fa4be840-60cb-460c-bf1c-ab198438ceef",
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/hyefu2016",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=fa4be840-60cb-460c-bf1c-ab198438ceef&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    },
+    {
+      "resource_id": "ff9fd67e-785d-4c3c-b9ae-5a168ce49ff0",
+      "source_url": "http://www.treasury.govt.nz/government/revenue/taxoutturn",
+      "datastore_candidates": [
+        "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=ff9fd67e-785d-4c3c-b9ae-5a168ce49ff0&limit=0"
+      ],
+      "observed_status": "200",
+      "payload_transfer": false,
+      "next_step": "bounded_datastore_capture_after_format_and_rights_validation"
+    }
+  ],
+  "limitations": [
+    "The receipt proves API reachability only; it does not prove complete rows or rights.",
+    "A separate bounded API capture must paginate, hash, and preserve raw JSON responses.",
+    "Resources without a 200 DataStore probe remain tombstoned or restricted."
+  ]
+}
