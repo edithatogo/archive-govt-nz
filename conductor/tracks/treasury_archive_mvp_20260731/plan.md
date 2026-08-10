@@ -258,7 +258,7 @@
   - [x] Run and record the expected red phase
 
 - [~] Task: Implement core interoperable derivatives [M-11]
-  - [ ] Preserve raw CKAN JSON (capture boundary)
+  - [x] Preserve raw CKAN JSON (capture boundary)
   - [x] Generate normalized JSONL and typed Parquet
   - [x] Record transformation versions and information loss
   - [x] Reconcile derivatives with DuckDB

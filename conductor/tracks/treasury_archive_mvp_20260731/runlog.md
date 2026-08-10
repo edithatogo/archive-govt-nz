@@ -825,3 +825,11 @@
 - Existing byte, timeout, redirect, and validator bounds remain enforced.
 - Decompression, range, quarantine, and batch-level concurrency/storage
   evidence remain open and are not claimed complete.
+
+### 2026-08-10 — raw CKAN derivative boundary
+
+- Derivative preparation now writes a canonical `raw-ckan.json` alongside
+  normalized JSONL and Parquet outputs.
+- The raw layer is independently SHA-256 addressed in the derivative receipt;
+  unknown CKAN fields remain preserved in that original layer.
+- Derivative-focused tests, Ruff, and strict Pyright passed.

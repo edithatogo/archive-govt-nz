@@ -497,3 +497,12 @@ used because its Python 3.14 runtime path fails before mutation execution.
 | Capture contracts | passed | 12 focused tests |
 | Sensitive URL handling | passed | Query credentials are redacted in receipts |
 | Remaining bounds | open | Decompression, ranges, quarantine, and batch-level concurrency/storage evidence remain pending |
+
+## Raw CKAN derivative boundary - 2026-08-10
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Raw CKAN JSON | passed | Canonical `raw-ckan.json` emitted before normalized projections |
+| Raw integrity | passed | Independent SHA-256 recorded in `DerivativeReceipt` |
+| Information-loss boundary | passed | Unknown fields remain in raw layer and are listed as non-projected in derivatives |
+| Derivative contracts | passed | Focused tests, Ruff, and strict Pyright passed |
