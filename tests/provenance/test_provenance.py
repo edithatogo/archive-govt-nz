@@ -83,3 +83,28 @@ def test_warc_receipt_closes_to_captured_object(tmp_path: Path) -> None:
         ],
     )
     assert manifest.document["warc_records"][0]["sha256"] == receipt.sha256
+
+
+def test_manifest_preserves_receipts_and_execution_context() -> None:
+    """Transformation, validation, publication, and context evidence is closed."""
+    manifest = build_manifest(
+        archive_id="treasury",
+        observations=[{"observation_id": "o1"}],
+        objects=[{"object_id": "sha256:a"}],
+        versions=[{"version_id": "v1", "observation_id": "o1"}],
+        receipts={
+            "transformations": [{"receipt_id": "t1", "state": "succeeded"}],
+            "validations": [{"receipt_id": "vld1", "state": "passed"}],
+            "publications": [{"receipt_id": "p1", "state": "prepared"}],
+        },
+        context={
+            "software": {"package": "archive-govt-nz", "version": "0.1.0"},
+            "environment": {"sbom_id": "sbom-1"},
+            "parameters": {"policy_version": "policy/v1"},
+            "rights": {"status": "restricted"},
+            "limitations": ["payload_capture_not_complete"],
+        },
+    )
+
+    assert manifest.document["receipts"]["transformations"][0]["receipt_id"] == "t1"
+    assert manifest.document["context"]["rights"]["status"] == "restricted"
