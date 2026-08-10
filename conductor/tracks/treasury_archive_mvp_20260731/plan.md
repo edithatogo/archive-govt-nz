@@ -368,7 +368,7 @@
 
 - [~] Task: Add release attestations [S-03]
   - [x] Generate checksums, SBOMs, and provenance attestations
-  - [ ] Sign where supported and verify before publication
+  - [x] Sign where supported and verify before publication
 
 - [x] Task: Phase Verification & Checkpoint (Refer to workflow.md)
   - [x] Run local workflow policy checks
