@@ -1,0 +1,29 @@
+{
+  "schema_version": "archive-govt-nz.evidence-reconciliation/v1",
+  "generated_at": "2026-08-08T12:26:33.218076+00:00",
+  "scope": "Treasury resource, tombstone, capture, WARC, and publication evidence",
+  "counts": {
+    "discovered": 91,
+    "resolved": 91,
+    "captured": 12,
+    "restricted": 78,
+    "unavailable": 1,
+    "tombstones": 79
+  },
+  "checks": {
+    "discovery_resolution_ids_match": true,
+    "tombstones_match_unresolved": true,
+    "resource_count": true,
+    "capture_summary_closure": true,
+    "release_reconciled": true
+  },
+  "status": "reconciled",
+  "publication": {
+    "release_state": "reconciled",
+    "zenodo": "10.5281/zenodo.21728726",
+    "huggingface_revision": "9406a3b0f877f0251c1baf89665cacc0c30dbae0"
+  },
+  "limitations": [
+    "Payload availability and live WARC coverage remain externally gated; reconciliation does not assert complete capture."
+  ]
+}

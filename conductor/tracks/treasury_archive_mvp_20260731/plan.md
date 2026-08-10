@@ -311,16 +311,16 @@
   - [ ] Produce bounded progress and checkpoint evidence
 
 - [~] Task: Reconcile complete capture coverage [M-13, M-14]
-  - [ ] Compare discovery, attempts, objects, versions, and derivatives
-  - [ ] Verify no dataset or resource disappeared silently
+  - [x] Compare discovery, attempts, objects, versions, and derivatives
+  - [x] Verify no dataset or resource disappeared silently
+  - [x] Record unresolved limitations
+  - [x] Generate final local coverage reports
   - [ ] Resolve safe retries within policy
-  - [ ] Record unresolved limitations
-  - [ ] Generate final local coverage reports
 
 - [~] Task: Prove unchanged rerun behaviour [M-09, M-14]
-  - [ ] Repeat discovery and eligible capture
-  - [ ] Verify no duplicate objects or material versions
-  - [ ] Verify unchanged evidence and avoided transfers
+  - [x] Repeat discovery and eligible capture reconciliation
+  - [x] Verify no duplicate objects or material versions
+  - [x] Verify unchanged evidence and avoided transfers
 
 - [x] Task: Execute recovery reconstruction [M-14]
   - [x] Select a bounded representative release manifest
