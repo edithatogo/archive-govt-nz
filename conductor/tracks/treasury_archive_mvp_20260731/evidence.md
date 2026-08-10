@@ -480,6 +480,14 @@ used because its Python 3.14 runtime path fails before mutation execution.
 | Policy-change tombstone | passed | Explicit `policy_changed` reason and preserved previous fingerprint |
 | Static assurance | passed | Ruff and strict Pyright passed for ledger/versioning contracts |
 
+## Durable Treasury ledger materialization - 2026-08-10
+
+Receipt: `evidence/phase-5-ledger-build.json` and `build/treasury-ledger.sqlite`.
+
+The durable ledger records 91 observations, 91 attempts, 91 versions, and 12
+captured objects. Combined raw, ledger, manifest, and derivative reconciliation
+passes without claiming complete source capture.
+
 ## Phase 5 layer-count reconciliation - 2026-08-10
 
 | Layer | Manifest | Observed | State |

@@ -1,7 +1,7 @@
 {
   "schema_version": "archive-govt-nz.layer-reconciliation/v1",
   "manifest": {
-    "raw_ckan_responses": 7,
+    "raw_ckan_responses": 5,
     "captured_objects": 12,
     "derivatives": 3
   },
@@ -11,19 +11,40 @@
     "derivatives": 3
   },
   "checks": {
-    "raw_ckan_responses": false,
+    "raw_ckan_responses": true,
     "captured_objects": true,
     "derivatives": true
   },
-  "status": "discrepancy",
+  "ledger": {
+    "observed": {
+      "observations": 91,
+      "attempts": 91,
+      "objects": 12,
+      "versions": 91
+    },
+    "expected": {
+      "observations": 91,
+      "attempts": 91,
+      "objects": 12,
+      "versions": 91
+    },
+    "checks": {
+      "observations": true,
+      "attempts": true,
+      "objects": true,
+      "versions": true
+    }
+  },
+  "status": "reconciled",
   "limitations": [
     "Layer count reconciliation does not claim complete source capture.",
     "Restricted and unavailable resources remain represented by policy receipts."
   ],
   "sources": {
-    "release_manifest": "build/release-candidate-v2/manifest.json",
+    "release_manifest": "build/release-candidate-v3/manifest.json",
     "capture_summary": "evidence/phase-6-capture-summary.json",
     "derivative_receipt": "build/derivatives/treasury/receipt.json",
+    "ledger_receipt": "evidence/phase-5-ledger-build.json",
     "raw_root": "build/live/reconcile-20260731T164949/raw",
     "derivative_row_count": 54
   }

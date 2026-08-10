@@ -1,10 +1,10 @@
 # Phase 5 layer reconciliation
 
-Status: **discrepancy**
+Status: **reconciled**
 
 | Layer | Manifest | Observed | Check |
 | --- | ---: | ---: | --- |
-| raw_ckan_responses | 7 | 5 | FAIL |
+| raw_ckan_responses | 5 | 5 | PASS |
 | captured_objects | 12 | 12 | PASS |
 | derivatives | 3 | 3 | PASS |
 
