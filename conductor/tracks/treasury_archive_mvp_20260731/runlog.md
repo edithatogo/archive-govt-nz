@@ -783,3 +783,13 @@
 - The aggregate mutation invocation exceeded the bounded tool window before a
   receipt was emitted; the prior recorded 8/8 policy mutant receipt remains
   evidence, but no new mutation claim is made from the timed-out invocation.
+
+### 2026-08-10 — Phase 3 checkpoint closure
+
+- Re-ran the bounded mutation gates with a 300-second command budget.
+- Resource-policy mutation: 8/8 mutants killed; status `passed`.
+- Versioning mutation: 3/3 mutants killed; status `passed`.
+- Recorded paired checkpoint receipts in `evidence/phase-3-checkpoint.json`
+  and `evidence/phase-3-checkpoint.md`.
+- Phase 3 is locally complete; capture, rights, and publication gates remain
+  separate and unchanged.

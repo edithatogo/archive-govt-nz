@@ -451,3 +451,12 @@ used because its Python 3.14 runtime path fails before mutation execution.
 | Schema and policy/object gates | passed | 77 focused tests; 12 schemas and 2 representative documents validated |
 | Mutation receipt | prior evidence | Existing 8/8 policy mutants and 3/3 version mutants remain recorded; the current aggregate invocation timed out before emitting a new receipt |
 | Phase checkpoint | open | Checkpoint bookkeeping remains pending; no capture, rights, or publication gate was bypassed |
+
+## Phase 3 checkpoint closure - 2026-08-10
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Resource-policy mutation | passed | 8/8 targeted mutants killed |
+| Versioning mutation | passed | 3/3 targeted mutants killed |
+| Paired checkpoint receipts | recorded | `evidence/phase-3-checkpoint.json` and `.md` |
+| Scope | local-only | No restricted payload, rights, or external publication gate changed |
