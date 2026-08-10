@@ -801,6 +801,15 @@
 - Added disappearance and policy-change tombstone contracts.
 - Versioning contracts passed: 3 tests; Ruff and strict Pyright passed.
 
+### 2026-08-10 — Phase 5 layer-count reconciliation
+
+- Added executable reconciliation across release-manifest, raw CKAN,
+  captured-object, and derivative counts.
+- Captured objects and derivative artefacts reconcile: 12 and 3.
+- Raw CKAN responses do not reconcile: manifest claims 7, referenced local raw
+  directory contains 5. The discrepancy is preserved as a blocker; no silent
+  completeness claim was made.
+
 ### 2026-08-10 — manifest receipts and execution context
 
 - Extended deterministic provenance manifests with transformation, validation,

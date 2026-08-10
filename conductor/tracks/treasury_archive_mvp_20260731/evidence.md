@@ -480,6 +480,16 @@ used because its Python 3.14 runtime path fails before mutation execution.
 | Policy-change tombstone | passed | Explicit `policy_changed` reason and preserved previous fingerprint |
 | Static assurance | passed | Ruff and strict Pyright passed for ledger/versioning contracts |
 
+## Phase 5 layer-count reconciliation - 2026-08-10
+
+| Layer | Manifest | Observed | State |
+| --- | ---: | ---: | --- |
+| Raw CKAN responses | 7 | 5 | discrepancy; blocker retained |
+| Captured objects | 12 | 12 | reconciled |
+| Derivative artefacts | 3 | 3 | reconciled |
+
+Receipt: `evidence/phase-5-layer-reconciliation.json` and `.md`.
+
 ## Manifest receipts and execution context - 2026-08-10
 
 | Evidence | State | Detail |
