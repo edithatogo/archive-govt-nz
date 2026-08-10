@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 ROOT = Path(__file__).resolve().parents[1]
 TRACK_MANIFEST = (
@@ -24,7 +24,33 @@ def _read_json(path: Path) -> dict[str, Any]:
             payload = json.load(handle)
         except json.JSONDecodeError:
             return {}
-    return payload if isinstance(payload, dict) else {}
+    if not isinstance(payload, dict):
+        return {}
+    return cast(dict[str, Any], payload)
+
+
+def _read_dict_list(payload: dict[str, Any], key: str) -> list[dict[str, Any]]:
+    """Return a list of dictionaries for a known evidence key."""
+    raw = payload.get(key)
+    if not isinstance(raw, list):
+        return []
+    items: list[dict[str, Any]] = []
+    for item in cast(list[Any], raw):
+        if isinstance(item, dict):
+            items.append(cast(dict[str, Any], item))
+    return items
+
+
+def _as_str(value: Any) -> str:
+    """Return a strict string for metadata serialization."""
+    return value if isinstance(value, str) else ""
+
+
+def _as_dict(value: Any) -> dict[str, Any]:
+    """Return a strict dict for metadata inspection."""
+    if not isinstance(value, dict):
+        return {}
+    return cast(dict[str, Any], value)
 
 
 def _build_resource_snapshot() -> tuple[list[dict[str, Any]], dict[str, int]]:
@@ -32,38 +58,40 @@ def _build_resource_snapshot() -> tuple[list[dict[str, Any]], dict[str, int]]:
     request = _read_json(EVIDENCE_ROOT / "phase-10-publisher-resolution-request.json")
     track_manifest = _read_json(TRACK_MANIFEST)
 
-    manifest_map: dict[str, dict[str, Any]] = {
-        item["resource_id"]: item
-        for item in track_manifest.get("resources", [])
-        if isinstance(item, dict) and isinstance(item.get("resource_id"), str)
-    }
+    manifest_map: dict[str, dict[str, Any]] = {}
+    for item in _read_dict_list(track_manifest, "resources"):
+        resource_id = item.get("resource_id")
+        if isinstance(resource_id, str):
+            manifest_map[resource_id] = item
+
     resources: list[dict[str, Any]] = []
     stage_counts: dict[str, int] = {}
-    for item in request.get("resources", []):
-        if not isinstance(item, dict):
-            continue
+    for item in _read_dict_list(request, "resources"):
         resource_id = item.get("resource_id")
         if not isinstance(resource_id, str):
             continue
+
         request_state = item.get("state")
+        request_state_str = request_state if isinstance(request_state, str) else None
         capture_state = ""
         dataset_id = ""
         source_url = ""
         restriction = None
-        if resource_id in manifest_map:
-            manifest_item = manifest_map[resource_id]
-            dataset_id = str(manifest_item.get("dataset_id", ""))
-            source_url = str(manifest_item.get("source_url", ""))
-            capture_state = str(manifest_item.get("capture_state", ""))
-            policy = manifest_item.get("policy_decision")
-            if isinstance(policy, dict):
-                restriction = str(policy.get("disposition", ""))
+
+        manifest_item = manifest_map.get(resource_id)
+        if manifest_item is not None:
+            dataset_id = _as_str(manifest_item.get("dataset_id"))
+            source_url = _as_str(manifest_item.get("source_url"))
+            capture_state = _as_str(manifest_item.get("capture_state"))
+            policy = _as_dict(manifest_item.get("policy_decision"))
+            restriction = _as_str(policy.get("disposition"))
+
         resources.append(
             {
                 "resource_id": resource_id,
                 "dataset_id": dataset_id,
                 "source_url": source_url,
-                "state": request_state,
+                "state": request_state_str,
                 "capture_state": capture_state,
                 "disposition": restriction,
                 "reason": item.get("reason"),
@@ -71,8 +99,9 @@ def _build_resource_snapshot() -> tuple[list[dict[str, Any]], dict[str, int]]:
                 "http_statuses": item.get("http_statuses"),
             }
         )
-        if isinstance(request_state, str):
-            stage_counts[request_state] = stage_counts.get(request_state, 0) + 1
+        if request_state_str is not None:
+            stage_counts[request_state_str] = stage_counts.get(request_state_str, 0) + 1
+
     return resources, stage_counts
 
 
@@ -97,15 +126,23 @@ def _load_counts() -> tuple[dict[str, Any], dict[str, Any]]:
 def main() -> int:
     """Write publication metadata previews with explicit local-only boundaries."""
     ledger = _read_json(EVIDENCE_ROOT / "archive-evidence-ledger.json")
-    states = {
-        item["stage"]: item["state"]
-        for item in ledger.get("stages", [])
-        if isinstance(item, dict)
-    }
+    states: dict[str, str] = {}
+    for item in _read_dict_list(ledger, "stages"):
+        stage = item.get("stage")
+        state = item.get("state")
+        if isinstance(stage, str) and isinstance(state, str):
+            states[stage] = state
+
     capture, rights = _load_counts()
     hf_receipt, zenodo_receipt, final_reconciliation = _load_publication_receipts()
     resource_rows, stage_counts = _build_resource_snapshot()
-    restrictions = capture.get("publication") == "not attempted"
+    restrictions = _as_str(capture.get("publication")) == "not attempted"
+
+    publication_payload = final_reconciliation.get("publication")
+    release_state = None
+    if isinstance(publication_payload, dict):
+        release_state = cast(dict[str, Any], publication_payload).get("release_state")
+
     publication_receipts = {
         "hugging_face": {
             "repository": hf_receipt.get("repository"),
@@ -128,9 +165,7 @@ def main() -> int:
         },
         "reconciliation": {
             "status": final_reconciliation.get("status"),
-            "release_state": final_reconciliation.get("publication", {}).get(
-                "release_state"
-            ),
+            "release_state": release_state,
             "limit_remediation": final_reconciliation.get("limitations", []),
         },
     }
@@ -209,6 +244,10 @@ stage snapshots.
         "warc_receipt": True,
         "manifest": True,
     }
+    stage_records: list[str] = []
+    for stage, state in states.items():
+        stage_records.append(f"archive-evidence-ledger/stages/{stage}:{state}")
+
     zenodo = {
         "title": "Archive Govt NZ — Treasury evidence preview",
         "description": "Evidence-first, checksum-pinned Treasury archive preview with 12 locally captured resources; not yet published.",
@@ -224,9 +263,7 @@ stage snapshots.
                 "evidence/phase-10-final-reconciliation.json",
                 "evidence/phase-10-publisher-resolution-request.json",
             ],
-            "stage_records": [
-                f"archive-evidence-ledger/stages/{k}:{v}" for k, v in states.items()
-            ],
+            "stage_records": stage_records,
             "capture_summary": capture.get("capture_run"),
         },
         "roles": [role for role, active in role_map.items() if active],
