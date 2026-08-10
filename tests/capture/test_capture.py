@@ -66,6 +66,28 @@ async def test_capture_follows_bounded_redirects_and_validates(tmp_path: Path) -
 
 
 @pytest.mark.anyio
+async def test_capture_rejects_partial_content_ranges(tmp_path: Path) -> None:
+    """HTTP 206 responses are explicit unsupported range outcomes."""
+
+    async def handler(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(
+            206,
+            headers={"content-length": "3"},
+            content=b"abc",
+        )
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+        with pytest.raises(CaptureError) as raised:
+            await capture_url(
+                client,
+                "https://example.test/range",
+                ContentAddressedStore(tmp_path),
+            )
+    assert raised.value.error_class == "unsupported_range"
+    assert raised.value.attempts[0].outcome == "unsupported_range"
+
+
+@pytest.mark.anyio
 async def test_capture_rejects_redirect_loop(tmp_path: Path) -> None:
     async def handler(request: httpx.Request) -> httpx.Response:
         return httpx.Response(302, headers={"location": "/loop"})
