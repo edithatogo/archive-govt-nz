@@ -504,6 +504,16 @@ Paired receipts: `evidence/phase-6-capture-plan-summary.json` and `.md`.
 The metadata-only preview covers all 91 resources and starts no payload
 transfer: 0 eligible, 74 terminal, and 17 restricted.
 
+## Scheduled capture budget hardening - 2026-08-10
+
+| Control | State | Evidence |
+| --- | --- | --- |
+| Storage/byte budget | passed | `BatchBudget.max_total_bytes` and admission gate |
+| Duration budget | passed | Runner max-duration deferral |
+| Concurrency budget | passed | Semaphore-bound capture |
+| Source-rate budget | passed | Positive requests-per-second interval limiter |
+| Resumability | passed | Atomic checkpoint and completed-resource skip contracts |
+
 ## Phase 5 layer-count reconciliation - 2026-08-10
 
 | Layer | Manifest | Observed | State |

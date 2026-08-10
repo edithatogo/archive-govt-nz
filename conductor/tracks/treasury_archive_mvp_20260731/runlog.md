@@ -826,6 +826,14 @@
 - Preview confirms no payload transfer authorization; live preflight and rights
   gates remain separate.
 
+### 2026-08-10 — scheduled capture budget hardening
+
+- Added a positive source-rate budget to `BatchBudget` and enforced a shared
+  request interval in the resumable capture runner.
+- Storage, duration, concurrency, and source-rate controls now fail closed;
+  checkpoint persistence remains atomic and resumable.
+- Capture-control contracts passed: 6 tests; Ruff and strict Pyright passed.
+
 ### 2026-08-10 — Phase 5 layer-count reconciliation
 
 - Added executable reconciliation across release-manifest, raw CKAN,

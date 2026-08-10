@@ -357,8 +357,8 @@
 
 - [~] Task: Implement scheduled capture controls [M-15]
   - [x] Require explicit enablement
-  - [ ] Enforce storage, duration, concurrency, and source-rate budgets
-  - [ ] Support resumable checkpoints and bounded failures
+  - [x] Enforce storage, duration, concurrency, and source-rate budgets
+  - [x] Support resumable checkpoints and bounded failures
   - [x] Exclude quarantined and restricted objects
 
 - [x] Task: Implement dependency and pre-release lanes [S-04]
