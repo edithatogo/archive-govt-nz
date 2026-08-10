@@ -18,8 +18,10 @@
     },
     {
       "stage": "captured",
-      "state": "not-yet-complete",
-      "evidence": []
+      "state": "partially-captured",
+      "evidence": [
+        "evidence/phase-6-capture-summary.json"
+      ]
     },
     {
       "stage": "validated",
@@ -38,18 +40,24 @@
     },
     {
       "stage": "uploaded",
-      "state": "not-authorized",
-      "evidence": []
+      "state": "uploaded-remotely-verified",
+      "evidence": [
+        "conductor/tracks/treasury_archive_mvp_20260731/evidence/phase-9-release-reconciliation.json"
+      ]
     },
     {
       "stage": "remotely-verified",
-      "state": "not-run",
-      "evidence": []
+      "state": "remote-readback-verified",
+      "evidence": [
+        "conductor/tracks/treasury_archive_mvp_20260731/evidence/phase-9-release-reconciliation.json"
+      ]
     },
     {
       "stage": "released",
-      "state": "not-released",
-      "evidence": []
+      "state": "reconciled-release",
+      "evidence": [
+        "conductor/tracks/treasury_archive_mvp_20260731/evidence/phase-9-release-reconciliation.json"
+      ]
     },
     {
       "stage": "unavailable",
