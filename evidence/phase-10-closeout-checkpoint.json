@@ -1,0 +1,39 @@
+{
+  "schema_version": "archive-govt-nz.phase-checkpoint/v1",
+  "phase": "phase-10-mvp-closeout",
+  "status": "partial-complete",
+  "gates": {
+    "quality_gate": {
+      "tests": 255,
+      "coverage_pct": 95.34,
+      "status": "passed"
+    },
+    "reconciliation": {
+      "discovered": 91,
+      "resolved": 91,
+      "captured": 12,
+      "restricted": 78,
+      "unavailable": 1,
+      "tombstones": 79
+    },
+    "publication": {
+      "zenodo_doi": "10.5281/zenodo.21728726",
+      "huggingface_revision": "9406a3b0f877f0251c1baf89665cacc0c30dbae0",
+      "release_state": "reconciled"
+    },
+    "supply_chain": {
+      "audit": "passed",
+      "licenses": "passed",
+      "secrets": "passed",
+      "sbom": "passed"
+    }
+  },
+  "open_blockers": [
+    "complete policy-eligible payload capture is not fully closed",
+    "clean-environment reproduction pending for a fresh repository checkout",
+    "publication state transitions remain externally gated"
+  ],
+  "limitations": [
+    "Live WARC coverage and remote publication claim breadth are constrained by policy, rights, and remaining external gates."
+  ]
+}

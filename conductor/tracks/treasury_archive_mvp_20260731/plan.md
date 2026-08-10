@@ -465,7 +465,7 @@
   - [x] Review completeness and publication claims
   - [x] Resolve or explicitly block every critical finding; M-06 and M-14 remain outside this task
 
-- [ ] Task: Publish final evidence ledger [M-13, M-19]
+- [x] Task: Publish final evidence ledger [M-13, M-19]
   - [x] Generate final Markdown and JSON reports
   - [x] Reconcile counts and remote identifiers
   - [x] Record limitations, commands, and revisions
