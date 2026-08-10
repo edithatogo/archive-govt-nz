@@ -69,23 +69,17 @@ def main() -> int:
             "state": (
                 "uploaded-remotely-verified" if release_reconciled else "not-authorized"
             ),
-            "evidence": (
-                [release_ref] if release_reconciled else []
-            ),
+            "evidence": ([release_ref] if release_reconciled else []),
         },
         {
             "stage": "remotely-verified",
             "state": "remote-readback-verified" if release_reconciled else "not-run",
-            "evidence": (
-                [release_ref] if release_reconciled else []
-            ),
+            "evidence": ([release_ref] if release_reconciled else []),
         },
         {
             "stage": "released",
             "state": "reconciled-release" if release_reconciled else "not-released",
-            "evidence": (
-                [release_ref] if release_reconciled else []
-            ),
+            "evidence": ([release_ref] if release_reconciled else []),
         },
         {"stage": "unavailable", "state": "recorded-per-attempt", "evidence": []},
         {
