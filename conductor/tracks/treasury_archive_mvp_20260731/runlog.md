@@ -793,3 +793,10 @@
   and `evidence/phase-3-checkpoint.md`.
 - Phase 3 is locally complete; capture, rights, and publication gates remain
   separate and unchanged.
+
+### 2026-08-10 — Phase 4 ledger/versioning contract slice
+
+- Ledger persistence contracts passed: 5 tests; observations, attempts,
+  objects, versions, publications, and provenance edges remain transactional.
+- Added disappearance and policy-change tombstone contracts.
+- Versioning contracts passed: 3 tests; Ruff and strict Pyright passed.

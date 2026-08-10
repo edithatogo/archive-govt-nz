@@ -460,3 +460,12 @@ used because its Python 3.14 runtime path fails before mutation execution.
 | Versioning mutation | passed | 3/3 targeted mutants killed |
 | Paired checkpoint receipts | recorded | `evidence/phase-3-checkpoint.json` and `.md` |
 | Scope | local-only | No restricted payload, rights, or external publication gate changed |
+
+## Phase 4 ledger/versioning contract slice - 2026-08-10
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Ledger persistence | passed | 5 transactional ledger tests; all core entity relationships exercised |
+| Disappearance tombstone | passed | Explicit `source_disappeared` reason and preserved previous fingerprint |
+| Policy-change tombstone | passed | Explicit `policy_changed` reason and preserved previous fingerprint |
+| Static assurance | passed | Ruff and strict Pyright passed for ledger/versioning contracts |

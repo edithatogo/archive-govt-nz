@@ -27,3 +27,18 @@ def test_material_change_and_tombstone_preserve_previous() -> None:
     assert tombstone.state == VersionState.TOMBSTONE
     assert tombstone.previous_fingerprint == tombstone.fingerprint
     assert tombstone.reason == "source_withdrawn"
+
+
+def test_disappearance_and_policy_change_are_distinct_tombstone_reasons() -> None:
+    """Missing sources and policy changes preserve history with explicit reasons."""
+    previous: dict[str, Any] = {"resource_id": "r1", "sha256": "abc"}
+
+    disappeared = decide_version(previous, previous, disappeared=True)
+    policy_changed = decide_version(previous, previous, policy_changed=True)
+
+    assert disappeared.state == VersionState.TOMBSTONE
+    assert disappeared.reason == "source_disappeared"
+    assert disappeared.previous_fingerprint == disappeared.fingerprint
+    assert policy_changed.state == VersionState.TOMBSTONE
+    assert policy_changed.reason == "policy_changed"
+    assert policy_changed.previous_fingerprint == policy_changed.fingerprint
