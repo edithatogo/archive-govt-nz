@@ -577,3 +577,14 @@ Receipt: `evidence/phase-5-layer-reconciliation.json` and `.md`.
 | Raw integrity | passed | Independent SHA-256 recorded in `DerivativeReceipt` |
 | Information-loss boundary | passed | Unknown fields remain in raw layer and are listed as non-projected in derivatives |
 | Derivative contracts | passed | Focused tests, Ruff, and strict Pyright passed |
+
+## Bounded capture storage and WARC limits - 2026-08-11
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Disk spooling | passed | Response bytes are written to a bounded temporary file before object promotion |
+| Async safety | passed | Blocking promotion and WARC I/O are delegated off the event loop |
+| Storage failures | passed | Object-store/temporary-file failures emit `storage_failed` receipts |
+| WARC bound | passed | `max_warc_bytes` prevents unbounded WARC body buffering; payload capture remains separate |
+| Capture contracts | passed | 8 focused tests; Ruff and strict Pyright passed |
+| Remaining bounds | open | Transport decompression ratio and authorized payload transfer remain external follow-up gates |

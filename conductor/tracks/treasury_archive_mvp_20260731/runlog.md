@@ -910,3 +910,13 @@
   gates, unresolved blockers, and publication-state constraints.
 - Explicitly noted that clean-environment reproduction, full payload policy completion,
   and external publication transitions are still blocked.
+
+### 2026-08-11 — bounded capture storage and WARC limits
+
+- Capture now spools response bytes to a bounded temporary file before immutable
+  promotion, avoiding an unbounded in-memory payload buffer.
+- Promotion and WARC construction run off the async event loop; storage failures
+  produce redacted `storage_failed` receipts.
+- Material WARC bodies are capped by `CaptureConfig.max_warc_bytes`; larger
+  payloads remain archived while WARC emission is explicitly omitted.
+- Capture contracts passed: 8 focused tests; Ruff and strict Pyright passed.

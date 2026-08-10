@@ -124,6 +124,26 @@ async def test_capture_writes_material_warc_receipt_when_requested(
 
 
 @pytest.mark.anyio
+async def test_capture_bounds_material_warc_buffer(tmp_path: Path) -> None:
+    async def handler(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(200, content=b"payload")
+
+    warc_path = tmp_path / "too-large.warc"
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+        result = await capture_url(
+            client,
+            "https://example.test/resource",
+            ContentAddressedStore(tmp_path / "objects"),
+            CaptureConfig(max_warc_bytes=1),
+            transaction_warc_path=warc_path,
+        )
+    assert result.receipt.byte_count == 7
+    assert result.warc_receipt is None
+    assert not warc_path.exists()
+    assert result.attempt_receipts[-1].outcome == "captured"
+
+
+@pytest.mark.anyio
 async def test_capture_rejects_redirect_loop(tmp_path: Path) -> None:
     async def handler(request: httpx.Request) -> httpx.Response:
         return httpx.Response(302, headers={"location": "/loop"})
