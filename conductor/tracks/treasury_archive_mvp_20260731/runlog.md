@@ -833,3 +833,13 @@
 - The raw layer is independently SHA-256 addressed in the derivative receipt;
   unknown CKAN fields remain preserved in that original layer.
 - Derivative-focused tests, Ruff, and strict Pyright passed.
+
+### 2026-08-10 — Phase 8–9 publication checkpoint
+
+- Re-ran phase-8 publication-readback checks with verified remote revision,
+  integrity, and Viewer evidence in `evidence/phase-8-hf-publication-verification.json`.
+- Confirmed local manifest and rolling-manifest reconciliation for unchanged, changed,
+  and tombstone cases via existing offline contracts and bounded tests.
+- Reconciled phase-9 Zenodo publication against local final reconciliation evidence;
+  DOI `10.5281/zenodo.21728726` is confirmed against `evidence/phase-9-zenodo-publication.json`
+  and `evidence/phase-10-final-reconciliation.json`.
