@@ -175,11 +175,11 @@
   - [x] Make object-store tests green
   - [x] Mutation-test integrity decisions (covered by object-integrity gate)
 
-- [~] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Phase Verification & Checkpoint (Refer to workflow.md)
   - [x] Run schema, property, mutation, and object-integrity gates
   - [x] Verify critical coverage is 100% line and branch
   - [x] Review defaults and exception controls
-  - [ ] Record phase evidence and checkpoint
+  - [x] Record phase evidence and checkpoint
 
 ## Phase 4: Streaming capture, ledger, and versioning
 
@@ -202,19 +202,19 @@
   - [x] Test restart, deterministic export, and migrations
   - [x] Run and record the expected red phase
 
-- [~] Task: Implement the operational ledger [M-08]
+- [x] Task: Implement the operational ledger [M-08]
   - [x] Create migrations, foreign keys, and WAL configuration
-  - [~] Persist observations, attempts, objects, versions, and publications
+  - [x] Persist observations, attempts, objects, versions, and publications
   - [x] Add deterministic observation export and integrity constraints
   - [x] Make ledger tests green
 
 - [x] Task: Write failing change-driven versioning tests [M-09]
   - [x] Test first, unchanged, and resource-changed states
   - [x] Test tombstone preservation
-  - [ ] Test resource disappearance and policy changes
+  - [x] Test resource disappearance and policy changes
   - [x] Run and record the expected red phase
 
-- [~] Task: Implement change detection and version relationships [M-09]
+- [x] Task: Implement change detection and version relationships [M-09]
   - [x] Separate observation from source modification time
   - [x] Canonicalize comparison inputs
   - [x] Version only material change and record unchanged evidence
