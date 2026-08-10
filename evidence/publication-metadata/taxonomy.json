@@ -1,17 +1,56 @@
 {
   "schema_version": "archive-govt-nz.publication-taxonomy/v1",
-  "status": "observed-conventions-awaiting-final-estate-decision",
+  "status": "awaiting-final-estate-alignment",
   "dataset_slug": "archive-govt-nz-treasury",
   "source_catalogue": "data.govt.nz",
   "source_platform": "CKAN",
   "organization": "the-treasury",
-  "domain": "government-data",
-  "topic": "public-finance",
-  "subtopic": "new-zealand-treasury",
-  "coverage": {"country": "NZ", "language": "en"},
-  "roles": ["original-metadata", "original-resource", "provenance", "derivative", "validation-evidence"],
-  "planned_huggingface_collection": "requires estate registry decision",
-  "planned_huggingface_namespace": "edithatogo",
-  "license": "CC-BY-4.0 (dataset-level observation; resource exceptions remain gated)",
-  "alignment_blockers": ["collection-membership-not-yet-confirmed", "source-license-not-yet-reviewed"]
+  "namespace": {
+    "ckan": "the-treasury",
+    "huggingface": "edithatogo"
+  },
+  "platform_target": {
+    "huggingface": {
+      "dataset_slug": "archive-govt-nz-treasury",
+      "planned_collection": "not-set",
+      "planned_access": "restricted",
+      "source_license": "CC-BY-4.0 (dataset-level observation)",
+      "source_access": "restricted-by-resource-exception-review"
+    },
+    "zenodo": {
+      "record_slug": "pending",
+      "record_owner": "pending",
+      "source_access": "restricted-by-permission-review"
+    }
+  },
+  "domain": {
+    "discipline": "government-data",
+    "topic": "public-finance",
+    "subtopic": "new-zealand-treasury",
+    "coverage": {
+      "country": "NZ",
+      "language": "en",
+      "temporal": {
+        "from": "2021-07-01",
+        "to": "2026-06-30",
+        "basis": "phase-10 capture window"
+      }
+    }
+  },
+  "roles": [
+    "original-metadata",
+    "original-resource",
+    "provenance",
+    "derivative",
+    "validation-evidence"
+  ],
+  "source_type": "government-fiscal-open-data",
+  "source_type_mapping": "CKAN dataset/resource -> HF dataset parquet+json + WARC/WACZ derivatives",
+  "alignment_validations": [
+    "taxonomy-alignment-validation.json"
+  ],
+  "alignment_blockers": [
+    "collection-membership-not-yet-confirmed",
+    "source-license-not-yet-reviewed"
+  ]
 }
