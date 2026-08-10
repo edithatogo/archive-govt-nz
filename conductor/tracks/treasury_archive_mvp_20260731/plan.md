@@ -295,7 +295,7 @@
   - [x] Compare current scope with the dated 54-dataset baseline
   - [x] Review storage estimates, policy, and rate controls
   - [ ] Obtain explicit capture/publication authority at the release gate
-  - [ ] Produce a no-download operator preview
+  - [x] Produce a no-download operator preview
 
 - [~] Task: Execute complete eligible Treasury capture [M-04, M-06]
   - [x] Enumerate every resource under the approved policy

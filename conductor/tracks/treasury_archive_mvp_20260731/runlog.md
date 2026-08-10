@@ -819,6 +819,13 @@
 - Paired checkpoint receipts recorded in `evidence/phase-5-checkpoint.json`
   and `.md`; limitations remain explicit.
 
+### 2026-08-10 — Phase 6 operator preview
+
+- Reconciled paired no-download preview receipts: 91 resources, 0 metadata-only
+  eligible, 74 terminal, and 17 restricted.
+- Preview confirms no payload transfer authorization; live preflight and rights
+  gates remain separate.
+
 ### 2026-08-10 — Phase 5 layer-count reconciliation
 
 - Added executable reconciliation across release-manifest, raw CKAN,

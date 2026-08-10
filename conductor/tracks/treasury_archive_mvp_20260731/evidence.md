@@ -498,6 +498,12 @@ passes without claiming complete source capture.
 | Checkpoint | recorded | `evidence/phase-5-checkpoint.json` and `.md` |
 | Scope | limited | No complete capture or restricted/publication authorization claim |
 
+## Phase 6 operator preview - 2026-08-10
+
+Paired receipts: `evidence/phase-6-capture-plan-summary.json` and `.md`.
+The metadata-only preview covers all 91 resources and starts no payload
+transfer: 0 eligible, 74 terminal, and 17 restricted.
+
 ## Phase 5 layer-count reconciliation - 2026-08-10
 
 | Layer | Manifest | Observed | State |
