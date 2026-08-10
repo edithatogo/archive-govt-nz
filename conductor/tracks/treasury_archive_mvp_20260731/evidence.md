@@ -599,3 +599,12 @@ Receipt: `evidence/phase-5-layer-reconciliation.json` and `.md`.
 | Payload capture | passed-with-limitations | 12 resources captured under bounded budgets; no failures among attempted resources |
 | Safety boundary | preserved | HTTPS, response, redirect, storage, and quarantine safeguards were not bypassed |
 | Publication | not attempted | Hugging Face/Zenodo publication remains separately gated |
+
+## Secure-source GET fallback - 2026-08-11
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| HEAD fallback | implemented | 403/405/501 HEAD responses trigger one-byte bounded GET-range probing |
+| Live result | passed-with-limitations | 91 resources probed; 12 secure sources observed and 79 remained unusable |
+| Source response | unresolved | 78 GET-range fallbacks returned 403; no source was promoted without an eligible response |
+| Body bound | passed | Fallback reads at most one response byte and records `probe_method`/`probe_bytes` |

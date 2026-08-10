@@ -931,3 +931,11 @@
 - Fixed the capture runner to admit nested `secure-source-observed` preflight
   receipts; the authorized run captured all 12 observed resources successfully.
 - No publication action was attempted; HTTP/403 sources remain explicit outcomes.
+
+### 2026-08-11 — bounded GET fallback for HEAD blockers
+
+- Added a one-byte `GET` with `Range: bytes=0-0` for 403/405/501 HEAD responses.
+- Re-ran the full Treasury preflight: 12 secure sources remained observable;
+  78 GET fallbacks returned 403 and one additional source remained unusable.
+- No HTTP, 403, or terminal source was promoted to capture eligibility without
+  an independently eligible response.
