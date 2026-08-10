@@ -26,7 +26,7 @@ def _read_json(path: Path) -> dict[str, Any]:
             return {}
     if not isinstance(payload, dict):
         return {}
-    return cast(dict[str, Any], payload)
+    return cast("dict[str, Any]", payload)
 
 
 def _read_dict_list(payload: dict[str, Any], key: str) -> list[dict[str, Any]]:
@@ -34,23 +34,23 @@ def _read_dict_list(payload: dict[str, Any], key: str) -> list[dict[str, Any]]:
     raw = payload.get(key)
     if not isinstance(raw, list):
         return []
-    items: list[dict[str, Any]] = []
-    for item in cast(list[Any], raw):
-        if isinstance(item, dict):
-            items.append(cast(dict[str, Any], item))
-    return items
+    return [
+        cast("dict[str, Any]", item)
+        for item in cast("list[Any]", raw)
+        if isinstance(item, dict)
+    ]
 
 
-def _as_str(value: Any) -> str:
+def _as_str(value: object) -> str:
     """Return a strict string for metadata serialization."""
     return value if isinstance(value, str) else ""
 
 
-def _as_dict(value: Any) -> dict[str, Any]:
+def _as_dict(value: object) -> dict[str, Any]:
     """Return a strict dict for metadata inspection."""
     if not isinstance(value, dict):
         return {}
-    return cast(dict[str, Any], value)
+    return cast("dict[str, Any]", value)
 
 
 def _build_resource_snapshot() -> tuple[list[dict[str, Any]], dict[str, int]]:
@@ -141,7 +141,7 @@ def main() -> int:
     publication_payload = final_reconciliation.get("publication")
     release_state = None
     if isinstance(publication_payload, dict):
-        release_state = cast(dict[str, Any], publication_payload).get("release_state")
+        release_state = cast("dict[str, Any]", publication_payload).get("release_state")
 
     publication_receipts = {
         "hugging_face": {
