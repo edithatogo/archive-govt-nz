@@ -939,6 +939,24 @@
   78 GET fallbacks returned 403 and one additional source remained unusable.
 - No HTTP, 403, or terminal source was promoted to capture eligibility without
   an independently eligible response.
+
+### 2026-08-11 — CKAN DataStore fallback capture
+
+- Added bounded paginated DataStore capture preserving canonical raw JSON pages,
+  page hashes, row counts, and source receipts outside GitHub.
+- Captured 44/44 reachable DataStore candidates; no page exceeded configured
+  page, row, response, timeout, or concurrency limits.
+- Kept DataStore recovery separate from original-resource publication and rights
+  decisions; 32 HTTP resources remain without an API fallback and 15 remain
+  rights/source gated.
+
+### 2026-08-11 — publication credential validation
+
+- Secret-free local preflight found both environment-scoped credentials present.
+- Read-only Hugging Face identity and Zenodo deposit-list requests returned HTTP
+  200; token values were never logged or persisted.
+- No publication side effect occurred. Candidate package/hash and explicit DOI
+  approval remain separate release gates.
 ### 2026-08-11 — CKAN DataStore fallback assessment
 
 - Rechecked the existing CKAN probe receipt without transferring payloads.

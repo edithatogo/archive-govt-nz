@@ -608,3 +608,25 @@ Receipt: `evidence/phase-5-layer-reconciliation.json` and `.md`.
 | Live result | passed-with-limitations | 91 resources probed; 12 secure sources observed and 79 remained unusable |
 | Source response | unresolved | 78 GET-range fallbacks returned 403; no source was promoted without an eligible response |
 | Body bound | passed | Fallback reads at most one response byte and records `probe_method`/`probe_bytes` |
+
+## CKAN DataStore fallback capture - 2026-08-11
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Recovery candidates | passed | 44 HTTPS DataStore candidates identified from bounded API probes |
+| Paginated capture | passed | 44/44 candidates captured with bounded raw JSON pages |
+| Integrity | passed | Every page has canonical JSON byte count and SHA-256 receipt |
+| Limits | passed | Page, row, response, timeout, and concurrency bounds are explicit |
+| Promotion boundary | preserved | DataStore rows are fallback source evidence and are not automatically published |
+| Remaining source gap | open | 32 HTTP resources lack DataStore fallback; 15 restricted resources need rights/source evidence |
+
+## Publication credential validation - 2026-08-11
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| HF environment secret | present | `HF_TOKEN` is present; value is never emitted |
+| Zenodo environment secret | present | `ZENODO_TOKEN` is present; value is never emitted |
+| Hugging Face read-only auth | passed | API identity endpoint returned HTTP 200 |
+| Zenodo read-only auth | passed | Deposit listing endpoint returned HTTP 200 |
+| Publication side effect | not attempted | No upload, overwrite, deposition, or DOI action occurred |
+| Release gate | open | Exact candidate package/hash and explicit DOI approval remain required |
