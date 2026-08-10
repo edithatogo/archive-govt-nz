@@ -470,7 +470,17 @@ used because its Python 3.14 runtime path fails before mutation execution.
 | Policy-change tombstone | passed | Explicit `policy_changed` reason and preserved previous fingerprint |
 | Static assurance | passed | Ruff and strict Pyright passed for ledger/versioning contracts |
 
-## Preservation packaging adoption decision - 2026-08-10
+## Manifest receipts and execution context - 2026-08-10
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Transformation receipts | passed | Stable receipt IDs and deterministic ordering |
+| Validation receipts | passed | Validation outcomes remain distinct from publication state |
+| Publication receipts | passed | Prepared/remote states remain evidence fields, not implicit side effects |
+| Execution context | passed | Software, environment/SBOM, parameters, rights, and limitations are preserved |
+| Provenance contracts | passed | 6 focused tests; Ruff and strict Pyright passed |
+
+## 2026-08-10 — Preservation packaging adoption decision
 
 | Evidence | State | Detail |
 | --- | --- | --- |
@@ -479,7 +489,7 @@ used because its Python 3.14 runtime path fails before mutation execution.
 | OCFL | deferred | Requires representative corpus, conformance fixtures, and workload evidence |
 | Conformance claims | bounded | No unsupported full-standard conformance claim made |
 
-## Bounded capture attempt receipts - 2026-08-10
+## 2026-08-10 — Bounded capture attempt receipts
 
 | Evidence | State | Detail |
 | --- | --- | --- |

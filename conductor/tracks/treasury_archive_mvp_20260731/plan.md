@@ -245,8 +245,8 @@
 
 - [~] Task: Implement versioned manifests and receipts [M-10, M-13]
   - [x] Produce closed observation, object, version, and derivative manifests
-  - [ ] Produce transformation, validation, and publication receipts
-  - [ ] Link software, environment, parameters, rights, and limitations
+  - [x] Produce transformation, validation, and publication receipts
+  - [x] Link software, environment, parameters, rights, and limitations
   - [x] Validate deterministic serialization and relationships
   - [x] Make manifest tests green
 

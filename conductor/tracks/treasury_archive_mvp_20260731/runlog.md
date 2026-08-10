@@ -801,6 +801,14 @@
 - Added disappearance and policy-change tombstone contracts.
 - Versioning contracts passed: 3 tests; Ruff and strict Pyright passed.
 
+### 2026-08-10 — manifest receipts and execution context
+
+- Extended deterministic provenance manifests with transformation, validation,
+  and publication receipt collections.
+- Added explicit software, environment/SBOM, parameter, rights, and limitation
+  context fields with stable receipt identifiers and deterministic ordering.
+- Provenance-focused contracts passed: 6 tests; Ruff and strict Pyright passed.
+
 ### 2026-08-10 — preservation packaging adoption decision
 
 - Adopted RO-Crate metadata as a bounded provenance envelope, emit BagIt only
