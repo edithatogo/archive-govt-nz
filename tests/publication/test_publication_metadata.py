@@ -41,8 +41,7 @@ def test_taxonomy_alignment_validation_file_is_machine_readable() -> None:
     )
     taxonomy_validation = json.loads(
         (
-            root
-            / "evidence/publication-metadata/taxonomy-alignment-validation.json"
+            root / "evidence/publication-metadata/taxonomy-alignment-validation.json"
         ).read_text()
     )
 

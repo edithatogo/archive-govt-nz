@@ -193,7 +193,7 @@
   - [x] Apply byte policy before and during transfer
   - [x] Stream through bounded chunks to atomic temporary objects
   - [ ] Enforce time, redirect, decompression, storage, and concurrency bounds
-  - [ ] Record transport and attempt receipts
+  - [x] Record transport and attempt receipts
   - [x] Promote only verified objects
   - [x] Make streaming tests green
 

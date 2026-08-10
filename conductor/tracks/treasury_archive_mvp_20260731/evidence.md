@@ -469,3 +469,12 @@ used because its Python 3.14 runtime path fails before mutation execution.
 | Disappearance tombstone | passed | Explicit `source_disappeared` reason and preserved previous fingerprint |
 | Policy-change tombstone | passed | Explicit `policy_changed` reason and preserved previous fingerprint |
 | Static assurance | passed | Ruff and strict Pyright passed for ledger/versioning contracts |
+
+## Bounded capture attempt receipts - 2026-08-10
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Attempt receipts | passed | Typed redacted receipts cover redirects, captures, bounded status failures, validators, size, timeout, and transport outcomes |
+| Capture contracts | passed | 12 focused tests |
+| Sensitive URL handling | passed | Query credentials are redacted in receipts |
+| Remaining bounds | open | Decompression, ranges, quarantine, and batch-level concurrency/storage evidence remain pending |

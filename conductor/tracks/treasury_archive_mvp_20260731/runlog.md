@@ -800,3 +800,13 @@
   objects, versions, publications, and provenance edges remain transactional.
 - Added disappearance and policy-change tombstone contracts.
 - Versioning contracts passed: 3 tests; Ruff and strict Pyright passed.
+
+### 2026-08-10 — bounded capture attempt receipts
+
+- Added typed, redacted attempt receipts for redirects, successful captures,
+  retryable/terminal statuses, validator and size failures, timeouts, and
+  transport errors.
+- Capture-focused contracts passed: 12 tests; Ruff and strict Pyright passed.
+- Existing byte, timeout, redirect, and validator bounds remain enforced.
+- Decompression, range, quarantine, and batch-level concurrency/storage
+  evidence remain open and are not claimed complete.
