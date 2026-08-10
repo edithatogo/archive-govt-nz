@@ -522,6 +522,15 @@ transfer: 0 eligible, 74 terminal, and 17 restricted.
 | Cryptographic signing | external gate | No signing key or release approval is present |
 | Publication safety | preserved | Verification does not authorize publication |
 
+## Bounded capture progress receipts - 2026-08-11
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Outcome counts | passed | Enabled runs count captured, unavailable, failed, and deferred states |
+| Budget receipt | passed | Storage, resource, concurrency, source-rate, and duration limits recorded |
+| Checkpoint behavior | passed | Atomic resumable checkpoint and completed-resource skip contracts |
+| Transfer gate | preserved | Explicit `--enable` remains required |
+
 ## Phase 5 layer-count reconciliation - 2026-08-10
 
 | Layer | Manifest | Observed | State |

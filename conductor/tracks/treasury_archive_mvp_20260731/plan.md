@@ -308,7 +308,7 @@
   - [ ] Record captured, unavailable, restricted, oversized, quarantined,
         retryable, and terminal outcomes
   - [x] Keep suspicious content outside publication roots
-  - [ ] Produce bounded progress and checkpoint evidence
+  - [x] Produce bounded progress and checkpoint evidence
 
 - [~] Task: Reconcile complete capture coverage [M-13, M-14]
   - [x] Compare discovery, attempts, objects, versions, and derivatives

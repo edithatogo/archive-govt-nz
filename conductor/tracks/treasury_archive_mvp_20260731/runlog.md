@@ -842,6 +842,14 @@
   are external gates.
 - Attestation contracts passed: 2 tests; Ruff and strict Pyright passed.
 
+### 2026-08-11 — bounded capture progress receipts
+
+- Enabled capture runs now emit deterministic outcome counts and active storage,
+  resource, concurrency, source-rate, and duration budgets.
+- Resumable checkpoints remain atomic; the no-enable path still performs no
+  transfer.
+- Capture-runner contracts passed: 3 tests; Ruff and strict Pyright passed.
+
 ### 2026-08-10 — Phase 5 layer-count reconciliation
 
 - Added executable reconciliation across release-manifest, raw CKAN,

@@ -167,10 +167,26 @@ async def _run(args: argparse.Namespace) -> int:  # noqa: C901, PLR0915
                 await persist()
 
     await asyncio.gather(*(one(item) for item in eligible))
+    counts: dict[str, int] = {}
+    for item in results:
+        state = str(item.get("state", "unknown"))
+        counts[state] = counts.get(state, 0) + 1
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(
         json.dumps(
-            {"schema_version": "archive-govt-nz.capture-run/v1", "results": results},
+            {
+                "schema_version": "archive-govt-nz.capture-run/v1",
+                "results": results,
+                "counts": counts,
+                "budget": {
+                    "max_total_bytes": args.max_total_bytes,
+                    "max_resources": args.max_resources,
+                    "concurrency": args.concurrency,
+                    "max_requests_per_second": args.max_requests_per_second,
+                    "max_duration_seconds": args.max_duration_seconds,
+                },
+                "payload_transfer": True,
+            },
             indent=2,
         )
         + "\n"
