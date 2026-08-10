@@ -1,0 +1,29 @@
+{
+  "schema_version": "archive-govt-nz.capture-authority/v1",
+  "authorized_at": "2026-08-11",
+  "authority_source": "user decision in Codex task",
+  "scope": {
+    "payload_capture": "eligible Treasury resources",
+    "rights_and_availability_assertion": "user states all Treasury resources are approved and available",
+    "publication": "not authorized by this record"
+  },
+  "safety": {
+    "https_required": true,
+    "redirect_and_response_bounds": true,
+    "quarantine_bypass": false,
+    "restricted_or_unusable_sources": "retain explicit outcomes"
+  },
+  "execution": {
+    "discovery": "build/live/authorized-20260811",
+    "preflight": "build/live/authorized-20260811/preflight.json",
+    "capture": "build/live/authorized-20260811/capture-run.json",
+    "captured": 12,
+    "failed_or_unusable": 79,
+    "payload_transfer": true,
+    "publication": "not attempted"
+  },
+  "limitations": [
+    "User authority does not make HTTP sources safe to fetch.",
+    "403 and other terminal source responses remain unavailable until the source serves an eligible response or an independently authorized secure replacement is supplied."
+  ]
+}

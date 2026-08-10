@@ -17,6 +17,7 @@ from archive_govt_nz.capture import CaptureConfig, CaptureError, capture_url
 from archive_govt_nz.object_store import ContentAddressedStore
 
 HTTP_OK = 200
+ELIGIBLE_STATUS_BOUNDARY = 400
 
 
 RELEASE_AUTHORIZATION_ENV = "ARCHIVE_GOVT_NZ_RELEASE_GATE_APPROVED"
@@ -25,6 +26,28 @@ RELEASE_AUTHORIZATION_ENV = "ARCHIVE_GOVT_NZ_RELEASE_GATE_APPROVED"
 def _authorization_granted() -> bool:
     value = os.environ.get(RELEASE_AUTHORIZATION_ENV, "").strip().lower()
     return value in {"1", "true", "yes", "on"}
+
+
+def _preflight_observed_ids(results: list[dict[str, Any]]) -> set[object]:
+    """Extract successful secure probes from both receipt layouts."""
+    observed: set[object] = set()
+    for item in results:
+        if item.get("state") == "observed" and item.get("status_code") == HTTP_OK:
+            observed.add(item.get("resource_id"))
+        if item.get("state") != "secure-source-observed":
+            continue
+        attempts = item.get("attempts", [])
+        typed_attempts = (
+            cast("list[dict[str, Any]]", attempts) if isinstance(attempts, list) else []
+        )
+        if any(
+            attempt.get("state") == "observed"
+            and isinstance(attempt.get("status_code"), int)
+            and cast("int", attempt["status_code"]) < ELIGIBLE_STATUS_BOUNDARY
+            for attempt in typed_attempts
+        ):
+            observed.add(item.get("resource_id"))
+    return observed
 
 
 async def _run(args: argparse.Namespace) -> int:  # noqa: C901, PLR0915
@@ -54,11 +77,7 @@ async def _run(args: argparse.Namespace) -> int:  # noqa: C901, PLR0915
     preflight_results = cast(
         "list[dict[str, Any]]", (preflight or {}).get("results", [])
     )
-    observed: set[object] = {
-        item.get("resource_id")
-        for item in preflight_results
-        if item.get("state") == "observed" and item.get("status_code") == HTTP_OK
-    }
+    observed = _preflight_observed_ids(preflight_results)
     eligible = [
         item
         for item in outcomes

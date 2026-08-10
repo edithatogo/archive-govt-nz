@@ -922,3 +922,12 @@
 - Decoded compressed streams now fail closed as `decompression_limit` when the
   post-decompression byte bound is exceeded.
 - Capture contracts passed: 9 focused tests; Ruff and strict Pyright passed.
+
+### 2026-08-11 — authorized Treasury capture rerun
+
+- Recorded user authorization for eligible Treasury payload capture.
+- Re-ran bounded discovery and preflight: 91 resources discovered, 12 secure
+  sources observed, and 79 remained unusable under the HTTPS/response policy.
+- Fixed the capture runner to admit nested `secure-source-observed` preflight
+  receipts; the authorized run captured all 12 observed resources successfully.
+- No publication action was attempted; HTTP/403 sources remain explicit outcomes.

@@ -33,6 +33,63 @@ def test_capture_runner_defaults_to_no_transfer(tmp_path: Path) -> None:
     assert not output.exists()
 
 
+def test_capture_runner_admits_nested_secure_probe_receipt(tmp_path: Path) -> None:
+    """Secure-source preflight receipts admit nested successful attempts."""
+    plan = tmp_path / "plan.json"
+    plan.write_text(
+        json.dumps(
+            {
+                "outcomes": [
+                    {
+                        "resource_id": "r1",
+                        "source_url": "http://unsafe.example/data",
+                        "decision": {"disposition": "restricted", "declared_size": 1},
+                    }
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+    preflight = tmp_path / "preflight.json"
+    preflight.write_text(
+        json.dumps(
+            {
+                "results": [
+                    {
+                        "resource_id": "r1",
+                        "state": "secure-source-observed",
+                        "attempts": [{"state": "observed", "status_code": 200}],
+                    }
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+    output = tmp_path / "run.json"
+    result = subprocess.run(
+        [
+            "uv",
+            "run",
+            "--locked",
+            "python",
+            "tools/run_capture_batch.py",
+            "--plan",
+            str(plan),
+            "--preflight",
+            str(preflight),
+            "--output",
+            str(output),
+            "--object-root",
+            str(tmp_path / "objects"),
+            "--enable",
+        ],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    assert '"attempted": 1' in result.stdout
+
+
 def test_capture_runner_writes_resumable_checkpoint_and_skips_completed(
     tmp_path: Path,
 ) -> None:

@@ -588,3 +588,14 @@ Receipt: `evidence/phase-5-layer-reconciliation.json` and `.md`.
 | WARC bound | passed | `max_warc_bytes` prevents unbounded WARC body buffering; payload capture remains separate |
 | Capture contracts | passed | 9 focused tests; Ruff and strict Pyright passed |
 | Remaining bounds | open | Compression-ratio telemetry and authorized payload transfer remain external follow-up gates |
+
+## Authorized Treasury capture rerun - 2026-08-11
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Capture authority | recorded | User authorized eligible Treasury payload capture and asserted availability/approval |
+| Discovery | passed | Fresh bounded CKAN observation found 54 datasets and 91 resources |
+| Preflight | passed | 12 secure sources observed; 79 remained tombstone-required due to HTTP, 403, or no eligible secure source |
+| Payload capture | passed-with-limitations | 12 resources captured under bounded budgets; no failures among attempted resources |
+| Safety boundary | preserved | HTTPS, response, redirect, storage, and quarantine safeguards were not bypassed |
+| Publication | not attempted | Hugging Face/Zenodo publication remains separately gated |
