@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import asyncio
 import json
+import os
 from pathlib import Path
 from time import monotonic
 from typing import Any, cast
@@ -18,11 +19,30 @@ from archive_govt_nz.object_store import ContentAddressedStore
 HTTP_OK = 200
 
 
+RELEASE_AUTHORIZATION_ENV = "ARCHIVE_GOVT_NZ_RELEASE_GATE_APPROVED"
+
+
+def _authorization_granted() -> bool:
+    value = os.environ.get(RELEASE_AUTHORIZATION_ENV, "").strip().lower()
+    return value in {"1", "true", "yes", "on"}
+
+
 async def _run(args: argparse.Namespace) -> int:  # noqa: C901, PLR0915
     """Capture eligible URLs under one bounded budget."""
     if not args.enable:
         print(json.dumps({"status": "not-enabled", "payload_transfer": False}))
         return 0
+    if args.require_release_authorization and not _authorization_granted():
+        print(
+            json.dumps(
+                {
+                    "status": "not-authorized",
+                    "error_class": "release_gate_approval_missing",
+                    "payload_transfer": False,
+                }
+            )
+        )
+        return 2
     plan = json.loads(args.plan.read_text(encoding="utf-8"))
     outcomes = plan.get("outcomes", [])
     preflight: dict[str, Any] | None = None
@@ -219,6 +239,11 @@ def main() -> int:
     parser.add_argument("--timeout-seconds", type=float, default=60.0)
     parser.add_argument("--max-duration-seconds", type=float, default=3600.0)
     parser.add_argument("--checkpoint", type=Path)
+    parser.add_argument(
+        "--require-release-authorization",
+        action="store_true",
+        help="Require an explicit release-gate approval environment variable.",
+    )
     return asyncio.run(_run(parser.parse_args()))
 
 
