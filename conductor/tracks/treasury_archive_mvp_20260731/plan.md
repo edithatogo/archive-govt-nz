@@ -308,7 +308,7 @@
   - [ ] Record captured, unavailable, restricted, oversized, quarantined,
         retryable, and terminal outcomes
   - [x] Keep suspicious content outside publication roots
-  - [ ] Produce bounded progress and checkpoint evidence
+  - [x] Produce bounded progress and checkpoint evidence
 
 - [~] Task: Reconcile complete capture coverage [M-13, M-14]
   - [x] Compare discovery, attempts, objects, versions, and derivatives
@@ -357,8 +357,8 @@
 
 - [~] Task: Implement scheduled capture controls [M-15]
   - [x] Require explicit enablement
-  - [ ] Enforce storage, duration, concurrency, and source-rate budgets
-  - [ ] Support resumable checkpoints and bounded failures
+  - [x] Enforce storage, duration, concurrency, and source-rate budgets
+  - [x] Support resumable checkpoints and bounded failures
   - [x] Exclude quarantined and restricted objects
 
 - [x] Task: Implement dependency and pre-release lanes [S-04]
@@ -465,7 +465,7 @@
   - [x] Review completeness and publication claims
   - [x] Resolve or explicitly block every critical finding; M-06 and M-14 remain outside this task
 
-- [ ] Task: Publish final evidence ledger [M-13, M-19]
+- [x] Task: Publish final evidence ledger [M-13, M-19]
   - [x] Generate final Markdown and JSON reports
   - [x] Reconcile counts and remote identifiers
   - [x] Record limitations, commands, and revisions

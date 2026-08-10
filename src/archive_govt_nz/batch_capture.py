@@ -12,9 +12,15 @@ class BatchBudget:
     max_total_bytes: int = 10 * 1024 * 1024 * 1024
     max_resources: int = 1000
     concurrency: int = 4
+    max_requests_per_second: float = 4.0
 
     def __post_init__(self) -> None:
-        if self.max_total_bytes < 1 or self.max_resources < 1 or self.concurrency < 1:
+        if (
+            self.max_total_bytes < 1
+            or self.max_resources < 1
+            or self.concurrency < 1
+            or self.max_requests_per_second <= 0
+        ):
             raise ValueError("invalid_batch_budget")
 
 

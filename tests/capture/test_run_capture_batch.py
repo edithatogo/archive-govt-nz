@@ -76,3 +76,45 @@ def test_capture_runner_writes_resumable_checkpoint_and_skips_completed(
     subprocess.run(command, check=True, capture_output=True, text=True)
     second = json.loads(checkpoint.read_text(encoding="utf-8"))
     assert len(second["results"]) == 1
+
+
+def test_capture_runner_records_bounded_progress_receipt(tmp_path: Path) -> None:
+    """Enabled runs expose outcome counts and all active budgets."""
+    plan = tmp_path / "plan.json"
+    plan.write_text(
+        json.dumps(
+            {
+                "outcomes": [
+                    {
+                        "resource_id": "r1",
+                        "source_url": "http://unsafe.example/data",
+                        "decision": {"disposition": "eligible", "declared_size": 1},
+                    }
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+    output = tmp_path / "run.json"
+    subprocess.run(
+        [
+            "uv",
+            "run",
+            "--locked",
+            "python",
+            "tools/run_capture_batch.py",
+            "--plan",
+            str(plan),
+            "--output",
+            str(output),
+            "--object-root",
+            str(tmp_path / "objects"),
+            "--enable",
+        ],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    receipt = json.loads(output.read_text(encoding="utf-8"))
+    assert receipt["counts"] == {"unavailable": 1}
+    assert receipt["budget"]["max_requests_per_second"] == 4.0

@@ -52,6 +52,7 @@ async def _run(args: argparse.Namespace) -> int:  # noqa: C901, PLR0915
             max_total_bytes=args.max_total_bytes,
             max_resources=args.max_resources,
             concurrency=args.concurrency,
+            max_requests_per_second=args.max_requests_per_second,
         ),
         planned_resources=len(eligible),
         planned_bytes=sum(
@@ -77,6 +78,19 @@ async def _run(args: argparse.Namespace) -> int:  # noqa: C901, PLR0915
             return 2
     completed = {item.get("resource_id") for item in results}
     checkpoint_lock = asyncio.Lock()
+    rate_lock = asyncio.Lock()
+    last_request = 0.0
+    request_interval = 1.0 / args.max_requests_per_second
+
+    async def acquire_rate_slot() -> None:
+        """Enforce a process-wide minimum interval between source requests."""
+        nonlocal last_request
+        async with rate_lock:
+            now = monotonic()
+            delay = request_interval - (now - last_request)
+            if delay > 0:
+                await asyncio.sleep(delay)
+            last_request = monotonic()
 
     async def persist() -> None:
         if checkpoint_path is None:
@@ -126,6 +140,7 @@ async def _run(args: argparse.Namespace) -> int:  # noqa: C901, PLR0915
                     await persist()
                 return
             try:
+                await acquire_rate_slot()
                 async with httpx.AsyncClient(timeout=args.timeout_seconds) as client:
                     result = await capture_url(
                         client,
@@ -152,10 +167,26 @@ async def _run(args: argparse.Namespace) -> int:  # noqa: C901, PLR0915
                 await persist()
 
     await asyncio.gather(*(one(item) for item in eligible))
+    counts: dict[str, int] = {}
+    for item in results:
+        state = str(item.get("state", "unknown"))
+        counts[state] = counts.get(state, 0) + 1
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(
         json.dumps(
-            {"schema_version": "archive-govt-nz.capture-run/v1", "results": results},
+            {
+                "schema_version": "archive-govt-nz.capture-run/v1",
+                "results": results,
+                "counts": counts,
+                "budget": {
+                    "max_total_bytes": args.max_total_bytes,
+                    "max_resources": args.max_resources,
+                    "concurrency": args.concurrency,
+                    "max_requests_per_second": args.max_requests_per_second,
+                    "max_duration_seconds": args.max_duration_seconds,
+                },
+                "payload_transfer": True,
+            },
             indent=2,
         )
         + "\n"
@@ -183,6 +214,7 @@ def main() -> int:
     parser.add_argument("--max-total-bytes", type=int, default=10 * 1024 * 1024 * 1024)
     parser.add_argument("--max-resources", type=int, default=1000)
     parser.add_argument("--concurrency", type=int, default=4)
+    parser.add_argument("--max-requests-per-second", type=float, default=4.0)
     parser.add_argument("--max-resource-bytes", type=int, default=512 * 1024 * 1024)
     parser.add_argument("--timeout-seconds", type=float, default=60.0)
     parser.add_argument("--max-duration-seconds", type=float, default=3600.0)

@@ -826,6 +826,30 @@
 - Preview confirms no payload transfer authorization; live preflight and rights
   gates remain separate.
 
+### 2026-08-10 — scheduled capture budget hardening
+
+- Added a positive source-rate budget to `BatchBudget` and enforced a shared
+  request interval in the resumable capture runner.
+- Storage, duration, concurrency, and source-rate controls now fail closed;
+  checkpoint persistence remains atomic and resumable.
+- Capture-control contracts passed: 6 tests; Ruff and strict Pyright passed.
+
+### 2026-08-10 — attestation verification hardening
+
+- Added optional detached-SHA-256 verification for release attestations.
+- Mismatched detached digests fail closed with `signature_mismatch`; absent
+  signatures remain explicitly `not-signed` because signing keys and approval
+  are external gates.
+- Attestation contracts passed: 2 tests; Ruff and strict Pyright passed.
+
+### 2026-08-11 — bounded capture progress receipts
+
+- Enabled capture runs now emit deterministic outcome counts and active storage,
+  resource, concurrency, source-rate, and duration budgets.
+- Resumable checkpoints remain atomic; the no-enable path still performs no
+  transfer.
+- Capture-runner contracts passed: 3 tests; Ruff and strict Pyright passed.
+
 ### 2026-08-10 — Phase 5 layer-count reconciliation
 
 - Added executable reconciliation across release-manifest, raw CKAN,
@@ -877,3 +901,12 @@
 - Reconciled phase-9 Zenodo publication against local final reconciliation evidence;
   DOI `10.5281/zenodo.21728726` is confirmed against `evidence/phase-9-zenodo-publication.json`
   and `evidence/phase-10-final-reconciliation.json`.
+
+### 2026-08-10 — Phase 10 closeout checkpoint
+
+- Added `evidence/phase-10-closeout-checkpoint.md` and
+  `evidence/phase-10-closeout-checkpoint.json` as acceptance checkpoint artifacts.
+- Added an issue-11 closeout status that records currently green deterministic
+  gates, unresolved blockers, and publication-state constraints.
+- Explicitly noted that clean-environment reproduction, full payload policy completion,
+  and external publication transitions are still blocked.
