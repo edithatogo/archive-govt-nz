@@ -53,7 +53,6 @@ def test_zenodo_release_is_reconciled_before_claimed_ready() -> None:
         ).read_text()
     )
 
-<<<<<<< HEAD
     assert phase_10["status"] == "reconciled"
     assert phase_10["checks"]["release_reconciled"] is True
     assert phase_10["publication"]["zenodo"] == phase_9["doi"]
