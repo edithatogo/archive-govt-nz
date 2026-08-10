@@ -36,6 +36,7 @@ def test_enabled_publication_fails_closed_without_credential(
         )
     assert raised.value.error_class == "credential_missing"
 
+
 def test_zenodo_release_is_reconciled_before_claimed_ready() -> None:
     """Issue #10: finalize Zenodo evidence only when release is reconciled."""
     root = Path(__file__).parents[2]

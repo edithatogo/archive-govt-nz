@@ -18,5 +18,6 @@ def test_evidence_ledger_preserves_stage_separation() -> None:
     document = json.loads((root / "evidence/archive-evidence-ledger.json").read_text())
     states = {item["stage"]: item["state"] for item in document["stages"]}
     assert states["validated"] == "software-gates-passed"
-    assert states["uploaded"] == "not-authorized"
-    assert states["released"] == "not-released"
+    assert states["uploaded"] == "uploaded-remotely-verified"
+    assert states["remotely-verified"] == "remote-readback-verified"
+    assert states["released"] == "reconciled-release"

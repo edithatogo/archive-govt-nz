@@ -402,15 +402,15 @@
   - [x] Verify representative records, sizes, Parquet, and Viewer state
   - [x] Record upload and remote verification separately
 
-- [x] Task: Reconcile rolling update behaviour [M-16] (offline evidence; remote publication remains gated)
-  - [ ] Verify unchanged idempotency
-  - [ ] Verify a bounded changed version and history
-  - [ ] Verify tombstones do not erase prior history
+- [x] Task: Reconcile rolling update behaviour [M-16]
+  - [x] Verify unchanged idempotency
+  - [x] Verify a bounded changed version and history
+  - [x] Verify tombstones do not erase prior history
 
-- [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
-  - [ ] Run publication and remote-readback gates
-  - [ ] Reconcile local and Hugging Face manifests
-  - [ ] Record repository, revision, Viewer, and checkpoint evidence
+- [x] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+  - [x] Run publication and remote-readback gates
+  - [x] Reconcile local and Hugging Face manifests
+  - [x] Record repository, revision, Viewer, and checkpoint evidence
 
 ## Phase 9: Immutable Zenodo release
 

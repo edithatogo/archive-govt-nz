@@ -801,6 +801,15 @@
 - Added disappearance and policy-change tombstone contracts.
 - Versioning contracts passed: 3 tests; Ruff and strict Pyright passed.
 
+### 2026-08-10 — Phase 5 layer-count reconciliation
+
+- Added executable reconciliation across release-manifest, raw CKAN,
+  captured-object, and derivative counts.
+- Captured objects and derivative artefacts reconcile: 12 and 3.
+- Raw CKAN responses do not reconcile: manifest claims 7, referenced local raw
+  directory contains 5. The discrepancy is preserved as a blocker; no silent
+  completeness claim was made.
+
 ### 2026-08-10 — manifest receipts and execution context
 
 - Extended deterministic provenance manifests with transformation, validation,
@@ -833,3 +842,13 @@
 - The raw layer is independently SHA-256 addressed in the derivative receipt;
   unknown CKAN fields remain preserved in that original layer.
 - Derivative-focused tests, Ruff, and strict Pyright passed.
+
+### 2026-08-10 — Phase 8–9 publication checkpoint
+
+- Re-ran phase-8 publication-readback checks with verified remote revision,
+  integrity, and Viewer evidence in `evidence/phase-8-hf-publication-verification.json`.
+- Confirmed local manifest and rolling-manifest reconciliation for unchanged, changed,
+  and tombstone cases via existing offline contracts and bounded tests.
+- Reconciled phase-9 Zenodo publication against local final reconciliation evidence;
+  DOI `10.5281/zenodo.21728726` is confirmed against `evidence/phase-9-zenodo-publication.json`
+  and `evidence/phase-10-final-reconciliation.json`.

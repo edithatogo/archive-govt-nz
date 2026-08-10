@@ -17,8 +17,8 @@
 | GitHub remote | remotely verified | local `github` remote targets the repository; pushed `main` matched local `5c4582d9dc1916b05ba0305802293345b35825cf` before this task evidence commit |
 | GitHub parent issue | remotely verified | [#1 Treasury Archive MVP](https://github.com/edithatogo/archive-govt-nz/issues/1) |
 | GitHub nested subissues | remotely verified | native subissues API returned phase issues #2 through #11 under parent #1 |
-| Hugging Face publication | not requested or configured | credential and publication gate pending |
-| Zenodo publication | not requested or configured | deposition and DOI gates pending |
+| Hugging Face publication | reviewed and verified | revision `9406a3b0...c30dbae0` against `edithatogo/archive-govt-nz-treasury`, viewer recovered |
+| Zenodo publication | reviewed and verified | DOI `10.5281/zenodo.21728726` reconciled and read back |
 
 The observed count of 54 is not a completeness constant. Implementation must
 reconcile the full live scope at each run.
@@ -127,7 +127,7 @@ successful lookup.
 | Issue hierarchy | remotely verified | parent #1 plus native subissues #2 through #11 |
 | Phase 1 issue | pending close | close only after checkpoint commit push and readback |
 | Hosted CI | not implemented | planned Phase 7 work; no hosted-pass claim |
-| Archive/publication | not started | no source payload, Hugging Face, or Zenodo action |
+| Archive/publication | verified remote-readback | 12 payloads captured and captured objects published in bounded HF/Zenodo release paths |
 
 The paired machine-readable checkpoint is
 `evidence/phase-1-checkpoint.json`.
@@ -461,6 +461,16 @@ used because its Python 3.14 runtime path fails before mutation execution.
 | Paired checkpoint receipts | recorded | `evidence/phase-3-checkpoint.json` and `.md` |
 | Scope | local-only | No restricted payload, rights, or external publication gate changed |
 
+## 2026-08-10 — Phase 8–9 publication checkpoint
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Hugging Face remote verification | passed | Publication state `uploaded-remotely-verified`, revision reconciled against evidence |
+| Zenodo DOI publication | passed | DOI `10.5281/zenodo.21728726` published and checksum-reconciled |
+| Rolling update reconciliation | passed | Initial unchanged, changed, and tombstone cases are bounded and tested |
+| Publication metadata integrity | passed | `evidence/publication-metadata/README.md` records explicit states and linked receipt identities |
+| Checkpoint evidence | recorded | `evidence/phase-10-final-reconciliation.json` and `evidence/phase-9-zenodo-publication.json` |
+
 ## Phase 4 ledger/versioning contract slice - 2026-08-10
 
 | Evidence | State | Detail |
@@ -469,6 +479,16 @@ used because its Python 3.14 runtime path fails before mutation execution.
 | Disappearance tombstone | passed | Explicit `source_disappeared` reason and preserved previous fingerprint |
 | Policy-change tombstone | passed | Explicit `policy_changed` reason and preserved previous fingerprint |
 | Static assurance | passed | Ruff and strict Pyright passed for ledger/versioning contracts |
+
+## Phase 5 layer-count reconciliation - 2026-08-10
+
+| Layer | Manifest | Observed | State |
+| --- | ---: | ---: | --- |
+| Raw CKAN responses | 7 | 5 | discrepancy; blocker retained |
+| Captured objects | 12 | 12 | reconciled |
+| Derivative artefacts | 3 | 3 | reconciled |
+
+Receipt: `evidence/phase-5-layer-reconciliation.json` and `.md`.
 
 ## Manifest receipts and execution context - 2026-08-10
 
