@@ -24,7 +24,7 @@
     "supply_chain": {
       "audit": "passed",
       "licenses": "passed",
-      "secrets": "passed",
+      "credential_scan": "passed",
       "sbom": "passed"
     }
   },
