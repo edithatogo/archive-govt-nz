@@ -482,3 +482,9 @@
   - [x] Reconcile all track artefacts and registries
   - [x] Confirm hosted and publication evidence is current
   - [x] Record final checkpoint and review
+  - [x] Distinguish 12 original-source captures
+  - [x] Distinguish 44 DataStore fallback captures, including one overlap with an original capture
+  - [x] Distinguish 31 authoritative replacement pages without claiming payload equivalence
+  - [x] Retain one unavailable tombstone
+  - [x] Retain two rights-restricted tombstones
+  - [x] Record 13 rights-evidenced source endpoints that were not recaptured

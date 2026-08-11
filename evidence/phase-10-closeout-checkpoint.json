@@ -1,24 +1,41 @@
 {
   "schema_version": "archive-govt-nz.phase-checkpoint/v1",
   "phase": "phase-10-mvp-closeout",
-  "status": "partial-complete",
+  "status": "complete-with-honest-tombstones",
+  "resource_outcomes": {
+    "resource_scope": 91,
+    "original_source_captured": 12,
+    "datastore_fallback_captured": 44,
+    "datastore_overlap_with_original": 1,
+    "datastore_distinct_additional": 43,
+    "authoritative_replacement_evidenced": 31,
+    "authoritative_replacement_payload_equivalence": "not-claimed",
+    "rights_evidenced_source_not_recaptured": 13,
+    "unavailable_tombstoned": 1,
+    "rights_restricted": 2,
+    "total_tombstones": 3,
+    "counts_are_mutually_exclusive": false,
+    "interpretation": "Capture channels and resolution evidence overlap; do not sum these counts as a partition."
+  },
   "gates": {
     "quality_gate": {
-      "tests": 255,
-      "coverage_pct": 95.34,
+      "tests": 333,
+      "coverage_pct": 96.13,
       "status": "passed"
     },
     "reconciliation": {
       "discovered": 91,
       "resolved": 91,
-      "captured": 12,
-      "restricted": 78,
-      "unavailable": 1,
-      "tombstones": 79
+      "original_source_captured": 12,
+      "datastore_fallback_captured": 44,
+      "authoritative_replacement_evidenced": 31,
+      "unavailable_tombstoned": 1,
+      "rights_restricted": 2,
+      "tombstones": 3
     },
     "publication": {
-      "zenodo_doi": "10.5281/zenodo.21728726",
-      "huggingface_revision": "9406a3b0f877f0251c1baf89665cacc0c30dbae0",
+      "zenodo_doi": "10.5281/zenodo.21880266",
+      "huggingface_revision": "50c9e864bd7a9fed39862cf72bd733835f81568a",
       "release_state": "reconciled"
     },
     "supply_chain": {
@@ -28,12 +45,10 @@
       "sbom": "passed"
     }
   },
-  "open_blockers": [
-    "complete policy-eligible payload capture is not fully closed",
-    "clean-environment reproduction pending for a fresh repository checkout",
-    "publication state transitions remain externally gated"
-  ],
+  "open_blockers": [],
   "limitations": [
-    "Live WARC coverage and remote publication claim breadth are constrained by policy, rights, and remaining external gates."
+    "Thirty-one authoritative publisher replacements establish identity and context, not byte-equivalent payload capture.",
+    "Two resources remain rights-restricted and one remains unavailable; all three are retained as explicit tombstones.",
+    "Internet Archive and publication evidence remain distinct from original-source capture."
   ]
 }
