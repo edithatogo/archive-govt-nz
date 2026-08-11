@@ -19,6 +19,21 @@ class ReleasePackage:
     state: str
 
 
+_ARCHITECTURE_RELEASE_FILES = (
+    Path("docs/archive-system-architecture.md"),
+    Path("docs/archive-system-architecture.mmd"),
+    Path("docs/archive-system-architecture.svg"),
+)
+
+
+def architecture_release_inputs(root: Path) -> tuple[Path, ...]:
+    """Resolve canonical architecture artefacts for a future release package."""
+    files = tuple(root / relative for relative in _ARCHITECTURE_RELEASE_FILES)
+    if any(not path.is_file() for path in files):
+        raise ValueError("missing_architecture_release_input")
+    return files
+
+
 def build_release_package(
     files: list[Path], output: Path, root: Path
 ) -> ReleasePackage:
