@@ -55,9 +55,7 @@ def main() -> int:
     ]
     urls = list(
         dict.fromkeys(
-            str(item["source_url"])
-            for item in unresolved
-            if item.get("source_url")
+            str(item["source_url"]) for item in unresolved if item.get("source_url")
         )
     )
     records: list[dict[str, object]] = []
