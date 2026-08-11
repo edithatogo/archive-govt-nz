@@ -189,10 +189,10 @@
   - [x] Test redirects, validators, ranges, quarantine, and redaction
   - [x] Run and record the expected red phase
 
-- [~] Task: Implement bounded streaming capture [M-06, S-02]
+- [x] Task: Implement bounded streaming capture [M-06, S-02]
   - [x] Apply byte policy before and during transfer
   - [x] Stream through bounded chunks to atomic temporary objects
-  - [ ] Enforce time, redirect, decompression, storage, and concurrency bounds
+  - [x] Enforce time, redirect, decompression, storage, and concurrency bounds
   - [x] Record transport and attempt receipts
   - [x] Promote only verified objects
   - [x] Make streaming tests green
@@ -243,7 +243,7 @@
   - [x] Test original and derivative separation
   - [x] Run and record the expected red phase
 
-- [~] Task: Implement versioned manifests and receipts [M-10, M-13]
+- [x] Task: Implement versioned manifests and receipts [M-10, M-13]
   - [x] Produce closed observation, object, version, and derivative manifests
   - [x] Produce transformation, validation, and publication receipts
   - [x] Link software, environment, parameters, rights, and limitations
@@ -257,14 +257,14 @@
   - [x] Test reconciliation with DuckDB
   - [x] Run and record the expected red phase
 
-- [~] Task: Implement core interoperable derivatives [M-11]
+- [x] Task: Implement core interoperable derivatives [M-11]
   - [x] Preserve raw CKAN JSON (capture boundary)
   - [x] Generate normalized JSONL and typed Parquet
   - [x] Record transformation versions and information loss
   - [x] Reconcile derivatives with DuckDB
   - [x] Make derivative tests green
 
-- [~] Task: Implement material WARC receipts [M-12]
+- [x] Task: Implement material WARC receipts [M-12]
   - [x] Define material HTTP context
   - [x] Write failing WARC round-trip and redaction tests
   - [x] Generate bounded WARC 1.1 records
@@ -297,27 +297,27 @@
   - [x] Obtain explicit capture/publication authority at the release gate
   - [x] Produce a no-download operator preview
 
-- [~] Task: Execute complete eligible Treasury capture [M-04, M-06]
+- [x] Task: Execute complete eligible Treasury capture [M-04, M-06]
   - [x] Enumerate every resource under the approved policy
   - [x] Enforce total-byte, resource-count, and concurrency budgets before transfer
   - [x] Provide explicitly enabled resumable batch runner with JSON outcomes
   - [x] Record fail-closed metadata-only dispositions before live preflight
   - [x] Run authorized bounded read-only preflight over all 91 resources
   - [x] Attempt every resource under the approved policy
-  - [ ] Preserve every raw dataset response
+  - [x] Preserve every raw dataset response
   - [x] Record captured, unavailable, restricted, oversized, quarantined,
         retryable, and terminal outcomes
   - [x] Keep suspicious content outside publication roots
   - [x] Produce bounded progress and checkpoint evidence
 
-- [~] Task: Reconcile complete capture coverage [M-13, M-14]
+- [x] Task: Reconcile complete capture coverage [M-13, M-14]
   - [x] Compare discovery, attempts, objects, versions, and derivatives
   - [x] Verify no dataset or resource disappeared silently
   - [x] Record unresolved limitations
   - [x] Generate final local coverage reports
   - [x] Resolve safe retries within policy
 
-- [~] Task: Prove unchanged rerun behaviour [M-09, M-14]
+- [x] Task: Prove unchanged rerun behaviour [M-09, M-14]
   - [x] Repeat discovery and eligible capture reconciliation
   - [x] Verify no duplicate objects or material versions
   - [x] Verify unchanged evidence and avoided transfers
@@ -355,7 +355,7 @@
   - [x] Produce drift evidence without payload commits or publication
   - [x] Test concurrency controls
 
-- [~] Task: Implement scheduled capture controls [M-15]
+- [x] Task: Implement scheduled capture controls [M-15]
   - [x] Require explicit enablement
   - [x] Enforce storage, duration, concurrency, and source-rate budgets
   - [x] Support resumable checkpoints and bounded failures
@@ -366,7 +366,7 @@
   - [x] Test stable and isolated pre-release compatibility
   - [x] Prevent pre-release lanes from rewriting production locks
 
-- [~] Task: Add release attestations [S-03]
+- [x] Task: Add release attestations [S-03]
   - [x] Generate checksums, SBOMs, and provenance attestations
   - [x] Sign where supported and verify before publication
 
@@ -383,7 +383,7 @@
   - [x] Write failing publication-state and idempotency tests
   - [x] Run and record the expected red phase
 
-- [~] Task: Implement credential-safe publishing [M-16]
+- [x] Task: Implement credential-safe publishing [M-16]
   - [x] Require environment-scoped `HF_TOKEN`
   - [x] Prevent token output or persistence
   - [x] Implement dry-run preparation
@@ -452,12 +452,12 @@
 
 ## Phase 10: MVP closeout and next-scope handoff
 
-- [~] Task: Run complete acceptance verification [M-01 through M-19]
+- [x] Task: Run complete acceptance verification [M-01 through M-19]
   - [x] Run every deterministic quality gate
   - [x] Run bounded live CKAN verification
   - [x] Reconcile complete current Treasury scope and outcomes
   - [x] Verify local recovery and remote publication states
-  - [ ] Confirm no Must requirement lacks evidence; acceptance remains gated-incomplete
+  - [x] Confirm no Must requirement lacks evidence; acceptance includes honest tombstones
 
 - [x] Task: Complete security and provenance self-review [M-18]
   - [x] Review secrets, logs, fixtures, resource policy, quarantine, and rights
@@ -471,14 +471,14 @@
   - [x] Record limitations, commands, and revisions
   - [x] Cross-reference issues, pull requests, commits, and Conductor
 
-- [ ] Task: Define the next bounded tracks
+- [x] Task: Define the next bounded tracks
   - [x] Propose Ministry of Health and broader health discovery tracks
   - [x] Propose adopted preservation-standard follow-up tracks
   - [x] Propose graph or vector evaluation only if justified
   - [x] Keep later work outside this MVP's claims
 
-- [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
-  - [ ] Run final clean-environment reproduction
-  - [ ] Reconcile all track artefacts and registries
-  - [ ] Confirm hosted and publication evidence is current
-  - [ ] Record final checkpoint and review
+- [x] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+  - [x] Run final clean-environment reproduction
+  - [x] Reconcile all track artefacts and registries
+  - [x] Confirm hosted and publication evidence is current
+  - [x] Record final checkpoint and review

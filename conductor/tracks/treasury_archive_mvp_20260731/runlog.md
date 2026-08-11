@@ -1027,3 +1027,16 @@
 - Ran the required Windows repository harness: 333 tests passed, total coverage
   was 96.13%, all 26 critical mutation cases were killed, schemas passed, and
   dependency, licence, secret, and SBOM gates passed.
+
+### 2026-08-11 — final clean acceptance reproduction
+
+- Created a detached disposable worktree at source-resolution revision
+  `a9ea420872e2c3f4f6b2799d8eac302d34ce0508`.
+- The complete Windows validation harness passed from that clean worktree in
+  396.2 seconds with 333 tests and 96.13% coverage.
+- Verified the preserved raw CKAN response contains all 54 unique Treasury
+  dataset representations; recorded its SHA-256 in track evidence.
+- Reconciled stale parent task markers against code, tests, receipts, hosted
+  checks, and publication readback. No tombstone was promoted to a capture.
+- Verified the disposable worktree remained clean, removed it, and pruned only
+  its worktree metadata.

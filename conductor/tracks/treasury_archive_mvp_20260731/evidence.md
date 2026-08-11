@@ -687,3 +687,16 @@ Receipt: `evidence/phase-5-layer-reconciliation.json` and `.md`.
 | Schemas | passed | 12 schemas and two representative documents validated |
 | Supply chain | passed | Dependency audit, licence inventory, secret scan, and CycloneDX SBOM validation passed |
 | Phase 6 source resolution | complete-with-tombstones | Every resource has an explicit outcome; three NZDMO records remain evidence-backed tombstones rather than unsupported captures |
+
+## Final clean-environment acceptance - 2026-08-11
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Revision | passed | Detached clean worktree at `a9ea420872e2c3f4f6b2799d8eac302d34ce0508` |
+| Clean reproduction | passed | Required `scripts/validate.ps1` completed in 396.2 seconds; disposable worktree was clean and removed safely |
+| Raw CKAN scope | passed | Preserved `package_search-00000000.json` contains 54 results and 54 unique dataset IDs |
+| Raw CKAN integrity | passed | SHA-256 `439fd3e0ecde9470ba60ca07f91bcab26695776de79623c0f77d5e72b040f219` |
+| Streaming bounds | passed | Capture enforces request and total duration, redirects, decompression-aware bytes, storage failures, WARC bytes, and batch concurrency |
+| Hosted CI | passed | CI `31469899644`, CodeQL `31469899723`, and workflow policy `31469899698` succeeded on the exact revision |
+| Publications | passed | Hugging Face revision and Zenodo DOI/readback remain recorded separately from source-resolution outcomes |
+| Must requirements | passed-with-limitations | M-01 through M-19 have evidence; irrecoverable/rights-unevidenced resources remain tombstones and are not represented as payload captures |
