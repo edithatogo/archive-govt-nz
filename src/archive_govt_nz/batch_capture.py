@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from typing import Any
 
 
 @dataclass(frozen=True, slots=True)
@@ -53,3 +54,21 @@ def admit_batch(
             False, "byte_budget_exceeded", remaining_bytes, remaining_resources
         )
     return BatchDecision(True, "within_budget", remaining_bytes, remaining_resources)
+
+
+def select_eligible_outcomes(
+    outcomes: list[dict[str, Any]],
+    *,
+    securely_observed_ids: set[object] | None = None,
+) -> list[dict[str, Any]]:
+    """Select only policy-eligible resources; transport evidence cannot grant rights."""
+    selected = [
+        item
+        for item in outcomes
+        if item.get("decision", {}).get("disposition") == "eligible"
+    ]
+    if securely_observed_ids is None:
+        return selected
+    return [
+        item for item in selected if item.get("resource_id") in securely_observed_ids
+    ]

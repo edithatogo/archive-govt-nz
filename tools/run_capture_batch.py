@@ -12,7 +12,11 @@ from typing import Any, cast
 
 import httpx
 
-from archive_govt_nz.batch_capture import BatchBudget, admit_batch
+from archive_govt_nz.batch_capture import (
+    BatchBudget,
+    admit_batch,
+    select_eligible_outcomes,
+)
 from archive_govt_nz.capture import CaptureConfig, CaptureError, capture_url
 from archive_govt_nz.object_store import ContentAddressedStore
 
@@ -78,14 +82,10 @@ async def _run(args: argparse.Namespace) -> int:  # noqa: C901, PLR0915
         "list[dict[str, Any]]", (preflight or {}).get("results", [])
     )
     observed = _preflight_observed_ids(preflight_results)
-    eligible = [
-        item
-        for item in outcomes
-        if (
-            item["decision"]["disposition"] == "eligible"
-            or (preflight is not None and item.get("resource_id") in observed)
-        )
-    ]
+    eligible = select_eligible_outcomes(
+        outcomes,
+        securely_observed_ids=observed if preflight is not None else None,
+    )
     decision = admit_batch(
         BatchBudget(
             max_total_bytes=args.max_total_bytes,
@@ -224,7 +224,7 @@ async def _run(args: argparse.Namespace) -> int:  # noqa: C901, PLR0915
                     "max_requests_per_second": args.max_requests_per_second,
                     "max_duration_seconds": args.max_duration_seconds,
                 },
-                "payload_transfer": True,
+                "payload_transfer": bool(eligible),
             },
             indent=2,
         )

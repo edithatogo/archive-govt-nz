@@ -25,7 +25,7 @@ active only after the MVP checkpoint and their stated decision gates pass.
   *Proposed slug: `health_broader_discovery_20260801`*
 - [~] **Track 13: Preservation packaging conformance**
   *Proposed slug: `preservation_conformance_20260801`*
-- [~] **Track 14: Health payload capture**
+- [x] **Track 14: Health payload capture**
   *Link: [tracks/health_payload_capture_20260802/index.md](./tracks/health_payload_capture_20260802/index.md)*
 - [ ] **Deferred evaluation: graph/vector indexing**
   *Proposed slug: `graph_vector_evaluation_20260801`*

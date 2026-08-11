@@ -33,8 +33,8 @@ def test_capture_runner_defaults_to_no_transfer(tmp_path: Path) -> None:
     assert not output.exists()
 
 
-def test_capture_runner_admits_nested_secure_probe_receipt(tmp_path: Path) -> None:
-    """Secure-source preflight receipts admit nested successful attempts."""
+def test_secure_probe_cannot_override_restricted_rights(tmp_path: Path) -> None:
+    """Transport availability is never authority to capture a restricted resource."""
     plan = tmp_path / "plan.json"
     plan.write_text(
         json.dumps(
@@ -87,7 +87,9 @@ def test_capture_runner_admits_nested_secure_probe_receipt(tmp_path: Path) -> No
         capture_output=True,
         text=True,
     )
-    assert '"attempted": 1' in result.stdout
+    assert '"attempted": 0' in result.stdout
+    receipt = json.loads(output.read_text(encoding="utf-8"))
+    assert receipt["payload_transfer"] is False
 
 
 def test_capture_runner_writes_resumable_checkpoint_and_skips_completed(
