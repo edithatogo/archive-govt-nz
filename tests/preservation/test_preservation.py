@@ -19,6 +19,7 @@ def test_synthetic_fixture_hashes_close() -> None:
     assert result["synthetic"] is True
     assert result["valid"] is True
     assert validate_ro_crate(root)["valid"] is True
+    assert validate_bagit(root / "bagit")["valid"] is True
 
 
 def test_missing_profiles_are_explicitly_bounded(tmp_path: Path) -> None:

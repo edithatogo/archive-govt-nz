@@ -13,3 +13,6 @@
   `tests/tools/test_preservation_evaluation.py`.
 - Focused result: 4 passed. The fixture gate is closed for this slice; format
   conformance and independent-validator gates remain open.
+
+- Added the bounded BagIt fixture and verified payload manifest closure in the
+  focused preservation/evaluation test suite.

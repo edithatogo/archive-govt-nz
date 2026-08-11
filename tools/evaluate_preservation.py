@@ -5,7 +5,11 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from archive_govt_nz.preservation import validate_fixture, validate_ro_crate
+from archive_govt_nz.preservation import (
+    validate_bagit,
+    validate_fixture,
+    validate_ro_crate,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "evidence" / "preservation-packaging-evaluation.json"
@@ -87,6 +91,14 @@ def main() -> int:
             / "tracks"
             / "preservation_conformance_20260801"
             / "fixtures"
+        ),
+        "bagit_validation": validate_bagit(
+            ROOT
+            / "conductor"
+            / "tracks"
+            / "preservation_conformance_20260801"
+            / "fixtures"
+            / "bagit"
         ),
         "conformance_claim": "bounded-structural-evaluation-only",
     }
