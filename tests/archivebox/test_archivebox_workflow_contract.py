@@ -20,10 +20,15 @@ def test_archivebox_pilot_is_manual_digest_pinned_and_bounded() -> None:
     assert "--memory 4g" in text
     assert "--cpus 2" in text
     assert "--pids-limit 512" in text
+    assert "set -o pipefail" in text
     assert "--depth=0" in text
+    assert "init 2>&1 | tee" in text
+    assert "archivebox-init.log" in text
+    assert "archivebox-add.log" in text
     assert "--max-total-bytes 536870912" in text
     assert "--max-files 2000" in text
     assert "retention-days: 30" in text
+    assert "if: always()" in text
     assert "continue-on-error: true" not in text
 
 

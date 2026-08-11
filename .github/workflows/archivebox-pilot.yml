@@ -28,13 +28,19 @@ jobs:
           --prepared-at "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
       - name: Capture selected publisher pages
         run: |
+          set -o pipefail
           mkdir -p build/live/archivebox-pilot/archive
+          timeout 5m docker run --rm \
+            --memory 4g --cpus 2 --pids-limit 512 \
+            --volume "$PWD/build/live/archivebox-pilot/archive:/data" \
+            archivebox/archivebox@sha256:1a5a37331091d9df865ead2b9c231aa5a892fc26fe0422ce6140d9e2d9532327 \
+            init 2>&1 | tee build/live/archivebox-pilot/archivebox-init.log
           timeout 20m docker run --rm \
             --memory 4g --cpus 2 --pids-limit 512 \
             --volume "$PWD/build/live/archivebox-pilot/archive:/data" \
             --volume "$PWD/build/live/archivebox-pilot/urls.txt:/input/urls.txt:ro" \
             archivebox/archivebox@sha256:1a5a37331091d9df865ead2b9c231aa5a892fc26fe0422ce6140d9e2d9532327 \
-            add --depth=0 /input/urls.txt
+            add --depth=0 /input/urls.txt 2>&1 | tee build/live/archivebox-pilot/archivebox-add.log
       - name: Inventory and hash secondary outputs
         run: >-
           uv run --locked python tools/inventory_archivebox_pilot.py
@@ -45,6 +51,7 @@ jobs:
           --observed-at "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
           --max-total-bytes 536870912 --max-files 2000
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
         with:
           name: archivebox-preservation-pilot
           path: build/live/archivebox-pilot

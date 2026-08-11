@@ -22,3 +22,7 @@
 - Completed the full Windows validation harness: 323 tests, 96.01% overall
   branch coverage, all 24 targeted mutations killed, and all supply-chain gates
   passed.
+- Hosted run 31459916359 failed before capture because the fresh mounted
+  collection required `archivebox init`; no capture or admission was claimed.
+- Added bounded initialization and always-retained init/add diagnostic logs as
+  the retry correction.

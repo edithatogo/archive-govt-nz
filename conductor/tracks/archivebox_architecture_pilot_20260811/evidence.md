@@ -43,3 +43,12 @@ Final local results: 323 tests passed; 96.01% overall branch coverage; 100%
 ArchiveBox pilot line/branch coverage; all 24 targeted repository mutations
 killed (including 7/7 ArchiveBox mutations); 12 schemas validated; dependency
 audit, licence policy, secret scan, and 82-component CycloneDX SBOM passed.
+
+### Hosted pilot attempt 1
+
+Run [31459916359](https://github.com/edithatogo/archive-govt-nz/actions/runs/31459916359)
+failed closed before capture. Input validation and the immutable image pull
+passed; ArchiveBox v0.7.4 exited with `No archivebox index found` because the
+new mounted collection had not been initialized. Inventory and upload were
+skipped, and no capture or admission is claimed. The corrective task adds
+bounded `archivebox init` and always-retained diagnostic logs before retry.
