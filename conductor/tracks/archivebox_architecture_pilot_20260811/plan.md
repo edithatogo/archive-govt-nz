@@ -21,7 +21,7 @@
 
 ## Phase 3 - Assurance and hosted evidence
 
-- [~] Task: Run focused and complete local assurance gates
+- [x] Task: Run focused and complete local assurance gates
 - [ ] Task: Dispatch and reconcile one bounded hosted pilot
 - [ ] Task: Review capture utility, provenance value, and storage amplification
 - [ ] Task: Run Conductor self-review and resolve actionable findings

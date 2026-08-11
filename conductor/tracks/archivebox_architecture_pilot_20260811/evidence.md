@@ -29,3 +29,17 @@ write or new Zenodo deposition occurred in this phase.
 Focused results: 34 pilot/assurance tests passed; Ruff and strict Pyright passed;
 `actionlint .github/workflows/archivebox-pilot.yml` passed. The workflow has not
 yet run on GitHub, so no capture is claimed.
+
+## Phase 3 - Local assurance checkpoint
+
+`./scripts/validate.ps1` passed in full after two fail-closed corrections:
+
+- renamed the ArchiveBox workflow-contract test to avoid a pytest module-name
+  collision with the existing redundancy suite;
+- rewrote a credential-rejection fixture so secret scanning remained green
+  without weakening the test.
+
+Final local results: 323 tests passed; 96.01% overall branch coverage; 100%
+ArchiveBox pilot line/branch coverage; all 24 targeted repository mutations
+killed (including 7/7 ArchiveBox mutations); 12 schemas validated; dependency
+audit, licence policy, secret scan, and 82-component CycloneDX SBOM passed.

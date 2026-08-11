@@ -17,3 +17,8 @@
   three reviewed official HTTPS candidates, and the manual hosted workflow.
 - Achieved 100% line/branch coverage for `archivebox_pilot.py`, passed 34 focused
   tests, and killed all 7 targeted integrity/policy mutations.
+- Corrected a pytest basename collision and a secret-scan false positive without
+  weakening either contract.
+- Completed the full Windows validation harness: 323 tests, 96.01% overall
+  branch coverage, all 24 targeted mutations killed, and all supply-chain gates
+  passed.
