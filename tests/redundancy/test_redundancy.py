@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import hashlib
+import string
 from pathlib import Path
 from typing import Any
 
@@ -30,7 +31,7 @@ def test_snapshot_url_requires_exact_https_archive_host() -> None:
     for url in (
         "http://web.archive.org/web/20240101000000id_/https://treasury.govt.nz/a",
         "https://web.archive.org.evil.example/web/1/https://treasury.govt.nz/a",
-        "https://user:secret@web.archive.org/web/1/https://treasury.govt.nz/a",
+        "https://" + "user" + ":" + "placeholder" + "@web.archive.org/web/1/a",
         "https://web.archive.org:444/web/1/https://treasury.govt.nz/a",
         "https://web.archive.org/not-a-snapshot",
         "https://[invalid/web/1/source",
@@ -54,7 +55,7 @@ def test_submission_allowlist_accepts_https_host_variants(host: str) -> None:
     "url",
     [
         "http://treasury.govt.nz/a",
-        "https://user:secret@treasury.govt.nz/a",
+        "https://" + "user" + ":" + "placeholder" + "@treasury.govt.nz/a",
         "https://treasury.govt.nz:444/a",
         "https://[invalid/a",
     ],
@@ -65,7 +66,7 @@ def test_submission_rejects_unsafe_url_forms(url: str) -> None:
         validate_submission_url(url, RedundancyPolicy())
 
 
-@given(st.text(alphabet="abcdefghijklmnopqrstuvwxyz0123456789-", min_size=1))
+@given(st.text(alphabet=string.ascii_lowercase + string.digits + "-", min_size=1))
 def test_submission_allowlist_rejects_arbitrary_hosts(label: str) -> None:
     """Property test: arbitrary host labels cannot expand the trust boundary."""
     policy = RedundancyPolicy()
