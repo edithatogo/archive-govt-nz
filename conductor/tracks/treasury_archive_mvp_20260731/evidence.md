@@ -639,3 +639,14 @@ Receipt: `evidence/phase-5-layer-reconciliation.json` and `.md`.
 | HF read authentication | passed | Identity endpoint returned HTTP 200 |
 | HF write authorization | blocked | Upload endpoint returned HTTP 403; current token lacks repository write permission |
 | Zenodo publication | held | DOI/deposition held until HF write and remote verification succeed |
+
+## Approved release publication and remote verification - 2026-08-11
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Hugging Face upload | published | `edithatogo/archive-govt-nz-treasury`, revision `50c9e864bd7a9fed39862cf72bd733835f81568a` |
+| Hugging Face readback | verified | Remote manifest SHA-256 matches local manifest |
+| Zenodo deposition | published | DOI `10.5281/zenodo.21880266`, record `21880266` |
+| Zenodo readback | verified | `treasury-release-candidate.tar`, 5,980,160 bytes, MD5 `4565ae55226eceb60a52e99fed1bd2c6` |
+| Candidate integrity | verified | Package SHA-256 `960c1924c76e3d6e72948eb8b1ac6e76fd7158fbce164f801bb0338321208b9f` |
+| Publication scope | bounded | 47 original endpoints remain unresolved; fallback DataStore material is explicitly identified |

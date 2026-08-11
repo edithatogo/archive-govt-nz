@@ -965,6 +965,16 @@
 - Candidate SHA-256: `960c1924c76e3d6e72948eb8b1ac6e76fd7158fbce164f801bb0338321208b9f`.
 - Hugging Face read authentication passed, but the write attempt returned HTTP
   403. Zenodo deposition and DOI publication were held pending HF write access.
+
+### 2026-08-11 — approved publication completed
+
+- Replaced the insufficient Hugging Face credential through the browser-managed
+  token flow and stored it as the protected repository `HF_TOKEN` secret.
+- Uploaded and read back the approved candidate at HF revision
+  `50c9e864bd7a9fed39862cf72bd733835f81568a`.
+- Created, uploaded, published, and read back Zenodo record `21880266` with DOI
+  `10.5281/zenodo.21880266`; remote file size and MD5 match local evidence.
+- No credentials or token values were written to repository artefacts.
 ### 2026-08-11 — CKAN DataStore fallback assessment
 
 - Rechecked the existing CKAN probe receipt without transferring payloads.
