@@ -28,5 +28,7 @@ jobs:
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: scheduled-health-discovery
-          path: build/live/health-discovery.json
+          path: |
+            build/live/health-discovery.json
+            build/live/health-discovery-raw/
           if-no-files-found: error
