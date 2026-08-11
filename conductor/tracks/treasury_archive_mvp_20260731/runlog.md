@@ -992,3 +992,19 @@
   evidence. This is a fallback candidate inventory only; it does not promote
   API rows to captured payloads or waive format/rights validation.
 - Ruff and strict Pyright passed for the new tool.
+
+### 2026-08-11 — lawful replacement and redundancy search
+
+- Searched all 47 unresolved resources (36 unique URLs) for official HTTPS
+  replacements and Internet Archive snapshots.
+- Found 23 unique URLs with successful Internet Archive timemap captures;
+  downloaded and SHA-256 hashed 19 latest snapshots under bounded limits.
+- Recorded four failed snapshot downloads and thirteen unavailable/query-error
+  cases explicitly. No snapshot was promoted as an original-source capture.
+- Identified the Treasury's canonical Chief Executive Expenses publication
+  page and direct publisher attachments for the affected historical periods.
+- Anna's Archive was not queried or used; only lawful publisher and Internet
+  Archive lanes were used.
+- Added `tools/discover_replacement_urls.py`,
+  `tools/capture_internet_archive_backups.py`, and paired receipts. Ruff and
+  strict Pyright pass.
