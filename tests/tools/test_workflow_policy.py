@@ -47,3 +47,15 @@ def test_workflows_use_immutable_action_refs() -> None:
     assert "fail_ci_if_error: true" in ci
     assert "id-token: write" in ci
     assert "use_oidc: true" in ci
+
+
+def test_health_discovery_preserves_failure_receipts() -> None:
+    """Hosted source failures must still upload the bounded discovery receipt."""
+    root = Path(__file__).parents[2]
+    workflow = (root / ".github/workflows/scheduled-health-discovery.yml").read_text(
+        encoding="utf-8"
+    )
+    upload = workflow.split("uses: actions/upload-artifact@", maxsplit=1)[1]
+    assert "if: always()" in upload
+    assert "build/live/health-discovery.json" in upload
+    assert "if-no-files-found: error" in upload
