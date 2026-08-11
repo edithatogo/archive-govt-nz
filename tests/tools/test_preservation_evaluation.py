@@ -30,3 +30,4 @@ def test_preservation_evaluation_is_bounded_and_non_adopting() -> None:
     assert standards["RO-Crate"]["status"] == "adopted-profile"
     assert standards["BagIt"]["status"] == "adopted-at-release"
     assert standards["OCFL"]["status"] == "deferred"
+    assert document["ro_crate_validation"]["valid"] is True

@@ -18,6 +18,7 @@ def test_synthetic_fixture_hashes_close() -> None:
     result = validate_fixture(root)
     assert result["synthetic"] is True
     assert result["valid"] is True
+    assert validate_ro_crate(root)["valid"] is True
 
 
 def test_missing_profiles_are_explicitly_bounded(tmp_path: Path) -> None:
