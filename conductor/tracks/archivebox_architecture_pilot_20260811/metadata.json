@@ -10,5 +10,9 @@
     "mode": "continuous_autonomous",
     "stop_between_phases": false,
     "decision_policy": "../../autonomy-policy.json"
+  },
+  "github": {
+    "parent_issue": 48,
+    "phase_subissues": [49, 50, 51]
   }
 }
