@@ -1,0 +1,10 @@
+{
+  "schema_version": "archive-govt-nz.conductor-track/v1",
+  "track_id": "github_archive_rollout_20260811",
+  "title": "GitHub archive rollout: fyi-archive",
+  "status": "active",
+  "source_issue": 53,
+  "target_repository": "edithatogo/fyi-archive",
+  "publication_authorized": false,
+  "external_repository_edit_authorized": false
+}
