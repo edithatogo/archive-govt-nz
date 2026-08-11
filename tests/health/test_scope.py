@@ -32,3 +32,6 @@ def test_deduplication_is_stable_across_scopes() -> None:
 def test_deduplication_rejects_malformed_results() -> None:
     with pytest.raises(ValueError):  # noqa: PT011
         deduplicate_dataset_ids({"q": ["a", 3]})
+
+    with pytest.raises(TypeError):
+        deduplicate_dataset_ids({"q": "not-a-sequence"})

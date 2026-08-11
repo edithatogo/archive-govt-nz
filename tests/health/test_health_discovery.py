@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import pytest
 from hypothesis import given
 from hypothesis import strategies as st
 
@@ -84,3 +85,49 @@ def test_deterministic_simulation_records_changed_withdrawn_and_unchanged() -> N
         "unchanged": ["same"],
         "withdrawn": ["gone"],
     }
+
+
+@pytest.mark.parametrize("identifier", [None, "", 7])
+def test_dataset_identifier_must_be_a_nonempty_string(identifier: object) -> None:
+    """Malformed CKAN identifiers fail before normalization or reconciliation."""
+    record = _record("valid")
+    record["id"] = identifier
+    with pytest.raises(ValueError, match="invalid_dataset_id"):
+        normalize_scoped_records({"keyword": [record]})
+
+
+@pytest.mark.parametrize(
+    "result",
+    [
+        {"count": True, "results": []},
+        {"count": "1", "results": []},
+        {"count": 1, "results": {}},
+        {"count": 1, "results": ["not-a-record"]},
+    ],
+)
+def test_transport_reconciliation_rejects_malformed_results(
+    result: dict[str, object],
+) -> None:
+    """Transport parity never normalizes malformed action results."""
+    with pytest.raises(TypeError, match="invalid_action_result"):
+        reconcile_transport_results(None, result)
+
+
+def test_normalization_rejects_conflicting_cross_scope_metadata() -> None:
+    """The same identifier cannot silently acquire different metadata."""
+    left = _record("same")
+    right = _record("same")
+    right["title"] = "Conflicting title"
+    with pytest.raises(ValueError, match="conflicting_dataset_metadata"):
+        normalize_scoped_records({"keyword": [left], "group": [right]})
+
+
+def test_classification_handles_missing_organization_and_nonlist_resources() -> None:
+    """Optional malformed fields cannot grant rights or inflate resource counts."""
+    record = _record("sparse", licence=None)
+    record["organization"] = "not-an-object"
+    record["resources"] = "not-a-list"
+    classified = classify_dataset(record, scopes=("group", "group"))
+    assert classified["organization_id"] is None
+    assert classified["resource_count"] == 0
+    assert classified["scopes"] == ["group"]
