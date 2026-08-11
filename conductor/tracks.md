@@ -10,6 +10,9 @@ decision or safety boundary, and continue independent work while it is pending.
 - [~] **Track: Treasury Archive MVP**
   *Link: [tracks/treasury_archive_mvp_20260731/index.md](./tracks/treasury_archive_mvp_20260731/index.md)*
 
+- [~] **Track 15: Routine Internet Archive redundancy and triangulation**
+  *Link: [tracks/internet_archive_redundancy_20260811/index.md](./tracks/internet_archive_redundancy_20260811/index.md)*
+
 ## Proposed follow-up tracks
 
 These are bounded proposals, not active or completed tracks. They become
