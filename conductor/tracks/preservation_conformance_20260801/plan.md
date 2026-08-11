@@ -1,5 +1,9 @@
 # Implementation plan
 
+Status: deferred. Completed bounded fixture tasks remain recorded below, but
+no incomplete task is authorized to resume until the registry deferral gate is
+satisfied with corpus and workload evidence.
+
 1. [x] Create fixture manifest and immutable fixture hashes.
 2. [x] Build minimal RO-Crate metadata package and validate JSON-LD shape.
 3. [x] Build BagIt package and verify payload manifest and tag manifest closure.
