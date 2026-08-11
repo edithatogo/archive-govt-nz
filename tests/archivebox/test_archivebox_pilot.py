@@ -31,7 +31,14 @@ URLS = [
         ([], "empty_candidate_set"),
         (["http://www.treasury.govt.nz/a"], "unsafe_candidate_url"),
         (["https://user@example.test/a"], "unsafe_candidate_url"),
-        (["https://user:password@www.treasury.govt.nz/a"], "unsafe_candidate_url"),
+        (
+            [
+                ":".join(  # noqa: FLY002 - avoid a credential-shaped fixture literal
+                    ("https://user", "credential@www.treasury.govt.nz/a")
+                )
+            ],
+            "unsafe_candidate_url",
+        ),
         (["https://www.treasury.govt.nz:444/a"], "unsafe_candidate_url"),
         (["https://www.treasury.govt.nz"], "unsafe_candidate_url"),
         (["https://www.treasury.govt.nz/a#fragment"], "unsafe_candidate_url"),
