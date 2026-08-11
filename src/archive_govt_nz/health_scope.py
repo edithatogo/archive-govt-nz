@@ -14,7 +14,7 @@ DEFAULT_SCOPES: tuple[dict[str, object], ...] = (
     {"id": "text-health", "q": "health", "sort": "score desc, metadata_modified desc"},
     {
         "id": "group-health",
-        "groups": "health",
+        "fq": "groups:health",
         "sort": "score desc, metadata_modified desc",
     },
 )
