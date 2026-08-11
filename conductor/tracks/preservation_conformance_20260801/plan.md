@@ -7,4 +7,4 @@
 5. [x] Run available reference validators; record unavailable tools without substituting claims.
 6. [x] Test extraction, checksum closure, provenance linkage, and deterministic reruns.
 7. [x] Compare results and publish an adoption recommendation with explicit limits.
-8. Update the track and GitHub issue hierarchy only from receipts.
+8. [x] Update the track and GitHub issue hierarchy only from receipts.
