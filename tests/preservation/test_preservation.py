@@ -20,6 +20,7 @@ def test_synthetic_fixture_hashes_close() -> None:
     assert result["valid"] is True
     assert validate_ro_crate(root)["valid"] is True
     assert validate_bagit(root / "bagit")["valid"] is True
+    assert validate_ocfl(root / "ocfl")["valid"] is True
 
 
 def test_missing_profiles_are_explicitly_bounded(tmp_path: Path) -> None:
@@ -61,11 +62,15 @@ def test_valid_profile_closures_and_invalid_entries(tmp_path: Path) -> None:
 
     ocfl = tmp_path / "ocfl"
     ocfl.mkdir()
+    (ocfl / "v1" / "content").mkdir(parents=True)
+    (ocfl / "v1" / "content" / "value.txt").write_text("value", encoding="utf-8")
     (ocfl / "inventory.json").write_text(
-        json.dumps({"id": "obj-1", "versions": {"v1": {}}}), encoding="utf-8"
+        json.dumps({"id": "obj-1", "head": "v1", "versions": {"v1": {}}}),
+        encoding="utf-8",
     )
     assert validate_ocfl(ocfl)["valid"] is True
     (ocfl / "inventory.json").write_text(
-        json.dumps({"id": "obj-1", "versions": {}}), encoding="utf-8"
+        json.dumps({"id": "obj-1", "head": "v2", "versions": {"v1": {}}}),
+        encoding="utf-8",
     )
     assert validate_ocfl(ocfl)["valid"] is False

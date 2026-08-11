@@ -105,8 +105,23 @@ def validate_ocfl(root: Path) -> dict[str, Any]:
         return result
     document = cast("dict[str, Any]", json.loads(inventory.read_text(encoding="utf-8")))
     versions = document.get("versions")
+    head = document.get("head")
     result["versions_present"] = isinstance(versions, dict) and bool(
         cast("dict[str, object]", versions)
     )
-    result["valid"] = bool(result["versions_present"] and document.get("id"))
+    result["head_linked"] = bool(
+        isinstance(head, str)
+        and isinstance(versions, dict)
+        and head in cast("dict[str, object]", versions)
+    )
+    content = (
+        root / str(head) / "content" if isinstance(head, str) else root / "missing"
+    )
+    result["content_present"] = content.is_dir() and any(content.iterdir())
+    result["valid"] = bool(
+        result["versions_present"]
+        and result["head_linked"]
+        and result["content_present"]
+        and document.get("id")
+    )
     return result
