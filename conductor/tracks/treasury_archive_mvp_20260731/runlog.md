@@ -975,6 +975,14 @@
 - Created, uploaded, published, and read back Zenodo record `21880266` with DOI
   `10.5281/zenodo.21880266`; remote file size and MD5 match local evidence.
 - No credentials or token values were written to repository artefacts.
+
+### 2026-08-11 — final original-source resolution pass
+
+- Attempted all 91 resources through the bounded HTTPS-upgraded/direct retry lane.
+- No new original-source payloads became available; 12 existing captures were
+  re-observed and 79 attempts remained terminal.
+- Reconciled the final state as 12 original captures, 44 DataStore fallback
+  captures, and 47 explicit unresolved resources.
 ### 2026-08-11 — CKAN DataStore fallback assessment
 
 - Rechecked the existing CKAN probe receipt without transferring payloads.

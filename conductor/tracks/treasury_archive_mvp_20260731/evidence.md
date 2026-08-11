@@ -650,3 +650,13 @@ Receipt: `evidence/phase-5-layer-reconciliation.json` and `.md`.
 | Zenodo readback | verified | `treasury-release-candidate.tar`, 5,980,160 bytes, MD5 `4565ae55226eceb60a52e99fed1bd2c6` |
 | Candidate integrity | verified | Package SHA-256 `960c1924c76e3d6e72948eb8b1ac6e76fd7158fbce164f801bb0338321208b9f` |
 | Publication scope | bounded | 47 original endpoints remain unresolved; fallback DataStore material is explicitly identified |
+
+## Final original-source resolution pass - 2026-08-11
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Direct HTTPS retry | complete | All 91 planned resources attempted under bounded retries and budgets |
+| New original captures | none | Existing 12 captures were re-observed; no additional original endpoint succeeded |
+| Terminal classification | complete | 79 direct attempts returned terminal outcomes |
+| Fallback reconciliation | complete | 44 DataStore fallback captures plus 12 original captures are receipt-backed |
+| Remaining unresolved | explicit | 32 HTTP resources lack DataStore fallback; 15 require rights/source evidence |
