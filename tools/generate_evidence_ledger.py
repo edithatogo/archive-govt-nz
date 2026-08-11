@@ -34,8 +34,11 @@ def main() -> int:
     )
     capture = _load_optional(capture_path)
     release = _load_optional(release_path)
+    checkpoint_path = ROOT / "evidence" / "phase-10-closeout-checkpoint.json"
+    checkpoint = _load_optional(checkpoint_path)
     capture_ref = capture_path.relative_to(ROOT).as_posix()
     release_ref = release_path.relative_to(ROOT).as_posix()
+    checkpoint_ref = checkpoint_path.relative_to(ROOT).as_posix()
     captured = int(capture.get("captured", 0) or 0)
     release_reconciled = release.get("state") == "reconciled"
     stages: list[dict[str, Any]] = [
@@ -51,8 +54,16 @@ def main() -> int:
         },
         {
             "stage": "captured",
-            "state": "partially-captured" if captured else "not-yet-complete",
-            "evidence": [capture_ref] if captured else [],
+            "state": (
+                "original-and-datastore-fallback-captured"
+                if checkpoint.get("status") == "complete-with-honest-tombstones"
+                else ("partially-captured" if captured else "not-yet-complete")
+            ),
+            "evidence": (
+                [capture_ref, checkpoint_ref]
+                if checkpoint
+                else ([capture_ref] if captured else [])
+            ),
         },
         {
             "stage": "validated",
@@ -81,17 +92,25 @@ def main() -> int:
             "state": "reconciled-release" if release_reconciled else "not-released",
             "evidence": ([release_ref] if release_reconciled else []),
         },
-        {"stage": "unavailable", "state": "recorded-per-attempt", "evidence": []},
+        {
+            "stage": "unavailable",
+            "state": "tombstoned",
+            "evidence": [checkpoint_ref] if checkpoint else [],
+        },
         {
             "stage": "restricted",
-            "state": "policy-controlled",
-            "evidence": ["src/archive_govt_nz/resource_policy.py"],
+            "state": "rights-restricted",
+            "evidence": [
+                "src/archive_govt_nz/resource_policy.py",
+                *([checkpoint_ref] if checkpoint else []),
+            ],
         },
     ]
     document = {
         "schema_version": "archive-govt-nz.evidence-ledger/v1",
         "generated_at": now,
         "stages": stages,
+        "treasury_resource_outcomes": checkpoint.get("resource_outcomes", {}),
     }
     JSON_PATH.parent.mkdir(parents=True, exist_ok=True)
     JSON_PATH.write_text(
@@ -109,6 +128,28 @@ def main() -> int:
         f"| {item['stage']} | {item['state']} | {', '.join(item['evidence']) or '—'} |"
         for item in stages
     )
+    outcomes = cast("dict[str, Any]", checkpoint.get("resource_outcomes", {}))
+    if outcomes:
+        datastore_line = (
+            f"- DataStore fallback captured: {outcomes['datastore_fallback_captured']}"
+        )
+        replacement_line = (
+            "- Authoritative replacements evidenced: "
+            f"{outcomes['authoritative_replacement_evidenced']}"
+        )
+        lines.extend(
+            [
+                "",
+                "## Treasury resource outcome reconciliation",
+                "",
+                f"- Original source captured: {outcomes['original_source_captured']}",
+                datastore_line,
+                replacement_line,
+                f"- Unavailable/tombstoned: {outcomes['unavailable_tombstoned']}",
+                f"- Rights-restricted: {outcomes['rights_restricted']}",
+                "- Counts overlap; see the checkpoint and do not sum them.",
+            ]
+        )
     MD_PATH.write_text("\n".join(lines) + "\n", encoding="utf-8")
     print(f"wrote {JSON_PATH.relative_to(ROOT)} and {MD_PATH.relative_to(ROOT)}")
     return 0

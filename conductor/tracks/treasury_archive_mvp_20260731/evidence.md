@@ -700,3 +700,22 @@ Receipt: `evidence/phase-5-layer-reconciliation.json` and `.md`.
 | Hosted CI | passed | CI `31469899644`, CodeQL `31469899723`, and workflow policy `31469899698` succeeded on the exact revision |
 | Publications | passed | Hugging Face revision and Zenodo DOI/readback remain recorded separately from source-resolution outcomes |
 | Must requirements | passed-with-limitations | M-01 through M-19 have evidence; irrecoverable/rights-unevidenced resources remain tombstones and are not represented as payload captures |
+
+## Final resource-outcome reconciliation - 2026-08-11
+
+| Outcome axis | Count | Final interpretation |
+| --- | ---: | --- |
+| Original source captured | 12 | Bounded original payload captures with content-addressed object receipts |
+| DataStore fallback captured | 44 | Bounded raw JSON captures; one also has an original capture, so 43 are distinct additional resources |
+| Authoritative replacement | 31 | Publisher identity/context evidenced; byte-equivalent replacement payload capture is not claimed |
+| Rights evidenced, source not recaptured | 13 | Official CC BY 4.0 evidence resolves rights uncertainty but does not create a payload capture |
+| Unavailable/tombstoned | 1 | No verified secure replacement; retained for scheduled verification |
+| Rights-restricted | 2 | Authoritative rights evidence remained unavailable; retained as tombstones |
+
+The capture channels and resolution evidence overlap. In particular, the 44
+DataStore records are an alternate representation channel, not 44 recovered
+original files, and the 31 publisher pages are authoritative replacements, not
+byte-equivalent payloads. The final three tombstones comprise one unavailable
+record and two rights-restricted records. This table supersedes the older
+pre-resolution 78-restricted/79-tombstone snapshot without deleting that
+historical evidence.

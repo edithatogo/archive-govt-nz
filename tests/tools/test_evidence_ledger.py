@@ -21,3 +21,13 @@ def test_evidence_ledger_preserves_stage_separation() -> None:
     assert states["uploaded"] == "uploaded-remotely-verified"
     assert states["remotely-verified"] == "remote-readback-verified"
     assert states["released"] == "reconciled-release"
+    assert states["captured"] == "original-and-datastore-fallback-captured"
+    assert states["unavailable"] == "tombstoned"
+    assert states["restricted"] == "rights-restricted"
+    outcomes = document["treasury_resource_outcomes"]
+    assert outcomes["original_source_captured"] == 12
+    assert outcomes["datastore_fallback_captured"] == 44
+    assert outcomes["authoritative_replacement_evidenced"] == 31
+    assert outcomes["unavailable_tombstoned"] == 1
+    assert outcomes["rights_restricted"] == 2
+    assert outcomes["counts_are_mutually_exclusive"] is False

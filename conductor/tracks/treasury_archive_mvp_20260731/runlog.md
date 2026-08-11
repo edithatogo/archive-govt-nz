@@ -1040,3 +1040,13 @@
   checks, and publication readback. No tombstone was promoted to a capture.
 - Verified the disposable worktree remained clean, removed it, and pruned only
   its worktree metadata.
+# 2026-08-11 — final outcome-category reconciliation
+
+Reconciled the Phase 10 checkpoint, paired archive evidence ledger, checklist,
+track metadata, and GitHub issue #1 against the authoritative Track 1 evidence.
+The final record distinguishes 12 original captures, 44 DataStore fallback
+captures (one overlaps an original capture), 31 authoritative publisher
+replacements without claiming payload equivalence, one unavailable tombstone,
+and two rights-restricted tombstones. It also retains 13 rights-evidenced
+resources whose original endpoints were not recaptured. These are overlapping
+capture and resolution axes rather than a false 91-resource partition.

@@ -1,29 +1,35 @@
 # Phase 10 checkpoint
 
-Status: **partially complete (external gates remain open)**
+Status: **complete with honest tombstones**
 
 - Deterministic quality gates remain green locally via `./scripts/validate.{sh,ps1}`:
   - `uv lock --check`
   - `ruff format --check`
   - `ruff check`
   - `pyright`
-  - `pytest` (255 tests, coverage 95.34%)
+  - `pytest` (333 tests, coverage 96.13%)
   - schema validation
   - mutation (policy + versioning)
   - audit, licences, secret scan, and SBOM
 - Reconciliation remains bounded and explicit:
-  - 91 discovered / 91 resolved
-  - 12 captured
-  - 78 restricted
-  - 1 unavailable
-  - 79 tombstones
+  - 91 resources in scope
+  - 12 original source payloads captured
+  - 44 DataStore fallbacks captured, including one resource also captured from
+    its original source (43 distinct additional resources)
+  - 31 authoritative publisher replacements evidenced; payload equivalence is
+    not claimed
+  - 13 resources gained authoritative rights evidence but their source
+    endpoints were not recaptured
+  - 1 unavailable resource and 2 rights-restricted resources remain as 3
+    explicit tombstones
+
+These are overlapping capture and resolution axes, not mutually exclusive
+buckets, and must not be summed as a 91-resource partition.
 - Publication references remain reconciled:
-  - Zenodo DOI: `10.5281/zenodo.21728726`
-  - Hugging Face revision: `9406a3b0f877f0251c1baf89665cacc0c30dbae0`
-- Confirmed explicitly unresolved/blocked requirements:
-  - complete eligible payload capture under policy
-  - external publication state transitions above local acceptance
-  - clean-environment rerun in a fresh workspace (not yet claimed here)
+  - Zenodo DOI: `10.5281/zenodo.21880266`
+  - Hugging Face revision: `50c9e864bd7a9fed39862cf72bd733835f81568a`
+- No Track 1 blocker remains. Irrecoverable and rights-restricted records are
+  closed outcomes rather than unsupported capture claims.
 
 Linked evidence:
 - `evidence/phase-10-final-reconciliation.md`
