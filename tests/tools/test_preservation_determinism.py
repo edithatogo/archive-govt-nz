@@ -34,3 +34,10 @@ def test_preservation_evaluation_is_deterministic_and_closed() -> None:
     assert receipt["bagit_validation"]["valid"] is True
     assert receipt["ocfl_validation"]["valid"] is True
     assert receipt["conformance_claim"] == "bounded-structural-evaluation-only"
+    assert receipt["decision"] == "bounded-profile-adoption"
+    assert "RO-Crate" in receipt["decision_rationale"]
+    assert {standard["name"] for standard in receipt["standards"]} == {
+        "BagIt",
+        "OCFL",
+        "RO-Crate",
+    }
