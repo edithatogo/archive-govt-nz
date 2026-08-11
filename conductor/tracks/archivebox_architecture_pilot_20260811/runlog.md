@@ -41,3 +41,6 @@
 - The authorized Hugging Face documentation update was attempted. The current
   credential identified `edithatogo`, but direct commit and protected PR
   pre-upload both returned HTTP 403. No remote file changed.
+- Final hosted CI caught a secret-scan false positive on a revision-valued
+  metadata key. Renamed the key to the scanner's governed `revision` field;
+  the digest value and security policy were unchanged.
