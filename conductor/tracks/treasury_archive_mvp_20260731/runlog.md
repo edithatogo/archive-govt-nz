@@ -957,6 +957,14 @@
   200; token values were never logged or persisted.
 - No publication side effect occurred. Candidate package/hash and explicit DOI
   approval remain separate release gates.
+
+### 2026-08-11 — approved release candidate and HF write gate
+
+- Prepared the exact 28-file release candidate including original CKAN objects,
+  raw CKAN metadata, and 44 paginated DataStore fallback pages.
+- Candidate SHA-256: `960c1924c76e3d6e72948eb8b1ac6e76fd7158fbce164f801bb0338321208b9f`.
+- Hugging Face read authentication passed, but the write attempt returned HTTP
+  403. Zenodo deposition and DOI publication were held pending HF write access.
 ### 2026-08-11 — CKAN DataStore fallback assessment
 
 - Rechecked the existing CKAN probe receipt without transferring payloads.

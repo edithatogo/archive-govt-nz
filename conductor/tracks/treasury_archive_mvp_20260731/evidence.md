@@ -630,3 +630,12 @@ Receipt: `evidence/phase-5-layer-reconciliation.json` and `.md`.
 | Zenodo read-only auth | passed | Deposit listing endpoint returned HTTP 200 |
 | Publication side effect | not attempted | No upload, overwrite, deposition, or DOI action occurred |
 | Release gate | open | Exact candidate package/hash and explicit DOI approval remain required |
+
+## Approved release candidate and HF upload attempt - 2026-08-11
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Candidate package | prepared | 28-file package, 5,980,160 bytes, SHA-256 `960c1924c76e3d6e72948eb8b1ac6e76fd7158fbce164f801bb0338321208b9f` |
+| HF read authentication | passed | Identity endpoint returned HTTP 200 |
+| HF write authorization | blocked | Upload endpoint returned HTTP 403; current token lacks repository write permission |
+| Zenodo publication | held | DOI/deposition held until HF write and remote verification succeed |
