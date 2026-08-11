@@ -1,0 +1,50 @@
+{
+  "schema_version": "archive-govt-nz.health-discovery-evidence/v1",
+  "observed_at": "2026-08-11T08:28:28.551518+00:00",
+  "catalogue_url": "https://catalogue.data.govt.nz",
+  "status": "observed",
+  "scope_counts": {
+    "text-health": 815,
+    "group-health": 77,
+    "unique_datasets": 815
+  },
+  "classification_counts": {
+    "candidate-metadata-only": 714,
+    "decision-required": 101
+  },
+  "payload_eligible": 0,
+  "sensitivity_decision_required": 815,
+  "initial_manifest": {
+    "path": "build/live/health-discovery-20260811.json",
+    "bytes": 686250,
+    "sha256": "fa96241e2e892790a4dccb06a8a144179a15a1e4da12ef00ff88f66dc9c7259c"
+  },
+  "rerun_manifest": {
+    "path": "build/live/health-discovery-20260811-rerun.json",
+    "bytes": 686310,
+    "sha256": "8be3db418245e9672823bffd973ec8b4bffb56f7908c9d91662b6f5b6f23c733"
+  },
+  "rerun": {
+    "changed": 0,
+    "new": 0,
+    "unchanged": 815,
+    "withdrawn": 0
+  },
+  "raw_pages": {
+    "count": 10,
+    "retention": "local build evidence; each page is SHA-256 linked by the manifests",
+    "committed": false
+  },
+  "transport": {
+    "primary": "POST JSON",
+    "fallback": "GET query parameters after POST failure only",
+    "group_filter": "fq=groups:health",
+    "legacy_groups_parameter_status": 400
+  },
+  "gates": {
+    "metadata_only": true,
+    "payload_capture": false,
+    "publication": false,
+    "unknown_rights_fail_closed": true
+  }
+}
