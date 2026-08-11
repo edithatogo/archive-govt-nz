@@ -303,9 +303,9 @@
   - [x] Provide explicitly enabled resumable batch runner with JSON outcomes
   - [x] Record fail-closed metadata-only dispositions before live preflight
   - [x] Run authorized bounded read-only preflight over all 91 resources
-  - [ ] Attempt every resource under the approved policy
+  - [x] Attempt every resource under the approved policy
   - [ ] Preserve every raw dataset response
-  - [ ] Record captured, unavailable, restricted, oversized, quarantined,
+  - [x] Record captured, unavailable, restricted, oversized, quarantined,
         retryable, and terminal outcomes
   - [x] Keep suspicious content outside publication roots
   - [x] Produce bounded progress and checkpoint evidence
@@ -315,7 +315,7 @@
   - [x] Verify no dataset or resource disappeared silently
   - [x] Record unresolved limitations
   - [x] Generate final local coverage reports
-  - [ ] Resolve safe retries within policy
+  - [x] Resolve safe retries within policy
 
 - [~] Task: Prove unchanged rerun behaviour [M-09, M-14]
   - [x] Repeat discovery and eligible capture reconciliation
@@ -329,12 +329,12 @@
   - [x] Verify manifest closure and provenance
   - [x] Record commands, time, and limitations
 
-- [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
-  - [ ] Run the complete local quality and archive gate
-  - [ ] Verify coverage thresholds
-  - [ ] Review quarantine, rights, and unresolved states
-  - [ ] Record local completion without external-publication claims
-  - [ ] Record phase evidence and checkpoint
+- [x] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+  - [x] Run the complete local quality and archive gate
+  - [x] Verify coverage thresholds
+  - [x] Review quarantine, rights, and unresolved states
+  - [x] Record local completion without external-publication claims
+  - [x] Record phase evidence and checkpoint
 
 ## Phase 7: Hardened CI/CD and scheduled archival
 

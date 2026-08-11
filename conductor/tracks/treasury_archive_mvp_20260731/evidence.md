@@ -660,3 +660,30 @@ Receipt: `evidence/phase-5-layer-reconciliation.json` and `.md`.
 | Terminal classification | complete | 79 direct attempts returned terminal outcomes |
 | Fallback reconciliation | complete | 44 DataStore fallback captures plus 12 original captures are receipt-backed |
 | Remaining unresolved | explicit | 32 HTTP resources lack DataStore fallback; 15 require rights/source evidence |
+
+## Authoritative replacement and rights resolution - 2026-08-11
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Resolution scope | complete | All 47 resources outside original/DataStore capture have one deterministic resolution record |
+| Publisher replacements | evidenced | 31 legacy HTTP resource records map to current authoritative Treasury publication or collection pages |
+| Replacement limitation | explicit | Publisher-page identity/context is established; byte-for-byte payload equivalence is not claimed |
+| Rights evidence | evidenced | Official Treasury pages establish CC BY 4.0 rights for 13 of the 15 previously rights-unknown resources |
+| Rights tombstones | retained | Two NZDMO tender resources remain tombstoned because independently retrievable rights evidence was unavailable |
+| Secure-source tombstone | retained | One legacy NZDMO HTTP resource remains tombstoned because no verified secure replacement was found |
+| Internet Archive | verified-secondary | 26 resource records have locally hash-verified Internet Archive captures; none is promoted as an original-source capture |
+| ArchiveBox | not-admitted | The hosted pilot verified zero original payloads and remains a manual exception lane |
+| Machine receipt | passed | `evidence/treasury-source-resolution-20260811.json` records every resource, evidence URL, limitation, retry state, and mirror receipt |
+| Human-readable receipt | passed | `evidence/treasury-source-resolution-20260811.md` mirrors the final classification |
+
+## Source-resolution assurance checkpoint - 2026-08-11
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Repository harness | passed | Required Windows `scripts/validate.ps1` completed successfully in 451 seconds |
+| Tests | passed | 333 tests passed |
+| Coverage | passed | 96.13% total branch-aware coverage exceeds the 95% overall gate |
+| Critical mutations | passed | Resource policy 8/8, versioning 3/3, redundancy 6/6, and ArchiveBox 9/9 mutants killed |
+| Schemas | passed | 12 schemas and two representative documents validated |
+| Supply chain | passed | Dependency audit, licence inventory, secret scan, and CycloneDX SBOM validation passed |
+| Phase 6 source resolution | complete-with-tombstones | Every resource has an explicit outcome; three NZDMO records remain evidence-backed tombstones rather than unsupported captures |

@@ -1008,3 +1008,22 @@
 - Added `tools/discover_replacement_urls.py`,
   `tools/capture_internet_archive_backups.py`, and paired receipts. Ruff and
   strict Pyright pass.
+
+### 2026-08-11 — authoritative source-resolution closeout
+
+- Reconciled all 47 remaining resource records against current official
+  Treasury publication/collection pages, the CKAN plan, DataStore recovery,
+  Internet Archive objects, and the ArchiveBox pilot.
+- Mapped 31 legacy HTTP records to authoritative Treasury replacement pages;
+  the receipt expressly does not claim byte-equivalent payload recovery.
+- Established resource-specific CC BY 4.0 evidence for 13 of 15 previously
+  rights-unknown resources using their official publisher pages.
+- Retained three explicit NZDMO tombstones: one without a verified secure
+  replacement and two without independently retrievable rights evidence.
+- Verified 26 resource-level Internet Archive objects by size and SHA-256.
+  ArchiveBox remains not admitted because it verified no original payload.
+- Added governed mapping config, deterministic resolution tooling, three
+  contract tests, and paired JSON/Markdown receipts.
+- Ran the required Windows repository harness: 333 tests passed, total coverage
+  was 96.13%, all 26 critical mutation cases were killed, schemas passed, and
+  dependency, licence, secret, and SBOM gates passed.
