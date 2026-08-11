@@ -2,15 +2,22 @@
 
 from __future__ import annotations
 
-from collections.abc import AsyncIterable
+import asyncio
+import tempfile
 from dataclasses import dataclass
+from pathlib import Path
 from time import monotonic
 from urllib.parse import urljoin
 
 import httpx
 
 from archive_govt_nz.ckan.redaction import redact_url
-from archive_govt_nz.object_store import ContentAddressedStore, ObjectStoreReceipt
+from archive_govt_nz.object_store import (
+    ContentAddressedStore,
+    ObjectStoreError,
+    ObjectStoreReceipt,
+)
+from archive_govt_nz.warc import WarcReceipt, write_response_record
 
 
 class CaptureError(RuntimeError):
@@ -35,6 +42,7 @@ class CaptureConfig:
     max_redirects: int = 3
     expected_etag: str | None = None
     expected_last_modified: str | None = None
+    max_warc_bytes: int = 64 * 1024 * 1024
 
     def __post_init__(self) -> None:
         if (
@@ -42,6 +50,7 @@ class CaptureConfig:
             or self.chunk_bytes < 1
             or self.timeout_seconds <= 0
             or self.max_redirects < 0
+            or self.max_warc_bytes < 1
             or (
                 self.max_duration_seconds is not None and self.max_duration_seconds <= 0
             )
@@ -67,17 +76,20 @@ class CaptureResult:
     status_code: int
     content_type: str | None
     receipt: ObjectStoreReceipt
+    warc_receipt: WarcReceipt | None = None
     attempts: int = 1
     redirects: int = 0
     elapsed_seconds: float = 0.0
     attempt_receipts: tuple[CaptureAttempt, ...] = ()
 
 
-async def capture_url(  # noqa: PLR0915
+async def capture_url(  # noqa: PLR0915, PLR0912
     client: httpx.AsyncClient,
     url: str,
     store: ContentAddressedStore,
     config: CaptureConfig = CaptureConfig(),
+    *,
+    transaction_warc_path: Path | None = None,
 ) -> CaptureResult:
     """Stream one URL, enforcing status, length, and byte limits."""
     current_url = url
@@ -116,6 +128,16 @@ async def capture_url(  # noqa: PLR0915
                     )
                     current_url = urljoin(current_url, location)
                     continue
+                if response.status_code == 206:
+                    attempt_receipts.append(
+                        CaptureAttempt(
+                            redact_url(current_url),
+                            response.status_code,
+                            "unsupported_range",
+                            monotonic() - started,
+                        )
+                    )
+                    raise CaptureError("unsupported_range", tuple(attempt_receipts))
                 if response.status_code in {429, 500, 502, 503, 504}:
                     attempt_receipts.append(
                         CaptureAttempt(
@@ -175,17 +197,82 @@ async def capture_url(  # noqa: PLR0915
                     )
                     raise CaptureError("validator_mismatch", tuple(attempt_receipts))
 
-                async def chunks():
+                attempt_url = current_url
+
+                async def chunks(bound_url: str = attempt_url):
                     total = 0
+                    encoded = response.headers.get("content-encoding", "").lower()
+                    decompression_bound = encoded not in {"", "identity"}
                     async for chunk in response.aiter_bytes(config.chunk_bytes):
                         if monotonic() - started >= max_duration:
                             raise CaptureError("timeout", tuple(attempt_receipts))
                         total += len(chunk)
                         if total > config.max_bytes:
-                            raise CaptureError("size_limit")
+                            error_class = (
+                                "decompression_limit"
+                                if decompression_bound
+                                else "size_limit"
+                            )
+                            attempt_receipts.append(
+                                CaptureAttempt(
+                                    redact_url(bound_url),
+                                    response.status_code,
+                                    error_class,
+                                    monotonic() - started,
+                                )
+                            )
+                            raise CaptureError(error_class, tuple(attempt_receipts))
                         yield chunk
 
-                receipt = store.put_stream(await _collect(chunks()))
+                temporary: Path | None = None
+                try:
+                    with tempfile.NamedTemporaryFile(
+                        dir=store.tmp, prefix="capture-", delete=False
+                    ) as handle:
+                        temporary = Path(handle.name)
+                        async for chunk in chunks():
+                            handle.write(chunk)
+                        handle.flush()
+                    receipt = await asyncio.to_thread(
+                        _promote_temp, temporary, store, config.chunk_bytes
+                    )
+                    warc_receipt = None
+                    if transaction_warc_path is not None:
+                        if receipt.byte_count <= config.max_warc_bytes:
+                            warc_receipt = await asyncio.to_thread(
+                                write_response_record,
+                                transaction_warc_path,
+                                url=current_url,
+                                status_code=response.status_code,
+                                headers={
+                                    k: str(v) for k, v in dict(response.headers).items()
+                                },
+                                body=await asyncio.to_thread(temporary.read_bytes),
+                            )
+                        else:
+                            attempt_receipts.append(
+                                CaptureAttempt(
+                                    redact_url(current_url),
+                                    response.status_code,
+                                    "warc_size_limit",
+                                    monotonic() - started,
+                                )
+                            )
+                except OSError, ObjectStoreError:
+                    attempt_receipts.append(
+                        CaptureAttempt(
+                            redact_url(current_url),
+                            response.status_code,
+                            "storage_failed",
+                            monotonic() - started,
+                        )
+                    )
+                    raise CaptureError(
+                        "storage_failed", tuple(attempt_receipts)
+                    ) from None
+                finally:
+                    if temporary is not None:
+                        temporary.unlink(missing_ok=True)
                 attempt_receipts.append(
                     CaptureAttempt(
                         redact_url(current_url),
@@ -199,6 +286,7 @@ async def capture_url(  # noqa: PLR0915
                     response.status_code,
                     response.headers.get("content-type"),
                     receipt,
+                    warc_receipt,
                     redirect_count + 1,
                     redirect_count,
                     monotonic() - started,
@@ -229,9 +317,9 @@ async def capture_url(  # noqa: PLR0915
     raise CaptureError("redirect_limit", tuple(attempt_receipts))
 
 
-async def _collect(chunks: AsyncIterable[bytes]) -> list[bytes]:
-    """Bridge async bounded chunks to the synchronous object-store contract."""
-    values: list[bytes] = []
-    async for chunk in chunks:
-        values.append(chunk)
-    return values
+def _promote_temp(
+    path: Path, store: ContentAddressedStore, chunk_bytes: int
+) -> ObjectStoreReceipt:
+    """Promote a bounded spool file without blocking the event loop."""
+    with path.open("rb") as payload:
+        return store.put_stream(iter(lambda: payload.read(chunk_bytes), b""))

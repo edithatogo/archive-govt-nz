@@ -13,6 +13,7 @@ TRACK_MANIFEST = (
     / "evidence/phase-10-source-resolution-manifest.json"
 )
 EVIDENCE_ROOT = ROOT / "evidence"
+ARCHITECTURE = ROOT / "docs/archive-system-architecture.md"
 
 
 def _read_json(path: Path) -> dict[str, Any]:
@@ -27,6 +28,15 @@ def _read_json(path: Path) -> dict[str, Any]:
     if not isinstance(payload, dict):
         return {}
     return cast("dict[str, Any]", payload)
+
+
+def _read_architecture() -> str:
+    """Read the canonical publication-safe architecture document."""
+    content = ARCHITECTURE.read_text(encoding="utf-8").rstrip()
+    return content.replace(
+        "](archive-system-architecture.svg)",
+        "](docs/archive-system-architecture.svg)",
+    )
 
 
 def _read_dict_list(payload: dict[str, Any], key: str) -> list[dict[str, Any]]:
@@ -169,6 +179,7 @@ def main() -> int:
             "limit_remediation": final_reconciliation.get("limitations", []),
         },
     }
+    architecture = _read_architecture()
     card = f"""---
 dataset_info:
   config_name: treasury-evidence
@@ -189,7 +200,10 @@ tags:
 
 # Archive Govt NZ — Treasury evidence preview
 
-This is a prepared, evidence-first archive preview. It is not published yet.
+This is an evidence-first archive record generated from stage-specific receipts.
+The rolling Hugging Face state, historical Zenodo release state, and any newly
+prepared package are reported separately. A new package is prepared-not-published
+until its own upload, readback, and release receipts exist.
 
 ## Scope
 
@@ -206,7 +220,7 @@ This is a prepared, evidence-first archive preview. It is not published yet.
 - Hugging Face revision: `{hf_receipt.get("revision", "n/a")}`
 - Zenodo DOI: `{zenodo_receipt.get("doi", "n/a")}`
 - Zenodo state: `{zenodo_receipt.get("state", "n/a")}`
-- Publication limit: `no remote publication claimed until explicit approval`
+- Publication limit: `claims apply only to the exact revisions and DOI receipts below`
 
 ## Resource disposition snapshot
 
@@ -225,6 +239,14 @@ stage snapshots.
 ```json
 {json.dumps(resource_rows, indent=2)}
 ```
+
+## Archive architecture
+
+The following governed architecture profile is shared with future release
+packages. Secondary preservation outputs pass through the same admission gates
+as any other derivative and never replace original source bytes.
+
+{architecture}
 """
 
     rights_summary = {
@@ -250,7 +272,7 @@ stage snapshots.
 
     zenodo = {
         "title": "Archive Govt NZ — Treasury evidence preview",
-        "description": "Evidence-first, checksum-pinned Treasury archive preview with 12 locally captured resources; not yet published.",
+        "description": "Evidence-first, checksum-pinned Treasury archive metadata with stage-specific rolling publication, historical release, and new-candidate states.",
         "upload_type": "dataset",
         "access_right": "open",
         "license": "cc-by-4.0",
@@ -275,13 +297,18 @@ stage snapshots.
             "resources": resource_rows,
         },
         "publication_receipts": publication_receipts,
+        "architecture": {
+            "document": "docs/archive-system-architecture.md",
+            "model": "rolling-hugging-face-plus-gated-immutable-zenodo",
+            "secondary_capture_authority": "non-authoritative-until-admitted",
+        },
         "publication_state": "prepared-not-published",
         "doi_authorized": False,
         "limitations": [
             "payload_capture_scope_limited_to_12_preflight_approved_resources",
             "rights_review_incomplete",
-            "no_remote_upload",
-            "no_doi_confirmation_required",
+            "new_remote_upload_requires_its_own_receipt",
+            "new_doi_not_requested_for_documentation_only_change",
         ],
     }
     output = ROOT / "evidence/publication-metadata"

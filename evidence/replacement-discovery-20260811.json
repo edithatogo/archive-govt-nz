@@ -1,0 +1,1576 @@
+{
+  "schema_version": "replacement-discovery/v1",
+  "generated_at": "2026-08-11T03:00:13.998563Z",
+  "policy": {
+    "lawful_sources_only": true,
+    "internet_archive": "timemap metadata only; no snapshot promoted without content verification",
+    "prohibited_sources": [
+      "Anna's Archive",
+      "known illicit distribution sources"
+    ]
+  },
+  "input_counts": {
+    "unresolved_resources": 47,
+    "unique_source_urls": 36
+  },
+  "records": [
+    {
+      "source_url": "http://www.nzdmo.govt.nz/publications/data",
+      "official_https_candidate": "https://www.nzdmo.govt.nz/publications/data",
+      "source_host": "www.nzdmo.govt.nz",
+      "internet_archive": {
+        "status": "available",
+        "snapshots": [
+          {
+            "timestamp": "20150210152912",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "S37XR72EFAH42AU47K5K2RQ7AS25Z5RD",
+            "url": "https://web.archive.org/web/20150210152912id_/http://www.nzdmo.govt.nz/publications/data"
+          },
+          {
+            "timestamp": "20150313112706",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "KN7RBNPW2WI3HEPFDRG5WVDYT4GVYZQM",
+            "url": "https://web.archive.org/web/20150313112706id_/http://www.nzdmo.govt.nz:80/publications/data"
+          },
+          {
+            "timestamp": "20150516182846",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "S2JKPGZEHDGAGS7KHGP5QSPJLPYWNZUJ",
+            "url": "https://web.archive.org/web/20150516182846id_/http://www.nzdmo.govt.nz:80/publications/data"
+          },
+          {
+            "timestamp": "20150820022617",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "MZZBR3DBQNU7IN2LTHL4HALAPZFMOBGW",
+            "url": "https://web.archive.org/web/20150820022617id_/http://www.nzdmo.govt.nz:80/publications/data"
+          },
+          {
+            "timestamp": "20160123164006",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "WYN4YC4MOUKHWSYFA6G7HG52DY7XUGXT",
+            "url": "https://web.archive.org/web/20160123164006id_/http://www.nzdmo.govt.nz/publications/data"
+          },
+          {
+            "timestamp": "20160331125057",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "4LMNCSLCUKXE6NLYFQG4SOW6JWNNX4DW",
+            "url": "https://web.archive.org/web/20160331125057id_/http://www.nzdmo.govt.nz/publications/data"
+          },
+          {
+            "timestamp": "20160401012555",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "4LMNCSLCUKXE6NLYFQG4SOW6JWNNX4DW",
+            "url": "https://web.archive.org/web/20160401012555id_/http://www.nzdmo.govt.nz/publications/data"
+          },
+          {
+            "timestamp": "20160413192912",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "5M376YJRBWW2P7L52D6WQTHCRDAVE643",
+            "url": "https://web.archive.org/web/20160413192912id_/http://www.nzdmo.govt.nz:80/publications/data"
+          },
+          {
+            "timestamp": "20160515133825",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "N2QDLXP4QAEUICRKIMI47NN2B3LO6U4C",
+            "url": "https://web.archive.org/web/20160515133825id_/http://www.nzdmo.govt.nz:80/publications/data"
+          },
+          {
+            "timestamp": "20160619091826",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "BKXKAAEALE7SBIAO26CCR4FLR6KTVSKI",
+            "url": "https://web.archive.org/web/20160619091826id_/http://www.nzdmo.govt.nz:80/publications/data"
+          }
+        ]
+      }
+    },
+    {
+      "source_url": "https://catalogue.data.govt.nz/dataset/0641a23e-5741-45d6-bd4f-1b41fcabe381/resource/4d97e2cf-1e9e-49c2-a582-7dd388ce2322/download/ce-gifts-benefits-expenses-disclosure-workbook-iain-rennie-1-july-2025-30-june-2026.xlsx",
+      "official_https_candidate": "https://catalogue.data.govt.nz/dataset/0641a23e-5741-45d6-bd4f-1b41fcabe381/resource/4d97e2cf-1e9e-49c2-a582-7dd388ce2322/download/ce-gifts-benefits-expenses-disclosure-workbook-iain-rennie-1-july-2025-30-june-2026.xlsx",
+      "source_host": "catalogue.data.govt.nz",
+      "internet_archive": {
+        "status": "no-success-capture",
+        "snapshots": []
+      }
+    },
+    {
+      "source_url": "https://catalogue.data.govt.nz/dataset/0641a23e-5741-45d6-bd4f-1b41fcabe381/resource/f060ba29-2be8-4b1b-88b2-d16e2d2ccb87/download/treasury-chief-executive-expenses-18-november-2024-30-june-2025.xlsx",
+      "official_https_candidate": "https://catalogue.data.govt.nz/dataset/0641a23e-5741-45d6-bd4f-1b41fcabe381/resource/f060ba29-2be8-4b1b-88b2-d16e2d2ccb87/download/treasury-chief-executive-expenses-18-november-2024-30-june-2025.xlsx",
+      "source_host": "catalogue.data.govt.nz",
+      "internet_archive": {
+        "status": "no-success-capture",
+        "snapshots": []
+      }
+    },
+    {
+      "source_url": "https://catalogue.data.govt.nz/dataset/0641a23e-5741-45d6-bd4f-1b41fcabe381/resource/426f5d36-f286-41c8-9062-d4471259f1ad/download/treasury-chief-executive-expenses-4-november-2024-17-november-2024.xlsx",
+      "official_https_candidate": "https://catalogue.data.govt.nz/dataset/0641a23e-5741-45d6-bd4f-1b41fcabe381/resource/426f5d36-f286-41c8-9062-d4471259f1ad/download/treasury-chief-executive-expenses-4-november-2024-17-november-2024.xlsx",
+      "source_host": "catalogue.data.govt.nz",
+      "internet_archive": {
+        "status": "no-success-capture",
+        "snapshots": []
+      }
+    },
+    {
+      "source_url": "https://catalogue.data.govt.nz/dataset/0641a23e-5741-45d6-bd4f-1b41fcabe381/resource/1f7ebba6-61e4-4659-9756-b364b4f296ec/download/treasury-chief-executive-expenses-16-september-2024-3-november-2024.xlsx",
+      "official_https_candidate": "https://catalogue.data.govt.nz/dataset/0641a23e-5741-45d6-bd4f-1b41fcabe381/resource/1f7ebba6-61e4-4659-9756-b364b4f296ec/download/treasury-chief-executive-expenses-16-september-2024-3-november-2024.xlsx",
+      "source_host": "catalogue.data.govt.nz",
+      "internet_archive": {
+        "status": "no-success-capture",
+        "snapshots": []
+      }
+    },
+    {
+      "source_url": "https://catalogue.data.govt.nz/dataset/0641a23e-5741-45d6-bd4f-1b41fcabe381/resource/7d649908-d794-4e0f-abf3-df82abdd065d/download/treasury-chief-executive-expenses-1-july-2024-15-september-2024.xlsx",
+      "official_https_candidate": "https://catalogue.data.govt.nz/dataset/0641a23e-5741-45d6-bd4f-1b41fcabe381/resource/7d649908-d794-4e0f-abf3-df82abdd065d/download/treasury-chief-executive-expenses-1-july-2024-15-september-2024.xlsx",
+      "source_host": "catalogue.data.govt.nz",
+      "internet_archive": {
+        "status": "no-success-capture",
+        "snapshots": []
+      }
+    },
+    {
+      "source_url": "https://catalogue.data.govt.nz/dataset/0641a23e-5741-45d6-bd4f-1b41fcabe381/resource/6eb42275-8de2-409c-8a3d-81ab20483512/download/the-treasury-chief-executive-expenses-1-july-2023-30-june-2024.xlsx",
+      "official_https_candidate": "https://catalogue.data.govt.nz/dataset/0641a23e-5741-45d6-bd4f-1b41fcabe381/resource/6eb42275-8de2-409c-8a3d-81ab20483512/download/the-treasury-chief-executive-expenses-1-july-2023-30-june-2024.xlsx",
+      "source_host": "catalogue.data.govt.nz",
+      "internet_archive": {
+        "status": "available",
+        "snapshots": [
+          {
+            "timestamp": "20240730125728",
+            "statuscode": "200",
+            "mimetype": "application/octet-stream",
+            "digest": "KEFXDBUXGGVZVAVWRE3QIQXYP43VCQR4",
+            "url": "https://web.archive.org/web/20240730125728id_/https://catalogue.data.govt.nz/dataset/0641a23e-5741-45d6-bd4f-1b41fcabe381/resource/6eb42275-8de2-409c-8a3d-81ab20483512/download/the-treasury-chief-executive-expenses-1-july-2023-30-june-2024.xlsx"
+          }
+        ]
+      }
+    },
+    {
+      "source_url": "https://www.treasury.govt.nz/publications/information-release/chief-executive-expenses-information-release",
+      "official_https_candidate": "https://www.treasury.govt.nz/publications/information-release/chief-executive-expenses-information-release",
+      "source_host": "www.treasury.govt.nz",
+      "internet_archive": {
+        "status": "available",
+        "snapshots": [
+          {
+            "timestamp": "20210202045436",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "SCKE53N5EKJM5ZHKTRM5VWUEW3ANDHXC",
+            "url": "https://web.archive.org/web/20210202045436id_/https://www.treasury.govt.nz/publications/information-release/chief-executive-expenses-information-release"
+          },
+          {
+            "timestamp": "20220809024214",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "43J246R2FVITZVZ7P3P4SUQLPMB3D4CH",
+            "url": "https://web.archive.org/web/20220809024214id_/https://www.treasury.govt.nz/publications/information-release/chief-executive-expenses-information-release"
+          },
+          {
+            "timestamp": "20220812063626",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "TINFTIVEBFDAW3IFRQEFVKVQJU6YYVIF",
+            "url": "https://web.archive.org/web/20220812063626id_/https://www.treasury.govt.nz/publications/information-release/chief-executive-expenses-information-release"
+          },
+          {
+            "timestamp": "20230203014458",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "ARO3KJTDK4EMKZUAWFPNHXEIKKVHXHHX",
+            "url": "https://web.archive.org/web/20230203014458id_/https://www.treasury.govt.nz/publications/information-release/chief-executive-expenses-information-release"
+          },
+          {
+            "timestamp": "20230222141904",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "FVCNULUFHGKZGBTWPJSZRP3L33SEJQ5C",
+            "url": "https://web.archive.org/web/20230222141904id_/https://www.treasury.govt.nz/publications/information-release/chief-executive-expenses-information-release"
+          },
+          {
+            "timestamp": "20230328200257",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "K7WSNBLLJHHVFDHX5D34PW4CHQLM5E3S",
+            "url": "https://web.archive.org/web/20230328200257id_/https://www.treasury.govt.nz/publications/information-release/chief-executive-expenses-information-release"
+          }
+        ]
+      }
+    },
+    {
+      "source_url": "https://catalogue.data.govt.nz/dataset/0641a23e-5741-45d6-bd4f-1b41fcabe381/resource/121b0cc4-b480-496f-bb8f-ac34af9d8dd7/download/ce-gifts-benefits-expenses-disclosure-workbook-caralee-mcliesh-2021-2022.xlsx",
+      "official_https_candidate": "https://catalogue.data.govt.nz/dataset/0641a23e-5741-45d6-bd4f-1b41fcabe381/resource/121b0cc4-b480-496f-bb8f-ac34af9d8dd7/download/ce-gifts-benefits-expenses-disclosure-workbook-caralee-mcliesh-2021-2022.xlsx",
+      "source_host": "catalogue.data.govt.nz",
+      "internet_archive": {
+        "status": "available",
+        "snapshots": [
+          {
+            "timestamp": "20240730122439",
+            "statuscode": "200",
+            "mimetype": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "digest": "Q3P4NCUW2G3BSGXENFO4TN7LASSVO7VB",
+            "url": "https://web.archive.org/web/20240730122439id_/https://catalogue.data.govt.nz/dataset/0641a23e-5741-45d6-bd4f-1b41fcabe381/resource/121b0cc4-b480-496f-bb8f-ac34af9d8dd7/download/ce-gifts-benefits-expenses-disclosure-workbook-caralee-mcliesh-2021-2022.xlsx"
+          }
+        ]
+      }
+    },
+    {
+      "source_url": "https://catalogue.data.govt.nz/dataset/0641a23e-5741-45d6-bd4f-1b41fcabe381/resource/cd9975ae-34b5-45c1-a4dd-4c58016a3d59/download/tsy-ceep-sep19-jun20.xlsx",
+      "official_https_candidate": "https://catalogue.data.govt.nz/dataset/0641a23e-5741-45d6-bd4f-1b41fcabe381/resource/cd9975ae-34b5-45c1-a4dd-4c58016a3d59/download/tsy-ceep-sep19-jun20.xlsx",
+      "source_host": "catalogue.data.govt.nz",
+      "internet_archive": {
+        "status": "available",
+        "snapshots": [
+          {
+            "timestamp": "20220710042139",
+            "statuscode": "200",
+            "mimetype": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "digest": "2NX5EKE5VD2D2UEGTYOMRFD7KNLMBLH4",
+            "url": "https://web.archive.org/web/20220710042139id_/https://catalogue.data.govt.nz/dataset/0641a23e-5741-45d6-bd4f-1b41fcabe381/resource/cd9975ae-34b5-45c1-a4dd-4c58016a3d59/download/tsy-ceep-sep19-jun20.xlsx"
+          }
+        ]
+      }
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/befu2011/003.htm",
+      "official_https_candidate": "https://www.treasury.govt.nz/budget/forecasts/befu2011/003.htm",
+      "source_host": "www.treasury.govt.nz",
+      "internet_archive": {
+        "status": "available",
+        "snapshots": [
+          {
+            "timestamp": "20120412185331",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "3ZBA7OTVQIQEPCPBLDZBETCDACK7OQI6",
+            "url": "https://web.archive.org/web/20120412185331id_/http://treasury.govt.nz/budget/forecasts/befu2011/003.htm"
+          },
+          {
+            "timestamp": "20120417200035",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "3ZBA7OTVQIQEPCPBLDZBETCDACK7OQI6",
+            "url": "https://web.archive.org/web/20120417200035id_/http://treasury.govt.nz/budget/forecasts/befu2011/003.htm"
+          },
+          {
+            "timestamp": "20120622044733",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "E36Q7QHMDTF5FBES52G27PQQJJ3XUWEO",
+            "url": "https://web.archive.org/web/20120622044733id_/http://www.treasury.govt.nz/budget/forecasts/befu2011/003.htm"
+          },
+          {
+            "timestamp": "20120623195756",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "E36Q7QHMDTF5FBES52G27PQQJJ3XUWEO",
+            "url": "https://web.archive.org/web/20120623195756id_/http://www.treasury.govt.nz/budget/forecasts/befu2011/003.htm"
+          },
+          {
+            "timestamp": "20130218061415",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "BCE6S4E333KPROB3PGSG7HQKNYKTE5VC",
+            "url": "https://web.archive.org/web/20130218061415id_/http://www.treasury.govt.nz/budget/forecasts/befu2011/003.htm"
+          },
+          {
+            "timestamp": "20150124142902",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "7EUIXYDNQLNGUBS2RG44R5FL6RXNALCB",
+            "url": "https://web.archive.org/web/20150124142902id_/http://www.treasury.govt.nz/budget/forecasts/befu2011/003.htm"
+          },
+          {
+            "timestamp": "20160212005843",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "3UMZFA27K3ACYVT2CTS3TCDODLYIQM5W",
+            "url": "https://web.archive.org/web/20160212005843id_/http://www.treasury.govt.nz/budget/forecasts/befu2011/003.htm"
+          },
+          {
+            "timestamp": "20170422045818",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "2CX4UX67ING6A3UVTZYREFJNBL2JCV4L",
+            "url": "https://web.archive.org/web/20170422045818id_/http://www.treasury.govt.nz/budget/forecasts/befu2011/003.htm"
+          },
+          {
+            "timestamp": "20180127194028",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "V752WQU5O7E4J2WB3VLODAUT4JBZDOBT",
+            "url": "https://web.archive.org/web/20180127194028id_/http://www.treasury.govt.nz/budget/forecasts/befu2011/003.htm"
+          },
+          {
+            "timestamp": "20180131031853",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "JFHNOYHFHNQO233PAPWZBSVEO4ICXSC6",
+            "url": "https://web.archive.org/web/20180131031853id_/http://www.treasury.govt.nz/budget/forecasts/befu2011/003.htm/"
+          }
+        ]
+      }
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/budget/2016/bps",
+      "official_https_candidate": "https://www.treasury.govt.nz/budget/2016/bps",
+      "source_host": "www.treasury.govt.nz",
+      "internet_archive": {
+        "status": "available",
+        "snapshots": [
+          {
+            "timestamp": "20170616033853",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "YR6KQGWVGTQZPWC6QXB4MRZBLWBYZVAN",
+            "url": "https://web.archive.org/web/20170616033853id_/http://www.treasury.govt.nz/budget/2016/bps/"
+          },
+          {
+            "timestamp": "20170620231633",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "PEY46MTS2WUFZYTJ2AOTKWPREGTP6Y3Z",
+            "url": "https://web.archive.org/web/20170620231633id_/http://www.treasury.govt.nz/budget/2016/bps"
+          },
+          {
+            "timestamp": "20170813072134",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "7FYRXH4LNVYK7D35BJ2GGTNGLKGLHTIT",
+            "url": "https://web.archive.org/web/20170813072134id_/http://www.treasury.govt.nz:80/budget/2016/bps"
+          },
+          {
+            "timestamp": "20171008121551",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "STFZT2WAEHAKJ4DFRY3Y7SSJC7ORFLHJ",
+            "url": "https://web.archive.org/web/20171008121551id_/http://www.treasury.govt.nz:80/budget/2016/bps"
+          },
+          {
+            "timestamp": "20171108062338",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "XY5QC5EALWVM42HWGQE6YDKJXJFNVAGR",
+            "url": "https://web.archive.org/web/20171108062338id_/http://www.treasury.govt.nz:80/budget/2016/bps"
+          },
+          {
+            "timestamp": "20171209105108",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "CPLPSVOFB3ZKQN5YMUZLCQY3R2Q5O3KG",
+            "url": "https://web.archive.org/web/20171209105108id_/http://www.treasury.govt.nz:80/budget/2016/bps"
+          },
+          {
+            "timestamp": "20171210213016",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "CPLPSVOFB3ZKQN5YMUZLCQY3R2Q5O3KG",
+            "url": "https://web.archive.org/web/20171210213016id_/http://www.treasury.govt.nz:80/budget/2016/bps"
+          },
+          {
+            "timestamp": "20180128001038",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "QRR67RTH6HTFQCMVFDKODV5ZCRGORPXC",
+            "url": "https://web.archive.org/web/20180128001038id_/http://www.treasury.govt.nz/budget/2016/bps"
+          },
+          {
+            "timestamp": "20180131164240",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "WAQLJY75UOJGFIIM77KUMYULTYY3F4MW",
+            "url": "https://web.archive.org/web/20180131164240id_/http://www.treasury.govt.nz/budget/2016/bps/"
+          },
+          {
+            "timestamp": "20180210124017",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "QRR67RTH6HTFQCMVFDKODV5ZCRGORPXC",
+            "url": "https://web.archive.org/web/20180210124017id_/http://www.treasury.govt.nz:80/budget/2016/bps"
+          }
+        ]
+      }
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/government/fiscalstrategy/model",
+      "official_https_candidate": "https://www.treasury.govt.nz/government/fiscalstrategy/model",
+      "source_host": "www.treasury.govt.nz",
+      "internet_archive": {
+        "status": "available",
+        "snapshots": [
+          {
+            "timestamp": "20170731215203",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "N6VC4NNUM5F2GWR7PLVGGEI4WCTKRZOE",
+            "url": "https://web.archive.org/web/20170731215203id_/http://www.treasury.govt.nz:80/government/fiscalstrategy/model"
+          },
+          {
+            "timestamp": "20170831220403",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "3KCFWKIWBICQPGRSBBSOFUQSEMZKQG5A",
+            "url": "https://web.archive.org/web/20170831220403id_/http://www.treasury.govt.nz:80/government/fiscalstrategy/model"
+          },
+          {
+            "timestamp": "20171001161502",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "AGIBQVYNNKYYM6K5M3BB3FMCIFUUD5TP",
+            "url": "https://web.archive.org/web/20171001161502id_/http://www.treasury.govt.nz:80/government/fiscalstrategy/model"
+          },
+          {
+            "timestamp": "20171101053257",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "WLJOY7NQLHE2EODE33XNIBK7KVWAORIB",
+            "url": "https://web.archive.org/web/20171101053257id_/http://www.treasury.govt.nz:80/government/fiscalstrategy/model"
+          },
+          {
+            "timestamp": "20171202005539",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "OI7GZCCNJGOFLJG4GG7Z2ZAHGOYZF5RI",
+            "url": "https://web.archive.org/web/20171202005539id_/http://www.treasury.govt.nz:80/government/fiscalstrategy/model"
+          },
+          {
+            "timestamp": "20180102044248",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "37Q4OBXLPWQARNJZQAOWOZLER3X6RR5P",
+            "url": "https://web.archive.org/web/20180102044248id_/http://www.treasury.govt.nz:80/government/fiscalstrategy/model"
+          },
+          {
+            "timestamp": "20180121094418",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "TBVOM4BHWUT5IWWWRGAZWFEI3YKUOOXG",
+            "url": "https://web.archive.org/web/20180121094418id_/http://www.treasury.govt.nz/government/fiscalstrategy/model"
+          },
+          {
+            "timestamp": "20180126235551",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "TBVOM4BHWUT5IWWWRGAZWFEI3YKUOOXG",
+            "url": "https://web.archive.org/web/20180126235551id_/http://www.treasury.govt.nz/government/fiscalstrategy/model"
+          },
+          {
+            "timestamp": "20180202010826",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "TBVOM4BHWUT5IWWWRGAZWFEI3YKUOOXG",
+            "url": "https://web.archive.org/web/20180202010826id_/http://www.treasury.govt.nz:80/government/fiscalstrategy/model"
+          },
+          {
+            "timestamp": "20180305124521",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "ZMPZI7KRFAW7GBCIVMEIPMMERHFTCH4Q",
+            "url": "https://web.archive.org/web/20180305124521id_/http://www.treasury.govt.nz:80/government/fiscalstrategy/model"
+          }
+        ]
+      }
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/economy/mei/archive",
+      "official_https_candidate": "https://www.treasury.govt.nz/economy/mei/archive",
+      "source_host": "www.treasury.govt.nz",
+      "internet_archive": {
+        "status": "available",
+        "snapshots": [
+          {
+            "timestamp": "20170413140935",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "GXDNIH44GL4NKLMM3NJ6KKKQS4LO7DAX",
+            "url": "https://web.archive.org/web/20170413140935id_/http://www.treasury.govt.nz:80/economy/mei/archive"
+          },
+          {
+            "timestamp": "20170606000521",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "4QQUFZPQ5OKZSPVVWDH2VNXGA4XPXECW",
+            "url": "https://web.archive.org/web/20170606000521id_/http://www.treasury.govt.nz/economy/mei/archive"
+          },
+          {
+            "timestamp": "20170613190028",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "A4K6TFWYTXZDJG4MBKPM6N2TDK27VJLX",
+            "url": "https://web.archive.org/web/20170613190028id_/http://www.treasury.govt.nz:80/economy/mei/archive"
+          },
+          {
+            "timestamp": "20170620232323",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "A4K6TFWYTXZDJG4MBKPM6N2TDK27VJLX",
+            "url": "https://web.archive.org/web/20170620232323id_/http://www.treasury.govt.nz/economy/mei/archive"
+          },
+          {
+            "timestamp": "20170813073754",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "AIX7TOHNQZP5QO646NTSXCGGG322ZKC3",
+            "url": "https://web.archive.org/web/20170813073754id_/http://www.treasury.govt.nz:80/economy/mei/archive"
+          },
+          {
+            "timestamp": "20171012181507",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "QRTOZR7G7KSRC7QBU2VRGWDYVXA7QTTY",
+            "url": "https://web.archive.org/web/20171012181507id_/http://www.treasury.govt.nz:80/economy/mei/archive"
+          },
+          {
+            "timestamp": "20171212024226",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "3XHYSM2OKCFX3KCZMTZZWZOY5WSCNQSW",
+            "url": "https://web.archive.org/web/20171212024226id_/http://www.treasury.govt.nz:80/economy/mei/archive"
+          },
+          {
+            "timestamp": "20180121095335",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "CY2CHL4FL4YGM4OZCMF7VBN6SZI43TCS",
+            "url": "https://web.archive.org/web/20180121095335id_/http://www.treasury.govt.nz/economy/mei/archive"
+          },
+          {
+            "timestamp": "20180127025220",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "CY2CHL4FL4YGM4OZCMF7VBN6SZI43TCS",
+            "url": "https://web.archive.org/web/20180127025220id_/http://www.treasury.govt.nz/economy/mei/archive"
+          },
+          {
+            "timestamp": "20180211103104",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "45YICQFIK7EMO4SHLJEZJECLVJXOQWID",
+            "url": "https://web.archive.org/web/20180211103104id_/http://www.treasury.govt.nz:80/economy/mei/archive"
+          }
+        ]
+      }
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/hyefu2016",
+      "official_https_candidate": "https://www.treasury.govt.nz/budget/forecasts/hyefu2016",
+      "source_host": "www.treasury.govt.nz",
+      "internet_archive": {
+        "status": "available",
+        "snapshots": [
+          {
+            "timestamp": "20170606063534",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "KXDKVRDHAJLLPU5J4R52RQAMFJZV26SG",
+            "url": "https://web.archive.org/web/20170606063534id_/http://www.treasury.govt.nz/budget/forecasts/hyefu2016"
+          },
+          {
+            "timestamp": "20170617162027",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "KXDKVRDHAJLLPU5J4R52RQAMFJZV26SG",
+            "url": "https://web.archive.org/web/20170617162027id_/http://www.treasury.govt.nz:80/budget/forecasts/hyefu2016"
+          },
+          {
+            "timestamp": "20170618210653",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "KXDKVRDHAJLLPU5J4R52RQAMFJZV26SG",
+            "url": "https://web.archive.org/web/20170618210653id_/http://www.treasury.govt.nz:80/budget/forecasts/hyefu2016"
+          },
+          {
+            "timestamp": "20170622231735",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "ESMWEYLUOZVFHWORNHYCHQVROTXWEJTB",
+            "url": "https://web.archive.org/web/20170622231735id_/http://www.treasury.govt.nz/budget/forecasts/hyefu2016/"
+          },
+          {
+            "timestamp": "20170720004621",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "X2H7VNM3IQHUL2XUOON265J325KM5QEQ",
+            "url": "https://web.archive.org/web/20170720004621id_/http://www.treasury.govt.nz:80/budget/forecasts/hyefu2016"
+          },
+          {
+            "timestamp": "20170721160238",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "X2H7VNM3IQHUL2XUOON265J325KM5QEQ",
+            "url": "https://web.archive.org/web/20170721160238id_/http://www.treasury.govt.nz:80/budget/forecasts/hyefu2016"
+          },
+          {
+            "timestamp": "20170920043442",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "FP2FHV7MTGRERNKZB2MWYRTFJKBCCVBO",
+            "url": "https://web.archive.org/web/20170920043442id_/http://www.treasury.govt.nz:80/budget/forecasts/hyefu2016"
+          },
+          {
+            "timestamp": "20180128001045",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "4WUHZBLEX65NDP32JT3NEJVI2EYUB43V",
+            "url": "https://web.archive.org/web/20180128001045id_/http://www.treasury.govt.nz/budget/forecasts/hyefu2016"
+          },
+          {
+            "timestamp": "20180131164740",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "YPEOIWIIXVUZIR7UYQXZON3RMXOL5CBW",
+            "url": "https://web.archive.org/web/20180131164740id_/http://www.treasury.govt.nz/budget/forecasts/hyefu2016/"
+          },
+          {
+            "timestamp": "20180202101221",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "4WUHZBLEX65NDP32JT3NEJVI2EYUB43V",
+            "url": "https://web.archive.org/web/20180202101221id_/http://www.treasury.govt.nz:80/budget/forecasts/hyefu2016"
+          }
+        ]
+      }
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/budget/2014/fsr",
+      "official_https_candidate": "https://www.treasury.govt.nz/budget/2014/fsr",
+      "source_host": "www.treasury.govt.nz",
+      "internet_archive": {
+        "status": "available",
+        "snapshots": [
+          {
+            "timestamp": "20150906101755",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "CQNOHEI6D7KXQX2X7ARUL6SI6HIRG25V",
+            "url": "https://web.archive.org/web/20150906101755id_/http://www.treasury.govt.nz/budget/2014/fsr"
+          },
+          {
+            "timestamp": "20150911010645",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "MTYHPZEOCAVTC2A7LBBFYQH3VXI3ACL7",
+            "url": "https://web.archive.org/web/20150911010645id_/http://www.treasury.govt.nz/budget/2014/fsr"
+          },
+          {
+            "timestamp": "20150919071951",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "O66Q2B7LNHA4BS6KPC34LTVHPF5M3PW6",
+            "url": "https://web.archive.org/web/20150919071951id_/http://www.treasury.govt.nz/budget/2014/fsr/"
+          },
+          {
+            "timestamp": "20151016033141",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "6ARPLQFJ7CUUE7VVBG42KBTUB55SIGAR",
+            "url": "https://web.archive.org/web/20151016033141id_/http://www.treasury.govt.nz:80/budget/2014/fsr"
+          },
+          {
+            "timestamp": "20160129182858",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "RVSHO5Q5K6RA4GC22QXBCBK7D2OLCVGO",
+            "url": "https://web.archive.org/web/20160129182858id_/http://www.treasury.govt.nz/budget/2014/fsr"
+          },
+          {
+            "timestamp": "20160215041817",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "BEQPIRJDJORK4CQ5Z3DTUR52WJQE3LPU",
+            "url": "https://web.archive.org/web/20160215041817id_/http://www.treasury.govt.nz/budget/2014/fsr/"
+          },
+          {
+            "timestamp": "20170423073940",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "USVHGIDSUIT4MJAMKID5QXJ3LVMWYGD2",
+            "url": "https://web.archive.org/web/20170423073940id_/http://www.treasury.govt.nz/budget/2014/fsr"
+          },
+          {
+            "timestamp": "20171114012703",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "OF5XZQ5P4TPTSTQMIJGQWAR6ECOYTQQM",
+            "url": "https://web.archive.org/web/20171114012703id_/http://www.treasury.govt.nz/budget/2014/fsr"
+          },
+          {
+            "timestamp": "20180127195732",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "VJE2KWLOTQKLGWBCUPEOT6QLKHB3ERMO",
+            "url": "https://web.archive.org/web/20180127195732id_/http://www.treasury.govt.nz/budget/2014/fsr"
+          },
+          {
+            "timestamp": "20180131050849",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "VE7GFJT7DSVRBF4PSVFUZ3DGPW2LMDK3",
+            "url": "https://web.archive.org/web/20180131050849id_/http://www.treasury.govt.nz/budget/2014/fsr/"
+          }
+        ]
+      }
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/statesector/performance/bass/benchmarking/2011-12",
+      "official_https_candidate": "https://www.treasury.govt.nz/statesector/performance/bass/benchmarking/2011-12",
+      "source_host": "www.treasury.govt.nz",
+      "internet_archive": {
+        "status": "available",
+        "snapshots": [
+          {
+            "timestamp": "20130731120353",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "74VX3XABCHFXC5OI6JMJ4T7NOJY7XNHH",
+            "url": "https://web.archive.org/web/20130731120353id_/http://www.treasury.govt.nz/statesector/performance/bass/benchmarking/2011-12"
+          },
+          {
+            "timestamp": "20150924225542",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "PMHZFHBEAXH6A4NGTQUKADBK63VQOINQ",
+            "url": "https://web.archive.org/web/20150924225542id_/http://www.treasury.govt.nz/statesector/performance/bass/benchmarking/2011-12"
+          },
+          {
+            "timestamp": "20160128121946",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "TIVH6ESHZJNF2IXH3DSUNRKS7WKDMKUS",
+            "url": "https://web.archive.org/web/20160128121946id_/http://www.treasury.govt.nz/statesector/performance/bass/benchmarking/2011-12"
+          },
+          {
+            "timestamp": "20160214221541",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "CC2XXU7GKGEAAVJ26CDGXET3WWTFFANA",
+            "url": "https://web.archive.org/web/20160214221541id_/http://www.treasury.govt.nz/statesector/performance/bass/benchmarking/2011-12/"
+          },
+          {
+            "timestamp": "20160617180525",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "R4SQSWM7PBYFSGQA5MOPCORWIUNVFWDP",
+            "url": "https://web.archive.org/web/20160617180525id_/http://www.treasury.govt.nz/statesector/performance/bass/benchmarking/2011-12"
+          },
+          {
+            "timestamp": "20170517223151",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "X3IN2DMQLVHKVWWAJRHK42QUODS4EMZT",
+            "url": "https://web.archive.org/web/20170517223151id_/http://www.treasury.govt.nz/statesector/performance/bass/benchmarking/2011-12"
+          },
+          {
+            "timestamp": "20180127194111",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "T56QF6CKUNJAISDDGQNPTHLFETUCVAEU",
+            "url": "https://web.archive.org/web/20180127194111id_/http://www.treasury.govt.nz/statesector/performance/bass/benchmarking/2011-12"
+          },
+          {
+            "timestamp": "20180131045032",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "YHFKPKBCVXG55DFNQYWDO4V45MQ22YNJ",
+            "url": "https://web.archive.org/web/20180131045032id_/http://www.treasury.govt.nz/statesector/performance/bass/benchmarking/2011-12/"
+          }
+        ]
+      }
+    },
+    {
+      "source_url": "https://www.treasury.govt.nz/sites/default/files/2024-08/pc-tsy-website-urls.xlsx",
+      "official_https_candidate": "https://www.treasury.govt.nz/sites/default/files/2024-08/pc-tsy-website-urls.xlsx",
+      "source_host": "www.treasury.govt.nz",
+      "internet_archive": {
+        "status": "available",
+        "snapshots": [
+          {
+            "timestamp": "20240905023649",
+            "statuscode": "200",
+            "mimetype": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "digest": "U36TI6DXZ2KKNST5L7NLCC32YBNVSC6I",
+            "url": "https://web.archive.org/web/20240905023649id_/https://www.treasury.govt.nz/sites/default/files/2024-08/pc-tsy-website-urls.xlsx"
+          }
+        ]
+      }
+    },
+    {
+      "source_url": "https://www.treasury.govt.nz/sites/default/files/2024-08/pc-tsy-website-urls.csv",
+      "official_https_candidate": "https://www.treasury.govt.nz/sites/default/files/2024-08/pc-tsy-website-urls.csv",
+      "source_host": "www.treasury.govt.nz",
+      "internet_archive": {
+        "status": "available",
+        "snapshots": [
+          {
+            "timestamp": "20240905003317",
+            "statuscode": "200",
+            "mimetype": "application/octet-stream",
+            "digest": "CCTGWVCGV6N4CZGEONRCB5QOXIESHJMS",
+            "url": "https://web.archive.org/web/20240905003317id_/https://www.treasury.govt.nz/sites/default/files/2024-08/pc-tsy-website-urls.csv"
+          }
+        ]
+      }
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/budget/2016/fsr",
+      "official_https_candidate": "https://www.treasury.govt.nz/budget/2016/fsr",
+      "source_host": "www.treasury.govt.nz",
+      "internet_archive": {
+        "status": "query-error",
+        "error_class": "URLError"
+      }
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/befu2012/003.htm",
+      "official_https_candidate": "https://www.treasury.govt.nz/budget/forecasts/befu2012/003.htm",
+      "source_host": "www.treasury.govt.nz",
+      "internet_archive": {
+        "status": "query-error",
+        "error_class": "URLError"
+      }
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/prefu2011/05.htm",
+      "official_https_candidate": "https://www.treasury.govt.nz/budget/forecasts/prefu2011/05.htm",
+      "source_host": "www.treasury.govt.nz",
+      "internet_archive": {
+        "status": "query-error",
+        "error_class": "URLError"
+      }
+    },
+    {
+      "source_url": "https://www.nzdmo.govt.nz/analyst-centre/data",
+      "official_https_candidate": "https://www.nzdmo.govt.nz/analyst-centre/data",
+      "source_host": "www.nzdmo.govt.nz",
+      "internet_archive": {
+        "status": "query-error",
+        "error_class": "URLError"
+      }
+    },
+    {
+      "source_url": "https://www.treasury.govt.nz/sites/default/files/2016-12/hyefu16-charts-data.xlsx",
+      "official_https_candidate": "https://www.treasury.govt.nz/sites/default/files/2016-12/hyefu16-charts-data.xlsx",
+      "source_host": "www.treasury.govt.nz",
+      "internet_archive": {
+        "status": "query-error",
+        "error_class": "URLError"
+      }
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/befu2010/005.htm",
+      "official_https_candidate": "https://www.treasury.govt.nz/budget/forecasts/befu2010/005.htm",
+      "source_host": "www.treasury.govt.nz",
+      "internet_archive": {
+        "status": "query-error",
+        "error_class": "URLError"
+      }
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/statesector/performance/bass/benchmarking/2010-11",
+      "official_https_candidate": "https://www.treasury.govt.nz/statesector/performance/bass/benchmarking/2010-11",
+      "source_host": "www.treasury.govt.nz",
+      "internet_archive": {
+        "status": "query-error",
+        "error_class": "URLError"
+      }
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/befu2016",
+      "official_https_candidate": "https://www.treasury.govt.nz/budget/forecasts/befu2016",
+      "source_host": "www.treasury.govt.nz",
+      "internet_archive": {
+        "status": "query-error",
+        "error_class": "URLError"
+      }
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/befu2012/010.htm",
+      "official_https_candidate": "https://www.treasury.govt.nz/budget/forecasts/befu2012/010.htm",
+      "source_host": "www.treasury.govt.nz",
+      "internet_archive": {
+        "status": "available",
+        "snapshots": [
+          {
+            "timestamp": "20130202112601",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "MGGSF4UR7INRTRZOMBOVRR6G3SYKJCHN",
+            "url": "https://web.archive.org/web/20130202112601id_/http://www.treasury.govt.nz/budget/forecasts/befu2012/010.htm"
+          },
+          {
+            "timestamp": "20130208061506",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "TUACGFQYXGDH4CJWRALZUZGMXI2XW2QP",
+            "url": "https://web.archive.org/web/20130208061506id_/http://www.treasury.govt.nz/budget/forecasts/befu2012/010.htm"
+          },
+          {
+            "timestamp": "20130213231831",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "LVFEJCOF37DXPUP7TY3TB5R4OFN3FLOK",
+            "url": "https://web.archive.org/web/20130213231831id_/http://www.treasury.govt.nz/budget/forecasts/befu2012/010.htm/"
+          },
+          {
+            "timestamp": "20130731042053",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "STGZEX63OLYEWN4TK432TOHAKC6S365A",
+            "url": "https://web.archive.org/web/20130731042053id_/http://www.treasury.govt.nz/budget/forecasts/befu2012/010.htm"
+          },
+          {
+            "timestamp": "20160216022622",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "WHUPRFOJTCAFE25HIO4B3ZUAD5OBVWXE",
+            "url": "https://web.archive.org/web/20160216022622id_/http://www.treasury.govt.nz/budget/forecasts/befu2012/010.htm"
+          },
+          {
+            "timestamp": "20170501033732",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "YRMJ4URIJPKK7GRM4LTMKUTNZA3RIT7U",
+            "url": "https://web.archive.org/web/20170501033732id_/http://www.treasury.govt.nz/budget/forecasts/befu2012/010.htm"
+          },
+          {
+            "timestamp": "20180127195712",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "2TQKXW2IIUHRUJN7V3IZ5JDNFBHX5KBT",
+            "url": "https://web.archive.org/web/20180127195712id_/http://www.treasury.govt.nz/budget/forecasts/befu2012/010.htm"
+          },
+          {
+            "timestamp": "20180131050236",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "TYWCSOPIVLLT7SH4ANWQ7IB7YUNOLG5C",
+            "url": "https://web.archive.org/web/20180131050236id_/http://www.treasury.govt.nz/budget/forecasts/befu2012/010.htm/"
+          }
+        ]
+      }
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/statesector/performance/bass/benchmarking/2008-10",
+      "official_https_candidate": "https://www.treasury.govt.nz/statesector/performance/bass/benchmarking/2008-10",
+      "source_host": "www.treasury.govt.nz",
+      "internet_archive": {
+        "status": "available",
+        "snapshots": [
+          {
+            "timestamp": "20110417021233",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "7W2LHQY2AF2Y7FXZPIS7EUVK4P6IGIJO",
+            "url": "https://web.archive.org/web/20110417021233id_/http://www.treasury.govt.nz:80/statesector/performance/bass/benchmarking/2008-10"
+          },
+          {
+            "timestamp": "20110519011704",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "KRL2S6O34L4UX4H32WG56LBKJQY4C3AT",
+            "url": "https://web.archive.org/web/20110519011704id_/http://www.treasury.govt.nz:80/statesector/performance/bass/benchmarking/2008-10/"
+          },
+          {
+            "timestamp": "20110807225741",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "EUZ22EDYCT7BOBLJL3644YOIMEVDTRR4",
+            "url": "https://web.archive.org/web/20110807225741id_/http://www.treasury.govt.nz:80/statesector/performance/bass/benchmarking/2008-10"
+          },
+          {
+            "timestamp": "20111106023912",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "2BEXMDPZXEOCRDHSNQR7EPW2NV74YK4C",
+            "url": "https://web.archive.org/web/20111106023912id_/http://www.treasury.govt.nz/statesector/performance/bass/benchmarking/2008-10"
+          },
+          {
+            "timestamp": "20120311040525",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "RWKNGZYWZ5QNJW3CUZR56TM3YEU4X7UL",
+            "url": "https://web.archive.org/web/20120311040525id_/http://www.treasury.govt.nz:80/statesector/performance/bass/benchmarking/2008-10"
+          },
+          {
+            "timestamp": "20120412210918",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "OZOOQJBYHYS5J5FLVECYZACP2HXAUC4S",
+            "url": "https://web.archive.org/web/20120412210918id_/http://treasury.govt.nz/statesector/performance/bass/benchmarking/2008-10"
+          },
+          {
+            "timestamp": "20130220001549",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "JXCL2BJO66QQN7MPNMOVCVRDNR3GRRNO",
+            "url": "https://web.archive.org/web/20130220001549id_/http://www.treasury.govt.nz/statesector/performance/bass/benchmarking/2008-10"
+          },
+          {
+            "timestamp": "20170517223243",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "NFVMUQOOCNKJH7MPX2JFIVAMWTZFCE5E",
+            "url": "https://web.archive.org/web/20170517223243id_/http://www.treasury.govt.nz/statesector/performance/bass/benchmarking/2008-10"
+          },
+          {
+            "timestamp": "20180127194102",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "CYODLJTX5CAOPMVALR4DP22UY5XVEYCS",
+            "url": "https://web.archive.org/web/20180127194102id_/http://www.treasury.govt.nz/statesector/performance/bass/benchmarking/2008-10"
+          },
+          {
+            "timestamp": "20180131033138",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "75YNG6SGQIMKECJX7M5L5X34GXWLXBMU",
+            "url": "https://web.archive.org/web/20180131033138id_/http://www.treasury.govt.nz/statesector/performance/bass/benchmarking/2008-10/"
+          }
+        ]
+      }
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/prefu2011/09.htm",
+      "official_https_candidate": "https://www.treasury.govt.nz/budget/forecasts/prefu2011/09.htm",
+      "source_host": "www.treasury.govt.nz",
+      "internet_archive": {
+        "status": "available",
+        "snapshots": [
+          {
+            "timestamp": "20120623161809",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "HFHTF2VFTURXTEJG2EHBJA6U44RJOE7Z",
+            "url": "https://web.archive.org/web/20120623161809id_/http://www.treasury.govt.nz/budget/forecasts/prefu2011/09.htm"
+          },
+          {
+            "timestamp": "20120624164518",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "HFHTF2VFTURXTEJG2EHBJA6U44RJOE7Z",
+            "url": "https://web.archive.org/web/20120624164518id_/http://www.treasury.govt.nz/budget/forecasts/prefu2011/09.htm"
+          },
+          {
+            "timestamp": "20130213214229",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "5KVMDHU3MQ74SN4JYK3QQ5IPLM2XR57Y",
+            "url": "https://web.archive.org/web/20130213214229id_/http://www.treasury.govt.nz/budget/forecasts/prefu2011/09.htm"
+          },
+          {
+            "timestamp": "20150129032549",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "JPSB6DIZ4XN73B5VZR6XS6TM4AAMZQ2M",
+            "url": "https://web.archive.org/web/20150129032549id_/http://www.treasury.govt.nz/budget/forecasts/prefu2011/09.htm"
+          },
+          {
+            "timestamp": "20160213084208",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "JJGECF6IOYLLIBWUVU25OFJWTKCPOSSP",
+            "url": "https://web.archive.org/web/20160213084208id_/http://www.treasury.govt.nz/budget/forecasts/prefu2011/09.htm"
+          },
+          {
+            "timestamp": "20160405033453",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "CV7XRIISG7ZLBPQVFELA7LD4VEGE2HQQ",
+            "url": "https://web.archive.org/web/20160405033453id_/http://www.treasury.govt.nz/budget/forecasts/prefu2011/09.htm"
+          },
+          {
+            "timestamp": "20170501034735",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "EQ6CPIZ4QZ4JOQBGFKSLHARLRPHNYIOT",
+            "url": "https://web.archive.org/web/20170501034735id_/http://www.treasury.govt.nz/budget/forecasts/prefu2011/09.htm"
+          },
+          {
+            "timestamp": "20180108220334",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "56H5ZZNJLZVWQNGKZ4YY4ENKMJYXPS5Z",
+            "url": "https://web.archive.org/web/20180108220334id_/http://www.treasury.govt.nz/budget/forecasts/prefu2011/09.htm"
+          },
+          {
+            "timestamp": "20180127194052",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "56H5ZZNJLZVWQNGKZ4YY4ENKMJYXPS5Z",
+            "url": "https://web.archive.org/web/20180127194052id_/http://www.treasury.govt.nz/budget/forecasts/prefu2011/09.htm"
+          },
+          {
+            "timestamp": "20180131033022",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "WZUT26PC7DJAXAK6X6SAQ7VHJHCZXRDY",
+            "url": "https://web.archive.org/web/20180131033022id_/http://www.treasury.govt.nz/budget/forecasts/prefu2011/09.htm/"
+          }
+        ]
+      }
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/befu2015",
+      "official_https_candidate": "https://www.treasury.govt.nz/budget/forecasts/befu2015",
+      "source_host": "www.treasury.govt.nz",
+      "internet_archive": {
+        "status": "available",
+        "snapshots": [
+          {
+            "timestamp": "20170517032013",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "SO4UAGTROAZYFAUDWARDIDOIGOT4TGZB",
+            "url": "https://web.archive.org/web/20170517032013id_/http://www.treasury.govt.nz:80/budget/forecasts/befu2015"
+          },
+          {
+            "timestamp": "20170518110816",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "SO4UAGTROAZYFAUDWARDIDOIGOT4TGZB",
+            "url": "https://web.archive.org/web/20170518110816id_/http://www.treasury.govt.nz:80/budget/forecasts/befu2015"
+          },
+          {
+            "timestamp": "20170618061411",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "EDDBDLANZLIXH2XFJCQO76T4ER3BHW5B",
+            "url": "https://web.archive.org/web/20170618061411id_/http://www.treasury.govt.nz:80/budget/forecasts/befu2015"
+          },
+          {
+            "timestamp": "20170621062502",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "EDDBDLANZLIXH2XFJCQO76T4ER3BHW5B",
+            "url": "https://web.archive.org/web/20170621062502id_/http://www.treasury.govt.nz/budget/forecasts/befu2015"
+          },
+          {
+            "timestamp": "20170719151837",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "JEQ6DIF3Q4CDTX5NLOEW5AQKGD5QU6MR",
+            "url": "https://web.archive.org/web/20170719151837id_/http://www.treasury.govt.nz:80/budget/forecasts/befu2015"
+          },
+          {
+            "timestamp": "20170815191754",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "ZCJSQ7VFIPS4W6KJKKRBNPIVMQ43SJYY",
+            "url": "https://web.archive.org/web/20170815191754id_/http://www.treasury.govt.nz:80/budget/forecasts/befu2015"
+          },
+          {
+            "timestamp": "20170915184317",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "WSYJDOXVRO2BUUT7EM6VDK2AJN7MG3LO",
+            "url": "https://web.archive.org/web/20170915184317id_/http://www.treasury.govt.nz:80/budget/forecasts/befu2015"
+          },
+          {
+            "timestamp": "20171009210410",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "SPQ7XT5JOW4WEKZB3CUFEHFIU6CPKVIU",
+            "url": "https://web.archive.org/web/20171009210410id_/http://www.treasury.govt.nz:80/budget/forecasts/befu2015"
+          },
+          {
+            "timestamp": "20180128082852",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "ZHDQE5U5LIXUANMDS2TZC2AAZCZMSERP",
+            "url": "https://web.archive.org/web/20180128082852id_/http://www.treasury.govt.nz/budget/forecasts/befu2015"
+          },
+          {
+            "timestamp": "20180201043226",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "JBI2HHNIKB4CTYD2OSW6OUPCHM4FJME7",
+            "url": "https://web.archive.org/web/20180201043226id_/http://www.treasury.govt.nz/budget/forecasts/befu2015/"
+          }
+        ]
+      }
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/budget/2017/bps",
+      "official_https_candidate": "https://www.treasury.govt.nz/budget/2017/bps",
+      "source_host": "www.treasury.govt.nz",
+      "internet_archive": {
+        "status": "available",
+        "snapshots": [
+          {
+            "timestamp": "20171224015352",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "45EDVQ3PPDMJYQAHK7GG5BROI5T5MRJD",
+            "url": "https://web.archive.org/web/20171224015352id_/http://www.treasury.govt.nz:80/budget/2017/bps"
+          },
+          {
+            "timestamp": "20180121095014",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "3LAY7NJMMO363Q5M7AJVMLZNV4Z2IPBS",
+            "url": "https://web.archive.org/web/20180121095014id_/http://www.treasury.govt.nz/budget/2017/bps"
+          },
+          {
+            "timestamp": "20180123232430",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "3LAY7NJMMO363Q5M7AJVMLZNV4Z2IPBS",
+            "url": "https://web.archive.org/web/20180123232430id_/http://www.treasury.govt.nz:80/budget/2017/bps"
+          },
+          {
+            "timestamp": "20180125105201",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "3LAY7NJMMO363Q5M7AJVMLZNV4Z2IPBS",
+            "url": "https://web.archive.org/web/20180125105201id_/http://www.treasury.govt.nz:80/budget/2017/bps"
+          },
+          {
+            "timestamp": "20180126005804",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "3LAY7NJMMO363Q5M7AJVMLZNV4Z2IPBS",
+            "url": "https://web.archive.org/web/20180126005804id_/http://www.treasury.govt.nz:80/budget/2017/bps"
+          },
+          {
+            "timestamp": "20180127020159",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "3LAY7NJMMO363Q5M7AJVMLZNV4Z2IPBS",
+            "url": "https://web.archive.org/web/20180127020159id_/http://www.treasury.govt.nz/budget/2017/bps"
+          },
+          {
+            "timestamp": "20180128042305",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "5OBXC7KBVOZNRVJHJRE34WKVWFLOLPPI",
+            "url": "https://web.archive.org/web/20180128042305id_/http://www.treasury.govt.nz/budget/2017/bps/"
+          },
+          {
+            "timestamp": "20180128065221",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "3LAY7NJMMO363Q5M7AJVMLZNV4Z2IPBS",
+            "url": "https://web.archive.org/web/20180128065221id_/http://www.treasury.govt.nz:80/budget/2017/bps"
+          },
+          {
+            "timestamp": "20180227223915",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "AOQ7QXGFL4KAHF6OXGE4B6HEMYKAEGP4",
+            "url": "https://web.archive.org/web/20180227223915id_/http://www.treasury.govt.nz:80/budget/2017/bps"
+          },
+          {
+            "timestamp": "20180330173437",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "VFHAT2I65WWVWMZNXRWBBJFLLOJMYCDA",
+            "url": "https://web.archive.org/web/20180330173437id_/http://www.treasury.govt.nz:80/budget/2017/bps"
+          }
+        ]
+      }
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/budget/2015/fsr",
+      "official_https_candidate": "https://www.treasury.govt.nz/budget/2015/fsr",
+      "source_host": "www.treasury.govt.nz",
+      "internet_archive": {
+        "status": "available",
+        "snapshots": [
+          {
+            "timestamp": "20160315214919",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "FBQI6OSMEWSHSURGECEGKCIRP3RAD4VU",
+            "url": "https://web.archive.org/web/20160315214919id_/http://www.treasury.govt.nz/budget/2015/fsr"
+          },
+          {
+            "timestamp": "20160402020451",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "BSNHULNSE4MZEL5LH3FRZEXRRVSDOU6S",
+            "url": "https://web.archive.org/web/20160402020451id_/http://www.treasury.govt.nz/budget/2015/fsr"
+          },
+          {
+            "timestamp": "20160415144342",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "K6I3QJRBY6HTLL3YUYHLZZ4DHRGYBPEW",
+            "url": "https://web.archive.org/web/20160415144342id_/http://www.treasury.govt.nz/budget/2015/fsr"
+          },
+          {
+            "timestamp": "20160423163834",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "7JV67NJJ3G22FF5UNRLR54A3FMFVL74D",
+            "url": "https://web.archive.org/web/20160423163834id_/http://www.treasury.govt.nz/budget/2015/fsr"
+          },
+          {
+            "timestamp": "20170413035721",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "4CINZBJQHQKTXYAJUGTRRPVZTETGSF3G",
+            "url": "https://web.archive.org/web/20170413035721id_/http://www.treasury.govt.nz/budget/2015/fsr"
+          },
+          {
+            "timestamp": "20170429163612",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "K7IJJU2JX24QDS7IHP37J6XMVYUKZGFT",
+            "url": "https://web.archive.org/web/20170429163612id_/http://www.treasury.govt.nz/budget/2015/fsr/"
+          },
+          {
+            "timestamp": "20170621120843",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "ABCPH66VU2OUM6UO5YRSXNVCUD7OQCXX",
+            "url": "https://web.archive.org/web/20170621120843id_/http://www.treasury.govt.nz/budget/2015/fsr"
+          },
+          {
+            "timestamp": "20171114022008",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "BHSBSHPO5ZSU4QYRPV4NBX24UAZ7SEI6",
+            "url": "https://web.archive.org/web/20171114022008id_/http://www.treasury.govt.nz/budget/2015/fsr/"
+          },
+          {
+            "timestamp": "20180127195751",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "KGAIVJMGGXBTFOIGM5IIDALPB7JKYRAB",
+            "url": "https://web.archive.org/web/20180127195751id_/http://www.treasury.govt.nz/budget/2015/fsr"
+          },
+          {
+            "timestamp": "20180131052051",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "F3ZSUGKD5UOMKRJTXUN3JQ7UOLK4PPHT",
+            "url": "https://web.archive.org/web/20180131052051id_/http://www.treasury.govt.nz/budget/2015/fsr/"
+          }
+        ]
+      }
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/hyefu2015",
+      "official_https_candidate": "https://www.treasury.govt.nz/budget/forecasts/hyefu2015",
+      "source_host": "www.treasury.govt.nz",
+      "internet_archive": {
+        "status": "available",
+        "snapshots": [
+          {
+            "timestamp": "20170527193210",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "QV7KMOAYOB5KZIZNFTHXFS6TUK3JEJOZ",
+            "url": "https://web.archive.org/web/20170527193210id_/http://www.treasury.govt.nz:80/budget/forecasts/hyefu2015"
+          },
+          {
+            "timestamp": "20170614134042",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "KNAHP2D7PALTMV2WGDNPPTZQ57OXK446",
+            "url": "https://web.archive.org/web/20170614134042id_/http://www.treasury.govt.nz/budget/forecasts/hyefu2015"
+          },
+          {
+            "timestamp": "20170627103401",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "KNAHP2D7PALTMV2WGDNPPTZQ57OXK446",
+            "url": "https://web.archive.org/web/20170627103401id_/http://www.treasury.govt.nz:80/budget/forecasts/hyefu2015"
+          },
+          {
+            "timestamp": "20170728120431",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "FCSXUU2J5G6D4WFJSYWPKHAMCW7KFXVF",
+            "url": "https://web.archive.org/web/20170728120431id_/http://www.treasury.govt.nz:80/budget/forecasts/hyefu2015"
+          },
+          {
+            "timestamp": "20170828070228",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "WC343L5XBMGKZL5Q2G6MY77UUICZTSEL",
+            "url": "https://web.archive.org/web/20170828070228id_/http://www.treasury.govt.nz:80/budget/forecasts/hyefu2015"
+          },
+          {
+            "timestamp": "20170915024551",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "WJDULZR5AMY5S7ZDLU2JBFUMFYJIEBG6",
+            "url": "https://web.archive.org/web/20170915024551id_/http://www.treasury.govt.nz/budget/forecasts/hyefu2015/"
+          },
+          {
+            "timestamp": "20171009224613",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "FVEWZWWCMOX7OOIKUNOIA455ASDVLDSP",
+            "url": "https://web.archive.org/web/20171009224613id_/http://www.treasury.govt.nz:80/budget/forecasts/hyefu2015"
+          },
+          {
+            "timestamp": "20180123161912",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "2NY7ED3XMX4ZHW6PQAOGO4YXBIAPJU4X",
+            "url": "https://web.archive.org/web/20180123161912id_/http://www.treasury.govt.nz/budget/forecasts/hyefu2015"
+          },
+          {
+            "timestamp": "20180128082845",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "2NY7ED3XMX4ZHW6PQAOGO4YXBIAPJU4X",
+            "url": "https://web.archive.org/web/20180128082845id_/http://www.treasury.govt.nz/budget/forecasts/hyefu2015"
+          },
+          {
+            "timestamp": "20180201041103",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "3LXJ4BJETL7FCH76BDZ65LDAD7UKT4MU",
+            "url": "https://web.archive.org/web/20180201041103id_/http://www.treasury.govt.nz/budget/forecasts/hyefu2015/"
+          }
+        ]
+      }
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/government/financialstatements/monthend",
+      "official_https_candidate": "https://www.treasury.govt.nz/government/financialstatements/monthend",
+      "source_host": "www.treasury.govt.nz",
+      "internet_archive": {
+        "status": "available",
+        "snapshots": [
+          {
+            "timestamp": "20171122213245",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "GEHDQFTW3EDQ6WKHNEHHMSLZ4I2LMMLT",
+            "url": "https://web.archive.org/web/20171122213245id_/http://www.treasury.govt.nz:80/government/financialstatements/monthend"
+          },
+          {
+            "timestamp": "20171224020215",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "AE6SXIVMWA6D7GOBNDLV7POOCA6MIRPI",
+            "url": "https://web.archive.org/web/20171224020215id_/http://www.treasury.govt.nz:80/government/financialstatements/monthend"
+          },
+          {
+            "timestamp": "20180111015311",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "6SXFXPHGDB6WDGBVKB7ODIRHOEYEQHLB",
+            "url": "https://web.archive.org/web/20180111015311id_/http://www.treasury.govt.nz/government/financialstatements/monthend/"
+          },
+          {
+            "timestamp": "20180121094324",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "ZHF5G4YDSHYZYV5CLVI2G3UGF2XKHZPO",
+            "url": "https://web.archive.org/web/20180121094324id_/http://www.treasury.govt.nz/government/financialstatements/monthend"
+          },
+          {
+            "timestamp": "20180123233331",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "ZHF5G4YDSHYZYV5CLVI2G3UGF2XKHZPO",
+            "url": "https://web.archive.org/web/20180123233331id_/http://www.treasury.govt.nz:80/government/financialstatements/monthend"
+          },
+          {
+            "timestamp": "20180125104754",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "26PMUTQT3IG2D3X6VI3KW5DYQJESTHFO",
+            "url": "https://web.archive.org/web/20180125104754id_/http://www.treasury.govt.nz:80/government/financialstatements/monthend"
+          },
+          {
+            "timestamp": "20180126005823",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "26PMUTQT3IG2D3X6VI3KW5DYQJESTHFO",
+            "url": "https://web.archive.org/web/20180126005823id_/http://www.treasury.govt.nz:80/government/financialstatements/monthend"
+          },
+          {
+            "timestamp": "20180126235520",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "26PMUTQT3IG2D3X6VI3KW5DYQJESTHFO",
+            "url": "https://web.archive.org/web/20180126235520id_/http://www.treasury.govt.nz/government/financialstatements/monthend"
+          },
+          {
+            "timestamp": "20180204132908",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "LGBJCJCDV5XW4OSRR2IQIEANMP2PIDIN",
+            "url": "https://web.archive.org/web/20180204132908id_/http://www.treasury.govt.nz/government/financialstatements/monthend/"
+          },
+          {
+            "timestamp": "20180327173915",
+            "statuscode": "200",
+            "mimetype": "text/html",
+            "digest": "Q2W7HI7DULHV4OBFMBE75L2W7AZ7YGI2",
+            "url": "https://web.archive.org/web/20180327173915id_/http://www.treasury.govt.nz:80/government/financialstatements/monthend"
+          }
+        ]
+      }
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/government/investmentstatements/2014/is14-charts-data.xls",
+      "official_https_candidate": "https://www.treasury.govt.nz/government/investmentstatements/2014/is14-charts-data.xls",
+      "source_host": "www.treasury.govt.nz",
+      "internet_archive": {
+        "status": "available",
+        "snapshots": [
+          {
+            "timestamp": "20140814131814",
+            "statuscode": "200",
+            "mimetype": "application/msexcel",
+            "digest": "K2LCD756XLVAZOY24DAP22ZLJY33L2RH",
+            "url": "https://web.archive.org/web/20140814131814id_/http://www.treasury.govt.nz/government/investmentstatements/2014/is14-charts-data.xls"
+          },
+          {
+            "timestamp": "20150117102111",
+            "statuscode": "200",
+            "mimetype": "application/msexcel",
+            "digest": "K2LCD756XLVAZOY24DAP22ZLJY33L2RH",
+            "url": "https://web.archive.org/web/20150117102111id_/http://www.treasury.govt.nz/government/investmentstatements/2014/is14-charts-data.xls"
+          },
+          {
+            "timestamp": "20150213001316",
+            "statuscode": "200",
+            "mimetype": "application/msexcel",
+            "digest": "K2LCD756XLVAZOY24DAP22ZLJY33L2RH",
+            "url": "https://web.archive.org/web/20150213001316id_/http://www.treasury.govt.nz/government/investmentstatements/2014/is14-charts-data.xls"
+          },
+          {
+            "timestamp": "20160129190222",
+            "statuscode": "200",
+            "mimetype": "application/msexcel",
+            "digest": "K2LCD756XLVAZOY24DAP22ZLJY33L2RH",
+            "url": "https://web.archive.org/web/20160129190222id_/http://www.treasury.govt.nz/government/investmentstatements/2014/is14-charts-data.xls"
+          },
+          {
+            "timestamp": "20170412005339",
+            "statuscode": "200",
+            "mimetype": "application/msexcel",
+            "digest": "K2LCD756XLVAZOY24DAP22ZLJY33L2RH",
+            "url": "https://web.archive.org/web/20170412005339id_/http://www.treasury.govt.nz/government/investmentstatements/2014/is14-charts-data.xls"
+          },
+          {
+            "timestamp": "20180127230459",
+            "statuscode": "200",
+            "mimetype": "application/msexcel",
+            "digest": "K2LCD756XLVAZOY24DAP22ZLJY33L2RH",
+            "url": "https://web.archive.org/web/20180127230459id_/http://www.treasury.govt.nz/government/investmentstatements/2014/is14-charts-data.xls"
+          }
+        ]
+      }
+    }
+  ]
+}

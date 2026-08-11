@@ -1,5 +1,6 @@
 """Bounded streaming capture contracts."""
 
+import gzip
 from pathlib import Path
 
 import httpx
@@ -44,6 +45,26 @@ async def test_capture_rejects_declared_oversize(tmp_path: Path) -> None:
 
 
 @pytest.mark.anyio
+async def test_capture_bounds_decoded_compressed_payload(tmp_path: Path) -> None:
+    async def handler(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(
+            200,
+            headers={"content-encoding": "gzip", "content-length": "1"},
+            content=gzip.compress(b"expanded"),
+        )
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+        with pytest.raises(CaptureError) as raised:
+            await capture_url(
+                client,
+                "https://example.test/compressed",
+                ContentAddressedStore(tmp_path),
+                CaptureConfig(max_bytes=2),
+            )
+    assert raised.value.error_class == "decompression_limit"
+
+
+@pytest.mark.anyio
 async def test_capture_follows_bounded_redirects_and_validates(tmp_path: Path) -> None:
     async def handler(request: httpx.Request) -> httpx.Response:
         if request.url.path == "/start":
@@ -63,6 +84,84 @@ async def test_capture_follows_bounded_redirects_and_validates(tmp_path: Path) -
         "redirect",
         "captured",
     ]
+
+
+@pytest.mark.anyio
+async def test_capture_rejects_partial_content_ranges(tmp_path: Path) -> None:
+    """HTTP 206 responses are explicit unsupported range outcomes."""
+
+    async def handler(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(
+            206,
+            headers={"content-length": "3"},
+            content=b"abc",
+        )
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+        with pytest.raises(CaptureError) as raised:
+            await capture_url(
+                client,
+                "https://example.test/range",
+                ContentAddressedStore(tmp_path),
+            )
+    assert raised.value.error_class == "unsupported_range"
+    assert raised.value.attempts[0].outcome == "unsupported_range"
+
+
+@pytest.mark.anyio
+async def test_capture_writes_material_warc_receipt_when_requested(
+    tmp_path: Path,
+) -> None:
+    """Successful material captures can emit bounded WARC receipts when requested."""
+
+    async def handler(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(
+            200,
+            headers={
+                "content-type": "text/csv",
+                "etag": '"v1"',
+                "authorization": "Bearer secret",
+            },
+            content=b"a,b\n1,2\n",
+        )
+
+    warc_path = tmp_path / "capture.warc"
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+        result = await capture_url(
+            client,
+            "https://example.test/resource.csv?token=secret",
+            ContentAddressedStore(tmp_path / "objects"),
+            transaction_warc_path=warc_path,
+        )
+    assert result.warc_receipt is not None
+    assert result.warc_receipt.path == warc_path
+    text = warc_path.read_text(encoding="utf-8")
+    assert "WARC/1.1" in text
+    assert "token=[REDACTED]" not in text
+    assert "resource.csv" in text
+    assert "?token=" not in text
+    assert "Authorization" not in text
+    assert result.warc_receipt.byte_count == warc_path.stat().st_size
+
+
+@pytest.mark.anyio
+async def test_capture_bounds_material_warc_buffer(tmp_path: Path) -> None:
+    async def handler(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(200, content=b"payload")
+
+    warc_path = tmp_path / "too-large.warc"
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+        result = await capture_url(
+            client,
+            "https://example.test/resource",
+            ContentAddressedStore(tmp_path / "objects"),
+            CaptureConfig(max_warc_bytes=1),
+            transaction_warc_path=warc_path,
+        )
+    assert result.receipt.byte_count == 7
+    assert result.warc_receipt is None
+    assert not warc_path.exists()
+    assert result.attempt_receipts[-1].outcome == "captured"
 
 
 @pytest.mark.anyio

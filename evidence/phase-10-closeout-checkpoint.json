@@ -1,0 +1,54 @@
+{
+  "schema_version": "archive-govt-nz.phase-checkpoint/v1",
+  "phase": "phase-10-mvp-closeout",
+  "status": "complete-with-honest-tombstones",
+  "resource_outcomes": {
+    "resource_scope": 91,
+    "original_source_captured": 12,
+    "datastore_fallback_captured": 44,
+    "datastore_overlap_with_original": 1,
+    "datastore_distinct_additional": 43,
+    "authoritative_replacement_evidenced": 31,
+    "authoritative_replacement_payload_equivalence": "not-claimed",
+    "rights_evidenced_source_not_recaptured": 13,
+    "unavailable_tombstoned": 1,
+    "rights_restricted": 2,
+    "total_tombstones": 3,
+    "counts_are_mutually_exclusive": false,
+    "interpretation": "Capture channels and resolution evidence overlap; do not sum these counts as a partition."
+  },
+  "gates": {
+    "quality_gate": {
+      "tests": 333,
+      "coverage_pct": 96.13,
+      "status": "passed"
+    },
+    "reconciliation": {
+      "discovered": 91,
+      "resolved": 91,
+      "original_source_captured": 12,
+      "datastore_fallback_captured": 44,
+      "authoritative_replacement_evidenced": 31,
+      "unavailable_tombstoned": 1,
+      "rights_restricted": 2,
+      "tombstones": 3
+    },
+    "publication": {
+      "zenodo_doi": "10.5281/zenodo.21880266",
+      "huggingface_revision": "50c9e864bd7a9fed39862cf72bd733835f81568a",
+      "release_state": "reconciled"
+    },
+    "supply_chain": {
+      "audit": "passed",
+      "licenses": "passed",
+      "credential_scan": "passed",
+      "sbom": "passed"
+    }
+  },
+  "open_blockers": [],
+  "limitations": [
+    "Thirty-one authoritative publisher replacements establish identity and context, not byte-equivalent payload capture.",
+    "Two resources remain rights-restricted and one remains unavailable; all three are retained as explicit tombstones.",
+    "Internet Archive and publication evidence remain distinct from original-source capture."
+  ]
+}

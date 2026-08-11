@@ -64,6 +64,8 @@ def test_repository_gate_lists_all_required_stages() -> None:
         "schemas",
         "mutation",
         "mutation-versioning",
+        "mutation-redundancy",
+        "mutation-archivebox-pilot",
         "audit",
         "licenses",
         "secrets",
@@ -116,3 +118,9 @@ def test_default_gate_runner_preserves_process_status(
     monkeypatch.chdir(tmp_path)
 
     assert run_command((sys.executable, "-c", "raise SystemExit(7)")) == 7
+
+
+def test_windows_validation_wrapper_propagates_gate_status() -> None:
+    """PowerShell must not turn a failed Python gate into a successful run."""
+    wrapper = Path("scripts/validate.ps1").read_text(encoding="utf-8")
+    assert "exit $LASTEXITCODE" in wrapper

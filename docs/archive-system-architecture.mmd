@@ -1,0 +1,15 @@
+flowchart LR
+    Discovery["Catalogue and publisher discovery"] --> Bounded["Bounded deterministic retrieval"]
+    Bounded --> Objects["Content-addressed objects"]
+    Bounded --> IA["Internet Archive triangulation"]
+
+    Exceptions["Selected unresolved pages"] --> Secondary["Isolated secondary preservation pilot"]
+    Exceptions --> Browser["Manual browser-assisted inspection"]
+
+    Secondary --> Admission["Existing hashing, rights and validation gates"]
+    Browser --> Candidates["Candidate URLs only"]
+    Candidates --> Bounded
+    Admission --> Objects
+
+    Objects --> HF["Rolling Hugging Face archive"]
+    HF --> Zenodo["Gated immutable Zenodo releases"]

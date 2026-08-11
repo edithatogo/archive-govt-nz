@@ -444,3 +444,43 @@ remaining implementation tasks with evidence-first checkpoints.
 - M-06 implementation review: secure-source resolution is fail-closed and auditable, but no source is promoted until live HTTPS/mirror probing produces evidence.
 - M-18 is now verified: Zenodo, reconciliation, and recovery critical branches reach 100%; the full suite reports 190 passed and 97.23% overall coverage.
 - No public completeness or MVP-complete claim is authorized until these findings are resolved or explicitly re-scoped by decision.
+
+## Final implementation review - 2026-08-11
+
+### Summary
+
+Track 1 satisfies its approved requirements with explicit, evidence-backed
+tombstones and is ready to close; no unresolved review finding remains.
+
+### Verification checks
+
+- Plan compliance: **Yes** — M-01 through M-19 have linked implementation,
+  local/hosted assurance, source outcomes, and publication evidence.
+- Style compliance: **Pass** — repository formatting, Ruff, and strict Pyright
+  passed from a clean detached worktree.
+- New tests: **Yes** — the final source-resolution contracts cover complete,
+  deterministic, fail-closed classification and authoritative-host rejection.
+- Test coverage: **Yes** — 96.13% overall; policy and archive-critical mutation
+  suites killed 26 of 26 targeted mutants.
+- Test results: **Passed** — 333 tests plus schema and supply-chain gates.
+
+### Prior finding resolution
+
+- The former M-06 finding is resolved: all 91 resources were evaluated under
+  policy, every eligible resource was attempted, and non-eligible outcomes are
+  retained as explicit restrictions, unavailable states, or tombstones.
+- The former M-14 finding is resolved by interruption/recovery, object and
+  ledger reconciliation, unchanged rerun, and release reconstruction evidence.
+- The raw CKAN response preserves all 54 unique Treasury dataset
+  representations before normalization and is checksum-recorded.
+- The 47-source gap is closed as a resolution ledger: 31 authoritative
+  publisher replacements, 13 official rights-evidence outcomes, and three
+  irrecoverable/rights-unevidenced NZDMO tombstones. Replacement pages are not
+  represented as byte-equivalent original payloads.
+- Hugging Face and Zenodo publication/readback evidence remains distinct from
+  source capture and tombstone states.
+
+### Review decision
+
+**Approved for completion.** Keep the track in the registry as completed rather
+than deleting its evidence history. No review fix is required.

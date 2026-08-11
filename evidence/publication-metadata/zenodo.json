@@ -1,6 +1,6 @@
 {
   "title": "Archive Govt NZ \u2014 Treasury evidence preview",
-  "description": "Evidence-first, checksum-pinned Treasury archive preview with 12 locally captured resources; not yet published.",
+  "description": "Evidence-first, checksum-pinned Treasury archive metadata with stage-specific rolling publication, historical release, and new-candidate states.",
   "upload_type": "dataset",
   "access_right": "open",
   "license": "cc-by-4.0",
@@ -27,14 +27,14 @@
     "stage_records": [
       "archive-evidence-ledger/stages/discovered:observed",
       "archive-evidence-ledger/stages/eligible:policy-implemented",
-      "archive-evidence-ledger/stages/captured:not-yet-complete",
+      "archive-evidence-ledger/stages/captured:original-and-datastore-fallback-captured",
       "archive-evidence-ledger/stages/validated:software-gates-passed",
       "archive-evidence-ledger/stages/transformed:derivative-foundation",
-      "archive-evidence-ledger/stages/uploaded:not-authorized",
-      "archive-evidence-ledger/stages/remotely-verified:not-run",
-      "archive-evidence-ledger/stages/released:not-released",
-      "archive-evidence-ledger/stages/unavailable:recorded-per-attempt",
-      "archive-evidence-ledger/stages/restricted:policy-controlled"
+      "archive-evidence-ledger/stages/uploaded:uploaded-remotely-verified",
+      "archive-evidence-ledger/stages/remotely-verified:remote-readback-verified",
+      "archive-evidence-ledger/stages/released:reconciled-release",
+      "archive-evidence-ledger/stages/unavailable:tombstoned",
+      "archive-evidence-ledger/stages/restricted:rights-restricted"
     ],
     "capture_summary": "build/live/capture-20260731.json"
   },
@@ -1277,12 +1277,17 @@
       ]
     }
   },
+  "architecture": {
+    "document": "docs/archive-system-architecture.md",
+    "model": "rolling-hugging-face-plus-gated-immutable-zenodo",
+    "secondary_capture_authority": "non-authoritative-until-admitted"
+  },
   "publication_state": "prepared-not-published",
   "doi_authorized": false,
   "limitations": [
     "payload_capture_scope_limited_to_12_preflight_approved_resources",
     "rights_review_incomplete",
-    "no_remote_upload",
-    "no_doi_confirmation_required"
+    "new_remote_upload_requires_its_own_receipt",
+    "new_doi_not_requested_for_documentation_only_change"
   ]
 }

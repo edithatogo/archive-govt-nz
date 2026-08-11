@@ -498,6 +498,39 @@ passes without claiming complete source capture.
 | Checkpoint | recorded | `evidence/phase-5-checkpoint.json` and `.md` |
 | Scope | limited | No complete capture or restricted/publication authorization claim |
 
+## Phase 6 operator preview - 2026-08-10
+
+Paired receipts: `evidence/phase-6-capture-plan-summary.json` and `.md`.
+The metadata-only preview covers all 91 resources and starts no payload
+transfer: 0 eligible, 74 terminal, and 17 restricted.
+
+## Scheduled capture budget hardening - 2026-08-10
+
+| Control | State | Evidence |
+| --- | --- | --- |
+| Storage/byte budget | passed | `BatchBudget.max_total_bytes` and admission gate |
+| Duration budget | passed | Runner max-duration deferral |
+| Concurrency budget | passed | Semaphore-bound capture |
+| Source-rate budget | passed | Positive requests-per-second interval limiter |
+| Resumability | passed | Atomic checkpoint and completed-resource skip contracts |
+
+## Attestation verification hardening - 2026-08-10
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Detached digest verification | passed | Optional SHA-256 digest mismatch fails closed |
+| Cryptographic signing | external gate | No signing key or release approval is present |
+| Publication safety | preserved | Verification does not authorize publication |
+
+## Bounded capture progress receipts - 2026-08-11
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Outcome counts | passed | Enabled runs count captured, unavailable, failed, and deferred states |
+| Budget receipt | passed | Storage, resource, concurrency, source-rate, and duration limits recorded |
+| Checkpoint behavior | passed | Atomic resumable checkpoint and completed-resource skip contracts |
+| Transfer gate | preserved | Explicit `--enable` remains required |
+
 ## Phase 5 layer-count reconciliation - 2026-08-10
 
 | Layer | Manifest | Observed | State |
@@ -544,3 +577,145 @@ Receipt: `evidence/phase-5-layer-reconciliation.json` and `.md`.
 | Raw integrity | passed | Independent SHA-256 recorded in `DerivativeReceipt` |
 | Information-loss boundary | passed | Unknown fields remain in raw layer and are listed as non-projected in derivatives |
 | Derivative contracts | passed | Focused tests, Ruff, and strict Pyright passed |
+
+## Bounded capture storage and WARC limits - 2026-08-11
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Disk spooling | passed | Response bytes are written to a bounded temporary file before object promotion |
+| Async safety | passed | Blocking promotion and WARC I/O are delegated off the event loop |
+| Storage failures | passed | Object-store/temporary-file failures emit `storage_failed` receipts |
+| WARC bound | passed | `max_warc_bytes` prevents unbounded WARC body buffering; payload capture remains separate |
+| Capture contracts | passed | 9 focused tests; Ruff and strict Pyright passed |
+| Remaining bounds | open | Compression-ratio telemetry and authorized payload transfer remain external follow-up gates |
+
+## Authorized Treasury capture rerun - 2026-08-11
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Capture authority | recorded | User authorized eligible Treasury payload capture and asserted availability/approval |
+| Discovery | passed | Fresh bounded CKAN observation found 54 datasets and 91 resources |
+| Preflight | passed | 12 secure sources observed; 79 remained tombstone-required due to HTTP, 403, or no eligible secure source |
+| Payload capture | passed-with-limitations | 12 resources captured under bounded budgets; no failures among attempted resources |
+| Safety boundary | preserved | HTTPS, response, redirect, storage, and quarantine safeguards were not bypassed |
+| Publication | not attempted | Hugging Face/Zenodo publication remains separately gated |
+
+## Secure-source GET fallback - 2026-08-11
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| HEAD fallback | implemented | 403/405/501 HEAD responses trigger one-byte bounded GET-range probing |
+| Live result | passed-with-limitations | 91 resources probed; 12 secure sources observed and 79 remained unusable |
+| Source response | unresolved | 78 GET-range fallbacks returned 403; no source was promoted without an eligible response |
+| Body bound | passed | Fallback reads at most one response byte and records `probe_method`/`probe_bytes` |
+
+## CKAN DataStore fallback capture - 2026-08-11
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Recovery candidates | passed | 44 HTTPS DataStore candidates identified from bounded API probes |
+| Paginated capture | passed | 44/44 candidates captured with bounded raw JSON pages |
+| Integrity | passed | Every page has canonical JSON byte count and SHA-256 receipt |
+| Limits | passed | Page, row, response, timeout, and concurrency bounds are explicit |
+| Promotion boundary | preserved | DataStore rows are fallback source evidence and are not automatically published |
+| Remaining source gap | open | 32 HTTP resources lack DataStore fallback; 15 restricted resources need rights/source evidence |
+
+## Publication credential validation - 2026-08-11
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| HF environment secret | present | `HF_TOKEN` is present; value is never emitted |
+| Zenodo environment secret | present | `ZENODO_TOKEN` is present; value is never emitted |
+| Hugging Face read-only auth | passed | API identity endpoint returned HTTP 200 |
+| Zenodo read-only auth | passed | Deposit listing endpoint returned HTTP 200 |
+| Publication side effect | not attempted | No upload, overwrite, deposition, or DOI action occurred |
+| Release gate | open | Exact candidate package/hash and explicit DOI approval remain required |
+
+## Approved release candidate and HF upload attempt - 2026-08-11
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Candidate package | prepared | 28-file package, 5,980,160 bytes, SHA-256 `960c1924c76e3d6e72948eb8b1ac6e76fd7158fbce164f801bb0338321208b9f` |
+| HF read authentication | passed | Identity endpoint returned HTTP 200 |
+| HF write authorization | blocked | Upload endpoint returned HTTP 403; current token lacks repository write permission |
+| Zenodo publication | held | DOI/deposition held until HF write and remote verification succeed |
+
+## Approved release publication and remote verification - 2026-08-11
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Hugging Face upload | published | `edithatogo/archive-govt-nz-treasury`, revision `50c9e864bd7a9fed39862cf72bd733835f81568a` |
+| Hugging Face readback | verified | Remote manifest SHA-256 matches local manifest |
+| Zenodo deposition | published | DOI `10.5281/zenodo.21880266`, record `21880266` |
+| Zenodo readback | verified | `treasury-release-candidate.tar`, 5,980,160 bytes, MD5 `4565ae55226eceb60a52e99fed1bd2c6` |
+| Candidate integrity | verified | Package SHA-256 `960c1924c76e3d6e72948eb8b1ac6e76fd7158fbce164f801bb0338321208b9f` |
+| Publication scope | bounded | 47 original endpoints remain unresolved; fallback DataStore material is explicitly identified |
+
+## Final original-source resolution pass - 2026-08-11
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Direct HTTPS retry | complete | All 91 planned resources attempted under bounded retries and budgets |
+| New original captures | none | Existing 12 captures were re-observed; no additional original endpoint succeeded |
+| Terminal classification | complete | 79 direct attempts returned terminal outcomes |
+| Fallback reconciliation | complete | 44 DataStore fallback captures plus 12 original captures are receipt-backed |
+| Remaining unresolved | explicit | 32 HTTP resources lack DataStore fallback; 15 require rights/source evidence |
+
+## Authoritative replacement and rights resolution - 2026-08-11
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Resolution scope | complete | All 47 resources outside original/DataStore capture have one deterministic resolution record |
+| Publisher replacements | evidenced | 31 legacy HTTP resource records map to current authoritative Treasury publication or collection pages |
+| Replacement limitation | explicit | Publisher-page identity/context is established; byte-for-byte payload equivalence is not claimed |
+| Rights evidence | evidenced | Official Treasury pages establish CC BY 4.0 rights for 13 of the 15 previously rights-unknown resources |
+| Rights tombstones | retained | Two NZDMO tender resources remain tombstoned because independently retrievable rights evidence was unavailable |
+| Secure-source tombstone | retained | One legacy NZDMO HTTP resource remains tombstoned because no verified secure replacement was found |
+| Internet Archive | verified-secondary | 26 resource records have locally hash-verified Internet Archive captures; none is promoted as an original-source capture |
+| ArchiveBox | not-admitted | The hosted pilot verified zero original payloads and remains a manual exception lane |
+| Machine receipt | passed | `evidence/treasury-source-resolution-20260811.json` records every resource, evidence URL, limitation, retry state, and mirror receipt |
+| Human-readable receipt | passed | `evidence/treasury-source-resolution-20260811.md` mirrors the final classification |
+
+## Source-resolution assurance checkpoint - 2026-08-11
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Repository harness | passed | Required Windows `scripts/validate.ps1` completed successfully in 451 seconds |
+| Tests | passed | 333 tests passed |
+| Coverage | passed | 96.13% total branch-aware coverage exceeds the 95% overall gate |
+| Critical mutations | passed | Resource policy 8/8, versioning 3/3, redundancy 6/6, and ArchiveBox 9/9 mutants killed |
+| Schemas | passed | 12 schemas and two representative documents validated |
+| Supply chain | passed | Dependency audit, licence inventory, secret scan, and CycloneDX SBOM validation passed |
+| Phase 6 source resolution | complete-with-tombstones | Every resource has an explicit outcome; three NZDMO records remain evidence-backed tombstones rather than unsupported captures |
+
+## Final clean-environment acceptance - 2026-08-11
+
+| Evidence | State | Detail |
+| --- | --- | --- |
+| Revision | passed | Detached clean worktree at `a9ea420872e2c3f4f6b2799d8eac302d34ce0508` |
+| Clean reproduction | passed | Required `scripts/validate.ps1` completed in 396.2 seconds; disposable worktree was clean and removed safely |
+| Raw CKAN scope | passed | Preserved `package_search-00000000.json` contains 54 results and 54 unique dataset IDs |
+| Raw CKAN integrity | passed | SHA-256 `439fd3e0ecde9470ba60ca07f91bcab26695776de79623c0f77d5e72b040f219` |
+| Streaming bounds | passed | Capture enforces request and total duration, redirects, decompression-aware bytes, storage failures, WARC bytes, and batch concurrency |
+| Hosted CI | passed | CI `31469899644`, CodeQL `31469899723`, and workflow policy `31469899698` succeeded on the exact revision |
+| Publications | passed | Hugging Face revision and Zenodo DOI/readback remain recorded separately from source-resolution outcomes |
+| Must requirements | passed-with-limitations | M-01 through M-19 have evidence; irrecoverable/rights-unevidenced resources remain tombstones and are not represented as payload captures |
+
+## Final resource-outcome reconciliation - 2026-08-11
+
+| Outcome axis | Count | Final interpretation |
+| --- | ---: | --- |
+| Original source captured | 12 | Bounded original payload captures with content-addressed object receipts |
+| DataStore fallback captured | 44 | Bounded raw JSON captures; one also has an original capture, so 43 are distinct additional resources |
+| Authoritative replacement | 31 | Publisher identity/context evidenced; byte-equivalent replacement payload capture is not claimed |
+| Rights evidenced, source not recaptured | 13 | Official CC BY 4.0 evidence resolves rights uncertainty but does not create a payload capture |
+| Unavailable/tombstoned | 1 | No verified secure replacement; retained for scheduled verification |
+| Rights-restricted | 2 | Authoritative rights evidence remained unavailable; retained as tombstones |
+
+The capture channels and resolution evidence overlap. In particular, the 44
+DataStore records are an alternate representation channel, not 44 recovered
+original files, and the 31 publisher pages are authoritative replacements, not
+byte-equivalent payloads. The final three tombstones comprise one unavailable
+record and two rights-restricted records. This table supersedes the older
+pre-resolution 78-restricted/79-tombstone snapshot without deleting that
+historical evidence.

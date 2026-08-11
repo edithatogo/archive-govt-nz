@@ -1,0 +1,244 @@
+{
+  "schema_version": "internet-archive-backup/v1",
+  "generated_at": "2026-08-11T03:01:49.953634Z",
+  "policy": {
+    "lawful_source": "Internet Archive",
+    "max_bytes": 67108864
+  },
+  "counts": {
+    "records": 36,
+    "captured": 19,
+    "failed": 4,
+    "unavailable": 13
+  },
+  "results": [
+    {
+      "source_url": "http://www.nzdmo.govt.nz/publications/data",
+      "status": "captured",
+      "snapshot_url": "https://web.archive.org/web/20160619091826id_/http://www.nzdmo.govt.nz:80/publications/data",
+      "bytes": 41841,
+      "sha256": "4a6cd5196674829c953fe791ba459417839b4c8b4cd15cf45a40af8641305af1",
+      "object": "build\\live\\authorized-20260811\\internet-archive-backups\\e6f22473182bc33c527cb2e2.bin"
+    },
+    {
+      "source_url": "https://catalogue.data.govt.nz/dataset/0641a23e-5741-45d6-bd4f-1b41fcabe381/resource/4d97e2cf-1e9e-49c2-a582-7dd388ce2322/download/ce-gifts-benefits-expenses-disclosure-workbook-iain-rennie-1-july-2025-30-june-2026.xlsx",
+      "status": "unavailable"
+    },
+    {
+      "source_url": "https://catalogue.data.govt.nz/dataset/0641a23e-5741-45d6-bd4f-1b41fcabe381/resource/f060ba29-2be8-4b1b-88b2-d16e2d2ccb87/download/treasury-chief-executive-expenses-18-november-2024-30-june-2025.xlsx",
+      "status": "unavailable"
+    },
+    {
+      "source_url": "https://catalogue.data.govt.nz/dataset/0641a23e-5741-45d6-bd4f-1b41fcabe381/resource/426f5d36-f286-41c8-9062-d4471259f1ad/download/treasury-chief-executive-expenses-4-november-2024-17-november-2024.xlsx",
+      "status": "unavailable"
+    },
+    {
+      "source_url": "https://catalogue.data.govt.nz/dataset/0641a23e-5741-45d6-bd4f-1b41fcabe381/resource/1f7ebba6-61e4-4659-9756-b364b4f296ec/download/treasury-chief-executive-expenses-16-september-2024-3-november-2024.xlsx",
+      "status": "unavailable"
+    },
+    {
+      "source_url": "https://catalogue.data.govt.nz/dataset/0641a23e-5741-45d6-bd4f-1b41fcabe381/resource/7d649908-d794-4e0f-abf3-df82abdd065d/download/treasury-chief-executive-expenses-1-july-2024-15-september-2024.xlsx",
+      "status": "unavailable"
+    },
+    {
+      "source_url": "https://catalogue.data.govt.nz/dataset/0641a23e-5741-45d6-bd4f-1b41fcabe381/resource/6eb42275-8de2-409c-8a3d-81ab20483512/download/the-treasury-chief-executive-expenses-1-july-2023-30-june-2024.xlsx",
+      "status": "captured",
+      "snapshot_url": "https://web.archive.org/web/20240730125728id_/https://catalogue.data.govt.nz/dataset/0641a23e-5741-45d6-bd4f-1b41fcabe381/resource/6eb42275-8de2-409c-8a3d-81ab20483512/download/the-treasury-chief-executive-expenses-1-july-2023-30-june-2024.xlsx",
+      "bytes": 62377,
+      "sha256": "cb3c1a8a4026cfd0ca210eae6f0f3ad3d3e070001ff7b79da7c8567550f485a2",
+      "object": "build\\live\\authorized-20260811\\internet-archive-backups\\da088a9a1bb707abb7776213.bin"
+    },
+    {
+      "source_url": "https://www.treasury.govt.nz/publications/information-release/chief-executive-expenses-information-release",
+      "status": "captured",
+      "snapshot_url": "https://web.archive.org/web/20230328200257id_/https://www.treasury.govt.nz/publications/information-release/chief-executive-expenses-information-release",
+      "bytes": 296280,
+      "sha256": "4c36837d3a3d17b35830930ede75f14b38f9260284bfa8b8edfa02bcfbd9cf41",
+      "object": "build\\live\\authorized-20260811\\internet-archive-backups\\3ac798a3cfeb3d09b3f4228f.bin"
+    },
+    {
+      "source_url": "https://catalogue.data.govt.nz/dataset/0641a23e-5741-45d6-bd4f-1b41fcabe381/resource/121b0cc4-b480-496f-bb8f-ac34af9d8dd7/download/ce-gifts-benefits-expenses-disclosure-workbook-caralee-mcliesh-2021-2022.xlsx",
+      "status": "captured",
+      "snapshot_url": "https://web.archive.org/web/20240730122439id_/https://catalogue.data.govt.nz/dataset/0641a23e-5741-45d6-bd4f-1b41fcabe381/resource/121b0cc4-b480-496f-bb8f-ac34af9d8dd7/download/ce-gifts-benefits-expenses-disclosure-workbook-caralee-mcliesh-2021-2022.xlsx",
+      "bytes": 60207,
+      "sha256": "9014bb47780b5a02f890e9259f92a4ac5e1ea2a57b58c16efe892f807a633d04",
+      "object": "build\\live\\authorized-20260811\\internet-archive-backups\\5f4966322e98bcb764472d5a.bin"
+    },
+    {
+      "source_url": "https://catalogue.data.govt.nz/dataset/0641a23e-5741-45d6-bd4f-1b41fcabe381/resource/cd9975ae-34b5-45c1-a4dd-4c58016a3d59/download/tsy-ceep-sep19-jun20.xlsx",
+      "status": "captured",
+      "snapshot_url": "https://web.archive.org/web/20220710042139id_/https://catalogue.data.govt.nz/dataset/0641a23e-5741-45d6-bd4f-1b41fcabe381/resource/cd9975ae-34b5-45c1-a4dd-4c58016a3d59/download/tsy-ceep-sep19-jun20.xlsx",
+      "bytes": 63081,
+      "sha256": "e5c6c9dec3b8983e65fff16f818211e3ed7bb2622bd6ae715dc5ccf2ac0b584c",
+      "object": "build\\live\\authorized-20260811\\internet-archive-backups\\a48370a8aa10e740d9b4673d.bin"
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/befu2011/003.htm",
+      "status": "captured",
+      "snapshot_url": "https://web.archive.org/web/20180131031853id_/http://www.treasury.govt.nz/budget/forecasts/befu2011/003.htm/",
+      "bytes": 106638,
+      "sha256": "af87cf6a6ba62be11e2c378944fa5f3eff339802da174897c235db70229ee975",
+      "object": "build\\live\\authorized-20260811\\internet-archive-backups\\834186b7601491f16688ad13.bin"
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/budget/2016/bps",
+      "status": "captured",
+      "snapshot_url": "https://web.archive.org/web/20180210124017id_/http://www.treasury.govt.nz:80/budget/2016/bps",
+      "bytes": 90420,
+      "sha256": "9af63f7c37b29f7d9c81ad523d0fb4e403dc6e47c47cef28bbc15e4fe42e6a29",
+      "object": "build\\live\\authorized-20260811\\internet-archive-backups\\18dd016b74349cfaa8b2a800.bin"
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/government/fiscalstrategy/model",
+      "status": "captured",
+      "snapshot_url": "https://web.archive.org/web/20180305124521id_/http://www.treasury.govt.nz:80/government/fiscalstrategy/model",
+      "bytes": 96031,
+      "sha256": "4498ef4687804c3abb22f361862fedf3ecd96945150b433d7b2d31ee0f0b9100",
+      "object": "build\\live\\authorized-20260811\\internet-archive-backups\\e3a6da1495e026ecf3c543d3.bin"
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/economy/mei/archive",
+      "status": "captured",
+      "snapshot_url": "https://web.archive.org/web/20180211103104id_/http://www.treasury.govt.nz:80/economy/mei/archive",
+      "bytes": 142622,
+      "sha256": "540cec2aae4a4c7953aa854d6cd3865c8ecfdc05955c5eebd1c546ee9383fd2c",
+      "object": "build\\live\\authorized-20260811\\internet-archive-backups\\be978a1050a0854e9fd46c54.bin"
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/hyefu2016",
+      "status": "captured",
+      "snapshot_url": "https://web.archive.org/web/20180202101221id_/http://www.treasury.govt.nz:80/budget/forecasts/hyefu2016",
+      "bytes": 95916,
+      "sha256": "be1b8463e0e81a10b342da4c083c70974d23b68b7a54f9ff9adf7dc8966f9b72",
+      "object": "build\\live\\authorized-20260811\\internet-archive-backups\\88fe719589257bdc49022c34.bin"
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/budget/2014/fsr",
+      "status": "captured",
+      "snapshot_url": "https://web.archive.org/web/20180131050849id_/http://www.treasury.govt.nz/budget/2014/fsr/",
+      "bytes": 90805,
+      "sha256": "9a25051c39453583ed75b1636869f0b808f7e47dde76945e504981b3480f5ee5",
+      "object": "build\\live\\authorized-20260811\\internet-archive-backups\\04c64044ab44eac95833681b.bin"
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/statesector/performance/bass/benchmarking/2011-12",
+      "status": "captured",
+      "snapshot_url": "https://web.archive.org/web/20180131045032id_/http://www.treasury.govt.nz/statesector/performance/bass/benchmarking/2011-12/",
+      "bytes": 99640,
+      "sha256": "d0b487f8e2897f210e948fa1bded7d324f4836b94376cc1760a2a2a8a59e2f2d",
+      "object": "build\\live\\authorized-20260811\\internet-archive-backups\\c6a492626812a64a9a21dae6.bin"
+    },
+    {
+      "source_url": "https://www.treasury.govt.nz/sites/default/files/2024-08/pc-tsy-website-urls.xlsx",
+      "status": "captured",
+      "snapshot_url": "https://web.archive.org/web/20240905023649id_/https://www.treasury.govt.nz/sites/default/files/2024-08/pc-tsy-website-urls.xlsx",
+      "bytes": 507166,
+      "sha256": "497660eeaeaf62d12aec9d4b804ebe79d261dfac93712a9c19d801d2ca65f605",
+      "object": "build\\live\\authorized-20260811\\internet-archive-backups\\f41e0aac89ad8a1fb6bb5c1f.bin"
+    },
+    {
+      "source_url": "https://www.treasury.govt.nz/sites/default/files/2024-08/pc-tsy-website-urls.csv",
+      "status": "captured",
+      "snapshot_url": "https://web.archive.org/web/20240905003317id_/https://www.treasury.govt.nz/sites/default/files/2024-08/pc-tsy-website-urls.csv",
+      "bytes": 3499607,
+      "sha256": "a0fdee6f0c23af0c4e67a8dcfd2c043d2a85e7819b650ad2cdb3f3bef7bf54a5",
+      "object": "build\\live\\authorized-20260811\\internet-archive-backups\\f97df52ecbc20b152d7e916e.bin"
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/budget/2016/fsr",
+      "status": "unavailable"
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/befu2012/003.htm",
+      "status": "unavailable"
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/prefu2011/05.htm",
+      "status": "unavailable"
+    },
+    {
+      "source_url": "https://www.nzdmo.govt.nz/analyst-centre/data",
+      "status": "unavailable"
+    },
+    {
+      "source_url": "https://www.treasury.govt.nz/sites/default/files/2016-12/hyefu16-charts-data.xlsx",
+      "status": "unavailable"
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/befu2010/005.htm",
+      "status": "unavailable"
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/statesector/performance/bass/benchmarking/2010-11",
+      "status": "unavailable"
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/befu2016",
+      "status": "unavailable"
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/befu2012/010.htm",
+      "status": "captured",
+      "snapshot_url": "https://web.archive.org/web/20180131050236id_/http://www.treasury.govt.nz/budget/forecasts/befu2012/010.htm/",
+      "bytes": 107711,
+      "sha256": "6d528e1f35665dfae671828661fd2a56d79f937b24763ed1e4301fd633307339",
+      "object": "build\\live\\authorized-20260811\\internet-archive-backups\\74fab6e56a3f72d823640dae.bin"
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/statesector/performance/bass/benchmarking/2008-10",
+      "status": "captured",
+      "snapshot_url": "https://web.archive.org/web/20180131033138id_/http://www.treasury.govt.nz/statesector/performance/bass/benchmarking/2008-10/",
+      "bytes": 98953,
+      "sha256": "a244caaf50f392d37eb9264b5b06160145729c128caafa7bea69b44ac70c6e65",
+      "object": "build\\live\\authorized-20260811\\internet-archive-backups\\b98f8f7f2b2150e5c30a0057.bin"
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/prefu2011/09.htm",
+      "status": "captured",
+      "snapshot_url": "https://web.archive.org/web/20180131033022id_/http://www.treasury.govt.nz/budget/forecasts/prefu2011/09.htm/",
+      "bytes": 100762,
+      "sha256": "5899c88c933f02d43f0b591d4d1f987c05456f21cb0e719fa5ffd6b966563b60",
+      "object": "build\\live\\authorized-20260811\\internet-archive-backups\\f09ac71b48404aeb53d53d96.bin"
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/befu2015",
+      "status": "captured",
+      "snapshot_url": "https://web.archive.org/web/20180201043226id_/http://www.treasury.govt.nz/budget/forecasts/befu2015/",
+      "bytes": 97236,
+      "sha256": "55c3092822ff9596d7aff8f14a9b421cad404dde672d2d4e6e211dd5d3540907",
+      "object": "build\\live\\authorized-20260811\\internet-archive-backups\\48ca76107e50fbe613277da9.bin"
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/budget/2017/bps",
+      "status": "captured",
+      "snapshot_url": "https://web.archive.org/web/20180330173437id_/http://www.treasury.govt.nz:80/budget/2017/bps",
+      "bytes": 93923,
+      "sha256": "fa0c62b3674d84cbd6b2028f47648ff25a544e04fb8d7d58084ef50cf3119d02",
+      "object": "build\\live\\authorized-20260811\\internet-archive-backups\\84b41e0c25285d32b3f8b79c.bin"
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/budget/2015/fsr",
+      "status": "failed",
+      "snapshot_url": "https://web.archive.org/web/20180131052051id_/http://www.treasury.govt.nz/budget/2015/fsr/",
+      "error_class": "URLError"
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/budget/forecasts/hyefu2015",
+      "status": "failed",
+      "snapshot_url": "https://web.archive.org/web/20180201041103id_/http://www.treasury.govt.nz/budget/forecasts/hyefu2015/",
+      "error_class": "URLError"
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/government/financialstatements/monthend",
+      "status": "failed",
+      "snapshot_url": "https://web.archive.org/web/20180327173915id_/http://www.treasury.govt.nz:80/government/financialstatements/monthend",
+      "error_class": "URLError"
+    },
+    {
+      "source_url": "http://www.treasury.govt.nz/government/investmentstatements/2014/is14-charts-data.xls",
+      "status": "failed",
+      "snapshot_url": "https://web.archive.org/web/20180127230459id_/http://www.treasury.govt.nz/government/investmentstatements/2014/is14-charts-data.xls",
+      "error_class": "URLError"
+    }
+  ]
+}

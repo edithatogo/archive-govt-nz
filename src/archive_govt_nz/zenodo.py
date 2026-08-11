@@ -63,6 +63,19 @@ class ZenodoDeposition:
     doi: str | None
 
 
+@dataclass(frozen=True, slots=True)
+class ZenodoReadiness:
+    """Credential-safe local readiness receipt for an immutable release."""
+
+    status: str
+    token_variable: str
+    credential_present: bool
+    artifact_present: bool
+    artifact_size: int | None
+    release_approved: bool
+    blockers: tuple[str, ...]
+
+
 class ZenodoClient:
     """Perform bounded deposition operations without leaking credentials."""
 
@@ -80,6 +93,42 @@ class ZenodoClient:
         if not token:
             _fail("credential_missing")
         return token
+
+    def readiness(
+        self,
+        artifact: Path | None = None,
+        *,
+        release_approved: bool = False,
+    ) -> ZenodoReadiness:
+        """Return a deterministic local gate receipt without network access.
+
+        This deliberately checks only local state.  It never reads or returns the
+        token value and never creates a deposition or DOI.  A caller may use the
+        receipt to decide whether an explicitly credentialed upload can proceed.
+        """
+        token_present = bool(os.environ.get(self.config.token_variable))
+        artifact_present = artifact is not None and artifact.is_file()
+        artifact_size = (
+            artifact.stat().st_size if artifact_present and artifact else None
+        )
+        blockers: list[str] = []
+        if not token_present:
+            blockers.append("credential_missing")
+        if artifact is None or not artifact_present:
+            blockers.append("artifact_missing")
+        elif artifact_size is not None and artifact_size > self.config.max_upload_bytes:
+            blockers.append("upload_size_limit")
+        if not release_approved:
+            blockers.append("release_approval_required")
+        return ZenodoReadiness(
+            "ready" if not blockers else "blocked",
+            self.config.token_variable,
+            token_present,
+            artifact_present,
+            artifact_size,
+            release_approved,
+            tuple(blockers),
+        )
 
     def _request(
         self,

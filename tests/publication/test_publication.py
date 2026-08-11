@@ -8,8 +8,33 @@ import pytest
 from archive_govt_nz.publication import (
     PublicationConfig,
     PublicationError,
+    credential_preflight,
     prepare_publication,
 )
+
+
+def test_credential_preflight_is_secret_free(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Preflight reports presence only and never returns token material."""
+    monkeypatch.setenv("HF_TOKEN", "hf_secret_fixture")
+    result = credential_preflight(
+        PublicationConfig("huggingface", "edithatogo/archive-govt-nz-treasury")
+    )
+    assert result.state == "credential-present"
+    assert "secret" not in repr(result)
+
+
+def test_credential_preflight_reports_missing_without_side_effect(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Missing credentials are explicit and do not trigger remote requests."""
+    monkeypatch.delenv("ZENODO_TOKEN", raising=False)
+    result = credential_preflight(
+        PublicationConfig("zenodo", "archive-govt-nz-treasury")
+    )
+    assert result.state == "credential-missing"
+    assert result.credential_variable == "ZENODO_TOKEN"
 
 
 def test_huggingface_preparation_is_non_mutating_by_default(tmp_path: Path) -> None:

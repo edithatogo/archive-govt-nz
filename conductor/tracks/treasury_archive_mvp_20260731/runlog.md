@@ -819,6 +819,37 @@
 - Paired checkpoint receipts recorded in `evidence/phase-5-checkpoint.json`
   and `.md`; limitations remain explicit.
 
+### 2026-08-10 — Phase 6 operator preview
+
+- Reconciled paired no-download preview receipts: 91 resources, 0 metadata-only
+  eligible, 74 terminal, and 17 restricted.
+- Preview confirms no payload transfer authorization; live preflight and rights
+  gates remain separate.
+
+### 2026-08-10 — scheduled capture budget hardening
+
+- Added a positive source-rate budget to `BatchBudget` and enforced a shared
+  request interval in the resumable capture runner.
+- Storage, duration, concurrency, and source-rate controls now fail closed;
+  checkpoint persistence remains atomic and resumable.
+- Capture-control contracts passed: 6 tests; Ruff and strict Pyright passed.
+
+### 2026-08-10 — attestation verification hardening
+
+- Added optional detached-SHA-256 verification for release attestations.
+- Mismatched detached digests fail closed with `signature_mismatch`; absent
+  signatures remain explicitly `not-signed` because signing keys and approval
+  are external gates.
+- Attestation contracts passed: 2 tests; Ruff and strict Pyright passed.
+
+### 2026-08-11 — bounded capture progress receipts
+
+- Enabled capture runs now emit deterministic outcome counts and active storage,
+  resource, concurrency, source-rate, and duration budgets.
+- Resumable checkpoints remain atomic; the no-enable path still performs no
+  transfer.
+- Capture-runner contracts passed: 3 tests; Ruff and strict Pyright passed.
+
 ### 2026-08-10 — Phase 5 layer-count reconciliation
 
 - Added executable reconciliation across release-manifest, raw CKAN,
@@ -870,3 +901,152 @@
 - Reconciled phase-9 Zenodo publication against local final reconciliation evidence;
   DOI `10.5281/zenodo.21728726` is confirmed against `evidence/phase-9-zenodo-publication.json`
   and `evidence/phase-10-final-reconciliation.json`.
+
+### 2026-08-10 — Phase 10 closeout checkpoint
+
+- Added `evidence/phase-10-closeout-checkpoint.md` and
+  `evidence/phase-10-closeout-checkpoint.json` as acceptance checkpoint artifacts.
+- Added an issue-11 closeout status that records currently green deterministic
+  gates, unresolved blockers, and publication-state constraints.
+- Explicitly noted that clean-environment reproduction, full payload policy completion,
+  and external publication transitions are still blocked.
+
+### 2026-08-11 — bounded capture storage and WARC limits
+
+- Capture now spools response bytes to a bounded temporary file before immutable
+  promotion, avoiding an unbounded in-memory payload buffer.
+- Promotion and WARC construction run off the async event loop; storage failures
+  produce redacted `storage_failed` receipts.
+- Material WARC bodies are capped by `CaptureConfig.max_warc_bytes`; larger
+  payloads remain archived while WARC emission is explicitly omitted.
+- Decoded compressed streams now fail closed as `decompression_limit` when the
+  post-decompression byte bound is exceeded.
+- Capture contracts passed: 9 focused tests; Ruff and strict Pyright passed.
+
+### 2026-08-11 — authorized Treasury capture rerun
+
+- Recorded user authorization for eligible Treasury payload capture.
+- Re-ran bounded discovery and preflight: 91 resources discovered, 12 secure
+  sources observed, and 79 remained unusable under the HTTPS/response policy.
+- Fixed the capture runner to admit nested `secure-source-observed` preflight
+  receipts; the authorized run captured all 12 observed resources successfully.
+- No publication action was attempted; HTTP/403 sources remain explicit outcomes.
+
+### 2026-08-11 — bounded GET fallback for HEAD blockers
+
+- Added a one-byte `GET` with `Range: bytes=0-0` for 403/405/501 HEAD responses.
+- Re-ran the full Treasury preflight: 12 secure sources remained observable;
+  78 GET fallbacks returned 403 and one additional source remained unusable.
+- No HTTP, 403, or terminal source was promoted to capture eligibility without
+  an independently eligible response.
+
+### 2026-08-11 — CKAN DataStore fallback capture
+
+- Added bounded paginated DataStore capture preserving canonical raw JSON pages,
+  page hashes, row counts, and source receipts outside GitHub.
+- Captured 44/44 reachable DataStore candidates; no page exceeded configured
+  page, row, response, timeout, or concurrency limits.
+- Kept DataStore recovery separate from original-resource publication and rights
+  decisions; 32 HTTP resources remain without an API fallback and 15 remain
+  rights/source gated.
+
+### 2026-08-11 — publication credential validation
+
+- Secret-free local preflight found both environment-scoped credentials present.
+- Read-only Hugging Face identity and Zenodo deposit-list requests returned HTTP
+  200; token values were never logged or persisted.
+- No publication side effect occurred. Candidate package/hash and explicit DOI
+  approval remain separate release gates.
+
+### 2026-08-11 — approved release candidate and HF write gate
+
+- Prepared the exact 28-file release candidate including original CKAN objects,
+  raw CKAN metadata, and 44 paginated DataStore fallback pages.
+- Candidate SHA-256: `960c1924c76e3d6e72948eb8b1ac6e76fd7158fbce164f801bb0338321208b9f`.
+- Hugging Face read authentication passed, but the write attempt returned HTTP
+  403. Zenodo deposition and DOI publication were held pending HF write access.
+
+### 2026-08-11 — approved publication completed
+
+- Replaced the insufficient Hugging Face credential through the browser-managed
+  token flow and stored it as the protected repository `HF_TOKEN` secret.
+- Uploaded and read back the approved candidate at HF revision
+  `50c9e864bd7a9fed39862cf72bd733835f81568a`.
+- Created, uploaded, published, and read back Zenodo record `21880266` with DOI
+  `10.5281/zenodo.21880266`; remote file size and MD5 match local evidence.
+- No credentials or token values were written to repository artefacts.
+
+### 2026-08-11 — final original-source resolution pass
+
+- Attempted all 91 resources through the bounded HTTPS-upgraded/direct retry lane.
+- No new original-source payloads became available; 12 existing captures were
+  re-observed and 79 attempts remained terminal.
+- Reconciled the final state as 12 original captures, 44 DataStore fallback
+  captures, and 47 explicit unresolved resources.
+### 2026-08-11 — CKAN DataStore fallback assessment
+
+- Rechecked the existing CKAN probe receipt without transferring payloads.
+- 44 resources have a successful HTTPS `datastore_search` probe (42 originally
+  HTTP resources and two already-HTTPS restricted resources).
+- Added `tools/assess_ckan_datastore_recovery.py` and paired JSON/Markdown
+  evidence. This is a fallback candidate inventory only; it does not promote
+  API rows to captured payloads or waive format/rights validation.
+- Ruff and strict Pyright passed for the new tool.
+
+### 2026-08-11 — lawful replacement and redundancy search
+
+- Searched all 47 unresolved resources (36 unique URLs) for official HTTPS
+  replacements and Internet Archive snapshots.
+- Found 23 unique URLs with successful Internet Archive timemap captures;
+  downloaded and SHA-256 hashed 19 latest snapshots under bounded limits.
+- Recorded four failed snapshot downloads and thirteen unavailable/query-error
+  cases explicitly. No snapshot was promoted as an original-source capture.
+- Identified the Treasury's canonical Chief Executive Expenses publication
+  page and direct publisher attachments for the affected historical periods.
+- Anna's Archive was not queried or used; only lawful publisher and Internet
+  Archive lanes were used.
+- Added `tools/discover_replacement_urls.py`,
+  `tools/capture_internet_archive_backups.py`, and paired receipts. Ruff and
+  strict Pyright pass.
+
+### 2026-08-11 — authoritative source-resolution closeout
+
+- Reconciled all 47 remaining resource records against current official
+  Treasury publication/collection pages, the CKAN plan, DataStore recovery,
+  Internet Archive objects, and the ArchiveBox pilot.
+- Mapped 31 legacy HTTP records to authoritative Treasury replacement pages;
+  the receipt expressly does not claim byte-equivalent payload recovery.
+- Established resource-specific CC BY 4.0 evidence for 13 of 15 previously
+  rights-unknown resources using their official publisher pages.
+- Retained three explicit NZDMO tombstones: one without a verified secure
+  replacement and two without independently retrievable rights evidence.
+- Verified 26 resource-level Internet Archive objects by size and SHA-256.
+  ArchiveBox remains not admitted because it verified no original payload.
+- Added governed mapping config, deterministic resolution tooling, three
+  contract tests, and paired JSON/Markdown receipts.
+- Ran the required Windows repository harness: 333 tests passed, total coverage
+  was 96.13%, all 26 critical mutation cases were killed, schemas passed, and
+  dependency, licence, secret, and SBOM gates passed.
+
+### 2026-08-11 — final clean acceptance reproduction
+
+- Created a detached disposable worktree at source-resolution revision
+  `a9ea420872e2c3f4f6b2799d8eac302d34ce0508`.
+- The complete Windows validation harness passed from that clean worktree in
+  396.2 seconds with 333 tests and 96.13% coverage.
+- Verified the preserved raw CKAN response contains all 54 unique Treasury
+  dataset representations; recorded its SHA-256 in track evidence.
+- Reconciled stale parent task markers against code, tests, receipts, hosted
+  checks, and publication readback. No tombstone was promoted to a capture.
+- Verified the disposable worktree remained clean, removed it, and pruned only
+  its worktree metadata.
+# 2026-08-11 — final outcome-category reconciliation
+
+Reconciled the Phase 10 checkpoint, paired archive evidence ledger, checklist,
+track metadata, and GitHub issue #1 against the authoritative Track 1 evidence.
+The final record distinguishes 12 original captures, 44 DataStore fallback
+captures (one overlaps an original capture), 31 authoritative publisher
+replacements without claiming payload equivalence, one unavailable tombstone,
+and two rights-restricted tombstones. It also retains 13 rights-evidenced
+resources whose original endpoints were not recaptured. These are overlapping
+capture and resolution axes rather than a false 91-resource partition.

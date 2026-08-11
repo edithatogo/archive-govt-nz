@@ -1,5 +1,6 @@
 """GitHub Actions safety policy contracts."""
 
+import re
 from pathlib import Path
 
 
@@ -15,6 +16,26 @@ def test_workflows_have_read_only_permissions_and_concurrency() -> None:
         assert "concurrency:" in text
         assert "uses: actions/checkout@" in text
         assert "uses: actions/checkout@v" not in text
+
+
+def test_workflows_use_immutable_action_refs() -> None:
+    """Workflow action references must be pinned to full commit SHAs."""
+    root = Path(__file__).parents[2]
+    workflows = list((root / ".github/workflows").glob("*.yml"))
+    assert workflows
+
+    pinned_reference = re.compile(
+        r"^\\s*uses:\\s+[^@\\s]+@([0-9a-f]{40})\\s*(\\s+#.*)?$"
+    )
+    non_local_reference = re.compile(r"^\\s*uses:\\s+[^@\\s]+@([0-9a-f]{5,})")
+    for workflow in workflows:
+        for line in workflow.read_text(encoding="utf-8").splitlines():
+            if "uses:" not in line:
+                continue
+            match = non_local_reference.match(line)
+            if not match:
+                continue
+            assert pinned_reference.match(line), line
     capture = (root / ".github/workflows/scheduled-capture.yml").read_text(
         encoding="utf-8"
     )

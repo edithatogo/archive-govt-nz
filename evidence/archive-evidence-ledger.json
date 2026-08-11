@@ -1,6 +1,6 @@
 {
   "schema_version": "archive-govt-nz.evidence-ledger/v1",
-  "generated_at": "2026-08-01T07:58:36.503913+00:00",
+  "generated_at": "2026-08-11T09:08:05.854185+00:00",
   "stages": [
     {
       "stage": "discovered",
@@ -18,9 +18,10 @@
     },
     {
       "stage": "captured",
-      "state": "partially-captured",
+      "state": "original-and-datastore-fallback-captured",
       "evidence": [
-        "evidence/phase-6-capture-summary.json"
+        "evidence/phase-6-capture-summary.json",
+        "evidence/phase-10-closeout-checkpoint.json"
       ]
     },
     {
@@ -61,15 +62,33 @@
     },
     {
       "stage": "unavailable",
-      "state": "recorded-per-attempt",
-      "evidence": []
+      "state": "tombstoned",
+      "evidence": [
+        "evidence/phase-10-closeout-checkpoint.json"
+      ]
     },
     {
       "stage": "restricted",
-      "state": "policy-controlled",
+      "state": "rights-restricted",
       "evidence": [
-        "src/archive_govt_nz/resource_policy.py"
+        "src/archive_govt_nz/resource_policy.py",
+        "evidence/phase-10-closeout-checkpoint.json"
       ]
     }
-  ]
+  ],
+  "treasury_resource_outcomes": {
+    "resource_scope": 91,
+    "original_source_captured": 12,
+    "datastore_fallback_captured": 44,
+    "datastore_overlap_with_original": 1,
+    "datastore_distinct_additional": 43,
+    "authoritative_replacement_evidenced": 31,
+    "authoritative_replacement_payload_equivalence": "not-claimed",
+    "rights_evidenced_source_not_recaptured": 13,
+    "unavailable_tombstoned": 1,
+    "rights_restricted": 2,
+    "total_tombstones": 3,
+    "counts_are_mutually_exclusive": false,
+    "interpretation": "Capture channels and resolution evidence overlap; do not sum these counts as a partition."
+  }
 }

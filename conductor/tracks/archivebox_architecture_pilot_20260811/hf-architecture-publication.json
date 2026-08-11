@@ -1,0 +1,27 @@
+{
+  "schema_version": "archive-govt-nz.hf-architecture-publication/v1",
+  "verified_at": "2026-08-11T06:57:23Z",
+  "repository": "edithatogo/archive-govt-nz-treasury",
+  "revision": "1f148c10687b2c2100659f40d46c6b84de156672",
+  "publication_state": "uploaded-remotely-verified",
+  "method": "authenticated-browser-ui",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "8b31eb936b4caef61f6c407147e303e313c7fe0b6fb5921fddc608e623bdb64c",
+      "readback_matches_local": true
+    },
+    {
+      "path": "docs/archive-system-architecture.svg",
+      "sha256": "ff78679fcf2f68a40f700eb0e4b7b50997a932d158245c3ae6c626d52ee7be6d",
+      "readback_matches_local": true
+    }
+  ],
+  "render_verification": {
+    "image_loaded": true,
+    "natural_width": 300,
+    "natural_height": 47,
+    "mermaid_source_retained": true
+  },
+  "zenodo_state": "deferred-until-next-meaningful-release"
+}

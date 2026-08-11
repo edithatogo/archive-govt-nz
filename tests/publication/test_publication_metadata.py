@@ -19,7 +19,7 @@ def test_metadata_previews_share_nonpublication_state() -> None:
     zenodo = json.loads(
         (root / "evidence/publication-metadata/zenodo.json").read_text()
     )
-    assert "not published" in card
+    assert "prepared-not-published" in card
     assert zenodo["publication_state"] == "prepared-not-published"
     assert zenodo["doi_authorized"] is False
     assert zenodo["publication_receipts"]["hugging_face"]["publication_state"] in {
@@ -31,6 +31,12 @@ def test_metadata_previews_share_nonpublication_state() -> None:
     assert zenodo["resource_summary"]["counts"]
     assert zenodo["resource_summary"]["stage_counts"]
     assert "resource_summary" in card
+    assert "](docs/archive-system-architecture.svg)" in card
+    assert "```mermaid" in card
+    assert zenodo["architecture"]["document"] == "docs/archive-system-architecture.md"
+    assert zenodo["architecture"]["secondary_capture_authority"] == (
+        "non-authoritative-until-admitted"
+    )
 
 
 def test_taxonomy_alignment_validation_file_is_machine_readable() -> None:

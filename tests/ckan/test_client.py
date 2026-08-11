@@ -93,6 +93,56 @@ def test_action_uses_versioned_path_identifiable_agent_and_json_body() -> None:
     assert json.loads(observed[0].content) == {}
 
 
+def test_action_get_uses_query_encoding_with_identical_receipt() -> None:
+    """GET changes only method/encoding and retains deterministic evidence."""
+    observed: list[httpx.Request] = []
+
+    async def handler(request: httpx.Request) -> httpx.Response:
+        observed.append(request)
+        return httpx.Response(200, json={"success": True, "result": {"count": 1}})
+
+    async def execute() -> ActionObservation:
+        async with BoundedCkanClient(
+            make_config(),
+            transport=httpx.MockTransport(handler),
+            clock=lambda: OBSERVED_AT,
+            jitter=lambda: 0.0,
+        ) as client:
+            return await client.action_get("package_search", {"q": "health", "rows": 1})
+
+    result = asyncio.run(execute())
+
+    assert observed[0].method == "GET"
+    assert str(observed[0].url.params) == "q=health&rows=1"
+    assert observed[0].content == b""
+    assert result.observed_at == OBSERVED_AT
+    assert result.raw_sha256 == hashlib.sha256(result.raw_body).hexdigest()
+
+
+def test_post_and_get_have_parity_for_equivalent_action_results() -> None:
+    """Equivalent Action documents produce equivalent hashes and results."""
+    body = b'{"success":true,"result":{"count":2,"results":[{"id":"a"},{"id":"b"}]}}'
+
+    async def handler(_: httpx.Request) -> httpx.Response:
+        return httpx.Response(200, content=body)
+
+    async def execute() -> tuple[ActionObservation, ActionObservation]:
+        async with BoundedCkanClient(
+            make_config(),
+            transport=httpx.MockTransport(handler),
+            clock=lambda: OBSERVED_AT,
+            jitter=lambda: 0.0,
+        ) as client:
+            post = await client.action("package_search", {"q": "health"})
+            get = await client.action_get("package_search", {"q": "health"})
+            return post, get
+
+    post, get = asyncio.run(execute())
+    assert post.response.result == get.response.result
+    assert post.raw_sha256 == get.raw_sha256
+    assert post.attempts == get.attempts
+
+
 def test_retryable_statuses_use_bounded_exponential_backoff() -> None:
     """Only the configured attempts run and delays are deterministic and bounded."""
     statuses = iter([503, 503, 200])

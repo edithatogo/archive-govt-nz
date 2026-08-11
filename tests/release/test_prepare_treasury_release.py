@@ -40,6 +40,17 @@ def prepare_workspace(workspace: Path) -> tuple[Path, Path, Path, Path]:
     (metadata / "README.md").write_text("fixture\n", encoding="utf-8")
     for name in ("zenodo.json", "taxonomy.json", "hf-estate-observation.json"):
         (metadata / name).write_text("{}\n", encoding="utf-8")
+    docs = workspace / "docs"
+    docs.mkdir()
+    (docs / "archive-system-architecture.md").write_text(
+        "# Architecture\n", encoding="utf-8"
+    )
+    (docs / "archive-system-architecture.mmd").write_text(
+        "flowchart LR\n  A --> B\n", encoding="utf-8"
+    )
+    (docs / "archive-system-architecture.svg").write_text(
+        '<svg xmlns="http://www.w3.org/2000/svg"/>\n', encoding="utf-8"
+    )
     build = workspace / "build"
     build.mkdir()
     (build / "sbom.cdx.json").write_text("{}\n", encoding="utf-8")
@@ -106,5 +117,8 @@ def test_treasury_candidate_is_checksum_pinned_and_not_published(
     assert any(name.endswith("raw/package_search-00000000.json") for name in names)
     assert "build/derivatives/datasets.parquet" in names
     assert "build/capture.json" in names
+    assert "docs/archive-system-architecture.md" in names
+    assert "docs/archive-system-architecture.mmd" in names
+    assert "docs/archive-system-architecture.svg" in names
     assert manifest["layer_counts"]["captured_objects"] == 2
     assert manifest["layer_counts"]["raw_ckan_responses"] == 2

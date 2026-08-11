@@ -32,3 +32,9 @@ def test_batch_budget_fails_closed(
     )
     assert decision.allowed is False
     assert decision.reason == reason
+
+
+def test_batch_budget_rejects_non_positive_source_rate() -> None:
+    """Source-rate budgets fail closed before any transfer."""
+    with pytest.raises(ValueError, match="invalid_batch_budget"):
+        BatchBudget(max_requests_per_second=0)

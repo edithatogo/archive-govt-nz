@@ -43,6 +43,14 @@ STAGES = (
         ("uv", "run", "--locked", "python", "tools/mutation_versioning.py"),
     ),
     GateStage(
+        "mutation-redundancy",
+        ("uv", "run", "--locked", "python", "tools/mutation_redundancy.py"),
+    ),
+    GateStage(
+        "mutation-archivebox-pilot",
+        ("uv", "run", "--locked", "python", "tools/mutation_archivebox_pilot.py"),
+    ),
+    GateStage(
         "audit",
         ("uv", "run", "--locked", "python", "tools/supply_chain.py", "audit"),
     ),

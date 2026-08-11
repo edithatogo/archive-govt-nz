@@ -1,0 +1,44 @@
+{
+  "schema_version": "treasury-source-resolution-config/v1",
+  "official_replacements": {
+    "http://www.treasury.govt.nz/budget/2014/fsr": "https://www.treasury.govt.nz/publications/fiscal-strategy-report/fiscal-strategy-report-2014",
+    "http://www.treasury.govt.nz/budget/2015/fsr": "https://www.treasury.govt.nz/publications/fiscal-strategy-report/fiscal-strategy-report-2015",
+    "http://www.treasury.govt.nz/budget/2016/bps": "https://www.treasury.govt.nz/publications/budget-policy-statement/budget-policy-statement-2016",
+    "http://www.treasury.govt.nz/budget/2016/fsr": "https://www.treasury.govt.nz/publications/fiscal-strategy-report/fiscal-strategy-report-2016",
+    "http://www.treasury.govt.nz/budget/2017/bps": "https://www.treasury.govt.nz/publications/budget-policy-statement/budget-policy-statement-2017",
+    "http://www.treasury.govt.nz/budget/forecasts/befu2010/005.htm": "https://www.treasury.govt.nz/publications/efu/budget-economic-and-fiscal-update-2010",
+    "http://www.treasury.govt.nz/budget/forecasts/befu2011/003.htm": "https://www.treasury.govt.nz/publications/efu/budget-economic-and-fiscal-update-2011",
+    "http://www.treasury.govt.nz/budget/forecasts/befu2012/003.htm": "https://www.treasury.govt.nz/publications/efu/budget-economic-and-fiscal-update-2012",
+    "http://www.treasury.govt.nz/budget/forecasts/befu2012/010.htm": "https://www.treasury.govt.nz/publications/efu/budget-economic-and-fiscal-update-2012",
+    "http://www.treasury.govt.nz/budget/forecasts/befu2015": "https://www.treasury.govt.nz/publications/efu/budget-economic-and-fiscal-update-2015",
+    "http://www.treasury.govt.nz/budget/forecasts/befu2016": "https://www.treasury.govt.nz/publications/efu/budget-economic-and-fiscal-update-2016",
+    "http://www.treasury.govt.nz/budget/forecasts/hyefu2015": "https://www.treasury.govt.nz/publications/efu/half-year-economic-and-fiscal-update-2015",
+    "http://www.treasury.govt.nz/budget/forecasts/hyefu2016": "https://www.treasury.govt.nz/publications/efu/half-year-economic-and-fiscal-update-2016",
+    "http://www.treasury.govt.nz/budget/forecasts/prefu2011/05.htm": "https://www.treasury.govt.nz/publications/efu/pre-election-economic-and-fiscal-update-2011",
+    "http://www.treasury.govt.nz/budget/forecasts/prefu2011/09.htm": "https://www.treasury.govt.nz/publications/efu/pre-election-economic-and-fiscal-update-2011",
+    "http://www.treasury.govt.nz/economy/mei/archive": "https://www.treasury.govt.nz/publications/research-and-commentary/discontinued-series/monthly-economic-indicators-2008-2020",
+    "http://www.treasury.govt.nz/government/financialstatements/monthend": "https://www.treasury.govt.nz/publications/financial-statements-government/month-end-financial-statements",
+    "http://www.treasury.govt.nz/government/fiscalstrategy/model": "https://www.treasury.govt.nz/publications/fsm/fiscal-strategy-model-befu-2010",
+    "http://www.treasury.govt.nz/government/investmentstatements/2014/is14-charts-data.xls": "https://www.treasury.govt.nz/publications/investment-statement/2014-investment-statement",
+    "http://www.treasury.govt.nz/statesector/performance/bass/benchmarking/2008-10": "https://www.treasury.govt.nz/publications/bass/administrative-support-services-benchmarking-report-financial-years-2008-09-and-2009-10",
+    "http://www.treasury.govt.nz/statesector/performance/bass/benchmarking/2010-11": "https://www.treasury.govt.nz/publications/bass/administrative-support-services-benchmarking-report-financial-year-2010-11",
+    "http://www.treasury.govt.nz/statesector/performance/bass/benchmarking/2011-12": "https://www.treasury.govt.nz/publications/bass/administrative-support-services-benchmarking-report-financial-year-2011-12"
+  },
+  "rights_evidence": {
+    "0641a23e-5741-45d6-bd4f-1b41fcabe381": {
+      "url": "https://www.treasury.govt.nz/publications/information-release/chief-executive-expenses-information-release",
+      "licence": "CC-BY-4.0",
+      "basis": "The official publisher page identifies the Treasury as corporate author and states Crown Copyright, Attribution 4.0 International."
+    },
+    "56637b0c-ea68-4fa4-953f-64a83ac2cc67": {
+      "url": "https://www.treasury.govt.nz/publications/data/productivity-commission-website-urls-mapped-treasury-website-urls",
+      "licence": "CC-BY-4.0",
+      "basis": "The official publisher page identifies the Treasury as corporate author and states Crown Copyright, Attribution 4.0 International."
+    },
+    "840ef119-6742-4025-bf73-5bfaaac5fa6e": {
+      "url": "https://www.treasury.govt.nz/publications/efu/half-year-economic-and-fiscal-update-2016",
+      "licence": "CC-BY-4.0",
+      "basis": "The official publisher page lists the charts and data workbook and states Crown Copyright, Attribution 4.0 International."
+    }
+  }
+}

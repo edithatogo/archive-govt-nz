@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/edithatogo/archive-govt-nz/schemas/health-discovery-v1.schema.json",
+  "title": "Health metadata discovery manifest",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "observed_at",
+    "catalogue_url",
+    "status",
+    "policy"
+  ],
+  "properties": {
+    "schema_version": {"const": "archive-govt-nz.health-discovery/v1"},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "catalogue_url": {"type": "string", "pattern": "^https://"},
+    "status": {"enum": ["observed", "unavailable"]},
+    "dataset_count": {"type": "integer", "minimum": 0},
+    "datasets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "dataset_id", "name", "title", "scopes", "organization_id",
+          "licence", "metadata_modified", "resource_count", "classification",
+          "health_relevance", "payload_eligible", "sensitivity"
+        ],
+        "properties": {
+          "dataset_id": {"type": "string", "minLength": 1},
+          "name": {"type": "string", "minLength": 1},
+          "title": {"type": "string"},
+          "scopes": {"type": "array", "items": {"type": "string"}, "minItems": 1, "uniqueItems": true},
+          "organization_id": {"type": ["string", "null"]},
+          "licence": {"type": ["string", "null"]},
+          "metadata_modified": {"type": ["string", "null"]},
+          "resource_count": {"type": "integer", "minimum": 0},
+          "classification": {"enum": ["candidate-metadata-only", "decision-required"]},
+          "health_relevance": {"type": "string"},
+          "payload_eligible": {"const": false},
+          "sensitivity": {"const": "decision-required"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "scopes": {"type": "object", "additionalProperties": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}},
+    "metadata_fingerprints": {"type": "object", "additionalProperties": {"type": "string", "pattern": "^[0-9a-f]{64}$"}},
+    "rerun": {
+      "type": "object",
+      "required": ["changed", "new", "unchanged", "withdrawn"],
+      "properties": {
+        "changed": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "new": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "unchanged": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "withdrawn": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+      },
+      "additionalProperties": false
+    },
+    "pages": {"type": "array", "items": {"type": "object"}},
+    "attempts": {"type": "array", "items": {"type": "object"}},
+    "failed_scope": {"type": "string"},
+    "failed_start": {"type": "integer", "minimum": 0},
+    "policy": {
+      "type": "object",
+      "required": ["metadata_only", "payload_capture", "publication", "unknown_rights_fail_closed", "sensitivity_requires_decision"],
+      "properties": {
+        "metadata_only": {"const": true},
+        "payload_capture": {"const": false},
+        "publication": {"const": false},
+        "max_page_size": {"type": "integer", "minimum": 1, "maximum": 1000},
+        "post_primary_get_after_failure": {"const": true},
+        "unknown_rights_fail_closed": {"const": true},
+        "sensitivity_requires_decision": {"const": true}
+      },
+      "additionalProperties": false
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "observed"}}},
+      "then": {"required": ["dataset_count", "datasets", "scopes", "metadata_fingerprints", "rerun", "pages"]},
+      "else": {"required": ["failed_scope", "failed_start", "attempts"]}
+    }
+  ],
+  "additionalProperties": false
+}

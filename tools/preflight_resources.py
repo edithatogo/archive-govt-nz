@@ -1,4 +1,4 @@
-"""Read-only bounded resource preflight without payload-body transfer."""
+"""Bounded resource preflight with a one-byte GET fallback for HEAD blockers."""
 
 from __future__ import annotations
 
@@ -17,6 +17,7 @@ from archive_govt_nz.source_resolution import (
 )
 
 ELIGIBLE_STATUS_BOUNDARY = 400
+HEAD_FALLBACK_STATUSES = frozenset({403, 405, 501})
 
 
 async def _probe(
@@ -42,6 +43,20 @@ async def _probe(
                     redirects.append(current)
                     current = urljoin(current, location)
                     continue
+                probe_method = "HEAD"
+                probe_bytes = 0
+                if response.status_code in HEAD_FALLBACK_STATUSES:
+                    async with client.stream(
+                        "GET",
+                        current,
+                        headers={"Range": "bytes=0-0"},
+                        follow_redirects=False,
+                    ) as fallback:
+                        response = fallback
+                        probe_method = "GET-range"
+                        async for chunk in fallback.aiter_bytes(1):
+                            probe_bytes = len(chunk)
+                            break
                 return {
                     "resource_id": resource.get("resource_id"),
                     "state": "observed",
@@ -52,6 +67,8 @@ async def _probe(
                     "content_type": response.headers.get("content-type"),
                     "etag": response.headers.get("etag"),
                     "last_modified": response.headers.get("last-modified"),
+                    "probe_method": probe_method,
+                    "probe_bytes": probe_bytes,
                 }
             return {
                 "resource_id": resource.get("resource_id"),
@@ -121,7 +138,7 @@ async def _probe_resolved(
 
 
 async def _run(plan: Path, output: Path, concurrency: int, timeout: float) -> int:
-    """Probe all planned resources without transferring response bodies."""
+    """Probe all planned resources with bounded HEAD/one-byte GET checks."""
     document = json.loads(plan.read_text(encoding="utf-8"))
     semaphore = asyncio.Semaphore(concurrency)
     limits = httpx.Limits(
@@ -136,7 +153,7 @@ async def _run(plan: Path, output: Path, concurrency: int, timeout: float) -> in
         json.dumps(
             {
                 "schema_version": "archive-govt-nz.secure-source-probe/v1",
-                "body_transfer": False,
+                "body_transfer": "bounded-range-probe",
                 "results": results,
             },
             indent=2,
@@ -145,7 +162,11 @@ async def _run(plan: Path, output: Path, concurrency: int, timeout: float) -> in
     )
     print(
         json.dumps(
-            {"status": "completed", "probed": len(results), "body_transfer": False}
+            {
+                "status": "completed",
+                "probed": len(results),
+                "body_transfer": "bounded-range-probe",
+            }
         )
     )
     return 0

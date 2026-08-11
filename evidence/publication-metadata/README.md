@@ -18,7 +18,10 @@ tags:
 
 # Archive Govt NZ — Treasury evidence preview
 
-This is a prepared, evidence-first archive preview. It is not published yet.
+This is an evidence-first archive record generated from stage-specific receipts.
+The rolling Hugging Face state, historical Zenodo release state, and any newly
+prepared package are reported separately. A new package is prepared-not-published
+until its own upload, readback, and release receipts exist.
 
 ## Scope
 
@@ -26,7 +29,7 @@ This is a prepared, evidence-first archive preview. It is not published yet.
 - Capture: `12 out of 12 resources locally validated`
 - Validation: `software-gates-passed`
 - Transformation: `derivative-foundation`
-- Publication: `not-authorized`
+- Publication: `uploaded-remotely-verified`
 - Final reconciliation: `reconciled`
 
 ## Publication receipts
@@ -35,7 +38,7 @@ This is a prepared, evidence-first archive preview. It is not published yet.
 - Hugging Face revision: `9406a3b0f877f0251c1baf89665cacc0c30dbae0`
 - Zenodo DOI: `10.5281/zenodo.21728726`
 - Zenodo state: `published`
-- Publication limit: `no remote publication claimed until explicit approval`
+- Publication limit: `claims apply only to the exact revisions and DOI receipts below`
 
 ## Resource disposition snapshot
 
@@ -1238,3 +1241,65 @@ stage snapshots.
   }
 ]
 ```
+
+## Archive architecture
+
+The following governed architecture profile is shared with future release
+packages. Secondary preservation outputs pass through the same admission gates
+as any other derivative and never replace original source bytes.
+
+# Archive system architecture
+
+This is the canonical, reusable architecture profile for evidence-first archive
+projects maintained across GitHub, Hugging Face, and Zenodo. A project may omit
+components that are not applicable, but must preserve the distinctions between
+discovery, original capture, secondary preservation, admission, rolling
+publication, and immutable release.
+
+![Archive system architecture](docs/archive-system-architecture.svg)
+
+The SVG is generated from `archive-system-architecture.mmd`. The Mermaid source
+below remains canonical and accessible when a publication surface cannot render
+Mermaid directly.
+
+```mermaid
+flowchart LR
+    Discovery["Catalogue and publisher discovery"] --> Bounded["Bounded deterministic retrieval"]
+    Bounded --> Objects["Content-addressed objects"]
+    Bounded --> IA["Internet Archive triangulation"]
+
+    Exceptions["Selected unresolved pages"] --> Secondary["Isolated secondary preservation pilot"]
+    Exceptions --> Browser["Manual browser-assisted inspection"]
+
+    Secondary --> Admission["Existing hashing, rights and validation gates"]
+    Browser --> Candidates["Candidate URLs only"]
+    Candidates --> Bounded
+    Admission --> Objects
+
+    Objects --> HF["Rolling Hugging Face archive"]
+    HF --> Zenodo["Gated immutable Zenodo releases"]
+```
+
+## System roles
+
+- **GitHub:** source, schemas, workflows, compact evidence, issues, and design.
+- **Content-addressed storage:** immutable original and admitted derivative bytes.
+- **Internet Archive:** independent discovery and redundancy evidence.
+- **Secondary preservation tools:** additional HTML, WARC, screenshot, and
+  transaction representations; never authoritative merely because capture ran.
+- **Hugging Face:** rolling originals, derivatives, manifests, cards, and
+  remotely verified revisions.
+- **Zenodo:** intentional checksum-pinned releases and DOI records at meaningful
+  milestones, never a substitute for rolling state.
+
+## Reuse contract
+
+1. Use source-neutral node labels in shared diagrams and identify project-specific
+   tools in adjacent text.
+2. Keep originals and derivatives distinguishable by role and hash.
+3. Require an explicit admission gate between any browser/crawler and durable
+   archive storage.
+4. Report GitHub commit, Hugging Face revision, and Zenodo DOI states separately.
+5. Package this document with future preservation releases; update an existing
+   rolling dataset card when appropriate, but do not mint a DOI solely for a
+   diagram change.

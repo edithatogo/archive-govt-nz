@@ -39,6 +39,28 @@ class PublicationPreparation:
     credential_variable: str
 
 
+@dataclass(frozen=True, slots=True)
+class CredentialPreflight:
+    """Credential availability without exposing secret material."""
+
+    target: str
+    repository: str
+    credential_variable: str
+    state: str
+
+
+def credential_preflight(config: PublicationConfig) -> CredentialPreflight:
+    """Report whether the target credential is present in the environment.
+
+    This is deliberately a local, non-mutating check.  It never validates a
+    token against a remote service and never includes token material in the
+    returned receipt.
+    """
+    credential = "HF_TOKEN" if config.target == "huggingface" else "ZENODO_TOKEN"
+    state = "credential-present" if os.environ.get(credential) else "credential-missing"
+    return CredentialPreflight(config.target, config.repository, credential, state)
+
+
 def prepare_publication(
     config: PublicationConfig, files: list[Path]
 ) -> PublicationPreparation:

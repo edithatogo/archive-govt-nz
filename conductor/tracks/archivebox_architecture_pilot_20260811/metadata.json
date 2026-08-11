@@ -1,0 +1,20 @@
+{
+  "id": "archivebox_architecture_pilot_20260811",
+  "title": "ArchiveBox Preservation Pilot and Reusable Architecture",
+  "type": "feature",
+  "status": "completed",
+  "created_at": "2026-08-11T00:00:00Z",
+  "requirements_method": "MoSCoW",
+  "archivebox_image": "archivebox/archivebox@sha256:1a5a37331091d9df865ead2b9c231aa5a892fc26fe0422ce6140d9e2d9532327",
+  "autonomy": {
+    "mode": "continuous_autonomous",
+    "stop_between_phases": false,
+    "decision_policy": "../../autonomy-policy.json"
+  },
+  "github": {
+    "parent_issue": 48,
+    "phase_subissues": [49, 50, 51],
+    "hosted_pilot_run": 31460943846,
+    "revision": "3fdf3c0c3025bb4b76694caeab5e2b9280e54a62"
+  }
+}

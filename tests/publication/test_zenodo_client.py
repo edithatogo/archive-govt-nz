@@ -95,6 +95,43 @@ def test_zenodo_client_fails_closed_at_credential_and_doi_gates(
         client.publish("7", confirm_doi=None)
 
 
+def test_zenodo_readiness_is_local_and_redacts_credential_state(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Readiness reports every external gate without network or token leakage."""
+    artifact = tmp_path / "release.tar"
+    artifact.write_bytes(b"release")
+    monkeypatch.delenv("ZENODO_TOKEN", raising=False)
+    client = ZenodoClient(config=ZenodoConfig(max_upload_bytes=64))
+    blocked = client.readiness(artifact)
+    assert blocked.status == "blocked"
+    assert blocked.credential_present is False
+    assert blocked.artifact_present is True
+    assert "credential_missing" in blocked.blockers
+    assert "release_approval_required" in blocked.blockers
+
+    monkeypatch.setenv("ZENODO_TOKEN", "secret-token")
+    ready = client.readiness(artifact, release_approved=True)
+    assert ready.status == "ready"
+    assert ready.blockers == ()
+    assert "secret-token" not in repr(ready)
+
+
+def test_zenodo_readiness_rejects_oversized_or_missing_artifact(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Local package bounds remain fail-closed before a credentialed call."""
+    monkeypatch.setenv("ZENODO_TOKEN", "token")
+    artifact = tmp_path / "large.tar"
+    artifact.write_bytes(b"0123456789")
+    client = ZenodoClient(config=ZenodoConfig(max_upload_bytes=4))
+    oversized = client.readiness(artifact, release_approved=True)
+    assert oversized.status == "blocked"
+    assert oversized.blockers == ("upload_size_limit",)
+    missing = client.readiness(tmp_path / "missing.tar", release_approved=True)
+    assert missing.blockers == ("artifact_missing",)
+
+
 def test_zenodo_client_rejects_oversized_artifacts(tmp_path: Path) -> None:
     """Upload bounds fail before any transport call."""
     artifact = tmp_path / "large.tar"

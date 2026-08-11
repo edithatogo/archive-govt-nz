@@ -1,0 +1,72 @@
+name: Scheduled Internet Archive redundancy
+
+on:
+  schedule:
+    - cron: "17 4 * * 3"
+  workflow_dispatch:
+    inputs:
+      submit_missing:
+        description: "Submit bounded missing official URLs to Save Page Now"
+        required: true
+        default: true
+        type: boolean
+
+permissions:
+  contents: read
+
+concurrency:
+  group: scheduled-internet-archive-redundancy
+  cancel-in-progress: false
+
+jobs:
+  triangulate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.14"
+      - run: python -m pip install uv
+      - name: Discover independent snapshots
+        run: >-
+          uv run --locked python tools/discover_replacement_urls.py
+          --plan evidence/phase-6-treasury-capture-plan.json
+          --recovery evidence/ckan-datastore-recovery.json
+          --output build/live/redundancy/discovery.json
+          --timeout 15 --delay 0.5 --concurrency 2
+      - name: Capture bounded latest snapshots
+        run: >-
+          uv run --locked python tools/capture_internet_archive_backups.py
+          --discovery build/live/redundancy/discovery.json
+          --output build/live/redundancy/backup.json
+          --object-root build/live/redundancy/objects
+          --max-bytes 67108864 --timeout 30 --concurrency 2
+      - name: Verify objects and classify resource evidence
+        run: >-
+          uv run --locked python tools/verify_internet_archive_backups.py
+          --plan evidence/phase-6-treasury-capture-plan.json
+          --recovery evidence/ckan-datastore-recovery.json
+          --backup build/live/redundancy/backup.json
+          --output-json build/live/redundancy/verification.json
+          --output-markdown build/live/redundancy/verification.md
+      - name: Submit bounded missing URLs on schedule
+        if: github.event_name == 'schedule' || inputs.submit_missing == true
+        run: >-
+          uv run --locked python tools/submit_save_page_now.py
+          --discovery build/live/redundancy/discovery.json
+          --output build/live/redundancy/save-page-now.json
+          --enable --max-submissions 5 --delay 10 --timeout 45
+      - name: Record disabled submission lane
+        if: github.event_name == 'workflow_dispatch' && inputs.submit_missing != true
+        run: >-
+          uv run --locked python tools/submit_save_page_now.py
+          --discovery build/live/redundancy/discovery.json
+          --output build/live/redundancy/save-page-now.json
+          --max-submissions 5
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: internet-archive-redundancy
+          path: build/live/redundancy
+          if-no-files-found: error
+          retention-days: 90

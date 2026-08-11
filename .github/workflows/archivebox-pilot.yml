@@ -1,0 +1,59 @@
+name: ArchiveBox preservation pilot
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: archivebox-preservation-pilot
+  cancel-in-progress: false
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.14"
+      - run: python -m pip install uv
+      - name: Validate bounded pilot input
+        run: >-
+          uv run --locked python tools/prepare_archivebox_pilot.py
+          --config config/archivebox-pilot.json
+          --output-dir build/live/archivebox-pilot
+          --prepared-at "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+      - name: Capture selected publisher pages
+        run: |
+          set -o pipefail
+          mkdir -p build/live/archivebox-pilot/archive
+          timeout 5m docker run --rm \
+            --memory 4g --cpus 2 --pids-limit 512 \
+            --volume "$PWD/build/live/archivebox-pilot/archive:/data" \
+            archivebox/archivebox@sha256:1a5a37331091d9df865ead2b9c231aa5a892fc26fe0422ce6140d9e2d9532327 \
+            init 2>&1 | tee build/live/archivebox-pilot/archivebox-init.log
+          timeout 20m docker run --rm \
+            --memory 4g --cpus 2 --pids-limit 512 \
+            --volume "$PWD/build/live/archivebox-pilot/archive:/data" \
+            --volume "$PWD/build/live/archivebox-pilot/urls.txt:/input/urls.txt:ro" \
+            archivebox/archivebox@sha256:1a5a37331091d9df865ead2b9c231aa5a892fc26fe0422ce6140d9e2d9532327 \
+            add --depth=0 /input/urls.txt 2>&1 | tee build/live/archivebox-pilot/archivebox-add.log
+      - name: Inventory and hash secondary outputs
+        run: >-
+          uv run --locked python tools/inventory_archivebox_pilot.py
+          --manifest build/live/archivebox-pilot/input-manifest.json
+          --archive-root build/live/archivebox-pilot/archive
+          --output-json build/live/archivebox-pilot/receipt.json
+          --output-markdown build/live/archivebox-pilot/receipt.md
+          --observed-at "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          --max-total-bytes 536870912 --max-files 2000
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        if: always()
+        with:
+          name: archivebox-preservation-pilot
+          path: build/live/archivebox-pilot
+          if-no-files-found: error
+          retention-days: 30

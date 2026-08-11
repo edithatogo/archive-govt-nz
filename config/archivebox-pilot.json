@@ -1,0 +1,9 @@
+{
+  "schema_version": "archive-govt-nz.archivebox-pilot-config/v1",
+  "image": "archivebox/archivebox@sha256:1a5a37331091d9df865ead2b9c231aa5a892fc26fe0422ce6140d9e2d9532327",
+  "candidates": [
+    "https://www.treasury.govt.nz/publications/budgets/budget-2016",
+    "https://www.treasury.govt.nz/publications/efu/half-year-economic-and-fiscal-update-2016",
+    "https://www.treasury.govt.nz/information-and-services/financial-management-and-advice/fiscal-strategy/fiscal-strategy-model"
+  ]
+}
