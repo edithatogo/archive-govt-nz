@@ -9,6 +9,8 @@ from datetime import UTC, datetime
 from pathlib import Path
 from urllib.request import Request, urlopen
 
+from archive_govt_nz.redundancy import validate_snapshot_url
+
 
 def main() -> int:
     """Download latest successful snapshots with bounded size and hashing."""
@@ -33,6 +35,7 @@ def main() -> int:
             snapshot_url = str(latest["url"])
             item["snapshot_url"] = snapshot_url
             try:
+                validate_snapshot_url(snapshot_url)
                 request = Request(  # noqa: S310 - discovery constrains HTTPS web.archive.org
                     snapshot_url,
                     headers={"User-Agent": "archive-govt-nz/1.0"},

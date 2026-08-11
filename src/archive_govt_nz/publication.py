@@ -58,9 +58,7 @@ def credential_preflight(config: PublicationConfig) -> CredentialPreflight:
     """
     credential = "HF_TOKEN" if config.target == "huggingface" else "ZENODO_TOKEN"
     state = "credential-present" if os.environ.get(credential) else "credential-missing"
-    return CredentialPreflight(
-        config.target, config.repository, credential, state
-    )
+    return CredentialPreflight(config.target, config.repository, credential, state)
 
 
 def prepare_publication(
