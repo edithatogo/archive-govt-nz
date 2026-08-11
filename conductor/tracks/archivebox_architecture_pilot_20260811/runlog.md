@@ -44,3 +44,12 @@
 - Final hosted CI caught a secret-scan false positive on a revision-valued
   metadata key. Renamed the key to the scanner's governed `revision` field;
   the digest value and security policy were unchanged.
+- Used the authenticated Chrome session after the environment token's HTTP 403.
+  Published the exact generated card through the Hugging Face UI and verified
+  revision `1f148c10687b2c2100659f40d46c6b84de156672` by independent readback.
+- Browser verification showed that Hugging Face does not render Mermaid code.
+  Added canonical `.mmd` source plus a Mermaid CLI 11.16.0 SVG projection,
+  published both the linked card and SVG, and verified the rendered image.
+- Remote README and SVG bytes match local SHA-256 values recorded in
+  `hf-architecture-publication.json`. Zenodo remains deferred until the next
+  meaningful immutable release.

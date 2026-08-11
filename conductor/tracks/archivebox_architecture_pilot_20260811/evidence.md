@@ -78,3 +78,17 @@ The Hugging Face card and canonical document are ready locally. A live update
 was attempted, but the current credential returned HTTP 403 for both direct
 commit and protected PR pre-upload. No Hugging Face state changed. The document
 is included in future Zenodo packages; no DOI was created for this change.
+
+### Hugging Face architecture publication
+
+The authenticated Chrome session provided the authorized fallback after the
+environment token's HTTP 403. The final card and rendered SVG are uploaded and
+remotely verified at revision
+`1f148c10687b2c2100659f40d46c6b84de156672`. Downloaded bytes match local
+README and SVG hashes, and browser inspection confirms the linked image loaded.
+The machine receipt is `hf-architecture-publication.json`.
+
+Because Hugging Face displays Mermaid as source rather than rendering it, the
+repository now retains canonical `.mmd`, generated `.svg`, and explanatory
+Markdown together. Future Zenodo candidates include all three artefacts. The
+existing DOI remains unchanged.

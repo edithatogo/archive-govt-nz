@@ -30,11 +30,11 @@ extractor states, access-challenge classification, and explicit
 
 ## External publication observation
 
-The architecture is present in canonical repository documentation, generated
-Hugging Face card material, and future Zenodo package inputs. The current
-Hugging Face credential identifies the account but lacks permission for direct
-writes and PR pre-upload; no remote write occurred. Track 16 explicitly excludes
-automatic payload publication and a documentation-only DOI.
+The architecture is present in canonical repository documentation, the remotely
+verified Hugging Face card and SVG at revision `1f148c10687b2c2100659f40d46c6b84de156672`,
+and future Zenodo package inputs. The environment token lacked write permission,
+so the authorized authenticated-browser fallback was used. Track 16 explicitly
+excludes automatic payload publication and a documentation-only DOI.
 
 ## Decision
 
