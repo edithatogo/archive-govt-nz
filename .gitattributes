@@ -1,1 +1,2 @@
 conductor/tracks/**/fixtures/** text eol=lf
+conductor/tracks/health_payload_capture_20260802/evidence/prepared-package/** -text

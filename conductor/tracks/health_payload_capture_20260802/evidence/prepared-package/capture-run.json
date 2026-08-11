@@ -1,0 +1,13 @@
+{
+  "schema_version": "archive-govt-nz.capture-run/v1",
+  "results": [],
+  "counts": {},
+  "budget": {
+    "max_total_bytes": 1073741824,
+    "max_resources": 158,
+    "concurrency": 2,
+    "max_requests_per_second": 2.0,
+    "max_duration_seconds": 900.0
+  },
+  "payload_transfer": false
+}
