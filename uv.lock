@@ -51,7 +51,7 @@ requires-dist = [
     { name = "duckdb", specifier = ">=1.4.3,<2" },
     { name = "httpx", specifier = ">=0.28.1,<1" },
     { name = "jsonschema", specifier = ">=4.25.1,<5" },
-    { name = "pyarrow", specifier = ">=23.0.1,<24" },
+    { name = "pyarrow", specifier = ">=23.0.1,<26" },
 ]
 
 [package.metadata.requires-dev]
