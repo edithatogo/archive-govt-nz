@@ -50,7 +50,7 @@ jobs:
           --output-markdown build/live/archivebox-pilot/receipt.md
           --observed-at "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
           --max-total-bytes 536870912 --max-files 2000
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         if: always()
         with:
           name: archivebox-preservation-pilot
