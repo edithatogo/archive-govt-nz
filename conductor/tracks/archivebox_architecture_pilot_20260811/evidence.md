@@ -52,3 +52,29 @@ passed; ArchiveBox v0.7.4 exited with `No archivebox index found` because the
 new mounted collection had not been initialized. Inventory and upload were
 skipped, and no capture or admission is claimed. The corrective task adds
 bounded `archivebox init` and always-retained diagnostic logs before retry.
+
+### Hosted pilot reconciled result
+
+Run [31460943846](https://github.com/edithatogo/archive-govt-nz/actions/runs/31460943846)
+passed on revision `3fdf3c0`. The receipt records 43 files and 2,598,932 bytes
+across three exact candidates. Its canonical SHA-256 is
+`69dece6db2e91b3d2f07cf009d0e9ea5374685fe4e36a1ad545c4488f515c1e1`.
+The durable compact evaluation is `hosted-pilot-evaluation.json`.
+
+All candidates produced nine successful and three failed extractor states.
+`wget` and the Archive.org extractor failed for all three. Two browser
+renderings were access-challenge pages. Budget 2016 reported the expected page
+title, but its original payload was not independently verified. WARC presence
+is not capture proof. Every output remains secondary and `not-admitted`.
+
+The 4,191.825806 amplification value uses the canonical input manifest as its
+denominator. It is an operational-overhead signal, not a comparison with source
+payload bytes. ArchiveBox remains a manual exception lane.
+
+The final local harness passed: 330 tests, 96.13% branch coverage, 100% pilot
+coverage, 9/9 pilot mutations, and all supply-chain gates.
+
+The Hugging Face card and canonical document are ready locally. A live update
+was attempted, but the current credential returned HTTP 403 for both direct
+commit and protected PR pre-upload. No Hugging Face state changed. The document
+is included in future Zenodo packages; no DOI was created for this change.

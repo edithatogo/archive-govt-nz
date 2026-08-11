@@ -1,0 +1,58 @@
+{
+  "schema_version": "archive-govt-nz.archivebox-pilot-evaluation/v1",
+  "observed_at": "2026-08-11T05:15:39Z",
+  "github": {
+    "run_id": 31460943846,
+    "revision": "3fdf3c0c3025bb4b76694caeab5e2b9280e54a62",
+    "conclusion": "success",
+    "artifact_retention_days": 30
+  },
+  "input_manifest_sha256": "1a3b1595d8cae10c55ce62243f128b3d0096cc96d080087e996d26c605ecaea3",
+  "receipt_sha256": "69dece6db2e91b3d2f07cf009d0e9ea5374685fe4e36a1ad545c4488f515c1e1",
+  "container": "archivebox/archivebox@sha256:1a5a37331091d9df865ead2b9c231aa5a892fc26fe0422ce6140d9e2d9532327",
+  "candidate_count": 3,
+  "file_count": 43,
+  "total_bytes": 2598932,
+  "storage_amplification_vs_input_manifest": 4191.825806,
+  "storage_amplification_denominator": "canonical-input-manifest-bytes",
+  "output_roles": [
+    "secondary-html",
+    "secondary-metadata",
+    "secondary-other",
+    "secondary-screenshot",
+    "secondary-warc"
+  ],
+  "candidate_outcomes": [
+    {
+      "url": "https://www.treasury.govt.nz/information-and-services/financial-management-and-advice/fiscal-strategy/fiscal-strategy-model",
+      "source_response_state": "access-challenge-observed",
+      "successful_extractor_count": 9,
+      "failed_extractor_count": 3,
+      "original_payload_verified": false
+    },
+    {
+      "url": "https://www.treasury.govt.nz/publications/budgets/budget-2016",
+      "source_response_state": "not-independently-verified",
+      "successful_extractor_count": 9,
+      "failed_extractor_count": 3,
+      "original_payload_verified": false
+    },
+    {
+      "url": "https://www.treasury.govt.nz/publications/efu/half-year-economic-and-fiscal-update-2016",
+      "source_response_state": "access-challenge-observed",
+      "successful_extractor_count": 9,
+      "failed_extractor_count": 3,
+      "original_payload_verified": false
+    }
+  ],
+  "decision": "retain-as-manual-exception-lane",
+  "admission_state": "not-admitted",
+  "limitations": [
+    "all-three-wget-extractors-failed-with-http-403",
+    "all-three-archive-org-extractors-failed",
+    "two-browser-renders-captured-access-challenge-pages",
+    "warc-file-presence-does-not-prove-successful-source-capture",
+    "storage-amplification-is-not-relative-to-source-payload-bytes",
+    "github-actions-artifact-is-operational-not-durable"
+  ]
+}

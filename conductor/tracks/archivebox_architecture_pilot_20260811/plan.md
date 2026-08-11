@@ -22,8 +22,12 @@
 ## Phase 3 - Assurance and hosted evidence
 
 - [x] Task: Run focused and complete local assurance gates
-- [ ] Task: Dispatch and reconcile one bounded hosted pilot
-- [ ] Task: Review capture utility, provenance value, and storage amplification
-- [ ] Task: Run Conductor self-review and resolve actionable findings
-- [ ] Task: Reconcile metadata, registry, evidence, and GitHub issue states
-- [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Dispatch and reconcile one bounded hosted pilot
+- [x] Task: Review capture utility, provenance value, and storage amplification
+- [x] Task: Run Conductor self-review and resolve actionable findings
+- [x] Task: Reconcile metadata, registry, evidence, and GitHub issue states
+- [x] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+
+## Review fixes
+
+- [x] Task: Add per-candidate extractor evidence and original-payload denial (`3fdf3c0`)

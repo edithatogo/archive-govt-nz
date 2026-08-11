@@ -26,3 +26,18 @@
   collection required `archivebox init`; no capture or admission was claimed.
 - Added bounded initialization and always-retained init/add diagnostic logs as
   the retry correction.
+- Hosted retry run 31460195023 completed, but review found that its receipt
+  inventoried files without reconciling extractor outcomes per candidate.
+- Added bounded per-snapshot parsing, exact candidate reconciliation, redacted
+  extractor states, and explicit original-payload denial in commit `3fdf3c0`.
+- Hosted run 31460943846 succeeded on revision `3fdf3c0`: 3 snapshots, 43
+  hashed files, 2,598,932 bytes, and receipt SHA-256
+  `69dece6db2e91b3d2f07cf009d0e9ea5374685fe4e36a1ad545c4488f515c1e1`.
+- Each candidate reported 9 successful and 3 failed extractors. All three wget
+  captures failed with HTTP 403; two browser renders captured access-challenge
+  pages. No original payload was verified and nothing was admitted.
+- The complete harness passed: 330 tests, 96.13% branch coverage, 100% pilot
+  coverage, 9/9 pilot mutations, and all supply-chain gates.
+- The authorized Hugging Face documentation update was attempted. The current
+  credential identified `edithatogo`, but direct commit and protected PR
+  pre-upload both returned HTTP 403. No remote file changed.

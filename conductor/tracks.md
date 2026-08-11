@@ -13,7 +13,7 @@ decision or safety boundary, and continue independent work while it is pending.
 - [x] **Track 15: Routine Internet Archive redundancy and triangulation**
   *Link: [tracks/internet_archive_redundancy_20260811/index.md](./tracks/internet_archive_redundancy_20260811/index.md)*
 
-- [~] **Track 16: ArchiveBox preservation pilot and reusable architecture**
+- [x] **Track 16: ArchiveBox preservation pilot and reusable architecture**
   *Link: [tracks/archivebox_architecture_pilot_20260811/index.md](./tracks/archivebox_architecture_pilot_20260811/index.md)*
 
 ## Proposed follow-up tracks
