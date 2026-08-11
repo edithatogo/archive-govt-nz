@@ -35,8 +35,22 @@ MUTATIONS = {
         "total_bytes < max_total_bytes",
     ),
     "secondary_role": (
-        '"authoritative_original": False',
-        '"authoritative_original": True',
+        (
+            '"role": _output_role(relative),\n'
+            '                "authoritative_original": False'
+        ),
+        (
+            '"role": _output_role(relative),\n'
+            '                "authoritative_original": True'
+        ),
+    ),
+    "snapshot_candidate_reconciliation": (
+        "if seen != expected:",
+        "if seen == expected:",
+    ),
+    "snapshot_original_not_verified": (
+        '"original_payload_verified": False',
+        '"original_payload_verified": True',
     ),
 }
 

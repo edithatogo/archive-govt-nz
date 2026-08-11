@@ -34,6 +34,13 @@ def test_prepare_and_inventory_commands_emit_paired_receipts(tmp_path: Path) -> 
     archive = prepared / "archive"
     archive.mkdir()
     (archive / "index.html").write_text("fixture", encoding="utf-8")
+    urls = (prepared / "urls.txt").read_text(encoding="utf-8").splitlines()
+    for index, url in enumerate(urls):
+        snapshot = archive / "archive" / str(index)
+        snapshot.mkdir(parents=True)
+        (snapshot / "index.json").write_text(
+            json.dumps({"url": url, "history": {"wget": []}}), encoding="utf-8"
+        )
     receipt_json = prepared / "receipt.json"
     receipt_markdown = prepared / "receipt.md"
     inventory = subprocess.run(

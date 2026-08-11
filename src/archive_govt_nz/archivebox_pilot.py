@@ -22,6 +22,7 @@ _ALLOWED_HOSTS = frozenset(
 )
 _IMAGE_PATTERN = re.compile(r"^archivebox/archivebox@sha256:[0-9a-f]{64}$")
 _MAX_CANDIDATES = 5
+_MAX_SNAPSHOT_INDEX_BYTES = 1024 * 1024
 
 
 class ArchiveBoxPilotError(ValueError):
@@ -138,6 +139,86 @@ def _output_role(relative_path: str) -> str:
     return "secondary-other"
 
 
+def _load_snapshot_index(index_path: Path) -> dict[str, object]:
+    if index_path.stat().st_size > _MAX_SNAPSHOT_INDEX_BYTES:
+        raise _error("snapshot_index_too_large")
+    try:
+        raw: object = json.loads(index_path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError) as error:
+        raise _error("invalid_snapshot_index") from error
+    if not isinstance(raw, dict):
+        raise _error("invalid_snapshot_index")
+    return cast("dict[str, object]", raw)
+
+
+def _extractor_states(history: object) -> dict[str, str]:
+    if not isinstance(history, dict):
+        raise _error("unexpected_snapshot_index")
+    typed_history = cast("dict[object, object]", history)
+    states: dict[str, str] = {}
+    for name, events in sorted(typed_history.items(), key=lambda item: str(item[0])):
+        if not isinstance(name, str) or not isinstance(events, list):
+            raise _error("invalid_snapshot_index")
+        if not events:
+            states[name] = "not-run"
+            continue
+        typed_events = cast("list[object]", events)
+        last: object = typed_events[-1]
+        if not isinstance(last, dict):
+            states[name] = "unknown"
+            continue
+        status: object = cast("dict[object, object]", last).get("status")
+        states[name] = (
+            status
+            if isinstance(status, str) and status in {"succeeded", "failed"}
+            else "unknown"
+        )
+    return states
+
+
+def _snapshot_summaries(root: Path, manifest: PilotDocument) -> list[dict[str, object]]:
+    """Summarize bounded extractor states without retaining error payloads."""
+    expected = set(cast("list[str]", manifest.document["candidates"]))
+    summaries: list[dict[str, object]] = []
+    seen: set[str] = set()
+    indexes = sorted((root / "archive").glob("*/index.json"))
+    if len(indexes) > _MAX_CANDIDATES:
+        raise _error("too_many_snapshot_indexes")
+    for index_path in indexes:
+        payload = _load_snapshot_index(index_path)
+        url = payload.get("url")
+        if not isinstance(url, str) or url not in expected:
+            raise _error("unexpected_snapshot_index")
+        if url in seen:
+            raise _error("duplicate_snapshot_index")
+        seen.add(url)
+        extractor_states = _extractor_states(payload.get("history"))
+        title = payload.get("title")
+        source_response_state = (
+            "access-challenge-observed"
+            if isinstance(title, str) and title.strip().lower() == "just a moment..."
+            else "not-independently-verified"
+        )
+        summaries.append(
+            {
+                "url": url,
+                "snapshot": index_path.parent.relative_to(root).as_posix(),
+                "source_response_state": source_response_state,
+                "extractor_states": extractor_states,
+                "successful_extractor_count": sum(
+                    status == "succeeded" for status in extractor_states.values()
+                ),
+                "failed_extractor_count": sum(
+                    status == "failed" for status in extractor_states.values()
+                ),
+                "original_payload_verified": False,
+            }
+        )
+    if seen != expected:
+        raise _error("snapshot_candidate_mismatch")
+    return sorted(summaries, key=lambda item: cast("str", item["url"]))
+
+
 def inventory_archivebox_output(
     root: Path,
     *,
@@ -180,6 +261,7 @@ def inventory_archivebox_output(
         )
     if not files:
         raise _error("empty_archivebox_output")
+    snapshots = _snapshot_summaries(root, manifest)
     amplification = round(total_bytes / len(manifest.canonical_json), 6)
     return _canonical_document(
         {
@@ -191,6 +273,8 @@ def inventory_archivebox_output(
             "file_count": len(files),
             "total_bytes": total_bytes,
             "storage_amplification_vs_input_manifest": amplification,
+            "storage_amplification_denominator": "canonical-input-manifest-bytes",
+            "snapshots": snapshots,
             "files": files,
             "authority": "secondary-web-preservation-pilot",
             "admission_state": "not-admitted",
@@ -198,6 +282,8 @@ def inventory_archivebox_output(
                 "process-success-does-not-prove-source-identity",
                 "captured-page-assets-may-include-third-party-hosts",
                 "github-actions-artifacts-are-operational-not-durable",
+                "warc-file-presence-does-not-prove-successful-source-capture",
+                "storage-amplification-is-not-relative-to-source-payload-bytes",
             ],
         }
     )
@@ -206,6 +292,7 @@ def inventory_archivebox_output(
 def render_inventory_markdown(receipt: PilotDocument) -> str:
     """Render a concise paired human-readable receipt."""
     document = receipt.document
+    snapshot_count = len(cast("list[object]", document["snapshots"]))
     return "\n".join(
         [
             "# ArchiveBox pilot receipt",
@@ -216,6 +303,7 @@ def render_inventory_markdown(receipt: PilotDocument) -> str:
             f"- Container: `{document['image']}`",
             f"- Files inventoried: `{document['file_count']}`",
             f"- Total bytes: `{document['total_bytes']}`",
+            f"- Candidate snapshots reconciled: `{snapshot_count}`",
             "- Authority: `secondary-web-preservation-pilot`",
             "- Durable admission: `not-admitted`",
             "",

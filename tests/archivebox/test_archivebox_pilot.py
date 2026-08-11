@@ -1,5 +1,6 @@
 """ArchiveBox pilot policy and receipt contracts."""
 
+import json
 from pathlib import Path
 from typing import cast
 
@@ -9,6 +10,7 @@ from hypothesis import strategies as st
 
 from archive_govt_nz.archivebox_pilot import (
     ArchiveBoxPilotError,
+    PilotDocument,
     build_input_manifest,
     inventory_archivebox_output,
     load_input_manifest,
@@ -117,6 +119,19 @@ def test_inventory_hashes_and_roles_secondary_outputs(tmp_path: Path) -> None:
     """Inventory receipts hash outputs and never classify them as originals."""
     archive = tmp_path / "archive"
     (archive / "warc").mkdir(parents=True)
+    snapshots = archive / "archive"
+    for index, url in enumerate(URLS):
+        snapshot = snapshots / str(index)
+        snapshot.mkdir(parents=True)
+        (snapshot / "index.json").write_text(
+            '{"url": '
+            + repr(url).replace("'", '"')
+            + ', "title": "Just a moment...", "history": '
+            + '{"wget": [{"status": "failed", "output": "redacted"}], '
+            + '"screenshot": [{"status": "succeeded", "output": "screenshot.png"}], '
+            + '"git": []}}',
+            encoding="utf-8",
+        )
     (archive / "warc" / "page.warc.gz").write_bytes(b"warc")
     (archive / "screenshot.png").write_bytes(b"png")
     (archive / "index.html").write_bytes(b"<html></html>")
@@ -135,8 +150,7 @@ def test_inventory_hashes_and_roles_secondary_outputs(tmp_path: Path) -> None:
     )
 
     assert receipt.document["state"] == "outputs-inventoried-and-hashed"
-    assert receipt.document["file_count"] == 5
-    assert receipt.document["total_bytes"] == 26
+    assert receipt.document["file_count"] == 7
     raw_files = receipt.document["files"]
     assert isinstance(raw_files, list)
     files = cast("list[dict[str, object]]", raw_files)
@@ -148,6 +162,16 @@ def test_inventory_hashes_and_roles_secondary_outputs(tmp_path: Path) -> None:
         "secondary-warc",
     }
     assert all(item["authoritative_original"] is False for item in files)
+    raw_snapshots = receipt.document["snapshots"]
+    assert isinstance(raw_snapshots, list)
+    snapshot_receipts = cast("list[dict[str, object]]", raw_snapshots)
+    assert [item["url"] for item in snapshot_receipts] == sorted(URLS)
+    assert all(
+        item["source_response_state"] == "access-challenge-observed"
+        for item in snapshot_receipts
+    )
+    assert all(item["original_payload_verified"] is False for item in snapshot_receipts)
+    assert all("redacted" not in str(item) for item in snapshot_receipts)
     assert render_inventory_markdown(receipt).startswith("# ArchiveBox pilot receipt")
 
 
@@ -155,6 +179,11 @@ def test_inventory_is_deterministic_and_bounded(tmp_path: Path) -> None:
     """Stable bytes and timestamps yield a stable receipt; limits fail closed."""
     archive = tmp_path / "archive"
     archive.mkdir()
+    snapshot = archive / "archive" / "1"
+    snapshot.mkdir(parents=True)
+    (snapshot / "index.json").write_text(
+        '{"url": "' + URLS[0] + '", "history": {}}', encoding="utf-8"
+    )
     (archive / "b.json").write_bytes(b"{}")
     (archive / "a.txt").write_bytes(b"abc")
     manifest = build_input_manifest(
@@ -165,15 +194,15 @@ def test_inventory_is_deterministic_and_bounded(tmp_path: Path) -> None:
         archive,
         manifest=manifest,
         observed_at="2026-08-11T01:00:00Z",
-        max_total_bytes=5,
-        max_files=2,
+        max_total_bytes=1024,
+        max_files=3,
     )
     second = inventory_archivebox_output(
         archive,
         manifest=manifest,
         observed_at="2026-08-11T01:00:00Z",
-        max_total_bytes=5,
-        max_files=2,
+        max_total_bytes=1024,
+        max_files=3,
     )
     assert first.sha256 == second.sha256
 
@@ -182,16 +211,16 @@ def test_inventory_is_deterministic_and_bounded(tmp_path: Path) -> None:
             archive,
             manifest=manifest,
             observed_at="2026-08-11T01:00:00Z",
-            max_total_bytes=4,
-            max_files=2,
+            max_total_bytes=2,
+            max_files=3,
         )
     with pytest.raises(ArchiveBoxPilotError, match="output_files_exceeded"):
         inventory_archivebox_output(
             archive,
             manifest=manifest,
             observed_at="2026-08-11T01:00:00Z",
-            max_total_bytes=5,
-            max_files=1,
+            max_total_bytes=1024,
+            max_files=2,
         )
 
 
@@ -261,4 +290,127 @@ def test_inventory_rejects_missing_and_symlinked_output(
             observed_at="2026-08-11T01:00:00Z",
             max_total_bytes=10,
             max_files=10,
+        )
+
+
+def _inventory_fixture(
+    tmp_path: Path, payloads: list[object]
+) -> tuple[Path, PilotDocument]:
+    archive = tmp_path / "archive"
+    for index, payload in enumerate(payloads):
+        snapshot = archive / "archive" / str(index)
+        snapshot.mkdir(parents=True)
+        (snapshot / "index.json").write_text(json.dumps(payload), encoding="utf-8")
+    manifest = build_input_manifest(
+        [URLS[0]], image=IMAGE, prepared_at="2026-08-11T00:00:00Z"
+    )
+    return archive, manifest
+
+
+@pytest.mark.parametrize(
+    ("payload", "error_class"),
+    [
+        ([], "invalid_snapshot_index"),
+        (
+            {"url": "https://www.treasury.govt.nz/other", "history": {}},
+            "unexpected_snapshot_index",
+        ),
+        ({"url": URLS[0], "history": []}, "unexpected_snapshot_index"),
+        ({"url": URLS[0], "history": {"wget": "bad"}}, "invalid_snapshot_index"),
+    ],
+)
+def test_inventory_rejects_invalid_snapshot_contracts(
+    tmp_path: Path, payload: object, error_class: str
+) -> None:
+    """Untrusted ArchiveBox indexes must match the manifest and schema."""
+    archive, manifest = _inventory_fixture(tmp_path, [payload])
+    with pytest.raises(ArchiveBoxPilotError, match=error_class):
+        inventory_archivebox_output(
+            archive,
+            manifest=manifest,
+            observed_at="2026-08-11T01:00:00Z",
+            max_total_bytes=1024,
+            max_files=5,
+        )
+
+
+def test_inventory_records_unknown_extractor_states(tmp_path: Path) -> None:
+    """Malformed event details are reduced to a bounded unknown state."""
+    archive, manifest = _inventory_fixture(
+        tmp_path,
+        [{"url": URLS[0], "history": {"wget": [1], "dom": [{"status": "new"}]}}],
+    )
+    receipt = inventory_archivebox_output(
+        archive,
+        manifest=manifest,
+        observed_at="2026-08-11T01:00:00Z",
+        max_total_bytes=1024,
+        max_files=5,
+    )
+    snapshots = cast("list[dict[str, object]]", receipt.document["snapshots"])
+    assert snapshots[0]["extractor_states"] == {"dom": "unknown", "wget": "unknown"}
+
+
+def test_inventory_rejects_missing_duplicate_and_excess_snapshots(
+    tmp_path: Path,
+) -> None:
+    """Each bounded candidate must map to exactly one snapshot."""
+    archive, manifest = _inventory_fixture(tmp_path, [])
+    archive.mkdir(parents=True, exist_ok=True)
+    (archive / "marker.txt").write_text("x", encoding="utf-8")
+    with pytest.raises(ArchiveBoxPilotError, match="snapshot_candidate_mismatch"):
+        inventory_archivebox_output(
+            archive,
+            manifest=manifest,
+            observed_at="x",
+            max_total_bytes=1024,
+            max_files=5,
+        )
+
+    archive, manifest = _inventory_fixture(
+        tmp_path / "duplicate",
+        [{"url": URLS[0], "history": {}}, {"url": URLS[0], "history": {}}],
+    )
+    with pytest.raises(ArchiveBoxPilotError, match="duplicate_snapshot_index"):
+        inventory_archivebox_output(
+            archive,
+            manifest=manifest,
+            observed_at="x",
+            max_total_bytes=2048,
+            max_files=5,
+        )
+
+    payloads: list[object] = [{"url": URLS[0], "history": {}}] * 6
+    archive, manifest = _inventory_fixture(tmp_path / "excess", payloads)
+    with pytest.raises(ArchiveBoxPilotError, match="too_many_snapshot_indexes"):
+        inventory_archivebox_output(
+            archive,
+            manifest=manifest,
+            observed_at="x",
+            max_total_bytes=4096,
+            max_files=10,
+        )
+
+
+def test_inventory_rejects_invalid_or_oversized_index(tmp_path: Path) -> None:
+    """Snapshot JSON parsing and size remain bounded."""
+    archive, manifest = _inventory_fixture(tmp_path, [{"url": URLS[0]}])
+    index_path = next((archive / "archive").glob("*/index.json"))
+    index_path.write_text("not-json", encoding="utf-8")
+    with pytest.raises(ArchiveBoxPilotError, match="invalid_snapshot_index"):
+        inventory_archivebox_output(
+            archive,
+            manifest=manifest,
+            observed_at="x",
+            max_total_bytes=2_000_000,
+            max_files=5,
+        )
+    index_path.write_bytes(b"x" * (1024 * 1024 + 1))
+    with pytest.raises(ArchiveBoxPilotError, match="snapshot_index_too_large"):
+        inventory_archivebox_output(
+            archive,
+            manifest=manifest,
+            observed_at="x",
+            max_total_bytes=2_000_000,
+            max_files=5,
         )
