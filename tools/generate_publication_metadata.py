@@ -32,7 +32,11 @@ def _read_json(path: Path) -> dict[str, Any]:
 
 def _read_architecture() -> str:
     """Read the canonical publication-safe architecture document."""
-    return ARCHITECTURE.read_text(encoding="utf-8").rstrip()
+    content = ARCHITECTURE.read_text(encoding="utf-8").rstrip()
+    return content.replace(
+        "](archive-system-architecture.svg)",
+        "](docs/archive-system-architecture.svg)",
+    )
 
 
 def _read_dict_list(payload: dict[str, Any], key: str) -> list[dict[str, Any]]:

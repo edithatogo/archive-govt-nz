@@ -45,6 +45,8 @@ def main() -> int:
         root / "evidence/publication-metadata/taxonomy.json",
         root / "evidence/publication-metadata/hf-estate-observation.json",
         root / "docs/archive-system-architecture.md",
+        root / "docs/archive-system-architecture.mmd",
+        root / "docs/archive-system-architecture.svg",
         root / "build/sbom.cdx.json",
     ]
     raw_files = sorted((root / args.raw_dir).glob("*.json"))

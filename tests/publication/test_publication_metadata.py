@@ -31,6 +31,7 @@ def test_metadata_previews_share_nonpublication_state() -> None:
     assert zenodo["resource_summary"]["counts"]
     assert zenodo["resource_summary"]["stage_counts"]
     assert "resource_summary" in card
+    assert "](docs/archive-system-architecture.svg)" in card
     assert "```mermaid" in card
     assert zenodo["architecture"]["document"] == "docs/archive-system-architecture.md"
     assert zenodo["architecture"]["secondary_capture_authority"] == (

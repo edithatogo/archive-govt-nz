@@ -6,6 +6,12 @@ components that are not applicable, but must preserve the distinctions between
 discovery, original capture, secondary preservation, admission, rolling
 publication, and immutable release.
 
+![Archive system architecture](archive-system-architecture.svg)
+
+The SVG is generated from `archive-system-architecture.mmd`. The Mermaid source
+below remains canonical and accessible when a publication surface cannot render
+Mermaid directly.
+
 ```mermaid
 flowchart LR
     Discovery["Catalogue and publisher discovery"] --> Bounded["Bounded deterministic retrieval"]
