@@ -19,3 +19,23 @@ the health-search action path after bounded retries; receipts are retained as
 `unavailable`. Direct equivalent probes succeeded, so the discrepancy remains
 an unresolved provider/request-path compatibility issue. No payload or
 publication action was attempted.
+
+# 2026-08-11 — implementation and live reconciliation
+
+Implemented one bounded CKAN request executor shared by POST JSON and GET query
+encoding, retaining the same retries, timeout, response-size limit, hashing,
+and error classification. Added public `action_get()` and contract tests for
+transport parity, HTTP 400 fallback, mismatch detection, and deterministic
+receipts.
+
+The prior group-scope blocker was traced to the catalogue rejecting the legacy
+`groups=health` parameter. The canonical `fq=groups:health` filter returned
+HTTP 200 and is now frozen by a regression test. Two complete live runs each
+observed 815 unique datasets; the second reconciled 815 unchanged, zero new,
+zero changed, and zero withdrawn records. Ten raw pages remain in ignored local
+build storage and are SHA-256 linked by the manifests.
+
+Created native GitHub parent issue #56 and nested subissues #57-#61. No payload
+capture, credential use, Hugging Face publication, Zenodo release, or DOI
+creation occurred. The untracked `.entire/` directory contains Codex session
+state and was inspected only at the path level, then preserved unchanged.
