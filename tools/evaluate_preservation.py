@@ -8,6 +8,7 @@ from pathlib import Path
 from archive_govt_nz.preservation import (
     validate_bagit,
     validate_fixture,
+    validate_ocfl,
     validate_ro_crate,
 )
 
@@ -99,6 +100,14 @@ def main() -> int:
             / "preservation_conformance_20260801"
             / "fixtures"
             / "bagit"
+        ),
+        "ocfl_validation": validate_ocfl(
+            ROOT
+            / "conductor"
+            / "tracks"
+            / "preservation_conformance_20260801"
+            / "fixtures"
+            / "ocfl"
         ),
         "conformance_claim": "bounded-structural-evaluation-only",
     }

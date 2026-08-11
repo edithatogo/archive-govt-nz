@@ -16,3 +16,6 @@
 
 - Added the bounded BagIt fixture and verified payload manifest closure in the
   focused preservation/evaluation test suite.
+
+- Added the bounded OCFL inventory/version fixture and verified the head-to-
+  content linkage in the focused preservation/evaluation test suite.

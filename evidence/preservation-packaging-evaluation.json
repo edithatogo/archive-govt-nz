@@ -60,20 +60,46 @@
       {
         "path": "metadata.json",
         "exists": true,
-        "sha256": "8174d6021ea4656c644cbef040bfe1938227281f9a43683f4cfbaae161f04c49",
-        "expected_sha256": "8174d6021ea4656c644cbef040bfe1938227281f9a43683f4cfbaae161f04c49",
+        "sha256": "07f7fa293ae2fd8b587aee8c62c6988af881c31552ceab30a48b572bbfe5ae04",
+        "expected_sha256": "07f7fa293ae2fd8b587aee8c62c6988af881c31552ceab30a48b572bbfe5ae04",
         "valid": true
       },
       {
         "path": "payload.txt",
         "exists": true,
-        "sha256": "c6f21033a67b60a326d220edc35b9f4bcd77a112810a01733d0284cadd7376d9",
-        "expected_sha256": "c6f21033a67b60a326d220edc35b9f4bcd77a112810a01733d0284cadd7376d9",
+        "sha256": "3e020ccc9c7d395542092c92d6fc6cb69b74ec4abd01a7ad87fab6d941e156a4",
+        "expected_sha256": "3e020ccc9c7d395542092c92d6fc6cb69b74ec4abd01a7ad87fab6d941e156a4",
         "valid": true
       }
     ],
     "valid": true,
     "synthetic": true
+  },
+  "ro_crate_validation": {
+    "standard": "RO-Crate",
+    "profile": "bounded",
+    "metadata_present": true,
+    "valid": true,
+    "jsonld_graph": true,
+    "root_declared": true
+  },
+  "bagit_validation": {
+    "standard": "BagIt",
+    "profile": "bounded",
+    "bagit_txt": true,
+    "manifest_present": true,
+    "valid": true,
+    "entries": 2
+  },
+  "ocfl_validation": {
+    "standard": "OCFL",
+    "profile": "bounded",
+    "inventory_present": true,
+    "valid": true,
+    "conformance_claim": "none",
+    "versions_present": true,
+    "head_linked": true,
+    "content_present": true
   },
   "conformance_claim": "bounded-structural-evaluation-only"
 }
