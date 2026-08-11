@@ -18,7 +18,7 @@ from archive_govt_nz.ckan.client import (
     BoundedCkanClient,
     CkanClientConfig,
 )
-from archive_govt_nz.ckan.envelope import CkanTransportError
+from archive_govt_nz.ckan.envelope import CkanError
 from archive_govt_nz.health_discovery import normalize_scoped_records, reconcile_rerun
 from archive_govt_nz.health_scope import DEFAULT_SCOPES
 
@@ -34,17 +34,18 @@ def _fingerprint(record: dict[str, Any]) -> str:
     return hashlib.sha256(canonical).hexdigest()
 
 
-async def _page(
+async def page_with_fallback(
     client: BoundedCkanClient,
     params: dict[str, object],
 ) -> tuple[ActionObservation, str, dict[str, object] | None]:
+    """Use GET only after a bounded POST failure and retain its receipt."""
     try:
         return await client.action("package_search", params), "POST", None
-    except CkanTransportError as post_error:
+    except CkanError as post_error:
         post_receipt: dict[str, object] = {
             "method": "POST",
             "status": "failed",
-            "status_code": post_error.status_code,
+            "status_code": getattr(post_error, "status_code", None),
             "error_class": post_error.error_class,
         }
         return await client.action_get("package_search", params), "GET", post_receipt
@@ -90,14 +91,16 @@ async def _discover(
                         "start": start,
                     }
                     try:
-                        page, method, post_failure = await _page(client, request_params)
+                        page, method, post_failure = await page_with_fallback(
+                            client, request_params
+                        )
                         break
-                    except CkanTransportError as error:
+                    except CkanError as error:
                         failures.append(
                             {
                                 "method": "GET",
                                 "rows": candidate_rows,
-                                "status_code": error.status_code,
+                                "status_code": getattr(error, "status_code", None),
                                 "error_class": error.error_class,
                             }
                         )
