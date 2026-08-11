@@ -1,6 +1,6 @@
 # Implementation plan
 
-1. Create fixture manifest and immutable fixture hashes.
+1. [x] Create fixture manifest and immutable fixture hashes.
 2. Build minimal RO-Crate metadata package and validate JSON-LD shape.
 3. Build BagIt package and verify payload manifest and tag manifest closure.
 4. Build OCFL object/layout fixture and validate required inventory/version links.
