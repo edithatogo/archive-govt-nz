@@ -65,6 +65,7 @@ def test_repository_gate_lists_all_required_stages() -> None:
         "mutation",
         "mutation-versioning",
         "mutation-redundancy",
+        "mutation-archivebox-pilot",
         "audit",
         "licenses",
         "secrets",

@@ -11,3 +11,9 @@
 - Added the canonical reusable Mermaid architecture profile and wired it into
   generated Hugging Face card material and future Zenodo release packages.
 - Passed 3 focused publication-metadata and release-package tests.
+- Observed the required red phase: pilot tests initially failed because the
+  module and workflow did not exist.
+- Implemented fail-closed pilot manifests and inventories, paired receipt tools,
+  three reviewed official HTTPS candidates, and the manual hosted workflow.
+- Achieved 100% line/branch coverage for `archivebox_pilot.py`, passed 34 focused
+  tests, and killed all 7 targeted integrity/policy mutations.

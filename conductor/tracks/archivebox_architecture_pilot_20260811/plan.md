@@ -12,16 +12,16 @@
 
 ## Phase 2 - Test-driven pilot implementation
 
-- [~] Task: Add failing policy, receipt, and workflow contract tests
-  - [ ] Cover invalid URLs, excessive inputs, deterministic order, and byte bounds
-  - [ ] Add property, metamorphic, contract, and deterministic simulation cases
-- [ ] Task: Implement pilot validation and receipt generation
-- [ ] Task: Add manual-only digest-pinned GitHub Actions workflow
-- [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Add failing policy, receipt, and workflow contract tests
+  - [x] Cover invalid URLs, excessive inputs, deterministic order, and byte bounds
+  - [x] Add property, metamorphic, contract, and deterministic simulation cases
+- [x] Task: Implement pilot validation and receipt generation
+- [x] Task: Add manual-only digest-pinned GitHub Actions workflow
+- [x] Task: Phase Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 3 - Assurance and hosted evidence
 
-- [ ] Task: Run focused and complete local assurance gates
+- [~] Task: Run focused and complete local assurance gates
 - [ ] Task: Dispatch and reconcile one bounded hosted pilot
 - [ ] Task: Review capture utility, provenance value, and storage amplification
 - [ ] Task: Run Conductor self-review and resolve actionable findings
