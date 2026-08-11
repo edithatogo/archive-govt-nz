@@ -7,7 +7,7 @@ import re
 from collections.abc import Awaitable, Callable, Mapping
 from dataclasses import dataclass
 from datetime import UTC, datetime
-from typing import Self, cast
+from typing import Literal, Self, cast
 
 import anyio
 import httpx
@@ -199,6 +199,23 @@ class BoundedCkanClient:
         params: Mapping[str, object] | None = None,
     ) -> ActionObservation:
         """Call one versioned CKAN Action endpoint under explicit bounds."""
+        return await self._execute_action("POST", action, params)
+
+    async def action_get(
+        self,
+        action: str,
+        params: Mapping[str, object] | None = None,
+    ) -> ActionObservation:
+        """Call one Action endpoint with bounded URL-query encoding."""
+        return await self._execute_action("GET", action, params)
+
+    async def _execute_action(
+        self,
+        method: Literal["GET", "POST"],
+        action: str,
+        params: Mapping[str, object] | None,
+    ) -> ActionObservation:
+        """Execute one Action call while sharing all transport controls."""
         if _ACTION_NAME.fullmatch(action) is None:
             raise _configuration_error(_FIELD_ACTION_NAME)
 
@@ -209,6 +226,7 @@ class BoundedCkanClient:
             observed_at = self._clock()
             try:
                 status_code, raw_body, response_headers = await self._request(
+                    method,
                     action,
                     params,
                 )
@@ -280,13 +298,26 @@ class BoundedCkanClient:
 
     async def _request(
         self,
+        method: Literal["GET", "POST"],
         action: str,
         params: Mapping[str, object] | None,
     ) -> tuple[int, bytes, Mapping[str, str]]:
+        encoded = dict(params or {})
+        query = httpx.QueryParams(
+            {
+                key: (
+                    value
+                    if isinstance(value, str)
+                    else json.dumps(value, separators=(",", ":"), sort_keys=True)
+                )
+                for key, value in encoded.items()
+            }
+        )
         request = self._client.build_request(
-            "POST",
+            method,
             f"/api/3/action/{action}",
-            json=dict(params or {}),
+            json=encoded if method == "POST" else None,
+            params=query if method == "GET" else None,
         )
         response = await self._client.send(request, stream=True)
         try:
