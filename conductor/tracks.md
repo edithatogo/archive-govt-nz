@@ -21,7 +21,7 @@ decision or safety boundary, and continue independent work while it is pending.
 These are bounded proposals, not active or completed tracks. They become
 active only after the MVP checkpoint and their stated decision gates pass.
 
-- [~] **Track 12: Broader health and healthcare discovery**
+- [x] **Track 12: Broader health and healthcare discovery**
   *Proposed slug: `health_broader_discovery_20260801`*
 - [~] **Track 13: Preservation packaging conformance**
   *Proposed slug: `preservation_conformance_20260801`*
