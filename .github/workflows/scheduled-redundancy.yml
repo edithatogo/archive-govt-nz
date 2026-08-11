@@ -34,14 +34,14 @@ jobs:
           --plan evidence/phase-6-treasury-capture-plan.json
           --recovery evidence/ckan-datastore-recovery.json
           --output build/live/redundancy/discovery.json
-          --timeout 20 --delay 0.5
+          --timeout 15 --delay 0.5 --concurrency 2
       - name: Capture bounded latest snapshots
         run: >-
           uv run --locked python tools/capture_internet_archive_backups.py
           --discovery build/live/redundancy/discovery.json
           --output build/live/redundancy/backup.json
           --object-root build/live/redundancy/objects
-          --max-bytes 67108864 --timeout 45
+          --max-bytes 67108864 --timeout 30 --concurrency 2
       - name: Verify objects and classify resource evidence
         run: >-
           uv run --locked python tools/verify_internet_archive_backups.py
