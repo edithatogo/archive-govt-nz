@@ -19,3 +19,6 @@
 
 - Added the bounded OCFL inventory/version fixture and verified the head-to-
   content linkage in the focused preservation/evaluation test suite.
+
+- Checked for local BagIt, RO-Crate, and OCFL reference validator executables;
+  none were available. No unavailable tool was treated as a conformance pass.
