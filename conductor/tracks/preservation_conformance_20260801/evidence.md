@@ -13,3 +13,7 @@ The bounded BagIt fixture contains the same metadata and payload bytes under
 `data/`, with a SHA-256 payload manifest and UTF-8 BagIt tag file. The focused
 closure tests pass; this is transfer-package evidence only, not a release
 authorization or full BagIt conformance claim.
+
+The bounded OCFL fixture contains an inventory with a `v1` head, linked version
+state, and a non-empty `v1/content` directory. The validator requires those
+links and does not claim full OCFL conformance or production storage adoption.
