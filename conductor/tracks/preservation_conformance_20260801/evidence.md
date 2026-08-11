@@ -17,3 +17,8 @@ authorization or full BagIt conformance claim.
 The bounded OCFL fixture contains an inventory with a `v1` head, linked version
 state, and a non-empty `v1/content` directory. The validator requires those
 links and does not claim full OCFL conformance or production storage adoption.
+
+No local reference executables for BagIt, RO-Crate, or OCFL were available on
+2026-08-11. This is recorded as `unavailable`, not `verified`; the structural
+fixture validators remain bounded self-checks and do not substitute for
+independent conformance validation.
