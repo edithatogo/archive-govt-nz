@@ -24,7 +24,9 @@ assert _SPEC is not None
 assert _SPEC.loader is not None
 _MODULE = importlib.util.module_from_spec(_SPEC)
 _SPEC.loader.exec_module(_MODULE)
-page_with_fallback = cast("_DiscoveryModule", _MODULE).page_with_fallback
+page_with_fallback = cast(
+    "_DiscoveryModule", cast("object", _MODULE)
+).page_with_fallback
 
 
 class _Client:

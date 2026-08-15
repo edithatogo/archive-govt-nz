@@ -1,7 +1,7 @@
 """Immutable content-addressed object-store contracts."""
 
 from pathlib import Path
-from typing import IO, Any
+from typing import IO, Any, cast
 
 import pytest
 
@@ -66,7 +66,7 @@ def test_invalid_stream_chunk_is_rejected_and_cleaned(tmp_path: Path) -> None:
     store = ContentAddressedStore(tmp_path)
 
     with pytest.raises(ObjectStoreError) as raised:
-        store.put_stream(["not-bytes"])  # type: ignore[list-item]
+        store.put_stream(cast("Any", ["not-bytes"]))
 
     assert raised.value.error_class == "invalid_chunk"
     assert list((tmp_path / "tmp").iterdir()) == []
