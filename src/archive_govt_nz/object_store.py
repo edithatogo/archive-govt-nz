@@ -120,3 +120,10 @@ class ContentAddressedStore:
         return ObjectStoreReceipt(
             object_id, sha256, digest.hexdigest(), byte_count, path
         )
+
+    def get_path(self, object_id: str) -> Path:
+        """Resolve the storage path for an object ID."""
+        if not _OBJECT_ID.fullmatch(object_id):
+            raise ObjectStoreError("invalid_object_id")
+        sha256 = object_id[7:]
+        return self.objects / sha256[:2] / sha256

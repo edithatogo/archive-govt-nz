@@ -55,6 +55,18 @@ STAGES = (
         ("uv", "run", "--locked", "python", "tools/mutation_batch_eligibility.py"),
     ),
     GateStage(
+        "mutation-global-policy",
+        ("uv", "run", "--locked", "python", "tools/mutation_global_policy.py"),
+    ),
+    GateStage(
+        "slops",
+        ("uv", "run", "--locked", "python", "tools/check_slops.py"),
+    ),
+    GateStage(
+        "benchmark-cas",
+        ("uv", "run", "--locked", "python", "tools/benchmark_cas.py"),
+    ),
+    GateStage(
         "audit",
         ("uv", "run", "--locked", "python", "tools/supply_chain.py", "audit"),
     ),

@@ -16,6 +16,9 @@ def test_repository_gate_includes_supply_chain_stages() -> None:
 
     assert stage_names[-4:] == ("audit", "licenses", "secrets", "sbom")
     assert "mutation" in stage_names
+    assert "mutation-global-policy" in stage_names
+    assert "slops" in stage_names
+    assert "benchmark-cas" in stage_names
 
 
 def test_required_governance_documents_exist() -> None:

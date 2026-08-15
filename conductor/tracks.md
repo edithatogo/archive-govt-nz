@@ -22,6 +22,9 @@ decision or safety boundary, and continue independent work while it is pending.
 - [x] **Track 18: Global CKAN Catalog Harvester**
   *Link: [tracks/ckan_global_harvest_20260816/index.md](./tracks/ckan_global_harvest_20260816/index.md)*
 
+- [x] **Track 19: Global Harvest Orchestration, Derivatives, and CI/CD Quality Frontiers**
+  *Link: [tracks/global_harvest_orchestration_and_derivatives_20260816/index.md](./tracks/global_harvest_orchestration_and_derivatives_20260816/index.md)*
+
 ## Proposed follow-up tracks
 
 These are bounded proposals, not active or completed tracks. They become
