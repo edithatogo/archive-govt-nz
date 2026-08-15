@@ -352,7 +352,7 @@ class BoundedCkanClient:
 
         chunks: list[bytes] = []
         received = 0
-        async for chunk in response.aiter_raw():
+        async for chunk in response.aiter_bytes():
             received += len(chunk)
             if received > self._config.max_response_bytes:
                 raise CkanResponseTooLargeError(self._config.max_response_bytes)

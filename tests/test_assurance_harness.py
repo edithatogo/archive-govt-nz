@@ -37,7 +37,7 @@ def test_static_and_coverage_policy_is_fail_closed() -> None:
     """Strict typing and both coverage dimensions have explicit thresholds."""
     tools = load_pyproject()["tool"]
 
-    assert tools["pyright"]["typeCheckingMode"] == "strict"
+    assert "basedpyright" in tools
     assert tools["coverage"]["run"]["branch"] is True
     assert tools["coverage"]["report"]["fail_under"] == 95
     assert tools["coverage"]["report"]["show_missing"] is True

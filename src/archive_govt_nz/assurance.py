@@ -17,7 +17,7 @@ STAGES = (
     GateStage("lock", ("uv", "lock", "--check")),
     GateStage("format", ("uv", "run", "--locked", "ruff", "format", "--check", ".")),
     GateStage("lint", ("uv", "run", "--locked", "ruff", "check", ".")),
-    GateStage("types", ("uv", "run", "--locked", "pyright")),
+    GateStage("types", ("uv", "run", "--locked", "basedpyright")),
     GateStage(
         "tests",
         (

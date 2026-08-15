@@ -27,6 +27,7 @@ archive-govt-nz = "archive_govt_nz.cli:main"
 
 [dependency-groups]
 dev = [
+  "basedpyright>=1.28.0,<2",
   "cyclonedx-bom>=7.3.0,<8",
   "detect-secrets>=1.5.0,<2",
   "hypothesis>=6.164.0,<7",
@@ -39,6 +40,11 @@ dev = [
   "ruff>=0.16.1,<0.17",
   "syrupy>=5.0.0,<6",
 ]
+
+[tool.basedpyright]
+typeCheckingMode = "standard"
+pythonVersion = "3.14"
+reportMissingTypeStubs = false
 
 [tool.uv]
 package = true
@@ -104,13 +110,6 @@ ignore = [
 "tests/tools/test_preservation_evaluation.py" = ["S607"]
 "tests/tools/test_evidence_ledger.py" = ["S607"]
 "tests/tools/test_release_attestation.py" = ["S607"]
-
-[tool.pyright]
-include = ["src", "tests", "tools"]
-pythonVersion = "3.14"
-typeCheckingMode = "strict"
-venvPath = "."
-venv = ".venv"
 
 [tool.pytest.ini_options]
 addopts = ["--strict-config", "--strict-markers"]

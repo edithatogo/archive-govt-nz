@@ -4,15 +4,16 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+from typing import Any, cast
 
 from archive_govt_nz.layer_reconciliation import reconcile_layer_counts
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def _load(path: Path) -> dict[str, object]:
+def _load(path: Path) -> dict[str, Any]:
     """Load one local JSON evidence document."""
-    return json.loads(path.read_text(encoding="utf-8"))
+    return cast("dict[str, Any]", json.loads(path.read_text(encoding="utf-8")))
 
 
 def main() -> int:
@@ -23,18 +24,16 @@ def main() -> int:
     ledger = _load(ROOT / "evidence/phase-5-ledger-build.json")
     raw_root = ROOT / "build/live/reconcile-20260731T164949/raw"
     raw_count = len(tuple(raw_root.glob("*.json")))
-    manifest_counts = {
-        str(key): int(value)
-        for key, value in dict(release["layer_counts"]).items()  # type: ignore[index]
-    }
+    layer_counts = cast("dict[str, Any]", release.get("layer_counts", {}))
+    manifest_counts = {str(key): int(value) for key, value in layer_counts.items()}
+    ledger_counts_map = cast("dict[str, Any]", ledger.get("counts", {}))
     result = reconcile_layer_counts(
         manifest_counts=manifest_counts,
         raw_count=raw_count,
-        captured_count=int(capture["captured"]),  # type: ignore[index]
+        captured_count=int(capture.get("captured", 0)),
         derivative_count=3,
         ledger_counts={
-            str(key): int(value)
-            for key, value in dict(ledger["counts"]).items()  # type: ignore[index]
+            str(key): int(value) for key, value in ledger_counts_map.items()
         },
         expected_ledger_counts={
             "observations": 91,
@@ -49,7 +48,7 @@ def main() -> int:
         "derivative_receipt": "build/derivatives/treasury/receipt.json",
         "ledger_receipt": "evidence/phase-5-ledger-build.json",
         "raw_root": "build/live/reconcile-20260731T164949/raw",
-        "derivative_row_count": derivative["row_count"],  # type: ignore[index]
+        "derivative_row_count": derivative.get("row_count"),
     }
     output = ROOT / "evidence/phase-5-layer-reconciliation.json"
     output.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
