@@ -6,6 +6,7 @@ import asyncio
 import hashlib
 import json
 from datetime import UTC, datetime
+from typing import TYPE_CHECKING
 
 import pytest
 
@@ -17,6 +18,9 @@ from archive_govt_nz.ckan.global_discovery import (
     canonical_global_scope_manifest,
     global_scope_report_markdown,
 )
+
+if TYPE_CHECKING:
+    from collections.abc import Mapping
 
 OBSERVED_AT = datetime(2026, 8, 16, 2, 0, tzinfo=UTC)
 
@@ -62,11 +66,19 @@ class FakeActionClient:
     async def action(
         self,
         action: str,
-        params: dict[str, object] | None = None,
+        params: Mapping[str, object] | None = None,
     ) -> ActionObservation:
         """Record the request and return its fixture observation."""
-        self.requests.append((action, params or {}))
+        self.requests.append((action, dict(params or {})))
         return next(self._responses)
+
+    async def action_get(
+        self,
+        action: str,
+        params: Mapping[str, object] | None = None,
+    ) -> ActionObservation:
+        """Record GET request and return its fixture observation."""
+        return await self.action(action, params)
 
 
 def sample_dataset(

@@ -46,6 +46,7 @@ class HarvestConfig:
     concurrency_per_host: int = 2
     timeout_seconds: float = 45.0
     user_agent: str = DEFAULT_USER_AGENT
+    max_datasets: int | None = None
 
 
 async def _execute_harvest_network_phases(
@@ -61,7 +62,11 @@ async def _execute_harvest_network_phases(
         max_response_bytes=16 * 1024 * 1024,
     )
     async with BoundedCkanClient(client_config) as client:
-        discovery = GlobalCkanDiscovery(client, page_size=config.page_size)
+        discovery = GlobalCkanDiscovery(
+            client,
+            page_size=config.page_size,
+            max_datasets=config.max_datasets,
+        )
         scope = await discovery.discover()
 
     scope_manifest_bytes = canonical_global_scope_manifest(scope)
@@ -178,6 +183,12 @@ def main() -> int:
     parser.add_argument("--workers", type=int, default=8)
     parser.add_argument("--concurrency-per-host", type=int, default=2)
     parser.add_argument("--timeout", type=float, default=45.0)
+    parser.add_argument(
+        "--max-datasets",
+        type=int,
+        default=None,
+        help="Optional maximum number of datasets to discover and archive",
+    )
     args = parser.parse_args()
     config = HarvestConfig(
         base_url=args.base_url,
@@ -187,6 +198,7 @@ def main() -> int:
         max_workers=args.workers,
         concurrency_per_host=args.concurrency_per_host,
         timeout_seconds=args.timeout,
+        max_datasets=args.max_datasets,
     )
     summary = execute_unified_harvest(config)
 

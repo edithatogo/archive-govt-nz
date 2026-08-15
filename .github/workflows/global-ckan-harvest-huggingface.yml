@@ -25,6 +25,11 @@ on:
         required: false
         default: "100"
         type: string
+      max_datasets:
+        description: "Optional limit on datasets to harvest (empty for full catalogue)"
+        required: false
+        default: ""
+        type: string
 
 permissions:
   contents: read
@@ -49,12 +54,17 @@ jobs:
 
       - name: Run Global CKAN Harvest Pipeline
         run: |
+          EXTRA_ARGS=""
+          if [ -n "${{ inputs.max_datasets }}" ]; then
+            EXTRA_ARGS="--max-datasets ${{ inputs.max_datasets }}"
+          fi
           uv run --locked python tools/harvest_ckan.py \
             --workers ${{ inputs.workers || 8 }} \
             --concurrency-per-host ${{ inputs.concurrency_per_host || 2 }} \
             --page-size ${{ inputs.page_size || 100 }} \
             --evidence-dir evidence \
-            --objects-dir objects
+            --objects-dir objects \
+            $EXTRA_ARGS
 
       - name: Recover Broken URLs via Wayback Machine
         run: |
