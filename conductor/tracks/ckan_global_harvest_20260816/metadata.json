@@ -1,0 +1,9 @@
+{
+  "schema_version": "archive-govt-nz.conductor-track/v1",
+  "track_id": "ckan_global_harvest_20260816",
+  "title": "Global CKAN Catalog Harvester",
+  "type": "feature",
+  "status": "complete",
+  "created_at": "2026-08-16T01:54:00Z",
+  "scope": "streamlined whole-catalogue discovery, rules-based rights filtering, concurrent capture, and broken-URL reconciliation"
+}
