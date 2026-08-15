@@ -13,6 +13,8 @@ import anyio
 import httpx
 
 from archive_govt_nz.ckan.envelope import (
+    HTTP_SUCCESS_MAXIMUM_EXCLUSIVE,
+    HTTP_SUCCESS_MINIMUM,
     ActionResponse,
     CkanError,
     CkanProtocolError,
@@ -171,7 +173,6 @@ class BoundedCkanClient:
             base_url=config.base_url.rstrip("/"),
             headers={
                 "Accept": "application/json",
-                "Accept-Encoding": "identity",
                 "User-Agent": config.user_agent,
             },
             timeout=httpx.Timeout(config.timeout_seconds),
@@ -230,7 +231,18 @@ class BoundedCkanClient:
                     action,
                     params,
                 )
-                document = self._decode_document(raw_body)
+                try:
+                    document = self._decode_document(raw_body)
+                except CkanProtocolError:
+                    if (
+                        status_code < HTTP_SUCCESS_MINIMUM
+                        or status_code >= HTTP_SUCCESS_MAXIMUM_EXCLUSIVE
+                    ):
+                        raise CkanTransportError(
+                            status_code,
+                            {"error": "http_error", "status_code": status_code},
+                        ) from None
+                    raise
                 response = interpret_action_response(status_code, document)
             except CkanTransportError as error:
                 attempts.append(
