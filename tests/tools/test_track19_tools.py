@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -119,3 +120,17 @@ def test_benchmark_cas_cli() -> None:
     )
     assert result.returncode == 0
     assert "CAS Streaming Throughput:" in result.stdout
+
+
+def test_publish_to_huggingface_cli_missing_token() -> None:
+    """CLI tool fails gracefully when token is absent."""
+    result = subprocess.run(
+        [sys.executable, "tools/publish_to_huggingface.py"],
+        cwd=REPOSITORY_ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+        env={"PATH": os.environ.get("PATH", "")},
+    )
+    assert result.returncode == 1
+    assert "Hugging Face token required" in result.stdout
