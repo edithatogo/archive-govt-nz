@@ -16,8 +16,11 @@ decision or safety boundary, and continue independent work while it is pending.
 - [x] **Track 16: ArchiveBox preservation pilot and reusable architecture**
   *Link: [tracks/archivebox_architecture_pilot_20260811/index.md](./tracks/archivebox_architecture_pilot_20260811/index.md)*
 
-- [ ] **Track 17: GitHub archive rollout: fyi-archive**
+- [x] **Track 17: GitHub archive rollout: fyi-archive**
   *Link: [tracks/github_archive_rollout_20260811/index.md](./tracks/github_archive_rollout_20260811/index.md)*
+
+- [x] **Track 18: Global CKAN Catalog Harvester**
+  *Link: [tracks/ckan_global_harvest_20260816/index.md](./tracks/ckan_global_harvest_20260816/index.md)*
 
 ## Proposed follow-up tracks
 
@@ -26,8 +29,8 @@ active only after the MVP checkpoint and their stated decision gates pass.
 
 - [x] **Track 12: Broader health and healthcare discovery**
   *Proposed slug: `health_broader_discovery_20260801`*
-- [ ] **Track 13: Preservation packaging conformance (deferred)**
-  *Proposed slug: `preservation_conformance_20260801`*
+- [x] **Track 13: Preservation packaging conformance**
+  *Link: [tracks/preservation_conformance_20260801/index.md](./tracks/preservation_conformance_20260801/index.md)*
 - [x] **Track 14: Health payload capture**
   *Link: [tracks/health_payload_capture_20260802/index.md](./tracks/health_payload_capture_20260802/index.md)*
 - [ ] **Deferred evaluation: graph/vector indexing**
