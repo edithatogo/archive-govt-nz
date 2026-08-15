@@ -7,7 +7,12 @@ import json
 from dataclasses import dataclass
 from typing import TYPE_CHECKING, Protocol, cast
 
+import httpx
+
+from archive_govt_nz.ckan.envelope import CkanError
+
 if TYPE_CHECKING:
+    from collections.abc import Mapping
     from datetime import datetime
 
     from archive_govt_nz.ckan.client import ActionObservation
@@ -37,9 +42,17 @@ class ActionClient(Protocol):
     async def action(
         self,
         action: str,
-        params: dict[str, object] | None = None,
+        params: Mapping[str, object] | None = None,
     ) -> ActionObservation:
         """Return one bounded Action observation."""
+        ...
+
+    async def action_get(
+        self,
+        action: str,
+        params: Mapping[str, object] | None = None,
+    ) -> ActionObservation:
+        """Return one bounded Action observation via GET."""
         ...
 
 
@@ -117,12 +130,19 @@ class GlobalCkanScope:
 class GlobalCkanDiscovery:
     """Resolve and enumerate the complete live CKAN catalogue scope."""
 
-    def __init__(self, client: ActionClient, *, page_size: int = 100) -> None:
+    def __init__(
+        self,
+        client: ActionClient,
+        *,
+        page_size: int = 100,
+        max_datasets: int | None = None,
+    ) -> None:
         """Initialize global discovery client with deterministic page size."""
         if page_size < 1:
             raise GlobalCkanDiscoveryError(_ERROR_PAGE_SIZE)
         self._client = client
         self._page_size = page_size
+        self._max_datasets = max_datasets
 
     async def discover(self) -> GlobalCkanScope:
         """Enumerate and reconcile all datasets across the entire CKAN catalogue."""
@@ -133,15 +153,17 @@ class GlobalCkanDiscovery:
         start = 0
 
         while True:
-            page_action = await self._client.action(
-                "package_search",
-                {
-                    "q": "*:*",
-                    "rows": self._page_size,
-                    "sort": "id asc",
-                    "start": start,
-                },
-            )
+            params = {
+                "q": "*:*",
+                "rows": self._page_size,
+                "sort": "id asc",
+                "start": start,
+            }
+            try:
+                page_action = await self._client.action("package_search", params)
+            except CkanError, httpx.HTTPError, OSError:
+                page_action = await self._client.action_get("package_search", params)
+
             reported_count, results = self._parse_search_result(page_action)
             page_ids: list[str] = []
             for result in results:
@@ -167,6 +189,12 @@ class GlobalCkanDiscovery:
             )
 
             discovered_count = len(datasets)
+            if (
+                self._max_datasets is not None
+                and discovered_count >= self._max_datasets
+            ):
+                datasets = datasets[: self._max_datasets]
+                break
             if discovered_count > reported_count:
                 raise GlobalCkanDiscoveryError(_ERROR_COUNT_RECONCILIATION)
             if discovered_count == reported_count:
