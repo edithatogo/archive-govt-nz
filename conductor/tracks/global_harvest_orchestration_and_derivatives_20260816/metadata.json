@@ -1,0 +1,9 @@
+{
+  "schema_version": "archive-govt-nz.conductor-track/v1",
+  "track_id": "global_harvest_orchestration_and_derivatives_20260816",
+  "title": "Global Harvest Orchestration, Derivatives, and CI/CD Quality Frontiers",
+  "type": "feature",
+  "status": "completed",
+  "created_at": "2026-08-16T02:29:00Z",
+  "scope": "unified harvester CLI, automated Wayback triangulation, Parquet/DuckDB derivatives, catalogue drift engine, mutation suites, and CI/CD quality frontiers"
+}
