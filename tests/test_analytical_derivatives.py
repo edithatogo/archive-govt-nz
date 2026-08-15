@@ -6,6 +6,8 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 import pyarrow.parquet as pq
+from hypothesis import given
+from hypothesis import strategies as st
 
 from archive_govt_nz.analytical_derivatives import (
     build_analytical_derivatives_suite,
@@ -16,6 +18,8 @@ from archive_govt_nz.object_store import ContentAddressedStore
 
 if TYPE_CHECKING:
     from pathlib import Path
+
+    import pytest
 
 
 def test_convert_tabular_bytes_to_parquet(tmp_path: Path) -> None:
@@ -33,6 +37,36 @@ def test_convert_tabular_bytes_to_parquet(tmp_path: Path) -> None:
     table = pq.read_table(output_path)
     assert table.num_rows == 3
     assert table.column_names == ["id", "name", "value"]
+
+
+@given(
+    st.lists(
+        st.tuples(
+            st.integers(min_value=0, max_value=10000),
+            st.text(
+                alphabet=st.characters(categories=["L", "N"]), min_size=1, max_size=20
+            ),
+        ),
+        min_size=1,
+        max_size=50,
+    )
+)
+def test_hypothesis_fuzz_csv_to_parquet(
+    tmp_path_factory: pytest.TempPathFactory, data: list[tuple[int, str]]
+) -> None:
+    """Hypothesis fuzzing verifies arbitrary row structures roundtrip to Parquet."""
+    tmp_path = tmp_path_factory.mktemp("fuzz_pq")
+    header = "index,label\n"
+    lines = [f"{idx},{lbl}\n" for idx, lbl in data]
+    csv_bytes = (header + "".join(lines)).encode("utf-8")
+    out_pq = tmp_path / "fuzz.parquet"
+
+    rows, cols, _ = convert_tabular_bytes_to_parquet(csv_bytes, out_pq)
+    assert rows == len(data)
+    assert cols == 2
+
+    table = pq.read_table(out_pq)
+    assert table.num_rows == len(data)
 
 
 def test_materialize_tabular_derivative(tmp_path: Path) -> None:
