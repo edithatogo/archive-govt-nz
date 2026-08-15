@@ -1,0 +1,93 @@
+# serializer version: 1
+# name: test_dataset_card_snapshot
+  '''
+  ---
+  language:
+  - en
+  license: cc-by-4.0
+  tags:
+  - open-data
+  - new-zealand
+  - government-archive
+  - preservation
+  - ckan
+  - tabular
+  size_categories:
+  - 10K<n<100K
+  task_categories:
+  - tabular-analysis
+  pretty_name: New Zealand Government Open Data Archive
+  ---
+  
+  # New Zealand Government Open Data Global Preservation Archive
+  
+  Automated preservation archive and analytical columnar derivatives of
+  open government datasets published across `catalogue.data.govt.nz`.
+  
+  ## Archival Provenance & Integrity
+  - **Publisher**: New Zealand Open Government Data Programme
+  - **Archive System**: [archive-govt-nz](https://github.com/edithatogo/archive-govt-nz)
+  - **Snapshot Date**: `2026-08-16T00:00:00Z`
+  - **Datasets Catalogued**: 10
+  - **Resources Captured into CAS**: 25
+  - **Integrity Standard**: Dual SHA-256 and BLAKE3 CAS with RO-Crate and BagIt.
+  
+  ## Contents
+  1. `data/`: High-performance, Snappy-compressed Parquet analytical derivatives.
+  2. `objects/`: Exact byte-identical raw source objects indexed by SHA-256 hash.
+  3. `evidence/`: RO-Crate JSON-LD graphs, BagIt packages, and Wayback receipts.
+  
+  ## License
+  Open Government datasets are catalogued under Creative Commons Attribution (NZ GOAL).
+  
+  '''
+# ---
+# name: test_ro_crate_metadata_snapshot
+  dict({
+    '@context': 'https://w3id.org/ro/crate/1.1/context',
+    '@graph': list([
+      dict({
+        '@id': 'ro-crate-metadata.jsonld',
+        '@type': 'CreativeWork',
+        'about': dict({
+          '@id': './',
+        }),
+        'conformsTo': dict({
+          '@id': 'https://w3id.org/ro/crate/1.1',
+        }),
+      }),
+      dict({
+        '@id': './',
+        '@type': 'CreativeWork',
+        'description': 'Preservation archive of New Zealand government open data.',
+        'hasPart': list([
+          dict({
+            '@id': '#dataset-ds-001',
+          }),
+        ]),
+        'license': 'https://creativecommons.org/licenses/by/4.0/',
+        'name': 'Archive Govt NZ - Global Catalogue Snapshot',
+      }),
+      dict({
+        '@id': '#dataset-ds-001',
+        '@type': 'Dataset',
+        'distribution': list([
+          dict({
+            '@type': 'DataDownload',
+            'contentUrl': 'https://data.govt.nz/test.csv',
+            'encodingFormat': 'CSV',
+            'identifier': 'res-001',
+            'name': 'data.csv',
+          }),
+        ]),
+        'identifier': 'ds-001',
+        'license': None,
+        'name': 'Treasury Dataset 1',
+        'publisher': dict({
+          '@type': 'Organization',
+          'name': None,
+        }),
+      }),
+    ]),
+  })
+# ---
