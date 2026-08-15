@@ -1,0 +1,47 @@
+{
+  "architecture_sha256": "127948df7e7140888af1bcb1d9827a403cf87f46fd1392ba25ea0ea3cac24e0a",
+  "datasets": [
+    {
+      "card_sha256": "440bf8ae916464385c7ae83e00c86f83e2e33dc5763d2f6b49e53b10b6954e2f",
+      "config_name": "treasury-evidence",
+      "license_tag": "cc-by-4.0",
+      "output_file": "evidence/publication-metadata/estate/archive-govt-nz-treasury-README.md",
+      "repository": "edithatogo/archive-govt-nz-treasury",
+      "title": "Archive Govt NZ \u2014 The Treasury Archive"
+    },
+    {
+      "card_sha256": "58d80f2d1ddc436d9db19648a93dfb5f6b4a502c2c8c5a024e3174fc719ee519",
+      "config_name": "fyi-archive",
+      "license_tag": "other",
+      "output_file": "evidence/publication-metadata/estate/fyi-archive-nz-README.md",
+      "repository": "edithatogo/fyi-archive-nz",
+      "title": "FYI.org.nz \u2014 OIA Requests & Responses Archive"
+    },
+    {
+      "card_sha256": "5bbb8c9a9a9a62f6d14753647b59f63ddba4dd740bab1a2716aa9bd67c918ea3",
+      "config_name": "nz-hansard",
+      "license_tag": "cc-by-4.0",
+      "output_file": "evidence/publication-metadata/estate/nz-hansard-source-archive-README.md",
+      "repository": "edithatogo/nz-hansard-source-archive",
+      "title": "New Zealand Parliamentary Debates (Hansard) Source Archive"
+    },
+    {
+      "card_sha256": "1144d9874671b319c4171c1b0d8fd269da7ecc59c72fc6a180e851ccc5d693aa",
+      "config_name": "courts-notices",
+      "license_tag": "other",
+      "output_file": "evidence/publication-metadata/estate/courts-nz-public-notices-archive-README.md",
+      "repository": "edithatogo/courts-nz-public-notices-archive",
+      "title": "Courts of New Zealand Public Notices Archive"
+    },
+    {
+      "card_sha256": "2d2629361f6b4ffd614dd186401056ce4da2236105cb406d3c33f4d84a45ba60",
+      "config_name": "estate-registry",
+      "license_tag": "cc-by-4.0",
+      "output_file": "evidence/publication-metadata/estate/dataset-estate-registry-README.md",
+      "repository": "edithatogo/dataset-estate-registry",
+      "title": "New Zealand Open Government Dataset Estate Registry"
+    }
+  ],
+  "schema_version": "archive-govt-nz.estate-dataset-cards/v1",
+  "total_datasets": 5
+}
