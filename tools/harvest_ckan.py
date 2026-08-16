@@ -30,7 +30,8 @@ from archive_govt_nz.preservation import (
 
 DEFAULT_BASE_URL = "https://catalogue.data.govt.nz"
 DEFAULT_USER_AGENT = (
-    "archive-govt-nz/0.1.0 (+https://github.com/edithatogo/archive-govt-nz)"
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
+    "(KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
 )
 
 

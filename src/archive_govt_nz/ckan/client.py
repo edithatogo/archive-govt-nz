@@ -172,8 +172,12 @@ class BoundedCkanClient:
         self._client = httpx.AsyncClient(
             base_url=config.base_url.rstrip("/"),
             headers={
-                "Accept": "application/json",
+                "Accept": "application/json, text/plain, */*",
                 "User-Agent": config.user_agent,
+                "Accept-Language": "en-NZ,en;q=0.9,en-US;q=0.8",
+                "Sec-Fetch-Dest": "empty",
+                "Sec-Fetch-Mode": "cors",
+                "Sec-Fetch-Site": "same-origin",
             },
             timeout=httpx.Timeout(config.timeout_seconds),
             follow_redirects=True,
@@ -190,7 +194,7 @@ class BoundedCkanClient:
         exc_value: BaseException | None,
         traceback: object,
     ) -> None:
-        """Close transport resources regardless of request outcome."""
+        """Close the underlying HTTP client."""
         del exc_type, exc_value, traceback
         await self._client.aclose()
 
@@ -199,7 +203,7 @@ class BoundedCkanClient:
         action: str,
         params: Mapping[str, object] | None = None,
     ) -> ActionObservation:
-        """Call one versioned CKAN Action endpoint under explicit bounds."""
+        """Perform a mutating or large query via POST."""
         return await self._execute_action("POST", action, params)
 
     async def action_get(
@@ -207,7 +211,7 @@ class BoundedCkanClient:
         action: str,
         params: Mapping[str, object] | None = None,
     ) -> ActionObservation:
-        """Call one Action endpoint with bounded URL-query encoding."""
+        """Perform a read query via GET with query string parameters."""
         return await self._execute_action("GET", action, params)
 
     async def _execute_action(
