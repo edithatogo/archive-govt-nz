@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MigrationBaselineV1",
+  "type": "object",
+  "required": [
+    "$schema",
+    "migration_id",
+    "donor",
+    "target",
+    "status"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "migration_id": { "type": "string" },
+    "donor": {
+      "type": "object",
+      "required": [
+        "repository",
+        "default_branch",
+        "inspected_revision",
+        "package_name",
+        "version",
+        "cli_identities",
+        "external_identities",
+        "secret_names"
+      ],
+      "properties": {
+        "repository": { "type": "string" },
+        "default_branch": { "type": "string" },
+        "inspected_revision": { "type": "string" },
+        "package_name": { "type": "string" },
+        "version": { "type": "string" },
+        "cli_identities": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "external_identities": { "type": "object" },
+        "secret_names": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "target": {
+      "type": "object",
+      "required": [
+        "repository",
+        "default_branch",
+        "inspected_revision",
+        "package_name",
+        "version",
+        "cli_identities",
+        "external_identities"
+      ],
+      "properties": {
+        "repository": { "type": "string" },
+        "default_branch": { "type": "string" },
+        "inspected_revision": { "type": "string" },
+        "package_name": { "type": "string" },
+        "version": { "type": "string" },
+        "cli_identities": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "external_identities": { "type": "object" }
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": ["planned", "frozen", "active", "completed"]
+    }
+  }
+}

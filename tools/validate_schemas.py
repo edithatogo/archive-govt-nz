@@ -27,6 +27,30 @@ VALIDATION_PAIRS = (
         REPOSITORY_ROOT / "schemas" / "conductor-autonomy-policy-v1.schema.json",
         REPOSITORY_ROOT / "conductor" / "autonomy-policy.json",
     ),
+    (
+        REPOSITORY_ROOT
+        / "schemas"
+        / "archive"
+        / "v1"
+        / "migration-baseline.schema.json",
+        REPOSITORY_ROOT / "conductor" / "migrations" / "sm-govt-nz.json",
+    ),
+    (
+        REPOSITORY_ROOT
+        / "schemas"
+        / "archive"
+        / "v1"
+        / "migration-baseline-evidence.schema.json",
+        REPOSITORY_ROOT / "evidence" / "migrations" / "sm-govt-nz" / "baseline.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "migrations" / "capability-matrix-v1.schema.json",
+        REPOSITORY_ROOT
+        / "docs"
+        / "migrations"
+        / "sm-govt-nz"
+        / "capability-matrix.json",
+    ),
 )
 ARCHIVE_SCHEMA_DIRECTORY = REPOSITORY_ROOT / "schemas" / "archive" / "v1"
 

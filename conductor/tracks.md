@@ -30,7 +30,7 @@ decision or safety boundary, and continue independent work while it is pending.
 
 ## Consolidation Programme: `sm-govt-nz` → `archive-govt-nz`
 
-- [ ] **Track 1: Consolidation baseline and migration authority**
+- [x] **Track 1: Consolidation baseline and migration authority**
   *Link: [tracks/consolidation_baseline_and_authority_20260817/index.md](./tracks/consolidation_baseline_and_authority_20260817/index.md)*
 - [ ] **Track 2: Conductor lineage reconciliation**
   *Link: [tracks/conductor_lineage_reconciliation_20260817/index.md](./tracks/conductor_lineage_reconciliation_20260817/index.md)*

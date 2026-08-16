@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MigrationBaselineEvidenceV1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "generated_at",
+    "donor_repository",
+    "donor_revision",
+    "target_repository",
+    "target_revision",
+    "donor_statistics",
+    "target_statistics",
+    "donor_workflows",
+    "status"
+  ],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "donor_repository": { "type": "string" },
+    "donor_revision": { "type": "string" },
+    "target_repository": { "type": "string" },
+    "target_revision": { "type": "string" },
+    "donor_statistics": { "type": "object" },
+    "target_statistics": { "type": "object" },
+    "donor_workflows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["filename", "purpose", "schedule"],
+        "properties": {
+          "filename": { "type": "string" },
+          "purpose": { "type": "string" },
+          "schedule": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "status": { "type": "string" }
+  }
+}
