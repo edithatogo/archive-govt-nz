@@ -81,6 +81,12 @@ jobs:
             --derivatives-dir derivatives/parquet \
             --output evidence/analytical-derivatives-manifest.json
 
+      - name: Export DCAT-AP Knowledge Graph
+        run: |
+          uv run --locked python tools/query_knowledge_graph.py \
+            --scope-manifest evidence/global-ckan-scope.json \
+            --export-dcat-ap evidence/dcat-ap-catalog.jsonld
+
       - name: Generate Estate Dataset Cards & Manifests
         run: |
           uv run --locked python tools/generate_estate_dataset_cards.py
@@ -95,11 +101,19 @@ jobs:
             --derivatives-dir derivatives/parquet \
             --evidence-dir evidence
 
+      - name: Dispatch Harvest Webhook Notification
+        if: always()
+        env:
+          HARVEST_WEBHOOK_URL: ${{ secrets.HARVEST_WEBHOOK_URL }}
+          HF_REPO_URL: "https://huggingface.co/datasets/${{ inputs.hf_repo_id || 'edithatogo/archive-govt-nz-global' }}"
+        run: |
+          uv run --locked python tools/notify_webhook.py \
+            --summary-receipt evidence/global-harvest-summary.json
+
       - name: Upload Evidence & Manifest Artifacts
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         with:
-          name: global-harvest-evidence
-          path: |
-            evidence/
-            derivatives/
+          name: global-preservation-evidence
+          path: evidence/
+          retention-days: 90
           if-no-files-found: error

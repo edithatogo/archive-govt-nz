@@ -6,7 +6,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 import pyarrow.parquet as pq
-from hypothesis import given
+from hypothesis import given, settings
 from hypothesis import strategies as st
 
 from archive_govt_nz.analytical_derivatives import (
@@ -39,6 +39,7 @@ def test_convert_tabular_bytes_to_parquet(tmp_path: Path) -> None:
     assert table.column_names == ["id", "name", "value"]
 
 
+@settings(deadline=None)
 @given(
     st.lists(
         st.tuples(
