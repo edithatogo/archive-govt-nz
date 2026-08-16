@@ -1,0 +1,14 @@
+{
+  "id": "release_cutover_publication_continuity_20260817",
+  "title": "Track 12: Release Cutover and Publication Continuity",
+  "type": "production_cutover",
+  "status": "planned",
+  "created_at": "2026-08-16T23:00:00Z",
+  "requirements_method": "MoSCoW",
+  "dependencies": [
+    "capability_assimilation_architectural_refactor_20260817"
+  ],
+  "outputs": [
+    "evidence/migrations/sm-govt-nz/cutover-verification-receipt.json"
+  ]
+}

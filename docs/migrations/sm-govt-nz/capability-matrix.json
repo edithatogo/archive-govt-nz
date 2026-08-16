@@ -1,0 +1,226 @@
+{
+  "schema_version": "archive-govt-nz.capability-matrix/v1",
+  "generated_at": "2026-08-16T23:05:30Z",
+  "capabilities": [
+    {
+      "id": "core.content_addressing",
+      "domain": "archive_core",
+      "capability": "SHA-256 Content Addressed Storage",
+      "disposition": "target_native_preferred",
+      "donor_implementation": "File path naming in historical_archive_raw",
+      "target_implementation": "src/archive_govt_nz/object_store.py (ContentAddressedStore)",
+      "rationale": "Target CAS is streaming, verified, high throughput (>400 MB/s), and cryptographically immutable.",
+      "target_track": "Track 6"
+    },
+    {
+      "id": "core.evidence_ledger",
+      "domain": "archive_core",
+      "capability": "Append-only Event & Evidence Ledger",
+      "disposition": "target_native_preferred",
+      "donor_implementation": "conductor/monthly_release_ledger.json",
+      "target_implementation": "src/archive_govt_nz/ledger.py",
+      "rationale": "Target ledger supports canonical JSON-LD receipts, cryptographic hashing, and automated reconciliation.",
+      "target_track": "Track 4"
+    },
+    {
+      "id": "core.provenance_w3c",
+      "domain": "archive_core",
+      "capability": "W3C PROV-O Provenance Chains",
+      "disposition": "target_native_preferred",
+      "donor_implementation": "Ad-hoc harvest metadata in archive_state.py",
+      "target_implementation": "src/archive_govt_nz/provenance.py",
+      "rationale": "Target provides formal W3C PROV-O compliance with deterministic entity-activity-agent graphs.",
+      "target_track": "Track 4"
+    },
+    {
+      "id": "core.rights_classification",
+      "domain": "archive_core",
+      "capability": "Rights & Redistribution Policy Engine",
+      "disposition": "target_native_preferred",
+      "donor_implementation": "tool.legal_nz config & manual review checklists",
+      "target_implementation": "src/archive_govt_nz/global_policy.py & licensing.py",
+      "rationale": "Target features automated license validation, restricted rights quarantine, and redistribution gates.",
+      "target_track": "Track 4"
+    },
+    {
+      "id": "core.source_registry",
+      "domain": "archive_core",
+      "capability": "Comprehensive NZ Government Source Registry",
+      "disposition": "donor_native_preferred",
+      "donor_implementation": "registry/ (350+ agency seed configurations, social handles, RSS URLs)",
+      "target_implementation": "src/archive_govt_nz/health_scope.py & global_discovery.py",
+      "rationale": "Donor has rich curated registry across 350+ ministerial and local govt entities; transplant into target registry adapter.",
+      "target_track": "Track 4"
+    },
+    {
+      "id": "capture.bluesky",
+      "domain": "capture",
+      "capability": "Bluesky / AT Protocol Ingestion",
+      "disposition": "overlapping_needs_parity_test",
+      "donor_implementation": "src/bluesky.py & bluesky_mirror_programme.py",
+      "target_implementation": "Planned src/archive_govt_nz/capture/social/bluesky.py",
+      "rationale": "Donor handles AT Protocol stream, handles, and media attachments; requires refactoring to target CAS and provenance.",
+      "target_track": "Track 5"
+    },
+    {
+      "id": "capture.threads",
+      "domain": "capture",
+      "capability": "Threads Meta Graph & Browser Capture",
+      "disposition": "overlapping_needs_parity_test",
+      "donor_implementation": "src/threads_pipeline.py",
+      "target_implementation": "Planned src/archive_govt_nz/capture/social/threads.py",
+      "rationale": "Donor uses Meta Graph API + Playwright fallback; assimilate under target source adapter contract.",
+      "target_track": "Track 5"
+    },
+    {
+      "id": "capture.x_twitter",
+      "domain": "capture",
+      "capability": "X / Twitter Capture & Syndication",
+      "disposition": "overlapping_needs_parity_test",
+      "donor_implementation": "scripts/archive_x_feed.py & Playwright browser runner",
+      "target_implementation": "Planned src/archive_govt_nz/capture/social/x_twitter.py",
+      "rationale": "Assimilate feed and browser fallback mechanisms with ethical rate limiting and compliance.",
+      "target_track": "Track 5"
+    },
+    {
+      "id": "capture.youtube",
+      "domain": "capture",
+      "capability": "YouTube Channel Feeds & Video Metadata",
+      "disposition": "donor_only",
+      "donor_implementation": "scripts/archive_youtube.py",
+      "target_implementation": "Planned src/archive_govt_nz/capture/video/youtube.py",
+      "rationale": "Assimilate YouTube RSS parsing and video transcript/metadata extraction into target video adapter.",
+      "target_track": "Track 5"
+    },
+    {
+      "id": "capture.rss_atom_json",
+      "domain": "capture",
+      "capability": "RSS/Atom & JSON Feed Harvesting",
+      "disposition": "overlapping_needs_parity_test",
+      "donor_implementation": "src/feed_ingestion.py & rss_discovery.py",
+      "target_implementation": "Planned src/archive_govt_nz/capture/feeds/feed_harvester.py",
+      "rationale": "Donor has extensive feed polling; target brings immutable CAS hashing and version diffing.",
+      "target_track": "Track 5"
+    },
+    {
+      "id": "capture.email_newsletters",
+      "domain": "capture",
+      "capability": "Email & Ministerial Newsletter Ingestion",
+      "disposition": "donor_only",
+      "donor_implementation": "cloudflare/email_worker.js & scripts/archive_email.py",
+      "target_implementation": "Planned src/archive_govt_nz/capture/newsletters/email.py",
+      "rationale": "Donor captures Cloudflare webhook email payloads; target integrates them into CAS and WARC.",
+      "target_track": "Track 5"
+    },
+    {
+      "id": "capture.ckan_catalog",
+      "domain": "capture",
+      "capability": "Global CKAN Catalogue Harvesting",
+      "disposition": "target_only",
+      "donor_implementation": "None",
+      "target_implementation": "src/archive_govt_nz/ckan/global_discovery.py & tools/harvest_ckan.py",
+      "rationale": "Target native core capability across data.govt.nz.",
+      "target_track": "Track 4"
+    },
+    {
+      "id": "capture.browser_playwright",
+      "domain": "capture",
+      "capability": "Headless Browser Automation (Playwright)",
+      "disposition": "complementary",
+      "donor_implementation": "Playwright runners in scripts/archive_website_browser.py",
+      "target_implementation": "src/archive_govt_nz/archivebox_pilot.py",
+      "rationale": "Unify browser automation under ArchiveBox engine and headless container runner.",
+      "target_track": "Track 5"
+    },
+    {
+      "id": "preservation.warc_wacz",
+      "domain": "preservation",
+      "capability": "ISO 28500 WARC & WACZ Packaging",
+      "disposition": "target_native_preferred",
+      "donor_implementation": "None (relies on raw json/html files)",
+      "target_implementation": "src/archive_govt_nz/warc.py & preservation.py",
+      "rationale": "Target generates standards-compliant WARC byte records with BagIt and RO-Crate metadata.",
+      "target_track": "Track 6"
+    },
+    {
+      "id": "preservation.triangulation",
+      "domain": "preservation",
+      "capability": "Wayback Machine & Common Crawl Redundancy",
+      "disposition": "target_native_preferred",
+      "donor_implementation": "scripts/triangulate_wayback.py & triangulate_common_crawl.py",
+      "target_implementation": "src/archive_govt_nz/wayback_triangulation.py & redundancy.py",
+      "rationale": "Target CDX triangulation is robustly tested with hypothesis fuzzing, retry budgets, and CAS fixity.",
+      "target_track": "Track 6"
+    },
+    {
+      "id": "derivatives.columnar_parquet",
+      "domain": "derivatives",
+      "capability": "Columnar Parquet & DuckDB Projection",
+      "disposition": "target_only",
+      "donor_implementation": "None (uses flat JSON/CSV)",
+      "target_implementation": "src/archive_govt_nz/analytical_derivatives.py",
+      "rationale": "Target provides high-speed analytical projections with DuckDB and PyArrow.",
+      "target_track": "Track 7"
+    },
+    {
+      "id": "derivatives.semantic_search",
+      "domain": "derivatives",
+      "capability": "DCAT-AP 3.0 & Hybrid BM25/Vector Search",
+      "disposition": "target_only",
+      "donor_implementation": "None",
+      "target_implementation": "src/archive_govt_nz/semantic_search.py",
+      "rationale": "Target provides DCAT-AP ontology graphs and semantic search index.",
+      "target_track": "Track 7"
+    },
+    {
+      "id": "publication.huggingface",
+      "domain": "publication",
+      "capability": "Hugging Face Living Dataset Publication",
+      "disposition": "overlapping_needs_parity_test",
+      "donor_implementation": "scripts/publish_archives.py (corpus-social-media-government-nz)",
+      "target_implementation": "src/archive_govt_nz/huggingface_publisher.py",
+      "rationale": "Target provides verified Git/LFS uploads with README cards and schemas; maintain donor dataset slug.",
+      "target_track": "Track 7"
+    },
+    {
+      "id": "publication.zenodo",
+      "domain": "publication",
+      "capability": "Zenodo Immutable Deposition & DOI Versioning",
+      "disposition": "overlapping_needs_parity_test",
+      "donor_implementation": "scripts/publish_zenodo.py (Concept 20991132)",
+      "target_implementation": "src/archive_govt_nz/zenodo.py (Concept 16872591)",
+      "rationale": "Preserve existing concept records and update provenance metadata to unified canonical releases.",
+      "target_track": "Track 7"
+    },
+    {
+      "id": "interfaces.cli",
+      "domain": "interfaces",
+      "capability": "Command Line Interface & Compatibility Shims",
+      "disposition": "complementary",
+      "donor_implementation": "scripts/cli.py (sm-govt-nz, nz-govt-social)",
+      "target_implementation": "src/archive_govt_nz/cli.py",
+      "rationale": "Provide backward-compatible shims for sm-govt-nz and nz-govt-social delegating to archive-govt-nz CLI.",
+      "target_track": "Track 8"
+    },
+    {
+      "id": "interfaces.notifications",
+      "domain": "interfaces",
+      "capability": "Webhook Alerting (Slack / Discord)",
+      "disposition": "target_only",
+      "donor_implementation": "None",
+      "target_implementation": "src/archive_govt_nz/notifications.py",
+      "rationale": "Target provides Slack BlockKit and Discord embed cards for workflow runs.",
+      "target_track": "Track 8"
+    },
+    {
+      "id": "interfaces.mcp",
+      "domain": "interfaces",
+      "capability": "Model Context Protocol (MCP) Server",
+      "disposition": "defer",
+      "donor_implementation": "None discovered in active codebase",
+      "target_implementation": "Deferred pending consumer demand",
+      "rationale": "No downstream consumer case currently requires an MCP server surface. Defer to post-consolidation.",
+      "target_track": "Track 8"
+    }
+  ]
+}

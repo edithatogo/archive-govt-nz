@@ -2,14 +2,16 @@
 
 ## Vision
 
-Archive Govt NZ is an auditable preservation system for New Zealand government
-data. It discovers, captures, validates, versions, and publishes datasets from
-data.govt.nz and complementary non-CKAN sources while preserving original
-metadata and files exactly as retrieved.
+Archive Govt NZ is a reproducible, evidence-first archival and preservation
+system for publicly available New Zealand government web, feed, newsletter,
+social-media, video, and related public communications/data sources, with
+provenance, content-addressed preservation, WARC/WACZ where appropriate,
+replay/recovery, validation, and governed publication.
 
-The archive begins with the New Zealand Treasury, followed by the Ministry of
-Health and then wider health and healthcare datasets. Its architecture remains
-extensible to other agencies, catalogues, and source types.
+The archive encompasses official open datasets, statutory disclosures,
+ministerial communications, official social media feeds, video transcripts,
+and agency websites, with extensible source adapters and verified multi-target
+publication.
 
 ## Core outcomes
 
