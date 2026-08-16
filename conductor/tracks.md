@@ -34,7 +34,7 @@ decision or safety boundary, and continue independent work while it is pending.
   *Link: [tracks/consolidation_baseline_and_authority_20260817/index.md](./tracks/consolidation_baseline_and_authority_20260817/index.md)*
 - [x] **Track 2: Conductor lineage reconciliation**
   *Link: [tracks/conductor_lineage_reconciliation_20260817/index.md](./tracks/conductor_lineage_reconciliation_20260817/index.md)*
-- [ ] **Track 3: Capability and interface reconciliation**
+- [x] **Track 3: Capability and interface reconciliation**
   *Link: [tracks/capability_and_interface_reconciliation_20260817/index.md](./tracks/capability_and_interface_reconciliation_20260817/index.md)*
 - [ ] **Track 4: Canonical archive contracts**
   *Link: [tracks/canonical_archive_contracts_20260817/index.md](./tracks/canonical_archive_contracts_20260817/index.md)*
