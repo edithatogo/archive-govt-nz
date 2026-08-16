@@ -1,0 +1,12 @@
+{
+  "track_id": "govt_archive_bluesky_onboarding_20260626",
+  "title": "NZ Government Archive - multi-agency Bluesky account onboarding and capture",
+  "type": "implementation-plan",
+  "status": "pending",
+  "created_at": "2026-06-26",
+  "updated_at": "2026-06-26",
+  "description": "Capture and archive Bluesky posts from all discovered NZ government Bluesky accounts: courtsofnz, beehivenz, health.govt.nz, healthnz.govt.nz, independent-childrens-monitor.",
+  "depends_on": "govt_archive_per_agency_configs_20260626, govt_archive_readiness_matrix_20260625, govt_archive_noncredential_adapters_20260625",
+  "done": 0,
+  "total": 19
+}

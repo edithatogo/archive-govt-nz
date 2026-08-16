@@ -1,0 +1,8 @@
+{
+  "track_id": "courts_nz_threads_api_credentials_20260613",
+  "type": "feature",
+  "status": "completed",
+  "created_at": "2026-06-13T00:00:00Z",
+  "updated_at": "2026-06-13T06:05:00Z",
+  "description": "Set up official Threads API credential contracts and validation for the Courts of New Zealand Threads mirror"
+}

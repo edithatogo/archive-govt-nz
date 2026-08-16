@@ -1,0 +1,8 @@
+{
+  "track_id": "courts_nz_facebook_meta_api_20260613",
+  "type": "feature",
+  "status": "completed",
+  "created_at": "2026-06-13T04:46:04Z",
+  "updated_at": "2026-06-14T03:30:00+10:00",
+  "description": "Implement a Courts of New Zealand Facebook Page mirror using official Meta Pages APIs after Threads setup"
+}

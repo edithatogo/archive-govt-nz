@@ -1,0 +1,17 @@
+{
+  "id": "bluesky_government_mirror_programme_20260721",
+  "title": "Bluesky Government Archive Mirror Programme",
+  "status": "in_progress",
+  "type": "programme",
+  "created_at": "2026-07-21",
+  "github_issue": 19,
+  "github_project_numbers": [5, 4],
+  "child_tracks": [
+    "bluesky_mirror_identity_governance_20260721",
+    "bluesky_local_account_onboarding_agent_20260721",
+    "bluesky_multi_account_runtime_20260721",
+    "bluesky_historical_backfill_rollout_20260721",
+    "bluesky_mirror_safety_observability_20260721",
+    "bluesky_mirror_reliability_hardening_20260724"
+  ]
+}

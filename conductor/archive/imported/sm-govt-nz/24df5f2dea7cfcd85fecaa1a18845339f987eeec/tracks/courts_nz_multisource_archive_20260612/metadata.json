@@ -1,0 +1,14 @@
+{
+  "track_id": "courts_nz_multisource_archive_20260612",
+  "type": "feature",
+  "status": "completed",
+  "created_at": "2026-06-12T04:10:00Z",
+  "updated_at": "2026-06-23",
+  "description": "Archive Courts of New Zealand X, Bluesky, LinkedIn, RSS, and email notification sources into GitHub and Hugging Face datasets",
+  "implementation_status": "All phases and governance tasks are complete and archived. LinkedIn archive-only seed capture has 2 normalized/manual-seed records; email ingress, Hugging Face, Zenodo, archive capture, and source-health gates pass.",
+  "open_items": [],
+  "residual_risks": [
+    "Permanent Cloudflare email address requires cost-bearing domain registration and remains blocked by the zero-spend guardrail until explicit approval.",
+    "LinkedIn remains source-only/archive-only; outbound posting requires a separate future Conductor track and risk review."
+  ]
+}

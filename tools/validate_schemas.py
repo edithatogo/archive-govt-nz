@@ -51,6 +51,18 @@ VALIDATION_PAIRS = (
         / "sm-govt-nz"
         / "capability-matrix.json",
     ),
+    (
+        REPOSITORY_ROOT
+        / "schemas"
+        / "archive"
+        / "v1"
+        / "donor-track-lineage.schema.json",
+        REPOSITORY_ROOT
+        / "evidence"
+        / "migrations"
+        / "sm-govt-nz"
+        / "donor-track-lineage.json",
+    ),
 )
 ARCHIVE_SCHEMA_DIRECTORY = REPOSITORY_ROOT / "schemas" / "archive" / "v1"
 

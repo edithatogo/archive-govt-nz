@@ -1,0 +1,9 @@
+{
+  "track_id": "courts_nz_bluesky_archive_replay_20260613",
+  "type": "feature",
+  "status": "completed",
+  "created_at": "2026-06-13T00:00:00Z",
+  "updated_at": "2026-06-21T00:00:00Z",
+  "description": "Complete bounded Bluesky mirror replay of the Courts of New Zealand Bluesky and historical X archives",
+  "remaining_work": "None. Bluesky mirror coverage is 689/689 recovered X records and 50/50 Bluesky-source records; unreplayable exclusions are 0."
+}

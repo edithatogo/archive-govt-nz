@@ -1,0 +1,16 @@
+{
+  "track_id": "govt_registry_mp_expansion_20260621",
+  "title": "NZ Government Social Media Registry â€” Full expansion: MPs, parties, public sector leaders, and historical figures",
+  "status": "completed",
+  "started": "2026-06-21",
+  "updated_at": "2026-06-25",
+  "completed_at": "2026-06-23",
+  "description": "Populate the persons registry to full coverage of all current 54th Parliament MPs (+123), fill all social profiles, add historical figures working backwards as far as platforms/profiles exist, add public sector leaders, then classify syndication and populate tenure-linked profiles.",
+  "progress": "Current MP roster, Phase 7 historical Deputy Prime Minister and major-party leader continuity, and Phase 8 core public-sector leader coverage are complete. Strict registry gates and pushed GitHub Actions pass with persons registry at 190 records.",
+  "next_action": "None",
+  "related_tracks": [
+    "govt_registry_quality_gates_20260622",
+    "govt_registry_refresh_cadence_20260622",
+    "govt_registry_account_classification_20260622"
+  ]
+}

@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import json
 import subprocess
+import time
 from pathlib import Path
 from typing import TYPE_CHECKING, cast
 
@@ -24,10 +25,12 @@ EXCLUDED_PATH_PATTERN = (
     r"(?:[\\/]|$)"
     r"|uv\.lock$"
     r"|conductor[\\/]tracks[\\/].*[\\/](?:evidence|runlog)\.md$"
+    r"|conductor[\\/]archive[\\/]imported[\\/].*"
 )
 RECEIPT_EXCLUSION_PATTERN = (
     r'"(?:[a-z_]*revision(?:_[a-z_]+)?|[a-z_]*commit|[a-z_]*sha256|fingerprint|previous_fingerprint)"\s*:'
     r'|"detail"\s*:\s*"[0-9a-f]{40}"'
+    r'|"[0-9a-f]{40}"'
     r"|consolidation_revision"
 )
 
@@ -52,17 +55,26 @@ def run(command: Sequence[str], *, capture: bool = False) -> str:
 def audit() -> None:
     """Audit the locked environment and retain a machine-readable receipt."""
     output_path = BUILD_DIRECTORY / "pip-audit.json"
-    run(
-        (
-            "pip-audit",
-            "--local",
-            "--skip-editable",
-            "--progress-spinner=off",
-            "--vulnerability-service=osv",
-            "--format=json",
-            f"--output={output_path}",
-        )
-    )
+    max_attempts = 3
+    for attempt in range(1, max_attempts + 1):
+        try:
+            run(
+                (
+                    "pip-audit",
+                    "--local",
+                    "--skip-editable",
+                    "--progress-spinner=off",
+                    "--timeout=60",
+                    "--vulnerability-service=osv",
+                    "--format=json",
+                    f"--output={output_path}",
+                )
+            )
+            break
+        except SystemExit:
+            if attempt == max_attempts:
+                raise
+            time.sleep(2 * attempt)
     print(
         f"dependency audit passed; receipt={output_path.relative_to(REPOSITORY_ROOT)}"
     )

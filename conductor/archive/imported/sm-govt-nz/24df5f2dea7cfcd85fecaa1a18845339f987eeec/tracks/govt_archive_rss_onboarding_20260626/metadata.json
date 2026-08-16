@@ -1,0 +1,12 @@
+{
+  "track_id": "govt_archive_rss_onboarding_20260626",
+  "title": "NZ Government Archive - multi-agency RSS feed onboarding and capture",
+  "type": "implementation-plan",
+  "status": "pending",
+  "created_at": "2026-06-26",
+  "updated_at": "2026-06-26",
+  "description": "Capture and archive RSS/Atom feeds from all discovered government agencies with active feeds.",
+  "depends_on": "govt_archive_per_agency_configs_20260626, govt_archive_readiness_matrix_20260625, govt_archive_noncredential_adapters_20260625",
+  "done": 0,
+  "total": 19
+}
