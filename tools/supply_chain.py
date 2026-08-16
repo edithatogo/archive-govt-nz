@@ -26,9 +26,9 @@ EXCLUDED_PATH_PATTERN = (
     r"|conductor[\\/]tracks[\\/].*[\\/](?:evidence|runlog)\.md$"
 )
 RECEIPT_EXCLUSION_PATTERN = (
-    r'"(?:revision|latest_revision|derivative_revision|huggingface_revision'
-    r"|(?:source|remote|local)_revision(?:_before_checkpoint)?"
-    r'|[a-z_]*sha256|fingerprint|previous_fingerprint)"\s*:|"detail"\s*:\s*"[0-9a-f]{40}"'
+    r'"(?:[a-z_]*revision(?:_[a-z_]+)?|[a-z_]*commit|[a-z_]*sha256|fingerprint|previous_fingerprint)"\s*:'
+    r'|"detail"\s*:\s*"[0-9a-f]{40}"'
+    r"|consolidation_revision"
 )
 
 

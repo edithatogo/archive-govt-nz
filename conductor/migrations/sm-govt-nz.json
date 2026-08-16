@@ -1,0 +1,46 @@
+{
+  "$schema": "../../schemas/archive/v1/migration-baseline.schema.json",
+  "migration_id": "sm-govt-nz-to-archive-govt-nz-20260817",
+  "donor": {
+    "repository": "https://github.com/edithatogo/sm-govt-nz",
+    "default_branch": "master",
+    "inspected_revision": "24df5f2dea7cfcd85fecaa1a18845339f987eeec",
+    "package_name": "sm-govt-nz",
+    "version": "0.1.0",
+    "cli_identities": ["sm-govt-nz", "nz-govt-social"],
+    "external_identities": {
+      "huggingface": ["edithatogo/corpus-social-media-government-nz"],
+      "zenodo_concept_record": "20991132",
+      "osf_target": "https://osf.io"
+    },
+    "secret_names": [
+      "HF_TOKEN",
+      "ZENODO_TOKEN",
+      "OSF_TOKEN",
+      "BLUESKY_HANDLE",
+      "BLUESKY_APP_PASSWORD",
+      "META_APP_ID",
+      "META_APP_SECRET",
+      "X_BEARER_TOKEN",
+      "BUFFER_ACCESS_TOKEN",
+      "CLOUDFLARE_API_TOKEN"
+    ]
+  },
+  "target": {
+    "repository": "https://github.com/edithatogo/archive-govt-nz",
+    "default_branch": "main",
+    "inspected_revision": "b1c09da305822f3e8f85f1c4e7a85eb803565ec2",
+    "package_name": "archive-govt-nz",
+    "version": "0.1.0",
+    "cli_identities": ["archive-govt-nz"],
+    "external_identities": {
+      "huggingface": [
+        "edithatogo/archive-govt-nz-global",
+        "edithatogo/archive-govt-nz-treasury",
+        "edithatogo/archive-govt-nz-health"
+      ],
+      "zenodo_concept_record": "16872591"
+    }
+  },
+  "status": "planned"
+}

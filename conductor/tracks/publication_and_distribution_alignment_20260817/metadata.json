@@ -1,0 +1,17 @@
+{
+  "id": "publication_and_distribution_alignment_20260817",
+  "title": "Track 7: Publication and Archive-Distribution Alignment",
+  "type": "publication_distribution",
+  "status": "planned",
+  "created_at": "2026-08-16T23:00:00Z",
+  "requirements_method": "MoSCoW",
+  "dependencies": [
+    "canonical_archive_contracts_20260817"
+  ],
+  "outputs": [
+    "src/archive_govt_nz/publication/core.py",
+    "src/archive_govt_nz/publication/huggingface.py",
+    "src/archive_govt_nz/publication/zenodo.py",
+    "src/archive_govt_nz/publication/osf.py"
+  ]
+}

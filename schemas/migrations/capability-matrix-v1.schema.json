@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CapabilityMatrixV1",
+  "type": "object",
+  "required": ["schema_version", "generated_at", "capabilities"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "capabilities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "domain", "capability", "disposition", "rationale", "target_track"],
+        "properties": {
+          "id": { "type": "string" },
+          "domain": { "type": "string" },
+          "capability": { "type": "string" },
+          "disposition": {
+            "type": "string",
+            "enum": [
+              "target_native_preferred",
+              "donor_native_preferred",
+              "target_only",
+              "donor_only",
+              "overlapping_needs_parity_test",
+              "complementary",
+              "obsolete",
+              "incompatible",
+              "rights_or_authority_blocked",
+              "evidence_insufficient",
+              "defer"
+            ]
+          },
+          "donor_implementation": { "type": "string" },
+          "target_implementation": { "type": "string" },
+          "rationale": { "type": "string" },
+          "target_track": { "type": "string" }
+        }
+      }
+    }
+  }
+}

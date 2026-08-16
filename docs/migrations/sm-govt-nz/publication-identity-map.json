@@ -1,0 +1,66 @@
+{
+  "schema_version": "archive-govt-nz.publication-identity-map/v1",
+  "generated_at": "2026-08-16T23:06:15Z",
+  "mappings": [
+    {
+      "identity_id": "pub.hf.social_media",
+      "platform": "huggingface",
+      "current_producer": "edithatogo/sm-govt-nz",
+      "current_publication_id": "edithatogo/corpus-social-media-government-nz",
+      "future_canonical_producer": "edithatogo/archive-govt-nz",
+      "future_publication_id": "edithatogo/corpus-social-media-government-nz",
+      "continuity_strategy": "preserve_existing_slug",
+      "compatibility_redirect": "none_needed_same_slug",
+      "migration_status": "planned",
+      "verification_evidence_required": "checksum_manifest_and_git_lfs_parity"
+    },
+    {
+      "identity_id": "pub.hf.global_ckan",
+      "platform": "huggingface",
+      "current_producer": "edithatogo/archive-govt-nz",
+      "current_publication_id": "edithatogo/archive-govt-nz-global",
+      "future_canonical_producer": "edithatogo/archive-govt-nz",
+      "future_publication_id": "edithatogo/archive-govt-nz-global",
+      "continuity_strategy": "native_canonical",
+      "compatibility_redirect": "not_applicable",
+      "migration_status": "active",
+      "verification_evidence_required": "ci_upload_receipt"
+    },
+    {
+      "identity_id": "pub.zenodo.social_media",
+      "platform": "zenodo",
+      "current_producer": "edithatogo/sm-govt-nz",
+      "current_publication_id": "10.5281/zenodo.20991132",
+      "future_canonical_producer": "edithatogo/archive-govt-nz",
+      "future_publication_id": "10.5281/zenodo.20991132",
+      "continuity_strategy": "preserve_concept_doi_mint_version",
+      "compatibility_redirect": "version_lineage_metadata_update",
+      "migration_status": "planned",
+      "verification_evidence_required": "zenodo_deposition_receipt_with_ro_crate"
+    },
+    {
+      "identity_id": "pub.zenodo.global_ckan",
+      "platform": "zenodo",
+      "current_producer": "edithatogo/archive-govt-nz",
+      "current_publication_id": "10.5281/zenodo.16872591",
+      "future_canonical_producer": "edithatogo/archive-govt-nz",
+      "future_publication_id": "10.5281/zenodo.16872591",
+      "continuity_strategy": "native_canonical",
+      "compatibility_redirect": "not_applicable",
+      "migration_status": "active",
+      "verification_evidence_required": "zenodo_deposition_receipt_with_ro_crate"
+    },
+    {
+      "identity_id": "pub.osf.mirror",
+      "platform": "osf",
+      "current_producer": "edithatogo/sm-govt-nz",
+      "current_publication_id": "osf_target_configured",
+      "future_canonical_producer": "edithatogo/archive-govt-nz",
+      "future_publication_id": "osf_target_unified",
+      "continuity_strategy": "riopa_storage_protocol",
+      "compatibility_redirect": "update_target_bucket",
+      "migration_status": "planned",
+      "verification_evidence_required": "osf_api_verification_receipt"
+    }
+  ]
+}

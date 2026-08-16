@@ -1,0 +1,18 @@
+{
+  "id": "differential_parity_harness_20260817",
+  "title": "Track 9: Differential/Parity Harness",
+  "type": "parity_assurance",
+  "status": "planned",
+  "created_at": "2026-08-16T23:00:00Z",
+  "requirements_method": "MoSCoW",
+  "dependencies": [
+    "source_adapter_migration_programme_20260817",
+    "preservation_replay_recovery_assimilation_20260817",
+    "publication_and_distribution_alignment_20260817",
+    "cli_mcp_operator_interface_convergence_20260817"
+  ],
+  "outputs": [
+    "tools/differential_parity_harness.py",
+    "tests/migrations/test_differential_parity.py"
+  ]
+}

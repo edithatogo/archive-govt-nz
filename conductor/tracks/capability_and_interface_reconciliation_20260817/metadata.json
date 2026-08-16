@@ -1,0 +1,17 @@
+{
+  "id": "capability_and_interface_reconciliation_20260817",
+  "title": "Track 3: Capability and Interface Reconciliation",
+  "type": "capability_reconciliation",
+  "status": "planned",
+  "created_at": "2026-08-16T23:00:00Z",
+  "requirements_method": "MoSCoW",
+  "dependencies": [
+    "consolidation_baseline_and_authority_20260817"
+  ],
+  "outputs": [
+    "docs/migrations/sm-govt-nz/capability-matrix.md",
+    "docs/migrations/sm-govt-nz/capability-matrix.json",
+    "schemas/migrations/capability-matrix-v1.schema.json",
+    "docs/migrations/sm-govt-nz/interface-map.md"
+  ]
+}

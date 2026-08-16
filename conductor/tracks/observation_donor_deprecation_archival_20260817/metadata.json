@@ -1,0 +1,14 @@
+{
+  "id": "observation_donor_deprecation_archival_20260817",
+  "title": "Track 13: Observation, Donor Deprecation and Archival",
+  "type": "lifecycle_management",
+  "status": "planned",
+  "created_at": "2026-08-16T23:00:00Z",
+  "requirements_method": "MoSCoW",
+  "dependencies": [
+    "release_cutover_publication_continuity_20260817"
+  ],
+  "outputs": [
+    "docs/migrations/sm-govt-nz/consolidation-closeout-report.md"
+  ]
+}

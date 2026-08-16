@@ -1,0 +1,22 @@
+{
+  "schema_version": "archive-govt-nz.migration-baseline-evidence/v1",
+  "generated_at": "2026-08-16T23:05:00Z",
+  "donor_repository": "https://github.com/edithatogo/sm-govt-nz",
+  "donor_revision": "24df5f2dea7cfcd85fecaa1a18845339f987eeec",
+  "target_repository": "https://github.com/edithatogo/archive-govt-nz",
+  "target_revision": "b1c09da305822f3e8f85f1c4e7a85eb803565ec2",
+  "donor_statistics": {
+    "workflow_count": 66,
+    "source_adapter_count": 9,
+    "conductor_track_count": 39,
+    "python_files": 20,
+    "test_files": 128
+  },
+  "target_statistics": {
+    "test_count": 425,
+    "test_branch_coverage": 95.64,
+    "quality_gates_count": 18,
+    "schema_count": 12
+  },
+  "status": "frozen_baseline"
+}
