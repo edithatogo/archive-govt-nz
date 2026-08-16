@@ -2,8 +2,9 @@
   "id": "preservation_replay_recovery_assimilation_20260817",
   "title": "Track 6: Preservation, Replay and Recovery Assimilation",
   "type": "preservation_core",
-  "status": "planned",
+  "status": "completed",
   "created_at": "2026-08-16T23:00:00Z",
+  "completed_at": "2026-08-17T09:13:00Z",
   "requirements_method": "MoSCoW",
   "dependencies": [
     "canonical_archive_contracts_20260817"
