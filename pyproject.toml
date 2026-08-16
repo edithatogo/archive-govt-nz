@@ -24,6 +24,8 @@ dependencies = [
 
 [project.scripts]
 archive-govt-nz = "archive_govt_nz.cli:main"
+nz-govt-social = "archive_govt_nz.cli_compat:compat_nz_govt_social_main"
+sm-govt-nz = "archive_govt_nz.cli_compat:compat_sm_govt_nz_main"
 
 [dependency-groups]
 dev = [
