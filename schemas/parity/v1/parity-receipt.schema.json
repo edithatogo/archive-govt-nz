@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive.govt.nz/schemas/parity/v1/parity-receipt.schema.json",
+  "title": "ParityReceipt",
+  "description": "Evidence receipt certifying differential equivalence between donor and canonical systems.",
+  "type": "object",
+  "required": [
+    "receipt_id",
+    "evaluated_at",
+    "total_tests",
+    "passed_tests",
+    "failed_tests",
+    "divergence_count",
+    "status",
+    "comparisons"
+  ],
+  "properties": {
+    "receipt_id": {
+      "type": "string",
+      "pattern": "^par:[a-z0-9-]+$"
+    },
+    "evaluated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "total_tests": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "passed_tests": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "failed_tests": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "divergence_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "status": {
+      "type": "string",
+      "enum": ["passed", "failed"]
+    },
+    "comparisons": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "source_id",
+          "adapter_name",
+          "donor_sha256",
+          "target_sha256",
+          "is_identical"
+        ],
+        "properties": {
+          "source_id": { "type": "string" },
+          "adapter_name": { "type": "string" },
+          "donor_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "target_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "is_identical": { "type": "boolean" },
+          "notes": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
