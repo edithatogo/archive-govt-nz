@@ -56,3 +56,32 @@ def test_rehearse_recovery_success(tmp_path: Path) -> None:
     # Verify target store now actually has the objects
     assert target_store.verify(f"sha256:{r1.sha256}").sha256 == r1.sha256
     assert target_store.verify(f"sha256:{r2.sha256}").sha256 == r2.sha256
+
+
+def test_rehearse_recovery_failure(tmp_path: Path) -> None:
+    """Validate failure when object is missing in backup store."""
+    backup_store = ContentAddressedStore(tmp_path / "backup_store")
+    target_store = ContentAddressedStore(tmp_path / "target_store")
+
+    missing_record = PreservationRecord(
+        record_id="rec-missing",
+        sha256="1111111111111111111111111111111111111111111111111111111111111111",
+        size_bytes=100,
+        media_type="text/plain",
+    )
+
+    manifest = PreservationManifest(
+        manifest_id="pres-fail-001",
+        source_id="feed:moh:news",
+        sha256_root="0000000000000000000000000000000000000000000000000000000000000000",
+        records=(missing_record,),
+    )
+
+    rehearsal = RestoreRehearsalHarness.rehearse_recovery(
+        manifest=manifest,
+        backup_store=backup_store,
+        target_store=target_store,
+    )
+
+    assert rehearsal.status == "failed"
+    assert rehearsal.all_fixity_passed is False
