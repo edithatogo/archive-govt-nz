@@ -160,9 +160,9 @@ class GlobalCkanDiscovery:
                 "start": start,
             }
             try:
-                page_action = await self._client.action("package_search", params)
-            except CkanError, httpx.HTTPError, OSError:
                 page_action = await self._client.action_get("package_search", params)
+            except CkanError, httpx.HTTPError, OSError:
+                page_action = await self._client.action("package_search", params)
 
             reported_count, results = self._parse_search_result(page_action)
             page_ids: list[str] = []
