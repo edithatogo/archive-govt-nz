@@ -1,0 +1,12 @@
+{
+  "track_id": "govt_archive_per_agency_configs_20260626",
+  "title": "NZ Government Archive - per-agency source inventory and RSS feed configuration",
+  "type": "implementation-plan",
+  "status": "pending",
+  "created_at": "2026-06-26",
+  "updated_at": "2026-06-26",
+  "description": "Generate and maintain per-agency source inventory config files and RSS feed config files for all agencies with discovered RSS feeds, Bluesky accounts, and website pages.",
+  "depends_on": "govt_archive_readiness_matrix_20260625, govt_archive_noncredential_adapters_20260625",
+  "done": 0,
+  "total": 14
+}

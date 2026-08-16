@@ -1,0 +1,20 @@
+{
+  "id": "semantic_vector_and_alerting_20260816",
+  "title": "Track 20: Semantic Knowledge Graph, Hybrid Vector Search, and Automated Webhook Dispatch",
+  "type": "feature",
+  "status": "completed",
+  "created_at": "2026-08-16T12:00:00Z",
+  "completed_at": "2026-08-16T13:00:00Z",
+  "requirements_method": "MoSCoW",
+  "dependencies": [
+    "global_harvest_orchestration_and_derivatives_20260816"
+  ],
+  "outputs": [
+    "src/archive_govt_nz/semantic_search.py",
+    "src/archive_govt_nz/notifications.py",
+    "tools/query_knowledge_graph.py",
+    "tools/notify_webhook.py",
+    "tests/test_semantic_search.py",
+    "tests/test_notifications.py"
+  ]
+}

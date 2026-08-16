@@ -1,0 +1,18 @@
+{
+  "id": "bluesky_mirror_credential_hygiene_20260724",
+  "title": "Bluesky Mirror Credential Hygiene",
+  "type": "security",
+  "status": "completed",
+  "created_at": "2026-07-24",
+  "parent_track": "bluesky_mirror_reliability_hardening_20260724",
+  "github_issue": null,
+  "github_issue_status": "draft",
+  "external_action": "",
+  "hosted_preflight_run": 30238209314,
+  "hosted_preflight_conclusion": "success",
+  "observed_secret_updated_at": "2026-07-22T11:18:54Z",
+  "rotation_verification": "operator_attested",
+  "rotation_verified": true,
+  "completed_at": "2026-07-27",
+  "verification_basis": "Operator explicitly confirmed primary-password rotation, isolated Environment app-password replacement, and superseded app-password revocation; subsequent credential-health preflight is valid."
+}

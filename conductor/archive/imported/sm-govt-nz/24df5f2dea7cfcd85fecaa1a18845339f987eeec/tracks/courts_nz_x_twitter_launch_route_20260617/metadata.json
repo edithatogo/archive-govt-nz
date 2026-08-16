@@ -1,0 +1,9 @@
+{
+  "track_id": "courts_nz_x_twitter_launch_route_20260617",
+  "type": "feature",
+  "status": "completed",
+  "created_at": "2026-06-17T00:00:00+10:00",
+  "updated_at": "2026-06-18T08:45:43+10:00",
+  "description": "Select and launch the Courts of New Zealand X/Twitter mirror route without using personal identities or unsupported automation",
+  "known_limitation": "Buffer API does not expose the final provider URL for /MirNZCourts/status/...; only confirms 'sent' status. URL verification is tracked operationally but not a launch blocker."
+}

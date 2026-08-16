@@ -1,0 +1,17 @@
+{
+  "track_id": "govt_registry_20260614",
+  "type": "feature",
+  "status": "completed",
+  "created_at": "2026-06-14T15:26:05Z",
+  "updated_at": "2026-06-21T00:00:00Z",
+  "description": "Create a central index of NZ central and local government social media sites, focusing initially on deactivated accounts, registry schema, mirroring, and sync.",
+  "completed_phases": [
+    "Phase 1: Registry schema and compilation pipeline",
+    "Phase 2: Multi-remote git redundancy",
+    "Phase 4: Reference integrity alignment - parties, persons, agencies all linked; strict CI gate at zero gaps"
+  ],
+  "deferred_phases": [
+    "Phase 3: Directory expansion to all 600+ agencies (deferred per plan)",
+    "Phase 5: Crawling, stealth and academic/decentralized archiving (deferred per plan)"
+  ]
+}

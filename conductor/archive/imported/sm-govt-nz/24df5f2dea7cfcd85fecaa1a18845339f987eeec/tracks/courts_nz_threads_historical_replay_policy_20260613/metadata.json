@@ -1,0 +1,8 @@
+{
+  "track_id": "courts_nz_threads_historical_replay_policy_20260613",
+  "type": "feature",
+  "status": "completed",
+  "created_at": "2026-06-13T00:00:00Z",
+  "updated_at": "2026-06-13T00:00:00Z",
+  "description": "Decide whether and how to replay historical Courts of New Zealand archives to Threads"
+}

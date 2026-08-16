@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DonorTrackLineageV1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "generated_at",
+    "donor_repository",
+    "donor_revision",
+    "total_tracks",
+    "tracks"
+  ],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "donor_repository": { "type": "string" },
+    "donor_revision": { "type": "string" },
+    "total_tracks": { "type": "integer" },
+    "tracks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "donor_track_id",
+          "disposition",
+          "target_consolidation_track",
+          "rationale"
+        ],
+        "properties": {
+          "donor_track_id": { "type": "string" },
+          "disposition": {
+            "type": "string",
+            "enum": [
+              "historical_import",
+              "mapped_to_target_track",
+              "superseded",
+              "duplicate",
+              "deferred",
+              "rejected_with_reason"
+            ]
+          },
+          "target_consolidation_track": { "type": ["string", "null"] },
+          "rationale": { "type": "string" }
+        }
+      }
+    }
+  }
+}

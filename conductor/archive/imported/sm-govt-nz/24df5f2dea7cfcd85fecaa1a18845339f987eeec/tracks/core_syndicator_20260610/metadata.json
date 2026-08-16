@@ -1,0 +1,8 @@
+{
+  "track_id": "core_syndicator_20260610",
+  "type": "feature",
+  "status": "completed",
+  "created_at": "2026-06-10T03:48:00Z",
+  "updated_at": "2026-06-10T03:48:00Z",
+  "description": "Build core syndication engine and public transparency website (MVP)"
+}

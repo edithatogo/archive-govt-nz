@@ -1,0 +1,9 @@
+{
+  "track_id": "courts_nz_instagram_meta_api_20260613",
+  "type": "feature",
+  "status": "completed_deferred",
+  "created_at": "2026-06-13T04:46:04Z",
+  "updated_at": "2026-06-18T08:26:33+10:00",
+  "description": "Implement a Courts of New Zealand Instagram mirror using official Meta Instagram APIs after Threads setup",
+  "deferred_reason": "Awaiting INSTAGRAM_ACCESS_TOKEN and INSTAGRAM_USER_ID secrets plus API verification of @mirnzcourts. Reconciled in courts_nz_instagram_launch_reconciliation_20260617. All 15 implementation tasks complete; launch intentionally gated on credentials."
+}

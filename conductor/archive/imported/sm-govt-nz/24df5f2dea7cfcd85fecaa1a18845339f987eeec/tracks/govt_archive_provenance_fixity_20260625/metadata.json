@@ -1,0 +1,11 @@
+{
+    "track_id":  "govt_archive_provenance_fixity_20260625",
+    "title":  "NZ Government Archive - provenance, fixity, and reproducible research packaging",
+    "type":  "implementation-plan",
+    "status":  "completed",
+    "created_at":  "2026-06-25",
+    "updated_at":  "2026-06-25",
+    "description":  "Add archival-grade provenance, checksums, reproducible packaging, and citation metadata so captures remain verifiable after payloads move out of git.",
+    "depends_on":  "govt_archive_external_publication_20260625",
+    "completed_at":  "2026-06-25"
+}

@@ -1,0 +1,12 @@
+{
+  "track_id": "govt_archive_scheduled_multisource_20260626",
+  "title": "NZ Government Archive - scheduled multi-agency capture workflow",
+  "type": "implementation-plan",
+  "status": "pending",
+  "created_at": "2026-06-26",
+  "updated_at": "2026-06-26",
+  "description": "Set up GitHub Actions scheduled workflows for multi-agency archival capture across all source types (RSS, Bluesky, website, YouTube).",
+  "depends_on": "govt_archive_per_agency_configs_20260626, govt_archive_rss_onboarding_20260626, govt_archive_bluesky_onboarding_20260626, govt_archive_website_onboarding_20260626, govt_archive_youtube_onboarding_20260626",
+  "done": 0,
+  "total": 20
+}
