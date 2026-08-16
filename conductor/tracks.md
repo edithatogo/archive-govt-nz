@@ -42,7 +42,7 @@ decision or safety boundary, and continue independent work while it is pending.
   *Link: [tracks/source_adapter_migration_programme_20260817/index.md](./tracks/source_adapter_migration_programme_20260817/index.md)*
 - [x] **Track 6: Preservation, replay and recovery assimilation**
   *Link: [tracks/preservation_replay_recovery_assimilation_20260817/index.md](./tracks/preservation_replay_recovery_assimilation_20260817/index.md)*
-- [ ] **Track 7: Publication and archive-distribution alignment**
+- [x] **Track 7: Publication and archive-distribution alignment**
   *Link: [tracks/publication_and_distribution_alignment_20260817/index.md](./tracks/publication_and_distribution_alignment_20260817/index.md)*
 - [ ] **Track 8: CLI/MCP and operator-interface convergence**
   *Link: [tracks/cli_mcp_operator_interface_convergence_20260817/index.md](./tracks/cli_mcp_operator_interface_convergence_20260817/index.md)*
