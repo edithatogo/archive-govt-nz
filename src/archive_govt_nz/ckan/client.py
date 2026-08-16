@@ -176,7 +176,7 @@ class BoundedCkanClient:
                 "User-Agent": config.user_agent,
             },
             timeout=httpx.Timeout(config.timeout_seconds),
-            follow_redirects=False,
+            follow_redirects=True,
             transport=transport,
         )
 
