@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "environment-southland",
+    "name": "Environment Southland (Southland Regional Council)",
+    "type": "Regional Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.es.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "EnvironmentSouthland",
+        "url": "https://www.facebook.com/EnvironmentSouthland",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

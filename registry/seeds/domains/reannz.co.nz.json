@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "reannz",
+    "name": "Research and Education Advanced Network NZ Limited (REANNZ)",
+    "type": "Schedule 4a Company",
+    "portfolio": "Science and Innovation",
+    "official_website": "https://www.reannz.co.nz",
+    "status": "active",
+    "social_profiles": {
+      "linkedin": {
+        "handle": "REANNZ",
+        "url": "https://www.linkedin.com/company/reannz",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

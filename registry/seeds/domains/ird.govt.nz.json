@@ -1,0 +1,30 @@
+[
+  {
+    "agency_id": "inland-revenue-department",
+    "name": "Inland Revenue Department (Te Tari Taake)",
+    "type": "Department",
+    "portfolio": "Revenue",
+    "official_website": "https://www.ird.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "InlandRevenueNZ",
+        "url": "https://www.facebook.com/InlandRevenueNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "InlandRevenueNZ",
+        "url": "https://www.youtube.com/@InlandRevenueNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Inland Revenue NZ",
+        "url": "https://www.linkedin.com/company/inland-revenue-nz/",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

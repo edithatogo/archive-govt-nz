@@ -1,0 +1,72 @@
+{
+  "agency_count": 5,
+  "deactivated_profiles": [
+    {
+      "agency_id": "courts-of-nz",
+      "deactivated_at": "2026-03",
+      "name": "Courts of New Zealand (Ngā Kōti o Aotearoa)",
+      "platform": "x",
+      "status": "deactivated"
+    },
+    {
+      "agency_id": "ministry-of-health",
+      "deactivated_at": "2025-07",
+      "name": "Ministry of Health (Manatū Hauora)",
+      "platform": "x",
+      "status": "inactive"
+    },
+    {
+      "agency_id": "nz-parliament",
+      "deactivated_at": "2026-02",
+      "name": "New Zealand Parliament (Pāremata Aotearoa)",
+      "platform": "x",
+      "status": "deactivated"
+    }
+  ],
+  "open_missing": [
+    {
+      "active_proprietary": [
+        "facebook",
+        "instagram",
+        "linkedin"
+      ],
+      "agency_id": "nz-parliament",
+      "missing_open": [
+        "bluesky",
+        "mastodon",
+        "rss"
+      ],
+      "name": "New Zealand Parliament (Pāremata Aotearoa)",
+      "portfolio": "Parliament",
+      "type": "Legislature"
+    }
+  ],
+  "open_network_coverage": 4,
+  "platform_coverage": {
+    "bluesky": 4,
+    "facebook": 3,
+    "instagram": 1,
+    "linkedin": 4,
+    "mastodon": 0,
+    "rss": 0,
+    "threads": 0,
+    "tiktok": 0,
+    "x": 0,
+    "youtube": 0
+  },
+  "proprietary_network_coverage": 4,
+  "proprietary_without_open": [
+    {
+      "active_proprietary": [
+        "facebook",
+        "instagram",
+        "linkedin"
+      ],
+      "agency_id": "nz-parliament",
+      "missing_open": [],
+      "name": "New Zealand Parliament (Pāremata Aotearoa)",
+      "portfolio": "Parliament",
+      "type": "Legislature"
+    }
+  ]
+}

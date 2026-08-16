@@ -1,0 +1,37 @@
+[
+  {
+    "agency_id": "royal-nz-air-force",
+    "name": "Royal New Zealand Air Force (Te Tauaarangi o Aotearoa)",
+    "type": "NZDF",
+    "portfolio": "Defence",
+    "official_website": "https://www.airforce.mil.nz",
+    "status": "active",
+    "parent_agency_id": "nz-defence-force",
+    "social_profiles": {
+      "facebook": {
+        "handle": "RNZAirForce",
+        "url": "https://www.facebook.com/RNZAirForce",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "royalnzairforce",
+        "url": "https://www.instagram.com/royalnzairforce",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Royal New Zealand Air Force",
+        "url": "https://www.linkedin.com/company/royal-new-zealand-air-force",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "royalnzairforce",
+        "url": "https://www.youtube.com/@royalnzairforce",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

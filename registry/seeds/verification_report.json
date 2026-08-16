@@ -1,0 +1,22 @@
+{
+  "tool": "verify_registry_compilation",
+  "timestamp": "2026-08-09T18:19:53.913078+00:00",
+  "validation": {
+    "status": "ok",
+    "ok": true,
+    "json_path": "registry/government_directory.json",
+    "db_path": "registry/government_directory.db",
+    "json_exists": true,
+    "db_exists": true,
+    "json_entry_count": 256,
+    "db_agency_count": 256,
+    "db_profile_count": 489,
+    "json_profile_count": 489,
+    "tables_ok": true,
+    "row_counts_match": true,
+    "all_agencies_match": true,
+    "all_profiles_match": true,
+    "no_orphaned_rows": true,
+    "mismatches": []
+  }
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "agency_id": "heritage-nz",
+    "name": "Heritage New Zealand (Pouhere Taonga)",
+    "type": "Autonomous Crown Entity",
+    "portfolio": "Arts, Culture and Heritage",
+    "official_website": "https://www.heritage.org.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "HeritageNZ",
+        "url": "https://www.facebook.com/HeritageNZ",
+        "status": "active"
+      },
+      "instagram": {
+        "handle": "heritagenz",
+        "url": "https://www.instagram.com/heritagenz",
+        "status": "active"
+      },
+      "linkedin": {
+        "handle": "Heritage New Zealand Pouhere Taonga",
+        "url": "https://www.linkedin.com/company/heritage-new-zealand-pouhere-taonga",
+        "status": "active"
+      },
+      "x": {
+        "handle": "HeritageNZ",
+        "url": "https://x.com/HeritageNZ",
+        "status": "active"
+      }
+    }
+  }
+]

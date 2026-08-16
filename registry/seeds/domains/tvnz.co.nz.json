@@ -1,0 +1,22 @@
+[
+  {
+    "agency_id": "tvnz",
+    "name": "Television New Zealand Limited (Te Reo Tātaki o Aotearoa)",
+    "type": "Crown Entity Company",
+    "portfolio": "Broadcasting",
+    "official_website": "https://www.tvnz.co.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "tvnz",
+        "url": "https://www.facebook.com/tvnz",
+        "status": "active"
+      },
+      "linkedin": {
+        "handle": "TVNZ",
+        "url": "https://www.linkedin.com/company/tvnz",
+        "status": "active"
+      }
+    }
+  }
+]

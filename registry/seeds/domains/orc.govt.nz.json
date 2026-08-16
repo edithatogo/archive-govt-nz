@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "otago-regional-council",
+    "name": "Otago Regional Council",
+    "type": "Regional Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.orc.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "OtagoRegionalCouncil",
+        "url": "https://www.facebook.com/OtagoRegionalCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

@@ -1,0 +1,45 @@
+[
+  {
+    "agency_id": "kiwirail",
+    "name": "KiwiRail Holdings Limited",
+    "type": "SOE",
+    "portfolio": "Transport",
+    "official_website": "https://www.kiwirail.co.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "KiwiRail",
+        "url": "https://www.facebook.com/KiwiRail",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "KiwiRail",
+        "url": "https://www.linkedin.com/company/kiwirail",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "kiwirail",
+        "url": "https://www.instagram.com/kiwirail",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "KiwiRailNZ",
+        "url": "https://www.youtube.com/@KiwiRailNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  },
+  {
+    "agency_id": "nz-railways-corporation",
+    "name": "New Zealand Railways Corporation",
+    "type": "SOE",
+    "portfolio": "Transport",
+    "official_website": "https://www.kiwirail.co.nz",
+    "status": "active",
+    "social_profiles": {}
+  }
+]

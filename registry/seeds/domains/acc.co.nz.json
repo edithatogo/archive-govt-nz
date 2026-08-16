@@ -1,0 +1,36 @@
+[
+  {
+    "agency_id": "accident-compensation-corporation",
+    "name": "Accident Compensation Corporation (Te Kaporeihana Āwhina Hunga Whara)",
+    "type": "Crown Agent",
+    "portfolio": "ACC",
+    "official_website": "https://www.acc.co.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "ACCNewZealand",
+        "url": "https://www.facebook.com/ACCNewZealand",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "ACC New Zealand",
+        "url": "https://www.linkedin.com/company/acc-new-zealand",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "accnewzealand",
+        "url": "https://www.instagram.com/accnewzealand",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "ACC New Zealand",
+        "url": "https://www.youtube.com/@accnz",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

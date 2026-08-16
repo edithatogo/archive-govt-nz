@@ -1,0 +1,24 @@
+[
+  {
+    "agency_id": "hamilton-city-council",
+    "name": "Hamilton City Council (Te Kaunihera o Kirikiriroa)",
+    "type": "City Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.hamilton.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "HamiltonCityCouncil",
+        "url": "https://www.facebook.com/HamiltonCityCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Hamilton City Council",
+        "url": "https://www.linkedin.com/company/hamilton-city-council",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

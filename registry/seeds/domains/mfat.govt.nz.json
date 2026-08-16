@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "mfat",
+    "name": "Ministry of Foreign Affairs and Trade (Te Manatū Aorere)",
+    "type": "Department",
+    "portfolio": "Foreign Affairs and Trade",
+    "official_website": "https://www.mfat.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "MfatNZ",
+        "url": "https://www.facebook.com/MfatNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

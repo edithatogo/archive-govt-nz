@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "asurequality",
+    "name": "AsureQuality (Kaitiaki Kai)",
+    "type": "SOE",
+    "portfolio": "Agriculture",
+    "official_website": "https://www.asurequality.com",
+    "status": "active",
+    "social_profiles": {
+      "linkedin": {
+        "handle": "AsureQuality",
+        "url": "https://www.linkedin.com/company/asurequality",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

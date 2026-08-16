@@ -1,0 +1,17 @@
+[
+  {
+    "agency_id": "te-mangai-paho",
+    "name": "Te Māngai Pāho",
+    "type": "Autonomous Crown Entity",
+    "portfolio": "Māori Development",
+    "official_website": "https://www.temangai.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "x": {
+        "handle": "TeMangaiPaho",
+        "url": "https://x.com/TeMangaiPaho",
+        "status": "active"
+      }
+    }
+  }
+]

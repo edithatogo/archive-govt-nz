@@ -1,0 +1,30 @@
+[
+  {
+    "agency_id": "network-for-learning",
+    "name": "Network for Learning Limited (N4L)",
+    "type": "Schedule 4a Company",
+    "portfolio": "Education",
+    "official_website": "https://www.n4l.co.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "N4LNZ",
+        "url": "https://www.facebook.com/N4LNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "n4l_nz",
+        "url": "https://www.instagram.com/n4l_nz",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "N4LNZ",
+        "url": "https://www.youtube.com/@N4LNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

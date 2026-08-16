@@ -1,0 +1,36 @@
+[
+  {
+    "agency_id": "manukau-institute-of-technology",
+    "name": "Manukau Institute of Technology",
+    "type": "ITP/Polytechnic",
+    "portfolio": "Education",
+    "official_website": "https://www.manukau.ac.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "ManukauInstitute",
+        "url": "https://www.facebook.com/ManukauInstitute",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Manukau Institute of Technology",
+        "url": "https://www.linkedin.com/school/manukau-institute-of-technology",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "manukau_institute",
+        "url": "https://www.instagram.com/manukau_institute",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "ManukauInstitute",
+        "url": "https://www.youtube.com/@ManukauInstitute",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

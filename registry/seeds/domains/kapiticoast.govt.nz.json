@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "kapiti-coast-district-council",
+    "name": "Kāpiti Coast District Council",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.kapiticoast.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "KapitiCoastDistrictCouncil",
+        "url": "https://www.facebook.com/KapitiCoastDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

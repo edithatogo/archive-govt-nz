@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "nz-qualifications-authority",
+    "name": "New Zealand Qualifications Authority (Mana Tohu Mātauranga o Aotearoa)",
+    "type": "Crown Agent",
+    "portfolio": "Education",
+    "official_website": "https://www.nzqa.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "linkedin": {
+        "handle": "NZQA",
+        "url": "https://www.linkedin.com/company/nzqa",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "airways-nz",
+    "name": "Airways New Zealand",
+    "type": "SOE",
+    "portfolio": "Transport",
+    "official_website": "https://www.airways.co.nz",
+    "status": "active",
+    "social_profiles": {
+      "linkedin": {
+        "handle": "Airways New Zealand",
+        "url": "https://www.linkedin.com/company/airways-new-zealand",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

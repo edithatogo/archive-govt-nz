@@ -1,0 +1,30 @@
+[
+  {
+    "agency_id": "te-puni-kokiri",
+    "name": "Te Puni Kōkiri (Ministry of Māori Development)",
+    "type": "Department",
+    "portfolio": "Māori Development",
+    "official_website": "https://www.tpk.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "TePuniKokiri",
+        "url": "https://www.facebook.com/TePuniKokiri",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Te Puni Kōkiri",
+        "url": "https://www.linkedin.com/company/te-puni-kokiri/",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "x": {
+        "handle": "TePuniKokiri",
+        "url": "https://x.com/TePuniKokiri",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

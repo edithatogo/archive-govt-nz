@@ -1,0 +1,22 @@
+[
+  {
+    "agency_id": "human-rights-commission",
+    "name": "Human Rights Commission (Te Kāhui Tika Tangata)",
+    "type": "Independent Crown Entity",
+    "portfolio": "Justice",
+    "official_website": "https://www.hrc.co.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "nzhumanrightscommission",
+        "url": "https://www.facebook.com/nzhumanrightscommission",
+        "status": "active"
+      },
+      "x": {
+        "handle": "HRCNZ",
+        "url": "https://x.com/HRCNZ",
+        "status": "active"
+      }
+    }
+  }
+]

@@ -1,0 +1,24 @@
+[
+  {
+    "agency_id": "callaghan-innovation",
+    "name": "Callaghan Innovation (Te Pokapū Auaha)",
+    "type": "Crown Agent",
+    "portfolio": "Economic Development, Science and Innovation",
+    "official_website": "https://www.callaghaninnovation.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "linkedin": {
+        "handle": "Callaghan Innovation",
+        "url": "https://www.linkedin.com/company/callaghan-innovation",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "facebook": {
+        "handle": "Callaghan Innovation",
+        "url": "https://www.facebook.com/CallaghanInnovation",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

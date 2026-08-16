@@ -1,0 +1,30 @@
+[
+  {
+    "agency_id": "courts-of-nz",
+    "name": "Courts of New Zealand (Ngā Kōti o Aotearoa)",
+    "type": "Judiciary",
+    "portfolio": "Justice",
+    "official_website": "https://www.courtsofnz.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "bluesky": {
+        "handle": "courtsofnz.bsky.social",
+        "url": "https://bsky.app/profile/courtsofnz.bsky.social",
+        "status": "active"
+      },
+      "linkedin": {
+        "handle": "Courts of New Zealand | Ngā Kōti o Aotearoa",
+        "url": "https://www.linkedin.com/company/courts-of-new-zealand",
+        "status": "active"
+      },
+      "x": {
+        "handle": "courtsofnz",
+        "url": "https://x.com/courtsofnz",
+        "status": "deactivated",
+        "deactivated_at": "2026-03",
+        "reason": "Platform withdrawal in favor of open alternatives.",
+        "alternative_url": "https://bsky.app/profile/courtsofnz.bsky.social"
+      }
+    }
+  }
+]

@@ -1,0 +1,187 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "NZ Government Social Media Registry",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+            "agency_id": {
+                "type": "string",
+                "pattern": "^[a-z0-9-]+$",
+                "description": "Kebab-case unique identifier for the agency."
+            },
+            "name": {
+                "type": "string",
+                "description": "Official name of the agency, including Māori name if applicable."
+            },
+            "type": {
+                "type": "string",
+                "description": "Type of organization (e.g., Ministry, Crown Entity, Judiciary)."
+            },
+            "portfolio": {
+                "type": "string",
+                "description": "The government portfolio this agency belongs to."
+            },
+            "official_website": {
+                "type": "string",
+                "format": "uri",
+                "description": "Primary official website URL."
+            },
+            "status": {
+                "type": "string",
+                "enum": [
+                    "active",
+                    "deactivated",
+                    "merged",
+                    "restructured"
+                ],
+                "description": "Current operational status of the agency."
+            },
+            "parent_agency_id": {
+                "type": [
+                    "string",
+                    "null"
+                ],
+                "description": "Agency ID of the parent organization for hierarchy mapping."
+            },
+            "social_profiles": {
+                "type": "object",
+                "description": "Map of social media platform keys to profile details.",
+                "additionalProperties": {
+                    "type": "object",
+                    "properties": {
+                        "handle": {
+                            "type": "string"
+                        },
+                        "url": {
+                            "type": "string",
+                            "format": "uri"
+                        },
+                        "status": {
+                            "type": "string",
+                            "enum": [
+                                "active",
+                                "inactive",
+                                "deactivated",
+                                "archived"
+                            ]
+                        },
+                        "last_checked_at": {
+                            "type": "string",
+                            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                            "description": "Date this profile was last manually verified."
+                        },
+                        "last_seen_at": {
+                            "type": "string",
+                            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                            "description": "Date this profile was last observed online."
+                        },
+                        "verification_status": {
+                            "type": "string",
+                            "enum": [
+                                "current",
+                                "inactive",
+                                "deactivated",
+                                "historical",
+                                "unknown"
+                            ],
+                            "description": "Operational verification state used for refresh cadence reporting."
+                        },
+                        "account_classification": {
+                            "type": "string",
+                            "enum": [
+                                "official",
+                                "campaign",
+                                "personal-public",
+                                "office",
+                                "party",
+                                "inactive",
+                                "deactivated"
+                            ],
+                            "description": "Account ownership or use classification."
+                        },
+                        "syndication_classification": {
+                            "type": "string",
+                            "enum": [
+                                "unique",
+                                "syndicated",
+                                "mixed",
+                                "unknown"
+                            ],
+                            "description": "Whether profile content is unique, syndicated, mixed, or unknown."
+                        },
+                        "deactivated_at": {
+                            "type": "string",
+                            "pattern": "^\\d{4}-\\d{2}$",
+                            "description": "Year-Month of deactivation (e.g., 2026-03)."
+                        },
+                        "reason": {
+                            "type": "string",
+                            "description": "Reason for deactivation or status change."
+                        },
+                        "alternative_url": {
+                            "type": "string",
+                            "format": "uri",
+                            "description": "URL of the active alternative profile."
+                        },
+                        "evidence": {
+                            "type": "object",
+                            "properties": {
+                                "source_url": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "description": "URL used as evidence for this profile mapping."
+                                },
+                                "source_type": {
+                                    "type": "string",
+                                    "enum": [
+                                        "official-website",
+                                        "platform-profile",
+                                        "public-registry",
+                                        "manual-review",
+                                        "archive",
+                                        "other"
+                                    ],
+                                    "description": "Kind of evidence supporting this profile mapping."
+                                },
+                                "captured_at": {
+                                    "type": "string",
+                                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                                    "description": "Date the evidence was captured or reviewed."
+                                },
+                                "reviewed_by": {
+                                    "type": "string",
+                                    "description": "Reviewer or process that accepted the evidence."
+                                },
+                                "notes": {
+                                    "type": "string",
+                                    "description": "Short provenance note for ambiguous mappings."
+                                }
+                            },
+                            "required": [
+                                "source_url",
+                                "source_type",
+                                "captured_at"
+                            ],
+                            "additionalProperties": false,
+                            "description": "Optional provenance metadata for this profile mapping."
+                        }
+                    },
+                    "required": [
+                        "handle",
+                        "url",
+                        "status"
+                    ]
+                }
+            }
+        },
+        "required": [
+            "agency_id",
+            "name",
+            "type",
+            "official_website",
+            "status",
+            "social_profiles"
+        ]
+    }
+}

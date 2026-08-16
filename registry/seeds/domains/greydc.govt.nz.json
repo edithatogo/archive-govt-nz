@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "grey-district-council",
+    "name": "Grey District Council",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.greydc.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "GreyDistrictCouncil",
+        "url": "https://www.facebook.com/GreyDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

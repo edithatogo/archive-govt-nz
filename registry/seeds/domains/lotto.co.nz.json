@@ -1,0 +1,27 @@
+[
+  {
+    "agency_id": "lotto-nz",
+    "name": "New Zealand Lotteries Commission (Lotto NZ)",
+    "type": "Autonomous Crown Entity",
+    "portfolio": "Internal Affairs",
+    "official_website": "https://www.lotto.co.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "LOTTO.nz",
+        "url": "https://www.facebook.com/LOTTO.nz",
+        "status": "active"
+      },
+      "instagram": {
+        "handle": "lottonz",
+        "url": "https://www.instagram.com/lottonz",
+        "status": "active"
+      },
+      "x": {
+        "handle": "LOTTO_NZ",
+        "url": "https://x.com/LOTTO_NZ",
+        "status": "active"
+      }
+    }
+  }
+]

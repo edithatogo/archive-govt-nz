@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "south-waikato-district-council",
+    "name": "South Waikato District Council",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.southwaikato.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "SouthWaikatoDistrictCouncil",
+        "url": "https://www.facebook.com/SouthWaikatoDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

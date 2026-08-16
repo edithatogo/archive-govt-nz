@@ -1,0 +1,30 @@
+[
+  {
+    "agency_id": "nz-police",
+    "name": "New Zealand Police (Ngā Pirihimana o Aotearoa)",
+    "type": "Non-Public Service State Service",
+    "portfolio": "Police",
+    "official_website": "https://www.police.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "New Zealand Police",
+        "url": "https://www.facebook.com/nzpolice",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "nzpolice",
+        "url": "https://www.instagram.com/nzpolice",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "New Zealand Police",
+        "url": "https://www.youtube.com/@NewZealandPolice",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

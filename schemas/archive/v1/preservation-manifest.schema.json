@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PreservationManifestV1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "manifest_id",
+    "source_id",
+    "captured_at",
+    "sha256_root",
+    "records_count",
+    "records"
+  ],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "manifest_id": { "type": "string" },
+    "source_id": { "type": "string" },
+    "captured_at": { "type": "string", "format": "date-time" },
+    "sha256_root": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "records_count": { "type": "integer", "minimum": 0 },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["record_id", "sha256", "size_bytes", "media_type"],
+        "properties": {
+          "record_id": { "type": "string" },
+          "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "size_bytes": { "type": "integer", "minimum": 0 },
+          "media_type": { "type": "string" },
+          "uri": { "type": "string" },
+          "warc_record_id": { "type": ["string", "null"] }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+[
+  {
+    "agency_id": "pamu",
+    "name": "Landcorp Farming Limited (Pāmu)",
+    "type": "SOE",
+    "portfolio": "Agriculture",
+    "official_website": "https://www.pamu.co.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "PamuNZ",
+        "url": "https://www.facebook.com/PamuNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Pāmu Landcorp Farming Limited",
+        "url": "https://www.linkedin.com/company/pamunz",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "pamunz",
+        "url": "https://www.instagram.com/pamunz",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "x": {
+        "handle": "Pamu_NZ",
+        "url": "https://x.com/Pamu_NZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "PamuNZ",
+        "url": "https://www.youtube.com/@PamuNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

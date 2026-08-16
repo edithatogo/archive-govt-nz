@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "thames-coromandel-district-council",
+    "name": "Thames-Coromandel District Council",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.tcdc.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "ThamesCoromandelDistrictCouncil",
+        "url": "https://www.facebook.com/ThamesCoromandelDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

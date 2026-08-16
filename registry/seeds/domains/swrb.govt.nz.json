@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "social-workers-registration-board",
+    "name": "Social Workers Registration Board (Kāhui Whakamana Tauwhiro)",
+    "type": "Crown Agent",
+    "portfolio": "Social Development",
+    "official_website": "https://www.swrb.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "SWRB",
+        "url": "https://www.facebook.com/SWRB",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

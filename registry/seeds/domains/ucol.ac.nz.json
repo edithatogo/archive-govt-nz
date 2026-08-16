@@ -1,0 +1,36 @@
+[
+  {
+    "agency_id": "ucol",
+    "name": "Universal College of Learning (UCOL)",
+    "type": "ITP/Polytechnic",
+    "portfolio": "Education",
+    "official_website": "https://www.ucol.ac.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "UCOLNZ",
+        "url": "https://www.facebook.com/UCOLNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "UCOL",
+        "url": "https://www.linkedin.com/school/ucol",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "ucolnz",
+        "url": "https://www.instagram.com/ucolnz",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "UCOLNZ",
+        "url": "https://www.youtube.com/@UCOLNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

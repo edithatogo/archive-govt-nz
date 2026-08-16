@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "south-wairarapa-district-council",
+    "name": "South Wairarapa District Council",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.swdc.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "SouthWairarapaDistrictCouncil",
+        "url": "https://www.facebook.com/SouthWairarapaDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

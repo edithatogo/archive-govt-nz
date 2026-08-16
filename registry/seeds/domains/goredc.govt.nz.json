@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "gore-district-council",
+    "name": "Gore District Council",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.goredc.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "GoreDistrictCouncil",
+        "url": "https://www.facebook.com/GoreDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

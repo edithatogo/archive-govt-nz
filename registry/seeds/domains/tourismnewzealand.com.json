@@ -1,0 +1,30 @@
+[
+  {
+    "agency_id": "tourism-nz",
+    "name": "New Zealand Tourism Board (Tourism New Zealand)",
+    "type": "Crown Agent",
+    "portfolio": "Tourism",
+    "official_website": "https://www.tourismnewzealand.com",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "Tourism NZ",
+        "url": "https://www.facebook.com/TourismNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "tourismnewzealand",
+        "url": "https://www.instagram.com/tourismnewzealand",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "tourismnz",
+        "url": "https://www.youtube.com/@tourismnz",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

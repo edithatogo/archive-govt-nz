@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "kaipara-district-council",
+    "name": "Kaipara District Council",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.kaipara.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "KaiparaDistrictCouncil",
+        "url": "https://www.facebook.com/KaiparaDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

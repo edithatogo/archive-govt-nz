@@ -1,0 +1,36 @@
+[
+  {
+    "agency_id": "wintec",
+    "name": "Waikato Institute of Technology (Wintec)",
+    "type": "ITP/Polytechnic",
+    "portfolio": "Education",
+    "official_website": "https://www.wintec.ac.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "WintecNZ",
+        "url": "https://www.facebook.com/WintecNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Wintec",
+        "url": "https://www.linkedin.com/school/wintec",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "wintecnz",
+        "url": "https://www.instagram.com/wintecnz",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "WintecNZ",
+        "url": "https://www.youtube.com/@WintecNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

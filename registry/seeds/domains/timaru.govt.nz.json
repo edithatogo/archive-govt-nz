@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "timaru-district-council",
+    "name": "Timaru District Council",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.timaru.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "TimaruDistrictCouncil",
+        "url": "https://www.facebook.com/TimaruDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

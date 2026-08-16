@@ -1,0 +1,130 @@
+[
+  {
+    "agency_id": "courts-of-nz",
+    "name": "Courts of New Zealand (Ngā Kōti o Aotearoa)",
+    "type": "Judiciary",
+    "portfolio": "Justice",
+    "official_website": "https://www.courtsofnz.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "bluesky": {
+        "handle": "courtsofnz.bsky.social",
+        "url": "https://bsky.app/profile/courtsofnz.bsky.social",
+        "status": "active"
+      },
+      "linkedin": {
+        "handle": "Courts of New Zealand | Ngā Kōti o Aotearoa",
+        "url": "https://www.linkedin.com/company/courts-of-new-zealand",
+        "status": "active"
+      },
+      "x": {
+        "handle": "courtsofnz",
+        "url": "https://twitter.com/courtsofnz",
+        "status": "deactivated",
+        "deactivated_at": "2026-03"
+      }
+    }
+  },
+  {
+    "agency_id": "ministry-of-health",
+    "name": "Ministry of Health (Manatū Hauora)",
+    "type": "Ministry",
+    "portfolio": "Health",
+    "official_website": "https://www.health.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "bluesky": {
+        "handle": "health.govt.nz",
+        "url": "https://bsky.app/profile/health.govt.nz",
+        "status": "active"
+      },
+      "linkedin": {
+        "handle": "Ministry of Health New Zealand",
+        "url": "https://www.linkedin.com/company/ministry-of-health-new-zealand",
+        "status": "active"
+      },
+      "facebook": {
+        "handle": "minhealthnz",
+        "url": "https://www.facebook.com/minhealthnz",
+        "status": "active"
+      },
+      "x": {
+        "handle": "minhealthnz",
+        "url": "https://twitter.com/minhealthnz",
+        "status": "inactive",
+        "deactivated_at": "2025-07"
+      }
+    }
+  },
+  {
+    "agency_id": "health-nz",
+    "name": "Health New Zealand (Te Whatu Ora)",
+    "type": "Crown Entity",
+    "portfolio": "Health",
+    "official_website": "https://www.tewhatuora.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "bluesky": {
+        "handle": "healthnz.govt.nz",
+        "url": "https://bsky.app/profile/healthnz.govt.nz",
+        "status": "active"
+      },
+      "facebook": {
+        "handle": "HealthinstitutionsNZ",
+        "url": "https://www.facebook.com/HealthNewZealand",
+        "status": "active"
+      },
+      "linkedin": {
+        "handle": "Te Whatu Ora Health New Zealand",
+        "url": "https://www.linkedin.com/company/te-whatu-ora-health-new-zealand",
+        "status": "active"
+      }
+    }
+  },
+  {
+    "agency_id": "nz-parliament",
+    "name": "New Zealand Parliament (Pāremata Aotearoa)",
+    "type": "Legislature",
+    "portfolio": "Parliament",
+    "official_website": "https://www.parliament.nz",
+    "status": "active",
+    "social_profiles": {
+      "linkedin": {
+        "handle": "New Zealand Parliament",
+        "url": "https://www.linkedin.com/company/new-zealand-parliament",
+        "status": "active"
+      },
+      "facebook": {
+        "handle": "NZParliament",
+        "url": "https://www.facebook.com/NZParliament",
+        "status": "active"
+      },
+      "instagram": {
+        "handle": "nzparliament",
+        "url": "https://www.instagram.com/nzparliament",
+        "status": "active"
+      },
+      "x": {
+        "handle": "NZParliament",
+        "url": "https://twitter.com/NZParliament",
+        "status": "deactivated",
+        "deactivated_at": "2026-02"
+      }
+    }
+  },
+  {
+    "agency_id": "beehive-nz",
+    "name": "Beehive NZ",
+    "type": "Executive Portal",
+    "portfolio": "Executive",
+    "official_website": "https://www.beehive.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "bluesky": {
+        "handle": "beehivenz.bsky.social",
+        "url": "https://bsky.app/profile/beehivenz.bsky.social",
+        "status": "active"
+      }
+    }
+  }
+]

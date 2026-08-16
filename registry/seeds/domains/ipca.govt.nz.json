@@ -1,0 +1,22 @@
+[
+  {
+    "agency_id": "independent-police-conduct-authority",
+    "name": "Independent Police Conduct Authority (Mana Whanonga Pirimana Motuhake)",
+    "type": "Independent Crown Entity",
+    "portfolio": "Police",
+    "official_website": "https://www.ipca.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "IPCANZ",
+        "url": "https://www.facebook.com/IPCANZ",
+        "status": "active"
+      },
+      "x": {
+        "handle": "IPCA_NZ",
+        "url": "https://x.com/IPCA_NZ",
+        "status": "active"
+      }
+    }
+  }
+]

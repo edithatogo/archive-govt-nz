@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "ministry-for-regulation",
+    "name": "Ministry for Regulation (Te Manatū Waeture)",
+    "type": "Department",
+    "portfolio": "Regulation",
+    "official_website": "https://www.regulation.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "linkedin": {
+        "handle": "Ministry for Regulation",
+        "url": "https://www.linkedin.com/company/ministry-for-regulation/",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

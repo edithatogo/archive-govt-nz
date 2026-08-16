@@ -1,0 +1,17 @@
+[
+  {
+    "agency_id": "broadcasting-standards-authority",
+    "name": "Broadcasting Standards Authority (Te Mana Whanonga Kaipāho)",
+    "type": "Independent Crown Entity",
+    "portfolio": "Broadcasting",
+    "official_website": "https://www.bsa.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "x": {
+        "handle": "BSA_NZ",
+        "url": "https://x.com/BSA_NZ",
+        "status": "active"
+      }
+    }
+  }
+]

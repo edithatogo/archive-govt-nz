@@ -1,0 +1,24 @@
+[
+  {
+    "agency_id": "serious-fraud-office",
+    "name": "Serious Fraud Office (Te Tari Hara Taware)",
+    "type": "Department",
+    "portfolio": "Justice",
+    "official_website": "https://www.sfo.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "linkedin": {
+        "handle": "Serious Fraud Office - New Zealand",
+        "url": "https://www.linkedin.com/company/serious-fraud-office/",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "x": {
+        "handle": "SFONZ",
+        "url": "https://x.com/SFONZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

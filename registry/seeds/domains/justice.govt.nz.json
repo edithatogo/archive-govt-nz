@@ -1,0 +1,36 @@
+[
+  {
+    "agency_id": "ministry-of-justice",
+    "name": "Ministry of Justice (Tāhū o te Ture)",
+    "type": "Department",
+    "portfolio": "Justice",
+    "official_website": "https://www.justice.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "MinistryofJusticeNZ",
+        "url": "https://www.facebook.com/MinistryofJusticeNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Ministry of Justice - New Zealand",
+        "url": "https://www.linkedin.com/company/ministry-of-justice---new-zealand/",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "x": {
+        "handle": "nzjustice",
+        "url": "https://x.com/nzjustice",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "MinistryofJusticeNZ",
+        "url": "https://www.youtube.com/@MinistryofJusticeNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

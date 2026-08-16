@@ -1,0 +1,37 @@
+[
+  {
+    "agency_id": "nz-army",
+    "name": "New Zealand Army (Ngāti Tūmatauenga)",
+    "type": "NZDF",
+    "portfolio": "Defence",
+    "official_website": "https://www.army.mil.nz",
+    "status": "active",
+    "parent_agency_id": "nz-defence-force",
+    "social_profiles": {
+      "facebook": {
+        "handle": "NZArmy",
+        "url": "https://www.facebook.com/NZArmy",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "nzarmy",
+        "url": "https://www.instagram.com/nzarmy",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "New Zealand Army",
+        "url": "https://www.linkedin.com/company/new-zealand-army",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "nzarmy",
+        "url": "https://www.youtube.com/@nzarmy",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

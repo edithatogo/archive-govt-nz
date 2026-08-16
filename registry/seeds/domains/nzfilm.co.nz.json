@@ -1,0 +1,27 @@
+[
+  {
+    "agency_id": "nz-film-commission",
+    "name": "New Zealand Film Commission (Te Tumu Whakaata Taonga)",
+    "type": "Autonomous Crown Entity",
+    "portfolio": "Arts, Culture and Heritage",
+    "official_website": "https://www.nzfilm.co.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "nzfilm",
+        "url": "https://www.facebook.com/nzfilm",
+        "status": "active"
+      },
+      "instagram": {
+        "handle": "nzfilm",
+        "url": "https://www.instagram.com/nzfilm",
+        "status": "active"
+      },
+      "x": {
+        "handle": "NZFilm",
+        "url": "https://x.com/NZFilm",
+        "status": "active"
+      }
+    }
+  }
+]

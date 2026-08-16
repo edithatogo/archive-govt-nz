@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "greater-wellington-regional-council",
+    "name": "Greater Wellington Regional Council (Te Pane Matua Taiao)",
+    "type": "Regional Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.gw.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "GreaterWellingtonRegionalCouncil",
+        "url": "https://www.facebook.com/GreaterWellingtonRegionalCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "agency_id": "hutt-city-council",
+    "name": "Hutt City Council (Te Awa Kairangi ki Tai)",
+    "type": "City Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.huttcity.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "HuttCityCouncil",
+        "url": "https://www.facebook.com/HuttCityCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "huttcitycouncil",
+        "url": "https://www.instagram.com/huttcitycouncil/",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Hutt City Council",
+        "url": "https://www.linkedin.com/company/hutt-city-council",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

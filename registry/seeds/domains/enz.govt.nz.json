@@ -1,0 +1,24 @@
+[
+  {
+    "agency_id": "education-nz",
+    "name": "Education New Zealand (Manapou ki te Ao)",
+    "type": "Crown Agent",
+    "portfolio": "Education",
+    "official_website": "https://www.enz.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "linkedin": {
+        "handle": "Education New Zealand | Manapou ki te Ao",
+        "url": "https://www.linkedin.com/company/education-new-zealand",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "facebook": {
+        "handle": "studywithnewzealand",
+        "url": "https://www.facebook.com/studywithnewzealand",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

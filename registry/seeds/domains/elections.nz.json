@@ -1,0 +1,32 @@
+[
+  {
+    "agency_id": "electoral-commission",
+    "name": "Electoral Commission (Te Kaitiaki Take Kōwhiri)",
+    "type": "Independent Crown Entity",
+    "portfolio": "Justice",
+    "official_website": "https://www.elections.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "ElectoralCommissionNZ",
+        "url": "https://www.facebook.com/ElectoralCommissionNZ",
+        "status": "active"
+      },
+      "instagram": {
+        "handle": "electionsnz",
+        "url": "https://www.instagram.com/electionsnz",
+        "status": "active"
+      },
+      "x": {
+        "handle": "ElectionsNZ",
+        "url": "https://x.com/ElectionsNZ",
+        "status": "active"
+      },
+      "youtube": {
+        "handle": "ElectionsNZ",
+        "url": "https://www.youtube.com/@ElectionsNZ",
+        "status": "active"
+      }
+    }
+  }
+]

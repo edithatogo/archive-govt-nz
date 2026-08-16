@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "matamata-piako-district-council",
+    "name": "Matamata-Piako District Council",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.mpdc.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "MatamataPiakoDistrictCouncil",
+        "url": "https://www.facebook.com/MatamataPiakoDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

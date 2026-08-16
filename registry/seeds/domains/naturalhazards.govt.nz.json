@@ -1,0 +1,30 @@
+[
+  {
+    "agency_id": "natural-hazards-commission",
+    "name": "Natural Hazards Commission (Toka Tū Ake)",
+    "type": "Crown Agent",
+    "portfolio": "Finance",
+    "official_website": "https://www.naturalhazards.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "NHC Toka Tū Ake",
+        "url": "https://www.facebook.com/NHC.TokaTuAke",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Natural Hazards Commission Toka Tū Ake",
+        "url": "https://www.linkedin.com/company/natural-hazards-commission-toka-tu-ake",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "Natural Hazards Commission Toka Tū Ake",
+        "url": "https://www.youtube.com/@NaturalHazardsCommission",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

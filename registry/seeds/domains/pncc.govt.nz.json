@@ -1,0 +1,24 @@
+[
+  {
+    "agency_id": "palmerston-north-city-council",
+    "name": "Palmerston North City Council (Te Kaunihera o Papaioea)",
+    "type": "City Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.pncc.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "PalmerstonNorthCityCouncil",
+        "url": "https://www.facebook.com/PalmerstonNorthCityCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Palmerston North City Council",
+        "url": "https://www.linkedin.com/company/palmerston-north-city-council",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

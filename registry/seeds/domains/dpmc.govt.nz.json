@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "dpmc",
+    "name": "Department of the Prime Minister and Cabinet (Te Tari o te Pirimia me te Rūnanga)",
+    "type": "Department",
+    "portfolio": "Prime Minister",
+    "official_website": "https://www.dpmc.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "linkedin": {
+        "handle": "Department of the Prime Minister and Cabinet (DPMC)",
+        "url": "https://www.linkedin.com/company/department-of-the-prime-minister-and-cabinet-nz",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

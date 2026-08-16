@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "waikato-regional-council",
+    "name": "Waikato Regional Council",
+    "type": "Regional Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.waikatoregion.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "WaikatoRegionalCouncil",
+        "url": "https://www.facebook.com/WaikatoRegionalCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

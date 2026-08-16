@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "whanganui-district-council",
+    "name": "Whanganui District Council",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.whanganui.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "WhanganuiDistrictCouncil",
+        "url": "https://www.facebook.com/WhanganuiDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

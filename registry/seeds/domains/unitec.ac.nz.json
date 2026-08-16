@@ -1,0 +1,36 @@
+[
+  {
+    "agency_id": "unitec",
+    "name": "Unitec Institute of Technology",
+    "type": "ITP/Polytechnic",
+    "portfolio": "Education",
+    "official_website": "https://www.unitec.ac.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "UnitecNZ",
+        "url": "https://www.facebook.com/UnitecNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Unitec",
+        "url": "https://www.linkedin.com/school/unitec",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "unitecnz",
+        "url": "https://www.instagram.com/unitecnz",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "UnitecNZ",
+        "url": "https://www.youtube.com/@UnitecNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "waipa-district-council",
+    "name": "Waipa District Council",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.waipadc.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "WaipaDistrictCouncil",
+        "url": "https://www.facebook.com/WaipaDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

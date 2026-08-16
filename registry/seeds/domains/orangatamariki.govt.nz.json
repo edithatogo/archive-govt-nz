@@ -1,0 +1,36 @@
+[
+  {
+    "agency_id": "oranga-tamariki",
+    "name": "Oranga Tamariki—Ministry for Children",
+    "type": "Department",
+    "portfolio": "Children",
+    "official_website": "https://www.orangatamariki.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "OrangaTamariki",
+        "url": "https://www.facebook.com/OrangaTamariki",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "OrangaTamariki",
+        "url": "https://www.youtube.com/@OrangaTamariki",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Oranga Tamariki",
+        "url": "https://www.linkedin.com/company/oranga-tamariki/",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "x": {
+        "handle": "OrangaTamariki",
+        "url": "https://x.com/OrangaTamariki",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "environmental-protection-authority",
+    "name": "Environmental Protection Authority (Te Mana Rauhī Taiao)",
+    "type": "Crown Agent",
+    "portfolio": "Environment",
+    "official_website": "https://www.epa.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "linkedin": {
+        "handle": "Environmental Protection Authority NZ",
+        "url": "https://www.linkedin.com/company/environmental-protection-authority-nz",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

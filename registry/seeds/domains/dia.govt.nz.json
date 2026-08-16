@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "department-of-internal-affairs",
+    "name": "Department of Internal Affairs (Te Tari Taiwhenua)",
+    "type": "Department",
+    "portfolio": "Internal Affairs",
+    "official_website": "https://www.dia.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "DIAgovtnz",
+        "url": "https://www.facebook.com/DIAgovtnz",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

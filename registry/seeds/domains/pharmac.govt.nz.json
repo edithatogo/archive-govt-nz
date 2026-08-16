@@ -1,0 +1,24 @@
+[
+  {
+    "agency_id": "pharmac",
+    "name": "Pharmaceutical Management Agency (Pharmac, Te Pātaka Whaioranga)",
+    "type": "Crown Agent",
+    "portfolio": "Health",
+    "official_website": "https://www.pharmac.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "PHARMAC",
+        "url": "https://www.facebook.com/pharmacnz",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Pharmac",
+        "url": "https://www.linkedin.com/company/pharmac",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

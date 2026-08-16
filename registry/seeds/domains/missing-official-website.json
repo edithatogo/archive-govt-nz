@@ -1,0 +1,47 @@
+[
+  {
+    "agency_id": "crown-infrastructure-delivery",
+    "name": "Crown Infrastructure Delivery Limited",
+    "type": "Schedule 4a Company",
+    "portfolio": "Infrastructure",
+    "official_website": "",
+    "status": "active",
+    "social_profiles": {}
+  },
+  {
+    "agency_id": "crown-regional-holdings",
+    "name": "Crown Regional Holdings Limited",
+    "type": "Schedule 4a Company",
+    "portfolio": "Finance",
+    "official_website": "",
+    "status": "active",
+    "social_profiles": {}
+  },
+  {
+    "agency_id": "ferry-holdings",
+    "name": "Ferry Holdings Limited",
+    "type": "Schedule 4a Company",
+    "portfolio": "Transport",
+    "official_website": "",
+    "status": "active",
+    "social_profiles": {}
+  },
+  {
+    "agency_id": "national-infrastructure-funding",
+    "name": "National Infrastructure Funding and Financing Limited",
+    "type": "Schedule 4a Company",
+    "portfolio": "Infrastructure",
+    "official_website": "",
+    "status": "active",
+    "social_profiles": {}
+  },
+  {
+    "agency_id": "ngapuhi-investment-fund",
+    "name": "Ngāpuhi Investment Fund (Tupu Tonu)",
+    "type": "Schedule 4a Company",
+    "portfolio": "Māori Development",
+    "official_website": "",
+    "status": "active",
+    "social_profiles": {}
+  }
+]

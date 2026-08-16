@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "ministry-for-the-environment",
+    "name": "Ministry for the Environment (Manatū Mō Te Taiao)",
+    "type": "Department",
+    "portfolio": "Environment",
+    "official_website": "https://www.mfe.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "linkedin": {
+        "handle": "Ministry for the Environment",
+        "url": "https://www.linkedin.com/company/ministry-for-the-environment",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

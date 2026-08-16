@@ -1,0 +1,418 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "NZ Persons Registry — MPs and Public Sector Leaders",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+            "person_id": {
+                "type": "string",
+                "pattern": "^[a-z0-9-]+$",
+                "description": "Kebab-case unique identifier for the person."
+            },
+            "full_name": {
+                "type": "string",
+                "description": "Full legal name of the person."
+            },
+            "preferred_name": {
+                "type": [
+                    "string",
+                    "null"
+                ],
+                "description": "Commonly used name or preferred form of address."
+            },
+            "honorific": {
+                "type": "string",
+                "description": "Honorific prefix (e.g., Hon, Dr, Rt Hon)."
+            },
+            "party_id": {
+                "type": [
+                    "string",
+                    "null"
+                ],
+                "pattern": "^[a-z0-9-]+$",
+                "description": "Political party affiliation (party_id from parties.json). Null for non-partisan officeholders (Governor-General, Judges, Chief Executives, etc.)."
+            },
+            "electorate": {
+                "type": [
+                    "string",
+                    "null"
+                ],
+                "description": "Electorate name for electorate MPs, or 'List' for list MPs."
+            },
+            "list_rank": {
+                "type": "integer",
+                "minimum": 1,
+                "description": "Position on the party list for list MPs."
+            },
+            "member_type": {
+                "type": [
+                    "string",
+                    "null"
+                ],
+                "enum": [
+                    "electorate",
+                    "list",
+                    null
+                ],
+                "description": "Whether the MP holds an electorate seat or is a list MP. Null/absent for non-MP officeholders."
+            },
+            "gender": {
+                "type": [
+                    "string",
+                    "null"
+                ],
+                "enum": [
+                    "male",
+                    "female",
+                    "non-binary",
+                    null
+                ],
+                "description": "Gender of the person."
+            },
+            "image_url": {
+                "type": [
+                    "string",
+                    "null"
+                ],
+                "format": "uri",
+                "description": "URL of the official portrait or photo."
+            },
+            "biography_url": {
+                "type": [
+                    "string",
+                    "null"
+                ],
+                "format": "uri",
+                "description": "URL of the official parliamentary biography."
+            },
+            "social_profiles": {
+                "type": "object",
+                "description": "Map of social media platform keys to profile details.",
+                "additionalProperties": {
+                    "type": "object",
+                    "properties": {
+                        "handle": {
+                            "type": "string"
+                        },
+                        "url": {
+                            "type": "string",
+                            "format": "uri"
+                        },
+                        "status": {
+                            "type": "string",
+                            "enum": [
+                                "active",
+                                "inactive",
+                                "deactivated"
+                            ]
+                        },
+                        "is_verified": {
+                            "type": "boolean",
+                            "description": "Whether the account is verified/official."
+                        },
+                        "last_checked_at": {
+                            "type": "string",
+                            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                            "description": "Date this profile was last manually verified."
+                        },
+                        "last_seen_at": {
+                            "type": "string",
+                            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                            "description": "Date this profile was last observed online."
+                        },
+                        "verification_status": {
+                            "type": "string",
+                            "enum": [
+                                "current",
+                                "inactive",
+                                "deactivated",
+                                "historical",
+                                "unknown"
+                            ],
+                            "description": "Operational verification state used for refresh cadence reporting."
+                        },
+                        "account_classification": {
+                            "type": "string",
+                            "enum": [
+                                "official",
+                                "campaign",
+                                "personal-public",
+                                "office",
+                                "party",
+                                "inactive",
+                                "deactivated"
+                            ],
+                            "description": "Account ownership or use classification."
+                        },
+                        "syndication_classification": {
+                            "type": "string",
+                            "enum": [
+                                "unique",
+                                "syndicated",
+                                "mixed",
+                                "unknown"
+                            ],
+                            "description": "Whether profile content is unique, syndicated, mixed, or unknown."
+                        },
+                        "evidence": {
+                            "type": "object",
+                            "properties": {
+                                "source_url": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "description": "URL used as evidence for this profile mapping."
+                                },
+                                "source_type": {
+                                    "type": "string",
+                                    "enum": [
+                                        "official-website",
+                                        "platform-profile",
+                                        "public-registry",
+                                        "manual-review",
+                                        "archive",
+                                        "other"
+                                    ],
+                                    "description": "Kind of evidence supporting this profile mapping."
+                                },
+                                "captured_at": {
+                                    "type": "string",
+                                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                                    "description": "Date the evidence was captured or reviewed."
+                                },
+                                "reviewed_by": {
+                                    "type": "string",
+                                    "description": "Reviewer or process that accepted the evidence."
+                                },
+                                "notes": {
+                                    "type": "string",
+                                    "description": "Short provenance note for ambiguous mappings."
+                                }
+                            },
+                            "required": [
+                                "source_url",
+                                "source_type",
+                                "captured_at"
+                            ],
+                            "additionalProperties": false,
+                            "description": "Optional provenance metadata for this profile mapping."
+                        }
+                    },
+                    "required": [
+                        "handle",
+                        "url",
+                        "status"
+                    ]
+                }
+            },
+            "roles": {
+                "type": "array",
+                "description": "Current and past roles held by this person.",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "role_id": {
+                            "type": "string",
+                            "pattern": "^[a-z0-9-]+$"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "Official title of the role."
+                        },
+                        "organization": {
+                            "type": "string",
+                            "pattern": "^[a-z0-9-]+$",
+                            "description": "agency_id this role belongs to."
+                        },
+                        "organization_name": {
+                            "type": "string"
+                        },
+                        "category": {
+                            "type": "string",
+                            "enum": [
+                                "mp",
+                                "minister",
+                                "speaker",
+                                "governor-general",
+                                "commissioner",
+                                "chief-executive",
+                                "ombudsman",
+                                "auditor-general",
+                                "reserve-bank-governor",
+                                "police-commissioner",
+                                "defence-chief",
+                                "statutory-officer",
+                                "judge",
+                                "party-leader",
+                                "party-president",
+                                "mayor",
+                                "councillor",
+                                "local-government-ceo",
+                                "spokesperson",
+                                "shadow-minister",
+                                "deputy-leader",
+                                "deputy-shadow-leader",
+                                "opposition-leader"
+                            ]
+                        },
+                        "portfolio": {
+                            "type": "string"
+                        },
+                        "start_date": {
+                            "type": "string",
+                            "pattern": "^\\d{4}(-\\d{2}(-\\d{2})?)?$"
+                        },
+                        "end_date": {
+                            "type": [
+                                "string",
+                                "null"
+                            ],
+                            "pattern": "^\\d{4}(-\\d{2}(-\\d{2})?)?$"
+                        },
+                        "is_current": {
+                            "type": "boolean"
+                        }
+                    },
+                    "required": [
+                        "role_id",
+                        "title",
+                        "organization",
+                        "category",
+                        "is_current"
+                    ]
+                }
+            },
+            "tenure_linked_profiles": {
+                "type": "array",
+                "description": "Social profiles linked to specific roles for tenure tracking.",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "platform": {
+                            "type": "string"
+                        },
+                        "handle": {
+                            "type": "string"
+                        },
+                        "url": {
+                            "type": "string",
+                            "format": "uri"
+                        },
+                        "role_id": {
+                            "type": "string",
+                            "pattern": "^[a-z0-9-]+$"
+                        },
+                        "start_date": {
+                            "type": "string",
+                            "pattern": "^\\d{4}(-\\d{2}(-\\d{2})?)?$"
+                        },
+                        "end_date": {
+                            "type": [
+                                "string",
+                                "null"
+                            ],
+                            "pattern": "^\\d{4}(-\\d{2}(-\\d{2})?)?$"
+                        },
+                        "last_checked_at": {
+                            "type": "string",
+                            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                            "description": "Date this profile was last manually verified."
+                        },
+                        "last_seen_at": {
+                            "type": "string",
+                            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                            "description": "Date this profile was last observed online."
+                        },
+                        "verification_status": {
+                            "type": "string",
+                            "enum": [
+                                "current",
+                                "inactive",
+                                "deactivated",
+                                "historical",
+                                "unknown"
+                            ],
+                            "description": "Operational verification state used for refresh cadence reporting."
+                        },
+                        "account_classification": {
+                            "type": "string",
+                            "enum": [
+                                "official",
+                                "campaign",
+                                "personal-public",
+                                "office",
+                                "party",
+                                "inactive",
+                                "deactivated"
+                            ],
+                            "description": "Account ownership or use classification."
+                        },
+                        "syndication_classification": {
+                            "type": "string",
+                            "enum": [
+                                "unique",
+                                "syndicated",
+                                "mixed",
+                                "unknown"
+                            ],
+                            "description": "Whether profile content is unique, syndicated, mixed, or unknown."
+                        },
+                        "evidence": {
+                            "type": "object",
+                            "properties": {
+                                "source_url": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "description": "URL used as evidence for this profile mapping."
+                                },
+                                "source_type": {
+                                    "type": "string",
+                                    "enum": [
+                                        "official-website",
+                                        "platform-profile",
+                                        "public-registry",
+                                        "manual-review",
+                                        "archive",
+                                        "other"
+                                    ],
+                                    "description": "Kind of evidence supporting this profile mapping."
+                                },
+                                "captured_at": {
+                                    "type": "string",
+                                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                                    "description": "Date the evidence was captured or reviewed."
+                                },
+                                "reviewed_by": {
+                                    "type": "string",
+                                    "description": "Reviewer or process that accepted the evidence."
+                                },
+                                "notes": {
+                                    "type": "string",
+                                    "description": "Short provenance note for ambiguous mappings."
+                                }
+                            },
+                            "required": [
+                                "source_url",
+                                "source_type",
+                                "captured_at"
+                            ],
+                            "additionalProperties": false,
+                            "description": "Optional provenance metadata for this profile mapping."
+                        }
+                    },
+                    "required": [
+                        "platform",
+                        "handle",
+                        "url",
+                        "role_id"
+                    ]
+                }
+            }
+        },
+        "required": [
+            "person_id",
+            "full_name",
+            "roles"
+        ]
+    }
+}

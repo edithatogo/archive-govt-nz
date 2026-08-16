@@ -1,0 +1,32 @@
+[
+  {
+    "agency_id": "creative-nz",
+    "name": "Arts Council of New Zealand (Creative New Zealand)",
+    "type": "Autonomous Crown Entity",
+    "portfolio": "Arts, Culture and Heritage",
+    "official_website": "https://www.creativenz.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "CreativeNZ",
+        "url": "https://www.facebook.com/CreativeNZ",
+        "status": "active"
+      },
+      "instagram": {
+        "handle": "creativenz",
+        "url": "https://www.instagram.com/creativenz",
+        "status": "active"
+      },
+      "linkedin": {
+        "handle": "Creative New Zealand",
+        "url": "https://www.linkedin.com/company/creative-new-zealand",
+        "status": "active"
+      },
+      "x": {
+        "handle": "CreativeNZ",
+        "url": "https://x.com/CreativeNZ",
+        "status": "active"
+      }
+    }
+  }
+]

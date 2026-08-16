@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "marlborough-district-council",
+    "name": "Marlborough District Council (Te Kaunihera o te Wairau)",
+    "type": "Unitary Authority",
+    "portfolio": "Local Government",
+    "official_website": "https://www.marlborough.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "MarlboroughDistrictCouncil",
+        "url": "https://www.facebook.com/MarlboroughDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

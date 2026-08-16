@@ -1,0 +1,30 @@
+[
+  {
+    "agency_id": "mbie",
+    "name": "Ministry of Business, Innovation and Employment (Hīkina Whakatutuki)",
+    "type": "Department",
+    "portfolio": "Economic Development",
+    "official_website": "https://www.mbie.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "MBIEgovtnz",
+        "url": "https://www.facebook.com/MBIEgovtnz",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Ministry of Business, Innovation and Employment",
+        "url": "https://www.linkedin.com/company/ministry-of-business-innovation-and-employment/",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "mbienz",
+        "url": "https://www.youtube.com/@mbienz",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

@@ -1,0 +1,27 @@
+[
+  {
+    "agency_id": "health-nz",
+    "name": "Health New Zealand (Te Whatu Ora)",
+    "type": "Crown Agent",
+    "portfolio": "Health",
+    "official_website": "https://www.tewhatuora.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "bluesky": {
+        "handle": "healthnz.govt.nz",
+        "url": "https://bsky.app/profile/healthnz.govt.nz",
+        "status": "active"
+      },
+      "facebook": {
+        "handle": "HealthinstitutionsNZ",
+        "url": "https://www.facebook.com/HealthNewZealand",
+        "status": "active"
+      },
+      "linkedin": {
+        "handle": "Te Whatu Ora Health New Zealand",
+        "url": "https://www.linkedin.com/company/te-whatu-ora-health-new-zealand",
+        "status": "active"
+      }
+    }
+  }
+]

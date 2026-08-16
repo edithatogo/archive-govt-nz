@@ -1,0 +1,36 @@
+[
+  {
+    "agency_id": "whaikaha",
+    "name": "Whaikaha – Ministry of Disabled People",
+    "type": "Department",
+    "portfolio": "Disability Issues",
+    "official_website": "https://www.whaikaha.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "WhaikahaNZ",
+        "url": "https://www.facebook.com/WhaikahaNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Whaikaha - Ministry of Disabled People",
+        "url": "https://www.linkedin.com/company/whaikaha-ministry-of-disabled-people/",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "WhaikahaNZ",
+        "url": "https://www.youtube.com/@WhaikahaNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "x": {
+        "handle": "WhaikahaNZ",
+        "url": "https://x.com/WhaikahaNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

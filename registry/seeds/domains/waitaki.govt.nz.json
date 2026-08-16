@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "waitaki-district-council",
+    "name": "Waitaki District Council",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.waitaki.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "WaitakiDistrictCouncil",
+        "url": "https://www.facebook.com/WaitakiDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "rangitikei-district-council",
+    "name": "Rangitīkei District Council",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.rangitikei.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "RangitikeiDistrictCouncil",
+        "url": "https://www.facebook.com/RangitikeiDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

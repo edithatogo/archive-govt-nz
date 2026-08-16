@@ -1,0 +1,30 @@
+[
+  {
+    "agency_id": "city-rail-link",
+    "name": "City Rail Link Limited",
+    "type": "Schedule 4a Company",
+    "portfolio": "Transport",
+    "official_website": "https://www.cityraillink.co.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "CityRailLink",
+        "url": "https://www.facebook.com/CityRailLink",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "City Rail Link Ltd",
+        "url": "https://www.linkedin.com/company/city-rail-link-ltd",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "cityraillink",
+        "url": "https://www.instagram.com/cityraillink",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

@@ -1,0 +1,24 @@
+[
+  {
+    "agency_id": "northland-regional-council",
+    "name": "Northland Regional Council (Te Kaitiaki Taiao mō te Taitokerau)",
+    "type": "Regional Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.nrc.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "NorthlandRegionalCouncil",
+        "url": "https://www.facebook.com/NorthlandRegionalCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Northland Regional Council",
+        "url": "https://www.linkedin.com/company/northland-regional-council",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

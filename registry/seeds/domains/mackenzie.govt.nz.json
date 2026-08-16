@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "mackenzie-district-council",
+    "name": "Mackenzie District Council",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.mackenzie.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "MackenzieDistrictCouncil",
+        "url": "https://www.facebook.com/MackenzieDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

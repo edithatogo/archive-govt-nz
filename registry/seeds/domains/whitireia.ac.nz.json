@@ -1,0 +1,36 @@
+[
+  {
+    "agency_id": "whitireia",
+    "name": "Whitireia New Zealand",
+    "type": "ITP/Polytechnic",
+    "portfolio": "Education",
+    "official_website": "https://www.whitireia.ac.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "WhitireiaNZ",
+        "url": "https://www.facebook.com/WhitireiaNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Whitireia",
+        "url": "https://www.linkedin.com/school/whitireia",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "whitireianz",
+        "url": "https://www.instagram.com/whitireianz",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "WhitireiaNZ",
+        "url": "https://www.youtube.com/@WhitireiaNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

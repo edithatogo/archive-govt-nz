@@ -1,0 +1,17 @@
+[
+  {
+    "agency_id": "beehive-nz",
+    "name": "Beehive NZ",
+    "type": "Other",
+    "portfolio": "Executive",
+    "official_website": "https://www.beehive.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "bluesky": {
+        "handle": "beehivenz.bsky.social",
+        "url": "https://bsky.app/profile/beehivenz.bsky.social",
+        "status": "active"
+      }
+    }
+  }
+]

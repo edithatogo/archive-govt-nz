@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "waimate-district-council",
+    "name": "Waimate District Council",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.waimatedc.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "WaimateDistrictCouncil",
+        "url": "https://www.facebook.com/WaimateDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

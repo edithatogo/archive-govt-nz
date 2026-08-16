@@ -1,0 +1,36 @@
+[
+  {
+    "agency_id": "waka-kotahi",
+    "name": "New Zealand Transport Agency (Waka Kotahi)",
+    "type": "Crown Agent",
+    "portfolio": "Transport",
+    "official_website": "https://www.nzta.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "NZ Transport Agency Waka Kotahi",
+        "url": "https://www.facebook.com/nztransportagency",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "x": {
+        "handle": "NZTA",
+        "url": "https://x.com/NZTA",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "NZ Transport Agency Waka Kotahi",
+        "url": "https://www.linkedin.com/company/nz-transport-agency-waka-kotahi",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "nzta",
+        "url": "https://www.youtube.com/@nzta",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

@@ -1,0 +1,36 @@
+[
+  {
+    "agency_id": "christchurch-city-council",
+    "name": "Christchurch City Council (Te Kaunihera o Ōtautahi)",
+    "type": "City Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.ccc.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "ChristchurchCityCouncil",
+        "url": "https://www.facebook.com/ChristchurchCityCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "x": {
+        "handle": "ChristchurchCC",
+        "url": "https://x.com/ChristchurchCC",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "christchurchcitycouncil",
+        "url": "https://www.instagram.com/christchurchcitycouncil/",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Christchurch City Council",
+        "url": "https://www.linkedin.com/company/christchurch-city-council",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

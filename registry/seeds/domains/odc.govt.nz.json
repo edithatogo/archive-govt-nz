@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "opotiki-district-council",
+    "name": "Ōpōtiki District Council",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.odc.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "OpotikiDistrictCouncil",
+        "url": "https://www.facebook.com/OpotikiDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

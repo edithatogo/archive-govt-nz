@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "rotorua-lakes-council",
+    "name": "Rotorua Lakes Council (Te Kaunihera o ngā Roto o Rotorua)",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.rotorualakescouncil.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "RotoruaLakesCouncil",
+        "url": "https://www.facebook.com/RotoruaLakesCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

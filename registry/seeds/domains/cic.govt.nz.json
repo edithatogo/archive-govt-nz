@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "chatham-islands-council",
+    "name": "Chatham Islands Council (Te Kaunihera o Wharekauri)",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.cic.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "ChathamIslandsCouncil",
+        "url": "https://www.facebook.com/ChathamIslandsCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

@@ -1,0 +1,24 @@
+[
+  {
+    "agency_id": "maritime-nz",
+    "name": "Maritime New Zealand (Nō te rere moana Aotearoa)",
+    "type": "Crown Agent",
+    "portfolio": "Transport",
+    "official_website": "https://www.maritimenz.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "Maritime NZ",
+        "url": "https://www.facebook.com/maritimenz",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Maritime New Zealand",
+        "url": "https://www.linkedin.com/company/maritime-new-zealand",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

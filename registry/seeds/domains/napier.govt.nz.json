@@ -1,0 +1,36 @@
+[
+  {
+    "agency_id": "napier-city-council",
+    "name": "Napier City Council (Te Kaunihera o Ahurire)",
+    "type": "City Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.napier.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "NapierCityCouncil",
+        "url": "https://www.facebook.com/NapierCityCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "napiercitycouncil",
+        "url": "https://www.instagram.com/napiercitycouncil/",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "x": {
+        "handle": "NapierCouncil",
+        "url": "https://x.com/NapierCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Napier City Council",
+        "url": "https://www.linkedin.com/company/napier-city-council",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

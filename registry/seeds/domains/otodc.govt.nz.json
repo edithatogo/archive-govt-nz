@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "otorohanga-district-council",
+    "name": "Ōtorohanga District Council",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.otodc.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "OtorohangaDistrictCouncil",
+        "url": "https://www.facebook.com/OtorohangaDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

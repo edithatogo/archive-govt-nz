@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "health-research-council",
+    "name": "Health Research Council of New Zealand",
+    "type": "Crown Agent",
+    "portfolio": "Health",
+    "official_website": "https://www.hrc.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "x": {
+        "handle": "HRC",
+        "url": "https://x.com/HRC",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

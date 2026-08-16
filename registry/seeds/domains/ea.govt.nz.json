@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "electricity-authority",
+    "name": "Electricity Authority (Te Mana Hiko)",
+    "type": "Independent Crown Entity",
+    "portfolio": "Energy and Resources",
+    "official_website": "https://www.ea.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "linkedin": {
+        "handle": "Electricity Authority",
+        "url": "https://www.linkedin.com/company/electricity-authority-nz",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

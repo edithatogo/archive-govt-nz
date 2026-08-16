@@ -1,0 +1,30 @@
+[
+  {
+    "agency_id": "tauranga-city-council",
+    "name": "Tauranga City Council",
+    "type": "City Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.tauranga.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "TaurangaCityCouncil",
+        "url": "https://www.facebook.com/TaurangaCityCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "taurangacitycouncil",
+        "url": "https://www.instagram.com/taurangacitycouncil/",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Tauranga City Council",
+        "url": "https://www.linkedin.com/company/tauranga-city-council",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

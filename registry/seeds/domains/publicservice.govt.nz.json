@@ -1,0 +1,36 @@
+[
+  {
+    "agency_id": "public-service-commission",
+    "name": "Public Service Commission (Te Kawa Mataaho)",
+    "type": "Department",
+    "portfolio": "Public Service",
+    "official_website": "https://www.publicservice.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "PublicServiceCommissionNZ",
+        "url": "https://www.facebook.com/PublicServiceCommissionNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Public Service Commission Te Kawa Mataaho",
+        "url": "https://www.linkedin.com/company/te-kawa-mataaho/",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "x": {
+        "handle": "NZPublicService",
+        "url": "https://x.com/NZPublicService",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "nzpublicservice",
+        "url": "https://www.instagram.com/nzpublicservice/",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

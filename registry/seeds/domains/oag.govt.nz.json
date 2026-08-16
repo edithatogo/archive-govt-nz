@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "office-of-the-auditor-general",
+    "name": "Office of the Controller and Auditor-General (Tumuaki o te Mana Arotake)",
+    "type": "Office of Parliament",
+    "portfolio": "Parliament",
+    "official_website": "https://www.oag.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "linkedin": {
+        "handle": "Office of the Auditor-General New Zealand",
+        "url": "https://www.linkedin.com/company/office-of-the-auditor-general-new-zealand",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

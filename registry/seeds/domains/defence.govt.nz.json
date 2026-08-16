@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "ministry-of-defence",
+    "name": "Ministry of Defence (Manatū Kaupapa Waonga)",
+    "type": "Department",
+    "portfolio": "Defence",
+    "official_website": "https://www.defence.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "linkedin": {
+        "handle": "Ministry of Defence New Zealand",
+        "url": "https://www.linkedin.com/company/ministry-of-defence-new-zealand",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

@@ -1,0 +1,832 @@
+[
+  {
+    "person_id": "chris-hipkins",
+    "full_name": "Christopher John Hipkins",
+    "honorific": "Rt Hon",
+    "party_id": "labour-party",
+    "electorate": "Remutaka",
+    "member_type": "electorate",
+    "gender": "male",
+    "image_url": "https://en.wikipedia.org/wiki/Chris_Hipkins#/media/File:Chris_Hipkins_2022_(cropped).jpg",
+    "biography_url": "https://www.parliament.nz/en/mps-and-electorates/members-of-parliament/hipkins-chris/",
+    "social_profiles": {
+      "facebook": {
+        "handle": "",
+        "url": "https://www.facebook.com/ChrisHipkinsMP/",
+        "status": "active"
+      },
+      "x": {
+        "handle": "ChrisHipkins",
+        "url": "https://x.com/ChrisHipkins",
+        "status": "active"
+      },
+      "instagram": {
+        "handle": "",
+        "url": "https://www.instagram.com/chrishipkinsmp/",
+        "status": "active"
+      }
+    },
+    "roles": [
+      {
+        "title": "Member of Parliament",
+        "electorate": "Remutaka",
+        "start_date": "2008-11-08",
+        "role_id": "chris-hipkins-1-member-of-parliament",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "mp",
+        "is_current": true
+      },
+      {
+        "title": "Leader of the Opposition",
+        "start_date": "2023-11-27",
+        "role_id": "chris-hipkins-2-leader-of-the-opposition",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "party-leader",
+        "is_current": true
+      },
+      {
+        "title": "Leader of the Labour Party",
+        "start_date": "2023-01-22",
+        "role_id": "chris-hipkins-3-leader-of-the-labour-party",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "party-leader",
+        "is_current": true
+      },
+      {
+        "title": "Spokesperson for Ministerial Services",
+        "start_date": "2023-11-30",
+        "role_id": "chris-hipkins-4-spokesperson-for-ministerial-services",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "spokesperson",
+        "is_current": true
+      },
+      {
+        "title": "Spokesperson for National Security and Intelligence",
+        "start_date": "2023-11-30",
+        "role_id": "chris-hipkins-5-spokesperson-for-national-security-and-intelligence",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "spokesperson",
+        "is_current": true
+      }
+    ]
+  },
+  {
+    "person_id": "carmel-sepuloni",
+    "full_name": "Carmel Jean Sepuloni",
+    "honorific": "Hon",
+    "party_id": "labour-party",
+    "electorate": "Kelston",
+    "member_type": "electorate",
+    "gender": "female",
+    "image_url": "https://en.wikipedia.org/wiki/Carmel_Sepuloni#/media/File:Carmel_Sepuloni_2023.jpg",
+    "biography_url": "https://www.parliament.nz/en/mps-and-electorates/members-of-parliament/sepuloni-carmel/",
+    "social_profiles": {
+      "facebook": {
+        "handle": "",
+        "url": "https://www.facebook.com/CarmelSepuloniMP/",
+        "status": "active"
+      },
+      "x": {
+        "handle": "carmelsepuloni",
+        "url": "https://x.com/carmelsepuloni",
+        "status": "active"
+      },
+      "instagram": {
+        "handle": "",
+        "url": "https://www.instagram.com/carmelsepuloni/",
+        "status": "active"
+      }
+    },
+    "roles": [
+      {
+        "title": "Member of Parliament",
+        "electorate": "Kelston",
+        "start_date": "2014-09-21",
+        "role_id": "carmel-sepuloni-1-member-of-parliament",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "mp",
+        "is_current": true
+      },
+      {
+        "title": "Deputy Leader of the Opposition",
+        "start_date": "2023-11-27",
+        "role_id": "carmel-sepuloni-2-deputy-leader-of-the-opposition",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "party-leader",
+        "is_current": true
+      },
+      {
+        "title": "Deputy Leader of the Labour Party",
+        "start_date": "2023-11-07",
+        "role_id": "carmel-sepuloni-3-deputy-leader-of-the-labour-party",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "party-leader",
+        "is_current": true
+      },
+      {
+        "title": "Spokesperson for Auckland Issues",
+        "start_date": "2023-11-30",
+        "role_id": "carmel-sepuloni-4-spokesperson-for-auckland-issues",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "spokesperson",
+        "is_current": true
+      },
+      {
+        "title": "Spokesperson for Pacific Peoples",
+        "start_date": "2023-11-30",
+        "role_id": "carmel-sepuloni-5-spokesperson-for-pacific-peoples",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "spokesperson",
+        "is_current": true
+      },
+      {
+        "title": "Spokesperson for Women",
+        "start_date": "2025-03-07",
+        "role_id": "carmel-sepuloni-6-spokesperson-for-women",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "spokesperson",
+        "is_current": true
+      }
+    ]
+  },
+  {
+    "person_id": "barbara-edmonds",
+    "full_name": "Barbara Rachael Fati Palepa Edmonds",
+    "honorific": "Hon",
+    "party_id": "labour-party",
+    "electorate": "Mana",
+    "member_type": "electorate",
+    "gender": "female",
+    "image_url": "https://en.wikipedia.org/wiki/Barbara_Edmonds#/media/File:Barbara_Edmonds_2023.jpg",
+    "biography_url": "https://www.parliament.nz/en/mps-and-electorates/members-of-parliament/edmonds-barbara/",
+    "social_profiles": {
+      "facebook": {
+        "handle": "",
+        "url": "https://www.facebook.com/BarbaraEdmondsMP/",
+        "status": "active"
+      },
+      "x": {
+        "handle": "BarbaraEdmondsMP",
+        "url": "https://x.com/BarbaraEdmondsMP",
+        "status": "active"
+      }
+    },
+    "roles": [
+      {
+        "title": "Member of Parliament",
+        "electorate": "Mana",
+        "start_date": "2020-10-17",
+        "role_id": "barbara-edmonds-1-member-of-parliament",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "mp",
+        "is_current": true
+      },
+      {
+        "title": "Spokesperson for Finance",
+        "start_date": "2024-02-20",
+        "role_id": "barbara-edmonds-2-spokesperson-for-finance",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "spokesperson",
+        "is_current": true
+      },
+      {
+        "title": "Spokesperson for the Economy, Savings and Interest",
+        "start_date": "2025-03-07",
+        "role_id": "barbara-edmonds-3-spokesperson-for-the-economy--savings-and-interest",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "spokesperson",
+        "is_current": true
+      }
+    ]
+  },
+  {
+    "person_id": "megan-woods",
+    "full_name": "Megan Cherie Woods",
+    "honorific": "Hon",
+    "party_id": "labour-party",
+    "electorate": "Wigram",
+    "member_type": "electorate",
+    "gender": "female",
+    "image_url": "https://en.wikipedia.org/wiki/Megan_Woods#/media/File:Megan_Woods_2023.jpg",
+    "biography_url": "https://www.parliament.nz/en/mps-and-electorates/members-of-parliament/woods-megan/",
+    "social_profiles": {
+      "facebook": {
+        "handle": "",
+        "url": "https://www.facebook.com/MeganWoodsMP/",
+        "status": "active"
+      },
+      "x": {
+        "handle": "Megan_Woods",
+        "url": "https://x.com/Megan_Woods",
+        "status": "active"
+      }
+    },
+    "roles": [
+      {
+        "title": "Member of Parliament",
+        "electorate": "Wigram",
+        "start_date": "2011-11-26",
+        "role_id": "megan-woods-1-member-of-parliament",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "mp",
+        "is_current": true
+      },
+      {
+        "title": "Spokesperson for Manufacturing and Industry",
+        "start_date": "2025-03-07",
+        "role_id": "megan-woods-2-spokesperson-for-manufacturing-and-industry",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "spokesperson",
+        "is_current": true
+      },
+      {
+        "title": "Spokesperson for Energy and Resources",
+        "start_date": "2023-11-30",
+        "role_id": "megan-woods-3-spokesperson-for-energy-and-resources",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "spokesperson",
+        "is_current": true
+      },
+      {
+        "title": "Associate Spokesperson for Finance",
+        "start_date": "2023-11-30",
+        "role_id": "megan-woods-4-associate-spokesperson-for-finance",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "spokesperson",
+        "is_current": true
+      }
+    ]
+  },
+  {
+    "person_id": "willie-jackson",
+    "full_name": "William Wakatere Jackson",
+    "honorific": "Hon",
+    "party_id": "labour-party",
+    "electorate": null,
+    "member_type": "list",
+    "gender": "male",
+    "image_url": "https://en.wikipedia.org/wiki/Willie_Jackson_(politician)#/media/File:Willie_Jackson_2023.jpg",
+    "biography_url": "https://www.parliament.nz/en/mps-and-electorates/members-of-parliament/jackson-willie/",
+    "social_profiles": {
+      "facebook": {
+        "handle": "",
+        "url": "https://www.facebook.com/WillieJacksonMP/",
+        "status": "active"
+      },
+      "x": {
+        "handle": "WillieJacksonMP",
+        "url": "https://x.com/WillieJacksonMP",
+        "status": "active"
+      }
+    },
+    "roles": [
+      {
+        "title": "Member of Parliament",
+        "start_date": "2017-09-23",
+        "role_id": "willie-jackson-1-member-of-parliament",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "mp",
+        "is_current": true
+      },
+      {
+        "title": "Spokesperson for Māori Development",
+        "start_date": "2023-11-30",
+        "role_id": "willie-jackson-2-spokesperson-for-m-ori-development",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "spokesperson",
+        "is_current": true
+      },
+      {
+        "title": "Spokesperson for Social Development",
+        "start_date": "2025-03-07",
+        "role_id": "willie-jackson-3-spokesperson-for-social-development",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "spokesperson",
+        "is_current": true
+      }
+    ]
+  },
+  {
+    "person_id": "ayesha-verrall",
+    "full_name": "Ayesha Jennifer Verrall",
+    "honorific": "Hon",
+    "party_id": "labour-party",
+    "electorate": null,
+    "member_type": "list",
+    "gender": "female",
+    "image_url": "https://en.wikipedia.org/wiki/Ayesha_Verrall#/media/File:Ayesha_Verrall_2023.jpg",
+    "biography_url": "https://www.parliament.nz/en/mps-and-electorates/members-of-parliament/verrall-ayesha/",
+    "social_profiles": {
+      "facebook": {
+        "handle": "",
+        "url": "https://www.facebook.com/AyeshaVerrallMP/",
+        "status": "active"
+      },
+      "x": {
+        "handle": "DrAyeshaVerrall",
+        "url": "https://x.com/DrAyeshaVerrall",
+        "status": "active"
+      }
+    },
+    "roles": [
+      {
+        "title": "Member of Parliament",
+        "start_date": "2020-10-17",
+        "role_id": "ayesha-verrall-1-member-of-parliament",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "mp",
+        "is_current": true
+      },
+      {
+        "title": "Spokesperson for Health",
+        "start_date": "2023-11-30",
+        "role_id": "ayesha-verrall-2-spokesperson-for-health",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "spokesperson",
+        "is_current": true
+      },
+      {
+        "title": "Spokesperson for Wellington Issues",
+        "start_date": "2023-11-30",
+        "role_id": "ayesha-verrall-3-spokesperson-for-wellington-issues",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "spokesperson",
+        "is_current": true
+      }
+    ]
+  },
+  {
+    "person_id": "kieran-mcanulty",
+    "full_name": "Kieran Michael McAnulty",
+    "honorific": "Hon",
+    "party_id": "labour-party",
+    "electorate": null,
+    "member_type": "list",
+    "gender": "male",
+    "image_url": "https://en.wikipedia.org/wiki/Kieran_McAnulty#/media/File:Kieran_McAnulty_2023.jpg",
+    "biography_url": "https://www.parliament.nz/en/mps-and-electorates/members-of-parliament/mcanulty-kieran/",
+    "social_profiles": {
+      "facebook": {
+        "handle": "",
+        "url": "https://www.facebook.com/KieranMcAnultyMP/",
+        "status": "active"
+      },
+      "x": {
+        "handle": "KieranMcAnulty",
+        "url": "https://x.com/KieranMcAnulty",
+        "status": "active"
+      }
+    },
+    "roles": [
+      {
+        "title": "Member of Parliament",
+        "start_date": "2017-09-23",
+        "role_id": "kieran-mcanulty-1-member-of-parliament",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "mp",
+        "is_current": true
+      },
+      {
+        "title": "Shadow Leader of the House",
+        "start_date": "2023-11-30",
+        "role_id": "kieran-mcanulty-2-shadow-leader-of-the-house",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "party-leader",
+        "is_current": true
+      },
+      {
+        "title": "Spokesperson for Housing",
+        "start_date": "2023-11-30",
+        "role_id": "kieran-mcanulty-3-spokesperson-for-housing",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "spokesperson",
+        "is_current": true
+      },
+      {
+        "title": "Spokesperson for Infrastructure",
+        "start_date": "2025-03-07",
+        "role_id": "kieran-mcanulty-4-spokesperson-for-infrastructure",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "spokesperson",
+        "is_current": true
+      },
+      {
+        "title": "Spokesperson for Public Investment",
+        "start_date": "2025-03-07",
+        "role_id": "kieran-mcanulty-5-spokesperson-for-public-investment",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "spokesperson",
+        "is_current": true
+      }
+    ]
+  },
+  {
+    "person_id": "willow-jean-prime",
+    "full_name": "Willow-Jean Prime",
+    "honorific": "Hon",
+    "party_id": "labour-party",
+    "electorate": null,
+    "member_type": "list",
+    "gender": "female",
+    "image_url": "https://en.wikipedia.org/wiki/Willow-Jean_Prime#/media/File:Willow-Jean_Prime_2023.jpg",
+    "biography_url": "https://www.parliament.nz/en/mps-and-electorates/members-of-parliament/prime-willow-jean/",
+    "social_profiles": {
+      "facebook": {
+        "handle": "",
+        "url": "https://www.facebook.com/WillowJeanPrimeMP/",
+        "status": "active"
+      },
+      "x": {
+        "handle": "WillowJeanPrime",
+        "url": "https://x.com/WillowJeanPrime",
+        "status": "active"
+      }
+    },
+    "roles": [
+      {
+        "title": "Member of Parliament",
+        "start_date": "2017-09-23",
+        "role_id": "willow-jean-prime-1-member-of-parliament",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "mp",
+        "is_current": true
+      },
+      {
+        "title": "Spokesperson for Education",
+        "start_date": "2025-03-07",
+        "role_id": "willow-jean-prime-2-spokesperson-for-education",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "spokesperson",
+        "is_current": true
+      },
+      {
+        "title": "Spokesperson for Children",
+        "start_date": "2023-11-30",
+        "role_id": "willow-jean-prime-3-spokesperson-for-children",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "spokesperson",
+        "is_current": true
+      }
+    ]
+  },
+  {
+    "person_id": "ginny-andersen",
+    "full_name": "Virginia Ruby Andersen",
+    "honorific": "Hon",
+    "party_id": "labour-party",
+    "electorate": null,
+    "member_type": "list",
+    "gender": "female",
+    "image_url": "https://en.wikipedia.org/wiki/Ginny_Andersen#/media/File:Ginny_Andersen_2023.jpg",
+    "biography_url": "https://www.parliament.nz/en/mps-and-electorates/members-of-parliament/andersen-ginny/",
+    "social_profiles": {
+      "facebook": {
+        "handle": "",
+        "url": "https://www.facebook.com/GinnyAndersenMP/",
+        "status": "active"
+      },
+      "x": {
+        "handle": "GinnyAndersen",
+        "url": "https://x.com/GinnyAndersen",
+        "status": "active"
+      }
+    },
+    "roles": [
+      {
+        "title": "Member of Parliament",
+        "start_date": "2017-09-23",
+        "role_id": "ginny-andersen-1-member-of-parliament",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "mp",
+        "is_current": true
+      },
+      {
+        "title": "Spokesperson for Police",
+        "start_date": "2023-11-30",
+        "role_id": "ginny-andersen-2-spokesperson-for-police",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "spokesperson",
+        "is_current": true
+      },
+      {
+        "title": "Spokesperson for Jobs and Incomes",
+        "start_date": "2025-03-07",
+        "role_id": "ginny-andersen-3-spokesperson-for-jobs-and-incomes",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "spokesperson",
+        "is_current": true
+      },
+      {
+        "title": "Spokesperson for Treaty of Waitangi Negotiations",
+        "start_date": "2025-03-07",
+        "role_id": "ginny-andersen-4-spokesperson-for-treaty-of-waitangi-negotiations",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "spokesperson",
+        "is_current": true
+      },
+      {
+        "title": "Spokesperson for Education",
+        "start_date": "2026-03-11",
+        "role_id": "ginny-andersen-5-spokesperson-for-education",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "spokesperson",
+        "is_current": true
+      }
+    ]
+  },
+  {
+    "person_id": "jan-tinetti",
+    "full_name": "Janette Rose Tinetti",
+    "honorific": "Hon",
+    "party_id": "labour-party",
+    "electorate": null,
+    "member_type": "list",
+    "gender": "female",
+    "image_url": "https://en.wikipedia.org/wiki/Jan_Tinetti#/media/File:Jan_Tinetti_2023.jpg",
+    "biography_url": "https://www.parliament.nz/en/mps-and-electorates/members-of-parliament/tinetti-jan/",
+    "social_profiles": {
+      "facebook": {
+        "handle": "",
+        "url": "https://www.facebook.com/JanTinettiMP/",
+        "status": "active"
+      },
+      "x": {
+        "handle": "JanTinetti",
+        "url": "https://x.com/JanTinetti",
+        "status": "active"
+      }
+    },
+    "roles": [
+      {
+        "title": "Member of Parliament",
+        "start_date": "2017-09-23",
+        "role_id": "jan-tinetti-1-member-of-parliament",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "mp",
+        "is_current": true
+      },
+      {
+        "title": "Spokesperson for Workplace Relations and Safety",
+        "start_date": "2025-03-07",
+        "role_id": "jan-tinetti-2-spokesperson-for-workplace-relations-and-safety",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "spokesperson",
+        "is_current": true
+      },
+      {
+        "title": "Spokesperson for Social Investment",
+        "start_date": "2025-03-07",
+        "role_id": "jan-tinetti-3-spokesperson-for-social-investment",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "spokesperson",
+        "is_current": true
+      },
+      {
+        "title": "Spokesperson for Early Childhood Education",
+        "start_date": "2025-03-07",
+        "role_id": "jan-tinetti-4-spokesperson-for-early-childhood-education",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "spokesperson",
+        "is_current": true
+      },
+      {
+        "title": "Spokesperson for Child Poverty Reduction",
+        "start_date": "2025-03-07",
+        "role_id": "jan-tinetti-5-spokesperson-for-child-poverty-reduction",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "spokesperson",
+        "is_current": true
+      }
+    ]
+  },
+  {
+    "person_id": "peeni-henare",
+    "full_name": "Peeni Ereatara Gladwyn Henare",
+    "honorific": "Hon",
+    "party_id": "labour-party",
+    "electorate": null,
+    "member_type": "list",
+    "gender": "male",
+    "image_url": "https://en.wikipedia.org/wiki/Peeni_Henare#/media/File:Peeni_Henare_2023.jpg",
+    "biography_url": "https://www.parliament.nz/en/mps-and-electorates/members-of-parliament/henare-peeni/",
+    "social_profiles": {
+      "facebook": {
+        "handle": "",
+        "url": "https://www.facebook.com/PeeniHenareMP/",
+        "status": "active"
+      },
+      "x": {
+        "handle": "PeeniHenare",
+        "url": "https://x.com/PeeniHenare",
+        "status": "active"
+      }
+    },
+    "roles": [
+      {
+        "title": "Member of Parliament",
+        "start_date": "2014-09-20",
+        "end_date": "2026-03-15",
+        "role_id": "peeni-henare-1-member-of-parliament",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "mp",
+        "is_current": true
+      },
+      {
+        "title": "Spokesperson for Foreign Affairs",
+        "start_date": "2023-11-30",
+        "end_date": "2026-03-11",
+        "role_id": "peeni-henare-2-spokesperson-for-foreign-affairs",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "spokesperson",
+        "is_current": true
+      },
+      {
+        "title": "Spokesperson for Defence",
+        "start_date": "2023-11-30",
+        "end_date": "2026-03-15",
+        "role_id": "peeni-henare-3-spokesperson-for-defence",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "spokesperson",
+        "is_current": true
+      },
+      {
+        "title": "Spokesperson for Economic Development",
+        "start_date": "2025-03-07",
+        "end_date": "2026-03-11",
+        "role_id": "peeni-henare-4-spokesperson-for-economic-development",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "spokesperson",
+        "is_current": true
+      },
+      {
+        "title": "Spokesperson for Māori-Crown Relations: Te Arawhiti",
+        "start_date": "2025-03-07",
+        "end_date": "2026-03-11",
+        "role_id": "peeni-henare-5-spokesperson-for-m-ori-crown-relations--te-arawhiti",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "spokesperson",
+        "is_current": true
+      },
+      {
+        "title": "Associate Spokesperson for Health",
+        "start_date": "2025-03-07",
+        "end_date": "2026-03-11",
+        "role_id": "peeni-henare-6-associate-spokesperson-for-health",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "spokesperson",
+        "is_current": true
+      }
+    ]
+  },
+  {
+    "person_id": "dan-rosewarne",
+    "full_name": "Dan Rosewarne",
+    "honorific": "",
+    "party_id": "labour-party",
+    "electorate": null,
+    "member_type": "list",
+    "gender": "male",
+    "image_url": null,
+    "biography_url": "https://www.parliament.nz/en/mps-and-electorates/members-of-parliament/rosewarne-dan/",
+    "social_profiles": {},
+    "roles": [
+      {
+        "title": "Member of Parliament",
+        "start_date": "2026-03-16",
+        "role_id": "dan-rosewarne-1-member-of-parliament",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "mp",
+        "is_current": true
+      }
+    ]
+  },
+  {
+    "person_id": "tangi-utikere",
+    "full_name": "Tangi William Edward Utikere",
+    "honorific": "",
+    "party_id": "labour-party",
+    "electorate": "Palmerston North",
+    "member_type": "electorate",
+    "gender": "male",
+    "image_url": "https://en.wikipedia.org/wiki/Tangi_Utikere#/media/File:Tangi_Utikere_2023.jpg",
+    "biography_url": "https://www.parliament.nz/en/mps-and-electorates/members-of-parliament/utikere-tangi/",
+    "social_profiles": {
+      "facebook": {
+        "handle": "",
+        "url": "https://www.facebook.com/TangiUtikereMP/",
+        "status": "active"
+      },
+      "x": {
+        "handle": "TangiUtikere",
+        "url": "https://x.com/TangiUtikere",
+        "status": "active"
+      }
+    },
+    "roles": [
+      {
+        "title": "Member of Parliament",
+        "electorate": "Palmerston North",
+        "start_date": "2020-10-17",
+        "role_id": "tangi-utikere-1-member-of-parliament",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "mp",
+        "is_current": true
+      },
+      {
+        "title": "Deputy Shadow Leader of the House",
+        "start_date": "2026-03-11",
+        "role_id": "tangi-utikere-2-deputy-shadow-leader-of-the-house",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "party-leader",
+        "is_current": true
+      },
+      {
+        "title": "Spokesperson for Transport",
+        "start_date": "2023-11-30",
+        "role_id": "tangi-utikere-3-spokesperson-for-transport",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "spokesperson",
+        "is_current": true
+      },
+      {
+        "title": "Spokesperson for Local Government",
+        "start_date": "2025-03-07",
+        "role_id": "tangi-utikere-4-spokesperson-for-local-government",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "spokesperson",
+        "is_current": true
+      },
+      {
+        "title": "Spokesperson for Racing",
+        "start_date": "2024-02-20",
+        "role_id": "tangi-utikere-5-spokesperson-for-racing",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "spokesperson",
+        "is_current": true
+      },
+      {
+        "title": "Spokesperson for Small Business",
+        "start_date": "2025-03-07",
+        "role_id": "tangi-utikere-6-spokesperson-for-small-business",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "spokesperson",
+        "is_current": true
+      }
+    ]
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "selwyn-district-council",
+    "name": "Selwyn District Council",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.selwyn.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "SelwynDistrictCouncil",
+        "url": "https://www.facebook.com/SelwynDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "agency_id": "guardians-of-nz-superannuation",
+    "name": "Guardians of New Zealand Superannuation",
+    "type": "Autonomous Crown Entity",
+    "portfolio": "Finance",
+    "official_website": "https://www.nzsuperfund.nz",
+    "status": "active",
+    "social_profiles": {
+      "linkedin": {
+        "handle": "NZ Super Fund",
+        "url": "https://www.linkedin.com/company/nz-super-fund",
+        "status": "active"
+      },
+      "x": {
+        "handle": "NZSuperFund",
+        "url": "https://x.com/NZSuperFund",
+        "status": "active"
+      }
+    }
+  }
+]

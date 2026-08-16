@@ -1,0 +1,239 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "NZ Political Parties Registry",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+            "party_id": {
+                "type": "string",
+                "pattern": "^[a-z0-9-]+$",
+                "description": "Kebab-case unique identifier for the party."
+            },
+            "name": {
+                "type": "string",
+                "description": "Official name of the political party."
+            },
+            "name_māori": {
+                "type": [
+                    "string",
+                    "null"
+                ],
+                "description": "Māori name of the party, if applicable."
+            },
+            "short_name": {
+                "type": "string",
+                "description": "Common abbreviation or short name (e.g., ACT, NZF, TOP)."
+            },
+            "founded": {
+                "type": [
+                    "string",
+                    "integer",
+                    "null"
+                ],
+                "pattern": "^\\d{4}(-\\d{2}-\\d{2})?$",
+                "description": "Year or full date the party was founded."
+            },
+            "registered": {
+                "type": [
+                    "string",
+                    "null"
+                ],
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                "description": "Date the party was registered with the Electoral Commission."
+            },
+            "deregistered": {
+                "type": [
+                    "string",
+                    "null"
+                ],
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                "description": "Date the party was deregistered, if applicable."
+            },
+            "status": {
+                "type": "string",
+                "enum": [
+                    "active",
+                    "deregistered",
+                    "inactive"
+                ],
+                "description": "Current registration status."
+            },
+            "website": {
+                "type": [
+                    "string",
+                    "null"
+                ],
+                "format": "uri",
+                "description": "Official party website."
+            },
+            "logo_url": {
+                "type": [
+                    "string",
+                    "null"
+                ],
+                "format": "uri",
+                "description": "URL of the party logo."
+            },
+            "leader_person_id": {
+                "type": [
+                    "string",
+                    "null"
+                ],
+                "pattern": "^[a-z0-9-]+$",
+                "description": "person_id of the current party leader."
+            },
+            "co_leader_person_id": {
+                "type": [
+                    "string",
+                    "null"
+                ],
+                "pattern": "^[a-z0-9-]+$",
+                "description": "person_id of the co-leader, for parties with co-leadership structures (e.g., Green Party, Te Pāti Māori)."
+            },
+            "president_person_id": {
+                "type": [
+                    "string",
+                    "null"
+                ],
+                "pattern": "^[a-z0-9-]+$",
+                "description": "person_id of the party president, if applicable."
+            },
+            "seats_in_parliament": {
+                "type": "integer",
+                "minimum": 0,
+                "description": "Number of seats currently held in the 54th Parliament."
+            },
+            "political_position": {
+                "type": "string",
+                "description": "Political position (e.g., centre-right, centre-left, single-issue)."
+            },
+            "colour": {
+                "type": "string",
+                "pattern": "^#[0-9a-fA-F]{6}$",
+                "description": "Primary party colour as a hex code."
+            },
+            "social_profiles": {
+                "type": "object",
+                "description": "Map of social media platform keys to profile details.",
+                "additionalProperties": {
+                    "type": "object",
+                    "properties": {
+                        "handle": {
+                            "type": "string"
+                        },
+                        "url": {
+                            "type": "string",
+                            "format": "uri"
+                        },
+                        "status": {
+                            "type": "string",
+                            "enum": [
+                                "active",
+                                "inactive",
+                                "deactivated",
+                                "archived"
+                            ]
+                        },
+                        "last_checked_at": {
+                            "type": "string",
+                            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                            "description": "Date this profile was last manually verified."
+                        },
+                        "last_seen_at": {
+                            "type": "string",
+                            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                            "description": "Date this profile was last observed online."
+                        },
+                        "verification_status": {
+                            "type": "string",
+                            "enum": [
+                                "current",
+                                "inactive",
+                                "deactivated",
+                                "historical",
+                                "unknown"
+                            ],
+                            "description": "Operational verification state used for refresh cadence reporting."
+                        },
+                        "account_classification": {
+                            "type": "string",
+                            "enum": [
+                                "official",
+                                "campaign",
+                                "personal-public",
+                                "office",
+                                "party",
+                                "inactive",
+                                "deactivated"
+                            ],
+                            "description": "Account ownership or use classification."
+                        },
+                        "syndication_classification": {
+                            "type": "string",
+                            "enum": [
+                                "unique",
+                                "syndicated",
+                                "mixed",
+                                "unknown"
+                            ],
+                            "description": "Whether profile content is unique, syndicated, mixed, or unknown."
+                        },
+                        "evidence": {
+                            "type": "object",
+                            "properties": {
+                                "source_url": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "description": "URL used as evidence for this profile mapping."
+                                },
+                                "source_type": {
+                                    "type": "string",
+                                    "enum": [
+                                        "official-website",
+                                        "platform-profile",
+                                        "public-registry",
+                                        "manual-review",
+                                        "archive",
+                                        "other"
+                                    ],
+                                    "description": "Kind of evidence supporting this profile mapping."
+                                },
+                                "captured_at": {
+                                    "type": "string",
+                                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                                    "description": "Date the evidence was captured or reviewed."
+                                },
+                                "reviewed_by": {
+                                    "type": "string",
+                                    "description": "Reviewer or process that accepted the evidence."
+                                },
+                                "notes": {
+                                    "type": "string",
+                                    "description": "Short provenance note for ambiguous mappings."
+                                }
+                            },
+                            "required": [
+                                "source_url",
+                                "source_type",
+                                "captured_at"
+                            ],
+                            "additionalProperties": false,
+                            "description": "Optional provenance metadata for this profile mapping."
+                        }
+                    },
+                    "required": [
+                        "handle",
+                        "url",
+                        "status"
+                    ]
+                }
+            }
+        },
+        "required": [
+            "party_id",
+            "name",
+            "status"
+        ]
+    }
+}

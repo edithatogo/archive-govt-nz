@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "taranaki-regional-council",
+    "name": "Taranaki Regional Council",
+    "type": "Regional Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.trc.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "TaranakiRegionalCouncil",
+        "url": "https://www.facebook.com/TaranakiRegionalCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

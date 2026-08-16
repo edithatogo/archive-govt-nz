@@ -1,0 +1,36 @@
+[
+  {
+    "agency_id": "tai-poutini-polytechnic",
+    "name": "Tai Poutini Polytechnic",
+    "type": "ITP/Polytechnic",
+    "portfolio": "Education",
+    "official_website": "https://www.tpp.ac.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "TaiPoutiniPoly",
+        "url": "https://www.facebook.com/TaiPoutiniPoly",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Tai Poutini Polytechnic",
+        "url": "https://www.linkedin.com/company/tai-poutini-polytechnic",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "taipoutini",
+        "url": "https://www.instagram.com/taipoutini",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "TaiPoutiniPoly",
+        "url": "https://www.youtube.com/@TaiPoutiniPoly",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

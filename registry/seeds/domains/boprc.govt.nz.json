@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "bay-of-plenty-regional-council",
+    "name": "Bay of Plenty Regional Council (Toi Moana)",
+    "type": "Regional Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.boprc.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "BayofPlentyRegionalCouncil",
+        "url": "https://www.facebook.com/BayofPlentyRegionalCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]
