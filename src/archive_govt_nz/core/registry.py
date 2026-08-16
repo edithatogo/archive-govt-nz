@@ -193,6 +193,10 @@ class AgencyRegistry:
 
         return cls(agencies)
 
+    def __len__(self) -> int:
+        """Return count of registered agencies."""
+        return len(self._agencies)
+
     def get_agency(self, slug: str) -> AgencySeed | None:
         """Retrieve agency seed by its normalized slug."""
         return self._agencies.get(slug.strip().lower())
