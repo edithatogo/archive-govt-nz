@@ -2,19 +2,18 @@
 
 ## Phases
 
-### Phase 1: Base Protocol & Feeds Migration
-- [ ] Implement `AsyncBaseCaptureAdapter` and common HTTP error classifiers.
-- [ ] Migrate RSS/Atom and JSON feed harvester with CAS integration.
-- [ ] Build test fixtures and mock transports.
+### Phase 1: Async Base Adapter Architecture
+- [x] Implement `AsyncBaseCaptureAdapter` and `AdapterCaptureResult` in `src/archive_govt_nz/capture/base.py`.
+- [x] Standardize retry logic, backoff, and CAS streaming writes.
 
-### Phase 2: Social Media Adapters (Bluesky, Threads, X)
-- [ ] Implement Bluesky adapter (AT Protocol feed parsing, handle resolution, media downloading).
-- [ ] Implement Threads adapter (Meta Graph API & fallback).
-- [ ] Implement X/Twitter feed ingestion.
+### Phase 2: Family-by-Family Adapter Migration
+- [x] Migrate Feeds adapter (`RSS`, `Atom`, `JSON Feed`) in `src/archive_govt_nz/capture/feeds/`.
+- [x] Migrate Bluesky/ATProto adapter in `src/archive_govt_nz/capture/social/bluesky.py`.
+- [x] Migrate Threads, X, YouTube, and Email newsletter adapters.
 
-### Phase 3: Video & Newsletter Payloads (YouTube, Email)
-- [ ] Implement YouTube channel harvester and transcript extractor.
-- [ ] Implement Cloudflare Email Worker webhook payload ingester.
+### Phase 3: Unit Testing & Fixture Replay
+- [x] Create comprehensive transport mock test suites in `tests/capture/`.
+- [x] Verify >95% branch coverage across all adapter modules.
 
 ### Phase 4: Assurance & Parity Verification
-- [ ] Verify each adapter against 18 quality gates and >95% test coverage.
+- [x] Verify each adapter against 18 quality gates and >95% test coverage.
