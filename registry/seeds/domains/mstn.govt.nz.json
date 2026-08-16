@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "masterton-district-council",
+    "name": "Masterton District Council",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.mstn.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "MastertonDistrictCouncil",
+        "url": "https://www.facebook.com/MastertonDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

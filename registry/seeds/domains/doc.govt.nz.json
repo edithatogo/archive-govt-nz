@@ -1,0 +1,30 @@
+[
+  {
+    "agency_id": "department-of-conservation",
+    "name": "Department of Conservation (Te Papa Atawhai)",
+    "type": "Department",
+    "portfolio": "Conservation",
+    "official_website": "https://www.doc.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "DOCgovtnz",
+        "url": "https://www.facebook.com/DOCgovtnz",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "docgovtnz",
+        "url": "https://www.instagram.com/docgovtnz/",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "x": {
+        "handle": "NZConservation",
+        "url": "https://x.com/NZConservation",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

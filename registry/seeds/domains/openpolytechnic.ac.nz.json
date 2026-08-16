@@ -1,0 +1,36 @@
+[
+  {
+    "agency_id": "open-polytechnic",
+    "name": "Open Polytechnic of New Zealand",
+    "type": "ITP/Polytechnic",
+    "portfolio": "Education",
+    "official_website": "https://www.openpolytechnic.ac.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "OpenPolytechnicNZ",
+        "url": "https://www.facebook.com/OpenPolytechnicNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Open Polytechnic",
+        "url": "https://www.linkedin.com/school/open-polytechnic",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "openpolytechnicnz",
+        "url": "https://www.instagram.com/openpolytechnicnz",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "OpenPolytechnic",
+        "url": "https://www.youtube.com/@OpenPolytechnic",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

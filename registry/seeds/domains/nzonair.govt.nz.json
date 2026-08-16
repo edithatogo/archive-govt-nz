@@ -1,0 +1,32 @@
+[
+  {
+    "agency_id": "nz-on-air",
+    "name": "NZ On Air (Irirangi Te Motu)",
+    "type": "Autonomous Crown Entity",
+    "portfolio": "Broadcasting",
+    "official_website": "https://www.nzonair.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "NZOnAir",
+        "url": "https://www.facebook.com/NZOnAir",
+        "status": "active"
+      },
+      "instagram": {
+        "handle": "nzonair",
+        "url": "https://www.instagram.com/nzonair",
+        "status": "active"
+      },
+      "linkedin": {
+        "handle": "NZ On Air",
+        "url": "https://www.linkedin.com/company/nz-on-air",
+        "status": "active"
+      },
+      "x": {
+        "handle": "NZOnAir",
+        "url": "https://x.com/NZOnAir",
+        "status": "active"
+      }
+    }
+  }
+]

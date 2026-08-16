@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "waikato-district-council",
+    "name": "Waikato District Council",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.waikatodistrict.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "WaikatoDistrictCouncil",
+        "url": "https://www.facebook.com/WaikatoDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

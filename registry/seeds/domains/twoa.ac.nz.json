@@ -1,0 +1,36 @@
+[
+  {
+    "agency_id": "te-wananga-o-aotearoa",
+    "name": "Te Wānanga o Aotearoa",
+    "type": "Wānanga",
+    "portfolio": "Education",
+    "official_website": "https://www.twoa.ac.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "tewanangaoaotearoa",
+        "url": "https://www.facebook.com/tewanangaoaotearoa",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Te Wananga o Aotearoa",
+        "url": "https://www.linkedin.com/school/te-wananga-o-aotearoa",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "tewanangaoaotearoa",
+        "url": "https://www.instagram.com/tewanangaoaotearoa",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "TWOA",
+        "url": "https://www.youtube.com/@TWOA",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

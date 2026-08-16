@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "western-bay-of-plenty-district-council",
+    "name": "Western Bay of Plenty District Council",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.westernbay.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "WesternBayofPlentyDistrictCouncil",
+        "url": "https://www.facebook.com/WesternBayofPlentyDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

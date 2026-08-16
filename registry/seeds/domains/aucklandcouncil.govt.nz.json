@@ -1,0 +1,36 @@
+[
+  {
+    "agency_id": "auckland-council",
+    "name": "Auckland Council (Te Kaunihera o Tāmaki Makaurau)",
+    "type": "Unitary Authority",
+    "portfolio": "Local Government",
+    "official_website": "https://www.aucklandcouncil.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "aklcouncil",
+        "url": "https://www.facebook.com/aklcouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "x": {
+        "handle": "AklCouncil",
+        "url": "https://x.com/AklCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "aklcouncil",
+        "url": "https://www.instagram.com/aklcouncil/",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Auckland Council",
+        "url": "https://www.linkedin.com/company/auckland-council",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

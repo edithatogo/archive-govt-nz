@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "tararua-district-council",
+    "name": "Tararua District Council",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.tararuadc.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "TararuaDistrictCouncil",
+        "url": "https://www.facebook.com/TararuaDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

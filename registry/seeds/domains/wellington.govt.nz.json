@@ -1,0 +1,30 @@
+[
+  {
+    "agency_id": "wellington-city-council",
+    "name": "Wellington City Council (Te Kaunihera o Pōneke)",
+    "type": "City Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.wellington.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "WgtnCouncil",
+        "url": "https://www.facebook.com/WgtnCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "wgtncouncil",
+        "url": "https://www.instagram.com/wgtncouncil/",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Wellington City Council",
+        "url": "https://www.linkedin.com/company/wellington-city-council",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

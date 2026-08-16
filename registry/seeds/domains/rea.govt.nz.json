@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "real-estate-authority",
+    "name": "Real Estate Authority (Te Mana Papawhenua)",
+    "type": "Crown Agent",
+    "portfolio": "Housing and Urban Development",
+    "official_website": "https://www.rea.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "linkedin": {
+        "handle": "Real Estate Authority",
+        "url": "https://www.linkedin.com/company/real-estate-authority",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

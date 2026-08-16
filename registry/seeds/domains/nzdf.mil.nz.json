@@ -1,0 +1,36 @@
+[
+  {
+    "agency_id": "nz-defence-force",
+    "name": "New Zealand Defence Force (Te Ope Kātua o Aotearoa)",
+    "type": "NZDF",
+    "portfolio": "Defence",
+    "official_website": "https://www.nzdf.mil.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "NZDefenceForce",
+        "url": "https://www.facebook.com/NZDefenceForce",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "nzdefenceforce",
+        "url": "https://www.instagram.com/nzdefenceforce",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "New Zealand Defence Force",
+        "url": "https://www.linkedin.com/company/new-zealand-defence-force",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "nzdefenceforce",
+        "url": "https://www.youtube.com/@nzdefenceforce",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

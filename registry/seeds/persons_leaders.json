@@ -1,0 +1,223 @@
+[
+  {
+    "person_id": "cindy-kiro",
+    "full_name": "Dame Cindy Kiro",
+    "honorific": "Dame",
+    "gender": "female",
+    "image_url": null,
+    "biography_url": "https://gg.govt.nz/governor-general/biography",
+    "social_profiles": {},
+    "roles": [
+      {
+        "role_id": "governor-general",
+        "title": "Governor-General of New Zealand",
+        "organization": "government-house-nz",
+        "organization_name": "Government House",
+        "category": "governor-general",
+        "start_date": "2021-10-21",
+        "end_date": null,
+        "is_current": true
+      }
+    ]
+  },
+  {
+    "person_id": "gerry-brownlee",
+    "full_name": "Gerard Anthony Brownlee",
+    "honorific": "Rt Hon",
+    "gender": "male",
+    "image_url": null,
+    "biography_url": "https://www.parliament.nz/en/mps-and-electorates/members-of-parliament/brownlee-gerry/",
+    "social_profiles": {},
+    "roles": [
+      {
+        "role_id": "speaker-of-the-house",
+        "title": "Speaker of the House",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "speaker",
+        "start_date": "2023-12-05",
+        "end_date": null,
+        "is_current": true
+      },
+      {
+        "role_id": "mp-for-Ilam",
+        "title": "Member of Parliament for Ilam",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "mp",
+        "start_date": "2011-11-26",
+        "end_date": null,
+        "is_current": true
+      }
+    ]
+  },
+  {
+    "person_id": "peter-boshier",
+    "full_name": "Peter Boshier",
+    "honorific": "Rt Hon",
+    "gender": "male",
+    "image_url": null,
+    "biography_url": "https://www.ombudsman.parliament.nz/about-us/chief-ombudsman",
+    "social_profiles": {},
+    "roles": [
+      {
+        "role_id": "chief-ombudsman",
+        "title": "Chief Ombudsman",
+        "organization": "office-of-the-ombudsman",
+        "organization_name": "Office of the Ombudsman",
+        "category": "ombudsman",
+        "start_date": "2015-07-01",
+        "end_date": null,
+        "is_current": true
+      }
+    ]
+  },
+  {
+    "person_id": "michael-webster",
+    "full_name": "Michael Webster",
+    "honorific": "Hon",
+    "gender": "male",
+    "image_url": null,
+    "biography_url": "https://www.privacy.org.nz/about-us/the-office/privacy-commissioner/",
+    "social_profiles": {},
+    "roles": [
+      {
+        "role_id": "privacy-commissioner",
+        "title": "Privacy Commissioner",
+        "organization": "privacy-commissioner",
+        "organization_name": "Office of the Privacy Commissioner",
+        "category": "commissioner",
+        "start_date": "2022-08-01",
+        "end_date": null,
+        "is_current": true
+      }
+    ]
+  },
+  {
+    "person_id": "morag-mcdowell",
+    "full_name": "Morag McDowell",
+    "honorific": "Hon",
+    "gender": "female",
+    "image_url": null,
+    "biography_url": "https://www.hdc.org.nz/about-us/meet-the-commissioner/",
+    "social_profiles": {},
+    "roles": [
+      {
+        "role_id": "health-disability-commissioner",
+        "title": "Health and Disability Commissioner",
+        "organization": "health-and-disability-commissioner",
+        "organization_name": "Office of the Health and Disability Commissioner",
+        "category": "commissioner",
+        "start_date": "2021-12-01",
+        "end_date": null,
+        "is_current": true
+      }
+    ]
+  },
+  {
+    "person_id": "simon-upton",
+    "full_name": "Simon Upton",
+    "honorific": "Hon",
+    "gender": "male",
+    "image_url": null,
+    "biography_url": "https://www.pce.parliament.nz/about-us/parliamentary-commissioner-for-the-environment",
+    "social_profiles": {},
+    "roles": [
+      {
+        "role_id": "pce",
+        "title": "Parliamentary Commissioner for the Environment",
+        "organization": "parliamentary-commissioner-for-the-environment",
+        "organization_name": "Parliamentary Commissioner for the Environment",
+        "category": "commissioner",
+        "start_date": "2017-10-01",
+        "end_date": null,
+        "is_current": true
+      }
+    ]
+  },
+  {
+    "person_id": "john-ryan",
+    "full_name": "John Ryan",
+    "honorific": "Mr",
+    "gender": "male",
+    "image_url": null,
+    "biography_url": "https://oag.parliament.nz/about-us/the-auditor-general",
+    "social_profiles": {},
+    "roles": [
+      {
+        "role_id": "auditor-general",
+        "title": "Controller and Auditor-General",
+        "organization": "office-of-the-auditor-general",
+        "organization_name": "Office of the Auditor-General",
+        "category": "auditor-general",
+        "start_date": "2018-07-02",
+        "end_date": null,
+        "is_current": true
+      }
+    ]
+  },
+  {
+    "person_id": "christopher-luxon",
+    "full_name": "Christopher Mark Luxon",
+    "honorific": "Rt Hon",
+    "party_id": "national-party",
+    "electorate": "Botany",
+    "member_type": "electorate",
+    "gender": "male",
+    "image_url": "https://www.parliament.nz/media/1234/christopher-luxon-portrait.jpg",
+    "biography_url": "https://www.parliament.nz/en/mps-and-electorates/members-of-parliament/christopher-luxon/",
+    "social_profiles": {
+      "facebook": {
+        "handle": "christopherluxonmp",
+        "url": "https://www.facebook.com/christopherluxonmp",
+        "status": "active",
+        "is_verified": true
+      },
+      "x": {
+        "handle": "chrisluxonmp",
+        "url": "https://x.com/chrisluxonmp",
+        "status": "active",
+        "is_verified": true
+      },
+      "instagram": {
+        "handle": "christopherluxonmp",
+        "url": "https://www.instagram.com/christopherluxonmp",
+        "status": "active",
+        "is_verified": true
+      }
+    },
+    "roles": [
+      {
+        "role_id": "prime-minister",
+        "title": "Prime Minister",
+        "organization": "dpmc",
+        "organization_name": "Department of the Prime Minister and Cabinet",
+        "category": "minister",
+        "portfolio": "Prime Minister",
+        "start_date": "2023-11-27",
+        "end_date": null,
+        "is_current": true
+      },
+      {
+        "role_id": "mp-for-botany",
+        "title": "Member of Parliament for Botany",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "mp",
+        "start_date": "2020-10-17",
+        "end_date": null,
+        "is_current": true
+      },
+      {
+        "role_id": "leader-national-party",
+        "title": "Leader of the National Party",
+        "organization": "nz-parliament",
+        "organization_name": "New Zealand Parliament",
+        "category": "party-leader",
+        "start_date": "2021-11-30",
+        "end_date": null,
+        "is_current": true
+      }
+    ]
+  }
+]

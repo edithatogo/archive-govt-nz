@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CaptureEventV1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "event_id",
+    "source_id",
+    "timestamp",
+    "status",
+    "agent",
+    "bytes_captured",
+    "objects_created"
+  ],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "event_id": { "type": "string" },
+    "source_id": { "type": "string" },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "status": {
+      "type": "string",
+      "enum": ["success", "unchanged", "rate_limited", "failed", "quarantined"]
+    },
+    "agent": { "type": "string" },
+    "bytes_captured": { "type": "integer", "minimum": 0 },
+    "objects_created": { "type": "integer", "minimum": 0 },
+    "error_message": { "type": ["string", "null"] },
+    "prov_activity_id": { "type": "string" }
+  }
+}

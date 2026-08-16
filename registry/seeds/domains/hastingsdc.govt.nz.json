@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "hastings-district-council",
+    "name": "Hastings District Council",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.hastingsdc.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "HastingsDistrictCouncil",
+        "url": "https://www.facebook.com/HastingsDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

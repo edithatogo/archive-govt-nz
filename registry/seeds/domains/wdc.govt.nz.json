@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "whangarei-district-council",
+    "name": "Whangārei District Council",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.wdc.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "WhangareiDistrictCouncil",
+        "url": "https://www.facebook.com/WhangareiDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

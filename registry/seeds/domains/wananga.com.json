@@ -1,0 +1,30 @@
+[
+  {
+    "agency_id": "te-wananga-o-raukawa",
+    "name": "Te Wānanga o Raukawa",
+    "type": "Wānanga",
+    "portfolio": "Education",
+    "official_website": "https://www.wananga.com",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "tewanangao raukawa",
+        "url": "https://www.facebook.com/tewanangao raukawa",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Te Wananga o Raukawa",
+        "url": "https://www.linkedin.com/school/te-wananga-o-raukawa",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "tewanangao raukawa",
+        "url": "https://www.youtube.com/@tewanangao raukawa",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

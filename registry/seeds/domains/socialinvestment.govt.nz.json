@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "social-investment-agency",
+    "name": "Social Investment Agency (Toi Hau Tāngata)",
+    "type": "Department",
+    "portfolio": "Social Investment",
+    "official_website": "https://www.socialinvestment.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "linkedin": {
+        "handle": "Social Investment Agency",
+        "url": "https://www.linkedin.com/company/social-investment-agency",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

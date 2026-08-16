@@ -1,0 +1,36 @@
+[
+  {
+    "agency_id": "massey-university",
+    "name": "Massey University (Te Kunenga ki Pūrehuroa)",
+    "type": "University",
+    "portfolio": "Education",
+    "official_website": "https://www.massey.ac.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "MasseyUni",
+        "url": "https://www.facebook.com/MasseyUni",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Massey University",
+        "url": "https://www.linkedin.com/school/massey-university",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "masseyuniversity",
+        "url": "https://www.instagram.com/masseyuniversity",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "MasseyUni",
+        "url": "https://www.youtube.com/@MasseyUni",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

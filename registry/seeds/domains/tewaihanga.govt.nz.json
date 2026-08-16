@@ -1,0 +1,22 @@
+[
+  {
+    "agency_id": "nz-infrastructure-commission",
+    "name": "New Zealand Infrastructure Commission (Te Waihanga)",
+    "type": "Autonomous Crown Entity",
+    "portfolio": "Infrastructure",
+    "official_website": "https://www.tewaihanga.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "TeWaihanga",
+        "url": "https://www.facebook.com/TeWaihanga",
+        "status": "active"
+      },
+      "x": {
+        "handle": "TeWaihanga",
+        "url": "https://x.com/TeWaihanga",
+        "status": "active"
+      }
+    }
+  }
+]

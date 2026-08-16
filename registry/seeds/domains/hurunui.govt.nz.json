@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "hurunui-district-council",
+    "name": "Hurunui District Council",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.hurunui.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "HurunuiDistrictCouncil",
+        "url": "https://www.facebook.com/HurunuiDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

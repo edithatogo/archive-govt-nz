@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "far-north-district-council",
+    "name": "Far North District Council (Te Kaunihera o Te Hiku o Te Ika)",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.fndc.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "FarNorthDistrictCouncil",
+        "url": "https://www.facebook.com/FarNorthDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

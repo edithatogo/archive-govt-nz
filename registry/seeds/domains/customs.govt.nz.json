@@ -1,0 +1,24 @@
+[
+  {
+    "agency_id": "nz-customs-service",
+    "name": "New Zealand Customs Service (Te Mana Arai o Aotearoa)",
+    "type": "Department",
+    "portfolio": "Customs",
+    "official_website": "https://www.customs.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "instagram": {
+        "handle": "nzcustomsservice",
+        "url": "https://www.instagram.com/nzcustomsservice/",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "x": {
+        "handle": "NZCustoms",
+        "url": "https://x.com/NZCustoms",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

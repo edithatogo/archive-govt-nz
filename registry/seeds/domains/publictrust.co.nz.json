@@ -1,0 +1,27 @@
+[
+  {
+    "agency_id": "public-trust",
+    "name": "Public Trust (Te Tari Kaitiaki Tūmatanui)",
+    "type": "Autonomous Crown Entity",
+    "portfolio": "Justice",
+    "official_website": "https://www.publictrust.co.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "PublicTrustNZ",
+        "url": "https://www.facebook.com/PublicTrustNZ",
+        "status": "active"
+      },
+      "instagram": {
+        "handle": "publictrustnz",
+        "url": "https://www.instagram.com/publictrustnz",
+        "status": "active"
+      },
+      "x": {
+        "handle": "PublicTrustNZ",
+        "url": "https://x.com/PublicTrustNZ",
+        "status": "active"
+      }
+    }
+  }
+]

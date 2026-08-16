@@ -1,0 +1,17 @@
+[
+  {
+    "agency_id": "te-ara-ahunga-ora",
+    "name": "Te Ara Ahunga Ora (Retirement Commission)",
+    "type": "Autonomous Crown Entity",
+    "portfolio": "Finance",
+    "official_website": "https://www.retirement.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "SortedNZ",
+        "url": "https://www.facebook.com/SortedNZ",
+        "status": "active"
+      }
+    }
+  }
+]

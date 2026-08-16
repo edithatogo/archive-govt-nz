@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "south-taranaki-district-council",
+    "name": "South Taranaki District Council",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.southtaranaki.com",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "SouthTaranakiDistrictCouncil",
+        "url": "https://www.facebook.com/SouthTaranakiDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

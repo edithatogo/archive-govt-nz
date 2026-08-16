@@ -1,0 +1,51 @@
+[
+  {
+    "agency_id": "nz-parliament",
+    "name": "New Zealand Parliament (Pāremata Aotearoa)",
+    "type": "Legislature",
+    "portfolio": "Parliament",
+    "official_website": "https://www.parliament.nz",
+    "status": "active",
+    "social_profiles": {
+      "linkedin": {
+        "handle": "New Zealand Parliament",
+        "url": "https://www.linkedin.com/company/new-zealand-parliament",
+        "status": "active"
+      },
+      "facebook": {
+        "handle": "NZParliament",
+        "url": "https://www.facebook.com/NZParliament",
+        "status": "active"
+      },
+      "instagram": {
+        "handle": "nzparliament",
+        "url": "https://www.instagram.com/nzparliament",
+        "status": "active"
+      },
+      "x": {
+        "handle": "NZParliament",
+        "url": "https://x.com/NZParliament",
+        "status": "deactivated",
+        "deactivated_at": "2026-02"
+      }
+    }
+  },
+  {
+    "agency_id": "office-of-the-clerk",
+    "name": "Office of the Clerk of the House of Representatives (Te Tari o te Mana Whakahaere o te Whare)",
+    "type": "Parliamentary Office",
+    "portfolio": "Parliament",
+    "official_website": "https://www.parliament.nz/en/about-parliament/office-of-the-clerk/",
+    "status": "active",
+    "social_profiles": {}
+  },
+  {
+    "agency_id": "parliamentary-service",
+    "name": "Parliamentary Service (Te Ratonga Whare Pāremata)",
+    "type": "Parliamentary Office",
+    "portfolio": "Parliament",
+    "official_website": "https://www.parliament.nz",
+    "status": "active",
+    "social_profiles": {}
+  }
+]

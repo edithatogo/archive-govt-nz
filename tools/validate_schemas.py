@@ -63,6 +63,30 @@ VALIDATION_PAIRS = (
         / "sm-govt-nz"
         / "donor-track-lineage.json",
     ),
+    (
+        REPOSITORY_ROOT / "schemas" / "archive" / "v1" / "source-manifest.schema.json",
+        REPOSITORY_ROOT / "tests" / "fixtures" / "source-manifest-sample.json",
+    ),
+    (
+        REPOSITORY_ROOT
+        / "schemas"
+        / "archive"
+        / "v1"
+        / "preservation-manifest.schema.json",
+        REPOSITORY_ROOT / "tests" / "fixtures" / "preservation-manifest-sample.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "archive" / "v1" / "capture-event.schema.json",
+        REPOSITORY_ROOT / "tests" / "fixtures" / "capture-event-sample.json",
+    ),
+    (
+        REPOSITORY_ROOT
+        / "schemas"
+        / "archive"
+        / "v1"
+        / "publication-receipt.schema.json",
+        REPOSITORY_ROOT / "tests" / "fixtures" / "publication-receipt-sample.json",
+    ),
 )
 ARCHIVE_SCHEMA_DIRECTORY = REPOSITORY_ROOT / "schemas" / "archive" / "v1"
 

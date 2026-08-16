@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "environment-canterbury",
+    "name": "Environment Canterbury (ECan – Canterbury Regional Council)",
+    "type": "Regional Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.ecan.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "EnvironmentCanterbury",
+        "url": "https://www.facebook.com/EnvironmentCanterbury",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

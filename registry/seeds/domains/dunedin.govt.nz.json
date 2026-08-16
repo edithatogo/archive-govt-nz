@@ -1,0 +1,36 @@
+[
+  {
+    "agency_id": "dunedin-city-council",
+    "name": "Dunedin City Council (Te Kaunihera o Ōtepoti)",
+    "type": "City Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.dunedin.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "DunedinCityCouncil",
+        "url": "https://www.facebook.com/DunedinCityCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "dunedincitycouncil",
+        "url": "https://www.instagram.com/dunedincitycouncil/",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "x": {
+        "handle": "DnCityCouncil",
+        "url": "https://x.com/DnCityCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Dunedin City Council",
+        "url": "https://www.linkedin.com/company/dunedin-city-council",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

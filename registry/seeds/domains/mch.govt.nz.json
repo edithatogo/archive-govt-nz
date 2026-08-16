@@ -1,0 +1,42 @@
+[
+  {
+    "agency_id": "ministry-for-culture-and-heritage",
+    "name": "Ministry for Culture and Heritage (Te Manatū Taonga)",
+    "type": "Department",
+    "portfolio": "Arts, Culture and Heritage",
+    "official_website": "https://www.mch.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "linkedin": {
+        "handle": "Ministry for Culture and Heritage",
+        "url": "https://www.linkedin.com/company/ministry-for-culture-and-heritage/",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "manatutaonga",
+        "url": "https://www.instagram.com/manatutaonga/",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "facebook": {
+        "handle": "manatutaonga",
+        "url": "https://www.facebook.com/manatutaonga",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "x": {
+        "handle": "ManatuTaonga",
+        "url": "https://x.com/ManatuTaonga",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "manatutaonga",
+        "url": "https://www.youtube.com/@manatutaonga",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

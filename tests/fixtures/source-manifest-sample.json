@@ -1,0 +1,14 @@
+{
+  "schema_version": "archive-govt-nz.source-manifest/v1",
+  "source_id": "bluesky:moh:minhealthnz.bsky.social",
+  "source_uri": "bluesky://moh/minhealthnz.bsky.social",
+  "source_type": "bluesky",
+  "agency_slug": "moh",
+  "title": "Ministry of Health Bluesky Account",
+  "created_at": "2026-08-17T00:00:00Z",
+  "status": "active",
+  "withdrawal_reason": null,
+  "metadata": {
+    "handle": "minhealthnz.bsky.social"
+  }
+}

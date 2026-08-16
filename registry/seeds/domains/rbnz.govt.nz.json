@@ -1,0 +1,24 @@
+[
+  {
+    "agency_id": "reserve-bank-of-nz",
+    "name": "Reserve Bank of New Zealand (Te Pūtea Matua)",
+    "type": "Reserve Bank",
+    "portfolio": "Finance",
+    "official_website": "https://www.rbnz.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "linkedin": {
+        "handle": "Reserve Bank of New Zealand",
+        "url": "https://www.linkedin.com/company/reserve-bank-of-new-zealand",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "x": {
+        "handle": "rbnz",
+        "url": "https://x.com/rbnz",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

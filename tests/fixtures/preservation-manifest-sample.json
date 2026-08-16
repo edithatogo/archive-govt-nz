@@ -1,0 +1,18 @@
+{
+  "schema_version": "archive-govt-nz.preservation-manifest/v1",
+  "manifest_id": "pres-moh-bsky-20260817",
+  "source_id": "bluesky:moh:minhealthnz.bsky.social",
+  "captured_at": "2026-08-17T00:00:00Z",
+  "sha256_root": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "records_count": 1,
+  "records": [
+    {
+      "record_id": "rec-001",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 1024,
+      "media_type": "application/json",
+      "uri": "https://api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed",
+      "warc_record_id": null
+    }
+  ]
+}

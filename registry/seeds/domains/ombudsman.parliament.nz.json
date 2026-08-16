@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "office-of-the-ombudsman",
+    "name": "Office of the Ombudsman (Kaitiaki Mana Tangata)",
+    "type": "Office of Parliament",
+    "portfolio": "Parliament",
+    "official_website": "https://www.ombudsman.parliament.nz",
+    "status": "active",
+    "social_profiles": {
+      "linkedin": {
+        "handle": "Office of the Ombudsman New Zealand",
+        "url": "https://www.linkedin.com/company/office-of-the-ombudsman-new-zealand",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

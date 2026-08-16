@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "stratford-district-council",
+    "name": "Stratford District Council",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.stratford.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "StratfordDistrictCouncil",
+        "url": "https://www.facebook.com/StratfordDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

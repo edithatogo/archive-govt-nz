@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "southern-response",
+    "name": "Southern Response Earthquake Services Limited (Urupare ki te Tonga)",
+    "type": "Schedule 4a Company",
+    "portfolio": "Finance",
+    "official_website": "https://www.southernresponse.co.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "SouthernResponse",
+        "url": "https://www.facebook.com/SouthernResponse",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

@@ -1,0 +1,609 @@
+[
+  {
+    "party_id": "national-party",
+    "name": "New Zealand National Party",
+    "name_māori": "Rōpū Nāhinara o Aotearoa",
+    "short_name": "National",
+    "founded": 1936,
+    "registered": "1936-05-14",
+    "status": "active",
+    "website": "https://www.national.org.nz",
+    "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/New_Zealand_National_Party_logo.svg/320px-New_Zealand_National_Party_logo.svg.png",
+    "leader_person_id": "christopher-luxon",
+    "president_person_id": "sylvia-wood",
+    "seats_in_parliament": 49,
+    "political_position": "centre-right",
+    "colour": "#00529F",
+    "social_profiles": {
+      "facebook": {
+        "handle": "nznationalparty",
+        "url": "https://www.facebook.com/nznationalparty",
+        "status": "active",
+        "account_classification": "party",
+        "syndication_classification": "unknown"
+      },
+      "x": {
+        "handle": "NZNationalParty",
+        "url": "https://x.com/NZNationalParty",
+        "status": "active",
+        "account_classification": "party",
+        "syndication_classification": "unknown"
+      },
+      "instagram": {
+        "handle": "nznationalparty",
+        "url": "https://www.instagram.com/nznationalparty/",
+        "status": "active",
+        "account_classification": "party",
+        "syndication_classification": "unknown"
+      },
+      "youtube": {
+        "handle": "@NZNationalParty",
+        "url": "https://www.youtube.com/@NZNationalParty",
+        "status": "active",
+        "account_classification": "party",
+        "syndication_classification": "unknown"
+      }
+    }
+  },
+  {
+    "party_id": "labour-party",
+    "name": "New Zealand Labour Party",
+    "name_māori": "Rōpū Reipa o Aotearoa",
+    "short_name": "Labour",
+    "founded": 1916,
+    "registered": "1916-07-07",
+    "status": "active",
+    "website": "https://www.labour.org.nz",
+    "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/New_Zealand_Labour_Party_logo.svg/320px-New_Zealand_Labour_Party_logo.svg.png",
+    "leader_person_id": "chris-hipkins",
+    "president_person_id": "jill-day",
+    "seats_in_parliament": 34,
+    "political_position": "centre-left",
+    "colour": "#DC241F",
+    "social_profiles": {
+      "facebook": {
+        "handle": "nzlabour",
+        "url": "https://www.facebook.com/nzlabour",
+        "status": "active",
+        "account_classification": "party",
+        "syndication_classification": "unknown"
+      },
+      "x": {
+        "handle": "nzlabour",
+        "url": "https://x.com/nzlabour",
+        "status": "active",
+        "account_classification": "party",
+        "syndication_classification": "unknown"
+      },
+      "instagram": {
+        "handle": "nzlabourparty",
+        "url": "https://www.instagram.com/nzlabourparty/",
+        "status": "active",
+        "account_classification": "party",
+        "syndication_classification": "unknown"
+      },
+      "youtube": {
+        "handle": "@NZLabourParty",
+        "url": "https://www.youtube.com/@NZLabourParty",
+        "status": "active",
+        "account_classification": "party",
+        "syndication_classification": "unknown"
+      }
+    }
+  },
+  {
+    "party_id": "green-party",
+    "name": "Green Party of Aotearoa New Zealand",
+    "name_māori": "Rōpū Kākāriki o Aotearoa",
+    "short_name": "Green",
+    "founded": 1990,
+    "registered": "1990-05-26",
+    "status": "active",
+    "website": "https://www.greens.org.nz",
+    "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Green_Party_of_Aotearoa_New_Zealand_logo.svg/320px-Green_Party_of_Aotearoa_New_Zealand_logo.svg.png",
+    "leader_person_id": "marama-davidson",
+    "co_leader_person_id": "chloe-swarbrick",
+    "president_person_id": "sam-ferguson",
+    "seats_in_parliament": 15,
+    "political_position": "centre-left to left-wing",
+    "colour": "#098137",
+    "social_profiles": {
+      "facebook": {
+        "handle": "GreenPartyNZ",
+        "url": "https://www.facebook.com/GreenPartyNZ",
+        "status": "active",
+        "account_classification": "party",
+        "syndication_classification": "unknown"
+      },
+      "x": {
+        "handle": "GreensNZ",
+        "url": "https://x.com/GreensNZ",
+        "status": "active",
+        "account_classification": "party",
+        "syndication_classification": "unknown"
+      },
+      "instagram": {
+        "handle": "greenpartynz",
+        "url": "https://www.instagram.com/greenpartynz/",
+        "status": "active",
+        "account_classification": "party",
+        "syndication_classification": "unknown"
+      },
+      "youtube": {
+        "handle": "@GreenPartyNZ",
+        "url": "https://www.youtube.com/@GreenPartyNZ",
+        "status": "active",
+        "account_classification": "party",
+        "syndication_classification": "unknown"
+      },
+      "bluesky": {
+        "handle": "greens.org.nz",
+        "url": "https://bsky.app/profile/greens.org.nz",
+        "status": "active",
+        "is_verified": false,
+        "account_classification": "party",
+        "syndication_classification": "mixed",
+        "evidence": {
+          "source_url": "https://gemini.google.com/app/d38726435633dfa0",
+          "source_type": "platform-profile",
+          "captured_at": "2026-06-29",
+          "reviewed_by": "gemini deepresearch follow-up",
+          "notes": "Gemini Deep Research follow-up mapping for NZ government Bluesky accounts; reviewed before registry inclusion."
+        }
+      }
+    }
+  },
+  {
+    "party_id": "act-new-zealand",
+    "name": "ACT New Zealand",
+    "name_māori": "Rōpū ACT",
+    "short_name": "ACT",
+    "founded": 1994,
+    "registered": "1994-01-01",
+    "status": "active",
+    "website": "https://www.act.org.nz",
+    "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/ACT_New_Zealand_logo.svg/320px-ACT_New_Zealand_logo.svg.png",
+    "leader_person_id": "david-seymour",
+    "president_person_id": "john-windsor",
+    "seats_in_parliament": 11,
+    "political_position": "right-wing",
+    "colour": "#FDBB2E",
+    "social_profiles": {
+      "facebook": {
+        "handle": "ACTNZ",
+        "url": "https://www.facebook.com/ACTNZ",
+        "status": "active",
+        "account_classification": "party",
+        "syndication_classification": "unknown"
+      },
+      "x": {
+        "handle": "ACTNZ",
+        "url": "https://x.com/ACTNZ",
+        "status": "active",
+        "account_classification": "party",
+        "syndication_classification": "unknown"
+      },
+      "instagram": {
+        "handle": "act_new_zealand",
+        "url": "https://www.instagram.com/act_new_zealand/",
+        "status": "active",
+        "account_classification": "party",
+        "syndication_classification": "unknown"
+      },
+      "youtube": {
+        "handle": "@ACTNewZealand",
+        "url": "https://www.youtube.com/@ACTNewZealand",
+        "status": "active",
+        "account_classification": "party",
+        "syndication_classification": "unknown"
+      }
+    }
+  },
+  {
+    "party_id": "new-zealand-first",
+    "name": "New Zealand First",
+    "short_name": "NZ First",
+    "founded": 1993,
+    "registered": "1993-07-18",
+    "status": "active",
+    "website": "https://www.nzfirst.nz",
+    "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/NZ_First_logo.svg/320px-NZ_First_logo.svg.png",
+    "leader_person_id": "winston-peters",
+    "president_person_id": "julian-paul",
+    "seats_in_parliament": 8,
+    "political_position": "right-wing",
+    "colour": "#000000",
+    "social_profiles": {
+      "facebook": {
+        "handle": "nzfirstparty",
+        "url": "https://www.facebook.com/nzfirstparty",
+        "status": "active",
+        "account_classification": "party",
+        "syndication_classification": "unknown"
+      },
+      "x": {
+        "handle": "nzfirst",
+        "url": "https://x.com/nzfirst",
+        "status": "active",
+        "account_classification": "party",
+        "syndication_classification": "unknown"
+      },
+      "youtube": {
+        "handle": "@NZFirst",
+        "url": "https://www.youtube.com/@NZFirst",
+        "status": "active",
+        "account_classification": "party",
+        "syndication_classification": "unknown"
+      }
+    }
+  },
+  {
+    "party_id": "te-pati-maori",
+    "name": "Te Pāti Māori",
+    "name_māori": "Te Pāti Māori",
+    "short_name": "Māori Party",
+    "founded": 2004,
+    "registered": "2004-07-07",
+    "status": "active",
+    "website": "https://www.maoriparty.org.nz",
+    "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Te_P%C4%81ti_M%C4%81ori_logo.svg/320px-Te_P%C4%81ti_M%C4%81ori_logo.svg.png",
+    "leader_person_id": "rawiri-waititi",
+    "co_leader_person_id": "debbie-ngarewa-packer",
+    "president_person_id": "john-tamihere",
+    "seats_in_parliament": 6,
+    "political_position": "left-wing",
+    "colour": "#000000",
+    "social_profiles": {
+      "facebook": {
+        "handle": "MaoriParty",
+        "url": "https://www.facebook.com/MaoriParty",
+        "status": "active",
+        "account_classification": "party",
+        "syndication_classification": "unknown"
+      },
+      "x": {
+        "handle": "Maori_Party",
+        "url": "https://x.com/Maori_Party",
+        "status": "active",
+        "account_classification": "party",
+        "syndication_classification": "unknown"
+      },
+      "instagram": {
+        "handle": "tepatimaori",
+        "url": "https://www.instagram.com/tepatimaori/",
+        "status": "active",
+        "account_classification": "party",
+        "syndication_classification": "unknown"
+      },
+      "youtube": {
+        "handle": "@MaoriParty",
+        "url": "https://www.youtube.com/@MaoriParty",
+        "status": "active",
+        "account_classification": "party",
+        "syndication_classification": "unknown"
+      }
+    }
+  },
+  {
+    "party_id": "the-opportunities-party",
+    "name": "The Opportunity Party",
+    "short_name": "TOP",
+    "founded": 2016,
+    "registered": "2016-11-04",
+    "status": "active",
+    "website": "https://www.opportunity.org.nz",
+    "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/The_Opportunities_Party_logo_2023.svg/320px-The_Opportunities_Party_logo_2023.svg.png",
+    "leader_person_id": "qiulae-wong",
+    "president_person_id": "iain-lees-galloway",
+    "seats_in_parliament": 0,
+    "political_position": "centre",
+    "colour": "#008080",
+    "social_profiles": {
+      "facebook": {
+        "handle": "opportunitynz",
+        "url": "https://www.facebook.com/opportunitynz",
+        "status": "active",
+        "account_classification": "party",
+        "syndication_classification": "unknown"
+      },
+      "x": {
+        "handle": "opportunitynz",
+        "url": "https://x.com/opportunitynz",
+        "status": "active",
+        "account_classification": "party",
+        "syndication_classification": "unknown"
+      },
+      "instagram": {
+        "handle": "opportunitynz",
+        "url": "https://www.instagram.com/opportunitynz/",
+        "status": "active",
+        "account_classification": "party",
+        "syndication_classification": "unknown"
+      },
+      "youtube": {
+        "handle": "@opportunitynz",
+        "url": "https://www.youtube.com/@opportunitynz",
+        "status": "active",
+        "account_classification": "party",
+        "syndication_classification": "unknown"
+      }
+    }
+  },
+  {
+    "party_id": "nz-outdoors-and-freedom-party",
+    "name": "NZ Outdoors & Freedom Party",
+    "short_name": "Outdoors & Freedom",
+    "founded": 2015,
+    "registered": "2017-08-11",
+    "status": "active",
+    "website": "https://www.nzofp.co.nz",
+    "leader_person_id": "sue-grey",
+    "seats_in_parliament": 0,
+    "political_position": "syncretic",
+    "colour": "#006400",
+    "social_profiles": {}
+  },
+  {
+    "party_id": "vision-nz",
+    "name": "Vision NZ",
+    "short_name": "Vision NZ",
+    "founded": 2019,
+    "registered": "2019-12-04",
+    "status": "active",
+    "website": "https://www.vision.org.nz",
+    "leader_person_id": "hannah-tamaki",
+    "seats_in_parliament": 0,
+    "political_position": "far-right",
+    "colour": "#000033",
+    "social_profiles": {}
+  },
+  {
+    "party_id": "aotearoa-legalise-cannabis-party",
+    "name": "Aotearoa Legalise Cannabis Party",
+    "short_name": "ALCP",
+    "founded": 1996,
+    "registered": "1996-05-30",
+    "status": "active",
+    "website": "https://www.alcp.org.nz",
+    "leader_person_id": "maki-herbert",
+    "president_person_id": "steven-wilkinson",
+    "seats_in_parliament": 0,
+    "political_position": "single-issue",
+    "colour": "#006400",
+    "social_profiles": {
+      "facebook": {
+        "handle": "nzlegalisecannabis",
+        "url": "https://www.facebook.com/nzlegalisecannabis",
+        "status": "active",
+        "account_classification": "party",
+        "syndication_classification": "unknown"
+      },
+      "youtube": {
+        "handle": "@ALCPNZ",
+        "url": "https://www.youtube.com/@ALCPNZ",
+        "status": "active",
+        "account_classification": "party",
+        "syndication_classification": "unknown"
+      }
+    }
+  },
+  {
+    "party_id": "conservative-party-nz",
+    "name": "Conservative Party NZ",
+    "short_name": "Conservatives",
+    "founded": 2011,
+    "registered": "2011-10-06",
+    "status": "active",
+    "website": "https://www.conservatives.nz",
+    "leader_person_id": "helen-houghton",
+    "seats_in_parliament": 0,
+    "political_position": "right-wing",
+    "colour": "#40E0D0",
+    "social_profiles": {}
+  },
+  {
+    "party_id": "animal-justice-party",
+    "name": "Animal Justice Party Aotearoa New Zealand",
+    "short_name": "Animal Justice",
+    "founded": 2022,
+    "registered": "2022-01-01",
+    "status": "active",
+    "website": null,
+    "leader_person_id": "anna-rippon",
+    "seats_in_parliament": 0,
+    "political_position": "single-issue",
+    "colour": "#FF6600",
+    "social_profiles": {}
+  },
+  {
+    "party_id": "womens-rights-party",
+    "name": "Women's Rights Party",
+    "short_name": "Women's Rights",
+    "founded": 2023,
+    "registered": "2023-06-01",
+    "status": "active",
+    "website": null,
+    "leader_person_id": "jill-ovens",
+    "seats_in_parliament": 0,
+    "political_position": "single-issue",
+    "colour": "#FF69B4",
+    "social_profiles": {}
+  },
+  {
+    "party_id": "new-zealand-loyal",
+    "name": "New Zealand Loyal",
+    "short_name": "NZ Loyal",
+    "founded": 2023,
+    "registered": "2023-06-01",
+    "deregistered": "2024-07-29",
+    "status": "deregistered",
+    "website": "https://www.nzloyal.com",
+    "leader_person_id": "kelvyn-alp",
+    "seats_in_parliament": 0,
+    "political_position": "far-right",
+    "colour": "#FFD700",
+    "social_profiles": {}
+  },
+  {
+    "party_id": "democracynz",
+    "name": "DemocracyNZ",
+    "short_name": "DemocracyNZ",
+    "founded": 2022,
+    "registered": "2022-10-13",
+    "deregistered": "2024-02-16",
+    "status": "deregistered",
+    "website": "https://www.democracynz.org",
+    "leader_person_id": "matt-king",
+    "seats_in_parliament": 0,
+    "political_position": "right-wing",
+    "colour": "#1E90FF",
+    "social_profiles": {}
+  },
+  {
+    "party_id": "freedoms-new-zealand",
+    "name": "Freedoms New Zealand",
+    "short_name": "Freedoms NZ",
+    "founded": 2022,
+    "registered": "2023-02-16",
+    "deregistered": "2025-05-02",
+    "status": "deregistered",
+    "website": null,
+    "leader_person_id": "brian-tamaki",
+    "seats_in_parliament": 0,
+    "political_position": "right-wing",
+    "colour": "#800080",
+    "social_profiles": {}
+  },
+  {
+    "party_id": "newzeal",
+    "name": "NewZeal",
+    "short_name": "NewZeal",
+    "founded": 2019,
+    "registered": "2020-07-10",
+    "deregistered": "2026-03-31",
+    "status": "deregistered",
+    "website": "https://newzeal.org.nz",
+    "leader_person_id": null,
+    "seats_in_parliament": 0,
+    "political_position": "right-wing",
+    "colour": "#000080",
+    "social_profiles": {}
+  },
+  {
+    "party_id": "united-future",
+    "name": "United Future",
+    "short_name": "United Future",
+    "founded": 2000,
+    "registered": "2000-01-01",
+    "deregistered": "2017-01-01",
+    "status": "deregistered",
+    "website": null,
+    "leader_person_id": "peter-dunne",
+    "seats_in_parliament": 0,
+    "political_position": "centre",
+    "colour": "#4B0082",
+    "social_profiles": {}
+  },
+  {
+    "party_id": "mana-movement",
+    "name": "Mana Movement",
+    "short_name": "Mana",
+    "founded": 2011,
+    "registered": "2011-04-01",
+    "deregistered": "2021-01-01",
+    "status": "deregistered",
+    "website": null,
+    "leader_person_id": "hone-harawira",
+    "seats_in_parliament": 0,
+    "political_position": "left-wing",
+    "colour": "#FF0000",
+    "social_profiles": {}
+  },
+  {
+    "party_id": "internet-party",
+    "name": "Internet Party",
+    "short_name": "Internet",
+    "founded": 2014,
+    "registered": "2014-01-01",
+    "deregistered": "2018-01-01",
+    "status": "deregistered",
+    "website": null,
+    "leader_person_id": "laila-harre",
+    "seats_in_parliament": 0,
+    "political_position": "centre-left",
+    "colour": "#FF6600",
+    "social_profiles": {}
+  },
+  {
+    "party_id": "alliance",
+    "name": "Alliance",
+    "short_name": "Alliance",
+    "founded": 1991,
+    "registered": null,
+    "status": "active",
+    "website": null,
+    "leader_person_id": "victor-billot",
+    "seats_in_parliament": 0,
+    "political_position": "left-wing",
+    "colour": "#8B0000",
+    "social_profiles": {}
+  },
+  {
+    "party_id": "heartland-new-zealand-party",
+    "name": "Heartland New Zealand Party",
+    "short_name": "Heartland NZ",
+    "founded": 2020,
+    "registered": null,
+    "status": "active",
+    "website": null,
+    "leader_person_id": "mark-ball",
+    "seats_in_parliament": 0,
+    "political_position": "centre-right",
+    "colour": "#228B22",
+    "social_profiles": {}
+  },
+  {
+    "party_id": "new-nation-party",
+    "name": "New Nation Party",
+    "short_name": "New Nation",
+    "founded": 2022,
+    "registered": null,
+    "status": "active",
+    "website": null,
+    "leader_person_id": null,
+    "seats_in_parliament": 0,
+    "political_position": "right-wing",
+    "colour": "#000080",
+    "social_profiles": {}
+  },
+  {
+    "party_id": "social-credit-party",
+    "name": "Social Credit Party",
+    "short_name": "Social Credit",
+    "founded": 1953,
+    "registered": "1953-01-01",
+    "deregistered": "2023-01-01",
+    "status": "deregistered",
+    "website": null,
+    "leader_person_id": null,
+    "seats_in_parliament": 0,
+    "political_position": "centre-left",
+    "colour": "#008000",
+    "social_profiles": {}
+  },
+  {
+    "party_id": "progressive-party",
+    "name": "Progressive Party",
+    "short_name": "Progressive",
+    "founded": 2002,
+    "registered": "2002-01-01",
+    "deregistered": "2012-01-01",
+    "status": "deregistered",
+    "website": null,
+    "leader_person_id": "jim-anderton",
+    "seats_in_parliament": 0,
+    "political_position": "left-wing",
+    "colour": "#FF0000",
+    "social_profiles": {}
+  }
+]

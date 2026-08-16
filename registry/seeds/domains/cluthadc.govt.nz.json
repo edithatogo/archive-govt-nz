@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "clutha-district-council",
+    "name": "Clutha District Council",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.cluthadc.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "CluthaDistrictCouncil",
+        "url": "https://www.facebook.com/CluthaDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

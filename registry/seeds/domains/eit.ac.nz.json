@@ -1,0 +1,42 @@
+[
+  {
+    "agency_id": "eit",
+    "name": "Eastern Institute of Technology (EIT)",
+    "type": "ITP/Polytechnic",
+    "portfolio": "Education",
+    "official_website": "https://www.eit.ac.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "EITHawkesBay",
+        "url": "https://www.facebook.com/EITHawkesBay",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "EIT",
+        "url": "https://www.linkedin.com/company/eit",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "eit_hawkes_bay",
+        "url": "https://www.instagram.com/eit_hawkes_bay",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "x": {
+        "handle": "eithawkesbay",
+        "url": "https://x.com/eithawkesbay",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "EITHawkesBay",
+        "url": "https://www.youtube.com/@EITHawkesBay",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

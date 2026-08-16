@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "nz-trade-and-enterprise",
+    "name": "New Zealand Trade and Enterprise (Te Taurapa Tūhono)",
+    "type": "Crown Agent",
+    "portfolio": "Economic Development",
+    "official_website": "https://www.nzte.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "linkedin": {
+        "handle": "New Zealand Trade and Enterprise",
+        "url": "https://www.linkedin.com/company/new-zealand-trade-and-enterprise",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

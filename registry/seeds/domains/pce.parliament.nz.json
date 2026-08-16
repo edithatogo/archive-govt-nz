@@ -1,0 +1,30 @@
+[
+  {
+    "agency_id": "parliamentary-commissioner-for-environment",
+    "name": "Parliamentary Commissioner for the Environment (Te Kaitiaki Taiao a Te Whare Pāremata)",
+    "type": "Office of Parliament",
+    "portfolio": "Parliament",
+    "official_website": "https://www.pce.parliament.nz",
+    "status": "active",
+    "social_profiles": {
+      "linkedin": {
+        "handle": "Parliamentary Commissioner for the Environment",
+        "url": "https://www.linkedin.com/company/parliamentary-commissioner-for-the-environment",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "x": {
+        "handle": "PCE_Env",
+        "url": "https://x.com/PCE_Env",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "ParliamentaryCommissionerEnvironment",
+        "url": "https://www.youtube.com/@ParliamentaryCommissionerEnvironment",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

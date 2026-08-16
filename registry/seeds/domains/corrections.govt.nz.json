@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "department-of-corrections",
+    "name": "Department of Corrections (Ara Poutama Aotearoa)",
+    "type": "Department",
+    "portfolio": "Corrections",
+    "official_website": "https://www.corrections.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "CorrectionsNZ",
+        "url": "https://www.facebook.com/CorrectionsNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

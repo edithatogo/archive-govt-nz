@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "tertiary-education-commission",
+    "name": "Tertiary Education Commission (Te Amorangi Mātauranga Matua)",
+    "type": "Crown Agent",
+    "portfolio": "Education",
+    "official_website": "https://www.tec.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "linkedin": {
+        "handle": "Tertiary Education Commission",
+        "url": "https://www.linkedin.com/company/tertiary-education-commission",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

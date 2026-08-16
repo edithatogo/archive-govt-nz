@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "hawkes-bay-regional-council",
+    "name": "Hawke's Bay Regional Council (Te Kaunihera ā Rohe o Te Matau-a-Māui)",
+    "type": "Regional Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.hbrc.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "HawkesBayRegionalCouncil",
+        "url": "https://www.facebook.com/HawkesBayRegionalCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

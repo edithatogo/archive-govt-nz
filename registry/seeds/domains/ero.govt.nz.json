@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "education-review-office",
+    "name": "Education Review Office (Te Tari Arotake Mātauranga)",
+    "type": "Department",
+    "portfolio": "Education",
+    "official_website": "https://www.ero.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "linkedin": {
+        "handle": "Education Review Office",
+        "url": "https://www.linkedin.com/company/education-review-office",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

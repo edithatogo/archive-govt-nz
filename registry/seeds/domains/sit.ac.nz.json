@@ -1,0 +1,36 @@
+[
+  {
+    "agency_id": "sit",
+    "name": "Southern Institute of Technology (SIT)",
+    "type": "ITP/Polytechnic",
+    "portfolio": "Education",
+    "official_website": "https://www.sit.ac.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "SITNZ",
+        "url": "https://www.facebook.com/SITNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Southern Institute of Technology",
+        "url": "https://www.linkedin.com/school/southern-institute-of-technology",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "sitnz",
+        "url": "https://www.instagram.com/sitnz",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "sitnz",
+        "url": "https://www.youtube.com/@sitnz",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

@@ -1,0 +1,24 @@
+[
+  {
+    "agency_id": "qv",
+    "name": "Quotable Value Limited (Te Tari Wāriu)",
+    "type": "SOE",
+    "portfolio": "Land Information",
+    "official_website": "https://www.qv.co.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "QuotableValue",
+        "url": "https://www.facebook.com/QuotableValue",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "QV",
+        "url": "https://www.linkedin.com/company/qv",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

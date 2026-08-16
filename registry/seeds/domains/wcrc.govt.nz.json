@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "west-coast-regional-council",
+    "name": "West Coast Regional Council (Te Tai o Poutini)",
+    "type": "Regional Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.wcrc.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "WestCoastRegionalCouncil",
+        "url": "https://www.facebook.com/WestCoastRegionalCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

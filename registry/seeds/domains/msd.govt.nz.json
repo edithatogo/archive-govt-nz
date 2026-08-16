@@ -1,0 +1,30 @@
+[
+  {
+    "agency_id": "ministry-of-social-development",
+    "name": "Ministry of Social Development (Te Manatū Whakahiato Ora)",
+    "type": "Department",
+    "portfolio": "Social Development and Employment",
+    "official_website": "https://www.msd.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "MSDgovtnz",
+        "url": "https://www.facebook.com/MSDgovtnz",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "x": {
+        "handle": "msdgovtnz",
+        "url": "https://x.com/msdgovtnz",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "msdgovtnz",
+        "url": "https://www.instagram.com/msdgovtnz/",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

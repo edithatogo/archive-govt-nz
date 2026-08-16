@@ -1,0 +1,24 @@
+[
+  {
+    "agency_id": "predator-free-2050",
+    "name": "Predator Free 2050 Limited",
+    "type": "Schedule 4a Company",
+    "portfolio": "Conservation",
+    "official_website": "https://www.predatorfree2050.co.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "PredatorFree2050",
+        "url": "https://www.facebook.com/PredatorFree2050",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "predatorfree2050",
+        "url": "https://www.instagram.com/predatorfree2050",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

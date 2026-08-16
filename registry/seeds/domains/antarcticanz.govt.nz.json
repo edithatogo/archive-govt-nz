@@ -1,0 +1,42 @@
+[
+  {
+    "agency_id": "antarctica-nz",
+    "name": "Antarctica New Zealand",
+    "type": "Crown Agent",
+    "portfolio": "Foreign Affairs",
+    "official_website": "https://www.antarcticanz.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "linkedin": {
+        "handle": "Antarctica New Zealand",
+        "url": "https://www.linkedin.com/company/antarctica-new-zealand",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "facebook": {
+        "handle": "AntarcticaNZ",
+        "url": "https://www.facebook.com/AntarcticaNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "antarcticanz",
+        "url": "https://www.instagram.com/antarcticanz",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "x": {
+        "handle": "AntarcticaNZ",
+        "url": "https://x.com/AntarcticaNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "AntarcticaNZ",
+        "url": "https://www.youtube.com/@AntarcticaNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

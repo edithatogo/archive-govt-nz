@@ -2,8 +2,9 @@
   "id": "canonical_archive_contracts_20260817",
   "title": "Track 4: Canonical Archive Contracts",
   "type": "core_architecture",
-  "status": "planned",
+  "status": "completed",
   "created_at": "2026-08-16T23:00:00Z",
+  "completed_at": "2026-08-17T08:56:00Z",
   "requirements_method": "MoSCoW",
   "dependencies": [
     "conductor_lineage_reconciliation_20260817",

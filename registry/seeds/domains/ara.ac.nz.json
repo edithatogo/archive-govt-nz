@@ -1,0 +1,36 @@
+[
+  {
+    "agency_id": "ara-institute-of-canterbury",
+    "name": "Ara Institute of Canterbury",
+    "type": "ITP/Polytechnic",
+    "portfolio": "Education",
+    "official_website": "https://www.ara.ac.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "AraInstitute",
+        "url": "https://www.facebook.com/AraInstitute",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Ara Institute of Canterbury",
+        "url": "https://www.linkedin.com/school/ara-institute-of-canterbury",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "arainstitute",
+        "url": "https://www.instagram.com/arainstitute",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "AraInstitute",
+        "url": "https://www.youtube.com/@AraInstitute",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

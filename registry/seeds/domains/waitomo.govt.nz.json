@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "waitomo-district-council",
+    "name": "Waitomo District Council",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.waitomo.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "WaitomoDistrictCouncil",
+        "url": "https://www.facebook.com/WaitomoDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "central-hawkes-bay-district-council",
+    "name": "Central Hawke's Bay District Council",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.chbdc.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "CentralHawkesBayDistrictCouncil",
+        "url": "https://www.facebook.com/CentralHawkesBayDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

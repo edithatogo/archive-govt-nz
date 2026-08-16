@@ -1,0 +1,30 @@
+[
+  {
+    "agency_id": "te-tumu-paeroa",
+    "name": "Te Tumu Paeroa (Office of the Māori Trustee)",
+    "type": "Department",
+    "portfolio": "Māori Development",
+    "official_website": "https://www.tetumupaeroa.co.nz",
+    "status": "active",
+    "social_profiles": {
+      "linkedin": {
+        "handle": "Te Tumu Paeroa",
+        "url": "https://www.linkedin.com/company/te-tumu-paeroa/",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "tetumupaeroa",
+        "url": "https://www.instagram.com/tetumupaeroa/",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "facebook": {
+        "handle": "TeTumuPaeroa",
+        "url": "https://www.facebook.com/TeTumuPaeroa",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

@@ -1,0 +1,36 @@
+[
+  {
+    "agency_id": "civil-aviation-authority",
+    "name": "Civil Aviation Authority (Te Mana Rererangi Tūmatanui o Aotearoa)",
+    "type": "Crown Agent",
+    "portfolio": "Transport",
+    "official_website": "https://www.caa.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "CAA",
+        "url": "https://www.facebook.com/CivilAviationAuthority",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "x": {
+        "handle": "CivilAviationNZ",
+        "url": "https://x.com/CivilAviationNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Civil Aviation Authority of New Zealand",
+        "url": "https://www.linkedin.com/company/civil-aviation-authority-of-new-zealand",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "CAA New Zealand",
+        "url": "https://www.youtube.com/@CAANewZealand",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

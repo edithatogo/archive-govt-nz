@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "central-otago-district-council",
+    "name": "Central Otago District Council",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.codc.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "CentralOtagoDistrictCouncil",
+        "url": "https://www.facebook.com/CentralOtagoDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

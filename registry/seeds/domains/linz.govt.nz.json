@@ -1,0 +1,30 @@
+[
+  {
+    "agency_id": "linz",
+    "name": "Land Information New Zealand (Toitū te Whenua)",
+    "type": "Department",
+    "portfolio": "Land Information",
+    "official_website": "https://www.linz.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "linzgovtnz",
+        "url": "https://www.facebook.com/linzgovtnz",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Toitū Te Whenua LINZ",
+        "url": "https://www.linkedin.com/company/toitu-te-whenua-linz/",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "linzgovtnz",
+        "url": "https://www.youtube.com/@linzgovtnz",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

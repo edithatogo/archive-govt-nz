@@ -1,0 +1,17 @@
+[
+  {
+    "agency_id": "rnz",
+    "name": "Radio New Zealand Limited (Te Reo Irirangi o Aotearoa)",
+    "type": "Crown Entity Company",
+    "portfolio": "Broadcasting",
+    "official_website": "https://www.rnz.co.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "RNZ",
+        "url": "https://www.facebook.com/RNZ",
+        "status": "active"
+      }
+    }
+  }
+]

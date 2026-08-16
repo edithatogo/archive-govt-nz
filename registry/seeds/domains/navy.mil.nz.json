@@ -1,0 +1,37 @@
+[
+  {
+    "agency_id": "royal-nz-navy",
+    "name": "Royal New Zealand Navy (Te Taua Moana o Aotearoa)",
+    "type": "NZDF",
+    "portfolio": "Defence",
+    "official_website": "https://www.navy.mil.nz",
+    "status": "active",
+    "parent_agency_id": "nz-defence-force",
+    "social_profiles": {
+      "facebook": {
+        "handle": "RNZNavy",
+        "url": "https://www.facebook.com/RNZNavy",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "royalnznavy",
+        "url": "https://www.instagram.com/royalnznavy",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Royal New Zealand Navy",
+        "url": "https://www.linkedin.com/company/royal-new-zealand-navy",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "royalnznavy",
+        "url": "https://www.youtube.com/@royalnznavy",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "agency_id": "ministry-for-women",
+    "name": "Ministry for Women (Manatū Wāhine)",
+    "type": "Department",
+    "portfolio": "Women",
+    "official_website": "https://www.women.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "Ministry for Women",
+        "url": "https://www.facebook.com/ministryforwomen/",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "manatuwahine",
+        "url": "https://www.instagram.com/manatuwahine/",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Ministry for Women NZ",
+        "url": "https://www.linkedin.com/company/ministry-for-women-nz/",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

@@ -1,0 +1,37 @@
+[
+  {
+    "agency_id": "te-papa",
+    "name": "Museum of New Zealand Te Papa Tongarewa",
+    "type": "Autonomous Crown Entity",
+    "portfolio": "Arts, Culture and Heritage",
+    "official_website": "https://www.tepapa.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "TePapa",
+        "url": "https://www.facebook.com/TePapa",
+        "status": "active"
+      },
+      "instagram": {
+        "handle": "te_papa",
+        "url": "https://www.instagram.com/te_papa",
+        "status": "active"
+      },
+      "linkedin": {
+        "handle": "Museum of New Zealand Te Papa Tongarewa",
+        "url": "https://www.linkedin.com/company/museum-of-new-zealand-te-papa-tongarewa",
+        "status": "active"
+      },
+      "x": {
+        "handle": "TePapa",
+        "url": "https://x.com/TePapa",
+        "status": "active"
+      },
+      "youtube": {
+        "handle": "tepapa",
+        "url": "https://www.youtube.com/@tepapa",
+        "status": "active"
+      }
+    }
+  }
+]

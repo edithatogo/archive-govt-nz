@@ -1,0 +1,17 @@
+[
+  {
+    "agency_id": "commerce-commission",
+    "name": "Commerce Commission (Te Kōmihana Tauhokohoko)",
+    "type": "Independent Crown Entity",
+    "portfolio": "Commerce and Consumer Affairs",
+    "official_website": "https://www.comcom.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "linkedin": {
+        "handle": "Commerce Commission",
+        "url": "https://www.linkedin.com/company/commerce-commission",
+        "status": "active"
+      }
+    }
+  }
+]

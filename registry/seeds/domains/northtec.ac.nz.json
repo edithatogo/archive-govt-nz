@@ -1,0 +1,36 @@
+[
+  {
+    "agency_id": "northtec",
+    "name": "NorthTec",
+    "type": "ITP/Polytechnic",
+    "portfolio": "Education",
+    "official_website": "https://www.northtec.ac.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "NorthTecNZ",
+        "url": "https://www.facebook.com/NorthTecNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "NorthTec",
+        "url": "https://www.linkedin.com/company/northtec",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "northtecnz",
+        "url": "https://www.instagram.com/northtecnz",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "NorthTecNZ",
+        "url": "https://www.youtube.com/@NorthTecNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

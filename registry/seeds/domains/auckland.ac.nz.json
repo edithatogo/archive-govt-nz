@@ -1,0 +1,36 @@
+[
+  {
+    "agency_id": "university-of-auckland",
+    "name": "University of Auckland (Waipapa Taumata Rau)",
+    "type": "University",
+    "portfolio": "Education",
+    "official_website": "https://www.auckland.ac.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "universityofauckland",
+        "url": "https://www.facebook.com/universityofauckland",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "University of Auckland",
+        "url": "https://www.linkedin.com/school/university-of-auckland",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "universityofauckland",
+        "url": "https://www.instagram.com/universityofauckland",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "UniversityOfAuckland",
+        "url": "https://www.youtube.com/@UniversityOfAuckland",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "waimakariri-district-council",
+    "name": "Waimakariri District Council",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.waimakariri.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "WaimakaririDistrictCouncil",
+        "url": "https://www.facebook.com/WaimakaririDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

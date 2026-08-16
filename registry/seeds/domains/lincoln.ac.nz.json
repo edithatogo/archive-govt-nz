@@ -1,0 +1,36 @@
+[
+  {
+    "agency_id": "lincoln-university",
+    "name": "Lincoln University (Te Whare Wānaka o Aoraki)",
+    "type": "University",
+    "portfolio": "Education",
+    "official_website": "https://www.lincoln.ac.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "LincolnUniversityNZ",
+        "url": "https://www.facebook.com/LincolnUniversityNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Lincoln University New Zealand",
+        "url": "https://www.linkedin.com/school/lincoln-university-new-zealand",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "lincolnuninz",
+        "url": "https://www.instagram.com/lincolnuninz",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "LincolnUniversityNZ",
+        "url": "https://www.youtube.com/@LincolnUniversityNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

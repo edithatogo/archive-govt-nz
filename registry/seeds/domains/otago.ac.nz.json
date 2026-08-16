@@ -1,0 +1,36 @@
+[
+  {
+    "agency_id": "university-of-otago",
+    "name": "University of Otago (Te Whare Wānanga o Otāgo)",
+    "type": "University",
+    "portfolio": "Education",
+    "official_website": "https://www.otago.ac.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "uniotago",
+        "url": "https://www.facebook.com/uniotago",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "University of Otago",
+        "url": "https://www.linkedin.com/school/university-of-otago",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "universityofotago",
+        "url": "https://www.instagram.com/universityofotago",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "uniotago",
+        "url": "https://www.youtube.com/@uniotago",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

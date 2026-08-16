@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "ministry-for-primary-industries",
+    "name": "Ministry for Primary Industries (Manatū Ahu Matua)",
+    "type": "Department",
+    "portfolio": "Agriculture",
+    "official_website": "https://www.mpi.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "MPIgovtnz",
+        "url": "https://www.facebook.com/MPIgovtnz",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

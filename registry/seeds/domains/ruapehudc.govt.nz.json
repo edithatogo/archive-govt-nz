@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "ruapehu-district-council",
+    "name": "Ruapehu District Council",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.ruapehudc.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "RuapehuDistrictCouncil",
+        "url": "https://www.facebook.com/RuapehuDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

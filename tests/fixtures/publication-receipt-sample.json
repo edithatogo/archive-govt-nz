@@ -1,0 +1,13 @@
+{
+  "schema_version": "archive-govt-nz.publication-receipt/v1",
+  "receipt_id": "rcpt-moh-bsky-20260817-hf",
+  "target_platform": "huggingface",
+  "remote_identifier": "edithatogo/corpus-social-media-government-nz",
+  "published_at": "2026-08-17T00:00:00Z",
+  "sha256_bundle_root": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "file_count": 5,
+  "total_bytes": 1048576,
+  "doi": null,
+  "commit_pinned_url": "https://huggingface.co/datasets/edithatogo/corpus-social-media-government-nz/commit/abcdef1234567890",
+  "status": "published"
+}

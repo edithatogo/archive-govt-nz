@@ -1,0 +1,33 @@
+[
+  {
+    "agency_id": "ministry-of-health",
+    "name": "Ministry of Health (Manatū Hauora)",
+    "type": "Department",
+    "portfolio": "Health",
+    "official_website": "https://www.health.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "bluesky": {
+        "handle": "health.govt.nz",
+        "url": "https://bsky.app/profile/health.govt.nz",
+        "status": "active"
+      },
+      "linkedin": {
+        "handle": "Ministry of Health New Zealand",
+        "url": "https://www.linkedin.com/company/ministry-of-health-new-zealand",
+        "status": "active"
+      },
+      "facebook": {
+        "handle": "minhealthnz",
+        "url": "https://www.facebook.com/minhealthnz",
+        "status": "active"
+      },
+      "x": {
+        "handle": "minhealthnz",
+        "url": "https://x.com/minhealthnz",
+        "status": "inactive",
+        "deactivated_at": "2025-07"
+      }
+    }
+  }
+]

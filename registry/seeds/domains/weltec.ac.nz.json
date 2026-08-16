@@ -1,0 +1,36 @@
+[
+  {
+    "agency_id": "weltec",
+    "name": "Wellington Institute of Technology (WelTec)",
+    "type": "ITP/Polytechnic",
+    "portfolio": "Education",
+    "official_website": "https://www.weltec.ac.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "WelTecNZ",
+        "url": "https://www.facebook.com/WelTecNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "WelTec",
+        "url": "https://www.linkedin.com/school/weltec",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "weltecnz",
+        "url": "https://www.instagram.com/weltecnz",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "WelTecNZ",
+        "url": "https://www.youtube.com/@WelTecNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "kordia",
+    "name": "Kordia Group Limited",
+    "type": "SOE",
+    "portfolio": "Economic Development",
+    "official_website": "https://www.kordia.co.nz",
+    "status": "active",
+    "social_profiles": {
+      "linkedin": {
+        "handle": "Kordia",
+        "url": "https://www.linkedin.com/company/kordia",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

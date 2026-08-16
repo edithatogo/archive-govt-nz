@@ -1,0 +1,24 @@
+[
+  {
+    "agency_id": "ministry-of-transport",
+    "name": "Ministry of Transport (Te Manatū Waka)",
+    "type": "Department",
+    "portfolio": "Transport",
+    "official_website": "https://www.transport.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "linkedin": {
+        "handle": "Ministry of Transport (New Zealand) - Te Manatū Waka",
+        "url": "https://www.linkedin.com/company/ministry-of-transport-new-zealand/",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "facebook": {
+        "handle": "transportgovtnz",
+        "url": "https://www.facebook.com/transportgovtnz",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

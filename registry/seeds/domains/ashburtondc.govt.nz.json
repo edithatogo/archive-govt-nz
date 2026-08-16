@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "ashburton-district-council",
+    "name": "Ashburton District Council",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.ashburtondc.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "AshburtonDistrictCouncil",
+        "url": "https://www.facebook.com/AshburtonDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

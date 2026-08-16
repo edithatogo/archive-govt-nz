@@ -1,0 +1,42 @@
+[
+  {
+    "agency_id": "nz-post",
+    "name": "New Zealand Post Limited (Tukurau Aotearoa)",
+    "type": "SOE",
+    "portfolio": "Finance",
+    "official_website": "https://www.nzpost.co.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "NZPost",
+        "url": "https://www.facebook.com/NZPost",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "NZ Post",
+        "url": "https://www.linkedin.com/company/nzpost",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "nzpost",
+        "url": "https://www.instagram.com/nzpost",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "x": {
+        "handle": "NZPost",
+        "url": "https://x.com/NZPost",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "nzpost",
+        "url": "https://www.youtube.com/@nzpost",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

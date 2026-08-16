@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "the-treasury",
+    "name": "The Treasury (Te Tai Ōhanga)",
+    "type": "Department",
+    "portfolio": "Finance",
+    "official_website": "https://www.treasury.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "linkedin": {
+        "handle": "The Treasury - New Zealand",
+        "url": "https://www.linkedin.com/company/new-zealand-treasury/",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

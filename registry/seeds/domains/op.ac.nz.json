@@ -1,0 +1,36 @@
+[
+  {
+    "agency_id": "otago-polytechnic",
+    "name": "Otago Polytechnic",
+    "type": "ITP/Polytechnic",
+    "portfolio": "Education",
+    "official_website": "https://www.op.ac.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "OtagoPolytechnic",
+        "url": "https://www.facebook.com/OtagoPolytechnic",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Otago Polytechnic",
+        "url": "https://www.linkedin.com/school/otago-polytechnic",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "otagopolytechnic",
+        "url": "https://www.instagram.com/otagopolytechnic",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "OtagoPolytechnic",
+        "url": "https://www.youtube.com/@OtagoPolytechnic",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "carterton-district-council",
+    "name": "Carterton District Council",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.cartertondc.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "CartertonDistrictCouncil",
+        "url": "https://www.facebook.com/CartertonDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

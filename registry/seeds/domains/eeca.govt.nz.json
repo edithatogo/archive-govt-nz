@@ -1,0 +1,36 @@
+[
+  {
+    "agency_id": "eeca",
+    "name": "Energy Efficiency and Conservation Authority (Te Tari Tiaki Pūngao)",
+    "type": "Crown Agent",
+    "portfolio": "Energy and Resources",
+    "official_website": "https://www.eeca.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "linkedin": {
+        "handle": "EECA",
+        "url": "https://www.linkedin.com/company/eeca",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "facebook": {
+        "handle": "EECA",
+        "url": "https://www.facebook.com/EECA",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "eeca_nz",
+        "url": "https://www.instagram.com/eeca_nz",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "EECA",
+        "url": "https://www.youtube.com/@EECA",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

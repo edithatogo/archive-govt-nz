@@ -1,0 +1,36 @@
+[
+  {
+    "agency_id": "aut-university",
+    "name": "AUT University (Te Wānanga Aronui o Tāmaki Makau Rau)",
+    "type": "University",
+    "portfolio": "Education",
+    "official_website": "https://www.aut.ac.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "AUTUniversity",
+        "url": "https://www.facebook.com/AUTUniversity",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Auckland University of Technology",
+        "url": "https://www.linkedin.com/school/auckland-university-of-technology",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "autuni",
+        "url": "https://www.instagram.com/autuni",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "AUTUni",
+        "url": "https://www.youtube.com/@AUTUni",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

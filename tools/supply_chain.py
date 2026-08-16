@@ -31,6 +31,7 @@ RECEIPT_EXCLUSION_PATTERN = (
     r'"(?:[a-z_]*revision(?:_[a-z_]+)?|[a-z_]*commit|[a-z_]*sha256|fingerprint|previous_fingerprint)"\s*:'
     r'|"detail"\s*:\s*"[0-9a-f]{40}"'
     r'|"[0-9a-f]{40}"'
+    r'|"[0-9a-f]{64}"'
     r"|consolidation_revision"
 )
 

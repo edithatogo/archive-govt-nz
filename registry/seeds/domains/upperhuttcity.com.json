@@ -1,0 +1,24 @@
+[
+  {
+    "agency_id": "upper-hutt-city-council",
+    "name": "Upper Hutt City Council (Te Kaunihera o Upera Hutu)",
+    "type": "City Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.upperhuttcity.com",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "UpperHuttCityCouncil",
+        "url": "https://www.facebook.com/UpperHuttCityCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Upper Hutt City Council",
+        "url": "https://www.linkedin.com/company/upper-hutt-city-council",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

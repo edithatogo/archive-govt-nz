@@ -1,0 +1,12 @@
+{
+  "schema_version": "archive-govt-nz.capture-event/v1",
+  "event_id": "evt-moh-bsky-20260817-001",
+  "source_id": "bluesky:moh:minhealthnz.bsky.social",
+  "timestamp": "2026-08-17T00:00:00Z",
+  "status": "success",
+  "agent": "archive-govt-nz/capture/bluesky:0.1.0",
+  "bytes_captured": 1024,
+  "objects_created": 1,
+  "error_message": null,
+  "prov_activity_id": "prov:act:capture-20260817-001"
+}

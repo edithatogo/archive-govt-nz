@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "wairoa-district-council",
+    "name": "Wairoa District Council",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.wairoadc.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "WairoaDistrictCouncil",
+        "url": "https://www.facebook.com/WairoaDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

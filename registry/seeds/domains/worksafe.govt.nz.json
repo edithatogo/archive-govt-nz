@@ -1,0 +1,42 @@
+[
+  {
+    "agency_id": "worksafe-nz",
+    "name": "WorkSafe New Zealand (Mahi Haumaru Aotearoa)",
+    "type": "Crown Agent",
+    "portfolio": "Workplace Relations and Safety",
+    "official_website": "https://www.worksafe.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "WorkSafe NZ",
+        "url": "https://www.facebook.com/worksafeNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "x": {
+        "handle": "WorkSafeNZ",
+        "url": "https://x.com/WorkSafeNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "WorkSafe New Zealand",
+        "url": "https://www.linkedin.com/company/worksafe-new-zealand",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "worksafe_nz",
+        "url": "https://www.instagram.com/worksafe_nz",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "WorkSafeNZ",
+        "url": "https://www.youtube.com/@WorkSafeNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

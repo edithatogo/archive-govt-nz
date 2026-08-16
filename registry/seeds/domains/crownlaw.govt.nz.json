@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "crown-law-office",
+    "name": "Crown Law Office (Te Tari Ture o te Karauna)",
+    "type": "Department",
+    "portfolio": "Attorney-General",
+    "official_website": "https://www.crownlaw.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "linkedin": {
+        "handle": "Crown Law Office New Zealand",
+        "url": "https://www.linkedin.com/company/crown-law-office-new-zealand",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

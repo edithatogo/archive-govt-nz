@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "horowhenua-district-council",
+    "name": "Horowhenua District Council",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.horowhenua.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "HorowhenuaDistrictCouncil",
+        "url": "https://www.facebook.com/HorowhenuaDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

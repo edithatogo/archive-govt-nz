@@ -1,0 +1,24 @@
+[
+  {
+    "agency_id": "health-quality-and-safety-commission",
+    "name": "Health Quality and Safety Commission (Te Tāhū Hauora)",
+    "type": "Crown Agent",
+    "portfolio": "Health",
+    "official_website": "https://www.hqsc.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "linkedin": {
+        "handle": "Health Quality & Safety Commission",
+        "url": "https://www.linkedin.com/company/health-quality-safety-commission",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "x": {
+        "handle": "HQSC_NZ",
+        "url": "https://x.com/HQSC_NZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

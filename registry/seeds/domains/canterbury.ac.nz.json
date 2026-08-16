@@ -1,0 +1,36 @@
+[
+  {
+    "agency_id": "university-of-canterbury",
+    "name": "University of Canterbury (Te Whare Wānanga o Waitaha)",
+    "type": "University",
+    "portfolio": "Education",
+    "official_website": "https://www.canterbury.ac.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "UniversityofCanterbury",
+        "url": "https://www.facebook.com/UniversityofCanterbury",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "University of Canterbury",
+        "url": "https://www.linkedin.com/school/university-of-canterbury",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "universityofcanterbury",
+        "url": "https://www.instagram.com/universityofcanterbury",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "universityofcanterbury",
+        "url": "https://www.youtube.com/@universityofcanterbury",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

@@ -1,0 +1,24 @@
+[
+  {
+    "agency_id": "ministry-of-housing-and-urban-development",
+    "name": "Ministry of Housing and Urban Development (Te Tūāpapa Kura Kāinga)",
+    "type": "Department",
+    "portfolio": "Housing and Urban Development",
+    "official_website": "https://www.hud.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "HUDNZ",
+        "url": "https://www.facebook.com/HUDNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "HUD NZ",
+        "url": "https://www.linkedin.com/company/hud-nz/",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

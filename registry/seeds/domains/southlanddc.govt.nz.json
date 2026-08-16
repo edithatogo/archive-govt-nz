@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "southland-district-council",
+    "name": "Southland District Council (Te Kaunihera o Murihiku)",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.southlanddc.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "SouthlandDistrictCouncil",
+        "url": "https://www.facebook.com/SouthlandDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

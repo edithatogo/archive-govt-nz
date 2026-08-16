@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PublicationReceiptV1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "receipt_id",
+    "target_platform",
+    "remote_identifier",
+    "published_at",
+    "sha256_bundle_root",
+    "file_count",
+    "total_bytes",
+    "status"
+  ],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "receipt_id": { "type": "string" },
+    "target_platform": {
+      "type": "string",
+      "enum": ["huggingface", "zenodo", "osf", "github_releases"]
+    },
+    "remote_identifier": { "type": "string" },
+    "published_at": { "type": "string", "format": "date-time" },
+    "sha256_bundle_root": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "file_count": { "type": "integer", "minimum": 0 },
+    "total_bytes": { "type": "integer", "minimum": 0 },
+    "doi": { "type": ["string", "null"] },
+    "commit_pinned_url": { "type": ["string", "null"] },
+    "status": {
+      "type": "string",
+      "enum": ["published", "verified", "failed", "retracted"]
+    }
+  }
+}

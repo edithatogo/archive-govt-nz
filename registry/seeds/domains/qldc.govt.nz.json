@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "queenstown-lakes-district-council",
+    "name": "Queenstown-Lakes District Council",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.qldc.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "QueenstownLakesDistrictCouncil",
+        "url": "https://www.facebook.com/QueenstownLakesDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

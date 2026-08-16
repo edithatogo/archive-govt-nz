@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "new-plymouth-district-council",
+    "name": "New Plymouth District Council (Te Kaunihera o Ngāmotu)",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.npdc.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "NewPlymouthDistrictCouncil",
+        "url": "https://www.facebook.com/NewPlymouthDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "whakatane-district-council",
+    "name": "Whakatāne District Council",
+    "type": "District Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.whakatane.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "WhakataneDistrictCouncil",
+        "url": "https://www.facebook.com/WhakataneDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "gisborne-district-council",
+    "name": "Gisborne District Council (Te Kaunihera o Te Tairāwhiti)",
+    "type": "Unitary Authority",
+    "portfolio": "Local Government",
+    "official_website": "https://www.gdc.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "GisborneDistrictCouncil",
+        "url": "https://www.facebook.com/GisborneDistrictCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

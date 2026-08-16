@@ -1,0 +1,36 @@
+[
+  {
+    "agency_id": "te-whare-wananga-o-awanuiarangi",
+    "name": "Te Whare Wānanga o Awanuiārangi",
+    "type": "Wānanga",
+    "portfolio": "Education",
+    "official_website": "https://www.wananga.ac.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "twwananga",
+        "url": "https://www.facebook.com/twwananga",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Te Whare Wananga o Awanuiarangi",
+        "url": "https://www.linkedin.com/school/te-whare-wananga-o-awanuiarangi",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "twwananga",
+        "url": "https://www.instagram.com/twwananga",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "TeWhareWananga",
+        "url": "https://www.youtube.com/@TeWhareWananga",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

@@ -1,0 +1,24 @@
+[
+  {
+    "agency_id": "stats-nz",
+    "name": "Statistics New Zealand (Tatauranga Aotearoa)",
+    "type": "Department",
+    "portfolio": "Statistics",
+    "official_website": "https://www.stats.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "linkedin": {
+        "handle": "Stats NZ",
+        "url": "https://www.linkedin.com/company/statistics-new-zealand/",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "x": {
+        "handle": "Stats_NZ",
+        "url": "https://x.com/Stats_NZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

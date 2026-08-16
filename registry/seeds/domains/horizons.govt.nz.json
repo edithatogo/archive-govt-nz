@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "horizons-regional-council",
+    "name": "Horizons Regional Council (Manawatū-Whanganui)",
+    "type": "Regional Council",
+    "portfolio": "Local Government",
+    "official_website": "https://www.horizons.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "HorizonsRegionalCouncil",
+        "url": "https://www.facebook.com/HorizonsRegionalCouncil",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

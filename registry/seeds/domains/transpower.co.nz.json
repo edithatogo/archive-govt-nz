@@ -1,0 +1,30 @@
+[
+  {
+    "agency_id": "transpower",
+    "name": "Transpower New Zealand Limited",
+    "type": "SOE",
+    "portfolio": "Energy and Resources",
+    "official_website": "https://www.transpower.co.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "TranspowerNZ",
+        "url": "https://www.facebook.com/TranspowerNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Transpower New Zealand",
+        "url": "https://www.linkedin.com/company/transpower",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "TranspowerNZ",
+        "url": "https://www.youtube.com/@TranspowerNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

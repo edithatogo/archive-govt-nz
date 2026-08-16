@@ -1,0 +1,22 @@
+[
+  {
+    "agency_id": "maori-language-commission",
+    "name": "Te Taura Whiri i te Reo Māori (Māori Language Commission)",
+    "type": "Autonomous Crown Entity",
+    "portfolio": "Māori Development",
+    "official_website": "https://www.taurawhiri.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "TeTauraWhiri",
+        "url": "https://www.facebook.com/TeTauraWhiri",
+        "status": "active"
+      },
+      "instagram": {
+        "handle": "tetaurawhiri",
+        "url": "https://www.instagram.com/tetaurawhiri",
+        "status": "active"
+      }
+    }
+  }
+]

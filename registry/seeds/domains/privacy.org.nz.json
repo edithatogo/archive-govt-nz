@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "privacy-commissioner",
+    "name": "Privacy Commissioner (Te Mana Mātāpono Matapopore)",
+    "type": "Independent Crown Entity",
+    "portfolio": "Justice",
+    "official_website": "https://www.privacy.org.nz",
+    "status": "active",
+    "social_profiles": {
+      "linkedin": {
+        "handle": "Office of the Privacy Commissioner, New Zealand",
+        "url": "https://www.linkedin.com/company/office-of-the-privacy-commissioner",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

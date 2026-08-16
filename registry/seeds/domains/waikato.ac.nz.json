@@ -1,0 +1,36 @@
+[
+  {
+    "agency_id": "university-of-waikato",
+    "name": "University of Waikato (Te Whare Wānanga o Waikato)",
+    "type": "University",
+    "portfolio": "Education",
+    "official_website": "https://www.waikato.ac.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "UniversityofWaikato",
+        "url": "https://www.facebook.com/UniversityofWaikato",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "University of Waikato",
+        "url": "https://www.linkedin.com/school/university-of-waikato",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "universityofwaikato",
+        "url": "https://www.instagram.com/universityofwaikato",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "universityofwaikato",
+        "url": "https://www.youtube.com/@universityofwaikato",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

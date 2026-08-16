@@ -1,0 +1,36 @@
+[
+  {
+    "agency_id": "victoria-university-of-wellington",
+    "name": "Victoria University of Wellington (Te Herenga Waka)",
+    "type": "University",
+    "portfolio": "Education",
+    "official_website": "https://www.wgtn.ac.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "victoriauniversityofwellington",
+        "url": "https://www.facebook.com/victoriauniversityofwellington",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Victoria University of Wellington",
+        "url": "https://www.linkedin.com/school/victoria-university-of-wellington",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "vicuniwgtn",
+        "url": "https://www.instagram.com/vicuniwgtn",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "youtube": {
+        "handle": "VictoriaUniWgtn",
+        "url": "https://www.youtube.com/@VictoriaUniWgtn",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

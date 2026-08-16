@@ -1,0 +1,18 @@
+[
+  {
+    "agency_id": "ministry-for-pacific-peoples",
+    "name": "Ministry for Pacific Peoples (Te Manatū mō ngā Iwi o te Moana-nui-ā-Kiwa)",
+    "type": "Department",
+    "portfolio": "Pacific Peoples",
+    "official_website": "https://www.mpp.govt.nz",
+    "status": "active",
+    "social_profiles": {
+      "linkedin": {
+        "handle": "Ministry for Pacific Peoples",
+        "url": "https://www.linkedin.com/company/ministry-for-pacific-peoples",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]

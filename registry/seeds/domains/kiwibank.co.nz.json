@@ -1,0 +1,36 @@
+[
+  {
+    "agency_id": "kiwi-group-capital",
+    "name": "Kiwi Group Capital Limited (Kiwibank)",
+    "type": "Schedule 4a Company",
+    "portfolio": "Finance",
+    "official_website": "https://www.kiwibank.co.nz",
+    "status": "active",
+    "social_profiles": {
+      "facebook": {
+        "handle": "Kiwibank",
+        "url": "https://www.facebook.com/Kiwibank",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "linkedin": {
+        "handle": "Kiwibank",
+        "url": "https://www.linkedin.com/company/kiwibank",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "instagram": {
+        "handle": "kiwibank",
+        "url": "https://www.instagram.com/kiwibank",
+        "status": "active",
+        "discovered_at": "2026-06"
+      },
+      "x": {
+        "handle": "KiwibankNZ",
+        "url": "https://x.com/KiwibankNZ",
+        "status": "active",
+        "discovered_at": "2026-06"
+      }
+    }
+  }
+]
