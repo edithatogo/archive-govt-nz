@@ -241,10 +241,11 @@ class BoundedCkanClient:
                     if (
                         status_code < HTTP_SUCCESS_MINIMUM
                         or status_code >= HTTP_SUCCESS_MAXIMUM_EXCLUSIVE
+                        or raw_body.strip().startswith(b"<")
                     ):
                         raise CkanTransportError(
                             status_code,
-                            {"error": "http_error", "status_code": status_code},
+                            {"error": "html_response", "status_code": status_code},
                         ) from None
                     raise
                 response = interpret_action_response(status_code, document)
