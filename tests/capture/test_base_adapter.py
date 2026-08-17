@@ -54,6 +54,8 @@ async def test_dummy_adapter_capture_and_event(tmp_path: Path) -> None:
     assert result.status == "success"
     assert result.bytes_captured == 13
     assert len(result.records) == 1
+    record = result.records[0]
+    assert record.record_id == f"rec:{record.sha256[:16]}"
 
     event = result.to_capture_event(adapter.adapter_name)
     assert event.source_id == identity.source_id
