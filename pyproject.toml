@@ -105,6 +105,7 @@ ignore = [
 "tools/mutation_versioning.py" = ["D103", "EM102", "S607", "TRY003"]
 "tools/mutation_redundancy.py" = ["S603", "S607"]
 "tools/mutation_archivebox_pilot.py" = ["S603", "S607"]
+"tools/mutation_adapters.py" = ["S603", "S607"]
 "tools/evaluate_preservation.py" = ["E501"]
 "tools/generate_evidence_ledger.py" = []
 "tools/release_attestation.py" = []

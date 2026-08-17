@@ -50,7 +50,7 @@ decision or safety boundary, and continue independent work while it is pending.
   *Link: [tracks/differential_parity_harness_20260817/index.md](./tracks/differential_parity_harness_20260817/index.md)*
 - [x] **Track 10: Canary migration and dual operation**
   *Link: [tracks/canary_migration_and_dual_operation_20260817/index.md](./tracks/canary_migration_and_dual_operation_20260817/index.md)*
-- [ ] **Track 11: Capability assimilation and architectural refactor**
+- [x] **Track 11: Capability assimilation and architectural refactor**
   *Link: [tracks/capability_assimilation_architectural_refactor_20260817/index.md](./tracks/capability_assimilation_architectural_refactor_20260817/index.md)*
 - [ ] **Track 12: Release cutover and publication continuity**
   *Link: [tracks/release_cutover_publication_continuity_20260817/index.md](./tracks/release_cutover_publication_continuity_20260817/index.md)*
