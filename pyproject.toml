@@ -38,7 +38,7 @@ dev = [
   "pyright>=1.1.411,<2",
   "pytest>=9.1.1,<10",
   "pytest-cov>=7.1.0,<8",
-  "pytest-randomly>=3.16.0,<4",
+  "pytest-randomly>=3.16.0,<5",
   "ruff>=0.16.1,<0.17",
   "syrupy>=5.0.0,<6",
 ]
