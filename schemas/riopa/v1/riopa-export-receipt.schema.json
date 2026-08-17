@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive.govt.nz/schemas/riopa/v1/riopa-export-receipt.schema.json",
+  "title": "RiopaExportReceipt",
+  "description": "Evidence receipt documenting cross-corpus RIOPA interoperability export and schema conformity.",
+  "type": "object",
+  "required": [
+    "receipt_id",
+    "exported_at",
+    "riopa_spec_version",
+    "target_corpus",
+    "export_formats",
+    "records_exported",
+    "boundary_integrity_verified",
+    "status"
+  ],
+  "properties": {
+    "receipt_id": {
+      "type": "string",
+      "pattern": "^riopa:[a-z0-9-]+$"
+    },
+    "exported_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "riopa_spec_version": {
+      "type": "string",
+      "pattern": "^v[0-9]+$"
+    },
+    "target_corpus": {
+      "type": "string"
+    },
+    "export_formats": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "records_exported": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "boundary_integrity_verified": {
+      "type": "boolean"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["exported", "failed"]
+    }
+  },
+  "additionalProperties": false
+}
