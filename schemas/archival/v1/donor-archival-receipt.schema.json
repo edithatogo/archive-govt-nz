@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive.govt.nz/schemas/archival/v1/donor-archival-receipt.schema.json",
+  "title": "DonorArchivalReceipt",
+  "description": "Evidence certifying donor repository freeze, deprecation notice, and archival signoff.",
+  "type": "object",
+  "required": [
+    "receipt_id",
+    "evaluated_at",
+    "donor_repo",
+    "donor_commit_hash",
+    "final_tag",
+    "deprecation_banner_present",
+    "disaster_restore_rehearsal_passed",
+    "consecutive_successful_cycles",
+    "status"
+  ],
+  "properties": {
+    "receipt_id": {
+      "type": "string",
+      "pattern": "^freeze:[a-z0-9-]+$"
+    },
+    "evaluated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "donor_repo": {
+      "type": "string"
+    },
+    "donor_commit_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "final_tag": {
+      "type": "string"
+    },
+    "deprecation_banner_present": {
+      "type": "boolean"
+    },
+    "disaster_restore_rehearsal_passed": {
+      "type": "boolean"
+    },
+    "consecutive_successful_cycles": {
+      "type": "integer",
+      "minimum": 2
+    },
+    "status": {
+      "type": "string",
+      "enum": ["frozen_archived", "pending_review", "failed"]
+    }
+  },
+  "additionalProperties": false
+}
