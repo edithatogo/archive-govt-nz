@@ -52,7 +52,7 @@ decision or safety boundary, and continue independent work while it is pending.
   *Link: [tracks/canary_migration_and_dual_operation_20260817/index.md](./tracks/canary_migration_and_dual_operation_20260817/index.md)*
 - [x] **Track 11: Capability assimilation and architectural refactor**
   *Link: [tracks/capability_assimilation_architectural_refactor_20260817/index.md](./tracks/capability_assimilation_architectural_refactor_20260817/index.md)*
-- [ ] **Track 12: Release cutover and publication continuity**
+- [x] **Track 12: Release cutover and publication continuity**
   *Link: [tracks/release_cutover_publication_continuity_20260817/index.md](./tracks/release_cutover_publication_continuity_20260817/index.md)*
 - [ ] **Track 13: Observation, donor deprecation and archival**
   *Link: [tracks/observation_donor_deprecation_archival_20260817/index.md](./tracks/observation_donor_deprecation_archival_20260817/index.md)*
