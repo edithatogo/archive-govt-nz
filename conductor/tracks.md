@@ -48,7 +48,7 @@ decision or safety boundary, and continue independent work while it is pending.
   *Link: [tracks/cli_mcp_operator_interface_convergence_20260817/index.md](./tracks/cli_mcp_operator_interface_convergence_20260817/index.md)*
 - [x] **Track 9: Differential/parity harness**
   *Link: [tracks/differential_parity_harness_20260817/index.md](./tracks/differential_parity_harness_20260817/index.md)*
-- [ ] **Track 10: Canary pipeline shadow operations**
+- [x] **Track 10: Canary migration and dual operation**
   *Link: [tracks/canary_migration_and_dual_operation_20260817/index.md](./tracks/canary_migration_and_dual_operation_20260817/index.md)*
 - [ ] **Track 11: Capability assimilation and architectural refactor**
   *Link: [tracks/capability_assimilation_architectural_refactor_20260817/index.md](./tracks/capability_assimilation_architectural_refactor_20260817/index.md)*
