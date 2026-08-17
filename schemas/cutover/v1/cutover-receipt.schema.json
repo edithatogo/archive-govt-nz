@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive.govt.nz/schemas/cutover/v1/cutover-receipt.schema.json",
+  "title": "ReleaseCutoverReceipt",
+  "description": "Evidence receipt certifying production release cutover and publication continuity.",
+  "type": "object",
+  "required": [
+    "receipt_id",
+    "executed_at",
+    "huggingface_repo",
+    "zenodo_concept_doi",
+    "fixity_root_sha256",
+    "packages_published",
+    "status"
+  ],
+  "properties": {
+    "receipt_id": {
+      "type": "string",
+      "pattern": "^cutover:[a-z0-9-]+$"
+    },
+    "executed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "huggingface_repo": {
+      "type": "string"
+    },
+    "zenodo_concept_doi": {
+      "type": "string"
+    },
+    "fixity_root_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "packages_published": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["platform", "identifier", "sha256", "status"],
+        "properties": {
+          "platform": { "type": "string" },
+          "identifier": { "type": "string" },
+          "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "status": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": ["completed", "failed"]
+    }
+  },
+  "additionalProperties": false
+}
