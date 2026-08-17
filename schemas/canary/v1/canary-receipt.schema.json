@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive.govt.nz/schemas/canary/v1/canary-receipt.schema.json",
+  "title": "CanaryExecutionReceipt",
+  "description": "Evidence receipt documenting shadow pipeline execution and rollback rehearsal.",
+  "type": "object",
+  "required": [
+    "receipt_id",
+    "executed_at",
+    "cycles_executed",
+    "canary_sources_count",
+    "donor_records_captured",
+    "target_records_captured",
+    "zero_divergence_verified",
+    "rollback_rehearsal_passed",
+    "status"
+  ],
+  "properties": {
+    "receipt_id": {
+      "type": "string",
+      "pattern": "^canary:[a-z0-9-]+$"
+    },
+    "executed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "cycles_executed": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "canary_sources_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "donor_records_captured": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "target_records_captured": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "zero_divergence_verified": {
+      "type": "boolean"
+    },
+    "rollback_rehearsal_passed": {
+      "type": "boolean"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["passed", "failed"]
+    }
+  },
+  "additionalProperties": false
+}
