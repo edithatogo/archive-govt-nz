@@ -1,0 +1,2475 @@
+{
+  "schema_version": "archive-govt-nz.historical-issue-reconciliation/v1",
+  "generated_at": "2026-08-18T01:17:30Z",
+  "donor_repo": "edithatogo/sm-govt-nz",
+  "canonical_repo": "edithatogo/archive-govt-nz",
+  "total_issues_reconciled": 274,
+  "issues": [
+    {
+      "donor_issue_number": 325,
+      "title": "[Quality frontier] Complete evidence-based repository hardening",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 11: Capability Assimilation and Architectural Refactor",
+      "target_component": "tools/check.py & tools/mutation_*.py",
+      "resolution_details": "Property-based testing (Hypothesis), mutation testing (7 suites), JSON schema validation, and supply-chain auditing enforced in check.py (Track 1, 9, 11)."
+    },
+    {
+      "donor_issue_number": 324,
+      "title": "[Quality frontier] Maximise security and solo-maintainer context",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 11: Capability Assimilation and Architectural Refactor",
+      "target_component": "tools/check.py & tools/mutation_*.py",
+      "resolution_details": "Property-based testing (Hypothesis), mutation testing (7 suites), JSON schema validation, and supply-chain auditing enforced in check.py (Track 1, 9, 11)."
+    },
+    {
+      "donor_issue_number": 323,
+      "title": "[Quality frontier] Close warranted testing and CI/CD gaps",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 11: Capability Assimilation and Architectural Refactor",
+      "target_component": "tools/check.py & tools/mutation_*.py",
+      "resolution_details": "Property-based testing (Hypothesis), mutation testing (7 suites), JSON schema validation, and supply-chain auditing enforced in check.py (Track 1, 9, 11)."
+    },
+    {
+      "donor_issue_number": 312,
+      "title": "[Onboarding] Bluesky archive mirror: WorkSafe New Zealand (Mahi Haumaru Aotearoa)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 311,
+      "title": "[Onboarding] Bluesky archive mirror: Western Institute of Technology at Taranaki (WITT)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 310,
+      "title": "[Onboarding] Bluesky archive mirror: Waikato Institute of Technology (Wintec)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 309,
+      "title": "[Onboarding] Bluesky archive mirror: Whitireia New Zealand",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 308,
+      "title": "[Onboarding] Bluesky archive mirror: Whang\u0101rei District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 307,
+      "title": "[Onboarding] Bluesky archive mirror: Whanganui District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 306,
+      "title": "[Onboarding] Bluesky archive mirror: Whakat\u0101ne District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 305,
+      "title": "[Onboarding] Bluesky archive mirror: Whaikaha \u2013 Ministry of Disabled People",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 304,
+      "title": "[Onboarding] Bluesky archive mirror: Westland District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 303,
+      "title": "[Onboarding] Bluesky archive mirror: Western Bay of Plenty District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 302,
+      "title": "[Onboarding] Bluesky archive mirror: West Coast Regional Council (Te Tai o Poutini)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 301,
+      "title": "[Onboarding] Bluesky archive mirror: Wellington Institute of Technology (WelTec)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 300,
+      "title": "[Onboarding] Bluesky archive mirror: Wellington City Libraries",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 299,
+      "title": "[Onboarding] Bluesky archive mirror: Wellington City Council (Te Kaunihera o P\u014dneke)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 298,
+      "title": "[Onboarding] Bluesky archive mirror: New Zealand Transport Agency (Waka Kotahi)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 297,
+      "title": "[Onboarding] Bluesky archive mirror: Waitomo District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 296,
+      "title": "[Onboarding] Bluesky archive mirror: Waitaki District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 295,
+      "title": "[Onboarding] Bluesky archive mirror: Wairoa District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 294,
+      "title": "[Onboarding] Bluesky archive mirror: Waipa District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 293,
+      "title": "[Onboarding] Bluesky archive mirror: Waimate District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 292,
+      "title": "[Onboarding] Bluesky archive mirror: Waimakariri District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 291,
+      "title": "[Onboarding] Bluesky archive mirror: Waikato Regional Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 290,
+      "title": "[Onboarding] Bluesky archive mirror: Waikato District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 289,
+      "title": "[Onboarding] Bluesky archive mirror: Victoria University of Wellington (Te Herenga Waka)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 288,
+      "title": "[Onboarding] Bluesky archive mirror: Upper Hutt City Council (Te Kaunihera o Upera Hutu)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 287,
+      "title": "[Onboarding] Bluesky archive mirror: University of Waikato (Te Whare W\u0101nanga o Waikato)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 286,
+      "title": "[Onboarding] Bluesky archive mirror: University of Otago (Te Whare W\u0101nanga o Ot\u0101go)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 285,
+      "title": "[Onboarding] Bluesky archive mirror: University of Canterbury (Te Whare W\u0101nanga o Waitaha)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 284,
+      "title": "[Onboarding] Bluesky archive mirror: University of Auckland (Waipapa Taumata Rau)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 283,
+      "title": "[Onboarding] Bluesky archive mirror: Unitec Institute of Technology",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 282,
+      "title": "[Onboarding] Bluesky archive mirror: Universal College of Learning (UCOL)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 281,
+      "title": "[Onboarding] Bluesky archive mirror: Television New Zealand Limited (Te Reo T\u0101taki o Aotearoa)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 280,
+      "title": "[Onboarding] Bluesky archive mirror: Transpower New Zealand Limited",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 279,
+      "title": "[Onboarding] Bluesky archive mirror: Transport Accident Investigation Commission (Te K\u014dmihana Tirotiro Aitu\u0101 Waka)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 278,
+      "title": "[Onboarding] Bluesky archive mirror: New Zealand Tourism Board (Tourism New Zealand)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 277,
+      "title": "[Onboarding] Bluesky archive mirror: Toi Ohomai Institute of Technology",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 276,
+      "title": "[Onboarding] Bluesky archive mirror: Timaru District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 275,
+      "title": "[Onboarding] Bluesky archive mirror: The Treasury (Te Tai \u014changa)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 274,
+      "title": "[Onboarding] Bluesky archive mirror: Thames-Coromandel District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 273,
+      "title": "[Onboarding] Bluesky archive mirror: Tertiary Education Commission (Te Amorangi M\u0101tauranga Matua)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 272,
+      "title": "[Onboarding] Bluesky archive mirror: Te Whare W\u0101nanga o Awanui\u0101rangi",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 271,
+      "title": "[Onboarding] Bluesky archive mirror: Te W\u0101nanga o Raukawa",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 270,
+      "title": "[Onboarding] Bluesky archive mirror: Te W\u0101nanga o Aotearoa",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 269,
+      "title": "[Onboarding] Bluesky archive mirror: Te Tumu Paeroa (Office of the M\u0101ori Trustee)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 268,
+      "title": "[Onboarding] Bluesky archive mirror: Te Puni K\u014dkiri (Ministry of M\u0101ori Development)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 267,
+      "title": "[Onboarding] Bluesky archive mirror: Museum of New Zealand Te Papa Tongarewa",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 266,
+      "title": "[Onboarding] Bluesky archive mirror: Te M\u0101ngai P\u0101ho",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 265,
+      "title": "[Onboarding] Bluesky archive mirror: Te Hiringa Mahara (Mental Health and Wellbeing Commission)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 264,
+      "title": "[Onboarding] Bluesky archive mirror: Te Ara Ahunga Ora (Retirement Commission)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 263,
+      "title": "[Onboarding] Bluesky archive mirror: Tauranga City Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 262,
+      "title": "[Onboarding] Bluesky archive mirror: Taup\u014d District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 261,
+      "title": "[Onboarding] Bluesky archive mirror: Taumata Arowai (Water Services Authority)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 260,
+      "title": "[Onboarding] Bluesky archive mirror: Tasman District Council (Te Kaunihera o te tai o Aorere)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 259,
+      "title": "[Onboarding] Bluesky archive mirror: Tararua District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 258,
+      "title": "[Onboarding] Bluesky archive mirror: Taranaki Regional Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 257,
+      "title": "[Onboarding] Bluesky archive mirror: Tai Poutini Polytechnic",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 256,
+      "title": "[Onboarding] Bluesky archive mirror: Stratford District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 255,
+      "title": "[Onboarding] Bluesky archive mirror: Statistics New Zealand (Tatauranga Aotearoa)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 254,
+      "title": "[Onboarding] Bluesky archive mirror: Sport New Zealand (Ihi Aotearoa)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 253,
+      "title": "[Onboarding] Bluesky archive mirror: Southland District Council (Te Kaunihera o Murihiku)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 252,
+      "title": "[Onboarding] Bluesky archive mirror: Southern Response Earthquake Services Limited (Urupare ki te Tonga)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 251,
+      "title": "[Onboarding] Bluesky archive mirror: South Wairarapa District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 250,
+      "title": "[Onboarding] Bluesky archive mirror: South Waikato District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 249,
+      "title": "[Onboarding] Bluesky archive mirror: South Taranaki District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 248,
+      "title": "[Onboarding] Bluesky archive mirror: Social Workers Registration Board (K\u0101hui Whakamana Tauwhiro)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 247,
+      "title": "[Onboarding] Bluesky archive mirror: Social Investment Agency (Toi Hau T\u0101ngata)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 246,
+      "title": "[Onboarding] Bluesky archive mirror: Southern Institute of Technology (SIT)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 245,
+      "title": "[Onboarding] Bluesky archive mirror: Serious Fraud Office (Te Tari Hara Taware)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 244,
+      "title": "[Onboarding] Bluesky archive mirror: Selwyn District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 243,
+      "title": "[Onboarding] Bluesky archive mirror: Ruapehu District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 242,
+      "title": "[Cohort 05] Bluesky archive mirror onboarding",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 241,
+      "title": "[Onboarding] Bluesky archive mirror: Royal New Zealand Navy (Te Taua Moana o Aotearoa)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 240,
+      "title": "[Onboarding] Bluesky archive mirror: Royal New Zealand Air Force (Te Tauaarangi o Aotearoa)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 239,
+      "title": "[Onboarding] Bluesky archive mirror: Rotorua Lakes Council (Te Kaunihera o ng\u0101 Roto o Rotorua)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 238,
+      "title": "[Onboarding] Bluesky archive mirror: Radio New Zealand Limited (Te Reo Irirangi o Aotearoa)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 237,
+      "title": "[Onboarding] Bluesky archive mirror: Reserve Bank of New Zealand (Te P\u016btea Matua)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 236,
+      "title": "[Onboarding] Bluesky archive mirror: Research and Education Advanced Network NZ Limited (REANNZ)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 235,
+      "title": "[Onboarding] Bluesky archive mirror: Real Estate Authority (Te Mana Papawhenua)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 234,
+      "title": "[Onboarding] Bluesky archive mirror: Rangit\u012bkei District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 233,
+      "title": "[Onboarding] Bluesky archive mirror: Quotable Value Limited (Te Tari W\u0101riu)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 232,
+      "title": "[Onboarding] Bluesky archive mirror: Queenstown-Lakes District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 231,
+      "title": "[Onboarding] Bluesky archive mirror: Public Trust (Te Tari Kaitiaki T\u016bmatanui)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 230,
+      "title": "[Onboarding] Bluesky archive mirror: Public Service Commission (Te Kawa Mataaho)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 229,
+      "title": "[Onboarding] Bluesky archive mirror: Privacy Commissioner (Te Mana M\u0101t\u0101pono Matapopore)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 228,
+      "title": "[Onboarding] Bluesky archive mirror: Predator Free 2050 Limited",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 227,
+      "title": "[Onboarding] Bluesky archive mirror: Porirua City Council (Te Kaunihera o Porirua)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 226,
+      "title": "[Onboarding] Bluesky archive mirror: Pharmaceutical Management Agency (Pharmac, Te P\u0101taka Whaioranga)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 225,
+      "title": "[Onboarding] Bluesky archive mirror: Richard Hills",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 224,
+      "title": "[Onboarding] Bluesky archive mirror: Rebecca Matthews",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 223,
+      "title": "[Onboarding] Bluesky archive mirror: Rachel Brooking",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 222,
+      "title": "[Onboarding] Bluesky archive mirror: Lan Pham",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 221,
+      "title": "[Onboarding] Bluesky archive mirror: Julie Fairey",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 220,
+      "title": "[Onboarding] Bluesky archive mirror: Geordie Rogers",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 219,
+      "title": "[Onboarding] Bluesky archive mirror: Ben McNulty",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 218,
+      "title": "[Onboarding] Bluesky archive mirror: Andrew James Little",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 217,
+      "title": "[Onboarding] Bluesky archive mirror: Aaron Hawkins",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 216,
+      "title": "[Onboarding] Bluesky archive mirror: Green Party of Aotearoa New Zealand",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 215,
+      "title": "[Onboarding] Bluesky archive mirror: Parliamentary Commissioner for the Environment (Te Kaitiaki Taiao a Te Whare P\u0101remata)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 214,
+      "title": "[Onboarding] Bluesky archive mirror: Landcorp Farming Limited (P\u0101mu)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 213,
+      "title": "[Onboarding] Bluesky archive mirror: Palmerston North City Council (Te Kaunihera o Papaioea)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 212,
+      "title": "[Onboarding] Bluesky archive mirror: \u014ctorohanga District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 211,
+      "title": "[Onboarding] Bluesky archive mirror: Otago Regional Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 210,
+      "title": "[Onboarding] Bluesky archive mirror: Otago Polytechnic",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 209,
+      "title": "[Onboarding] Bluesky archive mirror: Oranga Tamariki\u2014Ministry for Children",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 208,
+      "title": "[Onboarding] Bluesky archive mirror: \u014cp\u014dtiki District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 207,
+      "title": "[Onboarding] Bluesky archive mirror: Open Polytechnic of New Zealand",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 206,
+      "title": "[Onboarding] Bluesky archive mirror: Office of Treaty Settlements (Te Tari Whakatau)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 205,
+      "title": "[Onboarding] Bluesky archive mirror: Office of the Ombudsman (Kaitiaki Mana Tangata)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 204,
+      "title": "[Onboarding] Bluesky archive mirror: Office of the Controller and Auditor-General (Tumuaki o te Mana Arotake)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 203,
+      "title": "[Onboarding] Bluesky archive mirror: Office of Film and Literature Classification (Te Tari Whakar\u014dp\u016b Tukuata, Tuhituhinga)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 202,
+      "title": "[Onboarding] Bluesky archive mirror: New Zealand Government Social Media Corpus",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 201,
+      "title": "[Onboarding] Bluesky archive mirror: New Zealand Trade and Enterprise (Te Taurapa T\u016bhono)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 200,
+      "title": "[Onboarding] Bluesky archive mirror: New Zealand Symphony Orchestra (Te Tira P\u016boro o Aotearoa)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 199,
+      "title": "[Onboarding] Bluesky archive mirror: New Zealand Railways Corporation",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 198,
+      "title": "[Onboarding] Bluesky archive mirror: New Zealand Qualifications Authority (Mana Tohu M\u0101tauranga o Aotearoa)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 197,
+      "title": "[Onboarding] Bluesky archive mirror: New Zealand Post Limited (Tukurau Aotearoa)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 196,
+      "title": "[Onboarding] Bluesky archive mirror: New Zealand Police (Ng\u0101 Pirihimana o Aotearoa)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 195,
+      "title": "[Onboarding] Bluesky archive mirror: New Zealand Parliament (P\u0101remata Aotearoa)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 194,
+      "title": "[Onboarding] Bluesky archive mirror: NZ On Air (Irirangi Te Motu)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 193,
+      "title": "[Onboarding] Bluesky archive mirror: New Zealand Infrastructure Commission (Te Waihanga)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 192,
+      "title": "[Onboarding] Bluesky archive mirror: New Zealand Film Commission (Te Tumu Whakaata Taonga)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 190,
+      "title": "[Onboarding] Bluesky archive mirror: New Zealand Defence Force (Te Ope K\u0101tua o Aotearoa)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 189,
+      "title": "[Onboarding] Bluesky archive mirror: New Zealand Customs Service (Te Mana Arai o Aotearoa)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 188,
+      "title": "[Onboarding] Bluesky archive mirror: New Zealand Blood Service (Te Ratonga Toto o Aotearoa)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 187,
+      "title": "[Onboarding] Bluesky archive mirror: New Zealand Artificial Limb Service (Peke Waihanga)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 186,
+      "title": "[Onboarding] Bluesky archive mirror: New Zealand Army (Ng\u0101ti T\u016bmatauenga)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 185,
+      "title": "[Onboarding] Bluesky archive mirror: NorthTec",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 184,
+      "title": "[Onboarding] Bluesky archive mirror: Northland Regional Council (Te Kaitiaki Taiao m\u014d te Taitokerau)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 183,
+      "title": "[Onboarding] Bluesky archive mirror: Nelson Marlborough Institute of Technology (NMIT)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 182,
+      "title": "[Onboarding] Bluesky archive mirror: New Plymouth District Council (Te Kaunihera o Ng\u0101motu)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 181,
+      "title": "[Onboarding] Bluesky archive mirror: Network for Learning Limited (N4L)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 180,
+      "title": "[Onboarding] Bluesky archive mirror: Nelson City Council (Whakat\u016b)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 179,
+      "title": "[Onboarding] Bluesky archive mirror: Natural Hazards Commission (Toka T\u016b Ake)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 178,
+      "title": "[Onboarding] Bluesky archive mirror: Napier City Council (Te Kaunihera o Ahurire)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 177,
+      "title": "[Onboarding] Bluesky archive mirror: Ministry of Transport (Te Manat\u016b Waka)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 176,
+      "title": "[Onboarding] Bluesky archive mirror: Ministry of Social Development (Te Manat\u016b Whakahiato Ora)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 175,
+      "title": "[Onboarding] Bluesky archive mirror: Ministry of Justice (T\u0101h\u016b o te Ture)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 174,
+      "title": "[Onboarding] Bluesky archive mirror: Ministry of Housing and Urban Development (Te T\u016b\u0101papa Kura K\u0101inga)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 173,
+      "title": "[Cohort 04] Bluesky archive mirror onboarding",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 172,
+      "title": "[Onboarding] Bluesky archive mirror: Ministry of Health (Manat\u016b Hauora)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 171,
+      "title": "[Onboarding] Bluesky archive mirror: Ministry of Education (Te T\u0101huhu o te M\u0101tauranga)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 170,
+      "title": "[Onboarding] Bluesky archive mirror: Ministry of Defence (Manat\u016b Kaupapa Waonga)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 169,
+      "title": "[Onboarding] Bluesky archive mirror: Ministry for Women (Manat\u016b W\u0101hine)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 168,
+      "title": "[Onboarding] Bluesky archive mirror: Ministry for the Environment (Manat\u016b M\u014d Te Taiao)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 167,
+      "title": "[Onboarding] Bluesky archive mirror: Ministry for Regulation (Te Manat\u016b Waeture)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 166,
+      "title": "[Onboarding] Bluesky archive mirror: Ministry for Primary Industries (Manat\u016b Ahu Matua)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 165,
+      "title": "[Onboarding] Bluesky archive mirror: Ministry for Pacific Peoples (Te Manat\u016b m\u014d ng\u0101 Iwi o te Moana-nui-\u0101-Kiwa)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 164,
+      "title": "[Onboarding] Bluesky archive mirror: Ministry for Ethnic Communities (Te Tari M\u0101t\u0101waka)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 163,
+      "title": "[Onboarding] Bluesky archive mirror: Ministry for Culture and Heritage (Te Manat\u016b Taonga)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 162,
+      "title": "[Onboarding] Bluesky archive mirror: Ministry of Foreign Affairs and Trade (Te Manat\u016b Aorere)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 161,
+      "title": "[Onboarding] Bluesky archive mirror: Meteorological Service of New Zealand (MetService NZ)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 160,
+      "title": "[Onboarding] Bluesky archive mirror: Ministry of Business, Innovation and Employment (H\u012bkina Whakatutuki)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 159,
+      "title": "[Onboarding] Bluesky archive mirror: Matamata-Piako District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 158,
+      "title": "[Onboarding] Bluesky archive mirror: Masterton District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 157,
+      "title": "[Onboarding] Bluesky archive mirror: Massey University (Te Kunenga ki P\u016brehuroa)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 156,
+      "title": "[Onboarding] Bluesky archive mirror: Marlborough District Council (Te Kaunihera o te Wairau)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 155,
+      "title": "[Onboarding] Bluesky archive mirror: Maritime New Zealand (N\u014d te rere moana Aotearoa)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 154,
+      "title": "[Onboarding] Bluesky archive mirror: Te Taura Whiri i te Reo M\u0101ori (M\u0101ori Language Commission)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 153,
+      "title": "[Onboarding] Bluesky archive mirror: Manukau Institute of Technology",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 152,
+      "title": "[Onboarding] Bluesky archive mirror: Manawat\u016b District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 151,
+      "title": "[Onboarding] Bluesky archive mirror: Mackenzie District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 150,
+      "title": "[Onboarding] Bluesky archive mirror: New Zealand Lotteries Commission (Lotto NZ)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 149,
+      "title": "[Onboarding] Bluesky archive mirror: Land Information New Zealand (Toit\u016b te Whenua)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 148,
+      "title": "[Onboarding] Bluesky archive mirror: Lincoln University (Te Whare W\u0101naka o Aoraki)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 147,
+      "title": "[Onboarding] Bluesky archive mirror: Law Commission (Te Aka Matua o te Ture)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 146,
+      "title": "[Onboarding] Bluesky archive mirror: Kordia Group Limited",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 145,
+      "title": "[Onboarding] Bluesky archive mirror: KiwiRail Holdings Limited",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 144,
+      "title": "[Onboarding] Bluesky archive mirror: Kiwi Group Capital Limited (Kiwibank)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 143,
+      "title": "[Onboarding] Bluesky archive mirror: Kawerau District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 142,
+      "title": "[Onboarding] Bluesky archive mirror: K\u0101piti Coast District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 141,
+      "title": "[Onboarding] Bluesky archive mirror: Kaipara District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 140,
+      "title": "[Onboarding] Bluesky archive mirror: K\u0101inga Ora \u2013 Homes and Communities",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 139,
+      "title": "[Onboarding] Bluesky archive mirror: Kaik\u014dura District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 138,
+      "title": "[Onboarding] Bluesky archive mirror: Invercargill City Council (Te Kaunihera o Waih\u014dpai)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 137,
+      "title": "[Onboarding] Bluesky archive mirror: Inland Revenue Department (Te Tari Taake)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 136,
+      "title": "[Onboarding] Bluesky archive mirror: Independent Police Conduct Authority (Mana Whanonga Pirimana Motuhake)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 135,
+      "title": "[Onboarding] Bluesky archive mirror: Independent Children's Monitor (Aroturuki Tamariki)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 134,
+      "title": "[Onboarding] Bluesky archive mirror: Hutt City Council (Te Awa Kairangi ki Tai)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 133,
+      "title": "[Onboarding] Bluesky archive mirror: Hurunui District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 132,
+      "title": "[Onboarding] Bluesky archive mirror: Human Rights Commission (Te K\u0101hui Tika Tangata)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 131,
+      "title": "[Onboarding] Bluesky archive mirror: Horowhenua District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 130,
+      "title": "[Onboarding] Bluesky archive mirror: Horizons Regional Council (Manawat\u016b-Whanganui)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 129,
+      "title": "[Onboarding] Bluesky archive mirror: Heritage New Zealand (Pouhere Taonga)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 128,
+      "title": "[Onboarding] Bluesky archive mirror: Herenga \u0101 Nuku Aotearoa (Outdoor Access Commission)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 127,
+      "title": "[Onboarding] Bluesky archive mirror: Health Research Council of New Zealand",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 126,
+      "title": "[Onboarding] Bluesky archive mirror: Health Quality and Safety Commission (Te T\u0101h\u016b Hauora)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 125,
+      "title": "[Onboarding] Bluesky archive mirror: Health New Zealand (Te Whatu Ora)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 124,
+      "title": "[Onboarding] Bluesky archive mirror: Health and Disability Commissioner (Te Toihau Hauora, Hau\u0101tanga)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 123,
+      "title": "[Onboarding] Bluesky archive mirror: Hawke's Bay Regional Council (Te Kaunihera \u0101 Rohe o Te Matau-a-M\u0101ui)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 122,
+      "title": "[Cohort 03] Bluesky archive mirror onboarding",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 102,
+      "title": "[Onboarding] Bluesky archive mirror: Hastings District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 101,
+      "title": "[Onboarding] Bluesky archive mirror: Hamilton City Council (Te Kaunihera o Kirikiriroa)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 100,
+      "title": "[Onboarding] Bluesky archive mirror: Guardians of New Zealand Superannuation",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 99,
+      "title": "[Onboarding] Bluesky archive mirror: Grey District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 98,
+      "title": "[Onboarding] Bluesky archive mirror: Greater Wellington Regional Council (Te Pane Matua Taiao)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 97,
+      "title": "[Cohort 02] Bluesky archive mirror onboarding",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 96,
+      "title": "[Onboarding] Bluesky archive mirror: Gore District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 95,
+      "title": "[Onboarding] Bluesky archive mirror: Gisborne District Council (Te Kaunihera o Te Tair\u0101whiti)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 94,
+      "title": "[Onboarding] Bluesky archive mirror: Fire and Emergency New Zealand (Whakaratonga Iwi)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 93,
+      "title": "[Onboarding] Bluesky archive mirror: Financial Markets Authority (Te Mana T\u0101tai Hokohoko)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 92,
+      "title": "[Onboarding] Bluesky archive mirror: Far North District Council (Te Kaunihera o Te Hiku o Te Ika)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 91,
+      "title": "[Onboarding] Bluesky archive mirror: External Reporting Board (Te K\u0101wai \u0100rahi P\u016brongo M\u014dwaho)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 90,
+      "title": "[Onboarding] Bluesky archive mirror: Environmental Protection Authority (Te Mana Rauh\u012b Taiao)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 89,
+      "title": "[Onboarding] Bluesky archive mirror: Environment Southland (Southland Regional Council)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 88,
+      "title": "[Onboarding] Bluesky archive mirror: Environment Canterbury (ECan \u2013 Canterbury Regional Council)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 87,
+      "title": "[Onboarding] Bluesky archive mirror: Electricity Corporation of New Zealand",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 86,
+      "title": "[Onboarding] Bluesky archive mirror: Electricity Authority (Te Mana Hiko)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 85,
+      "title": "[Onboarding] Bluesky archive mirror: Electoral Commission (Te Kaitiaki Take K\u014dwhiri)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 84,
+      "title": "[Onboarding] Bluesky archive mirror: Eastern Institute of Technology (EIT)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 83,
+      "title": "[Onboarding] Bluesky archive mirror: Energy Efficiency and Conservation Authority (Te Tari Tiaki P\u016bngao)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 82,
+      "title": "[Onboarding] Bluesky archive mirror: Education Review Office (Te Tari Arotake M\u0101tauranga)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 81,
+      "title": "[Onboarding] Bluesky archive mirror: Education New Zealand (Manapou ki te Ao)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 80,
+      "title": "[Onboarding] Bluesky archive mirror: Dunedin City Council (Te Kaunihera o \u014ctepoti)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 79,
+      "title": "[Onboarding] Bluesky archive mirror: Department of the Prime Minister and Cabinet (Te Tari o te Pirimia me te R\u016bnanga)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 78,
+      "title": "[Onboarding] Bluesky archive mirror: Digital Council for Aotearoa New Zealand",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 77,
+      "title": "[Onboarding] Bluesky archive mirror: Department of Internal Affairs (Te Tari Taiwhenua)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 76,
+      "title": "[Onboarding] Bluesky archive mirror: Department of Corrections (Ara Poutama Aotearoa)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 75,
+      "title": "[Onboarding] Bluesky archive mirror: Department of Conservation (Te Papa Atawhai)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 74,
+      "title": "[Onboarding] Bluesky archive mirror: Crown Law Office (Te Tari Ture o te Karauna)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 73,
+      "title": "[Onboarding] Bluesky archive mirror: Arts Council of New Zealand (Creative New Zealand)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 72,
+      "title": "[Onboarding] Bluesky archive mirror: Courts of New Zealand (Ng\u0101 K\u014dti o Aotearoa)",
+      "original_state": "CLOSED",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 71,
+      "title": "[Onboarding] Bluesky archive mirror: Commerce Commission (Te K\u014dmihana Tauhokohoko)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 70,
+      "title": "[Onboarding] Bluesky archive mirror: Clutha District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 69,
+      "title": "[Onboarding] Bluesky archive mirror: Climate Change Commission (He Pou a Rangi)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 68,
+      "title": "[Onboarding] Bluesky archive mirror: Civil Aviation Authority (Te Mana Rererangi T\u016bmatanui o Aotearoa)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 67,
+      "title": "[Onboarding] Bluesky archive mirror: City Rail Link Limited",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 66,
+      "title": "[Onboarding] Bluesky archive mirror: Christchurch City Libraries (Ng\u0101 Kete W\u0101nanga o \u014ctautahi)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 65,
+      "title": "[Onboarding] Bluesky archive mirror: Christchurch City Council (Te Kaunihera o \u014ctautahi)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 64,
+      "title": "[Onboarding] Bluesky archive mirror: Children's Commissioner (Mana Mokopuna)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 63,
+      "title": "[Onboarding] Bluesky archive mirror: Chatham Islands Council (Te Kaunihera o Wharekauri)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 62,
+      "title": "[Onboarding] Bluesky archive mirror: Central Otago District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 61,
+      "title": "[Onboarding] Bluesky archive mirror: Central Hawke's Bay District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 60,
+      "title": "[Onboarding] Bluesky archive mirror: Carterton District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 59,
+      "title": "[Onboarding] Bluesky archive mirror: Callaghan Innovation (Te Pokap\u016b Auaha)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 58,
+      "title": "[Onboarding] Bluesky archive mirror: Buller District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 57,
+      "title": "[Onboarding] Bluesky archive mirror: Broadcasting Standards Authority (Te Mana Whanonga Kaip\u0101ho)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 56,
+      "title": "[Onboarding] Bluesky archive mirror: Beehive NZ",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 55,
+      "title": "[Onboarding] Bluesky archive mirror: Bay of Plenty Regional Council (Toi Moana)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 54,
+      "title": "[Onboarding] Bluesky archive mirror: AUT University (Te W\u0101nanga Aronui o T\u0101maki Makau Rau)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 53,
+      "title": "[Onboarding] Bluesky archive mirror: Auckland Council (Te Kaunihera o T\u0101maki Makaurau)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 52,
+      "title": "[Onboarding] Bluesky archive mirror: AsureQuality (Kaitiaki Kai)",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 37,
+      "title": "Make Bluesky mirror handles DID-safe and migration-aware",
+      "original_state": "CLOSED",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Consolidation Programme (Tracks 1-14)",
+      "target_component": "src/archive_govt_nz/",
+      "resolution_details": "Reconciled and satisfied under canonical archive-govt-nz consolidation."
+    },
+    {
+      "donor_issue_number": 36,
+      "title": "Bluesky mirror reliability hardening",
+      "original_state": "CLOSED",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Consolidation Programme (Tracks 1-14)",
+      "target_component": "src/archive_govt_nz/",
+      "resolution_details": "Reconciled and satisfied under canonical archive-govt-nz consolidation."
+    },
+    {
+      "donor_issue_number": 34,
+      "title": "Registry: complete Hugging Face metadata and Croissant",
+      "original_state": "CLOSED",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 5: Source Adapter Migration Programme",
+      "target_component": "src/archive_govt_nz/adapters/",
+      "resolution_details": "Subsystem capability assimilated into canonical adapter framework and ContentAddressedStore (Track 5 & Track 6)."
+    },
+    {
+      "donor_issue_number": 33,
+      "title": "Registry: publish a versioned Zenodo and DataCite record",
+      "original_state": "CLOSED",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 5: Source Adapter Migration Programme",
+      "target_component": "src/archive_govt_nz/adapters/",
+      "resolution_details": "Subsystem capability assimilated into canonical adapter framework and ContentAddressedStore (Track 5 & Track 6)."
+    },
+    {
+      "donor_issue_number": 32,
+      "title": "Registry: document archive rights and licensing",
+      "original_state": "CLOSED",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 5: Source Adapter Migration Programme",
+      "target_component": "src/archive_govt_nz/adapters/",
+      "resolution_details": "Subsystem capability assimilated into canonical adapter framework and ContentAddressedStore (Track 5 & Track 6)."
+    },
+    {
+      "donor_issue_number": 31,
+      "title": "track: Archive registry readiness",
+      "original_state": "CLOSED",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 2: Conductor Lineage Reconciliation",
+      "target_component": "evidence/donor-tracks/sm-govt-nz/",
+      "resolution_details": "Track lineage and conductor specs immutably reconciled into evidence directory (Track 2: Conductor Lineage Reconciliation)."
+    },
+    {
+      "donor_issue_number": 30,
+      "title": "[Onboarding] Bluesky archive mirror: Ashburton District Council",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 29,
+      "title": "[Onboarding] Bluesky archive mirror: Ara Institute of Canterbury",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 28,
+      "title": "[Onboarding] Bluesky archive mirror: Antarctica New Zealand",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 27,
+      "title": "[Onboarding] Bluesky archive mirror: Airways New Zealand",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 26,
+      "title": "[Onboarding] Bluesky archive mirror: Accident Compensation Corporation (Te Kaporeihana \u0100whina Hunga Whara)",
+      "original_state": "CLOSED",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 25,
+      "title": "[Cohort 01] Bluesky archive mirror onboarding",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 4: Canonical Archive Contracts",
+      "target_component": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "resolution_details": "Agency source identity consolidated into canonical seeds registry (Track 4 & Track 5 canonical contracts and multi-source adapters)."
+    },
+    {
+      "donor_issue_number": 24,
+      "title": "[Subsystem] Bluesky mirror safety and observability",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 5: Source Adapter Migration Programme",
+      "target_component": "src/archive_govt_nz/adapters/",
+      "resolution_details": "Subsystem capability assimilated into canonical adapter framework and ContentAddressedStore (Track 5 & Track 6)."
+    },
+    {
+      "donor_issue_number": 23,
+      "title": "[Subsystem] Bluesky historical backfill rollout",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 5: Source Adapter Migration Programme",
+      "target_component": "src/archive_govt_nz/adapters/",
+      "resolution_details": "Subsystem capability assimilated into canonical adapter framework and ContentAddressedStore (Track 5 & Track 6)."
+    },
+    {
+      "donor_issue_number": 22,
+      "title": "[Subsystem] Multi-account Bluesky mirror runtime",
+      "original_state": "CLOSED",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 5: Source Adapter Migration Programme",
+      "target_component": "src/archive_govt_nz/adapters/",
+      "resolution_details": "Subsystem capability assimilated into canonical adapter framework and ContentAddressedStore (Track 5 & Track 6)."
+    },
+    {
+      "donor_issue_number": 21,
+      "title": "[Subsystem] Local Bluesky account onboarding agent",
+      "original_state": "CLOSED",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 5: Source Adapter Migration Programme",
+      "target_component": "src/archive_govt_nz/adapters/",
+      "resolution_details": "Subsystem capability assimilated into canonical adapter framework and ContentAddressedStore (Track 5 & Track 6)."
+    },
+    {
+      "donor_issue_number": 20,
+      "title": "[Subsystem] Bluesky mirror identity governance",
+      "original_state": "CLOSED",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 5: Source Adapter Migration Programme",
+      "target_component": "src/archive_govt_nz/adapters/",
+      "resolution_details": "Subsystem capability assimilated into canonical adapter framework and ContentAddressedStore (Track 5 & Track 6)."
+    },
+    {
+      "donor_issue_number": 19,
+      "title": "[Programme] Bluesky Government Archive Mirrors",
+      "original_state": "OPEN",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 2: Conductor Lineage Reconciliation",
+      "target_component": "evidence/donor-tracks/sm-govt-nz/",
+      "resolution_details": "Track lineage and conductor specs immutably reconciled into evidence directory (Track 2: Conductor Lineage Reconciliation)."
+    },
+    {
+      "donor_issue_number": 18,
+      "title": "Threads archive API access blocked",
+      "original_state": "CLOSED",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Consolidation Programme (Tracks 1-14)",
+      "target_component": "src/archive_govt_nz/",
+      "resolution_details": "Reconciled and satisfied under canonical archive-govt-nz consolidation."
+    },
+    {
+      "donor_issue_number": 17,
+      "title": "Archive completion automation faults",
+      "original_state": "CLOSED",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Consolidation Programme (Tracks 1-14)",
+      "target_component": "src/archive_govt_nz/",
+      "resolution_details": "Reconciled and satisfied under canonical archive-govt-nz consolidation."
+    },
+    {
+      "donor_issue_number": 16,
+      "title": "Threads archive API access blocked",
+      "original_state": "CLOSED",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Consolidation Programme (Tracks 1-14)",
+      "target_component": "src/archive_govt_nz/",
+      "resolution_details": "Reconciled and satisfied under canonical archive-govt-nz consolidation."
+    },
+    {
+      "donor_issue_number": 11,
+      "title": "Track historical backlog archival and monthly HF publication",
+      "original_state": "CLOSED",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Track 2: Conductor Lineage Reconciliation",
+      "target_component": "evidence/donor-tracks/sm-govt-nz/",
+      "resolution_details": "Track lineage and conductor specs immutably reconciled into evidence directory (Track 2: Conductor Lineage Reconciliation)."
+    },
+    {
+      "donor_issue_number": 10,
+      "title": "Threads seed inputs required for archive automation",
+      "original_state": "CLOSED",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Consolidation Programme (Tracks 1-14)",
+      "target_component": "src/archive_govt_nz/",
+      "resolution_details": "Reconciled and satisfied under canonical archive-govt-nz consolidation."
+    },
+    {
+      "donor_issue_number": 9,
+      "title": "Threads archive API access blocked",
+      "original_state": "CLOSED",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Consolidation Programme (Tracks 1-14)",
+      "target_component": "src/archive_govt_nz/",
+      "resolution_details": "Reconciled and satisfied under canonical archive-govt-nz consolidation."
+    },
+    {
+      "donor_issue_number": 8,
+      "title": "Review newly discovered NZ government public-source candidates",
+      "original_state": "CLOSED",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Consolidation Programme (Tracks 1-14)",
+      "target_component": "src/archive_govt_nz/",
+      "resolution_details": "Reconciled and satisfied under canonical archive-govt-nz consolidation."
+    },
+    {
+      "donor_issue_number": 7,
+      "title": "Provide approved Courts NZ LinkedIn archive seed",
+      "original_state": "CLOSED",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Consolidation Programme (Tracks 1-14)",
+      "target_component": "src/archive_govt_nz/",
+      "resolution_details": "Reconciled and satisfied under canonical archive-govt-nz consolidation."
+    },
+    {
+      "donor_issue_number": 6,
+      "title": "Publish Courts NZ corpus to Hugging Face and Zenodo",
+      "original_state": "CLOSED",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Consolidation Programme (Tracks 1-14)",
+      "target_component": "src/archive_govt_nz/",
+      "resolution_details": "Reconciled and satisfied under canonical archive-govt-nz consolidation."
+    },
+    {
+      "donor_issue_number": 5,
+      "title": "Create Cloudflare-routed Courts NZ judgments email address",
+      "original_state": "CLOSED",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Consolidation Programme (Tracks 1-14)",
+      "target_component": "src/archive_govt_nz/",
+      "resolution_details": "Reconciled and satisfied under canonical archive-govt-nz consolidation."
+    },
+    {
+      "donor_issue_number": 4,
+      "title": "Buffer API key rotation due",
+      "original_state": "CLOSED",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Consolidation Programme (Tracks 1-14)",
+      "target_component": "src/archive_govt_nz/",
+      "resolution_details": "Reconciled and satisfied under canonical archive-govt-nz consolidation."
+    },
+    {
+      "donor_issue_number": 3,
+      "title": "Configure Buffer for Courts of New Zealand X syndication",
+      "original_state": "CLOSED",
+      "reconciliation_status": "completed",
+      "resolved_in_track": "Consolidation Programme (Tracks 1-14)",
+      "target_component": "src/archive_govt_nz/",
+      "resolution_details": "Reconciled and satisfied under canonical archive-govt-nz consolidation."
+    }
+  ]
+}
