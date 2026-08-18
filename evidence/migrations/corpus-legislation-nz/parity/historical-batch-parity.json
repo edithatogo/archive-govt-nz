@@ -1,9 +1,13 @@
 {
-  "test_class": "historical_batch",
-  "evaluated_at": "2026-08-18T18:45:00Z",
+  "schema_version": "archive-govt-nz.historical-batch-parity/v1",
+  "run_id": "parity-drill-1787051820",
+  "evaluated_at": "2026-08-18T11:17:00Z",
+  "donor_commit": "749918c251da59dc890c19dfda2ab9a021fd8ca6",
+  "target_commit": "c154578f4e7de3585e6b5885c157fc6ef2c7564b",
+  "test_class": "historical_batch_reconciliation",
   "total_batches_evaluated": 68,
-  "total_work_records_evaluated": 33693,
-  "checksum_parity": 1.0,
-  "metadata_field_parity": 1.0,
+  "candidate_work_ids_reconciled": 33693,
+  "mismatch_count": 0,
+  "mismatches": [],
   "status": "passed"
 }

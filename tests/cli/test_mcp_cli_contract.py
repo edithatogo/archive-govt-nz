@@ -96,7 +96,7 @@ def test_legislation_parity_cli_and_mcp(capsys: pytest.CaptureFixture[str]) -> N
 
     mcp_out = call_tool("archive_legislation")
     assert cli_out["coverage_percent"] == mcp_out["coverage_percent"]
-    assert cli_out["seed_works_count"] == mcp_out["seed_works_count"]
+    assert cli_out["candidate_works_count"] == mcp_out["candidate_works_count"]
 
 
 def test_unknown_mcp_tool_raises_error() -> None:

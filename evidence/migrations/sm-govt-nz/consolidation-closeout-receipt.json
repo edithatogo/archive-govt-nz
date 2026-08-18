@@ -1,6 +1,6 @@
 {
   "schema_version": "archive-govt-nz.consolidation-closeout-receipt/v1",
-  "closed_out_at": "2026-08-18T18:20:00Z",
+  "closed_out_at": "2026-08-18T08:20:00Z",
   "donor_repo": {
     "name": "edithatogo/sm-govt-nz",
     "is_archived": true,

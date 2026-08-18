@@ -1,6 +1,6 @@
 {
   "schema_version": "archive-govt-nz.baseline/v1",
-  "evaluated_at": "2026-08-18T18:40:00Z",
+  "evaluated_at": "2026-08-18T08:40:00Z",
   "donor_repo": {
     "name": "edithatogo/corpus-legislation-nz",
     "commit": "749918c251da59dc890c19dfda2ab9a021fd8ca6",

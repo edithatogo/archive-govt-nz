@@ -1,0 +1,732 @@
+{
+  "schema_version": "archive-govt-nz.live-inventory/v1",
+  "generated_at": "2026-08-18T11:14:15Z",
+  "donor_repo": "edithatogo/corpus-legislation-nz",
+  "donor_commit": "749918c251da59dc890c19dfda2ab9a021fd8ca6",
+  "total_source_files": 28,
+  "total_test_files": 39,
+  "total_historical_batches": 68,
+  "total_conductor_tracks": 48,
+  "total_github_workflows": 25,
+  "total_github_issues": 65,
+  "open_github_issues_count": 21,
+  "closed_github_issues_count": 44,
+  "source_files": [
+    "src/nz_legislation_corpus/__init__.py",
+    "src/nz_legislation_corpus/archive.py",
+    "src/nz_legislation_corpus/artifact_provenance.py",
+    "src/nz_legislation_corpus/bootstrap_merge.py",
+    "src/nz_legislation_corpus/bootstrap_review.py",
+    "src/nz_legislation_corpus/cli.py",
+    "src/nz_legislation_corpus/config.py",
+    "src/nz_legislation_corpus/discovery.py",
+    "src/nz_legislation_corpus/embeddings.py",
+    "src/nz_legislation_corpus/extract_text.py",
+    "src/nz_legislation_corpus/feed_change.py",
+    "src/nz_legislation_corpus/hf_sync.py",
+    "src/nz_legislation_corpus/manifest.py",
+    "src/nz_legislation_corpus/metadata_packages.py",
+    "src/nz_legislation_corpus/normalize.py",
+    "src/nz_legislation_corpus/nz_api.py",
+    "src/nz_legislation_corpus/nzlii_reconcile.py",
+    "src/nz_legislation_corpus/osf_optional.py",
+    "src/nz_legislation_corpus/parquet_writer.py",
+    "src/nz_legislation_corpus/period_shards.py",
+    "src/nz_legislation_corpus/rss_feed.py",
+    "src/nz_legislation_corpus/schema.py",
+    "src/nz_legislation_corpus/source_redundancy.py",
+    "src/nz_legislation_corpus/types.py",
+    "src/nz_legislation_corpus/utils.py",
+    "src/nz_legislation_corpus/validate.py",
+    "src/nz_legislation_corpus/website_fallback.py",
+    "src/nz_legislation_corpus/zenodo.py"
+  ],
+  "test_files": [
+    "tests/conftest.py",
+    "tests/fixtures/sample_legislation.html",
+    "tests/fixtures/sample_legislation.xml",
+    "tests/integration/__init__.py",
+    "tests/integration/test_sync_manifest_pipeline.py",
+    "tests/smoke/__init__.py",
+    "tests/smoke/test_cli_smoke.py",
+    "tests/test_artifact_provenance.py",
+    "tests/test_bootstrap_merge.py",
+    "tests/test_bootstrap_review.py",
+    "tests/test_cli_coverage.py",
+    "tests/test_cli_download.py",
+    "tests/test_discovery.py",
+    "tests/test_embeddings.py",
+    "tests/test_extract_text.py",
+    "tests/test_feed_change.py",
+    "tests/test_full_corpus_hf_upload_workflow.py",
+    "tests/test_hf_sync.py",
+    "tests/test_hf_sync_workflow.py",
+    "tests/test_learning_candidates.py",
+    "tests/test_manifest.py",
+    "tests/test_metadata_packages.py",
+    "tests/test_mirror_sync_workflow.py",
+    "tests/test_monthly_full_reconciliation_workflow.py",
+    "tests/test_nz_api.py",
+    "tests/test_nzlii_reconcile.py",
+    "tests/test_official_feed_change_detection_workflow.py",
+    "tests/test_osf_optional.py",
+    "tests/test_period_shards.py",
+    "tests/test_property_based.py",
+    "tests/test_registry_readiness_contract.py",
+    "tests/test_rss_feed.py",
+    "tests/test_seed_batches_cli.py",
+    "tests/test_shared_core_schema.py",
+    "tests/test_source_redundancy.py",
+    "tests/test_sync_resume.py",
+    "tests/test_validate.py",
+    "tests/test_version_consistency.py",
+    "tests/test_website_fallback.py"
+  ],
+  "historical_batches": [
+    "seeds/reviewed/historical-work-ids-0001.txt",
+    "seeds/reviewed/historical-work-ids-0002.txt",
+    "seeds/reviewed/historical-work-ids-0003.txt",
+    "seeds/reviewed/historical-work-ids-0004.txt",
+    "seeds/reviewed/historical-work-ids-0005.txt",
+    "seeds/reviewed/historical-work-ids-0006.txt",
+    "seeds/reviewed/historical-work-ids-0007.txt",
+    "seeds/reviewed/historical-work-ids-0008.txt",
+    "seeds/reviewed/historical-work-ids-0009.txt",
+    "seeds/reviewed/historical-work-ids-0010.txt",
+    "seeds/reviewed/historical-work-ids-0011.txt",
+    "seeds/reviewed/historical-work-ids-0012.txt",
+    "seeds/reviewed/historical-work-ids-0013.txt",
+    "seeds/reviewed/historical-work-ids-0014.txt",
+    "seeds/reviewed/historical-work-ids-0015.txt",
+    "seeds/reviewed/historical-work-ids-0016.txt",
+    "seeds/reviewed/historical-work-ids-0017.txt",
+    "seeds/reviewed/historical-work-ids-0018.txt",
+    "seeds/reviewed/historical-work-ids-0019.txt",
+    "seeds/reviewed/historical-work-ids-0020.txt",
+    "seeds/reviewed/historical-work-ids-0021.txt",
+    "seeds/reviewed/historical-work-ids-0022.txt",
+    "seeds/reviewed/historical-work-ids-0023.txt",
+    "seeds/reviewed/historical-work-ids-0024.txt",
+    "seeds/reviewed/historical-work-ids-0025.txt",
+    "seeds/reviewed/historical-work-ids-0026.txt",
+    "seeds/reviewed/historical-work-ids-0027.txt",
+    "seeds/reviewed/historical-work-ids-0028.txt",
+    "seeds/reviewed/historical-work-ids-0029.txt",
+    "seeds/reviewed/historical-work-ids-0030.txt",
+    "seeds/reviewed/historical-work-ids-0031.txt",
+    "seeds/reviewed/historical-work-ids-0032.txt",
+    "seeds/reviewed/historical-work-ids-0033.txt",
+    "seeds/reviewed/historical-work-ids-0034.txt",
+    "seeds/reviewed/historical-work-ids-0035.txt",
+    "seeds/reviewed/historical-work-ids-0036.txt",
+    "seeds/reviewed/historical-work-ids-0037.txt",
+    "seeds/reviewed/historical-work-ids-0038.txt",
+    "seeds/reviewed/historical-work-ids-0039.txt",
+    "seeds/reviewed/historical-work-ids-0040.txt",
+    "seeds/reviewed/historical-work-ids-0041.txt",
+    "seeds/reviewed/historical-work-ids-0042.txt",
+    "seeds/reviewed/historical-work-ids-0043.txt",
+    "seeds/reviewed/historical-work-ids-0044.txt",
+    "seeds/reviewed/historical-work-ids-0045.txt",
+    "seeds/reviewed/historical-work-ids-0046.txt",
+    "seeds/reviewed/historical-work-ids-0047.txt",
+    "seeds/reviewed/historical-work-ids-0048.txt",
+    "seeds/reviewed/historical-work-ids-0049.txt",
+    "seeds/reviewed/historical-work-ids-0050.txt",
+    "seeds/reviewed/historical-work-ids-0051.txt",
+    "seeds/reviewed/historical-work-ids-0052.txt",
+    "seeds/reviewed/historical-work-ids-0053.txt",
+    "seeds/reviewed/historical-work-ids-0054.txt",
+    "seeds/reviewed/historical-work-ids-0055.txt",
+    "seeds/reviewed/historical-work-ids-0056.txt",
+    "seeds/reviewed/historical-work-ids-0057.txt",
+    "seeds/reviewed/historical-work-ids-0058.txt",
+    "seeds/reviewed/historical-work-ids-0059.txt",
+    "seeds/reviewed/historical-work-ids-0060.txt",
+    "seeds/reviewed/historical-work-ids-0061.txt",
+    "seeds/reviewed/historical-work-ids-0062.txt",
+    "seeds/reviewed/historical-work-ids-0063.txt",
+    "seeds/reviewed/historical-work-ids-0064.txt",
+    "seeds/reviewed/historical-work-ids-0065.txt",
+    "seeds/reviewed/historical-work-ids-0066.txt",
+    "seeds/reviewed/historical-work-ids-0067.txt",
+    "seeds/reviewed/historical-work-ids-0068.txt"
+  ],
+  "conductor_tracks": [
+    "dataset_identifier_interlinking_20260721",
+    "track_01_repository_commit_and_release_baseline",
+    "track_02_credential_and_secret_inventory",
+    "track_03_hugging_face_dataset_shell",
+    "track_04_source_discovery_completeness",
+    "track_05_conservative_live_smoke_sync",
+    "track_06_first_hugging_face_smoke_upload",
+    "track_07_full_corpus_bootstrap_download",
+    "track_08_full_hugging_face_corpus_upload",
+    "track_09_github_scheduled_hugging_face_sync",
+    "track_10_maintenance_doctor_and_alerting",
+    "track_11_monthly_full_reconciliation",
+    "track_12_zenodo_sandbox_archive",
+    "track_13_protected_production_zenodo_archive",
+    "track_14_legal_citation_and_dataset_wording",
+    "track_15_downstream_researcher_usability",
+    "track_16_github_repository_hardening",
+    "track_17_runtime_capacity_batching_and_resume",
+    "track_18_data_quality_and_schema_governance",
+    "track_19_public_launch_decision",
+    "track_20_github_release_tag_for_partial_launch",
+    "track_21_separate_historical_hugging_face_corpus",
+    "track_22_historical_bootstrap_review_plan",
+    "track_23_manual_historical_upload_workflow",
+    "track_24_corpus_family_naming_and_publication_alignment",
+    "track_25_cross_corpus_interoperability_and_metadata",
+    "track_26_public_surface_audit_evidence",
+    "track_27_zenodo_rights_metadata_and_zenodraft_workflow",
+    "track_28_github_repository_name_migration_assessment",
+    "track_29_shared_nz_corpus_core_schema",
+    "track_30_sota_metadata_packages",
+    "track_31_bleeding_edge_versioning_release_automation",
+    "track_32_sota_cicd_code_quality_rust_tooling",
+    "track_33_artifact_provenance_attestations",
+    "track_34_sota_test_infrastructure",
+    "track_35_multi_git_and_multi_archive_mirroring_setup",
+    "track_36_period_sharded_bootstrap_agent_handoff",
+    "track_38_official_website_fallback_retrieval",
+    "track_39_nzlii_redundancy_reconciliation",
+    "track_40_source_redundancy_resolver_provenance",
+    "track_41_gazette_source_registry_rights_shared_schema",
+    "track_42_official_gazette_source_archive",
+    "track_43_digitalnz_gazette_source_archive",
+    "track_44_victoria_lexisnexis_historical_gazette_archive",
+    "track_45_nzlii_gazette_redundancy_archive",
+    "track_46_cross_source_comparison_canonical_gazette_builder",
+    "track_47_gazette_archive_workflow_review_publication_staging",
+    "track_48_gazette_freshness_change_detection"
+  ],
+  "workflows": [
+    {
+      "id": 290698272,
+      "name": "Annual Zenodo archive",
+      "path": ".github/workflows/annual_zenodo_archive.yml",
+      "state": "active"
+    },
+    {
+      "id": 305404150,
+      "name": "CI Learning Candidates",
+      "path": ".github/workflows/ci-learning-candidates.yml",
+      "state": "active"
+    },
+    {
+      "id": 293398409,
+      "name": "Code quality and security tooling",
+      "path": ".github/workflows/code_quality.yml",
+      "state": "active"
+    },
+    {
+      "id": 290698273,
+      "name": "CodeQL",
+      "path": ".github/workflows/codeql.yml",
+      "state": "active"
+    },
+    {
+      "id": 296153354,
+      "name": "Docs",
+      "path": ".github/workflows/docs.yml",
+      "state": "active"
+    },
+    {
+      "id": 290698274,
+      "name": "Non-destructive service doctor",
+      "path": ".github/workflows/doctor.yml",
+      "state": "active"
+    },
+    {
+      "id": 294422356,
+      "name": "Full corpus bootstrap",
+      "path": ".github/workflows/full_corpus_bootstrap.yml",
+      "state": "active"
+    },
+    {
+      "id": 294422357,
+      "name": "Full corpus Hugging Face upload",
+      "path": ".github/workflows/full_corpus_hf_upload.yml",
+      "state": "active"
+    },
+    {
+      "id": 305131731,
+      "name": "Full corpus period bootstrap",
+      "path": ".github/workflows/full_corpus_period_bootstrap.yml",
+      "state": "active"
+    },
+    {
+      "id": 290698275,
+      "name": "Hugging Face live sync",
+      "path": ".github/workflows/hf_sync.yml",
+      "state": "active"
+    },
+    {
+      "id": 294422358,
+      "name": "Historical batch review",
+      "path": ".github/workflows/historical_batch_review.yml",
+      "state": "active"
+    },
+    {
+      "id": 291903520,
+      "name": "Historical Hugging Face upload",
+      "path": ".github/workflows/historical_hf_upload.yml",
+      "state": "active"
+    },
+    {
+      "id": 293404493,
+      "name": "Historical seed reconciliation",
+      "path": ".github/workflows/historical_seed_reconciliation.yml",
+      "state": "active"
+    },
+    {
+      "id": 291324426,
+      "name": "Historical corpus sync pilot",
+      "path": ".github/workflows/historical_sync_pilot.yml",
+      "state": "active"
+    },
+    {
+      "id": 291291836,
+      "name": "Historical work ID discovery",
+      "path": ".github/workflows/historical_work_id_discovery.yml",
+      "state": "active"
+    },
+    {
+      "id": 291936211,
+      "name": "Initialize historical Hugging Face shell",
+      "path": ".github/workflows/init_historical_hf_shell.yml",
+      "state": "active"
+    },
+    {
+      "id": 299687121,
+      "name": "Mirror Sync",
+      "path": ".github/workflows/mirror_sync.yml",
+      "state": "active"
+    },
+    {
+      "id": 294422359,
+      "name": "Monthly full reconciliation",
+      "path": ".github/workflows/monthly_full_reconciliation.yml",
+      "state": "active"
+    },
+    {
+      "id": 305131735,
+      "name": "Official feed change detection",
+      "path": ".github/workflows/official_feed_change_detection.yml",
+      "state": "active"
+    },
+    {
+      "id": 305131737,
+      "name": "Scheduled full corpus bootstrap batches",
+      "path": ".github/workflows/scheduled_full_corpus_bootstrap_batches.yml",
+      "state": "active"
+    },
+    {
+      "id": 290698276,
+      "name": "OpenSSF Scorecard",
+      "path": ".github/workflows/scorecard.yml",
+      "state": "active"
+    },
+    {
+      "id": 290698277,
+      "name": "Tests",
+      "path": ".github/workflows/tests.yml",
+      "state": "active"
+    },
+    {
+      "id": 305089303,
+      "name": "Copilot",
+      "path": "dynamic/agents/copilot-pull-request-reviewer",
+      "state": "active"
+    },
+    {
+      "id": 290698296,
+      "name": "Dependabot Updates",
+      "path": "dynamic/dependabot/dependabot-updates",
+      "state": "active"
+    },
+    {
+      "id": 290698290,
+      "name": "Dependency Graph",
+      "path": "dynamic/dependabot/update-graph",
+      "state": "active"
+    }
+  ],
+  "open_issues": [
+    {
+      "closedAt": null,
+      "createdAt": "2026-07-31T05:47:03Z",
+      "labels": [],
+      "number": 160,
+      "state": "OPEN",
+      "title": "[Quality frontier] Complete evidence-based repository hardening"
+    },
+    {
+      "closedAt": null,
+      "createdAt": "2026-07-31T05:47:01Z",
+      "labels": [],
+      "number": 159,
+      "state": "OPEN",
+      "title": "[Quality frontier] Maximise security and solo-maintainer context"
+    },
+    {
+      "closedAt": null,
+      "createdAt": "2026-07-31T05:46:59Z",
+      "labels": [],
+      "number": 158,
+      "state": "OPEN",
+      "title": "[Quality frontier] Close warranted testing and CI/CD gaps"
+    },
+    {
+      "closedAt": null,
+      "createdAt": "2026-07-27T10:06:00Z",
+      "labels": [
+        {
+          "id": "LA_kwDOSzY1688AAAACtfIQpQ",
+          "name": "cross-repo",
+          "description": "Work owned by or coordinated with another repository",
+          "color": "6F42C1"
+        },
+        {
+          "id": "LA_kwDOSzY1688AAAACtfIQ8A",
+          "name": "provenance",
+          "description": "Provenance, lineage and transformation evidence",
+          "color": "0052CC"
+        }
+      ],
+      "number": 157,
+      "state": "OPEN",
+      "title": "[Cross-repo] Map legislation corpus captures and releases to the RIOPA profile"
+    },
+    {
+      "closedAt": null,
+      "createdAt": "2026-07-21T13:41:41Z",
+      "labels": [],
+      "number": 152,
+      "state": "OPEN",
+      "title": "Registry: archive the repository with Software Heritage"
+    },
+    {
+      "closedAt": null,
+      "createdAt": "2026-07-21T13:41:37Z",
+      "labels": [],
+      "number": 151,
+      "state": "OPEN",
+      "title": "Registry: reconcile Hugging Face relationship metadata"
+    },
+    {
+      "closedAt": null,
+      "createdAt": "2026-07-21T13:41:32Z",
+      "labels": [],
+      "number": 150,
+      "state": "OPEN",
+      "title": "Registry: publish and link a versioned Zenodo snapshot"
+    },
+    {
+      "closedAt": null,
+      "createdAt": "2026-07-21T13:41:29Z",
+      "labels": [],
+      "number": 149,
+      "state": "OPEN",
+      "title": "track: Dataset identifier interlinking"
+    },
+    {
+      "closedAt": null,
+      "createdAt": "2026-07-07T12:33:44Z",
+      "labels": [],
+      "number": 145,
+      "state": "OPEN",
+      "title": "Track: Adopt shared code-scanning gate"
+    },
+    {
+      "closedAt": null,
+      "createdAt": "2026-07-03T09:07:56Z",
+      "labels": [
+        {
+          "id": "LA_kwDOSzY1688AAAACp007Fw",
+          "name": "conductor-track",
+          "description": "Mirrors a local Conductor track",
+          "color": "5319E7"
+        },
+        {
+          "id": "LA_kwDOSzY1688AAAACp009Yw",
+          "name": "project-sync",
+          "description": "Synchronized with GitHub Projects",
+          "color": "C5DEF5"
+        }
+      ],
+      "number": 144,
+      "state": "OPEN",
+      "title": "Track 48: NZ Gazette freshness and change detection"
+    },
+    {
+      "closedAt": null,
+      "createdAt": "2026-07-03T06:54:06Z",
+      "labels": [
+        {
+          "id": "LA_kwDOSzY1688AAAACp007Fw",
+          "name": "conductor-track",
+          "description": "Mirrors a local Conductor track",
+          "color": "5319E7"
+        },
+        {
+          "id": "LA_kwDOSzY1688AAAACp009Yw",
+          "name": "project-sync",
+          "description": "Synchronized with GitHub Projects",
+          "color": "C5DEF5"
+        }
+      ],
+      "number": 143,
+      "state": "OPEN",
+      "title": "Track 47: NZ Gazette archive workflow, review, and publication staging"
+    },
+    {
+      "closedAt": null,
+      "createdAt": "2026-07-03T06:54:00Z",
+      "labels": [
+        {
+          "id": "LA_kwDOSzY1688AAAACp007Fw",
+          "name": "conductor-track",
+          "description": "Mirrors a local Conductor track",
+          "color": "5319E7"
+        },
+        {
+          "id": "LA_kwDOSzY1688AAAACp009Yw",
+          "name": "project-sync",
+          "description": "Synchronized with GitHub Projects",
+          "color": "C5DEF5"
+        }
+      ],
+      "number": 142,
+      "state": "OPEN",
+      "title": "Track 46: NZ Gazette cross-source comparison and canonical builder"
+    },
+    {
+      "closedAt": null,
+      "createdAt": "2026-07-03T06:53:54Z",
+      "labels": [
+        {
+          "id": "LA_kwDOSzY1688AAAACp007Fw",
+          "name": "conductor-track",
+          "description": "Mirrors a local Conductor track",
+          "color": "5319E7"
+        },
+        {
+          "id": "LA_kwDOSzY1688AAAACp009Yw",
+          "name": "project-sync",
+          "description": "Synchronized with GitHub Projects",
+          "color": "C5DEF5"
+        }
+      ],
+      "number": 141,
+      "state": "OPEN",
+      "title": "Track 45: NZ Gazette NZLII redundancy archive"
+    },
+    {
+      "closedAt": null,
+      "createdAt": "2026-07-03T06:53:48Z",
+      "labels": [
+        {
+          "id": "LA_kwDOSzY1688AAAACp007Fw",
+          "name": "conductor-track",
+          "description": "Mirrors a local Conductor track",
+          "color": "5319E7"
+        },
+        {
+          "id": "LA_kwDOSzY1688AAAACp009Yw",
+          "name": "project-sync",
+          "description": "Synchronized with GitHub Projects",
+          "color": "C5DEF5"
+        }
+      ],
+      "number": 140,
+      "state": "OPEN",
+      "title": "Track 44: NZ Gazette Victoria/LexisNexis archive"
+    },
+    {
+      "closedAt": null,
+      "createdAt": "2026-07-03T06:53:41Z",
+      "labels": [
+        {
+          "id": "LA_kwDOSzY1688AAAACp007Fw",
+          "name": "conductor-track",
+          "description": "Mirrors a local Conductor track",
+          "color": "5319E7"
+        },
+        {
+          "id": "LA_kwDOSzY1688AAAACp009Yw",
+          "name": "project-sync",
+          "description": "Synchronized with GitHub Projects",
+          "color": "C5DEF5"
+        }
+      ],
+      "number": 139,
+      "state": "OPEN",
+      "title": "Track 43: NZ Gazette DigitalNZ archive"
+    },
+    {
+      "closedAt": null,
+      "createdAt": "2026-07-02T09:41:12Z",
+      "labels": [
+        {
+          "id": "LA_kwDOSzY1688AAAACp007Fw",
+          "name": "conductor-track",
+          "description": "Mirrors a local Conductor track",
+          "color": "5319E7"
+        },
+        {
+          "id": "LA_kwDOSzY1688AAAACp008nA",
+          "name": "status:in-progress",
+          "description": "Conductor track currently in progress",
+          "color": "1D76DB"
+        },
+        {
+          "id": "LA_kwDOSzY1688AAAACp009Yw",
+          "name": "project-sync",
+          "description": "Synchronized with GitHub Projects",
+          "color": "C5DEF5"
+        }
+      ],
+      "number": 119,
+      "state": "OPEN",
+      "title": "Track 36: period sharded bootstrap agent handoff"
+    },
+    {
+      "closedAt": null,
+      "createdAt": "2026-07-02T09:41:10Z",
+      "labels": [
+        {
+          "id": "LA_kwDOSzY1688AAAACp007Fw",
+          "name": "conductor-track",
+          "description": "Mirrors a local Conductor track",
+          "color": "5319E7"
+        },
+        {
+          "id": "LA_kwDOSzY1688AAAACp009CA",
+          "name": "status:blocked",
+          "description": "Conductor track blocked",
+          "color": "D73A4A"
+        },
+        {
+          "id": "LA_kwDOSzY1688AAAACp009Yw",
+          "name": "project-sync",
+          "description": "Synchronized with GitHub Projects",
+          "color": "C5DEF5"
+        }
+      ],
+      "number": 118,
+      "state": "OPEN",
+      "title": "Track 35: multi-git and multi-archive mirroring setup"
+    },
+    {
+      "closedAt": null,
+      "createdAt": "2026-07-02T09:40:09Z",
+      "labels": [
+        {
+          "id": "LA_kwDOSzY1688AAAACp007Fw",
+          "name": "conductor-track",
+          "description": "Mirrors a local Conductor track",
+          "color": "5319E7"
+        },
+        {
+          "id": "LA_kwDOSzY1688AAAACp009CA",
+          "name": "status:blocked",
+          "description": "Conductor track blocked",
+          "color": "D73A4A"
+        },
+        {
+          "id": "LA_kwDOSzY1688AAAACp009Yw",
+          "name": "project-sync",
+          "description": "Synchronized with GitHub Projects",
+          "color": "C5DEF5"
+        }
+      ],
+      "number": 101,
+      "state": "OPEN",
+      "title": "Track 18: Data Quality And Schema Governance"
+    },
+    {
+      "closedAt": null,
+      "createdAt": "2026-07-02T09:39:38Z",
+      "labels": [
+        {
+          "id": "LA_kwDOSzY1688AAAACp007Fw",
+          "name": "conductor-track",
+          "description": "Mirrors a local Conductor track",
+          "color": "5319E7"
+        },
+        {
+          "id": "LA_kwDOSzY1688AAAACp008MA",
+          "name": "status:ready",
+          "description": "Conductor track ready but not completed",
+          "color": "FBCA04"
+        },
+        {
+          "id": "LA_kwDOSzY1688AAAACp009Yw",
+          "name": "project-sync",
+          "description": "Synchronized with GitHub Projects",
+          "color": "C5DEF5"
+        }
+      ],
+      "number": 94,
+      "state": "OPEN",
+      "title": "Track 11: Monthly Full Reconciliation"
+    },
+    {
+      "closedAt": null,
+      "createdAt": "2026-07-02T09:39:32Z",
+      "labels": [
+        {
+          "id": "LA_kwDOSzY1688AAAACp007Fw",
+          "name": "conductor-track",
+          "description": "Mirrors a local Conductor track",
+          "color": "5319E7"
+        },
+        {
+          "id": "LA_kwDOSzY1688AAAACp008MA",
+          "name": "status:ready",
+          "description": "Conductor track ready but not completed",
+          "color": "FBCA04"
+        },
+        {
+          "id": "LA_kwDOSzY1688AAAACp009Yw",
+          "name": "project-sync",
+          "description": "Synchronized with GitHub Projects",
+          "color": "C5DEF5"
+        }
+      ],
+      "number": 92,
+      "state": "OPEN",
+      "title": "Track 09: GitHub Scheduled Hugging Face Sync"
+    },
+    {
+      "closedAt": null,
+      "createdAt": "2026-07-02T09:39:30Z",
+      "labels": [
+        {
+          "id": "LA_kwDOSzY1688AAAACp007Fw",
+          "name": "conductor-track",
+          "description": "Mirrors a local Conductor track",
+          "color": "5319E7"
+        },
+        {
+          "id": "LA_kwDOSzY1688AAAACp008MA",
+          "name": "status:ready",
+          "description": "Conductor track ready but not completed",
+          "color": "FBCA04"
+        },
+        {
+          "id": "LA_kwDOSzY1688AAAACp009Yw",
+          "name": "project-sync",
+          "description": "Synchronized with GitHub Projects",
+          "color": "C5DEF5"
+        }
+      ],
+      "number": 91,
+      "state": "OPEN",
+      "title": "Track 08: Full Hugging Face Corpus Upload"
+    }
+  ]
+}

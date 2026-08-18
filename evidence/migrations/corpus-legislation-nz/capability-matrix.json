@@ -1,6 +1,6 @@
 {
   "schema_version": "archive-govt-nz.capability-matrix/v1",
-  "evaluated_at": "2026-08-18T18:40:00Z",
+  "evaluated_at": "2026-08-18T08:40:00Z",
   "capabilities": [
     {
       "id": "leg-cap-adapter",

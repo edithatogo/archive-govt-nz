@@ -1,6 +1,6 @@
 {
   "schema_version": "archive-govt-nz.evidence-classification/v1",
-  "classified_at": "2026-08-18T18:05:00Z",
+  "classified_at": "2026-08-18T08:05:00Z",
   "classes": {
     "unit": "Isolated in-memory component verification with mock boundaries.",
     "fixture": "Static deterministic test fixtures mimicking real-world payloads.",

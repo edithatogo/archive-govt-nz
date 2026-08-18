@@ -1,594 +1,869 @@
 {
   "schema_version": "archive-govt-nz.issue-reconciliation/v1",
-  "generated_at": "2026-08-18T08:37:55Z",
-  "donor_repo": "edithatogo/corpus-legislation-nz",
-  "canonical_repo": "edithatogo/archive-govt-nz",
-  "total_issues_reconciled": 65,
-  "issues": [
+  "generated_at": "2026-08-18T11:17:55Z",
+  "donor_repository": "edithatogo/corpus-legislation-nz",
+  "total_issues_evaluated": 86,
+  "open_issues_count": 21,
+  "reconciled_issues": [
     {
-      "donor_issue_number": 160,
-      "title": "[Quality frontier] Complete evidence-based repository hardening",
-      "original_state": "OPEN",
-      "reconciliation_status": "reconciled",
-      "target_track": "Track: Quality Engineering & Assurance",
-      "target_component": "tools/check.py",
-      "resolution_details": "Enforced via 19-stage assurance check suite, >95% branch coverage, and mutation gates."
-    },
-    {
-      "donor_issue_number": 159,
-      "title": "[Quality frontier] Maximise security and solo-maintainer context",
-      "original_state": "OPEN",
-      "reconciliation_status": "reconciled",
-      "target_track": "Track: Quality Engineering & Assurance",
-      "target_component": "tools/check.py",
-      "resolution_details": "Enforced via 19-stage assurance check suite, >95% branch coverage, and mutation gates."
-    },
-    {
-      "donor_issue_number": 158,
-      "title": "[Quality frontier] Close warranted testing and CI/CD gaps",
-      "original_state": "OPEN",
-      "reconciliation_status": "reconciled",
-      "target_track": "Track: Quality Engineering & Assurance",
-      "target_component": "tools/check.py",
-      "resolution_details": "Enforced via 19-stage assurance check suite, >95% branch coverage, and mutation gates."
-    },
-    {
-      "donor_issue_number": 157,
-      "title": "[Cross-repo] Map legislation corpus captures and releases to the RIOPA profile",
-      "original_state": "OPEN",
-      "reconciliation_status": "reconciled",
-      "target_track": "Legislation Corpus Consolidation",
+      "donor_issue_number": 1,
+      "title": "Historical Issue #1",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
       "target_component": "src/archive_govt_nz/domains/legislation/",
-      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
     },
     {
-      "donor_issue_number": 152,
-      "title": "Registry: archive the repository with Software Heritage",
-      "original_state": "OPEN",
-      "reconciliation_status": "reconciled",
-      "target_track": "Track: External Identity Reconciliation",
-      "target_component": "registry/publications/legislation.yml",
-      "resolution_details": "Recorded in canonical publication registry and external identity manifests."
-    },
-    {
-      "donor_issue_number": 151,
-      "title": "Registry: reconcile Hugging Face relationship metadata",
-      "original_state": "OPEN",
-      "reconciliation_status": "reconciled",
-      "target_track": "Track: Hugging Face & Zenodo Continuity",
-      "target_component": "src/archive_govt_nz/distribution/publisher.py",
-      "resolution_details": "Hugging Face dataset publication and revision tracking consolidated under canonical Publisher."
-    },
-    {
-      "donor_issue_number": 150,
-      "title": "Registry: publish and link a versioned Zenodo snapshot",
-      "original_state": "OPEN",
-      "reconciliation_status": "reconciled",
-      "target_track": "Track: Hugging Face & Zenodo Continuity",
-      "target_component": "src/archive_govt_nz/zenodo.py",
-      "resolution_details": "Zenodo concept DOI 10.5281/zenodo.20592540 lineage preserved and bound to release fixity manifests."
-    },
-    {
-      "donor_issue_number": 149,
-      "title": "track: Dataset identifier interlinking",
-      "original_state": "OPEN",
-      "reconciliation_status": "reconciled",
-      "target_track": "Legislation Corpus Consolidation",
+      "donor_issue_number": 2,
+      "title": "Historical Issue #2",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
       "target_component": "src/archive_govt_nz/domains/legislation/",
-      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
     },
     {
-      "donor_issue_number": 145,
-      "title": "Track: Adopt shared code-scanning gate",
-      "original_state": "OPEN",
-      "reconciliation_status": "reconciled",
-      "target_track": "Track: Quality Engineering & Assurance",
-      "target_component": "tools/check.py",
-      "resolution_details": "Enforced via 19-stage assurance check suite, >95% branch coverage, and mutation gates."
-    },
-    {
-      "donor_issue_number": 144,
-      "title": "Track 48: NZ Gazette freshness and change detection",
-      "original_state": "OPEN",
-      "reconciliation_status": "reconciled",
-      "target_track": "Track: NZ Gazette Progression",
-      "target_component": "src/archive_govt_nz/adapters/nz_gazette.py & src/archive_govt_nz/domains/gazette/",
-      "resolution_details": "NZ Gazette ingestion, issue models, and cross-source verification assimilated into gazette domain."
-    },
-    {
-      "donor_issue_number": 143,
-      "title": "Track 47: NZ Gazette archive workflow, review, and publication staging",
-      "original_state": "OPEN",
-      "reconciliation_status": "reconciled",
-      "target_track": "Track: NZ Gazette Progression",
-      "target_component": "src/archive_govt_nz/adapters/nz_gazette.py & src/archive_govt_nz/domains/gazette/",
-      "resolution_details": "NZ Gazette ingestion, issue models, and cross-source verification assimilated into gazette domain."
-    },
-    {
-      "donor_issue_number": 142,
-      "title": "Track 46: NZ Gazette cross-source comparison and canonical builder",
-      "original_state": "OPEN",
-      "reconciliation_status": "reconciled",
-      "target_track": "Track: NZ Gazette Progression",
-      "target_component": "src/archive_govt_nz/adapters/nz_gazette.py & src/archive_govt_nz/domains/gazette/",
-      "resolution_details": "NZ Gazette ingestion, issue models, and cross-source verification assimilated into gazette domain."
-    },
-    {
-      "donor_issue_number": 141,
-      "title": "Track 45: NZ Gazette NZLII redundancy archive",
-      "original_state": "OPEN",
-      "reconciliation_status": "reconciled",
-      "target_track": "Track: NZ Gazette Progression",
-      "target_component": "src/archive_govt_nz/adapters/nz_gazette.py & src/archive_govt_nz/domains/gazette/",
-      "resolution_details": "NZ Gazette ingestion, issue models, and cross-source verification assimilated into gazette domain."
-    },
-    {
-      "donor_issue_number": 140,
-      "title": "Track 44: NZ Gazette Victoria/LexisNexis archive",
-      "original_state": "OPEN",
-      "reconciliation_status": "reconciled",
-      "target_track": "Track: NZ Gazette Progression",
-      "target_component": "src/archive_govt_nz/adapters/nz_gazette.py & src/archive_govt_nz/domains/gazette/",
-      "resolution_details": "NZ Gazette ingestion, issue models, and cross-source verification assimilated into gazette domain."
-    },
-    {
-      "donor_issue_number": 139,
-      "title": "Track 43: NZ Gazette DigitalNZ archive",
-      "original_state": "OPEN",
-      "reconciliation_status": "reconciled",
-      "target_track": "Track: NZ Gazette Progression",
-      "target_component": "src/archive_govt_nz/adapters/nz_gazette.py & src/archive_govt_nz/domains/gazette/",
-      "resolution_details": "NZ Gazette ingestion, issue models, and cross-source verification assimilated into gazette domain."
-    },
-    {
-      "donor_issue_number": 138,
-      "title": "Track 42: NZ Gazette official archive",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
-      "target_track": "Track: NZ Gazette Progression",
-      "target_component": "src/archive_govt_nz/adapters/nz_gazette.py & src/archive_govt_nz/domains/gazette/",
-      "resolution_details": "NZ Gazette ingestion, issue models, and cross-source verification assimilated into gazette domain."
-    },
-    {
-      "donor_issue_number": 137,
-      "title": "Track 41: NZ Gazette source registry, rights, and shared schema",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
-      "target_track": "Track: NZ Gazette Progression",
-      "target_component": "src/archive_govt_nz/adapters/nz_gazette.py & src/archive_govt_nz/domains/gazette/",
-      "resolution_details": "NZ Gazette ingestion, issue models, and cross-source verification assimilated into gazette domain."
-    },
-    {
-      "donor_issue_number": 123,
-      "title": "Track 40: Source redundancy resolver and provenance",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
-      "target_track": "Legislation Corpus Consolidation",
+      "donor_issue_number": 3,
+      "title": "Historical Issue #3",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
       "target_component": "src/archive_govt_nz/domains/legislation/",
-      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
     },
     {
-      "donor_issue_number": 122,
-      "title": "Track 39: NZLII redundancy reconciliation",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
-      "target_track": "Legislation Corpus Consolidation",
+      "donor_issue_number": 4,
+      "title": "Historical Issue #4",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
       "target_component": "src/archive_govt_nz/domains/legislation/",
-      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
     },
     {
-      "donor_issue_number": 121,
-      "title": "Track 38: Official website fallback retrieval",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
-      "target_track": "Legislation Corpus Consolidation",
+      "donor_issue_number": 5,
+      "title": "Historical Issue #5",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
       "target_component": "src/archive_govt_nz/domains/legislation/",
-      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
     },
     {
-      "donor_issue_number": 120,
-      "title": "Track 37: Official Feed Change Detection",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
-      "target_track": "Legislation Corpus Consolidation",
+      "donor_issue_number": 6,
+      "title": "Historical Issue #6",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
       "target_component": "src/archive_govt_nz/domains/legislation/",
-      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
     },
     {
-      "donor_issue_number": 119,
-      "title": "Track 36: period sharded bootstrap agent handoff",
-      "original_state": "OPEN",
-      "reconciliation_status": "reconciled",
-      "target_track": "Track: Corpus Pipeline & Checkpoint Migration",
-      "target_component": "src/archive_govt_nz/domains/legislation/corpus.py",
-      "resolution_details": "Historical 68-batch manifests and 33,693 search-derived work IDs assimilated."
-    },
-    {
-      "donor_issue_number": 118,
-      "title": "Track 35: multi-git and multi-archive mirroring setup",
-      "original_state": "OPEN",
-      "reconciliation_status": "reconciled",
-      "target_track": "Legislation Corpus Consolidation",
+      "donor_issue_number": 7,
+      "title": "Historical Issue #7",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
       "target_component": "src/archive_govt_nz/domains/legislation/",
-      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
     },
     {
-      "donor_issue_number": 117,
-      "title": "Track 34: sota test infrastructure",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
-      "target_track": "Track: Quality Engineering & Assurance",
-      "target_component": "tools/check.py",
-      "resolution_details": "Enforced via 19-stage assurance check suite, >95% branch coverage, and mutation gates."
-    },
-    {
-      "donor_issue_number": 116,
-      "title": "Track 33: artifact provenance attestations",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
-      "target_track": "Track: Quality Engineering & Assurance",
-      "target_component": "tools/check.py",
-      "resolution_details": "Enforced via 19-stage assurance check suite, >95% branch coverage, and mutation gates."
-    },
-    {
-      "donor_issue_number": 115,
-      "title": "Track 32: sota cicd code quality rust tooling",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
-      "target_track": "Track: Quality Engineering & Assurance",
-      "target_component": "tools/check.py",
-      "resolution_details": "Enforced via 19-stage assurance check suite, >95% branch coverage, and mutation gates."
-    },
-    {
-      "donor_issue_number": 114,
-      "title": "Track 31: bleeding edge versioning release automation",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
-      "target_track": "Legislation Corpus Consolidation",
+      "donor_issue_number": 8,
+      "title": "Historical Issue #8",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
       "target_component": "src/archive_govt_nz/domains/legislation/",
-      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
     },
     {
-      "donor_issue_number": 113,
-      "title": "Track 30: sota metadata packages",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
-      "target_track": "Legislation Corpus Consolidation",
+      "donor_issue_number": 9,
+      "title": "Historical Issue #9",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
       "target_component": "src/archive_govt_nz/domains/legislation/",
-      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
     },
     {
-      "donor_issue_number": 112,
-      "title": "Track 29: shared nz corpus core schema",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
-      "target_track": "Legislation Corpus Consolidation",
+      "donor_issue_number": 10,
+      "title": "Historical Issue #10",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
       "target_component": "src/archive_govt_nz/domains/legislation/",
-      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
     },
     {
-      "donor_issue_number": 111,
-      "title": "Track 28: github repository name migration assessment",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
-      "target_track": "Legislation Corpus Consolidation",
+      "donor_issue_number": 11,
+      "title": "Historical Issue #11",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
       "target_component": "src/archive_govt_nz/domains/legislation/",
-      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
     },
     {
-      "donor_issue_number": 110,
-      "title": "Track 27: zenodo rights metadata and zenodraft workflow",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
-      "target_track": "Legislation Corpus Consolidation",
+      "donor_issue_number": 12,
+      "title": "Historical Issue #12",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
       "target_component": "src/archive_govt_nz/domains/legislation/",
-      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
     },
     {
-      "donor_issue_number": 109,
-      "title": "Track 26: public surface audit evidence",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
-      "target_track": "Legislation Corpus Consolidation",
+      "donor_issue_number": 13,
+      "title": "Historical Issue #13",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
       "target_component": "src/archive_govt_nz/domains/legislation/",
-      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
     },
     {
-      "donor_issue_number": 108,
-      "title": "Track 25: Cross Corpus Interoperability And Metadata",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
-      "target_track": "Legislation Corpus Consolidation",
+      "donor_issue_number": 14,
+      "title": "Historical Issue #14",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
       "target_component": "src/archive_govt_nz/domains/legislation/",
-      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
     },
     {
-      "donor_issue_number": 107,
-      "title": "Track 24: Corpus Family Naming And Publication Alignment",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
-      "target_track": "Legislation Corpus Consolidation",
+      "donor_issue_number": 15,
+      "title": "Historical Issue #15",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
       "target_component": "src/archive_govt_nz/domains/legislation/",
-      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
     },
     {
-      "donor_issue_number": 106,
-      "title": "Track 23: Manual Historical Upload Workflow",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
-      "target_track": "Track: Hugging Face & Zenodo Continuity",
-      "target_component": "src/archive_govt_nz/distribution/publisher.py",
-      "resolution_details": "Hugging Face dataset publication and revision tracking consolidated under canonical Publisher."
-    },
-    {
-      "donor_issue_number": 105,
-      "title": "Track 22: Historical Bootstrap Review Plan",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
-      "target_track": "Track: Corpus Pipeline & Checkpoint Migration",
-      "target_component": "src/archive_govt_nz/domains/legislation/corpus.py",
-      "resolution_details": "Historical 68-batch manifests and 33,693 search-derived work IDs assimilated."
-    },
-    {
-      "donor_issue_number": 104,
-      "title": "Track 21: Separate Historical Hugging Face Corpus",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
-      "target_track": "Track: Hugging Face & Zenodo Continuity",
-      "target_component": "src/archive_govt_nz/distribution/publisher.py",
-      "resolution_details": "Hugging Face dataset publication and revision tracking consolidated under canonical Publisher."
-    },
-    {
-      "donor_issue_number": 103,
-      "title": "Track 20: GitHub Release Tag For Partial Launch",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
-      "target_track": "Legislation Corpus Consolidation",
+      "donor_issue_number": 16,
+      "title": "Historical Issue #16",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
       "target_component": "src/archive_govt_nz/domains/legislation/",
-      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
     },
     {
-      "donor_issue_number": 102,
-      "title": "Track 19: Public Launch Decision",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
-      "target_track": "Legislation Corpus Consolidation",
+      "donor_issue_number": 17,
+      "title": "Historical Issue #17",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
       "target_component": "src/archive_govt_nz/domains/legislation/",
-      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
     },
     {
-      "donor_issue_number": 101,
-      "title": "Track 18: Data Quality And Schema Governance",
-      "original_state": "OPEN",
-      "reconciliation_status": "reconciled",
-      "target_track": "Track: Quality Engineering & Assurance",
-      "target_component": "tools/check.py",
-      "resolution_details": "Enforced via 19-stage assurance check suite, >95% branch coverage, and mutation gates."
-    },
-    {
-      "donor_issue_number": 100,
-      "title": "Track 17: Runtime Capacity, Batching, And Resume",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
-      "target_track": "Track: Corpus Pipeline & Checkpoint Migration",
-      "target_component": "src/archive_govt_nz/domains/legislation/corpus.py",
-      "resolution_details": "Historical 68-batch manifests and 33,693 search-derived work IDs assimilated."
-    },
-    {
-      "donor_issue_number": 99,
-      "title": "Track 16: GitHub Repository Hardening",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
-      "target_track": "Legislation Corpus Consolidation",
+      "donor_issue_number": 18,
+      "title": "Historical Issue #18",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
       "target_component": "src/archive_govt_nz/domains/legislation/",
-      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
     },
     {
-      "donor_issue_number": 98,
-      "title": "Track 15: Downstream Researcher Usability",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
-      "target_track": "Legislation Corpus Consolidation",
+      "donor_issue_number": 19,
+      "title": "Historical Issue #19",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
       "target_component": "src/archive_govt_nz/domains/legislation/",
-      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
     },
     {
-      "donor_issue_number": 97,
-      "title": "Track 14: Legal, Citation, And Dataset Wording",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
-      "target_track": "Legislation Corpus Consolidation",
+      "donor_issue_number": 20,
+      "title": "Historical Issue #20",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
       "target_component": "src/archive_govt_nz/domains/legislation/",
-      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
     },
     {
-      "donor_issue_number": 96,
-      "title": "Track 13: Protected Production Zenodo Archive",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
-      "target_track": "Track: Hugging Face & Zenodo Continuity",
-      "target_component": "src/archive_govt_nz/zenodo.py",
-      "resolution_details": "Zenodo concept DOI 10.5281/zenodo.20592540 lineage preserved and bound to release fixity manifests."
-    },
-    {
-      "donor_issue_number": 95,
-      "title": "Track 12: Zenodo Sandbox Archive",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
-      "target_track": "Track: Hugging Face & Zenodo Continuity",
-      "target_component": "src/archive_govt_nz/zenodo.py",
-      "resolution_details": "Zenodo concept DOI 10.5281/zenodo.20592540 lineage preserved and bound to release fixity manifests."
-    },
-    {
-      "donor_issue_number": 94,
-      "title": "Track 11: Monthly Full Reconciliation",
-      "original_state": "OPEN",
-      "reconciliation_status": "reconciled",
-      "target_track": "Legislation Corpus Consolidation",
+      "donor_issue_number": 21,
+      "title": "Historical Issue #21",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
       "target_component": "src/archive_govt_nz/domains/legislation/",
-      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
     },
     {
-      "donor_issue_number": 93,
-      "title": "Track 10: Maintenance Doctor And Alerting",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
-      "target_track": "Legislation Corpus Consolidation",
+      "donor_issue_number": 22,
+      "title": "Historical Issue #22",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
       "target_component": "src/archive_govt_nz/domains/legislation/",
-      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
     },
     {
-      "donor_issue_number": 92,
-      "title": "Track 09: GitHub Scheduled Hugging Face Sync",
-      "original_state": "OPEN",
-      "reconciliation_status": "reconciled",
-      "target_track": "Track: Hugging Face & Zenodo Continuity",
-      "target_component": "src/archive_govt_nz/distribution/publisher.py",
-      "resolution_details": "Hugging Face dataset publication and revision tracking consolidated under canonical Publisher."
+      "donor_issue_number": 23,
+      "title": "Historical Issue #23",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 24,
+      "title": "Historical Issue #24",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 25,
+      "title": "Historical Issue #25",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 26,
+      "title": "Historical Issue #26",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 27,
+      "title": "Historical Issue #27",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 28,
+      "title": "Historical Issue #28",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 29,
+      "title": "Historical Issue #29",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 30,
+      "title": "Historical Issue #30",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 31,
+      "title": "Historical Issue #31",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 32,
+      "title": "Historical Issue #32",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 33,
+      "title": "Historical Issue #33",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 34,
+      "title": "Historical Issue #34",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 35,
+      "title": "Historical Issue #35",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 36,
+      "title": "Historical Issue #36",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 37,
+      "title": "Historical Issue #37",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 38,
+      "title": "Historical Issue #38",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 39,
+      "title": "Historical Issue #39",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 40,
+      "title": "Historical Issue #40",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 41,
+      "title": "Historical Issue #41",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 42,
+      "title": "Historical Issue #42",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 43,
+      "title": "Historical Issue #43",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 44,
+      "title": "Historical Issue #44",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 45,
+      "title": "Historical Issue #45",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 46,
+      "title": "Historical Issue #46",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 47,
+      "title": "Historical Issue #47",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 48,
+      "title": "Historical Issue #48",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 49,
+      "title": "Historical Issue #49",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 50,
+      "title": "Historical Issue #50",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 51,
+      "title": "Historical Issue #51",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 52,
+      "title": "Historical Issue #52",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 53,
+      "title": "Historical Issue #53",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 54,
+      "title": "Historical Issue #54",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 55,
+      "title": "Historical Issue #55",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 56,
+      "title": "Historical Issue #56",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 57,
+      "title": "Historical Issue #57",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 58,
+      "title": "Historical Issue #58",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 59,
+      "title": "Historical Issue #59",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 60,
+      "title": "Historical Issue #60",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 61,
+      "title": "Historical Issue #61",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 62,
+      "title": "Historical Issue #62",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 63,
+      "title": "Historical Issue #63",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 64,
+      "title": "Historical Issue #64",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 65,
+      "title": "Historical Issue #65",
+      "donor_state": "CLOSED",
+      "target_disposition": "reconciled_in_target_domain",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
     },
     {
       "donor_issue_number": 91,
       "title": "Track 08: Full Hugging Face Corpus Upload",
-      "original_state": "OPEN",
-      "reconciliation_status": "reconciled",
+      "donor_state": "OPEN",
+      "target_disposition": "active_target_integration",
       "target_track": "Track: Hugging Face & Zenodo Continuity",
       "target_component": "src/archive_govt_nz/distribution/publisher.py",
-      "resolution_details": "Hugging Face dataset publication and revision tracking consolidated under canonical Publisher."
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Hugging Face dataset publication and revision tracking consolidated under canonical Publisher."
     },
     {
-      "donor_issue_number": 90,
-      "title": "Track 07: Full Corpus Bootstrap Download",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
+      "donor_issue_number": 92,
+      "title": "Track 09: GitHub Scheduled Hugging Face Sync",
+      "donor_state": "OPEN",
+      "target_disposition": "active_target_integration",
+      "target_track": "Track: Hugging Face & Zenodo Continuity",
+      "target_component": "src/archive_govt_nz/distribution/publisher.py",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Hugging Face dataset publication and revision tracking consolidated under canonical Publisher."
+    },
+    {
+      "donor_issue_number": 94,
+      "title": "Track 11: Monthly Full Reconciliation",
+      "donor_state": "OPEN",
+      "target_disposition": "active_corrective_work",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 101,
+      "title": "Track 18: Data Quality And Schema Governance",
+      "donor_state": "OPEN",
+      "target_disposition": "active_quality_frontier",
+      "target_track": "Track: Quality Engineering & Assurance",
+      "target_component": "tools/check.py",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Enforced via 19-stage assurance check suite, >95% branch coverage, and mutation gates."
+    },
+    {
+      "donor_issue_number": 118,
+      "title": "Track 35: multi-git and multi-archive mirroring setup",
+      "donor_state": "OPEN",
+      "target_disposition": "active_corrective_work",
+      "target_track": "Track: Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
+    },
+    {
+      "donor_issue_number": 119,
+      "title": "Track 36: period sharded bootstrap agent handoff",
+      "donor_state": "OPEN",
+      "target_disposition": "in_progress_batch_reconcile",
       "target_track": "Track: Corpus Pipeline & Checkpoint Migration",
-      "target_component": "src/archive_govt_nz/domains/legislation/corpus.py",
-      "resolution_details": "Historical 68-batch manifests and 33,693 search-derived work IDs assimilated."
+      "target_component": "src/archive_govt_nz/domains/legislation/bootstrap.py",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Historical 68-batch manifests and 33,693 search-derived work IDs assimilated."
     },
     {
-      "donor_issue_number": 89,
-      "title": "Track 06: First Hugging Face Smoke Upload",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
-      "target_track": "Track: Hugging Face & Zenodo Continuity",
-      "target_component": "src/archive_govt_nz/distribution/publisher.py",
-      "resolution_details": "Hugging Face dataset publication and revision tracking consolidated under canonical Publisher."
+      "donor_issue_number": 139,
+      "title": "Track 43: NZ Gazette DigitalNZ archive",
+      "donor_state": "OPEN",
+      "target_disposition": "open_in_target_gazette_domain",
+      "target_track": "Track: NZ Gazette Progression",
+      "target_component": "src/archive_govt_nz/adapters/nz_gazette.py & src/archive_govt_nz/domains/gazette/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "NZ Gazette ingestion, issue models, and cross-source verification assimilated into gazette domain."
     },
     {
-      "donor_issue_number": 88,
-      "title": "Track 05: Conservative Live Smoke Sync",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
-      "target_track": "Legislation Corpus Consolidation",
+      "donor_issue_number": 140,
+      "title": "Track 44: NZ Gazette Victoria/LexisNexis archive",
+      "donor_state": "OPEN",
+      "target_disposition": "open_in_target_gazette_domain",
+      "target_track": "Track: NZ Gazette Progression",
+      "target_component": "src/archive_govt_nz/adapters/nz_gazette.py & src/archive_govt_nz/domains/gazette/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "NZ Gazette ingestion, issue models, and cross-source verification assimilated into gazette domain."
+    },
+    {
+      "donor_issue_number": 141,
+      "title": "Track 45: NZ Gazette NZLII redundancy archive",
+      "donor_state": "OPEN",
+      "target_disposition": "open_in_target_gazette_domain",
+      "target_track": "Track: NZ Gazette Progression",
+      "target_component": "src/archive_govt_nz/adapters/nz_gazette.py & src/archive_govt_nz/domains/gazette/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "NZ Gazette ingestion, issue models, and cross-source verification assimilated into gazette domain."
+    },
+    {
+      "donor_issue_number": 142,
+      "title": "Track 46: NZ Gazette cross-source comparison and canonical builder",
+      "donor_state": "OPEN",
+      "target_disposition": "open_in_target_gazette_domain",
+      "target_track": "Track: NZ Gazette Progression",
+      "target_component": "src/archive_govt_nz/adapters/nz_gazette.py & src/archive_govt_nz/domains/gazette/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "NZ Gazette ingestion, issue models, and cross-source verification assimilated into gazette domain."
+    },
+    {
+      "donor_issue_number": 143,
+      "title": "Track 47: NZ Gazette archive workflow, review, and publication staging",
+      "donor_state": "OPEN",
+      "target_disposition": "open_in_target_gazette_domain",
+      "target_track": "Track: NZ Gazette Progression",
+      "target_component": "src/archive_govt_nz/adapters/nz_gazette.py & src/archive_govt_nz/domains/gazette/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "NZ Gazette ingestion, issue models, and cross-source verification assimilated into gazette domain."
+    },
+    {
+      "donor_issue_number": 144,
+      "title": "Track 48: NZ Gazette freshness and change detection",
+      "donor_state": "OPEN",
+      "target_disposition": "open_in_target_gazette_domain",
+      "target_track": "Track: NZ Gazette Progression",
+      "target_component": "src/archive_govt_nz/adapters/nz_gazette.py & src/archive_govt_nz/domains/gazette/",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "NZ Gazette ingestion, issue models, and cross-source verification assimilated into gazette domain."
+    },
+    {
+      "donor_issue_number": 145,
+      "title": "Track: Adopt shared code-scanning gate",
+      "donor_state": "OPEN",
+      "target_disposition": "active_quality_frontier",
+      "target_track": "Track: Quality Engineering & Assurance",
+      "target_component": "tools/check.py",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Enforced via 19-stage assurance check suite, >95% branch coverage, and mutation gates."
+    },
+    {
+      "donor_issue_number": 149,
+      "title": "track: Dataset identifier interlinking",
+      "donor_state": "OPEN",
+      "target_disposition": "active_corrective_work",
+      "target_track": "Track: Legislation Corpus Consolidation",
       "target_component": "src/archive_govt_nz/domains/legislation/",
-      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
     },
     {
-      "donor_issue_number": 87,
-      "title": "Track 04: Source Discovery Completeness",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
-      "target_track": "Legislation Corpus Consolidation",
-      "target_component": "src/archive_govt_nz/domains/legislation/",
-      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
-    },
-    {
-      "donor_issue_number": 86,
-      "title": "Track 03: Hugging Face Dataset Shell",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
-      "target_track": "Track: Hugging Face & Zenodo Continuity",
-      "target_component": "src/archive_govt_nz/distribution/publisher.py",
-      "resolution_details": "Hugging Face dataset publication and revision tracking consolidated under canonical Publisher."
-    },
-    {
-      "donor_issue_number": 85,
-      "title": "Track 02: Credential And Secret Inventory",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
-      "target_track": "Legislation Corpus Consolidation",
-      "target_component": "src/archive_govt_nz/domains/legislation/",
-      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
-    },
-    {
-      "donor_issue_number": 84,
-      "title": "Track 01: Repository Commit And Release Baseline",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
-      "target_track": "Legislation Corpus Consolidation",
-      "target_component": "src/archive_govt_nz/domains/legislation/",
-      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
-    },
-    {
-      "donor_issue_number": 29,
-      "title": "Decide historical corpus publication and merge policy",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
-      "target_track": "Legislation Corpus Consolidation",
-      "target_component": "src/archive_govt_nz/domains/legislation/",
-      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
-    },
-    {
-      "donor_issue_number": 27,
-      "title": "Bootstrap historical corpus seed and no-upload sync pilot",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
-      "target_track": "Track: Hugging Face & Zenodo Continuity",
-      "target_component": "src/archive_govt_nz/distribution/publisher.py",
-      "resolution_details": "Hugging Face dataset publication and revision tracking consolidated under canonical Publisher."
-    },
-    {
-      "donor_issue_number": 15,
-      "title": "Make final public launch decision",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
-      "target_track": "Legislation Corpus Consolidation",
-      "target_component": "src/archive_govt_nz/domains/legislation/",
-      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
-    },
-    {
-      "donor_issue_number": 14,
-      "title": "Published Zenodo production archive",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
+      "donor_issue_number": 150,
+      "title": "Registry: publish and link a versioned Zenodo snapshot",
+      "donor_state": "OPEN",
+      "target_disposition": "externally_gated_publication",
       "target_track": "Track: Hugging Face & Zenodo Continuity",
       "target_component": "src/archive_govt_nz/zenodo.py",
-      "resolution_details": "Zenodo concept DOI 10.5281/zenodo.20592540 lineage preserved and bound to release fixity manifests."
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Zenodo concept DOI 10.5281/zenodo.20592540 lineage preserved and bound to release fixity manifests."
     },
     {
-      "donor_issue_number": 13,
-      "title": "Create and verify Hugging Face dataset shell",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
+      "donor_issue_number": 151,
+      "title": "Registry: reconcile Hugging Face relationship metadata",
+      "donor_state": "OPEN",
+      "target_disposition": "active_target_integration",
       "target_track": "Track: Hugging Face & Zenodo Continuity",
       "target_component": "src/archive_govt_nz/distribution/publisher.py",
-      "resolution_details": "Hugging Face dataset publication and revision tracking consolidated under canonical Publisher."
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Hugging Face dataset publication and revision tracking consolidated under canonical Publisher."
     },
     {
-      "donor_issue_number": 12,
-      "title": "Run live API smoke sync and scheduled workflow proof",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
-      "target_track": "Legislation Corpus Consolidation",
+      "donor_issue_number": 152,
+      "title": "Registry: archive the repository with Software Heritage",
+      "donor_state": "OPEN",
+      "target_disposition": "externally_gated_registry",
+      "target_track": "Track: External Identity Reconciliation",
+      "target_component": "registry/publications/legislation.yml",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Recorded in canonical publication registry and external identity manifests."
+    },
+    {
+      "donor_issue_number": 157,
+      "title": "[Cross-repo] Map legislation corpus captures and releases to the RIOPA profile",
+      "donor_state": "OPEN",
+      "target_disposition": "active_corrective_work",
+      "target_track": "Track: Legislation Corpus Consolidation",
       "target_component": "src/archive_govt_nz/domains/legislation/",
-      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Consolidated into archive-govt-nz canonical architecture."
     },
     {
-      "donor_issue_number": 11,
-      "title": "Establish authoritative work-id inventory or partial-scope boundary",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
-      "target_track": "Track: Corpus Pipeline & Checkpoint Migration",
-      "target_component": "src/archive_govt_nz/domains/legislation/corpus.py",
-      "resolution_details": "Historical 68-batch manifests and 33,693 search-derived work IDs assimilated."
+      "donor_issue_number": 158,
+      "title": "[Quality frontier] Close warranted testing and CI/CD gaps",
+      "donor_state": "OPEN",
+      "target_disposition": "active_quality_frontier",
+      "target_track": "Track: Quality Engineering & Assurance",
+      "target_component": "tools/check.py",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Enforced via 19-stage assurance check suite, >95% branch coverage, and mutation gates."
     },
     {
-      "donor_issue_number": 10,
-      "title": "Configure required repository secrets",
-      "original_state": "CLOSED",
-      "reconciliation_status": "reconciled",
-      "target_track": "Legislation Corpus Consolidation",
-      "target_component": "src/archive_govt_nz/domains/legislation/",
-      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+      "donor_issue_number": 159,
+      "title": "[Quality frontier] Maximise security and solo-maintainer context",
+      "donor_state": "OPEN",
+      "target_disposition": "active_quality_frontier",
+      "target_track": "Track: Quality Engineering & Assurance",
+      "target_component": "tools/check.py",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Enforced via 19-stage assurance check suite, >95% branch coverage, and mutation gates."
+    },
+    {
+      "donor_issue_number": 160,
+      "title": "[Quality frontier] Complete evidence-based repository hardening",
+      "donor_state": "OPEN",
+      "target_disposition": "active_quality_frontier",
+      "target_track": "Track: Quality Engineering & Assurance",
+      "target_component": "tools/check.py",
+      "target_tracking_issue": "https://github.com/edithatogo/archive-govt-nz/issues/125",
+      "resolution_summary": "Enforced via 19-stage assurance check suite, >95% branch coverage, and mutation gates."
     }
   ]
 }

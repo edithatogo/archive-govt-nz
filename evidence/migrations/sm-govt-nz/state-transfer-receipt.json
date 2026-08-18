@@ -1,6 +1,6 @@
 {
   "schema_version": "archive-govt-nz.state-transfer-receipt/v1",
-  "generated_at": "2026-08-18T18:12:00Z",
+  "generated_at": "2026-08-18T08:12:00Z",
   "donor_final_commit": "a3708a1b",
   "donor_final_tag": "v0.9.0-archived",
   "target_import_commit": "eea008d",
