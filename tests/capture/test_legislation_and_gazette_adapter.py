@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from typing import TYPE_CHECKING
+from unittest.mock import AsyncMock
 
 import httpx
 import pytest
@@ -10,6 +11,7 @@ import pytest
 from archive_govt_nz.adapters.nz_gazette import NZGazetteAdapter
 from archive_govt_nz.adapters.nz_legislation import NZLegislationAdapter
 from archive_govt_nz.core.identity import SourceIdentity, SourceType
+from archive_govt_nz.domains.legislation.api import NZLegislationApiClient
 from archive_govt_nz.object_store import ContentAddressedStore
 
 if TYPE_CHECKING:
@@ -18,7 +20,7 @@ if TYPE_CHECKING:
 
 @pytest.mark.anyio
 async def test_legislation_capture_success(tmp_path: Path) -> None:
-    """Validate successful legislation document capture."""
+    """Validate successful legislation document capture using client."""
     store = ContentAddressedStore(tmp_path / "cas")
 
     def handler(_request: httpx.Request) -> httpx.Response:
@@ -32,16 +34,18 @@ async def test_legislation_capture_success(tmp_path: Path) -> None:
         )
 
     transport = httpx.MockTransport(handler)
-    async with httpx.AsyncClient(transport=transport) as client:
-        adapter = NZLegislationAdapter(store, client=client)
-        identity = SourceIdentity(
-            source_type=SourceType.LEGISLATION,
-            agency_slug="pco",
-            target="https://www.legislation.govt.nz/act/public/2026/0001/latest/whole.xml",
-            source_id="act-2026-1",
-            uri="legislation://pco/act-2026-1",
-        )
-        result = await adapter.capture(identity)
+    async_client = httpx.AsyncClient(transport=transport)
+    api_client = NZLegislationApiClient(async_client=async_client)
+    adapter = NZLegislationAdapter(store, api_client=api_client)
+
+    identity = SourceIdentity(
+        source_type=SourceType.LEGISLATION,
+        agency_slug="pco",
+        target="https://www.legislation.govt.nz/act/public/2026/0001/latest/whole.xml",
+        source_id="act-2026-1",
+        uri="legislation://pco/act-2026-1",
+    )
+    result = await adapter.capture(identity)
 
     assert result.status == "success"
     assert result.bytes_captured > 0
@@ -51,21 +55,83 @@ async def test_legislation_capture_success(tmp_path: Path) -> None:
 
 
 @pytest.mark.anyio
+async def test_legislation_capture_not_modified_304(tmp_path: Path) -> None:
+    """Validate 304 Not Modified handling."""
+    store = ContentAddressedStore(tmp_path / "cas")
+    transport = httpx.MockTransport(lambda _req: httpx.Response(304))
+    async_client = httpx.AsyncClient(transport=transport)
+    api_client = NZLegislationApiClient(async_client=async_client)
+    adapter = NZLegislationAdapter(store, api_client=api_client)
+
+    identity = SourceIdentity(
+        source_type=SourceType.LEGISLATION,
+        agency_slug="pco",
+        target="https://www.legislation.govt.nz/act/public/2026/0001/latest/whole.xml",
+        source_id="act-2026-1",
+        uri="legislation://pco/act-2026-1",
+    )
+    result = await adapter.capture(identity)
+    assert result.status == "success"
+    assert result.bytes_captured == 0
+
+
+@pytest.mark.anyio
+async def test_legislation_capture_http_error(tmp_path: Path) -> None:
+    """Validate 500 error handling."""
+    store = ContentAddressedStore(tmp_path / "cas")
+    transport = httpx.MockTransport(lambda _req: httpx.Response(500))
+    async_client = httpx.AsyncClient(transport=transport)
+    api_client = NZLegislationApiClient(async_client=async_client, max_retries=0)
+    adapter = NZLegislationAdapter(store, api_client=api_client)
+
+    identity = SourceIdentity(
+        source_type=SourceType.LEGISLATION,
+        agency_slug="pco",
+        target="https://www.legislation.govt.nz/act/public/2026/0001/latest/whole.xml",
+        source_id="act-2026-1",
+        uri="legislation://pco/act-2026-1",
+    )
+    result = await adapter.capture(identity)
+    assert result.status == "failed"
+
+
+@pytest.mark.anyio
+async def test_legislation_capture_exception_handling(tmp_path: Path) -> None:
+    """Validate unexpected exception during capture."""
+    store = ContentAddressedStore(tmp_path / "cas")
+    mock_client = AsyncMock(spec=NZLegislationApiClient)
+    mock_client.get_document_raw_async.side_effect = RuntimeError("Network down")
+    adapter = NZLegislationAdapter(store, api_client=mock_client)
+
+    identity = SourceIdentity(
+        source_type=SourceType.LEGISLATION,
+        agency_slug="pco",
+        target="https://www.legislation.govt.nz/act/public/2026/0001/latest/whole.xml",
+        source_id="act-2026-1",
+        uri="legislation://pco/act-2026-1",
+    )
+    result = await adapter.capture(identity)
+    assert result.status == "failed"
+    assert "Network down" in str(result.error_message)
+
+
+@pytest.mark.anyio
 async def test_legislation_capture_rate_limited(tmp_path: Path) -> None:
     """Validate legislation rate limiting."""
     store = ContentAddressedStore(tmp_path / "cas")
     transport = httpx.MockTransport(lambda _req: httpx.Response(429))
-    async with httpx.AsyncClient(transport=transport) as client:
-        adapter = NZLegislationAdapter(store, client=client)
-        identity = SourceIdentity(
-            source_type=SourceType.LEGISLATION,
-            agency_slug="pco",
-            target="https://www.legislation.govt.nz/act/public/2026/0001/latest/whole.xml",
-            source_id="act-2026-1",
-            uri="legislation://pco/act-2026-1",
-        )
-        result = await adapter.capture(identity)
+    async_client = httpx.AsyncClient(transport=transport)
+    api_client = NZLegislationApiClient(async_client=async_client, max_retries=0)
+    adapter = NZLegislationAdapter(store, api_client=api_client)
 
+    identity = SourceIdentity(
+        source_type=SourceType.LEGISLATION,
+        agency_slug="pco",
+        target="https://www.legislation.govt.nz/act/public/2026/0001/latest/whole.xml",
+        source_id="act-2026-1",
+        uri="legislation://pco/act-2026-1",
+    )
+    result = await adapter.capture(identity)
     assert result.status == "rate_limited"
 
 

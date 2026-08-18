@@ -123,6 +123,8 @@ ignore = [
 "tests/tools/test_release_attestation.py" = ["S607"]
 "tests/tools/test_validate_contracts.py" = ["S607"]
 "tests/tools/test_evaluate_legislation_completion.py" = ["S607", "E501"]
+"tests/domains/test_legislation_api.py" = ["SLF001", "ARG001"]
+"src/archive_govt_nz/domains/legislation/api.py" = ["PLR0913", "PLR0917"]
 
 [tool.pytest.ini_options]
 addopts = ["--strict-config", "--strict-markers"]

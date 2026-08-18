@@ -1,6 +1,6 @@
 {
   "schema_version": "archive-govt-nz.completion-evaluator/v1",
-  "evaluated_at": "2026-08-18T22:18:16Z",
+  "evaluated_at": "2026-08-18T23:14:36Z",
   "status": "incomplete",
   "contract_checks": [
     {
@@ -102,7 +102,7 @@
       "source_url": "https://api.github.com/repos/edithatogo/corpus-legislation-nz",
       "open_issues_count": 30,
       "is_cached": false,
-      "retrieved_at": "2026-08-18T22:18:16Z"
+      "retrieved_at": "2026-08-18T23:14:37Z"
     },
     {
       "check_id": "EVD-CHK-02",
@@ -114,17 +114,14 @@
       "check_id": "EVD-CHK-03",
       "name": "Conductor Child Tracks Lifecycle",
       "status": "evaluated",
-      "in_progress_tracks_count": 12
+      "in_progress_tracks_count": 2
     }
   ],
   "execution_receipts": [],
   "blockers": [
-    "DETECTED: Fixed production constants in src/archive_govt_nz/mcp_server.py",
-    "DEFECT: Absence of operational MCP protocol runtime in src/archive_govt_nz/mcp_server.py",
-    "DEFECT: NZLegislationAdapter does not utilize NZLegislationApiClient for transport",
     "UNRESOLVED: 30 active donor issues/PRs remain open on edithatogo/corpus-legislation-nz",
     "GATED: Hosted publication readback token and verified remote revision missing",
-    "IN_PROGRESS: 12 corrective child tracks remain in progress",
+    "IN_PROGRESS: 2 corrective child tracks remain in progress",
     "UNOBSERVED: Weekly production harvest cycles have not elapsed in live target"
   ],
   "errors": []

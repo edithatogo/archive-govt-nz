@@ -1,3 +1,6 @@
-# Evidence: MCP disposition and conformance
+# Evidence: MCP Disposition and Conformance
 
-- Track-specific evidence recorded in evidence/migrations/corpus-legislation-nz/.
+- `src/archive_govt_nz/mcp_server.py` (StdioServerTransport, Server)
+- `tests/cli/test_mcp_cli_contract.py`
+- `contracts/mcp/archive-govt-nz-mcp-conformance.contract.yaml`
+- `contracts/mcp/archive-govt-nz-mcp-disposition.contract.yaml`
