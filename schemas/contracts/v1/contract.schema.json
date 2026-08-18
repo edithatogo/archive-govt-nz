@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive.govt.nz/schemas/contracts/v1/contract.schema.json",
+  "title": "ArchiveGovtNzContract",
+  "description": "Schema for executable migration and quality contracts in archive-govt-nz",
+  "type": "object",
+  "required": [
+    "contract_id",
+    "version",
+    "status",
+    "scope",
+    "owning_track",
+    "baseline",
+    "invariants",
+    "preconditions",
+    "postconditions",
+    "forbidden_actions",
+    "acceptance_checks",
+    "evidence_paths",
+    "created_at",
+    "updated_at"
+  ],
+  "properties": {
+    "contract_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "active", "enforced", "superseded", "retired"]
+    },
+    "scope": {
+      "type": "string"
+    },
+    "owning_track": {
+      "type": "string"
+    },
+    "baseline": {
+      "type": "object",
+      "required": ["audited_target_commit", "audited_donor_commit"],
+      "properties": {
+        "audited_target_commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+        "audited_donor_commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" }
+      }
+    },
+    "authoritative_inputs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "assumptions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "invariants": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "preconditions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "postconditions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "forbidden_actions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "acceptance_checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["check_id", "description", "command", "expected_exit_code"],
+        "properties": {
+          "check_id": { "type": "string" },
+          "description": { "type": "string" },
+          "command": { "type": "string" },
+          "expected_exit_code": { "type": "integer" },
+          "evidence_destination": { "type": "string" }
+        }
+      }
+    },
+    "evidence_paths": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "external_gates": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "compatibility_obligations": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "superseded_claims": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "failure_classifications": {
+      "type": "object"
+    },
+    "rollback_expectations": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,13 @@
+standards:
+  - name: "JSON Schema Draft 2020-12"
+    role: "schema"
+    applicability: "normative"
+  - name: "FRBR"
+    role: "identity"
+    applicability: "canonical_internal"
+  - name: "Apache Parquet"
+    role: "corpus_format"
+    applicability: "publication"
+  - name: "Model Context Protocol (2026-07-28)"
+    role: "interface"
+    applicability: "interface"

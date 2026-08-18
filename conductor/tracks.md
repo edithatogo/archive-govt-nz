@@ -63,10 +63,32 @@ decision or safety boundary, and continue independent work while it is pending.
 
 ## Programme: Legislation Corpus Consolidation (2026-08-18)
 
-- [/] **Legislation Corpus Consolidation (`corpus-legislation-nz` -> `archive-govt-nz`)**
-  *Link: [tracks/legislation_corpus_consolidation_20260818/index.md](./tracks/legislation_corpus_consolidation_20260818/index.md)*
-- [/] **Corrective Legislation Consolidation & Operational Implementation**
+- [/] **Legislation Corpus Consolidation Parent Programme**
   *Link: [tracks/legislation_corpus_consolidation_corrective_20260818/index.md](./tracks/legislation_corpus_consolidation_corrective_20260818/index.md)*
+  - [/] **Child Track 1: Evidence correction and chronology**
+    *Link: [tracks/legislation_corrective_evidence_chronology_20260818/index.md](./tracks/legislation_corrective_evidence_chronology_20260818/index.md)*
+  - [/] **Child Track 2: Live inventory and reuse analysis**
+    *Link: [tracks/legislation_corrective_live_inventory_reuse_20260818/index.md](./tracks/legislation_corrective_live_inventory_reuse_20260818/index.md)*
+  - [/] **Child Track 3: Standards and schema conformance**
+    *Link: [tracks/legislation_corrective_standards_schema_conformance_20260818/index.md](./tracks/legislation_corrective_standards_schema_conformance_20260818/index.md)*
+  - [/] **Child Track 4: Existing adapter and donor-client integration**
+    *Link: [tracks/legislation_corrective_adapter_client_integration_20260818/index.md](./tracks/legislation_corrective_adapter_client_integration_20260818/index.md)*
+  - [/] **Child Track 5: Legislation identity, normalisation and corpus services**
+    *Link: [tracks/legislation_corrective_identity_normalisation_corpus_20260818/index.md](./tracks/legislation_corrective_identity_normalisation_corpus_20260818/index.md)*
+  - [/] **Child Track 6: CLI contract and compatibility**
+    *Link: [tracks/legislation_corrective_cli_contract_compatibility_20260818/index.md](./tracks/legislation_corrective_cli_contract_compatibility_20260818/index.md)*
+  - [/] **Child Track 7: MCP disposition and conformance**
+    *Link: [tracks/legislation_corrective_mcp_disposition_conformance_20260818/index.md](./tracks/legislation_corrective_mcp_disposition_conformance_20260818/index.md)*
+  - [/] **Child Track 8: Weekly orchestration and persistent state**
+    *Link: [tracks/legislation_corrective_weekly_orchestration_state_20260818/index.md](./tracks/legislation_corrective_weekly_orchestration_state_20260818/index.md)*
+  - [/] **Child Track 9: Historical reconciliation, parity and publication identity**
+    *Link: [tracks/legislation_corrective_reconciliation_parity_publication_20260818/index.md](./tracks/legislation_corrective_reconciliation_parity_publication_20260818/index.md)*
+  - [/] **Child Track 10: Rights and redistribution**
+    *Link: [tracks/legislation_corrective_rights_redistribution_20260818/index.md](./tracks/legislation_corrective_rights_redistribution_20260818/index.md)*
+  - [/] **Child Track 11: Shadow operation, recovery and cutover**
+    *Link: [tracks/legislation_corrective_shadow_operation_cutover_20260818/index.md](./tracks/legislation_corrective_shadow_operation_cutover_20260818/index.md)*
+  - [/] **Child Track 12: Gazette residual work, kept separate and incomplete**
+    *Link: [tracks/legislation_corrective_gazette_residual_separation_20260818/index.md](./tracks/legislation_corrective_gazette_residual_separation_20260818/index.md)*
 
 ## Proposed follow-up tracks
 
