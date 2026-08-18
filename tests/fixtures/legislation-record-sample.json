@@ -1,0 +1,19 @@
+{
+  "schema_version": "archive-govt-nz.legislation/v1",
+  "document_id": "leg-act-1989-107",
+  "work_id": "act-1989-107",
+  "expression_id": null,
+  "title": "Public Finance Act 1989",
+  "legislation_type": "act",
+  "status": "in_force",
+  "canonical_uri": "https://www.legislation.govt.nz/act/public/1989/0107/latest/whole.html",
+  "raw_cas_hash_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "raw_cas_hash_blake3": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "byte_size": 250000,
+  "retrieval_timestamp": "2026-08-18T12:54:00Z",
+  "assent_date": "1989-07-28",
+  "commencement_date": "1989-07-01",
+  "sections_count": 89,
+  "schedules_count": 4,
+  "plain_text": "An Act to consolidate and amend the law relating to public finance."
+}

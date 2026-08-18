@@ -1,0 +1,183 @@
+{
+  "schema_version": "archive-govt-nz.completion-evaluator/v1",
+  "evaluated_at": "2026-08-18T13:00:42Z",
+  "status": "complete",
+  "contract_checks": [
+    {
+      "contract_file": "contracts/approval/legislation-corrective-approval-profile.yaml",
+      "contract_id": "legislation-corrective-approval-profile",
+      "status": "passed",
+      "errors": []
+    },
+    {
+      "contract_file": "contracts/cli/archive-govt-nz-cli.contract.yaml",
+      "contract_id": "archive-govt-nz-cli",
+      "status": "passed",
+      "errors": []
+    },
+    {
+      "contract_file": "contracts/cli/nzlc-compatibility.contract.yaml",
+      "contract_id": "nzlc-compatibility",
+      "status": "passed",
+      "errors": []
+    },
+    {
+      "contract_file": "contracts/completion/legislation-completion.contract.yaml",
+      "contract_id": "legislation-completion",
+      "status": "passed",
+      "errors": []
+    },
+    {
+      "contract_file": "contracts/cutover/legislation-cutover.contract.yaml",
+      "contract_id": "legislation-cutover",
+      "status": "passed",
+      "errors": []
+    },
+    {
+      "contract_file": "contracts/domain/legislation-domain.contract.yaml",
+      "contract_id": "legislation-domain",
+      "status": "passed",
+      "errors": []
+    },
+    {
+      "contract_file": "contracts/evidence/legislation-evidence-integrity.contract.yaml",
+      "contract_id": "legislation-evidence-integrity",
+      "status": "passed",
+      "errors": []
+    },
+    {
+      "contract_file": "contracts/mcp/archive-govt-nz-mcp-conformance.contract.yaml",
+      "contract_id": "archive-govt-nz-mcp-conformance",
+      "status": "passed",
+      "errors": []
+    },
+    {
+      "contract_file": "contracts/mcp/archive-govt-nz-mcp-disposition.contract.yaml",
+      "contract_id": "archive-govt-nz-mcp-disposition",
+      "status": "passed",
+      "errors": []
+    },
+    {
+      "contract_file": "contracts/migration/legislation-consolidation.contract.yaml",
+      "contract_id": "legislation-consolidation",
+      "status": "passed",
+      "errors": []
+    },
+    {
+      "contract_file": "contracts/publication/legislation-publication-identity.contract.yaml",
+      "contract_id": "legislation-publication-identity",
+      "status": "passed",
+      "errors": []
+    },
+    {
+      "contract_file": "contracts/reuse/legislation-reuse-before-create.contract.yaml",
+      "contract_id": "legislation-reuse-before-create",
+      "status": "passed",
+      "errors": []
+    },
+    {
+      "contract_file": "contracts/rights/legislation-rights.contract.yaml",
+      "contract_id": "legislation-rights",
+      "status": "passed",
+      "errors": []
+    },
+    {
+      "contract_file": "contracts/schedule/legislation-archive-slo.contract.yaml",
+      "contract_id": "legislation-archive-slo",
+      "status": "passed",
+      "errors": []
+    },
+    {
+      "contract_file": "contracts/schemas/legislation-schema-conformance.contract.yaml",
+      "contract_id": "legislation-schema-conformance",
+      "status": "passed",
+      "errors": []
+    }
+  ],
+  "track_checks": [
+    {
+      "track": "legislation_corpus_consolidation_corrective_20260818",
+      "status": "verified"
+    },
+    {
+      "track": "legislation_corrective_evidence_chronology_20260818",
+      "status": "verified"
+    },
+    {
+      "track": "legislation_corrective_live_inventory_reuse_20260818",
+      "status": "verified"
+    },
+    {
+      "track": "legislation_corrective_standards_schema_conformance_20260818",
+      "status": "verified"
+    },
+    {
+      "track": "legislation_corrective_adapter_client_integration_20260818",
+      "status": "verified"
+    },
+    {
+      "track": "legislation_corrective_identity_normalisation_corpus_20260818",
+      "status": "verified"
+    },
+    {
+      "track": "legislation_corrective_cli_contract_compatibility_20260818",
+      "status": "verified"
+    },
+    {
+      "track": "legislation_corrective_mcp_disposition_conformance_20260818",
+      "status": "verified"
+    },
+    {
+      "track": "legislation_corrective_weekly_orchestration_state_20260818",
+      "status": "verified"
+    },
+    {
+      "track": "legislation_corrective_reconciliation_parity_publication_20260818",
+      "status": "verified"
+    },
+    {
+      "track": "legislation_corrective_rights_redistribution_20260818",
+      "status": "verified"
+    },
+    {
+      "track": "legislation_corrective_shadow_operation_cutover_20260818",
+      "status": "verified"
+    },
+    {
+      "track": "legislation_corrective_gazette_residual_separation_20260818",
+      "status": "verified"
+    }
+  ],
+  "document_checks": [
+    {
+      "path": "docs/migrations/corpus-legislation-nz/corrective-audit.md",
+      "status": "verified"
+    },
+    {
+      "path": "docs/migrations/corpus-legislation-nz/live-inventory.md",
+      "status": "verified"
+    },
+    {
+      "path": "docs/migrations/corpus-legislation-nz/issue-reconciliation.md",
+      "status": "verified"
+    },
+    {
+      "path": "docs/migrations/corpus-legislation-nz/licensing-and-rights.md",
+      "status": "verified"
+    },
+    {
+      "path": "docs/migrations/corpus-legislation-nz/component-inventory.md",
+      "status": "verified"
+    },
+    {
+      "path": "docs/migrations/corpus-legislation-nz/reuse-decisions.md",
+      "status": "verified"
+    },
+    {
+      "path": "docs/domains/legislation/standards-applicability.md",
+      "status": "verified"
+    }
+  ],
+  "evidence_checks": [],
+  "errors": []
+}

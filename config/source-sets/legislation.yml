@@ -5,9 +5,9 @@ enabled: true
 adapters:
   - "nz_legislation"
   - "feeds"
-schedule: "0 */6 * * *"
+schedule: "23 18 * * 0" # Weekly Sunday 18:23 UTC (Monday 06:23 NZST)
 checkpoint_location: "evidence/checkpoints/legislation.json"
-rights_class: "crown_copyright_open"
+rights_class: "source_specific_open"
 output_preservation_policy:
   format: "warc_and_parquet"
   compression: "gzip"

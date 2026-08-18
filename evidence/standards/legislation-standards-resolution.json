@@ -1,0 +1,10 @@
+{
+  "schema_version": "archive-govt-nz.standards-resolution/v1",
+  "evaluated_at": "2026-08-18T12:54:00Z",
+  "standards": [
+    { "name": "JSON Schema Draft 2020-12", "status": "resolved_normative" },
+    { "name": "FRBR", "status": "resolved_canonical" },
+    { "name": "Apache Parquet", "status": "resolved_publication" },
+    { "name": "Model Context Protocol", "version": "2026-07-28", "status": "resolved_interface" }
+  ]
+}
