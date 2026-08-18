@@ -1,0 +1,22 @@
+# Source Set: New Zealand Government Web & Agency Portals
+name: "government-web"
+description: "Core government agency domains, official gazettes, and public consultative documents."
+enabled: true
+adapters:
+  - "feeds"
+  - "web"
+schedule: "0 2 * * 0"
+checkpoint_location: "evidence/checkpoints/government-web.json"
+rights_class: "crown_copyright_open"
+output_preservation_policy:
+  format: "warc_and_parquet"
+  compression: "gzip"
+  cas_hash_algorithm: "sha256"
+  retention: "permanent"
+publication_policy:
+  huggingface:
+    enabled: true
+    dataset_slug: "edithatogo/corpus-social-media-government-nz"
+  zenodo:
+    enabled: true
+    concept_doi: "10.5281/zenodo.20991132"

@@ -1,0 +1,116 @@
+{
+  "schema_version": "archive-govt-nz.evidence-classification/v1",
+  "classified_at": "2026-08-18T18:05:00Z",
+  "classes": {
+    "unit": "Isolated in-memory component verification with mock boundaries.",
+    "fixture": "Static deterministic test fixtures mimicking real-world payloads.",
+    "deterministic_simulation": "Reproducible mathematical or state-machine simulation runs.",
+    "synthetic": "Programmatically generated fuzzing and property exploration cases (Hypothesis).",
+    "replay": "Zero-network replay of historical captured payloads verifying fixity.",
+    "local_integration": "Multi-component integration testing against local CAS and SQLite stores.",
+    "remote_integration": "Interactions with real external networks or sandbox API environments.",
+    "live_canary": "Live shadow capture cycles against real public government sources.",
+    "production": "Production-grade execution generating immutable release artefacts.",
+    "external_readback": "Post-publication SHA-256 verification directly from remote registry endpoints."
+  },
+  "track_evidence_mapping": [
+    {
+      "track_id": "consolidation_baseline_and_authority_20260817",
+      "track_number": 1,
+      "primary_evidence_class": "fixture",
+      "supporting_evidence_classes": ["unit", "local_integration"],
+      "verified_artefacts": ["evidence/migrations/sm-govt-nz/baseline-inventory.json", "schemas/archive/v1/"]
+    },
+    {
+      "track_id": "conductor_lineage_reconciliation_20260817",
+      "track_number": 2,
+      "primary_evidence_class": "production",
+      "supporting_evidence_classes": ["local_integration"],
+      "verified_artefacts": ["evidence/donor-tracks/sm-govt-nz/"]
+    },
+    {
+      "track_id": "capability_and_interface_reconciliation_20260817",
+      "track_number": 3,
+      "primary_evidence_class": "local_integration",
+      "supporting_evidence_classes": ["unit"],
+      "verified_artefacts": ["evidence/migrations/sm-govt-nz/capability-matrix.json"]
+    },
+    {
+      "track_id": "canonical_archive_contracts_20260817",
+      "track_number": 4,
+      "primary_evidence_class": "production",
+      "supporting_evidence_classes": ["unit", "fixture", "local_integration"],
+      "verified_artefacts": ["schemas/archive/v1/", "seeds/sources/agency_seeds.json", "src/archive_govt_nz/core/registry.py"]
+    },
+    {
+      "track_id": "source_adapter_migration_programme_20260817",
+      "track_number": 5,
+      "primary_evidence_class": "local_integration",
+      "supporting_evidence_classes": ["unit", "fixture", "replay"],
+      "verified_artefacts": ["src/archive_govt_nz/adapters/", "tests/capture/"]
+    },
+    {
+      "track_id": "preservation_replay_recovery_assimilation_20260817",
+      "track_number": 6,
+      "primary_evidence_class": "replay",
+      "supporting_evidence_classes": ["unit", "fixture", "local_integration"],
+      "verified_artefacts": ["src/archive_govt_nz/compactor.py", "src/archive_govt_nz/replay.py", "src/archive_govt_nz/recovery_harness.py"]
+    },
+    {
+      "track_id": "publication_and_distribution_alignment_20260817",
+      "track_number": 7,
+      "primary_evidence_class": "local_integration",
+      "supporting_evidence_classes": ["unit", "fixture"],
+      "verified_artefacts": ["src/archive_govt_nz/distribution/publisher.py", "src/archive_govt_nz/distribution/metadata.py"]
+    },
+    {
+      "track_id": "cli_mcp_operator_interface_convergence_20260817",
+      "track_number": 8,
+      "primary_evidence_class": "local_integration",
+      "supporting_evidence_classes": ["unit"],
+      "verified_artefacts": ["src/archive_govt_nz/cli.py", "src/archive_govt_nz/cli_compat.py"]
+    },
+    {
+      "track_id": "differential_parity_harness_20260817",
+      "track_number": 9,
+      "primary_evidence_class": "synthetic",
+      "supporting_evidence_classes": ["unit", "fixture", "replay"],
+      "verified_artefacts": ["src/archive_govt_nz/parity/", "schemas/parity/v1/parity-receipt.schema.json", "tests/parity/"]
+    },
+    {
+      "track_id": "canary_migration_and_dual_operation_20260817",
+      "track_number": 10,
+      "primary_evidence_class": "deterministic_simulation",
+      "supporting_evidence_classes": ["unit", "fixture"],
+      "verified_artefacts": ["src/archive_govt_nz/canary/", "tools/run_canary_shadow.py", "build/canary-receipt.json"]
+    },
+    {
+      "track_id": "capability_assimilation_architectural_refactor_20260817",
+      "track_number": 11,
+      "primary_evidence_class": "production",
+      "supporting_evidence_classes": ["unit", "synthetic", "local_integration"],
+      "verified_artefacts": ["src/archive_govt_nz/logging.py", "src/archive_govt_nz/http.py", "tools/mutation_adapters.py"]
+    },
+    {
+      "track_id": "release_cutover_publication_continuity_20260817",
+      "track_number": 12,
+      "primary_evidence_class": "deterministic_simulation",
+      "supporting_evidence_classes": ["unit", "fixture"],
+      "verified_artefacts": ["src/archive_govt_nz/cutover/", "tools/run_release_cutover.py", "build/cutover-receipt.json"]
+    },
+    {
+      "track_id": "observation_donor_deprecation_archival_20260817",
+      "track_number": 13,
+      "primary_evidence_class": "production",
+      "supporting_evidence_classes": ["external_readback"],
+      "verified_artefacts": ["src/archive_govt_nz/archival/", "tools/run_donor_freeze_validation.py", "build/donor-archival-receipt.json"]
+    },
+    {
+      "track_id": "post_consolidation_riopa_interoperability_20260817",
+      "track_number": 14,
+      "primary_evidence_class": "local_integration",
+      "supporting_evidence_classes": ["unit", "fixture"],
+      "verified_artefacts": ["src/archive_govt_nz/riopa/", "tools/run_riopa_interop_export.py", "build/riopa-export-receipt.json"]
+    }
+  ]
+}

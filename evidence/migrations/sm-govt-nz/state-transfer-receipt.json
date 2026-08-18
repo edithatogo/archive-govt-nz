@@ -1,0 +1,37 @@
+{
+  "schema_version": "archive-govt-nz.state-transfer-receipt/v1",
+  "generated_at": "2026-08-18T18:12:00Z",
+  "donor_final_commit": "a3708a1b",
+  "donor_final_tag": "v0.9.0-archived",
+  "target_import_commit": "eea008d",
+  "transferred_state": {
+    "agency_seeds_count": 350,
+    "historical_donor_issues_reconciled": 274,
+    "donor_conductor_tracks_preserved": 39,
+    "canonical_schemas_active": 20,
+    "unmapped_state_count": 0
+  },
+  "semantic_transformations": [
+    {
+      "source_format": "sm-govt-nz registry/agencies.json",
+      "target_format": "archive-govt-nz seeds/sources/agency_seeds.json & AgencyRegistry",
+      "transformation": "Validated against schema with strict typing and platform adapter resolution."
+    },
+    {
+      "source_format": "sm-govt-nz status_tracker.py SQLite database",
+      "target_format": "archive-govt-nz W3C PROV-O Ledger (provenance.py & ledger.py)",
+      "transformation": "Upgraded to formal Entity-Activity-Agent graph with cryptographic Blake3/SHA-256 fixity."
+    },
+    {
+      "source_format": "sm-govt-nz ad-hoc WARC scripts",
+      "target_format": "archive-govt-nz ISO 28500 WARC/WACZ Compactor (compactor.py)",
+      "transformation": "Standardized ISO-compliant gzip compactor with fixity manifests and deterministic replay capability."
+    }
+  ],
+  "validation_result": {
+    "status": "PASSED",
+    "verified_by": "tools/check.py",
+    "total_tests_passing": 503,
+    "branch_coverage_percent": 95.45
+  }
+}

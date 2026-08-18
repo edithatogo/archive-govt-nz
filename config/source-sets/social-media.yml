@@ -1,0 +1,24 @@
+# Source Set: New Zealand Government Social Media Channels
+name: "social-media"
+description: "Public agency announcements across Bluesky, Threads, X/Twitter, and YouTube."
+enabled: true
+adapters:
+  - "bluesky"
+  - "threads"
+  - "x_twitter"
+  - "youtube"
+schedule: "0 */6 * * *"
+checkpoint_location: "evidence/checkpoints/social-media.json"
+rights_class: "crown_copyright_open"
+output_preservation_policy:
+  format: "warc_and_parquet"
+  compression: "gzip"
+  cas_hash_algorithm: "sha256"
+  retention: "permanent"
+publication_policy:
+  huggingface:
+    enabled: true
+    dataset_slug: "edithatogo/corpus-social-media-government-nz"
+  zenodo:
+    enabled: true
+    concept_doi: "10.5281/zenodo.20991132"

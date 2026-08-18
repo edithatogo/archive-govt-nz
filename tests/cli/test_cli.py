@@ -12,9 +12,12 @@ from archive_govt_nz.cli import (
     derivatives,
     doctor,
     main,
+    provenance,
     publish,
+    replay,
     search,
     sources,
+    verify,
     version,
 )
 from archive_govt_nz.cli_compat import (
@@ -141,6 +144,45 @@ def test_cli_publish(capsys: pytest.CaptureFixture[str]) -> None:
     payload = json.loads(captured_json.out)
     assert payload["command"] == "publish"
     assert payload["status"] == "ready"
+
+
+def test_cli_replay(capsys: pytest.CaptureFixture[str]) -> None:
+    """Validate replay interface."""
+    replay(verify_all=True, format="text")
+    captured = capsys.readouterr()
+    assert "Replay fixity drill complete" in captured.out
+
+    replay(verify_all=True, format="json")
+    captured_json = capsys.readouterr()
+    payload = json.loads(captured_json.out)
+    assert payload["command"] == "replay"
+    assert payload["status"] == "verified"
+
+
+def test_cli_verify(capsys: pytest.CaptureFixture[str]) -> None:
+    """Validate verify interface."""
+    verify(format="text")
+    captured = capsys.readouterr()
+    assert "All 19 integrity checks passed." in captured.out
+
+    verify(format="json")
+    captured_json = capsys.readouterr()
+    payload = json.loads(captured_json.out)
+    assert payload["command"] == "verify"
+    assert payload["status"] == "passed"
+
+
+def test_cli_provenance(capsys: pytest.CaptureFixture[str]) -> None:
+    """Validate provenance interface."""
+    provenance(format="text")
+    captured = capsys.readouterr()
+    assert "Provenance ledger synced" in captured.out
+
+    provenance(format="json")
+    captured_json = capsys.readouterr()
+    payload = json.loads(captured_json.out)
+    assert payload["command"] == "provenance"
+    assert payload["ledger_status"] == "synced"
 
 
 def test_compat_wrappers(
