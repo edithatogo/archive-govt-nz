@@ -65,6 +65,8 @@ decision or safety boundary, and continue independent work while it is pending.
 
 - [/] **Legislation Corpus Consolidation (`corpus-legislation-nz` -> `archive-govt-nz`)**
   *Link: [tracks/legislation_corpus_consolidation_20260818/index.md](./tracks/legislation_corpus_consolidation_20260818/index.md)*
+- [/] **Corrective Legislation Consolidation & Operational Implementation**
+  *Link: [tracks/legislation_corpus_consolidation_corrective_20260818/index.md](./tracks/legislation_corpus_consolidation_corrective_20260818/index.md)*
 
 ## Proposed follow-up tracks
 

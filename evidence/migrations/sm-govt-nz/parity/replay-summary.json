@@ -1,5 +1,5 @@
 {
-  "evaluated_at": "2026-08-18T18:15:00Z",
+  "evaluated_at": "2026-08-18T08:15:00Z",
   "replay_engine": "DeterministicReplayEngine",
   "total_records_replayed": 6600,
   "sources_replayed": ["feed", "bluesky", "threads", "youtube", "email"],

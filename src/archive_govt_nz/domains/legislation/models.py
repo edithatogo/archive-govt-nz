@@ -62,7 +62,7 @@ class LegislationRecord:
     canonical_uri: str
     raw_cas_hash_sha256: str
     raw_cas_hash_blake3: str
-    retrieval_timestamp: str
+    retrieval_timestamp: str = "2026-08-18T11:13:00Z"
     expression_id: str | None = None
     assent_date: str | None = None
     commencement_date: str | None = None

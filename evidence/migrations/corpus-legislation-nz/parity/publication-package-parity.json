@@ -1,10 +1,12 @@
 {
-  "test_class": "publication_package",
-  "evaluated_at": "2026-08-18T18:45:00Z",
-  "huggingface_dataset": "edithatogo/corpus-legislation-nz",
-  "zenodo_concept_doi": "10.5281/zenodo.20592540",
-  "parquet_schema_parity": 1.0,
-  "ro_crate_metadata_valid": true,
-  "croissant_descriptor_valid": true,
+  "schema_version": "archive-govt-nz.publication-package-parity/v1",
+  "run_id": "parity-drill-1787051820",
+  "evaluated_at": "2026-08-18T11:17:00Z",
+  "donor_commit": "749918c251da59dc890c19dfda2ab9a021fd8ca6",
+  "target_commit": "c154578f4e7de3585e6b5885c157fc6ef2c7564b",
+  "dataset_slug": "edithatogo/corpus-legislation-nz",
+  "manifest_sha256": "38325155ae6ef9ea7f85a06f04d09cdd7a8b79155aaa6c58d0e3c910625d62a2",
+  "parquet_size_bytes": 5757,
+  "jsonl_size_bytes": 638,
   "status": "passed"
 }

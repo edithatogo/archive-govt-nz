@@ -1,8 +1,12 @@
 {
-  "evaluated_at": "2026-08-18T18:45:00Z",
-  "total_records_evaluated": 33693,
-  "discrepancies": 0,
+  "schema_version": "archive-govt-nz.aggregate-parity/v1",
+  "run_id": "parity-drill-1787051820",
+  "evaluated_at": "2026-08-18T11:17:00Z",
+  "donor_commit": "749918c251da59dc890c19dfda2ab9a021fd8ca6",
+  "target_commit": "c154578f4e7de3585e6b5885c157fc6ef2c7564b",
+  "total_test_lanes": 4,
+  "lanes_passed": 4,
+  "total_mismatches": 0,
   "overall_semantic_parity": 1.0,
-  "overall_fixity_parity": 1.0,
-  "status": "fully_reconciled"
+  "status": "passed"
 }

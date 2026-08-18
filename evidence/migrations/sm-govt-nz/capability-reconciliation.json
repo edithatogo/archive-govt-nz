@@ -1,6 +1,6 @@
 {
   "schema_version": "archive-govt-nz.capability-reconciliation/v1",
-  "generated_at": "2026-08-18T18:05:00Z",
+  "generated_at": "2026-08-18T08:05:00Z",
   "donor_repository": "edithatogo/sm-govt-nz",
   "canonical_repository": "edithatogo/archive-govt-nz",
   "capabilities": [

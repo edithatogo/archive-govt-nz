@@ -191,13 +191,25 @@ def test_cli_legislation(capsys: pytest.CaptureFixture[str]) -> None:
     """Validate legislation interface."""
     legislation(action="coverage", format="text")
     captured = capsys.readouterr()
-    assert "Legislation action 'coverage' complete" in captured.out
+    assert "Legislation action 'coverage':" in captured.out
 
     legislation(action="coverage", format="json")
     captured_json = capsys.readouterr()
     payload = json.loads(captured_json.out)
     assert payload["command"] == "legislation"
     assert payload["coverage_percent"] == 100.0
+
+    legislation(action="doctor", format="json")
+    doc_json = json.loads(capsys.readouterr().out)
+    assert doc_json["status"] == "healthy"
+
+    legislation(action="manifest", format="json")
+    man_json = json.loads(capsys.readouterr().out)
+    assert man_json["manifest_status"] == "ready"
+
+    legislation(action="publication-plan", format="json")
+    pub_json = json.loads(capsys.readouterr().out)
+    assert pub_json["status"] == "staged"
 
 
 def test_compat_wrappers(

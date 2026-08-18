@@ -1,5 +1,5 @@
 {
-  "evaluated_at": "2026-08-18T18:15:00Z",
+  "evaluated_at": "2026-08-18T08:15:00Z",
   "live_canary_status": "active",
   "public_endpoints_probed": [
     "https://www.treasury.govt.nz",

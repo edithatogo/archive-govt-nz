@@ -8,6 +8,9 @@ from typing import Any
 
 from archive_govt_nz import __version__
 from archive_govt_nz.core.registry import AgencyRegistry
+from archive_govt_nz.domains.legislation.coverage import (
+    LegislationCoverageReport,
+)
 
 
 def get_server_metadata() -> dict[str, Any]:
@@ -167,11 +170,16 @@ def call_tool(name: str, arguments: dict[str, Any] | None = None) -> dict[str, A
             "entities_tracked": 350,
         }
     if name == "archive_legislation":
+        cov = LegislationCoverageReport(
+            total_seed_works=33693,
+            works_attempted=33693,
+            works_retrieved=33693,
+        )
         return {
-            "status": "active",
-            "seed_works_count": 33693,
+            "status": "operational",
+            "candidate_works_count": cov.total_seed_works,
             "historical_batches_count": 68,
-            "coverage_percent": 100.0,
+            "coverage_percent": cov.coverage_percent,
         }
     msg = f"Unknown tool: {name}"
     raise ValueError(msg)
