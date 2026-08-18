@@ -8,11 +8,14 @@ import sys
 from datetime import UTC, datetime
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from tools.validate_contracts import CONTRACTS_DIR, validate_contract_dict
 import yaml
 
-OUTPUT_EVIDENCE_PATH = Path("evidence/migrations/corpus-legislation-nz/final-adversarial-verification.json")
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from tools.validate_contracts import CONTRACTS_DIR, validate_contract_dict
+
+OUTPUT_EVIDENCE_PATH = Path(
+    "evidence/migrations/corpus-legislation-nz/final-adversarial-verification.json"
+)
 
 REQUIRED_TRACKS = [
     "legislation_corpus_consolidation_corrective_20260818",
@@ -73,12 +76,14 @@ def evaluate_completion() -> tuple[bool, dict[str, object]]:
                 all_passed = False
             cast_checks = results["contract_checks"]
             assert isinstance(cast_checks, list)
-            cast_checks.append({
-                "contract_file": str(cf),
-                "contract_id": cdata.get("contract_id"),
-                "status": "passed" if passed else "failed",
-                "errors": errs,
-            })
+            cast_checks.append(
+                {
+                    "contract_file": str(cf),
+                    "contract_id": cdata.get("contract_id"),
+                    "status": "passed" if passed else "failed",
+                    "errors": errs,
+                }
+            )
         except Exception as exc:
             all_passed = False
             cast_errs = results["errors"]
@@ -95,10 +100,12 @@ def evaluate_completion() -> tuple[bool, dict[str, object]]:
             all_passed = False
         cast_tchecks = results["track_checks"]
         assert isinstance(cast_tchecks, list)
-        cast_tchecks.append({
-            "track": tname,
-            "status": "verified" if exists else "missing",
-        })
+        cast_tchecks.append(
+            {
+                "track": tname,
+                "status": "verified" if exists else "missing",
+            }
+        )
 
     # 3. Validate documentation
     for doc in REQUIRED_DOCS:
@@ -107,10 +114,12 @@ def evaluate_completion() -> tuple[bool, dict[str, object]]:
             all_passed = False
         cast_dchecks = results["document_checks"]
         assert isinstance(cast_dchecks, list)
-        cast_dchecks.append({
-            "path": str(doc),
-            "status": "verified" if exists else "missing",
-        })
+        cast_dchecks.append(
+            {
+                "path": str(doc),
+                "status": "verified" if exists else "missing",
+            }
+        )
 
     results["status"] = "complete" if all_passed else "failed"
     return all_passed, results
@@ -118,7 +127,9 @@ def evaluate_completion() -> tuple[bool, dict[str, object]]:
 
 def main() -> int:
     """Run completion evaluation and write report."""
-    parser = argparse.ArgumentParser(description="Evaluate legislation consolidation completion")
+    parser = argparse.ArgumentParser(
+        description="Evaluate legislation consolidation completion"
+    )
     parser.add_argument("--output", type=Path, default=OUTPUT_EVIDENCE_PATH)
     args = parser.parse_args()
 
@@ -129,7 +140,11 @@ def main() -> int:
     if passed:
         print("Legislation consolidation completion evaluation: PASSED")
         return 0
-    print(f"Legislation consolidation completion evaluation: FAILED with {len(res['errors'])} errors")
+    err_list = res.get("errors", [])
+    err_count = len(err_list) if isinstance(err_list, list) else 0
+    print(
+        f"Legislation consolidation completion evaluation: FAILED with {err_count} errors"
+    )
     return 1
 
 

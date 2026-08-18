@@ -28,7 +28,7 @@ jobs:
         run: |
           SELECTED="${{ github.event.inputs.source_set || 'all' }}"
           if [ "$SELECTED" = "all" ] || [ -z "$SELECTED" ]; then
-            echo 'matrix=["treasury", "government-web", "social-media", "newsletters", "legislation", "nz-gazette"]' >> "$GITHUB_OUTPUT"
+            echo 'matrix=["treasury", "government-web", "social-media", "newsletters", "nz-gazette"]' >> "$GITHUB_OUTPUT"
           else
             echo "matrix=[\"$SELECTED\"]" >> "$GITHUB_OUTPUT"
           fi

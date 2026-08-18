@@ -9,5 +9,6 @@
   "donor_repo": "edithatogo/corpus-legislation-nz",
   "canonical_repo": "edithatogo/archive-govt-nz",
   "non_donor_boundary": "edithatogo/legislation",
-  "requirements_method": "MoSCoW"
+  "requirements_method": "MoSCoW",
+  "phase_0_control_plane_commit": "cb0e78f89a127f246d024ba3a5d770e1ec478f12"
 }

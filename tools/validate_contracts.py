@@ -60,12 +60,16 @@ def validate_contract_dict(data: dict[str, Any], filepath: Path) -> list[str]:
                 if ts > now:
                     errors.append(f"Future timestamp {data[ts_key]} in {filepath}")
             except ValueError:
-                errors.append(f"Invalid ISO timestamp format for {ts_key} in {filepath}")
+                errors.append(
+                    f"Invalid ISO timestamp format for {ts_key} in {filepath}"
+                )
 
     if "acceptance_checks" in data and isinstance(data["acceptance_checks"], list):
         for idx, check in enumerate(data["acceptance_checks"], 1):
             if not isinstance(check, dict):
-                errors.append(f"acceptance_check #{idx} must be an object in {filepath}")
+                errors.append(
+                    f"acceptance_check #{idx} must be an object in {filepath}"
+                )
                 continue
             for chk_key in ("check_id", "description", "command", "expected_exit_code"):
                 if chk_key not in check:
@@ -77,7 +81,9 @@ def validate_contract_dict(data: dict[str, Any], filepath: Path) -> list[str]:
 def main() -> int:
     """Validate all or specific YAML contracts."""
     parser = argparse.ArgumentParser(description="Validate migration contracts")
-    parser.add_argument("--contract", type=Path, help="Specific contract file to validate")
+    parser.add_argument(
+        "--contract", type=Path, help="Specific contract file to validate"
+    )
     args = parser.parse_args()
 
     files = [args.contract] if args.contract else sorted(CONTRACTS_DIR.rglob("*.yaml"))
