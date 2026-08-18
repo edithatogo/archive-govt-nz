@@ -19,7 +19,7 @@ dependencies = [
   "blake3>=1.0.8,<2",
   "duckdb>=1.4.3,<2",
   "pyarrow>=23.0.1,<26",
-  "huggingface_hub>=0.28.0,<1",
+  "huggingface_hub>=0.28.0,<2",
 ]
 
 [project.scripts]
@@ -38,7 +38,7 @@ dev = [
   "pyright>=1.1.411,<2",
   "pytest>=9.1.1,<10",
   "pytest-cov>=7.1.0,<8",
-  "pytest-randomly>=3.16.0,<4",
+  "pytest-randomly>=3.16.0,<5",
   "ruff>=0.16.1,<0.17",
   "syrupy>=5.0.0,<6",
 ]
