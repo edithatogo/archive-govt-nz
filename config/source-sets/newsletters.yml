@@ -1,0 +1,22 @@
+# Source Set: New Zealand Government Newsletters & Official Email Bulletins
+name: "newsletters"
+description: "Public agency email newsletters, ministerial press releases, and health advisories."
+enabled: true
+adapters:
+  - "email"
+  - "feeds"
+schedule: "0 */4 * * *"
+checkpoint_location: "evidence/checkpoints/newsletters.json"
+rights_class: "crown_copyright_open"
+output_preservation_policy:
+  format: "warc_and_parquet"
+  compression: "gzip"
+  cas_hash_algorithm: "sha256"
+  retention: "permanent"
+publication_policy:
+  huggingface:
+    enabled: true
+    dataset_slug: "edithatogo/corpus-social-media-government-nz"
+  zenodo:
+    enabled: true
+    concept_doi: "10.5281/zenodo.20991132"

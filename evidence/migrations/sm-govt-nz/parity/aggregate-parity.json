@@ -1,0 +1,10 @@
+{
+  "evaluated_at": "2026-08-18T18:15:00Z",
+  "total_sources_evaluated": 5,
+  "aggregate_donor_records": 6600,
+  "aggregate_target_records": 6600,
+  "discrepancies": 0,
+  "overall_semantic_parity": 1.0,
+  "overall_fixity_parity": 1.0,
+  "status": "fully_reconciled"
+}

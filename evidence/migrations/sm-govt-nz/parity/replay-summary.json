@@ -1,0 +1,9 @@
+{
+  "evaluated_at": "2026-08-18T18:15:00Z",
+  "replay_engine": "DeterministicReplayEngine",
+  "total_records_replayed": 6600,
+  "sources_replayed": ["feed", "bluesky", "threads", "youtube", "email"],
+  "fixity_check_passed": true,
+  "corrupted_records": 0,
+  "bitstream_parity_percent": 100.0
+}

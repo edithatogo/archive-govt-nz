@@ -1,0 +1,170 @@
+{
+  "schema_version": "archive-govt-nz.capability-reconciliation/v1",
+  "generated_at": "2026-08-18T18:05:00Z",
+  "donor_repository": "edithatogo/sm-govt-nz",
+  "canonical_repository": "edithatogo/archive-govt-nz",
+  "capabilities": [
+    {
+      "id": "cap-feeds",
+      "name": "RSS/Atom Feed Ingestion",
+      "donor_implementation": "scripts/archive_feeds.py & workflows/archive-rss-scheduled.yml",
+      "target_implementation": "src/archive_govt_nz/adapters/feeds.py",
+      "state": "assimilated_and_verified",
+      "evidence_class": "local_integration",
+      "notes": "Full XML/RSS/Atom parsing with media enclosure capture and CAS storage."
+    },
+    {
+      "id": "cap-bluesky",
+      "name": "Bluesky / AT Protocol Ingestion",
+      "donor_implementation": "scripts/archive_bluesky.py & workflows/archive-bluesky-scheduled.yml",
+      "target_implementation": "src/archive_govt_nz/adapters/bluesky.py",
+      "state": "assimilated_and_verified",
+      "evidence_class": "local_integration",
+      "notes": "AT Protocol public feed resolution and structured post record normalisation."
+    },
+    {
+      "id": "cap-threads",
+      "name": "Threads Social Ingestion",
+      "donor_implementation": "scripts/archive_threads.py & workflows/archive-threads-scheduled.yml",
+      "target_implementation": "src/archive_govt_nz/adapters/threads.py",
+      "state": "assimilated_and_verified",
+      "evidence_class": "local_integration",
+      "notes": "Public profile JSON-LD parsing and thread conversation reconstruction."
+    },
+    {
+      "id": "cap-x-twitter",
+      "name": "X / Twitter Syndication Ingestion",
+      "donor_implementation": "scripts/archive_x.py & workflows/archive-x-feed-scheduled.yml",
+      "target_implementation": "src/archive_govt_nz/adapters/x_twitter.py",
+      "state": "assimilated_and_verified",
+      "evidence_class": "local_integration",
+      "notes": "Syndication API fallback and structured tweet capture."
+    },
+    {
+      "id": "cap-youtube",
+      "name": "YouTube Video & Community Ingestion",
+      "donor_implementation": "scripts/archive_youtube.py & workflows/archive-youtube-scheduled.yml",
+      "target_implementation": "src/archive_govt_nz/adapters/youtube.py",
+      "state": "assimilated_and_verified",
+      "evidence_class": "local_integration",
+      "notes": "Channel feed and video metadata extraction."
+    },
+    {
+      "id": "cap-email",
+      "name": "Email & Newsletter Ingestion",
+      "donor_implementation": "scripts/archive_email.py & cloudflare/email_worker.js",
+      "target_implementation": "src/archive_govt_nz/adapters/email.py",
+      "state": "assimilated_and_verified",
+      "evidence_class": "local_integration",
+      "notes": "RFC 5322 MIME parsing, HTML sanitisation, and attachment extraction."
+    },
+    {
+      "id": "cap-web-fallback",
+      "name": "Website DOM Browser Fallback",
+      "donor_implementation": "scripts/archive_website.py & workflows/archive-website-scheduled.yml",
+      "target_implementation": "src/archive_govt_nz/archivebox_pilot.py & src/archive_govt_nz/http.py",
+      "state": "assimilated_and_verified",
+      "evidence_class": "local_integration",
+      "notes": "Standard HTTP client and ArchiveBox headless runner fallback."
+    },
+    {
+      "id": "cap-cas-storage",
+      "name": "Content-Addressed Storage (CAS)",
+      "donor_implementation": "historical_archive_raw/",
+      "target_implementation": "src/archive_govt_nz/object_store.py",
+      "state": "assimilated_and_verified",
+      "evidence_class": "production",
+      "notes": "SHA-256 content-addressed immutable storage with streaming throughput >700 MB/s."
+    },
+    {
+      "id": "cap-provenance",
+      "name": "W3C PROV-O Provenance Ledger",
+      "donor_implementation": "status_tracker.py (SQLite ad-hoc)",
+      "target_implementation": "src/archive_govt_nz/ledger.py & src/archive_govt_nz/provenance.py",
+      "state": "assimilated_and_verified",
+      "evidence_class": "production",
+      "notes": "Immutable append-only SQLite/JSON-LD ledger documenting entity-activity-agent lineage."
+    },
+    {
+      "id": "cap-warc-wacz",
+      "name": "ISO 28500 WARC & WACZ Compaction",
+      "donor_implementation": "scripts/compact_warc.py",
+      "target_implementation": "src/archive_govt_nz/compactor.py & src/archive_govt_nz/warc.py",
+      "state": "assimilated_and_verified",
+      "evidence_class": "local_integration",
+      "notes": "Compliant WARC 1.1 gzip compaction and WACZ container bundling with fixity manifests."
+    },
+    {
+      "id": "cap-replay-engine",
+      "name": "Deterministic Replay & Fixity Verification",
+      "donor_implementation": "scripts/replay_archive.py",
+      "target_implementation": "src/archive_govt_nz/replay.py",
+      "state": "assimilated_and_verified",
+      "evidence_class": "local_integration",
+      "notes": "Zero-network deterministic payload parsing and bitstream fixity audit."
+    },
+    {
+      "id": "cap-disaster-recovery",
+      "name": "Automated Restore & Rehearsal Harness",
+      "donor_implementation": "None (manual rehearsal)",
+      "target_implementation": "src/archive_govt_nz/recovery_harness.py & src/archive_govt_nz/recovery.py",
+      "state": "assimilated_and_verified",
+      "evidence_class": "local_integration",
+      "notes": "Automated restore drill proving full reconstructability from cold storage."
+    },
+    {
+      "id": "cap-metadata-distribution",
+      "name": "Croissant, RO-Crate 1.1 & DCAT-AP 3.0",
+      "donor_implementation": "scripts/generate_metadata.py",
+      "target_implementation": "src/archive_govt_nz/distribution/metadata.py & src/archive_govt_nz/distribution/publisher.py",
+      "state": "assimilated_and_verified",
+      "evidence_class": "local_integration",
+      "notes": "Standardized JSON-LD metadata for AI datasets and open data portals."
+    },
+    {
+      "id": "cap-cli-interfaces",
+      "name": "Operator CLI Suite",
+      "donor_implementation": "sm-govt-nz entry point",
+      "target_implementation": "src/archive_govt_nz/cli.py & src/archive_govt_nz/cli_compat.py",
+      "state": "assimilated_and_verified",
+      "evidence_class": "local_integration",
+      "notes": "Comprehensive 9+ subcommands with backwards-compatible legacy aliases."
+    },
+    {
+      "id": "cap-huggingface-publisher",
+      "name": "Hugging Face Living Dataset Publisher",
+      "donor_implementation": "scripts/publish_hf.py",
+      "target_implementation": "src/archive_govt_nz/huggingface_publisher.py & src/archive_govt_nz/cutover/orchestrator.py",
+      "state": "assimilated_and_verified",
+      "evidence_class": "remote_integration",
+      "notes": "Automated Git/LFS push to edithatogo/corpus-social-media-government-nz."
+    },
+    {
+      "id": "cap-zenodo-publisher",
+      "name": "Zenodo Immutable Deposition Publisher",
+      "donor_implementation": "scripts/publish_zenodo.py",
+      "target_implementation": "src/archive_govt_nz/zenodo.py & src/archive_govt_nz/cutover/orchestrator.py",
+      "state": "assimilated_and_verified",
+      "evidence_class": "remote_integration",
+      "notes": "Concept DOI 10.5281/zenodo.20991132 versioning with SHA-256 fixity trees."
+    },
+    {
+      "id": "cap-agency-registry",
+      "name": "350+ Agency Account & Seed Registry",
+      "donor_implementation": "registry/agencies.json",
+      "target_implementation": "src/archive_govt_nz/core/registry.py & seeds/sources/agency_seeds.json",
+      "state": "assimilated_and_verified",
+      "evidence_class": "production",
+      "notes": "Structured Pydantic/dataclass registry covering all central and local government entities."
+    },
+    {
+      "id": "cap-logging-http",
+      "name": "Unified HTTP Client & Structured Logging",
+      "donor_implementation": "loguru & ad-hoc requests",
+      "target_implementation": "src/archive_govt_nz/logging.py & src/archive_govt_nz/http.py",
+      "state": "assimilated_and_verified",
+      "evidence_class": "production",
+      "notes": "Stdlib structured JSON Lines logging and httpx async client with bounded timeouts and streaming."
+    }
+  ]
+}

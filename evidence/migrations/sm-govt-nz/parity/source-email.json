@@ -1,0 +1,13 @@
+{
+  "source_type": "email",
+  "evaluated_at": "2026-08-18T18:15:00Z",
+  "expected_donor_observations": 630,
+  "target_observations": 630,
+  "missing_records": 0,
+  "extra_records": 0,
+  "canonical_id_parity": 1.0,
+  "content_hash_parity": 1.0,
+  "semantic_parity": 1.0,
+  "status": "matched",
+  "evidence_class": "replay"
+}

@@ -58,6 +58,8 @@ decision or safety boundary, and continue independent work while it is pending.
   *Link: [tracks/observation_donor_deprecation_archival_20260817/index.md](./tracks/observation_donor_deprecation_archival_20260817/index.md)*
 - [x] **Track 14: Post-consolidation extension and RIOPA interoperability**
   *Link: [tracks/post_consolidation_riopa_interoperability_20260817/index.md](./tracks/post_consolidation_riopa_interoperability_20260817/index.md)*
+- [x] **Track 15: Consolidation closeout and operational readiness**
+  *Link: [tracks/consolidation_closeout_and_operational_readiness_20260818/index.md](./tracks/consolidation_closeout_and_operational_readiness_20260818/index.md)*
 
 ## Proposed follow-up tracks
 

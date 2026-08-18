@@ -1,0 +1,22 @@
+# Source Set: New Zealand Treasury Data & Documents
+name: "treasury"
+description: "Authoritative financial datasets, budgets, and statements from the New Zealand Treasury."
+enabled: true
+adapters:
+  - "ckan"
+  - "feeds"
+schedule: "0 0 * * *"
+checkpoint_location: "evidence/checkpoints/treasury.json"
+rights_class: "crown_copyright_open"
+output_preservation_policy:
+  format: "warc_and_parquet"
+  compression: "gzip"
+  cas_hash_algorithm: "sha256"
+  retention: "permanent"
+publication_policy:
+  huggingface:
+    enabled: true
+    dataset_slug: "edithatogo/nz-govt-treasury-archive"
+  zenodo:
+    enabled: true
+    concept_doi: "10.5281/zenodo.20991132"
