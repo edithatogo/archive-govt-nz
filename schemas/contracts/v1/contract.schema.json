@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://archive.govt.nz/schemas/contracts/v1/contract.schema.json",
   "title": "ArchiveGovtNzContract",
-  "description": "Schema for executable migration and quality contracts in archive-govt-nz",
+  "description": "Schema for executable migration and quality contracts in archive-govt-nz with typed acceptance checks",
   "type": "object",
   "required": [
     "contract_id",
@@ -75,13 +75,74 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["check_id", "description", "command", "expected_exit_code"],
+        "required": [
+          "check_id",
+          "description",
+          "executor_id",
+          "execution_class",
+          "side_effect_class",
+          "timeout_seconds",
+          "expected_exit_code",
+          "evidence_destination"
+        ],
         "properties": {
           "check_id": { "type": "string" },
           "description": { "type": "string" },
-          "command": { "type": "string" },
-          "expected_exit_code": { "type": "integer" },
-          "evidence_destination": { "type": "string" }
+          "executor_id": {
+            "type": "string",
+            "enum": [
+              "pytest_runner",
+              "contract_validator",
+              "completion_evaluator",
+              "schema_validator",
+              "timestamp_validator",
+              "parity_generator",
+              "donor_inventory_generator",
+              "issue_reconciler",
+              "evidence_ledger_generator"
+            ]
+          },
+          "execution_class": {
+            "type": "string",
+            "enum": [
+              "local_read_only",
+              "local_test",
+              "local_generated_evidence",
+              "remote_read_only",
+              "protected_remote_write",
+              "destructive_or_irreversible"
+            ]
+          },
+          "side_effect_class": {
+            "type": "string",
+            "enum": [
+              "read_only",
+              "creates_evidence",
+              "modifies_local_state",
+              "remote_mutation"
+            ]
+          },
+          "timeout_seconds": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "expected_exit_code": {
+            "type": "integer"
+          },
+          "evidence_destination": {
+            "type": "string"
+          },
+          "evidence_schema": {
+            "type": "string"
+          },
+          "command": {
+            "type": ["string", "array"],
+            "items": { "type": "string" }
+          },
+          "required_input_hashes": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
         }
       }
     },

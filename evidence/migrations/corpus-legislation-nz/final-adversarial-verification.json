@@ -1,6 +1,6 @@
 {
   "schema_version": "archive-govt-nz.completion-evaluator/v1",
-  "evaluated_at": "2026-08-18T21:21:30Z",
+  "evaluated_at": "2026-08-18T22:18:16Z",
   "status": "incomplete",
   "contract_checks": [
     {
@@ -99,13 +99,16 @@
       "check_id": "EVD-CHK-01",
       "name": "Donor Active Issue Tracking",
       "status": "evaluated",
-      "open_issues_count": 0
+      "source_url": "https://api.github.com/repos/edithatogo/corpus-legislation-nz",
+      "open_issues_count": 30,
+      "is_cached": false,
+      "retrieved_at": "2026-08-18T22:18:16Z"
     },
     {
       "check_id": "EVD-CHK-02",
       "name": "Hosted Publication Readback",
-      "status": "evaluated",
-      "readback_verified": false
+      "status": "gated",
+      "detail": "GATED: Hosted publication readback token and verified remote revision missing"
     },
     {
       "check_id": "EVD-CHK-03",
@@ -114,8 +117,12 @@
       "in_progress_tracks_count": 12
     }
   ],
+  "execution_receipts": [],
   "blockers": [
-    "DETECTED: Fixed production constants in src/archive_govt_nz/cli.py",
+    "DETECTED: Fixed production constants in src/archive_govt_nz/mcp_server.py",
+    "DEFECT: Absence of operational MCP protocol runtime in src/archive_govt_nz/mcp_server.py",
+    "DEFECT: NZLegislationAdapter does not utilize NZLegislationApiClient for transport",
+    "UNRESOLVED: 30 active donor issues/PRs remain open on edithatogo/corpus-legislation-nz",
     "GATED: Hosted publication readback token and verified remote revision missing",
     "IN_PROGRESS: 12 corrective child tracks remain in progress",
     "UNOBSERVED: Weekly production harvest cycles have not elapsed in live target"

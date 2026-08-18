@@ -7,22 +7,26 @@ baseline:
   audited_target_commit: c154578f4e7de3585e6b5885c157fc6ef2c7564b
   audited_donor_commit: 749918c251da59dc890c19dfda2ab9a021fd8ca6
 invariants:
-  - Do not create parallel or duplicate legislation adapters
-  - Upgrade NZLegislationAdapter in place in src/archive_govt_nz/adapters/nz_legislation.py
+- Do not create parallel or duplicate legislation adapters
+- Upgrade NZLegislationAdapter in place in src/archive_govt_nz/adapters/nz_legislation.py
 preconditions:
-  - Component inventory completed in evidence/migrations/corpus-legislation-nz/component-inventory.json
+- Component inventory completed in evidence/migrations/corpus-legislation-nz/component-inventory.json
 postconditions:
-  - NZLegislationAdapter assimilates pacing, rate limiting, and backoff from donor NZLegislationClient
+- NZLegislationAdapter assimilates pacing, rate limiting, and backoff from donor NZLegislationClient
 forbidden_actions:
-  - Creating NZLegislationAdapterV2 or alternate capture classes
+- Creating NZLegislationAdapterV2 or alternate capture classes
 acceptance_checks:
-  - check_id: CHK-REUSE-01
-    description: Confirm no duplicate adapter classes exist in codebase
-    command: uv run python tools/validate_contracts.py --contract contracts/reuse/legislation-reuse-before-create.contract.yaml
-    expected_exit_code: 0
-    evidence_destination: evidence/migrations/corpus-legislation-nz/component-inventory.json
+- check_id: CHK-REUSE-01
+  description: Confirm no duplicate adapter classes exist in codebase
+  command: uv run python tools/validate_contracts.py --contract contracts/reuse/legislation-reuse-before-create.contract.yaml
+  expected_exit_code: 0
+  evidence_destination: evidence/migrations/corpus-legislation-nz/component-inventory.json
+  executor_id: contract_validator
+  execution_class: local_read_only
+  side_effect_class: read_only
+  timeout_seconds: 30
 evidence_paths:
-  - evidence/migrations/corpus-legislation-nz/component-inventory.json
-  - docs/migrations/corpus-legislation-nz/reuse-decisions.md
-created_at: "2026-08-18T12:54:00Z"
-updated_at: "2026-08-18T12:54:00Z"
+- evidence/migrations/corpus-legislation-nz/component-inventory.json
+- docs/migrations/corpus-legislation-nz/reuse-decisions.md
+created_at: '2026-08-18T12:54:00Z'
+updated_at: '2026-08-18T12:54:00Z'
