@@ -1,0 +1,10 @@
+{
+  "test_class": "publication_package",
+  "evaluated_at": "2026-08-18T18:45:00Z",
+  "huggingface_dataset": "edithatogo/corpus-legislation-nz",
+  "zenodo_concept_doi": "10.5281/zenodo.20592540",
+  "parquet_schema_parity": 1.0,
+  "ro_crate_metadata_valid": true,
+  "croissant_descriptor_valid": true,
+  "status": "passed"
+}

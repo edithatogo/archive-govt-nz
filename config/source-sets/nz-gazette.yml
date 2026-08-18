@@ -1,0 +1,22 @@
+# Source Set: New Zealand Gazette (Official, DigitalNZ, Historical)
+name: "nz-gazette"
+description: "Official government gazette notices, royal proclamations, and regulatory updates."
+enabled: true
+adapters:
+  - "nz_gazette"
+  - "feeds"
+schedule: "0 4 * * 4"
+checkpoint_location: "evidence/checkpoints/nz-gazette.json"
+rights_class: "crown_copyright_open"
+output_preservation_policy:
+  format: "warc_and_parquet"
+  compression: "gzip"
+  cas_hash_algorithm: "sha256"
+  retention: "permanent"
+publication_policy:
+  huggingface:
+    enabled: true
+    dataset_slug: "edithatogo/corpus-legislation-nz"
+  zenodo:
+    enabled: true
+    concept_doi: "10.5281/zenodo.20592540"

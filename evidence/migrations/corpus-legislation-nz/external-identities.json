@@ -1,0 +1,26 @@
+{
+  "schema_version": "archive-govt-nz.external-identities/v1",
+  "evaluated_at": "2026-08-18T18:45:00Z",
+  "identities": {
+    "huggingface_living": {
+      "slug": "edithatogo/corpus-legislation-nz",
+      "status": "preserved",
+      "canonical_authority": "edithatogo/archive-govt-nz"
+    },
+    "huggingface_historical": {
+      "slug": "edithatogo/corpus-legislation-nz-historical",
+      "status": "preserved",
+      "canonical_authority": "edithatogo/archive-govt-nz"
+    },
+    "zenodo_concept_doi": {
+      "doi": "10.5281/zenodo.20592540",
+      "status": "preserved_concept_lineage",
+      "canonical_authority": "edithatogo/archive-govt-nz"
+    },
+    "npm_standalone_package": {
+      "package": "nz-legislation-tool",
+      "repository": "edithatogo/legislation",
+      "status": "federated_standalone"
+    }
+  }
+}

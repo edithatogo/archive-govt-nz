@@ -18,6 +18,8 @@ class SourceType(enum.StrEnum):
     FEED = "feed"
     EMAIL = "email"
     WEB = "web"
+    LEGISLATION = "legislation"
+    GAZETTE = "gazette"
 
 
 @dataclass(frozen=True, slots=True)
@@ -32,7 +34,7 @@ class SourceIdentity:
 
 
 _URI_REGEX = re.compile(
-    r"^(?P<scheme>ckan|bluesky|threads|x|youtube|feed|email|web)://"
+    r"^(?P<scheme>ckan|bluesky|threads|x|youtube|feed|email|web|legislation|gazette)://"
     r"(?P<agency>[a-z0-9_\-]+)/(?P<target>.+)$"
 )
 

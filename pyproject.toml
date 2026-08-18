@@ -25,6 +25,7 @@ dependencies = [
 [project.scripts]
 archive-govt-nz = "archive_govt_nz.cli:main"
 nz-govt-social = "archive_govt_nz.cli_compat:compat_nz_govt_social_main"
+nzlc = "archive_govt_nz.cli_compat:compat_nzlc_main"
 sm-govt-nz = "archive_govt_nz.cli_compat:compat_sm_govt_nz_main"
 
 [dependency-groups]
@@ -107,6 +108,7 @@ ignore = [
 "tools/mutation_archivebox_pilot.py" = ["S603", "S607"]
 "tools/mutation_adapters.py" = ["S603", "S607"]
 "tools/reconcile_donor_issues.py" = ["S603", "S607", "E501"]
+"tools/reconcile_legislation_donor_issues.py" = ["S108", "S603", "S607", "E501"]
 "tools/evaluate_preservation.py" = ["E501"]
 "tools/generate_evidence_ledger.py" = []
 "tools/release_attestation.py" = []

@@ -1,0 +1,8 @@
+{
+  "schema_version": "archive-govt-nz.donor-track-lineage/v1",
+  "generated_at": "2026-08-18T08:37:55Z",
+  "donor_repo": "edithatogo/corpus-legislation-nz",
+  "donor_tracks_count": 48,
+  "canonical_repo": "edithatogo/archive-govt-nz",
+  "programme": "legislation_corpus_consolidation_20260818"
+}

@@ -1,0 +1,27 @@
+{
+  "schema_version": "archive-govt-nz.baseline/v1",
+  "evaluated_at": "2026-08-18T18:40:00Z",
+  "donor_repo": {
+    "name": "edithatogo/corpus-legislation-nz",
+    "commit": "749918c251da59dc890c19dfda2ab9a021fd8ca6",
+    "total_issues": 65,
+    "open_issues": 21,
+    "closed_issues": 44,
+    "active_workflows_count": 25,
+    "seed_inventory_size": 33693,
+    "historical_batches_count": 68
+  },
+  "canonical_repo": {
+    "name": "edithatogo/archive-govt-nz",
+    "commit": "49e3b4cb234a1c468d1bcd191de67cea3a3c02c0",
+    "active_assurance_stages": 19,
+    "passing_tests": 512,
+    "branch_coverage_percent": 95.33
+  },
+  "non_donor_standalone_product": {
+    "name": "edithatogo/legislation",
+    "npm_package": "nz-legislation-tool",
+    "cli": "nzlegislation",
+    "status": "retained_standalone"
+  }
+}

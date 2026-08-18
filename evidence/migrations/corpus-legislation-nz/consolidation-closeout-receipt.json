@@ -1,0 +1,14 @@
+{
+  "schema_version": "archive-govt-nz.consolidation-closeout-receipt/v1",
+  "evaluated_at": "2026-08-18T18:45:00Z",
+  "programme_id": "legislation_corpus_consolidation_20260818",
+  "donor_repo": "edithatogo/corpus-legislation-nz",
+  "canonical_repo": "edithatogo/archive-govt-nz",
+  "non_donor_standalone_product": "edithatogo/legislation",
+  "workstreams_completed": 16,
+  "total_records_migrated": 33693,
+  "parity_status": "100_PERCENT",
+  "assurance_gates_status": "ALL_19_PASSED",
+  "donor_status": "reconciled_ready_for_archival",
+  "final_verdict": "CONSOLIDATION_COMPLETE"
+}

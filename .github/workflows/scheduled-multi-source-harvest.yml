@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       source_set:
-        description: "Specific source set to harvest (treasury, government-web, social-media, newsletters, or all)"
+        description: "Specific source set to harvest (treasury, government-web, social-media, newsletters, legislation, nz-gazette, or all)"
         required: false
         default: "all"
 
@@ -19,20 +19,47 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  harvest:
+  determine-matrix:
     runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - id: set-matrix
+        run: |
+          SELECTED="${{ github.event.inputs.source_set || 'all' }}"
+          if [ "$SELECTED" = "all" ] || [ -z "$SELECTED" ]; then
+            echo 'matrix=["treasury", "government-web", "social-media", "newsletters", "legislation", "nz-gazette"]' >> "$GITHUB_OUTPUT"
+          else
+            echo "matrix=[\"$SELECTED\"]" >> "$GITHUB_OUTPUT"
+          fi
+
+  harvest:
+    needs: determine-matrix
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        source_set: ${{ fromJson(needs.determine-matrix.outputs.matrix) }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
         with:
           python-version: "3.14"
-      - run: python -m pip install uv
+      - run: python -m pip install uv==0.6.5
+      - name: Prepare receipt directories
+        run: mkdir -p build/receipts/${{ matrix.source_set }} build/warc/${{ matrix.source_set }}
       - name: Execute Source Set Harvest
         run: |
-          uv run --locked archive-govt-nz capture --config config/source-sets/social-media.yml || echo "Harvest completed with bounded network fallback"
+          uv run --locked archive-govt-nz capture --source-type "${{ matrix.source_set }}" --format json > "build/receipts/${{ matrix.source_set }}/capture.json"
       - name: Generate Fixity & Compaction
         run: |
-          uv run --locked archive-govt-nz archive --output-dir build/warc/
+          uv run --locked archive-govt-nz archive --action verify --output-dir "build/warc/${{ matrix.source_set }}/" --format json > "build/receipts/${{ matrix.source_set }}/archive.json"
       - name: Replay & Verification Drill
         run: |
-          uv run --locked archive-govt-nz replay --verify-all
+          uv run --locked archive-govt-nz replay --verify-all --format json > "build/receipts/${{ matrix.source_set }}/replay.json"
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        if: always()
+        with:
+          name: harvest-receipts-${{ matrix.source_set }}
+          path: build/receipts/${{ matrix.source_set }}/
+          if-no-files-found: error

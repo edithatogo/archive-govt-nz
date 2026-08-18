@@ -1,0 +1,22 @@
+# Source Set: New Zealand Legislation (Acts, Bills, Regulations, Deemed Regulations)
+name: "legislation"
+description: "Authoritative statutory instruments and historical legal corpus for New Zealand."
+enabled: true
+adapters:
+  - "nz_legislation"
+  - "feeds"
+schedule: "0 */6 * * *"
+checkpoint_location: "evidence/checkpoints/legislation.json"
+rights_class: "crown_copyright_open"
+output_preservation_policy:
+  format: "warc_and_parquet"
+  compression: "gzip"
+  cas_hash_algorithm: "sha256"
+  retention: "permanent"
+publication_policy:
+  huggingface:
+    enabled: true
+    dataset_slug: "edithatogo/corpus-legislation-nz"
+  zenodo:
+    enabled: true
+    concept_doi: "10.5281/zenodo.20592540"

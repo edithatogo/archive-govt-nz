@@ -1,0 +1,9 @@
+{
+  "test_class": "historical_batch",
+  "evaluated_at": "2026-08-18T18:45:00Z",
+  "total_batches_evaluated": 68,
+  "total_work_records_evaluated": 33693,
+  "checksum_parity": 1.0,
+  "metadata_field_parity": 1.0,
+  "status": "passed"
+}

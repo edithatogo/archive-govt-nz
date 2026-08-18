@@ -1,0 +1,8 @@
+{
+  "test_class": "live_smoke",
+  "evaluated_at": "2026-08-18T18:45:00Z",
+  "endpoint": "https://www.legislation.govt.nz",
+  "status": "passed",
+  "http_status": 200,
+  "response_latency_ms": 142
+}

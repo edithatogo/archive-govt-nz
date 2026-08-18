@@ -11,6 +11,7 @@ from archive_govt_nz.cli import (
     capture,
     derivatives,
     doctor,
+    legislation,
     main,
     provenance,
     publish,
@@ -22,6 +23,7 @@ from archive_govt_nz.cli import (
 )
 from archive_govt_nz.cli_compat import (
     compat_nz_govt_social_main,
+    compat_nzlc_main,
     compat_sm_govt_nz_main,
 )
 
@@ -185,6 +187,19 @@ def test_cli_provenance(capsys: pytest.CaptureFixture[str]) -> None:
     assert payload["ledger_status"] == "synced"
 
 
+def test_cli_legislation(capsys: pytest.CaptureFixture[str]) -> None:
+    """Validate legislation interface."""
+    legislation(action="coverage", format="text")
+    captured = capsys.readouterr()
+    assert "Legislation action 'coverage' complete" in captured.out
+
+    legislation(action="coverage", format="json")
+    captured_json = capsys.readouterr()
+    payload = json.loads(captured_json.out)
+    assert payload["command"] == "legislation"
+    assert payload["coverage_percent"] == 100.0
+
+
 def test_compat_wrappers(
     capsys: pytest.CaptureFixture[str], monkeypatch: pytest.MonkeyPatch
 ) -> None:
@@ -198,6 +213,10 @@ def test_compat_wrappers(
     compat_nz_govt_social_main()
     captured = capsys.readouterr()
     assert "DEPRECATION NOTICE: `nz-govt-social`" in captured.err
+
+    compat_nzlc_main()
+    captured = capsys.readouterr()
+    assert "DEPRECATION NOTICE: `nzlc`" in captured.err
 
 
 def test_main_invocation(monkeypatch: pytest.MonkeyPatch) -> None:

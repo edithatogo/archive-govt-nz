@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING
 
 import pytest
 
-from archive_govt_nz.cli import capabilities, doctor, sources
+from archive_govt_nz.cli import capabilities, doctor, legislation, sources
 from archive_govt_nz.mcp_server import (
     call_tool,
     get_server_metadata,
@@ -86,6 +86,17 @@ def test_verify_and_provenance_mcp_tool() -> None:
     prov_out = call_tool("archive_provenance")
     assert prov_out["ledger_status"] == "synced"
     assert prov_out["entities_tracked"] == 350
+
+
+def test_legislation_parity_cli_and_mcp(capsys: pytest.CaptureFixture[str]) -> None:
+    """Verify legislation parity in CLI and MCP."""
+    legislation(action="coverage", format="json")
+    captured = capsys.readouterr()
+    cli_out = json.loads(captured.out)
+
+    mcp_out = call_tool("archive_legislation")
+    assert cli_out["coverage_percent"] == mcp_out["coverage_percent"]
+    assert cli_out["seed_works_count"] == mcp_out["seed_works_count"]
 
 
 def test_unknown_mcp_tool_raises_error() -> None:

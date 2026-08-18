@@ -1,0 +1,38 @@
+# Publication Registry: New Zealand Legislation and Gazette Corpus
+schema_version: "archive-govt-nz.publication-registry/v1"
+last_updated: "2026-08-18T18:45:00Z"
+
+publications:
+  huggingface_living:
+    platform: "huggingface"
+    dataset_slug: "edithatogo/corpus-legislation-nz"
+    role: "living_dataset"
+    format: "parquet_and_jsonl"
+    canonical_source_repo: "edithatogo/archive-govt-nz"
+    licence: "Crown Copyright (CC-BY 4.0 NZ / NZGOAL)"
+    active: true
+
+  huggingface_historical:
+    platform: "huggingface"
+    dataset_slug: "edithatogo/corpus-legislation-nz-historical"
+    role: "historical_archive"
+    format: "parquet_and_warc"
+    canonical_source_repo: "edithatogo/archive-govt-nz"
+    licence: "Crown Copyright (CC-BY 4.0 NZ / NZGOAL)"
+    active: true
+
+  zenodo_concept:
+    platform: "zenodo"
+    concept_doi: "10.5281/zenodo.20592540"
+    role: "immutable_versioned_archive"
+    format: "warc_and_wacz"
+    canonical_source_repo: "edithatogo/archive-govt-nz"
+    active: true
+
+  npm_standalone_product:
+    platform: "npm"
+    package_name: "nz-legislation-tool"
+    owner_repo: "edithatogo/legislation"
+    role: "standalone_external_cli_mcp"
+    consolidation_status: "federated_non_donor"
+    active: true
