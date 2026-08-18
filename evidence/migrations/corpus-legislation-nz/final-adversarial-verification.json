@@ -1,7 +1,7 @@
 {
   "schema_version": "archive-govt-nz.completion-evaluator/v1",
-  "evaluated_at": "2026-08-18T13:00:42Z",
-  "status": "complete",
+  "evaluated_at": "2026-08-18T22:18:16Z",
+  "status": "incomplete",
   "contract_checks": [
     {
       "contract_file": "contracts/approval/legislation-corrective-approval-profile.yaml",
@@ -94,90 +94,38 @@
       "errors": []
     }
   ],
-  "track_checks": [
+  "evidence_checks": [
     {
-      "track": "legislation_corpus_consolidation_corrective_20260818",
-      "status": "verified"
+      "check_id": "EVD-CHK-01",
+      "name": "Donor Active Issue Tracking",
+      "status": "evaluated",
+      "source_url": "https://api.github.com/repos/edithatogo/corpus-legislation-nz",
+      "open_issues_count": 30,
+      "is_cached": false,
+      "retrieved_at": "2026-08-18T22:18:16Z"
     },
     {
-      "track": "legislation_corrective_evidence_chronology_20260818",
-      "status": "verified"
+      "check_id": "EVD-CHK-02",
+      "name": "Hosted Publication Readback",
+      "status": "gated",
+      "detail": "GATED: Hosted publication readback token and verified remote revision missing"
     },
     {
-      "track": "legislation_corrective_live_inventory_reuse_20260818",
-      "status": "verified"
-    },
-    {
-      "track": "legislation_corrective_standards_schema_conformance_20260818",
-      "status": "verified"
-    },
-    {
-      "track": "legislation_corrective_adapter_client_integration_20260818",
-      "status": "verified"
-    },
-    {
-      "track": "legislation_corrective_identity_normalisation_corpus_20260818",
-      "status": "verified"
-    },
-    {
-      "track": "legislation_corrective_cli_contract_compatibility_20260818",
-      "status": "verified"
-    },
-    {
-      "track": "legislation_corrective_mcp_disposition_conformance_20260818",
-      "status": "verified"
-    },
-    {
-      "track": "legislation_corrective_weekly_orchestration_state_20260818",
-      "status": "verified"
-    },
-    {
-      "track": "legislation_corrective_reconciliation_parity_publication_20260818",
-      "status": "verified"
-    },
-    {
-      "track": "legislation_corrective_rights_redistribution_20260818",
-      "status": "verified"
-    },
-    {
-      "track": "legislation_corrective_shadow_operation_cutover_20260818",
-      "status": "verified"
-    },
-    {
-      "track": "legislation_corrective_gazette_residual_separation_20260818",
-      "status": "verified"
+      "check_id": "EVD-CHK-03",
+      "name": "Conductor Child Tracks Lifecycle",
+      "status": "evaluated",
+      "in_progress_tracks_count": 12
     }
   ],
-  "document_checks": [
-    {
-      "path": "docs/migrations/corpus-legislation-nz/corrective-audit.md",
-      "status": "verified"
-    },
-    {
-      "path": "docs/migrations/corpus-legislation-nz/live-inventory.md",
-      "status": "verified"
-    },
-    {
-      "path": "docs/migrations/corpus-legislation-nz/issue-reconciliation.md",
-      "status": "verified"
-    },
-    {
-      "path": "docs/migrations/corpus-legislation-nz/licensing-and-rights.md",
-      "status": "verified"
-    },
-    {
-      "path": "docs/migrations/corpus-legislation-nz/component-inventory.md",
-      "status": "verified"
-    },
-    {
-      "path": "docs/migrations/corpus-legislation-nz/reuse-decisions.md",
-      "status": "verified"
-    },
-    {
-      "path": "docs/domains/legislation/standards-applicability.md",
-      "status": "verified"
-    }
+  "execution_receipts": [],
+  "blockers": [
+    "DETECTED: Fixed production constants in src/archive_govt_nz/mcp_server.py",
+    "DEFECT: Absence of operational MCP protocol runtime in src/archive_govt_nz/mcp_server.py",
+    "DEFECT: NZLegislationAdapter does not utilize NZLegislationApiClient for transport",
+    "UNRESOLVED: 30 active donor issues/PRs remain open on edithatogo/corpus-legislation-nz",
+    "GATED: Hosted publication readback token and verified remote revision missing",
+    "IN_PROGRESS: 12 corrective child tracks remain in progress",
+    "UNOBSERVED: Weekly production harvest cycles have not elapsed in live target"
   ],
-  "evidence_checks": [],
   "errors": []
 }

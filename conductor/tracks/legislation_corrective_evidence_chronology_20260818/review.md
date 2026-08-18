@@ -1,3 +1,5 @@
-# Review: Evidence correction and chronology
+# Review: Evidence Correction and Chronology
 
-- Verified against Phase 0 contract boundaries.
+## Review Status: READY_FOR_REVIEW
+- Validator and evaluator successfully hardened.
+- Output evidence reflects real state: INCOMPLETE with 4 active blockers.

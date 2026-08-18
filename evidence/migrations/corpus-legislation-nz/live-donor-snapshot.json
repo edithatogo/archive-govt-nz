@@ -1,0 +1,10 @@
+{
+  "schema_version": "archive-govt-nz.donor-snapshot/v1",
+  "source_url": "https://api.github.com/repos/edithatogo/corpus-legislation-nz",
+  "retrieved_at": "2026-08-18T22:18:16Z",
+  "etag": "W/\"e8f94e768a283fbb6ccaec05bb93e2d7039cd904e65647453e8d10484538eed0\"",
+  "response_sha256": "54a63c4d5d14e05bc6338f15b6fb37c760a3d90df2f86d911a8e3633a866e37e",
+  "open_issues_count": 30,
+  "default_branch": "main",
+  "is_cached": false
+}

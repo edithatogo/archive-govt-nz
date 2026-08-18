@@ -1,3 +1,4 @@
-# Evidence: Evidence correction and chronology
+# Evidence: Evidence Correction and Chronology
 
-- Track-specific evidence recorded in evidence/migrations/corpus-legislation-nz/.
+- `evidence/migrations/corpus-legislation-nz/final-adversarial-verification.json` (Status: INCOMPLETE, recording active blockers)
+- `tests/tools/test_evaluate_legislation_completion.py` (Anti-simulation tests)

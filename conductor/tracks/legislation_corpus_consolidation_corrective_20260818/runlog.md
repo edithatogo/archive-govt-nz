@@ -1,11 +1,6 @@
-# Run Log: Corrective Consolidation Programme
+# Run Log: Corrective Programme
 
-## Phase 0: Contract-First Setup
-- Date: 2026-08-18T12:54:00Z
-- Created 15 executable contracts in `contracts/` and schema in `schemas/contracts/v1/contract.schema.json`.
-- Implemented `tools/validate_contracts.py` and `tools/evaluate_legislation_completion.py`.
-- Established 12 child tracks and registered in `conductor/tracks.md`.
-
-## Phase 1: Pre-Acquisition & Reuse Inventory
-- Catalogued all components in `evidence/migrations/corpus-legislation-nz/component-inventory.json`.
-- Documented reuse decisions in `docs/migrations/corpus-legislation-nz/reuse-decisions.md`.
+## 2026-08-18 / 2026-08-19: Contract Validator and Evaluator Hardening
+- Repaired `tools/validate_contracts.py` with `jsonschema.Draft202012Validator`, command allowlist, track reference validation, and timestamp checks.
+- Hardened `tools/evaluate_legislation_completion.py` to scan for fixed constants, evaluate active donor issues, verify hosted readback tokens, check child track states, and emit honest blockers with non-zero exit code.
+- Verified that evaluator exits 1 with `INCOMPLETE` state.

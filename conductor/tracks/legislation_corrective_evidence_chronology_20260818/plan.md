@@ -1,5 +1,6 @@
-# Plan: Evidence correction and chronology
+# Plan: Evidence Correction and Chronology
 
-1. Establish contract and test seams.
-2. Implement/verify domain behaviours.
-3. Validate evidence.
+1. Repair `tools/validate_contracts.py` with `jsonschema.Draft202012Validator`.
+2. Harden `tools/evaluate_legislation_completion.py` with real evidence checks.
+3. Write automated anti-simulation tests in `tests/tools/test_evaluate_legislation_completion.py`.
+4. Invalidate previous `final-adversarial-verification.json` and generate honest incomplete report.

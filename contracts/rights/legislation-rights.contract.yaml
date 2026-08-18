@@ -7,21 +7,25 @@ baseline:
   audited_target_commit: c154578f4e7de3585e6b5885c157fc6ef2c7564b
   audited_donor_commit: 749918c251da59dc890c19dfda2ab9a021fd8ca6
 invariants:
-  - Do not apply single coarse crown_copyright_open across all assets
-  - Classify legislation text, website HTML, third-party attachments, and metadata separately
+- Do not apply single coarse crown_copyright_open across all assets
+- Classify legislation text, website HTML, third-party attachments, and metadata separately
 preconditions:
-  - Licensing framework documented in docs/migrations/corpus-legislation-nz/licensing-and-rights.md
+- Licensing framework documented in docs/migrations/corpus-legislation-nz/licensing-and-rights.md
 postconditions:
-  - Third-party or uncertain content stored in CAS with public distribution restricted
+- Third-party or uncertain content stored in CAS with public distribution restricted
 forbidden_actions:
-  - Misapplying open licenses to proprietary incorporated standards
+- Misapplying open licenses to proprietary incorporated standards
 acceptance_checks:
-  - check_id: CHK-RGT-01
-    description: Validate granular rights classification rules
-    command: uv run python tools/validate_contracts.py --contract contracts/rights/legislation-rights.contract.yaml
-    expected_exit_code: 0
-    evidence_destination: docs/migrations/corpus-legislation-nz/licensing-and-rights.md
+- check_id: CHK-RGT-01
+  description: Validate granular rights classification rules
+  command: uv run python tools/validate_contracts.py --contract contracts/rights/legislation-rights.contract.yaml
+  expected_exit_code: 0
+  evidence_destination: docs/migrations/corpus-legislation-nz/licensing-and-rights.md
+  executor_id: contract_validator
+  execution_class: local_read_only
+  side_effect_class: read_only
+  timeout_seconds: 30
 evidence_paths:
-  - docs/migrations/corpus-legislation-nz/licensing-and-rights.md
-created_at: "2026-08-18T12:54:00Z"
-updated_at: "2026-08-18T12:54:00Z"
+- docs/migrations/corpus-legislation-nz/licensing-and-rights.md
+created_at: '2026-08-18T12:54:00Z'
+updated_at: '2026-08-18T12:54:00Z'
