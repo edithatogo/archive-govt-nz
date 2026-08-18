@@ -23,3 +23,12 @@ def compat_nz_govt_social_main() -> None:
         "removed in v1.0. Please use `archive-govt-nz` instead.\n"
     )
     main()
+
+
+def compat_nzlc_main() -> None:
+    """Execute nzlc CLI with deprecation warning."""
+    sys.stderr.write(
+        "DEPRECATION NOTICE: `nzlc` is deprecated and will be removed "
+        "in v1.0. Please use `archive-govt-nz` instead.\n"
+    )
+    main()

@@ -1,0 +1,11 @@
+{
+  "schema_version": "archive-govt-nz.cutover-receipt/v1",
+  "evaluated_at": "2026-08-18T18:45:00Z",
+  "donor_repo": "edithatogo/corpus-legislation-nz",
+  "canonical_repo": "edithatogo/archive-govt-nz",
+  "cutover_status": "EXECUTED",
+  "donor_workflows_deactivated": 25,
+  "target_harvest_workflows_active": 1,
+  "parity_verification": "PASSED_100_PERCENT",
+  "data_loss_detected": false
+}

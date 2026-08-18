@@ -61,6 +61,11 @@ decision or safety boundary, and continue independent work while it is pending.
 - [x] **Track 15: Consolidation closeout and operational readiness**
   *Link: [tracks/consolidation_closeout_and_operational_readiness_20260818/index.md](./tracks/consolidation_closeout_and_operational_readiness_20260818/index.md)*
 
+## Programme: Legislation Corpus Consolidation (2026-08-18)
+
+- [/] **Legislation Corpus Consolidation (`corpus-legislation-nz` -> `archive-govt-nz`)**
+  *Link: [tracks/legislation_corpus_consolidation_20260818/index.md](./tracks/legislation_corpus_consolidation_20260818/index.md)*
+
 ## Proposed follow-up tracks
 
 These are bounded proposals, not active or completed tracks. They become

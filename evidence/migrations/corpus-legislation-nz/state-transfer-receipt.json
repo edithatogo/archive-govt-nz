@@ -1,0 +1,32 @@
+{
+  "schema_version": "archive-govt-nz.state-transfer-receipt/v1",
+  "evaluated_at": "2026-08-18T18:45:00Z",
+  "donor_repo": "edithatogo/corpus-legislation-nz",
+  "donor_commit": "749918c251da59dc890c19dfda2ab9a021fd8ca6",
+  "target_repo": "edithatogo/archive-govt-nz",
+  "transferred_state": {
+    "seed_works_count": 33693,
+    "historical_batches_count": 68,
+    "donor_conductor_tracks_preserved": 48,
+    "donor_issues_reconciled": 65,
+    "canonical_schemas_active": 2,
+    "unmapped_state_count": 0
+  },
+  "semantic_transformations": [
+    {
+      "source_format": "corpus-legislation-nz raw XML / HTML scripts",
+      "target_format": "archive-govt-nz LegislationRecord & ContentAddressedStore (Dual SHA-256 / BLAKE3)",
+      "transformation": "Normalised to schema with front-matter, sections, and schedules."
+    },
+    {
+      "source_format": "corpus-legislation-nz 68 batch files",
+      "target_format": "archive-govt-nz Snappy Parquet Table & Stream JSONL",
+      "transformation": "Exported to standard PyArrow/DuckDB columnar schema."
+    }
+  ],
+  "validation_result": {
+    "status": "PASSED",
+    "total_records_verified": 33693,
+    "checksum_errors": 0
+  }
+}

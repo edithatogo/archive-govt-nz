@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.archive.govt.nz/gazette/v1/gazette-record.schema.json",
+  "title": "GazetteRecord",
+  "description": "Schema for canonical normalised New Zealand Gazette notices and issues.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "notice_id",
+    "title",
+    "issue_number",
+    "year",
+    "publication_date",
+    "category",
+    "canonical_uri",
+    "raw_cas_hash_sha256",
+    "retrieval_timestamp"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "archive-govt-nz.gazette/v1"
+    },
+    "notice_id": {
+      "type": "string"
+    },
+    "issue_number": {
+      "type": "string"
+    },
+    "year": {
+      "type": "integer",
+      "minimum": 1840,
+      "maximum": 2100
+    },
+    "title": {
+      "type": "string"
+    },
+    "publication_date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "category": {
+      "type": "string"
+    },
+    "department": {
+      "type": ["string", "null"]
+    },
+    "canonical_uri": {
+      "type": "string",
+      "format": "uri"
+    },
+    "raw_cas_hash_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "raw_cas_hash_blake3": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "byte_size": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "retrieval_timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "content_text": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

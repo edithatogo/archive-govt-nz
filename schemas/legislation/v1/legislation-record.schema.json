@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.archive.govt.nz/legislation/v1/legislation-record.schema.json",
+  "title": "LegislationRecord",
+  "description": "Schema for canonical normalised New Zealand legislation records.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "document_id",
+    "work_id",
+    "title",
+    "legislation_type",
+    "status",
+    "canonical_uri",
+    "raw_cas_hash_sha256",
+    "raw_cas_hash_blake3",
+    "retrieval_timestamp"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "archive-govt-nz.legislation/v1"
+    },
+    "document_id": {
+      "type": "string"
+    },
+    "work_id": {
+      "type": "string"
+    },
+    "expression_id": {
+      "type": ["string", "null"]
+    },
+    "title": {
+      "type": "string"
+    },
+    "legislation_type": {
+      "type": "string",
+      "enum": ["act", "bill", "regulation", "deemed_regulation", "order_in_council", "other"]
+    },
+    "status": {
+      "type": "string",
+      "enum": ["in_force", "amended", "repealed", "bill_introduced", "bill_passed", "historical", "unknown"]
+    },
+    "canonical_uri": {
+      "type": "string",
+      "format": "uri"
+    },
+    "raw_cas_hash_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "raw_cas_hash_blake3": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "byte_size": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "retrieval_timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "assent_date": {
+      "type": ["string", "null"]
+    },
+    "commencement_date": {
+      "type": ["string", "null"]
+    },
+    "sections_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "schedules_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "plain_text": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

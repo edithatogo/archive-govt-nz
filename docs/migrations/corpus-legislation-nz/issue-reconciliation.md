@@ -1,0 +1,72 @@
+# Issue Reconciliation Ledger: `corpus-legislation-nz` → `archive-govt-nz`
+
+**Generated**: `2026-08-18T08:37:55Z`  
+**Total Donor Issues Reconciled**: `65`  
+
+| Donor Issue # | Title | Original State | Target Track | Canonical Target Component |
+|---|---|---|---|---|
+| [#10](https://github.com/edithatogo/corpus-legislation-nz/issues/10) | Configure required repository secrets | CLOSED | Legislation Corpus Consolidation | `src/archive_govt_nz/domains/legislation/` |
+| [#11](https://github.com/edithatogo/corpus-legislation-nz/issues/11) | Establish authoritative work-id inventory or partial-scope boundary | CLOSED | Track: Corpus Pipeline & Checkpoint Migration | `src/archive_govt_nz/domains/legislation/corpus.py` |
+| [#12](https://github.com/edithatogo/corpus-legislation-nz/issues/12) | Run live API smoke sync and scheduled workflow proof | CLOSED | Legislation Corpus Consolidation | `src/archive_govt_nz/domains/legislation/` |
+| [#13](https://github.com/edithatogo/corpus-legislation-nz/issues/13) | Create and verify Hugging Face dataset shell | CLOSED | Track: Hugging Face & Zenodo Continuity | `src/archive_govt_nz/distribution/publisher.py` |
+| [#14](https://github.com/edithatogo/corpus-legislation-nz/issues/14) | Published Zenodo production archive | CLOSED | Track: Hugging Face & Zenodo Continuity | `src/archive_govt_nz/zenodo.py` |
+| [#15](https://github.com/edithatogo/corpus-legislation-nz/issues/15) | Make final public launch decision | CLOSED | Legislation Corpus Consolidation | `src/archive_govt_nz/domains/legislation/` |
+| [#27](https://github.com/edithatogo/corpus-legislation-nz/issues/27) | Bootstrap historical corpus seed and no-upload sync pilot | CLOSED | Track: Hugging Face & Zenodo Continuity | `src/archive_govt_nz/distribution/publisher.py` |
+| [#29](https://github.com/edithatogo/corpus-legislation-nz/issues/29) | Decide historical corpus publication and merge policy | CLOSED | Legislation Corpus Consolidation | `src/archive_govt_nz/domains/legislation/` |
+| [#84](https://github.com/edithatogo/corpus-legislation-nz/issues/84) | Track 01: Repository Commit And Release Baseline | CLOSED | Legislation Corpus Consolidation | `src/archive_govt_nz/domains/legislation/` |
+| [#85](https://github.com/edithatogo/corpus-legislation-nz/issues/85) | Track 02: Credential And Secret Inventory | CLOSED | Legislation Corpus Consolidation | `src/archive_govt_nz/domains/legislation/` |
+| [#86](https://github.com/edithatogo/corpus-legislation-nz/issues/86) | Track 03: Hugging Face Dataset Shell | CLOSED | Track: Hugging Face & Zenodo Continuity | `src/archive_govt_nz/distribution/publisher.py` |
+| [#87](https://github.com/edithatogo/corpus-legislation-nz/issues/87) | Track 04: Source Discovery Completeness | CLOSED | Legislation Corpus Consolidation | `src/archive_govt_nz/domains/legislation/` |
+| [#88](https://github.com/edithatogo/corpus-legislation-nz/issues/88) | Track 05: Conservative Live Smoke Sync | CLOSED | Legislation Corpus Consolidation | `src/archive_govt_nz/domains/legislation/` |
+| [#89](https://github.com/edithatogo/corpus-legislation-nz/issues/89) | Track 06: First Hugging Face Smoke Upload | CLOSED | Track: Hugging Face & Zenodo Continuity | `src/archive_govt_nz/distribution/publisher.py` |
+| [#90](https://github.com/edithatogo/corpus-legislation-nz/issues/90) | Track 07: Full Corpus Bootstrap Download | CLOSED | Track: Corpus Pipeline & Checkpoint Migration | `src/archive_govt_nz/domains/legislation/corpus.py` |
+| [#91](https://github.com/edithatogo/corpus-legislation-nz/issues/91) | Track 08: Full Hugging Face Corpus Upload | OPEN | Track: Hugging Face & Zenodo Continuity | `src/archive_govt_nz/distribution/publisher.py` |
+| [#92](https://github.com/edithatogo/corpus-legislation-nz/issues/92) | Track 09: GitHub Scheduled Hugging Face Sync | OPEN | Track: Hugging Face & Zenodo Continuity | `src/archive_govt_nz/distribution/publisher.py` |
+| [#93](https://github.com/edithatogo/corpus-legislation-nz/issues/93) | Track 10: Maintenance Doctor And Alerting | CLOSED | Legislation Corpus Consolidation | `src/archive_govt_nz/domains/legislation/` |
+| [#94](https://github.com/edithatogo/corpus-legislation-nz/issues/94) | Track 11: Monthly Full Reconciliation | OPEN | Legislation Corpus Consolidation | `src/archive_govt_nz/domains/legislation/` |
+| [#95](https://github.com/edithatogo/corpus-legislation-nz/issues/95) | Track 12: Zenodo Sandbox Archive | CLOSED | Track: Hugging Face & Zenodo Continuity | `src/archive_govt_nz/zenodo.py` |
+| [#96](https://github.com/edithatogo/corpus-legislation-nz/issues/96) | Track 13: Protected Production Zenodo Archive | CLOSED | Track: Hugging Face & Zenodo Continuity | `src/archive_govt_nz/zenodo.py` |
+| [#97](https://github.com/edithatogo/corpus-legislation-nz/issues/97) | Track 14: Legal, Citation, And Dataset Wording | CLOSED | Legislation Corpus Consolidation | `src/archive_govt_nz/domains/legislation/` |
+| [#98](https://github.com/edithatogo/corpus-legislation-nz/issues/98) | Track 15: Downstream Researcher Usability | CLOSED | Legislation Corpus Consolidation | `src/archive_govt_nz/domains/legislation/` |
+| [#99](https://github.com/edithatogo/corpus-legislation-nz/issues/99) | Track 16: GitHub Repository Hardening | CLOSED | Legislation Corpus Consolidation | `src/archive_govt_nz/domains/legislation/` |
+| [#100](https://github.com/edithatogo/corpus-legislation-nz/issues/100) | Track 17: Runtime Capacity, Batching, And Resume | CLOSED | Track: Corpus Pipeline & Checkpoint Migration | `src/archive_govt_nz/domains/legislation/corpus.py` |
+| [#101](https://github.com/edithatogo/corpus-legislation-nz/issues/101) | Track 18: Data Quality And Schema Governance | OPEN | Track: Quality Engineering & Assurance | `tools/check.py` |
+| [#102](https://github.com/edithatogo/corpus-legislation-nz/issues/102) | Track 19: Public Launch Decision | CLOSED | Legislation Corpus Consolidation | `src/archive_govt_nz/domains/legislation/` |
+| [#103](https://github.com/edithatogo/corpus-legislation-nz/issues/103) | Track 20: GitHub Release Tag For Partial Launch | CLOSED | Legislation Corpus Consolidation | `src/archive_govt_nz/domains/legislation/` |
+| [#104](https://github.com/edithatogo/corpus-legislation-nz/issues/104) | Track 21: Separate Historical Hugging Face Corpus | CLOSED | Track: Hugging Face & Zenodo Continuity | `src/archive_govt_nz/distribution/publisher.py` |
+| [#105](https://github.com/edithatogo/corpus-legislation-nz/issues/105) | Track 22: Historical Bootstrap Review Plan | CLOSED | Track: Corpus Pipeline & Checkpoint Migration | `src/archive_govt_nz/domains/legislation/corpus.py` |
+| [#106](https://github.com/edithatogo/corpus-legislation-nz/issues/106) | Track 23: Manual Historical Upload Workflow | CLOSED | Track: Hugging Face & Zenodo Continuity | `src/archive_govt_nz/distribution/publisher.py` |
+| [#107](https://github.com/edithatogo/corpus-legislation-nz/issues/107) | Track 24: Corpus Family Naming And Publication Alignment | CLOSED | Legislation Corpus Consolidation | `src/archive_govt_nz/domains/legislation/` |
+| [#108](https://github.com/edithatogo/corpus-legislation-nz/issues/108) | Track 25: Cross Corpus Interoperability And Metadata | CLOSED | Legislation Corpus Consolidation | `src/archive_govt_nz/domains/legislation/` |
+| [#109](https://github.com/edithatogo/corpus-legislation-nz/issues/109) | Track 26: public surface audit evidence | CLOSED | Legislation Corpus Consolidation | `src/archive_govt_nz/domains/legislation/` |
+| [#110](https://github.com/edithatogo/corpus-legislation-nz/issues/110) | Track 27: zenodo rights metadata and zenodraft workflow | CLOSED | Legislation Corpus Consolidation | `src/archive_govt_nz/domains/legislation/` |
+| [#111](https://github.com/edithatogo/corpus-legislation-nz/issues/111) | Track 28: github repository name migration assessment | CLOSED | Legislation Corpus Consolidation | `src/archive_govt_nz/domains/legislation/` |
+| [#112](https://github.com/edithatogo/corpus-legislation-nz/issues/112) | Track 29: shared nz corpus core schema | CLOSED | Legislation Corpus Consolidation | `src/archive_govt_nz/domains/legislation/` |
+| [#113](https://github.com/edithatogo/corpus-legislation-nz/issues/113) | Track 30: sota metadata packages | CLOSED | Legislation Corpus Consolidation | `src/archive_govt_nz/domains/legislation/` |
+| [#114](https://github.com/edithatogo/corpus-legislation-nz/issues/114) | Track 31: bleeding edge versioning release automation | CLOSED | Legislation Corpus Consolidation | `src/archive_govt_nz/domains/legislation/` |
+| [#115](https://github.com/edithatogo/corpus-legislation-nz/issues/115) | Track 32: sota cicd code quality rust tooling | CLOSED | Track: Quality Engineering & Assurance | `tools/check.py` |
+| [#116](https://github.com/edithatogo/corpus-legislation-nz/issues/116) | Track 33: artifact provenance attestations | CLOSED | Track: Quality Engineering & Assurance | `tools/check.py` |
+| [#117](https://github.com/edithatogo/corpus-legislation-nz/issues/117) | Track 34: sota test infrastructure | CLOSED | Track: Quality Engineering & Assurance | `tools/check.py` |
+| [#118](https://github.com/edithatogo/corpus-legislation-nz/issues/118) | Track 35: multi-git and multi-archive mirroring setup | OPEN | Legislation Corpus Consolidation | `src/archive_govt_nz/domains/legislation/` |
+| [#119](https://github.com/edithatogo/corpus-legislation-nz/issues/119) | Track 36: period sharded bootstrap agent handoff | OPEN | Track: Corpus Pipeline & Checkpoint Migration | `src/archive_govt_nz/domains/legislation/corpus.py` |
+| [#120](https://github.com/edithatogo/corpus-legislation-nz/issues/120) | Track 37: Official Feed Change Detection | CLOSED | Legislation Corpus Consolidation | `src/archive_govt_nz/domains/legislation/` |
+| [#121](https://github.com/edithatogo/corpus-legislation-nz/issues/121) | Track 38: Official website fallback retrieval | CLOSED | Legislation Corpus Consolidation | `src/archive_govt_nz/domains/legislation/` |
+| [#122](https://github.com/edithatogo/corpus-legislation-nz/issues/122) | Track 39: NZLII redundancy reconciliation | CLOSED | Legislation Corpus Consolidation | `src/archive_govt_nz/domains/legislation/` |
+| [#123](https://github.com/edithatogo/corpus-legislation-nz/issues/123) | Track 40: Source redundancy resolver and provenance | CLOSED | Legislation Corpus Consolidation | `src/archive_govt_nz/domains/legislation/` |
+| [#137](https://github.com/edithatogo/corpus-legislation-nz/issues/137) | Track 41: NZ Gazette source registry, rights, and shared schema | CLOSED | Track: NZ Gazette Progression | `src/archive_govt_nz/adapters/nz_gazette.py & src/archive_govt_nz/domains/gazette/` |
+| [#138](https://github.com/edithatogo/corpus-legislation-nz/issues/138) | Track 42: NZ Gazette official archive | CLOSED | Track: NZ Gazette Progression | `src/archive_govt_nz/adapters/nz_gazette.py & src/archive_govt_nz/domains/gazette/` |
+| [#139](https://github.com/edithatogo/corpus-legislation-nz/issues/139) | Track 43: NZ Gazette DigitalNZ archive | OPEN | Track: NZ Gazette Progression | `src/archive_govt_nz/adapters/nz_gazette.py & src/archive_govt_nz/domains/gazette/` |
+| [#140](https://github.com/edithatogo/corpus-legislation-nz/issues/140) | Track 44: NZ Gazette Victoria/LexisNexis archive | OPEN | Track: NZ Gazette Progression | `src/archive_govt_nz/adapters/nz_gazette.py & src/archive_govt_nz/domains/gazette/` |
+| [#141](https://github.com/edithatogo/corpus-legislation-nz/issues/141) | Track 45: NZ Gazette NZLII redundancy archive | OPEN | Track: NZ Gazette Progression | `src/archive_govt_nz/adapters/nz_gazette.py & src/archive_govt_nz/domains/gazette/` |
+| [#142](https://github.com/edithatogo/corpus-legislation-nz/issues/142) | Track 46: NZ Gazette cross-source comparison and canonical builder | OPEN | Track: NZ Gazette Progression | `src/archive_govt_nz/adapters/nz_gazette.py & src/archive_govt_nz/domains/gazette/` |
+| [#143](https://github.com/edithatogo/corpus-legislation-nz/issues/143) | Track 47: NZ Gazette archive workflow, review, and publication staging | OPEN | Track: NZ Gazette Progression | `src/archive_govt_nz/adapters/nz_gazette.py & src/archive_govt_nz/domains/gazette/` |
+| [#144](https://github.com/edithatogo/corpus-legislation-nz/issues/144) | Track 48: NZ Gazette freshness and change detection | OPEN | Track: NZ Gazette Progression | `src/archive_govt_nz/adapters/nz_gazette.py & src/archive_govt_nz/domains/gazette/` |
+| [#145](https://github.com/edithatogo/corpus-legislation-nz/issues/145) | Track: Adopt shared code-scanning gate | OPEN | Track: Quality Engineering & Assurance | `tools/check.py` |
+| [#149](https://github.com/edithatogo/corpus-legislation-nz/issues/149) | track: Dataset identifier interlinking | OPEN | Legislation Corpus Consolidation | `src/archive_govt_nz/domains/legislation/` |
+| [#150](https://github.com/edithatogo/corpus-legislation-nz/issues/150) | Registry: publish and link a versioned Zenodo snapshot | OPEN | Track: Hugging Face & Zenodo Continuity | `src/archive_govt_nz/zenodo.py` |
+| [#151](https://github.com/edithatogo/corpus-legislation-nz/issues/151) | Registry: reconcile Hugging Face relationship metadata | OPEN | Track: Hugging Face & Zenodo Continuity | `src/archive_govt_nz/distribution/publisher.py` |
+| [#152](https://github.com/edithatogo/corpus-legislation-nz/issues/152) | Registry: archive the repository with Software Heritage | OPEN | Track: External Identity Reconciliation | `registry/publications/legislation.yml` |
+| [#157](https://github.com/edithatogo/corpus-legislation-nz/issues/157) | [Cross-repo] Map legislation corpus captures and releases to the RIOPA profile | OPEN | Legislation Corpus Consolidation | `src/archive_govt_nz/domains/legislation/` |
+| [#158](https://github.com/edithatogo/corpus-legislation-nz/issues/158) | [Quality frontier] Close warranted testing and CI/CD gaps | OPEN | Track: Quality Engineering & Assurance | `tools/check.py` |
+| [#159](https://github.com/edithatogo/corpus-legislation-nz/issues/159) | [Quality frontier] Maximise security and solo-maintainer context | OPEN | Track: Quality Engineering & Assurance | `tools/check.py` |
+| [#160](https://github.com/edithatogo/corpus-legislation-nz/issues/160) | [Quality frontier] Complete evidence-based repository hardening | OPEN | Track: Quality Engineering & Assurance | `tools/check.py` |

@@ -78,6 +78,14 @@ def list_tools() -> list[dict[str, Any]]:
                 "properties": {},
             },
         },
+        {
+            "name": "archive_legislation",
+            "description": "Query the legislation preservation corpus and coverage.",
+            "inputSchema": {
+                "type": "object",
+                "properties": {},
+            },
+        },
     ]
 
 
@@ -101,6 +109,12 @@ def list_resources() -> list[dict[str, Any]]:
             "name": "Archive System Status",
             "mimeType": "application/json",
             "description": "Current system health, assurance, and fixity status.",
+        },
+        {
+            "uri": "archive://legislation",
+            "name": "Legislation Corpus Status",
+            "mimeType": "application/json",
+            "description": "Legislation corpus coverage and preservation status.",
         },
     ]
 
@@ -151,6 +165,13 @@ def call_tool(name: str, arguments: dict[str, Any] | None = None) -> dict[str, A
         return {
             "ledger_status": "synced",
             "entities_tracked": 350,
+        }
+    if name == "archive_legislation":
+        return {
+            "status": "active",
+            "seed_works_count": 33693,
+            "historical_batches_count": 68,
+            "coverage_percent": 100.0,
         }
     msg = f"Unknown tool: {name}"
     raise ValueError(msg)

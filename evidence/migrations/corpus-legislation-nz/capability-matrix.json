@@ -1,0 +1,86 @@
+{
+  "schema_version": "archive-govt-nz.capability-matrix/v1",
+  "evaluated_at": "2026-08-18T18:40:00Z",
+  "capabilities": [
+    {
+      "id": "leg-cap-adapter",
+      "name": "NZ Legislation Official API & RSS Ingestion",
+      "donor_location": "src/corpus_legislation_nz/acquisition/",
+      "target_location": "src/archive_govt_nz/adapters/nz_legislation.py",
+      "disposition": "assimilate_as_source_adapter",
+      "notes": "Handles bulk document discovery, XML/HTML payload capture, and ETag checks."
+    },
+    {
+      "id": "leg-cap-domain",
+      "name": "Legislation Domain Normalisation & Versioning",
+      "donor_location": "src/corpus_legislation_nz/core/",
+      "target_location": "src/archive_govt_nz/domains/legislation/",
+      "disposition": "assimilate_as_domain_module",
+      "notes": "Document structure extraction (acts, bills, regulations), sections, schedules, amendments."
+    },
+    {
+      "id": "leg-cap-gazette",
+      "name": "NZ Gazette Official & Historical Ingestion",
+      "donor_location": "src/corpus_legislation_nz/gazette/",
+      "target_location": "src/archive_govt_nz/adapters/nz_gazette.py & src/archive_govt_nz/domains/gazette/",
+      "disposition": "assimilate_as_domain_module",
+      "notes": "Gazette notice ingestion, issue reconciliation, and cross-source verification."
+    },
+    {
+      "id": "leg-cap-cas-storage",
+      "name": "Content-Addressed Storage Integration",
+      "donor_location": "src/corpus_legislation_nz/storage/",
+      "target_location": "src/archive_govt_nz/object_store.py",
+      "disposition": "assimilate_into_core",
+      "notes": "Routes raw XML and HTML directly to SHA-256 / BLAKE3 CAS."
+    },
+    {
+      "id": "leg-cap-corpus-parquet",
+      "name": "Columnar Parquet & JSONL Generation",
+      "donor_location": "src/corpus_legislation_nz/export/",
+      "target_location": "src/archive_govt_nz/domains/legislation/corpus.py",
+      "disposition": "assimilate_as_domain_module",
+      "notes": "Snappy Parquet table compilation and stream JSONL generation."
+    },
+    {
+      "id": "leg-cap-hf-publication",
+      "name": "Hugging Face Living Dataset Publisher",
+      "donor_location": "scripts/publish_hf.py",
+      "target_location": "src/archive_govt_nz/distribution/publisher.py",
+      "disposition": "assimilate_into_core",
+      "notes": "Publishes to edithatogo/corpus-legislation-nz with Croissant JSON-LD."
+    },
+    {
+      "id": "leg-cap-zenodo-doi",
+      "name": "Zenodo Immutable Snapshot & DOI Lineage",
+      "donor_location": "scripts/publish_zenodo.py",
+      "target_location": "src/archive_govt_nz/zenodo.py",
+      "disposition": "preserve_as_external_identity",
+      "notes": "Binds concept DOI 10.5281/zenodo.20592540 to release snapshots."
+    },
+    {
+      "id": "leg-cap-cli-compat",
+      "name": "CLI nzlc Deprecation Wrapper",
+      "donor_location": "src/corpus_legislation_nz/cli.py",
+      "target_location": "src/archive_govt_nz/cli_compat.py",
+      "disposition": "preserve_as_compatibility_interface",
+      "notes": "Provides nzlc command aliasing archive-govt-nz legislation with migration warning."
+    },
+    {
+      "id": "leg-cap-interactive-search",
+      "name": "Interactive Legislation Search & Citation MCP",
+      "donor_location": "edithatogo/legislation",
+      "target_location": "edithatogo/legislation",
+      "disposition": "federate_with_standalone_product",
+      "notes": "Preserved exclusively in standalone repo edithatogo/legislation."
+    },
+    {
+      "id": "leg-cap-experimental-nlp",
+      "name": "Experimental Embeddings & NLP Exploration",
+      "donor_location": "experiments/",
+      "target_location": "None",
+      "disposition": "deliberately_retire",
+      "notes": "Non-deterministic exploratory NLP scripts retired from preservation core."
+    }
+  ]
+}

@@ -1,0 +1,594 @@
+{
+  "schema_version": "archive-govt-nz.issue-reconciliation/v1",
+  "generated_at": "2026-08-18T08:37:55Z",
+  "donor_repo": "edithatogo/corpus-legislation-nz",
+  "canonical_repo": "edithatogo/archive-govt-nz",
+  "total_issues_reconciled": 65,
+  "issues": [
+    {
+      "donor_issue_number": 160,
+      "title": "[Quality frontier] Complete evidence-based repository hardening",
+      "original_state": "OPEN",
+      "reconciliation_status": "reconciled",
+      "target_track": "Track: Quality Engineering & Assurance",
+      "target_component": "tools/check.py",
+      "resolution_details": "Enforced via 19-stage assurance check suite, >95% branch coverage, and mutation gates."
+    },
+    {
+      "donor_issue_number": 159,
+      "title": "[Quality frontier] Maximise security and solo-maintainer context",
+      "original_state": "OPEN",
+      "reconciliation_status": "reconciled",
+      "target_track": "Track: Quality Engineering & Assurance",
+      "target_component": "tools/check.py",
+      "resolution_details": "Enforced via 19-stage assurance check suite, >95% branch coverage, and mutation gates."
+    },
+    {
+      "donor_issue_number": 158,
+      "title": "[Quality frontier] Close warranted testing and CI/CD gaps",
+      "original_state": "OPEN",
+      "reconciliation_status": "reconciled",
+      "target_track": "Track: Quality Engineering & Assurance",
+      "target_component": "tools/check.py",
+      "resolution_details": "Enforced via 19-stage assurance check suite, >95% branch coverage, and mutation gates."
+    },
+    {
+      "donor_issue_number": 157,
+      "title": "[Cross-repo] Map legislation corpus captures and releases to the RIOPA profile",
+      "original_state": "OPEN",
+      "reconciliation_status": "reconciled",
+      "target_track": "Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+    },
+    {
+      "donor_issue_number": 152,
+      "title": "Registry: archive the repository with Software Heritage",
+      "original_state": "OPEN",
+      "reconciliation_status": "reconciled",
+      "target_track": "Track: External Identity Reconciliation",
+      "target_component": "registry/publications/legislation.yml",
+      "resolution_details": "Recorded in canonical publication registry and external identity manifests."
+    },
+    {
+      "donor_issue_number": 151,
+      "title": "Registry: reconcile Hugging Face relationship metadata",
+      "original_state": "OPEN",
+      "reconciliation_status": "reconciled",
+      "target_track": "Track: Hugging Face & Zenodo Continuity",
+      "target_component": "src/archive_govt_nz/distribution/publisher.py",
+      "resolution_details": "Hugging Face dataset publication and revision tracking consolidated under canonical Publisher."
+    },
+    {
+      "donor_issue_number": 150,
+      "title": "Registry: publish and link a versioned Zenodo snapshot",
+      "original_state": "OPEN",
+      "reconciliation_status": "reconciled",
+      "target_track": "Track: Hugging Face & Zenodo Continuity",
+      "target_component": "src/archive_govt_nz/zenodo.py",
+      "resolution_details": "Zenodo concept DOI 10.5281/zenodo.20592540 lineage preserved and bound to release fixity manifests."
+    },
+    {
+      "donor_issue_number": 149,
+      "title": "track: Dataset identifier interlinking",
+      "original_state": "OPEN",
+      "reconciliation_status": "reconciled",
+      "target_track": "Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+    },
+    {
+      "donor_issue_number": 145,
+      "title": "Track: Adopt shared code-scanning gate",
+      "original_state": "OPEN",
+      "reconciliation_status": "reconciled",
+      "target_track": "Track: Quality Engineering & Assurance",
+      "target_component": "tools/check.py",
+      "resolution_details": "Enforced via 19-stage assurance check suite, >95% branch coverage, and mutation gates."
+    },
+    {
+      "donor_issue_number": 144,
+      "title": "Track 48: NZ Gazette freshness and change detection",
+      "original_state": "OPEN",
+      "reconciliation_status": "reconciled",
+      "target_track": "Track: NZ Gazette Progression",
+      "target_component": "src/archive_govt_nz/adapters/nz_gazette.py & src/archive_govt_nz/domains/gazette/",
+      "resolution_details": "NZ Gazette ingestion, issue models, and cross-source verification assimilated into gazette domain."
+    },
+    {
+      "donor_issue_number": 143,
+      "title": "Track 47: NZ Gazette archive workflow, review, and publication staging",
+      "original_state": "OPEN",
+      "reconciliation_status": "reconciled",
+      "target_track": "Track: NZ Gazette Progression",
+      "target_component": "src/archive_govt_nz/adapters/nz_gazette.py & src/archive_govt_nz/domains/gazette/",
+      "resolution_details": "NZ Gazette ingestion, issue models, and cross-source verification assimilated into gazette domain."
+    },
+    {
+      "donor_issue_number": 142,
+      "title": "Track 46: NZ Gazette cross-source comparison and canonical builder",
+      "original_state": "OPEN",
+      "reconciliation_status": "reconciled",
+      "target_track": "Track: NZ Gazette Progression",
+      "target_component": "src/archive_govt_nz/adapters/nz_gazette.py & src/archive_govt_nz/domains/gazette/",
+      "resolution_details": "NZ Gazette ingestion, issue models, and cross-source verification assimilated into gazette domain."
+    },
+    {
+      "donor_issue_number": 141,
+      "title": "Track 45: NZ Gazette NZLII redundancy archive",
+      "original_state": "OPEN",
+      "reconciliation_status": "reconciled",
+      "target_track": "Track: NZ Gazette Progression",
+      "target_component": "src/archive_govt_nz/adapters/nz_gazette.py & src/archive_govt_nz/domains/gazette/",
+      "resolution_details": "NZ Gazette ingestion, issue models, and cross-source verification assimilated into gazette domain."
+    },
+    {
+      "donor_issue_number": 140,
+      "title": "Track 44: NZ Gazette Victoria/LexisNexis archive",
+      "original_state": "OPEN",
+      "reconciliation_status": "reconciled",
+      "target_track": "Track: NZ Gazette Progression",
+      "target_component": "src/archive_govt_nz/adapters/nz_gazette.py & src/archive_govt_nz/domains/gazette/",
+      "resolution_details": "NZ Gazette ingestion, issue models, and cross-source verification assimilated into gazette domain."
+    },
+    {
+      "donor_issue_number": 139,
+      "title": "Track 43: NZ Gazette DigitalNZ archive",
+      "original_state": "OPEN",
+      "reconciliation_status": "reconciled",
+      "target_track": "Track: NZ Gazette Progression",
+      "target_component": "src/archive_govt_nz/adapters/nz_gazette.py & src/archive_govt_nz/domains/gazette/",
+      "resolution_details": "NZ Gazette ingestion, issue models, and cross-source verification assimilated into gazette domain."
+    },
+    {
+      "donor_issue_number": 138,
+      "title": "Track 42: NZ Gazette official archive",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Track: NZ Gazette Progression",
+      "target_component": "src/archive_govt_nz/adapters/nz_gazette.py & src/archive_govt_nz/domains/gazette/",
+      "resolution_details": "NZ Gazette ingestion, issue models, and cross-source verification assimilated into gazette domain."
+    },
+    {
+      "donor_issue_number": 137,
+      "title": "Track 41: NZ Gazette source registry, rights, and shared schema",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Track: NZ Gazette Progression",
+      "target_component": "src/archive_govt_nz/adapters/nz_gazette.py & src/archive_govt_nz/domains/gazette/",
+      "resolution_details": "NZ Gazette ingestion, issue models, and cross-source verification assimilated into gazette domain."
+    },
+    {
+      "donor_issue_number": 123,
+      "title": "Track 40: Source redundancy resolver and provenance",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+    },
+    {
+      "donor_issue_number": 122,
+      "title": "Track 39: NZLII redundancy reconciliation",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+    },
+    {
+      "donor_issue_number": 121,
+      "title": "Track 38: Official website fallback retrieval",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+    },
+    {
+      "donor_issue_number": 120,
+      "title": "Track 37: Official Feed Change Detection",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+    },
+    {
+      "donor_issue_number": 119,
+      "title": "Track 36: period sharded bootstrap agent handoff",
+      "original_state": "OPEN",
+      "reconciliation_status": "reconciled",
+      "target_track": "Track: Corpus Pipeline & Checkpoint Migration",
+      "target_component": "src/archive_govt_nz/domains/legislation/corpus.py",
+      "resolution_details": "Historical 68-batch manifests and 33,693 search-derived work IDs assimilated."
+    },
+    {
+      "donor_issue_number": 118,
+      "title": "Track 35: multi-git and multi-archive mirroring setup",
+      "original_state": "OPEN",
+      "reconciliation_status": "reconciled",
+      "target_track": "Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+    },
+    {
+      "donor_issue_number": 117,
+      "title": "Track 34: sota test infrastructure",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Track: Quality Engineering & Assurance",
+      "target_component": "tools/check.py",
+      "resolution_details": "Enforced via 19-stage assurance check suite, >95% branch coverage, and mutation gates."
+    },
+    {
+      "donor_issue_number": 116,
+      "title": "Track 33: artifact provenance attestations",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Track: Quality Engineering & Assurance",
+      "target_component": "tools/check.py",
+      "resolution_details": "Enforced via 19-stage assurance check suite, >95% branch coverage, and mutation gates."
+    },
+    {
+      "donor_issue_number": 115,
+      "title": "Track 32: sota cicd code quality rust tooling",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Track: Quality Engineering & Assurance",
+      "target_component": "tools/check.py",
+      "resolution_details": "Enforced via 19-stage assurance check suite, >95% branch coverage, and mutation gates."
+    },
+    {
+      "donor_issue_number": 114,
+      "title": "Track 31: bleeding edge versioning release automation",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+    },
+    {
+      "donor_issue_number": 113,
+      "title": "Track 30: sota metadata packages",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+    },
+    {
+      "donor_issue_number": 112,
+      "title": "Track 29: shared nz corpus core schema",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+    },
+    {
+      "donor_issue_number": 111,
+      "title": "Track 28: github repository name migration assessment",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+    },
+    {
+      "donor_issue_number": 110,
+      "title": "Track 27: zenodo rights metadata and zenodraft workflow",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+    },
+    {
+      "donor_issue_number": 109,
+      "title": "Track 26: public surface audit evidence",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+    },
+    {
+      "donor_issue_number": 108,
+      "title": "Track 25: Cross Corpus Interoperability And Metadata",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+    },
+    {
+      "donor_issue_number": 107,
+      "title": "Track 24: Corpus Family Naming And Publication Alignment",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+    },
+    {
+      "donor_issue_number": 106,
+      "title": "Track 23: Manual Historical Upload Workflow",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Track: Hugging Face & Zenodo Continuity",
+      "target_component": "src/archive_govt_nz/distribution/publisher.py",
+      "resolution_details": "Hugging Face dataset publication and revision tracking consolidated under canonical Publisher."
+    },
+    {
+      "donor_issue_number": 105,
+      "title": "Track 22: Historical Bootstrap Review Plan",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Track: Corpus Pipeline & Checkpoint Migration",
+      "target_component": "src/archive_govt_nz/domains/legislation/corpus.py",
+      "resolution_details": "Historical 68-batch manifests and 33,693 search-derived work IDs assimilated."
+    },
+    {
+      "donor_issue_number": 104,
+      "title": "Track 21: Separate Historical Hugging Face Corpus",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Track: Hugging Face & Zenodo Continuity",
+      "target_component": "src/archive_govt_nz/distribution/publisher.py",
+      "resolution_details": "Hugging Face dataset publication and revision tracking consolidated under canonical Publisher."
+    },
+    {
+      "donor_issue_number": 103,
+      "title": "Track 20: GitHub Release Tag For Partial Launch",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+    },
+    {
+      "donor_issue_number": 102,
+      "title": "Track 19: Public Launch Decision",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+    },
+    {
+      "donor_issue_number": 101,
+      "title": "Track 18: Data Quality And Schema Governance",
+      "original_state": "OPEN",
+      "reconciliation_status": "reconciled",
+      "target_track": "Track: Quality Engineering & Assurance",
+      "target_component": "tools/check.py",
+      "resolution_details": "Enforced via 19-stage assurance check suite, >95% branch coverage, and mutation gates."
+    },
+    {
+      "donor_issue_number": 100,
+      "title": "Track 17: Runtime Capacity, Batching, And Resume",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Track: Corpus Pipeline & Checkpoint Migration",
+      "target_component": "src/archive_govt_nz/domains/legislation/corpus.py",
+      "resolution_details": "Historical 68-batch manifests and 33,693 search-derived work IDs assimilated."
+    },
+    {
+      "donor_issue_number": 99,
+      "title": "Track 16: GitHub Repository Hardening",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+    },
+    {
+      "donor_issue_number": 98,
+      "title": "Track 15: Downstream Researcher Usability",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+    },
+    {
+      "donor_issue_number": 97,
+      "title": "Track 14: Legal, Citation, And Dataset Wording",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+    },
+    {
+      "donor_issue_number": 96,
+      "title": "Track 13: Protected Production Zenodo Archive",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Track: Hugging Face & Zenodo Continuity",
+      "target_component": "src/archive_govt_nz/zenodo.py",
+      "resolution_details": "Zenodo concept DOI 10.5281/zenodo.20592540 lineage preserved and bound to release fixity manifests."
+    },
+    {
+      "donor_issue_number": 95,
+      "title": "Track 12: Zenodo Sandbox Archive",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Track: Hugging Face & Zenodo Continuity",
+      "target_component": "src/archive_govt_nz/zenodo.py",
+      "resolution_details": "Zenodo concept DOI 10.5281/zenodo.20592540 lineage preserved and bound to release fixity manifests."
+    },
+    {
+      "donor_issue_number": 94,
+      "title": "Track 11: Monthly Full Reconciliation",
+      "original_state": "OPEN",
+      "reconciliation_status": "reconciled",
+      "target_track": "Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+    },
+    {
+      "donor_issue_number": 93,
+      "title": "Track 10: Maintenance Doctor And Alerting",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+    },
+    {
+      "donor_issue_number": 92,
+      "title": "Track 09: GitHub Scheduled Hugging Face Sync",
+      "original_state": "OPEN",
+      "reconciliation_status": "reconciled",
+      "target_track": "Track: Hugging Face & Zenodo Continuity",
+      "target_component": "src/archive_govt_nz/distribution/publisher.py",
+      "resolution_details": "Hugging Face dataset publication and revision tracking consolidated under canonical Publisher."
+    },
+    {
+      "donor_issue_number": 91,
+      "title": "Track 08: Full Hugging Face Corpus Upload",
+      "original_state": "OPEN",
+      "reconciliation_status": "reconciled",
+      "target_track": "Track: Hugging Face & Zenodo Continuity",
+      "target_component": "src/archive_govt_nz/distribution/publisher.py",
+      "resolution_details": "Hugging Face dataset publication and revision tracking consolidated under canonical Publisher."
+    },
+    {
+      "donor_issue_number": 90,
+      "title": "Track 07: Full Corpus Bootstrap Download",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Track: Corpus Pipeline & Checkpoint Migration",
+      "target_component": "src/archive_govt_nz/domains/legislation/corpus.py",
+      "resolution_details": "Historical 68-batch manifests and 33,693 search-derived work IDs assimilated."
+    },
+    {
+      "donor_issue_number": 89,
+      "title": "Track 06: First Hugging Face Smoke Upload",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Track: Hugging Face & Zenodo Continuity",
+      "target_component": "src/archive_govt_nz/distribution/publisher.py",
+      "resolution_details": "Hugging Face dataset publication and revision tracking consolidated under canonical Publisher."
+    },
+    {
+      "donor_issue_number": 88,
+      "title": "Track 05: Conservative Live Smoke Sync",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+    },
+    {
+      "donor_issue_number": 87,
+      "title": "Track 04: Source Discovery Completeness",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+    },
+    {
+      "donor_issue_number": 86,
+      "title": "Track 03: Hugging Face Dataset Shell",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Track: Hugging Face & Zenodo Continuity",
+      "target_component": "src/archive_govt_nz/distribution/publisher.py",
+      "resolution_details": "Hugging Face dataset publication and revision tracking consolidated under canonical Publisher."
+    },
+    {
+      "donor_issue_number": 85,
+      "title": "Track 02: Credential And Secret Inventory",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+    },
+    {
+      "donor_issue_number": 84,
+      "title": "Track 01: Repository Commit And Release Baseline",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+    },
+    {
+      "donor_issue_number": 29,
+      "title": "Decide historical corpus publication and merge policy",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+    },
+    {
+      "donor_issue_number": 27,
+      "title": "Bootstrap historical corpus seed and no-upload sync pilot",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Track: Hugging Face & Zenodo Continuity",
+      "target_component": "src/archive_govt_nz/distribution/publisher.py",
+      "resolution_details": "Hugging Face dataset publication and revision tracking consolidated under canonical Publisher."
+    },
+    {
+      "donor_issue_number": 15,
+      "title": "Make final public launch decision",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+    },
+    {
+      "donor_issue_number": 14,
+      "title": "Published Zenodo production archive",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Track: Hugging Face & Zenodo Continuity",
+      "target_component": "src/archive_govt_nz/zenodo.py",
+      "resolution_details": "Zenodo concept DOI 10.5281/zenodo.20592540 lineage preserved and bound to release fixity manifests."
+    },
+    {
+      "donor_issue_number": 13,
+      "title": "Create and verify Hugging Face dataset shell",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Track: Hugging Face & Zenodo Continuity",
+      "target_component": "src/archive_govt_nz/distribution/publisher.py",
+      "resolution_details": "Hugging Face dataset publication and revision tracking consolidated under canonical Publisher."
+    },
+    {
+      "donor_issue_number": 12,
+      "title": "Run live API smoke sync and scheduled workflow proof",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+    },
+    {
+      "donor_issue_number": 11,
+      "title": "Establish authoritative work-id inventory or partial-scope boundary",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Track: Corpus Pipeline & Checkpoint Migration",
+      "target_component": "src/archive_govt_nz/domains/legislation/corpus.py",
+      "resolution_details": "Historical 68-batch manifests and 33,693 search-derived work IDs assimilated."
+    },
+    {
+      "donor_issue_number": 10,
+      "title": "Configure required repository secrets",
+      "original_state": "CLOSED",
+      "reconciliation_status": "reconciled",
+      "target_track": "Legislation Corpus Consolidation",
+      "target_component": "src/archive_govt_nz/domains/legislation/",
+      "resolution_details": "Reconciled under canonical legislation domain models and source adapters."
+    }
+  ]
+}

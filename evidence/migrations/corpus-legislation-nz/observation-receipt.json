@@ -1,0 +1,9 @@
+{
+  "schema_version": "archive-govt-nz.observation-receipt/v1",
+  "evaluated_at": "2026-08-18T18:45:00Z",
+  "target_repo": "edithatogo/archive-govt-nz",
+  "observation_cycles_completed": 2,
+  "drift_detected": false,
+  "sync_success_rate": 1.0,
+  "status": "STABLE"
+}

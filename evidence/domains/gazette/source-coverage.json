@@ -1,0 +1,21 @@
+{
+  "schema_version": "archive-govt-nz.gazette-source-coverage/v1",
+  "evaluated_at": "2026-08-18T18:45:00Z",
+  "sources": {
+    "official_nz_gazette": {
+      "coverage_years": "1993-2026",
+      "status": "assimilated",
+      "records_count": 85400
+    },
+    "digitalnz_archive": {
+      "coverage_years": "1840-1992",
+      "status": "federated_dependency",
+      "partner_package": "edithatogo/dnz"
+    },
+    "nzlii_redundancy": {
+      "coverage_years": "1900-2000",
+      "status": "cross_referenced"
+    }
+  },
+  "canonical_reconciled_status": "in_progress"
+}

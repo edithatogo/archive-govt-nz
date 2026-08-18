@@ -1,0 +1,29 @@
+{
+  "schema_version": "archive-govt-nz.pre-acquisition-discovery/v1",
+  "evaluated_at": "2026-08-18T18:40:00Z",
+  "donor_repo": "edithatogo/corpus-legislation-nz",
+  "donor_commit": "749918c251da59dc890c19dfda2ab9a021fd8ca6",
+  "inspected_surfaces": {
+    "huggingface": {
+      "living_dataset": "edithatogo/corpus-legislation-nz",
+      "historical_dataset": "edithatogo/corpus-legislation-nz-historical",
+      "legacy_dataset": "edithatogo/nz-legislation-corpus",
+      "status": "active_and_verified"
+    },
+    "zenodo": {
+      "concept_doi": "10.5281/zenodo.20592540",
+      "status": "concept_lineage_verified"
+    },
+    "github_releases": {
+      "repo": "edithatogo/corpus-legislation-nz",
+      "status": "verified"
+    },
+    "batch_checkpoints": {
+      "historical_batches_count": 68,
+      "seed_work_ids_count": 33693,
+      "status": "verified_reusable"
+    }
+  },
+  "decision": "reuse_and_verify",
+  "decision_rationale": "Existing historical checkpoints, seed registries, and remote Hugging Face/Zenodo releases are authoritative and intact. Do not re-download raw payloads; import state, verify checksums, and orchestrate future incremental synchronisation from canonical target."
+}

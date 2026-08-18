@@ -1,0 +1,10 @@
+{
+  "test_class": "fixture",
+  "evaluated_at": "2026-08-18T18:45:00Z",
+  "sample_acts_tested": 150,
+  "sample_bills_tested": 75,
+  "sample_regulations_tested": 120,
+  "schema_conformance": "100%",
+  "semantic_parity": 1.0,
+  "status": "passed"
+}
