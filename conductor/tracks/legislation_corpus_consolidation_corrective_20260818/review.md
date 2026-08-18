@@ -1,8 +1,6 @@
-# Review: Corrective Programme Quality & Lineage Audit
+# Review: Corrective Programme Quality & Anti-Simulation Gate
 
-## Audit Findings & Verification
-- All 15 executable contracts verified against schema via `tools/validate_contracts.py`.
-- 12 child tracks registered in `conductor/tracks.md`.
-- Historical PR #124 unsupported closeout claims invalidated with explicit audit trail.
-- Independent completion evaluation verified via `tools/evaluate_legislation_completion.py`.
-- No fixed dummy constants or unverified counts present in production modules.
+## Review Status: READY_FOR_REVIEW
+- Evaluator hardening complete: `tools/evaluate_legislation_completion.py` successfully detects incomplete implementation, reporting `INCOMPLETE` with exit code 1.
+- All 15 YAML contracts validate under `jsonschema.Draft202012Validator`.
+- Automated anti-simulation tests verify that fake passing receipts are rejected.
