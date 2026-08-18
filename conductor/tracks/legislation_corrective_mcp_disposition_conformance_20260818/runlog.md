@@ -1,3 +1,5 @@
-# Run Log: MCP disposition and conformance
+# Run Log: MCP Disposition and Conformance
 
-- Initialized track at 2026-08-18T12:54:00Z.
+- Implemented `StdioServerTransport` and `Server` JSON-RPC 2.0 runtime in `src/archive_govt_nz/mcp_server.py`.
+- Replaced static constants with dynamic inspections.
+- Updated and verified unit tests in `tests/cli/test_mcp_cli_contract.py`.

@@ -1,6 +1,6 @@
 # Reconciled GitHub Issues: `corpus-legislation-nz`
 
-**Generated**: `2026-08-18T11:17:55Z`  
+**Generated**: `2026-08-18T23:14:21Z`  
 **Donor Repository**: `edithatogo/corpus-legislation-nz`  
 **Canonical Target Tracking Issue**: [#125](https://github.com/edithatogo/archive-govt-nz/issues/125)  
 **Total Issues Audited**: 86 (21 open donor issues)  
