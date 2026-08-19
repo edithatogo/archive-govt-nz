@@ -1,5 +1,8 @@
-# Plan: Rights and redistribution
+# Plan: Rights Verification and Redistribution Continuity
 
-1. Establish contract and test seams.
-2. Implement/verify domain behaviours.
-3. Validate evidence.
+1. **Phase 1: Public Dataset Rights Audit**
+   - Extract and verify rights declarations across Hugging Face and Zenodo publication endpoints.
+2. **Phase 2: Provenance and Redistribution Receipts**
+   - Bind verifiable rights assertions to `remote-publication-readback-receipt.json`.
+3. **Phase 3: Verification Assurance**
+   - Validate contract schemas and execute assurance suite.
