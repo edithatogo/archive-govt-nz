@@ -44,6 +44,9 @@
       "type": "string",
       "enum": ["in_force", "amended", "repealed", "bill_introduced", "bill_passed", "historical", "unknown"]
     },
+    "status_uncertain": {
+      "type": "boolean"
+    },
     "canonical_uri": {
       "type": "string",
       "format": "uri"
@@ -81,6 +84,52 @@
     "schedules_count": {
       "type": "integer",
       "minimum": 0
+    },
+    "relationships": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["relationship_type", "target_work_id"],
+        "properties": {
+          "relationship_type": {
+            "type": "string",
+            "enum": ["amends", "amended_by", "repeals", "repealed_by", "replaces", "replaced_by"]
+          },
+          "target_work_id": {
+            "type": "string"
+          },
+          "effective_date": {
+            "type": ["string", "null"]
+          },
+          "note": {
+            "type": ["string", "null"]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "provenance": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["source_system", "record_id", "ingested_at", "agent"],
+        "properties": {
+          "source_system": {
+            "type": "string"
+          },
+          "record_id": {
+            "type": "string"
+          },
+          "ingested_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "agent": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
     },
     "rights_statement": {
       "type": ["string", "null"]
