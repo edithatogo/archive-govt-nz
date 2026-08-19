@@ -1,10 +1,194 @@
 {
-  "schema_version": "archive-govt-nz.donor-snapshot/v1",
+  "schema_version": "archive-govt-nz.donor-snapshot/v2",
   "source_url": "https://api.github.com/repos/edithatogo/corpus-legislation-nz",
-  "retrieved_at": "2026-08-19T00:53:59Z",
-  "etag": "W/\"e8f94e768a283fbb6ccaec05bb93e2d7039cd904e65647453e8d10484538eed0\"",
-  "response_sha256": "54a63c4d5d14e05bc6338f15b6fb37c760a3d90df2f86d911a8e3633a866e37e",
-  "open_issues_count": 30,
+  "retrieved_at": "2026-08-19T02:09:06Z",
+  "open_issues_count": 21,
+  "open_pull_requests_count": 9,
+  "total_open_count": 30,
   "default_branch": "main",
-  "is_cached": false
+  "is_cached": false,
+  "open_issues": [
+    {
+      "number": 160,
+      "state": "OPEN",
+      "title": "[Quality frontier] Complete evidence-based repository hardening",
+      "url": "https://github.com/edithatogo/corpus-legislation-nz/issues/160"
+    },
+    {
+      "number": 159,
+      "state": "OPEN",
+      "title": "[Quality frontier] Maximise security and solo-maintainer context",
+      "url": "https://github.com/edithatogo/corpus-legislation-nz/issues/159"
+    },
+    {
+      "number": 158,
+      "state": "OPEN",
+      "title": "[Quality frontier] Close warranted testing and CI/CD gaps",
+      "url": "https://github.com/edithatogo/corpus-legislation-nz/issues/158"
+    },
+    {
+      "number": 157,
+      "state": "OPEN",
+      "title": "[Cross-repo] Map legislation corpus captures and releases to the RIOPA profile",
+      "url": "https://github.com/edithatogo/corpus-legislation-nz/issues/157"
+    },
+    {
+      "number": 152,
+      "state": "OPEN",
+      "title": "Registry: archive the repository with Software Heritage",
+      "url": "https://github.com/edithatogo/corpus-legislation-nz/issues/152"
+    },
+    {
+      "number": 151,
+      "state": "OPEN",
+      "title": "Registry: reconcile Hugging Face relationship metadata",
+      "url": "https://github.com/edithatogo/corpus-legislation-nz/issues/151"
+    },
+    {
+      "number": 150,
+      "state": "OPEN",
+      "title": "Registry: publish and link a versioned Zenodo snapshot",
+      "url": "https://github.com/edithatogo/corpus-legislation-nz/issues/150"
+    },
+    {
+      "number": 149,
+      "state": "OPEN",
+      "title": "track: Dataset identifier interlinking",
+      "url": "https://github.com/edithatogo/corpus-legislation-nz/issues/149"
+    },
+    {
+      "number": 145,
+      "state": "OPEN",
+      "title": "Track: Adopt shared code-scanning gate",
+      "url": "https://github.com/edithatogo/corpus-legislation-nz/issues/145"
+    },
+    {
+      "number": 144,
+      "state": "OPEN",
+      "title": "Track 48: NZ Gazette freshness and change detection",
+      "url": "https://github.com/edithatogo/corpus-legislation-nz/issues/144"
+    },
+    {
+      "number": 143,
+      "state": "OPEN",
+      "title": "Track 47: NZ Gazette archive workflow, review, and publication staging",
+      "url": "https://github.com/edithatogo/corpus-legislation-nz/issues/143"
+    },
+    {
+      "number": 142,
+      "state": "OPEN",
+      "title": "Track 46: NZ Gazette cross-source comparison and canonical builder",
+      "url": "https://github.com/edithatogo/corpus-legislation-nz/issues/142"
+    },
+    {
+      "number": 141,
+      "state": "OPEN",
+      "title": "Track 45: NZ Gazette NZLII redundancy archive",
+      "url": "https://github.com/edithatogo/corpus-legislation-nz/issues/141"
+    },
+    {
+      "number": 140,
+      "state": "OPEN",
+      "title": "Track 44: NZ Gazette Victoria/LexisNexis archive",
+      "url": "https://github.com/edithatogo/corpus-legislation-nz/issues/140"
+    },
+    {
+      "number": 139,
+      "state": "OPEN",
+      "title": "Track 43: NZ Gazette DigitalNZ archive",
+      "url": "https://github.com/edithatogo/corpus-legislation-nz/issues/139"
+    },
+    {
+      "number": 119,
+      "state": "OPEN",
+      "title": "Track 36: period sharded bootstrap agent handoff",
+      "url": "https://github.com/edithatogo/corpus-legislation-nz/issues/119"
+    },
+    {
+      "number": 118,
+      "state": "OPEN",
+      "title": "Track 35: multi-git and multi-archive mirroring setup",
+      "url": "https://github.com/edithatogo/corpus-legislation-nz/issues/118"
+    },
+    {
+      "number": 101,
+      "state": "OPEN",
+      "title": "Track 18: Data Quality And Schema Governance",
+      "url": "https://github.com/edithatogo/corpus-legislation-nz/issues/101"
+    },
+    {
+      "number": 94,
+      "state": "OPEN",
+      "title": "Track 11: Monthly Full Reconciliation",
+      "url": "https://github.com/edithatogo/corpus-legislation-nz/issues/94"
+    },
+    {
+      "number": 92,
+      "state": "OPEN",
+      "title": "Track 09: GitHub Scheduled Hugging Face Sync",
+      "url": "https://github.com/edithatogo/corpus-legislation-nz/issues/92"
+    },
+    {
+      "number": 91,
+      "state": "OPEN",
+      "title": "Track 08: Full Hugging Face Corpus Upload",
+      "url": "https://github.com/edithatogo/corpus-legislation-nz/issues/91"
+    }
+  ],
+  "open_pull_requests": [
+    {
+      "number": 169,
+      "state": "OPEN",
+      "title": "Bump nanoid from 3.3.15 to 3.3.18 in /docs-site",
+      "url": "https://github.com/edithatogo/corpus-legislation-nz/pull/169"
+    },
+    {
+      "number": 166,
+      "state": "OPEN",
+      "title": "Bump js-yaml from 4.3.0 to 4.3.1 in /docs-site",
+      "url": "https://github.com/edithatogo/corpus-legislation-nz/pull/166"
+    },
+    {
+      "number": 165,
+      "state": "OPEN",
+      "title": "Bump postcss from 8.5.16 to 8.5.26 in /docs-site",
+      "url": "https://github.com/edithatogo/corpus-legislation-nz/pull/165"
+    },
+    {
+      "number": 164,
+      "state": "OPEN",
+      "title": "Bump astro from 7.0.4 to 7.1.6 in /docs-site",
+      "url": "https://github.com/edithatogo/corpus-legislation-nz/pull/164"
+    },
+    {
+      "number": 163,
+      "state": "OPEN",
+      "title": "Bump fast-uri from 3.1.3 to 3.1.5 in /docs-site",
+      "url": "https://github.com/edithatogo/corpus-legislation-nz/pull/163"
+    },
+    {
+      "number": 162,
+      "state": "OPEN",
+      "title": "Bump aiohttp from 3.14.0 to 3.14.3",
+      "url": "https://github.com/edithatogo/corpus-legislation-nz/pull/162"
+    },
+    {
+      "number": 155,
+      "state": "OPEN",
+      "title": "Bump setuptools from 81.0.0 to 83.0.0",
+      "url": "https://github.com/edithatogo/corpus-legislation-nz/pull/155"
+    },
+    {
+      "number": 154,
+      "state": "OPEN",
+      "title": "Bump svgo from 4.0.1 to 4.0.2 in /docs-site",
+      "url": "https://github.com/edithatogo/corpus-legislation-nz/pull/154"
+    },
+    {
+      "number": 146,
+      "state": "OPEN",
+      "title": "Bump torch from 2.12.0 to 2.13.0",
+      "url": "https://github.com/edithatogo/corpus-legislation-nz/pull/146"
+    }
+  ]
 }

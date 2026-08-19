@@ -10,5 +10,6 @@
   "canonical_repo": "edithatogo/archive-govt-nz",
   "non_donor_boundary": "edithatogo/legislation",
   "requirements_method": "MoSCoW",
-  "phase_0_control_plane_commit": "cb0e78f89a127f246d024ba3a5d770e1ec478f12"
+  "phase_0_control_plane_commit": "cb0e78f89a127f246d024ba3a5d770e1ec478f12",
+  "updated_at": "2026-08-19T01:00:00Z"
 }
