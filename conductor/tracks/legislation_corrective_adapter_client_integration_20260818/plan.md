@@ -1,5 +1,8 @@
-# Plan: Existing adapter and donor-client integration
+# Plan: Adapter and Client Transport Integration
 
-1. Establish contract and test seams.
-2. Implement/verify domain behaviours.
-3. Validate evidence.
+1. **Phase 1: Async Client Implementation**
+   - Implement `NZLegislationApiClient` with pacing, retries, and conditional headers.
+2. **Phase 2: Adapter In-Place Upgrade**
+   - Upgrade `NZLegislationAdapter` to delegate network transport to `NZLegislationApiClient`.
+3. **Phase 3: Automated Coverage & Transport Verification**
+   - Characterize 429 backoff, rate limiting, and CAS dual-hash persistence in `tests/adapters/test_nz_legislation.py`.

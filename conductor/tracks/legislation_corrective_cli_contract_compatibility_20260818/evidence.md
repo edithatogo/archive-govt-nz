@@ -1,3 +1,6 @@
-# Evidence: CLI contract and compatibility
+# Evidence: CLI Contract and nzlc Compatibility
 
-- Track-specific evidence recorded in evidence/migrations/corpus-legislation-nz/.
+- `src/archive_govt_nz/cli.py` (App, commands, exit codes, LegislationArchiveService integration)
+- `src/archive_govt_nz/cli_compat.py` (nzlc, sm-govt-nz, nz-govt-social compatibility wrappers)
+- `src/archive_govt_nz/exit_codes.py` (ExitCode enumeration)
+- `tests/cli/test_cli.py`
