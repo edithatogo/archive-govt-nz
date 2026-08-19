@@ -1,0 +1,259 @@
+{
+  "schema_version": "archive-govt-nz.remote-publication-readback/v1",
+  "evaluated_at": "2026-08-19T21:57:54Z",
+  "huggingface": {
+    "edithatogo/corpus-legislation-nz": {
+      "dataset_slug": "edithatogo/corpus-legislation-nz",
+      "request_url": "https://huggingface.co/api/datasets/edithatogo/corpus-legislation-nz",
+      "retrieval_timestamp": "2026-08-19T21:57:54Z",
+      "http_status": 200,
+      "response_sha256": "e9a45cb00314c14114fb864a628ff9eb4a087f14d53ffea921f17c64b85d3ae0",
+      "revision_sha": "1efa35e72c378068cfb112d060bd0502497f61b1",
+      "files_count": 112,
+      "files_sample": [
+        ".gitattributes",
+        "README.md",
+        "RIGHTS.md",
+        "_state/sync_state.json",
+        "manifests/coverage_history.jsonl",
+        "manifests/coverage_report.json",
+        "manifests/latest_changes.json",
+        "manifests/latest_manifest.json",
+        "manifests/validation_report.json",
+        "parquet/legislation_type=act/year=1931/part-00000.parquet",
+        "parquet/legislation_type=act/year=1992/part-00000.parquet",
+        "parquet/legislation_type=act/year=2001/part-00000.parquet",
+        "parquet/legislation_type=act/year=2004/part-00000.parquet",
+        "parquet/legislation_type=act/year=2005/part-00000.parquet",
+        "parquet/legislation_type=act/year=2021/part-00000.parquet",
+        "parquet/legislation_type=act/year=2026/part-00000.parquet",
+        "raw_xml/act_public_1931_43_en_1931-11-11.html",
+        "raw_xml/act_public_1931_43_en_1988-05-01.xml",
+        "raw_xml/act_public_1931_43_en_2026-06-06.xml",
+        "raw_xml/act_public_1992_124_en_2014-01-01.xml",
+        "raw_xml/act_public_1992_124_en_2014-04-01.xml",
+        "raw_xml/act_public_1992_124_en_2014-06-17.xml",
+        "raw_xml/act_public_1992_124_en_2016-03-01.xml",
+        "raw_xml/act_public_1992_124_en_2016-04-04.xml",
+        "raw_xml/act_public_1992_124_en_2016-10-18.xml"
+      ],
+      "card_metadata": {
+        "pretty_name": "New Zealand Legislation Corpus",
+        "language": [
+          "en"
+        ],
+        "license": "other",
+        "task_categories": [
+          "text-retrieval"
+        ],
+        "tags": [
+          "new-zealand",
+          "legislation",
+          "law",
+          "legal-corpus"
+        ]
+      },
+      "viewer_state": {
+        "http_status": 401,
+        "message": "{\"error\":\"The dataset does not exist, or is not accessible without authentication (private or gated). Please check the spelling of the dataset name or retry with authentication.\"}"
+      },
+      "configs": [],
+      "direct_row_counts": {},
+      "has_rights_statement": false,
+      "rights_preview": null,
+      "rights_sha256": null,
+      "status": "verified"
+    },
+    "edithatogo/corpus-legislation-nz-historical": {
+      "dataset_slug": "edithatogo/corpus-legislation-nz-historical",
+      "request_url": "https://huggingface.co/api/datasets/edithatogo/corpus-legislation-nz-historical",
+      "retrieval_timestamp": "2026-08-19T21:57:55Z",
+      "http_status": 200,
+      "response_sha256": "4903d774a7a3df80c403192c93b415c661c69b11d1c02ef0af102264185b7433",
+      "revision_sha": "ea9e66fb89c3230fc478f7c6f05f1a82f4fa1174",
+      "files_count": 6788,
+      "files_sample": [
+        ".gitattributes",
+        "README.md",
+        "RIGHTS.md",
+        "_state/sync_state.json",
+        "dataset_infos.json",
+        "manifests/README.md",
+        "manifests/coverage_history.jsonl",
+        "manifests/coverage_report.json",
+        "manifests/latest_changes.json",
+        "manifests/latest_manifest.json",
+        "manifests/publication_policy.json",
+        "manifests/validation_report.json",
+        "parquet/README.md",
+        "parquet/legislation_type=act/year=1828/part-00000.parquet",
+        "parquet/legislation_type=act/year=1832/part-00000.parquet",
+        "parquet/legislation_type=act/year=1833/part-00000.parquet",
+        "parquet/legislation_type=act/year=1837/part-00000.parquet",
+        "parquet/legislation_type=act/year=1841/part-00000.parquet",
+        "parquet/legislation_type=act/year=1843/part-00000.parquet",
+        "parquet/legislation_type=act/year=1844/part-00000.parquet",
+        "parquet/legislation_type=act/year=1845/part-00000.parquet",
+        "parquet/legislation_type=act/year=1851/part-00000.parquet",
+        "parquet/legislation_type=act/year=1852/part-00000.parquet",
+        "parquet/legislation_type=act/year=1853/part-00000.parquet",
+        "parquet/legislation_type=act/year=1860/part-00000.parquet"
+      ],
+      "card_metadata": {
+        "pretty_name": "New Zealand Legislation Corpus - Historical Operational Repository",
+        "language": [
+          "en"
+        ],
+        "license": "other",
+        "task_categories": [
+          "text-retrieval"
+        ],
+        "tags": [
+          "new-zealand",
+          "legislation",
+          "historical",
+          "superseded"
+        ]
+      },
+      "viewer_state": {
+        "preview": true,
+        "viewer": true,
+        "search": true,
+        "filter": true,
+        "statistics": false
+      },
+      "configs": [
+        "default"
+      ],
+      "direct_row_counts": {
+        "default.validation": 1
+      },
+      "has_rights_statement": true,
+      "rights_preview": "# Rights statement for edithatogo/corpus-legislation-nz-historical\n\nRegistry status: `source_specific_review_required`.\n\nThe software license of an originating repository does not automatically licens",
+      "rights_sha256": "b856ce52ed9a5e5963492ba4a304a0f7c55071560109b23751f99a45206eaa49",
+      "status": "verified"
+    },
+    "edithatogo/nz-legislation-corpus": {
+      "dataset_slug": "edithatogo/nz-legislation-corpus",
+      "request_url": "https://huggingface.co/api/datasets/edithatogo/nz-legislation-corpus",
+      "retrieval_timestamp": "2026-08-19T21:57:56Z",
+      "http_status": 200,
+      "response_sha256": "debb555a22a24e9976e0c62912b8c93dce52a6b30c790905890adad090bbe46b",
+      "revision_sha": "1dea0c678b419a9c16fe7e363488f91d293391d3",
+      "files_count": 20,
+      "files_sample": [
+        ".gitattributes",
+        "README.md",
+        "RIGHTS.md",
+        "_state/sync_state.json",
+        "manifests/coverage_history.jsonl",
+        "manifests/coverage_report.json",
+        "manifests/latest_changes.json",
+        "manifests/latest_manifest.json",
+        "manifests/validation_report.json",
+        "parquet/legislation_type=act/year=2026/part-00000.parquet",
+        "raw_xml/act_public_2026_26_en_2026-06-05.xml",
+        "raw_xml/act_public_2026_27_en_2026-06-05B.xml",
+        "raw_xml/act_public_2026_28_en_2026-06-05.xml",
+        "raw_xml/act_public_2026_28_en_2026-06-05B.xml",
+        "raw_xml/act_public_2026_29_en_2026-06-05B.xml",
+        "raw_xml/act_public_2026_30_en_2026-06-05.xml",
+        "raw_xml/act_public_2026_30_en_2026-06-05B.xml",
+        "raw_xml/act_public_2026_31_en_2026-06-05.xml",
+        "raw_xml/act_public_2026_31_en_2026-06-05B.xml",
+        "records.jsonl"
+      ],
+      "card_metadata": {
+        "pretty_name": "New Zealand Legislation Corpus - DOI Snapshot",
+        "language": [
+          "en"
+        ],
+        "license": "other",
+        "task_categories": [
+          "text-retrieval"
+        ],
+        "tags": [
+          "new-zealand",
+          "legislation",
+          "doi-snapshot",
+          "frozen"
+        ]
+      },
+      "viewer_state": {
+        "http_status": 401,
+        "message": "{\"error\":\"The dataset does not exist, or is not accessible without authentication (private or gated). Please check the spelling of the dataset name or retry with authentication.\"}"
+      },
+      "configs": [],
+      "direct_row_counts": {},
+      "has_rights_statement": false,
+      "rights_preview": null,
+      "rights_sha256": null,
+      "status": "verified"
+    }
+  },
+  "zenodo": {
+    "doi": "10.5281/zenodo.20592540",
+    "resolved_record_id": 20592540,
+    "resolved_doi": "10.5281/zenodo.20592540",
+    "is_version_doi": true,
+    "concept_doi": "10.5281/zenodo.20592539",
+    "concept_record_id": "20592539",
+    "title": "New Zealand Legislation Corpus: 2026 annual snapshot",
+    "publication_date": "2026-06-08",
+    "license": "cc-by-4.0",
+    "creators": [
+      {
+        "name": "edithatogo",
+        "affiliation": null
+      }
+    ],
+    "version": "2026",
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "20592539"
+          }
+        }
+      ]
+    },
+    "linked_hf_datasets": [
+      "https://huggingface.co/datasets/edithatogo/corpus-legislation-nz"
+    ],
+    "files_count": 3,
+    "files": [
+      {
+        "key": "nz-legislation-corpus-2026.SHA256SUMS.txt",
+        "size_bytes": 208,
+        "checksum": "md5:a503b9a61904a836d2b45419347ae823"
+      },
+      {
+        "key": "nz-legislation-corpus-2026.tar.zst",
+        "size_bytes": 208721,
+        "checksum": "md5:00dee66bc1d66d52f1b31284ed11f516"
+      },
+      {
+        "key": "nz-legislation-corpus-2026.manifest.json",
+        "size_bytes": 3104,
+        "checksum": "md5:6139f4539661d50aaa47a03707f2dea0"
+      }
+    ],
+    "request_url": "https://zenodo.org/api/records/20592540",
+    "retrieval_timestamp": "2026-08-19T21:57:57Z",
+    "http_status": 200,
+    "response_sha256": "ea33c14be57ab9cca072e25b85930ec9e54cf8d0f4d35a17ab15f298b1a0097a",
+    "status": "verified"
+  },
+  "mismatches_count": 0,
+  "mismatches": [],
+  "unresolved_claims_count": 3,
+  "unresolved_claims": [
+    "Linked GitHub commit is not explicitly embedded in Zenodo metadata.",
+    "Hugging Face dataset edithatogo/corpus-legislation-nz is missing a public RIGHTS.md.",
+    "Hugging Face dataset edithatogo/nz-legislation-corpus is missing a public RIGHTS.md."
+  ],
+  "status": "passed"
+}
