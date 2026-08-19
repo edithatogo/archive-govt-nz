@@ -1,7 +1,11 @@
-# Run Log: Identity, Normalisation, and Canonical v2 FRBR Model
+# Run Log: Source-Evidenced, Namespace-Aware Legislation Normalisation
 
-- Implemented `LegislationWork`, `LegislationExpression`, `LegislationManifestation` and deterministic ID generators in `src/archive_govt_nz/domains/legislation/identity.py`.
-- Removed all default fixed timestamps from `LegislationRecord` and model definitions in `src/archive_govt_nz/domains/legislation/models.py`.
-- Implemented `RelationshipRecord`, `RelationshipType`, and `ProvenanceReference` for enriched legal metadata.
-- Implemented `convert_v1_to_v2`, `convert_v2_to_v1` with explicit lossy conversion reporting, and `validate_legislation_record` schema validation.
-- Validated 97.79% test coverage on `models.py` and `identity.py`.
+- Implemented bounded `_SafeHTMLTextExtractor(HTMLParser)` to eliminate regular-expression HTML tag removal.
+- Implemented safe XML parsing using `defusedxml` with namespace-aware element traversal and external entity disabling.
+- Updated `normalise_legislation_payload` to accept explicit caller-supplied `retrieval_timestamp`, `source_modified_timestamp`, and `source_media_type`.
+- Enforced strict anti-defaulting rules:
+  - Do NOT default statutory type to Act (uses `LegislationType.OTHER`).
+  - Do NOT default legal status to In Force (uses `VersionStatus.UNKNOWN` with `status_uncertain=True`).
+  - Do NOT infer status from incidental body text.
+- Derived deterministic canonical `expression_id` and `manifestation_id` from structured metadata.
+- Validated 95.81% test coverage across comprehensive XML/HTML test matrix.
