@@ -1,12 +1,11 @@
-# Plan: Weekly Orchestration, Resumable Archival Service, and State Management
+# Plan: Weekly Legislation Orchestration and State Management
 
-1. **Phase 1: Checkpoint Manager & Atomic State Promotion**
-   - Enhance `LegislationCheckpointManager` to support staged checkpoints, atomic promotion, corruption detection, and eliminate fabricated default timestamps.
-2. **Phase 2: Canonical Bounded & Resumable Archival Service**
-   - Enhance `LegislationArchiveService` in `src/archive_govt_nz/domains/legislation/corpus.py` to execute the full 10-step flow:
-     discovery → work/version traversal → conditional acquisition (ETag/CAS) → exact source-byte CAS storage → v2 normalisation → validation → manifest generation → coverage calculation → staged checkpoint → atomic promotion.
-   - Implement retry handling, interruption resume, fail-closed validation, and atomic promotion guards.
-3. **Phase 3: Comprehensive Unit & End-to-End Fixture Testing**
-   - Implement comprehensive tests for first sync, no-change rerun, changed expressions, interruption resume, corrupt checkpoint, failed sync abort without promotion, and multi-expression XML/HTML fixture.
-4. **Phase 4: Verification & Conformance Gate**
-   - Verify with `uv run python tools/check.py`, patch coverage >= 95%, and clean assurance checks.
+1. **Phase 1: Source-Set Configuration & Workflow Safety**
+   - Verify `config/source-sets/legislation.yml` and `.github/workflows/scheduled-legislation-harvest.yml`.
+   - Ensure action pin SHAs and security policy contracts are satisfied.
+2. **Phase 2: Real Harvest Orchestrator Script**
+   - Implement `tools/run_legislation_harvest.py` supporting configuration validation, safe credential check, checkpoint restore/promotion, incremental sync, validation gate, and structured outcome classification (`changed`, `no_change`, `partial_retryable`, `failed`).
+3. **Phase 3: Automated Unit & Workflow Policy Testing**
+   - Implement test suite in `tests/tools/test_run_legislation_harvest.py` testing all outcomes and negative controls.
+4. **Phase 4: Full 19-Stage Gate & Evidence Generation**
+   - Run `tools/check.py`, verify >=95% patch coverage, and record evidence receipts.

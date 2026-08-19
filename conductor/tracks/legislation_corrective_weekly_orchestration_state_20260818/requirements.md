@@ -1,27 +1,20 @@
-# Requirements: Weekly Orchestration, Resumable Archival Service, and State Management
+# Requirements: Weekly Legislation Orchestration and State Management
 
 Track: `legislation_corrective_weekly_orchestration_state_20260818`  
 Parent: `legislation_corpus_consolidation_corrective_20260818`  
-Linked Issues: [#137](https://github.com/edithatogo/archive-govt-nz/issues/137), [#138](https://github.com/edithatogo/archive-govt-nz/issues/138)
+Linked Issue: [#137](https://github.com/edithatogo/archive-govt-nz/issues/137)
 
 ## MoSCoW Requirements
 
 ### Must
-1. **Real, Bounded, Resumable Legislation Archival Service**:
-   - Single canonical orchestration service in `LegislationArchiveService` (no parallel services or V2 classes).
-   - Strict 10-step synchronization pipeline:
-     `discovery` → `work/version traversal` → `conditional source acquisition` → `exact source-byte preservation in CAS` → `v2 normalisation` → `validation` → `manifest generation` → `coverage calculation` → `staged checkpoint` → `atomic checkpoint promotion`.
-2. **Resilience & State Management**:
-   - First sync cold start.
-   - Repeated no-change sync (idempotency, conditional ETag/304 caching).
-   - New and modified expression detection and preservation.
-   - Resumable sync across interruptions using persisted checkpoint state.
-   - Strict fail-closed validation on corrupt or invalid payloads.
-   - Staged checkpoint creation with atomic rename promotion on success only.
-   - Failures must prevent checkpoint promotion.
-   - Zero fabricated default timestamps.
-3. **Weekly Harvest & Recovery Automation**:
-   - Scheduled Monday harvest workflow (`.github/workflows/scheduled-legislation-harvest.yml`) running at `23 18 * * 0`.
-   - Monthly reconciliation and quarterly recovery drills.
-4. **End-to-End Multi-Expression Fixture**:
-   - End-to-end verification of one work with two distinct expressions and XML/HTML manifestations through full CAS, normalisation, manifest, and checkpoint promotion, followed by an idempotent no-change rerun.
+1. **Source-Set Configuration & Workflow Safety**:
+   - Dedicated configuration file `config/source-sets/legislation.yml`.
+   - Workflow `.github/workflows/scheduled-legislation-harvest.yml` pinned with immutable action commit SHAs.
+2. **Deterministic Harvest Orchestrator**:
+   - Implement `tools/run_legislation_harvest.py` executing incremental legislation sync via CLI/service.
+   - Support credential check, checkpoint restore/promote, validation, and structured outcome classification (`changed`, `no_change`, `partial_retryable`, `failed`).
+3. **Monthly Reconciliation & Quarterly Recovery Workflows**:
+   - `.github/workflows/monthly-legislation-reconciliation.yml` for inventory and manifest reconciliation.
+   - `.github/workflows/quarterly-legislation-recovery.yml` for clean restoration and disaster recovery drill.
+4. **Zero Silent Failures**:
+   - All workflow failures propagated explicitly to exit codes and JSON receipts.
