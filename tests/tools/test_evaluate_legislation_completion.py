@@ -6,9 +6,14 @@ import json
 import shutil
 import subprocess
 import sys
+import urllib.error
+import urllib.request
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING, Any
+
+if TYPE_CHECKING:
+    import pytest
 
 sys.path.insert(0, str(Path(__file__).parents[2]))
 from tools.evaluate_legislation_completion import (
@@ -181,7 +186,7 @@ def test_negative_control_3_adapter_not_using_client(tmp_path: Path) -> None:
 
 
 def test_negative_control_4_unresolved_donor_issues_detected(
-    tmp_path: Path,
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     """Test 4: Open donor issues in snapshot must be reported as active blocker."""
     base = _setup_minimal_passing_repo(tmp_path)
@@ -191,6 +196,12 @@ def test_negative_control_4_unresolved_donor_issues_detected(
     snap = json.loads(snap_file.read_text(encoding="utf-8"))
     snap["open_issues_count"] = 30
     snap_file.write_text(json.dumps(snap), encoding="utf-8")
+
+    def mock_urlopen(*_args: object, **_kwargs: object) -> object:
+        msg = "Offline"
+        raise urllib.error.URLError(msg)
+
+    monkeypatch.setattr(urllib.request, "urlopen", mock_urlopen)
 
     is_complete, res = evaluate_completion(base)
     assert is_complete is False
