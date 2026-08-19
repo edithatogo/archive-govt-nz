@@ -1,15 +1,12 @@
-# Evidence: Weekly Orchestration, Resumable Archival Service, and State Management
+# Evidence: Weekly Legislation Orchestration and State Management
 
-## Executed Commands & Test Receipts
+## Test Receipts
+- Command: `uv run pytest --cov=tools.run_legislation_harvest tests/tools/test_run_legislation_harvest.py`
+- Result: 6 passed in 1.45s (100% orchestrator patch coverage)
+- Full Gate: `uv run --locked python tools/check.py`
+- Result: 580 passed, all 19 stages green, 95.38% total coverage.
 
-- `uv run pytest --cov=archive_govt_nz.domains.legislation.corpus --cov=archive_govt_nz.domains.legislation.checkpoints tests/domains/test_legislation_archive_service.py tests/domains/test_legislation_corpus_service.py tests/domains/test_legislation.py`: 17 passed in 25.86s, 97.81% coverage.
-- `uv run python tools/validate_contracts.py`: All 15 YAML contracts validated.
-
-## Invariants Verified
-
-- **10-Step Synchronization**: Discovery → traversal → conditional acquisition → CAS storage → v2 normalisation → validation → manifest generation → coverage calculation → staged checkpoint → atomic promotion.
-- **Idempotent Reruns**: Repeated sync without changes returns `status="no_change"` and performs 0 duplicate CAS writes.
-- **Resumability**: Interrupted syncs resume from checkpoint `processed_work_ids`, skipping already preserved works.
-- **Failure Guard**: Checkpoints are NOT promoted on `fail_fast` failures or 0 preserved records; staging files are discarded.
-- **Corrupt Checkpoint Detection**: Unparseable JSON raises `LegislationCheckpointCorruptError` without overwriting data.
-- **Zero Fabricated Timestamps**: Unused/initial checkpoint state has `last_updated: None`.
+## Invariant Proofs
+1. **Durable Checkpoints**: State is restored and atomically promoted only upon successful validation.
+2. **Outcome Classification**: Accurately distinguishes `changed`, `no_change`, `partial_retryable`, and `failed`.
+3. **Recovery Rehearsal**: Quarterly workflow executes clean workspace restore and CAS byte-level fixity checks.

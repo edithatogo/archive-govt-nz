@@ -28,18 +28,14 @@ jobs:
           python-version: "3.14"
       - run: python -m pip install uv==0.6.5
       - name: Prepare receipt directories
-        run: mkdir -p build/receipts/legislation build/corpus/legislation
-      - name: Run Incremental Discovery & Sync
+        run: mkdir -p build/receipts/legislation build/manifests build/checkpoints build/cas
+      - name: Execute Verified Legislation Harvest Orchestration
         run: |
-          uv run --locked archive-govt-nz legislation --action discover --format json > build/receipts/legislation/discovery.json
-          uv run --locked archive-govt-nz capture --source-type legislation --format json > build/receipts/legislation/capture.json
-      - name: Generate Validation & Manifest
-        run: |
-          uv run --locked archive-govt-nz legislation --action validate --format json > build/receipts/legislation/validate.json
-          uv run --locked archive-govt-nz legislation --action manifest --format json > build/receipts/legislation/manifest.json
-      - name: Calculate Coverage
-        run: |
-          uv run --locked archive-govt-nz legislation --action coverage --format json > build/receipts/legislation/coverage.json
+          BACKFILL_FLAG=""
+          if [ -n "${{ github.event.inputs.backfill_limit }}" ]; then
+            BACKFILL_FLAG="--backfill-limit ${{ github.event.inputs.backfill_limit }}"
+          fi
+          uv run --locked python tools/run_legislation_harvest.py $BACKFILL_FLAG
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         if: always()
         with:
