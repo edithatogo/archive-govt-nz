@@ -10,9 +10,15 @@ from archive_govt_nz.domains.legislation.changes import (
     LegislationChangeReport,
 )
 from archive_govt_nz.domains.legislation.checkpoints import (
+    LegislationCheckpointCorruptError,
     LegislationCheckpointManager,
 )
 from archive_govt_nz.domains.legislation.corpus import (
+    ExpressionTarget,
+    LegislationArchiveService,
+    LegislationSyncResult,
+    ManifestationTarget,
+    WorkTarget,
     export_corpus_jsonl,
     export_corpus_parquet,
 )
@@ -46,19 +52,25 @@ from archive_govt_nz.domains.legislation.validate import (
 )
 
 __all__ = [
+    "ExpressionTarget",
+    "LegislationArchiveService",
     "LegislationChangeEvent",
     "LegislationChangeReport",
+    "LegislationCheckpointCorruptError",
     "LegislationCheckpointManager",
     "LegislationCoverageReport",
     "LegislationExpression",
     "LegislationManifestation",
     "LegislationRecord",
+    "LegislationSyncResult",
     "LegislationType",
     "LegislationWork",
+    "ManifestationTarget",
     "NZLegislationApiClient",
     "ScheduleRecord",
     "SectionRecord",
     "VersionStatus",
+    "WorkTarget",
     "build_legislation_manifest",
     "build_work_inventory",
     "export_corpus_jsonl",
