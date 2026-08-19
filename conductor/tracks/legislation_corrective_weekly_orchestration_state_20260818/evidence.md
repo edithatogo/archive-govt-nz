@@ -1,3 +1,7 @@
-# Evidence: Weekly orchestration and persistent state
+# Evidence: Weekly Orchestration, Monthly Reconciliation, and Recovery Drills
 
-- Track-specific evidence recorded in evidence/migrations/corpus-legislation-nz/.
+- `.github/workflows/scheduled-legislation-harvest.yml`
+- `.github/workflows/monthly-legislation-reconciliation.yml`
+- `.github/workflows/quarterly-legislation-recovery.yml`
+- `src/archive_govt_nz/recovery.py`
+- `src/archive_govt_nz/recovery_harness.py`

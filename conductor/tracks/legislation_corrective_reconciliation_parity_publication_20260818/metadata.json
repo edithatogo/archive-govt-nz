@@ -1,10 +1,10 @@
 {
   "id": "legislation_corrective_reconciliation_parity_publication_20260818",
-  "title": "Historical reconciliation, parity and publication identity",
+  "title": "Historical batch reconciliation, parity harness, and publication identity",
   "type": "track",
-  "status": "in_progress",
+  "status": "completed",
   "created_at": "2026-08-18T12:54:00Z",
-  "updated_at": "2026-08-19T01:00:00Z",
+  "updated_at": "2026-08-19T02:23:00Z",
   "parent_track": "legislation_corpus_consolidation_corrective_20260818",
   "phase_0_control_plane_commit": "cb0e78f89a127f246d024ba3a5d770e1ec478f12"
 }

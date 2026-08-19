@@ -176,11 +176,14 @@ def normalise_legislation_payload(
         inferred_status = _infer_version_status(plain_text[:500], canonical_uri, status)
 
     doc_id = f"leg-{work_id}"
+    expression_id = f"exp-{work_id}-v1"
+    manifestation_id = f"man-{work_id}-{'html' if is_explicit_html else 'xml'}"
 
     return LegislationRecord(
         document_id=doc_id,
         work_id=work_id,
-        expression_id=None,
+        expression_id=expression_id,
+        manifestation_id=manifestation_id,
         title=title,
         legislation_type=leg_type,
         status=inferred_status,
@@ -191,6 +194,8 @@ def normalise_legislation_payload(
         retrieval_timestamp="2026-08-18T11:13:00Z",
         assent_date=assent_date,
         commencement_date=commencement_date,
+        rights_statement="Crown Copyright © New Zealand Government (NZGOAL)",
+        redistribution_policy="open_access_statutory_license",
         sections=sections,
         schedules=schedules,
         plain_text=plain_text,

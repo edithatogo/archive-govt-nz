@@ -11,9 +11,10 @@ from cyclopts import App
 
 from archive_govt_nz import __version__
 from archive_govt_nz.core.registry import AgencyRegistry
-from archive_govt_nz.domains.legislation.coverage import (
-    LegislationCoverageReport,
+from archive_govt_nz.domains.legislation.corpus import (
+    LegislationArchiveService,
 )
+from archive_govt_nz.object_store import ContentAddressedStore
 
 app = App(
     name="archive-govt-nz",
@@ -291,14 +292,13 @@ def legislation(
         "status",
     ] = "coverage",
     format: Literal["text", "json"] = "text",
+    cas_path: str = "build/cas",
 ) -> None:
     """Execute New Zealand Legislation corpus preservation commands."""
-    report = LegislationCoverageReport(
-        total_seed_works=33693,
-        works_attempted=33693,
-        works_retrieved=33693,
-        failures_count=0,
-    )
+    store = ContentAddressedStore(Path(cas_path))
+    service = LegislationArchiveService(store=store)
+    report = service.get_coverage()
+
     result_data = {
         "command": "legislation",
         "schema_version": "archive-govt-nz.cli/v1",
@@ -314,7 +314,9 @@ def legislation(
         result_data["status"] = "healthy"
         result_data["api_endpoint"] = "https://api.legislation.govt.nz/v0/"
     elif action == "manifest":
-        result_data["manifest_status"] = "ready"
+        result_data["manifest_status"] = (
+            "ready" if report.works_retrieved > 0 else "pending"
+        )
     elif action == "publication-plan":
         result_data["publication_target"] = "edithatogo/corpus-legislation-nz"
         result_data["status"] = "staged"

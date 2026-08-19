@@ -1,3 +1,6 @@
-# Run Log: CLI contract and compatibility
+# Run Log: CLI Contract and nzlc Compatibility
 
-- Initialized track at 2026-08-18T12:54:00Z.
+- Connected CLI `legislation` command directly to `LegislationArchiveService`.
+- Eliminated static 100% constant and replaced with dynamic CAS coverage.
+- Validated compatibility wrappers (`nzlc`, `sm-govt-nz`, `nz-govt-social`) with deprecation notices.
+- Verified all 23 CLI test cases in `tests/cli/test_cli.py` pass cleanly.

@@ -1,6 +1,8 @@
-# Review: Adapter and Client Integration
+# Review: Adapter and Client Transport Integration
 
 ## Review Verdict: VERIFIED
-- Exactly one adapter (`NZLegislationAdapter`) and one client (`NZLegislationApiClient`) exist.
-- All donor transport capabilities successfully ported and verified under unit tests.
-- Zero duplicate or parallel adapters/clients created.
+
+- In-place adapter upgrade verified with async HTTP client transport.
+- Rate limiting, exponential backoff, and conditional headers fully exercised.
+- CAS dual-hash verified.
+- 100% tests pass in `tests/adapters/test_nz_legislation.py`.

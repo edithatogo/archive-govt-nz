@@ -1,3 +1,6 @@
-# Review: Weekly orchestration and persistent state
+# Review: Weekly Orchestration, Monthly Reconciliation, and Recovery Drills
 
-- Verified against Phase 0 contract boundaries.
+## Review Verdict: VERIFIED
+
+- Scheduled weekly harvest, monthly reconciliation, and quarterly recovery drill workflows configured.
+- State machines and recovery harnesses fully functional and covered by tests.

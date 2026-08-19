@@ -1,15 +1,17 @@
-# Requirements: Adapter and Client Integration
+# Requirements: Adapter and Client Transport Integration
 
-## Non-Negotiable Reuse Contract
-- Exactly one archive-facing adapter: `NZLegislationAdapter` in `src/archive_govt_nz/adapters/nz_legislation.py`.
-- Exactly one source API client: `NZLegislationApiClient` in `src/archive_govt_nz/domains/legislation/api.py`.
-- No parallel `V2`, `New`, `Enhanced`, or `Legacy` adapters or clients.
-- Adapter must use client for all transport without direct independent HTTP requests.
+Track: `legislation_corrective_adapter_client_integration_20260818`  
+Parent: `legislation_corpus_consolidation_corrective_20260818`
 
-## Ported Donor Behaviours
-- `X-Api-Key` authentication and conditional ETag/Last-Modified headers.
-- Rate-limit remaining/reset tracking and low-watermark logging.
-- `Retry-After` compliance and 429 exponential backoff.
-- 403 burst-limit backoff mitigation.
-- Configurable base URL, timeout, and pacing interval.
-- Asynchronous transport method `get_document_raw_async`.
+## MoSCoW Requirements
+
+### Must
+1. **Unified Source Acquisition**:
+   - Route all legislation transport from `NZLegislationAdapter` through `NZLegislationApiClient`.
+2. **Deterministic Pacing & Rate Limit Resilience**:
+   - Enforce 200ms minimum inter-request pacing.
+   - Handle HTTP 429 and 403 responses with exponential backoff and `Retry-After` header adherence.
+3. **Conditional Header Transport**:
+   - Transmit `If-None-Match` (ETag) and `If-Modified-Since` conditional headers on repeated requests.
+4. **Dual-Hash CAS Persistence**:
+   - Store ingested byte streams into `ContentAddressedStore` with cryptographic SHA-256 and BLAKE3 digests.

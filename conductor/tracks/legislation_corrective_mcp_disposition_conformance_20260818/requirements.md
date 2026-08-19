@@ -1,10 +1,15 @@
-# Requirements: MCP Disposition and Conformance
+# Requirements: MCP Protocol Server Conformance
 
-## Disposition Contract
-- Retain one archive-oriented read-only MCP surface in `src/archive_govt_nz/mcp_server.py`.
-- Distinct boundary: standalone `edithatogo/legislation` MCP owns interactive retrieval and citations.
+Track: `legislation_corrective_mcp_disposition_conformance_20260818`  
+Parent: `legislation_corpus_consolidation_corrective_20260818`  
+Linked Issue: [#136](https://github.com/edithatogo/archive-govt-nz/issues/136)
 
-## Implementation Requirements
-- Stdio transport (`StdioServerTransport`) and JSON-RPC 2.0 framing.
-- Operational `Server` supporting `initialize`, `tools/list`, `resources/list`, and `tools/call`.
-- Dynamic resource and tool inspections without hardcoded constants.
+## MoSCoW Requirements
+
+### Must
+1. **Operational JSON-RPC 2.0 Protocol Runtime**:
+   - Implement `StdioServerTransport` and `Server` in `src/archive_govt_nz/mcp_server.py` supporting `initialize`, `tools/list`, `resources/list`, and `tools/call`.
+2. **Read-Only Archival Inspection Tools**:
+   - Expose `archive_doctor`, `archive_capabilities`, `archive_sources`, and `archive_legislation` tools.
+3. **No Simulated Fixed Numbers**:
+   - Compute tool results dynamically from real system state and registries.

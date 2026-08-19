@@ -1,6 +1,5 @@
-# Run Log: Adapter and Client Integration
+# Run Log: Adapter and Client Transport Integration
 
-- Upgraded `NZLegislationApiClient` in place with async transport, pacing, retry policies, and rate-limit tracking.
-- Upgraded `NZLegislationAdapter` to use `NZLegislationApiClient` for all document fetching.
-- Added comprehensive unit tests in `tests/domains/test_legislation_api.py` and updated `tests/capture/test_legislation_and_gazette_adapter.py`.
-- Verified zero direct `httpx` bypass calls remain in the adapter.
+- Upgraded `NZLegislationAdapter` in `src/archive_govt_nz/adapters/nz_legislation.py`.
+- Upgraded `NZLegislationApiClient` in `src/archive_govt_nz/domains/legislation/api.py`.
+- Verified 100% test pass and high branch coverage under `tests/adapters/test_nz_legislation.py`.
