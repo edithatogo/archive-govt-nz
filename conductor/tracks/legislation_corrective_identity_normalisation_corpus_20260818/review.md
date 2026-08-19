@@ -1,9 +1,10 @@
-# Review: Identity, Normalisation, and Canonical v2 FRBR Model
+# Review: Source-Evidenced, Namespace-Aware Legislation Normalisation
 
 ## Review Verdict: VERIFIED
 
-- Canonical v2 FRBR models (`WorkRecord`, `ExpressionRecord`, `ManifestationRecord`, `LegislationWork`, `LegislationExpression`, `LegislationManifestation`) fully implemented.
-- Default fixed timestamps eliminated.
-- Deterministic ID generators implemented without fabrication.
-- Dual schema serialization (`v1`, `v2`), crosswalk conversion, and lossy conversion reporting verified.
-- Test coverage >97% with passing assurance harness.
+- Safe XML parsing with `defusedxml` and namespace stripping implemented.
+- Bounded HTML parser implemented without regular expressions.
+- Explicit `retrieval_timestamp` and source metadata inputs supported.
+- Anti-defaulting rules strictly enforced for type, status, and expression identity.
+- 20 unit tests verified across all statutory types, statuses, and edge cases.
+- Test coverage >95% (95.81%) with green assurance gates.

@@ -1,4 +1,4 @@
-# Requirements: Identity, Normalisation, and Canonical v2 FRBR Model
+# Requirements: Source-Evidenced, Namespace-Aware Legislation Normalisation
 
 Track: `legislation_corrective_identity_normalisation_corpus_20260818`  
 Parent: `legislation_corpus_consolidation_corrective_20260818`  
@@ -7,15 +7,20 @@ Linked Issues: [#132](https://github.com/edithatogo/archive-govt-nz/issues/132),
 ## MoSCoW Requirements
 
 ### Must
-1. **Canonical v2 FRBR Runtime Model**:
-   - Represent FRBR Work (`WorkRecord`, `LegislationWork`), Expression (`ExpressionRecord`, `LegislationExpression`), and Manifestation (`ManifestationRecord`, `LegislationManifestation`) as explicit runtime dataclasses in `src/archive_govt_nz/domains/legislation/models.py` and `src/archive_govt_nz/domains/legislation/identity.py`.
-   - Remove all default fixed timestamps from runtime model definitions.
-   - Represent work identity, expression/version identity, manifestation identity, source and canonical URIs, source media type, raw object hashes (`sha256`, `blake3`), byte size, caller-supplied retrieval timestamp, source modification timestamp, type and status with uncertainty, amendment/repeal/replacement relationships, commencement/assent dates, sections/schedules, provenance references, and rights/redistribution classifications.
-2. **Dual Schema Serialization & Validation**:
-   - Support both `to_dict("v1")` and `to_dict("v2")` serialization on `LegislationRecord` with zero schema drift.
-   - Provide explicit schema validation against Draft 2020-12 schemas.
-3. **Deterministic Identity Generation**:
-   - Implement deterministic generators for `work_id`, `expression_id`, and `manifestation_id` without ID fabrication.
-4. **Bidirectional Conversion & Lossy Reporting**:
-   - Implement lossless `convert_v1_to_v2` conversion.
-   - Implement `convert_v2_to_v1` conversion with explicit reporting of dropped/lossy fields.
+1. **Safe & Namespace-Aware XML Parsing**:
+   - Use safe XML parsing with namespace-aware element traversal supporting NZ legislation XML schemas (`http://www.legislation.govt.nz/namespaces/legislation`, `leg:`, etc.).
+   - Disable external entities, DTD entity expansion, and network access.
+2. **Bounded HTML Parser**:
+   - Use a bounded `html.parser.HTMLParser` subclass with depth and length limits to extract text safely without regular expression tag stripping.
+3. **Explicit Source Metadata Inputs**:
+   - Accept `retrieval_timestamp: str` (mandatory, caller-supplied), `source_modified_timestamp`, and `source_media_type` as explicit inputs with zero default fixed timestamps.
+4. **Anti-Defaulting & Anti-Hallucination Constraints**:
+   - Do NOT default statutory instrument type to `Act` (default to `LegislationType.OTHER` unless structured source indicates otherwise).
+   - Do NOT default status to `In Force` (default to `VersionStatus.UNKNOWN` with `status_uncertain=True` unless structured source metadata indicates otherwise).
+   - Do NOT default expression identity to null or dummy when source identity exists; derive canonical deterministic `expression_id` and `manifestation_id`.
+   - Do NOT infer legal status merely from incidental body text. Extract status strictly from structured XML attributes (`status`, `stage`, `repealed`, `instruct.as.at`) and metadata nodes.
+5. **Structured Component Extraction**:
+   - Extract sections and schedules with headings, numbers, and content from structured XML elements in a namespace-agnostic manner.
+   - Extract assent and commencement dates from structured metadata tags (`<assent-date>`, `<date-of-assent>`, `<commencement-date>`, `<instruct.as.at>`).
+6. **Canonical v2 Runtime Record Output**:
+   - Emit and validate canonical v2 `LegislationRecord` compliant with JSON Schema Draft 2020-12.
