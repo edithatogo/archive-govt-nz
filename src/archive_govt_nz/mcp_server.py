@@ -372,8 +372,6 @@ def call_tool(name: str, arguments: dict[str, Any] | None = None) -> dict[str, A
     if name == "archive_sources":
         path_str = str(args.get("registry_path", "registry/seeds"))
         path = Path(path_str)
-        if not path.is_dir() and Path("seeds/sources").is_dir():
-            path = Path("seeds/sources")
         count = len(AgencyRegistry.load_from_seeds(path)) if path.is_dir() else 0
         return {
             "registered_sources_count": count,
@@ -447,5 +445,5 @@ def main() -> None:
     run_stdio_server()
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     main()
