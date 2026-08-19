@@ -1,8 +1,9 @@
-# Review: Identity, Normalisation, and Corpus Application Service
+# Review: Identity, Normalisation, and Canonical v2 FRBR Model
 
 ## Review Verdict: VERIFIED
 
-- First-class FRBR runtime models (`WorkRecord`, `ExpressionRecord`, `ManifestationRecord`) implemented.
-- Safe legal normalisation implemented with dual-hash (`sha256`, `blake3`) bindings and structural parsing.
-- Single unified application service `LegislationArchiveService` verified through lifecycle tests.
-- All schema validations pass.
+- Canonical v2 FRBR models (`WorkRecord`, `ExpressionRecord`, `ManifestationRecord`, `LegislationWork`, `LegislationExpression`, `LegislationManifestation`) fully implemented.
+- Default fixed timestamps eliminated.
+- Deterministic ID generators implemented without fabrication.
+- Dual schema serialization (`v1`, `v2`), crosswalk conversion, and lossy conversion reporting verified.
+- Test coverage >97% with passing assurance harness.

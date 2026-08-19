@@ -1,6 +1,12 @@
-# Evidence: Identity, Normalisation, and Corpus Application Service
+# Evidence: Canonical v2 FRBR Model and Identity
 
-- `src/archive_govt_nz/domains/legislation/models.py` (WorkRecord, ExpressionRecord, ManifestationRecord, LegislationRecord)
-- `src/archive_govt_nz/domains/legislation/normalise.py` (normalise_legislation_payload)
-- `src/archive_govt_nz/domains/legislation/corpus.py` (LegislationArchiveService)
-- `tests/domains/test_legislation_corpus_service.py`
+## Executed Commands and Test Receipts
+
+- `uv run pytest --cov=archive_govt_nz.domains.legislation.models --cov=archive_govt_nz.domains.legislation.identity tests/domains/test_legislation_models.py tests/domains/test_legislation.py`: 15 passed, 97.79% coverage.
+- `uv run python tools/validate_schemas.py`: 21 schemas validated.
+
+## Invariants Verified
+
+- Zero default fixed timestamps in runtime model definitions.
+- Deterministic ID generators without ID fabrication.
+- Bidirectional schema conversion with explicit lossy reporting.

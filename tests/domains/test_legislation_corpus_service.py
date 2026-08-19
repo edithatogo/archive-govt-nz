@@ -118,6 +118,7 @@ async def test_legislation_archive_service_lifecycle(tmp_path: Path) -> None:
         canonical_uri="https://legislation.govt.nz/act/public/2026/0001",
         raw_cas_hash_sha256="c" * 64,
         raw_cas_hash_blake3="d" * 64,
+        retrieval_timestamp="2026-08-19T00:00:00Z",
     )
 
     manifest = service.build_manifest([rec], run_id="run-1")

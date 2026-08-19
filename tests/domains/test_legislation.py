@@ -150,6 +150,7 @@ def test_validate_legislation_record() -> None:
         canonical_uri="https://example.com/act",
         raw_cas_hash_sha256="0" * 64,
         raw_cas_hash_blake3="1" * 64,
+        retrieval_timestamp="2026-08-19T00:00:00Z",
         byte_size=100,
         sections=[SectionRecord("s1", "1", "H1", "C1")],
     )
@@ -165,6 +166,7 @@ def test_validate_legislation_record() -> None:
         canonical_uri="https://example.com/act",
         raw_cas_hash_sha256="0" * 64,
         raw_cas_hash_blake3="1" * 64,
+        retrieval_timestamp="2026-08-19T00:00:00Z",
         sections=[
             SectionRecord("s1", "1", "H1", "C1"),
             SectionRecord("s1", "2", "H2", "C2"),
@@ -182,6 +184,7 @@ def test_validate_legislation_record() -> None:
         canonical_uri="invalid-uri",
         raw_cas_hash_sha256="badhash",
         raw_cas_hash_blake3="badhash",
+        retrieval_timestamp="2026-08-19T00:00:00Z",
     )
     errors = validate_legislation_record(invalid_rec)
     assert len(errors) >= 4
@@ -198,6 +201,7 @@ def test_build_manifest_and_checkpoint_manager(tmp_path: Path) -> None:
         canonical_uri="https://example.com/act",
         raw_cas_hash_sha256="0" * 64,
         raw_cas_hash_blake3="1" * 64,
+        retrieval_timestamp="2026-08-19T00:00:00Z",
     )
     manifest = build_legislation_manifest([rec], run_id="run-test")
     assert manifest["total_records"] == 1
@@ -274,6 +278,7 @@ def test_bootstrap_reconcile_and_publication(tmp_path: Path) -> None:
         canonical_uri="https://example.com/act1",
         raw_cas_hash_sha256="0" * 64,
         raw_cas_hash_blake3="1" * 64,
+        retrieval_timestamp="2026-08-19T00:00:00Z",
     )
     pkg = prepare_legislation_publication_package([rec], tmp_path / "pkg")
     assert pkg["total_records"] == 1
