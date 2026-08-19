@@ -4,21 +4,30 @@ from __future__ import annotations
 
 import hashlib
 import json
+import time
 from datetime import UTC, datetime
 from pathlib import Path
 
-from archive_govt_nz.domains.legislation.bootstrap import reconcile_historical_batches
-from archive_govt_nz.domains.legislation.manifest import build_legislation_manifest
+from archive_govt_nz.domains.legislation.api import NZLegislationApiClient
+from archive_govt_nz.domains.legislation.bootstrap import (
+    reconcile_historical_batches,
+)
+from archive_govt_nz.domains.legislation.manifest import (
+    build_legislation_manifest,
+)
 from archive_govt_nz.domains.legislation.models import (
     LegislationRecord,
     LegislationType,
     VersionStatus,
 )
-from archive_govt_nz.domains.legislation.normalise import normalise_legislation_payload
+from archive_govt_nz.domains.legislation.normalise import (
+    normalise_legislation_payload,
+)
 from archive_govt_nz.domains.legislation.publication import (
     prepare_legislation_publication_package,
 )
 
+HTTP_OK = 200
 DONOR_PATH = Path("/tmp/donor_corpus_leg")
 PARITY_DIR = Path("evidence/migrations/corpus-legislation-nz/parity")
 
@@ -27,19 +36,28 @@ def generate_fixture_parity(run_id: str, now_iso: str) -> dict[str, object]:
     """Execute fixture normalisation parity test."""
     fixtures = [
         (
-            b"<act><heading>Public Finance Act 1989</heading><section id='s1'><heading>Title</heading>An Act...</section></act>",
+            (
+                b"<act><heading>Public Finance Act 1989</heading>"
+                b"<section id='s1'><heading>Title</heading>An Act...</section></act>"
+            ),
             "act-1989-107",
             "Public Finance Act 1989",
             "https://legislation.govt.nz/act/1989/107",
         ),
         (
-            b"<regulation><heading>Fisheries Regs 2001</heading><section id='s1'><heading>Quota</heading>Rules...</section></regulation>",
+            (
+                b"<regulation><heading>Fisheries Regs 2001</heading>"
+                b"<section id='s1'><heading>Quota</heading>Rules...</section></regulation>"
+            ),
             "reg-2001-42",
             "Fisheries Regs 2001",
             "https://legislation.govt.nz/regulation/2001/42",
         ),
         (
-            b"<html><body><h1>Land Transport Bill 2024</h1><p>Introduced</p></body></html>",
+            (
+                b"<html><body><h1>Land Transport Bill 2024</h1>"
+                b"<p>Introduced</p></body></html>"
+            ),
             "bill-2024-12",
             "Land Transport Bill 2024",
             "https://legislation.govt.nz/bill/2024/12",
@@ -102,17 +120,27 @@ def generate_historical_batch_parity(run_id: str, now_iso: str) -> dict[str, obj
 
 
 def generate_live_smoke_parity(run_id: str, now_iso: str) -> dict[str, object]:
-    """Generate live smoke endpoint parity receipt."""
+    """Generate live smoke endpoint parity receipt with real observation."""
+    client = NZLegislationApiClient(timeout=5.0, max_retries=0)
+    endpoint = "https://www.legislation.govt.nz"
+    start = time.monotonic()
+    try:
+        status, _, _ = client.get_document_raw(endpoint)
+        latency_ms = int((time.monotonic() - start) * 1000)
+    except Exception:  # noqa: BLE001
+        status = 0
+        latency_ms = 0
+
     receipt = {
         "schema_version": "archive-govt-nz.live-smoke-parity/v1",
         "run_id": run_id,
         "evaluated_at": now_iso,
         "donor_commit": "749918c251da59dc890c19dfda2ab9a021fd8ca6",
         "target_commit": "c154578f4e7de3585e6b5885c157fc6ef2c7564b",
-        "endpoint": "https://www.legislation.govt.nz",
-        "http_status": 200,
-        "response_latency_ms": 142,
-        "status": "passed",
+        "endpoint": endpoint,
+        "http_status": status,
+        "response_latency_ms": latency_ms,
+        "status": "passed" if status == HTTP_OK else "unobserved_offline",
     }
     (PARITY_DIR / "live-smoke-parity.json").write_text(
         json.dumps(receipt, indent=2), encoding="utf-8"
