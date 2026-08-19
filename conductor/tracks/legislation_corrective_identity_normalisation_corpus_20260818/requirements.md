@@ -1,4 +1,4 @@
-# Requirements: Identity, Normalisation, and Corpus Application Service
+# Requirements: Identity, Normalisation, and Canonical v2 FRBR Model
 
 Track: `legislation_corrective_identity_normalisation_corpus_20260818`  
 Parent: `legislation_corpus_consolidation_corrective_20260818`  
@@ -7,12 +7,15 @@ Linked Issues: [#132](https://github.com/edithatogo/archive-govt-nz/issues/132),
 ## MoSCoW Requirements
 
 ### Must
-1. **v2 FRBR Model Specification**:
-   - Represent FRBR Work (`WorkRecord`), Expression (`ExpressionRecord`), and Manifestation (`ManifestationRecord`) as explicit runtime dataclasses in `src/archive_govt_nz/domains/legislation/models.py`.
+1. **Canonical v2 FRBR Runtime Model**:
+   - Represent FRBR Work (`WorkRecord`, `LegislationWork`), Expression (`ExpressionRecord`, `LegislationExpression`), and Manifestation (`ManifestationRecord`, `LegislationManifestation`) as explicit runtime dataclasses in `src/archive_govt_nz/domains/legislation/models.py` and `src/archive_govt_nz/domains/legislation/identity.py`.
+   - Remove all default fixed timestamps from runtime model definitions.
+   - Represent work identity, expression/version identity, manifestation identity, source and canonical URIs, source media type, raw object hashes (`sha256`, `blake3`), byte size, caller-supplied retrieval timestamp, source modification timestamp, type and status with uncertainty, amendment/repeal/replacement relationships, commencement/assent dates, sections/schedules, provenance references, and rights/redistribution classifications.
+2. **Dual Schema Serialization & Validation**:
    - Support both `to_dict("v1")` and `to_dict("v2")` serialization on `LegislationRecord` with zero schema drift.
-2. **Safe Legal Document Normalisation**:
-   - Parse XML and HTML byte payloads in `src/archive_govt_nz/domains/legislation/normalise.py` safely without XXE expansion or entity attacks.
-   - Accurately infer statutory types (Act, Regulation, Bill, Deemed Regulation, Order in Council) and in-force status.
-   - Populate exact byte size, dual CAS hashes (`sha256`, `blake3`), statutory sections, and schedules.
-3. **Unified `LegislationArchiveService`**:
-   - Provide a single application service in `src/archive_govt_nz/domains/legislation/corpus.py` coordinating adapter capture, API client transport, CAS storage, manifest generation, Parquet/JSONL export, and dynamic coverage reporting.
+   - Provide explicit schema validation against Draft 2020-12 schemas.
+3. **Deterministic Identity Generation**:
+   - Implement deterministic generators for `work_id`, `expression_id`, and `manifestation_id` without ID fabrication.
+4. **Bidirectional Conversion & Lossy Reporting**:
+   - Implement lossless `convert_v1_to_v2` conversion.
+   - Implement `convert_v2_to_v1` conversion with explicit reporting of dropped/lossy fields.

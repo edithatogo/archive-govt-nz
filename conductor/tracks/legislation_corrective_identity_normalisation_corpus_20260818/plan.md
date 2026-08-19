@@ -1,13 +1,15 @@
-# Plan: Identity, Normalisation, and Corpus Application Service
+# Plan: Canonical v2 FRBR Runtime Model and Compatibility
 
-1. **Phase 1: v2 FRBR Model Implementation**
-   - Define `WorkRecord`, `ExpressionRecord`, `ManifestationRecord`.
-   - Implement v1 and v2 serialization on `LegislationRecord`.
-2. **Phase 2: Normalisation Enhancement**
-   - Safe XML ElementTree and HTML parsing.
-   - Dual-hash binding and structural extraction of sections/schedules.
-3. **Phase 3: LegislationArchiveService Integration**
-   - Single application service coordinating adapter, client, CAS, manifest, export, and coverage.
-4. **Phase 4: Test & Quality Gate Verification**
-   - Unit and lifecycle tests under `tests/domains/test_legislation_corpus_service.py`.
-   - Quality check suite pass under `tools/check.py`.
+1. **Phase 1: Contract and Track Specifications (Commit A)**
+   - Update MoSCoW requirements and execution plan.
+   - Validate YAML contracts using `tools/validate_contracts.py`.
+
+2. **Phase 2: Canonical v2 Model Implementation (Commit B)**
+   - Implement `LegislationWork`, `LegislationExpression`, `LegislationManifestation` and deterministic ID generators in `src/archive_govt_nz/domains/legislation/identity.py`.
+   - Implement `WorkRecord`, `ExpressionRecord`, `ManifestationRecord`, `RelationshipRecord`, `ProvenanceReference`, and `LegislationRecord` with no default fixed timestamps in `src/archive_govt_nz/domains/legislation/models.py`.
+   - Update `schemas/legislation/v2/legislation-record.schema.json` to include v2 fields.
+   - Implement `convert_v1_to_v2`, `convert_v2_to_v1`, and `validate_legislation_record` crosswalk and validation helpers.
+
+3. **Phase 3: Verification & 100% Patch Coverage (Commit B)**
+   - Write comprehensive unit tests for v2 models, deterministic identity generation, serialization, schema validation, and lossy conversion reporting.
+   - Verify with `tools/check.py`.
