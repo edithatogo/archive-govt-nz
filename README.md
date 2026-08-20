@@ -115,9 +115,9 @@ authorize it.
 
 The codebase enforces strict quality boundaries via `tools/check.py`:
 - **Python 3.14+** with strict static typing via `basedpyright`.
-- **733 unit, integration, and adversarial tests** passed on the current local
-  successor branch with **95.87% branch-aware coverage**; these figures are
-  local validation evidence, not hosted or operational proof.
+- **Locked validation harness**: Unit, integration, and adversarial tests enforce
+  at least **95% branch-aware coverage**. Exact local results are recorded in the
+  active Conductor track; they are not hosted or operational proof.
 - **7 Mutation Testing Runners** (`mutation_resource_policy`, `mutation_versioning`, `mutation_redundancy`, `mutation_archivebox_pilot`, `mutation_batch_eligibility`, `mutation_global_policy`, `mutation_adapters`).
 - **Hygiene gate**: The repository validator rejects configured placeholder and
   forbidden-pattern classes.
