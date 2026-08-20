@@ -17,4 +17,3 @@
   mutation, publication, rights, or cutover tools.
 - **MCP-10** Keep all publication, redistribution, workflow, live execution,
   recovery, cutover, and donor-archive gates pending.
-
