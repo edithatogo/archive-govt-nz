@@ -9,6 +9,8 @@
 - `bash scripts/validate.sh`: exit 0; 773 tests passed at 95.72% coverage;
   format, lint, types, schemas, all mutation lanes, hygiene, CAS benchmark,
   direct dependency audit, licences, secrets, and SBOM passed.
+- Post-rebase exact harness on MCP head `58cd63d`: 775 tests passed at 95.70%
+  branch-aware coverage; every repository gate passed.
 
 ## External boundary
 

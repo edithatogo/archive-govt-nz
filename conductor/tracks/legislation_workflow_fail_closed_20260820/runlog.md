@@ -17,3 +17,8 @@
   repository validation completed with 773 tests, 95.72% coverage, all schema
   and mutation gates, direct OSV dependency audit, licences, secrets, and SBOM.
   No hosted job or source request was executed.
+- 2026-08-20: Rebased the local workflow successor onto MCP head `58cd63d`.
+  The exact stack passed 775 tests at 95.70% branch-aware coverage and every
+  remaining harness gate. The hosted jobs remain unconditionally gated before
+  checkout; no push, PR, dispatch, source request, publication, or rights
+  action occurred.
