@@ -11,3 +11,15 @@
   README says 500 work IDs and explicitly disclaims completeness.
 - This branch and all validation are local-only. No real batch has executed.
 
+## Corrected-stack validation
+
+- Stacked base: workflow correction `c7ebcf9` (including service, global CLI,
+  legislation CLI, stable MCP, and hosted workflow gates).
+- Focused command: 77 adversarial one-batch tests passed; critical module
+  coverage was 228/228 statements and 106/106 branches (100%).
+- Full command: `bash scripts/validate.sh` exited 0; 850 tests passed at 95.89%
+  overall coverage; 22 schemas and 12 representative documents validated; all
+  mutation, hygiene, CAS benchmark, direct dependency audit, licence, secret,
+  and SBOM gates passed.
+- Generated validation timestamps and donor snapshots were restored rather than
+  committed as execution evidence.
