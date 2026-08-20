@@ -250,29 +250,68 @@ def _validate_checkpoint_metadata(metadata: object) -> None:
     _validate_conditional_requests(metadata.get("conditional_requests", {}))
 
 
-def _validate_resolved_targets(targets: list[WorkTarget]) -> None:
-    """Reject explicit target graphs that could fabricate successful work state."""
-    seen_work_ids: set[str] = set()
-    for target in targets:
-        if target.work_id in seen_work_ids:
-            msg = (
-                f"duplicate work identity in bounded target inventory: {target.work_id}"
-            )
+def _register_target_identity(
+    identity: str,
+    kind: str,
+    seen: set[str],
+    *,
+    required: bool = False,
+) -> None:
+    """Validate and register one supplied canonical target identity."""
+    if not identity:
+        if required:
+            msg = f"bounded target has an invalid {kind} identity"
             raise ValueError(msg)
-        seen_work_ids.add(target.work_id)
-        if not target.expression_targets:
-            msg = f"target {target.work_id} has no expressions"
+        return
+    if identity != identity.strip():
+        msg = f"bounded target has an invalid {kind} identity"
+        raise ValueError(msg)
+    if identity in seen:
+        msg = f"duplicate {kind} identity: {identity}"
+        raise ValueError(msg)
+    seen.add(identity)
+
+
+def _validate_target_expressions(
+    target: WorkTarget,
+    seen_expression_ids: set[str],
+    seen_manifestation_ids: set[str],
+) -> None:
+    """Validate expression and manifestation identity structure for one work."""
+    if not target.expression_targets:
+        msg = f"target {target.work_id} has no expressions"
+        raise ValueError(msg)
+    for expression in target.expression_targets:
+        _register_target_identity(
+            expression.expression_id, "expression", seen_expression_ids
+        )
+        if not expression.manifestations:
+            msg = f"target {target.work_id} expression has no manifestations"
             raise ValueError(msg)
-        for expression in target.expression_targets:
-            if not expression.manifestations:
-                msg = f"target {target.work_id} expression has no manifestations"
-                raise ValueError(msg)
-            if any(
+        for manifestation in expression.manifestations:
+            if (
                 not manifestation.target_url
-                for manifestation in expression.manifestations
+                or manifestation.target_url != manifestation.target_url.strip()
             ):
                 msg = f"target {target.work_id} has an empty manifestation URL"
                 raise ValueError(msg)
+            _register_target_identity(
+                manifestation.manifestation_id,
+                "manifestation",
+                seen_manifestation_ids,
+            )
+
+
+def _validate_resolved_targets(targets: list[WorkTarget]) -> None:
+    """Reject explicit target graphs that could fabricate successful work state."""
+    seen_work_ids: set[str] = set()
+    seen_expression_ids: set[str] = set()
+    seen_manifestation_ids: set[str] = set()
+    for target in targets:
+        _register_target_identity(target.work_id, "work", seen_work_ids, required=True)
+        _validate_target_expressions(
+            target, seen_expression_ids, seen_manifestation_ids
+        )
 
 
 def _validate_manifest_inventory(

@@ -197,6 +197,23 @@ async def test_discovery_fails_closed_without_canonical_frbr_graph(
 @pytest.mark.parametrize(
     ("targets", "message"),
     [
+        (
+            [
+                WorkTarget(
+                    work_id="",
+                    expression_targets=[
+                        ExpressionTarget(
+                            manifestations=[
+                                ManifestationTarget(
+                                    target_url="https://example.test/empty-work.xml"
+                                )
+                            ]
+                        )
+                    ],
+                )
+            ],
+            "work identity",
+        ),
         ([WorkTarget(work_id="act-empty")], "no expressions"),
         (
             [
@@ -248,6 +265,60 @@ async def test_discovery_fails_closed_without_canonical_frbr_graph(
                 ),
             ],
             "duplicate work identity",
+        ),
+        (
+            [
+                WorkTarget(
+                    work_id="act-duplicate-expressions",
+                    expression_targets=[
+                        ExpressionTarget(
+                            expression_id="expression:duplicate",
+                            manifestations=[
+                                ManifestationTarget(
+                                    target_url="https://example.test/one.xml"
+                                )
+                            ],
+                        ),
+                        ExpressionTarget(
+                            expression_id="expression:duplicate",
+                            manifestations=[
+                                ManifestationTarget(
+                                    target_url="https://example.test/two.xml"
+                                )
+                            ],
+                        ),
+                    ],
+                )
+            ],
+            "duplicate expression identity",
+        ),
+        (
+            [
+                WorkTarget(
+                    work_id="act-duplicate-manifestations",
+                    expression_targets=[
+                        ExpressionTarget(
+                            expression_id="expression:one",
+                            manifestations=[
+                                ManifestationTarget(
+                                    manifestation_id="manifestation:duplicate",
+                                    target_url="https://example.test/one.xml",
+                                )
+                            ],
+                        ),
+                        ExpressionTarget(
+                            expression_id="expression:two",
+                            manifestations=[
+                                ManifestationTarget(
+                                    manifestation_id="manifestation:duplicate",
+                                    target_url="https://example.test/two.xml",
+                                )
+                            ],
+                        ),
+                    ],
+                )
+            ],
+            "duplicate manifestation identity",
         ),
     ],
 )
@@ -1054,7 +1125,7 @@ async def test_invalid_normalised_record_is_not_preserved(tmp_path: Path) -> Non
         api_client=NZLegislationApiClient(async_client=async_client),
     )
     target = WorkTarget(
-        work_id="",
+        work_id="work-invalid",
         canonical_uri="invalid-uri",
         expression_targets=[
             ExpressionTarget(
