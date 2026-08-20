@@ -295,3 +295,19 @@ def test_api_client_search_malformed_success_fails_closed(
     )
     with pytest.raises(error):
         list(client.iter_search_works("act"))
+
+
+def test_api_client_search_ignores_non_object_items() -> None:
+    """Only canonical object-shaped search records are yielded."""
+
+    def handler(_req: httpx.Request) -> httpx.Response:
+        return httpx.Response(
+            200,
+            json={"results": [None, "invalid", {"work_id": "act-1"}]},
+        )
+
+    client = NZLegislationApiClient(
+        client=httpx.Client(transport=httpx.MockTransport(handler)),
+        sleep_fn=lambda _: None,
+    )
+    assert list(client.iter_search_works("act")) == [{"work_id": "act-1"}]
