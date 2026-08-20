@@ -53,3 +53,11 @@
   benchmark, dependency audit, licence, secret, and SBOM gates green. Generated
   timestamp and donor-snapshot churn was restored. Publication, rights, live
   operation, recovery, cutover, and donor archival remain gated.
+- 2026-08-20T21:15:00Z: PR #158 merged as `bc5acda` after the required quality,
+  workflow-policy, and CodeQL checks passed. A non-required Codecov patch check
+  then appeared with 84.44% against a 94.88% target. Paused the MCP sequence and
+  added adversarial coverage for every uncovered changed source line at
+  `fb62c84`. The full harness passed 762 tests at 96.12% overall coverage and
+  all remaining gates; a coverage-JSON audit against the original PR #158
+  source diff found 180/180 executable changed lines hit. Generated timestamp
+  and donor-snapshot churn was restored and excluded.

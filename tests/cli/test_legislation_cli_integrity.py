@@ -441,3 +441,142 @@ def test_unknown_legacy_action_is_usage_error(
     monkeypatch.setattr(sys, "argv", ["nzlc", "definitely-unknown"])
     assert compat_nzlc_main() == 5
     assert "Unknown nzlc action" in capsys.readouterr().err
+
+
+def test_text_failures_preserve_fail_closed_exit_semantics(
+    capsys: pytest.CaptureFixture[str],
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Human-readable output must not bypass discovery or sync failures."""
+
+    def fail_discovery(*_args: object, **_kwargs: object) -> list[dict[str, str]]:
+        message = "discovery unavailable"
+        raise ValueError(message)
+
+    monkeypatch.setattr(
+        "archive_govt_nz.domains.legislation.api.NZLegislationApiClient.iter_search_works",
+        fail_discovery,
+    )
+    assert legislation(action="discover", search_term="act", format="text") == 2
+    assert "status=failed" in capsys.readouterr().out
+
+    assert legislation(action="sync", batch_id="", format="text") == 5
+    assert "status=invalid_request" in capsys.readouterr().out
+
+
+@pytest.mark.parametrize("output_format", ["json", "text"])
+def test_sync_transport_failure_is_non_success(
+    tmp_path: Path,
+    capsys: pytest.CaptureFixture[str],
+    monkeypatch: pytest.MonkeyPatch,
+    output_format: str,
+) -> None:
+    """A service exception cannot be represented as a completed sync."""
+
+    async def fail_sync(_self: object, **_kwargs: object) -> LegislationSyncResult:
+        message = "source unavailable"
+        raise OSError(message)
+
+    monkeypatch.setattr(
+        "archive_govt_nz.cli.LegislationArchiveService.sync_works", fail_sync
+    )
+    code = legislation(
+        action="sync",
+        work_ids=["work-1"],
+        batch_id="batch-1",
+        cas_path=str(tmp_path / "cas"),
+        checkpoint_path=str(tmp_path / "checkpoint.json"),
+        manifest_path=str(tmp_path / "manifest.json"),
+        format=output_format,  # type: ignore[arg-type]
+    )
+    output = capsys.readouterr()
+    assert code == 2
+    assert "source unavailable" in output.err
+    if output_format == "json":
+        assert json.loads(output.out)["status"] == "failed"
+    else:
+        assert "status=failed" in output.out
+
+
+def test_text_success_projections_require_authenticated_state(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    """Text projections use the same authenticated manifest and CAS state."""
+    state = _write_authenticated_state(tmp_path)
+    common = {
+        "manifest_path": str(state["manifest_path"]),
+        "checkpoint_path": str(state["checkpoint_path"]),
+        "cas_path": str(state["cas_path"]),
+        "format": "text",
+    }
+    for action, marker in (
+        ("validate", "status=valid"),
+        ("coverage", "status=complete"),
+        ("status", "status=operational"),
+    ):
+        assert legislation(action=action, **common) == 0  # type: ignore[arg-type]
+        assert marker in capsys.readouterr().out
+
+
+def test_text_incomplete_and_unverified_projections_are_non_success(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    """Text mode retains nonzero exits for incomplete or unauthenticated state."""
+    manifest = tmp_path / "manifest.json"
+    _write_manifest(manifest, discovered=["work-1", "work-2"])
+    assert (
+        legislation(action="coverage", manifest_path=str(manifest), format="text") == 1
+    )
+    assert "status=incomplete" in capsys.readouterr().out
+
+    checkpoint = tmp_path / "checkpoint.json"
+    checkpoint.write_text("{}", encoding="utf-8")
+    assert (
+        legislation(action="changes", checkpoint_path=str(checkpoint), format="json")
+        == 1
+    )
+    assert json.loads(capsys.readouterr().out)["status"] == "unverified"
+    assert (
+        legislation(action="changes", checkpoint_path=str(checkpoint), format="text")
+        == 1
+    )
+    assert "status=unverified" in capsys.readouterr().out
+
+    assert (
+        legislation(
+            action="replay",
+            cas_path=str(tmp_path / "missing-cas"),
+            checkpoint_path=str(checkpoint),
+            manifest_path=str(manifest),
+            format="text",
+        )
+        == 1
+    )
+    assert "status=no_state" in capsys.readouterr().out
+
+    assert (
+        legislation(
+            action="publication-plan", manifest_path=str(manifest), format="text"
+        )
+        == 3
+    )
+    assert "status=blocked" in capsys.readouterr().out
+
+
+def test_text_invalid_status_and_replay_are_non_success(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    """Corrupt linked state stays invalid in human-readable mode."""
+    state = _write_authenticated_state(tmp_path)
+    checkpoint = json.loads(state["checkpoint_path"].read_text(encoding="utf-8"))
+    checkpoint["metadata"]["manifest_sha256"] = "0" * 64
+    state["checkpoint_path"].write_text(json.dumps(checkpoint), encoding="utf-8")
+    common = {
+        "manifest_path": str(state["manifest_path"]),
+        "checkpoint_path": str(state["checkpoint_path"]),
+        "cas_path": str(state["cas_path"]),
+        "format": "text",
+    }
+    for action in ("status", "replay"):
+        assert legislation(action=action, **common) == 1  # type: ignore[arg-type]
+        assert "status=invalid" in capsys.readouterr().out
