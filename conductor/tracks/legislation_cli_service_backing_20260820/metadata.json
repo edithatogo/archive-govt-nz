@@ -3,10 +3,10 @@
   "title": "Fail-closed service-backed legislation CLI correction",
   "status": "in_progress",
   "created_at": "2026-08-20T11:12:00Z",
-  "updated_at": "2026-08-20T12:05:00Z",
-  "implementation_commit": "c92850b",
+  "updated_at": "2026-08-20T15:10:00Z",
+  "implementation_commit": "4a97b51",
   "parent_issue": 131,
-  "stacked_base": "2c86d9001b07881f1c8af58146ec7a653bc740cf",
+  "stacked_base": "5ed8be0",
   "gates": [
     {"id": "service-sequence", "kind": "merge", "status": "pending"},
     {"id": "global-cli-sequence", "kind": "merge", "status": "pending"},

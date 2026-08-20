@@ -38,3 +38,11 @@
 - 2026-08-20T12:05:00Z: Restored harness-generated evidence timestamps because
   this local branch does not claim a refreshed operational evaluation. No push,
   PR, merge, live batch, publication, or donor archival occurred.
+- 2026-08-20T15:10:00Z: Rebased onto global CLI head `5ed8be0` and amended
+  service head `51fc8a7`. The first exact harness exposed two legacy CLI tests
+  that assumed work IDs manufactured acquisition targets. Updated those tests
+  to return canonical discovery graphs; 20 focused tests then passed.
+- 2026-08-20T15:10:00Z: The exact corrected stack passed the full locked harness
+  with 756 tests, 95.62% branch-aware coverage, and every repository gate. No
+  push, PR, merge, source fetch, publication, rights action, or live operation
+  occurred.
