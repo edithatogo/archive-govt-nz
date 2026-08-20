@@ -3,7 +3,7 @@
   "title": "Fail-closed service-backed legislation CLI correction",
   "status": "in_progress",
   "created_at": "2026-08-20T11:12:00Z",
-  "updated_at": "2026-08-20T16:05:00Z",
+  "updated_at": "2026-08-20T21:15:00Z",
   "implementation_commit": "4d2e20c",
   "parent_issue": 131,
   "stacked_base": "138b17f81c4e666a50ec0a69e081b045cc4ca869",

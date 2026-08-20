@@ -22,4 +22,10 @@
   dependency audit, licence inventory, secret scan, and SBOM passed.
 - Post-merge-base harness: 756 tests passed at 95.62% overall coverage, with all
   repository gates green.
+- Late PR #158 Codecov patch status reported 84.44% against a 94.88% target
+  after the required hosted checks had completed and the merge was accepted.
+  Corrective test commit `fb62c84` exercises the previously uncovered text,
+  service-exception, incomplete, invalid, and unverified branches. The full
+  harness now passes 762 tests at 96.12% overall coverage; a local executable
+  source-line audit of the original PR #158 diff reports 180/180 lines hit.
 - No live or remote affirmative evidence was generated.
