@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: read
+  id-token: write
 
 concurrency:
   group: reconcile-legislation-${{ github.ref }}
@@ -22,14 +23,13 @@ jobs:
           python-version: "3.14"
       - run: python -m pip install uv==0.6.5
       - name: Prepare receipt directories
-        run: mkdir -p build/receipts/legislation-monthly
+        run: mkdir -p build/receipts/legislation build/manifests
       - name: Run Full Inventory Reconciliation
         run: |
-          uv run --locked archive-govt-nz legislation --action coverage --format json > build/receipts/legislation-monthly/reconcile.json
-          uv run --locked python tools/generate_executable_legislation_parity.py
+          uv run --locked python tools/run_legislation_reconciliation.py
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         if: always()
         with:
           name: legislation-monthly-reconciliation
-          path: build/receipts/legislation-monthly/
+          path: build/receipts/legislation/
           if-no-files-found: error

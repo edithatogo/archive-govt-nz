@@ -1,8 +1,12 @@
-# Review: Weekly Orchestration, Resumable Archival Service, and State Management
+# Review: Weekly Legislation Orchestration and State Management
 
-## Review Verdict: VERIFIED
+## Review Verdict: IN_PROGRESS (Ready for Review)
 
-- Single canonical `LegislationArchiveService` orchestrates the complete 10-step pipeline.
-- Resumability, idempotency, multi-expression XML/HTML handling, and atomic staging/promotion verified.
-- Error handling, corrupt checkpoint detection, and promotion abort on failure tested.
-- Test coverage >95% (97.81%) with clean pass across test matrix.
+### Completed Scope
+- Source-set configuration `config/source-sets/legislation.yml`.
+- Pinned workflows for weekly harvest, monthly reconciliation, and quarterly recovery drill.
+- Deterministic harvest orchestrator `tools/run_legislation_harvest.py`.
+- 100% patch test coverage on orchestrator.
+
+### Remaining Blockers
+- None within this track. Parent programme remains `in_progress`.
