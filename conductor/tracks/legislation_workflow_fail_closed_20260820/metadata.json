@@ -3,8 +3,9 @@
   "title": "Fail-closed legislation workflow correction",
   "status": "in_progress",
   "created_at": "2026-08-20T13:25:00Z",
-  "updated_at": "2026-08-20T13:25:00Z",
+  "updated_at": "2026-08-20T13:55:00Z",
   "stacked_base": "ece29bb",
+  "implementation_commit": "35d6eea",
   "parent_issue": 137,
   "gates": [
     {"id": "mcp-sequence", "kind": "merge", "status": "pending"},

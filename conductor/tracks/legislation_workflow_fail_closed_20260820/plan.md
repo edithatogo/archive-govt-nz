@@ -1,9 +1,9 @@
 # Plan
 
 - [x] Audit merged workflows and runners.
-- [ ] Add adversarial workflow and runner controls.
-- [ ] Replace harvest with bounded discovery through the corrected service.
-- [ ] Make reconciliation and recovery state-authenticated and fail closed.
-- [ ] Make workflows dispatch-only with explicit full-state artifact handling.
-- [ ] Run focused coverage, workflow validation, and the repository harness.
-
+- [x] Add adversarial workflow and runner controls.
+- [x] Replace harvest with bounded discovery through the corrected service.
+- [x] Make reconciliation and recovery state-authenticated and fail closed.
+- [x] Make workflows dispatch-only, prepared for explicit state restore, and
+  hard-disabled before any external step while later gates remain pending.
+- [x] Run focused tests, contract validation, and the repository harness.
