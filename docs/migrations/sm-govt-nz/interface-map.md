@@ -11,7 +11,7 @@ parity with every historical donor release.
 | `archive-govt-nz` | **Canonical** | `archive_govt_nz.cli:main` | Current typed command surface. |
 | `sm-govt-nz` | **Compatibility shim** | `archive_govt_nz.cli_compat:compat_sm_govt_nz_main` | Emits a deprecation warning, then forwards arguments to the canonical CLI. |
 | `nz-govt-social` | **Compatibility shim** | `archive_govt_nz.cli_compat:compat_nz_govt_social_main` | Emits a deprecation warning, then forwards arguments to the canonical CLI. |
-| `nzlc` | **Legislation compatibility shim** | `archive_govt_nz.cli_compat:compat_nzlc_main` | Maps the bounded legacy action names implemented in `cli_compat.py`; legislation hardening remains a later track. |
+| `nzlc` | **Legislation compatibility shim** | `archive_govt_nz.cli_compat:compat_nzlc_main` | Maps only the bounded legacy action names implemented in `cli_compat.py`; unknown actions fail with exit 5. |
 
 ## 2. Implemented global grammar
 
@@ -51,7 +51,30 @@ archive-govt-nz publish --target dry-run|huggingface|hf|zenodo \
 # This validates and prepares a package locally; it does not publish remotely.
 ```
 
-## 3. Exit Code Contract
+## 3. Legislation grammar and evidence boundary
+
+```bash
+archive-govt-nz legislation --action discover [--search-term <term>] \
+  [--max-works <n>] [--format text|json]
+archive-govt-nz legislation --action sync --batch-id <id> \
+  (--work-ids <id>... | --search-term <term>) \
+  [--max-works <n>] [--fail-fast] [--force-resync] \
+  [--cas-path <dir>] [--checkpoint-path <file>] [--manifest-path <file>] \
+  [--format text|json]
+archive-govt-nz legislation --action validate|manifest|coverage|changes|status|replay \
+  [--cas-path <dir>] [--checkpoint-path <file>] [--manifest-path <file>] \
+  [--format text|json]
+archive-govt-nz legislation --action publication-plan|publication-verify|doctor \
+  [--format text|json]
+```
+
+`sync` delegates to `LegislationArchiveService`; it has no fabricated default
+work. Affirmative validation, coverage, status, and replay require rooted
+cumulative state and, where applicable, a linked checkpoint and sharded CAS.
+Publication planning remains policy-blocked and token presence is never remote
+publication evidence.
+
+## 4. Exit Code Contract
 
 `archive-govt-nz` adheres to deterministic POSIX exit codes:
 
@@ -68,7 +91,7 @@ An exit code is bounded to the invoked command. Code 0 never proves corpus
 completeness, remote publication, rights clearance beyond the supplied package,
 recovery, or cutover.
 
-## 4. MCP (Model Context Protocol) Surface Evaluation
+## 5. MCP (Model Context Protocol) Surface Evaluation
 
 - **Status**: A legacy MCP entry point exists, but current-standard and
   current-`main` hardening remains pending in the ordered MCP track.

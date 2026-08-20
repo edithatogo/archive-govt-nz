@@ -496,7 +496,7 @@ class LegislationArchiveService:
         return resolved
 
     @staticmethod
-    def _load_manifest(manifest_path: Path | None) -> dict[str, Any] | None:
+    def load_manifest(manifest_path: Path | None) -> dict[str, Any] | None:
         """Load and verify prior cumulative manifest state or fail closed."""
         if manifest_path is None or not manifest_path.exists():
             return None
@@ -566,7 +566,7 @@ class LegislationArchiveService:
         }
 
     @staticmethod
-    def _validate_checkpoint(checkpoint: dict[str, Any]) -> None:
+    def validate_checkpoint(checkpoint: dict[str, Any]) -> None:
         """Validate durable checkpoint structure before using accounting state."""
         schema_version = checkpoint.get("schema_version")
         if schema_version is not None and schema_version != (
@@ -834,7 +834,7 @@ class LegislationArchiveService:
         force_resync: bool = False,
     ) -> LegislationSyncResult:
         """Execute the complete 10-step bounded resumable sync pipeline."""
-        prior_manifest = self._load_manifest(manifest_path)
+        prior_manifest = self.load_manifest(manifest_path)
         resolved = self._resolve_targets(
             work_ids=work_ids,
             search_terms=search_terms,
@@ -854,7 +854,7 @@ class LegislationArchiveService:
 
         if chk_mgr is not None:
             chk_data = chk_mgr.load(strict=True)
-            self._validate_checkpoint(chk_data)
+            self.validate_checkpoint(chk_data)
             processed_ids = set(chk_data.get("processed_work_ids", []))
             completed_batches = list(chk_data.get("completed_batches", []))
 
