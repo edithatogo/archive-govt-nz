@@ -74,9 +74,11 @@ async def test_first_sync_and_repeated_no_change(tmp_path: Path) -> None:
         canonical_uri="https://www.legislation.govt.nz/act/public/1975/0009/latest/whole.xml",
         expression_targets=[
             ExpressionTarget(
+                expression_id="exp:act-1975-9:latest",
                 version_date="2026-01-01",
                 manifestations=[
                     ManifestationTarget(
+                        manifestation_id="man:act-1975-9:latest:xml",
                         target_url="https://www.legislation.govt.nz/act/public/1975/0009/latest/whole.xml",
                         media_type="application/xml",
                     )
@@ -219,7 +221,9 @@ async def test_discovery_fails_closed_without_canonical_frbr_graph(
             [
                 WorkTarget(
                     work_id="act-empty-manifestations",
-                    expression_targets=[ExpressionTarget()],
+                    expression_targets=[
+                        ExpressionTarget(expression_id="expression:empty")
+                    ],
                 )
             ],
             "no manifestations",
@@ -230,7 +234,13 @@ async def test_discovery_fails_closed_without_canonical_frbr_graph(
                     work_id="act-empty-url",
                     expression_targets=[
                         ExpressionTarget(
-                            manifestations=[ManifestationTarget(target_url="")]
+                            expression_id="expression:empty-url",
+                            manifestations=[
+                                ManifestationTarget(
+                                    manifestation_id="manifestation:empty-url",
+                                    target_url="",
+                                )
+                            ],
                         )
                     ],
                 )
@@ -240,14 +250,52 @@ async def test_discovery_fails_closed_without_canonical_frbr_graph(
         (
             [
                 WorkTarget(
-                    work_id="act-duplicate",
+                    work_id="act-missing-expression-id",
                     expression_targets=[
                         ExpressionTarget(
                             manifestations=[
                                 ManifestationTarget(
-                                    target_url="https://example.test/one.xml"
+                                    manifestation_id="manifestation:present",
+                                    target_url="https://example.test/one.xml",
                                 )
                             ]
+                        )
+                    ],
+                )
+            ],
+            "invalid expression identity",
+        ),
+        (
+            [
+                WorkTarget(
+                    work_id="act-missing-manifestation-id",
+                    expression_targets=[
+                        ExpressionTarget(
+                            expression_id="expression:present",
+                            manifestations=[
+                                ManifestationTarget(
+                                    target_url="https://example.test/one.xml"
+                                )
+                            ],
+                        )
+                    ],
+                )
+            ],
+            "invalid manifestation identity",
+        ),
+        (
+            [
+                WorkTarget(
+                    work_id="act-duplicate",
+                    expression_targets=[
+                        ExpressionTarget(
+                            expression_id="expression:duplicate-work-one",
+                            manifestations=[
+                                ManifestationTarget(
+                                    manifestation_id="manifestation:duplicate-work-one",
+                                    target_url="https://example.test/one.xml",
+                                )
+                            ],
                         )
                     ],
                 ),
@@ -255,11 +303,13 @@ async def test_discovery_fails_closed_without_canonical_frbr_graph(
                     work_id="act-duplicate",
                     expression_targets=[
                         ExpressionTarget(
+                            expression_id="expression:duplicate-work-two",
                             manifestations=[
                                 ManifestationTarget(
-                                    target_url="https://example.test/two.xml"
+                                    manifestation_id="manifestation:duplicate-work-two",
+                                    target_url="https://example.test/two.xml",
                                 )
-                            ]
+                            ],
                         )
                     ],
                 ),
@@ -275,7 +325,8 @@ async def test_discovery_fails_closed_without_canonical_frbr_graph(
                             expression_id="expression:duplicate",
                             manifestations=[
                                 ManifestationTarget(
-                                    target_url="https://example.test/one.xml"
+                                    manifestation_id="manifestation:two",
+                                    target_url="https://example.test/one.xml",
                                 )
                             ],
                         ),
@@ -283,7 +334,8 @@ async def test_discovery_fails_closed_without_canonical_frbr_graph(
                             expression_id="expression:duplicate",
                             manifestations=[
                                 ManifestationTarget(
-                                    target_url="https://example.test/two.xml"
+                                    manifestation_id="manifestation:duplicate-two",
+                                    target_url="https://example.test/two.xml",
                                 )
                             ],
                         ),
@@ -360,11 +412,13 @@ async def test_explicit_target_inventory_is_bounded_before_capture(
             work_id=f"act-{number}",
             expression_targets=[
                 ExpressionTarget(
+                    expression_id=f"exp:act-{number}:latest",
                     manifestations=[
                         ManifestationTarget(
-                            target_url=f"https://example.test/act-{number}.xml"
+                            manifestation_id=f"man:act-{number}:xml",
+                            target_url=f"https://example.test/act-{number}.xml",
                         )
-                    ]
+                    ],
                 )
             ],
         )
@@ -555,10 +609,10 @@ async def test_304_retains_cumulative_manifest_and_checkpoint(tmp_path: Path) ->
 
 
 @pytest.mark.anyio
-async def test_304_retains_explicit_target_with_generated_identity(
+async def test_304_retains_explicit_target_with_canonical_identity(
     tmp_path: Path,
 ) -> None:
-    """Explicit targets link validators to their generated manifestation ID."""
+    """Explicit targets link validators to their canonical manifestation ID."""
     requests: list[httpx.Request] = []
 
     def handler(req: httpx.Request) -> httpx.Response:
@@ -586,11 +640,13 @@ async def test_304_retains_explicit_target_with_generated_identity(
         canonical_uri="https://example.test/work/act-explicit",
         expression_targets=[
             ExpressionTarget(
+                expression_id="exp:act-explicit:latest",
                 manifestations=[
                     ManifestationTarget(
-                        target_url="https://example.test/act-explicit.xml"
+                        manifestation_id="man:act-explicit:xml",
+                        target_url="https://example.test/act-explicit.xml",
                     )
-                ]
+                ],
             )
         ],
     )
@@ -950,11 +1006,13 @@ async def test_checkpoint_inventory_linkage_fails_closed(
         work_id="linked-work",
         expression_targets=[
             ExpressionTarget(
+                expression_id="exp:linked-work:latest",
                 manifestations=[
                     ManifestationTarget(
-                        target_url="https://example.test/linked-work.xml"
+                        manifestation_id="man:linked-work:xml",
+                        target_url="https://example.test/linked-work.xml",
                     )
-                ]
+                ],
             )
         ],
     )
@@ -1225,28 +1283,34 @@ async def test_end_to_end_multi_expression_fixture(tmp_path: Path) -> None:
         canonical_uri="https://example.com/act/1990/1",
         expression_targets=[
             ExpressionTarget(
+                expression_id="exp:act-1990-1:1990",
                 version_date="1990-01-01",
                 version_label="1990-initial",
                 manifestations=[
                     ManifestationTarget(
+                        manifestation_id="man:act-1990-1:xml:1990",
                         target_url="https://example.com/act/1990/1/v1/whole.xml",
                         media_type="application/xml",
                     ),
                     ManifestationTarget(
+                        manifestation_id="man:act-1990-1:html:1990",
                         target_url="https://example.com/act/1990/1/v1/whole.html",
                         media_type="text/html",
                     ),
                 ],
             ),
             ExpressionTarget(
+                expression_id="exp:act-1990-1:2026",
                 version_date="2026-01-01",
                 version_label="2026-reprint",
                 manifestations=[
                     ManifestationTarget(
+                        manifestation_id="man:act-1990-1:xml:2026",
                         target_url="https://example.com/act/1990/1/v2/whole.xml",
                         media_type="application/xml",
                     ),
                     ManifestationTarget(
+                        manifestation_id="man:act-1990-1:html:2026",
                         target_url="https://example.com/act/1990/1/v2/whole.html",
                         media_type="text/html",
                     ),
@@ -1304,9 +1368,13 @@ async def test_resumption_after_interruption(tmp_path: Path) -> None:
         title="Act One",
         expression_targets=[
             ExpressionTarget(
+                expression_id="exp:act-1:latest",
                 manifestations=[
-                    ManifestationTarget(target_url="https://example.com/act1/whole.xml")
-                ]
+                    ManifestationTarget(
+                        manifestation_id="man:act-1:xml",
+                        target_url="https://example.com/act1/whole.xml",
+                    )
+                ],
             )
         ],
     )
@@ -1315,9 +1383,13 @@ async def test_resumption_after_interruption(tmp_path: Path) -> None:
         title="Act Two",
         expression_targets=[
             ExpressionTarget(
+                expression_id="exp:act-2:latest",
                 manifestations=[
-                    ManifestationTarget(target_url="https://example.com/act2/whole.xml")
-                ]
+                    ManifestationTarget(
+                        manifestation_id="man:act-2:xml",
+                        target_url="https://example.com/act2/whole.xml",
+                    )
+                ],
             )
         ],
     )
@@ -1361,9 +1433,13 @@ async def test_fail_fast_no_checkpoint_promotion(tmp_path: Path) -> None:
         title="Failing Act",
         expression_targets=[
             ExpressionTarget(
+                expression_id="exp:act-failing:latest",
                 manifestations=[
-                    ManifestationTarget(target_url="https://example.com/fail/whole.xml")
-                ]
+                    ManifestationTarget(
+                        manifestation_id="man:act-failing:xml",
+                        target_url="https://example.com/fail/whole.xml",
+                    )
+                ],
             )
         ],
     )
@@ -1497,13 +1573,21 @@ async def test_target_resolution_and_partial_sync(tmp_path: Path) -> None:
         store=store, api_client=api_client, checkpoint_mgr=chk_mgr
     )
 
-    # 1. Resolve targets via work_ids
+    # 1. Resolve exact work IDs through canonical discovery.
     res_work_ids = await service.sync_works(
-        work_ids=["act-work-1"],
+        work_ids=["act-disc-1"],
         max_works=5,
     )
     assert res_work_ids.status == "success"
     assert res_work_ids.records_preserved == 1
+    assert res_work_ids.records[0].work_id == "act-disc-1"
+    assert res_work_ids.records[0].expression_id == "exp:act-disc-1:latest"
+    assert res_work_ids.records[0].manifestation_id == "man:act-disc-1:xml"
+
+    with pytest.raises(ValueError, match="not returned by canonical discovery"):
+        await service.sync_works(work_ids=["act-not-discovered"])
+    with pytest.raises(ValueError, match="at least one canonical work identity"):
+        await service.sync_works(work_ids=[])
 
     # 2. Resolve targets via search_terms
     res_search = await service.sync_works(
@@ -1520,11 +1604,13 @@ async def test_target_resolution_and_partial_sync(tmp_path: Path) -> None:
         title="OK Act",
         expression_targets=[
             ExpressionTarget(
+                expression_id="exp:act-work-1:latest",
                 manifestations=[
                     ManifestationTarget(
-                        target_url="https://example.com/act-work-1/whole.xml"
+                        manifestation_id="man:act-work-1:xml",
+                        target_url="https://example.com/act-work-1/whole.xml",
                     )
-                ]
+                ],
             )
         ],
     )
@@ -1533,11 +1619,13 @@ async def test_target_resolution_and_partial_sync(tmp_path: Path) -> None:
         title="Fail Act",
         expression_targets=[
             ExpressionTarget(
+                expression_id="exp:act-fail:latest",
                 manifestations=[
                     ManifestationTarget(
-                        target_url="https://example.com/act-fail/whole.xml"
+                        manifestation_id="man:act-fail:xml",
+                        target_url="https://example.com/act-fail/whole.xml",
                     )
-                ]
+                ],
             )
         ],
     )

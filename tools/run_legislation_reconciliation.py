@@ -21,7 +21,7 @@ from archive_govt_nz.domains.legislation.models import (
 
 def _authenticated_discovered_count(
     manifest: dict[str, Any], record_work_ids: set[str]
-) -> int | None:
+) -> int:
     """Validate and count a manifest's authenticated discovered inventory."""
     field_names = {
         "discovered_work_ids",
@@ -30,7 +30,8 @@ def _authenticated_discovered_count(
     }
     present = field_names.intersection(manifest)
     if not present:
-        return None
+        msg = "authenticated discovered inventory is required"
+        raise ValueError(msg)
     if present != field_names:
         msg = "discovered inventory authentication fields are incomplete"
         raise ValueError(msg)
@@ -132,14 +133,9 @@ def reconcile_inventory(
     # Coverage with documented denominator
     discovered_count = _authenticated_discovered_count(man_data, work_ids)
     if candidate_works_denominator is not None:
-        if candidate_works_denominator < 0:
-            msg = "candidate denominator must be non-negative"
-            raise ValueError(msg)
-        total_candidate = candidate_works_denominator
-    elif discovered_count is not None:
-        total_candidate = discovered_count
-    else:
-        total_candidate = len(work_ids)
+        msg = "candidate denominator overrides are unauthenticated"
+        raise ValueError(msg)
+    total_candidate = discovered_count
     if total_candidate < len(work_ids):
         msg = "candidate denominator is smaller than discovered manifest works"
         raise ValueError(msg)
@@ -152,11 +148,16 @@ def reconcile_inventory(
     if hosted_dataset_slug:
         hosted_status = "readback_unverified"
 
-    status = (
-        "consistent"
-        if not validation_findings and not checkpoint_gap and not manifest_gap
-        else "inconsistent"
-    )
+    if total_candidate == 0:
+        status = "no_state"
+    elif len(work_ids) != total_candidate:
+        status = "inconsistent"
+    else:
+        status = (
+            "consistent"
+            if not validation_findings and not checkpoint_gap and not manifest_gap
+            else "inconsistent"
+        )
 
     return {
         "schema_version": ("archive-govt-nz.legislation-monthly-reconciliation/v1"),
@@ -216,7 +217,7 @@ def run_monthly_reconciliation(
         f"Coverage: {report['coverage_percent']}%"
     )
 
-    return 0 if report["status"] in ("consistent", "inconsistent") else 1
+    return 0 if report["status"] == "consistent" else 1
 
 
 def main() -> None:
@@ -246,7 +247,7 @@ def main() -> None:
         "--candidate-denominator",
         type=int,
         default=None,
-        help="Optional bounded discovered candidate denominator override",
+        help="Deprecated; overrides are rejected because they are unauthenticated",
     )
     parser.add_argument(
         "--hosted-dataset-slug",

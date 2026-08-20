@@ -87,24 +87,6 @@ class LegislationSyncResult:
     errors: list[str] = field(default_factory=list)
 
 
-def _build_default_work_targets(work_ids: list[str]) -> list[WorkTarget]:
-    """Build default single-expression targets for work IDs."""
-    targets: list[WorkTarget] = []
-    for wid in work_ids:
-        uri = f"https://www.legislation.govt.nz/act/public/{wid}/latest/whole.xml"
-        man = ManifestationTarget(target_url=uri, media_type="application/xml")
-        exp = ExpressionTarget(manifestations=[man])
-        targets.append(
-            WorkTarget(
-                work_id=wid,
-                title=f"Legislation {wid}",
-                canonical_uri=uri,
-                expression_targets=[exp],
-            )
-        )
-    return targets
-
-
 def _build_discovered_work_targets(  # noqa: C901
     items: list[dict[str, Any]],
 ) -> list[WorkTarget]:
@@ -283,7 +265,10 @@ def _validate_target_expressions(
         raise ValueError(msg)
     for expression in target.expression_targets:
         _register_target_identity(
-            expression.expression_id, "expression", seen_expression_ids
+            expression.expression_id,
+            "expression",
+            seen_expression_ids,
+            required=True,
         )
         if not expression.manifestations:
             msg = f"target {target.work_id} expression has no manifestations"
@@ -299,6 +284,7 @@ def _validate_target_expressions(
                 manifestation.manifestation_id,
                 "manifestation",
                 seen_manifestation_ids,
+                required=True,
             )
 
 
@@ -461,7 +447,39 @@ class LegislationArchiveService:
         if targets is not None:
             resolved = list(targets)
         elif work_ids is not None:
-            resolved = _build_default_work_targets(work_ids)
+            if not work_ids:
+                msg = "work_ids must contain at least one canonical work identity"
+                raise ValueError(msg)
+            requested_ids: list[str] = []
+            seen_requested_ids: set[str] = set()
+            for work_id in work_ids:
+                _register_target_identity(
+                    work_id, "work", seen_requested_ids, required=True
+                )
+                requested_ids.append(work_id)
+            inventory = build_work_inventory(
+                self.api_client,
+                search_terms=requested_ids,
+                max_works=None,
+            )
+            discovered_items = inventory.get("works", [])
+            discovered_by_id = {
+                str(item.get("work_id", "")).strip(): item
+                for item in discovered_items
+                if isinstance(item, dict)
+            }
+            missing_ids = [
+                work_id for work_id in requested_ids if work_id not in discovered_by_id
+            ]
+            if missing_ids:
+                msg = (
+                    "requested work identities were not returned by canonical "
+                    f"discovery: {', '.join(missing_ids)}"
+                )
+                raise ValueError(msg)
+            resolved = _build_discovered_work_targets(
+                [discovered_by_id[work_id] for work_id in requested_ids]
+            )
         elif search_terms is not None:
             inv = build_work_inventory(
                 self.api_client,
