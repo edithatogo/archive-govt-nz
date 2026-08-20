@@ -50,3 +50,10 @@
   head `51fc8a7`. The exact rebased head passed `bash scripts/validate.sh` with
   738 tests, 95.86% branch-aware coverage, and every remaining repository gate.
   No push, PR, merge, publication, rights action, or live operation occurred.
+- 2026-08-20T15:50:00Z: Corrective service PR #156 was squash-merged as
+  `394f210`. Rebased the global CLI successor onto that exact `origin/main` and
+  reran `bash scripts/validate.sh`: 738 tests passed at 95.86% branch-aware
+  coverage, with schema, mutation, hygiene, CAS benchmark, dependency audit,
+  licence, secret, and SBOM gates green. Generated timestamp and live-snapshot
+  churn was restored and excluded. Publication, rights, live operations,
+  recovery, cutover, and donor archival remain gated.
