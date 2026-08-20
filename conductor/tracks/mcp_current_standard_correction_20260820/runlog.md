@@ -25,3 +25,11 @@
   `50bae20`. The exact stack passed 774 tests at 95.70% branch-aware coverage
   and all remaining harness gates. No branch was pushed and no PR, merge, live
   consumer, publication, rights action, or donor operation occurred.
+- 2026-08-20T21:25:00Z: After legislation coverage PR #159 merged as
+  `c16ad20`, rebased all six MCP correction commits onto exact `origin/main`
+  without conflict. Rechecked the authoritative stable MCP 2025-11-25
+  lifecycle and tools specification. The focused protocol suite passed 33
+  tests with 100% line and branch coverage of `mcp_server.py`; the full locked
+  harness passed 780 tests at 96.20% overall coverage and all remaining gates.
+  Generated timestamp and donor-snapshot churn was restored. No live consumer,
+  publication, rights, workflow, recovery, cutover, or donor action occurred.

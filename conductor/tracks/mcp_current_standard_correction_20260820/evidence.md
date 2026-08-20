@@ -27,3 +27,15 @@ No live MCP consumer, publication target, or donor operation was invoked.
 - Exact locked harness: 774 tests passed at 95.70% branch-aware coverage; every
   repository gate passed. MCP remained at 100% line and branch coverage.
 - No push, PR, merge, live consumer, publication, or rights action occurred.
+
+## Current-main verification
+
+- Checked the authoritative MCP specification pages for lifecycle and tools;
+  stable protocol version `2025-11-25` remains current. The implementation
+  advertises that version and covers initialization, notification silence,
+  one-page cursor rejection, JSON Schema 2020-12 input/output contracts,
+  `structuredContent`, `isError`, and MCP resource errors.
+- Rebased onto legislation coverage merge `c16ad20`. The focused protocol suite
+  passed 33 tests with `mcp_server.py` at 100% line and branch coverage.
+- The full locked harness passed 780 tests at 96.20% branch-aware coverage and
+  every remaining repository gate.
