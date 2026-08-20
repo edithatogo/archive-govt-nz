@@ -1,0 +1,18 @@
+{
+  "track_id": "legislation_workflow_fail_closed_20260820",
+  "title": "Fail-closed legislation workflow correction",
+  "status": "in_progress",
+  "created_at": "2026-08-20T13:25:00Z",
+  "updated_at": "2026-08-20T13:25:00Z",
+  "stacked_base": "ece29bb",
+  "parent_issue": 137,
+  "gates": [
+    {"id": "mcp-sequence", "kind": "merge", "status": "pending"},
+    {"id": "one-batch", "kind": "live", "status": "pending"},
+    {"id": "canary", "kind": "live", "status": "pending"},
+    {"id": "weekly-schedule", "kind": "external", "status": "pending"},
+    {"id": "publication-authority", "kind": "publication", "status": "pending"},
+    {"id": "redistribution-rights", "kind": "rights", "status": "pending"},
+    {"id": "donor-archive", "kind": "destructive", "status": "pending"}
+  ]
+}
