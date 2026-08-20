@@ -13,3 +13,10 @@
   sync constructed state and returned success; a corrupt manifest root
   validated; and manifest/token publication evidence returned affirmative
   states. This is the expected red baseline.
+- 2026-08-20T11:28:00Z: Routed sync through `LegislationArchiveService`, made
+  selection and batch identity explicit, authenticated manifest roots and
+  discovered-inventory coverage, required linked manifest/checkpoint/sharded
+  CAS state for operational status, removed token-only verification, and made
+  absent change evidence and unknown compatibility actions non-zero. Focused
+  CLI suite passed 32 tests with Ruff and BasedPyright green. Replay linkage,
+  expanded adversarial coverage, full harness, and review remain pending.

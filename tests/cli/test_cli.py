@@ -485,12 +485,12 @@ def test_cli_legislation_doctor_and_discover(
     code_doc = legislation(action="doctor", format="json")
     captured_doc = capsys.readouterr()
     payload_doc = json.loads(captured_doc.out)
-    assert payload_doc["status"] == "healthy"
+    assert payload_doc["status"] == "runtime_compatible"
     assert code_doc == 0
 
     code_doc_text = legislation(action="doctor", format="text")
     captured_doc_text = capsys.readouterr()
-    assert "status=healthy" in captured_doc_text.out
+    assert "status=runtime_compatible" in captured_doc_text.out
     assert code_doc_text == 0
 
     monkeypatch.setattr(sys, "version_info", (3, 10, 0))
@@ -534,7 +534,7 @@ def test_cli_legislation_sync_and_no_change(
     )
 
     async def mock_get_doc(
-        _self: object, _url: str
+        _self: object, _url: str, **_kwargs: object
     ) -> tuple[int, bytes, dict[str, str]]:
         return 200, xml_content, {"content-type": "application/xml"}
 
@@ -572,7 +572,7 @@ def test_cli_legislation_sync_and_no_change(
     assert code_sync2 == 0
 
     async def mock_fail_doc(
-        _self: object, _url: str
+        _self: object, _url: str, **_kwargs: object
     ) -> tuple[int, bytes, dict[str, str]]:
         return 500, b"", {}
 
@@ -586,6 +586,7 @@ def test_cli_legislation_sync_and_no_change(
         checkpoint_path=chk_path,
         manifest_path=man_path,
         work_ids=["act-failing"],
+        batch_id="batch-failure",
         fail_fast=True,
         force_resync=True,
         format="json",
@@ -618,13 +619,13 @@ def test_cli_legislation_validate(
     code_val_corrupt = legislation(
         action="validate", manifest_path=str(man_path), format="json"
     )
-    assert json.loads(capsys.readouterr().out)["status"] == "corrupt"
+    assert json.loads(capsys.readouterr().out)["status"] == "invalid"
     assert code_val_corrupt == 1
 
     code_val_corrupt_text = legislation(
         action="validate", manifest_path=str(man_path), format="text"
     )
-    assert "status=corrupt" in capsys.readouterr().out
+    assert "status=invalid" in capsys.readouterr().out
     assert code_val_corrupt_text == 1
 
     invalid_man = {
@@ -658,15 +659,15 @@ def test_cli_legislation_validate(
         action="validate", manifest_path=str(man_path), format="json"
     )
     payload_val_ok = json.loads(capsys.readouterr().out)
-    assert payload_val_ok["status"] == "valid"
-    assert payload_val_ok["records_validated"] == 1
-    assert code_val_ok == 0
+    assert payload_val_ok["status"] == "invalid"
+    assert payload_val_ok["records_validated"] == 0
+    assert code_val_ok == 1
 
     code_val_ok_text = legislation(
         action="validate", manifest_path=str(man_path), format="text"
     )
-    assert "status=valid" in capsys.readouterr().out
-    assert code_val_ok_text == 0
+    assert "status=invalid" in capsys.readouterr().out
+    assert code_val_ok_text == 1
 
 
 def test_cli_legislation_manifest(
@@ -713,15 +714,15 @@ def test_cli_legislation_manifest(
         action="manifest", manifest_path=str(man_path), format="json"
     )
     payload_man_ok = json.loads(capsys.readouterr().out)
-    assert payload_man_ok["status"] == "ready"
-    assert payload_man_ok["total_records"] == 1
-    assert code_man_ok == 0
+    assert payload_man_ok["status"] == "corrupt"
+    assert payload_man_ok["total_records"] == 0
+    assert code_man_ok == 1
 
     code_man_ok_text = legislation(
         action="manifest", manifest_path=str(man_path), format="text"
     )
-    assert "status=ready" in capsys.readouterr().out
-    assert code_man_ok_text == 0
+    assert "status=corrupt" in capsys.readouterr().out
+    assert code_man_ok_text == 1
 
 
 def test_cli_legislation_coverage_dynamic_sensitivity(
@@ -780,13 +781,8 @@ def test_cli_legislation_coverage_dynamic_sensitivity(
         format="json",
     )
     payload_cov3 = json.loads(capsys.readouterr().out)
-    assert payload_cov3["status"] == "operational"
-    assert payload_cov3["candidate_works_count"] == 3
-    assert payload_cov3["retrieved_works_count"] == 3
-    assert payload_cov3["xml_manifestations_count"] == 2
-    assert payload_cov3["html_fallback_count"] == 1
-    assert payload_cov3["coverage_percent"] == 100.0
-    assert code_cov3 == 0
+    assert payload_cov3["status"] == "invalid"
+    assert code_cov3 == 1
 
     code_cov3_text = legislation(
         action="coverage",
@@ -795,8 +791,8 @@ def test_cli_legislation_coverage_dynamic_sensitivity(
         cas_path=cas_path,
         format="text",
     )
-    assert "status=operational candidates=3" in capsys.readouterr().out
-    assert code_cov3_text == 0
+    assert "status=invalid" in capsys.readouterr().out
+    assert code_cov3_text == 1
 
     manifest_5_records = {
         "records": [
@@ -817,10 +813,8 @@ def test_cli_legislation_coverage_dynamic_sensitivity(
         format="json",
     )
     payload_cov5 = json.loads(capsys.readouterr().out)
-    assert payload_cov5["candidate_works_count"] == 5
-    assert payload_cov5["retrieved_works_count"] == 5
-    assert payload_cov5["xml_manifestations_count"] == 5
-    assert code_cov5 == 0
+    assert payload_cov5["status"] == "invalid"
+    assert code_cov5 == 1
 
 
 def test_cli_legislation_changes_and_status(
@@ -835,15 +829,15 @@ def test_cli_legislation_changes_and_status(
         action="changes", checkpoint_path=str(chk_path), format="json"
     )
     payload_chg = json.loads(capsys.readouterr().out)
-    assert payload_chg["status"] == "observed"
+    assert payload_chg["status"] == "no_state"
     assert payload_chg["total_changes"] == 0
-    assert code_chg == 0
+    assert code_chg == 1
 
     code_chg_text = legislation(
         action="changes", checkpoint_path=str(chk_path), format="text"
     )
-    assert "status=observed" in capsys.readouterr().out
-    assert code_chg_text == 0
+    assert "status=no_state" in capsys.readouterr().out
+    assert code_chg_text == 1
 
     code_stat_no = legislation(
         action="status",
@@ -873,8 +867,8 @@ def test_cli_legislation_changes_and_status(
         manifest_path=str(man_path),
         format="json",
     )
-    assert json.loads(capsys.readouterr().out)["status"] == "operational"
-    assert code_stat_ok == 0
+    assert json.loads(capsys.readouterr().out)["status"] == "no_state"
+    assert code_stat_ok == 1
 
     code_stat_ok_text = legislation(
         action="status",
@@ -883,8 +877,8 @@ def test_cli_legislation_changes_and_status(
         manifest_path=str(man_path),
         format="text",
     )
-    assert "status=operational" in capsys.readouterr().out
-    assert code_stat_ok_text == 0
+    assert "status=no_state" in capsys.readouterr().out
+    assert code_stat_ok_text == 1
 
 
 def test_cli_legislation_replay_and_publication(
@@ -930,34 +924,34 @@ def test_cli_legislation_replay_and_publication(
         action="publication-plan", manifest_path=str(man_path), format="json"
     )
     payload_plan_ok = json.loads(capsys.readouterr().out)
-    assert payload_plan_ok["status"] == "staged"
-    assert payload_plan_ok["total_records"] == 10
-    assert code_plan_ok == 0
+    assert payload_plan_ok["status"] == "corrupt"
+    assert payload_plan_ok["total_records"] == 0
+    assert code_plan_ok == 1
 
     code_plan_ok_text = legislation(
         action="publication-plan", manifest_path=str(man_path), format="text"
     )
-    assert "status=staged" in capsys.readouterr().out
-    assert code_plan_ok_text == 0
+    assert "status=corrupt" in capsys.readouterr().out
+    assert code_plan_ok_text == 1
 
     monkeypatch.delenv("HF_TOKEN", raising=False)
     monkeypatch.delenv("ZENODO_TOKEN", raising=False)
     code_pub_v_no = legislation(action="publication-verify", format="json")
-    assert json.loads(capsys.readouterr().out)["status"] == "not_configured"
-    assert code_pub_v_no == 2
+    assert json.loads(capsys.readouterr().out)["status"] == "unverified"
+    assert code_pub_v_no == 3
 
     code_pub_v_no_text = legislation(action="publication-verify", format="text")
-    assert "status=not_configured" in capsys.readouterr().out
-    assert code_pub_v_no_text == 2
+    assert "status=unverified" in capsys.readouterr().out
+    assert code_pub_v_no_text == 3
 
     monkeypatch.setenv("HF_TOKEN", "mock_hf")
     code_pub_v_ok = legislation(action="publication-verify", format="json")
-    assert json.loads(capsys.readouterr().out)["status"] == "verified"
-    assert code_pub_v_ok == 0
+    assert json.loads(capsys.readouterr().out)["status"] == "unverified"
+    assert code_pub_v_ok == 3
 
     code_pub_v_ok_text = legislation(action="publication-verify", format="text")
-    assert "status=verified" in capsys.readouterr().out
-    assert code_pub_v_ok_text == 0
+    assert "status=unverified" in capsys.readouterr().out
+    assert code_pub_v_ok_text == 3
 
 
 def test_compat_wrappers_and_nzlc_legacy_args(
@@ -993,7 +987,7 @@ def test_compat_wrappers_and_nzlc_legacy_args(
 
     monkeypatch.setattr(sys, "argv", ["nzlc", "unknown-command"])
     code_nzlc_unk = compat_nzlc_main()
-    assert code_nzlc_unk in (0, 1)
+    assert code_nzlc_unk == 5
 
 
 def test_cli_legislation_unknown_action() -> None:
@@ -1022,8 +1016,9 @@ def test_cli_legislation_coverage_fallbacks(
         format="json",
     )
     payload_chk = json.loads(capsys.readouterr().out)
-    assert payload_chk["candidate_works_count"] == 2
-    assert code_chk == 0
+    assert payload_chk["candidate_works_count"] == 0
+    assert payload_chk["status"] == "no_state"
+    assert code_chk == 1
 
     chk_path.unlink()
     cas_sha = tmp_path / "cas" / "sha256"
@@ -1037,8 +1032,9 @@ def test_cli_legislation_coverage_fallbacks(
         format="json",
     )
     payload_cas = json.loads(capsys.readouterr().out)
-    assert payload_cas["candidate_works_count"] == 1
-    assert code_cas == 0
+    assert payload_cas["candidate_works_count"] == 0
+    assert payload_cas["status"] == "no_state"
+    assert code_cas == 1
 
 
 def test_cli_legislation_sync_partial_and_total_failure(
@@ -1052,7 +1048,7 @@ def test_cli_legislation_sync_partial_and_total_failure(
     man_path = str(tmp_path / "manifests" / "sync_fail.json")
 
     async def mock_mixed_doc(
-        _self: object, url: str
+        _self: object, url: str, **_kwargs: object
     ) -> tuple[int, bytes, dict[str, str]]:
         if "act-ok" in url:
             xml = b"<act><title>OK Act</title></act>"
@@ -1070,6 +1066,7 @@ def test_cli_legislation_sync_partial_and_total_failure(
         checkpoint_path=chk_path,
         manifest_path=man_path,
         work_ids=["act-ok", "act-bad"],
+        batch_id="batch-partial",
         fail_fast=False,
         force_resync=True,
         format="json",
@@ -1085,6 +1082,7 @@ def test_cli_legislation_sync_partial_and_total_failure(
         checkpoint_path=chk_path,
         manifest_path=man_path,
         work_ids=["act-bad"],
+        batch_id="batch-total-failure",
         fail_fast=False,
         force_resync=True,
         format="json",

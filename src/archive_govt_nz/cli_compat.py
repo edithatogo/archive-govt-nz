@@ -78,4 +78,5 @@ def compat_nzlc_main() -> int:
     if cmd in mapping:
         return legislation(action=mapping[cmd], format=format_val)
 
-    return legislation(action="status", format=format_val)
+    sys.stderr.write(f"Unknown nzlc action: {cmd}\n")
+    return 5
