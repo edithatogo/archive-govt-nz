@@ -1,47 +1,54 @@
 # Interface & CLI Reconciliation Map
 
-## 1. CLI Commands and Compatibility Shims
+## 1. CLI commands and compatibility shims
 
-To maintain complete backward compatibility for automated scripts and external operators, the following entry points will be supported:
+These are the installed entry points. Compatibility means forwarding the
+supplied arguments with a deprecation warning; it does not establish behavioural
+parity with every historical donor release.
 
 | Command | Status | Canonical Implementation | Notes |
 | :--- | :--- | :--- | :--- |
-| `archive-govt-nz` | **Canonical** | `src/archive_govt_nz/cli.py:main` | Primary command surface for all archival, discovery, and publication operations. |
-| `sm-govt-nz` | **Compatibility Shim** | `src/archive_govt_nz/cli/compat.py:sm_govt_nz_main` | Delegates to `archive-govt-nz capture --family social` with deprecation warning. |
-| `nz-govt-social` | **Compatibility Shim** | `src/archive_govt_nz/cli/compat.py:nz_govt_social_main` | Alias for `sm-govt-nz` legacy invocations. |
+| `archive-govt-nz` | **Canonical** | `archive_govt_nz.cli:main` | Current typed command surface. |
+| `sm-govt-nz` | **Compatibility shim** | `archive_govt_nz.cli_compat:compat_sm_govt_nz_main` | Emits a deprecation warning, then forwards arguments to the canonical CLI. |
+| `nz-govt-social` | **Compatibility shim** | `archive_govt_nz.cli_compat:compat_nz_govt_social_main` | Emits a deprecation warning, then forwards arguments to the canonical CLI. |
+| `nzlc` | **Legislation compatibility shim** | `archive_govt_nz.cli_compat:compat_nzlc_main` | Maps the bounded legacy action names implemented in `cli_compat.py`; legislation hardening remains a later track. |
 
-## 2. Canonical Subcommand Grammar
+## 2. Implemented global grammar
 
-All commands follow a structured verb-noun hierarchy and emit machine-readable JSON when `--json` is supplied:
+Global commands are single Cyclopts commands. Structured output uses
+`--format json`; there is no global `--json` alias and no nested `plan`, `run`,
+`query`, `verify`, or `compact` verb beneath these commands.
 
 ```bash
 # System introspection
-archive-govt-nz version [--json]
-archive-govt-nz doctor [--json]
-archive-govt-nz capabilities [--json]
+archive-govt-nz version [--format text|json]
+archive-govt-nz doctor [--format text|json]
+archive-govt-nz capabilities [--format text|json]
 
 # Source discovery and registry
-archive-govt-nz sources list [--agency <slug>] [--family <type>] [--json]
-archive-govt-nz sources validate [--source-id <id>] [--json]
+archive-govt-nz sources [--registry-path <dir>] [--format text|json]
 
 # Capture execution
-archive-govt-nz capture plan --source-family <all|ckan|social|feeds|web|newsletters> [--out plan.json]
-archive-govt-nz capture run --plan <plan.json> [--concurrency <int>] [--objects-dir <dir>]
-archive-govt-nz capture status [--run-id <id>]
+archive-govt-nz capture [--uri <uri>] [--source-type <type>] [--format text|json]
+# Global source types currently fail closed as not_configured (exit 2).
 
 # Preservation & Integrity
-archive-govt-nz archive verify --manifest <manifest.json> [--check-cas]
-archive-govt-nz archive triangulate --url <url> [--service wayback|commoncrawl]
-archive-govt-nz archive compact --input-dir <dir> --output-dir <dir>
+archive-govt-nz archive --action count|verify [--output-dir <dir>] \
+  [--manifest-path <manifest.json>] [--format text|json]
+archive-govt-nz replay [--cas-dir <dir>] [--format text|json]
+archive-govt-nz verify [--cas-dir <dir>] [--schemas-dir <dir>] \
+  [--provenance-path <file>] [--format text|json]
+archive-govt-nz provenance [--ledger-path <file>] [--format text|json]
 
 # Derivatives & Search
-archive-govt-nz derivatives build --objects-dir <dir> --output-dir <dir>
-archive-govt-nz search query "<search_term>" [--format <format>] [--limit <int>]
+archive-govt-nz derivatives [--output-dir <dir>] [--format text|json]
+archive-govt-nz search <query> [--index-dir <dir-or-manifest>] \
+  [--format text|json]
 
 # Publication & Distribution
-archive-govt-nz publish plan --target <huggingface|zenodo|osf|all> [--version <YYYY-MM>]
-archive-govt-nz publish run --plan <pub_plan.json> [--dry-run]
-archive-govt-nz publish verify --target <target> --deposition-id <id>
+archive-govt-nz publish --target dry-run|huggingface|hf|zenodo \
+  --staging-dir <dir> [--repository <owner/name>] [--format text|json]
+# This validates and prepares a package locally; it does not publish remotely.
 ```
 
 ## 3. Exit Code Contract
@@ -50,14 +57,21 @@ archive-govt-nz publish verify --target <target> --deposition-id <id>
 
 | Code | Label | Meaning |
 | :--- | :--- | :--- |
-| `0` | `SUCCESS` | Operation completed successfully and evidence was recorded. |
-| `1` | `GENERAL_ERROR` | Unhandled internal exception. |
-| `2` | `CONFIGURATION_ERROR` | Invalid CLI arguments or malformed configuration schema. |
-| `3` | `POLICY_BLOCKED` | Request blocked by rights, embargo, license restriction, or WAF. |
-| `4` | `NETWORK_FAILURE` | Upstream network timeout or transient HTTP failure after retry budget. |
-| `5` | `INTEGRITY_VIOLATION` | SHA-256 fixity check failed, CAS mismatch, or manifest corruption. |
+| `0` | `BOUNDED_SUCCESS` | The requested bounded observation, verification, or local preparation succeeded. |
+| `1` | `NO_STATE_OR_FAILED_VERIFICATION` | Required local state is missing, corrupt, or failed integrity/runtime validation. |
+| `2` | `NOT_CONFIGURED_OR_REDIRECT` | The requested route is unavailable or must use a domain command. |
+| `3` | `POLICY_BLOCKED` | Explicit rights state does not allow redistribution. |
+| `4` | `RETRYABLE_NETWORK_FAILURE` | Reserved for a bounded network failure; the corrected global local commands do not currently emit it. |
+| `5` | `UNSUPPORTED_REQUEST` | The requested target or action is unsupported. |
+
+An exit code is bounded to the invoked command. Code 0 never proves corpus
+completeness, remote publication, rights clearance beyond the supplied package,
+recovery, or cutover.
 
 ## 4. MCP (Model Context Protocol) Surface Evaluation
 
-- **Status**: `DEFERRED` (Track 8).
-- **Evaluation**: Neither `sm-govt-nz` nor `archive-govt-nz` currently has external consumers requesting an active MCP server surface. Standard JSON-emitting CLI commands provide full programmatic access for local AI agents and background workers. An MCP adapter will be designed if an explicit agent consumer arises.
+- **Status**: A legacy MCP entry point exists, but current-standard and
+  current-`main` hardening remains pending in the ordered MCP track.
+- **Boundary**: CLI validation does not establish MCP protocol conformance or
+  operational readiness. The MCP track must be reviewed independently after the
+  service, global CLI, and legislation CLI sequence.
