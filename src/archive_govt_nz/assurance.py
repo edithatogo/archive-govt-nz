@@ -4,6 +4,8 @@ import subprocess
 from collections.abc import Callable, Sequence
 from dataclasses import dataclass
 
+COMMAND_TIMEOUT_SECONDS = 300
+
 
 @dataclass(frozen=True, slots=True)
 class GateStage:
@@ -94,7 +96,9 @@ Runner = Callable[[tuple[str, ...]], int]
 def run_command(command: tuple[str, ...]) -> int:
     """Run one stage without a shell and return its process status."""
     try:
-        return subprocess.run(command, check=False, timeout=180).returncode
+        return subprocess.run(
+            command, check=False, timeout=COMMAND_TIMEOUT_SECONDS
+        ).returncode
     except subprocess.TimeoutExpired:
         return 124
 

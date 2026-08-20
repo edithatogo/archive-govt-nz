@@ -85,6 +85,8 @@ decision or safety boundary, and continue independent work while it is pending.
     *Link: [tracks/legislation_cli_service_backing_20260820/index.md](./tracks/legislation_cli_service_backing_20260820/index.md)*
   - [/] **Child Track 7: MCP disposition and conformance**
     *Link: [tracks/legislation_corrective_mcp_disposition_conformance_20260818/index.md](./tracks/legislation_corrective_mcp_disposition_conformance_20260818/index.md)*
+  - [~] **Child Track 7A: Current-standard fail-closed MCP correction**
+    *Link: [tracks/mcp_current_standard_correction_20260820/index.md](./tracks/mcp_current_standard_correction_20260820/index.md)*
   - [/] **Child Track 8: Weekly orchestration and persistent state**
     *Link: [tracks/legislation_corrective_weekly_orchestration_state_20260818/index.md](./tracks/legislation_corrective_weekly_orchestration_state_20260818/index.md)*
   - [/] **Child Track 9: Historical reconciliation, parity and publication identity**
