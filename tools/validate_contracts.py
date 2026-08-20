@@ -66,12 +66,12 @@ TYPED_EXECUTOR_REGISTRY: dict[str, dict[str, Any]] = {
         ],
         "max_timeout": 60,
     },
-    "parity_generator": {
+    "one_batch_reconciler": {
         "execution_class": "local_generated_evidence",
         "side_effect_class": "creates_evidence",
         "allowed_prefixes": [
-            "uv run python tools/generate_executable_legislation_parity.py",
-            "uv run --locked python tools/generate_executable_legislation_parity.py",
+            "uv run python tools/reconcile_one_legislation_batch.py",
+            "uv run --locked python tools/reconcile_one_legislation_batch.py",
         ],
         "max_timeout": 120,
     },
