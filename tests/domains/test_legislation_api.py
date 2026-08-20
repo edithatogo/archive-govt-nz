@@ -257,3 +257,41 @@ def test_api_client_iter_search_works() -> None:
     works = list(client.iter_search_works("Search", max_results=2))
     assert len(works) == 2
     assert works[0]["work_id"] == "act-1"
+
+
+@pytest.mark.parametrize("status_code", [401, 403, 429, 500])
+def test_api_client_search_http_failure_is_not_empty_state(status_code: int) -> None:
+    """Authentication and transport failures cannot become empty discovery."""
+
+    def handler(_req: httpx.Request) -> httpx.Response:
+        return httpx.Response(status_code, json={"error": "bounded"})
+
+    client = NZLegislationApiClient(
+        client=httpx.Client(transport=httpx.MockTransport(handler)),
+        sleep_fn=lambda _: None,
+    )
+    with pytest.raises(OSError, match=f"HTTP {status_code}"):
+        list(client.iter_search_works("act"))
+
+
+@pytest.mark.parametrize(
+    ("response", "error"),
+    [
+        (httpx.Response(200, content=b"not-json"), ValueError),
+        (httpx.Response(200, json={"results": {"work_id": "act-1"}}), TypeError),
+    ],
+)
+def test_api_client_search_malformed_success_fails_closed(
+    response: httpx.Response, error: type[Exception]
+) -> None:
+    """Malformed HTTP 200 payloads are not evidence of an empty inventory."""
+
+    def handler(_req: httpx.Request) -> httpx.Response:
+        return response
+
+    client = NZLegislationApiClient(
+        client=httpx.Client(transport=httpx.MockTransport(handler)),
+        sleep_fn=lambda _: None,
+    )
+    with pytest.raises(error):
+        list(client.iter_search_works("act"))
