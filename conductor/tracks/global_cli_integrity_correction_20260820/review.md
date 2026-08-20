@@ -32,6 +32,12 @@ global CLI scope at commit `7616ddb`.
   also claimed the donor was archived, contrary to the required recovery gate
   and current GitHub state. Phase 4A corrects these documents without advancing
   the separately sequenced workflow, publication, rights, or donor gates.
+  **Resolved in `ab81d80`**: the documents now use the implemented flat grammar
+  and `--format json`, require explicit manifest/CAS/provenance paths, describe
+  capture and workflow as not operational, preserve publication and rights
+  boundaries, and state that the donor remains unarchived. A regression test
+  covers the superseded grammar and claims. The full locked harness passed after
+  the correction.
 
 ## Remaining gate
 

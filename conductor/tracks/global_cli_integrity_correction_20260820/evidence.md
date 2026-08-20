@@ -12,6 +12,16 @@
   branch-aware coverage. `cli_integrity.py` reached 100% line and branch
   coverage. Schema, mutation, hygiene, CAS benchmark, audit, licence, secrets,
   and SBOM gates passed.
+- Documentation review fix: `ab81d80c2f0a02b07ee22109dbb8a8ddd27e7a45`
+  removes unsupported command grammar and operational claims from `README.md`,
+  `docs/operations/runbook.md`, and the donor interface map. The existing
+  migration contract test now rejects regression to PR #150 grammar, a false
+  archived-donor claim, and production-harvest wording for the unconfigured
+  capture route.
+- Post-fix validation: 67 targeted tests passed, followed by the complete locked
+  harness with 733 tests and 95.87% branch-aware coverage. All remaining harness
+  gates passed. Evidence-generator timestamp and live-snapshot churn was
+  excluded from the commit.
 - No global CLI successor PR has been opened.
 - Publication authority, redistribution rights, and donor archival remain
   pending.

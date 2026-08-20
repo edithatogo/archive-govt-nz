@@ -7,7 +7,7 @@
 - [x] **Phase 3:** Replace publication and doctor readiness claims while
   preserving the supported CLI contract.
 - [x] **Phase 4:** Complete self-review and the full locked repository harness.
-- [~] **Phase 4A — Review fixes:** Reconcile README, operator runbook, and
+- [x] **Phase 4A — Review fixes (`ab81d80`):** Reconcile README, operator runbook, and
   donor interface map with the implemented fail-closed CLI and the unarchived
   donor state; validate the documented command surface.
 - [ ] **Phase 5:** Rebase onto the merged service correction and open exactly

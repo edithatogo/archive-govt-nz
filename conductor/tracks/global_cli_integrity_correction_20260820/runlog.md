@@ -21,3 +21,15 @@
   mutation gates, hygiene, CAS benchmark, dependency audit, licence inventory,
   secret scan, and SBOM validation. Generated timestamp/live-snapshot changes
   were restored and were not committed.
+- 2026-08-20T10:22:36Z: Live CLI help and a bounded capture probe established
+  documentation drift: global capture returned `not_configured` with exit 2,
+  while README/runbook text described it as a harvest; the migration interface
+  map described nonexistent nested verbs and `--json` syntax; README claimed
+  the donor was archived despite the required unarchived gate.
+- 2026-08-20T10:31:29Z: Review-fix commit `ab81d80` reconciled README, runbook,
+  interface grammar, exit meanings, compatibility shim identities, and donor
+  state. Ruff, BasedPyright, and 67 targeted migration/CLI tests passed.
+  `bash scripts/validate.sh` then passed again with 733 tests, 95.87% coverage,
+  all schema and mutation gates, hygiene, CAS benchmark, audit, licence,
+  secrets, and SBOM checks. Generated timestamp/live-snapshot changes were
+  restored and not committed.
