@@ -31,3 +31,22 @@
   branch coverage. The full locked harness passed 858 tests at 96.35%
   branch-aware coverage and every remaining repository gate. No real batch was
   executed; the execution gate remains pending.
+
+## Real-batch preflight
+
+- One-batch reconciler PR #162 merged as `c2ad3fe` with all required checks,
+  dependency review, and Codecov patch green.
+- Authoritative donor batch `historical-work-ids-0001.txt` was read from donor
+  Git blob `6d88b24a2c79c156841dff796bbf47d5b13f0528`: 500 lines, 8,987 bytes,
+  canonical SHA-256
+  `59923176fa34796d7673a20b880af9abe5520fe484595edb220f2bbc0e3b33e7`.
+- A bounded live discovery request for the first identity returned HTTP 401.
+  The prior client incorrectly converted every non-200 response into an empty
+  inventory. Commit `52ec2c8` now reports this as `status=failed`, exit 2, and
+  also rejects malformed HTTP 200 payloads.
+- Forty-two focused API/CLI tests passed. The first full harness attempt hit
+  the fixed 300-second test limit at 88% with no test failure; the exact warmed
+  rerun completed 864 tests at 96.37% coverage and every remaining gate.
+- `LEGISLATION_API_KEY` is absent locally and no repository Actions secret with
+  that name is configured. No target state or passed reconciliation receipt was
+  created. Real-batch execution remains blocked and pending.
