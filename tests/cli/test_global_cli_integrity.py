@@ -151,6 +151,37 @@ def test_cas_verifier_rejects_symlinked_object(tmp_path: Path) -> None:
     assert summary.failures == (f"invalid_layout:{digest[:2]}/{digest}",)
 
 
+def test_cas_verifier_rejects_symlinked_objects_root(tmp_path: Path) -> None:
+    """The complete SHA-256 namespace must remain inside the selected CAS."""
+    external = tmp_path / "external-sha256"
+    external.mkdir()
+    cas_root = tmp_path / "cas"
+    cas_root.mkdir()
+    (cas_root / "sha256").symlink_to(external, target_is_directory=True)
+
+    summary = verify_cas(cas_root)
+
+    assert summary.observed == 1
+    assert summary.verified == 0
+    assert summary.failures == ("invalid_layout:sha256",)
+
+
+def test_cas_verification_does_not_create_store_state(tmp_path: Path) -> None:
+    """Read-only verification must not create the store's temporary directory."""
+    content = b"existing object"
+    digest = hashlib.sha256(content).hexdigest()
+    cas_root = tmp_path / "cas"
+    shard = cas_root / "sha256" / digest[:2]
+    shard.mkdir(parents=True)
+    (shard / digest).write_bytes(content)
+
+    summary = verify_cas(cas_root)
+
+    assert summary.verified == 1
+    assert summary.failures == ()
+    assert not (cas_root / "tmp").exists()
+
+
 def test_archive_verify_rejects_fixity_manifested_garbage(
     tmp_path: Path, capsys: pytest.CaptureFixture[str]
 ) -> None:

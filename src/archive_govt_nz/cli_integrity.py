@@ -70,6 +70,8 @@ def _missing(error_class: str) -> NoReturn:
 def verify_cas(cas_root: Path) -> IntegritySummary:
     """Traverse the production CAS layout and stream-verify every object."""
     objects_root = cas_root / "sha256"
+    if objects_root.is_symlink():
+        return IntegritySummary(1, 0, ("invalid_layout:sha256",))
     if not objects_root.is_dir():
         return IntegritySummary(0, 0, ())
 
@@ -96,7 +98,7 @@ def verify_cas(cas_root: Path) -> IntegritySummary:
             object_ids.append(f"sha256:{digest}")
 
     observed = len(object_ids) + len(failures)
-    store = ContentAddressedStore(cas_root)
+    store = ContentAddressedStore(cas_root, create=False)
     verified = 0
     for object_id in object_ids:
         try:
