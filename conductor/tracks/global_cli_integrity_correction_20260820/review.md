@@ -3,7 +3,8 @@
 ## Verdict
 
 The local implementation and validation phases are approved for the bounded
-global CLI scope at commit `7616ddb`.
+global CLI scope through functional commit `e105de1` and documentation commit
+`2694c17`.
 
 ## Findings resolved
 
@@ -46,6 +47,11 @@ global CLI scope at commit `7616ddb`.
   Also, constructing `ContentAddressedStore` during verification created a
   `tmp` directory, so a nominally read-only replay mutated local state. Phase
   4B is the second and final correction loop for this path-boundary class.
+  **Resolved in `e105de1`**: the namespace symlink produces a stable
+  `invalid_layout:sha256` failure, and verification uses the existing store
+  backend without creating directories. Both adversarial tests pass, the
+  integrity module retains 100% line/branch coverage, and the full locked
+  harness passed after the correction.
 
 ## Remaining gate
 

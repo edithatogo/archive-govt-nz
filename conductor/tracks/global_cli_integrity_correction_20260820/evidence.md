@@ -22,6 +22,14 @@
   harness with 733 tests and 95.87% branch-aware coverage. All remaining harness
   gates passed. Evidence-generator timestamp and live-snapshot churn was
   excluded from the commit.
+- Final CAS boundary correction: `e105de1` makes store construction explicitly
+  non-creating for replay verification and rejects `cas/sha256` symlinks before
+  traversal. Red evidence was two expected test failures; green evidence was 52
+  focused tests with 100% line/branch coverage for `cli_integrity.py`.
+- Final code-phase harness: 735 tests passed at 95.88% branch-aware coverage;
+  all remaining repository gates passed. README follow-up `2694c17` avoids a
+  volatile exact test count and passed the migration documentation tests plus
+  repository formatting and lint checks.
 - No global CLI successor PR has been opened.
 - Publication authority, redistribution rights, and donor archival remain
   pending.

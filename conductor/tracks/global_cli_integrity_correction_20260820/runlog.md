@@ -33,3 +33,16 @@
   all schema and mutation gates, hygiene, CAS benchmark, audit, licence,
   secrets, and SBOM checks. Generated timestamp/live-snapshot changes were
   restored and not committed.
+- 2026-08-20T10:32:49Z: Two adversarial tests failed against the corrected CLI:
+  an internal `cas/sha256` symlink produced zero observed failures, and read-only
+  CAS verification created `cas/tmp`. This established the red phase for the
+  second and final CAS path-boundary fix loop.
+- 2026-08-20T10:40:53Z: Commit `e105de1` rejects the internal namespace symlink
+  and opens `ContentAddressedStore` without directory creation for verification.
+  Ruff and BasedPyright passed; 52 focused integrity/object-store tests passed;
+  `cli_integrity.py` retained 100% line and branch coverage. The full locked
+  harness passed with 735 tests, 95.88% branch-aware coverage, and all schema,
+  mutation, hygiene, benchmark, audit, licence, secrets, and SBOM gates green.
+  Generated timestamp/live-snapshot churn was restored and not committed.
+  Documentation-only commit `2694c17` removed volatile exact test counts from
+  README; its migration contract tests and repository formatting/lint passed.
