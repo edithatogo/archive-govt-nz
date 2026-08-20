@@ -11,6 +11,9 @@
   direct dependency audit, licences, secrets, and SBOM passed.
 - Post-rebase exact harness on MCP head `58cd63d`: 775 tests passed at 95.70%
   branch-aware coverage; every repository gate passed.
+- Current-main validation on MCP squash merge `086eb4f`: 26 focused workflow
+  and tool tests passed. The exact full harness passed 781 tests at 96.20%
+  branch-aware coverage and every repository gate.
 
 ## External boundary
 

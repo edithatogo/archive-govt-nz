@@ -22,3 +22,12 @@
   remaining harness gate. The hosted jobs remain unconditionally gated before
   checkout; no push, PR, dispatch, source request, publication, or rights
   action occurred.
+- 2026-08-20T21:45:00Z: MCP PR #160 squash-merged as `086eb4f`. Rebased the
+  four workflow correction commits onto exact `origin/main` without conflict.
+  Confirmed all three legislation workflows remain manual-only, retain an
+  unconditional code-3 gate before checkout, and preserve
+  `rights_class: review_required`. Twenty-six focused tests passed; the full
+  locked harness passed 781 tests at 96.20% branch-aware coverage and every
+  remaining gate. Generated timestamp and donor-snapshot churn was restored.
+  No workflow dispatch, source request, live batch, publication, rights,
+  recovery, cutover, or donor action occurred.
