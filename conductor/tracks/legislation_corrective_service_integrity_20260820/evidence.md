@@ -22,3 +22,6 @@ recovery, cutover, or donor-archival completion is claimed yet.
 - The executable service and monthly reconciliation defaults contain no fixed
   33,693 denominator. The separate parity generator remains pending replacement
   in the workflow/reconciliation gate and is not evidence for this PR.
+- Corrective implementation commit: `e70a70d`.
+- Corrective PR: [#156](https://github.com/edithatogo/archive-govt-nz/pull/156),
+  open and unmerged at track closeout.

@@ -28,3 +28,5 @@
 
 No unresolved code finding remains in this track. Hosted CI and merge remain
 separate; the PR must stay unmerged under the active freeze.
+
+PR #156 opened against current `main`; merge remains pending by design.

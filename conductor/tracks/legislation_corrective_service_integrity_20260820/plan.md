@@ -10,7 +10,7 @@
 - [x] **Review Fixes:** reject cold 304 responses without prior cumulative
   manifestation evidence, preserve manifest v1 hash aliases, and keep rights
   disposition explicitly pending.
-- [~] Complete self-review, record bounded evidence, and open the unmerged
+- [x] Complete self-review, record bounded evidence, and open the unmerged
   corrective PR.
 
 ## Downstream gates outside this track
