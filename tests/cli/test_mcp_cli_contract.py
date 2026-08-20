@@ -11,6 +11,8 @@ import pytest
 
 from archive_govt_nz.cli import capabilities, doctor, sources
 from archive_govt_nz.mcp_server import (
+    MCP_RESOURCE_NOT_FOUND,
+    PROTOCOL_VERSION,
     Server,
     StdioServerTransport,
     call_tool,
@@ -24,11 +26,34 @@ if TYPE_CHECKING:
     from pathlib import Path
 
 
+def _ready_server() -> Server:
+    server = Server()
+    response = server.handle_request(
+        {
+            "jsonrpc": "2.0",
+            "id": 1,
+            "method": "initialize",
+            "params": {
+                "protocolVersion": PROTOCOL_VERSION,
+                "capabilities": {},
+                "clientInfo": {"name": "contract-client", "version": "1"},
+            },
+        }
+    )
+    assert response is not None
+    assert "result" in response
+    assert (
+        server.handle_request({"jsonrpc": "2.0", "method": "notifications/initialized"})
+        is None
+    )
+    return server
+
+
 def test_mcp_metadata_and_capabilities() -> None:
     """Verify MCP metadata conforms to specification."""
     meta = get_server_metadata()
     assert meta["name"] == "archive-govt-nz-mcp"
-    assert meta["protocol_version"] == "2024-11-05"
+    assert meta["protocol_version"] == "2025-11-25"
     assert "tools" in meta["capabilities"]
     assert "resources" in meta["capabilities"]
 
@@ -57,15 +82,12 @@ def test_stdio_server_transport() -> None:
     msg = transport.read_message()
     assert msg == {"jsonrpc": "2.0", "method": "initialize"}
 
-    # Whitespace line
-    assert transport.read_message() is None
-
-    # Non-dict JSON raises TypeError
+    # Whitespace is skipped; the next non-object JSON value is invalid.
     with pytest.raises(TypeError, match="Expected a JSON object"):
         transport.read_message()
 
     transport.write_message({"jsonrpc": "2.0", "id": 1, "result": {}})
-    assert '"jsonrpc": "2.0"' in fake_out.getvalue()
+    assert json.loads(fake_out.getvalue())["jsonrpc"] == "2.0"
 
 
 def test_mcp_server_json_rpc_dispatch() -> None:
@@ -78,7 +100,11 @@ def test_mcp_server_json_rpc_dispatch() -> None:
             "jsonrpc": "2.0",
             "id": 1,
             "method": "initialize",
-            "params": {},
+            "params": {
+                "protocolVersion": PROTOCOL_VERSION,
+                "capabilities": {},
+                "clientInfo": {"name": "contract-client", "version": "1"},
+            },
         }
     )
     assert init_res is not None
@@ -95,16 +121,16 @@ def test_mcp_server_json_rpc_dispatch() -> None:
     assert notif_res is None
     assert server.initialized is True
 
-    # initialized with id
+    # initialized notification sent as a request is rejected.
     init_id_res = server.handle_request(
         {
             "jsonrpc": "2.0",
             "id": 99,
-            "method": "initialized",
+            "method": "notifications/initialized",
         }
     )
     assert init_id_res is not None
-    assert init_id_res["id"] == 99
+    assert init_id_res["error"]["code"] == -32600
 
     # 3. tools/list
     list_res = server.handle_request(
@@ -153,7 +179,7 @@ def test_mcp_server_json_rpc_dispatch() -> None:
     assert "content" in call_res["result"]
     assert call_res["result"]["isError"] is False
 
-    # 7. tools/call failure
+    # 7. Unknown tools are malformed calls, not execution failures.
     call_fail = server.handle_request(
         {
             "jsonrpc": "2.0",
@@ -163,12 +189,12 @@ def test_mcp_server_json_rpc_dispatch() -> None:
         }
     )
     assert call_fail is not None
-    assert call_fail["result"]["isError"] is True
+    assert call_fail["error"]["code"] == -32602
 
 
 def test_mcp_server_error_handling() -> None:
     """Verify MCP Server edge-case protocol error returns."""
-    server = Server()
+    server = _ready_server()
 
     # Invalid JSON-RPC version
     inv_ver = server.handle_request({"jsonrpc": "1.0", "id": 1, "method": "ping"})
@@ -235,7 +261,7 @@ def test_doctor_parity_cli_and_mcp(
     # Degraded doctor in MCP
     monkeypatch.setattr(sys, "version_info", (3, 10, 0))
     mcp_deg = call_tool("archive_doctor")
-    assert mcp_deg["runtime_state"] == "degraded"
+    assert mcp_deg["runtime_state"] == "runtime_incompatible"
     assert mcp_deg["python_min_satisfied"] is False
 
 
@@ -267,8 +293,8 @@ def test_sources_parity_cli_and_mcp(
 def test_archive_status_tool(tmp_path: Path) -> None:
     """Verify archive status tool dynamically inspects directory."""
     status_out = call_tool("archive_status", {"cas_path": str(tmp_path)})
-    assert status_out["objects_stored"] == 0
-    assert status_out["status"] == "operational"
+    assert status_out["objects_verified"] == 0
+    assert status_out["status"] == "no_state"
     assert "active" not in status_out
 
 
@@ -282,7 +308,7 @@ def test_read_resource_and_errors() -> None:
     assert "registered_sources_count" in src_res["text"]
 
     stat_res = read_resource("archive://status")
-    assert "objects_stored" in stat_res["text"]
+    assert "objects_verified" in stat_res["text"]
 
     with pytest.raises(KeyError, match="Resource not found"):
         read_resource("archive://unknown")
@@ -299,7 +325,7 @@ def test_default_transport_and_ping_resource_error() -> None:
     transport = StdioServerTransport()
     assert isinstance(transport, StdioServerTransport)
 
-    server = Server()
+    server = _ready_server()
     ping_res = server.handle_request({"jsonrpc": "2.0", "id": 100, "method": "ping"})
     assert ping_res is not None
     assert ping_res["result"] == {}
@@ -313,9 +339,10 @@ def test_default_transport_and_ping_resource_error() -> None:
         }
     )
     assert res_err is not None
-    assert res_err["error"]["code"] == -32602
+    assert res_err["error"]["code"] == MCP_RESOURCE_NOT_FOUND
 
     src_missing = call_tool(
         "archive_sources", {"registry_path": "/path/does/not/exist"}
     )
     assert src_missing["registered_sources_count"] == 0
+    assert src_missing["status"] == "not_configured"

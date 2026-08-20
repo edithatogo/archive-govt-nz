@@ -44,9 +44,10 @@ def _initialize(server: Server) -> dict[str, Any]:
 def _ready_server() -> Server:
     server = Server()
     assert "result" in _initialize(server)
-    assert server.handle_request(
-        {"jsonrpc": "2.0", "method": "notifications/initialized"}
-    ) is None
+    assert (
+        server.handle_request({"jsonrpc": "2.0", "method": "notifications/initialized"})
+        is None
+    )
     return server
 
 
@@ -68,6 +69,7 @@ def _ready_server() -> Server:
     ],
 )
 def test_initialize_requires_current_handshake(params: dict[str, Any]) -> None:
+    """Reject missing or malformed required initialize fields."""
     response = Server().handle_request(
         {"jsonrpc": "2.0", "id": 1, "method": "initialize", "params": params}
     )
@@ -76,12 +78,11 @@ def test_initialize_requires_current_handshake(params: dict[str, Any]) -> None:
 
 
 def test_current_protocol_and_fail_closed_lifecycle() -> None:
+    """Require the current handshake and initialized lifecycle notification."""
     server = Server()
     assert PROTOCOL_VERSION == "2025-11-25"
 
-    early = server.handle_request(
-        {"jsonrpc": "2.0", "id": 2, "method": "tools/list"}
-    )
+    early = server.handle_request({"jsonrpc": "2.0", "id": 2, "method": "tools/list"})
     assert early is not None
     assert early["error"]["code"] == JSONRPC_INVALID_REQUEST
 
@@ -104,17 +105,22 @@ def test_current_protocol_and_fail_closed_lifecycle() -> None:
     assert duplicate is not None
     assert duplicate["error"]["code"] == JSONRPC_INVALID_REQUEST
 
-    assert server.handle_request(
-        {"jsonrpc": "2.0", "method": "notifications/initialized"}
-    ) is None
+    assert (
+        server.handle_request({"jsonrpc": "2.0", "method": "notifications/initialized"})
+        is None
+    )
     assert server.initialized is True
 
 
 def test_notifications_never_receive_responses() -> None:
+    """Never emit JSON-RPC responses for valid notification-shaped messages."""
     server = Server()
-    assert server.handle_request(
-        {"jsonrpc": "2.0", "method": "notifications/unknown", "params": {}}
-    ) is None
+    assert (
+        server.handle_request(
+            {"jsonrpc": "2.0", "method": "notifications/unknown", "params": {}}
+        )
+        is None
+    )
 
     _initialize(server)
     request_shaped = server.handle_request(
@@ -127,15 +133,32 @@ def test_notifications_never_receive_responses() -> None:
     assert request_shaped is not None
     assert request_shaped["error"]["code"] == JSONRPC_INVALID_REQUEST
 
-    alias = server.handle_request(
-        {"jsonrpc": "2.0", "id": 8, "method": "initialized"}
-    )
+    alias = server.handle_request({"jsonrpc": "2.0", "id": 8, "method": "initialized"})
     assert alias is not None
     assert alias["error"]["code"] == -32601
+
+    assert (
+        server.handle_request(
+            {
+                "jsonrpc": "2.0",
+                "method": "notifications/unknown",
+                "params": "invalid",
+            }
+        )
+        is None
+    )
+
+
+def test_request_requires_method() -> None:
+    """Reject an object that is not a JSON-RPC request or notification."""
+    response = Server().handle_request({"jsonrpc": "2.0", "id": 4})
+    assert response is not None
+    assert response["error"]["code"] == JSONRPC_INVALID_REQUEST
 
 
 @pytest.mark.parametrize("method", ["tools/list", "resources/list"])
 def test_one_page_lists_reject_unknown_cursor(method: str) -> None:
+    """Reject cursors because these finite lists have no subsequent page."""
     server = _ready_server()
     response = server.handle_request(
         {
@@ -150,6 +173,7 @@ def test_one_page_lists_reject_unknown_cursor(method: str) -> None:
 
 
 def test_tool_schemas_and_structured_content_agree() -> None:
+    """Declare current schemas and keep dual tool result forms equivalent."""
     tools = list_tools()
     assert tools
     for tool in tools:
@@ -173,6 +197,7 @@ def test_tool_schemas_and_structured_content_agree() -> None:
 
 
 def test_unknown_tool_and_invalid_arguments_are_protocol_errors() -> None:
+    """Map malformed tool calls to invalid-params protocol errors."""
     server = _ready_server()
     unknown = server.handle_request(
         {
@@ -200,10 +225,12 @@ def test_unknown_tool_and_invalid_arguments_are_protocol_errors() -> None:
 def test_known_tool_execution_failure_is_tool_error(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
+    """Map a valid known-tool domain failure to an MCP tool error result."""
     server = _ready_server()
 
     def _fail(_name: str, _arguments: dict[str, Any] | None = None) -> dict[str, Any]:
-        raise RuntimeError("bounded domain failure")
+        message = "bounded domain failure"
+        raise RuntimeError(message)
 
     monkeypatch.setattr("archive_govt_nz.mcp_server.call_tool", _fail)
     response = server.handle_request(
@@ -220,6 +247,7 @@ def test_known_tool_execution_failure_is_tool_error(
 
 
 def test_missing_resource_uses_mcp_resource_error() -> None:
+    """Use the MCP resource-not-found code for an absent exact URI."""
     server = _ready_server()
     response = server.handle_request(
         {
@@ -233,7 +261,31 @@ def test_missing_resource_uses_mcp_resource_error() -> None:
     assert response["error"]["code"] == MCP_RESOURCE_NOT_FOUND
 
 
+def test_resource_domain_failure_is_internal_error(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Do not expose unexpected resource implementation failures as success."""
+    server = _ready_server()
+
+    def _fail(_uri: str) -> dict[str, Any]:
+        message = "unexpected resource failure"
+        raise RuntimeError(message)
+
+    monkeypatch.setattr("archive_govt_nz.mcp_server.read_resource", _fail)
+    response = server.handle_request(
+        {
+            "jsonrpc": "2.0",
+            "id": 15,
+            "method": "resources/read",
+            "params": {"uri": "archive://status"},
+        }
+    )
+    assert response is not None
+    assert response["error"]["code"] == -32603
+
+
 def test_archive_status_verifies_real_sharded_cas(tmp_path: Path) -> None:
+    """Discover and stream-verify the repository's canonical CAS layout."""
     store = ContentAddressedStore(tmp_path)
     receipt = store.put_bytes(b"real MCP CAS evidence")
 
@@ -252,6 +304,7 @@ def test_archive_status_verifies_real_sharded_cas(tmp_path: Path) -> None:
 
 
 def test_empty_or_missing_cas_is_not_operational(tmp_path: Path) -> None:
+    """Report no state rather than health for empty or absent storage."""
     empty = call_tool("archive_status", {"cas_path": str(tmp_path)})
     missing = call_tool("archive_status", {"cas_path": str(tmp_path / "missing")})
     assert empty["status"] == "no_state"
@@ -259,7 +312,34 @@ def test_empty_or_missing_cas_is_not_operational(tmp_path: Path) -> None:
     assert empty["objects_verified"] == 0
 
 
+def test_source_fallback_and_invalid_cas_layouts(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Use the documented seed fallback and reject non-canonical CAS entries."""
+    monkeypatch.chdir(tmp_path)
+    fallback = tmp_path / "seeds" / "sources"
+    fallback.mkdir(parents=True)
+    sources = call_tool("archive_sources")
+    assert sources["registry_path"] == "seeds/sources"
+    assert sources["status"] == "empty"
+
+    cas_root = tmp_path / "invalid-cas"
+    flat = cas_root / "sha256" / "not-a-canonical-object"
+    flat.parent.mkdir(parents=True)
+    flat.write_bytes(b"invalid")
+    with pytest.raises(ObjectStoreError, match="invalid_store_layout"):
+        call_tool("archive_status", {"cas_path": str(cas_root)})
+
+    flat.unlink()
+    target = tmp_path / "target"
+    target.write_bytes(b"external")
+    (cas_root / "sha256" / "link").symlink_to(target)
+    with pytest.raises(ObjectStoreError, match="invalid_store_layout"):
+        call_tool("archive_status", {"cas_path": str(cas_root)})
+
+
 def test_stdio_emits_only_single_line_jsonrpc_messages() -> None:
+    """Keep stdout restricted to one compact JSON-RPC message per line."""
     stdin = io.StringIO(
         json.dumps(
             {

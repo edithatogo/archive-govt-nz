@@ -1,5 +1,10 @@
 # Review: Standards-Conformant Stdio MCP Server
 
+> Superseded for current-standard claims by
+> `mcp_current_standard_correction_20260820`. The evidence below applies only to
+> the historical 2024-11-05 implementation and must not be used as current MCP
+> conformance or operational-readiness evidence.
+
 ## Review Verdict: VERIFIED
 
 - **MCP 2024-11-05 Specification**: Full lifecycle implemented, including handshake, notifications, tool invocation, and resource access.
