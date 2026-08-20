@@ -11,6 +11,10 @@ from typing import Any
 from archive_govt_nz.domains.legislation.checkpoints import (
     LegislationCheckpointManager,
 )
+from archive_govt_nz.domains.legislation.cli_state import (
+    load_authenticated_manifest,
+    verify_linked_state,
+)
 from archive_govt_nz.domains.legislation.manifest import (
     compute_legislation_inventory_sha256,
 )
@@ -30,7 +34,7 @@ def _authenticated_discovered_count(
     }
     present = field_names.intersection(manifest)
     if not present:
-        msg = "authenticated discovered inventory is required"
+        msg = "authenticated discovered inventory is missing"
         raise ValueError(msg)
     if present != field_names:
         msg = "discovered inventory authentication fields are incomplete"
@@ -87,6 +91,7 @@ def _load_manifest_records(
 def reconcile_inventory(
     manifest_path: Path,
     checkpoint_path: Path,
+    cas_path: Path,
     candidate_works_denominator: int | None = None,
     hosted_dataset_slug: str | None = None,
 ) -> dict[str, Any]:
@@ -96,7 +101,9 @@ def reconcile_inventory(
         msg = f"Preservation manifest missing: {manifest_path}"
         raise FileNotFoundError(msg)
 
-    man_data, records = _load_manifest_records(manifest_path)
+    man_data = load_authenticated_manifest(manifest_path)
+    records = man_data["records"]
+    cas_objects_verified = verify_linked_state(cas_path, checkpoint_path, manifest_path)
 
     print(f"[RECONCILE] Reading checkpoint from: {checkpoint_path}")
     chk_manager = LegislationCheckpointManager(checkpoint_path)
@@ -133,7 +140,7 @@ def reconcile_inventory(
     # Coverage with documented denominator
     discovered_count = _authenticated_discovered_count(man_data, work_ids)
     if candidate_works_denominator is not None:
-        msg = "candidate denominator overrides are unauthenticated"
+        msg = "candidate denominator overrides are not authenticated evidence"
         raise ValueError(msg)
     total_candidate = discovered_count
     if total_candidate < len(work_ids):
@@ -148,16 +155,18 @@ def reconcile_inventory(
     if hosted_dataset_slug:
         hosted_status = "readback_unverified"
 
+    coverage_gap = total_candidate - len(work_ids)
     if total_candidate == 0:
         status = "no_state"
-    elif len(work_ids) != total_candidate:
-        status = "inconsistent"
+    elif (
+        not validation_findings
+        and not checkpoint_gap
+        and not manifest_gap
+        and coverage_gap == 0
+    ):
+        status = "consistent"
     else:
-        status = (
-            "consistent"
-            if not validation_findings and not checkpoint_gap and not manifest_gap
-            else "inconsistent"
-        )
+        status = "inconsistent"
 
     return {
         "schema_version": ("archive-govt-nz.legislation-monthly-reconciliation/v1"),
@@ -173,6 +182,8 @@ def reconcile_inventory(
         "manifest_gaps_count": len(manifest_gap),
         "validation_findings_count": len(validation_findings),
         "validation_findings": validation_findings[:20],
+        "cas_objects_verified": cas_objects_verified,
+        "unretrieved_discovered_works_count": coverage_gap,
         "hosted_dataset_comparison": {
             "dataset_slug": hosted_dataset_slug,
             "status": hosted_status,
@@ -180,10 +191,11 @@ def reconcile_inventory(
     }
 
 
-def run_monthly_reconciliation(
+def run_monthly_reconciliation(  # noqa: PLR0913
     *,
     manifest_path: Path,
     checkpoint_path: Path,
+    cas_path: Path,
     receipt_path: Path,
     candidate_works_denominator: int | None = None,
     hosted_dataset_slug: str | None = None,
@@ -194,6 +206,7 @@ def run_monthly_reconciliation(
         report = reconcile_inventory(
             manifest_path=manifest_path,
             checkpoint_path=checkpoint_path,
+            cas_path=cas_path,
             candidate_works_denominator=candidate_works_denominator,
             hosted_dataset_slug=hosted_dataset_slug,
         )
@@ -226,6 +239,12 @@ def main() -> None:
         description="Monthly Legislation Reconciliation Runner"
     )
     parser.add_argument(
+        "--cas-path",
+        type=Path,
+        required=True,
+        help="Path to the linked sharded legislation CAS",
+    )
+    parser.add_argument(
         "--manifest-path",
         type=Path,
         default=Path("build/manifests/legislation.json"),
@@ -247,7 +266,7 @@ def main() -> None:
         "--candidate-denominator",
         type=int,
         default=None,
-        help="Deprecated; overrides are rejected because they are unauthenticated",
+        help="Deprecated; overrides are rejected as unauthenticated evidence",
     )
     parser.add_argument(
         "--hosted-dataset-slug",
@@ -260,6 +279,7 @@ def main() -> None:
     code = run_monthly_reconciliation(
         manifest_path=args.manifest_path,
         checkpoint_path=args.checkpoint_path,
+        cas_path=args.cas_path,
         receipt_path=args.receipt_path,
         candidate_works_denominator=args.candidate_denominator,
         hosted_dataset_slug=args.hosted_dataset_slug,

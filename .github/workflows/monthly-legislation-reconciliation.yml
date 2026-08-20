@@ -1,35 +1,60 @@
-name: Monthly Legislation Reconciliation
+name: Gated Legislation Reconciliation
 
 on:
-  schedule:
-    - cron: "17 3 1 * *" # 1st of every month at 03:17 UTC
   workflow_dispatch:
+    inputs:
+      confirmed_reconciliation:
+        description: "Confirm read-only reconciliation of a selected state artifact"
+        required: true
+        type: boolean
+        default: false
+      state_run_id:
+        description: "Successful harvest run ID containing complete state"
+        required: true
+        type: string
 
 permissions:
+  actions: read
   contents: read
-  id-token: write
 
 concurrency:
-  group: reconcile-legislation-${{ github.ref }}
+  group: gated-legislation-reconciliation-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
-  monthly-reconcile:
+  reconcile:
     runs-on: ubuntu-latest
     steps:
+      - name: Enforce unresolved weekly-cycle and state-artifact gates
+        run: |
+          echo "Blocked: authenticated hosted state and weekly-cycle authority are pending."
+          exit 3
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
         with:
           python-version: "3.14"
       - run: python -m pip install uv==0.6.5
-      - name: Prepare receipt directories
-        run: mkdir -p build/receipts/legislation build/manifests
-      - name: Run Full Inventory Reconciliation
+      - name: Restore selected complete state
+        env:
+          CONFIRMED: ${{ inputs.confirmed_reconciliation }}
+          GH_TOKEN: ${{ github.token }}
+          STATE_RUN_ID: ${{ inputs.state_run_id }}
         run: |
-          uv run --locked python tools/run_legislation_reconciliation.py
+          test "$CONFIRMED" = true
+          case "$STATE_RUN_ID" in (*[!0-9]*|'') exit 2;; esac
+          mkdir -p build/legislation-state
+          gh run download "$STATE_RUN_ID" --repo "$GITHUB_REPOSITORY" --name "legislation-state-$STATE_RUN_ID" --dir build/legislation-state
+      - name: Reconcile authenticated state
+        run: |
+          uv run --locked python tools/run_legislation_reconciliation.py \
+            --manifest-path build/legislation-state/manifest.json \
+            --checkpoint-path build/legislation-state/checkpoint.json \
+            --cas-path build/legislation-state/cas \
+            --receipt-path build/reconciliation/receipt.json \
+            --hosted-dataset-slug ""
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         if: always()
         with:
-          name: legislation-monthly-reconciliation
-          path: build/receipts/legislation/
+          name: legislation-reconciliation-${{ github.run_id }}
+          path: build/reconciliation/
           if-no-files-found: error
