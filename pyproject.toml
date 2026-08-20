@@ -111,7 +111,6 @@ ignore = [
 "tools/reconcile_donor_issues.py" = ["S603", "S607", "E501"]
 "tools/reconcile_legislation_donor_issues.py" = ["S108", "S603", "S607", "E501"]
 "tools/generate_donor_live_inventory.py" = ["S108", "S603", "S607", "PTH118", "PLR2004", "E501"]
-"tools/generate_executable_legislation_parity.py" = ["S108", "S603", "S607", "E501"]
 "tools/validate_contracts.py" = ["S603", "S607", "E501", "C901", "PLR0912", "PERF401"]
 "tools/evaluate_legislation_completion.py" = ["S101", "S603", "S607", "E501", "PLR2004", "S110", "C901", "PLR0912"]
 "tools/scaffold_child_tracks.py" = ["E501"]

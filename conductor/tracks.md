@@ -93,6 +93,8 @@ decision or safety boundary, and continue independent work while it is pending.
     *Link: [tracks/legislation_workflow_fail_closed_20260820/index.md](./tracks/legislation_workflow_fail_closed_20260820/index.md)*
   - [/] **Child Track 9: Historical reconciliation, parity and publication identity**
     *Link: [tracks/legislation_corrective_reconciliation_parity_publication_20260818/index.md](./tracks/legislation_corrective_reconciliation_parity_publication_20260818/index.md)*
+  - [~] **Child Track 9A: Fail-closed one-batch reconciliation correction**
+    *Link: [tracks/legislation_one_batch_reconciliation_20260820/index.md](./tracks/legislation_one_batch_reconciliation_20260820/index.md)*
   - [/] **Child Track 10: Rights and redistribution**
     *Link: [tracks/legislation_corrective_rights_redistribution_20260818/index.md](./tracks/legislation_corrective_rights_redistribution_20260818/index.md)*
   - [/] **Child Track 11: Shadow operation, recovery and cutover**
