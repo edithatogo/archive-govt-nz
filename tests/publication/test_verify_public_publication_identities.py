@@ -230,6 +230,29 @@ def test_run_publication_verification_negative_control_mismatch(
 def test_main_cli(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     """Verify main entrypoint parses CLI options."""
     receipt_path = tmp_path / "cli_receipt.json"
+    observed: dict[str, object] = {}
+
+    def fake_run_publication_verification(
+        *,
+        receipt_path: Path,
+        hf_datasets: list[str] | None,
+        zenodo_doi: str,
+    ) -> int:
+        observed.update(
+            {
+                "receipt_path": receipt_path,
+                "hf_datasets": hf_datasets,
+                "zenodo_doi": zenodo_doi,
+            }
+        )
+        receipt_path.write_text('{"status":"cli-arguments-observed"}', encoding="utf-8")
+        return 0
+
+    monkeypatch.setattr(
+        _MODULE,
+        "run_publication_verification",
+        fake_run_publication_verification,
+    )
     monkeypatch.setattr(
         "sys.argv",
         [
@@ -247,3 +270,8 @@ def test_main_cli(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
         main()
     assert exc.value.code == 0
     assert receipt_path.is_file()
+    assert observed == {
+        "receipt_path": receipt_path,
+        "hf_datasets": ["edithatogo/corpus-legislation-nz"],
+        "zenodo_doi": "10.5281/zenodo.20592540",
+    }

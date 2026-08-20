@@ -23,6 +23,7 @@ from archive_govt_nz.domains.legislation.corpus import (
     _build_discovered_work_targets,
 )
 from archive_govt_nz.domains.legislation.manifest import (
+    build_legislation_manifest,
     compute_legislation_manifest_sha256,
 )
 from archive_govt_nz.domains.legislation.models import (
@@ -190,6 +191,117 @@ async def test_discovery_fails_closed_without_canonical_frbr_graph(
 
     with pytest.raises(ValueError, match="canonical"):
         await service.sync_works(search_terms=["incomplete"], max_works=1)
+
+
+@pytest.mark.anyio
+@pytest.mark.parametrize(
+    ("targets", "message"),
+    [
+        ([WorkTarget(work_id="act-empty")], "no expressions"),
+        (
+            [
+                WorkTarget(
+                    work_id="act-empty-manifestations",
+                    expression_targets=[ExpressionTarget()],
+                )
+            ],
+            "no manifestations",
+        ),
+        (
+            [
+                WorkTarget(
+                    work_id="act-empty-url",
+                    expression_targets=[
+                        ExpressionTarget(
+                            manifestations=[ManifestationTarget(target_url="")]
+                        )
+                    ],
+                )
+            ],
+            "empty manifestation URL",
+        ),
+        (
+            [
+                WorkTarget(
+                    work_id="act-duplicate",
+                    expression_targets=[
+                        ExpressionTarget(
+                            manifestations=[
+                                ManifestationTarget(
+                                    target_url="https://example.test/one.xml"
+                                )
+                            ]
+                        )
+                    ],
+                ),
+                WorkTarget(
+                    work_id="act-duplicate",
+                    expression_targets=[
+                        ExpressionTarget(
+                            manifestations=[
+                                ManifestationTarget(
+                                    target_url="https://example.test/two.xml"
+                                )
+                            ]
+                        )
+                    ],
+                ),
+            ],
+            "duplicate work identity",
+        ),
+    ],
+)
+async def test_explicit_target_graph_fails_closed_when_ambiguous(
+    tmp_path: Path,
+    targets: list[WorkTarget],
+    message: str,
+) -> None:
+    """Explicit compatibility targets cannot manufacture successful work state."""
+    service = LegislationArchiveService(store=ContentAddressedStore(tmp_path / "cas"))
+
+    with pytest.raises(ValueError, match=message):
+        await service.sync_works(targets=targets)
+
+    with pytest.raises(ValueError, match="max_works"):
+        await service.sync_works(targets=[], max_works=-1)
+
+
+@pytest.mark.anyio
+async def test_explicit_target_inventory_is_bounded_before_capture(
+    tmp_path: Path,
+) -> None:
+    """The configured work bound limits explicit target acquisition."""
+    requested_paths: list[str] = []
+
+    def handler(req: httpx.Request) -> httpx.Response:
+        requested_paths.append(req.url.path)
+        return httpx.Response(200, content=b"<act><title>Bounded Act</title></act>")
+
+    service = LegislationArchiveService(
+        store=ContentAddressedStore(tmp_path / "cas"),
+        api_client=NZLegislationApiClient(
+            async_client=httpx.AsyncClient(transport=httpx.MockTransport(handler))
+        ),
+    )
+
+    def target(number: int) -> WorkTarget:
+        return WorkTarget(
+            work_id=f"act-{number}",
+            expression_targets=[
+                ExpressionTarget(
+                    manifestations=[
+                        ManifestationTarget(
+                            target_url=f"https://example.test/act-{number}.xml"
+                        )
+                    ]
+                )
+            ],
+        )
+
+    result = await service.sync_works(targets=[target(1), target(2)], max_works=1)
+
+    assert result.works_attempted == 1
+    assert requested_paths == ["/act-1.xml"]
 
 
 @pytest.mark.parametrize(
@@ -372,6 +484,63 @@ async def test_304_retains_cumulative_manifest_and_checkpoint(tmp_path: Path) ->
 
 
 @pytest.mark.anyio
+async def test_304_retains_explicit_target_with_generated_identity(
+    tmp_path: Path,
+) -> None:
+    """Explicit targets link validators to their generated manifestation ID."""
+    requests: list[httpx.Request] = []
+
+    def handler(req: httpx.Request) -> httpx.Response:
+        requests.append(req)
+        if len(requests) == 1:
+            return httpx.Response(
+                200,
+                content=b"<act><title>Explicit Act</title></act>",
+                headers={"Content-Type": "application/xml", "ETag": '"v1"'},
+            )
+        assert req.headers["If-None-Match"] == '"v1"'
+        return httpx.Response(304, headers={"ETag": '"v1"'})
+
+    service = LegislationArchiveService(
+        store=ContentAddressedStore(tmp_path / "cas"),
+        api_client=NZLegislationApiClient(
+            async_client=httpx.AsyncClient(transport=httpx.MockTransport(handler))
+        ),
+    )
+    checkpoint = tmp_path / "checkpoint.json"
+    manifest = tmp_path / "manifest.json"
+    target = WorkTarget(
+        work_id="act-explicit",
+        title="Explicit Act",
+        canonical_uri="https://example.test/work/act-explicit",
+        expression_targets=[
+            ExpressionTarget(
+                manifestations=[
+                    ManifestationTarget(
+                        target_url="https://example.test/act-explicit.xml"
+                    )
+                ]
+            )
+        ],
+    )
+
+    first = await service.sync_works(
+        targets=[target], checkpoint_path=checkpoint, manifest_path=manifest
+    )
+    second = await service.sync_works(
+        targets=[target],
+        checkpoint_path=checkpoint,
+        manifest_path=manifest,
+        force_resync=True,
+    )
+
+    assert first.status == "success"
+    assert second.status == "no_change"
+    assert second.errors == []
+    assert second.manifest["total_records"] == 1
+
+
+@pytest.mark.anyio
 async def test_cold_304_without_prior_manifestation_fails_closed(
     tmp_path: Path,
 ) -> None:
@@ -480,9 +649,11 @@ async def test_corrupt_cumulative_manifest_fails_closed(tmp_path: Path) -> None:
 @pytest.mark.parametrize(
     ("payload", "message"),
     [
+        ({"records": []}, "manifest root is missing"),
         ([], "valid manifest object"),
         ({"records": ["invalid"]}, "invalid records"),
-        ({"records": [], "manifest_sha256": "bad"}, "root does not match"),
+        ({"records": [], "manifest_sha256": "bad"}, "root is missing or invalid"),
+        ({"records": [], "manifest_sha256": "0" * 64}, "root does not match"),
     ],
 )
 async def test_structurally_invalid_cumulative_manifest_fails_closed(
@@ -504,18 +675,119 @@ async def test_structurally_invalid_cumulative_manifest_fails_closed(
     "metadata",
     [[], {"conditional_requests": []}],
 )
-async def test_invalid_conditional_checkpoint_metadata_is_ignored(
+async def test_invalid_conditional_checkpoint_metadata_fails_closed(
     tmp_path: Path,
     metadata: object,
 ) -> None:
-    """Malformed optional validator state cannot contaminate a sync."""
+    """Malformed validator state is corrupt checkpoint evidence."""
     checkpoint = tmp_path / "checkpoint.json"
     checkpoint.write_text(json.dumps({"metadata": metadata}), encoding="utf-8")
     service = LegislationArchiveService(store=ContentAddressedStore(tmp_path / "cas"))
 
-    result = await service.sync_works(targets=[], checkpoint_path=checkpoint)
+    with pytest.raises((TypeError, ValueError), match="checkpoint"):
+        await service.sync_works(targets=[], checkpoint_path=checkpoint)
 
-    assert result.status == "success"
+
+@pytest.mark.anyio
+@pytest.mark.parametrize(
+    ("checkpoint_data", "message"),
+    [
+        ({"schema_version": "unsupported"}, "schema_version"),
+        ({"processed_work_ids": "act-1"}, "processed_work_ids"),
+        ({"processed_work_ids": ["act-1", "act-1"]}, "duplicates"),
+        ({"total_records_preserved": True}, "total_records_preserved"),
+        ({"last_processed_index": -1}, "last_processed_index"),
+        (
+            {"processed_work_ids": ["act-1"], "last_processed_index": 0},
+            "last_processed_index does not match",
+        ),
+        ({"metadata": {"manifest_sha256": "bad"}}, "manifest root"),
+        (
+            {"metadata": {"conditional_requests": {"": {}}}},
+            "conditional request entry",
+        ),
+        (
+            {"metadata": {"conditional_requests": {"source": {"etag": 1}}}},
+            "conditional request etag",
+        ),
+    ],
+)
+async def test_invalid_checkpoint_structure_fails_closed(
+    tmp_path: Path,
+    checkpoint_data: dict[str, object],
+    message: str,
+) -> None:
+    """Typed checkpoint accounting is required before state is consumed."""
+    checkpoint = tmp_path / "checkpoint.json"
+    checkpoint.write_text(json.dumps(checkpoint_data), encoding="utf-8")
+    service = LegislationArchiveService(store=ContentAddressedStore(tmp_path / "cas"))
+
+    with pytest.raises((TypeError, ValueError), match=message):
+        await service.sync_works(targets=[], checkpoint_path=checkpoint)
+
+
+@pytest.mark.anyio
+@pytest.mark.parametrize(
+    ("records", "total_records", "message"),
+    [
+        ([{"raw_sha256": "0" * 64}], 1, "lacks canonical identity"),
+        (
+            [
+                {"document_id": "leg-1", "raw_sha256": "0" * 64},
+                {"document_id": "leg-1", "raw_sha256": "0" * 64},
+            ],
+            2,
+            "duplicate canonical identities",
+        ),
+        ([], 1, "total_records"),
+    ],
+)
+async def test_manifest_identity_and_count_corruption_fails_closed(
+    tmp_path: Path,
+    records: list[dict[str, object]],
+    total_records: int,
+    message: str,
+) -> None:
+    """Authenticated bytes do not excuse corrupt identity or count structure."""
+    manifest = tmp_path / "manifest.json"
+    manifest.write_text(
+        json.dumps(
+            {
+                "records": records,
+                "total_records": total_records,
+                "manifest_sha256": compute_legislation_manifest_sha256(records),
+            }
+        ),
+        encoding="utf-8",
+    )
+    service = LegislationArchiveService(store=ContentAddressedStore(tmp_path / "cas"))
+
+    with pytest.raises(ValueError, match=message):
+        await service.sync_works(targets=[], manifest_path=manifest)
+
+
+@pytest.mark.anyio
+@pytest.mark.parametrize(
+    ("mutation", "message"),
+    [
+        ({"discovered_works_count": 1}, "discovered work count"),
+        ({"discovered_inventory_sha256": "0" * 64}, "inventory root"),
+    ],
+)
+async def test_discovered_inventory_metadata_is_authenticated(
+    tmp_path: Path,
+    mutation: dict[str, object],
+    message: str,
+) -> None:
+    """Coverage inventory metadata cannot change independently of its root."""
+    manifest_data = build_legislation_manifest([], run_id="inventory")
+    manifest_data.update(mutation)
+    manifest = tmp_path / "manifest.json"
+    manifest.write_text(json.dumps(manifest_data), encoding="utf-8")
+    service = LegislationArchiveService(store=ContentAddressedStore(tmp_path / "cas"))
+
+    with pytest.raises(ValueError, match=message):
+        await service.sync_works(targets=[], manifest_path=manifest)
 
 
 @pytest.mark.anyio
@@ -534,7 +806,7 @@ async def test_checkpoint_and_manifest_roots_must_match(tmp_path: Path) -> None:
     )
     checkpoint = tmp_path / "checkpoint.json"
     checkpoint.write_text(
-        json.dumps({"metadata": {"manifest_sha256": "different"}}),
+        json.dumps({"metadata": {"manifest_sha256": "0" * 64}}),
         encoding="utf-8",
     )
     service = LegislationArchiveService(store=ContentAddressedStore(tmp_path / "cas"))
@@ -543,6 +815,231 @@ async def test_checkpoint_and_manifest_roots_must_match(tmp_path: Path) -> None:
         await service.sync_works(
             targets=[], checkpoint_path=checkpoint, manifest_path=manifest
         )
+
+
+@pytest.mark.anyio
+async def test_checkpoint_and_manifest_record_counts_must_match(tmp_path: Path) -> None:
+    """A valid root cannot authenticate contradictory cumulative counts."""
+    manifest_data = build_legislation_manifest([], run_id="prior")
+    manifest = tmp_path / "manifest.json"
+    manifest.write_text(json.dumps(manifest_data), encoding="utf-8")
+    checkpoint = tmp_path / "checkpoint.json"
+    checkpoint.write_text(
+        json.dumps(
+            {
+                "total_records_preserved": 1,
+                "metadata": {
+                    "manifest_sha256": manifest_data["manifest_sha256"],
+                    "discovered_inventory_sha256": manifest_data[
+                        "discovered_inventory_sha256"
+                    ],
+                },
+            }
+        ),
+        encoding="utf-8",
+    )
+    service = LegislationArchiveService(store=ContentAddressedStore(tmp_path / "cas"))
+
+    with pytest.raises(ValueError, match="record count"):
+        await service.sync_works(
+            targets=[], checkpoint_path=checkpoint, manifest_path=manifest
+        )
+
+
+@pytest.mark.anyio
+@pytest.mark.parametrize(
+    ("checkpoint_mutation", "message"),
+    [
+        ({"remove_inventory_root": True}, "inventory root is missing"),
+        ({"discovered_inventory_sha256": "0" * 64}, "inventory root does not match"),
+        ({"processed_work_ids": ["different-work"]}, "processed work IDs"),
+    ],
+)
+async def test_checkpoint_inventory_linkage_fails_closed(
+    tmp_path: Path,
+    checkpoint_mutation: dict[str, object],
+    message: str,
+) -> None:
+    """Checkpoint work accounting must link to the authenticated inventory."""
+    service = LegislationArchiveService(
+        store=ContentAddressedStore(tmp_path / "cas"),
+        api_client=NZLegislationApiClient(
+            async_client=httpx.AsyncClient(
+                transport=httpx.MockTransport(
+                    lambda _req: httpx.Response(
+                        200, content=b"<act><title>Linked Act</title></act>"
+                    )
+                )
+            )
+        ),
+    )
+    checkpoint = tmp_path / "checkpoint.json"
+    manifest = tmp_path / "manifest.json"
+    target = WorkTarget(
+        work_id="linked-work",
+        expression_targets=[
+            ExpressionTarget(
+                manifestations=[
+                    ManifestationTarget(
+                        target_url="https://example.test/linked-work.xml"
+                    )
+                ]
+            )
+        ],
+    )
+    await service.sync_works(
+        targets=[target], checkpoint_path=checkpoint, manifest_path=manifest
+    )
+    checkpoint_data = json.loads(checkpoint.read_text(encoding="utf-8"))
+    metadata = checkpoint_data["metadata"]
+    if checkpoint_mutation.get("remove_inventory_root"):
+        metadata.pop("discovered_inventory_sha256", None)
+    elif "discovered_inventory_sha256" in checkpoint_mutation:
+        metadata["discovered_inventory_sha256"] = checkpoint_mutation[
+            "discovered_inventory_sha256"
+        ]
+    if "processed_work_ids" in checkpoint_mutation:
+        checkpoint_data["processed_work_ids"] = checkpoint_mutation[
+            "processed_work_ids"
+        ]
+    checkpoint.write_text(json.dumps(checkpoint_data), encoding="utf-8")
+
+    with pytest.raises(ValueError, match=message):
+        await service.sync_works(
+            targets=[], checkpoint_path=checkpoint, manifest_path=manifest
+        )
+
+
+@pytest.mark.anyio
+async def test_non_empty_checkpoint_requires_manifest_root_linkage(
+    tmp_path: Path,
+) -> None:
+    """Accounted checkpoint state without a manifest root fails closed."""
+    manifest = tmp_path / "manifest.json"
+    manifest.write_text(
+        json.dumps(build_legislation_manifest([], run_id="prior")),
+        encoding="utf-8",
+    )
+    checkpoint = tmp_path / "checkpoint.json"
+    checkpoint.write_text(
+        json.dumps(
+            {
+                "processed_work_ids": ["act-1"],
+                "total_records_preserved": 1,
+            }
+        ),
+        encoding="utf-8",
+    )
+    service = LegislationArchiveService(store=ContentAddressedStore(tmp_path / "cas"))
+
+    with pytest.raises(ValueError, match="checkpoint manifest root is missing"):
+        await service.sync_works(
+            targets=[], checkpoint_path=checkpoint, manifest_path=manifest
+        )
+
+
+@pytest.mark.anyio
+async def test_canonical_manifestation_identity_cannot_change_bytes(
+    tmp_path: Path,
+) -> None:
+    """One canonical manifestation ID cannot silently replace prior bytes."""
+    payloads = iter(
+        [
+            b"<act><title>Original Act</title></act>",
+            b"<act><title>Changed Act</title></act>",
+        ]
+    )
+    service = LegislationArchiveService(
+        store=ContentAddressedStore(tmp_path / "cas"),
+        api_client=NZLegislationApiClient(
+            async_client=httpx.AsyncClient(
+                transport=httpx.MockTransport(
+                    lambda _req: httpx.Response(200, content=next(payloads))
+                )
+            )
+        ),
+    )
+    checkpoint = tmp_path / "checkpoint.json"
+    manifest = tmp_path / "manifest.json"
+    target = WorkTarget(
+        work_id="act-collision",
+        title="Collision Act",
+        canonical_uri="https://example.test/work/act-collision",
+        expression_targets=[
+            ExpressionTarget(
+                expression_id="exp:collision:v1",
+                manifestations=[
+                    ManifestationTarget(
+                        manifestation_id="man:collision:v1:xml",
+                        target_url="https://example.test/act-collision.xml",
+                    )
+                ],
+            )
+        ],
+    )
+
+    await service.sync_works(
+        targets=[target], checkpoint_path=checkpoint, manifest_path=manifest
+    )
+
+    with pytest.raises(ValueError, match="manifestation identity collision"):
+        await service.sync_works(
+            targets=[target],
+            checkpoint_path=checkpoint,
+            manifest_path=manifest,
+            force_resync=True,
+        )
+
+
+@pytest.mark.anyio
+async def test_partial_batch_is_not_recorded_as_completed(tmp_path: Path) -> None:
+    """A partial batch retains progress without claiming batch completion."""
+
+    def handler(req: httpx.Request) -> httpx.Response:
+        if "failed" in req.url.path:
+            return httpx.Response(500)
+        return httpx.Response(200, content=b"<act><title>Good Act</title></act>")
+
+    service = LegislationArchiveService(
+        store=ContentAddressedStore(tmp_path / "cas"),
+        api_client=NZLegislationApiClient(
+            async_client=httpx.AsyncClient(
+                transport=httpx.MockTransport(handler),
+            )
+        ),
+    )
+    checkpoint = tmp_path / "checkpoint.json"
+    manifest = tmp_path / "manifest.json"
+
+    def target(work_id: str) -> WorkTarget:
+        return WorkTarget(
+            work_id=work_id,
+            title=work_id,
+            canonical_uri=f"https://example.test/work/{work_id}",
+            expression_targets=[
+                ExpressionTarget(
+                    expression_id=f"exp:{work_id}",
+                    manifestations=[
+                        ManifestationTarget(
+                            manifestation_id=f"man:{work_id}",
+                            target_url=f"https://example.test/{work_id}.xml",
+                        )
+                    ],
+                )
+            ],
+        )
+
+    result = await service.sync_works(
+        targets=[target("good"), target("failed")],
+        checkpoint_path=checkpoint,
+        manifest_path=manifest,
+        batch_id="partial-batch",
+    )
+
+    assert result.status == "partial"
+    assert result.checkpoint is not None
+    assert result.checkpoint["processed_work_ids"] == ["good"]
+    assert result.checkpoint["completed_batches"] == []
 
 
 @pytest.mark.anyio
@@ -810,6 +1307,18 @@ async def test_fail_fast_no_checkpoint_promotion(tmp_path: Path) -> None:
     assert len(res.errors) > 0
     assert not chk_path.is_file()
     assert not chk_path.with_suffix(".staging.tmp").is_file()
+
+    non_fail_fast_checkpoint = tmp_path / "checkpoints" / "failed.json"
+    non_fail_fast_manifest = tmp_path / "failed-manifest.json"
+    non_fail_fast = await service.sync_works(
+        targets=[target],
+        checkpoint_path=non_fail_fast_checkpoint,
+        manifest_path=non_fail_fast_manifest,
+        fail_fast=False,
+    )
+    assert non_fail_fast.status == "failed"
+    assert not non_fail_fast_checkpoint.exists()
+    assert not non_fail_fast_manifest.exists()
 
 
 @pytest.mark.anyio

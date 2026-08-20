@@ -9,6 +9,10 @@ from typing import TYPE_CHECKING
 
 import pytest
 
+from archive_govt_nz.domains.legislation.manifest import (
+    compute_legislation_inventory_sha256,
+)
+
 if TYPE_CHECKING:
     from types import ModuleType
 
@@ -84,6 +88,68 @@ def test_reconcile_inventory_missing_manifest(tmp_path: Path) -> None:
             manifest_path=tmp_path / "non_existent.json",
             checkpoint_path=tmp_path / "chk.json",
         )
+
+
+@pytest.mark.parametrize(
+    ("mutation", "error"),
+    [
+        ({"discovered_works_count": 2}, "count does not match"),
+        ({"discovered_inventory_sha256": "0" * 64}, "root does not match"),
+        ({"discovered_work_ids": ["work-2", "work-1"]}, "canonical"),
+    ],
+)
+def test_reconcile_inventory_rejects_unauthenticated_discovery_denominator(
+    tmp_path: Path, mutation: dict[str, object], error: str
+) -> None:
+    """Reject a discovered denominator that is not bound to its inventory root."""
+    work_ids = ["work-1"]
+    manifest_data: dict[str, object] = {
+        "records": [],
+        "discovered_work_ids": work_ids,
+        "discovered_works_count": len(work_ids),
+        "discovered_inventory_sha256": compute_legislation_inventory_sha256(work_ids),
+    }
+    manifest_data.update(mutation)
+    manifest_file = tmp_path / "manifest.json"
+    manifest_file.write_text(json.dumps(manifest_data), encoding="utf-8")
+    checkpoint_file = tmp_path / "checkpoint.json"
+    checkpoint_file.write_text(json.dumps({"processed_work_ids": []}), encoding="utf-8")
+
+    with pytest.raises(ValueError, match=error):
+        reconcile_inventory(
+            manifest_path=manifest_file,
+            checkpoint_path=checkpoint_file,
+        )
+
+
+def test_reconcile_inventory_uses_authenticated_discovery_denominator(
+    tmp_path: Path,
+) -> None:
+    """Use the authenticated discovered inventory as the coverage denominator."""
+    work_ids = ["work-1", "work-2"]
+    manifest_file = tmp_path / "manifest.json"
+    manifest_file.write_text(
+        json.dumps(
+            {
+                "records": [],
+                "discovered_work_ids": work_ids,
+                "discovered_works_count": len(work_ids),
+                "discovered_inventory_sha256": (
+                    compute_legislation_inventory_sha256(work_ids)
+                ),
+            }
+        ),
+        encoding="utf-8",
+    )
+    checkpoint_file = tmp_path / "checkpoint.json"
+    checkpoint_file.write_text(json.dumps({"processed_work_ids": []}), encoding="utf-8")
+
+    report = reconcile_inventory(
+        manifest_path=manifest_file,
+        checkpoint_path=checkpoint_file,
+    )
+
+    assert report["candidate_works_denominator"] == 2
 
 
 def test_run_monthly_reconciliation_runner(tmp_path: Path) -> None:

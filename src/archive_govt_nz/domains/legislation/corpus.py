@@ -3,9 +3,10 @@
 from __future__ import annotations
 
 import json
+import re
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING, Any, cast
 
 import pyarrow as pa
 import pyarrow.parquet as pq
@@ -23,6 +24,7 @@ from archive_govt_nz.domains.legislation.coverage import (
 from archive_govt_nz.domains.legislation.discovery import build_work_inventory
 from archive_govt_nz.domains.legislation.manifest import (
     build_legislation_manifest,
+    compute_legislation_inventory_sha256,
     compute_legislation_manifest_sha256,
 )
 from archive_govt_nz.domains.legislation.normalise import (
@@ -181,6 +183,137 @@ def _build_discovered_work_targets(  # noqa: C901
     return targets
 
 
+def _validate_checkpoint_identifiers(
+    checkpoint: dict[str, Any], field_name: str
+) -> None:
+    """Validate one checkpoint identifier-list field."""
+    value = checkpoint.get(field_name, [])
+    if not isinstance(value, list) or not all(
+        isinstance(item, str) and item for item in value
+    ):
+        msg = f"checkpoint {field_name} must be a list of identifiers"
+        raise TypeError(msg)
+    if len(set(value)) != len(value):
+        msg = f"checkpoint {field_name} contains duplicates"
+        raise ValueError(msg)
+
+
+def _validate_checkpoint_counter(
+    checkpoint: dict[str, Any], field_name: str, *, optional: bool = False
+) -> None:
+    """Validate one non-negative checkpoint counter."""
+    value = checkpoint.get(field_name)
+    if optional and value is None:
+        return
+    if value is None:
+        value = 0
+    if isinstance(value, bool) or not isinstance(value, int) or value < 0:
+        msg = f"checkpoint {field_name} must be a non-negative integer"
+        raise TypeError(msg)
+
+
+def _validate_conditional_requests(conditional: object) -> None:
+    """Validate the persisted conditional-request evidence map."""
+    if not isinstance(conditional, dict):
+        msg = "checkpoint conditional_requests must be an object"
+        raise TypeError(msg)
+    for key, validators in conditional.items():
+        if not isinstance(key, str) or not key or not isinstance(validators, dict):
+            msg = "checkpoint conditional request entry is invalid"
+            raise TypeError(msg)
+        for name in ("etag", "last_modified", "manifestation_id"):
+            value = validators.get(name)
+            if value is not None and (not isinstance(value, str) or not value):
+                msg = f"checkpoint conditional request {name} is invalid"
+                raise TypeError(msg)
+
+
+def _validate_checkpoint_metadata(metadata: object) -> None:
+    """Validate checkpoint root linkage and conditional metadata types."""
+    if not isinstance(metadata, dict):
+        msg = "checkpoint metadata must be an object"
+        raise TypeError(msg)
+    manifest_root = metadata.get("manifest_sha256")
+    if manifest_root is not None and (
+        not isinstance(manifest_root, str)
+        or not re.fullmatch(r"[0-9a-f]{64}", manifest_root)
+    ):
+        msg = "checkpoint manifest root must be a SHA-256 digest"
+        raise ValueError(msg)
+    inventory_root = metadata.get("discovered_inventory_sha256")
+    if inventory_root is not None and (
+        not isinstance(inventory_root, str)
+        or not re.fullmatch(r"[0-9a-f]{64}", inventory_root)
+    ):
+        msg = "checkpoint discovered inventory root must be a SHA-256 digest"
+        raise ValueError(msg)
+    _validate_conditional_requests(metadata.get("conditional_requests", {}))
+
+
+def _validate_resolved_targets(targets: list[WorkTarget]) -> None:
+    """Reject explicit target graphs that could fabricate successful work state."""
+    seen_work_ids: set[str] = set()
+    for target in targets:
+        if target.work_id in seen_work_ids:
+            msg = (
+                f"duplicate work identity in bounded target inventory: {target.work_id}"
+            )
+            raise ValueError(msg)
+        seen_work_ids.add(target.work_id)
+        if not target.expression_targets:
+            msg = f"target {target.work_id} has no expressions"
+            raise ValueError(msg)
+        for expression in target.expression_targets:
+            if not expression.manifestations:
+                msg = f"target {target.work_id} expression has no manifestations"
+                raise ValueError(msg)
+            if any(
+                not manifestation.target_url
+                for manifestation in expression.manifestations
+            ):
+                msg = f"target {target.work_id} has an empty manifestation URL"
+                raise ValueError(msg)
+
+
+def _validate_manifest_inventory(
+    payload: dict[str, Any], records: list[dict[str, Any]]
+) -> None:
+    """Validate optional v1 authenticated discovered-inventory extensions."""
+    inventory_fields = {
+        "discovered_work_ids",
+        "discovered_works_count",
+        "discovered_inventory_sha256",
+    }
+    if not inventory_fields.intersection(payload):
+        return
+    if not inventory_fields.issubset(payload):
+        msg = "cumulative manifest discovered inventory metadata is incomplete"
+        raise ValueError(msg)
+    work_ids = payload["discovered_work_ids"]
+    if not isinstance(work_ids, list) or not all(
+        isinstance(work_id, str) and work_id for work_id in work_ids
+    ):
+        msg = "cumulative manifest discovered work IDs are invalid"
+        raise TypeError(msg)
+    if work_ids != sorted(set(work_ids)):
+        msg = "cumulative manifest discovered work IDs are not canonical"
+        raise ValueError(msg)
+    if payload["discovered_works_count"] != len(work_ids):
+        msg = "cumulative manifest discovered work count does not match inventory"
+        raise ValueError(msg)
+    recorded_root = payload["discovered_inventory_sha256"]
+    computed_root = compute_legislation_inventory_sha256(work_ids)
+    if recorded_root != computed_root:
+        msg = "cumulative manifest discovered inventory root does not match"
+        raise ValueError(msg)
+    record_work_ids = {
+        str(record["work_id"]) for record in records if record.get("work_id")
+    }
+    if not record_work_ids.issubset(work_ids):
+        msg = "cumulative manifest records fall outside discovered work inventory"
+        raise ValueError(msg)
+
+
 class LegislationArchiveService:
     """Canonical application service orchestrating legislation preservation.
 
@@ -283,6 +416,9 @@ class LegislationArchiveService:
         max_works: int | None = None,
     ) -> list[WorkTarget]:
         """Resolve candidate targets from explicit targets, work IDs, or discovery."""
+        if max_works is not None and max_works < 0:
+            msg = "max_works must be non-negative"
+            raise ValueError(msg)
         if targets is not None:
             resolved = list(targets)
         elif work_ids is not None:
@@ -298,7 +434,8 @@ class LegislationArchiveService:
             resolved = []
 
         if max_works is not None and len(resolved) > max_works:
-            return resolved[:max_works]
+            resolved = resolved[:max_works]
+        _validate_resolved_targets(resolved)
         return resolved
 
     @staticmethod
@@ -321,10 +458,30 @@ class LegislationArchiveService:
             msg = "cumulative manifest contains invalid records"
             raise ValueError(msg)
         recorded_hash = payload.get("manifest_sha256")
+        if not isinstance(recorded_hash, str) or not re.fullmatch(
+            r"[0-9a-f]{64}", recorded_hash
+        ):
+            msg = "cumulative manifest root is missing or invalid"
+            raise ValueError(msg)
+        identities = [
+            str(record.get("manifestation_id") or record.get("document_id") or "")
+            for record in records
+        ]
+        if any(not identity for identity in identities):
+            msg = "cumulative manifest record lacks canonical identity"
+            raise ValueError(msg)
+        if len(set(identities)) != len(identities):
+            msg = "cumulative manifest contains duplicate canonical identities"
+            raise ValueError(msg)
         computed_hash = compute_legislation_manifest_sha256(records)
-        if recorded_hash and recorded_hash != computed_hash:
+        if recorded_hash != computed_hash:
             msg = "cumulative manifest root does not match its records"
             raise ValueError(msg)
+        total_records = payload.get("total_records")
+        if total_records is not None and total_records != len(records):
+            msg = "cumulative manifest total_records does not match its records"
+            raise ValueError(msg)
+        _validate_manifest_inventory(payload, records)
         return payload
 
     @staticmethod
@@ -338,21 +495,40 @@ class LegislationArchiveService:
     @staticmethod
     def _conditional_state(checkpoint: dict[str, Any]) -> dict[str, dict[str, str]]:
         """Extract validated conditional request state from checkpoint metadata."""
-        metadata = checkpoint.get("metadata", {})
-        if not isinstance(metadata, dict):
-            return {}
-        raw_state = metadata.get("conditional_requests", {})
-        if not isinstance(raw_state, dict):
-            return {}
-        state: dict[str, dict[str, str]] = {}
-        for key, value in raw_state.items():
-            if isinstance(key, str) and isinstance(value, dict):
-                state[key] = {
-                    name: str(item)
-                    for name, item in value.items()
-                    if name in {"etag", "last_modified"} and item
-                }
-        return state
+        metadata = cast("dict[str, Any]", checkpoint.get("metadata", {}))
+        raw_state = cast(
+            "dict[str, dict[str, Any]]", metadata.get("conditional_requests", {})
+        )
+        return {
+            key: {
+                name: str(item)
+                for name, item in value.items()
+                if name in {"etag", "last_modified", "manifestation_id"} and item
+            }
+            for key, value in raw_state.items()
+        }
+
+    @staticmethod
+    def _validate_checkpoint(checkpoint: dict[str, Any]) -> None:
+        """Validate durable checkpoint structure before using accounting state."""
+        schema_version = checkpoint.get("schema_version")
+        if schema_version is not None and schema_version != (
+            "archive-govt-nz.legislation-checkpoint/v1"
+        ):
+            msg = "checkpoint schema_version is unsupported"
+            raise ValueError(msg)
+
+        _validate_checkpoint_identifiers(checkpoint, "processed_work_ids")
+        _validate_checkpoint_identifiers(checkpoint, "completed_batches")
+        _validate_checkpoint_counter(checkpoint, "total_records_preserved")
+        _validate_checkpoint_counter(checkpoint, "last_processed_index", optional=True)
+        last_index = checkpoint.get("last_processed_index")
+        if last_index is not None and last_index != len(
+            checkpoint.get("processed_work_ids", [])
+        ):
+            msg = "checkpoint last_processed_index does not match processed work IDs"
+            raise ValueError(msg)
+        _validate_checkpoint_metadata(checkpoint.get("metadata", {}))
 
     async def _sync_manifestation(  # noqa: PLR0913, PLR0917
         self,
@@ -384,7 +560,14 @@ class LegislationArchiveService:
             validators["last_modified"] = str(result.metadata["last_modified"])
 
         if result.status == "not_modified":
-            if not conditional or source_id not in prior_manifestation_ids:
+            accounted_manifestation_id = man.manifestation_id or conditional.get(
+                "manifestation_id"
+            )
+            if (
+                not conditional
+                or not accounted_manifestation_id
+                or accounted_manifestation_id not in prior_manifestation_ids
+            ):
                 msg = (
                     f"adapter returned not_modified without prior cumulative "
                     f"manifestation {source_id}"
@@ -417,6 +600,8 @@ class LegislationArchiveService:
         val_errors = validate_legislation_record(record)
         if val_errors:
             return None, val_errors, "failed", validators
+
+        validators["manifestation_id"] = cast("str", record.manifestation_id)
 
         return record, [], "captured", validators
 
@@ -471,6 +656,7 @@ class LegislationArchiveService:
         synced_work_ids: set[str],
         total_records: int,
         manifest_sha256: str,
+        discovered_inventory_sha256: str,
         chk_data: dict[str, Any],
         conditional_state: dict[str, dict[str, str]],
         *,
@@ -490,7 +676,7 @@ class LegislationArchiveService:
             return chk_data
 
         new_batches = list(completed_batches)
-        if batch_id and batch_id not in new_batches:
+        if not has_errors and batch_id and batch_id not in new_batches:
             new_batches.append(batch_id)
 
         prior_metadata = chk_data.get("metadata", {})
@@ -498,6 +684,7 @@ class LegislationArchiveService:
         metadata.update(
             {
                 "manifest_sha256": manifest_sha256,
+                "discovered_inventory_sha256": discovered_inventory_sha256,
                 "conditional_requests": conditional_state,
             }
         )
@@ -576,7 +763,7 @@ class LegislationArchiveService:
             updated_conditionals,
         )
 
-    async def sync_works(  # noqa: C901, PLR0913, PLR0915, PLR0917
+    async def sync_works(  # noqa: C901, PLR0912, PLR0913, PLR0915, PLR0917
         self,
         work_ids: list[str] | None = None,
         search_terms: list[str] | None = None,
@@ -610,6 +797,7 @@ class LegislationArchiveService:
 
         if chk_mgr is not None:
             chk_data = chk_mgr.load(strict=True)
+            self._validate_checkpoint(chk_data)
             processed_ids = set(chk_data.get("processed_work_ids", []))
             completed_batches = list(chk_data.get("completed_batches", []))
 
@@ -620,10 +808,49 @@ class LegislationArchiveService:
                 if isinstance(checkpoint_metadata, dict)
                 else None
             )
-            if checkpoint_root and checkpoint_root != prior_manifest.get(
-                "manifest_sha256"
-            ):
+            checkpoint_inventory_root = (
+                checkpoint_metadata.get("discovered_inventory_sha256")
+                if isinstance(checkpoint_metadata, dict)
+                else None
+            )
+            checkpoint_has_state = bool(
+                processed_ids
+                or completed_batches
+                or chk_data.get("total_records_preserved", 0)
+                or checkpoint_metadata
+            )
+            if checkpoint_has_state and not checkpoint_root:
+                msg = "checkpoint manifest root is missing for accounted state"
+                raise ValueError(msg)
+            if checkpoint_root and checkpoint_root != prior_manifest["manifest_sha256"]:
                 msg = "checkpoint manifest root does not match cumulative manifest"
+                raise ValueError(msg)
+            manifest_inventory_root = prior_manifest.get("discovered_inventory_sha256")
+            if (
+                checkpoint_has_state
+                and manifest_inventory_root
+                and not checkpoint_inventory_root
+            ):
+                msg = "checkpoint discovered inventory root is missing"
+                raise ValueError(msg)
+            if (
+                checkpoint_inventory_root
+                and checkpoint_inventory_root != manifest_inventory_root
+            ):
+                msg = "checkpoint discovered inventory root does not match manifest"
+                raise ValueError(msg)
+            if checkpoint_has_state and chk_data.get(
+                "total_records_preserved", 0
+            ) != prior_manifest.get("total_records", len(prior_manifest["records"])):
+                msg = "checkpoint record count does not match cumulative manifest"
+                raise ValueError(msg)
+            manifest_work_ids = {
+                str(record["work_id"])
+                for record in prior_manifest["records"]
+                if record.get("work_id")
+            }
+            if not processed_ids.issubset(manifest_work_ids):
+                msg = "checkpoint processed work IDs are absent from manifest"
                 raise ValueError(msg)
         elif (
             manifest_path is not None
@@ -736,6 +963,7 @@ class LegislationArchiveService:
             synced_ids,
             checkpoint_total,
             manifest["manifest_sha256"],
+            manifest["discovered_inventory_sha256"],
             chk_data,
             updated_conditionals,
             has_errors=bool(errors),

@@ -6,6 +6,8 @@ from typing import TYPE_CHECKING
 
 import httpx
 import pytest
+from hypothesis import given
+from hypothesis import strategies as st
 
 if TYPE_CHECKING:
     from pathlib import Path
@@ -37,6 +39,7 @@ from archive_govt_nz.domains.legislation.identity import (
 )
 from archive_govt_nz.domains.legislation.manifest import (
     build_legislation_manifest,
+    compute_legislation_manifest_sha256,
 )
 from archive_govt_nz.domains.legislation.models import (
     LegislationRecord,
@@ -226,6 +229,23 @@ def test_build_manifest_and_checkpoint_manager(tmp_path: Path) -> None:
     with pytest.raises(ValueError, match="manifest record missing canonical identity"):
         build_legislation_manifest([], existing_records=[{}])
 
+    with pytest.raises(ValueError, match="missing source SHA-256"):
+        build_legislation_manifest(
+            [], existing_records=[{"document_id": "legacy-record"}]
+        )
+
+    prior = manifest["records"][0]
+    with pytest.raises(ValueError, match="duplicate canonical manifest identity"):
+        build_legislation_manifest([], existing_records=[prior, prior])
+
+    repeated = build_legislation_manifest([rec], existing_records=[prior])
+    assert repeated["total_records"] == 1
+
+    conflicting_identity = dict(prior)
+    conflicting_identity["work_id"] = "different-work"
+    with pytest.raises(ValueError, match="canonical identity collision"):
+        build_legislation_manifest([rec], existing_records=[conflicting_identity])
+
     chk_file = tmp_path / "checkpoint.json"
     mgr = LegislationCheckpointManager(chk_file)
     initial = mgr.load()
@@ -240,6 +260,34 @@ def test_build_manifest_and_checkpoint_manager(tmp_path: Path) -> None:
     loaded = mgr.load()
     assert loaded["completed_batches"] == ["batch-1"]
     assert loaded["total_records_preserved"] == 1
+
+
+@given(
+    st.lists(
+        st.tuples(
+            st.text(
+                alphabet="abcdefghijklmnopqrstuvwxyz0123456789:-",
+                min_size=1,
+                max_size=32,
+            ),
+            st.text(alphabet="0123456789abcdef", min_size=64, max_size=64),
+        ),
+        max_size=20,
+        unique_by=lambda item: item[0],
+    )
+)
+def test_legislation_manifest_root_is_order_invariant(
+    identities_and_hashes: list[tuple[str, str]],
+) -> None:
+    """Canonical manifest roots are independent of input enumeration order."""
+    records = [
+        {"manifestation_id": identity, "raw_sha256": sha256}
+        for identity, sha256 in identities_and_hashes
+    ]
+
+    assert compute_legislation_manifest_sha256(
+        records
+    ) == compute_legislation_manifest_sha256(list(reversed(records)))
 
 
 def test_api_client_and_discovery() -> None:
