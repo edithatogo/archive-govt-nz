@@ -3,16 +3,25 @@
 from __future__ import annotations
 
 import asyncio
-import hashlib
 import json
 import os
 import sys
+from dataclasses import asdict
 from pathlib import Path
 from typing import TYPE_CHECKING, Literal
 
 from cyclopts import App
 
 from archive_govt_nz import __version__
+from archive_govt_nz.cli_integrity import (
+    discover_archive_files,
+    load_and_validate_provenance,
+    load_publication_package,
+    search_scope_manifest,
+    validate_schema_directory,
+    verify_archive_directory,
+    verify_cas,
+)
 from archive_govt_nz.core.registry import AgencyRegistry
 from archive_govt_nz.domains.legislation.api import (
     HTTP_OK,
@@ -33,8 +42,10 @@ from archive_govt_nz.domains.legislation.validate import (
     validate_legislation_record,
 )
 from archive_govt_nz.object_store import ContentAddressedStore
+from archive_govt_nz.publication import PublicationConfig, prepare_publication
 
 if TYPE_CHECKING:
+    from archive_govt_nz.cli_integrity import PublicationPackage
     from archive_govt_nz.domains.legislation.models import LegislationRecord
 
 app = App(
@@ -87,20 +98,22 @@ def version(format: Literal["text", "json"] = "text") -> int:
 
 @app.command
 def doctor(format: Literal["text", "json"] = "text") -> int:
-    """Check runtime environment, Python version, and system integrity."""
+    """Check the declared runtime without claiming archive integrity."""
     py_ver = sys.version.split()[0]
-    min_sat = sys.version_info >= (3, 11)
-    status = "healthy" if min_sat else "unhealthy"
+    min_sat = sys.version_info >= (3, 14)
+    status = "runtime_compatible" if min_sat else "runtime_incompatible"
 
     if not min_sat:
-        sys.stderr.write("Python >= 3.11 requirement not satisfied.\n")
+        sys.stderr.write("Python >= 3.14 requirement not satisfied.\n")
 
     if format == "json":
         _emit_json(
             {
                 "command": "doctor",
+                "integrity_status": "not_checked",
                 "python_min_satisfied": min_sat,
                 "python_version": py_ver,
+                "required_python": ">=3.14",
                 "schema_version": "archive-govt-nz.cli/v1",
                 "status": status,
             }
@@ -235,9 +248,10 @@ def capture(
 def archive(
     action: Literal["verify", "count"] = "count",
     output_dir: str = "build/warc",
+    manifest_path: str | None = None,
     format: Literal["text", "json"] = "text",
 ) -> int:
-    """Inspect and verify content-addressed archive integrity."""
+    """Count archives or verify their structure and declared fixity."""
     path = Path(output_dir)
     if not path.is_dir():
         sys.stderr.write(f"Archive directory not found: {output_dir}\n")
@@ -258,11 +272,7 @@ def archive(
             print(f"Archive action '{action}': status=no_state (not found)")
         return 1
 
-    files = [
-        f
-        for f in path.glob("*")
-        if f.is_file() and (".warc" in f.name or ".wacz" in f.name)
-    ]
+    files = discover_archive_files(path)
     if not files:
         sys.stderr.write(f"No archive files found in {output_dir}\n")
         if format == "json":
@@ -282,28 +292,45 @@ def archive(
             print(f"Archive action '{action}': status=no_state (0 files)")
         return 1
 
-    total_bytes = sum(f.stat().st_size for f in files)
-    status = "verified" if action == "verify" else "observed"
+    total_bytes = sum(file_path.stat().st_size for file_path in files)
+    failures: list[str] = []
+    verified_files = 0
+    if action == "verify":
+        fixity_path = Path(manifest_path) if manifest_path else path / "manifest.json"
+        summary = verify_archive_directory(path, fixity_path)
+        failures = list(summary.failures)
+        verified_files = summary.verified
+        status = (
+            "verified" if not failures and verified_files == len(files) else "failed"
+        )
+        code = 0 if status == "verified" else 1
+        if failures:
+            sys.stderr.write(f"Archive verification failures: {len(failures)}\n")
+    else:
+        status = "observed"
+        code = 0
 
     if format == "json":
         _emit_json(
             {
                 "action": action,
                 "command": "archive",
+                "failures": failures,
                 "output_dir": output_dir,
                 "schema_version": "archive-govt-nz.cli/v1",
                 "status": status,
                 "total_bytes": total_bytes,
+                "verified_files_count": verified_files,
                 "warc_count": len(files),
             }
         )
-        return 0
+        return code
 
     print(
         f"Archive action '{action}': status={status} ({len(files)} files, "
         f"{total_bytes} bytes)"
     )
-    return 0
+    return code
 
 
 @app.command
@@ -314,14 +341,9 @@ def replay(
     format: Literal["text", "json"] = "text",
 ) -> int:
     """Execute zero-network deterministic replay and fixity validation."""
-    cas_objects_dir = Path(cas_dir) / "sha256"
-    objects = (
-        [f for f in cas_objects_dir.glob("*") if f.is_file()]
-        if cas_objects_dir.is_dir()
-        else []
-    )
+    summary = verify_cas(Path(cas_dir))
 
-    if not objects:
+    if summary.observed == 0:
         err_msg = "No CAS objects found for replay"
         sys.stderr.write(f"{err_msg}\n")
         if format == "json":
@@ -340,12 +362,7 @@ def replay(
             print("Replay drill: status=no_state (0 records)")
         return 1
 
-    corrupted = 0
-    for obj in objects:
-        expected = obj.name
-        actual = hashlib.sha256(obj.read_bytes()).hexdigest()
-        if actual != expected:
-            corrupted += 1
+    corrupted = len(summary.failures)
 
     status = "verified" if corrupted == 0 else "failed"
     if corrupted > 0:
@@ -356,7 +373,7 @@ def replay(
             {
                 "command": "replay",
                 "corrupted_records": corrupted,
-                "records_replayed": len(objects),
+                "records_replayed": summary.observed,
                 "schema_version": "archive-govt-nz.cli/v1",
                 "status": status,
                 "verify_all": verify_all,
@@ -365,24 +382,68 @@ def replay(
         return 0 if corrupted == 0 else 1
 
     print(
-        f"Replay drill: status={status} replayed={len(objects)} corrupted={corrupted}"
+        f"Replay drill: status={status} replayed={summary.observed} "
+        f"corrupted={corrupted}"
     )
     return 0 if corrupted == 0 else 1
 
 
 @app.command
-def verify(format: Literal["text", "json"] = "text") -> int:
+def verify(
+    cas_dir: str = "build/cas",
+    schemas_dir: str = "schemas",
+    provenance_path: str = "evidence/archive-evidence-ledger.json",
+    format: Literal["text", "json"] = "text",
+) -> int:
     """Verify bitstream fixity, schema validity, and provenance integrity."""
-    checks: list[tuple[str, bool]] = [
-        ("python_version", sys.version_info >= (3, 11)),
-        ("schemas_directory", Path("schemas").is_dir()),
-        ("registry_seeds", Path("registry/seeds").is_dir()),
-        ("contracts_directory", Path("contracts").is_dir()),
-        ("evidence_directory", Path("evidence").is_dir()),
+    cas_summary = verify_cas(Path(cas_dir))
+    schema_summary = validate_schema_directory(Path(schemas_dir))
+    provenance_error: str | None = None
+    try:
+        provenance_summary = load_and_validate_provenance(Path(provenance_path))
+    except (OSError, json.JSONDecodeError, ValueError) as exc:
+        provenance_error = str(exc)
+        provenance_entities = 0
+    else:
+        provenance_entities = provenance_summary.entities
+
+    checks: list[dict[str, object]] = [
+        {
+            "failures": list(cas_summary.failures),
+            "name": "bitstream_fixity",
+            "observed": cas_summary.observed,
+            "status": (
+                "passed"
+                if cas_summary.observed > 0 and not cas_summary.failures
+                else "failed"
+            ),
+        },
+        {
+            "failures": list(schema_summary.failures),
+            "name": "schema_validity",
+            "observed": schema_summary.observed,
+            "status": (
+                "passed"
+                if schema_summary.observed > 0 and not schema_summary.failures
+                else "failed"
+            ),
+        },
+        {
+            "failures": [provenance_error] if provenance_error else [],
+            "name": "provenance_integrity",
+            "observed": provenance_entities,
+            "status": "passed" if provenance_error is None else "failed",
+        },
+        {
+            "failures": [] if sys.version_info >= (3, 14) else ["python_lt_3_14"],
+            "name": "python_runtime",
+            "observed": sys.version.split()[0],
+            "status": "passed" if sys.version_info >= (3, 14) else "failed",
+        },
     ]
-    failures = [name for name, ok in checks if not ok]
-    status = "passed" if not failures else "degraded"
-    passed_count = sum(1 for _, ok in checks if ok)
+    failures = [str(check["name"]) for check in checks if check["status"] != "passed"]
+    status = "passed" if not failures else "failed"
+    passed_count = len(checks) - len(failures)
 
     if failures:
         sys.stderr.write(f"Verification failures: {', '.join(failures)}\n")
@@ -390,6 +451,7 @@ def verify(format: Literal["text", "json"] = "text") -> int:
     if format == "json":
         _emit_json(
             {
+                "checks": checks,
                 "checks_executed": len(checks),
                 "checks_passed": passed_count,
                 "command": "verify",
@@ -429,19 +491,8 @@ def provenance(
         return 1
 
     try:
-        data = json.loads(path.read_text(encoding="utf-8"))
-        if isinstance(data, dict):
-            count = (
-                len(data.get("stages", []))
-                or len(data.get("records", []))
-                or len(data.get("objects", []))
-                or len(data)
-            )
-        elif isinstance(data, list):
-            count = len(data)
-        else:
-            count = 0
-    except (json.JSONDecodeError, OSError) as e:
+        summary = load_and_validate_provenance(path)
+    except (json.JSONDecodeError, OSError, ValueError) as e:
         sys.stderr.write(f"Failed to read provenance ledger: {e}\n")
         if format == "json":
             _emit_json(
@@ -462,15 +513,16 @@ def provenance(
         _emit_json(
             {
                 "command": "provenance",
-                "entities_tracked": count,
+                "entities_tracked": summary.entities,
                 "ledger_path": ledger_path,
                 "schema_version": "archive-govt-nz.cli/v1",
-                "status": "synced",
+                "status": "validated",
+                "validated_schema": summary.schema_version,
             }
         )
         return 0
 
-    print(f"Provenance ledger synced: {count} entities tracked.")
+    print(f"Provenance ledger validated: {summary.entities} entities tracked.")
     return 0
 
 
@@ -511,57 +563,73 @@ def search(
     format: Literal["text", "json"] = "text",
 ) -> int:
     """Perform hybrid keyword and semantic search over archived corpus."""
-    idx_path = Path(index_dir)
-    status = "observed" if idx_path.is_dir() else "no_index"
+    try:
+        results = search_scope_manifest(Path(index_dir), query)
+    except FileNotFoundError as exc:
+        results = []
+        status = "no_index"
+        error = str(exc)
+        code = 1
+    except (OSError, json.JSONDecodeError, ValueError) as exc:
+        results = []
+        status = "corrupt"
+        error = str(exc)
+        code = 1
+    else:
+        status = "observed"
+        error = None
+        code = 0
 
     if format == "json":
         _emit_json(
             {
                 "command": "search",
                 "query": query,
-                "results": [],
+                "results": [asdict(result) for result in results],
                 "schema_version": "archive-govt-nz.cli/v1",
                 "status": status,
-                "total_matches": 0,
+                "total_matches": len(results),
+                **({"error": error} if error else {}),
             }
         )
-        return 0
+        return code
 
-    print(f"Search for '{query}': status={status} (0 results)")
-    return 0
+    print(f"Search for '{query}': status={status} ({len(results)} results)")
+    return code
 
 
-def _evaluate_publish_target(
-    target: str, staging_dir: str
-) -> tuple[str, str | None, int]:
-    """Evaluate readiness of publication target and required credentials."""
-    if target == "dry-run":
-        if not Path(staging_dir).is_dir():
-            return "not_configured", f"Staging directory not found: {staging_dir}", 2
-        return "ready", None, 0
-
-    token_map = {
-        "huggingface": "HF_TOKEN",
-        "hf": "HF_TOKEN",
-        "zenodo": "ZENODO_TOKEN",
-    }
-    if target in token_map:
-        env_var = token_map[target]
-        if not os.environ.get(env_var):
-            return "not_configured", f"{env_var} not configured in environment", 2
-        return "ready", None, 0
-
-    return "unsupported", f"Unsupported publication target: {target}", 5
+def _evaluate_publish_request(
+    target: str, staging_dir: str, repository: str
+) -> tuple[str, str | None, int, PublicationPackage | None]:
+    """Evaluate one non-mutating publication preparation request."""
+    if target not in {"dry-run", "huggingface", "hf", "zenodo"}:
+        return "unsupported", f"Unsupported publication target: {target}", 5, None
+    try:
+        package = load_publication_package(Path(staging_dir), target, repository)
+    except FileNotFoundError as exc:
+        return "no_state", str(exc), 1, None
+    except (OSError, json.JSONDecodeError, ValueError) as exc:
+        return "failed", str(exc), 1, None
+    if not package.redistribution_allowed:
+        error = f"Rights status does not allow redistribution: {package.rights_status}"
+        return "blocked_by_rights", error, 3, package
+    preparation = prepare_publication(
+        PublicationConfig(package.target, package.repository), list(package.files)
+    )
+    return preparation.state, None, 0, package
 
 
 @app.command
 def publish(
     target: str = "dry-run",
     staging_dir: str = "build/staging",
+    repository: str = "",
     format: Literal["text", "json"] = "text",
 ) -> int:
-    """Trigger archive packaging and distribution pipeline."""
-    status, err_msg, code = _evaluate_publish_target(target, staging_dir)
+    """Prepare a fixed, rights-cleared package without remote publication."""
+    status, err_msg, code, package = _evaluate_publish_request(
+        target, staging_dir, repository
+    )
 
     if err_msg:
         sys.stderr.write(f"{err_msg}\n")
@@ -573,6 +641,10 @@ def publish(
             "status": status,
             "target": target,
         }
+        if package is not None:
+            payload["files_count"] = len(package.files)
+            payload["repository"] = package.repository
+            payload["rights_status"] = package.rights_status
         if err_msg:
             payload["error"] = err_msg
         if target == "dry-run":
