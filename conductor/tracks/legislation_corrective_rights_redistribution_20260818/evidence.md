@@ -1,3 +1,5 @@
-# Evidence: Rights and redistribution
+# Evidence: Rights Verification and Redistribution Continuity
 
-- Track-specific evidence recorded in evidence/migrations/corpus-legislation-nz/.
+- `evidence/migrations/corpus-legislation-nz/remote-publication-readback-receipt.json`
+- `registry/publications/legislation.yml`
+- `tests/publication/test_verify_public_publication_identities.py`

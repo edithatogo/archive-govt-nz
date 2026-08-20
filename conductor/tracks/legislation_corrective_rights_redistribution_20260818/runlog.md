@@ -1,3 +1,6 @@
-# Run Log: Rights and redistribution
+# Run Log: Rights Verification and Redistribution Continuity
 
-- Initialized track at 2026-08-18T12:54:00Z.
+- Audited rights statements across live public Hugging Face and Zenodo publication endpoints.
+- Verified CC-BY 4.0 license metadata on Zenodo DOI `10.5281/zenodo.20592540`.
+- Verified RIGHTS.md presence on `edithatogo/corpus-legislation-nz-historical`.
+- Recorded rights status and unresolved claims in `evidence/migrations/corpus-legislation-nz/remote-publication-readback-receipt.json`.
