@@ -1249,9 +1249,52 @@ def _handle_leg_status(
 
 def _handle_leg_replay(
     cas_path: str,
+    checkpoint_path: str,
+    manifest_path: str,
     format: Literal["text", "json"],
 ) -> int:
     """Execute deterministic zero-network replay over preserved legislation."""
+    chk_file = Path(checkpoint_path)
+    man_file = Path(manifest_path)
+    if not (chk_file.is_file() and man_file.is_file() and Path(cas_path).is_dir()):
+        err_msg = "Linked legislation manifest, checkpoint, and CAS are required"
+        sys.stderr.write(f"{err_msg}\n")
+        if format == "json":
+            _emit_json(
+                {
+                    "action": "replay",
+                    "command": "legislation",
+                    "error": err_msg,
+                    "schema_version": "archive-govt-nz.cli/v1",
+                    "status": "no_state",
+                }
+            )
+        else:
+            print("Legislation replay: status=no_state")
+        return 1
+    try:
+        _verify_legislation_state(cas_path, chk_file, man_file)
+    except (
+        json.JSONDecodeError,
+        ObjectStoreError,
+        OSError,
+        TypeError,
+        ValueError,
+    ) as exc:
+        sys.stderr.write(f"Invalid legislation replay state: {exc}\n")
+        if format == "json":
+            _emit_json(
+                {
+                    "action": "replay",
+                    "command": "legislation",
+                    "error": str(exc),
+                    "schema_version": "archive-govt-nz.cli/v1",
+                    "status": "invalid",
+                }
+            )
+        else:
+            print("Legislation replay: status=invalid")
+        return 1
     return replay(cas_dir=cas_path, format=format)
 
 
@@ -1401,7 +1444,9 @@ def legislation(  # noqa: PLR0913
         "status": lambda: _handle_leg_status(
             cas_path, checkpoint_path, manifest_path, format
         ),
-        "replay": lambda: _handle_leg_replay(cas_path, format),
+        "replay": lambda: _handle_leg_replay(
+            cas_path, checkpoint_path, manifest_path, format
+        ),
         "publication-plan": lambda: _handle_leg_publication_plan(manifest_path, format),
         "publication-verify": lambda: _handle_leg_publication_verify(format),
     }

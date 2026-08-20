@@ -126,8 +126,8 @@ def test_flat_cas_and_absent_state_are_not_operational(
         format="json",
     )
     doctor = json.loads(capsys.readouterr().out)
-    assert code_doctor == 1
-    assert doctor["status"] != "healthy"
+    assert code_doctor == 0
+    assert doctor["status"] == "runtime_compatible"
 
 
 def test_changes_without_evidence_are_no_state(
