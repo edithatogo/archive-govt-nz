@@ -26,6 +26,26 @@
   mode `100644`; the script's exact locked body passed through Bash. This
   limitation is recorded and does not change the service implementation.
 
+## Review pass 3
+
+- **High, fixed:** cumulative manifests and checkpoints accepted malformed or
+  unauthenticated accounting state. Record and discovered-inventory roots are
+  now independently recomputed and linked through the checkpoint.
+- **High, fixed:** the same canonical manifestation identity could replace
+  different source bytes. Manifest merges now reject byte or identity
+  collisions and duplicate prior identities.
+- **High, fixed:** partial batches could be recorded as completed and explicit
+  generated identities could not retain conditional validators for a later
+  304. Both state transitions now preserve resumability and provable no-change.
+- **High, fixed:** monthly reconciliation trusted an unrooted discovered count.
+  New manifests authenticate sorted unique discovered IDs and their exact
+  denominator; old manifests fall back to their observed record identities.
+- **Medium, fixed:** a deterministic CLI parser test made live publication
+  readback requests. It now isolates parsing from the separately retained
+  mocked verifier and negative-control tests; publication remains gated.
+- Exact locked validation passed 690 tests with 95.79% coverage and all
+  repository gates at implementation commit `84ca569`.
+
 No unresolved code finding remains in this track. Hosted CI and merge remain
 separate; the PR must stay unmerged under the active freeze.
 

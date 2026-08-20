@@ -24,3 +24,11 @@
 - 2026-08-20T07:05:41Z: Pushed commit `e70a70d` and opened PR #156 against
   unchanged current `main` (`3b38d10`). The PR is intentionally unmerged under
   the active freeze.
+- 2026-08-20T08:00:05Z: Reopened the track for a second exact-head review-fix
+  phase. Negative controls exposed acceptance of malformed manifest/checkpoint
+  state, identity collisions, unauthenticated discovered denominators, partial
+  batches marked complete, and explicit targets unable to prove no-change.
+- 2026-08-20T08:58:03Z: Review fixes passed 83 affected tests. The exact locked
+  harness then passed 690 tests at 95.79% coverage plus every schema, mutation,
+  hygiene, benchmark, audit, licence, secrets, and SBOM gate. Functional commit
+  `84ca569` is ready for hosted validation; PR #156 remains unmerged.
