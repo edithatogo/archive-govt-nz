@@ -1,5 +1,9 @@
 # Review: Weekly Legislation Orchestration and State Management
 
+> Superseded by `legislation_workflow_fail_closed_20260820`. The earlier review
+> did not prove persistent full-state continuation, safe discovered identities,
+> or valid recurring operations and must not authorize schedules or recovery.
+
 ## Review Verdict: IN_PROGRESS (Ready for Review)
 
 ### Completed Scope

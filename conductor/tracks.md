@@ -89,6 +89,8 @@ decision or safety boundary, and continue independent work while it is pending.
     *Link: [tracks/mcp_current_standard_correction_20260820/index.md](./tracks/mcp_current_standard_correction_20260820/index.md)*
   - [/] **Child Track 8: Weekly orchestration and persistent state**
     *Link: [tracks/legislation_corrective_weekly_orchestration_state_20260818/index.md](./tracks/legislation_corrective_weekly_orchestration_state_20260818/index.md)*
+  - [~] **Child Track 8A: Fail-closed legislation workflow correction**
+    *Link: [tracks/legislation_workflow_fail_closed_20260820/index.md](./tracks/legislation_workflow_fail_closed_20260820/index.md)*
   - [/] **Child Track 9: Historical reconciliation, parity and publication identity**
     *Link: [tracks/legislation_corrective_reconciliation_parity_publication_20260818/index.md](./tracks/legislation_corrective_reconciliation_parity_publication_20260818/index.md)*
   - [/] **Child Track 10: Rights and redistribution**
