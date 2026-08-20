@@ -25,3 +25,12 @@
   overall coverage, 22 schemas and 12 documents, and every remaining gate.
   Generated timestamp and donor-snapshot churn was restored. No donor batch,
   source fetch, publication, rights, recovery, cutover, or donor action ran.
+- 2026-08-20T22:40:00Z: PR #162 merged as `c2ad3fe`. Retrieved the exact first
+  reviewed donor batch to temporary local storage and verified its documented
+  500-line SHA-256. A one-identity live discovery preflight returned HTTP 401
+  because `LEGISLATION_API_KEY` is absent locally; repository Actions secret
+  metadata also contains no key with that name. The API client had silently
+  classified non-200 discovery as empty state, so commit `52ec2c8` now fails
+  closed on HTTP and malformed-success responses. The exact warmed harness
+  rerun passed 864 tests at 96.37% coverage and all gates after an initial
+  bounded 300-second timeout. No batch state or affirmative receipt was made.

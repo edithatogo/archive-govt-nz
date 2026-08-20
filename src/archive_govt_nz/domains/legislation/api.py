@@ -248,17 +248,23 @@ class NZLegislationApiClient:
             headers=self._headers(),
         )
         self._last_request_at = self._time_fn()
-
-        if resp.status_code == HTTP_OK:
-            try:
-                data = resp.json()
-                items = (
-                    data
-                    if isinstance(data, list)
-                    else data.get("results", data.get("works", []))
-                )
-                for item in items[:max_results]:
-                    if isinstance(item, dict):
-                        yield item
-            except json.JSONDecodeError, KeyError, TypeError:
-                log.warning("Failed to decode JSON from works search")
+        self._update_rate_limit_state(resp.headers)
+        if resp.status_code != HTTP_OK:
+            msg = f"Legislation works search failed with HTTP {resp.status_code}"
+            raise OSError(msg)
+        try:
+            data = resp.json()
+            items = (
+                data
+                if isinstance(data, list)
+                else data.get("results", data.get("works", []))
+            )
+            if not isinstance(items, list):
+                msg = "Legislation works search returned an invalid result list"
+                raise TypeError(msg)
+            for item in items[:max_results]:
+                if isinstance(item, dict):
+                    yield item
+        except (json.JSONDecodeError, KeyError) as exc:
+            msg = "Legislation works search returned invalid JSON"
+            raise ValueError(msg) from exc
