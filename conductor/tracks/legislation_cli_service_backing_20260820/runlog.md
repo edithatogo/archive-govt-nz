@@ -46,3 +46,10 @@
   with 756 tests, 95.62% branch-aware coverage, and every repository gate. No
   push, PR, merge, source fetch, publication, rights action, or live operation
   occurred.
+- 2026-08-20T16:05:00Z: Global CLI PR #157 was squash-merged as `138b17f`.
+  Rebased this successor onto that exact `origin/main`; all seven commits
+  replayed without conflict. The full locked harness passed again with 756
+  tests, 95.62% branch-aware coverage, and all schema, mutation, hygiene,
+  benchmark, dependency audit, licence, secret, and SBOM gates green. Generated
+  timestamp and donor-snapshot churn was restored. Publication, rights, live
+  operation, recovery, cutover, and donor archival remain gated.

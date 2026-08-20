@@ -1,11 +1,12 @@
 # Evidence
 
-- Stacked base: rebased global CLI head `5ed8be0` on service head `51fc8a7`.
+- Stacked base: global CLI squash merge `138b17f`, incorporating service squash
+  merge `394f210`.
 - Merged CLI under correction: `src/archive_govt_nz/cli.py` legislation
   handlers introduced through PR #151.
-- Corrected service dependency is present in the stacked base and remains
-  represented upstream by unmerged PR #156.
-- Implementation commit after rebase: `4a97b51`.
+- Corrected service and global CLI dependencies are merged through PRs #156 and
+  #157 respectively.
+- Implementation commit after rebase: `4d2e20c`.
 - Critical authenticated-state module: 100% line and branch coverage across 18
   focused adversarial tests.
 - CLI contract: 43 focused CLI tests passed; useful PR #151 command names,
@@ -19,4 +20,6 @@
 - Exact post-fix harness: 756 tests passed at 95.62% overall coverage; lock,
   format, lint, typing, schemas, all mutations, hygiene, CAS benchmark,
   dependency audit, licence inventory, secret scan, and SBOM passed.
-- Branch is local-only. No live or remote affirmative evidence was generated.
+- Post-merge-base harness: 756 tests passed at 95.62% overall coverage, with all
+  repository gates green.
+- No live or remote affirmative evidence was generated.
