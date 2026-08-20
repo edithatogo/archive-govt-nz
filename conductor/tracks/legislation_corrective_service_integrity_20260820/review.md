@@ -46,6 +46,16 @@
 - Exact locked validation passed 690 tests with 95.79% coverage and all
   repository gates at implementation commit `84ca569`.
 
+## Review pass 4
+
+- **High, fixed:** pre-acquisition graph validation allowed an empty work ID and
+  duplicate non-empty expression or manifestation IDs. Those structures could
+  create ambiguous canonical accounting despite later record validation.
+- Required work identities are now non-empty and canonical; supplied expression
+  and manifestation identities are globally unique within the bounded run.
+- Exact locked validation passed 693 tests with 95.76% coverage and all
+  repository gates at implementation commit `84d8562`.
+
 No unresolved code finding remains in this track. Hosted CI and merge remain
 separate; the PR must stay unmerged under the active freeze.
 

@@ -15,6 +15,8 @@
 - [x] **Review Fixes II:** require authenticated cumulative manifest roots,
   validate checkpoint structure and root linkage, reject canonical identity
   collisions, and reconcile exact-head evidence after validation.
+- [x] **Review Fixes III:** reject empty work identities and duplicate supplied
+  expression or manifestation identities before acquisition.
 
 ## Downstream gates outside this track
 

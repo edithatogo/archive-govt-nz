@@ -22,4 +22,5 @@ Separate stable roots authenticate the cumulative record manifest and the
 sorted, unique discovered-work inventory used as the coverage denominator; the
 checkpoint links both roots and the conditional request validators. A partial
 batch remains resumable and is not marked completed. Corrupt prior state, an
-identity collision, or an incomplete canonical discovery graph fails closed.
+empty or duplicate supplied identity, an identity collision, or an incomplete
+canonical discovery graph fails closed before acquisition or state promotion.

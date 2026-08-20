@@ -16,7 +16,9 @@ recovery, cutover, or donor-archival completion is claimed yet.
 - Review-fix phase II: the final affected suite passed 83/83 tests, including
   fail-closed malformed-state, identity-collision, inventory-authentication,
   checkpoint-linkage, partial-batch, explicit-target, and 304 controls.
-- Full locked harness: 690/690 tests passed with 95.79% coverage; schema,
+- Review-fix phase III: 86/86 affected tests passed, including empty work and
+  duplicate supplied expression/manifestation identity negative controls.
+- Full locked harness: 693/693 tests passed with 95.76% coverage; schema,
   mutation, hygiene, CAS benchmark, dependency audit, licence inventory,
   secret scan, and SBOM gates passed. This is local validation only.
 - The tracked `scripts/validate.sh` mode is `100644`, so direct execution
@@ -27,5 +29,6 @@ recovery, cutover, or donor-archival completion is claimed yet.
   in the workflow/reconciliation gate and is not evidence for this PR.
 - Initial corrective implementation commit: `e70a70d`.
 - Review-hardening implementation commit: `84ca569`.
+- Target-identity hardening implementation commit: `84d8562`.
 - Corrective PR: [#156](https://github.com/edithatogo/archive-govt-nz/pull/156),
   open and unmerged at track closeout.

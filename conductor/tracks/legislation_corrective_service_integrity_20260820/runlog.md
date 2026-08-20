@@ -32,3 +32,11 @@
   harness then passed 690 tests at 95.79% coverage plus every schema, mutation,
   hygiene, benchmark, audit, licence, secrets, and SBOM gate. Functional commit
   `84ca569` is ready for hosted validation; PR #156 remains unmerged.
+- 2026-08-20T09:10:21Z: A third exact-head audit found that malformed target
+  graphs could still contain an empty work identity or duplicate supplied
+  expression/manifestation identities. Red controls reproduced all three
+  acceptance paths before the pre-acquisition validator was hardened.
+- 2026-08-20T09:16:49Z: Review-fix phase III passed 86 affected tests. The
+  exact locked harness passed 693 tests at 95.76% coverage and all remaining
+  repository gates. Functional commit `84d8562` is ready for hosted validation;
+  PR #156 remains unmerged.
