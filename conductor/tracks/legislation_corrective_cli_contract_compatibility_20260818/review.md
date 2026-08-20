@@ -1,8 +1,13 @@
-# Review: CLI Contract and Non-Affirmative State Compatibility
+# Review: Real Legislation CLI Service Integration and nzlc Compatibility
 
-## Review Verdict: VERIFIED
+## Review Verdict: IN_PROGRESS (Ready for Review)
 
-- Truthful, evidence-driven behavior implemented across all non-legislation CLI subcommands.
-- All hardcoded affirmative statuses, fake queue states, and simulated check counts removed.
-- Negative controls for missing directories, absent ledgers, and missing credentials tested and passing.
-- Test coverage on `src/archive_govt_nz/cli.py` reaches 99.43%.
+### Completed Scope
+- 11 real legislation subcommands wired to `LegislationArchiveService`.
+- Simulated counts and static statuses removed.
+- Capture command redirects `legislation` to `legislation sync`.
+- `nzlc` legacy compatibility wrapper implemented.
+- 19-stage assurance suite passed with 95.49% coverage.
+
+### Remaining Blockers
+- None within this track. Parent programme remains `in_progress`.

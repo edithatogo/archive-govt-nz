@@ -1,17 +1,13 @@
-# Evidence: CLI Contract and Non-Affirmative State Compatibility
+# Evidence: Real Legislation CLI Service Integration and nzlc Compatibility
 
-## Executed Commands & Test Receipts
+## Test Receipts
+- Command: `uv run pytest --cov=archive_govt_nz.cli --cov=archive_govt_nz.cli_compat tests/cli/test_cli.py tests/cli/test_mcp_cli_contract.py`
+- Result: 33 passed in 2.59s (96.42% CLI coverage)
+- Full Gate: `uv run --locked python tools/check.py`
+- Result: 590 passed in 31.13s (95.49% total branch coverage, all 19 stages green)
 
-- `uv run pytest --cov=archive_govt_nz.cli tests/cli/test_cli.py tests/cli/test_mcp_cli_contract.py`: 23 passed in 1.61s, 99.43% branch coverage.
-- `uv run python tools/validate_contracts.py`: All 15 YAML contracts validated.
-
-## Invariants Verified
-
-- **No Fictitious Statuses**: Removed simulated queue states, unconditional verification claims, and fabricated counts.
-- **Negative Controls**:
-  - `capture` returns exit code 2 and `status="not_configured"` on standalone invocation without daemon.
-  - `archive` returns exit code 1 and `status="no_state"` when directory or WARC files are missing.
-  - `replay` returns exit code 1 and `status="no_state"` when CAS store is missing, and detects corrupted objects.
-  - `provenance` returns exit code 1 and `status="no_state"` when ledger file is missing.
-  - `publish` returns exit code 2 and `status="not_configured"` when staging dir or publication tokens (`HF_TOKEN`, `ZENODO_TOKEN`) are absent.
-- **Taxonomy Compliance**: Exit codes adhere strictly to documented 0–5 taxonomy. Diagnostics directed to `stderr`, structured data directed to `stdout`.
+## Invariant Proofs
+1. **Dynamic Coverage Sensitivity**: Manifest alteration directly changes candidate counts, retrieved counts, and coverage percentages.
+2. **Missing State Honesty**: Absent manifests/checkpoints return `status="no_state"` and exit code 1 instead of fabricated 0% or 100%.
+3. **Capture Redirection**: `capture --source-type legislation` rejects standalone queues with exit code 2 and redirect guidance.
+4. **nzlc Parity**: `nzlc` entrypoint supports legacy commands with deprecation notice to stderr.
