@@ -46,3 +46,7 @@
   Generated timestamp/live-snapshot churn was restored and not committed.
   Documentation-only commit `2694c17` removed volatile exact test counts from
   README; its migration contract tests and repository formatting/lint passed.
+- 2026-08-20T14:56:00Z: Rebased the local-only successor onto amended service
+  head `51fc8a7`. The exact rebased head passed `bash scripts/validate.sh` with
+  738 tests, 95.86% branch-aware coverage, and every remaining repository gate.
+  No push, PR, merge, publication, rights action, or live operation occurred.
