@@ -13,7 +13,7 @@
 
 ## Corrected-stack validation
 
-- Stacked base: workflow correction `c7ebcf9` (including service, global CLI,
+- Stacked base: workflow correction `34d347a` (including service, global CLI,
   legislation CLI, stable MCP, and hosted workflow gates).
 - Focused command: 77 adversarial one-batch tests passed; critical module
   coverage was 228/228 statements and 106/106 branches (100%).
@@ -23,3 +23,6 @@
   and SBOM gates passed.
 - Generated validation timestamps and donor snapshots were restored rather than
   committed as execution evidence.
+- Post-rebase exact harness: 852 tests passed at 95.87% branch-aware coverage;
+  22 schemas and 12 representative documents plus every remaining repository
+  gate passed. No real batch was executed.

@@ -14,3 +14,7 @@
   tests reached 100% line/branch coverage. The full harness passed 850 tests
   and every repository gate. No batch, source fetch, push, PR, or merge
   occurred.
+- 2026-08-20T15:35:00Z: Rebased the local-only one-batch successor onto
+  workflow head `34d347a`. The exact stack passed 852 tests at 95.87%
+  branch-aware coverage and every remaining repository gate. No batch, source
+  fetch, push, PR, publication, rights action, or merge occurred.
