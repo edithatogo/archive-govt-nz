@@ -77,6 +77,8 @@ decision or safety boundary, and continue independent work while it is pending.
     *Link: [tracks/legislation_corrective_identity_normalisation_corpus_20260818/index.md](./tracks/legislation_corrective_identity_normalisation_corpus_20260818/index.md)*
   - [x] **Child Track 5A: Legislation service integrity correction**
     *Link: [tracks/legislation_corrective_service_integrity_20260820/index.md](./tracks/legislation_corrective_service_integrity_20260820/index.md)*
+  - [~] **Child Track 5B: Global CLI integrity correction**
+    *Link: [tracks/global_cli_integrity_correction_20260820/index.md](./tracks/global_cli_integrity_correction_20260820/index.md)*
   - [/] **Child Track 6: CLI contract and compatibility**
     *Link: [tracks/legislation_corrective_cli_contract_compatibility_20260818/index.md](./tracks/legislation_corrective_cli_contract_compatibility_20260818/index.md)*
   - [/] **Child Track 7: MCP disposition and conformance**

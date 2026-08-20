@@ -42,13 +42,14 @@ _OBJECT_ID = re.compile(r"^sha256:[0-9a-f]{64}$")
 class ContentAddressedStore:
     """Store bytes beneath a root using SHA-256 addressed immutable paths."""
 
-    def __init__(self, root: Path) -> None:
-        """Initialise the root and its temporary and object directories."""
+    def __init__(self, root: Path, *, create: bool = True) -> None:
+        """Initialise paths and optionally create writable store directories."""
         self.root = root
         self.tmp = root / "tmp"
         self.objects = root / "sha256"
-        self.tmp.mkdir(parents=True, exist_ok=True)
-        self.objects.mkdir(parents=True, exist_ok=True)
+        if create:
+            self.tmp.mkdir(parents=True, exist_ok=True)
+            self.objects.mkdir(parents=True, exist_ok=True)
 
     def put_bytes(self, content: bytes) -> ObjectStoreReceipt:
         """Store one byte string and return its integrity receipt."""
