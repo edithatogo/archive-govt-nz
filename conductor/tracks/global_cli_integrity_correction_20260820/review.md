@@ -39,6 +39,14 @@ global CLI scope at commit `7616ddb`.
   covers the superseded grammar and claims. The full locked harness passed after
   the correction.
 
+## Final CAS boundary finding
+
+- **High — internal root symlink and read-side mutation:** Object and shard
+  symlinks were rejected, but `cas/sha256` itself could still be a symlink.
+  Also, constructing `ContentAddressedStore` during verification created a
+  `tmp` directory, so a nominally read-only replay mutated local state. Phase
+  4B is the second and final correction loop for this path-boundary class.
+
 ## Remaining gate
 
 Phase 5 is intentionally pending. The branch is local-only and must not be
