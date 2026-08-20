@@ -9,6 +9,10 @@ from typing import TYPE_CHECKING
 
 import pytest
 
+from archive_govt_nz.domains.legislation.manifest import (
+    compute_legislation_inventory_sha256,
+)
+
 if TYPE_CHECKING:
     from types import ModuleType
 
@@ -29,11 +33,17 @@ main = _MODULE.main
 def test_reconcile_inventory_consistent(tmp_path: Path) -> None:
     """Verify inventory reconciliation passes cleanly on consistent state."""
     manifest_file = tmp_path / "manifest.json"
+    discovered_work_ids = ["act-public-2024-0001"]
     manifest_data = {
+        "discovered_work_ids": discovered_work_ids,
+        "discovered_works_count": 1,
+        "discovered_inventory_sha256": compute_legislation_inventory_sha256(
+            discovered_work_ids
+        ),
         "records": [
             {
                 "schema_version": "archive-govt-nz.legislation/v2",
-                "document_id": "act-public-2024-0001",
+                "document_id": "leg-act-public-2024-0001",
                 "work_id": "act-public-2024-0001",
                 "expression_id": "exp-1",
                 "manifestation_id": "man-1",
@@ -51,7 +61,7 @@ def test_reconcile_inventory_consistent(tmp_path: Path) -> None:
                 ),
                 "retrieval_timestamp": "2026-08-20T00:00:00Z",
             }
-        ]
+        ],
     }
     manifest_file.write_text(json.dumps(manifest_data), encoding="utf-8")
 
@@ -65,14 +75,13 @@ def test_reconcile_inventory_consistent(tmp_path: Path) -> None:
     report = reconcile_inventory(
         manifest_path=manifest_file,
         checkpoint_path=checkpoint_file,
-        candidate_works_denominator=100,
         hosted_dataset_slug="edithatogo/corpus-legislation-nz",
     )
 
     assert report["status"] == "consistent"
     assert report["total_manifest_records"] == 1
     assert report["distinct_works_count"] == 1
-    assert report["coverage_percent"] == 1.0
+    assert report["coverage_percent"] == 100.0
     assert report["checkpoint_gaps_count"] == 0
     assert report["manifest_gaps_count"] == 0
 
@@ -86,10 +95,106 @@ def test_reconcile_inventory_missing_manifest(tmp_path: Path) -> None:
         )
 
 
+@pytest.mark.parametrize(
+    ("mutation", "error"),
+    [
+        ({"discovered_works_count": 2}, "count does not match"),
+        ({"discovered_inventory_sha256": "0" * 64}, "root does not match"),
+        ({"discovered_work_ids": ["work-2", "work-1"]}, "canonical"),
+    ],
+)
+def test_reconcile_inventory_rejects_unauthenticated_discovery_denominator(
+    tmp_path: Path, mutation: dict[str, object], error: str
+) -> None:
+    """Reject a discovered denominator that is not bound to its inventory root."""
+    work_ids = ["work-1"]
+    manifest_data: dict[str, object] = {
+        "records": [],
+        "discovered_work_ids": work_ids,
+        "discovered_works_count": len(work_ids),
+        "discovered_inventory_sha256": compute_legislation_inventory_sha256(work_ids),
+    }
+    manifest_data.update(mutation)
+    manifest_file = tmp_path / "manifest.json"
+    manifest_file.write_text(json.dumps(manifest_data), encoding="utf-8")
+    checkpoint_file = tmp_path / "checkpoint.json"
+    checkpoint_file.write_text(json.dumps({"processed_work_ids": []}), encoding="utf-8")
+
+    with pytest.raises(ValueError, match=error):
+        reconcile_inventory(
+            manifest_path=manifest_file,
+            checkpoint_path=checkpoint_file,
+        )
+
+
+def test_reconcile_inventory_uses_authenticated_discovery_denominator(
+    tmp_path: Path,
+) -> None:
+    """Use the authenticated discovered inventory as the coverage denominator."""
+    work_ids = ["work-1", "work-2"]
+    manifest_file = tmp_path / "manifest.json"
+    manifest_file.write_text(
+        json.dumps(
+            {
+                "records": [],
+                "discovered_work_ids": work_ids,
+                "discovered_works_count": len(work_ids),
+                "discovered_inventory_sha256": (
+                    compute_legislation_inventory_sha256(work_ids)
+                ),
+            }
+        ),
+        encoding="utf-8",
+    )
+    checkpoint_file = tmp_path / "checkpoint.json"
+    checkpoint_file.write_text(json.dumps({"processed_work_ids": []}), encoding="utf-8")
+
+    report = reconcile_inventory(
+        manifest_path=manifest_file,
+        checkpoint_path=checkpoint_file,
+    )
+
+    assert report["candidate_works_denominator"] == 2
+    assert report["status"] == "inconsistent"
+
+
+def test_reconcile_inventory_rejects_missing_or_overridden_denominator(
+    tmp_path: Path,
+) -> None:
+    """Only a checksum-bound discovered inventory may define coverage."""
+    manifest_file = tmp_path / "manifest.json"
+    manifest_file.write_text(json.dumps({"records": []}), encoding="utf-8")
+    checkpoint_file = tmp_path / "checkpoint.json"
+    checkpoint_file.write_text(json.dumps({"processed_work_ids": []}), encoding="utf-8")
+
+    with pytest.raises(ValueError, match="authenticated discovered inventory"):
+        reconcile_inventory(manifest_file, checkpoint_file)
+
+    authenticated = {
+        "records": [],
+        "discovered_work_ids": [],
+        "discovered_works_count": 0,
+        "discovered_inventory_sha256": compute_legislation_inventory_sha256([]),
+    }
+    manifest_file.write_text(json.dumps(authenticated), encoding="utf-8")
+    with pytest.raises(ValueError, match="overrides are unauthenticated"):
+        reconcile_inventory(manifest_file, checkpoint_file, 1)
+
+
 def test_run_monthly_reconciliation_runner(tmp_path: Path) -> None:
     """Verify run_monthly_reconciliation generates receipt file."""
     manifest_file = tmp_path / "manifest.json"
-    manifest_file.write_text(json.dumps({"records": []}), encoding="utf-8")
+    manifest_file.write_text(
+        json.dumps(
+            {
+                "records": [],
+                "discovered_work_ids": [],
+                "discovered_works_count": 0,
+                "discovered_inventory_sha256": compute_legislation_inventory_sha256([]),
+            }
+        ),
+        encoding="utf-8",
+    )
 
     checkpoint_file = tmp_path / "checkpoint.json"
     checkpoint_file.write_text(json.dumps({"processed_work_ids": []}), encoding="utf-8")
@@ -101,8 +206,12 @@ def test_run_monthly_reconciliation_runner(tmp_path: Path) -> None:
         checkpoint_path=checkpoint_file,
         receipt_path=receipt_file,
     )
-    assert code == 0
+    assert code == 1
     assert receipt_file.is_file()
+    data = json.loads(receipt_file.read_text(encoding="utf-8"))
+    assert data["candidate_works_denominator"] == 0
+    assert data["coverage_percent"] == 0.0
+    assert data["status"] == "no_state"
 
 
 def test_run_monthly_reconciliation_failure(tmp_path: Path) -> None:
@@ -124,7 +233,17 @@ def test_main_reconciliation_cli(
 ) -> None:
     """Verify main entrypoint handles CLI flags."""
     manifest_file = tmp_path / "manifest.json"
-    manifest_file.write_text(json.dumps({"records": []}), encoding="utf-8")
+    manifest_file.write_text(
+        json.dumps(
+            {
+                "records": [],
+                "discovered_work_ids": [],
+                "discovered_works_count": 0,
+                "discovered_inventory_sha256": compute_legislation_inventory_sha256([]),
+            }
+        ),
+        encoding="utf-8",
+    )
 
     checkpoint_file = tmp_path / "checkpoint.json"
     checkpoint_file.write_text(json.dumps({"processed_work_ids": []}), encoding="utf-8")
@@ -144,4 +263,4 @@ def test_main_reconciliation_cli(
 
     with pytest.raises(SystemExit) as exc:
         main()
-    assert exc.value.code == 0
+    assert exc.value.code == 1

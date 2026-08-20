@@ -5,6 +5,9 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 import httpx
+import pytest
+from hypothesis import given
+from hypothesis import strategies as st
 
 if TYPE_CHECKING:
     from pathlib import Path
@@ -36,6 +39,7 @@ from archive_govt_nz.domains.legislation.identity import (
 )
 from archive_govt_nz.domains.legislation.manifest import (
     build_legislation_manifest,
+    compute_legislation_manifest_sha256,
 )
 from archive_govt_nz.domains.legislation.models import (
     LegislationRecord,
@@ -81,6 +85,13 @@ def test_legislation_models_and_serialization() -> None:
     assert data["sections_count"] == 1
 
 
+def test_coverage_has_no_historical_fallback_denominator() -> None:
+    """An empty bounded inventory must not imply a historical corpus total."""
+    report = LegislationCoverageReport()
+    assert report.total_seed_works == 0
+    assert report.coverage_percent == 0.0
+
+
 def test_normalise_legislation_payload() -> None:
     """Test deterministic normalisation from raw XML/HTML."""
     raw_xml = (
@@ -99,6 +110,8 @@ def test_normalise_legislation_payload() -> None:
     )
 
     assert rec.work_id == "act-2026-1"
+    assert rec.rights_statement is None
+    assert rec.redistribution_policy == "rights_review_required"
     assert len(rec.sections) == 1
     assert len(rec.schedules) == 1
     assert rec.assent_date == "2026-01-01"
@@ -189,6 +202,11 @@ def test_validate_legislation_record() -> None:
     errors = validate_legislation_record(invalid_rec)
     assert len(errors) >= 4
 
+    with pytest.raises(
+        ValueError, match="normalised record missing canonical identity"
+    ):
+        build_legislation_manifest([invalid_rec])
+
 
 def test_build_manifest_and_checkpoint_manager(tmp_path: Path) -> None:
     """Test manifest creation and checkpoint manager."""
@@ -206,6 +224,27 @@ def test_build_manifest_and_checkpoint_manager(tmp_path: Path) -> None:
     manifest = build_legislation_manifest([rec], run_id="run-test")
     assert manifest["total_records"] == 1
     assert manifest["run_id"] == "run-test"
+    assert manifest["records"][0]["raw_sha256"] == "0" * 64
+
+    with pytest.raises(ValueError, match="manifest record missing canonical identity"):
+        build_legislation_manifest([], existing_records=[{}])
+
+    with pytest.raises(ValueError, match="missing source SHA-256"):
+        build_legislation_manifest(
+            [], existing_records=[{"document_id": "legacy-record"}]
+        )
+
+    prior = manifest["records"][0]
+    with pytest.raises(ValueError, match="duplicate canonical manifest identity"):
+        build_legislation_manifest([], existing_records=[prior, prior])
+
+    repeated = build_legislation_manifest([rec], existing_records=[prior])
+    assert repeated["total_records"] == 1
+
+    conflicting_identity = dict(prior)
+    conflicting_identity["work_id"] = "different-work"
+    with pytest.raises(ValueError, match="canonical identity collision"):
+        build_legislation_manifest([rec], existing_records=[conflicting_identity])
 
     chk_file = tmp_path / "checkpoint.json"
     mgr = LegislationCheckpointManager(chk_file)
@@ -221,6 +260,34 @@ def test_build_manifest_and_checkpoint_manager(tmp_path: Path) -> None:
     loaded = mgr.load()
     assert loaded["completed_batches"] == ["batch-1"]
     assert loaded["total_records_preserved"] == 1
+
+
+@given(
+    st.lists(
+        st.tuples(
+            st.text(
+                alphabet="abcdefghijklmnopqrstuvwxyz0123456789:-",
+                min_size=1,
+                max_size=32,
+            ),
+            st.text(alphabet="0123456789abcdef", min_size=64, max_size=64),
+        ),
+        max_size=20,
+        unique_by=lambda item: item[0],
+    )
+)
+def test_legislation_manifest_root_is_order_invariant(
+    identities_and_hashes: list[tuple[str, str]],
+) -> None:
+    """Canonical manifest roots are independent of input enumeration order."""
+    records = [
+        {"manifestation_id": identity, "raw_sha256": sha256}
+        for identity, sha256 in identities_and_hashes
+    ]
+
+    assert compute_legislation_manifest_sha256(
+        records
+    ) == compute_legislation_manifest_sha256(list(reversed(records)))
 
 
 def test_api_client_and_discovery() -> None:

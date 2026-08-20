@@ -11,15 +11,83 @@ from typing import Any
 from archive_govt_nz.domains.legislation.checkpoints import (
     LegislationCheckpointManager,
 )
+from archive_govt_nz.domains.legislation.manifest import (
+    compute_legislation_inventory_sha256,
+)
 from archive_govt_nz.domains.legislation.models import (
     validate_legislation_record,
 )
 
 
+def _authenticated_discovered_count(
+    manifest: dict[str, Any], record_work_ids: set[str]
+) -> int:
+    """Validate and count a manifest's authenticated discovered inventory."""
+    field_names = {
+        "discovered_work_ids",
+        "discovered_works_count",
+        "discovered_inventory_sha256",
+    }
+    present = field_names.intersection(manifest)
+    if not present:
+        msg = "authenticated discovered inventory is required"
+        raise ValueError(msg)
+    if present != field_names:
+        msg = "discovered inventory authentication fields are incomplete"
+        raise ValueError(msg)
+
+    work_ids = manifest["discovered_work_ids"]
+    if not isinstance(work_ids, list) or not all(
+        isinstance(work_id, str) and work_id for work_id in work_ids
+    ):
+        msg = "discovered work IDs must be a list of non-empty strings"
+        raise ValueError(msg)
+    if work_ids != sorted(set(work_ids)):
+        msg = "discovered work IDs are not canonical sorted unique identifiers"
+        raise ValueError(msg)
+
+    discovered_count = manifest["discovered_works_count"]
+    if (
+        isinstance(discovered_count, bool)
+        or not isinstance(discovered_count, int)
+        or discovered_count != len(work_ids)
+    ):
+        msg = "discovered works count does not match discovered work IDs"
+        raise ValueError(msg)
+
+    recorded_root = manifest["discovered_inventory_sha256"]
+    if not isinstance(
+        recorded_root, str
+    ) or recorded_root != compute_legislation_inventory_sha256(work_ids):
+        msg = "discovered inventory root does not match discovered work IDs"
+        raise ValueError(msg)
+    if not record_work_ids.issubset(work_ids):
+        msg = "manifest record work IDs are absent from discovered inventory"
+        raise ValueError(msg)
+    return discovered_count
+
+
+def _load_manifest_records(
+    manifest_path: Path,
+) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+    """Load a structurally valid reconciliation manifest."""
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    if not isinstance(manifest, dict):
+        msg = "preservation manifest is not a JSON object"
+        raise TypeError(msg)
+    records = manifest.get("records", [])
+    if not isinstance(records, list) or not all(
+        isinstance(record, dict) for record in records
+    ):
+        msg = "preservation manifest records are not a list of objects"
+        raise TypeError(msg)
+    return manifest, records
+
+
 def reconcile_inventory(
     manifest_path: Path,
     checkpoint_path: Path,
-    candidate_works_denominator: int = 33693,
+    candidate_works_denominator: int | None = None,
     hosted_dataset_slug: str | None = None,
 ) -> dict[str, Any]:
     """Execute multi-layer reconciliation across inventory and manifest."""
@@ -28,25 +96,33 @@ def reconcile_inventory(
         msg = f"Preservation manifest missing: {manifest_path}"
         raise FileNotFoundError(msg)
 
-    man_data = json.loads(manifest_path.read_text(encoding="utf-8"))
-    records: list[dict[str, Any]] = man_data.get("records", [])
+    man_data, records = _load_manifest_records(manifest_path)
 
     print(f"[RECONCILE] Reading checkpoint from: {checkpoint_path}")
     chk_manager = LegislationCheckpointManager(checkpoint_path)
-    checkpoint = chk_manager.load()
-    processed_ids: set[str] = set(checkpoint.get("processed_work_ids", []))
+    checkpoint = chk_manager.load(strict=True)
+    checkpoint_ids = checkpoint.get("processed_work_ids", [])
+    if not isinstance(checkpoint_ids, list) or not all(
+        isinstance(work_id, str) and work_id for work_id in checkpoint_ids
+    ):
+        msg = "checkpoint processed work IDs are not a list of non-empty strings"
+        raise ValueError(msg)
+    processed_ids: set[str] = set(checkpoint_ids)
 
     # Entity layer counts
-    work_ids = {r.get("work_id") for r in records if r.get("work_id")}
+    work_ids = {
+        work_id
+        for record in records
+        if isinstance((work_id := record.get("work_id")), str) and work_id
+    }
     expression_ids = {r.get("expression_id") for r in records if r.get("expression_id")}
     manifestation_ids = {
         r.get("manifestation_id") for r in records if r.get("manifestation_id")
     }
 
     # Checkpoint consistency check
-    manifest_doc_ids = {r.get("document_id") for r in records if r.get("document_id")}
-    checkpoint_gap = processed_ids - manifest_doc_ids
-    manifest_gap = manifest_doc_ids - processed_ids
+    checkpoint_gap = processed_ids - work_ids
+    manifest_gap = work_ids - processed_ids
 
     # Validation findings
     validation_findings: list[str] = []
@@ -55,7 +131,14 @@ def reconcile_inventory(
         validation_findings.extend(findings)
 
     # Coverage with documented denominator
-    total_candidate = max(candidate_works_denominator, len(work_ids))
+    discovered_count = _authenticated_discovered_count(man_data, work_ids)
+    if candidate_works_denominator is not None:
+        msg = "candidate denominator overrides are unauthenticated"
+        raise ValueError(msg)
+    total_candidate = discovered_count
+    if total_candidate < len(work_ids):
+        msg = "candidate denominator is smaller than discovered manifest works"
+        raise ValueError(msg)
     coverage_pct = (
         (len(work_ids) / total_candidate) * 100.0 if total_candidate > 0 else 0.0
     )
@@ -65,11 +148,16 @@ def reconcile_inventory(
     if hosted_dataset_slug:
         hosted_status = "readback_unverified"
 
-    status = (
-        "consistent"
-        if not validation_findings and not checkpoint_gap and not manifest_gap
-        else "inconsistent"
-    )
+    if total_candidate == 0:
+        status = "no_state"
+    elif len(work_ids) != total_candidate:
+        status = "inconsistent"
+    else:
+        status = (
+            "consistent"
+            if not validation_findings and not checkpoint_gap and not manifest_gap
+            else "inconsistent"
+        )
 
     return {
         "schema_version": ("archive-govt-nz.legislation-monthly-reconciliation/v1"),
@@ -97,7 +185,7 @@ def run_monthly_reconciliation(
     manifest_path: Path,
     checkpoint_path: Path,
     receipt_path: Path,
-    candidate_works_denominator: int = 33693,
+    candidate_works_denominator: int | None = None,
     hosted_dataset_slug: str | None = None,
 ) -> int:
     """Run monthly reconciliation and save structured evidence receipt."""
@@ -129,7 +217,7 @@ def run_monthly_reconciliation(
         f"Coverage: {report['coverage_percent']}%"
     )
 
-    return 0 if report["status"] in ("consistent", "inconsistent") else 1
+    return 0 if report["status"] == "consistent" else 1
 
 
 def main() -> None:
@@ -158,8 +246,8 @@ def main() -> None:
     parser.add_argument(
         "--candidate-denominator",
         type=int,
-        default=33693,
-        help="Documented total candidate works denominator",
+        default=None,
+        help="Deprecated; overrides are rejected because they are unauthenticated",
     )
     parser.add_argument(
         "--hosted-dataset-slug",

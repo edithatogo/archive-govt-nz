@@ -1,0 +1,16 @@
+{
+  "track_id": "legislation_corrective_service_integrity_20260820",
+  "title": "Legislation service integrity correction",
+  "status": "completed",
+  "created_at": "2026-08-20T06:35:25Z",
+  "updated_at": "2026-08-20T09:16:49Z",
+  "parent_issue": 131,
+  "related_issue": 139,
+  "pull_request": 156,
+  "gates": [
+    {"id": "merge-freeze", "kind": "merge", "status": "pending"},
+    {"id": "publication-authority", "kind": "publication", "status": "pending"},
+    {"id": "redistribution-rights", "kind": "rights", "status": "pending"},
+    {"id": "donor-archival", "kind": "external", "status": "pending"}
+  ]
+}

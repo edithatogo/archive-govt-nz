@@ -41,7 +41,13 @@ class NZLegislationAdapter(AsyncBaseCaptureAdapter):
         """Adapter name and version."""
         return "archive-govt-nz/capture/legislation:0.1.0"
 
-    async def capture(self, identity: SourceIdentity) -> AdapterCaptureResult:
+    async def capture(
+        self,
+        identity: SourceIdentity,
+        *,
+        etag: str | None = None,
+        last_modified: str | None = None,
+    ) -> AdapterCaptureResult:
         """Fetch legislation document and store raw payload in CAS via client."""
         if identity.source_type != SourceType.LEGISLATION:
             return AdapterCaptureResult(
@@ -60,7 +66,15 @@ class NZLegislationAdapter(AsyncBaseCaptureAdapter):
                 status_code,
                 content,
                 headers,
-            ) = await self._api_client.get_document_raw_async(url)
+            ) = await self._api_client.get_document_raw_async(
+                url, etag=etag, last_modified=last_modified
+            )
+
+            response_metadata = {
+                "http_status": str(status_code),
+                "etag": headers.get("etag"),
+                "last_modified": headers.get("last-modified"),
+            }
 
             if status_code == HTTP_TOO_MANY_REQUESTS:
                 return AdapterCaptureResult(
@@ -70,15 +84,17 @@ class NZLegislationAdapter(AsyncBaseCaptureAdapter):
                     objects_created=0,
                     records=(),
                     error_message="rate limited by legislation source",
+                    metadata=response_metadata,
                 )
 
             if status_code == HTTP_NOT_MODIFIED:
                 return AdapterCaptureResult(
                     source_identity=identity,
-                    status="success",
+                    status="not_modified",
                     bytes_captured=0,
                     objects_created=0,
                     records=(),
+                    metadata=response_metadata,
                 )
 
             if status_code != HTTP_OK:
@@ -89,6 +105,7 @@ class NZLegislationAdapter(AsyncBaseCaptureAdapter):
                     objects_created=0,
                     records=(),
                     error_message=f"HTTP {status_code}",
+                    metadata=response_metadata,
                 )
 
             media_type = headers.get("content-type", "application/xml")
@@ -110,6 +127,7 @@ class NZLegislationAdapter(AsyncBaseCaptureAdapter):
                 bytes_captured=len(content),
                 objects_created=1,
                 records=(preservation_rec,),
+                metadata=response_metadata,
             )
         except Exception as err:  # noqa: BLE001
             return AdapterCaptureResult(

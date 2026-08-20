@@ -135,3 +135,5 @@ async def test_legislation_archive_service_lifecycle(tmp_path: Path) -> None:
 
     cov = service.get_coverage([rec])
     assert cov.works_retrieved == 1
+    assert cov.total_seed_works == 1
+    assert cov.coverage_percent == 100.0
