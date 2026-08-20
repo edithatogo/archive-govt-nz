@@ -2,8 +2,8 @@
 
 ## Phase 1: Contract and red tests
 
-- [~] Add adversarial legislation CLI and compatibility tests.
-- [ ] Define shared authenticated local-state inspection.
+- [x] Add adversarial legislation CLI and compatibility tests.
+- [~] Define shared authenticated local-state inspection.
 
 ## Phase 2: Implementation
 

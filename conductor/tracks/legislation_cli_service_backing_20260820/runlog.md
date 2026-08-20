@@ -6,3 +6,10 @@
   flat-CAS counting, record-count denominators, absent change state reported as
   observed, manifest-only publication reported staged, and token-only remote
   publication reported verified. No push, PR, merge, or live action occurred.
+- 2026-08-20T11:17:00Z: Added seven adversarial contract tests. The red run
+  failed all seven against the merged CLI: absent changes returned success;
+  coverage used manifested records as its own denominator; a flat garbage CAS
+  returned operational; unknown `nzlc` input silently invoked status; empty
+  sync constructed state and returned success; a corrupt manifest root
+  validated; and manifest/token publication evidence returned affirmative
+  states. This is the expected red baseline.
