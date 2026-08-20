@@ -21,3 +21,7 @@
   vulnerabilities and the audit stage passed. Generated evaluator timestamps
   and donor snapshots were restored rather than committed as implementation
   evidence.
+- 2026-08-20: Rebased the local MCP successor onto legislation CLI head
+  `50bae20`. The exact stack passed 774 tests at 95.70% branch-aware coverage
+  and all remaining harness gates. No branch was pushed and no PR, merge, live
+  consumer, publication, rights action, or donor operation occurred.

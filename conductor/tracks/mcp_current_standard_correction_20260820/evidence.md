@@ -19,3 +19,11 @@
   not publication, rights, or operational authority.
 
 No live MCP consumer, publication target, or donor operation was invoked.
+
+## Post-rebase evidence
+
+- Rebased onto legislation CLI head `50bae20` and amended service head
+  `51fc8a7`.
+- Exact locked harness: 774 tests passed at 95.70% branch-aware coverage; every
+  repository gate passed. MCP remained at 100% line and branch coverage.
+- No push, PR, merge, live consumer, publication, or rights action occurred.
