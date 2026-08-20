@@ -81,6 +81,8 @@ decision or safety boundary, and continue independent work while it is pending.
     *Link: [tracks/global_cli_integrity_correction_20260820/index.md](./tracks/global_cli_integrity_correction_20260820/index.md)*
   - [/] **Child Track 6: CLI contract and compatibility**
     *Link: [tracks/legislation_corrective_cli_contract_compatibility_20260818/index.md](./tracks/legislation_corrective_cli_contract_compatibility_20260818/index.md)*
+  - [~] **Child Track 6A: Fail-closed service-backed legislation CLI correction**
+    *Link: [tracks/legislation_cli_service_backing_20260820/index.md](./tracks/legislation_cli_service_backing_20260820/index.md)*
   - [/] **Child Track 7: MCP disposition and conformance**
     *Link: [tracks/legislation_corrective_mcp_disposition_conformance_20260818/index.md](./tracks/legislation_corrective_mcp_disposition_conformance_20260818/index.md)*
   - [/] **Child Track 8: Weekly orchestration and persistent state**
