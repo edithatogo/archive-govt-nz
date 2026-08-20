@@ -11,7 +11,7 @@ from typing import Any
 class LegislationCoverageReport:
     """Statistical summary of corpus completeness and gaps."""
 
-    total_seed_works: int = 33693
+    total_seed_works: int = 0
     works_attempted: int = 0
     works_retrieved: int = 0
     xml_manifestations_count: int = 0

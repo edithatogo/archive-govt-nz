@@ -6,7 +6,7 @@ import abc
 import hashlib
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 from archive_govt_nz.core.manifests import CaptureEvent, PreservationRecord
 
@@ -25,6 +25,7 @@ class AdapterCaptureResult:
     objects_created: int
     records: tuple[PreservationRecord, ...]
     error_message: str | None = None
+    metadata: dict[str, Any] = field(default_factory=dict)
     captured_at: str = field(default_factory=lambda: datetime.now(UTC).isoformat())
 
     def to_capture_event(self, agent_name: str) -> CaptureEvent:

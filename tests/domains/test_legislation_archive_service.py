@@ -7,6 +7,8 @@ from typing import TYPE_CHECKING
 import httpx
 import pytest
 
+from archive_govt_nz.adapters.base import AdapterCaptureResult
+from archive_govt_nz.core.manifests import PreservationRecord
 from archive_govt_nz.domains.legislation.api import NZLegislationApiClient
 from archive_govt_nz.domains.legislation.checkpoints import (
     LegislationCheckpointCorruptError,
@@ -26,6 +28,8 @@ from archive_govt_nz.object_store import ContentAddressedStore
 
 if TYPE_CHECKING:
     from pathlib import Path
+
+    from archive_govt_nz.core.identity import SourceIdentity
 
 
 @pytest.mark.anyio
@@ -108,6 +112,339 @@ async def test_first_sync_and_repeated_no_change(tmp_path: Path) -> None:
     assert res2.works_synced == 0
     assert res2.records_preserved == 0
     assert len(res2.records) == 0
+
+
+@pytest.mark.anyio
+async def test_discovery_preserves_canonical_frbr_identities(tmp_path: Path) -> None:
+    """Discovered Work/Expression/Manifestation identities must survive sync."""
+    payload = b'<act status="in-force"><title>Canonical Act</title></act>'
+
+    def handler(req: httpx.Request) -> httpx.Response:
+        if req.url.path.endswith("/works"):
+            return httpx.Response(
+                200,
+                json=[
+                    {
+                        "work_id": "work:act:2026:1",
+                        "title": "Canonical Act",
+                        "legislation_type": "act",
+                        "canonical_uri": "https://example.test/work/act-2026-1",
+                        "expressions": [
+                            {
+                                "expression_id": "expression:act-2026-1:2026-08-20",
+                                "version_date": "2026-08-20",
+                                "manifestations": [
+                                    {
+                                        "manifestation_id": (
+                                            "manifestation:act-2026-1:xml"
+                                        ),
+                                        "source_url": "https://example.test/act-2026-1.xml",
+                                        "media_type": "application/xml",
+                                    }
+                                ],
+                            }
+                        ],
+                    }
+                ],
+            )
+        return httpx.Response(200, content=payload)
+
+    transport = httpx.MockTransport(handler)
+    client = httpx.Client(transport=transport)
+    async_client = httpx.AsyncClient(transport=transport)
+    service = LegislationArchiveService(
+        store=ContentAddressedStore(tmp_path / "cas"),
+        api_client=NZLegislationApiClient(client=client, async_client=async_client),
+    )
+
+    result = await service.sync_works(search_terms=["canonical"], max_works=1)
+
+    assert result.status == "success"
+    assert result.records[0].work_id == "work:act:2026:1"
+    assert result.records[0].expression_id == "expression:act-2026-1:2026-08-20"
+    assert result.records[0].manifestation_id == "manifestation:act-2026-1:xml"
+    assert result.records[0].canonical_uri == "https://example.test/work/act-2026-1"
+
+
+@pytest.mark.anyio
+async def test_discovery_fails_closed_without_canonical_frbr_graph(
+    tmp_path: Path,
+) -> None:
+    """A search hit without canonical nested identities is not an archive target."""
+    transport = httpx.MockTransport(
+        lambda _req: httpx.Response(
+            200,
+            json=[{"work_id": "act-2026-1", "title": "Incomplete Act"}],
+        )
+    )
+    client = httpx.Client(transport=transport)
+    service = LegislationArchiveService(
+        store=ContentAddressedStore(tmp_path / "cas"),
+        api_client=NZLegislationApiClient(client=client),
+    )
+
+    with pytest.raises(ValueError, match="canonical"):
+        await service.sync_works(search_terms=["incomplete"], max_works=1)
+
+
+@pytest.mark.anyio
+async def test_service_acquires_only_through_adapter(tmp_path: Path) -> None:
+    """The service consumes the adapter receipt and never fetches directly."""
+    store = ContentAddressedStore(tmp_path / "cas")
+    payload = b"<act><title>Adapter Act</title></act>"
+    receipt = store.put_bytes(payload)
+
+    class RecordingAdapter:
+        def __init__(self) -> None:
+            self.calls: list[tuple[str, str | None, str | None]] = []
+
+        async def capture(
+            self,
+            identity: SourceIdentity,
+            *,
+            etag: str | None = None,
+            last_modified: str | None = None,
+        ) -> AdapterCaptureResult:
+            self.calls.append((identity.target, etag, last_modified))
+            return AdapterCaptureResult(
+                source_identity=identity,
+                status="success",
+                bytes_captured=len(payload),
+                objects_created=1,
+                records=(
+                    PreservationRecord(
+                        record_id=f"rec:{receipt.sha256[:16]}",
+                        sha256=receipt.sha256,
+                        size_bytes=receipt.byte_count,
+                        media_type="application/xml",
+                        uri=identity.target,
+                    ),
+                ),
+                metadata={"http_status": "200", "etag": '"v1"'},
+            )
+
+    class FailingClient(NZLegislationApiClient):
+        async def get_document_raw_async(
+            self, *_args: object, **_kwargs: object
+        ) -> tuple[int, bytes, dict[str, str]]:
+            msg = "service bypassed adapter"
+            raise AssertionError(msg)
+
+    adapter = RecordingAdapter()
+    service = LegislationArchiveService(
+        store=store,
+        adapter=adapter,  # type: ignore[arg-type]
+        api_client=FailingClient(),
+    )
+    target = WorkTarget(
+        work_id="act-2026-2",
+        title="Adapter Act",
+        canonical_uri="https://example.test/work/act-2026-2",
+        expression_targets=[
+            ExpressionTarget(
+                expression_id="exp:act-2026-2:v1",
+                manifestations=[
+                    ManifestationTarget(
+                        manifestation_id="man:act-2026-2:v1:xml",
+                        target_url="https://example.test/act-2026-2.xml",
+                    )
+                ],
+            )
+        ],
+    )
+
+    result = await service.sync_works(targets=[target])
+
+    assert result.status == "success"
+    assert adapter.calls == [("https://example.test/act-2026-2.xml", None, None)]
+
+
+@pytest.mark.anyio
+async def test_304_retains_cumulative_manifest_and_checkpoint(tmp_path: Path) -> None:
+    """Conditional no-change keeps prior manifest and cumulative accounting."""
+    requests: list[httpx.Request] = []
+    payload = b'<act status="in-force"><title>Conditional Act</title></act>'
+
+    def handler(req: httpx.Request) -> httpx.Response:
+        requests.append(req)
+        if len(requests) == 1:
+            return httpx.Response(
+                200,
+                content=payload,
+                headers={
+                    "Content-Type": "application/xml",
+                    "ETag": '"v1"',
+                    "Last-Modified": "Wed, 19 Aug 2026 00:00:00 GMT",
+                },
+            )
+        assert req.headers["If-None-Match"] == '"v1"'
+        return httpx.Response(304, headers={"ETag": '"v1"'})
+
+    async_client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    service = LegislationArchiveService(
+        store=ContentAddressedStore(tmp_path / "cas"),
+        api_client=NZLegislationApiClient(async_client=async_client),
+    )
+    checkpoint = tmp_path / "checkpoint.json"
+    manifest = tmp_path / "manifest.json"
+    target = WorkTarget(
+        work_id="act-2026-3",
+        title="Conditional Act",
+        canonical_uri="https://example.test/work/act-2026-3",
+        expression_targets=[
+            ExpressionTarget(
+                expression_id="exp:act-2026-3:v1",
+                manifestations=[
+                    ManifestationTarget(
+                        manifestation_id="man:act-2026-3:v1:xml",
+                        target_url="https://example.test/act-2026-3.xml",
+                    )
+                ],
+            )
+        ],
+    )
+
+    first = await service.sync_works(
+        targets=[target], checkpoint_path=checkpoint, manifest_path=manifest
+    )
+    second = await service.sync_works(
+        targets=[target],
+        checkpoint_path=checkpoint,
+        manifest_path=manifest,
+        force_resync=True,
+    )
+
+    assert first.status == "success"
+    assert second.status == "no_change"
+    assert second.records_preserved == 0
+    assert second.manifest["total_records"] == 1
+    assert second.checkpoint is not None
+    assert second.checkpoint["total_records_preserved"] == 1
+
+
+@pytest.mark.anyio
+async def test_cold_304_without_prior_manifestation_fails_closed(
+    tmp_path: Path,
+) -> None:
+    """A source 304 cannot manufacture a no-change observation on cold state."""
+    async_client = httpx.AsyncClient(
+        transport=httpx.MockTransport(lambda _req: httpx.Response(304))
+    )
+    service = LegislationArchiveService(
+        store=ContentAddressedStore(tmp_path / "cas"),
+        api_client=NZLegislationApiClient(async_client=async_client),
+    )
+    target = WorkTarget(
+        work_id="act-cold-304",
+        canonical_uri="https://example.test/work/act-cold-304",
+        expression_targets=[
+            ExpressionTarget(
+                expression_id="exp:act-cold-304:v1",
+                manifestations=[
+                    ManifestationTarget(
+                        manifestation_id="man:act-cold-304:v1:xml",
+                        target_url="https://example.test/act-cold-304.xml",
+                    )
+                ],
+            )
+        ],
+    )
+
+    result = await service.sync_works(targets=[target])
+
+    assert result.status == "failed"
+    assert "without prior cumulative manifestation" in result.errors[0]
+
+
+@pytest.mark.anyio
+async def test_manifest_and_checkpoint_are_cumulative_across_batches(
+    tmp_path: Path,
+) -> None:
+    """A later batch adds to, rather than replaces, durable accounting."""
+    async_client = httpx.AsyncClient(
+        transport=httpx.MockTransport(
+            lambda req: httpx.Response(
+                200,
+                content=f"<act><title>{req.url.path}</title></act>".encode(),
+                headers={"Content-Type": "application/xml"},
+            )
+        )
+    )
+    service = LegislationArchiveService(
+        store=ContentAddressedStore(tmp_path / "cas"),
+        api_client=NZLegislationApiClient(async_client=async_client),
+    )
+    checkpoint = tmp_path / "checkpoint.json"
+    manifest = tmp_path / "manifest.json"
+
+    def target(number: int) -> WorkTarget:
+        work_id = f"act-2026-{number}"
+        return WorkTarget(
+            work_id=work_id,
+            title=f"Act {number}",
+            canonical_uri=f"https://example.test/work/{work_id}",
+            expression_targets=[
+                ExpressionTarget(
+                    expression_id=f"exp:{work_id}:v1",
+                    manifestations=[
+                        ManifestationTarget(
+                            manifestation_id=f"man:{work_id}:v1:xml",
+                            target_url=f"https://example.test/{work_id}.xml",
+                        )
+                    ],
+                )
+            ],
+        )
+
+    await service.sync_works(
+        targets=[target(1)],
+        checkpoint_path=checkpoint,
+        manifest_path=manifest,
+        batch_id="batch-1",
+    )
+    second = await service.sync_works(
+        targets=[target(2)],
+        checkpoint_path=checkpoint,
+        manifest_path=manifest,
+        batch_id="batch-2",
+    )
+
+    assert second.manifest["total_records"] == 2
+    assert second.checkpoint is not None
+    assert second.checkpoint["total_records_preserved"] == 2
+    assert second.checkpoint["completed_batches"] == ["batch-1", "batch-2"]
+    assert second.checkpoint["processed_work_ids"] == ["act-2026-1", "act-2026-2"]
+
+
+@pytest.mark.anyio
+async def test_corrupt_cumulative_manifest_fails_closed(tmp_path: Path) -> None:
+    """A corrupt prior manifest cannot silently reset cumulative evidence."""
+    manifest = tmp_path / "manifest.json"
+    manifest.write_text("{broken", encoding="utf-8")
+    service = LegislationArchiveService(store=ContentAddressedStore(tmp_path / "cas"))
+
+    with pytest.raises(ValueError, match="manifest"):
+        await service.sync_works(targets=[], manifest_path=manifest)
+
+
+@pytest.mark.anyio
+async def test_missing_manifest_for_non_empty_checkpoint_fails_closed(
+    tmp_path: Path,
+) -> None:
+    """Checkpoint accounting cannot continue after its manifest disappears."""
+    checkpoint = tmp_path / "checkpoint.json"
+    checkpoint.write_text(
+        '{"processed_work_ids":["act-1"],"total_records_preserved":1}',
+        encoding="utf-8",
+    )
+    service = LegislationArchiveService(store=ContentAddressedStore(tmp_path / "cas"))
+
+    with pytest.raises(ValueError, match="manifest is missing"):
+        await service.sync_works(
+            targets=[],
+            checkpoint_path=checkpoint,
+            manifest_path=tmp_path / "missing-manifest.json",
+        )
 
 
 @pytest.mark.anyio
@@ -372,8 +709,42 @@ async def test_target_resolution_and_partial_sync(tmp_path: Path) -> None:
             return httpx.Response(
                 200,
                 json=[
-                    {"work_id": "act-disc-1", "title": "Discovered Act 1"},
-                    {"work_id": "act-disc-2", "title": "Discovered Act 2"},
+                    {
+                        "work_id": "act-disc-1",
+                        "title": "Discovered Act 1",
+                        "canonical_uri": "https://example.test/work/act-disc-1",
+                        "expressions": [
+                            {
+                                "expression_id": "exp:act-disc-1:latest",
+                                "manifestations": [
+                                    {
+                                        "manifestation_id": "man:act-disc-1:xml",
+                                        "source_url": (
+                                            "https://example.test/act-disc-1/whole.xml"
+                                        ),
+                                    }
+                                ],
+                            }
+                        ],
+                    },
+                    {
+                        "work_id": "act-disc-2",
+                        "title": "Discovered Act 2",
+                        "canonical_uri": "https://example.test/work/act-disc-2",
+                        "expressions": [
+                            {
+                                "expression_id": "exp:act-disc-2:latest",
+                                "manifestations": [
+                                    {
+                                        "manifestation_id": "man:act-disc-2:xml",
+                                        "source_url": (
+                                            "https://example.test/act-disc-2/whole.xml"
+                                        ),
+                                    }
+                                ],
+                            }
+                        ],
+                    },
                 ],
             )
         if "act-disc-1" in path or "act-work-1" in path:

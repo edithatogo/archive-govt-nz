@@ -33,7 +33,7 @@ def test_reconcile_inventory_consistent(tmp_path: Path) -> None:
         "records": [
             {
                 "schema_version": "archive-govt-nz.legislation/v2",
-                "document_id": "act-public-2024-0001",
+                "document_id": "leg-act-public-2024-0001",
                 "work_id": "act-public-2024-0001",
                 "expression_id": "exp-1",
                 "manifestation_id": "man-1",
@@ -103,6 +103,9 @@ def test_run_monthly_reconciliation_runner(tmp_path: Path) -> None:
     )
     assert code == 0
     assert receipt_file.is_file()
+    data = json.loads(receipt_file.read_text(encoding="utf-8"))
+    assert data["candidate_works_denominator"] == 0
+    assert data["coverage_percent"] == 0.0
 
 
 def test_run_monthly_reconciliation_failure(tmp_path: Path) -> None:

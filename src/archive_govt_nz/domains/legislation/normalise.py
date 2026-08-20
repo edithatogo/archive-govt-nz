@@ -401,6 +401,8 @@ def normalise_legislation_payload(  # noqa: PLR0913, PLR0917
     legislation_type: LegislationType = LegislationType.OTHER,
     version_date: str | None = None,
     version_label: str | None = None,
+    canonical_expression_id: str | None = None,
+    canonical_manifestation_id: str | None = None,
 ) -> LegislationRecord:
     """Transform raw XML/HTML payload into a canonical v2 LegislationRecord."""
     sha256 = hashlib.sha256(raw_content).hexdigest()
@@ -452,13 +454,15 @@ def normalise_legislation_payload(  # noqa: PLR0913, PLR0917
         else ("text/html" if is_explicit_html else "application/xml")
     )
 
-    expression_id = generate_expression_id(
+    expression_id = canonical_expression_id or generate_expression_id(
         work_id,
         version_date=version_date,
         version_label=version_label,
         sha256_digest=sha256,
     )
-    manifestation_id = generate_manifestation_id(expression_id, media_type, sha256)
+    manifestation_id = canonical_manifestation_id or generate_manifestation_id(
+        expression_id, media_type, sha256
+    )
     doc_id = f"leg-{work_id}"
 
     return LegislationRecord(
@@ -478,8 +482,8 @@ def normalise_legislation_payload(  # noqa: PLR0913, PLR0917
         source_modified_timestamp=source_modified_timestamp,
         assent_date=assent_date,
         commencement_date=commencement_date,
-        rights_statement="Crown Copyright © New Zealand Government (NZGOAL)",
-        redistribution_policy="open_access_statutory_license",
+        rights_statement=None,
+        redistribution_policy="rights_review_required",
         sections=sections,
         schedules=schedules,
         plain_text=plain_text,

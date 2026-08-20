@@ -19,7 +19,7 @@ from archive_govt_nz.domains.legislation.models import (
 def reconcile_inventory(
     manifest_path: Path,
     checkpoint_path: Path,
-    candidate_works_denominator: int = 33693,
+    candidate_works_denominator: int | None = None,
     hosted_dataset_slug: str | None = None,
 ) -> dict[str, Any]:
     """Execute multi-layer reconciliation across inventory and manifest."""
@@ -44,9 +44,8 @@ def reconcile_inventory(
     }
 
     # Checkpoint consistency check
-    manifest_doc_ids = {r.get("document_id") for r in records if r.get("document_id")}
-    checkpoint_gap = processed_ids - manifest_doc_ids
-    manifest_gap = manifest_doc_ids - processed_ids
+    checkpoint_gap = processed_ids - work_ids
+    manifest_gap = work_ids - processed_ids
 
     # Validation findings
     validation_findings: list[str] = []
@@ -55,7 +54,16 @@ def reconcile_inventory(
         validation_findings.extend(findings)
 
     # Coverage with documented denominator
-    total_candidate = max(candidate_works_denominator, len(work_ids))
+    discovered_count = man_data.get("discovered_works_count")
+    if candidate_works_denominator is not None:
+        total_candidate = candidate_works_denominator
+    elif isinstance(discovered_count, int) and discovered_count >= 0:
+        total_candidate = discovered_count
+    else:
+        total_candidate = len(work_ids)
+    if total_candidate < len(work_ids):
+        msg = "candidate denominator is smaller than discovered manifest works"
+        raise ValueError(msg)
     coverage_pct = (
         (len(work_ids) / total_candidate) * 100.0 if total_candidate > 0 else 0.0
     )
@@ -97,7 +105,7 @@ def run_monthly_reconciliation(
     manifest_path: Path,
     checkpoint_path: Path,
     receipt_path: Path,
-    candidate_works_denominator: int = 33693,
+    candidate_works_denominator: int | None = None,
     hosted_dataset_slug: str | None = None,
 ) -> int:
     """Run monthly reconciliation and save structured evidence receipt."""
@@ -158,8 +166,8 @@ def main() -> None:
     parser.add_argument(
         "--candidate-denominator",
         type=int,
-        default=33693,
-        help="Documented total candidate works denominator",
+        default=None,
+        help="Optional bounded discovered candidate denominator override",
     )
     parser.add_argument(
         "--hosted-dataset-slug",

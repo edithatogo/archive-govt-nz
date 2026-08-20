@@ -81,6 +81,13 @@ def test_legislation_models_and_serialization() -> None:
     assert data["sections_count"] == 1
 
 
+def test_coverage_has_no_historical_fallback_denominator() -> None:
+    """An empty bounded inventory must not imply a historical corpus total."""
+    report = LegislationCoverageReport()
+    assert report.total_seed_works == 0
+    assert report.coverage_percent == 0.0
+
+
 def test_normalise_legislation_payload() -> None:
     """Test deterministic normalisation from raw XML/HTML."""
     raw_xml = (
@@ -99,6 +106,8 @@ def test_normalise_legislation_payload() -> None:
     )
 
     assert rec.work_id == "act-2026-1"
+    assert rec.rights_statement is None
+    assert rec.redistribution_policy == "rights_review_required"
     assert len(rec.sections) == 1
     assert len(rec.schedules) == 1
     assert rec.assent_date == "2026-01-01"
@@ -206,6 +215,7 @@ def test_build_manifest_and_checkpoint_manager(tmp_path: Path) -> None:
     manifest = build_legislation_manifest([rec], run_id="run-test")
     assert manifest["total_records"] == 1
     assert manifest["run_id"] == "run-test"
+    assert manifest["records"][0]["raw_sha256"] == "0" * 64
 
     chk_file = tmp_path / "checkpoint.json"
     mgr = LegislationCheckpointManager(chk_file)

@@ -58,7 +58,13 @@ async def test_legislation_capture_success(tmp_path: Path) -> None:
 async def test_legislation_capture_not_modified_304(tmp_path: Path) -> None:
     """Validate 304 Not Modified handling."""
     store = ContentAddressedStore(tmp_path / "cas")
-    transport = httpx.MockTransport(lambda _req: httpx.Response(304))
+
+    def handler(req: httpx.Request) -> httpx.Response:
+        assert req.headers["If-None-Match"] == '"known"'
+        assert req.headers["If-Modified-Since"] == "Wed, 19 Aug 2026 00:00:00 GMT"
+        return httpx.Response(304, headers={"ETag": '"known"'})
+
+    transport = httpx.MockTransport(handler)
     async_client = httpx.AsyncClient(transport=transport)
     api_client = NZLegislationApiClient(async_client=async_client)
     adapter = NZLegislationAdapter(store, api_client=api_client)
@@ -70,9 +76,15 @@ async def test_legislation_capture_not_modified_304(tmp_path: Path) -> None:
         source_id="act-2026-1",
         uri="legislation://pco/act-2026-1",
     )
-    result = await adapter.capture(identity)
-    assert result.status == "success"
+    result = await adapter.capture(
+        identity,
+        etag='"known"',
+        last_modified="Wed, 19 Aug 2026 00:00:00 GMT",
+    )
+    assert result.status == "not_modified"
     assert result.bytes_captured == 0
+    assert result.metadata["http_status"] == "304"
+    assert result.metadata["etag"] == '"known"'
 
 
 @pytest.mark.anyio

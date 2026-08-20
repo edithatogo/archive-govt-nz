@@ -36,6 +36,8 @@ def build_work_inventory(
                         "title": item.get("title", ""),
                         "legislation_type": item.get("legislation_type", "act"),
                         "status": item.get("status", "in_force"),
+                        "canonical_uri": item.get("canonical_uri"),
+                        "expressions": item.get("expressions"),
                     }
                 )
                 if max_works and len(works) >= max_works:
