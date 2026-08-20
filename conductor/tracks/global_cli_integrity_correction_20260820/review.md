@@ -22,6 +22,17 @@ global CLI scope at commit `7616ddb`.
   redistribution rights, recovery, cutover, and donor archival were not
   advanced by this track.
 
+## Review-fix finding
+
+- **High — operator contract drift:** `README.md` advertised standalone capture
+  and manifest-free archive verification, `docs/operations/runbook.md` treated
+  the currently non-operational scheduled workflow and capture command as live
+  harvesting, and `docs/migrations/sm-govt-nz/interface-map.md` specified a
+  nested grammar and `--json` flag that the CLI does not implement. The README
+  also claimed the donor was archived, contrary to the required recovery gate
+  and current GitHub state. Phase 4A corrects these documents without advancing
+  the separately sequenced workflow, publication, rights, or donor gates.
+
 ## Remaining gate
 
 Phase 5 is intentionally pending. The branch is local-only and must not be
