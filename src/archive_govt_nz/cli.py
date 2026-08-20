@@ -934,6 +934,7 @@ def _handle_leg_manifest(
             print(f"Legislation manifest: status=corrupt ({e})")
         return 1
 
+    manifest_status_str = "ready" if total > 0 else "empty"
     if format == "json":
         _emit_json(
             {
@@ -941,7 +942,7 @@ def _handle_leg_manifest(
                 "command": "legislation",
                 "manifest_path": manifest_path,
                 "manifest_sha256": sha,
-                "manifest_status": "ready",
+                "manifest_status": manifest_status_str,
                 "schema_version": "archive-govt-nz.cli/v1",
                 "status": "ready",
                 "total_records": total,
