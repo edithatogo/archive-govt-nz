@@ -16,4 +16,3 @@ donor batch and its expected canonical SHA-256 plus real target manifest,
 checkpoint, and CAS paths. It fails non-zero on missing or divergent state. A
 new passed receipt must not be committed until the ordered real-batch execution
 gate is reached and the actual bounded run has been independently reviewed.
-

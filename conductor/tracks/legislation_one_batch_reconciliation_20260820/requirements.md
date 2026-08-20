@@ -41,4 +41,3 @@
 - The full locked repository harness passes on the local stacked branch.
 - No branch is pushed, no PR is opened, and no live batch is claimed while the
   earlier ordered corrections remain pending.
-

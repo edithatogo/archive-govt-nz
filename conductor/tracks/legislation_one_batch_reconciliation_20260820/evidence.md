@@ -26,3 +26,8 @@
 - Post-rebase exact harness: 852 tests passed at 95.87% branch-aware coverage;
   22 schemas and 12 representative documents plus every remaining repository
   gate passed. No real batch was executed.
+- Current-main validation on workflow squash merge `6839d7b`: 77 focused
+  adversarial tests passed with the reconciliation module at 100% line and
+  branch coverage. The full locked harness passed 858 tests at 96.35%
+  branch-aware coverage and every remaining repository gate. No real batch was
+  executed; the execution gate remains pending.

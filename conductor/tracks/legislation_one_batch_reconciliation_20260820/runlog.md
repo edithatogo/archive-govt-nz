@@ -18,3 +18,10 @@
   workflow head `34d347a`. The exact stack passed 852 tests at 95.87%
   branch-aware coverage and every remaining repository gate. No batch, source
   fetch, push, PR, publication, rights action, or merge occurred.
+- 2026-08-20T22:05:00Z: Workflow PR #161 squash-merged as `6839d7b`. Rebased
+  the four one-batch correction commits onto exact `origin/main` without
+  conflict. Seventy-seven focused tests passed with 100% line and branch
+  coverage of the reconciler; the full harness passed 858 tests at 96.35%
+  overall coverage, 22 schemas and 12 documents, and every remaining gate.
+  Generated timestamp and donor-snapshot churn was restored. No donor batch,
+  source fetch, publication, rights, recovery, cutover, or donor action ran.

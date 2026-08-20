@@ -21,4 +21,3 @@ The reconciler is zero-network and read-only except for its explicit receipt.
 It does not execute a capture or substitute fixtures for a real run. Actual
 batch execution remains a later ordered gate; until then, the tool must return
 failure for absent real inputs.
-
