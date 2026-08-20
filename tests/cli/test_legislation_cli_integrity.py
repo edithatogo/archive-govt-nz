@@ -6,17 +6,27 @@ import json
 import sys
 from typing import TYPE_CHECKING, Any
 
+import pytest
+
 from archive_govt_nz.cli import legislation
 from archive_govt_nz.cli_compat import compat_nzlc_main
+from archive_govt_nz.domains.legislation.cli_state import (
+    coverage_counts,
+    load_authenticated_manifest,
+    verify_linked_state,
+)
+from archive_govt_nz.domains.legislation.corpus import (
+    LegislationSyncResult,
+)
+from archive_govt_nz.domains.legislation.coverage import LegislationCoverageReport
 from archive_govt_nz.domains.legislation.manifest import (
     compute_legislation_inventory_sha256,
     compute_legislation_manifest_sha256,
 )
+from archive_govt_nz.object_store import ContentAddressedStore
 
 if TYPE_CHECKING:
     from pathlib import Path
-
-    import pytest
 
 
 def _record(work_id: str = "work-1") -> dict[str, Any]:
@@ -57,6 +67,57 @@ def _write_manifest(path: Path, *, discovered: list[str] | None = None) -> None:
     path.write_text(json.dumps(payload), encoding="utf-8")
 
 
+def _write_authenticated_state(tmp_path: Path) -> dict[str, Path]:
+    """Write one mutually linked manifest, checkpoint, and sharded CAS."""
+    cas_path = tmp_path / "cas"
+    stored = ContentAddressedStore(cas_path).put_bytes(b"one")
+    record = _record()
+    record.update(
+        {
+            "raw_cas_hash_sha256": stored.sha256,
+            "raw_cas_hash_blake3": stored.blake3,
+            "byte_size": stored.byte_count,
+        }
+    )
+    records = [record]
+    work_ids = ["work-1"]
+    manifest_sha256 = compute_legislation_manifest_sha256(records)
+    inventory_sha256 = compute_legislation_inventory_sha256(work_ids)
+    manifest = {
+        "schema_version": "archive-govt-nz.legislation-manifest/v1",
+        "generated_at": "2026-08-20T00:00:00Z",
+        "run_id": "batch-1",
+        "records": records,
+        "total_records": 1,
+        "manifest_sha256": manifest_sha256,
+        "discovered_work_ids": work_ids,
+        "discovered_works_count": 1,
+        "discovered_inventory_sha256": inventory_sha256,
+    }
+    manifest_path = tmp_path / "manifest.json"
+    manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+    checkpoint = {
+        "schema_version": "archive-govt-nz.legislation-checkpoint/v1",
+        "last_updated": "2026-08-20T00:00:00Z",
+        "completed_batches": ["batch-1"],
+        "processed_work_ids": work_ids,
+        "last_processed_index": 1,
+        "total_records_preserved": 1,
+        "metadata": {
+            "manifest_sha256": manifest_sha256,
+            "discovered_inventory_sha256": inventory_sha256,
+            "conditional_requests": {},
+        },
+    }
+    checkpoint_path = tmp_path / "checkpoint.json"
+    checkpoint_path.write_text(json.dumps(checkpoint), encoding="utf-8")
+    return {
+        "cas_path": cas_path,
+        "manifest_path": manifest_path,
+        "checkpoint_path": checkpoint_path,
+    }
+
+
 def test_sync_rejects_fabricated_default_selection(
     tmp_path: Path, capsys: pytest.CaptureFixture[str]
 ) -> None:
@@ -73,6 +134,74 @@ def test_sync_rejects_fabricated_default_selection(
     assert code == 5
     assert payload["status"] == "invalid_request"
     assert not (tmp_path / "cas").exists()
+
+
+def test_sync_delegates_explicit_selection_to_archive_service(
+    tmp_path: Path,
+    capsys: pytest.CaptureFixture[str],
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """The CLI serializes the service result without duplicating acquisition."""
+    observed: dict[str, Any] = {}
+
+    async def fake_sync(_self: object, **kwargs: object) -> LegislationSyncResult:
+        observed.update(kwargs)
+        return LegislationSyncResult(
+            status="no_change",
+            works_attempted=1,
+            works_synced=0,
+            records_preserved=0,
+            records=[],
+            manifest={},
+            coverage=LegislationCoverageReport(total_seed_works=1),
+            checkpoint={},
+        )
+
+    monkeypatch.setattr(
+        "archive_govt_nz.cli.LegislationArchiveService.sync_works", fake_sync
+    )
+    code = legislation(
+        action="sync",
+        work_ids=["work-1"],
+        batch_id="batch-1",
+        cas_path=str(tmp_path / "cas"),
+        checkpoint_path=str(tmp_path / "checkpoint.json"),
+        manifest_path=str(tmp_path / "manifest.json"),
+        format="json",
+    )
+    result = json.loads(capsys.readouterr().out)
+    assert code == 0
+    assert result["status"] == "no_change"
+    assert observed["work_ids"] == ["work-1"]
+    assert observed["search_terms"] is None
+    assert observed["batch_id"] == "batch-1"
+
+
+def test_discovery_empty_and_failure_are_non_success(
+    capsys: pytest.CaptureFixture[str], monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """An empty or failed search cannot become discovered evidence."""
+    monkeypatch.setattr(
+        "archive_govt_nz.domains.legislation.api.NZLegislationApiClient.iter_search_works",
+        lambda *_args, **_kwargs: [],
+    )
+    empty_code = legislation(action="discover", search_term="none", format="json")
+    empty = json.loads(capsys.readouterr().out)
+    assert empty_code == 1
+    assert empty["status"] == "no_state"
+
+    def fail(*_args: object, **_kwargs: object) -> list[dict[str, str]]:
+        msg = "transport failed"
+        raise ValueError(msg)
+
+    monkeypatch.setattr(
+        "archive_govt_nz.domains.legislation.api.NZLegislationApiClient.iter_search_works",
+        fail,
+    )
+    failure_code = legislation(action="discover", search_term="fail", format="json")
+    failure = json.loads(capsys.readouterr().out)
+    assert failure_code == 2
+    assert failure["status"] == "failed"
 
 
 def test_validate_rejects_manifest_root_drift(
@@ -103,6 +232,145 @@ def test_coverage_uses_authenticated_discovered_inventory_denominator(
     assert result["retrieved_works_count"] == 1
     assert result["coverage_percent"] == 50.0
     assert result["unresolved_gaps_count"] == 1
+
+
+def test_authenticated_state_supports_validate_manifest_coverage_status_and_replay(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    """Affirmative CLI states require one fully linked durable target state."""
+    state = _write_authenticated_state(tmp_path)
+    assert (
+        verify_linked_state(
+            state["cas_path"], state["checkpoint_path"], state["manifest_path"]
+        )
+        == 1
+    )
+    common = {
+        "manifest_path": str(state["manifest_path"]),
+        "checkpoint_path": str(state["checkpoint_path"]),
+        "cas_path": str(state["cas_path"]),
+        "format": "json",
+    }
+    expected = {
+        "validate": "valid",
+        "manifest": "ready",
+        "coverage": "complete",
+        "status": "operational",
+        "replay": "verified",
+    }
+    for action, status in expected.items():
+        code = legislation(action=action, **common)  # type: ignore[arg-type]
+        result = json.loads(capsys.readouterr().out)
+        assert code == 0
+        assert result["status"] == status
+
+
+@pytest.mark.parametrize(
+    "case",
+    [
+        "checkpoint_not_object",
+        "checkpoint_root",
+        "checkpoint_count",
+        "cas_bytes",
+        "blake3",
+        "byte_size",
+    ],
+)
+def test_status_and_replay_reject_divergent_durable_state(
+    tmp_path: Path,
+    capsys: pytest.CaptureFixture[str],
+    case: str,
+) -> None:
+    """Root, byte, and dual-hash divergence cannot become operational."""
+    state = _write_authenticated_state(tmp_path)
+    if case == "checkpoint_not_object":
+        state["checkpoint_path"].write_text("[]", encoding="utf-8")
+    elif case == "checkpoint_root":
+        checkpoint = json.loads(state["checkpoint_path"].read_text(encoding="utf-8"))
+        checkpoint["metadata"]["manifest_sha256"] = "0" * 64
+        state["checkpoint_path"].write_text(json.dumps(checkpoint), encoding="utf-8")
+    elif case == "checkpoint_count":
+        checkpoint = json.loads(state["checkpoint_path"].read_text(encoding="utf-8"))
+        checkpoint["total_records_preserved"] = 2
+        state["checkpoint_path"].write_text(json.dumps(checkpoint), encoding="utf-8")
+    elif case == "cas_bytes":
+        manifest = json.loads(state["manifest_path"].read_text(encoding="utf-8"))
+        digest = manifest["records"][0]["raw_cas_hash_sha256"]
+        (state["cas_path"] / "sha256" / digest[:2] / digest).write_bytes(b"bad")
+    elif case == "blake3":
+        manifest = json.loads(state["manifest_path"].read_text(encoding="utf-8"))
+        manifest["records"][0]["raw_cas_hash_blake3"] = "0" * 64
+        manifest["manifest_sha256"] = compute_legislation_manifest_sha256(
+            manifest["records"]
+        )
+        state["manifest_path"].write_text(json.dumps(manifest), encoding="utf-8")
+        checkpoint = json.loads(state["checkpoint_path"].read_text(encoding="utf-8"))
+        checkpoint["metadata"]["manifest_sha256"] = manifest["manifest_sha256"]
+        state["checkpoint_path"].write_text(json.dumps(checkpoint), encoding="utf-8")
+    else:
+        manifest = json.loads(state["manifest_path"].read_text(encoding="utf-8"))
+        manifest["records"][0]["byte_size"] = 4
+        manifest["manifest_sha256"] = compute_legislation_manifest_sha256(
+            manifest["records"]
+        )
+        state["manifest_path"].write_text(json.dumps(manifest), encoding="utf-8")
+        checkpoint = json.loads(state["checkpoint_path"].read_text(encoding="utf-8"))
+        checkpoint["metadata"]["manifest_sha256"] = manifest["manifest_sha256"]
+        state["checkpoint_path"].write_text(json.dumps(checkpoint), encoding="utf-8")
+
+    for action in ("status", "replay"):
+        code = legislation(
+            action=action,  # type: ignore[arg-type]
+            manifest_path=str(state["manifest_path"]),
+            checkpoint_path=str(state["checkpoint_path"]),
+            cas_path=str(state["cas_path"]),
+            format="json",
+        )
+        result = json.loads(capsys.readouterr().out)
+        assert code == 1
+        assert result["status"] == "invalid"
+
+
+def test_cli_state_helpers_reject_missing_inventory_and_invalid_records(
+    tmp_path: Path,
+) -> None:
+    """The critical state module fails every unauthenticated manifest class."""
+    missing = tmp_path / "missing.json"
+    assert coverage_counts(missing) == (0, 0, 0, 0)
+    with pytest.raises(ValueError, match="manifest is missing"):
+        load_authenticated_manifest(missing)
+
+    manifest = tmp_path / "manifest.json"
+    _write_manifest(manifest)
+    payload = json.loads(manifest.read_text(encoding="utf-8"))
+    for field in (
+        "discovered_work_ids",
+        "discovered_works_count",
+        "discovered_inventory_sha256",
+    ):
+        payload.pop(field)
+    manifest.write_text(json.dumps(payload), encoding="utf-8")
+    with pytest.raises(ValueError, match="authenticated discovered inventory"):
+        load_authenticated_manifest(manifest)
+
+    _write_manifest(manifest)
+    payload = json.loads(manifest.read_text(encoding="utf-8"))
+    payload["records"][0]["canonical_uri"] = 1
+    payload["manifest_sha256"] = compute_legislation_manifest_sha256(payload["records"])
+    manifest.write_text(json.dumps(payload), encoding="utf-8")
+    with pytest.raises(ValueError, match="manifest record is invalid"):
+        load_authenticated_manifest(manifest)
+
+
+def test_coverage_counts_classifies_html_manifestations(tmp_path: Path) -> None:
+    """Coverage projects XML and HTML manifestations from canonical IDs."""
+    manifest = tmp_path / "manifest.json"
+    _write_manifest(manifest)
+    payload = json.loads(manifest.read_text(encoding="utf-8"))
+    payload["records"][0]["manifestation_id"] = "work-1:html:latest"
+    payload["manifest_sha256"] = compute_legislation_manifest_sha256(payload["records"])
+    manifest.write_text(json.dumps(payload), encoding="utf-8")
+    assert coverage_counts(manifest) == (1, 1, 0, 1)
 
 
 def test_flat_cas_and_absent_state_are_not_operational(
