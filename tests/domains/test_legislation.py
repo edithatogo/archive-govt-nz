@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 import httpx
+import pytest
 
 if TYPE_CHECKING:
     from pathlib import Path
@@ -198,6 +199,11 @@ def test_validate_legislation_record() -> None:
     errors = validate_legislation_record(invalid_rec)
     assert len(errors) >= 4
 
+    with pytest.raises(
+        ValueError, match="normalised record missing canonical identity"
+    ):
+        build_legislation_manifest([invalid_rec])
+
 
 def test_build_manifest_and_checkpoint_manager(tmp_path: Path) -> None:
     """Test manifest creation and checkpoint manager."""
@@ -216,6 +222,9 @@ def test_build_manifest_and_checkpoint_manager(tmp_path: Path) -> None:
     assert manifest["total_records"] == 1
     assert manifest["run_id"] == "run-test"
     assert manifest["records"][0]["raw_sha256"] == "0" * 64
+
+    with pytest.raises(ValueError, match="manifest record missing canonical identity"):
+        build_legislation_manifest([], existing_records=[{}])
 
     chk_file = tmp_path / "checkpoint.json"
     mgr = LegislationCheckpointManager(chk_file)

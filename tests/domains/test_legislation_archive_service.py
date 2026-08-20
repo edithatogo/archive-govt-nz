@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 from typing import TYPE_CHECKING
 
 import httpx
@@ -19,6 +20,10 @@ from archive_govt_nz.domains.legislation.corpus import (
     LegislationArchiveService,
     ManifestationTarget,
     WorkTarget,
+    _build_discovered_work_targets,
+)
+from archive_govt_nz.domains.legislation.manifest import (
+    compute_legislation_manifest_sha256,
 )
 from archive_govt_nz.domains.legislation.models import (
     LegislationType,
@@ -185,6 +190,50 @@ async def test_discovery_fails_closed_without_canonical_frbr_graph(
 
     with pytest.raises(ValueError, match="canonical"):
         await service.sync_works(search_terms=["incomplete"], max_works=1)
+
+
+@pytest.mark.parametrize(
+    ("expressions", "error_type", "message"),
+    [
+        (["invalid"], TypeError, "invalid canonical expression"),
+        ([{"manifestations": []}], ValueError, "expression identity"),
+        (
+            [{"expression_id": "exp:1", "manifestations": ["invalid"]}],
+            TypeError,
+            "expression exp:1 is invalid",
+        ),
+        (
+            [
+                {
+                    "expression_id": "exp:1",
+                    "manifestations": [{"manifestation_id": ""}],
+                }
+            ],
+            ValueError,
+            "manifestation identity",
+        ),
+        (
+            [{"expression_id": "exp:1", "manifestations": []}],
+            ValueError,
+            "has no manifestations",
+        ),
+        ([], TypeError, "has no canonical expressions"),
+    ],
+)
+def test_discovery_rejects_each_incomplete_canonical_layer(
+    expressions: object,
+    error_type: type[Exception],
+    message: str,
+) -> None:
+    """Every malformed Work/Expression/Manifestation layer fails closed."""
+    item = {
+        "work_id": "work:1",
+        "canonical_uri": "https://example.test/work/1",
+        "expressions": expressions,
+    }
+
+    with pytest.raises(error_type, match=message):
+        _build_discovered_work_targets([item])
 
 
 @pytest.mark.anyio
@@ -425,6 +474,108 @@ async def test_corrupt_cumulative_manifest_fails_closed(tmp_path: Path) -> None:
 
     with pytest.raises(ValueError, match="manifest"):
         await service.sync_works(targets=[], manifest_path=manifest)
+
+
+@pytest.mark.anyio
+@pytest.mark.parametrize(
+    ("payload", "message"),
+    [
+        ([], "valid manifest object"),
+        ({"records": ["invalid"]}, "invalid records"),
+        ({"records": [], "manifest_sha256": "bad"}, "root does not match"),
+    ],
+)
+async def test_structurally_invalid_cumulative_manifest_fails_closed(
+    tmp_path: Path,
+    payload: object,
+    message: str,
+) -> None:
+    """Parseable but structurally invalid cumulative evidence is rejected."""
+    manifest = tmp_path / "manifest.json"
+    manifest.write_text(json.dumps(payload), encoding="utf-8")
+    service = LegislationArchiveService(store=ContentAddressedStore(tmp_path / "cas"))
+
+    with pytest.raises((TypeError, ValueError), match=message):
+        await service.sync_works(targets=[], manifest_path=manifest)
+
+
+@pytest.mark.anyio
+@pytest.mark.parametrize(
+    "metadata",
+    [[], {"conditional_requests": []}],
+)
+async def test_invalid_conditional_checkpoint_metadata_is_ignored(
+    tmp_path: Path,
+    metadata: object,
+) -> None:
+    """Malformed optional validator state cannot contaminate a sync."""
+    checkpoint = tmp_path / "checkpoint.json"
+    checkpoint.write_text(json.dumps({"metadata": metadata}), encoding="utf-8")
+    service = LegislationArchiveService(store=ContentAddressedStore(tmp_path / "cas"))
+
+    result = await service.sync_works(targets=[], checkpoint_path=checkpoint)
+
+    assert result.status == "success"
+
+
+@pytest.mark.anyio
+async def test_checkpoint_and_manifest_roots_must_match(tmp_path: Path) -> None:
+    """A checkpoint cannot name a different cumulative manifest root."""
+    records: list[dict[str, object]] = []
+    manifest = tmp_path / "manifest.json"
+    manifest.write_text(
+        json.dumps(
+            {
+                "records": records,
+                "manifest_sha256": compute_legislation_manifest_sha256(records),
+            }
+        ),
+        encoding="utf-8",
+    )
+    checkpoint = tmp_path / "checkpoint.json"
+    checkpoint.write_text(
+        json.dumps({"metadata": {"manifest_sha256": "different"}}),
+        encoding="utf-8",
+    )
+    service = LegislationArchiveService(store=ContentAddressedStore(tmp_path / "cas"))
+
+    with pytest.raises(ValueError, match="checkpoint manifest root"):
+        await service.sync_works(
+            targets=[], checkpoint_path=checkpoint, manifest_path=manifest
+        )
+
+
+@pytest.mark.anyio
+async def test_invalid_normalised_record_is_not_preserved(tmp_path: Path) -> None:
+    """Adapter success cannot bypass canonical record validation."""
+    payload = b"<act><title>Invalid identity</title></act>"
+    async_client = httpx.AsyncClient(
+        transport=httpx.MockTransport(lambda _req: httpx.Response(200, content=payload))
+    )
+    service = LegislationArchiveService(
+        store=ContentAddressedStore(tmp_path / "cas"),
+        api_client=NZLegislationApiClient(async_client=async_client),
+    )
+    target = WorkTarget(
+        work_id="",
+        canonical_uri="invalid-uri",
+        expression_targets=[
+            ExpressionTarget(
+                expression_id="exp:invalid",
+                manifestations=[
+                    ManifestationTarget(
+                        manifestation_id="man:invalid",
+                        target_url="https://example.test/invalid.xml",
+                    )
+                ],
+            )
+        ],
+    )
+
+    result = await service.sync_works(targets=[target])
+
+    assert result.status == "failed"
+    assert any("canonical_uri" in error for error in result.errors)
 
 
 @pytest.mark.anyio
