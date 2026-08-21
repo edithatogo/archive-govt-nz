@@ -216,6 +216,34 @@ def test_api_client_get_document_raw_429_with_retry_after() -> None:
     assert calls == 2
 
 
+def test_api_client_get_document_raw_retries_accepted_generation() -> None:
+    """A pending public rendering is retried until the representation is ready."""
+    calls = 0
+    sleeps: list[float] = []
+
+    def handler(_req: httpx.Request) -> httpx.Response:
+        nonlocal calls
+        calls += 1
+        if calls == 1:
+            return httpx.Response(202, headers={"Retry-After": "1"})
+        return httpx.Response(200, content=b"<act/>")
+
+    client = NZLegislationApiClient(
+        client=httpx.Client(transport=httpx.MockTransport(handler)),
+        sleep_fn=sleeps.append,
+        min_interval_seconds=0,
+    )
+
+    status, content, _ = client.get_document_raw(
+        "https://www.legislation.govt.nz/act/imperial/1539/1/en/2008-01-01.xml"
+    )
+
+    assert status == HTTP_OK
+    assert content == b"<act/>"
+    assert calls == 2
+    assert sleeps == [1.0]
+
+
 def test_api_client_get_document_raw_500_exhaustion() -> None:
     """Test 500 server error retry exhaustion."""
 

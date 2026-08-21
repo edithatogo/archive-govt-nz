@@ -25,6 +25,7 @@ DEFAULT_MAX_RETRIES = 3
 DEFAULT_TIMEOUT_SECONDS = 30.0
 
 HTTP_OK = 200
+HTTP_ACCEPTED = 202
 HTTP_NOT_MODIFIED = 304
 HTTP_FORBIDDEN = 403
 HTTP_NOT_FOUND = 404
@@ -137,7 +138,7 @@ class NZLegislationApiClient:
         """Calculate if response status is retryable and sleep/backoff duration."""
         if attempts > self.max_retries:
             return False, backoff
-        if status == HTTP_TOO_MANY_REQUESTS:
+        if status in {HTTP_ACCEPTED, HTTP_TOO_MANY_REQUESTS}:
             return True, backoff
         if status == HTTP_FORBIDDEN and "burst" in text.lower():
             return True, backoff * 2
@@ -174,7 +175,7 @@ class NZLegislationApiClient:
                 if should_retry:
                     wait_time = (
                         self._parse_retry_after(resp.headers)
-                        if resp.status_code == HTTP_TOO_MANY_REQUESTS
+                        if resp.status_code in {HTTP_ACCEPTED, HTTP_TOO_MANY_REQUESTS}
                         else backoff
                     )
                     self._sleep_fn(wait_time)
@@ -224,7 +225,8 @@ class NZLegislationApiClient:
                     if should_retry:
                         wait_time = (
                             self._parse_retry_after(resp.headers)
-                            if resp.status_code == HTTP_TOO_MANY_REQUESTS
+                            if resp.status_code
+                            in {HTTP_ACCEPTED, HTTP_TOO_MANY_REQUESTS}
                             else backoff
                         )
                         await asyncio.sleep(wait_time)
