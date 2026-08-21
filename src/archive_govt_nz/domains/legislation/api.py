@@ -87,8 +87,7 @@ class NZLegislationApiClient:
     ) -> dict[str, str]:
         headers = {
             "User-Agent": (
-                "archive-govt-nz/0.1.0 (Preservation Bot; "
-                "+https://github.com/edithatogo/archive-govt-nz)"
+                "archive-govt-nz/0.1.0 (+https://github.com/edithatogo/archive-govt-nz)"
             ),
             "Accept": "application/xml, text/html, application/json;q=0.9",
         }
