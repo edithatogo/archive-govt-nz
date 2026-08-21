@@ -1530,22 +1530,31 @@ async def test_target_resolution_and_partial_sync(tmp_path: Path) -> None:
                 json={
                     "work_id": "act-disc-1",
                     "version_id": "exp:act-disc-1:latest",
+                    "version_date": "2026-01-01",
                     "title": "Discovered Act 1",
                     "canonical_uri": "https://example.test/work/act-disc-1",
                     "formats": [
                         {
                             "type": "text/html",
-                            "url": "https://example.test/act-disc-1/latest/",
+                            "url": "https://example.test/act-disc-1/latest.html",
                         },
                         {
                             "type": "application/xml",
-                            "url": "https://example.test/act-disc-1/whole.xml",
+                            "url": "https://example.test/act-disc-1/latest.xml",
                         },
                     ],
                 },
             )
         if path.endswith("/works/act-not-discovered/versions/"):
             return httpx.Response(200, json={"results": []})
+        if path.endswith("/act-disc-1/2026-01-01.xml"):
+            return httpx.Response(404)
+        if path.endswith("/act-disc-1/2026-01-01.html"):
+            return httpx.Response(
+                200,
+                headers={"content-type": "text/html"},
+                content=b"<html><title>OK Act</title></html>",
+            )
         if path.endswith("/works/"):
             return httpx.Response(
                 200,
@@ -1617,7 +1626,7 @@ async def test_target_resolution_and_partial_sync(tmp_path: Path) -> None:
     assert res_work_ids.records[0].work_id == "act-disc-1"
     assert res_work_ids.records[0].expression_id == "exp:act-disc-1:latest"
     assert res_work_ids.records[0].manifestation_id == (
-        "https://example.test/act-disc-1/whole.xml"
+        "https://example.test/act-disc-1/2026-01-01.html"
     )
 
     with pytest.raises(ValueError, match="not returned by canonical discovery"):
