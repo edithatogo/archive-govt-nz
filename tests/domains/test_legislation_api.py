@@ -23,6 +23,33 @@ def test_api_client_headers_with_key() -> None:
     assert headers["If-Modified-Since"] == "Mon, 18 Aug 2026 12:00:00 GMT"
 
 
+def test_api_client_loads_key_from_environment(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Production clients authenticate from the repository credential contract."""
+    monkeypatch.setenv("LEGISLATION_API_KEY", "environment-secret")
+    client = NZLegislationApiClient()
+    assert client._headers()["X-Api-Key"] == "environment-secret"
+
+
+def test_api_client_explicit_key_overrides_environment(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Dependency injection remains deterministic for tests and alternate callers."""
+    monkeypatch.setenv("LEGISLATION_API_KEY", "environment-secret")
+    client = NZLegislationApiClient(api_key="explicit-secret")
+    assert client._headers()["X-Api-Key"] == "explicit-secret"
+
+
+def test_api_client_explicit_empty_key_disables_environment(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """An explicit empty override permits intentional unauthenticated probes."""
+    monkeypatch.setenv("LEGISLATION_API_KEY", "environment-secret")
+    client = NZLegislationApiClient(api_key="")
+    assert "X-Api-Key" not in client._headers()
+
+
 def test_api_client_pacing() -> None:
     """Test deterministic pacing invokes sleep_fn."""
     slept: list[float] = []
