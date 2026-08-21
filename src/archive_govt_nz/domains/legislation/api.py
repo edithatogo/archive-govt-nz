@@ -23,6 +23,8 @@ DEFAULT_MIN_INTERVAL_SECONDS = 0.2
 DEFAULT_LOW_WATERMARK = 50
 DEFAULT_MAX_RETRIES = 3
 DEFAULT_TIMEOUT_SECONDS = 30.0
+OFFICIAL_API_ORIGIN = ("https", "api.legislation.govt.nz")
+OFFICIAL_MANIFESTATION_ORIGIN = ("https", "www.legislation.govt.nz")
 
 HTTP_OK = 200
 HTTP_ACCEPTED = 202
@@ -92,15 +94,14 @@ class NZLegislationApiClient:
         }
         api_origin = urlparse(self.base_url)
         target_origin = urlparse(target_url) if target_url else api_origin
-        if self.api_key and (
-            target_origin.scheme,
-            target_origin.netloc,
-        ) == (api_origin.scheme, api_origin.netloc):
+        api_origin_key = (api_origin.scheme, api_origin.netloc)
+        target_origin_key = (target_origin.scheme, target_origin.netloc)
+        credential_origins = {api_origin_key}
+        if api_origin_key == OFFICIAL_API_ORIGIN:
+            credential_origins.add(OFFICIAL_MANIFESTATION_ORIGIN)
+        if self.api_key and target_origin_key in credential_origins:
             headers["X-Api-Key"] = self.api_key
-        if target_url and (
-            target_origin.scheme,
-            target_origin.netloc,
-        ) != (api_origin.scheme, api_origin.netloc):
+        if target_url and target_origin_key != api_origin_key:
             headers["Cache-Control"] = "no-cache"
         if etag:
             headers["If-None-Match"] = etag
