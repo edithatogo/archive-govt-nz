@@ -6,6 +6,7 @@ import asyncio
 import contextlib
 import json
 import logging
+import os
 import time
 from typing import TYPE_CHECKING, Any
 from urllib.parse import urljoin
@@ -40,7 +41,7 @@ class NZLegislationApiClient:
 
     def __init__(
         self,
-        api_key: str = "",
+        api_key: str | None = None,
         base_url: str = DEFAULT_BASE_URL,
         min_interval_seconds: float = DEFAULT_MIN_INTERVAL_SECONDS,
         max_retries: int = DEFAULT_MAX_RETRIES,
@@ -51,7 +52,9 @@ class NZLegislationApiClient:
         sleep_fn: Callable[[float], None] = time.sleep,
     ) -> None:
         """Initialize legislation API client."""
-        self.api_key = api_key
+        self.api_key = (
+            os.environ.get("LEGISLATION_API_KEY", "") if api_key is None else api_key
+        )
         self.base_url = base_url.rstrip("/") + "/"
         self.min_interval_seconds = min_interval_seconds
         self.max_retries = max_retries
