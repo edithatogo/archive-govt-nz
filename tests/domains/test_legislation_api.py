@@ -21,6 +21,10 @@ def test_api_client_headers_with_key() -> None:
     assert headers["X-Api-Key"] == "secret-123"
     assert headers["If-None-Match"] == '"etag-xyz"'
     assert headers["If-Modified-Since"] == "Mon, 18 Aug 2026 12:00:00 GMT"
+    assert headers["User-Agent"] == (
+        "archive-govt-nz/0.1.0 (+https://github.com/edithatogo/archive-govt-nz)"
+    )
+    assert "Preservation Bot" not in headers["User-Agent"]
 
 
 def test_api_client_loads_key_from_environment(
