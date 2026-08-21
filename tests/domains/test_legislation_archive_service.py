@@ -1520,7 +1520,7 @@ async def test_target_resolution_and_partial_sync(tmp_path: Path) -> None:
                         {
                             "work_id": "act-disc-1",
                             "version_id": "exp:act-disc-1:latest",
-                        }
+                        },
                     ]
                 },
             )
@@ -1534,9 +1534,13 @@ async def test_target_resolution_and_partial_sync(tmp_path: Path) -> None:
                     "canonical_uri": "https://example.test/work/act-disc-1",
                     "formats": [
                         {
+                            "type": "text/html",
+                            "url": "https://example.test/act-disc-1/latest/",
+                        },
+                        {
                             "type": "application/xml",
                             "url": "https://example.test/act-disc-1/whole.xml",
-                        }
+                        },
                     ],
                 },
             )

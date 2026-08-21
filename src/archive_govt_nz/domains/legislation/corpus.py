@@ -87,6 +87,26 @@ class LegislationSyncResult:
     errors: list[str] = field(default_factory=list)
 
 
+def _primary_manifestation(
+    manifestations: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    """Select one deterministic preservation format: XML, then HTML, then PDF."""
+
+    def priority(item: dict[str, Any]) -> tuple[int, str]:
+        media_type = str(item.get("media_type") or "").lower()
+        if "xml" in media_type:
+            rank = 0
+        elif "html" in media_type:
+            rank = 1
+        elif "pdf" in media_type:
+            rank = 2
+        else:
+            rank = 3
+        return rank, str(item.get("source_url") or "")
+
+    return sorted(manifestations, key=priority)[:1]
+
+
 def _build_discovered_work_targets(  # noqa: C901
     items: list[dict[str, Any]],
 ) -> list[WorkTarget]:
@@ -493,6 +513,7 @@ class LegislationArchiveService:
                                 or "application/octet-stream",
                             }
                         )
+                manifestations = _primary_manifestation(manifestations)
                 canonical_uri = str(
                     version.get("canonical_uri")
                     or version.get("canonical_url")
