@@ -85,11 +85,15 @@ class NZLegislationApiClient:
         last_modified: str | None = None,
         target_url: str | None = None,
     ) -> dict[str, str]:
+        accept = "application/json"
+        if target_url:
+            target_path = urlparse(target_url).path.rstrip("/").lower()
+            accept = "application/xml" if target_path.endswith(".xml") else "text/html"
         headers = {
             "User-Agent": (
                 "archive-govt-nz/0.1.0 (+https://github.com/edithatogo/archive-govt-nz)"
             ),
-            "Accept": "application/xml, text/html, application/json;q=0.9",
+            "Accept": accept,
         }
         api_origin = urlparse(self.base_url)
         target_origin = urlparse(target_url) if target_url else api_origin
