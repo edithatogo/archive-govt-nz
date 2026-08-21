@@ -433,7 +433,7 @@ class LegislationArchiveService:
             html_fallback_count=html_count,
         )
 
-    def _resolve_targets(
+    def _resolve_targets(  # noqa: C901, PLR0912
         self,
         work_ids: list[str] | None = None,
         search_terms: list[str] | None = None,
@@ -457,20 +457,60 @@ class LegislationArchiveService:
                     work_id, "work", seen_requested_ids, required=True
                 )
                 requested_ids.append(work_id)
-            inventory = build_work_inventory(
-                self.api_client,
-                search_terms=requested_ids,
-                max_works=None,
-            )
-            discovered_items = inventory.get("works", [])
-            discovered_by_id = {
-                str(item.get("work_id", "")).strip(): item
-                for item in discovered_items
-                if isinstance(item, dict)
-            }
-            missing_ids = [
-                work_id for work_id in requested_ids if work_id not in discovered_by_id
-            ]
+            discovered_by_id: dict[str, dict[str, Any]] = {}
+            missing_ids: list[str] = []
+            for work_id in requested_ids:
+                versions = list(self.api_client.iter_work_versions(work_id))
+                if not versions:
+                    missing_ids.append(work_id)
+                    continue
+                version_id = str(versions[0].get("version_id") or "").strip()
+                if not version_id:
+                    msg = (
+                        f"discovered work {work_id} lacks canonical expression identity"
+                    )
+                    raise ValueError(msg)
+                version = self.api_client.get_version(version_id)
+                discovered_work_id = str(version.get("work_id") or "").strip()
+                if discovered_work_id != work_id:
+                    msg = (
+                        "discovered expression "
+                        f"{version_id} has mismatched work identity"
+                    )
+                    raise ValueError(msg)
+                manifestations = []
+                for item in version.get("formats", []) or []:
+                    if not isinstance(item, dict):
+                        continue
+                    source_url = str(item.get("url") or "").strip()
+                    if source_url:
+                        manifestations.append(
+                            {
+                                "manifestation_id": source_url,
+                                "source_url": source_url,
+                                "media_type": item.get("media_type")
+                                or item.get("type")
+                                or "application/octet-stream",
+                            }
+                        )
+                canonical_uri = str(
+                    version.get("canonical_uri")
+                    or version.get("canonical_url")
+                    or (manifestations[0]["source_url"] if manifestations else "")
+                ).strip()
+                discovered_by_id[work_id] = {
+                    "work_id": work_id,
+                    "title": version.get("title", ""),
+                    "canonical_uri": canonical_uri,
+                    "expressions": [
+                        {
+                            "expression_id": version_id,
+                            "version_date": version.get("version_date"),
+                            "version_label": version.get("version_label"),
+                            "manifestations": manifestations,
+                        }
+                    ],
+                }
             if missing_ids:
                 msg = (
                     "requested work identities were not returned by canonical "
