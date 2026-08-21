@@ -269,6 +269,57 @@ def test_api_client_get_document_raw_retries_accepted_generation() -> None:
     assert sleeps == [1.0]
 
 
+def test_official_manifestation_404_retries_without_capability() -> None:
+    """An authenticated website miss retries the same canonical URL publicly."""
+    observed_keys: list[str | None] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        observed_keys.append(request.headers.get("X-Api-Key"))
+        if len(observed_keys) == 1:
+            return httpx.Response(404)
+        return httpx.Response(200, content=b"<act/>")
+
+    client = NZLegislationApiClient(
+        "bounded-capability",
+        client=httpx.Client(transport=httpx.MockTransport(handler)),
+        min_interval_seconds=0,
+    )
+
+    status, content, _ = client.get_document_raw(
+        "https://www.legislation.govt.nz/act/local/1844/1/en/1844-07-11/"
+    )
+
+    assert status == HTTP_OK
+    assert content == b"<act/>"
+    assert observed_keys == ["bounded-capability", None]
+
+
+@pytest.mark.anyio
+async def test_official_manifestation_async_404_retries_without_capability() -> None:
+    """The async acquisition path applies the same exact-host fallback."""
+    observed_keys: list[str | None] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        observed_keys.append(request.headers.get("X-Api-Key"))
+        if len(observed_keys) == 1:
+            return httpx.Response(404)
+        return httpx.Response(200, content=b"<act/>")
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as http_client:
+        client = NZLegislationApiClient(
+            "bounded-capability",
+            async_client=http_client,
+            min_interval_seconds=0,
+        )
+        status, content, _ = await client.get_document_raw_async(
+            "https://www.legislation.govt.nz/act/local/1844/1/en/1844-07-11/"
+        )
+
+    assert status == HTTP_OK
+    assert content == b"<act/>"
+    assert observed_keys == ["bounded-capability", None]
+
+
 def test_api_client_get_document_raw_500_exhaustion() -> None:
     """Test 500 server error retry exhaustion."""
 
