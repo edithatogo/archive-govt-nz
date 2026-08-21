@@ -128,7 +128,7 @@ async def test_discovery_preserves_canonical_frbr_identities(tmp_path: Path) -> 
     payload = b'<act status="in-force"><title>Canonical Act</title></act>'
 
     def handler(req: httpx.Request) -> httpx.Response:
-        if req.url.path.endswith("/works"):
+        if req.url.path.endswith("/works/"):
             return httpx.Response(
                 200,
                 json=[
@@ -1510,9 +1510,39 @@ async def test_target_resolution_and_partial_sync(tmp_path: Path) -> None:
     chk_path = tmp_path / "checkpoints" / "partial.json"
     store = ContentAddressedStore(cas_dir)
 
-    def handler(req: httpx.Request) -> httpx.Response:
+    def handler(req: httpx.Request) -> httpx.Response:  # noqa: PLR0911
         path = req.url.path
-        if "works" in path:
+        if path.endswith("/works/act-disc-1/versions/"):
+            return httpx.Response(
+                200,
+                json={
+                    "results": [
+                        {
+                            "work_id": "act-disc-1",
+                            "version_id": "exp:act-disc-1:latest",
+                        }
+                    ]
+                },
+            )
+        if path.endswith("/versions/exp:act-disc-1:latest/"):
+            return httpx.Response(
+                200,
+                json={
+                    "work_id": "act-disc-1",
+                    "version_id": "exp:act-disc-1:latest",
+                    "title": "Discovered Act 1",
+                    "canonical_uri": "https://example.test/work/act-disc-1",
+                    "formats": [
+                        {
+                            "type": "application/xml",
+                            "url": "https://example.test/act-disc-1/whole.xml",
+                        }
+                    ],
+                },
+            )
+        if path.endswith("/works/act-not-discovered/versions/"):
+            return httpx.Response(200, json={"results": []})
+        if path.endswith("/works/"):
             return httpx.Response(
                 200,
                 json=[
@@ -1582,7 +1612,9 @@ async def test_target_resolution_and_partial_sync(tmp_path: Path) -> None:
     assert res_work_ids.records_preserved == 1
     assert res_work_ids.records[0].work_id == "act-disc-1"
     assert res_work_ids.records[0].expression_id == "exp:act-disc-1:latest"
-    assert res_work_ids.records[0].manifestation_id == "man:act-disc-1:xml"
+    assert res_work_ids.records[0].manifestation_id == (
+        "https://example.test/act-disc-1/whole.xml"
+    )
 
     with pytest.raises(ValueError, match="not returned by canonical discovery"):
         await service.sync_works(work_ids=["act-not-discovered"])

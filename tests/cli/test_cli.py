@@ -538,37 +538,34 @@ def test_cli_legislation_sync_and_no_change(
     ) -> tuple[int, bytes, dict[str, str]]:
         return 200, xml_content, {"content-type": "application/xml"}
 
-    def mock_iter_search(
-        _self: object, search_term: str, **_kwargs: object
+    def mock_iter_versions(
+        _self: object, work_id: str, **_kwargs: object
     ) -> list[dict[str, object]]:
-        return [
-            {
-                "work_id": search_term,
-                "title": "Ombudsmen Act 1975",
-                "canonical_uri": f"https://example.test/work/{search_term}",
-                "expressions": [
-                    {
-                        "expression_id": f"exp:{search_term}:latest",
-                        "manifestations": [
-                            {
-                                "manifestation_id": f"man:{search_term}:xml",
-                                "source_url": (
-                                    f"https://example.test/{search_term}/whole.xml"
-                                ),
-                            }
-                        ],
-                    }
-                ],
-            }
-        ]
+        return [{"work_id": work_id, "version_id": f"exp:{work_id}:latest"}]
+
+    def mock_get_version(_self: object, version_id: str) -> dict[str, object]:
+        work_id = version_id.removeprefix("exp:").removesuffix(":latest")
+        return {
+            "work_id": work_id,
+            "version_id": version_id,
+            "title": "Ombudsmen Act 1975",
+            "canonical_uri": f"https://example.test/work/{work_id}",
+            "formats": [
+                {"type": "xml", "url": f"https://example.test/{work_id}/whole.xml"}
+            ],
+        }
 
     monkeypatch.setattr(
         "archive_govt_nz.domains.legislation.api.NZLegislationApiClient.get_document_raw_async",
         mock_get_doc,
     )
     monkeypatch.setattr(
-        "archive_govt_nz.domains.legislation.api.NZLegislationApiClient.iter_search_works",
-        mock_iter_search,
+        "archive_govt_nz.domains.legislation.api.NZLegislationApiClient.iter_work_versions",
+        mock_iter_versions,
+    )
+    monkeypatch.setattr(
+        "archive_govt_nz.domains.legislation.api.NZLegislationApiClient.get_version",
+        mock_get_version,
     )
 
     code_sync1 = legislation(
@@ -1083,37 +1080,34 @@ def test_cli_legislation_sync_partial_and_total_failure(
             return 200, xml, {"content-type": "application/xml"}
         return 500, b"", {}
 
-    def mock_iter_search(
-        _self: object, search_term: str, **_kwargs: object
+    def mock_iter_versions(
+        _self: object, work_id: str, **_kwargs: object
     ) -> list[dict[str, object]]:
-        return [
-            {
-                "work_id": search_term,
-                "title": f"Test {search_term}",
-                "canonical_uri": f"https://example.test/work/{search_term}",
-                "expressions": [
-                    {
-                        "expression_id": f"exp:{search_term}:latest",
-                        "manifestations": [
-                            {
-                                "manifestation_id": f"man:{search_term}:xml",
-                                "source_url": (
-                                    f"https://example.test/{search_term}/whole.xml"
-                                ),
-                            }
-                        ],
-                    }
-                ],
-            }
-        ]
+        return [{"work_id": work_id, "version_id": f"exp:{work_id}:latest"}]
+
+    def mock_get_version(_self: object, version_id: str) -> dict[str, object]:
+        work_id = version_id.removeprefix("exp:").removesuffix(":latest")
+        return {
+            "work_id": work_id,
+            "version_id": version_id,
+            "title": f"Test {work_id}",
+            "canonical_uri": f"https://example.test/work/{work_id}",
+            "formats": [
+                {"type": "xml", "url": f"https://example.test/{work_id}/whole.xml"}
+            ],
+        }
 
     monkeypatch.setattr(
         "archive_govt_nz.domains.legislation.api.NZLegislationApiClient.get_document_raw_async",
         mock_mixed_doc,
     )
     monkeypatch.setattr(
-        "archive_govt_nz.domains.legislation.api.NZLegislationApiClient.iter_search_works",
-        mock_iter_search,
+        "archive_govt_nz.domains.legislation.api.NZLegislationApiClient.iter_work_versions",
+        mock_iter_versions,
+    )
+    monkeypatch.setattr(
+        "archive_govt_nz.domains.legislation.api.NZLegislationApiClient.get_version",
+        mock_get_version,
     )
 
     code_partial = legislation(
