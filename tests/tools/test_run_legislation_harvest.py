@@ -166,6 +166,39 @@ def test_sync_routes_exact_work_ids_to_service(tmp_path: Path) -> None:
     assert "search_terms" not in calls[0]
 
 
+def test_sync_routes_explicit_force_resync_to_service(tmp_path: Path) -> None:
+    """A bounded canary can revalidate prior work instead of skipping it."""
+    calls: list[dict[str, object]] = []
+
+    class FakeService:
+        async def sync_works(self, **kwargs: object) -> SimpleNamespace:
+            calls.append(kwargs)
+            return SimpleNamespace(
+                status="no_change",
+                works_attempted=1,
+                works_synced=0,
+                records_preserved=0,
+                errors=[],
+                manifest={
+                    "manifest_sha256": "a" * 64,
+                    "discovered_works_count": 1,
+                },
+                checkpoint={"metadata": {"manifest_sha256": "a" * 64}},
+            )
+
+    sync_legislation_records(
+        FakeService(),
+        search_terms=None,
+        work_ids=["act_public_2024_1"],
+        batch_id="bounded-live-canary-0001",
+        checkpoint_path=tmp_path / "checkpoint.json",
+        manifest_path=tmp_path / "manifest.json",
+        max_works=1,
+        force_resync=True,
+    )
+    assert calls[0]["force_resync"] is True
+
+
 @pytest.mark.parametrize(
     ("service_status", "expected"),
     [
