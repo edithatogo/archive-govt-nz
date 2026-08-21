@@ -50,6 +50,20 @@ def test_api_client_explicit_empty_key_disables_environment(
     assert "X-Api-Key" not in client._headers()
 
 
+def test_api_key_is_not_forwarded_to_public_manifestation_origin() -> None:
+    """The private API capability must never be sent to public delivery hosts."""
+    client = NZLegislationApiClient(api_key="private-capability")
+
+    headers = client._headers(
+        target_url="https://www.legislation.govt.nz/act/public/2026/1/latest.xml"
+    )
+
+    assert "X-Api-Key" not in headers
+    assert client._headers(target_url=client._url("works/"))["X-Api-Key"] == (
+        "private-capability"
+    )
+
+
 def test_api_client_pacing() -> None:
     """Test deterministic pacing invokes sleep_fn."""
     slept: list[float] = []

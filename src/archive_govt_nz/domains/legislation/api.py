@@ -9,7 +9,7 @@ import logging
 import os
 import time
 from typing import TYPE_CHECKING, Any
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlparse
 
 import httpx
 
@@ -77,7 +77,10 @@ class NZLegislationApiClient:
             self._sleep_fn(wait)
 
     def _headers(
-        self, etag: str | None = None, last_modified: str | None = None
+        self,
+        etag: str | None = None,
+        last_modified: str | None = None,
+        target_url: str | None = None,
     ) -> dict[str, str]:
         headers = {
             "User-Agent": (
@@ -86,7 +89,12 @@ class NZLegislationApiClient:
             ),
             "Accept": "application/xml, text/html, application/json;q=0.9",
         }
-        if self.api_key:
+        api_origin = urlparse(self.base_url)
+        target_origin = urlparse(target_url) if target_url else api_origin
+        if self.api_key and (
+            target_origin.scheme,
+            target_origin.netloc,
+        ) == (api_origin.scheme, api_origin.netloc):
             headers["X-Api-Key"] = self.api_key
         if etag:
             headers["If-None-Match"] = etag
@@ -145,7 +153,9 @@ class NZLegislationApiClient:
     ) -> tuple[int, bytes, dict[str, str]]:
         """Fetch raw XML or HTML document content from URL with pacing and retries."""
         client = self._client or httpx.Client(timeout=self.timeout)
-        headers = self._headers(etag=etag, last_modified=last_modified)
+        headers = self._headers(
+            etag=etag, last_modified=last_modified, target_url=target_url
+        )
 
         attempts = 0
         backoff = 1.0
@@ -189,7 +199,9 @@ class NZLegislationApiClient:
     ) -> tuple[int, bytes, dict[str, str]]:
         """Fetch raw XML/HTML asynchronously with pacing and retries."""
         async_client = self._async_client or httpx.AsyncClient(timeout=self.timeout)
-        headers = self._headers(etag=etag, last_modified=last_modified)
+        headers = self._headers(
+            etag=etag, last_modified=last_modified, target_url=target_url
+        )
 
         attempts = 0
         backoff = 1.0
