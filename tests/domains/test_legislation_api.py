@@ -50,20 +50,43 @@ def test_api_client_explicit_empty_key_disables_environment(
     assert "X-Api-Key" not in client._headers()
 
 
-def test_api_key_is_not_forwarded_to_public_manifestation_origin() -> None:
-    """The private API capability must never be sent to public delivery hosts."""
+def test_api_key_is_forwarded_only_to_official_manifestation_origin() -> None:
+    """The capability follows API-provided formats only to the exact PCO host."""
     client = NZLegislationApiClient(api_key="private-capability")
 
     headers = client._headers(
         target_url="https://www.legislation.govt.nz/act/public/2026/1/latest.xml"
     )
 
-    assert "X-Api-Key" not in headers
+    assert headers["X-Api-Key"] == "private-capability"
     assert headers["Cache-Control"] == "no-cache"
     assert client._headers(target_url=client._url("works/"))["X-Api-Key"] == (
         "private-capability"
     )
     assert "Cache-Control" not in client._headers(target_url=client._url("works/"))
+
+    rejected_targets = (
+        "http://www.legislation.govt.nz/act/public/2026/1/latest.xml",
+        "https://www.legislation.govt.nz.evil.test/act/1.xml",
+        "https://www.legislation.govt.nz:8443/act/public/2026/1/latest.xml",
+        "https://legislation.govt.nz/act/public/2026/1/latest.xml",
+    )
+    for target in rejected_targets:
+        assert "X-Api-Key" not in client._headers(target_url=target)
+
+
+def test_custom_api_key_is_not_forwarded_to_official_manifestation_origin() -> None:
+    """A key for an injected API origin is scoped only to that configured origin."""
+    client = NZLegislationApiClient(
+        "custom-capability", base_url="https://api.example.test/v0/"
+    )
+
+    assert client._headers(target_url=client._url("works/"))["X-Api-Key"] == (
+        "custom-capability"
+    )
+    assert "X-Api-Key" not in client._headers(
+        target_url="https://www.legislation.govt.nz/act/public/2026/1/latest.xml"
+    )
 
 
 def test_api_client_pacing() -> None:
