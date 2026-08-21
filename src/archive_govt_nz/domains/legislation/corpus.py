@@ -60,6 +60,7 @@ class ExpressionTarget:
     version_date: str | None = None
     version_label: str | None = None
     manifestations: list[ManifestationTarget] = field(default_factory=list)
+    fallback_manifestations: bool = False
 
 
 @dataclass(frozen=True, slots=True)
@@ -90,7 +91,7 @@ class LegislationSyncResult:
 def _primary_manifestation(
     manifestations: list[dict[str, Any]],
 ) -> list[dict[str, Any]]:
-    """Select one deterministic preservation format: XML, then HTML, then PDF."""
+    """Order deterministic preservation fallbacks: XML, then HTML."""
 
     def priority(item: dict[str, Any]) -> tuple[int, str]:
         media_type = str(item.get("media_type") or "").lower()
@@ -104,7 +105,15 @@ def _primary_manifestation(
             rank = 3
         return rank, str(item.get("source_url") or "")
 
-    return sorted(manifestations, key=priority)[:1]
+    eligible = [
+        item
+        for item in manifestations
+        if any(
+            kind in str(item.get("media_type") or "").lower()
+            for kind in ("xml", "html")
+        )
+    ]
+    return sorted(eligible, key=priority)
 
 
 def _build_discovered_work_targets(  # noqa: C901
@@ -168,6 +177,9 @@ def _build_discovered_work_targets(  # noqa: C901
                     version_date=expression.get("version_date"),
                     version_label=expression.get("version_label"),
                     manifestations=manifestation_targets,
+                    fallback_manifestations=bool(
+                        expression.get("fallback_manifestations", False)
+                    ),
                 )
             )
 
@@ -453,7 +465,7 @@ class LegislationArchiveService:
             html_fallback_count=html_count,
         )
 
-    def _resolve_targets(  # noqa: C901, PLR0912
+    def _resolve_targets(  # noqa: C901, PLR0912, PLR0915
         self,
         work_ids: list[str] | None = None,
         search_terms: list[str] | None = None,
@@ -498,12 +510,20 @@ class LegislationArchiveService:
                         f"{version_id} has mismatched work identity"
                     )
                     raise ValueError(msg)
+                version_date = str(version.get("version_date") or "").strip()
+                if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", version_date):
+                    match = re.search(r"\d{4}-\d{2}-\d{2}", version_id)
+                    version_date = match.group(0) if match else ""
                 manifestations = []
                 for item in version.get("formats", []) or []:
                     if not isinstance(item, dict):
                         continue
                     source_url = str(item.get("url") or "").strip()
                     if source_url:
+                        if version_date and "/latest" in source_url:
+                            source_url = source_url.replace(
+                                "/latest", f"/{version_date}", 1
+                            )
                         manifestations.append(
                             {
                                 "manifestation_id": source_url,
@@ -526,9 +546,10 @@ class LegislationArchiveService:
                     "expressions": [
                         {
                             "expression_id": version_id,
-                            "version_date": version.get("version_date"),
+                            "version_date": version_date or None,
                             "version_label": version.get("version_label"),
                             "manifestations": manifestations,
+                            "fallback_manifestations": True,
                         }
                     ],
                 }
@@ -723,7 +744,7 @@ class LegislationArchiveService:
 
         return record, [], "captured", validators
 
-    async def _sync_target_manifestations(
+    async def _sync_target_manifestations(  # noqa: C901
         self,
         target: WorkTarget,
         retrieval_time: str,
@@ -742,6 +763,8 @@ class LegislationArchiveService:
         updated_conditionals: dict[str, dict[str, str]] = {}
 
         for exp in target.expression_targets:
+            fallback_errors: list[str] = []
+            fallback_succeeded = False
             for man in exp.manifestations:
                 key = man.manifestation_id or man.target_url
                 rec, man_errs, outcome, validators = await self._sync_manifestation(
@@ -757,12 +780,25 @@ class LegislationArchiveService:
                 if outcome == "no_change":
                     no_change_count += 1
                 if man_errs:
+                    if exp.fallback_manifestations:
+                        fallback_errors.extend(man_errs)
+                        continue
                     errors.extend(man_errs)
                     has_error = True
                     if fail_fast:
                         return recs, errors, True, no_change_count, updated_conditionals
                 if rec is not None:
                     recs.append(rec)
+                if exp.fallback_manifestations and (
+                    rec is not None or outcome == "no_change"
+                ):
+                    fallback_succeeded = True
+                    break
+            if exp.fallback_manifestations and not fallback_succeeded:
+                errors.extend(fallback_errors)
+                has_error = True
+                if fail_fast:
+                    return recs, errors, True, no_change_count, updated_conditionals
 
         return recs, errors, has_error, no_change_count, updated_conditionals
 
