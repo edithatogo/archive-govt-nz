@@ -101,6 +101,7 @@ def test_sync_routes_discovery_and_state_to_service(tmp_path: Path) -> None:
     report = sync_legislation_records(
         FakeService(),
         search_terms=["acts"],
+        work_ids=None,
         batch_id="batch-a",
         checkpoint_path=tmp_path / "checkpoint.json",
         manifest_path=tmp_path / "manifest.json",
@@ -109,6 +110,39 @@ def test_sync_routes_discovery_and_state_to_service(tmp_path: Path) -> None:
     assert calls[0]["search_terms"] == ["acts"]
     assert calls[0]["fail_fast"] is True
     assert report["manifest_sha256"] == "a" * 64
+
+
+def test_sync_routes_exact_work_ids_to_service(tmp_path: Path) -> None:
+    """Explicit donor identities use exact service discovery, not free-text search."""
+    calls: list[dict[str, object]] = []
+
+    class FakeService:
+        async def sync_works(self, **kwargs: object) -> SimpleNamespace:
+            calls.append(kwargs)
+            return SimpleNamespace(
+                status="success",
+                works_attempted=2,
+                works_synced=2,
+                records_preserved=2,
+                errors=[],
+                manifest={
+                    "manifest_sha256": "a" * 64,
+                    "discovered_works_count": 2,
+                },
+                checkpoint={},
+            )
+
+    sync_legislation_records(
+        FakeService(),
+        search_terms=None,
+        work_ids=["act_public_2024_1", "act_public_2024_2"],
+        batch_id="historical-work-ids-0001",
+        checkpoint_path=tmp_path / "checkpoint.json",
+        manifest_path=tmp_path / "manifest.json",
+        max_works=2,
+    )
+    assert calls[0]["work_ids"] == ["act_public_2024_1", "act_public_2024_2"]
+    assert "search_terms" not in calls[0]
 
 
 @pytest.mark.parametrize(
@@ -165,6 +199,62 @@ def test_run_harvest_rejects_unbounded_or_empty_dispatch(
     receipt = json.loads(arguments["receipt_path"].read_text(encoding="utf-8"))
     assert receipt["outcome"] == "failed"
     assert receipt["state_committed"] is False
+
+
+def test_run_harvest_requires_exact_explicit_batch_bound(tmp_path: Path) -> None:
+    """An explicit donor batch cannot be silently truncated by max_works."""
+    arguments = _paths(tmp_path)
+    arguments.update(
+        search_terms=None,
+        work_ids=["act_public_2024_1", "act_public_2024_2"],
+        max_works=1,
+    )
+    assert run_harvest(**arguments) == 1
+    receipt = json.loads(arguments["receipt_path"].read_text(encoding="utf-8"))
+    assert receipt["outcome"] == "failed"
+
+
+def test_main_accepts_exact_work_id_batch(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Parse an explicit donor work-ID file as an exact discovery scope."""
+    arguments = _paths(tmp_path)
+    work_ids_path = tmp_path / "batch.txt"
+    work_ids_path.write_text("act_public_2024_1\nact_public_2024_2\n", encoding="utf-8")
+    monkeypatch.setattr(
+        "sys.argv",
+        [
+            "run_legislation_harvest.py",
+            "--source-set-config",
+            str(arguments["config_path"]),
+            "--checkpoint-path",
+            str(arguments["checkpoint_path"]),
+            "--manifest-path",
+            str(arguments["manifest_path"]),
+            "--receipt-path",
+            str(arguments["receipt_path"]),
+            "--cas-path",
+            str(arguments["cas_path"]),
+            "--batch-id",
+            arguments["batch_id"],
+            "--work-ids-file",
+            str(work_ids_path),
+            "--max-works",
+            "2",
+        ],
+    )
+    captured: dict[str, object] = {}
+
+    def _no_change(*_args: object, **kwargs: object) -> dict[str, object]:
+        captured.update(kwargs)
+        return {"status": "no_change", "errors": [], "checkpoint": {}}
+
+    monkeypatch.setattr(_MODULE, "sync_legislation_records", _no_change)
+    with pytest.raises(SystemExit) as raised:
+        main()
+    assert raised.value.code == 0
+    assert captured["work_ids"] == ["act_public_2024_1", "act_public_2024_2"]
+    assert captured["search_terms"] is None
 
 
 def test_main_requires_explicit_state_and_scope(

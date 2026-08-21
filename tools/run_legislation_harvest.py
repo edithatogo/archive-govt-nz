@@ -49,15 +49,25 @@ def check_credentials_presence() -> dict[str, bool]:
 def sync_legislation_records(  # noqa: PLR0913
     service: LegislationArchiveService,
     *,
-    search_terms: list[str],
+    search_terms: list[str] | None,
+    work_ids: list[str] | None,
     batch_id: str,
     checkpoint_path: Path,
     manifest_path: Path,
     max_works: int,
 ) -> dict[str, Any]:
     """Execute bounded discovery and acquisition through the canonical service."""
-    result = asyncio.run(
-        service.sync_works(
+    if work_ids is not None:
+        operation = service.sync_works(
+            work_ids=work_ids,
+            checkpoint_path=checkpoint_path,
+            manifest_path=manifest_path,
+            batch_id=batch_id,
+            max_works=max_works,
+            fail_fast=True,
+        )
+    else:
+        operation = service.sync_works(
             search_terms=search_terms,
             checkpoint_path=checkpoint_path,
             manifest_path=manifest_path,
@@ -65,7 +75,7 @@ def sync_legislation_records(  # noqa: PLR0913
             max_works=max_works,
             fail_fast=True,
         )
-    )
+    result = asyncio.run(operation)
     return {
         "status": result.status,
         "works_attempted": result.works_attempted,
@@ -79,18 +89,26 @@ def sync_legislation_records(  # noqa: PLR0913
 
 
 def _validate_execution_inputs(
-    batch_id: str, search_terms: list[str], max_works: int
+    batch_id: str,
+    search_terms: list[str] | None,
+    work_ids: list[str] | None,
+    max_works: int,
 ) -> None:
     if not batch_id or batch_id != batch_id.strip():
         message = "A non-empty canonical batch ID is required"
         raise ValueError(message)
-    if not search_terms or any(
-        not term or term != term.strip() for term in search_terms
-    ):
-        message = "At least one non-empty discovery search term is required"
+    if (search_terms is None) == (work_ids is None):
+        message = "Exactly one discovery scope is required"
+        raise ValueError(message)
+    scope = work_ids if work_ids is not None else search_terms
+    if not scope or any(not item or item != item.strip() for item in scope):
+        message = "Discovery scope must contain non-empty canonical values"
         raise ValueError(message)
     if max_works <= 0:
         message = "max_works must be a positive bound"
+        raise ValueError(message)
+    if work_ids is not None and max_works != len(work_ids):
+        message = "Explicit work-ID batches require max_works to equal batch size"
         raise ValueError(message)
 
 
@@ -102,17 +120,19 @@ def run_harvest(  # noqa: PLR0913
     receipt_path: Path,
     cas_path: Path,
     batch_id: str,
-    search_terms: list[str],
+    search_terms: list[str] | None,
     max_works: int,
+    work_ids: list[str] | None = None,
 ) -> int:
     """Run one explicitly bounded, state-authenticated harvest attempt."""
     try:
         config = validate_source_set_config(config_path)
-        _validate_execution_inputs(batch_id, search_terms, max_works)
+        _validate_execution_inputs(batch_id, search_terms, work_ids, max_works)
         service = LegislationArchiveService(ContentAddressedStore(cas_path))
         report = sync_legislation_records(
             service,
             search_terms=search_terms,
+            work_ids=work_ids,
             batch_id=batch_id,
             checkpoint_path=checkpoint_path,
             manifest_path=manifest_path,
@@ -137,7 +157,8 @@ def run_harvest(  # noqa: PLR0913
         "schema_version": "archive-govt-nz.legislation-harvest-receipt/v2",
         "source_set": "legislation",
         "batch_id": batch_id,
-        "search_terms": search_terms,
+        "search_terms": search_terms or [],
+        "work_ids": work_ids or [],
         "max_works": max_works,
         "outcome": outcome,
         "works_attempted": int(report.get("works_attempted", 0)),
@@ -173,6 +194,7 @@ def main() -> None:
     search_scope = parser.add_mutually_exclusive_group(required=True)
     search_scope.add_argument("--search-term", action="append")
     search_scope.add_argument("--search-terms-file", type=Path)
+    search_scope.add_argument("--work-ids-file", type=Path)
     parser.add_argument("--max-works", type=int, required=True)
     arguments = parser.parse_args()
     search_terms = arguments.search_term
@@ -182,6 +204,13 @@ def main() -> None:
             for line in arguments.search_terms_file.read_text(
                 encoding="utf-8"
             ).splitlines()
+            if line.strip()
+        ]
+    work_ids = None
+    if arguments.work_ids_file is not None:
+        work_ids = [
+            line.strip()
+            for line in arguments.work_ids_file.read_text(encoding="utf-8").splitlines()
             if line.strip()
         ]
     raise SystemExit(
@@ -194,6 +223,7 @@ def main() -> None:
             batch_id=arguments.batch_id,
             search_terms=search_terms,
             max_works=arguments.max_works,
+            work_ids=work_ids,
         )
     )
 
