@@ -244,14 +244,7 @@ class NZLegislationApiClient:
             params["type"] = legislation_type
 
         client = self._client or httpx.Client(timeout=self.timeout)
-        self._pace()
-        resp = client.get(
-            self._url("works"),
-            params=params,
-            headers=self._headers(),
-        )
-        self._last_request_at = self._time_fn()
-        self._update_rate_limit_state(resp.headers)
+        resp = self._get_search_response(client, params)
         if resp.status_code != HTTP_OK:
             msg = f"Legislation works search failed with HTTP {resp.status_code}"
             raise OSError(msg)
@@ -271,3 +264,43 @@ class NZLegislationApiClient:
         except (json.JSONDecodeError, KeyError) as exc:
             msg = "Legislation works search returned invalid JSON"
             raise ValueError(msg) from exc
+
+    def _get_search_response(
+        self, client: httpx.Client, params: dict[str, Any]
+    ) -> httpx.Response:
+        """Fetch a work-search response with bounded transient retries."""
+        attempts = 0
+        backoff = 1.0
+        while attempts <= self.max_retries:
+            attempts += 1
+            self._pace()
+            try:
+                resp = client.get(
+                    self._url("works"),
+                    params=params,
+                    headers=self._headers(),
+                )
+                self._last_request_at = self._time_fn()
+                self._update_rate_limit_state(resp.headers)
+                should_retry, next_backoff = self._should_retry_status(
+                    resp.status_code, resp.text, attempts, backoff
+                )
+                if should_retry:
+                    wait_time = (
+                        self._parse_retry_after(resp.headers)
+                        if resp.status_code == HTTP_TOO_MANY_REQUESTS
+                        else backoff
+                    )
+                    self._sleep_fn(wait_time)
+                    backoff = next_backoff
+                    continue
+            except httpx.TransportError, httpx.TimeoutException:
+                if attempts > self.max_retries:
+                    raise
+                self._sleep_fn(backoff)
+                backoff *= 2
+                continue
+            return resp
+
+        msg = "Legislation works search exhausted retries"
+        raise OSError(msg)

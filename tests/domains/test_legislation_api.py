@@ -286,6 +286,69 @@ def test_api_client_iter_search_works() -> None:
     assert works[0]["work_id"] == "act-1"
 
 
+def test_api_client_search_retries_transient_server_failure() -> None:
+    """A bounded transient server failure does not abort discovery."""
+    calls = 0
+    sleeps: list[float] = []
+
+    def handler(_req: httpx.Request) -> httpx.Response:
+        nonlocal calls
+        calls += 1
+        if calls == 1:
+            return httpx.Response(502, json={"error": "temporary"})
+        return httpx.Response(200, json={"results": [{"work_id": "act-1"}]})
+
+    client = NZLegislationApiClient(
+        client=httpx.Client(transport=httpx.MockTransport(handler)),
+        sleep_fn=sleeps.append,
+        min_interval_seconds=0,
+    )
+
+    assert list(client.iter_search_works("act")) == [{"work_id": "act-1"}]
+    assert calls == 2
+    assert sleeps == [1.0]
+
+
+def test_api_client_search_retries_transport_failure() -> None:
+    """A bounded transport failure is retried before failing closed."""
+    calls = 0
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        nonlocal calls
+        calls += 1
+        if calls == 1:
+            msg = "temporary"
+            raise httpx.ConnectError(msg, request=request)
+        return httpx.Response(200, json={"results": [{"work_id": "act-1"}]})
+
+    client = NZLegislationApiClient(
+        client=httpx.Client(transport=httpx.MockTransport(handler)),
+        sleep_fn=lambda _: None,
+        min_interval_seconds=0,
+    )
+
+    assert list(client.iter_search_works("act")) == [{"work_id": "act-1"}]
+    assert calls == 2
+
+
+def test_api_client_search_does_not_retry_ordinary_forbidden() -> None:
+    """An authorization failure is immediate unless identified as burst limiting."""
+    calls = 0
+
+    def handler(_req: httpx.Request) -> httpx.Response:
+        nonlocal calls
+        calls += 1
+        return httpx.Response(403, json={"error": "forbidden"})
+
+    client = NZLegislationApiClient(
+        client=httpx.Client(transport=httpx.MockTransport(handler)),
+        sleep_fn=lambda _: None,
+    )
+    with pytest.raises(OSError, match="HTTP 403"):
+        list(client.iter_search_works("act"))
+    assert calls == 1
+
+
 @pytest.mark.parametrize("status_code", [401, 403, 429, 500])
 def test_api_client_search_http_failure_is_not_empty_state(status_code: int) -> None:
     """Authentication and transport failures cannot become empty discovery."""
