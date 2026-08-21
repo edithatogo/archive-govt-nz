@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 from typing import TYPE_CHECKING
 
 from archive_govt_nz.adapters.base import (
@@ -74,6 +75,9 @@ class NZLegislationAdapter(AsyncBaseCaptureAdapter):
                 "http_status": str(status_code),
                 "etag": headers.get("etag"),
                 "last_modified": headers.get("last-modified"),
+                "content_type": headers.get("content-type"),
+                "content_length": str(len(content)),
+                "content_sha256": hashlib.sha256(content).hexdigest(),
             }
 
             if status_code == HTTP_TOO_MANY_REQUESTS:
@@ -98,13 +102,18 @@ class NZLegislationAdapter(AsyncBaseCaptureAdapter):
                 )
 
             if status_code != HTTP_OK:
+                diagnostic = (
+                    f"content_type={response_metadata['content_type'] or 'unknown'}, "
+                    f"bytes={response_metadata['content_length']}, "
+                    f"sha256={response_metadata['content_sha256']}"
+                )
                 return AdapterCaptureResult(
                     source_identity=identity,
                     status="failed",
                     bytes_captured=0,
                     objects_created=0,
                     records=(),
-                    error_message=f"HTTP {status_code}",
+                    error_message=f"HTTP {status_code} ({diagnostic})",
                     metadata=response_metadata,
                 )
 

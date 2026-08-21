@@ -59,9 +59,11 @@ def test_api_key_is_not_forwarded_to_public_manifestation_origin() -> None:
     )
 
     assert "X-Api-Key" not in headers
+    assert headers["Cache-Control"] == "no-cache"
     assert client._headers(target_url=client._url("works/"))["X-Api-Key"] == (
         "private-capability"
     )
+    assert "Cache-Control" not in client._headers(target_url=client._url("works/"))
 
 
 def test_api_client_pacing() -> None:
