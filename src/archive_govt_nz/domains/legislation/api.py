@@ -127,6 +127,11 @@ class NZLegislationApiClient:
             with contextlib.suppress(ValueError):
                 self.last_rate_limit_reset = int(reset)
 
+    @staticmethod
+    def _is_official_manifestation_url(target_url: str) -> bool:
+        target = urlparse(target_url)
+        return (target.scheme, target.netloc) == OFFICIAL_MANIFESTATION_ORIGIN
+
     def _parse_retry_after(self, headers: httpx.Headers) -> float:
         val = headers.get("Retry-After")
         if val:
@@ -175,6 +180,16 @@ class NZLegislationApiClient:
                 self._last_request_at = self._time_fn()
                 self._update_rate_limit_state(resp.headers)
 
+                if (
+                    resp.status_code == HTTP_NOT_FOUND
+                    and "X-Api-Key" in headers
+                    and self._is_official_manifestation_url(target_url)
+                ):
+                    headers.pop("X-Api-Key")
+                    attempts = 0
+                    backoff = 1.0
+                    continue
+
                 should_retry, next_backoff = self._should_retry_status(
                     resp.status_code, resp.text, attempts, backoff
                 )
@@ -221,6 +236,16 @@ class NZLegislationApiClient:
                     resp = await async_client.get(target_url, headers=headers)
                     self._last_request_at = self._time_fn()
                     self._update_rate_limit_state(resp.headers)
+
+                    if (
+                        resp.status_code == HTTP_NOT_FOUND
+                        and "X-Api-Key" in headers
+                        and self._is_official_manifestation_url(target_url)
+                    ):
+                        headers.pop("X-Api-Key")
+                        attempts = 0
+                        backoff = 1.0
+                        continue
 
                     should_retry, next_backoff = self._should_retry_status(
                         resp.status_code,
