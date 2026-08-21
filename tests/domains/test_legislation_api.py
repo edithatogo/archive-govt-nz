@@ -64,6 +64,14 @@ def test_api_key_is_forwarded_only_to_official_manifestation_origin() -> None:
 
     assert headers["X-Api-Key"] == "private-capability"
     assert headers["Cache-Control"] == "no-cache"
+    assert headers["Accept"] == "application/xml"
+    assert (
+        client._headers(
+            target_url="https://www.legislation.govt.nz/act/public/2026/1/en/latest/"
+        )["Accept"]
+        == "text/html"
+    )
+    assert client._headers()["Accept"] == "application/json"
     assert client._headers(target_url=client._url("works/"))["X-Api-Key"] == (
         "private-capability"
     )
