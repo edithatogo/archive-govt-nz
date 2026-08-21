@@ -57,6 +57,7 @@ def sync_legislation_records(  # noqa: PLR0913
     checkpoint_path: Path,
     manifest_path: Path,
     max_works: int,
+    force_resync: bool = False,
 ) -> dict[str, Any]:
     """Execute bounded discovery and acquisition through the canonical service."""
     if work_ids is not None:
@@ -67,6 +68,7 @@ def sync_legislation_records(  # noqa: PLR0913
             batch_id=batch_id,
             max_works=max_works,
             fail_fast=True,
+            force_resync=force_resync,
         )
     else:
         operation = service.sync_works(
@@ -76,6 +78,7 @@ def sync_legislation_records(  # noqa: PLR0913
             batch_id=batch_id,
             max_works=max_works,
             fail_fast=True,
+            force_resync=force_resync,
         )
     result = asyncio.run(operation)
     return {
@@ -125,6 +128,7 @@ def run_harvest(  # noqa: PLR0913
     search_terms: list[str] | None,
     max_works: int,
     work_ids: list[str] | None = None,
+    force_resync: bool = False,
 ) -> int:
     """Run one explicitly bounded, state-authenticated harvest attempt."""
     try:
@@ -139,6 +143,7 @@ def run_harvest(  # noqa: PLR0913
             checkpoint_path=checkpoint_path,
             manifest_path=manifest_path,
             max_works=max_works,
+            force_resync=force_resync,
         )
     except Exception as exc:  # noqa: BLE001 - receipt must capture bounded failure
         report = {"status": "failed", "errors": [str(exc)]}
@@ -162,6 +167,7 @@ def run_harvest(  # noqa: PLR0913
         "search_terms": search_terms or [],
         "work_ids": work_ids or [],
         "max_works": max_works,
+        "force_resync": force_resync,
         "outcome": outcome,
         "works_attempted": int(report.get("works_attempted", 0)),
         "works_synced": int(report.get("works_synced", 0)),
@@ -198,6 +204,11 @@ def main() -> None:
     search_scope.add_argument("--search-terms-file", type=Path)
     search_scope.add_argument("--work-ids-file", type=Path)
     parser.add_argument("--max-works", type=int, required=True)
+    parser.add_argument(
+        "--force-resync",
+        action="store_true",
+        help="Revalidate already-processed work IDs using stored validators",
+    )
     arguments = parser.parse_args()
     search_terms = arguments.search_term
     if arguments.search_terms_file is not None:
@@ -226,6 +237,7 @@ def main() -> None:
             search_terms=search_terms,
             max_works=arguments.max_works,
             work_ids=work_ids,
+            force_resync=arguments.force_resync,
         )
     )
 
