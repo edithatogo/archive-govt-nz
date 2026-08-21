@@ -105,6 +105,11 @@ async def test_legislation_capture_http_error(tmp_path: Path) -> None:
     )
     result = await adapter.capture(identity)
     assert result.status == "failed"
+    assert result.error_message == (
+        "HTTP 500 (content_type=unknown, bytes=0, "
+        "sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)"
+    )
+    assert result.metadata["content_length"] == "0"
 
 
 @pytest.mark.anyio

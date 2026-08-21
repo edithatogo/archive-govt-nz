@@ -97,6 +97,11 @@ class NZLegislationApiClient:
             target_origin.netloc,
         ) == (api_origin.scheme, api_origin.netloc):
             headers["X-Api-Key"] = self.api_key
+        if target_url and (
+            target_origin.scheme,
+            target_origin.netloc,
+        ) != (api_origin.scheme, api_origin.netloc):
+            headers["Cache-Control"] = "no-cache"
         if etag:
             headers["If-None-Match"] = etag
         if last_modified:
