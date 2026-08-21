@@ -70,6 +70,27 @@ def test_validate_source_set_config_is_dispatch_only(tmp_path: Path) -> None:
         validate_source_set_config(scheduled)
 
 
+def test_validate_source_set_config_ignores_nested_enabled_flags(
+    tmp_path: Path,
+) -> None:
+    """Nested publication policy cannot overwrite top-level execution authority."""
+    config = tmp_path / "legislation.yml"
+    config.write_text(
+        """name: legislation
+enabled: true
+execution_mode: dispatch_only
+publication_policy:
+  huggingface:
+    enabled: false
+  zenodo:
+    enabled: false
+""",
+        encoding="utf-8",
+    )
+    parsed = validate_source_set_config(config)
+    assert parsed["enabled"] is True
+
+
 def test_credentials_exclude_publication_tokens(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:

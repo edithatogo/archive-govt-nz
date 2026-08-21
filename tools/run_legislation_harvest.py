@@ -20,6 +20,8 @@ def validate_source_set_config(config_path: Path) -> dict[str, Any]:
         raise FileNotFoundError(message)
     config: dict[str, Any] = {}
     for raw_line in config_path.read_text(encoding="utf-8").splitlines():
+        if raw_line != raw_line.lstrip():
+            continue
         line = raw_line.strip()
         if not line or line.startswith("#") or ":" not in line:
             continue
