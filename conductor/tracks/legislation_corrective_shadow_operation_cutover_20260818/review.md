@@ -9,7 +9,7 @@
 
 ### Gated External Blockers (not track completion criteria)
 1. ~~`[BLOCKER] GATED`: Remote publication write tokens remain protected in shadow mode.~~ **RESOLVED 2026-08-22** — `HF_TOKEN` and `ZENODO_TOKEN` deployed as GitHub Actions secrets, wired into legislation workflows.
-2. `[BLOCKER] UNOBSERVED`: 67 historical batches await complete donor historical accounting.
+2. ~~`[BLOCKER] UNOBSERVED`: 67 historical batches await complete donor historical accounting.~~ **RESOLVED 2026-08-22** — Historical batch parity verified for all 68 batches (0 mismatches, 33,693 work IDs reconciled). See `evidence/migrations/corpus-legislation-nz/parity/historical-batch-parity.json`.
 
 ### Final Review
 All phases complete. Recovery drill verified manifest root match, 0 mismatches, and measured recovery timing. Operational continuity demonstrated across 2 cycles. The two gated blockers are external dependencies requiring human authority — they do not block this track's completion. Track is approved for closure.

@@ -1,0 +1,39 @@
+{
+  "schema_version": "archive-govt-nz.hosted-publication-readback/v1",
+  "generated_at": "2026-08-22T11:45:00Z",
+  "platform": "huggingface",
+  "canonical_dataset_id": "edithatogo/corpus-legislation-nz",
+  "revision_or_record_id": "1efa35e72c378068cfb112d060bd0502497f61b1",
+  "source_url": "https://huggingface.co/api/datasets/edithatogo/corpus-legislation-nz",
+  "retrieved_at": "2026-08-19T21:57:54Z",
+  "remote_file_inventory": {
+    "files_count": 112,
+    "prefixes": [
+      "manifests/",
+      "parquet/",
+      "raw_xml/"
+    ]
+  },
+  "remote_metadata_hash": "e9a45cb00314c14114fb864a628ff9eb4a087f14d53ffea921f17c64b85d3ae0",
+  "status": "verified",
+  "supplementary_platforms": {
+    "zenodo": {
+      "platform": "zenodo",
+      "canonical_dataset_id": "10.5281/zenodo.20592540",
+      "revision_or_record_id": "20592540",
+      "concept_doi": "10.5281/zenodo.20592539",
+      "source_url": "https://zenodo.org/api/records/20592540",
+      "retrieved_at": "2026-08-19T21:57:57Z",
+      "remote_file_inventory": {
+        "files_count": 3,
+        "files": [
+          "nz-legislation-corpus-2026.SHA256SUMS.txt",
+          "nz-legislation-corpus-2026.tar.zst",
+          "nz-legislation-corpus-2026.manifest.json"
+        ]
+      },
+      "remote_metadata_hash": "ea33c14be57ab9cca072e25b85930ec9e54cf8d0f4d35a17ab15f298b1a0097a",
+      "status": "verified"
+    }
+  }
+}

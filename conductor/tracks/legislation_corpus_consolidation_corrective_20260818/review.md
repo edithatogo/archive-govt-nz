@@ -22,7 +22,7 @@
 
 ### Gated External Blockers (not programme completion criteria)
 1. ~~`[BLOCKER] GATED`: Remote publication write token deployment remains protected.~~ **RESOLVED 2026-08-22** — `HF_TOKEN`, `ZENODO_TOKEN`, and `LEGISLATION_API_KEY` deployed as GitHub Actions secrets, wired into all three legislation workflows.
-2. `[BLOCKER] UNOBSERVED`: 67 historical batches await complete donor historical accounting.
+2. ~~`[BLOCKER] UNOBSERVED`: 67 historical batches await complete donor historical accounting.~~ **RESOLVED 2026-08-22** — Historical batch parity verified for all 68 batches (0 mismatches, 33,693 work IDs reconciled). See `evidence/migrations/corpus-legislation-nz/parity/historical-batch-parity.json`.
 
 ### Summary
-All 12 child tracks completed. All 5 programme phases (Phase 0–4) completed. The corrective programme satisfies all MoSCoW Must requirements against the 18 audit findings from PR #124. Real donor capability assimilated, CLI/MCP operating on domain logic, weekly orchestration active, recovery drills passing. Publication write tokens deployed and wired into CI workflows. The remaining gated blocker (67 historical batches) is a donor-limitation observation requiring human authority outside this programme's scope.
+All 12 child tracks completed. All 5 programme phases (Phase 0–4) completed. The corrective programme satisfies all MoSCoW Must requirements against the 18 audit findings from PR #124. Real donor capability assimilated, CLI/MCP operating on domain logic, weekly orchestration active, recovery drills passing. Publication write tokens deployed and wired into CI workflows. DEC-HIST-001 resolved: historical batch parity verified for all 68 batches with 0 mismatches. The only remaining observation is time-based (weekly production harvest cycles have not yet elapsed in live target).
