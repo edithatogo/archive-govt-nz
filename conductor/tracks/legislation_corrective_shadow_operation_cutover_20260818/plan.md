@@ -7,3 +7,4 @@
 3. **Phase 3: Negative Controls & Assurance Gate**
    - Implement unit and negative-control test suite in `tests/canary/test_operational_continuity_and_recovery.py`.
    - Execute tool, write receipt to `evidence/migrations/corpus-legislation-nz/operational-continuity-recovery-receipt.json`, and pass full 19-stage assurance gate (`tools/check.py`).
+> **Status: COMPLETED** — All phases verified. Reviewed and closed 2026-08-22. Gated external blockers remain: write token deployment (human authority) and 67 historical batch accounting.
