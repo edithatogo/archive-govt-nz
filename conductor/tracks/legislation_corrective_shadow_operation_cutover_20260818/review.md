@@ -8,7 +8,7 @@
 - Passed 19-stage assurance suite.
 
 ### Gated External Blockers (not track completion criteria)
-1. `[BLOCKER] GATED`: Remote publication write tokens remain protected in shadow mode.
+1. ~~`[BLOCKER] GATED`: Remote publication write tokens remain protected in shadow mode.~~ **RESOLVED 2026-08-22** — `HF_TOKEN` and `ZENODO_TOKEN` deployed as GitHub Actions secrets, wired into legislation workflows.
 2. `[BLOCKER] UNOBSERVED`: 67 historical batches await complete donor historical accounting.
 
 ### Final Review

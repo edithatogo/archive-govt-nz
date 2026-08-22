@@ -21,8 +21,8 @@
 - `legislation_corrective_evidence_chronology_20260818`: Completed (Evidence Chronology & Defect Verification)
 
 ### Gated External Blockers (not programme completion criteria)
-1. `[BLOCKER] GATED`: Remote publication write token deployment remains protected.
+1. ~~`[BLOCKER] GATED`: Remote publication write token deployment remains protected.~~ **RESOLVED 2026-08-22** — `HF_TOKEN`, `ZENODO_TOKEN`, and `LEGISLATION_API_KEY` deployed as GitHub Actions secrets, wired into all three legislation workflows.
 2. `[BLOCKER] UNOBSERVED`: 67 historical batches await complete donor historical accounting.
 
 ### Summary
-All 12 child tracks completed. All 5 programme phases (Phase 0–4) completed. The corrective programme satisfies all MoSCoW Must requirements against the 18 audit findings from PR #124. Real donor capability assimilated, CLI/MCP operating on domain logic, weekly orchestration active, recovery drills passing. The two gated blockers are external dependencies requiring human authority outside this programme's scope.
+All 12 child tracks completed. All 5 programme phases (Phase 0–4) completed. The corrective programme satisfies all MoSCoW Must requirements against the 18 audit findings from PR #124. Real donor capability assimilated, CLI/MCP operating on domain logic, weekly orchestration active, recovery drills passing. Publication write tokens deployed and wired into CI workflows. The remaining gated blocker (67 historical batches) is a donor-limitation observation requiring human authority outside this programme's scope.

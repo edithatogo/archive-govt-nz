@@ -5,3 +5,4 @@
 - Created `.github/workflows/monthly-legislation-reconciliation.yml` and `.github/workflows/quarterly-legislation-recovery.yml`.
 - Implemented `tools/run_legislation_harvest.py` with full outcome taxonomy.
 - Validated test suite `tests/tools/test_run_legislation_harvest.py` and ran `tools/check.py`.
+- **2026-08-22**: Credentials wired into workflow. `HF_TOKEN`, `ZENODO_TOKEN`, and `LEGISLATION_API_KEY` passed as environment variables to harvest orchestrator.

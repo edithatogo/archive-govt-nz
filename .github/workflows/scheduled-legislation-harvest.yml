@@ -21,6 +21,10 @@ concurrency:
 jobs:
   harvest-legislation:
     runs-on: ubuntu-latest
+    env:
+      HF_TOKEN: ${{ secrets.HF_TOKEN }}
+      ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
+      LEGISLATION_API_KEY: ${{ secrets.LEGISLATION_API_KEY }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
@@ -36,6 +40,9 @@ jobs:
             BACKFILL_FLAG="--backfill-limit ${{ github.event.inputs.backfill_limit }}"
           fi
           uv run --locked python tools/run_legislation_harvest.py $BACKFILL_FLAG
+      - name: Verify Publication Readback (Read-Only)
+        run: |
+          uv run --locked python tools/verify_public_publication_identities.py
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         if: always()
         with:

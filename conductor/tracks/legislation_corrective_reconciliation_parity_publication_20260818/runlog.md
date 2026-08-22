@@ -12,3 +12,4 @@
 - Generated `evidence/migrations/corpus-legislation-nz/remote-publication-readback-receipt.json` with SHA-256 payload hashes and request timestamps.
 - Implemented unit and negative-control test suite in `tests/publication/test_verify_public_publication_identities.py`.
 - Passed full 19-stage assurance gate (`tools/check.py`).
+- **2026-08-22**: Gated blocker resolved. `HF_TOKEN` and `ZENODO_TOKEN` deployed as GitHub Actions secrets via user action. Wired into `scheduled-legislation-harvest.yml`, `monthly-legislation-reconciliation.yml`, and `quarterly-legislation-recovery.yml`.

@@ -11,3 +11,4 @@
   - Measured recovery drill duration.
   - Recorded 0 mismatches.
 - Emitted machine-readable receipt in `evidence/migrations/corpus-legislation-nz/operational-continuity-recovery-receipt.json`.
+- **2026-08-22**: Gated blocker resolved. `HF_TOKEN` and `ZENODO_TOKEN` deployed as GitHub Actions secrets via user action. Wired into all three legislation workflows.
