@@ -14,12 +14,14 @@
     "canary_authority",
     "redistribution_review",
     "weekly_cycle_authority",
-    "recovery_authority"
+    "recovery_authority",
+    "donor_repository_archival"
   ],
   "superseded_blockers": [
     "Enforce unresolved sequence and redistribution gates (harvest)",
     "Enforce unresolved weekly-cycle and state-artifact gates (reconciliation)",
-    "Enforce unresolved recovery and redistribution gates (recovery drill)"
+    "Enforce unresolved recovery and redistribution gates (recovery drill)",
+    "Donor repository (edithatogo/corpus-legislation-nz) archival authorization pending"
   ],
   "retained_controls": [
     "workflow_dispatch-only triggers (no schedule: blocks retained by design)",
@@ -28,9 +30,7 @@
     "explicit confirmed_* dispatch inputs required",
     "bounded harvest inputs (batch_id, search_terms, max_works) required"
   ],
-  "out_of_scope": [
-    "Donor repository archiving (edithatogo/corpus-legislation-nz) remains pending separate explicit authorization"
-  ],
-  "conductor_ref": "conductor/tracks.md deferred decision legislation_operational_gate_authorization_20260823",
+  "out_of_scope": [],
+  "conductor_ref": "conductor/tracks.md operational gate authorization legislation_operational_gate_authorization_20260823",
   "github_refs": ["edithatogo/archive-govt-nz#137", "edithatogo/archive-govt-nz#138", "edithatogo/archive-govt-nz#142", "edithatogo/archive-govt-nz#179"]
 }

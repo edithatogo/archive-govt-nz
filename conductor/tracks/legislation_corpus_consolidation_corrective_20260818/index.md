@@ -4,7 +4,7 @@
 - **Donor Repository**: `edithatogo/corpus-legislation-nz` (`749918c`)
 - **Canonical Target**: `edithatogo/archive-govt-nz` (`c154578`)
 - **Audited Baseline Date**: 18 August 2026
-- **Status**: `in_progress`
+- **Status**: `completed`
 
 ---
 

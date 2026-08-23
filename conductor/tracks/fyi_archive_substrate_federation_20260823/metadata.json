@@ -1,0 +1,12 @@
+{
+  "track_id": "fyi_archive_substrate_federation_20260823",
+  "title": "FYI (OIA) Archive Substrate Federation",
+  "type": "federated_substrate",
+  "status": "new",
+  "donor_or_upstream": "edithatogo/fyi-archive",
+  "treatment": "Shared archive/publication substrate; federated integration (excluding fyi-cli / foi-o)",
+  "reusable_assets": "OIA request/attachment metadata, correspondence thread models, agency authority linkages",
+  "created_at": "2026-08-23T16:35:00Z",
+  "updated_at": "2026-08-23T16:35:00Z",
+  "description": "Establish shared preservation and CAS attachment indexing substrate for OIA correspondence, keeping fyi-archive federated."
+}

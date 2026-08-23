@@ -1,0 +1,12 @@
+{
+  "track_id": "corpus_medilegal_preservation_machinery_20260823",
+  "title": "Medico-Legal Case Law Preservation Machinery",
+  "type": "capability_assimilation",
+  "status": "new",
+  "donor_or_upstream": "edithatogo/corpus-cases-medilegal-nz",
+  "treatment": "Shared preservation/publication machinery assimilation; corpus remains independently versioned",
+  "reusable_assets": "Judgment/decision citation graphs, anonymization verification gates, tribunal record normalizers",
+  "created_at": "2026-08-23T16:35:00Z",
+  "updated_at": "2026-08-23T16:35:00Z",
+  "description": "Assimilate case law and tribunal decision preservation machinery into archive-govt-nz while preserving independent case corpus identity."
+}
