@@ -217,7 +217,7 @@ def verify_hosted_publication_readback(root: Path) -> tuple[bool, str]:
         return True, "Verified"
 
 
-def evaluate_evidence_integrity(
+def evaluate_evidence_integrity(  # noqa: PLR0915
     root: Path,
 ) -> tuple[list[dict[str, Any]], list[str]]:
     """Perform comprehensive evidence checks across ledgers, hashes, and remote states."""
@@ -303,38 +303,45 @@ def evaluate_evidence_integrity(
     )
     cycles_verified = False
     cycle_detail = "attestation not found"
+    att: dict[str, Any] | None = None
     if attestation.is_file():
         try:
-            att = json.loads(attestation.read_text(encoding="utf-8"))
-            if att.get("schema_version") != (
-                "archive-govt-nz.shadow-operation-cutover-attestation/v1"
-            ):
-                raise TypeError("unexpected attestation schema")
-            cycles = att.get("observation_cycles", [])
-            valid_cycles = [
-                c
-                for c in cycles
-                if isinstance(c.get("harvest_run_id"), int)
-                and isinstance(c.get("reconciliation_run_id"), int)
-                and c.get("harvest_outcome") in {"changed", "no_change"}
-                and c.get("reconciliation_status") == "consistent"
-                and c.get("recovery_status") == "verified"
-            ]
-            donor = att.get("donor_archival", {})
-            if len(valid_cycles) >= 2 and donor.get("archived") is True:
-                cycles_verified = True
-                cycle_detail = (
-                    f"{len(valid_cycles)} observation cycles verified; "
-                    f"donor archived {donor.get('archived_at')}"
-                )
-            else:
-                cycle_detail = (
-                    "attestation present but insufficient: "
-                    f"{len(valid_cycles)} valid cycles, donor archived="
-                    f"{donor.get('archived')}"
-                )
-        except Exception:  # noqa: BLE001
+            loaded = json.loads(attestation.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            loaded = None
+        if isinstance(loaded, dict):
+            att = loaded
+        else:
             cycle_detail = "attestation unreadable"
+    if att is not None and att.get("schema_version") != (
+        "archive-govt-nz.shadow-operation-cutover-attestation/v1"
+    ):
+        att = None
+        cycle_detail = "unexpected attestation schema"
+    if att is not None:
+        cycles = att.get("observation_cycles", [])
+        valid_cycles = [
+            c
+            for c in cycles
+            if isinstance(c.get("harvest_run_id"), int)
+            and isinstance(c.get("reconciliation_run_id"), int)
+            and c.get("harvest_outcome") in {"changed", "no_change"}
+            and c.get("reconciliation_status") == "consistent"
+            and c.get("recovery_status") == "verified"
+        ]
+        donor = att.get("donor_archival", {})
+        if len(valid_cycles) >= 2 and donor.get("archived") is True:
+            cycles_verified = True
+            cycle_detail = (
+                f"{len(valid_cycles)} observation cycles verified; "
+                f"donor archived {donor.get('archived_at')}"
+            )
+        else:
+            cycle_detail = (
+                "attestation present but insufficient: "
+                f"{len(valid_cycles)} valid cycles, donor archived="
+                f"{donor.get('archived')}"
+            )
     if cycles_verified:
         checks.append(
             {

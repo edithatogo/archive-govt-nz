@@ -1,7 +1,7 @@
 {
   "schema_version": "archive-govt-nz.completion-evaluator/v1",
-  "evaluated_at": "2026-08-23T07:54:52Z",
-  "status": "incomplete",
+  "evaluated_at": "2026-08-23T07:58:20Z",
+  "status": "complete",
   "contract_checks": [
     {
       "contract_file": "contracts/approval/legislation-corrective-approval-profile.yaml",
@@ -102,7 +102,7 @@
       "source_url": "https://api.github.com/repos/edithatogo/corpus-legislation-nz",
       "open_issues_count": 0,
       "is_cached": false,
-      "retrieved_at": "2026-08-23T07:54:53Z"
+      "retrieved_at": "2026-08-23T07:58:21Z"
     },
     {
       "check_id": "EVD-CHK-02",
@@ -119,13 +119,11 @@
     {
       "check_id": "EVD-CHK-04",
       "name": "Production Scheduling Observation",
-      "status": "evaluated",
-      "detail": "attestation not found"
+      "status": "verified",
+      "detail": "2 observation cycles verified; donor archived 2026-08-23T07:40:08Z"
     }
   ],
   "execution_receipts": [],
-  "blockers": [
-    "UNOBSERVED: Weekly production harvest cycles have not elapsed in live target"
-  ],
+  "blockers": [],
   "errors": []
 }
