@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive.govt.nz/schemas/migrations/shadow-operation-cutover-attestation-v1.schema.json",
+  "title": "ShadowOperationCutoverAttestation",
+  "description": "Evidence attestation certifying shadow operation cycles, hosted run IDs, and donor repository archival.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "attested_at",
+    "supersedes",
+    "authorization_ref",
+    "observation_cycles",
+    "contract_postcondition",
+    "donor_archival",
+    "cutover_release",
+    "issues_tracking"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "archive-govt-nz.shadow-operation-cutover-attestation/v1"
+    },
+    "attested_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "supersedes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "authorization_ref": {
+      "type": "string"
+    },
+    "observation_cycles": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "required": [
+          "cycle_number",
+          "harvest_run_id",
+          "reconciliation_run_id",
+          "recovery_run_id",
+          "batch_id",
+          "harvest_outcome",
+          "reconciliation_status",
+          "recovery_status",
+          "manifest_sha256"
+        ],
+        "properties": {
+          "cycle_number": { "type": "integer", "minimum": 1 },
+          "harvest_run_id": { "type": "integer" },
+          "reconciliation_run_id": { "type": "integer" },
+          "recovery_run_id": { "type": "integer" },
+          "batch_id": { "type": "string" },
+          "prior_state_run_id": { "type": "integer" },
+          "continuation_verified": { "type": "boolean" },
+          "harvest_outcome": { "type": "string" },
+          "reconciliation_status": { "type": "string" },
+          "recovery_status": { "type": "string" },
+          "manifest_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "total_records_preserved": { "type": "integer" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "contract_postcondition": {
+      "type": "string"
+    },
+    "donor_archival": {
+      "type": "object",
+      "required": ["donor_repo", "archived", "archived_at", "verified_via"],
+      "properties": {
+        "donor_repo": { "type": "string" },
+        "archived": { "type": "boolean" },
+        "archived_at": { "type": "string", "format": "date-time" },
+        "verified_via": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "cutover_release": {
+      "type": "string"
+    },
+    "issues_tracking": {
+      "type": "array",
+      "items": { "type": "integer" }
+    }
+  },
+  "additionalProperties": false
+}

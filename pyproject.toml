@@ -121,6 +121,7 @@ ignore = [
 "tools/scaffold_child_tracks.py" = ["E501"]
 "tools/evaluate_preservation.py" = ["E501"]
 "tools/generate_evidence_ledger.py" = []
+"tools/generate_shadow_cutover_attestation.py" = ["E501"]
 "tools/release_attestation.py" = []
 "tools/generate_publication_metadata.py" = ["E501"]
 "tests/tools/test_preservation_evaluation.py" = ["S607"]

@@ -110,6 +110,17 @@ VALIDATION_PAIRS = (
         / "fixtures"
         / "bronze-ingestion-manifest-sample.json",
     ),
+    (
+        REPOSITORY_ROOT
+        / "schemas"
+        / "migrations"
+        / "shadow-operation-cutover-attestation-v1.schema.json",
+        REPOSITORY_ROOT
+        / "evidence"
+        / "migrations"
+        / "corpus-legislation-nz"
+        / "shadow-operation-cutover-attestation.json",
+    ),
 )
 ARCHIVE_SCHEMA_DIRECTORY = REPOSITORY_ROOT / "schemas" / "archive" / "v1"
 
