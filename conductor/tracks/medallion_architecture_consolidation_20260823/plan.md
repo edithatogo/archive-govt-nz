@@ -7,13 +7,13 @@
 ## Phases & Tasks
 
 ### Phase 1: Bronze Ingestion Layer & Immutable Storage Standardization (PRIMARY FOCUS)
-- [ ] Task: Formalize Bronze storage hierarchy (`data/bronze/{domain}/`, CAS object stores `sha256/` and `blake3/`, WARC/WACZ bitstream trees).
-- [ ] Task: Standardize Bronze ingestion manifest model across all core domains (Legislation, Gazette, CKAN data.govt.nz, Health/MoH, Treasury, Feeds/Social).
-- [ ] Task: Incorporate newly discovered domain feeds into Bronze ingestion manifests:
-    - [ ] Courts NZ Public Notices archive (`edithatogo/courts-nz-public-notices-archive`) into Gazette/Notices adapter
-    - [ ] NZ COVID-19 Official Data (`edithatogo/nz-covid-data`) into Health domain
-    - [ ] Pae Ora Health System Reform releases (`edithatogo/pae_ora_reform`) into Health domain
-- [ ] Task: Write characterization, fixity, and zero-loss unit tests for Bronze storage and CAS streaming across all domains.
+- [x] Task: Formalize Bronze storage hierarchy (`data/bronze/{domain}/`, CAS object stores `sha256/` and `blake3/`, WARC/WACZ bitstream trees).
+- [x] Task: Standardize Bronze ingestion manifest model across all core domains (Legislation, Gazette, CKAN data.govt.nz, Health/MoH, Treasury, Feeds/Social).
+- [x] Task: Incorporate newly discovered domain feeds into Bronze ingestion manifests:
+    - [x] Courts NZ Public Notices archive (`edithatogo/courts-nz-public-notices-archive`) into Gazette/Notices adapter
+    - [x] NZ COVID-19 Official Data (`edithatogo/nz-covid-data`) into Health domain
+    - [x] Pae Ora Health System Reform releases (`edithatogo/pae_ora_reform`) into Health domain
+- [x] Task: Write characterization, fixity, and zero-loss unit tests for Bronze storage and CAS streaming across all domains.
 - [ ] Task: Conductor - User Manual Verification 'Bronze Ingestion Layer' (Protocol in workflow.md).
 
 ### Phase 2: Silver Layer Parquet Pipelines (Polars / PyArrow)
