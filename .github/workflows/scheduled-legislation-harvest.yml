@@ -1,21 +1,38 @@
-name: Scheduled Legislation Harvest
+name: Bounded Legislation Harvest
 
 on:
-  schedule:
-    - cron: "23 18 * * 0" # Weekly Sunday 18:23 UTC (Monday 06:23 NZST)
   workflow_dispatch:
     inputs:
-      backfill_limit:
-        description: "Max works to backfill (optional integer)"
+      confirmed_execution:
+        description: "Confirm this bounded source acquisition"
+        required: true
+        type: boolean
+        default: false
+      batch_id:
+        description: "Unique canonical batch identity"
+        required: true
+        type: string
+      search_terms:
+        description: "One discovery search term per line"
+        required: true
+        type: string
+      max_works:
+        description: "Positive maximum discovered works"
+        required: true
+        type: number
+        default: 25
+      prior_state_run_id:
+        description: "Prior successful run ID containing full state; blank for first batch"
         required: false
+        type: string
         default: ""
 
 permissions:
+  actions: read
   contents: read
-  id-token: write
 
 concurrency:
-  group: harvest-legislation-${{ github.ref }}
+  group: bounded-legislation-harvest-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -26,26 +43,31 @@ jobs:
       ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
       LEGISLATION_API_KEY: ${{ secrets.LEGISLATION_API_KEY }}
     steps:
+      - name: Enforce unresolved sequence and redistribution gates
+        run: |
+          echo "Blocked: one-batch, canary, and redistribution authority are pending."
+          exit 3
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
         with:
           python-version: "3.14"
       - run: python -m pip install uv==0.6.5
-      - name: Prepare receipt directories
-        run: mkdir -p build/receipts/legislation build/manifests build/checkpoints build/cas
-      - name: Execute Verified Legislation Harvest Orchestration
+      - name: Validate explicit dispatch authority and scope
+        env:
+          CONFIRMED_EXECUTION: ${{ inputs.confirmed_execution }}
+          BATCH_ID: ${{ inputs.batch_id }}
+          MAX_WORKS: ${{ inputs.max_works }}
+          SEARCH_TERMS: ${{ inputs.search_terms }}
         run: |
-          BACKFILL_FLAG=""
-          if [ -n "${{ github.event.inputs.backfill_limit }}" ]; then
-            BACKFILL_FLAG="--backfill-limit ${{ github.event.inputs.backfill_limit }}"
-          fi
-          uv run --locked python tools/run_legislation_harvest.py $BACKFILL_FLAG
-      - name: Verify Publication Readback (Read-Only)
-        run: |
-          uv run --locked python tools/verify_public_publication_identities.py
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
-        if: always()
         with:
-          name: legislation-harvest-receipts
-          path: build/receipts/legislation/
+          name: legislation-state-${{ github.run_id }}
+          path: build/legislation-state/
           if-no-files-found: error
+          retention-days: 90
+      - name: Upload bounded failure receipt
+        if: failure()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: legislation-failure-${{ github.run_id }}
+          path: build/legislation-state/receipts/
+          if-no-files-found: warn

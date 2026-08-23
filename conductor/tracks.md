@@ -77,16 +77,26 @@ decision or safety boundary, and continue independent work while it is pending.
     *Link: [tracks/legislation_corrective_identity_normalisation_corpus_20260818/index.md](./tracks/legislation_corrective_identity_normalisation_corpus_20260818/index.md)*
   - [x] **Child Track 5A: Legislation service integrity correction**
     *Link: [tracks/legislation_corrective_service_integrity_20260820/index.md](./tracks/legislation_corrective_service_integrity_20260820/index.md)*
-  - [x] **Child Track 6: CLI contract and compatibility**
+  - [~] **Child Track 5B: Global CLI integrity correction**
+    *Link: [tracks/global_cli_integrity_correction_20260820/index.md](./tracks/global_cli_integrity_correction_20260820/index.md)*
+  - [/] **Child Track 6: CLI contract and compatibility**
     *Link: [tracks/legislation_corrective_cli_contract_compatibility_20260818/index.md](./tracks/legislation_corrective_cli_contract_compatibility_20260818/index.md)*
-  - [x] **Child Track 7: MCP disposition and conformance**
+  - [~] **Child Track 6A: Fail-closed service-backed legislation CLI correction**
+    *Link: [tracks/legislation_cli_service_backing_20260820/index.md](./tracks/legislation_cli_service_backing_20260820/index.md)*
+  - [/] **Child Track 7: MCP disposition and conformance**
     *Link: [tracks/legislation_corrective_mcp_disposition_conformance_20260818/index.md](./tracks/legislation_corrective_mcp_disposition_conformance_20260818/index.md)*
+  - [~] **Child Track 7A: Current-standard fail-closed MCP correction**
+    *Link: [tracks/mcp_current_standard_correction_20260820/index.md](./tracks/mcp_current_standard_correction_20260820/index.md)*
   - [/] **Child Track 8: Weekly orchestration and persistent state**
     *Link: [tracks/legislation_corrective_weekly_orchestration_state_20260818/index.md](./tracks/legislation_corrective_weekly_orchestration_state_20260818/index.md)*
     *Reopened 2026-08-23: scheduled harvest/reconciliation/recovery workflows have zero observed runs (#137, #138).*
-  - [x] **Child Track 9: Historical reconciliation, parity and publication identity**
+  - [~] **Child Track 8A: Fail-closed legislation workflow correction**
+    *Link: [tracks/legislation_workflow_fail_closed_20260820/index.md](./tracks/legislation_workflow_fail_closed_20260820/index.md)*
+  - [/] **Child Track 9: Historical reconciliation, parity and publication identity**
     *Link: [tracks/legislation_corrective_reconciliation_parity_publication_20260818/index.md](./tracks/legislation_corrective_reconciliation_parity_publication_20260818/index.md)*
-  - [x] **Child Track 10: Rights and redistribution**
+  - [~] **Child Track 9A: Fail-closed one-batch reconciliation correction**
+    *Link: [tracks/legislation_one_batch_reconciliation_20260820/index.md](./tracks/legislation_one_batch_reconciliation_20260820/index.md)*
+  - [/] **Child Track 10: Rights and redistribution**
     *Link: [tracks/legislation_corrective_rights_redistribution_20260818/index.md](./tracks/legislation_corrective_rights_redistribution_20260818/index.md)*
   - [/] **Child Track 11: Shadow operation, recovery and cutover**
     *Link: [tracks/legislation_corrective_shadow_operation_cutover_20260818/index.md](./tracks/legislation_corrective_shadow_operation_cutover_20260818/index.md)*

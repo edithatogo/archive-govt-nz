@@ -95,6 +95,14 @@ VALIDATION_PAIRS = (
         / "legislation-record.schema.json",
         REPOSITORY_ROOT / "tests" / "fixtures" / "legislation-record-sample.json",
     ),
+    (
+        REPOSITORY_ROOT
+        / "schemas"
+        / "legislation"
+        / "v1"
+        / "one-batch-reconciliation.schema.json",
+        REPOSITORY_ROOT / "tests" / "fixtures" / "legislation-one-batch-failure.json",
+    ),
 )
 ARCHIVE_SCHEMA_DIRECTORY = REPOSITORY_ROOT / "schemas" / "archive" / "v1"
 

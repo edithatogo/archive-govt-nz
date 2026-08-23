@@ -33,6 +33,25 @@ def _send_rpc(
     return json.loads(line.strip())
 
 
+def _initialize_subprocess(proc: subprocess.Popen[str], request_id: int = 1) -> None:
+    response = _send_rpc(
+        proc,
+        {
+            "jsonrpc": "2.0",
+            "id": request_id,
+            "method": "initialize",
+            "params": {
+                "protocolVersion": "2025-11-25",
+                "capabilities": {},
+                "clientInfo": {"name": "test-client", "version": "1.0.0"},
+            },
+        },
+    )
+    assert response is not None
+    assert response["result"]["protocolVersion"] == "2025-11-25"
+    _send_rpc(proc, {"jsonrpc": "2.0", "method": "notifications/initialized"})
+
+
 def test_mcp_subprocess_initialization_and_tools() -> None:
     """Validate stdio lifecycle initialization handshake and tool execution."""
     proc = subprocess.Popen(
@@ -52,7 +71,8 @@ def test_mcp_subprocess_initialization_and_tools() -> None:
                 "id": 1,
                 "method": "initialize",
                 "params": {
-                    "protocolVersion": "2024-11-05",
+                    "protocolVersion": "2025-11-25",
+                    "capabilities": {},
                     "clientInfo": {"name": "test-client", "version": "1.0.0"},
                 },
             },
@@ -60,7 +80,7 @@ def test_mcp_subprocess_initialization_and_tools() -> None:
         assert init_res is not None
         assert init_res["id"] == 1
         result = init_res["result"]
-        assert result["protocolVersion"] == "2024-11-05"
+        assert result["protocolVersion"] == "2025-11-25"
         assert result["serverInfo"]["name"] == "archive-govt-nz-mcp"
         assert "tools" in result["capabilities"]
         assert "resources" in result["capabilities"]
@@ -144,7 +164,7 @@ def test_mcp_subprocess_initialization_and_tools() -> None:
         assert "status" in status_res["result"]["structuredContent"]
         assert "active" not in status_res["result"]["structuredContent"]
 
-        # 9. tools/call - unknown tool (execution error)
+        # 9. tools/call - unknown tool (invalid call)
         fail_res = _send_rpc(
             proc,
             {
@@ -155,8 +175,8 @@ def test_mcp_subprocess_initialization_and_tools() -> None:
             },
         )
         assert fail_res is not None
-        assert fail_res["result"]["isError"] is True
-        assert "Unknown tool" in fail_res["result"]["content"][0]["text"]
+        assert fail_res["error"]["code"] == -32602
+        assert "Unknown tool" in fail_res["error"]["message"]
 
     finally:
         if proc.stdin:
@@ -176,9 +196,10 @@ def test_mcp_subprocess_resources_and_errors() -> None:
     )
 
     try:
+        _initialize_subprocess(proc)
         # 1. resources/list and resources/read
         res_list = _send_rpc(
-            proc, {"jsonrpc": "2.0", "id": 1, "method": "resources/list"}
+            proc, {"jsonrpc": "2.0", "id": 10, "method": "resources/list"}
         )
         assert res_list is not None
         assert len(res_list["result"]["resources"]) == 3
@@ -187,7 +208,7 @@ def test_mcp_subprocess_resources_and_errors() -> None:
             proc,
             {
                 "jsonrpc": "2.0",
-                "id": 2,
+                "id": 11,
                 "method": "resources/read",
                 "params": {"uri": "archive://capabilities"},
             },
@@ -270,7 +291,7 @@ def test_mcp_subprocess_resources_and_errors() -> None:
             },
         )
         assert inv_res_missing is not None
-        assert inv_res_missing["error"]["code"] == -32602
+        assert inv_res_missing["error"]["code"] == -32002
 
     finally:
         if proc.stdin:

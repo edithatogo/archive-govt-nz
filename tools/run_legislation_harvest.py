@@ -1,4 +1,4 @@
-"""Weekly legislation harvest orchestrator with state verification."""
+"""Bounded legislation harvest runner backed by the canonical archive service."""
 
 from __future__ import annotations
 
@@ -6,301 +6,240 @@ import argparse
 import asyncio
 import json
 import os
-import sys
 from pathlib import Path
 from typing import Any
 
-from archive_govt_nz.core.identity import SourceIdentity, SourceType
-from archive_govt_nz.domains.legislation.checkpoints import (
-    LegislationCheckpointManager,
-)
 from archive_govt_nz.domains.legislation.corpus import LegislationArchiveService
-from archive_govt_nz.domains.legislation.models import (
-    validate_legislation_record,
-)
 from archive_govt_nz.object_store import ContentAddressedStore
 
 
 def validate_source_set_config(config_path: Path) -> dict[str, Any]:
-    """Validate source-set configuration exists and is well-formed."""
+    """Validate the minimal fail-closed source-set execution configuration."""
     if not config_path.is_file():
-        msg = f"Source-set configuration file not found: {config_path}"
-        raise FileNotFoundError(msg)
-
-    text = config_path.read_text(encoding="utf-8")
-    lines = [
-        line.strip()
-        for line in text.splitlines()
-        if line.strip() and not line.strip().startswith("#")
-    ]
-    config_dict: dict[str, Any] = {}
-    for line in lines:
-        if ":" in line:
-            key, val = line.split(":", 1)
-            key = key.strip()
-            val = val.strip().strip('"').strip("'")
-            if val.lower() == "true":
-                config_dict[key] = True
-            elif val.lower() == "false":
-                config_dict[key] = False
-            else:
-                config_dict[key] = val
-
-    if config_dict.get("name") != "legislation":
-        msg = f"Expected source-set name 'legislation', got {config_dict.get('name')}"
-        raise ValueError(msg)
-
-    if not config_dict.get("enabled", False):
-        msg = "Source-set 'legislation' is disabled in configuration"
-        raise ValueError(msg)
-
-    return config_dict
+        message = f"Source-set configuration file not found: {config_path}"
+        raise FileNotFoundError(message)
+    config: dict[str, Any] = {}
+    for raw_line in config_path.read_text(encoding="utf-8").splitlines():
+        if raw_line != raw_line.lstrip():
+            continue
+        line = raw_line.strip()
+        if not line or line.startswith("#") or ":" not in line:
+            continue
+        key, value = line.split(":", 1)
+        normalized = value.split("#", 1)[0].strip().strip('"').strip("'")
+        if normalized.lower() in {"true", "false"}:
+            config[key.strip()] = normalized.lower() == "true"
+        else:
+            config[key.strip()] = normalized
+    if config.get("name") != "legislation":
+        message = f"Expected source-set name 'legislation', got {config.get('name')}"
+        raise ValueError(message)
+    if not config.get("enabled", False):
+        message = "Source-set 'legislation' is disabled in configuration"
+        raise ValueError(message)
+    if config.get("execution_mode") != "dispatch_only":
+        message = "Legislation execution must remain dispatch_only"
+        raise ValueError(message)
+    return config
 
 
 def check_credentials_presence() -> dict[str, bool]:
-    """Check credentials presence safely without printing secret values."""
-    return {
-        "HF_TOKEN": bool(os.environ.get("HF_TOKEN")),
-        "ZENODO_TOKEN": bool(os.environ.get("ZENODO_TOKEN")),
-        "LEGISLATION_API_KEY": bool(os.environ.get("LEGISLATION_API_KEY")),
-    }
+    """Report only the optional source credential presence, never its value."""
+    return {"LEGISLATION_API_KEY": bool(os.environ.get("LEGISLATION_API_KEY"))}
 
 
-def sync_legislation_records(
+def sync_legislation_records(  # noqa: PLR0913
     service: LegislationArchiveService,
     *,
-    backfill_limit: int | None = None,
+    search_terms: list[str] | None,
+    work_ids: list[str] | None,
+    batch_id: str,
+    checkpoint_path: Path,
+    manifest_path: Path,
+    max_works: int,
+    force_resync: bool = False,
 ) -> dict[str, Any]:
-    """Execute live incremental discovery and acquisition batch."""
-    identities: list[SourceIdentity] = []
-    if backfill_limit and backfill_limit > 0:
-        for idx in range(backfill_limit):
-            target_id = f"act-public-2024-{idx + 1:04d}"
-            identities.append(
-                SourceIdentity(
-                    source_type=SourceType.LEGISLATION,
-                    agency_slug="pco",
-                    target=target_id,
-                    source_id=f"legislation:pco:{target_id}",
-                    uri=(
-                        "https://www.legislation.govt.nz/act/public/2024/"
-                        f"{idx + 1:04d}/latest/whole.html"
-                    ),
-                )
-            )
-
-    if not identities:
-        return {"works_synced": 0, "errors": [], "processed_ids": []}
-
-    results = asyncio.run(service.archive_batch(identities))
-    synced = sum(1 for r in results if r.status == "captured")
-    errors = [r.error_message for r in results if r.error_message]
-    processed_ids = [
-        r.source_identity.source_id for r in results if r.status == "captured"
-    ]
-
+    """Execute bounded discovery and acquisition through the canonical service."""
+    if work_ids is not None:
+        operation = service.sync_works(
+            work_ids=work_ids,
+            checkpoint_path=checkpoint_path,
+            manifest_path=manifest_path,
+            batch_id=batch_id,
+            max_works=max_works,
+            fail_fast=True,
+            force_resync=force_resync,
+        )
+    else:
+        operation = service.sync_works(
+            search_terms=search_terms,
+            checkpoint_path=checkpoint_path,
+            manifest_path=manifest_path,
+            batch_id=batch_id,
+            max_works=max_works,
+            fail_fast=True,
+            force_resync=force_resync,
+        )
+    result = asyncio.run(operation)
     return {
-        "works_synced": synced,
-        "errors": errors,
-        "processed_ids": processed_ids,
+        "status": result.status,
+        "works_attempted": result.works_attempted,
+        "works_synced": result.works_synced,
+        "records_preserved": result.records_preserved,
+        "errors": list(result.errors),
+        "manifest_sha256": result.manifest.get("manifest_sha256"),
+        "discovered_works_count": result.manifest.get("discovered_works_count"),
+        "checkpoint": result.checkpoint,
     }
 
 
-def run_harvest(  # noqa: PLR0913, PLR0915
+def _validate_execution_inputs(
+    batch_id: str,
+    search_terms: list[str] | None,
+    work_ids: list[str] | None,
+    max_works: int,
+) -> None:
+    if not batch_id or batch_id != batch_id.strip():
+        message = "A non-empty canonical batch ID is required"
+        raise ValueError(message)
+    if (search_terms is None) == (work_ids is None):
+        message = "Exactly one discovery scope is required"
+        raise ValueError(message)
+    scope = work_ids if work_ids is not None else search_terms
+    if not scope or any(not item or item != item.strip() for item in scope):
+        message = "Discovery scope must contain non-empty canonical values"
+        raise ValueError(message)
+    if max_works <= 0:
+        message = "max_works must be a positive bound"
+        raise ValueError(message)
+    if work_ids is not None and max_works != len(work_ids):
+        message = "Explicit work-ID batches require max_works to equal batch size"
+        raise ValueError(message)
+
+
+def run_harvest(  # noqa: PLR0913
     *,
     config_path: Path,
     checkpoint_path: Path,
-    candidate_checkpoint_path: Path,
     manifest_path: Path,
     receipt_path: Path,
     cas_path: Path,
-    backfill_limit: int | None = None,
-    promote: bool = True,
+    batch_id: str,
+    search_terms: list[str] | None,
+    max_works: int,
+    work_ids: list[str] | None = None,
+    force_resync: bool = False,
 ) -> int:
-    """Execute weekly legislation harvest orchestration."""
-    print(f"[HARVEST] Validating source-set configuration: {config_path}")
+    """Run one explicitly bounded, state-authenticated harvest attempt."""
     try:
-        cfg = validate_source_set_config(config_path)
-    except Exception as exc:  # noqa: BLE001
-        print(f"[ERROR] Source-set configuration invalid: {exc}", file=sys.stderr)
-        return 1
+        config = validate_source_set_config(config_path)
+        _validate_execution_inputs(batch_id, search_terms, work_ids, max_works)
+        service = LegislationArchiveService(ContentAddressedStore(cas_path))
+        report = sync_legislation_records(
+            service,
+            search_terms=search_terms,
+            work_ids=work_ids,
+            batch_id=batch_id,
+            checkpoint_path=checkpoint_path,
+            manifest_path=manifest_path,
+            max_works=max_works,
+            force_resync=force_resync,
+        )
+    except Exception as exc:  # noqa: BLE001 - receipt must capture bounded failure
+        report = {"status": "failed", "errors": [str(exc)]}
+        config = {"name": "legislation", "execution_mode": "dispatch_only"}
 
-    creds = check_credentials_presence()
-    hf_status = "set" if creds["HF_TOKEN"] else "missing"
-    zenodo_status = "set" if creds["ZENODO_TOKEN"] else "missing"
-    print(
-        f"[HARVEST] Credential audit: HF_TOKEN={hf_status}, "
-        f"ZENODO_TOKEN={zenodo_status}"
-    )
-
-    print(f"[HARVEST] Restoring verified checkpoint from: {checkpoint_path}")
-    chk_manager = LegislationCheckpointManager(checkpoint_path)
-    checkpoint = chk_manager.load()
-    initial_processed_count = len(checkpoint.get("processed_work_ids", []))
-    print(f"[HARVEST] Initial processed works: {initial_processed_count}")
-
-    cas_store = ContentAddressedStore(cas_path)
-    service = LegislationArchiveService(store=cas_store)
-
-    sync_success = True
-    new_works_count = 0
-    errors: list[str] = []
-    sync_report: dict[str, Any] = {
-        "works_synced": 0,
-        "errors": [],
-        "processed_ids": [],
-    }
-
-    print("[HARVEST] Executing incremental synchronization...")
-    try:
-        sync_report = sync_legislation_records(service, backfill_limit=backfill_limit)
-        new_works_count = sync_report.get("works_synced", 0)
-        errors.extend(sync_report.get("errors", []))
-    except Exception as exc:  # noqa: BLE001
-        print(f"[ERROR] Sync failed: {exc}", file=sys.stderr)
-        sync_success = False
-        errors.append(str(exc))
-
-    manifest_present = manifest_path.is_file()
-    validation_findings: list[str] = []
-    records_validated = 0
-
-    if manifest_present:
-        try:
-            man_data = json.loads(manifest_path.read_text(encoding="utf-8"))
-            for rec_dict in man_data.get("records", []):
-                findings = validate_legislation_record(rec_dict)
-                validation_findings.extend(findings)
-                records_validated += 1
-        except Exception as exc:  # noqa: BLE001
-            validation_findings.append(f"Manifest schema validation failure: {exc}")
-
-    # Determine outcome
-    if not sync_success or validation_findings:
-        outcome = "failed"
-        exit_code = 1
-    elif errors and new_works_count > 0:
-        outcome = "partial_retryable"
-        exit_code = 0
-    elif new_works_count > 0:
+    service_status = str(report.get("status", "failed"))
+    if service_status == "success":
         outcome = "changed"
-        exit_code = 0
-    else:
+    elif service_status == "no_change":
         outcome = "no_change"
-        exit_code = 0
+    elif service_status == "partial":
+        outcome = "partial_retryable"
+    else:
+        outcome = "failed"
+    exit_code = 0 if outcome in {"changed", "no_change"} else 1
 
-    print(f"[HARVEST] Orchestration outcome: {outcome} (exit_code={exit_code})")
-
-    # Save candidate checkpoint
-    candidate_checkpoint_path.parent.mkdir(parents=True, exist_ok=True)
-    updated_processed_ids = list(
-        set(
-            checkpoint.get("processed_work_ids", [])
-            + sync_report.get("processed_ids", [])
-        )
-    )
-    candidate_chk = {
-        "schema_version": "archive-govt-nz.legislation-checkpoint/v1",
-        "last_updated": checkpoint.get("last_updated"),
-        "completed_batches": checkpoint.get("completed_batches", []),
-        "processed_work_ids": updated_processed_ids,
-        "last_processed_index": len(updated_processed_ids),
-        "total_records_preserved": initial_processed_count + new_works_count,
-    }
-    candidate_checkpoint_path.write_text(
-        json.dumps(candidate_chk, indent=2), encoding="utf-8"
-    )
-
-    if promote and outcome in ("changed", "no_change"):
-        checkpoint_path.parent.mkdir(parents=True, exist_ok=True)
-        checkpoint_path.write_text(
-            json.dumps(candidate_chk, indent=2), encoding="utf-8"
-        )
-        print(f"[HARVEST] Checkpoint promoted to: {checkpoint_path}")
-
-    receipt_path.parent.mkdir(parents=True, exist_ok=True)
     receipt = {
-        "schema_version": "archive-govt-nz.legislation-harvest-receipt/v1",
+        "schema_version": "archive-govt-nz.legislation-harvest-receipt/v2",
         "source_set": "legislation",
+        "batch_id": batch_id,
+        "search_terms": search_terms or [],
+        "work_ids": work_ids or [],
+        "max_works": max_works,
+        "force_resync": force_resync,
         "outcome": outcome,
-        "new_works_synced": new_works_count,
-        "records_validated": records_validated,
-        "validation_findings_count": len(validation_findings),
-        "errors": errors,
-        "promoted": promote and outcome in ("changed", "no_change"),
-        "config": cfg,
+        "works_attempted": int(report.get("works_attempted", 0)),
+        "works_synced": int(report.get("works_synced", 0)),
+        "records_preserved": int(report.get("records_preserved", 0)),
+        "manifest_sha256": report.get("manifest_sha256"),
+        "discovered_works_count": report.get("discovered_works_count"),
+        "errors": list(report.get("errors", [])),
+        "state_committed": bool(
+            report.get("checkpoint") is not None and outcome in {"changed", "no_change"}
+        ),
+        "config": config,
     }
+    receipt_path.parent.mkdir(parents=True, exist_ok=True)
     receipt_path.write_text(json.dumps(receipt, indent=2), encoding="utf-8")
-    print(f"[HARVEST] Receipt written to: {receipt_path}")
-
+    print(f"[HARVEST] Outcome: {outcome}; receipt: {receipt_path}")
     return exit_code
 
 
 def main() -> None:
-    """CLI entrypoint for weekly legislation harvest runner."""
-    parser = argparse.ArgumentParser(
-        description="Weekly Legislation Harvest Orchestrator"
-    )
+    """Parse one explicit bounded harvest dispatch."""
+    parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--source-set-config",
         type=Path,
         default=Path("config/source-sets/legislation.yml"),
-        help="Path to source-set configuration YAML",
     )
+    parser.add_argument("--checkpoint-path", type=Path, required=True)
+    parser.add_argument("--manifest-path", type=Path, required=True)
+    parser.add_argument("--receipt-path", type=Path, required=True)
+    parser.add_argument("--cas-path", type=Path, required=True)
+    parser.add_argument("--batch-id", required=True)
+    search_scope = parser.add_mutually_exclusive_group(required=True)
+    search_scope.add_argument("--search-term", action="append")
+    search_scope.add_argument("--search-terms-file", type=Path)
+    search_scope.add_argument("--work-ids-file", type=Path)
+    parser.add_argument("--max-works", type=int, required=True)
     parser.add_argument(
-        "--checkpoint-path",
-        type=Path,
-        default=Path("evidence/checkpoints/legislation.json"),
-        help="Durable checkpoint location",
-    )
-    parser.add_argument(
-        "--candidate-checkpoint-path",
-        type=Path,
-        default=Path("build/checkpoints/legislation.json"),
-        help="Candidate checkpoint location",
-    )
-    parser.add_argument(
-        "--manifest-path",
-        type=Path,
-        default=Path("build/manifests/legislation.json"),
-        help="Manifest path",
-    )
-    parser.add_argument(
-        "--receipt-path",
-        type=Path,
-        default=Path("build/receipts/legislation/harvest-receipt.json"),
-        help="Harvest receipt path",
-    )
-    parser.add_argument(
-        "--cas-path",
-        type=Path,
-        default=Path("build/cas"),
-        help="CAS directory path",
-    )
-    parser.add_argument(
-        "--backfill-limit",
-        type=int,
-        default=None,
-        help="Optional max works limit to process",
-    )
-    parser.add_argument(
-        "--no-promote",
+        "--force-resync",
         action="store_true",
-        help="Do not promote candidate checkpoint to durable path",
+        help="Revalidate already-processed work IDs using stored validators",
     )
-
-    args = parser.parse_args()
-    code = run_harvest(
-        config_path=args.source_set_config,
-        checkpoint_path=args.checkpoint_path,
-        candidate_checkpoint_path=args.candidate_checkpoint_path,
-        manifest_path=args.manifest_path,
-        receipt_path=args.receipt_path,
-        cas_path=args.cas_path,
-        backfill_limit=args.backfill_limit,
-        promote=not args.no_promote,
+    arguments = parser.parse_args()
+    search_terms = arguments.search_term
+    if arguments.search_terms_file is not None:
+        search_terms = [
+            line.strip()
+            for line in arguments.search_terms_file.read_text(
+                encoding="utf-8"
+            ).splitlines()
+            if line.strip()
+        ]
+    work_ids = None
+    if arguments.work_ids_file is not None:
+        work_ids = [
+            line.strip()
+            for line in arguments.work_ids_file.read_text(encoding="utf-8").splitlines()
+            if line.strip()
+        ]
+    raise SystemExit(
+        run_harvest(
+            config_path=arguments.source_set_config,
+            checkpoint_path=arguments.checkpoint_path,
+            manifest_path=arguments.manifest_path,
+            receipt_path=arguments.receipt_path,
+            cas_path=arguments.cas_path,
+            batch_id=arguments.batch_id,
+            search_terms=search_terms,
+            max_works=arguments.max_works,
+            work_ids=work_ids,
+            force_resync=arguments.force_resync,
+        )
     )
-    sys.exit(code)
 
 
 if __name__ == "__main__":  # pragma: no cover

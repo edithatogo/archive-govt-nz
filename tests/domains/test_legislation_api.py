@@ -21,6 +21,84 @@ def test_api_client_headers_with_key() -> None:
     assert headers["X-Api-Key"] == "secret-123"
     assert headers["If-None-Match"] == '"etag-xyz"'
     assert headers["If-Modified-Since"] == "Mon, 18 Aug 2026 12:00:00 GMT"
+    assert headers["User-Agent"] == (
+        "archive-govt-nz/0.1.0 (+https://github.com/edithatogo/archive-govt-nz)"
+    )
+    assert "Preservation Bot" not in headers["User-Agent"]
+
+
+def test_api_client_loads_key_from_environment(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Production clients authenticate from the repository credential contract."""
+    monkeypatch.setenv("LEGISLATION_API_KEY", "environment-secret")
+    client = NZLegislationApiClient()
+    assert client._headers()["X-Api-Key"] == "environment-secret"
+
+
+def test_api_client_explicit_key_overrides_environment(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Dependency injection remains deterministic for tests and alternate callers."""
+    monkeypatch.setenv("LEGISLATION_API_KEY", "environment-secret")
+    client = NZLegislationApiClient(api_key="explicit-secret")
+    assert client._headers()["X-Api-Key"] == "explicit-secret"
+
+
+def test_api_client_explicit_empty_key_disables_environment(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """An explicit empty override permits intentional unauthenticated probes."""
+    monkeypatch.setenv("LEGISLATION_API_KEY", "environment-secret")
+    client = NZLegislationApiClient(api_key="")
+    assert "X-Api-Key" not in client._headers()
+
+
+def test_api_key_is_forwarded_only_to_official_manifestation_origin() -> None:
+    """The capability follows API-provided formats only to the exact PCO host."""
+    client = NZLegislationApiClient(api_key="private-capability")
+
+    headers = client._headers(
+        target_url="https://www.legislation.govt.nz/act/public/2026/1/latest.xml"
+    )
+
+    assert headers["X-Api-Key"] == "private-capability"
+    assert headers["Cache-Control"] == "no-cache"
+    assert headers["Accept"] == "application/xml"
+    assert (
+        client._headers(
+            target_url="https://www.legislation.govt.nz/act/public/2026/1/en/latest/"
+        )["Accept"]
+        == "text/html"
+    )
+    assert client._headers()["Accept"] == "application/json"
+    assert client._headers(target_url=client._url("works/"))["X-Api-Key"] == (
+        "private-capability"
+    )
+    assert "Cache-Control" not in client._headers(target_url=client._url("works/"))
+
+    rejected_targets = (
+        "http://www.legislation.govt.nz/act/public/2026/1/latest.xml",
+        "https://www.legislation.govt.nz.evil.test/act/1.xml",
+        "https://www.legislation.govt.nz:8443/act/public/2026/1/latest.xml",
+        "https://legislation.govt.nz/act/public/2026/1/latest.xml",
+    )
+    for target in rejected_targets:
+        assert "X-Api-Key" not in client._headers(target_url=target)
+
+
+def test_custom_api_key_is_not_forwarded_to_official_manifestation_origin() -> None:
+    """A key for an injected API origin is scoped only to that configured origin."""
+    client = NZLegislationApiClient(
+        "custom-capability", base_url="https://api.example.test/v0/"
+    )
+
+    assert client._headers(target_url=client._url("works/"))["X-Api-Key"] == (
+        "custom-capability"
+    )
+    assert "X-Api-Key" not in client._headers(
+        target_url="https://www.legislation.govt.nz/act/public/2026/1/latest.xml"
+    )
 
 
 def test_api_client_pacing() -> None:
@@ -175,6 +253,85 @@ def test_api_client_get_document_raw_429_with_retry_after() -> None:
     assert calls == 2
 
 
+def test_api_client_get_document_raw_retries_accepted_generation() -> None:
+    """A pending public rendering is retried until the representation is ready."""
+    calls = 0
+    sleeps: list[float] = []
+
+    def handler(_req: httpx.Request) -> httpx.Response:
+        nonlocal calls
+        calls += 1
+        if calls == 1:
+            return httpx.Response(202, headers={"Retry-After": "1"})
+        return httpx.Response(200, content=b"<act/>")
+
+    client = NZLegislationApiClient(
+        client=httpx.Client(transport=httpx.MockTransport(handler)),
+        sleep_fn=sleeps.append,
+        min_interval_seconds=0,
+    )
+
+    status, content, _ = client.get_document_raw(
+        "https://www.legislation.govt.nz/act/imperial/1539/1/en/2008-01-01.xml"
+    )
+
+    assert status == HTTP_OK
+    assert content == b"<act/>"
+    assert calls == 2
+    assert sleeps == [1.0]
+
+
+def test_official_manifestation_404_retries_without_capability() -> None:
+    """An authenticated website miss retries the same canonical URL publicly."""
+    observed_keys: list[str | None] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        observed_keys.append(request.headers.get("X-Api-Key"))
+        if len(observed_keys) == 1:
+            return httpx.Response(404)
+        return httpx.Response(200, content=b"<act/>")
+
+    client = NZLegislationApiClient(
+        "bounded-capability",
+        client=httpx.Client(transport=httpx.MockTransport(handler)),
+        min_interval_seconds=0,
+    )
+
+    status, content, _ = client.get_document_raw(
+        "https://www.legislation.govt.nz/act/local/1844/1/en/1844-07-11/"
+    )
+
+    assert status == HTTP_OK
+    assert content == b"<act/>"
+    assert observed_keys == ["bounded-capability", None]
+
+
+@pytest.mark.anyio
+async def test_official_manifestation_async_404_retries_without_capability() -> None:
+    """The async acquisition path applies the same exact-host fallback."""
+    observed_keys: list[str | None] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        observed_keys.append(request.headers.get("X-Api-Key"))
+        if len(observed_keys) == 1:
+            return httpx.Response(404)
+        return httpx.Response(200, content=b"<act/>")
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as http_client:
+        client = NZLegislationApiClient(
+            "bounded-capability",
+            async_client=http_client,
+            min_interval_seconds=0,
+        )
+        status, content, _ = await client.get_document_raw_async(
+            "https://www.legislation.govt.nz/act/local/1844/1/en/1844-07-11/"
+        )
+
+    assert status == HTTP_OK
+    assert content == b"<act/>"
+    assert observed_keys == ["bounded-capability", None]
+
+
 def test_api_client_get_document_raw_500_exhaustion() -> None:
     """Test 500 server error retry exhaustion."""
 
@@ -257,3 +414,120 @@ def test_api_client_iter_search_works() -> None:
     works = list(client.iter_search_works("Search", max_results=2))
     assert len(works) == 2
     assert works[0]["work_id"] == "act-1"
+
+
+def test_api_client_search_retries_transient_server_failure() -> None:
+    """A bounded transient server failure does not abort discovery."""
+    calls = 0
+    sleeps: list[float] = []
+
+    def handler(_req: httpx.Request) -> httpx.Response:
+        nonlocal calls
+        calls += 1
+        if calls == 1:
+            return httpx.Response(502, json={"error": "temporary"})
+        return httpx.Response(200, json={"results": [{"work_id": "act-1"}]})
+
+    client = NZLegislationApiClient(
+        client=httpx.Client(transport=httpx.MockTransport(handler)),
+        sleep_fn=sleeps.append,
+        min_interval_seconds=0,
+    )
+
+    assert list(client.iter_search_works("act")) == [{"work_id": "act-1"}]
+    assert calls == 2
+    assert sleeps == [1.0]
+
+
+def test_api_client_search_retries_transport_failure() -> None:
+    """A bounded transport failure is retried before failing closed."""
+    calls = 0
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        nonlocal calls
+        calls += 1
+        if calls == 1:
+            msg = "temporary"
+            raise httpx.ConnectError(msg, request=request)
+        return httpx.Response(200, json={"results": [{"work_id": "act-1"}]})
+
+    client = NZLegislationApiClient(
+        client=httpx.Client(transport=httpx.MockTransport(handler)),
+        sleep_fn=lambda _: None,
+        min_interval_seconds=0,
+    )
+
+    assert list(client.iter_search_works("act")) == [{"work_id": "act-1"}]
+    assert calls == 2
+
+
+def test_api_client_search_does_not_retry_ordinary_forbidden() -> None:
+    """An authorization failure is immediate unless identified as burst limiting."""
+    calls = 0
+
+    def handler(_req: httpx.Request) -> httpx.Response:
+        nonlocal calls
+        calls += 1
+        return httpx.Response(403, json={"error": "forbidden"})
+
+    client = NZLegislationApiClient(
+        client=httpx.Client(transport=httpx.MockTransport(handler)),
+        sleep_fn=lambda _: None,
+    )
+    with pytest.raises(OSError, match="HTTP 403"):
+        list(client.iter_search_works("act"))
+    assert calls == 1
+
+
+@pytest.mark.parametrize("status_code", [401, 403, 429, 500])
+def test_api_client_search_http_failure_is_not_empty_state(status_code: int) -> None:
+    """Authentication and transport failures cannot become empty discovery."""
+
+    def handler(_req: httpx.Request) -> httpx.Response:
+        return httpx.Response(status_code, json={"error": "bounded"})
+
+    client = NZLegislationApiClient(
+        client=httpx.Client(transport=httpx.MockTransport(handler)),
+        sleep_fn=lambda _: None,
+    )
+    with pytest.raises(OSError, match=f"HTTP {status_code}"):
+        list(client.iter_search_works("act"))
+
+
+@pytest.mark.parametrize(
+    ("response", "error"),
+    [
+        (httpx.Response(200, content=b"not-json"), ValueError),
+        (httpx.Response(200, json={"results": {"work_id": "act-1"}}), TypeError),
+    ],
+)
+def test_api_client_search_malformed_success_fails_closed(
+    response: httpx.Response, error: type[Exception]
+) -> None:
+    """Malformed HTTP 200 payloads are not evidence of an empty inventory."""
+
+    def handler(_req: httpx.Request) -> httpx.Response:
+        return response
+
+    client = NZLegislationApiClient(
+        client=httpx.Client(transport=httpx.MockTransport(handler)),
+        sleep_fn=lambda _: None,
+    )
+    with pytest.raises(error):
+        list(client.iter_search_works("act"))
+
+
+def test_api_client_search_ignores_non_object_items() -> None:
+    """Only canonical object-shaped search records are yielded."""
+
+    def handler(_req: httpx.Request) -> httpx.Response:
+        return httpx.Response(
+            200,
+            json={"results": [None, "invalid", {"work_id": "act-1"}]},
+        )
+
+    client = NZLegislationApiClient(
+        client=httpx.Client(transport=httpx.MockTransport(handler)),
+        sleep_fn=lambda _: None,
+    )
+    assert list(client.iter_search_works("act")) == [{"work_id": "act-1"}]

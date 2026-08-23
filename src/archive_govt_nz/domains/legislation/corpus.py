@@ -60,6 +60,7 @@ class ExpressionTarget:
     version_date: str | None = None
     version_label: str | None = None
     manifestations: list[ManifestationTarget] = field(default_factory=list)
+    fallback_manifestations: bool = False
 
 
 @dataclass(frozen=True, slots=True)
@@ -85,6 +86,34 @@ class LegislationSyncResult:
     coverage: LegislationCoverageReport
     checkpoint: dict[str, Any] | None
     errors: list[str] = field(default_factory=list)
+
+
+def _primary_manifestation(
+    manifestations: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    """Order deterministic preservation fallbacks: XML, then HTML."""
+
+    def priority(item: dict[str, Any]) -> tuple[int, str]:
+        media_type = str(item.get("media_type") or "").lower()
+        if "xml" in media_type:
+            rank = 0
+        elif "html" in media_type:
+            rank = 1
+        elif "pdf" in media_type:
+            rank = 2
+        else:
+            rank = 3
+        return rank, str(item.get("source_url") or "")
+
+    eligible = [
+        item
+        for item in manifestations
+        if any(
+            kind in str(item.get("media_type") or "").lower()
+            for kind in ("xml", "html")
+        )
+    ]
+    return sorted(eligible, key=priority)
 
 
 def _build_discovered_work_targets(  # noqa: C901
@@ -148,6 +177,9 @@ def _build_discovered_work_targets(  # noqa: C901
                     version_date=expression.get("version_date"),
                     version_label=expression.get("version_label"),
                     manifestations=manifestation_targets,
+                    fallback_manifestations=bool(
+                        expression.get("fallback_manifestations", False)
+                    ),
                 )
             )
 
@@ -433,7 +465,7 @@ class LegislationArchiveService:
             html_fallback_count=html_count,
         )
 
-    def _resolve_targets(
+    def _resolve_targets(  # noqa: C901, PLR0912, PLR0915
         self,
         work_ids: list[str] | None = None,
         search_terms: list[str] | None = None,
@@ -457,20 +489,70 @@ class LegislationArchiveService:
                     work_id, "work", seen_requested_ids, required=True
                 )
                 requested_ids.append(work_id)
-            inventory = build_work_inventory(
-                self.api_client,
-                search_terms=requested_ids,
-                max_works=None,
-            )
-            discovered_items = inventory.get("works", [])
-            discovered_by_id = {
-                str(item.get("work_id", "")).strip(): item
-                for item in discovered_items
-                if isinstance(item, dict)
-            }
-            missing_ids = [
-                work_id for work_id in requested_ids if work_id not in discovered_by_id
-            ]
+            discovered_by_id: dict[str, dict[str, Any]] = {}
+            missing_ids: list[str] = []
+            for work_id in requested_ids:
+                versions = list(self.api_client.iter_work_versions(work_id))
+                if not versions:
+                    missing_ids.append(work_id)
+                    continue
+                version_id = str(versions[0].get("version_id") or "").strip()
+                if not version_id:
+                    msg = (
+                        f"discovered work {work_id} lacks canonical expression identity"
+                    )
+                    raise ValueError(msg)
+                version = self.api_client.get_version(version_id)
+                discovered_work_id = str(version.get("work_id") or "").strip()
+                if discovered_work_id != work_id:
+                    msg = (
+                        "discovered expression "
+                        f"{version_id} has mismatched work identity"
+                    )
+                    raise ValueError(msg)
+                version_date = str(version.get("version_date") or "").strip()
+                if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", version_date):
+                    match = re.search(r"\d{4}-\d{2}-\d{2}", version_id)
+                    version_date = match.group(0) if match else ""
+                manifestations = []
+                for item in version.get("formats", []) or []:
+                    if not isinstance(item, dict):
+                        continue
+                    source_url = str(item.get("url") or "").strip()
+                    if source_url:
+                        if version_date and "/latest" in source_url:
+                            source_url = source_url.replace(
+                                "/latest", f"/{version_date}", 1
+                            )
+                        manifestations.append(
+                            {
+                                "manifestation_id": source_url,
+                                "source_url": source_url,
+                                "media_type": item.get("media_type")
+                                or item.get("type")
+                                or "application/octet-stream",
+                            }
+                        )
+                manifestations = _primary_manifestation(manifestations)
+                canonical_uri = str(
+                    version.get("canonical_uri")
+                    or version.get("canonical_url")
+                    or (manifestations[0]["source_url"] if manifestations else "")
+                ).strip()
+                discovered_by_id[work_id] = {
+                    "work_id": work_id,
+                    "title": version.get("title", ""),
+                    "canonical_uri": canonical_uri,
+                    "expressions": [
+                        {
+                            "expression_id": version_id,
+                            "version_date": version_date or None,
+                            "version_label": version.get("version_label"),
+                            "manifestations": manifestations,
+                            "fallback_manifestations": True,
+                        }
+                    ],
+                }
             if missing_ids:
                 msg = (
                     "requested work identities were not returned by canonical "
@@ -496,7 +578,7 @@ class LegislationArchiveService:
         return resolved
 
     @staticmethod
-    def _load_manifest(manifest_path: Path | None) -> dict[str, Any] | None:
+    def load_manifest(manifest_path: Path | None) -> dict[str, Any] | None:
         """Load and verify prior cumulative manifest state or fail closed."""
         if manifest_path is None or not manifest_path.exists():
             return None
@@ -566,7 +648,7 @@ class LegislationArchiveService:
         }
 
     @staticmethod
-    def _validate_checkpoint(checkpoint: dict[str, Any]) -> None:
+    def validate_checkpoint(checkpoint: dict[str, Any]) -> None:
         """Validate durable checkpoint structure before using accounting state."""
         schema_version = checkpoint.get("schema_version")
         if schema_version is not None and schema_version != (
@@ -662,7 +744,7 @@ class LegislationArchiveService:
 
         return record, [], "captured", validators
 
-    async def _sync_target_manifestations(
+    async def _sync_target_manifestations(  # noqa: C901
         self,
         target: WorkTarget,
         retrieval_time: str,
@@ -681,6 +763,8 @@ class LegislationArchiveService:
         updated_conditionals: dict[str, dict[str, str]] = {}
 
         for exp in target.expression_targets:
+            fallback_errors: list[str] = []
+            fallback_succeeded = False
             for man in exp.manifestations:
                 key = man.manifestation_id or man.target_url
                 rec, man_errs, outcome, validators = await self._sync_manifestation(
@@ -696,12 +780,25 @@ class LegislationArchiveService:
                 if outcome == "no_change":
                     no_change_count += 1
                 if man_errs:
+                    if exp.fallback_manifestations:
+                        fallback_errors.extend(man_errs)
+                        continue
                     errors.extend(man_errs)
                     has_error = True
                     if fail_fast:
                         return recs, errors, True, no_change_count, updated_conditionals
                 if rec is not None:
                     recs.append(rec)
+                if exp.fallback_manifestations and (
+                    rec is not None or outcome == "no_change"
+                ):
+                    fallback_succeeded = True
+                    break
+            if exp.fallback_manifestations and not fallback_succeeded:
+                errors.extend(fallback_errors)
+                has_error = True
+                if fail_fast:
+                    return recs, errors, True, no_change_count, updated_conditionals
 
         return recs, errors, has_error, no_change_count, updated_conditionals
 
@@ -834,7 +931,7 @@ class LegislationArchiveService:
         force_resync: bool = False,
     ) -> LegislationSyncResult:
         """Execute the complete 10-step bounded resumable sync pipeline."""
-        prior_manifest = self._load_manifest(manifest_path)
+        prior_manifest = self.load_manifest(manifest_path)
         resolved = self._resolve_targets(
             work_ids=work_ids,
             search_terms=search_terms,
@@ -854,7 +951,7 @@ class LegislationArchiveService:
 
         if chk_mgr is not None:
             chk_data = chk_mgr.load(strict=True)
-            self._validate_checkpoint(chk_data)
+            self.validate_checkpoint(chk_data)
             processed_ids = set(chk_data.get("processed_work_ids", []))
             completed_batches = list(chk_data.get("completed_batches", []))
 

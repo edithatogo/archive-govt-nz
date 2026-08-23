@@ -10,7 +10,13 @@
 
 ## Overview
 
-`archive-govt-nz` is the canonical open preservation platform for Aotearoa New Zealand public sector digital records. It unifies high-throughput Content-Addressed Storage (CAS), ISO 28500 WARC/WACZ packaging, W3C PROV-O provenance tracking, and multi-format open data publishing (Hugging Face, Zenodo, Croissant, RO-Crate 1.1, and DCAT-AP 3.0).
+`archive-govt-nz` is the canonical target repository for evidence-first
+preservation of Aotearoa New Zealand public-sector digital records. It contains
+content-addressed storage, WARC/WACZ packaging, provenance and manifest models,
+source adapters, and publication preparation components. Production capture,
+remote publication, redistribution rights, recovery, cutover, and donor
+archival remain separate evidence gates; repository presence or a passing local
+test does not establish those operational states.
 
 ---
 
@@ -28,15 +34,15 @@ flowchart TD
 
     subgraph Core["Canonical Preservation Core"]
         CAS["Content-Addressed Storage (SHA-256 / BLAKE3)"]
-        PROV["W3C PROV-O Provenance Ledger"]
-        WARC["ISO 28500 WARC & WACZ Compactor"]
+        PROV["Versioned Provenance and Evidence Manifests"]
+        WARC["WARC & WACZ Compactor"]
         REPLAY["Deterministic Replay Engine"]
-        REGISTRY["350+ Agency Seed Registry"]
+        REGISTRY["Configured Seed Registry"]
     end
 
-    subgraph Distribution["Publication & Interoperability"]
-        HF["Hugging Face Datasets"]
-        ZENODO["Zenodo Concept DOI 10.5281/zenodo.20991132"]
+    subgraph Distribution["Publication & Interoperability — Evidence Gated"]
+        HF["Hugging Face Preparation"]
+        ZENODO["Zenodo Preparation"]
         METADATA["RO-Crate 1.1 & Croissant JSON-LD"]
         RIOPA["RIOPA Archive Interoperability"]
         MCP["Model Context Protocol (MCP) Server"]
@@ -50,40 +56,58 @@ flowchart TD
 
 ## Key Features
 
-1. **Multi-Source Ingestion**: Unified asynchronous capture across CKAN catalogues, web feeds, social media, email bulletins, and official gazettes.
-2. **Immutable Content-Addressed Storage**: SHA-256 and BLAKE3 content-addressed store delivering >700 MB/s streaming throughput.
-3. **Standards-Compliant Preservation**: Generates ISO 28500 WARC 1.1 records and signed WACZ zip containers.
-4. **W3C PROV-O Provenance**: Cryptographically verifiable Entity-Activity-Agent graph tracking every ingestion and transformation.
-5. **Deterministic Zero-Network Replay**: Full bitstream fixity validation and offline reconstruction drills.
-6. **Dual CLI & MCP Interfaces**: Rich operator command-line interface with Model Context Protocol (MCP) server for AI assistants.
+1. **Source adapters and domain services**: Bounded components exist for CKAN,
+   feeds, social sources, newsletters, legislation, and gazette records. The
+   standalone global `capture` command is not yet connected to a worker.
+2. **Content-addressed storage**: Immutable SHA-256/BLAKE3 object identities
+   with streaming fixity verification.
+3. **Preservation containers**: WARC and WACZ construction and structural
+   validation; no signature or conformance claim is inferred from packaging.
+4. **Provenance evidence**: Versioned closed manifests and evidence-ledger
+   validation tied to observed objects and transformations.
+5. **Zero-network verification**: Streaming CAS replay and fixity checks over
+   supplied local state. This is not a claim of full-corpus recovery.
+6. **CLI and MCP entry points**: A fail-closed global CLI is implemented. The
+   MCP surface remains scheduled for separate current-standard hardening.
 
 ---
 
 ## Quickstart
 
-### Installation
+### Local installation
 ```bash
-# Using uv (recommended)
-uv tool install archive-govt-nz
+uv sync --locked
 ```
 
 ### CLI Operations
 ```bash
-# Check system health
-archive-govt-nz doctor
+# Check only the declared Python runtime
+uv run --locked archive-govt-nz doctor --format json
 
-# List registered government sources (350+ agencies)
-archive-govt-nz sources
+# Inspect configured seed files
+uv run --locked archive-govt-nz sources --format json
 
-# Capture from a government endpoint
-archive-govt-nz capture --uri https://www.treasury.govt.nz
+# Verify a closed WARC/WACZ directory against declared SHA-256 fixity
+uv run --locked archive-govt-nz archive --action verify \
+  --output-dir build/warc \
+  --manifest-path build/warc/manifest.json \
+  --format json
 
-# Inspect and verify archive fixity
-archive-govt-nz archive --action verify
+# Stream-verify a production-layout content-addressed store
+uv run --locked archive-govt-nz replay --cas-dir build/cas --format json
 
-# Run deterministic zero-network replay
-archive-govt-nz replay --verify-all
+# Run the combined local integrity checks
+uv run --locked archive-govt-nz verify \
+  --cas-dir build/cas \
+  --schemas-dir schemas \
+  --provenance-path evidence/archive-evidence-ledger.json \
+  --format json
 ```
+
+Commands return non-zero when required state is absent, corrupt, unsupported,
+or blocked. `capture` currently returns `not_configured` (exit 2) for global
+source types; use a domain runner only when its own runbook and evidence gates
+authorize it.
 
 ---
 
@@ -91,16 +115,24 @@ archive-govt-nz replay --verify-all
 
 The codebase enforces strict quality boundaries via `tools/check.py`:
 - **Python 3.14+** with strict static typing via `basedpyright`.
-- **500+ unit, integration, and fuzzing tests** exceeding a strict **95.0% branch coverage** gate.
+- **Locked validation harness**: Unit, integration, and adversarial tests enforce
+  at least **95% branch-aware coverage**. Exact local results are recorded in the
+  active Conductor track; they are not hosted or operational proof.
 - **7 Mutation Testing Runners** (`mutation_resource_policy`, `mutation_versioning`, `mutation_redundancy`, `mutation_archivebox_pilot`, `mutation_batch_eligibility`, `mutation_global_policy`, `mutation_adapters`).
-- **Zero AI Slops Policy**: Zero placeholder stubs, unverified mocks, or synthetic bypasses.
+- **Hygiene gate**: The repository validator rejects configured placeholder and
+  forbidden-pattern classes.
 - **Supply-Chain Hardening**: Automated CycloneDX SBOM generation, `pip-audit`, `pip-licenses`, and `detect-secrets`.
 
 ---
 
 ## Consolidation & Provenance
 
-The legacy repository `edithatogo/sm-govt-nz` has been **deprecatingly archived and consolidated** into `archive-govt-nz`. All historical donor tracks, schemas, and issue resolutions are preserved in [`evidence/migrations/sm-govt-nz/`](./evidence/migrations/sm-govt-nz/).
+The donor repository `edithatogo/sm-govt-nz` remains **unarchived** while the
+service, CLI, MCP, workflow, real-batch, canary, weekly-cycle, recovery, and
+cutover sequence is incomplete. Its zero open-issue count records
+administrative transfer to the target epic; it is not implementation or
+cutover evidence. Migration records are retained under
+[`evidence/migrations/sm-govt-nz/`](./evidence/migrations/sm-govt-nz/).
 
 - **Canonical Repository**: [https://github.com/edithatogo/archive-govt-nz](https://github.com/edithatogo/archive-govt-nz)
 - **Hugging Face Datasets**:
@@ -112,4 +144,7 @@ The legacy repository `edithatogo/sm-govt-nz` has been **deprecatingly archived 
 
 ## License
 
-This software is licensed under the [Apache License, Version 2.0](LICENSE). Archived government data remains subject to Crown Copyright and respective open government licenses (CC-BY 4.0 NZ).
+This software is licensed under the [Apache License, Version 2.0](LICENSE).
+Archived source material retains its own copyright, licence, access, and
+redistribution conditions; public accessibility is not blanket redistribution
+permission.

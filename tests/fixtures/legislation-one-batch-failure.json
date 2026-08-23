@@ -1,0 +1,16 @@
+{
+  "schema_version": "archive-govt-nz.legislation-one-batch-reconciliation/v1",
+  "status": "failed",
+  "evaluated_at": "2026-08-20T00:00:00Z",
+  "batch_id": "historical-work-ids-0001",
+  "error_class": "manifest_missing",
+  "mismatch_count": 1,
+  "mismatches": [
+    "manifest_missing"
+  ],
+  "limitations": [
+    "one_search_derived_batch_only",
+    "not_corpus_completeness_evidence",
+    "no_remote_publication_or_rights_verification"
+  ]
+}

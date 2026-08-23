@@ -1,447 +1,599 @@
-"""Model Context Protocol (MCP) stdio server for archive-govt-nz."""
+"""Fail-closed Model Context Protocol stdio server for archive-govt-nz."""
 
 from __future__ import annotations
 
 import json
+import re
 import sys
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
 
+from jsonschema import Draft202012Validator
+
 from archive_govt_nz import __version__
 from archive_govt_nz.core.registry import AgencyRegistry
+from archive_govt_nz.object_store import ContentAddressedStore, ObjectStoreError
 
 if TYPE_CHECKING:
     from typing import TextIO
 
-PROTOCOL_VERSION = "2024-11-05"
-
+PROTOCOL_VERSION = "2025-11-25"
 JSONRPC_PARSE_ERROR = -32700
 JSONRPC_INVALID_REQUEST = -32600
 JSONRPC_METHOD_NOT_FOUND = -32601
 JSONRPC_INVALID_PARAMS = -32602
 JSONRPC_INTERNAL_ERROR = -32603
+MCP_RESOURCE_NOT_FOUND = -32002
+
+_SCHEMA_URI = "https://json-schema.org/draft/2020-12/schema"
+_DIGEST = re.compile(r"^[0-9a-f]{64}$")
+_CAS_LAYOUT_PARTS = 2
+_CAS_PREFIX_LENGTH = 2
+_INVALID_STORE_LAYOUT = "invalid_store_layout"
+_CAPABILITIES = (
+    "cas_dual_hash",
+    "warc_iso28500",
+    "wacz_bundle",
+    "huggingface_distribution",
+    "zenodo_doi",
+    "croissant_jsonld",
+    "ro_crate_1_1",
+    "offline_replay",
+    "mcp_server",
+    "multi_source_adapters",
+)
+
+
+def _object_schema(properties: dict[str, Any], required: list[str]) -> dict[str, Any]:
+    return {
+        "$schema": _SCHEMA_URI,
+        "type": "object",
+        "properties": properties,
+        "required": required,
+        "additionalProperties": False,
+    }
+
+
+_NO_ARGUMENTS = _object_schema({}, [])
+_TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
+    {
+        "name": "archive_doctor",
+        "description": (
+            "Check runtime compatibility without claiming archive integrity."
+        ),
+        "inputSchema": _NO_ARGUMENTS,
+        "outputSchema": _object_schema(
+            {
+                "integrity_status": {"const": "not_checked"},
+                "python_min_satisfied": {"type": "boolean"},
+                "python_version": {"type": "string"},
+                "required_python": {"const": ">=3.14"},
+                "runtime_state": {
+                    "enum": ["runtime_compatible", "runtime_incompatible"]
+                },
+            },
+            [
+                "integrity_status",
+                "python_min_satisfied",
+                "python_version",
+                "required_python",
+                "runtime_state",
+            ],
+        ),
+        "annotations": {
+            "title": "Inspect runtime compatibility",
+            "readOnlyHint": True,
+            "destructiveHint": False,
+            "idempotentHint": True,
+            "openWorldHint": False,
+        },
+    },
+    {
+        "name": "archive_capabilities",
+        "description": "List compiled archive capabilities without readiness claims.",
+        "inputSchema": _NO_ARGUMENTS,
+        "outputSchema": _object_schema(
+            {
+                "capabilities": {"type": "array", "items": {"type": "string"}},
+                "count": {"type": "integer", "minimum": 0},
+                "status": {"const": "compiled"},
+            },
+            ["capabilities", "count", "status"],
+        ),
+        "annotations": {
+            "title": "List compiled capabilities",
+            "readOnlyHint": True,
+            "destructiveHint": False,
+            "idempotentHint": True,
+            "openWorldHint": False,
+        },
+    },
+    {
+        "name": "archive_sources",
+        "description": "Inspect the configured government-source seed registry.",
+        "inputSchema": _object_schema(
+            {
+                "registry_path": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Path to the seed directory",
+                    "default": "registry/seeds",
+                }
+            },
+            [],
+        ),
+        "outputSchema": _object_schema(
+            {
+                "registered_sources_count": {"type": "integer", "minimum": 0},
+                "registry_path": {"type": "string"},
+                "status": {"enum": ["configured", "empty", "not_configured"]},
+            },
+            ["registered_sources_count", "registry_path", "status"],
+        ),
+        "annotations": {
+            "title": "Inspect source registry",
+            "readOnlyHint": True,
+            "destructiveHint": False,
+            "idempotentHint": True,
+            "openWorldHint": False,
+        },
+    },
+    {
+        "name": "archive_status",
+        "description": "Stream-verify canonical objects in a local sharded CAS.",
+        "inputSchema": _object_schema(
+            {
+                "cas_path": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Path to the local CAS root",
+                    "default": "build/cas",
+                }
+            },
+            [],
+        ),
+        "outputSchema": _object_schema(
+            {
+                "bytes_verified": {"type": "integer", "minimum": 0},
+                "cas_directory": {"type": "string"},
+                "objects_discovered": {"type": "integer", "minimum": 0},
+                "objects_verified": {"type": "integer", "minimum": 0},
+                "status": {"enum": ["verified", "no_state"]},
+            },
+            [
+                "bytes_verified",
+                "cas_directory",
+                "objects_discovered",
+                "objects_verified",
+                "status",
+            ],
+        ),
+        "annotations": {
+            "title": "Verify local CAS state",
+            "readOnlyHint": True,
+            "destructiveHint": False,
+            "idempotentHint": True,
+            "openWorldHint": False,
+        },
+    },
+)
+_TOOLS_BY_NAME = {tool["name"]: tool for tool in _TOOL_DEFINITIONS}
 
 
 class StdioServerTransport:
-    """Standard IO transport for JSON-RPC 2.0 MCP protocol."""
+    """UTF-8 line-delimited JSON-RPC transport for MCP stdio."""
 
     def __init__(
-        self,
-        stdin: TextIO | None = None,
-        stdout: TextIO | None = None,
+        self, stdin: TextIO | None = None, stdout: TextIO | None = None
     ) -> None:
-        """Initialize standard IO transport streams."""
+        """Bind the MCP transport to input and output text streams."""
         self._stdin = stdin or sys.stdin
         self._stdout = stdout or sys.stdout
 
     def read_message(self) -> dict[str, Any] | None:
-        """Read a single line-delimited JSON-RPC message from stdin."""
-        line = self._stdin.readline()
-        if not line:
-            return None
-        stripped = line.strip()
-        if not stripped:
-            return None
-        data = json.loads(stripped)
+        """Read the next non-empty JSON-RPC object, or return None at EOF."""
+        while True:
+            line = self._stdin.readline()
+            if not line:
+                return None
+            if line.strip():
+                break
+        data = json.loads(line)
         if not isinstance(data, dict):
             msg = "Expected a JSON object"
             raise TypeError(msg)
         return data
 
     def write_message(self, message: dict[str, Any]) -> None:
-        """Write a JSON-RPC message to stdout."""
-        self._stdout.write(json.dumps(message, sort_keys=True) + "\n")
+        """Write exactly one JSON object and newline to stdout."""
+        self._stdout.write(
+            json.dumps(
+                message, ensure_ascii=False, separators=(",", ":"), sort_keys=True
+            )
+            + "\n"
+        )
         self._stdout.flush()
 
 
+def _error(req_id: object, code: int, message: str) -> dict[str, Any]:
+    return {
+        "jsonrpc": "2.0",
+        "id": req_id,
+        "error": {"code": code, "message": message},
+    }
+
+
+def _result(req_id: object, result: dict[str, Any]) -> dict[str, Any]:
+    return {"jsonrpc": "2.0", "id": req_id, "result": result}
+
+
+def _valid_initialize_params(params: dict[str, Any]) -> bool:
+    info = params.get("clientInfo")
+    return bool(
+        isinstance(params.get("protocolVersion"), str)
+        and isinstance(params.get("capabilities"), dict)
+        and isinstance(info, dict)
+        and isinstance(info.get("name"), str)
+        and info["name"]
+        and isinstance(info.get("version"), str)
+        and info["version"]
+    )
+
+
+def _validate_one_page_cursor(params: dict[str, Any]) -> str | None:
+    if params.get("cursor") is not None:
+        return "Invalid or expired cursor"
+    return None
+
+
 class Server:
-    """Operational MCP Server implementing JSON-RPC 2.0 request handling."""
+    """Stateful stable-MCP JSON-RPC request dispatcher."""
 
     def __init__(self, name: str = "archive-govt-nz-mcp") -> None:
-        """Initialize MCP Server instance with name and version."""
+        """Create an uninitialized MCP server."""
         self.name = name
         self.version = __version__
         self.protocol_version = PROTOCOL_VERSION
-        self.initialized = False
+        self._state = "new"
 
-    def handle_request(self, request: dict[str, Any]) -> dict[str, Any] | None:  # noqa: C901, PLR0911, PLR0912
-        """Route and process an MCP JSON-RPC 2.0 request."""
-        if request.get("jsonrpc") != "2.0":
-            return {
-                "jsonrpc": "2.0",
-                "id": request.get("id"),
-                "error": {
-                    "code": JSONRPC_INVALID_REQUEST,
-                    "message": "Invalid JSON-RPC version, expected '2.0'",
-                },
-            }
+    @property
+    def initialized(self) -> bool:
+        """Whether the initialized lifecycle notification was received."""
+        return self._state == "ready"
 
+    def handle_request(  # noqa: C901, PLR0911, PLR0912
+        self, request: dict[str, Any]
+    ) -> dict[str, Any] | None:
+        """Validate and route one MCP JSON-RPC message."""
         req_id = request.get("id")
+        if request.get("jsonrpc") != "2.0":
+            return _error(
+                req_id,
+                JSONRPC_INVALID_REQUEST,
+                "Invalid JSON-RPC version, expected '2.0'",
+            )
         method = request.get("method")
-        params = request.get("params") or {}
-        if not isinstance(params, dict):
-            return {
-                "jsonrpc": "2.0",
-                "id": req_id,
-                "error": {
-                    "code": JSONRPC_INVALID_PARAMS,
-                    "message": "Expected params to be an object",
-                },
-            }
+        if not isinstance(method, str) or not method:
+            return _error(req_id, JSONRPC_INVALID_REQUEST, "Missing string method")
 
-        if method == "initialize":
-            return {
-                "jsonrpc": "2.0",
-                "id": req_id,
-                "result": {
-                    "protocolVersion": self.protocol_version,
-                    "serverInfo": {
-                        "name": self.name,
-                        "version": self.version,
-                    },
-                    "capabilities": {
-                        "tools": {"listChanged": False},
-                        "resources": {"subscribe": False, "listChanged": False},
-                    },
-                },
-            }
-
-        if method in ("notifications/initialized", "initialized"):
-            self.initialized = True
-            if req_id is None:
+        is_notification = "id" not in request
+        raw_params = request.get("params", {})
+        if not isinstance(raw_params, dict):
+            if is_notification:
                 return None
-            return {"jsonrpc": "2.0", "id": req_id, "result": {}}
+            return _error(req_id, JSONRPC_INVALID_PARAMS, "Expected params object")
+        params: dict[str, Any] = raw_params
 
+        if is_notification:
+            if method == "notifications/initialized" and self._state == "initializing":
+                self._state = "ready"
+            return None
+
+        if method == "notifications/initialized":
+            return _error(
+                req_id,
+                JSONRPC_INVALID_REQUEST,
+                "notifications/initialized must be a notification",
+            )
+        if method == "initialize":
+            return self._initialize(req_id, params)
         if method == "ping":
-            return {"jsonrpc": "2.0", "id": req_id, "result": {}}
-
+            return _result(req_id, {})
+        if method == "initialized":
+            return _error(
+                req_id, JSONRPC_METHOD_NOT_FOUND, "Method not found: initialized"
+            )
+        if self._state != "ready":
+            return _error(
+                req_id,
+                JSONRPC_INVALID_REQUEST,
+                "Server initialization is not complete",
+            )
         if method == "tools/list":
-            return {
-                "jsonrpc": "2.0",
-                "id": req_id,
-                "result": {"tools": list_tools()},
-            }
-
+            cursor_error = _validate_one_page_cursor(params)
+            if cursor_error:
+                return _error(req_id, JSONRPC_INVALID_PARAMS, cursor_error)
+            return _result(req_id, {"tools": list_tools()})
         if method == "resources/list":
-            return {
-                "jsonrpc": "2.0",
-                "id": req_id,
-                "result": {"resources": list_resources()},
-            }
-
+            cursor_error = _validate_one_page_cursor(params)
+            if cursor_error:
+                return _error(req_id, JSONRPC_INVALID_PARAMS, cursor_error)
+            return _result(req_id, {"resources": list_resources()})
         if method == "resources/read":
-            uri = params.get("uri")
-            if not uri or not isinstance(uri, str):
-                return {
-                    "jsonrpc": "2.0",
-                    "id": req_id,
-                    "error": {
-                        "code": JSONRPC_INVALID_PARAMS,
-                        "message": "Missing required string parameter 'uri'",
-                    },
-                }
-            try:
-                res_content = read_resource(uri)
-            except KeyError as exc:
-                return {
-                    "jsonrpc": "2.0",
-                    "id": req_id,
-                    "error": {
-                        "code": JSONRPC_INVALID_PARAMS,
-                        "message": str(exc),
-                    },
-                }
-            else:
-                return {
-                    "jsonrpc": "2.0",
-                    "id": req_id,
-                    "result": {"contents": [res_content]},
-                }
-
+            return self._read_resource(req_id, params)
         if method == "tools/call":
-            tool_name = params.get("name")
-            if not tool_name or not isinstance(tool_name, str):
-                return {
-                    "jsonrpc": "2.0",
-                    "id": req_id,
-                    "error": {
-                        "code": JSONRPC_INVALID_PARAMS,
-                        "message": "Missing required string parameter 'name'",
-                    },
-                }
-            tool_args = params.get("arguments") or {}
-            if not isinstance(tool_args, dict):
-                return {
-                    "jsonrpc": "2.0",
-                    "id": req_id,
-                    "error": {
-                        "code": JSONRPC_INVALID_PARAMS,
-                        "message": "Expected arguments to be an object",
-                    },
-                }
-            try:
-                res = call_tool(tool_name, tool_args)
-                return {
-                    "jsonrpc": "2.0",
-                    "id": req_id,
-                    "result": {
-                        "content": [
-                            {"type": "text", "text": json.dumps(res, indent=2)}
-                        ],
-                        "structuredContent": res,
-                        "isError": False,
-                    },
-                }
-            except Exception as exc:  # noqa: BLE001
-                return {
-                    "jsonrpc": "2.0",
-                    "id": req_id,
-                    "result": {
-                        "content": [{"type": "text", "text": str(exc)}],
-                        "isError": True,
-                    },
-                }
+            return self._call_tool(req_id, params)
+        return _error(req_id, JSONRPC_METHOD_NOT_FOUND, f"Method not found: {method}")
 
-        return {
-            "jsonrpc": "2.0",
-            "id": req_id,
-            "error": {
-                "code": JSONRPC_METHOD_NOT_FOUND,
-                "message": f"Method not found: {method}",
+    def _initialize(self, req_id: object, params: dict[str, Any]) -> dict[str, Any]:
+        if self._state != "new":
+            return _error(
+                req_id, JSONRPC_INVALID_REQUEST, "Server is already initialized"
+            )
+        if not _valid_initialize_params(params):
+            return _error(
+                req_id,
+                JSONRPC_INVALID_PARAMS,
+                "Initialize requires protocolVersion, capabilities, and clientInfo",
+            )
+        self._state = "initializing"
+        return _result(
+            req_id,
+            {
+                "protocolVersion": self.protocol_version,
+                "serverInfo": {"name": self.name, "version": self.version},
+                "capabilities": get_server_metadata()["capabilities"],
+                "instructions": (
+                    "Read-only evidence inspection. No publication, rights, "
+                    "mutation, or cutover authority is exposed."
+                ),
             },
-        }
+        )
+
+    def _read_resource(self, req_id: object, params: dict[str, Any]) -> dict[str, Any]:
+        uri = params.get("uri")
+        if not isinstance(uri, str) or not uri:
+            return _error(
+                req_id,
+                JSONRPC_INVALID_PARAMS,
+                "Missing required string parameter 'uri'",
+            )
+        try:
+            content = read_resource(uri)
+        except KeyError:
+            return _error(req_id, MCP_RESOURCE_NOT_FOUND, f"Resource not found: {uri}")
+        except Exception:  # noqa: BLE001 - resource implementations are extensible
+            return _error(req_id, JSONRPC_INTERNAL_ERROR, "Resource read failed")
+        return _result(req_id, {"contents": [content]})
+
+    def _call_tool(self, req_id: object, params: dict[str, Any]) -> dict[str, Any]:
+        name = params.get("name")
+        if not isinstance(name, str) or not name:
+            return _error(
+                req_id,
+                JSONRPC_INVALID_PARAMS,
+                "Missing required string parameter 'name'",
+            )
+        definition = _TOOLS_BY_NAME.get(name)
+        if definition is None:
+            return _error(req_id, JSONRPC_INVALID_PARAMS, f"Unknown tool: {name}")
+        arguments = params.get("arguments", {})
+        if not isinstance(arguments, dict):
+            return _error(req_id, JSONRPC_INVALID_PARAMS, "Expected arguments object")
+        errors = sorted(
+            Draft202012Validator(definition["inputSchema"]).iter_errors(arguments),
+            key=lambda error: list(error.path),
+        )
+        if errors:
+            return _error(req_id, JSONRPC_INVALID_PARAMS, errors[0].message)
+        try:
+            structured = call_tool(name, arguments)
+        except Exception as exc:  # noqa: BLE001 - MCP requires domain error results
+            return _result(
+                req_id,
+                {
+                    "content": [{"type": "text", "text": str(exc)}],
+                    "isError": True,
+                },
+            )
+        return _result(
+            req_id,
+            {
+                "content": [
+                    {
+                        "type": "text",
+                        "text": json.dumps(
+                            structured,
+                            ensure_ascii=False,
+                            separators=(",", ":"),
+                            sort_keys=True,
+                        ),
+                    }
+                ],
+                "structuredContent": structured,
+                "isError": False,
+            },
+        )
 
 
 def get_server_metadata() -> dict[str, Any]:
-    """Return MCP server metadata and protocol specification."""
+    """Return the stable protocol and declared read-only capabilities."""
     return {
         "name": "archive-govt-nz-mcp",
         "version": __version__,
         "protocol_version": PROTOCOL_VERSION,
         "description": "Evidence-first archival tooling for New Zealand data.",
         "capabilities": {
-            "tools": {
-                "listChanged": False,
-            },
-            "resources": {
-                "subscribe": False,
-                "listChanged": False,
-            },
+            "tools": {"listChanged": False},
+            "resources": {"subscribe": False, "listChanged": False},
         },
     }
 
 
 def list_tools() -> list[dict[str, Any]]:
-    """List available read-only MCP tools with JSON Schema input definitions."""
-    return [
-        {
-            "name": "archive_doctor",
-            "description": "Check runtime Python and storage health.",
-            "inputSchema": {
-                "$schema": "https://json-schema.org/draft/2020-12/schema",
-                "type": "object",
-                "properties": {},
-                "additionalProperties": False,
-            },
-        },
-        {
-            "name": "archive_capabilities",
-            "description": "List operational and archival capabilities.",
-            "inputSchema": {
-                "$schema": "https://json-schema.org/draft/2020-12/schema",
-                "type": "object",
-                "properties": {},
-                "additionalProperties": False,
-            },
-        },
-        {
-            "name": "archive_sources",
-            "description": "List registered government sources from seed registry.",
-            "inputSchema": {
-                "$schema": "https://json-schema.org/draft/2020-12/schema",
-                "type": "object",
-                "properties": {
-                    "registry_path": {
-                        "type": "string",
-                        "description": "Path to the seed directory",
-                        "default": "registry/seeds",
-                    }
-                },
-                "additionalProperties": False,
-            },
-        },
-        {
-            "name": "archive_status",
-            "description": "Inspect archive storage and local CAS object statistics.",
-            "inputSchema": {
-                "$schema": "https://json-schema.org/draft/2020-12/schema",
-                "type": "object",
-                "properties": {
-                    "cas_path": {
-                        "type": "string",
-                        "description": "Path to local CAS store",
-                        "default": "build/cas",
-                    }
-                },
-                "additionalProperties": False,
-            },
-        },
-    ]
+    """Return isolated copies of stable read-only tool definitions."""
+    return json.loads(json.dumps(_TOOL_DEFINITIONS))
 
 
 def list_resources() -> list[dict[str, Any]]:
-    """List available MCP resources."""
+    """List the finite read-only archive resources."""
     return [
         {
             "uri": "archive://capabilities",
             "name": "Archival Capabilities",
             "mimeType": "application/json",
-            "description": "JSON descriptor of active archival capabilities.",
+            "description": "Compiled capabilities without readiness claims.",
         },
         {
             "uri": "archive://sources",
             "name": "Registered Sources",
             "mimeType": "application/json",
-            "description": "JSON descriptor of all registered NZ government seeds.",
+            "description": "Configured New Zealand government source seeds.",
         },
         {
             "uri": "archive://status",
-            "name": "Archive System Status",
+            "name": "Archive Store Status",
             "mimeType": "application/json",
-            "description": "Current system health, assurance, and fixity status.",
+            "description": "Verified local CAS evidence, or explicit no state.",
         },
     ]
 
 
 def read_resource(uri: str) -> dict[str, Any]:
-    """Read resource content by URI."""
-    if uri == "archive://capabilities":
-        data = call_tool("archive_capabilities")
-        return {
-            "uri": uri,
-            "mimeType": "application/json",
-            "text": json.dumps(data, sort_keys=True, indent=2),
-        }
-    if uri == "archive://sources":
-        data = call_tool("archive_sources")
-        return {
-            "uri": uri,
-            "mimeType": "application/json",
-            "text": json.dumps(data, sort_keys=True, indent=2),
-        }
-    if uri == "archive://status":
-        data = call_tool("archive_status")
-        return {
-            "uri": uri,
-            "mimeType": "application/json",
-            "text": json.dumps(data, sort_keys=True, indent=2),
-        }
+    """Read one finite archive resource by exact URI."""
+    tool_by_uri = {
+        "archive://capabilities": "archive_capabilities",
+        "archive://sources": "archive_sources",
+        "archive://status": "archive_status",
+    }
+    name = tool_by_uri.get(uri)
+    if name is None:
+        message = f"Resource not found: {uri}"
+        raise KeyError(message)
+    data = call_tool(name)
+    return {
+        "uri": uri,
+        "mimeType": "application/json",
+        "text": json.dumps(
+            data, ensure_ascii=False, separators=(",", ":"), sort_keys=True
+        ),
+    }
 
-    msg = f"Resource not found: {uri}"
-    raise KeyError(msg)
+
+def _archive_sources(arguments: dict[str, Any]) -> dict[str, Any]:
+    requested = str(arguments.get("registry_path", "registry/seeds"))
+    path = Path(requested)
+    fallback = Path("seeds/sources")
+    if not path.is_dir() and requested == "registry/seeds" and fallback.is_dir():
+        path = fallback
+    if not path.is_dir():
+        return {
+            "registered_sources_count": 0,
+            "registry_path": requested,
+            "status": "not_configured",
+        }
+    count = len(AgencyRegistry.load_from_seeds(path))
+    return {
+        "registered_sources_count": count,
+        "registry_path": str(path),
+        "status": "configured" if count else "empty",
+    }
+
+
+def _discover_cas_objects(cas_path: Path) -> list[str]:
+    sha_dir = cas_path / "sha256"
+    if not sha_dir.is_dir():
+        return []
+    object_ids: list[str] = []
+    for path in sorted(sha_dir.rglob("*")):
+        if path.is_symlink():
+            raise ObjectStoreError(_INVALID_STORE_LAYOUT)
+        if not path.is_file():
+            continue
+        parts = path.relative_to(sha_dir).parts
+        if (
+            len(parts) != _CAS_LAYOUT_PARTS
+            or len(parts[0]) != _CAS_PREFIX_LENGTH
+            or not _DIGEST.fullmatch(parts[1])
+            or parts[0] != parts[1][:_CAS_PREFIX_LENGTH]
+        ):
+            raise ObjectStoreError(_INVALID_STORE_LAYOUT)
+        object_ids.append(f"sha256:{parts[1]}")
+    return object_ids
+
+
+def _archive_status(arguments: dict[str, Any]) -> dict[str, Any]:
+    path_text = str(arguments.get("cas_path", "build/cas"))
+    path = Path(path_text)
+    object_ids = _discover_cas_objects(path)
+    store = ContentAddressedStore(path, create=False)
+    total_bytes = sum(store.verify(object_id).byte_count for object_id in object_ids)
+    count = len(object_ids)
+    return {
+        "bytes_verified": total_bytes,
+        "cas_directory": path_text,
+        "objects_discovered": count,
+        "objects_verified": count,
+        "status": "verified" if count else "no_state",
+    }
 
 
 def call_tool(name: str, arguments: dict[str, Any] | None = None) -> dict[str, Any]:
-    """Execute a registered MCP tool call safely with dynamic evidence."""
+    """Execute one known read-only tool and validate its output schema."""
+    definition = _TOOLS_BY_NAME.get(name)
+    if definition is None:
+        message = f"Unknown tool: {name}"
+        raise ValueError(message)
     args = arguments or {}
     if name == "archive_doctor":
-        py_ver = sys.version.split()[0]
-        sat = sys.version_info >= (3, 11)
-        return {
-            "python_version": py_ver,
-            "python_min_satisfied": sat,
-            "runtime_state": "operational" if sat else "degraded",
+        satisfied = sys.version_info >= (3, 14)
+        result = {
+            "integrity_status": "not_checked",
+            "python_min_satisfied": satisfied,
+            "python_version": sys.version.split()[0],
+            "required_python": ">=3.14",
+            "runtime_state": (
+                "runtime_compatible" if satisfied else "runtime_incompatible"
+            ),
         }
-    if name == "archive_capabilities":
-        caps = [
-            "cas_dual_hash",
-            "warc_iso28500",
-            "wacz_bundle",
-            "huggingface_distribution",
-            "zenodo_doi",
-            "croissant_jsonld",
-            "ro_crate_1_1",
-            "offline_replay",
-            "mcp_server",
-            "multi_source_adapters",
-        ]
-        return {
-            "capabilities": caps,
-            "count": len(caps),
+    elif name == "archive_capabilities":
+        result = {
+            "capabilities": list(_CAPABILITIES),
+            "count": len(_CAPABILITIES),
+            "status": "compiled",
         }
-    if name == "archive_sources":
-        path_str = str(args.get("registry_path", "registry/seeds"))
-        path = Path(path_str)
-        count = len(AgencyRegistry.load_from_seeds(path)) if path.is_dir() else 0
-        return {
-            "registered_sources_count": count,
-            "registry_path": str(path),
-        }
-    if name == "archive_status":
-        cas_path_str = str(args.get("cas_path", "build/cas"))
-        cas_dir = Path(cas_path_str)
-        sha_dir = cas_dir / "sha256"
-        obj_count = (
-            len([f for f in sha_dir.glob("*") if f.is_file()])
-            if sha_dir.is_dir()
-            else 0
-        )
-        status = "operational" if (obj_count > 0 or cas_dir.is_dir()) else "no_state"
-        return {
-            "cas_directory": cas_path_str,
-            "objects_stored": obj_count,
-            "status": status,
-        }
-    msg = f"Unknown tool: {name}"
-    raise ValueError(msg)
+    elif name == "archive_sources":
+        result = _archive_sources(args)
+    else:
+        result = _archive_status(args)
+    Draft202012Validator(definition["outputSchema"]).validate(result)
+    return result
 
 
-def run_stdio_server(
-    stdin: TextIO | None = None,
-    stdout: TextIO | None = None,
-) -> None:
-    """Run standard IO MCP server loop until stream close or termination."""
+def run_stdio_server(stdin: TextIO | None = None, stdout: TextIO | None = None) -> None:
+    """Run the stdio MCP server until EOF without non-protocol stdout output."""
     transport = StdioServerTransport(stdin=stdin, stdout=stdout)
     server = Server()
-
     while True:
         try:
-            req = transport.read_message()
+            request = transport.read_message()
         except json.JSONDecodeError as exc:
             transport.write_message(
-                {
-                    "jsonrpc": "2.0",
-                    "id": None,
-                    "error": {
-                        "code": JSONRPC_PARSE_ERROR,
-                        "message": f"Parse error: {exc}",
-                    },
-                }
+                _error(None, JSONRPC_PARSE_ERROR, f"Parse error: {exc.msg}")
             )
             continue
         except TypeError as exc:
-            transport.write_message(
-                {
-                    "jsonrpc": "2.0",
-                    "id": None,
-                    "error": {
-                        "code": JSONRPC_INVALID_REQUEST,
-                        "message": str(exc),
-                    },
-                }
-            )
+            transport.write_message(_error(None, JSONRPC_INVALID_REQUEST, str(exc)))
             continue
-
-        if req is None:
+        if request is None:
             break
-
-        resp = server.handle_request(req)
-        if resp is not None:
-            transport.write_message(resp)
+        response = server.handle_request(request)
+        if response is not None:
+            transport.write_message(response)
 
 
 def main() -> None:
-    """Execute stdio MCP server process entrypoint."""
+    """Execute the stdio MCP server entrypoint."""
     run_stdio_server()
 
 

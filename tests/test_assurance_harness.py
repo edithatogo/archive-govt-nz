@@ -6,7 +6,12 @@ import tomllib
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
 
-from archive_govt_nz.assurance import GateStage, run_command, run_stages
+from archive_govt_nz.assurance import (
+    COMMAND_TIMEOUT_SECONDS,
+    GateStage,
+    run_command,
+    run_stages,
+)
 
 if TYPE_CHECKING:
     import pytest
@@ -41,6 +46,7 @@ def test_static_and_coverage_policy_is_fail_closed() -> None:
     assert tools["coverage"]["run"]["branch"] is True
     assert tools["coverage"]["report"]["fail_under"] == 95
     assert tools["coverage"]["report"]["show_missing"] is True
+    assert COMMAND_TIMEOUT_SECONDS >= 300
 
 
 def test_repository_gate_lists_all_required_stages() -> None:

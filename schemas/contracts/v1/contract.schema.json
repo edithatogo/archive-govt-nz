@@ -96,7 +96,7 @@
               "completion_evaluator",
               "schema_validator",
               "timestamp_validator",
-              "parity_generator",
+              "one_batch_reconciler",
               "donor_inventory_generator",
               "issue_reconciler",
               "evidence_ledger_generator"

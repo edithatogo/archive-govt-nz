@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.archive.govt.nz/legislation/v1/one-batch-reconciliation.schema.json",
+  "title": "LegislationOneBatchReconciliation",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "status",
+    "evaluated_at",
+    "batch_id",
+    "mismatch_count",
+    "mismatches",
+    "limitations"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "archive-govt-nz.legislation-one-batch-reconciliation/v1"
+    },
+    "status": {"enum": ["passed", "failed"]},
+    "evaluated_at": {"type": "string", "format": "date-time"},
+    "batch_id": {"type": "string", "minLength": 1},
+    "batch_file": {"type": "string", "minLength": 1},
+    "batch_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "batch_work_ids_count": {"type": "integer", "minimum": 1},
+    "reconciled_work_ids_count": {"type": "integer", "minimum": 1},
+    "selected_records_count": {"type": "integer", "minimum": 1},
+    "cas_objects_verified": {"type": "integer", "minimum": 1},
+    "manifest_total_records": {"type": "integer", "minimum": 1},
+    "manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "discovered_works_count": {"type": "integer", "minimum": 1},
+    "discovered_inventory_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "checkpoint_processed_ids_count": {"type": "integer", "minimum": 1},
+    "error_class": {"type": "string", "minLength": 1},
+    "mismatch_count": {"type": "integer", "minimum": 0},
+    "mismatches": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 3,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "passed"}}},
+      "then": {
+        "required": [
+          "batch_file",
+          "batch_sha256",
+          "batch_work_ids_count",
+          "reconciled_work_ids_count",
+          "selected_records_count",
+          "cas_objects_verified",
+          "manifest_total_records",
+          "manifest_sha256",
+          "discovered_works_count",
+          "discovered_inventory_sha256",
+          "checkpoint_processed_ids_count"
+        ],
+        "properties": {
+          "mismatch_count": {"const": 0},
+          "mismatches": {"maxItems": 0}
+        },
+        "not": {"required": ["error_class"]}
+      },
+      "else": {
+        "required": ["error_class"],
+        "properties": {
+          "mismatch_count": {"minimum": 1},
+          "mismatches": {"minItems": 1}
+        }
+      }
+    }
+  ],
+  "additionalProperties": false
+}

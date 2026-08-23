@@ -1,8 +1,8 @@
 contract_id: nzlc-compatibility
-version: 1.0.0
+version: 1.1.0
 status: active
 scope: Backwards compatibility entrypoint for legacy nzlc command
-owning_track: legislation_corrective_cli_contract_compatibility_20260818
+owning_track: legislation_cli_service_backing_20260820
 baseline:
   audited_target_commit: c154578f4e7de3585e6b5885c157fc6ef2c7564b
   audited_donor_commit: 749918c251da59dc890c19dfda2ab9a021fd8ca6
@@ -13,19 +13,21 @@ preconditions:
 - compat_nzlc_main exposed in src/archive_govt_nz/cli_compat.py
 postconditions:
 - Compatibility wrapper routes into real domain core rather than queue stub
+- Unknown legacy actions return exit code 5 and are not reinterpreted as status
 forbidden_actions:
 - Silent failure or unrouted execution
 acceptance_checks:
 - check_id: CHK-NZLC-01
   description: Validate nzlc compatibility wrapper execution
-  command: uv run pytest tests/cli/test_cli.py -k test_compat_wrappers
+  command: uv run --locked pytest tests/cli/test_cli.py::test_compat_wrappers_and_nzlc_legacy_args tests/cli/test_legislation_cli_integrity.py::test_unknown_legacy_action_is_usage_error
   expected_exit_code: 0
-  evidence_destination: evidence/migrations/corpus-legislation-nz/live-inventory.json
+  evidence_destination: conductor/tracks/legislation_cli_service_backing_20260820/evidence.md
   executor_id: pytest_runner
   execution_class: local_test
   side_effect_class: read_only
   timeout_seconds: 60
 evidence_paths:
 - src/archive_govt_nz/cli_compat.py
+- tests/cli/test_legislation_cli_integrity.py
 created_at: '2026-08-18T12:54:00Z'
-updated_at: '2026-08-18T12:54:00Z'
+updated_at: '2026-08-20T11:40:00Z'

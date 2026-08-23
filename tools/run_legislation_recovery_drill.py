@@ -3,20 +3,28 @@
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
 import sys
 import time
 from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
-from archive_govt_nz.domains.legislation.checkpoints import (
-    LegislationCheckpointManager,
+from archive_govt_nz.domains.legislation.cli_state import (
+    load_authenticated_manifest,
+    verify_linked_state,
 )
-from archive_govt_nz.domains.legislation.models import (
-    validate_legislation_record,
-)
+from archive_govt_nz.object_store import ContentAddressedStore
+
+if TYPE_CHECKING:
+    from collections.abc import Iterator
+
+
+def _stream_chunks(path: Path) -> Iterator[bytes]:
+    """Yield bounded chunks from one verified source object."""
+    with path.open("rb") as stream:
+        while chunk := stream.read(1024 * 1024):
+            yield chunk
 
 
 def execute_recovery_drill(
@@ -39,72 +47,55 @@ def execute_recovery_drill(
         msg = f"Retained manifest state missing: {manifest_path}"
         raise FileNotFoundError(msg)
 
-    chk_manager = LegislationCheckpointManager(checkpoint_path)
-    checkpoint = chk_manager.load()
+    if recovery_dir.exists() and any(recovery_dir.iterdir()):
+        msg = "recovery directory must be new or empty"
+        raise ValueError(msg)
+    manifest = load_authenticated_manifest(manifest_path)
+    source_objects = verify_linked_state(cas_path, checkpoint_path, manifest_path)
+    checkpoint = json.loads(checkpoint_path.read_text(encoding="utf-8"))
     processed_ids = checkpoint.get("processed_work_ids", [])
-
-    man_data = json.loads(manifest_path.read_text(encoding="utf-8"))
-    records: list[dict[str, Any]] = man_data.get("records", [])
+    records: list[dict[str, Any]] = manifest["records"]
 
     print(f"[RECOVERY] Staging clean recovery directory at: {recovery_dir}")
-    recovery_dir.mkdir(parents=True, exist_ok=True)
-    rec_cas_dir = recovery_dir / "cas" / "sha256"
-    rec_cas_dir.mkdir(parents=True, exist_ok=True)
-
-    objects_verified = 0
-    mismatches: list[str] = []
-    schema_findings: list[str] = []
-
-    # Reconstruct and verify dual-hash fixity
-    for r in records:
-        findings = validate_legislation_record(r)
-        schema_findings.extend(findings)
-
-        sha = r.get("raw_cas_hash_sha256")
-        if not sha:
-            mismatches.append(f"Missing SHA-256 in record {r.get('document_id')}")
+    source_store = ContentAddressedStore(cas_path, create=False)
+    recovered_store = ContentAddressedStore(recovery_dir / "cas")
+    recovered_ids: set[str] = set()
+    for record in records:
+        object_id = f"sha256:{record['raw_cas_hash_sha256']}"
+        if object_id in recovered_ids:
             continue
+        source_receipt = source_store.verify(object_id)
 
-        src_obj = cas_path / "sha256" / sha
-        if src_obj.is_file():
-            content = src_obj.read_bytes()
-            computed_sha = hashlib.sha256(content).hexdigest()
-            if computed_sha != sha:
-                mismatches.append(
-                    f"SHA-256 mismatch for {sha}: expected {sha}, got {computed_sha}"
-                )
-            else:
-                # Copy to recovery directory
-                dest_obj = rec_cas_dir / sha
-                dest_obj.write_bytes(content)
-                objects_verified += 1
-        else:
-            mismatches.append(f"CAS object missing from source store: {sha}")
+        recovered = recovered_store.put_stream(_stream_chunks(source_receipt.path))
+        if (
+            recovered.object_id != source_receipt.object_id
+            or recovered.blake3 != source_receipt.blake3
+            or recovered.byte_count != source_receipt.byte_count
+        ):
+            msg = f"reconstructed object receipt mismatch: {object_id}"
+            raise ValueError(msg)
+        recovered_ids.add(object_id)
 
     end_time = time.monotonic()
     end_iso = datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
     elapsed_seconds = round(end_time - start_time, 4)
 
-    status = (
-        "verified"
-        if not mismatches and not schema_findings and len(records) > 0
-        else "inconsistent"
-        if len(records) > 0
-        else "no_state"
-    )
+    if not records or source_objects == 0:
+        msg = "authenticated recovery source has no records"
+        raise ValueError(msg)
 
     return {
         "schema_version": "archive-govt-nz.legislation-quarterly-recovery/v1",
-        "status": status,
+        "status": "verified",
         "recovery_start": start_iso,
         "recovery_end": end_iso,
         "elapsed_seconds": elapsed_seconds,
         "records_evaluated": len(records),
         "checkpoint_processed_ids_count": len(processed_ids),
-        "cas_objects_reconstructed": objects_verified,
-        "mismatches_count": len(mismatches),
-        "mismatches": mismatches[:20],
-        "schema_findings_count": len(schema_findings),
+        "cas_objects_reconstructed": len(recovered_ids),
+        "mismatches_count": 0,
+        "mismatches": [],
+        "schema_findings_count": 0,
         "recovery_directory": str(recovery_dir),
     }
 
@@ -145,9 +136,7 @@ def run_quarterly_recovery_drill(
         f"| Objects: {drill_report['cas_objects_reconstructed']}"
     )
 
-    return (
-        0 if drill_report["status"] in ("verified", "inconsistent", "no_state") else 1
-    )
+    return 0 if drill_report["status"] == "verified" else 1
 
 
 def main() -> None:

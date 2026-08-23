@@ -1,11 +1,12 @@
-"""Tests for weekly legislation harvest orchestration and workflow state management."""
+"""Tests for bounded service-backed legislation harvest orchestration."""
 
 from __future__ import annotations
 
 import importlib.util
 import json
 from pathlib import Path
-from typing import TYPE_CHECKING
+from types import SimpleNamespace
+from typing import TYPE_CHECKING, Any
 
 import pytest
 
@@ -26,297 +27,326 @@ run_harvest = _MODULE.run_harvest
 main = _MODULE.main
 
 
-def test_validate_source_set_config(tmp_path: Path) -> None:
-    """Verify source-set configuration validation for valid and invalid inputs."""
-    valid_cfg = tmp_path / "valid.yml"
-    valid_cfg.write_text(
-        "name: legislation\nenabled: true\nschedule: '23 18 * * 0'\n",
+def _config(tmp_path: Path) -> Path:
+    path = tmp_path / "legislation.yml"
+    path.write_text(
+        "name: legislation\nenabled: true\nexecution_mode: dispatch_only\n",
         encoding="utf-8",
     )
-    res = validate_source_set_config(valid_cfg)
-    assert res["name"] == "legislation"
-    assert res["enabled"] is True
+    return path
 
-    # Missing file
-    with pytest.raises(FileNotFoundError, match="not found"):
+
+def _paths(tmp_path: Path) -> dict[str, Any]:
+    return {
+        "config_path": _config(tmp_path),
+        "checkpoint_path": tmp_path / "state" / "checkpoint.json",
+        "manifest_path": tmp_path / "state" / "manifest.json",
+        "receipt_path": tmp_path / "state" / "receipt.json",
+        "cas_path": tmp_path / "state" / "cas",
+        "batch_id": "batch-2026-08-20-a",
+        "search_terms": ["public acts 2024"],
+        "max_works": 2,
+    }
+
+
+def test_validate_source_set_config_is_dispatch_only(tmp_path: Path) -> None:
+    """Accept only the enabled legislation source set in dispatch-only mode."""
+    assert validate_source_set_config(_config(tmp_path))["execution_mode"] == (
+        "dispatch_only"
+    )
+    with pytest.raises(FileNotFoundError):
         validate_source_set_config(tmp_path / "missing.yml")
-
-    # Invalid name
-    invalid_name = tmp_path / "invalid_name.yml"
-    invalid_name.write_text("name: other\nenabled: true\n", encoding="utf-8")
-    with pytest.raises(ValueError, match="Expected source-set name 'legislation'"):
-        validate_source_set_config(invalid_name)
-
-    # Disabled config
+    invalid = tmp_path / "invalid.yml"
+    invalid.write_text("name: other\nenabled: true\n", encoding="utf-8")
+    with pytest.raises(ValueError, match="Expected source-set"):
+        validate_source_set_config(invalid)
     disabled = tmp_path / "disabled.yml"
     disabled.write_text("name: legislation\nenabled: false\n", encoding="utf-8")
     with pytest.raises(ValueError, match="disabled"):
         validate_source_set_config(disabled)
+    scheduled = tmp_path / "scheduled.yml"
+    scheduled.write_text("name: legislation\nenabled: true\n", encoding="utf-8")
+    with pytest.raises(ValueError, match="dispatch_only"):
+        validate_source_set_config(scheduled)
 
 
-def test_check_credentials_presence(monkeypatch: pytest.MonkeyPatch) -> None:
-    """Verify safe credential audit without leaking values."""
-    monkeypatch.setenv("HF_TOKEN", "secret-token")
-    monkeypatch.delenv("ZENODO_TOKEN", raising=False)
-    monkeypatch.delenv("LEGISLATION_API_KEY", raising=False)
-
-    creds = check_credentials_presence()
-    assert creds["HF_TOKEN"] is True
-    assert creds["ZENODO_TOKEN"] is False
-    assert creds["LEGISLATION_API_KEY"] is False
-
-
-def test_run_harvest_no_change(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
-    """Verify harvest returns no_change when 0 works are synced."""
-    config_file = tmp_path / "legislation.yml"
-    config_file.write_text("name: legislation\nenabled: true\n", encoding="utf-8")
-
-    checkpoint_file = tmp_path / "checkpoint.json"
-    checkpoint_file.write_text(
-        json.dumps({"processed_work_ids": ["w1"]}), encoding="utf-8"
-    )
-    candidate_chk = tmp_path / "candidate_chk.json"
-    manifest_file = tmp_path / "manifest.json"
-    receipt_file = tmp_path / "receipt.json"
-    cas_path = tmp_path / "cas"
-
-    monkeypatch.setattr(
-        _MODULE,
-        "sync_legislation_records",
-        lambda *_, **__: {
-            "works_synced": 0,
-            "errors": [],
-            "processed_ids": [],
-        },
-    )
-
-    code = run_harvest(
-        config_path=config_file,
-        checkpoint_path=checkpoint_file,
-        candidate_checkpoint_path=candidate_chk,
-        manifest_path=manifest_file,
-        receipt_path=receipt_file,
-        cas_path=cas_path,
-    )
-    assert code == 0
-    receipt = json.loads(receipt_file.read_text(encoding="utf-8"))
-    assert receipt["outcome"] == "no_change"
-    assert receipt["new_works_synced"] == 0
-
-
-def test_run_harvest_changed_and_promoted(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+def test_validate_source_set_config_ignores_nested_enabled_flags(
+    tmp_path: Path,
 ) -> None:
-    """Verify harvest promotes checkpoint on successful new works sync."""
-    config_file = tmp_path / "legislation.yml"
-    config_file.write_text("name: legislation\nenabled: true\n", encoding="utf-8")
-
-    checkpoint_file = tmp_path / "checkpoint.json"
-    checkpoint_file.write_text(json.dumps({"processed_work_ids": []}), encoding="utf-8")
-    candidate_chk = tmp_path / "candidate_chk.json"
-    manifest_file = tmp_path / "manifest.json"
-    receipt_file = tmp_path / "receipt.json"
-    cas_path = tmp_path / "cas"
-
-    monkeypatch.setattr(
-        _MODULE,
-        "sync_legislation_records",
-        lambda *_, **__: {
-            "works_synced": 3,
-            "errors": [],
-            "processed_ids": ["w1", "w2", "w3"],
-        },
-    )
-
-    code = run_harvest(
-        config_path=config_file,
-        checkpoint_path=checkpoint_file,
-        candidate_checkpoint_path=candidate_chk,
-        manifest_path=manifest_file,
-        receipt_path=receipt_file,
-        cas_path=cas_path,
-        backfill_limit=10,
-        promote=True,
-    )
-    assert code == 0
-    receipt = json.loads(receipt_file.read_text(encoding="utf-8"))
-    assert receipt["outcome"] == "changed"
-    assert receipt["new_works_synced"] == 3
-    assert receipt["promoted"] is True
-
-    promoted_chk = json.loads(checkpoint_file.read_text(encoding="utf-8"))
-    assert len(promoted_chk["processed_work_ids"]) == 3
-
-
-def test_run_harvest_partial_retryable(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-) -> None:
-    """Verify harvest classifies partial successes with errors as partial_retryable."""
-    config_file = tmp_path / "legislation.yml"
-    config_file.write_text("name: legislation\nenabled: true\n", encoding="utf-8")
-
-    checkpoint_file = tmp_path / "checkpoint.json"
-    candidate_chk = tmp_path / "candidate_chk.json"
-    manifest_file = tmp_path / "manifest.json"
-    receipt_file = tmp_path / "receipt.json"
-    cas_path = tmp_path / "cas"
-
-    monkeypatch.setattr(
-        _MODULE,
-        "sync_legislation_records",
-        lambda *_, **__: {
-            "works_synced": 1,
-            "errors": ["Transient 503 from upstream API on w2"],
-            "processed_ids": ["w1"],
-        },
-    )
-
-    code = run_harvest(
-        config_path=config_file,
-        checkpoint_path=checkpoint_file,
-        candidate_checkpoint_path=candidate_chk,
-        manifest_path=manifest_file,
-        receipt_path=receipt_file,
-        cas_path=cas_path,
-    )
-    assert code == 0
-    receipt = json.loads(receipt_file.read_text(encoding="utf-8"))
-    assert receipt["outcome"] == "partial_retryable"
-    assert len(receipt["errors"]) == 1
-
-
-def test_run_harvest_failed_sync(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-) -> None:
-    """Verify harvest returns exit code 1 on fatal sync exception."""
-    config_file = tmp_path / "legislation.yml"
-    config_file.write_text("name: legislation\nenabled: true\n", encoding="utf-8")
-
-    checkpoint_file = tmp_path / "checkpoint.json"
-    candidate_chk = tmp_path / "candidate_chk.json"
-    manifest_file = tmp_path / "manifest.json"
-    receipt_file = tmp_path / "receipt.json"
-    cas_path = tmp_path / "cas"
-
-    def _failing_sync(*_args: object, **_kwargs: object) -> dict[str, object]:
-        msg = "Fatal disk write error"
-        raise OSError(msg)
-
-    monkeypatch.setattr(_MODULE, "sync_legislation_records", _failing_sync)
-
-    code = run_harvest(
-        config_path=config_file,
-        checkpoint_path=checkpoint_file,
-        candidate_checkpoint_path=candidate_chk,
-        manifest_path=manifest_file,
-        receipt_path=receipt_file,
-        cas_path=cas_path,
-    )
-    assert code == 1
-    receipt = json.loads(receipt_file.read_text(encoding="utf-8"))
-    assert receipt["outcome"] == "failed"
-
-
-def test_run_harvest_validation_failure(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-) -> None:
-    """Verify harvest fails when manifest contains invalid schema records."""
-    config_file = tmp_path / "legislation.yml"
-    config_file.write_text("name: legislation\nenabled: true\n", encoding="utf-8")
-
-    checkpoint_file = tmp_path / "checkpoint.json"
-    candidate_chk = tmp_path / "candidate_chk.json"
-    manifest_file = tmp_path / "manifest.json"
-    manifest_file.write_text(
-        json.dumps(
-            {
-                "records": [
-                    {
-                        "document_id": "",
-                        "work_id": "",
-                        "title": "",
-                    }
-                ]
-            }
-        ),
+    """Nested publication policy cannot overwrite top-level execution authority."""
+    config = tmp_path / "legislation.yml"
+    config.write_text(
+        """name: legislation
+enabled: true
+execution_mode: dispatch_only
+publication_policy:
+  huggingface:
+    enabled: false
+  zenodo:
+    enabled: false
+""",
         encoding="utf-8",
     )
-    receipt_file = tmp_path / "receipt.json"
-    cas_path = tmp_path / "cas"
+    parsed = validate_source_set_config(config)
+    assert parsed["enabled"] is True
 
-    monkeypatch.setattr(
-        _MODULE,
-        "sync_legislation_records",
-        lambda *_, **__: {
-            "works_synced": 1,
-            "errors": [],
-            "processed_ids": ["w1"],
-        },
-    )
 
-    code = run_harvest(
-        config_path=config_file,
-        checkpoint_path=checkpoint_file,
-        candidate_checkpoint_path=candidate_chk,
-        manifest_path=manifest_file,
-        receipt_path=receipt_file,
-        cas_path=cas_path,
+def test_credentials_exclude_publication_tokens(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Inspect only the optional source credential, not publication tokens."""
+    monkeypatch.setenv("LEGISLATION_API_KEY", "present")
+    assert check_credentials_presence() == {"LEGISLATION_API_KEY": True}
+
+
+def test_sync_routes_discovery_and_state_to_service(tmp_path: Path) -> None:
+    """Delegate discovery, capture, manifest, and checkpoint work to sync_works."""
+    calls: list[dict[str, object]] = []
+
+    class FakeService:
+        async def sync_works(self, **kwargs: object) -> SimpleNamespace:
+            calls.append(kwargs)
+            return SimpleNamespace(
+                status="success",
+                works_attempted=2,
+                works_synced=2,
+                records_preserved=3,
+                errors=[],
+                manifest={
+                    "manifest_sha256": "a" * 64,
+                    "discovered_works_count": 2,
+                },
+                checkpoint={"metadata": {"manifest_sha256": "a" * 64}},
+            )
+
+    report = sync_legislation_records(
+        FakeService(),
+        search_terms=["acts"],
+        work_ids=None,
+        batch_id="batch-a",
+        checkpoint_path=tmp_path / "checkpoint.json",
+        manifest_path=tmp_path / "manifest.json",
+        max_works=2,
     )
-    assert code == 1
-    receipt = json.loads(receipt_file.read_text(encoding="utf-8"))
+    assert calls[0]["search_terms"] == ["acts"]
+    assert calls[0]["fail_fast"] is True
+    assert report["manifest_sha256"] == "a" * 64
+
+
+def test_sync_routes_exact_work_ids_to_service(tmp_path: Path) -> None:
+    """Explicit donor identities use exact service discovery, not free-text search."""
+    calls: list[dict[str, object]] = []
+
+    class FakeService:
+        async def sync_works(self, **kwargs: object) -> SimpleNamespace:
+            calls.append(kwargs)
+            return SimpleNamespace(
+                status="success",
+                works_attempted=2,
+                works_synced=2,
+                records_preserved=2,
+                errors=[],
+                manifest={
+                    "manifest_sha256": "a" * 64,
+                    "discovered_works_count": 2,
+                },
+                checkpoint={},
+            )
+
+    sync_legislation_records(
+        FakeService(),
+        search_terms=None,
+        work_ids=["act_public_2024_1", "act_public_2024_2"],
+        batch_id="historical-work-ids-0001",
+        checkpoint_path=tmp_path / "checkpoint.json",
+        manifest_path=tmp_path / "manifest.json",
+        max_works=2,
+    )
+    assert calls[0]["work_ids"] == ["act_public_2024_1", "act_public_2024_2"]
+    assert "search_terms" not in calls[0]
+
+
+def test_sync_routes_explicit_force_resync_to_service(tmp_path: Path) -> None:
+    """A bounded canary can revalidate prior work instead of skipping it."""
+    calls: list[dict[str, object]] = []
+
+    class FakeService:
+        async def sync_works(self, **kwargs: object) -> SimpleNamespace:
+            calls.append(kwargs)
+            return SimpleNamespace(
+                status="no_change",
+                works_attempted=1,
+                works_synced=0,
+                records_preserved=0,
+                errors=[],
+                manifest={
+                    "manifest_sha256": "a" * 64,
+                    "discovered_works_count": 1,
+                },
+                checkpoint={"metadata": {"manifest_sha256": "a" * 64}},
+            )
+
+    sync_legislation_records(
+        FakeService(),
+        search_terms=None,
+        work_ids=["act_public_2024_1"],
+        batch_id="bounded-live-canary-0001",
+        checkpoint_path=tmp_path / "checkpoint.json",
+        manifest_path=tmp_path / "manifest.json",
+        max_works=1,
+        force_resync=True,
+    )
+    assert calls[0]["force_resync"] is True
+
+
+@pytest.mark.parametrize(
+    ("service_status", "expected"),
+    [
+        ("success", ("changed", 0, True)),
+        ("no_change", ("no_change", 0, True)),
+        ("partial", ("partial_retryable", 1, False)),
+        ("failed", ("failed", 1, False)),
+    ],
+)
+def test_run_harvest_outcomes_fail_closed(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    service_status: str,
+    expected: tuple[str, int, bool],
+) -> None:
+    """Commit only complete changed/no-change service outcomes."""
+    expected_outcome, expected_code, committed = expected
+    report = {
+        "status": service_status,
+        "works_attempted": 2,
+        "works_synced": 1,
+        "records_preserved": 1,
+        "errors": [] if expected_code == 0 else ["bounded failure"],
+        "manifest_sha256": "b" * 64,
+        "discovered_works_count": 2,
+        "checkpoint": {"metadata": {"manifest_sha256": "b" * 64}},
+    }
+
+    def _sync(*_args: object, **_kwargs: object) -> dict[str, object]:
+        return report
+
+    monkeypatch.setattr(_MODULE, "sync_legislation_records", _sync)
+    arguments = _paths(tmp_path)
+    code = run_harvest(**arguments)
+    receipt = json.loads(arguments["receipt_path"].read_text(encoding="utf-8"))
+    assert code == expected_code
+    assert receipt["outcome"] == expected_outcome
+    assert receipt["state_committed"] is committed
+
+
+@pytest.mark.parametrize(
+    ("batch_id", "search_terms", "max_works"),
+    [("", ["acts"], 1), ("batch", [], 1), ("batch", ["acts"], 0)],
+)
+def test_run_harvest_rejects_unbounded_or_empty_dispatch(
+    tmp_path: Path, batch_id: str, search_terms: list[str], max_works: int
+) -> None:
+    """Fail before discovery when required dispatch scope is missing."""
+    arguments = _paths(tmp_path)
+    arguments.update(batch_id=batch_id, search_terms=search_terms, max_works=max_works)
+    assert run_harvest(**arguments) == 1
+    receipt = json.loads(arguments["receipt_path"].read_text(encoding="utf-8"))
     assert receipt["outcome"] == "failed"
-    assert receipt["validation_findings_count"] > 0
+    assert receipt["state_committed"] is False
 
 
-def test_run_harvest_invalid_config(tmp_path: Path) -> None:
-    """Verify harvest fails cleanly when configuration path is invalid."""
-    code = run_harvest(
-        config_path=tmp_path / "non_existent.yml",
-        checkpoint_path=tmp_path / "chk.json",
-        candidate_checkpoint_path=tmp_path / "cand.json",
-        manifest_path=tmp_path / "man.json",
-        receipt_path=tmp_path / "rec.json",
-        cas_path=tmp_path / "cas",
+def test_run_harvest_requires_exact_explicit_batch_bound(tmp_path: Path) -> None:
+    """An explicit donor batch cannot be silently truncated by max_works."""
+    arguments = _paths(tmp_path)
+    arguments.update(
+        search_terms=None,
+        work_ids=["act_public_2024_1", "act_public_2024_2"],
+        max_works=1,
     )
-    assert code == 1
+    assert run_harvest(**arguments) == 1
+    receipt = json.loads(arguments["receipt_path"].read_text(encoding="utf-8"))
+    assert receipt["outcome"] == "failed"
 
 
-def test_main_cli_execution(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
-    """Verify main entrypoint handles CLI arguments and exits with code."""
-    config_file = tmp_path / "legislation.yml"
-    config_file.write_text("name: legislation\nenabled: true\n", encoding="utf-8")
-
+def test_main_accepts_exact_work_id_batch(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Parse an explicit donor work-ID file as an exact discovery scope."""
+    arguments = _paths(tmp_path)
+    work_ids_path = tmp_path / "batch.txt"
+    work_ids_path.write_text("act_public_2024_1\nact_public_2024_2\n", encoding="utf-8")
     monkeypatch.setattr(
         "sys.argv",
         [
             "run_legislation_harvest.py",
             "--source-set-config",
-            str(config_file),
+            str(arguments["config_path"]),
             "--checkpoint-path",
-            str(tmp_path / "chk.json"),
-            "--candidate-checkpoint-path",
-            str(tmp_path / "cand_chk.json"),
+            str(arguments["checkpoint_path"]),
             "--manifest-path",
-            str(tmp_path / "man.json"),
+            str(arguments["manifest_path"]),
             "--receipt-path",
-            str(tmp_path / "rec.json"),
+            str(arguments["receipt_path"]),
             "--cas-path",
-            str(tmp_path / "cas"),
-            "--backfill-limit",
-            "5",
+            str(arguments["cas_path"]),
+            "--batch-id",
+            arguments["batch_id"],
+            "--work-ids-file",
+            str(work_ids_path),
+            "--max-works",
+            "2",
+        ],
+    )
+    captured: dict[str, object] = {}
+
+    def _no_change(*_args: object, **kwargs: object) -> dict[str, object]:
+        captured.update(kwargs)
+        return {"status": "no_change", "errors": [], "checkpoint": {}}
+
+    monkeypatch.setattr(_MODULE, "sync_legislation_records", _no_change)
+    with pytest.raises(SystemExit) as raised:
+        main()
+    assert raised.value.code == 0
+    assert captured["work_ids"] == ["act_public_2024_1", "act_public_2024_2"]
+    assert captured["search_terms"] is None
+
+
+def test_main_requires_explicit_state_and_scope(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Parse explicit batch, discovery, bound, and full state locations."""
+    arguments = _paths(tmp_path)
+    monkeypatch.setattr(
+        "sys.argv",
+        [
+            "run_legislation_harvest.py",
+            "--source-set-config",
+            str(arguments["config_path"]),
+            "--checkpoint-path",
+            str(arguments["checkpoint_path"]),
+            "--manifest-path",
+            str(arguments["manifest_path"]),
+            "--receipt-path",
+            str(arguments["receipt_path"]),
+            "--cas-path",
+            str(arguments["cas_path"]),
+            "--batch-id",
+            arguments["batch_id"],
+            "--search-term",
+            arguments["search_terms"][0],
+            "--max-works",
+            str(arguments["max_works"]),
         ],
     )
 
-    monkeypatch.setattr(
-        _MODULE,
-        "sync_legislation_records",
-        lambda *_, **__: {
-            "works_synced": 0,
+    def _no_change(*_args: object, **_kwargs: object) -> dict[str, object]:
+        return {
+            "status": "no_change",
             "errors": [],
-            "processed_ids": [],
-        },
-    )
+            "checkpoint": {},
+        }
 
-    with pytest.raises(SystemExit) as exc:
+    monkeypatch.setattr(_MODULE, "sync_legislation_records", _no_change)
+    with pytest.raises(SystemExit) as raised:
         main()
-    assert exc.value.code == 0
+    assert raised.value.code == 0

@@ -3,39 +3,38 @@
 from __future__ import annotations
 
 import asyncio
-import hashlib
 import json
-import os
 import sys
+from dataclasses import asdict
 from pathlib import Path
 from typing import TYPE_CHECKING, Literal
 
 from cyclopts import App
 
 from archive_govt_nz import __version__
+from archive_govt_nz.cli_integrity import (
+    discover_archive_files,
+    load_and_validate_provenance,
+    load_publication_package,
+    search_scope_manifest,
+    validate_schema_directory,
+    verify_archive_directory,
+    verify_cas,
+)
 from archive_govt_nz.core.registry import AgencyRegistry
-from archive_govt_nz.domains.legislation.api import (
-    HTTP_OK,
-    NZLegislationApiClient,
+from archive_govt_nz.domains.legislation.api import NZLegislationApiClient
+from archive_govt_nz.domains.legislation.cli_state import (
+    coverage_counts,
+    load_authenticated_manifest,
+    verify_linked_state,
 )
-from archive_govt_nz.domains.legislation.changes import LegislationChangeReport
-from archive_govt_nz.domains.legislation.checkpoints import (
-    LegislationCheckpointManager,
-)
+from archive_govt_nz.domains.legislation.corpus import LegislationArchiveService
 from archive_govt_nz.domains.legislation.discovery import build_work_inventory
-from archive_govt_nz.domains.legislation.manifest import (
-    build_legislation_manifest,
-)
-from archive_govt_nz.domains.legislation.normalise import (
-    normalise_legislation_payload,
-)
-from archive_govt_nz.domains.legislation.validate import (
-    validate_legislation_record,
-)
-from archive_govt_nz.object_store import ContentAddressedStore
+from archive_govt_nz.object_store import ContentAddressedStore, ObjectStoreError
+from archive_govt_nz.publication import PublicationConfig, prepare_publication
 
 if TYPE_CHECKING:
-    from archive_govt_nz.domains.legislation.models import LegislationRecord
+    from archive_govt_nz.cli_integrity import PublicationPackage
 
 app = App(
     name="archive-govt-nz",
@@ -87,20 +86,22 @@ def version(format: Literal["text", "json"] = "text") -> int:
 
 @app.command
 def doctor(format: Literal["text", "json"] = "text") -> int:
-    """Check runtime environment, Python version, and system integrity."""
+    """Check the declared runtime without claiming archive integrity."""
     py_ver = sys.version.split()[0]
-    min_sat = sys.version_info >= (3, 11)
-    status = "healthy" if min_sat else "unhealthy"
+    min_sat = sys.version_info >= (3, 14)
+    status = "runtime_compatible" if min_sat else "runtime_incompatible"
 
     if not min_sat:
-        sys.stderr.write("Python >= 3.11 requirement not satisfied.\n")
+        sys.stderr.write("Python >= 3.14 requirement not satisfied.\n")
 
     if format == "json":
         _emit_json(
             {
                 "command": "doctor",
+                "integrity_status": "not_checked",
                 "python_min_satisfied": min_sat,
                 "python_version": py_ver,
+                "required_python": ">=3.14",
                 "schema_version": "archive-govt-nz.cli/v1",
                 "status": status,
             }
@@ -235,9 +236,10 @@ def capture(
 def archive(
     action: Literal["verify", "count"] = "count",
     output_dir: str = "build/warc",
+    manifest_path: str | None = None,
     format: Literal["text", "json"] = "text",
 ) -> int:
-    """Inspect and verify content-addressed archive integrity."""
+    """Count archives or verify their structure and declared fixity."""
     path = Path(output_dir)
     if not path.is_dir():
         sys.stderr.write(f"Archive directory not found: {output_dir}\n")
@@ -258,11 +260,7 @@ def archive(
             print(f"Archive action '{action}': status=no_state (not found)")
         return 1
 
-    files = [
-        f
-        for f in path.glob("*")
-        if f.is_file() and (".warc" in f.name or ".wacz" in f.name)
-    ]
+    files = discover_archive_files(path)
     if not files:
         sys.stderr.write(f"No archive files found in {output_dir}\n")
         if format == "json":
@@ -282,28 +280,45 @@ def archive(
             print(f"Archive action '{action}': status=no_state (0 files)")
         return 1
 
-    total_bytes = sum(f.stat().st_size for f in files)
-    status = "verified" if action == "verify" else "observed"
+    total_bytes = sum(file_path.stat().st_size for file_path in files)
+    failures: list[str] = []
+    verified_files = 0
+    if action == "verify":
+        fixity_path = Path(manifest_path) if manifest_path else path / "manifest.json"
+        summary = verify_archive_directory(path, fixity_path)
+        failures = list(summary.failures)
+        verified_files = summary.verified
+        status = (
+            "verified" if not failures and verified_files == len(files) else "failed"
+        )
+        code = 0 if status == "verified" else 1
+        if failures:
+            sys.stderr.write(f"Archive verification failures: {len(failures)}\n")
+    else:
+        status = "observed"
+        code = 0
 
     if format == "json":
         _emit_json(
             {
                 "action": action,
                 "command": "archive",
+                "failures": failures,
                 "output_dir": output_dir,
                 "schema_version": "archive-govt-nz.cli/v1",
                 "status": status,
                 "total_bytes": total_bytes,
+                "verified_files_count": verified_files,
                 "warc_count": len(files),
             }
         )
-        return 0
+        return code
 
     print(
         f"Archive action '{action}': status={status} ({len(files)} files, "
         f"{total_bytes} bytes)"
     )
-    return 0
+    return code
 
 
 @app.command
@@ -314,14 +329,9 @@ def replay(
     format: Literal["text", "json"] = "text",
 ) -> int:
     """Execute zero-network deterministic replay and fixity validation."""
-    cas_objects_dir = Path(cas_dir) / "sha256"
-    objects = (
-        [f for f in cas_objects_dir.glob("*") if f.is_file()]
-        if cas_objects_dir.is_dir()
-        else []
-    )
+    summary = verify_cas(Path(cas_dir))
 
-    if not objects:
+    if summary.observed == 0:
         err_msg = "No CAS objects found for replay"
         sys.stderr.write(f"{err_msg}\n")
         if format == "json":
@@ -340,12 +350,7 @@ def replay(
             print("Replay drill: status=no_state (0 records)")
         return 1
 
-    corrupted = 0
-    for obj in objects:
-        expected = obj.name
-        actual = hashlib.sha256(obj.read_bytes()).hexdigest()
-        if actual != expected:
-            corrupted += 1
+    corrupted = len(summary.failures)
 
     status = "verified" if corrupted == 0 else "failed"
     if corrupted > 0:
@@ -356,7 +361,7 @@ def replay(
             {
                 "command": "replay",
                 "corrupted_records": corrupted,
-                "records_replayed": len(objects),
+                "records_replayed": summary.observed,
                 "schema_version": "archive-govt-nz.cli/v1",
                 "status": status,
                 "verify_all": verify_all,
@@ -365,24 +370,68 @@ def replay(
         return 0 if corrupted == 0 else 1
 
     print(
-        f"Replay drill: status={status} replayed={len(objects)} corrupted={corrupted}"
+        f"Replay drill: status={status} replayed={summary.observed} "
+        f"corrupted={corrupted}"
     )
     return 0 if corrupted == 0 else 1
 
 
 @app.command
-def verify(format: Literal["text", "json"] = "text") -> int:
+def verify(
+    cas_dir: str = "build/cas",
+    schemas_dir: str = "schemas",
+    provenance_path: str = "evidence/archive-evidence-ledger.json",
+    format: Literal["text", "json"] = "text",
+) -> int:
     """Verify bitstream fixity, schema validity, and provenance integrity."""
-    checks: list[tuple[str, bool]] = [
-        ("python_version", sys.version_info >= (3, 11)),
-        ("schemas_directory", Path("schemas").is_dir()),
-        ("registry_seeds", Path("registry/seeds").is_dir()),
-        ("contracts_directory", Path("contracts").is_dir()),
-        ("evidence_directory", Path("evidence").is_dir()),
+    cas_summary = verify_cas(Path(cas_dir))
+    schema_summary = validate_schema_directory(Path(schemas_dir))
+    provenance_error: str | None = None
+    try:
+        provenance_summary = load_and_validate_provenance(Path(provenance_path))
+    except (OSError, json.JSONDecodeError, ValueError) as exc:
+        provenance_error = str(exc)
+        provenance_entities = 0
+    else:
+        provenance_entities = provenance_summary.entities
+
+    checks: list[dict[str, object]] = [
+        {
+            "failures": list(cas_summary.failures),
+            "name": "bitstream_fixity",
+            "observed": cas_summary.observed,
+            "status": (
+                "passed"
+                if cas_summary.observed > 0 and not cas_summary.failures
+                else "failed"
+            ),
+        },
+        {
+            "failures": list(schema_summary.failures),
+            "name": "schema_validity",
+            "observed": schema_summary.observed,
+            "status": (
+                "passed"
+                if schema_summary.observed > 0 and not schema_summary.failures
+                else "failed"
+            ),
+        },
+        {
+            "failures": [provenance_error] if provenance_error else [],
+            "name": "provenance_integrity",
+            "observed": provenance_entities,
+            "status": "passed" if provenance_error is None else "failed",
+        },
+        {
+            "failures": [] if sys.version_info >= (3, 14) else ["python_lt_3_14"],
+            "name": "python_runtime",
+            "observed": sys.version.split()[0],
+            "status": "passed" if sys.version_info >= (3, 14) else "failed",
+        },
     ]
-    failures = [name for name, ok in checks if not ok]
-    status = "passed" if not failures else "degraded"
-    passed_count = sum(1 for _, ok in checks if ok)
+    failures = [str(check["name"]) for check in checks if check["status"] != "passed"]
+    status = "passed" if not failures else "failed"
+    passed_count = len(checks) - len(failures)
 
     if failures:
         sys.stderr.write(f"Verification failures: {', '.join(failures)}\n")
@@ -390,6 +439,7 @@ def verify(format: Literal["text", "json"] = "text") -> int:
     if format == "json":
         _emit_json(
             {
+                "checks": checks,
                 "checks_executed": len(checks),
                 "checks_passed": passed_count,
                 "command": "verify",
@@ -429,19 +479,8 @@ def provenance(
         return 1
 
     try:
-        data = json.loads(path.read_text(encoding="utf-8"))
-        if isinstance(data, dict):
-            count = (
-                len(data.get("stages", []))
-                or len(data.get("records", []))
-                or len(data.get("objects", []))
-                or len(data)
-            )
-        elif isinstance(data, list):
-            count = len(data)
-        else:
-            count = 0
-    except (json.JSONDecodeError, OSError) as e:
+        summary = load_and_validate_provenance(path)
+    except (json.JSONDecodeError, OSError, ValueError) as e:
         sys.stderr.write(f"Failed to read provenance ledger: {e}\n")
         if format == "json":
             _emit_json(
@@ -462,15 +501,16 @@ def provenance(
         _emit_json(
             {
                 "command": "provenance",
-                "entities_tracked": count,
+                "entities_tracked": summary.entities,
                 "ledger_path": ledger_path,
                 "schema_version": "archive-govt-nz.cli/v1",
-                "status": "synced",
+                "status": "validated",
+                "validated_schema": summary.schema_version,
             }
         )
         return 0
 
-    print(f"Provenance ledger synced: {count} entities tracked.")
+    print(f"Provenance ledger validated: {summary.entities} entities tracked.")
     return 0
 
 
@@ -511,57 +551,73 @@ def search(
     format: Literal["text", "json"] = "text",
 ) -> int:
     """Perform hybrid keyword and semantic search over archived corpus."""
-    idx_path = Path(index_dir)
-    status = "observed" if idx_path.is_dir() else "no_index"
+    try:
+        results = search_scope_manifest(Path(index_dir), query)
+    except FileNotFoundError as exc:
+        results = []
+        status = "no_index"
+        error = str(exc)
+        code = 1
+    except (OSError, json.JSONDecodeError, ValueError) as exc:
+        results = []
+        status = "corrupt"
+        error = str(exc)
+        code = 1
+    else:
+        status = "observed"
+        error = None
+        code = 0
 
     if format == "json":
         _emit_json(
             {
                 "command": "search",
                 "query": query,
-                "results": [],
+                "results": [asdict(result) for result in results],
                 "schema_version": "archive-govt-nz.cli/v1",
                 "status": status,
-                "total_matches": 0,
+                "total_matches": len(results),
+                **({"error": error} if error else {}),
             }
         )
-        return 0
+        return code
 
-    print(f"Search for '{query}': status={status} (0 results)")
-    return 0
+    print(f"Search for '{query}': status={status} ({len(results)} results)")
+    return code
 
 
-def _evaluate_publish_target(
-    target: str, staging_dir: str
-) -> tuple[str, str | None, int]:
-    """Evaluate readiness of publication target and required credentials."""
-    if target == "dry-run":
-        if not Path(staging_dir).is_dir():
-            return "not_configured", f"Staging directory not found: {staging_dir}", 2
-        return "ready", None, 0
-
-    token_map = {
-        "huggingface": "HF_TOKEN",
-        "hf": "HF_TOKEN",
-        "zenodo": "ZENODO_TOKEN",
-    }
-    if target in token_map:
-        env_var = token_map[target]
-        if not os.environ.get(env_var):
-            return "not_configured", f"{env_var} not configured in environment", 2
-        return "ready", None, 0
-
-    return "unsupported", f"Unsupported publication target: {target}", 5
+def _evaluate_publish_request(
+    target: str, staging_dir: str, repository: str
+) -> tuple[str, str | None, int, PublicationPackage | None]:
+    """Evaluate one non-mutating publication preparation request."""
+    if target not in {"dry-run", "huggingface", "hf", "zenodo"}:
+        return "unsupported", f"Unsupported publication target: {target}", 5, None
+    try:
+        package = load_publication_package(Path(staging_dir), target, repository)
+    except FileNotFoundError as exc:
+        return "no_state", str(exc), 1, None
+    except (OSError, json.JSONDecodeError, ValueError) as exc:
+        return "failed", str(exc), 1, None
+    if not package.redistribution_allowed:
+        error = f"Rights status does not allow redistribution: {package.rights_status}"
+        return "blocked_by_rights", error, 3, package
+    preparation = prepare_publication(
+        PublicationConfig(package.target, package.repository), list(package.files)
+    )
+    return preparation.state, None, 0, package
 
 
 @app.command
 def publish(
     target: str = "dry-run",
     staging_dir: str = "build/staging",
+    repository: str = "",
     format: Literal["text", "json"] = "text",
 ) -> int:
-    """Trigger archive packaging and distribution pipeline."""
-    status, err_msg, code = _evaluate_publish_target(target, staging_dir)
+    """Prepare a fixed, rights-cleared package without remote publication."""
+    status, err_msg, code, package = _evaluate_publish_request(
+        target, staging_dir, repository
+    )
 
     if err_msg:
         sys.stderr.write(f"{err_msg}\n")
@@ -573,6 +629,10 @@ def publish(
             "status": status,
             "target": target,
         }
+        if package is not None:
+            payload["files_count"] = len(package.files)
+            payload["repository"] = package.repository
+            payload["rights_status"] = package.rights_status
         if err_msg:
             payload["error"] = err_msg
         if target == "dry-run":
@@ -595,15 +655,14 @@ def _handle_leg_doctor(
     """Evaluate runtime health and connectivity of legislation subsystem."""
     cas_dir = Path(cas_path)
     chk_file = Path(checkpoint_path)
-    py_ok = sys.version_info >= (3, 11)
-
+    py_ok = sys.version_info >= (3, 14)
     checks: list[tuple[str, bool]] = [
         ("python_version", py_ok),
         ("cas_store_accessible", not cas_dir.exists() or cas_dir.is_dir()),
         ("checkpoint_accessible", not chk_file.exists() or chk_file.is_file()),
     ]
     failures = [name for name, ok in checks if not ok]
-    status = "healthy" if not failures else "degraded"
+    status = "runtime_compatible" if not failures else "runtime_incompatible"
 
     if failures:
         sys.stderr.write(f"Legislation doctor failures: {', '.join(failures)}\n")
@@ -636,8 +695,30 @@ def _handle_leg_discover(
     """Discover candidate work IDs from legislation search API."""
     client = NZLegislationApiClient()
     terms = [search_term] if search_term else ["act"]
-    inventory = build_work_inventory(client, search_terms=terms, max_works=max_works)
+    try:
+        inventory = build_work_inventory(
+            client, search_terms=terms, max_works=max_works
+        )
+    except (OSError, TypeError, ValueError) as exc:
+        sys.stderr.write(f"Legislation discovery failed: {exc}\n")
+        if format == "json":
+            _emit_json(
+                {
+                    "action": "discover",
+                    "candidate_works_count": 0,
+                    "command": "legislation",
+                    "error": str(exc),
+                    "schema_version": "archive-govt-nz.cli/v1",
+                    "status": "failed",
+                    "work_ids": [],
+                }
+            )
+        else:
+            print("Legislation discover: status=failed candidates=0")
+        return 2
     count = inventory.get("candidate_works_count", 0)
+    status = "discovered" if count else "no_state"
+    code = 0 if count else 1
 
     if format == "json":
         _emit_json(
@@ -646,100 +727,14 @@ def _handle_leg_discover(
                 "candidate_works_count": count,
                 "command": "legislation",
                 "schema_version": "archive-govt-nz.cli/v1",
-                "status": "discovered",
+                "status": status,
                 "work_ids": inventory.get("work_ids", []),
             }
         )
-        return 0
+        return code
 
-    print(f"Legislation discover: candidates={count} terms={terms}")
-    return 0
-
-
-async def _execute_real_sync(  # noqa: PLR0913
-    store: ContentAddressedStore,
-    client: NZLegislationApiClient,
-    chk_mgr: LegislationCheckpointManager,
-    work_ids: list[str],
-    batch_id: str,
-    *,
-    fail_fast: bool,
-    force_resync: bool,
-) -> tuple[str, int, int, list[LegislationRecord], list[str]]:
-    """Fetch, preserve in CAS, normalise, and checkpoint requested works."""
-    chk_data = chk_mgr.load()
-    processed = set(chk_data.get("processed_work_ids", []))
-    active_ids = [w for w in work_ids if force_resync or w not in processed]
-
-    if not active_ids and work_ids:
-        return "no_change", len(work_ids), 0, [], []
-
-    preserved_records: list[LegislationRecord] = []
-    errors: list[str] = []
-    synced_ids = set(processed)
-
-    for wid in active_ids:
-        url = f"https://www.legislation.govt.nz/act/public/{wid}/latest/whole.xml"
-        status_code, content, _ = await client.get_document_raw_async(url)
-        if status_code != HTTP_OK or not content:
-            msg = f"HTTP {status_code} fetching {url} for work {wid}"
-            errors.append(msg)
-            if fail_fast:
-                return (
-                    "failed",
-                    len(work_ids),
-                    len(preserved_records),
-                    preserved_records,
-                    errors,
-                )
-            continue
-
-        store.put_bytes(content)
-        now_iso = "2026-08-19T00:00:00Z"
-        rec = normalise_legislation_payload(
-            raw_content=content,
-            work_id=wid,
-            title=f"Legislation {wid}",
-            canonical_uri=url,
-            retrieval_timestamp=now_iso,
-        )
-        val_errs = validate_legislation_record(rec)
-        if val_errs:
-            errors.extend(val_errs)
-            if fail_fast:
-                return (
-                    "failed",
-                    len(work_ids),
-                    len(preserved_records),
-                    preserved_records,
-                    errors,
-                )
-            continue
-
-        preserved_records.append(rec)
-        synced_ids.add(wid)
-
-    if errors and not preserved_records:
-        return "failed", len(work_ids), 0, [], errors
-
-    batches = list(chk_data.get("completed_batches", []))
-    if batch_id and batch_id not in batches:
-        batches.append(batch_id)
-
-    chk_mgr.save(
-        completed_batches=batches,
-        processed_work_ids=sorted(synced_ids),
-        total_records=len(synced_ids),
-    )
-
-    final_status = "partial" if errors else "success"
-    return (
-        final_status,
-        len(work_ids),
-        len(preserved_records),
-        preserved_records,
-        errors,
-    )
+    print(f"Legislation discover: status={status} candidates={count} terms={terms}")
+    return code
 
 
 def _handle_leg_sync(  # noqa: PLR0913, PLR0917
@@ -749,36 +744,70 @@ def _handle_leg_sync(  # noqa: PLR0913, PLR0917
     work_ids: list[str] | None,
     batch_id: str,
     max_works: int | None,
+    search_term: str,
     format: Literal["text", "json"],
     *,
     fail_fast: bool,
     force_resync: bool,
 ) -> int:
     """Execute real legislation synchronisation pipeline."""
-    wids = list(work_ids or ["act-1975-9"])
-    if max_works is not None:
-        wids = wids[:max_works]
+    wids = list(work_ids) if work_ids is not None else None
+    if not batch_id or (not wids and not search_term):
+        err_msg = "sync requires batch_id and explicit work_ids or search_term"
+        sys.stderr.write(f"{err_msg}\n")
+        if format == "json":
+            _emit_json(
+                {
+                    "action": "sync",
+                    "command": "legislation",
+                    "error": err_msg,
+                    "schema_version": "archive-govt-nz.cli/v1",
+                    "status": "invalid_request",
+                }
+            )
+        else:
+            print("Legislation sync: status=invalid_request")
+        return 5
 
     store = ContentAddressedStore(Path(cas_path))
-    client = NZLegislationApiClient()
-    chk_mgr = LegislationCheckpointManager(Path(checkpoint_path))
-
-    status, attempted, preserved, records, errors = asyncio.run(
-        _execute_real_sync(
-            store,
-            client,
-            chk_mgr,
-            wids,
-            batch_id,
-            fail_fast=fail_fast,
-            force_resync=force_resync,
+    service = LegislationArchiveService(store)
+    try:
+        result = asyncio.run(
+            service.sync_works(
+                work_ids=wids,
+                search_terms=[search_term] if search_term else None,
+                checkpoint_path=Path(checkpoint_path),
+                manifest_path=Path(manifest_path),
+                batch_id=batch_id,
+                max_works=max_works,
+                fail_fast=fail_fast,
+                force_resync=force_resync,
+            )
         )
-    )
+    except (OSError, TypeError, ValueError) as exc:
+        err_msg = str(exc)
+        sys.stderr.write(f"Sync failed: {err_msg}\n")
+        if format == "json":
+            _emit_json(
+                {
+                    "action": "sync",
+                    "command": "legislation",
+                    "error": err_msg,
+                    "errors": [err_msg],
+                    "records_preserved": 0,
+                    "schema_version": "archive-govt-nz.cli/v1",
+                    "status": "failed",
+                    "works_attempted": 0,
+                }
+            )
+        else:
+            print("Legislation sync: status=failed attempted=0 preserved=0")
+        return 2
 
-    if records:
-        manifest = build_legislation_manifest(records, run_id=batch_id)
-        Path(manifest_path).parent.mkdir(parents=True, exist_ok=True)
-        Path(manifest_path).write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+    status = result.status
+    attempted = result.works_attempted
+    preserved = result.records_preserved
+    errors = result.errors
 
     if errors:
         sys.stderr.write(f"Sync errors: {', '.join(errors)}\n")
@@ -831,9 +860,15 @@ def _handle_leg_validate(
         return 1
 
     try:
-        man_data = json.loads(man_file.read_text(encoding="utf-8"))
-        records_raw = man_data.get("records", [])
-    except (json.JSONDecodeError, OSError) as e:
+        man_data = load_authenticated_manifest(man_file)
+        records_raw = man_data["records"]
+    except (json.JSONDecodeError, OSError, TypeError, ValueError) as e:
+        failure_status = (
+            "invalid"
+            if isinstance(e, (TypeError, ValueError))
+            and not isinstance(e, json.JSONDecodeError)
+            else "corrupt"
+        )
         sys.stderr.write(f"Corrupt manifest: {e}\n")
         if format == "json":
             _emit_json(
@@ -844,45 +879,29 @@ def _handle_leg_validate(
                     "error_count": 1,
                     "records_validated": 0,
                     "schema_version": "archive-govt-nz.cli/v1",
-                    "status": "corrupt",
+                    "status": failure_status,
                 }
             )
         else:
-            print(f"Legislation validate: status=corrupt ({e})")
+            print(f"Legislation validate: status={failure_status} ({e})")
         return 1
-
-    errors: list[str] = []
-    for r_dict in records_raw:
-        doc_id = r_dict.get("document_id", "")
-        work_id = r_dict.get("work_id", "")
-        if not doc_id:
-            errors.append(f"Record {work_id} missing document_id")
-        if not work_id:
-            errors.append("Record missing work_id")
-
-    status = "valid" if not errors else "invalid"
-    if errors:
-        sys.stderr.write(f"Validation errors: {', '.join(errors)}\n")
 
     if format == "json":
         _emit_json(
             {
                 "action": "validate",
                 "command": "legislation",
-                "error_count": len(errors),
-                "errors": errors,
+                "error_count": 0,
+                "errors": [],
                 "records_validated": len(records_raw),
                 "schema_version": "archive-govt-nz.cli/v1",
-                "status": status,
+                "status": "valid",
             }
         )
-        return 0 if not errors else 1
+        return 0
 
-    print(
-        f"Legislation validate: status={status} "
-        f"validated={len(records_raw)} errors={len(errors)}"
-    )
-    return 0 if not errors else 1
+    print(f"Legislation validate: status=valid validated={len(records_raw)} errors=0")
+    return 0
 
 
 def _handle_leg_manifest(
@@ -912,10 +931,10 @@ def _handle_leg_manifest(
         return 1
 
     try:
-        man_data = json.loads(man_file.read_text(encoding="utf-8"))
-        total = man_data.get("total_records", len(man_data.get("records", [])))
+        man_data = load_authenticated_manifest(man_file)
+        total = man_data["total_records"]
         sha = man_data.get("manifest_sha256", "")
-    except (json.JSONDecodeError, OSError) as e:
+    except (json.JSONDecodeError, OSError, TypeError, ValueError) as e:
         sys.stderr.write(f"Corrupt manifest: {e}\n")
         if format == "json":
             _emit_json(
@@ -954,60 +973,30 @@ def _handle_leg_manifest(
     return 0
 
 
-def _read_coverage_from_sources(
-    manifest_path: str,
-    checkpoint_path: str,
-    cas_path: str,
-) -> tuple[int, int, int, int]:
-    """Read counts from manifest, checkpoint, or CAS store."""
-    man_file = Path(manifest_path)
-    if man_file.is_file():
-        try:
-            man_data = json.loads(man_file.read_text(encoding="utf-8"))
-        except json.JSONDecodeError, OSError:
-            man_data = None
-        if isinstance(man_data, dict):
-            recs = man_data.get("records", [])
-            total = len(recs)
-            html_count = sum(
-                1
-                for r in recs
-                if str(r.get("canonical_uri", "")).endswith(".html")
-                or ":html:" in str(r.get("document_id", ""))
-            )
-            return total, total, total - html_count, html_count
-
-    chk_file = Path(checkpoint_path)
-    if chk_file.is_file():
-        try:
-            chk_data = json.loads(chk_file.read_text(encoding="utf-8"))
-        except json.JSONDecodeError, OSError:
-            chk_data = None
-        if isinstance(chk_data, dict):
-            wids = chk_data.get("processed_work_ids", [])
-            count = len(wids)
-            return count, count, count, 0
-
-    cas_dir = Path(cas_path) / "sha256"
-    if cas_dir.is_dir():
-        cas_objs = [f for f in cas_dir.glob("*") if f.is_file()]
-        if cas_objs:
-            count = len(cas_objs)
-            return count, count, count, 0
-
-    return 0, 0, 0, 0
-
-
 def _handle_leg_coverage(
     manifest_path: str,
-    checkpoint_path: str,
-    cas_path: str,
+    _checkpoint_path: str,
+    _cas_path: str,
     format: Literal["text", "json"],
 ) -> int:
     """Dynamically compute coverage without hardcoded constants."""
-    total, retrieved, xml_count, html_count = _read_coverage_from_sources(
-        manifest_path, checkpoint_path, cas_path
-    )
+    try:
+        total, retrieved, xml_count, html_count = coverage_counts(Path(manifest_path))
+    except (OSError, TypeError, ValueError) as exc:
+        sys.stderr.write(f"Invalid legislation coverage state: {exc}\n")
+        if format == "json":
+            _emit_json(
+                {
+                    "action": "coverage",
+                    "command": "legislation",
+                    "error": str(exc),
+                    "schema_version": "archive-govt-nz.cli/v1",
+                    "status": "invalid",
+                }
+            )
+        else:
+            print("Legislation coverage: status=invalid")
+        return 1
 
     if total == 0:
         sys.stderr.write("No legislation records or manifest found for coverage\n")
@@ -1042,18 +1031,19 @@ def _handle_leg_coverage(
                 "html_fallback_count": html_count,
                 "retrieved_works_count": retrieved,
                 "schema_version": "archive-govt-nz.cli/v1",
-                "status": "operational",
+                "status": "complete" if retrieved == total else "incomplete",
                 "unresolved_gaps_count": total - retrieved,
                 "xml_manifestations_count": xml_count,
             }
         )
-        return 0
+        return 0 if retrieved == total else 1
 
+    status = "complete" if retrieved == total else "incomplete"
     print(
-        f"Legislation coverage: status=operational candidates={total} "
+        f"Legislation coverage: status={status} candidates={total} "
         f"coverage={pct}% xml={xml_count} html={html_count}"
     )
-    return 0
+    return 0 if retrieved == total else 1
 
 
 def _handle_leg_changes(
@@ -1062,33 +1052,44 @@ def _handle_leg_changes(
 ) -> int:
     """Report detected legislation change events."""
     chk_file = Path(checkpoint_path)
-    report = LegislationChangeReport()
+    if not chk_file.is_file():
+        err_msg = f"Change evidence not found at {checkpoint_path}"
+        sys.stderr.write(f"{err_msg}\n")
+        if format == "json":
+            _emit_json(
+                {
+                    "action": "changes",
+                    "command": "legislation",
+                    "error": err_msg,
+                    "events": [],
+                    "schema_version": "archive-govt-nz.cli/v1",
+                    "status": "no_state",
+                    "total_changes": 0,
+                }
+            )
+        else:
+            print("Legislation changes: status=no_state")
+        return 1
 
-    if chk_file.is_file():
-        try:
-            chk_data = json.loads(chk_file.read_text(encoding="utf-8"))
-            last_up = chk_data.get("last_updated")
-            if last_up:
-                report.detected_at = last_up
-        except json.JSONDecodeError, OSError:
-            pass
+    err_msg = "No authenticated legislation change-event ledger is available"
+    sys.stderr.write(f"{err_msg}\n")
 
     if format == "json":
         _emit_json(
             {
                 "action": "changes",
                 "command": "legislation",
-                "detected_at": report.detected_at,
+                "error": err_msg,
                 "events": [],
                 "schema_version": "archive-govt-nz.cli/v1",
-                "status": "observed",
+                "status": "unverified",
                 "total_changes": 0,
             }
         )
-        return 0
+        return 1
 
-    print("Legislation changes: status=observed total_changes=0")
-    return 0
+    print("Legislation changes: status=unverified total_changes=0")
+    return 1
 
 
 def _handle_leg_status(
@@ -1098,14 +1099,12 @@ def _handle_leg_status(
     format: Literal["text", "json"],
 ) -> int:
     """Inspect overall legislation archive operational state."""
-    cas_dir = Path(cas_path) / "sha256"
-    cas_count = (
-        len([f for f in cas_dir.glob("*") if f.is_file()]) if cas_dir.is_dir() else 0
-    )
-    chk_exists = Path(checkpoint_path).is_file()
-    man_exists = Path(manifest_path).is_file()
+    chk_file = Path(checkpoint_path)
+    man_file = Path(manifest_path)
+    chk_exists = chk_file.is_file()
+    man_exists = man_file.is_file()
 
-    if not (cas_count or chk_exists or man_exists):
+    if not (chk_exists and man_exists and Path(cas_path).is_dir()):
         sys.stderr.write("No legislation archive state present\n")
         if format == "json":
             _emit_json(
@@ -1121,6 +1120,33 @@ def _handle_leg_status(
             )
         else:
             print("Legislation status: status=no_state")
+        return 1
+
+    try:
+        cas_count = verify_linked_state(Path(cas_path), chk_file, man_file)
+    except (
+        json.JSONDecodeError,
+        ObjectStoreError,
+        OSError,
+        TypeError,
+        ValueError,
+    ) as exc:
+        sys.stderr.write(f"Invalid legislation archive state: {exc}\n")
+        if format == "json":
+            _emit_json(
+                {
+                    "action": "status",
+                    "cas_objects_count": 0,
+                    "checkpoint_present": chk_exists,
+                    "command": "legislation",
+                    "error": str(exc),
+                    "manifest_present": man_exists,
+                    "schema_version": "archive-govt-nz.cli/v1",
+                    "status": "invalid",
+                }
+            )
+        else:
+            print("Legislation status: status=invalid")
         return 1
 
     if format == "json":
@@ -1146,9 +1172,52 @@ def _handle_leg_status(
 
 def _handle_leg_replay(
     cas_path: str,
+    checkpoint_path: str,
+    manifest_path: str,
     format: Literal["text", "json"],
 ) -> int:
     """Execute deterministic zero-network replay over preserved legislation."""
+    chk_file = Path(checkpoint_path)
+    man_file = Path(manifest_path)
+    if not (chk_file.is_file() and man_file.is_file() and Path(cas_path).is_dir()):
+        err_msg = "Linked legislation manifest, checkpoint, and CAS are required"
+        sys.stderr.write(f"{err_msg}\n")
+        if format == "json":
+            _emit_json(
+                {
+                    "action": "replay",
+                    "command": "legislation",
+                    "error": err_msg,
+                    "schema_version": "archive-govt-nz.cli/v1",
+                    "status": "no_state",
+                }
+            )
+        else:
+            print("Legislation replay: status=no_state")
+        return 1
+    try:
+        verify_linked_state(Path(cas_path), chk_file, man_file)
+    except (
+        json.JSONDecodeError,
+        ObjectStoreError,
+        OSError,
+        TypeError,
+        ValueError,
+    ) as exc:
+        sys.stderr.write(f"Invalid legislation replay state: {exc}\n")
+        if format == "json":
+            _emit_json(
+                {
+                    "action": "replay",
+                    "command": "legislation",
+                    "error": str(exc),
+                    "schema_version": "archive-govt-nz.cli/v1",
+                    "status": "invalid",
+                }
+            )
+        else:
+            print("Legislation replay: status=invalid")
+        return 1
     return replay(cas_dir=cas_path, format=format)
 
 
@@ -1178,9 +1247,9 @@ def _handle_leg_publication_plan(
         return 1
 
     try:
-        man_data = json.loads(man_file.read_text(encoding="utf-8"))
-        total = man_data.get("total_records", len(man_data.get("records", [])))
-    except (json.JSONDecodeError, OSError) as e:
+        man_data = load_authenticated_manifest(man_file)
+        total = man_data["total_records"]
+    except (json.JSONDecodeError, OSError, TypeError, ValueError) as e:
         sys.stderr.write(f"Corrupt manifest: {e}\n")
         if format == "json":
             _emit_json(
@@ -1205,43 +1274,29 @@ def _handle_leg_publication_plan(
                 "command": "legislation",
                 "publication_target": "edithatogo/corpus-legislation-nz",
                 "schema_version": "archive-govt-nz.cli/v1",
-                "status": "staged",
+                "status": "blocked",
                 "total_records": total,
+                "unresolved_gates": [
+                    "publication_authority",
+                    "redistribution_rights",
+                ],
             }
         )
-        return 0
+        return 3
 
     print(
-        f"Legislation publication-plan: status=staged "
+        f"Legislation publication-plan: status=blocked "
         f"target=edithatogo/corpus-legislation-nz records={total}"
     )
-    return 0
+    return 3
 
 
 def _handle_leg_publication_verify(
     format: Literal["text", "json"],
 ) -> int:
     """Verify hosted publication readback or report missing credentials."""
-    hf_token = os.environ.get("HF_TOKEN")
-    zenodo_token = os.environ.get("ZENODO_TOKEN")
-
-    if not (hf_token or zenodo_token):
-        err_msg = "Remote publication tokens (HF_TOKEN/ZENODO_TOKEN) not configured"
-        sys.stderr.write(f"{err_msg}\n")
-        if format == "json":
-            _emit_json(
-                {
-                    "action": "publication-verify",
-                    "command": "legislation",
-                    "error": err_msg,
-                    "publication_target": "edithatogo/corpus-legislation-nz",
-                    "schema_version": "archive-govt-nz.cli/v1",
-                    "status": "not_configured",
-                }
-            )
-        else:
-            print("Legislation publication-verify: status=not_configured")
-        return 2
+    err_msg = "No authenticated remote publication receipt was supplied"
+    sys.stderr.write(f"{err_msg}\n")
 
     if format == "json":
         _emit_json(
@@ -1250,13 +1305,14 @@ def _handle_leg_publication_verify(
                 "command": "legislation",
                 "publication_target": "edithatogo/corpus-legislation-nz",
                 "schema_version": "archive-govt-nz.cli/v1",
-                "status": "verified",
+                "error": err_msg,
+                "status": "unverified",
             }
         )
-        return 0
+        return 3
 
-    print("Legislation publication-verify: status=verified")
-    return 0
+    print("Legislation publication-verify: status=unverified")
+    return 3
 
 
 @app.command
@@ -1297,6 +1353,7 @@ def legislation(  # noqa: PLR0913
             work_ids,
             batch_id,
             max_works,
+            search_term,
             format,
             fail_fast=fail_fast,
             force_resync=force_resync,
@@ -1310,7 +1367,9 @@ def legislation(  # noqa: PLR0913
         "status": lambda: _handle_leg_status(
             cas_path, checkpoint_path, manifest_path, format
         ),
-        "replay": lambda: _handle_leg_replay(cas_path, format),
+        "replay": lambda: _handle_leg_replay(
+            cas_path, checkpoint_path, manifest_path, format
+        ),
         "publication-plan": lambda: _handle_leg_publication_plan(manifest_path, format),
         "publication-verify": lambda: _handle_leg_publication_verify(format),
     }
