@@ -156,7 +156,7 @@ active only after the MVP checkpoint and their stated decision gates pass.
 
 - [x] **Track: Medallion Architecture Consolidation with Integrated Vector & Knowledge Graph Products**
   *Link: [archive/medallion_architecture_consolidation_20260823/index.md](./archive/medallion_architecture_consolidation_20260823/index.md)*
-- [ ] **Track: Single-Pass Ironclad Bronze Ingestion Hardening**
+- [x] **Track: Single-Pass Ironclad Bronze Ingestion Hardening**
   *Link: [tracks/bronze_single_pass_ingestion_hardening_20260823/index.md](./tracks/bronze_single_pass_ingestion_hardening_20260823/index.md)*
 - [ ] **Track: Surveillance Heartbeat Ledger & Cross-Repository Federation Protocol**
   *Link: [tracks/bronze_surveillance_and_federation_anchoring_20260823/index.md](./tracks/bronze_surveillance_and_federation_anchoring_20260823/index.md)*
