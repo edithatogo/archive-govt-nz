@@ -27,6 +27,8 @@ STAGES = (
             "run",
             "--locked",
             "pytest",
+            "-n",
+            "auto",
             "--cov=archive_govt_nz",
             "--cov-branch",
             "--cov-report=term-missing",
