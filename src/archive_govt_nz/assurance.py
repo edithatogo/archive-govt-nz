@@ -106,6 +106,7 @@ def run_command(command: tuple[str, ...]) -> int:
     """Run one stage without a shell and return its process status."""
     env = dict(os.environ)
     env.setdefault("COVERAGE_CORE", "ctrace")
+    env.setdefault("PYTHON_JIT", "0")
     try:
         return subprocess.run(
             command,

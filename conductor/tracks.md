@@ -144,6 +144,8 @@ active only after the MVP checkpoint and their stated decision gates pass.
 
 - [x] **Track 12: Broader health and healthcare discovery**
   *Proposed slug: `health_broader_discovery_20260801`*
+- [x] **Track 11: Ministry of Health discovery (metadata-only; archived)**
+  *Link: [archive/health_moh_discovery_20260801/index.md](./archive/health_moh_discovery_20260801/index.md)*
 - [x] **Track 13: Preservation packaging conformance**
   *Link: [tracks/preservation_conformance_20260801/index.md](./tracks/preservation_conformance_20260801/index.md)*
 - [x] **Track 14: Health payload capture**

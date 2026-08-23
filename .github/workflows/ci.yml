@@ -19,6 +19,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     env:
       COVERAGE_CORE: ctrace
+      PYTHON_JIT: "0"
     strategy:
       fail-fast: false
       matrix:
