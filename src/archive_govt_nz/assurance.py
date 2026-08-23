@@ -103,9 +103,14 @@ Runner = Callable[[tuple[str, ...]], int]
 
 def run_command(command: tuple[str, ...]) -> int:
     """Run one stage without a shell and return its process status."""
+    env = dict(subprocess.os.environ)
+    env.setdefault("COVERAGE_CORE", "ctrace")
     try:
         return subprocess.run(
-            command, check=False, timeout=COMMAND_TIMEOUT_SECONDS
+            command,
+            check=False,
+            timeout=COMMAND_TIMEOUT_SECONDS,
+            env=env,
         ).returncode
     except subprocess.TimeoutExpired:
         return 124

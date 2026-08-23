@@ -17,6 +17,8 @@ jobs:
   quality:
     name: Assurance (${{ matrix.os }})
     runs-on: ${{ matrix.os }}
+    env:
+      COVERAGE_CORE: ctrace
     strategy:
       fail-fast: false
       matrix:
