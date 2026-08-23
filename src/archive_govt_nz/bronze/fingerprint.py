@@ -8,8 +8,9 @@ from __future__ import annotations
 
 import hashlib
 import json
+from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
-from typing import TYPE_CHECKING, Final
+from typing import TYPE_CHECKING, Any, Final
 
 import defusedxml.ElementTree as DefusedET
 
@@ -45,12 +46,14 @@ def _canonicalize_primitive_type(val: object) -> str:
 
 def _canonicalize_json_type(val: object) -> object:
     """Recursively reduce a JSON structure to its canonical type structure."""
-    if isinstance(val, dict):
+    if isinstance(val, (dict, Mapping)):
         return {
-            k: _canonicalize_json_type(v)
-            for k, v in sorted(val.items(), key=lambda item: item[0])
+            str(k): _canonicalize_json_type(v)
+            for k, v in sorted(val.items(), key=lambda item: str(item[0]))
         }
-    if isinstance(val, list):
+    if isinstance(val, (list, tuple, Sequence)) and not isinstance(
+        val, (str, bytes)
+    ):
         if not val:
             return ["empty"]
         types = sorted({str(_canonicalize_json_type(item)) for item in val[:10]})
@@ -75,7 +78,7 @@ def _canonicalize_xml_element(elem: ET.Element) -> dict[str, object]:
 
 
 def compute_json_schema_fingerprint(
-    data: dict[str, object] | list[object] | str | bytes,
+    data: Mapping[str, Any] | Sequence[Any] | str | bytes | Any,
 ) -> SchemaFingerprintResult:
     """Compute deterministic schema fingerprint for JSON data or structure."""
     parsed = json.loads(data) if isinstance(data, (str, bytes)) else data

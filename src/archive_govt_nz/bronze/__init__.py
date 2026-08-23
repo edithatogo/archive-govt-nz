@@ -7,6 +7,13 @@ from archive_govt_nz.bronze.adapter import (
     BronzeDomainIngestor,
     IngestionResult,
 )
+from archive_govt_nz.bronze.attestation import (
+    Ed25519Signer,
+    Ed25519Verifier,
+    ManifestSignature,
+    seal_manifest,
+    verify_manifest_seal,
+)
 from archive_govt_nz.bronze.fingerprint import (
     SchemaFingerprintResult,
     compute_arrow_schema_fingerprint,
@@ -59,9 +66,12 @@ __all__ = [
     "BronzeRecord",
     "BronzeSourceMetadata",
     "DurabilityPolicy",
+    "Ed25519Signer",
+    "Ed25519Verifier",
     "ImmutabilityMode",
     "IngestionResult",
     "InvalidPayloadSignatureError",
+    "ManifestSignature",
     "MultiHashTriplet",
     "SchemaFingerprintResult",
     "SniffResult",
@@ -74,7 +84,9 @@ __all__ = [
     "compute_xml_schema_fingerprint",
     "create_bronze_manifest",
     "detect_schema_drift",
+    "seal_manifest",
     "sniff_magic_mime",
     "validate_payload_signature",
     "verify_bronze_manifest_fixity",
+    "verify_manifest_seal",
 ]

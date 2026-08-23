@@ -18,11 +18,11 @@
 - [x] Task: Add unit and drift detection tests.
 - [x] Task: Conductor Review & Automated Phase Gate Verification.
 
-### Phase 4: Offline Ed25519 Manifest Sealing
-- [ ] Task: Implement `src/archive_govt_nz/bronze/attestation.py` for deterministic Ed25519 key loading, signing, and verification.
-- [ ] Task: Emit `.sig` files alongside B1 acquisition manifests and verify on readback.
-- [ ] Task: Add cryptographic verification test suite.
-- [ ] Task: Conductor Review & Automated Phase Gate Verification.
+### Phase 4: Offline Ed25519 Manifest Sealing [COMPLETED]
+- [x] Task: Implement `src/archive_govt_nz/bronze/attestation.py` for deterministic Ed25519 key loading, signing, and verification.
+- [x] Task: Emit `.sig` files alongside B1 acquisition manifests and verify on readback.
+- [x] Task: Add cryptographic verification test suite.
+- [x] Task: Conductor Review & Automated Phase Gate Verification.
 
 ### Phase 5: Quality Gates & End-to-End Hardening Certification
 - [ ] Task: Update mutation testing suite (`tools/mutation_medallion.py`) to test magic byte, multihash, and attestation mutants.

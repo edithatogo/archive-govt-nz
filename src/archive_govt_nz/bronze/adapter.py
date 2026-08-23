@@ -19,6 +19,10 @@ if TYPE_CHECKING:
     from archive_govt_nz.object_store import ContentAddressedStore
 
 
+from archive_govt_nz.bronze.attestation import (
+    Ed25519Signer,
+    seal_manifest,
+)
 from archive_govt_nz.bronze.sniffer import (
     InvalidPayloadSignatureError,
     validate_payload_signature,
@@ -36,6 +40,7 @@ class IngestionResult:
     bytes_synced: int
     manifest_path: str | None = None
     manifest_sha256: str | None = None
+    signature_path: str | None = None
     errors: list[str] | None = None
 
 
@@ -82,7 +87,10 @@ class BronzeDomainIngestor:
                 else content_type,
             )
             if not sniff_res.is_valid:
-                err_msg = f"Bronze ingest rejected for record '{record_id}': {sniff_res.error}"
+                err_msg = (
+                    f"Bronze ingest rejected for record '{record_id}': "
+                    f"{sniff_res.error}"
+                )
                 raise InvalidPayloadSignatureError(
                     err_msg,
                     detected_mime=sniff_res.detected_mime,
@@ -115,6 +123,7 @@ class BronzeDomainIngestor:
         manifest_id: str,
         records: list[BronzeRecord],
         output_dir: Path | None = None,
+        signer: Ed25519Signer | None = None,
     ) -> IngestionResult:
         """Create, verify, and persist a self-authenticating Bronze manifest."""
         target_dir = output_dir or self.base_dir
@@ -137,6 +146,12 @@ class BronzeDomainIngestor:
             json.dumps(manifest_dict, indent=2, sort_keys=True) + "\n",
             encoding="utf-8",
         )
+
+        signature_path: str | None = None
+        if signer is not None:
+            sig_file = target_dir / f"manifest-{manifest_id}.sig"
+            seal_manifest(manifest_file, signer, output_sig_path=sig_file)
+            signature_path = str(sig_file)
 
         checkpoint_file = target_dir / "checkpoint.json"
         checkpoint_data = {
@@ -162,5 +177,6 @@ class BronzeDomainIngestor:
             bytes_synced=manifest.total_bytes,
             manifest_path=str(manifest_file),
             manifest_sha256=manifest.sha256_manifest,
+            signature_path=signature_path,
             errors=[],
         )
