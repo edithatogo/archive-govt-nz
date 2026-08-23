@@ -1,0 +1,31 @@
+{
+  "schema_version": "archive-govt-nz.legislation-harvest-receipt/v2",
+  "source_set": "legislation",
+  "batch_id": "leg-first-batch-20260823-b001",
+  "search_terms": [
+    "public acts 2024"
+  ],
+  "work_ids": [],
+  "max_works": 25,
+  "force_resync": false,
+  "outcome": "changed",
+  "works_attempted": 1,
+  "works_synced": 1,
+  "records_preserved": 1,
+  "manifest_sha256": "6edb380722b5b40214144db56c784031bb902415da4891f28928f299eee1e043",
+  "discovered_works_count": 1,
+  "errors": [],
+  "state_committed": true,
+  "config": {
+    "name": "legislation",
+    "description": "Authoritative statutory instruments and historical legal corpus for New Zealand.",
+    "enabled": true,
+    "adapters": "",
+    "execution_mode": "dispatch_only",
+    "schedule": "disabled_pending_one_batch_canary_and_weekly_authority",
+    "checkpoint_location": "build/legislation-state/checkpoint.json",
+    "rights_class": "review_required",
+    "output_preservation_policy": "",
+    "publication_policy": ""
+  }
+}

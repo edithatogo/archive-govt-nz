@@ -1,0 +1,21 @@
+{
+  "schema_version": "archive-govt-nz.legislation-monthly-reconciliation/v1",
+  "status": "consistent",
+  "total_manifest_records": 1,
+  "distinct_works_count": 1,
+  "distinct_expressions_count": 1,
+  "distinct_manifestations_count": 1,
+  "candidate_works_denominator": 1,
+  "coverage_percent": 100.0,
+  "checkpoint_processed_ids_count": 1,
+  "checkpoint_gaps_count": 0,
+  "manifest_gaps_count": 0,
+  "validation_findings_count": 0,
+  "validation_findings": [],
+  "cas_objects_verified": 1,
+  "unretrieved_discovered_works_count": 0,
+  "hosted_dataset_comparison": {
+    "dataset_slug": "",
+    "status": "not_configured"
+  }
+}
