@@ -1,10 +1,10 @@
 # Implementation Plan: Single-Pass Ironclad Bronze Ingestion Hardening
 
-### Phase 1: Magic Byte Filter & MIME Signature Engine
-- [ ] Task: Implement `src/archive_govt_nz/bronze/sniffer.py` detecting valid XML, JSON, PDF, CSV, and WARC magic headers.
-- [ ] Task: Integrate filter into `BronzeAdapter` to abort ingestion before CAS disk write on invalid signatures.
-- [ ] Task: Add test cases verifying rejection of polyglots and HTML error pages disguised as PDFs.
-- [ ] Task: Conductor Review & Automated Phase Gate Verification.
+### Phase 1: Magic Byte Filter & MIME Signature Engine [COMPLETED]
+- [x] Task: Implement `src/archive_govt_nz/bronze/sniffer.py` detecting valid XML, JSON, PDF, CSV, and WARC magic headers.
+- [x] Task: Integrate filter into `BronzeAdapter` to abort ingestion before CAS disk write on invalid signatures.
+- [x] Task: Add test cases verifying rejection of polyglots and HTML error pages disguised as PDFs.
+- [x] Task: Conductor Review & Automated Phase Gate Verification.
 
 ### Phase 2: Streaming Multi-Hash Engine (SHA-256 + BLAKE3 + CIDv1)
 - [ ] Task: Implement `src/archive_govt_nz/bronze/multihash.py` providing single-pass streaming IPFS CIDv1 computation.

@@ -19,6 +19,12 @@ if TYPE_CHECKING:
     from archive_govt_nz.object_store import ContentAddressedStore
 
 
+from archive_govt_nz.bronze.sniffer import (
+    InvalidPayloadSignatureError,
+    validate_payload_signature,
+)
+
+
 @dataclass(frozen=True, slots=True)
 class IngestionResult:
     """Telemetry and outcome of a domain Bronze ingestion batch."""
@@ -62,8 +68,27 @@ class BronzeDomainIngestor:
         last_modified: str | None = None,
         headers: dict[str, str] | None = None,
         custom_metadata: dict[str, Any] | None = None,
+        validate_signature: bool = True,
     ) -> BronzeRecord:
-        """Store payload in CAS and return a typed BronzeRecord with fixity."""
+        """Store payload in CAS and return a typed BronzeRecord with fixity.
+
+        Validates magic byte signatures before writing to CAS disk storage.
+        """
+        if validate_signature:
+            sniff_res = validate_payload_signature(
+                payload_bytes,
+                expected_mime=media_type
+                if media_type != "application/octet-stream"
+                else content_type,
+            )
+            if not sniff_res.is_valid:
+                err_msg = f"Bronze ingest rejected for record '{record_id}': {sniff_res.error}"
+                raise InvalidPayloadSignatureError(
+                    err_msg,
+                    detected_mime=sniff_res.detected_mime,
+                    expected_mime=sniff_res.expected_mime,
+                )
+
         cas_receipt = self.store.put_bytes(payload_bytes)
         return build_bronze_record(
             record_id=record_id,

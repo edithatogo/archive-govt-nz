@@ -26,6 +26,12 @@ from archive_govt_nz.bronze.models import (
     DurabilityPolicy,
     ImmutabilityMode,
 )
+from archive_govt_nz.bronze.sniffer import (
+    InvalidPayloadSignatureError,
+    SniffResult,
+    sniff_magic_mime,
+    validate_payload_signature,
+)
 
 __all__ = [
     "BRONZE_MANIFEST_SCHEMA_V1",
@@ -42,7 +48,11 @@ __all__ = [
     "DurabilityPolicy",
     "ImmutabilityMode",
     "IngestionResult",
+    "InvalidPayloadSignatureError",
+    "SniffResult",
     "build_bronze_record",
     "create_bronze_manifest",
+    "sniff_magic_mime",
+    "validate_payload_signature",
     "verify_bronze_manifest_fixity",
 ]
