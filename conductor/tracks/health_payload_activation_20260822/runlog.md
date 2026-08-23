@@ -20,3 +20,9 @@ allowlist, optional licence-map enrichment input, stable v1 receipt schema,
 and full negative-control coverage. Honest zero-eligible baseline preserved;
 no rights decisions made and no retrieval performed. Future activation is now
 a data update (licence map) plus separately gated capture.
+
+### Follow-up decision raised
+
+DEC-HEALTH-001 (licence-evidence acquisition approach) recorded as PENDING in
+`decisions.md` — see that file for options, rationale, trade-offs,
+contingencies, and the recommendation.
