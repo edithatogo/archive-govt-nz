@@ -1,0 +1,12 @@
+{
+  "created_at": "2026-08-23T22:45:00Z",
+  "description": "Harden Bronze ingestion with single-pass magic byte validation, streaming CIDv1 tagging, structural schema fingerprinting, and Ed25519 manifest attestation.",
+  "donor_or_upstream": "Bronze Three-Strata & GMA alignment",
+  "reusable_assets": "Single-pass stream pipeline, pure-Python Ed25519 signer, multihash/cidv1 encoder",
+  "status": "new",
+  "title": "Single-Pass Ironclad Bronze Ingestion Hardening",
+  "track_id": "bronze_single_pass_ingestion_hardening_20260823",
+  "treatment": "Single-pass magic byte filtering, streaming CIDv1/SHA256/BLAKE3 multi-hash, schema fingerprinting, and offline Ed25519 manifest sealing",
+  "type": "bronze_hardening",
+  "updated_at": "2026-08-23T22:45:00Z"
+}
