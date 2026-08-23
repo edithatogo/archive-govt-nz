@@ -155,7 +155,7 @@ active only after the MVP checkpoint and their stated decision gates pass.
 ## Programme: Medallion Architecture & Unified Data Engine (2026-08-23)
 
 - [x] **Track: Medallion Architecture Consolidation with Integrated Vector & Knowledge Graph Products**
-  *Link: [tracks/medallion_architecture_consolidation_20260823/index.md](./tracks/medallion_architecture_consolidation_20260823/index.md)*
+  *Link: [archive/medallion_architecture_consolidation_20260823/index.md](./archive/medallion_architecture_consolidation_20260823/index.md)*
 
 ## Programme: Sequential Capability Assimilations (One-at-a-Time Implementation)
 
