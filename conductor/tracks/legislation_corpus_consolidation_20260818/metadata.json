@@ -2,7 +2,7 @@
   "id": "legislation_corpus_consolidation_20260818",
   "title": "Programme: Legislation Corpus Consolidation (corpus-legislation-nz -> archive-govt-nz)",
   "type": "programme",
-  "status": "in_progress",
+  "status": "completed",
   "baseline_date": "2026-08-18",
   "donor_repo": "edithatogo/corpus-legislation-nz",
   "donor_sha": "749918c251da59dc890c19dfda2ab9a021fd8ca6",
@@ -10,5 +10,7 @@
   "canonical_sha": "49e3b4cb234a1c468d1bcd191de67cea3a3c02c0",
   "non_donor_boundary": "edithatogo/legislation",
   "requirements_method": "MoSCoW",
-  "phase_0_control_plane_commit": "cb0e78f89a127f246d024ba3a5d770e1ec478f12"
+  "phase_0_control_plane_commit": "cb0e78f89a127f246d024ba3a5d770e1ec478f12",
+  "completed_at": "2026-08-22",
+  "superseded_by": "legislation_corpus_consolidation_corrective_20260818"
 }
