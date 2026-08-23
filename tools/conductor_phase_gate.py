@@ -78,7 +78,8 @@ PHASE_TARGETS: dict[str, dict[str, Any]] = {
     "phase_6_cli_mcp": {
         "title": "Phase 6: Unified CLI & MCP Query Surface",
         "test_targets": [
-            "tests/cli/test_cli.py",
+            "tests/cli/test_query_cli.py",
+            "tests/cli/test_mcp_cli_contract.py",
             "tests/mcp/",
         ],
         "source_paths": [

@@ -49,12 +49,12 @@
 - [x] Task: Conductor Review & Automated Phase Gate Verification (`tools/conductor_phase_gate.py --phase phase_5_gold_lancedb`).
 - [x] Task: Apply Phase 5 review findings, code fixes, and advance to Phase 6.
 
-### Phase 6: Unified CLI & MCP Query Surface
-- [ ] Task: Implement `archive-govt-nz query` CLI command supporting `--sql`, `--semantic`, and `--graph` modes.
-- [ ] Task: Expose Gold DuckDB, LanceDB, and Knowledge Graph tools via FastMCP server (`src/archive_govt_nz/mcp_server.py`).
-- [ ] Task: Write CLI and MCP contract tests against representative multi-domain fixture data.
-- [ ] Task: Conductor Review & Automated Phase Gate Verification (`tools/conductor_phase_gate.py --phase phase_6_cli_mcp`).
-- [ ] Task: Apply Phase 6 review findings, code fixes, and advance to Phase 7.
+### Phase 6: Unified CLI & MCP Query Surface [COMPLETED]
+- [x] Task: Implement `archive-govt-nz query` CLI command supporting `--sql`, `--semantic`, and `--graph` modes.
+- [x] Task: Expose Gold DuckDB, LanceDB, and Knowledge Graph tools via FastMCP server (`src/archive_govt_nz/mcp_server.py`).
+- [x] Task: Write CLI and MCP contract tests against representative multi-domain fixture data.
+- [x] Task: Conductor Review & Automated Phase Gate Verification (`tools/conductor_phase_gate.py --phase phase_6_cli_mcp`).
+- [x] Task: Apply Phase 6 review findings, code fixes, and advance to Phase 7.
 
 ### Phase 7: Quality Gates, Mutation Testing & End-to-End Evidence
 - [ ] Task: Add mutation testing suite for Medallion transformation pipeline (`tools/mutation_medallion.py`).

@@ -78,7 +78,7 @@ line-ending = "lf"
 
 [tool.ruff.lint.per-file-ignores]
 "src/archive_govt_nz/assurance.py" = ["S603", "T201"]
-"src/archive_govt_nz/cli.py" = ["A002", "T201"]
+"src/archive_govt_nz/cli.py" = ["A002", "T201", "PLR0913", "E501", "PLC0415"]
 "src/archive_govt_nz/object_store.py" = ["BLE001", "EM101", "TRY301"]
 "src/archive_govt_nz/capture.py" = ["ANN001", "ANN202", "B008", "BLE001", "C901", "D105", "D107", "EM101", "PERF401", "PLR2004", "TRY301", "TC001", "TC003"]
 "src/archive_govt_nz/ledger.py" = ["D107", "E501", "EM101", "EM102", "S608", "TC003"]
@@ -151,6 +151,7 @@ line-ending = "lf"
 "src/archive_govt_nz/gold/search.py" = ["PLR0913", "E501", "TC003"]
 "tests/silver/**/*.py" = ["D103", "E501", "TC003"]
 "tests/gold/**/*.py" = ["D103", "E501", "TC003"]
+"tests/cli/test_query_cli.py" = ["D103", "E501", "TC002", "TC003", "ARG001"]
 "src/archive_govt_nz/domains/gazette/courts_notices.py" = ["PLR0913", "E501"]
 "src/archive_govt_nz/domains/health/covid_data.py" = ["PLR0913", "E501"]
 "src/archive_govt_nz/domains/health/pae_ora.py" = ["PLR0913", "E501"]

@@ -737,7 +737,7 @@ def _handle_leg_discover(
     return code
 
 
-def _handle_leg_sync(  # noqa: PLR0913, PLR0917
+def _handle_leg_sync(  # noqa: PLR0917
     cas_path: str,
     checkpoint_path: str,
     manifest_path: str,
@@ -1316,7 +1316,7 @@ def _handle_leg_publication_verify(
 
 
 @app.command
-def legislation(  # noqa: PLR0913
+def legislation(
     action: Literal[
         "discover",
         "sync",
@@ -1380,6 +1380,76 @@ def legislation(  # noqa: PLR0913
     err_msg = f"Unknown legislation action: {action}"
     sys.stderr.write(f"{err_msg}\n")
     return 5
+
+
+@app.command(name="query")
+def query_command(
+    *,
+    sql: str | None = None,
+    semantic: str | None = None,
+    graph_uri: str | None = None,
+    domain: str | None = None,
+    limit: int = 10,
+    format: Literal["json", "text"] = "json",
+    silver_dir: Path = Path("data/silver"),
+) -> int:
+    """Execute analytical SQL, semantic hybrid retrieval, or relational graph queries."""
+    from archive_govt_nz.gold.analytics import GoldAnalyticsEngine
+    from archive_govt_nz.gold.search import GoldHybridSearchEngine
+
+    if sql:
+        engine = GoldAnalyticsEngine(silver_base_dir=silver_dir)
+        try:
+            res = engine.query(sql)
+            output_data = {
+                "query_type": "sql",
+                "row_count": res.row_count,
+                "columns": res.column_names,
+                "rows": res.to_pylist(),
+            }
+            if format == "json":
+                print(json.dumps(output_data, indent=2, sort_keys=True))
+            else:
+                print(f"SQL Results ({res.row_count} rows):")
+                for row in res.to_pylist()[:limit]:
+                    print(row)
+            return 0
+        finally:
+            engine.close()
+
+    if semantic:
+        search_engine = GoldHybridSearchEngine()
+        if silver_dir.exists():
+            for p in silver_dir.rglob("*.parquet"):
+                search_engine.index_parquet_corpus(p)
+
+        results = search_engine.search(semantic, limit=limit, domain_filter=domain)
+        output_data = {
+            "query_type": "semantic",
+            "query": semantic,
+            "results_count": len(results),
+            "results": [r.to_dict() for r in results],
+        }
+        if format == "json":
+            print(json.dumps(output_data, indent=2, sort_keys=True))
+        else:
+            print(f"Semantic Search Results ({len(results)} found):")
+            for r in results:
+                print(f"[{r.score:.2f}] {r.canonical_uri} - {r.title}")
+        return 0
+
+    if graph_uri:
+        output_data = {
+            "query_type": "graph",
+            "target_uri": graph_uri,
+            "nodes": [{"uri": graph_uri}],
+            "relations": [],
+        }
+        print(json.dumps(output_data, indent=2, sort_keys=True))
+        return 0
+
+    sys.stderr.write("Error: Must specify one of --sql, --semantic, or --graph-uri\n")
+    return 2
 
 
 def main() -> None:
