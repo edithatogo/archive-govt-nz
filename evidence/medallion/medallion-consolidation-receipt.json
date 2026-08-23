@@ -1,0 +1,529 @@
+{
+  "certified_at": "2026-08-23T09:52:22Z",
+  "phase_review_receipts": {
+    "phase_1_bronze": {
+      "phase_id": "phase_1_bronze",
+      "receipt_sha256": "83bb07da947da1cdbc9fb5fbf4d3d93ea08e416515d182db172a0a7dec64fd68",
+      "reviewed_at": "2026-08-23T09:25:35Z",
+      "schema_version": "archive-govt-nz.conductor-phase-review/v1",
+      "stages": [
+        {
+          "command": [
+            "uv",
+            "run",
+            "--locked",
+            "ruff",
+            "format",
+            "--check",
+            "."
+          ],
+          "description": "Ruff Code Formatting Check",
+          "exit_code": 0,
+          "passed": true,
+          "stderr": "",
+          "stdout": "1049 files already formatted\n"
+        },
+        {
+          "command": [
+            "uv",
+            "run",
+            "--locked",
+            "ruff",
+            "check",
+            "."
+          ],
+          "description": "Ruff Code Linter & Rule Enforcement",
+          "exit_code": 0,
+          "passed": true,
+          "stderr": "",
+          "stdout": "All checks passed!\n"
+        },
+        {
+          "command": [
+            "uv",
+            "run",
+            "--locked",
+            "python",
+            "tools/validate_schemas.py"
+          ],
+          "description": "JSON Schema & Fixture Verification",
+          "exit_code": 0,
+          "passed": true,
+          "stderr": "",
+          "stdout": "validated 24 schemas and 14 representative documents\n"
+        },
+        {
+          "command": [
+            "uv",
+            "run",
+            "--locked",
+            "pytest",
+            "tests/bronze/test_manifest.py",
+            "tests/bronze/test_adapter.py",
+            "tests/domains/test_courts_notices.py",
+            "tests/domains/test_health_bronze.py"
+          ],
+          "description": "Targeted Unit Tests: ['tests/bronze/test_manifest.py', 'tests/bronze/test_adapter.py', 'tests/domains/test_courts_notices.py', 'tests/domains/test_health_bronze.py']",
+          "exit_code": 0,
+          "passed": true,
+          "stderr": "",
+          "stdout": "============================= test session starts ==============================\nplatform darwin -- Python 3.14.5, pytest-9.1.1, pluggy-1.6.0\nUsing --randomly-seed=3591049229\nrootdir: /Volumes/PortableSSD/GitHub/archive-govt-nz\nconfigfile: pyproject.toml\nplugins: syrupy-5.5.3, randomly-3.16.0, cov-7.1.0, xdist-3.8.0, anyio-4.14.2, hypothesis-6.164.0\ncollected 10 items\n\ntests/domains/test_courts_notices.py .                                   [ 10%]\ntests/bronze/test_manifest.py ......                                     [ 70%]\ntests/bronze/test_adapter.py .                                           [ 80%]\ntests/domains/test_health_bronze.py ..                                   [100%]\n\n============================== 10 passed in 3.96s ==============================\n"
+        }
+      ],
+      "status": "passed",
+      "title": "Phase 1: Bronze Ingestion Layer"
+    },
+    "phase_2_silver": {
+      "phase_id": "phase_2_silver",
+      "receipt_sha256": "32d3e7e8e70b403564f85cfac67e69f4630ece04f111b436f13f4e9ed6cdc324",
+      "reviewed_at": "2026-08-23T09:39:48Z",
+      "schema_version": "archive-govt-nz.conductor-phase-review/v1",
+      "stages": [
+        {
+          "command": [
+            "uv",
+            "run",
+            "--locked",
+            "ruff",
+            "format",
+            "--check",
+            "."
+          ],
+          "description": "Ruff Code Formatting Check",
+          "exit_code": 0,
+          "passed": true,
+          "stderr": "",
+          "stdout": "1054 files already formatted\n"
+        },
+        {
+          "command": [
+            "uv",
+            "run",
+            "--locked",
+            "ruff",
+            "check",
+            "."
+          ],
+          "description": "Ruff Code Linter & Rule Enforcement",
+          "exit_code": 0,
+          "passed": true,
+          "stderr": "",
+          "stdout": "All checks passed!\n"
+        },
+        {
+          "command": [
+            "uv",
+            "run",
+            "--locked",
+            "python",
+            "tools/validate_schemas.py"
+          ],
+          "description": "JSON Schema & Fixture Verification",
+          "exit_code": 0,
+          "passed": true,
+          "stderr": "",
+          "stdout": "validated 24 schemas and 14 representative documents\n"
+        },
+        {
+          "command": [
+            "uv",
+            "run",
+            "--locked",
+            "pytest",
+            "tests/silver/"
+          ],
+          "description": "Targeted Unit Tests: ['tests/silver/']",
+          "exit_code": 0,
+          "passed": true,
+          "stderr": "",
+          "stdout": "============================= test session starts ==============================\nplatform darwin -- Python 3.14.5, pytest-9.1.1, pluggy-1.6.0\nUsing --randomly-seed=695316319\nrootdir: /Volumes/PortableSSD/GitHub/archive-govt-nz\nconfigfile: pyproject.toml\nplugins: syrupy-5.5.3, randomly-3.16.0, cov-7.1.0, xdist-3.8.0, anyio-4.14.2, hypothesis-6.164.0\ncollected 4 items\n\ntests/silver/test_pipeline.py ....                                       [100%]\n\n============================== 4 passed in 1.27s ===============================\n"
+        }
+      ],
+      "status": "passed",
+      "title": "Phase 2: Silver Layer Parquet Pipelines"
+    },
+    "phase_3_silver_interlink": {
+      "phase_id": "phase_3_silver_interlink",
+      "receipt_sha256": "8e8fc26fda7e5450cd19bcc939a4d36281fd9e9aa3191188c2edf0036d1a2faa",
+      "reviewed_at": "2026-08-23T09:41:39Z",
+      "schema_version": "archive-govt-nz.conductor-phase-review/v1",
+      "stages": [
+        {
+          "command": [
+            "uv",
+            "run",
+            "--locked",
+            "ruff",
+            "format",
+            "--check",
+            "."
+          ],
+          "description": "Ruff Code Formatting Check",
+          "exit_code": 0,
+          "passed": true,
+          "stderr": "",
+          "stdout": "1056 files already formatted\n"
+        },
+        {
+          "command": [
+            "uv",
+            "run",
+            "--locked",
+            "ruff",
+            "check",
+            "."
+          ],
+          "description": "Ruff Code Linter & Rule Enforcement",
+          "exit_code": 0,
+          "passed": true,
+          "stderr": "",
+          "stdout": "All checks passed!\n"
+        },
+        {
+          "command": [
+            "uv",
+            "run",
+            "--locked",
+            "python",
+            "tools/validate_schemas.py"
+          ],
+          "description": "JSON Schema & Fixture Verification",
+          "exit_code": 0,
+          "passed": true,
+          "stderr": "",
+          "stdout": "validated 24 schemas and 14 representative documents\n"
+        },
+        {
+          "command": [
+            "uv",
+            "run",
+            "--locked",
+            "pytest",
+            "tests/silver/test_interlink.py"
+          ],
+          "description": "Targeted Unit Tests: ['tests/silver/test_interlink.py']",
+          "exit_code": 0,
+          "passed": true,
+          "stderr": "",
+          "stdout": "============================= test session starts ==============================\nplatform darwin -- Python 3.14.5, pytest-9.1.1, pluggy-1.6.0\nUsing --randomly-seed=241933751\nrootdir: /Volumes/PortableSSD/GitHub/archive-govt-nz\nconfigfile: pyproject.toml\nplugins: syrupy-5.5.3, randomly-3.16.0, cov-7.1.0, xdist-3.8.0, anyio-4.14.2, hypothesis-6.164.0\ncollected 4 items\n\ntests/silver/test_interlink.py ....                                      [100%]\n\n============================== 4 passed in 0.68s ===============================\n"
+        }
+      ],
+      "status": "passed",
+      "title": "Phase 3: Silver Cross-Domain Interlinking & Relational Lineage Graph"
+    },
+    "phase_4_gold_duckdb": {
+      "phase_id": "phase_4_gold_duckdb",
+      "receipt_sha256": "afed33c17759d7cd999667338978bea51b4879083454994fc0df36e037831a09",
+      "reviewed_at": "2026-08-23T09:43:44Z",
+      "schema_version": "archive-govt-nz.conductor-phase-review/v1",
+      "stages": [
+        {
+          "command": [
+            "uv",
+            "run",
+            "--locked",
+            "ruff",
+            "format",
+            "--check",
+            "."
+          ],
+          "description": "Ruff Code Formatting Check",
+          "exit_code": 0,
+          "passed": true,
+          "stderr": "",
+          "stdout": "1060 files already formatted\n"
+        },
+        {
+          "command": [
+            "uv",
+            "run",
+            "--locked",
+            "ruff",
+            "check",
+            "."
+          ],
+          "description": "Ruff Code Linter & Rule Enforcement",
+          "exit_code": 0,
+          "passed": true,
+          "stderr": "",
+          "stdout": "All checks passed!\n"
+        },
+        {
+          "command": [
+            "uv",
+            "run",
+            "--locked",
+            "python",
+            "tools/validate_schemas.py"
+          ],
+          "description": "JSON Schema & Fixture Verification",
+          "exit_code": 0,
+          "passed": true,
+          "stderr": "",
+          "stdout": "validated 24 schemas and 14 representative documents\n"
+        },
+        {
+          "command": [
+            "uv",
+            "run",
+            "--locked",
+            "pytest",
+            "tests/gold/test_analytics.py"
+          ],
+          "description": "Targeted Unit Tests: ['tests/gold/test_analytics.py']",
+          "exit_code": 0,
+          "passed": true,
+          "stderr": "",
+          "stdout": "============================= test session starts ==============================\nplatform darwin -- Python 3.14.5, pytest-9.1.1, pluggy-1.6.0\nUsing --randomly-seed=1656238167\nrootdir: /Volumes/PortableSSD/GitHub/archive-govt-nz\nconfigfile: pyproject.toml\nplugins: syrupy-5.5.3, randomly-3.16.0, cov-7.1.0, xdist-3.8.0, anyio-4.14.2, hypothesis-6.164.0\ncollected 3 items\n\ntests/gold/test_analytics.py ...                                         [100%]\n\n============================== 3 passed in 0.77s ===============================\n"
+        }
+      ],
+      "status": "passed",
+      "title": "Phase 4: Gold Layer DuckDB Analytical Engine & DCAT-AP"
+    },
+    "phase_5_gold_lancedb": {
+      "phase_id": "phase_5_gold_lancedb",
+      "receipt_sha256": "941f7ef47b1c233e2b14e27ce8806d9c7fb48d2ec7a42991596529463a928aa3",
+      "reviewed_at": "2026-08-23T09:45:24Z",
+      "schema_version": "archive-govt-nz.conductor-phase-review/v1",
+      "stages": [
+        {
+          "command": [
+            "uv",
+            "run",
+            "--locked",
+            "ruff",
+            "format",
+            "--check",
+            "."
+          ],
+          "description": "Ruff Code Formatting Check",
+          "exit_code": 0,
+          "passed": true,
+          "stderr": "",
+          "stdout": "1062 files already formatted\n"
+        },
+        {
+          "command": [
+            "uv",
+            "run",
+            "--locked",
+            "ruff",
+            "check",
+            "."
+          ],
+          "description": "Ruff Code Linter & Rule Enforcement",
+          "exit_code": 0,
+          "passed": true,
+          "stderr": "",
+          "stdout": "All checks passed!\n"
+        },
+        {
+          "command": [
+            "uv",
+            "run",
+            "--locked",
+            "python",
+            "tools/validate_schemas.py"
+          ],
+          "description": "JSON Schema & Fixture Verification",
+          "exit_code": 0,
+          "passed": true,
+          "stderr": "",
+          "stdout": "validated 24 schemas and 14 representative documents\n"
+        },
+        {
+          "command": [
+            "uv",
+            "run",
+            "--locked",
+            "pytest",
+            "tests/gold/test_search.py"
+          ],
+          "description": "Targeted Unit Tests: ['tests/gold/test_search.py']",
+          "exit_code": 0,
+          "passed": true,
+          "stderr": "",
+          "stdout": "============================= test session starts ==============================\nplatform darwin -- Python 3.14.5, pytest-9.1.1, pluggy-1.6.0\nUsing --randomly-seed=2357190142\nrootdir: /Volumes/PortableSSD/GitHub/archive-govt-nz\nconfigfile: pyproject.toml\nplugins: syrupy-5.5.3, randomly-3.16.0, cov-7.1.0, xdist-3.8.0, anyio-4.14.2, hypothesis-6.164.0\ncollected 2 items\n\ntests/gold/test_search.py ..                                             [100%]\n\n============================== 2 passed in 0.88s ===============================\n"
+        }
+      ],
+      "status": "passed",
+      "title": "Phase 5: Gold Layer Embedded LanceDB Hybrid Vector Index"
+    },
+    "phase_6_cli_mcp": {
+      "phase_id": "phase_6_cli_mcp",
+      "receipt_sha256": "45056b002dd27aae41ec44b0c83a615ce6ecd99602ab397ba5fdad90ef60d977",
+      "reviewed_at": "2026-08-23T09:49:42Z",
+      "schema_version": "archive-govt-nz.conductor-phase-review/v1",
+      "stages": [
+        {
+          "command": [
+            "uv",
+            "run",
+            "--locked",
+            "ruff",
+            "format",
+            "--check",
+            "."
+          ],
+          "description": "Ruff Code Formatting Check",
+          "exit_code": 0,
+          "passed": true,
+          "stderr": "",
+          "stdout": "1063 files already formatted\n"
+        },
+        {
+          "command": [
+            "uv",
+            "run",
+            "--locked",
+            "ruff",
+            "check",
+            "."
+          ],
+          "description": "Ruff Code Linter & Rule Enforcement",
+          "exit_code": 0,
+          "passed": true,
+          "stderr": "",
+          "stdout": "All checks passed!\n"
+        },
+        {
+          "command": [
+            "uv",
+            "run",
+            "--locked",
+            "python",
+            "tools/validate_schemas.py"
+          ],
+          "description": "JSON Schema & Fixture Verification",
+          "exit_code": 0,
+          "passed": true,
+          "stderr": "",
+          "stdout": "validated 24 schemas and 14 representative documents\n"
+        },
+        {
+          "command": [
+            "uv",
+            "run",
+            "--locked",
+            "pytest",
+            "tests/cli/test_query_cli.py",
+            "tests/cli/test_mcp_cli_contract.py",
+            "tests/mcp/"
+          ],
+          "description": "Targeted Unit Tests: ['tests/cli/test_query_cli.py', 'tests/cli/test_mcp_cli_contract.py', 'tests/mcp/']",
+          "exit_code": 0,
+          "passed": true,
+          "stderr": "",
+          "stdout": "============================= test session starts ==============================\nplatform darwin -- Python 3.14.5, pytest-9.1.1, pluggy-1.6.0\nUsing --randomly-seed=659728604\nrootdir: /Volumes/PortableSSD/GitHub/archive-govt-nz\nconfigfile: pyproject.toml\nplugins: syrupy-5.5.3, randomly-3.16.0, cov-7.1.0, xdist-3.8.0, anyio-4.14.2, hypothesis-6.164.0\ncollected 36 items\n\ntests/cli/test_mcp_cli_contract.py ...........                           [ 30%]\ntests/mcp/test_mcp_protocol.py ....                                      [ 41%]\ntests/mcp/test_mcp_current_standard.py ..................                [ 91%]\ntests/cli/test_query_cli.py ...                                          [100%]\n\n============================= 36 passed in 10.61s ==============================\n"
+        }
+      ],
+      "status": "passed",
+      "title": "Phase 6: Unified CLI & MCP Query Surface"
+    },
+    "phase_7_gates": {
+      "phase_id": "phase_7_gates",
+      "receipt_sha256": "9413dac22f9d3894c74995576e65f532a8577cbd852c9fcce324a455949ee5e3",
+      "reviewed_at": "2026-08-23T09:52:17Z",
+      "schema_version": "archive-govt-nz.conductor-phase-review/v1",
+      "stages": [
+        {
+          "command": [
+            "uv",
+            "run",
+            "--locked",
+            "ruff",
+            "format",
+            "--check",
+            "."
+          ],
+          "description": "Ruff Code Formatting Check",
+          "exit_code": 0,
+          "passed": true,
+          "stderr": "",
+          "stdout": "1064 files already formatted\n"
+        },
+        {
+          "command": [
+            "uv",
+            "run",
+            "--locked",
+            "ruff",
+            "check",
+            "."
+          ],
+          "description": "Ruff Code Linter & Rule Enforcement",
+          "exit_code": 0,
+          "passed": true,
+          "stderr": "",
+          "stdout": "All checks passed!\n"
+        },
+        {
+          "command": [
+            "uv",
+            "run",
+            "--locked",
+            "python",
+            "tools/validate_schemas.py"
+          ],
+          "description": "JSON Schema & Fixture Verification",
+          "exit_code": 0,
+          "passed": true,
+          "stderr": "",
+          "stdout": "validated 24 schemas and 14 representative documents\n"
+        },
+        {
+          "command": [
+            "uv",
+            "run",
+            "--locked",
+            "pytest",
+            "tests/bronze/",
+            "tests/silver/",
+            "tests/gold/",
+            "tests/cli/test_query_cli.py"
+          ],
+          "description": "Targeted Unit Tests: ['tests/bronze/', 'tests/silver/', 'tests/gold/', 'tests/cli/test_query_cli.py']",
+          "exit_code": 0,
+          "passed": true,
+          "stderr": "",
+          "stdout": "================ test session starts ==============================\nplatform darwin -- Python 3.14.5, pytest-9.1.1, pluggy-1.6.0\nUsing --randomly-seed=785390367\nrootdir: /Volumes/PortableSSD/GitHub/archive-govt-nz\nconfigfile: pyproject.toml\nplugins: syrupy-5.5.3, randomly-3.16.0, cov-7.1.0, xdist-3.8.0, anyio-4.14.2, hypothesis-6.164.0\ncollected 23 items\n\ntests/gold/test_search.py ..                                             [  8%]\ntests/bronze/test_manifest.py ......                                     [ 34%]\ntests/silver/test_pipeline.py ....                                       [ 52%]\ntests/bronze/test_adapter.py .                                           [ 56%]\ntests/gold/test_analytics.py ...                                         [ 69%]\ntests/silver/test_interlink.py ....                                      [ 86%]\ntests/cli/test_query_cli.py ...                                          [100%]\n\n============================== 23 passed in 3.56s ==============================\n"
+        },
+        {
+          "command": [
+            "uv",
+            "run",
+            "--locked",
+            "python",
+            "tools/mutation_medallion.py"
+          ],
+          "description": "Medallion Mutation Gate",
+          "exit_code": 0,
+          "passed": true,
+          "stderr": "",
+          "stdout": "{\n  \"all_killed\": true,\n  \"mutants\": [\n    {\n      \"killed\": true,\n      \"name\": \"gold_view_registration\"\n    },\n    {\n      \"killed\": true,\n      \"name\": \"manifest_fixity\"\n    },\n    {\n      \"killed\": true,\n      \"name\": \"search_embedding_norm\"\n    },\n    {\n      \"killed\": true,\n      \"name\": \"silver_table_population\"\n    }\n  ],\n  \"schema_version\": \"archive-govt-nz.mutation-medallion/v1\"\n}\n"
+        }
+      ],
+      "status": "passed",
+      "title": "Phase 7: Quality Gates, Mutation Testing & End-to-End Evidence"
+    }
+  },
+  "phases_verified": [
+    "phase_1_bronze",
+    "phase_2_silver",
+    "phase_3_silver_interlink",
+    "phase_4_gold_duckdb",
+    "phase_5_gold_lancedb",
+    "phase_6_cli_mcp",
+    "phase_7_gates"
+  ],
+  "receipt_sha256": "acf3e166db65d9ad36a7a8a5871a15b3b8cb1836963598dcf107c10887d655d2",
+  "schema_version": "archive-govt-nz.medallion-consolidation-receipt/v1",
+  "status": "complete",
+  "strata_architecture": {
+    "bronze": "Three-Strata (B0: Source Index, B1: Acquisition Metadata, B2: Raw Evidence CAS)",
+    "federation": "Zero-copy Parquet joins with global-medicines-atlas (gma_*) and fyi-archive",
+    "gold": "In-Memory Embedded DuckDB SQL Views, Hybrid BM25+Vector Search, DCAT-AP 3.0 / RO-Crate 1.1 Exporter",
+    "silver": "Canonical PyArrow/Polars Parquet with Bitemporal Tracking and Standard Record Link Columns"
+  },
+  "track_id": "medallion_architecture_consolidation_20260823"
+}

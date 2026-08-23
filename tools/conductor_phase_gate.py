@@ -89,10 +89,25 @@ PHASE_TARGETS: dict[str, dict[str, Any]] = {
         "schemas": [],
     },
     "phase_7_gates": {
-        "title": "Phase 7: Quality Gates & End-to-End Evidence",
-        "test_targets": [],
-        "source_paths": [],
+        "title": "Phase 7: Quality Gates, Mutation Testing & End-to-End Evidence",
+        "test_targets": [
+            "tests/bronze/",
+            "tests/silver/",
+            "tests/gold/",
+            "tests/cli/test_query_cli.py",
+        ],
+        "source_paths": [
+            "src/archive_govt_nz/bronze/",
+            "src/archive_govt_nz/silver/",
+            "src/archive_govt_nz/gold/",
+        ],
         "schemas": [],
+        "extra_commands": [
+            (
+                ["uv", "run", "--locked", "python", "tools/mutation_medallion.py"],
+                "Medallion Mutation Gate",
+            ),
+        ],
     },
 }
 
@@ -165,6 +180,10 @@ def execute_phase_review(phase_id: str) -> int:
     if test_targets:
         test_cmd = ["uv", "run", "--locked", "pytest", *test_targets]
         stages.append(run_stage(test_cmd, f"Targeted Unit Tests: {test_targets}"))
+
+    # 5. Extra Verification Commands (e.g. mutation testing)
+    for cmd, desc in config.get("extra_commands", []):
+        stages.append(run_stage(cmd, desc))
 
     # Compute aggregate status
     all_passed = all(stage["passed"] for stage in stages)

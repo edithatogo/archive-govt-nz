@@ -56,8 +56,8 @@
 - [x] Task: Conductor Review & Automated Phase Gate Verification (`tools/conductor_phase_gate.py --phase phase_6_cli_mcp`).
 - [x] Task: Apply Phase 6 review findings, code fixes, and advance to Phase 7.
 
-### Phase 7: Quality Gates, Mutation Testing & End-to-End Evidence
-- [ ] Task: Add mutation testing suite for Medallion transformation pipeline (`tools/mutation_medallion.py`).
-- [ ] Task: Run full 19-stage validation harness (`tools/check.py`) with >=95% branch coverage.
-- [ ] Task: Record end-to-end evidence receipt in `evidence/medallion/medallion-consolidation-receipt.json`.
-- [ ] Task: Conductor Track Review & Final Certification (`tools/conductor_phase_gate.py --phase phase_7_gates`).
+### Phase 7: Quality Gates, Mutation Testing & End-to-End Evidence [COMPLETED]
+- [x] Task: Add mutation testing suite for Medallion transformation pipeline (`tools/mutation_medallion.py`).
+- [x] Task: Run full 19-stage validation harness (`tools/check.py`) with >=95% branch coverage.
+- [x] Task: Record end-to-end evidence receipt in `evidence/medallion/medallion-consolidation-receipt.json`.
+- [x] Task: Conductor Track Review & Final Certification (`tools/conductor_phase_gate.py --phase phase_7_gates`).
