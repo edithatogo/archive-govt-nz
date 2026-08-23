@@ -6,11 +6,11 @@
 - [x] Task: Add test cases verifying rejection of polyglots and HTML error pages disguised as PDFs.
 - [x] Task: Conductor Review & Automated Phase Gate Verification.
 
-### Phase 2: Streaming Multi-Hash Engine (SHA-256 + BLAKE3 + CIDv1)
-- [ ] Task: Implement `src/archive_govt_nz/bronze/multihash.py` providing single-pass streaming IPFS CIDv1 computation.
-- [ ] Task: Update `BronzeManifest` and Arrow record link columns with `nz_content_cidv1`.
-- [ ] Task: Add unit tests verifying RFC/IPFS test vector compatibility.
-- [ ] Task: Conductor Review & Automated Phase Gate Verification.
+### Phase 2: Streaming Multi-Hash Engine (SHA-256 + BLAKE3 + CIDv1) [COMPLETED]
+- [x] Task: Implement `src/archive_govt_nz/bronze/multihash.py` providing single-pass streaming IPFS CIDv1 computation.
+- [x] Task: Update `BronzeManifest` and Arrow record link columns with `nz_content_cidv1`.
+- [x] Task: Add unit tests verifying RFC/IPFS test vector compatibility.
+- [x] Task: Conductor Review & Automated Phase Gate Verification.
 
 ### Phase 3: Structural Schema Fingerprinting & Drift Detection
 - [ ] Task: Implement `src/archive_govt_nz/bronze/fingerprint.py` computing canonical schema hashes from JSON/XML/Arrow structures.
