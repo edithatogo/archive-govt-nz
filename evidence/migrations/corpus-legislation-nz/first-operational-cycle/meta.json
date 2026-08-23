@@ -1,0 +1,23 @@
+{
+  "schema_version": "archive-govt-nz.operational-cycle-evidence/v1",
+  "recorded_at": "2026-08-23T07:30:00Z",
+  "authorization_ref": "evidence/migrations/corpus-legislation-nz/operational-gate-authorization.json",
+  "branch_ref": "main",
+  "harvest_run_id": 32625516235,
+  "reconciliation_run_id": 32625566353,
+  "recovery_run_id": 32625612739,
+  "batch_id": "leg-first-batch-20260823-b001",
+  "search_terms": [
+    "public acts 2024"
+  ],
+  "manifest_sha256": "6edb380722b5b40214144db56c784031bb902415da4891f28928f299eee1e043",
+  "outcomes": {
+    "harvest": "changed",
+    "reconciliation": "consistent",
+    "recovery": "verified"
+  },
+  "issues_tracking": [
+    137,
+    138
+  ]
+}
