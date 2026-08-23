@@ -10,6 +10,7 @@ invariants:
 - Legislation workflows remain dispatch-only until one-batch and canary gates pass
 - Bounded harvest uses a dedicated concurrency group and explicit confirmation
 - Continuation state includes linked CAS, manifest, checkpoint, and receipt paths
+- Quarterly recovery drills remain operator-dispatched to test authenticated restoration against selected historical state artifact run IDs rather than unparameterized crons
 preconditions:
 - config/source-sets/legislation.yml declares dispatch-only execution
 postconditions:
