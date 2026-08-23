@@ -175,14 +175,16 @@ def test_verify_manifest_fixity_fails_on_tampering() -> None:
 
     assert verify_bronze_manifest_fixity(manifest) is True
 
-    # Manifest with None sha256
+    # Manifest with empty sha256
     unsigned = BronzeIngestionManifest(
         manifest_id=manifest.manifest_id,
         batch_id=manifest.batch_id,
         domain=manifest.domain,
         created_at=manifest.created_at,
         records=manifest.records,
-        sha256_manifest=None,
+        records_count=1,
+        total_bytes=len(payload),
+        sha256_manifest="",
     )
     assert verify_bronze_manifest_fixity(unsigned) is False
 
@@ -200,6 +202,8 @@ def test_verify_manifest_fixity_fails_on_tampering() -> None:
         domain=manifest.domain,
         created_at=manifest.created_at,
         records=[tampered_rec],
+        records_count=1,
+        total_bytes=len(payload),
         sha256_manifest=manifest.sha256_manifest,
     )
     assert verify_bronze_manifest_fixity(tampered) is False

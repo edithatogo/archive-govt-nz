@@ -1,11 +1,69 @@
-"""Data models for Bronze ingestion tier records and manifests."""
+"""Data models for Bronze ingestion tier records, manifests, and durability contracts.
+
+EVIDENTIARY TRUTH INVARIANT:
+The immutable source payload and its content-addressed receipt are
+evidentiary truth; source-faithful Parquet is the portable analytical
+representation; table/catalogue layers are rebuildable metadata over those
+artefacts.
+"""
 
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from enum import StrEnum
 from typing import Any
 
 BRONZE_MANIFEST_SCHEMA_V1 = "archive-govt-nz.bronze-ingestion-manifest/v1"
+
+# Three-Strata Architecture Definitions
+STRATA_B0_SOURCE_INDEX = "B0_source_index"
+STRATA_B1_ACQUISITION_METADATA = "B1_acquisition_metadata"
+STRATA_B2_RAW_EVIDENCE = "B2_raw_evidence"
+
+EVIDENTIARY_TRUTH_SENTENCE = (
+    "The immutable source payload and its content-addressed receipt are "
+    "evidentiary truth; source-faithful Parquet is the portable "
+    "analytical representation; table/catalogue layers are rebuildable "
+    "metadata over those artefacts."
+)
+
+# Canonical Link Columns for Cross-Domain Silver/Gold Joins
+STANDARD_RECORD_LINK_COLUMNS = (
+    "nz_source_record_id",
+    "nz_acquisition_id",
+    "nz_content_id",
+    "nz_observed_at",
+    "nz_schema_fingerprint",
+)
+
+
+class ImmutabilityMode(StrEnum):
+    """Physical controls preventing silent replacement of payload bytes."""
+
+    NONE = "none"
+    VERSIONING = "versioning"
+    OBJECT_LOCK = "object_lock"
+    WORM = "worm"
+
+
+@dataclass(frozen=True, slots=True)
+class DurabilityPolicy:
+    """Fail-closed operating contract for a Bronze payload store."""
+
+    operation: str = "local_development"
+    immutability: ImmutabilityMode = ImmutabilityMode.NONE
+    rpo_seconds: int | None = None
+    rto_seconds: int | None = None
+    primary_region: str | None = None
+    replica_region: str | None = None
+
+    @classmethod
+    def local_development(cls) -> DurabilityPolicy:
+        """Return the explicitly non-production local development policy."""
+        return cls(
+            operation="local_development",
+            immutability=ImmutabilityMode.NONE,
+        )
 
 
 @dataclass(frozen=True, slots=True)
@@ -139,18 +197,10 @@ class BronzeIngestionManifest:
     domain: str
     created_at: str
     records: list[BronzeRecord]
+    records_count: int
+    total_bytes: int
+    sha256_manifest: str
     schema_version: str = BRONZE_MANIFEST_SCHEMA_V1
-    sha256_manifest: str | None = None
-
-    @property
-    def records_count(self) -> int:
-        """Return the number of records in this manifest."""
-        return len(self.records)
-
-    @property
-    def total_bytes(self) -> int:
-        """Return the sum of raw payload bytes in this manifest."""
-        return sum(rec.fixity.size_bytes for rec in self.records)
 
     def to_dict(self) -> dict[str, Any]:
         """Convert to primitive dictionary."""
@@ -163,21 +213,21 @@ class BronzeIngestionManifest:
             "records_count": self.records_count,
             "total_bytes": self.total_bytes,
             "sha256_manifest": self.sha256_manifest,
-            "records": [rec.to_dict() for rec in self.records],
+            "records": [r.to_dict() for r in self.records],
         }
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> BronzeIngestionManifest:
         """Construct instance from dictionary."""
-        records = [BronzeRecord.from_dict(item) for item in data.get("records", [])]
+        records = [BronzeRecord.from_dict(r) for r in data["records"]]
         return cls(
             manifest_id=str(data["manifest_id"]),
             batch_id=str(data["batch_id"]),
             domain=str(data["domain"]),
             created_at=str(data["created_at"]),
             records=records,
-            schema_version=str(data.get("schema_version", BRONZE_MANIFEST_SCHEMA_V1)),
-            sha256_manifest=str(data["sha256_manifest"])
-            if data.get("sha256_manifest")
-            else None,
+            records_count=int(data["records_count"]),
+            total_bytes=int(data["total_bytes"]),
+            sha256_manifest=str(data["sha256_manifest"]),
+            schema_version=str(data.get("schema_version") or BRONZE_MANIFEST_SCHEMA_V1),
         )

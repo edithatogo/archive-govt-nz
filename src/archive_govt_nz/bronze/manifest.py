@@ -92,6 +92,8 @@ def create_bronze_manifest(
 ) -> BronzeIngestionManifest:
     """Create a Bronze ingestion manifest and compute self-verifying SHA-256 digest."""
     timestamp = created_at or datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
+    records_count = len(records)
+    total_bytes = sum(r.fixity.size_bytes for r in records)
 
     # Construct preliminary manifest to compute stable canonical digest
     manifest = BronzeIngestionManifest(
@@ -100,8 +102,10 @@ def create_bronze_manifest(
         domain=domain,
         created_at=timestamp,
         records=records,
+        records_count=records_count,
+        total_bytes=total_bytes,
         schema_version=BRONZE_MANIFEST_SCHEMA_V1,
-        sha256_manifest=None,
+        sha256_manifest="",
     )
 
     # Compute digest of record payload representations
@@ -114,6 +118,8 @@ def create_bronze_manifest(
         domain=domain,
         created_at=timestamp,
         records=records,
+        records_count=records_count,
+        total_bytes=total_bytes,
         schema_version=BRONZE_MANIFEST_SCHEMA_V1,
         sha256_manifest=sha256_manifest,
     )
@@ -126,7 +132,7 @@ def verify_bronze_manifest_fixity(manifest: BronzeIngestionManifest) -> bool:
 
     # Re-derive unsigned dictionary
     unsigned_dict = manifest.to_dict()
-    unsigned_dict["sha256_manifest"] = None
+    unsigned_dict["sha256_manifest"] = ""
     serialized = json.dumps(unsigned_dict, sort_keys=True).encode("utf-8")
     expected_digest = hashlib.sha256(serialized).hexdigest()
 
