@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import contextlib
+import importlib.util
 from dataclasses import dataclass
 from typing import TYPE_CHECKING, Any
 
@@ -10,12 +11,7 @@ if TYPE_CHECKING:
     from collections.abc import Generator
     from pathlib import Path
 
-try:
-    import scalene  # noqa: F401
-
-    SCALENE_AVAILABLE = True
-except ImportError, ModuleNotFoundError:  # pragma: no cover
-    SCALENE_AVAILABLE = False
+SCALENE_AVAILABLE = importlib.util.find_spec("scalene") is not None
 
 
 @dataclass(frozen=True, slots=True)

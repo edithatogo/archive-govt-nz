@@ -1,2 +1,9 @@
+* text=auto eol=lf
 conductor/tracks/**/fixtures/** text eol=lf
 conductor/tracks/health_payload_capture_20260802/evidence/prepared-package/** -text
+*.gz binary
+*.tar.gz binary
+*.zip binary
+*.parquet binary
+*.warc binary
+*.warc.gz binary

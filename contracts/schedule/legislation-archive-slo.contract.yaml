@@ -25,7 +25,7 @@ acceptance_checks:
   description: Validate steady-state source configuration and scheduled workflow gates
   command: uv run python tools/validate_contracts.py --contract contracts/schedule/legislation-archive-slo.contract.yaml
   expected_exit_code: 0
-  evidence_destination: conductor/tracks/legislation_post_cutover_steady_state_20260823/evidence.md
+  evidence_destination: conductor/archive/legislation_post_cutover_steady_state_20260823/evidence.md
   executor_id: contract_validator
   execution_class: local_read_only
   side_effect_class: read_only

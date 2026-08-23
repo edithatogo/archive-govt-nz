@@ -266,9 +266,10 @@ def validate_contract_dict(
     if (
         owning_track
         and not (root / "conductor" / "tracks" / str(owning_track)).is_dir()
+        and not (root / "conductor" / "archive" / str(owning_track)).is_dir()
     ):
         errors.append(
-            f"Invalid track reference '{owning_track}' in {filepath}: directory does not exist"
+            f"Invalid track reference '{owning_track}' in {filepath}: directory does not exist in tracks or archive"
         )
 
     # 3. Acceptance checks validation

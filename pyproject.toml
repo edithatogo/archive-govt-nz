@@ -158,8 +158,9 @@ line-ending = "lf"
 "src/archive_govt_nz/domains/health/pae_ora.py" = ["PLR0913", "E501"]
 
 [tool.pytest.ini_options]
-addopts = ["--strict-config", "--strict-markers"]
+addopts = ["--strict-config", "--strict-markers", "--import-mode=importlib"]
 testpaths = ["tests"]
+norecursedirs = [".*", "build", "dist", "data", "venv", ".venv", "tmp", "scratch"]
 
 [tool.coverage.run]
 branch = true

@@ -19,6 +19,16 @@ if TYPE_CHECKING:
     from archive_govt_nz.object_store import ContentAddressedStore
 
 
+from archive_govt_nz.bronze.attestation import (
+    Ed25519Signer,
+    seal_manifest,
+)
+from archive_govt_nz.bronze.sniffer import (
+    InvalidPayloadSignatureError,
+    validate_payload_signature,
+)
+
+
 @dataclass(frozen=True, slots=True)
 class IngestionResult:
     """Telemetry and outcome of a domain Bronze ingestion batch."""
@@ -30,6 +40,7 @@ class IngestionResult:
     bytes_synced: int
     manifest_path: str | None = None
     manifest_sha256: str | None = None
+    signature_path: str | None = None
     errors: list[str] | None = None
 
 
@@ -62,8 +73,30 @@ class BronzeDomainIngestor:
         last_modified: str | None = None,
         headers: dict[str, str] | None = None,
         custom_metadata: dict[str, Any] | None = None,
+        validate_signature: bool = True,
     ) -> BronzeRecord:
-        """Store payload in CAS and return a typed BronzeRecord with fixity."""
+        """Store payload in CAS and return a typed BronzeRecord with fixity.
+
+        Validates magic byte signatures before writing to CAS disk storage.
+        """
+        if validate_signature:
+            sniff_res = validate_payload_signature(
+                payload_bytes,
+                expected_mime=media_type
+                if media_type != "application/octet-stream"
+                else content_type,
+            )
+            if not sniff_res.is_valid:
+                err_msg = (
+                    f"Bronze ingest rejected for record '{record_id}': "
+                    f"{sniff_res.error}"
+                )
+                raise InvalidPayloadSignatureError(
+                    err_msg,
+                    detected_mime=sniff_res.detected_mime,
+                    expected_mime=sniff_res.expected_mime,
+                )
+
         cas_receipt = self.store.put_bytes(payload_bytes)
         return build_bronze_record(
             record_id=record_id,
@@ -90,6 +123,7 @@ class BronzeDomainIngestor:
         manifest_id: str,
         records: list[BronzeRecord],
         output_dir: Path | None = None,
+        signer: Ed25519Signer | None = None,
     ) -> IngestionResult:
         """Create, verify, and persist a self-authenticating Bronze manifest."""
         target_dir = output_dir or self.base_dir
@@ -112,6 +146,12 @@ class BronzeDomainIngestor:
             json.dumps(manifest_dict, indent=2, sort_keys=True) + "\n",
             encoding="utf-8",
         )
+
+        signature_path: str | None = None
+        if signer is not None:
+            sig_file = target_dir / f"manifest-{manifest_id}.sig"
+            seal_manifest(manifest_file, signer, output_sig_path=sig_file)
+            signature_path = str(sig_file)
 
         checkpoint_file = target_dir / "checkpoint.json"
         checkpoint_data = {
@@ -137,5 +177,6 @@ class BronzeDomainIngestor:
             bytes_synced=manifest.total_bytes,
             manifest_path=str(manifest_file),
             manifest_sha256=manifest.sha256_manifest,
+            signature_path=signature_path,
             errors=[],
         )

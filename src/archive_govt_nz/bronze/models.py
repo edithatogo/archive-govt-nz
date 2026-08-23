@@ -32,6 +32,7 @@ STANDARD_RECORD_LINK_COLUMNS = (
     "nz_source_record_id",
     "nz_acquisition_id",
     "nz_content_id",
+    "nz_content_cidv1",
     "nz_observed_at",
     "nz_schema_fingerprint",
 )
@@ -74,12 +75,13 @@ class BronzePayloadFixity:
     blake3: str
     size_bytes: int
     cas_path: str
+    cidv1: str | None = None
     warc_record_id: str | None = None
     media_type: str = "application/octet-stream"
 
     def to_dict(self) -> dict[str, Any]:
         """Convert to primitive dictionary."""
-        return {
+        data: dict[str, Any] = {
             "sha256": self.sha256,
             "blake3": self.blake3,
             "size_bytes": self.size_bytes,
@@ -87,6 +89,9 @@ class BronzePayloadFixity:
             "warc_record_id": self.warc_record_id,
             "media_type": self.media_type,
         }
+        if self.cidv1 is not None:
+            data["cidv1"] = self.cidv1
+        return data
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> BronzePayloadFixity:
@@ -96,6 +101,7 @@ class BronzePayloadFixity:
             blake3=str(data["blake3"]),
             size_bytes=int(data["size_bytes"]),
             cas_path=str(data["cas_path"]),
+            cidv1=str(data["cidv1"]) if data.get("cidv1") else None,
             warc_record_id=str(data["warc_record_id"])
             if data.get("warc_record_id")
             else None,

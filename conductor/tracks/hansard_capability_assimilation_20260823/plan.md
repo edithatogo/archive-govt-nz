@@ -1,20 +1,24 @@
 # Implementation Plan: Hansard Corpus Capability Assimilation
 
-## Phases & Tasks
+### Phase 1: Domain Schemas, XML Streaming Parser & Raw Bronze Acquisition
+- [ ] Task: Define JSON schema `schemas/hansard-debate-v1.schema.json` and PyArrow tabular schema for NZ Parliamentary Debates.
+- [ ] Task: Implement `src/archive_govt_nz/domains/hansard/parser.py` supporting fast streaming XML parsing of Hansard sitting day records.
+- [ ] Task: Implement `src/archive_govt_nz/domains/hansard/adapter.py` integrating Bronze CAS payload storage and manifest generation.
+- [ ] Task: Add characterization tests for Hansard XML parsing and Bronze ingest.
+- [ ] Task: Conductor Review & Automated Phase Gate Verification.
 
-### Phase 1: Capability Inspection & Inventory
-- [ ] Task: Inventory reusable modules, fixtures, and schemas from `edithatogo/corpus-nz-hansard`.
-- [ ] Task: Define domain contract and schema specifications in `schemas/`.
-- [ ] Task: Conductor - User Manual Verification 'Capability Inspection' (Protocol in workflow.md).
+### Phase 2: Silver Bitemporal Normalization & Speaker Entity Reconciliation
+- [ ] Task: Implement `src/archive_govt_nz/domains/hansard/normalizer.py` vectorizing speeches into bitemporal Silver Parquet (`data/silver/hansard/corpus.parquet`).
+- [ ] Task: Integrate Member of Parliament (MP) identity reconciliation and speech segment typing.
+- [ ] Task: Wire cross-domain reference extraction (Debate speeches ↔ Legislation Acts & Bills).
+- [ ] Task: Add comprehensive Silver transformation and entity linkage test suite (>=95% coverage).
+- [ ] Task: Conductor Review & Automated Phase Gate Verification.
 
-### Phase 2: Domain Engine & Normalizer Implementation
-- [ ] Task: Port and refactor domain normalizer using Polars and PyArrow.
-- [ ] Task: Connect domain engine to Content-Addressed Storage (CAS) and Silver Parquet exporter.
-- [ ] Task: Write characterization and unit test suites with >=95% branch coverage.
-- [ ] Task: Conductor - User Manual Verification 'Domain Engine Implementation' (Protocol in workflow.md).
+### Phase 3: Gold Analytical Engine, Semantic Search & Mutation Gates
+- [ ] Task: Register DuckDB analytical views and zero-copy federation hooks for Hansard corpus.
+- [ ] Task: Integrate Hansard debate corpus into Gold embedded LanceDB hybrid search.
+- [ ] Task: Expose Hansard queries through CLI (`archive-govt-nz query`) and FastMCP server.
+- [ ] Task: Add mutation testing gates in `tools/mutation_medallion.py` for Hansard normalizer and parser.
+- [ ] Task: Validate full 20-stage gate harness (`tools/check.py`).
+- [ ] Task: Conductor Track Review & Final Certification.
 
-### Phase 3: Integration, Parity & Verification
-- [ ] Task: Implement parity validation harness and negative-control test suite.
-- [ ] Task: Wire domain queries into CLI and FastMCP server.
-- [ ] Task: Run full 19-stage validation harness (`tools/check.py`) and record evidence receipt.
-- [ ] Task: Conductor - User Manual Verification 'Integration & Parity' (Protocol in workflow.md).

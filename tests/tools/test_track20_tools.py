@@ -1,6 +1,7 @@
 """CLI contract tests for Track 20 tools."""
 
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -55,13 +56,24 @@ def test_query_knowledge_graph_cli(tmp_path: Path) -> None:
 
 def test_notify_webhook_cli_without_url() -> None:
     """CLI tool gracefully skips notification if no webhook URL is configured."""
+    clean_env = {
+        k: v
+        for k, v in os.environ.items()
+        if k
+        not in (
+            "WEBHOOK_URL",
+            "NOTIFICATION_WEBHOOK_URL",
+            "SLACK_WEBHOOK_URL",
+            "DISCORD_WEBHOOK_URL",
+        )
+    }
     result = subprocess.run(
         [sys.executable, "tools/notify_webhook.py"],
         cwd=REPOSITORY_ROOT,
         capture_output=True,
         text=True,
         check=False,
-        env={"PATH": "/usr/bin:/bin"},
+        env=clean_env,
     )
     assert result.returncode == 0
     assert "INFO: No webhook URL configured" in result.stdout

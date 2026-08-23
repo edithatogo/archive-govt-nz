@@ -76,6 +76,7 @@ def test_repository_gate_lists_all_required_stages() -> None:
         "mutation-global-policy",
         "mutation-adapters",
         "mutation-gazette",
+        "mutation-medallion",
         "slops",
         "benchmark-cas",
         "audit",

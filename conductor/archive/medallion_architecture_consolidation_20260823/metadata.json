@@ -1,9 +1,9 @@
 {
   "track_id": "medallion_architecture_consolidation_20260823",
   "type": "feature",
-  "status": "new",
+  "status": "completed",
   "created_at": "2026-08-23T16:30:00Z",
-  "updated_at": "2026-08-23T16:30:00Z",
+  "updated_at": "2026-08-24T00:00:00Z",
   "title": "Medallion Architecture Consolidation with Integrated Vector & Knowledge Graph Products",
   "description": "Unify all archive domains (Legislation, Gazette, CKAN data.govt.nz, Health/MoH, Treasury, Feeds/Social) into a multi-tiered Medallion Data Architecture (Bronze -> Silver -> Gold) aligned with global-medicines-atlas. Subsume graph and vector capabilities into deterministic Gold-tier analytical models (DuckDB, LanceDB, DCAT-AP/RO-Crate/Croissant)."
 }
