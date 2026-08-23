@@ -296,22 +296,78 @@ def evaluate_evidence_integrity(
             f"IN_PROGRESS: {len(in_progress_tracks)} corrective child tracks remain in progress"
         )
 
-    # Check 4: Production weekly scheduling observation
-    obs_receipt = (
-        root / "evidence/migrations/corpus-legislation-nz/observation-receipt.json"
+    # Check 4: Production scheduling observation (attestation-first, legacy fallback)
+    attestation = (
+        root
+        / "evidence/migrations/corpus-legislation-nz/shadow-operation-cutover-attestation.json"
     )
-    if obs_receipt.is_file():
+    cycles_verified = False
+    cycle_detail = "attestation not found"
+    if attestation.is_file():
         try:
-            obs_data = json.loads(obs_receipt.read_text(encoding="utf-8"))
-            if obs_data.get("status") == "invalidated":
-                blockers.append(
-                    "UNOBSERVED: Weekly production harvest cycles have not elapsed in live target"
+            att = json.loads(attestation.read_text(encoding="utf-8"))
+            if att.get("schema_version") != (
+                "archive-govt-nz.shadow-operation-cutover-attestation/v1"
+            ):
+                raise TypeError("unexpected attestation schema")
+            cycles = att.get("observation_cycles", [])
+            valid_cycles = [
+                c
+                for c in cycles
+                if isinstance(c.get("harvest_run_id"), int)
+                and isinstance(c.get("reconciliation_run_id"), int)
+                and c.get("harvest_outcome") in {"changed", "no_change"}
+                and c.get("reconciliation_status") == "consistent"
+                and c.get("recovery_status") == "verified"
+            ]
+            donor = att.get("donor_archival", {})
+            if len(valid_cycles) >= 2 and donor.get("archived") is True:
+                cycles_verified = True
+                cycle_detail = (
+                    f"{len(valid_cycles)} observation cycles verified; "
+                    f"donor archived {donor.get('archived_at')}"
+                )
+            else:
+                cycle_detail = (
+                    "attestation present but insufficient: "
+                    f"{len(valid_cycles)} valid cycles, donor archived="
+                    f"{donor.get('archived')}"
                 )
         except Exception:  # noqa: BLE001
-            pass
+            cycle_detail = "attestation unreadable"
+    if cycles_verified:
+        checks.append(
+            {
+                "check_id": "EVD-CHK-04",
+                "name": "Production Scheduling Observation",
+                "status": "verified",
+                "detail": cycle_detail,
+            }
+        )
     else:
-        blockers.append(
-            "MISSING: observation-receipt.json for target weekly cycles not found"
+        obs_receipt = (
+            root / "evidence/migrations/corpus-legislation-nz/observation-receipt.json"
+        )
+        if obs_receipt.is_file():
+            try:
+                obs_data = json.loads(obs_receipt.read_text(encoding="utf-8"))
+                if obs_data.get("status") == "invalidated":
+                    blockers.append(
+                        "UNOBSERVED: Weekly production harvest cycles have not elapsed in live target"
+                    )
+            except Exception:  # noqa: BLE001
+                pass
+        else:
+            blockers.append(
+                "MISSING: observation-receipt.json for target weekly cycles not found"
+            )
+        checks.append(
+            {
+                "check_id": "EVD-CHK-04",
+                "name": "Production Scheduling Observation",
+                "status": "evaluated",
+                "detail": cycle_detail,
+            }
         )
 
     return checks, blockers
