@@ -1,0 +1,13 @@
+{
+  "id": "dataset_identifier_interlink_20260822",
+  "title": "Dataset identifier interlinking across legislation, gazette, health and publications",
+  "type": "corrective",
+  "status": "completed",
+  "created_at": "2026-08-22T15:45:00Z",
+  "requirements_method": "MoSCoW",
+  "parent_context": "conductor/next-tracks-proposal.md (Track D)",
+  "donor_issue_refs": [
+    "edithatogo/corpus-legislation-nz#149"
+  ],
+  "completed_at": "2026-08-22"
+}

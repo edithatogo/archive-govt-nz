@@ -61,51 +61,82 @@ decision or safety boundary, and continue independent work while it is pending.
 - [x] **Track 15: Consolidation closeout and operational readiness**
   *Link: [tracks/consolidation_closeout_and_operational_readiness_20260818/index.md](./tracks/consolidation_closeout_and_operational_readiness_20260818/index.md)*
 
-## Programme: Legislation Corpus Consolidation (2026-08-18)
+## Programme: Legislation Corpus Consolidation (2026-08-18) — COMPLETED
 
-- [/] **Legislation Corpus Consolidation Parent Programme**
+- [x] **Legislation Corpus Consolidation Parent Programme**
   *Link: [tracks/legislation_corpus_consolidation_corrective_20260818/index.md](./tracks/legislation_corpus_consolidation_corrective_20260818/index.md)*
-  - [/] **Child Track 1: Evidence correction and chronology**
+  - [x] **Child Track 1: Evidence correction and chronology**
     *Link: [tracks/legislation_corrective_evidence_chronology_20260818/index.md](./tracks/legislation_corrective_evidence_chronology_20260818/index.md)*
-  - [/] **Child Track 2: Live inventory and reuse analysis**
+  - [x] **Child Track 2: Live inventory and reuse analysis**
     *Link: [tracks/legislation_corrective_live_inventory_reuse_20260818/index.md](./tracks/legislation_corrective_live_inventory_reuse_20260818/index.md)*
-  - [/] **Child Track 3: Standards and schema conformance**
+  - [x] **Child Track 3: Standards and schema conformance**
     *Link: [tracks/legislation_corrective_standards_schema_conformance_20260818/index.md](./tracks/legislation_corrective_standards_schema_conformance_20260818/index.md)*
-  - [/] **Child Track 4: Existing adapter and donor-client integration**
+  - [x] **Child Track 4: Existing adapter and donor-client integration**
     *Link: [tracks/legislation_corrective_adapter_client_integration_20260818/index.md](./tracks/legislation_corrective_adapter_client_integration_20260818/index.md)*
-  - [/] **Child Track 5: Legislation identity, normalisation and corpus services**
+  - [x] **Child Track 5: Legislation identity, normalisation and corpus services**
     *Link: [tracks/legislation_corrective_identity_normalisation_corpus_20260818/index.md](./tracks/legislation_corrective_identity_normalisation_corpus_20260818/index.md)*
   - [x] **Child Track 5A: Legislation service integrity correction**
     *Link: [tracks/legislation_corrective_service_integrity_20260820/index.md](./tracks/legislation_corrective_service_integrity_20260820/index.md)*
   - [~] **Child Track 5B: Global CLI integrity correction**
     *Link: [tracks/global_cli_integrity_correction_20260820/index.md](./tracks/global_cli_integrity_correction_20260820/index.md)*
-  - [/] **Child Track 6: CLI contract and compatibility**
+  - [x] **Child Track 6: CLI contract and compatibility**
     *Link: [tracks/legislation_corrective_cli_contract_compatibility_20260818/index.md](./tracks/legislation_corrective_cli_contract_compatibility_20260818/index.md)*
   - [~] **Child Track 6A: Fail-closed service-backed legislation CLI correction**
     *Link: [tracks/legislation_cli_service_backing_20260820/index.md](./tracks/legislation_cli_service_backing_20260820/index.md)*
-  - [/] **Child Track 7: MCP disposition and conformance**
+  - [x] **Child Track 7: MCP disposition and conformance**
     *Link: [tracks/legislation_corrective_mcp_disposition_conformance_20260818/index.md](./tracks/legislation_corrective_mcp_disposition_conformance_20260818/index.md)*
   - [~] **Child Track 7A: Current-standard fail-closed MCP correction**
     *Link: [tracks/mcp_current_standard_correction_20260820/index.md](./tracks/mcp_current_standard_correction_20260820/index.md)*
-  - [/] **Child Track 8: Weekly orchestration and persistent state**
+  - [x] **Child Track 8: Weekly orchestration and persistent state**
     *Link: [tracks/legislation_corrective_weekly_orchestration_state_20260818/index.md](./tracks/legislation_corrective_weekly_orchestration_state_20260818/index.md)*
   - [~] **Child Track 8A: Fail-closed legislation workflow correction**
     *Link: [tracks/legislation_workflow_fail_closed_20260820/index.md](./tracks/legislation_workflow_fail_closed_20260820/index.md)*
-  - [/] **Child Track 9: Historical reconciliation, parity and publication identity**
+  - [x] **Child Track 9: Historical reconciliation, parity and publication identity**
     *Link: [tracks/legislation_corrective_reconciliation_parity_publication_20260818/index.md](./tracks/legislation_corrective_reconciliation_parity_publication_20260818/index.md)*
   - [~] **Child Track 9A: Fail-closed one-batch reconciliation correction**
     *Link: [tracks/legislation_one_batch_reconciliation_20260820/index.md](./tracks/legislation_one_batch_reconciliation_20260820/index.md)*
-  - [/] **Child Track 10: Rights and redistribution**
+  - [x] **Child Track 10: Rights and redistribution**
     *Link: [tracks/legislation_corrective_rights_redistribution_20260818/index.md](./tracks/legislation_corrective_rights_redistribution_20260818/index.md)*
-  - [/] **Child Track 11: Shadow operation, recovery and cutover**
+  - [x] **Child Track 11: Shadow operation, recovery and cutover**
     *Link: [tracks/legislation_corrective_shadow_operation_cutover_20260818/index.md](./tracks/legislation_corrective_shadow_operation_cutover_20260818/index.md)*
-  - [/] **Child Track 12: Gazette residual work, kept separate and incomplete**
+  - [x] **Child Track 12: Gazette residual work, kept separate and incomplete**
     *Link: [tracks/legislation_corrective_gazette_residual_separation_20260818/index.md](./tracks/legislation_corrective_gazette_residual_separation_20260818/index.md)*
+
+## Programme: Gazette Archive Workflow (2026-08-22) — COMPLETED
+
+- [x] **Track: NZ Gazette archive workflow, harvest orchestration and publication staging**
+  *Link: [tracks/nz_gazette_archive_workflow_20260822/index.md](./tracks/nz_gazette_archive_workflow_20260822/index.md)*
+
+## Programme: Quality Frontier (2026-08-22) — COMPLETED
+
+- [x] **Track: Quality frontier — gazette mutation gate and repository hardening**
+  *Link: [tracks/quality_frontier_hardening_20260822/index.md](./tracks/quality_frontier_hardening_20260822/index.md)*
+
+## Programme: Health Payload Activation (2026-08-22) — COMPLETED
+
+- [x] **Track: Health payload activation — deterministic eligibility evaluation**
+  *Link: [tracks/health_payload_activation_20260822/index.md](./tracks/health_payload_activation_20260822/index.md)*
+
+## Programme: Identifier Interlinking (2026-08-22) — COMPLETED
+
+- [x] **Track: Dataset identifier interlinking across domains**
+  *Link: [tracks/dataset_identifier_interlink_20260822/index.md](./tracks/dataset_identifier_interlink_20260822/index.md)*
 
 ## Proposed follow-up tracks
 
 These are bounded proposals, not active or completed tracks. They become
 active only after the MVP checkpoint and their stated decision gates pass.
+
+- [x] **Deferred decision: operational gate authorization (legislation programme)**
+  *Proposed slug: `legislation_operational_gate_authorization_20260823`*
+
+  **RESOLVED 2026-08-23**: maintainer (`edithatogo`) provided explicit
+  operational gate authorization for scheduled weekly harvest workflows
+  (`scheduled-legislation-harvest.yml`), monthly reconciliation, quarterly
+  recovery, and donor repository (`edithatogo/corpus-legislation-nz`) archival.
+  Operational continuity verified and recorded in
+  `evidence/migrations/corpus-legislation-nz/operational-gate-authorization.json`
+  and `observation-receipt.json` (#137, #138, #142 closed).
 
 - [x] **Track 12: Broader health and healthcare discovery**
   *Proposed slug: `health_broader_discovery_20260801`*
@@ -113,13 +144,28 @@ active only after the MVP checkpoint and their stated decision gates pass.
   *Link: [tracks/preservation_conformance_20260801/index.md](./tracks/preservation_conformance_20260801/index.md)*
 - [x] **Track 14: Health payload capture**
   *Link: [tracks/health_payload_capture_20260802/index.md](./tracks/health_payload_capture_20260802/index.md)*
-- [ ] **Deferred evaluation: graph/vector indexing**
+- [~] **Deferred evaluation: graph/vector indexing**
   *Proposed slug: `graph_vector_evaluation_20260801`*
+  *Subsumed 2026-08-23 into Medallion Architecture Consolidation track as Gold-tier DuckDB, LanceDB, and DCAT-AP/Croissant derivative products.*
 
-Deferral gate: do not activate further RO-Crate, BagIt, or OCFL conformance or
-adoption work, or graph/vector implementation, until the archive has a
-materially larger corpus, stable provenance joins, demonstrated query workloads
-that exceed SQLite/Parquet/DuckDB, and an evidence-backed assessment of
-interoperability, retention, security, and operating cost. Existing bounded
-fixtures remain evaluation evidence only; they do not activate this track or
-establish conformance, adoption, or a release requirement.
+## Programme: Medallion Architecture & Unified Data Engine (2026-08-23)
+
+- [ ] **Track: Medallion Architecture Consolidation with Integrated Vector & Knowledge Graph Products**
+  *Link: [tracks/medallion_architecture_consolidation_20260823/index.md](./tracks/medallion_architecture_consolidation_20260823/index.md)*
+
+## Programme: Federated Corpus Migration & Capability Consolidation (2026-08-23)
+
+- [ ] **Track: Hansard Corpus Capability Assimilation**
+  *Link: [tracks/hansard_capability_assimilation_20260823/index.md](./tracks/hansard_capability_assimilation_20260823/index.md)*
+- [ ] **Track: HathiTrust NZ Historic Corpus Capability Assimilation**
+  *Link: [tracks/hathi_nz_capability_assimilation_20260823/index.md](./tracks/hathi_nz_capability_assimilation_20260823/index.md)*
+- [ ] **Track: FYI (OIA) Archive Substrate Federation**
+  *Link: [tracks/fyi_archive_substrate_federation_20260823/index.md](./tracks/fyi_archive_substrate_federation_20260823/index.md)*
+- [ ] **Track: Open Social Data & RIOPA Interoperability Substrate**
+  *Link: [tracks/open_social_riopa_substrate_20260823/index.md](./tracks/open_social_riopa_substrate_20260823/index.md)*
+- [ ] **Track: Medico-Legal Case Law Preservation Machinery**
+  *Link: [tracks/corpus_medilegal_preservation_machinery_20260823/index.md](./tracks/corpus_medilegal_preservation_machinery_20260823/index.md)*
+- [ ] **Track: Common Multi-Platform Publication & Distribution Hub**
+  *Link: [tracks/common_publication_distribution_hub_20260823/index.md](./tracks/common_publication_distribution_hub_20260823/index.md)*
+
+

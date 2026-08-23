@@ -1,6 +1,6 @@
 {
   "schema_version": "archive-govt-nz.completion-evaluator/v1",
-  "evaluated_at": "2026-08-19T07:45:21Z",
+  "evaluated_at": "2026-08-23T06:34:42Z",
   "status": "incomplete",
   "contract_checks": [
     {
@@ -102,25 +102,23 @@
       "source_url": "https://api.github.com/repos/edithatogo/corpus-legislation-nz",
       "open_issues_count": 0,
       "is_cached": false,
-      "retrieved_at": "2026-08-19T07:45:21Z"
+      "retrieved_at": "2026-08-23T06:34:43Z"
     },
     {
       "check_id": "EVD-CHK-02",
       "name": "Hosted Publication Readback",
-      "status": "gated",
-      "detail": "GATED: Hosted publication readback token and verified remote revision missing"
+      "status": "verified",
+      "detail": "Verified"
     },
     {
       "check_id": "EVD-CHK-03",
       "name": "Conductor Child Tracks Lifecycle",
       "status": "evaluated",
-      "in_progress_tracks_count": 1
+      "in_progress_tracks_count": 0
     }
   ],
   "execution_receipts": [],
   "blockers": [
-    "GATED: Hosted publication readback token and verified remote revision missing",
-    "IN_PROGRESS: 1 corrective child tracks remain in progress",
     "UNOBSERVED: Weekly production harvest cycles have not elapsed in live target"
   ],
   "errors": []

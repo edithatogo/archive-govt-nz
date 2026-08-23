@@ -65,6 +65,10 @@ STAGES = (
         ("uv", "run", "--locked", "python", "tools/mutation_adapters.py"),
     ),
     GateStage(
+        "mutation-gazette",
+        ("uv", "run", "--locked", "python", "tools/mutation_gazette.py"),
+    ),
+    GateStage(
         "slops",
         ("uv", "run", "--locked", "python", "tools/check_slops.py"),
     ),

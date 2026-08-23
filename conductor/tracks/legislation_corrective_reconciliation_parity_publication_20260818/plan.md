@@ -7,3 +7,4 @@
 3. **Phase 3: Receipt Generation and Assurance Testing**
    - Implement unit and mocked negative-control tests in `tests/publication/test_verify_public_publication_identities.py`.
    - Run 19-stage assurance check (`tools/check.py`) and emit verified receipt to `evidence/migrations/corpus-legislation-nz/remote-publication-readback-receipt.json`.
+> **Status: COMPLETED** — All phases verified. Reviewed and closed 2026-08-22. Gated external blockers remain: write token deployment (human authority) and 67 historical batch accounting.

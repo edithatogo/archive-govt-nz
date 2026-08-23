@@ -1,0 +1,179 @@
+{
+  "catalogue_url": "https://catalogue.data.govt.nz",
+  "datasets_total": 28,
+  "licences_observed": 27,
+  "mode": "offline-replay",
+  "probed_at": "2026-08-23T01:40:47Z",
+  "raw_responses_dir": "evidence/health/licence-probe-raw",
+  "records": [
+    {
+      "dataset_id": "1e3838ae-bf34-404c-961b-f35aa55e56fa",
+      "licence_id": "CC-BY-4.0",
+      "response_sha256": "f8cf34ea3b7096cc9589662beb552fbfdb9ab532a17a8d5e0ebc3905860c3b07",
+      "status": "observed"
+    },
+    {
+      "dataset_id": "b047ae0c-4fad-4b7d-9a80-6007397b6e34",
+      "licence_id": "CC-BY-4.0",
+      "response_sha256": "66ee52e17a71f5831e745de67023e62303b5653604690d656410246a933c820b",
+      "status": "observed"
+    },
+    {
+      "dataset_id": "bb80952a-8c94-4181-8f9d-3553069fe84a",
+      "licence_id": "CC-BY-4.0",
+      "response_sha256": "4ef1b397142b506b00debaebb9424a4c30ad6c0020a7b13449d9aebd535181b4",
+      "status": "observed"
+    },
+    {
+      "dataset_id": "a9df07aa-bc6e-40c6-9d34-f7032f67b095",
+      "licence_id": "CC-BY-4.0",
+      "response_sha256": "4b2b372606e65fd9573e77c6bc6eaace3a8b6b78deac2f2ba84f7678dbea121c",
+      "status": "observed"
+    },
+    {
+      "dataset_id": "3b0defd2-bae3-43ff-b478-bc31fe2600b0",
+      "licence_id": "CC-BY-4.0",
+      "response_sha256": "39ca22e441de3f30b6e963e7eda83feae29ea9ab740b055486eb0f4fc107791d",
+      "status": "observed"
+    },
+    {
+      "dataset_id": "95432dbf-a91d-498c-bc6b-ad5f5bc525f8",
+      "licence_id": "",
+      "response_sha256": "f04d1b1c2376e71ceb0a41791fba9c34288c4044dfa8be5145c98124e40a3b7c",
+      "status": "observed"
+    },
+    {
+      "dataset_id": "3daf2920-8cba-43e3-abc0-11eee400dc50",
+      "licence_id": "CC-BY-4.0",
+      "response_sha256": "135b557b9d4499b54800283303e413c85f579627a1fef5058802b2a5b280a5ee",
+      "status": "observed"
+    },
+    {
+      "dataset_id": "c17043c4-8110-4e5b-a1d7-982dba74251d",
+      "licence_id": "CC-BY-4.0",
+      "response_sha256": "a3912f35b251ed6061ecf1e261093de6a5f5fbcd12be59947c3be0854561826c",
+      "status": "observed"
+    },
+    {
+      "dataset_id": "67d99f05-1175-4659-8f66-dfce63182e5b",
+      "licence_id": "CC-BY-4.0",
+      "response_sha256": "6439ba9ab77671c9bab40b0b5212291dc9f40bc90bab80742121150578ce70ff",
+      "status": "observed"
+    },
+    {
+      "dataset_id": "256200e6-fdb3-4049-9003-8f741707fddc",
+      "licence_id": "CC-BY-4.0",
+      "response_sha256": "eb0104533d6aee2890769c69dd63547b03f7403dac69795696b32d98bd433dca",
+      "status": "observed"
+    },
+    {
+      "dataset_id": "b0a63899-86cc-43ae-bb3e-78286df02382",
+      "licence_id": "CC-BY-4.0",
+      "response_sha256": "e3762b30ac78cd1413927227ddd8ee34d15ef24d2304bdb13d0022724e06f111",
+      "status": "observed"
+    },
+    {
+      "dataset_id": "6b85cf82-4fa7-4870-a58a-04550ad8e4ca",
+      "licence_id": "CC-BY-4.0",
+      "response_sha256": "38fe65e89b0cb141d258d4fafdf15bd9aeab5566422dfe8e3a15f8df29e51949",
+      "status": "observed"
+    },
+    {
+      "dataset_id": "944c6583-2af0-499d-90bb-b41e13a52f4e",
+      "licence_id": "CC-BY-4.0",
+      "response_sha256": "780fa717a060d688d6aeb4b83bde4f5b3761120194f7eec1ec4909fc6f748293",
+      "status": "observed"
+    },
+    {
+      "dataset_id": "0a493d64-5c50-4fe1-9066-a6808bb6dd3f",
+      "licence_id": "CC-BY-4.0",
+      "response_sha256": "cfb2d7b4e6221371e339f884f55d038552c078c77e1d5d032eddb68ddf3c4bc7",
+      "status": "observed"
+    },
+    {
+      "dataset_id": "f13c902a-d78a-4e75-b744-f1637ddce198",
+      "licence_id": "CC-BY-4.0",
+      "response_sha256": "8ec7b29d887f12f44d39a589b1f14226f7a9c7884d4a05ee1eca73722ff8708a",
+      "status": "observed"
+    },
+    {
+      "dataset_id": "35f87251-8fb6-4695-a0dd-36aada0c227d",
+      "licence_id": "CC-BY-4.0",
+      "response_sha256": "d3fea6436b39b2ee486401402470b7f563cc98ccf8e220a3c30f1247f371ac2c",
+      "status": "observed"
+    },
+    {
+      "dataset_id": "a5ffcbb5-e1d2-4433-b850-e7abdcc0edd8",
+      "licence_id": "CC-BY-4.0",
+      "response_sha256": "c2288d9e77a478d7345af92c2b5a8ac0c9390555b48b75a78ab6584d1dd3d8de",
+      "status": "observed"
+    },
+    {
+      "dataset_id": "434752c0-5631-4833-b53f-62c5d048afc3",
+      "licence_id": "CC-BY-4.0",
+      "response_sha256": "15f0a2c7a772650edb82e575df078c0466c809a463750f80c269018dd05bb778",
+      "status": "observed"
+    },
+    {
+      "dataset_id": "a509f7e2-668e-49f8-8452-84014c7eac23",
+      "licence_id": "CC-BY-4.0",
+      "response_sha256": "813e696e2addfb203ab58cfa395772bc3d8dd7a7efc1807bf740cbb56c8dc018",
+      "status": "observed"
+    },
+    {
+      "dataset_id": "48bc86e9-b1c1-4fe6-8e92-b7f83e0e66c7",
+      "licence_id": "CC-BY-4.0",
+      "response_sha256": "18b22154fe20a23ce0239f75783ae2da896dcb68ea0b37bfbfd00e5450d03c5b",
+      "status": "observed"
+    },
+    {
+      "dataset_id": "88b663fd-49c6-4bfe-a352-187c76b45513",
+      "licence_id": "CC-BY-4.0",
+      "response_sha256": "ad7f84c8d742bbdef469e33e087251bc2c975781ec7b3e9b58c3bcc46518a2ea",
+      "status": "observed"
+    },
+    {
+      "dataset_id": "97a16c27-3bb7-4ea7-88b3-fe7f36bfff53",
+      "licence_id": "CC-BY-4.0",
+      "response_sha256": "260d55122b0bfafad64275228a4f5f5f68c53bff28841813472a120dc596f82c",
+      "status": "observed"
+    },
+    {
+      "dataset_id": "e89f9807-ede5-4181-99c3-81d7abf9d340",
+      "licence_id": "CC-BY-4.0",
+      "response_sha256": "709ef60c58bea3e493953ec0de5719904f533fa5d2d65560817080a4b006c74a",
+      "status": "observed"
+    },
+    {
+      "dataset_id": "285c3926-31c2-447b-9a35-5014d2b3c96e",
+      "licence_id": "CC-BY-4.0",
+      "response_sha256": "e5d9a53b444fce7925f24a39386bc479cc3dfca4a2520ad82afda1cd4b976b0f",
+      "status": "observed"
+    },
+    {
+      "dataset_id": "51f12ad9-e3de-44a8-89da-e2a02430b679",
+      "licence_id": "CC-BY-4.0",
+      "response_sha256": "a833443b371f8aeee011bc6be041fcf8bc19e9cd7044ecba7356cb684bcdb7e3",
+      "status": "observed"
+    },
+    {
+      "dataset_id": "43758f86-44c3-401a-892a-f0ab032f3fed",
+      "licence_id": "CC-BY-4.0",
+      "response_sha256": "d27f6526af04e4cd1116f9499d865af716933324824367ee3face4a9d27fa621",
+      "status": "observed"
+    },
+    {
+      "dataset_id": "060a8116-577c-43a1-a43f-11751fe1cb07",
+      "licence_id": "CC-BY-4.0",
+      "response_sha256": "184b9416187aae16f067ce8ecef2da31adb7ab2e91c7f1e186c4237242dcbfa7",
+      "status": "observed"
+    },
+    {
+      "dataset_id": "c826888f-b6ce-49ae-b90a-59c01ced977c",
+      "licence_id": "CC-BY-4.0",
+      "response_sha256": "f128395c1656ba4a1bf3f10694729f7bf45b6f4be7a871841f954d6d55ef1ba2",
+      "status": "observed"
+    }
+  ],
+  "schema_version": "archive-govt-nz.health-licence-probe/v1"
+}

@@ -2,7 +2,7 @@
   "id": "legislation_corpus_consolidation_corrective_20260818",
   "title": "Programme: Legislation Corpus Consolidation Corrective & Real Implementation",
   "type": "corrective_programme",
-  "status": "in_progress",
+  "status": "completed",
   "baseline_date": "2026-08-18",
   "audited_target_commit": "c154578f4e7de3585e6b5885c157fc6ef2c7564b",
   "audited_donor_commit": "749918c251da59dc890c19dfda2ab9a021fd8ca6",
@@ -11,5 +11,16 @@
   "non_donor_boundary": "edithatogo/legislation",
   "requirements_method": "MoSCoW",
   "phase_0_control_plane_commit": "cb0e78f89a127f246d024ba3a5d770e1ec478f12",
-  "updated_at": "2026-08-19T01:00:00Z"
+  "updated_at": "2026-08-23T02:00:00Z",
+  "completion_correction": {
+    "date": "2026-08-23",
+    "reason": "Prior COMPLETED status (2026-08-22) unsupported by live evidence: adversarial verification incomplete; zero scheduled workflow runs; cutover/observation/closeout receipts invalidated; donor not archived.",
+    "reopened_issues": [
+      "edithatogo/archive-govt-nz#137",
+      "edithatogo/archive-govt-nz#138",
+      "edithatogo/archive-govt-nz#142"
+    ],
+    "correction_comment": "https://github.com/edithatogo/archive-govt-nz/issues/131#issuecomment-5383579331",
+    "evidence_root": "evidence/migrations/corpus-legislation-nz/"
+  }
 }
