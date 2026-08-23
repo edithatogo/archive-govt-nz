@@ -154,7 +154,7 @@ active only after the MVP checkpoint and their stated decision gates pass.
 
 ## Programme: Medallion Architecture & Unified Data Engine (2026-08-23)
 
-- [ ] **Track: Medallion Architecture Consolidation with Integrated Vector & Knowledge Graph Products**
+- [~] **Track: Medallion Architecture Consolidation with Integrated Vector & Knowledge Graph Products**
   *Link: [tracks/medallion_architecture_consolidation_20260823/index.md](./tracks/medallion_architecture_consolidation_20260823/index.md)*
   *Primary Focus: Phase 1 (Bronze Ingestion & Preservation Engine)*
 

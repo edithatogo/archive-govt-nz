@@ -17,13 +17,13 @@
 - [x] Task: Conductor Review & Automated Phase Gate Verification (`tools/conductor_phase_gate.py --phase phase_1_bronze`).
 - [x] Task: Apply Phase 1 review findings, code fixes, and advance to Phase 2.
 
-### Phase 2: Silver Layer Parquet Pipelines (Polars / PyArrow)
-- [ ] Task: Implement standardized Silver normalizer base in `src/archive_govt_nz/silver/base.py` with Arrow schema validation.
-- [ ] Task: Build vectorized Polars/PyArrow normalizers producing canonical Parquet (`data/silver/{domain}/corpus.parquet`).
-- [ ] Task: Encode bitemporal timeline tracking (`source_observed_at` vs. valid statutory/notice effective dates).
-- [ ] Task: Write unit and property-based tests verifying 100% field parity and schema conformance.
-- [ ] Task: Conductor Review & Automated Phase Gate Verification (`tools/conductor_phase_gate.py --phase phase_2_silver`).
-- [ ] Task: Apply Phase 2 review findings, code fixes, and advance to Phase 3.
+### Phase 2: Silver Layer Parquet Pipelines (Polars / PyArrow) [COMPLETED]
+- [x] Task: Implement standardized Silver normalizer base in `src/archive_govt_nz/silver/base.py` with Arrow schema validation.
+- [x] Task: Build vectorized Polars/PyArrow normalizers producing canonical Parquet (`data/silver/{domain}/corpus.parquet`).
+- [x] Task: Encode bitemporal timeline tracking (`source_observed_at` vs. valid statutory/notice effective dates).
+- [x] Task: Write unit and property-based tests verifying 100% field parity and schema conformance.
+- [x] Task: Conductor Review & Automated Phase Gate Verification (`tools/conductor_phase_gate.py --phase phase_2_silver`).
+- [x] Task: Apply Phase 2 review findings, code fixes, and advance to Phase 3.
 
 ### Phase 3: Silver Cross-Domain Interlinking & Relational Lineage Graph
 - [ ] Task: Elevate `tools/build_identifier_interlink.py` into canonical Silver interlinking engine (`src/archive_govt_nz/silver/interlink.py`).
