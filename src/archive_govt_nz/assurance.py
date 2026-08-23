@@ -1,5 +1,6 @@
 """Typed orchestration for the repository assurance gate."""
 
+import os
 import subprocess
 from collections.abc import Callable, Sequence
 from dataclasses import dataclass
@@ -103,7 +104,7 @@ Runner = Callable[[tuple[str, ...]], int]
 
 def run_command(command: tuple[str, ...]) -> int:
     """Run one stage without a shell and return its process status."""
-    env = dict(subprocess.os.environ)
+    env = dict(os.environ)
     env.setdefault("COVERAGE_CORE", "ctrace")
     try:
         return subprocess.run(

@@ -3,10 +3,10 @@
   "description": "Establish steady-state production operational cadence for legislation archiving with versioned SLO contract, weekly harvesting, monthly reconciliation, and operator-gated recovery drills.",
   "donor_or_upstream": "corpus-legislation-nz post-cutover operations",
   "reusable_assets": "Automatic continuation discovery, weekly cron, monthly reconciliation, v2.0.0 schedule contract",
-  "status": "in_progress",
+  "status": "completed",
   "title": "Legislation Post-Cutover Production Steady-State Operations",
   "track_id": "legislation_post_cutover_steady_state_20260823",
   "treatment": "Promotion of legislation scheduling from transitional dispatch-only to weekly scheduled incremental operation, monthly reconciliation, and versioned v2.0.0 SLO contract",
   "type": "operational_cadence_promotion",
-  "updated_at": "2026-08-23T22:50:00Z"
+  "updated_at": "2026-08-24T00:00:00Z"
 }
