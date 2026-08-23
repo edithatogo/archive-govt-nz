@@ -21,6 +21,24 @@ MUTANTS = {
         "sha256_manifest = '0'*64",
         "tests/bronze/test_manifest.py",
     ),
+    "bronze_magic_sniffer": (
+        "src/archive_govt_nz/bronze/sniffer.py",
+        "is_polyglot = detected in (",
+        "is_polyglot = False and detected in (",
+        "tests/bronze/test_sniffer.py",
+    ),
+    "bronze_cidv1_multihash": (
+        "src/archive_govt_nz/bronze/multihash.py",
+        "cid_bytes = _CIDV1_RAW_SHA256_HEADER + sha256_digest",
+        'cid_bytes = b"\\x00\\x00\\x00\\x00" + sha256_digest',
+        "tests/bronze/test_multihash.py",
+    ),
+    "bronze_ed25519_attestation": (
+        "src/archive_govt_nz/bronze/attestation.py",
+        "return lhs == rhs",
+        "return True",
+        "tests/bronze/test_attestation.py",
+    ),
     "silver_table_population": (
         "src/archive_govt_nz/silver/pipeline.py",
         "arrow_table = pa.Table.from_pydict(pydict, schema=SILVER_ARROW_SCHEMA)",

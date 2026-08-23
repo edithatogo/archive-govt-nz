@@ -10,7 +10,7 @@ import hashlib
 import json
 from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
-from typing import TYPE_CHECKING, Any, Final
+from typing import TYPE_CHECKING, Final
 
 import defusedxml.ElementTree as DefusedET
 
@@ -51,9 +51,7 @@ def _canonicalize_json_type(val: object) -> object:
             str(k): _canonicalize_json_type(v)
             for k, v in sorted(val.items(), key=lambda item: str(item[0]))
         }
-    if isinstance(val, (list, tuple, Sequence)) and not isinstance(
-        val, (str, bytes)
-    ):
+    if isinstance(val, (list, tuple, Sequence)) and not isinstance(val, (str, bytes)):
         if not val:
             return ["empty"]
         types = sorted({str(_canonicalize_json_type(item)) for item in val[:10]})
@@ -78,7 +76,7 @@ def _canonicalize_xml_element(elem: ET.Element) -> dict[str, object]:
 
 
 def compute_json_schema_fingerprint(
-    data: Mapping[str, Any] | Sequence[Any] | str | bytes | Any,
+    data: Mapping[str, object] | Sequence[object] | str | bytes,
 ) -> SchemaFingerprintResult:
     """Compute deterministic schema fingerprint for JSON data or structure."""
     parsed = json.loads(data) if isinstance(data, (str, bytes)) else data

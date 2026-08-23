@@ -14,8 +14,8 @@ from archive_govt_nz.bronze.fingerprint import (
 
 def test_json_schema_fingerprint_invariance() -> None:
     """Same structure with different values produces identical fingerprint."""
-    payload_1 = {"name": "Test Act", "id": 100, "active": True}
-    payload_2 = {"id": 200, "active": False, "name": "Another Act"}
+    payload_1: dict[str, object] = {"name": "Test Act", "id": 100, "active": True}
+    payload_2: dict[str, object] = {"id": 200, "active": False, "name": "Another Act"}
 
     fp1 = compute_json_schema_fingerprint(payload_1)
     fp2 = compute_json_schema_fingerprint(payload_2)
@@ -27,8 +27,12 @@ def test_json_schema_fingerprint_invariance() -> None:
 
 def test_json_schema_fingerprint_drift() -> None:
     """Adding a new field or changing data type alters the structural fingerprint."""
-    baseline = {"name": "Notice 1", "date": "2026-01-01"}
-    evolved = {"name": "Notice 2", "date": "2026-01-02", "category": "Gazette"}
+    baseline: dict[str, object] = {"name": "Notice 1", "date": "2026-01-01"}
+    evolved: dict[str, object] = {
+        "name": "Notice 2",
+        "date": "2026-01-02",
+        "category": "Gazette",
+    }
 
     fp_base = compute_json_schema_fingerprint(baseline)
     fp_evolved = compute_json_schema_fingerprint(evolved)
