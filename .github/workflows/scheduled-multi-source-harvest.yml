@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       source_set:
-        description: "Specific source set to harvest (treasury, government-web, social-media, newsletters, legislation, nz-gazette, or all)"
+        description: "Specific source set to harvest (treasury, government-web, social-media, newsletters, nz-gazette, or all)"
         required: false
         default: "all"
 
