@@ -19,16 +19,15 @@ from archive_govt_nz.bronze.models import (
     BronzeRecord,
     BronzeSourceMetadata,
 )
+from archive_govt_nz.bronze.multihash import (
+    compute_multihash_triplet,
+)
 
 
 def compute_hashes(data: bytes) -> tuple[str, str]:
     """Compute SHA-256 and BLAKE3 (or SHA-256 fallback if blake3 absent)."""
-    sha256_digest = hashlib.sha256(data).hexdigest()
-    if blake3 is not None:
-        blake3_digest = blake3.blake3(data).hexdigest()
-    else:
-        blake3_digest = hashlib.sha256(b"blake3-fallback:" + data).hexdigest()
-    return sha256_digest, blake3_digest
+    triplet = compute_multihash_triplet(data)
+    return triplet.sha256, triplet.blake3
 
 
 def build_bronze_record(  # noqa: PLR0913
@@ -50,12 +49,13 @@ def build_bronze_record(  # noqa: PLR0913
     custom_metadata: dict[str, Any] | None = None,
 ) -> BronzeRecord:
     """Construct a BronzeRecord with cryptographic fixity calculated from bytes."""
-    sha256_hash, blake3_hash = compute_hashes(payload_bytes)
+    triplet = compute_multihash_triplet(payload_bytes)
     timestamp = observed_at or datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
 
     fixity = BronzePayloadFixity(
-        sha256=sha256_hash,
-        blake3=blake3_hash,
+        sha256=triplet.sha256,
+        blake3=triplet.blake3,
+        cidv1=triplet.cidv1,
         size_bytes=len(payload_bytes),
         cas_path=cas_path,
         warc_record_id=warc_record_id,

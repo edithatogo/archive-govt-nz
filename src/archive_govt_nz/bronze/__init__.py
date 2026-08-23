@@ -26,6 +26,12 @@ from archive_govt_nz.bronze.models import (
     DurabilityPolicy,
     ImmutabilityMode,
 )
+from archive_govt_nz.bronze.multihash import (
+    MultiHashTriplet,
+    StreamingMultiHasher,
+    compute_cidv1_from_sha256,
+    compute_multihash_triplet,
+)
 from archive_govt_nz.bronze.sniffer import (
     InvalidPayloadSignatureError,
     SniffResult,
@@ -49,8 +55,12 @@ __all__ = [
     "ImmutabilityMode",
     "IngestionResult",
     "InvalidPayloadSignatureError",
+    "MultiHashTriplet",
     "SniffResult",
+    "StreamingMultiHasher",
     "build_bronze_record",
+    "compute_cidv1_from_sha256",
+    "compute_multihash_triplet",
     "create_bronze_manifest",
     "sniff_magic_mime",
     "validate_payload_signature",
