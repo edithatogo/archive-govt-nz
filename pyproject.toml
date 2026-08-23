@@ -131,6 +131,11 @@ ignore = [
 "tests/domains/test_legislation_api.py" = ["SLF001", "ARG001"]
 "src/archive_govt_nz/domains/legislation/api.py" = ["PLR0913", "PLR0917"]
 
+"src/archive_govt_nz/bronze/adapter.py" = ["PLR0913", "E501"]
+"src/archive_govt_nz/domains/gazette/courts_notices.py" = ["PLR0913", "E501"]
+"src/archive_govt_nz/domains/health/covid_data.py" = ["PLR0913", "E501"]
+"src/archive_govt_nz/domains/health/pae_ora.py" = ["PLR0913", "E501"]
+
 [tool.pytest.ini_options]
 addopts = ["--strict-config", "--strict-markers"]
 testpaths = ["tests"]
