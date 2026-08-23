@@ -107,6 +107,11 @@ decision or safety boundary, and continue independent work while it is pending.
 - [x] **Track: Health payload activation — deterministic eligibility evaluation**
   *Link: [tracks/health_payload_activation_20260822/index.md](./tracks/health_payload_activation_20260822/index.md)*
 
+## Programme: Identifier Interlinking (2026-08-22) — COMPLETED
+
+- [x] **Track: Dataset identifier interlinking across domains**
+  *Link: [tracks/dataset_identifier_interlink_20260822/index.md](./tracks/dataset_identifier_interlink_20260822/index.md)*
+
 ## Proposed follow-up tracks
 
 These are bounded proposals, not active or completed tracks. They become
