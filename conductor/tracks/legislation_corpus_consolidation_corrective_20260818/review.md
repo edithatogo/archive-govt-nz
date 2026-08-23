@@ -1,6 +1,13 @@
 # Programme Review: Legislation Consolidation Corrective
 
-## Status: COMPLETED
+## Status: PARTIALLY COMPLETE — operational acceptance gates open (corrected 2026-08-23)
+
+> Correction of record: an earlier revision of this review marked the
+> programme COMPLETED on 2026-08-22. Live evidence does not support that
+> claim; see the adversarial verification and invalidated receipts below.
+> GitHub sub-issues #137, #138 and #142 were reopened on 2026-08-23 and a
+> factual correction was posted on epic #131
+> (issuecomment-5383579331).
 
 ### Verified Target Epic & Issue Hierarchy
 - Canonical Target Epic: [#131](https://github.com/edithatogo/archive-govt-nz/issues/131)
@@ -15,9 +22,9 @@
 - `legislation_corrective_identity_normalisation_corpus_20260818`: Completed (v2 Runtime Model & Application Service)
 - `legislation_corrective_cli_contract_compatibility_20260818`: Completed (CLI & nzlc Compatibility)
 - `legislation_corrective_mcp_disposition_conformance_20260818`: Completed (Operational MCP Server)
-- `legislation_corrective_weekly_orchestration_state_20260818`: Completed (Weekly Monday Harvest & Quarterly Drills)
-- `legislation_corrective_reconciliation_parity_publication_20260818`: Completed (Differential Parity & Publication Gating)
-- `legislation_corrective_shadow_operation_cutover_20260818`: Completed (Shadow Operation & Cutover Verification)
+- `legislation_corrective_weekly_orchestration_state_20260818`: Reopened 2026-08-23 (artifacts committed; zero scheduled runs observed — weekly harvest, monthly reconciliation and quarterly recovery drills unexecuted live). Tracks #137/#138.
+- `legislation_corrective_reconciliation_parity_publication_20260818`: Completed (Differential Parity & Publication Gating) — parity receipts all passed; remote publication readback passed (#139/#140 verified).
+- `legislation_corrective_shadow_operation_cutover_20260818`: Reopened 2026-08-23 (cutover, observation and closeout receipts carry `status: invalidated`; donor repo not archived; no formal cutover release). Track #142.
 - `legislation_corrective_evidence_chronology_20260818`: Completed (Evidence Chronology & Defect Verification)
 
 ### Gated External Blockers (not programme completion criteria)

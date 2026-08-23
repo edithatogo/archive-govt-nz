@@ -61,7 +61,7 @@ decision or safety boundary, and continue independent work while it is pending.
 - [x] **Track 15: Consolidation closeout and operational readiness**
   *Link: [tracks/consolidation_closeout_and_operational_readiness_20260818/index.md](./tracks/consolidation_closeout_and_operational_readiness_20260818/index.md)*
 
-## Programme: Legislation Corpus Consolidation (2026-08-18) — COMPLETED
+## Programme: Legislation Corpus Consolidation (2026-08-18) — IN PROGRESS (operational gates open; corrected 2026-08-23)
 
 - [x] **Legislation Corpus Consolidation Parent Programme**
   *Link: [tracks/legislation_corpus_consolidation_corrective_20260818/index.md](./tracks/legislation_corpus_consolidation_corrective_20260818/index.md)*
@@ -81,14 +81,16 @@ decision or safety boundary, and continue independent work while it is pending.
     *Link: [tracks/legislation_corrective_cli_contract_compatibility_20260818/index.md](./tracks/legislation_corrective_cli_contract_compatibility_20260818/index.md)*
   - [x] **Child Track 7: MCP disposition and conformance**
     *Link: [tracks/legislation_corrective_mcp_disposition_conformance_20260818/index.md](./tracks/legislation_corrective_mcp_disposition_conformance_20260818/index.md)*
-  - [x] **Child Track 8: Weekly orchestration and persistent state**
+  - [/] **Child Track 8: Weekly orchestration and persistent state**
     *Link: [tracks/legislation_corrective_weekly_orchestration_state_20260818/index.md](./tracks/legislation_corrective_weekly_orchestration_state_20260818/index.md)*
+    *Reopened 2026-08-23: scheduled harvest/reconciliation/recovery workflows have zero observed runs (#137, #138).*
   - [x] **Child Track 9: Historical reconciliation, parity and publication identity**
     *Link: [tracks/legislation_corrective_reconciliation_parity_publication_20260818/index.md](./tracks/legislation_corrective_reconciliation_parity_publication_20260818/index.md)*
   - [x] **Child Track 10: Rights and redistribution**
     *Link: [tracks/legislation_corrective_rights_redistribution_20260818/index.md](./tracks/legislation_corrective_rights_redistribution_20260818/index.md)*
-  - [x] **Child Track 11: Shadow operation, recovery and cutover**
+  - [/] **Child Track 11: Shadow operation, recovery and cutover**
     *Link: [tracks/legislation_corrective_shadow_operation_cutover_20260818/index.md](./tracks/legislation_corrective_shadow_operation_cutover_20260818/index.md)*
+    *Reopened 2026-08-23: cutover/observation/closeout receipts invalidated; donor not archived (#142).*
   - [x] **Child Track 12: Gazette residual work, kept separate and incomplete**
     *Link: [tracks/legislation_corrective_gazette_residual_separation_20260818/index.md](./tracks/legislation_corrective_gazette_residual_separation_20260818/index.md)*
 
