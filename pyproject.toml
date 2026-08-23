@@ -148,6 +148,7 @@ line-ending = "lf"
 "src/archive_govt_nz/silver/interlink.py" = ["PLR0913", "E501"]
 "src/archive_govt_nz/gold/analytics.py" = ["PLR0913", "E501", "S608"]
 "src/archive_govt_nz/gold/dcat.py" = ["PLR0913", "E501"]
+"src/archive_govt_nz/gold/search.py" = ["PLR0913", "E501", "TC003"]
 "tests/silver/**/*.py" = ["D103", "E501", "TC003"]
 "tests/gold/**/*.py" = ["D103", "E501", "TC003"]
 "src/archive_govt_nz/domains/gazette/courts_notices.py" = ["PLR0913", "E501"]

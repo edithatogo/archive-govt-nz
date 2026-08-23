@@ -41,13 +41,13 @@
 - [x] Task: Conductor Review & Automated Phase Gate Verification (`tools/conductor_phase_gate.py --phase phase_4_gold_duckdb`).
 - [x] Task: Apply Phase 4 review findings, code fixes, and advance to Phase 5.
 
-### Phase 5: Gold Layer Embedded LanceDB Hybrid Vector Index
-- [ ] Task: Implement embedded LanceDB index generator in `src/archive_govt_nz/gold/search.py` consuming Silver Parquet.
-- [ ] Task: Integrate deterministic dense vector projections with BM25 hybrid ranking (zero external API dependencies).
-- [ ] Task: Benchmark search recall, index construction speed, and zero-network execution.
-- [ ] Task: Add unit and regression tests for vector and lexical retrieval.
-- [ ] Task: Conductor Review & Automated Phase Gate Verification (`tools/conductor_phase_gate.py --phase phase_5_gold_lancedb`).
-- [ ] Task: Apply Phase 5 review findings, code fixes, and advance to Phase 6.
+### Phase 5: Gold Layer Embedded LanceDB Hybrid Vector Index [COMPLETED]
+- [x] Task: Implement embedded LanceDB index generator in `src/archive_govt_nz/gold/search.py` consuming Silver Parquet.
+- [x] Task: Integrate deterministic dense vector projections with BM25 hybrid ranking (zero external API dependencies).
+- [x] Task: Benchmark search recall, index construction speed, and zero-network execution.
+- [x] Task: Add unit and regression tests for vector and lexical retrieval.
+- [x] Task: Conductor Review & Automated Phase Gate Verification (`tools/conductor_phase_gate.py --phase phase_5_gold_lancedb`).
+- [x] Task: Apply Phase 5 review findings, code fixes, and advance to Phase 6.
 
 ### Phase 6: Unified CLI & MCP Query Surface
 - [ ] Task: Implement `archive-govt-nz query` CLI command supporting `--sql`, `--semantic`, and `--graph` modes.

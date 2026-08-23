@@ -10,12 +10,24 @@ from archive_govt_nz.gold.dcat import (
     RO_CRATE_CONTEXT,
     DCATAPMetadataExporter,
 )
+from archive_govt_nz.gold.search import (
+    EMBEDDING_DIM,
+    GoldHybridSearchEngine,
+    SearchResult,
+    compute_deterministic_embedding,
+    cosine_similarity,
+)
 
 __all__ = [
     "CROISSANT_CONTEXT",
     "DCAT_AP_CONTEXT",
+    "EMBEDDING_DIM",
     "RO_CRATE_CONTEXT",
     "DCATAPMetadataExporter",
     "GoldAnalyticsEngine",
+    "GoldHybridSearchEngine",
     "QueryResult",
+    "SearchResult",
+    "compute_deterministic_embedding",
+    "cosine_similarity",
 ]
