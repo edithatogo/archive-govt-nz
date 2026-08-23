@@ -102,6 +102,11 @@ decision or safety boundary, and continue independent work while it is pending.
 - [x] **Track: Quality frontier — gazette mutation gate and repository hardening**
   *Link: [tracks/quality_frontier_hardening_20260822/index.md](./tracks/quality_frontier_hardening_20260822/index.md)*
 
+## Programme: Health Payload Activation (2026-08-22) — COMPLETED
+
+- [x] **Track: Health payload activation — deterministic eligibility evaluation**
+  *Link: [tracks/health_payload_activation_20260822/index.md](./tracks/health_payload_activation_20260822/index.md)*
+
 ## Proposed follow-up tracks
 
 These are bounded proposals, not active or completed tracks. They become
