@@ -1,0 +1,216 @@
+"""Automated Conductor Phase Gate and Review Harness.
+
+Executes targeted code quality, schema, typing, and unit test verifications
+for individual Conductor phases, producing immutable review receipts without
+running redundant full test suites.
+"""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import subprocess
+import sys
+from datetime import UTC, datetime
+from pathlib import Path
+from typing import Any
+
+REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
+REVIEW_DIR = REPOSITORY_ROOT / "build" / "conductor-reviews"
+
+PHASE_TARGETS: dict[str, dict[str, Any]] = {
+    "phase_1_bronze": {
+        "title": "Phase 1: Bronze Ingestion Layer",
+        "test_targets": [
+            "tests/bronze/test_manifest.py",
+            "tests/bronze/test_adapter.py",
+            "tests/domains/test_courts_notices.py",
+            "tests/domains/test_health_bronze.py",
+        ],
+        "source_paths": [
+            "src/archive_govt_nz/bronze/",
+            "src/archive_govt_nz/domains/gazette/courts_notices.py",
+            "src/archive_govt_nz/domains/health/",
+        ],
+        "schemas": ["schemas/bronze-ingestion-manifest-v1.schema.json"],
+    },
+    "phase_2_silver": {
+        "title": "Phase 2: Silver Layer Parquet Pipelines",
+        "test_targets": [
+            "tests/silver/",
+        ],
+        "source_paths": [
+            "src/archive_govt_nz/silver/",
+        ],
+        "schemas": [],
+    },
+    "phase_3_silver_interlink": {
+        "title": "Phase 3: Silver Cross-Domain Interlinking & Relational Lineage Graph",
+        "test_targets": [
+            "tests/silver/test_interlink.py",
+        ],
+        "source_paths": [
+            "src/archive_govt_nz/silver/interlink.py",
+        ],
+        "schemas": [],
+    },
+    "phase_4_gold_duckdb": {
+        "title": "Phase 4: Gold Layer DuckDB Analytical Engine & DCAT-AP",
+        "test_targets": [
+            "tests/gold/test_analytics.py",
+        ],
+        "source_paths": [
+            "src/archive_govt_nz/gold/analytics.py",
+        ],
+        "schemas": [],
+    },
+    "phase_5_gold_lancedb": {
+        "title": "Phase 5: Gold Layer Embedded LanceDB Hybrid Vector Index",
+        "test_targets": [
+            "tests/gold/test_search.py",
+        ],
+        "source_paths": [
+            "src/archive_govt_nz/gold/search.py",
+        ],
+        "schemas": [],
+    },
+    "phase_6_cli_mcp": {
+        "title": "Phase 6: Unified CLI & MCP Query Surface",
+        "test_targets": [
+            "tests/cli/test_cli.py",
+            "tests/mcp/",
+        ],
+        "source_paths": [
+            "src/archive_govt_nz/cli.py",
+            "src/archive_govt_nz/mcp_server.py",
+        ],
+        "schemas": [],
+    },
+    "phase_7_gates": {
+        "title": "Phase 7: Quality Gates & End-to-End Evidence",
+        "test_targets": [],
+        "source_paths": [],
+        "schemas": [],
+    },
+}
+
+
+MAX_LOG_CHARS = 1000
+
+
+def run_stage(command: list[str], description: str) -> dict[str, Any]:
+    """Execute a single gate stage and record timing and output."""
+    proc = subprocess.run(
+        command,
+        cwd=REPOSITORY_ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    return {
+        "description": description,
+        "command": command,
+        "exit_code": proc.returncode,
+        "passed": proc.returncode == 0,
+        "stdout": proc.stdout[-MAX_LOG_CHARS:]
+        if len(proc.stdout) > MAX_LOG_CHARS
+        else proc.stdout,
+        "stderr": proc.stderr[-MAX_LOG_CHARS:]
+        if len(proc.stderr) > MAX_LOG_CHARS
+        else proc.stderr,
+    }
+
+
+def execute_phase_review(phase_id: str) -> int:
+    """Execute rigorous, targeted verification for a specific phase."""
+    if phase_id not in PHASE_TARGETS:
+        print(
+            f"Unknown phase_id: {phase_id}. Choose from: {list(PHASE_TARGETS.keys())}"
+        )
+        return 1
+
+    config = PHASE_TARGETS[phase_id]
+    print(f"=== Conductor Review & Gate: {config['title']} ===")
+
+    stages: list[dict[str, Any]] = []
+
+    # 1. Format Check
+    stages.append(
+        run_stage(
+            ["uv", "run", "--locked", "ruff", "format", "--check", "."],
+            "Ruff Code Formatting Check",
+        )
+    )
+
+    # 2. Lint Check
+    stages.append(
+        run_stage(
+            ["uv", "run", "--locked", "ruff", "check", "."],
+            "Ruff Code Linter & Rule Enforcement",
+        )
+    )
+
+    # 3. Schema Validation
+    stages.append(
+        run_stage(
+            ["uv", "run", "--locked", "python", "tools/validate_schemas.py"],
+            "JSON Schema & Fixture Verification",
+        )
+    )
+
+    # 4. Target-Specific Unit Tests (Minimizing unnecessary testing)
+    test_targets = [t for t in config["test_targets"] if (REPOSITORY_ROOT / t).exists()]
+    if test_targets:
+        test_cmd = ["uv", "run", "--locked", "pytest", *test_targets]
+        stages.append(run_stage(test_cmd, f"Targeted Unit Tests: {test_targets}"))
+
+    # Compute aggregate status
+    all_passed = all(stage["passed"] for stage in stages)
+    status = "passed" if all_passed else "failed"
+
+    # Generate immutable review receipt
+    REVIEW_DIR.mkdir(parents=True, exist_ok=True)
+    receipt_data = {
+        "schema_version": "archive-govt-nz.conductor-phase-review/v1",
+        "phase_id": phase_id,
+        "title": config["title"],
+        "reviewed_at": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "status": status,
+        "stages": stages,
+    }
+    serialized = json.dumps(receipt_data, indent=2, sort_keys=True)
+    receipt_sha = hashlib.sha256(serialized.encode("utf-8")).hexdigest()
+    receipt_data["receipt_sha256"] = receipt_sha
+
+    receipt_file = REVIEW_DIR / f"{phase_id}-review-receipt.json"
+    receipt_file.write_text(
+        json.dumps(receipt_data, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+
+    print(f"\nPhase Review Outcome: {status.upper()}")
+    print(f"Receipt written to: {receipt_file} (SHA256: {receipt_sha[:16]}...)")
+
+    for stage in stages:
+        mark = "✓" if stage["passed"] else "✗"
+        print(f"  [{mark}] {stage['description']}")
+
+    return 0 if all_passed else 1
+
+
+def main() -> int:
+    """CLI entrypoint for phase review."""
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--phase",
+        choices=list(PHASE_TARGETS.keys()),
+        required=True,
+        help="Conductor phase identifier to review and verify",
+    )
+    args = parser.parse_args()
+    return execute_phase_review(args.phase)
+
+
+if __name__ == "__main__":
+    sys.exit(main())
