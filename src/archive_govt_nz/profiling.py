@@ -14,7 +14,7 @@ try:
     import scalene  # noqa: F401
 
     SCALENE_AVAILABLE = True
-except ImportError, ModuleNotFoundError:  # pragma: no cover
+except ImportError:  # pragma: no cover
     SCALENE_AVAILABLE = False
 
 
