@@ -24,13 +24,14 @@
     "Donor repository (edithatogo/corpus-legislation-nz) archival authorization pending"
   ],
   "retained_controls": [
-    "workflow_dispatch-only triggers (no schedule: blocks retained by design)",
+    "scheduled weekly and monthly cadence with preserved workflow_dispatch triggers",
     "contents: read / actions: read permissions only",
-    "no id-token: write (publication authority still disabled)",
-    "explicit confirmed_* dispatch inputs required",
-    "bounded harvest inputs (batch_id, search_terms, max_works) required"
+    "no id-token: write (publication authority gated through dedicated publication pipeline)",
+    "explicit confirmed_* dispatch inputs and automated schedule event fallbacks",
+    "bounded harvest inputs (batch_id, search_terms, max_works) required",
+    "quarterly recovery drill remains operator-gated dispatch"
   ],
   "out_of_scope": [],
-  "conductor_ref": "conductor/tracks.md operational gate authorization legislation_operational_gate_authorization_20260823",
+  "conductor_ref": "conductor/tracks/legislation_post_cutover_steady_state_20260823/index.md",
   "github_refs": ["edithatogo/archive-govt-nz#137", "edithatogo/archive-govt-nz#138", "edithatogo/archive-govt-nz#142", "edithatogo/archive-govt-nz#179"]
 }

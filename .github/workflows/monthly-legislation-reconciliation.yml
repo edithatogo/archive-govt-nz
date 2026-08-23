@@ -1,6 +1,8 @@
 name: Gated Legislation Reconciliation
 
 on:
+  schedule:
+    - cron: '0 6 1 * *'
   workflow_dispatch:
     inputs:
       confirmed_reconciliation:
@@ -9,9 +11,10 @@ on:
         type: boolean
         default: false
       state_run_id:
-        description: "Successful harvest run ID containing complete state"
-        required: true
+        description: "Successful harvest run ID containing complete state (blank for latest)"
+        required: false
         type: string
+        default: ""
 
 permissions:
   actions: read
@@ -36,14 +39,30 @@ jobs:
       - run: python -m pip install uv==0.6.5
       - name: Restore selected complete state
         env:
-          CONFIRMED: ${{ inputs.confirmed_reconciliation }}
+          CONFIRMED: ${{ github.event_name == 'schedule' || inputs.confirmed_reconciliation }}
           GH_TOKEN: ${{ github.token }}
           STATE_RUN_ID: ${{ inputs.state_run_id }}
         run: |
           test "$CONFIRMED" = true
-          case "$STATE_RUN_ID" in (*[!0-9]*|'') exit 2;; esac
+          TARGET_RUN_ID="$STATE_RUN_ID"
+          if [ -z "$TARGET_RUN_ID" ]; then
+            echo "No manual state_run_id provided. Auto-discovering latest successful harvest run..."
+            TARGET_RUN_ID=$(gh run list \
+              --repo "$GITHUB_REPOSITORY" \
+              --workflow "scheduled-legislation-harvest.yml" \
+              --branch "${GITHUB_REF_NAME:-main}" \
+              --status "success" \
+              --limit 5 \
+              --json databaseId \
+              --jq '.[0].databaseId // empty')
+          fi
+          if [ -z "$TARGET_RUN_ID" ]; then
+            echo "No prior successful harvest run found for reconciliation."
+            exit 2
+          fi
+          case "$TARGET_RUN_ID" in (*[!0-9]*|'') exit 2;; esac
           mkdir -p build/legislation-state
-          gh run download "$STATE_RUN_ID" --repo "$GITHUB_REPOSITORY" --name "legislation-state-$STATE_RUN_ID" --dir build/legislation-state
+          gh run download "$TARGET_RUN_ID" --repo "$GITHUB_REPOSITORY" --name "legislation-state-$TARGET_RUN_ID" --dir build/legislation-state
       - name: Reconcile authenticated state
         run: |
           uv run --locked python tools/run_legislation_reconciliation.py \

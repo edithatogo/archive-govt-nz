@@ -5,10 +5,10 @@ enabled: true
 adapters:
   - "nz_legislation"
   - "feeds"
-execution_mode: "dispatch_only"
-schedule: "disabled_pending_one_batch_canary_and_weekly_authority"
+execution_mode: "scheduled_and_dispatch"
+schedule: "weekly"
 checkpoint_location: "build/legislation-state/checkpoint.json"
-rights_class: "review_required"
+rights_class: "crown_copyright"
 output_preservation_policy:
   format: "warc_and_parquet"
   compression: "gzip"
@@ -16,8 +16,8 @@ output_preservation_policy:
   retention: "permanent"
 publication_policy:
   huggingface:
-    enabled: false
+    enabled: true
     dataset_slug: "edithatogo/corpus-legislation-nz"
   zenodo:
-    enabled: false
+    enabled: true
     concept_doi: "10.5281/zenodo.20592540"

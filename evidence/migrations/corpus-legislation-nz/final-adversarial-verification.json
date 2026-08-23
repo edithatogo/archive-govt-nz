@@ -1,6 +1,6 @@
 {
   "schema_version": "archive-govt-nz.completion-evaluator/v1",
-  "evaluated_at": "2026-08-23T09:12:39Z",
+  "evaluated_at": "2026-08-23T12:52:54Z",
   "status": "complete",
   "contract_checks": [
     {
@@ -102,7 +102,7 @@
       "source_url": "https://api.github.com/repos/edithatogo/corpus-legislation-nz",
       "open_issues_count": 0,
       "is_cached": false,
-      "retrieved_at": "2026-08-23T09:12:41Z"
+      "retrieved_at": "2026-08-23T12:52:56Z"
     },
     {
       "check_id": "EVD-CHK-02",

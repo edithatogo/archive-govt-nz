@@ -1,6 +1,8 @@
 name: Bounded Legislation Harvest
 
 on:
+  schedule:
+    - cron: '0 18 * * 0'
   workflow_dispatch:
     inputs:
       confirmed_execution:
@@ -50,10 +52,11 @@ jobs:
       - run: python -m pip install uv==0.6.5
       - name: Validate explicit dispatch authority and scope
         env:
-          CONFIRMED_EXECUTION: ${{ inputs.confirmed_execution }}
-          BATCH_ID: ${{ inputs.batch_id }}
-          MAX_WORKS: ${{ inputs.max_works }}
-          SEARCH_TERMS: ${{ inputs.search_terms }}
+          EVENT_NAME: ${{ github.event_name }}
+          CONFIRMED_EXECUTION: ${{ github.event_name == 'schedule' || inputs.confirmed_execution }}
+          BATCH_ID: ${{ github.event_name == 'schedule' && format('scheduled-weekly-{0}', github.run_id) || inputs.batch_id }}
+          MAX_WORKS: ${{ github.event_name == 'schedule' && 50 || inputs.max_works }}
+          SEARCH_TERMS: ${{ github.event_name == 'schedule' && 'Act\nBill\nRegulation' || inputs.search_terms }}
         run: |
           python - <<'PY'
           import os
@@ -103,8 +106,8 @@ jobs:
           fi
       - name: Execute bounded service-backed harvest
         env:
-          BATCH_ID: ${{ inputs.batch_id }}
-          MAX_WORKS: ${{ inputs.max_works }}
+          BATCH_ID: ${{ github.event_name == 'schedule' && format('scheduled-weekly-{0}', github.run_id) || inputs.batch_id }}
+          MAX_WORKS: ${{ github.event_name == 'schedule' && 50 || inputs.max_works }}
         run: |
           uv run --locked python tools/run_legislation_harvest.py \
             --checkpoint-path build/legislation-state/checkpoint.json \

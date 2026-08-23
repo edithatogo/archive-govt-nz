@@ -10,15 +10,25 @@ _WORKFLOWS = (
 )
 
 
-def test_legislation_workflows_are_dispatch_only_without_oidc() -> None:
-    """Keep recurring and publication authority disabled before later gates."""
-    for path in _WORKFLOWS:
-        content = path.read_text(encoding="utf-8")
-        assert "  schedule:" not in content
-        assert "id-token: write" not in content
-        assert "workflow_dispatch:" in content
-        assert "contents: read" in content
-        assert "exit 3" not in content
+def test_legislation_workflows_steady_state_cadence_and_permissions() -> None:
+    """Verify steady-state weekly harvest, monthly checks, and operator recovery."""
+    harvest_content = _WORKFLOWS[0].read_text(encoding="utf-8")
+    assert "0 18 * * 0" in harvest_content
+    assert "workflow_dispatch:" in harvest_content
+    assert "id-token: write" not in harvest_content
+    assert "contents: read" in harvest_content
+
+    reconciliation_content = _WORKFLOWS[1].read_text(encoding="utf-8")
+    assert "0 6 1 * *" in reconciliation_content
+    assert "workflow_dispatch:" in reconciliation_content
+    assert "id-token: write" not in reconciliation_content
+    assert "contents: read" in reconciliation_content
+
+    recovery_content = _WORKFLOWS[2].read_text(encoding="utf-8")
+    assert "  schedule:" not in recovery_content
+    assert "workflow_dispatch:" in recovery_content
+    assert "id-token: write" not in recovery_content
+    assert "contents: read" in recovery_content
 
 
 def test_operational_gates_opened_only_with_recorded_authorization() -> None:
@@ -62,13 +72,17 @@ def test_reconciliation_and_recovery_require_selected_state() -> None:
         content = path.read_text(encoding="utf-8")
         assert "state_run_id" in content
         assert "gh run download" in content
-        assert "legislation-state-$STATE_RUN_ID" in content
+        has_state_dir = (
+            "legislation-state-$TARGET_RUN_ID" in content
+            or "legislation-state-$STATE_RUN_ID" in content
+        )
+        assert has_state_dir
 
 
-def test_source_set_does_not_claim_schedule_publication_or_rights() -> None:
-    """Keep later external authorities explicitly disabled in configuration."""
+def test_source_set_steady_state_configuration() -> None:
+    """Validate source-set production operational configuration."""
     content = Path("config/source-sets/legislation.yml").read_text(encoding="utf-8")
-    assert 'execution_mode: "dispatch_only"' in content
-    assert 'rights_class: "review_required"' in content
-    assert content.count("enabled: false") == 2
-    assert "disabled_pending_one_batch_canary_and_weekly_authority" in content
+    assert 'execution_mode: "scheduled_and_dispatch"' in content
+    assert 'schedule: "weekly"' in content
+    assert 'rights_class: "crown_copyright"' in content
+    assert content.count("enabled: true") >= 3

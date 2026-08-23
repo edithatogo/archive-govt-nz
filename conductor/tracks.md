@@ -160,6 +160,8 @@ active only after the MVP checkpoint and their stated decision gates pass.
   *Link: [tracks/bronze_single_pass_ingestion_hardening_20260823/index.md](./tracks/bronze_single_pass_ingestion_hardening_20260823/index.md)*
 - [ ] **Track: Surveillance Heartbeat Ledger & Cross-Repository Federation Protocol**
   *Link: [tracks/bronze_surveillance_and_federation_anchoring_20260823/index.md](./tracks/bronze_surveillance_and_federation_anchoring_20260823/index.md)*
+- [x] **Track: Legislation Post-Cutover Production Steady-State Operations**
+  *Link: [tracks/legislation_post_cutover_steady_state_20260823/index.md](./tracks/legislation_post_cutover_steady_state_20260823/index.md)*
 
 ## Programme: Sequential Capability Assimilations (One-at-a-Time Implementation)
 

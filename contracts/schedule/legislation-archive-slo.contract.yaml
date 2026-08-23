@@ -1,30 +1,31 @@
 contract_id: legislation-archive-slo
-version: 1.1.0
+version: 2.0.0
 status: active
-scope: Archival scheduling cadence, weekly harvesting, and reconciliation SLO
-owning_track: legislation_workflow_fail_closed_20260820
+scope: Post-cutover production steady-state archival scheduling cadence, weekly harvesting, and reconciliation SLO
+owning_track: legislation_post_cutover_steady_state_20260823
 baseline:
   audited_target_commit: ece29bbfbf7061f24e8d1d8520ae4d808a26da60
   audited_donor_commit: 749918c251da59dc890c19dfda2ab9a021fd8ca6
 invariants:
-- Legislation workflows remain dispatch-only until one-batch and canary gates pass
-- Bounded harvest uses a dedicated concurrency group and explicit confirmation
-- Continuation state includes linked CAS, manifest, checkpoint, and receipt paths
-- Quarterly recovery drills remain operator-dispatched to test authenticated restoration against selected historical state artifact run IDs rather than unparameterized crons
+- Legislation incremental harvesting operates on a genuine weekly scheduled cadence ('0 18 * * 0') while preserving manual bounded dispatch
+- Inventory and publication reconciliation operates on a genuine monthly scheduled cadence ('0 6 1 * *') while preserving manual bounded dispatch
+- Quarterly recovery drills remain operator-dispatched to test authenticated restoration against selected historical state artifact run IDs
+- Legislation workflows support automatic prior state continuation discovery as well as explicit operator-provided state run IDs
+- Legislation corpus remains excluded from generic 6-hour multi-source harvesting pipelines
 preconditions:
-- config/source-sets/legislation.yml declares dispatch-only execution
+- config/source-sets/legislation.yml declares scheduled_and_dispatch execution with weekly schedule
 postconditions:
-- Bounded harvest produces machine-readable receipts and complete continuation state
+- Scheduled and dispatched workflows produce complete continuation state, linked CAS, and verification receipts
 forbidden_actions:
 - Running multi-gigabyte bulk corpus downloads on 6-hour recurring cron
-- Enabling a recurring schedule before one-batch and canary evidence
-- Granting publication or OIDC authority in legislation workflows
+- Disabling manual workflow_dispatch triggers on scheduled operational workflows
+- Running unparameterized automated quarterly recovery drills without explicit operator-selected state targets
 acceptance_checks:
 - check_id: CHK-SCHED-01
-  description: Validate dispatch-only source configuration and workflow gates
+  description: Validate steady-state source configuration and scheduled workflow gates
   command: uv run python tools/validate_contracts.py --contract contracts/schedule/legislation-archive-slo.contract.yaml
   expected_exit_code: 0
-  evidence_destination: conductor/tracks/legislation_workflow_fail_closed_20260820/evidence.md
+  evidence_destination: conductor/tracks/legislation_post_cutover_steady_state_20260823/evidence.md
   executor_id: contract_validator
   execution_class: local_read_only
   side_effect_class: read_only
@@ -36,4 +37,4 @@ evidence_paths:
 - .github/workflows/quarterly-legislation-recovery.yml
 - tests/tools/test_legislation_workflow_integrity.py
 created_at: '2026-08-18T12:54:00Z'
-updated_at: '2026-08-18T12:54:00Z'
+updated_at: '2026-08-23T12:50:00Z'
