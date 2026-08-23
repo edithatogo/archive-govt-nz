@@ -145,6 +145,7 @@ line-ending = "lf"
 "src/archive_govt_nz/silver/base.py" = ["PLR0913", "E501", "TC001", "D107"]
 "src/archive_govt_nz/silver/normalizers.py" = ["PLR0913", "E501", "TC001", "D102"]
 "src/archive_govt_nz/silver/pipeline.py" = ["PLR0913", "E501", "TC001", "D107", "TRY003", "EM102"]
+"src/archive_govt_nz/silver/interlink.py" = ["PLR0913", "E501"]
 "tests/silver/**/*.py" = ["D103", "E501", "TC003"]
 "src/archive_govt_nz/domains/gazette/courts_notices.py" = ["PLR0913", "E501"]
 "src/archive_govt_nz/domains/health/covid_data.py" = ["PLR0913", "E501"]

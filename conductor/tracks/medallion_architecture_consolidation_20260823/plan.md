@@ -25,13 +25,13 @@
 - [x] Task: Conductor Review & Automated Phase Gate Verification (`tools/conductor_phase_gate.py --phase phase_2_silver`).
 - [x] Task: Apply Phase 2 review findings, code fixes, and advance to Phase 3.
 
-### Phase 3: Silver Cross-Domain Interlinking & Relational Lineage Graph
-- [ ] Task: Elevate `tools/build_identifier_interlink.py` into canonical Silver interlinking engine (`src/archive_govt_nz/silver/interlink.py`).
-- [ ] Task: Build cross-domain relational graph joins (Legislation ↔ Gazette ↔ Courts ↔ Health ↔ CKAN).
-- [ ] Task: Generate unified Silver provenance and lineage manifests.
-- [ ] Task: Add test suite verifying bidirectional resolution and cycle safety.
-- [ ] Task: Conductor Review & Automated Phase Gate Verification (`tools/conductor_phase_gate.py --phase phase_3_silver_interlink`).
-- [ ] Task: Apply Phase 3 review findings, code fixes, and advance to Phase 4.
+### Phase 3: Silver Cross-Domain Interlinking & Relational Lineage Graph [COMPLETED]
+- [x] Task: Elevate `tools/build_identifier_interlink.py` into canonical Silver interlinking engine (`src/archive_govt_nz/silver/interlink.py`).
+- [x] Task: Build cross-domain relational graph joins (Legislation ↔ Gazette ↔ Courts ↔ Health ↔ CKAN).
+- [x] Task: Generate unified Silver provenance and lineage manifests.
+- [x] Task: Add test suite verifying bidirectional resolution and cycle safety.
+- [x] Task: Conductor Review & Automated Phase Gate Verification (`tools/conductor_phase_gate.py --phase phase_3_silver_interlink`).
+- [x] Task: Apply Phase 3 review findings, code fixes, and advance to Phase 4.
 
 ### Phase 4: Gold Layer DuckDB Analytical Engine & DCAT-AP Knowledge Graph
 - [ ] Task: Implement Gold DuckDB view layer in `src/archive_govt_nz/gold/analytics.py` for cross-domain SQL queries.

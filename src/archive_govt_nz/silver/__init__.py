@@ -5,6 +5,12 @@ from archive_govt_nz.silver.base import (
     NormalizedSilverRecord,
     SilverNormalizer,
 )
+from archive_govt_nz.silver.interlink import (
+    INTERLINK_SCHEMA,
+    CrossDomainInterlinkGraph,
+    EntityNode,
+    RelationalEdge,
+)
 from archive_govt_nz.silver.normalizers import (
     CourtsNoticesSilverNormalizer,
     GazetteSilverNormalizer,
@@ -20,12 +26,16 @@ from archive_govt_nz.silver.pipeline import (
 
 __all__ = [
     "DOMAIN_NORMALIZERS",
+    "INTERLINK_SCHEMA",
     "SILVER_ARROW_SCHEMA",
     "CourtsNoticesSilverNormalizer",
+    "CrossDomainInterlinkGraph",
+    "EntityNode",
     "GazetteSilverNormalizer",
     "HealthSilverNormalizer",
     "LegislationSilverNormalizer",
     "NormalizedSilverRecord",
+    "RelationalEdge",
     "SilverNormalizer",
     "SilverPipeline",
     "SilverTransformationResult",
