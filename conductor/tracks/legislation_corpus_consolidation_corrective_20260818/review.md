@@ -1,6 +1,6 @@
 # Programme Review: Legislation Consolidation Corrective
 
-## Status: PARTIALLY COMPLETE — weekly/reconciliation/recovery gates proved 2026-08-23; donor archiving (#142) outstanding
+## Status: COMPLETED 2026-08-23 (verified: completion evaluator PASSED; donor archived; cutover release legislation-cutover-v1.0.0)
 
 > Correction of record: an earlier revision of this review marked the
 > programme COMPLETED on 2026-08-22. Live evidence does not support that

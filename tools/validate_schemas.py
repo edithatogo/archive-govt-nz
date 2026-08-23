@@ -103,6 +103,13 @@ VALIDATION_PAIRS = (
         / "one-batch-reconciliation.schema.json",
         REPOSITORY_ROOT / "tests" / "fixtures" / "legislation-one-batch-failure.json",
     ),
+    (
+        REPOSITORY_ROOT / "schemas" / "bronze-ingestion-manifest-v1.schema.json",
+        REPOSITORY_ROOT
+        / "tests"
+        / "fixtures"
+        / "bronze-ingestion-manifest-sample.json",
+    ),
 )
 ARCHIVE_SCHEMA_DIRECTORY = REPOSITORY_ROOT / "schemas" / "archive" / "v1"
 

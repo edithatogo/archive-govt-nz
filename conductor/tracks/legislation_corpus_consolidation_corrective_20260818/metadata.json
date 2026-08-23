@@ -11,7 +11,7 @@
   "non_donor_boundary": "edithatogo/legislation",
   "requirements_method": "MoSCoW",
   "phase_0_control_plane_commit": "cb0e78f89a127f246d024ba3a5d770e1ec478f12",
-  "updated_at": "2026-08-23T02:00:00Z",
+  "updated_at": "2026-08-23T07:45:00Z",
   "completion_correction": {
     "date": "2026-08-23",
     "reason": "Prior COMPLETED status (2026-08-22) unsupported by live evidence: adversarial verification incomplete; zero scheduled workflow runs; cutover/observation/closeout receipts invalidated; donor not archived.",
@@ -21,6 +21,9 @@
       "edithatogo/archive-govt-nz#142"
     ],
     "correction_comment": "https://github.com/edithatogo/archive-govt-nz/issues/131#issuecomment-5383579331",
-    "evidence_root": "evidence/migrations/corpus-legislation-nz/"
-  }
+    "evidence_root": "evidence/migrations/corpus-legislation-nz/",
+    "resolved_at": "2026-08-23",
+    "resolution": "All acceptance criteria proved: 2 verifiable observation cycles (runs 32625516235/32625566353/32625612739 and 32625990438/32626071396/32626113799); donor archived 2026-08-23T07:40:08Z; cutover release legislation-cutover-v1.0.0; evaluator PASSED."
+  },
+  "completed_at": "2026-08-23T07:40:08Z"
 }

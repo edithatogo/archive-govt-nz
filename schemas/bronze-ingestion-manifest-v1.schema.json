@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "archive-govt-nz.bronze-ingestion-manifest/v1",
+  "title": "Bronze Ingestion Manifest",
+  "description": "Immutable batch manifest recording raw ingested records and cryptographic fixity.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "manifest_id",
+    "batch_id",
+    "domain",
+    "created_at",
+    "records_count",
+    "total_bytes",
+    "records"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "archive-govt-nz.bronze-ingestion-manifest/v1"
+    },
+    "manifest_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "batch_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "domain": {
+      "type": "string",
+      "minLength": 1
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "records_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "total_bytes": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "sha256_manifest": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "record_id",
+          "domain",
+          "source_metadata",
+          "fixity"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "record_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "domain": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_metadata": {
+            "type": "object",
+            "required": [
+              "source_url",
+              "observed_at",
+              "status_code",
+              "content_type"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "source_url": {
+                "type": "string",
+                "format": "uri"
+              },
+              "observed_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "status_code": {
+                "type": "integer",
+                "minimum": 100,
+                "maximum": 599
+              },
+              "content_type": {
+                "type": "string"
+              },
+              "encoding": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "etag": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "last_modified": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "headers": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              },
+              "rate_limit_remaining": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "minimum": 0
+              },
+              "rate_limit_reset": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "minimum": 0
+              }
+            }
+          },
+          "fixity": {
+            "type": "object",
+            "required": [
+              "sha256",
+              "blake3",
+              "size_bytes",
+              "cas_path"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "blake3": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "size_bytes": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "cas_path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "warc_record_id": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "media_type": {
+                "type": "string"
+              }
+            }
+          },
+          "custom_metadata": {
+            "type": "object"
+          }
+        }
+      }
+    }
+  }
+}

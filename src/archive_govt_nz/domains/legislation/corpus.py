@@ -602,7 +602,7 @@ class LegislationArchiveService:
                     continue
                 try:
                     enriched = self._enrich_work_identity(candidate_id)
-                except (ValueError, TypeError, OSError):
+                except ValueError, TypeError, OSError:
                     enriched = None
                 if enriched is not None:
                     discovered_by_id_search[candidate_id] = enriched
