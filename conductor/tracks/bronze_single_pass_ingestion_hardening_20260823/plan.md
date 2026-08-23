@@ -12,11 +12,11 @@
 - [x] Task: Add unit tests verifying RFC/IPFS test vector compatibility.
 - [x] Task: Conductor Review & Automated Phase Gate Verification.
 
-### Phase 3: Structural Schema Fingerprinting & Drift Detection
-- [ ] Task: Implement `src/archive_govt_nz/bronze/fingerprint.py` computing canonical schema hashes from JSON/XML/Arrow structures.
-- [ ] Task: Integrate schema fingerprint routing into Silver layer partitioning.
-- [ ] Task: Add unit and drift detection tests.
-- [ ] Task: Conductor Review & Automated Phase Gate Verification.
+### Phase 3: Structural Schema Fingerprinting & Drift Detection [COMPLETED]
+- [x] Task: Implement `src/archive_govt_nz/bronze/fingerprint.py` computing canonical schema hashes from JSON/XML/Arrow structures.
+- [x] Task: Integrate schema fingerprint routing into Silver layer partitioning.
+- [x] Task: Add unit and drift detection tests.
+- [x] Task: Conductor Review & Automated Phase Gate Verification.
 
 ### Phase 4: Offline Ed25519 Manifest Sealing
 - [ ] Task: Implement `src/archive_govt_nz/bronze/attestation.py` for deterministic Ed25519 key loading, signing, and verification.
