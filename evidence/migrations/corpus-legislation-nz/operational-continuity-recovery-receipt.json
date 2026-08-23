@@ -1,6 +1,6 @@
 {
   "schema_version": "archive-govt-nz.operational-continuity-recovery-receipt/v1",
-  "evaluated_at": "2026-08-20T02:43:59Z",
+  "evaluated_at": "2026-08-23T06:21:33Z",
   "target_commit": "c154578f4e7de3585e6b5885c157fc6ef2c7564b",
   "operational_cycles_count": 2,
   "operational_cycles": [
@@ -26,7 +26,7 @@
       "manifestations_count": 500,
       "failures_count": 0,
       "failures": [],
-      "manifest_sha256": "40e22fc049bb182887810ee9b8958d54ab87042227578fa6ed2e6ef1c04b0ff1",
+      "manifest_sha256": "75998d298bea0768cf5f3fe85c62ccd95045d016028b13d22b0fff08bfff9adc",
       "retained_artefact_ids": [
         "cas/sha256/historical-0001",
         "data/corpus.parquet",
@@ -57,7 +57,7 @@
       "manifestations_count": 500,
       "failures_count": 0,
       "failures": [],
-      "manifest_sha256": "40e22fc049bb182887810ee9b8958d54ab87042227578fa6ed2e6ef1c04b0ff1",
+      "manifest_sha256": "75998d298bea0768cf5f3fe85c62ccd95045d016028b13d22b0fff08bfff9adc",
       "retained_artefact_ids": [
         "cas/sha256/historical-0001",
         "data/corpus.parquet",
@@ -68,15 +68,15 @@
     }
   ],
   "recovery_drill": {
-    "workspace_dir": "/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/tmpwq2h3ido",
+    "workspace_dir": "/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/tmpjyzcu81z",
     "recovered_records_count": 5,
     "cas_objects_verified": 5,
     "parquet_size_bytes": 6930,
     "jsonl_size_bytes": 3379,
-    "baseline_manifest_sha256": "40e22fc049bb182887810ee9b8958d54ab87042227578fa6ed2e6ef1c04b0ff1",
-    "recovered_manifest_sha256": "40e22fc049bb182887810ee9b8958d54ab87042227578fa6ed2e6ef1c04b0ff1",
+    "baseline_manifest_sha256": "75998d298bea0768cf5f3fe85c62ccd95045d016028b13d22b0fff08bfff9adc",
+    "recovered_manifest_sha256": "75998d298bea0768cf5f3fe85c62ccd95045d016028b13d22b0fff08bfff9adc",
     "manifest_root_match": true,
-    "duration_ms": 41,
+    "duration_ms": 24,
     "mismatches_count": 0,
     "mismatches": [],
     "status": "passed"
