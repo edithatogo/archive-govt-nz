@@ -129,9 +129,16 @@ def _setup_minimal_passing_repo(tmp_path: Path) -> Path:
     return tmp_path
 
 
-def test_evaluator_fails_on_current_incomplete_repo() -> None:
-    """The completion evaluator must report INCOMPLETE and exit non-zero on current repo."""
+def test_evaluator_passes_on_current_completed_repo() -> None:
+    """The evaluator must report PASSED on the current, evidence-backed repo."""
     root = Path(__file__).parents[2]
+    attestation = (
+        root
+        / "evidence/migrations/corpus-legislation-nz/shadow-operation-cutover-attestation.json"
+    )
+    assert attestation.is_file(), (
+        "attestation must exist for the completed-state assertion"
+    )
     result = subprocess.run(
         [
             "uv",
@@ -145,9 +152,9 @@ def test_evaluator_fails_on_current_incomplete_repo() -> None:
         text=True,
         check=False,
     )
-    assert result.returncode == 1
-    assert "INCOMPLETE" in result.stdout
-    assert "[BLOCKER]" in result.stdout
+    assert result.returncode == 0
+    assert "PASSED (COMPLETE)" in result.stdout
+    assert "[BLOCKER]" not in result.stdout
 
 
 def test_negative_control_1_fixed_cli_count_detected(tmp_path: Path) -> None:
