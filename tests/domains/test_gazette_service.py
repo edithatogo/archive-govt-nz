@@ -67,6 +67,13 @@ class TestValidateGazetteRecord:
         findings = validate_gazette_record(rec)
         assert any("year" in f for f in findings)
 
+    def test_boolean_year_rejected(self) -> None:
+        """Boolean year is not accepted as a valid integer year."""
+        rec = dict(_valid_record())
+        rec["year"] = True
+        findings = validate_gazette_record(rec)
+        assert any("integer" in f for f in findings)
+
     def test_non_http_uri_rejected(self) -> None:
         """Non-HTTP canonical URI is rejected."""
         rec = dict(_valid_record())

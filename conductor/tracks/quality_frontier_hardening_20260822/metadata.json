@@ -1,0 +1,16 @@
+{
+  "id": "quality_frontier_hardening_20260822",
+  "title": "Quality frontier: gazette mutation gate and repository hardening",
+  "type": "quality",
+  "status": "completed",
+  "created_at": "2026-08-22T14:40:00Z",
+  "completed_at": "2026-08-22",
+  "requirements_method": "MoSCoW",
+  "parent_context": "conductor/next-tracks-proposal.md (Track B)",
+  "donor_issue_refs": [
+    "edithatogo/corpus-legislation-nz#158",
+    "edithatogo/corpus-legislation-nz#159",
+    "edithatogo/corpus-legislation-nz#160",
+    "edithatogo/corpus-legislation-nz#145"
+  ]
+}

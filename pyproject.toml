@@ -108,6 +108,7 @@ ignore = [
 "tools/mutation_redundancy.py" = ["S603", "S607"]
 "tools/mutation_archivebox_pilot.py" = ["S603", "S607"]
 "tools/mutation_adapters.py" = ["S603", "S607"]
+"tools/mutation_gazette.py" = ["S603", "S607"]
 "tools/reconcile_donor_issues.py" = ["S603", "S607", "E501"]
 "tools/reconcile_legislation_donor_issues.py" = ["S108", "S603", "S607", "E501"]
 "tools/generate_donor_live_inventory.py" = ["S108", "S603", "S607", "PTH118", "PLR2004", "E501"]

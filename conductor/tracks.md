@@ -97,6 +97,11 @@ decision or safety boundary, and continue independent work while it is pending.
 - [x] **Track: NZ Gazette archive workflow, harvest orchestration and publication staging**
   *Link: [tracks/nz_gazette_archive_workflow_20260822/index.md](./tracks/nz_gazette_archive_workflow_20260822/index.md)*
 
+## Programme: Quality Frontier (2026-08-22) — COMPLETED
+
+- [x] **Track: Quality frontier — gazette mutation gate and repository hardening**
+  *Link: [tracks/quality_frontier_hardening_20260822/index.md](./tracks/quality_frontier_hardening_20260822/index.md)*
+
 ## Proposed follow-up tracks
 
 These are bounded proposals, not active or completed tracks. They become
