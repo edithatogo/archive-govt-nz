@@ -9,13 +9,11 @@
 ### Phase 1: Bronze Ingestion Layer & Immutable Storage Standardization (PRIMARY FOCUS)
 - [ ] Task: Formalize Bronze storage hierarchy (`data/bronze/{domain}/`, CAS object stores `sha256/` and `blake3/`, WARC/WACZ bitstream trees).
 - [ ] Task: Standardize Bronze ingestion manifest model across all core domains (Legislation, Gazette, CKAN data.govt.nz, Health/MoH, Treasury, Feeds/Social).
-- [ ] Task: Integrate raw capture adapters from capability assimilation sources:
-    - [ ] Hansard parliamentary debate XML stream captures (`corpus-nz-hansard`)
-    - [ ] HathiTrust NZ historic text and OCR volume bitstreams (`hathi-nz`)
-    - [ ] FYI (OIA) correspondence metadata and attachment snapshots (`fyi-archive`)
-    - [ ] Open Social multi-platform payloads and RIOPA export bitstreams (`open_social_data`)
-    - [ ] Medico-legal tribunal decision raw text and PDF snapshots (`corpus-cases-medilegal-nz`)
-- [ ] Task: Write characterization, fixity, and zero-loss unit tests for Bronze storage and CAS streaming.
+- [ ] Task: Incorporate newly discovered domain feeds into Bronze ingestion manifests:
+    - [ ] Courts NZ Public Notices archive (`edithatogo/courts-nz-public-notices-archive`) into Gazette/Notices adapter
+    - [ ] NZ COVID-19 Official Data (`edithatogo/nz-covid-data`) into Health domain
+    - [ ] Pae Ora Health System Reform releases (`edithatogo/pae_ora_reform`) into Health domain
+- [ ] Task: Write characterization, fixity, and zero-loss unit tests for Bronze storage and CAS streaming across all domains.
 - [ ] Task: Conductor - User Manual Verification 'Bronze Ingestion Layer' (Protocol in workflow.md).
 
 ### Phase 2: Silver Layer Parquet Pipelines (Polars / PyArrow)
@@ -27,16 +25,16 @@
 
 ### Phase 3: Silver Cross-Domain Interlinking & Relational Lineage Graph
 - [ ] Task: Elevate `tools/build_identifier_interlink.py` into canonical Silver interlinking engine (`src/archive_govt_nz/silver/interlink.py`).
-- [ ] Task: Build cross-domain relational graph joins (Legislation ↔ Gazette ↔ Health ↔ CKAN ↔ Hansard ↔ FYI ↔ Cases).
+- [ ] Task: Build cross-domain relational graph joins (Legislation ↔ Gazette ↔ Courts ↔ Health ↔ CKAN).
 - [ ] Task: Generate unified Silver provenance and lineage manifests.
 - [ ] Task: Add test suite verifying bidirectional resolution and cycle safety.
 - [ ] Task: Conductor - User Manual Verification 'Silver Cross-Domain Interlinking' (Protocol in workflow.md).
 
 ### Phase 4: Gold Layer DuckDB Analytical Engine & DCAT-AP Knowledge Graph
 - [ ] Task: Implement Gold DuckDB view layer in `src/archive_govt_nz/gold/analytics.py` for cross-domain SQL queries.
-- [ ] Task: Implement DCAT-AP 3.0 / schema.org Croissant / RO-Crate 1.1 Gold metadata exporter aligned with `global-medicines-atlas`.
-- [ ] Task: Build automated dataset card and analytical derivative generator.
-- [ ] Task: Add unit and integration tests for DuckDB views and knowledge graph serialization.
+- [ ] Task: Implement DCAT-AP 3.0 / schema.org Croissant / RO-Crate 1.1 Gold metadata exporter.
+- [ ] Task: Implement zero-copy DuckDB remote/local federation hooks for `global-medicines-atlas` and `fyi-archive`.
+- [ ] Task: Add unit and integration tests for DuckDB views, federation hooks, and knowledge graph serialization.
 - [ ] Task: Conductor - User Manual Verification 'Gold DuckDB & Knowledge Graph' (Protocol in workflow.md).
 
 ### Phase 5: Gold Layer Embedded LanceDB Hybrid Vector Index

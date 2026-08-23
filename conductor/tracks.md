@@ -152,20 +152,25 @@ active only after the MVP checkpoint and their stated decision gates pass.
 
 - [ ] **Track: Medallion Architecture Consolidation with Integrated Vector & Knowledge Graph Products**
   *Link: [tracks/medallion_architecture_consolidation_20260823/index.md](./tracks/medallion_architecture_consolidation_20260823/index.md)*
+  *Primary Focus: Phase 1 (Bronze Ingestion & Preservation Engine)*
 
-## Programme: Federated Corpus Migration & Capability Consolidation (2026-08-23)
+## Programme: Sequential Capability Assimilations (One-at-a-Time Implementation)
 
 - [ ] **Track: Hansard Corpus Capability Assimilation**
   *Link: [tracks/hansard_capability_assimilation_20260823/index.md](./tracks/hansard_capability_assimilation_20260823/index.md)*
 - [ ] **Track: HathiTrust NZ Historic Corpus Capability Assimilation**
   *Link: [tracks/hathi_nz_capability_assimilation_20260823/index.md](./tracks/hathi_nz_capability_assimilation_20260823/index.md)*
-- [ ] **Track: FYI (OIA) Archive Substrate Federation**
-  *Link: [tracks/fyi_archive_substrate_federation_20260823/index.md](./tracks/fyi_archive_substrate_federation_20260823/index.md)*
-- [ ] **Track: Open Social Data & RIOPA Interoperability Substrate**
-  *Link: [tracks/open_social_riopa_substrate_20260823/index.md](./tracks/open_social_riopa_substrate_20260823/index.md)*
 - [ ] **Track: Medico-Legal Case Law Preservation Machinery**
   *Link: [tracks/corpus_medilegal_preservation_machinery_20260823/index.md](./tracks/corpus_medilegal_preservation_machinery_20260823/index.md)*
 - [ ] **Track: Common Multi-Platform Publication & Distribution Hub**
   *Link: [tracks/common_publication_distribution_hub_20260823/index.md](./tracks/common_publication_distribution_hub_20260823/index.md)*
+
+## Programme: Cross-Repository Federation Partners (Group 4)
+
+- **`global-medicines-atlas`**: Zero-copy Parquet joins for global medicine ontologies and pricing.
+- **`reimbursement-atlas`**: International public reimbursement schedule cross-references (MBS/PBS/CMS).
+- **`fyi-archive`**: Multi-country international FOI register federation (AU, BE, CZ, EU, FR, GE, GR, HK, HR, HU, IE, LR, MD, NL, RO) with NZ OIA cross-queries.
+- **`open_social_data`**: Multi-national public social data engine (Australian Bureau of Statistics, data.gov.au, Statistics NZ).
+
 
 
