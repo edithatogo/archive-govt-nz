@@ -33,13 +33,13 @@
 - [x] Task: Conductor Review & Automated Phase Gate Verification (`tools/conductor_phase_gate.py --phase phase_3_silver_interlink`).
 - [x] Task: Apply Phase 3 review findings, code fixes, and advance to Phase 4.
 
-### Phase 4: Gold Layer DuckDB Analytical Engine & DCAT-AP Knowledge Graph
-- [ ] Task: Implement Gold DuckDB view layer in `src/archive_govt_nz/gold/analytics.py` for cross-domain SQL queries.
-- [ ] Task: Implement DCAT-AP 3.0 / schema.org Croissant / RO-Crate 1.1 Gold metadata exporter.
-- [ ] Task: Implement zero-copy DuckDB remote/local federation hooks for `global-medicines-atlas` and `fyi-archive`.
-- [ ] Task: Add unit and integration tests for DuckDB views, federation hooks, and knowledge graph serialization.
-- [ ] Task: Conductor Review & Automated Phase Gate Verification (`tools/conductor_phase_gate.py --phase phase_4_gold_duckdb`).
-- [ ] Task: Apply Phase 4 review findings, code fixes, and advance to Phase 5.
+### Phase 4: Gold Layer DuckDB Analytical Engine & DCAT-AP Knowledge Graph [COMPLETED]
+- [x] Task: Implement Gold DuckDB view layer in `src/archive_govt_nz/gold/analytics.py` for cross-domain SQL queries.
+- [x] Task: Implement DCAT-AP 3.0 / schema.org Croissant / RO-Crate 1.1 Gold metadata exporter.
+- [x] Task: Implement zero-copy DuckDB remote/local federation hooks for `global-medicines-atlas` and `fyi-archive`.
+- [x] Task: Add unit and integration tests for DuckDB views, federation hooks, and knowledge graph serialization.
+- [x] Task: Conductor Review & Automated Phase Gate Verification (`tools/conductor_phase_gate.py --phase phase_4_gold_duckdb`).
+- [x] Task: Apply Phase 4 review findings, code fixes, and advance to Phase 5.
 
 ### Phase 5: Gold Layer Embedded LanceDB Hybrid Vector Index
 - [ ] Task: Implement embedded LanceDB index generator in `src/archive_govt_nz/gold/search.py` consuming Silver Parquet.
