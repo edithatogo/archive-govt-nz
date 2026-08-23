@@ -1,6 +1,6 @@
 # Programme Review: Legislation Consolidation Corrective
 
-## Status: PARTIALLY COMPLETE — operational acceptance gates open (corrected 2026-08-23)
+## Status: PARTIALLY COMPLETE — weekly/reconciliation/recovery gates proved 2026-08-23; donor archiving (#142) outstanding
 
 > Correction of record: an earlier revision of this review marked the
 > programme COMPLETED on 2026-08-22. Live evidence does not support that
@@ -22,7 +22,7 @@
 - `legislation_corrective_identity_normalisation_corpus_20260818`: Completed (v2 Runtime Model & Application Service)
 - `legislation_corrective_cli_contract_compatibility_20260818`: Completed (CLI & nzlc Compatibility)
 - `legislation_corrective_mcp_disposition_conformance_20260818`: Completed (Operational MCP Server)
-- `legislation_corrective_weekly_orchestration_state_20260818`: Reopened 2026-08-23 (artifacts committed; zero scheduled runs observed — weekly harvest, monthly reconciliation and quarterly recovery drills unexecuted live). Tracks #137/#138.
+- `legislation_corrective_weekly_orchestration_state_20260818`: Completed 2026-08-23 (first authorized operational cycle observed: harvest run 32625516235 outcome=changed; reconciliation run 32625566353 consistent; recovery drill run 32625612739 verified — receipts under evidence/migrations/corpus-legislation-nz/first-operational-cycle/). Tracks #137/#138 closed.
 - `legislation_corrective_reconciliation_parity_publication_20260818`: Completed (Differential Parity & Publication Gating) — parity receipts all passed; remote publication readback passed (#139/#140 verified).
 - `legislation_corrective_shadow_operation_cutover_20260818`: Reopened 2026-08-23 (cutover, observation and closeout receipts carry `status: invalidated`; donor repo not archived; no formal cutover release). Track #142.
 - `legislation_corrective_evidence_chronology_20260818`: Completed (Evidence Chronology & Defect Verification)
