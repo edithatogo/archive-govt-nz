@@ -9,7 +9,7 @@ from typing import Any
 
 try:
     import blake3  # type: ignore[import-untyped,import-not-found]
-except ImportError, ModuleNotFoundError:
+except (ImportError, ModuleNotFoundError):
     blake3 = None
 
 from archive_govt_nz.bronze.models import (
