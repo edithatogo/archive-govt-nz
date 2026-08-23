@@ -4,7 +4,8 @@ from __future__ import annotations
 
 import io
 import json
-from typing import TYPE_CHECKING, Any
+from pathlib import Path
+from typing import Any
 
 import pytest
 
@@ -19,9 +20,6 @@ from archive_govt_nz.mcp_server import (
     run_stdio_server,
 )
 from archive_govt_nz.object_store import ContentAddressedStore, ObjectStoreError
-
-if TYPE_CHECKING:
-    from pathlib import Path
 
 
 def _initialize(server: Server) -> dict[str, Any]:
@@ -320,7 +318,7 @@ def test_source_fallback_and_invalid_cas_layouts(
     fallback = tmp_path / "seeds" / "sources"
     fallback.mkdir(parents=True)
     sources = call_tool("archive_sources")
-    assert sources["registry_path"] == "seeds/sources"
+    assert Path(sources["registry_path"]).as_posix() == "seeds/sources"
     assert sources["status"] == "empty"
 
     cas_root = tmp_path / "invalid-cas"

@@ -124,13 +124,18 @@ def test_benchmark_cas_cli() -> None:
 
 def test_publish_to_huggingface_cli_missing_token() -> None:
     """CLI tool fails gracefully when token is absent."""
+    clean_env = {
+        k: v
+        for k, v in os.environ.items()
+        if k not in ("HF_TOKEN", "HUGGINGFACE_TOKEN", "HUGGING_FACE_HUB_TOKEN")
+    }
     result = subprocess.run(
         [sys.executable, "tools/publish_to_huggingface.py"],
         cwd=REPOSITORY_ROOT,
         capture_output=True,
         text=True,
         check=False,
-        env={"PATH": os.environ.get("PATH", "")},
+        env=clean_env,
     )
     assert result.returncode == 1
     assert "Hugging Face token required" in result.stdout

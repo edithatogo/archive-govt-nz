@@ -43,7 +43,7 @@ def test_operational_gates_opened_only_with_recorded_authorization() -> None:
         "archive-govt-nz.operational-gate-authorization/v1"
     )
     assert receipt["decision"] == "OPEN_GATES"
-    assert set(receipt["scope"]) == {str(path) for path in _WORKFLOWS}
+    assert set(receipt["scope"]) == {path.as_posix() for path in _WORKFLOWS}
     assert len(receipt["authorities_granted"]) >= 5
     assert receipt["retained_controls"], "fail-closed controls must be listed"
 

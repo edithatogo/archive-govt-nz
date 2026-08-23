@@ -109,6 +109,124 @@ PHASE_TARGETS: dict[str, dict[str, Any]] = {
             ),
         ],
     },
+    "bronze_harden_p1": {
+        "title": "Bronze Hardening Phase 1: Magic Byte Filter & MIME Signature Engine",
+        "test_targets": [
+            "tests/bronze/test_sniffer.py",
+            "tests/bronze/test_adapter.py",
+        ],
+        "source_paths": [
+            "src/archive_govt_nz/bronze/sniffer.py",
+            "src/archive_govt_nz/bronze/adapter.py",
+        ],
+        "schemas": ["schemas/bronze-ingestion-manifest-v1.schema.json"],
+    },
+    "bronze_harden_p2": {
+        "title": "Bronze Hardening Phase 2: Streaming Multi-Hash Engine (CIDv1)",
+        "test_targets": [
+            "tests/bronze/test_multihash.py",
+            "tests/bronze/test_manifest.py",
+        ],
+        "source_paths": [
+            "src/archive_govt_nz/bronze/multihash.py",
+            "src/archive_govt_nz/bronze/manifest.py",
+        ],
+        "schemas": ["schemas/bronze-ingestion-manifest-v1.schema.json"],
+    },
+    "bronze_harden_p3": {
+        "title": "Bronze Hardening Phase 3: Structural Schema Fingerprinting & Drift Detection",
+        "test_targets": [
+            "tests/bronze/test_fingerprint.py",
+        ],
+        "source_paths": [
+            "src/archive_govt_nz/bronze/fingerprint.py",
+        ],
+        "schemas": [],
+    },
+    "bronze_harden_p4": {
+        "title": "Bronze Hardening Phase 4: Offline Ed25519 Manifest Sealing",
+        "test_targets": [
+            "tests/bronze/test_attestation.py",
+        ],
+        "source_paths": [
+            "src/archive_govt_nz/bronze/attestation.py",
+        ],
+        "schemas": [],
+    },
+    "bronze_harden_p5": {
+        "title": "Bronze Hardening Phase 5: Quality Gates & Certification",
+        "test_targets": [
+            "tests/bronze/",
+        ],
+        "source_paths": [
+            "src/archive_govt_nz/bronze/",
+        ],
+        "schemas": ["schemas/bronze-ingestion-manifest-v1.schema.json"],
+        "extra_commands": [
+            (
+                ["uv", "run", "--locked", "python", "tools/mutation_medallion.py"],
+                "Medallion Mutation Gate",
+            ),
+        ],
+    },
+    "bronze_surv_p1": {
+        "title": "Surveillance Phase 1: Compact Surveillance Heartbeat Ledger",
+        "test_targets": [
+            "tests/bronze/test_heartbeat.py",
+        ],
+        "source_paths": [
+            "src/archive_govt_nz/bronze/heartbeat.py",
+        ],
+        "schemas": [],
+    },
+    "bronze_surv_p2": {
+        "title": "Surveillance Phase 2: Canonical URN Protocol & Federation Encoders",
+        "test_targets": [
+            "tests/core/test_urn.py",
+        ],
+        "source_paths": [
+            "src/archive_govt_nz/core/urn.py",
+        ],
+        "schemas": [],
+    },
+    "bronze_surv_p3": {
+        "title": "Surveillance Phase 3: Zero-Copy Cross-Repository Federated SQL Views",
+        "test_targets": [
+            "tests/gold/test_federation_views.py",
+        ],
+        "source_paths": [
+            "src/archive_govt_nz/gold/analytics.py",
+        ],
+        "schemas": [],
+    },
+    "bronze_surv_p4": {
+        "title": "Surveillance Phase 4: Asynchronous OpenTimestamps Proof-of-Existence Batcher",
+        "test_targets": [
+            "tests/tools/test_ots_batch_anchoring.py",
+        ],
+        "source_paths": [
+            "tools/ots_batch_anchoring.py",
+        ],
+        "schemas": [],
+    },
+    "bronze_surv_p5": {
+        "title": "Surveillance Phase 5: Quality Gates & Federation Certification",
+        "test_targets": [
+            "tests/bronze/",
+            "tests/gold/",
+        ],
+        "source_paths": [
+            "src/archive_govt_nz/bronze/",
+            "src/archive_govt_nz/gold/",
+        ],
+        "schemas": [],
+        "extra_commands": [
+            (
+                ["uv", "run", "--locked", "python", "tools/mutation_medallion.py"],
+                "Medallion Mutation Gate",
+            ),
+        ],
+    },
 }
 
 
