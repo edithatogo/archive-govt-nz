@@ -1,6 +1,5 @@
 """Run bounded source mutations against global rights and policy tests."""
 # pyright: reportUnknownVariableType=false, reportUnknownMemberType=false, reportUnknownArgumentType=false
-# ruff: noqa: S603
 
 from __future__ import annotations
 

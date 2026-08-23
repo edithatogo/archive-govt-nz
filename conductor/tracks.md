@@ -99,8 +99,12 @@ decision or safety boundary, and continue independent work while it is pending.
     *Link: [tracks/legislation_corrective_rights_redistribution_20260818/index.md](./tracks/legislation_corrective_rights_redistribution_20260818/index.md)*
   - [x] **Child Track 11: Shadow operation, recovery and cutover**
     *Link: [tracks/legislation_corrective_shadow_operation_cutover_20260818/index.md](./tracks/legislation_corrective_shadow_operation_cutover_20260818/index.md)*
-  - [x] **Child Track 12: Gazette residual work, kept separate and incomplete**
+  - [x] **Child Track 12: Gazette residual work — separation decision recorded**
     *Link: [tracks/legislation_corrective_gazette_residual_separation_20260818/index.md](./tracks/legislation_corrective_gazette_residual_separation_20260818/index.md)*
+    *The [x] records completion of the separation decision only; the residual
+    gazette work itself is carried by
+    `tracks/nz_gazette_archive_workflow_20260822/` (artifacts delivered;
+    first scheduled-run observation pending — see its evidence.md).*
 
 ## Programme: Gazette Archive Workflow (2026-08-22) — COMPLETED
 

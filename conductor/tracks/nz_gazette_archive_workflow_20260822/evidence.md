@@ -39,3 +39,11 @@
 - `schemas/gazette/v1/gazette-record.schema.json` — canonical schema present.
 - `config/source-sets/nz-gazette.yml` — enabled, weekly Thursday 04:00 UTC schedule.
 - No scheduled gazette CI workflow existed prior to this track.
+## Operational Observation Status (2026-08-23)
+The weekly cron (Thursday 04:00 UTC) was created 2026-08-22 and has not yet
+elapsed its first scheduled occurrence, so zero hosted runs exist at
+completion time. This track's COMPLETED status covers artifact delivery
+(orchestrator, service layer, validation rules, workflow) only. Operational
+observation — first successful scheduled harvest with checkpoint/manifest
+receipts — remains pending and should be confirmed on or after the first
+Thursday run before any downstream dependency relies on live gazette state.

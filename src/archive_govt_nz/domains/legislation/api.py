@@ -53,6 +53,7 @@ class NZLegislationApiClient:
         async_client: httpx.AsyncClient | None = None,
         time_fn: Callable[[], float] = time.monotonic,
         sleep_fn: Callable[[float], None] = time.sleep,
+        async_sleep_fn: Callable[[float], Any] = asyncio.sleep,
     ) -> None:
         """Initialize legislation API client."""
         self.api_key = (
@@ -66,6 +67,7 @@ class NZLegislationApiClient:
         self._async_client = async_client
         self._time_fn = time_fn
         self._sleep_fn = sleep_fn
+        self._async_sleep_fn = async_sleep_fn
         self._last_request_at = 0.0
         self.last_rate_limit_remaining: int | None = None
         self.last_rate_limit_reset: int | None = None
@@ -263,13 +265,13 @@ class NZLegislationApiClient:
                             in {HTTP_ACCEPTED, HTTP_TOO_MANY_REQUESTS}
                             else backoff
                         )
-                        await asyncio.sleep(wait_time)
+                        await self._async_sleep_fn(wait_time)
                         backoff = next_backoff
                         continue
                 except httpx.TransportError, httpx.TimeoutException:
                     if attempts > self.max_retries:
                         raise
-                    await asyncio.sleep(backoff)
+                    await self._async_sleep_fn(backoff)
                     backoff *= 2
                 else:
                     headers_dict = {k.lower(): v for k, v in resp.headers.items()}

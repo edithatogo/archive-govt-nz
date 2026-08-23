@@ -1186,7 +1186,9 @@ async def test_partial_batch_is_not_recorded_as_completed(tmp_path: Path) -> Non
         api_client=NZLegislationApiClient(
             async_client=httpx.AsyncClient(
                 transport=httpx.MockTransport(handler),
-            )
+            ),
+            max_retries=0,
+            min_interval_seconds=0.0,
         ),
     )
     checkpoint = tmp_path / "checkpoint.json"
@@ -1477,7 +1479,11 @@ async def test_fail_fast_no_checkpoint_promotion(tmp_path: Path) -> None:
 
     transport = httpx.MockTransport(handler)
     async_client = httpx.AsyncClient(transport=transport)
-    api_client = NZLegislationApiClient(async_client=async_client)
+    api_client = NZLegislationApiClient(
+        async_client=async_client,
+        max_retries=0,
+        min_interval_seconds=0.0,
+    )
     service = LegislationArchiveService(store=store, api_client=api_client)
 
     target = WorkTarget(
@@ -1662,7 +1668,12 @@ async def test_target_resolution_and_partial_sync(tmp_path: Path) -> None:
     transport = httpx.MockTransport(handler)
     client = httpx.Client(transport=transport)
     async_client = httpx.AsyncClient(transport=transport)
-    api_client = NZLegislationApiClient(client=client, async_client=async_client)
+    api_client = NZLegislationApiClient(
+        client=client,
+        async_client=async_client,
+        max_retries=0,
+        min_interval_seconds=0.0,
+    )
     chk_mgr = LegislationCheckpointManager(chk_path)
     service = LegislationArchiveService(
         store=store, api_client=api_client, checkpoint_mgr=chk_mgr

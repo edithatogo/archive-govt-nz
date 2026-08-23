@@ -178,9 +178,18 @@ async def test_api_client_get_document_raw_async_retries() -> None:
             return httpx.Response(500, text="Server error")
         return httpx.Response(200, content=b"<act/>")
 
+    slept: list[float] = []
+
+    async def mock_async_sleep(d: float) -> None:
+        slept.append(d)
+
     transport = httpx.MockTransport(handler)
     async_client = httpx.AsyncClient(transport=transport)
-    client = NZLegislationApiClient(async_client=async_client, max_retries=4)
+    client = NZLegislationApiClient(
+        async_client=async_client,
+        max_retries=4,
+        async_sleep_fn=mock_async_sleep,
+    )
 
     status, content, _ = await client.get_document_raw_async(
         "https://api.legislation.govt.nz/v0/act/1"

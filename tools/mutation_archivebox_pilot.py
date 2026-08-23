@@ -2,10 +2,12 @@
 
 from __future__ import annotations
 
+import concurrent.futures
 import json
 import os
 import shutil
 import subprocess
+import sys
 import tempfile
 from pathlib import Path
 
@@ -75,7 +77,7 @@ def _run_mutant(name: str, original: str, before: str, after: str) -> dict[str, 
             item for item in (str(root / "src"), existing_pythonpath) if item
         )
         result = subprocess.run(
-            ["uv", "run", "--locked", "pytest", *TEST_ARGUMENTS],
+            [sys.executable, "-m", "pytest", *TEST_ARGUMENTS],
             cwd=REPOSITORY_ROOT,
             env=environment,
             check=False,
@@ -92,10 +94,14 @@ def _run_mutant(name: str, original: str, before: str, after: str) -> dict[str, 
 def main() -> int:
     """Require every targeted ArchiveBox pilot mutation to be detected."""
     original = (REPOSITORY_ROOT / SOURCE_RELATIVE).read_text(encoding="utf-8")
-    results = [
-        _run_mutant(name, original, before, after)
-        for name, (before, after) in MUTATIONS.items()
-    ]
+    with concurrent.futures.ThreadPoolExecutor(
+        max_workers=min(8, os.cpu_count() or 4)
+    ) as executor:
+        futures = [
+            executor.submit(_run_mutant, name, original, before, after)
+            for name, (before, after) in MUTATIONS.items()
+        ]
+        results = [f.result() for f in futures]
     killed = sum(result["killed"] is True for result in results)
     receipt = {
         "schema_version": "archive-govt-nz.mutation/v1",
