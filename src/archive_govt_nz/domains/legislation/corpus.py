@@ -465,7 +465,82 @@ class LegislationArchiveService:
             html_fallback_count=html_count,
         )
 
-    def _resolve_targets(  # noqa: C901, PLR0912, PLR0915
+    def _enrich_work_identity(self, work_id: str) -> dict[str, Any] | None:  # noqa: C901
+        """Resolve a candidate work to canonical FRBR identity, or None."""
+        versions = list(self.api_client.iter_work_versions(work_id))
+        if not versions:
+            return None
+        version_id = str(versions[0].get("version_id") or "").strip()
+        if not version_id:
+            msg = f"discovered work {work_id} lacks canonical expression identity"
+            raise ValueError(msg)
+        version = versions[0]
+        if not version.get("work_id") or not version.get("formats"):
+            try:
+                detailed = self.api_client.get_version(version_id)
+                if isinstance(detailed, dict) and detailed:
+                    version = detailed
+            except Exception:  # noqa: BLE001, S110
+                pass
+        discovered_work_id = str(version.get("work_id") or "").strip()
+        if discovered_work_id and discovered_work_id != work_id:
+            msg = f"discovered expression {version_id} has mismatched work identity"
+            raise ValueError(msg)
+        version_date = str(version.get("version_date") or "").strip()
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", version_date):
+            match = re.search(r"\d{4}-\d{2}-\d{2}", version_id)
+            version_date = match.group(0) if match else ""
+        manifestations = []
+        for item in version.get("formats", []) or []:
+            if not isinstance(item, dict):
+                continue
+            source_url = str(item.get("url") or "").strip()
+            if source_url:
+                if version_date and "/latest" in source_url:
+                    source_url = source_url.replace("/latest", f"/{version_date}", 1)
+                manifestations.append(
+                    {
+                        "manifestation_id": source_url,
+                        "source_url": source_url,
+                        "media_type": item.get("media_type")
+                        or item.get("type")
+                        or "application/octet-stream",
+                    }
+                )
+        manifestations = _primary_manifestation(manifestations)
+        if not manifestations:
+            stem = work_id.replace("_", "/")
+            xml_url = f"https://www.legislation.govt.nz/{stem}/latest/whole.xml"
+            manifestations = [
+                {
+                    "manifestation_id": xml_url,
+                    "source_url": xml_url,
+                    "media_type": "application/xml",
+                }
+            ]
+        canonical_uri = str(
+            version.get("canonical_uri")
+            or version.get("canonical_url")
+            or (manifestations[0]["source_url"] if manifestations else "")
+            or f"https://www.legislation.govt.nz/{work_id.replace('_', '/')}"
+            "/latest/whole.html"
+        ).strip()
+        return {
+            "work_id": work_id,
+            "title": version.get("title", ""),
+            "canonical_uri": canonical_uri,
+            "expressions": [
+                {
+                    "expression_id": version_id,
+                    "version_date": version_date or None,
+                    "version_label": version.get("version_label"),
+                    "manifestations": manifestations,
+                    "fallback_manifestations": True,
+                }
+            ],
+        }
+
+    def _resolve_targets(  # noqa: C901, PLR0912
         self,
         work_ids: list[str] | None = None,
         search_terms: list[str] | None = None,
@@ -492,67 +567,11 @@ class LegislationArchiveService:
             discovered_by_id: dict[str, dict[str, Any]] = {}
             missing_ids: list[str] = []
             for work_id in requested_ids:
-                versions = list(self.api_client.iter_work_versions(work_id))
-                if not versions:
+                enriched = self._enrich_work_identity(work_id)
+                if enriched is None:
                     missing_ids.append(work_id)
                     continue
-                version_id = str(versions[0].get("version_id") or "").strip()
-                if not version_id:
-                    msg = (
-                        f"discovered work {work_id} lacks canonical expression identity"
-                    )
-                    raise ValueError(msg)
-                version = self.api_client.get_version(version_id)
-                discovered_work_id = str(version.get("work_id") or "").strip()
-                if discovered_work_id != work_id:
-                    msg = (
-                        "discovered expression "
-                        f"{version_id} has mismatched work identity"
-                    )
-                    raise ValueError(msg)
-                version_date = str(version.get("version_date") or "").strip()
-                if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", version_date):
-                    match = re.search(r"\d{4}-\d{2}-\d{2}", version_id)
-                    version_date = match.group(0) if match else ""
-                manifestations = []
-                for item in version.get("formats", []) or []:
-                    if not isinstance(item, dict):
-                        continue
-                    source_url = str(item.get("url") or "").strip()
-                    if source_url:
-                        if version_date and "/latest" in source_url:
-                            source_url = source_url.replace(
-                                "/latest", f"/{version_date}", 1
-                            )
-                        manifestations.append(
-                            {
-                                "manifestation_id": source_url,
-                                "source_url": source_url,
-                                "media_type": item.get("media_type")
-                                or item.get("type")
-                                or "application/octet-stream",
-                            }
-                        )
-                manifestations = _primary_manifestation(manifestations)
-                canonical_uri = str(
-                    version.get("canonical_uri")
-                    or version.get("canonical_url")
-                    or (manifestations[0]["source_url"] if manifestations else "")
-                ).strip()
-                discovered_by_id[work_id] = {
-                    "work_id": work_id,
-                    "title": version.get("title", ""),
-                    "canonical_uri": canonical_uri,
-                    "expressions": [
-                        {
-                            "expression_id": version_id,
-                            "version_date": version_date or None,
-                            "version_label": version.get("version_label"),
-                            "manifestations": manifestations,
-                            "fallback_manifestations": True,
-                        }
-                    ],
-                }
+                discovered_by_id[work_id] = enriched
             if missing_ids:
                 msg = (
                     "requested work identities were not returned by canonical "
@@ -568,7 +587,33 @@ class LegislationArchiveService:
                 search_terms=search_terms,
                 max_works=max_works,
             )
-            resolved = _build_discovered_work_targets(inv.get("works", []))
+            discovered_by_id_search: dict[str, dict[str, Any]] = {}
+            for item in inv.get("works", []):
+                candidate_id = str(item.get("work_id", "")).strip()
+                expressions = item.get("expressions")
+                has_graph = (
+                    bool(candidate_id)
+                    and bool(str(item.get("canonical_uri") or "").strip())
+                    and isinstance(expressions, list)
+                    and len(expressions) > 0
+                )
+                if has_graph:
+                    discovered_by_id_search[candidate_id] = item
+                    continue
+                try:
+                    enriched = self._enrich_work_identity(candidate_id)
+                except (ValueError, TypeError, OSError):
+                    enriched = None
+                if enriched is not None:
+                    discovered_by_id_search[candidate_id] = enriched
+            if not discovered_by_id_search:
+                msg = (
+                    "no search-derived candidate resolved to a canonical FRBR identity"
+                )
+                raise ValueError(msg)
+            resolved = _build_discovered_work_targets(
+                list(discovered_by_id_search.values())
+            )
         else:
             resolved = []
 

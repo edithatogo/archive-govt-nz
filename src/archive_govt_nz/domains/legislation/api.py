@@ -353,7 +353,12 @@ class NZLegislationApiClient:
         except json.JSONDecodeError as exc:
             msg = f"Legislation {label} discovery returned invalid JSON"
             raise ValueError(msg) from exc
-        results = payload.get("results", []) if isinstance(payload, dict) else None
+        if isinstance(payload, list):
+            results = payload
+        elif isinstance(payload, dict):
+            results = payload.get("results", [])
+        else:
+            results = None
         if not isinstance(results, list) or not all(
             isinstance(item, dict) for item in results
         ):

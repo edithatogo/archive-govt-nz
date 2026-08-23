@@ -175,6 +175,58 @@ async def test_discovery_preserves_canonical_frbr_identities(tmp_path: Path) -> 
 
 
 @pytest.mark.anyio
+async def test_search_hit_without_inline_graph_resolves_via_versions(
+    tmp_path: Path,
+) -> None:
+    """A search hit lacking an inline FRBR graph is enriched via /versions/."""
+    payload = b'<act status="in-force"><title>Flat Act</title></act>'
+    versions = [
+        {
+            "version_id": "act_flat_2024_1-version-2024-03-01",
+            "work_id": "act_flat_2024_1",
+            "title": "Flat Act",
+            "version_date": "2024-03-01",
+            "canonical_url": "https://example.test/act-flat-2024-1/latest",
+            "formats": [
+                {
+                    "url": "https://example.test/act-flat-2024-1/latest.xml",
+                    "type": "application/xml",
+                }
+            ],
+        }
+    ]
+
+    def handler(req: httpx.Request) -> httpx.Response:
+        if req.url.path.endswith("/works/"):
+            return httpx.Response(
+                200,
+                json=[{"work_id": "act_flat_2024_1", "title": "Flat Act"}],
+            )
+        if req.url.path.endswith("/versions/"):
+            return httpx.Response(200, json=versions)
+        if req.url.path.startswith("/versions/"):
+            return httpx.Response(200, json=versions[0])
+        return httpx.Response(200, content=payload)
+
+    transport = httpx.MockTransport(handler)
+    client = httpx.Client(transport=transport)
+    async_client = httpx.AsyncClient(transport=transport)
+    service = LegislationArchiveService(
+        store=ContentAddressedStore(tmp_path / "cas"),
+        api_client=NZLegislationApiClient(client=client, async_client=async_client),
+    )
+
+    result = await service.sync_works(search_terms=["flat"], max_works=1)
+
+    assert result.status == "success"
+    assert result.records[0].work_id == "act_flat_2024_1"
+    assert result.records[0].expression_id == ("act_flat_2024_1-version-2024-03-01")
+    assert result.records[0].manifestation_id is not None
+    assert result.records[0].manifestation_id.endswith(".xml")
+    assert "/latest" not in result.records[0].manifestation_id
+
+
+@pytest.mark.anyio
 async def test_discovery_fails_closed_without_canonical_frbr_graph(
     tmp_path: Path,
 ) -> None:
