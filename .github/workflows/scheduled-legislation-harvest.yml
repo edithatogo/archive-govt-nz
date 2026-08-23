@@ -59,6 +59,48 @@ jobs:
           MAX_WORKS: ${{ inputs.max_works }}
           SEARCH_TERMS: ${{ inputs.search_terms }}
         run: |
+          python - <<'PY'
+          import os
+          from pathlib import Path
+
+          if os.environ["CONFIRMED_EXECUTION"] != "true":
+              raise SystemExit("confirmed_execution must be true")
+          if not os.environ["BATCH_ID"].strip():
+              raise SystemExit("batch_id is required")
+          if int(os.environ["MAX_WORKS"]) <= 0:
+              raise SystemExit("max_works must be positive")
+          terms = [line.strip() for line in os.environ["SEARCH_TERMS"].splitlines() if line.strip()]
+          if not terms:
+              raise SystemExit("at least one search term is required")
+          Path("build").mkdir(exist_ok=True)
+          Path("build/legislation-search-terms.txt").write_text("\n".join(terms) + "\n", encoding="utf-8")
+          PY
+      - name: Prepare full state directories
+        run: mkdir -p build/legislation-state/cas build/legislation-state/receipts
+      - name: Restore explicitly selected prior full state
+        if: inputs.prior_state_run_id != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          STATE_RUN_ID: ${{ inputs.prior_state_run_id }}
+        run: |
+          case "$STATE_RUN_ID" in (*[!0-9]*|'') exit 2;; esac
+          gh run download "$STATE_RUN_ID" --repo "$GITHUB_REPOSITORY" --name "legislation-state-$STATE_RUN_ID" --dir build/restored-state
+          cp -R build/restored-state/. build/legislation-state/
+      - name: Execute bounded service-backed harvest
+        env:
+          BATCH_ID: ${{ inputs.batch_id }}
+          MAX_WORKS: ${{ inputs.max_works }}
+        run: |
+          uv run --locked python tools/run_legislation_harvest.py \
+            --checkpoint-path build/legislation-state/checkpoint.json \
+            --manifest-path build/legislation-state/manifest.json \
+            --cas-path build/legislation-state/cas \
+            --receipt-path build/legislation-state/receipts/harvest.json \
+            --batch-id "$BATCH_ID" \
+            --search-terms-file build/legislation-search-terms.txt \
+            --max-works "$MAX_WORKS"
+      - name: Upload complete continuation state
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         with:
           name: legislation-state-${{ github.run_id }}
           path: build/legislation-state/
