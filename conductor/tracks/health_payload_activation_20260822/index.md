@@ -19,5 +19,5 @@ no retrieval occurs in this track.
 - [Requirements (MoSCoW)](./requirements.md)
 - [Execution Plan](./plan.md)
 - [Evidence](./evidence.md)
-- [Decisions](./decisions.md) — DEC-HEALTH-001 licence-evidence acquisition (pending)
+- [Decisions](./decisions.md) — DEC-HEALTH-001 licence-evidence acquisition (RESOLVED — Option 1)
 - [Run Log](./runlog.md)

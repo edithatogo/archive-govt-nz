@@ -58,4 +58,20 @@ None blocked. Weekly legislation/gazette harvests continue autonomously.
 
 ### Resolution
 
-(awaiting user selection — to be recorded here with date and receipt paths)
+- **Date:** 2026-08-22
+- **Selected:** Option 1 (read-only CKAN licence probe tool)
+- **Implemented:** `tools/fetch_health_dataset_licences.py` — live probe executed
+  against `catalogue.data.govt.nz`; all 28 distinct datasets observed; raw
+  `package_show` responses preserved under `evidence/health/licence-probe-raw/`
+  with SHA-256 sidecars.
+- **Field-spelling defect found and fixed en route:** the catalogue uses CKAN's
+  `license_id` spelling; extractor accepts both spellings with tests.
+- **Outcome:** 27 datasets carry `CC-BY-4.0`; 1 dataset carries an empty licence.
+  Re-evaluation: **157 payload-eligible / 158 evaluated; 1 decision-required**
+  (`no licence evidence supplied for dataset`).
+- **Receipts:** `evidence/health/licence-probe-receipt.json`,
+  `evidence/health/licence-map.json`, updated
+  `evidence/health/eligibility-receipt.json`.
+- **Next gate:** any capture of the 157 eligible resources remains behind the
+  separate transport/safety gates established by Track 14 — this programme
+  still performs no retrieval.
