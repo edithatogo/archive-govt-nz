@@ -129,17 +129,18 @@ decision or safety boundary, and continue independent work while it is pending.
 These are bounded proposals, not active or completed tracks. They become
 active only after the MVP checkpoint and their stated decision gates pass.
 
-- [ ] **Deferred decision: operational gate authorization (legislation programme)**
+- [x] **Deferred decision: operational gate authorization (legislation programme)**
   *Proposed slug: `legislation_operational_gate_authorization_20260823`*
 
-  Main's design hard-blocks (`exit 3`) `scheduled-legislation-harvest.yml`,
+  **RESOLVED 2026-08-23**: maintainer (`edithatogo`) authorized opening the
+  gates ("Open the gates"). The three `exit 3` enforcement steps were removed
+  from `scheduled-legislation-harvest.yml`,
   `monthly-legislation-reconciliation.yml`, and
-  `quarterly-legislation-recovery.yml` until explicit maintainer authority is
-  recorded for: one-batch scope, canary authority, redistribution review,
-  weekly-cycle authority, and recovery authority. Donor repository
-  `edithatogo/corpus-legislation-nz` archiving (irreversible) also awaits
-  authorization. Until then #137/#138/#142 remain honestly reopened and the
-  programme stays `in_progress`. This is a decision boundary, not a work item.
+  `quarterly-legislation-recovery.yml`. Authorization recorded in
+  `evidence/migrations/corpus-legislation-nz/operational-gate-authorization.json`;
+  dispatch-only triggers, read-only permissions, no-OIDC, and confirmed-input
+  controls retained and test-enforced. Donor repository archiving remains
+  pending separate explicit authorization (#142 stays open for it).
 
 - [x] **Track 12: Broader health and healthcare discovery**
   *Proposed slug: `health_broader_discovery_20260801`*

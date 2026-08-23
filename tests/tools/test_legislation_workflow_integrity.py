@@ -1,5 +1,6 @@
 """Static fail-closed controls for legislation GitHub workflows."""
 
+import json
 from pathlib import Path
 
 _WORKFLOWS = (
@@ -17,9 +18,24 @@ def test_legislation_workflows_are_dispatch_only_without_oidc() -> None:
         assert "id-token: write" not in content
         assert "workflow_dispatch:" in content
         assert "contents: read" in content
-        gate = content.index("exit 3")
-        first_external_step = content.index("actions/checkout@")
-        assert gate < first_external_step
+        assert "exit 3" not in content
+
+
+def test_operational_gates_opened_only_with_recorded_authorization() -> None:
+    """Gate removal must be backed by the maintainer authorization receipt."""
+    receipt = json.loads(
+        Path(
+            "evidence/migrations/corpus-legislation-nz/"
+            "operational-gate-authorization.json"
+        ).read_text(encoding="utf-8")
+    )
+    assert receipt["schema_version"] == (
+        "archive-govt-nz.operational-gate-authorization/v1"
+    )
+    assert receipt["decision"] == "OPEN_GATES"
+    assert set(receipt["scope"]) == {str(path) for path in _WORKFLOWS}
+    assert len(receipt["authorities_granted"]) >= 5
+    assert receipt["retained_controls"], "fail-closed controls must be listed"
 
 
 def test_harvest_requires_scope_and_carries_complete_state() -> None:

@@ -1,0 +1,36 @@
+{
+  "schema_version": "archive-govt-nz.operational-gate-authorization/v1",
+  "decided_at": "2026-08-23T00:00:00Z",
+  "decision_author": "edithatogo (solo maintainer, repository owner)",
+  "decision": "OPEN_GATES",
+  "instruction": "Open the gates",
+  "scope": [
+    ".github/workflows/scheduled-legislation-harvest.yml",
+    ".github/workflows/monthly-legislation-reconciliation.yml",
+    ".github/workflows/quarterly-legislation-recovery.yml"
+  ],
+  "authorities_granted": [
+    "one_batch_scope",
+    "canary_authority",
+    "redistribution_review",
+    "weekly_cycle_authority",
+    "recovery_authority"
+  ],
+  "superseded_blockers": [
+    "Enforce unresolved sequence and redistribution gates (harvest)",
+    "Enforce unresolved weekly-cycle and state-artifact gates (reconciliation)",
+    "Enforce unresolved recovery and redistribution gates (recovery drill)"
+  ],
+  "retained_controls": [
+    "workflow_dispatch-only triggers (no schedule: blocks retained by design)",
+    "contents: read / actions: read permissions only",
+    "no id-token: write (publication authority still disabled)",
+    "explicit confirmed_* dispatch inputs required",
+    "bounded harvest inputs (batch_id, search_terms, max_works) required"
+  ],
+  "out_of_scope": [
+    "Donor repository archiving (edithatogo/corpus-legislation-nz) remains pending separate explicit authorization"
+  ],
+  "conductor_ref": "conductor/tracks.md deferred decision legislation_operational_gate_authorization_20260823",
+  "github_refs": ["edithatogo/archive-govt-nz#137", "edithatogo/archive-govt-nz#138", "edithatogo/archive-govt-nz#142", "edithatogo/archive-govt-nz#179"]
+}
