@@ -73,15 +73,34 @@ jobs:
           PY
       - name: Prepare full state directories
         run: mkdir -p build/legislation-state/cas build/legislation-state/receipts
-      - name: Restore explicitly selected prior full state
-        if: inputs.prior_state_run_id != ''
+      - name: Restore prior state (auto-discover latest if prior_state_run_id blank)
         env:
           GH_TOKEN: ${{ github.token }}
-          STATE_RUN_ID: ${{ inputs.prior_state_run_id }}
+          MANUAL_RUN_ID: ${{ inputs.prior_state_run_id }}
         run: |
-          case "$STATE_RUN_ID" in (*[!0-9]*|'') exit 2;; esac
-          gh run download "$STATE_RUN_ID" --repo "$GITHUB_REPOSITORY" --name "legislation-state-$STATE_RUN_ID" --dir build/restored-state
-          cp -R build/restored-state/. build/legislation-state/
+          TARGET_RUN_ID="$MANUAL_RUN_ID"
+          if [ -z "$TARGET_RUN_ID" ]; then
+            echo "No manual prior_state_run_id provided. Auto-discovering latest successful run..."
+            TARGET_RUN_ID=$(gh run list \
+              --repo "$GITHUB_REPOSITORY" \
+              --workflow "scheduled-legislation-harvest.yml" \
+              --branch "${GITHUB_REF_NAME:-main}" \
+              --status "success" \
+              --limit 5 \
+              --json databaseId \
+              --jq '.[0].databaseId // empty')
+          fi
+          if [ -n "$TARGET_RUN_ID" ]; then
+            case "$TARGET_RUN_ID" in (*[!0-9]*|'') exit 2;; esac
+            echo "Restoring state from Run ID: $TARGET_RUN_ID"
+            mkdir -p build/restored-state
+            if gh run download "$TARGET_RUN_ID" --repo "$GITHUB_REPOSITORY" --name "legislation-state-$TARGET_RUN_ID" --dir build/restored-state; then
+              cp -R build/restored-state/. build/legislation-state/
+              echo "Successfully restored state from run $TARGET_RUN_ID"
+            fi
+          else
+            echo "No prior successful run found. Proceeding with initial empty state."
+          fi
       - name: Execute bounded service-backed harvest
         env:
           BATCH_ID: ${{ inputs.batch_id }}

@@ -17,9 +17,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
-      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+      - uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
         with:
+          enable-cache: true
+          version: "0.6.5"
           python-version: "3.14"
-      - run: python -m pip install uv
       - name: Run workflow policy checks
         run: uv run --locked pytest tests/tools/test_workflow_policy.py
