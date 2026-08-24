@@ -183,12 +183,8 @@ implementation has occurred under these tracks.
 
 - [x] **Track: Multi-Source Capture Path Activation**
   *Link: [tracks/multi_source_capture_activation_20260824/index.md](./tracks/multi_source_capture_activation_20260824/index.md)*
-- [ ] **Track: sm-govt-nz Donor Retirement Readiness** (blocked by capture activation)
-  *Link: [tracks/sm_govt_nz_donor_retirement_readiness_20260824/index.md](./tracks/sm_govt_nz_donor_retirement_readiness_20260824/index.md)*
-  *The consolidation closeout receipt claims the donor was archived on
-  2026-08-18 with zero active workflows; GitHub state contradicts this (repo
-  unarchived, daily active runs). Requires corrected receipt, parallel-operation
-  parity, soak, and explicit maintainer authorization before archival.*
+- [x] **Track: sm-govt-nz Donor Retirement Readiness**
+  *Link: [archive/sm_govt_nz_donor_retirement_readiness_20260824/index.md](./archive/sm_govt_nz_donor_retirement_readiness_20260824/index.md)*
 - [x] **Track: Assimilation Parity Gate Hardening**
   *Link: [archive/assimilation_parity_gate_hardening_20260824/index.md](./archive/assimilation_parity_gate_hardening_20260824/index.md)*
 - [x] **Track: Conductor Claim Drift Detection**

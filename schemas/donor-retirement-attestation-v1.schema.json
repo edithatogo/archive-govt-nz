@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DonorRetirementAttestationV1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "attestation_id",
+    "donor_repository",
+    "canonical_repository",
+    "created_at",
+    "readiness_status",
+    "prerequisites"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "archive-govt-nz.donor-retirement-attestation/v1"
+    },
+    "attestation_id": {
+      "type": "string"
+    },
+    "donor_repository": {
+      "type": "string"
+    },
+    "canonical_repository": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "readiness_status": {
+      "type": "string",
+      "enum": ["READY_FOR_MAINTAINER_ARCHIVAL", "SOAKING", "BLOCKED"]
+    },
+    "prerequisites": {
+      "type": "object",
+      "required": [
+        "capture_path_activated",
+        "differential_parity_certified",
+        "distribution_hub_integrated",
+        "claim_drift_monitoring_active"
+      ],
+      "properties": {
+        "capture_path_activated": { "type": "boolean" },
+        "differential_parity_certified": { "type": "boolean" },
+        "distribution_hub_integrated": { "type": "boolean" },
+        "claim_drift_monitoring_active": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "notes": {
+      "type": ["string", "null"]
+    }
+  },
+  "additionalProperties": false
+}
