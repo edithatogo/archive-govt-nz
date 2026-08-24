@@ -7,12 +7,12 @@
 - [x] Task: Add characterization tests for Hansard XML parsing and Bronze ingest.
 - [x] Task: Conductor Review & Automated Phase Gate Verification.
 
-### Phase 2: Silver Bitemporal Normalization & Speaker Entity Reconciliation
-- [ ] Task: Implement `src/archive_govt_nz/domains/hansard/normalizer.py` vectorizing speeches into bitemporal Silver Parquet (`data/silver/hansard/corpus.parquet`).
-- [ ] Task: Integrate Member of Parliament (MP) identity reconciliation and speech segment typing.
-- [ ] Task: Wire cross-domain reference extraction (Debate speeches ↔ Legislation Acts & Bills).
-- [ ] Task: Add comprehensive Silver transformation and entity linkage test suite (>=95% coverage).
-- [ ] Task: Conductor Review & Automated Phase Gate Verification.
+### Phase 2: Silver Bitemporal Normalization & Speaker Entity Reconciliation [COMPLETED]
+- [x] Task: Implement `src/archive_govt_nz/domains/hansard/normalizer.py` vectorizing speeches into bitemporal Silver Parquet (`data/silver/hansard/corpus.parquet`).
+- [x] Task: Integrate Member of Parliament (MP) identity reconciliation and speech segment typing.
+- [x] Task: Wire cross-domain reference extraction (Debate speeches ↔ Legislation Acts & Bills).
+- [x] Task: Add comprehensive Silver transformation and entity linkage test suite (>=95% coverage).
+- [x] Task: Conductor Review & Automated Phase Gate Verification.
 
 ### Phase 3: Gold Analytical Engine, Semantic Search & Mutation Gates
 - [ ] Task: Register DuckDB analytical views and zero-copy federation hooks for Hansard corpus.
