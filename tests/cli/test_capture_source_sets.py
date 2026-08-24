@@ -7,13 +7,18 @@ from typing import TYPE_CHECKING
 from unittest.mock import patch
 
 import httpx
+import pytest
 
 from archive_govt_nz.cli import capture
+from archive_govt_nz.source_sets import (
+    SourceSetConfigError,
+    find_source_set_dir,
+    load_source_set,
+    parse_source_set_config,
+)
 
 if TYPE_CHECKING:
     from pathlib import Path
-
-    import pytest
 
 _CONFIG_DIR = "config/source-sets"
 
@@ -227,3 +232,45 @@ def test_capture_reports_partial_outcome_on_mixed_results(
     assert payload["status"] == "partial"
     assert payload["captured_count"] == 1
     assert payload["failed_count"] == 1
+
+
+def test_find_source_set_dir_walks_upward(tmp_path: Path) -> None:
+    """Locate config/source-sets from a nested working directory."""
+    (tmp_path / "config" / "source-sets").mkdir(parents=True)
+    nested = tmp_path / "deeply" / "nested"
+    nested.mkdir(parents=True)
+    assert find_source_set_dir(nested) == tmp_path / "config" / "source-sets"
+
+
+def test_find_source_set_dir_returns_none_when_absent(tmp_path: Path) -> None:
+    """Return None when no ancestor contains a source-set directory."""
+    assert find_source_set_dir(tmp_path) is None
+
+
+def test_load_source_set_fails_closed_on_bad_state(tmp_path: Path) -> None:
+    """Missing directory, name mismatch, and absence all fail closed."""
+    missing_dir = tmp_path / "nowhere"
+    with pytest.raises(FileNotFoundError):
+        load_source_set("anything", config_dir=missing_dir)
+
+    mismatched = tmp_path / "webset.yml"
+    mismatched.write_text('name: "other"\nenabled: true\n', encoding="utf-8")
+    with pytest.raises(SourceSetConfigError, match="name mismatch"):
+        load_source_set("webset", config_dir=tmp_path)
+
+
+def test_parser_nested_non_list_line_ends_list_collection(
+    tmp_path: Path,
+) -> None:
+    """An indented scalar after a list block does not become a list item."""
+    config_path = tmp_path / "mixed.yml"
+    config_path.write_text(
+        'name: "mixed"\n'
+        "enabled: true\n"
+        "targets:\n"
+        '  - "https://one.govt.nz"\n'
+        "  description: trailing nested scalar\n",
+        encoding="utf-8",
+    )
+    parsed = parse_source_set_config(config_path)
+    assert parsed["targets"] == ["https://one.govt.nz"]
