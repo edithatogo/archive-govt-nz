@@ -221,6 +221,20 @@ When all relevant gates pass:
 Commit only after the task is green. Do not combine unrelated completed tasks
 in one commit.
 
+### Commit scoping under continuous autonomous execution
+
+- Never use `git add -A`, `git add .`, or `git commit -a`. Stage named paths
+  that belong to the current task only.
+- Before staging, run `git status --porcelain` and treat any pre-existing dirty
+  file not owned by the current task as another actor's in-flight work: leave
+  it unstaged and uncommitted.
+- Generated churn (timestamps in `evidence/` receipts, build outputs) is
+  restored or excluded, never swept into an unrelated commit.
+- If a shared worktree is required for conductor record maintenance while
+  another track is in flight, use a separate `git worktree` pinned to the
+  target branch instead of switching branches under a dirty tree.
+
+
 Immediately select the next unblocked task after commit and remote verification.
 Task completion is not a user handoff.
 

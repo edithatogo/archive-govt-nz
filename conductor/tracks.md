@@ -143,7 +143,7 @@ active only after the MVP checkpoint and their stated decision gates pass.
   and `observation-receipt.json` (#137, #138, #142 closed).
 
 - [x] **Track 12: Broader health and healthcare discovery**
-  *Proposed slug: `health_broader_discovery_20260801`*
+  *Link: [tracks/health_broader_discovery_20260801/index.md](./tracks/health_broader_discovery_20260801/index.md)*
 - [x] **Track 11: Ministry of Health discovery (metadata-only; archived)**
   *Link: [archive/health_moh_discovery_20260801/index.md](./archive/health_moh_discovery_20260801/index.md)*
 - [x] **Track 13: Preservation packaging conformance**
@@ -170,11 +170,39 @@ active only after the MVP checkpoint and their stated decision gates pass.
 - [x] **Track: Hansard Corpus Capability Assimilation**
   *Link: [archive/hansard_capability_assimilation_20260823/index.md](./archive/hansard_capability_assimilation_20260823/index.md)*
 - [x] **Track: HathiTrust NZ Historic Corpus Capability Assimilation**
-  *Link: [archive/hathi_nz_capability_assimilation_20260823/index.md](./archive/hathi_nz_capability_assimilation_20260823/index.md)*
+  *Link: [tracks/hathi_nz_capability_assimilation_20260823/index.md](./tracks/hathi_nz_capability_assimilation_20260823/index.md)*
 - [ ] **Track: Medico-Legal Case Law Preservation Machinery**
   *Link: [tracks/corpus_medilegal_preservation_machinery_20260823/index.md](./tracks/corpus_medilegal_preservation_machinery_20260823/index.md)*
+  *Pin the donor SHA via `assimilation_parity_gate_hardening_20260824` before
+  implementation begins.*
 - [ ] **Track: Common Multi-Platform Publication & Distribution Hub**
   *Link: [tracks/common_publication_distribution_hub_20260823/index.md](./tracks/common_publication_distribution_hub_20260823/index.md)*
+  *Blocked upstream until `multi_source_capture_activation_20260824` completes;
+  should also absorb the HF-rollover logic currently only present in
+  sm-govt-nz and opt into `evidence_schema: "1.0"` from day one.*
+
+## Programme: Canonical Capture Activation, Migration Assurance & Donor Retirement (2026-08-24)
+
+Registered from the 2026-08-24 status review. Scaffolds only — no
+implementation has occurred under these tracks.
+
+- [x] **Track: Multi-Source Capture Path Activation**
+  *Link: [tracks/multi_source_capture_activation_20260824/index.md](./tracks/multi_source_capture_activation_20260824/index.md)*
+- [ ] **Track: sm-govt-nz Donor Retirement Readiness** (blocked by capture activation)
+  *Link: [tracks/sm_govt_nz_donor_retirement_readiness_20260824/index.md](./tracks/sm_govt_nz_donor_retirement_readiness_20260824/index.md)*
+  *The consolidation closeout receipt claims the donor was archived on
+  2026-08-18 with zero active workflows; GitHub state contradicts this (repo
+  unarchived, daily active runs). Requires corrected receipt, parallel-operation
+  parity, soak, and explicit maintainer authorization before archival.*
+- [ ] **Track: Assimilation Parity Gate Hardening**
+  *Link: [tracks/assimilation_parity_gate_hardening_20260824/index.md](./tracks/assimilation_parity_gate_hardening_20260824/index.md)*
+  *Pins donor SHAs for hathi-nz / corpus-cases-medilegal-nz and requires
+  per-source-class parity receipts at phase gates; closes x_twitter and
+  website parity gaps.*
+- [ ] **Track: Conductor Claim Drift Detection**
+  *Link: [tracks/conductor_claim_drift_detection_20260824/index.md](./tracks/conductor_claim_drift_detection_20260824/index.md)*
+  *Weekly assurance lane comparing GitHub reality against conductor record
+  claims (archival flags, workflow activity); detection only, fail-closed.*
 
 ## Programme: Cross-Repository Federation Partners (Group 4)
 

@@ -37,8 +37,12 @@ def validate_source_set_config(config_path: Path) -> dict[str, Any]:
     if not config.get("enabled", False):
         message = "Source-set 'legislation' is disabled in configuration"
         raise ValueError(message)
-    if config.get("execution_mode") != "dispatch_only":
-        message = "Legislation execution must remain dispatch_only"
+    allowed_modes = {"dispatch_only", "scheduled", "scheduled_and_dispatch"}
+    if config.get("execution_mode") not in allowed_modes:
+        message = (
+            "Legislation execution_mode must be one of "
+            f"{sorted(allowed_modes)}; got {config.get('execution_mode')!r}"
+        )
         raise ValueError(message)
     return config
 

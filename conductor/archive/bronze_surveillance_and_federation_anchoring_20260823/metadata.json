@@ -3,10 +3,11 @@
   "description": "Establish continuous surveillance heartbeat ledgers, canonical URN cross-repository federation protocols, and asynchronous OpenTimestamps proof-of-existence anchoring.",
   "donor_or_upstream": "Medallion consolidation & cross-repo federation partners",
   "reusable_assets": "Compact heartbeat serializer, canonical URN schema, OTS Merkle batcher",
-  "status": "new",
+  "status": "archived",
   "title": "Surveillance Heartbeat Ledger & Cross-Repository Federation Protocol",
   "track_id": "bronze_surveillance_and_federation_anchoring_20260823",
   "treatment": "Append-only 304 heartbeat ledger, canonical URN record linking with global-medicines-atlas/fyi-archive, and async OpenTimestamps anchoring",
   "type": "bronze_federation_surveillance",
-  "updated_at": "2026-08-23T22:45:00Z"
+  "updated_at": "2026-08-24T00:30:00Z",
+  "evidence_schema": "1.0"
 }

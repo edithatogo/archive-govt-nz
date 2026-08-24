@@ -20,3 +20,4 @@ publication_policy:
   zenodo:
     enabled: true
     concept_doi: "10.5281/zenodo.20592540"
+dedicated_workflow: "scheduled-gazette-harvest.yml"

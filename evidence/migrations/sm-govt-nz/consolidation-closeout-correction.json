@@ -1,0 +1,24 @@
+{
+  "schema_version": "archive-govt-nz.consolidation-closeout-correction/v1",
+  "issued_at": "2026-08-24T11:00:00Z",
+  "supersedes": "evidence/migrations/sm-govt-nz/consolidation-closeout-receipt.json",
+  "reason": "The superseded receipt recorded donor_repo.is_archived=true and active_workflows=0 as of 2026-08-18. Live GitHub API state contradicts both claims. The original receipt is retained unmodified; this correction supersedes its donor_repo block.",
+  "verified_donor_state": {
+    "name": "edithatogo/sm-govt-nz",
+    "is_archived": false,
+    "active_workflows": true,
+    "last_push_at": "2026-08-24T04:07:40Z",
+    "recent_activity": [
+      "Validate Threads manual seed exports (scheduled, succeeded 2026-08-24T04:07Z)",
+      "Rollover Large Archive Deltas to Hugging Face (succeeded 2026-08-24T05:52Z)"
+    ],
+    "open_issues": 0
+  },
+  "canonical_state": {
+    "name": "edithatogo/archive-govt-nz",
+    "status": "canonical_active",
+    "blocker": "scheduled-multi-source-harvest fails on all five source sets: route-table target 'archive-govt-nz capture' is an unimplemented CLI stub returning not_configured (exit 2)"
+  },
+  "corrected_disposition": "PARALLEL_OPERATION_REQUIRED — the donor repository is not ready for archival. Retirement is governed by conductor track sm_govt_nz_donor_retirement_readiness_20260824 and requires, in order: multi-source capture activation, one verified parity cycle per source class, donor workflow disablement, a soak window with canonical-only operation, and explicit maintainer authorization at the archival decision boundary.",
+  "verification_status": "CONSOLIDATION_RECORD_CORRECTED_DONOR_RETIREMENT_PENDING"
+}
