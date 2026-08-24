@@ -7,11 +7,13 @@ import json
 import sys
 from dataclasses import asdict
 from pathlib import Path
-from typing import TYPE_CHECKING, Literal
+from typing import TYPE_CHECKING, Any, Literal
 
+import httpx
 from cyclopts import App
 
 from archive_govt_nz import __version__
+from archive_govt_nz.capture import CaptureConfig, CaptureError, capture_url
 from archive_govt_nz.cli_integrity import (
     discover_archive_files,
     load_and_validate_provenance,
@@ -187,9 +189,12 @@ def sources(
 def capture(
     uri: str = "https://www.treasury.govt.nz",
     source_type: str = "web",
-    format: Literal["text", "json"] = "text",
+    format: Literal["text", "json"] = "json",
+    *,
+    config_dir: Path | None = None,
+    store_root: Path | None = None,
 ) -> int:
-    """Capture raw content from a specific government URI."""
+    """Run the bounded, config-driven harvest for one configured source set."""
     if source_type in ("legislation", "nz_legislation"):
         err_msg = (
             "Legislation capture must be executed via "
@@ -212,24 +217,158 @@ def capture(
             print(f"Error: {err_msg}")
         return 2
 
-    err_msg = "No standalone capture daemon or active worker queue is configured"
-    sys.stderr.write(f"{err_msg}\n")
+    return _run_source_set_capture(
+        source_type,
+        format=format,
+        config_dir=config_dir,
+        store_root=store_root,
+    )
 
-    if format == "json":
-        _emit_json(
-            {
-                "command": "capture",
-                "error": err_msg,
-                "schema_version": "archive-govt-nz.cli/v1",
-                "source_type": source_type,
-                "status": "not_configured",
-                "target_uri": uri,
-            }
-        )
+
+def _run_source_set_capture(
+    source_type: str,
+    *,
+    format: Literal["text", "json"],
+    config_dir: Path | None,
+    store_root: Path | None,
+) -> int:
+    """Execute one bounded source-set harvest and emit its receipt."""
+    from archive_govt_nz.source_sets import SourceSetConfigError, load_source_set
+
+    def _fail(status: str, error: str) -> int:
+        payload: dict[str, object] = {
+            "command": "capture",
+            "schema_version": "archive-govt-nz.cli/v1",
+            "source_type": source_type,
+            "status": status,
+            "error": error,
+        }
+        if format == "json":
+            _emit_json(payload)
+        else:
+            print(f"{source_type}: capture {status}")
+            sys.stderr.write(f"{error}\n")
         return 2
 
-    print(f"Capture for URI {uri} ({source_type}): not_configured (no queue)")
-    return 2
+    try:
+        config = load_source_set(source_type, config_dir=config_dir)
+    except FileNotFoundError as exc:
+        return _fail("not_configured", str(exc))
+    except SourceSetConfigError as exc:
+        return _fail("disabled", str(exc))
+
+    dedicated = str(config.get("dedicated_workflow", ""))
+    if dedicated:
+        receipt: dict[str, object] = {
+            "command": "capture",
+            "schema_version": "archive-govt-nz.cli/v1",
+            "source_type": source_type,
+            "status": "redirected",
+            "dedicated_workflow": dedicated,
+            "note": (
+                "This source set is harvested by its own verified workflow; "
+                "no duplicate capture was started here."
+            ),
+            "errors": [],
+        }
+        if format == "json":
+            _emit_json(receipt)
+        else:
+            print(f"{source_type}: redirected to dedicated workflow {dedicated}")
+        return 0
+
+    # --- execution ---
+    return _execute_source_set_targets(
+        source_type, config, format=format, store_root=store_root
+    )
+
+
+def _execute_source_set_targets(
+    source_type: str,
+    config: dict[str, Any],
+    *,
+    format: Literal["text", "json"],
+    store_root: Path | None,
+) -> int:
+    """Capture configured URL targets and report pending adapter capabilities."""
+    targets = list(config.get("targets", []))
+    adapters = [str(a) for a in config.get("adapters", [])]
+    executable_adapters = {"web", "feeds", "ckan"}
+    pending = [name for name in adapters if name not in executable_adapters]
+
+    results: list[dict[str, object]] = []
+    if targets:
+        root = store_root or Path("build/cas") / source_type
+        store = ContentAddressedStore(root)
+        capture_config = CaptureConfig()
+
+        async def _capture_all() -> None:
+            async with httpx.AsyncClient(
+                follow_redirects=False,
+                headers={
+                    "user-agent": (
+                        "archive-govt-nz-preservation/1.0 "
+                        "(+https://github.com/edithatogo/archive-govt-nz)"
+                    )
+                },
+            ) as client:
+                for target in targets:
+                    entry: dict[str, object] = {"uri": target}
+                    try:
+                        result = await capture_url(
+                            client, target, store, capture_config
+                        )
+                        entry.update(
+                            status="captured",
+                            status_code=result.status_code,
+                            sha256=result.receipt.sha256,
+                            byte_count=result.receipt.byte_count,
+                        )
+                    except CaptureError as exc:
+                        entry.update(status="failed", error=str(exc))
+                    results.append(entry)
+
+        asyncio.run(_capture_all())
+
+    captured_count = sum(1 for e in results if e.get("status") == "captured")
+    failed_count = sum(1 for e in results if e.get("status") == "failed")
+    if not targets:
+        outcome = "capability_pending"
+    elif failed_count == len(targets):
+        outcome = "failed"
+    elif failed_count:
+        outcome = "partial"
+    else:
+        outcome = "captured"
+
+    receipt: dict[str, object] = {
+        "command": "capture",
+        "schema_version": "archive-govt-nz.cli/v1",
+        "source_type": source_type,
+        "source_set": str(config.get("name", source_type)),
+        "status": outcome,
+        "targets": results,
+        "pending_adapters": [
+            {"adapter": name, "status": "capability_pending"} for name in pending
+        ],
+        "captured_count": captured_count,
+        "failed_count": failed_count,
+        "errors": [
+            f"{entry['uri']}: {entry.get('error')}"
+            for entry in results
+            if entry.get("status") == "failed"
+        ],
+        "note": (
+            "Adapter-based sources without activated credentials or discovery "
+            "infrastructure are recorded as capability_pending and tracked by "
+            "conductor track multi_source_capture_activation_20260824."
+        ),
+    }
+    if format == "json":
+        _emit_json(receipt)
+    else:
+        print(f"{source_type}: harvest outcome={outcome}")
+    return 2 if outcome == "failed" else 0
 
 
 @app.command
