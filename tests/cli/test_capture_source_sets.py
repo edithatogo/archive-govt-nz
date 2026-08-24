@@ -146,3 +146,84 @@ def test_capture_runs_real_bounded_capture_for_url_targets(
     target_entry = payload["targets"][0]
     assert target_entry["sha256"]
     assert (store_root / "sha256").is_dir()
+
+
+def test_capture_reports_failed_when_all_targets_fail(
+    tmp_path: Path,
+    capsys: pytest.CaptureFixture[str],
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """All targets failing produces a fail-closed exit with per-target errors."""
+    _write_config(tmp_path, "webset")
+    monkeypatch.chdir(tmp_path)
+
+    transport = httpx.MockTransport(lambda _request: httpx.Response(500))
+    original_init = httpx.AsyncClient.__init__
+
+    def patched_init(
+        self: httpx.AsyncClient,
+        *args: object,
+        **kwargs: object,
+    ) -> None:
+        """Force the failing mock transport into every client instance."""
+        kwargs["transport"] = transport
+        original_init(self, *args, **kwargs)  # type: ignore[arg-type]
+
+    monkeypatch.setattr(httpx.AsyncClient, "__init__", patched_init)
+    code = capture(
+        "https://x.example",
+        source_type="webset",
+        format="json",
+        config_dir=tmp_path,
+        store_root=tmp_path / "cas",
+    )
+    payload = json.loads(capsys.readouterr().out)
+    assert code == 2
+    assert payload["status"] == "failed"
+    assert payload["failed_count"] == 1
+    assert payload["errors"]
+
+
+def test_capture_reports_partial_outcome_on_mixed_results(
+    tmp_path: Path,
+    capsys: pytest.CaptureFixture[str],
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Mixed captured/failed targets produce a partial outcome with exit 0."""
+    config = _write_config(tmp_path, "webset")
+    config.write_text(
+        config.read_text(encoding="utf-8") + '  - "https://example.govt.nz/second"\n',
+        encoding="utf-8",
+    )
+    monkeypatch.chdir(tmp_path)
+
+    def _handler(request: httpx.Request) -> httpx.Response:
+        if request.url.path.endswith("notice"):
+            return httpx.Response(200, content=b"official gazette notice")
+        return httpx.Response(503)
+
+    transport = httpx.MockTransport(_handler)
+    original_init = httpx.AsyncClient.__init__
+
+    def patched_init(
+        self: httpx.AsyncClient,
+        *args: object,
+        **kwargs: object,
+    ) -> None:
+        """Force the split-outcome mock transport into every client."""
+        kwargs["transport"] = transport
+        original_init(self, *args, **kwargs)  # type: ignore[arg-type]
+
+    monkeypatch.setattr(httpx.AsyncClient, "__init__", patched_init)
+    code = capture(
+        "https://x.example",
+        source_type="webset",
+        format="json",
+        config_dir=tmp_path,
+        store_root=tmp_path / "cas",
+    )
+    payload = json.loads(capsys.readouterr().out)
+    assert code == 0
+    assert payload["status"] == "partial"
+    assert payload["captured_count"] == 1
+    assert payload["failed_count"] == 1
