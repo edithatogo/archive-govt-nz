@@ -175,6 +175,35 @@ active only after the MVP checkpoint and their stated decision gates pass.
   *Link: [tracks/corpus_medilegal_preservation_machinery_20260823/index.md](./tracks/corpus_medilegal_preservation_machinery_20260823/index.md)*
 - [ ] **Track: Common Multi-Platform Publication & Distribution Hub**
   *Link: [tracks/common_publication_distribution_hub_20260823/index.md](./tracks/common_publication_distribution_hub_20260823/index.md)*
+  *Blocked upstream until `multi_source_capture_activation_20260824` completes;
+  should also absorb the HF-rollover logic currently only present in
+  sm-govt-nz and opt into `evidence_schema: "1.0"` from day one.*
+
+## Programme: Canonical Capture Activation, Migration Assurance & Donor Retirement (2026-08-24)
+
+Registered from the 2026-08-24 status review. Scaffolds only — no
+implementation has occurred under these tracks.
+
+- [ ] **Track: Multi-Source Capture Path Activation**
+  *Link: [tracks/multi_source_capture_activation_20260824/index.md](./tracks/multi_source_capture_activation_20260824/index.md)*
+  *`scheduled-multi-source-harvest` fails on all five source sets because the
+  mapped `capture` command is an unimplemented CLI stub (exit 2,
+  `not_configured`).*
+- [ ] **Track: sm-govt-nz Donor Retirement Readiness** (blocked by capture activation)
+  *Link: [tracks/sm_govt_nz_donor_retirement_readiness_20260824/index.md](./tracks/sm_govt_nz_donor_retirement_readiness_20260824/index.md)*
+  *The consolidation closeout receipt claims the donor was archived on
+  2026-08-18 with zero active workflows; GitHub state contradicts this (repo
+  unarchived, daily active runs). Requires corrected receipt, parallel-operation
+  parity, soak, and explicit maintainer authorization before archival.*
+- [ ] **Track: Assimilation Parity Gate Hardening**
+  *Link: [tracks/assimilation_parity_gate_hardening_20260824/index.md](./tracks/assimilation_parity_gate_hardening_20260824/index.md)*
+  *Pins donor SHAs for hathi-nz / corpus-cases-medilegal-nz and requires
+  per-source-class parity receipts at phase gates; closes x_twitter and
+  website parity gaps.*
+- [ ] **Track: Conductor Claim Drift Detection**
+  *Link: [tracks/conductor_claim_drift_detection_20260824/index.md](./tracks/conductor_claim_drift_detection_20260824/index.md)*
+  *Weekly assurance lane comparing GitHub reality against conductor record
+  claims (archival flags, workflow activity); detection only, fail-closed.*
 
 ## Programme: Cross-Repository Federation Partners (Group 4)
 
