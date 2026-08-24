@@ -1,0 +1,12 @@
+{
+  "created_at": "2026-08-24T10:42:19Z",
+  "description": "HathiTrust NZ and Medico-Legal assimilation tracks lack pinned donor commits and parity-receipt gates; x_twitter and website/browser-fallback routes also lack parity evidence.",
+  "donor_or_upstream": "edithatogo/hathi-nz, edithatogo/corpus-cases-medilegal-nz",
+  "reusable_assets": "Parity receipt format from evidence/migrations/sm-govt-nz/parity/, Hansard assimilation (#183) as the reference playbook",
+  "status": "new",
+  "title": "Assimilation Parity Gate Hardening",
+  "track_id": "assimilation_parity_gate_hardening_20260824",
+  "treatment": "Pin donor SHA at assimilation start, require a source-class parity receipt as each phase gate, close the x_twitter and website route parity gaps",
+  "type": "process_hardening",
+  "updated_at": "2026-08-24T10:42:19Z"
+}
