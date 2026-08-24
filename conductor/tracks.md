@@ -194,10 +194,8 @@ implementation has occurred under these tracks.
   *Pins donor SHAs for hathi-nz / corpus-cases-medilegal-nz and requires
   per-source-class parity receipts at phase gates; closes x_twitter and
   website parity gaps.*
-- [ ] **Track: Conductor Claim Drift Detection**
-  *Link: [tracks/conductor_claim_drift_detection_20260824/index.md](./tracks/conductor_claim_drift_detection_20260824/index.md)*
-  *Weekly assurance lane comparing GitHub reality against conductor record
-  claims (archival flags, workflow activity); detection only, fail-closed.*
+- [x] **Track: Conductor Claim Drift Detection**
+  *Link: [archive/conductor_claim_drift_detection_20260824/index.md](./archive/conductor_claim_drift_detection_20260824/index.md)*
 
 ## Programme: Cross-Repository Federation Partners (Group 4)
 

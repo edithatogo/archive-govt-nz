@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ClaimDriftReceiptV1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "checked_at",
+    "status",
+    "claims_checked",
+    "divergences_detected",
+    "claims"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "archive-govt-nz.claim-drift-receipt/v1"
+    },
+    "checked_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["passed", "divergence_detected", "error"]
+    },
+    "claims_checked": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "divergences_detected": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "claim_id",
+          "subject",
+          "claim_type",
+          "recorded_value",
+          "actual_value",
+          "status"
+        ],
+        "properties": {
+          "claim_id": { "type": "string" },
+          "subject": { "type": "string" },
+          "claim_type": { "type": "string" },
+          "recorded_value": {},
+          "actual_value": {},
+          "status": {
+            "type": "string",
+            "enum": ["match", "drift"]
+          },
+          "detail": { "type": ["string", "null"] }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
