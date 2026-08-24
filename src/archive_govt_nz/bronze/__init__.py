@@ -51,6 +51,12 @@ from archive_govt_nz.bronze.multihash import (
     compute_cidv1_from_sha256,
     compute_multihash_triplet,
 )
+from archive_govt_nz.bronze.ots import (
+    MerkleProofStep,
+    OTSBatcher,
+    OTSBatchReceipt,
+    anchor_manifests_to_ots_batch,
+)
 from archive_govt_nz.bronze.sniffer import (
     InvalidPayloadSignatureError,
     SniffResult,
@@ -78,12 +84,16 @@ __all__ = [
     "IngestionResult",
     "InvalidPayloadSignatureError",
     "ManifestSignature",
+    "MerkleProofStep",
     "MultiHashTriplet",
+    "OTSBatchReceipt",
+    "OTSBatcher",
     "SchemaFingerprintResult",
     "SniffResult",
     "StreamingMultiHasher",
     "SurveillanceHeartbeat",
     "SurveillanceLedger",
+    "anchor_manifests_to_ots_batch",
     "build_bronze_record",
     "compute_arrow_schema_fingerprint",
     "compute_cidv1_from_sha256",

@@ -139,6 +139,8 @@ line-ending = "lf"
 "tests/tools/test_release_attestation.py" = ["S607"]
 "tests/tools/test_validate_contracts.py" = ["S607"]
 "tests/tools/test_evaluate_legislation_completion.py" = ["S607", "E501"]
+"tests/tools/test_ots_cli.py" = ["S607"]
+"tools/ots_batch_anchoring.py" = ["S603"]
 "tests/domains/test_legislation_api.py" = ["SLF001", "ARG001"]
 "src/archive_govt_nz/domains/legislation/api.py" = ["PLR0913", "PLR0917"]
 

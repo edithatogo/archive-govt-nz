@@ -17,11 +17,11 @@
 - [x] Task: Add integration tests verifying cross-repository query resolution.
 - [x] Task: Conductor Review & Automated Phase Gate Verification.
 
-### Phase 4: Asynchronous OpenTimestamps Proof-of-Existence Batcher
-- [ ] Task: Implement `tools/ots_batch_anchoring.py` computing Merkle trees over B1 manifests and submitting to OTS calendars out-of-band.
-- [ ] Task: Store verified `.ots` proof blocks alongside publication receipts.
-- [ ] Task: Add offline OTS verification tests.
-- [ ] Task: Conductor Review & Automated Phase Gate Verification.
+### Phase 4: Asynchronous OpenTimestamps Proof-of-Existence Batcher [COMPLETED]
+- [x] Task: Implement `tools/ots_batch_anchoring.py` computing Merkle trees over B1 manifests and submitting to OTS calendars out-of-band.
+- [x] Task: Store verified `.ots` proof blocks alongside publication receipts.
+- [x] Task: Add offline OTS verification tests.
+- [x] Task: Conductor Review & Automated Phase Gate Verification.
 
 ### Phase 5: Quality Gates & Final Federation Certification
 - [ ] Task: Add federation mutation testing gates.
