@@ -66,6 +66,7 @@ def test_hansard_silver_normalizer_direct() -> None:
     )
     assert sr1.valid_from == "2026-08-20"
     assert sr1.body_format == "text"
+    assert sr1.body_text is not None
     assert "Pae Ora (Healthy Futures) Act" in sr1.body_text
 
     meta1 = json.loads(sr1.metadata_json)

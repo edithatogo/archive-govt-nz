@@ -75,6 +75,18 @@ MUTANTS = {
         "return '0' * 64",
         "tests/bronze/test_ots.py",
     ),
+    "hansard_statutory_extraction": (
+        "src/archive_govt_nz/domains/hansard/parser.py",
+        'if "Bill" in full_title:',
+        'if False and "Bill" in full_title:',
+        "tests/domains/hansard/test_parser.py",
+    ),
+    "hansard_silver_normalizer_urn": (
+        "src/archive_govt_nz/domains/hansard/normalizer.py",
+        'work_id = f"{debate.document_id}_{speech.speech_id}"',
+        'work_id = "corrupted_id"',
+        "tests/domains/hansard/test_normalizer.py",
+    ),
 }
 
 

@@ -14,11 +14,11 @@
 - [x] Task: Add comprehensive Silver transformation and entity linkage test suite (>=95% coverage).
 - [x] Task: Conductor Review & Automated Phase Gate Verification.
 
-### Phase 3: Gold Analytical Engine, Semantic Search & Mutation Gates
-- [ ] Task: Register DuckDB analytical views and zero-copy federation hooks for Hansard corpus.
-- [ ] Task: Integrate Hansard debate corpus into Gold embedded LanceDB hybrid search.
-- [ ] Task: Expose Hansard queries through CLI (`archive-govt-nz query`) and FastMCP server.
-- [ ] Task: Add mutation testing gates in `tools/mutation_medallion.py` for Hansard normalizer and parser.
-- [ ] Task: Validate full 20-stage gate harness (`tools/check.py`).
-- [ ] Task: Conductor Track Review & Final Certification.
+### Phase 3: Gold Analytical Engine, Semantic Search & Mutation Gates [COMPLETED]
+- [x] Task: Register DuckDB analytical views and zero-copy federation hooks for Hansard corpus.
+- [x] Task: Integrate Hansard debate corpus into Gold embedded LanceDB hybrid search.
+- [x] Task: Expose Hansard queries through CLI (`archive-govt-nz query`) and FastMCP server.
+- [x] Task: Add mutation testing gates in `tools/mutation_medallion.py` for Hansard normalizer and parser.
+- [x] Task: Validate full 20-stage gate harness (`tools/check.py`).
+- [x] Task: Conductor Track Review & Final Certification.
 

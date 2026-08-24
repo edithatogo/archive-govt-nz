@@ -167,7 +167,7 @@ active only after the MVP checkpoint and their stated decision gates pass.
 
 ## Programme: Sequential Capability Assimilations (One-at-a-Time Implementation)
 
-- [ ] **Track: Hansard Corpus Capability Assimilation**
+- [x] **Track: Hansard Corpus Capability Assimilation**
   *Link: [tracks/hansard_capability_assimilation_20260823/index.md](./tracks/hansard_capability_assimilation_20260823/index.md)*
 - [ ] **Track: HathiTrust NZ Historic Corpus Capability Assimilation**
   *Link: [tracks/hathi_nz_capability_assimilation_20260823/index.md](./tracks/hathi_nz_capability_assimilation_20260823/index.md)*
