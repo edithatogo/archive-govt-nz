@@ -143,7 +143,7 @@ active only after the MVP checkpoint and their stated decision gates pass.
   and `observation-receipt.json` (#137, #138, #142 closed).
 
 - [x] **Track 12: Broader health and healthcare discovery**
-  *Proposed slug: `health_broader_discovery_20260801`*
+  *Link: [tracks/health_broader_discovery_20260801/index.md](./tracks/health_broader_discovery_20260801/index.md)*
 - [x] **Track 11: Ministry of Health discovery (metadata-only; archived)**
   *Link: [archive/health_moh_discovery_20260801/index.md](./archive/health_moh_discovery_20260801/index.md)*
 - [x] **Track 13: Preservation packaging conformance**
