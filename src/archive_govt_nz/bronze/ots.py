@@ -11,7 +11,10 @@ import json
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any, Final
+from typing import TYPE_CHECKING, Any, Final
+
+if TYPE_CHECKING:
+    from collections.abc import Sequence
 
 DEFAULT_CALENDARS: Final[tuple[str, ...]] = (
     "https://a.pool.opentimestamps.org",
@@ -99,7 +102,7 @@ class OTSBatcher:
 
     @staticmethod
     def build_merkle_tree(
-        leaf_hashes: list[str],
+        leaf_hashes: Sequence[str],
     ) -> tuple[str, list[list[str]]]:
         """Compute Merkle root and intermediate tree levels for leaf digests."""
         if not leaf_hashes:
@@ -168,8 +171,8 @@ class OTSBatcher:
         cls,
         *,
         batch_id: str,
-        manifest_hashes: list[str],
-        calendar_urls: list[str] | None = None,
+        manifest_hashes: Sequence[str],
+        calendar_urls: Sequence[str] | None = None,
     ) -> OTSBatchReceipt:
         """Assemble an OTS batch receipt over Bronze manifest SHA-256 digests."""
         if not manifest_hashes:
@@ -179,7 +182,11 @@ class OTSBatcher:
         root, tree = cls.build_merkle_tree(manifest_hashes)
 
         # Deterministic OTS token proof (tag 0x00 + root + calendar count)
-        calendars = calendar_urls or list(DEFAULT_CALENDARS)
+        calendars: list[str] = (
+            [str(c) for c in calendar_urls]
+            if calendar_urls is not None
+            else [str(c) for c in DEFAULT_CALENDARS]
+        )
         proof_header = b"\x00\x08OTS_PROV" + bytes.fromhex(root)
         proof_hex = proof_header.hex()
 
@@ -197,7 +204,7 @@ class OTSBatcher:
             batch_id=batch_id,
             created_at=now_iso,
             leaf_count=len(manifest_hashes),
-            leaf_hashes=manifest_hashes,
+            leaf_hashes=list(manifest_hashes),
             merkle_root=root,
             calendar_urls=calendars,
             ots_proof_hex=proof_hex,
@@ -206,7 +213,7 @@ class OTSBatcher:
 
 
 def anchor_manifests_to_ots_batch(
-    manifest_paths: list[Path | str],
+    manifest_paths: Sequence[Path | str],
     batch_id: str,
     output_receipt_path: Path | str | None = None,
 ) -> OTSBatchReceipt:
