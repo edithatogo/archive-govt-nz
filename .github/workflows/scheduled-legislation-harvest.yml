@@ -56,10 +56,11 @@ jobs:
           CONFIRMED_EXECUTION: ${{ github.event_name == 'schedule' || inputs.confirmed_execution }}
           BATCH_ID: ${{ github.event_name == 'schedule' && format('scheduled-weekly-{0}', github.run_id) || inputs.batch_id }}
           MAX_WORKS: ${{ github.event_name == 'schedule' && 50 || inputs.max_works }}
-          SEARCH_TERMS: ${{ github.event_name == 'schedule' && 'Act\nBill\nRegulation' || inputs.search_terms }}
+          SEARCH_TERMS: ${{ github.event_name == 'schedule' && 'Act,Bill,Regulation' || inputs.search_terms }}
         run: |
           python - <<'PY'
           import os
+          import re
           from pathlib import Path
 
           if os.environ["CONFIRMED_EXECUTION"] != "true":
@@ -68,7 +69,11 @@ jobs:
               raise SystemExit("batch_id is required")
           if int(os.environ["MAX_WORKS"]) <= 0:
               raise SystemExit("max_works must be positive")
-          terms = [line.strip() for line in os.environ["SEARCH_TERMS"].splitlines() if line.strip()]
+          terms = [
+              term.strip()
+              for term in re.split(r"[,\n\r]+|\\n", os.environ["SEARCH_TERMS"])
+              if term.strip()
+          ]
           if not terms:
               raise SystemExit("at least one search term is required")
           Path("build").mkdir(exist_ok=True)
