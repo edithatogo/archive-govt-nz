@@ -1,7 +1,7 @@
 # Implementation Plan: sm-govt-nz Donor Retirement Readiness
 
-### Phase 1: Record correction [ ]
-- [ ] Task: Emit a superseding closeout-correction receipt stating the true GitHub state and referencing the false claims; link it from the track index.
+### Phase 1: Record correction [x]
+- [x] Task: Emit a superseding closeout-correction receipt stating the true GitHub state and referencing the false claims; link it from the track index. Completed via `evidence/migrations/sm-govt-nz/consolidation-closeout-correction.json`.
 
 ### Phase 2: Parallel operation [ ]
 - [ ] Task: Depends on multi_source_capture_activation_20260824 completion; run both pipelines and capture per-source parity receipts for all source classes including x_twitter and website/browser-fallback.

@@ -6,6 +6,7 @@
 
 ### Phase 2: Activation [ ]
 - [ ] Task: Implement or re-route; keep fail-closed semantics for unimplemented sources.
+- [ ] Task: Point each updated route's `verification_evidence` at a real parity receipt rather than adapter source files.
 - [ ] Task: Add/extend focused tests covering the chosen path.
 
 ### Phase 3: Verification [ ]
