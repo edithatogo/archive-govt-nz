@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 
 from archive_govt_nz.bronze.models import BronzeRecord
+from archive_govt_nz.core.urn import CanonicalURN
 from archive_govt_nz.silver.base import NormalizedSilverRecord, SilverNormalizer
 
 
@@ -32,9 +33,11 @@ class LegislationSilverNormalizer(SilverNormalizer):
 
         return [
             NormalizedSilverRecord(
+                nz_canonical_urn=CanonicalURN.format(self.domain, doc_type, work_id),
                 nz_source_record_id=record.record_id,
                 nz_acquisition_id=custom.get("batch_id", "batch-legislation-001"),
                 nz_content_id=record.fixity.sha256,
+                nz_content_cidv1=record.fixity.cidv1,
                 nz_observed_at=record.source_metadata.observed_at,
                 nz_schema_fingerprint=fingerprint,
                 domain=self.domain,
@@ -82,9 +85,13 @@ class GazetteSilverNormalizer(SilverNormalizer):
 
         return [
             NormalizedSilverRecord(
+                nz_canonical_urn=CanonicalURN.format(
+                    self.domain, f"notice_{notice_type}", notice_id
+                ),
                 nz_source_record_id=record.record_id,
                 nz_acquisition_id=custom.get("batch_id", "batch-gazette-001"),
                 nz_content_id=record.fixity.sha256,
+                nz_content_cidv1=record.fixity.cidv1,
                 nz_observed_at=record.source_metadata.observed_at,
                 nz_schema_fingerprint=fingerprint,
                 domain=self.domain,
@@ -129,9 +136,11 @@ class CourtsNoticesSilverNormalizer(SilverNormalizer):
 
         return [
             NormalizedSilverRecord(
+                nz_canonical_urn=CanonicalURN.format(self.domain, "notice", notice_id),
                 nz_source_record_id=record.record_id,
                 nz_acquisition_id=custom.get("batch_id", "batch-courts-001"),
                 nz_content_id=record.fixity.sha256,
+                nz_content_cidv1=record.fixity.cidv1,
                 nz_observed_at=record.source_metadata.observed_at,
                 nz_schema_fingerprint=fingerprint,
                 domain=self.domain,
@@ -176,9 +185,13 @@ class HealthSilverNormalizer(SilverNormalizer):
 
         return [
             NormalizedSilverRecord(
+                nz_canonical_urn=CanonicalURN.format(
+                    self.domain, feed_type, record.record_id
+                ),
                 nz_source_record_id=record.record_id,
                 nz_acquisition_id=custom.get("batch_id", "batch-health-001"),
                 nz_content_id=record.fixity.sha256,
+                nz_content_cidv1=record.fixity.cidv1,
                 nz_observed_at=record.source_metadata.observed_at,
                 nz_schema_fingerprint=fingerprint,
                 domain=self.domain,
@@ -223,9 +236,11 @@ class TreasurySilverNormalizer(SilverNormalizer):
 
         return [
             NormalizedSilverRecord(
+                nz_canonical_urn=CanonicalURN.format(self.domain, "release", doc_id),
                 nz_source_record_id=record.record_id,
                 nz_acquisition_id=custom.get("batch_id", "batch-treasury-001"),
                 nz_content_id=record.fixity.sha256,
+                nz_content_cidv1=record.fixity.cidv1,
                 nz_observed_at=record.source_metadata.observed_at,
                 nz_schema_fingerprint=fingerprint,
                 domain=self.domain,

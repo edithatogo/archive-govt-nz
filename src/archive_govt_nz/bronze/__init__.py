@@ -21,6 +21,11 @@ from archive_govt_nz.bronze.fingerprint import (
     compute_xml_schema_fingerprint,
     detect_schema_drift,
 )
+from archive_govt_nz.bronze.heartbeat import (
+    DEFAULT_HEARTBEAT_FILENAME,
+    SurveillanceHeartbeat,
+    SurveillanceLedger,
+)
 from archive_govt_nz.bronze.manifest import (
     build_bronze_record,
     create_bronze_manifest,
@@ -46,6 +51,12 @@ from archive_govt_nz.bronze.multihash import (
     compute_cidv1_from_sha256,
     compute_multihash_triplet,
 )
+from archive_govt_nz.bronze.ots import (
+    MerkleProofStep,
+    OTSBatcher,
+    OTSBatchReceipt,
+    anchor_manifests_to_ots_batch,
+)
 from archive_govt_nz.bronze.sniffer import (
     InvalidPayloadSignatureError,
     SniffResult,
@@ -55,6 +66,7 @@ from archive_govt_nz.bronze.sniffer import (
 
 __all__ = [
     "BRONZE_MANIFEST_SCHEMA_V1",
+    "DEFAULT_HEARTBEAT_FILENAME",
     "EVIDENTIARY_TRUTH_SENTENCE",
     "STANDARD_RECORD_LINK_COLUMNS",
     "STRATA_B0_SOURCE_INDEX",
@@ -72,10 +84,16 @@ __all__ = [
     "IngestionResult",
     "InvalidPayloadSignatureError",
     "ManifestSignature",
+    "MerkleProofStep",
     "MultiHashTriplet",
+    "OTSBatchReceipt",
+    "OTSBatcher",
     "SchemaFingerprintResult",
     "SniffResult",
     "StreamingMultiHasher",
+    "SurveillanceHeartbeat",
+    "SurveillanceLedger",
+    "anchor_manifests_to_ots_batch",
     "build_bronze_record",
     "compute_arrow_schema_fingerprint",
     "compute_cidv1_from_sha256",

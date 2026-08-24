@@ -29,6 +29,7 @@ EVIDENTIARY_TRUTH_SENTENCE = (
 
 # Canonical Link Columns for Cross-Domain Silver/Gold Joins
 STANDARD_RECORD_LINK_COLUMNS = (
+    "nz_canonical_urn",
     "nz_source_record_id",
     "nz_acquisition_id",
     "nz_content_id",

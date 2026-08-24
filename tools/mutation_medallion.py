@@ -57,6 +57,24 @@ MUTANTS = {
         "norm = 0.0",
         "tests/gold/test_search.py",
     ),
+    "bronze_surveillance_heartbeat": (
+        "src/archive_govt_nz/bronze/heartbeat.py",
+        "timestamp = checked_at or datetime.now(UTC).strftime(",
+        "timestamp = '1970-01-01T00:00:00Z' if False else checked_at or ",
+        "tests/bronze/test_heartbeat.py",
+    ),
+    "core_canonical_urn": (
+        "src/archive_govt_nz/core/urn.py",
+        '_URN_PREFIX: Final[str] = "urn:nz-govt"',
+        '_URN_PREFIX: Final[str] = "urn:corrupted"',
+        "tests/core/test_urn.py",
+    ),
+    "bronze_ots_merkle": (
+        "src/archive_govt_nz/bronze/ots.py",
+        "return hashlib.sha256(left_bytes + right_bytes).hexdigest()",
+        "return '0' * 64",
+        "tests/bronze/test_ots.py",
+    ),
 }
 
 

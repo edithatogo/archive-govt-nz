@@ -6,7 +6,7 @@ import json
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING, Any, Final
 
 from archive_govt_nz.bronze.manifest import (
     build_bronze_record,
@@ -23,10 +23,19 @@ from archive_govt_nz.bronze.attestation import (
     Ed25519Signer,
     seal_manifest,
 )
+from archive_govt_nz.bronze.heartbeat import (
+    DEFAULT_HEARTBEAT_FILENAME,
+    SurveillanceHeartbeat,
+    SurveillanceLedger,
+)
 from archive_govt_nz.bronze.sniffer import (
     InvalidPayloadSignatureError,
     validate_payload_signature,
 )
+
+_HTTP_OK: Final[int] = 200
+_HTTP_NOT_MODIFIED: Final[int] = 304
+_HTTP_BAD_REQUEST: Final[int] = 400
 
 
 @dataclass(frozen=True, slots=True)
@@ -57,6 +66,82 @@ class BronzeDomainIngestor:
         self.store = store
         self.domain = domain
         self.base_dir = base_dir or Path(f"data/bronze/{domain}")
+        self.heartbeat_ledger = SurveillanceLedger(
+            self.base_dir / DEFAULT_HEARTBEAT_FILENAME
+        )
+
+    def check_and_ingest_conditional(
+        self,
+        *,
+        record_id: str,
+        source_url: str,
+        payload_bytes: bytes | None,
+        status_code: int = _HTTP_OK,
+        etag: str | None = None,
+        last_modified: str | None = None,
+        media_type: str = "application/octet-stream",
+        response_time_ms: float | None = None,
+        headers: dict[str, str] | None = None,
+        custom_metadata: dict[str, Any] | None = None,
+        validate_signature: bool = True,
+    ) -> tuple[BronzeRecord | None, SurveillanceHeartbeat]:
+        """Conditionally ingest payload avoiding CAS write amplification on 304/unchanged."""
+        if status_code == _HTTP_NOT_MODIFIED or (
+            payload_bytes is None and status_code in (_HTTP_OK, _HTTP_NOT_MODIFIED)
+        ):
+            hb = self.heartbeat_ledger.record_observation(
+                source_url=source_url,
+                domain=self.domain,
+                status_code=_HTTP_NOT_MODIFIED,
+                disposition="unmodified",
+                etag=etag,
+                last_modified=last_modified,
+                response_time_ms=response_time_ms,
+            )
+            return None, hb
+
+        if status_code >= _HTTP_BAD_REQUEST:
+            err_msg = f"HTTP {status_code} error during surveillance harvest"
+            hb = self.heartbeat_ledger.record_observation(
+                source_url=source_url,
+                domain=self.domain,
+                status_code=status_code,
+                disposition="error",
+                etag=etag,
+                last_modified=last_modified,
+                response_time_ms=response_time_ms,
+                error_message=err_msg,
+            )
+            return None, hb
+
+        if payload_bytes is None:
+            msg = f"payload_bytes must be provided for status code {_HTTP_OK}"
+            raise ValueError(msg)
+
+        record = self.ingest_payload(
+            record_id=record_id,
+            payload_bytes=payload_bytes,
+            source_url=source_url,
+            media_type=media_type,
+            status_code=status_code,
+            etag=etag,
+            last_modified=last_modified,
+            headers=headers,
+            custom_metadata=custom_metadata,
+            validate_signature=validate_signature,
+        )
+
+        hb = self.heartbeat_ledger.record_observation(
+            source_url=source_url,
+            domain=self.domain,
+            status_code=status_code,
+            disposition="captured",
+            etag=etag,
+            last_modified=last_modified,
+            content_sha256=record.fixity.sha256,
+            response_time_ms=response_time_ms,
+        )
+        return record, hb
 
     def ingest_payload(
         self,

@@ -75,7 +75,7 @@ class GoldAnalyticsEngine:
         self,
         partner_name: str,
         parquet_path_or_url: str | Path,
-    ) -> None:
+    ) -> str:
         """Attach an external federated Parquet source (e.g. global-medicines-atlas)."""
         view_name = f"fed_{partner_name.replace('-', '_')}"
         target_str = str(parquet_path_or_url)
@@ -83,6 +83,75 @@ class GoldAnalyticsEngine:
             f"CREATE OR REPLACE VIEW {view_name} AS "
             f"SELECT * FROM read_parquet('{target_str}')"
         )
+        self._refresh_federated_views(view_name)
+        return view_name
+
+    def _refresh_federated_views(self, new_partner_view: str) -> None:
+        """Create or update zero-copy join views against newly attached partners."""
+        tables = [
+            r[0]
+            for r in self.con.execute(
+                "SELECT table_name FROM information_schema.tables"
+            ).fetchall()
+        ]
+
+        if (
+            new_partner_view == "fed_global_medicines_atlas"
+            and "silver_health" in tables
+        ):
+            self.con.execute(
+                """
+                CREATE OR REPLACE VIEW v_fed_health_medicines AS
+                SELECT
+                    h.nz_canonical_urn,
+                    h.title AS nz_health_title,
+                    h.domain,
+                    h.source_observed_at,
+                    gma.inn_name,
+                    gma.atc_code,
+                    gma.global_status
+                FROM silver_health h
+                JOIN fed_global_medicines_atlas gma
+                  ON h.nz_canonical_urn = gma.nz_canonical_urn
+                  OR lower(h.title) LIKE concat('%', lower(gma.inn_name), '%')
+                """
+            )
+
+        if new_partner_view == "fed_fyi_archive" and "silver_legislation" in tables:
+            self.con.execute(
+                """
+                CREATE OR REPLACE VIEW v_fed_legislation_foi AS
+                SELECT
+                    l.nz_canonical_urn,
+                    l.title AS legislation_title,
+                    l.canonical_uri,
+                    fyi.request_id,
+                    fyi.public_body,
+                    fyi.request_status,
+                    fyi.requested_at
+                FROM silver_legislation l
+                JOIN fed_fyi_archive fyi
+                  ON fyi.referenced_urn = l.nz_canonical_urn
+                  OR lower(fyi.summary) LIKE concat('%', lower(l.title), '%')
+                """
+            )
+
+        if new_partner_view == "fed_reimbursement_atlas" and "silver_health" in tables:
+            self.con.execute(
+                """
+                CREATE OR REPLACE VIEW v_fed_reimbursement_schedule AS
+                SELECT
+                    h.nz_canonical_urn,
+                    h.title,
+                    r.scheme_id,
+                    r.item_code,
+                    r.reimbursement_amount,
+                    r.currency
+                FROM silver_health h
+                JOIN fed_reimbursement_atlas r
+                  ON r.nz_canonical_urn = h.nz_canonical_urn
+                """
+            )
 
     def query(self, sql: str) -> QueryResult:
         """Execute a read-only SQL query and return a columnar Arrow Table."""
