@@ -182,7 +182,7 @@ Registered from the 2026-08-24 status review. Scaffolds only — no
 implementation has occurred under these tracks.
 
 - [x] **Track: Multi-Source Capture Path Activation**
-  *Link: [tracks/multi_source_capture_activation_20260824/index.md](./tracks/multi_source_capture_activation_20260824/index.md)*
+  *Link: [archive/multi_source_capture_activation_20260824/index.md](./archive/multi_source_capture_activation_20260824/index.md)*
 - [x] **Track: sm-govt-nz Donor Retirement Readiness**
   *Link: [archive/sm_govt_nz_donor_retirement_readiness_20260824/index.md](./archive/sm_govt_nz_donor_retirement_readiness_20260824/index.md)*
 - [x] **Track: Assimilation Parity Gate Hardening**
