@@ -1,10 +1,10 @@
 # Implementation Plan: Surveillance Heartbeat Ledger & Cross-Repository Federation Protocol
 
-### Phase 1: Compact Surveillance Heartbeat Ledger (Strata B0)
-- [ ] Task: Implement `src/archive_govt_nz/bronze/heartbeat.py` managing append-only surveillance logs.
-- [ ] Task: Integrate HTTP 304 / ETag conditional checking in domain adapters.
-- [ ] Task: Add test cases verifying surveillance continuity without CAS write amplification.
-- [ ] Task: Conductor Review & Automated Phase Gate Verification.
+### Phase 1: Compact Surveillance Heartbeat Ledger (Strata B0) [COMPLETED]
+- [x] Task: Implement `src/archive_govt_nz/bronze/heartbeat.py` managing append-only surveillance logs.
+- [x] Task: Integrate HTTP 304 / ETag conditional checking in domain adapters.
+- [x] Task: Add test cases verifying surveillance continuity without CAS write amplification.
+- [x] Task: Conductor Review & Automated Phase Gate Verification.
 
 ### Phase 2: Canonical URN Protocol & Federation Encoders
 - [ ] Task: Implement `src/archive_govt_nz/core/urn.py` for canonical URN parsing, formatting, and validation.
