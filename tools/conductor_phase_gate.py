@@ -414,6 +414,55 @@ PHASE_TARGETS: dict[str, dict[str, Any]] = {
         ],
         "schemas": ["schemas/claim-drift-receipt-v1.schema.json"],
     },
+    "assim_parity_p1": {
+        "title": "Assimilation Parity Phase 1: Donor Pinning & Cross-Corpus Contracts",
+        "test_targets": [
+            "tests/parity/test_parity_harness.py",
+        ],
+        "source_paths": [
+            "src/archive_govt_nz/parity/",
+            "tools/run_differential_parity.py",
+        ],
+        "schemas": ["schemas/parity/v1/parity-receipt.schema.json"],
+    },
+    "assim_parity_p2": {
+        "title": "Assimilation Parity Phase 2: Per-Source-Class Parity Harness & Fixtures",
+        "test_targets": [
+            "tests/parity/test_parity_harness.py",
+        ],
+        "source_paths": [
+            "src/archive_govt_nz/parity/",
+            "tools/run_differential_parity.py",
+        ],
+        "schemas": ["schemas/parity/v1/parity-receipt.schema.json"],
+        "extra_commands": [
+            (
+                ["uv", "run", "--locked", "python", "tools/run_differential_parity.py"],
+                "Differential Parity Verification Suite",
+            ),
+        ],
+    },
+    "assim_parity_p3": {
+        "title": "Assimilation Parity Phase 3: Gate Enforcement & Full Phase Verification",
+        "test_targets": [
+            "tests/parity/test_parity_harness.py",
+            "tests/domains/hathi/",
+            "tests/domains/medilegal/",
+        ],
+        "source_paths": [
+            "src/archive_govt_nz/parity/",
+            "src/archive_govt_nz/domains/hathi/",
+            "src/archive_govt_nz/domains/medilegal/",
+            "tools/run_differential_parity.py",
+        ],
+        "schemas": ["schemas/parity/v1/parity-receipt.schema.json"],
+        "extra_commands": [
+            (
+                ["uv", "run", "--locked", "python", "tools/run_differential_parity.py"],
+                "Differential Parity Verification Suite",
+            ),
+        ],
+    },
 }
 
 
