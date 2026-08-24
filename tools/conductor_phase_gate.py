@@ -266,6 +266,45 @@ PHASE_TARGETS: dict[str, dict[str, Any]] = {
             ),
         ],
     },
+    "hathi_p1": {
+        "title": "HathiTrust Phase 1: Domain Schemas, METS/MODS Parser & Raw Bronze Acquisition",
+        "test_targets": [
+            "tests/domains/hathi/",
+        ],
+        "source_paths": [
+            "src/archive_govt_nz/domains/hathi/",
+        ],
+        "schemas": ["schemas/hathi-volume-v1.schema.json"],
+    },
+    "hathi_p2": {
+        "title": "HathiTrust Phase 2: Silver Bitemporal Normalization & Rights Classification",
+        "test_targets": [
+            "tests/domains/hathi/",
+            "tests/silver/",
+        ],
+        "source_paths": [
+            "src/archive_govt_nz/domains/hathi/",
+        ],
+        "schemas": ["schemas/hathi-volume-v1.schema.json"],
+    },
+    "hathi_p3": {
+        "title": "HathiTrust Phase 3: Gold Analytical Engine, Semantic Search & Mutation Gates",
+        "test_targets": [
+            "tests/domains/hathi/",
+            "tests/gold/",
+        ],
+        "source_paths": [
+            "src/archive_govt_nz/domains/hathi/",
+            "src/archive_govt_nz/gold/",
+        ],
+        "schemas": ["schemas/hathi-volume-v1.schema.json"],
+        "extra_commands": [
+            (
+                ["uv", "run", "--locked", "python", "tools/mutation_medallion.py"],
+                "Medallion Mutation Gate",
+            ),
+        ],
+    },
 }
 
 

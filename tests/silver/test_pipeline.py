@@ -3,6 +3,7 @@
 from pathlib import Path
 
 import pyarrow.parquet as pq
+import pytest
 
 from archive_govt_nz.bronze.manifest import build_bronze_record, create_bronze_manifest
 from archive_govt_nz.silver.base import SILVER_ARROW_SCHEMA
@@ -12,7 +13,11 @@ from archive_govt_nz.silver.normalizers import (
     HealthSilverNormalizer,
     LegislationSilverNormalizer,
 )
-from archive_govt_nz.silver.pipeline import SilverPipeline
+from archive_govt_nz.silver.pipeline import (
+    DOMAIN_NORMALIZERS,
+    SilverPipeline,
+    get_domain_normalizer,
+)
 
 
 def test_legislation_silver_normalizer() -> None:
@@ -134,3 +139,27 @@ def test_silver_pipeline_end_to_end(tmp_path: Path) -> None:
     assert table.schema == SILVER_ARROW_SCHEMA
     assert table.column("domain")[0].as_py() == "legislation"
     assert table.column("canonical_uri")[0].as_py() == "nzlc:act/SAMPLE2026"
+
+
+def test_domain_normalizers_proxy() -> None:
+    """DomainNormalizersProxy maps and lazily loads all domain normalizers."""
+    assert "hansard" in DOMAIN_NORMALIZERS
+    assert "hathi" in DOMAIN_NORMALIZERS
+    assert "unknown_domain" not in DOMAIN_NORMALIZERS
+    assert len(DOMAIN_NORMALIZERS) == 7
+    assert list(DOMAIN_NORMALIZERS) == [
+        "legislation",
+        "gazette",
+        "courts",
+        "health",
+        "treasury",
+        "hansard",
+        "hathi",
+    ]
+    assert DOMAIN_NORMALIZERS.get("hansard") is not None
+    assert DOMAIN_NORMALIZERS.get("hathi") is not None
+    assert DOMAIN_NORMALIZERS.get("nonexistent") is None
+    assert get_domain_normalizer("nonexistent") is None
+
+    with pytest.raises(KeyError):
+        _ = DOMAIN_NORMALIZERS["nonexistent"]
