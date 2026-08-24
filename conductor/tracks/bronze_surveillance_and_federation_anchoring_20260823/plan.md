@@ -12,10 +12,10 @@
 - [x] Task: Add tests for URN bidirectionality and formatting invariants.
 - [x] Task: Conductor Review & Automated Phase Gate Verification.
 
-### Phase 3: Zero-Copy Cross-Repository Federated SQL Views
-- [ ] Task: Extend `GoldAnalyticsEngine` with pre-defined zero-copy views joining GMA and FYI datasets.
-- [ ] Task: Add integration tests verifying cross-repository query resolution.
-- [ ] Task: Conductor Review & Automated Phase Gate Verification.
+### Phase 3: Zero-Copy Cross-Repository Federated SQL Views [COMPLETED]
+- [x] Task: Extend `GoldAnalyticsEngine` with pre-defined zero-copy views joining GMA and FYI datasets.
+- [x] Task: Add integration tests verifying cross-repository query resolution.
+- [x] Task: Conductor Review & Automated Phase Gate Verification.
 
 ### Phase 4: Asynchronous OpenTimestamps Proof-of-Existence Batcher
 - [ ] Task: Implement `tools/ots_batch_anchoring.py` computing Merkle trees over B1 manifests and submitting to OTS calendars out-of-band.
