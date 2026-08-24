@@ -8,5 +8,6 @@
   "track_id": "bronze_single_pass_ingestion_hardening_20260823",
   "treatment": "Single-pass magic byte filtering, streaming CIDv1/SHA256/BLAKE3 multi-hash, schema fingerprinting, and offline Ed25519 manifest sealing",
   "type": "bronze_hardening",
-  "updated_at": "2026-08-24T00:15:00Z"
+  "updated_at": "2026-08-24T00:15:00Z",
+  "evidence_schema": "1.0"
 }
