@@ -6,11 +6,11 @@
 - [x] Task: Add test cases verifying surveillance continuity without CAS write amplification.
 - [x] Task: Conductor Review & Automated Phase Gate Verification.
 
-### Phase 2: Canonical URN Protocol & Federation Encoders
-- [ ] Task: Implement `src/archive_govt_nz/core/urn.py` for canonical URN parsing, formatting, and validation.
-- [ ] Task: Inject canonical URNs into Silver and Gold Arrow/Parquet record schemas.
-- [ ] Task: Add tests for URN bidirectionality and formatting invariants.
-- [ ] Task: Conductor Review & Automated Phase Gate Verification.
+### Phase 2: Canonical URN Protocol & Federation Encoders [COMPLETED]
+- [x] Task: Implement `src/archive_govt_nz/core/urn.py` for canonical URN parsing, formatting, and validation.
+- [x] Task: Inject canonical URNs into Silver and Gold Arrow/Parquet record schemas.
+- [x] Task: Add tests for URN bidirectionality and formatting invariants.
+- [x] Task: Conductor Review & Automated Phase Gate Verification.
 
 ### Phase 3: Zero-Copy Cross-Repository Federated SQL Views
 - [ ] Task: Extend `GoldAnalyticsEngine` with pre-defined zero-copy views joining GMA and FYI datasets.

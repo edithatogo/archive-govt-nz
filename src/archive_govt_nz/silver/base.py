@@ -22,9 +22,11 @@ from archive_govt_nz.bronze.models import (
 SILVER_ARROW_SCHEMA = pa.schema(
     [
         # Standard GMA/NZ Linkage Columns
+        pa.field("nz_canonical_urn", pa.string(), nullable=True),
         pa.field("nz_source_record_id", pa.string(), nullable=False),
         pa.field("nz_acquisition_id", pa.string(), nullable=False),
         pa.field("nz_content_id", pa.string(), nullable=False),
+        pa.field("nz_content_cidv1", pa.string(), nullable=True),
         pa.field("nz_observed_at", pa.string(), nullable=False),
         pa.field("nz_schema_fingerprint", pa.string(), nullable=False),
         # Domain & Entity Classifications
@@ -75,14 +77,18 @@ class NormalizedSilverRecord:
     sha256_payload: str
     blake3_payload: str
     byte_size: int
+    nz_canonical_urn: str | None = None
+    nz_content_cidv1: str | None = None
     metadata_json: str = "{}"
 
     def to_dict(self) -> dict[str, Any]:
         """Convert normalized record to dictionary matching SILVER_ARROW_SCHEMA."""
         return {
+            "nz_canonical_urn": self.nz_canonical_urn,
             "nz_source_record_id": self.nz_source_record_id,
             "nz_acquisition_id": self.nz_acquisition_id,
             "nz_content_id": self.nz_content_id,
+            "nz_content_cidv1": self.nz_content_cidv1,
             "nz_observed_at": self.nz_observed_at,
             "nz_schema_fingerprint": self.nz_schema_fingerprint,
             "domain": self.domain,
