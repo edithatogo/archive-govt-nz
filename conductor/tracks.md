@@ -189,11 +189,8 @@ implementation has occurred under these tracks.
   2026-08-18 with zero active workflows; GitHub state contradicts this (repo
   unarchived, daily active runs). Requires corrected receipt, parallel-operation
   parity, soak, and explicit maintainer authorization before archival.*
-- [ ] **Track: Assimilation Parity Gate Hardening**
-  *Link: [tracks/assimilation_parity_gate_hardening_20260824/index.md](./tracks/assimilation_parity_gate_hardening_20260824/index.md)*
-  *Pins donor SHAs for hathi-nz / corpus-cases-medilegal-nz and requires
-  per-source-class parity receipts at phase gates; closes x_twitter and
-  website parity gaps.*
+- [x] **Track: Assimilation Parity Gate Hardening**
+  *Link: [archive/assimilation_parity_gate_hardening_20260824/index.md](./archive/assimilation_parity_gate_hardening_20260824/index.md)*
 - [x] **Track: Conductor Claim Drift Detection**
   *Link: [archive/conductor_claim_drift_detection_20260824/index.md](./archive/conductor_claim_drift_detection_20260824/index.md)*
 

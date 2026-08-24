@@ -52,6 +52,24 @@ def get_canonical_fixtures() -> list[tuple[str, str, bytes, bytes]]:
             b"From: info@stats.govt.nz\r\nSubject: CPI\r\n\r\nData",
             b"From: info@stats.govt.nz\r\nSubject: CPI\r\n\r\nData",
         ),
+        (
+            "hathi:volume:1001",
+            "HathiBronzeAdapter",
+            b"<mets><mods:title>NZ Parliamentary Debates</mods:title></mets>",
+            b"<mets><mods:title>NZ Parliamentary Debates</mods:title></mets>",
+        ),
+        (
+            "medilegal:hdc:2024-001",
+            "MedicoLegalBronzeAdapter",
+            b"<decision><case_id>2024-001</case_id><text>Findings</text></decision>",
+            b"<decision><case_id>2024-001</case_id><text>Findings</text></decision>",
+        ),
+        (
+            "web:moh:report",
+            "WebCaptureAdapter",
+            b"<!DOCTYPE html><html><body><h1>Health Report</h1></body></html>",
+            b"<!DOCTYPE html><html><body><h1>Health Report</h1></body></html>",
+        ),
     ]
 
 
