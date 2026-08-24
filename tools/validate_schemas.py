@@ -133,6 +133,10 @@ VALIDATION_PAIRS = (
         REPOSITORY_ROOT / "schemas" / "medilegal-case-v1.schema.json",
         REPOSITORY_ROOT / "tests" / "fixtures" / "medilegal-case-sample-v1.json",
     ),
+    (
+        REPOSITORY_ROOT / "schemas" / "publication-manifest-v2.schema.json",
+        REPOSITORY_ROOT / "tests" / "fixtures" / "publication-manifest-v2-sample.json",
+    ),
 )
 ARCHIVE_SCHEMA_DIRECTORY = REPOSITORY_ROOT / "schemas" / "archive" / "v1"
 

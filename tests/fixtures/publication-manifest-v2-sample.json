@@ -1,0 +1,41 @@
+{
+  "schema_version": "archive-govt-nz.publication-manifest/v2",
+  "manifest_id": "pub-manifest-20260824-001",
+  "bundle_name": "nz-govt-open-archive-corpus",
+  "version": "2026.08.24",
+  "created_at": "2026-08-24T12:00:00Z",
+  "bundle_root_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+  "platforms": [
+    {
+      "platform": "huggingface",
+      "target_identifier": "datasets/nz-govt-archive/corpus",
+      "enabled": true
+    },
+    {
+      "platform": "zenodo",
+      "target_identifier": "10.5281/zenodo.1234567",
+      "enabled": true
+    }
+  ],
+  "items": [
+    {
+      "item_path": "data/silver/legislation/corpus.parquet",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "blake3": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "size_bytes": 1048576,
+      "media_type": "application/vnd.apache.parquet",
+      "domain": "legislation"
+    }
+  ],
+  "ro_crate": {
+    "@context": "https://w3id.org/ro/crate/1.1/context",
+    "@graph": [
+      {
+        "@id": "ro-crate-metadata.json",
+        "@type": "CreativeWork",
+        "about": { "@id": "./" }
+      }
+    ]
+  },
+  "croissant": null
+}

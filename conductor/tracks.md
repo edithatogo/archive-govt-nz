@@ -173,11 +173,8 @@ active only after the MVP checkpoint and their stated decision gates pass.
   *Link: [archive/hathi_nz_capability_assimilation_20260823/index.md](./archive/hathi_nz_capability_assimilation_20260823/index.md)*
 - [x] **Track: Medico-Legal Case Law Preservation Machinery**
   *Link: [archive/corpus_medilegal_preservation_machinery_20260823/index.md](./archive/corpus_medilegal_preservation_machinery_20260823/index.md)*
-- [ ] **Track: Common Multi-Platform Publication & Distribution Hub**
-  *Link: [tracks/common_publication_distribution_hub_20260823/index.md](./tracks/common_publication_distribution_hub_20260823/index.md)*
-  *Blocked upstream until `multi_source_capture_activation_20260824` completes;
-  should also absorb the HF-rollover logic currently only present in
-  sm-govt-nz and opt into `evidence_schema: "1.0"` from day one.*
+- [x] **Track: Common Multi-Platform Publication & Distribution Hub**
+  *Link: [archive/common_publication_distribution_hub_20260823/index.md](./archive/common_publication_distribution_hub_20260823/index.md)*
 
 ## Programme: Canonical Capture Activation, Migration Assurance & Donor Retirement (2026-08-24)
 

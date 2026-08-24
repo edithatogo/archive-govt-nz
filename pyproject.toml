@@ -162,7 +162,7 @@ line-ending = "lf"
 [tool.pytest.ini_options]
 addopts = ["--strict-config", "--strict-markers", "--import-mode=importlib"]
 testpaths = ["tests"]
-norecursedirs = [".*", "build", "dist", "data", "venv", ".venv", "tmp", "scratch"]
+norecursedirs = [".*", "build", "data", "venv", ".venv", "tmp", "scratch"]
 
 [tool.coverage.run]
 branch = true

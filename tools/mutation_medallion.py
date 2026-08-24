@@ -111,6 +111,18 @@ MUTANTS = {
         'canonical_urn = "urn:corrupted_decision"',
         "tests/domains/medilegal/test_normalizer.py",
     ),
+    "dist_packaging_root_digest": (
+        "src/archive_govt_nz/dist/packaging.py",
+        "root_hasher.update(line)",
+        "pass",
+        "tests/dist/test_packaging.py",
+    ),
+    "dist_verifier_root_check": (
+        "src/archive_govt_nz/dist/verifier.py",
+        "manifest.bundle_root_sha256 != expected_root",
+        "False",
+        "tests/dist/test_verifier.py",
+    ),
 }
 
 
