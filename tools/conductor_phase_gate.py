@@ -384,6 +384,36 @@ PHASE_TARGETS: dict[str, dict[str, Any]] = {
             ),
         ],
     },
+    "claim_drift_p1": {
+        "title": "Claim Drift Phase 1: Claim Inventory & Schema Contracts",
+        "test_targets": [
+            "tests/tools/test_check_claim_drift.py",
+        ],
+        "source_paths": [
+            "tools/check_claim_drift.py",
+        ],
+        "schemas": ["schemas/claim-drift-receipt-v1.schema.json"],
+    },
+    "claim_drift_p2": {
+        "title": "Claim Drift Phase 2: Claim Checker & Divergence Detection",
+        "test_targets": [
+            "tests/tools/test_check_claim_drift.py",
+        ],
+        "source_paths": [
+            "tools/check_claim_drift.py",
+        ],
+        "schemas": ["schemas/claim-drift-receipt-v1.schema.json"],
+    },
+    "claim_drift_p3": {
+        "title": "Claim Drift Phase 3: Scheduled Lane & Full Assurance Gate",
+        "test_targets": [
+            "tests/tools/test_check_claim_drift.py",
+        ],
+        "source_paths": [
+            "tools/check_claim_drift.py",
+        ],
+        "schemas": ["schemas/claim-drift-receipt-v1.schema.json"],
+    },
 }
 
 

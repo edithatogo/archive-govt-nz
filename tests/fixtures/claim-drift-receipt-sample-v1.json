@@ -1,0 +1,27 @@
+{
+  "schema_version": "archive-govt-nz.claim-drift-receipt/v1",
+  "checked_at": "2026-08-24T12:00:00Z",
+  "status": "passed",
+  "claims_checked": 2,
+  "divergences_detected": 0,
+  "claims": [
+    {
+      "claim_id": "CLM-CORPUS-LEG-01",
+      "subject": "edithatogo/corpus-legislation-nz",
+      "claim_type": "is_archived",
+      "recorded_value": true,
+      "actual_value": true,
+      "status": "match",
+      "detail": null
+    },
+    {
+      "claim_id": "CLM-CORPUS-LEG-02",
+      "subject": "edithatogo/corpus-legislation-nz",
+      "claim_type": "open_issues_count",
+      "recorded_value": 0,
+      "actual_value": 0,
+      "status": "match",
+      "detail": null
+    }
+  ]
+}
