@@ -2,15 +2,14 @@
 
 from __future__ import annotations
 
-import json
+from collections.abc import Iterator, Mapping
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING, Final
 
 import pyarrow as pa
 import pyarrow.parquet as pq
 
-from archive_govt_nz.bronze.models import BronzeIngestionManifest
 from archive_govt_nz.silver.base import (
     SILVER_ARROW_SCHEMA,
     NormalizedSilverRecord,
@@ -19,20 +18,76 @@ from archive_govt_nz.silver.base import (
 from archive_govt_nz.silver.normalizers import (
     CourtsNoticesSilverNormalizer,
     GazetteSilverNormalizer,
-    HansardSilverNormalizer,
     HealthSilverNormalizer,
     LegislationSilverNormalizer,
     TreasurySilverNormalizer,
 )
 
-DOMAIN_NORMALIZERS: dict[str, SilverNormalizer] = {
+if TYPE_CHECKING:
+    from archive_govt_nz.bronze.models import BronzeIngestionManifest
+
+CORE_NORMALIZERS: Final[dict[str, SilverNormalizer]] = {
     "legislation": LegislationSilverNormalizer(),
     "gazette": GazetteSilverNormalizer(),
     "courts": CourtsNoticesSilverNormalizer(),
     "health": HealthSilverNormalizer(),
     "treasury": TreasurySilverNormalizer(),
-    "hansard": HansardSilverNormalizer(),
 }
+
+
+def get_domain_normalizer(domain: str) -> SilverNormalizer | None:
+    """Return the normalizer instance for a domain, dynamically importing extensions."""
+    if domain in CORE_NORMALIZERS:
+        return CORE_NORMALIZERS[domain]
+    if domain == "hansard":
+        from archive_govt_nz.domains.hansard.normalizer import (  # noqa: PLC0415
+            HansardSilverNormalizer,
+        )
+
+        return HansardSilverNormalizer()
+    if domain == "hathi":
+        from archive_govt_nz.domains.hathi.normalizer import (  # noqa: PLC0415
+            HathiSilverNormalizer,
+        )
+
+        return HathiSilverNormalizer()
+    if domain == "medilegal":
+        from archive_govt_nz.domains.medilegal.normalizer import (  # noqa: PLC0415
+            MedicoLegalSilverNormalizer,
+        )
+
+        return MedicoLegalSilverNormalizer()
+    return None
+
+
+class _DomainNormalizersProxy(Mapping[str, SilverNormalizer]):
+    """Dict-compatible lookup proxy for all registered domain normalizers."""
+
+    _ALL_DOMAINS: Final[tuple[str, ...]] = (
+        "legislation",
+        "gazette",
+        "courts",
+        "health",
+        "treasury",
+        "hansard",
+        "hathi",
+        "medilegal",
+    )
+
+    def __getitem__(self, key: str) -> SilverNormalizer:
+        norm = get_domain_normalizer(key)
+        if norm is None:
+            raise KeyError(key)
+        return norm
+
+    def __iter__(self) -> Iterator[str]:
+        return iter(self._ALL_DOMAINS)
+
+    def __len__(self) -> int:
+        return len(self._ALL_DOMAINS)
+
+
+DOMAIN_NORMALIZERS: Final[Mapping[str, SilverNormalizer]] = _DomainNormalizersProxy()
 
 
 @dataclass(frozen=True, slots=True)
@@ -47,70 +102,53 @@ class SilverTransformationResult:
 
 
 class SilverPipeline:
-    """Orchestrates transformation of Bronze ingested streams into Silver Parquet."""
+    """Consumes Bronze ingestion manifests and CAS payloads, producing Silver Parquet."""
 
     def __init__(self, silver_base_dir: Path | None = None) -> None:
+        """Initialize pipeline with target base directory."""
         self.silver_base_dir = silver_base_dir or Path("data/silver")
 
     def transform_manifest(
         self,
         manifest: BronzeIngestionManifest,
-        cas_base_dir: Path,
+        *,
+        cas_base_dir: Path | None = None,
     ) -> SilverTransformationResult:
-        """Transform all records in a Bronze manifest into a Silver Parquet dataset."""
-        normalizer = DOMAIN_NORMALIZERS.get(manifest.domain)
-        if not normalizer:
-            raise ValueError(
-                f"No Silver normalizer registered for domain: {manifest.domain}"
-            )
+        """Read all CAS records in a Bronze manifest and materialize Silver Parquet."""
+        domain = manifest.domain
+        normalizer = DOMAIN_NORMALIZERS.get(domain)
+        if normalizer is None:
+            msg = f"No registered Silver normalizer for domain '{domain}'"
+            raise ValueError(msg)
 
         all_silver_records: list[NormalizedSilverRecord] = []
-
         for record in manifest.records:
-            # Locate payload in CAS
-            cas_file = cas_base_dir / record.fixity.cas_path
-            if cas_file.exists():
-                payload_bytes = cas_file.read_bytes()
-            else:
-                # If CAS file missing, synthesize from custom metadata or empty
-                payload_bytes = json.dumps(record.custom_metadata).encode("utf-8")
+            cas_p = Path(record.fixity.cas_path)
+            if not cas_p.is_absolute() and cas_base_dir is not None:
+                cas_p = cas_base_dir / cas_p
 
-            normalized = normalizer.normalize_record(record, payload_bytes)
-            all_silver_records.extend(normalized)
+            payload_bytes = cas_p.read_bytes()
+            records = normalizer.normalize_record(record, payload_bytes)
+            all_silver_records.extend(records)
 
-        # Convert to PyArrow Table with strict schema validation
-        dict_records = [r.to_dict() for r in all_silver_records]
+        pydict: dict[str, list[object]] = {
+            name: [getattr(r, name) for r in all_silver_records]
+            for name in SILVER_ARROW_SCHEMA.names
+        }
+        table = pa.Table.from_pydict(pydict, schema=SILVER_ARROW_SCHEMA)
 
-        if dict_records:
-            pydict: dict[str, list[Any]] = {
-                field.name: [] for field in SILVER_ARROW_SCHEMA
-            }
-            for rec in dict_records:
-                for k, v in rec.items():
-                    pydict[k].append(v)
-            arrow_table = pa.Table.from_pydict(pydict, schema=SILVER_ARROW_SCHEMA)
-        else:
-            arrow_table = pa.Table.from_pylist([], schema=SILVER_ARROW_SCHEMA)
+        domain_silver_dir = self.silver_base_dir / domain
+        domain_silver_dir.mkdir(parents=True, exist_ok=True)
+        parquet_path = domain_silver_dir / "corpus.parquet"
 
-        # Write to destination Parquet
-        dest_dir = self.silver_base_dir / manifest.domain
-        dest_dir.mkdir(parents=True, exist_ok=True)
-        parquet_file = dest_dir / "corpus.parquet"
-
-        pq.write_table(
-            arrow_table,
-            parquet_file,
-            compression="zstd",
-            use_dictionary=True,
-        )
-
-        file_bytes = parquet_file.stat().st_size if parquet_file.exists() else 0
-        schema_fingerprint = str(arrow_table.schema)
+        pq.write_table(table, parquet_path, compression="zstd")
 
         return SilverTransformationResult(
-            domain=manifest.domain,
+            domain=domain,
             records_transformed=len(all_silver_records),
-            parquet_path=parquet_file,
-            parquet_bytes=file_bytes,
-            schema_fingerprint=schema_fingerprint,
+            parquet_path=parquet_path,
+            parquet_bytes=parquet_path.stat().st_size,
+            schema_fingerprint=all_silver_records[0].nz_schema_fingerprint
+            if all_silver_records
+            else "",
         )

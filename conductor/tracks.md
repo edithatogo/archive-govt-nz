@@ -169,14 +169,10 @@ active only after the MVP checkpoint and their stated decision gates pass.
 
 - [x] **Track: Hansard Corpus Capability Assimilation**
   *Link: [archive/hansard_capability_assimilation_20260823/index.md](./archive/hansard_capability_assimilation_20260823/index.md)*
-- [ ] **Track: HathiTrust NZ Historic Corpus Capability Assimilation**
-  *Link: [tracks/hathi_nz_capability_assimilation_20260823/index.md](./tracks/hathi_nz_capability_assimilation_20260823/index.md)*
-  *Pin the donor SHA via `assimilation_parity_gate_hardening_20260824` before
-  implementation begins.*
-- [ ] **Track: Medico-Legal Case Law Preservation Machinery**
-  *Link: [tracks/corpus_medilegal_preservation_machinery_20260823/index.md](./tracks/corpus_medilegal_preservation_machinery_20260823/index.md)*
-  *Pin the donor SHA via `assimilation_parity_gate_hardening_20260824` before
-  implementation begins.*
+- [x] **Track: HathiTrust NZ Historic Corpus Capability Assimilation**
+  *Link: [archive/hathi_nz_capability_assimilation_20260823/index.md](./archive/hathi_nz_capability_assimilation_20260823/index.md)*
+- [x] **Track: Medico-Legal Case Law Preservation Machinery**
+  *Link: [archive/corpus_medilegal_preservation_machinery_20260823/index.md](./archive/corpus_medilegal_preservation_machinery_20260823/index.md)*
 - [ ] **Track: Common Multi-Platform Publication & Distribution Hub**
   *Link: [tracks/common_publication_distribution_hub_20260823/index.md](./tracks/common_publication_distribution_hub_20260823/index.md)*
   *Blocked upstream until `multi_source_capture_activation_20260824` completes;
@@ -188,11 +184,8 @@ active only after the MVP checkpoint and their stated decision gates pass.
 Registered from the 2026-08-24 status review. Scaffolds only — no
 implementation has occurred under these tracks.
 
-- [ ] **Track: Multi-Source Capture Path Activation**
+- [x] **Track: Multi-Source Capture Path Activation**
   *Link: [tracks/multi_source_capture_activation_20260824/index.md](./tracks/multi_source_capture_activation_20260824/index.md)*
-  *`scheduled-multi-source-harvest` fails on all five source sets because the
-  mapped `capture` command is an unimplemented CLI stub (exit 2,
-  `not_configured`).*
 - [ ] **Track: sm-govt-nz Donor Retirement Readiness** (blocked by capture activation)
   *Link: [tracks/sm_govt_nz_donor_retirement_readiness_20260824/index.md](./tracks/sm_govt_nz_donor_retirement_readiness_20260824/index.md)*
   *The consolidation closeout receipt claims the donor was archived on

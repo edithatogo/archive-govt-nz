@@ -125,6 +125,14 @@ VALIDATION_PAIRS = (
         REPOSITORY_ROOT / "schemas" / "hansard-debate-v1.schema.json",
         REPOSITORY_ROOT / "tests" / "fixtures" / "hansard-debate-sample-v1.json",
     ),
+    (
+        REPOSITORY_ROOT / "schemas" / "hathi-volume-v1.schema.json",
+        REPOSITORY_ROOT / "tests" / "fixtures" / "hathi-volume-sample-v1.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "medilegal-case-v1.schema.json",
+        REPOSITORY_ROOT / "tests" / "fixtures" / "medilegal-case-sample-v1.json",
+    ),
 )
 ARCHIVE_SCHEMA_DIRECTORY = REPOSITORY_ROOT / "schemas" / "archive" / "v1"
 

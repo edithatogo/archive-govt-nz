@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive.govt.nz/schemas/medilegal-case-v1.schema.json",
+  "title": "MedicoLegalCaseRecord",
+  "description": "Schema for New Zealand health tribunal and medico-legal disciplinary decisions.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "case_id",
+    "tribunal",
+    "decision_date",
+    "title",
+    "full_text",
+    "is_anonymized"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "archive-govt-nz.medilegal-case/v1"
+    },
+    "case_id": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9._~:/-]+$"
+    },
+    "tribunal": {
+      "type": "string",
+      "enum": [
+        "HDC",
+        "HPDT",
+        "Coroners",
+        "MHRT",
+        "Tribunal"
+      ]
+    },
+    "decision_date": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "findings_summary": {
+      "type": ["string", "null"]
+    },
+    "full_text": {
+      "type": "string",
+      "minLength": 1
+    },
+    "statutory_provisions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "is_anonymized": {
+      "type": "boolean"
+    }
+  }
+}

@@ -76,13 +76,10 @@ Contingencies:
 - [x] Raise Track 12 decision logic to 100% line and branch coverage.
 - [x] Complete Conductor self-review with no open critical or high finding.
 - [x] Resume broader-health discovery only after a stable reconciled receipt.
-- [ ] Reclassify Ministry of Health resources from resource-level rights and
-  sensitivity evidence.
-- [ ] Authorize capture only for explicitly eligible resources.
-- [ ] Keep Treasury restricted resources as metadata/tombstone outcomes until
-  official access changes.
-- [ ] Revalidate staged Hugging Face and Zenodo packages without uploading.
-- [ ] Require credentials, rights approval, and release approval before any
-  remote publication or DOI creation.
-- [ ] Keep OCFL and graph/vector work deferred until the corpus/workload gate
-  in `conductor/tracks.md` is met.
+Operational policy invariants:
+- Reclassify Ministry of Health resources from resource-level rights and sensitivity evidence.
+- Authorize capture only for explicitly eligible resources.
+- Keep Treasury restricted resources as metadata/tombstone outcomes until official access changes.
+- Revalidate staged Hugging Face and Zenodo packages without uploading.
+- Require credentials, rights approval, and release approval before any remote publication or DOI creation.
+- Keep OCFL and graph/vector work deferred until the corpus/workload gate in `conductor/tracks.md` is met.

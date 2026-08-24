@@ -266,6 +266,84 @@ PHASE_TARGETS: dict[str, dict[str, Any]] = {
             ),
         ],
     },
+    "hathi_p1": {
+        "title": "HathiTrust Phase 1: Domain Schemas, METS/MODS Parser & Raw Bronze Acquisition",
+        "test_targets": [
+            "tests/domains/hathi/",
+        ],
+        "source_paths": [
+            "src/archive_govt_nz/domains/hathi/",
+        ],
+        "schemas": ["schemas/hathi-volume-v1.schema.json"],
+    },
+    "hathi_p2": {
+        "title": "HathiTrust Phase 2: Silver Bitemporal Normalization & Rights Classification",
+        "test_targets": [
+            "tests/domains/hathi/",
+            "tests/silver/",
+        ],
+        "source_paths": [
+            "src/archive_govt_nz/domains/hathi/",
+        ],
+        "schemas": ["schemas/hathi-volume-v1.schema.json"],
+    },
+    "hathi_p3": {
+        "title": "HathiTrust Phase 3: Gold Analytical Engine, Semantic Search & Mutation Gates",
+        "test_targets": [
+            "tests/domains/hathi/",
+            "tests/gold/",
+        ],
+        "source_paths": [
+            "src/archive_govt_nz/domains/hathi/",
+            "src/archive_govt_nz/gold/",
+        ],
+        "schemas": ["schemas/hathi-volume-v1.schema.json"],
+        "extra_commands": [
+            (
+                ["uv", "run", "--locked", "python", "tools/mutation_medallion.py"],
+                "Medallion Mutation Gate",
+            ),
+        ],
+    },
+    "medilegal_p1": {
+        "title": "Medico-Legal Phase 1: Case Decision Schemas, Sanitizer & Bronze Ingest",
+        "test_targets": [
+            "tests/domains/medilegal/",
+        ],
+        "source_paths": [
+            "src/archive_govt_nz/domains/medilegal/",
+        ],
+        "schemas": ["schemas/medilegal-case-v1.schema.json"],
+    },
+    "medilegal_p2": {
+        "title": "Medico-Legal Phase 2: Silver Bitemporal Normalization & Statutory Citations",
+        "test_targets": [
+            "tests/domains/medilegal/",
+            "tests/silver/",
+        ],
+        "source_paths": [
+            "src/archive_govt_nz/domains/medilegal/",
+        ],
+        "schemas": ["schemas/medilegal-case-v1.schema.json"],
+    },
+    "medilegal_p3": {
+        "title": "Medico-Legal Phase 3: Gold Analytical Engine, Semantic Search & Mutation Gates",
+        "test_targets": [
+            "tests/domains/medilegal/",
+            "tests/gold/",
+        ],
+        "source_paths": [
+            "src/archive_govt_nz/domains/medilegal/",
+            "src/archive_govt_nz/gold/",
+        ],
+        "schemas": ["schemas/medilegal-case-v1.schema.json"],
+        "extra_commands": [
+            (
+                ["uv", "run", "--locked", "python", "tools/mutation_medallion.py"],
+                "Medallion Mutation Gate",
+            ),
+        ],
+    },
 }
 
 

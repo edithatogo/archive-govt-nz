@@ -1,0 +1,22 @@
+{
+  "schema_version": "archive-govt-nz.hathi-volume/v1",
+  "volume_id": "hvd.32044012345678",
+  "title": "Appendix to the Journals of the House of Representatives of New Zealand, Session 1890",
+  "author": "New Zealand Parliament",
+  "publication_year": 1890,
+  "rights_attributes": "crown_copyright_expired",
+  "source_institution": "Harvard University Library",
+  "page_count": 2,
+  "ocr_pages": [
+    {
+      "page_seq": 1,
+      "page_number": "i",
+      "page_text": "APPENDIX TO THE JOURNALS OF THE HOUSE OF REPRESENTATIVES OF NEW ZEALAND. 1890."
+    },
+    {
+      "page_seq": 2,
+      "page_number": "1",
+      "page_text": "REPORT OF THE COMMISSION APPOINTED TO INQUIRE INTO CERTAIN MATTERS UNDER THE PUBLIC REVENUES ACT 1882."
+    }
+  ]
+}
