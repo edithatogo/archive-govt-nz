@@ -227,6 +227,45 @@ PHASE_TARGETS: dict[str, dict[str, Any]] = {
             ),
         ],
     },
+    "hansard_p1": {
+        "title": "Hansard Phase 1: Domain Schemas, XML Streaming Parser & Raw Bronze Acquisition",
+        "test_targets": [
+            "tests/domains/hansard/",
+        ],
+        "source_paths": [
+            "src/archive_govt_nz/domains/hansard/",
+        ],
+        "schemas": ["schemas/hansard-debate-v1.schema.json"],
+    },
+    "hansard_p2": {
+        "title": "Hansard Phase 2: Silver Bitemporal Normalization & Speaker Entity Reconciliation",
+        "test_targets": [
+            "tests/domains/hansard/",
+            "tests/silver/",
+        ],
+        "source_paths": [
+            "src/archive_govt_nz/domains/hansard/",
+        ],
+        "schemas": ["schemas/hansard-debate-v1.schema.json"],
+    },
+    "hansard_p3": {
+        "title": "Hansard Phase 3: Gold Analytical Engine, Semantic Search & Mutation Gates",
+        "test_targets": [
+            "tests/domains/hansard/",
+            "tests/gold/",
+        ],
+        "source_paths": [
+            "src/archive_govt_nz/domains/hansard/",
+            "src/archive_govt_nz/gold/",
+        ],
+        "schemas": ["schemas/hansard-debate-v1.schema.json"],
+        "extra_commands": [
+            (
+                ["uv", "run", "--locked", "python", "tools/mutation_medallion.py"],
+                "Medallion Mutation Gate",
+            ),
+        ],
+    },
 }
 
 

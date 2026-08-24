@@ -1,0 +1,31 @@
+{
+  "schema_version": "archive-govt-nz.hansard-debate/v1",
+  "document_id": "HANSARD-20260820-01",
+  "sitting_date": "2026-08-20",
+  "parliament_number": 54,
+  "session_number": 1,
+  "volume_number": 776,
+  "title": "Oral Questions — Questions to Ministers",
+  "speeches": [
+    {
+      "speech_id": "SPCH-20260820-001",
+      "speaker_name": "Rt Hon Chris Hipkins",
+      "speaker_role": "Leader of the Opposition",
+      "speech_type": "question",
+      "speech_text": "Does the Prime Minister stand by all his Government's policies and actions?",
+      "bill_references": [],
+      "act_references": ["Official Information Act 1982"],
+      "time_utc": "2026-08-20T14:02:00Z"
+    },
+    {
+      "speech_id": "SPCH-20260820-002",
+      "speaker_name": "Hon Christopher Luxon",
+      "speaker_role": "Prime Minister",
+      "speech_type": "answer",
+      "speech_text": "Yes, in particular our commitment to rebuilding the economy and delivering better public services.",
+      "bill_references": ["Medicines Amendment Bill"],
+      "act_references": [],
+      "time_utc": "2026-08-20T14:02:30Z"
+    }
+  ]
+}

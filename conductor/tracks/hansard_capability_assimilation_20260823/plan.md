@@ -1,11 +1,11 @@
 # Implementation Plan: Hansard Corpus Capability Assimilation
 
-### Phase 1: Domain Schemas, XML Streaming Parser & Raw Bronze Acquisition
-- [ ] Task: Define JSON schema `schemas/hansard-debate-v1.schema.json` and PyArrow tabular schema for NZ Parliamentary Debates.
-- [ ] Task: Implement `src/archive_govt_nz/domains/hansard/parser.py` supporting fast streaming XML parsing of Hansard sitting day records.
-- [ ] Task: Implement `src/archive_govt_nz/domains/hansard/adapter.py` integrating Bronze CAS payload storage and manifest generation.
-- [ ] Task: Add characterization tests for Hansard XML parsing and Bronze ingest.
-- [ ] Task: Conductor Review & Automated Phase Gate Verification.
+### Phase 1: Domain Schemas, XML Streaming Parser & Raw Bronze Acquisition [COMPLETED]
+- [x] Task: Define JSON schema `schemas/hansard-debate-v1.schema.json` and PyArrow tabular schema for NZ Parliamentary Debates.
+- [x] Task: Implement `src/archive_govt_nz/domains/hansard/parser.py` supporting fast streaming XML parsing of Hansard sitting day records.
+- [x] Task: Implement `src/archive_govt_nz/domains/hansard/adapter.py` integrating Bronze CAS payload storage and manifest generation.
+- [x] Task: Add characterization tests for Hansard XML parsing and Bronze ingest.
+- [x] Task: Conductor Review & Automated Phase Gate Verification.
 
 ### Phase 2: Silver Bitemporal Normalization & Speaker Entity Reconciliation
 - [ ] Task: Implement `src/archive_govt_nz/domains/hansard/normalizer.py` vectorizing speeches into bitemporal Silver Parquet (`data/silver/hansard/corpus.parquet`).

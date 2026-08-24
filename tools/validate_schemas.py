@@ -121,6 +121,10 @@ VALIDATION_PAIRS = (
         / "corpus-legislation-nz"
         / "shadow-operation-cutover-attestation.json",
     ),
+    (
+        REPOSITORY_ROOT / "schemas" / "hansard-debate-v1.schema.json",
+        REPOSITORY_ROOT / "tests" / "fixtures" / "hansard-debate-sample-v1.json",
+    ),
 )
 ARCHIVE_SCHEMA_DIRECTORY = REPOSITORY_ROOT / "schemas" / "archive" / "v1"
 
