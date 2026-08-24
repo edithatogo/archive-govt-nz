@@ -13,8 +13,7 @@
 
 ## Phase 3: Validation and sequence handoff
 
-- [~] Run focused coverage and full repository validation. All local gates and
-  the alternate PyPI audit passed; the required OSV audit remains pending after
-  repeated external timeouts.
+- [x] Run focused coverage and full repository validation. All local gates,
+  PyPI audit, and OSV audits passed.
 - [x] Complete local implementation self-review.
-- [ ] Rebase and open only after service and global CLI predecessors complete.
+- [x] Rebase and open only after service and global CLI predecessors complete. Completed via PR #158 (`bc5acda`) and PR #159 (`c16ad20`).

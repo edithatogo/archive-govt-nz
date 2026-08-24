@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive.govt.nz/schemas/hansard-debate-v1.schema.json",
+  "title": "HansardDebateRecord",
+  "description": "Schema for structured New Zealand Parliamentary Debates (Hansard) records.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "document_id",
+    "sitting_date",
+    "parliament_number",
+    "session_number",
+    "title",
+    "speeches"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "archive-govt-nz.hansard-debate/v1"
+    },
+    "document_id": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9._~:/-]+$"
+    },
+    "sitting_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "parliament_number": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "session_number": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "volume_number": {
+      "type": ["integer", "null"]
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "speeches": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "speech_id",
+          "speaker_name",
+          "speech_type",
+          "speech_text"
+        ],
+        "properties": {
+          "speech_id": {
+            "type": "string"
+          },
+          "speaker_name": {
+            "type": "string"
+          },
+          "speaker_role": {
+            "type": ["string", "null"]
+          },
+          "speech_type": {
+            "type": "string",
+            "enum": [
+              "speech",
+              "question",
+              "answer",
+              "interjection",
+              "point_of_order",
+              "procedural"
+            ]
+          },
+          "speech_text": {
+            "type": "string"
+          },
+          "bill_references": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "act_references": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "time_utc": {
+            "type": ["string", "null"]
+          }
+        }
+      }
+    }
+  }
+}

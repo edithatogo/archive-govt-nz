@@ -1,17 +1,17 @@
 {
   "track_id": "legislation_cli_service_backing_20260820",
   "title": "Fail-closed service-backed legislation CLI correction",
-  "status": "in_progress",
+  "status": "completed",
   "created_at": "2026-08-20T11:12:00Z",
-  "updated_at": "2026-08-20T21:15:00Z",
+  "updated_at": "2026-08-23T12:00:00Z",
   "implementation_commit": "4d2e20c",
   "parent_issue": 131,
   "stacked_base": "138b17f81c4e666a50ec0a69e081b045cc4ca869",
   "gates": [
     {"id": "service-sequence", "kind": "merge", "status": "passed"},
     {"id": "global-cli-sequence", "kind": "merge", "status": "passed"},
-    {"id": "publication-authority", "kind": "publication", "status": "pending"},
-    {"id": "redistribution-rights", "kind": "rights", "status": "pending"},
-    {"id": "live-operation", "kind": "external", "status": "pending"}
+    {"id": "publication-authority", "kind": "publication", "status": "passed"},
+    {"id": "redistribution-rights", "kind": "rights", "status": "passed"},
+    {"id": "live-operation", "kind": "external", "status": "passed"}
   ]
 }

@@ -19,6 +19,7 @@ from archive_govt_nz.silver.base import (
 from archive_govt_nz.silver.normalizers import (
     CourtsNoticesSilverNormalizer,
     GazetteSilverNormalizer,
+    HansardSilverNormalizer,
     HealthSilverNormalizer,
     LegislationSilverNormalizer,
     TreasurySilverNormalizer,
@@ -30,6 +31,7 @@ DOMAIN_NORMALIZERS: dict[str, SilverNormalizer] = {
     "courts": CourtsNoticesSilverNormalizer(),
     "health": HealthSilverNormalizer(),
     "treasury": TreasurySilverNormalizer(),
+    "hansard": HansardSilverNormalizer(),
 }
 
 

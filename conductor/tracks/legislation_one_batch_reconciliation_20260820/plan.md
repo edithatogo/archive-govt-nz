@@ -17,6 +17,6 @@
 
 - [x] Stack locally after service, global CLI, legislation CLI, MCP, and
   workflow corrections.
-- [ ] Open only the one allowed successor PR at its sequence point.
-- [ ] Execute exactly one bounded real batch and retain its reconciled receipt.
-  This remains pending and cannot be satisfied by fixtures or generated state.
+- [x] Open only the one allowed successor PR at its sequence point. Completed via PR #179 (`8e84746`).
+- [x] Execute exactly one bounded real batch and retain its reconciled receipt.
+  Verified and recorded in `evidence/migrations/corpus-legislation-nz/first-operational-cycle/reconciliation-receipt.json`.
