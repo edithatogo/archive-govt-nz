@@ -161,7 +161,7 @@ active only after the MVP checkpoint and their stated decision gates pass.
 - [x] **Track: Single-Pass Ironclad Bronze Ingestion Hardening**
   *Link: [archive/bronze_single_pass_ingestion_hardening_20260823/index.md](./archive/bronze_single_pass_ingestion_hardening_20260823/index.md)*
 - [x] **Track: Surveillance Heartbeat Ledger & Cross-Repository Federation Protocol**
-  *Link: [tracks/bronze_surveillance_and_federation_anchoring_20260823/index.md](./tracks/bronze_surveillance_and_federation_anchoring_20260823/index.md)*
+  *Link: [archive/bronze_surveillance_and_federation_anchoring_20260823/index.md](./archive/bronze_surveillance_and_federation_anchoring_20260823/index.md)*
 - [x] **Track: Legislation Post-Cutover Production Steady-State Operations**
   *Link: [archive/legislation_post_cutover_steady_state_20260823/index.md](./archive/legislation_post_cutover_steady_state_20260823/index.md)*
 
