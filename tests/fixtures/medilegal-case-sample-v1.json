@@ -1,0 +1,14 @@
+{
+  "schema_version": "archive-govt-nz.medilegal-case/v1",
+  "case_id": "HDC-21HDC01234",
+  "tribunal": "HDC",
+  "decision_date": "2023-05-12",
+  "title": "Breach of Right 4(1) of the Code of Health and Disability Services Consumers' Rights",
+  "findings_summary": "Finding of failure to provide services with reasonable care and skill under Right 4(1).",
+  "full_text": "The Commissioner found Dr B in breach of Right 4(1) of the Code under the Health and Disability Commissioner Act 1994.",
+  "statutory_provisions": [
+    "Health and Disability Commissioner Act 1994",
+    "Code of Health and Disability Services Consumers' Rights"
+  ],
+  "is_anonymized": true
+}

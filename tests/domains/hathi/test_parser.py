@@ -95,6 +95,15 @@ def test_parse_hathi_json_invalid() -> None:
     with pytest.raises(HathiParseError, match="title must be a non-empty string"):
         parse_hathi_json(b'{"volume_id": "vol1", "title": ""}')
 
+    vol = parse_hathi_json(
+        b'{"volume_id": "vol1", "title": "t", "ocr_pages": ['
+        b'"not dict", {"page_seq": "not int"}, '
+        b'{"page_seq": 1, "page_text": "Public Works Act 1876"}'
+        b"]}"
+    )
+    assert len(vol.pages) == 1
+    assert vol.pages[0].page_seq == 1
+
 
 def test_parse_hathi_mets_xml() -> None:
     """METS/MODS XML correctly parses metadata and OCR page mapping."""

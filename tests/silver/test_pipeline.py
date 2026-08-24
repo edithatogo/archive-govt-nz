@@ -145,8 +145,9 @@ def test_domain_normalizers_proxy() -> None:
     """DomainNormalizersProxy maps and lazily loads all domain normalizers."""
     assert "hansard" in DOMAIN_NORMALIZERS
     assert "hathi" in DOMAIN_NORMALIZERS
+    assert "medilegal" in DOMAIN_NORMALIZERS
     assert "unknown_domain" not in DOMAIN_NORMALIZERS
-    assert len(DOMAIN_NORMALIZERS) == 7
+    assert len(DOMAIN_NORMALIZERS) == 8
     assert list(DOMAIN_NORMALIZERS) == [
         "legislation",
         "gazette",
@@ -155,9 +156,11 @@ def test_domain_normalizers_proxy() -> None:
         "treasury",
         "hansard",
         "hathi",
+        "medilegal",
     ]
     assert DOMAIN_NORMALIZERS.get("hansard") is not None
     assert DOMAIN_NORMALIZERS.get("hathi") is not None
+    assert DOMAIN_NORMALIZERS.get("medilegal") is not None
     assert DOMAIN_NORMALIZERS.get("nonexistent") is None
     assert get_domain_normalizer("nonexistent") is None
 

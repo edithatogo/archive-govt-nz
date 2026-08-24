@@ -5,6 +5,8 @@ from __future__ import annotations
 import json
 from typing import TYPE_CHECKING
 
+import pytest
+
 from archive_govt_nz.bronze.attestation import Ed25519Signer
 from archive_govt_nz.domains.hathi.adapter import HathiBronzeAdapter
 from archive_govt_nz.object_store import ContentAddressedStore
@@ -60,3 +62,33 @@ def test_hathi_bronze_adapter_ingest(tmp_path: Path) -> None:
     assert batch_res.records_synced == 1
     assert batch_res.manifest_path is not None
     assert batch_res.signature_path is not None
+
+
+def test_hathi_bronze_adapter_ingest_mets_xml(tmp_path: Path) -> None:
+    """HathiBronzeAdapter ingests METS XML payload when volume_id is provided."""
+    store = ContentAddressedStore(tmp_path / "cas")
+    adapter = HathiBronzeAdapter(store=store, base_dir=tmp_path / "bronze_hathi")
+
+    xml_payload = b"<mets><title>Test Historic Volume</title><date>1870</date></mets>"
+    outcome = adapter.ingest_document(
+        payload_bytes=xml_payload,
+        source_url="https://catalog.hathitrust.org/Record/002",
+        volume_id="nyp.xml001",
+    )
+
+    assert outcome.volume_id == "nyp.xml001"
+    assert outcome.title == "Test Historic Volume"
+    assert outcome.record.fixity.media_type == "application/xml"
+
+
+def test_hathi_bronze_adapter_mets_xml_missing_volume_id(tmp_path: Path) -> None:
+    """HathiBronzeAdapter raises ValueError when METS XML lacks volume_id."""
+    store = ContentAddressedStore(tmp_path / "cas")
+    adapter = HathiBronzeAdapter(store=store)
+
+    xml_payload = b"<mets><title>Missing ID</title></mets>"
+    with pytest.raises(ValueError, match="volume_id is required"):
+        adapter.ingest_document(
+            payload_bytes=xml_payload,
+            source_url="https://catalog.hathitrust.org/Record/002",
+        )
