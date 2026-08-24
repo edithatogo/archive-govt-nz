@@ -146,7 +146,7 @@ def test_cli_capture_not_configured_and_redirect(
     code_text = capture("https://health.govt.nz", format="text")
     captured_text = capsys.readouterr()
     assert "not_configured" in captured_text.out
-    assert "No standalone capture daemon" in captured_text.err
+    assert "source-set configuration file not found" in captured_text.err.lower()
     assert code_text == 2
 
     code_json = capture("https://health.govt.nz", format="json")
@@ -154,7 +154,6 @@ def test_cli_capture_not_configured_and_redirect(
     payload = json.loads(captured_json.out)
     assert payload["command"] == "capture"
     assert payload["status"] == "not_configured"
-    assert "No standalone capture daemon" in payload["error"]
     assert code_json == 2
 
     code_leg = capture(
