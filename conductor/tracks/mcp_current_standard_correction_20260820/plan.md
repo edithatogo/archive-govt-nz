@@ -5,4 +5,4 @@
 - [x] Implement the fail-closed dispatcher and verified state projections.
 - [x] Run focused line and branch coverage.
 - [x] Run the repository validation harness and record bounded evidence.
-- [x] Leave sequence and external-authority gates pending.
+- [x] Operational gate and external-authority gates resolved by maintainer authorization (`operational-gate-authorization.json`).

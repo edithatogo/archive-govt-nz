@@ -12,5 +12,5 @@
   donor state; validate the documented command surface.
 - [x] **Phase 4B — Final CAS boundary fix (`e105de1`):** Reject an internal `sha256`
   symlink and ensure verification does not create object-store state.
-- [ ] **Phase 5:** Rebase onto the merged service correction and open exactly
-  one successor PR. This remains gated while PR #156 is open.
+- [x] **Phase 5:** Rebase onto the merged service correction and open exactly
+  one successor PR. Completed via PR #157 (`138b17f`).
