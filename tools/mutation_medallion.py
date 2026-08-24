@@ -41,8 +41,8 @@ MUTANTS = {
     ),
     "silver_table_population": (
         "src/archive_govt_nz/silver/pipeline.py",
-        "arrow_table = pa.Table.from_pydict(pydict, schema=SILVER_ARROW_SCHEMA)",
-        "arrow_table = pa.Table.from_pylist([], schema=SILVER_ARROW_SCHEMA)",
+        "table = pa.Table.from_pydict(pydict, schema=SILVER_ARROW_SCHEMA)",
+        "table = pa.Table.from_pylist([], schema=SILVER_ARROW_SCHEMA)",
         "tests/silver/test_pipeline.py",
     ),
     "gold_view_registration": (
@@ -86,6 +86,30 @@ MUTANTS = {
         'work_id = f"{debate.document_id}_{speech.speech_id}"',
         'work_id = "corrupted_id"',
         "tests/domains/hansard/test_normalizer.py",
+    ),
+    "hathi_rights_classifier": (
+        "src/archive_govt_nz/domains/hathi/normalizer.py",
+        'return "crown_copyright_expired"',
+        'return "corrupted_rights"',
+        "tests/domains/hathi/test_normalizer.py",
+    ),
+    "hathi_silver_page_urn": (
+        "src/archive_govt_nz/domains/hathi/normalizer.py",
+        'work_id = f"{volume.volume_id}_p{page.page_seq:04d}"',
+        'work_id = "corrupted_page_id"',
+        "tests/domains/hathi/test_normalizer.py",
+    ),
+    "medilegal_sanitizer_nhi": (
+        "src/archive_govt_nz/domains/medilegal/sanitizer.py",
+        'sanitized = _NHI_PATTERN.sub("[REDACTED NHI]", sanitized)',
+        "sanitized = sanitized",
+        "tests/domains/medilegal/test_sanitizer.py",
+    ),
+    "medilegal_normalizer_urn": (
+        "src/archive_govt_nz/domains/medilegal/normalizer.py",
+        'canonical_urn = CanonicalURN.format(self.domain, "decision", case.case_id)',
+        'canonical_urn = "urn:corrupted_decision"',
+        "tests/domains/medilegal/test_normalizer.py",
     ),
 }
 

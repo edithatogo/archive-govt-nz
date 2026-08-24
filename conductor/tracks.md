@@ -169,8 +169,8 @@ active only after the MVP checkpoint and their stated decision gates pass.
 
 - [x] **Track: Hansard Corpus Capability Assimilation**
   *Link: [archive/hansard_capability_assimilation_20260823/index.md](./archive/hansard_capability_assimilation_20260823/index.md)*
-- [ ] **Track: HathiTrust NZ Historic Corpus Capability Assimilation**
-  *Link: [tracks/hathi_nz_capability_assimilation_20260823/index.md](./tracks/hathi_nz_capability_assimilation_20260823/index.md)*
+- [x] **Track: HathiTrust NZ Historic Corpus Capability Assimilation**
+  *Link: [archive/hathi_nz_capability_assimilation_20260823/index.md](./archive/hathi_nz_capability_assimilation_20260823/index.md)*
 - [ ] **Track: Medico-Legal Case Law Preservation Machinery**
   *Link: [tracks/corpus_medilegal_preservation_machinery_20260823/index.md](./tracks/corpus_medilegal_preservation_machinery_20260823/index.md)*
 - [ ] **Track: Common Multi-Platform Publication & Distribution Hub**

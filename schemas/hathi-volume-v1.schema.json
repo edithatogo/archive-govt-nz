@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive.govt.nz/schemas/hathi-volume-v1.schema.json",
+  "title": "HathiTrustVolumeRecord",
+  "description": "Schema for historical New Zealand digitized volumes from HathiTrust / METS / MODS archives.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "volume_id",
+    "title",
+    "page_count",
+    "rights_attributes",
+    "ocr_pages"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "archive-govt-nz.hathi-volume/v1"
+    },
+    "volume_id": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9._~:/-]+$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "author": {
+      "type": ["string", "null"]
+    },
+    "publication_year": {
+      "type": ["integer", "null"],
+      "minimum": 1600,
+      "maximum": 2100
+    },
+    "rights_attributes": {
+      "type": "string",
+      "enum": [
+        "pd",
+        "pdus",
+        "crown_copyright_expired",
+        "open_access",
+        "restricted"
+      ]
+    },
+    "source_institution": {
+      "type": ["string", "null"]
+    },
+    "page_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "ocr_pages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "page_seq",
+          "page_text"
+        ],
+        "properties": {
+          "page_seq": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "page_number": {
+            "type": ["string", "null"]
+          },
+          "page_text": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

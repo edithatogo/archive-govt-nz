@@ -2,7 +2,7 @@
   "track_id": "hathi_nz_capability_assimilation_20260823",
   "title": "HathiTrust NZ Historic Corpus Capability Assimilation",
   "type": "capability_assimilation",
-  "status": "new",
+  "status": "archived",
   "donor_or_upstream": "edithatogo/hathi-nz",
   "treatment": "Selective capability assimilation with strict source-rights boundary preservation",
   "reusable_assets": "Volume/page metadata parsers, OCR text normalizers, rights classification logic",
