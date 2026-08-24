@@ -350,3 +350,29 @@ def test_main_requires_explicit_state_and_scope(
     with pytest.raises(SystemExit) as raised:
         main()
     assert raised.value.code == 0
+
+
+@pytest.mark.parametrize(
+    ("execution_mode", "expected_ok"),
+    [
+        ("dispatch_only", True),
+        ("scheduled", True),
+        ("scheduled_and_dispatch", True),
+        ("unbounded", False),
+    ],
+)
+def test_execution_mode_gate_accepts_promoted_modes_only(
+    tmp_path: Path, execution_mode: str, *, expected_ok: bool
+) -> None:
+    """Steady-state promotion allows scheduled modes; everything else fails closed."""
+    config = tmp_path / "legislation.yml"
+    config.write_text(
+        f"name: legislation\nenabled: true\nexecution_mode: {execution_mode}\n",
+        encoding="utf-8",
+    )
+    if expected_ok:
+        parsed = validate_source_set_config(config)
+        assert parsed["execution_mode"] == execution_mode
+    else:
+        with pytest.raises(ValueError, match="execution_mode"):
+            validate_source_set_config(config)
