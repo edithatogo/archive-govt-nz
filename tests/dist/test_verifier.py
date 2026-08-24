@@ -58,7 +58,7 @@ def test_verifier_local_files(tmp_path: Path) -> None:
     rel_path = "data/silver/file1.txt"
     abs_file = tmp_path / rel_path
     abs_file.parent.mkdir(parents=True, exist_ok=True)
-    abs_file.write_text("Valid Payload Content\n", encoding="utf-8")
+    abs_file.write_bytes(b"Valid Payload Content\n")
 
     sha256, blake3_hex, size = compute_file_fixity(abs_file)
     item = PublicationItem(
@@ -82,7 +82,7 @@ def test_verifier_local_files(tmp_path: Path) -> None:
     assert rep.items_passed == 1
 
     # Corrupt file content
-    abs_file.write_text("Corrupted Content\n", encoding="utf-8")
+    abs_file.write_bytes(b"Corrupted Content\n")
     rep_corrupt = verifier.verify_local_files(manifest, base_dir=tmp_path)
     assert rep_corrupt.is_valid is False
     assert rep_corrupt.items_passed == 0

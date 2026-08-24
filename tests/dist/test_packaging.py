@@ -20,12 +20,12 @@ from archive_govt_nz.dist.packaging import (
 def test_compute_file_fixity(tmp_path: Path) -> None:
     """Compute sha256 and blake3 digests for test file."""
     test_file = tmp_path / "sample.txt"
-    test_file.write_text("Hello NZ Open Government Archive\n", encoding="utf-8")
+    test_file.write_bytes(b"Hello NZ Open Government Archive\n")
 
     sha256, blake3_hex, size = compute_file_fixity(test_file)
     assert len(sha256) == 64
     assert len(blake3_hex) == 64
-    assert size == len("Hello NZ Open Government Archive\n")
+    assert size == len(b"Hello NZ Open Government Archive\n")
 
 
 def test_compute_bundle_root_digest() -> None:
