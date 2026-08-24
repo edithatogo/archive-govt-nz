@@ -141,6 +141,13 @@ VALIDATION_PAIRS = (
         REPOSITORY_ROOT / "schemas" / "claim-drift-receipt-v1.schema.json",
         REPOSITORY_ROOT / "tests" / "fixtures" / "claim-drift-receipt-sample-v1.json",
     ),
+    (
+        REPOSITORY_ROOT / "schemas" / "donor-retirement-attestation-v1.schema.json",
+        REPOSITORY_ROOT
+        / "tests"
+        / "fixtures"
+        / "donor-retirement-attestation-sample-v1.json",
+    ),
 )
 ARCHIVE_SCHEMA_DIRECTORY = REPOSITORY_ROOT / "schemas" / "archive" / "v1"
 

@@ -463,6 +463,50 @@ PHASE_TARGETS: dict[str, dict[str, Any]] = {
             ),
         ],
     },
+    "sm_donor_p1": {
+        "title": "sm-govt-nz Retirement Phase 1: Record Correction & True State Receipt",
+        "test_targets": [
+            "tests/parity/test_parity_harness.py",
+        ],
+        "source_paths": [
+            "tools/run_differential_parity.py",
+        ],
+        "schemas": ["schemas/donor-retirement-attestation-v1.schema.json"],
+    },
+    "sm_donor_p2": {
+        "title": "sm-govt-nz Retirement Phase 2: Parallel Operation & Parity Verification",
+        "test_targets": [
+            "tests/parity/test_parity_harness.py",
+        ],
+        "source_paths": [
+            "tools/run_differential_parity.py",
+        ],
+        "schemas": ["schemas/donor-retirement-attestation-v1.schema.json"],
+        "extra_commands": [
+            (
+                ["uv", "run", "--locked", "python", "tools/run_differential_parity.py"],
+                "Differential Parity Verification Suite",
+            ),
+        ],
+    },
+    "sm_donor_p3": {
+        "title": "sm-govt-nz Retirement Phase 3: Soak, Attestation & Archival Readiness",
+        "test_targets": [
+            "tests/parity/test_parity_harness.py",
+            "tests/tools/test_check_claim_drift.py",
+        ],
+        "source_paths": [
+            "tools/run_differential_parity.py",
+            "tools/check_claim_drift.py",
+        ],
+        "schemas": ["schemas/donor-retirement-attestation-v1.schema.json"],
+        "extra_commands": [
+            (
+                ["uv", "run", "--locked", "python", "tools/run_differential_parity.py"],
+                "Differential Parity Verification Suite",
+            ),
+        ],
+    },
 }
 
 

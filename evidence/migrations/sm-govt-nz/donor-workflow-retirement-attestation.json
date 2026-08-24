@@ -1,0 +1,15 @@
+{
+  "schema_version": "archive-govt-nz.donor-retirement-attestation/v1",
+  "attestation_id": "attest-sm-govt-nz-retirement-20260825",
+  "donor_repository": "edithatogo/sm-govt-nz",
+  "canonical_repository": "edithatogo/archive-govt-nz",
+  "created_at": "2026-08-25T00:00:00Z",
+  "readiness_status": "READY_FOR_MAINTAINER_ARCHIVAL",
+  "prerequisites": {
+    "capture_path_activated": true,
+    "differential_parity_certified": true,
+    "distribution_hub_integrated": true,
+    "claim_drift_monitoring_active": true
+  },
+  "notes": "Canonical multi-source capture activated in PR #188. Common publication hub & HF-rollover distribution integrated in PR #190. Assimilation parity gates hardened with pinned donor SHAs in PR #192. Weekly claim drift detection automated in PR #191. Ready for maintainer archival authorization."
+}
