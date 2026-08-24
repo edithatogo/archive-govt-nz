@@ -344,6 +344,46 @@ PHASE_TARGETS: dict[str, dict[str, Any]] = {
             ),
         ],
     },
+    "pubhub_p1": {
+        "title": "Publication Hub Phase 1: Distribution Contracts, Packaging Router & Manifest Schemas",
+        "test_targets": [
+            "tests/dist/test_packaging.py",
+            "tests/dist/test_router.py",
+        ],
+        "source_paths": [
+            "src/archive_govt_nz/dist/",
+        ],
+        "schemas": ["schemas/publication-manifest-v2.schema.json"],
+    },
+    "pubhub_p2": {
+        "title": "Publication Hub Phase 2: Target Adapters & Dry-Run Verification",
+        "test_targets": [
+            "tests/dist/test_adapters.py",
+            "tests/dist/test_router.py",
+        ],
+        "source_paths": [
+            "src/archive_govt_nz/dist/",
+        ],
+        "schemas": ["schemas/publication-manifest-v2.schema.json"],
+    },
+    "pubhub_p3": {
+        "title": "Publication Hub Phase 3: Fixity Verification, CLI & Mutation Gates",
+        "test_targets": [
+            "tests/dist/",
+            "tests/cli/test_cli.py",
+        ],
+        "source_paths": [
+            "src/archive_govt_nz/dist/",
+            "src/archive_govt_nz/cli.py",
+        ],
+        "schemas": ["schemas/publication-manifest-v2.schema.json"],
+        "extra_commands": [
+            (
+                ["uv", "run", "--locked", "python", "tools/mutation_medallion.py"],
+                "Medallion Mutation Gate",
+            ),
+        ],
+    },
 }
 
 

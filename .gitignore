@@ -28,7 +28,7 @@ data/profile/
 # Temporary and generated local outputs
 .tmp/
 tmp/
-dist/
+/dist/
 build/
 
 # Operating-system and editor files
