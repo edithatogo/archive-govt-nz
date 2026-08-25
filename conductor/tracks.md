@@ -192,10 +192,12 @@ implementation has occurred under these tracks.
 
 ## Programme: Cross-Repository Federation Partners (Group 4)
 
+- [x] **Track: Cross-repository medallion contract conformance**
+  *Archived: [archive/cross_repository_medallion_conformance_20260826/index.md](./archive/cross_repository_medallion_conformance_20260826/index.md); v1 uses byte-versioned schemas and repository-local CI tests without a shared runtime dependency.*
+
 - **`global-medicines-atlas`**: Zero-copy Parquet joins for global medicine ontologies and pricing.
 - **`reimbursement-atlas`**: International public reimbursement schedule cross-references (MBS/PBS/CMS).
 - **`fyi-archive`**: Multi-country international FOI register federation (AU, BE, CZ, EU, FR, GE, GR, HK, HR, HU, IE, LR, MD, NL, RO) with NZ OIA cross-queries.
 - **`open_social_data`**: Multi-national public social data engine (Australian Bureau of Statistics, data.gov.au, Statistics NZ).
-
 
 
