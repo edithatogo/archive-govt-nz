@@ -197,5 +197,7 @@ implementation has occurred under these tracks.
 - **`fyi-archive`**: Multi-country international FOI register federation (AU, BE, CZ, EU, FR, GE, GR, HK, HR, HU, IE, LR, MD, NL, RO) with NZ OIA cross-queries.
 - **`open_social_data`**: Multi-national public social data engine (Australian Bureau of Statistics, data.gov.au, Statistics NZ).
 
+## Programme: Platinum Layer Federation & Synthesis (2026-08-25)
 
-
+- [ ] **Track: Platinum Layer Cross-Jurisdiction Federation, Croissant ML Metadata & Citable Synthesis**
+  *Link: [tracks/platinum_layer_federation_and_synthesis_20260825/index.md](./tracks/platinum_layer_federation_and_synthesis_20260825/index.md)*
