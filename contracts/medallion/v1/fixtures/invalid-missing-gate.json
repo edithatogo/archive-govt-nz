@@ -1,0 +1,6 @@
+{
+  "vocabulary_version": "1.0.0",
+  "repository": "conformance-fixture",
+  "artifacts": [{"artifact_id":"unsafe-gold","layer":"gold","sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","lineage":{"input_artifact_ids":["silver"],"input_sha256":["bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"]},"rights_decision":{"decision_id":"rights-unsafe","status":"approved","scope":"Derived fields only.","reason_codes":["scope_recorded"]},"promotion_status":"approved_within_scope"}],
+  "promotion_decisions": [{"decision_id":"unsafe-promotion","subject_artifact_id":"unsafe-gold","from_layer":"silver","to_layer":"gold","input_sha256":["bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"],"required_gate_ids":["checksum_verified","rights_approved"],"passed_gate_ids":["checksum_verified"],"rights_decision":{"decision_id":"rights-unsafe","status":"approved","scope":"Derived fields only.","reason_codes":["scope_recorded"]},"status":"approved","fail_closed":true,"reason_codes":["invalid_fixture_missing_gate"]}]
+}

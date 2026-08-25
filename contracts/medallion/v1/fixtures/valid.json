@@ -1,0 +1,42 @@
+{
+  "vocabulary_version": "1.0.0",
+  "repository": "conformance-fixture",
+  "artifacts": [
+    {
+      "artifact_id": "source-faithful-table",
+      "layer": "silver",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "lineage": {
+        "input_artifact_ids": ["immutable-source-evidence"],
+        "input_sha256": ["bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"]
+      },
+      "rights_decision": {
+        "decision_id": "rights-source-faithful-table",
+        "status": "approved",
+        "scope": "Permitted source-faithful derived fields only.",
+        "reason_codes": ["rights_scope_checksum_bound"]
+      },
+      "promotion_status": "approved_within_scope"
+    }
+  ],
+  "promotion_decisions": [
+    {
+      "decision_id": "promote-bronze-to-silver",
+      "subject_artifact_id": "source-faithful-table",
+      "from_layer": "bronze_b2",
+      "to_layer": "silver",
+      "input_sha256": ["bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"],
+      "required_gate_ids": ["checksum_verified", "rights_approved"],
+      "passed_gate_ids": ["checksum_verified", "rights_approved"],
+      "rights_decision": {
+        "decision_id": "rights-source-faithful-table",
+        "status": "approved",
+        "scope": "Permitted source-faithful derived fields only.",
+        "reason_codes": ["rights_scope_checksum_bound"]
+      },
+      "status": "approved",
+      "fail_closed": true,
+      "reason_codes": ["all_required_gates_passed"]
+    }
+  ]
+}
