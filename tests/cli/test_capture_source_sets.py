@@ -274,3 +274,66 @@ def test_parser_nested_non_list_line_ends_list_collection(
     )
     parsed = parse_source_set_config(config_path)
     assert parsed["targets"] == ["https://one.govt.nz"]
+
+
+def test_parser_ignores_comments_and_blank_lines(tmp_path: Path) -> None:
+    """Comments, blank lines, and nested scalars never leak into the config."""
+    config_path = tmp_path / "commented.yml"
+    config_path.write_text(
+        "# leading comment\n"
+        "\n"
+        'name: "commented"\n'
+        "enabled: true\n"
+        "# inline block\n"
+        "adapters:\n"
+        "  # list comment\n"
+        '  - "feeds"\n'
+        "\n",
+        encoding="utf-8",
+    )
+    parsed = parse_source_set_config(config_path)
+    assert parsed == {"name": "commented", "enabled": True, "adapters": ["feeds"]}
+
+
+def test_load_source_set_without_any_config_dir_fails_closed(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """An absent configuration directory fails closed with a clear message."""
+    monkeypatch.chdir(tmp_path)
+    with pytest.raises(SourceSetConfigError, match="no source-set configuration"):
+        load_source_set("webset")
+
+
+def test_capture_text_format_reports_redirect_and_pending(
+    tmp_path: Path,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    """Text mode emits human-readable redirect and pending outcomes."""
+    dedicated = _write_config(tmp_path, "gazetted", targets=False)
+    dedicated.write_text(
+        dedicated.read_text(encoding="utf-8")
+        + 'dedicated_workflow: "scheduled-gazette-harvest.yml"\n',
+        encoding="utf-8",
+    )
+    _write_config(tmp_path, "pending", targets=False)
+
+    code_redirect = capture(
+        "https://x.example",
+        source_type="gazetted",
+        format="text",
+        config_dir=tmp_path,
+    )
+    captured = capsys.readouterr()
+    assert code_redirect == 0
+    assert "redirected to dedicated workflow" in captured.out
+
+    code_pending = capture(
+        "https://x.example",
+        source_type="pending",
+        format="text",
+        config_dir=tmp_path,
+    )
+    captured = capsys.readouterr()
+    assert code_pending == 0
+    assert "outcome=capability_pending" in captured.out
