@@ -193,6 +193,7 @@ def capture(
     *,
     config_dir: Path | None = None,
     store_root: Path | None = None,
+    warc_dir: Path | None = None,
 ) -> int:
     """Run the bounded, config-driven harvest for one configured source set."""
     if source_type in ("legislation", "nz_legislation"):
@@ -222,6 +223,7 @@ def capture(
         format=format,
         config_dir=config_dir,
         store_root=store_root,
+        warc_dir=warc_dir,
     )
 
 
@@ -231,6 +233,7 @@ def _run_source_set_capture(
     format: Literal["text", "json"],
     config_dir: Path | None,
     store_root: Path | None,
+    warc_dir: Path | None = None,
 ) -> int:
     """Execute one bounded source-set harvest and emit its receipt."""
     from archive_govt_nz.source_sets import SourceSetConfigError, load_source_set
@@ -279,16 +282,17 @@ def _run_source_set_capture(
 
     # --- execution ---
     return _execute_source_set_targets(
-        source_type, config, format=format, store_root=store_root
+        source_type, config, format=format, store_root=store_root, warc_dir=warc_dir
     )
 
 
-def _execute_source_set_targets(
+def _execute_source_set_targets(  # noqa: C901
     source_type: str,
     config: dict[str, Any],
     *,
     format: Literal["text", "json"],
     store_root: Path | None,
+    warc_dir: Path | None = None,
 ) -> int:
     """Capture configured URL targets and report pending adapter capabilities."""
     targets = list(config.get("targets", []))
@@ -301,6 +305,10 @@ def _execute_source_set_targets(
         root = store_root or Path("build/cas") / source_type
         store = ContentAddressedStore(root)
         capture_config = CaptureConfig()
+        warc_target_dir: Path | None = None
+        if warc_dir is not None:
+            warc_target_dir = warc_dir
+            warc_target_dir.mkdir(parents=True, exist_ok=True)
 
         async def _capture_all() -> None:
             async with httpx.AsyncClient(
@@ -324,6 +332,13 @@ def _execute_source_set_targets(
                             sha256=result.receipt.sha256,
                             byte_count=result.receipt.byte_count,
                         )
+                        if result.warc_receipt is not None:
+                            entry["warc"] = {
+                                "path": str(result.warc_receipt.path),
+                                "sha256": result.warc_receipt.sha256,
+                                "record_id": result.warc_receipt.record_id,
+                                "byte_count": result.warc_receipt.byte_count,
+                            }
                     except CaptureError as exc:
                         entry.update(status="failed", error=str(exc))
                     results.append(entry)
@@ -372,13 +387,13 @@ def _execute_source_set_targets(
 
 
 @app.command
-def archive(
-    action: Literal["verify", "count"] = "count",
+def archive(  # noqa: PLR0912
+    action: Literal["verify", "count", "manifest"] = "count",
     output_dir: str = "build/warc",
     manifest_path: str | None = None,
     format: Literal["text", "json"] = "text",
 ) -> int:
-    """Count archives or verify their structure and declared fixity."""
+    """Count archives, write a fixity manifest, or verify their fixity."""
     path = Path(output_dir)
     if not path.is_dir():
         sys.stderr.write(f"Archive directory not found: {output_dir}\n")
@@ -419,6 +434,17 @@ def archive(
             print(f"Archive action '{action}': status=no_state (0 files)")
         return 1
 
+    if action == "manifest":
+        code, receipt = _write_fixity_manifest(path, files, output_dir)
+        if format == "json":
+            _emit_json(receipt)
+        else:
+            print(
+                f"Archive action '{action}': status={receipt['status']} "
+                f"({receipt['warc_count']} files, {receipt['total_bytes']} bytes)"
+            )
+        return code
+
     total_bytes = sum(file_path.stat().st_size for file_path in files)
     failures: list[str] = []
     verified_files = 0
@@ -458,6 +484,53 @@ def archive(
         f"{total_bytes} bytes)"
     )
     return code
+
+
+def _write_fixity_manifest(
+    path: Path,
+    files: list[Path],
+    output_dir: str,
+) -> tuple[int, dict[str, object]]:
+    """Write an archive-fixity manifest for every discovered archive file."""
+    import hashlib
+
+    entries: list[dict[str, object]] = []
+    total_bytes = 0
+    for file_path in files:
+        digest = hashlib.sha256()
+        size = 0
+        with file_path.open("rb") as handle:
+            for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+                digest.update(chunk)
+                size += len(chunk)
+        total_bytes += size
+        entries.append(
+            {
+                "path": file_path.relative_to(path).as_posix(),
+                "sha256": digest.hexdigest(),
+                "size_bytes": size,
+            }
+        )
+    manifest_document = {
+        "schema_version": "archive-govt-nz.archive-fixity/v1",
+        "files": entries,
+    }
+    manifest_out = path / "manifest.json"
+    manifest_out.write_text(
+        json.dumps(manifest_document, indent=1, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+    receipt: dict[str, object] = {
+        "action": "manifest",
+        "command": "archive",
+        "manifest_path": str(manifest_out),
+        "output_dir": output_dir,
+        "schema_version": "archive-govt-nz.cli/v1",
+        "status": "manifest_written",
+        "total_bytes": total_bytes,
+        "warc_count": len(files),
+    }
+    return 0, receipt
 
 
 @app.command

@@ -49,12 +49,26 @@ jobs:
       - name: Prepare receipt directories
         run: mkdir -p build/receipts/${{ matrix.source_set }} build/warc/${{ matrix.source_set }}
       - name: Execute Source Set Harvest
+        id: harvest
         run: |
-          uv run --locked archive-govt-nz capture --source-type "${{ matrix.source_set }}" --format json > "build/receipts/${{ matrix.source_set }}/capture.json"
+          set -o pipefail
+          uv run --locked archive-govt-nz capture \
+            --source-type "${{ matrix.source_set }}" \
+            --warc-dir "build/warc/${{ matrix.source_set }}" \
+            --format json > "build/receipts/${{ matrix.source_set }}/capture.json"
+      - name: Resolve Capture Status
+        id: capture-status
+        run: |
+          STATUS=$(python3 -c "import json;print(json.load(open('build/receipts/${{ matrix.source_set }}/capture.json'))['status'])")
+          echo "status=$STATUS" >> "$GITHUB_OUTPUT"
+          echo "capture status: $STATUS"
       - name: Generate Fixity & Compaction
+        if: steps.capture-status.outputs.status == 'captured'
         run: |
+          uv run --locked archive-govt-nz archive --action manifest --output-dir "build/warc/${{ matrix.source_set }}/" --format json > "build/receipts/${{ matrix.source_set }}/manifest.json"
           uv run --locked archive-govt-nz archive --action verify --output-dir "build/warc/${{ matrix.source_set }}/" --format json > "build/receipts/${{ matrix.source_set }}/archive.json"
       - name: Replay & Verification Drill
+        if: steps.capture-status.outputs.status == 'captured'
         run: |
           uv run --locked archive-govt-nz replay --verify-all --format json > "build/receipts/${{ matrix.source_set }}/replay.json"
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a

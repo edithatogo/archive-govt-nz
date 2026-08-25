@@ -9,7 +9,7 @@ from unittest.mock import patch
 import httpx
 import pytest
 
-from archive_govt_nz.cli import capture
+from archive_govt_nz.cli import archive, capture
 from archive_govt_nz.source_sets import (
     SourceSetConfigError,
     find_source_set_dir,
@@ -337,3 +337,33 @@ def test_capture_text_format_reports_redirect_and_pending(
     captured = capsys.readouterr()
     assert code_pending == 0
     assert "outcome=capability_pending" in captured.out
+
+
+def test_archive_manifest_then_verify_round_trip(
+    tmp_path: Path,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    """A generated fixity manifest verifies against the captured WARCs."""
+    warc_dir = tmp_path / "warc"
+    warc_dir.mkdir()
+    (warc_dir / "sample.warc").write_bytes(
+        b"WARC/1.0\r\nWARC-Type: resource\r\nContent-Length: 4\r\n\r\nbody\r\n\r\n"
+    )
+
+    code_manifest = archive(
+        action="manifest",
+        output_dir=str(warc_dir),
+        format="json",
+    )
+    payload = json.loads(capsys.readouterr().out)
+    assert code_manifest == 0
+    assert payload["status"] == "manifest_written"
+
+    code_verify = archive(
+        action="verify",
+        output_dir=str(warc_dir),
+        format="json",
+    )
+    payload_verify = json.loads(capsys.readouterr().out)
+    assert code_verify == 0
+    assert payload_verify["status"] == "verified"
