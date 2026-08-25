@@ -320,11 +320,20 @@ def _execute_source_set_targets(  # noqa: C901
                     )
                 },
             ) as client:
-                for target in targets:
+                for index, target in enumerate(targets):
                     entry: dict[str, object] = {"uri": target}
+                    transaction_warc_path = (
+                        warc_target_dir / f"{source_type}-{index}.warc"
+                        if warc_target_dir is not None
+                        else None
+                    )
                     try:
                         result = await capture_url(
-                            client, target, store, capture_config
+                            client,
+                            target,
+                            store,
+                            capture_config,
+                            transaction_warc_path=transaction_warc_path,
                         )
                         entry.update(
                             status="captured",
