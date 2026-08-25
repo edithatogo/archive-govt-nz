@@ -1,4 +1,4 @@
-"""Tests for the Conductor claim drift detection tool."""
+"""Tests for the Conductor claim drift detection tool across all 5 donor repos."""
 
 from __future__ import annotations
 
@@ -15,11 +15,17 @@ def test_check_claims_all_matching() -> None:
     """Check claims succeeds when live GitHub state matches recorded claims."""
     mock_data = {
         "edithatogo/corpus-legislation-nz": {"archived": True, "open_issues_count": 0},
-        "edithatogo/sm-govt-nz": {"archived": False, "open_issues_count": 0},
+        "edithatogo/sm-govt-nz": {"archived": True, "open_issues_count": 0},
+        "edithatogo/corpus-nz-hansard": {"archived": True, "open_issues_count": 0},
+        "edithatogo/hathi-nz": {"archived": True, "open_issues_count": 0},
+        "edithatogo/corpus-cases-medilegal-nz": {
+            "archived": True,
+            "open_issues_count": 0,
+        },
     }
     status, checks = check_claims(mock_live_data=mock_data)
     assert status == "passed"
-    assert len(checks) == 2
+    assert len(checks) == 5
     assert all(c.status == "match" for c in checks)
 
 
@@ -28,7 +34,10 @@ def test_check_claims_detects_divergence() -> None:
     mock_data = {
         # Drifts: corpus-legislation-nz was supposed to be archived
         "edithatogo/corpus-legislation-nz": {"archived": False},
-        "edithatogo/sm-govt-nz": {"archived": False},
+        "edithatogo/sm-govt-nz": {"archived": True},
+        "edithatogo/corpus-nz-hansard": {"archived": True},
+        "edithatogo/hathi-nz": {"archived": True},
+        "edithatogo/corpus-cases-medilegal-nz": {"archived": True},
     }
     status, checks = check_claims(mock_live_data=mock_data)
     assert status == "divergence_detected"
@@ -44,7 +53,10 @@ def test_main_cli_execution(tmp_path: Path) -> None:
         json.dumps(
             {
                 "edithatogo/corpus-legislation-nz": {"archived": True},
-                "edithatogo/sm-govt-nz": {"archived": False},
+                "edithatogo/sm-govt-nz": {"archived": True},
+                "edithatogo/corpus-nz-hansard": {"archived": True},
+                "edithatogo/hathi-nz": {"archived": True},
+                "edithatogo/corpus-cases-medilegal-nz": {"archived": True},
             }
         ),
         encoding="utf-8",
@@ -64,4 +76,5 @@ def test_main_cli_execution(tmp_path: Path) -> None:
     receipt = json.loads(receipt_file.read_text(encoding="utf-8"))
     assert receipt["schema_version"] == "archive-govt-nz.claim-drift-receipt/v1"
     assert receipt["status"] == "passed"
+    assert receipt["claims_checked"] == 5
     assert receipt["divergences_detected"] == 0

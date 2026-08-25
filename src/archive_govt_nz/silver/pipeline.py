@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 from collections.abc import Iterator, Mapping
 from dataclasses import dataclass
 from pathlib import Path
@@ -45,13 +46,13 @@ def get_domain_normalizer(domain: str) -> SilverNormalizer | None:
         )
 
         return HansardSilverNormalizer()
-    if domain == "hathi":
+    if domain in ("hathi", "hathitrust_historic"):
         from archive_govt_nz.domains.hathi.normalizer import (  # noqa: PLC0415
             HathiSilverNormalizer,
         )
 
         return HathiSilverNormalizer()
-    if domain == "medilegal":
+    if domain in ("medilegal", "cases_medilegal"):
         from archive_govt_nz.domains.medilegal.normalizer import (  # noqa: PLC0415
             MedicoLegalSilverNormalizer,
         )
@@ -99,6 +100,36 @@ class SilverTransformationResult:
     parquet_path: Path
     parquet_bytes: int
     schema_fingerprint: str
+    checkpoint_resumed: bool = False
+
+
+def _load_checkpoint(checkpoint_path: Path, domain: str) -> tuple[int, int, bool]:
+    """Read starting index and transformed count from existing checkpoint file."""
+    if not checkpoint_path.is_file():
+        return 0, 0, False
+    try:
+        cp_data = json.loads(checkpoint_path.read_text(encoding="utf-8"))
+        if cp_data.get("domain") == domain:
+            start_index = int(cp_data.get("last_processed_index", -1)) + 1
+            total_transformed = int(cp_data.get("records_transformed", 0))
+            return start_index, total_transformed, True
+    except json.JSONDecodeError, OSError, ValueError:
+        pass
+    return 0, 0, False
+
+
+def _save_checkpoint(checkpoint_path: Path, domain: str, idx: int, total: int) -> None:
+    """Write current transformation checkpoint to disk."""
+    checkpoint_path.write_text(
+        json.dumps(
+            {
+                "domain": domain,
+                "last_processed_index": idx,
+                "records_transformed": total,
+            }
+        ),
+        encoding="utf-8",
+    )
 
 
 class SilverPipeline:
@@ -113,42 +144,86 @@ class SilverPipeline:
         manifest: BronzeIngestionManifest,
         *,
         cas_base_dir: Path | None = None,
+        chunk_size: int = 500,
+        max_buffer_bytes: int = 64 * 1024 * 1024,
+        resume: bool = True,
     ) -> SilverTransformationResult:
-        """Read all CAS records in a Bronze manifest and materialize Silver Parquet."""
+        """Read CAS records from Bronze manifest and stream to Silver Parquet in chunks."""
         domain = manifest.domain
         normalizer = DOMAIN_NORMALIZERS.get(domain)
         if normalizer is None:
             msg = f"No registered Silver normalizer for domain '{domain}'"
             raise ValueError(msg)
 
-        all_silver_records: list[NormalizedSilverRecord] = []
-        for record in manifest.records:
-            cas_p = Path(record.fixity.cas_path)
-            if not cas_p.is_absolute() and cas_base_dir is not None:
-                cas_p = cas_base_dir / cas_p
-
-            payload_bytes = cas_p.read_bytes()
-            records = normalizer.normalize_record(record, payload_bytes)
-            all_silver_records.extend(records)
-
-        pydict: dict[str, list[object]] = {
-            name: [getattr(r, name) for r in all_silver_records]
-            for name in SILVER_ARROW_SCHEMA.names
-        }
-        table = pa.Table.from_pydict(pydict, schema=SILVER_ARROW_SCHEMA)
-
         domain_silver_dir = self.silver_base_dir / domain
         domain_silver_dir.mkdir(parents=True, exist_ok=True)
         parquet_path = domain_silver_dir / "corpus.parquet"
+        checkpoint_path = domain_silver_dir / ".checkpoint.json"
 
-        pq.write_table(table, parquet_path, compression="zstd")
+        start_index, total_transformed, resumed = (
+            _load_checkpoint(checkpoint_path, domain) if resume else (0, 0, False)
+        )
+        first_fingerprint = ""
+        current_buffer_bytes = 0
+
+        # Stream in bounded batches using PyArrow ParquetWriter to minimize RAM usage
+        with pq.ParquetWriter(
+            parquet_path, SILVER_ARROW_SCHEMA, compression="zstd"
+        ) as writer:
+            current_batch: list[NormalizedSilverRecord] = []
+            for idx, record in enumerate(manifest.records):
+                if idx < start_index:
+                    continue
+
+                cas_p = Path(record.fixity.cas_path)
+                if not cas_p.is_absolute() and cas_base_dir is not None:
+                    cas_p = cas_base_dir / cas_p
+
+                payload_bytes = cas_p.read_bytes()
+                current_buffer_bytes += len(payload_bytes)
+                records = normalizer.normalize_record(record, payload_bytes)
+                if records and not first_fingerprint:
+                    first_fingerprint = records[0].nz_schema_fingerprint
+
+                current_batch.extend(records)
+                total_transformed += len(records)
+
+                # Flush on either count threshold or byte threshold
+                if (
+                    len(current_batch) >= chunk_size
+                    or current_buffer_bytes >= max_buffer_bytes
+                ):
+                    pydict: dict[str, list[object]] = {
+                        name: [getattr(r, name) for r in current_batch]
+                        for name in SILVER_ARROW_SCHEMA.names
+                    }
+                    batch_table = pa.Table.from_pydict(
+                        pydict, schema=SILVER_ARROW_SCHEMA
+                    )
+                    writer.write_table(batch_table)
+                    current_batch.clear()
+                    current_buffer_bytes = 0
+
+                    _save_checkpoint(checkpoint_path, domain, idx, total_transformed)
+
+            if current_batch:
+                pydict = {
+                    name: [getattr(r, name) for r in current_batch]
+                    for name in SILVER_ARROW_SCHEMA.names
+                }
+                batch_table = pa.Table.from_pydict(pydict, schema=SILVER_ARROW_SCHEMA)
+                writer.write_table(batch_table)
+                current_batch.clear()
+
+        # Clean up checkpoint on successful completion
+        if checkpoint_path.exists():
+            checkpoint_path.unlink()
 
         return SilverTransformationResult(
             domain=domain,
-            records_transformed=len(all_silver_records),
+            records_transformed=total_transformed,
             parquet_path=parquet_path,
             parquet_bytes=parquet_path.stat().st_size,
-            schema_fingerprint=all_silver_records[0].nz_schema_fingerprint
-            if all_silver_records
-            else "",
+            schema_fingerprint=first_fingerprint,
+            checkpoint_resumed=resumed,
         )

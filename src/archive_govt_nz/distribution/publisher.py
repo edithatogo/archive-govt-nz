@@ -4,11 +4,17 @@ from __future__ import annotations
 
 import enum
 import hashlib
+import json
 import zipfile
 from dataclasses import dataclass
 from typing import TYPE_CHECKING
 
 from archive_govt_nz.core.manifests import PublicationReceipt
+from archive_govt_nz.schemas.medallion import (
+    generate_domain_croissant_descriptor,
+    generate_domain_dcat_descriptor,
+    get_domain_schema_definition,
+)
 
 if TYPE_CHECKING:
     from pathlib import Path
@@ -33,6 +39,46 @@ class PublicationOptions:
     status: str = "published"
 
 
+def build_hf_dataset_card(domain: str) -> str:
+    """Generate rich Hugging Face dataset card README.md with YAML metadata."""
+    schema_def = get_domain_schema_definition(domain)
+    features_yaml = "\n".join(
+        f"  - name: {f.name}\n    dtype: string" for f in schema_def.fields[:5]
+    )
+    return (
+        f"---\n"
+        f"language:\n"
+        f"- en\n"
+        f"license: cc-by-4.0\n"
+        f"tags:\n"
+        f"- new-zealand\n"
+        f"- government-archive\n"
+        f"- open-data\n"
+        f"- {domain}\n"
+        f"- croissant\n"
+        f"- legal-ml\n"
+        f"dataset_info:\n"
+        f"  dataset_name: {schema_def.dataset_name}\n"
+        f"  features:\n"
+        f"{features_yaml}\n"
+        f"pretty_name: {schema_def.title}\n"
+        f"---\n\n"
+        f"# {schema_def.title}\n\n"
+        f"{schema_def.description}\n\n"
+        f"## Dataset Summary\n"
+        f"- **Domain:** `{domain}`\n"
+        f"- **License:** {schema_def.license_url}\n"
+        f"- **Preservation Authority:** `archive-govt-nz`\n"
+        f"- **Metadata:** `croissant.json` and `dcat.jsonld` included.\n\n"
+        f"## Usage with Hugging Face Datasets\n"
+        f"```python\n"
+        f"from datasets import load_dataset\n\n"
+        f'dataset = load_dataset("{schema_def.hf_repo_id}")\n'
+        f'print(dataset["train"][0])\n'
+        f"```\n"
+    )
+
+
 class DistributionPublisher:
     """Orchestrates multi-target package distribution and receipt generation."""
 
@@ -42,18 +88,49 @@ class DistributionPublisher:
     ) -> tuple[str, int, int]:
         """Bundle multiple release files into a deterministic zip container."""
         output_bundle_path.parent.mkdir(parents=True, exist_ok=True)
-        sha = hashlib.sha256()
         total_bytes = 0
 
         with zipfile.ZipFile(output_bundle_path, "w", zipfile.ZIP_DEFLATED) as zf:
             for file_path in sorted(files, key=lambda p: p.name):
                 content = file_path.read_bytes()
                 zf.writestr(file_path.name, content)
-                sha.update(content)
                 total_bytes += len(content)
 
-        bundle_sha256 = sha.hexdigest()
+        bundle_sha256 = hashlib.sha256(output_bundle_path.read_bytes()).hexdigest()
         return bundle_sha256, len(files), total_bytes
+
+    @classmethod
+    def build_hf_dataset_package(
+        cls,
+        domain: str,
+        parquet_path: Path,
+        staging_dir: Path,
+    ) -> dict[str, Path]:
+        """Generate Hugging Face files: README, croissant.json, dcat, and Parquet."""
+        staging_dir.mkdir(parents=True, exist_ok=True)
+        data_dir = staging_dir / "data"
+        data_dir.mkdir(parents=True, exist_ok=True)
+
+        readme_path = staging_dir / "README.md"
+        readme_path.write_text(build_hf_dataset_card(domain), encoding="utf-8")
+
+        croissant_path = staging_dir / "croissant.json"
+        croissant_doc = generate_domain_croissant_descriptor(domain)
+        croissant_path.write_text(json.dumps(croissant_doc, indent=2), encoding="utf-8")
+
+        dcat_path = staging_dir / "dcat.jsonld"
+        dcat_doc = generate_domain_dcat_descriptor(domain)
+        dcat_path.write_text(json.dumps(dcat_doc, indent=2), encoding="utf-8")
+
+        dest_pq = data_dir / "corpus.parquet"
+        dest_pq.write_bytes(parquet_path.read_bytes())
+
+        return {
+            "readme": readme_path,
+            "croissant": croissant_path,
+            "dcat": dcat_path,
+            "parquet": dest_pq,
+        }
 
     @classmethod
     def create_publication_receipt(
@@ -61,7 +138,7 @@ class DistributionPublisher:
         target: DistributionTarget,
         remote_identifier: str,
         bundle_sha256: str,
-        bundle_stats: tuple[int, int],  # (file_count, total_bytes)
+        bundle_stats: tuple[int, int],
         options: PublicationOptions | None = None,
     ) -> PublicationReceipt:
         """Create a verifiable PublicationReceipt for a successful distribution."""

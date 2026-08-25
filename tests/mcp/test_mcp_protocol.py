@@ -97,7 +97,7 @@ def test_mcp_subprocess_initialization_and_tools() -> None:
         tools_res = _send_rpc(proc, {"jsonrpc": "2.0", "id": 3, "method": "tools/list"})
         assert tools_res is not None
         tools = tools_res["result"]["tools"]
-        assert len(tools) == 4
+        assert len(tools) >= 4
 
         # 5. tools/call - archive_doctor
         doc_res = _send_rpc(

@@ -2,7 +2,7 @@
 
 - **ID:** `platinum_layer_federation_and_synthesis_20260825`
 - **Type:** feature
-- **Status:** `new` (2026-08-25)
+- **Status:** `completed` (2026-08-25)
 - **Federated Alignment:** [`edithatogo/global-medicines-atlas`](https://github.com/edithatogo/global-medicines-atlas), [`edithatogo/fyi-archive`](https://github.com/edithatogo/fyi-archive)
 
 ## Overview
