@@ -136,6 +136,7 @@ def test_capture_runs_real_bounded_capture_for_url_targets(
 
     monkeypatch.setattr(httpx.AsyncClient, "__init__", patched_init)
     store_root = tmp_path / "cas"
+    warc_dir = tmp_path / "warc"
     with patch.object(httpx.AsyncClient, "__init__", patched_init):
         code = capture(
             "https://x.example",
@@ -143,6 +144,7 @@ def test_capture_runs_real_bounded_capture_for_url_targets(
             format="json",
             config_dir=tmp_path,
             store_root=store_root,
+            warc_dir=warc_dir,
         )
     payload = json.loads(capsys.readouterr().out)
     assert code == 0
@@ -151,6 +153,8 @@ def test_capture_runs_real_bounded_capture_for_url_targets(
     target_entry = payload["targets"][0]
     assert target_entry["sha256"]
     assert (store_root / "sha256").is_dir()
+    assert target_entry["warc"]["sha256"]
+    assert (warc_dir / "webset-0.warc").is_file()
 
 
 def test_capture_reports_failed_when_all_targets_fail(
