@@ -1,0 +1,42 @@
+{
+  "vocabulary_version": "3.0.0",
+  "contracts": [{
+    "contract_id": "au_mbs:historical-backfill-replay:v1",
+    "source_id": "au_mbs",
+    "partition_identity": ["source_id", "archive_period", "logical_asset_id"],
+    "snapshot_identity": ["partition_id", "payload_sha256", "metadata_sha256"],
+    "idempotency_rule": "partition_and_snapshot_sha256",
+    "late_arrival_rule": "append_then_replay_partition",
+    "correction_rule": "new_snapshot_never_overwrite",
+    "supersession_rule": "explicit_acyclic_predecessor",
+    "replay_order": ["partition_id", "correction_sequence", "snapshot_id"],
+    "deterministic_output_rule": "canonical_json_sha256",
+    "missing_payload_rule": "metadata_only_fail_closed"
+  }],
+  "snapshots": [{
+    "snapshot_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "source_id": "au_mbs",
+    "source_version_id": "au_mbs_20250701",
+    "partition_id": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "partition_value": "au_mbs/2025/asset",
+    "logical_asset_id": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "source_url": "https://www.mbsonline.gov.au/archive/items.csv",
+    "archive_period": "2025",
+    "observation_status": "acquired",
+    "payload_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "metadata_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "idempotency_key": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "correction_sequence": 0,
+    "supersedes_snapshot_id": null,
+    "late_arriving": false,
+    "replay_eligible": true,
+    "rights_state": "public_reuse_review"
+  }],
+  "replay_plan": {
+    "schema_version": "historical-replay-plan-v1",
+    "deterministic": true,
+    "eligible_snapshot_count": 1,
+    "steps": [],
+    "plan_sha256": "9999999999999999999999999999999999999999999999999999999999999999"
+  }
+}
