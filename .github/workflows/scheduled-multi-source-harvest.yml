@@ -70,7 +70,7 @@ jobs:
       - name: Replay & Verification Drill
         if: steps.capture-status.outputs.status == 'captured'
         run: |
-          uv run --locked archive-govt-nz replay --verify-all --format json > "build/receipts/${{ matrix.source_set }}/replay.json"
+          uv run --locked archive-govt-nz replay --verify-all --cas-dir "build/cas/${{ matrix.source_set }}" --format json > "build/receipts/${{ matrix.source_set }}/replay.json"
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         if: always()
         with:
