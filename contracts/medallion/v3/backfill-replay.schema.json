@@ -1,0 +1,71 @@
+{
+  "$id": "https://edithatogo.github.io/contracts/medallion/v3/backfill-replay.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Cross-repository backfill and replay vocabulary v3",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["vocabulary_version", "contracts", "snapshots", "replay_plan"],
+  "properties": {
+    "vocabulary_version": {"const": "3.0.0"},
+    "contracts": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/contract"}},
+    "snapshots": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/snapshot"}},
+    "replay_plan": {"$ref": "#/$defs/replayPlan"}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["contract_id", "source_id", "partition_identity", "snapshot_identity", "idempotency_rule", "late_arrival_rule", "correction_rule", "supersession_rule", "replay_order", "deterministic_output_rule", "missing_payload_rule"],
+      "properties": {
+        "contract_id": {"type": "string", "minLength": 1},
+        "source_id": {"type": "string", "minLength": 1},
+        "partition_identity": {"const": ["source_id", "archive_period", "logical_asset_id"]},
+        "snapshot_identity": {"const": ["partition_id", "payload_sha256", "metadata_sha256"]},
+        "idempotency_rule": {"const": "partition_and_snapshot_sha256"},
+        "late_arrival_rule": {"const": "append_then_replay_partition"},
+        "correction_rule": {"const": "new_snapshot_never_overwrite"},
+        "supersession_rule": {"const": "explicit_acyclic_predecessor"},
+        "replay_order": {"const": ["partition_id", "correction_sequence", "snapshot_id"]},
+        "deterministic_output_rule": {"const": "canonical_json_sha256"},
+        "missing_payload_rule": {"const": "metadata_only_fail_closed"}
+      }
+    },
+    "snapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["snapshot_id", "source_id", "source_version_id", "partition_id", "partition_value", "logical_asset_id", "source_url", "archive_period", "observation_status", "payload_sha256", "metadata_sha256", "idempotency_key", "correction_sequence", "supersedes_snapshot_id", "late_arriving", "replay_eligible", "rights_state"],
+      "properties": {
+        "snapshot_id": {"$ref": "#/$defs/sha256"},
+        "source_id": {"type": "string", "minLength": 1},
+        "source_version_id": {"type": "string", "minLength": 1},
+        "partition_id": {"$ref": "#/$defs/sha256"},
+        "partition_value": {"type": "string", "minLength": 1},
+        "logical_asset_id": {"$ref": "#/$defs/sha256"},
+        "source_url": {"type": "string", "pattern": "^https://"},
+        "archive_period": {"type": "string", "minLength": 1},
+        "observation_status": {"enum": ["acquired", "failed", "metadata_only"]},
+        "payload_sha256": {"anyOf": [{"$ref": "#/$defs/sha256"}, {"type": "null"}]},
+        "metadata_sha256": {"$ref": "#/$defs/sha256"},
+        "idempotency_key": {"$ref": "#/$defs/sha256"},
+        "correction_sequence": {"type": "integer", "minimum": 0},
+        "supersedes_snapshot_id": {"anyOf": [{"$ref": "#/$defs/sha256"}, {"type": "null"}]},
+        "late_arriving": {"type": "boolean"},
+        "replay_eligible": {"type": "boolean"},
+        "rights_state": {"type": "string", "minLength": 1}
+      }
+    },
+    "replayPlan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "deterministic", "eligible_snapshot_count", "steps", "plan_sha256"],
+      "properties": {
+        "schema_version": {"const": "historical-replay-plan-v1"},
+        "deterministic": {"const": true},
+        "eligible_snapshot_count": {"type": "integer", "minimum": 0},
+        "steps": {"type": "array"},
+        "plan_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    }
+  }
+}

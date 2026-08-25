@@ -17,9 +17,13 @@ SCHEMA_PATH = CONTRACT / "medallion-conformance.schema.json"
 VALID_PATH = CONTRACT / "fixtures/valid.json"
 INVALID_GATE_PATH = CONTRACT / "fixtures/invalid-missing-gate.json"
 FIELD_LINEAGE_V2 = ROOT / "contracts/medallion/v2"
+BACKFILL_REPLAY_V3 = ROOT / "contracts/medallion/v3"
 SCHEMA_SHA256 = "4c1ee81b026c64cf8f962d602cd64441a4a023c132346349c8b27dab0981f10e"
 FIELD_LINEAGE_V2_SHA256 = (
     "bf31ee62a3566a8fde512748b79f644e0fab760f60924e4eb9d510d3c1ef6f8a"
+)
+BACKFILL_REPLAY_V3_SHA256 = (
+    "5d0f472b124701ef66dcc1a5c39670826b8e95e5faf576cc394a3cd22df9419c"
 )
 ALLOWED_TRANSITIONS = {
     ("bronze_b0", "bronze_b1"),
@@ -132,3 +136,21 @@ def test_v2_field_lineage_fixture_is_versioned_and_fail_closed() -> None:
     errors = list(Draft202012Validator(schema).iter_errors(invalid))
     assert len(errors) == 1
     assert list(errors[0].path)[-1] == "code_version"
+
+
+def test_v3_backfill_replay_rejects_destructive_corrections() -> None:
+    """Pin v3 bytes and reject overwrite-based corrections."""
+    assert (
+        hashlib.sha256(
+            (BACKFILL_REPLAY_V3 / "backfill-replay.schema.json").read_bytes()
+        ).hexdigest()
+        == BACKFILL_REPLAY_V3_SHA256
+    )
+    schema = _load(BACKFILL_REPLAY_V3 / "backfill-replay.schema.json")
+    valid = _load(BACKFILL_REPLAY_V3 / "fixtures/valid-backfill-replay.json")
+    invalid = _load(BACKFILL_REPLAY_V3 / "fixtures/invalid-overwrite-policy.json")
+    Draft202012Validator.check_schema(schema)
+    Draft202012Validator(schema).validate(valid)
+    errors = list(Draft202012Validator(schema).iter_errors(invalid))
+    assert len(errors) == 1
+    assert list(errors[0].path)[-1] == "correction_rule"
