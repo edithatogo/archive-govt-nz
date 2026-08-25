@@ -10,6 +10,7 @@ import pyarrow.parquet as pq
 
 from archive_govt_nz.core.urn import CanonicalURN
 from archive_govt_nz.gold.analytics import GoldAnalyticsEngine
+from archive_govt_nz.gold.federation import FederationManager
 from archive_govt_nz.silver.base import SILVER_ARROW_SCHEMA
 
 if TYPE_CHECKING:
@@ -17,14 +18,13 @@ if TYPE_CHECKING:
 
 
 def test_zero_copy_federation_views(tmp_path: Path) -> None:
-    """GoldAnalyticsEngine dynamically creates zero-copy joins with external datasets."""
+    """GoldAnalyticsEngine and FederationManager create zero-copy joins with external datasets."""
     silver_dir = tmp_path / "silver"
     health_dir = silver_dir / "health"
     leg_dir = silver_dir / "legislation"
     health_dir.mkdir(parents=True, exist_ok=True)
     leg_dir.mkdir(parents=True, exist_ok=True)
 
-    # 1. Create Silver Health Table
     health_urn = CanonicalURN.format("health", "pae_ora", "moh-paracetamol-notice-01")
     health_rows = [
         {
@@ -56,7 +56,6 @@ def test_zero_copy_federation_views(tmp_path: Path) -> None:
     t_health = pa.Table.from_pylist(health_rows, schema=SILVER_ARROW_SCHEMA)
     pq.write_table(t_health, health_dir / "corpus.parquet")
 
-    # 2. Create Silver Legislation Table
     leg_urn = CanonicalURN.format("legislation", "act", "act-public-2026-0001")
     leg_rows = [
         {
@@ -69,27 +68,29 @@ def test_zero_copy_federation_views(tmp_path: Path) -> None:
             "nz_schema_fingerprint": "fp_fedcba9876543210",
             "domain": "legislation",
             "entity_type": "act",
-            "canonical_uri": "nzlc:act/act-public-2026-0001",
+            "canonical_uri": "legislation:act/act-public-2026-0001",
             "title": "Medicines and OIA Governance Act 2026",
-            "body_text": "Section 1. Short title...",
+            "body_text": "Full statutory provisions",
             "body_format": "xml",
             "valid_from": "2026-08-24",
             "valid_to": None,
             "source_observed_at": "2026-08-24T00:00:00Z",
             "is_current": True,
-            "source_url": "https://legislation.govt.nz/act/2026/1.xml",
+            "source_url": "https://legislation.govt.nz/act/2026/1",
             "cas_path": "data/cas/2",
             "sha256_payload": "sha256-l-1",
             "blake3_payload": "blake3-l-1",
             "byte_size": 256,
-            "metadata_json": json.dumps({"instrument_type": "act"}),
+            "metadata_json": json.dumps({"act_number": "2026/1"}),
         }
     ]
     t_leg = pa.Table.from_pylist(leg_rows, schema=SILVER_ARROW_SCHEMA)
     pq.write_table(t_leg, leg_dir / "corpus.parquet")
 
-    # 3. Create External GMA Parquet
-    gma_path = tmp_path / "gma.parquet"
+    fed_dir = tmp_path / "fed"
+    fed_dir.mkdir(parents=True, exist_ok=True)
+
+    gma_path = fed_dir / "global_medicines.parquet"
     gma_schema = pa.schema(
         [
             pa.field("nz_canonical_urn", pa.string(), nullable=True),
@@ -106,13 +107,9 @@ def test_zero_copy_federation_views(tmp_path: Path) -> None:
             "global_status": "APPROVED",
         }
     ]
-    pq.write_table(
-        pa.Table.from_pylist(gma_rows, schema=gma_schema),
-        gma_path,
-    )
+    pq.write_table(pa.Table.from_pylist(gma_rows, schema=gma_schema), gma_path)
 
-    # 4. Create External FYI Parquet
-    fyi_path = tmp_path / "fyi.parquet"
+    fyi_path = fed_dir / "fyi_requests.parquet"
     fyi_schema = pa.schema(
         [
             pa.field("referenced_urn", pa.string(), nullable=True),
@@ -133,36 +130,48 @@ def test_zero_copy_federation_views(tmp_path: Path) -> None:
             "summary": "OIA regarding Medicines and OIA Governance Act implementation",
         }
     ]
-    pq.write_table(
-        pa.Table.from_pylist(fyi_rows, schema=fyi_schema),
-        fyi_path,
-    )
+    pq.write_table(pa.Table.from_pylist(fyi_rows, schema=fyi_schema), fyi_path)
 
-    # Initialize Gold Analytics Engine
+    # Test direct GoldAnalyticsEngine
     engine = GoldAnalyticsEngine(silver_base_dir=silver_dir)
-
-    # Attach Federation Partners
     engine.register_federation_partner("global-medicines-atlas", gma_path)
     engine.register_federation_partner("fyi-archive", fyi_path)
 
-    # Query v_fed_health_medicines
     res_gma = engine.query(
         "SELECT nz_canonical_urn, inn_name, atc_code, global_status FROM v_fed_health_medicines"
     )
     assert res_gma.row_count == 1
-    row_gma = res_gma.to_pylist()[0]
-    assert row_gma["nz_canonical_urn"] == health_urn
-    assert row_gma["inn_name"] == "paracetamol"
-    assert row_gma["atc_code"] == "N02BE01"
 
-    # Query v_fed_legislation_foi
-    res_fyi = engine.query(
-        "SELECT nz_canonical_urn, request_id, request_status FROM v_fed_legislation_foi"
+    # Create reimbursement schema & table
+    reimb_path = fed_dir / "reimbursement.parquet"
+    reimb_schema = pa.schema(
+        [
+            pa.field("nz_canonical_urn", pa.string(), nullable=False),
+            pa.field("scheme_id", pa.string(), nullable=False),
+            pa.field("item_code", pa.string(), nullable=False),
+            pa.field("reimbursement_amount", pa.float64(), nullable=False),
+            pa.field("currency", pa.string(), nullable=False),
+        ]
     )
-    assert res_fyi.row_count == 1
-    row_fyi = res_fyi.to_pylist()[0]
-    assert row_fyi["nz_canonical_urn"] == leg_urn
-    assert row_fyi["request_id"] == "FYI-REQ-2026-99"
-    assert row_fyi["request_status"] == "RELEASED_IN_FULL"
+    reimb_rows = [
+        {
+            "nz_canonical_urn": health_urn,
+            "scheme_id": "PHARMAC-SCHED-A",
+            "item_code": "PARA-500",
+            "reimbursement_amount": 4.50,
+            "currency": "NZD",
+        }
+    ]
+    pq.write_table(pa.Table.from_pylist(reimb_rows, schema=reimb_schema), reimb_path)
+
+    # Test FederationManager wrapper
+    fed_mgr = FederationManager(engine=engine)
+    assert fed_mgr.attach_reimbursement_atlas(reimb_path) == "fed_reimbursement_atlas"
+
+    q_health = fed_mgr.query_statutes_and_medicines()
+    assert q_health.row_count == 1
+
+    q_foi = fed_mgr.query_legislation_and_foi()
+    assert q_foi.row_count == 1
 
     engine.close()

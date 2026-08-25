@@ -78,6 +78,14 @@ STAGES = (
         ("uv", "run", "--locked", "python", "tools/mutation_medallion.py"),
     ),
     GateStage(
+        "mutation-platinum",
+        ("uv", "run", "--locked", "python", "tools/mutation_platinum.py"),
+    ),
+    GateStage(
+        "mutation-nlp-bridge",
+        ("uv", "run", "--locked", "python", "tools/mutation_nlp_bridge.py"),
+    ),
+    GateStage(
         "slops",
         ("uv", "run", "--locked", "python", "tools/check_slops.py"),
     ),

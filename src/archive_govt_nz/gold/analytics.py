@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any
+from typing import Any, Self
 
 import duckdb
 import pyarrow as pa
@@ -170,6 +170,55 @@ class GoldAnalyticsEngine:
             arrow_table=arrow_table,
         )
 
+    def __enter__(self) -> Self:
+        """Enter runtime context."""
+        return self
+
+    def __exit__(self, exc_type: object, exc_val: object, exc_tb: object) -> None:
+        """Exit runtime context and close connection."""
+        self.close()
+
     def close(self) -> None:
         """Close database connection."""
         self.con.close()
+
+
+class GoldKnowledgeGraphIngestor:
+    """Ingests downstream NLP extraction outputs into Gold analytical knowledge views."""
+
+    @staticmethod
+    def attach_nlp_extractions(
+        engine: GoldAnalyticsEngine, extractions_path: Path
+    ) -> None:
+        """Mount extracted entity and citation Parquet feeds into DuckDB knowledge views."""
+        if not extractions_path.exists():
+            return
+
+        p_str = extractions_path.as_posix()
+        engine.con.execute(
+            f"""
+            CREATE OR REPLACE VIEW v_gold_extracted_entities AS
+            SELECT
+                record_id,
+                title,
+                category,
+                publication_date,
+                entities_json,
+                source_urn,
+                content_sha256
+            FROM read_parquet('{p_str}')
+            """
+        )
+        engine.con.execute(
+            f"""
+            CREATE OR REPLACE VIEW v_gold_statutory_graph AS
+            SELECT
+                record_id,
+                title,
+                category,
+                publication_date,
+                citations_json,
+                source_urn
+            FROM read_parquet('{p_str}')
+            """
+        )

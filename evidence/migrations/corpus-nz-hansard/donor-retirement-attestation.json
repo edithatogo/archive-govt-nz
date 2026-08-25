@@ -1,0 +1,15 @@
+{
+  "schema_version": "archive-govt-nz.donor-retirement-attestation/v1",
+  "attestation_id": "attest-corpus-nz-hansard-retirement-20260825",
+  "donor_repository": "edithatogo/corpus-nz-hansard",
+  "canonical_repository": "edithatogo/archive-govt-nz",
+  "created_at": "2026-08-25T19:45:00Z",
+  "readiness_status": "ARCHIVED_ON_GITHUB",
+  "prerequisites": {
+    "preservation_pipeline_assimilated": true,
+    "croissant_medallion_schema_integrated": true,
+    "downstream_nlp_extraction_contract_defined": true,
+    "claim_drift_monitoring_active": true
+  },
+  "notes": "Preservation data foundation consolidated in archive-govt-nz and downstream NLP extraction targeted for nlp-policy-nz. Ready for maintainer archival authorization."
+}

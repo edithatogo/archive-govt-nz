@@ -13,6 +13,10 @@ from jsonschema import Draft202012Validator
 from archive_govt_nz import __version__
 from archive_govt_nz.core.registry import AgencyRegistry
 from archive_govt_nz.object_store import ContentAddressedStore, ObjectStoreError
+from archive_govt_nz.schemas.medallion import (
+    DOMAIN_REGISTRY,
+    get_domain_schema_definition,
+)
 
 if TYPE_CHECKING:
     from typing import TextIO
@@ -170,6 +174,91 @@ _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
         ),
         "annotations": {
             "title": "Verify local CAS state",
+            "readOnlyHint": True,
+            "destructiveHint": False,
+            "idempotentHint": True,
+            "openWorldHint": False,
+        },
+    },
+    {
+        "name": "archive_domain_list",
+        "description": (
+            "List all 7 registered open dataset domains and their "
+            "Hugging Face repositories."
+        ),
+        "inputSchema": _NO_ARGUMENTS,
+        "outputSchema": _object_schema(
+            {
+                "domains": {"type": "array", "items": {"type": "string"}},
+                "count": {"type": "integer", "minimum": 0},
+                "datasets": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "domain": {"type": "string"},
+                            "title": {"type": "string"},
+                            "hf_repo_id": {"type": "string"},
+                            "field_count": {"type": "integer"},
+                        },
+                        "required": ["domain", "title", "hf_repo_id", "field_count"],
+                        "additionalProperties": False,
+                    },
+                },
+            },
+            ["domains", "count", "datasets"],
+        ),
+        "annotations": {
+            "title": "List registered archive domains",
+            "readOnlyHint": True,
+            "destructiveHint": False,
+            "idempotentHint": True,
+            "openWorldHint": False,
+        },
+    },
+    {
+        "name": "archive_domain_schema",
+        "description": (
+            "Get the formal schema, PyArrow types, Croissant field mappings, "
+            "and ontological links for a domain."
+        ),
+        "inputSchema": _object_schema(
+            {
+                "domain": {
+                    "type": "string",
+                    "description": "Registered domain name",
+                }
+            },
+            ["domain"],
+        ),
+        "outputSchema": _object_schema(
+            {
+                "domain": {"type": "string"},
+                "title": {"type": "string"},
+                "fields": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "name": {"type": "string"},
+                            "croissant_type": {"type": "string"},
+                            "description": {"type": "string"},
+                            "nullable": {"type": "boolean"},
+                        },
+                        "required": [
+                            "name",
+                            "croissant_type",
+                            "description",
+                            "nullable",
+                        ],
+                        "additionalProperties": False,
+                    },
+                },
+            },
+            ["domain", "title", "fields"],
+        ),
+        "annotations": {
+            "title": "Get domain schema definition",
             "readOnlyHint": True,
             "destructiveHint": False,
             "idempotentHint": True,
@@ -564,6 +653,38 @@ def call_tool(name: str, arguments: dict[str, Any] | None = None) -> dict[str, A
         }
     elif name == "archive_sources":
         result = _archive_sources(args)
+    elif name == "archive_domain_list":
+        datasets_list = [
+            {
+                "domain": s.domain,
+                "title": s.title,
+                "hf_repo_id": s.hf_repo_id,
+                "field_count": len(s.fields),
+            }
+            for s in DOMAIN_REGISTRY.values()
+        ]
+        result = {
+            "domains": list(DOMAIN_REGISTRY.keys()),
+            "count": len(DOMAIN_REGISTRY),
+            "datasets": datasets_list,
+        }
+    elif name == "archive_domain_schema":
+        domain_name = str(args.get("domain", "legislation"))
+        schema_def = get_domain_schema_definition(domain_name)
+        fields_list = [
+            {
+                "name": f.name,
+                "croissant_type": f.croissant_type,
+                "description": f.description,
+                "nullable": f.nullable,
+            }
+            for f in schema_def.fields
+        ]
+        result = {
+            "domain": schema_def.domain,
+            "title": schema_def.title,
+            "fields": fields_list,
+        }
     else:
         result = _archive_status(args)
     Draft202012Validator(definition["outputSchema"]).validate(result)

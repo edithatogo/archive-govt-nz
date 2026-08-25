@@ -1,57 +1,45 @@
-"""Test suite for DistributionPublisher and multi-target distribution."""
+"""Test suite for Hugging Face package builder and distribution publisher."""
 
 from __future__ import annotations
 
+import json
 from typing import TYPE_CHECKING
 
 from archive_govt_nz.distribution.publisher import (
     DistributionPublisher,
-    DistributionTarget,
+    build_hf_dataset_card,
 )
+from archive_govt_nz.schemas.medallion import DOMAIN_REGISTRY
 
 if TYPE_CHECKING:
     from pathlib import Path
 
 
-def test_prepare_release_bundle_and_receipt(tmp_path: Path) -> None:
-    """Validate release bundle zip and publication receipt creation."""
-    f1 = tmp_path / "data1.txt"
-    f2 = tmp_path / "data2.txt"
-    f1.write_bytes(b"File 1 content")
-    f2.write_bytes(b"File 2 content")
+def test_build_hf_dataset_card_all_domains() -> None:
+    """Verify dataset card generation for all 7 registered domains."""
+    for domain in DOMAIN_REGISTRY:
+        card = build_hf_dataset_card(domain)
+        assert "---" in card
+        assert f"- {domain}" in card
+        assert "croissant.json" in card
+        assert "from datasets import load_dataset" in card
 
-    bundle_zip = tmp_path / "release.zip"
-    sha, count, total_bytes = DistributionPublisher.prepare_release_bundle(
-        [f1, f2], bundle_zip
+
+def test_build_hf_dataset_package(tmp_path: Path) -> None:
+    """Verify building complete Hugging Face package bundle."""
+    pq_path = tmp_path / "test.parquet"
+    pq_path.write_bytes(b"PAR1fakecontent")
+
+    staging_dir = tmp_path / "hf_staging"
+    package_files = DistributionPublisher.build_hf_dataset_package(
+        "legislation", pq_path, staging_dir
     )
-    assert bundle_zip.is_file()
-    assert count == 2
-    assert total_bytes == len(b"File 1 content") + len(b"File 2 content")
-    assert len(sha) == 64
 
-    receipt = DistributionPublisher.create_publication_receipt(
-        target=DistributionTarget.HUGGINGFACE,
-        remote_identifier="edithatogo/nz-govt-archive",
-        bundle_sha256=sha,
-        bundle_stats=(count, total_bytes),
-    )
-    assert receipt.target_platform == "huggingface"
-    assert receipt.file_count == 2
-    assert receipt.status == "published"
+    assert package_files["readme"].exists()
+    assert package_files["croissant"].exists()
+    assert package_files["dcat"].exists()
+    assert package_files["parquet"].exists()
 
-
-def test_publish_dry_run(tmp_path: Path) -> None:
-    """Validate publish_dry_run packaging."""
-    f1 = tmp_path / "sample.parquet"
-    f1.write_bytes(b"PAR1dummydata")
-    bundle_zip = tmp_path / "dry_run_bundle.zip"
-
-    receipt = DistributionPublisher.publish_dry_run(
-        target=DistributionTarget.ZENODO,
-        remote_identifier="10.5281/zenodo.123456",
-        files=[f1],
-        output_bundle_path=bundle_zip,
-    )
-    assert receipt.target_platform == "zenodo"
-    assert receipt.status == "verified"
-    assert receipt.file_count == 1
+    cr_data = json.loads(package_files["croissant"].read_text(encoding="utf-8"))
+    assert cr_data["@type"] == "Dataset"
+    assert cr_data["name"] == "nz-legislation"

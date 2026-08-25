@@ -134,7 +134,7 @@ The codebase enforces strict quality boundaries via `tools/check.py`:
 - **Locked validation harness**: Unit, integration, and adversarial tests enforce
   at least **95% branch-aware coverage**. Exact local results are recorded in the
   active Conductor track; they are not hosted or operational proof.
-- **9 Mutation Testing Runners** (`mutation_resource_policy`, `mutation_versioning`, `mutation_redundancy`, `mutation_archivebox_pilot`, `mutation_batch_eligibility`, `mutation_global_policy`, `mutation_adapters`, `mutation_gazette`, `mutation_medallion`).
+- **11 Mutation Testing Runners** (`mutation_resource_policy`, `mutation_versioning`, `mutation_redundancy`, `mutation_archivebox_pilot`, `mutation_batch_eligibility`, `mutation_global_policy`, `mutation_adapters`, `mutation_gazette`, `mutation_medallion`, `mutation_platinum`, `mutation_nlp_bridge`).
 - **Differential parity gate**: every change re-runs a 9-source-class donor-vs-canonical parity harness (`parity` stage); divergences fail the build.
 - **Hygiene gate**: The repository validator rejects configured placeholder and
   forbidden-pattern classes.

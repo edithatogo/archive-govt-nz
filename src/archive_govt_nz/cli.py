@@ -1603,61 +1603,104 @@ def legislation(
     return 5
 
 
+def _run_croissant_query(domain: str) -> int:
+    from archive_govt_nz.schemas.medallion import generate_domain_croissant_descriptor
+
+    try:
+        desc = generate_domain_croissant_descriptor(domain)
+    except KeyError as exc:
+        sys.stderr.write(f"Error: {exc}\n")
+        return 2
+    print(json.dumps(desc, indent=2, sort_keys=True))
+    return 0
+
+
+def _run_hf_card_query(domain: str) -> int:
+    from archive_govt_nz.distribution.publisher import build_hf_dataset_card
+
+    try:
+        card = build_hf_dataset_card(domain)
+    except KeyError as exc:
+        sys.stderr.write(f"Error: {exc}\n")
+        return 2
+    print(card)
+    return 0
+
+
+def _run_sql_query(sql: str, silver_dir: Path, format_type: str, limit: int) -> int:
+    from archive_govt_nz.gold.analytics import GoldAnalyticsEngine
+
+    engine = GoldAnalyticsEngine(silver_base_dir=silver_dir)
+    try:
+        res = engine.query(sql)
+        output_data = {
+            "query_type": "sql",
+            "row_count": res.row_count,
+            "columns": res.column_names,
+            "rows": res.to_pylist(),
+        }
+        if format_type == "json":
+            print(json.dumps(output_data, indent=2, sort_keys=True))
+        else:
+            print(f"SQL Results ({res.row_count} rows):")
+            for row in res.to_pylist()[:limit]:
+                print(row)
+        return 0
+    finally:
+        engine.close()
+
+
+def _run_semantic_query(
+    semantic: str, silver_dir: Path, domain: str | None, limit: int, format_type: str
+) -> int:
+    from archive_govt_nz.gold.search import GoldHybridSearchEngine
+
+    search_engine = GoldHybridSearchEngine()
+    if silver_dir.exists():
+        for p in silver_dir.rglob("*.parquet"):
+            search_engine.index_parquet_corpus(p)
+
+    results = search_engine.search(semantic, limit=limit, domain_filter=domain)
+    output_data = {
+        "query_type": "semantic",
+        "query": semantic,
+        "results_count": len(results),
+        "results": [r.to_dict() for r in results],
+    }
+    if format_type == "json":
+        print(json.dumps(output_data, indent=2, sort_keys=True))
+    else:
+        print(f"Semantic Search Results ({len(results)} found):")
+        for r in results:
+            print(f"[{r.score:.2f}] {r.canonical_uri} - {r.title}")
+    return 0
+
+
 @app.command(name="query")
 def query_command(
     *,
     sql: str | None = None,
     semantic: str | None = None,
     graph_uri: str | None = None,
+    croissant_domain: str | None = None,
+    hf_card_domain: str | None = None,
     domain: str | None = None,
     limit: int = 10,
     format: Literal["json", "text"] = "json",
     silver_dir: Path = Path("data/silver"),
 ) -> int:
-    """Execute analytical SQL, semantic hybrid retrieval, or relational graph queries."""
-    from archive_govt_nz.gold.analytics import GoldAnalyticsEngine
-    from archive_govt_nz.gold.search import GoldHybridSearchEngine
+    """Execute analytical SQL, semantic retrieval, or metadata queries."""
+    if croissant_domain:
+        return _run_croissant_query(croissant_domain)
+
+    if hf_card_domain:
+        return _run_hf_card_query(hf_card_domain)
 
     if sql:
-        engine = GoldAnalyticsEngine(silver_base_dir=silver_dir)
-        try:
-            res = engine.query(sql)
-            output_data = {
-                "query_type": "sql",
-                "row_count": res.row_count,
-                "columns": res.column_names,
-                "rows": res.to_pylist(),
-            }
-            if format == "json":
-                print(json.dumps(output_data, indent=2, sort_keys=True))
-            else:
-                print(f"SQL Results ({res.row_count} rows):")
-                for row in res.to_pylist()[:limit]:
-                    print(row)
-            return 0
-        finally:
-            engine.close()
+        return _run_sql_query(sql, silver_dir, format, limit)
 
     if semantic:
-        search_engine = GoldHybridSearchEngine()
-        if silver_dir.exists():
-            for p in silver_dir.rglob("*.parquet"):
-                search_engine.index_parquet_corpus(p)
-
-        results = search_engine.search(semantic, limit=limit, domain_filter=domain)
-        output_data = {
-            "query_type": "semantic",
-            "query": semantic,
-            "results_count": len(results),
-            "results": [r.to_dict() for r in results],
-        }
-        if format == "json":
-            print(json.dumps(output_data, indent=2, sort_keys=True))
-        else:
-            print(f"Semantic Search Results ({len(results)} found):")
-            for r in results:
-                print(f"[{r.score:.2f}] {r.canonical_uri} - {r.title}")
-        return 0
+        return _run_semantic_query(semantic, silver_dir, domain, limit, format)
 
     if graph_uri:
         output_data = {
@@ -1669,7 +1712,10 @@ def query_command(
         print(json.dumps(output_data, indent=2, sort_keys=True))
         return 0
 
-    sys.stderr.write("Error: Must specify one of --sql, --semantic, or --graph-uri\n")
+    sys.stderr.write(
+        "Error: Must specify one of --sql, --semantic, --graph-uri, "
+        "--croissant-domain, or --hf-card-domain\n"
+    )
     return 2
 
 

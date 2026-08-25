@@ -202,5 +202,12 @@ implementation has occurred under these tracks.
 
 ## Programme: Platinum Layer Federation & Synthesis (2026-08-25)
 
-- [ ] **Track: Platinum Layer Cross-Jurisdiction Federation, Croissant ML Metadata & Citable Synthesis**
+- [x] **Track: Platinum Layer Cross-Jurisdiction Federation, Croissant ML Metadata & Citable Synthesis**
   *Link: [tracks/platinum_layer_federation_and_synthesis_20260825/index.md](./tracks/platinum_layer_federation_and_synthesis_20260825/index.md)*
+
+## Programme: Bi-Directional Medallion & NLP Bridge (2026-08-26)
+
+- [x] **Track: Medallion NLP Bi-Directional Bridge, Bleeding-Edge OCR & Ontological Synthesis**
+  *Link: [tracks/medallion_nlp_bidirectional_bridge_20260826/index.md](./tracks/medallion_nlp_bidirectional_bridge_20260826/index.md)*
+
+
