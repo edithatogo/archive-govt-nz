@@ -1,0 +1,15 @@
+{
+  "vocabulary_version": "2.0.0",
+  "records": [{
+    "record_id": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "source_dataset": "data/seed/source_registry.jsonl",
+    "source_field": "jurisdiction",
+    "transformation_id": "sync_seed_csvs:source_registry_jsonl_to_csv:v1",
+    "output_dataset": "data/seed/source_registry.csv",
+    "output_field": "jurisdiction",
+    "code_version": "latest",
+    "input_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "output_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "rights_decision_id": "source_registry_metadata_scope"
+  }]
+}
