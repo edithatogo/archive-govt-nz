@@ -60,3 +60,4 @@
   --clear-cache` — passed within the bound: 42/42 mutants zapped, 100%, zero
   survivors, errors, timeouts, or pardons. Receipt and plugin-report outputs
   are local generated artefacts.
+- Functional commit: `86dbbed` (`feat(test): add bounded gremlins runner`).
