@@ -29,7 +29,7 @@ gate is required for the testing configuration task.
 
 ### REQ-MUT-003 runner
 
-- Status: repository implementation complete; functional commit pending.
+- Status: repository implementation committed as `86dbbed`.
 - The runner validates target existence and the plugin JSON envelope, rejects
   missing, malformed, stale, empty, surviving, errored, timed-out, or pardoned
   outcomes, and writes its bounded receipt atomically.
