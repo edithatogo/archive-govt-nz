@@ -9,7 +9,7 @@ from unittest.mock import patch
 import httpx
 import pytest
 
-from archive_govt_nz.cli import capture
+from archive_govt_nz.cli import archive, capture
 from archive_govt_nz.source_sets import (
     SourceSetConfigError,
     find_source_set_dir,
@@ -136,6 +136,7 @@ def test_capture_runs_real_bounded_capture_for_url_targets(
 
     monkeypatch.setattr(httpx.AsyncClient, "__init__", patched_init)
     store_root = tmp_path / "cas"
+    warc_dir = tmp_path / "warc"
     with patch.object(httpx.AsyncClient, "__init__", patched_init):
         code = capture(
             "https://x.example",
@@ -143,6 +144,7 @@ def test_capture_runs_real_bounded_capture_for_url_targets(
             format="json",
             config_dir=tmp_path,
             store_root=store_root,
+            warc_dir=warc_dir,
         )
     payload = json.loads(capsys.readouterr().out)
     assert code == 0
@@ -151,6 +153,8 @@ def test_capture_runs_real_bounded_capture_for_url_targets(
     target_entry = payload["targets"][0]
     assert target_entry["sha256"]
     assert (store_root / "sha256").is_dir()
+    assert target_entry["warc"]["sha256"]
+    assert (warc_dir / "webset-0.warc").is_file()
 
 
 def test_capture_reports_failed_when_all_targets_fail(
@@ -274,3 +278,96 @@ def test_parser_nested_non_list_line_ends_list_collection(
     )
     parsed = parse_source_set_config(config_path)
     assert parsed["targets"] == ["https://one.govt.nz"]
+
+
+def test_parser_ignores_comments_and_blank_lines(tmp_path: Path) -> None:
+    """Comments, blank lines, and nested scalars never leak into the config."""
+    config_path = tmp_path / "commented.yml"
+    config_path.write_text(
+        "# leading comment\n"
+        "\n"
+        'name: "commented"\n'
+        "enabled: true\n"
+        "# inline block\n"
+        "adapters:\n"
+        "  # list comment\n"
+        '  - "feeds"\n'
+        "\n",
+        encoding="utf-8",
+    )
+    parsed = parse_source_set_config(config_path)
+    assert parsed == {"name": "commented", "enabled": True, "adapters": ["feeds"]}
+
+
+def test_load_source_set_without_any_config_dir_fails_closed(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """An absent configuration directory fails closed with a clear message."""
+    monkeypatch.chdir(tmp_path)
+    with pytest.raises(SourceSetConfigError, match="no source-set configuration"):
+        load_source_set("webset")
+
+
+def test_capture_text_format_reports_redirect_and_pending(
+    tmp_path: Path,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    """Text mode emits human-readable redirect and pending outcomes."""
+    dedicated = _write_config(tmp_path, "gazetted", targets=False)
+    dedicated.write_text(
+        dedicated.read_text(encoding="utf-8")
+        + 'dedicated_workflow: "scheduled-gazette-harvest.yml"\n',
+        encoding="utf-8",
+    )
+    _write_config(tmp_path, "pending", targets=False)
+
+    code_redirect = capture(
+        "https://x.example",
+        source_type="gazetted",
+        format="text",
+        config_dir=tmp_path,
+    )
+    captured = capsys.readouterr()
+    assert code_redirect == 0
+    assert "redirected to dedicated workflow" in captured.out
+
+    code_pending = capture(
+        "https://x.example",
+        source_type="pending",
+        format="text",
+        config_dir=tmp_path,
+    )
+    captured = capsys.readouterr()
+    assert code_pending == 0
+    assert "outcome=capability_pending" in captured.out
+
+
+def test_archive_manifest_then_verify_round_trip(
+    tmp_path: Path,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    """A generated fixity manifest verifies against the captured WARCs."""
+    warc_dir = tmp_path / "warc"
+    warc_dir.mkdir()
+    (warc_dir / "sample.warc").write_bytes(
+        b"WARC/1.0\r\nWARC-Type: resource\r\nContent-Length: 4\r\n\r\nbody\r\n\r\n"
+    )
+
+    code_manifest = archive(
+        action="manifest",
+        output_dir=str(warc_dir),
+        format="json",
+    )
+    payload = json.loads(capsys.readouterr().out)
+    assert code_manifest == 0
+    assert payload["status"] == "manifest_written"
+
+    code_verify = archive(
+        action="verify",
+        output_dir=str(warc_dir),
+        format="json",
+    )
+    payload_verify = json.loads(capsys.readouterr().out)
+    assert code_verify == 0
+    assert payload_verify["status"] == "verified"

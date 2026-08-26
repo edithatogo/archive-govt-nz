@@ -49,19 +49,25 @@ def write_response_record(
         for key, value in headers.items()
         if key.lower() in _SAFE_HEADERS
     }
-    lines = [
+    http_lines = [f"HTTP/1.1 {status_code}"]
+    http_lines += [f"{key}: {value}" for key, value in sorted(safe_headers.items())]
+    http_block = "\r\n".join(http_lines).encode("utf-8") + b"\r\n\r\n"
+    content_block = http_block + body
+    header_lines = [
         "WARC/1.1",
-        "WARC-Type: response",
         f"WARC-Record-ID: <{identifier}>",
         f"WARC-Target-URI: {safe_url}",
+        "WARC-Type: response",
         "Content-Type: application/http; msgtype=response",
         f"WARC-Payload-Digest: sha256:{hashlib.sha256(body).hexdigest()}",
-        "",
-        f"HTTP/1.1 {status_code}",
-        *[f"{key}: {value}" for key, value in sorted(safe_headers.items())],
-        "",
+        f"Content-Length: {len(content_block)}",
     ]
-    payload = "\r\n".join(lines).encode("utf-8") + body + b"\r\n\r\n"
+    payload = (
+        "\r\n".join(header_lines).encode("utf-8")
+        + b"\r\n\r\n"
+        + content_block
+        + b"\r\n\r\n"
+    )
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_bytes(payload)
     return WarcReceipt(
