@@ -66,4 +66,7 @@ def test_operator_documents_match_fail_closed_global_cli() -> None:
         encoding="utf-8"
     )
     assert "Expected: status=not_configured and exit code 2" in runbook
-    assert "Treat any new\nsource-set enablement as requiring its own evidence gate" in runbook
+    assert (
+        "Treat any new\nsource-set enablement as requiring its own evidence gate"
+        in runbook
+    )
