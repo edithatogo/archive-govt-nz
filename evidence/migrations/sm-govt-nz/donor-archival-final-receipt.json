@@ -1,0 +1,27 @@
+{
+  "schema_version": "archive-govt-nz.donor-archival-final-receipt/v1",
+  "receipt_id": "sm-govt-nz-archival-final-20260826",
+  "donor_repository": "edithatogo/sm-govt-nz",
+  "canonical_repository": "edithatogo/archive-govt-nz",
+  "generated_at": "2026-08-26T09:45:00Z",
+  "authorization_chain": [
+    "evidence/migrations/sm-govt-nz/consolidation-closeout-correction.json (corrected false 2026-08-18 receipt)",
+    "attestation attest-sm-govt-nz-retirement-20260825 (READY_FOR_MAINTAINER_ARCHIVAL)",
+    "maintainer archival authorization executed 2026-08-25"
+  ],
+  "verified_live_state": {
+    "is_archived": true,
+    "workflows_disabled": 30,
+    "workflow_state": "disabled_manually",
+    "verified_at": "2026-08-26T09:20:00Z"
+  },
+  "known_evidence_exceptions": [
+    {
+      "id": "EX-PARITY-COVERAGE",
+      "detail": "Differential parity receipts cover 5 of 9 source classes (threads, bluesky, x via aggregate?, youtube, email, feeds); no individual receipts exist for x_twitter or website/browser-fallback, and aggregate-parity.json predates canonical capture activation (evaluated 2026-08-18). The attestation prerequisite 'differential_parity_certified' is therefore only partially evidenced.",
+      "severity": "medium",
+      "mitigation": "Canonical multi-source harvest verified green on main (run 32950524898); ongoing canonical-only operation plus weekly claim-drift lane provides continuous assurance; donor remains recoverable (unarchive) if parity gaps surface regressions."
+    }
+  ],
+  "disposition": "ARCHIVED_WITH_RECORDED_EXCEPTIONS"
+}

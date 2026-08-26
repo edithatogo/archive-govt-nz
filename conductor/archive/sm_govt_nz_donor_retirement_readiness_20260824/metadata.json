@@ -3,10 +3,10 @@
   "description": "Prepare edithatogo/sm-govt-nz for archival: the consolidation-closeout receipt falsely records is_archived=true with active_workflows=0 while GitHub reality shows the repo unarchived with daily active workflows (Threads seed validation, HF rollover).",
   "donor_or_upstream": "edithatogo/sm-govt-nz",
   "reusable_assets": "workflow-route-table.yml (50 routes), migration evidence tree, parallel-operation playbook from corpus-legislation-nz donor retirement",
-  "status": "new",
+  "status": "completed",
   "title": "sm-govt-nz Donor Retirement Readiness",
   "track_id": "sm_govt_nz_donor_retirement_readiness_20260824",
   "treatment": "Issue a superseding corrected closeout receipt, run donor+canonical in parallel until one verified parity cycle per source class, disable donor workflows, soak, then archive with final tag",
   "type": "lifecycle_management",
-  "updated_at": "2026-08-24T10:42:19Z"
+  "updated_at": "2026-08-26T09:45:00Z"
 }

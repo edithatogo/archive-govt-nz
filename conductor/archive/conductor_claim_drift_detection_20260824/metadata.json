@@ -3,10 +3,10 @@
   "description": "Add a scheduled drift check comparing GitHub repository state (archival flags, workflow activity, secrets) against conductor record claims; would have caught the false sm-govt-nz archival receipt automatically.",
   "donor_or_upstream": "internal assurance programme",
   "reusable_assets": "tools/check.py stage framework, gh CLI patterns from status reporting, supply_chain receipt conventions",
-  "status": "new",
+  "status": "completed",
   "title": "Conductor Claim Drift Detection",
   "track_id": "conductor_claim_drift_detection_20260824",
   "treatment": "New assurance stage querying GitHub API for each repo referenced by conductor records and failing closed on claim/state divergence; weekly scheduled lane",
   "type": "assurance_tooling",
-  "updated_at": "2026-08-24T10:42:19Z"
+  "updated_at": "2026-08-26T09:45:00Z"
 }
