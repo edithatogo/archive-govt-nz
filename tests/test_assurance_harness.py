@@ -68,6 +68,7 @@ def test_repository_gate_lists_all_required_stages() -> None:
         "types",
         "tests",
         "schemas",
+        "parity",
         "mutation",
         "mutation-versioning",
         "mutation-redundancy",

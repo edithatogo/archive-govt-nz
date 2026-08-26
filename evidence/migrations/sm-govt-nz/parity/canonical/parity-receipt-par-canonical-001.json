@@ -1,0 +1,74 @@
+{
+  "receipt_id": "par:canonical-001",
+  "evaluated_at": "2026-08-26T10:55:07Z",
+  "total_tests": 9,
+  "passed_tests": 9,
+  "failed_tests": 0,
+  "divergence_count": 0,
+  "status": "passed",
+  "comparisons": [
+    {
+      "source_id": "feed:moh:news",
+      "adapter_name": "FeedCaptureAdapter",
+      "donor_sha256": "4b0c83bd65a60c4b51652dea8d52a708e89da31a98df36a5945764ce911a4969",
+      "target_sha256": "4b0c83bd65a60c4b51652dea8d52a708e89da31a98df36a5945764ce911a4969",
+      "is_identical": true
+    },
+    {
+      "source_id": "bsky:beehivenz",
+      "adapter_name": "BlueskyCaptureAdapter",
+      "donor_sha256": "9949441a92d95489d0ab03ca5492279bcd3b3a22f4e25b2d0c19c18eb1c9ae80",
+      "target_sha256": "9949441a92d95489d0ab03ca5492279bcd3b3a22f4e25b2d0c19c18eb1c9ae80",
+      "is_identical": true
+    },
+    {
+      "source_id": "threads:nzparliament",
+      "adapter_name": "ThreadsCaptureAdapter",
+      "donor_sha256": "33a73176e3ae4c39ce13de397926ed2a5659256b829d8f0bdc02a6cbf865edd5",
+      "target_sha256": "33a73176e3ae4c39ce13de397926ed2a5659256b829d8f0bdc02a6cbf865edd5",
+      "is_identical": true
+    },
+    {
+      "source_id": "x:nzpolice",
+      "adapter_name": "XCaptureAdapter",
+      "donor_sha256": "a0cad6b90962302a38703797698b9d3e2553d427244d6543c3a165a3aacd9ab1",
+      "target_sha256": "a0cad6b90962302a38703797698b9d3e2553d427244d6543c3a165a3aacd9ab1",
+      "is_identical": true
+    },
+    {
+      "source_id": "youtube:docgovtnz",
+      "adapter_name": "YouTubeCaptureAdapter",
+      "donor_sha256": "c1fff03069c5e5cec8cf929a83cbeaaa53bde58ce12ddf788d95fa5c5ac82f85",
+      "target_sha256": "c1fff03069c5e5cec8cf929a83cbeaaa53bde58ce12ddf788d95fa5c5ac82f85",
+      "is_identical": true
+    },
+    {
+      "source_id": "email:statsnz:releases",
+      "adapter_name": "EmailCaptureAdapter",
+      "donor_sha256": "892448fb26b339a3d186ca8ba0ed39e280b6b0a77a52cd764182d3c9a547b676",
+      "target_sha256": "892448fb26b339a3d186ca8ba0ed39e280b6b0a77a52cd764182d3c9a547b676",
+      "is_identical": true
+    },
+    {
+      "source_id": "hathi:volume:1001",
+      "adapter_name": "HathiBronzeAdapter",
+      "donor_sha256": "d23b996ee9b59ca67eea4f1d296a23710c25d1c81a614ad36211f2444d85db36",
+      "target_sha256": "d23b996ee9b59ca67eea4f1d296a23710c25d1c81a614ad36211f2444d85db36",
+      "is_identical": true
+    },
+    {
+      "source_id": "medilegal:hdc:2024-001",
+      "adapter_name": "MedicoLegalBronzeAdapter",
+      "donor_sha256": "8da643676ee4becfdda2cdc1c20eacd570731b178af1a49650165f207bdf002d",
+      "target_sha256": "8da643676ee4becfdda2cdc1c20eacd570731b178af1a49650165f207bdf002d",
+      "is_identical": true
+    },
+    {
+      "source_id": "web:moh:report",
+      "adapter_name": "WebCaptureAdapter",
+      "donor_sha256": "8fcb590e0363103ec82fbb31dae948bccbef267c8849917eb86538d8205432f0",
+      "target_sha256": "8fcb590e0363103ec82fbb31dae948bccbef267c8849917eb86538d8205432f0",
+      "is_identical": true
+    }
+  ]
+}
