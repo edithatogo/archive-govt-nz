@@ -26,3 +26,19 @@ gate is required for the testing configuration task.
   because generated coverage files made its scope unbounded; no clean
   whole-repository secret-scan claim is made.
 - Evidence is local-only; no hosted execution or publication is claimed.
+
+### REQ-MUT-003 runner
+
+- Status: repository implementation complete; functional commit pending.
+- The runner validates target existence and the plugin JSON envelope, rejects
+  missing, malformed, stale, empty, surviving, errored, timed-out, or pardoned
+  outcomes, and writes its bounded receipt atomically.
+- Raw subprocess output is excluded; only SHA-256 digests are retained.
+- Fresh-cache mutation result: 42/42 zapped, 100%, zero survivors, errors,
+  timeouts, or pardons.
+- Plugin report SHA-256:
+  `1599db157402b143d53df58f26701f46535e4300e8879bea17e2aee12a39b046`.
+- Scope is the Medallion schema/NLP export boundary and completed within the
+  repository's 300-second gate. A five-file target set exceeded that bound and
+  was rejected rather than weakening the timeout.
+- Evidence is local-only; no hosted execution or publication is claimed.

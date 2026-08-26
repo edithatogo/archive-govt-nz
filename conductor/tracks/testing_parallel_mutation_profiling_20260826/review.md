@@ -18,6 +18,26 @@
 No unresolved finding remains within this task's dependency and configuration
 scope.
 
+## REQ-MUT-003 runner review
+
+- Resolved: the draft swallowed missing or malformed plugin reports and could
+  reuse a stale report. The runner now removes the prior generated report and
+  validates the complete aggregate envelope fail-closed.
+- Resolved: the draft copied raw stdout into its receipt. The bounded receipt
+  now retains only output digests and the validated aggregate summary.
+- Resolved: the draft had no timeout or atomic receipt write. It now returns
+  code 124 at 300 seconds and atomically replaces the receipt.
+- Resolved: clearing repository addopts caused duplicate-module collection
+  errors. Project import settings are now preserved.
+- Resolved: five targets exceeded the stage budget. The lane now covers the
+  schema/export boundary and passed 42/42 mutations within the bound.
+- Generated plugin cache and coverage-report paths are excluded from Git.
+- The separate untracked runner test currently launches real mutation work
+  from its alleged dry-run case. It remains outside this task and must be
+  corrected in the next planned test task before the full suite is safe.
+
+No unresolved finding remains within the bounded runner implementation scope.
+
 ## Review boundary
 
 Review covers repository-owned configuration, tests, runners, and evidence.

@@ -35,3 +35,28 @@
   reformatted. The remaining 1171 files were formatted; downstream stages did
   not run.
 - Functional commit: `ab4ed66` (`build(test): configure pytest-gremlins`).
+
+## 2026-08-26 — REQ-MUT-003 runner
+
+- `./scripts/validate.sh` — red checkpoint reproduced: lock passed and Ruff
+  rejected the existing untracked `tools/run_gremlins.py`; downstream gates
+  did not run.
+- First bounded implementation hardened report validation, timeouts, atomic
+  writes, and output redaction. Its five-file run emitted 242/242 but pytest
+  exited 2; direct diagnosis showed clearing project `addopts` caused seven
+  duplicate-module collection errors, so that report was rejected.
+- Preserving project `--import-mode=importlib` resolved collection integrity.
+  A fresh-cache five-file run then failed closed at the 300-second timeout,
+  showing that target set was too broad for the repository stage budget.
+- The target set was narrowed to the Medallion schema and NLP export boundary;
+  existing repository-owned mutation runners retain broader module coverage.
+- `uv run --locked ruff format --check tools/run_gremlins.py` — passed.
+- `uv run --locked ruff check tools/run_gremlins.py` — passed.
+- `uv run --locked basedpyright tools/run_gremlins.py` — passed with 0 errors,
+  warnings, or notes.
+- `uv run --locked python tools/run_gremlins.py --help` — passed without
+  starting mutation execution.
+- `uv run --locked python tools/run_gremlins.py --timeout-seconds 300
+  --clear-cache` — passed within the bound: 42/42 mutants zapped, 100%, zero
+  survivors, errors, timeouts, or pardons. Receipt and plugin-report outputs
+  are local generated artefacts.
