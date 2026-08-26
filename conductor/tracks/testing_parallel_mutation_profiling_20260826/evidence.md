@@ -35,6 +35,10 @@ gate is required for the testing configuration task.
   coverage artefacts are outside traversal, with explicit path exclusions as
   defense in depth.
 - CycloneDX 1.6 SBOM: validated with 102 components.
+- Type analysis is explicitly limited to repository code surfaces (`src`,
+  `tools`, and `tests`) and runs with four workers; the exact full command
+  passed in 3:12 with 0 errors, warnings, or notes.
+- Assurance harness contracts: 8 passed.
 - The required full harness remains pending after this fix; no full-gate claim
   is made until that run completes.
 

@@ -99,3 +99,14 @@
   Git-tracked source; receipt written to `build/detect-secrets.json`.
 - `uv run --locked python tools/supply_chain.py sbom` — passed; 102 components
   validated and receipt written to `build/sbom.cdx.json`.
+- First post-fix `./scripts/validate.sh` attempt passed lock, format, and lint,
+  then the repository-wide `basedpyright` command reached the 300-second stage
+  timeout during workspace enumeration (exit 124).
+- Direct diagnosis reproduced the unbounded enumeration warning. Basedpyright
+  is now explicitly scoped to `src`, `tools`, and `tests`, and its assurance
+  stage uses four bounded worker threads.
+- Red/green contract: the missing include policy failed before the config
+  change; `tests/test_assurance_harness.py` now passes 8 tests and locks both
+  the code scope and four-worker stage command.
+- `uv run --locked basedpyright --threads 4` — passed with 0 errors, warnings,
+  or notes in 3:12, within the 300-second stage budget.

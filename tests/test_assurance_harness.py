@@ -8,6 +8,7 @@ from typing import TYPE_CHECKING, Any
 
 from archive_govt_nz.assurance import (
     COMMAND_TIMEOUT_SECONDS,
+    STAGES,
     GateStage,
     run_command,
     run_stages,
@@ -43,6 +44,7 @@ def test_static_and_coverage_policy_is_fail_closed() -> None:
     tools = load_pyproject()["tool"]
 
     assert "basedpyright" in tools
+    assert tools["basedpyright"]["include"] == ["src", "tools", "tests"]
     assert tools["coverage"]["run"]["branch"] is True
     assert tools["coverage"]["report"]["fail_under"] == 95
     assert tools["coverage"]["report"]["show_missing"] is True
@@ -87,6 +89,20 @@ def test_repository_gate_lists_all_required_stages() -> None:
         "secrets",
         "sbom",
     ]
+
+
+def test_type_gate_uses_bounded_parallel_analysis() -> None:
+    """Repository-wide typing completes within the per-stage time budget."""
+    type_stage = next(stage for stage in STAGES if stage.name == "types")
+
+    assert type_stage.command == (
+        "uv",
+        "run",
+        "--locked",
+        "basedpyright",
+        "--threads",
+        "4",
+    )
 
 
 def test_repository_gate_fails_closed_after_a_stage_failure() -> None:

@@ -49,6 +49,7 @@ dev = [
 ]
 
 [tool.basedpyright]
+include = ["src", "tools", "tests"]
 typeCheckingMode = "standard"
 pythonVersion = "3.14"
 reportMissingTypeStubs = false
