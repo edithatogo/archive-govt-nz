@@ -10,7 +10,7 @@ gate is required for the testing configuration task.
 
 ### REQ-MUT-001 and REQ-MUT-002
 
-- Status: repository implementation complete; functional commit pending.
+- Status: repository implementation committed as `ab4ed66`.
 - `pytest-gremlins` 1.9.0 is locked to the compatible `<2` major series.
 - Plugin-native configuration fixes mutation operators and targets, emits
   console and JSON reports, enables automatic parallel workers and incremental

@@ -1,7 +1,7 @@
 # Implementation Plan: Testing Modernization (Pytest-Gremlins, Parallelisation, Property Testing & Scalene)
 
 ### Phase 1: Pytest-Gremlins Integration & Dedicated Mutation Runner
-- [~] Task: Ensure `pytest-gremlins` is locked in `pyproject.toml` and configure gremlins settings.
+- [x] Task: Ensure `pytest-gremlins` is locked in `pyproject.toml` and configure gremlins settings. (`ab4ed66`)
 - [ ] Task: Create `tools/run_gremlins.py` runner script that executes mutation testing and emits `build/gremlins-report.json`.
 - [ ] Task: Add test for gremlins runner in `tests/tools/test_run_gremlins.py`.
 
