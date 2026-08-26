@@ -27,6 +27,17 @@ gate is required for the testing configuration task.
   whole-repository secret-scan claim is made.
 - Evidence is local-only; no hosted execution or publication is claimed.
 
+### Phase 1 Review Fixes
+
+- Focused supply-chain contracts: 6 passed.
+- Ruff and basedpyright: passed.
+- Source secret scan: passed against Git-tracked files; generated and ignored
+  coverage artefacts are outside traversal, with explicit path exclusions as
+  defense in depth.
+- CycloneDX 1.6 SBOM: validated with 102 components.
+- The required full harness remains pending after this fix; no full-gate claim
+  is made until that run completes.
+
 ### REQ-MUT-004 runner tests
 
 - Status: repository implementation committed as `af9aa2e`.

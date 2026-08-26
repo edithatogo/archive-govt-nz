@@ -52,6 +52,17 @@ No unresolved finding remains within the bounded runner implementation scope.
   root `.coverage.*` shards. The plan tracks this as Review Fixes work and the
   phase remains open until the required harness passes.
 
+## Phase 1 Review Fixes review
+
+- Resolved: `--all-files` contradicted the gate's tracked-source contract and
+  recursively scanned generated and ignored files. The live gate now uses
+  detect-secrets' Git-tracked-file scope.
+- Resolved: coverage databases and report directories were missing from the
+  exclusion expression. Root/nested shards and generated coverage directories
+  are explicitly covered without excluding similarly named source modules.
+- Focused tests, static checks, the live secret scan, and SBOM validation pass.
+- The phase remains open pending one post-fix run of the required full harness.
+
 ## Review boundary
 
 Review covers repository-owned configuration, tests, runners, and evidence.

@@ -21,8 +21,9 @@ REPOSITORY_ROOT = Path(__file__).parents[1]
 BUILD_DIRECTORY = REPOSITORY_ROOT / "build"
 CONTROL_NAMES = ("audit", "licenses", "secrets", "sbom")
 EXCLUDED_PATH_PATTERN = (
-    r"(?:^|[\\/])(?:\.git|\.venv|\.pytest_cache|\.ruff_cache|build|dist)"
+    r"(?:^|[\\/])(?:\.git|\.venv|\.pytest_cache|\.ruff_cache|build|coverage|dist|htmlcov)"
     r"(?:[\\/]|$)"
+    r"|(?:^|[\\/])\.coverage(?:\.[^\\/]*)?$"
     r"|uv\.lock$"
     r"|conductor[\\/]tracks[\\/].*[\\/](?:evidence|runlog)\.md$"
     r"|conductor[\\/]archive[\\/]imported[\\/].*"
@@ -112,7 +113,6 @@ def secrets() -> None:
         (
             "detect-secrets",
             "scan",
-            "--all-files",
             "--force-use-all-plugins",
             "--exclude-files",
             EXCLUDED_PATH_PATTERN,
