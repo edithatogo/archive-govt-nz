@@ -18,8 +18,8 @@
   "known_evidence_exceptions": [
     {
       "id": "EX-PARITY-COVERAGE",
-      "detail": "Differential parity receipts cover 5 of 9 source classes (threads, bluesky, x via aggregate?, youtube, email, feeds); no individual receipts exist for x_twitter or website/browser-fallback, and aggregate-parity.json predates canonical capture activation (evaluated 2026-08-18). The attestation prerequisite 'differential_parity_certified' is therefore only partially evidenced.",
-      "severity": "medium",
+      "detail": "Differential parity receipts cover 5 of 9 source classes (threads, bluesky, x via aggregate?, youtube, email, feeds); no individual receipts exist for x_twitter or website/browser-fallback, and aggregate-parity.json predates canonical capture activation (evaluated 2026-08-18). The attestation prerequisite 'differential_parity_certified' is therefore only partially evidenced. Partially remediated 2026-08-26: the canonical differential parity harness (tools/run_differential_parity.py) certifies all 9 source classes fixture-based (receipt par:canonical-001, 9/9 passed), persisted at evidence/migrations/sm-govt-nz/parity/canonical/, and is enforced as an assurance-gate stage. Live donor-differential comparison remains impossible post-archival.",
+      "severity": "low",
       "mitigation": "Canonical multi-source harvest verified green on main (run 32950524898); ongoing canonical-only operation plus weekly claim-drift lane provides continuous assurance; donor remains recoverable (unarchive) if parity gaps surface regressions."
     }
   ],

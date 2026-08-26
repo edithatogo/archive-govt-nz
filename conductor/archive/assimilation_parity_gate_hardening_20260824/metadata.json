@@ -7,10 +7,10 @@
     "corpus-cases-medilegal-nz": "52c30468f692a6337a549c09e00f1caff2efaa75"
   },
   "reusable_assets": "Parity receipt format from evidence/migrations/sm-govt-nz/parity/, Hansard assimilation (#183) as the reference playbook",
-  "status": "in_progress",
+  "status": "completed",
   "title": "Assimilation Parity Gate Hardening",
   "track_id": "assimilation_parity_gate_hardening_20260824",
   "treatment": "Pin donor SHA at assimilation start, require a source-class parity receipt as each phase gate, close the x_twitter and website route parity gaps",
   "type": "process_hardening",
-  "updated_at": "2026-08-24T13:40:00Z"
+  "updated_at": "2026-08-26T11:10:00Z"
 }

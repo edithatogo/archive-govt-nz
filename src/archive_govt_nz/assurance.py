@@ -38,6 +38,10 @@ STAGES = (
         ("uv", "run", "--locked", "python", "tools/validate_schemas.py"),
     ),
     GateStage(
+        "parity",
+        ("uv", "run", "--locked", "python", "tools/run_differential_parity.py"),
+    ),
+    GateStage(
         "mutation",
         ("uv", "run", "--locked", "python", "tools/mutation_resource_policy.py"),
     ),
