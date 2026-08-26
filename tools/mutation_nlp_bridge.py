@@ -62,7 +62,11 @@ def _run_single_mutant(
             "--override-ini=addopts=",
         ]
         env = dict(os.environ)
-        env["PYTHONPATH"] = f"{root}:{env.get('PYTHONPATH', '')}"
+        env["PYTHONPATH"] = os.pathsep.join(
+            [str(root), env.get("PYTHONPATH", "")]
+            if env.get("PYTHONPATH")
+            else [str(root)]
+        )
 
         proc = subprocess.run(  # noqa: S603
             cmd, cwd=str(ROOT), env=env, capture_output=True, text=True, check=False
