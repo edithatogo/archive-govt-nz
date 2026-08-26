@@ -14,7 +14,7 @@ from archive_govt_nz.bronze.models import (
     BronzeRecord,
     BronzeSourceMetadata,
 )
-from archive_govt_nz.silver.pipeline import SilverPipeline
+from archive_govt_nz.silver.pipeline import SilverPipeline, _load_checkpoint
 
 
 def test_silver_pipeline_with_checkpoint_resume(tmp_path: Path) -> None:
@@ -97,8 +97,6 @@ def test_silver_pipeline_with_checkpoint_resume(tmp_path: Path) -> None:
 
 def test_load_checkpoint_handles_missing_domain_and_corruption(tmp_path: Path) -> None:
     """_load_checkpoint returns defaults for corrupt files or foreign domains."""
-    from archive_govt_nz.silver.pipeline import _load_checkpoint
-
     # Corrupt JSON falls through to the default start state.
     corrupt = tmp_path / ".checkpoint.json"
     corrupt.write_text("{not-json", encoding="utf-8")

@@ -5,8 +5,12 @@ from pathlib import Path
 import pyarrow as pa
 import pyarrow.parquet as pq
 
-from archive_govt_nz.gold.analytics import GoldAnalyticsEngine
+from archive_govt_nz.gold.analytics import (
+    GoldAnalyticsEngine,
+    GoldKnowledgeGraphIngestor,
+)
 from archive_govt_nz.gold.dcat import DCATAPMetadataExporter
+from archive_govt_nz.gold.federation import FederationManager
 from archive_govt_nz.silver.base import SILVER_ARROW_SCHEMA, NormalizedSilverRecord
 
 
@@ -112,8 +116,6 @@ def test_dcat_ap_and_ro_crate_exporter() -> None:
 
 def test_federation_manager_named_partners(tmp_path: Path) -> None:
     """FederationManager named attach helpers register partner datasets."""
-    from archive_govt_nz.gold.federation import FederationManager
-
     engine = GoldAnalyticsEngine(silver_base_dir=tmp_path / "empty_silver")
     fed_path = tmp_path / "partner.parquet"
     pq.write_table(
@@ -150,8 +152,6 @@ def test_query_returns_empty_result_on_none_relation(tmp_path: Path) -> None:
 
 def test_attach_nlp_extractions_missing_path_is_noop(tmp_path: Path) -> None:
     """attach_nlp_extractions returns early when the extractions path is absent."""
-    from archive_govt_nz.gold.analytics import GoldKnowledgeGraphIngestor
-
     engine = GoldAnalyticsEngine(silver_base_dir=tmp_path)
     GoldKnowledgeGraphIngestor.attach_nlp_extractions(
         engine, tmp_path / "missing.parquet"
