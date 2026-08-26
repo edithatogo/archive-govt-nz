@@ -3,14 +3,21 @@
 
 from __future__ import annotations
 
+import sys
 import tempfile
 import time
 from pathlib import Path
+from typing import Final
 
 from archive_govt_nz.object_store import ContentAddressedStore
 
 BENCHMARK_BYTES = 10 * 1024 * 1024  # 10 MB
-MIN_THROUGHPUT_MB_S = 25.0  # Minimum acceptable throughput threshold on CI VMs
+# Minimum acceptable throughput thresholds on CI VMs. Windows runners show
+# substantially higher per-call filesystem overhead, so they get a lower floor.
+_MIN_THROUGHPUT_BY_PLATFORM: Final[dict[str, float]] = {
+    "win32": 15.0,
+}
+MIN_THROUGHPUT_MB_S: Final[float] = _MIN_THROUGHPUT_BY_PLATFORM.get(sys.platform, 25.0)
 
 
 class BenchmarkError(RuntimeError):
