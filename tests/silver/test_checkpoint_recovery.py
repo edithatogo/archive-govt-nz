@@ -93,3 +93,21 @@ def test_silver_pipeline_with_checkpoint_resume(tmp_path: Path) -> None:
     # Read output Parquet table
     table = pq.read_table(res.parquet_path)
     assert table.num_rows == 5  # processed remaining 5 records
+
+
+def test_load_checkpoint_handles_missing_domain_and_corruption(tmp_path: Path) -> None:
+    """_load_checkpoint returns defaults for corrupt files or foreign domains."""
+    from archive_govt_nz.silver.pipeline import _load_checkpoint
+
+    # Corrupt JSON falls through to the default start state.
+    corrupt = tmp_path / ".checkpoint.json"
+    corrupt.write_text("{not-json", encoding="utf-8")
+    assert _load_checkpoint(corrupt, "legislation") == (0, 0, False)
+
+    # A checkpoint for a different domain is ignored.
+    foreign = tmp_path / ".checkpoint-foreign.json"
+    foreign.write_text(
+        json.dumps({"domain": "gazette", "last_processed_index": 9}),
+        encoding="utf-8",
+    )
+    assert _load_checkpoint(foreign, "legislation") == (0, 0, False)

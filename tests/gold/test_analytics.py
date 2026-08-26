@@ -108,3 +108,51 @@ def test_dcat_ap_and_ro_crate_exporter() -> None:
     )
     assert "@graph" in crate
     assert len(crate["@graph"]) == 3
+
+
+def test_federation_manager_named_partners(tmp_path: Path) -> None:
+    """FederationManager named attach helpers register partner datasets."""
+    from archive_govt_nz.gold.federation import FederationManager
+
+    engine = GoldAnalyticsEngine(silver_base_dir=tmp_path / "empty_silver")
+    fed_path = tmp_path / "partner.parquet"
+    pq.write_table(
+        pa.Table.from_pydict({"nz_canonical_urn": ["urn:x"], "value": [1]}),
+        fed_path,
+    )
+
+    manager = FederationManager(engine)
+    manager.attach_global_medicines_atlas(fed_path)
+    manager.attach_fyi_archive(fed_path)
+
+
+def test_register_domain_table_updates_view(tmp_path: Path) -> None:
+    """Explicit domain table registration creates a queryable silver view."""
+    engine = GoldAnalyticsEngine(silver_base_dir=tmp_path / "silver")
+
+    rec_path = tmp_path / "corpus.parquet"
+    pq.write_table(pa.Table.from_pydict({"urn": ["u1"]}), rec_path)
+    engine.register_domain_table("health", rec_path)
+
+    result = engine.query("SELECT COUNT(*) AS n FROM silver_health")
+    assert result.row_count == 1
+
+
+def test_query_returns_empty_result_on_none_relation(tmp_path: Path) -> None:
+    """query() returns an empty columnar result when the relation is None."""
+    engine = GoldAnalyticsEngine(silver_base_dir=tmp_path)
+    # A DDL statement yields a None relation from DuckDB, exercising the
+    # empty-result branch of query().
+    result = engine.query("CREATE OR REPLACE TEMP TABLE patch_probe AS SELECT 1 AS v")
+    assert result.row_count == 0
+    assert result.column_names == []
+
+
+def test_attach_nlp_extractions_missing_path_is_noop(tmp_path: Path) -> None:
+    """attach_nlp_extractions returns early when the extractions path is absent."""
+    from archive_govt_nz.gold.analytics import GoldKnowledgeGraphIngestor
+
+    engine = GoldAnalyticsEngine(silver_base_dir=tmp_path)
+    GoldKnowledgeGraphIngestor.attach_nlp_extractions(
+        engine, tmp_path / "missing.parquet"
+    )
