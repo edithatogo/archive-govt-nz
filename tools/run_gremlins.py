@@ -148,8 +148,20 @@ def run_gremlins_suite(
 
     missing_targets = [target for target in TARGETS if not (ROOT / target).is_file()]
     if missing_targets:
-        message = f"mutation targets do not exist: {missing_targets}"
-        raise FileNotFoundError(message)
+        receipt = GremlinReceipt(
+            schema_version=SCHEMA_VERSION,
+            status="failed",
+            failure_kind="missing_target",
+            failure_detail=f"mutation targets do not exist: {missing_targets}",
+            returncode=1,
+            targets=list(TARGETS),
+            timeout_seconds=timeout_seconds,
+            cache_mode="cleared" if clear_cache else "incremental",
+            stdout_sha256=_output_digest(None),
+            stderr_sha256=_output_digest(None),
+        )
+        _write_receipt(receipt)
+        return receipt
 
     PLUGIN_REPORT.unlink(missing_ok=True)
     command = [
@@ -262,5 +274,5 @@ def main() -> int:
     return receipt["returncode"]
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover - exercised by CLI subprocess test
     raise SystemExit(main())

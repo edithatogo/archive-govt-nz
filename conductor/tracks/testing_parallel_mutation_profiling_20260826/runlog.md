@@ -61,3 +61,25 @@
   survivors, errors, timeouts, or pardons. Receipt and plugin-report outputs
   are local generated artefacts.
 - Functional commit: `86dbbed` (`feat(test): add bounded gremlins runner`).
+
+## 2026-08-26 — REQ-MUT-004 runner tests
+
+- Red phase: the missing-target contract raised `FileNotFoundError` instead of
+  emitting the runner's structured failure receipt.
+- The runner now emits `failure_kind=missing_target`, return code 1, and
+  redacted empty-output digests for that preflight failure.
+- The inherited untracked test draft was replaced because its alleged dry run
+  invoked recursive mutation execution. The bounded suite mocks the mutation
+  subprocess and covers success, malformed/missing reports, invalid aggregate
+  values, every rejected mutation outcome, timeout, missing targets, argument
+  forwarding, atomic receipt behavior, output redaction, and CLI help.
+- `uv run --locked pytest tests/tools/test_run_gremlins.py -q` — passed,
+  28 tests.
+- Ruff format/check and basedpyright for the runner and its test — passed.
+- Targeted branch coverage for `tools/run_gremlins.py` — 139 statements,
+  30 branches, 100% coverage.
+- `./scripts/validate.sh` — passed lock, format, lint, typing, 1140 tests,
+  schema validation, all mutation lanes, slops, CAS benchmark, audit, and
+  licences. It was interrupted at the secret scan after generated root
+  `.coverage.*` shards made the `--all-files` traversal unbounded. This is a
+  Phase 1 review finding; no green full-harness claim is made yet.

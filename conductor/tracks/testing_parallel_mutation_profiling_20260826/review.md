@@ -38,6 +38,20 @@ scope.
 
 No unresolved finding remains within the bounded runner implementation scope.
 
+## REQ-MUT-004 runner-test review
+
+- Resolved: the inherited test draft's dry-run case started a real nested
+  mutation session. Subprocess behavior is now mocked, while CLI help is
+  verified in an isolated subprocess that cannot start mutation execution.
+- Resolved: missing targets escaped the receipt contract as an exception. They
+  now produce a structured, redacted failure receipt.
+- Resolved: report-envelope edge cases lacked direct tests. Invalid counts,
+  percentages, totals, outcomes, JSON, process exits, and timeouts are now
+  fail-closed and covered.
+- Phase finding: the repository-wide source secret scan traverses generated
+  root `.coverage.*` shards. The plan tracks this as Review Fixes work and the
+  phase remains open until the required harness passes.
+
 ## Review boundary
 
 Review covers repository-owned configuration, tests, runners, and evidence.

@@ -105,6 +105,7 @@ line-ending = "lf"
 "tools/run_capture_batch.py" = ["ANN001", "ANN202"]
 "tools/preflight_resources.py" = ["ASYNC109", "ASYNC240"]
 "tests/**/*.py" = ["INP001", "PLR2004", "S101", "S603"]
+"tests/tools/test_run_gremlins.py" = ["SLF001"]
 "tests/object_store/**/*.py" = ["ANN202", "EM101", "TC003", "TRY003"]
 "tests/capture/**/*.py" = ["ARG001", "D103", "TC003"]
 "tests/capture/test_batch_capture.py" = ["PT006"]
