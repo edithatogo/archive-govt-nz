@@ -3,7 +3,8 @@
 ### Phase 1: Pytest-Gremlins Integration & Dedicated Mutation Runner
 - [x] Task: Ensure `pytest-gremlins` is locked in `pyproject.toml` and configure gremlins settings. (`ab4ed66`)
 - [x] Task: Create `tools/run_gremlins.py` runner script that executes mutation testing and emits `build/gremlins-report.json`. (`86dbbed`)
-- [~] Task: Add test for gremlins runner in `tests/tools/test_run_gremlins.py`.
+- [x] Task: Add test for gremlins runner in `tests/tools/test_run_gremlins.py`. (`af9aa2e`)
+- [~] **Review Fixes:** Exclude generated coverage shards from the source secret scan.
 
 ### Phase 2: Parallel Test Execution Harness (`pytest-xdist`)
 - [ ] Task: Configure `pytest-xdist` parallel execution options in `tools/check.py` and `src/archive_govt_nz/assurance.py`.
