@@ -83,3 +83,19 @@
   licences. It was interrupted at the secret scan after generated root
   `.coverage.*` shards made the `--all-files` traversal unbounded. This is a
   Phase 1 review finding; no green full-harness claim is made yet.
+
+## 2026-08-26 — Phase 1 Review Fixes
+
+- Red phase: the new exclusion contract failed because `.coverage` and its
+  parallel-worker shards were absent from `EXCLUDED_PATH_PATTERN`.
+- Diagnosis confirmed `detect-secrets scan --all-files` recursively scans
+  generated and ignored files, contradicting the gate's tracked-source
+  contract. The option was removed; coverage databases and report directories
+  are also excluded explicitly as defense in depth.
+- `uv run --locked pytest tests/test_supply_chain_controls.py -q` — passed,
+  6 tests.
+- Ruff and basedpyright for the supply-chain tool and tests — passed.
+- `uv run --locked python tools/supply_chain.py secrets` — passed against
+  Git-tracked source; receipt written to `build/detect-secrets.json`.
+- `uv run --locked python tools/supply_chain.py sbom` — passed; 102 components
+  validated and receipt written to `build/sbom.cdx.json`.
