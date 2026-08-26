@@ -61,6 +61,9 @@ No unresolved finding remains within the bounded runner implementation scope.
   exclusion expression. Root/nested shards and generated coverage directories
   are explicitly covered without excluding similarly named source modules.
 - Focused tests, static checks, the live secret scan, and SBOM validation pass.
+- Resolved: the post-fix full gate exposed workspace-wide type-check discovery
+  exceeding the stage timeout. The type surface is now explicit and the stage
+  uses four bounded workers; its exact command passes within budget.
 - The phase remains open pending one post-fix run of the required full harness.
 
 ## Review boundary
