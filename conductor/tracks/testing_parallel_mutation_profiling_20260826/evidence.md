@@ -29,8 +29,7 @@ gate is required for the testing configuration task.
 
 ### REQ-MUT-004 runner tests
 
-- Status: implementation ready for commit; commit identity is recorded in the
-  plan after creation.
+- Status: repository implementation committed as `af9aa2e`.
 - Focused suite: 28 passed.
 - Targeted runner coverage: 100% line and branch coverage (139 statements,
   30 branches).
