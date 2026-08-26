@@ -207,4 +207,7 @@ implementation has occurred under these tracks.
 - [x] **Track: Medallion NLP Bi-Directional Bridge, Bleeding-Edge OCR & Ontological Synthesis**
   *Link: [tracks/medallion_nlp_bidirectional_bridge_20260826/index.md](./tracks/medallion_nlp_bidirectional_bridge_20260826/index.md)*
 
+## Programme: Testing Modernization & Performance Frontier (2026-08-26)
 
+- [~] **Track: Testing Modernization: Pytest-Gremlins Mutation, Parallel xdist, Property-Based Hypothesis & Scalene Profiling**
+  *Link: [tracks/testing_parallel_mutation_profiling_20260826/index.md](./tracks/testing_parallel_mutation_profiling_20260826/index.md)*

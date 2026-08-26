@@ -40,6 +40,7 @@ dev = [
   "pyright>=1.1.411,<2",
   "pytest>=9.1.1,<10",
   "pytest-cov>=7.1.0,<8",
+  "pytest-gremlins>=1.9.0,<2",
   "pytest-randomly>=3.16.0,<5",
   "pytest-xdist>=3.8.0",
   "ruff>=0.16.1,<0.17",
@@ -54,6 +55,15 @@ reportMissingTypeStubs = false
 
 [tool.uv]
 package = true
+
+[tool.pytest-gremlins]
+operators = ["comparison", "arithmetic", "boolean", "boundary", "return"]
+paths = ["src/archive_govt_nz"]
+exclude = ["**/__pycache__/**"]
+report = ["console", "json"]
+workers = "auto"
+cache = true
+max-pardons-pct = 0.0
 
 [tool.ruff]
 line-length = 88

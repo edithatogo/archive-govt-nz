@@ -202,7 +202,9 @@ Creating or publishing a DOI remains an explicit external publication gate.
 - Hypothesis for property-based and state-machine testing.
 - respx or equivalent deterministic HTTP contract fixtures.
 - coverage with branch measurement and risk-based thresholds.
-- mutation testing for integrity, versioning, and policy-critical modules.
+- repository-owned targeted mutation runners plus `pytest-gremlins` 1.x for
+  coverage-guided, cached mutation testing of integrity, versioning, and
+  policy-critical modules.
 - JSON Schema conformance and golden-manifest tests.
 
 ### Rust
