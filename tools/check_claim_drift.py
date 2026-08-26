@@ -111,8 +111,10 @@ def check_claims(
             )
         )
 
-    # Claim 2: sm-govt-nz is NOT archived (per superseding correction receipt)
-    rec_sm_archived = False
+    # Claim 2: sm-govt-nz IS archived (donor retirement executed by maintainer
+    # authorization per attestation attest-sm-govt-nz-retirement-20260825;
+    # see evidence/migrations/sm-govt-nz/donor-archival-final-receipt.json)
+    rec_sm_archived = True
     actual_sm_archived: bool
     if mock_live_data is not None:
         actual_sm_archived = mock_live_data.get("edithatogo/sm-govt-nz", {}).get(

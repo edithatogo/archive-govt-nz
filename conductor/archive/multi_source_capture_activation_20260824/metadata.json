@@ -3,10 +3,10 @@
   "description": "Unblock scheduled-multi-source-harvest: every source-set job currently exits 2 because archive-govt-nz capture is an unimplemented stub returning 'No standalone capture daemon or active worker queue is configured'.",
   "donor_or_upstream": "sm-govt-nz live pipelines (threads/bluesky/x/youtube/email/feeds/web)",
   "reusable_assets": "Domain adapters (adapters/*.py), per-domain sync commands that already work in production (legislation sync), parity receipts for five source classes",
-  "status": "new",
+  "status": "completed",
   "title": "Multi-Source Capture Path Activation",
   "track_id": "multi_source_capture_activation_20260824",
   "treatment": "Either implement the capture worker path behind the CLI stub or re-route the harvest matrix to existing working domain pipelines; verify one full scheduled cycle green before declaring unblocked",
   "type": "capture_infrastructure",
-  "updated_at": "2026-08-24T10:42:19Z"
+  "updated_at": "2026-08-26T09:45:00Z"
 }
