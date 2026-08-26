@@ -27,6 +27,21 @@ gate is required for the testing configuration task.
   whole-repository secret-scan claim is made.
 - Evidence is local-only; no hosted execution or publication is claimed.
 
+### REQ-MUT-004 runner tests
+
+- Status: implementation ready for commit; commit identity is recorded in the
+  plan after creation.
+- Focused suite: 28 passed.
+- Targeted runner coverage: 100% line and branch coverage (139 statements,
+  30 branches).
+- Ruff format/check and basedpyright: passed.
+- Missing targets and all plugin-report/process failure modes emit bounded,
+  machine-readable failures; raw subprocess output is not retained.
+- Full harness evidence is partial: all stages through licences passed, while
+  the secret scan was interrupted because generated `.coverage.*` shards were
+  not excluded. A Review Fixes task owns that repository-level defect.
+- Evidence is local-only; no hosted execution or publication is claimed.
+
 ### REQ-MUT-003 runner
 
 - Status: repository implementation committed as `86dbbed`.
