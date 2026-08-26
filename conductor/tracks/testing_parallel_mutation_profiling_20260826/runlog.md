@@ -34,3 +34,4 @@
   because the preserved later-task file `tools/run_gremlins.py` would be
   reformatted. The remaining 1171 files were formatted; downstream stages did
   not run.
+- Functional commit: `ab4ed66` (`build(test): configure pytest-gremlins`).
