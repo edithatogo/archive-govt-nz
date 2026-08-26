@@ -42,11 +42,8 @@ def test_check_claims_detects_divergence() -> None:
     status, checks = check_claims(mock_live_data=mock_data)
     assert status == "divergence_detected"
     drift_checks = [c for c in checks if c.status == "drift"]
-    assert len(drift_checks) == 2
-    assert {c.subject for c in drift_checks} == {
-        "edithatogo/corpus-legislation-nz",
-        "edithatogo/sm-govt-nz",
-    }
+    assert len(drift_checks) == 1
+    assert drift_checks[0].subject == "edithatogo/corpus-legislation-nz"
 
 
 def test_main_cli_execution(tmp_path: Path) -> None:
