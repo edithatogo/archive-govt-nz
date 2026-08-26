@@ -56,9 +56,12 @@ flowchart TD
 
 ## Key Features
 
-1. **Source adapters and domain services**: Bounded components exist for CKAN,
-   feeds, social sources, newsletters, legislation, and gazette records. The
-   standalone global `capture` command is not yet connected to a worker.
+1. **Config-driven source-set capture**: `capture --source-set <name>` performs
+   bounded network acquisition against declared YAML source sets, persists each
+   response as a WARC 1.1 record, and emits content-addressed capture receipts.
+   Sources requiring credentials or discovery infrastructure are recorded as
+   `capability_pending` rather than silently skipped. Domain adapters exist for
+   CKAN, feeds, social sources, newsletters, legislation, and gazette records.
 2. **Content-addressed storage**: Immutable SHA-256/BLAKE3 object identities
    with streaming fixity verification.
 3. **Preservation containers**: WARC and WACZ construction and structural
@@ -105,9 +108,22 @@ uv run --locked archive-govt-nz verify \
 ```
 
 Commands return non-zero when required state is absent, corrupt, unsupported,
-or blocked. `capture` currently returns `not_configured` (exit 2) for global
-source types; use a domain runner only when its own runbook and evidence gates
-authorize it.
+or blocked.
+
+### Scheduled multi-source harvesting
+```bash
+# Capture one configured source set (network operation)
+uv run --locked archive-govt-nz capture --source-set treasury \
+  --output-dir build/receipts/treasury --warc-dir build/warc/treasury
+
+# Generate and verify fixity over captured WARC output
+uv run --locked archive-govt-nz archive --action manifest --output-dir build/warc/treasury
+uv run --locked archive-govt-nz archive --action verify --output-dir build/warc/treasury
+```
+The `scheduled-multi-source-harvest` workflow runs this sequence per configured
+source set on a schedule, uploads receipts and WARC artifacts, and fails closed
+on any capture or fixity error. Use domain runners only where their own runbook
+and evidence gates authorize them.
 
 ---
 
@@ -118,7 +134,8 @@ The codebase enforces strict quality boundaries via `tools/check.py`:
 - **Locked validation harness**: Unit, integration, and adversarial tests enforce
   at least **95% branch-aware coverage**. Exact local results are recorded in the
   active Conductor track; they are not hosted or operational proof.
-- **7 Mutation Testing Runners** (`mutation_resource_policy`, `mutation_versioning`, `mutation_redundancy`, `mutation_archivebox_pilot`, `mutation_batch_eligibility`, `mutation_global_policy`, `mutation_adapters`).
+- **9 Mutation Testing Runners** (`mutation_resource_policy`, `mutation_versioning`, `mutation_redundancy`, `mutation_archivebox_pilot`, `mutation_batch_eligibility`, `mutation_global_policy`, `mutation_adapters`, `mutation_gazette`, `mutation_medallion`).
+- **Differential parity gate**: every change re-runs a 9-source-class donor-vs-canonical parity harness (`parity` stage); divergences fail the build.
 - **Hygiene gate**: The repository validator rejects configured placeholder and
   forbidden-pattern classes.
 - **Supply-Chain Hardening**: Automated CycloneDX SBOM generation, `pip-audit`, `pip-licenses`, and `detect-secrets`.
@@ -127,12 +144,13 @@ The codebase enforces strict quality boundaries via `tools/check.py`:
 
 ## Consolidation & Provenance
 
-The donor repository `edithatogo/sm-govt-nz` remains **unarchived** while the
-service, CLI, MCP, workflow, real-batch, canary, weekly-cycle, recovery, and
-cutover sequence is incomplete. Its zero open-issue count records
-administrative transfer to the target epic; it is not implementation or
-cutover evidence. Migration records are retained under
-[`evidence/migrations/sm-govt-nz/`](./evidence/migrations/sm-govt-nz/).
+The donor repository `edithatogo/sm-govt-nz` was **archived on 2026-08-25**
+after its canonical replacement was activated and verified, following the
+auditable chain in [`evidence/migrations/sm-govt-nz/`](./evidence/migrations/sm-govt-nz/):
+closeout correction → retirement attestation → maintainer authorization → final
+disposition receipt (with recorded exceptions). A weekly claim-drift lane
+(`scheduled-claim-drift-detection`) continuously compares Conductor records
+against live GitHub state and fails closed on divergence.
 
 - **Canonical Repository**: [https://github.com/edithatogo/archive-govt-nz](https://github.com/edithatogo/archive-govt-nz)
 - **Hugging Face Datasets**:

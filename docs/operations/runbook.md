@@ -6,11 +6,14 @@ that the scheduled multi-source workflow is operational.
 
 ## Current operational status
 
-- Global `capture` is fail-closed as `not_configured` with exit code 2 because
-  no standalone daemon or worker queue is connected.
-- `.github/workflows/scheduled-multi-source-harvest.yml` exists, but its capture,
-  archive-manifest, and replay-state wiring belongs to the later workflow track.
-  Do not interpret a dispatch or workflow result as capture completeness.
+- Global `capture --source-set <name>` performs bounded network acquisition
+  against the declared source sets in `config/source-sets/` and writes WARC
+  evidence plus content-addressed capture receipts. Undeclared source sets
+  remain fail-closed as `not_configured` with exit code 2.
+- `.github/workflows/scheduled-multi-source-harvest.yml` runs capture,
+  fixity manifest, verification, and receipt upload per configured source set.
+  A green run evidences bounded acquisition only; it is not publication or
+  redistribution authorization.
 - Publication preparation is local-only. Credentials are capabilities, not
   rights clearance, package integrity, remote verification, or release evidence.
 
@@ -33,12 +36,13 @@ package ready and does not close publication or redistribution-rights gates.
 
 ## 2. Capture and workflow boundary
 
-The scheduled workflow has a six-hour cron declaration, but it is not a valid
-production-harvest route in the current sequence. Its generic capture command
-returns `not_configured`, archive verification requires a closed fixity
-manifest, and replay requires populated production-layout CAS state.
+The scheduled workflow harvests each configured source set on its cron
+declaration: capture writes WARC records, then fixity manifest and structural
+verification run over the output before receipts upload as artifacts.
+Replay still requires populated production-layout CAS state.
 
-Use this probe only to confirm the fail-closed boundary:
+Use this probe only to confirm the fail-closed boundary for an undeclared
+source set:
 
 ```bash
 uv run --locked archive-govt-nz capture \
@@ -47,9 +51,9 @@ uv run --locked archive-govt-nz capture \
 # Expected: status=not_configured and exit code 2.
 ```
 
-Do not trigger the scheduled workflow as a production harvest until its later
-corrective track supplies real acquisition, manifest, checkpoint, and replay
-state and a bounded live run verifies them.
+A bounded live dispatch verified real acquisition on 2026-08-26 (run
+32950524898; treasury captured 255,838 bytes, fixity verified). Treat any new
+source-set enablement as requiring its own evidence gate.
 
 ---
 
