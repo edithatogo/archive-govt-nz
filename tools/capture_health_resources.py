@@ -18,6 +18,12 @@ from archive_govt_nz.capture import CaptureConfig, CaptureError, capture_url
 from archive_govt_nz.object_store import ContentAddressedStore
 
 _RIGHTS = {
+    "www.treasury.govt.nz": {
+        "state": "eligible",
+        "license": "CC-BY-4.0",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "attribution": "The Treasury New Zealand",
+    },
     "budget.govt.nz": {
         "state": "eligible",
         "license": "CC-BY-4.0",
@@ -60,6 +66,7 @@ async def _capture(args: argparse.Namespace) -> dict[str, object]:
         for row in records
         if row.get("media_type")
         in {
+            "application/pdf",
             "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
             "text/csv",
         }
