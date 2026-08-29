@@ -5,10 +5,12 @@ from __future__ import annotations
 import hashlib
 import sqlite3
 from pathlib import Path
+from typing import Self
 
 import pyarrow.parquet as pq
 import pytest
 
+from archive_govt_nz.domains.health_appropriations import gold
 from archive_govt_nz.domains.health_appropriations.gold import (
     build_gold_analytics,
     rebuild_compatibility_sqlite,
@@ -114,3 +116,45 @@ def test_gold_rebuilds_compatibility_analytics_and_six_plots(tmp_path: Path) -> 
     assert len(plot_outputs) == 6
     with sqlite3.connect(rebuilt) as connection:
         assert connection.execute("PRAGMA integrity_check").fetchone()[0] == "ok"
+
+
+def test_gold_fails_closed_on_sqlite_integrity(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    database = tmp_path / "donor.sqlite"
+    _database(database)
+    silver = tmp_path / "silver"
+    _normalize(database, silver)
+    real_connect = sqlite3.connect
+
+    class BadIntegrityConnection:
+        def __init__(self, path: Path) -> None:
+            self.connection = real_connect(path)
+
+        def __enter__(self) -> Self:
+            return self
+
+        def __exit__(self, *_args: object) -> None:
+            self.connection.close()
+
+        def execute(self, statement: str) -> object:
+            if statement == "PRAGMA integrity_check":
+
+                class BadCursor:
+                    @staticmethod
+                    def fetchone() -> tuple[str]:
+                        return ("bad",)
+
+                return BadCursor()
+            return self.connection.execute(statement)
+
+        def executemany(
+            self, statement: str, values: list[tuple[object, ...]]
+        ) -> object:
+            return self.connection.executemany(statement, values)
+
+    monkeypatch.setattr(gold.sqlite3, "connect", BadIntegrityConnection)
+    with pytest.raises(ValueError, match="compatibility_sqlite_integrity_failed"):
+        rebuild_compatibility_sqlite(
+            silver / "donor_facts.parquet", tmp_path / "gold" / "bad.sqlite"
+        )

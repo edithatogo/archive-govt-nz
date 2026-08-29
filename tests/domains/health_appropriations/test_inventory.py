@@ -53,6 +53,18 @@ def test_inventory_rejects_non_public_urls(url: str) -> None:
 
 
 def test_inventory_requires_one_disposition_and_known_predecessor() -> None:
+    validate_inventory([])
+    validate_inventory(
+        [
+            _record("old"),
+            _record(
+                "new",
+                disposition=Disposition.SUPERSEDED,
+                predecessor_source_id="old",
+                reason="replacement observed",
+            ),
+        ]
+    )
     with pytest.raises(ValueError, match="duplicate_source_disposition"):
         validate_inventory([_record("same"), _record("same")])
     with pytest.raises(ValueError, match="unknown_predecessor"):
