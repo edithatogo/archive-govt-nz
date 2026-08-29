@@ -71,7 +71,7 @@ def import_donor_snapshot(
         parsed = PurePosixPath(path)
         if parsed.is_absolute() or ".." in parsed.parts or kind != "blob":
             raise DonorImportError("unsafe_donor_path")
-        payload = (repo / Path(*parsed.parts)).read_bytes()
+        payload = _git(repo, "cat-file", "blob", blob)
         size = int(raw_size)
         if len(payload) != size:
             raise DonorImportError("donor_length_drift")

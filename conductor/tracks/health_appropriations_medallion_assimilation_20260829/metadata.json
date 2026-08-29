@@ -65,7 +65,7 @@
     "clean_room_rebuild": "byte_identical"
   },
   "candidate_state": {
-    "path": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/candidates/2026-08-29-v4",
+    "candidate": "2026-08-29-v4",
     "manifest_sha256": "9a33babda857b0aa7c60a6012000cf1e730fed729781cb8ceb6e7a4714cae40e",
     "files": 94,
     "bytes_before_manifest": 39390246,
