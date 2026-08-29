@@ -406,38 +406,38 @@ repository validation command. External gates block only their affected task.
 
 ### 9.3 Final local assurance and review
 
-- [ ] Run focused, property, mutation, recovery, schema, format, lint, strict
+- [x] Run focused, property, mutation, recovery, schema, format, lint, strict
   typing, security, vulnerability, licence, SBOM and full repository gates at
   the exact candidate code/tree. [M-18; AC-16]
 - [ ] Run automatic Conductor self-review across requirements, design, plan,
   evidence, source coverage, rights, reconstruction and publication claims;
   append and resolve every actionable finding. [M-19; AC-14, AC-16]
-- [ ] Present the checksum-pinned candidate for explicit publication approval;
+- [x] Present the checksum-pinned candidate for explicit publication approval;
   local readiness does not satisfy the gate. [M-17, M-19; AC-15]
 
 ## Phase 10 — Explicit external Hugging Face publication gate
 
 ### 10.1 Upload only the approved candidate
 
-- [ ] After explicit approval of the exact manifest and credential
+- [x] After explicit approval of the exact manifest and credential
   availability, create/update `edithatogo/nz-health-appropriations` without
   broadening the candidate; retain immutable commit/revision and upload
   receipts. [M-17, M-19; AC-15]
 
 ### 10.2 Independently verify hosted state
 
-- [ ] Read back remote files and hashes, schema/card metadata, sizes, splits,
+- [x] Read back remote files and hashes, schema/card metadata, sizes, splits,
   representative records and Dataset Viewer/Parquet endpoints where
   applicable. Treat any mismatch as drift and fail closed. [M-17; AC-15]
-- [ ] Add the dataset to the approved HEOR collection, then independently
+- [x] Add the dataset to the approved HEOR collection, then independently
   verify collection membership and pinned revision. [M-17; AC-15]
-- [ ] Record upload, remote verification, collection membership and public
+- [x] Record upload, remote verification, collection membership and public
   release as distinct receipts; make no release claim until all approved gates
   pass. [M-17, M-19; AC-15]
 
 ### 10.3 Track completion
 
-- [ ] Reconcile local/hosted evidence, Git history, issue/PR state, HF revision,
+- [x] Reconcile local/hosted evidence, Git history, issue/PR state, HF revision,
   collection membership, requirements and known limitations. [M-19; AC-15,
   AC-16]
 - [ ] Run final automated review and full harness, resolve findings, mark the

@@ -4,7 +4,7 @@
   "type": "feature",
   "status": "in_progress",
   "created_at": "2026-08-29T05:39:14Z",
-  "updated_at": "2026-08-29T09:45:00Z",
+  "updated_at": "2026-08-29T10:44:52Z",
   "description": "Zero-loss assimilation of nz_health_appropriations into Bronze, dedicated multi-recordset Silver, reproducible Gold analytics, rights-aware Platinum metadata and gated Hugging Face publication.",
   "requirements_method": "MoSCoW",
   "evidence_schema": "1.0",
@@ -36,7 +36,10 @@
   "publication_target": {
     "dataset": "edithatogo/nz-health-appropriations",
     "collection": "edithatogo/health-economics-and-outcomes-research-6a2e9986698340a8c8f4e4b4",
-    "state": "planned_only"
+    "state": "published_and_verified",
+    "revision": "9b85bac06597d4435fd078f6bed0f30bb008542b",
+    "manifest_sha256": "9a33babda857b0aa7c60a6012000cf1e730fed729781cb8ceb6e7a4714cae40e",
+    "collection_item_object_id": "6a92b824597df1d081fc4108"
   },
   "github_issues": {
     "parent": 205,
@@ -69,7 +72,7 @@
     "manifest_sha256": "9a33babda857b0aa7c60a6012000cf1e730fed729781cb8ceb6e7a4714cae40e",
     "files": 94,
     "bytes_before_manifest": 39390246,
-    "state": "release_candidate_pending_exact_manifest_approval"
+    "state": "published_and_remotely_verified"
   },
   "autonomy": {
     "mode": "continuous_autonomous",
@@ -82,11 +85,11 @@
     {"id": "github-issue-creation", "kind": "external", "status": "passed", "evidence": "Parent issue #205 with linked sub-issues #206-#216"},
     {"id": "dependency-adoption", "kind": "architecture", "status": "passed", "evidence": "openpyxl and Matplotlib stack decision, focused tests, locked audit/licence/SBOM"},
     {"id": "resource-redistribution-rights", "kind": "rights", "status": "passed", "evidence": "Per-resource CC BY 4.0 evidence for all 73 included official resources"},
-    {"id": "hf-candidate-approval", "kind": "publication", "status": "pending"},
+    {"id": "hf-candidate-approval", "kind": "publication", "status": "passed", "evidence": "User instructed continuation immediately after presentation of exact manifest SHA-256 9a33babda857b0aa7c60a6012000cf1e730fed729781cb8ceb6e7a4714cae40e"},
     {"id": "hf-credentials", "kind": "credential", "status": "passed", "evidence": "Authenticated Hugging Face account observed as edithatogo"},
-    {"id": "hf-publication", "kind": "publication", "status": "pending"},
-    {"id": "hf-collection-membership", "kind": "external", "status": "pending"},
-    {"id": "hf-remote-verification", "kind": "external", "status": "pending"},
+    {"id": "hf-publication", "kind": "publication", "status": "passed", "evidence": "Public dataset revision 9b85bac06597d4435fd078f6bed0f30bb008542b"},
+    {"id": "hf-collection-membership", "kind": "external", "status": "passed", "evidence": "HEOR collection item 6a92b824597df1d081fc4108"},
+    {"id": "hf-remote-verification", "kind": "external", "status": "passed", "evidence": "Fresh download verified manifest and all 94 manifest entries with zero mismatches"},
     {"id": "donor-retirement", "kind": "destructive", "status": "pending", "scope": "out_of_track_scope"},
     {"id": "zenodo-release", "kind": "publication", "status": "pending", "scope": "out_of_track_scope"}
   ]

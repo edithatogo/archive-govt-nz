@@ -142,3 +142,19 @@ manifest SHA-256 is
 `9a33babda857b0aa7c60a6012000cf1e730fed729781cb8ceb6e7a4714cae40e`.
 This is local release-candidate evidence only. Upload, hosted readback,
 collection membership and public release are not yet claimed.
+
+## Hosted publication and readback
+
+PR #217 merged at `622ec15d53b162916a0b1b390ec5dab6f2f6f3a7` after the
+Ubuntu, macOS, Windows, CodeQL, dependency-review, workflow-policy and Codecov
+patch checks passed on exact head `3953f4a02417c7ac5a31bfd12113e23a2ed1dd26`.
+
+After the checksum-pinned candidate was presented, the user instructed the
+next steps to proceed. Candidate v4 was published publicly as
+`edithatogo/nz-health-appropriations` at immutable revision
+`9b85bac06597d4435fd078f6bed0f30bb008542b`. A fresh download of that revision
+reproduced manifest SHA-256
+`9a33babda857b0aa7c60a6012000cf1e730fed729781cb8ceb6e7a4714cae40e` and all
+94 manifest entries verified with zero mismatches. The HEOR collection was
+then updated and independently read back with dataset item object ID
+`6a92b824597df1d081fc4108` and the pinned revision in its note.
