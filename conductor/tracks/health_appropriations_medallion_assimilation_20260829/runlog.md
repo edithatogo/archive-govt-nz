@@ -163,3 +163,22 @@ its change set.
   lanes, hygiene, CAS benchmark, dependency audit, licences, secret scan and
   110-component SBOM. Seven resource warnings were reported but did not fail
   the harness; they are not hidden.
+
+## 2026-08-29 — GitHub merge and Hugging Face publication
+
+- PR #217 passed the exact-head Ubuntu, macOS and Windows assurance matrix,
+  CodeQL, dependency review, workflow-policy lint and Codecov patch gate, then
+  squash-merged to `main` as `622ec15d53b162916a0b1b390ec5dab6f2f6f3a7`.
+- Reverified candidate manifest SHA-256
+  `9a33babda857b0aa7c60a6012000cf1e730fed729781cb8ceb6e7a4714cae40e`
+  and all 94 recorded file hashes before upload.
+- Published `edithatogo/nz-health-appropriations` at revision
+  `9b85bac06597d4435fd078f6bed0f30bb008542b`. Fresh remote download verified
+  the same manifest and all 94 entries with zero mismatch.
+- Added the dataset to the HEOR collection. Independent collection readback
+  returned item object ID `6a92b824597df1d081fc4108` with the manifest and
+  revision recorded in its note.
+- Post-publication `./scripts/validate.sh` passed with 1,215 tests, 95.55%
+  coverage, 30 schemas, 20 representative documents, 9/9 parity checks, all
+  mutation lanes, hygiene, supply-chain audit, licence and secret checks, and
+  a validated 110-component SBOM.
