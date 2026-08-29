@@ -9,6 +9,11 @@ from pathlib import Path
 import pyarrow.parquet as pq
 import pytest
 
+from archive_govt_nz.domains.health_appropriations.gold import (
+    build_gold_analytics,
+    rebuild_compatibility_sqlite,
+    render_donor_plots,
+)
 from archive_govt_nz.domains.health_appropriations.silver import (
     normalize_donor_sqlite,
 )
@@ -81,3 +86,22 @@ def test_silver_fails_closed_on_table_drift(tmp_path: Path) -> None:
     _database(database, omit="gdp_historical")
     with pytest.raises(ValueError, match="donor_sqlite_table_drift"):
         _normalize(database, tmp_path / "silver")
+
+
+def test_gold_rebuilds_compatibility_analytics_and_six_plots(tmp_path: Path) -> None:
+    database = tmp_path / "donor.sqlite"
+    _database(database)
+    silver = tmp_path / "silver"
+    _normalize(database, silver)
+    facts = silver / "donor_facts.parquet"
+    rebuilt = tmp_path / "gold" / "compatibility.sqlite"
+    counts = rebuild_compatibility_sqlite(facts, rebuilt)
+    analytics = build_gold_analytics(facts, tmp_path / "gold" / "analytics")
+    plots = render_donor_plots(
+        tmp_path / "gold" / "analytics", tmp_path / "gold" / "plots"
+    )
+    assert sum(counts.values()) == 5
+    assert len(analytics["outputs"]) == 5
+    assert len(plots["plots"]) == 6
+    with sqlite3.connect(rebuilt) as connection:
+        assert connection.execute("PRAGMA integrity_check").fetchone()[0] == "ok"

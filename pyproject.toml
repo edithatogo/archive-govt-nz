@@ -93,6 +93,7 @@ line-ending = "lf"
 "src/archive_govt_nz/assurance.py" = ["S603", "T201"]
 "src/archive_govt_nz/domains/health_appropriations/donor.py" = ["EM101", "PLR0913", "S603", "S607"]
 "src/archive_govt_nz/domains/health_appropriations/formats.py" = ["EM101", "S608"]
+"src/archive_govt_nz/domains/health_appropriations/gold.py" = ["ANN401", "C901", "E501", "EM101", "PLC0415", "PLR0912", "PLR0915", "S608", "TC003"]
 "src/archive_govt_nz/domains/health_appropriations/inventory.py" = ["EM101", "PLR2004"]
 "src/archive_govt_nz/domains/health_appropriations/silver.py" = ["ANN401", "E501", "EM101", "PLR0913", "S608", "TC003"]
 "src/archive_govt_nz/cli.py" = ["A002", "T201", "PLR0913", "E501", "PLC0415"]
