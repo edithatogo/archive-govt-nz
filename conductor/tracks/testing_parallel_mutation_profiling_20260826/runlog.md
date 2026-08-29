@@ -136,3 +136,16 @@
 - No cross-test race, temporary-directory collision, DuckDB conflict, snapshot
   corruption, or subprocess-protocol failure was observed.
 - This is local same-host timing evidence, not a hosted speed claim.
+
+## 2026-08-29 — REQ-PROP-001 property suites
+
+- Added Hypothesis invariants for canonical URN round-tripping and arbitrary
+  Unicode validation (`007e68e`): 2 passed.
+- Added streaming/one-shot SHA-256, BLAKE3 and CIDv1 invariants (`45db8ed`):
+  3 passed.
+- Added Arrow/Croissant field-order and descriptor-parity invariants
+  (`0b444f6`): 2 passed.
+- Added deterministic, deduplicated statutory citation matching and noise
+  rejection invariants (`c5930c0`): 3 passed.
+- All four files passed Ruff and basedpyright. These characterize and harden
+  existing contracts, so no manufactured failing production behavior was used.

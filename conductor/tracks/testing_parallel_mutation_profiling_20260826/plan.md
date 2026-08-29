@@ -11,10 +11,10 @@
 - [x] Task: Verify that parallel execution passes 100% across all 1,100+ tests without cross-test race conditions. (`90.31s`, 1,163 passed)
 
 ### Phase 3: Property-Based Testing Suite (`hypothesis`)
-- [ ] Task: Implement `tests/properties/test_urn_properties.py` for URN parsing invariants.
-- [ ] Task: Implement `tests/properties/test_multihash_properties.py` for BLAKE3/SHA256/CIDv1 invariants.
-- [ ] Task: Implement `tests/properties/test_schema_properties.py` for PyArrow and Croissant schema invariants.
-- [ ] Task: Implement `tests/properties/test_statutory_matcher_properties.py` for Aho-Corasick fuzzing.
+- [x] Task: Implement `tests/properties/test_urn_properties.py` for URN parsing invariants. (`007e68e`)
+- [x] Task: Implement `tests/properties/test_multihash_properties.py` for BLAKE3/SHA256/CIDv1 invariants. (`45db8ed`)
+- [x] Task: Implement `tests/properties/test_schema_properties.py` for PyArrow and Croissant schema invariants. (`0b444f6`)
+- [x] Task: Implement `tests/properties/test_statutory_matcher_properties.py` for statutory matcher fuzzing. (`c5930c0`)
 
 ### Phase 4: Scalene Memory & Performance Profiling Harness
 - [ ] Task: Create `tools/profile_scalene.py` executing CPU, native memory, and copy overhead profiling over the Medallion pipeline.

@@ -27,6 +27,14 @@ gate is required for the testing configuration task.
   snapshot, coverage, or subprocess-backed tests.
 - Result is local-only and comparable only to runs on this host.
 
+### REQ-PROP-001 property suites
+
+- Ten Hypothesis properties cover URN parser/validator agreement, streaming
+  hash identity, CIDv1 envelope correctness, Arrow/Croissant schema parity,
+  statutory citation determinism/deduplication, and false-positive resistance.
+- Focused property files, Ruff, and basedpyright passed.
+- Commits: `007e68e`, `45db8ed`, `0b444f6`, and `c5930c0`.
+
 ### REQ-MUT-001 and REQ-MUT-002
 
 - Status: repository implementation committed as `ab4ed66`.
