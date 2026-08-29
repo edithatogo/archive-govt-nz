@@ -104,3 +104,22 @@ credential, signed URL or restricted payload in the track artifacts. The full
 local validation harness passed with 1,182 tests, 95.33% coverage, all schema,
 parity and mutation checks, and green dependency, licence, secret and SBOM
 gates. Hosted CI remains a separate, unclaimed state.
+
+## Bronze donor preservation and format census
+
+All 23 donor files and 6,604,301 bytes are now retained as distinct external
+Bronze CAS objects and reconstruct successfully. Compact Git evidence pins the
+external manifest and format-census digests. The structural census covers all
+seven workbooks, the 471-page PDF and the five-table/312-row SQLite derivative;
+the source bytes remain unchanged and outside Git.
+
+## Source census and dependency state
+
+The first cutoff-bound census contains 79 explicitly `discovered` records,
+including all 66 links returned for the Treasury Vote Health index and 13
+current direct/context resources. It is deliberately marked partial until the
+remaining annual Budget/forecast vintages and exact Stats NZ series are frozen.
+
+`openpyxl` and Matplotlib are locked, tested adapters. Audit, licence,
+tracked-source scan and a 110-component SBOM passed. This establishes software
+adoption evidence, not source redistribution rights.

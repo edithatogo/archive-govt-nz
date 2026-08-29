@@ -105,6 +105,29 @@ its change set.
 - Four known timestamp-bearing validation receipts were inspected and restored
   rather than retained as unrelated generated churn. This is local Phase 0
   readiness evidence, not hosted CI or publication evidence.
+
+## 2026-08-29 — Donor Bronze import and first source census
+
+- Added typed, fail-closed source inventory and donor-manifest contracts plus
+  safe XLSX/PDF/SQLite structural inventory.
+- Imported all 23 donor paths (6,604,301 bytes) into 23 immutable SHA-256/BLAKE3
+  objects outside Git and verified every object from the generated manifest.
+  The manifest and format-census SHA-256 digests are recorded in machine
+  evidence; payload paths are intentionally not committed.
+- The seven workbooks contain 152 sheets, 2,388 formula cells, two hidden
+  sheets, 5,777 named ranges, six charts and 11 external links. The PDF has
+  471 pages; the five-table SQLite derivative has 312 rows. Inventory did not
+  mutate an original.
+- Built a 2026-08-29 census with 79 official records: 66 links exposed by the
+  complete Vote Health index and 13 current direct/context resources. All are
+  `discovered`; none is mislabeled captured or rights-cleared. Earlier annual
+  Budget/forecast vintages and exact Stats NZ QES/population series remain to
+  enumerate before Phase 1 completeness.
+- Adopted locked `openpyxl` and Matplotlib adapters without adding Pandas.
+  Focused tests and strict typing passed. Dependency audit and licence
+  inventory passed; a scanner keyword false positive in existing machine
+  evidence was renamed without suppression, after which the tracked-source
+  scan and 110-component SBOM passed.
 - The first staged-source scan failed closed on one unverified keyword finding:
   a machine-evidence key named `secret_scan`. Inspection of the bounded receipt
   confirmed that no token or credential was present. The field was renamed to

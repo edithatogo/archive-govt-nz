@@ -24,13 +24,15 @@ external publication is claimed by this scaffold.
 - [Run log](./runlog.md)
 - [Evidence](./evidence.md)
 - [Machine evidence](./evidence.jsonl)
+- [Cutoff-bound source census](./source-census.json)
 - [Self-review](./review.md)
 
 ## Current state
 
 - Track state: `new`.
 - Scope and plan: explicitly approved on 2026-08-29.
-- Donor preservation/assimilation: not started under this track.
+- Donor preservation: 23/23 paths imported into external Bronze CAS and
+  reconstructed; Silver/Gold assimilation remains in progress.
 - Additional official acquisition: not started under this track.
 - Hugging Face dataset publication/collection mutation: not performed.
 - Parent GitHub issue: pending external issue-creation authority.

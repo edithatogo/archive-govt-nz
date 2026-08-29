@@ -48,19 +48,19 @@ repository validation command. External gates block only their affected task.
 
 ### 1.1 Source-inventory contracts first
 
-- [ ] Add failing/characterization tests for inventory schema, cutoff,
+- [x] Add failing/characterization tests for inventory schema, cutoff,
   dispositions, URL normalization, source replacement, duplicate bytes,
   unchanged observations, gaps, restricted resources and drift. [M-02, M-04,
   M-18; AC-03, AC-04, AC-09, AC-16]
-- [ ] Implement only the typed census and reason-coded disposition model needed
+- [x] Implement only the typed census and reason-coded disposition model needed
   to pass the contracts; keep it independent of payload publication. [M-02,
   M-04; AC-03, AC-04, AC-09]
 
 ### 1.2 Inventory the seed and direct official corpus
 
-- [ ] Freeze the donor tree as the seed inventory, including code, documents,
+- [x] Freeze the donor tree as the seed inventory, including code, documents,
   SQLite, plots and all eight source originals. [M-01, M-02; AC-01, AC-03]
-- [ ] Enumerate the Treasury historical Vote Health index and all retrievable
+- [x] Enumerate the Treasury historical Vote Health index and all retrievable
   Estimates/Supplementary Estimates across its observed 1998–2026 span; record
   exact edition, URL, media type, rights evidence and gap disposition. [M-02,
   M-11; AC-03, AC-09]
@@ -82,10 +82,10 @@ repository validation command. External gates block only their affected task.
   path controls, sheet/range discovery, formulas/cached values, hidden content,
   named ranges, tables, charts, external links, macros and unsupported parts.
   [M-07, M-18, S-03; AC-03, AC-16]
-- [ ] Produce a machine-readable sheet/table/range census for all seven donor
+- [x] Produce a machine-readable sheet/table/range census for all seven donor
   workbooks and a page/structure census for the donor PDF, without changing
   their bytes. [M-03, M-07, S-03; AC-02, AC-03]
-- [ ] Characterize the five-table SQLite schema, row order/keys, types, nulls,
+- [x] Characterize the five-table SQLite schema, row order/keys, types, nulls,
   values and totals as parity fixtures. [M-08; AC-06, AC-11]
 - [ ] Characterize the intended behavior and failure behavior of
   `inspect_excel.py`, `process_data.py` and `run_analysis.py`, including the
@@ -94,12 +94,12 @@ repository validation command. External gates block only their affected task.
 
 ### 1.4 Decide workbook and plotting dependencies
 
-- [ ] Compare repository-compatible workbook readers and plotting approaches
+- [x] Compare repository-compatible workbook readers and plotting approaches
   against the characterization fixtures, including formula/metadata support,
   security, licence, maintenance, determinism and performance. Evaluate
   `openpyxl` and Matplotlib but do not presume adoption. [M-07, M-09, M-18;
   AC-03, AC-07, AC-16]
-- [ ] Before adding a material dependency, record the accountable decision,
+- [x] Before adding a material dependency, record the accountable decision,
   amend `conductor/tech-stack.md`, update the lock, add dependency contract
   tests, and pass audit/licence/SBOM gates. [M-18, M-19; AC-16]
 
@@ -120,16 +120,16 @@ repository validation command. External gates block only their affected task.
   linkage, resume, interruption, unchanged/changed observations, corrupt ZIPs,
   withdrawal, restriction and tombstones. [M-03, M-04, M-18, S-01, S-02;
   AC-01, AC-02, AC-04, AC-16]
-- [ ] Add a 23-path donor-manifest contract that fails on any omitted path,
+- [x] Add a 23-path donor-manifest contract that fails on any omitted path,
   altered byte, wrong Git mode/blob, length mismatch or archive-digest drift.
   [M-01, M-03, M-18; AC-01, AC-16]
 
 ### 2.2 Preserve the complete donor snapshot
 
-- [ ] Import the deterministic donor Git archive and every tracked blob into
+- [x] Import the deterministic donor Git archive and every tracked blob into
   Bronze CAS outside Git; retain path/mode/blob/commit/tree relationships and
   produce a reconstruction manifest. [M-01, M-03, M-04; AC-01, AC-02, AC-04]
-- [ ] Verify byte-for-byte reconstruction of all 23 donor paths and the pinned
+- [x] Verify byte-for-byte reconstruction of all 23 donor paths and the pinned
   archive digest from Bronze objects alone. [M-03, M-16; AC-01, AC-12]
 
 ### 2.3 Capture eligible official originals
