@@ -104,7 +104,7 @@ def test_gold_rebuilds_compatibility_analytics_and_six_plots(tmp_path: Path) -> 
     analytics_outputs = analytics["outputs"]
     plot_outputs = plots["plots"]
     assert isinstance(analytics_outputs, list)
-    assert isinstance(plot_outputs, list)
+    assert isinstance(plot_outputs, dict)
     assert len(analytics_outputs) == 5
     assert len(plot_outputs) == 6
     with sqlite3.connect(rebuilt) as connection:
