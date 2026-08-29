@@ -18,6 +18,7 @@ from archive_govt_nz.domains.health_appropriations.gold import (
 )
 from archive_govt_nz.domains.health_appropriations.silver import (
     _decimal,
+    _record,
     normalize_donor_sqlite,
 )
 
@@ -93,6 +94,21 @@ def test_silver_fails_closed_on_table_drift(tmp_path: Path) -> None:
 
 def test_null_amount_remains_null() -> None:
     assert _decimal(None) is None
+    record = _record(
+        "gdp_historical",
+        1,
+        {"Year": None},
+        {
+            "source_sha256": "a" * 64,
+            "observation_id": "observation",
+            "source_locator": "source",
+            "source_vintage": "vintage",
+            "observed_at": "2026-08-29T00:00:00+00:00",
+            "rights_state": "eligible",
+        },
+    )
+    assert record["amount"] is None
+    assert record["valid_time_start"] is None
 
 
 def test_gold_rebuilds_compatibility_analytics_and_six_plots(tmp_path: Path) -> None:
