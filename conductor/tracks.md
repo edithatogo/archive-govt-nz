@@ -214,3 +214,8 @@ implementation has occurred under these tracks.
 
 - [~] **Track: Testing Modernization: Pytest-Gremlins Mutation, Parallel xdist, Property-Based Hypothesis & Scalene Profiling**
   *Link: [tracks/testing_parallel_mutation_profiling_20260826/index.md](./tracks/testing_parallel_mutation_profiling_20260826/index.md)*
+
+## Programme: Health Appropriations Medallion Assimilation (2026-08-29)
+
+- [ ] **Track: New Zealand Health Appropriations Medallion Assimilation**
+  *Link: [tracks/health_appropriations_medallion_assimilation_20260829/index.md](./tracks/health_appropriations_medallion_assimilation_20260829/index.md)*

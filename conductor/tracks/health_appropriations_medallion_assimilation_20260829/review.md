@@ -1,0 +1,80 @@
+# Self-Review
+
+## Initialization review — 2026-08-29
+
+### Scope and requirements
+
+- The specification covers the complete 23-file donor tree, not only its eight
+  obvious source files or its working SQLite rows.
+- The plan explicitly carries originals through Bronze and treats every later
+  layer as a separately identified, reconstructable derivative.
+- Donor functionality is represented by inspection, normalization, SQLite
+  compatibility, four analysis families and all six plots. The donor compile
+  defect is a test target, not silently accepted code.
+- Direct official expansion includes longitudinal Vote Health/Budget,
+  BEFU/HYEFU, fiscal series, Ministry Vote Health and Pharmac CPB sources.
+  Indirect context is limited to official measures needed for defensible
+  real/per-capita/share calculations; aggregate Health Survey linkage is
+  conditional and microdata is excluded.
+
+### Architecture and medallion integrity
+
+- Bronze is authoritative for byte preservation, observations and rights;
+  Silver has a dedicated binary-aware, multi-recordset domain and field/cell
+  lineage; Gold owns analytics/compatibility outputs; Platinum owns metadata,
+  federation and release candidates.
+- Vintages, source labels, classifications, units, base periods and
+  denominators are explicit. The design does not overwrite revisions or splice
+  unlike series silently.
+- CAS, WARC, manifests, multi-hash identity, heartbeats, reconstruction,
+  schema fingerprints, data-quality reports and fail-closed promotion reuse or
+  extend existing medallion features rather than creating a donor sidecar.
+- Optional graph/vector outputs are rebuildable discovery projections and not
+  preservation truth.
+
+### Rights, security and external state
+
+- The donor Apache-2.0 code licence is not misrepresented as source-data
+  redistribution authority.
+- New dependency adoption, resource rights, credentials, exact HF candidate
+  approval, upload, remote verification, collection mutation, donor retirement
+  and Zenodo release remain explicit gates.
+- No raw payload, credential, signed URL, personal data or restricted content
+  is introduced by the track scaffold.
+
+### Corrections incorporated during planning
+
+- Corrected the initial temptation to treat the donor SQLite database as
+  canonical: it is now a preserved parity oracle and generated compatibility
+  product.
+- Corrected reliance on generic health/Treasury text normalizers: the plan now
+  requires a dedicated workbook-aware health-appropriations domain.
+- Corrected blanket publication metadata risk: Platinum licensing is
+  per-resource and fail-closed.
+- Added zero-loss coverage for workbook structures that may not be extractable
+  initially, plus reason-coded exclusions.
+- Added direct successor data and contextual denominator series, CPB, source
+  health/drift, bitemporal vintages, federation, clean-room recovery and
+  independently verified HF collection membership.
+- Placed `openpyxl` and Matplotlib behind an explicit stack/dependency
+  evaluation because bundled workbook tooling was unavailable during planning.
+- Resolved one staged secret-scanner false positive caused by a validation
+  receipt field name. The field was made less ambiguous and the scanner passed
+  without an allowlist or suppression.
+
+## Open findings and limitations
+
+- Exact live source resource URLs, bytes, availability and rights are not yet
+  frozen. Phase 1 owns the cutoff-bound census.
+- Workbook sheet/table/range completeness has not yet been measured with an
+  approved parser. No extraction-completeness claim is made.
+- The proposed Hugging Face dataset configuration and rights-eligible payload
+  cannot be fixed before schema, source census and rights work complete.
+- A parent GitHub issue has not been created because track initialization did
+  not mutate hosted issue state.
+- Pre- and post-scaffold full validation passed locally. Hosted CI and every
+  implementation/publication gate remain separate and pending.
+
+No unresolved critical finding prevents creation of the planning track. These
+open items are deliberate implementation or external-gate work and must not be
+reported as complete.

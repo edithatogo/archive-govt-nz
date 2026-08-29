@@ -1,0 +1,48 @@
+{
+  "track_id": "health_appropriations_medallion_assimilation_20260829",
+  "title": "New Zealand Health Appropriations Medallion Assimilation",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-08-29T05:39:14Z",
+  "updated_at": "2026-08-29T06:22:59Z",
+  "description": "Zero-loss assimilation of nz_health_appropriations into Bronze, dedicated multi-recordset Silver, reproducible Gold analytics, rights-aware Platinum metadata and gated Hugging Face publication.",
+  "requirements_method": "MoSCoW",
+  "evidence_schema": "1.0",
+  "source_baseline": {
+    "archive_govt_nz_commit": "1896ee088a3703562258268821a0e1c3bfc3f211",
+    "donor_repository": "https://github.com/edithatogo/nz_health_appropriations",
+    "donor_commit": "4668e6c3b1b492086941d4c1ef96e299250a8301",
+    "donor_tree": "c6d44ff79eda73cfc6ba7db5764e27ce01b890e1",
+    "donor_archive_sha256": "9c8ab0feaa752ead08163463a634623d55a62a69608772b73127b3d7b709157e",
+    "donor_file_count": 23,
+    "donor_total_bytes": 6604301,
+    "donor_original_source_file_count": 8,
+    "donor_sqlite_table_count": 5,
+    "donor_sqlite_row_count": 312,
+    "donor_plot_count": 6
+  },
+  "publication_target": {
+    "dataset": "edithatogo/nz-health-appropriations",
+    "collection": "edithatogo/health-economics-and-outcomes-research-6a2e9986698340a8c8f4e4b4",
+    "state": "planned_only"
+  },
+  "autonomy": {
+    "mode": "continuous_autonomous",
+    "stop_between_phases": false,
+    "stop_between_tracks": false,
+    "decision_policy": "../../autonomy-policy.json"
+  },
+  "gates": [
+    {"id": "scope-plan-approval", "kind": "human", "status": "passed", "evidence": "Explicit user approval in the current Codex task on 2026-08-29"},
+    {"id": "github-issue-creation", "kind": "external", "status": "pending"},
+    {"id": "dependency-adoption", "kind": "architecture", "status": "pending"},
+    {"id": "resource-redistribution-rights", "kind": "rights", "status": "pending"},
+    {"id": "hf-candidate-approval", "kind": "publication", "status": "pending"},
+    {"id": "hf-credentials", "kind": "credential", "status": "pending"},
+    {"id": "hf-publication", "kind": "publication", "status": "pending"},
+    {"id": "hf-collection-membership", "kind": "external", "status": "pending"},
+    {"id": "hf-remote-verification", "kind": "external", "status": "pending"},
+    {"id": "donor-retirement", "kind": "destructive", "status": "pending", "scope": "out_of_track_scope"},
+    {"id": "zenodo-release", "kind": "publication", "status": "pending", "scope": "out_of_track_scope"}
+  ]
+}

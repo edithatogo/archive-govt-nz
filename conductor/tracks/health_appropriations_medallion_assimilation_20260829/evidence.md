@@ -1,0 +1,76 @@
+# Evidence
+
+## Evidence boundary
+
+This scaffold records local planning and read-only observations. It does not
+prove Bronze capture, Silver normalization, donor parity, source completeness,
+resource rights, hosted CI, Hugging Face upload, remote verification,
+collection membership, public release, donor retirement or Zenodo release.
+Those states have separate tasks and gates.
+
+## Approval evidence
+
+| Claim | State | Evidence |
+| --- | --- | --- |
+| Track objective | approved | User requested complete donor assimilation into Archive Govt NZ and corresponding Hugging Face collection |
+| Revised recommendations | approved | User explicitly approved medallion alignment, retention of every raw/original file, and consideration of directly/indirectly relevant features and datasets on 2026-08-29 |
+| Implementation | not started | Track artifacts only |
+| External publication | not authorized by readiness evidence | Exact payload candidate, resource rights and remote verification remain pending |
+
+## Donor planning evidence
+
+| Observation | Value |
+| --- | --- |
+| Repository | `https://github.com/edithatogo/nz_health_appropriations` |
+| Commit | `4668e6c3b1b492086941d4c1ef96e299250a8301` |
+| Tree | `c6d44ff79eda73cfc6ba7db5764e27ce01b890e1` |
+| Deterministic archive SHA-256 | `9c8ab0feaa752ead08163463a634623d55a62a69608772b73127b3d7b709157e` |
+| Tracked inventory | 23 files; 6,604,301 bytes |
+| Original source files | eight: seven XLSX, one PDF |
+| Donor SQLite | five tables; 312 total rows |
+| Donor scripts | three Python files |
+| Donor plots | six PNG files |
+| Compile characterization | `process_data.py` raises `IndentationError`; intended behavior is not accepted as executable parity evidence |
+
+The donor repository declares Apache-2.0 for repository code. No inference is
+made that this licence grants redistribution rights to every government source
+payload contained in the repository.
+
+## Repository validation baseline
+
+The pre-scaffold `./scripts/validate.sh` run passed all stages, including 1,161
+tests and 95.36% coverage. Four timestamp-bearing evidence files changed only
+through harness generation, were inspected, and were restored rather than
+included in an unrelated track-initialization change.
+
+The post-scaffold `./scripts/validate.sh` run also passed: lock, format, lint,
+strict typing, 1,161 tests in 190.84 seconds, 95.36% coverage, 30 schemas and
+20 representative documents, 9/9 parity checks, all mutation lanes, hygiene,
+590.54 MB/s CAS throughput, dependency audit, licence inventory, secret scan,
+and a validated 102-component SBOM. This is local repository-readiness
+evidence, not hosted CI or external publication evidence.
+
+## Source and platform observations
+
+The official URLs in `spec.md` were inspected as discovery/coverage leads.
+Exact downloadable resources, observed bytes, time ranges and rights must be
+frozen during Phase 1. The existing Hugging Face HEOR collection was observed
+as public with one member; the proposed health-appropriations dataset did not
+exist under the inspected account state. These are time-sensitive read-only
+observations, not publication receipts.
+
+## Open evidence requirements
+
+- complete donor Bronze import and byte reconstruction;
+- cutoff-bound official source census and per-item disposition;
+- workbook/sheet/range extraction census;
+- resource-level rights evidence;
+- five-table/312-row parity or repair ledger;
+- four-analysis-family/six-plot behavioral parity;
+- Silver/Gold/Platinum reconstruction evidence;
+- dependency evaluation and lock/supply-chain evidence if adopted;
+- exact-head hosted CI;
+- checksum-pinned HF candidate approval;
+- upload, remote readback, Dataset Viewer/Parquet, revision and collection
+  membership receipts; and
+- explicit public release state.
