@@ -78,3 +78,14 @@
 No unresolved critical finding prevents creation of the planning track. These
 open items are deliberate implementation or external-gate work and must not be
 reported as complete.
+
+## Phase 0 implementation review — 2026-08-29
+
+- Pinned donor identity, inventory and archive digest were reproduced without
+  drift; the archive contract explicitly excludes a path prefix.
+- Landing-page HTTP 403 responses are recorded as client observations and are
+  not misclassified as unavailable source resources.
+- Hugging Face absence, collection membership, GitHub issue hierarchy and
+  local validation are stated as distinct observations.
+- No credential, signed URL, restricted payload or unsupported completion
+  claim was found. No unresolved Phase 0 finding remains.

@@ -92,6 +92,19 @@ its change set.
 - Added all eleven phase issues as GitHub sub-issues of #205 and independently
   read the hierarchy back through the API. Issue creation is now evidenced;
   issue closure remains tied to the corresponding phase evidence.
+
+## 2026-08-29 — Phase 0 checkpoint
+
+- Reviewed the reconciled baseline for drift, unsupported completion claims,
+  credentials, signed URLs and restricted payloads; no actionable finding was
+  identified.
+- `./scripts/validate.sh` passed: lock, format, lint, strict typing, 1,182
+  tests in 121.17 seconds, 95.33% coverage, 30 schemas, 20 representative
+  documents, 9/9 parity checks, all mutation lanes, hygiene, 423.38 MB/s CAS,
+  dependency audit, licence inventory, secret scan and a 102-component SBOM.
+- Four known timestamp-bearing validation receipts were inspected and restored
+  rather than retained as unrelated generated churn. This is local Phase 0
+  readiness evidence, not hosted CI or publication evidence.
 - The first staged-source scan failed closed on one unverified keyword finding:
   a machine-evidence key named `secret_scan`. Inspection of the bounded receipt
   confirmed that no token or credential was present. The field was renamed to

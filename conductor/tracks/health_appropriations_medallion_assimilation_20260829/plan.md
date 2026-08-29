@@ -39,9 +39,9 @@ repository validation command. External gates block only their affected task.
 
 ### 0.3 Phase review and checkpoint
 
-- [ ] Run automated self-review for baseline drift, unsupported claims and
+- [x] Run automated self-review for baseline drift, unsupported claims and
   secret/restricted-content leakage; resolve findings. [M-18, M-19; AC-16]
-- [ ] Run the full repository harness and record the checkpoint as local or
+- [x] Run the full repository harness and record the checkpoint as local or
   hosted evidence precisely. [M-18, M-19; AC-16]
 
 ## Phase 1 — Source census and format characterization

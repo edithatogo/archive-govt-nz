@@ -96,3 +96,11 @@ GitHub issue #205 is the parent for phase sub-issues #206 through #216. The
 sub-issue relationship was read back after creation. This proves hosted issue
 traceability only; it does not prove implementation, CI, merge, publication or
 release.
+
+## Phase 0 checkpoint
+
+The Phase 0 claim/leakage review found no drift, unsupported completion claim,
+credential, signed URL or restricted payload in the track artifacts. The full
+local validation harness passed with 1,182 tests, 95.33% coverage, all schema,
+parity and mutation checks, and green dependency, licence, secret and SBOM
+gates. Hosted CI remains a separate, unclaimed state.
