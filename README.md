@@ -134,11 +134,35 @@ The codebase enforces strict quality boundaries via `tools/check.py`:
 - **Locked validation harness**: Unit, integration, and adversarial tests enforce
   at least **95% branch-aware coverage**. Exact local results are recorded in the
   active Conductor track; they are not hosted or operational proof.
-- **9 Mutation Testing Runners** (`mutation_resource_policy`, `mutation_versioning`, `mutation_redundancy`, `mutation_archivebox_pilot`, `mutation_batch_eligibility`, `mutation_global_policy`, `mutation_adapters`, `mutation_gazette`, `mutation_medallion`).
+- **11 Mutation Testing Runners** (`mutation_resource_policy`, `mutation_versioning`, `mutation_redundancy`, `mutation_archivebox_pilot`, `mutation_batch_eligibility`, `mutation_global_policy`, `mutation_adapters`, `mutation_gazette`, `mutation_medallion`, `mutation_platinum`, `mutation_nlp_bridge`).
 - **Differential parity gate**: every change re-runs a 9-source-class donor-vs-canonical parity harness (`parity` stage); divergences fail the build.
 - **Hygiene gate**: The repository validator rejects configured placeholder and
   forbidden-pattern classes.
 - **Supply-Chain Hardening**: Automated CycloneDX SBOM generation, `pip-audit`, `pip-licenses`, and `detect-secrets`.
+
+Run the deterministic, process-isolated gate before every pull request:
+
+```bash
+./scripts/validate.sh
+```
+
+The wrapper uses the verified xdist `auto/loadscope` profile so the full suite
+stays within the bounded test-stage timeout. The underlying runner retains a
+serial diagnostic mode when invoked without worker options. A separate heavy
+profile keeps mutation and resource profiling out of the ordinary lane:
+
+```bash
+# Re-run the complete suite under the wrapper's isolated xdist profile.
+uv run --locked python tools/check.py --pytest-workers auto \
+  --pytest-distribution loadscope
+
+# Append bounded pytest-gremlins and Bronze-to-Gold Scalene evidence stages.
+uv run --locked python tools/check.py --include-heavy
+```
+
+Parallel results are same-host timing evidence only. Scalene writes a portable,
+path-redacted summary to `build/profiling-scalene.json`; raw profiler output and
+all generated coverage shards remain ignored local derivatives.
 
 ---
 

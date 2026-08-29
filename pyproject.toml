@@ -20,6 +20,8 @@ dependencies = [
   "duckdb>=1.4.3,<2",
   "pyarrow>=23.0.1,<26",
   "huggingface_hub>=0.28.0,<2",
+  "openpyxl>=3.1.5,<4",
+  "matplotlib>=3.10.8,<4",
 ]
 
 [project.scripts]
@@ -40,6 +42,7 @@ dev = [
   "pyright>=1.1.411,<2",
   "pytest>=9.1.1,<10",
   "pytest-cov>=7.1.0,<8",
+  "pytest-gremlins>=1.9.0,<2",
   "pytest-randomly>=3.16.0,<5",
   "pytest-xdist>=3.8.0",
   "ruff>=0.16.1,<0.17",
@@ -48,12 +51,22 @@ dev = [
 ]
 
 [tool.basedpyright]
+include = ["src", "tools", "tests"]
 typeCheckingMode = "standard"
 pythonVersion = "3.14"
 reportMissingTypeStubs = false
 
 [tool.uv]
 package = true
+
+[tool.pytest-gremlins]
+operators = ["comparison", "arithmetic", "boolean", "boundary", "return"]
+paths = ["src/archive_govt_nz"]
+exclude = ["**/__pycache__/**"]
+report = ["console", "json"]
+workers = "auto"
+cache = true
+max-pardons-pct = 0.0
 
 [tool.ruff]
 line-length = 88
@@ -78,6 +91,11 @@ line-ending = "lf"
 
 [tool.ruff.lint.per-file-ignores]
 "src/archive_govt_nz/assurance.py" = ["S603", "T201"]
+"src/archive_govt_nz/domains/health_appropriations/donor.py" = ["EM101", "PLR0913", "S603", "S607"]
+"src/archive_govt_nz/domains/health_appropriations/formats.py" = ["EM101", "S608"]
+"src/archive_govt_nz/domains/health_appropriations/gold.py" = ["ANN401", "C901", "E501", "EM101", "PLC0415", "PLR0912", "PLR0915", "S608", "TC003"]
+"src/archive_govt_nz/domains/health_appropriations/inventory.py" = ["EM101", "PLR2004"]
+"src/archive_govt_nz/domains/health_appropriations/silver.py" = ["ANN401", "E501", "EM101", "PLR0913", "S608", "TC003"]
 "src/archive_govt_nz/cli.py" = ["A002", "T201", "PLR0913", "E501", "PLC0415"]
 "src/archive_govt_nz/object_store.py" = ["BLE001", "EM101", "TRY301"]
 "src/archive_govt_nz/capture.py" = ["ANN001", "ANN202", "B008", "BLE001", "C901", "D105", "D107", "EM101", "PERF401", "PLR2004", "TRY301", "TC001", "TC003"]
@@ -95,6 +113,8 @@ line-ending = "lf"
 "tools/run_capture_batch.py" = ["ANN001", "ANN202"]
 "tools/preflight_resources.py" = ["ASYNC109", "ASYNC240"]
 "tests/**/*.py" = ["INP001", "PLR2004", "S101", "S603"]
+"tests/domains/health_appropriations/**/*.py" = ["D103", "E501", "INP001", "PLR2004", "S101", "S603", "S607", "S608", "TC003"]
+"tests/tools/test_run_gremlins.py" = ["SLF001"]
 "tests/object_store/**/*.py" = ["ANN202", "EM101", "TC003", "TRY003"]
 "tests/capture/**/*.py" = ["ARG001", "D103", "TC003"]
 "tests/capture/test_batch_capture.py" = ["PT006"]

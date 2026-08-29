@@ -1,0 +1,93 @@
+{
+  "track_id": "health_appropriations_medallion_assimilation_20260829",
+  "title": "New Zealand Health Appropriations Medallion Assimilation",
+  "type": "feature",
+  "status": "in_progress",
+  "created_at": "2026-08-29T05:39:14Z",
+  "updated_at": "2026-08-29T09:45:00Z",
+  "description": "Zero-loss assimilation of nz_health_appropriations into Bronze, dedicated multi-recordset Silver, reproducible Gold analytics, rights-aware Platinum metadata and gated Hugging Face publication.",
+  "requirements_method": "MoSCoW",
+  "evidence_schema": "1.0",
+  "source_baseline": {
+    "archive_govt_nz_commit": "1896ee088a3703562258268821a0e1c3bfc3f211",
+    "donor_repository": "https://github.com/edithatogo/nz_health_appropriations",
+    "donor_commit": "4668e6c3b1b492086941d4c1ef96e299250a8301",
+    "donor_tree": "c6d44ff79eda73cfc6ba7db5764e27ce01b890e1",
+    "donor_archive_sha256": "9c8ab0feaa752ead08163463a634623d55a62a69608772b73127b3d7b709157e",
+    "donor_file_count": 23,
+    "donor_total_bytes": 6604301,
+    "donor_original_source_file_count": 8,
+    "donor_sqlite_table_count": 5,
+    "donor_sqlite_row_count": 312,
+    "donor_plot_count": 6
+  },
+  "implementation_observation": {
+    "observed_at": "2026-08-29T08:26:05Z",
+    "archive_govt_nz_commit": "160d1705ee93d898c635f094fe98d8ae14d16695",
+    "archive_govt_nz_remote_main": "b5f736010a47f5a260dca35d5ee3f4dbcadb4de7",
+    "donor_remote_main": "4668e6c3b1b492086941d4c1ef96e299250a8301",
+    "donor_baseline_drift": false,
+    "hf_dataset_exists": false,
+    "hf_collection_member_count": 1,
+    "official_landing_pages_observed": 8,
+    "official_landing_pages_http_200": 4,
+    "official_landing_pages_http_403": 4
+  },
+  "publication_target": {
+    "dataset": "edithatogo/nz-health-appropriations",
+    "collection": "edithatogo/health-economics-and-outcomes-research-6a2e9986698340a8c8f4e4b4",
+    "state": "planned_only"
+  },
+  "github_issues": {
+    "parent": 205,
+    "phases": [206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216]
+  },
+  "bronze_state": {
+    "donor_capture": "passed",
+    "external_cas_object_count": 23,
+    "external_cas_bytes": 6604301,
+    "manifest_sha256": "893f387e1f361400285ccc84802b497e87802d1ad913826ff7d9055b07a03b74",
+    "format_census_sha256": "e2a485e851926d4af029dfc3ca5c10a5b8408fcbaf6cad28c680a5a41ba68cab",
+    "reconstruction": "passed"
+  },
+  "official_corpus_state": {
+    "census_records": 141,
+    "captured_resources": 73,
+    "discovery_only_resources": 68,
+    "unresolved_resources": 0,
+    "capture_manifest_sha256": "04145e4030bfddaecade1af542e12cb8a56a187c9c924b7a4c135537ccae9dab"
+  },
+  "derivative_state": {
+    "silver_records": 312,
+    "field_lineage_records": 1699,
+    "gold_artifacts": 12,
+    "compatibility_sqlite_parity": "passed",
+    "clean_room_rebuild": "byte_identical"
+  },
+  "candidate_state": {
+    "candidate": "2026-08-29-v4",
+    "manifest_sha256": "9a33babda857b0aa7c60a6012000cf1e730fed729781cb8ceb6e7a4714cae40e",
+    "files": 94,
+    "bytes_before_manifest": 39390246,
+    "state": "release_candidate_pending_exact_manifest_approval"
+  },
+  "autonomy": {
+    "mode": "continuous_autonomous",
+    "stop_between_phases": false,
+    "stop_between_tracks": false,
+    "decision_policy": "../../autonomy-policy.json"
+  },
+  "gates": [
+    {"id": "scope-plan-approval", "kind": "human", "status": "passed", "evidence": "Explicit user approval in the current Codex task on 2026-08-29"},
+    {"id": "github-issue-creation", "kind": "external", "status": "passed", "evidence": "Parent issue #205 with linked sub-issues #206-#216"},
+    {"id": "dependency-adoption", "kind": "architecture", "status": "passed", "evidence": "openpyxl and Matplotlib stack decision, focused tests, locked audit/licence/SBOM"},
+    {"id": "resource-redistribution-rights", "kind": "rights", "status": "passed", "evidence": "Per-resource CC BY 4.0 evidence for all 73 included official resources"},
+    {"id": "hf-candidate-approval", "kind": "publication", "status": "pending"},
+    {"id": "hf-credentials", "kind": "credential", "status": "passed", "evidence": "Authenticated Hugging Face account observed as edithatogo"},
+    {"id": "hf-publication", "kind": "publication", "status": "pending"},
+    {"id": "hf-collection-membership", "kind": "external", "status": "pending"},
+    {"id": "hf-remote-verification", "kind": "external", "status": "pending"},
+    {"id": "donor-retirement", "kind": "destructive", "status": "pending", "scope": "out_of_track_scope"},
+    {"id": "zenodo-release", "kind": "publication", "status": "pending", "scope": "out_of_track_scope"}
+  ]
+}

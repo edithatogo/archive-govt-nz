@@ -200,4 +200,22 @@ implementation has occurred under these tracks.
 - **`fyi-archive`**: Multi-country international FOI register federation (AU, BE, CZ, EU, FR, GE, GR, HK, HR, HU, IE, LR, MD, NL, RO) with NZ OIA cross-queries.
 - **`open_social_data`**: Multi-national public social data engine (Australian Bureau of Statistics, data.gov.au, Statistics NZ).
 
+## Programme: Platinum Layer Federation & Synthesis (2026-08-25)
 
+- [x] **Track: Platinum Layer Cross-Jurisdiction Federation, Croissant ML Metadata & Citable Synthesis**
+  *Link: [tracks/platinum_layer_federation_and_synthesis_20260825/index.md](./tracks/platinum_layer_federation_and_synthesis_20260825/index.md)*
+
+## Programme: Bi-Directional Medallion & NLP Bridge (2026-08-26)
+
+- [x] **Track: Medallion NLP Bi-Directional Bridge, Bleeding-Edge OCR & Ontological Synthesis**
+  *Link: [tracks/medallion_nlp_bidirectional_bridge_20260826/index.md](./tracks/medallion_nlp_bidirectional_bridge_20260826/index.md)*
+
+## Programme: Testing Modernization & Performance Frontier (2026-08-26)
+
+- [x] **Track: Testing Modernization: Pytest-Gremlins Mutation, Parallel xdist, Property-Based Hypothesis & Scalene Profiling**
+  *Link: [archive/testing_parallel_mutation_profiling_20260826/index.md](./archive/testing_parallel_mutation_profiling_20260826/index.md)*
+
+## Programme: Health Appropriations Medallion Assimilation (2026-08-29)
+
+- [~] **Track: New Zealand Health Appropriations Medallion Assimilation**
+  *Link: [tracks/health_appropriations_medallion_assimilation_20260829/index.md](./tracks/health_appropriations_medallion_assimilation_20260829/index.md)*

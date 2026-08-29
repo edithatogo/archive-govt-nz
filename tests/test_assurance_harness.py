@@ -4,17 +4,18 @@ import subprocess
 import sys
 import tomllib
 from pathlib import Path
-from typing import TYPE_CHECKING, Any
+from typing import Any
+
+import pytest
 
 from archive_govt_nz.assurance import (
     COMMAND_TIMEOUT_SECONDS,
+    STAGES,
     GateStage,
+    build_stages,
     run_command,
     run_stages,
 )
-
-if TYPE_CHECKING:
-    import pytest
 
 REPOSITORY_ROOT = Path(__file__).parents[1]
 
@@ -43,6 +44,7 @@ def test_static_and_coverage_policy_is_fail_closed() -> None:
     tools = load_pyproject()["tool"]
 
     assert "basedpyright" in tools
+    assert tools["basedpyright"]["include"] == ["src", "tools", "tests"]
     assert tools["coverage"]["run"]["branch"] is True
     assert tools["coverage"]["report"]["fail_under"] == 95
     assert tools["coverage"]["report"]["show_missing"] is True
@@ -78,6 +80,8 @@ def test_repository_gate_lists_all_required_stages() -> None:
         "mutation-adapters",
         "mutation-gazette",
         "mutation-medallion",
+        "mutation-platinum",
+        "mutation-nlp-bridge",
         "slops",
         "benchmark-cas",
         "audit",
@@ -85,6 +89,68 @@ def test_repository_gate_lists_all_required_stages() -> None:
         "secrets",
         "sbom",
     ]
+
+
+def test_type_gate_uses_bounded_parallel_analysis() -> None:
+    """Repository-wide typing completes within the per-stage time budget."""
+    type_stage = next(stage for stage in STAGES if stage.name == "types")
+
+    assert type_stage.command == (
+        "uv",
+        "run",
+        "--locked",
+        "basedpyright",
+        "--threads",
+        "4",
+    )
+
+
+def test_parallel_pytest_lane_is_explicit_and_loadscope_isolated() -> None:
+    """Parallel execution is opt-in and uses stable scope scheduling."""
+    serial = next(stage for stage in STAGES if stage.name == "tests")
+    parallel = next(
+        stage
+        for stage in build_stages(
+            pytest_workers="auto", pytest_distribution="loadscope"
+        )
+        if stage.name == "tests"
+    )
+
+    assert "-n" not in serial.command
+    assert parallel.command[-4:] == ("-n", "auto", "--dist", "loadscope")
+
+
+def test_parallel_pytest_lane_rejects_unsafe_worker_values() -> None:
+    """Worker values cannot become arbitrary pytest arguments."""
+    with pytest.raises(ValueError, match="pytest worker count"):
+        build_stages(pytest_workers="auto --maxfail=0")
+
+
+def test_heavy_assurance_lanes_are_explicit_and_bounded() -> None:
+    """Gremlins and Scalene are available without slowing the default gate."""
+    default_names = tuple(stage.name for stage in STAGES)
+    heavy = build_stages(include_heavy=True)
+
+    assert "gremlins" not in default_names
+    assert "profile-scalene" not in default_names
+    assert tuple(stage.name for stage in heavy[-2:]) == (
+        "gremlins",
+        "profile-scalene",
+    )
+    assert heavy[-2].command == (
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "tools/run_gremlins.py",
+    )
+    assert heavy[-1].command == (
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "tools/profile_scalene.py",
+    )
 
 
 def test_repository_gate_fails_closed_after_a_stage_failure() -> None:
@@ -138,3 +204,13 @@ def test_windows_validation_wrapper_propagates_gate_status() -> None:
     """PowerShell must not turn a failed Python gate into a successful run."""
     wrapper = Path("scripts/validate.ps1").read_text(encoding="utf-8")
     assert "exit $LASTEXITCODE" in wrapper
+
+
+def test_validation_wrappers_use_the_verified_parallel_lane() -> None:
+    """The required wrappers stay within the test-stage timeout."""
+    shell = Path("scripts/validate.sh").read_text(encoding="utf-8")
+    powershell = Path("scripts/validate.ps1").read_text(encoding="utf-8")
+
+    for wrapper in (shell, powershell):
+        assert "--pytest-workers auto" in wrapper
+        assert "--pytest-distribution loadscope" in wrapper

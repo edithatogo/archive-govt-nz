@@ -58,7 +58,7 @@ def test_operator_documents_match_fail_closed_global_cli() -> None:
     readme = (REPOSITORY_ROOT / "README.md").read_text(encoding="utf-8")
     assert "archived on 2026-08-25" in readme
     assert "capability_pending" in readme
-    assert "9 Mutation Testing Runners" in readme
+    assert "11 Mutation Testing Runners" in readme
     assert "deprecatingly archived" not in readme
     assert "350+ Agency Seed Registry" not in readme
 

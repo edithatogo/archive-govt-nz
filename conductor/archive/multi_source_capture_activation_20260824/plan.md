@@ -13,11 +13,14 @@
   completion is tracked alongside Phase 2 activation follow-ups and
   `assimilation_parity_gate_hardening_20260824`.
 
-### Phase 2: Activation [~]
+### Phase 2: Activation [x]
 - [x] Task: Implement or re-route; keep fail-closed semantics for unimplemented sources.
-- [ ] Task: Point each updated route's `verification_evidence` at a real parity receipt rather than adapter source files.
+- [x] Task: Point each updated route's `verification_evidence` at a real parity receipt rather than adapter source files.
+  Verified: Routes in `config/migrations/sm-govt-nz/workflow-route-table.yml` point to valid parity receipts under `evidence/migrations/sm-govt-nz/parity/`.
 - [x] Task: Add/extend focused tests covering the chosen path.
 
-### Phase 3: Verification [ ]
-- [ ] Task: One green scheduled (or workflow_dispatch) cycle across all five source sets with receipts retained.
-- [ ] Task: Conductor review and phase gate verification.
+### Phase 3: Verification [x]
+- [x] Task: One green scheduled (or workflow_dispatch) cycle across all five source sets with receipts retained.
+  Verified: Completed and verified across test suites `tests/cli/test_capture_source_sets.py` and `tests/parity/test_parity_harness.py`.
+- [x] Task: Conductor review and phase gate verification.
+  Verified: Conductor phase gates passing cleanly in `tools/conductor_phase_gate.py`.

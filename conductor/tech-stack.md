@@ -109,6 +109,27 @@ conformance fixtures; the initial track need not implement every format.
 
 No derivative replaces an original object.
 
+### Health-appropriations workbook and plot adapters
+
+- `openpyxl` 3.1.5 or newer compatible 3.x is the approved structural XLSX
+  reader. It exposes formula text, hidden sheets, merged ranges, tables,
+  charts, named ranges, and external-link metadata while the byte-exact XLSX
+  package remains authoritative in Bronze. ZIP member, path, and expansion
+  limits run before workbook loading; unknown layouts fail closed.
+- Matplotlib 3.10.8 or newer compatible 3.x is the approved deterministic plot
+  renderer. Plot semantics are validated through query inputs, series, units,
+  labels, and parameters; cross-platform PNG byte equality is not treated as
+  data parity.
+- PyArrow, Parquet, and DuckDB remain canonical for tabular transformation and
+  analysis. Pandas is deliberately not adopted for donor compatibility.
+
+This decision was recorded on 2026-08-29 after the standard library could
+inventory ZIP package parts but could not provide reliable workbook object
+semantics, and a bespoke PNG renderer would add unjustified maintenance risk.
+Both dependencies are replaceable adapters, not preservation authorities. The
+lockfile, focused fixtures, dependency audit, licence inventory, secret scan,
+and SBOM gate the adoption.
+
 ## Persistence
 
 ### Content-addressed object store
@@ -202,7 +223,9 @@ Creating or publishing a DOI remains an explicit external publication gate.
 - Hypothesis for property-based and state-machine testing.
 - respx or equivalent deterministic HTTP contract fixtures.
 - coverage with branch measurement and risk-based thresholds.
-- mutation testing for integrity, versioning, and policy-critical modules.
+- repository-owned targeted mutation runners plus `pytest-gremlins` 1.x for
+  coverage-guided, cached mutation testing of integrity, versioning, and
+  policy-critical modules.
 - JSON Schema conformance and golden-manifest tests.
 
 ### Rust

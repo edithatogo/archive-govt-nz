@@ -1,0 +1,176 @@
+"""Dedicated health-appropriations Silver contracts."""
+
+from __future__ import annotations
+
+import hashlib
+import sqlite3
+from pathlib import Path
+from typing import Self
+
+import pyarrow.parquet as pq
+import pytest
+
+from archive_govt_nz.domains.health_appropriations import gold
+from archive_govt_nz.domains.health_appropriations.gold import (
+    build_gold_analytics,
+    rebuild_compatibility_sqlite,
+    render_donor_plots,
+)
+from archive_govt_nz.domains.health_appropriations.silver import (
+    _decimal,
+    _record,
+    normalize_donor_sqlite,
+)
+
+
+def _database(path: Path, *, omit: str | None = None) -> None:
+    definitions = {
+        "gdp_historical": 'CREATE TABLE gdp_historical ("Year" INTEGER, "NominalGDPMillions" INTEGER)',
+        "health_spending_summary_befu25_data_expense_tables": 'CREATE TABLE health_spending_summary_befu25_data_expense_tables ("Year" INTEGER, "HealthSpendingMillions" INTEGER)',
+        "health_spending_summary_hyefu24_data_expense_tables": 'CREATE TABLE health_spending_summary_hyefu24_data_expense_tables ("Year" INTEGER, "HealthSpendingMillions" INTEGER)',
+        "historical_health_spending": 'CREATE TABLE historical_health_spending ("Year" INTEGER, "HealthSpendingMillions" REAL)',
+        "recent_health_appropriations": 'CREATE TABLE recent_health_appropriations ("Year" INTEGER, "Department" TEXT, "AppropriationName" TEXT, "FunctionalClassification" TEXT, "AmountThousands" INTEGER, "AmountType" TEXT, "PortfolioName" TEXT)',
+    }
+    with sqlite3.connect(path) as connection:
+        for table, statement in definitions.items():
+            if table == omit:
+                continue
+            connection.execute(statement)
+            if table == "gdp_historical":
+                connection.execute(f"INSERT INTO {table} VALUES (2025, 400000)")
+            elif table == "recent_health_appropriations":
+                connection.execute(
+                    f"INSERT INTO {table} VALUES (2025, 'Health', 'Care', 'Health', 123, 'Estimated Actual', 'Health')"
+                )
+            else:
+                connection.execute(f"INSERT INTO {table} VALUES (2025, 100.5)")
+
+
+def _normalize(database: Path, output: Path) -> dict[str, object]:
+    return normalize_donor_sqlite(
+        database,
+        output,
+        source_sha256="a" * 64,
+        observation_id="obs-1",
+        observed_at="2026-08-29T00:00:00Z",
+    )
+
+
+def test_all_donor_rows_have_typed_facts_and_field_lineage(tmp_path: Path) -> None:
+    database = tmp_path / "donor.sqlite"
+    _database(database)
+    receipt = _normalize(database, tmp_path / "silver")
+    facts = pq.read_table(tmp_path / "silver" / "donor_facts.parquet")
+    lineage = pq.read_table(tmp_path / "silver" / "field_lineage.parquet")
+    assert receipt["record_count"] == 5
+    assert facts.num_rows == 5
+    assert lineage.num_rows == 15
+    assert set(facts.column("recordset").to_pylist()) == {
+        "appropriation_fact",
+        "fiscal_context_fact",
+        "health_spending_fact",
+    }
+    assert facts.schema.field("amount").type.precision == 20
+    assert all(facts.column("source_object_sha256").to_pylist())
+
+
+def test_silver_output_is_deterministic(tmp_path: Path) -> None:
+    database = tmp_path / "donor.sqlite"
+    _database(database)
+    _normalize(database, tmp_path / "one")
+    _normalize(database, tmp_path / "two")
+    for name in ("donor_facts.parquet", "field_lineage.parquet"):
+        left = hashlib.sha256((tmp_path / "one" / name).read_bytes()).digest()
+        right = hashlib.sha256((tmp_path / "two" / name).read_bytes()).digest()
+        assert left == right
+
+
+def test_silver_fails_closed_on_table_drift(tmp_path: Path) -> None:
+    database = tmp_path / "donor.sqlite"
+    _database(database, omit="gdp_historical")
+    with pytest.raises(ValueError, match="donor_sqlite_table_drift"):
+        _normalize(database, tmp_path / "silver")
+
+
+def test_null_amount_remains_null() -> None:
+    assert _decimal(None) is None
+    record = _record(
+        "gdp_historical",
+        1,
+        {"Year": None},
+        {
+            "source_sha256": "a" * 64,
+            "observation_id": "observation",
+            "source_locator": "source",
+            "source_vintage": "vintage",
+            "observed_at": "2026-08-29T00:00:00+00:00",
+            "rights_state": "eligible",
+        },
+    )
+    assert record["amount"] is None
+    assert record["valid_time_start"] is None
+
+
+def test_gold_rebuilds_compatibility_analytics_and_six_plots(tmp_path: Path) -> None:
+    database = tmp_path / "donor.sqlite"
+    _database(database)
+    silver = tmp_path / "silver"
+    _normalize(database, silver)
+    facts = silver / "donor_facts.parquet"
+    rebuilt = tmp_path / "gold" / "compatibility.sqlite"
+    counts = rebuild_compatibility_sqlite(facts, rebuilt)
+    analytics = build_gold_analytics(facts, tmp_path / "gold" / "analytics")
+    plots = render_donor_plots(
+        tmp_path / "gold" / "analytics", tmp_path / "gold" / "plots"
+    )
+    assert sum(counts.values()) == 5
+    analytics_outputs = analytics["outputs"]
+    plot_outputs = plots["plots"]
+    assert isinstance(analytics_outputs, list)
+    assert isinstance(plot_outputs, dict)
+    assert len(analytics_outputs) == 5
+    assert len(plot_outputs) == 6
+    with sqlite3.connect(rebuilt) as connection:
+        assert connection.execute("PRAGMA integrity_check").fetchone()[0] == "ok"
+
+
+def test_gold_fails_closed_on_sqlite_integrity(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    database = tmp_path / "donor.sqlite"
+    _database(database)
+    silver = tmp_path / "silver"
+    _normalize(database, silver)
+    real_connect = sqlite3.connect
+
+    class BadIntegrityConnection:
+        def __init__(self, path: Path) -> None:
+            self.connection = real_connect(path)
+
+        def __enter__(self) -> Self:
+            return self
+
+        def __exit__(self, *_args: object) -> None:
+            self.connection.close()
+
+        def execute(self, statement: str) -> object:
+            if statement == "PRAGMA integrity_check":
+
+                class BadCursor:
+                    @staticmethod
+                    def fetchone() -> tuple[str]:
+                        return ("bad",)
+
+                return BadCursor()
+            return self.connection.execute(statement)
+
+        def executemany(
+            self, statement: str, values: list[tuple[object, ...]]
+        ) -> object:
+            return self.connection.executemany(statement, values)
+
+    monkeypatch.setattr(gold.sqlite3, "connect", BadIntegrityConnection)
+    with pytest.raises(ValueError, match="compatibility_sqlite_integrity_failed"):
+        rebuild_compatibility_sqlite(
+            silver / "donor_facts.parquet", tmp_path / "gold" / "bad.sqlite"
+        )
