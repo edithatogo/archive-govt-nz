@@ -8,6 +8,17 @@ gate is required for the testing configuration task.
 
 ## Task evidence
 
+### REQ-PAR-001 xdist configuration
+
+- Status: repository implementation committed as `05add7a`.
+- The repository gate accepts an explicit worker count (`auto`, `logical`, or
+  a positive integer) and one allowlisted scheduler; unsafe compound values
+  fail before process execution.
+- Parallel runs use xdist `loadscope` by default while the ordinary harness
+  remains serial and deterministic.
+- Focused suite: 10 passed; Ruff and basedpyright passed.
+- Full 1,100+ test parallel execution is a separate pending evidence task.
+
 ### REQ-MUT-001 and REQ-MUT-002
 
 - Status: repository implementation committed as `ab4ed66`.

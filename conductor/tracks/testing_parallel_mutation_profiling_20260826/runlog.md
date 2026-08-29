@@ -115,3 +115,15 @@
   every mutation lane, hygiene, CAS throughput, dependency audit, licence
   inventory, tracked-source secret scan, and a 102-component CycloneDX SBOM.
 - Functional fix commit: `bce9206` (`fix(security): bound tracked-source secret scan`).
+
+## 2026-08-29 — REQ-PAR-001 xdist configuration
+
+- Red phase: `tests/test_assurance_harness.py` failed collection because the
+  requested `build_stages` contract did not exist.
+- Added an explicit `tools/check.py --pytest-workers COUNT` lane with bounded
+  worker validation and `loadscope` as the default xdist scheduler. Serial
+  execution remains the stable default.
+- Focused assurance contracts: 10 passed. Ruff formatting/lint and
+  basedpyright passed for the implementation and tests.
+- Invalid compound worker input failed closed without reaching pytest.
+- Functional commit: `05add7a` (`feat(test): add opt-in xdist assurance lane`).

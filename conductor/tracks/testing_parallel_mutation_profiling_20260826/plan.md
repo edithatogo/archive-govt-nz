@@ -7,7 +7,7 @@
 - [x] **Review Fixes:** Exclude generated coverage shards from the source secret scan. (`bce9206`)
 
 ### Phase 2: Parallel Test Execution Harness (`pytest-xdist`)
-- [ ] Task: Configure `pytest-xdist` parallel execution options in `tools/check.py` and `src/archive_govt_nz/assurance.py`.
+- [x] Task: Configure `pytest-xdist` parallel execution options in `tools/check.py` and `src/archive_govt_nz/assurance.py`. (`05add7a`)
 - [ ] Task: Verify that parallel execution passes 100% across all 1,100+ tests without cross-test race conditions.
 
 ### Phase 3: Property-Based Testing Suite (`hypothesis`)
