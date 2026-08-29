@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
+import pytest
+
 from archive_govt_nz.distribution.publisher import (
     DistributionPublisher,
     DistributionTarget,
@@ -29,6 +31,10 @@ def test_verify_hf_package_structure(tmp_path: Path) -> None:
     assert "data/corpus.parquet" in digests
     assert len(digests["data/corpus.parquet"]) == 64
 
+    (staging / "croissant.json").unlink()
+    with pytest.raises(FileNotFoundError, match=r"croissant\.json"):
+        RemoteReadbackVerifier.verify_hf_package_structure(staging)
+
 
 def test_verify_publication_receipt(tmp_path: Path) -> None:
     """Test verification of PublicationReceipt stats."""
@@ -52,3 +58,9 @@ def test_verify_publication_receipt(tmp_path: Path) -> None:
         is True
     )
     assert RemoteReadbackVerifier.verify_publication_receipt(receipt, [f1, f2]) is True
+    assert (
+        RemoteReadbackVerifier.verify_local_bundle_fixity(
+            tmp_path / "missing.zip", receipt.sha256_bundle_root
+        )
+        is False
+    )
