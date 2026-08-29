@@ -39,8 +39,11 @@ gate is required for the testing configuration task.
   `tools`, and `tests`) and runs with four workers; the exact full command
   passed in 3:12 with 0 errors, warnings, or notes.
 - Assurance harness contracts: 8 passed.
-- The required full harness remains pending after this fix; no full-gate claim
-  is made until that run completes.
+- Post-fix `./scripts/validate.sh` passed on 2026-08-29: 1,161 tests at 95.36%
+  coverage, 30 schemas, 9/9 parity checks, all mutation lanes, hygiene, CAS
+  throughput, dependency audit, licence inventory, tracked-source secret scan,
+  and a validated 102-component CycloneDX SBOM.
+- Evidence is local-only; hosted execution is not claimed.
 
 ### REQ-MUT-004 runner tests
 

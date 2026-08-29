@@ -64,7 +64,8 @@ No unresolved finding remains within the bounded runner implementation scope.
 - Resolved: the post-fix full gate exposed workspace-wide type-check discovery
   exceeding the stage timeout. The type surface is now explicit and the stage
   uses four bounded workers; its exact command passes within budget.
-- The phase remains open pending one post-fix run of the required full harness.
+- Resolved: the post-fix full repository harness passed on 2026-08-29 with
+  1,161 tests and 95.36% coverage; Phase 1 has no remaining finding.
 
 ## Review boundary
 

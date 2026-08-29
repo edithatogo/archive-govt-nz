@@ -110,3 +110,8 @@
   the code scope and four-worker stage command.
 - `uv run --locked basedpyright --threads 4` — passed with 0 errors, warnings,
   or notes in 3:12, within the 300-second stage budget.
+- `./scripts/validate.sh` — passed the post-fix repository baseline on
+  2026-08-29: 1,161 tests, 95.36% coverage, 30 schemas, 9/9 parity checks,
+  every mutation lane, hygiene, CAS throughput, dependency audit, licence
+  inventory, tracked-source secret scan, and a 102-component CycloneDX SBOM.
+- Functional fix commit: `bce9206` (`fix(security): bound tracked-source secret scan`).
