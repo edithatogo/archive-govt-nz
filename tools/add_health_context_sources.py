@@ -10,6 +10,20 @@ from typing import Any, cast
 
 _SOURCES = (
     (
+        "treasury_vote_health_document",
+        "Vote Health supplementary estimates 2012/13",
+        "https://www.treasury.govt.nz/sites/default/files/2013-05/suppest13health.pdf",
+        "application/pdf",
+        "Authoritative PDF resolves the edition page that failed proxy expansion.",
+    ),
+    (
+        "treasury_vote_health_document",
+        "Vote Health supplementary estimates supporting information 2012/13",
+        "https://www.treasury.govt.nz/sites/default/files/2013-05/isse13-health.pdf",
+        "application/pdf",
+        "Authoritative supporting-information PDF resolves the edition page gap.",
+    ),
+    (
         "stats_nz_cpi",
         "Consumers price index: June 2026 quarter - index numbers",
         "https://www.stats.govt.nz/assets/Uploads/Consumers-price-index/Consumers-price-index-June-2026-quarter/Download-data/consumers-price-index-june-2026-quarter-index-numbers.csv",
@@ -60,6 +74,11 @@ def main() -> int:
             row["reason"] = "rights evidence URI; not an analytical data source"
         elif row["source_id"] == "pharmac_cpb-010":
             row["reason"] = "official CPB annual time series selected as source data"
+        elif row["source_id"] == "treasury-vote-health-064":
+            row["disposition"] = "out_of_scope"
+            row["reason"] = (
+                "discovery page represented by two authoritative linked PDFs"
+            )
     existing = {cast("str", row["url"]) for row in rows}
     for family, title, url, media_type, reason in _SOURCES:
         if url in existing:
@@ -77,7 +96,11 @@ def main() -> int:
                 "cutoff": census["cutoff"],
                 "disposition": "discovered",
                 "reason": reason,
-                "rights_uri": "https://www.stats.govt.nz/about-us/copyright/",
+                "rights_uri": (
+                    "https://www.stats.govt.nz/about-us/copyright/"
+                    if family.startswith("stats_nz")
+                    else "https://www.treasury.govt.nz/copyright-and-licensing"
+                ),
             }
         )
     rows.sort(key=lambda row: cast("str", row["source_id"]))

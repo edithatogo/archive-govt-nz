@@ -1,7 +1,7 @@
 {
   "capture_reconciliation": {
-    "capture_manifest": "official-capture-2026-08-29-context-v2.json",
-    "matched": 71
+    "capture_manifest": "official-capture-2026-08-29-complete.json",
+    "matched": 73
   },
   "cutoff": "2026-08-29",
   "discovery_evidence": {
@@ -11,7 +11,7 @@
     "vote_link_count": 66
   },
   "observed_at": "2026-08-29T09:00:17Z",
-  "record_count": 139,
+  "record_count": 141,
   "records": [
     {
       "cutoff": "2026-08-29",
@@ -1015,11 +1015,11 @@
     },
     {
       "cutoff": "2026-08-29",
-      "disposition": "retryable",
+      "disposition": "out_of_scope",
       "family": "treasury_vote_health",
       "media_type": "text/html",
       "observed_at": "2026-08-29T09:00:17Z",
-      "reason": "edition expansion failed: HTTPStatusError",
+      "reason": "discovery page represented by two authoritative linked PDFs",
       "rights_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
       "source_id": "treasury-vote-health-064",
       "title": "Vote Health - The Supplementary Estimates of Appropriations and Supporting Information 2012/13",
@@ -1820,6 +1820,34 @@
       "source_id": "treasury-vote-health-pdf-fd37e5ad2657936d",
       "title": "Vote Health - The Estimates of Appropriations 2002/03",
       "url": "https://www.treasury.govt.nz/sites/default/files/2008-03/est02health.pdf"
+    },
+    {
+      "cutoff": "2026-08-29",
+      "disposition": "captured",
+      "family": "treasury_vote_health_document",
+      "license": "CC-BY-4.0",
+      "media_type": "application/pdf",
+      "object_sha256": "07aaafdc58bd448ce2ef60d3c2dce071dfc3204838b21d01cad105e7e0d946fc",
+      "observed_at": "2026-08-29T09:00:17Z",
+      "reason": "bounded capture with fixity and WARC evidence",
+      "rights_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+      "source_id": "treasury_vote_health_document-566aface4fa2633a",
+      "title": "Vote Health supplementary estimates supporting information 2012/13",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2013-05/isse13-health.pdf"
+    },
+    {
+      "cutoff": "2026-08-29",
+      "disposition": "captured",
+      "family": "treasury_vote_health_document",
+      "license": "CC-BY-4.0",
+      "media_type": "application/pdf",
+      "object_sha256": "eec443d19bd7fe0767301ab101de5cbe67da8e9183d3f0af8b946b7ba8f93272",
+      "observed_at": "2026-08-29T09:00:17Z",
+      "reason": "bounded capture with fixity and WARC evidence",
+      "rights_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+      "source_id": "treasury_vote_health_document-90791173089c47e3",
+      "title": "Vote Health supplementary estimates 2012/13",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2013-05/suppest13health.pdf"
     }
   ],
   "schema_version": "archive-govt-nz.health-source-census/v1",
