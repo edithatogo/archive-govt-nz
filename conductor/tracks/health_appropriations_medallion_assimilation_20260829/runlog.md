@@ -82,6 +82,16 @@ its change set.
 - Recorded the local toolchain versions for `uv`, Python, GitHub CLI,
   Hugging Face CLI and Git. DuckDB and LibreOffice executables were not found
   on `PATH`; repository-managed Python capabilities are evaluated separately.
+
+## 2026-08-29 — Phase 0.2 hosted issue hierarchy
+
+- Created parent GitHub issue
+  [#205](https://github.com/edithatogo/archive-govt-nz/issues/205) and phase
+  issues #206 through #216 under the user's explicit instruction to complete
+  the remaining track work.
+- Added all eleven phase issues as GitHub sub-issues of #205 and independently
+  read the hierarchy back through the API. Issue creation is now evidenced;
+  issue closure remains tied to the corresponding phase evidence.
 - The first staged-source scan failed closed on one unverified keyword finding:
   a machine-evidence key named `secret_scan`. Inspection of the bounded receipt
   confirmed that no token or credential was present. The field was renamed to

@@ -32,7 +32,7 @@ repository validation command. External gates block only their affected task.
 
 ### 0.2 Establish hosted issue hierarchy when authorized
 
-- [ ] Create/link one parent GitHub issue and nested phase issues with stable
+- [x] Create/link one parent GitHub issue and nested phase issues with stable
   Conductor references after the external issue-creation gate is satisfied.
   Local planning and preservation work may continue independently. [M-19;
   AC-16]

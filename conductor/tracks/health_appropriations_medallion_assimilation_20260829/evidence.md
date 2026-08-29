@@ -89,3 +89,10 @@ four returned HTTP 200 and four returned HTTP 403 to the bounded command-line
 client. A 403 landing-page observation is not interpreted as resource absence;
 Phase 1 must use source-family discovery and explicit dispositions. No external
 state was mutated by this task.
+
+## Hosted traceability
+
+GitHub issue #205 is the parent for phase sub-issues #206 through #216. The
+sub-issue relationship was read back after creation. This proves hosted issue
+traceability only; it does not prove implementation, CI, merge, publication or
+release.
