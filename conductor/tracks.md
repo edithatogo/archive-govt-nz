@@ -217,5 +217,5 @@ implementation has occurred under these tracks.
 
 ## Programme: Health Appropriations Medallion Assimilation (2026-08-29)
 
-- [ ] **Track: New Zealand Health Appropriations Medallion Assimilation**
+- [~] **Track: New Zealand Health Appropriations Medallion Assimilation**
   *Link: [tracks/health_appropriations_medallion_assimilation_20260829/index.md](./tracks/health_appropriations_medallion_assimilation_20260829/index.md)*
