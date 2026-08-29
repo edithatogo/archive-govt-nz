@@ -9,6 +9,7 @@ from typing import Any, cast
 
 import pytest
 
+from archive_govt_nz.domains.health_appropriations import donor
 from archive_govt_nz.domains.health_appropriations.donor import (
     DonorImportError,
     import_donor_snapshot,
@@ -135,4 +136,45 @@ def test_reconstruction_rejects_length_mismatch(tmp_path: Path) -> None:
     with pytest.raises(DonorImportError, match="donor_reconstruction_mismatch"):
         verify_donor_reconstruction(
             {"objects": [{"object_id": receipt.object_id, "byte_count": 2}]}, store
+        )
+
+
+@pytest.mark.parametrize(
+    ("kind", "payload", "error"),
+    [
+        ("tree", b"xx", "unsafe_donor_path"),
+        ("blob", b"x", "donor_length_drift"),
+    ],
+)
+def test_donor_import_rejects_unsafe_and_length_drift(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    kind: str,
+    payload: bytes,
+    error: str,
+) -> None:
+    archive = b"archive"
+    blob = "a" * 40
+
+    def fake_git(_repo: Path, *arguments: str) -> bytes:
+        if arguments == ("rev-parse", "HEAD"):
+            return b"commit\n"
+        if arguments == ("rev-parse", "HEAD^{tree}"):
+            return b"tree\n"
+        if arguments[0] == "archive":
+            return archive
+        if arguments[0] == "ls-tree":
+            return f"100644 {kind} {blob} 2\titem\0".encode()
+        return payload
+
+    monkeypatch.setattr(donor, "_git", fake_git)
+    with pytest.raises(DonorImportError, match=error):
+        import_donor_snapshot(
+            tmp_path,
+            ContentAddressedStore(tmp_path / "cas"),
+            expected_commit="commit",
+            expected_tree="tree",
+            expected_archive_sha256=hashlib.sha256(archive).hexdigest(),
+            expected_file_count=1,
+            expected_total_bytes=2,
         )

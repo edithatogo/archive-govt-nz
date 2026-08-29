@@ -9,6 +9,7 @@ from zipfile import ZipFile
 import pytest
 from openpyxl import Workbook
 
+from archive_govt_nz.domains.health_appropriations import formats
 from archive_govt_nz.domains.health_appropriations.formats import (
     inventory_pdf,
     inventory_sqlite,
@@ -131,6 +132,21 @@ def test_format_inventory_rejects_invalid_packages(tmp_path: Path) -> None:
     invalid_pdf.write_bytes(b"not-a-pdf")
     with pytest.raises(ValueError, match="invalid_pdf"):
         inventory_pdf(invalid_pdf)
+
+
+def test_workbook_inventory_enforces_package_limits(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    path = tmp_path / "bounded.xlsx"
+    with ZipFile(path, "w") as package:
+        package.writestr("member", b"x")
+    monkeypatch.setattr(formats, "_MAX_MEMBERS", 0)
+    with pytest.raises(ValueError, match="workbook_member_limit"):
+        inventory_workbook(path)
+    monkeypatch.setattr(formats, "_MAX_MEMBERS", 20_000)
+    monkeypatch.setattr(formats, "_MAX_EXPANDED_BYTES", 0)
+    with pytest.raises(ValueError, match="workbook_expansion_limit"):
+        inventory_workbook(path)
 
 
 def test_pdf_and_sqlite_inventory(tmp_path: Path) -> None:

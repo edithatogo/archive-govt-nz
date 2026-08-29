@@ -15,6 +15,7 @@ from archive_govt_nz.domains.health_appropriations.gold import (
     render_donor_plots,
 )
 from archive_govt_nz.domains.health_appropriations.silver import (
+    _decimal,
     normalize_donor_sqlite,
 )
 
@@ -86,6 +87,10 @@ def test_silver_fails_closed_on_table_drift(tmp_path: Path) -> None:
     _database(database, omit="gdp_historical")
     with pytest.raises(ValueError, match="donor_sqlite_table_drift"):
         _normalize(database, tmp_path / "silver")
+
+
+def test_null_amount_remains_null() -> None:
+    assert _decimal(None) is None
 
 
 def test_gold_rebuilds_compatibility_analytics_and_six_plots(tmp_path: Path) -> None:
