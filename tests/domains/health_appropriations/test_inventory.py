@@ -42,6 +42,7 @@ def test_inventory_normalizes_urls_and_has_stable_identity() -> None:
     assert record.url == "https://treasury.govt.nz/item"
     assert record.record_id == _record("vote-2026").record_id
     assert normalize_url("https://EXAMPLE.nz:443/a?q=1#x") == "https://example.nz/a?q=1"
+    assert normalize_url("https://example.nz:8443/a") == "https://example.nz:8443/a"
 
 
 @pytest.mark.parametrize("url", ["file:///tmp/a", "javascript:x", "https:///x"])
@@ -69,6 +70,25 @@ def test_inventory_requires_one_disposition_and_known_predecessor() -> None:
 def test_captured_inventory_requires_sha256() -> None:
     with pytest.raises(ValueError, match="captured_source_missing_digest"):
         _record("captured", disposition=Disposition.CAPTURED, reason=None)
+
+
+@pytest.mark.parametrize(
+    ("values", "error"),
+    [
+        ({"title": ""}, "missing_source_identity"),
+        ({"object_sha256": "x"}, "invalid_source_digest"),
+        (
+            {"disposition": Disposition.SUPERSEDED},
+            "superseded_source_missing_predecessor",
+        ),
+        ({"reason": None}, "non_object_disposition_missing_reason"),
+    ],
+)
+def test_inventory_rejects_incomplete_records(
+    values: dict[str, object], error: str
+) -> None:
+    with pytest.raises(ValueError, match=error):
+        _record("invalid", **values)
 
 
 def test_workbook_inventory_preserves_structure(tmp_path: Path) -> None:
@@ -100,6 +120,17 @@ def test_workbook_inventory_rejects_traversal_member(tmp_path: Path) -> None:
         package.writestr("../escape", b"x")
     with pytest.raises(ValueError, match="unsafe_workbook_member"):
         inventory_workbook(path)
+
+
+def test_format_inventory_rejects_invalid_packages(tmp_path: Path) -> None:
+    invalid_workbook = tmp_path / "invalid.xlsx"
+    invalid_workbook.write_bytes(b"not-a-zip")
+    with pytest.raises(ValueError, match="invalid_workbook_package"):
+        inventory_workbook(invalid_workbook)
+    invalid_pdf = tmp_path / "invalid.pdf"
+    invalid_pdf.write_bytes(b"not-a-pdf")
+    with pytest.raises(ValueError, match="invalid_pdf"):
+        inventory_pdf(invalid_pdf)
 
 
 def test_pdf_and_sqlite_inventory(tmp_path: Path) -> None:

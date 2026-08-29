@@ -36,7 +36,7 @@ def _database(path: Path, *, omit: str | None = None) -> None:
                 connection.execute(f"INSERT INTO {table} VALUES (2025, 400000)")
             elif table == "recent_health_appropriations":
                 connection.execute(
-                    f"INSERT INTO {table} VALUES (2025, 'Health', 'Care', 'Health', 123, 'Actuals', 'Health')"
+                    f"INSERT INTO {table} VALUES (2025, 'Health', 'Care', 'Health', 123, 'Estimated Actual', 'Health')"
                 )
             else:
                 connection.execute(f"INSERT INTO {table} VALUES (2025, 100.5)")

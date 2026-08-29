@@ -83,3 +83,56 @@ def test_donor_import_rejects_identity_and_archive_drift(tmp_path: Path) -> None
             expected_file_count=2,
             expected_total_bytes=24,
         )
+
+
+def test_donor_import_rejects_counts_and_git_failure(tmp_path: Path) -> None:
+    repo = tmp_path / "donor"
+    commit, tree, archive = _fixture_repo(repo)
+    store = ContentAddressedStore(tmp_path / "cas")
+    common = {
+        "expected_commit": commit,
+        "expected_tree": tree,
+        "expected_archive_sha256": archive,
+    }
+    with pytest.raises(DonorImportError, match="donor_path_count_drift"):
+        import_donor_snapshot(
+            repo, store, **common, expected_file_count=3, expected_total_bytes=24
+        )
+    with pytest.raises(DonorImportError, match="donor_total_bytes_drift"):
+        import_donor_snapshot(
+            repo, store, **common, expected_file_count=2, expected_total_bytes=25
+        )
+    with pytest.raises(DonorImportError, match="git_observation_failed"):
+        import_donor_snapshot(
+            tmp_path / "missing",
+            store,
+            expected_commit=commit,
+            expected_tree=tree,
+            expected_archive_sha256=archive,
+            expected_file_count=2,
+            expected_total_bytes=24,
+        )
+
+
+@pytest.mark.parametrize(
+    "manifest",
+    [
+        {},
+        {"objects": ["bad"]},
+        {"objects": [{}]},
+    ],
+)
+def test_reconstruction_rejects_invalid_manifests(
+    tmp_path: Path, manifest: dict[str, object]
+) -> None:
+    with pytest.raises(DonorImportError, match="invalid_donor_manifest"):
+        verify_donor_reconstruction(manifest, ContentAddressedStore(tmp_path / "cas"))
+
+
+def test_reconstruction_rejects_length_mismatch(tmp_path: Path) -> None:
+    store = ContentAddressedStore(tmp_path / "cas")
+    receipt = store.put_bytes(b"x")
+    with pytest.raises(DonorImportError, match="donor_reconstruction_mismatch"):
+        verify_donor_reconstruction(
+            {"objects": [{"object_id": receipt.object_id, "byte_count": 2}]}, store
+        )
