@@ -43,8 +43,8 @@ def _copy(source: Path, target: Path) -> None:
     shutil.copyfile(source, target)
 
 
-def _card() -> str:
-    return """---
+def _card(candidate_state: str) -> str:
+    return f"""---
 license: cc-by-4.0
 task_categories:
 - tabular-classification
@@ -73,12 +73,12 @@ reproducible metadata for New Zealand Vote Health appropriations and context.
 
 ## Rights and attribution
 
-Eligible official material is Crown copyright reused under CC BY 4.0 with
-attribution to The Treasury New Zealand or Ministry of Health New Zealand as
-recorded per resource. Donor repository code is Apache-2.0 and is not included
-as a blanket licence assertion for government data. Logos, design elements,
-third-party content, and resources lacking affirmative rights evidence are
-excluded or represented by metadata only.
+Eligible official material is reused under the per-resource CC BY 4.0 evidence
+and attribution recorded in `metadata/rights.json`, including Treasury,
+Ministry of Health, Stats NZ, and Pharmac resources. Donor repository code is
+Apache-2.0 and is not included as a blanket licence assertion for government
+data. Logos, design elements, third-party content, and resources lacking
+affirmative rights evidence are excluded or represented by metadata only.
 
 ## Limitations
 
@@ -89,10 +89,8 @@ The products are descriptive and must not be used as causal or forecasting
 claims. Every amount must be interpreted with its unit, vintage, amount type,
 and source lineage.
 
-This package is a partial, non-release-ready candidate while any census record
-remains in the `discovered` state. It must not be uploaded or described as a
-complete longitudinal release until source disposition, parity, recovery, and
-exact-manifest approval gates pass.
+Candidate state: `{candidate_state}`. Upload remains subject to exact-manifest
+approval and independent hosted verification.
 """
 
 
@@ -170,7 +168,18 @@ def main() -> int:
             "activities": ["bronze-capture", "silver-normalization", "gold-analysis"],
         },
     )
-    (args.output_dir / "README.md").write_text(_card(), encoding="utf-8")
+    source_disposition_passed = all(
+        row["disposition"] not in {"discovered", "retryable"}
+        for row in census["records"]
+    )
+    candidate_state = (
+        "release_candidate_pending_exact_manifest_approval"
+        if source_disposition_passed
+        else "partial_not_release_ready"
+    )
+    (args.output_dir / "README.md").write_text(
+        _card(candidate_state), encoding="utf-8"
+    )
     files = sorted(path for path in args.output_dir.rglob("*") if path.is_file())
     crate = {
         "@context": "https://w3id.org/ro/crate/1.1/context",
@@ -199,11 +208,9 @@ def main() -> int:
         "collection": _COLLECTION,
         "rights_gate": "passed_for_included_resources",
         "source_disposition_gate": (
-            "passed"
-            if all(row["disposition"] != "discovered" for row in census["records"])
-            else "failed_incomplete"
+            "passed" if source_disposition_passed else "failed_incomplete"
         ),
-        "candidate_state": "partial_not_release_ready",
+        "candidate_state": candidate_state,
         "files": [
             {
                 "path": path.relative_to(args.output_dir).as_posix(),
