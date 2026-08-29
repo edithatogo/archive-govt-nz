@@ -123,3 +123,22 @@ remaining annual Budget/forecast vintages and exact Stats NZ series are frozen.
 `openpyxl` and Matplotlib are locked, tested adapters. Audit, licence,
 tracked-source scan and a 110-component SBOM passed. This establishes software
 adoption evidence, not source redistribution rights.
+
+## Bronze through Platinum checkpoint
+
+The final source census has 141 explicit dispositions: 73 eligible official
+originals captured with WARC evidence and 68 discovery pages retained as
+out-of-scope pointers to their authoritative files. The complete capture
+manifest covers 38,584,141 bytes and has no failed or unresolved resource.
+
+Donor preservation and functional parity are evidenced independently. Bronze
+reconstructs all 23 donor paths and the pinned Git archive. Silver contains
+312 typed facts and 1,699 field-lineage rows. Gold rebuilds the donor's five
+SQLite tables, five analytical tables and six plots. A clean-room run
+reproduced the pinned Silver and Gold bytes exactly.
+
+Candidate v4 contains 94 pre-manifest files and 39,390,246 bytes. Its exact
+manifest SHA-256 is
+`9a33babda857b0aa7c60a6012000cf1e730fed729781cb8ceb6e7a4714cae40e`.
+This is local release-candidate evidence only. Upload, hosted readback,
+collection membership and public release are not yet claimed.

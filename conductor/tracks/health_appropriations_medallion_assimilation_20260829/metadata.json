@@ -4,7 +4,7 @@
   "type": "feature",
   "status": "in_progress",
   "created_at": "2026-08-29T05:39:14Z",
-  "updated_at": "2026-08-29T09:00:19Z",
+  "updated_at": "2026-08-29T09:45:00Z",
   "description": "Zero-loss assimilation of nz_health_appropriations into Bronze, dedicated multi-recordset Silver, reproducible Gold analytics, rights-aware Platinum metadata and gated Hugging Face publication.",
   "requirements_method": "MoSCoW",
   "evidence_schema": "1.0",
@@ -50,6 +50,27 @@
     "format_census_sha256": "e2a485e851926d4af029dfc3ca5c10a5b8408fcbaf6cad28c680a5a41ba68cab",
     "reconstruction": "passed"
   },
+  "official_corpus_state": {
+    "census_records": 141,
+    "captured_resources": 73,
+    "discovery_only_resources": 68,
+    "unresolved_resources": 0,
+    "capture_manifest_sha256": "04145e4030bfddaecade1af542e12cb8a56a187c9c924b7a4c135537ccae9dab"
+  },
+  "derivative_state": {
+    "silver_records": 312,
+    "field_lineage_records": 1699,
+    "gold_artifacts": 12,
+    "compatibility_sqlite_parity": "passed",
+    "clean_room_rebuild": "byte_identical"
+  },
+  "candidate_state": {
+    "path": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/candidates/2026-08-29-v4",
+    "manifest_sha256": "9a33babda857b0aa7c60a6012000cf1e730fed729781cb8ceb6e7a4714cae40e",
+    "files": 94,
+    "bytes_before_manifest": 39390246,
+    "state": "release_candidate_pending_exact_manifest_approval"
+  },
   "autonomy": {
     "mode": "continuous_autonomous",
     "stop_between_phases": false,
@@ -60,9 +81,9 @@
     {"id": "scope-plan-approval", "kind": "human", "status": "passed", "evidence": "Explicit user approval in the current Codex task on 2026-08-29"},
     {"id": "github-issue-creation", "kind": "external", "status": "passed", "evidence": "Parent issue #205 with linked sub-issues #206-#216"},
     {"id": "dependency-adoption", "kind": "architecture", "status": "passed", "evidence": "openpyxl and Matplotlib stack decision, focused tests, locked audit/licence/SBOM"},
-    {"id": "resource-redistribution-rights", "kind": "rights", "status": "pending"},
+    {"id": "resource-redistribution-rights", "kind": "rights", "status": "passed", "evidence": "Per-resource CC BY 4.0 evidence for all 73 included official resources"},
     {"id": "hf-candidate-approval", "kind": "publication", "status": "pending"},
-    {"id": "hf-credentials", "kind": "credential", "status": "pending"},
+    {"id": "hf-credentials", "kind": "credential", "status": "passed", "evidence": "Authenticated Hugging Face account observed as edithatogo"},
     {"id": "hf-publication", "kind": "publication", "status": "pending"},
     {"id": "hf-collection-membership", "kind": "external", "status": "pending"},
     {"id": "hf-remote-verification", "kind": "external", "status": "pending"},

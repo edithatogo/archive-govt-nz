@@ -133,3 +133,33 @@ its change set.
   confirmed that no token or credential was present. The field was renamed to
   `tracked_source_scan`; no detector suppression was added, and the staged
   source scan then passed with zero candidates.
+
+## 2026-08-29 — Bronze through Platinum implementation checkpoint
+
+- Expanded all 66 historical Vote Health edition pages to 58 unique official
+  PDFs, including the two directly resolved 2012/13 supplementary-estimates
+  files. Added current Budget/BEFU/HYEFU/Fiscal Time Series, Ministry Vote
+  Health, Pharmac CPB, and exact Stats NZ CPI, QES, population-benchmark and
+  current-price GDP inputs.
+- Closed the cutoff-bound census at 141 records: 73 captured originals and 68
+  discovery-only pages represented by their authoritative resources. No item
+  remains discovered or retryable. The complete capture contains 73 matching
+  WARC receipts and 38,584,141 source bytes in immutable external CAS.
+- Produced 312 typed Silver facts and 1,699 field-lineage records from the
+  verified donor parity oracle. Rebuilt its five-table SQLite database with
+  exact row/value parity, five analytical Parquet products and all six plots.
+- A clean-room rebuild from Bronze reproduced both Silver Parquet digests and
+  all 12 Gold artifact digests byte-for-byte when supplied the pinned
+  observation time. A deliberately different observation time changed the
+  bitemporal facts digest, demonstrating that time is part of the identity.
+- Built candidate v4 with 94 pre-manifest files and 39,390,246 bytes. Its
+  manifest SHA-256 is
+  `9a33babda857b0aa7c60a6012000cf1e730fed729781cb8ceb6e7a4714cae40e`;
+  rights and source-disposition gates pass, while upload remains gated on
+  explicit approval of this exact manifest.
+- Final local `./scripts/validate.sh` passed at commit
+  `f32f0fbdb223fa0358c91defcc749ce9cb739d2f`: 1,200 tests, 95.16% coverage,
+  30 schemas, 20 representative documents, 9/9 parity checks, all mutation
+  lanes, hygiene, CAS benchmark, dependency audit, licences, secret scan and
+  110-component SBOM. Seven resource warnings were reported but did not fail
+  the harness; they are not hidden.
