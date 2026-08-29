@@ -17,9 +17,9 @@
 - [x] Task: Implement `tests/properties/test_statutory_matcher_properties.py` for statutory matcher fuzzing. (`c5930c0`)
 
 ### Phase 4: Scalene Memory & Performance Profiling Harness
-- [ ] Task: Create `tools/profile_scalene.py` executing CPU, native memory, and copy overhead profiling over the Medallion pipeline.
-- [ ] Task: Generate structured profiling receipts in `build/profiling-scalene.json`.
-- [ ] Task: Add test suite in `tests/tools/test_profile_scalene.py`.
+- [x] Task: Create `tools/profile_scalene.py` executing CPU, native memory, and copy overhead profiling over the Medallion pipeline. (`e3b9875`)
+- [x] Task: Generate structured profiling receipts in `build/profiling-scalene.json`. (`e843dd1` raw-profile digest)
+- [x] Task: Add test suite in `tests/tools/test_profile_scalene.py`. (`0183c95`)
 
 ### Phase 5: Assurance Gate Synchronization & Full Harness Validation
 - [ ] Task: Update `src/archive_govt_nz/assurance.py` with `profile-scalene` and updated gate stages.

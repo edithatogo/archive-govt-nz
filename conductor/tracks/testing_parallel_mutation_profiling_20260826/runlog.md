@@ -149,3 +149,18 @@
   rejection invariants (`c5930c0`): 3 passed.
 - All four files passed Ruff and basedpyright. These characterize and harden
   existing contracts, so no manufactured failing production behavior was used.
+
+## 2026-08-29 — REQ-PROF-001 Scalene harness
+
+- Red phase: the profiling contract failed collection because
+  `tools/profile_scalene.py` did not exist.
+- Added a bounded child-process Scalene profile over 64 deterministic Bronze
+  identities, Silver Parquet materialization, and a Gold DuckDB aggregation.
+- The portable receipt redacts filesystem paths and retains the raw-profile
+  SHA-256 rather than embedding the 1.6 MB profiler document.
+- Focused suite: 5 passed; Ruff and basedpyright passed (`0183c95`).
+- `uv run --locked python tools/profile_scalene.py` passed in the 180-second
+  bound. Raw digest: `e843dd11eea71e364e3a78c8ccbe3084ed5de5dfd377fdaada06a56631405210`.
+- Observed local metrics: 9.96 seconds, 15.60 MB peak footprint, 4.05% maximum
+  native CPU and 3.82% maximum Python CPU; 64/64 rows aggregated.
+- Functional harness commit: `e3b9875`.

@@ -35,6 +35,17 @@ gate is required for the testing configuration task.
 - Focused property files, Ruff, and basedpyright passed.
 - Commits: `007e68e`, `45db8ed`, `0b444f6`, and `c5930c0`.
 
+### REQ-PROF-001 Scalene harness
+
+- Repository harness commit: `e3b9875`; focused tests: `0183c95`.
+- Deterministic workload: 64 Bronze records, 64 Silver rows, and 140,800 bytes
+  aggregated through Gold DuckDB.
+- Scalene 2.3.0 passed in 9.96 seconds with a 15.60 MB peak footprint.
+- Canonical local receipt: `build/profiling-scalene.json`; raw profile SHA-256
+  `e843dd11eea71e364e3a78c8ccbe3084ed5de5dfd377fdaada06a56631405210`.
+- Receipt contains CPU, native allocation, memory, and copy-rate metric families
+  and no absolute path. The raw profile remains an ignored local artefact.
+
 ### REQ-MUT-001 and REQ-MUT-002
 
 - Status: repository implementation committed as `ab4ed66`.
