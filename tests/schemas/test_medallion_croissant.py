@@ -17,7 +17,7 @@ from archive_govt_nz.schemas import (
 
 
 def test_domain_registry_completeness() -> None:
-    """Verify all 7 core domains are registered."""
+    """Verify all core domains are registered."""
     expected_domains = {
         "legislation",
         "gazette",
@@ -26,6 +26,7 @@ def test_domain_registry_completeness() -> None:
         "cases_medilegal",
         "treasury",
         "ckan_catalogs",
+        "health_appropriations",
     }
     assert set(DOMAIN_REGISTRY.keys()) == expected_domains
 

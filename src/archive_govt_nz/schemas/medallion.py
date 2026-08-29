@@ -362,6 +362,40 @@ _CKAN_FIELDS = [
     ),
 ]
 
+# Domain 8: Health Appropriations
+_HEALTH_APPROPRIATIONS_FIELDS = [
+    *_COMMON_FIELDS,
+    DomainField("recordset", pa.string(), "sc:Text", "Typed fiscal record set"),
+    DomainField("source_vintage", pa.string(), "sc:Text", "Published source vintage"),
+    DomainField(
+        "financial_year", pa.int64(), "sc:Integer", "Financial year ending 30 June"
+    ),
+    DomainField(
+        "amount", pa.decimal128(20, 3), "sc:Number", "Fixed-precision source amount"
+    ),
+    DomainField(
+        "unit", pa.string(), "sc:Text", "Currency, scale, and denominator unit"
+    ),
+    DomainField(
+        "amount_type",
+        pa.string(),
+        "sc:Text",
+        "Actual, estimate, forecast, or budget status",
+    ),
+    DomainField(
+        "source_label", pa.string(), "sc:Text", "Unmodified source classification label"
+    ),
+    DomainField(
+        "resource_rights_uri",
+        pa.string(),
+        "sc:URL",
+        "Resource-specific rights evidence URI",
+    ),
+    DomainField(
+        "lineage_id", pa.string(), "sc:Text", "Field and cell lineage identifier"
+    ),
+]
+
 DOMAIN_REGISTRY: Final[dict[str, DomainSchemaDefinition]] = {
     "legislation": DomainSchemaDefinition(
         domain="legislation",
@@ -444,6 +478,18 @@ DOMAIN_REGISTRY: Final[dict[str, DomainSchemaDefinition]] = {
         ),
         license_url="https://creativecommons.org/licenses/by/4.0/",
         fields=_CKAN_FIELDS,
+    ),
+    "health_appropriations": DomainSchemaDefinition(
+        domain="health_appropriations",
+        dataset_name="nz-health-appropriations",
+        hf_repo_id="edithatogo/nz-health-appropriations",
+        title="New Zealand Health Appropriations and Fiscal Context",
+        description=(
+            "Vintage-aware Vote Health appropriations, spending, fiscal context, "
+            "and pharmaceutical budget records with source-level lineage."
+        ),
+        license_url="https://rightsstatements.org/vocab/UND/1.0/",
+        fields=_HEALTH_APPROPRIATIONS_FIELDS,
     ),
 }
 

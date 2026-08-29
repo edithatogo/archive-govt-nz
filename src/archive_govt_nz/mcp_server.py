@@ -183,7 +183,7 @@ _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
     {
         "name": "archive_domain_list",
         "description": (
-            "List all 7 registered open dataset domains and their "
+            "List all registered open dataset domains and their "
             "Hugging Face repositories."
         ),
         "inputSchema": _NO_ARGUMENTS,

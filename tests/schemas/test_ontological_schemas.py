@@ -39,7 +39,7 @@ def test_domain_ontological_mappings() -> None:
 
 
 def test_all_domains_generate_valid_descriptors() -> None:
-    """Verify all 7 domains compile valid PyArrow, Croissant, and DCAT schemas."""
+    """Verify all domains compile valid PyArrow, Croissant, and DCAT schemas."""
     for domain in DOMAIN_REGISTRY:
         arrow_schema = to_arrow_schema(domain)
         assert len(arrow_schema.names) >= 8

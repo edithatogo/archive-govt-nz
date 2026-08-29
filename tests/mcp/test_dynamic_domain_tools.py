@@ -14,14 +14,14 @@ def test_list_tools_includes_domain_tools() -> None:
 
 
 def test_call_archive_domain_list() -> None:
-    """Verify archive_domain_list returns all 7 registered domains."""
+    """Verify archive_domain_list returns every registered domain."""
     res = call_tool("archive_domain_list")
-    assert res["count"] == 7
-    assert len(res["domains"]) == 7
+    assert res["count"] == 8
+    assert len(res["domains"]) == 8
     assert "legislation" in res["domains"]
     assert "gazette" in res["domains"]
     assert "hansard" in res["domains"]
-    assert len(res["datasets"]) == 7
+    assert len(res["datasets"]) == 8
 
 
 def test_call_archive_domain_schema() -> None:

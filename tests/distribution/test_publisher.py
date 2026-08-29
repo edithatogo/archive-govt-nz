@@ -16,7 +16,7 @@ if TYPE_CHECKING:
 
 
 def test_build_hf_dataset_card_all_domains() -> None:
-    """Verify dataset card generation for all 7 registered domains."""
+    """Verify dataset card generation for all registered domains."""
     for domain in DOMAIN_REGISTRY:
         card = build_hf_dataset_card(domain)
         assert "---" in card
