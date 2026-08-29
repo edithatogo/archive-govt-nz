@@ -4,18 +4,18 @@ import subprocess
 import sys
 import tomllib
 from pathlib import Path
-from typing import TYPE_CHECKING, Any
+from typing import Any
+
+import pytest
 
 from archive_govt_nz.assurance import (
     COMMAND_TIMEOUT_SECONDS,
     STAGES,
     GateStage,
+    build_stages,
     run_command,
     run_stages,
 )
-
-if TYPE_CHECKING:
-    import pytest
 
 REPOSITORY_ROOT = Path(__file__).parents[1]
 
@@ -103,6 +103,27 @@ def test_type_gate_uses_bounded_parallel_analysis() -> None:
         "--threads",
         "4",
     )
+
+
+def test_parallel_pytest_lane_is_explicit_and_loadscope_isolated() -> None:
+    """Parallel execution is opt-in and uses stable scope scheduling."""
+    serial = next(stage for stage in STAGES if stage.name == "tests")
+    parallel = next(
+        stage
+        for stage in build_stages(
+            pytest_workers="auto", pytest_distribution="loadscope"
+        )
+        if stage.name == "tests"
+    )
+
+    assert "-n" not in serial.command
+    assert parallel.command[-4:] == ("-n", "auto", "--dist", "loadscope")
+
+
+def test_parallel_pytest_lane_rejects_unsafe_worker_values() -> None:
+    """Worker values cannot become arbitrary pytest arguments."""
+    with pytest.raises(ValueError, match="pytest worker count"):
+        build_stages(pytest_workers="auto --maxfail=0")
 
 
 def test_repository_gate_fails_closed_after_a_stage_failure() -> None:
