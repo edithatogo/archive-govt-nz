@@ -1,0 +1,42 @@
+# Source Set: Health and Disability Commissioner public decisions
+name: "hdc-public-decisions"
+description: "Public New Zealand Health and Disability Commissioner decision pages and associated decision documents."
+enabled: false
+adapters:
+  - "web"
+schedule: "manual"
+checkpoint_location: "evidence/checkpoints/hdc-public-decisions.json"
+rights_class: "source_specific_review_required"
+output_preservation_policy:
+  format: "warc_and_manifest"
+  compression: "gzip"
+  cas_hash_algorithm: "sha256"
+  retention: "permanent_subject_to_rights_review"
+publication_policy:
+  huggingface:
+    enabled: false
+    dataset_slug: "edithatogo/corpus-cases-medilegal-nz"
+    note: "Publication requires separate row-level rights, privacy, redaction, schema and canonical-dataset review."
+  zenodo:
+    enabled: false
+capture_contract:
+  preserve:
+    - "authoritative_url"
+    - "redirect_chain"
+    - "retrieved_at"
+    - "http_metadata"
+    - "mime_type"
+    - "sha256"
+    - "source_version"
+    - "supersession_relation"
+    - "rights_status"
+  exclude:
+    - "project_interpretation"
+    - "case_outcome_coding"
+    - "legal_or_clinical_conclusions"
+consumer:
+  repository: "edithatogo/nlp-policy-nz"
+  profile: "medico-legal-hdc-source-profile"
+claim_boundary: "A capture receipt is not a verified case record, legal interpretation, clinical finding, or permission to redistribute."
+targets:
+  - "https://www.hdc.org.nz/decisions/search-decisions/"
