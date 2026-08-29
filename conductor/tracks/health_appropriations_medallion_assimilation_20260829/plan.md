@@ -21,11 +21,11 @@ repository validation command. External gates block only their affected task.
 
 ### 0.1 Reconcile the implementation baseline
 
-- [ ] Re-observe the current Archive Govt NZ head, donor ref/tree, live source
+- [x] Re-observe the current Archive Govt NZ head, donor ref/tree, live source
   landing pages, Hugging Face collection membership and local toolchain; append
   machine-readable receipts without changing external state. [M-01, M-19;
   AC-01, AC-04]
-- [ ] Verify the pinned 23-path donor inventory, 6,604,301-byte total,
+- [x] Verify the pinned 23-path donor inventory, 6,604,301-byte total,
   deterministic archive digest, five SQLite tables/312 rows, three scripts and
   six plots. Record any drift as a new source version rather than editing the
   baseline. [M-01, M-08, M-09; AC-01, AC-06, AC-07]

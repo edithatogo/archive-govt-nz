@@ -61,7 +61,27 @@ Hugging Face publication state was changed during planning.
   and a validated 102-component CycloneDX SBOM.
 - Four harness-generated timestamp-only evidence diffs were inspected and
   restored. They were unrelated to this planning track and are not included in
-  its change set.
+its change set.
+
+## 2026-08-29 — Phase 0.1 implementation baseline
+
+- Re-observed local commit `160d1705ee93d898c635f094fe98d8ae14d16695`
+  and remote `main` at `b5f736010a47f5a260dca35d5ee3f4dbcadb4de7`.
+- Re-cloned the donor read-only at its pinned commit. Its remote ref, tree,
+  no-prefix deterministic Git archive digest, 23 paths, 6,604,301 bytes,
+  eight originals, five SQLite tables/312 rows, three scripts and six plots
+  all match the planning baseline. A prefixed archive has a different digest,
+  as expected; the receipt therefore names the no-prefix archive contract.
+- Observed all eight official landing-page leads. Pharmac and both Stats NZ
+  pages returned HTTP 200; the four Treasury/Budget pages and Ministry page
+  returned bounded HTTP 403 responses to the command-line client. These are
+  availability observations, not source-item dispositions or capture claims.
+- Confirmed Hugging Face authentication as `edithatogo`, absence of the target
+  dataset, and one existing HEOR collection member. No matching GitHub issue
+  exists. No hosted state was changed during this reconciliation.
+- Recorded the local toolchain versions for `uv`, Python, GitHub CLI,
+  Hugging Face CLI and Git. DuckDB and LibreOffice executables were not found
+  on `PATH`; repository-managed Python capabilities are evaluated separately.
 - The first staged-source scan failed closed on one unverified keyword finding:
   a machine-evidence key named `secret_scan`. Inspection of the bounded receipt
   confirmed that no token or credential was present. The field was renamed to

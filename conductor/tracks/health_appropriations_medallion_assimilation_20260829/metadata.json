@@ -4,7 +4,7 @@
   "type": "feature",
   "status": "in_progress",
   "created_at": "2026-08-29T05:39:14Z",
-  "updated_at": "2026-08-29T08:22:00Z",
+  "updated_at": "2026-08-29T08:26:05Z",
   "description": "Zero-loss assimilation of nz_health_appropriations into Bronze, dedicated multi-recordset Silver, reproducible Gold analytics, rights-aware Platinum metadata and gated Hugging Face publication.",
   "requirements_method": "MoSCoW",
   "evidence_schema": "1.0",
@@ -20,6 +20,18 @@
     "donor_sqlite_table_count": 5,
     "donor_sqlite_row_count": 312,
     "donor_plot_count": 6
+  },
+  "implementation_observation": {
+    "observed_at": "2026-08-29T08:26:05Z",
+    "archive_govt_nz_commit": "160d1705ee93d898c635f094fe98d8ae14d16695",
+    "archive_govt_nz_remote_main": "b5f736010a47f5a260dca35d5ee3f4dbcadb4de7",
+    "donor_remote_main": "4668e6c3b1b492086941d4c1ef96e299250a8301",
+    "donor_baseline_drift": false,
+    "hf_dataset_exists": false,
+    "hf_collection_member_count": 1,
+    "official_landing_pages_observed": 8,
+    "official_landing_pages_http_200": 4,
+    "official_landing_pages_http_403": 4
   },
   "publication_target": {
     "dataset": "edithatogo/nz-health-appropriations",

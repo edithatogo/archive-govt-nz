@@ -74,3 +74,18 @@ observations, not publication receipts.
 - upload, remote readback, Dataset Viewer/Parquet, revision and collection
   membership receipts; and
 - explicit public release state.
+
+## Phase 0.1 reconciliation
+
+At `2026-08-29T08:26:05Z`, the pinned donor identity and complete inventory
+were re-observed without drift: 23 paths, 6,604,301 bytes, eight source
+originals, five SQLite tables containing 312 rows, three scripts and six PNG
+plots. The no-prefix `git archive` SHA-256 remains
+`9c8ab0feaa752ead08163463a634623d55a62a69608772b73127b3d7b709157e`.
+
+The target Hugging Face dataset remained absent and the HEOR collection still
+contained one unrelated dataset. Eight official landing pages were probed:
+four returned HTTP 200 and four returned HTTP 403 to the bounded command-line
+client. A 403 landing-page observation is not interpreted as resource absence;
+Phase 1 must use source-family discovery and explicit dispositions. No external
+state was mutated by this task.
