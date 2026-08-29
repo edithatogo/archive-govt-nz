@@ -19,6 +19,14 @@ gate is required for the testing configuration task.
 - Focused suite: 10 passed; Ruff and basedpyright passed.
 - Full 1,100+ test parallel execution is a separate pending evidence task.
 
+### REQ-PAR-001 parallel verification
+
+- The full suite passed through xdist `loadscope` with 10 workers: 1,163 tests
+  in 90.31 seconds at 95.32% coverage.
+- No isolation or race failure was observed across temporary files, DuckDB,
+  snapshot, coverage, or subprocess-backed tests.
+- Result is local-only and comparable only to runs on this host.
+
 ### REQ-MUT-001 and REQ-MUT-002
 
 - Status: repository implementation committed as `ab4ed66`.

@@ -127,3 +127,12 @@
   basedpyright passed for the implementation and tests.
 - Invalid compound worker input failed closed without reaching pytest.
 - Functional commit: `05add7a` (`feat(test): add opt-in xdist assurance lane`).
+
+## 2026-08-29 — REQ-PAR-001 parallel verification
+
+- `uv run --locked pytest --cov=archive_govt_nz --cov-branch
+  --cov-report=term-missing -n auto --dist loadscope` — passed with 10 workers:
+  1,163 tests in 90.31 seconds and 95.32% combined line/branch coverage.
+- No cross-test race, temporary-directory collision, DuckDB conflict, snapshot
+  corruption, or subprocess-protocol failure was observed.
+- This is local same-host timing evidence, not a hosted speed claim.

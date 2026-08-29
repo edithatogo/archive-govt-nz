@@ -8,7 +8,7 @@
 
 ### Phase 2: Parallel Test Execution Harness (`pytest-xdist`)
 - [x] Task: Configure `pytest-xdist` parallel execution options in `tools/check.py` and `src/archive_govt_nz/assurance.py`. (`05add7a`)
-- [ ] Task: Verify that parallel execution passes 100% across all 1,100+ tests without cross-test race conditions.
+- [x] Task: Verify that parallel execution passes 100% across all 1,100+ tests without cross-test race conditions. (`90.31s`, 1,163 passed)
 
 ### Phase 3: Property-Based Testing Suite (`hypothesis`)
 - [ ] Task: Implement `tests/properties/test_urn_properties.py` for URN parsing invariants.
