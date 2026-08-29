@@ -65,6 +65,8 @@ def test_targets_exist() -> None:
     """Every bounded mutation target must exist in the repository."""
     for target in gremlins.TARGETS:
         assert (gremlins.ROOT / target).is_file()
+    for test_path in gremlins.TEST_PATHS:
+        assert (gremlins.ROOT / test_path).is_file()
 
 
 def test_success_writes_bounded_atomic_receipt(
@@ -79,6 +81,7 @@ def test_success_writes_bounded_atomic_receipt(
         _write_plugin_report()
         assert "--gremlin-clear-cache" in command
         assert "addopts=" not in command
+        assert all(test_path in command for test_path in gremlins.TEST_PATHS)
         return subprocess.CompletedProcess(command, 0, "sensitive output", "")
 
     monkeypatch.setattr(gremlins.subprocess, "run", fake_run)

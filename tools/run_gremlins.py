@@ -21,6 +21,11 @@ TARGETS: tuple[str, ...] = (
     "src/archive_govt_nz/gold/nlp_export.py",
     "src/archive_govt_nz/schemas/medallion.py",
 )
+TEST_PATHS: tuple[str, ...] = (
+    "tests/gold/test_nlp_export.py",
+    "tests/schemas/test_medallion_croissant.py",
+    "tests/schemas/test_ontological_schemas.py",
+)
 
 
 class GremlinSummary(TypedDict):
@@ -178,6 +183,7 @@ def run_gremlins_suite(
         "--max-pardons=0",
         "--no-cov",
         "-q",
+        *TEST_PATHS,
     ]
     if clear_cache:
         command.append("--gremlin-clear-cache")
