@@ -36,6 +36,18 @@ _RIGHTS = {
         "evidence": "https://www.health.govt.nz/about-this-site/copyright",
         "attribution": "Ministry of Health New Zealand",
     },
+    "www.stats.govt.nz": {
+        "state": "eligible",
+        "license": "CC-BY-4.0",
+        "evidence": "https://www.stats.govt.nz/about-us/copyright/",
+        "attribution": "Stats NZ Tatauranga Aotearoa",
+    },
+    "www.pharmac.govt.nz": {
+        "state": "eligible",
+        "license": "CC-BY-4.0",
+        "evidence": "https://www.pharmac.govt.nz/about-this-site/copyright",
+        "attribution": "Pharmac Te Pataka Whaioranga",
+    },
 }
 
 
@@ -64,11 +76,13 @@ async def _capture(args: argparse.Namespace) -> dict[str, object]:
     selected = [
         row
         for row in records
-        if row.get("media_type")
+        if row.get("disposition") in {"discovered", "captured"}
+        and row.get("media_type")
         in {
             "application/pdf",
             "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
             "text/csv",
+            "text/html",
         }
         and urlsplit(cast("str", row["url"])).hostname in _RIGHTS
     ]

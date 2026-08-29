@@ -1,7 +1,7 @@
 {
   "capture_reconciliation": {
-    "capture_manifest": "official-capture-2026-08-29-vote.json",
-    "matched": 66
+    "capture_manifest": "official-capture-2026-08-29-context-v2.json",
+    "matched": 71
   },
   "cutoff": "2026-08-29",
   "discovery_evidence": {
@@ -11,7 +11,7 @@
     "vote_link_count": 66
   },
   "observed_at": "2026-08-29T09:00:17Z",
-  "record_count": 135,
+  "record_count": 139,
   "records": [
     {
       "cutoff": "2026-08-29",
@@ -155,33 +155,92 @@
     },
     {
       "cutoff": "2026-08-29",
-      "disposition": "discovered",
+      "disposition": "captured",
       "family": "pharmac_cpb",
+      "license": "CC-BY-4.0",
       "media_type": "text/html",
+      "object_sha256": "eaf5801b819321f8aed7544fb16e6348779267fd3d5f8fb1d59410803acffbea",
       "observed_at": "2026-08-29T09:00:17Z",
-      "reason": "official resource observed; rights and capture preflight pending",
+      "reason": "bounded capture with fixity and WARC evidence",
+      "rights_uri": "https://www.pharmac.govt.nz/about-this-site/copyright",
       "source_id": "pharmac_cpb-010",
       "title": "Combined Pharmaceutical Budget information",
       "url": "https://www.pharmac.govt.nz/medicine-funding-and-supply/the-funding-process/setting-and-managing-the-combined-pharmaceutical-budget-cpb/budget-bid-information"
     },
     {
       "cutoff": "2026-08-29",
-      "disposition": "discovered",
+      "disposition": "out_of_scope",
       "family": "stats_nz_cpi",
       "media_type": "text/html",
       "observed_at": "2026-08-29T09:00:17Z",
-      "reason": "official resource observed; rights and capture preflight pending",
+      "reason": "discovery page represented by selected index-number CSV",
       "source_id": "stats_nz_cpi-012",
       "title": "Consumers price index June 2026 quarter",
       "url": "https://www.stats.govt.nz/information-releases/consumers-price-index-june-2026-quarter/"
     },
     {
       "cutoff": "2026-08-29",
-      "disposition": "discovered",
+      "disposition": "captured",
+      "family": "stats_nz_cpi",
+      "license": "CC-BY-4.0",
+      "media_type": "text/csv",
+      "object_sha256": "f474a6a3bfbe9b6377c3c68cc94a4cb494335130af3940fe538f5a0dd1274e9d",
+      "observed_at": "2026-08-29T09:00:17Z",
+      "reason": "bounded capture with fixity and WARC evidence",
+      "rights_uri": "https://www.stats.govt.nz/about-us/copyright/",
+      "source_id": "stats_nz_cpi-053a0705526fac8d",
+      "title": "Consumers price index: June 2026 quarter - index numbers",
+      "url": "https://www.stats.govt.nz/assets/Uploads/Consumers-price-index/Consumers-price-index-June-2026-quarter/Download-data/consumers-price-index-june-2026-quarter-index-numbers.csv"
+    },
+    {
+      "cutoff": "2026-08-29",
+      "disposition": "captured",
+      "family": "stats_nz_gdp",
+      "license": "CC-BY-4.0",
+      "media_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "object_sha256": "a7326e84e7704446a18e5c8942f99901a452b2170af4228e8a5c242a5532ed21",
+      "observed_at": "2026-08-29T09:00:17Z",
+      "reason": "bounded capture with fixity and WARC evidence",
+      "rights_uri": "https://www.stats.govt.nz/about-us/copyright/",
+      "source_id": "stats_nz_gdp-9fc80ed4b7f234b2",
+      "title": "GDP: March 2026 quarter - current price income and expenditure",
+      "url": "https://www.stats.govt.nz/assets/Uploads/Gross-domestic-product/Gross-domestic-product-March-2026-quarter/Download-data/gross-domestic-product-march-2026-quarter-current-price-income-and-expenditure.xlsx"
+    },
+    {
+      "cutoff": "2026-08-29",
+      "disposition": "captured",
+      "family": "stats_nz_population",
+      "license": "CC-BY-4.0",
+      "media_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "object_sha256": "315f48f981cb237bbd1c4834676fd030f84e7eddc7f7660402956c05ca53a8c0",
+      "observed_at": "2026-08-29T09:00:17Z",
+      "reason": "bounded capture with fixity and WARC evidence",
+      "rights_uri": "https://www.stats.govt.nz/about-us/copyright/",
+      "source_id": "stats_nz_population-806dead2a5b8ab69",
+      "title": "HLFS estimated working-age population: June 2026 quarter",
+      "url": "https://www.stats.govt.nz/assets/Uploads/Labour-market-statistics/Labour-market-statistics-June-2026-quarter/Download-data/household-labour-force-survey-june-2026-quarter.xlsx"
+    },
+    {
+      "cutoff": "2026-08-29",
+      "disposition": "captured",
+      "family": "stats_nz_qes",
+      "license": "CC-BY-4.0",
+      "media_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "object_sha256": "1af2e7e37f1c108a2656842cf1f519c903e1a982bcdc03ee02d0ad888ebc3a97",
+      "observed_at": "2026-08-29T09:00:17Z",
+      "reason": "bounded capture with fixity and WARC evidence",
+      "rights_uri": "https://www.stats.govt.nz/about-us/copyright/",
+      "source_id": "stats_nz_qes-faab0efe46470af8",
+      "title": "Quarterly employment survey: June 2026 quarter",
+      "url": "https://www.stats.govt.nz/assets/Uploads/Labour-market-statistics/Labour-market-statistics-June-2026-quarter/Download-data/quarterly-employment-survey-june-2026-quarter.xlsx"
+    },
+    {
+      "cutoff": "2026-08-29",
+      "disposition": "out_of_scope",
       "family": "stats_nz_rights",
       "media_type": "text/html",
       "observed_at": "2026-08-29T09:00:17Z",
-      "reason": "official resource observed; rights and capture preflight pending",
+      "reason": "rights evidence URI; not an analytical data source",
       "source_id": "stats_nz_rights-011",
       "title": "Stats NZ copyright statement",
       "url": "https://www.stats.govt.nz/about-us/copyright/"
