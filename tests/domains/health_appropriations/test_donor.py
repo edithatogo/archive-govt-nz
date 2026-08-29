@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import subprocess
 from pathlib import Path
+from typing import Any, cast
 
 import pytest
 
@@ -54,7 +55,8 @@ def test_complete_donor_import_and_reconstruction(tmp_path: Path) -> None:
     )
     verify_donor_reconstruction(manifest, store)
     assert manifest["file_count"] == 2
-    assert {row["path"] for row in manifest["objects"]} == {"code.py", "raw.bin"}
+    objects = cast("list[dict[str, Any]]", manifest["objects"])
+    assert {row["path"] for row in objects} == {"code.py", "raw.bin"}
 
 
 def test_donor_import_rejects_identity_and_archive_drift(tmp_path: Path) -> None:

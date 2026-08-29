@@ -1,5 +1,7 @@
 """Official-source census extraction contracts."""
 
+from typing import Any, cast
+
 from archive_govt_nz.domains.health_appropriations.census import (
     build_census,
     extract_official_links,
@@ -30,9 +32,10 @@ def test_census_is_cutoff_bound_and_disposition_complete() -> None:
         observed_at="2026-08-29T00:00:00Z",
         cutoff="2026-08-29",
     )
-    assert census["record_count"] == len(census["records"])
-    assert all(record["disposition"] == "discovered" for record in census["records"])
-    assert {record["family"] for record in census["records"]} >= {
+    records = cast("list[dict[str, Any]]", census["records"])
+    assert census["record_count"] == len(records)
+    assert all(record["disposition"] == "discovered" for record in records)
+    assert {record["family"] for record in records} >= {
         "treasury_vote_health",
         "budget_2026",
         "moh_vote_health",

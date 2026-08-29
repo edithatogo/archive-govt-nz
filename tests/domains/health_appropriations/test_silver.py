@@ -101,7 +101,11 @@ def test_gold_rebuilds_compatibility_analytics_and_six_plots(tmp_path: Path) -> 
         tmp_path / "gold" / "analytics", tmp_path / "gold" / "plots"
     )
     assert sum(counts.values()) == 5
-    assert len(analytics["outputs"]) == 5
-    assert len(plots["plots"]) == 6
+    analytics_outputs = analytics["outputs"]
+    plot_outputs = plots["plots"]
+    assert isinstance(analytics_outputs, list)
+    assert isinstance(plot_outputs, list)
+    assert len(analytics_outputs) == 5
+    assert len(plot_outputs) == 6
     with sqlite3.connect(rebuilt) as connection:
         assert connection.execute("PRAGMA integrity_check").fetchone()[0] == "ok"

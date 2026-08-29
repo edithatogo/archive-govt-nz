@@ -75,6 +75,7 @@ def test_workbook_inventory_preserves_structure(tmp_path: Path) -> None:
     path = tmp_path / "fixture.xlsx"
     workbook = Workbook()
     sheet = workbook.active
+    assert sheet is not None
     sheet.title = "Raw Data"
     sheet["A1"] = "Year"
     sheet["B1"] = "Amount"
@@ -111,4 +112,6 @@ def test_pdf_and_sqlite_inventory(tmp_path: Path) -> None:
         connection.executemany("INSERT INTO facts VALUES (?)", [(1,), (2,)])
     result = inventory_sqlite(database)
     assert result["integrity"] == "ok"
-    assert result["tables"][0]["row_count"] == 2
+    tables = result["tables"]
+    assert isinstance(tables, list)
+    assert tables[0]["row_count"] == 2
