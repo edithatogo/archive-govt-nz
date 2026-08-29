@@ -32,6 +32,7 @@ def build_stages(
     *,
     pytest_workers: str | None = None,
     pytest_distribution: str = "loadscope",
+    include_heavy: bool = False,
 ) -> tuple[GateStage, ...]:
     """Build the gate sequence with an optional isolated xdist test lane."""
     if pytest_workers is not None and not (
@@ -50,7 +51,7 @@ def build_stages(
     if pytest_workers is not None:
         pytest_command += ("-n", pytest_workers, "--dist", pytest_distribution)
 
-    return (
+    stages = (
         GateStage("lock", ("uv", "lock", "--check")),
         GateStage(
             "format", ("uv", "run", "--locked", "ruff", "format", "--check", ".")
@@ -135,6 +136,18 @@ def build_stages(
             ("uv", "run", "--locked", "python", "tools/supply_chain.py", "sbom"),
         ),
     )
+    if include_heavy:
+        stages += (
+            GateStage(
+                "gremlins",
+                ("uv", "run", "--locked", "python", "tools/run_gremlins.py"),
+            ),
+            GateStage(
+                "profile-scalene",
+                ("uv", "run", "--locked", "python", "tools/profile_scalene.py"),
+            ),
+        )
+    return stages
 
 
 STAGES = build_stages()

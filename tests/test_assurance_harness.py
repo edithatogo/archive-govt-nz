@@ -126,6 +126,33 @@ def test_parallel_pytest_lane_rejects_unsafe_worker_values() -> None:
         build_stages(pytest_workers="auto --maxfail=0")
 
 
+def test_heavy_assurance_lanes_are_explicit_and_bounded() -> None:
+    """Gremlins and Scalene are available without slowing the default gate."""
+    default_names = tuple(stage.name for stage in STAGES)
+    heavy = build_stages(include_heavy=True)
+
+    assert "gremlins" not in default_names
+    assert "profile-scalene" not in default_names
+    assert tuple(stage.name for stage in heavy[-2:]) == (
+        "gremlins",
+        "profile-scalene",
+    )
+    assert heavy[-2].command == (
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "tools/run_gremlins.py",
+    )
+    assert heavy[-1].command == (
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "tools/profile_scalene.py",
+    )
+
+
 def test_repository_gate_fails_closed_after_a_stage_failure() -> None:
     """A failed stage stops later checks and returns that process status."""
     calls: list[tuple[str, ...]] = []
