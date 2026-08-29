@@ -140,17 +140,19 @@ The codebase enforces strict quality boundaries via `tools/check.py`:
   forbidden-pattern classes.
 - **Supply-Chain Hardening**: Automated CycloneDX SBOM generation, `pip-audit`, `pip-licenses`, and `detect-secrets`.
 
-Run the deterministic serial gate before every pull request:
+Run the deterministic, process-isolated gate before every pull request:
 
 ```bash
 ./scripts/validate.sh
 ```
 
-Two explicit evidence profiles keep heavier or process-parallel work out of the
-ordinary fast-first lane:
+The wrapper uses the verified xdist `auto/loadscope` profile so the full suite
+stays within the bounded test-stage timeout. The underlying runner retains a
+serial diagnostic mode when invoked without worker options. A separate heavy
+profile keeps mutation and resource profiling out of the ordinary lane:
 
 ```bash
-# Prove the complete suite under isolated xdist workers.
+# Re-run the complete suite under the wrapper's isolated xdist profile.
 uv run --locked python tools/check.py --pytest-workers auto \
   --pytest-distribution loadscope
 

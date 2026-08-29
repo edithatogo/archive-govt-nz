@@ -204,3 +204,13 @@ def test_windows_validation_wrapper_propagates_gate_status() -> None:
     """PowerShell must not turn a failed Python gate into a successful run."""
     wrapper = Path("scripts/validate.ps1").read_text(encoding="utf-8")
     assert "exit $LASTEXITCODE" in wrapper
+
+
+def test_validation_wrappers_use_the_verified_parallel_lane() -> None:
+    """The required wrappers stay within the test-stage timeout."""
+    shell = Path("scripts/validate.sh").read_text(encoding="utf-8")
+    powershell = Path("scripts/validate.ps1").read_text(encoding="utf-8")
+
+    for wrapper in (shell, powershell):
+        assert "--pytest-workers auto" in wrapper
+        assert "--pytest-distribution loadscope" in wrapper
