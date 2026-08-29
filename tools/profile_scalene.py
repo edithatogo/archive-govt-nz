@@ -32,6 +32,39 @@ def _number(value: object, *, name: str) -> float:
     return float(value)
 
 
+def _output_digest(value: str | bytes | None) -> str:
+    if value is None:
+        payload = b""
+    elif isinstance(value, bytes):
+        payload = value
+    else:
+        payload = value.encode("utf-8", errors="replace")
+    return hashlib.sha256(payload).hexdigest()
+
+
+def build_failure_receipt(
+    *,
+    failure_kind: str,
+    returncode: int,
+    stdout: str | bytes | None = None,
+    stderr: str | bytes | None = None,
+) -> dict[str, object]:
+    """Build a redacted fail-closed profiler receipt."""
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "status": "failed",
+        "profiler": "scalene",
+        "profiler_version": importlib.metadata.version("scalene"),
+        "target": "bronze-silver-gold-medallion",
+        "failure_kind": failure_kind,
+        "returncode": returncode,
+        "stdout_sha256": _output_digest(stdout),
+        "stderr_sha256": _output_digest(stderr),
+        "evidence_scope": "local",
+        "hosted_execution_claimed": False,
+    }
+
+
 def summarize_profile(profile: object) -> dict[str, float]:
     """Extract bounded CPU, memory, native, and copy metrics fail-closed."""
     if not isinstance(profile, dict):
@@ -201,6 +234,7 @@ def run_profile(
         raise ValueError(msg)
     output.parent.mkdir(parents=True, exist_ok=True)
     raw_output.parent.mkdir(parents=True, exist_ok=True)
+    raw_output.unlink(missing_ok=True)
     with tempfile.TemporaryDirectory(
         prefix="archive-govt-nz-profile-receipt-"
     ) as directory:
@@ -227,23 +261,66 @@ def run_profile(
                 capture_output=True,
                 text=True,
             )
-        except subprocess.TimeoutExpired:
+        except subprocess.TimeoutExpired as error:
+            write_json_atomic(
+                output,
+                build_failure_receipt(
+                    failure_kind="timeout",
+                    returncode=124,
+                    stdout=error.stdout,
+                    stderr=error.stderr,
+                ),
+            )
             return 124
-        if result.returncode != 0 or not raw_output.is_file():
-            return result.returncode or 1
+        if result.returncode != 0:
+            write_json_atomic(
+                output,
+                build_failure_receipt(
+                    failure_kind="profiler_process",
+                    returncode=result.returncode,
+                    stdout=result.stdout,
+                    stderr=result.stderr,
+                ),
+            )
+            return result.returncode
+        if not raw_output.is_file():
+            write_json_atomic(
+                output,
+                build_failure_receipt(failure_kind="missing_raw_profile", returncode=1),
+            )
+            return 1
         if not workload_receipt.is_file():
+            write_json_atomic(
+                output,
+                build_failure_receipt(
+                    failure_kind="missing_workload_receipt", returncode=1
+                ),
+            )
             return 1
         raw_bytes = raw_output.read_bytes()
-        raw_profile = json.loads(raw_bytes)
-        workload = cast(
-            "dict[str, object]", json.loads(workload_receipt.read_text("utf-8"))
-        )
-        receipt = build_receipt(
-            raw_profile=raw_profile,
-            raw_sha256=hashlib.sha256(raw_bytes).hexdigest(),
-            raw_size_bytes=len(raw_bytes),
-            workload=workload,
-        )
+        try:
+            raw_profile = json.loads(raw_bytes)
+            workload_value = json.loads(workload_receipt.read_text("utf-8"))
+            if not isinstance(workload_value, dict):
+                msg = "workload receipt must be a JSON object"
+                raise ValueError(msg)  # noqa: TRY004, TRY301
+            workload = cast("dict[str, object]", workload_value)
+            receipt = build_receipt(
+                raw_profile=raw_profile,
+                raw_sha256=hashlib.sha256(raw_bytes).hexdigest(),
+                raw_size_bytes=len(raw_bytes),
+                workload=workload,
+            )
+        except (json.JSONDecodeError, OSError, TypeError, ValueError) as error:
+            write_json_atomic(
+                output,
+                build_failure_receipt(
+                    failure_kind="invalid_profile",
+                    returncode=1,
+                    stderr=str(error),
+                ),
+            )
+            return 1
         write_json_atomic(output, receipt)
     print(f"Scalene profile passed; receipt={output.relative_to(REPOSITORY_ROOT)}")
     return 0
