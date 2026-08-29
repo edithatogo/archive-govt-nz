@@ -140,6 +140,28 @@ The codebase enforces strict quality boundaries via `tools/check.py`:
   forbidden-pattern classes.
 - **Supply-Chain Hardening**: Automated CycloneDX SBOM generation, `pip-audit`, `pip-licenses`, and `detect-secrets`.
 
+Run the deterministic serial gate before every pull request:
+
+```bash
+./scripts/validate.sh
+```
+
+Two explicit evidence profiles keep heavier or process-parallel work out of the
+ordinary fast-first lane:
+
+```bash
+# Prove the complete suite under isolated xdist workers.
+uv run --locked python tools/check.py --pytest-workers auto \
+  --pytest-distribution loadscope
+
+# Append bounded pytest-gremlins and Bronze-to-Gold Scalene evidence stages.
+uv run --locked python tools/check.py --include-heavy
+```
+
+Parallel results are same-host timing evidence only. Scalene writes a portable,
+path-redacted summary to `build/profiling-scalene.json`; raw profiler output and
+all generated coverage shards remain ignored local derivatives.
+
 ---
 
 ## Consolidation & Provenance
