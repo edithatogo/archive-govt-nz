@@ -177,9 +177,7 @@ def main() -> int:
         if source_disposition_passed
         else "partial_not_release_ready"
     )
-    (args.output_dir / "README.md").write_text(
-        _card(candidate_state), encoding="utf-8"
-    )
+    (args.output_dir / "README.md").write_text(_card(candidate_state), encoding="utf-8")
     files = sorted(path for path in args.output_dir.rglob("*") if path.is_file())
     crate = {
         "@context": "https://w3id.org/ro/crate/1.1/context",
