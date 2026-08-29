@@ -22,6 +22,7 @@
 - [x] Task: Add test suite in `tests/tools/test_profile_scalene.py`. (`0183c95`)
 
 ### Phase 5: Assurance Gate Synchronization & Full Harness Validation
-- [ ] Task: Update `src/archive_govt_nz/assurance.py` with `profile-scalene` and updated gate stages.
-- [ ] Task: Update `tests/test_assurance_harness.py` and `README.md`.
-- [ ] Task: Run `./scripts/validate.sh` and ensure all stages pass green with >= 95% branch coverage.
+- [x] Task: Update `src/archive_govt_nz/assurance.py` with `profile-scalene` and updated gate stages. (`d715c47`)
+- [x] Task: Update `tests/test_assurance_harness.py` and `README.md`. (`d715c47`, `caf12ae`)
+- [x] Task: Run `./scripts/validate.sh` and ensure all stages pass green with >= 95% branch coverage. (1,182 passed; 95.33%)
+- [x] **Review Fixes:** Emit structured Scalene failure receipts and reject stale raw profiles. (`51a2554`)

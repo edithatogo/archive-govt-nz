@@ -46,6 +46,31 @@ gate is required for the testing configuration task.
 - Receipt contains CPU, native allocation, memory, and copy-rate metric families
   and no absolute path. The raw profile remains an ignored local artefact.
 
+### REQ-GATE-001 assurance integration
+
+- `tools/check.py --include-heavy` exposes bounded `gremlins` and
+  `profile-scalene` stages without changing the default fast-first gate.
+- `tools/check.py --pytest-workers auto --pytest-distribution loadscope`
+  exposes the independently verified parallel lane.
+- Focused assurance/profiling suite: 16 passed; Ruff, basedpyright and hygiene
+  passed. Commits: `d715c47` and `caf12ae`.
+
+### Final validation and review
+
+- Required `./scripts/validate.sh` passed after wrapper correction `9fd2747`:
+  1,180 tests in 110.04 seconds at 95.33% coverage; 30 schemas; 9/9 parity;
+  all repository mutation lanes; hygiene; CAS 286.12 MB/s; audit, licences,
+  tracked-source secret scan, and 102-component SBOM.
+- Dedicated pytest-gremlins lane passed 42/42 after target-test bounding
+  (`05e8a6f`). Dedicated Scalene lane passed.
+- Review fix `51a2554` prevents stale raw-profile reuse and emits atomic,
+  path-redacted failure receipts for every bounded failure class.
+- All evidence remains local-only; hosted CI, merge, release, or publication
+  are not claimed.
+- Post-review `./scripts/validate.sh` passed after `51a2554`: 1,182 tests in
+  111.05 seconds at 95.33% coverage, with every subsequent schema, parity,
+  mutation, hygiene, CAS, audit, licence, secret, and SBOM stage green.
+
 ### REQ-MUT-001 and REQ-MUT-002
 
 - Status: repository implementation committed as `ab4ed66`.

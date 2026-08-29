@@ -72,3 +72,23 @@ No unresolved finding remains within the bounded runner implementation scope.
 Review covers repository-owned configuration, tests, runners, and evidence.
 It does not claim hosted execution, release, publication, or independent human
 approval.
+
+## 2026-08-29 whole-track review
+
+- **Correctness:** resolved a stale-profile and missing-failure-receipt defect
+  in `tools/profile_scalene.py`; regression coverage now exercises timeout and
+  nonzero process paths (`51a2554`).
+- **Performance and isolation:** the complete suite passed under 10 xdist
+  workers with `loadscope`; required wrappers use that verified profile.
+- **Security and provenance:** mutation and profiler subprocess output is
+  represented only by digests; the portable Scalene receipt contains no
+  absolute path. Source secret scanning passed.
+- **Scope:** mutation, parallel, property and profiling Must requirements are
+  implemented. No original archive object or external state changed.
+- **Guides:** project workflow, product guidelines, technology stack, general
+  style and Python style are Pass for affected paths; no separate platform
+  guide was selected. Ruff is the authoritative formatting contract where its
+  configured 88-character limit differs from the summarized Python guide.
+
+No unresolved High, Critical, rights, credential, publication, or archive
+finding remains in this track.

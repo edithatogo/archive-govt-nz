@@ -164,3 +164,34 @@
 - Observed local metrics: 9.96 seconds, 15.60 MB peak footprint, 4.05% maximum
   native CPU and 3.82% maximum Python CPU; 64/64 rows aggregated.
 - Functional harness commit: `e3b9875`.
+
+## 2026-08-29 — REQ-GATE-001 assurance integration
+
+- Red phase: the assurance contract rejected `include_heavy=True` because no
+  explicit heavy-lane interface existed.
+- Added opt-in `gremlins` and `profile-scalene` stages after the ordinary
+  fast-first sequence (`d715c47`). The default serial stage list is unchanged.
+- Assurance and profiling contracts: 16 passed; Ruff, basedpyright, hygiene,
+  CLI stage listing, and diff checks passed.
+- README commands and evidence-boundary documentation committed as `caf12ae`.
+
+## 2026-08-29 — Final gate and review fixes
+
+- First post-integration Gremlins run timed out at 300 seconds after global
+  test selection expanded. The runner was bounded to the three tests covering
+  its two configured targets; the second run passed 42/42 in about 31 seconds
+  (`05e8a6f`).
+- The first required serial wrapper run reached the 300-second test timeout at
+  59% with no assertion failure. Both required platform wrappers now use the
+  previously verified `auto/loadscope` lane and retain direct serial diagnosis
+  through `tools/check.py` (`9fd2747`).
+- `./scripts/validate.sh` then passed: 1,180 tests in 110.04 seconds, 95.33%
+  coverage, 30 schemas, 9/9 parity, every mutation lane, hygiene, CAS at
+  286.12 MB/s, dependency audit, licences, tracked-source secrets, and a
+  102-component SBOM.
+- Automatic review found stale raw Scalene output could survive a timeout and
+  no structured failure receipt was emitted. Regression tests failed first;
+  the runner now removes stale raw output and atomically emits redacted timeout,
+  process, missing-output, and invalid-profile receipts (`51a2554`).
+- Focused review-fix suite: 7 passed; Ruff and basedpyright passed; a live
+  Scalene profile passed after the fix.
