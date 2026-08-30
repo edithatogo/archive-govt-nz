@@ -20,6 +20,9 @@ every planned record set, measure or operational workflow.
 - [Design](./design.md)
 - [Implementation plan](./plan.md)
 - [Autonomous continuation route](./continuation.md)
+- [Pinned donor behavior](./donor-behavior.md)
+- [Raw Budget extraction](./raw-budget.md)
+- [Next raw-source ranges and semantic boundaries](./next-source-ranges.md)
 - [Metadata](./metadata.json)
 - [Run log](./runlog.md)
 - [Evidence](./evidence.md)
@@ -37,6 +40,9 @@ every planned record set, measure or operational workflow.
   in the recorded 141-entry census; discovery is not capture.
 - Derivatives: 312 Silver records, 1,699 field-lineage records and 12 Gold
   artifacts; donor SQLite parity and clean-room rebuild receipts are recorded.
+- Separate raw Budget extraction: 215 Health facts, 3,655 cell-lineage rows
+  and 6,504 input dispositions; all seven donor appropriation fields match in
+  order. These new local outputs do not replace the published derivatives.
 - Hugging Face: `published_and_verified` for the pinned candidate, with
   [dataset](https://huggingface.co/datasets/edithatogo/nz-health-appropriations)
   revision `9b85bac06597d4435fd078f6bed0f30bb008542b` and manifest SHA-256

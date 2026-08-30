@@ -90,6 +90,10 @@ repository validation command. External gates block only their affected task.
 
 ### 1.3 Characterize every donor binary and derivative
 
+- [x] Record hash-pinned static behavior and compile characterization of all
+  three donor scripts without executing their side effects. [M-09; AC-07]
+  (`d26e769`)
+
 - [x] Complete inert macro-part, external-link and opaque/embedded-part
   inventory contracts; verify no external retrieval, no payload disclosure and
   byte-exact preservation. [M-07, M-18, S-03; AC-03, AC-16] (`ee54bc9`)
@@ -235,6 +239,13 @@ repository validation command. External gates block only their affected task.
   deviation. [M-08, M-18; AC-06, AC-11, AC-16]
 
 ### 4.2 Build source-faithful donor Silver records
+
+- [x] Implement the named-column Budget expenditure adapter from verified
+  original bytes, with full row dispositions, source-cell lineage, fixed decimal
+  amounts and a non-overwriting Parquet/manifest command. Reconcile the pinned
+  workbook's 215 Health rows against its donor-table oracle without altering
+  the existing donor-SQLite products. [M-05, M-07, M-08, M-09; AC-03, AC-05, AC-06]
+  (`d26e769`)
 
 - [ ] Normalize all in-scope donor workbook data areas into the dedicated
   record sets; attach field/cell lineage and reason-coded exclusions. [M-05,

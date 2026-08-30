@@ -26,6 +26,12 @@ one bounded snapshot, verifies its SHA-256, inventories the workbook and extract
 only the exact `Raw Data` sheet. Required columns are selected by name, not
 position; original extra columns remain in row JSON and field lineage.
 
+The example time is a fixed reproducibility-test context, not an attestation
+that capture occurred at midnight. For operational builds, supply the verified
+source observation time from the acquisition evidence. The local verification
+build retained under `silver/raw-budget-d26e769` uses that fixed test context;
+it is a validation derivative, not a replacement acquisition receipt.
+
 Outputs are `budget_facts.parquet`, `field_lineage.parquet`,
 `row_dispositions.parquet` and `MANIFEST.json`. Every rectangular input row
 after the header has one disposition: normalized, non-Health out of scope,
