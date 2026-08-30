@@ -80,3 +80,17 @@ PRs archive-govt-nz#246/#247 and fyi-archive#404/#406 are merged. Follow-up capt
 Donor #407 merged at be992fe036d5a270e228b5277e5b5770b9950ad8 after exact-head green checks; merged tree matches the tested branch. One-request run 33307777685 passed capture, raw verification, upload, clean download and verification before credit. Local independent download verified all seven inventory files (49,405 bytes, two WARC responses); its raw manifest hash matches both batch evidence and the issue receipt. This sample had no attachments; compressed attachment preservation is tested locally, not newly established by this live sample. Installed fyi-cli is 1.2.1.
 
 Queue credit is now 17227/33208, leaving 15981 unprocessed entries and zero active leases. The 41,602-byte artifact expires on 2026-11-28; temporary retention is not durable HF storage. Monitoring remains disabled until source eligibility, durable retention and historical raw gaps are reconciled. No additional public HF upload, country-completion claim or cutover occurred. Receipt: hosted-raw-restore-20260830.json. All phase-level acceptance gates remain as listed in plan.md.
+
+## Continuation — 2026-08-31
+
+Resumed under the existing public-archive authorization from merged receiver 97ae6067d7320fe634f5e202219c412cf4ba754a. Both Conductor validators pass (69 records, zero errors). NZ queue is unchanged at 17227 of 33208, no leases, monitor disabled. P1.5 public readback depends on P3/P4; P2 endpoint rights remain unresolved. Continue the unblocked P3.2/P3.3 immutable-package and metadata-index work, retaining explicit publication gates. Original health checkout remains untouched.
+
+## Local immutable package verification — 2026-08-31
+
+Implemented CAS-backed preservation of original capture files and stored WARC response bytes, JSONL/Parquet object/request/event/resource indexes, deterministic raw tar packaging, and isolated cold restoration with rebuilt-index comparison. Package CLI requires an independently trusted inventory or manifest hash and never uploads implicitly.
+
+Focused checks: 78 passed; critical module line and branch coverage 100%. Four integrity mutations killed. The first mutation harness attempt rejected a non-unique target before mutation; narrowed the target to unique context, reran successfully, and corrected the resulting string-format lint finding. Native schemas: 35 schemas and 25 documents passed. Full harness test stage: 1600 passed, 96.11% coverage; supply-chain stages still running when this entry was written.
+
+Live retained NZ sample: original inventory, one request, two events and two response bodies restored and reindexed identically. No raw payload was committed or uploaded. Source policy observations are separate from redistribution clearance. The adapter's silent skip of attachment HTTP 404 is an additional completeness gap; explicit missing-attachment accounting remains required before resuming dispatch.
+
+Full `PYTEST_XDIST_AUTO_NUM_WORKERS=2 ./scripts/validate.sh` completed with exit 0: 1600 tests, 96.11% coverage, all integrity/mutation, schema, dependency audit, licence, secret and SBOM gates passed. Post-run Ruff/format checks passed for the final mutation harness correction. Receipt: local-package-validation-20260831.json.
