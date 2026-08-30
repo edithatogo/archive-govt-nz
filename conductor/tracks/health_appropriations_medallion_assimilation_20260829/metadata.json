@@ -4,7 +4,7 @@
   "type": "feature",
   "status": "in_progress",
   "created_at": "2026-08-29T05:39:14Z",
-  "updated_at": "2026-08-30T09:13:19Z",
+  "updated_at": "2026-08-30T09:26:39Z",
   "description": "Zero-loss assimilation of nz_health_appropriations into Bronze, dedicated multi-recordset Silver, reproducible Gold analytics, rights-aware Platinum metadata and gated Hugging Face publication.",
   "requirements_method": "MoSCoW",
   "evidence_schema": "1.0",
@@ -130,6 +130,14 @@
     "retained_directory": "silver/raw-orchestrated-20260830-v1",
     "observed_at": "2026-08-30T08:58:00Z",
     "observation_time_context": "local_source_object_verification_not_new_http_capture",
+    "publication_state": "local_validation_only"
+  },
+  "raw_readonly_verification_state": {
+    "implementation_commit": "d25fd8db6c760ef7dab4ae5be032f4f779e300e6",
+    "cli": "passed",
+    "mcp": "passed",
+    "receipt_parity": "passed",
+    "manifest_sha256": "da65ee2f38e2450e7273e84fa48b0b29a6a44670d84401fdbb7389f710fa0269",
     "publication_state": "local_validation_only"
   },
   "candidate_state": {

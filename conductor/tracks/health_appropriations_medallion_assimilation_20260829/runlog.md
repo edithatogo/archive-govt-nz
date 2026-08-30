@@ -1,5 +1,30 @@
 # Run Log
 
+## Read-only raw-run verification — 2026-08-30
+
+- Functional commit `d25fd8db6c760ef7dab4ae5be032f4f779e300e6`.
+  Final full harness exited zero: 1,459 tests, 95.92% coverage, eight warnings,
+  32 schemas/22 documents, 9/9 parity, all mutation/supply-chain gates and
+  110-component SBOM. Only unrelated timestamp churn was restored.
+- Re-anchored the in-progress branch onto the exact identical PR #242 merged
+  tree with expected-OID guards, then removed its verified merged local branch
+  and stale remote-tracking ref. The hosted branch was already absent.
+
+- Continued on `codex/health-readonly-verification`, using the just-passed
+  1,452-test full harness as the unchanged-code baseline. Added red library
+  and CLI import contracts before implementing either surface.
+- Initial focused coverage was 97.53%; four missing lines were symlink and
+  late manifest-pin rejection. Added negative tests rather than lowering the
+  100% gate. The 63-test focused/CLI/MCP suite now passes at 100% critical
+  line/branch coverage; static checks pass.
+- Live CLI and MCP both verify the retained 18-file run against manifest
+  `da65ee2f38e2450e7273e84fa48b0b29a6a44670d84401fdbb7389f710fa0269`.
+  Both return the same receipt. No rebuild or file creation is called.
+- PR #242 independently confirmed merged at
+  `f116967c627ed7d0e25deca893568921316a2661`, tested head
+  `56d91b247963a6192b0567fad1f5629b891d64a0`, all seven checks successful.
+  Both trees equal `3993fe88b7b173fb3a2916ae648cfd2b8f956d38`.
+
 ## Original-workbook orchestration — 2026-08-30
 
 - Functional commit `578235c`. Final full harness exited zero: 1,452 tests,

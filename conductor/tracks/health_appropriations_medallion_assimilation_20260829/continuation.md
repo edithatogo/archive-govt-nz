@@ -49,8 +49,9 @@ No task is complete just because code exists, an issue is closed, or CI is green
 - Original-workbook orchestration now rebuilds all four adapters into a
   separate verified 341-fact local run. Complete reuse checks every stage;
   incomplete attempts are retained and require a new output directory.
-- Next executable increment: expose pure read-only raw-run verification to
-  CLI/MCP, without calling a function that can create output on missing state.
+- Pure read-only raw-run verification now has matching CLI/MCP receipts and
+  cannot create missing state. Next executable increment: implement the typed
+  workbook inspector replacing donor sheet listing/head printing (Phase 4.3).
   Then implement partial-stage resume/scheduling, regenerate compatibility and
   analytics with explicit reconciliation policy, and continue the remaining
   workbook areas and official/contextual sources. Published state stays separate.

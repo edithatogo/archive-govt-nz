@@ -55,6 +55,8 @@ every planned record set, measure or operational workflow.
 - Manifest-driven raw rebuilding: four stages, 341 selected facts, 18 files,
   independent byte-identical rebuild and verified complete-run reuse. This
   local operational result does not replace the published donor-derived data.
+- Read-only raw-run CLI/MCP verification: matching live receipts, exact
+  manifest pins, source/derivative fixity checks and no creation on missing state.
 - Hugging Face: `published_and_verified` for the pinned candidate, with
   [dataset](https://huggingface.co/datasets/edithatogo/nz-health-appropriations)
   revision `9b85bac06597d4435fd078f6bed0f30bb008542b` and manifest SHA-256

@@ -15,6 +15,7 @@ from archive_govt_nz.core.registry import AgencyRegistry
 from archive_govt_nz.domains.health_appropriations.operations import (
     inspect_archive_status,
 )
+from archive_govt_nz.domains.health_appropriations.rebuild import verify_rebuild
 from archive_govt_nz.object_store import ContentAddressedStore, ObjectStoreError
 from archive_govt_nz.schemas.medallion import (
     DOMAIN_REGISTRY,
@@ -262,6 +263,44 @@ _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
         ),
         "annotations": {
             "title": "Get domain schema definition",
+            "readOnlyHint": True,
+            "destructiveHint": False,
+            "idempotentHint": True,
+            "openWorldHint": False,
+        },
+    },
+    {
+        "name": "health_appropriations_verify_rebuild",
+        "description": (
+            "Verify a hash-pinned completed raw run and its Bronze sources "
+            "without writing any state."
+        ),
+        "inputSchema": _object_schema(
+            {
+                "output_dir": {"type": "string", "minLength": 1},
+                "store_root": {"type": "string", "minLength": 1},
+                "manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+            },
+            ["output_dir", "store_root", "manifest_sha256"],
+        ),
+        "outputSchema": _object_schema(
+            {
+                "schema_version": {"const": "archive-govt-nz.health-raw-rebuild/v1"},
+                "status": {"const": "passed"},
+                "plan_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+                "publication_state": {"const": "local_validation_only"},
+                "stages": _object_schema(
+                    {
+                        name: {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+                        for name in ("budget", "befu", "hyefu", "historical")
+                    },
+                    ["budget", "befu", "hyefu", "historical"],
+                ),
+            },
+            ["schema_version", "status", "plan_sha256", "publication_state", "stages"],
+        ),
+        "annotations": {
+            "title": "Verify original-workbook rebuild fixity",
             "readOnlyHint": True,
             "destructiveHint": False,
             "idempotentHint": True,
@@ -746,6 +785,12 @@ def call_tool(name: str, arguments: dict[str, Any] | None = None) -> dict[str, A
             "title": schema_def.title,
             "fields": fields_list,
         }
+    elif name == "health_appropriations_verify_rebuild":
+        result = verify_rebuild(
+            Path(str(args["output_dir"])),
+            Path(str(args["store_root"])),
+            str(args["manifest_sha256"]),
+        )
     elif name == "health_appropriations_status":
         result = inspect_archive_status(
             Path(str(args.get("archive_root", "build/health-appropriations")))

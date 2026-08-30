@@ -23,6 +23,12 @@ idempotence contract does not yet claim partial-stage scheduling/resumption.
 Structured failure receipts contain stable error classes, not source text or
 credentials. No Bronze write, Gold replacement or publication occurs.
 
+Read-only verification is a separate operation, never a call to the rebuild
+function. Consumers supply the exact run-manifest SHA-256. Verification checks
+that pin before and after inspecting the plan, source CAS objects and all
+stage outputs. CLI and MCP share this non-mutating library contract. Missing
+or incomplete runs remain missing/incomplete; inspection cannot start work.
+
 ```mermaid
 flowchart LR
     subgraph U[Untrusted and externally mutable sources]

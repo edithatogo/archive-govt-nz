@@ -263,6 +263,59 @@ def _extract(name: str, path: Path, root: Path, plan: dict[str, Any]) -> None:
         normalize_forecast_workbook(path, root / name, profile=name, **context)
 
 
+def _verified_existing(output_dir: Path, plan: dict[str, Any]) -> dict[str, Any]:
+    if not (output_dir / "MANIFEST.json").is_file():
+        msg = "incomplete_run_use_new_directory"
+        raise ValueError(msg)
+    if {path.name for path in output_dir.iterdir()} != {
+        *PROFILES,
+        "PLAN.json",
+        "MANIFEST.json",
+    }:
+        message = "unexpected_run_files"
+        raise ValueError(message)
+    if _read(output_dir / "PLAN.json") != plan:
+        msg = "run_plan_mismatch"
+        raise ValueError(msg)
+    completion = _completion(output_dir, plan)
+    if _read(output_dir / "MANIFEST.json") != completion:
+        msg = "run_manifest_mismatch"
+        raise ValueError(msg)
+    return completion
+
+
+def _verify_pinned_run(
+    output_dir: Path, store_root: Path, manifest_sha256: str
+) -> dict[str, Any]:
+    if output_dir.is_symlink():
+        message = "invalid_run_directory"
+        raise ValueError(message)
+    manifest = output_dir / "MANIFEST.json"
+    if _hash(manifest) != manifest_sha256:
+        message = "run_manifest_hash_mismatch"
+        raise ValueError(message)
+    plan = _read(output_dir / "PLAN.json")
+    _verify_plan(plan, store_root)
+    result = _verified_existing(output_dir, plan)
+    if _hash(manifest) != manifest_sha256:
+        message = "run_manifest_changed_during_verification"
+        raise ValueError(message)
+    return result
+
+
+def verify_rebuild(
+    output_dir: Path, store_root: Path, manifest_sha256: str
+) -> dict[str, Any]:
+    """Verify a hash-pinned completed run without ever creating archive state."""
+    try:
+        result = _verify_pinned_run(output_dir, store_root, manifest_sha256)
+    except Exception as error:  # noqa: BLE001 - read-only protocol redaction boundary
+        message = "raw_run_verification_failed:" + type(error).__name__
+        raise ValueError(message) from None
+    else:
+        return result
+
+
 def execute_rebuild(
     plan: dict[str, Any], store_root: Path, output_dir: Path
 ) -> dict[str, Any]:
@@ -275,24 +328,7 @@ def execute_rebuild(
         msg = "invalid_run_directory"
         raise ValueError(msg)
     if output_dir.exists():
-        if not (output_dir / "MANIFEST.json").is_file():
-            msg = "incomplete_run_use_new_directory"
-            raise ValueError(msg)
-        if {path.name for path in output_dir.iterdir()} != {
-            *PROFILES,
-            "PLAN.json",
-            "MANIFEST.json",
-        }:
-            message = "unexpected_run_files"
-            raise ValueError(message)
-        if _read(output_dir / "PLAN.json") != plan:
-            msg = "run_plan_mismatch"
-            raise ValueError(msg)
-        completion = _completion(output_dir, plan)
-        if _read(output_dir / "MANIFEST.json") != completion:
-            msg = "run_manifest_mismatch"
-            raise ValueError(msg)
-        return completion
+        return _verified_existing(output_dir, plan)
     output_dir.mkdir(parents=True, exist_ok=False)
     _write(output_dir / "PLAN.json", plan)
     for name, path in paths.items():
