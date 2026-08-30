@@ -61,8 +61,10 @@ every planned record set, measure or operational workflow.
   manifest pins, source/derivative fixity checks and no creation on missing state.
 - Typed workbook inspection delivered in PR #245, with bounded decoded previews
   and original-byte verification. No formula evaluation or fact promotion.
-- Raw compatibility projection locally validates all 341 facts and flags 15
-  binary representation differences. Persistent source-derived export is pending.
+- Persistent raw compatibility export locally validates all 341 facts, retains
+  4,918 lineage rows and flags 15 binary representation differences. Independent
+  builds match; all 312 donor SQLite rows are retained plus 29 historical years.
+  Source-derived analytics and plots remain pending.
 - Hugging Face: `published_and_verified` for the pinned candidate, with
   [dataset](https://huggingface.co/datasets/edithatogo/nz-health-appropriations)
   revision `9b85bac06597d4435fd078f6bed0f30bb008542b` and manifest SHA-256

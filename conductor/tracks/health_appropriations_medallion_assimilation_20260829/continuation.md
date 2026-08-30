@@ -54,9 +54,16 @@ No task is complete just because code exists, an issue is closed, or CI is green
   sheet listing/head printing with bounded structured previews (Phase 4.3).
   The pure five-table projection is validated locally (`42cee7d`): all 341
   facts retained, 15 decimal-to-binary representation differences flagged.
-  Next executable increment: add capped verified snapshots, exclusive SQLite
-  persistence, lineage sidecars and a completion manifest, as specified in
-  `raw-compatibility.md`. Continue analytics, partial-stage resume/scheduling and remaining
+  Persistent export now has capped verified snapshots, exclusive SQLite output,
+  exact-value/context and lineage sidecars, plus a completion manifest. Live
+  independent builds match and retain all donor rows plus 29 historical facts.
+  Next executable increment: source-derived analytical tables with explicit
+  period/basis/gap and denominator guards, followed by semantic plot contracts.
+  A fresh read of the canonical historical facts identifies period/basis
+  transitions at 1990, 1994, 1997 and 2005, with no year gaps. Growth across
+  those transitions must remain explicitly unavailable or separately qualified;
+  matching year labels alone do not establish comparability.
+  Continue partial-stage resume/scheduling and remaining
   workbook areas and official/contextual sources. Published state stays separate.
 - Resume this exact track, inspect dirty work and live PR state, then choose the
   next unblocked task. Do not restart completed preservation or publication.
