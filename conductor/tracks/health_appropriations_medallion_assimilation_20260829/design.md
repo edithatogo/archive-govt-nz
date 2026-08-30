@@ -109,6 +109,13 @@ not rewrite it. Package-part inventory can describe formulas, cached values,
 styles, relationships, charts, macros and embedded objects while leaving the
 original bytes untouched.
 
+Workbook inventory rejects platform-ambiguous member paths and duplicate ZIP
+parts before parsing. Existing 20,000-member and 512 MiB expanded-package limits
+are supplemented by a cumulative 2,000,000-cell rectangular traversal budget
+before formula counting. The cell gate bounds traversal after workbook loading,
+not all parser allocation. Rejection leaves Bronze bytes intact and does not
+claim that an unsupported workbook was normalized.
+
 ## Silver domain model
 
 All records share:
