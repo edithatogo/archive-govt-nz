@@ -9,7 +9,10 @@ from __future__ import annotations
 import hashlib
 import json
 import re
-from typing import Any, Mapping
+from collections.abc import Mapping
+from datetime import datetime
+from typing import Any
+from urllib.parse import urlparse
 
 _SHA256 = re.compile(r"^[0-9a-f]{64}$")
 _REQUIRED = {
@@ -32,6 +35,7 @@ class RiopaMappingError(ValueError):
     """A receipt cannot safely be represented as a RIOPA record."""
 
     def __init__(self, error_class: str) -> None:
+        """Initialize with a stable machine-readable error class."""
         self.error_class = error_class
         super().__init__(error_class)
 
@@ -55,16 +59,30 @@ def map_archive_receipt(
     digest = receipt["sha256"]
     object_id = receipt["object_id"]
     if not isinstance(digest, str) or not _SHA256.fullmatch(digest):
-        raise RiopaMappingError("invalid_sha256")
+        error_class = "invalid_sha256"
+        raise RiopaMappingError(error_class)
     if not isinstance(object_id, str) or object_id != f"sha256:{digest}":
-        raise RiopaMappingError(
-            "invalid_object_id" if not isinstance(object_id, str) else "digest_mismatch"
+        error_class = (
+            "invalid_object_id"
+            if not isinstance(object_id, str) or not object_id.startswith("sha256:")
+            else "digest_mismatch"
         )
+        raise RiopaMappingError(error_class)
+    source_url = receipt["source_url"]
+    if not isinstance(source_url, str) or not _is_uri(source_url):
+        error_class = "invalid_source_url"
+        raise RiopaMappingError(error_class)
+    observed_at = receipt["observed_at"]
+    if not isinstance(observed_at, str) or not _is_datetime(observed_at):
+        error_class = "invalid_observed_at"
+        raise RiopaMappingError(error_class)
     revision = receipt["revision"]
     if expected_revision is not None and revision != expected_revision:
-        raise RiopaMappingError("stale_revision")
+        error_class = "stale_revision"
+        raise RiopaMappingError(error_class)
     if expected_sha256 is not None and digest != expected_sha256:
-        raise RiopaMappingError("digest_mismatch")
+        error_class = "digest_mismatch"
+        raise RiopaMappingError(error_class)
 
     source_identity = _canonical_bytes(
         {
@@ -117,6 +135,19 @@ def _canonical_bytes(value: Mapping[str, Any]) -> bytes:
     return json.dumps(
         value, sort_keys=True, separators=(",", ":"), ensure_ascii=False
     ).encode()
+
+
+def _is_uri(value: str) -> bool:
+    parsed = urlparse(value)
+    return bool(parsed.scheme and (parsed.netloc or parsed.scheme == "urn"))
+
+
+def _is_datetime(value: str) -> bool:
+    try:
+        datetime.fromisoformat(value)
+    except ValueError:
+        return False
+    return True
 
 
 def _qualification(receipt: Mapping[str, Any]) -> tuple[str, str | None]:
