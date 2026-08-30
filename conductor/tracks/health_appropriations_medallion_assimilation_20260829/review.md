@@ -1,5 +1,23 @@
 # Self-Review
 
+## Typed workbook inspection — 2026-08-30
+
+- Final full harness exits zero; all 40 focused unfiltered mutants are killed,
+  no pardons. Hosted inspector delivery remains separately gated.
+- One capped, hash-verified snapshot feeds structural inventory and preview
+  parsing. No filesystem output, formula evaluation or canonical fact claim.
+- Added aggregate cell and UTF-8 value-byte boundaries, including equality
+  cases and Unicode. Listing-only mode returns no cell previews.
+- Corrected the nonfinite test fixture after learning `NaN` was already
+  rejected by the parser; `1e309` reproduced permissive non-standard JSON.
+  Strict encoding now rejects it. Array/data-table formula tests reproduced
+  object-representation output; decoded fields now survive deterministically.
+- Unknown objects are rejected. Existing parser/package/traversal limits are
+  reused, with no claim of process isolation or unrestricted format support.
+- Twenty-two focused tests achieve 100% critical line/branch coverage, with
+  generated dimensions and original-byte invariants. Live Budget inspection
+  matches eight sheets and a 34-cell selected head; source fixity is unchanged.
+
 ## Read-only raw verification — 2026-08-30
 
 - Inspection has a separate entrypoint and cannot invoke rebuild, extraction

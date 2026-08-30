@@ -24,6 +24,7 @@ from archive_govt_nz.cli_integrity import (
     verify_cas,
 )
 from archive_govt_nz.core.registry import AgencyRegistry
+from archive_govt_nz.domains.health_appropriations.inspection import inspect_workbook
 from archive_govt_nz.domains.health_appropriations.operations import (
     HealthAppropriationsStateError,
     inspect_archive_status,
@@ -141,6 +142,35 @@ def capabilities(format: Literal["text", "json"] = "text") -> int:
 
     for c in caps:
         print(f"- {c}")
+    return 0
+
+
+@app.command(name="health-appropriations-inspect-workbook")
+def health_appropriations_inspect_workbook(
+    source: Path,
+    expected_sha256: str,
+    *,
+    sheet: str | None = None,
+    rows: int = 5,
+    columns: int = 12,
+) -> int:
+    """List source worksheets and bounded decoded heads; --rows 0 lists only."""
+    command = "health-appropriations-inspect-workbook"
+    try:
+        result = inspect_workbook(
+            source, expected_sha256, sheet=sheet, rows=rows, columns=columns
+        )
+    except ValueError as error:
+        _emit_json(
+            {
+                "command": command,
+                "schema_version": "archive-govt-nz.health-workbook-inspection/v1",
+                "status": "failed",
+                "error": str(error),
+            }
+        )
+        return 2
+    _emit_json({"command": command, **result})
     return 0
 
 

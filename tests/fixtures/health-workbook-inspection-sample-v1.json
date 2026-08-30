@@ -1,0 +1,9 @@
+{
+  "schema_version": "archive-govt-nz.health-workbook-inspection/v1",
+  "status": "inspected",
+  "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "source_byte_count": 1000,
+  "value_semantics": "decoded_preview_not_canonical_facts",
+  "inventory": {"schema_version": "archive-govt-nz.workbook-inventory/v1", "kind": "xlsx", "sheets": [{"title": "Data"}]},
+  "previews": [{"name": "Data", "row_truncated": false, "column_truncated": false, "cells": [{"coordinate": "A1", "data_type": "s", "decoded_value_json": "\"synthetic fixture\""}]}]
+}
