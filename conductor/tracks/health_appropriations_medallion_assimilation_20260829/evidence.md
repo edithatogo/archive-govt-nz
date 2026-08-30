@@ -1,5 +1,43 @@
 # Evidence
 
+## Persistent raw compatibility export — 2026-08-30 UTC
+
+Functional commit `e91d24b97fad312ae2c4418f31fc4435f9afd5c1` exports verified
+canonical Parquet into a five-table database plus exact-record and field-lineage
+sidecars. Two independent builds match all four files; manifest
+`fb405a2fdbb2809093cb03d62ddbe1fcb1a1f6f91d304666e8ef0964813f73fb`.
+Read-only donor comparison retains all five schemas and 312 donor rows, adding
+29 historical Health observations. Exact source values remain authoritative:
+15 binary representation flags are not conflated with the prior source/donor
+precision reconciliation. All 341 facts and 4,918 lineage rows are retained.
+
+Twenty-eight focused tests have 100% critical line/branch coverage; 52/52
+unfiltered mutants killed, zero pardons; report
+`5dd74daa8824b3e4b4e3b6230251190ec0b41a69e2aa218aa12e5d9e6a53801d`.
+Final isolated full harness exit 0: 1,577 tests, 96.05% coverage, eight existing
+SQLite resource warnings, 69 Conductor tracks, 35 schemas/25 documents, 9/9
+parity, all mutation and supply-chain gates; SBOM 110 components. The invalid
+shared-mock mutation attempt and isolated lint/type corrections are recorded
+in the run log. Original bytes and the published HF candidate are unchanged;
+this receipt claims local validation, not hosted delivery or public promotion.
+
+## Raw compatibility projection — 2026-08-30
+
+Commit `42cee7d` provides pure, loss-aware legacy value projection for all five
+table shapes. The verified raw run projects 341 facts and flags 15 exact
+decimal-to-binary representation differences, preserving exact amounts and
+source context. It does not yet write a database or replace published products.
+All 27 focused tests pass at 100% critical line/branch coverage; all 35
+explicitly unfiltered mutants are killed without pardons. Final full harness
+exits zero: 1,508 tests, 95.97% coverage, seven pytest warnings plus an additional
+SQLite ResourceWarning, 33 schemas/23 documents, 9/9 parity and all mutation
+and supply-chain checks, including a 110-component SBOM. Evidence is local.
+
+Inspector PR #245 independently merged at
+`32fbbe391a169d00d760a051c39c9793a95f9109` after all seven exact-head checks
+passed. Its merged and tested trees match. This does not mark the larger
+compatibility export or full assimilation complete.
+
 ## Typed workbook inspection — 2026-08-30
 
 Commit `446a82d` adds hash-pinned, bounded read-only sheet inventory and decoded
