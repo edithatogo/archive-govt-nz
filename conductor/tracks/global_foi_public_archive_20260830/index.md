@@ -28,3 +28,6 @@ Approved track in progress. Automation repair and source-catalogue foundations a
 
 - [Raw-retention incident and current operational limits](operational-followup-20260830.json)
 - [Publication receipt guard validation](publication-guard-validation.json)
+- [Merged repairs, container failure and exact recovery](container-recovery-20260830.json)
+- [Current implementation status and remaining scope](status.md)
+- [Hosted raw restore and current queue receipt](hosted-raw-restore-20260830.json)
