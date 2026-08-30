@@ -148,3 +148,18 @@ reported as complete.
   local validation are stated as distinct observations.
 - No credential, signed URL, restricted payload or unsupported completion
   claim was found. No unresolved Phase 0 finding remains.
+
+## Formula cache characterization review — 2026-08-30
+
+- Commit `f73d678` adds presence/type observations without exporting contents,
+  evaluating formulas or asserting cache freshness. Zero and false are not
+  conflated with absent caches; absent and empty caches intentionally share a
+  state. Both workbook views close on inventory completion or failure.
+- The second view uses the existing approved parser and only looks up formula
+  coordinates. Existing preflight/traversal limits remain; parser allocation
+  itself is not newly bounded. Input is assumed to be immutable Bronze content.
+- Thirty-two focused tests passed with 100% format-module line/branch coverage;
+  all 30 unfiltered generated mutations were killed. Ruff and basedpyright passed.
+- No original files or hosted datasets were changed. This does not complete
+  the broader format-support contract, successor normalization or donor
+  retirement. No unresolved finding blocks this bounded inventory change.

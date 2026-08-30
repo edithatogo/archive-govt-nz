@@ -268,3 +268,22 @@ its change set.
   resources, 312 Silver records and the published candidate digest.
 - Thirty-six focused CLI/MCP/domain tests, Ruff and basedpyright passed. The
   critical operational module reached 100% line and branch coverage.
+
+## 2026-08-30 — Formula cache observations
+
+- Two new red contracts failed on missing cache inventory and freshness fields.
+  The fixture distinguishes numeric zero, boolean false, string, stored error,
+  and absent/empty cached results without permitting formula evaluation.
+- Implemented presence/type-only observations in `f73d678`, using the existing
+  parser's data-only view for formula coordinates. Repeated inventory is
+  deterministic and fixture source bytes remain identical.
+- Thirty-two focused tests passed at 100% format-module line/branch coverage;
+  all 30 unfiltered mutations were killed. Ruff and basedpyright passed.
+- Baseline and final `./scripts/validate.sh` runs exited zero. Final validation
+  passed 1,241 tests at 95.60% coverage, 30 schemas, 20 representative documents,
+  9/9 parity checks, all repository mutation lanes and supply-chain gates,
+  including a validated 110-component SBOM. Eight SQLite ResourceWarnings
+  were emitted by the full test run; no test failed.
+- Timestamp-only unrelated evidence churn was restored. No originals or
+  published artifacts were modified. Live GitHub readback still reports the
+  donor repository as unarchived; retirement remains outside this track.

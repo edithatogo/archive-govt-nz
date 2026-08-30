@@ -185,3 +185,16 @@ reproduced manifest SHA-256
 94 manifest entries verified with zero mismatches. The HEOR collection was
 then updated and independently read back with dataset item object ID
 `6a92b824597df1d081fc4108` and the pinned revision in its note.
+
+## Formula cache characterization — 2026-08-30
+
+Commit `f73d678` adds coordinate/type/presence observations without exporting
+formula or cached contents. Thirty-two focused tests pass with 100% line and
+branch coverage for `formats.py`; all 30 unfiltered mutations were killed
+(report SHA-256 `b64d673ed95c1a633a09e24f6c84b0e0a989ce5c85d032258947889fcdaf55dd`).
+Ruff and basedpyright pass. Baseline and final full harness runs exit zero;
+final results are 1,241 tests, 95.60% overall coverage, 30 schemas, 20 sample
+documents, 9/9 parity checks, all mutation and supply-chain checks, and a
+110-component SBOM. Evidence is local; hosted CI is separately verified.
+Originals and the existing HF publication were not changed. Cache freshness,
+complete format support and donor retirement are not claimed.
