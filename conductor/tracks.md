@@ -219,3 +219,8 @@ implementation has occurred under these tracks.
 
 - [~] **Track: New Zealand Health Appropriations Medallion Assimilation**
   *Link: [tracks/health_appropriations_medallion_assimilation_20260829/index.md](./tracks/health_appropriations_medallion_assimilation_20260829/index.md)*
+
+---
+- [ ] **Track: Global FOI source catalogue, metadata and public raw archive**
+  *Link: [./tracks/global_foi_public_archive_20260830/index.md](./tracks/global_foi_public_archive_20260830/index.md)*
+  *Approved 2026-08-30: archive-govt-nz takeover with fyi-cli capture; execution pending, no cutover claimed.*
