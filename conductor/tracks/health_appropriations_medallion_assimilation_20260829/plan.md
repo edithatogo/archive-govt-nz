@@ -444,6 +444,12 @@ repository validation command. External gates block only their affected task.
   track complete and archive it only when every Must is evidenced. Donor
   retirement and Zenodo remain out of scope. [M-18, M-19; AC-16]
 
+## Review fixes
+
+- [x] Remove scheduler-dependent Hypothesis deadline flakiness from the batch
+  eligibility invariant without weakening generated cases or assertions.
+  [M-18; AC-16] (`b2bf7b7`)
+
 ## Gate register
 
 | Gate | Blocks | Safe work while pending |
