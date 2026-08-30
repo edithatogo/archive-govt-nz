@@ -120,7 +120,14 @@ The additive `archive-govt-nz.workbook-inventory/v1` output retains the previous
 counts and adds sorted package-member names, global and sheet-scoped defined
 names, worksheet dimensions, merged/table ranges, formula/comment coordinates
 and hidden row/column spans. Formula and comment content is not exported or
-evaluated; cached-value semantics remain a separate contract. Unknown package
+evaluated. For formula coordinates only, a second data-only view of the immutable
+Bronze workbook records cached-result type and `stored_value`, `stored_error`,
+or `missing_or_empty` state. Absent and empty caches are combined because the
+reader represents both as null; zero and false remain stored values. Cache
+contents are not exported, and `formula_cache_freshness: not_verified` makes
+clear that cache presence does not establish freshness or correctness. Workbooks
+without formulas skip this second load. Neither view rewrites source bytes.
+Unknown package
 parts are listed without interpreting their payloads. This inventory supports
 loss accounting but does not itself claim normalization or source completeness.
 

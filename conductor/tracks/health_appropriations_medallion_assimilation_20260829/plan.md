@@ -90,6 +90,10 @@ repository validation command. External gates block only their affected task.
   hidden row/column spans, scoped defined names and original ZIP part names
   through the existing bounded inventory. Preserve source bytes and keep
   cached-value interpretation distinct. [M-07, S-03; AC-03, AC-16] (`dffa310`)
+- [x] Characterize formula caches by coordinate, stored type and explicit
+  stored-value/error/missing-or-empty state without evaluating formulas or
+  asserting cache freshness. Preserve byte identity. [M-07, S-03; AC-03, AC-16]
+  (`f73d678`)
 - [x] Produce a machine-readable sheet/table/range census for all seven donor
   workbooks and a page/structure census for the donor PDF, without changing
   their bytes. [M-03, M-07, S-03; AC-02, AC-03]
