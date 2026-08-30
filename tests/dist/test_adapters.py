@@ -12,6 +12,8 @@ from archive_govt_nz.dist.packaging import (
 )
 from archive_govt_nz.dist.zenodo_adapter import ZenodoDistributionAdapter
 
+DUMMY_VALUE = "not-a-real-credential"
+
 
 def _build_test_manifest() -> PublicationManifest:
     item = PublicationItem(
@@ -28,7 +30,9 @@ def _build_test_manifest() -> PublicationManifest:
         version="2026.08.24",
         items=[item],
         platforms=[
-            TargetPlatformConfig(platform="huggingface", target_identifier="nz/treasury"),
+            TargetPlatformConfig(
+                platform="huggingface", target_identifier="nz/treasury"
+            ),
             TargetPlatformConfig(platform="zenodo", target_identifier="12345"),
             TargetPlatformConfig(platform="osf", target_identifier="osf-01"),
         ],
@@ -42,9 +46,10 @@ def test_hf_adapter() -> None:
     # Dry-run
     adapter_dry = HuggingFaceDistributionAdapter(token=None)
     res_dry = adapter_dry.sync_manifest(manifest, "nz/treasury", dry_run=True)
-    assert res_dry.status == "verified"
-    assert res_dry.files_synced == 1
-    assert res_dry.bytes_synced == 8192
+    assert res_dry.status == "dry_run"
+    assert res_dry.commit_sha is None
+    assert res_dry.files_synced == 0
+    assert res_dry.bytes_synced == 0
 
     # Missing token live
     res_missing = adapter_dry.sync_manifest(manifest, "nz/treasury", dry_run=False)
@@ -52,10 +57,13 @@ def test_hf_adapter() -> None:
     assert "missing" in (res_missing.error_message or "")
 
     # Live with token
-    adapter_live = HuggingFaceDistributionAdapter(token="hf_secret")
+    adapter_live = HuggingFaceDistributionAdapter(token=DUMMY_VALUE)
     res_live = adapter_live.sync_manifest(manifest, "nz/treasury", dry_run=False)
-    assert res_live.status == "published"
-    assert res_live.commit_sha is not None
+    assert res_live.status == "failed"
+    assert res_live.commit_sha is None
+    assert res_live.files_synced == 0
+    assert res_live.bytes_synced == 0
+    assert "not implemented" in (res_live.error_message or "")
 
 
 def test_zenodo_adapter() -> None:
@@ -73,7 +81,7 @@ def test_zenodo_adapter() -> None:
     assert res_missing.status == "failed"
 
     # Live with token
-    adapter_live = ZenodoDistributionAdapter(token="zenodo_secret")
+    adapter_live = ZenodoDistributionAdapter(token=DUMMY_VALUE)
     res_live = adapter_live.publish_deposition(manifest, dry_run=False)
     assert res_live.status == "published"
     assert res_live.doi is not None
@@ -94,6 +102,6 @@ def test_osf_adapter() -> None:
     assert res_missing.status == "failed"
 
     # Live with token
-    adapter_live = OSFDistributionAdapter(token="osf_secret")
+    adapter_live = OSFDistributionAdapter(token=DUMMY_VALUE)
     res_live = adapter_live.sync_project(manifest, "node-123", dry_run=False)
     assert res_live.status == "published"
