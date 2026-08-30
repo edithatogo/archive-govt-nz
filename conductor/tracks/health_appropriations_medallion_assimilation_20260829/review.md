@@ -1,5 +1,23 @@
 # Self-Review
 
+## Raw archival orchestration — 2026-08-30
+
+- The default CLI path only preflights; writes require `--no-dry-run`. All
+  four source objects are reverified before either a new build or complete
+  reuse. The run plan pins manifest identity, profile context and observation.
+- Existing directories are never overwritten. Reuse requires exact plan,
+  complete stage contexts, expected file sets and hashes. Corrupt, symlinked,
+  partial and extra-file cases fail closed. Bronze output paths are prohibited.
+- Review identified duplicate JSON keys and unexpected adapter exception
+  handling. Red tests reproduced both; unique-key parsing and a narrowly
+  annotated redacted failure boundary now reject them without source-message
+  leakage. Failure receipts never imply completion or trigger publication.
+- Forty-one focused tests retain 100% critical line/branch coverage, including
+  20 generated corruption examples. Live independent builds match all 18
+  files, and current-code complete reuse reverified sources and outputs.
+- This increment does not claim partial-stage resume, scheduling, MCP raw-run
+  projection, full workbook coverage, new Gold analytics or changed HF bytes.
+
 ## Historical original-source extraction — 2026-08-30
 
 - Exact OOXML decimals avoid binary-float/display rounding; source lexemes,
