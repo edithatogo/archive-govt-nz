@@ -1,5 +1,42 @@
 # Self-Review
 
+## Persistent raw compatibility export — 2026-08-30 UTC
+
+- Final isolated full harness exited zero for functional commit `e91d24b`:
+  1,577 tests, 96.05% coverage, all repository gates and 110-component SBOM.
+  Eight existing SQLite resource warnings remain distinct from test failures.
+
+- Verified snapshots bind parsed bytes to the pinned raw-run manifests, with
+  row/byte limits before Parquet materialization. Duplicate identities, source
+  context mismatch, orphan/missing/duplicate amount lineage and non-text source
+  coordinates fail before output creation. Existing and input-overlapping
+  destinations fail closed. File values use SQL bindings; identifiers are fixed.
+- SQLite connections close explicitly. Test review narrowed the simulated
+  integrity failure to the module's SQLite reference, avoiding mutation of
+  coverage's shared SQLite connector. The first failed mutation run is excluded;
+  the corrected unfiltered run killed all 52 mutants with no pardons.
+- Twenty-eight focused tests pass at 100% critical line/branch coverage,
+  including 30 generated exact-amount cases. Lint/types and 35 schemas/25 sample
+  documents pass. Full isolated harness and hosted delivery remain separate.
+- Two live four-file exports match byte for byte. All five donor schemas and
+  312 SQLite rows are retained; 29 original historical Health observations are
+  added. Exact source decimals and all 4,918 lineage rows remain in sidecars.
+- No claim of donor row-order parity, parser isolation, partial-export resume,
+  public update, rights clearance or full assimilation is made.
+
+## Raw compatibility projection — 2026-08-30
+
+- Pure projection validates unit/measure/profile contracts, integer bounds,
+  source identity and decoded text. Canonical amounts are never replaced by
+  float values; a distinct compatibility value carries a representation flag.
+- All source context is retained, including annotations, basis and dates.
+  Callers still must verify the enclosing raw run and retain field lineage.
+- Live projection preserves all 341 facts. Fifteen decimal-to-binary flags
+  are explicitly distinguished from one source/donor value discrepancy.
+- Twenty-seven tests cover all critical lines/branches. Unfiltered mutation
+  run kills all 35; the earlier filtered run's 14 survivors are retained in
+  the run log rather than treated as final evidence. No export file is claimed.
+
 ## Typed workbook inspection — 2026-08-30
 
 - Final full harness exits zero; all 40 focused unfiltered mutants are killed,

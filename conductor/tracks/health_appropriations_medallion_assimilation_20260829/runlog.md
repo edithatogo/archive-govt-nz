@@ -1,5 +1,89 @@
 # Run Log
 
+## Persistent raw compatibility export — 2026-08-30 UTC
+
+- Functional commit `e91d24b`: final isolated `./scripts/validate.sh`
+  exited zero. All 1,577 tests passed at 96.05% coverage, with eight existing
+  SQLite resource warnings; 69 Conductor tracks, 35 schemas/25 documents,
+  9/9 parity, all mutation and supply-chain gates passed; SBOM 110 components.
+  Only generated unrelated timestamp churn was restored in this worktree.
+
+- A subsequent lint pass caught a formatter-moved annotation on that test
+  double. Replaced the annotation with an object-accepting DB-API signature
+  and a test-only cast. Standalone lint and test typing now both pass before
+  the full harness is restarted.
+- Two live exports match all four files byte for byte. The manifest is
+  `fb405a2fdbb2809093cb03d62ddbe1fcb1a1f6f91d304666e8ef0964813f73fb`.
+  Read-only schema/multiset comparison retains all 312 donor rows and adds
+  29 historical Health observations; donor hash is unchanged before/after.
+  The output contains all 341 facts, 4,918 lineage rows and 15 explicit binary
+  representation flags. The 1976 source-token difference remains in exact
+  sidecars even where SQLite REAL agrees with the donor value.
+- Corrected unfiltered mutation run: 52/52 killed, zero pardons, report
+  `5dd74daa8824b3e4b4e3b6230251190ec0b41a69e2aa218aa12e5d9e6a53801d`.
+  Stranded mutation coverage files were moved recoverably to the temporary
+  verification directory, outside this worktree, before full coverage.
+
+- The first isolated full harness stopped at test typing: variable tuple
+  indexing could include the manifest string, and the SQLite test double had
+  narrowed the base execute signature. Corrected both test annotations/paths;
+  production behavior and retained export bytes are unchanged. Full validation
+  is rerun rather than treating focused production typing as the whole gate.
+
+- Hardening expanded to 28 passing tests with 100% critical line/branch
+  coverage, including 30 generated exact-amount lineage cases. CLI and schema
+  were added after observed missing-entrypoint/missing-schema failures. A
+  malformed integer coordinate red test drove explicit text validation.
+- The first mutation attempt exposed test isolation failure: monkeypatching
+  the shared SQLite connector intercepted coverage's `check_same_thread`
+  connection. That run is invalid mutation evidence. The correction is to
+  mock only the export module's SQLite reference before rerunning the gate.
+
+- Resumed the existing task from `0d8e224`; initial full harness exited zero
+  (1,508 tests, 95.97% coverage, eight warnings, all supply-chain gates).
+  During that run, two additional validation processes were observed using
+  the same checkout. Those processes and generated files were left untouched;
+  this shared-checkout result is not the final isolated validation evidence.
+- Created `archive-govt-nz-health-export` on `codex/health-persistent-export`,
+  preserving the original branch. Merged observed main `97ae606` without
+  conflict, installed the locked environment, and validated all 69 Conductor
+  tracks with no errors. The historical evidence prefix is unchanged.
+- Added six failing export contracts; import failed because the module did
+  not exist. All six then passed after implementing verified snapshots,
+  source/amount lineage checks, exclusive outputs and redacted failure receipts.
+  Hardening and full isolated validation remain in progress.
+
+## Raw compatibility projection — 2026-08-30
+
+- Functional commit `42cee7dd159a9593ecfe243c3328b2756758165d`.
+  Final full harness exited zero: 1,508 tests, 95.97% coverage, seven pytest
+  warnings and an additional SQLite ResourceWarning during collection,
+  33 schemas/23 documents, 9/9 parity, all mutation/supply-chain gates and
+  110-component SBOM. Only unrelated generated timestamp churn was restored.
+
+- PR #245 independently confirmed merged at
+  `32fbbe391a169d00d760a051c39c9793a95f9109`, tested head
+  `7388e32fb15ebc5373309bf86aa5e6927df87640`, all seven checks successful.
+  Both trees equal `4b8cae1b1c229d1eace00b375f5c6a60a81d4dd3`.
+  Re-anchored the uncommitted follow-on onto the identical merged tree with
+  expected-OID guards; removed only its verified merged predecessor refs.
+
+- Started the five-table raw-source compatibility task on
+  `codex/health-raw-compatibility`. Initial tests failed on the missing module.
+  The first 20 passed but critical coverage was 93.10%; added overflow, missing
+  text, exact-boundary and source-immutability contracts, reaching 27 tests
+  and 100% line/branch coverage. Lint and types pass.
+- An initial coverage-filtered mutation run reported 14 survivors out of 35.
+  Repeated explicitly without coverage filtering: all 35 killed, no pardons,
+  report SHA-256 `1aefbe93868f64b328a174eb97ae8b424686d4e8bc73008fa69633949a25f8e3`.
+  Filtered test selection is not used as final mutation evidence.
+- Live read-only projection of the verified raw run yields 215 appropriations,
+  ten BEFU, ten HYEFU, 53 historical Health and 53 GDP rows. Fifteen historical
+  Health decimal amounts differ from their exact binary REAL representation;
+  these representation flags are distinct from the one source/donor precision
+  discrepancy. All exact amounts and context remain available in sidecars.
+  No database or archive output was written. Export persistence remains pending.
+
 ## Typed workbook inspection — 2026-08-30
 
 - Functional commit `446a82da14c0f3432298aef633841992cf7017b6`.

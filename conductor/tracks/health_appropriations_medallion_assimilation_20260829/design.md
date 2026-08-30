@@ -254,6 +254,22 @@ requires a valid manifest and matching hashes in a newly reserved directory.
 
 ## Gold analytical model
 
+### Raw compatibility export boundary
+
+The source-derived export verifies the entire pinned raw run and its Bronze
+objects, then consumes capped hash-verified snapshots of stage facts and field
+lineage. It requires unique record IDs, matching source context and exactly one
+matching amount-lineage observation per fact. All facts survive projection;
+legacy REAL representation differences are flagged beside exact decimal values.
+Stable table/record ordering assigns explicit SQLite row numbers to sidecars.
+
+Dry-run is read-only. Writing requires a new exclusive directory outside Bronze
+and the input run. Fixed-schema SQLite, exact-value/context JSONL and complete
+field-lineage JSONL receive output hashes in a versioned completion manifest.
+Failure retains partial files and a redacted error-class receipt; an existing
+or partial directory is never overwritten. This is local derivative creation,
+not source acquisition, rights clearance, donor repair approval or HF publication.
+
 Gold queries operate over conformed dimensions:
 
 - financial period and source vintage;

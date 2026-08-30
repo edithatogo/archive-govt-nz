@@ -24,6 +24,9 @@ from archive_govt_nz.cli_integrity import (
     verify_cas,
 )
 from archive_govt_nz.core.registry import AgencyRegistry
+from archive_govt_nz.domains.health_appropriations.compatibility_export import (
+    export_compatibility,
+)
 from archive_govt_nz.domains.health_appropriations.inspection import inspect_workbook
 from archive_govt_nz.domains.health_appropriations.operations import (
     HealthAppropriationsStateError,
@@ -202,6 +205,28 @@ def health_appropriations_rebuild(
         )
         return 2
     _emit_json({"command": "health-appropriations-rebuild", **result})
+    return 0
+
+
+@app.command(name="health-appropriations-export-sqlite")
+def health_appropriations_export_sqlite(
+    *,
+    raw_run: Path,
+    store_root: Path,
+    manifest_sha256: str,
+    output_dir: Path,
+    dry_run: bool = True,
+) -> int:
+    """Preflight raw compatibility; --no-dry-run creates a new local export."""
+    command = "health-appropriations-export-sqlite"
+    try:
+        result = export_compatibility(
+            raw_run, store_root, manifest_sha256, output_dir, dry_run=dry_run
+        )
+    except ValueError as error:
+        _emit_json({"command": command, "status": "failed", "error": str(error)})
+        return 2
+    _emit_json({"command": command, **result})
     return 0
 
 
