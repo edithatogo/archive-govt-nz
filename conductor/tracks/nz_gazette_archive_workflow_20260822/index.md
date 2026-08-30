@@ -18,3 +18,8 @@ official/DigitalNZ scope; historical gazette sources remain deferred.
 - [Execution Plan](./plan.md)
 - [Evidence](./evidence.md)
 - [Run Log](./runlog.md)
+- [Specification](spec.md)
+
+- [Implementation Plan](plan.md)
+
+- [Metadata](metadata.json)

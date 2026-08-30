@@ -12,3 +12,7 @@ MCP, workflow, live-batch, recovery, or cutover claim advances.
 - [Metadata](./metadata.json)
 
 Parent issue: [#131](https://github.com/edithatogo/archive-govt-nz/issues/131)
+
+- [Specification](spec.md)
+
+- [Implementation Plan](plan.md)

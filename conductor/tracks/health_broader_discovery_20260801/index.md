@@ -18,3 +18,5 @@ the Treasury MVP controls, rights, and a later organisation-specific track.
 - [Evidence](./evidence.md)
 - [Self-review](./review.md)
 - [GitHub issue hierarchy](./github-issues.md)
+
+- [Implementation Plan](plan.md)

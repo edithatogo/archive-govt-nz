@@ -2,9 +2,9 @@
   "id": "treasury_archive_mvp_20260731",
   "title": "Treasury Archive MVP",
   "type": "mvp",
-  "status": "complete",
-  "created_at": "2026-07-31T13:25:47+10:00",
-  "updated_at": "2026-08-11T19:00:00+10:00",
+  "status": "completed",
+  "created_at": "2026-07-31T03:25:47Z",
+  "updated_at": "2026-08-11T09:00:00Z",
   "requirements_method": "MoSCoW",
   "autonomy": {
     "policy": "../../autonomy-policy.json",
@@ -23,16 +23,56 @@
       "url": "https://github.com/edithatogo/archive-govt-nz/issues/1"
     },
     "phase_subissues": [
-      {"phase": 1, "number": 2, "url": "https://github.com/edithatogo/archive-govt-nz/issues/2"},
-      {"phase": 2, "number": 3, "url": "https://github.com/edithatogo/archive-govt-nz/issues/3"},
-      {"phase": 3, "number": 4, "url": "https://github.com/edithatogo/archive-govt-nz/issues/4"},
-      {"phase": 4, "number": 5, "url": "https://github.com/edithatogo/archive-govt-nz/issues/5"},
-      {"phase": 5, "number": 6, "url": "https://github.com/edithatogo/archive-govt-nz/issues/6"},
-      {"phase": 6, "number": 7, "url": "https://github.com/edithatogo/archive-govt-nz/issues/7"},
-      {"phase": 7, "number": 8, "url": "https://github.com/edithatogo/archive-govt-nz/issues/8"},
-      {"phase": 8, "number": 9, "url": "https://github.com/edithatogo/archive-govt-nz/issues/9"},
-      {"phase": 9, "number": 10, "url": "https://github.com/edithatogo/archive-govt-nz/issues/10"},
-      {"phase": 10, "number": 11, "url": "https://github.com/edithatogo/archive-govt-nz/issues/11"}
+      {
+        "phase": 1,
+        "number": 2,
+        "url": "https://github.com/edithatogo/archive-govt-nz/issues/2"
+      },
+      {
+        "phase": 2,
+        "number": 3,
+        "url": "https://github.com/edithatogo/archive-govt-nz/issues/3"
+      },
+      {
+        "phase": 3,
+        "number": 4,
+        "url": "https://github.com/edithatogo/archive-govt-nz/issues/4"
+      },
+      {
+        "phase": 4,
+        "number": 5,
+        "url": "https://github.com/edithatogo/archive-govt-nz/issues/5"
+      },
+      {
+        "phase": 5,
+        "number": 6,
+        "url": "https://github.com/edithatogo/archive-govt-nz/issues/6"
+      },
+      {
+        "phase": 6,
+        "number": 7,
+        "url": "https://github.com/edithatogo/archive-govt-nz/issues/7"
+      },
+      {
+        "phase": 7,
+        "number": 8,
+        "url": "https://github.com/edithatogo/archive-govt-nz/issues/8"
+      },
+      {
+        "phase": 8,
+        "number": 9,
+        "url": "https://github.com/edithatogo/archive-govt-nz/issues/9"
+      },
+      {
+        "phase": 9,
+        "number": 10,
+        "url": "https://github.com/edithatogo/archive-govt-nz/issues/10"
+      },
+      {
+        "phase": 10,
+        "number": 11,
+        "url": "https://github.com/edithatogo/archive-govt-nz/issues/11"
+      }
     ],
     "cross_cutting_issues": [
       {
@@ -52,5 +92,9 @@
     "rights_exception",
     "quarantine_release",
     "destructive_action"
-  ]
+  ],
+  "track_id": "treasury_archive_mvp_20260731",
+  "legacy_status": "complete",
+  "description": "Treasury Archive MVP",
+  "metadata_reconciled_at": "2026-08-30T09:09:36.938960Z"
 }

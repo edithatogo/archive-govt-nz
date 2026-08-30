@@ -12,3 +12,10 @@
    - Test dynamic manifest count sensitivity, absent manifest, corrupt records, API failure, and legacy `nzlc` parity in `tests/cli/test_cli.py`.
 5. **Phase 5: Full 19-Stage Gate & Evidence Generation**
    - Run `tools/check.py`, verify >=95% patch coverage, and update track runlog/evidence/review.
+
+
+## 2026-08-30 record preservation
+
+- [x] Preserve the original historical plan verbatim in [plan.original.md](plan.original.md) and record its hash.
+
+The checkbox above records preservation only. Original phase prose has no individual task checkmarks; this reconciliation does not assert or reverify its historical completion. Existing completion claims remain attributable to the original record.

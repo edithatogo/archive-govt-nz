@@ -1,0 +1,30 @@
+{
+  "decision_id": "DEC-FOI-001",
+  "recorded_at": "2026-08-30T08:43:10Z",
+  "status": "approved",
+  "authority": "User in the current Codex task",
+  "approval_text": "Yes, I do, ensure you've create the track and consider whether there are any additional aspects or improvements that you would recommend.",
+  "approved_proposition": "Approve the specification and plan with archive-govt-nz taking over orchestration and publication from fyi-archive while retaining fyi-cli for capture.",
+  "approved_draft_sha256": {
+    "spec.md": "b787bb5fd3a467e25f55f97b987c23445e0d7bb6bd180ff799d2b08331301fdc",
+    "plan.md": "91b5f125b29a9d82165f2f1fcaae1945ea1816db2aa9a778757b4520ad0f449a",
+    "requirements.md": "a0bb576fe4db7613d84d659fe97dd63ef5ecdd52acd1196caddf72c835e52abe",
+    "design.md": "92fa715f6e198041360935bd2bb0025581e84d7801aeb7cbfbaeff7a1ae7e935"
+  },
+  "scope": {
+    "receiver": "archive-govt-nz",
+    "capture_adapter": "fyi-cli",
+    "downstream_consumer": "foi-process",
+    "public_huggingface": "authorized within source rights, privacy and agreed scope",
+    "donor_history_and_dataset_identities": "preserve",
+    "cutover": "after hosted parity and verified public restore"
+  },
+  "excluded": [
+    "donor archival or deletion",
+    "new DOI release",
+    "paid capacity",
+    "rights or privacy bypass"
+  ],
+  "review_ref": "recommendations.md",
+  "execution_state": "track initialization only; implementation tasks pending"
+}

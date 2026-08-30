@@ -1,0 +1,167 @@
+{
+  "observed_at": "2026-08-30T09:06:43.775758+00:00",
+  "verification_scope": "Anonymous repository metadata only; no raw-object restore",
+  "repositories": [
+    {
+      "instance_id": "au-rtk",
+      "repo_id": "edithatogo/rtk-archive-au",
+      "revision": "c7d04f5c59491ecef4370348693cb48adfae17fd",
+      "private": false,
+      "gated": false
+    },
+    {
+      "instance_id": "be-transparencia",
+      "repo_id": "edithatogo/transparencia-archive-be",
+      "revision": "ff0924afab9d824a865552f7567902ea341d1df1",
+      "private": false,
+      "gated": false
+    },
+    {
+      "instance_id": "co-queremosdatos",
+      "repo_id": "edithatogo/queremosdatos-archive-co",
+      "revision": "cfca71f00ab38e7c9c0219791a7ce2d52cef6334",
+      "private": false,
+      "gated": false
+    },
+    {
+      "instance_id": "cz-infoprovsechny",
+      "repo_id": "edithatogo/infoprovsechny-archive-cz",
+      "revision": "57a165e454e4ca7936c92a01da80f4a8a55a46d9",
+      "private": false,
+      "gated": false
+    },
+    {
+      "instance_id": "eu-asktheeu",
+      "repo_id": "edithatogo/asktheeu-archive-eu",
+      "revision": "6b60fd8faa56e1b88e0fa9017944fef93fe46e35",
+      "private": false,
+      "gated": false
+    },
+    {
+      "instance_id": "fr-madada",
+      "repo_id": "edithatogo/madada-archive-fr",
+      "revision": "02ed9b04d1e912a841863699ee67aa47f62c1a52",
+      "private": false,
+      "gated": false
+    },
+    {
+      "instance_id": "ge-askgov",
+      "repo_id": "edithatogo/askgov-archive-ge",
+      "revision": "843012cdd79460042850472663829c32eec0b465",
+      "private": false,
+      "gated": false
+    },
+    {
+      "instance_id": "gr-arthro5a",
+      "repo_id": "edithatogo/arthro5a-archive-gr",
+      "revision": "32be246c72af6f0c1307d888471a74ccceefedd2",
+      "private": false,
+      "gated": false
+    },
+    {
+      "instance_id": "hk-accessinfo",
+      "repo_id": "edithatogo/accessinfo-archive-hk",
+      "revision": "1c1ab9c5fc78fd891cfdb3079b4631dbf00bdc24",
+      "private": false,
+      "gated": false
+    },
+    {
+      "instance_id": "hr-imamopravoznati",
+      "repo_id": "edithatogo/imamopravoznati-archive-hr",
+      "revision": "2a98b31a372113bdddac322677328757c2969a93",
+      "private": false,
+      "gated": false
+    },
+    {
+      "instance_id": "hu-kimittud",
+      "repo_id": "edithatogo/kimittud-archive-hu",
+      "revision": "dae563f24533fb000b873d7357a482a849a01176",
+      "private": false,
+      "gated": false
+    },
+    {
+      "instance_id": "ie-myrighttoknow",
+      "repo_id": "edithatogo/mrtk-archive-ie",
+      "revision": "78b7870856605cfe8fd61ea07370c7e125fd50f4",
+      "private": false,
+      "gated": false
+    },
+    {
+      "instance_id": "lr-infolib",
+      "repo_id": "edithatogo/infolib-archive-lr",
+      "revision": "d1049e612b633d3589c3fdd9cf3cedc1d30a0789",
+      "private": false,
+      "gated": false
+    },
+    {
+      "instance_id": "md-vreauinfo",
+      "repo_id": "edithatogo/vreauinfo-archive-md",
+      "revision": "7a4765dc1f7f927b9316882010115cb03642583a",
+      "private": false,
+      "gated": false
+    },
+    {
+      "instance_id": "nl-woo-knop",
+      "repo_id": "edithatogo/woo-knop-archive-nl",
+      "revision": "8a34942018440b47e2d7800d362edf6fe539abc7",
+      "private": false,
+      "gated": false
+    },
+    {
+      "instance_id": "nz-fyi",
+      "repo_id": "edithatogo/fyi-archive-nz",
+      "revision": "bd119937c0532cc1f03ca60a7d84ca6991dab5c6",
+      "private": false,
+      "gated": false
+    },
+    {
+      "instance_id": "ro-iastatullaintrebari",
+      "repo_id": "edithatogo/iastatullaintrebari-archive-ro",
+      "revision": "a279e54174d7066b0d4d3e8163b91ad562a536e0",
+      "private": false,
+      "gated": false
+    },
+    {
+      "instance_id": "se-handlingar",
+      "repo_id": "edithatogo/handlingar-archive-se",
+      "revision": "2cb1bd17e9206e63839301c3d903a5f916107412",
+      "private": false,
+      "gated": false
+    },
+    {
+      "instance_id": "ua-dostup",
+      "repo_id": "edithatogo/dostup-archive-ua",
+      "revision": "36beac089463fdac951adeeaec38070e707d8493",
+      "private": false,
+      "gated": false
+    },
+    {
+      "instance_id": "uk-wdtk",
+      "repo_id": "edithatogo/wdtk-archive-uk",
+      "revision": "a200cb990f23e834f40bcc6543d184bab174a99e",
+      "private": false,
+      "gated": false
+    },
+    {
+      "instance_id": "us-opramachine",
+      "repo_id": "edithatogo/opramachine-archive-us-nj",
+      "revision": "8b5e71fedbc6cdcf5a71e68dc964147aa1740255",
+      "private": false,
+      "gated": false
+    },
+    {
+      "instance_id": "uy-quesabes",
+      "repo_id": "edithatogo/quesabes-archive-uy",
+      "revision": "5547a88d09d4c7b30827e885483cef07f82421d4",
+      "private": false,
+      "gated": false
+    },
+    {
+      "instance_id": "xk-dumedite",
+      "repo_id": "edithatogo/dumedite-archive-xk",
+      "revision": "466745dea2c843692fd10de920cde99b4c231768",
+      "private": false,
+      "gated": false
+    }
+  ]
+}

@@ -1,12 +1,15 @@
 {
   "track_id": "common_publication_distribution_hub_20260823",
   "title": "Common Multi-Platform Publication & Distribution Hub",
-  "type": "publication_infrastructure",
-  "status": "archived",
+  "type": "chore",
+  "status": "completed",
   "donor_or_upstream": "Common multi-target publishing architecture",
   "treatment": "Unified distribution engine for Hugging Face, Zenodo, OSF, and GitHub Releases",
   "reusable_assets": "RO-Crate 1.1, Croissant JSON-LD, checksum signing, remote readback verifiers",
   "created_at": "2026-08-23T16:35:00Z",
   "updated_at": "2026-08-26T11:20:00Z",
-  "description": "Build unified, evidence-gated multi-target publication engine supporting Hugging Face, Zenodo, OSF, and GitHub Releases."
+  "description": "Build unified, evidence-gated multi-target publication engine supporting Hugging Face, Zenodo, OSF, and GitHub Releases.",
+  "legacy_type": "publication_infrastructure",
+  "legacy_status": "archived",
+  "metadata_reconciled_at": "2026-08-30T09:09:36.938960Z"
 }

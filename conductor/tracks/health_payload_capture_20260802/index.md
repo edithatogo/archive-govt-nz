@@ -7,3 +7,7 @@
 - [Run log](./runlog.md)
 - [Evidence](./evidence.md)
 - [Review](./review.md)
+
+- [Specification](spec.md)
+
+- [Implementation Plan](plan.md)

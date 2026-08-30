@@ -1,7 +1,7 @@
 {
   "id": "capability_assimilation_architectural_refactor_20260817",
   "title": "Track 11: Capability Assimilation and Architectural Refactor",
-  "type": "architectural_refactor",
+  "type": "chore",
   "status": "completed",
   "created_at": "2026-08-16T23:00:00Z",
   "completed_at": "2026-08-17T20:52:00Z",
@@ -12,5 +12,10 @@
   "outputs": [
     "src/archive_govt_nz/core/registry.py",
     "src/archive_govt_nz/capture/base.py"
-  ]
+  ],
+  "track_id": "capability_assimilation_architectural_refactor_20260817",
+  "legacy_type": "architectural_refactor",
+  "description": "Track 11: Capability Assimilation and Architectural Refactor",
+  "updated_at": "2026-08-30T09:09:36.938960Z",
+  "metadata_reconciled_at": "2026-08-30T09:09:36.938960Z"
 }

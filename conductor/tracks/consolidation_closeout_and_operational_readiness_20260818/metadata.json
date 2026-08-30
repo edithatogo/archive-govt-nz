@@ -1,11 +1,16 @@
 {
   "id": "consolidation_closeout_and_operational_readiness_20260818",
   "title": "Track 15: Consolidation Closeout and Operational Readiness",
-  "type": "consolidation_closeout",
+  "type": "chore",
   "status": "completed",
   "created_at": "2026-08-18T18:00:00Z",
   "requirements_method": "MoSCoW",
   "dependencies": [
     "post_consolidation_riopa_interoperability_20260817"
-  ]
+  ],
+  "track_id": "consolidation_closeout_and_operational_readiness_20260818",
+  "legacy_type": "consolidation_closeout",
+  "description": "Track 15: Consolidation Closeout and Operational Readiness",
+  "updated_at": "2026-08-30T09:09:36.938960Z",
+  "metadata_reconciled_at": "2026-08-30T09:09:36.938960Z"
 }

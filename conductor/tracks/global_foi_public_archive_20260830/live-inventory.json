@@ -1,0 +1,949 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-08-30T09:06:43.775758+00:00",
+  "donor_revision": "cba7b0dec2734bdc9ff51c69610fc55cb1fc5aa1",
+  "receiver_base_revision": "5eda36dd2d204a6a859100f913b411c44a08bf62",
+  "registry_provenance": [
+    {
+      "path": "src/fyi_archive/config/archive_instances.json",
+      "sha256": "35d95fffaf0d3060731a29be9448a168b7612e07a493ad67c416477282a0f537"
+    },
+    {
+      "path": "configs/additional_foi_archive_sites.json",
+      "sha256": "2a9f873ff5b45ccc02cc14cffb8a32dedd7c11ea4663f42b8f8aa5d9d746d819"
+    },
+    {
+      "path": "configs/jurisdiction_archive_targets.json",
+      "sha256": "343c840250ed97bb190966e04bf2a2a1fee1bb4d3fd20f565010d4fd871447e5"
+    }
+  ],
+  "runtime_instances": 23,
+  "known_sites": 29,
+  "target_regimes": 42,
+  "target_statuses": {
+    "blocked": 39,
+    "unsupported": 3
+  },
+  "sources": [
+    {
+      "id": "au-rtk",
+      "base_url": "https://www.righttoknow.org.au",
+      "country": "AU",
+      "locale": "en-AU",
+      "hf_repo_id": "edithatogo/rtk-archive-au",
+      "rate_limit_name": "archive-discovery-au-rtk",
+      "status": "experimental",
+      "title": "rtk-archive (righttoknow.org.au FOI register)",
+      "source": "https://www.righttoknow.org.au/",
+      "catalog_url": "https://www.righttoknow.org.au/body/all-authorities.csv",
+      "source_modes": [
+        "live_api",
+        "atom_feed",
+        "authority_catalog",
+        "internet_archive"
+      ],
+      "seed_cap": 1000
+    },
+    {
+      "id": "be-transparencia",
+      "base_url": "https://transparencia.be",
+      "country": "BE",
+      "locale": "fr-BE",
+      "hf_repo_id": "edithatogo/transparencia-archive-be",
+      "rate_limit_name": "archive-discovery-be-transparencia",
+      "status": "historical-only",
+      "title": "Transparencia public-information register",
+      "source": "https://transparencia.be/",
+      "catalog_url": null,
+      "source_modes": [
+        "atom_feed",
+        "internet_archive",
+        "official_dataset",
+        "operator_export"
+      ],
+      "seed_cap": 1000
+    },
+    {
+      "id": "co-queremosdatos",
+      "base_url": "https://www.queremosdatos.co",
+      "country": "CO",
+      "locale": "es-CO",
+      "hf_repo_id": "edithatogo/queremosdatos-archive-co",
+      "rate_limit_name": "archive-discovery-co-queremosdatos",
+      "status": "historical-only",
+      "title": "Queremosdatos public-information register",
+      "source": "https://www.queremosdatos.co/",
+      "catalog_url": null,
+      "source_modes": [
+        "atom_feed",
+        "internet_archive",
+        "official_dataset",
+        "operator_export"
+      ],
+      "seed_cap": 1000
+    },
+    {
+      "id": "cz-infoprovsechny",
+      "base_url": "https://www.infoprovsechny.cz",
+      "country": "CZ",
+      "locale": "cs-CZ",
+      "hf_repo_id": "edithatogo/infoprovsechny-archive-cz",
+      "rate_limit_name": "archive-discovery-cz-infoprovsechny",
+      "status": "historical-only",
+      "title": "Info Pro V\u0161echny public-information register",
+      "source": "https://www.infoprovsechny.cz/",
+      "catalog_url": null,
+      "source_modes": [
+        "atom_feed",
+        "internet_archive",
+        "official_dataset",
+        "operator_export"
+      ],
+      "seed_cap": 1000
+    },
+    {
+      "id": "eu-asktheeu",
+      "base_url": "https://www.asktheeu.org",
+      "country": "EU",
+      "locale": "en-EU",
+      "hf_repo_id": "edithatogo/asktheeu-archive-eu",
+      "rate_limit_name": "archive-discovery-eu-asktheeu",
+      "status": "historical-only",
+      "title": "AskTheEU public-information register",
+      "source": "https://www.asktheeu.org/",
+      "catalog_url": null,
+      "source_modes": [
+        "atom_feed",
+        "internet_archive",
+        "official_dataset",
+        "operator_export"
+      ],
+      "seed_cap": 1000
+    },
+    {
+      "id": "fr-madada",
+      "base_url": "https://madada.fr",
+      "country": "FR",
+      "locale": "fr-FR",
+      "hf_repo_id": "edithatogo/madada-archive-fr",
+      "rate_limit_name": "archive-discovery-fr-madada",
+      "status": "historical-only",
+      "title": "MaDada public-information register",
+      "source": "https://madada.fr/",
+      "catalog_url": null,
+      "source_modes": [
+        "atom_feed",
+        "internet_archive",
+        "official_dataset",
+        "operator_export"
+      ],
+      "seed_cap": 1000
+    },
+    {
+      "id": "ge-askgov",
+      "base_url": "https://askgov.ge",
+      "country": "GE",
+      "locale": "ka-GE",
+      "hf_repo_id": "edithatogo/askgov-archive-ge",
+      "rate_limit_name": "archive-discovery-ge-askgov",
+      "status": "experimental",
+      "title": "Ask Gov Georgia public-information register",
+      "source": "https://askgov.ge/",
+      "catalog_url": "https://askgov.ge/body/all-authorities.csv",
+      "source_modes": [
+        "live_api",
+        "atom_feed",
+        "authority_catalog",
+        "internet_archive"
+      ],
+      "seed_cap": 1000,
+      "automation": {
+        "enabled": true,
+        "timezone": "Asia/Tbilisi",
+        "window_start_hour": 20,
+        "window_end_hour": 10,
+        "id_from": 1,
+        "id_to": 5,
+        "max_requests": 5,
+        "min_interval_seconds": 60,
+        "discovery_max_pages": 10
+      }
+    },
+    {
+      "id": "gr-arthro5a",
+      "base_url": "https://www.arthro5a.gr",
+      "country": "GR",
+      "locale": "el-GR",
+      "hf_repo_id": "edithatogo/arthro5a-archive-gr",
+      "rate_limit_name": "archive-discovery-gr-arthro5a",
+      "status": "historical-only",
+      "title": "arthro5A public-information register",
+      "source": "https://www.arthro5a.gr/",
+      "catalog_url": null,
+      "source_modes": [
+        "atom_feed",
+        "internet_archive",
+        "official_dataset",
+        "operator_export"
+      ],
+      "seed_cap": 1000
+    },
+    {
+      "id": "hk-accessinfo",
+      "base_url": "https://accessinfo.hk",
+      "country": "HK",
+      "locale": "en-HK",
+      "hf_repo_id": "edithatogo/accessinfo-archive-hk",
+      "rate_limit_name": "archive-discovery-hk-accessinfo",
+      "status": "historical-only",
+      "title": "accessinfo.hk public-information register",
+      "source": "https://accessinfo.hk/",
+      "catalog_url": null,
+      "source_modes": [
+        "atom_feed",
+        "internet_archive",
+        "official_dataset",
+        "operator_export"
+      ],
+      "seed_cap": 1000
+    },
+    {
+      "id": "hr-imamopravoznati",
+      "base_url": "https://imamopravoznati.org",
+      "country": "HR",
+      "locale": "hr-HR",
+      "hf_repo_id": "edithatogo/imamopravoznati-archive-hr",
+      "rate_limit_name": "archive-discovery-hr-imamopravoznati",
+      "status": "historical-only",
+      "title": "Imamo pravo znati public-information register",
+      "source": "https://imamopravoznati.org/",
+      "catalog_url": null,
+      "source_modes": [
+        "atom_feed",
+        "internet_archive",
+        "official_dataset",
+        "operator_export"
+      ],
+      "seed_cap": 1000
+    },
+    {
+      "id": "hu-kimittud",
+      "base_url": "https://kimittud.hu",
+      "country": "HU",
+      "locale": "hu-HU",
+      "hf_repo_id": "edithatogo/kimittud-archive-hu",
+      "rate_limit_name": "archive-discovery-hu-kimittud",
+      "status": "historical-only",
+      "title": "Ki Mit Tud public-information register",
+      "source": "https://kimittud.hu/",
+      "catalog_url": null,
+      "source_modes": [
+        "atom_feed",
+        "internet_archive",
+        "official_dataset",
+        "operator_export"
+      ],
+      "seed_cap": 1000
+    },
+    {
+      "id": "ie-myrighttoknow",
+      "base_url": "https://www.myrighttoknow.org",
+      "country": "IE",
+      "locale": "en-IE",
+      "hf_repo_id": "edithatogo/mrtk-archive-ie",
+      "rate_limit_name": "archive-discovery-ie-myrighttoknow",
+      "status": "experimental",
+      "title": "mrtk-archive (myrighttoknow.org FOI register)",
+      "source": "https://www.myrighttoknow.org/",
+      "catalog_url": "https://www.myrighttoknow.org/body/all-authorities.csv",
+      "source_modes": [
+        "live_api",
+        "atom_feed",
+        "authority_catalog",
+        "internet_archive"
+      ],
+      "seed_cap": 1000
+    },
+    {
+      "id": "lr-infolib",
+      "base_url": "https://infolib.org.lr",
+      "country": "LR",
+      "locale": "en-LR",
+      "hf_repo_id": "edithatogo/infolib-archive-lr",
+      "rate_limit_name": "archive-discovery-lr-infolib",
+      "status": "historical-only",
+      "title": "InfoLib public-information register",
+      "source": "https://infolib.org.lr/",
+      "catalog_url": null,
+      "source_modes": [
+        "atom_feed",
+        "internet_archive",
+        "official_dataset",
+        "operator_export"
+      ],
+      "seed_cap": 1000
+    },
+    {
+      "id": "md-vreauinfo",
+      "base_url": "https://www.vreauinfo.md",
+      "country": "MD",
+      "locale": "ro-MD",
+      "hf_repo_id": "edithatogo/vreauinfo-archive-md",
+      "rate_limit_name": "archive-discovery-md-vreauinfo",
+      "status": "historical-only",
+      "title": "VreauInfo public-information register",
+      "source": "https://www.vreauinfo.md/",
+      "catalog_url": null,
+      "source_modes": [
+        "atom_feed",
+        "internet_archive",
+        "official_dataset",
+        "operator_export"
+      ],
+      "seed_cap": 1000
+    },
+    {
+      "id": "nl-woo-knop",
+      "base_url": "https://www.woo-knop.nl",
+      "country": "NL",
+      "locale": "nl-NL",
+      "hf_repo_id": "edithatogo/woo-knop-archive-nl",
+      "rate_limit_name": "archive-discovery-nl-woo-knop",
+      "status": "historical-only",
+      "title": "de Woo-Knop public-information register",
+      "source": "https://www.woo-knop.nl/",
+      "catalog_url": null,
+      "source_modes": [
+        "atom_feed",
+        "internet_archive",
+        "official_dataset",
+        "operator_export"
+      ],
+      "seed_cap": 1000
+    },
+    {
+      "id": "nz-fyi",
+      "base_url": "https://fyi.org.nz",
+      "country": "NZ",
+      "locale": "en-NZ",
+      "hf_repo_id": "edithatogo/fyi-archive-nz",
+      "rate_limit_name": "archive-discovery-nz-fyi",
+      "status": "supported",
+      "title": "fyi-archive (fyi.org.nz OIA register)",
+      "source": "https://fyi.org.nz/",
+      "catalog_url": "https://fyi.org.nz/body/all-authorities.csv",
+      "source_modes": [
+        "live_api",
+        "atom_feed",
+        "authority_catalog",
+        "internet_archive"
+      ],
+      "seed_cap": 1000
+    },
+    {
+      "id": "ro-iastatullaintrebari",
+      "base_url": "https://iastatullaintrebari.ro",
+      "country": "RO",
+      "locale": "ro-RO",
+      "hf_repo_id": "edithatogo/iastatullaintrebari-archive-ro",
+      "rate_limit_name": "archive-discovery-ro-iastatullaintrebari",
+      "status": "historical-only",
+      "title": "Ia Statul la \u00centreb\u0103ri public-information register",
+      "source": "https://iastatullaintrebari.ro/",
+      "catalog_url": null,
+      "source_modes": [
+        "atom_feed",
+        "internet_archive",
+        "official_dataset",
+        "operator_export"
+      ],
+      "seed_cap": 1000
+    },
+    {
+      "id": "se-handlingar",
+      "base_url": "https://handlingar.se",
+      "country": "SE",
+      "locale": "sv-SE",
+      "hf_repo_id": "edithatogo/handlingar-archive-se",
+      "rate_limit_name": "archive-discovery-se-handlingar",
+      "status": "experimental",
+      "title": "handlingar.se public-records register",
+      "source": "https://handlingar.se/",
+      "catalog_url": "https://handlingar.se/body/all-authorities.csv",
+      "source_modes": [
+        "live_api",
+        "atom_feed",
+        "authority_catalog",
+        "internet_archive"
+      ],
+      "seed_cap": 1000,
+      "automation": {
+        "enabled": true,
+        "timezone": "Europe/Stockholm",
+        "window_start_hour": 20,
+        "window_end_hour": 10,
+        "id_from": 1,
+        "id_to": 5,
+        "max_requests": 5,
+        "min_interval_seconds": 60,
+        "discovery_max_pages": 10
+      }
+    },
+    {
+      "id": "ua-dostup",
+      "base_url": "https://dostup.org.ua",
+      "country": "UA",
+      "locale": "uk-UA",
+      "hf_repo_id": "edithatogo/dostup-archive-ua",
+      "rate_limit_name": "archive-discovery-ua-dostup",
+      "status": "experimental",
+      "title": "\u0414\u043e\u0441\u0442\u0443\u043f \u0434\u043e \u043f\u0440\u0430\u0432\u0434\u0438 public-records register",
+      "source": "https://dostup.org.ua/",
+      "catalog_url": "https://dostup.org.ua/body/all-authorities.csv",
+      "source_modes": [
+        "live_api",
+        "atom_feed",
+        "authority_catalog",
+        "internet_archive"
+      ],
+      "seed_cap": 1000,
+      "automation": {
+        "enabled": true,
+        "timezone": "Europe/Kyiv",
+        "window_start_hour": 20,
+        "window_end_hour": 10,
+        "id_from": 1,
+        "id_to": 5,
+        "max_requests": 5,
+        "min_interval_seconds": 60,
+        "discovery_max_pages": 10
+      }
+    },
+    {
+      "id": "uk-wdtk",
+      "base_url": "https://www.whatdotheyknow.com",
+      "country": "GB",
+      "locale": "en-GB",
+      "hf_repo_id": "edithatogo/wdtk-archive-uk",
+      "rate_limit_name": "archive-discovery-uk-wdtk",
+      "status": "experimental",
+      "title": "wdtk-archive (whatdotheyknow.com FOI register)",
+      "source": "https://www.whatdotheyknow.com/",
+      "catalog_url": "https://www.whatdotheyknow.com/body/all-authorities.csv",
+      "source_modes": [
+        "live_api",
+        "atom_feed",
+        "authority_catalog",
+        "internet_archive"
+      ],
+      "seed_cap": 1000
+    },
+    {
+      "id": "us-opramachine",
+      "base_url": "https://opramachine.com",
+      "country": "US-NJ",
+      "locale": "en-US",
+      "hf_repo_id": "edithatogo/opramachine-archive-us-nj",
+      "rate_limit_name": "archive-discovery-us-opramachine",
+      "status": "historical-only",
+      "title": "OPRA Machine public-information register",
+      "source": "https://opramachine.com/",
+      "catalog_url": null,
+      "source_modes": [
+        "atom_feed",
+        "internet_archive",
+        "official_dataset",
+        "operator_export"
+      ],
+      "seed_cap": 1000
+    },
+    {
+      "id": "uy-quesabes",
+      "base_url": "https://quesabes.org",
+      "country": "UY",
+      "locale": "es-UY",
+      "hf_repo_id": "edithatogo/quesabes-archive-uy",
+      "rate_limit_name": "archive-discovery-uy-quesabes",
+      "status": "experimental",
+      "title": "Qu\u00e9 Sab\u00e9s public-information register",
+      "source": "https://quesabes.org/",
+      "catalog_url": "https://quesabes.org/body/all-authorities.csv",
+      "source_modes": [
+        "live_api",
+        "atom_feed",
+        "authority_catalog",
+        "internet_archive"
+      ],
+      "seed_cap": 1000,
+      "automation": {
+        "enabled": true,
+        "timezone": "America/Montevideo",
+        "window_start_hour": 20,
+        "window_end_hour": 10,
+        "id_from": 1,
+        "id_to": 5,
+        "max_requests": 5,
+        "min_interval_seconds": 60,
+        "discovery_max_pages": 10
+      }
+    },
+    {
+      "id": "xk-dumedite",
+      "base_url": "https://dumedite.org",
+      "country": "XK",
+      "locale": "sq-XK",
+      "hf_repo_id": "edithatogo/dumedite-archive-xk",
+      "rate_limit_name": "archive-discovery-xk-dumedite",
+      "status": "historical-only",
+      "title": "dumedit\u00eb public-information register",
+      "source": "https://dumedite.org/",
+      "catalog_url": null,
+      "source_modes": [
+        "atom_feed",
+        "internet_archive",
+        "official_dataset",
+        "operator_export"
+      ],
+      "seed_cap": 1000
+    }
+  ],
+  "additional_sites": [
+    {
+      "id": "ar-information-publica",
+      "kind": "alaveteli_unverified",
+      "country": "AR",
+      "url_patterns": [
+        "derechoala.informacionpublica.org/request/*"
+      ]
+    },
+    {
+      "id": "de-fragdenstaat",
+      "kind": "non_alaveteli",
+      "country": "DE",
+      "url_patterns": [
+        "fragdenstaat.de/anfrage/*"
+      ]
+    },
+    {
+      "id": "es-tuderechoasaber",
+      "kind": "non_alaveteli_historical",
+      "country": "ES",
+      "url_patterns": [
+        "tuderechoasaber.es/es/request/*"
+      ]
+    },
+    {
+      "id": "ca-federal-atip",
+      "kind": "non_alaveteli",
+      "country": "CA",
+      "url_patterns": [
+        "open.canada.ca/en/search/ati*"
+      ]
+    },
+    {
+      "id": "us-federal-foia",
+      "kind": "non_alaveteli",
+      "country": "US",
+      "url_patterns": [
+        "www.foia.gov/*"
+      ]
+    },
+    {
+      "id": "za-paia",
+      "kind": "non_alaveteli",
+      "country": "ZA",
+      "url_patterns": [
+        "www.justice.gov.za/paia/*"
+      ]
+    }
+  ],
+  "jurisdiction_publication_allowed": false,
+  "hf_repositories": [
+    {
+      "instance_id": "au-rtk",
+      "country": "AU",
+      "repo_id": "edithatogo/rtk-archive-au",
+      "api_url": "https://huggingface.co/api/datasets/edithatogo/rtk-archive-au",
+      "revision": "c7d04f5c59491ecef4370348693cb48adfae17fd",
+      "private": false,
+      "gated": false,
+      "file_count": 7,
+      "last_modified": "2026-07-29T00:26:00.000Z",
+      "raw_path_count": 0,
+      "warc_path_count": 0,
+      "anonymous_metadata_access": true,
+      "full_archive_verified": false
+    },
+    {
+      "instance_id": "be-transparencia",
+      "country": "BE",
+      "repo_id": "edithatogo/transparencia-archive-be",
+      "api_url": "https://huggingface.co/api/datasets/edithatogo/transparencia-archive-be",
+      "revision": "ff0924afab9d824a865552f7567902ea341d1df1",
+      "private": false,
+      "gated": false,
+      "file_count": 7,
+      "last_modified": "2026-07-29T00:26:18.000Z",
+      "raw_path_count": 0,
+      "warc_path_count": 0,
+      "anonymous_metadata_access": true,
+      "full_archive_verified": false
+    },
+    {
+      "instance_id": "co-queremosdatos",
+      "country": "CO",
+      "repo_id": "edithatogo/queremosdatos-archive-co",
+      "api_url": "https://huggingface.co/api/datasets/edithatogo/queremosdatos-archive-co",
+      "revision": "cfca71f00ab38e7c9c0219791a7ce2d52cef6334",
+      "private": false,
+      "gated": false,
+      "file_count": 7,
+      "last_modified": "2026-07-29T00:26:21.000Z",
+      "raw_path_count": 0,
+      "warc_path_count": 0,
+      "anonymous_metadata_access": true,
+      "full_archive_verified": false
+    },
+    {
+      "instance_id": "cz-infoprovsechny",
+      "country": "CZ",
+      "repo_id": "edithatogo/infoprovsechny-archive-cz",
+      "api_url": "https://huggingface.co/api/datasets/edithatogo/infoprovsechny-archive-cz",
+      "revision": "57a165e454e4ca7936c92a01da80f4a8a55a46d9",
+      "private": false,
+      "gated": false,
+      "file_count": 7,
+      "last_modified": "2026-07-29T00:26:23.000Z",
+      "raw_path_count": 0,
+      "warc_path_count": 0,
+      "anonymous_metadata_access": true,
+      "full_archive_verified": false
+    },
+    {
+      "instance_id": "eu-asktheeu",
+      "country": "EU",
+      "repo_id": "edithatogo/asktheeu-archive-eu",
+      "api_url": "https://huggingface.co/api/datasets/edithatogo/asktheeu-archive-eu",
+      "revision": "6b60fd8faa56e1b88e0fa9017944fef93fe46e35",
+      "private": false,
+      "gated": false,
+      "file_count": 7,
+      "last_modified": "2026-07-29T00:26:26.000Z",
+      "raw_path_count": 0,
+      "warc_path_count": 0,
+      "anonymous_metadata_access": true,
+      "full_archive_verified": false
+    },
+    {
+      "instance_id": "fr-madada",
+      "country": "FR",
+      "repo_id": "edithatogo/madada-archive-fr",
+      "api_url": "https://huggingface.co/api/datasets/edithatogo/madada-archive-fr",
+      "revision": "02ed9b04d1e912a841863699ee67aa47f62c1a52",
+      "private": false,
+      "gated": false,
+      "file_count": 7,
+      "last_modified": "2026-07-29T00:26:28.000Z",
+      "raw_path_count": 0,
+      "warc_path_count": 0,
+      "anonymous_metadata_access": true,
+      "full_archive_verified": false
+    },
+    {
+      "instance_id": "ge-askgov",
+      "country": "GE",
+      "repo_id": "edithatogo/askgov-archive-ge",
+      "api_url": "https://huggingface.co/api/datasets/edithatogo/askgov-archive-ge",
+      "revision": "843012cdd79460042850472663829c32eec0b465",
+      "private": false,
+      "gated": false,
+      "file_count": 7,
+      "last_modified": "2026-07-29T00:26:02.000Z",
+      "raw_path_count": 0,
+      "warc_path_count": 0,
+      "anonymous_metadata_access": true,
+      "full_archive_verified": false
+    },
+    {
+      "instance_id": "gr-arthro5a",
+      "country": "GR",
+      "repo_id": "edithatogo/arthro5a-archive-gr",
+      "api_url": "https://huggingface.co/api/datasets/edithatogo/arthro5a-archive-gr",
+      "revision": "32be246c72af6f0c1307d888471a74ccceefedd2",
+      "private": false,
+      "gated": false,
+      "file_count": 7,
+      "last_modified": "2026-07-29T00:26:31.000Z",
+      "raw_path_count": 0,
+      "warc_path_count": 0,
+      "anonymous_metadata_access": true,
+      "full_archive_verified": false
+    },
+    {
+      "instance_id": "hk-accessinfo",
+      "country": "HK",
+      "repo_id": "edithatogo/accessinfo-archive-hk",
+      "api_url": "https://huggingface.co/api/datasets/edithatogo/accessinfo-archive-hk",
+      "revision": "1c1ab9c5fc78fd891cfdb3079b4631dbf00bdc24",
+      "private": false,
+      "gated": false,
+      "file_count": 7,
+      "last_modified": "2026-07-29T00:26:33.000Z",
+      "raw_path_count": 0,
+      "warc_path_count": 0,
+      "anonymous_metadata_access": true,
+      "full_archive_verified": false
+    },
+    {
+      "instance_id": "hr-imamopravoznati",
+      "country": "HR",
+      "repo_id": "edithatogo/imamopravoznati-archive-hr",
+      "api_url": "https://huggingface.co/api/datasets/edithatogo/imamopravoznati-archive-hr",
+      "revision": "2a98b31a372113bdddac322677328757c2969a93",
+      "private": false,
+      "gated": false,
+      "file_count": 7,
+      "last_modified": "2026-07-29T00:26:36.000Z",
+      "raw_path_count": 0,
+      "warc_path_count": 0,
+      "anonymous_metadata_access": true,
+      "full_archive_verified": false
+    },
+    {
+      "instance_id": "hu-kimittud",
+      "country": "HU",
+      "repo_id": "edithatogo/kimittud-archive-hu",
+      "api_url": "https://huggingface.co/api/datasets/edithatogo/kimittud-archive-hu",
+      "revision": "dae563f24533fb000b873d7357a482a849a01176",
+      "private": false,
+      "gated": false,
+      "file_count": 7,
+      "last_modified": "2026-07-29T00:26:39.000Z",
+      "raw_path_count": 0,
+      "warc_path_count": 0,
+      "anonymous_metadata_access": true,
+      "full_archive_verified": false
+    },
+    {
+      "instance_id": "ie-myrighttoknow",
+      "country": "IE",
+      "repo_id": "edithatogo/mrtk-archive-ie",
+      "api_url": "https://huggingface.co/api/datasets/edithatogo/mrtk-archive-ie",
+      "revision": "78b7870856605cfe8fd61ea07370c7e125fd50f4",
+      "private": false,
+      "gated": false,
+      "file_count": 7,
+      "last_modified": "2026-07-29T00:26:05.000Z",
+      "raw_path_count": 0,
+      "warc_path_count": 0,
+      "anonymous_metadata_access": true,
+      "full_archive_verified": false
+    },
+    {
+      "instance_id": "lr-infolib",
+      "country": "LR",
+      "repo_id": "edithatogo/infolib-archive-lr",
+      "api_url": "https://huggingface.co/api/datasets/edithatogo/infolib-archive-lr",
+      "revision": "d1049e612b633d3589c3fdd9cf3cedc1d30a0789",
+      "private": false,
+      "gated": false,
+      "file_count": 7,
+      "last_modified": "2026-07-29T00:26:41.000Z",
+      "raw_path_count": 0,
+      "warc_path_count": 0,
+      "anonymous_metadata_access": true,
+      "full_archive_verified": false
+    },
+    {
+      "instance_id": "md-vreauinfo",
+      "country": "MD",
+      "repo_id": "edithatogo/vreauinfo-archive-md",
+      "api_url": "https://huggingface.co/api/datasets/edithatogo/vreauinfo-archive-md",
+      "revision": "7a4765dc1f7f927b9316882010115cb03642583a",
+      "private": false,
+      "gated": false,
+      "file_count": 7,
+      "last_modified": "2026-07-29T00:26:44.000Z",
+      "raw_path_count": 0,
+      "warc_path_count": 0,
+      "anonymous_metadata_access": true,
+      "full_archive_verified": false
+    },
+    {
+      "instance_id": "nl-woo-knop",
+      "country": "NL",
+      "repo_id": "edithatogo/woo-knop-archive-nl",
+      "api_url": "https://huggingface.co/api/datasets/edithatogo/woo-knop-archive-nl",
+      "revision": "8a34942018440b47e2d7800d362edf6fe539abc7",
+      "private": false,
+      "gated": false,
+      "file_count": 7,
+      "last_modified": "2026-07-29T00:26:46.000Z",
+      "raw_path_count": 0,
+      "warc_path_count": 0,
+      "anonymous_metadata_access": true,
+      "full_archive_verified": false
+    },
+    {
+      "instance_id": "nz-fyi",
+      "country": "NZ",
+      "repo_id": "edithatogo/fyi-archive-nz",
+      "api_url": "https://huggingface.co/api/datasets/edithatogo/fyi-archive-nz",
+      "revision": "bd119937c0532cc1f03ca60a7d84ca6991dab5c6",
+      "private": false,
+      "gated": false,
+      "file_count": 39,
+      "last_modified": "2026-08-02T15:41:35.000Z",
+      "raw_path_count": 0,
+      "warc_path_count": 0,
+      "anonymous_metadata_access": true,
+      "full_archive_verified": false
+    },
+    {
+      "instance_id": "ro-iastatullaintrebari",
+      "country": "RO",
+      "repo_id": "edithatogo/iastatullaintrebari-archive-ro",
+      "api_url": "https://huggingface.co/api/datasets/edithatogo/iastatullaintrebari-archive-ro",
+      "revision": "a279e54174d7066b0d4d3e8163b91ad562a536e0",
+      "private": false,
+      "gated": false,
+      "file_count": 7,
+      "last_modified": "2026-07-29T00:26:49.000Z",
+      "raw_path_count": 0,
+      "warc_path_count": 0,
+      "anonymous_metadata_access": true,
+      "full_archive_verified": false
+    },
+    {
+      "instance_id": "se-handlingar",
+      "country": "SE",
+      "repo_id": "edithatogo/handlingar-archive-se",
+      "api_url": "https://huggingface.co/api/datasets/edithatogo/handlingar-archive-se",
+      "revision": "2cb1bd17e9206e63839301c3d903a5f916107412",
+      "private": false,
+      "gated": false,
+      "file_count": 7,
+      "last_modified": "2026-07-29T00:26:08.000Z",
+      "raw_path_count": 0,
+      "warc_path_count": 0,
+      "anonymous_metadata_access": true,
+      "full_archive_verified": false
+    },
+    {
+      "instance_id": "ua-dostup",
+      "country": "UA",
+      "repo_id": "edithatogo/dostup-archive-ua",
+      "api_url": "https://huggingface.co/api/datasets/edithatogo/dostup-archive-ua",
+      "revision": "36beac089463fdac951adeeaec38070e707d8493",
+      "private": false,
+      "gated": false,
+      "file_count": 7,
+      "last_modified": "2026-07-29T00:26:10.000Z",
+      "raw_path_count": 0,
+      "warc_path_count": 0,
+      "anonymous_metadata_access": true,
+      "full_archive_verified": false
+    },
+    {
+      "instance_id": "uk-wdtk",
+      "country": "GB",
+      "repo_id": "edithatogo/wdtk-archive-uk",
+      "api_url": "https://huggingface.co/api/datasets/edithatogo/wdtk-archive-uk",
+      "revision": "a200cb990f23e834f40bcc6543d184bab174a99e",
+      "private": false,
+      "gated": false,
+      "file_count": 7,
+      "last_modified": "2026-07-29T00:26:13.000Z",
+      "raw_path_count": 0,
+      "warc_path_count": 0,
+      "anonymous_metadata_access": true,
+      "full_archive_verified": false
+    },
+    {
+      "instance_id": "us-opramachine",
+      "country": "US-NJ",
+      "repo_id": "edithatogo/opramachine-archive-us-nj",
+      "api_url": "https://huggingface.co/api/datasets/edithatogo/opramachine-archive-us-nj",
+      "revision": "8b5e71fedbc6cdcf5a71e68dc964147aa1740255",
+      "private": false,
+      "gated": false,
+      "file_count": 7,
+      "last_modified": "2026-07-29T00:26:52.000Z",
+      "raw_path_count": 0,
+      "warc_path_count": 0,
+      "anonymous_metadata_access": true,
+      "full_archive_verified": false
+    },
+    {
+      "instance_id": "uy-quesabes",
+      "country": "UY",
+      "repo_id": "edithatogo/quesabes-archive-uy",
+      "api_url": "https://huggingface.co/api/datasets/edithatogo/quesabes-archive-uy",
+      "revision": "5547a88d09d4c7b30827e885483cef07f82421d4",
+      "private": false,
+      "gated": false,
+      "file_count": 7,
+      "last_modified": "2026-07-29T00:26:15.000Z",
+      "raw_path_count": 0,
+      "warc_path_count": 0,
+      "anonymous_metadata_access": true,
+      "full_archive_verified": false
+    },
+    {
+      "instance_id": "xk-dumedite",
+      "country": "XK",
+      "repo_id": "edithatogo/dumedite-archive-xk",
+      "api_url": "https://huggingface.co/api/datasets/edithatogo/dumedite-archive-xk",
+      "revision": "466745dea2c843692fd10de920cde99b4c231768",
+      "private": false,
+      "gated": false,
+      "file_count": 7,
+      "last_modified": "2026-07-29T00:26:54.000Z",
+      "raw_path_count": 0,
+      "warc_path_count": 0,
+      "anonymous_metadata_access": true,
+      "full_archive_verified": false
+    }
+  ],
+  "nz_queue": {
+    "queue_count": 33208,
+    "credited_entries": 17225,
+    "remaining_entries": 15983,
+    "lease": [
+      {
+        "end_offset": 17250,
+        "run_id": 31929819944,
+        "start_offset": 17225
+      }
+    ],
+    "issue_body_sha256": "5c152dec5303fd30f3aab31de97190a003040f63db5f188cb7259d621b07a0f2",
+    "issue_url": "https://github.com/edithatogo/fyi-archive/issues/365",
+    "owner": {
+      "id": 31929819944,
+      "status": "completed",
+      "conclusion": "failure",
+      "run_attempt": 1,
+      "head_sha": "fb06d6cb740a2f2386b42dd1c09a4be2a3ae5693",
+      "path": ".github/workflows/nz_real_backfill_batch.yml",
+      "created_at": "2026-08-16T05:47:05Z",
+      "updated_at": "2026-08-16T05:47:48Z",
+      "html_url": "https://github.com/edithatogo/fyi-archive/actions/runs/31929819944",
+      "retained_artifacts": 0
+    }
+  },
+  "limits": [
+    "Public repo visibility and manifest rows do not establish complete raw capture.",
+    "23 instances, 29 sites and 42 regimes are different denominators; none is a world-country universe.",
+    "Rights and privacy eligibility remain pending in the canonical jurisdiction ledger.",
+    "Original capture artifacts are not restored or re-published by this audit.",
+    "fyi-archive remains operational owner; no cutover observed.",
+    "The AU/NSW workflow requires separate private retention; the 23 public registry identities do not cover every private or experimental capture destination. No private-retention policy was changed."
+  ],
+  "capture_adapter": {
+    "name": "fyi-cli",
+    "version": "1.2.1",
+    "source": {
+      "git": "https://github.com/edithatogo/fyi-cli?rev=bc789a845e8b4e8b53d007c658be8070cb17e70e#bc789a845e8b4e8b53d007c658be8070cb17e70e"
+    }
+  }
+}

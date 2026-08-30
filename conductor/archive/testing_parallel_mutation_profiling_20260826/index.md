@@ -19,3 +19,5 @@ This track expands test assurance across `archive-govt-nz`:
 - [Run Log](./runlog.md)
 - [Evidence](./evidence.md)
 - [Review](./review.md)
+
+- [Metadata](metadata.json)

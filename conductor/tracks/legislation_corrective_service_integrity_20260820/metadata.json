@@ -8,9 +8,29 @@
   "related_issue": 139,
   "pull_request": 156,
   "gates": [
-    {"id": "merge-freeze", "kind": "merge", "status": "pending"},
-    {"id": "publication-authority", "kind": "publication", "status": "pending"},
-    {"id": "redistribution-rights", "kind": "rights", "status": "pending"},
-    {"id": "donor-archival", "kind": "external", "status": "pending"}
-  ]
+    {
+      "id": "merge-freeze",
+      "kind": "merge",
+      "status": "pending"
+    },
+    {
+      "id": "publication-authority",
+      "kind": "publication",
+      "status": "pending"
+    },
+    {
+      "id": "redistribution-rights",
+      "kind": "rights",
+      "status": "pending"
+    },
+    {
+      "id": "donor-archival",
+      "kind": "external",
+      "status": "pending"
+    }
+  ],
+  "legacy_type": null,
+  "type": "chore",
+  "description": "Legislation service integrity correction",
+  "metadata_reconciled_at": "2026-08-30T09:09:36.938960Z"
 }

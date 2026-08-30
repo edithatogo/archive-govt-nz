@@ -3,7 +3,11 @@
   "track_id": "ckan_global_harvest_20260816",
   "title": "Global CKAN Catalog Harvester",
   "type": "feature",
-  "status": "complete",
+  "status": "completed",
   "created_at": "2026-08-16T01:54:00Z",
-  "scope": "streamlined whole-catalogue discovery, rules-based rights filtering, concurrent capture, and broken-URL reconciliation"
+  "scope": "streamlined whole-catalogue discovery, rules-based rights filtering, concurrent capture, and broken-URL reconciliation",
+  "legacy_status": "complete",
+  "description": "Global CKAN Catalog Harvester",
+  "updated_at": "2026-08-30T09:09:36.938960Z",
+  "metadata_reconciled_at": "2026-08-30T09:09:36.938960Z"
 }

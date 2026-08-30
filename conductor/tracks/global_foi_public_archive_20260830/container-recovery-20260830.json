@@ -1,0 +1,56 @@
+{
+  "recorded_at": "2026-08-30T10:56:35.215459+00:00",
+  "receiver_merges": {
+    "baseline": "b0e43b78040d07574d1f5297ec8478a4ec3b74da",
+    "catalogue": "d1e43651855f23778897019897440eff544dcb00",
+    "publication_guard": "3d794168dcfdcd687e1a08b18c25abd3358fbe3a"
+  },
+  "donor_merges": {
+    "recovery": "b6e78703d871082433fb33f8fa610761c2eb4062",
+    "retention": "77e70914df4391c4bde9f3573941fb71de5f9403",
+    "stored_payload_verification": "676461907887ace3f3a42a270b0b05ad0ed29ec6"
+  },
+  "container_failure": {
+    "run_id": 33307488567,
+    "no_queue_credit": true,
+    "retained_artifacts": 0,
+    "reason": "warcio rejected single gzip member containing multiple WARC records"
+  },
+  "exact_recovery": {
+    "run_id": 33307589477,
+    "recovered_run_id": 33307488567,
+    "completed_coverage_unchanged": true,
+    "state_sha256": "685f06f5ade5892f6f5ca94e1b2fc76dcb85cc63d826b132f8e7ca6ce3ae7f22",
+    "active_leases": 0
+  },
+  "followup_pr": "https://github.com/edithatogo/fyi-archive/pull/407",
+  "receiver_validation": {
+    "command": "./scripts/validate.sh",
+    "passed": true,
+    "tests_passed": 1522,
+    "coverage_percent": 95.98,
+    "log_sha256": "7fcaf9dd7afc0d812839cdb5275e8ca6227c6aa054663307a15482ac82d4d9dd"
+  },
+  "donor_validation": {
+    "command": "make test-all",
+    "tests_passed": 921,
+    "tests_skipped": 1,
+    "coverage_percent": 93.4,
+    "log_sha256": "7bfca7c75eef65d7167438375abb1c043e19e34a6daa426a3d5ee101f2287c51"
+  },
+  "codex_local_automation_audit": {
+    "matching_automation_files": 0,
+    "query": "fyi-archive|archive-govt-nz",
+    "directory": "local Codex automations"
+  },
+  "credited_queue": {
+    "total": 33208,
+    "next_offset": 17226,
+    "remaining": 15982,
+    "raw_coverage_verified": false
+  },
+  "monitor": "disabled_manually",
+  "public_upload_performed": false,
+  "cutover_performed": false,
+  "system_ready": false
+}

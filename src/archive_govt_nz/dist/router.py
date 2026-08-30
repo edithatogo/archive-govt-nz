@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
+import os
 from dataclasses import dataclass
 from datetime import UTC, datetime
-import os
 from typing import TYPE_CHECKING, Any, Final
 
 if TYPE_CHECKING:
@@ -47,7 +47,7 @@ class PublicationReceipt:
 
 
 class PublicationRouter:
-    """Orchestrates multi-platform releases with credential preflights and dry-run safety."""
+    """Plan target releases without fabricating external publication evidence."""
 
     CREDENTIAL_ENV_VARS: Final[dict[str, str]] = {
         "huggingface": "HF_TOKEN",
@@ -75,7 +75,7 @@ class PublicationRouter:
         *,
         dry_run: bool = True,
     ) -> list[PublicationReceipt]:
-        """Route manifest publication across all enabled targets."""
+        """Plan enabled targets; refuse live receipts without a remote transport."""
         receipts: list[PublicationReceipt] = []
         now_iso = datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
         total_bytes = sum(item.size_bytes for item in manifest.items)
@@ -87,43 +87,8 @@ class PublicationRouter:
 
             receipt_id = f"rcpt-{p.platform}-{manifest.manifest_id}"
 
-            if dry_run:
-                receipt = PublicationReceipt(
-                    schema_version=RECEIPT_SCHEMA,
-                    receipt_id=receipt_id,
-                    target_platform=p.platform,
-                    remote_identifier=p.target_identifier,
-                    published_at=now_iso,
-                    sha256_bundle_root=manifest.bundle_root_sha256,
-                    file_count=file_count,
-                    total_bytes=total_bytes,
-                    status="verified",
-                    doi=f"10.5281/zenodo.{manifest.manifest_id}"
-                    if p.platform == "zenodo"
-                    else None,
-                    commit_pinned_url=f"https://huggingface.co/{p.target_identifier}/tree/{manifest.version}"
-                    if p.platform == "huggingface"
-                    else None,
-                )
-                receipts.append(receipt)
-                continue
-
-            env_var = self.CREDENTIAL_ENV_VARS.get(p.platform)
-            if not env_var or not os.environ.get(env_var):
-                receipt = PublicationReceipt(
-                    schema_version=RECEIPT_SCHEMA,
-                    receipt_id=receipt_id,
-                    target_platform=p.platform,
-                    remote_identifier=p.target_identifier,
-                    published_at=now_iso,
-                    sha256_bundle_root=manifest.bundle_root_sha256,
-                    file_count=file_count,
-                    total_bytes=total_bytes,
-                    status="failed",
-                )
-                receipts.append(receipt)
-                continue
-
+            # This legacy router does not call a remote publisher. Authentication
+            # presence cannot establish upload, a DOI, or a remotely verified revision.
             receipt = PublicationReceipt(
                 schema_version=RECEIPT_SCHEMA,
                 receipt_id=receipt_id,
@@ -131,15 +96,9 @@ class PublicationRouter:
                 remote_identifier=p.target_identifier,
                 published_at=now_iso,
                 sha256_bundle_root=manifest.bundle_root_sha256,
-                file_count=file_count,
-                total_bytes=total_bytes,
-                status="published",
-                doi=f"10.5281/zenodo.{manifest.manifest_id}"
-                if p.platform == "zenodo"
-                else None,
-                commit_pinned_url=f"https://huggingface.co/{p.target_identifier}/tree/{manifest.version}"
-                if p.platform == "huggingface"
-                else None,
+                file_count=file_count if dry_run else 0,
+                total_bytes=total_bytes if dry_run else 0,
+                status="dry_run" if dry_run else "failed",
             )
             receipts.append(receipt)
 

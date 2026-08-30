@@ -1,0 +1,23 @@
+{
+  "recorded_at": "2026-08-30T09:16:37.214981+00:00",
+  "source": "https://api.github.com/repos/edithatogo/fyi-archive/actions/artifacts",
+  "declared_total_at_start": 21730,
+  "pages_requested": 218,
+  "failed_pages": [],
+  "unique_artifacts_observed": 21730,
+  "retained_count": 21724,
+  "expired_count": 6,
+  "retained_bytes": 1848706100,
+  "expires_within_seven_days": 0,
+  "expiring_bytes": 0,
+  "index_path": "donor-artifacts.jsonl.gz",
+  "index_sha256": "d34b932a89950aa1933cc4e8de9dc681b2ee9508f009febfa7db7d6ecbc45d47",
+  "uncompressed_sha256": "1a7afbcac225e177792aa198870628fde199e7fae897319e83074e8c08307ce2",
+  "raw_payloads_downloaded": false,
+  "durable_raw_restore_verified": false,
+  "limits": [
+    "Pagination is a live observation, not an atomic snapshot; new or expired artifacts can shift pages.",
+    "Index excludes artifact names, download URLs and all payload bodies.",
+    "GitHub artifacts are temporary storage; their existence is not Hugging Face public preservation."
+  ]
+}

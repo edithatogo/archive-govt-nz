@@ -4,3 +4,5 @@
 - [Implementation plan](plan.md)
 - [Metadata](metadata.json)
 - [Evidence](evidence.jsonl)
+
+- [Implementation Plan](plan.md)

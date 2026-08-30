@@ -1,7 +1,7 @@
 {
   "id": "differential_parity_harness_20260817",
   "title": "Track 9: Differential/Parity Harness",
-  "type": "parity_assurance",
+  "type": "chore",
   "status": "completed",
   "created_at": "2026-08-16T23:00:00Z",
   "completed_at": "2026-08-17T09:35:00Z",
@@ -15,5 +15,10 @@
   "outputs": [
     "tools/differential_parity_harness.py",
     "tests/migrations/test_differential_parity.py"
-  ]
+  ],
+  "track_id": "differential_parity_harness_20260817",
+  "legacy_type": "parity_assurance",
+  "description": "Track 9: Differential/Parity Harness",
+  "updated_at": "2026-08-30T09:09:36.938960Z",
+  "metadata_reconciled_at": "2026-08-30T09:09:36.938960Z"
 }

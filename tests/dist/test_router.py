@@ -50,14 +50,16 @@ def test_router_check_preflight_credentials() -> None:
 
 
 def test_router_publish_manifest_dry_run() -> None:
-    """Dry-run returns verified receipts without mutating remote services."""
+    """Dry-run cannot issue external publication identifiers."""
     manifest = _sample_manifest()
     router = PublicationRouter()
 
     receipts = router.publish_manifest(manifest, dry_run=True)
     assert len(receipts) == 3
     for r in receipts:
-        assert r.status == "verified"
+        assert r.status == "dry_run"
+        assert r.doi is None
+        assert r.commit_pinned_url is None
         assert r.file_count == 1
         assert r.total_bytes == 4096
         assert len(r.sha256_bundle_root) == 64
@@ -78,7 +80,7 @@ def test_router_publish_manifest_live_missing_creds() -> None:
 
 
 def test_router_publish_manifest_live_with_creds() -> None:
-    """Live publish with credentials produces published receipts."""
+    """Credentials alone never establish a remote publication."""
     manifest = _sample_manifest()
     router = PublicationRouter()
 
@@ -91,5 +93,8 @@ def test_router_publish_manifest_live_with_creds() -> None:
         receipts = router.publish_manifest(manifest, dry_run=False)
         assert len(receipts) == 3
         for r in receipts:
-            assert r.status == "published"
-            assert r.doi is not None or r.commit_pinned_url is not None or r.target_platform == "osf"
+            assert r.status == "failed"
+            assert r.file_count == 0
+            assert r.total_bytes == 0
+            assert r.doi is None
+            assert r.commit_pinned_url is None

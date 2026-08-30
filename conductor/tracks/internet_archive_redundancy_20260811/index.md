@@ -18,3 +18,5 @@ classification, and remotely retained receipts.
 - [Evidence](./evidence.md)
 - [Self-review](./review.md)
 - [GitHub issue hierarchy](./github-issues.md)
+
+- [Implementation Plan](plan.md)

@@ -1,0 +1,2278 @@
+{
+  "schema_version": "archive-govt-nz.foi-country-universe/v1",
+  "source_url": "https://unstats.un.org/unsd/methodology/m49/overview/",
+  "retrieved_at": "2026-08-30T09:41:18.511301+00:00",
+  "source_html_sha256": "b9048114f6e7f2abda83bf03d4263c9d7cd1bd7230e3d0461025ee7839a7a1fb",
+  "m49_row_count": 248,
+  "aliases": {
+    "UK": "GB",
+    "SCOT": "GB",
+    "US-NJ": "US"
+  },
+  "entities": [
+    {
+      "id": "AD",
+      "name": "Andorra",
+      "m49": "020",
+      "iso_alpha3": "AND",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "AE",
+      "name": "United Arab Emirates",
+      "m49": "784",
+      "iso_alpha3": "ARE",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "AF",
+      "name": "Afghanistan",
+      "m49": "004",
+      "iso_alpha3": "AFG",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "AG",
+      "name": "Antigua and Barbuda",
+      "m49": "028",
+      "iso_alpha3": "ATG",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "AI",
+      "name": "Anguilla",
+      "m49": "660",
+      "iso_alpha3": "AIA",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "AL",
+      "name": "Albania",
+      "m49": "008",
+      "iso_alpha3": "ALB",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "AM",
+      "name": "Armenia",
+      "m49": "051",
+      "iso_alpha3": "ARM",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "AO",
+      "name": "Angola",
+      "m49": "024",
+      "iso_alpha3": "AGO",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "AQ",
+      "name": "Antarctica",
+      "m49": "010",
+      "iso_alpha3": "ATA",
+      "region": null,
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "AR",
+      "name": "Argentina",
+      "m49": "032",
+      "iso_alpha3": "ARG",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "AS",
+      "name": "American Samoa",
+      "m49": "016",
+      "iso_alpha3": "ASM",
+      "region": "Oceania",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "AT",
+      "name": "Austria",
+      "m49": "040",
+      "iso_alpha3": "AUT",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "AU",
+      "name": "Australia",
+      "m49": "036",
+      "iso_alpha3": "AUS",
+      "region": "Oceania",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "AW",
+      "name": "Aruba",
+      "m49": "533",
+      "iso_alpha3": "ABW",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "AX",
+      "name": "Åland Islands",
+      "m49": "248",
+      "iso_alpha3": "ALA",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "AZ",
+      "name": "Azerbaijan",
+      "m49": "031",
+      "iso_alpha3": "AZE",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "BA",
+      "name": "Bosnia and Herzegovina",
+      "m49": "070",
+      "iso_alpha3": "BIH",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "BB",
+      "name": "Barbados",
+      "m49": "052",
+      "iso_alpha3": "BRB",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "BD",
+      "name": "Bangladesh",
+      "m49": "050",
+      "iso_alpha3": "BGD",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "BE",
+      "name": "Belgium",
+      "m49": "056",
+      "iso_alpha3": "BEL",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "BF",
+      "name": "Burkina Faso",
+      "m49": "854",
+      "iso_alpha3": "BFA",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "BG",
+      "name": "Bulgaria",
+      "m49": "100",
+      "iso_alpha3": "BGR",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "BH",
+      "name": "Bahrain",
+      "m49": "048",
+      "iso_alpha3": "BHR",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "BI",
+      "name": "Burundi",
+      "m49": "108",
+      "iso_alpha3": "BDI",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "BJ",
+      "name": "Benin",
+      "m49": "204",
+      "iso_alpha3": "BEN",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "BL",
+      "name": "Saint Barthélemy",
+      "m49": "652",
+      "iso_alpha3": "BLM",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "BM",
+      "name": "Bermuda",
+      "m49": "060",
+      "iso_alpha3": "BMU",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "BN",
+      "name": "Brunei Darussalam",
+      "m49": "096",
+      "iso_alpha3": "BRN",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "BO",
+      "name": "Bolivia (Plurinational State of)",
+      "m49": "068",
+      "iso_alpha3": "BOL",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "BQ",
+      "name": "Bonaire, Sint Eustatius and Saba",
+      "m49": "535",
+      "iso_alpha3": "BES",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "BR",
+      "name": "Brazil",
+      "m49": "076",
+      "iso_alpha3": "BRA",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "BS",
+      "name": "Bahamas",
+      "m49": "044",
+      "iso_alpha3": "BHS",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "BT",
+      "name": "Bhutan",
+      "m49": "064",
+      "iso_alpha3": "BTN",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "BV",
+      "name": "Bouvet Island",
+      "m49": "074",
+      "iso_alpha3": "BVT",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "BW",
+      "name": "Botswana",
+      "m49": "072",
+      "iso_alpha3": "BWA",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "BY",
+      "name": "Belarus",
+      "m49": "112",
+      "iso_alpha3": "BLR",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "BZ",
+      "name": "Belize",
+      "m49": "084",
+      "iso_alpha3": "BLZ",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "CA",
+      "name": "Canada",
+      "m49": "124",
+      "iso_alpha3": "CAN",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "CC",
+      "name": "Cocos (Keeling) Islands",
+      "m49": "166",
+      "iso_alpha3": "CCK",
+      "region": "Oceania",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "CD",
+      "name": "Democratic Republic of the Congo",
+      "m49": "180",
+      "iso_alpha3": "COD",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "CF",
+      "name": "Central African Republic",
+      "m49": "140",
+      "iso_alpha3": "CAF",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "CG",
+      "name": "Congo",
+      "m49": "178",
+      "iso_alpha3": "COG",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "CH",
+      "name": "Switzerland",
+      "m49": "756",
+      "iso_alpha3": "CHE",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "CI",
+      "name": "Côte d’Ivoire",
+      "m49": "384",
+      "iso_alpha3": "CIV",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "CK",
+      "name": "Cook Islands",
+      "m49": "184",
+      "iso_alpha3": "COK",
+      "region": "Oceania",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "CL",
+      "name": "Chile",
+      "m49": "152",
+      "iso_alpha3": "CHL",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "CM",
+      "name": "Cameroon",
+      "m49": "120",
+      "iso_alpha3": "CMR",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "CN",
+      "name": "China",
+      "m49": "156",
+      "iso_alpha3": "CHN",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "CO",
+      "name": "Colombia",
+      "m49": "170",
+      "iso_alpha3": "COL",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "CR",
+      "name": "Costa Rica",
+      "m49": "188",
+      "iso_alpha3": "CRI",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "CU",
+      "name": "Cuba",
+      "m49": "192",
+      "iso_alpha3": "CUB",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "CV",
+      "name": "Cabo Verde",
+      "m49": "132",
+      "iso_alpha3": "CPV",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "CW",
+      "name": "Curaçao",
+      "m49": "531",
+      "iso_alpha3": "CUW",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "CX",
+      "name": "Christmas Island",
+      "m49": "162",
+      "iso_alpha3": "CXR",
+      "region": "Oceania",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "CY",
+      "name": "Cyprus",
+      "m49": "196",
+      "iso_alpha3": "CYP",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "CZ",
+      "name": "Czechia",
+      "m49": "203",
+      "iso_alpha3": "CZE",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "DE",
+      "name": "Germany",
+      "m49": "276",
+      "iso_alpha3": "DEU",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "DJ",
+      "name": "Djibouti",
+      "m49": "262",
+      "iso_alpha3": "DJI",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "DK",
+      "name": "Denmark",
+      "m49": "208",
+      "iso_alpha3": "DNK",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "DM",
+      "name": "Dominica",
+      "m49": "212",
+      "iso_alpha3": "DMA",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "DO",
+      "name": "Dominican Republic",
+      "m49": "214",
+      "iso_alpha3": "DOM",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "DZ",
+      "name": "Algeria",
+      "m49": "012",
+      "iso_alpha3": "DZA",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "EC",
+      "name": "Ecuador",
+      "m49": "218",
+      "iso_alpha3": "ECU",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "EE",
+      "name": "Estonia",
+      "m49": "233",
+      "iso_alpha3": "EST",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "EG",
+      "name": "Egypt",
+      "m49": "818",
+      "iso_alpha3": "EGY",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "EH",
+      "name": "Western Sahara",
+      "m49": "732",
+      "iso_alpha3": "ESH",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "ER",
+      "name": "Eritrea",
+      "m49": "232",
+      "iso_alpha3": "ERI",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "ES",
+      "name": "Spain",
+      "m49": "724",
+      "iso_alpha3": "ESP",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "ET",
+      "name": "Ethiopia",
+      "m49": "231",
+      "iso_alpha3": "ETH",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "EU",
+      "name": "European Union",
+      "m49": null,
+      "iso_alpha3": null,
+      "region": null,
+      "kind": "supranational",
+      "basis": "Existing eu-asktheeu source preserved separately from country/area counts."
+    },
+    {
+      "id": "FI",
+      "name": "Finland",
+      "m49": "246",
+      "iso_alpha3": "FIN",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "FJ",
+      "name": "Fiji",
+      "m49": "242",
+      "iso_alpha3": "FJI",
+      "region": "Oceania",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "FK",
+      "name": "Falkland Islands (Malvinas)",
+      "m49": "238",
+      "iso_alpha3": "FLK",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "FM",
+      "name": "Micronesia (Federated States of)",
+      "m49": "583",
+      "iso_alpha3": "FSM",
+      "region": "Oceania",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "FO",
+      "name": "Faroe Islands",
+      "m49": "234",
+      "iso_alpha3": "FRO",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "FR",
+      "name": "France",
+      "m49": "250",
+      "iso_alpha3": "FRA",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "GA",
+      "name": "Gabon",
+      "m49": "266",
+      "iso_alpha3": "GAB",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "GB",
+      "name": "United Kingdom of Great Britain and Northern Ireland",
+      "m49": "826",
+      "iso_alpha3": "GBR",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "GD",
+      "name": "Grenada",
+      "m49": "308",
+      "iso_alpha3": "GRD",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "GE",
+      "name": "Georgia",
+      "m49": "268",
+      "iso_alpha3": "GEO",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "GF",
+      "name": "French Guiana",
+      "m49": "254",
+      "iso_alpha3": "GUF",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "GG",
+      "name": "Guernsey",
+      "m49": "831",
+      "iso_alpha3": "GGY",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "GH",
+      "name": "Ghana",
+      "m49": "288",
+      "iso_alpha3": "GHA",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "GI",
+      "name": "Gibraltar",
+      "m49": "292",
+      "iso_alpha3": "GIB",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "GL",
+      "name": "Greenland",
+      "m49": "304",
+      "iso_alpha3": "GRL",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "GM",
+      "name": "Gambia",
+      "m49": "270",
+      "iso_alpha3": "GMB",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "GN",
+      "name": "Guinea",
+      "m49": "324",
+      "iso_alpha3": "GIN",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "GP",
+      "name": "Guadeloupe",
+      "m49": "312",
+      "iso_alpha3": "GLP",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "GQ",
+      "name": "Equatorial Guinea",
+      "m49": "226",
+      "iso_alpha3": "GNQ",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "GR",
+      "name": "Greece",
+      "m49": "300",
+      "iso_alpha3": "GRC",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "GS",
+      "name": "South Georgia and the South Sandwich Islands",
+      "m49": "239",
+      "iso_alpha3": "SGS",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "GT",
+      "name": "Guatemala",
+      "m49": "320",
+      "iso_alpha3": "GTM",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "GU",
+      "name": "Guam",
+      "m49": "316",
+      "iso_alpha3": "GUM",
+      "region": "Oceania",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "GW",
+      "name": "Guinea-Bissau",
+      "m49": "624",
+      "iso_alpha3": "GNB",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "GY",
+      "name": "Guyana",
+      "m49": "328",
+      "iso_alpha3": "GUY",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "HK",
+      "name": "China, Hong Kong Special Administrative Region",
+      "m49": "344",
+      "iso_alpha3": "HKG",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "HM",
+      "name": "Heard Island and McDonald Islands",
+      "m49": "334",
+      "iso_alpha3": "HMD",
+      "region": "Oceania",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "HN",
+      "name": "Honduras",
+      "m49": "340",
+      "iso_alpha3": "HND",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "HR",
+      "name": "Croatia",
+      "m49": "191",
+      "iso_alpha3": "HRV",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "HT",
+      "name": "Haiti",
+      "m49": "332",
+      "iso_alpha3": "HTI",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "HU",
+      "name": "Hungary",
+      "m49": "348",
+      "iso_alpha3": "HUN",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "ID",
+      "name": "Indonesia",
+      "m49": "360",
+      "iso_alpha3": "IDN",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "IE",
+      "name": "Ireland",
+      "m49": "372",
+      "iso_alpha3": "IRL",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "IL",
+      "name": "Israel",
+      "m49": "376",
+      "iso_alpha3": "ISR",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "IM",
+      "name": "Isle of Man",
+      "m49": "833",
+      "iso_alpha3": "IMN",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "IN",
+      "name": "India",
+      "m49": "356",
+      "iso_alpha3": "IND",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "IO",
+      "name": "British Indian Ocean Territory",
+      "m49": "086",
+      "iso_alpha3": "IOT",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "IQ",
+      "name": "Iraq",
+      "m49": "368",
+      "iso_alpha3": "IRQ",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "IR",
+      "name": "Iran (Islamic Republic of)",
+      "m49": "364",
+      "iso_alpha3": "IRN",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "IS",
+      "name": "Iceland",
+      "m49": "352",
+      "iso_alpha3": "ISL",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "IT",
+      "name": "Italy",
+      "m49": "380",
+      "iso_alpha3": "ITA",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "JE",
+      "name": "Jersey",
+      "m49": "832",
+      "iso_alpha3": "JEY",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "JM",
+      "name": "Jamaica",
+      "m49": "388",
+      "iso_alpha3": "JAM",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "JO",
+      "name": "Jordan",
+      "m49": "400",
+      "iso_alpha3": "JOR",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "JP",
+      "name": "Japan",
+      "m49": "392",
+      "iso_alpha3": "JPN",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "KE",
+      "name": "Kenya",
+      "m49": "404",
+      "iso_alpha3": "KEN",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "KG",
+      "name": "Kyrgyzstan",
+      "m49": "417",
+      "iso_alpha3": "KGZ",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "KH",
+      "name": "Cambodia",
+      "m49": "116",
+      "iso_alpha3": "KHM",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "KI",
+      "name": "Kiribati",
+      "m49": "296",
+      "iso_alpha3": "KIR",
+      "region": "Oceania",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "KM",
+      "name": "Comoros",
+      "m49": "174",
+      "iso_alpha3": "COM",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "KN",
+      "name": "Saint Kitts and Nevis",
+      "m49": "659",
+      "iso_alpha3": "KNA",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "KP",
+      "name": "Democratic People's Republic of Korea",
+      "m49": "408",
+      "iso_alpha3": "PRK",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "KR",
+      "name": "Republic of Korea",
+      "m49": "410",
+      "iso_alpha3": "KOR",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "KW",
+      "name": "Kuwait",
+      "m49": "414",
+      "iso_alpha3": "KWT",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "KY",
+      "name": "Cayman Islands",
+      "m49": "136",
+      "iso_alpha3": "CYM",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "KZ",
+      "name": "Kazakhstan",
+      "m49": "398",
+      "iso_alpha3": "KAZ",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "LA",
+      "name": "Lao People's Democratic Republic",
+      "m49": "418",
+      "iso_alpha3": "LAO",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "LB",
+      "name": "Lebanon",
+      "m49": "422",
+      "iso_alpha3": "LBN",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "LC",
+      "name": "Saint Lucia",
+      "m49": "662",
+      "iso_alpha3": "LCA",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "LI",
+      "name": "Liechtenstein",
+      "m49": "438",
+      "iso_alpha3": "LIE",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "LK",
+      "name": "Sri Lanka",
+      "m49": "144",
+      "iso_alpha3": "LKA",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "LR",
+      "name": "Liberia",
+      "m49": "430",
+      "iso_alpha3": "LBR",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "LS",
+      "name": "Lesotho",
+      "m49": "426",
+      "iso_alpha3": "LSO",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "LT",
+      "name": "Lithuania",
+      "m49": "440",
+      "iso_alpha3": "LTU",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "LU",
+      "name": "Luxembourg",
+      "m49": "442",
+      "iso_alpha3": "LUX",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "LV",
+      "name": "Latvia",
+      "m49": "428",
+      "iso_alpha3": "LVA",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "LY",
+      "name": "Libya",
+      "m49": "434",
+      "iso_alpha3": "LBY",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "MA",
+      "name": "Morocco",
+      "m49": "504",
+      "iso_alpha3": "MAR",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "MC",
+      "name": "Monaco",
+      "m49": "492",
+      "iso_alpha3": "MCO",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "MD",
+      "name": "Republic of Moldova",
+      "m49": "498",
+      "iso_alpha3": "MDA",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "ME",
+      "name": "Montenegro",
+      "m49": "499",
+      "iso_alpha3": "MNE",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "MF",
+      "name": "Saint Martin (French Part)",
+      "m49": "663",
+      "iso_alpha3": "MAF",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "MG",
+      "name": "Madagascar",
+      "m49": "450",
+      "iso_alpha3": "MDG",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "MH",
+      "name": "Marshall Islands",
+      "m49": "584",
+      "iso_alpha3": "MHL",
+      "region": "Oceania",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "MK",
+      "name": "North Macedonia",
+      "m49": "807",
+      "iso_alpha3": "MKD",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "ML",
+      "name": "Mali",
+      "m49": "466",
+      "iso_alpha3": "MLI",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "MM",
+      "name": "Myanmar",
+      "m49": "104",
+      "iso_alpha3": "MMR",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "MN",
+      "name": "Mongolia",
+      "m49": "496",
+      "iso_alpha3": "MNG",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "MO",
+      "name": "China, Macao Special Administrative Region",
+      "m49": "446",
+      "iso_alpha3": "MAC",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "MP",
+      "name": "Northern Mariana Islands",
+      "m49": "580",
+      "iso_alpha3": "MNP",
+      "region": "Oceania",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "MQ",
+      "name": "Martinique",
+      "m49": "474",
+      "iso_alpha3": "MTQ",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "MR",
+      "name": "Mauritania",
+      "m49": "478",
+      "iso_alpha3": "MRT",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "MS",
+      "name": "Montserrat",
+      "m49": "500",
+      "iso_alpha3": "MSR",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "MT",
+      "name": "Malta",
+      "m49": "470",
+      "iso_alpha3": "MLT",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "MU",
+      "name": "Mauritius",
+      "m49": "480",
+      "iso_alpha3": "MUS",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "MV",
+      "name": "Maldives",
+      "m49": "462",
+      "iso_alpha3": "MDV",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "MW",
+      "name": "Malawi",
+      "m49": "454",
+      "iso_alpha3": "MWI",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "MX",
+      "name": "Mexico",
+      "m49": "484",
+      "iso_alpha3": "MEX",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "MY",
+      "name": "Malaysia",
+      "m49": "458",
+      "iso_alpha3": "MYS",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "MZ",
+      "name": "Mozambique",
+      "m49": "508",
+      "iso_alpha3": "MOZ",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "NA",
+      "name": "Namibia",
+      "m49": "516",
+      "iso_alpha3": "NAM",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "NC",
+      "name": "New Caledonia",
+      "m49": "540",
+      "iso_alpha3": "NCL",
+      "region": "Oceania",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "NE",
+      "name": "Niger",
+      "m49": "562",
+      "iso_alpha3": "NER",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "NF",
+      "name": "Norfolk Island",
+      "m49": "574",
+      "iso_alpha3": "NFK",
+      "region": "Oceania",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "NG",
+      "name": "Nigeria",
+      "m49": "566",
+      "iso_alpha3": "NGA",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "NI",
+      "name": "Nicaragua",
+      "m49": "558",
+      "iso_alpha3": "NIC",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "NL",
+      "name": "Netherlands (Kingdom of the)",
+      "m49": "528",
+      "iso_alpha3": "NLD",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "NO",
+      "name": "Norway",
+      "m49": "578",
+      "iso_alpha3": "NOR",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "NP",
+      "name": "Nepal",
+      "m49": "524",
+      "iso_alpha3": "NPL",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "NR",
+      "name": "Naoero",
+      "m49": "520",
+      "iso_alpha3": "NRU",
+      "region": "Oceania",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "NU",
+      "name": "Niue",
+      "m49": "570",
+      "iso_alpha3": "NIU",
+      "region": "Oceania",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "NZ",
+      "name": "New Zealand",
+      "m49": "554",
+      "iso_alpha3": "NZL",
+      "region": "Oceania",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "OM",
+      "name": "Oman",
+      "m49": "512",
+      "iso_alpha3": "OMN",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "PA",
+      "name": "Panama",
+      "m49": "591",
+      "iso_alpha3": "PAN",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "PE",
+      "name": "Peru",
+      "m49": "604",
+      "iso_alpha3": "PER",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "PF",
+      "name": "French Polynesia",
+      "m49": "258",
+      "iso_alpha3": "PYF",
+      "region": "Oceania",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "PG",
+      "name": "Papua New Guinea",
+      "m49": "598",
+      "iso_alpha3": "PNG",
+      "region": "Oceania",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "PH",
+      "name": "Philippines",
+      "m49": "608",
+      "iso_alpha3": "PHL",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "PK",
+      "name": "Pakistan",
+      "m49": "586",
+      "iso_alpha3": "PAK",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "PL",
+      "name": "Poland",
+      "m49": "616",
+      "iso_alpha3": "POL",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "PM",
+      "name": "Saint Pierre and Miquelon",
+      "m49": "666",
+      "iso_alpha3": "SPM",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "PN",
+      "name": "Pitcairn",
+      "m49": "612",
+      "iso_alpha3": "PCN",
+      "region": "Oceania",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "PR",
+      "name": "Puerto Rico",
+      "m49": "630",
+      "iso_alpha3": "PRI",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "PS",
+      "name": "State of Palestine",
+      "m49": "275",
+      "iso_alpha3": "PSE",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "PT",
+      "name": "Portugal",
+      "m49": "620",
+      "iso_alpha3": "PRT",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "PW",
+      "name": "Palau",
+      "m49": "585",
+      "iso_alpha3": "PLW",
+      "region": "Oceania",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "PY",
+      "name": "Paraguay",
+      "m49": "600",
+      "iso_alpha3": "PRY",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "QA",
+      "name": "Qatar",
+      "m49": "634",
+      "iso_alpha3": "QAT",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "RE",
+      "name": "Réunion",
+      "m49": "638",
+      "iso_alpha3": "REU",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "RO",
+      "name": "Romania",
+      "m49": "642",
+      "iso_alpha3": "ROU",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "RS",
+      "name": "Serbia",
+      "m49": "688",
+      "iso_alpha3": "SRB",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "RU",
+      "name": "Russian Federation",
+      "m49": "643",
+      "iso_alpha3": "RUS",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "RW",
+      "name": "Rwanda",
+      "m49": "646",
+      "iso_alpha3": "RWA",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "SA",
+      "name": "Saudi Arabia",
+      "m49": "682",
+      "iso_alpha3": "SAU",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "SB",
+      "name": "Solomon Islands",
+      "m49": "090",
+      "iso_alpha3": "SLB",
+      "region": "Oceania",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "SC",
+      "name": "Seychelles",
+      "m49": "690",
+      "iso_alpha3": "SYC",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "SD",
+      "name": "Sudan",
+      "m49": "729",
+      "iso_alpha3": "SDN",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "SE",
+      "name": "Sweden",
+      "m49": "752",
+      "iso_alpha3": "SWE",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "SG",
+      "name": "Singapore",
+      "m49": "702",
+      "iso_alpha3": "SGP",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "SH",
+      "name": "Saint Helena",
+      "m49": "654",
+      "iso_alpha3": "SHN",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "SI",
+      "name": "Slovenia",
+      "m49": "705",
+      "iso_alpha3": "SVN",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "SJ",
+      "name": "Svalbard and Jan Mayen Islands",
+      "m49": "744",
+      "iso_alpha3": "SJM",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "SK",
+      "name": "Slovakia",
+      "m49": "703",
+      "iso_alpha3": "SVK",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "SL",
+      "name": "Sierra Leone",
+      "m49": "694",
+      "iso_alpha3": "SLE",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "SM",
+      "name": "San Marino",
+      "m49": "674",
+      "iso_alpha3": "SMR",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "SN",
+      "name": "Senegal",
+      "m49": "686",
+      "iso_alpha3": "SEN",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "SO",
+      "name": "Somalia",
+      "m49": "706",
+      "iso_alpha3": "SOM",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "SR",
+      "name": "Suriname",
+      "m49": "740",
+      "iso_alpha3": "SUR",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "SS",
+      "name": "South Sudan",
+      "m49": "728",
+      "iso_alpha3": "SSD",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "ST",
+      "name": "Sao Tome and Principe",
+      "m49": "678",
+      "iso_alpha3": "STP",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "SV",
+      "name": "El Salvador",
+      "m49": "222",
+      "iso_alpha3": "SLV",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "SX",
+      "name": "Sint Maarten (Dutch part)",
+      "m49": "534",
+      "iso_alpha3": "SXM",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "SY",
+      "name": "Syrian Arab Republic",
+      "m49": "760",
+      "iso_alpha3": "SYR",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "SZ",
+      "name": "Eswatini",
+      "m49": "748",
+      "iso_alpha3": "SWZ",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "TC",
+      "name": "Turks and Caicos Islands",
+      "m49": "796",
+      "iso_alpha3": "TCA",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "TD",
+      "name": "Chad",
+      "m49": "148",
+      "iso_alpha3": "TCD",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "TF",
+      "name": "French Southern Territories",
+      "m49": "260",
+      "iso_alpha3": "ATF",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "TG",
+      "name": "Togo",
+      "m49": "768",
+      "iso_alpha3": "TGO",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "TH",
+      "name": "Thailand",
+      "m49": "764",
+      "iso_alpha3": "THA",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "TJ",
+      "name": "Tajikistan",
+      "m49": "762",
+      "iso_alpha3": "TJK",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "TK",
+      "name": "Tokelau",
+      "m49": "772",
+      "iso_alpha3": "TKL",
+      "region": "Oceania",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "TL",
+      "name": "Timor-Leste",
+      "m49": "626",
+      "iso_alpha3": "TLS",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "TM",
+      "name": "Turkmenistan",
+      "m49": "795",
+      "iso_alpha3": "TKM",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "TN",
+      "name": "Tunisia",
+      "m49": "788",
+      "iso_alpha3": "TUN",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "TO",
+      "name": "Tonga",
+      "m49": "776",
+      "iso_alpha3": "TON",
+      "region": "Oceania",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "TR",
+      "name": "Türkiye",
+      "m49": "792",
+      "iso_alpha3": "TUR",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "TT",
+      "name": "Trinidad and Tobago",
+      "m49": "780",
+      "iso_alpha3": "TTO",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "TV",
+      "name": "Tuvalu",
+      "m49": "798",
+      "iso_alpha3": "TUV",
+      "region": "Oceania",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "TW",
+      "name": "Taiwan",
+      "m49": null,
+      "iso_alpha3": null,
+      "region": null,
+      "kind": "separately_tracked_jurisdiction",
+      "basis": "Project coverage extension; separate archive jurisdiction, not a sovereignty assertion."
+    },
+    {
+      "id": "TZ",
+      "name": "United Republic of Tanzania",
+      "m49": "834",
+      "iso_alpha3": "TZA",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "UA",
+      "name": "Ukraine",
+      "m49": "804",
+      "iso_alpha3": "UKR",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "UG",
+      "name": "Uganda",
+      "m49": "800",
+      "iso_alpha3": "UGA",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "UM",
+      "name": "United States Minor Outlying Islands",
+      "m49": "581",
+      "iso_alpha3": "UMI",
+      "region": "Oceania",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "US",
+      "name": "United States of America",
+      "m49": "840",
+      "iso_alpha3": "USA",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "UY",
+      "name": "Uruguay",
+      "m49": "858",
+      "iso_alpha3": "URY",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "UZ",
+      "name": "Uzbekistan",
+      "m49": "860",
+      "iso_alpha3": "UZB",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "VA",
+      "name": "Holy See",
+      "m49": "336",
+      "iso_alpha3": "VAT",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "VC",
+      "name": "Saint Vincent and the Grenadines",
+      "m49": "670",
+      "iso_alpha3": "VCT",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "VE",
+      "name": "Venezuela (Bolivarian Republic of)",
+      "m49": "862",
+      "iso_alpha3": "VEN",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "VG",
+      "name": "British Virgin Islands",
+      "m49": "092",
+      "iso_alpha3": "VGB",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "VI",
+      "name": "United States Virgin Islands",
+      "m49": "850",
+      "iso_alpha3": "VIR",
+      "region": "Americas",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "VN",
+      "name": "Viet Nam",
+      "m49": "704",
+      "iso_alpha3": "VNM",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "VU",
+      "name": "Vanuatu",
+      "m49": "548",
+      "iso_alpha3": "VUT",
+      "region": "Oceania",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "WF",
+      "name": "Wallis and Futuna Islands",
+      "m49": "876",
+      "iso_alpha3": "WLF",
+      "region": "Oceania",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "WS",
+      "name": "Samoa",
+      "m49": "882",
+      "iso_alpha3": "WSM",
+      "region": "Oceania",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "XK",
+      "name": "Kosovo",
+      "m49": null,
+      "iso_alpha3": null,
+      "region": null,
+      "kind": "separately_tracked_jurisdiction",
+      "basis": "Existing donor jurisdiction code retained; not represented as an ISO assignment."
+    },
+    {
+      "id": "YE",
+      "name": "Yemen",
+      "m49": "887",
+      "iso_alpha3": "YEM",
+      "region": "Asia",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "YT",
+      "name": "Mayotte",
+      "m49": "175",
+      "iso_alpha3": "MYT",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "ZA",
+      "name": "South Africa",
+      "m49": "710",
+      "iso_alpha3": "ZAF",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "ZM",
+      "name": "Zambia",
+      "m49": "894",
+      "iso_alpha3": "ZMB",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    },
+    {
+      "id": "ZW",
+      "name": "Zimbabwe",
+      "m49": "716",
+      "iso_alpha3": "ZWE",
+      "region": "Africa",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row"
+    }
+  ],
+  "limitations": [
+    "Country or area is the UN statistical unit, not a sovereign-state count.",
+    "Project extensions are explicit and do not alter UN or ISO classifications.",
+    "Inclusion does not establish source discovery, legal eligibility, acquisition or public preservation."
+  ]
+}

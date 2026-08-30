@@ -9,3 +9,9 @@ Track 19 consolidates the mass preservation lifecycle for the New Zealand open g
 - **Columnar Analytical Derivatives**: Convert tabular captures to compressed Parquet and DuckDB databases with provenance tracing.
 - **Incremental Catalogue Drift Engine**: Automated delta detection across crawls (`tools/detect_catalogue_drift.py`).
 - **Bleeding-Edge Quality Gates**: Mutation testing for global policy, automated hygiene/slops gates, performance benchmark assertions, and scheduled CI/CD drift workflows.
+
+- [Specification](spec.md)
+
+- [Implementation Plan](plan.md)
+
+- [Metadata](metadata.json)

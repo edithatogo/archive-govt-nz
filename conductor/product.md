@@ -71,6 +71,15 @@ metadata-only captures remain explicit rather than being reported as complete.
 6. Add validated derivative formats and research-oriented access layers
    incrementally.
 
+## Approved FOI extension — 2026-08-30
+
+The [global FOI public archive track](./tracks/global_foi_public_archive_20260830/index.md)
+extends the roadmap to country-indexed FOI source discovery, metadata and raw
+preservation with public Hugging Face delivery. `archive-govt-nz` is the approved
+orchestration/publication destination; the active `fyi-archive` donor continues
+until hosted parity, public restore and safe ownership transfer are verified.
+This approval does not claim operational migration or full country capture.
+
 ## Engineering standard
 
 The project uses current, research-grade archival practices, actively maintained

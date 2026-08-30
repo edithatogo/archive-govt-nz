@@ -1,7 +1,7 @@
 {
   "id": "conductor_lineage_reconciliation_20260817",
   "title": "Track 2: Conductor Lineage Reconciliation",
-  "type": "migration_planning",
+  "type": "chore",
   "status": "completed",
   "created_at": "2026-08-16T23:00:00Z",
   "completed_at": "2026-08-16T23:42:00Z",
@@ -11,5 +11,10 @@
   ],
   "outputs": [
     "docs/migrations/sm-govt-nz/conductor-lineage-map.md"
-  ]
+  ],
+  "track_id": "conductor_lineage_reconciliation_20260817",
+  "legacy_type": "migration_planning",
+  "description": "Track 2: Conductor Lineage Reconciliation",
+  "updated_at": "2026-08-30T09:09:36.938960Z",
+  "metadata_reconciled_at": "2026-08-30T09:09:36.938960Z"
 }
