@@ -57,7 +57,9 @@ def map_archive_receipt(
     if not isinstance(digest, str) or not _SHA256.fullmatch(digest):
         raise RiopaMappingError("invalid_sha256")
     if not isinstance(object_id, str) or object_id != f"sha256:{digest}":
-        raise RiopaMappingError("invalid_object_id" if not isinstance(object_id, str) else "digest_mismatch")
+        raise RiopaMappingError(
+            "invalid_object_id" if not isinstance(object_id, str) else "digest_mismatch"
+        )
     revision = receipt["revision"]
     if expected_revision is not None and revision != expected_revision:
         raise RiopaMappingError("stale_revision")
@@ -65,10 +67,18 @@ def map_archive_receipt(
         raise RiopaMappingError("digest_mismatch")
 
     source_identity = _canonical_bytes(
-        {"archive_id": receipt["archive_id"], "source_url": receipt["source_url"], "revision": revision}
+        {
+            "archive_id": receipt["archive_id"],
+            "source_url": receipt["source_url"],
+            "revision": revision,
+        }
     )
     capture_identity = _canonical_bytes(
-        {"receipt_id": receipt["receipt_id"], "object_id": object_id, "revision": revision}
+        {
+            "receipt_id": receipt["receipt_id"],
+            "object_id": object_id,
+            "revision": revision,
+        }
     )
     source_id = f"sha256:{hashlib.sha256(source_identity).hexdigest()}"
     capture_id = f"sha256:{hashlib.sha256(capture_identity).hexdigest()}"
@@ -104,7 +114,9 @@ def map_archive_receipt(
 
 
 def _canonical_bytes(value: Mapping[str, Any]) -> bytes:
-    return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode()
+    return json.dumps(
+        value, sort_keys=True, separators=(",", ":"), ensure_ascii=False
+    ).encode()
 
 
 def _qualification(receipt: Mapping[str, Any]) -> tuple[str, str | None]:

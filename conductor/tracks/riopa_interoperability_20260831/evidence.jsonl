@@ -1,0 +1,2 @@
+{"event":"initialized","at":"2026-08-31T00:00:00Z","status":"pending","note":"Track initialized; implementation and external gates remain open."}
+{"event":"implementation","at":"2026-08-31T07:17:33+10:00","status":"passed","commit":"f780481","checks":["focused RIOPA tests","ruff","JSON Schema validation","git diff --check"],"note":"Archive-only receipt mapping now emits deterministic content-addressed source/capture records and quarantines partial, negative, failed, unavailable and rights-unresolved receipts; stale revisions and digest/object-id drift fail closed."}
