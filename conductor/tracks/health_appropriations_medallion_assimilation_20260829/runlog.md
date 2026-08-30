@@ -1,5 +1,26 @@
 # Run Log
 
+## 2026-08-30 — Current-state reconciliation
+
+- Found the entry page reporting scaffold-era state despite canonical metadata
+  recording publication and partial implementation. A focused status contract
+  failed as expected because `new` disagreed with `in_progress`.
+- Public HF API readback confirmed revision
+  `9b85bac06597d4435fd078f6bed0f30bb008542b` and collection item
+  `6a92b824597df1d081fc4108`. This was metadata readback, not another byte audit.
+- GitHub reported parent #205 closed on 2026-08-29 despite unfinished plan
+  tasks. Donor readback still reported unarchived. No source or hosted payload
+  was changed by these checks.
+- Corrected the entry page and verified the focused regression test, Ruff and
+  basedpyright. Reopened #205 with a bounded explanation; independent readback
+  returned `OPEN`. This is a traceability correction, not a new scope approval.
+- Commit `11117f7` contains the correction and offline contract. Baseline
+  `./scripts/validate.sh` exited zero with all schema, parity, mutation and
+  supply-chain gates, including a 110-component SBOM. The updated full pytest
+  suite passed 1,242 tests at 95.60% coverage (eight SQLite ResourceWarnings).
+  The new test passed separately with Ruff, formatting and basedpyright checks.
+  No production code changed, and timestamp-only unrelated receipts were restored.
+
 ## 2026-08-30 — Rich workbook census
 
 - Continued from verified main `b85e02a`; selected the Phase 1.3 inventory

@@ -1,5 +1,19 @@
 # Self-Review
 
+## Current-state reconciliation — 2026-08-30
+
+- Resolved contradictory current-state claims in the track entry page using
+  canonical metadata and existing preservation/publication receipts. Historical
+  observations remain unchanged and explicitly dated; no byte audit is implied
+  by the fresh public metadata readback.
+- Added an offline contract tying status, key counts, publication identity and
+  issue linkage to metadata while retaining incomplete-work and retirement
+  boundaries. No production code or dependencies changed.
+- Reopened parent #205 after live readback showed closure despite pending Must
+  work. The hosted issue now agrees with the active registry and metadata.
+- Format-support implementation remains pending; this correction satisfies
+  traceability, not extraction completeness. No new publication is authorized.
+
 ## Rich workbook census — 2026-08-30
 
 - Previous count keys remain available. Additive structural details identify

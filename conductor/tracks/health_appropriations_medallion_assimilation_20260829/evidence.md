@@ -1,5 +1,21 @@
 # Evidence
 
+## Current-state reconciliation — 2026-08-30
+
+Commit `11117f7` replaces scaffold-era current-state claims with canonical
+receipt-backed counts and pinned publication identity. One offline regression
+contract failed before the correction and passed afterward; Ruff, formatting
+and basedpyright passed. The baseline full harness exited zero; the updated
+full pytest suite passed 1,242 tests at 95.60% coverage. Production code was
+unchanged. The baseline supply-chain checks and 110-component SBOM passed.
+
+Public HF metadata readback confirmed revision
+`9b85bac06597d4435fd078f6bed0f30bb008542b` and collection item
+`6a92b824597df1d081fc4108`; this did not repeat the earlier 94-entry byte audit.
+Parent #205 was observed closed, reopened to match the active plan, then
+independently read back as open. The donor remains unarchived. Original bytes,
+existing publication and historical observations were not changed.
+
 ## Rich workbook census — 2026-08-30
 
 Commit `dffa310` adds deterministic ranges, hidden spans, scoped defined names,
