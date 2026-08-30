@@ -94,3 +94,11 @@ Focused checks: 78 passed; critical module line and branch coverage 100%. Four i
 Live retained NZ sample: original inventory, one request, two events and two response bodies restored and reindexed identically. No raw payload was committed or uploaded. Source policy observations are separate from redistribution clearance. The adapter's silent skip of attachment HTTP 404 is an additional completeness gap; explicit missing-attachment accounting remains required before resuming dispatch.
 
 Full `PYTEST_XDIST_AUTO_NUM_WORKERS=2 ./scripts/validate.sh` completed with exit 0: 1600 tests, 96.11% coverage, all integrity/mutation, schema, dependency audit, licence, secret and SBOM gates passed. Post-run Ruff/format checks passed for the final mutation harness correction. Receipt: local-package-validation-20260831.json.
+
+## Attachment-gap accounting — 2026-08-31
+
+The adapter inspection found silent HTTP 404 skips. Red tests observed missing module/index output and six accepted index-tampering cases. Added bounded HTML/JSON/resource attachment census with retained/not_retained states, unknown HTTP status and unambiguous event links. Version 2 packages include JSONL/Parquet attachment indexes; version 1 restoration remains supported. Cold restoration rebuilds the census; envelope verification also rejects fabricated or missing attachment relationships. Focused validation passed 99 tests with 100% line/branch coverage across both critical modules. Full harness and donor queue-credit guard are the next checks.
+
+Full attachment harness completed with exit 0: 1621 tests, 96.15% coverage, all quality/schema/mutation/supply-chain gates. Six focused integrity mutants killed. Live v2 cold restore and existing v1 verification both passed. Receipt: attachment-package-validation-20260831.json.
+
+The staged-source secret scan flagged the intentionally synthetic Basic Auth rejection fixture. Added the same narrowly scoped synthetic-fixture annotation already used by catalogue tests; no production credential or scanner rule was changed. Re-running the staged scan before commit.

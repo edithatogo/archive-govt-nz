@@ -29,7 +29,9 @@ from archive_govt_nz.foi_package import (
 )
 
 
-def capture(root: Path, *, events: list | None = None) -> str:
+def capture(
+    root: Path, *, events: list | None = None, html: bytes = b"<html>fixture</html>"
+) -> str:
     """Reproduce the adapter's single gzip container without real source data."""
     request = root / "data/raw/requests/authority/1"
     request.mkdir(parents=True)
@@ -43,7 +45,6 @@ def capture(root: Path, *, events: list | None = None) -> str:
         document["info_request_events"] = events
     raw_json = json.dumps(document, indent=3).encode()
     (request / "request.json").write_text(json.dumps(document))
-    html = b"<html>fixture</html>"
     (request / "page.html").write_bytes(html)
     attachment = root / "data/attachments/fixture.gz"
     attachment.parent.mkdir(parents=True)
@@ -720,7 +721,7 @@ def test_cli_prepare_verify_restore_and_schema(
     output = json.loads(capsys.readouterr().out)
     assert output["public_upload"] is False
     manifest_hash = module.sha256(package / "manifest.json")
-    schema = json.loads((ROOT / "schemas/foi-package-v1.schema.json").read_text())
+    schema = json.loads((ROOT / "schemas/foi-package-v2.schema.json").read_text())
     Draft202012Validator(schema).validate(
         json.loads((package / "manifest.json").read_text())
     )
@@ -771,3 +772,81 @@ def test_cli_error_output_omits_private_details(
     output = capsys.readouterr().out
     assert "private-path" not in output
     assert json.loads(output)["error_class"] == "FileNotFoundError"
+
+
+def test_package_contains_attachment_census(tmp_path: Path) -> None:
+    """Every retained attachment appears in the relationship and gap index."""
+    source = tmp_path / "capture"
+    package = tmp_path / "package"
+    prepare(source, package, capture(source))
+    rows = pq.read_table(package / "indexes/attachments.parquet").to_pylist()
+    assert len(rows) == 1
+    assert rows[0]["status"] == "retained"
+    assert rows[0]["event_id"] is None
+    restore_package(package, tmp_path / "restored")
+
+
+def test_original_v1_package_remains_restorable(tmp_path: Path) -> None:
+    """Adding a census does not invalidate the previous preservation contract."""
+    source = tmp_path / "capture"
+    package = tmp_path / "package"
+    manifest = prepare(source, package, capture(source))
+    manifest["schema_version"] = module.LEGACY_SCHEMA
+    manifest["files"] = [
+        r for r in manifest["files"] if not r["path"].startswith("indexes/attachments.")
+    ]
+    for extension in ("jsonl", "parquet"):
+        (package / f"indexes/attachments.{extension}").unlink()
+    (package / "manifest.json").write_bytes(module.canonical(manifest))
+    restore_package(package, tmp_path / "restored")
+    assert (tmp_path / "restored/raw-package-manifest.json").is_file()
+
+
+def test_missing_attachment_survives_reconstruction(tmp_path: Path) -> None:
+    """An omitted attachment remains a gap rather than fabricated retained bytes."""
+    source = tmp_path / "capture"
+    package = tmp_path / "package"
+    digest = capture(
+        source, html=b'<a href="/request/1/response/12/attach/1/missing.pdf">file</a>'
+    )
+    prepare(source, package, digest)
+    rows = pq.read_table(package / "indexes/attachments.parquet").to_pylist()
+    missing = [r for r in rows if r["status"] == "not_retained"]
+    assert len(missing) == 1
+    assert missing[0]["http_status"] is None
+    assert missing[0]["sha256"] is None
+    restore_package(package, tmp_path / "restored")
+
+
+@pytest.mark.parametrize(
+    "change", ["orphan", "hash", "status", "http", "duplicate", "parent", "missing"]
+)
+def test_attachment_index_tampering_is_rejected(tmp_path: Path, change: str) -> None:
+    """Envelope hashes cannot legitimize fabricated attachment relationships."""
+    source = tmp_path / "capture"
+    package = tmp_path / "package"
+    manifest = prepare(source, package, capture(source))
+    path = package / "indexes/attachments.jsonl"
+    rows = [json.loads(line) for line in path.read_text().splitlines()]
+    if change == "orphan":
+        rows[0]["request_id"] = "wrong:1"
+    elif change == "hash":
+        rows[0]["sha256"] = "b" * 64
+    elif change == "status":
+        rows[0]["status"] = "complete"
+    elif change == "http":
+        rows[0]["http_status"] = "404"
+    elif change == "parent":
+        rows[0]["event_id"] = "wrong:1:2"
+    elif change == "missing":
+        rows.clear()
+    else:
+        rows.append(rows[0].copy())
+    path.write_bytes(b"".join(module.canonical(row) for row in rows))
+    pq.write_table(pa.Table.from_pylist(rows), package / "indexes/attachments.parquet")
+    for row in manifest["files"]:
+        file = package / row["path"]
+        row.update(bytes=file.stat().st_size, sha256=module.sha256(file))
+    (package / "manifest.json").write_bytes(module.canonical(manifest))
+    with pytest.raises(ValueError, match="attachment_index"):
+        verify_package(package)
