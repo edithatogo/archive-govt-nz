@@ -12,6 +12,7 @@ from archive_govt_nz.cli import (
     capture,
     derivatives,
     doctor,
+    health_appropriations_status,
     legislation,
     main,
     provenance,
@@ -91,6 +92,17 @@ def test_cli_capabilities(capsys: pytest.CaptureFixture[str]) -> None:
     assert payload["status"] == "compiled"
     assert payload["count"] > 0
     assert code_json == 0
+
+
+def test_health_appropriations_status_cli(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    """Report explicit no-state when no operational manifests exist."""
+    code = health_appropriations_status(archive_root=tmp_path, format="json")
+    payload = json.loads(capsys.readouterr().out)
+    assert code == 1
+    assert payload["command"] == "health-appropriations-status"
+    assert payload["status"] == "no_state"
 
 
 def test_cli_sources_configured_and_missing(

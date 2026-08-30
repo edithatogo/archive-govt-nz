@@ -12,6 +12,9 @@ from jsonschema import Draft202012Validator
 
 from archive_govt_nz import __version__
 from archive_govt_nz.core.registry import AgencyRegistry
+from archive_govt_nz.domains.health_appropriations.operations import (
+    inspect_archive_status,
+)
 from archive_govt_nz.object_store import ContentAddressedStore, ObjectStoreError
 from archive_govt_nz.schemas.medallion import (
     DOMAIN_REGISTRY,
@@ -259,6 +262,64 @@ _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
         ),
         "annotations": {
             "title": "Get domain schema definition",
+            "readOnlyHint": True,
+            "destructiveHint": False,
+            "idempotentHint": True,
+            "openWorldHint": False,
+        },
+    },
+    {
+        "name": "health_appropriations_status",
+        "description": (
+            "Inspect local health-appropriations medallion manifests without "
+            "capturing, transforming, publishing, or retiring sources."
+        ),
+        "inputSchema": _object_schema(
+            {
+                "archive_root": {
+                    "type": "string",
+                    "minLength": 1,
+                    "default": "build/health-appropriations",
+                }
+            },
+            [],
+        ),
+        "outputSchema": _object_schema(
+            {
+                "archive_root": {"type": "string"},
+                "status": {"enum": ["no_state", "partial", "ready"]},
+                "layers": {
+                    "type": "object",
+                    "properties": {
+                        "bronze": {"type": "boolean"},
+                        "silver": {"type": "boolean"},
+                        "gold": {"type": "boolean"},
+                        "platinum": {"type": "boolean"},
+                    },
+                    "required": ["bronze", "silver", "gold", "platinum"],
+                    "additionalProperties": False,
+                },
+                "manifest_count": {"type": "integer", "minimum": 0},
+                "donor_file_count": {"type": "integer", "minimum": 0},
+                "captured_resources": {"type": "integer", "minimum": 0},
+                "silver_records": {"type": "integer", "minimum": 0},
+                "candidate_manifest_sha256": {"type": "string"},
+                "dataset": {"type": "string"},
+            },
+            [
+                "archive_root",
+                "status",
+                "layers",
+                "manifest_count",
+                "donor_file_count",
+                "captured_resources",
+                "silver_records",
+                "candidate_manifest_sha256",
+                "dataset",
+            ],
+        ),
+        "annotations": {
+            "title": "Inspect health appropriations archive state",
             "readOnlyHint": True,
             "destructiveHint": False,
             "idempotentHint": True,
@@ -685,6 +746,10 @@ def call_tool(name: str, arguments: dict[str, Any] | None = None) -> dict[str, A
             "title": schema_def.title,
             "fields": fields_list,
         }
+    elif name == "health_appropriations_status":
+        result = inspect_archive_status(
+            Path(str(args.get("archive_root", "build/health-appropriations")))
+        )
     else:
         result = _archive_status(args)
     Draft202012Validator(definition["outputSchema"]).validate(result)
