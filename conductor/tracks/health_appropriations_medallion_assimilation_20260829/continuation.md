@@ -57,8 +57,11 @@ No task is complete just because code exists, an issue is closed, or CI is green
   Persistent export now has capped verified snapshots, exclusive SQLite output,
   exact-value/context and lineage sidecars, plus a completion manifest. Live
   independent builds match and retain all donor rows plus 29 historical facts.
-  Next executable increment: source-derived analytical tables with explicit
-  period/basis/gap and denominator guards, followed by semantic plot contracts.
+  Pure historical and Budget analytical computations now have explicit
+  period/basis/gap/denominator guards and exact source-vintage aggregates.
+  See `raw-analytics.md`; this does not yet persist Gold tables.
+  Next executable increment: verified raw-reader integration and exclusive
+  Gold tables/manifest/CLI, followed by donor comparison and plot contracts.
   A fresh read of the canonical historical facts identifies period/basis
   transitions at 1990, 1994, 1997 and 2005, with no year gaps. Growth across
   those transitions must remain explicitly unavailable or separately qualified;

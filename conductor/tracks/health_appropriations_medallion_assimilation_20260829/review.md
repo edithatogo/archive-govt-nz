@@ -1,5 +1,27 @@
 # Self-Review
 
+## Pure source-derived analytics — 2026-08-30 UTC
+
+- Final isolated full harness exited zero for `0bf14b0`: 1,656 tests,
+  96.09% coverage, all repository gates and 110-component SBOM; eight
+  existing SQLite resource warnings remain recorded.
+
+- Reviewed all comparisons as source/vintage-specific. Historical joins are
+  keyed to source object/vintage/year, then checked for exact period-end
+  equality and a positive GDP denominator; Health accounting basis is checked
+  only for growth, not incorrectly imposed on GDP.
+- Decimal arithmetic uses an independent context and exact input sidecars;
+  output rounding is explicit. No float or donor SQLite input is used.
+  Missing/broken comparisons remain null. Original period-start and quality
+  limitations are retained, not cleared by successful calculations.
+- Budget sums keep amount types and source labels separate, retain all input
+  IDs and contributing departments/portfolios/flags, and include negative
+  corrections. The breakdown filter is explicitly 2025 Estimated Actual.
+- 79 focused tests pass across both modules with 100% critical line/branch
+  coverage, including 30 generated growth cases; 104/104 unfiltered mutants
+  killed with no pardons. Pure functions do not verify file hashes or implement
+  persistence, CLI, plots, denominator acquisition, rights or publication.
+
 ## Persistent raw compatibility export — 2026-08-30 UTC
 
 - Final isolated full harness exited zero for functional commit `e91d24b`:
