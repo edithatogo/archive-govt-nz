@@ -13,9 +13,13 @@ from hypothesis import given, settings
 from hypothesis import strategies as st
 from jsonschema import Draft202012Validator
 
-from archive_govt_nz.cli import health_appropriations_rebuild
+from archive_govt_nz.cli import (
+    health_appropriations_rebuild,
+    health_appropriations_verify_rebuild,
+)
 from archive_govt_nz.domains.health_appropriations import rebuild
-from archive_govt_nz.domains.health_appropriations.rebuild import _hash
+from archive_govt_nz.domains.health_appropriations.rebuild import _hash, verify_rebuild
+from archive_govt_nz.mcp_server import call_tool, list_tools
 from archive_govt_nz.object_store import ContentAddressedStore
 
 OBSERVED = "2026-08-30T00:00:00Z"
@@ -351,3 +355,109 @@ def test_any_changed_derivative_fails_fixity(payload: bytes) -> None:
         (output / "budget" / "budget_facts.parquet").write_bytes(payload)
         with pytest.raises(ValueError, match="output_hash_mismatch"):
             rebuild.execute_rebuild(plan, root / "bronze", output)
+
+
+def test_verifier_never_calls_rebuild(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    plan = _plan(tmp_path)
+    _adapters(monkeypatch)
+    output = tmp_path / "run"
+    expected = rebuild.execute_rebuild(plan, tmp_path / "bronze", output)
+    digest = _hash(output / "MANIFEST.json")
+    before = {
+        str(path): path.read_bytes() for path in output.rglob("*") if path.is_file()
+    }
+
+    def forbidden(*_args: object, **_kwargs: object) -> None:
+        pytest.fail("read-only verification called a mutating operation")
+
+    monkeypatch.setattr(rebuild, "execute_rebuild", forbidden)
+    monkeypatch.setattr(rebuild, "_extract", forbidden)
+    monkeypatch.setattr(rebuild, "_write", forbidden)
+    assert verify_rebuild(output, tmp_path / "bronze", digest) == expected
+    assert {
+        str(path): path.read_bytes() for path in output.rglob("*") if path.is_file()
+    } == before
+
+
+def test_verifier_missing_run_is_not_created(tmp_path: Path) -> None:
+    output = tmp_path / "missing"
+    with pytest.raises(ValueError, match="raw_run_verification_failed"):
+        verify_rebuild(output, tmp_path / "missing-store", "0" * 64)
+    assert not output.exists()
+    assert not (tmp_path / "missing-store").exists()
+
+
+@pytest.mark.parametrize(
+    "change", ["symlink", "late_pin", "private_plan", "missing_plan"]
+)
+def test_verifier_rejects_unsafe_state(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, change: str
+) -> None:
+    plan = _plan(tmp_path)
+    _adapters(monkeypatch)
+    output = tmp_path / "run"
+    rebuild.execute_rebuild(plan, tmp_path / "bronze", output)
+    manifest = output / "MANIFEST.json"
+    digest = _hash(manifest)
+    if change == "symlink":
+        link = tmp_path / "link"
+        link.symlink_to(output, target_is_directory=True)
+        output = link
+    elif change == "late_pin":
+        calls = 0
+
+        def changing_hash(path: Path) -> str:
+            nonlocal calls
+            if path == manifest:
+                calls += 1
+                if calls == 2:
+                    return "0" * 64
+            return _hash(path)
+
+        monkeypatch.setattr(rebuild, "_hash", changing_hash)
+    elif change == "private_plan":
+        (output / "PLAN.json").write_text("private source content")
+    else:
+        (output / "PLAN.json").unlink()
+    with pytest.raises(ValueError, match="raw_run_verification_failed") as error:
+        verify_rebuild(output, tmp_path / "bronze", digest)
+    assert "private source" not in str(error.value)
+
+
+def test_readonly_cli_mcp_contract(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    plan = _plan(tmp_path)
+    _adapters(monkeypatch)
+    output = tmp_path / "run"
+    expected = rebuild.execute_rebuild(plan, tmp_path / "bronze", output)
+    digest = _hash(output / "MANIFEST.json")
+    assert (
+        health_appropriations_verify_rebuild(output, tmp_path / "bronze", digest) == 0
+    )
+    envelope = json.loads(capsys.readouterr().out)
+    assert envelope["status"] == "verified"
+    assert envelope["schema_version"] == "archive-govt-nz.health-raw-verification/v1"
+    arguments = {
+        "output_dir": str(output),
+        "store_root": str(tmp_path / "bronze"),
+        "manifest_sha256": digest,
+    }
+    assert (
+        call_tool("health_appropriations_verify_rebuild", arguments)
+        == envelope["receipt"]
+        == expected
+    )
+    definition = next(
+        tool
+        for tool in list_tools()
+        if tool["name"] == "health_appropriations_verify_rebuild"
+    )
+    assert definition["annotations"]["readOnlyHint"] is True
+    assert definition["annotations"]["destructiveHint"] is False
+    assert (
+        health_appropriations_verify_rebuild(output, tmp_path / "bronze", "0" * 64) == 2
+    )
+    assert json.loads(capsys.readouterr().out)["status"] == "failed"
