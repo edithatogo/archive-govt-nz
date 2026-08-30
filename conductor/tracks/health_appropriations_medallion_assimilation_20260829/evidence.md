@@ -1,5 +1,22 @@
 # Evidence
 
+## Typed workbook inspection — 2026-08-30
+
+Commit `446a82d` adds hash-pinned, bounded read-only sheet inventory and decoded
+previews, without formula evaluation or canonical-fact claims. Twenty-two
+focused tests pass at 100% critical line/branch coverage; all 40 unfiltered
+mutants are killed without pardons (report SHA-256
+`cb0dbd2222665a8aba4c9d48b2028917f9e0348a07dd78d226005f3ec7edc44d`).
+The full harness exits zero, including mutation and supply-chain gates and a
+110-component SBOM. Targeted schema validation passes 33 schemas/23 documents.
+Live inspection lists eight Budget sheets and previews 34 selected cells;
+the pinned original SHA-256 remains unchanged. No HF bytes were changed.
+See `workbook-inspection.md` for limits and invocation.
+
+PR #243 (read-only verification) separately passed all seven hosted checks
+and merged at `d85c810ebc272163341e6517dd541a4cf3ee1dbd`; its tree equals
+the exact tested head. Inspector hosted delivery is not implied by that merge.
+
 ## Read-only run verification — 2026-08-30
 
 Commit `d25fd8d` adds separate hash-pinned CLI/MCP verification. Both live

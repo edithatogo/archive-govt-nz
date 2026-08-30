@@ -50,10 +50,11 @@ No task is complete just because code exists, an issue is closed, or CI is green
   separate verified 341-fact local run. Complete reuse checks every stage;
   incomplete attempts are retained and require a new output directory.
 - Pure read-only raw-run verification now has matching CLI/MCP receipts and
-  cannot create missing state. Next executable increment: implement the typed
-  workbook inspector replacing donor sheet listing/head printing (Phase 4.3).
-  Then implement partial-stage resume/scheduling, regenerate compatibility and
-  analytics with explicit reconciliation policy, and continue the remaining
+  cannot create missing state. Typed workbook inspection now replaces donor
+  sheet listing/head printing with bounded structured previews (Phase 4.3).
+  Next executable increment: regenerate the five-table compatibility export
+  from the verified raw run, keeping source repairs and precision changes
+  explicit. Continue analytics, partial-stage resume/scheduling and remaining
   workbook areas and official/contextual sources. Published state stays separate.
 - Resume this exact track, inspect dirty work and live PR state, then choose the
   next unblocked task. Do not restart completed preservation or publication.

@@ -275,9 +275,9 @@ repository validation command. External gates block only their affected task.
   Keep raw extraction state separate from published donor-derived products.
   [M-09, M-15, M-16, M-18; AC-07, AC-12, AC-13, AC-16] (`578235c`)
 
-- [ ] Implement a typed workbook/source inventory CLI equivalent to
+- [x] Implement a typed workbook/source inventory CLI equivalent to
   `inspect_excel.py`, with structured output and bounded failures. [M-09,
-  M-15; AC-07, AC-13]
+  M-15; AC-07, AC-13] (`446a82d`)
 - [ ] Implement the raw-to-Silver pipeline equivalent to `process_data.py`;
   regression-test the compile defect, positional heuristics and swallowed
   exceptions rather than retaining them. [M-09, M-18; AC-07, AC-16]

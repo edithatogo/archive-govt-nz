@@ -25,6 +25,7 @@ every planned record set, measure or operational workflow.
 - [Raw BEFU/HYEFU extraction](./raw-forecast.md)
 - [Raw historical Health/GDP extraction and reconciliation](./raw-historical.md)
 - [Original-workbook orchestration](./raw-rebuild.md)
+- [Typed workbook inspection](./workbook-inspection.md)
 - [Next raw-source ranges and semantic boundaries](./next-source-ranges.md)
 - [Metadata](./metadata.json)
 - [Run log](./runlog.md)

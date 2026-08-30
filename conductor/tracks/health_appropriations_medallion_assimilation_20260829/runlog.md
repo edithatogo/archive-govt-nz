@@ -1,5 +1,39 @@
 # Run Log
 
+## Typed workbook inspection — 2026-08-30
+
+- Functional commit `446a82da14c0f3432298aef633841992cf7017b6`.
+  Final full harness exited zero, including mutation and supply-chain gates
+  and a 110-component SBOM. Forty focused unfiltered mutants were killed with
+  no pardons. Only unrelated generated timestamp churn was restored.
+- PR #243 independently confirmed merged at
+  `d85c810ebc272163341e6517dd541a4cf3ee1dbd`, tested head
+  `eac467d03dd07385e35cc2f105cc4571fecb8190`, all seven checks successful.
+  Both trees equal `74eceb84762f147cf5fe81a13f02577bf2e98577`.
+  Re-anchored the uncommitted inspector onto that identical tree using guarded
+  refs; removed only the merged local branch and absent hosted tracking ref.
+
+- Continued on `codex/health-workbook-inspection` from the validated read-only
+  verification head while PR #243 awaits hosted checks. Baseline full harness
+  before inspection code: 1,459 tests, 95.92% coverage, all gates passed.
+- Initial tests failed with the missing inspection module; the first eight
+  tests then passed. Listing-only and preview-byte-budget contracts failed
+  before implementation. Added aggregate exact-boundary and CLI contracts.
+- A first nonfinite fixture used `NaN`, which the workbook parser already
+  rejects, invalidating the fixture's listing expectation. Corrected it to
+  `1e309`: the expected red test showed an overflowed decoded preview was
+  accepted. Strict JSON now rejects nonfinite previews; listing still works.
+- Review found array/data-table formula objects were stringified to object
+  representations. Two red tests reproduced the loss of useful fields.
+  Structured attributes/text now survive; temporal displays are stable and
+  unknown object types fail closed rather than leaking object representations.
+- Twenty-two tests pass with 100% critical line/branch coverage, including
+  30 generated head-dimension cases. Lint/types pass; 33 schemas and 23
+  representative documents validate.
+- Live typed CLI lists all eight original Budget sheets and returns 34 cells
+  for two Raw Data rows and all 17 columns. The original hash remains
+  `d67c01b0a3f1fbee5cb5121b641bda42f91f3e5bc84e599d22d32aeacbbb3338`.
+
 ## Read-only raw-run verification — 2026-08-30
 
 - Functional commit `d25fd8db6c760ef7dab4ae5be032f4f779e300e6`.

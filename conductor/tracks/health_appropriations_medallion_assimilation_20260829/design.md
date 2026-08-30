@@ -29,6 +29,14 @@ that pin before and after inspecting the plan, source CAS objects and all
 stage outputs. CLI and MCP share this non-mutating library contract. Missing
 or incomplete runs remain missing/incomplete; inspection cannot start work.
 
+Workbook inspection reads one size-capped, hash-verified snapshot. Existing
+package/traversal contracts inventory all sheets; bounded previews decode
+only a requested head rectangle, without evaluating formulas. Preview values
+are labelled decoded displays, not canonical numeric facts. Sheet selection,
+row/column limits and an aggregate preview-cell cap bound output. No original
+or cached formula value is rewritten, and failures cross the CLI boundary as
+redacted classes rather than unstructured source diagnostics.
+
 ```mermaid
 flowchart LR
     subgraph U[Untrusted and externally mutable sources]
