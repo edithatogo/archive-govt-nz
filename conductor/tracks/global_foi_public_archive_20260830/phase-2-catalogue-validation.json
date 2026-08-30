@@ -1,0 +1,30 @@
+{
+  "recorded_at": "2026-08-30T10:15:37.363643+00:00",
+  "implementation_commit": "c1bf57b",
+  "validation_revision": "a50c12c72e9701827057e46d1966c6128f55b64b",
+  "command": [
+    "./scripts/validate.sh"
+  ],
+  "exit_code": 0,
+  "tests": 1522,
+  "coverage_percent": 95.98,
+  "catalogue_module_coverage_percent": 100,
+  "output_sha256": "1da8241906d812a5546061f4f282063309dcfee7aae1ee2c4c5148b5f4276c59",
+  "candidate_manifest_sha256": "4a43bf18cbe8280a1768fb9575b22ff9485ad3ca32532a38a90eb20cf42bbd39",
+  "coverage": {
+    "geographic_entities": 250,
+    "known_sources": 29,
+    "payload_publication_authorized": false,
+    "remaining_unverified": 250,
+    "supranational_entities": 1,
+    "target_regimes": 42,
+    "total_requests": null,
+    "verified_complete": 0
+  },
+  "public_hf_upload_performed": false,
+  "scope": "Country universe and source-discovery index foundation only. Endpoint/rights/pacing assessment, request/raw-object indexes, public restore, worldwide schedules and cutover remain open.",
+  "corrected_findings": [
+    "Windows exact-byte fixture corrected in baseline 8858e15; LF and CRLF tested.",
+    "Synthetic user:pass@example.org negative-test fixture explicitly annotated for the secret scanner; no production credential involved."
+  ]
+}

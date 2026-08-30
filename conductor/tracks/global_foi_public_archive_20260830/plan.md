@@ -13,18 +13,18 @@ The approved destination is archive-govt-nz; no cutover has occurred.
 
 ## Phase 1 — Repair the active automation first
 
-- [~] P1.1 (AC02): Write failing tests for the abandoned NZ lease, live owner, terminal success without receipt, stale observations and concurrent replacement.
-- [ ] P1.2 (AC02): Implement evidence-bound exact-lease reconciliation, conflict-aware reservation and durable diagnostic receipts in the active owner; preserve completed coverage and requeue only uncredited work.
-- [ ] P1.3 (AC03): Add failing CLI/workflow tests for concatenated JSON, diagnostics on stdout, missing summary, changed/unchanged runs, and cross-instance card data.
-- [ ] P1.4 (AC03): Implement a dedicated schema-valid summary artifact, clean stdout/stderr contract, guarded card rendering and always-retained redacted failure evidence.
+- [x] P1.1 (AC02): Write failing tests for the abandoned NZ lease, live owner, terminal success without receipt, stale observations and concurrent replacement. Local implementation: donor `85685a8`; hosted proof remains P1.5.
+- [x] P1.2 (AC02): Implement evidence-bound exact-lease reconciliation, conflict-aware reservation and durable diagnostic receipts in the active owner; preserve completed coverage and requeue only uncredited work. Local implementation: donor `85685a8`; hosted proof remains P1.5.
+- [x] P1.3 (AC03): Add failing CLI/workflow tests for concatenated JSON, diagnostics on stdout, missing summary, changed/unchanged runs, and cross-instance card data. Local implementation: donor `85685a8`; hosted proof remains P1.5.
+- [x] P1.4 (AC03): Implement a dedicated schema-valid summary artifact, clean stdout/stderr contract, guarded card rendering and always-retained redacted failure evidence. Local implementation: donor `85685a8`; hosted proof remains P1.5.
 - [ ] P1.5 (AC02, AC03, AC09): Verify repair in hosted runs, safe NZ progress past offset 17,225, public revision/card consistency, no skipped work and no runaway retry.
-- [ ] P1.6 (AC12): Automated review, active-owner required full validation harness, CI, and issue/evidence reconciliation; do not call local repair hosted recovery.
+- [~] P1.6 (AC12): Automated review, active-owner required full validation harness, CI, and issue/evidence reconciliation; do not call local repair hosted recovery.
 
 ## Phase 2 — Complete source and country catalogue
 
-- [ ] P2.1 (AC04, AC11): Pin the country/territory universe and write failing coverage/uniqueness/seed-parity/rights-export tests.
-- [ ] P2.2 (AC04): Implement one registry and importer reconciling all 23 runtime instances, 29 sites and 42 target regimes; represent every country with reviewed sources or an explicit evidence-backed disposition.
-- [ ] P2.3 (AC04, AC09): Generate the public source index, machine coverage ledger and human report; keep unknown denominators null and states distinct.
+- [x] P2.1 (AC04, AC11): Pin the country/territory universe and write failing coverage/uniqueness/seed-parity/rights-export tests. Implementation: `c1bf57b`; 23 focused tests passed.
+- [~] P2.2 (AC04): Implement one registry and importer reconciling all 23 runtime instances, 29 sites and 42 target regimes; represent every country with reviewed sources or an explicit evidence-backed disposition.
+- [~] P2.3 (AC04, AC09): Generate the public source index, machine coverage ledger and human report; keep unknown denominators null and states distinct.
 - [ ] P2.4 (AC12): Automated review, schema/property tests and full phase validation.
 
 ## Phase 3 — Metadata indexes and immutable raw storage

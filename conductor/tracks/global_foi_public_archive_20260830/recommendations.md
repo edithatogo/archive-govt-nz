@@ -20,3 +20,9 @@ be reconstructed and the operator can assess the measured storage footprint.
 The first execution priority remains the two diagnosed automation failures,
 after the required baseline/contract checks. No recommendation permits skipping
 source rights/privacy review or reporting incomplete countries as captured.
+
+## Provider policy check — 2026-08-30
+
+The current [Hugging Face storage policy](https://huggingface.co/docs/hub/storage-limits) describes free public storage as best effort, requires capacity planning for substantial volumes, and recommends fewer than 100,000 files per repository and fewer than 10,000 entries per directory. Preserve immutable raw bytes inside bounded packages with JSONL/Parquet indexes; do not turn each request event into an independent Hub commit. Account authentication is available, but this does not establish sufficient capacity or approve a paid upgrade. No purchase or provider outreach has been made.
+
+The existing 1.85 GB of retained GitHub artifact containers is not a projection of the worldwide corpus and is not verified raw-object volume. Keep the capacity gate pending until the accepted payload and current account allowance are measured. FYI help/privacy and help/officers pages could not be retrieved through the research browser in this run; their search snippets are not sufficient evidence to clear bulk redistribution. Source eligibility remains pending.

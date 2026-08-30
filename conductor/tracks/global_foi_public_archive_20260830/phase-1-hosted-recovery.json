@@ -1,0 +1,40 @@
+{
+  "recorded_at": "2026-08-30T10:15:37.363643+00:00",
+  "donor_merge_commit": "b6e78703d871082433fb33f8fa610761c2eb4062",
+  "repair_pr": "https://github.com/edithatogo/fyi-archive/pull/403",
+  "diagnosis_run": 33305391040,
+  "diagnosis_result": "success",
+  "recovery_run": 33305733977,
+  "recovery_result": "success",
+  "failed_owner": 31929819944,
+  "diagnosis_artifact": {
+    "id": 9730451709,
+    "sha256": "83f22751a7a13044148153208ee382bd55755cb3412f40314fecb5865619b6e6"
+  },
+  "result_artifact": {
+    "id": 9730452731,
+    "sha256": "9fe4f182e83d014d02ecf5088a829275ab88f1757a469ec5810e1b689d100f22"
+  },
+  "result": {
+    "issue": 365,
+    "state_sha256": "5ad211c62cbc036b88ca71f4e898f85de8a500b9d57ad31c09f8fdd16e77c710",
+    "recovered_run_id": 31929819944,
+    "completed_coverage_unchanged": true
+  },
+  "fresh_queue_readback": {
+    "active_leases": 0,
+    "completed_coverage_unchanged": true,
+    "next_unclaimed_offset": 17225,
+    "queue_count": 33208
+  },
+  "bounded_capture": {
+    "run_id": 33305989413,
+    "batch_size": 1,
+    "start_offset": 17225,
+    "max_runtime_minutes": 5,
+    "auto_continue": false,
+    "status": "queued"
+  },
+  "public_raw_restore_verified": false,
+  "ownership_transferred": false
+}
