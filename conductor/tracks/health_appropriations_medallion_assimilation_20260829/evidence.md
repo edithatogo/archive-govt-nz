@@ -1,5 +1,23 @@
 # Evidence
 
+## Workbook part contracts and continuation — 2026-08-30
+
+Commit `ee54bc9` corrects false-positive macro-part basename matching and adds
+five fixture cases for macro markers, external references and opaque embedded
+content. Originals remain byte-exact; no external linked resource is fetched.
+The marker does not validate executable VBA or establish workbook safety.
+Commit `3932caf` adds the milestone-based continuation route without activating
+a scheduler or expanding publication authority.
+
+Sequential focused results: 37 tests, 100% format-module line/branch coverage,
+31/31 unfiltered mutations killed; mutation report SHA-256
+`cf59aa2b52b49f60358179d614f4b72c8b5b6d8889b70bfd47e0e2c5ba5fb7fb`.
+Fresh full harness: exit zero, 1,247 tests, 95.60% overall coverage, all schema,
+parity, mutation and supply-chain gates, and a 110-component SBOM. Earlier
+overlapping coverage reports were invalid and are not used as assurance.
+Hosted checks remain a separate observation. Source bytes and HF publication
+were not changed.
+
 ## Current-state reconciliation — 2026-08-30
 
 Commit `11117f7` replaces scaffold-era current-state claims with canonical

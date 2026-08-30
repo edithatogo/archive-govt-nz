@@ -1,5 +1,20 @@
 # Self-Review
 
+## Workbook part contracts and continuation — 2026-08-30
+
+- Fixed the false macro-part marker for `notvbaProject.bin`; exact basename
+  matching retains case-insensitive compatibility. The marker is explicitly
+  not VBA validation, an active-content detector or a safety verdict.
+- Synthetic external references and opaque embedded parts remain byte-exact;
+  tests block socket connection paths and verify neither target URLs nor opaque
+  contents appear in inventory output. Fixtures contain no executable macros.
+- Focused format coverage is 100% line/branch with 37 passing tests and 31/31
+  unfiltered generated mutations killed. Static checks passed after fixture
+  style fixes. Invalid overlapping coverage runs were recorded and discarded.
+- Added a milestone route rooted in the existing plan. It identifies raw-source
+  extraction separately from donor-SQLite parity and preserves all external
+  publication/rights/retirement gates. The document activates no scheduler.
+
 ## Current-state reconciliation — 2026-08-30
 
 - Resolved contradictory current-state claims in the track entry page using
