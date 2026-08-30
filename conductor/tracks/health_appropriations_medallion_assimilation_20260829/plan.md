@@ -19,6 +19,13 @@ repository validation command. External gates block only their affected task.
 
 ## Phase 0 — Track activation and hosted traceability
 
+### Review correction — current-state reconciliation
+
+- [x] Reconcile the track entry page with canonical receipts and live hosted
+  state; prevent status drift with a focused contract. Keep completed
+  publication distinct from pending assimilation tasks and reconcile the parent
+  issue with the still-active plan. [M-19; AC-04, AC-15, AC-16] (`11117f7`)
+
 ### 0.1 Reconcile the implementation baseline
 
 - [x] Re-observe the current Archive Govt NZ head, donor ref/tree, live source
