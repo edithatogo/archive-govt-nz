@@ -240,6 +240,13 @@ repository validation command. External gates block only their affected task.
 
 ### 4.2 Build source-faithful donor Silver records
 
+- [x] Extract historical Health spending and nominal GDP from the pinned
+  workbook, retaining exact stored numeric tokens, annotated years, footnotes,
+  March/June period context and accounting-basis transitions. Reconcile every
+  source/oracle row through explicit difference records without rounding away
+  source precision or dropping annotations. [M-05, M-06, M-07, M-08;
+  AC-03, AC-05, AC-06, AC-11] (`3376695`)
+
 - [x] Extract BEFU/HYEFU literal Health summaries from verified originals,
   preserving Actual/Forecast, units, vintage, cell lineage and explicit
   unselected-area dispositions. Reconcile both ten-row donor oracles without

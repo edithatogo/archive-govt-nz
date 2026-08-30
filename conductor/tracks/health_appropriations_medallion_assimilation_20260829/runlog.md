@@ -1,5 +1,50 @@
 # Run Log
 
+## Historical final local gates — 2026-08-30
+
+- Functional commit: `3376695b32021238e8e3152ae30188c9f38a5ca4`.
+- Final full harness exited zero: 1,411 tests, 95.84% coverage, eight warnings,
+  31 schemas, 21 representative documents, 9/9 differential parity, all
+  mutation lanes, audit, licences, tracked secret scan and 110-component SBOM.
+- Both new modules have 100% line/branch coverage (65 focused tests; 226
+  domain tests). All 99 explicitly unfiltered mutations killed, no pardons.
+- Independently rebuilt extraction and reconciliation outputs were retained
+  outside Git; originals rehashed unchanged. See `raw-historical.md`.
+- A concurrent task switched the shared checkout to main during validation.
+  The local functional commit was transferred to its intended branch using
+  expected-OID ref updates. Main returned to its prior commit; the other
+  task's FOI worktree was not touched. No remote main write occurred.
+- Hosted checks and merge remain separate. Continue with operational raw
+  orchestration after delivery; this is not full assimilation completion.
+
+## 2026-08-30 — Historical source continuation
+
+- Reverified PR #230 as merged at `5eda36d`, with tested head `1619a6d`.
+  The clean primary checkout is the sole worktree. Continued this same track
+  on `codex/health-historical-extraction`; baseline full validation precedes
+  source/test changes.
+- The next source contains 53 Health and 53 GDP annual rows. Its donor Health
+  table contains only 24 rows. Exact XML tokens, annotation markers, accounting
+  transitions and March/June context must survive extraction; display formats
+  cannot be used as a rounding rule for canonical facts.
+- Baseline full harness exited zero: 1,346 tests, 95.72% coverage, eight SQLite
+  ResourceWarnings and all schema, parity, mutation and supply-chain gates.
+- Initial historical test collection failed as expected with missing module
+  (exit 2); the first implementation passed 16 tests. Refactored row selection,
+  period state, numeric checks and fact construction after static review.
+  Added exact lexical decimals, guarded DTD rejection, parser ambiguity and
+  negative-path contracts. Forty-three tests passed at 100% line/branch coverage.
+- The first mutation run passed 46 tests, killed 69/70 mutations and selected
+  an unrelated empty-series test for the surviving precision-rejection return.
+  Re-running with explicit `--gremlin-no-coverage-filter` tests every mutation
+  against the full focused suite; the first run is not a clean mutation gate.
+- Two live builds of the original fiscal workbook yielded 106 facts, 1,143
+  field-lineage rows and 1,503 cell dispositions, with zero rejected amounts.
+  Both manifests and every output file are byte-identical. All 53 GDP values
+  match the donor. Health restores 29 annotated years absent from its 24-row
+  table and retains the exact 1976 token `605.70000000000005` rather than the
+  donor's `605.7`. No original or published artifact changed.
+
 - Forecast implementation commit: `801783d5069456ee16a1e1ce18a57c86a682bc9f`.
   Final `./scripts/validate.sh` exited zero: 1,346 tests, 95.72% coverage,
   eight SQLite ResourceWarnings, 30 schemas, 20 representative documents,

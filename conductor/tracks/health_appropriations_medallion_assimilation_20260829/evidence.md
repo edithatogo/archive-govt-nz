@@ -1,5 +1,20 @@
 # Evidence
 
+## Raw historical extraction — 2026-08-30
+
+Commit `3376695` retains 106 original Health/GDP facts, 1,143 lineage rows and
+1,503 cell dispositions. Reconciliation retains 76 exact matches, 29 annotated
+source-only years and one exact stored-token difference, without changing
+either original. Independent library/CLI outputs and comparison ledgers are
+byte-identical. Paths, hashes and interpretation boundaries: `raw-historical.md`.
+
+All 65 focused and 226 domain tests pass. Both new modules have 100% line and
+branch coverage, with all 99 explicitly unfiltered mutants killed, no pardons.
+The final full harness exits zero: 1,411 tests, 95.84% coverage, eight warnings,
+31 schemas, 21 representative documents, 9/9 parity and all mutation and
+supply-chain gates, including the validated 110-component SBOM. These are
+local gates; no hosted CI, publication or complete assimilation is implied.
+
 ## Raw forecast extraction — 2026-08-30
 
 Commit `801783d` extracts literal BEFU/HYEFU Health summaries directly from
