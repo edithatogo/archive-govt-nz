@@ -22,6 +22,7 @@ every planned record set, measure or operational workflow.
 - [Autonomous continuation route](./continuation.md)
 - [Pinned donor behavior](./donor-behavior.md)
 - [Raw Budget extraction](./raw-budget.md)
+- [Raw BEFU/HYEFU extraction](./raw-forecast.md)
 - [Next raw-source ranges and semantic boundaries](./next-source-ranges.md)
 - [Metadata](./metadata.json)
 - [Run log](./runlog.md)
@@ -43,6 +44,9 @@ every planned record set, measure or operational workflow.
 - Separate raw Budget extraction: 215 Health facts, 3,655 cell-lineage rows
   and 6,504 input dispositions; all seven donor appropriation fields match in
   order. These new local outputs do not replace the published derivatives.
+- Separate raw BEFU/HYEFU extraction: 20 Health facts, 120 field-lineage rows
+  and 4,665 cell dispositions; both ten-row donor summaries match in order.
+  Actual/Forecast and vintage are retained; fiscal-year basis remains flagged.
 - Hugging Face: `published_and_verified` for the pinned candidate, with
   [dataset](https://huggingface.co/datasets/edithatogo/nz-health-appropriations)
   revision `9b85bac06597d4435fd078f6bed0f30bb008542b` and manifest SHA-256

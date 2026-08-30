@@ -46,6 +46,15 @@ links; do not simply discard non-numeric years. Some stored XML numbers expose
 binary floating-point tails, requiring an explicit source-precision policy
 before canonical fixed-decimal amounts are asserted.
 
+Read-only source XML inspection further identifies Health currency rows B5:B57
+and H5:H57: 53 source years, versus 24 in the donor health table. Annotation
+markers include `†`, `*`, `^` and combined `^#` (2019). H9 (1976) stores
+`605.70000000000005`, not an exact decimal128(20,3) input. Preserve that token
+and its number-format evidence before applying any explicit precision repair;
+do not simply pass it through a binary float and silently erase the difference.
+The old-GAAP label does not repeat a period, so any period carry-forward needs
+an explicit source-context rule and lineage to the preceding June label.
+
 The `Nominal GDP` sheet labels `$ millions` at A3, Nominal GDP at C3 and uses B
 for years/C for values. Its period changes from March Years at A5 to June Years
 at A23. Do not join these series on year alone without checking period and basis.

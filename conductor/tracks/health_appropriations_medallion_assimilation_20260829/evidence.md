@@ -1,5 +1,24 @@
 # Evidence
 
+## Raw forecast extraction — 2026-08-30
+
+Commit `801783d` extracts literal BEFU/HYEFU Health summaries directly from
+verified originals. Both ten-row donor oracles match in order, with 120
+field-lineage rows and 4,665 cell dispositions. Three builds per source,
+including the retained external-archive copies, are byte-identical. Original
+hashes remain unchanged. See `raw-forecast.md` for retained paths and digests.
+
+All 99 focused tests and 161 domain tests pass; the four critical workbook
+modules have 100% line/branch coverage. All 135 unfiltered focused mutants
+are killed, without pardons. Full harness exits zero: 1,346 tests, 95.72%
+coverage, eight SQLite ResourceWarnings, all schema/parity/mutation and
+supply-chain gates, including a validated 110-component SBOM.
+
+Actual/Forecast and vintage are source-derived. Fiscal-year endpoints remain
+unverified, rights are not inferred, and unselected workbook areas remain
+explicitly preserved-only/excluded. No HF candidate or donor archive state
+was changed. This local extraction receipt does not claim hosted CI or merge.
+
 ## Raw Budget extraction — 2026-08-30
 
 Commit `d26e769` extracts from the pinned original Budget workbook, rather than

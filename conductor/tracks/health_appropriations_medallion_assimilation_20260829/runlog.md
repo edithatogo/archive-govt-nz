@@ -1,5 +1,58 @@
 # Run Log
 
+- Forecast implementation commit: `801783d5069456ee16a1e1ce18a57c86a682bc9f`.
+  Final `./scripts/validate.sh` exited zero: 1,346 tests, 95.72% coverage,
+  eight SQLite ResourceWarnings, 30 schemas, 20 representative documents,
+  9/9 parity, all mutation lanes, hygiene, CAS benchmark (281.03 MB/s), audit,
+  licences, secret scan and validated 110-component SBOM. Restored only
+  unrelated timestamp-only harness churn. Hosted CI/merge remain separate.
+
+## 2026-08-30 — Forecast extraction continuation
+
+- Prior goal turn made verified progress: PR #229 merged at `51ceeba` with an
+  exact tree match to its tested head `069d297`. The clean primary worktree is
+  the only worktree. Removed the local merged branch with an expected-OID
+  guard. The leased remote deletion was rejected as stale; a read-only
+  `ls-remote` confirmed GitHub had already removed it, so no deletion was
+  retried. Source history remains recoverable through main and PR #229.
+- Selected the next raw-source task on `codex/health-forecast-extraction`.
+  Baseline production tests completed before new source/test edits; no shared
+  coverage commands overlap. The new forecast test collected with the expected
+  ModuleNotFoundError for the absent extractor (exit 2).
+- Captured a synthetic Budget fixture and its existing output hashes before
+  extracting shared integrity helpers. This is a refactor-parity oracle, not
+  an original government payload committed to Git.
+- Baseline full harness exited zero: 1,296 tests, 95.66% coverage and all
+  schema/parity/mutation/supply-chain gates, including a 110-component SBOM.
+- First implementation passed 83 tests. Static analysis identified nullable
+  workbook-library coordinate annotations; explicit coordinate decoding fixed
+  the mismatch. Remaining Ruff findings were import/pairwise/annotation style,
+  not suppressed failures. The next 89-test run had 100% line/branch coverage
+  across Budget, forecast and common modules; all 134 unfiltered mutants died.
+- The Windows-name review fixture produced five expected failures. Fixed the
+  exact device-name guard and added ordinary near-matches, generated-series
+  invariants and an output-file collision contract. Ninety-eight focused tests
+  retained 100% line/branch coverage; the subsequent collision contract passed
+  in the eighteen-test shared-helper suite. Final mutation/full gates follow.
+- Live BEFU extraction matched ten rows with 60 lineage rows and 2,332 cell
+  dispositions (22 context, 10 normalized, 2,300 preserved-only, zero rejected).
+  HYEFU matched ten rows with 60 lineage rows and 2,333 dispositions (22 context,
+  10 normalized, 2,301 preserved-only, zero rejected). Two independent runs per
+  source produced identical bytes; Bronze CAS verification and post-run hashes
+  confirmed unchanged originals. Observation times record local source-object
+  verification, not new HTTP retrievals.
+- Final focused mutation run passed 99 tests and killed all 135 unfiltered
+  mutants, with zero survivors/pardons. Report SHA-256:
+  `1dfd39d29165a5e7cbe14bd24b8434f8c1e73a889965e575373cf9f2432ac1f1`.
+  The complete health-domain run passed 161 tests, with 100% line/branch
+  coverage across Budget, forecast, shared helpers and format inventory.
+  Eight pre-existing SQLite ResourceWarnings remain visible.
+- Rebuilt both live sources again using the final implementation into new
+  external archive directories `silver/raw-befu-20260830-forecast-v1` and
+  `silver/raw-hyefu-20260830-forecast-v1`. Every output, including each manifest,
+  matches the earlier independent runs byte for byte; original hashes still
+  match. No prior directory or published product was overwritten.
+
 ## 2026-08-30 — Original Budget extraction
 
 - Resumed from clean main `7279629`. The baseline full harness exited zero
