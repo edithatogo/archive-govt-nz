@@ -6,12 +6,14 @@ import json
 import sys
 from typing import TYPE_CHECKING
 
+from archive_govt_nz import cli as cli_module
 from archive_govt_nz.cli import (
     archive,
     capabilities,
     capture,
     derivatives,
     doctor,
+    health_appropriations_status,
     legislation,
     main,
     provenance,
@@ -91,6 +93,52 @@ def test_cli_capabilities(capsys: pytest.CaptureFixture[str]) -> None:
     assert payload["status"] == "compiled"
     assert payload["count"] > 0
     assert code_json == 0
+
+
+def test_health_appropriations_status_cli(
+    tmp_path: Path,
+    capsys: pytest.CaptureFixture[str],
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Report explicit no-state when no operational manifests exist."""
+    code = health_appropriations_status(archive_root=tmp_path, format="json")
+    payload = json.loads(capsys.readouterr().out)
+    assert code == 1
+    assert payload["command"] == "health-appropriations-status"
+    assert payload["status"] == "no_state"
+
+    assert health_appropriations_status(archive_root=tmp_path, format="text") == 1
+    assert "status=no_state manifests=0" in capsys.readouterr().out
+
+    donor = tmp_path / "manifests" / "donor-abcdef0.json"
+    donor.parent.mkdir(parents=True)
+    donor.write_text("not-json", encoding="utf-8")
+    assert health_appropriations_status(archive_root=tmp_path, format="json") == 2
+    corrupt = json.loads(capsys.readouterr().out)
+    assert corrupt["status"] == "corrupt"
+    assert corrupt["error"] == "invalid_manifest:donor-abcdef0.json"
+    assert health_appropriations_status(archive_root=tmp_path, format="text") == 2
+    assert "status=corrupt" in capsys.readouterr().out
+
+    ready: dict[str, object] = {
+        "archive_root": str(tmp_path),
+        "status": "ready",
+        "layers": {
+            "bronze": True,
+            "silver": True,
+            "gold": True,
+            "platinum": True,
+        },
+        "manifest_count": 5,
+        "donor_file_count": 23,
+        "captured_resources": 73,
+        "silver_records": 312,
+        "candidate_manifest_sha256": "a" * 64,
+        "dataset": "edithatogo/nz-health-appropriations",
+    }
+    monkeypatch.setattr(cli_module, "inspect_archive_status", lambda _root: ready)
+    assert health_appropriations_status(archive_root=tmp_path, format="json") == 0
+    assert json.loads(capsys.readouterr().out)["status"] == "ready"
 
 
 def test_cli_sources_configured_and_missing(

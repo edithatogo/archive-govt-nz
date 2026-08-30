@@ -449,6 +449,9 @@ repository validation command. External gates block only their affected task.
 - [x] Remove scheduler-dependent Hypothesis deadline flakiness from the batch
   eligibility invariant without weakening generated cases or assertions.
   [M-18; AC-16] (`b2bf7b7`)
+- [x] Add the first typed, read-only health-appropriations operational status
+  surface shared by CLI and MCP, with explicit no-state, partial, ready and
+  corrupt-manifest contracts. [M-15, M-18; AC-13, AC-16] (`da37f79`)
 
 ## Gate register
 

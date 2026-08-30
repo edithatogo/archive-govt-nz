@@ -24,6 +24,10 @@ from archive_govt_nz.cli_integrity import (
     verify_cas,
 )
 from archive_govt_nz.core.registry import AgencyRegistry
+from archive_govt_nz.domains.health_appropriations.operations import (
+    HealthAppropriationsStateError,
+    inspect_archive_status,
+)
 from archive_govt_nz.domains.legislation.api import NZLegislationApiClient
 from archive_govt_nz.domains.legislation.cli_state import (
     coverage_counts,
@@ -133,6 +137,43 @@ def capabilities(format: Literal["text", "json"] = "text") -> int:
     for c in caps:
         print(f"- {c}")
     return 0
+
+
+@app.command(name="health-appropriations-status")
+def health_appropriations_status(
+    archive_root: Path = Path("build/health-appropriations"),
+    format: Literal["text", "json"] = "json",
+) -> int:
+    """Inspect local health-appropriations medallion state without mutation."""
+    try:
+        status = inspect_archive_status(archive_root)
+    except HealthAppropriationsStateError as error:
+        payload: dict[str, object] = {
+            "archive_root": str(archive_root),
+            "command": "health-appropriations-status",
+            "error": str(error),
+            "schema_version": "archive-govt-nz.health-appropriations-status/v1",
+            "status": "corrupt",
+        }
+        if format == "json":
+            _emit_json(payload)
+        else:
+            print(f"health-appropriations status=corrupt error={error}")
+        return 2
+
+    payload = {
+        **status,
+        "command": "health-appropriations-status",
+        "schema_version": "archive-govt-nz.health-appropriations-status/v1",
+    }
+    if format == "json":
+        _emit_json(payload)
+    else:
+        print(
+            "health-appropriations "
+            f"status={status['status']} manifests={status['manifest_count']}"
+        )
+    return 0 if status["status"] == "ready" else 1
 
 
 @app.command
