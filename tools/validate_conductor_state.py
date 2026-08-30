@@ -103,8 +103,14 @@ def evidence_errors(folder: Path, metadata: dict[str, Any]) -> list[str]:
             else []
         )
     errors: list[str] = []
+    preserved = path.read_bytes()
+    if "legacy_evidence_prefix_bytes" in metadata:
+        prefix = metadata["legacy_evidence_prefix_bytes"]
+        if type(prefix) is not int or prefix <= 0:
+            return ["invalid legacy evidence prefix length"]
+        preserved = preserved[:prefix]
     if (digest := metadata.get("legacy_evidence_sha256")) and digest != hashlib.sha256(
-        path.read_bytes()
+        preserved
     ).hexdigest():
         errors.append("legacy evidence bytes changed")
     previous: str | None = None

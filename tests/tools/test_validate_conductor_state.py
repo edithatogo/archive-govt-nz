@@ -171,3 +171,32 @@ def test_nested_legacy_event_is_checked_without_rewriting(tmp_path: Path) -> Non
     assert validate(tmp_path)["errors"] == []
     original.unlink()
     assert any("missing evidence" in e for e in validate(tmp_path)["errors"])
+
+
+def test_legacy_prefix_allows_valid_appends_but_never_rewrites(tmp_path: Path) -> None:
+    """An active legacy ledger can grow while its baseline remains immutable."""
+    folder = make_track(tmp_path)
+    original = (
+        b'{"recorded_at":"2026-08-30T00:00:00Z","kind":"review","status":"passed"}\n'
+    )
+    ledger = folder / "evidence.jsonl"
+    metadata = json.loads((folder / "metadata.json").read_text())
+    metadata.update(
+        legacy_evidence_sha256=hashlib.sha256(original).hexdigest(),
+        legacy_evidence_prefix_bytes=len(original),
+    )
+    (folder / "metadata.json").write_text(json.dumps(metadata))
+    ledger.write_bytes(original + original)
+    assert validate(tmp_path)["errors"] == []
+    ledger.write_bytes(original + b"{}\n")
+    assert any("invalid evidence line 2" in e for e in validate(tmp_path)["errors"])
+    ledger.write_bytes(original.replace(b"passed", b"failed") + original)
+    assert any("legacy evidence bytes" in e for e in validate(tmp_path)["errors"])
+    ledger.write_bytes(original[:-1])
+    assert any("legacy evidence bytes" in e for e in validate(tmp_path)["errors"])
+    for invalid in (True, 0, -1, "100"):
+        metadata["legacy_evidence_prefix_bytes"] = invalid
+        (folder / "metadata.json").write_text(json.dumps(metadata))
+        assert any(
+            "invalid legacy evidence prefix" in e for e in validate(tmp_path)["errors"]
+        )

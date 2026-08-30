@@ -205,6 +205,7 @@
     }
   ],
   "legacy_evidence_sha256": "d9161c2252b583cd9b6c17d3142126e525abbd6bc768b915bb4132508055e5a5",
-  "evidence_format_basis": "Existing observations were never hash-chained; original ledger bytes preserved and checked by tools/validate_conductor_state.py.",
-  "metadata_reconciled_at": "2026-08-30T09:09:36.938960Z"
+  "evidence_format_basis": "Existing observations were never hash-chained; the recorded original byte prefix remains immutable while new structured observations may be appended.",
+  "metadata_reconciled_at": "2026-08-30T09:09:36.938960Z",
+  "legacy_evidence_prefix_bytes": 20356
 }
