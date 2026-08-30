@@ -26,6 +26,7 @@ every planned record set, measure or operational workflow.
 - [Raw historical Health/GDP extraction and reconciliation](./raw-historical.md)
 - [Original-workbook orchestration](./raw-rebuild.md)
 - [Typed workbook inspection](./workbook-inspection.md)
+- [Raw compatibility projection and export contract](./raw-compatibility.md)
 - [Next raw-source ranges and semantic boundaries](./next-source-ranges.md)
 - [Metadata](./metadata.json)
 - [Run log](./runlog.md)
@@ -58,6 +59,10 @@ every planned record set, measure or operational workflow.
   local operational result does not replace the published donor-derived data.
 - Read-only raw-run CLI/MCP verification: matching live receipts, exact
   manifest pins, source/derivative fixity checks and no creation on missing state.
+- Typed workbook inspection delivered in PR #245, with bounded decoded previews
+  and original-byte verification. No formula evaluation or fact promotion.
+- Raw compatibility projection locally validates all 341 facts and flags 15
+  binary representation differences. Persistent source-derived export is pending.
 - Hugging Face: `published_and_verified` for the pinned candidate, with
   [dataset](https://huggingface.co/datasets/edithatogo/nz-health-appropriations)
   revision `9b85bac06597d4435fd078f6bed0f30bb008542b` and manifest SHA-256

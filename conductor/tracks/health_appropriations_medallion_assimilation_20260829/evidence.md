@@ -1,5 +1,22 @@
 # Evidence
 
+## Raw compatibility projection — 2026-08-30
+
+Commit `42cee7d` provides pure, loss-aware legacy value projection for all five
+table shapes. The verified raw run projects 341 facts and flags 15 exact
+decimal-to-binary representation differences, preserving exact amounts and
+source context. It does not yet write a database or replace published products.
+All 27 focused tests pass at 100% critical line/branch coverage; all 35
+explicitly unfiltered mutants are killed without pardons. Final full harness
+exits zero: 1,508 tests, 95.97% coverage, seven pytest warnings plus an additional
+SQLite ResourceWarning, 33 schemas/23 documents, 9/9 parity and all mutation
+and supply-chain checks, including a 110-component SBOM. Evidence is local.
+
+Inspector PR #245 independently merged at
+`32fbbe391a169d00d760a051c39c9793a95f9109` after all seven exact-head checks
+passed. Its merged and tested trees match. This does not mark the larger
+compatibility export or full assimilation complete.
+
 ## Typed workbook inspection — 2026-08-30
 
 Commit `446a82d` adds hash-pinned, bounded read-only sheet inventory and decoded

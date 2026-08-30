@@ -1,5 +1,18 @@
 # Self-Review
 
+## Raw compatibility projection — 2026-08-30
+
+- Pure projection validates unit/measure/profile contracts, integer bounds,
+  source identity and decoded text. Canonical amounts are never replaced by
+  float values; a distinct compatibility value carries a representation flag.
+- All source context is retained, including annotations, basis and dates.
+  Callers still must verify the enclosing raw run and retain field lineage.
+- Live projection preserves all 341 facts. Fifteen decimal-to-binary flags
+  are explicitly distinguished from one source/donor value discrepancy.
+- Twenty-seven tests cover all critical lines/branches. Unfiltered mutation
+  run kills all 35; the earlier filtered run's 14 survivors are retained in
+  the run log rather than treated as final evidence. No export file is claimed.
+
 ## Typed workbook inspection — 2026-08-30
 
 - Final full harness exits zero; all 40 focused unfiltered mutants are killed,

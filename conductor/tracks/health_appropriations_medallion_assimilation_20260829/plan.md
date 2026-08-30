@@ -281,7 +281,7 @@ repository validation command. External gates block only their affected task.
 - [ ] Implement the raw-to-Silver pipeline equivalent to `process_data.py`;
   regression-test the compile defect, positional heuristics and swallowed
   exceptions rather than retaining them. [M-09, M-18; AC-07, AC-16]
-- [ ] Generate the five-table SQLite compatibility database from canonical
+- [~] Generate the five-table SQLite compatibility database from canonical
   Parquet and validate schema/row/value parity or approved repairs. [M-08,
   M-09, M-10; AC-06, AC-08]
 - [ ] Implement structured equivalents of `run_analysis.py` for long-term

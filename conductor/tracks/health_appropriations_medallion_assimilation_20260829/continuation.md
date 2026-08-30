@@ -52,9 +52,11 @@ No task is complete just because code exists, an issue is closed, or CI is green
 - Pure read-only raw-run verification now has matching CLI/MCP receipts and
   cannot create missing state. Typed workbook inspection now replaces donor
   sheet listing/head printing with bounded structured previews (Phase 4.3).
-  Next executable increment: regenerate the five-table compatibility export
-  from the verified raw run, keeping source repairs and precision changes
-  explicit. Continue analytics, partial-stage resume/scheduling and remaining
+  The pure five-table projection is validated locally (`42cee7d`): all 341
+  facts retained, 15 decimal-to-binary representation differences flagged.
+  Next executable increment: add capped verified snapshots, exclusive SQLite
+  persistence, lineage sidecars and a completion manifest, as specified in
+  `raw-compatibility.md`. Continue analytics, partial-stage resume/scheduling and remaining
   workbook areas and official/contextual sources. Published state stays separate.
 - Resume this exact track, inspect dirty work and live PR state, then choose the
   next unblocked task. Do not restart completed preservation or publication.

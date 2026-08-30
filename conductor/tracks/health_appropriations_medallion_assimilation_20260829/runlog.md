@@ -1,5 +1,36 @@
 # Run Log
 
+## Raw compatibility projection — 2026-08-30
+
+- Functional commit `42cee7dd159a9593ecfe243c3328b2756758165d`.
+  Final full harness exited zero: 1,508 tests, 95.97% coverage, seven pytest
+  warnings and an additional SQLite ResourceWarning during collection,
+  33 schemas/23 documents, 9/9 parity, all mutation/supply-chain gates and
+  110-component SBOM. Only unrelated generated timestamp churn was restored.
+
+- PR #245 independently confirmed merged at
+  `32fbbe391a169d00d760a051c39c9793a95f9109`, tested head
+  `7388e32fb15ebc5373309bf86aa5e6927df87640`, all seven checks successful.
+  Both trees equal `4b8cae1b1c229d1eace00b375f5c6a60a81d4dd3`.
+  Re-anchored the uncommitted follow-on onto the identical merged tree with
+  expected-OID guards; removed only its verified merged predecessor refs.
+
+- Started the five-table raw-source compatibility task on
+  `codex/health-raw-compatibility`. Initial tests failed on the missing module.
+  The first 20 passed but critical coverage was 93.10%; added overflow, missing
+  text, exact-boundary and source-immutability contracts, reaching 27 tests
+  and 100% line/branch coverage. Lint and types pass.
+- An initial coverage-filtered mutation run reported 14 survivors out of 35.
+  Repeated explicitly without coverage filtering: all 35 killed, no pardons,
+  report SHA-256 `1aefbe93868f64b328a174eb97ae8b424686d4e8bc73008fa69633949a25f8e3`.
+  Filtered test selection is not used as final mutation evidence.
+- Live read-only projection of the verified raw run yields 215 appropriations,
+  ten BEFU, ten HYEFU, 53 historical Health and 53 GDP rows. Fifteen historical
+  Health decimal amounts differ from their exact binary REAL representation;
+  these representation flags are distinct from the one source/donor precision
+  discrepancy. All exact amounts and context remain available in sidecars.
+  No database or archive output was written. Export persistence remains pending.
+
 ## Typed workbook inspection — 2026-08-30
 
 - Functional commit `446a82da14c0f3432298aef633841992cf7017b6`.
