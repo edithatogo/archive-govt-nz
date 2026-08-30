@@ -28,6 +28,10 @@ from archive_govt_nz.domains.health_appropriations.operations import (
     HealthAppropriationsStateError,
     inspect_archive_status,
 )
+from archive_govt_nz.domains.health_appropriations.rebuild import (
+    execute_rebuild,
+    plan_rebuild,
+)
 from archive_govt_nz.domains.legislation.api import NZLegislationApiClient
 from archive_govt_nz.domains.legislation.cli_state import (
     coverage_counts,
@@ -136,6 +140,37 @@ def capabilities(format: Literal["text", "json"] = "text") -> int:
 
     for c in caps:
         print(f"- {c}")
+    return 0
+
+
+@app.command(name="health-appropriations-rebuild")
+def health_appropriations_rebuild(
+    *,
+    donor_manifest: Path,
+    store_root: Path,
+    manifest_sha256: str,
+    observed_at: str,
+    output_dir: Path = Path("build/health-appropriations/raw-run"),
+    dry_run: bool = True,
+) -> int:
+    """Preflight originals; --no-dry-run builds a separate local Silver run."""
+    try:
+        plan = plan_rebuild(donor_manifest, store_root, manifest_sha256, observed_at)
+        result = (
+            {"status": "planned", "plan": plan}
+            if dry_run
+            else execute_rebuild(plan, store_root, output_dir)
+        )
+    except (OSError, ValueError, TypeError, KeyError, ObjectStoreError) as error:
+        _emit_json(
+            {
+                "command": "health-appropriations-rebuild",
+                "status": "failed",
+                "error_class": type(error).__name__,
+            }
+        )
+        return 2
+    _emit_json({"command": "health-appropriations-rebuild", **result})
     return 0
 
 
