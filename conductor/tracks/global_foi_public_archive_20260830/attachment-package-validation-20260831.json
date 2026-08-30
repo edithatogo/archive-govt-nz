@@ -1,0 +1,24 @@
+{
+  "observed_at": "2026-08-30T21:52:53.057639+00:00",
+  "status": "local_passed_hosted_pending",
+  "full_harness": "passed",
+  "full_tests": 1621,
+  "coverage_percent": 96.15,
+  "focused_tests": 99,
+  "critical_line_branch_percent": 100,
+  "integrity_mutants_killed": 6,
+  "package_manifest_sha256": "a78befb393cb011a2e672a78aac3a2ac30740a5ee27eabcbe4f60003947dd534",
+  "old_v1_manifest_sha256": "865b1f32aa736fcd105c892cbf5c1f639a485a6e32ca52a75400ede382e005d2",
+  "v2_cold_restore": "passed",
+  "v1_compatibility": "passed",
+  "source_run": "33307777685",
+  "public_upload": false,
+  "cutover": false,
+  "monitor_enabled": false,
+  "limitations": [
+    "The live sample contains no attachment links; missing attachment reconstruction is established by synthetic fixtures.",
+    "The census is bounded by captured HTML and JSON and cannot prove exhaustive source representation.",
+    "Source rights and privacy remain unreviewed."
+  ],
+  "validation_log_sha256": "edf900d2923cc46d9a2cfff0a088537495ba2702a42808b24c6b546a58a35c1f"
+}
