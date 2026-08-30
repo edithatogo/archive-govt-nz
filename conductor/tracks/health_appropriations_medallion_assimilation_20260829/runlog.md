@@ -182,3 +182,14 @@ its change set.
   coverage, 30 schemas, 20 representative documents, 9/9 parity checks, all
   mutation lanes, hygiene, supply-chain audit, licence and secret checks, and
   a validated 110-component SBOM.
+
+## 2026-08-30 — Review fix: property-test timing stability
+
+- A current full harness run reached 1,214 passing tests but Hypothesis marked
+  `test_selected_resources_are_always_policy_eligible` flaky after one
+  generated example took 285.81 ms under parallel startup load and exceeded
+  the default 200 ms deadline; the identical example then completed in 0.02 ms.
+- The focused test immediately passed on rerun. Disabled the wall-clock
+  deadline only for this pure invariant test while retaining all generated
+  examples and assertions. The four-test module passed under the repository's
+  xdist configuration; Ruff and basedpyright passed.

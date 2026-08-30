@@ -1,5 +1,13 @@
 # Self-Review
 
+## Review fix — 2026-08-30
+
+The batch-eligibility invariant inherited Hypothesis's 200 ms deadline and
+flaked once under parallel worker startup despite replaying in 0.02 ms. The
+test performs no bounded performance contract. Commit `b2bf7b7` disables only
+that wall-clock deadline; generated examples, the eligibility assertion and
+parallel execution remain intact. Focused pytest, Ruff and basedpyright pass.
+
 ## Initialization review — 2026-08-29
 
 ### Scope and requirements
