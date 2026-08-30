@@ -1,5 +1,19 @@
 # Self-Review
 
+## Read-only raw verification — 2026-08-30
+
+- Inspection has a separate entrypoint and cannot invoke rebuild, extraction
+  or receipt-writing functions. Missing output and store paths remain absent.
+- The caller's exact run-manifest pin is checked before and after all source,
+  context and derivative checks. Tests cover late pin changes, symlinks,
+  malformed private plans and redaction before the MCP error boundary.
+- CLI and MCP share verified receipts; both live interfaces validated the
+  retained original-workbook run. No new source observation or publication is
+  claimed by readback.
+- Extracted complete-run validation into a shared helper. Sixty-three
+  focused/interface tests achieve 100% critical coverage; all 82 explicitly
+  unfiltered mutations were killed without pardons.
+
 ## Raw archival orchestration — 2026-08-30
 
 - The default CLI path only preflights; writes require `--no-dry-run`. All

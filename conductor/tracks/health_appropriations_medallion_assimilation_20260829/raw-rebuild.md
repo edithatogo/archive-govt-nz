@@ -40,6 +40,25 @@ Review the preflight output, then use the same arguments with `--no-dry-run`
 to build. Fixity verifies bytes, not authenticity or redistribution rights.
 An observation timestamp is caller-supplied context, not a new HTTP capture.
 
+## Read-only CLI and MCP verification
+
+Inspection is a separate code path, not a rebuild with a flag. It requires the
+exact run-manifest hash and checks that pin before and after verifying plan,
+source CAS and stage fixity. Missing/partial runs stay missing/partial. Errors
+are redacted to exception classes before crossing CLI or MCP boundaries.
+
+```sh
+uv run --locked archive-govt-nz health-appropriations-verify-rebuild \
+  --output-dir "$HEALTH_ARCHIVE_ROOT/silver/raw-orchestrated-20260830-v1" \
+  --store-root "$HEALTH_ARCHIVE_ROOT/bronze-cas" \
+  --manifest-sha256 da65ee2f38e2450e7273e84fa48b0b29a6a44670d84401fdbb7389f710fa0269
+```
+
+The read-only MCP tool `health_appropriations_verify_rebuild` accepts the same
+three named arguments. Its result equals the CLI envelope's `receipt` field.
+Successful verification attests current fixity, not publication readiness or
+full assimilation. Partial-stage scheduling/resumption remains separate.
+
 ## Live validation
 
 `silver/raw-orchestrated-20260830-v1` in the external archive retains 18 files.
@@ -57,6 +76,6 @@ The source manifest is pinned in the invocation above; no original changed.
 
 ## Remaining integration
 
-Read-only MCP reporting, partial-stage resumption, additional workbook areas,
+Partial-stage resumption, additional workbook areas,
 source-to-oracle analytical reconstruction and new publication candidates are
 separate acceptance work. Existing published dataset counts remain unchanged.

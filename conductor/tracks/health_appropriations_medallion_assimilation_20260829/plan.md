@@ -419,6 +419,11 @@ repository validation command. External gates block only their affected task.
 
 ### 8.2 Implement bounded operations
 
+- [x] Expose hash-pinned read-only raw-run verification through CLI and MCP;
+  reject missing, partial, corrupt and mismatched state without creating any
+  output or invoking normalization. [M-15, M-16, M-18; AC-12, AC-13, AC-16]
+  (`d25fd8d`)
+
 - [ ] Expose typed non-interactive CLI commands and read-only MCP resources
   over stable manifests/queries; return structured state and provenance.
   [M-15; AC-13]

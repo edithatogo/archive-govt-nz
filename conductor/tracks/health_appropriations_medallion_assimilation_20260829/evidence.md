@@ -1,5 +1,19 @@
 # Evidence
 
+## Read-only run verification — 2026-08-30
+
+Commit `d25fd8d` adds separate hash-pinned CLI/MCP verification. Both live
+interfaces verified the retained raw run and returned the same receipt, with
+no normalization or file creation. All 63 focused/interface tests pass with
+100% critical line/branch coverage; all 82 explicitly unfiltered mutants are
+killed without pardons. The exact pinned manifest remains
+`da65ee2f38e2450e7273e84fa48b0b29a6a44670d84401fdbb7389f710fa0269`.
+
+Final full harness exits zero: 1,459 tests, 95.92% coverage, eight warnings,
+32 schemas, 22 representative documents, 9/9 parity and all mutation and
+supply-chain gates, including a validated 110-component SBOM. No original,
+derivative or HF bytes changed. Hosted checks and merge remain separate.
+
 ## Original-workbook orchestration — 2026-08-30
 
 Commit `578235c` provides typed read-only preflight and explicit four-stage
