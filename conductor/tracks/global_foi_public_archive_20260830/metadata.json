@@ -3,7 +3,7 @@
   "type": "feature",
   "status": "in_progress",
   "created_at": "2026-08-30T08:38:22Z",
-  "updated_at": "2026-08-30T10:15:37.363643+00:00",
+  "updated_at": "2026-08-30T11:02:13.075907+00:00",
   "description": "Global FOI source catalogue, metadata indexes, public raw preservation and automation repair; archive-govt-nz takeover approved.",
   "evidence_schema": "1.0",
   "approval_status": "approved",
@@ -54,7 +54,8 @@
   "ownership": {
     "approved_receiver": "archive-govt-nz",
     "source_adapter": "fyi-cli",
-    "operational_state": "donor_until_verified_cutover"
+    "operational_state": "donor_until_verified_cutover",
+    "donor_nz_monitor": "disabled_manually_for_raw_retention_repair"
   },
   "recommendations": "recommendations.md",
   "evidence_contract": "chained-v1",
@@ -123,6 +124,21 @@
     "hosted_recovery_run": 33305733977,
     "hosted_recovery_state": "success",
     "bounded_capture_run": 33305989413,
-    "bounded_capture_state": "queued"
+    "bounded_capture_state": "success_but_raw_not_retained",
+    "baseline_merge": "b0e43b78040d07574d1f5297ec8478a4ec3b74da",
+    "hf_sync_diagnosis_run": 33306106031,
+    "hf_sync_diagnosis_state": "success_no_upload",
+    "raw_retention_pr": "https://github.com/edithatogo/fyi-archive/pull/404",
+    "publication_guard_pr": "https://github.com/edithatogo/archive-govt-nz/pull/247",
+    "catalogue_merge": "d1e43651855f23778897019897440eff544dcb00",
+    "publication_guard_merge": "3d794168dcfdcd687e1a08b18c25abd3358fbe3a",
+    "raw_retention_merge": "77e70914df4391c4bde9f3573941fb71de5f9403",
+    "stored_payload_verification_merge": "676461907887ace3f3a42a270b0b05ad0ed29ec6",
+    "container_followup_pr": "https://github.com/edithatogo/fyi-archive/pull/407",
+    "latest_recovery_run": 33307589477,
+    "container_followup_merge": "be992fe036d5a270e228b5277e5b5770b9950ad8",
+    "bounded_raw_restore_run": 33307777685,
+    "bounded_raw_restore_state": "passed_temporary_artifact_only",
+    "latest_operational_receipt": "hosted-raw-restore-20260830.json"
   }
 }

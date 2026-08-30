@@ -1,0 +1,53 @@
+{
+  "recorded_at": "2026-08-30T11:02:13.075907+00:00",
+  "donor_merge": "be992fe036d5a270e228b5277e5b5770b9950ad8",
+  "donor_pr": "https://github.com/edithatogo/fyi-archive/pull/407",
+  "run_id": 33307777685,
+  "run_url": "https://github.com/edithatogo/fyi-archive/actions/runs/33307777685",
+  "conclusion": "success",
+  "batch": {
+    "start_offset": 17226,
+    "end_offset": 17227,
+    "request_count": 1,
+    "auto_continue": false
+  },
+  "artifact": {
+    "id": 9731030582,
+    "zip_bytes": 41602,
+    "sha256": "c4404a60ef239274b1a6973be13ab2b07bad24e85fbd734af8c7f457868b9946",
+    "expires_at": "2026-11-28T10:59:11Z"
+  },
+  "raw_inventory": {
+    "sha256": "e25240f901e74d1b37ab0685bab69fb5017c0de0ed7ffa2da7be20eee6103e92",
+    "files": 7,
+    "total_bytes": 49405,
+    "warc_responses": 2,
+    "attachments_in_bounded_sample": 0,
+    "fyi_cli_version": "1.2.1"
+  },
+  "verification": {
+    "hosted_clean_restore_before_credit": true,
+    "local_clean_download_verified": true,
+    "batch_evidence_and_issue_receipt_match_raw_manifest": true,
+    "public_hf_restore": false
+  },
+  "credited_queue": {
+    "queue_count": 33208,
+    "credited_next_offset": 17227,
+    "remaining_unprocessed_entries": 15981,
+    "active_leases": 0,
+    "historic_raw_coverage_verified": false
+  },
+  "monitor": {
+    "workflow_id": 322525555,
+    "state": "disabled_manually",
+    "resume_requires": [
+      "durable retention and source eligibility",
+      "historical raw-gap reconciliation"
+    ]
+  },
+  "system_ready": false,
+  "cutover_performed": false,
+  "new_public_hf_upload": false,
+  "fully_archived_countries_verified": 0
+}
