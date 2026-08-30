@@ -36,6 +36,14 @@ No task is complete just because code exists, an issue is closed, or CI is green
 
 ## Execution loop
 
+- Current raw-source increment: the Budget adapter extracts 215 Health facts
+  directly from the pinned original, preserving 3,655 cell-lineage rows and
+  all 6,504 input dispositions. Keep these outputs separate from the published
+  SQLite-derived products. See `raw-budget.md` and the current evidence.
+- Next source adapters: use `next-source-ranges.md` to begin the BEFU/HYEFU
+  literal summary blocks (20 oracle rows), then historical health/GDP (77
+  oracle rows). Preserve Actual/Forecast, fiscal periods, basis transitions,
+  annotated years and unmatched source coverage; the oracle is not a filter.
 - Resume this exact track, inspect dirty work and live PR state, then choose the
   next unblocked task. Do not restart completed preservation or publication.
 - Work through the red/green, review, evidence and exact-head CI/merge cycle.

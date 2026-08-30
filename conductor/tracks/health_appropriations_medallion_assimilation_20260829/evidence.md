@@ -1,5 +1,29 @@
 # Evidence
 
+## Raw Budget extraction — 2026-08-30
+
+Commit `d26e769` extracts from the pinned original Budget workbook, rather than
+the donor SQLite derivative. All 6,504 input rows have dispositions: 215 Health
+facts, 6,289 non-Health exclusions and zero rejected/blank rows. The 3,655
+field-lineage records preserve every source column and exact cell addresses.
+All seven oracle appropriation fields match in order, and two independent
+builds produce identical files. Bronze CAS and original-byte hashes agree.
+
+The four-file validation derivative is retained separately under the external
+archive's `silver/raw-budget-d26e769`. Its manifest SHA-256 is
+`03f41d39395b02169202e88e98f04a892a3dbb55c2083a328391d909af8f7d57`.
+Its fixed observation-time test context is not a new capture attestation.
+Neither financial-year basis nor redistribution rights is inferred; existing
+Silver/Gold and HF publication remain unchanged.
+
+The full local harness exits zero: 1,296 tests, 95.66% coverage, 30 schemas,
+20 representative documents, 9/9 parity checks, all mutation/supply-chain
+gates and a validated 110-component SBOM. Eight SQLite ResourceWarnings were
+recorded. Focused extractor coverage is 100% line/branch, 49 focused tests and
+111 domain tests pass, and all 73 unfiltered generated mutants are killed.
+The machine receipt pins source, implementation, output and mutation hashes.
+Hosted CI and merge are separate from this local evidence.
+
 ## Workbook part contracts and continuation — 2026-08-30
 
 Commit `ee54bc9` corrects false-positive macro-part basename matching and adds

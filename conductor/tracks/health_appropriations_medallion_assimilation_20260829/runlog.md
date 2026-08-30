@@ -1,5 +1,50 @@
 # Run Log
 
+## 2026-08-30 — Original Budget extraction
+
+- Resumed from clean main `7279629`. The baseline full harness exited zero
+  with 1,247 passing tests and 95.60% coverage, including all supply-chain gates.
+- Recompiled the three hash-pinned donor scripts without import/execution.
+  Inspection and analysis compile; processing raises IndentationError at line
+  199 after the duplicate `if` at line 198. Static behavior and failure modes
+  are recorded separately from observed SQLite contents.
+- The new raw Budget test initially failed collection because the adapter did
+  not exist. First implementation exposed a tuple/list JSON receipt mismatch;
+  canonical JSON-compatible receipt values fixed it. One follow-up command
+  named a nonexistent test file and ran no tests; the corrected entire-domain
+  command below is the valid coverage evidence.
+- Commit `d26e769` adds the named-column original-workbook extractor, bounded
+  verified snapshot, exact decimals, row dispositions, all-column source-cell
+  lineage, new-directory-only outputs and a command-line entrypoint.
+- Forty-nine focused tests passed at 100% line/branch coverage. All 73
+  unfiltered generated mutants were killed; report SHA-256
+  `6d85d73a824de888f7e232a5c41ef254f633d42ddd7f66b58661e8aea3e391c9`.
+  The whole health-domain suite passed 111 tests with 100% coverage for both
+  Budget extraction and format inventory. Eight SQLite ResourceWarnings were
+  reported by that suite; no test failed. Ruff and basedpyright passed.
+- Live extraction accounts for all 6,504 Budget input rows: 215 normalized,
+  6,289 non-Health exclusions, zero blank/rejected rows and 3,655 lineage rows.
+  All seven donor appropriation fields match in source order. The mixed-year,
+  mixed-amount-type sum `163181604.000` is a parity checksum, not an analytical
+  aggregate. Bronze CAS verification matches the original workbook digest.
+- A verified copy of the four output files is retained separately at
+  `silver/raw-budget-d26e769` under the existing external archive root. Manifest
+  digest: `03f41d39395b02169202e88e98f04a892a3dbb55c2083a328391d909af8f7d57`.
+  This is a local validation derivative using a fixed reproducibility-time
+  context, not a new capture-time attestation or approved publication candidate.
+- Read-only next-source inspection recorded Actual/Forecast ranges, literal
+  versus cached-formula totals, fiscal-period/basis transitions and annotated
+  years. It does not claim those adapters have been implemented.
+- A second independent extraction produced byte-identical Parquet files and
+  completion manifest. The original digest remained unchanged. Both rebuilds
+  completed without evaluating formulas or accessing external links; observed
+  runtime was slow under shared machine load, not an unreported failed run.
+- The final full harness exited zero: 1,296 tests, 95.66% coverage, 30 schemas,
+  20 representative documents, 9/9 parity checks, all repository mutation and
+  supply-chain gates, and a validated 110-component SBOM. Eight SQLite warnings
+  were recorded. The post-bookkeeping track-status test also passed. Unrelated
+  timestamp-only evidence churn from the harness was inspected and restored.
+
 ## 2026-08-30 — Opaque workbook parts and external references
 
 - Five new fixture cases produced four passes and one expected failure:

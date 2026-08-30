@@ -11,6 +11,7 @@ from zipfile import BadZipFile, ZipFile
 from openpyxl import load_workbook
 
 if TYPE_CHECKING:
+    from io import BytesIO
     from pathlib import Path
 
     from openpyxl.worksheet.worksheet import Worksheet
@@ -105,7 +106,7 @@ def _inventory_sheet(sheet: Worksheet) -> SheetInventory:
     )
 
 
-def inventory_workbook(path: Path) -> dict[str, object]:
+def inventory_workbook(path: Path | BytesIO) -> dict[str, object]:
     """Inventory an XLSX package while leaving its original bytes untouched."""
     try:
         with ZipFile(path) as package:

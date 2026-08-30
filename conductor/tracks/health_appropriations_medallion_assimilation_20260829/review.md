@@ -1,5 +1,29 @@
 # Self-Review
 
+## Raw Budget extraction and donor characterization — 2026-08-30
+
+- Added a separate original-workbook path, not a replacement for the donor
+  SQLite oracle. All original columns and input-row dispositions are retained;
+  named selection permits column reordering but rejects missing/duplicate or
+  non-text headers. Repeated business rows retain distinct source-row identity.
+- Extraction uses one hash-verified, size-capped snapshot and existing workbook
+  package/scan checks. Extensionless CAS inputs are supported. Openpyxl parsing
+  is still not a resource-isolated sandbox; the scan cap follows package load.
+- Formula/error Health rows and missing/invalid source values are rejected with
+  reason codes. Fixed-decimal conversion neither rounds nor drops nonpositive
+  amounts. Source year labels are not silently assigned fiscal dates.
+- New output directories prevent overwriting source or prior derivatives. A
+  manifest is written last; partial directories remain incomplete and are not
+  resumable. Consumers must verify manifest hashes, not directory existence.
+- Static donor characterization does not execute import-time side effects or
+  pretend the broken processor generated the checked-in SQLite database.
+  Broader replacement analytics and complete format support remain pending.
+- No dependency, raw payload in Git, source rewrite, changed HF publication or
+  donor-retirement operation is introduced. Rights remain explicitly unresolved
+  in these new facts until joined to approved resource-level rights evidence.
+- Forty-nine focused tests passed with 100% extractor line/branch coverage;
+  73/73 unfiltered mutation tests were killed. Ruff and basedpyright passed.
+
 ## Workbook part contracts and continuation — 2026-08-30
 
 - Fixed the false macro-part marker for `notvbaProject.bin`; exact basename
