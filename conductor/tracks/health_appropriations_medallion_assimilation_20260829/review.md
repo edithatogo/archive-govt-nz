@@ -1,5 +1,25 @@
 # Self-Review
 
+## Rich workbook census — 2026-08-30
+
+- Previous count keys remain available. Additive structural details identify
+  table/merged ranges, grouped hidden-column spans, hidden rows, scoped names,
+  formula/comment coordinates and every original ZIP part name.
+- Formula/comment coordinates use one bounded traversal. No formula execution,
+  comment text/author export, network request or original rewrite is introduced.
+- Unknown package parts are surfaced but not claimed as interpreted. Cached
+  values, defined-name expression interpretation and broader source promotion
+  remain separate pending contracts. Historical manifests are not rewritten.
+- Synthetic rich/empty-sheet fixtures verify deterministic repeated results,
+  original byte identity, chart/table preservation and non-disclosure of
+  comment content. Existing unsafe-path/duplicate/scan-limit tests remain active.
+- General/Python style and M-07/S-03 preservation boundaries were reviewed.
+  No new dependency, publication or donor-retirement action is part of this slice.
+- Final assurance passed: 1,239 tests at 95.59% overall coverage, 100%
+  format-module line/branch coverage and 23/23 unfiltered mutants killed.
+  The interrupted baseline and its native-Python SBOM retry are recorded
+  separately from the successful final full-harness exit.
+
 ## Workbook safety prerequisite — 2026-08-30
 
 - Replaced host-dependent path interpretation with explicit ZIP member rules;

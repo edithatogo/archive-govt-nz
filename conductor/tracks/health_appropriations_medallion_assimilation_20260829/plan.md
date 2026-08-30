@@ -86,6 +86,10 @@ repository validation command. External gates block only their affected task.
   path controls, sheet/range discovery, formulas/cached values, hidden content,
   named ranges, tables, charts, external links, macros and unsupported parts.
   [M-07, M-18, S-03; AC-03, AC-16]
+- [x] Expose deterministic worksheet ranges, formula/comment coordinates,
+  hidden row/column spans, scoped defined names and original ZIP part names
+  through the existing bounded inventory. Preserve source bytes and keep
+  cached-value interpretation distinct. [M-07, S-03; AC-03, AC-16] (`dffa310`)
 - [x] Produce a machine-readable sheet/table/range census for all seven donor
   workbooks and a page/structure census for the donor PDF, without changing
   their bytes. [M-03, M-07, S-03; AC-02, AC-03]

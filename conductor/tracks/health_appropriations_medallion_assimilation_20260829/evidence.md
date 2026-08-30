@@ -1,5 +1,19 @@
 # Evidence
 
+## Rich workbook census — 2026-08-30
+
+Commit `dffa310` adds deterministic ranges, hidden spans, scoped defined names,
+formula/comment coordinates and ZIP member names to the bounded workbook
+inventory. Existing counts remain; formulas are not evaluated, comment content
+is not exported and the original bytes remain unchanged in repeat-run fixtures.
+
+Local validation: 30 focused tests, 100% format-module line/branch coverage,
+23/23 unfiltered mutants killed. Final `./scripts/validate.sh` exited 0 with
+1,239 tests at 95.59% coverage and all schema/parity/security/supply-chain gates.
+The earlier uv/SBOM launcher interruption is not counted as a full pass.
+Cached-value interpretation, broader source coverage, CLI/scheduler work and
+whole-track completion remain pending. No publication or donor retirement.
+
 ## Workbook safety prerequisite — 2026-08-30
 
 Commit `b2956a7` rejects platform-ambiguous and duplicate ZIP members and bounds
