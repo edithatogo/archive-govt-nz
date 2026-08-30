@@ -9,6 +9,20 @@ contracts instead of building a donor-specific sidecar pipeline.
 
 ## System and trust boundaries
 
+### Original-workbook orchestration
+
+The local rebuild command preflights all four known source paths in a
+hash-pinned donor manifest and verifies each CAS object before creating output.
+One explicit observation timestamp and versioned profile map define the run.
+Every run has an exclusively created directory; adapters retain their distinct
+schemas and never concatenate unlike record sets. The completion manifest pins
+each stage manifest and output hash. Reusing a complete run requires matching
+plan identity and full fixity verification. An interrupted or partial run is
+retained, not overwritten; retry uses a new directory. This initial complete-run
+idempotence contract does not yet claim partial-stage scheduling/resumption.
+Structured failure receipts contain stable error classes, not source text or
+credentials. No Bronze write, Gold replacement or publication occurs.
+
 ```mermaid
 flowchart LR
     subgraph U[Untrusted and externally mutable sources]

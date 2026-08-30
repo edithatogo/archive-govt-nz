@@ -1,5 +1,24 @@
 # Evidence
 
+## Original-workbook orchestration — 2026-08-30
+
+Commit `578235c` provides typed read-only preflight and explicit four-stage
+raw-workbook rebuilding from the pinned donor manifest and Bronze CAS.
+Two live runs match all 18 files byte for byte; complete reuse reverified
+sources and outputs. There are 341 selected facts and no rejected values.
+The run manifest is
+`da65ee2f38e2450e7273e84fa48b0b29a6a44670d84401fdbb7389f710fa0269`.
+See `raw-rebuild.md` for the retained path, invocation and boundaries.
+
+All 41 focused tests pass with 100% critical line/branch coverage; all 74
+explicitly unfiltered mutants are killed, no pardons. Final full harness exits
+zero: 1,452 tests, 95.91% coverage, three pytest warnings plus five unclosed
+SQLite ResourceWarnings emitted during coverage collection, 32 schemas,
+22 representative documents, 9/9 differential parity and every mutation and
+supply-chain gate, including the validated 110-component SBOM. CAS benchmark
+was 521.51 MB/s. No HF or Bronze original bytes were changed by this work.
+Hosted checks/merge, MCP projection and partial-stage resume remain separate.
+
 ## Raw historical extraction — 2026-08-30
 
 Commit `3376695` retains 106 original Health/GDP facts, 1,143 lineage rows and

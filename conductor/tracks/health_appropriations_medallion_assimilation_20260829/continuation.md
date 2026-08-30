@@ -46,12 +46,14 @@ No task is complete just because code exists, an issue is closed, or CI is green
 - Historical Health/GDP now retains 106 original observations, including 29
   annotated years absent from the donor and one exact-token precision
   difference. See `raw-historical.md`; no original or HF bytes changed.
-- Next executable increment: integrate all four original-workbook adapters
-  into manifest-driven archival orchestration and rebuild commands. Verify
-  CAS inputs, preserve failed attempts, validate output hashes before resume,
-  and expose raw-source state separately from published SQLite-derived state.
-  Then regenerate compatibility/analytics with explicit reconciliation policy
-  and continue the remaining workbook areas and official/contextual sources.
+- Original-workbook orchestration now rebuilds all four adapters into a
+  separate verified 341-fact local run. Complete reuse checks every stage;
+  incomplete attempts are retained and require a new output directory.
+- Next executable increment: expose pure read-only raw-run verification to
+  CLI/MCP, without calling a function that can create output on missing state.
+  Then implement partial-stage resume/scheduling, regenerate compatibility and
+  analytics with explicit reconciliation policy, and continue the remaining
+  workbook areas and official/contextual sources. Published state stays separate.
 - Resume this exact track, inspect dirty work and live PR state, then choose the
   next unblocked task. Do not restart completed preservation or publication.
 - Work through the red/green, review, evidence and exact-head CI/merge cycle.

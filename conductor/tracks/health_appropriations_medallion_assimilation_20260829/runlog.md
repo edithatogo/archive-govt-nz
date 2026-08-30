@@ -1,5 +1,45 @@
 # Run Log
 
+## Original-workbook orchestration — 2026-08-30
+
+- Functional commit `578235c`. Final full harness exited zero: 1,452 tests,
+  95.91% coverage, 32 schemas/22 representative documents, 9/9 parity, all
+  mutation and supply-chain gates, 110-component SBOM. Three pytest warnings
+  and five additional SQLite ResourceWarnings remain visible. Restored only
+  unrelated timestamp churn. All 74 final unfiltered mutants were killed.
+
+- Live preflight and the four-stage CLI build passed. Independent outputs
+  match all 18 files byte for byte; complete-run reuse reverified source CAS
+  objects and all output hashes. The run contains 341 facts: 215 Budget,
+  ten BEFU, ten HYEFU and 106 historical, with no rejected selected values.
+- The first 37-test mutation run killed 73/73. Review added two red contracts
+  (duplicate JSON keys and absent completion schema), followed by a red
+  unexpected RuntimeError contract. Corrected duplicate-key parsing, added the
+  schema and used a narrowly annotated redacted adapter exception boundary.
+  Errors are re-raised, not swallowed. Forty-one tests now pass at 100% line
+  and branch coverage, including 20 generated derivative-corruption examples.
+- Live run manifest SHA-256:
+  `da65ee2f38e2450e7273e84fa48b0b29a6a44670d84401fdbb7389f710fa0269`.
+  Retained under `silver/raw-orchestrated-20260830-v1`. Observation context
+  `2026-08-30T08:58:00Z` is local verification, not new HTTP capture.
+
+- Continued the same track on `codex/health-raw-orchestration` while PR #232
+  ran its immutable-head hosted checks. Baseline is the just-passed 1,411-test
+  full harness before any orchestration source changes.
+- The initial three tests failed collection with missing `rebuild` import
+  (exit 2), then passed. Added corruption, path, schema, partial-run, identity
+  and CLI contracts: 37 tests pass with 100% critical line/branch coverage.
+- PR #232 independently confirmed merged at
+  `08cfbab58b26495d39aa7903db0432c5b9a6669f`, tested head
+  `fda419730cdff07235e951589ab44f5aa2a05626`, all eight checks successful.
+  Both trees equal `f474597cc95d327d461dfcf5edc065aa0a2549a9`.
+  Re-anchored this uncommitted next slice onto the identical merged tree using
+  expected-OID ref updates; no source/index changes or rebase conflict.
+  Removed the merged local branch only after verifying hosted deletion.
+- Initial lint findings were formatting, explicit error-message variables,
+  import placement and keyword-only CLI arguments. Corrected rather than
+  relaxing gates. Type checks pass; final mutation/live/full checks follow.
+
 ## Historical final local gates — 2026-08-30
 
 - Functional commit: `3376695b32021238e8e3152ae30188c9f38a5ca4`.

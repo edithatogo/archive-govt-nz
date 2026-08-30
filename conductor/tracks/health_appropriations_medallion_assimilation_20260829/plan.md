@@ -269,6 +269,12 @@ repository validation command. External gates block only their affected task.
 
 ### 4.3 Replace donor utilities and analyses
 
+- [x] Orchestrate the four original-workbook adapters from a pinned donor
+  manifest and verified CAS, with a read-only preflight, exclusive new-run
+  outputs, complete-run hash verification and preserved failure evidence.
+  Keep raw extraction state separate from published donor-derived products.
+  [M-09, M-15, M-16, M-18; AC-07, AC-12, AC-13, AC-16] (`578235c`)
+
 - [ ] Implement a typed workbook/source inventory CLI equivalent to
   `inspect_excel.py`, with structured output and bounded failures. [M-09,
   M-15; AC-07, AC-13]
