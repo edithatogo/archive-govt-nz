@@ -4,8 +4,8 @@ from __future__ import annotations
 
 import re
 import sqlite3
-from dataclasses import asdict, dataclass
-from typing import TYPE_CHECKING
+from dataclasses import asdict, dataclass, replace
+from typing import TYPE_CHECKING, Literal
 from zipfile import BadZipFile, ZipFile
 
 from openpyxl import load_workbook
@@ -19,6 +19,15 @@ _PDF_PAGE = re.compile(rb"/Type\s*/Page\b")
 _MAX_MEMBERS = 20_000
 _MAX_EXPANDED_BYTES = 512 * 1024 * 1024
 _MAX_SCAN_CELLS = 2_000_000
+
+
+@dataclass(frozen=True, slots=True)
+class FormulaCacheInventory:
+    """Presence and type only; neither contents nor freshness are asserted."""
+
+    coordinate: str
+    state: Literal["stored_value", "stored_error", "missing_or_empty"]
+    data_type: str
 
 
 @dataclass(frozen=True, slots=True)
@@ -41,6 +50,19 @@ class SheetInventory:
     hidden_rows: tuple[int, ...]
     hidden_columns: tuple[tuple[str, int | None, int | None], ...]
     defined_names: tuple[str, ...]
+    formula_cache: tuple[FormulaCacheInventory, ...] = ()
+
+
+def _formula_cache(sheet: Worksheet, coordinate: str) -> FormulaCacheInventory:
+    cell = sheet[coordinate]
+    state: Literal["stored_value", "stored_error", "missing_or_empty"]
+    if cell.value is None:
+        state = "missing_or_empty"
+    elif cell.data_type == "e":
+        state = "stored_error"
+    else:
+        state = "stored_value"
+    return FormulaCacheInventory(coordinate, state, cell.data_type)
 
 
 def _inventory_sheet(sheet: Worksheet) -> SheetInventory:
@@ -125,6 +147,22 @@ def inventory_workbook(path: Path) -> dict[str, object]:
         defined_names = tuple(sorted(workbook.defined_names))
     finally:
         workbook.close()
+    if any(sheet.formula_coordinates for sheet in sheets):
+        cached = load_workbook(path, read_only=False, data_only=True, keep_links=True)
+        try:
+            cached_sheets = {sheet.title: sheet for sheet in cached.worksheets}
+            sheets = [
+                replace(
+                    sheet,
+                    formula_cache=tuple(
+                        _formula_cache(cached_sheets[sheet.title], coordinate)
+                        for coordinate in sheet.formula_coordinates
+                    ),
+                )
+                for sheet in sheets
+            ]
+        finally:
+            cached.close()
     return {
         "schema_version": "archive-govt-nz.workbook-inventory/v1",
         "kind": "xlsx",
@@ -137,6 +175,7 @@ def inventory_workbook(path: Path) -> dict[str, object]:
         "external_link_count": external_links,
         "named_range_count": len(defined_names),
         "defined_names": defined_names,
+        "formula_cache_freshness": "not_verified",
         "sheets": [asdict(sheet) for sheet in sheets],
     }
 
