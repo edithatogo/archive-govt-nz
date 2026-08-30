@@ -7,13 +7,13 @@ The approved destination is archive-govt-nz; no cutover has occurred.
 ## Phase 0 — Contract, baseline and traceability
 
 - [x] P0.1 (AC01, AC12): Verify the recorded approval, ownership supersession and initialization commit against current donor/receiver state before execution; do not ask for routine reapproval. Verified against initialization `0529e5f` and activation `68818aa`.
-- [~] P0.2 (AC01, AC12): Reconcile legacy Conductor validation errors without rewriting historical evidence; register the approved contract and create scoped parent/subissue links under the authorized repository workflow.
-- [ ] P0.3 (AC01, AC08, AC11): Pin donor/receiver/adapter/HF revisions; inventory capture capabilities, 23/29/42 registries, retained artifacts, raw bytes, queues, mirrors, rights and current jobs; prioritize expiring artifacts and record durable-copy gaps.
-- [ ] P0.4 (AC12): Automated contract review and full Conductor validation; retain exact baseline and unresolved boundaries.
+- [x] P0.2 (AC01, AC12): Reconcile legacy Conductor validation errors without rewriting historical evidence; register the approved contract and create scoped parent/subissue links under the authorized repository workflow. Receipt: `0955f05`, phase-0-validation.json.
+- [x] P0.3 (AC01, AC08, AC11): Pin donor/receiver/adapter/HF revisions; inventory capture capabilities, 23/29/42 registries, retained artifacts, raw bytes, queues, mirrors, rights and current jobs; prioritize expiring artifacts and record durable-copy gaps. Receipt: `0955f05`, phase-0-validation.json.
+- [x] P0.4 (AC12): Automated contract review and full Conductor validation; retain exact baseline and unresolved boundaries. Receipt: `0955f05`, phase-0-validation.json.
 
 ## Phase 1 — Repair the active automation first
 
-- [ ] P1.1 (AC02): Write failing tests for the abandoned NZ lease, live owner, terminal success without receipt, stale observations and concurrent replacement.
+- [~] P1.1 (AC02): Write failing tests for the abandoned NZ lease, live owner, terminal success without receipt, stale observations and concurrent replacement.
 - [ ] P1.2 (AC02): Implement evidence-bound exact-lease reconciliation, conflict-aware reservation and durable diagnostic receipts in the active owner; preserve completed coverage and requeue only uncredited work.
 - [ ] P1.3 (AC03): Add failing CLI/workflow tests for concatenated JSON, diagnostics on stdout, missing summary, changed/unchanged runs, and cross-instance card data.
 - [ ] P1.4 (AC03): Implement a dedicated schema-valid summary artifact, clean stdout/stderr contract, guarded card rendering and always-retained redacted failure evidence.
