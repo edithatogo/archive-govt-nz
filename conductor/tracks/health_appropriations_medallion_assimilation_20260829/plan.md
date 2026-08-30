@@ -21,6 +21,11 @@ repository validation command. External gates block only their affected task.
 
 ### Review correction — current-state reconciliation
 
+- [x] Record a substantial-milestone continuation route and unattended-run
+  boundaries so implementation can resume without repeated scope prompts.
+  This does not activate a scheduler or broaden publication authority.
+  [M-19; AC-04, AC-16] (`3932caf`)
+
 - [x] Reconcile the track entry page with canonical receipts and live hosted
   state; prevent status drift with a focused contract. Keep completed
   publication distinct from pending assimilation tasks and reconcile the parent
@@ -84,6 +89,10 @@ repository validation command. External gates block only their affected task.
   time/geography contract and public rights evidence exist. [S-05; AC-10]
 
 ### 1.3 Characterize every donor binary and derivative
+
+- [x] Complete inert macro-part, external-link and opaque/embedded-part
+  inventory contracts; verify no external retrieval, no payload disclosure and
+  byte-exact preservation. [M-07, M-18, S-03; AC-03, AC-16] (`ee54bc9`)
 
 - [x] Harden workbook preflight with platform-independent member paths,
   duplicate-part rejection and a cumulative cell-scan limit; verify immutable

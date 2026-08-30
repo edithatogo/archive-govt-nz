@@ -1,5 +1,27 @@
 # Run Log
 
+## 2026-08-30 — Opaque workbook parts and external references
+
+- Five new fixture cases produced four passes and one expected failure:
+  `xl/notvbaProject.bin` incorrectly set the macro marker because detection
+  matched a suffix rather than the exact part basename. External-link and
+  opaque-part tests characterize existing behavior; they do not manufacture a
+  failing implementation contract.
+- The initial full run collected the new test before its fix, and overlapping
+  coverage runs shared the default coverage store, invalidating both coverage
+  reports. No baseline success is claimed. Validation is rerun sequentially
+  against fixed files; subsequent coverage runs must not share an active store.
+- Sequential focused validation passed 37 tests at 100% format-module line and
+  branch coverage; all 31 unfiltered mutations were killed. Ruff and basedpyright
+  passed. Functional commit: `ee54bc9`; continuation route: `3932caf`.
+- Fresh `./scripts/validate.sh` exited zero: 1,247 tests, 95.60% coverage,
+  30 schemas, 20 representative documents, 9/9 parity, all mutation lanes,
+  dependency/licence/secret checks and a 110-component SBOM. Eight existing
+  SQLite ResourceWarnings remain. Unrelated timestamp-only churn was restored.
+- Offered a same-task hourly heartbeat via the app's suggested-create card
+  after finding no matching existing automation. This is not active-run evidence
+  or a new publication/retirement approval; activation is a user choice.
+
 ## 2026-08-30 — Current-state reconciliation
 
 - Found the entry page reporting scaffold-era state despite canonical metadata

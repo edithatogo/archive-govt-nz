@@ -19,6 +19,7 @@ every planned record set, measure or operational workflow.
 - [Requirements](./requirements.md)
 - [Design](./design.md)
 - [Implementation plan](./plan.md)
+- [Autonomous continuation route](./continuation.md)
 - [Metadata](./metadata.json)
 - [Run log](./runlog.md)
 - [Evidence](./evidence.md)
