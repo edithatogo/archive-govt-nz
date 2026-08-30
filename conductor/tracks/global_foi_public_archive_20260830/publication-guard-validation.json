@@ -1,0 +1,26 @@
+{
+  "recorded_at": "2026-08-30T10:27:00.461295+00:00",
+  "implementation_commit": "1efa2d409309cc80795efa16739917058409d8a3",
+  "original_validated_commit": "6ade12c",
+  "scope": "Disable fabricated success in legacy HF adapter and publication router; no new transport or upload.",
+  "required_harness": {
+    "command": [
+      "./scripts/validate.sh"
+    ],
+    "exit_code": 0,
+    "tests": 1499,
+    "coverage_percent": 95.94,
+    "output_sha256": "1cceda60aeb7c9e68508e35d9d1446b6c60f1a5baa7824db06c49593a5cbf5b1"
+  },
+  "focused_validation": {
+    "tests": 7,
+    "ruff_explicit_paths": "passed",
+    "basedpyright_explicit_paths": "passed"
+  },
+  "review": "Credential presence is not publication. Dry-run has no synthetic commit/DOI and cannot be called verified. Unsupported live router calls fail with zero uploaded files. Existing real uploader is not replaced.",
+  "limitations": [
+    "Legacy OSF/Zenodo adapter implementations are not used or certified by this FOI path.",
+    "Real public upload and anonymous raw restore remain Phase 4 obligations.",
+    "Source dist directories required explicit lint/type checks in addition to the full harness."
+  ]
+}
