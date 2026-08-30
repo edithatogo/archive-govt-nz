@@ -1,13 +1,12 @@
 # Implementation plan — approved 2026-08-30
 
 Approval and initialization are recorded in approval.json and evidence.jsonl.
-The execution tasks below remain pending; track status is `new` until execution
-starts. The order is TDD → implementation → refactoring → phase review/validation.
+Execution started on 2026-08-30; track status is `in_progress`. The order is TDD → implementation → refactoring → phase review/validation.
 The approved destination is archive-govt-nz; no cutover has occurred.
 
 ## Phase 0 — Contract, baseline and traceability
 
-- [ ] P0.1 (AC01, AC12): Verify the recorded approval, ownership supersession and initialization commit against current donor/receiver state before execution; do not ask for routine reapproval.
+- [~] P0.1 (AC01, AC12): Verify the recorded approval, ownership supersession and initialization commit against current donor/receiver state before execution; do not ask for routine reapproval.
 - [ ] P0.2 (AC01, AC12): Reconcile legacy Conductor validation errors without rewriting historical evidence; register the approved contract and create scoped parent/subissue links under the authorized repository workflow.
 - [ ] P0.3 (AC01, AC08, AC11): Pin donor/receiver/adapter/HF revisions; inventory capture capabilities, 23/29/42 registries, retained artifacts, raw bytes, queues, mirrors, rights and current jobs; prioritize expiring artifacts and record durable-copy gaps.
 - [ ] P0.4 (AC12): Automated contract review and full Conductor validation; retain exact baseline and unresolved boundaries.

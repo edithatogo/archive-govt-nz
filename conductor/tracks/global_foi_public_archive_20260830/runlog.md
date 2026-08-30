@@ -30,3 +30,8 @@
 
 - Approval validation: setup and selected-track checks passed; evidence chain and all 12 acceptance IDs checked. Full validation still reports 172 legacy errors and zero additional errors. `git diff --check` passed.
 - Evidence append initially rejected an absolute ledger path; corrected once to the required project-relative path and both events validated.
+
+## 2026-08-30 — Implementation start
+
+- Selected the explicitly approved global FOI track, not the unrelated active health track. Receiver remote main remains 5eda36dd2d204a6a859100f913b411c44a08bf62; donor main remains cba7b0dec2734bdc9ff51c69610fc55cb1fc5aa1.
+- Full generic Conductor preflight reproduces the 172 known failures; investigating parser/legacy-schema compatibility before production changes. No isolation-lease mode is enabled; work remains in the dedicated clean worktree.
