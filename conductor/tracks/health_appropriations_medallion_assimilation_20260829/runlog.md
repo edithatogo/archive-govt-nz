@@ -1,5 +1,28 @@
 # Run Log
 
+## 2026-08-30 — Workbook safety prerequisite
+
+- Continued from merged status PR #223 (`75c0ca9`) on a clean checkout.
+- Selected the still-open Phase 1.3 safety prerequisite before expanding
+  CLI/scheduled operations; no donor or publication mutation is in scope.
+- Red command: `uv run pytest -q tests/domains/health_appropriations/test_workbook_bounds.py`.
+  Observed 8 failed and 3 passed: Windows-style/ambiguous paths and duplicate
+  parts reached the parser rather than being rejected; the cumulative cell
+  scan limit was absent. Existing POSIX traversal rejection was characterized.
+- Green: 27 focused tests passed, including 20 generated sparse-extent/budget
+  examples; `formats.py` has 100% line and branch coverage. Ruff's import and
+  raw-regex findings were corrected without changing behavior.
+- Mutation: `uv run pytest -q tests/domains/health_appropriations/test_inventory.py tests/domains/health_appropriations/test_workbook_bounds.py --gremlins --gremlin-targets=src/archive_govt_nz/domains/health_appropriations/formats.py --gremlin-report=json --gremlin-workers=4`
+  killed 22/22 mutants; no survivors. The property test was added afterwards
+  and included in the subsequent focused/full validation.
+- `./scripts/validate.sh` passed: 1,236 tests, 95.59% overall coverage,
+  30 schemas/20 examples, 9/9 parity, all targeted mutation lanes, formatting,
+  lint, strict types, dependency audit, licences, secrets and 110-component SBOM.
+  Existing SQLite ResourceWarnings were observed; no test failed.
+- Restored only the four inspected unrelated timestamp-bearing receipts.
+  Functional commit: `b2956a7`. Hosted checks/publication are not inferred from
+  the local harness. The full track and broader Phase 1.3 task remain open.
+
 ## 2026-08-29 — Track initialization
 
 - Confirmed the repository root at

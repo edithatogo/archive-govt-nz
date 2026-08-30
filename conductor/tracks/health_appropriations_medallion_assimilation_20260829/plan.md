@@ -78,6 +78,10 @@ repository validation command. External gates block only their affected task.
 
 ### 1.3 Characterize every donor binary and derivative
 
+- [x] Harden workbook preflight with platform-independent member paths,
+  duplicate-part rejection and a cumulative cell-scan limit; verify immutable
+  inputs and exact limit boundaries before expanding operational exposure.
+  [M-07, M-18; AC-03, AC-16] (`b2956a7`)
 - [ ] Add fixtures/contracts for safe ZIP/workbook inventory, archive-bomb and
   path controls, sheet/range discovery, formulas/cached values, hidden content,
   named ranges, tables, charts, external links, macros and unsupported parts.

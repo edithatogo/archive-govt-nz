@@ -1,5 +1,18 @@
 # Evidence
 
+## Workbook safety prerequisite — 2026-08-30
+
+Commit `b2956a7` rejects platform-ambiguous and duplicate ZIP members and bounds
+the cumulative rectangular formula scan at 2,000,000 cells. Synthetic fixtures
+verify unchanged original bytes on success and rejection. This is a traversal
+bound after workbook loading, not an unrestricted-parser sandbox claim.
+
+Local assurance: 27 focused tests, 100% format-module line/branch coverage,
+22/22 generated mutants killed, and full `./scripts/validate.sh` passed with
+1,236 tests at 95.59% coverage plus schema/parity/security/supply-chain gates.
+No donor retirement or Hugging Face mutation occurred. Wider workbook census,
+CLI/scheduler and whole-track completion remain pending.
+
 ## Evidence boundary
 
 This scaffold records local planning and read-only observations. It does not
