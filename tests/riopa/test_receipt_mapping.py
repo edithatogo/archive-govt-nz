@@ -81,6 +81,9 @@ def test_mapping_rejects_non_content_addressed_receipts() -> None:
     [
         ("source_url", "not-a-uri", "invalid_source_url"),
         ("observed_at", "not-a-date", "invalid_observed_at"),
+        ("observed_at", "2026-08-31", "invalid_observed_at"),
+        ("observed_at", "2026-08-31T00:00:00", "invalid_observed_at"),
+        ("archive_id", "", "invalid_archive_id"),
     ],
 )
 def test_mapping_rejects_schema_invalid_receipts(
