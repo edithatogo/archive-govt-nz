@@ -13,7 +13,7 @@ import pyarrow.parquet as pq
 import pytest
 from openpyxl import Workbook
 
-from archive_govt_nz.domains.health_appropriations import budget
+from archive_govt_nz.domains.health_appropriations import budget, workbook_common
 from archive_govt_nz.domains.health_appropriations.budget import (
     normalize_budget_workbook,
 )
@@ -265,7 +265,7 @@ def test_write_failure_has_no_completion_marker(
         message = "injected disk failure"
         raise OSError(message)
 
-    monkeypatch.setattr(budget.pq, "write_table", fail_write)
+    monkeypatch.setattr(workbook_common.pq, "write_table", fail_write)
     with pytest.raises(OSError, match="injected disk failure"):
         _run(source, tmp_path / "out", digest)
     assert (tmp_path / "out").is_dir()
