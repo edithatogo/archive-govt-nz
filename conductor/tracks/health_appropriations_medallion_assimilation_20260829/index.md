@@ -23,6 +23,9 @@ every planned record set, measure or operational workflow.
 - [Pinned donor behavior](./donor-behavior.md)
 - [Raw Budget extraction](./raw-budget.md)
 - [Raw BEFU/HYEFU extraction](./raw-forecast.md)
+- [Raw historical Health/GDP extraction and reconciliation](./raw-historical.md)
+- [Original-workbook orchestration](./raw-rebuild.md)
+- [Typed workbook inspection](./workbook-inspection.md)
 - [Next raw-source ranges and semantic boundaries](./next-source-ranges.md)
 - [Metadata](./metadata.json)
 - [Run log](./runlog.md)
@@ -47,6 +50,14 @@ every planned record set, measure or operational workflow.
 - Separate raw BEFU/HYEFU extraction: 20 Health facts, 120 field-lineage rows
   and 4,665 cell dispositions; both ten-row donor summaries match in order.
   Actual/Forecast and vintage are retained; fiscal-year basis remains flagged.
+- Separate raw historical extraction: 106 Health/GDP facts, 1,143 lineage rows,
+  1,503 cell dispositions, 29 source-only annotated years and one explicitly
+  retained precision difference. Historical extraction delivered in PR #232.
+- Manifest-driven raw rebuilding: four stages, 341 selected facts, 18 files,
+  independent byte-identical rebuild and verified complete-run reuse. This
+  local operational result does not replace the published donor-derived data.
+- Read-only raw-run CLI/MCP verification: matching live receipts, exact
+  manifest pins, source/derivative fixity checks and no creation on missing state.
 - Hugging Face: `published_and_verified` for the pinned candidate, with
   [dataset](https://huggingface.co/datasets/edithatogo/nz-health-appropriations)
   revision `9b85bac06597d4435fd078f6bed0f30bb008542b` and manifest SHA-256

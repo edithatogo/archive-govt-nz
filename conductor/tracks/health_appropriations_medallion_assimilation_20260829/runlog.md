@@ -1,5 +1,149 @@
 # Run Log
 
+## Typed workbook inspection — 2026-08-30
+
+- Functional commit `446a82da14c0f3432298aef633841992cf7017b6`.
+  Final full harness exited zero, including mutation and supply-chain gates
+  and a 110-component SBOM. Forty focused unfiltered mutants were killed with
+  no pardons. Only unrelated generated timestamp churn was restored.
+- PR #243 independently confirmed merged at
+  `d85c810ebc272163341e6517dd541a4cf3ee1dbd`, tested head
+  `eac467d03dd07385e35cc2f105cc4571fecb8190`, all seven checks successful.
+  Both trees equal `74eceb84762f147cf5fe81a13f02577bf2e98577`.
+  Re-anchored the uncommitted inspector onto that identical tree using guarded
+  refs; removed only the merged local branch and absent hosted tracking ref.
+
+- Continued on `codex/health-workbook-inspection` from the validated read-only
+  verification head while PR #243 awaits hosted checks. Baseline full harness
+  before inspection code: 1,459 tests, 95.92% coverage, all gates passed.
+- Initial tests failed with the missing inspection module; the first eight
+  tests then passed. Listing-only and preview-byte-budget contracts failed
+  before implementation. Added aggregate exact-boundary and CLI contracts.
+- A first nonfinite fixture used `NaN`, which the workbook parser already
+  rejects, invalidating the fixture's listing expectation. Corrected it to
+  `1e309`: the expected red test showed an overflowed decoded preview was
+  accepted. Strict JSON now rejects nonfinite previews; listing still works.
+- Review found array/data-table formula objects were stringified to object
+  representations. Two red tests reproduced the loss of useful fields.
+  Structured attributes/text now survive; temporal displays are stable and
+  unknown object types fail closed rather than leaking object representations.
+- Twenty-two tests pass with 100% critical line/branch coverage, including
+  30 generated head-dimension cases. Lint/types pass; 33 schemas and 23
+  representative documents validate.
+- Live typed CLI lists all eight original Budget sheets and returns 34 cells
+  for two Raw Data rows and all 17 columns. The original hash remains
+  `d67c01b0a3f1fbee5cb5121b641bda42f91f3e5bc84e599d22d32aeacbbb3338`.
+
+## Read-only raw-run verification — 2026-08-30
+
+- Functional commit `d25fd8db6c760ef7dab4ae5be032f4f779e300e6`.
+  Final full harness exited zero: 1,459 tests, 95.92% coverage, eight warnings,
+  32 schemas/22 documents, 9/9 parity, all mutation/supply-chain gates and
+  110-component SBOM. Only unrelated timestamp churn was restored.
+- Re-anchored the in-progress branch onto the exact identical PR #242 merged
+  tree with expected-OID guards, then removed its verified merged local branch
+  and stale remote-tracking ref. The hosted branch was already absent.
+
+- Continued on `codex/health-readonly-verification`, using the just-passed
+  1,452-test full harness as the unchanged-code baseline. Added red library
+  and CLI import contracts before implementing either surface.
+- Initial focused coverage was 97.53%; four missing lines were symlink and
+  late manifest-pin rejection. Added negative tests rather than lowering the
+  100% gate. The 63-test focused/CLI/MCP suite now passes at 100% critical
+  line/branch coverage; static checks pass.
+- Live CLI and MCP both verify the retained 18-file run against manifest
+  `da65ee2f38e2450e7273e84fa48b0b29a6a44670d84401fdbb7389f710fa0269`.
+  Both return the same receipt. No rebuild or file creation is called.
+- PR #242 independently confirmed merged at
+  `f116967c627ed7d0e25deca893568921316a2661`, tested head
+  `56d91b247963a6192b0567fad1f5629b891d64a0`, all seven checks successful.
+  Both trees equal `3993fe88b7b173fb3a2916ae648cfd2b8f956d38`.
+
+## Original-workbook orchestration — 2026-08-30
+
+- Functional commit `578235c`. Final full harness exited zero: 1,452 tests,
+  95.91% coverage, 32 schemas/22 representative documents, 9/9 parity, all
+  mutation and supply-chain gates, 110-component SBOM. Three pytest warnings
+  and five additional SQLite ResourceWarnings remain visible. Restored only
+  unrelated timestamp churn. All 74 final unfiltered mutants were killed.
+
+- Live preflight and the four-stage CLI build passed. Independent outputs
+  match all 18 files byte for byte; complete-run reuse reverified source CAS
+  objects and all output hashes. The run contains 341 facts: 215 Budget,
+  ten BEFU, ten HYEFU and 106 historical, with no rejected selected values.
+- The first 37-test mutation run killed 73/73. Review added two red contracts
+  (duplicate JSON keys and absent completion schema), followed by a red
+  unexpected RuntimeError contract. Corrected duplicate-key parsing, added the
+  schema and used a narrowly annotated redacted adapter exception boundary.
+  Errors are re-raised, not swallowed. Forty-one tests now pass at 100% line
+  and branch coverage, including 20 generated derivative-corruption examples.
+- Live run manifest SHA-256:
+  `da65ee2f38e2450e7273e84fa48b0b29a6a44670d84401fdbb7389f710fa0269`.
+  Retained under `silver/raw-orchestrated-20260830-v1`. Observation context
+  `2026-08-30T08:58:00Z` is local verification, not new HTTP capture.
+
+- Continued the same track on `codex/health-raw-orchestration` while PR #232
+  ran its immutable-head hosted checks. Baseline is the just-passed 1,411-test
+  full harness before any orchestration source changes.
+- The initial three tests failed collection with missing `rebuild` import
+  (exit 2), then passed. Added corruption, path, schema, partial-run, identity
+  and CLI contracts: 37 tests pass with 100% critical line/branch coverage.
+- PR #232 independently confirmed merged at
+  `08cfbab58b26495d39aa7903db0432c5b9a6669f`, tested head
+  `fda419730cdff07235e951589ab44f5aa2a05626`, all eight checks successful.
+  Both trees equal `f474597cc95d327d461dfcf5edc065aa0a2549a9`.
+  Re-anchored this uncommitted next slice onto the identical merged tree using
+  expected-OID ref updates; no source/index changes or rebase conflict.
+  Removed the merged local branch only after verifying hosted deletion.
+- Initial lint findings were formatting, explicit error-message variables,
+  import placement and keyword-only CLI arguments. Corrected rather than
+  relaxing gates. Type checks pass; final mutation/live/full checks follow.
+
+## Historical final local gates — 2026-08-30
+
+- Functional commit: `3376695b32021238e8e3152ae30188c9f38a5ca4`.
+- Final full harness exited zero: 1,411 tests, 95.84% coverage, eight warnings,
+  31 schemas, 21 representative documents, 9/9 differential parity, all
+  mutation lanes, audit, licences, tracked secret scan and 110-component SBOM.
+- Both new modules have 100% line/branch coverage (65 focused tests; 226
+  domain tests). All 99 explicitly unfiltered mutations killed, no pardons.
+- Independently rebuilt extraction and reconciliation outputs were retained
+  outside Git; originals rehashed unchanged. See `raw-historical.md`.
+- A concurrent task switched the shared checkout to main during validation.
+  The local functional commit was transferred to its intended branch using
+  expected-OID ref updates. Main returned to its prior commit; the other
+  task's FOI worktree was not touched. No remote main write occurred.
+- Hosted checks and merge remain separate. Continue with operational raw
+  orchestration after delivery; this is not full assimilation completion.
+
+## 2026-08-30 — Historical source continuation
+
+- Reverified PR #230 as merged at `5eda36d`, with tested head `1619a6d`.
+  The clean primary checkout is the sole worktree. Continued this same track
+  on `codex/health-historical-extraction`; baseline full validation precedes
+  source/test changes.
+- The next source contains 53 Health and 53 GDP annual rows. Its donor Health
+  table contains only 24 rows. Exact XML tokens, annotation markers, accounting
+  transitions and March/June context must survive extraction; display formats
+  cannot be used as a rounding rule for canonical facts.
+- Baseline full harness exited zero: 1,346 tests, 95.72% coverage, eight SQLite
+  ResourceWarnings and all schema, parity, mutation and supply-chain gates.
+- Initial historical test collection failed as expected with missing module
+  (exit 2); the first implementation passed 16 tests. Refactored row selection,
+  period state, numeric checks and fact construction after static review.
+  Added exact lexical decimals, guarded DTD rejection, parser ambiguity and
+  negative-path contracts. Forty-three tests passed at 100% line/branch coverage.
+- The first mutation run passed 46 tests, killed 69/70 mutations and selected
+  an unrelated empty-series test for the surviving precision-rejection return.
+  Re-running with explicit `--gremlin-no-coverage-filter` tests every mutation
+  against the full focused suite; the first run is not a clean mutation gate.
+- Two live builds of the original fiscal workbook yielded 106 facts, 1,143
+  field-lineage rows and 1,503 cell dispositions, with zero rejected amounts.
+  Both manifests and every output file are byte-identical. All 53 GDP values
+  match the donor. Health restores 29 annotated years absent from its 24-row
+  table and retains the exact 1976 token `605.70000000000005` rather than the
+  donor's `605.7`. No original or published artifact changed.
+
 - Forecast implementation commit: `801783d5069456ee16a1e1ce18a57c86a682bc9f`.
   Final `./scripts/validate.sh` exited zero: 1,346 tests, 95.72% coverage,
   eight SQLite ResourceWarnings, 30 schemas, 20 representative documents,

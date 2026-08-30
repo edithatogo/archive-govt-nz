@@ -240,6 +240,13 @@ repository validation command. External gates block only their affected task.
 
 ### 4.2 Build source-faithful donor Silver records
 
+- [x] Extract historical Health spending and nominal GDP from the pinned
+  workbook, retaining exact stored numeric tokens, annotated years, footnotes,
+  March/June period context and accounting-basis transitions. Reconcile every
+  source/oracle row through explicit difference records without rounding away
+  source precision or dropping annotations. [M-05, M-06, M-07, M-08;
+  AC-03, AC-05, AC-06, AC-11] (`3376695`)
+
 - [x] Extract BEFU/HYEFU literal Health summaries from verified originals,
   preserving Actual/Forecast, units, vintage, cell lineage and explicit
   unselected-area dispositions. Reconcile both ten-row donor oracles without
@@ -262,9 +269,15 @@ repository validation command. External gates block only their affected task.
 
 ### 4.3 Replace donor utilities and analyses
 
-- [ ] Implement a typed workbook/source inventory CLI equivalent to
+- [x] Orchestrate the four original-workbook adapters from a pinned donor
+  manifest and verified CAS, with a read-only preflight, exclusive new-run
+  outputs, complete-run hash verification and preserved failure evidence.
+  Keep raw extraction state separate from published donor-derived products.
+  [M-09, M-15, M-16, M-18; AC-07, AC-12, AC-13, AC-16] (`578235c`)
+
+- [x] Implement a typed workbook/source inventory CLI equivalent to
   `inspect_excel.py`, with structured output and bounded failures. [M-09,
-  M-15; AC-07, AC-13]
+  M-15; AC-07, AC-13] (`446a82d`)
 - [ ] Implement the raw-to-Silver pipeline equivalent to `process_data.py`;
   regression-test the compile defect, positional heuristics and swallowed
   exceptions rather than retaining them. [M-09, M-18; AC-07, AC-16]
@@ -405,6 +418,11 @@ repository validation command. External gates block only their affected task.
   M-19, S-04; AC-04, AC-09, AC-13]
 
 ### 8.2 Implement bounded operations
+
+- [x] Expose hash-pinned read-only raw-run verification through CLI and MCP;
+  reject missing, partial, corrupt and mismatched state without creating any
+  output or invoking normalization. [M-15, M-16, M-18; AC-12, AC-13, AC-16]
+  (`d25fd8d`)
 
 - [ ] Expose typed non-interactive CLI commands and read-only MCP resources
   over stable manifests/queries; return structured state and provenance.

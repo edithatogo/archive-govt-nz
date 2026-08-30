@@ -9,6 +9,34 @@ contracts instead of building a donor-specific sidecar pipeline.
 
 ## System and trust boundaries
 
+### Original-workbook orchestration
+
+The local rebuild command preflights all four known source paths in a
+hash-pinned donor manifest and verifies each CAS object before creating output.
+One explicit observation timestamp and versioned profile map define the run.
+Every run has an exclusively created directory; adapters retain their distinct
+schemas and never concatenate unlike record sets. The completion manifest pins
+each stage manifest and output hash. Reusing a complete run requires matching
+plan identity and full fixity verification. An interrupted or partial run is
+retained, not overwritten; retry uses a new directory. This initial complete-run
+idempotence contract does not yet claim partial-stage scheduling/resumption.
+Structured failure receipts contain stable error classes, not source text or
+credentials. No Bronze write, Gold replacement or publication occurs.
+
+Read-only verification is a separate operation, never a call to the rebuild
+function. Consumers supply the exact run-manifest SHA-256. Verification checks
+that pin before and after inspecting the plan, source CAS objects and all
+stage outputs. CLI and MCP share this non-mutating library contract. Missing
+or incomplete runs remain missing/incomplete; inspection cannot start work.
+
+Workbook inspection reads one size-capped, hash-verified snapshot. Existing
+package/traversal contracts inventory all sheets; bounded previews decode
+only a requested head rectangle, without evaluating formulas. Preview values
+are labelled decoded displays, not canonical numeric facts. Sheet selection,
+row/column limits and an aggregate preview-cell cap bound output. No original
+or cached formula value is rewritten, and failures cross the CLI boundary as
+redacted classes rather than unstructured source diagnostics.
+
 ```mermaid
 flowchart LR
     subgraph U[Untrusted and externally mutable sources]
@@ -179,7 +207,25 @@ No positional heuristic is accepted without a fixture and layout fingerprint.
 An unseen layout fails closed for normalization but remains preserved in
 Bronze and visible in the inventory.
 
-## Gold analytical model
+## Source-specific Silver extraction
+
+### Historical source precision and period contract
+
+Historical extraction reads literal numeric tokens from the validated OOXML
+package, not a binary-float round trip or the workbook's display format.
+The historical record-set schema uses decimal128(38,17), with exact conversion
+only; values outside that precision/range receive a rejection, never rounding.
+The original lexical token and number format remain alongside the typed value.
+This is a separately versioned derivative; existing decimal128(20,3) products
+and published files are not rewritten.
+
+Known Health/GDP currency blocks are distinct from percentage-of-GDP blocks.
+Year annotations retain marker-to-footnote links. Source labels establish
+March/June year-end context; old-GAAP inherits the preceding June context with
+explicit lineage while changing accounting basis. No annual start date or
+cross-series comparability is inferred. Row-level reconciliation retains donor
+values, source values and reasons for omissions/precision differences rather
+than using the donor as a source-coverage filter.
 
 ### Raw forecast summary increment
 
@@ -205,6 +251,8 @@ observation time and original locator accompany the verified object identity.
 Financial-year endpoints are not inferred from bare year labels. Rights remain
 unresolved until joined to resource-level rights evidence. Output completion
 requires a valid manifest and matching hashes in a newly reserved directory.
+
+## Gold analytical model
 
 Gold queries operate over conformed dimensions:
 

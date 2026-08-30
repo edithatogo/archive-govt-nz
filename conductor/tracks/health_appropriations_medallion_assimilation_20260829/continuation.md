@@ -43,9 +43,19 @@ No task is complete just because code exists, an issue is closed, or CI is green
 - BEFU/HYEFU literal summaries now reconcile all 20 oracle rows from originals,
   with 120 field-lineage records and 4,665 cell dispositions. See
   `raw-forecast.md`; these are separate local derivatives, not HF updates.
-- Next source adapter: use `next-source-ranges.md` for historical health/GDP
-  (77 oracle rows). Preserve Actual/Forecast, fiscal periods, basis transitions,
-  annotated years and unmatched source coverage; the oracle is not a filter.
+- Historical Health/GDP now retains 106 original observations, including 29
+  annotated years absent from the donor and one exact-token precision
+  difference. See `raw-historical.md`; no original or HF bytes changed.
+- Original-workbook orchestration now rebuilds all four adapters into a
+  separate verified 341-fact local run. Complete reuse checks every stage;
+  incomplete attempts are retained and require a new output directory.
+- Pure read-only raw-run verification now has matching CLI/MCP receipts and
+  cannot create missing state. Typed workbook inspection now replaces donor
+  sheet listing/head printing with bounded structured previews (Phase 4.3).
+  Next executable increment: regenerate the five-table compatibility export
+  from the verified raw run, keeping source repairs and precision changes
+  explicit. Continue analytics, partial-stage resume/scheduling and remaining
+  workbook areas and official/contextual sources. Published state stays separate.
 - Resume this exact track, inspect dirty work and live PR state, then choose the
   next unblocked task. Do not restart completed preservation or publication.
 - Work through the red/green, review, evidence and exact-head CI/merge cycle.

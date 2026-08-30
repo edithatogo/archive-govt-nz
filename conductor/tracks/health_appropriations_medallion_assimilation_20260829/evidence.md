@@ -1,5 +1,70 @@
 # Evidence
 
+## Typed workbook inspection — 2026-08-30
+
+Commit `446a82d` adds hash-pinned, bounded read-only sheet inventory and decoded
+previews, without formula evaluation or canonical-fact claims. Twenty-two
+focused tests pass at 100% critical line/branch coverage; all 40 unfiltered
+mutants are killed without pardons (report SHA-256
+`cb0dbd2222665a8aba4c9d48b2028917f9e0348a07dd78d226005f3ec7edc44d`).
+The full harness exits zero, including mutation and supply-chain gates and a
+110-component SBOM. Targeted schema validation passes 33 schemas/23 documents.
+Live inspection lists eight Budget sheets and previews 34 selected cells;
+the pinned original SHA-256 remains unchanged. No HF bytes were changed.
+See `workbook-inspection.md` for limits and invocation.
+
+PR #243 (read-only verification) separately passed all seven hosted checks
+and merged at `d85c810ebc272163341e6517dd541a4cf3ee1dbd`; its tree equals
+the exact tested head. Inspector hosted delivery is not implied by that merge.
+
+## Read-only run verification — 2026-08-30
+
+Commit `d25fd8d` adds separate hash-pinned CLI/MCP verification. Both live
+interfaces verified the retained raw run and returned the same receipt, with
+no normalization or file creation. All 63 focused/interface tests pass with
+100% critical line/branch coverage; all 82 explicitly unfiltered mutants are
+killed without pardons. The exact pinned manifest remains
+`da65ee2f38e2450e7273e84fa48b0b29a6a44670d84401fdbb7389f710fa0269`.
+
+Final full harness exits zero: 1,459 tests, 95.92% coverage, eight warnings,
+32 schemas, 22 representative documents, 9/9 parity and all mutation and
+supply-chain gates, including a validated 110-component SBOM. No original,
+derivative or HF bytes changed. Hosted checks and merge remain separate.
+
+## Original-workbook orchestration — 2026-08-30
+
+Commit `578235c` provides typed read-only preflight and explicit four-stage
+raw-workbook rebuilding from the pinned donor manifest and Bronze CAS.
+Two live runs match all 18 files byte for byte; complete reuse reverified
+sources and outputs. There are 341 selected facts and no rejected values.
+The run manifest is
+`da65ee2f38e2450e7273e84fa48b0b29a6a44670d84401fdbb7389f710fa0269`.
+See `raw-rebuild.md` for the retained path, invocation and boundaries.
+
+All 41 focused tests pass with 100% critical line/branch coverage; all 74
+explicitly unfiltered mutants are killed, no pardons. Final full harness exits
+zero: 1,452 tests, 95.91% coverage, three pytest warnings plus five unclosed
+SQLite ResourceWarnings emitted during coverage collection, 32 schemas,
+22 representative documents, 9/9 differential parity and every mutation and
+supply-chain gate, including the validated 110-component SBOM. CAS benchmark
+was 521.51 MB/s. No HF or Bronze original bytes were changed by this work.
+Hosted checks/merge, MCP projection and partial-stage resume remain separate.
+
+## Raw historical extraction — 2026-08-30
+
+Commit `3376695` retains 106 original Health/GDP facts, 1,143 lineage rows and
+1,503 cell dispositions. Reconciliation retains 76 exact matches, 29 annotated
+source-only years and one exact stored-token difference, without changing
+either original. Independent library/CLI outputs and comparison ledgers are
+byte-identical. Paths, hashes and interpretation boundaries: `raw-historical.md`.
+
+All 65 focused and 226 domain tests pass. Both new modules have 100% line and
+branch coverage, with all 99 explicitly unfiltered mutants killed, no pardons.
+The final full harness exits zero: 1,411 tests, 95.84% coverage, eight warnings,
+31 schemas, 21 representative documents, 9/9 parity and all mutation and
+supply-chain gates, including the validated 110-component SBOM. These are
+local gates; no hosted CI, publication or complete assimilation is implied.
+
 ## Raw forecast extraction — 2026-08-30
 
 Commit `801783d` extracts literal BEFU/HYEFU Health summaries directly from

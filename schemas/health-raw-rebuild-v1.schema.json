@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive-govt-nz.org/schemas/health-raw-rebuild-v1.schema.json",
+  "title": "Completed local original-workbook rebuild receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "status", "plan_sha256", "stages", "publication_state"],
+  "$defs": {"sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}},
+  "properties": {
+    "schema_version": {"const": "archive-govt-nz.health-raw-rebuild/v1"},
+    "status": {"const": "passed"},
+    "plan_sha256": {"$ref": "#/$defs/sha256"},
+    "publication_state": {"const": "local_validation_only"},
+    "stages": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["budget", "befu", "hyefu", "historical"],
+      "properties": {
+        "budget": {"$ref": "#/$defs/sha256"},
+        "befu": {"$ref": "#/$defs/sha256"},
+        "hyefu": {"$ref": "#/$defs/sha256"},
+        "historical": {"$ref": "#/$defs/sha256"}
+      }
+    }
+  }
+}

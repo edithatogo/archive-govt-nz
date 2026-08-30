@@ -1,5 +1,79 @@
 # Self-Review
 
+## Typed workbook inspection — 2026-08-30
+
+- Final full harness exits zero; all 40 focused unfiltered mutants are killed,
+  no pardons. Hosted inspector delivery remains separately gated.
+- One capped, hash-verified snapshot feeds structural inventory and preview
+  parsing. No filesystem output, formula evaluation or canonical fact claim.
+- Added aggregate cell and UTF-8 value-byte boundaries, including equality
+  cases and Unicode. Listing-only mode returns no cell previews.
+- Corrected the nonfinite test fixture after learning `NaN` was already
+  rejected by the parser; `1e309` reproduced permissive non-standard JSON.
+  Strict encoding now rejects it. Array/data-table formula tests reproduced
+  object-representation output; decoded fields now survive deterministically.
+- Unknown objects are rejected. Existing parser/package/traversal limits are
+  reused, with no claim of process isolation or unrestricted format support.
+- Twenty-two focused tests achieve 100% critical line/branch coverage, with
+  generated dimensions and original-byte invariants. Live Budget inspection
+  matches eight sheets and a 34-cell selected head; source fixity is unchanged.
+
+## Read-only raw verification — 2026-08-30
+
+- Inspection has a separate entrypoint and cannot invoke rebuild, extraction
+  or receipt-writing functions. Missing output and store paths remain absent.
+- The caller's exact run-manifest pin is checked before and after all source,
+  context and derivative checks. Tests cover late pin changes, symlinks,
+  malformed private plans and redaction before the MCP error boundary.
+- CLI and MCP share verified receipts; both live interfaces validated the
+  retained original-workbook run. No new source observation or publication is
+  claimed by readback.
+- Extracted complete-run validation into a shared helper. Sixty-three
+  focused/interface tests achieve 100% critical coverage; all 82 explicitly
+  unfiltered mutations were killed without pardons.
+
+## Raw archival orchestration — 2026-08-30
+
+- The default CLI path only preflights; writes require `--no-dry-run`. All
+  four source objects are reverified before either a new build or complete
+  reuse. The run plan pins manifest identity, profile context and observation.
+- Existing directories are never overwritten. Reuse requires exact plan,
+  complete stage contexts, expected file sets and hashes. Corrupt, symlinked,
+  partial and extra-file cases fail closed. Bronze output paths are prohibited.
+- Review identified duplicate JSON keys and unexpected adapter exception
+  handling. Red tests reproduced both; unique-key parsing and a narrowly
+  annotated redacted failure boundary now reject them without source-message
+  leakage. Failure receipts never imply completion or trigger publication.
+- Forty-one focused tests retain 100% critical line/branch coverage, including
+  20 generated corruption examples. Live independent builds match all 18
+  files, and current-code complete reuse reverified sources and outputs.
+- This increment does not claim partial-stage resume, scheduling, MCP raw-run
+  projection, full workbook coverage, new Gold analytics or changed HF bytes.
+
+## Historical original-source extraction — 2026-08-30
+
+- Exact OOXML decimals avoid binary-float/display rounding; source lexemes,
+  formats, annotated years, footnotes and period/basis labels remain traceable.
+  Year-end lineage links both contributing source cells. Annual starts and
+  cross-basis comparability are not invented.
+- Split selection, period state, numeric validation, record creation and
+  reconciliation into bounded helpers after the initial complexity finding.
+  The standard-library lexical reader has a narrowly justified S314 annotation:
+  a custom TreeBuilder rejects DTDs, tested with UTF-16 input. Prior workbook
+  inventory/loading remains subject to its existing non-sandbox limitations.
+- The first mutation run selected an unrelated test for one surviving return.
+  Explicitly disabling coverage filtering killed all 70 extractor mutations.
+  The final combined run killed 99/99, with no pardons. No survivor was waived.
+- Review added donor numeric range/precision rejection before computing deltas;
+  the new tests failed twice as expected before the correction. The comparison
+  preserves both observations and never silently changes a donor value.
+- Live extraction recovers every source year without filtering to the lossy
+  donor table. Seventy-six historical oracle values match exactly, 29 annotated
+  years are source-only, and the 1976 decimal difference remains explicit.
+  Rebuilt artifacts and originals were independently hash-checked.
+- Publication, remaining data areas, domain-wide operational integration and
+  analytical compatibility are not claimed by this bounded extraction increment.
+
 ## BEFU/HYEFU extraction — 2026-08-30
 
 - Source-specific selection uses unique literal labels, verified units and
