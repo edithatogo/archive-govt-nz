@@ -7,22 +7,25 @@ An interrupted write leaves an incomplete directory which must not be consumed.
 
 from __future__ import annotations
 
-import hashlib
-import json
-import re
-from datetime import UTC, datetime
-from decimal import Decimal, InvalidOperation
+from decimal import Decimal
 from io import BytesIO
 from typing import TYPE_CHECKING, Any
 
 import pyarrow as pa
-import pyarrow.parquet as pq
 from openpyxl import load_workbook
 
 from archive_govt_nz.domains.health_appropriations.formats import inventory_workbook
 from archive_govt_nz.domains.health_appropriations.silver import (
     LINEAGE_SCHEMA,
     SILVER_SCHEMA,
+)
+from archive_govt_nz.domains.health_appropriations.workbook_common import (
+    encode_json,
+    exact_number,
+    identity,
+    source_context,
+    verified_snapshot,
+    write_workbook_outputs,
 )
 
 if TYPE_CHECKING:
@@ -32,7 +35,6 @@ if TYPE_CHECKING:
     from openpyxl.worksheet.worksheet import Worksheet
 
 _MAX_SOURCE_BYTES = 64 * 1024 * 1024
-_MAX_YEAR = 9999
 _SHEET = "Raw Data"
 _TRANSFORMATION = "budget-expenditure/v1"
 _FIELDS = {
@@ -57,32 +59,6 @@ _DISPOSITION_SCHEMA = pa.schema(
         ("raw_values_json", pa.string()),
     ]
 )
-
-
-def _identity(*parts: object) -> str:
-    return "sha256:" + hashlib.sha256("\x1f".join(map(str, parts)).encode()).hexdigest()
-
-
-def _json(value: object) -> str:
-    return json.dumps(value, sort_keys=True, ensure_ascii=False, default=str)
-
-
-def _number(value: object, *, year: bool = False) -> Decimal | None:
-    if isinstance(value, bool) or value is None:
-        return None
-    try:
-        number = Decimal(str(value))
-    except InvalidOperation:
-        return None
-    if not number.is_finite():
-        return None
-    if year:
-        return number if 1 <= number <= _MAX_YEAR and number == int(number) else None
-    # decimal128(20,3): 17 integral places, exactly representable; never round.
-    if abs(number) >= Decimal("1e17"):
-        return None
-    scaled = number.quantize(Decimal("0.001"))
-    return scaled if scaled == number else None
 
 
 def _headers(sheet: Worksheet) -> list[str]:
@@ -124,9 +100,9 @@ def _classify(
         for name in _LABELS
     ):
         return "rejected", "missing_label"
-    if _number(values["Year"], year=True) is None:
+    if exact_number(values["Year"], year=True) is None:
         return "rejected", "invalid_year"
-    if _number(values["Amount $000"]) is None:
+    if exact_number(values["Amount $000"]) is None:
         return "rejected", "invalid_amount"
     return "normalized", "named_columns"
 
@@ -141,7 +117,7 @@ def _extract(
     for source_row, cells in enumerate(sheet.iter_rows(min_row=2), start=2):
         values = dict(zip(headers, (cell.value for cell in cells), strict=True))
         disposition, reason = _classify(cells, values)
-        record_id = _identity(
+        record_id = identity(
             _TRANSFORMATION, context["source_object_sha256"], _SHEET, source_row
         )
         dispositions.append(
@@ -153,7 +129,7 @@ def _extract(
                 "disposition": disposition,
                 "reason": reason,
                 "record_id": record_id if disposition == "normalized" else None,
-                "raw_values_json": _json(values),
+                "raw_values_json": encode_json(values),
             }
         )
         if disposition != "normalized":
@@ -167,15 +143,15 @@ def _extract(
             "rights_state": "not_evaluated",
             "quality_flags": ["financial_year_basis_unverified"],
             "transformation_id": _TRANSFORMATION,
-            "lineage_id": _identity(record_id, "lineage"),
+            "lineage_id": identity(record_id, "lineage"),
             "donor_table": None,
             "donor_row_number": None,
             **{field: values[name] for name, field in _FIELDS.items()},
             "year": int(Decimal(str(values["Year"]))),
-            "amount": _number(values["Amount $000"]),
+            "amount": exact_number(values["Amount $000"]),
             "measure": "appropriation_amount",
             "unit": "NZD_thousands",
-            "raw_values_json": _json(values),
+            "raw_values_json": encode_json(values),
         }
         facts.append(fact)
         for name, cell in zip(headers, cells, strict=True):
@@ -211,38 +187,16 @@ def normalize_budget_workbook(
     verified in-memory snapshot. Other worksheets remain inventoried, not
     normalized. A passed receipt establishes extraction, not publication rights.
     """
-    if re.fullmatch(r"[0-9a-f]{64}", expected_sha256) is None:
-        raise ValueError("invalid_source_sha256")
-    observed = datetime.fromisoformat(observed_at)
-    if (
-        observed.tzinfo is None
-        or not source_vintage.strip()
-        or not source_locator.strip()
-    ):
-        raise ValueError("invalid_source_context")
-    with source.open("rb") as handle:
-        payload = handle.read(_MAX_SOURCE_BYTES + 1)
-    if len(payload) > _MAX_SOURCE_BYTES:
-        raise ValueError("source_byte_limit")
-    if hashlib.sha256(payload).hexdigest() != expected_sha256:
-        raise ValueError("source_hash_mismatch")
+    context = source_context(
+        expected_sha256, source_locator, source_vintage, observed_at
+    )
+    payload = verified_snapshot(source, expected_sha256, max_bytes=_MAX_SOURCE_BYTES)
     inventory = inventory_workbook(BytesIO(payload))
     workbook = load_workbook(BytesIO(payload), data_only=False, keep_links=True)
     try:
         if _SHEET not in workbook.sheetnames:
             raise ValueError("missing_raw_data_sheet")
-        facts, lineage, dispositions = _extract(
-            workbook[_SHEET],
-            {
-                "source_object_sha256": expected_sha256,
-                "source_observation_id": _identity(
-                    expected_sha256, source_locator, observed_at
-                ),
-                "source_locator": source_locator,
-                "source_vintage": source_vintage,
-                "observed_at": observed.astimezone(UTC),
-            },
-        )
+        facts, lineage, dispositions = _extract(workbook[_SHEET], context)
         excluded = [
             {"sheet": name, "reason": "not_budget_raw_data"}
             for name in workbook.sheetnames
@@ -262,13 +216,6 @@ def normalize_budget_workbook(
             dispositions, schema=_DISPOSITION_SCHEMA
         ),
     }
-    # Reserve a new directory, never overwrite a prior result (even partial).
-    output_dir.mkdir(parents=True, exist_ok=False)
-    hashes = {}
-    for name, table in outputs.items():
-        path = output_dir / name
-        pq.write_table(table, path)
-        hashes[name] = hashlib.sha256(path.read_bytes()).hexdigest()
     receipt: dict[str, object] = {
         "schema_version": "archive-govt-nz.health-budget-extraction/v1",
         "transformation_id": _TRANSFORMATION,
@@ -276,14 +223,10 @@ def normalize_budget_workbook(
         "source_object_sha256": expected_sha256,
         "source_locator": source_locator,
         "source_vintage": source_vintage,
-        "observed_at": observed.astimezone(UTC).isoformat(),
+        "observed_at": context["observed_at"].isoformat(),
         "rights_state": "not_evaluated",
         "counts": counts,
         "excluded_sheets": excluded,
-        "workbook_inventory": json.loads(_json(inventory)),
-        "output_sha256": hashes,
+        "workbook_inventory": inventory,
     }
-    # Last file is the completion marker; consumers must also verify its hashes.
-    with (output_dir / "MANIFEST.json").open("x", encoding="utf-8") as handle:
-        handle.write(_json(receipt) + "\n")
-    return receipt
+    return write_workbook_outputs(output_dir, outputs, receipt)

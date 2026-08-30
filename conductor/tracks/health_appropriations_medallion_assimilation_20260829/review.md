@@ -1,5 +1,32 @@
 # Self-Review
 
+## BEFU/HYEFU extraction — 2026-08-30
+
+- Source-specific selection uses unique literal labels, verified units and
+  contiguous year/type ranges. Shifted-layout fixtures pass; duplicate labels,
+  missing units, year gaps/duplicates, reversed Actual/Forecast ordering,
+  formulas and unlabelled summary values fail closed.
+- Forecast labels are retained from source cells, not inferred from dates.
+  Bare years do not justify fiscal endpoints. Rights remain unresolved until
+  linked to approved per-resource evidence; parsing cannot approve publication.
+- Six fields per fact have explicit cell lineage, including the shared label
+  and unit cells. Nonempty unselected cells and selected blanks have explicit
+  dispositions. Other sheets remain inventoried and excluded from this narrow
+  summary extraction, not deleted or declared fully normalized.
+- Shared workbook integrity helpers remove duplicate validation/writing code.
+  The Budget fixture's four output files remain byte-identical across the
+  refactor. Output names are validated, files are exclusively created and
+  hashes are streamed. The manifest uses portable UTF-8/LF and is written last;
+  incomplete directories are not a resumability or atomic-transaction claim.
+- Review found that a basename-only guard would accept Windows device stems.
+  Five new red contracts reproduced the gap. Exact reserved stems are now
+  rejected, while ordinary near-matches remain valid. A collision fixture
+  confirms a file appearing after directory reservation is not overwritten.
+- All selected literal values reconcile with both ten-row donor oracles.
+  Each source independently rebuilds to identical bytes with 60 lineage rows;
+  no source bytes or published artifacts changed. Larger workbook areas and
+  historical/contextual series remain pending, not covered by this parity claim.
+
 ## Raw Budget extraction and donor characterization — 2026-08-30
 
 - Added a separate original-workbook path, not a replacement for the donor

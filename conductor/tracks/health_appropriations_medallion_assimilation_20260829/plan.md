@@ -240,6 +240,12 @@ repository validation command. External gates block only their affected task.
 
 ### 4.2 Build source-faithful donor Silver records
 
+- [x] Extract BEFU/HYEFU literal Health summaries from verified originals,
+  preserving Actual/Forecast, units, vintage, cell lineage and explicit
+  unselected-area dispositions. Reconcile both ten-row donor oracles without
+  selecting the separate cached-formula totals. [M-05, M-06, M-07, M-08;
+  AC-03, AC-05, AC-06] (`801783d`)
+
 - [x] Implement the named-column Budget expenditure adapter from verified
   original bytes, with full row dispositions, source-cell lineage, fixed decimal
   amounts and a non-overwriting Parquet/manifest command. Reconcile the pinned

@@ -181,6 +181,31 @@ Bronze and visible in the inventory.
 
 ## Gold analytical model
 
+### Raw forecast summary increment
+
+The BEFU/HYEFU adapter shares verified-snapshot, exact-number, source-context
+and non-overwriting output helpers with the Budget adapter. Source-specific
+layout selection remains separate: an exact unique `Health` label, the nearest
+preceding same-column `($millions)` label, contiguous consecutive year columns
+on the row above the units, and explicit Actual/Forecast labels. Unknown or
+ambiguous layouts fail closed rather than selecting the donor's first fuzzy
+label match. Forecast-to-Actual reversal within ascending years is rejected.
+
+Only literal selected amounts become facts. Each fact has source lineage for
+year, amount, amount type, classification, measure and unit. The separate
+formula-based detailed totals remain original content, never evaluated or
+silently substituted from caches. Populated cells outside the selected summary
+have `preserved_only` dispositions, and selected blank amounts have explicit
+rejections. Blank cells outside the selected inputs are not data observations;
+their worksheet extents remain represented by the structural inventory. Other
+worksheets have explicit preservation-only exclusions.
+
+Profiles select known BEFU/HYEFU sheet names; caller-supplied source vintage,
+observation time and original locator accompany the verified object identity.
+Financial-year endpoints are not inferred from bare year labels. Rights remain
+unresolved until joined to resource-level rights evidence. Output completion
+requires a valid manifest and matching hashes in a newly reserved directory.
+
 Gold queries operate over conformed dimensions:
 
 - financial period and source vintage;
