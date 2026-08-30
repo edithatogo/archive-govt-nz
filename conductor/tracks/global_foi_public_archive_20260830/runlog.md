@@ -54,3 +54,7 @@ The initially proposed legacy-plan bypass was removed in favor of explicit origi
 ./scripts/validate.sh completed successfully on the reconciled code: 1,362 tests, 95.72% combined coverage, schemas, parity, mutation lanes, hygiene, CAS benchmark, dependency/license/secret checks and SBOM. A lint failure during an intermediate run was fixed by using object instead of Any in the observation reader. Generated timestamps in unrelated evidence files were restored after the harness; no source or existing historical evidence bytes were replaced. Full results and output digests are in phase-0-validation.json.
 
 Live inventory: 23/23 Hugging Face repos anonymously public and ungated, 29 sites, 42 regimes (39 blocked, 3 unsupported). NZ state remains 17,225 credited of 33,208 (15,983 remaining), held by failed run 31929819944. Audit of 218 artifact pages yielded 21,730 unique metadata entries: 21,724 retained (1,848,706,100 bytes) and six expired. No retained artifact expires within seven days. This is artifact-container volume, not a verified raw-corpus byte count. No payloads downloaded, no issue state repaired, and no publication/cutover performed.
+
+## Hosted baseline correction
+
+PR #244 exposed concurrent append-only health observations. Fix `e92845b` pins the original evidence byte prefix without freezing new entries. Integrated current main; full harness passed 1498 tests and 95.95% coverage. Corrected hosted checks remain pending. Receipt: phase-0-ci-correction.json.
