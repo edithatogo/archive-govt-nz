@@ -8,10 +8,39 @@
   "parent_issue": 131,
   "stacked_base": "138b17f81c4e666a50ec0a69e081b045cc4ca869",
   "gates": [
-    {"id": "service-sequence", "kind": "merge", "status": "passed"},
-    {"id": "global-cli-sequence", "kind": "merge", "status": "passed"},
-    {"id": "publication-authority", "kind": "publication", "status": "passed"},
-    {"id": "redistribution-rights", "kind": "rights", "status": "passed"},
-    {"id": "live-operation", "kind": "external", "status": "passed"}
-  ]
+    {
+      "id": "service-sequence",
+      "kind": "merge",
+      "status": "satisfied",
+      "legacy_status": "passed"
+    },
+    {
+      "id": "global-cli-sequence",
+      "kind": "merge",
+      "status": "satisfied",
+      "legacy_status": "passed"
+    },
+    {
+      "id": "publication-authority",
+      "kind": "publication",
+      "status": "satisfied",
+      "legacy_status": "passed"
+    },
+    {
+      "id": "redistribution-rights",
+      "kind": "rights",
+      "status": "satisfied",
+      "legacy_status": "passed"
+    },
+    {
+      "id": "live-operation",
+      "kind": "external",
+      "status": "satisfied",
+      "legacy_status": "passed"
+    }
+  ],
+  "legacy_type": null,
+  "type": "chore",
+  "description": "Fail-closed service-backed legislation CLI correction",
+  "metadata_reconciled_at": "2026-08-30T09:09:36.938960Z"
 }

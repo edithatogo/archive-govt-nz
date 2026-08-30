@@ -54,6 +54,10 @@ def build_stages(
     stages = (
         GateStage("lock", ("uv", "lock", "--check")),
         GateStage(
+            "conductor",
+            ("uv", "run", "--locked", "python", "tools/validate_conductor_state.py"),
+        ),
+        GateStage(
             "format", ("uv", "run", "--locked", "ruff", "format", "--check", ".")
         ),
         GateStage("lint", ("uv", "run", "--locked", "ruff", "check", ".")),

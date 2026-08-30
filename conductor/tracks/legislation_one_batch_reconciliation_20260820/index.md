@@ -15,3 +15,7 @@ global CLI, legislation CLI, MCP, and workflow corrections.
 - [Metadata](./metadata.json)
 
 Parent issue: [#131](https://github.com/edithatogo/archive-govt-nz/issues/131)
+
+- [Specification](spec.md)
+
+- [Implementation Plan](plan.md)

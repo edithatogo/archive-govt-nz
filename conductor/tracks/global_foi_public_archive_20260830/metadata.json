@@ -1,0 +1,112 @@
+{
+  "track_id": "global_foi_public_archive_20260830",
+  "type": "feature",
+  "status": "in_progress",
+  "created_at": "2026-08-30T08:38:22Z",
+  "updated_at": "2026-08-30T09:22:26.923570Z",
+  "description": "Global FOI source catalogue, metadata indexes, public raw preservation and automation repair; archive-govt-nz takeover approved.",
+  "evidence_schema": "1.0",
+  "approval_status": "approved",
+  "source_baseline": {
+    "receiver_commit": "5eda36dd2d204a6a859100f913b411c44a08bf62",
+    "donor_commit": "cba7b0dec2734bdc9ff51c69610fc55cb1fc5aa1"
+  },
+  "gates": [
+    {
+      "id": "DEC-FOI-001",
+      "kind": "architecture",
+      "status": "satisfied",
+      "evidence": "approval.json: explicit user approval on 2026-08-30"
+    },
+    {
+      "id": "contract-approval",
+      "kind": "human",
+      "status": "satisfied",
+      "evidence": "approval.json: explicit user approval on 2026-08-30"
+    },
+    {
+      "id": "public-hf-intent",
+      "kind": "publication",
+      "status": "satisfied",
+      "evidence": "User explicitly requested public Hugging Face archiving in this task on 2026-08-30; limited by source rights, privacy and agreed scope"
+    },
+    {
+      "id": "source-eligibility",
+      "kind": "rights",
+      "status": "pending"
+    },
+    {
+      "id": "hf-credentials-capacity",
+      "kind": "credential",
+      "status": "pending"
+    },
+    {
+      "id": "hosted-recovery-parity",
+      "kind": "external",
+      "status": "pending"
+    },
+    {
+      "id": "anonymous-public-restore",
+      "kind": "external",
+      "status": "pending"
+    }
+  ],
+  "ownership": {
+    "approved_receiver": "archive-govt-nz",
+    "source_adapter": "fyi-cli",
+    "operational_state": "donor_until_verified_cutover"
+  },
+  "recommendations": "recommendations.md",
+  "evidence_contract": "chained-v1",
+  "github": {
+    "repository": "edithatogo/archive-govt-nz",
+    "parent_issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/233",
+    "phases": [
+      {
+        "phase": "P0",
+        "issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/234",
+        "nested": true
+      },
+      {
+        "phase": "P1",
+        "issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/235",
+        "nested": true
+      },
+      {
+        "phase": "P2",
+        "issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/236",
+        "nested": true
+      },
+      {
+        "phase": "P3",
+        "issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/237",
+        "nested": true
+      },
+      {
+        "phase": "P4",
+        "issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/238",
+        "nested": true
+      },
+      {
+        "phase": "P5",
+        "issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/239",
+        "nested": true
+      },
+      {
+        "phase": "P6",
+        "issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/240",
+        "nested": true
+      },
+      {
+        "phase": "P7",
+        "issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/241",
+        "nested": true
+      }
+    ]
+  },
+  "validation": {
+    "phase_0": "passed",
+    "receipt": "phase-0-validation.json",
+    "system_ready": false
+  }
+}

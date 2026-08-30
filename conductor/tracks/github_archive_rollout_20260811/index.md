@@ -11,3 +11,7 @@ trust-boundary evidence before any external repository edit or publication.
 - [Evidence](./evidence.md)
 - [Run log](./runlog.md)
 - [GitHub issue hierarchy](./github-issues.md)
+
+- [Specification](spec.md)
+
+- [Implementation Plan](plan.md)

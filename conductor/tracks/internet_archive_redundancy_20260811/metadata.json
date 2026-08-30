@@ -14,11 +14,19 @@
   },
   "github": {
     "parent_issue": 44,
-    "phase_subissues": [45, 46, 47]
+    "phase_subissues": [
+      45,
+      46,
+      47
+    ]
   },
   "hosted_verification": {
     "run_id": 31456550945,
     "revision": "cb84ae6261f7b4aaf642dbaca693c1a2df8d6a7f",
     "conclusion": "success"
-  }
+  },
+  "track_id": "internet_archive_redundancy_20260811",
+  "description": "Routine Internet Archive Redundancy and Triangulation",
+  "updated_at": "2026-08-30T09:09:36.938960Z",
+  "metadata_reconciled_at": "2026-08-30T09:09:36.938960Z"
 }

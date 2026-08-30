@@ -4,3 +4,7 @@
 - [Specification & Architecture](./spec.md)
 - [Implementation Plan](./plan.md)
 - [Metadata](./metadata.json)
+
+- [Specification](spec.md)
+
+- [Evidence](evidence/evidence.jsonl)

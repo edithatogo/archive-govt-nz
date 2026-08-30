@@ -1,7 +1,7 @@
 {
   "id": "dataset_identifier_interlink_20260822",
   "title": "Dataset identifier interlinking across legislation, gazette, health and publications",
-  "type": "corrective",
+  "type": "chore",
   "status": "completed",
   "created_at": "2026-08-22T15:45:00Z",
   "requirements_method": "MoSCoW",
@@ -9,5 +9,10 @@
   "donor_issue_refs": [
     "edithatogo/corpus-legislation-nz#149"
   ],
-  "completed_at": "2026-08-22"
+  "completed_at": "2026-08-22",
+  "track_id": "dataset_identifier_interlink_20260822",
+  "legacy_type": "corrective",
+  "description": "Dataset identifier interlinking across legislation, gazette, health and publications",
+  "updated_at": "2026-08-30T09:09:36.938960Z",
+  "metadata_reconciled_at": "2026-08-30T09:09:36.938960Z"
 }

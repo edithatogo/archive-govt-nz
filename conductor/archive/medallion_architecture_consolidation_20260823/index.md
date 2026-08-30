@@ -12,3 +12,5 @@
 - [Implementation Plan](./plan.md)
 - [GitHub Issue Hierarchy & Cross-References](./github-issues.md)
 - [Metadata](./metadata.json)
+
+- [Specification](spec.md)

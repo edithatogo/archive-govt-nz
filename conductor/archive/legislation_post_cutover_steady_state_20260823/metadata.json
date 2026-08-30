@@ -7,6 +7,8 @@
   "title": "Legislation Post-Cutover Production Steady-State Operations",
   "track_id": "legislation_post_cutover_steady_state_20260823",
   "treatment": "Promotion of legislation scheduling from transitional dispatch-only to weekly scheduled incremental operation, monthly reconciliation, and versioned v2.0.0 SLO contract",
-  "type": "operational_cadence_promotion",
-  "updated_at": "2026-08-24T00:00:00Z"
+  "type": "chore",
+  "updated_at": "2026-08-24T00:00:00Z",
+  "legacy_type": "operational_cadence_promotion",
+  "metadata_reconciled_at": "2026-08-30T09:09:36.938960Z"
 }

@@ -16,5 +16,9 @@
     "tools/notify_webhook.py",
     "tests/test_semantic_search.py",
     "tests/test_notifications.py"
-  ]
+  ],
+  "track_id": "semantic_vector_and_alerting_20260816",
+  "description": "Track 20: Semantic Knowledge Graph, Hybrid Vector Search, and Automated Webhook Dispatch",
+  "updated_at": "2026-08-30T09:09:36.938960Z",
+  "metadata_reconciled_at": "2026-08-30T09:09:36.938960Z"
 }

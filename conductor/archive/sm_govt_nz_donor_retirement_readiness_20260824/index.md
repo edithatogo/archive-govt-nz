@@ -12,3 +12,5 @@ Record correction: the superseding receipt
 corrects the false archival claims in the original closeout receipt and records
 the verified donor state (unarchived, active daily workflows as of
 2026-08-24T04:07Z).
+
+- [Specification](spec.md)

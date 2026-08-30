@@ -17,3 +17,7 @@ the unmerged service-correction head and cannot open a successor PR until PR
 - [Run log](./runlog.md)
 - [Evidence](./evidence.md)
 - [Review](./review.md)
+
+- [Specification](spec.md)
+
+- [Implementation Plan](plan.md)

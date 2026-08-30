@@ -21,3 +21,8 @@ no retrieval occurs in this track.
 - [Evidence](./evidence.md)
 - [Decisions](./decisions.md) — DEC-HEALTH-001 licence-evidence acquisition (RESOLVED — Option 1)
 - [Run Log](./runlog.md)
+- [Specification](spec.md)
+
+- [Implementation Plan](plan.md)
+
+- [Metadata](metadata.json)

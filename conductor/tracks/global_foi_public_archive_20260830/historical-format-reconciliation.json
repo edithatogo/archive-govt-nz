@@ -1,0 +1,90 @@
+{
+  "recorded_at": "2026-08-30T09:09:36.938960Z",
+  "source_revision": "5eda36dd2d204a6a859100f913b411c44a08bf62",
+  "preserved_plans": [
+    {
+      "track_id": "legislation_corrective_evidence_chronology_20260818",
+      "original_path": "conductor/tracks/legislation_corrective_evidence_chronology_20260818/plan.original.md",
+      "sha256": "7a0a490b499ea88e0d6db093fb6896eb7d51be71c0f6f84f58d470cf2fa682ff",
+      "reconciliation": "historical prose retained; new checkbox records byte-preservation only"
+    },
+    {
+      "track_id": "legislation_corrective_live_inventory_reuse_20260818",
+      "original_path": "conductor/tracks/legislation_corrective_live_inventory_reuse_20260818/plan.original.md",
+      "sha256": "8068387e0664219332f16d5fe730fedda0bd0eeefb960fa9953d826e96929ed8",
+      "reconciliation": "historical prose retained; new checkbox records byte-preservation only"
+    },
+    {
+      "track_id": "legislation_corrective_standards_schema_conformance_20260818",
+      "original_path": "conductor/tracks/legislation_corrective_standards_schema_conformance_20260818/plan.original.md",
+      "sha256": "ae4304840c681100512078d31b5ca5fb3c85dcb861b184a5aa099986012153c8",
+      "reconciliation": "historical prose retained; new checkbox records byte-preservation only"
+    },
+    {
+      "track_id": "legislation_corrective_adapter_client_integration_20260818",
+      "original_path": "conductor/tracks/legislation_corrective_adapter_client_integration_20260818/plan.original.md",
+      "sha256": "f045eaa4df6fdcbc70188e7ff3fabfcd3dd81c876dc783b7add0bbee87ff6a3e",
+      "reconciliation": "historical prose retained; new checkbox records byte-preservation only"
+    },
+    {
+      "track_id": "legislation_corrective_identity_normalisation_corpus_20260818",
+      "original_path": "conductor/tracks/legislation_corrective_identity_normalisation_corpus_20260818/plan.original.md",
+      "sha256": "9a06d69aa1c67c75f4517f01f2c5c7799d531178da673f0004b4436985791a0c",
+      "reconciliation": "historical prose retained; new checkbox records byte-preservation only"
+    },
+    {
+      "track_id": "legislation_corrective_cli_contract_compatibility_20260818",
+      "original_path": "conductor/tracks/legislation_corrective_cli_contract_compatibility_20260818/plan.original.md",
+      "sha256": "3089e3b56ece8fc5f77453b95b305beb911901b08ea10992e9f40d4db57991cd",
+      "reconciliation": "historical prose retained; new checkbox records byte-preservation only"
+    },
+    {
+      "track_id": "legislation_corrective_mcp_disposition_conformance_20260818",
+      "original_path": "conductor/tracks/legislation_corrective_mcp_disposition_conformance_20260818/plan.original.md",
+      "sha256": "6fd70a401d4f0e3da25ed4765978b00f9f0c82dc2c6e80379a4cd43d550fc940",
+      "reconciliation": "historical prose retained; new checkbox records byte-preservation only"
+    },
+    {
+      "track_id": "legislation_corrective_weekly_orchestration_state_20260818",
+      "original_path": "conductor/tracks/legislation_corrective_weekly_orchestration_state_20260818/plan.original.md",
+      "sha256": "73dbfb8c07628d4eaf74ec5e081c28d2ccc23514010dbd0e09f7324705f8b066",
+      "reconciliation": "historical prose retained; new checkbox records byte-preservation only"
+    },
+    {
+      "track_id": "legislation_corrective_reconciliation_parity_publication_20260818",
+      "original_path": "conductor/tracks/legislation_corrective_reconciliation_parity_publication_20260818/plan.original.md",
+      "sha256": "c3c0986aa6d6cab105391338fd12f8ccb2750a905c29aed242b2f63f55a72a26",
+      "reconciliation": "historical prose retained; new checkbox records byte-preservation only"
+    },
+    {
+      "track_id": "legislation_corrective_rights_redistribution_20260818",
+      "original_path": "conductor/tracks/legislation_corrective_rights_redistribution_20260818/plan.original.md",
+      "sha256": "d8198e2786b1dc1d1f0e868d8f567e1389c4e22a1166aaf8acb01e49a071a682",
+      "reconciliation": "historical prose retained; new checkbox records byte-preservation only"
+    },
+    {
+      "track_id": "legislation_corrective_shadow_operation_cutover_20260818",
+      "original_path": "conductor/tracks/legislation_corrective_shadow_operation_cutover_20260818/plan.original.md",
+      "sha256": "31a650df02b3d590aa6f736947c695971acb36b69c9f8c848b6b746eda660d32",
+      "reconciliation": "historical prose retained; new checkbox records byte-preservation only"
+    },
+    {
+      "track_id": "legislation_corrective_gazette_residual_separation_20260818",
+      "original_path": "conductor/tracks/legislation_corrective_gazette_residual_separation_20260818/plan.original.md",
+      "sha256": "2cf325c8853303f65967ad1271c4645a132fb0ebfa6c8c0f1a310ee147f4083f",
+      "reconciliation": "historical prose retained; new checkbox records byte-preservation only"
+    },
+    {
+      "track_id": "preservation_conformance_20260801",
+      "original_path": "conductor/tracks/preservation_conformance_20260801/plan.original.md",
+      "sha256": "cc406c48adcc6d96ee99cd63759d366d632b0c4971674b84f806d212fc1acd55",
+      "reconciliation": "numbered checkbox syntax normalized; statuses unchanged"
+    }
+  ],
+  "limits": [
+    "No original ledger was rewritten or retrospectively hash-chained.",
+    "Metadata aliases and timezone-equivalent timestamps were normalized; missing dates declare their derivation.",
+    "Historical completeness was not reassessed.",
+    "Imported donor tree contents were not modified."
+  ]
+}

@@ -7,3 +7,9 @@ and token-only publication verification.
 
 This track is local and sequence-gated. It must not produce a second open PR
 while the service correction remains unmerged.
+
+- [Specification](spec.md)
+
+- [Implementation Plan](plan.md)
+
+- [Metadata](metadata.json)

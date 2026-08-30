@@ -11,6 +11,7 @@
 ## Workflow
 
 -   [Workflow](./workflow.md)
+-   [VCS Workflow](./vcs.md)
 -   [Continuous Autonomous Execution](./autonomy.md)
 -   [Machine Autonomy Policy](./autonomy-policy.json)
 -   [Upstream Autonomy Evaluation](./upstream-evaluation.md)
@@ -20,3 +21,4 @@
 
 -   [Tracks Registry](./tracks.md)
 -   [Tracks Directory](./tracks/)
+-   [Archive Directory](./archive/)

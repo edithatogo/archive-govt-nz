@@ -1,7 +1,7 @@
 {
   "id": "quality_frontier_hardening_20260822",
   "title": "Quality frontier: gazette mutation gate and repository hardening",
-  "type": "quality",
+  "type": "chore",
   "status": "completed",
   "created_at": "2026-08-22T14:40:00Z",
   "completed_at": "2026-08-22",
@@ -12,5 +12,10 @@
     "edithatogo/corpus-legislation-nz#159",
     "edithatogo/corpus-legislation-nz#160",
     "edithatogo/corpus-legislation-nz#145"
-  ]
+  ],
+  "track_id": "quality_frontier_hardening_20260822",
+  "legacy_type": "quality",
+  "description": "Quality frontier: gazette mutation gate and repository hardening",
+  "updated_at": "2026-08-30T09:09:36.938960Z",
+  "metadata_reconciled_at": "2026-08-30T09:09:36.938960Z"
 }

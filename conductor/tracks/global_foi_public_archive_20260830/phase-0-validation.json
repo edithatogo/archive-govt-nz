@@ -1,0 +1,69 @@
+{
+  "recorded_at": "2026-08-30T09:22:26.923570Z",
+  "canonical_full_conductor": {
+    "command": [
+      "python3",
+      "/Users/doughnut/.codex/skills/conductor/scripts/validate_conductor.py",
+      "--root",
+      ".",
+      "--mode",
+      "full",
+      "--json"
+    ],
+    "exit_code": 0,
+    "errors": [],
+    "warnings": [
+      "Legacy track has evidence without evidence_schema opt-in: Treasury Archive MVP",
+      "Legacy track has evidence without evidence_schema opt-in: Track 15: Routine Internet Archive redundancy and triangulation",
+      "Legacy track has evidence without evidence_schema opt-in: Track 16: ArchiveBox preservation pilot and reusable architecture",
+      "Legacy track has evidence without evidence_schema opt-in: Track 17: GitHub archive rollout: fyi-archive",
+      "Legacy track has evidence without evidence_schema opt-in: Child Track 5A: Legislation service integrity correction",
+      "Legacy track has evidence without evidence_schema opt-in: Child Track 5B: Global CLI integrity correction",
+      "Legacy track has evidence without evidence_schema opt-in: Child Track 9A: Fail-closed one-batch reconciliation correction",
+      "Legacy track has evidence without evidence_schema opt-in: NZ Gazette archive workflow, harvest orchestration and publication staging",
+      "Legacy track has evidence without evidence_schema opt-in: Quality frontier \u2014 gazette mutation gate and repository hardening",
+      "Legacy track has evidence without evidence_schema opt-in: Health payload activation \u2014 deterministic eligibility evaluation",
+      "Legacy track has evidence without evidence_schema opt-in: Dataset identifier interlinking across domains",
+      "Legacy track has evidence without evidence_schema opt-in: Track 12: Broader health and healthcare discovery",
+      "Legacy track has evidence without evidence_schema opt-in: Track 13: Preservation packaging conformance",
+      "Legacy track has evidence without evidence_schema opt-in: Track 14: Health payload capture",
+      "Legacy track has evidence without evidence_schema opt-in: Single-Pass Ironclad Bronze Ingestion Hardening",
+      "Legacy track has evidence without evidence_schema opt-in: Surveillance Heartbeat Ledger & Cross-Repository Federation Protocol",
+      "Legacy track has evidence without evidence_schema opt-in: Cross-repository medallion contract conformance",
+      "Legacy track has evidence without evidence_schema opt-in: Testing Modernization: Pytest-Gremlins Mutation, Parallel xdist, Property-Based Hypothesis & Scalene Profiling",
+      "Legacy track has evidence without evidence_schema opt-in: New Zealand Health Appropriations Medallion Assimilation"
+    ],
+    "track_count": 69,
+    "report_sha256": "89447b529b6de8f478c4a6b6c5705fdae780115a60ddcf6cf760a96e646355c6"
+  },
+  "repository_harness": {
+    "command": [
+      "./scripts/validate.sh"
+    ],
+    "exit_code": 0,
+    "tests_passed": 1362,
+    "coverage_percent": 95.72,
+    "output_sha256": "5cab28beca8514313bc00ed3e8fd989566c002da0d00fdb6061a512c1b87d74f"
+  },
+  "supplemental_audit": {
+    "command": [
+      "uv",
+      "run",
+      "--locked",
+      "python",
+      "tools/validate_conductor_state.py"
+    ],
+    "exit_code": 0,
+    "track_count": 69
+  },
+  "historical_integrity": {
+    "original_plans_match_baseline": 13,
+    "imported_donor_trees_unchanged": true,
+    "original_ledgers_rewritten": false
+  },
+  "external_state": {
+    "cutover": false,
+    "new_publication": false,
+    "hosted_recovery": false
+  }
+}
