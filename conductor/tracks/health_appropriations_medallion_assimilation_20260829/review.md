@@ -1,5 +1,24 @@
 # Self-Review
 
+## Workbook safety prerequisite — 2026-08-30
+
+- Replaced host-dependent path interpretation with explicit ZIP member rules;
+  traversal, absolute/drive/backslash paths and ambiguous path segments fail
+  identically across platforms. Duplicate exact member names fail before parsing.
+- Added a cumulative 2,000,000-cell rectangular scan budget before `iter_rows`.
+  Exact-boundary and multi-sheet fixtures prevent off-by-one and per-sheet
+  bypasses. Twenty generated examples cover sparse extents and budget boundaries.
+- Originals are never rewritten; both successful and rejected synthetic
+  packages retain byte identity. This gate limits the inventory traversal,
+  not all parser allocation: openpyxl loading still precedes this cell gate.
+  Existing ZIP member/expanded-byte limits remain in force. This is not a
+  complete sandbox, richer workbook census, or scheduled-operation completion.
+- Focused format-module coverage is 100% line/branch; 22/22 generated mutants
+  were killed. Ruff import-placement and raw-regex findings were corrected.
+- Applicable local Python/general style and medallion requirements were
+  reviewed; no new dependency, source payload, external publication or donor
+  retirement was introduced. Broader Phase 1.3 tasks remain pending.
+
 ## Review fix — 2026-08-30
 
 The batch-eligibility invariant inherited Hypothesis's 200 ms deadline and
