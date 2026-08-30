@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive-govt-nz.org/schemas/health-historical-reconciliation-v1.schema.json",
+  "title": "Historical Health/GDP source-to-donor comparison row",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "measure", "year", "status", "reason", "source_record_id", "source_object_sha256", "source_coordinate", "source_year_label", "source_value", "donor_value", "delta", "resolution"],
+  "$defs": {
+    "number": {"type": "string", "pattern": "^-?[0-9]+(\\.[0-9]+)?([Ee][+-]?[0-9]+)?$"},
+    "nullableNumber": {"anyOf": [{"$ref": "#/$defs/number"}, {"type": "null"}]}
+  },
+  "properties": {
+    "schema_version": {"const": "archive-govt-nz.health-historical-reconciliation/v1"},
+    "measure": {"enum": ["health_spending", "nominal_gdp"]},
+    "year": {"type": "integer", "minimum": 1, "maximum": 9999},
+    "status": {"enum": ["exact_match", "value_difference", "source_only", "donor_only"]},
+    "reason": {"enum": ["exact_numeric_match", "source_numeric_value_differs_from_donor", "annotated_year_absent_from_donor", "source_year_absent_from_donor", "donor_year_absent_from_source"]},
+    "source_record_id": {"type": ["string", "null"], "minLength": 1},
+    "source_object_sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
+    "source_coordinate": {"type": ["string", "null"], "minLength": 1},
+    "source_year_label": {"type": ["string", "null"], "minLength": 1},
+    "source_value": {"$ref": "#/$defs/nullableNumber"},
+    "donor_value": {"$ref": "#/$defs/nullableNumber"},
+    "delta": {"$ref": "#/$defs/nullableNumber"},
+    "resolution": {"const": "retain_both_observations"}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "donor_only"}}},
+      "then": {"properties": {"reason": {"const": "donor_year_absent_from_source"}, "source_record_id": {"type": "null"}, "source_object_sha256": {"type": "null"}, "source_coordinate": {"type": "null"}, "source_year_label": {"type": "null"}, "source_value": {"type": "null"}, "donor_value": {"type": "string"}, "delta": {"type": "null"}}},
+      "else": {"properties": {"source_record_id": {"type": "string"}, "source_object_sha256": {"type": "string"}, "source_coordinate": {"type": "string"}, "source_year_label": {"type": "string"}, "source_value": {"type": "string"}}}
+    },
+    {
+      "if": {"properties": {"status": {"const": "source_only"}}},
+      "then": {"properties": {"reason": {"enum": ["annotated_year_absent_from_donor", "source_year_absent_from_donor"]}, "donor_value": {"type": "null"}, "delta": {"type": "null"}}},
+      "else": {"properties": {"donor_value": {"type": "string"}}}
+    },
+    {
+      "if": {"properties": {"status": {"const": "exact_match"}}},
+      "then": {"properties": {"reason": {"const": "exact_numeric_match"}, "delta": {"const": "0"}}}
+    },
+    {
+      "if": {"properties": {"status": {"const": "value_difference"}}},
+      "then": {"properties": {"reason": {"const": "source_numeric_value_differs_from_donor"}, "delta": {"type": "string"}}}
+    }
+  ]
+}
