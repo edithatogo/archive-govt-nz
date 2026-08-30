@@ -1,0 +1,62 @@
+{
+  "schema": "fyi-archive.jurisdiction-targets.v1",
+  "version": "2026-07-24",
+  "publication_allowed": false,
+  "programme_issue": "https://github.com/edithatogo/foi-o/issues/81",
+  "evidence_defaults": {
+    "capture_adapter": "unverified",
+    "rights_status": "pending_review",
+    "manifest_status": "missing",
+    "replay_status": "not_run",
+    "privacy_status": "pending_review"
+  },
+  "targets": [
+    {"target_id": "NZ-OIA", "tranche": "foundation", "status": "blocked", "blocker": "immutable target-specific source pack and rights review are not recorded", "evidence": {"source_issue": "https://github.com/edithatogo/foi-o/issues/82"}},
+    {"target_id": "NZ-LGOIMA", "tranche": "foundation", "status": "blocked", "blocker": "immutable target-specific source pack and rights review are not recorded", "evidence": {"source_issue": "https://github.com/edithatogo/foi-o/issues/82"}},
+
+    {"target_id": "AU-FED", "tranche": "australia", "status": "blocked", "blocker": "set AUTONOMOUS_AU_CAPTURE_ENABLED=true after recording rate, rights, privacy, and protected-environment readiness evidence", "evidence": {"source_issue": "https://github.com/edithatogo/fyi-archive/issues/188", "capture_adapter": "fyi-cli:au-rtk"}},
+    {"target_id": "AU-NSW", "tranche": "australia", "status": "blocked", "blocker": "set AUTONOMOUS_AU_CAPTURE_ENABLED=true after recording rate, rights, privacy, and protected-environment readiness evidence", "evidence": {"source_issue": "https://github.com/edithatogo/fyi-archive/issues/188", "capture_adapter": "fyi-cli:au-rtk"}},
+    {"target_id": "AU-ACT", "tranche": "australia", "status": "blocked", "blocker": "pilot must complete before remaining-jurisdiction capture", "evidence": {"source_issue": "https://github.com/edithatogo/fyi-archive/issues/188", "capture_adapter": "fyi-cli:au-rtk"}},
+    {"target_id": "AU-QLD", "tranche": "australia", "status": "blocked", "blocker": "pilot must complete before remaining-jurisdiction capture", "evidence": {"source_issue": "https://github.com/edithatogo/fyi-archive/issues/188", "capture_adapter": "fyi-cli:au-rtk"}},
+    {"target_id": "AU-VIC", "tranche": "australia", "status": "blocked", "blocker": "pilot must complete before remaining-jurisdiction capture", "evidence": {"source_issue": "https://github.com/edithatogo/fyi-archive/issues/188", "capture_adapter": "fyi-cli:au-rtk"}},
+    {"target_id": "AU-WA", "tranche": "australia", "status": "blocked", "blocker": "pilot must complete before remaining-jurisdiction capture", "evidence": {"source_issue": "https://github.com/edithatogo/fyi-archive/issues/188", "capture_adapter": "fyi-cli:au-rtk"}},
+    {"target_id": "AU-SA", "tranche": "australia", "status": "blocked", "blocker": "pilot must complete before remaining-jurisdiction capture", "evidence": {"source_issue": "https://github.com/edithatogo/fyi-archive/issues/188", "capture_adapter": "fyi-cli:au-rtk"}},
+    {"target_id": "AU-TAS", "tranche": "australia", "status": "blocked", "blocker": "pilot must complete before remaining-jurisdiction capture", "evidence": {"source_issue": "https://github.com/edithatogo/fyi-archive/issues/188", "capture_adapter": "fyi-cli:au-rtk"}},
+    {"target_id": "AU-NT", "tranche": "australia", "status": "blocked", "blocker": "pilot must complete before remaining-jurisdiction capture", "evidence": {"source_issue": "https://github.com/edithatogo/fyi-archive/issues/188", "capture_adapter": "fyi-cli:au-rtk"}},
+
+    {"target_id": "UK-FOIA", "tranche": "uk_europe", "status": "blocked", "blocker": "target-specific immutable capture and rights evidence are missing", "evidence": {"source_issue": "https://github.com/edithatogo/foi-o/issues/83"}},
+    {"target_id": "UK-EIR", "tranche": "uk_europe", "status": "blocked", "blocker": "target-specific immutable capture and rights evidence are missing", "evidence": {"source_issue": "https://github.com/edithatogo/foi-o/issues/83"}},
+    {"target_id": "SCOT-FOISA", "tranche": "uk_europe", "status": "blocked", "blocker": "target-specific immutable capture and rights evidence are missing", "evidence": {"source_issue": "https://github.com/edithatogo/foi-o/issues/83"}},
+    {"target_id": "SCOT-EIR", "tranche": "uk_europe", "status": "blocked", "blocker": "target-specific immutable capture and rights evidence are missing", "evidence": {"source_issue": "https://github.com/edithatogo/foi-o/issues/83"}},
+    {"target_id": "EU-ACCESS-DOCUMENTS", "tranche": "uk_europe", "status": "blocked", "blocker": "target-specific immutable capture and rights evidence are missing", "evidence": {"source_issue": "https://github.com/edithatogo/foi-o/issues/83"}},
+    {"target_id": "IE-FOI-DISCOVERY", "tranche": "uk_europe", "status": "blocked", "blocker": "target-specific immutable capture and rights evidence are missing", "evidence": {"source_issue": "https://github.com/edithatogo/foi-o/issues/83"}},
+
+    {"target_id": "CZ-FOI", "tranche": "alaveteli", "status": "blocked", "blocker": "deployment rescan and immutable capture evidence are missing", "evidence": {"source_issue": "https://github.com/edithatogo/foi-o/issues/84"}},
+    {"target_id": "FR-FOI", "tranche": "alaveteli", "status": "blocked", "blocker": "deployment rescan and immutable capture evidence are missing", "evidence": {"source_issue": "https://github.com/edithatogo/foi-o/issues/84"}},
+    {"target_id": "SE-FOI", "tranche": "alaveteli", "status": "blocked", "blocker": "source returns HTTP 403 and no permitted operator export is recorded", "evidence": {"source_issue": "https://github.com/edithatogo/foi-o/issues/84"}},
+    {"target_id": "NL-FOI", "tranche": "alaveteli", "status": "blocked", "blocker": "deployment rescan and immutable capture evidence are missing", "evidence": {"source_issue": "https://github.com/edithatogo/foi-o/issues/84"}},
+    {"target_id": "BE-FOI", "tranche": "alaveteli", "status": "blocked", "blocker": "deployment rescan and immutable capture evidence are missing", "evidence": {"source_issue": "https://github.com/edithatogo/foi-o/issues/84"}},
+    {"target_id": "HR-FOI", "tranche": "alaveteli", "status": "blocked", "blocker": "deployment rescan and immutable capture evidence are missing", "evidence": {"source_issue": "https://github.com/edithatogo/foi-o/issues/84"}},
+    {"target_id": "HU-FOI", "tranche": "alaveteli", "status": "blocked", "blocker": "deployment rescan and immutable capture evidence are missing", "evidence": {"source_issue": "https://github.com/edithatogo/foi-o/issues/84"}},
+    {"target_id": "UA-FOI", "tranche": "alaveteli", "status": "blocked", "blocker": "deployment rescan and immutable capture evidence are missing", "evidence": {"source_issue": "https://github.com/edithatogo/foi-o/issues/84"}},
+    {"target_id": "GR-FOI", "tranche": "alaveteli", "status": "blocked", "blocker": "deployment rescan and immutable capture evidence are missing", "evidence": {"source_issue": "https://github.com/edithatogo/foi-o/issues/84"}},
+    {"target_id": "MD-FOI", "tranche": "alaveteli", "status": "blocked", "blocker": "deployment rescan and immutable capture evidence are missing", "evidence": {"source_issue": "https://github.com/edithatogo/foi-o/issues/84"}},
+    {"target_id": "HK-ACCESS-INFO", "tranche": "alaveteli", "status": "blocked", "blocker": "deployment rescan and immutable capture evidence are missing", "evidence": {"source_issue": "https://github.com/edithatogo/foi-o/issues/84"}},
+    {"target_id": "UY-FOI", "tranche": "alaveteli", "status": "blocked", "blocker": "smoke record is not target-complete immutable evidence", "evidence": {"source_issue": "https://github.com/edithatogo/foi-o/issues/84", "capture_adapter": "fyi-cli:alaveteli"}},
+    {"target_id": "LR-FOI", "tranche": "alaveteli", "status": "blocked", "blocker": "deployment rescan and immutable capture evidence are missing", "evidence": {"source_issue": "https://github.com/edithatogo/foi-o/issues/84"}},
+    {"target_id": "CO-FOI", "tranche": "alaveteli", "status": "blocked", "blocker": "deployment rescan and immutable capture evidence are missing", "evidence": {"source_issue": "https://github.com/edithatogo/foi-o/issues/84"}},
+    {"target_id": "US-NJ-OPRA", "tranche": "alaveteli", "status": "blocked", "blocker": "deployment rescan and immutable capture evidence are missing", "evidence": {"source_issue": "https://github.com/edithatogo/foi-o/issues/84"}},
+    {"target_id": "AR-FOI", "tranche": "alaveteli", "status": "blocked", "blocker": "deployment rescan and immutable capture evidence are missing", "evidence": {"source_issue": "https://github.com/edithatogo/foi-o/issues/84"}},
+    {"target_id": "GE-FOI", "tranche": "alaveteli", "status": "blocked", "blocker": "smoke record is not target-complete immutable evidence", "evidence": {"source_issue": "https://github.com/edithatogo/foi-o/issues/84", "capture_adapter": "fyi-cli:alaveteli"}},
+    {"target_id": "RO-FOI", "tranche": "alaveteli", "status": "blocked", "blocker": "deployment rescan and immutable capture evidence are missing", "evidence": {"source_issue": "https://github.com/edithatogo/foi-o/issues/84"}},
+    {"target_id": "XK-FOI", "tranche": "alaveteli", "status": "blocked", "blocker": "deployment rescan and immutable capture evidence are missing", "evidence": {"source_issue": "https://github.com/edithatogo/foi-o/issues/84"}},
+
+    {"target_id": "DE-FRAGDENSTAAT", "tranche": "additional", "status": "blocked", "blocker": "supported-platform adapter and immutable capture evidence are missing", "evidence": {"source_issue": "https://github.com/edithatogo/foi-o/issues/85"}},
+    {"target_id": "ES-TUDERECHOASABER", "tranche": "additional", "status": "blocked", "blocker": "supported-platform adapter and immutable capture evidence are missing", "evidence": {"source_issue": "https://github.com/edithatogo/foi-o/issues/85"}},
+    {"target_id": "IE-MYRIGHTTOKNOW", "tranche": "additional", "status": "blocked", "blocker": "supported-platform adapter and immutable capture evidence are missing", "evidence": {"source_issue": "https://github.com/edithatogo/foi-o/issues/85"}},
+
+    {"target_id": "CA-FED", "tranche": "non_alaveteli", "status": "unsupported", "blocker": "no proven bounded non-Alaveteli capture adapter", "evidence": {"source_issue": "https://github.com/edithatogo/foi-o/issues/86"}},
+    {"target_id": "US-FOIA-FED", "tranche": "non_alaveteli", "status": "unsupported", "blocker": "no proven bounded non-Alaveteli capture adapter", "evidence": {"source_issue": "https://github.com/edithatogo/foi-o/issues/86"}},
+    {"target_id": "ZA-PAIA", "tranche": "non_alaveteli", "status": "unsupported", "blocker": "no proven bounded non-Alaveteli capture adapter", "evidence": {"source_issue": "https://github.com/edithatogo/foi-o/issues/86"}}
+  ]
+}

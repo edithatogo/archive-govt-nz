@@ -1,0 +1,69 @@
+{
+  "schema_version": "archive-govt-nz.foi-source-catalogue/v1",
+  "universe_source": "https://unstats.un.org/unsd/methodology/m49/overview/",
+  "provenance": {
+    "universe_retrieved_at": "2026-08-30T09:41:18.511301+00:00",
+    "universe_source_html_sha256": "b9048114f6e7f2abda83bf03d4263c9d7cd1bd7230e3d0461025ee7839a7a1fb",
+    "seeds": {
+      "donor_repository": "https://github.com/edithatogo/fyi-archive",
+      "donor_revision": "cba7b0dec2734bdc9ff51c69610fc55cb1fc5aa1",
+      "files": [
+        {
+          "source_path": "src/fyi_archive/config/archive_instances.json",
+          "local_file": "donor-instances.json",
+          "sha256": "35d95fffaf0d3060731a29be9448a168b7612e07a493ad67c416477282a0f537"
+        },
+        {
+          "source_path": "configs/additional_foi_archive_sites.json",
+          "local_file": "donor-additional-sites.json",
+          "sha256": "2a9f873ff5b45ccc02cc14cffb8a32dedd7c11ea4663f42b8f8aa5d9d746d819"
+        },
+        {
+          "source_path": "configs/jurisdiction_archive_targets.json",
+          "local_file": "donor-jurisdiction-targets.json",
+          "sha256": "343c840250ed97bb190966e04bf2a2a1fee1bb4d3fd20f565010d4fd871447e5"
+        }
+      ],
+      "scope": "Unmodified registry seeds only; no payload, rights promotion or capture evidence imported.",
+      "universe": {
+        "local_file": "country-universe.json",
+        "sha256": "c8b3e1195a5160d4be94cbdf588b56dd216b3e34bf8adb86452613a546cb831d",
+        "source_url": "https://unstats.un.org/unsd/methodology/m49/overview/",
+        "kind": "UN statistical geography plus explicit project extensions"
+      },
+      "hf_snapshot": {
+        "local_file": "hf-repository-snapshot.json",
+        "sha256": "168fb3d1c3cad278b8e384e181b5761b12e25f1bf043415503d0ab68afe8ebc8"
+      }
+    }
+  },
+  "entities": [
+    {
+      "id": "AD",
+      "name": "Andorra",
+      "m49": "020",
+      "iso_alpha3": "AND",
+      "region": "Europe",
+      "kind": "country_or_area",
+      "basis": "UN M49 country or area row",
+      "source_ids": [],
+      "known_sources": 0,
+      "total_requests": null,
+      "disposition": "discovery_required",
+      "complete_verified": false,
+      "evidence_basis": "Synthetic schema fixture, not capture evidence."
+    }
+  ],
+  "sources": [],
+  "jurisdictions": [],
+  "coverage": {
+    "geographic_entities": 1,
+    "supranational_entities": 0,
+    "known_sources": 0,
+    "target_regimes": 0,
+    "verified_complete": 0,
+    "remaining_unverified": 1,
+    "total_requests": null,
+    "payload_publication_authorized": false
+  }
+}
