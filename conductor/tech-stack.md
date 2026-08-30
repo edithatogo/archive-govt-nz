@@ -294,3 +294,7 @@ rights, security exceptions, and destructive actions.
 - Zenodo for immutable citable releases.
 - No always-on server, custom frontend, external graph service, or managed vector
   service in the initial implementation.
+
+### FOI WARC adapter — 2026-08-31
+
+Use warcio 1.8.1-compatible 1.x for reading preserved WARC responses, matching the pinned fyi-cli adapter. Expand its single outer gzip member under a byte budget and hash stored payload streams without repeating HTTP decoding. This implements the already-approved WARC preservation format; CAS, JSONL/Parquet and deterministic tar packages remain authoritative. No new storage service is introduced.
