@@ -193,3 +193,20 @@ its change set.
   deadline only for this pure invariant test while retaining all generated
   examples and assertions. The four-test module passed under the repository's
   xdist configuration; Ruff and basedpyright passed.
+
+## 2026-08-30 — Read-only health operational status
+
+- Added red contracts for no-state, partial, ready and corrupt-manifest
+  behavior. Collection initially failed because the operational module and
+  CLI entrypoint did not exist.
+- Implemented a shared fail-closed manifest reader exposed as
+  `health-appropriations-status` in the CLI and as the read-only MCP tool
+  `health_appropriations_status`. It reports bounded counts, layer presence,
+  dataset identity and candidate-manifest digest and performs no capture,
+  transformation, publication or retirement action.
+- A live smoke test initially exposed an ambiguous donor glob selecting the
+  format census. Manifest selection was narrowed to commit-shaped filenames;
+  the live archive then reported `ready`, 23 donor files, 73 captured official
+  resources, 312 Silver records and the published candidate digest.
+- Thirty-six focused CLI/MCP/domain tests, Ruff and basedpyright passed. The
+  critical operational module reached 100% line and branch coverage.

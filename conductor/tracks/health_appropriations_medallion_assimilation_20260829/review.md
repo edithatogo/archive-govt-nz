@@ -8,6 +8,18 @@ test performs no bounded performance contract. Commit `b2bf7b7` disables only
 that wall-clock deadline; generated examples, the eligibility assertion and
 parallel execution remain intact. Focused pytest, Ruff and basedpyright pass.
 
+## Operational status review — 2026-08-30
+
+- The new surface is read-only and idempotent; it exposes no credentials,
+  signed URLs, source payloads, mutation, publication or retirement authority.
+- Missing state is distinct from partial state, and malformed or contract-
+  invalid manifests fail closed rather than being treated as ready.
+- The archive root is caller-configurable and no workstation path is embedded
+  in source. Live validation found and resolved an ambiguous donor-manifest
+  selection before commit.
+- The bounded slice does not claim the broader Phase 8 capture, normalize,
+  analyze, rebuild, scheduling, cancellation or retry contracts are complete.
+
 ## Initialization review — 2026-08-29
 
 ### Scope and requirements
