@@ -1,5 +1,40 @@
 # Run Log
 
+## 2026-08-30 — Rich workbook census
+
+- Continued from verified main `b85e02a`; selected the Phase 1.3 inventory
+  detail slice under M-07/S-03, not publication or donor retirement.
+- Red: `uv run pytest -q tests/domains/health_appropriations/test_workbook_census.py`
+  failed with missing inventory `schema_version`. The synthetic fixture also
+  requires explicit ranges, hidden spans, formula/comment coordinates, scoped
+  names and package parts, while checking unchanged bytes and repeatability.
+- Focused green: 28 tests passed with 100% format-module line/branch coverage.
+  Ruff requested a smaller fixture helper. Strict typing identified nullable
+  column-span endpoints and the inferred active-sheet chart API. Keyword
+  adjustments did not resolve the chart diagnostic. Runtime source inspection
+  confirmed anchor assignment is equivalent, so the fixture now sets
+  `chart.anchor` and calls the shared single-argument `add_chart` API.
+- The first mutation run killed 19/23 mutants. Its report selected only the
+  scan-budget property test for all four survivors (formula comparison,
+  expanded-size boundary and two load options). Added exact package-budget
+  boundaries and a loader-options contract; rerun disables coverage filtering
+  to exercise the full focused suite for each mutant.
+- Unfiltered mutation rerun: 23/23 killed and 30 focused tests passed.
+- Baseline harness reached SBOM after 1,236 passing tests and preceding gates,
+  but uv launchers remained running with defunct Python children and an empty
+  SBOM file. Stopped only this run's two launchers after SIGTERM did not work.
+  The interrupted baseline exited 137 and is not a full-pass receipt.
+- Bounded environment correction: invoked `tools/supply_chain.py sbom` through
+  the repository `.venv/bin/python` with its bin directory on PATH; it passed
+  with 110 validated components. Started a fresh full harness for final code.
+- Final `./scripts/validate.sh` exited 0: 1,239 tests, 95.59% coverage,
+  30 schemas/20 representative documents, 9/9 parity, all mutation lanes,
+  format/lint/types, audit/licences/secrets and a validated 110-component SBOM.
+  The format module retains 100% line and branch coverage in the full suite.
+- Functional commit `dffa310`; restored only four unrelated timestamp-bearing
+  harness receipts. Source payloads and existing published manifests are
+  unchanged. Cached-value interpretation and broader track work remain open.
+
 ## 2026-08-30 — Workbook safety prerequisite
 
 - Continued from merged status PR #223 (`75c0ca9`) on a clean checkout.
