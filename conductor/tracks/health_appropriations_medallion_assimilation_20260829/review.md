@@ -1,5 +1,29 @@
 # Self-Review
 
+## Historical original-source extraction — 2026-08-30
+
+- Exact OOXML decimals avoid binary-float/display rounding; source lexemes,
+  formats, annotated years, footnotes and period/basis labels remain traceable.
+  Year-end lineage links both contributing source cells. Annual starts and
+  cross-basis comparability are not invented.
+- Split selection, period state, numeric validation, record creation and
+  reconciliation into bounded helpers after the initial complexity finding.
+  The standard-library lexical reader has a narrowly justified S314 annotation:
+  a custom TreeBuilder rejects DTDs, tested with UTF-16 input. Prior workbook
+  inventory/loading remains subject to its existing non-sandbox limitations.
+- The first mutation run selected an unrelated test for one surviving return.
+  Explicitly disabling coverage filtering killed all 70 extractor mutations.
+  The final combined run killed 99/99, with no pardons. No survivor was waived.
+- Review added donor numeric range/precision rejection before computing deltas;
+  the new tests failed twice as expected before the correction. The comparison
+  preserves both observations and never silently changes a donor value.
+- Live extraction recovers every source year without filtering to the lossy
+  donor table. Seventy-six historical oracle values match exactly, 29 annotated
+  years are source-only, and the 1976 decimal difference remains explicit.
+  Rebuilt artifacts and originals were independently hash-checked.
+- Publication, remaining data areas, domain-wide operational integration and
+  analytical compatibility are not claimed by this bounded extraction increment.
+
 ## BEFU/HYEFU extraction — 2026-08-30
 
 - Source-specific selection uses unique literal labels, verified units and

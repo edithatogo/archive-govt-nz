@@ -23,6 +23,7 @@ every planned record set, measure or operational workflow.
 - [Pinned donor behavior](./donor-behavior.md)
 - [Raw Budget extraction](./raw-budget.md)
 - [Raw BEFU/HYEFU extraction](./raw-forecast.md)
+- [Raw historical Health/GDP extraction and reconciliation](./raw-historical.md)
 - [Next raw-source ranges and semantic boundaries](./next-source-ranges.md)
 - [Metadata](./metadata.json)
 - [Run log](./runlog.md)
