@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive-govt-nz.org/schemas/health-workbook-inspection-v1.schema.json",
+  "title": "Successful read-only workbook inspection",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "status", "source_sha256", "source_byte_count", "inventory", "value_semantics", "previews"],
+  "properties": {
+    "schema_version": {"const": "archive-govt-nz.health-workbook-inspection/v1"},
+    "status": {"const": "inspected"},
+    "source_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "source_byte_count": {"type": "integer", "minimum": 1, "maximum": 67108864},
+    "value_semantics": {"const": "decoded_preview_not_canonical_facts"},
+    "inventory": {
+      "type": "object",
+      "required": ["schema_version", "kind", "sheets"],
+      "properties": {
+        "schema_version": {"const": "archive-govt-nz.workbook-inventory/v1"},
+        "kind": {"const": "xlsx"},
+        "sheets": {"type": "array", "items": {"type": "object", "required": ["title"], "properties": {"title": {"type": "string", "minLength": 1}}}}
+      }
+    },
+    "previews": {
+      "type": "array", "maxItems": 2000,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["name", "row_truncated", "column_truncated", "cells"],
+        "properties": {
+          "name": {"type": "string", "minLength": 1},
+          "row_truncated": {"type": "boolean"},
+          "column_truncated": {"type": "boolean"},
+          "cells": {
+            "type": "array", "maxItems": 2000,
+            "items": {
+              "type": "object", "additionalProperties": false,
+              "required": ["coordinate", "data_type", "decoded_value_json"],
+              "properties": {
+                "coordinate": {"type": "string", "pattern": "^[A-Z]+[1-9][0-9]*$"},
+                "data_type": {"type": "string", "minLength": 1},
+                "decoded_value_json": {"type": "string", "maxLength": 131072}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
