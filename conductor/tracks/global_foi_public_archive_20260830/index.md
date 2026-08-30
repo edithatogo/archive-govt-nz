@@ -25,3 +25,6 @@ Approved track in progress. Automation repair and source-catalogue foundations a
 
 - [Hosted exact-lease recovery](phase-1-hosted-recovery.json)
 - [Source catalogue foundation validation](phase-2-catalogue-validation.json)
+
+- [Raw-retention incident and current operational limits](operational-followup-20260830.json)
+- [Publication receipt guard validation](publication-guard-validation.json)

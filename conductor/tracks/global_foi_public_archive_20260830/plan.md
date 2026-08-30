@@ -29,14 +29,14 @@ The approved destination is archive-govt-nz; no cutover has occurred.
 
 ## Phase 3 — Metadata indexes and immutable raw storage
 
-- [ ] P3.1 (AC05, AC06, AC11): Add red tests for original metadata preservation, request/correspondence/attachment relationships, revisions, missing objects, synthetic/CDX rejection, unsafe archive members, private-network redirects, expansion/resource limits, active content and sensitive exports.
+- [~] P3.1 (AC05, AC06, AC11): Add red tests for original metadata preservation, request/correspondence/attachment relationships, revisions, missing objects, synthetic/CDX rejection, unsafe archive members, private-network redirects, expansion/resource limits, active content and sensitive exports.
 - [ ] P3.2 (AC05, AC06): Integrate pinned capture adapters, CAS/WARC packaging, JSONL/Parquet object metadata and complete provenance; reuse existing Bronze/storage primitives.
 - [ ] P3.3 (AC05, AC06, AC08): Implement durable checkpoint/package manifests and clean-room reconstruction; prove deduplication, interruption, temporary-artifact loss and corruption handling using bounded shards and stable IDs.
 - [ ] P3.4 (AC12): Automated review, integrity mutation tests, privacy checks and full phase validation.
 
 ## Phase 4 — Public Hugging Face delivery
 
-- [ ] P4.1 (AC07, AC11): Add red tests for restricted publication, public metadata leakage, private/gated targets, wrong repo identity, partial upload, remote hash mismatch, inconsistent child revisions, provider outages and premature index promotion.
+- [~] P4.1 (AC07, AC11): Add red tests for restricted publication, public metadata leakage, private/gated targets, wrong repo identity, partial upload, remote hash mismatch, inconsistent child revisions, provider outages and premature index promotion.
 - [ ] P4.2 (AC07): Wire public global catalogue, existing per-instance identities, raw payloads, metadata indexes, cards and revision-pinned manifests through the approved publisher.
 - [ ] P4.3 (AC07, AC11): Reconcile source eligibility, platform capacity and least-privilege credentials; publish the eligible NZ candidate under recorded user authority and verify every accepted object anonymously.
 - [ ] P4.4 (AC07): Verify a second eligible instance, cross-instance isolation, revision-pinned catalogue links, interrupted-publication recovery, cold restore without cache and viewer status separately from raw storage.
@@ -63,3 +63,7 @@ The approved destination is archive-govt-nz; no cutover has occurred.
 - [ ] P7.2 (AC12): Run `./scripts/validate.sh` in archive-govt-nz and the active owner's required harness before any PR; verify exact hosted head checks and run automated Conductor review with bounded fixes.
 - [ ] P7.3 (AC09, AC12): Publish verified system-readiness and corpus-progress reports separately; outstanding raw gaps prevent full-capture claims, and blocked countries remain explicit.
 - [ ] P7.4 (AC12): Synchronize metadata, registry, issues, evidence and commit history only after the matching acceptance criteria pass; record continuing schedules and unresolved external limits.
+
+## Critical operational findings
+
+Bounded capture 33305989413 advanced the credited cursor to 17226, but its artifact omitted original bytes. NZ automatic dispatch is paused. Raw-retention PR fyi-archive#404 and fabricated-publication guard PR archive-govt-nz#247 are approved-scope corrective work while the remaining phase gates stay open. Details: operational-followup-20260830.json. No older raw coverage is retroactively verified.

@@ -1,0 +1,38 @@
+{
+  "recorded_at": "2026-08-30T10:32:39.445478+00:00",
+  "baseline_merge": "b0e43b78040d07574d1f5297ec8478a4ec3b74da",
+  "catalogue_pr": "https://github.com/edithatogo/archive-govt-nz/pull/246",
+  "publication_guard_pr": "https://github.com/edithatogo/archive-govt-nz/pull/247",
+  "raw_retention_pr": "https://github.com/edithatogo/fyi-archive/pull/404",
+  "bounded_capture": {
+    "run_id": 33305989413,
+    "result": "success",
+    "artifact_id": 9730497676,
+    "artifact_sha256": "67bb806bd47854b9ae6af4357f9ec6206baa0c52a1f9633bdc493579db9b17f2",
+    "credited_next_offset": 17226,
+    "queue_count": 33208,
+    "remaining_unprocessed_entries": 15982,
+    "raw_directories_retained": false,
+    "raw_gap": "Downloaded artifact omitted original request store, attachments, WARC and WACZ; new validator rejects it. Earlier credited batches require a separate raw-retention audit."
+  },
+  "hf_sync_diagnosis": {
+    "run_id": 33306106031,
+    "result": "success",
+    "dry_run": true,
+    "summary_sha256": "1dc62b6f1e818538e97ceb853038076733889d220369fac52c31dfd22b517006",
+    "verified": null,
+    "public_upload": false
+  },
+  "nz_monitor": {
+    "workflow_id": 322525555,
+    "state": "disabled_manually",
+    "reason": "Stop further metadata-only credits while validating raw retention",
+    "resume_requires": [
+      "hosted retained-raw restore",
+      "durable retention and historical gap reconciliation"
+    ]
+  },
+  "system_ready": false,
+  "cutover_performed": false,
+  "public_raw_complete_countries_verified": 0
+}
