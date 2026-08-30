@@ -9,14 +9,63 @@
   "stacked_base": "6839d7ba09ea580dec51a027ceed270b1ec90f10",
   "implementation_commit": "653f1ef",
   "gates": [
-    {"id": "service-sequence", "kind": "merge", "status": "passed"},
-    {"id": "global-cli-sequence", "kind": "merge", "status": "passed"},
-    {"id": "legislation-cli-sequence", "kind": "merge", "status": "passed"},
-    {"id": "mcp-sequence", "kind": "merge", "status": "passed"},
-    {"id": "workflow-sequence", "kind": "merge", "status": "passed"},
-    {"id": "real-batch-execution", "kind": "external", "status": "passed"},
-    {"id": "publication-authority", "kind": "publication", "status": "passed"},
-    {"id": "redistribution-rights", "kind": "rights", "status": "passed"},
-    {"id": "donor-archival", "kind": "external", "status": "passed"}
-  ]
+    {
+      "id": "service-sequence",
+      "kind": "merge",
+      "status": "satisfied",
+      "legacy_status": "passed"
+    },
+    {
+      "id": "global-cli-sequence",
+      "kind": "merge",
+      "status": "satisfied",
+      "legacy_status": "passed"
+    },
+    {
+      "id": "legislation-cli-sequence",
+      "kind": "merge",
+      "status": "satisfied",
+      "legacy_status": "passed"
+    },
+    {
+      "id": "mcp-sequence",
+      "kind": "merge",
+      "status": "satisfied",
+      "legacy_status": "passed"
+    },
+    {
+      "id": "workflow-sequence",
+      "kind": "merge",
+      "status": "satisfied",
+      "legacy_status": "passed"
+    },
+    {
+      "id": "real-batch-execution",
+      "kind": "external",
+      "status": "satisfied",
+      "legacy_status": "passed"
+    },
+    {
+      "id": "publication-authority",
+      "kind": "publication",
+      "status": "satisfied",
+      "legacy_status": "passed"
+    },
+    {
+      "id": "redistribution-rights",
+      "kind": "rights",
+      "status": "satisfied",
+      "legacy_status": "passed"
+    },
+    {
+      "id": "donor-archival",
+      "kind": "external",
+      "status": "satisfied",
+      "legacy_status": "passed"
+    }
+  ],
+  "legacy_type": null,
+  "type": "chore",
+  "description": "Legislation one-batch reconciliation correction",
+  "metadata_reconciled_at": "2026-08-30T09:09:36.938960Z"
 }

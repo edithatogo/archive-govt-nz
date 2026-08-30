@@ -1,12 +1,31 @@
 {
   "id": "preservation_conformance_20260801",
   "title": "Preservation packaging conformance",
-  "type": "bounded_evaluation",
-  "status": "complete",
-  "created_at": "2026-08-01T20:45:00+10:00",
+  "type": "chore",
+  "status": "completed",
+  "created_at": "2026-08-01T10:45:00Z",
   "requirements_method": "MoSCoW",
-  "autonomy": {"mode": "continuous_autonomous", "stop_between_phases": false, "stop_between_tracks": false},
-  "scope": ["RO-Crate", "BagIt", "OCFL"],
+  "autonomy": {
+    "mode": "continuous_autonomous",
+    "stop_between_phases": false,
+    "stop_between_tracks": false
+  },
+  "scope": [
+    "RO-Crate",
+    "BagIt",
+    "OCFL"
+  ],
   "decision_boundary": "Bounded evaluation complete: adopt RO-Crate for metadata provenance, BagIt for release boundaries, and defer OCFL until massive multi-version corpus demands it.",
-  "external_gates": ["rights_exception", "release_approval", "destructive_action"]
+  "external_gates": [
+    "rights_exception",
+    "release_approval",
+    "destructive_action"
+  ],
+  "track_id": "preservation_conformance_20260801",
+  "legacy_type": "bounded_evaluation",
+  "legacy_status": "complete",
+  "description": "Preservation packaging conformance",
+  "updated_at": "2026-08-30T09:09:36.938960Z",
+  "metadata_reconciled_at": "2026-08-30T09:09:36.938960Z",
+  "original_plan_sha256": "cc406c48adcc6d96ee99cd63759d366d632b0c4971674b84f806d212fc1acd55"
 }

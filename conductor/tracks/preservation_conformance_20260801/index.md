@@ -17,3 +17,7 @@ evidence are recorded.
 - [Run log](./runlog.md)
 - [Review](./review.md)
 - [Metadata](./metadata.json)
+
+- [Specification](spec.md)
+
+- [Implementation Plan](plan.md)

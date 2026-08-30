@@ -6,8 +6,8 @@ The approved destination is archive-govt-nz; no cutover has occurred.
 
 ## Phase 0 — Contract, baseline and traceability
 
-- [~] P0.1 (AC01, AC12): Verify the recorded approval, ownership supersession and initialization commit against current donor/receiver state before execution; do not ask for routine reapproval.
-- [ ] P0.2 (AC01, AC12): Reconcile legacy Conductor validation errors without rewriting historical evidence; register the approved contract and create scoped parent/subissue links under the authorized repository workflow.
+- [x] P0.1 (AC01, AC12): Verify the recorded approval, ownership supersession and initialization commit against current donor/receiver state before execution; do not ask for routine reapproval. Verified against initialization `0529e5f` and activation `68818aa`.
+- [~] P0.2 (AC01, AC12): Reconcile legacy Conductor validation errors without rewriting historical evidence; register the approved contract and create scoped parent/subissue links under the authorized repository workflow.
 - [ ] P0.3 (AC01, AC08, AC11): Pin donor/receiver/adapter/HF revisions; inventory capture capabilities, 23/29/42 registries, retained artifacts, raw bytes, queues, mirrors, rights and current jobs; prioritize expiring artifacts and record durable-copy gaps.
 - [ ] P0.4 (AC12): Automated contract review and full Conductor validation; retain exact baseline and unresolved boundaries.
 

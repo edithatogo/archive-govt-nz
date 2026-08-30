@@ -69,3 +69,5 @@ unarchived on 2026-08-30. Originals and the existing published candidate are not
 rewritten by subsequent inventory improvements. Historical observations in
 `metadata.json` and the append-only evidence ledger retain their original dates;
 they are not current-state assertions.
+
+- [Implementation Plan](plan.md)

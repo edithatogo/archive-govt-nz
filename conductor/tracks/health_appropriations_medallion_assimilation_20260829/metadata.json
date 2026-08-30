@@ -7,7 +7,7 @@
   "updated_at": "2026-08-30T07:58:43Z",
   "description": "Zero-loss assimilation of nz_health_appropriations into Bronze, dedicated multi-recordset Silver, reproducible Gold analytics, rights-aware Platinum metadata and gated Hugging Face publication.",
   "requirements_method": "MoSCoW",
-  "evidence_schema": "1.0",
+  "evidence_schema": "legacy-observation-v1",
   "source_baseline": {
     "archive_govt_nz_commit": "1896ee088a3703562258268821a0e1c3bfc3f211",
     "donor_repository": "https://github.com/edithatogo/nz_health_appropriations",
@@ -43,7 +43,19 @@
   },
   "github_issues": {
     "parent": 205,
-    "phases": [206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216]
+    "phases": [
+      206,
+      207,
+      208,
+      209,
+      210,
+      211,
+      212,
+      213,
+      214,
+      215,
+      216
+    ]
   },
   "bronze_state": {
     "donor_capture": "passed",
@@ -93,7 +105,10 @@
     "independent_rebuild": "byte_identical",
     "befu_manifest_sha256": "0997a9153d5da334860cd43cc850ed3c4b5f768e9729927311fbc91d7e9f4634",
     "hyefu_manifest_sha256": "1e0e9a173d718acd77c11f729d874a6fa96456ca28bf0fab9dca7b544965e0fd",
-    "retained_directories": ["silver/raw-befu-20260830-forecast-v1", "silver/raw-hyefu-20260830-forecast-v1"],
+    "retained_directories": [
+      "silver/raw-befu-20260830-forecast-v1",
+      "silver/raw-hyefu-20260830-forecast-v1"
+    ],
     "observation_time_context": "local_source_object_verification_not_new_http_capture",
     "financial_year_basis": "unverified",
     "rights_state": "not_evaluated",
@@ -113,16 +128,83 @@
     "decision_policy": "../../autonomy-policy.json"
   },
   "gates": [
-    {"id": "scope-plan-approval", "kind": "human", "status": "passed", "evidence": "Explicit user approval in the current Codex task on 2026-08-29"},
-    {"id": "github-issue-creation", "kind": "external", "status": "passed", "evidence": "Parent issue #205 with linked sub-issues #206-#216"},
-    {"id": "dependency-adoption", "kind": "architecture", "status": "passed", "evidence": "openpyxl and Matplotlib stack decision, focused tests, locked audit/licence/SBOM"},
-    {"id": "resource-redistribution-rights", "kind": "rights", "status": "passed", "evidence": "Per-resource CC BY 4.0 evidence for all 73 included official resources"},
-    {"id": "hf-candidate-approval", "kind": "publication", "status": "passed", "evidence": "User instructed continuation immediately after presentation of exact manifest SHA-256 9a33babda857b0aa7c60a6012000cf1e730fed729781cb8ceb6e7a4714cae40e"},
-    {"id": "hf-credentials", "kind": "credential", "status": "passed", "evidence": "Authenticated Hugging Face account observed as edithatogo"},
-    {"id": "hf-publication", "kind": "publication", "status": "passed", "evidence": "Public dataset revision 9b85bac06597d4435fd078f6bed0f30bb008542b"},
-    {"id": "hf-collection-membership", "kind": "external", "status": "passed", "evidence": "HEOR collection item 6a92b824597df1d081fc4108"},
-    {"id": "hf-remote-verification", "kind": "external", "status": "passed", "evidence": "Fresh download verified manifest and all 94 manifest entries with zero mismatches"},
-    {"id": "donor-retirement", "kind": "destructive", "status": "pending", "scope": "out_of_track_scope"},
-    {"id": "zenodo-release", "kind": "publication", "status": "pending", "scope": "out_of_track_scope"}
-  ]
+    {
+      "id": "scope-plan-approval",
+      "kind": "human",
+      "status": "satisfied",
+      "evidence": "Explicit user approval in the current Codex task on 2026-08-29",
+      "legacy_status": "passed"
+    },
+    {
+      "id": "github-issue-creation",
+      "kind": "external",
+      "status": "satisfied",
+      "evidence": "Parent issue #205 with linked sub-issues #206-#216",
+      "legacy_status": "passed"
+    },
+    {
+      "id": "dependency-adoption",
+      "kind": "architecture",
+      "status": "satisfied",
+      "evidence": "openpyxl and Matplotlib stack decision, focused tests, locked audit/licence/SBOM",
+      "legacy_status": "passed"
+    },
+    {
+      "id": "resource-redistribution-rights",
+      "kind": "rights",
+      "status": "satisfied",
+      "evidence": "Per-resource CC BY 4.0 evidence for all 73 included official resources",
+      "legacy_status": "passed"
+    },
+    {
+      "id": "hf-candidate-approval",
+      "kind": "publication",
+      "status": "satisfied",
+      "evidence": "User instructed continuation immediately after presentation of exact manifest SHA-256 9a33babda857b0aa7c60a6012000cf1e730fed729781cb8ceb6e7a4714cae40e",
+      "legacy_status": "passed"
+    },
+    {
+      "id": "hf-credentials",
+      "kind": "credential",
+      "status": "satisfied",
+      "evidence": "Authenticated Hugging Face account observed as edithatogo",
+      "legacy_status": "passed"
+    },
+    {
+      "id": "hf-publication",
+      "kind": "publication",
+      "status": "satisfied",
+      "evidence": "Public dataset revision 9b85bac06597d4435fd078f6bed0f30bb008542b",
+      "legacy_status": "passed"
+    },
+    {
+      "id": "hf-collection-membership",
+      "kind": "external",
+      "status": "satisfied",
+      "evidence": "HEOR collection item 6a92b824597df1d081fc4108",
+      "legacy_status": "passed"
+    },
+    {
+      "id": "hf-remote-verification",
+      "kind": "external",
+      "status": "satisfied",
+      "evidence": "Fresh download verified manifest and all 94 manifest entries with zero mismatches",
+      "legacy_status": "passed"
+    },
+    {
+      "id": "donor-retirement",
+      "kind": "destructive",
+      "status": "pending",
+      "scope": "out_of_track_scope"
+    },
+    {
+      "id": "zenodo-release",
+      "kind": "publication",
+      "status": "pending",
+      "scope": "out_of_track_scope"
+    }
+  ],
+  "legacy_evidence_sha256": "d9161c2252b583cd9b6c17d3142126e525abbd6bc768b915bb4132508055e5a5",
+  "evidence_format_basis": "Existing observations were never hash-chained; original ledger bytes preserved and checked by tools/validate_conductor_state.py.",
+  "metadata_reconciled_at": "2026-08-30T09:09:36.938960Z"
 }

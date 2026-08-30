@@ -1,10 +1,15 @@
 {
   "id": "legislation_corrective_gazette_residual_separation_20260818",
   "title": "Gazette residual work, kept separate and incomplete",
-  "type": "track",
+  "type": "chore",
   "status": "completed",
   "created_at": "2026-08-18T12:54:00Z",
   "updated_at": "2026-08-18T22:36:00Z",
   "parent_track": "legislation_corpus_consolidation_corrective_20260818",
-  "phase_0_control_plane_commit": "cb0e78f89a127f246d024ba3a5d770e1ec478f12"
+  "phase_0_control_plane_commit": "cb0e78f89a127f246d024ba3a5d770e1ec478f12",
+  "track_id": "legislation_corrective_gazette_residual_separation_20260818",
+  "legacy_type": "track",
+  "description": "Gazette residual work, kept separate and incomplete",
+  "metadata_reconciled_at": "2026-08-30T09:09:36.938960Z",
+  "original_plan_sha256": "2cf325c8853303f65967ad1271c4645a132fb0ebfa6c8c0f1a310ee147f4083f"
 }

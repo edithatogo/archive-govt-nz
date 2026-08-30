@@ -14,3 +14,10 @@
 3. **Phase 3: Comprehensive Test Matrix & Verification (Commit B)**
    - Create test suite covering Acts, Bills, Regulations, repealed/historical expressions, unknown status, multiple expressions, XML with namespaces, HTML, schedules, malformed input, and controlled fallbacks.
    - Verify 100% patch coverage and execute `tools/check.py`.
+
+
+## 2026-08-30 record preservation
+
+- [x] Preserve the original historical plan verbatim in [plan.original.md](plan.original.md) and record its hash.
+
+The checkbox above records preservation only. Original phase prose has no individual task checkmarks; this reconciliation does not assert or reverify its historical completion. Existing completion claims remain attributable to the original record.

@@ -65,6 +65,7 @@ def test_repository_gate_lists_all_required_stages() -> None:
     assert result.stderr == ""
     assert result.stdout.splitlines() == [
         "lock",
+        "conductor",
         "format",
         "lint",
         "types",

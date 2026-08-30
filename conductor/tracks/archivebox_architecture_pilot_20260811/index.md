@@ -18,3 +18,5 @@ future Zenodo release packages.
 - [Evidence](./evidence.md)
 - [Self-review](./review.md)
 - [GitHub issue hierarchy](./github-issues.md)
+
+- [Implementation Plan](plan.md)

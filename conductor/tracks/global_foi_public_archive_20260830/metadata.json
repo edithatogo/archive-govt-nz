@@ -3,7 +3,7 @@
   "type": "feature",
   "status": "in_progress",
   "created_at": "2026-08-30T08:38:22Z",
-  "updated_at": "2026-08-30T08:47:28Z",
+  "updated_at": "2026-08-30T09:22:26.923570Z",
   "description": "Global FOI source catalogue, metadata indexes, public raw preservation and automation repair; archive-govt-nz takeover approved.",
   "evidence_schema": "1.0",
   "approval_status": "approved",
@@ -56,5 +56,57 @@
     "source_adapter": "fyi-cli",
     "operational_state": "donor_until_verified_cutover"
   },
-  "recommendations": "recommendations.md"
+  "recommendations": "recommendations.md",
+  "evidence_contract": "chained-v1",
+  "github": {
+    "repository": "edithatogo/archive-govt-nz",
+    "parent_issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/233",
+    "phases": [
+      {
+        "phase": "P0",
+        "issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/234",
+        "nested": true
+      },
+      {
+        "phase": "P1",
+        "issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/235",
+        "nested": true
+      },
+      {
+        "phase": "P2",
+        "issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/236",
+        "nested": true
+      },
+      {
+        "phase": "P3",
+        "issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/237",
+        "nested": true
+      },
+      {
+        "phase": "P4",
+        "issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/238",
+        "nested": true
+      },
+      {
+        "phase": "P5",
+        "issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/239",
+        "nested": true
+      },
+      {
+        "phase": "P6",
+        "issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/240",
+        "nested": true
+      },
+      {
+        "phase": "P7",
+        "issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/241",
+        "nested": true
+      }
+    ]
+  },
+  "validation": {
+    "phase_0": "passed",
+    "receipt": "phase-0-validation.json",
+    "system_ready": false
+  }
 }

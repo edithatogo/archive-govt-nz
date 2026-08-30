@@ -8,12 +8,51 @@
   "implementation_commit": "bcbdd34",
   "parent_issue": 137,
   "gates": [
-    {"id": "mcp-sequence", "kind": "merge", "status": "passed"},
-    {"id": "one-batch", "kind": "live", "status": "passed"},
-    {"id": "canary", "kind": "live", "status": "passed"},
-    {"id": "weekly-schedule", "kind": "external", "status": "passed"},
-    {"id": "publication-authority", "kind": "publication", "status": "passed"},
-    {"id": "redistribution-rights", "kind": "rights", "status": "passed"},
-    {"id": "donor-archive", "kind": "destructive", "status": "passed"}
-  ]
+    {
+      "id": "mcp-sequence",
+      "kind": "merge",
+      "status": "satisfied",
+      "legacy_status": "passed"
+    },
+    {
+      "id": "one-batch",
+      "kind": "live",
+      "status": "satisfied",
+      "legacy_status": "passed"
+    },
+    {
+      "id": "canary",
+      "kind": "live",
+      "status": "satisfied",
+      "legacy_status": "passed"
+    },
+    {
+      "id": "weekly-schedule",
+      "kind": "external",
+      "status": "satisfied",
+      "legacy_status": "passed"
+    },
+    {
+      "id": "publication-authority",
+      "kind": "publication",
+      "status": "satisfied",
+      "legacy_status": "passed"
+    },
+    {
+      "id": "redistribution-rights",
+      "kind": "rights",
+      "status": "satisfied",
+      "legacy_status": "passed"
+    },
+    {
+      "id": "donor-archive",
+      "kind": "destructive",
+      "status": "satisfied",
+      "legacy_status": "passed"
+    }
+  ],
+  "legacy_type": null,
+  "type": "chore",
+  "description": "Fail-closed legislation workflow correction",
+  "metadata_reconciled_at": "2026-08-30T09:09:36.938960Z"
 }

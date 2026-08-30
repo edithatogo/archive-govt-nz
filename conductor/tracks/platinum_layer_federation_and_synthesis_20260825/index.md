@@ -16,3 +16,5 @@ Establishes the Platinum Layer for `archive-govt-nz`, providing:
 - [Specification](./spec.md)
 - [Execution Plan](./plan.md)
 - [Metadata](./metadata.json)
+
+- [Implementation Plan](plan.md)

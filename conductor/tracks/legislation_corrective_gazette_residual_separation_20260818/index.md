@@ -2,3 +2,9 @@
 
 ## Overview
 Child track of `legislation_corpus_consolidation_corrective_20260818` for gazette residual work, kept separate and incomplete.
+
+- [Specification](spec.md)
+
+- [Implementation Plan](plan.md)
+
+- [Metadata](metadata.json)
