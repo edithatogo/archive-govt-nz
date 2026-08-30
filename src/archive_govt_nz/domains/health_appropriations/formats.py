@@ -170,7 +170,8 @@ def inventory_workbook(path: Path) -> dict[str, object]:
         "package_members": package_members,
         "expanded_bytes": expanded,
         "has_macros": any(
-            name.lower().endswith("vbaproject.bin") for name in package_members
+            name.rsplit("/", 1)[-1].lower() == "vbaproject.bin"
+            for name in package_members
         ),
         "external_link_count": external_links,
         "named_range_count": len(defined_names),

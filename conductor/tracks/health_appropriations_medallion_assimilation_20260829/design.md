@@ -127,8 +127,13 @@ reader represents both as null; zero and false remain stored values. Cache
 contents are not exported, and `formula_cache_freshness: not_verified` makes
 clear that cache presence does not establish freshness or correctness. Workbooks
 without formulas skip this second load. Neither view rewrites source bytes.
-Unknown package
-parts are listed without interpreting their payloads. This inventory supports
+Unknown package parts are listed without interpreting their payloads. External
+workbook references are counted from preserved relationship metadata without
+retrieving their targets or exporting target URLs. Embedded/opaque payloads
+remain exclusively in the original package. The legacy `has_macros` field is
+an exact, case-insensitive `vbaProject.bin` basename marker, not proof of valid
+or executable VBA, a full active-content detector, or a safety verdict.
+This inventory supports
 loss accounting but does not itself claim normalization or source completeness.
 
 ## Silver domain model
