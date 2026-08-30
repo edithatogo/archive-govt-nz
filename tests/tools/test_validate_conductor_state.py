@@ -116,18 +116,24 @@ def test_inline_registration_is_checked(tmp_path: Path) -> None:
     assert validate(tmp_path)["errors"] == []
 
 
-def test_reconciled_legacy_evidence_remains_byte_pinned(tmp_path: Path) -> None:
+@pytest.mark.parametrize("line_ending", ["\n", "\r\n"])
+def test_reconciled_legacy_evidence_remains_byte_pinned(
+    tmp_path: Path, line_ending: str
+) -> None:
     """Correcting a legacy format label must not hide edits to old observations."""
     folder = make_track(tmp_path)
     original = (
         '{"recorded_at":"2026-08-30T00:00:00Z","kind":"review","status":"passed"}\n'
     )
-    (folder / "evidence.jsonl").write_text(original)
+    original = original.replace("\n", line_ending)
+    (folder / "evidence.jsonl").write_bytes(original.encode())
     metadata = json.loads((folder / "metadata.json").read_text())
     metadata["legacy_evidence_sha256"] = hashlib.sha256(original.encode()).hexdigest()
     (folder / "metadata.json").write_text(json.dumps(metadata))
     assert validate(tmp_path)["errors"] == []
-    (folder / "evidence.jsonl").write_text(original.replace("passed", "failed"))
+    (folder / "evidence.jsonl").write_bytes(
+        original.replace("passed", "failed").encode()
+    )
     assert any("legacy evidence" in e for e in validate(tmp_path)["errors"])
 
 
