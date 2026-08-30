@@ -13,6 +13,8 @@ from openpyxl import load_workbook
 if TYPE_CHECKING:
     from pathlib import Path
 
+    from openpyxl.worksheet.worksheet import Worksheet
+
 _PDF_PAGE = re.compile(rb"/Type\s*/Page\b")
 _MAX_MEMBERS = 20_000
 _MAX_EXPANDED_BYTES = 512 * 1024 * 1024
@@ -31,6 +33,54 @@ class SheetInventory:
     merged_ranges: int
     table_names: tuple[str, ...]
     chart_count: int
+    dimension: str
+    formula_coordinates: tuple[str, ...]
+    comment_coordinates: tuple[str, ...]
+    merged_range_refs: tuple[str, ...]
+    table_ranges: tuple[tuple[str, str], ...]
+    hidden_rows: tuple[int, ...]
+    hidden_columns: tuple[tuple[str, int | None, int | None], ...]
+    defined_names: tuple[str, ...]
+
+
+def _inventory_sheet(sheet: Worksheet) -> SheetInventory:
+    formulas: list[str] = []
+    comments: list[str] = []
+    for row in sheet.iter_rows():
+        for cell in row:
+            if cell.data_type == "f":
+                formulas.append(cell.coordinate)
+            if cell.comment is not None:
+                comments.append(cell.coordinate)
+    merged = tuple(sorted(str(area) for area in sheet.merged_cells.ranges))
+    return SheetInventory(
+        title=sheet.title,
+        state=sheet.sheet_state,
+        max_row=sheet.max_row,
+        max_column=sheet.max_column,
+        formula_cells=len(formulas),
+        merged_ranges=len(merged),
+        table_names=tuple(sorted(sheet.tables)),
+        chart_count=len(getattr(sheet, "_charts", ())),
+        dimension=sheet.calculate_dimension(),
+        formula_coordinates=tuple(formulas),
+        comment_coordinates=tuple(comments),
+        merged_range_refs=merged,
+        table_ranges=tuple(
+            (name, sheet.tables[name].ref) for name in sorted(sheet.tables)
+        ),
+        hidden_rows=tuple(
+            sorted(index for index, dim in sheet.row_dimensions.items() if dim.hidden)
+        ),
+        hidden_columns=tuple(
+            sorted(
+                (name, dim.min, dim.max)
+                for name, dim in sheet.column_dimensions.items()
+                if dim.hidden
+            )
+        ),
+        defined_names=tuple(sorted(sheet.defined_names)),
+    )
 
 
 def inventory_workbook(path: Path) -> dict[str, object]:
@@ -70,35 +120,23 @@ def inventory_workbook(path: Path) -> dict[str, object]:
         )
         if scan_cells > _MAX_SCAN_CELLS:
             raise ValueError("workbook_cell_scan_limit")
-        for sheet in workbook.worksheets:
-            formulas = sum(
-                1 for row in sheet.iter_rows() for cell in row if cell.data_type == "f"
-            )
-            sheets.append(
-                SheetInventory(
-                    title=sheet.title,
-                    state=sheet.sheet_state,
-                    max_row=sheet.max_row,
-                    max_column=sheet.max_column,
-                    formula_cells=formulas,
-                    merged_ranges=len(sheet.merged_cells.ranges),
-                    table_names=tuple(sorted(sheet.tables)),
-                    chart_count=len(getattr(sheet, "_charts", ())),
-                )
-            )
+        sheets = [_inventory_sheet(sheet) for sheet in workbook.worksheets]
         external_links = len(getattr(workbook, "_external_links", ()))
-        named_ranges = len(tuple(workbook.defined_names.values()))
+        defined_names = tuple(sorted(workbook.defined_names))
     finally:
         workbook.close()
     return {
+        "schema_version": "archive-govt-nz.workbook-inventory/v1",
         "kind": "xlsx",
         "package_member_count": len(package_members),
+        "package_members": package_members,
         "expanded_bytes": expanded,
         "has_macros": any(
             name.lower().endswith("vbaproject.bin") for name in package_members
         ),
         "external_link_count": external_links,
-        "named_range_count": named_ranges,
+        "named_range_count": len(defined_names),
+        "defined_names": defined_names,
         "sheets": [asdict(sheet) for sheet in sheets],
     }
 

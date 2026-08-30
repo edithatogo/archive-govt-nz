@@ -116,6 +116,14 @@ before formula counting. The cell gate bounds traversal after workbook loading,
 not all parser allocation. Rejection leaves Bronze bytes intact and does not
 claim that an unsupported workbook was normalized.
 
+The additive `archive-govt-nz.workbook-inventory/v1` output retains the previous
+counts and adds sorted package-member names, global and sheet-scoped defined
+names, worksheet dimensions, merged/table ranges, formula/comment coordinates
+and hidden row/column spans. Formula and comment content is not exported or
+evaluated; cached-value semantics remain a separate contract. Unknown package
+parts are listed without interpreting their payloads. This inventory supports
+loss accounting but does not itself claim normalization or source completeness.
+
 ## Silver domain model
 
 All records share:
