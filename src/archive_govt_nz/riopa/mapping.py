@@ -15,6 +15,9 @@ from typing import Any
 from urllib.parse import urlparse
 
 _SHA256 = re.compile(r"^[0-9a-f]{64}$")
+_RFC3339 = re.compile(
+    r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$"
+)
 _REQUIRED = {
     "receipt_id",
     "archive_id",
@@ -56,6 +59,7 @@ def map_archive_receipt(
     missing = sorted(_REQUIRED - receipt.keys())
     if missing:
         raise RiopaMappingError("missing_" + missing[0])
+    _validate_receipt_shape(receipt)
     digest = receipt["sha256"]
     object_id = receipt["object_id"]
     if not isinstance(digest, str) or not _SHA256.fullmatch(digest):
@@ -137,12 +141,32 @@ def _canonical_bytes(value: Mapping[str, Any]) -> bytes:
     ).encode()
 
 
+def _validate_receipt_shape(receipt: Mapping[str, Any]) -> None:
+    for field in (
+        "receipt_id",
+        "archive_id",
+        "source_url",
+        "revision",
+        "status",
+        "observed_at",
+    ):
+        if not isinstance(receipt[field], str) or not receipt[field]:
+            error_class = f"invalid_{field}"
+            raise RiopaMappingError(error_class)
+    for field in ("rights", "capability", "source_health", "legal_status"):
+        if not isinstance(receipt[field], Mapping):
+            error_class = f"invalid_{field}"
+            raise RiopaMappingError(error_class)
+
+
 def _is_uri(value: str) -> bool:
     parsed = urlparse(value)
     return bool(parsed.scheme and (parsed.netloc or parsed.scheme == "urn"))
 
 
 def _is_datetime(value: str) -> bool:
+    if not _RFC3339.fullmatch(value):
+        return False
     try:
         datetime.fromisoformat(value)
     except ValueError:
