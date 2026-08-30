@@ -1,0 +1,32 @@
+{
+  "donor_repository": "https://github.com/edithatogo/fyi-archive",
+  "donor_revision": "cba7b0dec2734bdc9ff51c69610fc55cb1fc5aa1",
+  "files": [
+    {
+      "source_path": "src/fyi_archive/config/archive_instances.json",
+      "local_file": "donor-instances.json",
+      "sha256": "35d95fffaf0d3060731a29be9448a168b7612e07a493ad67c416477282a0f537"
+    },
+    {
+      "source_path": "configs/additional_foi_archive_sites.json",
+      "local_file": "donor-additional-sites.json",
+      "sha256": "2a9f873ff5b45ccc02cc14cffb8a32dedd7c11ea4663f42b8f8aa5d9d746d819"
+    },
+    {
+      "source_path": "configs/jurisdiction_archive_targets.json",
+      "local_file": "donor-jurisdiction-targets.json",
+      "sha256": "343c840250ed97bb190966e04bf2a2a1fee1bb4d3fd20f565010d4fd871447e5"
+    }
+  ],
+  "scope": "Unmodified registry seeds only; no payload, rights promotion or capture evidence imported.",
+  "universe": {
+    "local_file": "country-universe.json",
+    "sha256": "c8b3e1195a5160d4be94cbdf588b56dd216b3e34bf8adb86452613a546cb831d",
+    "source_url": "https://unstats.un.org/unsd/methodology/m49/overview/",
+    "kind": "UN statistical geography plus explicit project extensions"
+  },
+  "hf_snapshot": {
+    "local_file": "hf-repository-snapshot.json",
+    "sha256": "168fb3d1c3cad278b8e384e181b5761b12e25f1bf043415503d0ab68afe8ebc8"
+  }
+}

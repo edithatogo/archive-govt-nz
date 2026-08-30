@@ -3,7 +3,7 @@
   "type": "feature",
   "status": "in_progress",
   "created_at": "2026-08-30T08:38:22Z",
-  "updated_at": "2026-08-30T09:22:26.923570Z",
+  "updated_at": "2026-08-30T10:15:37.363643+00:00",
   "description": "Global FOI source catalogue, metadata indexes, public raw preservation and automation repair; archive-govt-nz takeover approved.",
   "evidence_schema": "1.0",
   "approval_status": "approved",
@@ -107,6 +107,22 @@
   "validation": {
     "phase_0": "passed",
     "receipt": "phase-0-validation.json",
-    "system_ready": false
+    "system_ready": false,
+    "phase_2_foundation": "passed",
+    "phase_2_receipt": "phase-2-catalogue-validation.json"
+  },
+  "implementation": {
+    "baseline_pr": "https://github.com/edithatogo/archive-govt-nz/pull/244",
+    "donor_repair_pr": "https://github.com/edithatogo/fyi-archive/pull/403",
+    "donor_repair_merge": "b6e78703d871082433fb33f8fa610761c2eb4062",
+    "catalogue_commit": "c1bf57b",
+    "hosted_diagnosis_run": "https://github.com/edithatogo/fyi-archive/actions/runs/33305391040",
+    "hosted_diagnosis_state": "success",
+    "public_raw_publication": "not_performed",
+    "cutover": "not_performed",
+    "hosted_recovery_run": 33305733977,
+    "hosted_recovery_state": "success",
+    "bounded_capture_run": 33305989413,
+    "bounded_capture_state": "queued"
   }
 }

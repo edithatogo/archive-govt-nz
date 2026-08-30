@@ -1,0 +1,302 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "universe_source",
+    "provenance",
+    "entities",
+    "sources",
+    "jurisdictions",
+    "coverage"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "archive-govt-nz.foi-source-catalogue/v1"
+    },
+    "universe_source": {
+      "type": "string",
+      "minLength": 1
+    },
+    "provenance": {
+      "type": "object"
+    },
+    "entities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name",
+          "m49",
+          "iso_alpha3",
+          "region",
+          "kind",
+          "basis",
+          "source_ids",
+          "known_sources",
+          "total_requests",
+          "disposition",
+          "complete_verified",
+          "evidence_basis"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "m49": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "iso_alpha3": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "region": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "kind": {
+            "enum": [
+              "country_or_area",
+              "separately_tracked_jurisdiction",
+              "supranational"
+            ]
+          },
+          "basis": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true
+          },
+          "known_sources": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "total_requests": {
+            "type": "null"
+          },
+          "disposition": {
+            "enum": [
+              "review_required",
+              "discovery_required"
+            ]
+          },
+          "complete_verified": {
+            "const": false
+          },
+          "evidence_basis": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "entity_id",
+          "declared_jurisdiction",
+          "origins",
+          "hf_repo_id",
+          "hf_revision",
+          "hf_observed_at",
+          "declared_adapter_modes",
+          "declared_registry_status",
+          "disposition",
+          "rights_status",
+          "privacy_status",
+          "capture_verified",
+          "raw_publication_verified",
+          "total_requests"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "entity_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "declared_jurisdiction": {
+            "type": "string",
+            "minLength": 1
+          },
+          "origins": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true
+          },
+          "hf_repo_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "hf_revision": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[0-9a-f]{40}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "hf_observed_at": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "declared_adapter_modes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true
+          },
+          "declared_registry_status": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "disposition": {
+            "enum": [
+              "restricted",
+              "review_required"
+            ]
+          },
+          "rights_status": {
+            "enum": [
+              "restricted",
+              "pending_review"
+            ]
+          },
+          "privacy_status": {
+            "const": "pending_review"
+          },
+          "capture_verified": {
+            "const": false
+          },
+          "raw_publication_verified": {
+            "const": false
+          },
+          "total_requests": {
+            "type": "null"
+          }
+        }
+      }
+    },
+    "jurisdictions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "entity_id",
+          "declared_status",
+          "capture_verified",
+          "publication_authorized"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "entity_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "declared_status": {
+            "type": "string",
+            "minLength": 1
+          },
+          "capture_verified": {
+            "const": false
+          },
+          "publication_authorized": {
+            "const": false
+          }
+        }
+      }
+    },
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "geographic_entities",
+        "supranational_entities",
+        "known_sources",
+        "target_regimes",
+        "remaining_unverified",
+        "verified_complete",
+        "total_requests",
+        "payload_publication_authorized"
+      ],
+      "properties": {
+        "geographic_entities": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "supranational_entities": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "known_sources": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "target_regimes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "remaining_unverified": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "verified_complete": {
+          "const": 0
+        },
+        "total_requests": {
+          "type": "null"
+        },
+        "payload_publication_authorized": {
+          "const": false
+        }
+      }
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Discovery-stage source catalogue. Schema deliberately cannot assert capture or raw publication; verified archival evidence uses a separate later contract."
+}

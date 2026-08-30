@@ -58,3 +58,11 @@ Live inventory: 23/23 Hugging Face repos anonymously public and ungated, 29 site
 ## Hosted baseline correction
 
 PR #244 exposed concurrent append-only health observations. Fix `e92845b` pins the original evidence byte prefix without freezing new entries. Integrated current main; full harness passed 1498 tests and 95.95% coverage. Corrected hosted checks remain pending. Receipt: phase-0-ci-correction.json.
+
+## Active-owner repair and country catalogue
+
+Merged donor repair PR #403 after exact-head green hosted checks. Merge: b6e78703d871082433fb33f8fa610761c2eb4062. Dispatched diagnosis-only recovery run 33305391040; no queue mutation is claimed. Implementation and tests for P1.1-P1.4 are complete; P1.5 hosted recovery/public readback remains open.
+
+Committed source-catalogue foundation c1bf57b and integrated the corrected baseline/latest main in 248dd39, preserving both FOI and health schema registrations. The local candidate contains entities.jsonl, sources.jsonl, jurisdictions.jsonl, coverage.json, coverage.md and manifest.json. P2.1 is complete; P2.2-P2.3 remain in progress because country source assessments and public delivery are not done. Publication and takeover remain pending. The donor's separate AU/NSW private-retention destination stays private.
+
+Hosted recovery 33305733977 succeeded: exact failed lease released, credited coverage unchanged, next offset 17225. One-request/no-continuation capture 33305989413 is queued. Full catalogue harness passed 1522 tests, 95.98% coverage, all stages. Legacy HF publication evidence fabrication was discovered during publisher selection; isolated fail-closed correction is under validation on codex/foi-publication-guard, not treated as real delivery.

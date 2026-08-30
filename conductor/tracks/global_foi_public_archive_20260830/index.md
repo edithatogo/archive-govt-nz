@@ -1,6 +1,6 @@
 # Global FOI source catalogue, metadata and public raw archive
 
-Approved track, initialized for execution; not an implemented or published archive.
+Approved track in progress. Automation repair and source-catalogue foundations are implemented; worldwide raw preservation and takeover are not complete.
 
 - [Specification](./spec.md)
 - [Requirements](./requirements.md)
@@ -22,3 +22,6 @@ Approved track, initialized for execution; not an implemented or published archi
 - [Artifact retention summary](artifact-inventory-summary.json)
 - [Phase 0 validation](phase-0-validation.json)
 - [Historical byte-preservation record](historical-format-reconciliation.json)
+
+- [Hosted exact-lease recovery](phase-1-hosted-recovery.json)
+- [Source catalogue foundation validation](phase-2-catalogue-validation.json)

@@ -936,7 +936,8 @@
     "23 instances, 29 sites and 42 regimes are different denominators; none is a world-country universe.",
     "Rights and privacy eligibility remain pending in the canonical jurisdiction ledger.",
     "Original capture artifacts are not restored or re-published by this audit.",
-    "fyi-archive remains operational owner; no cutover observed."
+    "fyi-archive remains operational owner; no cutover observed.",
+    "The AU/NSW workflow requires separate private retention; the 23 public registry identities do not cover every private or experimental capture destination. No private-retention policy was changed."
   ],
   "capture_adapter": {
     "name": "fyi-cli",
