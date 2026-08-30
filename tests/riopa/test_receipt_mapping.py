@@ -30,6 +30,7 @@ def _receipt(**overrides: object) -> dict[str, object]:
 
 
 def test_mapping_is_content_addressed_and_deterministic() -> None:
+    """Equivalent archived receipts produce byte-stable identities."""
     first = map_archive_receipt(_receipt())
     second = map_archive_receipt(_receipt())
 
@@ -51,11 +52,13 @@ def test_mapping_is_content_addressed_and_deterministic() -> None:
 def test_mapping_fails_closed_on_stale_or_drifted_identity(
     field: str, value: object, error: str
 ) -> None:
+    """Stale or drifted identities are rejected before projection."""
     with pytest.raises(RiopaMappingError, match=error):
         map_archive_receipt(_receipt(**{field: value}), expected_revision="rev-1")
 
 
 def test_partial_and_unresolved_receipts_are_quarantined() -> None:
+    """Partial captures and unresolved rights remain non-eligible."""
     partial = map_archive_receipt(_receipt(status="partial"))
     unresolved = map_archive_receipt(
         _receipt(rights={"status": "unresolved", "basis": None})
@@ -68,5 +71,21 @@ def test_partial_and_unresolved_receipts_are_quarantined() -> None:
 
 
 def test_mapping_rejects_non_content_addressed_receipts() -> None:
+    """Opaque object identifiers cannot enter the RIOPA projection."""
     with pytest.raises(RiopaMappingError, match="invalid_object_id"):
         map_archive_receipt(_receipt(object_id="object:opaque"))
+
+
+@pytest.mark.parametrize(
+    ("field", "value", "error"),
+    [
+        ("source_url", "not-a-uri", "invalid_source_url"),
+        ("observed_at", "not-a-date", "invalid_observed_at"),
+    ],
+)
+def test_mapping_rejects_schema_invalid_receipts(
+    field: str, value: object, error: str
+) -> None:
+    """Schema-invalid source metadata is rejected before projection."""
+    with pytest.raises(RiopaMappingError, match=error):
+        map_archive_receipt(_receipt(**{field: value}))
