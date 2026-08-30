@@ -66,7 +66,7 @@ def test_duplicate_or_unmapped_seed_identity_fails(which: str) -> None:
         "https://127.0.0.1/",
         "https://10.0.0.1/",
         "https://example.org/?token=private",
-        "https://user:pass@example.org/",
+        "https://user:pass@example.org/",  # pragma: allowlist secret (synthetic)
         "http://example.org/",
         "https://private.local/",
     ],
