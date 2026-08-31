@@ -220,6 +220,14 @@ repository validation command. External gates block only their affected task.
 
 ### 3.2 Implement the domain and adapter protocol
 
+- [x] Project reviewed historical Health/GDP facts and field lineage into the
+  canonical Arrow shapes with exact Decimal bounds, vintage-aware identities,
+  unknown starts, period dependencies and complete mapped/retained lineage
+  accounting. Keep input verification and publication separate. [M-05, M-06,
+  M-07, M-18; AC-05, AC-16]
+  (121 focused tests, 129/129 cold mutants, 2,866 native tests; see
+  `historical-projection.md`; other source projections remain pending.)
+
 - [ ] Register the dedicated health-appropriations domain and versioned
   multi-recordset schemas without weakening other domain contracts. [M-05;
   AC-05]
