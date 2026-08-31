@@ -56,3 +56,9 @@ samples, 9/9 parity, all repository mutation/security/supply-chain gates and
 Two owned timestamp-only fixture diffs were restored after the process ended.
 Hosted assurance remains pending; originals, derivatives and publication are
 unchanged. This successful harness does not add a semantic or rights claim.
+
+After integrating main `3be3048` at `f286de5`, 118 focused reader/JSON/Conductor
+tests passed in 6.20 seconds and all 74 Conductor tracks validate. Incoming
+machine evidence remains the exact prefix followed by two reader events.
+Reader source and test hashes are unchanged; this focused post-integration
+check is not a second full native run.
