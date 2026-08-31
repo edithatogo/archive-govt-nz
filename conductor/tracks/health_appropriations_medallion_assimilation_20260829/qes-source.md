@@ -99,3 +99,10 @@ CAS benchmark394.43MB/s. Durable log SHA256
 exit receipt contains0. Four unrelated timestamp-only generated receipt changes
 were restored after validation. No gates or deadlines were lowered. Hosted
 exact-head checks and delivery are a separate pending boundary.
+
+Postintegration: mainad28694 (observed merged Arrow-registry PR293) was merged
+after the native run. Only the shared ledger required conflict resolution;
+the incoming ledger remains an exact prefix and the three QES/MoH receipts
+follow it unchanged. QES production/tests are unchanged;53focused QES/Conductor
+tests passed7.72seconds. Full native assurance above predates this integration;
+the new exact head requires hosted checks.

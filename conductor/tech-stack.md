@@ -306,3 +306,12 @@ rights, security exceptions, and destructive actions.
 ### FOI WARC adapter — 2026-08-31
 
 Use warcio 1.8.1-compatible 1.x for reading preserved WARC responses, matching the pinned fyi-cli adapter. Expand its single outer gzip member under a byte budget and hash stored payload streams without repeating HTTP decoding. This implements the already-approved WARC preservation format; CAS, JSONL/Parquet and deterministic tar packages remain authoritative. No new storage service is introduced.
+
+### Bounded CI test parallelism
+
+The three-platform CI gate selects the existing two-worker `loadscope` pytest
+lane. A post-merge Windows serial run exceeded the unchanged 300-second test
+bound at 88% despite a prior green run. Two workers preserve all tests, coverage
+thresholds and stage limits while reducing serial execution time. The manifest
+property generates 32-byte digests and converts them to hex, preserving the full
+64-character SHA-256 input space with less per-character generation overhead.

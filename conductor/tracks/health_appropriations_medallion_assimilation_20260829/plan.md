@@ -90,10 +90,12 @@ repository validation command. External gates block only their affected task.
 
 ### 1.3 Characterize every donor binary and derivative
 
-- [~] Observe embedded copyright/licence notices for the three exact reviewed
+- [x] Observe embedded copyright/licence notices for the three exact reviewed
   legacy workbook hashes; emit bounded hash-bound cell evidence without source
   text, original modification, network access or eligibility promotion.
   Reject unsupported/tampered inputs. [M-04, M-07, M-18; AC-04, AC-16]
+  (PR #285 observed merged `5ff01ff`, seven exact-head checks; local native
+  timing failure and isolated retry evidence remain retained.)
 
 - [x] Record hash-pinned static behavior and compile characterization of all
   three donor scripts without executing their side effects. [M-09; AC-07]
@@ -194,6 +196,13 @@ repository validation command. External gates block only their affected task.
 
 ### 3.1 Schema contracts first
 
+- [x] Establish an additive immutable Arrow registry for all eight record-set
+  shapes, with nullable unknown valid times, source precision and provenance;
+  test Parquet round trips without rewriting or promoting v1 source packages.
+  Row-level semantic validation and source projections remain separate tasks.
+  Functional commit `d67bd41`; 34 focused tests, 30 cold mutant kills and a
+  full local harness pass with 2,424 tests. Hosted delivery remains separate.
+  [M-05, M-06, M-18; AC-05, AC-16]
 - [ ] Add failing JSON Schema/Arrow/Parquet fixtures for the eight required
   `health_appropriations` record sets, versioning, stable IDs, fixed-precision
   money, null reasons, units, vintages, bitemporal fields, rights and lineage.
@@ -315,6 +324,14 @@ repository validation command. External gates block only their affected task.
 ## Phase 5 — Longitudinal Silver expansion and contextual data
 
 ### 5.1 Source-family contracts first
+
+- [~] Normalize the retained Pharmac medicines-budget HTML profile into
+  pharmaceutical-budget facts, preserving all 14 financial-year rows, supplied
+  changes/percentages, literal missing markers and trailing empty cells. Bind
+  July–June dates to the page's explicit definition; retain caption mismatch
+  and 2022 budget-holder reform context without claiming actual expenditure,
+  cross-regime equivalence, or new publication rights. [M-05, M-06, M-07,
+  M-11, M-18; AC-05, AC-09, AC-11, AC-16]
 
 - [x] Register bounded BEFU-2026/v1 and HYEFU-2025/v1 literal Health-summary
   contracts from retained originals, with version-specific sheets, coordinates,

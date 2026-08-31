@@ -520,3 +520,25 @@ documents, 9/9 parity checks, all mutation and supply-chain checks, and a
 110-component SBOM. Evidence is local; hosted CI is separately verified.
 Originals and the existing HF publication were not changed. Cache freshness,
 complete format support and donor retirement are not claimed.
+## 2026-08-31 — Eight-record-set structural foundation
+
+Functional commit `d67bd41` adds eight immutable structural Arrow schemas,
+not row validation or source promotion. The final focused suite passes 34
+tests with 100% coverage (10 statements, no branches). Cold unfiltered
+one-worker mutation testing killed all 30 mutants in 45.41 seconds: zero
+survivors, timeouts, errors, pardons or cache hits. Report SHA-256:
+`bfe6dc084d9533d64ce7fd2c977d56ff204c63209e57e98418e026f6665a0248`.
+Ruff and strict typing pass. Independent review requested complete field-type
+and nullability assertions; those are included before mutation assurance.
+Exact Parquet nested shapes and DuckDB-compatible decimal bounds are tested.
+The full native harness remains pending at this receipt. No v1 schema,
+source package, original or publication was changed.
+## 2026-08-31 — Record-set full local pass
+
+The full native harness at `6895083` completed exit 0 with 2,424 tests,
+96.98% coverage, 41 schemas/31 samples, 9/9 parity and all mutation/security/
+supply-chain gates. The durable log hashes to
+`fdea8f19263999b33dea5583e6635dc5477ff730c4697f8f55d1c665d61f6507`.
+This satisfies local assurance for the bounded structural registry; row-level
+validation, canonical projections, full Phase 3 completion and hosted delivery
+are not inferred from it. No existing source package or publication changed.

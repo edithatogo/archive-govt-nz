@@ -18,6 +18,22 @@ Critical coverage/mutation passed, but native assurance remains incomplete:
 exit 124 at 300 seconds with two unidentified failure markers and no final
 summary. Preserve that receipt and require exact-head hosted adjudication;
 do not mark the whole track or publication gate complete.
+## Pharmac published-budget profile — 2026-08-31
+
+- Parent independently reviewed the strict table/physical-cell profile, fiscal
+  definition and reform/caption boundaries. One finding: missing normalized
+  lineage serialized as string `None`; corrected to true schema null after
+  a red regression, preserving the original `-` token and missing status.
+- Exact decimals receive zero-padding only; published changes and rounded
+  percentages are not recomputed. Original HTML and the separate missing,
+  padding, header and policy-context evidence remain preserved.
+- Source mutation, network execution, rights promotion and publication are
+  absent. The parser is a bounded reviewed-profile reader, not a browser or
+  general HTML display-truth evaluator. Other page content remains in Bronze.
+- Focused 69 tests, 100% critical coverage and cold unfiltered 93/93 mutation
+  kills pass. No survivors/timeouts/errors/pardons/cache hits. Native harness
+  passed at `677326a` (2,459 tests, 97.01% overall coverage); hosted delivery
+  remains pending. Four archive-copy files match both retained pilots exactly.
 
 ## Plot context-style regression — 2026-08-31 UTC
 
@@ -536,3 +552,13 @@ reported as complete.
   operation is exposed. Existing defusedxml is reused without dependency changes.
 - Focused and mutation gates pass. The native CPI timing failure and isolated
   passing diagnostic remain visible; complete local assurance is not claimed.
+## 2026-08-31 — Structural record-set review
+
+Review is bounded to the additive eight-shape registry. It grants no
+semantic projection, rights or full M-05 completion. Self-review caught and
+corrected Parquet nested-list naming drift and rejected a Decimal256 carrier
+unsupported by the locked DuckDB runtime. Wider original values remain
+preserved; future projections must fail exactly rather than round them.
+Independent read-only review found no actionable production issue and
+requested full field type/nullability tests; those now pass together with
+all 30 cold mutants. Native and hosted assurance remain distinct gates.

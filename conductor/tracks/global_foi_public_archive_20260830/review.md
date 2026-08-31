@@ -127,3 +127,7 @@ they remain on one physical disk and are not independently replicated or public.
   approval was fabricated.
 - Full repository and hosted deployment evidence remain pending at this review
   checkpoint; no cutover, public raw upload or complete-system claim is made.
+
+## Deployed bounded controls review
+
+PR #288 passed three-platform assurance, CodeQL and workflow checks. Live evidence verifies exact-parent conflict rejection, persistence across local and hosted processes, private capture completion without public credit, and unchanged authority during read-only hosted health. Source discovery, continuous acquisition, source eligibility, publisher enforcement, public raw restore and donor transfer remain open. The track stays in progress; local timeout and Windows correction receipts remain preserved. See shared-execution-deployment-20260831.json.

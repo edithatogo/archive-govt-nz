@@ -1,0 +1,41 @@
+{
+  "schema_version": "archive-govt-nz.foi-validation-followup/v1",
+  "recorded_at": "2026-08-31T13:53:02.874425Z",
+  "local_attempt": {
+    "command": "./scripts/validate.sh",
+    "exit_code": 1,
+    "passed_tests": 2388,
+    "failed_tests": 2,
+    "coverage_percent": 96.98,
+    "test_elapsed_seconds": 188.38,
+    "log_sha256": "b67c55c581814457ead5eebfa5c15d23eca3d9dbb61ae73bca048f64309d49bf",
+    "failures": [
+      "Nested acceptance subprocess exceeded its 10-second bound and TimeoutExpired escaped.",
+      "Hypothesis manifest property exceeded its default 200ms deadline once (253.62ms), then completed in 0.11ms; reported as FlakyFailure, not a property counterexample."
+    ]
+  },
+  "corrections": [
+    "Acceptance timeouts return a failed sanitized receipt with null exit code and no evidence hash; no retry or timeout increase.",
+    "CI selects existing two-worker loadscope lane, preserving all test and coverage gates and 300-second stage caps.",
+    "Digest generation uses 32 binary bytes converted to hex, preserving the entire 64-character hexadecimal input space. This reduces generation overhead but does not prevent OS scheduling delays; default property deadlines remain unchanged.",
+    "Preservation evaluation and evidence-ledger test subprocesses use per-test output destinations; CLI defaults remain unchanged. This removes identified cross-module output races before enabling parallel CI."
+  ],
+  "focused_verification": {
+    "acceptance_tests_passed": 4,
+    "property_with_prior_seed_passed": 1,
+    "ruff": "passed",
+    "basedpyright": "passed"
+  },
+  "full_followup": {
+    "exit_code": 0,
+    "passed_tests": 2393,
+    "coverage_percent": 96.98,
+    "test_elapsed_seconds": 116.49,
+    "log_sha256": "ee89adf895228fa5e8c7d61977055a12b3c7d8f51dd9759b6ef058b465543bc3",
+    "scope": "Full harness on deployment branch before subsequent preservation/ledger output-isolation tests and integration of newer main. Those changes require separate validation.",
+    "all_stages_passed": true
+  },
+  "public_raw_uploads": 0,
+  "policy_approval": "pending",
+  "cutover_performed": false
+}

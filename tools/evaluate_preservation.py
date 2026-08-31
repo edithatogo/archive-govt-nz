@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import argparse
 import json
 from pathlib import Path
 
@@ -16,8 +17,11 @@ ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "evidence" / "preservation-packaging-evaluation.json"
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
     """Write machine-readable evidence for the three candidate standards."""
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--output", type=Path, default=OUTPUT)
+    output = parser.parse_args(argv).output
     evaluation = {
         "schema_version": "archive-govt-nz.preservation-evaluation/v1",
         "scope": "bounded Treasury vertical-slice fixtures",
@@ -111,11 +115,12 @@ def main() -> int:
         ),
         "conformance_claim": "bounded-structural-evaluation-only",
     }
-    OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    OUTPUT.write_text(
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(
         json.dumps(evaluation, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
     )
-    print(f"wrote {OUTPUT.relative_to(ROOT)}")
+    display = output.relative_to(ROOT) if output.is_relative_to(ROOT) else output
+    print(f"wrote {display}")
     return 0
 
 
