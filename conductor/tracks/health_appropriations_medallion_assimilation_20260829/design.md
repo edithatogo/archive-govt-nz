@@ -1,5 +1,13 @@
 # Design: New Zealand Health Appropriations Medallion Assimilation
 
+## Bounded quarterly GDP profile
+
+The Stats NZ March-2026 workbook adds a source-specific literal quarterly
+expenditure-actual adapter; [its contract](./gdp-profile.md) retains complete
+nonempty cell dispositions and separate price/adjustment/unit context. It does
+not feed annual Gold ratios or assert canonical semantic promotion. Originals
+and other series remain in Bronze, with no source rewriting.
+
 ## Source-derived analytical boundary
 
 The bounded Ministry HAIR2024 CSV path emits a distinct
