@@ -24,6 +24,10 @@ VALIDATION_PAIRS = (
         REPOSITORY_ROOT / "tests" / "fixtures" / "health-raw-gold-sample-v1.json",
     ),
     (
+        REPOSITORY_ROOT / "schemas" / "foi-package-v2.schema.json",
+        REPOSITORY_ROOT / "tests" / "fixtures" / "foi-package-sample-v2.json",
+    ),
+    (
         REPOSITORY_ROOT / "schemas" / "foi-package-v1.schema.json",
         REPOSITORY_ROOT / "tests" / "fixtures" / "foi-package-sample-v1.json",
     ),

@@ -18,6 +18,7 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 from warcio.archiveiterator import ArchiveIterator
 
+from archive_govt_nz.foi_attachments import attachment_index
 from archive_govt_nz.object_store import ContentAddressedStore
 
 if TYPE_CHECKING:
@@ -27,7 +28,17 @@ MAX_BYTES = 2 * 1024**3
 MAX_FILES = 10000
 MAX_JSON = 8 * 1024**2
 HASH = re.compile(r"[0-9a-f]{64}")
-SCHEMA = "archive-govt-nz.foi-package/v1"
+LEGACY_SCHEMA = "archive-govt-nz.foi-package/v1"
+SCHEMA = "archive-govt-nz.foi-package/v2"
+BASE_TABLES = ("objects", "resources", "requests", "events")
+
+
+def _table_names(manifest: dict[str, Any]) -> tuple[str, ...]:
+    return (
+        BASE_TABLES
+        if manifest["schema_version"] == LEGACY_SCHEMA
+        else (*BASE_TABLES, "attachments")
+    )
 
 
 class FOIPackageError(ValueError):
@@ -302,6 +313,8 @@ def _indexes(
     store: ContentAddressedStore,
     inventory: dict[str, Any],
     context: dict[str, str],
+    *,
+    include_attachments: bool = True,
 ) -> dict[str, list[dict[str, Any]]]:
     objects = [
         _original_file(root, store, row, context)
@@ -316,7 +329,7 @@ def _indexes(
         }
     )
     responses = _responses(root, store)
-    resources, requests, events = [], [], []
+    resources, requests, events, attachments = [], [], [], []
     claimed: set[str] = set()
     request_ids: set[str] = set()
     state = _IndexState(root, store, objects, responses, context, claimed, resources)
@@ -340,6 +353,22 @@ def _indexes(
                 "source_path": path.relative_to(root).as_posix(),
             }
         )
+        if include_attachments:
+            html_resource = next(
+                r
+                for r in resources
+                if r["request_id"] == case_id and r["kind"] == "html"
+            )
+            attachments.extend(
+                {**context, **row}
+                for row in attachment_index(
+                    html_resource["source_url"],
+                    (path.parent / "page.html").read_text(encoding="utf-8"),
+                    document,
+                    [r for r in resources if r["request_id"] == case_id],
+                    case_id,
+                )
+            )
         seen = set()
         for index, event in enumerate(document.get("info_request_events", [])):
             event_id = str(event["id"])
@@ -369,6 +398,7 @@ def _indexes(
         "resources": resources,
         "requests": requests,
         "events": events,
+        "attachments": attachments,
     }
 
 
@@ -490,7 +520,7 @@ def verify_package(root: Path) -> dict[str, Any]:
     """Check every published candidate byte and every indexed raw object."""
     manifest = load_json(safe_path(root, "manifest.json"))
     if (
-        manifest.get("schema_version") != SCHEMA
+        manifest.get("schema_version") not in {SCHEMA, LEGACY_SCHEMA}
         or manifest.get("publication_status") != "not_published"
     ):
         _fail("invalid_package_manifest")
@@ -511,7 +541,7 @@ def verify_package(root: Path) -> dict[str, Any]:
             _fail("package_byte_budget_exceeded")
     required = {"manifest.json", "raw.tar", "README.md"} | {
         f"indexes/{name}.{extension}"
-        for name in ("objects", "resources", "requests", "events")
+        for name in _table_names(manifest)
         for extension in ("jsonl", "parquet")
     }
     if names != _files(root) or names != required:
@@ -547,10 +577,7 @@ def _verify_table_context(
 
 
 def _verify_indexes(root: Path, manifest: dict[str, Any]) -> None:
-    tables = {
-        name: _read_rows(root, name)
-        for name in ("objects", "resources", "requests", "events")
-    }
+    tables = {name: _read_rows(root, name) for name in _table_names(manifest)}
     for name, rows in tables.items():
         _verify_table_context(root, name, rows, manifest)
     requests = {
@@ -571,6 +598,7 @@ def _verify_indexes(root: Path, manifest: dict[str, Any]) -> None:
     for row in tables["events"]:
         if requests.get(row["request_id"]) != row["original_json_sha256"]:
             _fail("orphan_event")
+    _verify_attachments(tables)
     if manifest["counts"] != {
         "requests": len(requests),
         "responses": len(tables["resources"]),
@@ -578,6 +606,35 @@ def _verify_indexes(root: Path, manifest: dict[str, Any]) -> None:
         "original_files": len(tables["objects"]),
     }:
         _fail("package_count_mismatch")
+
+
+def _verify_attachments(tables: dict[str, list[dict[str, Any]]]) -> None:
+    requests = {row["request_id"] for row in tables["requests"]}
+    events = {(row["request_id"], row["event_id"]) for row in tables["events"]}
+    captured = {
+        (row["request_id"], row["source_url"]): row["sha256"]
+        for row in tables["resources"]
+        if row["kind"] == "attachment"
+    }
+    seen = set()
+    for row in tables.get("attachments", []):
+        key = (row["request_id"], row["source_url"])
+        expected_status = "retained" if key in captured else "not_retained"
+        if (
+            key in seen
+            or row["request_id"] not in requests
+            or row["status"] != expected_status
+            or row["sha256"] != captured.get(key)
+            or row["http_status"] is not None
+            or (
+                row["event_id"] is not None
+                and (row["request_id"], row["event_id"]) not in events
+            )
+        ):
+            _fail("invalid_attachment_index")
+        seen.add(key)
+    if "attachments" in tables and not captured.keys() <= seen:
+        _fail("incomplete_attachment_index")
 
 
 def _verify_raw_archive(root: Path) -> None:
@@ -651,8 +708,15 @@ def restore_package(package: Path, output: Path) -> None:
                 key: manifest[key] for key in CaptureContext.__dataclass_fields__
             }
             rebuilt = _indexes(
-                stage, ContentAddressedStore(Path(cas_root)), inventory, context
+                stage,
+                ContentAddressedStore(Path(cas_root)),
+                inventory,
+                context,
+                include_attachments=manifest["schema_version"] != LEGACY_SCHEMA,
             )
-            if any(rows != _read_rows(package, name) for name, rows in rebuilt.items()):
+            if any(
+                rebuilt[name] != _read_rows(package, name)
+                for name in _table_names(manifest)
+            ):
                 _fail("restored_index_semantics_mismatch")
         stage.rename(output)
