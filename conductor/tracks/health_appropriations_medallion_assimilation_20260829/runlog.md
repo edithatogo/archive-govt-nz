@@ -1277,3 +1277,52 @@ path with the 34 schema tests. Production/test hashes remain unchanged and the
 entire incoming machine ledger was verified byte-for-byte as a prefix before
 appending the two owned schema receipts. This does not replace the separately
 recorded pre-integration full harness.
+## 2026-08-31 — JSON row-shape red and focused phase
+
+The new JSON-schema test initially failed collection with the expected missing
+`health_recordset_json` module (exit 2). Initial implementation passed 37 tests;
+Ruff identified a long description line and test parameter container style,
+corrected without changing policy. Expanded exact-decimal property and integer
+boundary checks then passed 40 tests with 100% critical coverage (17 statements,
+two branches). An additional unsupported-binary-type regression proves there
+is no generic text fallback. Native/mutation gates remain pending for this
+increment; earlier Arrow-only native assurance is not reused as full coverage.
+No original, existing schema, stored derivative or publication was changed.
+
+### JSON final focused assurance
+
+The final 51 tests passed with 100% line/branch coverage (17 statements, two
+branches). Ten seeded descriptor counterexamples separately check weakened
+generated contracts; they are not additional source-code mutations. Two
+independent read-only reviews found no actionable structural-scope defect.
+The final cold, unfiltered one-worker mutation command used all 51 tests:
+`uv run pytest tests/schemas/test_health_recordset_json.py -q --gremlins --gremlin-targets=src/archive_govt_nz/schemas/health_recordset_json.py --gremlin-report=json --gremlin-parallel --gremlin-workers=1 --gremlin-clear-cache --gremlin-no-coverage-filter --strict-pardons --gremlin-max-pardons-pct=0 --max-pardons=0 --no-cov`.
+It passed in 14.02 seconds, killing both generated mutants with zero survivors,
+cache hits, timeouts, errors or pardons. A coverage module-not-measured warning
+in this no-coverage mutation invocation is not the separate coverage result.
+Report SHA-256: `ff6d4618b8e5b523bbf405a0e442c0ced6e4ab37f0a638595e9ef53c0e23dd78`.
+Native assurance remains pending; publication and originals remain untouched.
+
+## 2026-08-31 — JSON integrated native assurance and delivered-state reconciliation
+
+At integrated head `d71d431`, the required
+`COVERAGE_CORE=ctrace PYTHON_JIT=0 PYTEST_XDIST_AUTO_NUM_WORKERS=4 ./scripts/validate.sh`
+completed with exit 0: 2,796 tests, eight warnings, 61.41 seconds, 97.05%
+coverage; 73 tracks; format/lint/strict types; 41 schemas/31 documents; 9/9
+parity; all repository mutation lanes; hygiene, audit, licences, secrets and
+111-component independently validated SBOM. CAS measured 526.31 MB/s.
+Native log SHA-256:
+`f7f73fe959b3a14f3642a20e557db43bc31cd437c839e603176db7f252ce17e2`.
+Two owned timestamp-only fixture diffs were restored after process completion.
+No original or stored derivative changed. JSON hosted delivery remains pending.
+
+Integration preserved incoming main `ad28694` and its complete evidence ledger,
+then appended the owned JSON receipt; conflicts were documentary only. Parent
+Arrow PR #293 was observed merged at head `5ffb651`, merge `ad28694`.
+Fresh REST readback also confirms Budget operations PR #280 (head `199c82b`,
+merge `113bac5`) and read-only inventory PR #290 (head `a8f54f5`, merge
+`07143c8`). Their two stale in-progress bounded tasks are reconciled without
+claiming broader operational or publication readiness. Prior local failures
+remain in the ledger. The attempted optional guide path
+`conductor/platform-guides.json` was absent; file discovery found no root
+platform-guide manifest. General/Python guides and repository workflow apply.

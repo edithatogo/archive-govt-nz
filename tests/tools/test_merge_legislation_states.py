@@ -196,6 +196,41 @@ def test_metadata_conflicts(tmp_path: Path, field: str) -> None:
     assert result["conflicts"][0]["resolution"] == "blocked_no_winner"
 
 
+@pytest.mark.parametrize(
+    ("first", "second", "expected"),
+    [
+        (
+            "2026-09-01T00:30:00+10:00",
+            "2026-08-31T23:00:00Z",
+            "2026-08-31T23:00:00Z",
+        ),
+        (
+            "2026-08-31T23:00:00Z",
+            "2026-09-01T09:00:00+10:00",
+            "2026-09-01T09:00:00+10:00",
+        ),
+        (
+            "2026-08-31T22:00:00Z",
+            "2026-08-31T23:00:00Z",
+            "2026-08-31T23:00:00Z",
+        ),
+    ],
+)
+def test_checkpoint_chronology_is_order_independent(
+    tmp_path: Path, first: str, second: str, expected: str
+) -> None:
+    """Latest instant wins; equal instants retain a deterministic source spelling."""
+    a = M.parent(*fixture(tmp_path))
+    b = copy.deepcopy(a)
+    a["checkpoint"]["last_updated"] = first
+    b["checkpoint"]["last_updated"] = second
+    result = M.canonical_merge([a, b])
+    assert result["checkpoint"]["last_updated"] == expected
+    assert result["manifest"]["generated_at"] == expected
+    assert result == M.canonical_merge([b, a])
+    assert result == M.canonical_merge([result, result])
+
+
 def test_changed_bytes_and_failed_execution(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:

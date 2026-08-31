@@ -89,8 +89,6 @@ remain `not_evaluated`; no canonical-schema semantic promotion is claimed.
 Annual/fiscal aggregation, currency qualification, denominator methodology and
 rights/publication remain separate future decisions.
 
-## Prior Pharmac hosted delivery
-
 ## GDP hosted Windows benchmark failure
 
 PR #302 head `d3f144e53d5204666ebc3c2027481ff9cdd57cf4` passed six checks,

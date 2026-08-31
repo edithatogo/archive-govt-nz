@@ -196,6 +196,9 @@ Its bounded Decimal128 carrier preserves representable source values; future
 projections must reject overflow, retain source precision and prove semantic
 and lineage closure. Unknown valid times are nullable, not invented from year
 tokens. Structural schema availability is not canonical source promotion.
+Fresh JSON row descriptors mirror these Arrow shapes with fixed-point decimal
+strings, explicit nullability and constant metadata. Format validation is
+caller-enabled; semantic source and cross-record validation remain separate.
 
 All records share:
 
