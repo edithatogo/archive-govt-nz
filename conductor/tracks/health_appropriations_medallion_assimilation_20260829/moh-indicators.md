@@ -77,7 +77,14 @@ This verifies extraction consistency, not the omitted analytical methodology.
   A bounded pure Decimal property retains its ordinary Hypothesis deadline.
 - One coverage invocation mistyped the module separator, collecting no data
   and exiting1 despite43passing tests. This is not reported as coverage success.
-- Mutation, full native and exact-head hosted assurance remain pending.
+- Corrected focused coverage passed:43tests,100% line and branch coverage
+  (65statements,12branches); Ruff and strict typing passed. Independent review
+  found no actionable production finding; tests additionally compare every
+  fact and disposition directly with parsed original rows.
+- Cold mutation of the full43-test selection killed33/33 mutants, with zero
+  survivors/cache hits and no coverage filtering or pardons, in202.30seconds.
+  Report SHA-256: `c3796413c7cb1fffe8d3348df43d071513cb04c1c14b07ecccc1bb9d484b8176`.
+- Full native and exact-head hosted assurance remain pending.
 
 Broader Ministry historical editions, verified base/method metadata, canonical
 real/per-capita derivation and publication remain pending; this does not
