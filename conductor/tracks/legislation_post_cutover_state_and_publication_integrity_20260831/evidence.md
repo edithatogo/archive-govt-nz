@@ -18,3 +18,5 @@ Repository-required workflow lint is tests/tools/test_workflow_policy.py, as
 executed by workflow-lint.yml. Its hosted check passes. The earlier blanket
 merge-blocking interpretation of the additional diagnostic was too broad; no
 required gate, threshold, scanner, workflow or finding has been suppressed.
+
+Superseding Prompt 03 delivery: PR #287 merged as 3ea0b405268bcb4e3bc12dc13ca0327108d044a6 after all seven exact-head checks passed. See prompt03-readback.json. This does not change the operational migration or publication completion dimensions.

@@ -12,7 +12,7 @@
     "passed",
     "superseded"
   ],
-  "blocking_input": "Prompts 04–21 have not been supplied; exact specialist scopes, defect ownership and acceptance gates cannot be invented.",
+  "blocking_input": "Prompts 04\u201321 have not been supplied; exact specialist scopes, defect ownership and acceptance gates cannot be invented.",
   "dimensions": {
     "code_capability_migration": {
       "state": "in_progress",
@@ -57,7 +57,10 @@
       "owned_paths": [
         {
           "path_parts": [
-            "conductor", "archive", "imported", "corpus-legislation-nz",
+            "conductor",
+            "archive",
+            "imported",
+            "corpus-legislation-nz",
             "b40587f1b1aec7356a0f623916fcc8212397d283"
           ],
           "kind": "directory"
@@ -92,8 +95,8 @@
       ],
       "issue": 284,
       "pr": 287,
-      "state": "in_progress",
-      "delivery": "draft_pr",
+      "state": "passed",
+      "delivery": "merged",
       "owned_paths": [
         "tools/verify_final_donor_state.py",
         "tests/tools/test_verify_final_donor_state.py",
@@ -112,7 +115,8 @@
         "zero reconciliation mismatches",
         "read-only local verified package"
       ],
-      "handoff": "evidence/migrations/corpus-legislation-nz/final-donor-state/verification-02/prompt04-inventory.json"
+      "handoff": "evidence/migrations/corpus-legislation-nz/final-donor-state/verification-02/prompt04-inventory.json",
+      "merge_commit": "3ea0b405268bcb4e3bc12dc13ca0327108d044a6"
     },
     {
       "owner_prompt": 4,
@@ -315,7 +319,7 @@
         11,
         12
       ],
-      "dependency_qualification": "04–12 as applicable; qualify after prompt supplied",
+      "dependency_qualification": "04\u201312 as applicable; qualify after prompt supplied",
       "merge_order": "topological dependency order; no implied permission to merge",
       "external_gates": [
         "no publication, DOI mutation, donor unarchive, secrets/settings changes or destructive actions without explicit applicable authorization"
@@ -417,7 +421,7 @@
         15,
         16
       ],
-      "dependency_qualification": "substantive outputs of 02–16",
+      "dependency_qualification": "substantive outputs of 02\u201316",
       "merge_order": "topological dependency order; no implied permission to merge",
       "external_gates": [
         "no publication, DOI mutation, donor unarchive, secrets/settings changes or destructive actions without explicit applicable authorization"
@@ -529,5 +533,7 @@
       "acceptance_evidence": [],
       "handoff": null
     }
-  ]
+  ],
+  "observed_at": "2026-08-31T13:32:26.415251+00:00",
+  "current_target_commit": "3ea0b405268bcb4e3bc12dc13ca0327108d044a6"
 }
