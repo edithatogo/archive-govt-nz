@@ -225,6 +225,15 @@ Bronze and visible in the inventory.
 
 ## Source-specific Silver extraction
 
+### Pharmac medicines-budget HTML
+
+The [bounded Pharmac profile](./pharmac-cpb.md) maps one retained table to
+pharmaceutical-budget facts, exact physical-cell dispositions and lineage.
+Supplied changes are not recalculated. Source dash markers remain null; empty
+layout padding remains preserved. The page's explicit July–June definition
+supports dates, while the caption discrepancy and 2022 budget-holder reform
+remain visible. Original HTML is not rewritten and rights stay unevaluated.
+
 ### Historical source precision and period contract
 
 Historical extraction reads literal numeric tokens from the validated OOXML
