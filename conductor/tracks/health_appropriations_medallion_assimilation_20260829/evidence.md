@@ -1,5 +1,22 @@
 # Evidence
 
+## Additive inventory planner — 2026-08-31 UTC
+
+`c6d0e37` implements fixity and recorded-rights reconciliation only. It performs
+no candidate construction, semantic Parquet validation, rights assessment or
+publication. All four pinned source packages retain their original manifests.
+Two live calls verify 94 base files / 39,390,246 bytes and 16 proposed additional
+files / 1,965,259 bytes, with identical receipt SHA-256
+`26102f7aa1ea2b4bce96ae9bf861d3838848d48606cd63bbc7ec19ad7fe86951`.
+
+Local focused assurance: 102 tests, 100% critical line/branch coverage and all
+78 cold unfiltered mutants killed with zero timeouts/errors/survivors/pardons.
+Independent review found no actionable issue. The required native harness
+passed pre-test gates but exited 124 at the 300-second test deadline after two
+unidentified failure markers; no final summary/coverage or post-test gates.
+This is incomplete native assurance, not a pass. Exact-head hosted checks are
+pending. Detailed commands and retained receipt hashes are in `runlog.md`.
+
 ## Plot context-style correction — 2026-08-31 UTC
 
 Three red regressions exposed a lost legend key for disconnected same-context
