@@ -245,7 +245,14 @@ def test_archive_abuse(tmp_path: Path, change: str) -> None:
     altered = stream.getvalue()
     if change == "name_normalization":
         altered = altered.replace(b"state/manifest.jsonX", b"state/manifest.json\x00")
-    with pytest.raises(D.v.VerificationError):
+    code = {
+        "duplicate": "package_duplicate",
+        "traversal": "package_path",
+        "symlink": "package_member_type",
+        "compressed": "package_member_type",
+        "name_normalization": "package_spelling",
+    }[change]
+    with pytest.raises(D.v.VerificationError, match=code):
         D.verify(altered, D.v.sha(altered))
 
 
