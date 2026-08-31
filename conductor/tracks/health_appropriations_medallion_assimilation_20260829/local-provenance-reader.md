@@ -118,3 +118,35 @@ and final tests `5e1fbeb556d2e02d0c492241f2deb0917b1d6c0e1d57534d613eda5912c948c
 were unchanged. Two unrelated test-generated timestamp-only fixture changes
 were restored after the harness ended. Hosted delivery and the independent
 retained-package replay are separate, pending receipts at this checkpoint.
+
+## Independent retained-package replay
+
+Parent independently ran the reviewed driver after native assurance, exit 0.
+The driver SHA256 is
+`2fce2025be7c8190e48c414c849b73525ba1caf85392b80da649535ef25a34f3`;
+the log SHA256 is
+`55daeee55f8181abd4be93d7116b2bc2b29609dcc76e250a1b49dff2ff62c3ad`.
+Both are retained under `/tmp/health-provenance-replay.LrHl3n/` as `replay.py`
+and `replay.log`; this agent independently read both before recording this receipt.
+
+Each of two fresh exclusive attempts rebuilt the four reviewed historical
+2024/2025 and Budget classification 2025/2026 canonical packages from retained raw
+packages plus original objects: 21 files and 3,115,847 bytes per attempt, including
+`LOCAL_PROVENANCE.json` SHA256
+`a983717ca7f6b5c3e15267fcd231b31ee568d034230eb4fc924985aec73ce9cd`.
+All 20 canonical files exactly matched retained bytes. Metadata matched the
+retained-input projection and was input-order independent; both attempt trees
+were byte-identical. Original objects, raw packages and retained canonical files
+remained unchanged. This proves only four raw packages → canonical packages +
+local inventory, not complete Bronze-to-Platinum, standards or publication.
+
+## Delivery integration
+
+After frozen native assurance, ordinary merge `3bd9577` integrated executor PR323
+head `232ed919406813ba63cfd730ea24b4bfa237d710`, including Budget PR322.
+The only conflict was the append-only evidence ledger: all 117 incoming lines
+were retained byte-for-byte before this reader's own append, verified with `cmp`.
+All 123 reader/pure-inventory focused tests passed in 21.07 seconds and 76
+Conductor tracks validated. Source/test hashes were unchanged. This is focused
+post-integration evidence, not a relabelled native rerun; exact-head hosted checks
+remain required before delivery.
