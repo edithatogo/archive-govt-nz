@@ -311,11 +311,18 @@ repository validation command. External gates block only their affected task.
 
 ### 5.1 Source-family contracts first
 
-- [~] Register bounded BEFU-2026/v1 and HYEFU-2025/v1 literal Health-summary
+- [x] Register bounded BEFU-2026/v1 and HYEFU-2025/v1 literal Health-summary
   contracts from retained originals, with version-specific sheets, coordinates,
   year/type/unit context, synthetic drift tests and independent OOXML pilot
   reconciliation. Keep all other fiscal tables and formula totals excluded.
   [M-05, M-06, M-07, M-11, M-18; AC-05, AC-09, AC-11, AC-16]
+  (PR #283 merged `565dd88`, seven exact-head checks; 50 focused tests,
+  100% critical coverage and 64/64 cold mutants)
+- [x] Retain two independent local builds per successor forecast profile and
+  reconcile all 20 literal facts, 120 lineage entries and 4,721 dispositions
+  independently against OOXML, with original hashes unchanged. This does not
+  complete broader fiscal-table, historical-edition or publication coverage.
+  [M-05, M-07, M-11, M-18; AC-05, AC-09, AC-11, AC-16]
 - [x] Validate full 17-column Budget-2025/Budget-2026 synthetic layouts and
   cross-vintage non-pooling; independently reconcile the captured 2026 pilot
   against literal source XML, retaining its original and all dispositions.
