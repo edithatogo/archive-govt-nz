@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import math
 import re
 from dataclasses import dataclass
 from pathlib import Path, PurePosixPath
@@ -57,8 +58,19 @@ def _snapshot(pin: PinnedInput) -> bytes:
     return verified_snapshot(pin.path, pin.sha256, max_bytes=MAX_BYTES)
 
 
+def _finite_number(value: str) -> float:
+    number = float(value)
+    _require(math.isfinite(number))
+    return number
+
+
 def _json(payload: bytes) -> dict[str, Any]:
-    result = json.loads(payload, object_pairs_hook=_pairs)
+    result = json.loads(
+        payload,
+        object_pairs_hook=_pairs,
+        parse_constant=_finite_number,
+        parse_float=_finite_number,
+    )
     _require(isinstance(result, dict))
     return result
 
