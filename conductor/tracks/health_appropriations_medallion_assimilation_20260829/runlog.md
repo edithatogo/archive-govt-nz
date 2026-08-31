@@ -2,6 +2,13 @@
 
 ## Source plot hosted delivery — 2026-08-31 UTC
 
+- Integrated full native harness passes on `62dc6e4`, after main's extra CLI
+  coverage/dependency changes: 1,911 tests collected, test gate exits zero,
+  96.75% overall coverage, 100% across Health-domain production modules,
+  40 schemas/30 documents, 70 tracks, 9/9 parity, all native mutation and
+  supply-chain gates, 111-component SBOM. CAS 288.53 MB/s versus 25.0 minimum.
+  Unrelated timestamp-only generated evidence restored after completion.
+
 - PR #269 merged `b149d3725165b4d4116e17452955c5602ac40ec4` at
   05:52:48 UTC after all seven checks passed on exact head
   `4f405e2abfba2444b8906412a65f7c128a269a13`, CI run `33361422682`.

@@ -2,6 +2,10 @@
 
 ## Donor failure conformance — 2026-08-31 UTC
 
+- Post-integration native harness also exits zero at `62dc6e4`: 1,911 tests
+  collected, 96.75% overall coverage, all repository gates and 111-component
+  SBOM. Health-domain production coverage remains 100% line/branch.
+
 - The three pinned originals were compiled without import/execution; hash
   checks precede and follow compilation. The processor fails before runtime.
   No claim that it produced the SQLite oracle is made. Structured observation

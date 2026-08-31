@@ -243,6 +243,10 @@
     "full_harness_tests": 1907,
     "full_harness_coverage_percent": 96.48,
     "full_harness_status": "passed",
+    "integrated_harness_commit": "62dc6e4",
+    "integrated_harness_status": "passed",
+    "integrated_harness_tests_collected": 1911,
+    "integrated_harness_coverage_percent": 96.75,
     "raw_rebuild_readback": "verified",
     "full_workbook_area_coverage": false,
     "publication_mutated": false
