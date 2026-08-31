@@ -1,5 +1,39 @@
 # Self-Review
 
+## Plot context-style regression — 2026-08-31 UTC
+
+- Confirmed a visual identity defect on valid same-context years 2000, 2001
+  and 2003: line segments correctly broke at the gap, but used different
+  colors/markers while legend deduplication retained only the final style.
+- Canonical full context now determines the style; segment coordinates stay
+  separate. An insertion-order regression guards dictionary canonicalization.
+- Distinct full contexts with colliding abbreviated labels receive explicit
+  context ordinals, not one merged legend entry. Tests cover shared SHA-256
+  prefixes and a context field absent from the display label. Exact contexts
+  remain in `CONTRACTS.json`; no abbreviation becomes an identity key.
+- The pure plot contract, Gold verification, numeric values, line connections,
+  output names and preservation rules are unchanged. Existing retained images
+  are not regenerated or overwritten by this correction.
+- All 23 focused renderer tests pass with 100% line/branch coverage (132
+  statements, 30 branches). Full and mutation assurance remain separate.
+- Native strict typing exposed test assertion types that needed explicit
+  NumPy array comparison and `Line2D` narrowing; those corrections pass
+  targeted typing and all three regressions. The corrected full run passed
+  all pre-test gates but timed out at 300 seconds with one unidentified failure
+  marker and no final test/coverage summary. Mutation remains 42 kills and
+  25 timeouts, not 67 kills. No unresolved code finding is asserted resolved
+  by these incomplete whole-repository/mutation results; hosted checks remain
+  necessary. The track and this review-fix task remain in progress.
+## Budget assurance recovery — 2026-08-31 UTC
+
+- Hosted exact-head assurance is independently observed successful and merged;
+  it does not retroactively pass the earlier local 300-second timeout.
+- The interrupted mutation report is retained as 83 execution errors, not
+  successes. Recovery changed the isolated checkout/environment, not source,
+  tests, mutation selection or deadlines. All 110 cold mutants are now killed.
+- The two bounded Budget successor/reader tasks are complete. CLI/MCP exposure,
+  broader fiscal/contextual coverage and publication remain separate tasks.
+
 ## Budget successor consumer — 2026-08-31 UTC
 
 - Independent review reproduced and fixed non-integer manifest count acceptance.
@@ -461,3 +495,14 @@ reported as complete.
 - No original files or hosted datasets were changed. This does not complete
   the broader format-support contract, successor normalization or donor
   retirement. No unresolved finding blocks this bounded inventory change.
+
+## 2026-08-31 — Standalone Budget operational receipt review
+
+- The operational wrapper delegates all content checks to the existing pinned
+  reader, emits no records, and never creates missing state. Both success and
+  failure CLI/MCP contracts are tested through the public MCP handshake.
+- Fixed metadata/context bounds, strict count schemas and rights/publication
+  non-promotion prevent the receipt from claiming broader source acceptance.
+- Focused coverage is 100%; independent parent review found no implementation
+  finding. Native timing failures and their isolated passing reruns remain
+  explicitly recorded; complete hosted assurance is still required.

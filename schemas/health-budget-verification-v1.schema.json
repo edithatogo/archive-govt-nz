@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "archive-govt-nz.health-budget-verification/v1"
+    },
+    "verification_scope": {
+      "const": "reviewed_package_only"
+    },
+    "rights_state": {
+      "const": "not_evaluated"
+    },
+    "publication_state": {
+      "const": "local_validation_only"
+    },
+    "status": {
+      "enum": [
+        "passed",
+        "failed"
+      ]
+    },
+    "error": {
+      "const": "invalid_budget_package"
+    },
+    "manifest_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "source_object_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "source_locator": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2048
+    },
+    "source_vintage": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2048
+    },
+    "observed_at": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2048
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "facts": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "field_lineage": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "dispositions": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "facts",
+        "field_lineage",
+        "dispositions"
+      ]
+    },
+    "disposition_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "input": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "normalized": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "out_of_scope": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "blank": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "rejected": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "input",
+        "normalized",
+        "out_of_scope",
+        "blank",
+        "rejected"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "verification_scope",
+    "rights_state",
+    "publication_state",
+    "status"
+  ],
+  "additionalProperties": false,
+  "oneOf": [
+    {
+      "properties": {
+        "status": {
+          "const": "passed"
+        }
+      },
+      "required": [
+        "manifest_sha256",
+        "source_object_sha256",
+        "source_locator",
+        "source_vintage",
+        "observed_at",
+        "counts",
+        "disposition_counts"
+      ],
+      "not": {
+        "required": [
+          "error"
+        ]
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "failed"
+        }
+      },
+      "required": [
+        "error"
+      ],
+      "maxProperties": 6
+    }
+  ]
+}

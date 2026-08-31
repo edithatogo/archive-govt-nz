@@ -33,6 +33,18 @@
         "source_health": {"type": "object"}, "legal_status": {"type": "object"}
       }, "additionalProperties": false
     },
+    "claims": {
+      "description": "Optional for historical v1 exports; all new exports explicitly disable these claims.",
+      "type": "object",
+      "required": ["network", "timetable", "facility", "national", "clinical", "dispatch", "authoritative"],
+      "properties": {
+        "network": {"const": false}, "timetable": {"const": false},
+        "facility": {"const": false}, "national": {"const": false},
+        "clinical": {"const": false}, "dispatch": {"const": false},
+        "authoritative": {"const": false}
+      },
+      "additionalProperties": false
+    },
     "status": {"enum": ["eligible", "quarantined"]},
     "quarantine_reason": {"type": "string", "minLength": 1}
   },

@@ -1,0 +1,18 @@
+{
+  "observed_at": "2026-08-31T11:00:40.951229+00:00",
+  "source_revision": "54a287e49fd97d0e599ced597409035040993ef7",
+  "pull_request": "https://github.com/edithatogo/archive-govt-nz/pull/272",
+  "run_id": 33383811770,
+  "ubuntu_job_id": 99461820491,
+  "hosted_tests": 2048,
+  "hosted_coverage_percent": 96.84,
+  "hosted_test_status": "passed",
+  "full_gate_status": "failed_at_secret_scan",
+  "finding_count": 2,
+  "finding_classification": "Non-secret provider resource hashes in the Canadian public evidence projection; originals retained under verified metadata_sha256.",
+  "correction": "Omit unused unverified provider hash fields from public projection; no scanner exemption or exclusion change.",
+  "original_log_sha256": "bdbdf1c4cbf2c725c8dabce3348408f38a23497cd9da9b680fc90bff515b8574",
+  "raw_publication": false,
+  "cutover": false,
+  "system_ready": false
+}

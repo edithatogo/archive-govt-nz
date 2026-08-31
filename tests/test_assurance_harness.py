@@ -83,6 +83,7 @@ def test_repository_gate_lists_all_required_stages() -> None:
         "mutation-medallion",
         "mutation-platinum",
         "mutation-nlp-bridge",
+        "mutation-foi-controls",
         "slops",
         "benchmark-cas",
         "audit",

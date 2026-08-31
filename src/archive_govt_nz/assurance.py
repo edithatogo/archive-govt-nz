@@ -116,6 +116,10 @@ def build_stages(
             ("uv", "run", "--locked", "python", "tools/mutation_nlp_bridge.py"),
         ),
         GateStage(
+            "mutation-foi-controls",
+            ("uv", "run", "--locked", "python", "tools/mutation_foi_controls.py"),
+        ),
+        GateStage(
             "slops",
             ("uv", "run", "--locked", "python", "tools/check_slops.py"),
         ),
