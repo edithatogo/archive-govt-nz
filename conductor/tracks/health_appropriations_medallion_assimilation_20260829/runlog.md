@@ -1449,3 +1449,7 @@ Four final-code synthetic packages match all 16 pre-change output files exactly;
 originals are unchanged. Initial unsupported-keyword, tuple/list and missing-scope
 red failures were resolved; no test/gate was weakened. Full native/hosted delivery
 remain pending. See [forecast-preflight.md](forecast-preflight.md).
+
+Forecast native assurance completed at `2026-08-31T16:30:38Z`: exit zero at
+`8ace367`, 3,414 tests/97.18%, all gates passed. Exact log pin and retained
+failure history are in `forecast-preflight.md`; hosted delivery remains pending.

@@ -53,6 +53,15 @@ validates 75 tracks. An initial guessed validator filename did not exist
 (exit 2); the actual `tools.validate_conductor_state` module passed. The cold
 mutation coverage fragment was retained outside the checkout, not deleted.
 
-Full native assurance and exact-head hosted delivery are still pending.
+Full native `./scripts/validate.sh` exited zero at
+`8ace367d3aca68829903f7514122489ec5dabdad`: 3,414 tests, eight warnings,
+65.31 s, 97.18% overall coverage, 75 tracks, 42 schemas/32 representative
+documents, 9/9 parity and all mutation/hygiene/supply-chain gates. CPython
+3.14.6 used `COVERAGE_CORE=ctrace`, `PYTHON_JIT=0` and four pytest workers;
+CAS throughput was 164.99 MB/s and SBOM validation counted 111 components.
+Log SHA-256:
+`e87b3297692f3a2b2451d4d390ecc22345801c662abbd50ca8c8dd10a2cdecea`.
+Only the two harness-generated timestamp-only evidence diffs were restored
+after the zero exit. Exact-head hosted delivery is still pending.
 No real original, retained package, candidate or Hugging Face bytes
 were modified by these synthetic tests. Broader track phases remain open.

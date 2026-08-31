@@ -655,3 +655,7 @@ Required native validation at `b651907` passed all 3014 tests (8 existing resour
 warnings), 97.12% coverage and all subsequent gates. Two owned timestamp-only
 fixture changes were restored after exit. Source and tests remain unchanged;
 hosted delivery is pending. See [full receipt](./budget-classification.md).
+
+Forecast preflight follow-up: full native harness passed at `8ace367` with
+3,414 tests and all gates. This supersedes the earlier native-pending status
+only; hosted delivery and full source/rights/recovery phases remain separate.

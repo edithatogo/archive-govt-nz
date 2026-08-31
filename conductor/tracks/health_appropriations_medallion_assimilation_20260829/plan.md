@@ -528,11 +528,13 @@ repository validation command. External gates block only their affected task.
 
 ### 8.2 Implement bounded operations
 
-- [~] Add an explicit no-write forecast API path while retaining the existing
+- [x] Add an explicit no-write forecast API path while retaining the existing
   default-write contract and all four source profiles. Require real booleans,
   preserve partial/rejected status and prove old written bytes unchanged.
   This does not expose forecasts through CLI/MCP or assert write readiness.
   [M-09, M-18; AC-07, AC-16]
+  (`a85ca41`; 92 focused tests/100% critical coverage, 66 cold mutation kills,
+  3,414 native tests at `8ace367`; hosted delivery separate)
 
 - [~] Wire the four approved CPI/Ministry/QES source profiles through a
   dry-run-first CLI and forced-read-only MCP preflight, using compact typed
