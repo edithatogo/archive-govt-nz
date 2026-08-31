@@ -96,6 +96,13 @@ def _prepare(
     dict[str, pa.Table], list[dict[str, Any]], list[dict[str, Any]], dict[str, int]
 ]:
     by_profile, lineage = read_verified_run(run, store, pin)
+    if any(
+        "input_profile" in row
+        for name in ("budget", "historical")
+        for row in by_profile[name]
+    ):
+        message = "reserved_input_profile_field"
+        raise ValueError(message)
     historical = analyze_historical(by_profile["historical"])
     for row in historical:
         row["source_context_json"] = _json(row.pop("source_context"))

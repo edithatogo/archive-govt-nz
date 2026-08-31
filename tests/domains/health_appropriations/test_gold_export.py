@@ -129,3 +129,21 @@ def test_symlink_output_rejected(
     with pytest.raises(ValueError, match="gold_export_failed"):
         export.export_gold(*raw_run, link, dry_run=False)
     assert list(destination.iterdir()) == []
+
+
+@pytest.mark.parametrize("profile", ["budget", "historical"])
+@pytest.mark.parametrize("reserved", [None, "spoofed"])
+def test_source_profile_annotation_collision_is_rejected(
+    raw_run: tuple[Path, Path, str],
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    profile: str,
+    reserved: object,
+) -> None:
+    facts, lineage = export.read_verified_run(*raw_run)
+    facts[profile][0]["input_profile"] = reserved
+    monkeypatch.setattr(export, "read_verified_run", lambda *_args: (facts, lineage))
+    output = tmp_path / "collision"
+    with pytest.raises(ValueError, match="gold_export_failed:ValueError"):
+        export.export_gold(*raw_run, output, dry_run=False)
+    assert not output.exists()
