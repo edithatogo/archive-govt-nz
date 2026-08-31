@@ -8,3 +8,10 @@
    - Implement unit and negative-control test suite in `tests/canary/test_operational_continuity_and_recovery.py`.
    - Execute tool, write receipt to `evidence/migrations/corpus-legislation-nz/operational-continuity-recovery-receipt.json`, and pass full 19-stage assurance gate (`tools/check.py`).
 > **Status: COMPLETED** — All phases verified. Reviewed and closed 2026-08-22. Gated external blockers remain: write token deployment (human authority) and 67 historical batch accounting.
+
+
+## 2026-08-30 record preservation
+
+- [x] Preserve the original historical plan verbatim in [plan.original.md](plan.original.md) and record its hash.
+
+The checkbox above records preservation only. Original phase prose has no individual task checkmarks; this reconciliation does not assert or reverify its historical completion. Existing completion claims remain attributable to the original record.

@@ -3,11 +3,17 @@
   "description": "Harden Bronze ingestion with single-pass magic byte validation, streaming CIDv1 tagging, structural schema fingerprinting, and Ed25519 manifest attestation.",
   "donor_or_upstream": "Bronze Three-Strata & GMA alignment",
   "reusable_assets": "Single-pass stream pipeline, pure-Python Ed25519 signer, multihash/cidv1 encoder",
-  "status": "archived",
+  "status": "completed",
   "title": "Single-Pass Ironclad Bronze Ingestion Hardening",
   "track_id": "bronze_single_pass_ingestion_hardening_20260823",
   "treatment": "Single-pass magic byte filtering, streaming CIDv1/SHA256/BLAKE3 multi-hash, schema fingerprinting, and offline Ed25519 manifest sealing",
-  "type": "bronze_hardening",
+  "type": "chore",
   "updated_at": "2026-08-24T00:15:00Z",
-  "evidence_schema": "1.0"
+  "evidence_schema": "legacy-event-v1",
+  "legacy_type": "bronze_hardening",
+  "legacy_status": "archived",
+  "metadata_reconciled_at": "2026-08-30T09:09:36.938960Z",
+  "legacy_evidence_path": "evidence/evidence.jsonl",
+  "legacy_evidence_sha256": "9b087ebccd870e025beec0fbb0a9a1308126d06ee28f57e7e7c22b46fab3fd9e",
+  "evidence_format_basis": "Original event/at-format ledger remains at its original nested path; not a canonical hash chain."
 }

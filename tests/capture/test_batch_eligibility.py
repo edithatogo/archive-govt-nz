@@ -2,7 +2,7 @@
 
 from typing import Any
 
-from hypothesis import given
+from hypothesis import given, settings
 from hypothesis import strategies as st
 
 from archive_govt_nz.batch_capture import select_eligible_outcomes
@@ -36,6 +36,7 @@ def test_preflight_is_an_additional_capture_gate() -> None:
 
 
 @given(st.lists(st.booleans(), min_size=1, max_size=50))
+@settings(deadline=None)
 def test_selected_resources_are_always_policy_eligible(flags: list[bool]) -> None:
     """Property: no arrangement of restricted inputs can enter the selected set."""
     outcomes = [

@@ -9,3 +9,9 @@ Track 20 elevates the preservation estate into an intelligent queryable knowledg
 - **Automated Webhook Dispatcher**: Rich alerting system supporting Discord, Slack, and generic webhooks to broadcast harvest metrics and Hugging Face snapshot links.
 - **Search CLI & Graph Exporter**: Tooling (`tools/query_knowledge_graph.py` and `tools/notify_webhook.py`) to query and notify.
 - **Quality Gates & Snapshots**: Strict BasedPyright typing, Syrupy snapshot assertions, property fuzzing, and complete branch coverage.
+
+- [Specification](spec.md)
+
+- [Implementation Plan](plan.md)
+
+- [Metadata](metadata.json)

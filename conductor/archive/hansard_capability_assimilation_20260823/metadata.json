@@ -1,12 +1,15 @@
 {
   "track_id": "hansard_capability_assimilation_20260823",
   "title": "Hansard Corpus Capability Assimilation",
-  "type": "capability_assimilation",
-  "status": "archived",
+  "type": "chore",
+  "status": "completed",
   "donor_or_upstream": "edithatogo/corpus-nz-hansard",
   "treatment": "Selective capability assimilation into archive_govt_nz/domains/hansard/",
   "reusable_assets": "Debate XML parsers, MP/Speaker models, parliamentary speech schemas, Parquet builders",
   "created_at": "2026-08-23T16:35:00Z",
   "updated_at": "2026-08-26T11:20:00Z",
-  "description": "Assimilate Hansard preservation and speech extraction pipelines into archive-govt-nz while keeping corpus-nz-hansard separately citable and versioned."
+  "description": "Assimilate Hansard preservation and speech extraction pipelines into archive-govt-nz while keeping corpus-nz-hansard separately citable and versioned.",
+  "legacy_type": "capability_assimilation",
+  "legacy_status": "archived",
+  "metadata_reconciled_at": "2026-08-30T09:09:36.938960Z"
 }

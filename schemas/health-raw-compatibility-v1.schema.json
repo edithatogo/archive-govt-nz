@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive-govt-nz.example/schemas/health-raw-compatibility-v1",
+  "title": "Local source-derived health compatibility export",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "status", "raw_manifest_sha256", "policy", "facts", "field_lineage", "table_counts", "representation_changes", "sqlite_version", "publication_state", "output_sha256"],
+  "properties": {
+    "schema_version": {"const": "archive-govt-nz.health-raw-compatibility/v1"},
+    "status": {"const": "passed"},
+    "raw_manifest_sha256": {"$ref": "#/$defs/hash"},
+    "policy": {"const": "retain_all_raw_facts_exact_decimal_sidecar/v1"},
+    "facts": {"type": "integer", "minimum": 1},
+    "field_lineage": {"type": "integer", "minimum": 1},
+    "representation_changes": {"type": "integer", "minimum": 0},
+    "sqlite_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "publication_state": {"const": "local_validation_only"},
+    "table_counts": {
+      "type": "object", "additionalProperties": false,
+      "required": ["gdp_historical", "historical_health_spending", "recent_health_appropriations", "health_spending_summary_befu25_data_expense_tables", "health_spending_summary_hyefu24_data_expense_tables"],
+      "properties": {
+        "gdp_historical": {"$ref": "#/$defs/count"},
+        "historical_health_spending": {"$ref": "#/$defs/count"},
+        "recent_health_appropriations": {"$ref": "#/$defs/count"},
+        "health_spending_summary_befu25_data_expense_tables": {"$ref": "#/$defs/count"},
+        "health_spending_summary_hyefu24_data_expense_tables": {"$ref": "#/$defs/count"}
+      }
+    },
+    "output_sha256": {
+      "type": "object", "additionalProperties": false,
+      "required": ["compatibility.sqlite", "records.jsonl", "field_lineage.jsonl"],
+      "properties": {
+        "compatibility.sqlite": {"$ref": "#/$defs/hash"},
+        "records.jsonl": {"$ref": "#/$defs/hash"},
+        "field_lineage.jsonl": {"$ref": "#/$defs/hash"}
+      }
+    }
+  },
+  "$defs": {
+    "hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "count": {"type": "integer", "minimum": 0}
+  }
+}

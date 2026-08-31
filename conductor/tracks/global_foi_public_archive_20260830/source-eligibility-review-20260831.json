@@ -1,0 +1,25 @@
+{
+  "observed_at": "2026-08-30T21:23:47.713987+00:00",
+  "source_id": "nz-fyi",
+  "documents": [
+    {
+      "url": "https://fyi.org.nz/help/privacy",
+      "sha256": "be73b8b24ed9c79a6ad2367ea523fdc78d7d58adac9b8b01452bd790f3a91d10",
+      "bytes": 14501
+    },
+    {
+      "url": "https://fyi.org.nz/help/officers",
+      "sha256": "d07e643dd1466750a943b556a82614e84e5415c1d43b3132bf8b172fbaca1ecc",
+      "bytes": 15080
+    }
+  ],
+  "observations": [
+    "FYI describes itself as a permanent public archive, with exceptional name and personal-information removals.",
+    "FYI provides a copyright takedown route; the reviewed page does not state a blanket licence for this third-party archive."
+  ],
+  "rights_decision": "pending_accountable_review",
+  "privacy_decision": "pending_accountable_review",
+  "public_raw_upload_authorized_by_source_evidence": false,
+  "operator_publication_intent": "already_authorized_by_user",
+  "candidate_manifest_sha256": "865b1f32aa736fcd105c892cbf5c1f639a485a6e32ca52a75400ede382e005d2"
+}

@@ -20,6 +20,51 @@ type JsonValue = (
 REPOSITORY_ROOT = Path(__file__).parents[1]
 VALIDATION_PAIRS = (
     (
+        REPOSITORY_ROOT / "schemas" / "foi-current-v1.schema.json",
+        REPOSITORY_ROOT / "tests" / "fixtures" / "foi-current-sample-v1.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "foi-package-v2.schema.json",
+        REPOSITORY_ROOT / "tests" / "fixtures" / "foi-package-sample-v2.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "foi-package-v1.schema.json",
+        REPOSITORY_ROOT / "tests" / "fixtures" / "foi-package-sample-v1.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "health-raw-compatibility-v1.schema.json",
+        REPOSITORY_ROOT
+        / "tests"
+        / "fixtures"
+        / "health-raw-compatibility-sample-v1.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "foi-source-catalogue-v1.schema.json",
+        REPOSITORY_ROOT / "tests" / "fixtures" / "foi-source-catalogue-sample-v1.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "health-workbook-inspection-v1.schema.json",
+        REPOSITORY_ROOT
+        / "tests"
+        / "fixtures"
+        / "health-workbook-inspection-sample-v1.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "health-raw-rebuild-v1.schema.json",
+        REPOSITORY_ROOT / "tests" / "fixtures" / "health-raw-rebuild-sample-v1.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "health-raw-gold-v1.schema.json",
+        REPOSITORY_ROOT / "tests" / "fixtures" / "health-raw-gold-sample-v1.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "health-historical-reconciliation-v1.schema.json",
+        REPOSITORY_ROOT
+        / "tests"
+        / "fixtures"
+        / "health-historical-reconciliation-sample-v1.json",
+    ),
+    (
         REPOSITORY_ROOT / "schemas" / "cli-envelope-v1.schema.json",
         REPOSITORY_ROOT / "tests" / "fixtures" / "cli-version-v1.json",
     ),

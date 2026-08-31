@@ -10,3 +10,13 @@
 
 ## Won't Have
 - **WONT-1**: Do not merge `corpus-nz-hansard`, `fyi-archive`, or `hathi-nz` into `archive-govt-nz`.
+
+## Dated FOI ownership supersession — 2026-08-30
+
+The user-approved [global FOI track](../global_foi_public_archive_20260830/index.md)
+supersedes the federation-only restriction for FOI orchestration, indexing,
+preservation and publication capabilities. `archive-govt-nz` is the approved
+receiver; `fyi-cli` remains the capture adapter. This is a prospective ownership
+change, not completed cutover. WONT-1 still prohibits wholesale donor-history
+merging/deletion; its historical completion evidence is unchanged. Other corpus
+boundaries are unaffected. See the [approval record](../global_foi_public_archive_20260830/approval.json).

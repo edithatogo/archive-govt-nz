@@ -12,5 +12,9 @@
     "edithatogo/corpus-legislation-nz#144"
   ],
   "scope_boundary": "Official and DigitalNZ Gazette only; Victoria/LexisNexis historical gazette remains deferred under the registry deferral gate.",
-  "completed_at": "2026-08-22"
+  "completed_at": "2026-08-22",
+  "track_id": "nz_gazette_archive_workflow_20260822",
+  "description": "NZ Gazette archive workflow, harvest orchestration and publication staging",
+  "updated_at": "2026-08-30T09:09:36.938960Z",
+  "metadata_reconciled_at": "2026-08-30T09:09:36.938960Z"
 }

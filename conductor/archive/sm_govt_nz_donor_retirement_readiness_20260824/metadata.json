@@ -7,6 +7,8 @@
   "title": "sm-govt-nz Donor Retirement Readiness",
   "track_id": "sm_govt_nz_donor_retirement_readiness_20260824",
   "treatment": "Issue a superseding corrected closeout receipt, run donor+canonical in parallel until one verified parity cycle per source class, disable donor workflows, soak, then archive with final tag",
-  "type": "lifecycle_management",
-  "updated_at": "2026-08-26T09:45:00Z"
+  "type": "chore",
+  "updated_at": "2026-08-26T09:45:00Z",
+  "legacy_type": "lifecycle_management",
+  "metadata_reconciled_at": "2026-08-30T09:09:36.938960Z"
 }

@@ -12,3 +12,10 @@
    - Implement comprehensive protocol test suite in `tests/mcp/test_mcp_server.py` and `tests/cli/test_mcp_cli_contract.py`.
 5. **Phase 5: Full 19-Stage Gate & Evidence Generation**
    - Run `tools/check.py`, verify >=95% patch coverage, and record evidence receipts.
+
+
+## 2026-08-30 record preservation
+
+- [x] Preserve the original historical plan verbatim in [plan.original.md](plan.original.md) and record its hash.
+
+The checkbox above records preservation only. Original phase prose has no individual task checkmarks; this reconciliation does not assert or reverify its historical completion. Existing completion claims remain attributable to the original record.

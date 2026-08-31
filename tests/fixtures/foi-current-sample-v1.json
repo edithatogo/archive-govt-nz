@@ -1,0 +1,9 @@
+{
+  "schema_version": "archive-govt-nz.foi-current/v1",
+  "repo_id": "fixture/catalogue",
+  "manifest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "snapshot_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "tables": {
+    "sources": "sources.jsonl"
+  }
+}

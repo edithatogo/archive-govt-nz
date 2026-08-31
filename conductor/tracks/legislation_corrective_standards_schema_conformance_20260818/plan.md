@@ -10,3 +10,10 @@
 3. **Phase 3: Schema Test Suite & Verification (Commit B)**
    - Verify schema validity using `tools/validate_schemas.py`.
    - Verify zero schema drift with `tools/check.py`.
+
+
+## 2026-08-30 record preservation
+
+- [x] Preserve the original historical plan verbatim in [plan.original.md](plan.original.md) and record its hash.
+
+The checkbox above records preservation only. Original phase prose has no individual task checkmarks; this reconciliation does not assert or reverify its historical completion. Existing completion claims remain attributable to the original record.

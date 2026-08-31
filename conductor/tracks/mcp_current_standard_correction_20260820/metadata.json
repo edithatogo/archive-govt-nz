@@ -10,12 +10,51 @@
   "parent_issue": 136,
   "protocol_version": "2025-11-25",
   "gates": [
-    {"id": "service-sequence", "kind": "merge", "status": "passed"},
-    {"id": "global-cli-sequence", "kind": "merge", "status": "passed"},
-    {"id": "legislation-cli-sequence", "kind": "merge", "status": "passed"},
-    {"id": "publication-authority", "kind": "publication", "status": "passed"},
-    {"id": "redistribution-rights", "kind": "rights", "status": "passed"},
-    {"id": "live-operation", "kind": "external", "status": "passed"},
-    {"id": "donor-archive", "kind": "destructive", "status": "passed"}
-  ]
+    {
+      "id": "service-sequence",
+      "kind": "merge",
+      "status": "satisfied",
+      "legacy_status": "passed"
+    },
+    {
+      "id": "global-cli-sequence",
+      "kind": "merge",
+      "status": "satisfied",
+      "legacy_status": "passed"
+    },
+    {
+      "id": "legislation-cli-sequence",
+      "kind": "merge",
+      "status": "satisfied",
+      "legacy_status": "passed"
+    },
+    {
+      "id": "publication-authority",
+      "kind": "publication",
+      "status": "satisfied",
+      "legacy_status": "passed"
+    },
+    {
+      "id": "redistribution-rights",
+      "kind": "rights",
+      "status": "satisfied",
+      "legacy_status": "passed"
+    },
+    {
+      "id": "live-operation",
+      "kind": "external",
+      "status": "satisfied",
+      "legacy_status": "passed"
+    },
+    {
+      "id": "donor-archive",
+      "kind": "destructive",
+      "status": "satisfied",
+      "legacy_status": "passed"
+    }
+  ],
+  "legacy_type": null,
+  "type": "chore",
+  "description": "Current-standard fail-closed MCP correction",
+  "metadata_reconciled_at": "2026-08-30T09:09:36.938960Z"
 }

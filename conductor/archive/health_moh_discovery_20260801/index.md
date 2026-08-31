@@ -14,3 +14,9 @@ explicitly out of scope until a later approved phase.
 - preserve identifiers, timestamps, counts, and hashes;
 - fail closed on protocol or reconciliation errors;
 - no credentials, payload bodies, or publication.
+
+- [Specification](spec.md)
+
+- [Implementation Plan](plan.md)
+
+- [Metadata](metadata.json)

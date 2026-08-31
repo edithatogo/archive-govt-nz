@@ -4,7 +4,7 @@
 - **Donor Repository**: `edithatogo/corpus-legislation-nz` (`749918c`)
 - **Canonical Target**: `edithatogo/archive-govt-nz` (`49e3b4c`)
 - **Non-Donor Standalone Product**: `edithatogo/legislation` (remains standalone)
-- **Status**: `in_progress`
+- **Status**: `completed` (historical programme; superseded by the corrective programme in metadata.json)
 
 ---
 
@@ -18,3 +18,9 @@ Consolidates the bulk legislation discovery, historical bootstrap, raw XML/HTML 
 - [Requirements](./requirements.md)
 - [Specification & Architecture Diagrams](./spec.md)
 - [Execution Plan](./plan.md)
+
+- [Specification](spec.md)
+
+- [Implementation Plan](plan.md)
+
+- [Metadata](metadata.json)

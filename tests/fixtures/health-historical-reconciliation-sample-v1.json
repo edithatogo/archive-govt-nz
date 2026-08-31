@@ -1,0 +1,15 @@
+{
+  "schema_version": "archive-govt-nz.health-historical-reconciliation/v1",
+  "measure": "health_spending",
+  "year": 2000,
+  "status": "exact_match",
+  "reason": "exact_numeric_match",
+  "source_record_id": "synthetic-record",
+  "source_object_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "source_coordinate": "'Spending'!H5",
+  "source_year_label": "2000",
+  "source_value": "1.00000000000000000",
+  "donor_value": "1",
+  "delta": "0",
+  "resolution": "retain_both_observations"
+}

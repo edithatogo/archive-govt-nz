@@ -24,6 +24,20 @@ from archive_govt_nz.cli_integrity import (
     verify_cas,
 )
 from archive_govt_nz.core.registry import AgencyRegistry
+from archive_govt_nz.domains.health_appropriations.compatibility_export import (
+    export_compatibility,
+)
+from archive_govt_nz.domains.health_appropriations.gold_export import export_gold
+from archive_govt_nz.domains.health_appropriations.inspection import inspect_workbook
+from archive_govt_nz.domains.health_appropriations.operations import (
+    HealthAppropriationsStateError,
+    inspect_archive_status,
+)
+from archive_govt_nz.domains.health_appropriations.rebuild import (
+    execute_rebuild,
+    plan_rebuild,
+    verify_rebuild,
+)
 from archive_govt_nz.domains.legislation.api import NZLegislationApiClient
 from archive_govt_nz.domains.legislation.cli_state import (
     coverage_counts,
@@ -133,6 +147,167 @@ def capabilities(format: Literal["text", "json"] = "text") -> int:
     for c in caps:
         print(f"- {c}")
     return 0
+
+
+@app.command(name="health-appropriations-inspect-workbook")
+def health_appropriations_inspect_workbook(
+    source: Path,
+    expected_sha256: str,
+    *,
+    sheet: str | None = None,
+    rows: int = 5,
+    columns: int = 12,
+) -> int:
+    """List source worksheets and bounded decoded heads; --rows 0 lists only."""
+    command = "health-appropriations-inspect-workbook"
+    try:
+        result = inspect_workbook(
+            source, expected_sha256, sheet=sheet, rows=rows, columns=columns
+        )
+    except ValueError as error:
+        _emit_json(
+            {
+                "command": command,
+                "schema_version": "archive-govt-nz.health-workbook-inspection/v1",
+                "status": "failed",
+                "error": str(error),
+            }
+        )
+        return 2
+    _emit_json({"command": command, **result})
+    return 0
+
+
+@app.command(name="health-appropriations-rebuild")
+def health_appropriations_rebuild(
+    *,
+    donor_manifest: Path,
+    store_root: Path,
+    manifest_sha256: str,
+    observed_at: str,
+    output_dir: Path = Path("build/health-appropriations/raw-run"),
+    dry_run: bool = True,
+) -> int:
+    """Preflight originals; --no-dry-run builds a separate local Silver run."""
+    try:
+        plan = plan_rebuild(donor_manifest, store_root, manifest_sha256, observed_at)
+        result = (
+            {"status": "planned", "plan": plan}
+            if dry_run
+            else execute_rebuild(plan, store_root, output_dir)
+        )
+    except (OSError, ValueError, TypeError, KeyError, ObjectStoreError) as error:
+        _emit_json(
+            {
+                "command": "health-appropriations-rebuild",
+                "status": "failed",
+                "error_class": type(error).__name__,
+            }
+        )
+        return 2
+    _emit_json({"command": "health-appropriations-rebuild", **result})
+    return 0
+
+
+@app.command(name="health-appropriations-export-sqlite")
+def health_appropriations_export_sqlite(
+    *,
+    raw_run: Path,
+    store_root: Path,
+    manifest_sha256: str,
+    output_dir: Path,
+    dry_run: bool = True,
+) -> int:
+    """Preflight raw compatibility; --no-dry-run creates a new local export."""
+    command = "health-appropriations-export-sqlite"
+    try:
+        result = export_compatibility(
+            raw_run, store_root, manifest_sha256, output_dir, dry_run=dry_run
+        )
+    except ValueError as error:
+        _emit_json({"command": command, "status": "failed", "error": str(error)})
+        return 2
+    _emit_json({"command": command, **result})
+    return 0
+
+
+@app.command(name="health-appropriations-export-gold")
+def health_appropriations_export_gold(
+    *,
+    raw_run: Path,
+    store_root: Path,
+    manifest_sha256: str,
+    output_dir: Path,
+    dry_run: bool = True,
+) -> int:
+    """Preflight source-derived Gold; --no-dry-run writes a new local package."""
+    command = "health-appropriations-export-gold"
+    try:
+        result = export_gold(
+            raw_run, store_root, manifest_sha256, output_dir, dry_run=dry_run
+        )
+    except ValueError as error:
+        _emit_json({"command": command, "status": "failed", "error": str(error)})
+        return 2
+    _emit_json({"command": command, **result})
+    return 0
+
+
+@app.command(name="health-appropriations-verify-rebuild")
+def health_appropriations_verify_rebuild(
+    output_dir: Path,
+    store_root: Path,
+    manifest_sha256: str,
+) -> int:
+    """Verify a pinned raw run without creating missing or partial state."""
+    envelope: dict[str, object] = {
+        "schema_version": "archive-govt-nz.health-raw-verification/v1",
+        "command": "health-appropriations-verify-rebuild",
+    }
+    try:
+        receipt = verify_rebuild(output_dir, store_root, manifest_sha256)
+    except ValueError as error:
+        _emit_json({**envelope, "status": "failed", "error": str(error)})
+        return 2
+    _emit_json({**envelope, "status": "verified", "receipt": receipt})
+    return 0
+
+
+@app.command(name="health-appropriations-status")
+def health_appropriations_status(
+    archive_root: Path = Path("build/health-appropriations"),
+    format: Literal["text", "json"] = "json",
+) -> int:
+    """Inspect local health-appropriations medallion state without mutation."""
+    try:
+        status = inspect_archive_status(archive_root)
+    except HealthAppropriationsStateError as error:
+        payload: dict[str, object] = {
+            "archive_root": str(archive_root),
+            "command": "health-appropriations-status",
+            "error": str(error),
+            "schema_version": "archive-govt-nz.health-appropriations-status/v1",
+            "status": "corrupt",
+        }
+        if format == "json":
+            _emit_json(payload)
+        else:
+            print(f"health-appropriations status=corrupt error={error}")
+        return 2
+
+    payload = {
+        **status,
+        "command": "health-appropriations-status",
+        "schema_version": "archive-govt-nz.health-appropriations-status/v1",
+    }
+    if format == "json":
+        _emit_json(payload)
+    else:
+        print(
+            "health-appropriations "
+            f"status={status['status']} manifests={status['manifest_count']}"
+        )
+    return 0 if status["status"] == "ready" else 1
 
 
 @app.command

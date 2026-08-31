@@ -1,10 +1,15 @@
 {
   "id": "legislation_corrective_rights_redistribution_20260818",
   "title": "Rights, licensing, and redistribution",
-  "type": "track",
+  "type": "chore",
   "status": "completed",
   "created_at": "2026-08-18T12:54:00Z",
   "updated_at": "2026-08-20T08:00:00Z",
   "parent_track": "legislation_corpus_consolidation_corrective_20260818",
-  "phase_0_control_plane_commit": "cb0e78f89a127f246d024ba3a5d770e1ec478f12"
+  "phase_0_control_plane_commit": "cb0e78f89a127f246d024ba3a5d770e1ec478f12",
+  "track_id": "legislation_corrective_rights_redistribution_20260818",
+  "legacy_type": "track",
+  "description": "Rights, licensing, and redistribution",
+  "metadata_reconciled_at": "2026-08-30T09:09:36.938960Z",
+  "original_plan_sha256": "d8198e2786b1dc1d1f0e868d8f567e1389c4e22a1166aaf8acb01e49a071a682"
 }

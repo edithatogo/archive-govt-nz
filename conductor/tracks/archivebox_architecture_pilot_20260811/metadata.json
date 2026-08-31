@@ -13,8 +13,16 @@
   },
   "github": {
     "parent_issue": 48,
-    "phase_subissues": [49, 50, 51],
+    "phase_subissues": [
+      49,
+      50,
+      51
+    ],
     "hosted_pilot_run": 31460943846,
     "revision": "3fdf3c0c3025bb4b76694caeab5e2b9280e54a62"
-  }
+  },
+  "track_id": "archivebox_architecture_pilot_20260811",
+  "description": "ArchiveBox Preservation Pilot and Reusable Architecture",
+  "updated_at": "2026-08-30T09:09:36.938960Z",
+  "metadata_reconciled_at": "2026-08-30T09:09:36.938960Z"
 }

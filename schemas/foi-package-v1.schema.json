@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Local FOI preservation package manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "source_id",
+    "country",
+    "captured_at",
+    "source_revision",
+    "source_run_id",
+    "adapter_version",
+    "capture_inventory_sha256",
+    "publication_status",
+    "rights_status",
+    "privacy_status",
+    "counts",
+    "files"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "archive-govt-nz.foi-package/v1"
+    },
+    "source_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "country": {
+      "type": "string",
+      "pattern": "^[A-Z]{2}$"
+    },
+    "captured_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source_revision": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "source_run_id": {
+      "type": "string",
+      "pattern": "^[0-9]+$"
+    },
+    "adapter_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "capture_inventory_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "publication_status": {
+      "const": "not_published"
+    },
+    "rights_status": {
+      "const": "unreviewed"
+    },
+    "privacy_status": {
+      "const": "unreviewed"
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requests",
+        "responses",
+        "events",
+        "original_files"
+      ],
+      "properties": {
+        "requests": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "responses": {
+          "type": "integer",
+          "minimum": 2
+        },
+        "events": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "original_files": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "files": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "bytes",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "pattern": "^(raw\\.tar|README\\.md|indexes/(objects|resources|requests|events)\\.(jsonl|parquet))$"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    }
+  }
+}

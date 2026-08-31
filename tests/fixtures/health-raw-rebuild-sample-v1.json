@@ -1,0 +1,12 @@
+{
+  "schema_version": "archive-govt-nz.health-raw-rebuild/v1",
+  "status": "passed",
+  "publication_state": "local_validation_only",
+  "plan_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "stages": {
+    "budget": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "befu": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "hyefu": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "historical": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+  }
+}

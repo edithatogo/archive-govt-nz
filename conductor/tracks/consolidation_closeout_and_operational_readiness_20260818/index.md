@@ -17,3 +17,7 @@ This track serves as the final operational verification and consolidation closeo
 - [Requirements](./requirements.md)
 - [Specification](./spec.md)
 - [Execution Plan](./plan.md)
+
+- [Implementation Plan](plan.md)
+
+- [Metadata](metadata.json)

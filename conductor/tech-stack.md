@@ -109,6 +109,27 @@ conformance fixtures; the initial track need not implement every format.
 
 No derivative replaces an original object.
 
+### Health-appropriations workbook and plot adapters
+
+- `openpyxl` 3.1.5 or newer compatible 3.x is the approved structural XLSX
+  reader. It exposes formula text, hidden sheets, merged ranges, tables,
+  charts, named ranges, and external-link metadata while the byte-exact XLSX
+  package remains authoritative in Bronze. ZIP member, path, and expansion
+  limits run before workbook loading; unknown layouts fail closed.
+- Matplotlib 3.10.8 or newer compatible 3.x is the approved deterministic plot
+  renderer. Plot semantics are validated through query inputs, series, units,
+  labels, and parameters; cross-platform PNG byte equality is not treated as
+  data parity.
+- PyArrow, Parquet, and DuckDB remain canonical for tabular transformation and
+  analysis. Pandas is deliberately not adopted for donor compatibility.
+
+This decision was recorded on 2026-08-29 after the standard library could
+inventory ZIP package parts but could not provide reliable workbook object
+semantics, and a bespoke PNG renderer would add unjustified maintenance risk.
+Both dependencies are replaceable adapters, not preservation authorities. The
+lockfile, focused fixtures, dependency audit, licence inventory, secret scan,
+and SBOM gate the adoption.
+
 ## Persistence
 
 ### Content-addressed object store
@@ -273,3 +294,7 @@ rights, security exceptions, and destructive actions.
 - Zenodo for immutable citable releases.
 - No always-on server, custom frontend, external graph service, or managed vector
   service in the initial implementation.
+
+### FOI WARC adapter — 2026-08-31
+
+Use warcio 1.8.1-compatible 1.x for reading preserved WARC responses, matching the pinned fyi-cli adapter. Expand its single outer gzip member under a byte budget and hash stored payload streams without repeating HTTP decoding. This implements the already-approved WARC preservation format; CAS, JSONL/Parquet and deterministic tar packages remain authoritative. No new storage service is introduced.

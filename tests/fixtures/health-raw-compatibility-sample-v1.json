@@ -1,0 +1,23 @@
+{
+  "schema_version": "archive-govt-nz.health-raw-compatibility/v1",
+  "status": "passed",
+  "raw_manifest_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "policy": "retain_all_raw_facts_exact_decimal_sidecar/v1",
+  "facts": 5,
+  "field_lineage": 5,
+  "table_counts": {
+    "gdp_historical": 1,
+    "historical_health_spending": 1,
+    "recent_health_appropriations": 1,
+    "health_spending_summary_befu25_data_expense_tables": 1,
+    "health_spending_summary_hyefu24_data_expense_tables": 1
+  },
+  "representation_changes": 1,
+  "sqlite_version": "3.50.4",
+  "publication_state": "local_validation_only",
+  "output_sha256": {
+    "compatibility.sqlite": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "records.jsonl": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "field_lineage.jsonl": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+  }
+}

@@ -18,3 +18,9 @@ Addresses all 18 external audit findings from PR #124. Replaces placeholder scaf
 - [Requirements](./requirements.md)
 - [Specification & Architecture](./spec.md)
 - [Execution Plan](./plan.md)
+
+- [Specification](spec.md)
+
+- [Implementation Plan](plan.md)
+
+- [Metadata](metadata.json)

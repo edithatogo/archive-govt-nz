@@ -1,0 +1,304 @@
+{
+  "track_id": "health_appropriations_medallion_assimilation_20260829",
+  "title": "New Zealand Health Appropriations Medallion Assimilation",
+  "type": "feature",
+  "status": "in_progress",
+  "created_at": "2026-08-29T05:39:14Z",
+  "updated_at": "2026-08-31T03:19:41Z",
+  "description": "Zero-loss assimilation of nz_health_appropriations into Bronze, dedicated multi-recordset Silver, reproducible Gold analytics, rights-aware Platinum metadata and gated Hugging Face publication.",
+  "requirements_method": "MoSCoW",
+  "evidence_schema": "legacy-observation-v1",
+  "source_baseline": {
+    "archive_govt_nz_commit": "1896ee088a3703562258268821a0e1c3bfc3f211",
+    "donor_repository": "https://github.com/edithatogo/nz_health_appropriations",
+    "donor_commit": "4668e6c3b1b492086941d4c1ef96e299250a8301",
+    "donor_tree": "c6d44ff79eda73cfc6ba7db5764e27ce01b890e1",
+    "donor_archive_sha256": "9c8ab0feaa752ead08163463a634623d55a62a69608772b73127b3d7b709157e",
+    "donor_file_count": 23,
+    "donor_total_bytes": 6604301,
+    "donor_original_source_file_count": 8,
+    "donor_sqlite_table_count": 5,
+    "donor_sqlite_row_count": 312,
+    "donor_plot_count": 6
+  },
+  "implementation_observation": {
+    "observed_at": "2026-08-29T08:26:05Z",
+    "archive_govt_nz_commit": "160d1705ee93d898c635f094fe98d8ae14d16695",
+    "archive_govt_nz_remote_main": "b5f736010a47f5a260dca35d5ee3f4dbcadb4de7",
+    "donor_remote_main": "4668e6c3b1b492086941d4c1ef96e299250a8301",
+    "donor_baseline_drift": false,
+    "hf_dataset_exists": false,
+    "hf_collection_member_count": 1,
+    "official_landing_pages_observed": 8,
+    "official_landing_pages_http_200": 4,
+    "official_landing_pages_http_403": 4
+  },
+  "publication_target": {
+    "dataset": "edithatogo/nz-health-appropriations",
+    "collection": "edithatogo/health-economics-and-outcomes-research-6a2e9986698340a8c8f4e4b4",
+    "state": "published_and_verified",
+    "revision": "9b85bac06597d4435fd078f6bed0f30bb008542b",
+    "manifest_sha256": "9a33babda857b0aa7c60a6012000cf1e730fed729781cb8ceb6e7a4714cae40e",
+    "collection_item_object_id": "6a92b824597df1d081fc4108"
+  },
+  "github_issues": {
+    "parent": 205,
+    "phases": [
+      206,
+      207,
+      208,
+      209,
+      210,
+      211,
+      212,
+      213,
+      214,
+      215,
+      216
+    ]
+  },
+  "bronze_state": {
+    "donor_capture": "passed",
+    "external_cas_object_count": 23,
+    "external_cas_bytes": 6604301,
+    "manifest_sha256": "893f387e1f361400285ccc84802b497e87802d1ad913826ff7d9055b07a03b74",
+    "format_census_sha256": "e2a485e851926d4af029dfc3ca5c10a5b8408fcbaf6cad28c680a5a41ba68cab",
+    "reconstruction": "passed"
+  },
+  "official_corpus_state": {
+    "census_records": 141,
+    "captured_resources": 73,
+    "discovery_only_resources": 68,
+    "unresolved_resources": 0,
+    "capture_manifest_sha256": "04145e4030bfddaecade1af542e12cb8a56a187c9c924b7a4c135537ccae9dab"
+  },
+  "derivative_state": {
+    "silver_records": 312,
+    "field_lineage_records": 1699,
+    "gold_artifacts": 12,
+    "compatibility_sqlite_parity": "passed",
+    "clean_room_rebuild": "byte_identical"
+  },
+  "raw_budget_validation_state": {
+    "implementation_commit": "d26e769325a0314f9dd00fdef9b923494edb9ded",
+    "source_sha256": "d67c01b0a3f1fbee5cb5121b641bda42f91f3e5bc84e599d22d32aeacbbb3338",
+    "normalized_records": 215,
+    "field_lineage_records": 3655,
+    "input_dispositions": 6504,
+    "non_health_rows": 6289,
+    "rejected_rows": 0,
+    "ordered_donor_parity": "passed",
+    "independent_rebuild": "byte_identical",
+    "manifest_sha256": "03f41d39395b02169202e88e98f04a892a3dbb55c2083a328391d909af8f7d57",
+    "retained_directory": "silver/raw-budget-d26e769",
+    "observation_time_context": "fixed_reproducibility_test_not_capture_attestation",
+    "rights_state": "not_evaluated",
+    "publication_state": "local_validation_only"
+  },
+  "raw_forecast_validation_state": {
+    "implementation_commit": "801783d5069456ee16a1e1ce18a57c86a682bc9f",
+    "normalized_records": 20,
+    "field_lineage_records": 120,
+    "cell_dispositions": 4665,
+    "rejected_cells": 0,
+    "ordered_donor_parity": "passed",
+    "independent_rebuild": "byte_identical",
+    "befu_manifest_sha256": "0997a9153d5da334860cd43cc850ed3c4b5f768e9729927311fbc91d7e9f4634",
+    "hyefu_manifest_sha256": "1e0e9a173d718acd77c11f729d874a6fa96456ca28bf0fab9dca7b544965e0fd",
+    "retained_directories": [
+      "silver/raw-befu-20260830-forecast-v1",
+      "silver/raw-hyefu-20260830-forecast-v1"
+    ],
+    "observation_time_context": "local_source_object_verification_not_new_http_capture",
+    "financial_year_basis": "unverified",
+    "rights_state": "not_evaluated",
+    "publication_state": "local_validation_only"
+  },
+  "raw_historical_validation_state": {
+    "implementation_commit": "3376695b32021238e8e3152ae30188c9f38a5ca4",
+    "source_sha256": "769f2e7dd6000878cd29c2d913ad6979f28c5391c971292e6abf6148e83eb32d",
+    "normalized_records": 106,
+    "field_lineage_records": 1143,
+    "cell_dispositions": 1503,
+    "rejected_cells": 0,
+    "exact_matches": 76,
+    "source_only": 29,
+    "value_differences": 1,
+    "independent_rebuild": "byte_identical",
+    "manifest_sha256": "2f39ad4dbeb7cb872118ddc634985b5e21b18f2ef2421ca3c0a1e9bf90411288",
+    "reconciliation_manifest_sha256": "4847b9b50a08a1f8d2b42627fd496bb0dafe5a661b0d934db41db2d1dbca234e",
+    "retained_directories": ["silver/raw-historical-20260830-v1", "silver/historical-reconciliation-20260830-v1"],
+    "observation_time_context": "local_source_object_verification_not_new_http_capture",
+    "rights_state": "not_evaluated",
+    "publication_state": "local_validation_only"
+  },
+  "raw_rebuild_validation_state": {
+    "implementation_commit": "578235c9c45734d5bbd641d52ea2d5d2b48bb007",
+    "stage_count": 4,
+    "selected_facts": 341,
+    "rejected_values": 0,
+    "file_count": 18,
+    "independent_rebuild": "byte_identical",
+    "complete_run_reuse": "verified",
+    "partial_stage_resume": "not_implemented",
+    "manifest_sha256": "da65ee2f38e2450e7273e84fa48b0b29a6a44670d84401fdbb7389f710fa0269",
+    "retained_directory": "silver/raw-orchestrated-20260830-v1",
+    "observed_at": "2026-08-30T08:58:00Z",
+    "observation_time_context": "local_source_object_verification_not_new_http_capture",
+    "publication_state": "local_validation_only"
+  },
+  "raw_readonly_verification_state": {
+    "implementation_commit": "d25fd8db6c760ef7dab4ae5be032f4f779e300e6",
+    "cli": "passed",
+    "mcp": "passed",
+    "receipt_parity": "passed",
+    "manifest_sha256": "da65ee2f38e2450e7273e84fa48b0b29a6a44670d84401fdbb7389f710fa0269",
+    "publication_state": "local_validation_only"
+  },
+  "workbook_inspection_state": {
+    "implementation_commit": "446a82da14c0f3432298aef633841992cf7017b6",
+    "cli": "passed",
+    "budget_sheets": 8,
+    "budget_preview_cells": 34,
+    "source_fixity": "passed",
+    "publication_state": "local_validation_only"
+  },
+  "raw_compatibility_projection_state": {
+    "implementation_commit": "42cee7dd159a9593ecfe243c3328b2756758165d",
+    "projected_facts": 341,
+    "binary_representation_differences": 15,
+    "persistent_export": "implemented_in_raw_compatibility_export_state",
+    "publication_state": "local_validation_only"
+  },
+  "raw_compatibility_export_state": {
+    "implementation_commit": "e91d24b97fad312ae2c4418f31fc4435f9afd5c1",
+    "facts": 341,
+    "field_lineage_records": 4918,
+    "donor_rows_retained": 312,
+    "additional_historical_rows": 29,
+    "binary_representation_differences": 15,
+    "independent_rebuild": "byte_identical",
+    "manifest_sha256": "fb405a2fdbb2809093cb03d62ddbe1fcb1a1f6f91d304666e8ef0964813f73fb",
+    "retained_directory": "gold/raw-compatibility-20260831-v1",
+    "publication_state": "local_validation_only"
+  },
+  "raw_analytics_computation_state": {
+    "implementation_commit": "0bf14b07ac07ef5271a5e44626e4a8857907641b",
+    "historical_observations": 53,
+    "available_growth_comparisons": 48,
+    "period_aligned_gdp_shares": 53,
+    "appropriation_input_ids": 215,
+    "trend_groups": 16,
+    "breakdown_groups": 4,
+    "gold_persistence": "not_implemented",
+    "publication_state": "local_validation_only"
+  },
+  "raw_gold_export_state": {
+    "implementation_commit": "b38069ce5d560525e19dab22c90eca9dd3d20f3a",
+    "review_fix_commit": "0d864d44e776b2763b80de8c463051fae35b93eb",
+    "selected_facts": 321,
+    "field_lineage_records": 4798,
+    "file_count": 8,
+    "independent_rebuild": "four_builds_byte_identical",
+    "manifest_sha256": "ec68a03f597c7792da4337f2babfcb6615c2e6162a3125042c2b8ef6b7665835",
+    "retained_directory": "gold/raw-analytics-20260831-v1",
+    "focused_validation": "passed",
+    "full_local_validation": "timing_failures_and_timeouts",
+    "hosted_validation": "pending",
+    "publication_state": "local_validation_only"
+  },
+  "candidate_state": {
+    "candidate": "2026-08-29-v4",
+    "manifest_sha256": "9a33babda857b0aa7c60a6012000cf1e730fed729781cb8ceb6e7a4714cae40e",
+    "files": 94,
+    "bytes_before_manifest": 39390246,
+    "state": "published_and_remotely_verified"
+  },
+  "autonomy": {
+    "mode": "continuous_autonomous",
+    "stop_between_phases": false,
+    "stop_between_tracks": false,
+    "decision_policy": "../../autonomy-policy.json"
+  },
+  "gates": [
+    {
+      "id": "scope-plan-approval",
+      "kind": "human",
+      "status": "satisfied",
+      "evidence": "Explicit user approval in the current Codex task on 2026-08-29",
+      "legacy_status": "passed"
+    },
+    {
+      "id": "github-issue-creation",
+      "kind": "external",
+      "status": "satisfied",
+      "evidence": "Parent issue #205 with linked sub-issues #206-#216",
+      "legacy_status": "passed"
+    },
+    {
+      "id": "dependency-adoption",
+      "kind": "architecture",
+      "status": "satisfied",
+      "evidence": "openpyxl and Matplotlib stack decision, focused tests, locked audit/licence/SBOM",
+      "legacy_status": "passed"
+    },
+    {
+      "id": "resource-redistribution-rights",
+      "kind": "rights",
+      "status": "satisfied",
+      "evidence": "Per-resource CC BY 4.0 evidence for all 73 included official resources",
+      "legacy_status": "passed"
+    },
+    {
+      "id": "hf-candidate-approval",
+      "kind": "publication",
+      "status": "satisfied",
+      "evidence": "User instructed continuation immediately after presentation of exact manifest SHA-256 9a33babda857b0aa7c60a6012000cf1e730fed729781cb8ceb6e7a4714cae40e",
+      "legacy_status": "passed"
+    },
+    {
+      "id": "hf-credentials",
+      "kind": "credential",
+      "status": "satisfied",
+      "evidence": "Authenticated Hugging Face account observed as edithatogo",
+      "legacy_status": "passed"
+    },
+    {
+      "id": "hf-publication",
+      "kind": "publication",
+      "status": "satisfied",
+      "evidence": "Public dataset revision 9b85bac06597d4435fd078f6bed0f30bb008542b",
+      "legacy_status": "passed"
+    },
+    {
+      "id": "hf-collection-membership",
+      "kind": "external",
+      "status": "satisfied",
+      "evidence": "HEOR collection item 6a92b824597df1d081fc4108",
+      "legacy_status": "passed"
+    },
+    {
+      "id": "hf-remote-verification",
+      "kind": "external",
+      "status": "satisfied",
+      "evidence": "Fresh download verified manifest and all 94 manifest entries with zero mismatches",
+      "legacy_status": "passed"
+    },
+    {
+      "id": "donor-retirement",
+      "kind": "destructive",
+      "status": "pending",
+      "scope": "out_of_track_scope"
+    },
+    {
+      "id": "zenodo-release",
+      "kind": "publication",
+      "status": "pending",
+      "scope": "out_of_track_scope"
+    }
+  ],
+  "legacy_evidence_sha256": "d9161c2252b583cd9b6c17d3142126e525abbd6bc768b915bb4132508055e5a5",
+  "evidence_format_basis": "Existing observations were never hash-chained; the recorded original byte prefix remains immutable while new structured observations may be appended.",
+  "metadata_reconciled_at": "2026-08-30T09:09:36.938960Z",
+  "legacy_evidence_prefix_bytes": 20356
+}

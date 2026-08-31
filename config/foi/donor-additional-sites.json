@@ -1,0 +1,41 @@
+{
+  "schema": "fyi-archive.additional-foi-sites.v1",
+  "sites": [
+    {
+      "id": "ar-information-publica",
+      "kind": "alaveteli_unverified",
+      "country": "AR",
+      "url_patterns": ["derechoala.informacionpublica.org/request/*"]
+    },
+    {
+      "id": "de-fragdenstaat",
+      "kind": "non_alaveteli",
+      "country": "DE",
+      "url_patterns": ["fragdenstaat.de/anfrage/*"]
+    },
+    {
+      "id": "es-tuderechoasaber",
+      "kind": "non_alaveteli_historical",
+      "country": "ES",
+      "url_patterns": ["tuderechoasaber.es/es/request/*"]
+    },
+    {
+      "id": "ca-federal-atip",
+      "kind": "non_alaveteli",
+      "country": "CA",
+      "url_patterns": ["open.canada.ca/en/search/ati*"]
+    },
+    {
+      "id": "us-federal-foia",
+      "kind": "non_alaveteli",
+      "country": "US",
+      "url_patterns": ["www.foia.gov/*"]
+    },
+    {
+      "id": "za-paia",
+      "kind": "non_alaveteli",
+      "country": "ZA",
+      "url_patterns": ["www.justice.gov.za/paia/*"]
+    }
+  ]
+}

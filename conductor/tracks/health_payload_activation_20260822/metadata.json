@@ -8,5 +8,9 @@
   "parent_context": "conductor/next-tracks-proposal.md (Track C)",
   "predecessor_track": "health_payload_capture_20260802",
   "scope_boundary": "Builds the eligibility-evaluation machinery only. No rights decisions are made; no payload retrieval occurs in this track; capture remains behind the existing separate gates.",
-  "completed_at": "2026-08-22"
+  "completed_at": "2026-08-22",
+  "track_id": "health_payload_activation_20260822",
+  "description": "Health payload activation: deterministic eligibility evaluation engine",
+  "updated_at": "2026-08-30T09:09:36.938960Z",
+  "metadata_reconciled_at": "2026-08-30T09:09:36.938960Z"
 }

@@ -1,15 +1,13 @@
-"""Hugging Face dataset repository distribution adapter with rollover logic."""
+"""Legacy HF planning adapter; live publication fails until real transport is wired."""
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from datetime import UTC, datetime
 import os
-from typing import TYPE_CHECKING, Any
+from dataclasses import dataclass
+from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from archive_govt_nz.dist.packaging import PublicationManifest
-    from archive_govt_nz.dist.router import PublicationReceipt
 
 
 @dataclass(frozen=True, slots=True)
@@ -34,24 +32,21 @@ class HuggingFaceDistributionAdapter:
 
     def sync_manifest(
         self,
-        manifest: PublicationManifest,
+        manifest: PublicationManifest,  # noqa: ARG002 - preserve disabled API keyword
         target_repository: str,
         *,
         branch: str = "main",
         dry_run: bool = True,
     ) -> HFSyncOutcome:
         """Synchronize dataset release bundle to target HF repository."""
-        total_bytes = sum(item.size_bytes for item in manifest.items)
-        file_count = len(manifest.items)
-
         if dry_run:
             return HFSyncOutcome(
                 repository=target_repository,
                 branch=branch,
-                commit_sha="dry-run-sha-00000000000000000000000000000000",
-                files_synced=file_count,
-                bytes_synced=total_bytes,
-                status="verified",
+                commit_sha=None,
+                files_synced=0,
+                bytes_synced=0,
+                status="dry_run",
             )
 
         if not self.token:
@@ -62,16 +57,18 @@ class HuggingFaceDistributionAdapter:
                 files_synced=0,
                 bytes_synced=0,
                 status="failed",
-                error_message="HF_TOKEN environment variable or explicit token is missing",
+                error_message="HF_TOKEN or an explicit token is missing",
             )
 
-        # In live mode, commits are generated deterministically
-        commit_sha = f"hf-{manifest.manifest_id[:12]}-{manifest.version.replace('.', '')}"
         return HFSyncOutcome(
             repository=target_repository,
             branch=branch,
-            commit_sha=commit_sha,
-            files_synced=file_count,
-            bytes_synced=total_bytes,
-            status="published",
+            commit_sha=None,
+            files_synced=0,
+            bytes_synced=0,
+            status="failed",
+            error_message=(
+                "Live upload and anonymous readback are not implemented "
+                "in this legacy adapter"
+            ),
         )

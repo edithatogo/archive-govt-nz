@@ -1,0 +1,18 @@
+{
+  "recorded_at": "2026-08-30T10:03:25.208988+00:00",
+  "revision": "30ac2a5d851ada9e431ed17cc840cb3124554022",
+  "fix_commit": "e92845b",
+  "hosted_failure_run": 33304203952,
+  "failure": "whole-ledger hash rejected legitimate new health observations on the PR merge ref",
+  "correction": "Pin the original legacy byte prefix; validate every appended structured observation. Reject prefix rewriting or truncation.",
+  "validation": {
+    "command": [
+      "./scripts/validate.sh"
+    ],
+    "exit_code": 0,
+    "tests": 1498,
+    "coverage_percent": 95.95,
+    "output_sha256": "eb7ec4162310ed12a5a3b7cae0ca8169013ed0aa1c303fbfc93727ce7e025379"
+  },
+  "hosted_status": "awaiting_corrected_head_checks"
+}
