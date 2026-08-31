@@ -538,6 +538,12 @@ repository validation command. External gates block only their affected task.
   GDP profiles after dependency delivery, retaining source-specific shapes,
   compact counts, CLI default dry-run and forced-read-only MCP. Forecast's
   missing no-write path remains a separate task. [M-15, M-18; AC-13, AC-16]
+- [~] Add an explicit no-write forecast API path while retaining the existing
+  default-write contract and all four source profiles. Require real booleans,
+  preserve partial/rejected status and prove old written bytes unchanged.
+  This does not expose forecasts through CLI/MCP or assert write readiness.
+  [M-09, M-18; AC-07, AC-16]
+
 - [x] Wire the four approved CPI/Ministry/QES source profiles through a
   dry-run-first CLI and forced-read-only MCP preflight, using compact typed
   redacted receipts without changing donor rebuild or archive-status semantics.
