@@ -137,3 +137,23 @@ passes 173 tests in 13.69 seconds; Conductor validates 73 tracks without errors,
 and whitespace validation passes. No full native rerun is claimed for this
 documentation-only conflict resolution. The new pushed head requires fresh
 hosted validation before merge.
+
+### Windows fixture correction
+
+Hosted CI run `33402495819` at `66aa340` passed Ubuntu and macOS assurance,
+CodeQL, workflow lint and patch coverage, but Windows assurance failed 11 tests
+(2,771 passed; 96.74% coverage). The staging fixture used `Path.write_text`
+for byte-pinned inventory JSON, translating LF to CRLF on Windows. Production
+correctly rejected those bytes before staging output was created.
+
+Fixtures now independently encode UTF-8/LF bytes without the production encoder.
+The malformed-plan fixture receives the same correction so it tests plan
+mismatch on every platform. A canonical-fixture assertion and a repinned-CRLF
+negative case preserve the strict byte contract. Production code, source data,
+publication state, thresholds and platform requirements are unchanged. The
+original Windows failure remains evidence; fresh hosted checks are required.
+
+The corrected combined suite passes 175 tests in 7.20 seconds. Focused Ruff
+format/lint, strict typing and 73-track Conductor validation pass. A full native
+rerun is not claimed for this test-only correction; the hosted Windows result
+must be observed on the corrected commit.

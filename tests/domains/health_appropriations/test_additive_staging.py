@@ -50,7 +50,7 @@ def staging(inputs: dict[str, Any], tmp_path: Path) -> StagingInputs:
     )
     plan = plan_additive_inventory(**inputs)
     path = tmp_path / "inventory.json"
-    path.write_text(json.dumps(plan, sort_keys=True) + "\n")
+    path.write_bytes((json.dumps(plan, sort_keys=True) + "\n").encode("utf-8"))
     return StagingInputs(
         **inputs,
         inventory=PinnedInput(path, hashlib.sha256(path.read_bytes()).hexdigest()),
@@ -60,6 +60,36 @@ def staging(inputs: dict[str, Any], tmp_path: Path) -> StagingInputs:
 def _output(tmp_path: Path, name: str) -> Path:
     # Inputs and destinations have separate roots, including capture metadata.
     return tmp_path.parent / (tmp_path.name + "-" + name)
+
+
+def test_inventory_fixture_uses_canonical_utf8_lf(staging: StagingInputs) -> None:
+    """The byte-pinned fixture must not inherit platform newline translation."""
+    payload = staging.inventory.path.read_bytes()
+    assert payload.endswith(b"\n")
+    assert b"\r" not in payload
+    assert payload == (json.dumps(json.loads(payload), sort_keys=True) + "\n").encode(
+        "utf-8"
+    )
+
+
+def test_repinned_crlf_inventory_rejected_before_output(
+    staging: StagingInputs, tmp_path: Path
+) -> None:
+    """A matching digest cannot authorize noncanonical inventory bytes."""
+    payload = staging.inventory.path.read_bytes().replace(b"\n", b"\r\n")
+    staging.inventory.path.write_bytes(payload)
+    changed = replace(
+        staging,
+        inventory=PinnedInput(
+            staging.inventory.path, hashlib.sha256(payload).hexdigest()
+        ),
+    )
+    output = _output(tmp_path, "crlf-inventory")
+    with pytest.raises(ValueError, match="additive_staging_contract"):
+        stage_additive_bundle(
+            changed, output, forbidden_roots=(tmp_path / "candidates",)
+        )
+    assert not output.exists()
 
 
 def test_two_builds_preserve_every_input_and_are_not_candidates(
@@ -192,7 +222,9 @@ def test_repinned_wrong_inventory_is_not_authority(
 ) -> None:
     plan = json.loads(staging.inventory.path.read_bytes())
     plan["publication_approval"] = "granted"
-    staging.inventory.path.write_text(json.dumps(plan, sort_keys=True) + "\n")
+    staging.inventory.path.write_bytes(
+        (json.dumps(plan, sort_keys=True) + "\n").encode("utf-8")
+    )
     changed = replace(
         staging,
         inventory=PinnedInput(
