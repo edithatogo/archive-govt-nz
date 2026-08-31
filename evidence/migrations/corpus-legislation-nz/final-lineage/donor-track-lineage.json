@@ -1,0 +1,303 @@
+{
+  "supersedes_for_final_head": "../donor-track-lineage.json",
+  "baseline_commit": "749918c251da59dc890c19dfda2ab9a021fd8ca6",
+  "final_commit": "b40587f1b1aec7356a0f623916fcc8212397d283",
+  "baseline_conductor_tree": "4faf5bebac0d6cf8f06b87e83b282a9953505ce9",
+  "final_conductor_tree": "4faf5bebac0d6cf8f06b87e83b282a9953505ce9",
+  "lineage_edge": {
+    "from": "749918c251da59dc890c19dfda2ab9a021fd8ca6",
+    "to": "b40587f1b1aec7356a0f623916fcc8212397d283",
+    "interval_commit_count": 15,
+    "conductor_changed_files": []
+  },
+  "tracks": [
+    {
+      "donor_track": "dataset_identifier_interlinking_20260721",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/dataset_identifier_interlinking_20260721",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/dataset_identifier_interlinking_20260721"
+    },
+    {
+      "donor_track": "track_01_repository_commit_and_release_baseline",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_01_repository_commit_and_release_baseline",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_01_repository_commit_and_release_baseline"
+    },
+    {
+      "donor_track": "track_02_credential_and_secret_inventory",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_02_credential_and_secret_inventory",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_02_credential_and_secret_inventory"
+    },
+    {
+      "donor_track": "track_03_hugging_face_dataset_shell",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_03_hugging_face_dataset_shell",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_03_hugging_face_dataset_shell"
+    },
+    {
+      "donor_track": "track_04_source_discovery_completeness",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_04_source_discovery_completeness",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_04_source_discovery_completeness"
+    },
+    {
+      "donor_track": "track_05_conservative_live_smoke_sync",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_05_conservative_live_smoke_sync",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_05_conservative_live_smoke_sync"
+    },
+    {
+      "donor_track": "track_06_first_hugging_face_smoke_upload",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_06_first_hugging_face_smoke_upload",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_06_first_hugging_face_smoke_upload"
+    },
+    {
+      "donor_track": "track_07_full_corpus_bootstrap_download",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_07_full_corpus_bootstrap_download",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_07_full_corpus_bootstrap_download"
+    },
+    {
+      "donor_track": "track_08_full_hugging_face_corpus_upload",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_08_full_hugging_face_corpus_upload",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_08_full_hugging_face_corpus_upload"
+    },
+    {
+      "donor_track": "track_09_github_scheduled_hugging_face_sync",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_09_github_scheduled_hugging_face_sync",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_09_github_scheduled_hugging_face_sync"
+    },
+    {
+      "donor_track": "track_10_maintenance_doctor_and_alerting",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_10_maintenance_doctor_and_alerting",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_10_maintenance_doctor_and_alerting"
+    },
+    {
+      "donor_track": "track_11_monthly_full_reconciliation",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_11_monthly_full_reconciliation",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_11_monthly_full_reconciliation"
+    },
+    {
+      "donor_track": "track_12_zenodo_sandbox_archive",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_12_zenodo_sandbox_archive",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_12_zenodo_sandbox_archive"
+    },
+    {
+      "donor_track": "track_13_protected_production_zenodo_archive",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_13_protected_production_zenodo_archive",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_13_protected_production_zenodo_archive"
+    },
+    {
+      "donor_track": "track_14_legal_citation_and_dataset_wording",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_14_legal_citation_and_dataset_wording",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_14_legal_citation_and_dataset_wording"
+    },
+    {
+      "donor_track": "track_15_downstream_researcher_usability",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_15_downstream_researcher_usability",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_15_downstream_researcher_usability"
+    },
+    {
+      "donor_track": "track_16_github_repository_hardening",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_16_github_repository_hardening",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_16_github_repository_hardening"
+    },
+    {
+      "donor_track": "track_17_runtime_capacity_batching_and_resume",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_17_runtime_capacity_batching_and_resume",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_17_runtime_capacity_batching_and_resume"
+    },
+    {
+      "donor_track": "track_18_data_quality_and_schema_governance",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_18_data_quality_and_schema_governance",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_18_data_quality_and_schema_governance"
+    },
+    {
+      "donor_track": "track_19_public_launch_decision",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_19_public_launch_decision",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_19_public_launch_decision"
+    },
+    {
+      "donor_track": "track_20_github_release_tag_for_partial_launch",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_20_github_release_tag_for_partial_launch",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_20_github_release_tag_for_partial_launch"
+    },
+    {
+      "donor_track": "track_21_separate_historical_hugging_face_corpus",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_21_separate_historical_hugging_face_corpus",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_21_separate_historical_hugging_face_corpus"
+    },
+    {
+      "donor_track": "track_22_historical_bootstrap_review_plan",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_22_historical_bootstrap_review_plan",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_22_historical_bootstrap_review_plan"
+    },
+    {
+      "donor_track": "track_23_manual_historical_upload_workflow",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_23_manual_historical_upload_workflow",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_23_manual_historical_upload_workflow"
+    },
+    {
+      "donor_track": "track_24_corpus_family_naming_and_publication_alignment",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_24_corpus_family_naming_and_publication_alignment",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_24_corpus_family_naming_and_publication_alignment"
+    },
+    {
+      "donor_track": "track_25_cross_corpus_interoperability_and_metadata",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_25_cross_corpus_interoperability_and_metadata",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_25_cross_corpus_interoperability_and_metadata"
+    },
+    {
+      "donor_track": "track_26_public_surface_audit_evidence",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_26_public_surface_audit_evidence",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_26_public_surface_audit_evidence"
+    },
+    {
+      "donor_track": "track_27_zenodo_rights_metadata_and_zenodraft_workflow",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_27_zenodo_rights_metadata_and_zenodraft_workflow",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_27_zenodo_rights_metadata_and_zenodraft_workflow"
+    },
+    {
+      "donor_track": "track_28_github_repository_name_migration_assessment",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_28_github_repository_name_migration_assessment",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_28_github_repository_name_migration_assessment"
+    },
+    {
+      "donor_track": "track_29_shared_nz_corpus_core_schema",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_29_shared_nz_corpus_core_schema",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_29_shared_nz_corpus_core_schema"
+    },
+    {
+      "donor_track": "track_30_sota_metadata_packages",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_30_sota_metadata_packages",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_30_sota_metadata_packages"
+    },
+    {
+      "donor_track": "track_31_bleeding_edge_versioning_release_automation",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_31_bleeding_edge_versioning_release_automation",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_31_bleeding_edge_versioning_release_automation"
+    },
+    {
+      "donor_track": "track_32_sota_cicd_code_quality_rust_tooling",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_32_sota_cicd_code_quality_rust_tooling",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_32_sota_cicd_code_quality_rust_tooling"
+    },
+    {
+      "donor_track": "track_33_artifact_provenance_attestations",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_33_artifact_provenance_attestations",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_33_artifact_provenance_attestations"
+    },
+    {
+      "donor_track": "track_34_sota_test_infrastructure",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_34_sota_test_infrastructure",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_34_sota_test_infrastructure"
+    },
+    {
+      "donor_track": "track_35_multi_git_and_multi_archive_mirroring_setup",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_35_multi_git_and_multi_archive_mirroring_setup",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_35_multi_git_and_multi_archive_mirroring_setup"
+    },
+    {
+      "donor_track": "track_36_period_sharded_bootstrap_agent_handoff",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_36_period_sharded_bootstrap_agent_handoff",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_36_period_sharded_bootstrap_agent_handoff"
+    },
+    {
+      "donor_track": "track_38_official_website_fallback_retrieval",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_38_official_website_fallback_retrieval",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_38_official_website_fallback_retrieval"
+    },
+    {
+      "donor_track": "track_39_nzlii_redundancy_reconciliation",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_39_nzlii_redundancy_reconciliation",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_39_nzlii_redundancy_reconciliation"
+    },
+    {
+      "donor_track": "track_40_source_redundancy_resolver_provenance",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_40_source_redundancy_resolver_provenance",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_40_source_redundancy_resolver_provenance"
+    },
+    {
+      "donor_track": "track_41_gazette_source_registry_rights_shared_schema",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_41_gazette_source_registry_rights_shared_schema",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_41_gazette_source_registry_rights_shared_schema"
+    },
+    {
+      "donor_track": "track_42_official_gazette_source_archive",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_42_official_gazette_source_archive",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_42_official_gazette_source_archive"
+    },
+    {
+      "donor_track": "track_43_digitalnz_gazette_source_archive",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_43_digitalnz_gazette_source_archive",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_43_digitalnz_gazette_source_archive"
+    },
+    {
+      "donor_track": "track_44_victoria_lexisnexis_historical_gazette_archive",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_44_victoria_lexisnexis_historical_gazette_archive",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_44_victoria_lexisnexis_historical_gazette_archive"
+    },
+    {
+      "donor_track": "track_45_nzlii_gazette_redundancy_archive",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_45_nzlii_gazette_redundancy_archive",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_45_nzlii_gazette_redundancy_archive"
+    },
+    {
+      "donor_track": "track_46_cross_source_comparison_canonical_gazette_builder",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_46_cross_source_comparison_canonical_gazette_builder",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_46_cross_source_comparison_canonical_gazette_builder"
+    },
+    {
+      "donor_track": "track_47_gazette_archive_workflow_review_publication_staging",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_47_gazette_archive_workflow_review_publication_staging",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_47_gazette_archive_workflow_review_publication_staging"
+    },
+    {
+      "donor_track": "track_48_gazette_freshness_change_detection",
+      "disposition": "already_assimilated_exactly",
+      "previous_import": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_48_gazette_freshness_change_detection",
+      "final_import": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_48_gazette_freshness_change_detection"
+    }
+  ]
+}

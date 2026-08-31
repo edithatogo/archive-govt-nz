@@ -1,0 +1,12 @@
+{
+  "donor_final_commit": "b40587f1b1aec7356a0f623916fcc8212397d283",
+  "scope": "Final-head lineage only, no publication metadata reconciliation",
+  "late_interval_identity_file_changes": [],
+  "source_record": "../external-identities.json",
+  "source_record_sha256": "2624c22a54c3bf20ab6395182356b009c7cf87b947d913f4920c1518eeb99c73",
+  "source_record_semantics": "Historical record retained, not revalidated or endorsed by this receipt.",
+  "github_source": "edithatogo/corpus-legislation-nz",
+  "github_target": "edithatogo/archive-govt-nz",
+  "independent_product_untouched": "edithatogo/legislation",
+  "remote_identity_changes_performed": false
+}

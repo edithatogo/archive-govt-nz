@@ -233,3 +233,7 @@ implementation has occurred under these tracks.
   *Link: [archive/imported/index.md](./archive/imported/index.md)*
 - [~] **Track: RIOPA interoperability integration**
   *Link: [tracks/riopa_interoperability_20260831/index.md](./tracks/riopa_interoperability_20260831/index.md)*
+
+---
+- [~] **Track: Final donor lineage reconciliation (Prompt 02)**
+  *Link: [./tracks/legislation_final_donor_lineage_20260831/index.md](./tracks/legislation_final_donor_lineage_20260831/index.md)*

@@ -1,0 +1,8 @@
+{
+  "track_id": "track_08_full_hugging_face_corpus_upload",
+  "type": "feature",
+  "status": "ready",
+  "created_at": "2026-06-02T12:04:09Z",
+  "updated_at": "2026-06-21T00:00:00Z",
+  "description": "Track 08: Full Hugging Face Corpus Upload via full_corpus_hf_upload.yml"
+}

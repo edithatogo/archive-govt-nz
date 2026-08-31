@@ -1,0 +1,8 @@
+{
+  "track_id": "track_36_period_sharded_bootstrap_agent_handoff",
+  "type": "feature",
+  "status": "in_progress",
+  "created_at": "2026-06-21T00:00:00Z",
+  "updated_at": "2026-06-21T10:45:00Z",
+  "description": "Define time-period corpus shards, recent annual shards, checkpoint artifacts, and agent handoff rules for parallel review and triage."
+}
