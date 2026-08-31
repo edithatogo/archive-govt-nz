@@ -57,7 +57,7 @@ Rights remain `not_evaluated`, authoritative mapping is `not_performed`, input
 fixity is `not_performed`, and publication approval is `not_granted`. Existing
 source v1 packages, originals and publication candidates are not rewritten.
 
-## Assurance in progress
+## Local assurance
 
 The initial import failed before implementation. A new full-field/lineage test
 then exposed source-scale versus canonical-scale amount text; it failed before
@@ -69,5 +69,42 @@ metadata/lineage. Critical coverage is 100% across 79 statements / 16 branches
 with the expanded focused suite; typing and Ruff pass. Parent-requested
 provenance flags and the inherited-field receipt each failed a regression test
 before being added. Independent review found no further arithmetic, identity
-or accounting issue. Cold mutation and the
-full native harness remain required before PR delivery.
+or accounting issue. All 28 cold, unfiltered mutants were killed with one worker,
+the unchanged 30-second deadline, zero pardons and no cache hits (37.54 seconds).
+
+The full native harness at `04c923b4c83cc45d469ebe18a3b646608e6b4a40`
+exited 0: 3,955 tests / 8 existing warnings / 120.18 seconds,
+97.30743538358769% coverage, 75 tracks, 42 schemas / 32 samples, 9 parity checks
+and all supply-chain gates including 111 SBOM components. Runtime was
+CPython 3.14.6 / uv 0.11.8, with ctrace, JIT disabled and four test workers.
+Only two unrelated harness-generated timestamp receipts were restored after exit.
+The post-doc check initially used nonexistent `tools/validate_conductor.py`
+(exit 2); the actual native entrypoint is `tools/validate_conductor_state.py`.
+
+Frozen source SHA256:
+`61630524f4918b1ba611004485de6066da388bc132c5c8c684267bc532e5bd5d`;
+test SHA256:
+`2ad440d9f0def7df15ab537b51ac5234263b0ddd40d68b1f774723e922e08805`.
+Retained native log `/tmp/health-budget-canonical.PIyPZX-native.log` SHA256
+`f0028f459995b41ece82a450db555e39f44ef7c9bdd593c543ede0f618e999d9`;
+coverage JSON SHA256
+`9b24a846e1e6a41fa031b5e38372528fe033d02cc4c9912c7aff620fa15555f5`;
+cold mutation JSON SHA256
+`5a10ca32abf5c94a31ca6706d47aa176a5e624269114408a80dd858ecb93e45b`.
+
+## Retained-package in-memory pilot
+
+Verified package manifest pins were Budget-2025
+`1b1e5dfd3fa90d98dcf5200997001db236df7b40f4404b658c36f5cb0264d2fe`
+and Budget-2026
+`f34000992fd65dca445e7ad251cb06df3c68107410355ea057ea9a2bf8481738`.
+The public package reader and pure projection produced respectively 215 / 185
+facts, 215 / 185 dimensions and 2,365 / 2,035 canonical links. All 6,800 original
+lineage entries remain accounted for: 3,200 mapped and 3,600 retained-only.
+Reversing every input table preserved results and all three serialized Parquet
+byte streams per vintage. Before/after package hashes matched. No original
+workbook was reopened and no dataset files, candidates or HF resources changed.
+This pilot verifies source-package transport, not new original-file fixity.
+Receipt `/tmp/health-budget-canonical.PIyPZX-pilot-receipt.json` SHA256
+`156b44b41bb6436c6fab5a4299a69e23b5d32653f0612d6c56ffa382f198969d`.
+Exact-head hosted CI and delivery remain separate from these local results.

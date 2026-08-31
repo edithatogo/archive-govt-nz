@@ -232,7 +232,7 @@ repository validation command. External gates block only their affected task.
 
 ### 3.2 Implement the domain and adapter protocol
 
-- [~] Project reviewed Budget-2025/2026 facts into canonical appropriation
+- [x] Project reviewed Budget-2025/2026 facts into canonical appropriation
   fields, composing existing unmapped source-label occurrences and complete
   lineage accounting. Preserve source Decimal(20,3) exactly, year tokens and
   amount types; leave dates/currency/price basis unestablished. No I/O, rights
