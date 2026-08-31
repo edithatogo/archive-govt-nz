@@ -48,3 +48,17 @@ new shapes explicitly use `element` rather than weakening equality checks.
 
 No public file, original source, existing derivative or old schema is modified
 by importing or querying this registry.
+
+## Main integration receipt — 2026-08-31
+
+Main `25f9fb5` was integrated in an independent clone at `b626b6f`, preserving
+the exact incoming ledger prefix followed by the two original schema events.
+Production and test SHA-256 remain respectively
+`012ef66cbd81c5b5e845bd3deee6c05d04b3b79ff7361b3dcb2c802672acb6c1` and
+`dd10a30e2f68da3a289ddcc1d3c8b85de5700f8bedabd593552087b88fbb1952`.
+Post-integration 34 focused tests and the 73-track Conductor check pass.
+The first focused invocation reused another clone's interpreter without an
+explicit source path and failed collection; retry with this clone's `src` on
+`PYTHONPATH` passed unchanged code. No shared environment was modified.
+The recorded full native pass predates this integration and is not a new
+integrated native result. Hosted exact-head checks remain required.
