@@ -63,3 +63,9 @@ checks are separate, not a claimed second full local harness run.
 Final focused integration passed 141 tests in 10.89 seconds. The broader track
 remains in progress; full standards validation, new source coverage, canonical
 consumers and changed-candidate publication remain separate work.
+
+PR #326's first mergeability observation was conflicting after upstream
+delivery. A fresh ordinary merge of main `1edd022` produced `8281499` with an
+identical tree and no manual conflict edits; this was ancestry reconciliation,
+not a production fix. An additional independent final-diff review found no
+actionable code/scope issue and confirmed the 119-line incoming ledger prefix.

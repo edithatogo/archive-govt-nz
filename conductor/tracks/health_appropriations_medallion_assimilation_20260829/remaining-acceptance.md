@@ -53,8 +53,10 @@ provenance reader receipt for exact scope; hosted delivery is recorded separatel
 
 ## Continue without repeated scope requests
 
-1. Complete exact-head hosted delivery of the executor, provenance reader and
-   bounded PROV projection; keep their already-passed local/pilot evidence distinct.
+1. Complete exact-head hosted delivery of the provenance reader and bounded PROV
+   projection; keep their already-passed local/pilot evidence distinct. Executor
+   #323 merged as `1edd022c6cb0233a7807ebddd46c8b6d3fbf7394` at
+   2026-08-31T18:17:38Z after seven successful checks at `f866da40`.
 2. Implement the [exclusive Budget export proposal](./budget-canonical-export-proposal.md),
    then extend verified provenance to those appropriation packages, retaining
    the complete lineage accounting and input metadata caps.
