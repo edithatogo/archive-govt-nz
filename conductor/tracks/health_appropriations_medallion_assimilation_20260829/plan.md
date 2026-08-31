@@ -526,6 +526,10 @@ repository validation command. External gates block only their affected task.
 
 ## Review fixes
 
+- [~] Keep disconnected source-plot segments styled by their full context and
+  disambiguate colliding display labels without merging source identities.
+  [M-09, M-18; AC-07, AC-16]
+
 - [x] Remove scheduler-dependent Hypothesis deadline flakiness from the batch
   eligibility invariant without weakening generated cases or assertions.
   [M-18; AC-16] (`b2bf7b7`)

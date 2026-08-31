@@ -1,5 +1,30 @@
 # Self-Review
 
+## Plot context-style regression — 2026-08-31 UTC
+
+- Confirmed a visual identity defect on valid same-context years 2000, 2001
+  and 2003: line segments correctly broke at the gap, but used different
+  colors/markers while legend deduplication retained only the final style.
+- Canonical full context now determines the style; segment coordinates stay
+  separate. An insertion-order regression guards dictionary canonicalization.
+- Distinct full contexts with colliding abbreviated labels receive explicit
+  context ordinals, not one merged legend entry. Tests cover shared SHA-256
+  prefixes and a context field absent from the display label. Exact contexts
+  remain in `CONTRACTS.json`; no abbreviation becomes an identity key.
+- The pure plot contract, Gold verification, numeric values, line connections,
+  output names and preservation rules are unchanged. Existing retained images
+  are not regenerated or overwritten by this correction.
+- All 23 focused renderer tests pass with 100% line/branch coverage (132
+  statements, 30 branches). Full and mutation assurance remain separate.
+- Native strict typing exposed test assertion types that needed explicit
+  NumPy array comparison and `Line2D` narrowing; those corrections pass
+  targeted typing and all three regressions. The corrected full run passed
+  all pre-test gates but timed out at 300 seconds with one unidentified failure
+  marker and no final test/coverage summary. Mutation remains 42 kills and
+  25 timeouts, not 67 kills. No unresolved code finding is asserted resolved
+  by these incomplete whole-repository/mutation results; hosted checks remain
+  necessary. The track and this review-fix task remain in progress.
+
 ## Budget successor consumer — 2026-08-31 UTC
 
 - Independent review reproduced and fixed non-integer manifest count acceptance.
