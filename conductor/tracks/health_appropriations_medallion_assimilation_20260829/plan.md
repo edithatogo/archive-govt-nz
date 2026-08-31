@@ -194,6 +194,11 @@ repository validation command. External gates block only their affected task.
 
 ### 3.1 Schema contracts first
 
+- [~] Export independent JSON row-shape schemas from the eight Arrow contracts,
+  preserving nullable fields, exact decimal strings and fixed record-set/version
+  constants. Test formats and representation bounds without claiming semantic
+  source validation, identity construction or canonical promotion. [M-05,
+  M-06, M-18; AC-05, AC-16]
 - [x] Establish an additive immutable Arrow registry for all eight record-set
   shapes, with nullable unknown valid times, source precision and provenance;
   test Parquet round trips without rewriting or promoting v1 source packages.

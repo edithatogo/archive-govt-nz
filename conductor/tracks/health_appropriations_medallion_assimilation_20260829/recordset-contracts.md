@@ -17,7 +17,7 @@ status/context field allows subsequent validators to distinguish those cases.
 This is a structural contract only. Arrow does not enforce constant values in
 the domain/record-set/version columns, unique or correctly derived IDs,
 null-reason consistency, temporal alignment, classification evidence, rights,
-or cross-record lineage closure. JSON Schema/row validators, stable identity
+or cross-record lineage closure. Semantic row validators, stable identity
 construction, explicit source projections, fingerprints and operational
 registration remain pending tasks. Do not infer M-05 or Phase 3 completion.
 
@@ -48,3 +48,24 @@ new shapes explicitly use `element` rather than weakening equality checks.
 
 No public file, original source, existing derivative or old schema is modified
 by importing or querying this registry.
+
+## JSON transport descriptors
+
+`schemas.health_recordset_json.recordset_json_schema(name, version="v1")`
+returns a fresh Draft 2020-12 descriptor for a single row. All columns are
+required, nullable columns explicitly admit null, and additional fields are
+rejected. Domain, record-set and version constants are enforced. Dates and
+timestamps require the caller to enable format checking explicitly.
+
+Decimals travel as bounded fixed-point strings, never JSON floating-point
+numbers. The grammar allows at most 20 integer and 18 fractional digits and
+rejects exponent notation, leading zeroes, nonfinite values and trailing
+newlines. It does not round source values. Unknown Arrow types, names and
+versions fail closed. Returned nested dictionaries are independent.
+
+These descriptors remain structural only: they do not prove IDs, rights,
+source precision, null-reason consistency, time alignment or lineage closure.
+No existing source package is converted or promoted. The 51 focused tests
+include ten seeded descriptor counterexamples; these are not ten additional
+source-code mutant kills. The final unfiltered cold mutation run generated
+and killed two source mutants, with no survivors or cached results.
