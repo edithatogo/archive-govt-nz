@@ -1494,3 +1494,23 @@ hashes agree for each original and all four source-package files. Ten new local
 derivatives total 720,641 bytes; no existing output, v4 or HF bytes changed.
 Retention receipt SHA-256
 `197ee1aa0fa32883005cb234da63488b3da8694d61484b924f475ade7c329eb8`.
+
+## 2026-08-31 — Detected structural-unit accounting
+
+`3564f2b` adds metadata-only accounting with explicit legacy/rich inventory
+shapes and assertion-only mappings. First red run failed on the missing module;
+expanded tests exposed one shared fixture alias, corrected by deep copy. Review
+then produced 11 expected red failures for contradictory structural metadata,
+invalid table bounds and omitted coordinate-only selections. All 107 final
+focused tests pass, at 100% coverage (198 statements/48 branches), and all 144
+cold unfiltered mutants were killed in 66.82 seconds with zero other outcomes.
+Independent read-only re-review found no remaining actionable issue.
+
+At integrated commit `c3c82b3`, the native harness exited zero: 3,531 tests,
+87.68 seconds, 97.23% overall coverage, eight existing warnings, all schema,
+parity, mutation and supply-chain gates, and 111-component validated SBOM.
+Runtime was CPython 3.14.6 in an independent environment with four native test
+workers. Source/test hashes and exact commands are in `area-accounting.md`.
+A metadata-only pilot verifies six input pins and deterministic accounting for
+158 globally unresolved units and 17 adapter-context exclusions. No original
+or Parquet data was opened. No HF, candidate or source bytes changed.

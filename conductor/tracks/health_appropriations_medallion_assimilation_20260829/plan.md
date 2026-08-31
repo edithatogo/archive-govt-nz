@@ -145,10 +145,12 @@ repository validation command. External gates block only their affected task.
 
 ### 1.5 Phase review and checkpoint
 
-- [~] Reconcile pinned donor structural inventories with adapter-context
+- [x] Reconcile pinned donor structural inventories with adapter-context
   exclusions and explicit mapping assertions. Default unresolved, preserve
   partial-sheet remainders and legacy inventory limitations; never infer PDF
   tables, semantic normalization or phase completion. [M-07; AC-03, AC-16]
+  (`3564f2b`; 107 focused tests, 144 cold mutant kills, 3,531 native tests;
+  see `area-accounting.md`; hosted delivery remains separate.)
 
 - [ ] Verify every discovered item has exactly one disposition and every donor
   binary/data area has an inventory result; report uncertainty and gaps rather

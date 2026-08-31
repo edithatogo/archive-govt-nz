@@ -76,3 +76,35 @@ units and 17 adapter exclusions, with receipt digest
 `b1b16684838c403feb9678ad6d59eb688cffa8e0cc539220fb695d0b39823765`.
 Originals and derivative data files were never opened by this pilot.
 Native and hosted validation remain pending at this checkpoint.
+
+## Complete native checkpoint
+
+Functional commit `3564f2b` was integrated with main `6105a50` at
+`c3c82b33f237e0c8c98c09ade20f891c914625ff`; no source/test changes occurred.
+The required native harness exited zero: 3,531 tests in 87.68 seconds,
+eight existing SQLite warnings, 97.23% overall coverage, 75 Conductor tracks,
+42 schemas/32 sample documents, 9/9 differential parity, all native mutation
+lanes, hygiene, audit, licences, secret scanning and validated 111-component
+SBOM. CAS throughput was 330.98 MB/s. The SBOM tool's duplicate internal
+validation warning does not replace its succeeding mandatory strict validator.
+Only two harness-generated timestamp-only legislation receipts were restored
+after completion; no source data or retained outputs changed.
+
+Commands:
+
+```sh
+.venv/bin/pytest tests/domains/health_appropriations/test_area_accounting.py --cov=archive_govt_nz.domains.health_appropriations.area_accounting --cov-branch --cov-fail-under=100 --cov-report=term-missing -q
+COVERAGE_CORE=ctrace PYTHON_JIT=0 .venv/bin/pytest tests/domains/health_appropriations/test_area_accounting.py -q --gremlins --gremlin-targets=src/archive_govt_nz/domains/health_appropriations/area_accounting.py --gremlin-report=json --gremlin-parallel --gremlin-workers=1 --gremlin-clear-cache --gremlin-no-coverage-filter --strict-pardons --gremlin-max-pardons-pct=0 --max-pardons=0 --no-cov
+COVERAGE_CORE=ctrace PYTHON_JIT=0 PYTEST_XDIST_AUTO_NUM_WORKERS=4 ./scripts/validate.sh
+```
+
+Retained receipt hashes (SHA-256):
+
+- Critical coverage: `632cd9270a4d02e306c03f88ea29eb069a482b6338ab9eb3710e42a07180853d`.
+- Cold mutation: `df575e813b26d98404596796788141556989bb05501d8b6863392f099b3100d5`.
+- Native log: `c4f627424ed88cbdb4617e54049d17f09b217e512003ca4e99c10d0a07dd4c99`.
+- Native coverage: `a810d3f187090aac1595b6d15a769bed47de6c524a4bc7e7f0ce79c4b438c702`.
+
+These are local software/accounting receipts. They do not establish complete
+donor-area discovery, normalized coverage, source-file fixity, rights, publication
+or completion of any umbrella phase. Exact-head hosted checks remain pending.

@@ -656,3 +656,15 @@ validity evidence. Exact bytes/schema readback and file membership precede
 completion. Caller parent-directory trust, source-package retention and no
 publication/rights promotion remain explicit. No generic filesystem sandbox or
 global semantic/canonical-registry completion is claimed.
+
+## Detected structural accounting review — 2026-08-31
+
+Scope remains detected structural units only, never complete normalization.
+Review identified names-only structural joins and insufficient range bounds;
+11 red cases preceded fixes for shared-attribute/rich-range agreement,
+ordered Excel/sheet boundaries and coordinate-only forecast selection retention.
+Independent re-review found no further actionable finding. Mappings remain
+assertion-only, adapter exclusions never imply global scope, PDF page counts
+never manufacture table/page identities, and partial selections leave unresolved
+whole-unit coverage. Final assurance: 107 focused tests/100% critical coverage,
+144 cold mutant kills, full native 3,531-test pass. Hosted delivery is separate.
