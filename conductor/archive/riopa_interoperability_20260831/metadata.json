@@ -1,0 +1,17 @@
+{
+  "track_id": "riopa_interoperability_20260831",
+  "type": "feature",
+  "status": "completed",
+  "created_at": "2026-08-31T00:00:00Z",
+  "updated_at": "2026-08-31T11:40:41Z",
+  "completion_scope": "Repository-owned receipt mapping only; external_gates are outside this track acceptance criteria.",
+  "description": "Bounded archive receipt interoperability with RIOPA content-addressed evidence.",
+  "evidence_schema": "1.0",
+  "external_gates": [
+    {"id": "external-reproduction", "kind": "factual", "status": "pending"},
+    {"id": "elapsed-beta-rc", "kind": "factual", "status": "pending"},
+    {"id": "release-authority", "kind": "authorization", "status": "pending"},
+    {"id": "production-recovery", "kind": "factual", "status": "pending"},
+    {"id": "national-measurements", "kind": "factual", "status": "pending"}
+  ]
+}
