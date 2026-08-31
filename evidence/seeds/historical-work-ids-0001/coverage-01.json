@@ -1,0 +1,22 @@
+{
+  "module": "tools/seed_registry.py",
+  "source_sha256": "fa602798045a04c4289411de23d59a7edd24dc83e87f7e586486fb3e9c494b3a",
+  "summary": {
+    "covered_lines": 54,
+    "num_statements": 54,
+    "percent_covered": 100.0,
+    "percent_covered_display": "100",
+    "missing_lines": 0,
+    "excluded_lines": 0,
+    "percent_statements_covered": 100.0,
+    "percent_statements_covered_display": "100",
+    "num_branches": 6,
+    "num_partial_branches": 0,
+    "covered_branches": 6,
+    "missing_branches": 0,
+    "percent_branches_covered": 100.0,
+    "percent_branches_covered_display": "100"
+  },
+  "missing_lines": [],
+  "missing_branches": []
+}

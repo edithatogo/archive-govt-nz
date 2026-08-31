@@ -247,3 +247,6 @@ implementation has occurred under these tracks.
 ---
 - [x] **Track: Prompt 04 deterministic legislation canonical state merge**
   *Link: [./tracks/legislation_canonical_state_merge_20260831/index.md](./tracks/legislation_canonical_state_merge_20260831/index.md)*
+
+- [~] **Track: Reviewed seed inventory governance (Prompt 05)**
+  *Link: [./tracks/legislation_reviewed_seed_registry_20260831/index.md](./tracks/legislation_reviewed_seed_registry_20260831/index.md)*
