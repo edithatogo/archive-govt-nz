@@ -1,5 +1,23 @@
 # Run Log
 
+## Donor failure conformance — 2026-08-31 UTC
+
+- `4454d75` records full compile observations and maps donor semantic/failure
+  risks to replacement tests. A synthetic duplicate-if script remains in CAS
+  while receiver orchestration selects only its four source profiles. All
+  253 selected tests and focused format/lint/types pass; no production changes.
+- Final native harness exits zero: 1,907 tests, 96.48% coverage, eight existing
+  SQLite warnings, 40 schemas/30 documents, 70 tracks, 9/9 parity, all native
+  mutation/supply-chain gates, 111-component SBOM. CAS 586.10 MB/s versus the
+  unchanged 25.0 minimum. Same runtime controls as the source plot harness.
+- CLI verification of raw manifest `da65ee2f38e2450e7273e84fa48b0b29a6a44670d84401fdbb7389f710fa0269`
+  passes without creating new state. This is readback, not a new extraction.
+  Timestamp-only unrelated generated evidence was restored after validation.
+- No raw/HF bytes or donor retirement changed. Next separate pilot: captured
+  Budget 2026 headers match the supported 17-column contract. Captured HLFS
+  working-age population is not silently accepted as total population for
+  health spending per capita; M-12 denominator selection remains open.
+
 ## Source plot contracts — 2026-08-31 UTC
 
 - Final post-preflight-fix harness exits zero for `eeb6200`: 1,906 tests,
