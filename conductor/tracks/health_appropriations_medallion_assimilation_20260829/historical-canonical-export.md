@@ -110,6 +110,11 @@ and source-package before/after hashes are unchanged. These ten new derivative
 files total 720,641 bytes; v4 and HF were not modified. Retention receipt SHA-256:
 `197ee1aa0fa32883005cb234da63488b3da8694d61484b924f475ade7c329eb8`.
 
+The coordinating agent independently rechecked both retained marker pins, all
+four payload hashes/sizes, exact five-file membership, all three canonical
+Parquet schemas (including metadata/nullability), row counts and complete
+1143/1164-entry lineage accounting. All checks passed without writes.
+
 The broader capture/donor/v4/WARC and donor Git-blob/tree preservation audit is
 recorded separately in [PR #309](https://github.com/edithatogo/archive-govt-nz/pull/309)
 (`preservation-recheck.md`), not duplicated as an exporter verification claim.
