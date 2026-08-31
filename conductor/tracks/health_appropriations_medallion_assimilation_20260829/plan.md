@@ -472,6 +472,11 @@ repository validation command. External gates block only their affected task.
 
 ### 9.2 Build a rights-filtered Hugging Face candidate locally
 
+- [~] Reject unsafe or colliding original-object destination paths before
+  candidate output creation, including traversal and portable filename hazards.
+  This bounded preflight does not establish derivative rights or full release
+  readiness. [M-14, M-17, M-18; AC-14, AC-15, AC-16]
+
 - [ ] Add release-readiness negative tests for missing rights, incomplete
   source disposition, failed parity/recovery, stale evidence, non-pinned
   revisions, restricted content and candidate-manifest mismatch. [M-14, M-17,
