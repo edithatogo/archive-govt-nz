@@ -1,0 +1,71 @@
+{
+  "schema_version": "archive-govt-nz.foi-package/v1",
+  "source_id": "fixture-foi",
+  "country": "NZ",
+  "captured_at": "2026-08-31T00:00:00Z",
+  "source_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "source_run_id": "1",
+  "adapter_version": "1.2.1",
+  "capture_inventory_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "publication_status": "not_published",
+  "rights_status": "unreviewed",
+  "privacy_status": "unreviewed",
+  "counts": {
+    "requests": 1,
+    "responses": 2,
+    "events": 0,
+    "original_files": 4
+  },
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 0,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "path": "raw.tar",
+      "bytes": 0,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "path": "indexes/objects.jsonl",
+      "bytes": 0,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "path": "indexes/objects.parquet",
+      "bytes": 0,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "path": "indexes/resources.jsonl",
+      "bytes": 0,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "path": "indexes/resources.parquet",
+      "bytes": 0,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "path": "indexes/requests.jsonl",
+      "bytes": 0,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "path": "indexes/requests.parquet",
+      "bytes": 0,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "path": "indexes/events.jsonl",
+      "bytes": 0,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "path": "indexes/events.parquet",
+      "bytes": 0,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  ]
+}

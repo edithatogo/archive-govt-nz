@@ -1,0 +1,28 @@
+{
+  "schema_version": "archive-govt-nz.foi-local-preservation-receipt/v1",
+  "observed_at": "2026-08-30T21:29:08.134085+00:00",
+  "source_run_id": "33307777685",
+  "source_revision": "be992fe036d5a270e228b5277e5b5770b9950ad8",
+  "inventory_sha256": "e25240f901e74d1b37ab0685bab69fb5017c0de0ed7ffa2da7be20eee6103e92",
+  "package_manifest_sha256": "865b1f32aa736fcd105c892cbf5c1f639a485a6e32ca52a75400ede382e005d2",
+  "counts": {
+    "requests": 1,
+    "responses": 2,
+    "events": 2,
+    "original_files": 8
+  },
+  "cold_restore": "passed_original_bytes_and_rebuilt_indexes",
+  "focused_tests": 78,
+  "critical_line_and_branch_coverage_percent": 100,
+  "integrity_mutants_killed": 4,
+  "full_harness": "passed",
+  "full_suite_tests": 1600,
+  "full_suite_coverage_percent": 96.11,
+  "public_upload": false,
+  "source_rights": "pending",
+  "privacy_review": "pending",
+  "country_complete": false,
+  "cutover": false,
+  "attachment_limitation": "Adapter silently skips HTTP 404 attachments. Observed response retention does not prove all expected attachments were captured. Explicit gap accounting remains required.",
+  "full_harness_log_sha256": "94ec28e19d3e3766bcaab2eeb0a884ebc5cc851cbc7112672132ad54569a40e8"
+}
