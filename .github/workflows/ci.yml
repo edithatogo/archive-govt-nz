@@ -34,7 +34,9 @@ jobs:
           enable-cache: true
           version: "0.6.5"
       - name: Run locked assurance gate
-        run: uv run --locked python tools/check.py
+        run: >-
+          uv run --locked python tools/check.py
+          --pytest-workers 2 --pytest-distribution loadscope
       - name: Export Cobertura coverage
         if: matrix.os == 'ubuntu-latest' && always()
         run: uv run --locked coverage xml -o coverage.xml

@@ -182,6 +182,13 @@ loss accounting but does not itself claim normalization or source completeness.
 
 ## Silver domain model
 
+The additive [record-set registry](./recordset-contracts.md) specifies eight
+versioned structural Arrow shapes without rewriting source-specific v1 tables.
+Its bounded Decimal128 carrier preserves representable source values; future
+projections must reject overflow, retain source precision and prove semantic
+and lineage closure. Unknown valid times are nullable, not invented from year
+tokens. Structural schema availability is not canonical source promotion.
+
 All records share:
 
 - `record_id`, `schema_version`, `recordset` and `domain`;
@@ -224,6 +231,15 @@ An unseen layout fails closed for normalization but remains preserved in
 Bronze and visible in the inventory.
 
 ## Source-specific Silver extraction
+
+### Pharmac medicines-budget HTML
+
+The [bounded Pharmac profile](./pharmac-cpb.md) maps one retained table to
+pharmaceutical-budget facts, exact physical-cell dispositions and lineage.
+Supplied changes are not recalculated. Source dash markers remain null; empty
+layout padding remains preserved. The page's explicit July–June definition
+supports dates, while the caption discrepancy and 2022 budget-holder reform
+remain visible. Original HTML is not rewritten and rights stay unevaluated.
 
 ### Historical source precision and period contract
 

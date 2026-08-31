@@ -105,6 +105,12 @@ TYPED_EXECUTOR_REGISTRY: dict[str, dict[str, Any]] = {
 }
 
 
+def _output_digest(value: str | bytes | None) -> str:
+    """Retain only bounded digests, including byte-valued timeout output."""
+    data = value.encode("utf-8") if isinstance(value, str) else value or b""
+    return hashlib.sha256(data).hexdigest()
+
+
 def execute_acceptance_check(
     check: dict[str, Any], root: Path
 ) -> tuple[bool, dict[str, Any]]:
@@ -127,26 +133,36 @@ def execute_acceptance_check(
     start_ts = datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
     t0 = time.time()
 
-    proc = subprocess.run(
-        argv,
-        cwd=root,
-        capture_output=True,
-        text=True,
-        timeout=timeout,
-        check=False,
-    )
+    timed_out = False
+    try:
+        proc = subprocess.run(
+            argv,
+            cwd=root,
+            capture_output=True,
+            text=True,
+            timeout=timeout,
+            check=False,
+        )
+        exit_code = proc.returncode
+        stdout, stderr = proc.stdout, proc.stderr
+    except subprocess.TimeoutExpired as error:
+        # subprocess.run kills and waits for its direct child on timeout. No
+        # command exit code or validated evidence artifact was observed.
+        timed_out = True
+        exit_code = None
+        stdout, stderr = error.stdout, error.stderr
     elapsed = time.time() - t0
     finish_ts = datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
 
     dest = check.get("evidence_destination")
     dest_hash = None
-    if dest:
+    if dest and not timed_out:
         dest_file = root / str(dest)
         if dest_file.is_file():
             dest_hash = hashlib.sha256(dest_file.read_bytes()).hexdigest()
 
     expected_code = int(check.get("expected_exit_code", 0))
-    passed = proc.returncode == expected_code
+    passed = not timed_out and exit_code == expected_code
 
     receipt = {
         "check_id": check.get("check_id"),
@@ -157,11 +173,12 @@ def execute_acceptance_check(
         "finish_timestamp": finish_ts,
         "elapsed_seconds": round(elapsed, 3),
         "timeout_seconds": timeout,
-        "exit_code": proc.returncode,
+        "exit_code": exit_code,
+        "timed_out": timed_out,
         "expected_exit_code": expected_code,
         "passed": passed,
-        "stdout_sha256": hashlib.sha256(proc.stdout.encode("utf-8")).hexdigest(),
-        "stderr_sha256": hashlib.sha256(proc.stderr.encode("utf-8")).hexdigest(),
+        "stdout_sha256": _output_digest(stdout),
+        "stderr_sha256": _output_digest(stderr),
         "evidence_destination": dest,
         "evidence_sha256": dest_hash,
     }
