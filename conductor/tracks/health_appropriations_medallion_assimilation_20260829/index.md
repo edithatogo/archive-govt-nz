@@ -15,6 +15,8 @@ every planned record set, measure or operational workflow.
 
 ## Artifacts
 
+- [Pure local canonical provenance inventory](./local-provenance-inventory.md)
+
 - [Pharmac/GDP operational extension](./source-operations-extension.md)
 - [Forecast successor operations](./forecast-source-operations.md)
 - [Explicit forecast source-validation preflight](./forecast-preflight.md)
