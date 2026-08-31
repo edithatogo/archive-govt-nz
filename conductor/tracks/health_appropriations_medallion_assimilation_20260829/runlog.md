@@ -1508,3 +1508,10 @@ unchanged. The local marker is not a publication manifest and can survive a
 failed readback; only full validation establishes local completion. Errors are
 redacted and partial evidence retained. See [receipt](./classification-export.md)
 for exact hashes, failure observations and the append-only timestamp correction.
+## Original-to-products replay — 2026-08-31T16:36:20Z
+
+Two fresh runs at `4bedcf1` each produced 38 files/8,077,673 bytes, exactly
+matching each other; all 23 originals unchanged. The older SQLite comparison
+raised a retained assertion: only writer-version bytes 98/99 differ (3.50.4 vs
+3.53.1); all schemas and 341 rows match. Gold/plots and other payloads match.
+See `originals-product-replay.md`. No Platinum or full recovery completion.

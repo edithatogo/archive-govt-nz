@@ -670,3 +670,10 @@ unchanged. The local marker is not a publication manifest and can survive a
 failed readback; only full validation establishes local completion. Errors are
 redacted and partial evidence retained. See [receipt](./classification-export.md)
 for exact hashes, failure observations and the append-only timestamp correction.
+## Original-to-products replay — 2026-08-31 UTC
+
+Two fresh output trees independently match all 38 files. Investigated the
+failed older compatibility-byte comparison instead of normalizing its header:
+SQLite versions differ, only offsets 98/99 change, schemas/341 rows and all
+other payloads match. Preserve both versions and exact manifests. No broad
+AC-12, source-area, rights or publication conclusion follows.

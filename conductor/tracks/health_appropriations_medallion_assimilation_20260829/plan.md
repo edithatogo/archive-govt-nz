@@ -87,6 +87,11 @@ repository validation command. External gates block only their affected task.
 - [ ] Evaluate published aggregate Health Survey indicators as a non-blocking
   Should item; include only if a documented analytical question, stable
   time/geography contract and public rights evidence exist. [S-05; AC-10]
+- [x] Complete the bounded metadata-only Health Survey assessment, recording
+  a contextual question, annual/pooled and revision boundaries, public rights
+  observations and the unqualified export/dictionary gate. This does not
+  complete conditional acquisition or integration above. [S-05; AC-10]
+  See `health-survey-assessment.md`.
 
 ### 1.3 Characterize every donor binary and derivative
 
@@ -590,6 +595,12 @@ repository validation command. External gates block only their affected task.
 
 ### 9.1 Clean-room reconstruction
 
+- [x] Perform two fresh empty-derivative four-profile original-to-raw,
+  compatibility SQLite, Gold and plot replays; compare all files and reverify
+  donor originals. Record cross-runtime SQLite drift separately. This excludes
+  Platinum and interrupted-stage recovery. [M-16, M-18; AC-12, AC-16]
+  (38 files per run, byte-identical; all 23 donor objects unchanged;
+  `originals-product-replay.md`)
 - [ ] Add a failing recovery contract for empty derivative state, then rebuild
   Silver, Gold, SQLite, all plots/reports and Platinum metadata from Bronze,
   locked code and parameters. [M-10, M-16, M-18; AC-08, AC-12, AC-16]
