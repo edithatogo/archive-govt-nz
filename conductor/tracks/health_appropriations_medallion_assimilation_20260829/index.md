@@ -27,6 +27,7 @@ every planned record set, measure or operational workflow.
 - [Original-workbook orchestration](./raw-rebuild.md)
 - [Typed workbook inspection](./workbook-inspection.md)
 - [Raw compatibility projection and export contract](./raw-compatibility.md)
+- [Source-derived analytical contracts](./raw-analytics.md)
 - [Next raw-source ranges and semantic boundaries](./next-source-ranges.md)
 - [Metadata](./metadata.json)
 - [Run log](./runlog.md)

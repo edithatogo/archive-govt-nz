@@ -1,5 +1,13 @@
 # Design: New Zealand Health Appropriations Medallion Assimilation
 
+## Source-derived analytical boundary
+
+Pure historical/Budget calculations preserve exact values and IDs, partition
+sources/vintages, and make period/basis gaps and missing/invalid denominators
+explicit. Percentages have an independent Decimal rounding policy; missing
+values stay null. See [analytical contracts](./raw-analytics.md). File verification
+and exclusive Gold persistence remain distinct from pure computation.
+
 ## Design goals
 
 The design makes original bytes durable, transformations reconstructable,
