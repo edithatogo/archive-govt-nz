@@ -63,5 +63,14 @@ Log SHA-256:
 `e87b3297692f3a2b2451d4d390ecc22345801c662abbd50ca8c8dd10a2cdecea`.
 Only the two harness-generated timestamp-only evidence diffs were restored
 after the zero exit. Exact-head hosted delivery is still pending.
+
+For parallel hosted assurance, integration `fdcdf96` incorporates the reviewed
+documentation head `576c999` from still-open PR #309. Its complete 103-entry
+ledger is the exact prefix, followed by the two forecast events. All incoming
+completed tasks and both sets of review/run-log additions are retained.
+Source/test hashes remain unchanged; all 92 focused tests pass (5.32 s), and
+Conductor validates 75 tracks. This dependency must be delivered before PR #315
+is merged; fresh mergeability and exact-head hosted checks are still required.
+The prior native result is not relabelled as a full run at this later merge.
 No real original, retained package, candidate or Hugging Face bytes
 were modified by these synthetic tests. Broader track phases remain open.
