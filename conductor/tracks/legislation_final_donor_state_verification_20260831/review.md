@@ -20,3 +20,9 @@ by isolated passes or independent assurance lanes. Draft delivery only; no merge
 
 Prompt 04 receives a content-addressed verified local package, not rights
 clearance, parent payload reconstruction, publication or import authority.
+
+## Resumed verification — superseding assessment
+
+PortableSSD returned; the original ZIP and all 511 inventory files rehashed correctly. Full native harness passed: 2344 tests, 96.90% overall coverage, all mutation/schema/parity/security/licence/SBOM stages. Critical verifier remains 100% line and branch covered with 10/10 targeted mutants killed. Seven hosted checks passed at db6434a9f183707ff6485c44fd213438137f25ed. The final documentation commit must also pass hosted checks before merge.
+
+The earlier blanket standalone-actionlint merge block was too broad: the repository-required workflow-policy tests pass. Additional SC2086 diagnostics remain documented outside owned scope, without suppressions or gate changes. Historical failed/interrupted attempts are retained. See evidence/migrations/corpus-legislation-nz/final-donor-state/resume-verification.json.

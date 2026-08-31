@@ -1,0 +1,10 @@
+{
+  "initial_target_baseline": "113bac597cb95ce7aba5c877da4cffde6a0346cc",
+  "delivery_target_baseline": "d6bc0c96c44488a75b7e98bd9cb95591eeb97a38",
+  "rebased_head": "db6434a9f183707ff6485c44fd213438137f25ed",
+  "conflict_resolution": "Only conductor/tracks.md conflicted. Preserve current RIOPA archive and Prompt 02 entries; append Prompt 03 entry.",
+  "verifier_sha256": "654ab72b5015d3df7e47d68362d3f2b64598c69aef003fa19ea32c2e2972080f",
+  "verification_02_source_matches": true,
+  "original_expectations_preserved": true,
+  "scope_expanded": false
+}

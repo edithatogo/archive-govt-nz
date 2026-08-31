@@ -16,3 +16,9 @@
 - Continued the independent assurance stages skipped by the fail-fast harness, preserving their separate result rather than asserting a full pass.
 - Standalone actionlint failed two SC2086 findings in unchanged workflows; reproduced using baseline file bytes. Out-of-scope handoff recorded, workflows untouched.
 - Saved the four test-generated evidence diffs as an external patch and restored only those files in this owned worktree. Original checkout dirty files remain untouched.
+
+## Resumed verification — superseding assessment
+
+PortableSSD returned; the original ZIP and all 511 inventory files rehashed correctly. Full native harness passed: 2344 tests, 96.90% overall coverage, all mutation/schema/parity/security/licence/SBOM stages. Critical verifier remains 100% line and branch covered with 10/10 targeted mutants killed. Seven hosted checks passed at db6434a9f183707ff6485c44fd213438137f25ed. The final documentation commit must also pass hosted checks before merge.
+
+The earlier blanket standalone-actionlint merge block was too broad: the repository-required workflow-policy tests pass. Additional SC2086 diagnostics remain documented outside owned scope, without suppressions or gate changes. Historical failed/interrupted attempts are retained. See evidence/migrations/corpus-legislation-nz/final-donor-state/resume-verification.json.

@@ -107,3 +107,7 @@ reproduce, copy the verifier into an isolated project/tools directory, replace
 point `DONOR_VERIFIER_UNDER_TEST` at that copy. Run the recorded selector with
 `--no-cov --maxfail=1`. Only assertion failures count as killed mutants;
 collection and infrastructure failures do not. Never mutate the delivery source.
+
+## Resumed delivery
+
+`resume-verification.json` supersedes the earlier local-quality blockage. The full native harness now passes, and the recovered drive package matches every recorded hash. `delivery-base.json` records rebase onto d6bc0c96c44488a75b7e98bd9cb95591eeb97a38 without verifier or artifact changes. No canonical state import or publication occurred. Final delivery remains subject to hosted checks on the final PR head.

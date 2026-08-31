@@ -14,3 +14,9 @@ Evidence directory: `evidence/migrations/corpus-legislation-nz/final-donor-state
 - `README.md`: exact package/receipt hashes, reusable invocation and Prompt 04 boundaries.
 
 Corpus bytes remain exclusively in external quarantine. Full validation and workflow lint are not green; issue completion and merge readiness are not claimed. Hosted observation is recorded separately after PR creation.
+
+## Resumed verification — superseding assessment
+
+PortableSSD returned; the original ZIP and all 511 inventory files rehashed correctly. Full native harness passed: 2344 tests, 96.90% overall coverage, all mutation/schema/parity/security/licence/SBOM stages. Critical verifier remains 100% line and branch covered with 10/10 targeted mutants killed. Seven hosted checks passed at db6434a9f183707ff6485c44fd213438137f25ed. The final documentation commit must also pass hosted checks before merge.
+
+The earlier blanket standalone-actionlint merge block was too broad: the repository-required workflow-policy tests pass. Additional SC2086 diagnostics remain documented outside owned scope, without suppressions or gate changes. Historical failed/interrupted attempts are retained. See evidence/migrations/corpus-legislation-nz/final-donor-state/resume-verification.json.
