@@ -1546,3 +1546,15 @@ workers. Source/test hashes and exact commands are in `area-accounting.md`.
 A metadata-only pilot verifies six input pins and deterministic accounting for
 158 globally unresolved units and 17 adapter-context exclusions. No original
 or Parquet data was opened. No HF, candidate or source bytes changed.
+
+## 2026-08-31 — Read-only partial-rebuild planner
+
+Added explicit donor/old-plan/stage pin accounting and capped four-original
+snapshots, exact transport schemas/context/counts, bounded stage classifications
+and no writes. Red tests preceded identity/count/metadata/enumeration fixes.
+102 focused tests reached 100% critical coverage; all 95 cold mutants were killed.
+Native at ce9c8b8 exited 0: 3,797 tests, 97.27863% overall coverage and all repository
+and supply-chain gates. Post-native #319 stack integration preserved source/test
+hashes and the incoming ledger prefix; 155 focused tests/types/75 tracks passed.
+See [full receipts and boundaries](./readonly-resume-planner.md). Execution,
+semantic approval, rights and publication remain separate.
