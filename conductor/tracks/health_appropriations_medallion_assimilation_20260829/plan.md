@@ -87,6 +87,11 @@ repository validation command. External gates block only their affected task.
 - [ ] Evaluate published aggregate Health Survey indicators as a non-blocking
   Should item; include only if a documented analytical question, stable
   time/geography contract and public rights evidence exist. [S-05; AC-10]
+- [x] Complete the bounded metadata-only Health Survey assessment, recording
+  a contextual question, annual/pooled and revision boundaries, public rights
+  observations and the unqualified export/dictionary gate. This does not
+  complete conditional acquisition or integration above. [S-05; AC-10]
+  See `health-survey-assessment.md`.
 
 ### 1.3 Characterize every donor binary and derivative
 

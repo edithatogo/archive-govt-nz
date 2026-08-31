@@ -79,6 +79,12 @@ New derivatives need their own candidate-level review. Do not recapture or
 overwrite retained originals to resolve a metadata gap. Earlier-edition source
 discovery and Vote Health PDF table normalization remain substantive work.
 
+The optional published Health Survey aggregates have now received a
+metadata-only assessment in `health-survey-assessment.md`: useful contextual
+linkage is identified, but acquisition and integration are deferred until an
+exact export/dictionary, release vintage and resource-specific rights are
+qualified. Annual and three-year pooled regional estimates must stay distinct.
+
 ## Population route: metadata resolution, not acquisition
 
 A later bounded metadata investigation identified Stats NZ Infoshare selector

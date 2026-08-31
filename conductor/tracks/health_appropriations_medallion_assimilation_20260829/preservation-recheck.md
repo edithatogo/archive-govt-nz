@@ -70,3 +70,7 @@ prefix plus three unique audit/result events. The existing append-only ledger
 conflict was resolved without rewriting any earlier event; Conductor validated
 all75tracks afterward. The original native result remains bound to `063a324`,
 not relabelled as a full run of this later integration.
+The subsequent optional Health Survey assessment is a documentation-only
+addition based on primary public landing pages; its75-track Conductor check,
+secret scan and whitespace check passed. No survey payload was acquired and
+the earlier full harness is not relabelled as validation of a survey adapter.
