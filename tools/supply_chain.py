@@ -223,6 +223,9 @@ def sbom() -> None:
             "--output-format",
             "JSON",
             "--output-reproducible",
+            # The mandatory strict validator below validates schema AND formats.
+            # Avoid repeating the expensive IRI checks in the generator first.
+            "--no-validate",
             "--output-file",
             str(output_path),
         )

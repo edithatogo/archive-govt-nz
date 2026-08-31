@@ -41,3 +41,9 @@ Approved track in progress. Automation repair and source-catalogue foundations a
 
 - [Hosted control validation and checksum-projection correction](durable-controls-hosted-correction-20260831.json)
 - [New reconstructed candidate decision — pending](nz-reconstructed-publication-decision.pending.json)
+
+- [Country rollout plan](country-rollout-20260831.json)
+- [Bounded country capture and restore verification](country-pilot-verification-20260831.json)
+- [Grouped publication options — not approved](grouped-publication-options-20260831.md)
+- [Shared execution validation and deployment boundary](shared-execution-validation-20260831.json)
+- [Hosted Windows portability correction](hosted-validation-correction-20260831.json)

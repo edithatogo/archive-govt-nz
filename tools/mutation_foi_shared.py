@@ -13,37 +13,14 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 MUTATIONS = {
-    "state_cas": (
-        "foi_state",
-        "if (latest.version if latest else None) != expected_version:",
+    "force_ref": ("foi_github_state", '"force": False', '"force": True'),
+    "stale_head": ("foi_github_state", "head != self.expected[key]", "False"),
+    "global_snapshot_pin": (
+        "foi_github_state",
+        "if self.batch_head is not None and self.batch_head != head:",
         "if False:",
     ),
-    "state_head": (
-        "foi_state",
-        "if head is not None and head != (count, prior, total):",
-        "if False:",
-    ),
-    "scheduler_evidence": (
-        "foi_scheduler",
-        "anonymous_restore_verified is not True",
-        "False",
-    ),
-    "scheduler_local_capture": (
-        "foi_scheduler",
-        "or locally_verified is not True",
-        "or False",
-    ),
-    "scheduler_origin": (
-        "foi_scheduler",
-        "or _origin(policy.origin) in active_origins",
-        "or False",
-    ),
-    "ownership_epoch": (
-        "foi_ownership",
-        "or proposed.epoch != current.epoch + 1",
-        "or False",
-    ),
-    "shadow_parity": ("foi_ownership", "or left != right", "or False"),
+    "public_identifier": ("foi_github_state", "    _slug(owner.lease_id)", "    pass"),
 }
 
 
@@ -92,11 +69,11 @@ def main() -> int:
     with concurrent.futures.ThreadPoolExecutor(max_workers=2) as executor:
         results = list(executor.map(check_mutant, MUTATIONS, MUTATIONS.values()))
     receipt = {
-        "scope": "local scheduling and ownership controls",
+        "scope": "shared GitHub authority control guards",
         "mutations": results,
         "passed": all(r["killed"] for r in results),
     }
-    path = ROOT / "build/foi-controls-mutations.json"
+    path = ROOT / "build/foi-shared-mutations.json"
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(receipt, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(receipt))

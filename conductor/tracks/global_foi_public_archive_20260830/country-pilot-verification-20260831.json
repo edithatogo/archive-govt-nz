@@ -1,0 +1,83 @@
+{
+  "schema_version": "archive-govt-nz.foi-country-pilot-verification/v1",
+  "observed_at": "2026-08-31T11:48:19.500822+00:00",
+  "pilots": [
+    {
+      "source_id": "ca-federal-atip",
+      "scope": "institutional_monthly_nil_returns",
+      "manifest_sha256": "664885e35cba43cbd87d415e79d51146614f71fa8e36c84034ae6a2915436ec9",
+      "coverage": {
+        "captured": 6191,
+        "country_complete": false,
+        "country_denominator": null,
+        "enumerated": 6191,
+        "source_denominator": null,
+        "unit": "institution_month",
+        "verified": 6191
+      },
+      "originals": [
+        {
+          "path": "ati-nil.csv",
+          "bytes": 653800,
+          "sha256": "cdfdd497e38f9414eba898b1e0fc0e8dbab1a96969ad161f5b1b553b6cd6131e",
+          "cold_restore_match": true
+        },
+        {
+          "path": "ati-schema.json",
+          "bytes": 8664,
+          "sha256": "781ed264af3946efeb70d89ef6026bfa384262e2f39e9b6cabf1b5c46f1bbdc3",
+          "cold_restore_match": true
+        },
+        {
+          "path": "source-metadata.json",
+          "bytes": 12330,
+          "sha256": "ab1ae554917ce223c74cac2cd1874344e31e532f4ce0b61833a90a4edf357f76",
+          "cold_restore_match": true
+        }
+      ],
+      "public_upload": false,
+      "publication_approved": false,
+      "storage": "private_local_single_disk",
+      "privacy_review_required": true
+    },
+    {
+      "source_id": "us-federal-foia",
+      "scope": "doj_fy2025_annual_report_statistical_document",
+      "manifest_sha256": "eb55ad6f2038ba93f03db21209a6e9e1013c127244bd6726e10ef83e3aa3ea7a",
+      "coverage": {
+        "captured": 7170,
+        "country_complete": false,
+        "country_denominator": null,
+        "enumerated": 7170,
+        "source_denominator": null,
+        "unit": "nonempty_xml_text_element",
+        "verified": 7170
+      },
+      "originals": [
+        {
+          "path": "annual-report.xml",
+          "bytes": 1071233,
+          "sha256": "21f6de90200889dd74d412ffed33f0c683cf3e0ad19fd6b30387922499e1ca7f",
+          "cold_restore_match": true
+        },
+        {
+          "path": "legal-policy.html",
+          "bytes": 68587,
+          "sha256": "b76f235a281f3b8df3531675a121b17b427d8f59253f8bfc2671f7025df2554b",
+          "cold_restore_match": true
+        },
+        {
+          "path": "source-page.html",
+          "bytes": 96382,
+          "sha256": "820d151d2111df36c6ccad4497dc078486661ea14e40dea7194d17e20e6f7c29",
+          "cold_restore_match": true
+        }
+      ],
+      "public_upload": false,
+      "publication_approved": false,
+      "storage": "private_local_single_disk",
+      "privacy_review_required": true
+    }
+  ],
+  "country_complete_count": 0
+}

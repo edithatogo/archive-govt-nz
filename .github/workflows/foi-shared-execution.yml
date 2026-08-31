@@ -1,0 +1,103 @@
+name: FOI shared execution controls
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Exercise durable controls or inspect their health without writes
+        required: true
+        type: choice
+        options:
+          - controls
+          - health
+        default: controls
+      bootstrap:
+        description: Create the approved shared state branch only if absent
+        required: true
+        type: boolean
+        default: false
+  schedule:
+    - cron: "41 4 * * *"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: foi-shared-execution
+  cancel-in-progress: false
+
+jobs:
+  controls:
+    if: github.repository == 'edithatogo/archive-govt-nz' && github.ref == 'refs/heads/main' && github.event_name == 'workflow_dispatch' && inputs.mode == 'controls'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.14"
+      - uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b
+        with:
+          version: "0.6.5"
+      - name: Install locked dependencies
+        run: uv sync --locked
+      - name: Persist and reconcile a bounded shared control rehearsal
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CONTROL_RUN: ${{ github.run_id }}
+          CONTROL_ATTEMPT: ${{ github.run_attempt }}
+          CONTROL_BOOTSTRAP: ${{ inputs.bootstrap }}
+        shell: bash
+        run: |
+          args=()
+          if [[ "$CONTROL_BOOTSTRAP" == "true" ]]; then
+            args+=(--bootstrap)
+          fi
+          uv run --locked python tools/foi_dispatch.py rehearsal \
+            --source "rehearsal-${CONTROL_RUN}-${CONTROL_ATTEMPT}" \
+            --owner-lease "run-${CONTROL_RUN}-${CONTROL_ATTEMPT}" \
+            --receipt build/foi-shared-execution.json "${args[@]}"
+      - name: Preserve control or failure receipt
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: foi-shared-execution-${{ github.run_id }}-${{ github.run_attempt }}
+          path: build/foi-shared-execution.json
+          if-no-files-found: error
+          retention-days: 90
+  health:
+    if: github.repository == 'edithatogo/archive-govt-nz' && github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || inputs.mode == 'health')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.14"
+      - uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b
+        with:
+          version: "0.6.5"
+      - name: Install locked dependencies
+        run: uv sync --locked
+      - name: Fail on stuck leases or state capacity limits
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: >-
+          uv run --locked python tools/foi_health.py
+          --receipt build/foi-shared-health.json
+      - name: Preserve health or failure receipt
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: foi-shared-health-${{ github.run_id }}-${{ github.run_attempt }}
+          path: build/foi-shared-health.json
+          if-no-files-found: error
+          retention-days: 90

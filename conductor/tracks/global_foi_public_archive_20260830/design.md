@@ -92,3 +92,30 @@ never silently activates arbitrary source URLs or creates a false 100% metric.
 - Configure per-source/global byte, request, runtime and retry budgets. Shard
   manifests and raw packages for bounded downloads; preserve object identifiers
   when compacting. Model queue age/fairness and storage growth, not only row counts.
+
+## Shared execution deployment increment — 2026-08-31
+
+Use existing GitHub Git objects and one metadata-only authority ref, not copied
+SQLite files. Every state mutation creates a commit with the exact observed
+head as its sole parent; a non-forced ref update rejects competing writers.
+All source queues share the same ref so a reservation can bind its global
+budget and origin checks to one snapshot. Missing authority requires explicit
+bootstrap, never automatic recreation. The branch is not a raw-data store.
+
+```mermaid
+flowchart LR
+  A[Registered acquisition scope] --> P[Pinned policy and global budget checks]
+  G[One durable Git authority ref] --> P
+  P --> C[Commit with exact observed parent]
+  C --> F[Non-forced conditional ref update]
+  F --> V[Readback and recovery receipt]
+  F --> X[Conflict: no dispatch or credit]
+```
+
+Scoped institutional pilots do not transfer the donor request queue. Hosted
+rehearsal verifies persistence and conflict behavior before real scope admission.
+Capture, publication, and cutover remain distinct. Delayed donor jobs cannot be
+claimed fenced at a publication sink until they use this authority and the sink
+serializes or conditionally rejects stale-owner writes. Privileged force-push,
+branch deletion, malicious application code and GitHub service durability are
+not solved by an optimistic CAS API. No new paid service is introduced.

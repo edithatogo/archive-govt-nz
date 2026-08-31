@@ -1,0 +1,234 @@
+{
+  "schema_version": "archive-govt-nz.foi-grouped-publication-options/v1",
+  "policy_id": "foi-grouped-publication-20260831",
+  "status": "proposed_not_approved",
+  "reviewer": null,
+  "recommended_option": "conditional_standing_policy",
+  "alternatives": [
+    "current_CA_nil_candidate_only",
+    "metadata_only_no_raw_publication"
+  ],
+  "groups": [
+    {
+      "id": "institutional_open_data",
+      "status": "candidate_only",
+      "publication_approved": false,
+      "initial_scopes": [
+        "ca-federal-atip.nil-returns",
+        "us-federal-foia.annual-statistics"
+      ],
+      "conditions": [
+        "Explicit source-issued redistribution licence or applicable documented public-domain basis",
+        "Source/resource allowlist and unchanged approved content schema",
+        "No personal data, requester narratives or third-party material outside rights scope",
+        "Required attribution and no implied endorsement",
+        "Snapshot hash-bound automated checks and accountable standing policy approval"
+      ],
+      "exceptions": [
+        "Entire US annual-report XML contains narrative/case-title fields; it is not automatically eligible",
+        "CA nil returns represent institutional months, not individual completed ATI requests"
+      ]
+    },
+    {
+      "id": "mixed_correspondence",
+      "status": "candidate_only",
+      "publication_approved": false,
+      "initial_scopes": [
+        "nz-fyi"
+      ],
+      "conditions": [
+        "Reusable source/content rights rule supported by rights-holder or applicable authority evidence",
+        "Personal-information screening and exceptions/takedown process",
+        "Hash-bound per-snapshot conformance receipts"
+      ],
+      "exceptions": [
+        "Public source visibility is not redistribution permission",
+        "No existing NZ package approval is changed"
+      ]
+    },
+    {
+      "id": "restricted_or_unclear",
+      "status": "candidate_only",
+      "publication_approved": false,
+      "initial_scopes": [],
+      "conditions": [
+        "Approved non-sensitive catalogue/disposition metadata only until restrictions are resolved"
+      ],
+      "exceptions": [
+        "No payload publication or automatic activation"
+      ]
+    }
+  ],
+  "future_snapshot_rule": "After attributable standing-policy approval, new origins/resources require evidence-based agent admission within the approved institutional category, not automatic human approval. Conforming snapshots require fresh checks. Uncertain rights/privacy/provenance, new categories and unresolved drift escalate to human review.",
+  "required_decision_fields": [
+    "reviewer",
+    "reviewed_at",
+    "policy_sha256",
+    "source_resource_allowlist",
+    "rights_basis",
+    "privacy_rules",
+    "attribution",
+    "exclusions",
+    "takedown_procedure"
+  ],
+  "candidate_evidence": [
+    {
+      "source_id": "ca-federal-atip",
+      "manifest_sha256": "664885e35cba43cbd87d415e79d51146614f71fa8e36c84034ae6a2915436ec9",
+      "scope": "institutional_monthly_nil_returns",
+      "enumerated_units": 6191,
+      "unit": "institution_month",
+      "country_complete": false,
+      "public_upload": false
+    },
+    {
+      "source_id": "us-federal-foia",
+      "manifest_sha256": "eb55ad6f2038ba93f03db21209a6e9e1013c127244bd6726e10ef83e3aa3ea7a",
+      "scope": "doj_fy2025_annual_report_statistical_document",
+      "enumerated_units": 7170,
+      "unit": "nonempty_xml_text_element",
+      "numeric_lexical_elements": 4598,
+      "narrative_review_required": true,
+      "country_complete": false,
+      "public_upload": false
+    }
+  ],
+  "primary_evidence_urls": [
+    "https://open.canada.ca/data/en/dataset/0797e893-751e-4695-8229-a5066e4fe43c",
+    "https://open.canada.ca/en/open-government-licence-canada",
+    "https://www.justice.gov/legalpolicies",
+    "https://www.justice.gov/oip/department-justice-annual-foia-report-fy-2025",
+    "https://meta.fyi.org.nz/help/privacy/",
+    "https://meta.fyi.org.nz/help/officers/"
+  ],
+  "proposed_standing_policy": {
+    "policy_id": "foi-institutional-standing-v1",
+    "status": "proposed_not_approved",
+    "reviewer": null,
+    "reviewed_at": null,
+    "source_resource_allowlist": [
+      {
+        "source_id": "ca-federal-atip",
+        "scope_id": "ca-federal-atip.nil-returns",
+        "dataset_id": "0797e893-751e-4695-8229-a5066e4fe43c",
+        "resource_id": "5a1386a5-ba69-4725-8338-2f26004d7382",
+        "resource_url": "https://open.canada.ca/data/dataset/0797e893-751e-4695-8229-a5066e4fe43c/resource/5a1386a5-ba69-4725-8338-2f26004d7382/download/ati-nil.csv",
+        "public_original_allowlist": [
+          "ati-nil.csv"
+        ],
+        "public_derived_allowlist": [
+          "index.jsonl",
+          "manifest.json"
+        ],
+        "private_evidence_files": [
+          "source-metadata.json",
+          "ati-schema.json",
+          "licence.html"
+        ],
+        "privacy_schema_fields": [
+          "year",
+          "month",
+          "owner_org",
+          "owner_org_title"
+        ],
+        "organisation_allowlist_sha256": "74524ed8b5a8a279e40ab9406ebfadbdd0bdef79a283caa7625950df55f82033",
+        "organisation_count": 162,
+        "organisation_allowlist_status": "pending_initial_agent_conformance_review",
+        "attribution": "Contains information licensed under the Open Government Licence \u2013 Canada.",
+        "licence_url": "https://open.canada.ca/en/open-government-licence-canada",
+        "proposed_public_destination": {
+          "provider": "Hugging Face",
+          "repo_type": "dataset",
+          "repo_id": "edithatogo/foi-ca-federal-atip",
+          "visibility": "public_ungated",
+          "status": "proposed_not_created_or_verified"
+        },
+        "public_manifest_rule": "Generate a distinct public projection manifest enumerating only actually published allowed files. The private pilot manifest is evidence, not a ready-to-upload public manifest; private metadata files must not be advertised as publicly retrievable.",
+        "organisation_review_rule": {
+          "actor": "archive_agent_not_user_reviewer",
+          "status": "pending",
+          "basis": "Verify each proposed organisation identifier/title against primary official institutional evidence and the approved non-personal category.",
+          "straightforward_conformance": "No second human approval is required for straightforward official non-personal pairs after standing-policy approval.",
+          "human_escalation": "Ambiguous identity, personal information, conflicting rights or a new content category remain quarantined for human review.",
+          "changed_pair_rule": "New or changed pairs trigger a fresh agent conformance check; only ambiguous cases require human escalation.",
+          "attribution": "Agent checks must identify the agent and evidence; never impersonate user review."
+        }
+      },
+      {
+        "source_id": "us-federal-foia",
+        "scope_id": "us-federal-foia.annual-statistics",
+        "resource_url": "https://www.justice.gov/oip/media/1437156/dl?inline=",
+        "public_original_allowlist": [],
+        "public_derived_allowlist": [],
+        "private_evidence_files": [
+          "annual-report.xml",
+          "source-page.html",
+          "legal-policy.html"
+        ],
+        "status": "pending_review_of_field_level_projection",
+        "excluded_fields": [
+          "CaseTitleText",
+          "FootnoteText",
+          "DocumentDescriptionText",
+          "OtherDenialReasonDescriptionText",
+          "ReliedUponStatuteInformationWithheldText"
+        ],
+        "note": "A numeric lexical value is not proof of non-sensitivity; aggregation and context require review."
+      }
+    ],
+    "implemented_checks": [
+      "CKAN success is exactly true, public active dataset and explicit OGL licence declaration",
+      "Exact CA dataset/resource URL/format/advertised size",
+      "Exact nil-return CSV columns, institution ID syntax, title length, integer dates and unique institution/month keys",
+      "Maximum25000rows,8MiB per input/output and index,40MiB package prewrite cap",
+      "Exact original hashes, deterministic index and separate cold restore"
+    ],
+    "publication_checks_not_yet_implemented": [
+      "Compare every CA organisation id/title against the initially agent-reviewed allowlist; new/changed pairs quarantined until fresh agent conformance checks pass, with human escalation only for ambiguity.",
+      "Reject sensitive free text and ensure source-metadata/provider contact fields never enter public raw uploads",
+      "Group-policy evaluator producing hash-bound eligibility receipts and publishing only allowed files",
+      "Complete historical-HF-revision takedown and downstream correction execution",
+      "Generate public-only manifests and anonymously restore every published allowed file; never promote the private package manifest unchanged."
+    ],
+    "future_snapshot_conditions": [
+      "Same exact source/resource scope and licence",
+      "Same allowed schema; institution id/title matches the agent-reviewed allowlist or has a newly recorded conforming agent admission; ambiguous pairs remain quarantined.",
+      "No sensitivity/takedown/rights incident or schema/licence drift",
+      "New candidate hash and per-snapshot conformance receipt; no manual approval repeated merely for new rows/date"
+    ],
+    "takedown_procedure": {
+      "intake": "Use repository issue/contact channel only for non-sensitive locator/hash; sensitive complaint details remain private",
+      "immediate_action": "Pause affected source publication; mark current entry quarantined and stop serving affected pointer",
+      "historical_action": "Locate all affected payload hashes across HF historical revisions and mirrors; remove/disable access through reviewed provider-supported operations, or restrict the affected repository until remediation is verified",
+      "verification": "Anonymous access checks for current and known historical object locations; do not claim removal while historical bytes remain public",
+      "audit": "Minimal public tombstone with reason category and private incident evidence; preserve original only where permitted",
+      "resume": "Attributable decision confirming resolution plus fresh source/privacy checks"
+    },
+    "mixed_correspondence_rule": "Umbrella approval alone does not approve mixed correspondence; each source/content rights rule remains pending until independently evidenced."
+  },
+  "delegated_admission": {
+    "status": "proposed_not_approved",
+    "actor": "archive_agent_not_user_reviewer",
+    "scope": "official non-personal institutional/statistical data only",
+    "required_evidence": [
+      "official provenance",
+      "applicable redistribution rights",
+      "attribution",
+      "exact resource identity",
+      "schema and privacy conformance",
+      "exclusions and evidence hashes"
+    ],
+    "allowlist_role": "output of successful admission and runtime enforcement; not separate human approval for every URL",
+    "human_escalation": [
+      "uncertain rights or conflicting terms",
+      "ambiguous provenance",
+      "personal information or narrative correspondence",
+      "third-party content outside rights basis",
+      "new data category",
+      "unresolved licence/schema/sensitivity drift or takedown"
+    ],
+    "existing_exclusions_unchanged": true,
+    "enforcement_implemented": false,
+    "initial_organisation_review": "Pending agent evidence-based conformance review of the162proposed pairs; no automatic clearance and no mandatory second human approval for straightforward conformance."
+  }
+}

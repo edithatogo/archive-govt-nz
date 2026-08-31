@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 from dataclasses import asdict, dataclass, fields
-from typing import TYPE_CHECKING, Any, NoReturn
+from typing import TYPE_CHECKING, Any, NoReturn, Protocol
 
 from archive_govt_nz.foi_ownership import OwnerFence, propose_transfer, require_owner
 from archive_govt_nz.foi_scheduler import Job, Queue
@@ -13,7 +13,7 @@ if TYPE_CHECKING:
     from collections.abc import Callable
 
     from archive_govt_nz.foi_ownership import TransferEvidence
-    from archive_govt_nz.foi_state import StateStore, StoredState
+    from archive_govt_nz.foi_state import StoredState
 
 SCHEMA = "archive-govt-nz.foi-queue/v1"
 
@@ -98,10 +98,27 @@ def _snapshot(stored: StoredState) -> QueueSnapshot:
     return QueueSnapshot(stored.version, owner, queue)
 
 
+class QueueStore(Protocol):
+    """Local or shared store with expected-version conditional persistence."""
+
+    def read(self, key: str) -> StoredState | None:
+        """Return a validated snapshot or an absent key."""
+        ...
+
+    def compare_and_swap(
+        self,
+        key: str,
+        expected_version: int | None,
+        document: dict[str, Any],
+    ) -> StoredState:
+        """Reject conflicting state without overwriting it."""
+        ...
+
+
 class QueueRepository:
     """Persist pure proposals atomically; never execute work inside a transition."""
 
-    def __init__(self, store: StateStore, key: str) -> None:
+    def __init__(self, store: QueueStore, key: str) -> None:
         """Bind a local store key; this does not establish remote authority."""
         self.store = store
         self.key = key
