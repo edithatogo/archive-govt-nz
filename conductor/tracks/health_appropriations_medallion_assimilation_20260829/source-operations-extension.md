@@ -56,8 +56,17 @@ The tested source hash is
 `f27303ec721ba883aab0a16c681e236c2ff94fc78859b58235a80b0d94d81bb8`;
 the test hash is
 `92e5ef88d01002247cfbab5cd59999fd8ad6fbeb916cbd77616fde7c812efc63`.
-Four earlier seeded CLI/MCP counterexamples remain unchanged. Native and
-hosted extension assurance remain pending. Runtime is CPython 3.14.6.
+Four earlier seeded CLI/MCP counterexamples remain unchanged. Runtime is
+CPython 3.14.6.
+
+Native `./scripts/validate.sh` passed at `af1fb5d` with exit 0: 3,398 tests,
+8 warnings, 69.44 seconds, 97.17% overall coverage, 75 Conductor tracks,
+42 schemas and 32 samples, 9/9 parity, every native mutation gate, dependency
+audit, licences, secret scan and 111-component SBOM. The retained log SHA-256 is
+`27e7aa44b35e09d05f07a7d8589aa7edfc1a4241d35eb01e360e3838e3e94277`.
+Only unrelated generated timestamp churn was restored after the run.
+Hosted extension assurance remains pending; no acquisition or publication
+was performed.
 
 ## Preceding delivery
 
