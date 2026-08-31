@@ -60,6 +60,7 @@ def _paths(package: Path, original: Path, output: Path, *, dry_run: bool) -> Non
     _require(type(dry_run) is bool)
     _require(not original.is_symlink() and original.is_file())
     _require(not output.is_symlink() and not output.exists())
+    _require(not output.parent.is_symlink() and output.parent.is_dir())
     destination = output.resolve()
     for source in (package.resolve(), original.resolve()):
         _require(
@@ -85,6 +86,9 @@ def _prepare(package: Path, pin: str, original: Path) -> dict[str, bytes]:
         stream = pa.BufferOutputStream()
         pq.write_table(table, stream, compression="zstd", version="2.6")
         payload = stream.getvalue().to_pybytes()
+        _require(len(payload) <= MAX_FILE_BYTES)
+        restored = pq.read_table(pa.BufferReader(payload))
+        _require(restored.equals(table, check_metadata=True))
         filename = f"{name}.parquet"
         files[filename] = payload
         entries.append(
@@ -161,7 +165,7 @@ def export_budget_classification(
     try:
         _paths(package, original, output, dry_run=dry_run)
         files = _prepare(package, manifest_sha256, original)
-    except OSError, ValueError, TypeError, KeyError:
+    except OSError, ValueError, TypeError, KeyError, pa.ArrowException:
         message = "classification_export_input"
         raise ValueError(message) from None
     receipt = {
@@ -174,16 +178,26 @@ def export_budget_classification(
     if dry_run:
         return receipt
     # Outside the handler: a mkdir race must not write FAILURE into another run.
-    output.mkdir(parents=True, exist_ok=False)
     try:
-        for name, payload in files.items():
+        output.mkdir()
+    except OSError:
+        message = "classification_export_reserve"
+        raise ValueError(message) from None
+    try:
+        payloads = {name: value for name, value in files.items() if name != MARKER}
+        for name, payload in payloads.items():
             _write(output / name, payload)
+        _readback(output, payloads)
+        _write(output / MARKER, files[MARKER])
         _readback(output, files)
-    except BaseException:
-        with suppress(OSError, ValueError):
+    except BaseException as error:
+        with suppress(OSError, ValueError, TypeError, pa.ArrowException):
             _write(
                 output / "FAILURE.json",
                 _json({"schema_version": SCHEMA, "status": "failed"}),
             )
+        if isinstance(error, (OSError, ValueError, TypeError, pa.ArrowException)):
+            message = "classification_export_write"
+            raise ValueError(message) from None  # noqa: TRY004 - redact I/O failures
         raise
     return receipt

@@ -4,8 +4,12 @@ from __future__ import annotations
 
 import hashlib
 import json
+from collections.abc import Iterator
+from contextlib import contextmanager
 from pathlib import Path
+from types import SimpleNamespace
 
+import pyarrow as pa
 import pyarrow.parquet as pq
 import pytest
 from tests.domains.health_appropriations.test_budget_classification import inputs
@@ -23,13 +27,13 @@ def test_dry_run_and_deterministic_packages(tmp_path: Path) -> None:
     source = inputs(tmp_path)
     package, original = tmp_path / "package", tmp_path / "source.xlsx"
     before = {path: path.read_bytes() for path in [original, *package.iterdir()]}
-    output = tmp_path / "absent" / "first"
+    output = tmp_path / "first"
     plan = export_budget_classification(
         package, source["manifest_sha256"], original, output
     )
     assert plan["status"] == "planned"
     assert plan["hash_state"] == "planned"
-    assert not output.parent.exists()
+    assert not output.exists()
     first = export_budget_classification(
         package, source["manifest_sha256"], original, output, dry_run=False
     )
@@ -74,10 +78,10 @@ def test_input_failure_creates_nothing(tmp_path: Path, change: str) -> None:
         (package / "budget_facts.parquet").write_bytes(b"tampered")
     else:
         original.write_bytes(b"tampered")
-    output = tmp_path / "absent" / "output"
+    output = tmp_path / "output"
     with pytest.raises(ValueError, match=r"^classification_export_input$"):
         export_budget_classification(package, pin, original, output, dry_run=False)
-    assert not output.parent.exists()
+    assert not output.exists()
 
 
 @pytest.mark.parametrize("value", [None, 0, 1, "false", "true"])
@@ -109,7 +113,7 @@ def test_failure_marker_cannot_mask_original_failure(
         raise OSError(msg)
 
     monkeypatch.setattr(classification_export, "_write", broken_write)
-    with pytest.raises(OSError, match="original write failed"):
+    with pytest.raises(ValueError, match=r"^classification_export_write$"):
         export_budget_classification(
             tmp_path / "package",
             source["manifest_sha256"],
@@ -224,7 +228,7 @@ def test_partial_write_evidence_retained(
         write(path, payload)
 
     monkeypatch.setattr(classification_export, "_write", partial)
-    with pytest.raises(OSError, match="synthetic private locator"):
+    with pytest.raises(ValueError, match=r"^classification_export_write$"):
         export_budget_classification(
             tmp_path / "package",
             source["manifest_sha256"],
@@ -249,11 +253,12 @@ def test_failed_final_readback_preserves_complete_marker(
     readback = _readback
 
     def tampered(root: Path, files: dict[str, bytes]) -> None:
-        (root / "field_lineage.parquet").write_bytes(b"tampered")
+        if "LOCAL_CLASSIFICATION.json" in files:
+            (root / "field_lineage.parquet").write_bytes(b"tampered")
         readback(root, files)
 
     monkeypatch.setattr(classification_export, "_readback", tampered)
-    with pytest.raises(ValueError, match="source_hash_mismatch"):
+    with pytest.raises(ValueError, match=r"^classification_export_write$"):
         export_budget_classification(
             tmp_path / "package",
             source["manifest_sha256"],
@@ -263,3 +268,275 @@ def test_failed_final_readback_preserves_complete_marker(
         )
     assert json.loads((output / "LOCAL_CLASSIFICATION.json").read_bytes())
     assert (output / "FAILURE.json").is_file()
+
+
+def test_missing_output_parent_rejected_without_creation(tmp_path: Path) -> None:
+    source = inputs(tmp_path)
+    output = tmp_path / "absent" / "output"
+    with pytest.raises(ValueError, match=r"^classification_export_input$"):
+        export_budget_classification(
+            tmp_path / "package",
+            source["manifest_sha256"],
+            tmp_path / "source.xlsx",
+            output,
+            dry_run=False,
+        )
+    assert not output.parent.exists()
+
+
+def test_payloads_verified_before_marker(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    source = inputs(tmp_path)
+    output = tmp_path / "output"
+    observed = []
+
+    def observe(root: Path, files: dict[str, bytes]) -> None:
+        observed.append((set(files), (root / "LOCAL_CLASSIFICATION.json").exists()))
+        _readback(root, files)
+
+    monkeypatch.setattr(classification_export, "_readback", observe)
+    export_budget_classification(
+        tmp_path / "package",
+        source["manifest_sha256"],
+        tmp_path / "source.xlsx",
+        output,
+        dry_run=False,
+    )
+    assert len(observed) == 2
+    assert "LOCAL_CLASSIFICATION.json" not in observed[0][0]
+    assert observed[0][1] is False
+    assert observed[1][1] is True
+
+
+def test_serializer_schema_damage_fails_before_output(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    source = inputs(tmp_path)
+    output = tmp_path / "output"
+    writer = pq.write_table
+
+    def broken(
+        table: pa.Table, where: pa.BufferOutputStream, *, compression: str, version: str
+    ) -> None:
+        damaged = table.rename_columns(["broken", *table.column_names[1:]])
+        writer(damaged, where, compression=compression, version=version)
+
+    monkeypatch.setattr(pq, "write_table", broken)
+    with pytest.raises(ValueError, match=r"^classification_export_input$"):
+        export_budget_classification(
+            tmp_path / "package",
+            source["manifest_sha256"],
+            tmp_path / "source.xlsx",
+            output,
+            dry_run=False,
+        )
+    assert not output.exists()
+
+
+@pytest.mark.parametrize("marker_failure", [False, True])
+def test_type_errors_are_redacted_and_cannot_mask_primary(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, *, marker_failure: bool
+) -> None:
+    source = inputs(tmp_path)
+
+    def broken(path: Path, payload: bytes) -> None:
+        message = "synthetic private error detail"
+        if marker_failure and path.name != "FAILURE.json":
+            raise OSError(message)
+        if marker_failure or path.name != "FAILURE.json":
+            raise TypeError(message)
+        _write(path, payload)
+
+    monkeypatch.setattr(classification_export, "_write", broken)
+    with pytest.raises(ValueError, match=r"^classification_export_write$"):
+        export_budget_classification(
+            tmp_path / "package",
+            source["manifest_sha256"],
+            tmp_path / "source.xlsx",
+            tmp_path / "output",
+            dry_run=False,
+        )
+
+
+def test_serialized_cap_checked_before_parquet_decode(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    source = inputs(tmp_path)
+    monkeypatch.setattr(classification_export, "MAX_FILE_BYTES", 1)
+
+    def forbidden_decode(*_args: object, **_kwargs: object) -> None:
+        message = "oversized buffer decoded"
+        raise AssertionError(message)
+
+    monkeypatch.setattr(pq, "read_table", forbidden_decode)
+    with pytest.raises(ValueError, match=r"^classification_export_input$"):
+        export_budget_classification(
+            tmp_path / "package",
+            source["manifest_sha256"],
+            tmp_path / "source.xlsx",
+            tmp_path / "output",
+        )
+
+
+@pytest.mark.parametrize("exception", [KeyboardInterrupt, SystemExit])
+def test_interruptions_preserve_partial_outputs(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, exception: type[BaseException]
+) -> None:
+    source = inputs(tmp_path)
+    output = tmp_path / "output"
+
+    def interrupt(_root: Path, _files: dict[str, bytes]) -> None:
+        raise exception
+
+    monkeypatch.setattr(classification_export, "_readback", interrupt)
+    with pytest.raises(exception):
+        export_budget_classification(
+            tmp_path / "package",
+            source["manifest_sha256"],
+            tmp_path / "source.xlsx",
+            output,
+            dry_run=False,
+        )
+    assert (output / "classification_dimension.parquet").is_file()
+    assert (output / "FAILURE.json").is_file()
+    assert not (output / "LOCAL_CLASSIFICATION.json").exists()
+
+
+def test_mkdir_race_never_marks_other_run(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    source = inputs(tmp_path)
+    output = tmp_path / "output"
+    mkdir = Path.mkdir
+
+    def race(path: Path) -> None:
+        assert path == output
+        mkdir(path)
+        (path / "other_run").write_bytes(b"keep")
+        raise FileExistsError
+
+    monkeypatch.setattr(Path, "mkdir", race)
+    with pytest.raises(ValueError, match=r"^classification_export_reserve$"):
+        export_budget_classification(
+            tmp_path / "package",
+            source["manifest_sha256"],
+            tmp_path / "source.xlsx",
+            output,
+            dry_run=False,
+        )
+    assert {p.name: p.read_bytes() for p in output.iterdir()} == {"other_run": b"keep"}
+
+
+def test_symlink_parent_rejected(tmp_path: Path) -> None:
+    source = inputs(tmp_path)
+    parent = tmp_path / "real"
+    parent.mkdir()
+    link = tmp_path / "link"
+    try:
+        link.symlink_to(parent, target_is_directory=True)
+    except OSError:
+        pytest.skip("symlink creation unavailable")
+    with pytest.raises(ValueError, match=r"^classification_export_input$"):
+        export_budget_classification(
+            tmp_path / "package",
+            source["manifest_sha256"],
+            tmp_path / "source.xlsx",
+            link / "output",
+            dry_run=False,
+        )
+    assert list(parent.iterdir()) == []
+
+
+@pytest.mark.parametrize("change", ["extra", "missing", "symlink"])
+def test_readback_file_closure(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, change: str
+) -> None:
+    source = inputs(tmp_path)
+    output = tmp_path / "output"
+
+    def damaged(root: Path, files: dict[str, bytes]) -> None:
+        if change == "extra":
+            (root / "unexpected").write_bytes(b"retain")
+        else:
+            target = root / "field_lineage.parquet"
+            target.unlink()
+            if change == "symlink":
+                try:
+                    target.symlink_to(root / "classification_dimension.parquet")
+                except OSError:
+                    pytest.skip("symlink creation unavailable")
+        _readback(root, files)
+
+    monkeypatch.setattr(classification_export, "_readback", damaged)
+    with pytest.raises(ValueError, match=r"^classification_export_write$"):
+        export_budget_classification(
+            tmp_path / "package",
+            source["manifest_sha256"],
+            tmp_path / "source.xlsx",
+            output,
+            dry_run=False,
+        )
+    assert (output / "FAILURE.json").is_file()
+    assert not (output / "LOCAL_CLASSIFICATION.json").exists()
+
+
+def test_short_write_is_rejected(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    def short(payload: bytes) -> int:
+        return len(payload) - 1
+
+    @contextmanager
+    def opened(_path: Path, _mode: str) -> Iterator[object]:
+        yield SimpleNamespace(write=short)
+
+    with monkeypatch.context() as local:
+        local.setattr(Path, "open", opened)
+        with pytest.raises(ValueError, match="classification_export_contract"):
+            _write(tmp_path / "short", b"payload")
+
+
+def test_marker_bytes_are_in_dry_run_cap(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    source = inputs(tmp_path)
+    args = (
+        tmp_path / "package",
+        source["manifest_sha256"],
+        tmp_path / "source.xlsx",
+        tmp_path / "output",
+    )
+    plan = export_budget_classification(*args)
+    without_marker = sum(
+        item["bytes"]
+        for item in plan["files"]
+        if item["path"] != "LOCAL_CLASSIFICATION.json"
+    )
+    monkeypatch.setattr(classification_export, "MAX_TOTAL_BYTES", without_marker)
+    with pytest.raises(ValueError, match=r"^classification_export_input$"):
+        export_budget_classification(*args)
+    assert not args[3].exists()
+
+
+def test_output_error_is_redacted(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    source = inputs(tmp_path)
+    output = tmp_path / "output"
+
+    def broken(path: Path, payload: bytes) -> None:
+        if path.name != "FAILURE.json":
+            message = "caller private output path"
+            raise OSError(message)
+        _write(path, payload)
+
+    monkeypatch.setattr(classification_export, "_write", broken)
+    with pytest.raises(ValueError, match=r"^classification_export_write$"):
+        export_budget_classification(
+            tmp_path / "package",
+            source["manifest_sha256"],
+            tmp_path / "source.xlsx",
+            output,
+            dry_run=False,
+        )
