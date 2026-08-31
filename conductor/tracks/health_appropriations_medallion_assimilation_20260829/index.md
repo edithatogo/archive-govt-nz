@@ -24,6 +24,7 @@ every planned record set, measure or operational workflow.
 - [Raw Budget extraction](./raw-budget.md)
 - [Budget successor pilot and versioned contracts](./raw-budget-successors.md)
 - [Raw BEFU/HYEFU extraction](./raw-forecast.md)
+- [Exact-series CPI source extraction](./cpi-source.md)
 - [Raw historical Health/GDP extraction and reconciliation](./raw-historical.md)
 - [Original-workbook orchestration](./raw-rebuild.md)
 - [Typed workbook inspection](./workbook-inspection.md)
@@ -47,6 +48,11 @@ every planned record set, measure or operational workflow.
   reconstructed, according to the recorded preservation receipts.
 - Official source census: 73 captured resources and 68 discovery-only entries
   in the recorded 141-entry census; discovery is not capture.
+- Exact CPIQ.SE9A source adapter: PR #271 observed merged after seven passing
+  exact-head checks (1,956 hosted tests). Independent local builds retain 449
+  selected facts, including 27 literal NA values, 4,041 lineage entries and
+  all 22,701 source-row dispositions. Base metadata and real/per-capita products
+  remain unresolved; the two local full-harness timeouts remain recorded.
 - Derivatives: 312 Silver records, 1,699 field-lineage records and 12 Gold
   artifacts; donor SQLite parity and clean-room rebuild receipts are recorded.
 - Separate raw Budget extraction: 215 Health facts, 3,655 cell-lineage rows
