@@ -1344,3 +1344,17 @@ samples, 9/9 parity, all repository mutation/security/supply-chain gates and
 Two owned timestamp-only fixture diffs were restored after the process ended.
 Hosted assurance remains pending; originals, derivatives and publication are
 unchanged. This successful harness does not add a semantic or rights claim.
+
+## Budget classification occurrence projection
+
+The pure source-label projection passed independent read-only review, 42 focused
+tests with 100% critical line/branch coverage and 29/29 cold mutant kills.
+Two verified retained Budget packages yield 400 unmapped occurrence dimensions
+and full 6800-row lineage accounting without input mutation. Exact Parquet
+round-trip and source-object identity boundary tests pass. No authoritative
+identifier, valid-time interval, crosswalk or rights promotion is invented.
+
+Required native validation at `b651907` passed all 3014 tests (8 existing resource
+warnings), 97.12% coverage and all subsequent gates. Two owned timestamp-only
+fixture changes were restored after exit. Source and tests remain unchanged;
+hosted delivery is pending. See [full receipt](./budget-classification.md).

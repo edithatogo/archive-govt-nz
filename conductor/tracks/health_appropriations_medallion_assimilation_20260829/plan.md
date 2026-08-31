@@ -331,12 +331,14 @@ repository validation command. External gates block only their affected task.
 
 ### 5.1 Source-family contracts first
 
-- [~] Project verified Budget functional-classification source-label occurrences
+- [x] Project verified Budget functional-classification source-label occurrences
   into the canonical dimension shape: four literal labels, local scheme,
   unknown scheme version/identifier and unmapped state; preserve per-source
   vintage/coordinate identity and complete input-lineage accounting. No
   authoritative crosswalk, source mutation or publication. [M-05, M-06,
   M-07, M-18; AC-05, AC-09, AC-16]
+  Local pure projection, focused/mutation/native assurance and in-memory pilots
+  pass; hosted delivery remains separate. See [receipt](./budget-classification.md).
 
 - [~] Normalize the retained Pharmac medicines-budget HTML profile into
   pharmaceutical-budget facts, preserving all 14 financial-year rows, supplied

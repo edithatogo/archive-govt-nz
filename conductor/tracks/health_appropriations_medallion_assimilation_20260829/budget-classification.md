@@ -40,7 +40,14 @@ hits, in 25.06 seconds. No coverage filter was requested. Mutation report SHA256
 `304cb972339f4c566d6ce840afca39a67532db641ce4d9f2fc8c1bfe32d08d00`.
 Source SHA256: `a48b62b8318cb2e04de924c11436b54d4e2719e54c0fb3838ccd152e331a1f43`.
 Test SHA256: `f8f623e3c4481732d28c5e504abbccbc07b46411e54f9540cb02438efa167b99`.
-Native repository validation and exact-head hosted delivery remain pending.
+The required native harness passed at `b651907`: 3014 tests, 8 existing resource
+warnings, 88.99 seconds, 97.12% overall coverage; 41 schemas/31 samples, 9/9
+parity, all standard mutation gates, benchmark and supply-chain gates passed.
+The SBOM contains 111 components. Only the two owned timestamp-only fixture
+diffs were restored after the process exited. Exact-head hosted delivery remains
+pending; subsequent receipt documentation does not change source or tests.
+Native log SHA256:
+`d421514373e0944e7d4890885c1f8bf72f6e523a091de2965a2f13447ef3aec9`.
 
 ## Read-only retained-package reconciliation
 
