@@ -38,7 +38,7 @@ Log SHA-256 `4d7ffbed26165324803dca3542d20dfeb90f856032a3d78b327e306b9a0dabc1`;
 exit receipt `9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa`.
 All reviewed source hashes are unchanged. Three generated timestamp-only fields
 in two unrelated legislation migration receipts were restored, not committed.
-Retained-original pilot and hosted delivery are separate pending evidence.
+The retained-original pilot passed below; hosted delivery remains separate.
 
 ## Budget stack integration
 
@@ -49,7 +49,36 @@ production and two executor/completion test hashes are unchanged. The initial
 post-integration command named nonexistent `test_budget_canonical.py` and exited
 4 with no tests; the corrected discovered `test_budget_projection.py` selection
 passed all 134 combined tests in 64.29s, and Conductor validated 75 tracks.
-Budget hosted delivery remains a separate dependency gate.
+Budget PR #322 was subsequently observed merged at
+`874f5bbda5652b853c7d315bff541c5cbcfcd477` on 2026-08-31T18:03:42Z, after
+seven successful exact-head checks. No additional source integration was needed.
+
+## Retained-original controlled-interruption replay
+
+The independent driver completed with exit 0. It injected `KeyboardInterrupt`
+immediately before the HYEFU adapter, retained the failed attempt without child
+or envelope completion markers, then used that partial run to create two new
+exclusive resume envelopes. Budget and BEFU were verified/reused; historical and
+HYEFU were re-extracted. Each envelope contains 20 files / 1,235,422 bytes; both
+are byte-identical. All 18 raw-run files equal the original-driven baseline.
+All 23 original CAS objects, donor metadata, seed, baseline and prior failed
+attempt remain unchanged. No existing output was replaced.
+
+- Envelope receipt SHA-256:
+  `8fe58c5f2b01d674dc5f1d2fde007a79208b5fda92e54ab40a2e511d55d182db`.
+- Child manifest SHA-256:
+  `da65ee2f38e2450e7273e84fa48b0b29a6a44670d84401fdbb7389f710fa0269`.
+- Independent driver SHA-256:
+  `45a8a4e3d9f4f562255747dbbdfe88c690bf04f888874993714cf4f201a92281`.
+- Log SHA-256:
+  `b4ab2648c2520a2922fac4fbfdd78e59bd5f2d2b565b90c82ee196c9036ec247`.
+
+Driver, log, failed attempt and both new envelopes are retained outside Git in
+the task-owned `health-resume-originals.u5tOno` directory. This demonstrates the
+controlled adapter-boundary interruption only, not arbitrary power loss,
+hostile-filesystem safety, full Platinum maturity or publication. Only the
+bounded executor implementation task is complete; broader operational coverage
+and rights/publication tasks remain pending. PR #323 hosted checks are separate.
 
 Controlled-boundary ownership checks detect replacement of reviewed directories;
 this is not an atomic whole-filesystem transaction or hostile-race sandbox. A

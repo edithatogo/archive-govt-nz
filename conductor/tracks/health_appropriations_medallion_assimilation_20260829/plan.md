@@ -567,7 +567,7 @@ repository validation command. External gates block only their affected task.
 
 ### 8.1 Operational contracts first
 
-- [~] Implement an exclusive local resume executor over an explicitly pinned
+- [x] Implement an exclusive local resume executor over an explicitly pinned
   read-only plan, preserving old attempts and originals, with bounded snapshots,
   separate child/envelope verification, interruption evidence and no publication.
   [M-15, M-18; AC-13, AC-16]
