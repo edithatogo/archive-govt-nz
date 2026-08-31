@@ -65,3 +65,8 @@ The first post-run ledger validation rejected two new result events missing
 their required observation timestamps. Those receipt fields were added; no
 production or source data changed, and the invalid intermediate events were
 not committed or presented as valid evidence.
+The later merge of main `0a076fa` retained the full incoming80-event ledger
+prefix plus three unique audit/result events. The existing append-only ledger
+conflict was resolved without rewriting any earlier event; Conductor validated
+all75tracks afterward. The original native result remains bound to `063a324`,
+not relabelled as a full run of this later integration.

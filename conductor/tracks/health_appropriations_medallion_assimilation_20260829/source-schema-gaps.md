@@ -41,9 +41,10 @@ yet one canonical federation contract.
 The additive eight-record-set Arrow registry and JSON row-shape descriptors
 now provide versioned structural contracts (merged PRs#293/#300). The merged
 historical snapshot reader (#303) verifies pinned originals and source packages;
-it is transport validation, not semantic acceptance. Narrow historical
-Health/GDP and Budget classification projections, local canonical export and
-source-operation interfaces are active parallel implementation streams, not
+it is transport validation, not semantic acceptance. The narrow historical
+Health/GDP semantic projection (#305) is also merged. Budget classification,
+local canonical export and source-operation interfaces are active parallel
+implementation streams, not
 completion of the full canonical model. Preserve exact precision,
 unknown fields, unmapped classifications, vintage keys and source pointers;
 do not rewrite v1 packages or force unknown Ministry semantics into canonical
@@ -53,8 +54,8 @@ scheduling remain separate acceptance tasks.
 
 ## Executable remaining route
 
-1. Finish the active exact-head delivery/assurance streams: historical semantic
-   projection and canonical export, Budget source-label classification and
+1. Finish the active exact-head delivery/assurance streams: historical canonical
+   export, Budget source-label classification and
    source-operation CLI/read-only MCP. Check live PRs and appended receipts;
    the bounded checkpoint above is not a permanently current PR dashboard.
 2. Extend existing local operational profiles to already-reviewed adapters,
