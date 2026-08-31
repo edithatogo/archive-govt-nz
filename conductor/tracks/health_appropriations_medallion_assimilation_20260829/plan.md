@@ -544,6 +544,10 @@ repository validation command. External gates block only their affected task.
 
 ### 8.1 Operational contracts first
 
+- [~] Add a read-only partial-rebuild planner joining pinned donor metadata,
+  prior PLAN and explicit stage pins; verify selected originals and classify
+  bounded stage fixity/structure reuse without copying or repairing attempts.
+  Execution, semantic approval and publication remain separate. [M-15; AC-13]
 - [ ] Add CLI/MCP/scheduler tests for inspect, capture, normalize, reconcile,
   analyze, rebuild, candidate-build and status commands, including JSON output,
   dry-run, idempotency, cancellation, partial state, retry/resume, missing
