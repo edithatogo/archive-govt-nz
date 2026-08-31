@@ -1,0 +1,34 @@
+{
+  "software_commit": "c4287a4eed4db5d5ae67746cc49287b37f4f914e",
+  "focused_tests": 50,
+  "critical_line_percent": 100,
+  "critical_branch_percent": 100,
+  "mutants_killed": 13,
+  "mutants_total": 13,
+  "first_full_harness_exit_code": 0,
+  "first_full_tests": 2643,
+  "first_full_overall_coverage_percent": 97.0,
+  "first_full_qualification": "Test lane ran before the review fix; a second full harness is required for final code.",
+  "retained_logs": [
+    {
+      "file": "coverage-03.log",
+      "sha256": "11fd891d67f5cb8be6b95f9eff36f9ab27198eff0234d7452de6ea2919e98345"
+    },
+    {
+      "file": "mutation-02.log",
+      "sha256": "af303e9da58d68ae156a010b2d16c69a524740b8a9e16776eec6f2adaaddfde6"
+    },
+    {
+      "file": "review-red-01.log",
+      "sha256": "7a9e221aeca9f15a51faf9a0e113586bcc8d7938bd9dfb38d0bae9371397eb3b"
+    },
+    {
+      "file": "readback-02.log",
+      "sha256": "39efbf0a2089e311375c489430478c817a569897aea185d4335fdbb83b851f1d"
+    },
+    {
+      "file": "full-validation-01.log",
+      "sha256": "3612485b7edbdfd853922a634233482674b47f8cc01022f462ed0f0001c8c68a"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "results": [
+    {
+      "name": "repeated_descriptor",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "3ea19d4031048fa2b5f93734d7e61bedde90a87cbdc6633954e0200b5b5d2f56"
+    },
+    {
+      "name": "object_sha256",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "c4d600720bef18ff3830f093968a8e73d9d051746a5ff88f56e5fdd88cfa7d3a"
+    },
+    {
+      "name": "object_size",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "1961a7c60457670559809ae159b7672a04ffde6b7b8ccfc84faa2aab21445f0f"
+    },
+    {
+      "name": "hash_alias",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "bded54a16c152092d21db65e99ecdd3254e1d82e111580603ec0affef37b7e5c"
+    },
+    {
+      "name": "duplicate_identity",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "4e2096b81b371d382a538aeb9c08f3c5f42232aed4c91fbce7c9f4fa48fd78c0"
+    },
+    {
+      "name": "conflict_event",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "cf845c250725b757a0baa9788b919a5f5cea700bb5b3a8ec85dff3c04bfc28ef"
+    },
+    {
+      "name": "no_overwrite",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "9b9e0659c6d8e21161c44ff2ccad843a55c57eb1fad4f29d218b1294a308249e"
+    },
+    {
+      "name": "receipt_commit",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "ba117a83da73220501fd4c6d25a9cc460db3d070e01a44ba03523c0d730a53fb"
+    },
+    {
+      "name": "receipt_errors",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "c4c51dfcb9fab196cf608349dfb5e5d506e303b9c653800084ff38ccd203d8b8"
+    },
+    {
+      "name": "receipt_accounting",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "a6ac8c3aaadf84b2aceeeaadcbb555c8566435fa414bc55abc1ec7d75f608e7c"
+    },
+    {
+      "name": "inventory_fixity",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "e577a671118ccbcc2138cf138bd43277c4b2ac41e81c1825bb03ad5c69b9a749"
+    },
+    {
+      "name": "root_binding",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "cb7e65e8e713662b6e0018eb28f858c5b9ef1d5527ffd33cf64730cab016824d"
+    },
+    {
+      "name": "receipt_counts",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "32fa506d6daa7746c5fd0d2e44105ec324ecc88c9cc0c38296f79d0e8cbfdf1e"
+    }
+  ],
+  "killed": 13,
+  "total": 13
+}
