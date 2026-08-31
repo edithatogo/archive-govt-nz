@@ -10,6 +10,7 @@ import hashlib
 import json
 import re
 from dataclasses import dataclass
+from itertools import islice
 from typing import TYPE_CHECKING, Any
 
 from archive_govt_nz.domains.health_appropriations.budget import (
@@ -311,6 +312,38 @@ def verify_rebuild(
         result = _verify_pinned_run(output_dir, store_root, manifest_sha256)
     except Exception as error:  # noqa: BLE001 - read-only protocol redaction boundary
         message = "raw_run_verification_failed:" + type(error).__name__
+        raise ValueError(message) from None
+    else:
+        return result
+
+
+def _unsealed_completion(
+    output_dir: Path, store_root: Path, plan: dict[str, Any]
+) -> dict[str, Any]:
+    if output_dir.is_symlink() or {
+        path.name for path in islice(output_dir.iterdir(), len(PROFILES) + 2)
+    } != {*PROFILES, "PLAN.json"}:
+        message = "unexpected_unsealed_run"
+        raise ValueError(message)
+    _verify_plan(plan, store_root)
+    if _read(output_dir / "PLAN.json") != plan:
+        message = "run_plan_mismatch"
+        raise ValueError(message)
+    return _completion(output_dir, plan)
+
+
+def describe_rebuild_completion(
+    output_dir: Path, store_root: Path, plan: dict[str, Any]
+) -> dict[str, Any]:
+    """Describe an unsealed legacy run without writing a completion marker.
+
+    This checks legacy transport fixity, not resume-envelope success, source
+    semantics or rights. Callers must own the reviewed local output directory.
+    """
+    try:
+        result = _unsealed_completion(output_dir, store_root, plan)
+    except Exception:  # noqa: BLE001 - public metadata redaction boundary.
+        message = "completion_description_failed"
         raise ValueError(message) from None
     else:
         return result

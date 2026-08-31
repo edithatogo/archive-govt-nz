@@ -15,6 +15,7 @@ every planned record set, measure or operational workflow.
 
 ## Artifacts
 
+- [Exclusive local resume execution](./resume-execution.md)
 - [Pure local canonical provenance inventory](./local-provenance-inventory.md)
 
 - [Pharmac/GDP operational extension](./source-operations-extension.md)

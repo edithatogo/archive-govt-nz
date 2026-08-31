@@ -557,6 +557,10 @@ repository validation command. External gates block only their affected task.
 
 ### 8.1 Operational contracts first
 
+- [x] Implement an exclusive local resume executor over an explicitly pinned
+  read-only plan, preserving old attempts and originals, with bounded snapshots,
+  separate child/envelope verification, interruption evidence and no publication.
+  [M-15, M-18; AC-13, AC-16]
 - [x] Add a read-only partial-rebuild planner joining pinned donor metadata,
   prior PLAN and explicit stage pins; verify selected originals and classify
   bounded stage fixity/structure reuse without copying or repairing attempts.
@@ -571,7 +575,7 @@ repository validation command. External gates block only their affected task.
 
 ### 8.2 Implement bounded operations
 
-- [~] Expose only BEFU-2026/HYEFU-2025 successor profiles through the existing
+- [x] Expose only BEFU-2026/HYEFU-2025 successor profiles through the existing
   dry-run-first CLI and read-only MCP after explicit forecast API dependency
   validation. Preserve partial failures, exact counts and source-specific
   actual/forecast observations; no annual joins or publication. [M-15, M-18;
