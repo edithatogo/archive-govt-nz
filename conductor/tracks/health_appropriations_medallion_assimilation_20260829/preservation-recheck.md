@@ -38,3 +38,30 @@ This does not establish complete historical coverage, semantic validity of
 every source, future disk state, or the current state of remote HF bytes. New
 source-specific and canonical derivatives are not implicitly included in the
 older v4candidate or its publication approval.
+
+## Separate donor Git identity check
+
+A subsequent read-only check recomputed all23Git blob identities directly from
+the retained CAS bytes, then assembled Git tree encodings from the recorded
+paths and modes. The resulting tree matched the independently recorded donor
+baseline `c6d44ff79eda73cfc6ba7db5764e27ce01b890e1`. This establishes the retained
+snapshot's path/mode/blob/tree identity; it does not reconstruct Git commit
+history or change the earlier manifest-audit scope. Script SHA-256:
+`c114e7fd23eb8b1a577edd3ef182b23fe2ae829861520930dd8e0238d2121fea`,
+retained at `/tmp/health-compatibility.qDiHHO/donor-tree-audit.py`.
+
+## Repository assurance
+
+The docs-only reconciliation checkpoint `063a324` passed
+`COVERAGE_CORE=ctrace PYTHON_JIT=0 PYTEST_XDIST_AUTO_NUM_WORKERS=4 ./scripts/validate.sh`
+with exit0:2,972tests/eight warnings,68.99seconds,97.11%coverage;74Conductor
+tracks,41schemas/31samples,9/9parity, all mutation/security/supply-chain gates
+and111SBOM components. CAS throughput467.62MB/s. Full log SHA-256:
+`f39aeedd4d55b36fffc2888112c30666f9002762d9e613477e29f992f5af5173`.
+The donor-tree addendum and this result receipt were appended after that run;
+they are not a claim of another full native invocation. Two owned generated
+timestamp-only fixture diffs were restored after the harness exited.
+The first post-run ledger validation rejected two new result events missing
+their required observation timestamps. Those receipt fields were added; no
+production or source data changed, and the invalid intermediate events were
+not committed or presented as valid evidence.
