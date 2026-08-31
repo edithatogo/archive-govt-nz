@@ -83,7 +83,7 @@ def test_observed_attachment_not_in_page_is_preserved() -> None:
     [
         "javascript:/attach/1",
         "file:///attach/1",
-        "https://user:password@example.org/attach/1",  # pragma: allowlist secret (synthetic)
+        "https://a:b@example.org/attach/1",  # pragma: allowlist secret (synthetic)
         "https://example.org/attach/1?token=secret",
     ],
 )
