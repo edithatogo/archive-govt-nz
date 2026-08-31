@@ -120,3 +120,17 @@ recorded separately in [PR #309](https://github.com/edithatogo/archive-govt-nz/p
 (`preservation-recheck.md`), not duplicated as an exporter verification claim.
 It is local-only evidence with no remote/HF or rights promotion. The pilot above
 checks its own exact historical inputs and local derivatives only.
+
+## Queued delivery integration
+
+After PRs #302 and #306 merged, merge commit `04e48fc` integrated main
+`9032f8f`. Only append-only evidence/review/runlog conflicts needed resolution;
+the complete incoming ledger prefix remains byte-identical, and all 89 entries
+parse. Exporter and test SHA-256 values above are unchanged. The 222 composed
+export/projection/snapshot tests passed in 12.70 seconds, with Ruff formatting,
+lint and strict typing clean. Conductor validation reports 75 tracks, no errors.
+An initial wrong validator filename exited 2; the correct
+`python -m tools.validate_conductor_state` passed. This is post-integration
+focused evidence, not a second native run; the complete prior native receipt
+remains applicable to the unchanged exporter/test hashes. Hosted checks on
+the updated PR #311 head remain separate.
