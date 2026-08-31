@@ -78,6 +78,10 @@ remain `not_evaluated`; no canonical-schema semantic promotion is claimed.
   incoming ledger prefix. Source and test hashes are unchanged; 45 focused
   tests and the 74-track Conductor check pass. Native was not rerun on this
   integration commit; the earlier native receipt stays tied to `41e7717`.
+- QES subsequently reached main `6c23ba8`; integration `76b709c` again
+  preserves the incoming ledger prefix, unchanged GDP source/test bytes,
+  45 passing focused tests and 74-track Conductor validation. No native rerun
+  is claimed for either subsequent integration.
 - Exclusively retained `silver/raw-stats-gdp-20260831-v1` after native assurance;
   all four files read back identical to the pilots, original hash unchanged.
   Both temporary pilots remain retained. No previous package was replaced.
