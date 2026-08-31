@@ -29,6 +29,7 @@ every planned record set, measure or operational workflow.
 - [Exact-series CPI source extraction](./cpi-source.md)
 - [Ministry published-indicator profiles](./moh-indicators.md)
 - [Raw historical Health/GDP extraction and reconciliation](./raw-historical.md)
+- [Preserved fiscal 1972–2025 successor pilot](./fiscal-2025-pilot.md)
 - [Original-workbook orchestration](./raw-rebuild.md)
 - [Typed workbook inspection](./workbook-inspection.md)
 - [Raw compatibility projection and export contract](./raw-compatibility.md)

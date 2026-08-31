@@ -343,6 +343,11 @@ repository validation command. External gates block only their affected task.
   attributed published indicators, preserving exact tokens and unknown units,
   real-price base and denominator methodology without semantic promotion.
   [M-05, M-06, M-07, M-11, M-18; AC-05, AC-09, AC-11, AC-16]
+- [x] Characterize and independently rebuild the retained fiscal 1972–2025
+  Health/GDP selection using the existing strict adapter; retain 108 facts,
+  lineage, period transitions and explicit 2017–2024 GDP revisions without
+  replacing the 2024 edition or publishing. This is not whole-workbook or
+  full annual-edition coverage. [M-05, M-06, M-11; AC-05, AC-09, AC-11]
 
 - [ ] Promote eligible Vote Health Estimates/Supplementary Estimates and
   annual Budget expenditure/revenue data from Bronze to Silver, preserving
