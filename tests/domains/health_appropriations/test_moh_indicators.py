@@ -82,11 +82,31 @@ def test_exact_profile_retains_published_unknowns(tmp_path: Path, profile: str) 
     dispositions = pq.read_table(out / "row_dispositions.parquet").to_pylist()
     assert len(lineage) == 120
     assert len(dispositions) == 20
+    original_rows = list(csv.reader(io.StringIO(original.decode("utf-8-sig"))))
+    for fact in facts:
+        raw_row = original_rows[fact["source_row"] - 1]
+        column = original_rows[0].index(fact["source_label"])
+        assert fact["price_basis"] == ("real" if column == 1 else "nominal")
+        assert fact["per_capita"] is (profile == "fig28/v1")
+        assert fact["amount"] == Decimal(raw_row[column])
+        assert fact["value_token"] == raw_row[column]
+        assert fact["period_token"] == raw_row[0]
+        assert json.loads(fact["raw_values_json"]) == dict(
+            zip(original_rows[0], raw_row, strict=True)
+        )
     for row in dispositions:
         assert row["disposition"] == "normalized"
         assert len(row["record_ids"]) == 2
         assert set(row["record_ids"]) <= {f["record_id"] for f in facts}
         assert len(json.loads(row["raw_values_json"])) == 3
+        assert set(row["record_ids"]) == {
+            fact["record_id"]
+            for fact in facts
+            if fact["source_row"] == row["source_row"]
+        }
+        assert json.loads(row["raw_values_json"]) == dict(
+            zip(original_rows[0], original_rows[row["source_row"] - 1], strict=True)
+        )
     assert path.read_bytes() == original
 
     second = tmp_path / "second"
