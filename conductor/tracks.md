@@ -243,3 +243,7 @@ implementation has occurred under these tracks.
 
 - [~] **Track: Legislation post-cutover programme controller (Prompt 01)**
   *Link: [tracks/legislation_post_cutover_state_and_publication_integrity_20260831/index.md](./tracks/legislation_post_cutover_state_and_publication_integrity_20260831/index.md)*
+
+---
+- [~] **Track: Prompt 04 deterministic legislation canonical state merge**
+  *Link: [./tracks/legislation_canonical_state_merge_20260831/index.md](./tracks/legislation_canonical_state_merge_20260831/index.md)*

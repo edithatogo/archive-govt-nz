@@ -1,0 +1,11 @@
+{
+  "track_id": "legislation_canonical_state_merge_20260831",
+  "id": "legislation_canonical_state_merge_20260831",
+  "type": "feature",
+  "status": "in_progress",
+  "created_at": "2026-08-31T13:51:11.926752+00:00",
+  "updated_at": "2026-08-31T13:51:11.926752+00:00",
+  "description": "Prompt 04 verified local donor and target state merge",
+  "issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/292",
+  "parent_issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/276"
+}
