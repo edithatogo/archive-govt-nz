@@ -194,10 +194,12 @@ repository validation command. External gates block only their affected task.
 
 ### 3.1 Schema contracts first
 
-- [~] Establish an additive immutable Arrow registry for all eight record-set
+- [x] Establish an additive immutable Arrow registry for all eight record-set
   shapes, with nullable unknown valid times, source precision and provenance;
   test Parquet round trips without rewriting or promoting v1 source packages.
   Row-level semantic validation and source projections remain separate tasks.
+  Functional commit `d67bd41`; 34 focused tests, 30 cold mutant kills and a
+  full local harness pass with 2,424 tests. Hosted delivery remains separate.
   [M-05, M-06, M-18; AC-05, AC-16]
 - [ ] Add failing JSON Schema/Arrow/Parquet fixtures for the eight required
   `health_appropriations` record sets, versioning, stable IDs, fixed-precision

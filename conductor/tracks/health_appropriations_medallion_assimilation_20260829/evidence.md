@@ -516,3 +516,12 @@ and nullability assertions; those are included before mutation assurance.
 Exact Parquet nested shapes and DuckDB-compatible decimal bounds are tested.
 The full native harness remains pending at this receipt. No v1 schema,
 source package, original or publication was changed.
+## 2026-08-31 — Record-set full local pass
+
+The full native harness at `6895083` completed exit 0 with 2,424 tests,
+96.98% coverage, 41 schemas/31 samples, 9/9 parity and all mutation/security/
+supply-chain gates. The durable log hashes to
+`fdea8f19263999b33dea5583e6635dc5477ff730c4697f8f55d1c665d61f6507`.
+This satisfies local assurance for the bounded structural registry; row-level
+validation, canonical projections, full Phase 3 completion and hosted delivery
+are not inferred from it. No existing source package or publication changed.

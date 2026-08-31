@@ -1082,3 +1082,19 @@ or source-data loss. Correct the new schema's list child names explicitly;
 do not weaken exact schema equality or rewrite any existing package.
 Focused Ruff also identified missing test docstrings and tuple parameter syntax.
 No source payload, archive package or hosted publication was modified.
+## 2026-08-31 — Record-set native assurance
+
+At head `6895083`, the required
+`COVERAGE_CORE=ctrace PYTHON_JIT=0 PYTEST_XDIST_AUTO_NUM_WORKERS=4 ./scripts/validate.sh`
+completed with exit 0. Results: 71 Conductor tracks; format/lint/strict typing;
+2,424 tests and eight warnings in 86.38 seconds; 96.98% overall coverage;
+41 schemas/31 representative documents; 9/9 parity; all repository mutation
+lanes; hygiene, vulnerability audit, licences, secrets and 111-component SBOM.
+CAS benchmark: 521.48 MB/s. Durable native log SHA-256:
+`fdea8f19263999b33dea5583e6635dc5477ff730c4697f8f55d1c665d61f6507`.
+Only the four task-generated timestamp-only receipt diffs were restored after
+the process stopped. Earlier red-phase evidence remains intact.
+
+Focused mutation command:
+`uv run pytest tests/schemas/test_health_recordsets.py -q --gremlins --gremlin-targets=src/archive_govt_nz/schemas/health_recordsets.py --gremlin-report=json --gremlin-parallel --gremlin-workers=1 --gremlin-clear-cache --gremlin-no-coverage-filter --strict-pardons --gremlin-max-pardons-pct=0 --max-pardons=0 --no-cov`.
+All 34 tests and 30 mutants passed with no filtered tests or cached results.
