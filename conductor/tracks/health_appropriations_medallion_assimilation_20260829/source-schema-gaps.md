@@ -35,8 +35,9 @@ recordsets. Budget/forecast broad Silver tables, historical exact-number and
 basis fields, CPI-specific fields and Ministry published indicators are not
 yet one canonical federation contract.
 
-The next architectural slice is explicit versioned schema/registry contracts
-and projections over those retained source tables. Preserve exact precision,
+The additive eight-record-set Arrow registry and JSON row-shape descriptors
+now provide versioned structural contracts. Semantic validators and explicit
+projections over retained source tables remain pending. Preserve exact precision,
 unknown fields, unmapped classifications, vintage keys and source pointers;
 do not rewrite v1 packages or force unknown Ministry semantics into canonical
 health-spending measures. Read-only Budget/raw-run CLI/MCP verification already
