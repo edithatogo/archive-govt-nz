@@ -630,3 +630,18 @@ retained snapshots pass exact JSON-string cell joins without numeric coercion.
 Read-only re-review reports both findings resolved and no additional finding.
 The original input package remains required for retained-only information.
 See `historical-projection.md` for mapping, red-phase evidence and limits.
+
+
+## Budget classification occurrence projection
+
+The pure source-label projection passed independent read-only review, 42 focused
+tests with 100% critical line/branch coverage and 29/29 cold mutant kills.
+Two verified retained Budget packages yield 400 unmapped occurrence dimensions
+and full 6800-row lineage accounting without input mutation. Exact Parquet
+round-trip and source-object identity boundary tests pass. No authoritative
+identifier, valid-time interval, crosswalk or rights promotion is invented.
+
+Required native validation at `b651907` passed all 3014 tests (8 existing resource
+warnings), 97.12% coverage and all subsequent gates. Two owned timestamp-only
+fixture changes were restored after exit. Source and tests remain unchanged;
+hosted delivery is pending. See [full receipt](./budget-classification.md).

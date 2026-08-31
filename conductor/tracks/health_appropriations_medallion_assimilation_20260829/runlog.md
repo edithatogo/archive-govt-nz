@@ -1426,3 +1426,18 @@ and both projection events; 188 projection/snapshot/Conductor tests passed in
 temporary two-character header truncation was corrected before committing and
 full JSON validity checked. Production/test hashes and native evidence are
 unchanged; no second full run is claimed.
+
+
+## Budget classification occurrence projection
+
+The pure source-label projection passed independent read-only review, 42 focused
+tests with 100% critical line/branch coverage and 29/29 cold mutant kills.
+Two verified retained Budget packages yield 400 unmapped occurrence dimensions
+and full 6800-row lineage accounting without input mutation. Exact Parquet
+round-trip and source-object identity boundary tests pass. No authoritative
+identifier, valid-time interval, crosswalk or rights promotion is invented.
+
+Required native validation at `b651907` passed all 3014 tests (8 existing resource
+warnings), 97.12% coverage and all subsequent gates. Two owned timestamp-only
+fixture changes were restored after exit. Source and tests remain unchanged;
+hosted delivery is pending. See [full receipt](./budget-classification.md).
