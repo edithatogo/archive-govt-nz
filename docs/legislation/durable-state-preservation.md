@@ -95,7 +95,9 @@ The v1 package is a deterministic ZIP_STORED file. Names are sorted; timestamps,
 permissions and ZIP platform headers are fixed. No compression or archive path
 normalization is accepted. Limits are 256 MiB outer package, 4,098 members,
 64 MiB per member; input-tree reading additionally retains Prompt 08's 128 MiB
-expanded-state and 4,096-file limits. Larger state requires a reviewed format or
+expanded-state and 4,096-file limits. Verification enforces the same expanded
+state limit before promotion. Package inputs must be regular files, not links,
+directories or special files. Larger state requires a reviewed format or
 bounds revision, not relaxed checks at runtime. Workspaces must be private and
 exclusive to cooperative callers; this is not a hostile same-user filesystem
 sandbox.

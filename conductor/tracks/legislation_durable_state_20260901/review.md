@@ -28,3 +28,14 @@ publication and final independent recovery require their separate gates.
 
 Final native assurance, the strengthened mutation campaign and exact-head hosted
 checks must pass before delivery. Optional external review is not claimed.
+
+## Superseding bounds review
+
+Two additional negative tests showed that verification needed to enforce the
+shared restorer's expanded-state limit, and package-file reads needed to reject
+non-regular inputs before open. Both are now rejected by explicit preflight
+controls. The reviewed helper has 190 executable statements and 24 branches;
+44 focused tests cover all of them. Dedicated controls bring the final mutation
+campaign to 26. The superseding canonical package preserves all original state
+bytes; only builder revision/hash metadata changes. The previous package and
+receipts remain retained. Final full and hosted assurance remain delivery gates.
