@@ -1,9 +1,10 @@
 # Exclusive local resume execution — implementation contract
 
 Scope: the four existing Budget-2025, BEFU-2025, HYEFU-2024 and fiscal-2024
-raw-workbook profiles. Initial dependency is the explicitly unmerged read-only
-planner checkpoint `ce9c8b8b538530afabd2f6c9710d52a6092ab56f`; subsequent delivery
-must reconcile the planner PR #320. This is not a generic retry engine.
+raw-workbook profiles. Development initially used the explicitly unmerged
+read-only planner checkpoint `ce9c8b8b538530afabd2f6c9710d52a6092ab56f`; planner
+PR #320 is now delivered and integrated at its merge
+`2c7a59913a77badcaece3a87366ee50a4a97c49d`. This is not a generic retry engine.
 
 The default is read-only. A caller supplies the previously reviewed plan file
 and its SHA-256 together with the donor, old PLAN, original CAS and stage pins.
@@ -38,6 +39,17 @@ exit receipt `9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa`.
 All reviewed source hashes are unchanged. Three generated timestamp-only fields
 in two unrelated legislation migration receipts were restored, not committed.
 Retained-original pilot and hosted delivery are separate pending evidence.
+
+## Budget stack integration
+
+Ordinary merge `53e6a35` incorporates reviewed Budget projection PR #322 head
+`2bba6daa9bcc72b1d529d48850ea0535bedae04a`. All 114 incoming evidence lines
+remain an exact byte prefix before the three executor events. All three
+production and two executor/completion test hashes are unchanged. The initial
+post-integration command named nonexistent `test_budget_canonical.py` and exited
+4 with no tests; the corrected discovered `test_budget_projection.py` selection
+passed all 134 combined tests in 64.29s, and Conductor validated 75 tracks.
+Budget hosted delivery remains a separate dependency gate.
 
 Controlled-boundary ownership checks detect replacement of reviewed directories;
 this is not an atomic whole-filesystem transaction or hostile-race sandbox. A
