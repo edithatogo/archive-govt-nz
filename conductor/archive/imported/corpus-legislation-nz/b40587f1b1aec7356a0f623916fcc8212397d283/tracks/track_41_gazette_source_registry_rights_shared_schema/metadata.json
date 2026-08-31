@@ -1,0 +1,8 @@
+{
+  "track_id": "track_41_gazette_source_registry_rights_shared_schema",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-07-02T22:42:57.9295233+10:00",
+  "updated_at": "2026-07-02T22:55:32.3584387+10:00",
+  "description": "Define the NZ Gazette source registry, rights boundary, retrieval limits, and shared raw/canonical schema."
+}

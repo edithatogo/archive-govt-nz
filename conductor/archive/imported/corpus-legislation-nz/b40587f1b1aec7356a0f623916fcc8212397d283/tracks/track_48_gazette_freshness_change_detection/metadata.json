@@ -1,0 +1,8 @@
+{
+  "track_id": "track_48_gazette_freshness_change_detection",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-07-02T22:55:32.3584387+10:00",
+  "updated_at": "2026-07-02T22:55:32.3584387+10:00",
+  "description": "Detect new and changed NZ Gazette material across official and DigitalNZ sources and enqueue targeted source refreshes."
+}

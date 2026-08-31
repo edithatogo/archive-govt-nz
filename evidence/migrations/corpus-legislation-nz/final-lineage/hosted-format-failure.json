@@ -1,0 +1,10 @@
+{
+  "observed_at": "2026-08-31T11:45:45.505404+00:00",
+  "head_commit": "9999efe9588a72354d4b027a22ef92a6b5a7cd58",
+  "run_id": 33388278921,
+  "status": "failed",
+  "failed_stage": "format",
+  "owned_path": "docs/migrations/corpus-legislation-nz/final-donor-lineage.md",
+  "log_sha256": "d553445e8d939c3fc9b7c79f29142246e55420f2df955723594bfc26c52e1d2c",
+  "correction": "Apply repository Ruff formatter to the owned documentation example; preserve failed run and all earlier evidence."
+}

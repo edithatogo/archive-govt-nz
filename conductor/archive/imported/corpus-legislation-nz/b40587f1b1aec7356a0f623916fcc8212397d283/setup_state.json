@@ -1,0 +1,15 @@
+﻿{
+    "last_successful_step":  "track_01_repository_commit_and_release_baseline_complete",
+    "corpus_family_preferred_label":  "corpus-nz-legislation",
+    "corpus_family_sibling_label":  "corpus-nz-hansard",
+    "publication_environments_to_track":  [
+                                              "github",
+                                              "hugging_face",
+                                              "zenodo",
+                                              "osf_optional",
+                                              "croissant",
+                                              "ro_crate",
+                                              "frictionless",
+                                              "dcat_prov_o"
+                                          ]
+}

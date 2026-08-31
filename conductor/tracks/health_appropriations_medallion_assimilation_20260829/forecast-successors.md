@@ -103,7 +103,13 @@ This is not full workbook-area or longitudinal-edition coverage.
   integration retained its completed Budget tasks and the single identical CPI
   receipt already delivered there, with both forecast receipts appended.
   Exact-head hosted assurance remains pending.
-- Hosted delivery remains pending; local assurance does not imply publication.
+- PR #283 was observed merged at `2026-08-31T12:00:04Z`, merge
+  `565dd8845d151dcd31e5b6448e719f05fa12011d`, after all seven checks passed on
+  exact head `ececf5ae147eccd8076f18c3727c599e5019eb46` (CLEAN before merge).
+  Assurance run `33388902524` passed on Ubuntu, macOS and Windows. This hosted
+  result is separate from the pre-integration local full pass above and does
+  not imply rights qualification or publication. Broader Phase 1.2/5 coverage
+  remains pending.
 
 Work was moved non-destructively to a standalone `--no-hardlinks` clone after
 other registered worktrees disappeared externally. The original forecast

@@ -1,0 +1,8 @@
+﻿{
+  "track_id": "track_32_sota_cicd_code_quality_rust_tooling",
+  "type": "chore",
+  "status": "done",
+  "created_at": "2026-06-09T00:00:00Z",
+  "updated_at": "2026-06-11T00:00:00Z",
+  "description": "Adopt SOTA CI/code-quality automation using Rust-backed tools where possible: uv, ruff, typos, zizmor, taplo, plus actionlint."
+}

@@ -3,7 +3,9 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
+import re
 import subprocess
 import time
 from pathlib import Path
@@ -35,6 +37,55 @@ RECEIPT_EXCLUSION_PATTERN = (
     r'|"[0-9a-f]{64}"'
     r"|consolidation_revision"
 )
+
+# Reviewed public lineage documents, not a general path or entropy exemption.
+# Changed documents require review again; donor snapshots and receipts stay intact.
+PUBLIC_LINEAGE_DOCUMENTS = {
+    "donor-track-lineage.json": (
+        "177d479c3ec6ee6eef3e98ccdda230cd505ccf3797921783d96748f8bb8e58a1"
+    ),
+    "import-fixity.json": (
+        "6e9f9bcbd70ac2adaf6358df50c5c024165c619ae298e9c747f39b58cbe00977"
+    ),
+    "receipt-precommit.json": (
+        "9c337b834654e0cf17f6513390c46a4cf1dcf5b5dca091bd9aa0fe67e0cd6449"
+    ),
+    "receipt.json": "7a90eed0dabd874a835d31a29c42eec52c5c6b3cd2623aa0436e563df53ac52b",
+}
+PUBLIC_LINEAGE_ROOT = "evidence/migrations/corpus-legislation-nz/final-lineage/"
+PUBLIC_IMPORT_VALUE = re.compile(
+    r'"(?:previous_import|final_import|imported_root|imported_tree_root)"\s*:\s*'
+    r'"(conductor/archive/imported/corpus-legislation-nz/'
+    r"(?:749918c251da59dc890c19dfda2ab9a021fd8ca6|b40587f1b1aec7356a0f623916fcc8212397d283)"
+    r'(?:/(?:tracks|archive)/[a-z0-9_]+)?)"'
+)
+
+
+def is_reviewed_public_path(filename: str, finding: dict[str, object]) -> bool:
+    """Adjudicate only an exact path candidate in an unchanged reviewed document."""
+    relative = filename.replace("\\", "/")
+    allowed = {
+        PUBLIC_LINEAGE_ROOT + name: digest
+        for name, digest in PUBLIC_LINEAGE_DOCUMENTS.items()
+    }
+    if relative not in allowed or finding.get("type") != "Base64 High Entropy String":
+        return False
+    path = REPOSITORY_ROOT / relative
+    try:
+        payload = path.read_bytes()
+        if hashlib.sha256(payload).hexdigest() != allowed[relative]:
+            return False
+        number = finding.get("line_number")
+        lines = payload.decode("utf-8").splitlines()
+        if type(number) is not int or not 1 <= number <= len(lines):
+            return False
+        return any(
+            hashlib.sha1(match[1].encode(), usedforsecurity=False).hexdigest()
+            == finding.get("hashed_secret")
+            for match in PUBLIC_IMPORT_VALUE.finditer(lines[number - 1])
+        )
+    except OSError, UnicodeError:
+        return False
 
 
 def run(command: Sequence[str], *, capture: bool = False) -> str:
@@ -132,10 +183,27 @@ def secrets() -> None:
         message = "detect-secrets returned an invalid results envelope"
         raise SystemExit(message)
     typed_results = cast("dict[str, object]", results)
-    finding_count = sum(
-        len(cast("list[object]", findings))
-        for findings in typed_results.values()
-        if isinstance(findings, list)
+    adjudicated = []
+    finding_count = 0
+    for filename, findings in typed_results.items():
+        if not isinstance(findings, list) or any(
+            not isinstance(finding, dict) for finding in findings
+        ):
+            message = "detect-secrets returned invalid findings"
+            raise SystemExit(message)
+        for finding in cast("list[dict[str, object]]", findings):
+            if is_reviewed_public_path(filename, finding):
+                adjudicated.append({"filename": filename, **finding})
+            else:
+                finding_count += 1
+    (BUILD_DIRECTORY / "secret-adjudications.json").write_text(
+        json.dumps(
+            {"reviewed_public_paths": adjudicated, "unresolved_count": finding_count},
+            indent=2,
+            sort_keys=True,
+        )
+        + "\n",
+        encoding="utf-8",
     )
     if finding_count:
         print(f"secret scan found {finding_count} candidate(s); inspect {output_path}")
