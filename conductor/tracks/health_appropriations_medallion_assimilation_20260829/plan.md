@@ -519,6 +519,12 @@ repository validation command. External gates block only their affected task.
 
 ### 7.1 Metadata and rights contracts first
 
+- [x] Add a bounded pure local provenance inventory for explicitly supplied
+  canonical historical and Budget classification product descriptors. Validate
+  exact structural schemas, safe identities and dependency closure without I/O,
+  fixity/eligibility claims or publication metadata. This does not complete
+  Platinum or whole-product recovery. [M-14, M-18; AC-14, AC-16]
+
 - [ ] Add failing contracts for schema-as-code, DCAT, Croissant, RO-Crate,
   PROV, estate cards, mixed/per-resource licensing, citations and fail-closed
   release readiness. Include missing, conflicting and incompatible rights
@@ -551,6 +557,10 @@ repository validation command. External gates block only their affected task.
 
 ### 8.1 Operational contracts first
 
+- [x] Add a read-only partial-rebuild planner joining pinned donor metadata,
+  prior PLAN and explicit stage pins; verify selected originals and classify
+  bounded stage fixity/structure reuse without copying or repairing attempts.
+  Execution, semantic approval and publication remain separate. [M-15; AC-13]
 - [ ] Add CLI/MCP/scheduler tests for inspect, capture, normalize, reconcile,
   analyze, rebuild, candidate-build and status commands, including JSON output,
   dry-run, idempotency, cancellation, partial state, retry/resume, missing
