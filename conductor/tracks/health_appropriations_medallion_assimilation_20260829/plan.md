@@ -488,6 +488,11 @@ repository validation command. External gates block only their affected task.
 
 ### 9.2 Build a rights-filtered Hugging Face candidate locally
 
+- [~] Add a read-only additive inventory for the four explicitly pinned
+  Budget-2026/CPI/BEFU-2026/HYEFU-2025 packages, verifying base bytes and exact
+  recorded source-rights joins without building, approving or publishing a
+  candidate. [M-03, M-04, M-14, M-17, M-18; AC-02, AC-14, AC-15, AC-16]
+
 - [ ] Add release-readiness negative tests for missing rights, incomplete
   source disposition, failed parity/recovery, stale evidence, non-pinned
   revisions, restricted content and candidate-manifest mismatch. [M-14, M-17,
