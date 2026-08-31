@@ -1,0 +1,31 @@
+{
+  "observed_at": "2026-08-31T11:33:31.771693+00:00",
+  "focused_fixity": "passed",
+  "conductor": "passed:71 tracks",
+  "import_secret_scan": {
+    "status": "passed",
+    "sha256": "574dfba5cfe381f4b5e8a023b792124c116df1f6a45797340dfad6117cf21b4d"
+  },
+  "workflow_lint": {
+    "status": "failed",
+    "sha256": "d75001604148cbbbaeef2b3e66444af4835398619e6e586fb864f68f90f8fee8",
+    "findings": [
+      {
+        "path": ".github/workflows/global-ckan-harvest-huggingface.yml",
+        "line": 56,
+        "code": "SC2086"
+      },
+      {
+        "path": ".github/workflows/scheduled-gazette-harvest.yml",
+        "line": 36,
+        "code": "SC2086"
+      }
+    ],
+    "scope": "pre-existing and outside Prompt 02",
+    "reproduction": "actionlint",
+    "handoff_owner": "Prompt 01 / issue #276 for repository workflow owner routing"
+  },
+  "full_harness": "in_progress",
+  "hosted_checks": "not_started",
+  "coverage_mutation_scope": "No new production integrity logic; data/fixity checks and repository harness apply."
+}

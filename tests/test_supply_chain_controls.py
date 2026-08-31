@@ -2,12 +2,16 @@
 
 from __future__ import annotations
 
+import hashlib
 import importlib.util
+import json
 import re
 import subprocess
 import sys
 from pathlib import Path
 from typing import TYPE_CHECKING
+
+import pytest
 
 from archive_govt_nz.assurance import STAGES
 from archive_govt_nz.licensing import licence_denial
@@ -15,7 +19,6 @@ from archive_govt_nz.licensing import licence_denial
 if TYPE_CHECKING:
     from types import ModuleType
 
-    import pytest
 
 REPOSITORY_ROOT = Path(__file__).parents[1]
 _SUPPLY_CHAIN_PATH = REPOSITORY_ROOT / "tools" / "supply_chain.py"
@@ -118,3 +121,85 @@ def test_licence_gate_selects_only_a_documented_package_alternative() -> None:
     assert licence_denial("unreviewed-package", dual) is not None
     assert licence_denial("ordinary-package", "Apache Software License") is None
     assert licence_denial("ordinary-package", "UNKNOWN") == "unknown"
+
+
+def test_public_path_adjudication_does_not_suppress_other_candidates(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Exact candidate hashes leave secrets on the same line unresolved."""
+    filename = supply_chain.PUBLIC_LINEAGE_ROOT + "receipt.json"
+    path = tmp_path / filename
+    path.parent.mkdir(parents=True)
+    value = (
+        "conductor/archive/imported/corpus-legislation-nz/"
+        "b40587f1b1aec7356a0f623916fcc8212397d283"
+    )
+    other = "synthetic-unreviewed-candidate"
+    payload = json.dumps({"imported_tree_root": value, "other": other}).encode()
+    path.write_bytes(payload)
+    monkeypatch.setattr(supply_chain, "REPOSITORY_ROOT", tmp_path)
+    monkeypatch.setattr(supply_chain, "BUILD_DIRECTORY", tmp_path)
+    monkeypatch.setattr(
+        supply_chain,
+        "PUBLIC_LINEAGE_DOCUMENTS",
+        {"receipt.json": hashlib.sha256(payload).hexdigest()},
+    )
+
+    def candidate(token: str) -> dict[str, object]:
+        return {
+            "type": "Base64 High Entropy String",
+            "line_number": 1,
+            "hashed_secret": hashlib.sha1(
+                token.encode(), usedforsecurity=False
+            ).hexdigest(),
+        }
+
+    public = candidate(value)
+    unknown = candidate(other)
+    assert supply_chain.is_reviewed_public_path(filename, public)
+    assert supply_chain.is_reviewed_public_path(filename.replace("/", "\\"), public)
+    assert not supply_chain.is_reviewed_public_path(filename, unknown)
+    assert not supply_chain.is_reviewed_public_path("other.json", public)
+    assert not supply_chain.is_reviewed_public_path(
+        filename, {**public, "type": "Secret Keyword"}
+    )
+    assert not supply_chain.is_reviewed_public_path(
+        filename, {**public, "line_number": 0}
+    )
+    raw = {"results": {filename: [public, unknown]}}
+    monkeypatch.setattr(supply_chain, "run", lambda *_, **__: json.dumps(raw))
+    with pytest.raises(SystemExit):
+        supply_chain.secrets()
+    assert json.loads((tmp_path / "detect-secrets.json").read_text()) == raw
+    adjudication = json.loads((tmp_path / "secret-adjudications.json").read_text())
+    assert adjudication["unresolved_count"] == 1
+    assert len(adjudication["reviewed_public_paths"]) == 1
+    path.write_bytes(payload + b" ")
+    assert not supply_chain.is_reviewed_public_path(filename, public)
+    path.unlink()
+    assert not supply_chain.is_reviewed_public_path(filename, public)
+
+
+def test_reviewed_document_paths_require_known_revisions_and_keys() -> None:
+    """Path-shaped unknown input does not qualify by shape alone."""
+    value = "conductor/archive/imported/corpus-legislation-nz/" + "0" * 40
+    assert not supply_chain.PUBLIC_IMPORT_VALUE.search(
+        json.dumps({"final_import": value})
+    )
+    known = value.replace("0" * 40, "b40587f1b1aec7356a0f623916fcc8212397d283")
+    assert not supply_chain.PUBLIC_IMPORT_VALUE.search(json.dumps({"token": known}))
+
+
+@pytest.mark.parametrize("findings", [None, {}, [None]])
+def test_malformed_secret_results_fail_closed(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, findings: object
+) -> None:
+    """Malformed scanner records never become an empty successful scan."""
+    monkeypatch.setattr(supply_chain, "BUILD_DIRECTORY", tmp_path)
+    monkeypatch.setattr(
+        supply_chain,
+        "run",
+        lambda *_, **__: json.dumps({"results": {"file": findings}}),
+    )
+    with pytest.raises(SystemExit):
+        supply_chain.secrets()

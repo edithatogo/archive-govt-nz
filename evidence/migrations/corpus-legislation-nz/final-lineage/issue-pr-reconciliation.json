@@ -1,0 +1,372 @@
+{
+  "schema_version": "archive-govt-nz.final-donor-issue-pr-reconciliation/v1",
+  "observed_at": "2026-08-31T11:30:51.480474+00:00",
+  "sequence_start": 170,
+  "sequence_end": 184,
+  "separate_issue_count": 0,
+  "pull_request_count": 15,
+  "items": [
+    {
+      "number": 170,
+      "title": "Add an artifact-only bridge for target one-batch reconciliation",
+      "state": "closed",
+      "merged": true,
+      "merged_at": "2026-08-21T03:44:30Z",
+      "merge_commit_sha": "a7b1678b48f7205847a7f6f08731c73e37131d57",
+      "html_url": "https://github.com/edithatogo/corpus-legislation-nz/pull/170",
+      "changed_files": 2,
+      "commits": 1,
+      "head_sha": "f255dcd256cf85e1fb9df583b14fd34b308fb9ee",
+      "base_sha": "749918c251da59dc890c19dfda2ab9a021fd8ca6",
+      "item_kind": "pull_request",
+      "issue_number_namespace": "GitHub issues and pull requests share numbers; this sequence contains 15 PRs, zero separate issues",
+      "disposition": "preserved_as_historical_evidence_only",
+      "target_issue": 278,
+      "claims_source": "Historical PR description/comments, not independent current operational verification",
+      "historical_claims": [
+        "## Scope\n\nAdds a manual artifact-only workflow that uses the donor encrypted `NZ_LEGISLATION_API_KEY` in runner memory while executing the exact target `archive-govt-nz` commit `8f4f6fa2459f4991eba95499cf69360045b10b27`. It is fixed to reviewed batch `historical-work-ids-0001`, its 500-line count, and SHA-256 `59923176fa34796d7673a20b880af9abe5520fe484595edb220f2bbc0e3b33e7`.\n\n## Expected outcome\n\nThe target service performs exact canonical work-ID discovery and adapter-backed acquisition, then the target fail-closed reconciler verifies manifest, checkpoint, CAS, and W/E/M identities. State and receipts upload even on failure before a final non-zero gate.\n\n## Evidence\n\n- Full donor checks passed: Ruff, formatting, ty, 198 tests, 80.08% coverage, version consistency, artifact provenance, and shell syntax.\n- Focused workflow policy tests and actionlint passed.\n\n## Risk and boundaries\n\nPermissions are contents-read only; target checkout credentials are disabled. The workflow contains no push, publication token, Hugging Face, Zenodo, archival, or remote-write step. It does not expose or transfer the secret. It does not itself close canary, publication/rights, weekly-cycle, recovery, cutover, or donor archival gates.",
+        "Maintainer review: exact head f255dcd256cf85e1fb9df583b14fd34b308fb9ee is clean and all hosted checks are green. The workflow is fixed to target commit 8f4f6fa2459f4991eba95499cf69360045b10b27 and reviewed batch SHA-256 59923176fa34796d7673a20b880af9abe5520fe484595edb220f2bbc0e3b33e7; it is artifact-only and does not publish, push, archive, or expose the secret."
+      ],
+      "hosted_run_ids": [
+        32444469178
+      ]
+    },
+    {
+      "number": 171,
+      "title": "Pin the target bridge to the source parser correction",
+      "state": "closed",
+      "merged": true,
+      "merged_at": "2026-08-21T04:07:25Z",
+      "merge_commit_sha": "41a95ff6e6393436397034398656507ed3558438",
+      "html_url": "https://github.com/edithatogo/corpus-legislation-nz/pull/171",
+      "changed_files": 2,
+      "commits": 1,
+      "head_sha": "caa85f1356f81c12daba5c885995bccd96235451",
+      "base_sha": "a7b1678b48f7205847a7f6f08731c73e37131d57",
+      "item_kind": "pull_request",
+      "issue_number_namespace": "GitHub issues and pull requests share numbers; this sequence contains 15 PRs, zero separate issues",
+      "disposition": "preserved_as_historical_evidence_only",
+      "target_issue": 278,
+      "claims_source": "Historical PR description/comments, not independent current operational verification",
+      "historical_claims": [
+        "Updates only the immutable target commit pin and its policy assertion from 8f4f6fa to 7223221, which contains the production source-set parser correction proven by target PR #166. Focused workflow policy, lint, format, type, and actionlint checks pass. Failed run 32444469178 remains negative evidence; this PR does not itself execute another batch or advance downstream gates.",
+        "Maintainer review: exact head caa85f1356f81c12daba5c885995bccd96235451 is clean and all hosted gates are green. This changes only the immutable target pin to parser-corrected commit 7223221fe97266bdbd01a982ab4d6fbb8ffe606a."
+      ],
+      "hosted_run_ids": [
+        32445817922
+      ]
+    },
+    {
+      "number": 172,
+      "title": "ci: pin one-batch run to search retry fix",
+      "state": "closed",
+      "merged": true,
+      "merged_at": "2026-08-21T04:36:01Z",
+      "merge_commit_sha": "f499d489491033c936b44b981c043ca9a49d2788",
+      "html_url": "https://github.com/edithatogo/corpus-legislation-nz/pull/172",
+      "changed_files": 2,
+      "commits": 1,
+      "head_sha": "126297d9714e3d66ae634473c935edfe92069f89",
+      "base_sha": "41a95ff6e6393436397034398656507ed3558438",
+      "item_kind": "pull_request",
+      "issue_number_namespace": "GitHub issues and pull requests share numbers; this sequence contains 15 PRs, zero separate issues",
+      "disposition": "preserved_as_historical_evidence_only",
+      "target_issue": 278,
+      "claims_source": "Historical PR description/comments, not independent current operational verification",
+      "historical_claims": [
+        "## Scope\n\nPin the artifact-only one-batch reconciliation workflow to target commit `a2dd97ac6112e9985a6f19404b24a9f8199e5074`, which adds bounded retry handling for transient official API search failures.\n\n## Evidence\n\n- Ruff format and lint passed\n- ty passed\n- 198 tests passed\n- version consistency and artifact provenance checks passed\n- shell syntax and actionlint passed\n\n## Operational context\n\nRun 32445817922 failed on an official API HTTP 502 before committing state. It remains failed evidence. This pin permits retrying the same fixed batch; it does not authorize publication, archive the donor, or advance canary/cutover gates."
+      ],
+      "hosted_run_ids": [
+        32447528834
+      ]
+    },
+    {
+      "number": 173,
+      "title": "ci: pin one-batch run to exact identity fix",
+      "state": "closed",
+      "merged": true,
+      "merged_at": "2026-08-21T05:29:19Z",
+      "merge_commit_sha": "13d0122e353615e71b689a7753a4686dc602a9f3",
+      "html_url": "https://github.com/edithatogo/corpus-legislation-nz/pull/173",
+      "changed_files": 2,
+      "commits": 1,
+      "head_sha": "8c43b815dd2b4604f7ba0f199b42c14dfca24af5",
+      "base_sha": "f499d489491033c936b44b981c043ca9a49d2788",
+      "item_kind": "pull_request",
+      "issue_number_namespace": "GitHub issues and pull requests share numbers; this sequence contains 15 PRs, zero separate issues",
+      "disposition": "preserved_as_historical_evidence_only",
+      "target_issue": 278,
+      "claims_source": "Historical PR description/comments, not independent current operational verification",
+      "historical_claims": [
+        "Pins the artifact-only one-batch workflow to target commit `6b13c523056fe6998bed7a53655fa7600d8d67a9`, which resolves donor work IDs through exact official version endpoints.\n\nValidation: Ruff, ty, 198 tests, version consistency, artifact provenance, shell syntax. The prior run 32447528834 remains failed evidence with no state committed. No publication, rights, canary, cutover, or donor-archive authority is implied."
+      ],
+      "hosted_run_ids": [
+        32450747044
+      ]
+    },
+    {
+      "number": 174,
+      "title": "ci: pin one-batch run to primary format fix",
+      "state": "closed",
+      "merged": true,
+      "merged_at": "2026-08-21T06:02:31Z",
+      "merge_commit_sha": "4fd15b315c50bd71d0fda38690074cea55a1972d",
+      "html_url": "https://github.com/edithatogo/corpus-legislation-nz/pull/174",
+      "changed_files": 2,
+      "commits": 1,
+      "head_sha": "fc30e4c9f43dddb01e722acae44efef97d81513c",
+      "base_sha": "13d0122e353615e71b689a7753a4686dc602a9f3",
+      "item_kind": "pull_request",
+      "issue_number_namespace": "GitHub issues and pull requests share numbers; this sequence contains 15 PRs, zero separate issues",
+      "disposition": "preserved_as_historical_evidence_only",
+      "target_issue": 278,
+      "claims_source": "Historical PR description/comments, not independent current operational verification",
+      "historical_claims": [
+        "Pins the artifact-only one-batch workflow to target commit `0e0c6747b35f3b0476e1d7dde0a7cdf5acdd4b9d`, which deterministically selects XML, then HTML, then PDF from official advertised formats.\n\nFocused Ruff, ty, and workflow-policy tests pass. Target PR #169 passed the full 875-test validation harness. Run 32450747044 remains failed evidence with no state committed. No later gate or donor archival is authorized."
+      ],
+      "hosted_run_ids": [
+        32452836461
+      ]
+    },
+    {
+      "number": 175,
+      "title": "ci: pin one-batch run to dated fallback fix",
+      "state": "closed",
+      "merged": true,
+      "merged_at": "2026-08-21T06:48:57Z",
+      "merge_commit_sha": "f8f9b2f3cda6a62166e1c1b1791de3eb17882101",
+      "html_url": "https://github.com/edithatogo/corpus-legislation-nz/pull/175",
+      "changed_files": 2,
+      "commits": 1,
+      "head_sha": "3114024247379da7b94c6ec9a65f2d048a7d3b6c",
+      "base_sha": "4fd15b315c50bd71d0fda38690074cea55a1972d",
+      "item_kind": "pull_request",
+      "issue_number_namespace": "GitHub issues and pull requests share numbers; this sequence contains 15 PRs, zero separate issues",
+      "disposition": "preserved_as_historical_evidence_only",
+      "target_issue": 278,
+      "claims_source": "Historical PR description/comments, not independent current operational verification",
+      "historical_claims": [
+        "Pins the artifact-only one-batch workflow to target commit `5c17cecc41d65cd6d93a3ac4b61ac8e4d030af0c`. Target full validation passed. Prior runs remain failed with no committed state; no later gate or donor archival is authorized."
+      ],
+      "hosted_run_ids": [
+        32455977431
+      ]
+    },
+    {
+      "number": 176,
+      "title": "ci: pin one-batch run to key boundary fix",
+      "state": "closed",
+      "merged": true,
+      "merged_at": "2026-08-21T07:32:14Z",
+      "merge_commit_sha": "da6a74c19cc849f158ff896a68e8a43e0647854b",
+      "html_url": "https://github.com/edithatogo/corpus-legislation-nz/pull/176",
+      "changed_files": 2,
+      "commits": 1,
+      "head_sha": "7c3a67ea9745ac662976926b246c96457bdfbc83",
+      "base_sha": "f8f9b2f3cda6a62166e1c1b1791de3eb17882101",
+      "item_kind": "pull_request",
+      "issue_number_namespace": "GitHub issues and pull requests share numbers; this sequence contains 15 PRs, zero separate issues",
+      "disposition": "preserved_as_historical_evidence_only",
+      "target_issue": 278,
+      "claims_source": "Historical PR description/comments, not independent current operational verification",
+      "historical_claims": [
+        "Pins the artifact-only one-batch workflow to target commit `f1aefdc18c987f018567872c6caea0039c7328b6`, which prevents cross-origin API-key forwarding. Prior runs remain failed with no committed state; later gates and donor archival remain closed."
+      ],
+      "hosted_run_ids": [
+        32459120358
+      ]
+    },
+    {
+      "number": 177,
+      "title": "Pin one-batch workflow to pending-render retry correction",
+      "state": "closed",
+      "merged": true,
+      "merged_at": "2026-08-21T08:21:55Z",
+      "merge_commit_sha": "01a1ab7a352acc1aca17e3c2398626b2fadb766f",
+      "html_url": "https://github.com/edithatogo/corpus-legislation-nz/pull/177",
+      "changed_files": 2,
+      "commits": 1,
+      "head_sha": "865413d965812bbc5c690b32559620764a2a6c02",
+      "base_sha": "da6a74c19cc849f158ff896a68e8a43e0647854b",
+      "item_kind": "pull_request",
+      "issue_number_namespace": "GitHub issues and pull requests share numbers; this sequence contains 15 PRs, zero separate issues",
+      "disposition": "preserved_as_historical_evidence_only",
+      "target_issue": 278,
+      "claims_source": "Historical PR description/comments, not independent current operational verification",
+      "historical_claims": [
+        "Refs the governed legislation migration sequence.\n\nScope: update the immutable target checkout from `f1aefdc18c987f018567872c6caea0039c7328b6` to merged target commit `e67a3e3772b216be8f08c52753f8e2b7a6cc3ef3`, which adds bounded HTTP 202 retry handling.\n\nExpected outcome: the next explicit one-batch dispatch exercises the reviewed target correction exactly.\n\nRisk/failure modes: this does not declare the batch, canary, weekly operation, recovery, rights, or publication complete. Persistent pending responses still fail closed after the bounded retry budget. The donor remains unarchived.\n\nValidation: `uv run pytest -q` passed (198 tests); `git diff --check` passed."
+      ],
+      "hosted_run_ids": [
+        32462873000
+      ]
+    },
+    {
+      "number": 178,
+      "title": "Pin one-batch workflow to pending-response evidence",
+      "state": "closed",
+      "merged": true,
+      "merged_at": "2026-08-21T08:56:45Z",
+      "merge_commit_sha": "a54a27ecd593fbd1c303a860749ef5921ce0e2f2",
+      "html_url": "https://github.com/edithatogo/corpus-legislation-nz/pull/178",
+      "changed_files": 2,
+      "commits": 1,
+      "head_sha": "a6b34b8a8dd37f3e69432d448de30f57539ba993",
+      "base_sha": "01a1ab7a352acc1aca17e3c2398626b2fadb766f",
+      "item_kind": "pull_request",
+      "issue_number_namespace": "GitHub issues and pull requests share numbers; this sequence contains 15 PRs, zero separate issues",
+      "disposition": "preserved_as_historical_evidence_only",
+      "target_issue": 278,
+      "claims_source": "Historical PR description/comments, not independent current operational verification",
+      "historical_claims": [
+        "Refs the governed legislation migration sequence.\n\nScope: update the immutable target checkout to merged commit `da60097bf126180557ab8a8e2c68dec8f93b4231`, which forces public-manifestation cache revalidation and emits bounded response diagnostics while remaining fail closed.\n\nExpected outcome: the next one-batch run either retrieves canonical representations or produces sufficient safe evidence to classify the persistent hosted 202 response.\n\nRisk/failure modes: no 202 body is accepted as archive evidence; a persistent response still leaves manifest/checkpoint uncommitted. This does not advance canary, weekly, recovery, publication, rights, or cutover gates. The donor remains unarchived.\n\nValidation: `uv run pytest -q` passed (198 tests); `git diff --check` passed."
+      ],
+      "hosted_run_ids": [
+        32465540893
+      ]
+    },
+    {
+      "number": 179,
+      "title": "Pin one-batch workflow to trusted manifestation authentication",
+      "state": "closed",
+      "merged": true,
+      "merged_at": "2026-08-21T09:41:56Z",
+      "merge_commit_sha": "273a10c024ecb77abf5c6dfdb410892e645fa362",
+      "html_url": "https://github.com/edithatogo/corpus-legislation-nz/pull/179",
+      "changed_files": 2,
+      "commits": 1,
+      "head_sha": "917fa2f44ba26ca7a315a264a1e43c1ded310c00",
+      "base_sha": "a54a27ecd593fbd1c303a860749ef5921ce0e2f2",
+      "item_kind": "pull_request",
+      "issue_number_namespace": "GitHub issues and pull requests share numbers; this sequence contains 15 PRs, zero separate issues",
+      "disposition": "preserved_as_historical_evidence_only",
+      "target_issue": 278,
+      "claims_source": "Historical PR description/comments, not independent current operational verification",
+      "historical_claims": [
+        "Refs the governed legislation migration sequence.\n\nScope: update the immutable target checkout to merged commit `dd6aa8eb3a2769fe02a1d62aec2be151f2f0fc9d`, which permits the service capability only on the exact official API and manifestation HTTPS origins.\n\nExpected outcome: the next one-batch run authenticates API-discovered official formats while retaining strict host boundaries.\n\nRisk/failure modes: all non-allowlisted origins remain unauthenticated; any non-200 manifestation still fails closed. This does not advance canary, weekly, recovery, publication, rights, or cutover gates. The donor remains unarchived.\n\nValidation: `uv run pytest -q` passed (198 tests); `git diff --check` passed."
+      ],
+      "hosted_run_ids": [
+        32469140679
+      ]
+    },
+    {
+      "number": 180,
+      "title": "Pin one-batch workflow to manifestation auth fallback",
+      "state": "closed",
+      "merged": true,
+      "merged_at": "2026-08-21T10:09:51Z",
+      "merge_commit_sha": "44c1e5b30dbaa90ada71ffc125b94f3669dccfa7",
+      "html_url": "https://github.com/edithatogo/corpus-legislation-nz/pull/180",
+      "changed_files": 2,
+      "commits": 1,
+      "head_sha": "82a68a0c0cb1434a82a1de6653791b06a32494a8",
+      "base_sha": "273a10c024ecb77abf5c6dfdb410892e645fa362",
+      "item_kind": "pull_request",
+      "issue_number_namespace": "GitHub issues and pull requests share numbers; this sequence contains 15 PRs, zero separate issues",
+      "disposition": "preserved_as_historical_evidence_only",
+      "target_issue": 278,
+      "claims_source": "Historical PR description/comments, not independent current operational verification",
+      "historical_claims": [
+        "Refs the governed legislation migration sequence.\n\nScope: update the immutable target checkout to merged commit `a34a02427a156c089c1779772126f24186488237`, which retries the identical official manifestation URL without authentication after an authenticated HTTP 404.\n\nExpected outcome: the next one-batch run can traverse credential-sensitive public formats while preserving canonical identity and fail-closed validation.\n\nRisk/failure modes: only the exact official manifestation host receives this fallback; all non-200 outcomes still fail. This does not advance canary, weekly, recovery, publication, rights, or cutover gates. The donor remains unarchived.\n\nValidation: `uv run pytest -q` passed (198 tests); `git diff --check` passed."
+      ],
+      "hosted_run_ids": [
+        32471359882
+      ]
+    },
+    {
+      "number": 181,
+      "title": "ci: pin accepted official-site user agent",
+      "state": "closed",
+      "merged": true,
+      "merged_at": "2026-08-21T10:47:42Z",
+      "merge_commit_sha": "e34f1a882ba01ad9e16c46c47d7e5f9c256f3f85",
+      "html_url": "https://github.com/edithatogo/corpus-legislation-nz/pull/181",
+      "changed_files": 2,
+      "commits": 1,
+      "head_sha": "c703bb3b765c910ff9acf70d5a3b2c32bcb41e75",
+      "base_sha": "44c1e5b30dbaa90ada71ffc125b94f3669dccfa7",
+      "item_kind": "pull_request",
+      "issue_number_namespace": "GitHub issues and pull requests share numbers; this sequence contains 15 PRs, zero separate issues",
+      "disposition": "preserved_as_historical_evidence_only",
+      "target_issue": 278,
+      "claims_source": "Historical PR description/comments, not independent current operational verification",
+      "historical_claims": [
+        "## Scope\n\nAdvance the one-batch reconciliation workflow immutable target pin from `a34a02427a156c089c1779772126f24186488237` to merged target commit `a8ed771925da354bcaa0aa7c06ed2d1d25efabba`, including its exact-pin contract test.\n\n## Evidence and expected outcome\n\nRun 32471359882 reached the real service and preserved 48 works, but the official site rejected the literal `Preservation Bot` user-agent classifier at historical Act 1844; the fail-closed gate correctly withheld manifest/checkpoint state. Target PR #176 retains attributable project identification without that rejected classifier.\n\n## Validation\n\n- `uv run pytest -q`: 198 passed\n- `git diff --check`: passed\n\n## Risks / failure modes\n\nThis pin does not prove the 500-work batch succeeds. After merge, the same confirmed one-batch workflow must run to terminal and its bounded artifact must show committed state and zero reconciliation mismatches. Publication, rights closure, canary advancement, weekly scheduling, recovery promotion, cutover, and donor archival remain out of scope."
+      ],
+      "hosted_run_ids": [
+        32474265689
+      ]
+    },
+    {
+      "number": 182,
+      "title": "ci: pin representation-specific negotiation",
+      "state": "closed",
+      "merged": true,
+      "merged_at": "2026-08-21T11:36:21Z",
+      "merge_commit_sha": "9654419c13cbdbc3d31be9430330f054a1c55cee",
+      "html_url": "https://github.com/edithatogo/corpus-legislation-nz/pull/182",
+      "changed_files": 2,
+      "commits": 1,
+      "head_sha": "6ed285f314451590939e85ecdbdafedc36e60657",
+      "base_sha": "e34f1a882ba01ad9e16c46c47d7e5f9c256f3f85",
+      "item_kind": "pull_request",
+      "issue_number_namespace": "GitHub issues and pull requests share numbers; this sequence contains 15 PRs, zero separate issues",
+      "disposition": "preserved_as_historical_evidence_only",
+      "target_issue": 278,
+      "claims_source": "Historical PR description/comments, not independent current operational verification",
+      "historical_claims": [
+        "## Scope\n\nAdvance the immutable one-batch target pin to merged target commit `c3a34a662492ce470a8d5dcc697d6221b52fb57b` and update the exact-pin contract test.\n\n## Evidence\n\nFail-closed run 32474265689 preserved 48/500 works but withheld manifest/checkpoint state at Act 1844. Target PR #177 corrects the mixed content negotiation by sending JSON to API discovery, XML to XML manifestations, and HTML to HTML manifestations.\n\n## Validation\n\n- `uv run pytest -q`: 198 passed\n- `git diff --check`: passed\n\n## Risks / failure modes\n\nThis pin does not prove batch success. After merge, the exact confirmed batch must run to terminal and its bounded artifact must show committed manifest/checkpoint state and zero reconciliation mismatches. Publication, rights closure, canary advancement, weekly scheduling, recovery promotion, cutover, and donor archival remain out of scope."
+      ],
+      "hosted_run_ids": [
+        32477973065
+      ]
+    },
+    {
+      "number": 183,
+      "title": "Add pinned bounded live legislation canary",
+      "state": "closed",
+      "merged": true,
+      "merged_at": "2026-08-21T13:30:26Z",
+      "merge_commit_sha": "3c2bac391fae35e4f0cef1fe57adf504000545e3",
+      "html_url": "https://github.com/edithatogo/corpus-legislation-nz/pull/183",
+      "changed_files": 3,
+      "commits": 1,
+      "head_sha": "7c37e923b86d724765d3b9ca4f148b1bdf4d8e0b",
+      "base_sha": "9654419c13cbdbc3d31be9430330f054a1c55cee",
+      "item_kind": "pull_request",
+      "issue_number_namespace": "GitHub issues and pull requests share numbers; this sequence contains 15 PRs, zero separate issues",
+      "disposition": "preserved_as_historical_evidence_only",
+      "target_issue": 278,
+      "claims_source": "Historical PR description/comments, not independent current operational verification",
+      "historical_claims": [
+        "Continues the corrective sequence after the successful one-real-batch run.\n\nScope:\n- add a reviewed five-work canary scope;\n- pin target commit `d9abc05fa648f8b2049fb443477bc8f97691cf7f`;\n- restore the exact successful run 32477973065 artifact;\n- authenticate its manifest and discovered-inventory roots before use;\n- force live service revalidation so prior checkpoint membership cannot create a false pass;\n- reconcile selected identities, CAS fixity, and cumulative manifest/checkpoint state;\n- retain all success/failure evidence as a 90-day artifact.\n\nExpected outcome:\nOne explicitly confirmed dispatch recontacts the official service for five exact works and proves either source-backed change or conditional no-change while preserving the cumulative 500-record state.\n\nRisk/failure modes:\n- missing/expired prior artifact, missing source credential, root mismatch, target mismatch, incomplete live responses, reconciliation mismatch, or malformed receipts fail closed;\n- the workflow is dispatch-only and grants read-only actions/content permissions;\n- no schedule, publication, rights clearance, cutover, or donor archival is enabled.\n\nValidation:\n- 200 tests passed;\n- Ruff format and lint passed;\n- `git diff --check` passed.\n\nThe donor remains unarchived."
+      ],
+      "hosted_run_ids": [
+        32487223314
+      ]
+    },
+    {
+      "number": 184,
+      "title": "Add state-chained weekly legislation cycles",
+      "state": "closed",
+      "merged": true,
+      "merged_at": "2026-08-21T13:38:39Z",
+      "merge_commit_sha": "b40587f1b1aec7356a0f623916fcc8212397d283",
+      "html_url": "https://github.com/edithatogo/corpus-legislation-nz/pull/184",
+      "changed_files": 2,
+      "commits": 1,
+      "head_sha": "b5d6d158dc61b54eda5c8bad0fde5f20675c3582",
+      "base_sha": "3c2bac391fae35e4f0cef1fe57adf504000545e3",
+      "item_kind": "pull_request",
+      "issue_number_namespace": "GitHub issues and pull requests share numbers; this sequence contains 15 PRs, zero separate issues",
+      "disposition": "preserved_as_historical_evidence_only",
+      "target_issue": 278,
+      "claims_source": "Historical PR description/comments, not independent current operational verification",
+      "historical_claims": [
+        "Establishes the weekly operational-observation lane after the independently verified bounded live canary.\n\nScope:\n- schedule a weekly revalidation at 16:17 UTC Sundays;\n- retain an explicitly confirmed manual dispatch for repair/testing;\n- pin target commit `d9abc05fa648f8b2049fb443477bc8f97691cf7f`;\n- bootstrap from verified canary run 32487223314, then chain only from the latest successful weekly artifact;\n- stream-verify every incoming CAS object before acquisition;\n- revalidate the complete reviewed 500-work inventory against the live service;\n- reconcile exact identities, CAS, cumulative manifest/checkpoint accounting, and write explicit state lineage;\n- retain complete success/failure state for 90 days.\n\nExpected outcome:\nEach elapsed cycle produces a real source-backed, cumulative, independently reconcilable state artifact. Multiple successful elapsed cycles—not workflow configuration alone—will be required before the weekly gate is complete.\n\nRisk/failure modes:\n- missing/expired state, missing source credential, corrupt CAS, incomplete source responses, reconciliation mismatch, or malformed receipts fail closed;\n- concurrency is serialized and each cycle is capped at 180 minutes and 500 works;\n- no publication, rights clearance, target cutover, or donor archival is authorized.\n\nValidation:\n- 203 tests passed;\n- Ruff format and lint passed;\n- `git diff --check` passed.\n\nThe donor remains unarchived."
+      ],
+      "hosted_run_ids": [
+        32487942675
+      ]
+    }
+  ]
+}

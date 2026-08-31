@@ -1,0 +1,25 @@
+{
+  "target_revision": "33ad03e1204d4b8b4622b8a28dc43c12490857ed",
+  "items": [
+    {
+      "id": "late-target-source-corrections",
+      "disposition": "assimilated_with_target_native_replacement",
+      "evidence": "commit-dispositions.json",
+      "rationale": "All donor execution target pins are ancestors of target revision; code is target-native, not donor runtime copied here. Current source-service success is unverified."
+    },
+    {
+      "id": "donor-artifact-only-bridge",
+      "disposition": "preserved_as_historical_evidence_only",
+      "evidence": "late-donor-files.json"
+    },
+    {
+      "id": "five-work-canary-and-500-work-weekly",
+      "disposition": "preserved_as_historical_evidence_only",
+      "target_equivalence": "not_verified",
+      "handoffs": [
+        "LH-WORKFLOW",
+        "LH-STATE"
+      ]
+    }
+  ]
+}
