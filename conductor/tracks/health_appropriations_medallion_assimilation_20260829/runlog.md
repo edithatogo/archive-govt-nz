@@ -1175,3 +1175,16 @@ the process stopped. Earlier red-phase evidence remains intact.
 Focused mutation command:
 `uv run pytest tests/schemas/test_health_recordsets.py -q --gremlins --gremlin-targets=src/archive_govt_nz/schemas/health_recordsets.py --gremlin-report=json --gremlin-parallel --gremlin-workers=1 --gremlin-clear-cache --gremlin-no-coverage-filter --strict-pardons --gremlin-max-pardons-pct=0 --max-pardons=0 --no-cov`.
 All 34 tests and 30 mutants passed with no filtered tests or cached results.
+## 2026-08-31 — Record-set integration path correction
+
+Corrected post-integration command passed 52 tests in 3.49 seconds, and the
+Conductor validator passed all 73 tracks. Native assurance remains tied to
+the earlier exact head; production and test hashes did not change on merge.
+
+After integrating main `6885c3e` (merge `aed6c31`), the focused command named
+nonexistent `tests/test_conductor_state.py`: exit 4, no tests ran. File discovery
+identified `tests/tools/test_validate_conductor_state.py`; rerun the corrected
+path with the 34 schema tests. Production/test hashes remain unchanged and the
+entire incoming machine ledger was verified byte-for-byte as a prefix before
+appending the two owned schema receipts. This does not replace the separately
+recorded pre-integration full harness.
