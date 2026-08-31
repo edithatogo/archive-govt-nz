@@ -581,6 +581,18 @@ Independent read-only review found no actionable production issue and
 requested full field type/nullability tests; those now pass together with
 all 30 cold mutants. Native and hosted assurance remain distinct gates.
 
+## 2026-08-31 — JSON row-shape review
+
+The fresh descriptors enforce structural columns, constants, nullability and
+exact fixed-point transport bounds. Deep-copy isolation and unknown-type
+failure prevent mutable shared descriptors or binary/text fallback. Format
+validation explicitly requires the caller's checker. Two independent reviews
+found no actionable finding within this structural scope. All 51 tests and
+two cold source mutants pass; ten separately seeded descriptor counterexamples
+are not counted as production mutants. Native assurance passed at `d71d431`.
+No identity, rights, temporal alignment, source projection or lineage semantic
+claim is made. General/Python style and the repository formatter/type checker
+pass; no platform-specific application guide is selected for this pure module.
 ## 2026-08-31 — Historical snapshot boundary review
 
 The reader attests byte snapshots, exact physical source-specific schemas and

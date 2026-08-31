@@ -17,7 +17,7 @@ status/context field allows subsequent validators to distinguish those cases.
 This is a structural contract only. Arrow does not enforce constant values in
 the domain/record-set/version columns, unique or correctly derived IDs,
 null-reason consistency, temporal alignment, classification evidence, rights,
-or cross-record lineage closure. JSON Schema/row validators, stable identity
+or cross-record lineage closure. Semantic row validators, stable identity
 construction, explicit source projections, fingerprints and operational
 registration remain pending tasks. Do not infer M-05 or Phase 3 completion.
 
@@ -49,6 +49,26 @@ new shapes explicitly use `element` rather than weakening equality checks.
 No public file, original source, existing derivative or old schema is modified
 by importing or querying this registry.
 
+## JSON transport descriptors
+
+`schemas.health_recordset_json.recordset_json_schema(name, version="v1")`
+returns a fresh Draft 2020-12 descriptor for a single row. All columns are
+required, nullable columns explicitly admit null, and additional fields are
+rejected. Domain, record-set and version constants are enforced. Dates and
+timestamps require the caller to enable format checking explicitly.
+
+Decimals travel as bounded fixed-point strings, never JSON floating-point
+numbers. The grammar allows at most 20 integer and 18 fractional digits and
+rejects exponent notation, leading zeroes, nonfinite values and trailing
+newlines. It does not round source values. Unknown Arrow types, names and
+versions fail closed. Returned nested dictionaries are independent.
+
+These descriptors remain structural only: they do not prove IDs, rights,
+source precision, null-reason consistency, time alignment or lineage closure.
+No existing source package is converted or promoted. The 51 focused tests
+include ten seeded descriptor counterexamples; these are not ten additional
+source-code mutant kills. The final unfiltered cold mutation run generated
+and killed two source mutants, with no survivors or cached results.
 ## Main integration receipt — 2026-08-31
 
 Main `25f9fb5` was integrated in an independent clone at `b626b6f`, preserving
@@ -62,3 +82,19 @@ explicit source path and failed collection; retry with this clone's `src` on
 `PYTHONPATH` passed unchanged code. No shared environment was modified.
 The recorded full native pass predates this integration and is not a new
 integrated native result. Hosted exact-head checks remain required.
+
+## JSON descriptor delivery integration
+
+PR300 head946e304 was integrated with mainc4d62ca in an independent standalone
+clone without changing JSON production or tests. The complete incoming ledger
+is an exact byte prefix, followed by the two existing JSON events; every line
+parses as JSON.69focused JSON/Conductor tests passed5.97seconds. Production
+SHA2561173a96654a18d6b7f0337f34cff79dd17b21b4011a8a92a62ebc1769a113122
+and test SHA2563d2973906cec0dacb9d9c4050a4033376393f1e67fad9e47b39872eaad32a0db
+match the preintegration head. The prior native pass is retained, not rerun or
+relabelled as integrated assurance; fresh exact-head hosted checks are required.
+
+After QES delivery, main6c23ba8 was integrated with unchanged JSON source/tests.
+69focused checks passed3.47seconds; every ledger line parsed and the complete
+incoming prefix matched byte-for-byte. This second documentation integration
+does not reuse the prior head's hosted checks as evidence for its new head.
