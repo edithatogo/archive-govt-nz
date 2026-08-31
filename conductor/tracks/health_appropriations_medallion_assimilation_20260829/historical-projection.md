@@ -86,6 +86,13 @@ Mutation receipt SHA-256:
 Native log SHA-256:
 `6f0e6f155498ce0bab244eee300222d6d8d985c5c0f93d80ba344d26e9090c7e`.
 
+After merging main `3be3048` into functional checkpoint `596a73f`, the source
+and test hashes above stayed unchanged. Integration `47130c2` passed 224 focused
+projection/Arrow/JSON/Conductor tests, repository format/lint/types and all 74
+Conductor tracks. The complete incoming machine ledger was preserved byte for
+byte as a prefix before the two owned receipts. The full native result remains
+pre-integration; hosted exact-head checks are a separate gate.
+
 Remaining work includes other source-specific projections, a persisted canonical
 package contract and broader semantic validators. This does not canonicalize
 unresolved MoH/QES units, rewrite historical packages or advance HF publication.

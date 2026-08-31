@@ -1335,3 +1335,11 @@ audit/licences/secrets and SBOM 111 components passed. Native log SHA-256
 `6f0e6f155498ce0bab244eee300222d6d8d985c5c0f93d80ba344d26e9090c7e`.
 After the process exited, restored only the two test-generated timestamp-only
 legislation receipt changes. Original source files and published data unchanged.
+
+Functional checkpoint `596a73f` merged main `3be3048` as `47130c2`. Conflicts
+were confined to append-only review/runlog/evidence records; incoming records
+precede the owned records, and an explicit byte-prefix assertion passed for the
+entire machine ledger. Source/test hashes remained unchanged. Post-integration
+224 projection/schema/Conductor tests passed in 4.79 seconds, 1,641 files passed
+format, repository Ruff/types passed, and all 74 Conductor tracks validated.
+This is focused post-integration assurance, not another full native run.
