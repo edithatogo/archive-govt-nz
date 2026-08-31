@@ -1138,3 +1138,14 @@ its change set.
   at 96.91% coverage, then exited 124. The unchanged failed test passed alone.
   No deadlines were weakened; hosted assurance remains separate. Exact bounded
   receipts are in [embedded notices](./embedded-notices.md).
+
+## 2026-08-31 — Exclusive local additive staging (in progress)
+
+- Began an independent branch after the pinned inventory planner; PR #290 was
+  subsequently observed merged after all seven hosted checks succeeded.
+- Established a missing-module red contract, then 27 focused passing staging
+  contracts. No original, candidate, or Hugging Face payload was changed.
+- The new local-only layout preserves the historical manifest/card separately,
+  emits no active candidate manifest, and records completion only after full
+  copy readback. Review and heavier validation remain pending; see
+  [additive staging](./additive-staging.md) for the bounded contract.
