@@ -14,7 +14,8 @@
   general HTML display-truth evaluator. Other page content remains in Bronze.
 - Focused 69 tests, 100% critical coverage and cold unfiltered 93/93 mutation
   kills pass. No survivors/timeouts/errors/pardons/cache hits. Native harness
-  and hosted delivery remain separate pending gates at this checkpoint.
+  passed at `677326a` (2,459 tests, 97.01% overall coverage); hosted delivery
+  remains pending. Four archive-copy files match both retained pilots exactly.
 
 ## Plot context-style regression — 2026-08-31 UTC
 

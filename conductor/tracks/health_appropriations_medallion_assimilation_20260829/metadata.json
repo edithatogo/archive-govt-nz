@@ -6,7 +6,10 @@
   "created_at": "2026-08-29T05:39:14Z",
   "updated_at": "2026-08-31T13:43:19Z",
   "pharmac_budget_validation": {
-    "status": "focused_and_mutation_passed_native_pending",
+    "status": "native_passed_hosted_pending",
+    "native_commit": "677326a",
+    "native_tests": 2459,
+    "retained_package": "silver/raw-pharmac-cpb-20260831-v1",
     "functional_commit": "d3ad31a",
     "mutants_killed": 93,
     "mutation_survivors_timeouts_errors": 0,

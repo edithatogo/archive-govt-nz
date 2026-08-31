@@ -1,7 +1,7 @@
 # Pharmac medicines-budget HTML adapter
 
-Local source-specific normalization and cold mutation assurance pass; native
-and hosted delivery remain pending. No source capture, rights promotion or publication is
+Local source-specific normalization, cold mutation and native assurance pass;
+hosted delivery remains pending. No source capture, rights promotion or publication is
 performed by this adapter.
 
 ## Exact retained source and scope
@@ -77,8 +77,12 @@ existing Silver/Gold package, candidate, Hugging Face revision or donor changes.
 - Cold unfiltered mutation: 93/93 killed, zero survivors/timeouts/errors/pardons,
   zero cache hits, two workers, all 69 tests, 172.27 seconds. Report SHA-256:
   `4dacb57619169b44569225d3a09fa4aeff5db90527b40e0c41a408d79408cf79`.
-- Full repository harness and hosted exact-head checks remain pending.
-  Focused and mutation assurance are not substituted for those gates.
+- Unchanged native `./scripts/validate.sh` passed at `677326a`: 2,459 tests
+  in 145.43 seconds, 97.01% overall coverage, eight existing cleanup warnings,
+  and all typing, schema, differential, mutation and supply-chain gates.
+  Durable native log SHA-256:
+  `ea23b74dabb6a092e9d637eaa06d7bebddca959f01c703f2e519ba5cefb321f0`.
+  Hosted exact-head checks remain a separate pending gate.
 
 Two exclusive local pilot builds match byte-for-byte across four files totaling
 31,646 bytes. Manifest SHA-256 is
@@ -87,6 +91,10 @@ An independent table parser reconciled every physical cell and all 42
 numeric/missing inputs against facts and amount lineage. The script digest is
 `5b2df7fa2a0702bd430e53f8cdff1de95d2d137ecb6460d8b12da180cf546db8`;
 source hash readback remained unchanged. These packages have not been published.
+An exclusive archive copy at
+`silver/raw-pharmac-cpb-20260831-v1` was verified byte-identical across all four
+files after native assurance. Both temporary pilot copies remain retained;
+no existing package or original was replaced.
 
 ## Prior embedded-notice hosted delivery
 
