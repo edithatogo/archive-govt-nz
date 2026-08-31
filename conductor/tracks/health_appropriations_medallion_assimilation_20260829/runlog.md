@@ -1426,3 +1426,12 @@ and both projection events; 188 projection/snapshot/Conductor tests passed in
 temporary two-character header truncation was corrected before committing and
 full JSON validity checked. Production/test hashes and native evidence are
 unchanged; no second full run is claimed.
+
+## Forecast preflight local assurance — 2026-08-31T16:17:15Z
+
+Checkpoint `a85ca41`: 92 focused tests, 100% critical coverage (131 statements,
+52 branches), independent review and cold unfiltered 66/66 mutation kills pass.
+Four final-code synthetic packages match all 16 pre-change output files exactly;
+originals are unchanged. Initial unsupported-keyword, tuple/list and missing-scope
+red failures were resolved; no test/gate was weakened. Full native/hosted delivery
+remain pending. See [forecast-preflight.md](forecast-preflight.md).
