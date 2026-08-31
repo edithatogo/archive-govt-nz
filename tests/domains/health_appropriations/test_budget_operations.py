@@ -194,12 +194,12 @@ def test_cli_argument_dispatch(
 
 @pytest.mark.parametrize("passed", [True, False])
 def test_protocol_failure_flag_preserves_receipt(
-    package: tuple[Path, str], passed: bool
+    package: tuple[Path, str], passed: bool  # noqa: FBT001
 ) -> None:
     root, pin = package
     if not passed:
         pin = "0" * 64
-    response = Server()._call_tool(
+    response = Server()._call_tool(  # noqa: SLF001
         1,
         {
             "name": "health_appropriations_verify_budget",
