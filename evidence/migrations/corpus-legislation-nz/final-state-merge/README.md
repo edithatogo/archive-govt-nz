@@ -1,5 +1,7 @@
 # Prompt 04 local canonical state merge
 
+Current handoff: [execution 02](./current-package.json). The 552-record local package is verified. Final local validation and seven hosted checks passed at 1f0417f; the final documentation head must pass the same live gate before merge. Earlier pending-status paragraphs below are retained historical observations, superseded by the later verification sections.
+
 Issue #292 under #276. Target baseline `6885c3e50e34f19f15459abe8eca1409675f068b`;
 archived donor final head `b40587f1b1aec7356a0f623916fcc8212397d283`.
 Target operational producer `97ae6067d7320fe634f5e202219c412cf4ba754a`, successful
@@ -106,3 +108,7 @@ all repository schema/parity/mutation/workflow-policy lanes, dependency audit,
 licence inventory, secret scan and strict SBOM validation (111 components).
 `local-validation-final.json` binds the exact log and reviewed code. Hosted
 checks and remote merge remain separate gates, not implied by these local passes.
+
+## Rebased validation
+
+After unrelated main advancement to 9e559799f441651e79d4109fcd28e5fa89be668e, the branch was rebased without changing merger, tests, schema or legislation parent dependencies. The complete native harness passed again: 2,761 tests, 97.05% overall coverage and all assurance/security/SBOM stages. See rebase-validation-final.json. The executed software revision remains remotely reachable; the execution-02 package and receipts remain unchanged.
