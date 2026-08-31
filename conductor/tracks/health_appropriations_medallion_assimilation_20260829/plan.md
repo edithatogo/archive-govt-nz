@@ -224,7 +224,6 @@ repository validation command. External gates block only their affected task.
   into an exclusive local-only export, defaulting to dry-run, with complete
   readback and retained partial failures. Keep source packages and publication
   unchanged. [M-05, M-06, M-07, M-16, M-18; AC-05, AC-16]
-
 - [x] Project reviewed historical Health/GDP facts and field lineage into the
   canonical Arrow shapes with exact Decimal bounds, vintage-aware identities,
   unknown starts, period dependencies and complete mapped/retained lineage
