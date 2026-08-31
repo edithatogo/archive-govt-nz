@@ -316,6 +316,14 @@ repository validation command. External gates block only their affected task.
 
 ### 5.1 Source-family contracts first
 
+- [~] Normalize the retained Pharmac medicines-budget HTML profile into
+  pharmaceutical-budget facts, preserving all 14 financial-year rows, supplied
+  changes/percentages, literal missing markers and trailing empty cells. Bind
+  July–June dates to the page's explicit definition; retain caption mismatch
+  and 2022 budget-holder reform context without claiming actual expenditure,
+  cross-regime equivalence, or new publication rights. [M-05, M-06, M-07,
+  M-11, M-18; AC-05, AC-09, AC-11, AC-16]
+
 - [x] Register bounded BEFU-2026/v1 and HYEFU-2025/v1 literal Health-summary
   contracts from retained originals, with version-specific sheets, coordinates,
   year/type/unit context, synthetic drift tests and independent OOXML pilot
