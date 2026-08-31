@@ -1,0 +1,411 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/edithatogo/archive-govt-nz/schemas/seed-registry-v1.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "entries"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "archive-govt-nz.seed-registry/v1"
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "seed_id",
+          "version",
+          "path_parts",
+          "source",
+          "content",
+          "candidate_count",
+          "review",
+          "acquisition",
+          "publication",
+          "last_revalidation",
+          "state",
+          "rights",
+          "candidate_universe",
+          "limitations"
+        ],
+        "properties": {
+          "seed_id": {
+            "type": "string",
+            "minLength": 1,
+            "const": "historical-work-ids-0001"
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 0,
+            "const": 1
+          },
+          "path_parts": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true,
+            "const": [
+              "seeds",
+              "reviewed",
+              "historical-work-ids-0001.txt"
+            ]
+          },
+          "source": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "repository",
+              "commit",
+              "path_parts",
+              "artifact_id",
+              "artifact_name",
+              "run_id",
+              "package_sha256",
+              "introduction_commit",
+              "review_pr",
+              "source_git_blob"
+            ],
+            "properties": {
+              "repository": {
+                "type": "string",
+                "minLength": 1
+              },
+              "commit": {
+                "type": "string",
+                "minLength": 1
+              },
+              "path_parts": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              },
+              "artifact_id": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "artifact_name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "run_id": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "package_sha256": {
+                "type": "string",
+                "minLength": 1
+              },
+              "introduction_commit": {
+                "type": "string",
+                "minLength": 1
+              },
+              "review_pr": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "source_git_blob": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "const": {
+              "repository": "edithatogo/corpus-legislation-nz",
+              "commit": "b40587f1b1aec7356a0f623916fcc8212397d283",
+              "path_parts": [
+                "seeds",
+                "reviewed",
+                "historical-work-ids-0001.txt"
+              ],
+              "artifact_id": 9450742423,
+              "artifact_name": "target-legislation-weekly-32487942675",
+              "run_id": 32487942675,
+              "package_sha256": "1975e473793fd701b81b53a7f6fd696bbeaa257b41bdc55250f064a21ad9e54e",
+              "introduction_commit": "aa3e9945c392a91a7e13b5022313b26d5ba6f6d5",
+              "review_pr": 51,
+              "source_git_blob": "6d88b24a2c79c156841dff796bbf47d5b13f0528"
+            }
+          },
+          "content": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "sha256",
+              "byte_size",
+              "line_count",
+              "encoding",
+              "line_endings",
+              "terminal_newline",
+              "ordering",
+              "unique"
+            ],
+            "properties": {
+              "sha256": {
+                "type": "string",
+                "minLength": 1
+              },
+              "byte_size": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "line_count": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "encoding": {
+                "type": "string",
+                "minLength": 1
+              },
+              "line_endings": {
+                "type": "string",
+                "minLength": 1
+              },
+              "terminal_newline": {
+                "type": "boolean"
+              },
+              "ordering": {
+                "type": "string",
+                "minLength": 1
+              },
+              "unique": {
+                "type": "boolean"
+              }
+            },
+            "const": {
+              "sha256": "59923176fa34796d7673a20b880af9abe5520fe484595edb220f2bbc0e3b33e7",
+              "byte_size": 8987,
+              "line_count": 500,
+              "encoding": "ASCII",
+              "line_endings": "LF",
+              "terminal_newline": true,
+              "ordering": "ASCII lexicographic ascending",
+              "unique": true
+            }
+          },
+          "candidate_count": {
+            "type": "integer",
+            "minimum": 0,
+            "const": 500
+          },
+          "review": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "status",
+              "date",
+              "basis"
+            ],
+            "properties": {
+              "status": {
+                "const": "inherited_donor_reviewed_inventory"
+              },
+              "date": {
+                "type": "string",
+                "format": "date",
+                "const": "2026-06-11"
+              },
+              "basis": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "acquisition": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "status",
+              "record_count",
+              "basis"
+            ],
+            "properties": {
+              "status": {
+                "type": "string",
+                "minLength": 1
+              },
+              "record_count": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "basis": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "const": {
+              "status": "verified_in_donor_package",
+              "record_count": 500,
+              "basis": "Prompt 03 verified manifest records and CAS; no acquisition performed in Prompt 05."
+            }
+          },
+          "publication": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "status",
+              "record_count"
+            ],
+            "properties": {
+              "status": {
+                "type": "string",
+                "minLength": 1
+              },
+              "record_count": {
+                "type": "null"
+              }
+            },
+            "const": {
+              "status": "not_verified_for_this_seed",
+              "record_count": null
+            }
+          },
+          "last_revalidation": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "state": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "donor_manifest_root_sha256",
+              "donor_inventory_root_sha256",
+              "target_merged_manifest_root_sha256"
+            ],
+            "properties": {
+              "donor_manifest_root_sha256": {
+                "type": "string",
+                "minLength": 1
+              },
+              "donor_inventory_root_sha256": {
+                "type": "string",
+                "minLength": 1
+              },
+              "target_merged_manifest_root_sha256": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "const": {
+              "donor_manifest_root_sha256": "a32dc371a1a47ae30a4afd58a9cbde2a439f3536d7705eb776e0fa68b4cd16db",
+              "donor_inventory_root_sha256": "2abf0d8b76cc60e9b4e442724987b81848698dbdd98e56266f8726d468b33eaf",
+              "target_merged_manifest_root_sha256": "877ba501a25570a29c1aada7979562d8c62c7f043865125cf402310eabc09544"
+            }
+          },
+          "rights": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "status",
+              "underlying_records",
+              "redistribution_clearance"
+            ],
+            "properties": {
+              "status": {
+                "type": "string",
+                "minLength": 1
+              },
+              "underlying_records": {
+                "type": "string",
+                "minLength": 1
+              },
+              "redistribution_clearance": {
+                "type": "boolean"
+              }
+            },
+            "const": {
+              "status": "identifier_inventory_only",
+              "underlying_records": "rights_review_required",
+              "redistribution_clearance": false
+            }
+          },
+          "candidate_universe": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "count",
+              "kind",
+              "canonical_sha256",
+              "source_path_parts",
+              "discovery_run_id",
+              "discovery_artifact",
+              "relationship",
+              "full_coverage_proven"
+            ],
+            "properties": {
+              "count": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "kind": {
+                "type": "string",
+                "minLength": 1
+              },
+              "canonical_sha256": {
+                "type": "string",
+                "minLength": 1
+              },
+              "source_path_parts": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              },
+              "discovery_run_id": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "discovery_artifact": {
+                "type": "string",
+                "minLength": 1
+              },
+              "relationship": {
+                "type": "string",
+                "minLength": 1
+              },
+              "full_coverage_proven": {
+                "type": "boolean"
+              }
+            },
+            "const": {
+              "count": 33693,
+              "kind": "search_derived_candidates",
+              "canonical_sha256": "6f70fa9b596be2baa77bd885df1857e9b89c04013361c9ad80af722b0cc8493b",
+              "source_path_parts": [
+                "seeds",
+                "work_ids.txt"
+              ],
+              "discovery_run_id": 27313765016,
+              "discovery_artifact": "historical-work-id-discovery",
+              "relationship": "first 500 ASCII-sorted unique candidate IDs; batch 1 of 68",
+              "full_coverage_proven": false
+            }
+          },
+          "limitations": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true
+          }
+        }
+      }
+    }
+  }
+}
