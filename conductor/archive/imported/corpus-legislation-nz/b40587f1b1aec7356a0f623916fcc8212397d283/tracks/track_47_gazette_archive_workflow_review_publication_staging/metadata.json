@@ -1,0 +1,8 @@
+{
+  "track_id": "track_47_gazette_archive_workflow_review_publication_staging",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-07-02T22:42:57.9295233+10:00",
+  "updated_at": "2026-07-02T22:55:32.3584387+10:00",
+  "description": "Stage workflows and review gates for source-specific Gazette archives and the derived canonical Gazette archive."
+}
