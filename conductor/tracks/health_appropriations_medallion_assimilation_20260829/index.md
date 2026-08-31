@@ -22,6 +22,7 @@ every planned record set, measure or operational workflow.
 - [Autonomous continuation route](./continuation.md)
 - [Pinned donor behavior](./donor-behavior.md)
 - [Raw Budget extraction](./raw-budget.md)
+- [Budget successor pilot and versioned contracts](./raw-budget-successors.md)
 - [Raw BEFU/HYEFU extraction](./raw-forecast.md)
 - [Raw historical Health/GDP extraction and reconciliation](./raw-historical.md)
 - [Original-workbook orchestration](./raw-rebuild.md)
