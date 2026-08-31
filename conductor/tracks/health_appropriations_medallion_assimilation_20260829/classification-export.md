@@ -116,3 +116,10 @@ all input package bytes were verified unchanged after retention. The four
 temporary builds remain preserved. These local packages confer neither rights
 eligibility nor candidate/publication approval; marker presence alone is not
 verification.
+
+Independent parent-agent readback also passed both retained packages: marker
+pins, exact five-file closure, four payload sizes and hashes, both exact canonical
+Arrow schemas including metadata, 215/185 rows and 3655/3145 accounting records.
+It independently verified original CAS lengths and hashes plus input manifest
+and all three payload pins, without writes. Its readback script SHA256 is
+`40bf5bbf47863049e9e6072a3bb04c3ab568b731bbf5ba4480dc2be7b1b98634`.
