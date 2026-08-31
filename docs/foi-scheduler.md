@@ -30,6 +30,15 @@ restore verification, manifest digest and public revision. These arguments are
 trusted evidence inputs from the verified publisher, not checks performed by the
 scheduler. No counter or country-completion claim is inferred from queue length.
 
+`record_capture` records a trusted executor's verified local package and cold
+restore under an exact unexpired lease. Its terminal `captured` state retains
+the manifest digest but clears the active job lease and has no publication
+revision. Lease history remains intact. This releases concurrent resource
+reservations without granting public coverage credit. It does not verify files
+itself: the executor must preserve and verify originals before proposing this
+transition. Subsequent publication requires separately admitted work and its
+own eligibility and anonymous verification evidence.
+
 Integration must load an authoritative shared ownership fence, validate the
 current owner/epoch/lease with `foi_ownership.require_owner`, apply a transition,
 and atomically compare-and-swap the durable state before any external operation.

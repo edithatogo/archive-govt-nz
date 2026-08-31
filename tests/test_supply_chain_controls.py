@@ -3,11 +3,14 @@
 from __future__ import annotations
 
 import importlib.util
+import json
 import re
 import subprocess
 import sys
 from pathlib import Path
 from typing import TYPE_CHECKING
+
+import pytest
 
 from archive_govt_nz.assurance import STAGES
 from archive_govt_nz.licensing import licence_denial
@@ -15,7 +18,6 @@ from archive_govt_nz.licensing import licence_denial
 if TYPE_CHECKING:
     from types import ModuleType
 
-    import pytest
 
 REPOSITORY_ROOT = Path(__file__).parents[1]
 _SUPPLY_CHAIN_PATH = REPOSITORY_ROOT / "tools" / "supply_chain.py"
@@ -118,3 +120,50 @@ def test_licence_gate_selects_only_a_documented_package_alternative() -> None:
     assert licence_denial("unreviewed-package", dual) is not None
     assert licence_denial("ordinary-package", "Apache Software License") is None
     assert licence_denial("ordinary-package", "UNKNOWN") == "unknown"
+
+
+@pytest.mark.parametrize("valid", [True, False])
+def test_sbom_uses_one_mandatory_strict_validation(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    *,
+    valid: bool,
+) -> None:
+    """Skipping duplicate CLI validation never admits an invalid IRI."""
+    document = {
+        "bomFormat": "CycloneDX",
+        "specVersion": "1.6",
+        "version": 1,
+        "components": [
+            {
+                "type": "library",
+                "name": "synthetic",
+                "version": "1",
+                "externalReferences": [
+                    {
+                        "type": "website",
+                        "url": (
+                            "https://example.org"
+                            if valid
+                            else "https://example.org/invalid space"
+                        ),
+                    }
+                ],
+            }
+        ],
+    }
+
+    def generate(command: tuple[str, ...]) -> str:
+        assert "--no-validate" in command
+        assert command[:2] == ("cyclonedx-py", "environment")
+        (tmp_path / "sbom.cdx.json").write_text(json.dumps(document), encoding="utf-8")
+        return ""
+
+    monkeypatch.setattr(supply_chain, "BUILD_DIRECTORY", tmp_path)
+    monkeypatch.setattr(supply_chain, "REPOSITORY_ROOT", tmp_path)
+    monkeypatch.setattr(supply_chain, "run", generate)
+    if valid:
+        supply_chain.sbom()
+    else:
+        with pytest.raises(SystemExit, match="failed CycloneDX validation"):
+            supply_chain.sbom()

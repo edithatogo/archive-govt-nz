@@ -13,6 +13,7 @@ from archive_govt_nz.foi_scheduler import (
     Queue,
     SourcePolicy,
     credit,
+    record_capture,
     reserve,
     retry,
 )
@@ -22,6 +23,79 @@ POLICIES = (
     SourcePolicy("uk", "https://example.net", "eligible"),
 )
 BUDGET = Budget(10, 100, 100)
+
+
+def test_local_capture_releases_work_without_publication_credit() -> None:
+    """A cold-restored local package remains distinct from public verification."""
+    leased = reserve(queue(), POLICIES, BUDGET, 1, "capture-lease")
+    captured = record_capture(
+        leased,
+        "a",
+        "capture-lease",
+        2,
+        manifest_sha256="a" * 64,
+        locally_verified=True,
+    )
+    job = captured.jobs[0]
+    assert job.status == "captured"
+    assert job.manifest_sha256 == "a" * 64
+    assert job.publication_revision == ""
+    assert job.lease_id == ""
+    assert job.expires_at == 0
+    assert "capture-lease" in captured.lease_history
+    assert leased.jobs[0].status == "leased"
+    with pytest.raises(ValueError, match="lease mismatch"):
+        record_capture(
+            captured,
+            "a",
+            "capture-lease",
+            3,
+            manifest_sha256="a" * 64,
+            locally_verified=True,
+        )
+    assert reserve(captured, POLICIES, BUDGET, 3, "next").jobs[1].status == "leased"
+
+
+@pytest.mark.parametrize(
+    "change",
+    [
+        {"now": -1},
+        {"now": True},
+        {"now": 301},
+        {"locally_verified": False},
+        {"locally_verified": 1},
+        {"manifest_sha256": "bad"},
+        {"manifest_sha256": None},
+    ],
+)
+def test_local_capture_requires_live_lease_and_exact_evidence(
+    change: dict[str, Any],
+) -> None:
+    """Local evidence cannot release expired leases or substitute truthy values."""
+    leased = reserve(queue(), POLICIES, BUDGET, 1, "capture-lease")
+    arguments = {"now": 2, "manifest_sha256": "a" * 64, "locally_verified": True}
+    arguments.update(change)
+    with pytest.raises(ValueError, match="unverified local capture"):
+        record_capture(leased, "a", "capture-lease", **arguments)
+
+
+@pytest.mark.parametrize(
+    "change",
+    [
+        {"manifest_sha256": ""},
+        {"publication_revision": "b" * 40},
+        {"lease_id": "old"},
+        {"expires_at": 5},
+    ],
+)
+def test_captured_job_invariants_cannot_imply_publication(
+    change: dict[str, Any],
+) -> None:
+    """Restored captured state requires a local digest and no active/public claim."""
+    arguments: dict[str, Any] = {"status": "captured", "manifest_sha256": "a" * 64}
+    arguments.update(change)
+    with pytest.raises(ValueError, match="invalid captured job"):
+        Job("a", "nz", 0, 1, 1, 1, **arguments)
 
 
 def queue() -> Queue:

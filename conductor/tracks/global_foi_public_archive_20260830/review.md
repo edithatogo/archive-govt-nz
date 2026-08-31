@@ -100,3 +100,30 @@ Source evidence improves the Canadian nil-return candidate assessment without
 substituting a machine screen for an accountable privacy decision. Sample bytes
 are preserved outside temporary worktrees with restricted filesystem permissions;
 they remain on one physical disk and are not independently replicated or public.
+
+## Shared execution continuation review — 2026-08-31
+
+- Global queue admission must use one pinned authority snapshot and exact-parent
+  non-forced Git ref updates; backend tests and four mutation probes cover stale
+  writers, global pins and public-field restrictions. Privileged ref reset remains
+  outside this application guarantee and is documented.
+- Local capture completion is distinct from public credit. `record_capture`
+  requires an exact live job lease and verified local manifest; its terminal state
+  clears resource reservations, retains lease history, and forbids a public
+  revision. Focused critical coverage is 100%; seven local control mutants fail.
+- Independent review caught an unchecked CKAN success envelope. The adapter now
+  requires literal true and rejects truthy substitutes, failed responses and
+  malformed rows. Source metadata remains private; its licence field alone is
+  not an authenticated acquisition or privacy decision.
+- Bounded input did not by itself bound generated indexes. Added row, index and
+  package ceilings before writes, including the separate restore copy. No rows
+  are silently dropped to satisfy a ceiling.
+- Source and country denominators remain unknown. CA nil-return rows and US XML
+  text-element counts are explicitly different units, not comparable request
+  totals or country completion. US narrative/case-title fields remain private.
+- Grouped standing-policy options are proposed only. The CA candidate policy
+  excludes raw provider contact metadata and preserves original/derived identity;
+  future drift or sensitivity findings reopen review. No user identity or rights
+  approval was fabricated.
+- Full repository and hosted deployment evidence remain pending at this review
+  checkpoint; no cutover, public raw upload or complete-system claim is made.

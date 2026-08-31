@@ -3,7 +3,7 @@
   "type": "feature",
   "status": "in_progress",
   "created_at": "2026-08-30T08:38:22Z",
-  "updated_at": "2026-08-31T11:00:40.951229+00:00",
+  "updated_at": "2026-08-31T11:39:30.833283+00:00",
   "description": "Global FOI source catalogue, metadata indexes, public raw preservation and automation repair; archive-govt-nz takeover approved.",
   "evidence_schema": "1.0",
   "approval_status": "approved",
@@ -50,6 +50,12 @@
       "id": "anonymous-public-restore",
       "kind": "external",
       "status": "pending"
+    },
+    {
+      "id": "shared-execution-deployment-authority",
+      "kind": "deployment",
+      "status": "satisfied",
+      "evidence": "User explicitly authorized autonomous shared execution deployment and country capture in this task; source-specific public raw decisions remain pending."
     }
   ],
   "ownership": {
@@ -184,6 +190,8 @@
     "catalogue_retry_merge": "3d557bcf9cc9b86945f97e3340d9d6a9d0e0fd44",
     "durable_control_state": "local_foundation_no_hosted_authority",
     "catalogue_evidence_merge": "50eb2d48e9cb812a98ff55a66db35b2c50e7ab04",
-    "durable_controls_pr": "https://github.com/edithatogo/archive-govt-nz/pull/272"
+    "durable_controls_pr": "https://github.com/edithatogo/archive-govt-nz/pull/272",
+    "durable_controls_merge": "33ad03e1204d4b8b4622b8a28dc43c12490857ed",
+    "shared_execution_continuation": "implementation_in_progress"
   }
 }

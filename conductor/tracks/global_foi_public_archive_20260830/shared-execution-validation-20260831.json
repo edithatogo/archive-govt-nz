@@ -1,0 +1,106 @@
+{
+  "schema_version": "archive-govt-nz.foi-shared-execution-validation/v1",
+  "recorded_at": "2026-08-31T12:47:54.981116+00:00",
+  "base_revision": "33ad03e1204d4b8b4622b8a28dc43c12490857ed",
+  "local_validation": {
+    "command": [
+      "./scripts/validate.sh"
+    ],
+    "environment": {
+      "UV_PROJECT_ENVIRONMENT": "internal_locked_environment",
+      "PYTEST_XDIST_AUTO_NUM_WORKERS": "4",
+      "COVERAGE_CORE": "ctrace",
+      "PYTHON_JIT": "0"
+    },
+    "full_harness": "failed_final_sbom_timeout",
+    "tests_passed": 2266,
+    "coverage_percent": 96.95,
+    "focused_critical_coverage_percent": 100,
+    "local_control_mutants_killed": 7,
+    "shared_control_mutants_killed": 4,
+    "conductor_full": "passed",
+    "workflow_lint": "passed",
+    "exit_code": 124,
+    "failed_stage": "sbom",
+    "prior_stages": "all_passed",
+    "log_sha256": "67ba3e73334be9e78b19ac4cf4930192b32b581c176e687f5f2cc9f6a23aa0a2"
+  },
+  "review": {
+    "independent_agents": 3,
+    "blocking_findings_remaining": 0,
+    "resolved": [
+      "CKAN_success_envelope",
+      "prewrite_resource_bounds",
+      "exact_lease_before_executor",
+      "truthful_partial_capture_receipts",
+      "health_missing_output_parent",
+      "canonical_RIOPA_metadata_validation",
+      "single_mandatory_strict_SBOM_validation",
+      "delegated_initial_organisation_conformance_review"
+    ]
+  },
+  "hosted": {
+    "deployed": false,
+    "verification": "pending"
+  },
+  "public_raw_upload": false,
+  "cutover": false,
+  "system_ready": false,
+  "country_complete_count": 0,
+  "main_integration": {
+    "revision": "565dd8845d151dcd31e5b6448e719f05fa12011d",
+    "conductor_full": "passed",
+    "full_harness": "tests_timed_out_with_two_timing_failures",
+    "riopa_resolution": "Preserved upstream archived completion and metadata; canonical navigation labels only.",
+    "full_harness_exit_code": 124,
+    "tests": {
+      "passed": 2312,
+      "failed": 2,
+      "duration_seconds": 318.48,
+      "coverage_percent": 96.96,
+      "failures": [
+        "Hypothesis_input_generation_too_slow",
+        "nested_pytest_10_second_timeout"
+      ]
+    },
+    "log_sha256": "90bd0545f807f52dae8553b6dc742f059e802015b6ea99e02d98e92891be5b50",
+    "focused_failure_reproducer": {
+      "passed": 2,
+      "failed": 0,
+      "exit_code": 0,
+      "seconds": 31.19,
+      "hypothesis_seed": "27938439291183670471070200602033655712",
+      "relaxed_checks": false,
+      "log_sha256": "ecff7097dc8eb94eee6c725fadc77e1bb00463ccc88870ab4e3c2576280d7e0f"
+    },
+    "post_test_attempt": {
+      "status": "failed_workspace_temporarily_unavailable",
+      "failed_stage": "mutation-redundancy",
+      "log_sha256": "4088d627d653509dcf286c26e212f3d48744e51a25fa601765ebbf4e55abc995"
+    }
+  },
+  "sbom_diagnostic": {
+    "exit_code": 1,
+    "bound_seconds": 60,
+    "finding": "duplicate strict validation using slow rfc3987-syntax IRI parser",
+    "log_sha256": "ed972dcc6df6600ab125f094a5008c18e6fc34c87c0eaee774b14a9c4619de5e",
+    "single_validation_benchmark": {
+      "generator_seconds": 5.069,
+      "strict_validation_seconds": 113.014,
+      "total_seconds": 135.088,
+      "components": 111,
+      "stage_limit_seconds": 300,
+      "log_sha256": "97cb76104ab3a91a88d61e68d5bec2c4f9587c38d5bcf1341abd798dbdb83f5b"
+    }
+  },
+  "catalogue_observation": {
+    "repository": "edithatogo/foi-source-catalogue",
+    "revision": "4e5a7832f6536e231d20292c1bffaae7861fd912",
+    "private": false,
+    "gated": false,
+    "file_count": 16,
+    "workflow_run": 33358508220,
+    "workflow_conclusion": "success",
+    "raw_publication_proven": false
+  }
+}
