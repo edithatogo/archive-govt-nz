@@ -345,6 +345,22 @@ repository validation command. External gates block only their affected task.
 
 ### 5.1 Source-family contracts first
 
+- [~] Normalize the exact retained Stats NZ GDP Table 1 expenditure-measure
+  profile: 60 quarterly current-price actual observations, separate series
+  prefix/reference, literal dollar-million units with ISO currency unverified,
+  full cell dispositions and field lineage. No annual aggregation, denominator
+  selection, source download or publication. [M-05, M-06, M-07, M-18; AC-05,
+  AC-09, AC-16]
+
+- [x] Project verified Budget functional-classification source-label occurrences
+  into the canonical dimension shape: four literal labels, local scheme,
+  unknown scheme version/identifier and unmapped state; preserve per-source
+  vintage/coordinate identity and complete input-lineage accounting. No
+  authoritative crosswalk, source mutation or publication. [M-05, M-06,
+  M-07, M-18; AC-05, AC-09, AC-16]
+  Local pure projection, focused/mutation/native assurance and in-memory pilots
+  pass; hosted delivery remains separate. See [receipt](./budget-classification.md).
+
 - [~] Normalize the retained Pharmac medicines-budget HTML profile into
   pharmaceutical-budget facts, preserving all 14 financial-year rows, supplied
   changes/percentages, literal missing markers and trailing empty cells. Bind
@@ -412,7 +428,7 @@ repository validation command. External gates block only their affected task.
 
 ### 5.3 Normalize analytical context
 
-- [~] Implement the bounded June2026 QES Table8 QEMQ.SASZ9A published
+- [x] Implement the bounded June2026 QES Table8 QEMQ.SASZ9A published
   ordinary-time hourly earnings profile (nine quarters), with literal values,
   unknown currency/sex/adjustment flags and all-cell dispositions; no deflator
   selection or wage-adjusted spending. [M-05, M-06, M-07, M-12, M-18;
@@ -518,6 +534,10 @@ repository validation command. External gates block only their affected task.
 
 ### 8.2 Implement bounded operations
 
+- [~] Wire the four approved CPI/Ministry/QES source profiles through a
+  dry-run-first CLI and forced-read-only MCP preflight, using compact typed
+  redacted receipts without changing donor rebuild or archive-status semantics.
+  [M-15, M-18; AC-13, AC-16]
 - [x] Read an explicitly pinned historical package and original into bounded,
   hash-verified snapshots with exact source-specific schemas/counts. Return
   transport evidence without claiming semantic projection, source rights,
