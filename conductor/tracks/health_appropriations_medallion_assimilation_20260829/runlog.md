@@ -1177,3 +1177,53 @@ its change set.
   at 96.91% coverage, then exited 124. The unchanged failed test passed alone.
   No deadlines were weakened; hosted assurance remains separate. Exact bounded
   receipts are in [embedded notices](./embedded-notices.md).
+
+## 2026-08-31 — Additive record-set structural contract red phase
+
+Self-review rejected the first Decimal256 carrier: a synthetic DuckDB Arrow
+registration probe failed with `NotImplementedException` (unsupported Decimal
+76/38/256). Nothing was persisted. Use the established Decimal128(38,18) for
+this bounded structural version, with explicit representability limits and a
+negative overflow fixture; do not claim it represents every possible value
+in every source schema. Wider values remain in original/source-specific
+packages until an explicitly compatible projection exists. Test DuckDB
+queryability as part of the contract rather than assuming Parquet suffices.
+
+`uv run pytest tests/schemas/test_health_recordsets.py -q` first failed collection
+with the expected missing `health_recordsets` module (exit 2). The initial
+implementation then passed nine tests and failed all eight exact Parquet
+schema round trips (exit 1). A bounded independent field comparison identified
+Arrow's default list child name `item` versus Parquet's `element`, not numeric
+or source-data loss. Correct the new schema's list child names explicitly;
+do not weaken exact schema equality or rewrite any existing package.
+Focused Ruff also identified missing test docstrings and tuple parameter syntax.
+No source payload, archive package or hosted publication was modified.
+## 2026-08-31 — Record-set native assurance
+
+At head `6895083`, the required
+`COVERAGE_CORE=ctrace PYTHON_JIT=0 PYTEST_XDIST_AUTO_NUM_WORKERS=4 ./scripts/validate.sh`
+completed with exit 0. Results: 71 Conductor tracks; format/lint/strict typing;
+2,424 tests and eight warnings in 86.38 seconds; 96.98% overall coverage;
+41 schemas/31 representative documents; 9/9 parity; all repository mutation
+lanes; hygiene, vulnerability audit, licences, secrets and 111-component SBOM.
+CAS benchmark: 521.48 MB/s. Durable native log SHA-256:
+`fdea8f19263999b33dea5583e6635dc5477ff730c4697f8f55d1c665d61f6507`.
+Only the four task-generated timestamp-only receipt diffs were restored after
+the process stopped. Earlier red-phase evidence remains intact.
+
+Focused mutation command:
+`uv run pytest tests/schemas/test_health_recordsets.py -q --gremlins --gremlin-targets=src/archive_govt_nz/schemas/health_recordsets.py --gremlin-report=json --gremlin-parallel --gremlin-workers=1 --gremlin-clear-cache --gremlin-no-coverage-filter --strict-pardons --gremlin-max-pardons-pct=0 --max-pardons=0 --no-cov`.
+All 34 tests and 30 mutants passed with no filtered tests or cached results.
+## 2026-08-31 — Record-set integration path correction
+
+Corrected post-integration command passed 52 tests in 3.49 seconds, and the
+Conductor validator passed all 73 tracks. Native assurance remains tied to
+the earlier exact head; production and test hashes did not change on merge.
+
+After integrating main `6885c3e` (merge `aed6c31`), the focused command named
+nonexistent `tests/test_conductor_state.py`: exit 4, no tests ran. File discovery
+identified `tests/tools/test_validate_conductor_state.py`; rerun the corrected
+path with the 34 schema tests. Production/test hashes remain unchanged and the
+entire incoming machine ledger was verified byte-for-byte as a prefix before
+appending the two owned schema receipts. This does not replace the separately
+recorded pre-integration full harness.

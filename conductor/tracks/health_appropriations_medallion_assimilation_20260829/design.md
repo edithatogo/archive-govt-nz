@@ -182,6 +182,13 @@ loss accounting but does not itself claim normalization or source completeness.
 
 ## Silver domain model
 
+The additive [record-set registry](./recordset-contracts.md) specifies eight
+versioned structural Arrow shapes without rewriting source-specific v1 tables.
+Its bounded Decimal128 carrier preserves representable source values; future
+projections must reject overflow, retain source precision and prove semantic
+and lineage closure. Unknown valid times are nullable, not invented from year
+tokens. Structural schema availability is not canonical source promotion.
+
 All records share:
 
 - `record_id`, `schema_version`, `recordset` and `domain`;
