@@ -436,6 +436,11 @@ repository validation command. External gates block only their affected task.
 
 ### 8.2 Implement bounded operations
 
+- [~] Expose a compact hash-pinned standalone Budget-package verification
+  receipt through matching read-only CLI/MCP contracts. Reject missing,
+  partial or corrupt packages without creating state; retain not-evaluated
+  rights and package-only verification boundaries. [M-15, M-18; AC-13, AC-16]
+
 - [x] Expose hash-pinned read-only raw-run verification through CLI and MCP;
   reject missing, partial, corrupt and mismatched state without creating any
   output or invoking normalization. [M-15, M-16, M-18; AC-12, AC-13, AC-16]

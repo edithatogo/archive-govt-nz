@@ -12,6 +12,10 @@ from jsonschema import Draft202012Validator
 
 from archive_govt_nz import __version__
 from archive_govt_nz.core.registry import AgencyRegistry
+from archive_govt_nz.domains.health_appropriations.budget_operations import (
+    BUDGET_VERIFICATION_SCHEMA,
+    verify_budget_package,
+)
 from archive_govt_nz.domains.health_appropriations.operations import (
     inspect_archive_status,
 )
@@ -263,6 +267,28 @@ _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
         ),
         "annotations": {
             "title": "Get domain schema definition",
+            "readOnlyHint": True,
+            "destructiveHint": False,
+            "idempotentHint": True,
+            "openWorldHint": False,
+        },
+    },
+    {
+        "name": "health_appropriations_verify_budget",
+        "description": (
+            "Verify a pinned standalone Budget package and return compact counts "
+            "and provenance without creating state or asserting source rights."
+        ),
+        "inputSchema": _object_schema(
+            {
+                "package_dir": {"type": "string", "minLength": 1},
+                "manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+            },
+            ["package_dir", "manifest_sha256"],
+        ),
+        "outputSchema": BUDGET_VERIFICATION_SCHEMA,
+        "annotations": {
+            "title": "Verify standalone Budget package",
             "readOnlyHint": True,
             "destructiveHint": False,
             "idempotentHint": True,
@@ -600,7 +626,10 @@ class Server:
                     }
                 ],
                 "structuredContent": structured,
-                "isError": False,
+                "isError": (
+                    name == "health_appropriations_verify_budget"
+                    and structured["status"] == "failed"
+                ),
             },
         )
 
@@ -785,6 +814,10 @@ def call_tool(name: str, arguments: dict[str, Any] | None = None) -> dict[str, A
             "title": schema_def.title,
             "fields": fields_list,
         }
+    elif name == "health_appropriations_verify_budget":
+        result = verify_budget_package(
+            Path(str(args["package_dir"])), str(args["manifest_sha256"])
+        )
     elif name == "health_appropriations_verify_rebuild":
         result = verify_rebuild(
             Path(str(args["output_dir"])),
