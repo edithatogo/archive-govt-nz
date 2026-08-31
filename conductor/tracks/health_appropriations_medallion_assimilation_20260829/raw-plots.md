@@ -51,7 +51,8 @@ bytes and a redacted receipt. Ambient Matplotlib settings cannot change output.
 
 Retained root: `gold/raw-plots-20260831-v2` beneath the external Health store.
 Manifest: `a04b1b8785d7a4da67ad1b83d6449592838ed0359de792368bb8f150155786d2`.
-An independent build matches all eight files. Matplotlib 3.11.1, Pillow 12.3.0,
+Three independent builds match all eight files, including the post-preflight-fix
+build. Matplotlib 3.11.1, Pillow 12.3.0,
 FreeType 2.14.3, Agg; cross-version byte identity is not claimed.
 
 Inspected the six exported views. V2 fixes crowded ticks, preserves numeric-year
@@ -60,8 +61,34 @@ contrasting hatch strokes and labels all four breakdown values exactly. Labels
 fit, bars retain zero baselines and negative values, and unavailable growth is
 not drawn as zero. The unchanged GDP-share PNG also matches the inspected V1
 hash. V1 remains preserved as a superseded QA build, not an original rewrite.
-Fifteen renderer tests pass at 100% line/branch coverage after these corrections.
-Whole-increment mutation/full assurance and hosted delivery remain pending.
+All 48 focused reader/contract/renderer tests pass at 100% critical line/branch
+coverage. Dry-run and rendering share the 10,000-point/24-series limits; two
+red regression cases exposed and now guard the earlier preflight omission.
+
+Current mutation evidence is 44/44 reader, 26/26 contract and 58/58 renderer
+mutants killed, with zero survivors, timeouts or pardons and cold caches.
+Coverage-guided selection was disabled. Renderer mutation uses the documented
+18-test unit/protocol selection, excluding the two slow full-six-PNG integration
+tests only from mutation subprocesses; both remain in the normal suite. Real
+single-PNG encoding and all figure semantics are still tested under mutation.
+This is not a claim of full-suite mutation execution.
+
+Reader report SHA-256:
+`bddf14e38306e763243a087be53ac0b11152f9d5e2a8a99ee4bf65c692c948bb`.
+Contract evidence is the 26 contract mutations in combined report
+`08ad874967fcce964899fcf243e4e9860de31b508d374d77770492b2a0dd5121`;
+its 57 renderer mutations predate the preflight fix. Final renderer report:
+`2a0a3be0f3f91d9fd39268510109e967969310f7ed499f64e3bd9482d3c9fb72`,
+bound to source `cb9436182d3ceec24681e6dd6f9f10783c54351b6efd1b45eaef2ff4f96963cc`.
+Whole-repository final assurance and hosted delivery are recorded separately.
+
+Final isolated `./scripts/validate.sh` on functional commit `eeb6200` passed:
+1,906 tests, 96.48% overall coverage, eight existing SQLite resource warnings,
+40 schemas/30 representative documents, 70 Conductor tracks, 9/9 parity,
+all native mutation/supply-chain gates and 111-component SBOM. Runtime controls:
+`COVERAGE_CORE=ctrace PYTHON_JIT=0 PYTEST_XDIST_AUTO_NUM_WORKERS=4`.
+CAS throughput was 391.42 MB/s against the unchanged 25.0 MB/s minimum.
+Hosted delivery remains pending.
 
 The visualization skill influenced sparse-series chart selection, explicit
 palette/non-color distinctions and the requirement for final-image inspection.

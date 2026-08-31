@@ -71,7 +71,8 @@ every planned record set, measure or operational workflow.
   analytical facts and 4,798 lineage records. PR #261 merged after seven
   exact-head checks passed; local timing failures remain recorded. Six new
   source-derived PNGs have matching independent builds and completed visual
-  QA; their full assurance and delivery remain in progress.
+  QA; final local assurance passes 1,906 tests and 128 current critical mutants.
+  Exact-head hosted plot delivery remains pending.
 - Hugging Face: `published_and_verified` for the pinned candidate, with
   [dataset](https://huggingface.co/datasets/edithatogo/nz-health-appropriations)
   revision `9b85bac06597d4435fd078f6bed0f30bb008542b` and manifest SHA-256

@@ -1,5 +1,19 @@
 # Evidence
 
+## Final source plot local assurance — 2026-08-31 UTC
+
+Functional commit `eeb6200` passes the full isolated repository harness:
+1,906 tests, 96.48% overall coverage, eight existing SQLite warnings,
+40 schemas/30 documents, 70 tracks, 9/9 parity, every native mutation and
+supply-chain gate, and 111-component SBOM. All 48 focused tests achieve
+100% critical line/branch coverage. Current reader/contract/renderer mutation
+counts are 44/26/58 kills, with no survivors/timeouts/pardons. Renderer mutation
+uses the documented 18-test unit/protocol selection; two full-PNG integration
+tests remain in normal execution. See `raw-plots.md` for report hashes.
+Three independent V2 builds match all eight files. All 23 preserved donor
+objects and their manifest reverify. Hosted delivery is pending; no originals
+or Hugging Face bytes changed.
+
 ## Gold delivery and source plot QA — 2026-08-31 UTC
 
 Gold PR #261 merged `15b47b946a27a47efd4715002f0c1aff563149d4` at

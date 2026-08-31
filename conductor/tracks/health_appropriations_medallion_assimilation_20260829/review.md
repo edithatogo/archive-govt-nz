@@ -1,5 +1,30 @@
 # Self-Review
 
+## Source-derived plots — 2026-08-31 UTC
+
+- Read-only Gold consumer verifies pinned snapshots, all eight files, typed
+  schemas, bounded materialization, counts and exact input-ID closure. This
+  verifies a previously reviewed package, not arbitrary semantic truth, rights
+  or process isolation. Originals and prior derivatives are never overwritten.
+- Reviewed all six plot contracts against selected Gold inputs. Explicit
+  year/type filters, decimal strings, units, lineage IDs, period partitions and
+  reason-coded omissions remain inspectable. Sparse recent series use bars;
+  no donor pixel-parity or unverified denominator claim is made.
+- Visual review found compressed year gaps, crowded ticks, faint hatches and
+  unlabelled small breakdown values. Tests and V2 exports resolve these issues;
+  V1 is preserved. Three independent V2 builds match all eight files.
+- Review found dry-run omitted rendering resource limits. Two red tests
+  reproduced this; a shared checker now fails before output creation. Retained
+  plot bytes are unchanged. All 48 focused tests pass at 100% critical coverage.
+- Current mutation evidence kills 44 reader, 26 contract and 58 renderer
+  mutants without survivors/timeouts/pardons. Renderer uses the explicitly
+  documented unit/protocol selection, not the two slow full-PNG integrations;
+  those still pass in normal focused/full tests. No timeout was relaxed.
+- Fresh fixity checks pass for all 23 donor objects and the pinned donor
+  manifest. No original, Hugging Face publication or donor retirement changed.
+- Final full harness passes 1,906 tests at 96.48% coverage and all remaining
+  gates (111-component SBOM); exact-head hosted delivery remains separate.
+
 ## Verified Gold persistence — 2026-08-30 UTC
 
 - Review follow-up: source fields named `input_profile` are rejected before

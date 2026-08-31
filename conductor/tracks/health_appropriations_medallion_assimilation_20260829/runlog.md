@@ -2,6 +2,24 @@
 
 ## Source plot contracts — 2026-08-31 UTC
 
+- Final post-preflight-fix harness exits zero for `eeb6200`: 1,906 tests,
+  96.48% coverage, eight SQLite warnings, 40 schemas/30 documents, 70 tracks,
+  9/9 parity, all native mutation and supply-chain gates, 111 SBOM components.
+  CAS throughput 391.42 MB/s exceeds unchanged 25.0 minimum. Same runtime
+  controls as below; no gate/deadline was weakened. Timestamp-only unrelated
+  generated evidence was restored after completion.
+- Final renderer mutation: 58/58 killed, zero survivors/timeouts/pardons,
+  cold cache, no coverage filtering; 18 unit/protocol tests and two excluded
+  full-PNG integrations, both retained in normal tests. Report SHA-256
+  `2a0a3be0f3f91d9fd39268510109e967969310f7ed499f64e3bd9482d3c9fb72`.
+  Together with unchanged reader/contract evidence, 128 current mutants killed.
+  All 48 focused tests pass at 100% critical coverage. Third independent plot
+  build after the fix matches all eight retained V2 files.
+- Fresh donor-manifest and all 23 object hashes pass. Read-only full bytecode
+  compilation of three pinned scripts confirms inspection/analysis compile,
+  processor IndentationError line 199 offset 9. No imports or execution,
+  source mutation, publication or donor retirement occurred.
+
 - Full pre-review-fix harness completed successfully: 1,904 tests, 96.48%
   overall coverage, eight existing SQLite resource warnings, 40 schemas/30
   documents, 70 Conductor tracks, 9/9 parity, all native mutation gates,
