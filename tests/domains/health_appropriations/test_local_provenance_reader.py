@@ -182,7 +182,15 @@ def test_marker_types_and_claims_are_exact(
 
 @pytest.mark.parametrize(
     "payload",
-    [b'{"a":1,"a":2}', b'{"a":NaN}', b'{"a":1e999}', b"[]", b'"text"', b"\xff"],
+    [
+        b'{"a":1,"a":2}',
+        b'{"a":NaN}',
+        b'{"a":1e999}',
+        b"[]",
+        b'"text"',
+        b"\xff",
+        pytest.param(b"[" * 10_000 + b"0" + b"]" * 10_000, id="deep-json"),
+    ],
 )
 def test_strict_repinned_marker_json(tmp_path: Path, payload: bytes) -> None:
     value = package(tmp_path, "classification")

@@ -91,3 +91,9 @@ native assurance are queued behind the separate executor/Budget lanes.
 
 The [future metadata standards route](./metadata-standards-route.md) is a
 proposal only, not an expansion of this reader's implementation or claims.
+
+Pre-mutation self-review investigated a possible deep-JSON parser exception.
+On the pinned Python 3.14.6 runtime, 10,000 nested arrays decode successfully
+and the reader rejects the non-object marker with its stable public error.
+All seven strict-JSON cases passed (20.44 seconds); no production fix was needed.
+The extra malformed-input boundary is retained, bringing the test count to 70.
