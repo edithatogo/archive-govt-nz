@@ -78,3 +78,25 @@ with already-published cards. Failure reason output is an explicit allowlist;
 unknown/private exception text remains unclassified and is never printed.
 
 Hosted correction review: the receiver repeated the same public metadata verification successfully and preserved the exact revision, without snapshot/card rewrites. The first failure and its artifact remain recorded. Metadata authentication and public readback are proven; raw write capacity and public raw restoration are not. All country-completion counts remain zero and the donor monitor stays paused.
+
+## Durable control continuation review — 2026-08-31
+
+Three parallel review streams covered scheduling, owner/parity checks and durable
+state, followed by cross-review of the integration. Findings included truncated
+SQLite history, allocation before byte limits, permissive numeric/evidence types,
+canonical-origin aliases, owner identity types, dimension allocation before
+bounds, omitted retired lease tokens and incomplete verified-job identifiers.
+Corrections require regression coverage before acceptance. These checks validate
+structure and local transactions; they do not authenticate source rights or
+externally supplied capture/publication receipts.
+
+The owner and queue share a single local CAS document. A transition callback must
+be pure; side effects before the CAS could not be undone by a conflict. A local
+pre-action fence check is not a distributed guarantee. Hosted publication must
+reject stale generations atomically at its sink, or execution and transfers must
+be serialized by one authority. No deployment or cutover follows from this slice.
+
+Source evidence improves the Canadian nil-return candidate assessment without
+substituting a machine screen for an accountable privacy decision. Sample bytes
+are preserved outside temporary worktrees with restricted filesystem permissions;
+they remain on one physical disk and are not independently replicated or public.
