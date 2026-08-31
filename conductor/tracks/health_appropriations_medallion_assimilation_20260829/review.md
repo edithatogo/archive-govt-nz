@@ -644,3 +644,18 @@ Required native validation at `b651907` passed all 3014 tests (8 existing resour
 warnings), 97.12% coverage and all subsequent gates. Two owned timestamp-only
 fixture changes were restored after exit. Source and tests remain unchanged;
 hosted delivery is pending. See [full receipt](./budget-classification.md).
+
+## Exclusive local classification export
+
+The source-only occurrence projection now has an exclusive local persistence
+wrapper. Independent review findings were reproduced by red tests and resolved;
+final re-review found no actionable issue in its trusted-parent scope.54tests
+pass at100%critical coverage, and44/44cold mutants were killed without pardons
+or cached results. Nativef46e4b6 passed3426tests and every subsequent gate.
+
+Two builds per retained Budget vintage independently reconcile all five files,
+400dimensions and6800lineage-accounting rows, with originals/input packages
+unchanged. The local marker is not a publication manifest and can survive a
+failed readback; only full validation establishes local completion. Errors are
+redacted and partial evidence retained. See [receipt](./classification-export.md)
+for exact hashes, failure observations and the append-only timestamp correction.

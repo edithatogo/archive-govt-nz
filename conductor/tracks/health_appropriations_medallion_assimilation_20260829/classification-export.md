@@ -58,7 +58,11 @@ Report SHA256: `68eea3a254d2b59b42276fec8d8353881c7a3b7a4846f18c50b3db4d75a74fd3
 Main `9032f8f` (merged projection PR306) integrated at `32d6810` before native
 validation. The whole incoming ledger matches byte-for-byte; existing projection
 events were not duplicated. Source and tests remain unchanged. Native validation
-is pending.
+passed at `f46e4b6`: 3426 tests, 8 existing resource warnings, 75.61 seconds,
+97.20% coverage; all 42 schemas/32 samples, 9/9 parity, standard mutations,
+benchmark and supply-chain gates passed, including the 111-component SBOM.
+Log SHA256: `1652beba5db48150a1a90d5778a7af76e7e18b0d1a9925c1f5a225c12dcb3a8e`.
+Two owned timestamp-only fixture diffs were restored after exit.
 
 Initial absent-module tests failed before implementation. A subsequent red test
 identified a failure-marker error masking the primary write failure. Review then
@@ -69,8 +73,46 @@ TypeError masking and pre-decode byte caps. All now pass. One critical-coverage
 invocation used a mistaken slash-containing module name and collected no coverage;
 the corrected unchanged-source invocation passed 100%.
 
-No retained-input pilot or permanent package is claimed yet. Synthetic tests
-already prove two-build byte determinism, input immutability, exact canonical
+Synthetic tests prove two-build byte determinism, input immutability, exact canonical
 Parquet round trips, accounting closure, original/payload tamper rejection,
 byte-cap boundaries, parent/symlink/overlap restrictions, exclusive-creation
 races, partial writes, readback corruption, interrupted runs and redacted errors.
+
+## Retained-input pilots
+
+After full assurance, two exclusive temporary builds of each already retained
+Budget package passed independent reconciliation. Each corresponding file is
+byte-identical; source workbooks and all four input-package files remained
+hash-identical. Independent checks cover literal labels/coordinates, null
+identifier/version/intervals, canonical Parquet metadata and row counts, file
+hashes and complete mapped/retained-only lineage accounting.
+
+| Vintage | Files/build | Bytes/build | Dimensions | Mapped | Retained-only |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Budget-2025 | 5 | 1261253 | 215 | 215 | 3440 |
+| Budget-2026 | 5 | 1089391 | 185 | 185 | 2960 |
+
+Local marker hashes are respectively
+`7e4d65d5bedfec72fe83d0882529d395a6401e816545286ab3fa9c8cfca8fcb3` and
+`1a5aae6c79d79901c6bcaca9396fa6efa69e3572c9f382bbc011a427c5179c8d`.
+The independent pilot script SHA256 is
+`4c1e19be4115c953a1dce7a4f6be3e42173ee315c1a4dcec2a4ad1ecfbecb5d4`.
+No published candidate was built or modified. Permanent retention and exact-head
+hosted delivery are separate observations.
+
+The preliminary local-assurance event had a manually rounded timestamp later
+than its containing commit. A correction observation records the commit-time
+upper bound without rewriting that event or changing any validation result.
+
+### Exclusive local Silver retention
+
+Following explicit retention approval, the verified builds were retained under
+`silver/canonical-budget-classification-2025-20260831-v1` and
+`silver/canonical-budget-classification-2026-20260831-v1`. Both destinations
+were checked absent before exclusive creation. Each complete five-file closure
+is byte-identical to both independently validated temporary builds, with the
+marker hashes and byte totals above unchanged. All original workbook bytes and
+all input package bytes were verified unchanged after retention. The four
+temporary builds remain preserved. These local packages confer neither rights
+eligibility nor candidate/publication approval; marker presence alone is not
+verification.
