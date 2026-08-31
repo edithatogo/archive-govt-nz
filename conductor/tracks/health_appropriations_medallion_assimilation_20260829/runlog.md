@@ -2,6 +2,28 @@
 
 ## Source plot contracts — 2026-08-31 UTC
 
+- Gold reader began with a missing-module red test; 22 focused tests pass at
+  100% line/branch coverage. Renderer began red, then 10 tests passed with
+  97.83% critical coverage: the uncovered resource-limit rejection still needs
+  explicit boundary tests. Lint identified formatting/import corrections.
+  Added an ambient-Matplotlib-settings determinism test before fixing export
+  isolation. No final renderer assurance claim yet.
+
+- Exact-membership and JSON-policy strengthening kills all 26 unfiltered
+  mutants with one worker, zero survivors/timeouts/pardons; report
+  `0c4d98f6a288be8a590861adce990c534a329e8031e507c5a62b58a276733aab`.
+  This precedes the sparse-period rendering adjustment below.
+- Visualization skill review: recent classifications have only six source
+  years, including Actuals/Estimated Actual/Main Estimates. Use discrete
+  grouped bars for those two legacy-named trend images rather than implying a
+  continuous trend; preserve inputs, source labels, units and amount types.
+- Gold PR #261 conflict resolved at `ff99002`; 38 schemas/28 documents pass.
+  Hosted Windows job `99373648468` failed only the existing CAS speed gate:
+  14.74 MB/s versus 15.0 MB/s, 1 failed/1772 passed, coverage 96.28%.
+  macOS assurance passed. Diagnose as runner-throughput variability, not a
+  Gold assertion failure; one unchanged failed-job rerun is the bounded next
+  route. Do not lower the threshold or claim the failed run passed.
+
 - Began with a missing-module red test; five semantic tests now pass with
   100% line/branch coverage. First unfiltered one-worker mutation check killed
   21/26 mutants; five survived (JSON policy and segment membership), report

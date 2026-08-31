@@ -150,7 +150,7 @@ def _budget(rows: list[dict[str, Any]], *, categorical: bool) -> list[dict[str, 
         }
         for row in rows
     ]
-    return _segments(entries, continuous=not categorical)
+    return _segments(entries, continuous=False)
 
 
 def build_plot_contracts(tables: dict[str, list[dict[str, Any]]]) -> dict[str, Any]:
@@ -192,11 +192,12 @@ def build_plot_contracts(tables: dict[str, list[dict[str, Any]]]) -> dict[str, A
     for classification, name in _TREND_NAMES:
         plot = _contract(
             input_name,
-            "line",
+            "bar",
             f"Health appropriations: {classification}",
             "Amount (NZD thousands)",
         )
         plot["xlabel"] = "Source year (fiscal basis unverified)"
+        plot["rendering"]["connection_policy"] = "discrete_years_no_interpolation"
         plot["filters"] = {"functional_classification": classification}
         plot["series"] = _budget(
             [

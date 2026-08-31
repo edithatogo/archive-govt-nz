@@ -5,7 +5,10 @@ import json
 from decimal import Decimal
 from typing import Any
 
+import pytest
+
 from archive_govt_nz.domains.health_appropriations.plot_contracts import (
+    _stable,
     build_plot_contracts,
 )
 
@@ -133,6 +136,20 @@ def test_line_segments_never_bridge_gaps_bases_periods_or_sources() -> None:
     result = build_plot_contracts(source)
     segments = result["historical_health_spending_nominal.png"]["series"]
     assert sorted(len(series["points"]) for series in segments) == [1] * 9 + [2]
+    assert sorted(
+        [point["x"] for point in series["points"]] for series in segments
+    ) == [
+        [2000, 2001],
+        [2003],
+        [2004],
+        [2005],
+        [2006],
+        [2007],
+        [2008],
+        [2009],
+        [2010],
+        [2011],
+    ]
     source["historical_nominal.parquet"] = list(reversed(rows))
     assert build_plot_contracts(source) == result
 
@@ -153,12 +170,12 @@ def test_budget_filters_and_partitioned_trends() -> None:
     source["recent_functional_breakdown.parquet"] = rows
     result = build_plot_contracts(source)
     health = result["recent_trends_health_classification.png"]
+    assert health["kind"] == "bar"
     assert sorted(len(series["points"]) for series in health["series"]) == [
         1,
         1,
         1,
-        1,
-        2,
+        3,
     ]
     assert len(result["recent_trends_no_classification.png"]["series"]) == 1
     breakdown = result[
@@ -177,3 +194,9 @@ def test_empty_tables_still_define_all_six_plots() -> None:
     assert all(
         plot["series"] == [] and plot["omissions"] == [] for plot in result.values()
     )
+
+
+def test_canonical_json_policy_preserves_unicode_and_rejects_nonfinite() -> None:
+    assert _stable({"z": "Māori", "a": 1}) == '{"a": 1, "z": "Māori"}'
+    with pytest.raises(ValueError, match="Out of range float"):
+        _stable(float("nan"))
