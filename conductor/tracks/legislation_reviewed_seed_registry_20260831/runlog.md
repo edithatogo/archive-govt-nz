@@ -1,0 +1,14 @@
+# Run log
+
+- Verified live target and archived donor; created isolated worktree and issue #299.
+- Verified exact ZIP member bytes; independently read donor candidate file and review PR metadata.
+- Focused typing attempt 01 found the test module __file__ needed an explicit non-null assertion. Failure log retained; test corrected without changing integrity logic. Full attempt 01 subsequently passed typing.
+- Full attempt 02 was inadvertently started before attempt 01 finished; its owned process tree was stopped as it reached pytest to prevent further overlap; fresh final validation will supersede both attempts. Attempt 01 continues; no success is claimed for attempt 02.
+- Initial focused lint rejected test formatting, regex annotation and an assertion-predicate style rule; corrected locally. Initial focused coverage invocation used a filename rather than a coverage source; superseded by the successful tools-source measurement with an explicit critical-file assertion.
+- Mutation attempt 01 killed all 14 mutants; expanded focused suite passes 49 tests.
+- Live main advanced to af427c2632239a8869684c849c0fcc1981277b02; its three unrelated merges will be incorporated before final validation. Donor archive/head reconfirmed unchanged.
+- Rebased implementation commit d0e55f6bf18d7d0585978c8fcff94324df934174 onto af427c2632239a8869684c849c0fcc1981277b02. Authoritative full attempt 03 passed 2,921 tests, 97.09% aggregate coverage, all mutation/parity/schema/security lanes. Eight existing health SQLite warnings are handed off separately. Generated evidence churn was saved outside the repository and only exact initially-clean generated paths restored.
+- Opened PR #304 from the sole scoped branch after full native validation. Repository implementation/review complete; final documentation head must pass all hosted checks before guarded merge. Issue #299 will carry exact-head merge and independent remote seed readback receipts.
+- Guarded merge attempt 01 made no merge request: target main advanced from 3be3048658eb9b6f939d71739e2b3bad2f768f62 to 20610983e96f7768f3b173b60166afae429d7f0a after the seven successful checks on 6ce2e36fdb3ca9e10662d7c25e939b8f56bded1f. Preserved that success as historical evidence and integrated the new main without conflicts; seed implementation/schema/registry/test hashes are unchanged.
+- Integration focused attempt 01 named a nonexistent test file and ran no tests (exit 4); retained its log. Corrected attempt 02 passes the seed, workflow-policy, historical-snapshot and recordset-JSON tests. A fresh full native run and seven hosted checks are required on the integrated final head.
+- A separate production branch-coverage gate discrepancy and optional Copilot quota limitation are recorded with remote readback in issue #299 comment 5480374548. The seed validator remains 100% line/branch covered; no src code, coverage targets or exclusions changed in this PR.

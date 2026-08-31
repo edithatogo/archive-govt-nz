@@ -1,0 +1,72 @@
+{
+  "schema_version": "archive-govt-nz.seed-provenance/v1",
+  "observed_at": "2026-08-31T14:49:12.834394+00:00",
+  "target_base_sha": "8ebbb69ddbf8268cd85c2df8885645943b0ab525",
+  "donor_archived": true,
+  "source": {
+    "repository": "edithatogo/corpus-legislation-nz",
+    "commit": "b40587f1b1aec7356a0f623916fcc8212397d283",
+    "path_parts": [
+      "seeds",
+      "reviewed",
+      "historical-work-ids-0001.txt"
+    ],
+    "artifact_id": 9450742423,
+    "artifact_name": "target-legislation-weekly-32487942675",
+    "run_id": 32487942675,
+    "package_sha256": "1975e473793fd701b81b53a7f6fd696bbeaa257b41bdc55250f064a21ad9e54e",
+    "introduction_commit": "aa3e9945c392a91a7e13b5022313b26d5ba6f6d5",
+    "review_pr": 51,
+    "source_git_blob": "6d88b24a2c79c156841dff796bbf47d5b13f0528"
+  },
+  "content": {
+    "sha256": "59923176fa34796d7673a20b880af9abe5520fe484595edb220f2bbc0e3b33e7",
+    "byte_size": 8987,
+    "line_count": 500,
+    "encoding": "ASCII",
+    "line_endings": "LF",
+    "terminal_newline": true,
+    "ordering": "ASCII lexicographic ascending",
+    "unique": true
+  },
+  "verification": {
+    "prompt03_inventory_path_parts": [
+      "evidence",
+      "migrations",
+      "corpus-legislation-nz",
+      "final-donor-state",
+      "verification-02",
+      "prompt04-inventory.json"
+    ],
+    "prompt03_inventory_sha256": "61d054a24e39792cdef21783c68c4f5bb31903139608fc5854cdd66e9b68aa7e",
+    "seed_equals_first_500_candidates": true,
+    "candidate_raw_byte_size": 995383,
+    "candidate_raw_sha256": "65b21ab782952c2b3a2ee22da9f2981ddc533c1fc01ffff572fc95a262a203b0",
+    "candidate_git_blob": "fd8bd42b09817172428ebe2327248470281aec91",
+    "candidate_count": 33693,
+    "candidate_canonical_sha256": "6f70fa9b596be2baa77bd885df1857e9b89c04013361c9ad80af722b0cc8493b",
+    "review_origin": {
+      "mergeCommit": {
+        "oid": "aa3e9945c392a91a7e13b5022313b26d5ba6f6d5"
+      },
+      "mergedAt": "2026-06-11T00:49:13Z",
+      "number": 51,
+      "title": "Prepare first historical batch dry run"
+    }
+  },
+  "registry_sha256": "497f3d369aee13af5bf8549d66450eb3b027bfae66e031a6e68d7013d02336b8",
+  "schema_sha256": "c6ba30525083fd86dd9c7b53fb2bf5e74cc01369e0f9bd73082206a4514a458e",
+  "external_actions": {
+    "read_only_github_metadata": true,
+    "corpus_upload": false,
+    "doi_action": false,
+    "schedule_execution": false
+  },
+  "limitations": [
+    "500 is a reviewed operational inventory, not full legislative coverage.",
+    "33693 is a search-derived candidate universe, not an authoritative completeness denominator.",
+    "Acquisition is evidenced only for the 500 records bound to the donor package; candidate counts do not prove acquisition.",
+    "No per-seed publication readback performed; published record count remains unknown.",
+    "Inherited review is not a new approval, legal determination or permission to publish."
+  ]
+}

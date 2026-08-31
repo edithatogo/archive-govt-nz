@@ -220,6 +220,14 @@ repository validation command. External gates block only their affected task.
 
 ### 3.2 Implement the domain and adapter protocol
 
+- [x] Project reviewed historical Health/GDP facts and field lineage into the
+  canonical Arrow shapes with exact Decimal bounds, vintage-aware identities,
+  unknown starts, period dependencies and complete mapped/retained lineage
+  accounting. Keep input verification and publication separate. [M-05, M-06,
+  M-07, M-18; AC-05, AC-16]
+  (121 focused tests, 129/129 cold mutants, 2,866 native tests; see
+  `historical-projection.md`; other source projections remain pending.)
+
 - [ ] Register the dedicated health-appropriations domain and versioned
   multi-recordset schemas without weakening other domain contracts. [M-05;
   AC-05]
@@ -331,6 +339,13 @@ repository validation command. External gates block only their affected task.
 
 ### 5.1 Source-family contracts first
 
+- [~] Normalize the exact retained Stats NZ GDP Table 1 expenditure-measure
+  profile: 60 quarterly current-price actual observations, separate series
+  prefix/reference, literal dollar-million units with ISO currency unverified,
+  full cell dispositions and field lineage. No annual aggregation, denominator
+  selection, source download or publication. [M-05, M-06, M-07, M-18; AC-05,
+  AC-09, AC-16]
+
 - [x] Project verified Budget functional-classification source-label occurrences
   into the canonical dimension shape: four literal labels, local scheme,
   unknown scheme version/identifier and unmapped state; preserve per-source
@@ -407,7 +422,7 @@ repository validation command. External gates block only their affected task.
 
 ### 5.3 Normalize analytical context
 
-- [~] Implement the bounded June2026 QES Table8 QEMQ.SASZ9A published
+- [x] Implement the bounded June2026 QES Table8 QEMQ.SASZ9A published
   ordinary-time hourly earnings profile (nine quarters), with literal values,
   unknown currency/sex/adjustment flags and all-cell dispositions; no deflator
   selection or wage-adjusted spending. [M-05, M-06, M-07, M-12, M-18;
@@ -513,6 +528,10 @@ repository validation command. External gates block only their affected task.
 
 ### 8.2 Implement bounded operations
 
+- [~] Wire the four approved CPI/Ministry/QES source profiles through a
+  dry-run-first CLI and forced-read-only MCP preflight, using compact typed
+  redacted receipts without changing donor rebuild or archive-status semantics.
+  [M-15, M-18; AC-13, AC-16]
 - [x] Read an explicitly pinned historical package and original into bounded,
   hash-verified snapshots with exact source-specific schemas/counts. Return
   transport evidence without claiming semantic projection, source rights,

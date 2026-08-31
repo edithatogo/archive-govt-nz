@@ -1,0 +1,72 @@
+[
+  {
+    "name": "omit missing terminal LF",
+    "old": "data.endswith(b\"\\n\")",
+    "new": "True"
+  },
+  {
+    "name": "omit CR line ending",
+    "old": "b\"\\r\" not in data",
+    "new": "True"
+  },
+  {
+    "name": "omit malformed or blank work ID",
+    "old": "all(WORK_ID.fullmatch(work) is not None for work in ids)",
+    "new": "True"
+  },
+  {
+    "name": "omit duplicate work ID",
+    "old": "len(ids) == len(set(ids))",
+    "new": "True"
+  },
+  {
+    "name": "omit noncanonical order; do not reorder an existing version",
+    "old": "ids == tuple(sorted(ids))",
+    "new": "True"
+  },
+  {
+    "name": "omit line count mismatch",
+    "old": "len(ids) == content[\"line_count\"]",
+    "new": "True"
+  },
+  {
+    "name": "omit byte size mismatch",
+    "old": "len(data) == content[\"byte_size\"]",
+    "new": "True"
+  },
+  {
+    "name": "omit seed hash mismatch",
+    "old": "hashlib.sha256(data).hexdigest() == content[\"sha256\"]",
+    "new": "True"
+  },
+  {
+    "name": "omit unknown seed ID",
+    "old": "seed_id in entries",
+    "new": "True"
+  },
+  {
+    "name": "omit symlink seed path",
+    "old": "not any(part.is_symlink() for part in (path, *path.parents))",
+    "new": "True"
+  },
+  {
+    "name": "omit duplicate JSON key",
+    "old": "key not in result",
+    "new": "True"
+  },
+  {
+    "name": "accept nonfinite JSON",
+    "old": "raise ValueError(value)",
+    "new": "return None"
+  },
+  {
+    "name": "omit schema validation",
+    "old": "Draft202012Validator(schema, format_checker=FormatChecker()).validate(registry)",
+    "new": "None"
+  },
+  {
+    "name": "permit malformed suffix",
+    "old": "WORK_ID.fullmatch(work)",
+    "new": "WORK_ID.match(work)"
+  }
+]

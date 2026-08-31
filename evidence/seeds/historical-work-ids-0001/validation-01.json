@@ -1,0 +1,120 @@
+{
+  "schema_version": "archive-govt-nz.seed-validation/v1",
+  "observed_at": "2026-08-31T15:05:37.454783+00:00",
+  "implementation_commit": "d0e55f6bf18d7d0585978c8fcff94324df934174",
+  "initial_target_base_sha": "8ebbb69ddbf8268cd85c2df8885645943b0ab525",
+  "validated_target_base_sha": "af427c2632239a8869684c849c0fcc1981277b02",
+  "source_files": {
+    "tools/seed_registry.py": "fa602798045a04c4289411de23d59a7edd24dc83e87f7e586486fb3e9c494b3a",
+    "tests/tools/test_seed_registry.py": "2c97b6ead1128d7312d305ecbe4ef8fd2567895bd0be53a6c1899ed88c8bdf06",
+    "tests/tools/run_seed_registry_mutations.py": "b1a14853c58bf2234d6ea36cc8f2556ec6554e50a73ba26d0e494c6b09f44ff0",
+    "tests/tools/seed_registry_mutants.json": "066d80b1d90644373c7ed0956c39d14abf9d4deb3cee0b47dba5f59967ffe7d9",
+    "seeds/registry.json": "497f3d369aee13af5bf8549d66450eb3b027bfae66e031a6e68d7013d02336b8",
+    "schemas/seed-registry-v1.schema.json": "c6ba30525083fd86dd9c7b53fb2bf5e74cc01369e0f9bd73082206a4514a458e"
+  },
+  "native_command": "./scripts/validate.sh",
+  "full_tests": {
+    "passed": 2921,
+    "warnings": 8,
+    "overall_coverage_percent": 97.09
+  },
+  "focused_tests": {
+    "passed": 49
+  },
+  "critical_coverage": {
+    "line_percent": 100,
+    "branch_percent": 100,
+    "excluded_lines": 0
+  },
+  "targeted_mutation": {
+    "killed": 14,
+    "total": 14
+  },
+  "schema_validation": {
+    "native_schemas": 41,
+    "native_documents": 31,
+    "seed_registry_and_metaschema": "validated explicitly in focused tests"
+  },
+  "workflow_lint": {
+    "command": "uv run --locked pytest tests/tools/test_workflow_policy.py",
+    "status": "passed within full suite; hosted lane required before merge"
+  },
+  "security": {
+    "dependency_audit": {
+      "status": "passed",
+      "receipt_sha256": "cf0f39e896b855c75ef5eab925f2b67750db5beae586f90e07f1dc9280796539"
+    },
+    "license_inventory": {
+      "status": "passed",
+      "receipt_sha256": "8beaa149575043a1d4b854c966c52d6d3fa5624f19d5481cff88fe008ba8a3e8"
+    },
+    "secret_scan": {
+      "status": "passed",
+      "receipt_sha256": "a9d506ca32c2be72be7a493808137dc0fd688d224119942cca1bd755b0e8735e"
+    },
+    "sbom_validation": {
+      "status": "passed",
+      "receipt_sha256": "d6140c6bad03da814e121443b0133a693d4d71ac234b281974f7450bbf69ae3a"
+    }
+  },
+  "attempts": [
+    {
+      "log_name": "red-01.log",
+      "status": "expected failure: implementation absent",
+      "sha256": "2a0bacf84e11acacaf41402ca15f12b1e8d54628c399fab15048938f1faae454"
+    },
+    {
+      "log_name": "focused-01.log",
+      "status": "superseded: coverage source selection incorrect",
+      "sha256": "0f4c37b72454eead602329a830558e096916a34c4cf68e47d086853bbd4491ff"
+    },
+    {
+      "log_name": "focused-02.log",
+      "status": "passed: 44 tests and measured critical coverage",
+      "sha256": "48e09968b7b0f922d78cabf9ae9c804aa3ea7b3dd624d2eab6cbe43454c3e468"
+    },
+    {
+      "log_name": "focused-03.log",
+      "status": "passed: expanded 49 tests",
+      "sha256": "12cc5143ef2d8b07853facf5ba187f0f87d0878ee6129db279c2598660724a06"
+    },
+    {
+      "log_name": "typing-01.log",
+      "status": "failed: nullable test module path",
+      "sha256": "11cfa6c31b938bb167123f2658854031e2ef97e2d95a7a64ab1cb5c264e73a6c"
+    },
+    {
+      "log_name": "typing-02.log",
+      "status": "passed: explicit non-null assertion",
+      "sha256": "56882e01cb80173ef053c4096e4ee43e3123a15f5c0a06715f96988d48fbd91c"
+    },
+    {
+      "log_name": "full-01.log",
+      "status": "passed on original base; superseded by clean rebased run",
+      "sha256": "8ecbc798015fb67eb2b28a57bbea5e7aa7b6e63c58f948e4a4136617e1987a4f"
+    },
+    {
+      "log_name": "full-02.log",
+      "status": "terminated overlapping run; not a pass",
+      "sha256": "99657b21b97bc416fad9dccd007ed47024cc8a7b160e6d217633bef1cf2ed915"
+    },
+    {
+      "log_name": "full-03.log",
+      "status": "passed: authoritative rebased full run",
+      "sha256": "a4bb1a25faf82fcbfd6ced785de9de7346a11a2f1fc8c53463692b4fd4d1c6b8"
+    }
+  ],
+  "evidence": {
+    "coverage-01.json": "69be3ddae69fb3f54e81573374441a2fa3f5467a66d5261feb7ea7750976dd40",
+    "mutation-01.json": "6f78f9d64e96e6457dac4a2407171e074bd7088607b63358584c5761ab4ab21c",
+    "provenance-01.json": "d3629d17e2dea6e8b451244f6a180a344ed245ad5b6476b90feceaecb07ccc2b"
+  },
+  "hosted_checks": {
+    "status": "pending PR; must verify final exact head before merge"
+  },
+  "limitations": [
+    "No corpus publication, scheduler execution, donor unarchive, DOI or independent-product actions.",
+    "Eight existing SQLite ResourceWarnings in health tests are a separate handoff.",
+    "Full attempt 02 was terminated; only completed attempt 03 establishes final native validation."
+  ]
+}

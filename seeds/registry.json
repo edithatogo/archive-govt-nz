@@ -1,0 +1,86 @@
+{
+  "schema_version": "archive-govt-nz.seed-registry/v1",
+  "entries": [
+    {
+      "seed_id": "historical-work-ids-0001",
+      "version": 1,
+      "path_parts": [
+        "seeds",
+        "reviewed",
+        "historical-work-ids-0001.txt"
+      ],
+      "source": {
+        "repository": "edithatogo/corpus-legislation-nz",
+        "commit": "b40587f1b1aec7356a0f623916fcc8212397d283",
+        "path_parts": [
+          "seeds",
+          "reviewed",
+          "historical-work-ids-0001.txt"
+        ],
+        "artifact_id": 9450742423,
+        "artifact_name": "target-legislation-weekly-32487942675",
+        "run_id": 32487942675,
+        "package_sha256": "1975e473793fd701b81b53a7f6fd696bbeaa257b41bdc55250f064a21ad9e54e",
+        "introduction_commit": "aa3e9945c392a91a7e13b5022313b26d5ba6f6d5",
+        "review_pr": 51,
+        "source_git_blob": "6d88b24a2c79c156841dff796bbf47d5b13f0528"
+      },
+      "content": {
+        "sha256": "59923176fa34796d7673a20b880af9abe5520fe484595edb220f2bbc0e3b33e7",
+        "byte_size": 8987,
+        "line_count": 500,
+        "encoding": "ASCII",
+        "line_endings": "LF",
+        "terminal_newline": true,
+        "ordering": "ASCII lexicographic ascending",
+        "unique": true
+      },
+      "candidate_count": 500,
+      "review": {
+        "status": "inherited_donor_reviewed_inventory",
+        "date": "2026-06-11",
+        "basis": "Donor reviewed-path README and merged PR 51; date is merge date, not an independently attested human review time."
+      },
+      "acquisition": {
+        "status": "verified_in_donor_package",
+        "record_count": 500,
+        "basis": "Prompt 03 verified manifest records and CAS; no acquisition performed in Prompt 05."
+      },
+      "publication": {
+        "status": "not_verified_for_this_seed",
+        "record_count": null
+      },
+      "last_revalidation": "2026-08-31T14:49:12.834394+00:00",
+      "state": {
+        "donor_manifest_root_sha256": "a32dc371a1a47ae30a4afd58a9cbde2a439f3536d7705eb776e0fa68b4cd16db",
+        "donor_inventory_root_sha256": "2abf0d8b76cc60e9b4e442724987b81848698dbdd98e56266f8726d468b33eaf",
+        "target_merged_manifest_root_sha256": "877ba501a25570a29c1aada7979562d8c62c7f043865125cf402310eabc09544"
+      },
+      "rights": {
+        "status": "identifier_inventory_only",
+        "underlying_records": "rights_review_required",
+        "redistribution_clearance": false
+      },
+      "candidate_universe": {
+        "count": 33693,
+        "kind": "search_derived_candidates",
+        "canonical_sha256": "6f70fa9b596be2baa77bd885df1857e9b89c04013361c9ad80af722b0cc8493b",
+        "source_path_parts": [
+          "seeds",
+          "work_ids.txt"
+        ],
+        "discovery_run_id": 27313765016,
+        "discovery_artifact": "historical-work-id-discovery",
+        "relationship": "first 500 ASCII-sorted unique candidate IDs; batch 1 of 68",
+        "full_coverage_proven": false
+      },
+      "limitations": [
+        "500 is a reviewed operational inventory, not full legislative coverage.",
+        "33693 is a search-derived candidate universe, not an authoritative completeness denominator.",
+        "Acquisition is evidenced only for the 500 records bound to the donor package; candidate counts do not prove acquisition.",
+        "No per-seed publication readback performed; published record count remains unknown.",
+        "Inherited review is not a new approval, legal determination or permission to publish."
+      ]
+    }
+  ]
+}
