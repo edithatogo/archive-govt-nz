@@ -82,3 +82,14 @@ explicit source path and failed collection; retry with this clone's `src` on
 `PYTHONPATH` passed unchanged code. No shared environment was modified.
 The recorded full native pass predates this integration and is not a new
 integrated native result. Hosted exact-head checks remain required.
+
+## JSON descriptor delivery integration
+
+PR300 head946e304 was integrated with mainc4d62ca in an independent standalone
+clone without changing JSON production or tests. The complete incoming ledger
+is an exact byte prefix, followed by the two existing JSON events; every line
+parses as JSON.69focused JSON/Conductor tests passed5.97seconds. Production
+SHA2561173a96654a18d6b7f0337f34cff79dd17b21b4011a8a92a62ebc1769a113122
+and test SHA2563d2973906cec0dacb9d9c4050a4033376393f1e67fad9e47b39872eaad32a0db
+match the preintegration head. The prior native pass is retained, not rerun or
+relabelled as integrated assurance; fresh exact-head hosted checks are required.
