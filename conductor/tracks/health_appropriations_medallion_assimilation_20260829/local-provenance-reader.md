@@ -150,3 +150,10 @@ All 123 reader/pure-inventory focused tests passed in 21.07 seconds and 76
 Conductor tracks validated. Source/test hashes were unchanged. This is focused
 post-integration evidence, not a relabelled native rerun; exact-head hosted checks
 remain required before delivery.
+
+Final executor replay receipt head `f866da40cdca0b8109b97cd3fad769e620eb471f`
+was integrated at `fe857ae`: all 118 incoming ledger lines were preserved as an
+exact prefix before the reader append. The 123 focused tests passed again in
+11.84 seconds and 76 Conductor tracks validated; reader source/tests remained
+unchanged. An intervening ancestry-only merge of delivered main `874f5bb` had
+no tree changes. Hosted checks must refer to the final published reader head.
