@@ -443,3 +443,15 @@ def test_schema_and_native_consumer(tmp_path: Path) -> None:
     LegislationArchiveService.validate_checkpoint(
         M.v.load((output / "checkpoint.json").read_bytes())
     )
+
+
+def test_repeated_archive_descriptor_conflict(tmp_path: Path) -> None:
+    """One artifact cannot silently discard a distinct parent descriptor."""
+    archive, descriptor = fixture(tmp_path / "parent")
+    other = copy.deepcopy(descriptor)
+    other["expected"]["audit_context"] = "distinct_pin_context"
+    output = tmp_path / "out"
+    result = M.execute([(archive, descriptor), (archive, other)], output, REVISION)
+    assert result["status"] == "failed"
+    assert result["mismatches"] == ["repeated_artifact_descriptor_conflict"]
+    assert not (output / "COMPLETE.json").exists()

@@ -365,6 +365,12 @@ def execute(
             if not lineage.exists():
                 write_exclusive(lineage / "artifact.zip", state["archive"])
                 write_exclusive(lineage / "descriptor.json", encoded(descriptor))
+            else:
+                v.equal(
+                    (lineage / "descriptor.json").read_bytes(),
+                    encoded(descriptor),
+                    "repeated_artifact_descriptor_conflict",
+                )
             parents.append(state)
         result = canonical_merge(parents)
         receipt.update(status=result["status"], conflicts=result["conflicts"])
