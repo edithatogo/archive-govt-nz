@@ -50,3 +50,14 @@ The existing historical, numeric and reconciliation suites pass all 65 focused
 tests; Conductor validates 70 tracks. No production code was modified for this
 pilot. Broader delivery assurance remains separately recorded by the containing
 source-pilot PR.
+
+The additional independent closure audit matched all108facts and rawJSON,
+all1,164raw/normalized lineage entries and the exact1,531nonempty-cell
+disposition bijection, including source-pinned period/basis/date boundaries.
+No source or output was changed. Audit script SHA-256:
+`44f63aa3514f55a0e209958f229fca164a6bd515f062e57e7da2efb5a2acbf81`;
+underlying reconciliation script SHA-256:
+`cc0da680a1cd3a30d40b70578a1c51ad22a61f0bb1fa6021e9f04d10ce81fe6d`.
+An auxiliary direct-path read rejected the extensionless CAS filename; a
+BytesIO retry and complete script passed on unchanged bytes. No initial
+diagnostic failure is treated as source corruption or hidden.

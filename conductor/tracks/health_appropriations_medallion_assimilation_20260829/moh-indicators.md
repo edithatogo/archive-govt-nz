@@ -84,7 +84,13 @@ This verifies extraction consistency, not the omitted analytical methodology.
 - Cold mutation of the full43-test selection killed33/33 mutants, with zero
   survivors/cache hits and no coverage filtering or pardons, in202.30seconds.
   Report SHA-256: `c3796413c7cb1fffe8d3348df43d071513cb04c1c14b07ecccc1bb9d484b8176`.
-- Full native and exact-head hosted assurance remain pending.
+- Durable native recovery passed on integrated head49af2b6:2,433tests,
+  96.99% overall coverage, eight existing warnings,41schemas/31samples,
+  71Conductor tracks,9/9parity, all native mutation and supply-chain gates,
+  SBOM111components and558MB/s CAS throughput. RuntimeCPython3.14.6;
+  four pytest workers, unchanged gates. Log SHA-256:
+  `9a6cfd37b45f4982c4a3d2ca28c0d3ff7d68f86ef91670a0817e1fa8b581cd2d`.
+  Exit receipt is0. Exact-head hosted assurance remains pending.
 - First native session46275 passed pretest gates and collected2,243tests;
   one failure marker was observed around70% progress. After runtime/context
   interruption its session was unavailable, without final exit or traceback.
