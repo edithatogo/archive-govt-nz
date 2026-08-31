@@ -69,6 +69,77 @@
   processes. No further heavy local retry is attempted under the observed host
   contention; the scoped PR will expose these limits and require exact-head
   hosted validation before any merge decision.
+- Functional change and paired evidence were committed/pushed as `0c78b4c`,
+  PR #274. GitHub reported documentation conflicts with main, so checks did
+  not start. Before integration, this agent observed its worktree, registration
+  and local branch disappear; it performed no removal. The pushed commit and
+  external validation artifacts remained available, with no uncommitted work
+  outstanding. A standalone `--no-hardlinks` temporary clone was recovered from
+  the repository without modifying its original checkout and then pointed to
+  GitHub. It is not registered in the original worktree list.
+- Integrated exact main `d0a36f1099fce30427927ebda4f735c3c9617a5a` into the
+  recovered feature branch. Four documentation append conflicts retain both
+  branches' records; main's complete evidence ledger remains a byte prefix,
+  followed by this correction's observations. Renderer SHA-256 remains
+  `07674afbc970aed73a662e43a8c2450560d40e587524a86c2901fba835566df5`.
+  No original data or publication changed; no PR merge was performed.
+- Post-integration checks pass: 23 renderer tests (54.49 seconds), Ruff
+  format/lint, targeted strict typing and Conductor (70 tracks). The complete
+  incoming ledger prefix and original legacy prefix both verify. No full or
+  mutation rerun was performed after recovery; their earlier limitations are
+  not retroactively converted into passes. Hosted checks remain pending.
+
+## Budget successor consumer — 2026-08-31 UTC
+
+- Budget 2026 remains a separate immutable source vintage. Two local builds
+  match; independent OOXML reconciliation and final verified-package readback
+  account for 185 facts, 3,145 lineage entries and all 6,451 input rows.
+- Reader implementation `07029cc` plus independent corruption fixtures passes
+  61 focused tests at 100% critical coverage on CPython 3.14.6. Strict integer
+  count rejection was added after red tests exposed bool/float equality.
+- Native validation passes pre-test gates but exits 124 at its unchanged
+  300-second test-stage deadline after 100% progress on 1,972 items. No final
+  summary or overall coverage was received; no full-pass claim is made.
+  Detailed receipt and remaining assurance gates: `raw-budget-successors.md`.
+- PR #270 is now observed merged with seven successful exact-head checks and
+  identical head/merge trees. This closes bounded donor conformance delivery,
+  not the broader assimilation track. No originals or publications changed.
+
+## Source plot hosted delivery — 2026-08-31 UTC
+
+- Integrated full native harness passes on `62dc6e4`, after main's extra CLI
+  coverage/dependency changes: 1,911 tests collected, test gate exits zero,
+  96.75% overall coverage, 100% across Health-domain production modules,
+  40 schemas/30 documents, 70 tracks, 9/9 parity, all native mutation and
+  supply-chain gates, 111-component SBOM. CAS 288.53 MB/s versus 25.0 minimum.
+  Unrelated timestamp-only generated evidence restored after completion.
+
+- PR #269 merged `b149d3725165b4d4116e17452955c5602ac40ec4` at
+  05:52:48 UTC after all seven checks passed on exact head
+  `4f405e2abfba2444b8906412a65f7c128a269a13`, CI run `33361422682`.
+  Health source/tests are unchanged at merge; whole trees differ because of
+  unrelated main additions. No archive or publication bytes changed.
+- Integrated that exact main into conformance. Squash-history conflicts were
+  limited to Health track bookkeeping; retained incoming plot evidence and
+  newer conformance evidence. Verified immutable evidence prefix unchanged.
+
+## Donor failure conformance — 2026-08-31 UTC
+
+- `4454d75` records full compile observations and maps donor semantic/failure
+  risks to replacement tests. A synthetic duplicate-if script remains in CAS
+  while receiver orchestration selects only its four source profiles. All
+  253 selected tests and focused format/lint/types pass; no production changes.
+- Final native harness exits zero: 1,907 tests, 96.48% coverage, eight existing
+  SQLite warnings, 40 schemas/30 documents, 70 tracks, 9/9 parity, all native
+  mutation/supply-chain gates, 111-component SBOM. CAS 586.10 MB/s versus the
+  unchanged 25.0 minimum. Same runtime controls as the source plot harness.
+- CLI verification of raw manifest `da65ee2f38e2450e7273e84fa48b0b29a6a44670d84401fdbb7389f710fa0269`
+  passes without creating new state. This is readback, not a new extraction.
+  Timestamp-only unrelated generated evidence was restored after validation.
+- No raw/HF bytes or donor retirement changed. Next separate pilot: captured
+  Budget 2026 headers match the supported 17-column contract. Captured HLFS
+  working-age population is not silently accepted as total population for
+  health spending per capita; M-12 denominator selection remains open.
 
 ## Source plot contracts — 2026-08-31 UTC
 

@@ -1,0 +1,45 @@
+{
+  "schema_version": "archive-govt-nz.health-donor-script-observation/v1",
+  "observed_at": "2026-08-31T05:36:11Z",
+  "donor_commit": "4668e6c3b1b492086941d4c1ef96e299250a8301",
+  "donor_manifest_sha256": "893f387e1f361400285ccc84802b497e87802d1ad913826ff7d9055b07a03b74",
+  "method": "hash_verified_bytes_full_compile_without_import_or_execution",
+  "compiler": "CPython 3.14.5",
+  "source_hashes_checked_before_and_after": true,
+  "originals_mutated": false,
+  "scripts": [
+    {
+      "path": "inspect_excel.py",
+      "sha256": "4a7892f96b2124a0a6af37e3be3eaa583c39feca8ad00d76eca3f4d837e1d02c",
+      "bytes": 1965,
+      "compile": "passed",
+      "executed": false,
+      "static_broad_exception_handlers": 2
+    },
+    {
+      "path": "process_data.py",
+      "sha256": "0beb01bbf6956f6ed9f5925c73199dc0a67f6022673dba78fded819597d63ed3",
+      "bytes": 18923,
+      "compile": "failed",
+      "error_class": "IndentationError",
+      "line": 199,
+      "offset": 9,
+      "executed": false,
+      "runtime_intent_evidence": "static_text_only_compile_prevents_all_runtime"
+    },
+    {
+      "path": "run_analysis.py",
+      "sha256": "eb004ba16b36976e679104b68c5fc6a3fd491b792babeba1c1511a25ee705d6e",
+      "bytes": 13358,
+      "compile": "passed",
+      "executed": false,
+      "static_broad_exception_handlers": 5
+    }
+  ],
+  "limitations": [
+    "Compilation does not establish runtime success or safety.",
+    "Static exception counts are observations, not exhaustive failure coverage.",
+    "The checked-in SQLite derivative is not proof that the broken processor ran.",
+    "No donor code was imported, repaired, executed or published."
+  ]
+}

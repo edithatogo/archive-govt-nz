@@ -31,6 +31,18 @@ summary or coverage result. Post-test gates were not reached. Neither a full
 local pass nor an unrelated-failure diagnosis is claimed; exact-head hosted
 validation and resolution of any hosted failure remain pending.
 
+## Donor failure conformance — 2026-08-31 UTC
+
+`4454d75` binds full compile observations to all three script hashes and adds
+the synthetic broken-processor independence regression. No donor imports or
+execution occurred. See `donor-behavior.md` for the risk-to-test mapping and
+`donor-script-observation-20260831.json` for the bounded observation.
+253 focused tests pass; final native harness passes 1,907 tests at 96.48%
+coverage, eight SQLite warnings, all schema/parity/mutation/supply-chain gates,
+and 111-component SBOM. Read-only CLI verification of the retained 341-fact raw
+run passes. This closes donor-intended pipeline conformance, not full source
+coverage or publication. Hosted delivery is separately pending.
+
 ## Final source plot local assurance — 2026-08-31 UTC
 
 Functional commit `eeb6200` passes the full isolated repository harness:

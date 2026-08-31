@@ -22,6 +22,7 @@ every planned record set, measure or operational workflow.
 - [Autonomous continuation route](./continuation.md)
 - [Pinned donor behavior](./donor-behavior.md)
 - [Raw Budget extraction](./raw-budget.md)
+- [Budget successor pilot and versioned contracts](./raw-budget-successors.md)
 - [Raw BEFU/HYEFU extraction](./raw-forecast.md)
 - [Raw historical Health/GDP extraction and reconciliation](./raw-historical.md)
 - [Original-workbook orchestration](./raw-rebuild.md)
@@ -72,7 +73,10 @@ every planned record set, measure or operational workflow.
   exact-head checks passed; local timing failures remain recorded. Six new
   source-derived PNGs have matching independent builds and completed visual
   QA; final local assurance passes 1,906 tests and 128 current critical mutants.
-  Exact-head hosted plot delivery remains pending.
+  Plot PR #269 merged after all seven exact-head checks passed. Donor failure
+  conformance and the four-profile pipeline pass 253 focused and 1,907 full
+  tests. PR #270 is merged with seven successful exact-head checks and identical
+  head/merge trees; this remains separate from broader source-area coverage.
 - Hugging Face: `published_and_verified` for the pinned candidate, with
   [dataset](https://huggingface.co/datasets/edithatogo/nz-health-appropriations)
   revision `9b85bac06597d4435fd078f6bed0f30bb008542b` and manifest SHA-256
@@ -85,7 +89,7 @@ every planned record set, measure or operational workflow.
   remain the acceptance-criteria authority.
 
 Full assimilation is not complete. Remaining plan work includes format-support
-contracts, donor failure-behavior characterization, contextual-series semantics,
+contracts, contextual-series semantics,
 expanded normalization/analytics and operational/recovery coverage. Consult
 [the plan](./plan.md) for individual pending tasks; do not infer their completion
 from publication or green CI.

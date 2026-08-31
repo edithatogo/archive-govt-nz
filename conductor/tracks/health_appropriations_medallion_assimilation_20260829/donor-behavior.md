@@ -1,5 +1,48 @@
 # Pinned donor behavior characterization
 
+## Current evidence and replacement conformance — 2026-08-31
+
+Fresh full bytecode compilation (without import or execution) reproduces the
+three observations below. Hashes were checked before and after; all 23 donor
+objects also pass their manifest fixity checks. The machine-readable receipt is
+`donor-script-observation-20260831.json`. Compilation success is not runtime
+success, security isolation or evidence that a derivative came from this code.
+
+The replacement regression mapping is deliberately bounded to donor-intended
+Health/GDP/summary extraction and the four analysis families. Test names below
+are in `tests/domains/health_appropriations/`; preservation of other workbook
+areas does not imply they have been normalized.
+
+| Observed donor risk | Receiver contract and executable evidence |
+| --- | --- |
+| Processor cannot compile | `test_rebuild.py::test_broken_donor_processor_is_preserved_but_not_a_runtime_dependency` retains a synthetic duplicate-if script while orchestration consumes only four original-workbook profiles. Adapters are stubbed in this orchestration test; separate real adapter and live rebuild evidence remains required. |
+| Broad exceptions print errors or suggest completion | `test_rebuild.py::test_failure_preserves_partial_bytes_and_requires_new_run` requires redacted failure, preserved partial bytes and no completed manifest for both ValueError and RuntimeError. Inspection `test_selected_sheet_and_bounded_failures` rejects absent sheets/bad pins. |
+| Budget positional assumptions and silent coercion/drop | `test_budget.py::test_named_headers_and_nonpositive_amounts` permits reordered named columns and retains zero/negative values; `test_bad_rows_are_disposed_not_silently_dropped` records rejected fractional years, malformed values, formulas and errors. |
+| First Health/year-like summary can select a wrong block | `test_forecast.py::test_literal_summaries_have_semantic_layout_and_lineage` supports shifted layouts and exact lineage; `test_layout_drift_fails_before_output` rejects ambiguous labels/years/units. |
+| Historical heuristics lose annotations, precision or values | `test_historical.py::test_exact_values_annotations_periods_and_rebuild` retains annotated years/context and exact numeric tokens; `test_unknown_layout_fails_without_outputs`, `test_ambiguous_context_rejected` and `test_nonpositive_source_values_preserved` bound accepted source layouts. This is not generic positional-layout support. |
+| Missing-year/basis growth and unchecked GDP division | `test_historical_analysis.py::test_growth_breaks`, `test_denominator_gates`, `test_never_splice_source_or_vintage` and `test_duplicate_keys_or_ids_rejected` retain explicit unavailable comparisons and reject ambiguity. |
+| Undeclared fallback/type mixing in breakdowns | `test_appropriation_analysis.py::test_exact_aggregation_and_explicit_breakdown` and `test_group_boundaries` use explicit year/type/source filters and preserve exact sums. |
+| Import-time mkdir and destructive plot saving | Receiver inspection is read-only; `test_plot_export.py::test_preserved_output_and_input_boundaries` and `test_partial_failure_preserves_redacted_receipt` reject overwrite and retain failed bytes. The donor analysis script is never imported. |
+
+All 253 selected inspection, rebuild, adapter and analytical tests passed after
+adding the compile-independence regression. This is fresh focused evidence, not
+an assertion that every legacy runtime branch was executed. Current CLI
+readback independently verifies the retained four-stage raw run with manifest
+`da65ee2f38e2450e7273e84fa48b0b29a6a44670d84401fdbb7389f710fa0269`.
+It verifies existing bytes; it does not claim another fresh extraction.
+
+Complete workbook/PDF data-area coverage, contextual datasets, partial-stage
+resume, scheduling and publication remain separate pending tasks.
+
+PR #270 was observed merged on 2026-08-31 at 09:56:10Z, after seven successful
+exact-head checks (CI run 33379586775). Head
+`8375ae372e34d6d92978d657c32da998c5dfb5f9` and merge
+`f94bb5b421d7811649b5396203a29fd5c893ae6a` share tree
+`d824c977baf888b6addbfe8cfab679fb91a8d1cb`. This is hosted delivery evidence for
+the bounded conformance change, not full assimilation or publication approval.
+
+## Original static characterization
+
 Source: `edithatogo/nz_health_appropriations` commit
 `4668e6c3b1b492086941d4c1ef96e299250a8301`, re-observed 2026-08-30.
 Files were read and compiled, not imported or executed. This characterizes

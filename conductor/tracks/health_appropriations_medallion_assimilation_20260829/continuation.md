@@ -66,8 +66,11 @@ No task is complete just because code exists, an issue is closed, or CI is green
   plots now have pure contracts, a pinned Gold reader, typed CLI, independent
   byte-identical builds and visual QA corrections. See `raw-plots.md`.
   Final local plot assurance passes (1,906 tests, 128 current mutant kills).
-  Next: finish exact-head hosted plot delivery, then the remaining
-  donor failure-characterization and raw-pipeline reconciliation work.
+  Donor failure characterization and four-profile raw-pipeline conformance now
+  pass 253 focused and 1,907 full-suite tests (`4454d75`).
+  Plot PR #269 is merged after seven exact-head checks. Next: finish
+  exact-head hosted conformance delivery, then successor
+  Budget normalization and remaining source-area/contextual coverage.
   A fresh read of the canonical historical facts identifies period/basis
   transitions at 1990, 1994, 1997 and 2005, with no year gaps. Growth across
   those transitions must remain explicitly unavailable or separately qualified;
