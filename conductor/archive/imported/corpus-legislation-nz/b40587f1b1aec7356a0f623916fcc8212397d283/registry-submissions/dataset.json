@@ -1,0 +1,117 @@
+{
+  "schema_version": "1.0.0",
+  "artifact": {
+    "name": "corpus-legislation-nz",
+    "owning_repo": "corpus-law-nz",
+    "artifact_type": "dataset",
+    "version": "0.5.0",
+    "license": "MIT",
+    "public_contracts": [
+      "dataset card",
+      "schema fields",
+      "published splits"
+    ],
+    "release_notes_path": "RELEASE.md",
+    "support_policy_path": "SECURITY.md"
+  },
+  "registries": [
+    {
+      "registry_id": "hugging_face",
+      "registry_kind": "dataset_archive",
+      "submission_status": "not_started",
+      "requirements": [
+        {
+          "id": "dataset-card",
+          "description": "Dataset card documents provenance, rights, intended use, limitations, and update cadence.",
+          "status": "pending"
+        },
+        {
+          "id": "viewer-health",
+          "description": "Viewer, parquet conversion, config, split, and first-row checks are reviewed.",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "registry_id": "zenodo",
+      "registry_kind": "doi_archive",
+      "submission_status": "not_started",
+      "requirements": [
+        {
+          "id": "doi-metadata",
+          "description": "Creators, title, description, license, related identifiers, and files are ready for DOI archival.",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "registry_id": "osf",
+      "registry_kind": "source_archive",
+      "submission_status": "not_started",
+      "requirements": [
+        {
+          "id": "source-visibility",
+          "description": "Public, private, or gated source archive visibility is explicitly approved.",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "registry_id": "github_releases",
+      "registry_kind": "source_archive",
+      "submission_status": "not_started",
+      "requirements": [
+        {
+          "id": "release-artifacts",
+          "description": "Release artifacts including data exports, documentation, and metadata are captured.",
+          "status": "pending"
+        }
+      ]
+    }
+  ],
+  "quality_gates": [
+    {
+      "name": "Schema validation",
+      "command_or_workflow": "owning repo schema validation command",
+      "status": "pending"
+    },
+    {
+      "name": "Sample export validation",
+      "command_or_workflow": "owning repo dataset sample validation command",
+      "status": "pending"
+    }
+  ],
+  "security_gates": [
+    {
+      "name": "No private or gated source leakage",
+      "status": "pending"
+    },
+    {
+      "name": "Rights and provenance review",
+      "status": "pending"
+    }
+  ],
+  "submission_workflow": {
+    "phases": [
+      {
+        "name": "Dataset registry inventory",
+        "status": "in_progress",
+        "tasks": [
+          "Map Hugging Face, Zenodo, GitHub Releases, and OSF requirements.",
+          "Record source visibility and redistribution constraints."
+        ]
+      },
+      {
+        "name": "Publication",
+        "status": "blocked",
+        "tasks": [
+          "Publish only after review approval and external-write approval."
+        ],
+        "blocker": "External-write approval required."
+      }
+    ],
+    "commit_policy": "Commit manifest and evidence in the owning corpus repo only.",
+    "review_policy": "Review rights, provenance, sample rows, and registry metadata before publication.",
+    "actions_policy": "Check owning repo publication workflow before and after approved upload."
+  }
+}

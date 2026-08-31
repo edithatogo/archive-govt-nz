@@ -28,6 +28,11 @@ MUTATIONS = {
         "anonymous_restore_verified is not True",
         "False",
     ),
+    "scheduler_local_capture": (
+        "foi_scheduler",
+        "or locally_verified is not True",
+        "or False",
+    ),
     "scheduler_origin": (
         "foi_scheduler",
         "or _origin(policy.origin) in active_origins",

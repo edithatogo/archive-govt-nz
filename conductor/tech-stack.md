@@ -277,6 +277,14 @@ source scope, and `cyclonedx-bom` with strict CycloneDX 1.6 validation.
 Machine-readable receipts are generated under ignored `build/` paths and are
 not treated as hosted evidence.
 
+CycloneDX generation disables only its duplicate internal validation pass. The
+mandatory `JsonStrictValidator` still validates the complete generated document,
+including formats, before the SBOM gate succeeds. This avoids running the same
+costly IRI parser twice; the 300-second stage limit, schema version, dependency
+lock and licence policy remain unchanged. A bounded local benchmark of the
+single strict pass completed in 135.088 seconds; this is local timing evidence,
+not a hosted result.
+
 Dependency automation opens focused updates and runs the full relevant harness.
 Pre-release compatibility lanes do not silently update production locks.
 

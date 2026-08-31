@@ -1,0 +1,17 @@
+{
+  "track_id": "dataset_identifier_interlinking_20260721",
+  "version": "1.0.0",
+  "type": "chore",
+  "status": "planned",
+  "created_at": "2026-07-21T00:00:00Z",
+  "updated_at": "2026-07-21T00:00:00Z",
+  "owner_repo": "edithatogo/corpus-legislation-nz",
+  "github_parent_issue": "https://github.com/edithatogo/corpus-legislation-nz/issues/149",
+  "github_subissues": [
+    "https://github.com/edithatogo/corpus-legislation-nz/issues/150",
+    "https://github.com/edithatogo/corpus-legislation-nz/issues/151",
+    "https://github.com/edithatogo/corpus-legislation-nz/issues/152"
+  ],
+  "external_evidence_required": true
+}
+

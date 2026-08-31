@@ -1,0 +1,2412 @@
+{
+  "schema_version": "archive-govt-nz.foi-rollout/v1",
+  "catalogue_sha256": "0af697da220128eb13a988dc32bb987c915aaacd2ef04175ceec7a6a14892ed6",
+  "scope": "planning_only_not_capture_or_publication_evidence",
+  "entities": [
+    {
+      "entity_id": "AD",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "AE",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "AF",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "AG",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "AI",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "AL",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "AM",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "AO",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "AQ",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "AR",
+      "source_ids": [
+        "ar-derechoaldato",
+        "ar-information-publica"
+      ],
+      "next_action": "review_named_sources_and_discover_gaps",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "AS",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "AT",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "AU",
+      "source_ids": [
+        "au-rtk"
+      ],
+      "next_action": "review_named_sources_and_discover_gaps",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "AW",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "AX",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "AZ",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "BA",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "BB",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "BD",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "BE",
+      "source_ids": [
+        "be-transparencia"
+      ],
+      "next_action": "review_named_sources_and_discover_gaps",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "BF",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "BG",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "BH",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "BI",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "BJ",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "BL",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "BM",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "BN",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "BO",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "BQ",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "BR",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "BS",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "BT",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "BV",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "BW",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "BY",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "BZ",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "CA",
+      "source_ids": [
+        "ca-federal-atip"
+      ],
+      "next_action": "review_named_sources_and_discover_gaps",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "CC",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "CD",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "CF",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "CG",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "CH",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "CI",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "CK",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "CL",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "CM",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "CN",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "CO",
+      "source_ids": [
+        "co-queremosdatos"
+      ],
+      "next_action": "review_named_sources_and_discover_gaps",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "CR",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "CU",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "CV",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "CW",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "CX",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "CY",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "CZ",
+      "source_ids": [
+        "cz-infoprovsechny"
+      ],
+      "next_action": "review_named_sources_and_discover_gaps",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "DE",
+      "source_ids": [
+        "de-fragdenstaat"
+      ],
+      "next_action": "review_named_sources_and_discover_gaps",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "DJ",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "DK",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "DM",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "DO",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "DZ",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "EC",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "EE",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "EG",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "EH",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "ER",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "ES",
+      "source_ids": [
+        "es-tuderechoasaber"
+      ],
+      "next_action": "review_named_sources_and_discover_gaps",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "ET",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "EU",
+      "source_ids": [
+        "eu-asktheeu"
+      ],
+      "next_action": "review_named_sources_and_discover_gaps",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "FI",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "FJ",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "FK",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "FM",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "FO",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "FR",
+      "source_ids": [
+        "fr-madada"
+      ],
+      "next_action": "review_named_sources_and_discover_gaps",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "GA",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "GB",
+      "source_ids": [
+        "uk-wdtk"
+      ],
+      "next_action": "review_named_sources_and_discover_gaps",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "GD",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "GE",
+      "source_ids": [
+        "ge-askgov"
+      ],
+      "next_action": "review_named_sources_and_discover_gaps",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "GF",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "GG",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "GH",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "GI",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "GL",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "GM",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "GN",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "GP",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "GQ",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "GR",
+      "source_ids": [
+        "gr-arthro5a"
+      ],
+      "next_action": "review_named_sources_and_discover_gaps",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "GS",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "GT",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "GU",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "GW",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "GY",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "HK",
+      "source_ids": [
+        "hk-accessinfo"
+      ],
+      "next_action": "review_named_sources_and_discover_gaps",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "HM",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "HN",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "HR",
+      "source_ids": [
+        "hr-imamopravoznati"
+      ],
+      "next_action": "review_named_sources_and_discover_gaps",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "HT",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "HU",
+      "source_ids": [
+        "hu-kimittud"
+      ],
+      "next_action": "review_named_sources_and_discover_gaps",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "ID",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "IE",
+      "source_ids": [
+        "ie-myrighttoknow"
+      ],
+      "next_action": "review_named_sources_and_discover_gaps",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "IL",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "IM",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "IN",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "IO",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "IQ",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "IR",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "IS",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "IT",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "JE",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "JM",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "JO",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "JP",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "KE",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "KG",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "KH",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "KI",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "KM",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "KN",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "KP",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "KR",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "KW",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "KY",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "KZ",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "LA",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "LB",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "LC",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "LI",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "LK",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "LR",
+      "source_ids": [
+        "lr-infolib"
+      ],
+      "next_action": "review_named_sources_and_discover_gaps",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "LS",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "LT",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "LU",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "LV",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "LY",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "MA",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "MC",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "MD",
+      "source_ids": [
+        "md-vreauinfo"
+      ],
+      "next_action": "review_named_sources_and_discover_gaps",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "ME",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "MF",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "MG",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "MH",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "MK",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "ML",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "MM",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "MN",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "MO",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "MP",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "MQ",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "MR",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "MS",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "MT",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "MU",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "MV",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "MW",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "MX",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "MY",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "MZ",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "NA",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "NC",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "NE",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "NF",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "NG",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "NI",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "NL",
+      "source_ids": [
+        "nl-woo-knop"
+      ],
+      "next_action": "review_named_sources_and_discover_gaps",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "NO",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "NP",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "NR",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "NU",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "NZ",
+      "source_ids": [
+        "nz-fyi"
+      ],
+      "next_action": "review_named_sources_and_discover_gaps",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "OM",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "PA",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "PE",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "PF",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "PG",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "PH",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "PK",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "PL",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "PM",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "PN",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "PR",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "PS",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "PT",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "PW",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "PY",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "QA",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "RE",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "RO",
+      "source_ids": [
+        "ro-iastatullaintrebari"
+      ],
+      "next_action": "review_named_sources_and_discover_gaps",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "RS",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "RU",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "RW",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "SA",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "SB",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "SC",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "SD",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "SE",
+      "source_ids": [
+        "se-handlingar"
+      ],
+      "next_action": "review_named_sources_and_discover_gaps",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "SG",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "SH",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "SI",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "SJ",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "SK",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "SL",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "SM",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "SN",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "SO",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "SR",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "SS",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "ST",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "SV",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "SX",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "SY",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "SZ",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "TC",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "TD",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "TF",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "TG",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "TH",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "TJ",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "TK",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "TL",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "TM",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "TN",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "TO",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "TR",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "TT",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "TV",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "TW",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "TZ",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "UA",
+      "source_ids": [
+        "ua-dostup"
+      ],
+      "next_action": "review_named_sources_and_discover_gaps",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "UG",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "UM",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "US",
+      "source_ids": [
+        "us-federal-foia",
+        "us-opramachine"
+      ],
+      "next_action": "review_named_sources_and_discover_gaps",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "UY",
+      "source_ids": [
+        "uy-quesabes"
+      ],
+      "next_action": "review_named_sources_and_discover_gaps",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "UZ",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "VA",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "VC",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "VE",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "VG",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "VI",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "VN",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "VU",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "WF",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "WS",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "XK",
+      "source_ids": [
+        "xk-dumedite"
+      ],
+      "next_action": "review_named_sources_and_discover_gaps",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "YE",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "YT",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "ZA",
+      "source_ids": [
+        "za-paia"
+      ],
+      "next_action": "review_named_sources_and_discover_gaps",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "ZM",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    },
+    {
+      "entity_id": "ZW",
+      "source_ids": [],
+      "next_action": "discover_official_and_civic_sources",
+      "broader_discovery_required": true,
+      "country_denominator": null,
+      "country_complete": false
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "ar-derechoaldato",
+      "entity_id": "AR",
+      "publication_group": "mixed_correspondence",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "separate_pilot_receipt_required"
+    },
+    {
+      "source_id": "ar-information-publica",
+      "entity_id": "AR",
+      "publication_group": "mixed_correspondence",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "separate_pilot_receipt_required"
+    },
+    {
+      "source_id": "au-rtk",
+      "entity_id": "AU",
+      "publication_group": "mixed_correspondence",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "separate_pilot_receipt_required"
+    },
+    {
+      "source_id": "be-transparencia",
+      "entity_id": "BE",
+      "publication_group": "mixed_correspondence",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "separate_pilot_receipt_required"
+    },
+    {
+      "source_id": "ca-federal-atip",
+      "entity_id": "CA",
+      "publication_group": "institutional_open_data",
+      "group_is_candidate_only": true,
+      "next_action": "verify_bounded_statistical_subset",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "separate_pilot_receipt_required"
+    },
+    {
+      "source_id": "co-queremosdatos",
+      "entity_id": "CO",
+      "publication_group": "mixed_correspondence",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "separate_pilot_receipt_required"
+    },
+    {
+      "source_id": "cz-infoprovsechny",
+      "entity_id": "CZ",
+      "publication_group": "mixed_correspondence",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "separate_pilot_receipt_required"
+    },
+    {
+      "source_id": "de-fragdenstaat",
+      "entity_id": "DE",
+      "publication_group": "mixed_correspondence",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "separate_pilot_receipt_required"
+    },
+    {
+      "source_id": "es-tuderechoasaber",
+      "entity_id": "ES",
+      "publication_group": "mixed_correspondence",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "separate_pilot_receipt_required"
+    },
+    {
+      "source_id": "eu-asktheeu",
+      "entity_id": "EU",
+      "publication_group": "mixed_correspondence",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "separate_pilot_receipt_required"
+    },
+    {
+      "source_id": "fr-madada",
+      "entity_id": "FR",
+      "publication_group": "mixed_correspondence",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "separate_pilot_receipt_required"
+    },
+    {
+      "source_id": "ge-askgov",
+      "entity_id": "GE",
+      "publication_group": "mixed_correspondence",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "separate_pilot_receipt_required"
+    },
+    {
+      "source_id": "gr-arthro5a",
+      "entity_id": "GR",
+      "publication_group": "mixed_correspondence",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "separate_pilot_receipt_required"
+    },
+    {
+      "source_id": "hk-accessinfo",
+      "entity_id": "HK",
+      "publication_group": "mixed_correspondence",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "separate_pilot_receipt_required"
+    },
+    {
+      "source_id": "hr-imamopravoznati",
+      "entity_id": "HR",
+      "publication_group": "mixed_correspondence",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "separate_pilot_receipt_required"
+    },
+    {
+      "source_id": "hu-kimittud",
+      "entity_id": "HU",
+      "publication_group": "mixed_correspondence",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "separate_pilot_receipt_required"
+    },
+    {
+      "source_id": "ie-myrighttoknow",
+      "entity_id": "IE",
+      "publication_group": "mixed_correspondence",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "separate_pilot_receipt_required"
+    },
+    {
+      "source_id": "lr-infolib",
+      "entity_id": "LR",
+      "publication_group": "mixed_correspondence",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "separate_pilot_receipt_required"
+    },
+    {
+      "source_id": "md-vreauinfo",
+      "entity_id": "MD",
+      "publication_group": "mixed_correspondence",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "separate_pilot_receipt_required"
+    },
+    {
+      "source_id": "nl-woo-knop",
+      "entity_id": "NL",
+      "publication_group": "mixed_correspondence",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "separate_pilot_receipt_required"
+    },
+    {
+      "source_id": "nz-fyi",
+      "entity_id": "NZ",
+      "publication_group": "mixed_correspondence",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "separate_pilot_receipt_required"
+    },
+    {
+      "source_id": "ro-iastatullaintrebari",
+      "entity_id": "RO",
+      "publication_group": "mixed_correspondence",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "separate_pilot_receipt_required"
+    },
+    {
+      "source_id": "se-handlingar",
+      "entity_id": "SE",
+      "publication_group": "mixed_correspondence",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "separate_pilot_receipt_required"
+    },
+    {
+      "source_id": "ua-dostup",
+      "entity_id": "UA",
+      "publication_group": "mixed_correspondence",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "separate_pilot_receipt_required"
+    },
+    {
+      "source_id": "uk-wdtk",
+      "entity_id": "GB",
+      "publication_group": "mixed_correspondence",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "separate_pilot_receipt_required"
+    },
+    {
+      "source_id": "us-federal-foia",
+      "entity_id": "US",
+      "publication_group": "institutional_open_data",
+      "group_is_candidate_only": true,
+      "next_action": "verify_bounded_statistical_subset",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "separate_pilot_receipt_required"
+    },
+    {
+      "source_id": "us-opramachine",
+      "entity_id": "US",
+      "publication_group": "mixed_correspondence",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "separate_pilot_receipt_required"
+    },
+    {
+      "source_id": "uy-quesabes",
+      "entity_id": "UY",
+      "publication_group": "mixed_correspondence",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "separate_pilot_receipt_required"
+    },
+    {
+      "source_id": "xk-dumedite",
+      "entity_id": "XK",
+      "publication_group": "mixed_correspondence",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "separate_pilot_receipt_required"
+    },
+    {
+      "source_id": "za-paia",
+      "entity_id": "ZA",
+      "publication_group": "mixed_correspondence",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "separate_pilot_receipt_required"
+    }
+  ],
+  "summary": {
+    "entities": 251,
+    "sources": 30,
+    "entities_requiring_broader_discovery": 251,
+    "entities_without_named_sources": 223,
+    "public_raw_complete_countries_verified": 0
+  }
+}

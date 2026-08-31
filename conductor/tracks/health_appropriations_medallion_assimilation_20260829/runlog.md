@@ -1,5 +1,31 @@
 # Run Log
 
+## Plot mutation recovery and hosted readback — 2026-08-31
+
+- A coordinated retry in the standalone recovered clone retained the same
+  renderer and tests, with one worker, a cold cache, unfiltered selection,
+  unchanged 30-second mutant deadline and zero allowed pardons. The same
+  21 unit/protocol tests passed; only the two previously documented full-PNG
+  integrations were excluded. All 67 mutations were killed, with zero
+  survivors, timeouts, errors, pardons or cache hits; exit zero in 710.55 seconds.
+- Recovered report SHA-256:
+  `45decbb57caf70129b04f78c88cd008b8d7ba6bc060c2f5c6a83fb44a13d365d`.
+  Unchanged renderer SHA-256:
+  `07674afbc970aed73a662e43a8c2450560d40e587524a86c2901fba835566df5`.
+  The earlier 42-kill/25-timeout report remains preserved separately; this
+  later result does not rewrite either native harness failure receipt.
+- REST readback observed PR #274 merged at 2026-08-31T11:34:26Z as
+  `4dacd12be50fcc221906db0e497e2073e7e7b0f7`, from tested head
+  `4760cf2bedf54efc0ee209bcdb5903a353640495`. Main readback
+  `113bac597cb95ce7aba5c877da4cffde6a0346cc` contains that merge.
+  This agent did not perform the merge or rerun cancelled workflow lint.
+- Lint run 33385763148 was first observed cancelled before any step ran,
+  with GitHub attributing cancellation to `edithatogo`. A later REST readback
+  at 11:49 UTC reports all seven head checks successful, including lint and
+  Linux/Windows/macOS assurance. Current hosted success and the earlier
+  cancellation are separate observations, not a claimed agent retry.
+- No originals, retained derivative files or Hugging Face publication changed.
+
 ## Source plot context-style review fix — 2026-08-31
 
 - Isolated worktree starts at merged plot commit `b149d37`; its own locked
@@ -1023,3 +1049,15 @@ its change set.
 - Checkpoint/recovery into an independent clone preserved work during external
   worktree removals. The precise receipt and browser blocker are documented in
   [Budget operations](./budget-operations.md).
+
+## 2026-08-31 — Hash-bound embedded-notice observer
+
+- Red import contract established; 34 focused tests reached 100% line/branch
+  coverage, followed by 29/29 cold unfiltered mutant kills. Independent review
+  found no implementation defect. Ruff, typing, secrets and Conductor pass.
+- All three exact reviewed Bronze workbooks returned notice observations,
+  without source text or eligibility promotion. Originals remain unchanged.
+- Required native gate emitted 2,215 passed and one existing CPI timing failure
+  at 96.91% coverage, then exited 124. The unchanged failed test passed alone.
+  No deadlines were weakened; hosted assurance remains separate. Exact bounded
+  receipts are in [embedded notices](./embedded-notices.md).

@@ -1,0 +1,8 @@
+{
+  "track_id": "track_39_nzlii_redundancy_reconciliation",
+  "type": "feature",
+  "status": "complete",
+  "created_at": "2026-07-01T14:00:39+10:00",
+  "updated_at": "2026-07-01T15:41:27.5594475+10:00",
+  "description": "Use NZLII as an independent redundancy source for coverage checks, candidate matching, and text rescue triage."
+}

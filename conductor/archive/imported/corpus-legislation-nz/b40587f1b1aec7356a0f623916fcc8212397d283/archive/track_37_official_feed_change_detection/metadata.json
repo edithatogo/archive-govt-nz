@@ -1,0 +1,8 @@
+{
+  "track_id": "track_37_official_feed_change_detection",
+  "type": "feature",
+  "status": "complete",
+  "created_at": "2026-07-01T14:00:39+10:00",
+  "updated_at": "2026-07-01T15:05:27.4621600+10:00",
+  "description": "Use official NZ Legislation feeds and API search metadata for redundant change detection and targeted refresh enqueueing."
+}

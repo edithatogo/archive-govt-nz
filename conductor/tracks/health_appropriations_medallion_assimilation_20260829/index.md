@@ -15,12 +15,14 @@ every planned record set, measure or operational workflow.
 
 ## Artifacts
 
+- [Hash-bound embedded-notice observations](./embedded-notices.md)
 - [Standalone Budget-package operations](./budget-operations.md)
 - [Specification](./spec.md)
 - [Requirements](./requirements.md)
 - [Design](./design.md)
 - [Implementation plan](./plan.md)
 - [Autonomous continuation route](./continuation.md)
+- [Portable candidate original paths](./candidate-paths.md)
 - [Pinned donor behavior](./donor-behavior.md)
 - [Raw Budget extraction](./raw-budget.md)
 - [Budget successor pilot and versioned contracts](./raw-budget-successors.md)

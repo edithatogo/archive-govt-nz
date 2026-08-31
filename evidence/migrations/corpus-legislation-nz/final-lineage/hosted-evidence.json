@@ -1,0 +1,2176 @@
+{
+  "observed_at": "2026-08-31T11:30:51.480474+00:00",
+  "source": "GitHub REST Actions workflow runs, per-run artifact listings, exact PR-head check-runs",
+  "payload_downloaded": false,
+  "claim_limit": "Conclusions and artifact metadata independently read; payload contents, receipt assertions and corpus fixity not verified. Historical failures stay failures.",
+  "workflows": [
+    {
+      "endpoint": "repos/edithatogo/corpus-legislation-nz/actions/workflows/target_one_batch_reconciliation.yml/runs?per_page=100",
+      "observed_at": "2026-08-31T11:27:29.717688+00:00",
+      "total_count": 13,
+      "runs": [
+        {
+          "id": 32477973065,
+          "name": "Target one-batch reconciliation",
+          "path": ".github/workflows/target_one_batch_reconciliation.yml",
+          "event": "workflow_dispatch",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "9654419c13cbdbc3d31be9430330f054a1c55cee",
+          "run_attempt": 1,
+          "created_at": "2026-08-21T11:36:27Z",
+          "updated_at": "2026-08-21T12:41:05Z",
+          "html_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32477973065",
+          "artifacts": [
+            {
+              "id": 9446779685,
+              "name": "target-legislation-one-batch-32477973065",
+              "size_in_bytes": 8698083,
+              "expired": false,
+              "created_at": "2026-08-21T12:41:00Z",
+              "expires_at": "2026-11-19T11:36:29Z",
+              "digest": "sha256:5519f2ee5b65f78913fced5691c0bb6047e3bf8ed50bf21a603b9f91cdc05d49"
+            }
+          ]
+        },
+        {
+          "id": 32474265689,
+          "name": "Target one-batch reconciliation",
+          "path": ".github/workflows/target_one_batch_reconciliation.yml",
+          "event": "workflow_dispatch",
+          "status": "completed",
+          "conclusion": "failure",
+          "head_sha": "e34f1a882ba01ad9e16c46c47d7e5f9c256f3f85",
+          "run_attempt": 1,
+          "created_at": "2026-08-21T10:47:56Z",
+          "updated_at": "2026-08-21T10:57:04Z",
+          "html_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32474265689",
+          "artifacts": [
+            {
+              "id": 9443929859,
+              "name": "target-legislation-one-batch-32474265689",
+              "size_in_bytes": 185124,
+              "expired": false,
+              "created_at": "2026-08-21T10:57:00Z",
+              "expires_at": "2026-11-19T10:47:58Z",
+              "digest": "sha256:ad4e40ce42c38c2664f68ab20ac03d3788544ac506fd8d9e791e84b35b052ae4"
+            }
+          ]
+        },
+        {
+          "id": 32471359882,
+          "name": "Target one-batch reconciliation",
+          "path": ".github/workflows/target_one_batch_reconciliation.yml",
+          "event": "workflow_dispatch",
+          "status": "completed",
+          "conclusion": "failure",
+          "head_sha": "44c1e5b30dbaa90ada71ffc125b94f3669dccfa7",
+          "run_attempt": 1,
+          "created_at": "2026-08-21T10:10:01Z",
+          "updated_at": "2026-08-21T10:18:29Z",
+          "html_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32471359882",
+          "artifacts": [
+            {
+              "id": 9442877879,
+              "name": "target-legislation-one-batch-32471359882",
+              "size_in_bytes": 185123,
+              "expired": false,
+              "created_at": "2026-08-21T10:18:24Z",
+              "expires_at": "2026-11-19T10:10:02Z",
+              "digest": "sha256:b026705dd02cbd741150d44bc163b71bb949a737688c3b130ee1c65af9faca56"
+            }
+          ]
+        },
+        {
+          "id": 32469140679,
+          "name": "Target one-batch reconciliation",
+          "path": ".github/workflows/target_one_batch_reconciliation.yml",
+          "event": "workflow_dispatch",
+          "status": "completed",
+          "conclusion": "failure",
+          "head_sha": "273a10c024ecb77abf5c6dfdb410892e645fa362",
+          "run_attempt": 1,
+          "created_at": "2026-08-21T09:42:07Z",
+          "updated_at": "2026-08-21T09:51:15Z",
+          "html_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32469140679",
+          "artifacts": [
+            {
+              "id": 9442085584,
+              "name": "target-legislation-one-batch-32469140679",
+              "size_in_bytes": 185112,
+              "expired": false,
+              "created_at": "2026-08-21T09:51:11Z",
+              "expires_at": "2026-11-19T09:42:09Z",
+              "digest": "sha256:40bb6c51fc1d9935787328cbbf260187a4c61681332f45406382dbe50570e44f"
+            }
+          ]
+        },
+        {
+          "id": 32465540893,
+          "name": "Target one-batch reconciliation",
+          "path": ".github/workflows/target_one_batch_reconciliation.yml",
+          "event": "workflow_dispatch",
+          "status": "completed",
+          "conclusion": "failure",
+          "head_sha": "a54a27ecd593fbd1c303a860749ef5921ce0e2f2",
+          "run_attempt": 1,
+          "created_at": "2026-08-21T08:56:58Z",
+          "updated_at": "2026-08-21T09:06:15Z",
+          "html_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32465540893",
+          "artifacts": [
+            {
+              "id": 9440776415,
+              "name": "target-legislation-one-batch-32465540893",
+              "size_in_bytes": 4272,
+              "expired": false,
+              "created_at": "2026-08-21T09:06:12Z",
+              "expires_at": "2026-11-19T08:56:59Z",
+              "digest": "sha256:ff09125b3ad46743d47e56864115cd8e263f4a0aa07a18d8ab6720272ebab5ea"
+            }
+          ]
+        },
+        {
+          "id": 32462873000,
+          "name": "Target one-batch reconciliation",
+          "path": ".github/workflows/target_one_batch_reconciliation.yml",
+          "event": "workflow_dispatch",
+          "status": "completed",
+          "conclusion": "failure",
+          "head_sha": "01a1ab7a352acc1aca17e3c2398626b2fadb766f",
+          "run_attempt": 2,
+          "created_at": "2026-08-21T08:22:19Z",
+          "updated_at": "2026-08-21T08:40:13Z",
+          "html_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32462873000",
+          "artifacts": [
+            {
+              "id": 9440053046,
+              "name": "target-legislation-one-batch-32462873000",
+              "size_in_bytes": 4213,
+              "expired": false,
+              "created_at": "2026-08-21T08:40:08Z",
+              "expires_at": "2026-11-19T08:31:53Z",
+              "digest": "sha256:0ea86885f9581aabccc55de35edf2a621062ab413542e0c38d35ec178d4d5231"
+            }
+          ]
+        },
+        {
+          "id": 32459120358,
+          "name": "Target one-batch reconciliation",
+          "path": ".github/workflows/target_one_batch_reconciliation.yml",
+          "event": "workflow_dispatch",
+          "status": "completed",
+          "conclusion": "failure",
+          "head_sha": "da6a74c19cc849f158ff896a68e8a43e0647854b",
+          "run_attempt": 1,
+          "created_at": "2026-08-21T07:33:01Z",
+          "updated_at": "2026-08-21T07:41:02Z",
+          "html_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32459120358",
+          "artifacts": [
+            {
+              "id": 9438485528,
+              "name": "target-legislation-one-batch-32459120358",
+              "size_in_bytes": 4213,
+              "expired": false,
+              "created_at": "2026-08-21T07:40:58Z",
+              "expires_at": "2026-11-19T07:33:02Z",
+              "digest": "sha256:6cd6338e95b12ebc599e4e9dbd42b4a3251bc55ccb4fcb359e0580bfd8458431"
+            }
+          ]
+        },
+        {
+          "id": 32455977431,
+          "name": "Target one-batch reconciliation",
+          "path": ".github/workflows/target_one_batch_reconciliation.yml",
+          "event": "workflow_dispatch",
+          "status": "completed",
+          "conclusion": "failure",
+          "head_sha": "f8f9b2f3cda6a62166e1c1b1791de3eb17882101",
+          "run_attempt": 1,
+          "created_at": "2026-08-21T06:49:38Z",
+          "updated_at": "2026-08-21T06:59:00Z",
+          "html_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32455977431",
+          "artifacts": [
+            {
+              "id": 9437455515,
+              "name": "target-legislation-one-batch-32455977431",
+              "size_in_bytes": 185026,
+              "expired": false,
+              "created_at": "2026-08-21T06:58:56Z",
+              "expires_at": "2026-11-19T06:49:39Z",
+              "digest": "sha256:940f6aba6fff3599da70912b4402394bfdf75f9f60a2a0fd46b7f258da5ece86"
+            }
+          ]
+        },
+        {
+          "id": 32452836461,
+          "name": "Target one-batch reconciliation",
+          "path": ".github/workflows/target_one_batch_reconciliation.yml",
+          "event": "workflow_dispatch",
+          "status": "completed",
+          "conclusion": "failure",
+          "head_sha": "4fd15b315c50bd71d0fda38690074cea55a1972d",
+          "run_attempt": 1,
+          "created_at": "2026-08-21T06:02:54Z",
+          "updated_at": "2026-08-21T06:12:24Z",
+          "html_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32452836461",
+          "artifacts": [
+            {
+              "id": 9436409826,
+              "name": "target-legislation-one-batch-32452836461",
+              "size_in_bytes": 163213,
+              "expired": false,
+              "created_at": "2026-08-21T06:12:20Z",
+              "expires_at": "2026-11-19T06:02:55Z",
+              "digest": "sha256:c88cfb254a908aa419712708c17263063da27b447828cd3c0383ea64b1178e38"
+            }
+          ]
+        },
+        {
+          "id": 32450747044,
+          "name": "Target one-batch reconciliation",
+          "path": ".github/workflows/target_one_batch_reconciliation.yml",
+          "event": "workflow_dispatch",
+          "status": "completed",
+          "conclusion": "failure",
+          "head_sha": "13d0122e353615e71b689a7753a4686dc602a9f3",
+          "run_attempt": 1,
+          "created_at": "2026-08-21T05:29:43Z",
+          "updated_at": "2026-08-21T05:39:05Z",
+          "html_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32450747044",
+          "artifacts": [
+            {
+              "id": 9435755260,
+              "name": "target-legislation-one-batch-32450747044",
+              "size_in_bytes": 6446146,
+              "expired": false,
+              "created_at": "2026-08-21T05:39:00Z",
+              "expires_at": "2026-11-19T05:29:44Z",
+              "digest": "sha256:ae06aa40cd57e722043eb9fe63dbbb5643228194c0f0b248da77fb7afda08471"
+            }
+          ]
+        },
+        {
+          "id": 32447528834,
+          "name": "Target one-batch reconciliation",
+          "path": ".github/workflows/target_one_batch_reconciliation.yml",
+          "event": "workflow_dispatch",
+          "status": "completed",
+          "conclusion": "failure",
+          "head_sha": "f499d489491033c936b44b981c043ca9a49d2788",
+          "run_attempt": 1,
+          "created_at": "2026-08-21T04:36:18Z",
+          "updated_at": "2026-08-21T04:41:57Z",
+          "html_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32447528834",
+          "artifacts": [
+            {
+              "id": 9434656498,
+              "name": "target-legislation-one-batch-32447528834",
+              "size_in_bytes": 5285,
+              "expired": false,
+              "created_at": "2026-08-21T04:41:53Z",
+              "expires_at": "2026-11-19T04:36:19Z",
+              "digest": "sha256:194b586269eee726397c8cb461b88a896e68fbc1384a35ca9cb12371f8f99cf0"
+            }
+          ]
+        },
+        {
+          "id": 32445817922,
+          "name": "Target one-batch reconciliation",
+          "path": ".github/workflows/target_one_batch_reconciliation.yml",
+          "event": "workflow_dispatch",
+          "status": "completed",
+          "conclusion": "failure",
+          "head_sha": "41a95ff6e6393436397034398656507ed3558438",
+          "run_attempt": 1,
+          "created_at": "2026-08-21T04:07:37Z",
+          "updated_at": "2026-08-21T04:12:50Z",
+          "html_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32445817922",
+          "artifacts": [
+            {
+              "id": 9434095320,
+              "name": "target-legislation-one-batch-32445817922",
+              "size_in_bytes": 3887,
+              "expired": false,
+              "created_at": "2026-08-21T04:12:46Z",
+              "expires_at": "2026-11-19T04:07:38Z",
+              "digest": "sha256:ef901793200adfaec1a21923041a826c06b92c721e8632fe9fa44cef52557f88"
+            }
+          ]
+        },
+        {
+          "id": 32444469178,
+          "name": "Target one-batch reconciliation",
+          "path": ".github/workflows/target_one_batch_reconciliation.yml",
+          "event": "workflow_dispatch",
+          "status": "completed",
+          "conclusion": "failure",
+          "head_sha": "a7b1678b48f7205847a7f6f08731c73e37131d57",
+          "run_attempt": 1,
+          "created_at": "2026-08-21T03:44:46Z",
+          "updated_at": "2026-08-21T03:45:44Z",
+          "html_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32444469178",
+          "artifacts": [
+            {
+              "id": 9433583467,
+              "name": "target-legislation-one-batch-32444469178",
+              "size_in_bytes": 3891,
+              "expired": false,
+              "created_at": "2026-08-21T03:45:38Z",
+              "expires_at": "2026-11-19T03:44:47Z",
+              "digest": "sha256:43941f6b8d44d74e2f157628c56a499868bea933ebda44e5ffaee2fe906b5cac"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint": "repos/edithatogo/corpus-legislation-nz/actions/workflows/target_bounded_live_canary.yml/runs?per_page=100",
+      "observed_at": "2026-08-31T11:27:19.254792+00:00",
+      "total_count": 1,
+      "runs": [
+        {
+          "id": 32487223314,
+          "name": "Target bounded live canary",
+          "path": ".github/workflows/target_bounded_live_canary.yml",
+          "event": "workflow_dispatch",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "3c2bac391fae35e4f0cef1fe57adf504000545e3",
+          "run_attempt": 1,
+          "created_at": "2026-08-21T13:30:44Z",
+          "updated_at": "2026-08-21T13:31:21Z",
+          "html_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32487223314",
+          "artifacts": [
+            {
+              "id": 9448322328,
+              "name": "target-legislation-live-canary-32487223314",
+              "size_in_bytes": 8698419,
+              "expired": false,
+              "created_at": "2026-08-21T13:31:16Z",
+              "expires_at": "2026-11-19T13:30:45Z",
+              "digest": "sha256:1b6c2b934112b599e01ae0da7f7fa0f56d44d3764ef4e502a471cabef67156e0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "endpoint": "repos/edithatogo/corpus-legislation-nz/actions/workflows/target_weekly_legislation_cycle.yml/runs?per_page=100",
+      "observed_at": "2026-08-31T11:27:19.481312+00:00",
+      "total_count": 1,
+      "runs": [
+        {
+          "id": 32487942675,
+          "name": "Target weekly legislation cycle",
+          "path": ".github/workflows/target_weekly_legislation_cycle.yml",
+          "event": "workflow_dispatch",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "b40587f1b1aec7356a0f623916fcc8212397d283",
+          "run_attempt": 1,
+          "created_at": "2026-08-21T13:38:57Z",
+          "updated_at": "2026-08-21T14:43:26Z",
+          "html_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32487942675",
+          "artifacts": [
+            {
+              "id": 9450742423,
+              "name": "target-legislation-weekly-32487942675",
+              "size_in_bytes": 8744898,
+              "expired": false,
+              "created_at": "2026-08-21T14:43:21Z",
+              "expires_at": "2026-11-19T13:38:58Z",
+              "digest": "sha256:1975e473793fd701b81b53a7f6fd696bbeaa257b41bdc55250f064a21ad9e54e"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pull_request_checks": [
+    {
+      "number": 170,
+      "head_sha": "f255dcd256cf85e1fb9df583b14fd34b308fb9ee",
+      "endpoint": "repos/edithatogo/corpus-legislation-nz/commits/f255dcd256cf85e1fb9df583b14fd34b308fb9ee/check-runs?per_page=100",
+      "checks": [
+        {
+          "name": "CodeQL",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "f255dcd256cf85e1fb9df583b14fd34b308fb9ee",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/runs/96660549683"
+        },
+        {
+          "name": "tests",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "f255dcd256cf85e1fb9df583b14fd34b308fb9ee",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32444130389/job/96660532330"
+        },
+        {
+          "name": "tests",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "f255dcd256cf85e1fb9df583b14fd34b308fb9ee",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32444114699/job/96660473554"
+        },
+        {
+          "name": "repository-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "f255dcd256cf85e1fb9df583b14fd34b308fb9ee",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32444130401/job/96660426910"
+        },
+        {
+          "name": "python-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "f255dcd256cf85e1fb9df583b14fd34b308fb9ee",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32444130401/job/96660426905"
+        },
+        {
+          "name": "python-tests (3.12)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "f255dcd256cf85e1fb9df583b14fd34b308fb9ee",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32444130389/job/96660426800"
+        },
+        {
+          "name": "analyze",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "f255dcd256cf85e1fb9df583b14fd34b308fb9ee",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32444130428/job/96660426785"
+        },
+        {
+          "name": "zizmor-advisory",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "f255dcd256cf85e1fb9df583b14fd34b308fb9ee",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32444130401/job/96660426775"
+        },
+        {
+          "name": "python-tests (3.14)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "f255dcd256cf85e1fb9df583b14fd34b308fb9ee",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32444130389/job/96660426683"
+        },
+        {
+          "name": "Astro docs",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "f255dcd256cf85e1fb9df583b14fd34b308fb9ee",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32444130387/job/96660426657"
+        },
+        {
+          "name": "python-tests (3.14)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "f255dcd256cf85e1fb9df583b14fd34b308fb9ee",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32444114699/job/96660380969"
+        },
+        {
+          "name": "python-tests (3.12)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "f255dcd256cf85e1fb9df583b14fd34b308fb9ee",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32444114699/job/96660380831"
+        },
+        {
+          "name": "repository-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "f255dcd256cf85e1fb9df583b14fd34b308fb9ee",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32444114681/job/96660380737"
+        },
+        {
+          "name": "python-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "f255dcd256cf85e1fb9df583b14fd34b308fb9ee",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32444114681/job/96660380719"
+        },
+        {
+          "name": "zizmor-advisory",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "f255dcd256cf85e1fb9df583b14fd34b308fb9ee",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32444114681/job/96660380631"
+        },
+        {
+          "name": "Astro docs",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "f255dcd256cf85e1fb9df583b14fd34b308fb9ee",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32444114695/job/96660380628"
+        }
+      ]
+    },
+    {
+      "number": 171,
+      "head_sha": "caa85f1356f81c12daba5c885995bccd96235451",
+      "endpoint": "repos/edithatogo/corpus-legislation-nz/commits/caa85f1356f81c12daba5c885995bccd96235451/check-runs?per_page=100",
+      "checks": [
+        {
+          "name": "tests",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "caa85f1356f81c12daba5c885995bccd96235451",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32445492991/job/96664433623"
+        },
+        {
+          "name": "CodeQL",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "caa85f1356f81c12daba5c885995bccd96235451",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/runs/96664359860"
+        },
+        {
+          "name": "tests",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "caa85f1356f81c12daba5c885995bccd96235451",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32445495916/job/96664346334"
+        },
+        {
+          "name": "repository-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "caa85f1356f81c12daba5c885995bccd96235451",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32445495917/job/96664201607"
+        },
+        {
+          "name": "zizmor-advisory",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "caa85f1356f81c12daba5c885995bccd96235451",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32445495917/job/96664201552"
+        },
+        {
+          "name": "python-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "caa85f1356f81c12daba5c885995bccd96235451",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32445495917/job/96664201474"
+        },
+        {
+          "name": "python-tests (3.12)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "caa85f1356f81c12daba5c885995bccd96235451",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32445495916/job/96664201358"
+        },
+        {
+          "name": "python-tests (3.14)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "caa85f1356f81c12daba5c885995bccd96235451",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32445495916/job/96664201265"
+        },
+        {
+          "name": "Astro docs",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "caa85f1356f81c12daba5c885995bccd96235451",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32445495907/job/96664201210"
+        },
+        {
+          "name": "analyze",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "caa85f1356f81c12daba5c885995bccd96235451",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32445495885/job/96664201188"
+        },
+        {
+          "name": "python-tests (3.12)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "caa85f1356f81c12daba5c885995bccd96235451",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32445492991/job/96664193467"
+        },
+        {
+          "name": "zizmor-advisory",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "caa85f1356f81c12daba5c885995bccd96235451",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32445492998/job/96664193431"
+        },
+        {
+          "name": "repository-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "caa85f1356f81c12daba5c885995bccd96235451",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32445492998/job/96664193430"
+        },
+        {
+          "name": "python-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "caa85f1356f81c12daba5c885995bccd96235451",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32445492998/job/96664193345"
+        },
+        {
+          "name": "python-tests (3.14)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "caa85f1356f81c12daba5c885995bccd96235451",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32445492991/job/96664193329"
+        },
+        {
+          "name": "Astro docs",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "caa85f1356f81c12daba5c885995bccd96235451",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32445492989/job/96664193310"
+        }
+      ]
+    },
+    {
+      "number": 172,
+      "head_sha": "126297d9714e3d66ae634473c935edfe92069f89",
+      "endpoint": "repos/edithatogo/corpus-legislation-nz/commits/126297d9714e3d66ae634473c935edfe92069f89/check-runs?per_page=100",
+      "checks": [
+        {
+          "name": "CodeQL",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "126297d9714e3d66ae634473c935edfe92069f89",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/runs/96669301970"
+        },
+        {
+          "name": "tests",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "126297d9714e3d66ae634473c935edfe92069f89",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32447309434/job/96669274974"
+        },
+        {
+          "name": "tests",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "126297d9714e3d66ae634473c935edfe92069f89",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32447305236/job/96669261622"
+        },
+        {
+          "name": "repository-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "126297d9714e3d66ae634473c935edfe92069f89",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32447309522/job/96669181473"
+        },
+        {
+          "name": "zizmor-advisory",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "126297d9714e3d66ae634473c935edfe92069f89",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32447309522/job/96669181441"
+        },
+        {
+          "name": "Astro docs",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "126297d9714e3d66ae634473c935edfe92069f89",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32447309545/job/96669181392"
+        },
+        {
+          "name": "python-tests (3.12)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "126297d9714e3d66ae634473c935edfe92069f89",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32447309434/job/96669181293"
+        },
+        {
+          "name": "python-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "126297d9714e3d66ae634473c935edfe92069f89",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32447309522/job/96669181254"
+        },
+        {
+          "name": "analyze",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "126297d9714e3d66ae634473c935edfe92069f89",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32447309429/job/96669181150"
+        },
+        {
+          "name": "python-tests (3.14)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "126297d9714e3d66ae634473c935edfe92069f89",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32447309434/job/96669181131"
+        },
+        {
+          "name": "python-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "126297d9714e3d66ae634473c935edfe92069f89",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32447305229/job/96669169221"
+        },
+        {
+          "name": "repository-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "126297d9714e3d66ae634473c935edfe92069f89",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32447305229/job/96669169198"
+        },
+        {
+          "name": "Astro docs",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "126297d9714e3d66ae634473c935edfe92069f89",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32447305235/job/96669169154"
+        },
+        {
+          "name": "python-tests (3.12)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "126297d9714e3d66ae634473c935edfe92069f89",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32447305236/job/96669169100"
+        },
+        {
+          "name": "zizmor-advisory",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "126297d9714e3d66ae634473c935edfe92069f89",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32447305229/job/96669169007"
+        },
+        {
+          "name": "python-tests (3.14)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "126297d9714e3d66ae634473c935edfe92069f89",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32447305236/job/96669168969"
+        }
+      ]
+    },
+    {
+      "number": 173,
+      "head_sha": "8c43b815dd2b4604f7ba0f199b42c14dfca24af5",
+      "endpoint": "repos/edithatogo/corpus-legislation-nz/commits/8c43b815dd2b4604f7ba0f199b42c14dfca24af5/check-runs?per_page=100",
+      "checks": [
+        {
+          "name": "CodeQL",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "8c43b815dd2b4604f7ba0f199b42c14dfca24af5",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/runs/96678156965"
+        },
+        {
+          "name": "tests",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "8c43b815dd2b4604f7ba0f199b42c14dfca24af5",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32450512328/job/96678135282"
+        },
+        {
+          "name": "tests",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "8c43b815dd2b4604f7ba0f199b42c14dfca24af5",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32450500064/job/96678081792"
+        },
+        {
+          "name": "python-tests (3.14)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "8c43b815dd2b4604f7ba0f199b42c14dfca24af5",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32450512328/job/96678030206"
+        },
+        {
+          "name": "python-tests (3.12)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "8c43b815dd2b4604f7ba0f199b42c14dfca24af5",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32450512328/job/96678030083"
+        },
+        {
+          "name": "analyze",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "8c43b815dd2b4604f7ba0f199b42c14dfca24af5",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32450512300/job/96678030008"
+        },
+        {
+          "name": "Astro docs",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "8c43b815dd2b4604f7ba0f199b42c14dfca24af5",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32450512319/job/96678029977"
+        },
+        {
+          "name": "zizmor-advisory",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "8c43b815dd2b4604f7ba0f199b42c14dfca24af5",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32450512196/job/96678029954"
+        },
+        {
+          "name": "python-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "8c43b815dd2b4604f7ba0f199b42c14dfca24af5",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32450512196/job/96678029904"
+        },
+        {
+          "name": "repository-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "8c43b815dd2b4604f7ba0f199b42c14dfca24af5",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32450512196/job/96678029835"
+        },
+        {
+          "name": "Astro docs",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "8c43b815dd2b4604f7ba0f199b42c14dfca24af5",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32450500075/job/96677993224"
+        },
+        {
+          "name": "python-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "8c43b815dd2b4604f7ba0f199b42c14dfca24af5",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32450500036/job/96677993202"
+        },
+        {
+          "name": "zizmor-advisory",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "8c43b815dd2b4604f7ba0f199b42c14dfca24af5",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32450500036/job/96677993151"
+        },
+        {
+          "name": "repository-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "8c43b815dd2b4604f7ba0f199b42c14dfca24af5",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32450500036/job/96677993102"
+        },
+        {
+          "name": "python-tests (3.12)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "8c43b815dd2b4604f7ba0f199b42c14dfca24af5",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32450500064/job/96677993099"
+        },
+        {
+          "name": "python-tests (3.14)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "8c43b815dd2b4604f7ba0f199b42c14dfca24af5",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32450500064/job/96677993004"
+        }
+      ]
+    },
+    {
+      "number": 174,
+      "head_sha": "fc30e4c9f43dddb01e722acae44efef97d81513c",
+      "endpoint": "repos/edithatogo/corpus-legislation-nz/commits/fc30e4c9f43dddb01e722acae44efef97d81513c/check-runs?per_page=100",
+      "checks": [
+        {
+          "name": "CodeQL",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "fc30e4c9f43dddb01e722acae44efef97d81513c",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/runs/96683550848"
+        },
+        {
+          "name": "tests",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "fc30e4c9f43dddb01e722acae44efef97d81513c",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32452499434/job/96683539698"
+        },
+        {
+          "name": "tests",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "fc30e4c9f43dddb01e722acae44efef97d81513c",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32452486278/job/96683476313"
+        },
+        {
+          "name": "zizmor-advisory",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "fc30e4c9f43dddb01e722acae44efef97d81513c",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32452499701/job/96683439317"
+        },
+        {
+          "name": "python-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "fc30e4c9f43dddb01e722acae44efef97d81513c",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32452499701/job/96683439244"
+        },
+        {
+          "name": "repository-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "fc30e4c9f43dddb01e722acae44efef97d81513c",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32452499701/job/96683439095"
+        },
+        {
+          "name": "python-tests (3.14)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "fc30e4c9f43dddb01e722acae44efef97d81513c",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32452499434/job/96683438158"
+        },
+        {
+          "name": "analyze",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "fc30e4c9f43dddb01e722acae44efef97d81513c",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32452499422/job/96683438097"
+        },
+        {
+          "name": "python-tests (3.12)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "fc30e4c9f43dddb01e722acae44efef97d81513c",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32452499434/job/96683437982"
+        },
+        {
+          "name": "Astro docs",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "fc30e4c9f43dddb01e722acae44efef97d81513c",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32452499409/job/96683437939"
+        },
+        {
+          "name": "Astro docs",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "fc30e4c9f43dddb01e722acae44efef97d81513c",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32452486404/job/96683401065"
+        },
+        {
+          "name": "repository-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "fc30e4c9f43dddb01e722acae44efef97d81513c",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32452486336/job/96683400586"
+        },
+        {
+          "name": "python-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "fc30e4c9f43dddb01e722acae44efef97d81513c",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32452486336/job/96683400581"
+        },
+        {
+          "name": "zizmor-advisory",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "fc30e4c9f43dddb01e722acae44efef97d81513c",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32452486336/job/96683400496"
+        },
+        {
+          "name": "python-tests (3.12)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "fc30e4c9f43dddb01e722acae44efef97d81513c",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32452486278/job/96683400489"
+        },
+        {
+          "name": "python-tests (3.14)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "fc30e4c9f43dddb01e722acae44efef97d81513c",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32452486278/job/96683400350"
+        }
+      ]
+    },
+    {
+      "number": 175,
+      "head_sha": "3114024247379da7b94c6ec9a65f2d048a7d3b6c",
+      "endpoint": "repos/edithatogo/corpus-legislation-nz/commits/3114024247379da7b94c6ec9a65f2d048a7d3b6c/check-runs?per_page=100",
+      "checks": [
+        {
+          "name": "CodeQL",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "3114024247379da7b94c6ec9a65f2d048a7d3b6c",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/runs/96692174324"
+        },
+        {
+          "name": "tests",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "3114024247379da7b94c6ec9a65f2d048a7d3b6c",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32455552281/job/96692153436"
+        },
+        {
+          "name": "python-tests (3.12)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "3114024247379da7b94c6ec9a65f2d048a7d3b6c",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32455552281/job/96692027164"
+        },
+        {
+          "name": "python-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "3114024247379da7b94c6ec9a65f2d048a7d3b6c",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32455552299/job/96692026868"
+        },
+        {
+          "name": "python-tests (3.14)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "3114024247379da7b94c6ec9a65f2d048a7d3b6c",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32455552281/job/96692026836"
+        },
+        {
+          "name": "zizmor-advisory",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "3114024247379da7b94c6ec9a65f2d048a7d3b6c",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32455552299/job/96692026815"
+        },
+        {
+          "name": "Astro docs",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "3114024247379da7b94c6ec9a65f2d048a7d3b6c",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32455552304/job/96692026796"
+        },
+        {
+          "name": "repository-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "3114024247379da7b94c6ec9a65f2d048a7d3b6c",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32455552299/job/96692026612"
+        },
+        {
+          "name": "analyze",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "3114024247379da7b94c6ec9a65f2d048a7d3b6c",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32455552284/job/96692026528"
+        },
+        {
+          "name": "tests",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "3114024247379da7b94c6ec9a65f2d048a7d3b6c",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32455495873/job/96691981740"
+        },
+        {
+          "name": "zizmor-advisory",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "3114024247379da7b94c6ec9a65f2d048a7d3b6c",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32455495955/job/96691874278"
+        },
+        {
+          "name": "python-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "3114024247379da7b94c6ec9a65f2d048a7d3b6c",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32455495955/job/96691874220"
+        },
+        {
+          "name": "Astro docs",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "3114024247379da7b94c6ec9a65f2d048a7d3b6c",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32455495977/job/96691874153"
+        },
+        {
+          "name": "repository-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "3114024247379da7b94c6ec9a65f2d048a7d3b6c",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32455495955/job/96691874121"
+        },
+        {
+          "name": "python-tests (3.12)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "3114024247379da7b94c6ec9a65f2d048a7d3b6c",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32455495873/job/96691873920"
+        },
+        {
+          "name": "python-tests (3.14)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "3114024247379da7b94c6ec9a65f2d048a7d3b6c",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32455495873/job/96691873627"
+        }
+      ]
+    },
+    {
+      "number": 176,
+      "head_sha": "7c3a67ea9745ac662976926b246c96457bdfbc83",
+      "endpoint": "repos/edithatogo/corpus-legislation-nz/commits/7c3a67ea9745ac662976926b246c96457bdfbc83/check-runs?per_page=100",
+      "checks": [
+        {
+          "name": "CodeQL",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "7c3a67ea9745ac662976926b246c96457bdfbc83",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/runs/96700907206"
+        },
+        {
+          "name": "tests",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "7c3a67ea9745ac662976926b246c96457bdfbc83",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32458592574/job/96700876545"
+        },
+        {
+          "name": "tests",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "7c3a67ea9745ac662976926b246c96457bdfbc83",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32458589197/job/96700845827"
+        },
+        {
+          "name": "analyze",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "7c3a67ea9745ac662976926b246c96457bdfbc83",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32458592619/job/96700738094"
+        },
+        {
+          "name": "python-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "7c3a67ea9745ac662976926b246c96457bdfbc83",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32458592565/job/96700737718"
+        },
+        {
+          "name": "python-tests (3.12)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "7c3a67ea9745ac662976926b246c96457bdfbc83",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32458592574/job/96700737563"
+        },
+        {
+          "name": "zizmor-advisory",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "7c3a67ea9745ac662976926b246c96457bdfbc83",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32458592565/job/96700737546"
+        },
+        {
+          "name": "repository-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "7c3a67ea9745ac662976926b246c96457bdfbc83",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32458592565/job/96700737397"
+        },
+        {
+          "name": "python-tests (3.14)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "7c3a67ea9745ac662976926b246c96457bdfbc83",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32458592574/job/96700737338"
+        },
+        {
+          "name": "Astro docs",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "7c3a67ea9745ac662976926b246c96457bdfbc83",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32458592572/job/96700737136"
+        },
+        {
+          "name": "python-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "7c3a67ea9745ac662976926b246c96457bdfbc83",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32458589276/job/96700727828"
+        },
+        {
+          "name": "repository-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "7c3a67ea9745ac662976926b246c96457bdfbc83",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32458589276/job/96700727748"
+        },
+        {
+          "name": "zizmor-advisory",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "7c3a67ea9745ac662976926b246c96457bdfbc83",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32458589276/job/96700727562"
+        },
+        {
+          "name": "python-tests (3.14)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "7c3a67ea9745ac662976926b246c96457bdfbc83",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32458589197/job/96700727410"
+        },
+        {
+          "name": "Astro docs",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "7c3a67ea9745ac662976926b246c96457bdfbc83",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32458589217/job/96700727228"
+        },
+        {
+          "name": "python-tests (3.12)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "7c3a67ea9745ac662976926b246c96457bdfbc83",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32458589197/job/96700727192"
+        }
+      ]
+    },
+    {
+      "number": 177,
+      "head_sha": "865413d965812bbc5c690b32559620764a2a6c02",
+      "endpoint": "repos/edithatogo/corpus-legislation-nz/commits/865413d965812bbc5c690b32559620764a2a6c02/check-runs?per_page=100",
+      "checks": [
+        {
+          "name": "CodeQL",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "865413d965812bbc5c690b32559620764a2a6c02",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/runs/96708989092"
+        },
+        {
+          "name": "tests",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "865413d965812bbc5c690b32559620764a2a6c02",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32461374565/job/96708944175"
+        },
+        {
+          "name": "tests",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "865413d965812bbc5c690b32559620764a2a6c02",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32461370486/job/96708920653"
+        },
+        {
+          "name": "repository-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "865413d965812bbc5c690b32559620764a2a6c02",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32461374556/job/96708815954"
+        },
+        {
+          "name": "zizmor-advisory",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "865413d965812bbc5c690b32559620764a2a6c02",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32461374556/job/96708815924"
+        },
+        {
+          "name": "python-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "865413d965812bbc5c690b32559620764a2a6c02",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32461374556/job/96708815760"
+        },
+        {
+          "name": "python-tests (3.14)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "865413d965812bbc5c690b32559620764a2a6c02",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32461374565/job/96708815613"
+        },
+        {
+          "name": "python-tests (3.12)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "865413d965812bbc5c690b32559620764a2a6c02",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32461374565/job/96708815435"
+        },
+        {
+          "name": "analyze",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "865413d965812bbc5c690b32559620764a2a6c02",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32461374555/job/96708815399"
+        },
+        {
+          "name": "Astro docs",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "865413d965812bbc5c690b32559620764a2a6c02",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32461374464/job/96708815058"
+        },
+        {
+          "name": "python-tests (3.12)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "865413d965812bbc5c690b32559620764a2a6c02",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32461370486/job/96708803900"
+        },
+        {
+          "name": "python-tests (3.14)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "865413d965812bbc5c690b32559620764a2a6c02",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32461370486/job/96708803685"
+        },
+        {
+          "name": "Astro docs",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "865413d965812bbc5c690b32559620764a2a6c02",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32461370333/job/96708803430"
+        },
+        {
+          "name": "repository-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "865413d965812bbc5c690b32559620764a2a6c02",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32461370311/job/96708803403"
+        },
+        {
+          "name": "python-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "865413d965812bbc5c690b32559620764a2a6c02",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32461370311/job/96708803299"
+        },
+        {
+          "name": "zizmor-advisory",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "865413d965812bbc5c690b32559620764a2a6c02",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32461370311/job/96708803212"
+        }
+      ]
+    },
+    {
+      "number": 178,
+      "head_sha": "a6b34b8a8dd37f3e69432d448de30f57539ba993",
+      "endpoint": "repos/edithatogo/corpus-legislation-nz/commits/a6b34b8a8dd37f3e69432d448de30f57539ba993/check-runs?per_page=100",
+      "checks": [
+        {
+          "name": "CodeQL",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "a6b34b8a8dd37f3e69432d448de30f57539ba993",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/runs/96720586404"
+        },
+        {
+          "name": "tests",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "a6b34b8a8dd37f3e69432d448de30f57539ba993",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32465265616/job/96720557409"
+        },
+        {
+          "name": "tests",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "a6b34b8a8dd37f3e69432d448de30f57539ba993",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32465260286/job/96720527732"
+        },
+        {
+          "name": "python-tests (3.12)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "a6b34b8a8dd37f3e69432d448de30f57539ba993",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32465265616/job/96720423485"
+        },
+        {
+          "name": "python-tests (3.14)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "a6b34b8a8dd37f3e69432d448de30f57539ba993",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32465265616/job/96720423238"
+        },
+        {
+          "name": "analyze",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "a6b34b8a8dd37f3e69432d448de30f57539ba993",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32465265474/job/96720423036"
+        },
+        {
+          "name": "zizmor-advisory",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "a6b34b8a8dd37f3e69432d448de30f57539ba993",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32465265339/job/96720422836"
+        },
+        {
+          "name": "repository-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "a6b34b8a8dd37f3e69432d448de30f57539ba993",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32465265339/job/96720422730"
+        },
+        {
+          "name": "python-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "a6b34b8a8dd37f3e69432d448de30f57539ba993",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32465265339/job/96720422640"
+        },
+        {
+          "name": "Astro docs",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "a6b34b8a8dd37f3e69432d448de30f57539ba993",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32465265367/job/96720422616"
+        },
+        {
+          "name": "zizmor-advisory",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "a6b34b8a8dd37f3e69432d448de30f57539ba993",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32465260285/job/96720408468"
+        },
+        {
+          "name": "python-tests (3.12)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "a6b34b8a8dd37f3e69432d448de30f57539ba993",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32465260286/job/96720408290"
+        },
+        {
+          "name": "python-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "a6b34b8a8dd37f3e69432d448de30f57539ba993",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32465260285/job/96720408287"
+        },
+        {
+          "name": "repository-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "a6b34b8a8dd37f3e69432d448de30f57539ba993",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32465260285/job/96720408143"
+        },
+        {
+          "name": "Astro docs",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "a6b34b8a8dd37f3e69432d448de30f57539ba993",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32465260277/job/96720408123"
+        },
+        {
+          "name": "python-tests (3.14)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "a6b34b8a8dd37f3e69432d448de30f57539ba993",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32465260286/job/96720408075"
+        }
+      ]
+    },
+    {
+      "number": 179,
+      "head_sha": "917fa2f44ba26ca7a315a264a1e43c1ded310c00",
+      "endpoint": "repos/edithatogo/corpus-legislation-nz/commits/917fa2f44ba26ca7a315a264a1e43c1ded310c00/check-runs?per_page=100",
+      "checks": [
+        {
+          "name": "CodeQL",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "917fa2f44ba26ca7a315a264a1e43c1ded310c00",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/runs/96731377358"
+        },
+        {
+          "name": "tests",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "917fa2f44ba26ca7a315a264a1e43c1ded310c00",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32468860233/job/96731348172"
+        },
+        {
+          "name": "tests",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "917fa2f44ba26ca7a315a264a1e43c1ded310c00",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32468849360/job/96731319352"
+        },
+        {
+          "name": "python-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "917fa2f44ba26ca7a315a264a1e43c1ded310c00",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32468860200/job/96731217699"
+        },
+        {
+          "name": "analyze",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "917fa2f44ba26ca7a315a264a1e43c1ded310c00",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32468860296/job/96731217580"
+        },
+        {
+          "name": "zizmor-advisory",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "917fa2f44ba26ca7a315a264a1e43c1ded310c00",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32468860200/job/96731217547"
+        },
+        {
+          "name": "python-tests (3.14)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "917fa2f44ba26ca7a315a264a1e43c1ded310c00",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32468860233/job/96731217544"
+        },
+        {
+          "name": "Astro docs",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "917fa2f44ba26ca7a315a264a1e43c1ded310c00",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32468860193/job/96731217405"
+        },
+        {
+          "name": "python-tests (3.12)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "917fa2f44ba26ca7a315a264a1e43c1ded310c00",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32468860233/job/96731217394"
+        },
+        {
+          "name": "repository-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "917fa2f44ba26ca7a315a264a1e43c1ded310c00",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32468860200/job/96731217391"
+        },
+        {
+          "name": "python-tests (3.14)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "917fa2f44ba26ca7a315a264a1e43c1ded310c00",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32468849360/job/96731183544"
+        },
+        {
+          "name": "repository-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "917fa2f44ba26ca7a315a264a1e43c1ded310c00",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32468849310/job/96731182731"
+        },
+        {
+          "name": "zizmor-advisory",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "917fa2f44ba26ca7a315a264a1e43c1ded310c00",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32468849310/job/96731182727"
+        },
+        {
+          "name": "python-tests (3.12)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "917fa2f44ba26ca7a315a264a1e43c1ded310c00",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32468849360/job/96731182710"
+        },
+        {
+          "name": "python-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "917fa2f44ba26ca7a315a264a1e43c1ded310c00",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32468849310/job/96731182609"
+        },
+        {
+          "name": "Astro docs",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "917fa2f44ba26ca7a315a264a1e43c1ded310c00",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32468849321/job/96731182503"
+        }
+      ]
+    },
+    {
+      "number": 180,
+      "head_sha": "82a68a0c0cb1434a82a1de6653791b06a32494a8",
+      "endpoint": "repos/edithatogo/corpus-legislation-nz/commits/82a68a0c0cb1434a82a1de6653791b06a32494a8/check-runs?per_page=100",
+      "checks": [
+        {
+          "name": "CodeQL",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "82a68a0c0cb1434a82a1de6653791b06a32494a8",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/runs/96737384798"
+        },
+        {
+          "name": "tests",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "82a68a0c0cb1434a82a1de6653791b06a32494a8",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32470887677/job/96737363757"
+        },
+        {
+          "name": "tests",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "82a68a0c0cb1434a82a1de6653791b06a32494a8",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32470882293/job/96737344645"
+        },
+        {
+          "name": "python-tests (3.12)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "82a68a0c0cb1434a82a1de6653791b06a32494a8",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32470887677/job/96737216965"
+        },
+        {
+          "name": "python-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "82a68a0c0cb1434a82a1de6653791b06a32494a8",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32470887752/job/96737216873"
+        },
+        {
+          "name": "python-tests (3.14)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "82a68a0c0cb1434a82a1de6653791b06a32494a8",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32470887677/job/96737216814"
+        },
+        {
+          "name": "repository-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "82a68a0c0cb1434a82a1de6653791b06a32494a8",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32470887752/job/96737216810"
+        },
+        {
+          "name": "zizmor-advisory",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "82a68a0c0cb1434a82a1de6653791b06a32494a8",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32470887752/job/96737216580"
+        },
+        {
+          "name": "analyze",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "82a68a0c0cb1434a82a1de6653791b06a32494a8",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32470887728/job/96737216509"
+        },
+        {
+          "name": "Astro docs",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "82a68a0c0cb1434a82a1de6653791b06a32494a8",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32470887668/job/96737216245"
+        },
+        {
+          "name": "python-tests (3.12)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "82a68a0c0cb1434a82a1de6653791b06a32494a8",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32470882293/job/96737201069"
+        },
+        {
+          "name": "python-tests (3.14)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "82a68a0c0cb1434a82a1de6653791b06a32494a8",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32470882293/job/96737200714"
+        },
+        {
+          "name": "repository-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "82a68a0c0cb1434a82a1de6653791b06a32494a8",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32470882265/job/96737200621"
+        },
+        {
+          "name": "Astro docs",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "82a68a0c0cb1434a82a1de6653791b06a32494a8",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32470882275/job/96737200598"
+        },
+        {
+          "name": "python-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "82a68a0c0cb1434a82a1de6653791b06a32494a8",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32470882265/job/96737200568"
+        },
+        {
+          "name": "zizmor-advisory",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "82a68a0c0cb1434a82a1de6653791b06a32494a8",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32470882265/job/96737200299"
+        }
+      ]
+    },
+    {
+      "number": 181,
+      "head_sha": "c703bb3b765c910ff9acf70d5a3b2c32bcb41e75",
+      "endpoint": "repos/edithatogo/corpus-legislation-nz/commits/c703bb3b765c910ff9acf70d5a3b2c32bcb41e75/check-runs?per_page=100",
+      "checks": [
+        {
+          "name": "CodeQL",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "c703bb3b765c910ff9acf70d5a3b2c32bcb41e75",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/runs/96746673730"
+        },
+        {
+          "name": "tests",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "c703bb3b765c910ff9acf70d5a3b2c32bcb41e75",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32474010194/job/96746643149"
+        },
+        {
+          "name": "tests",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "c703bb3b765c910ff9acf70d5a3b2c32bcb41e75",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32474005705/job/96746621657"
+        },
+        {
+          "name": "zizmor-advisory",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "c703bb3b765c910ff9acf70d5a3b2c32bcb41e75",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32474010193/job/96746508557"
+        },
+        {
+          "name": "repository-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "c703bb3b765c910ff9acf70d5a3b2c32bcb41e75",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32474010193/job/96746508532"
+        },
+        {
+          "name": "python-tests (3.12)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "c703bb3b765c910ff9acf70d5a3b2c32bcb41e75",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32474010194/job/96746508491"
+        },
+        {
+          "name": "python-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "c703bb3b765c910ff9acf70d5a3b2c32bcb41e75",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32474010193/job/96746508293"
+        },
+        {
+          "name": "python-tests (3.14)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "c703bb3b765c910ff9acf70d5a3b2c32bcb41e75",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32474010194/job/96746508267"
+        },
+        {
+          "name": "analyze",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "c703bb3b765c910ff9acf70d5a3b2c32bcb41e75",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32474010172/job/96746508151"
+        },
+        {
+          "name": "Astro docs",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "c703bb3b765c910ff9acf70d5a3b2c32bcb41e75",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32474010136/job/96746507861"
+        },
+        {
+          "name": "python-tests (3.14)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "c703bb3b765c910ff9acf70d5a3b2c32bcb41e75",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32474005705/job/96746494797"
+        },
+        {
+          "name": "python-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "c703bb3b765c910ff9acf70d5a3b2c32bcb41e75",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32474005699/job/96746494771"
+        },
+        {
+          "name": "repository-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "c703bb3b765c910ff9acf70d5a3b2c32bcb41e75",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32474005699/job/96746494596"
+        },
+        {
+          "name": "python-tests (3.12)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "c703bb3b765c910ff9acf70d5a3b2c32bcb41e75",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32474005705/job/96746494541"
+        },
+        {
+          "name": "zizmor-advisory",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "c703bb3b765c910ff9acf70d5a3b2c32bcb41e75",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32474005699/job/96746494412"
+        },
+        {
+          "name": "Astro docs",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "c703bb3b765c910ff9acf70d5a3b2c32bcb41e75",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32474005694/job/96746494229"
+        }
+      ]
+    },
+    {
+      "number": 182,
+      "head_sha": "6ed285f314451590939e85ecdbdafedc36e60657",
+      "endpoint": "repos/edithatogo/corpus-legislation-nz/commits/6ed285f314451590939e85ecdbdafedc36e60657/check-runs?per_page=100",
+      "checks": [
+        {
+          "name": "CodeQL",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "6ed285f314451590939e85ecdbdafedc36e60657",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/runs/96757451038"
+        },
+        {
+          "name": "tests",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "6ed285f314451590939e85ecdbdafedc36e60657",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32477663708/job/96757395841"
+        },
+        {
+          "name": "tests",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "6ed285f314451590939e85ecdbdafedc36e60657",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32477658087/job/96757392631"
+        },
+        {
+          "name": "repository-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "6ed285f314451590939e85ecdbdafedc36e60657",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32477663712/job/96757269696"
+        },
+        {
+          "name": "analyze",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "6ed285f314451590939e85ecdbdafedc36e60657",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32477663781/job/96757268920"
+        },
+        {
+          "name": "python-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "6ed285f314451590939e85ecdbdafedc36e60657",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32477663712/job/96757268875"
+        },
+        {
+          "name": "python-tests (3.12)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "6ed285f314451590939e85ecdbdafedc36e60657",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32477663708/job/96757268873"
+        },
+        {
+          "name": "Astro docs",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "6ed285f314451590939e85ecdbdafedc36e60657",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32477663710/job/96757268826"
+        },
+        {
+          "name": "zizmor-advisory",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "6ed285f314451590939e85ecdbdafedc36e60657",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32477663712/job/96757268711"
+        },
+        {
+          "name": "python-tests (3.14)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "6ed285f314451590939e85ecdbdafedc36e60657",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32477663708/job/96757268576"
+        },
+        {
+          "name": "Astro docs",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "6ed285f314451590939e85ecdbdafedc36e60657",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32477658123/job/96757252978"
+        },
+        {
+          "name": "python-tests (3.14)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "6ed285f314451590939e85ecdbdafedc36e60657",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32477658087/job/96757252753"
+        },
+        {
+          "name": "python-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "6ed285f314451590939e85ecdbdafedc36e60657",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32477658071/job/96757252626"
+        },
+        {
+          "name": "zizmor-advisory",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "6ed285f314451590939e85ecdbdafedc36e60657",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32477658071/job/96757252617"
+        },
+        {
+          "name": "python-tests (3.12)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "6ed285f314451590939e85ecdbdafedc36e60657",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32477658087/job/96757252393"
+        },
+        {
+          "name": "repository-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "6ed285f314451590939e85ecdbdafedc36e60657",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32477658071/job/96757252346"
+        }
+      ]
+    },
+    {
+      "number": 183,
+      "head_sha": "7c37e923b86d724765d3b9ca4f148b1bdf4d8e0b",
+      "endpoint": "repos/edithatogo/corpus-legislation-nz/commits/7c37e923b86d724765d3b9ca4f148b1bdf4d8e0b/check-runs?per_page=100",
+      "checks": [
+        {
+          "name": "CodeQL",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "7c37e923b86d724765d3b9ca4f148b1bdf4d8e0b",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/runs/96785557422"
+        },
+        {
+          "name": "tests",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "7c37e923b86d724765d3b9ca4f148b1bdf4d8e0b",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32486891012/job/96785509015"
+        },
+        {
+          "name": "tests",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "7c37e923b86d724765d3b9ca4f148b1bdf4d8e0b",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32486885775/job/96785474194"
+        },
+        {
+          "name": "python-tests (3.14)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "7c37e923b86d724765d3b9ca4f148b1bdf4d8e0b",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32486891012/job/96785324222"
+        },
+        {
+          "name": "repository-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "7c37e923b86d724765d3b9ca4f148b1bdf4d8e0b",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32486891001/job/96785324186"
+        },
+        {
+          "name": "python-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "7c37e923b86d724765d3b9ca4f148b1bdf4d8e0b",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32486891001/job/96785324129"
+        },
+        {
+          "name": "analyze",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "7c37e923b86d724765d3b9ca4f148b1bdf4d8e0b",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32486891010/job/96785324127"
+        },
+        {
+          "name": "python-tests (3.12)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "7c37e923b86d724765d3b9ca4f148b1bdf4d8e0b",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32486891012/job/96785324075"
+        },
+        {
+          "name": "zizmor-advisory",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "7c37e923b86d724765d3b9ca4f148b1bdf4d8e0b",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32486891001/job/96785324056"
+        },
+        {
+          "name": "Astro docs",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "7c37e923b86d724765d3b9ca4f148b1bdf4d8e0b",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32486891014/job/96785323953"
+        },
+        {
+          "name": "python-tests (3.12)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "7c37e923b86d724765d3b9ca4f148b1bdf4d8e0b",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32486885775/job/96785307447"
+        },
+        {
+          "name": "python-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "7c37e923b86d724765d3b9ca4f148b1bdf4d8e0b",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32486885765/job/96785307332"
+        },
+        {
+          "name": "zizmor-advisory",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "7c37e923b86d724765d3b9ca4f148b1bdf4d8e0b",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32486885765/job/96785307308"
+        },
+        {
+          "name": "Astro docs",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "7c37e923b86d724765d3b9ca4f148b1bdf4d8e0b",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32486885787/job/96785307234"
+        },
+        {
+          "name": "python-tests (3.14)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "7c37e923b86d724765d3b9ca4f148b1bdf4d8e0b",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32486885775/job/96785307171"
+        },
+        {
+          "name": "repository-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "7c37e923b86d724765d3b9ca4f148b1bdf4d8e0b",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32486885765/job/96785306971"
+        }
+      ]
+    },
+    {
+      "number": 184,
+      "head_sha": "b5d6d158dc61b54eda5c8bad0fde5f20675c3582",
+      "endpoint": "repos/edithatogo/corpus-legislation-nz/commits/b5d6d158dc61b54eda5c8bad0fde5f20675c3582/check-runs?per_page=100",
+      "checks": [
+        {
+          "name": "CodeQL",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "b5d6d158dc61b54eda5c8bad0fde5f20675c3582",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/runs/96787842383"
+        },
+        {
+          "name": "tests",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "b5d6d158dc61b54eda5c8bad0fde5f20675c3582",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32487622041/job/96787778400"
+        },
+        {
+          "name": "tests",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "b5d6d158dc61b54eda5c8bad0fde5f20675c3582",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32487615320/job/96787764568"
+        },
+        {
+          "name": "repository-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "b5d6d158dc61b54eda5c8bad0fde5f20675c3582",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32487622091/job/96787621634"
+        },
+        {
+          "name": "python-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "b5d6d158dc61b54eda5c8bad0fde5f20675c3582",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32487622091/job/96787621221"
+        },
+        {
+          "name": "Astro docs",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "b5d6d158dc61b54eda5c8bad0fde5f20675c3582",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32487622094/job/96787621147"
+        },
+        {
+          "name": "zizmor-advisory",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "b5d6d158dc61b54eda5c8bad0fde5f20675c3582",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32487622091/job/96787621085"
+        },
+        {
+          "name": "python-tests (3.14)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "b5d6d158dc61b54eda5c8bad0fde5f20675c3582",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32487622041/job/96787620914"
+        },
+        {
+          "name": "analyze",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "b5d6d158dc61b54eda5c8bad0fde5f20675c3582",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32487622057/job/96787620880"
+        },
+        {
+          "name": "python-tests (3.12)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "b5d6d158dc61b54eda5c8bad0fde5f20675c3582",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32487622041/job/96787620491"
+        },
+        {
+          "name": "repository-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "b5d6d158dc61b54eda5c8bad0fde5f20675c3582",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32487615398/job/96787600913"
+        },
+        {
+          "name": "zizmor-advisory",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "b5d6d158dc61b54eda5c8bad0fde5f20675c3582",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32487615398/job/96787600655"
+        },
+        {
+          "name": "Astro docs",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "b5d6d158dc61b54eda5c8bad0fde5f20675c3582",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32487615505/job/96787600496"
+        },
+        {
+          "name": "python-quality",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "b5d6d158dc61b54eda5c8bad0fde5f20675c3582",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32487615398/job/96787600403"
+        },
+        {
+          "name": "python-tests (3.14)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "b5d6d158dc61b54eda5c8bad0fde5f20675c3582",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32487615320/job/96787600272"
+        },
+        {
+          "name": "python-tests (3.12)",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "b5d6d158dc61b54eda5c8bad0fde5f20675c3582",
+          "details_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32487615320/job/96787600262"
+        }
+      ]
+    }
+  ]
+}

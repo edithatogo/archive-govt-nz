@@ -108,6 +108,7 @@ class Job:
             not in {
                 "pending",
                 "leased",
+                "captured",
                 "verified",
                 "exhausted",
                 "withdrawn",
@@ -130,6 +131,13 @@ class Job:
             or re.fullmatch(r"[0-9a-f]{40}", self.publication_revision) is None
         ):
             _fail("invalid job")
+        if self.status == "captured" and (
+            re.fullmatch(r"[0-9a-f]{64}", self.manifest_sha256) is None
+            or self.publication_revision != ""
+            or self.lease_id != ""
+            or self.expires_at != 0
+        ):
+            _fail("invalid captured job")
 
 
 @dataclass(frozen=True)
@@ -298,5 +306,42 @@ def credit(  # noqa: PLR0913 - independent publication gates must remain explici
             status="verified",
             manifest_sha256=manifest_sha256,
             publication_revision=publication_revision,
+        ),
+    )
+
+
+def record_capture(  # noqa: PLR0913 - exact lease and local evidence are separate
+    state: Queue,
+    job_id: str,
+    lease_id: str,
+    now: int,
+    *,
+    manifest_sha256: str,
+    locally_verified: bool,
+) -> Queue:
+    """Record a caller-verified local restore, without any public coverage credit.
+
+    The trusted executor must finish and verify retained originals before this
+    pure proposal is conditionally persisted. Publication needs a separately
+    admitted job and independent anonymous restore evidence.
+    """
+    job = _leased(state, job_id, lease_id)
+    if (
+        not _nonnegative(now)
+        or now >= job.expires_at
+        or locally_verified is not True
+        or not isinstance(manifest_sha256, str)
+        or re.fullmatch(r"[0-9a-f]{64}", manifest_sha256) is None
+    ):
+        _fail("unverified local capture")
+    return _update(
+        state,
+        replace(
+            job,
+            status="captured",
+            manifest_sha256=manifest_sha256,
+            publication_revision="",
+            lease_id="",
+            expires_at=0,
         ),
     )

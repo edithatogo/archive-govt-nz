@@ -1,0 +1,30 @@
+{
+  "schema_version": "archive-govt-nz.foi-hosted-validation-correction/v1",
+  "recorded_at": "2026-08-31T13:04:00.611876+00:00",
+  "pull_request": 288,
+  "head_revision": "3dbbc62867cababa09a437b8f0f941fccc2756b5",
+  "run_id": 33394282528,
+  "ubuntu": {
+    "conclusion": "success",
+    "tests_passed": 2390,
+    "coverage_percent": 96.98,
+    "strict_sbom_components": 112,
+    "log_sha256": "de58be95de1b1d62d669384e75d69dd23e708307255633605448a2d39847a3f1"
+  },
+  "macos": {
+    "conclusion": "success"
+  },
+  "windows": {
+    "conclusion": "failure",
+    "tests_passed": 2387,
+    "tests_failed": 2,
+    "errors": 2,
+    "failures": [
+      "POSIX_permission_bits_asserted_on_Windows",
+      "oversized_pytest_node_id_exceeded_Windows_environment_variable_limit"
+    ],
+    "log_sha256": "e03c128a43ad9182be960005840cfe4d0f78d9749f28be57e83293fe0110c9bf"
+  },
+  "deployment_performed": false,
+  "public_raw_uploaded": false
+}

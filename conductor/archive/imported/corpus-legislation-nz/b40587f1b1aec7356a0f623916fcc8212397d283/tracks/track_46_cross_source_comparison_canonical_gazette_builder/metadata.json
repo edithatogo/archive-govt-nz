@@ -1,0 +1,8 @@
+{
+  "track_id": "track_46_cross_source_comparison_canonical_gazette_builder",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-07-02T22:42:57.9295233+10:00",
+  "updated_at": "2026-07-02T22:55:32.3584387+10:00",
+  "description": "Build the derived canonical Gazette layer by comparing independent source archives and preserving conflicts."
+}

@@ -120,6 +120,10 @@ def build_stages(
             ("uv", "run", "--locked", "python", "tools/mutation_foi_controls.py"),
         ),
         GateStage(
+            "mutation-foi-shared",
+            ("uv", "run", "--locked", "python", "tools/mutation_foi_shared.py"),
+        ),
+        GateStage(
             "slops",
             ("uv", "run", "--locked", "python", "tools/check_slops.py"),
         ),

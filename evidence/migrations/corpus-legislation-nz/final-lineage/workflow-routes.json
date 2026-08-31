@@ -1,0 +1,73 @@
+{
+  "supersedes_for_final_head": "earlier donor workflow inventory excludes these three late files",
+  "routes": [
+    {
+      "donor_path": ".github/workflows/target_one_batch_reconciliation.yml",
+      "disposition": "preserved_as_historical_evidence_only",
+      "operational_target_route": null,
+      "related_target_capabilities": [
+        "tools/run_legislation_harvest.py",
+        "tools/reconcile_one_legislation_batch.py",
+        "tools/verify_object_store.py"
+      ],
+      "related_target_workflows": [
+        ".github/workflows/scheduled-legislation-harvest.yml",
+        ".github/workflows/monthly-legislation-reconciliation.yml"
+      ],
+      "equivalence_verified": false,
+      "handoff": "LH-WORKFLOW",
+      "rationale": "Archived donor bridge is not installed as a target workflow; related target code exists but trigger, inventory and continuation semantics differ."
+    },
+    {
+      "donor_path": ".github/workflows/target_bounded_live_canary.yml",
+      "disposition": "preserved_as_historical_evidence_only",
+      "operational_target_route": null,
+      "related_target_capabilities": [
+        "tools/run_legislation_harvest.py",
+        "tools/reconcile_one_legislation_batch.py",
+        "tools/verify_object_store.py"
+      ],
+      "related_target_workflows": [
+        ".github/workflows/scheduled-legislation-harvest.yml",
+        ".github/workflows/monthly-legislation-reconciliation.yml"
+      ],
+      "equivalence_verified": false,
+      "handoff": "LH-WORKFLOW",
+      "rationale": "Archived donor bridge is not installed as a target workflow; related target code exists but trigger, inventory and continuation semantics differ."
+    },
+    {
+      "donor_path": ".github/workflows/target_weekly_legislation_cycle.yml",
+      "disposition": "preserved_as_historical_evidence_only",
+      "operational_target_route": null,
+      "related_target_capabilities": [
+        "tools/run_legislation_harvest.py",
+        "tools/reconcile_one_legislation_batch.py",
+        "tools/verify_object_store.py"
+      ],
+      "related_target_workflows": [
+        ".github/workflows/scheduled-legislation-harvest.yml",
+        ".github/workflows/monthly-legislation-reconciliation.yml"
+      ],
+      "equivalence_verified": false,
+      "handoff": "LH-WORKFLOW",
+      "rationale": "Archived donor bridge is not installed as a target workflow; related target code exists but trigger, inventory and continuation semantics differ."
+    }
+  ],
+  "changed_tests": [
+    {
+      "path": "tests/test_target_bounded_live_canary_workflow.py",
+      "disposition": "preserved_as_historical_evidence_only",
+      "rationale": "Donor bridge policy assertions are source evidence, not copied into executable target test collection."
+    },
+    {
+      "path": "tests/test_target_one_batch_bridge_workflow.py",
+      "disposition": "preserved_as_historical_evidence_only",
+      "rationale": "Donor bridge policy assertions are source evidence, not copied into executable target test collection."
+    },
+    {
+      "path": "tests/test_target_weekly_legislation_cycle_workflow.py",
+      "disposition": "preserved_as_historical_evidence_only",
+      "rationale": "Donor bridge policy assertions are source evidence, not copied into executable target test collection."
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "observed_at": "2026-08-31T11:31:53.843008+00:00",
+  "status": "passed",
+  "file_count": 216,
+  "commit_count": 15,
+  "checks": [
+    "all imported file SHA256 and Git blob identities match",
+    "exact file set matches donor and prior snapshot",
+    "earlier snapshot has no diff",
+    "single-byte corruption rejected",
+    "missing file rejected",
+    "unexpected file rejected",
+    "complete ordered commit interval",
+    "exact PR number interval",
+    "late source files match donor bytes",
+    "precommit receipt digests match"
+  ],
+  "scope": "One-off data verification; no production integrity logic changed. Whole-repository coverage/mutation remain harness gates."
+}
