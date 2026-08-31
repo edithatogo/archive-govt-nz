@@ -1,0 +1,78 @@
+{
+  "artifact": {
+    "expired": false,
+    "expires_at": "2026-11-29T04:51:12Z",
+    "id": 9745909340,
+    "name": "foi-catalogue-publication-33358508220-1",
+    "size_in_bytes": 565
+  },
+  "cutover": false,
+  "donor_queue": {
+    "active_leases": 0,
+    "contiguous_credited_offset": 17227,
+    "monitor": "disabled_manually",
+    "queue_count": 33208,
+    "raw_completeness_verified": false,
+    "unprocessed": 15981
+  },
+  "metadata_credential_identity_verified": true,
+  "next_gate": "source-specific rights and privacy review of nz-publication-decision.pending.json",
+  "public_raw_publication": false,
+  "publication": {
+    "coverage": {
+      "geographic_entities": 250,
+      "known_sources": 30,
+      "payload_publication_authorized": false,
+      "remaining_unverified": 250,
+      "supranational_entities": 1,
+      "target_regimes": 42,
+      "total_requests": null,
+      "verified_complete": 0
+    },
+    "current_revision": "4e5a7832f6536e231d20292c1bffaae7861fd912",
+    "manifest_sha256": "42d003245024432140ba2070c998c32779bbb587516bf0c62aeb32085c6a1558",
+    "payload_publication": false,
+    "repo_id": "edithatogo/foi-source-catalogue",
+    "scope": "source_catalogue_only",
+    "snapshot_revision": "512fb25519fc1002c411fbcc37f04bb176f0b03c",
+    "status": "verified",
+    "uploaded": false,
+    "viewer_status": "not_checked"
+  },
+  "raw_write_capacity_verified": false,
+  "receipt_sha256": "51366c64a2017be62d92f697a5ac006053eb6817b32ec6c03704ff2e8937fc02",
+  "recorded_at": "2026-08-31T04:54:06.597913+00:00",
+  "remaining_work": [
+    "eligible raw delivery and anonymous restoration",
+    "broader source discovery and country acquisition schedules",
+    "historical raw-gap reconciliation",
+    "shared ownership fencing, shadow parity and cutover"
+  ],
+  "run": {
+    "conclusion": "success",
+    "databaseId": 33358508220,
+    "headSha": "3d557bcf9cc9b86945f97e3340d9d6a9d0e0fd44",
+    "status": "completed",
+    "url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/33358508220"
+  },
+  "scope": "receiver_hosted_metadata_verification_only",
+  "system_ready": false,
+  "validation": {
+    "delivery_coverage_percent": 100,
+    "earlier_local_timeouts": "retained in previous receipts; no checks weakened",
+    "focused_retry_tests_passed": 27,
+    "hosted_full_assurance": "passed on Linux, macOS and Windows at 42ef20a12931dc4bf53353fb1e9749bc217d99fa",
+    "local_coverage_percent": 96.34,
+    "local_tests_passed": 1825
+  },
+  "viewer": {
+    "failed": [],
+    "observation_scope": "current public catalogue tables checked separately",
+    "pending": [],
+    "tables": [
+      "entities",
+      "jurisdictions",
+      "sources"
+    ]
+  }
+}

@@ -152,3 +152,12 @@ redacted. Twenty-seven focused delivery/CLI tests pass, with 100 percent deliver
 statement and branch coverage. Hosted retry after the correction remains pending.
 The prepared NZ publication decision stays explicitly pending; no rights/privacy
 approval has been supplied or fabricated.
+
+## Receiver metadata verified — 2026-08-31
+
+Retry PR #265 merged at 3d557bcf9cc9b86945f97e3340d9d6a9d0e0fd44 after all hosted checks passed. Run 33358508220 completed successfully; its downloaded receipt matches manifest 42d003245024432140ba2070c998c32779bbb587516bf0c62aeb32085c6a1558 and current revision 4e5a7832f6536e231d20292c1bffaae7861fd912. No new bytes were uploaded. The weekly metadata workflow is active. Raw acquisition, donor ownership and all source rights/privacy gates remain unchanged. See hosted-catalogue-verification-20260831.json.
+
+The corrected full local harness completed successfully: 1825 tests, 96.34 percent
+coverage, schema/parity/mutation gates, dependency audit, licence inventory,
+secret scan and validated 111-component SBOM. Earlier timing failures remain in
+the evidence history. Final track reconciliation passes 70 records with no errors.

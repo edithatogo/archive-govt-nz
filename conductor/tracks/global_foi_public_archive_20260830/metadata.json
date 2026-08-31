@@ -3,7 +3,7 @@
   "type": "feature",
   "status": "in_progress",
   "created_at": "2026-08-30T08:38:22Z",
-  "updated_at": "2026-08-31T04:42:46.912511+00:00",
+  "updated_at": "2026-08-31T04:54:06.597913+00:00",
   "description": "Global FOI source catalogue, metadata indexes, public raw preservation and automation repair; archive-govt-nz takeover approved.",
   "evidence_schema": "1.0",
   "approval_status": "approved",
@@ -55,7 +55,9 @@
     "approved_receiver": "archive-govt-nz",
     "source_adapter": "fyi-cli",
     "operational_state": "donor_until_verified_cutover",
-    "donor_nz_monitor": "disabled_manually_for_raw_retention_repair"
+    "donor_nz_monitor": "disabled_manually_for_raw_retention_repair",
+    "catalogue_publication_owner": "archive-govt-nz",
+    "catalogue_schedule": "weekly_metadata_only"
   },
   "recommendations": "recommendations.md",
   "evidence_contract": "chained-v1",
@@ -116,7 +118,9 @@
     "phase_3_attachment_receipt": "attachment-package-validation-20260831.json",
     "publication_receipt": "public-catalogue-delivery-20260831.json",
     "directory_publication_receipt": "directory-publication-20260831.json",
-    "catalogue_retry_receipt": "catalogue-retry-correction-20260831.json"
+    "catalogue_retry_receipt": "catalogue-retry-correction-20260831.json",
+    "hosted_catalogue_receipt": "hosted-catalogue-verification-20260831.json",
+    "local_publication_full_gate": "passed: 1825 tests, 96.34 percent coverage, all assurance stages"
   },
   "implementation": {
     "baseline_pr": "https://github.com/edithatogo/archive-govt-nz/pull/244",
@@ -170,7 +174,8 @@
     "attachment_gap_donor_merge": "7793293e488bd39d3fbb1e36ceb98820beb40313",
     "public_delivery_merge": "071e9541ee6e16771f417afa6b7cc4debc9e7483",
     "catalogue_workflow_merge": "78cd8fa732af55ea40b7595804f894ce7ea9c5e8",
-    "catalogue_workflow_run": 33357695865,
-    "catalogue_workflow_state": "failed_retry_correction_prepared"
+    "catalogue_workflow_run": 33358508220,
+    "catalogue_workflow_state": "success_metadata_only",
+    "catalogue_retry_merge": "3d557bcf9cc9b86945f97e3340d9d6a9d0e0fd44"
   }
 }
