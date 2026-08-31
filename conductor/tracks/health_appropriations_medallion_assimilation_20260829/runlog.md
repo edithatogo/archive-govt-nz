@@ -1515,3 +1515,15 @@ matching each other; all 23 originals unchanged. The older SQLite comparison
 raised a retained assertion: only writer-version bytes 98/99 differ (3.50.4 vs
 3.53.1); all schemas and 341 rows match. Gold/plots and other payloads match.
 See `originals-product-replay.md`. No Platinum or full recovery completion.
+## Forecast preflight local assurance — 2026-08-31T16:17:15Z
+
+Checkpoint `a85ca41`: 92 focused tests, 100% critical coverage (131 statements,
+52 branches), independent review and cold unfiltered 66/66 mutation kills pass.
+Four final-code synthetic packages match all 16 pre-change output files exactly;
+originals are unchanged. Initial unsupported-keyword, tuple/list and missing-scope
+red failures were resolved; no test/gate was weakened. Full native/hosted delivery
+remain pending. See [forecast-preflight.md](forecast-preflight.md).
+
+Forecast native assurance completed at `2026-08-31T16:30:38Z`: exit zero at
+`8ace367`, 3,414 tests/97.18%, all gates passed. Exact log pin and retained
+failure history are in `forecast-preflight.md`; hosted delivery remains pending.

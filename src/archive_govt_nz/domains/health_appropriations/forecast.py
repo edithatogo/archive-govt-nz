@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 from dataclasses import dataclass
 from decimal import Decimal
 from io import BytesIO
@@ -263,8 +264,17 @@ def normalize_forecast_workbook(
     observed_at: str,
     source_vintage: str,
     source_locator: str,
+    dry_run: bool = False,
 ) -> dict[str, object]:
-    """Extract a verified BEFU/HYEFU summary without interpreting formula caches."""
+    """Inspect or extract a verified summary without interpreting formula caches.
+
+    Existing callers still write by default. Explicit ``dry_run=True`` reads
+    and validates the same source but creates no Arrow tables or output state;
+    rejected amounts remain partial, never a successful plan. This is not a
+    serialization, filesystem-write or publication-readiness check.
+    """
+    if type(dry_run) is not bool:
+        raise ValueError("forecast_dry_run_type")
     if profile not in _SHEETS:
         raise ValueError("unsupported_forecast_profile")
     context = source_context(
@@ -300,18 +310,15 @@ def normalize_forecast_workbook(
         for name in ("normalized", "rejected", "context", "preserved_only")
     }
     counts["inventoried_cells"] = len(dispositions)
-    outputs = {
-        "forecast_facts.parquet": pa.Table.from_pylist(facts, schema=SILVER_SCHEMA),
-        "field_lineage.parquet": pa.Table.from_pylist(lineage, schema=LINEAGE_SCHEMA),
-        "cell_dispositions.parquet": pa.Table.from_pylist(
-            dispositions, schema=_CELL_SCHEMA
-        ),
-    }
     receipt = {
         "schema_version": "archive-govt-nz.health-forecast-extraction/v1",
         "transformation_id": _TRANSFORMATION,
         "profile": profile,
-        "status": "partial" if counts["rejected"] else "passed",
+        "status": "partial"
+        if counts["rejected"]
+        else "planned"
+        if dry_run
+        else "passed",
         "source_object_sha256": expected_sha256,
         "source_locator": source_locator,
         "source_vintage": source_vintage,
@@ -322,5 +329,17 @@ def normalize_forecast_workbook(
         "disposition_scope": "nonempty_cells_plus_selected_inputs",
         "excluded_sheets": excluded,
         "workbook_inventory": inventory,
+    }
+    if dry_run:
+        return {
+            **json.loads(encode_json(receipt)),
+            "preflight_scope": "source_validation_only",
+        }
+    outputs = {
+        "forecast_facts.parquet": pa.Table.from_pylist(facts, schema=SILVER_SCHEMA),
+        "field_lineage.parquet": pa.Table.from_pylist(lineage, schema=LINEAGE_SCHEMA),
+        "cell_dispositions.parquet": pa.Table.from_pylist(
+            dispositions, schema=_CELL_SCHEMA
+        ),
     }
     return write_workbook_outputs(output_dir, outputs, receipt)

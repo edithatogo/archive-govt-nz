@@ -1,5 +1,15 @@
 # Self-Review
 
+## Forecast explicit preflight — 2026-08-31 UTC
+
+Independent source/test review found no actionable issue. The explicit dry
+path has source-validation-only scope, never Arrow/package-writer execution,
+and retains rejected/partial status. Strict booleans prevent truthy write-mode
+ambiguity. All four prior written packages are byte-identical against a
+pre-change baseline. Combined 92 tests/100% critical coverage and 66/66 cold
+unfiltered mutants pass. Native and hosted delivery remain pending; see
+[forecast-preflight.md](forecast-preflight.md). No originals were changed.
+
 ## Quarterly GDP literal profile — 2026-08-31
 
 - Source identity, actual-versus-adjusted and expenditure-versus-income
@@ -677,3 +687,7 @@ failed older compatibility-byte comparison instead of normalizing its header:
 SQLite versions differ, only offsets 98/99 change, schemas/341 rows and all
 other payloads match. Preserve both versions and exact manifests. No broad
 AC-12, source-area, rights or publication conclusion follows.
+
+Forecast preflight follow-up: full native harness passed at `8ace367` with
+3,414 tests and all gates. This supersedes the earlier native-pending status
+only; hosted delivery and full source/rights/recovery phases remain separate.
