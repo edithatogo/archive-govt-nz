@@ -1283,3 +1283,15 @@ both original objects, totaling 449,487 and 337,077 bytes respectively.
 No source/package/candidate write or workbook execution occurred. Functional
 commit `7a0420e`; main `6c23ba8` integrated without conflict before the native
 run. Entire incoming machine ledger is retained; snapshot evidence is appended.
+
+## Native assurance — 2026-08-31
+
+The required `COVERAGE_CORE=ctrace PYTHON_JIT=0 PYTEST_XDIST_AUTO_NUM_WORKERS=4 ./scripts/validate.sh`
+passed at `b649de6` with exit 0: 2,918 tests, eight warnings, 68.44 seconds,
+97.10% coverage; 74 Conductor tracks, format/lint/strict typing, 41 schemas/31
+samples, 9/9 parity, all repository mutation/security/supply-chain gates and
+111-component validated SBOM. CAS throughput was 512.18 MB/s. Log SHA-256:
+`703d69135ac8fb84a2759303f36306fc1e26b738bf6b6636ac01d018789c4328`.
+Two owned timestamp-only fixture diffs were restored after the process ended.
+Hosted assurance remains pending; originals, derivatives and publication are
+unchanged. This successful harness does not add a semantic or rights claim.

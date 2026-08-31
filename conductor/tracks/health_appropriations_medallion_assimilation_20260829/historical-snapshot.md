@@ -44,3 +44,15 @@ and `aee4578f1ee83f8c1ede63e36e840c6cd2140df8c6f463e71ec93da9e4e7d75a`.
 Original sizes are 232,417 and 116,265 bytes. No original, package, candidate or
 publication was changed. This is transport evidence, not historical rights
 clearance or a replacement for source-semantic reconciliation.
+
+## Native assurance — 2026-08-31
+
+The required `COVERAGE_CORE=ctrace PYTHON_JIT=0 PYTEST_XDIST_AUTO_NUM_WORKERS=4 ./scripts/validate.sh`
+passed at `b649de6` with exit 0: 2,918 tests, eight warnings, 68.44 seconds,
+97.10% coverage; 74 Conductor tracks, format/lint/strict typing, 41 schemas/31
+samples, 9/9 parity, all repository mutation/security/supply-chain gates and
+111-component validated SBOM. CAS throughput was 512.18 MB/s. Log SHA-256:
+`703d69135ac8fb84a2759303f36306fc1e26b738bf6b6636ac01d018789c4328`.
+Two owned timestamp-only fixture diffs were restored after the process ended.
+Hosted assurance remains pending; originals, derivatives and publication are
+unchanged. This successful harness does not add a semantic or rights claim.
