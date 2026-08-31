@@ -1,5 +1,17 @@
 # Run Log
 
+## Source plot contracts — 2026-08-31 UTC
+
+- Began with a missing-module red test; five semantic tests now pass with
+  100% line/branch coverage. First unfiltered one-worker mutation check killed
+  21/26 mutants; five survived (JSON policy and segment membership), report
+  `12154c17d7cd08963998f76bdfad15651503603e064fb624c6c6e30ab8a3d9a7`.
+  Strengthen exact segment-membership and serialization contracts before
+  claiming mutation completion. Lint also identified one long line to format.
+- Gold draft PR #261 has no runs because it conflicts with intervening main
+  `a17b0fd` (FOI attachment schema registration); reconcile both registrations
+  without changing FOI code. No hosted pass or plot rendering claimed.
+
 ## Verified Gold persistence — 2026-08-30 UTC
 
 - Functional commit `b38069c`, review fix `0d864d4`: 46 focused tests at
