@@ -106,3 +106,15 @@ with all 70 tests in 176.70 seconds. The retained JSON report SHA256 is
 `fab4bd25072085df6c9db155c85bbe38acfb807a8a054362f93afc5014c2f7d5`.
 Native validation follows this integrated checkpoint; no source/package writes
 were involved in the synthetic tests or mutation run.
+
+The unchanged repository-native harness completed successfully at `f6bcf14`:
+4,082 tests, eight existing SQLite resource warnings, 166.27 seconds, 97.32%
+coverage; 42 schemas/32 representative documents; parity 9/9; all native mutation,
+hygiene, benchmark, dependency audit, licence inventory, secrets and 111-component
+SBOM gates passed. Log SHA256:
+`a32af6b6e90c7f22f02eb2b5c9587dbdc389f7b88a256f5482429e7b78ba81ed`.
+Source `94da44ef8bb210a0c22cdd817013259f83592fb4cf4a7ce6cb2b1f3a59e03861`
+and final tests `5e1fbeb556d2e02d0c492241f2deb0917b1d6c0e1d57534d613eda5912c948c2`
+were unchanged. Two unrelated test-generated timestamp-only fixture changes
+were restored after the harness ended. Hosted delivery and the independent
+retained-package replay are separate, pending receipts at this checkpoint.
