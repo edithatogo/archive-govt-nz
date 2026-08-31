@@ -1,0 +1,39 @@
+{
+  "handoffs": [
+    {
+      "id": "LINEAGE-TO-STATE",
+      "from_prompt": 2,
+      "to_prompt": 3,
+      "status": "passed",
+      "artifact": "evidence/migrations/corpus-legislation-nz/final-lineage/receipt.json",
+      "boundary": "Lineage is not operational-state migration; Prompt 03 independently verifies the retained artifact."
+    },
+    {
+      "id": "VERIFIED-CANDIDATE-TO-MERGE",
+      "from_prompt": 3,
+      "to_prompt": 4,
+      "status": "blocked_external",
+      "artifact": "evidence/migrations/corpus-legislation-nz/final-donor-state/verification-02/prompt04-inventory.json",
+      "artifact_sha256": "61d054a24e39792cdef21783c68c4f5bb31903139608fc5854cdd66e9b68aa7e",
+      "boundary": "Verified local candidate only. Obtain Prompt 04, verify current target state and rehash input before any merge."
+    },
+    {
+      "id": "ZENODO-VERSION-CONCEPT-LABEL",
+      "from_prompt": 1,
+      "to_prompt": null,
+      "status": "blocked_external",
+      "artifact": "live-observations.json",
+      "boundary": "Version DOI 20592540 was labelled concept in the old record; live concept is 20592539. Exact specialist ownership awaits missing prompt texts. No metadata mutation authorized or performed."
+    },
+    {
+      "id": "ADDITIONAL-WORKFLOW-DIAGNOSTICS",
+      "from_prompt": 3,
+      "to_prompt": null,
+      "status": "blocked_external",
+      "artifact": "evidence/migrations/corpus-legislation-nz/final-donor-state/workflow-lint-handoff.json",
+      "boundary": "Two unchanged SC2086 findings from additional actionlint diagnostics. Required workflow-policy checks pass. Exact specialist owner awaits missing scope; no suppression or workflow change."
+    }
+  ],
+  "unique_material_defect_ownership_gate": "blocked_external",
+  "reason": "Missing specialist texts prevent exact assignment of publication and workflow findings."
+}

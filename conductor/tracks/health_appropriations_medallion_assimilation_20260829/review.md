@@ -1,5 +1,23 @@
 # Self-Review
 
+## Additive inventory planner — 2026-08-31 UTC
+
+Independent read-only source/test review found no actionable correctness issue
+within the explicit reviewed-pin, fixity-and-metadata contract. Exact original
+and recorded-rights joins, all-four profile matching, full file-set agreement,
+and casefold/parent collisions are tested. Fixed profiles are immutable. No
+source, candidate, rights-state or external publication write occurs.
+
+Metadata overhead and a future root manifest are explicitly unplanned; empty
+replacement/deletion lists apply only to payload inventory. Arbitrary malformed
+nested typed inputs may raise KeyError/TypeError rather than a stable ValueError;
+they cannot produce a success inventory. A future CLI must add a redacted error
+boundary. Semantic package validation and publication approval remain separate.
+
+Critical coverage/mutation passed, but native assurance remains incomplete:
+exit 124 at 300 seconds with two unidentified failure markers and no final
+summary. Preserve that receipt and require exact-head hosted adjudication;
+do not mark the whole track or publication gate complete.
 ## Pharmac published-budget profile — 2026-08-31
 
 - Parent independently reviewed the strict table/physical-cell profile, fiscal

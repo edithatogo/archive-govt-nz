@@ -1,0 +1,80 @@
+{
+  "observed_at": "2026-08-31T13:01:55.956945+00:00",
+  "supersedes_quality_assessment": "full-validation-handoff.json; historical failed/interrupted attempts remain unchanged",
+  "validated_head": "db6434a9f183707ff6485c44fd213438137f25ed",
+  "full_harness": {
+    "command": "./scripts/validate.sh",
+    "exit_code": 0,
+    "tests_passed": 2344,
+    "coverage_percent": 96.9,
+    "log_sha256": "7a135aa3fa93e59b89b2db1965c60d3ed6b2617a30b3fce11ae07d6dceb6a86e",
+    "secret_scan": {
+      "status": "passed"
+    },
+    "dependency_audit": "passed; no known vulnerabilities",
+    "licenses": "passed",
+    "schemas": "41 schemas and 31 representative documents",
+    "parity": "9/9",
+    "all_repository_mutation_lanes": "passed",
+    "sbom_components": 111
+  },
+  "critical_verifier": {
+    "focused_tests": 102,
+    "line_coverage_percent": 100,
+    "branch_coverage_percent": 100,
+    "targeted_mutants_killed": 10,
+    "targeted_mutants_total": 10,
+    "source_sha256": "654ab72b5015d3df7e47d68362d3f2b64598c69aef003fa19ea32c2e2972080f"
+  },
+  "drive_recovery": {
+    "zip_sha256_rechecked": true,
+    "inventory_files_rehashed": 511,
+    "all_matched": true,
+    "original_package_modified": false
+  },
+  "hosted_checks": [
+    {
+      "name": "codecov/patch",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/edithatogo/archive-govt-nz/runs/99493401845"
+    },
+    {
+      "name": "CodeQL",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/edithatogo/archive-govt-nz/runs/99492475688"
+    },
+    {
+      "name": "lint",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/33393408829/job/99492129021"
+    },
+    {
+      "name": "analyze",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/33393408859/job/99492127835"
+    },
+    {
+      "name": "Assurance (ubuntu-latest)",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/33393408833/job/99492127687"
+    },
+    {
+      "name": "Assurance (windows-latest)",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/33393408833/job/99492127625"
+    },
+    {
+      "name": "Assurance (macos-latest)",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/33393408833/job/99492127443"
+    }
+  ],
+  "workflow_diagnostic_disposition": "Required workflow-policy tests pass locally and hosted. Additional standalone actionlint SC2086 findings remain outside owned scope and are handed off; no policy, threshold or scanner suppression changed. The earlier blanket merge-block interpretation of this extra diagnostic is superseded."
+}

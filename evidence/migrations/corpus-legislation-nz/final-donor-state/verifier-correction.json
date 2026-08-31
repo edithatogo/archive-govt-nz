@@ -1,0 +1,15 @@
+{
+  "supersedes_attempt": "verification-01",
+  "reason": "Verifier incorrectly required equal canonical and retrieved manifestation URIs and an explicit suffix. No source mismatch established.",
+  "evidence": {
+    "source_revision": "d9abc05fa648f8b2049fb443477bc8f97691cf7f",
+    "source_file": "src/archive_govt_nz/domains/legislation/corpus.py",
+    "source_sha256": "65866c8c49949f179cfa686adeda7db881c08bb5b94c944bfc4845f1a76b68e0",
+    "source_contract": "_resolve_targets preserves canonical_uri separately from manifestation source_url and replaces /latest with version_date; harvest normalisation records retrieved manifestation identity separately.",
+    "observed_explicit_format_uris": 152,
+    "observed_dated_page_uris": 348
+  },
+  "correction": "Accept dated HTML page URI; require preferred and retrieved URIs to identify the same official work and dated expression. All hash, schema and receipt gates unchanged.",
+  "superseding_attempt": "verification-02",
+  "source_bytes_modified": false
+}

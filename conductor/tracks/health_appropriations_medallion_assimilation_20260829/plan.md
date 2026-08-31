@@ -361,6 +361,16 @@ repository validation command. External gates block only their affected task.
 
 ### 5.2 Normalize direct official datasets
 
+- [~] Normalize the two retained HAIR2024 Ministry CSVs as separately
+  attributed published indicators, preserving exact tokens and unknown units,
+  real-price base and denominator methodology without semantic promotion.
+  [M-05, M-06, M-07, M-11, M-18; AC-05, AC-09, AC-11, AC-16]
+- [x] Characterize and independently rebuild the retained fiscal 1972–2025
+  Health/GDP selection using the existing strict adapter; retain 108 facts,
+  lineage, period transitions and explicit 2017–2024 GDP revisions without
+  replacing the 2024 edition or publishing. This is not whole-workbook or
+  full annual-edition coverage. [M-05, M-06, M-11; AC-05, AC-09, AC-11]
+
 - [ ] Promote eligible Vote Health Estimates/Supplementary Estimates and
   annual Budget expenditure/revenue data from Bronze to Silver, preserving
   source-specific labels and explicit coverage gaps. [M-05, M-06, M-11;
@@ -520,6 +530,11 @@ repository validation command. External gates block only their affected task.
   This bounded preflight does not establish derivative rights or full release
   readiness. [M-14, M-17, M-18; AC-14, AC-15, AC-16] (`1a3356a`; native
   2,219 tests and five mutation kills; hosted delivery remains separate)
+
+- [~] Add a read-only additive inventory for the four explicitly pinned
+  Budget-2026/CPI/BEFU-2026/HYEFU-2025 packages, verifying base bytes and exact
+  recorded source-rights joins without building, approving or publishing a
+  candidate. [M-03, M-04, M-14, M-17, M-18; AC-02, AC-14, AC-15, AC-16]
 
 - [ ] Add release-readiness negative tests for missing rights, incomplete
   source disposition, failed parity/recovery, stale evidence, non-pinned
