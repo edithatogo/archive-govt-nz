@@ -120,3 +120,12 @@ focused invocation named a nonexistent Conductor test path and collected no
 tests; the corrected invocation passed all 63 GDP/Conductor tests. Repository
 Conductor validation was rerun. Prior native assurance is not relabelled as a
 new integrated native pass; the new head requires fresh hosted checks.
+
+The Windows attempt on `43b2704` also failed only at the CAS benchmark:
+9.89 MB/s below the unchanged 15 MB/s threshold, run `33407966355`, job
+`99540166938`. One unchanged-head failed-job rerun passed, yielding all seven
+successful checks. No threshold, workflow or GDP code was changed. After PR307
+merged, main `5fc7fc8` integrated at `a905e6e`; the full incoming ledger prefix
+and both artifact links are preserved. The same 63 focused tests and 75-track
+Conductor validation pass. This new integration again requires fresh hosted
+checks; previous failures and the successful retry remain separately recorded.
