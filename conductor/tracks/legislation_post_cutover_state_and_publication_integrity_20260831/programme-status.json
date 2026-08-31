@@ -1,0 +1,533 @@
+{
+  "schema_version": "archive-govt-nz.legislation-programme/v1",
+  "parent_issue": 276,
+  "status": "blocked_external",
+  "target_baseline": "d6bc0c96c44488a75b7e98bd9cb95591eeb97a38",
+  "donor_head": "b40587f1b1aec7356a0f623916fcc8212397d283",
+  "allowed_states": [
+    "not_started",
+    "in_progress",
+    "blocked_external",
+    "failed",
+    "passed",
+    "superseded"
+  ],
+  "blocking_input": "Prompts 04–21 have not been supplied; exact specialist scopes, defect ownership and acceptance gates cannot be invented.",
+  "dimensions": {
+    "code_capability_migration": {
+      "state": "in_progress",
+      "evidence": "Prompt 02 lineage is merged; this does not certify all runtime capability migration."
+    },
+    "operational_state_migration": {
+      "state": "not_started",
+      "evidence": "Prompt 03 verified candidate only; Prompt 04 target-state merge has not been executed."
+    },
+    "corpus_custody_recoverability": {
+      "state": "in_progress",
+      "evidence": "Prompt 03 local ZIP and 511 files rehashed after drive reconnection. Redundant custody and independent restore remain later work."
+    },
+    "publication_identity_migration": {
+      "state": "blocked_external",
+      "evidence": "Live identity observations are separate from metadata migration, rights clearance and publication authority."
+    }
+  },
+  "shared_path_serialization": {
+    "owner_prompt": 1,
+    "paths": [
+      "conductor/tracks.md",
+      "parent issue registry",
+      "programme status and handoff index"
+    ],
+    "policy": "One active writer; specialist changes to shared files require a serial controller handoff. No concurrent registry edits."
+  },
+  "prompts": [
+    {
+      "owner_prompt": 2,
+      "registration": "scope_supplied",
+      "prerequisites": [],
+      "dependency_qualification": null,
+      "merge_order": "topological dependency order; no implied permission to merge",
+      "external_gates": [
+        "no publication, DOI mutation, donor unarchive, secrets/settings changes or destructive actions without explicit applicable authorization"
+      ],
+      "issue": 278,
+      "pr": 281,
+      "state": "passed",
+      "delivery": "merged",
+      "owned_paths": [
+        {
+          "path_parts": [
+            "conductor", "archive", "imported", "corpus-legislation-nz",
+            "b40587f1b1aec7356a0f623916fcc8212397d283"
+          ],
+          "kind": "directory"
+        },
+        "evidence/migrations/corpus-legislation-nz/final-lineage/",
+        "conductor/tracks/legislation_final_donor_lineage_20260831/"
+      ],
+      "non_owned_paths": [
+        "operational workflows",
+        "state manifests",
+        "CAS objects",
+        "Hugging Face metadata",
+        "Zenodo metadata",
+        "closeout claims"
+      ],
+      "acceptance_evidence": [
+        "15 commits explicitly disposed",
+        "216 imported files; immutable tree fixity",
+        "zero unaccounted lineage omissions",
+        "PR 281 merged; seven final-head checks successful"
+      ],
+      "handoff": "evidence/migrations/corpus-legislation-nz/final-lineage/receipt.json"
+    },
+    {
+      "owner_prompt": 3,
+      "registration": "scope_supplied",
+      "prerequisites": [],
+      "dependency_qualification": null,
+      "merge_order": "topological dependency order; no implied permission to merge",
+      "external_gates": [
+        "no publication, DOI mutation, donor unarchive, secrets/settings changes or destructive actions without explicit applicable authorization"
+      ],
+      "issue": 284,
+      "pr": 287,
+      "state": "in_progress",
+      "delivery": "draft_pr",
+      "owned_paths": [
+        "tools/verify_final_donor_state.py",
+        "tests/tools/test_verify_final_donor_state.py",
+        "evidence/migrations/corpus-legislation-nz/final-donor-state/",
+        "conductor/tracks/legislation_final_donor_state_verification_20260831/"
+      ],
+      "non_owned_paths": [
+        "target canonical state",
+        "workflows",
+        "seed registries",
+        "publication surfaces"
+      ],
+      "acceptance_evidence": [
+        "audited artifact outer digest",
+        "all observed roots, W/E/M and CAS identities",
+        "zero reconciliation mismatches",
+        "read-only local verified package"
+      ],
+      "handoff": "evidence/migrations/corpus-legislation-nz/final-donor-state/verification-02/prompt04-inventory.json"
+    },
+    {
+      "owner_prompt": 4,
+      "registration": "awaiting_prompt_text",
+      "prerequisites": [
+        3
+      ],
+      "dependency_qualification": "also verified current target state",
+      "merge_order": "topological dependency order; no implied permission to merge",
+      "external_gates": [
+        "no publication, DOI mutation, donor unarchive, secrets/settings changes or destructive actions without explicit applicable authorization"
+      ],
+      "issue": null,
+      "pr": null,
+      "state": "blocked_external",
+      "owned_paths": [],
+      "non_owned_paths": [
+        "all implementation paths until exact scope is supplied"
+      ],
+      "acceptance_evidence": [],
+      "handoff": null
+    },
+    {
+      "owner_prompt": 5,
+      "registration": "awaiting_prompt_text",
+      "prerequisites": [],
+      "dependency_qualification": null,
+      "merge_order": "topological dependency order; no implied permission to merge",
+      "external_gates": [
+        "no publication, DOI mutation, donor unarchive, secrets/settings changes or destructive actions without explicit applicable authorization"
+      ],
+      "issue": null,
+      "pr": null,
+      "state": "blocked_external",
+      "owned_paths": [],
+      "non_owned_paths": [
+        "all implementation paths until exact scope is supplied"
+      ],
+      "acceptance_evidence": [],
+      "handoff": null
+    },
+    {
+      "owner_prompt": 6,
+      "registration": "awaiting_prompt_text",
+      "prerequisites": [
+        5,
+        8,
+        11,
+        12
+      ],
+      "dependency_qualification": null,
+      "merge_order": "topological dependency order; no implied permission to merge",
+      "external_gates": [
+        "no publication, DOI mutation, donor unarchive, secrets/settings changes or destructive actions without explicit applicable authorization"
+      ],
+      "issue": null,
+      "pr": null,
+      "state": "blocked_external",
+      "owned_paths": [],
+      "non_owned_paths": [
+        "all implementation paths until exact scope is supplied"
+      ],
+      "acceptance_evidence": [],
+      "handoff": null
+    },
+    {
+      "owner_prompt": 7,
+      "registration": "awaiting_prompt_text",
+      "prerequisites": [
+        8,
+        11,
+        12
+      ],
+      "dependency_qualification": null,
+      "merge_order": "topological dependency order; no implied permission to merge",
+      "external_gates": [
+        "no publication, DOI mutation, donor unarchive, secrets/settings changes or destructive actions without explicit applicable authorization"
+      ],
+      "issue": null,
+      "pr": null,
+      "state": "blocked_external",
+      "owned_paths": [],
+      "non_owned_paths": [
+        "all implementation paths until exact scope is supplied"
+      ],
+      "acceptance_evidence": [],
+      "handoff": null
+    },
+    {
+      "owner_prompt": 8,
+      "registration": "awaiting_prompt_text",
+      "prerequisites": [],
+      "dependency_qualification": null,
+      "merge_order": "topological dependency order; no implied permission to merge",
+      "external_gates": [
+        "no publication, DOI mutation, donor unarchive, secrets/settings changes or destructive actions without explicit applicable authorization"
+      ],
+      "issue": null,
+      "pr": null,
+      "state": "blocked_external",
+      "owned_paths": [],
+      "non_owned_paths": [
+        "all implementation paths until exact scope is supplied"
+      ],
+      "acceptance_evidence": [],
+      "handoff": null
+    },
+    {
+      "owner_prompt": 9,
+      "registration": "awaiting_prompt_text",
+      "prerequisites": [
+        4,
+        8
+      ],
+      "dependency_qualification": null,
+      "merge_order": "topological dependency order; no implied permission to merge",
+      "external_gates": [
+        "no publication, DOI mutation, donor unarchive, secrets/settings changes or destructive actions without explicit applicable authorization"
+      ],
+      "issue": null,
+      "pr": null,
+      "state": "blocked_external",
+      "owned_paths": [],
+      "non_owned_paths": [
+        "all implementation paths until exact scope is supplied"
+      ],
+      "acceptance_evidence": [],
+      "handoff": null
+    },
+    {
+      "owner_prompt": 10,
+      "registration": "awaiting_prompt_text",
+      "prerequisites": [
+        9
+      ],
+      "dependency_qualification": null,
+      "merge_order": "topological dependency order; no implied permission to merge",
+      "external_gates": [
+        "no publication, DOI mutation, donor unarchive, secrets/settings changes or destructive actions without explicit applicable authorization"
+      ],
+      "issue": null,
+      "pr": null,
+      "state": "blocked_external",
+      "owned_paths": [],
+      "non_owned_paths": [
+        "all implementation paths until exact scope is supplied"
+      ],
+      "acceptance_evidence": [],
+      "handoff": null
+    },
+    {
+      "owner_prompt": 11,
+      "registration": "awaiting_prompt_text",
+      "prerequisites": [],
+      "dependency_qualification": null,
+      "merge_order": "topological dependency order; no implied permission to merge",
+      "external_gates": [
+        "no publication, DOI mutation, donor unarchive, secrets/settings changes or destructive actions without explicit applicable authorization"
+      ],
+      "issue": null,
+      "pr": null,
+      "state": "blocked_external",
+      "owned_paths": [],
+      "non_owned_paths": [
+        "all implementation paths until exact scope is supplied"
+      ],
+      "acceptance_evidence": [],
+      "handoff": null
+    },
+    {
+      "owner_prompt": 12,
+      "registration": "awaiting_prompt_text",
+      "prerequisites": [],
+      "dependency_qualification": null,
+      "merge_order": "topological dependency order; no implied permission to merge",
+      "external_gates": [
+        "no publication, DOI mutation, donor unarchive, secrets/settings changes or destructive actions without explicit applicable authorization"
+      ],
+      "issue": null,
+      "pr": null,
+      "state": "blocked_external",
+      "owned_paths": [],
+      "non_owned_paths": [
+        "all implementation paths until exact scope is supplied"
+      ],
+      "acceptance_evidence": [],
+      "handoff": null
+    },
+    {
+      "owner_prompt": 13,
+      "registration": "awaiting_prompt_text",
+      "prerequisites": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "dependency_qualification": "04–12 as applicable; qualify after prompt supplied",
+      "merge_order": "topological dependency order; no implied permission to merge",
+      "external_gates": [
+        "no publication, DOI mutation, donor unarchive, secrets/settings changes or destructive actions without explicit applicable authorization"
+      ],
+      "issue": null,
+      "pr": null,
+      "state": "blocked_external",
+      "owned_paths": [],
+      "non_owned_paths": [
+        "all implementation paths until exact scope is supplied"
+      ],
+      "acceptance_evidence": [],
+      "handoff": null
+    },
+    {
+      "owner_prompt": 14,
+      "registration": "awaiting_prompt_text",
+      "prerequisites": [
+        3,
+        4,
+        13
+      ],
+      "dependency_qualification": null,
+      "merge_order": "topological dependency order; no implied permission to merge",
+      "external_gates": [
+        "no publication, DOI mutation, donor unarchive, secrets/settings changes or destructive actions without explicit applicable authorization"
+      ],
+      "issue": null,
+      "pr": null,
+      "state": "blocked_external",
+      "owned_paths": [],
+      "non_owned_paths": [
+        "all implementation paths until exact scope is supplied"
+      ],
+      "acceptance_evidence": [],
+      "handoff": null
+    },
+    {
+      "owner_prompt": 15,
+      "registration": "awaiting_prompt_text",
+      "prerequisites": [
+        4,
+        9,
+        12,
+        13,
+        14
+      ],
+      "dependency_qualification": null,
+      "merge_order": "topological dependency order; no implied permission to merge",
+      "external_gates": [
+        "no publication, DOI mutation, donor unarchive, secrets/settings changes or destructive actions without explicit applicable authorization"
+      ],
+      "issue": null,
+      "pr": null,
+      "state": "blocked_external",
+      "owned_paths": [],
+      "non_owned_paths": [
+        "all implementation paths until exact scope is supplied"
+      ],
+      "acceptance_evidence": [],
+      "handoff": null
+    },
+    {
+      "owner_prompt": 16,
+      "registration": "awaiting_prompt_text",
+      "prerequisites": [],
+      "dependency_qualification": null,
+      "merge_order": "topological dependency order; no implied permission to merge",
+      "external_gates": [
+        "no publication, DOI mutation, donor unarchive, secrets/settings changes or destructive actions without explicit applicable authorization"
+      ],
+      "issue": null,
+      "pr": null,
+      "state": "blocked_external",
+      "owned_paths": [],
+      "non_owned_paths": [
+        "all implementation paths until exact scope is supplied"
+      ],
+      "acceptance_evidence": [],
+      "handoff": null
+    },
+    {
+      "owner_prompt": 17,
+      "registration": "awaiting_prompt_text",
+      "prerequisites": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "dependency_qualification": "substantive outputs of 02–16",
+      "merge_order": "topological dependency order; no implied permission to merge",
+      "external_gates": [
+        "no publication, DOI mutation, donor unarchive, secrets/settings changes or destructive actions without explicit applicable authorization"
+      ],
+      "issue": null,
+      "pr": null,
+      "state": "blocked_external",
+      "owned_paths": [],
+      "non_owned_paths": [
+        "all implementation paths until exact scope is supplied"
+      ],
+      "acceptance_evidence": [],
+      "handoff": null
+    },
+    {
+      "owner_prompt": 18,
+      "registration": "awaiting_prompt_text",
+      "prerequisites": [],
+      "dependency_qualification": null,
+      "merge_order": "topological dependency order; no implied permission to merge",
+      "external_gates": [
+        "no publication, DOI mutation, donor unarchive, secrets/settings changes or destructive actions without explicit applicable authorization"
+      ],
+      "issue": null,
+      "pr": null,
+      "state": "blocked_external",
+      "owned_paths": [],
+      "non_owned_paths": [
+        "all implementation paths until exact scope is supplied"
+      ],
+      "acceptance_evidence": [],
+      "handoff": null
+    },
+    {
+      "owner_prompt": 19,
+      "registration": "awaiting_prompt_text",
+      "prerequisites": [],
+      "dependency_qualification": null,
+      "merge_order": "topological dependency order; no implied permission to merge",
+      "external_gates": [
+        "no publication, DOI mutation, donor unarchive, secrets/settings changes or destructive actions without explicit applicable authorization"
+      ],
+      "issue": null,
+      "pr": null,
+      "state": "blocked_external",
+      "owned_paths": [],
+      "non_owned_paths": [
+        "all implementation paths until exact scope is supplied"
+      ],
+      "acceptance_evidence": [],
+      "handoff": null
+    },
+    {
+      "owner_prompt": 20,
+      "registration": "awaiting_prompt_text",
+      "prerequisites": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "dependency_qualification": "after all implementation PRs integrated",
+      "merge_order": "topological dependency order; no implied permission to merge",
+      "external_gates": [
+        "no publication, DOI mutation, donor unarchive, secrets/settings changes or destructive actions without explicit applicable authorization"
+      ],
+      "issue": null,
+      "pr": null,
+      "state": "blocked_external",
+      "owned_paths": [],
+      "non_owned_paths": [
+        "all implementation paths until exact scope is supplied"
+      ],
+      "acceptance_evidence": [],
+      "handoff": null
+    },
+    {
+      "owner_prompt": 21,
+      "registration": "awaiting_prompt_text",
+      "prerequisites": [
+        20
+      ],
+      "dependency_qualification": "terminal independent gate",
+      "merge_order": "topological dependency order; no implied permission to merge",
+      "external_gates": [
+        "no publication, DOI mutation, donor unarchive, secrets/settings changes or destructive actions without explicit applicable authorization"
+      ],
+      "issue": null,
+      "pr": null,
+      "state": "blocked_external",
+      "owned_paths": [],
+      "non_owned_paths": [
+        "all implementation paths until exact scope is supplied"
+      ],
+      "acceptance_evidence": [],
+      "handoff": null
+    }
+  ]
+}

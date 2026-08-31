@@ -1,0 +1,10 @@
+{
+  "id": "legislation_post_cutover_state_and_publication_integrity_20260831",
+  "track_id": "legislation_post_cutover_state_and_publication_integrity_20260831",
+  "type": "chore",
+  "status": "in_progress",
+  "description": "Prompt 01 controller and serial dependency registration",
+  "issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/276",
+  "created_at": "2026-08-31",
+  "updated_at": "2026-08-31"
+}
