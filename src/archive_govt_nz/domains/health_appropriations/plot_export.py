@@ -134,12 +134,17 @@ def _draw(axis: Any, plot: dict[str, Any]) -> None:  # noqa: ANN401 - Matplotlib
         axis.grid(axis="y")
 
 
-def figure_for_contract(plot: dict[str, Any]) -> Figure:
-    """Build an unregistered Agg figure; callers own saving/clearing it."""
+def _checked_count(plot: dict[str, Any]) -> int:
     count = sum(len(group["points"]) for group in plot["series"])
     if count > _MAX_POINTS or len(plot["series"]) > _MAX_SERIES:
         message = "plot_resource_limit"
         raise ValueError(message)
+    return count
+
+
+def figure_for_contract(plot: dict[str, Any]) -> Figure:
+    """Build an unregistered Agg figure; callers own saving/clearing it."""
+    count = _checked_count(plot)
     with mpl.rc_context({**mpl.rcParamsDefault, **_STYLE}):
         figure = Figure(figsize=(14, 8), dpi=100)
         FigureCanvasAgg(figure)
@@ -244,8 +249,7 @@ def _export(gold: Path, pin: str, output: Path, *, dry_run: bool) -> dict[str, A
             "backend": "Agg",
         },
         "point_counts": {
-            name: sum(len(group["points"]) for group in plot["series"])
-            for name, plot in contracts.items()
+            name: _checked_count(plot) for name, plot in contracts.items()
         },
         "omission_counts": {
             name: len(plot["omissions"]) for name, plot in contracts.items()

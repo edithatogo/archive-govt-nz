@@ -3,12 +3,18 @@
 import hashlib
 import json
 from pathlib import Path
+from typing import Any
 
 import matplotlib as mpl
 import pytest
 from jsonschema import Draft202012Validator
+from matplotlib.colors import to_rgba
 from matplotlib.patches import Rectangle
-from tests.domains.health_appropriations.test_plot_contracts import historical, tables
+from tests.domains.health_appropriations.test_plot_contracts import (
+    budget,
+    historical,
+    tables,
+)
 
 from archive_govt_nz.cli import health_appropriations_render_plots
 from archive_govt_nz.domains.health_appropriations import plot_export as export
@@ -16,6 +22,7 @@ from archive_govt_nz.domains.health_appropriations.gold_export import export_gol
 from archive_govt_nz.domains.health_appropriations.plot_contracts import (
     build_plot_contracts,
 )
+from archive_govt_nz.domains.health_appropriations.plot_export import _save_plot
 
 
 @pytest.fixture
@@ -60,11 +67,27 @@ def test_figure_marks_preserve_zero_and_negative_values() -> None:
         assert axis.get_title() == contract["title"]
         assert axis.get_xlabel() == contract["xlabel"]
         assert axis.get_ylabel() == contract["ylabel"]
+        expected_count = sum(len(series["points"]) for series in contract["series"])
+        assert (
+            figure.texts[0]
+            .get_text()
+            .startswith(f"{expected_count} plotted observations;")
+        )
+        assert axis.get_axisbelow() is True
+        assert not axis.spines["top"].get_visible()
+        assert not axis.spines["right"].get_visible()
+        assert axis.title.get_usetex() is False
+        assert axis.title.get_parse_math() is False
+        if not contract["series"]:
+            assert "No eligible observations" in [
+                text.get_text() for text in axis.texts
+            ]
         if name == "historical_health_spending_yoy_growth.png":
             assert len(axis.patches) == 1
             patch = axis.patches[0]
             assert isinstance(patch, Rectangle)
             assert patch.get_height() == 0
+            assert patch.get_facecolor() == to_rgba("#2563eb")
         if contract["kind"] == "barh":
             patch = axis.patches[0]
             assert isinstance(patch, Rectangle)
@@ -145,6 +168,48 @@ def test_breakdown_has_exact_value_labels_and_contrasting_hatches() -> None:
     figure.clear()
 
 
+def test_same_year_groups_do_not_overlap_and_palette_is_explicit() -> None:
+    source = tables()
+    source["recent_classification_trends.parquet"] = [
+        budget(2024),
+        budget(2024, amount_type="Main Estimates"),
+    ]
+    contract = build_plot_contracts(source)["recent_trends_health_classification.png"]
+    for series in contract["series"]:
+        series["points"][0]["y"] = "12.345"
+    figure = export.figure_for_contract(contract)
+    patches = figure.axes[0].patches
+    assert len(patches) == 2
+    for index, patch in enumerate(patches):
+        assert isinstance(patch, Rectangle)
+        assert patch.get_x() + patch.get_width() / 2 == pytest.approx(
+            2023.8 + index * 0.4
+        )
+        assert patch.get_width() == pytest.approx(0.4)
+        assert patch.get_facecolor() == to_rgba(("#2563eb", "#1d4ed8")[index])
+        assert patch.get_hatch() == ("", "//")[index]
+    assert "Estimated Actual" in figure.axes[0].get_legend_handles_labels()[1][0]
+    figure.clear()
+
+
+def test_segment_markers_and_labels_are_not_color_only() -> None:
+    source = tables()
+    source["historical_nominal.parquet"] = [
+        historical(2024),
+        historical(2025, accounting_basis="IFRS"),
+    ]
+    contract = build_plot_contracts(source)["historical_health_spending_nominal.png"]
+    figure = export.figure_for_contract(contract)
+    lines = figure.axes[0].lines
+    assert [line.get_marker() for line in lines] == ["o", "s"]
+    assert [line.get_color() for line in lines] == ["#2563eb", "#1d4ed8"]
+    assert all(
+        line.get_linewidth() == 1.4 and line.get_markersize() == 4 for line in lines
+    )
+    assert lines[0].get_label() == "2024 | Cash | 6 | aaaaaaaaaaaa"
+    figure.clear()
+
+
 @pytest.mark.parametrize("limit", ["_MAX_POINTS", "_MAX_SERIES"])
 def test_plot_resource_limit(limit: str, monkeypatch: pytest.MonkeyPatch) -> None:
     contract = build_plot_contracts(tables())["historical_health_spending_nominal.png"]
@@ -153,6 +218,17 @@ def test_plot_resource_limit(limit: str, monkeypatch: pytest.MonkeyPatch) -> Non
     monkeypatch.setattr(export, limit, 0)
     with pytest.raises(ValueError, match="plot_resource_limit"):
         export.figure_for_contract(contract)
+
+
+@pytest.mark.parametrize("limit", ["_MAX_POINTS", "_MAX_SERIES"])
+def test_preflight_checks_render_limits(
+    gold: tuple[Path, str], tmp_path: Path, monkeypatch: pytest.MonkeyPatch, limit: str
+) -> None:
+    monkeypatch.setattr(export, limit, 0)
+    output = tmp_path / "oversized"
+    with pytest.raises(ValueError, match="plot_export_failed:ValueError"):
+        export.render_plots(*gold, output)
+    assert not output.exists()
 
 
 def test_cli_preflight_render_and_redacted_failure(
@@ -183,3 +259,36 @@ def test_cli_preflight_render_and_redacted_failure(
     assert (
         json.loads(capsys.readouterr().out)["error"] == "plot_export_failed:ValueError"
     )
+
+
+def test_fast_export_protocol_and_real_single_png(
+    gold: tuple[Path, str], tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Keep transaction mutation tests fast; real six-PNG rebuilds run separately."""
+
+    def png_stub(plot: dict[str, Any], path: Path) -> None:
+        path.write_bytes(
+            b"\x89PNG\r\n\x1a\n" + json.dumps(plot, sort_keys=True).encode()
+        )
+
+    one, two = tmp_path / "fast-one", tmp_path / "fast-two"
+    with monkeypatch.context() as context:
+        context.setattr(export, "_save_plot", png_stub)
+        assert export.render_plots(*gold, one)["status"] == "planned"
+        assert not one.exists()
+        receipt = export.render_plots(*gold, one, dry_run=False)
+        assert receipt["status"] == "passed"
+        assert export.render_plots(*gold, two, dry_run=False) == receipt
+        assert len(list(one.iterdir())) == 8
+        for path in one.iterdir():
+            assert path.read_bytes() == (two / path.name).read_bytes()
+        for name, digest in receipt["output_sha256"].items():
+            assert hashlib.sha256((one / name).read_bytes()).hexdigest() == digest
+    # Restore the real (including potentially mutated) writer before exercising it.
+    contract = build_plot_contracts(tables())["historical_health_spending_nominal.png"]
+    _save_plot(contract, tmp_path / "real-one.png")
+    with mpl.rc_context({"savefig.transparent": True, "savefig.facecolor": "pink"}):
+        _save_plot(contract, tmp_path / "real-two.png")
+    assert (tmp_path / "real-one.png").read_bytes() == (
+        tmp_path / "real-two.png"
+    ).read_bytes()

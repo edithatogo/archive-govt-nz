@@ -2,6 +2,31 @@
 
 ## Source plot contracts — 2026-08-31 UTC
 
+- Full pre-review-fix harness completed successfully: 1,904 tests, 96.48%
+  overall coverage, eight existing SQLite resource warnings, 40 schemas/30
+  documents, 70 Conductor tracks, 9/9 parity, all native mutation gates,
+  audit/licence/secret checks and 111-component SBOM. Command environment:
+  `COVERAGE_CORE=ctrace PYTHON_JIT=0 PYTEST_XDIST_AUTO_NUM_WORKERS=4` with
+  `./scripts/validate.sh`. Plot contracts/renderer killed all 83 selected
+  mutants (test selection as below), report
+  `08ad874967fcce964899fcf243e4e9860de31b508d374d77770492b2a0dd5121`.
+- Review found that dry-run checked Gold integrity but did not enforce the
+  point/series limits until actual rendering. Add red tests for both limits,
+  share the check with dry-run, and revalidate; the successful harness above
+  is evidence for the pre-fix code, not an automatic pass for later changes.
+
+- Reader mutation: 44/44 killed, zero survivors/timeouts/pardons, coverage
+  filtering disabled, two workers. Report
+  `bddf14e38306e763243a087be53ac0b11152f9d5e2a8a99ee4bf65c692c948bb`.
+- Full renderer tests passed (17 tests, 35.87 seconds), exceeding the mutation
+  worker's fixed 30-second per-mutant subprocess limit. Retain both full PNG
+  integration tests in normal validation. For renderer mutation only, use
+  16 unit/protocol tests (100% line/branch, 12.52 seconds), excluding the two
+  full six-PNG/CLI integrations. Transaction tests stub only PNG encoding in a
+  scoped patch; the real writer is restored and explicitly exercised twice,
+  including ambient settings. All mutants remain selected; disclose this test
+  selection rather than calling it an unfiltered full-suite mutation run.
+
 - First retained plot build and independent build agree on all output hashes;
   53 nominal, 48 growth, 53 GDP-share, four breakdown and six observations per
   recent classification. Growth omits five reason-coded comparisons. Original

@@ -1,5 +1,27 @@
 # Evidence
 
+## Gold delivery and source plot QA — 2026-08-31 UTC
+
+Gold PR #261 merged `15b47b946a27a47efd4715002f0c1aff563149d4` at
+04:50:48 UTC after all seven checks passed on head
+`3895434eea49dec019ae48bdcdf70626ae1b1c71` (CI run `33358094163`).
+Health-domain source/tests are unchanged between the checked head and merge;
+the complete trees differ because intervening RIopa work is included. Earlier
+local timing failures and the earlier Windows throughput failure remain
+recorded. Hosted success is not a retroactive local pass or an HF update.
+
+Source plots now have a pinned Gold reader, six pure contracts, deterministic
+Agg renderer and dry-run-first CLI. Corrected retained package
+`gold/raw-plots-20260831-v2` has manifest
+`a04b1b8785d7a4da67ad1b83d6449592838ed0359de792368bb8f150155786d2`.
+Its independent rebuild matches all eight files. All six views were inspected;
+growth gaps, tick spacing, negative values, hatch contrast and exact breakdown
+labels are explicit. Point counts: 53 nominal, 48 growth, 53 GDP shares, four
+breakdown, six Health and six unclassified; five growth omissions remain null.
+V1 remains preserved as a superseded QA build. Renderer focused validation is
+15 tests at 100% line/branch coverage. Whole-increment mutation/full assurance
+and hosted plot delivery are pending; neither publication nor originals changed.
+
 ## Verified Gold export — 2026-08-31 UTC
 
 Implementation `b38069ce5d560525e19dab22c90eca9dd3d20f3a`, provenance
