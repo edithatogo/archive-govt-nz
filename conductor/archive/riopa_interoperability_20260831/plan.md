@@ -13,11 +13,11 @@
 
 ## Phase 3: assurance
 
-- [ ] Run the full repository validation harness on Python 3.14 after this slice.
-- [ ] Run an agent-panel review of implementation and evidence.
-- [ ] Record hosted handoff evidence without claiming external participation or release.
+- [x] Run the full repository validation harness on Python 3.14 after this slice (PR #279 hosted Assurance on all three platforms, `174b766`).
+- [x] Run an agent-panel review of implementation and evidence (`delivery_audit`, `repair_272`, root; PR #279).
+- [x] Record hosted handoff evidence without claiming external participation or release (`hosted-closeout.json`).
 
 ## Review fixes
 
 - [x] Reject unqualified capture/legal states and explicitly disable claims while preserving source observations; verify negative paths and schema compatibility.
-- [ ] Complete full assurance and archive reconciliation after the correction passes hosted checks; retain the track as in progress until then.
+- [x] Complete full assurance and archive reconciliation after the correction passes hosted checks (PR #279 merged as `1b2d7c0`; broader gates remain outside this track).
