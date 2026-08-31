@@ -1,5 +1,82 @@
 # Run Log
 
+## Planner main integration checkpoint — 2026-08-31
+
+- Merged main `d6bc0c9` into the feature branch as `841bd5f`, preserving both
+  sides of three track-record conflicts. The complete incoming evidence ledger
+  remains an exact prefix followed by the planner event. Source/test hashes
+  remain unchanged; 102 focused tests passed in 9.91 seconds, targeted typing
+  passed, and Conductor validated 71 tracks. No second full harness is claimed.
+- One `uv run ruff` launch failed to initialize the shared uv cache with
+  `File exists`. Direct invocation of this clone's installed Ruff passed both
+  format and lint checks. No shared cache repair or dependency change occurred.
+
+## Additive inventory assurance checkpoint — 2026-08-31
+
+- Functional commit `c6d0e37` adds the read-only planner and synthetic tests.
+  Final critical run: 102 passed in 53.42 seconds; 100% line/branch coverage,
+  120 statements and 20 branches. Report SHA-256:
+  `1de80a359e4875a642d3bbfa27738159f416dc920830c2b814b1542f49c0ae1b`.
+- Cold, unfiltered mutation used all 102 tests, one worker, the unchanged
+  30-second timeout and zero allowed pardons, with no exclusions. All 78
+  mutations were killed; zero survivors, timeouts, errors, pardons or cache
+  hits. Exit zero in 567.73 seconds. Report SHA-256:
+  `e04e4f3bf0d394d4cea336ab7cdb3a414af999f3aec6b396d38e1f1bf82869a5`.
+- Final source SHA-256:
+  `ee64c8cfd1ec90404d706986e3a8236383f90baefeb7e80bc8bee8b61ee07aac`;
+  tests SHA-256:
+  `aebb8238f66a21b2c85d267df2cb787807b6af80ebdba161f8e54c09e2f12559`.
+  Ruff and targeted typing pass. Independent read-only review found no
+  actionable issue within the reviewed-root, fixity/metadata-only contract.
+- Required native command:
+  `COVERAGE_CORE=ctrace PYTHON_JIT=0 PYTEST_XDIST_AUTO_NUM_WORKERS=4
+  ./scripts/validate.sh`, CPython 3.14.6. Lock, Conductor (70 tracks), formatting
+  (1389 files), lint and typing passed. The test stage collected 2284 tests
+  with seed 2238017422, showed two failure markers and reached 97% plus further
+  progress before the unchanged 300-second deadline ended the harness with
+  exit 124. No traceback, final summary or coverage result was emitted.
+  Failure identities are unknown; this is NOT a full-suite pass or a claim
+  that the failures are unrelated. Post-test gates were not reached.
+  Native log SHA-256:
+  `b4d8c04ce220a9d2b25570b8e46c534f633733c511a5f3a574dea07ec11f4f0f`.
+- No owned workers remain. Two generated timestamp-only legislation receipts
+  were restored exactly. The stale lastfailed cache contains only the earlier
+  replaced, unparameterized permutation-property node, not identities for
+  this native run's failure markers. No heavy blind retry was made.
+- A second live read-only call with final source bytes produced exactly the
+  same inventory receipt hash as the first. Retained inputs/v4 bytes remain
+  unchanged. Hosted validation and publication approval remain separate.
+
+## Local additive inventory planner — 2026-08-31
+
+- Work is isolated in a new standalone clone from `113bac5`, not a shared
+  worktree or another actor's environment. No CLI or publication path is added.
+- Red: `uv run --locked pytest -q
+  tests/domains/health_appropriations/test_candidate_inventory.py --no-cov`
+  exited 2 because the planner module did not exist (3.77 seconds).
+- Initial implementation passed 15 tests. Expanded tests exposed a portable
+  fixture distinction: `MANIFEST.JSON` aliases the manifest on case-insensitive
+  filesystems and therefore fails fixity rather than the extra-file contract.
+  Both rejection paths are asserted, not bypassed.
+- The filesystem permutation property hit the unchanged Hypothesis 200 ms
+  deadline once at 773.43 ms, then took 18.01 ms on replay. Replaced random
+  filesystem permutations with all 24 explicit permutations, retaining a fast
+  generated invalid-pin property that fails before filesystem access. No
+  deadline, threshold or assertion was relaxed. Final focused run: 99 passed
+  in 9.75 seconds; Ruff passes. Critical coverage/mutation and native assurance
+  remain pending their coordinated resource slot.
+- A read-only live call verified all 94 retained v4 entries (39,390,246 bytes)
+  and the four explicitly pinned successor packages: 16 additional files,
+  1,965,259 bytes, including unchanged package manifests. All four original
+  hashes join exactly one complete capture row, v4 rights resource and v4
+  original. Local inventory receipt SHA-256:
+  `26102f7aa1ea2b4bce96ae9bf861d3838848d48606cd63bbc7ec19ad7fe86951`.
+- Inventory status is not semantic validation, legal assessment, candidate
+  creation or publication approval. Metadata overhead and a future root
+  manifest are not planned. Zero replacement/deletion applies to proposed
+  payload paths only. Older raw-run/compatibility/Gold/plot packages remain
+  outside these four fixed profiles; no rights state or archive byte changed.
+
 ## Plot mutation recovery and hosted readback — 2026-08-31
 
 - A coordinated retry in the standalone recovered clone retained the same

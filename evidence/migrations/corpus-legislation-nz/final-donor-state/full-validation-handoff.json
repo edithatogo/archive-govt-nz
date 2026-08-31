@@ -1,0 +1,56 @@
+{
+  "full_harness_exit_code": 124,
+  "test_stage_timeout_seconds": 300,
+  "pytest_result": {
+    "passed": 2281,
+    "failed": 3,
+    "coverage_percent": 96.9,
+    "seconds": 321.69
+  },
+  "isolated_recheck": {
+    "passed": 2,
+    "failed": 1,
+    "persistent_failure": "test_negative_control_8_acceptance_check_not_executed_rejected: nested pytest exceeds existing 10-second subprocess timeout"
+  },
+  "other_initial_failures": [
+    "test_deduplication_is_metamorphic_under_scope_order: Hypothesis slow generation health check",
+    "test_mcp_subprocess_initialization_and_tools: 5-second timeout"
+  ],
+  "unchanged_files": [
+    {
+      "path": "tests/tools/test_evaluate_legislation_completion.py",
+      "unchanged_from_baseline": true,
+      "sha256": "8eef096792df90ce151a3ef9d6842b67f413147c6901c29803aad0dfcc61f751"
+    },
+    {
+      "path": "tools/validate_contracts.py",
+      "unchanged_from_baseline": true,
+      "sha256": "71a2e83bcaf898a8c5b03c2226c630f9896082f377f607da597ef1df8d2d8e71"
+    },
+    {
+      "path": "tests/health/test_health_discovery.py",
+      "unchanged_from_baseline": true,
+      "sha256": "c7e1de3419df9fc714f912e407ce30d28dfff3ffff5f0798d9da32da2e3c9dd2"
+    },
+    {
+      "path": "tests/mcp/test_mcp_protocol.py",
+      "unchanged_from_baseline": true,
+      "sha256": "35c4a7a1117be60571e3f4ec6d0c93e7a16eab124e27f9cb16e97dffe368e56b"
+    }
+  ],
+  "handoff": "Investigate shared-runner timing and acceptance-check TimeoutExpired handling separately. No timeouts, health checks or quality thresholds changed. Full harness remains failed; isolated passes do not supersede it.",
+  "logs": [
+    {
+      "name": "full-validation-01.log",
+      "sha256": "a6052e791b3ec49b542f6155cccf0a7377839318f50b286a3e6677645a4c74e2"
+    },
+    {
+      "name": "full-failures-recheck-01.log",
+      "sha256": "2ab6bda6022f73a526d9cd9d241424b955ed67e3a5603be7be832214ca9d0171"
+    },
+    {
+      "name": "test-generated-evidence.patch",
+      "sha256": "300859699940cc72165c0d19ddf753d775f1ace9d9d29fce76ab5f14bea8fb24"
+    }
+  ]
+}
