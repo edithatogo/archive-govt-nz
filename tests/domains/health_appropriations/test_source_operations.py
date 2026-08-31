@@ -19,12 +19,18 @@ from hypothesis import given
 from hypothesis import strategies as st
 from jsonschema import Draft202012Validator, ValidationError
 from tests.domains.health_appropriations.test_cpi import HEADER, META
+from tests.domains.health_appropriations.test_gdp import workbook as gdp_fixture
+from tests.domains.health_appropriations.test_pharmac import (
+    fixture_source as pharmac_fixture,
+)
 from tests.domains.health_appropriations.test_qes import fixture as qes_fixture
 
 from archive_govt_nz import cli, mcp_server
 from archive_govt_nz.cli import app, health_appropriations_extract_source
 from archive_govt_nz.domains.health_appropriations import (
+    gdp,
     moh_indicators,
+    pharmac,
     source_operations,
 )
 from archive_govt_nz.mcp_server import Server, call_tool, list_tools
@@ -36,6 +42,8 @@ from archive_govt_nz.mcp_server import Server, call_tool, list_tools
         "moh-hair2024-fig27/v1",
         "moh-hair2024-fig28/v1",
         "qes-june2026-table8/v1",
+        "pharmac-cpb-20260807/v1",
+        "gdp-expenditure-actual-2026q1/v1",
     ]
 )
 def request_source(
@@ -63,6 +71,12 @@ def request_source(
         )
         source.write_bytes(content.getvalue().encode())
         vintage = "MoH-HAIR-2024"
+    elif profile == "pharmac-cpb-20260807/v1":
+        source, _ = pharmac_fixture(tmp_path)
+        vintage = "Pharmac-CPB-2026-08-07"
+    elif profile == "gdp-expenditure-actual-2026q1/v1":
+        gdp_fixture(source)
+        vintage = gdp.VINTAGE
     else:
         qes_fixture(source)
         vintage = "QES-2026-Q2"
@@ -93,6 +107,39 @@ def test_preflight_and_explicit_local_write(
     assert written["publication_state"] == "local_validation_only"
     assert len(written["output_sha256"]) == 3
     assert request_source.source.read_bytes() == before
+
+
+@pytest.mark.parametrize("family", ["pharmac", "gdp"])
+def test_extended_dispatch_preserves_source_specific_package(
+    tmp_path: Path, family: str
+) -> None:
+    if family == "pharmac":
+        source, pin = pharmac_fixture(tmp_path)
+        normalizer = pharmac.normalize_pharmac_budget
+        profile, vintage = "pharmac-cpb-20260807/v1", "Pharmac-CPB-2026-08-07"
+    else:
+        source = gdp_fixture(tmp_path / "source.xlsx")
+        pin = hashlib.sha256(source.read_bytes()).hexdigest()
+        normalizer = gdp.normalize_gdp
+        profile, vintage = "gdp-expenditure-actual-2026q1/v1", gdp.VINTAGE
+    before = source.read_bytes()
+    context = {
+        "expected_sha256": pin,
+        "source_vintage": vintage,
+        "source_locator": "https://example.invalid/source",
+        "observed_at": "2026-08-31T00:00:00Z",
+    }
+    direct = tmp_path / "direct"
+    raw = normalizer(source, direct, **context, dry_run=False)
+    destination = tmp_path / "dispatch"
+    request = source_operations.SourceRequest(source, destination, profile, **context)
+    result = source_operations.operate_source(request, dry_run=False)
+    assert result["status"] == "written_local"
+    assert result["counts"] == raw["counts"]
+    assert {p.name: p.read_bytes() for p in destination.iterdir()} == {
+        p.name: p.read_bytes() for p in direct.iterdir()
+    }
+    assert source.read_bytes() == before
 
 
 @pytest.mark.parametrize("flag", [None, 0, 1, "", "false", [], {}])

@@ -352,6 +352,14 @@ repository validation command. External gates block only their affected task.
   selection, source download or publication. [M-05, M-06, M-07, M-18; AC-05,
   AC-09, AC-16]
 
+- [x] Persist canonical Budget label occurrences in an exclusive local-only
+  package composed with the pinned Budget reader and original-byte verification.
+  Dry run serializes/caps all planned bytes without state creation; preserve
+  complete lineage accounting and partial failure evidence. No crosswalk,
+  spending-fact mutation or publication. [M-05, M-06, M-07, M-18; AC-05, AC-09, AC-16]
+  Native validation and two-build retained-input pilots pass; hosted delivery
+  remains separate. See [local-only receipt](./classification-export.md).
+
 - [x] Project verified Budget functional-classification source-label occurrences
   into the canonical dimension shape: four literal labels, local scheme,
   unknown scheme version/identifier and unmapped state; preserve per-source
@@ -540,7 +548,11 @@ repository validation command. External gates block only their affected task.
 
 ### 8.2 Implement bounded operations
 
-- [~] Wire the four approved CPI/Ministry/QES source profiles through a
+- [~] Extend the source-operation allowlist to exact Pharmac CPB and quarterly
+  GDP profiles after dependency delivery, retaining source-specific shapes,
+  compact counts, CLI default dry-run and forced-read-only MCP. Forecast's
+  missing no-write path remains a separate task. [M-15, M-18; AC-13, AC-16]
+- [x] Wire the four approved CPI/Ministry/QES source profiles through a
   dry-run-first CLI and forced-read-only MCP preflight, using compact typed
   redacted receipts without changing donor rebuild or archive-status semantics.
   [M-15, M-18; AC-13, AC-16]
