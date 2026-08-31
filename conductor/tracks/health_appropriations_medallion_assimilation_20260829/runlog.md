@@ -88,6 +88,18 @@
   incoming ledger prefix and original legacy prefix both verify. No full or
   mutation rerun was performed after recovery; their earlier limitations are
   not retroactively converted into passes. Hosted checks remain pending.
+## Budget hosted delivery and validation recovery — 2026-08-31 UTC
+
+- PR #273 observed merged at 10:59:47Z as `d0a36f1`, seven exact-head checks
+  successful; hosted Ubuntu passes 1,972 tests, eight warnings, native gates
+  and 112-component SBOM. Reader source/tests are unchanged at merge.
+- An active worktree/interpreter disappeared during the subsequent local
+  mutation run: 27 kills, 83 errors, exit 1. Its report is preserved; no cleanup
+  was performed by this task and no implementation was lost from pushed Git.
+- Recovered into an independent no-hardlinks clone outside the shared worktree
+  registry. Fresh cold/unfiltered mutation passes 110/110 kills, no survivors,
+  timeouts, errors, pardons or cache hits. Detailed hashes and boundaries are
+  in `raw-budget-successors.md`; no originals/publications changed.
 
 ## Budget successor consumer — 2026-08-31 UTC
 
@@ -996,3 +1008,18 @@ its change set.
 - Timestamp-only unrelated evidence churn was restored. No originals or
   published artifacts were modified. Live GitHub readback still reports the
   donor repository as unarchived; retirement remains outside this track.
+
+## 2026-08-31 — Standalone Budget receipt operations
+
+- Added matching pinned read-only CLI/MCP receipts and a strict shared schema.
+  Failures retain structured receipts while redacting source/parser diagnostics.
+- Fifty-two focused tests passed at 100% helper line/branch coverage; formatting,
+  lint, typing, 41 schemas/31 samples and 70-track Conductor validation passed.
+- Required native gate emitted 2,030 passed/two timing failures at 96.81% overall
+  coverage, then exited 124. Both unchanged failed tests passed in isolation.
+  This is not a complete local gate pass; hosted assurance remains separate.
+- Live retained Budget-2026 package verified 185 facts, 3,145 lineage rows and
+  all 6,451 dispositions. No original or published byte was changed.
+- Checkpoint/recovery into an independent clone preserved work during external
+  worktree removals. The precise receipt and browser blocker are documented in
+  [Budget operations](./budget-operations.md).

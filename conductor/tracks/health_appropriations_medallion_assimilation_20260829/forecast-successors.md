@@ -99,7 +99,10 @@ This is not full workbook-area or longitudinal-edition coverage.
   preserved both branches' evidence and all incoming ledger lines as a prefix;
   the unchanged forecast source passed all 50 focused tests again (9.46 s),
   and Conductor validation passed all 70 tracks. The full suite was not rerun
-  after that integration; exact-head hosted assurance remains pending.
+  after that integration. Main then advanced to `113bac5` (PR #280); a second
+  integration retained its completed Budget tasks and the single identical CPI
+  receipt already delivered there, with both forecast receipts appended.
+  Exact-head hosted assurance remains pending.
 - Hosted delivery remains pending; local assurance does not imply publication.
 
 Work was moved non-destructively to a standalone `--no-hardlinks` clone after

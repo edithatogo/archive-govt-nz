@@ -316,14 +316,18 @@ repository validation command. External gates block only their affected task.
   year/type/unit context, synthetic drift tests and independent OOXML pilot
   reconciliation. Keep all other fiscal tables and formula totals excluded.
   [M-05, M-06, M-07, M-11, M-18; AC-05, AC-09, AC-11, AC-16]
-- [~] Validate full 17-column Budget-2025/Budget-2026 synthetic layouts and
+- [x] Validate full 17-column Budget-2025/Budget-2026 synthetic layouts and
   cross-vintage non-pooling; independently reconcile the captured 2026 pilot
   against literal source XML, retaining its original and all dispositions.
   [M-06, M-07, M-11, M-18; AC-05, AC-09, AC-16]
-- [~] Add a bounded read-only consumer for pinned individual Budget extraction
+  (`525dd5f`; PR #273 merged `d0a36f1`, seven exact-head checks;
+  two byte-identical pilot builds and independent literal-XML reconciliation)
+- [x] Add a bounded read-only consumer for pinned individual Budget extraction
   packages, validating counts, source context, identity and complete lineage
   without assuming every source belongs to the donor's fixed four profiles.
   [M-05, M-07, M-10, M-15, M-18; AC-05, AC-08, AC-13, AC-16]
+  (`07029cc`; PR #273 merged `d0a36f1`, seven exact-head checks;
+  61 focused tests, 100% critical coverage and recovered 110/110 cold mutants)
 
 - [ ] Add versioned fixtures for each approved Vote Health, Budget,
   BEFU/HYEFU, Treasury fiscal, Ministry Vote Health, Pharmac CPB, CPI, wage and
@@ -447,6 +451,11 @@ repository validation command. External gates block only their affected task.
   M-19, S-04; AC-04, AC-09, AC-13]
 
 ### 8.2 Implement bounded operations
+
+- [~] Expose a compact hash-pinned standalone Budget-package verification
+  receipt through matching read-only CLI/MCP contracts. Reject missing,
+  partial or corrupt packages without creating state; retain not-evaluated
+  rights and package-only verification boundaries. [M-15, M-18; AC-13, AC-16]
 
 - [x] Expose hash-pinned read-only raw-run verification through CLI and MCP;
   reject missing, partial, corrupt and mismatched state without creating any

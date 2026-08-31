@@ -62,6 +62,13 @@ VALIDATION_PAIRS = (
         REPOSITORY_ROOT / "tests" / "fixtures" / "health-source-plots-sample-v1.json",
     ),
     (
+        REPOSITORY_ROOT / "schemas" / "health-budget-verification-v1.schema.json",
+        REPOSITORY_ROOT
+        / "tests"
+        / "fixtures"
+        / "health-budget-verification-sample-v1.json",
+    ),
+    (
         REPOSITORY_ROOT / "schemas" / "health-historical-reconciliation-v1.schema.json",
         REPOSITORY_ROOT
         / "tests"

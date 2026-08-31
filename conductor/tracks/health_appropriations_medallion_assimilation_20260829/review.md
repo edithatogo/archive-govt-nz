@@ -24,6 +24,15 @@
   25 timeouts, not 67 kills. No unresolved code finding is asserted resolved
   by these incomplete whole-repository/mutation results; hosted checks remain
   necessary. The track and this review-fix task remain in progress.
+## Budget assurance recovery — 2026-08-31 UTC
+
+- Hosted exact-head assurance is independently observed successful and merged;
+  it does not retroactively pass the earlier local 300-second timeout.
+- The interrupted mutation report is retained as 83 execution errors, not
+  successes. Recovery changed the isolated checkout/environment, not source,
+  tests, mutation selection or deadlines. All 110 cold mutants are now killed.
+- The two bounded Budget successor/reader tasks are complete. CLI/MCP exposure,
+  broader fiscal/contextual coverage and publication remain separate tasks.
 
 ## Budget successor consumer — 2026-08-31 UTC
 
@@ -486,3 +495,14 @@ reported as complete.
 - No original files or hosted datasets were changed. This does not complete
   the broader format-support contract, successor normalization or donor
   retirement. No unresolved finding blocks this bounded inventory change.
+
+## 2026-08-31 — Standalone Budget operational receipt review
+
+- The operational wrapper delegates all content checks to the existing pinned
+  reader, emits no records, and never creates missing state. Both success and
+  failure CLI/MCP contracts are tested through the public MCP handshake.
+- Fixed metadata/context bounds, strict count schemas and rights/publication
+  non-promotion prevent the receipt from claiming broader source acceptance.
+- Focused coverage is 100%; independent parent review found no implementation
+  finding. Native timing failures and their isolated passing reruns remain
+  explicitly recorded; complete hosted assurance is still required.
