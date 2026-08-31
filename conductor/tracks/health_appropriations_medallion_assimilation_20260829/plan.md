@@ -512,6 +512,12 @@ repository validation command. External gates block only their affected task.
 
 ### 7.1 Metadata and rights contracts first
 
+- [x] Add a bounded pure local provenance inventory for explicitly supplied
+  canonical historical and Budget classification product descriptors. Validate
+  exact structural schemas, safe identities and dependency closure without I/O,
+  fixity/eligibility claims or publication metadata. This does not complete
+  Platinum or whole-product recovery. [M-14, M-18; AC-14, AC-16]
+
 - [ ] Add failing contracts for schema-as-code, DCAT, Croissant, RO-Crate,
   PROV, estate cards, mixed/per-resource licensing, citations and fail-closed
   release readiness. Include missing, conflicting and incompatible rights
@@ -548,7 +554,7 @@ repository validation command. External gates block only their affected task.
   read-only plan, preserving old attempts and originals, with bounded snapshots,
   separate child/envelope verification, interruption evidence and no publication.
   [M-15, M-18; AC-13, AC-16]
-- [~] Add a read-only partial-rebuild planner joining pinned donor metadata,
+- [x] Add a read-only partial-rebuild planner joining pinned donor metadata,
   prior PLAN and explicit stage pins; verify selected originals and classify
   bounded stage fixity/structure reuse without copying or repairing attempts.
   Execution, semantic approval and publication remain separate. [M-15; AC-13]
@@ -562,7 +568,7 @@ repository validation command. External gates block only their affected task.
 
 ### 8.2 Implement bounded operations
 
-- [~] Expose only BEFU-2026/HYEFU-2025 successor profiles through the existing
+- [x] Expose only BEFU-2026/HYEFU-2025 successor profiles through the existing
   dry-run-first CLI and read-only MCP after explicit forecast API dependency
   validation. Preserve partial failures, exact counts and source-specific
   actual/forecast observations; no annual joins or publication. [M-15, M-18;

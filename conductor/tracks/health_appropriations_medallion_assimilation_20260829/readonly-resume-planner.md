@@ -58,4 +58,29 @@ Frozen source SHA-256:
 `f20b88a26ebb740c41116085146a931a7f5e370b29e5328426f8d2a01d3dd407`.
 Frozen test SHA-256:
 `7c7d5713baba0cd1f1f272b7c7f6eb74fce5b4e06db2571ee5e6d5a3961f642f`.
-Cold mutation and native harness receipts remain pending.
+Cold unfiltered mutation passed: 95/95 killed, zero timeouts/errors/pardons,
+zero cache hits, one worker, unchanged 30-second deadline; 102 tests in 170.21s.
+Report SHA-256 `2acfb161d6ece7ab070805ba397ef3e73d5ec2f91e30665ac1e01ee5ea7a822f`.
+
+The full native harness passed with exit 0 at
+`ce9c8b8b538530afabd2f6c9710d52a6092ab56f`: 3,797 tests, eight existing warnings,
+113.51s test time, 97.27863% overall coverage, 75 Conductor tracks, 42 schemas /
+32 samples, 9/9 differential parity, all native mutation/hygiene/security gates,
+and a validated 111-component SBOM. Runtime was CPython 3.14.6 / uv 0.11.8, with
+`COVERAGE_CORE=ctrace PYTHON_JIT=0 PYTEST_XDIST_AUTO_NUM_WORKERS=4` and an isolated
+environment/cache. Only two generated timestamp-only legislation receipts were
+restored after exit. No original or existing product bytes changed.
+
+Native log SHA-256:
+`809ae06436a4ead584c28e5a6bbf3af3b3ebc158e64ff1bca982f2dd8338f4f4`.
+Native coverage SHA-256:
+`a671ea4ef32622edf77798c2def4e3b5a9e79b4c9112204a6eb34124e0a80319`.
+Receipts remain under `/tmp/health-resume-planner.k6fMec-*`, not source Git.
+
+After native completion, ordinary merge `1139bca630fe56442fd2ebe817e155edb7f54324`
+incorporated reviewed, not-yet-merged PR #319 head
+`daa8a60c38a15fadb03ffbe16edfea00fc57c2ed`, including already delivered #318.
+The complete incoming evidence-ledger prefix is preserved. Source/test hashes
+above are unchanged; 155 focused planner/provenance tests passed in 14.68s,
+typing and all 75 Conductor tracks passed. Delivery is queued after #319 with
+fresh exact-head hosted checks; this is not a second full native run.
