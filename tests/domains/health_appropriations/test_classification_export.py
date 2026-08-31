@@ -50,6 +50,15 @@ def test_dry_run_and_deterministic_packages(tmp_path: Path) -> None:
     marker = json.loads((output / "LOCAL_CLASSIFICATION.json").read_bytes())
     assert marker["publication_state"] == "local_validation_only"
     assert marker["rights_state"] == "not_evaluated"
+    assert marker["self_contained_archive"] is False
+    assert marker["publication_approval"] == "not_granted"
+    assert marker["authoritative_mapping"] == "not_performed"
+    assert marker["input_manifest_sha256"] == source["manifest_sha256"]
+    assert (
+        marker["original_sha256"] == hashlib.sha256(original.read_bytes()).hexdigest()
+    )
+    assert marker["original_bytes"] == original.stat().st_size
+    assert marker["input_payload_sha256"] == source["manifest"]["output_sha256"]
     assert not (output / "MANIFEST.json").exists()
     assert len(marker["files"]) == 4
     for entry in marker["files"]:
@@ -309,8 +318,9 @@ def test_payloads_verified_before_marker(
     assert observed[1][1] is True
 
 
+@pytest.mark.parametrize("change", ["name", "metadata", "nullability", "rows", "value"])
 def test_serializer_schema_damage_fails_before_output(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, change: str
 ) -> None:
     source = inputs(tmp_path)
     output = tmp_path / "output"
@@ -319,7 +329,20 @@ def test_serializer_schema_damage_fails_before_output(
     def broken(
         table: pa.Table, where: pa.BufferOutputStream, *, compression: str, version: str
     ) -> None:
-        damaged = table.rename_columns(["broken", *table.column_names[1:]])
+        if change == "name":
+            damaged = table.rename_columns(["broken", *table.column_names[1:]])
+        elif change == "metadata":
+            damaged = table.replace_schema_metadata({b"tampered": b"metadata"})
+        elif change == "nullability":
+            field = table.schema.field(0)
+            altered = pa.field(field.name, field.type, nullable=not field.nullable)
+            damaged = table.cast(table.schema.set(0, altered))
+        elif change == "rows":
+            damaged = table.slice(0, 1)
+        else:
+            damaged = table.set_column(
+                0, table.schema.field(0), pa.array(["wrong"] * table.num_rows)
+            )
         writer(damaged, where, compression=compression, version=version)
 
     monkeypatch.setattr(pq, "write_table", broken)

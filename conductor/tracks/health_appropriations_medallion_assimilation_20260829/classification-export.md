@@ -39,14 +39,20 @@ after best-effort failure recording. The unchanged pure projection receipt
 still says it did not perform fixity verification; the exporter separately
 records the package/original snapshots it verified.
 
+The Budget reader's documented v1 limits remain: original timestamp spelling
+and original XLSX header ordering are not reconstructed. Hashing the original
+does not independently re-prove those semantic relationships or grant rights.
+
 ## Current assurance
 
-50 focused tests pass with 100% critical line and branch coverage (93 statements,
+54 focused tests pass with 100% critical line and branch coverage (93 statements,
 16 branches). Ruff and basedpyright pass. Source SHA256:
 `c6c8108e98b1d9872215d082c4898ac88b54407988ffde259d3fc05af918a254`.
-Test SHA256: `182d433b251d11140cd0139c2b202b1ae30683c421041bbbd5b8df90bdb98186`.
-Independent read-only re-review of those exact files found no actionable issue
-within the stated scope. Critical mutation and native validation are pending.
+Test SHA256: `2ac17ea2601a73e83d895be163130202f19c698699f014dd406071f81916ee88`.
+Independent read-only re-review found no actionable issue within the stated
+scope. Subsequent test-only strengthening independently checks metadata,
+nullability, row-count and value corruption; production is unchanged.
+Critical mutation and native validation are pending.
 
 Initial absent-module tests failed before implementation. A subsequent red test
 identified a failure-marker error masking the primary write failure. Review then
