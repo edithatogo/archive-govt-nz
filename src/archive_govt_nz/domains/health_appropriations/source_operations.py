@@ -12,6 +12,7 @@ from jsonschema import Draft202012Validator
 
 from archive_govt_nz.domains.health_appropriations import (
     cpi,
+    gdp,
     moh_indicators,
     pharmac,
     qes,
@@ -49,6 +50,12 @@ PROFILES = MappingProxyType(
             pharmac.TRANSFORMATION,
             ("facts", "lineage", "table_cells"),
             "pharmaceutical_budget_facts.parquet",
+            "cell_dispositions.parquet",
+        ),
+        "gdp-expenditure-actual-2026q1/v1": (
+            gdp.TRANSFORMATION,
+            ("facts", "lineage", "dispositions"),
+            "gdp_facts.parquet",
             "cell_dispositions.parquet",
         ),
     }
@@ -219,6 +226,10 @@ def _invoke(request: SourceRequest, *, dry_run: bool) -> dict[str, Any]:
         )
     if request.profile == "pharmac-cpb-20260807/v1":
         return pharmac.normalize_pharmac_budget(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile == "gdp-expenditure-actual-2026q1/v1":
+        return gdp.normalize_gdp(
             request.source, request.output_dir, **context, dry_run=dry_run
         )
     profile = {

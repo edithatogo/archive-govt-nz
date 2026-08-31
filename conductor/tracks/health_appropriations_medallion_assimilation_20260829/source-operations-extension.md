@@ -15,12 +15,15 @@ facts/lineage/table_cells, with pharmaceutical_budget_facts, field_lineage and
 cell_dispositions Parquet files. The existing adapter already supports true
 dry-run and exclusive new-local-directory writing.
 
-GDP inclusion depends on verified delivery of PR302. Until that dependency is
-integrated, this branch does not claim GDP operational support. The intended
-contract retains its quarterly current-price expenditure-measure actuals and
-unknown currency; it must not imply an annual aggregation or selected ratio
-denominator. Forecast's missing no-write capability remains a separate task;
-neither forecast profiles nor their default-writing behavior change here.
+The local stack uses PR302 dependency `98fcb0d03339fb108506254fd5d1666c772664e6`,
+not yet claimed delivered. Profile `gdp-expenditure-actual-2026q1/v1` retains
+the exact `StatsNZ-GDP-2026Q1` source contract: quarterly current-price
+expenditure-measure actuals and unknown currency, not annual aggregation or a
+selected ratio denominator. Counts remain facts/lineage/dispositions; the
+source-specific gdp_facts/field_lineage/cell_dispositions files are unchanged.
+Publication of this extension awaits verified PR302 dependency delivery.
+Forecast's missing no-write capability remains a separate task; neither
+forecast profiles nor their default-writing behavior change here.
 
 ## Current evidence
 
@@ -34,6 +37,13 @@ identical for the same synthetic original and context. No real source payload
 is committed or used by these tests. Critical coverage is 100% (66 statements,
 12 branches), with 177 tests passing in 13.44 seconds. Combined mutation/native
 and hosted assurance remain pending.
+
+The GDP profile likewise started with an expected unsupported-profile red test.
+All six profiles then pass 211 focused tests (10.13 seconds), Ruff and types.
+Both extended families have independent direct-adapter versus dispatch full
+package byte comparisons. Independent review found no actionable issue in the
+bounded allowlist/schema/parity delta. No source adapter or canonical metadata
+was modified.
 
 ## Preceding delivery
 

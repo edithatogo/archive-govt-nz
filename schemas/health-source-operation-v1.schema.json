@@ -31,7 +31,8 @@
         "moh-hair2024-fig27/v1",
         "moh-hair2024-fig28/v1",
         "qes-june2026-table8/v1",
-        "pharmac-cpb-20260807/v1"
+        "pharmac-cpb-20260807/v1",
+        "gdp-expenditure-actual-2026q1/v1"
       ]
     },
     "source_object_sha256": {
@@ -44,7 +45,8 @@
         "moh-hair2024-published-indicators/v1",
         "pharmac-published-budget-20260807/v1",
         "qes-june2026-table8-ordinary-hourly/v1",
-        "stats-nz-cpi-all-groups/v1"
+        "stats-nz-cpi-all-groups/v1",
+        "stats-nz-gdp-current-price-expenditure-actual-2026q1/v1"
       ]
     },
     "counts": {
@@ -393,6 +395,65 @@
               },
               "required": [
                 "pharmaceutical_budget_facts.parquet",
+                "field_lineage.parquet",
+                "cell_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "gdp-expenditure-actual-2026q1/v1"
+            },
+            "transformation_id": {
+              "const": "stats-nz-gdp-current-price-expenditure-actual-2026q1/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "lineage": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "dispositions": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "facts",
+                "lineage",
+                "dispositions"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "gdp_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "cell_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "gdp_facts.parquet",
                 "field_lineage.parquet",
                 "cell_dispositions.parquet"
               ]
