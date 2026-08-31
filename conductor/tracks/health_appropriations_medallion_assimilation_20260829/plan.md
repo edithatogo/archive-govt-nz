@@ -363,6 +363,11 @@ repository validation command. External gates block only their affected task.
 
 ### 5.3 Normalize analytical context
 
+- [~] Implement the bounded June2026 QES Table8 QEMQ.SASZ9A published
+  ordinary-time hourly earnings profile (nine quarters), with literal values,
+  unknown currency/sex/adjustment flags and all-cell dispositions; no deflator
+  selection or wage-adjusted spending. [M-05, M-06, M-07, M-12, M-18;
+  AC-05, AC-10, AC-16]
 - [x] Implement the bounded, exact nine-column CPIQ.SE9A quarterly source
   profile with Decimal values, independent NA/status retention, unknown-base
   flag, full source-row dispositions and lineage; validate independent local
