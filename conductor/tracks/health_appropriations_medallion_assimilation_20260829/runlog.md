@@ -2,6 +2,16 @@
 
 ## Source plot contracts — 2026-08-31 UTC
 
+- First retained plot build and independent build agree on all output hashes;
+  53 nominal, 48 growth, 53 GDP-share, four breakdown and six observations per
+  recent classification. Growth omits five reason-coded comparisons. Original
+  Gold manifest remains `ec68a03f597c7792da4337f2babfcb6615c2e6162a3125042c2b8ef6b7665835`.
+- Visual QA of all six PNGs found crowded growth year labels, categorical
+  compression of omitted years, low-contrast hatch strokes and insufficient
+  visibility for two very small breakdown values. Preserve `raw-plots-20260831-v1`
+  as a QA build. Add regression contracts, correct rendering, and create a new
+  version rather than overwriting it. V1 is not the final visual-QA pass.
+
 - Gold reader began with a missing-module red test; 22 focused tests pass at
   100% line/branch coverage. Renderer began red, then 10 tests passed with
   97.83% critical coverage: the uncovered resource-limit rejection still needs

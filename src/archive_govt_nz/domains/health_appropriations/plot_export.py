@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import json
 import math
+from decimal import Decimal
 from typing import TYPE_CHECKING, Any
 
 import matplotlib as mpl
@@ -12,7 +13,7 @@ import PIL
 from matplotlib.backends.backend_agg import FigureCanvasAgg
 from matplotlib.figure import Figure
 from matplotlib.ft2font import __freetype_version__
-from matplotlib.ticker import MaxNLocator
+from matplotlib.ticker import FuncFormatter, MaxNLocator
 
 from archive_govt_nz.domains.health_appropriations.gold_reader import read_verified_gold
 from archive_govt_nz.domains.health_appropriations.plot_contracts import (
@@ -70,8 +71,14 @@ def _finite(value: str) -> float:
 def _draw(axis: Any, plot: dict[str, Any]) -> None:  # noqa: ANN401 - Matplotlib axes runtime interface
     series = plot["series"]
     categories = sorted({point["x"] for group in series for point in group["points"]})
-    positions = {value: index for index, value in enumerate(categories)}
-    width = 0.8 / max(1, len(series))
+    positions = {
+        value: index if plot["kind"] == "barh" else value
+        for index, value in enumerate(categories)
+    }
+    members: dict[Any, list[int]] = {}
+    for index, group in enumerate(series):
+        for point in group["points"]:
+            members.setdefault(point["x"], []).append(index)
     for index, group in enumerate(series):
         x = [point["x"] for point in group["points"]]
         y = [_finite(point["y"]) for point in group["points"]]
@@ -88,27 +95,38 @@ def _draw(axis: Any, plot: dict[str, Any]) -> None:  # noqa: ANN401 - Matplotlib
                 label=label,
             )
         else:
+            widths = [0.8 / len(members[value]) for value in x]
             shifted = [
-                positions[value] + (index - (len(series) - 1) / 2) * width
-                for value in x
+                positions[value]
+                + (members[value].index(index) - (len(members[value]) - 1) / 2) * width
+                for value, width in zip(x, widths, strict=True)
             ]
             options = {
                 "color": ["white" if value < 0 else color for value in y],
-                "edgecolor": color,
+                "edgecolor": "#1e3a8a",
                 "linewidth": 1,
                 "hatch": _HATCHES[index % len(_HATCHES)],
                 "label": label,
             }
             if plot["kind"] == "barh":
-                axis.barh(shifted, y, height=width, **options)
+                bars = axis.barh(shifted, y, height=widths, **options)
+                axis.bar_label(
+                    bars,
+                    labels=[
+                        format(Decimal(point["y"]), ",f") for point in group["points"]
+                    ],
+                    padding=5,
+                    fontsize=9,
+                )
             else:
-                axis.bar(shifted, y, width=width, **options)
+                axis.bar(shifted, y, width=widths, **options)
     if plot["kind"] == "barh":
         axis.set_yticks(list(positions.values()), categories)
         axis.axvline(0, color="#525252", linewidth=0.8)
         axis.grid(axis="x")
+        axis.margins(x=0.2)
     elif plot["kind"] == "bar":
-        axis.set_xticks(list(positions.values()), categories)
+        axis.xaxis.set_major_locator(MaxNLocator(nbins=10, integer=True))
         axis.axhline(0, color="#525252", linewidth=0.8)
         axis.grid(axis="y")
     else:
@@ -129,8 +147,13 @@ def figure_for_contract(plot: dict[str, Any]) -> Figure:
         _draw(axis, plot)
         axis.set(title=plot["title"], xlabel=plot["xlabel"], ylabel=plot["ylabel"])
         axis.set_axisbelow(True)
-        axis.ticklabel_format(
-            axis="x" if plot["kind"] == "barh" else "y", style="plain", useOffset=False
+        value_axis = axis.xaxis if plot["kind"] == "barh" else axis.yaxis
+        value_axis.set_major_formatter(
+            FuncFormatter(
+                lambda value, _position: (
+                    f"{value:,.1f}" if "%" in plot["ylabel"] else f"{value:,.0f}"
+                )
+            )
         )
         figure.subplots_adjust(
             left=0.30 if plot["kind"] == "barh" else 0.12,

@@ -6,9 +6,11 @@ from pathlib import Path
 
 import matplotlib as mpl
 import pytest
+from jsonschema import Draft202012Validator
 from matplotlib.patches import Rectangle
-from tests.domains.health_appropriations.test_plot_contracts import tables
+from tests.domains.health_appropriations.test_plot_contracts import historical, tables
 
+from archive_govt_nz.cli import health_appropriations_render_plots
 from archive_govt_nz.domains.health_appropriations import plot_export as export
 from archive_govt_nz.domains.health_appropriations.gold_export import export_gold
 from archive_govt_nz.domains.health_appropriations.plot_contracts import (
@@ -46,6 +48,8 @@ def test_preflight_and_two_reproducible_builds(
             assert path.read_bytes().startswith(b"\x89PNG\r\n\x1a\n")
     assert receipt["gold_manifest_sha256"] == gold[1]
     assert len(receipt["output_sha256"]) == 7
+    schema = json.loads(Path("schemas/health-source-plots-v1.schema.json").read_text())
+    Draft202012Validator(schema).validate(receipt)
 
 
 def test_figure_marks_preserve_zero_and_negative_values() -> None:
@@ -58,11 +62,13 @@ def test_figure_marks_preserve_zero_and_negative_values() -> None:
         assert axis.get_ylabel() == contract["ylabel"]
         if name == "historical_health_spending_yoy_growth.png":
             assert len(axis.patches) == 1
-            assert isinstance(axis.patches[0], Rectangle)
-            assert axis.patches[0].get_height() == 0
+            patch = axis.patches[0]
+            assert isinstance(patch, Rectangle)
+            assert patch.get_height() == 0
         if contract["kind"] == "barh":
-            assert isinstance(axis.patches[0], Rectangle)
-            assert axis.patches[0].get_width() == -12.345
+            patch = axis.patches[0]
+            assert isinstance(patch, Rectangle)
+            assert patch.get_width() == -12.345
         figure.clear()
 
 
@@ -110,6 +116,35 @@ def test_nonfinite_display_values_rejected(value: str) -> None:
         export.figure_for_contract(contract)
 
 
+def test_temporal_bar_positions_preserve_year_gaps_and_sparse_ticks() -> None:
+    source = tables()
+    source["historical_yoy.parquet"] = [
+        historical(year) for year in range(1973, 2025) if year != 1990
+    ]
+    contract = build_plot_contracts(source)["historical_health_spending_yoy_growth.png"]
+    figure = export.figure_for_contract(contract)
+    axis = figure.axes[0]
+    centers = []
+    for patch in axis.patches:
+        assert isinstance(patch, Rectangle)
+        centers.append(patch.get_x() + patch.get_width() / 2)
+    assert centers == [year for year in range(1973, 2025) if year != 1990]
+    assert len(axis.get_xticks()) <= 12
+    figure.clear()
+
+
+def test_breakdown_has_exact_value_labels_and_contrasting_hatches() -> None:
+    contract = build_plot_contracts(tables())[
+        "recent_appropriations_functional_breakdown_2025_Estimated_Actual.png"
+    ]
+    contract["series"][0]["points"][0]["y"] = "26740144.000"
+    figure = export.figure_for_contract(contract)
+    axis = figure.axes[0]
+    assert "26,740,144.000" in [text.get_text() for text in axis.texts]
+    assert axis.patches[0].get_edgecolor() != axis.patches[0].get_facecolor()
+    figure.clear()
+
+
 @pytest.mark.parametrize("limit", ["_MAX_POINTS", "_MAX_SERIES"])
 def test_plot_resource_limit(limit: str, monkeypatch: pytest.MonkeyPatch) -> None:
     contract = build_plot_contracts(tables())["historical_health_spending_nominal.png"]
@@ -118,3 +153,33 @@ def test_plot_resource_limit(limit: str, monkeypatch: pytest.MonkeyPatch) -> Non
     monkeypatch.setattr(export, limit, 0)
     with pytest.raises(ValueError, match="plot_resource_limit"):
         export.figure_for_contract(contract)
+
+
+def test_cli_preflight_render_and_redacted_failure(
+    gold: tuple[Path, str], tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    output = tmp_path / "cli-plots"
+    assert (
+        health_appropriations_render_plots(
+            gold_dir=gold[0], manifest_sha256=gold[1], output_dir=output
+        )
+        == 0
+    )
+    assert json.loads(capsys.readouterr().out)["status"] == "planned"
+    assert not output.exists()
+    assert (
+        health_appropriations_render_plots(
+            gold_dir=gold[0], manifest_sha256=gold[1], output_dir=output, dry_run=False
+        )
+        == 0
+    )
+    assert json.loads(capsys.readouterr().out)["status"] == "passed"
+    assert (
+        health_appropriations_render_plots(
+            gold_dir=gold[0], manifest_sha256=gold[1], output_dir=output, dry_run=False
+        )
+        == 2
+    )
+    assert (
+        json.loads(capsys.readouterr().out)["error"] == "plot_export_failed:ValueError"
+    )

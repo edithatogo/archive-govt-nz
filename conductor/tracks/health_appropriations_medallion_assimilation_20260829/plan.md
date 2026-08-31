@@ -284,10 +284,12 @@ repository validation command. External gates block only their affected task.
 - [x] Generate the five-table SQLite compatibility database from canonical
   Parquet and validate schema/row/value parity or approved repairs. [M-08,
   M-09, M-10; AC-06, AC-08] (`e91d24b`)
-- [~] Implement structured equivalents of `run_analysis.py` for long-term
+- [x] Implement structured equivalents of `run_analysis.py` for long-term
   nominal trends, year-on-year growth, GDP share, recent appropriation
   breakdown and classification trends. [M-09, M-13; AC-07, AC-08]
-- [ ] Reproduce all six donor plots with semantic parity contracts covering
+  (`b38069c`, PR #261 merged `15b47b9`; four matching local builds,
+  seven exact-head hosted checks; earlier local timing failures retained)
+- [~] Reproduce all six donor plots with semantic parity contracts covering
   query inputs, filters, series, units, labels and rendering parameters; retain
   donor PNGs unchanged in Bronze. [M-03, M-09, M-13; AC-02, AC-07, AC-08]
 

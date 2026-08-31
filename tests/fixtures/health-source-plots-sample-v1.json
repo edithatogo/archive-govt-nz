@@ -1,0 +1,38 @@
+{
+  "schema_version": "archive-govt-nz.health-source-plots/v1",
+  "status": "passed",
+  "gold_manifest_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "raw_manifest_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "publication_state": "local_validation_only",
+  "renderer": {
+    "matplotlib": "3.10.8",
+    "pillow": "12.1.0",
+    "freetype": "2.6.1",
+    "backend": "Agg"
+  },
+  "point_counts": {
+    "historical_health_spending_nominal.png": 1,
+    "historical_health_spending_yoy_growth.png": 1,
+    "health_spending_vs_gdp.png": 1,
+    "recent_appropriations_functional_breakdown_2025_Estimated_Actual.png": 1,
+    "recent_trends_health_classification.png": 1,
+    "recent_trends_no_classification.png": 1
+  },
+  "omission_counts": {
+    "historical_health_spending_nominal.png": 0,
+    "historical_health_spending_yoy_growth.png": 0,
+    "health_spending_vs_gdp.png": 0,
+    "recent_appropriations_functional_breakdown_2025_Estimated_Actual.png": 0,
+    "recent_trends_health_classification.png": 0,
+    "recent_trends_no_classification.png": 0
+  },
+  "output_sha256": {
+    "historical_health_spending_nominal.png": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "historical_health_spending_yoy_growth.png": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "health_spending_vs_gdp.png": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "recent_appropriations_functional_breakdown_2025_Estimated_Actual.png": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "recent_trends_health_classification.png": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "recent_trends_no_classification.png": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "CONTRACTS.json": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+  }
+}

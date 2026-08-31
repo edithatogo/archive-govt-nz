@@ -38,7 +38,30 @@ do not imply pixel parity with donor plots or add unverified source years.
   failed partial outputs remain with a redacted failure receipt.
 - Before delivery: compare independent PNG builds and inspect the exported
   images for label clipping, overlapping marks, signs, honest axes and source
-  context. Rendering and visual QA are still pending at this checkpoint.
+  context.
+
+## Local execution and visual QA
+
+The dry-run-first `health-appropriations-render-plots` command takes `--gold-dir`,
+`--manifest-sha256`, `--output-dir` and optional `--no-dry-run`.
+It checks all eight Gold files, Arrow schemas, counts, input-ID closure and
+bounded snapshots before creating a separate directory. Successful output is
+six PNGs, exact `CONTRACTS.json` and `MANIFEST.json`; partial failure retains
+bytes and a redacted receipt. Ambient Matplotlib settings cannot change output.
+
+Retained root: `gold/raw-plots-20260831-v2` beneath the external Health store.
+Manifest: `a04b1b8785d7a4da67ad1b83d6449592838ed0359de792368bb8f150155786d2`.
+An independent build matches all eight files. Matplotlib 3.11.1, Pillow 12.3.0,
+FreeType 2.14.3, Agg; cross-version byte identity is not claimed.
+
+Inspected the six exported views. V2 fixes crowded ticks, preserves numeric-year
+gaps in growth bars, centers groups only within the same year/category, uses
+contrasting hatch strokes and labels all four breakdown values exactly. Labels
+fit, bars retain zero baselines and negative values, and unavailable growth is
+not drawn as zero. The unchanged GDP-share PNG also matches the inspected V1
+hash. V1 remains preserved as a superseded QA build, not an original rewrite.
+Fifteen renderer tests pass at 100% line/branch coverage after these corrections.
+Whole-increment mutation/full assurance and hosted delivery remain pending.
 
 The visualization skill influenced sparse-series chart selection, explicit
 palette/non-color distinctions and the requirement for final-image inspection.

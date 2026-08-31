@@ -61,9 +61,12 @@ No task is complete just because code exists, an issue is closed, or CI is green
   period/basis/gap/denominator guards and exact source-vintage aggregates.
   See `raw-analytics.md`. The shared verified reader and exclusive Gold
   tables/manifest/CLI now have live independent rebuild and legacy comparison
-  evidence in `raw-gold.md`. Whole-suite local timing failures remain recorded;
-  require fresh hosted assurance before marking the analytical task complete.
-  Next: finish Gold delivery checks, then source-derived plot contracts.
+  evidence in `raw-gold.md`. Gold PR #261 merged after seven exact-head checks
+  passed; whole-suite local timing failures remain recorded. Six source-derived
+  plots now have pure contracts, a pinned Gold reader, typed CLI, independent
+  byte-identical builds and visual QA corrections. See `raw-plots.md`.
+  Next: finish plot mutation/full assurance and delivery, then the remaining
+  donor failure-characterization and raw-pipeline reconciliation work.
   A fresh read of the canonical historical facts identifies period/basis
   transitions at 1990, 1994, 1997 and 2005, with no year gaps. Growth across
   those transitions must remain explicitly unavailable or separately qualified;
