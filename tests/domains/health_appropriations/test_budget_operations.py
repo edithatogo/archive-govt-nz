@@ -194,7 +194,8 @@ def test_cli_argument_dispatch(
 
 @pytest.mark.parametrize("passed", [True, False])
 def test_protocol_failure_flag_preserves_receipt(
-    package: tuple[Path, str], passed: bool  # noqa: FBT001
+    package: tuple[Path, str],
+    passed: bool,  # noqa: FBT001
 ) -> None:
     root, pin = package
     if not passed:
