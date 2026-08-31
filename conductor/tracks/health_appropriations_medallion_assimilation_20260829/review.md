@@ -618,3 +618,15 @@ Independent review found no actionable issue in that scope and suggested tests
 for exact resource boundaries and hash-before-decode ordering; both now pass.
 The Parquet list-name mismatch was corrected without relaxing metadata checks.
 Native and hosted evidence remain separate from focused/mutation results.
+## 2026-08-31 — Pure historical projection review
+
+Scope is reviewed historical Health/GDP fact and lineage projection only, with
+caller-supplied inputs and no fixity/publication claim. Independent review found
+two integrity gaps: contradictory disposition cell literals were not joined to
+lineage, and six unused historical source fields could disappear if non-null.
+Nine negative tests reproduced both findings before the guards were added.
+The source number format remains an explicit attribute exception, and both
+retained snapshots pass exact JSON-string cell joins without numeric coercion.
+Read-only re-review reports both findings resolved and no additional finding.
+The original input package remains required for retained-only information.
+See `historical-projection.md` for mapping, red-phase evidence and limits.
