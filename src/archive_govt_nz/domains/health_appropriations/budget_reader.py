@@ -6,6 +6,7 @@ import json
 import re
 from collections import Counter
 from io import BytesIO
+from itertools import islice
 from typing import TYPE_CHECKING, Any
 
 import pyarrow as pa
@@ -30,6 +31,8 @@ MAX_BYTES = 64 * 1024 * 1024
 MAX_TOTAL_BYTES = 128 * 1024 * 1024
 MAX_ROWS = 100_000
 MAX_EXPANDED_BYTES = 256 * 1024 * 1024
+MAX_THRIFT_STRING_BYTES = 4 * 1024 * 1024
+MAX_THRIFT_CONTAINERS = 100_000
 FIRST_DATA_ROW = 2
 MAX_COLUMNS = 16384
 TRANSFORMATION = "budget-expenditure/v1"
@@ -88,7 +91,10 @@ def _read(
 ) -> tuple[dict[str, list[dict[str, Any]]], dict[str, Any]]:
     _require(isinstance(pin, str) and re.fullmatch(r"[0-9a-f]{64}", pin) is not None)
     _require(not root.is_symlink() and root.is_dir())
-    _require({path.name for path in root.iterdir()} == set(SCHEMAS) | {"MANIFEST.json"})
+    _require(
+        {path.name for path in islice(root.iterdir(), 5)}
+        == set(SCHEMAS) | {"MANIFEST.json"}
+    )
     for name in (*SCHEMAS, "MANIFEST.json"):
         _require(not (root / name).is_symlink() and (root / name).is_file())
     payload = verified_snapshot(root / "MANIFEST.json", pin, max_bytes=MAX_BYTES)
@@ -108,7 +114,11 @@ def _read(
         )
         total += len(payload)
         _require(total <= MAX_TOTAL_BYTES)
-        with pq.ParquetFile(BytesIO(payload)) as file:
+        with pq.ParquetFile(
+            BytesIO(payload),
+            thrift_string_size_limit=MAX_THRIFT_STRING_BYTES,
+            thrift_container_size_limit=MAX_THRIFT_CONTAINERS,
+        ) as file:
             metadata = file.metadata
             _require(
                 metadata.num_rows <= MAX_ROWS
