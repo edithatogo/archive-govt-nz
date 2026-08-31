@@ -1,0 +1,16 @@
+{
+  "schema_version": "archive-govt-nz.foi-postmerge-ci-timeout/v1",
+  "recorded_at": "2026-08-31T13:43:38.185998Z",
+  "run_id": 33396086444,
+  "revision": "9c609fe9b617a1d2b76c11930935d9725280e2c7",
+  "windows_job": 99500826130,
+  "failed_stage": "tests",
+  "observed_progress_percent": 88,
+  "stage_timeout_seconds": 300,
+  "functional_failure_reported_before_timeout": false,
+  "ubuntu_conclusion": "success",
+  "macos_conclusion": "success",
+  "windows_conclusion": "failure",
+  "log_sha256": "a2d1b753f06e7a7f0800fb82851918c3ae0c990e2292f7f08d025bd1a059ee20",
+  "correction": "Use existing two-worker loadscope harness lane in CI; preserve all tests, coverage and timeouts."
+}

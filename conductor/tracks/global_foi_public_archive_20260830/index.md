@@ -47,3 +47,6 @@ Approved track in progress. Automation repair and source-catalogue foundations a
 - [Grouped publication options — not approved](grouped-publication-options-20260831.md)
 - [Shared execution validation and deployment boundary](shared-execution-validation-20260831.json)
 - [Hosted Windows portability correction](hosted-validation-correction-20260831.json)
+- [Verified shared deployment and private country-pilot replicas](shared-execution-deployment-20260831.json)
+- [Post-merge Windows runtime correction](postmerge-ci-timeout-20260831.json)
+- [Validation runtime failures and bounded repairs](validation-runtime-followup-20260831.json)
