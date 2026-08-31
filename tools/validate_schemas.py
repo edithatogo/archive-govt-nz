@@ -20,6 +20,10 @@ type JsonValue = (
 REPOSITORY_ROOT = Path(__file__).parents[1]
 VALIDATION_PAIRS = (
     (
+        REPOSITORY_ROOT / "schemas" / "foi-current-v1.schema.json",
+        REPOSITORY_ROOT / "tests" / "fixtures" / "foi-current-sample-v1.json",
+    ),
+    (
         REPOSITORY_ROOT / "schemas" / "foi-package-v2.schema.json",
         REPOSITORY_ROOT / "tests" / "fixtures" / "foi-package-sample-v2.json",
     ),

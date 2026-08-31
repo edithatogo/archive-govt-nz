@@ -1,0 +1,62 @@
+{
+  "critical_coverage_percent": 100,
+  "cutover": false,
+  "delivery_mutants_killed": 4,
+  "donor_gap_fix": {
+    "coverage_percent": 93.42,
+    "head": "856cab263bfbba5848dabd8a7a4af232bfdaed32",
+    "hosted_checks": "all non-skipped passed",
+    "local_skips": 1,
+    "local_tests": 924,
+    "merge": "7793293e488bd39d3fbb1e36ceb98820beb40313",
+    "pr": "https://github.com/edithatogo/fyi-archive/pull/408"
+  },
+  "focused_tests": 137,
+  "full_local_gate": "not_passed_timing_failures",
+  "host_observation": "load average exceeded 300; no health checks suppressed or unrelated processes terminated",
+  "local_failures": [
+    {
+      "attempt": 1,
+      "failure": "unchanged URN Hypothesis input generation health check; exact seed passed separately",
+      "passed_tests": 1724
+    },
+    {
+      "attempt": 2,
+      "coverage_percent": 96.28,
+      "failures": [
+        "unchanged acceptance subprocess exceeded 10 seconds",
+        "unchanged health discovery Hypothesis input generation health check"
+      ],
+      "passed_tests": 1723,
+      "reproducer": "health discovery passed; subprocess timed out again"
+    }
+  ],
+  "public_raw_publication": false,
+  "publication": {
+    "coverage": {
+      "geographic_entities": 250,
+      "known_sources": 29,
+      "payload_publication_authorized": false,
+      "remaining_unverified": 250,
+      "supranational_entities": 1,
+      "target_regimes": 42,
+      "total_requests": null,
+      "verified_complete": 0
+    },
+    "current_revision": "e920521fa70bfd86e6f38b3e0e9e781347d56bc3",
+    "manifest_sha256": "4a43bf18cbe8280a1768fb9575b22ff9485ad3ca32532a38a90eb20cf42bbd39",
+    "payload_publication": false,
+    "repo_id": "edithatogo/foi-source-catalogue",
+    "scope": "source_catalogue_only",
+    "snapshot_revision": "d298c72c4d7c25dc3c3dca96ea67d6c4f10f07c5",
+    "status": "verified",
+    "uploaded": true,
+    "viewer_status": "not_checked"
+  },
+  "recorded_at": "2026-08-31T03:23:01.895213+00:00",
+  "schema_validation": {
+    "documents": 28,
+    "schemas": 38
+  },
+  "scope": "verified_delivery_and_public_source_catalogue"
+}

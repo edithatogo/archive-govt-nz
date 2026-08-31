@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive-govt-nz.example/schemas/foi-current-v1.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "repo_id",
+    "manifest_sha256",
+    "snapshot_revision"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "archive-govt-nz.foi-current/v1"
+    },
+    "repo_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9._-]+/[A-Za-z0-9._-]+$"
+    },
+    "manifest_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "snapshot_revision": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "tables": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "entities": {
+          "const": "entities.jsonl"
+        },
+        "sources": {
+          "const": "sources.jsonl"
+        },
+        "jurisdictions": {
+          "const": "jurisdictions.jsonl"
+        },
+        "objects": {
+          "const": "indexes/objects.parquet"
+        },
+        "resources": {
+          "const": "indexes/resources.parquet"
+        },
+        "requests": {
+          "const": "indexes/requests.parquet"
+        },
+        "events": {
+          "const": "indexes/events.parquet"
+        },
+        "attachments": {
+          "const": "indexes/attachments.parquet"
+        }
+      }
+    }
+  }
+}

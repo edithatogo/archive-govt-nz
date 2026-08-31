@@ -6,7 +6,8 @@ import argparse
 import json
 from pathlib import Path
 
-from archive_govt_nz.foi_catalogue import build_catalogue, catalogue_files, load_seeds
+from archive_govt_nz.foi_catalogue import catalogue_files
+from archive_govt_nz.foi_discovery import build_reviewed_catalogue
 
 
 def main() -> int:
@@ -17,7 +18,7 @@ def main() -> int:
     )
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
-    catalogue = build_catalogue(*load_seeds(args.seeds))
+    catalogue = build_reviewed_catalogue(args.seeds)
     files = catalogue_files(catalogue)
     for name, data in files.items():
         target = args.output / name

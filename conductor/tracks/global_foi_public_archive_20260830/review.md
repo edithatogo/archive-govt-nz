@@ -63,3 +63,9 @@ Reviewed path/member traversal and symlinks, outer gzip expansion limits, preser
 Outstanding finding: the source adapter silently omits attachment HTTP 404 responses. Current indexes describe observed resources only. Attachment discovery/gap accounting and public delivery remain required follow-up work; the NZ monitor stays paused.
 
 Attachment self-review passed for local indexes and restoration. Reviewed unsafe references, discovery budgets, missing/ambiguous parents, false HTTP statuses, changed hashes, duplicate/omitted rows, deterministic regeneration and v1 compatibility. The public sample has no attachment links; adversarial fixtures establish gap behavior. No source completeness or publication claim follows.
+
+## Verified publication self-review — 2026-08-31
+
+Reviewed anonymous revision-pinned fresh downloads, immutable path and digest checks, conditional parent commits, restore before promotion, retry idempotency, public/gated identity, catalogue child visibility, exact raw source/manifest/rights/privacy decisions, attachment gaps, sanitized failures and receipt creation races. The 137 focused tests pass with 100 percent measured critical-module coverage; four integrity mutants are killed. A real public metadata snapshot passed anonymous byte verification. Local full-suite timing failures remain explicit; hosted assurance is pending. Dataset viewer behavior is not yet verified. Raw rights/privacy clearance, public raw restore and cutover remain open.
+
+Directory overlay review: verified saved source hash, explicit country mappings, every source host, path/symlink rejection, ambiguous/missing mappings and unobserved new sources. Twenty directory tests pass with complete branch coverage. Directory absence is never interpreted as national absence; no source adapter or rights status is promoted.
