@@ -1,0 +1,489 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "archive-govt-nz.health-source-operation/v1"
+    },
+    "verification_scope": {
+      "const": "adapter_execution_only"
+    },
+    "rights_state": {
+      "const": "not_evaluated"
+    },
+    "publication_state": {
+      "const": "local_validation_only"
+    },
+    "status": {
+      "enum": [
+        "preflight_passed",
+        "written_local",
+        "failed"
+      ]
+    },
+    "error": {
+      "const": "invalid_source_operation"
+    },
+    "profile": {
+      "enum": [
+        "cpiq-se9a/v1",
+        "moh-hair2024-fig27/v1",
+        "moh-hair2024-fig28/v1",
+        "qes-june2026-table8/v1",
+        "pharmac-cpb-20260807/v1",
+        "gdp-expenditure-actual-2026q1/v1"
+      ]
+    },
+    "source_object_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$",
+      "maxLength": 64
+    },
+    "transformation_id": {
+      "enum": [
+        "moh-hair2024-published-indicators/v1",
+        "pharmac-published-budget-20260807/v1",
+        "qes-june2026-table8-ordinary-hourly/v1",
+        "stats-nz-cpi-all-groups/v1",
+        "stats-nz-gdp-current-price-expenditure-actual-2026q1/v1"
+      ]
+    },
+    "counts": {
+      "type": "object"
+    },
+    "output_sha256": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "verification_scope",
+    "rights_state",
+    "publication_state",
+    "status"
+  ],
+  "oneOf": [
+    {
+      "properties": {
+        "status": {
+          "const": "failed"
+        }
+      },
+      "required": [
+        "error"
+      ],
+      "maxProperties": 6
+    },
+    {
+      "properties": {
+        "status": {
+          "enum": [
+            "preflight_passed",
+            "written_local"
+          ]
+        }
+      },
+      "required": [
+        "profile",
+        "source_object_sha256",
+        "transformation_id",
+        "counts"
+      ],
+      "not": {
+        "required": [
+          "error"
+        ]
+      },
+      "oneOf": [
+        {
+          "properties": {
+            "profile": {
+              "const": "cpiq-se9a/v1"
+            },
+            "transformation_id": {
+              "const": "stats-nz-cpi-all-groups/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "selected": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "numeric": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "missing": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "unselected": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "selected",
+                "numeric",
+                "missing",
+                "unselected"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "cpi_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "cpi_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "moh-hair2024-fig27/v1"
+            },
+            "transformation_id": {
+              "const": "moh-hair2024-published-indicators/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "lineage": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "facts",
+                "lineage"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "moh_indicator_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "moh_indicator_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "moh-hair2024-fig28/v1"
+            },
+            "transformation_id": {
+              "const": "moh-hair2024-published-indicators/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "lineage": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "facts",
+                "lineage"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "moh_indicator_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "moh_indicator_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "qes-june2026-table8/v1"
+            },
+            "transformation_id": {
+              "const": "qes-june2026-table8-ordinary-hourly/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "normalized": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "field_lineage": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "inventoried_cells": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "normalized",
+                "field_lineage",
+                "inventoried_cells"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "qes_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "cell_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "qes_facts.parquet",
+                "field_lineage.parquet",
+                "cell_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "pharmac-cpb-20260807/v1"
+            },
+            "transformation_id": {
+              "const": "pharmac-published-budget-20260807/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "lineage": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "table_cells": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "facts",
+                "lineage",
+                "table_cells"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pharmaceutical_budget_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "cell_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "pharmaceutical_budget_facts.parquet",
+                "field_lineage.parquet",
+                "cell_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "gdp-expenditure-actual-2026q1/v1"
+            },
+            "transformation_id": {
+              "const": "stats-nz-gdp-current-price-expenditure-actual-2026q1/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "lineage": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "dispositions": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "facts",
+                "lineage",
+                "dispositions"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "gdp_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "cell_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "gdp_facts.parquet",
+                "field_lineage.parquet",
+                "cell_dispositions.parquet"
+              ]
+            }
+          }
+        }
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "written_local"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "output_sha256"
+            ]
+          },
+          "else": {
+            "not": {
+              "required": [
+                "output_sha256"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

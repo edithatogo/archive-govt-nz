@@ -1,5 +1,18 @@
 # Self-Review
 
+## Quarterly GDP literal profile — 2026-08-31
+
+- Source identity, actual-versus-adjusted and expenditure-versus-income
+  selection are exact; quarterly observations are not annual denominators.
+- Parent found locale-sensitive month expectations and missing literal token,
+  scaling, format-attribute and century-range lineage. All corrected; locale
+  regression and complete 900-entry closure pass. Currency remains null.
+- 45 focused tests/100% critical coverage and cold 37/37 mutation pass. Original
+  source and both independently reconciled deterministic pilots are retained.
+  Native passed at `41e7717`: 2,790 tests/97.07% overall and all gates.
+  Hosted checks and rights approval remain distinct. Exclusive retained Silver
+  package readback is identical; source-specific output is not canonical.
+
 ## Additive inventory planner — 2026-08-31 UTC
 
 Independent read-only source/test review found no actionable correctness issue
@@ -618,6 +631,45 @@ Read-only re-review reports both findings resolved and no additional finding.
 The original input package remains required for retained-only information.
 See `historical-projection.md` for mapping, red-phase evidence and limits.
 
+## Budget classification occurrence projection
+
+The pure source-label projection passed independent read-only review, 42 focused
+tests with 100% critical line/branch coverage and 29/29 cold mutant kills.
+Two verified retained Budget packages yield 400 unmapped occurrence dimensions
+and full 6800-row lineage accounting without input mutation. Exact Parquet
+round-trip and source-object identity boundary tests pass. No authoritative
+identifier, valid-time interval, crosswalk or rights promotion is invented.
+
+Required native validation at `b651907` passed all 3014 tests (8 existing resource
+warnings), 97.12% coverage and all subsequent gates. Two owned timestamp-only
+fixture changes were restored after exit. Source and tests remain unchanged;
+hosted delivery is pending. See [full receipt](./budget-classification.md).
+## 2026-08-31 — Exclusive canonical export review
+
+Independent read-only review of the complete exporter and tests found no
+actionable issue after the dry-run refinement. Both modes now serialize and
+budget the same complete marker before reservation; only dry-run labels output
+hashes planned. Expected failures cannot write into unowned/raced directories.
+Partial data and partial markers remain intact; a marker filename alone is not
+validity evidence. Exact bytes/schema readback and file membership precede
+completion. Caller parent-directory trust, source-package retention and no
+publication/rights promotion remain explicit. No generic filesystem sandbox or
+global semantic/canonical-registry completion is claimed.
+
+## Exclusive local classification export
+
+The source-only occurrence projection now has an exclusive local persistence
+wrapper. Independent review findings were reproduced by red tests and resolved;
+final re-review found no actionable issue in its trusted-parent scope.54tests
+pass at100%critical coverage, and44/44cold mutants were killed without pardons
+or cached results. Nativef46e4b6 passed3426tests and every subsequent gate.
+
+Two builds per retained Budget vintage independently reconcile all five files,
+400dimensions and6800lineage-accounting rows, with originals/input packages
+unchanged. The local marker is not a publication manifest and can survive a
+failed readback; only full validation establishes local completion. Errors are
+redacted and partial evidence retained. See [receipt](./classification-export.md)
+for exact hashes, failure observations and the append-only timestamp correction.
 ## Original-to-products replay — 2026-08-31 UTC
 
 Two fresh output trees independently match all 38 files. Investigated the

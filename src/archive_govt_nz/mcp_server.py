@@ -20,6 +20,11 @@ from archive_govt_nz.domains.health_appropriations.operations import (
     inspect_archive_status,
 )
 from archive_govt_nz.domains.health_appropriations.rebuild import verify_rebuild
+from archive_govt_nz.domains.health_appropriations.source_operations import (
+    SOURCE_OPERATION_SCHEMA,
+    SOURCE_PREFLIGHT_INPUT_SCHEMA,
+    preflight_source,
+)
 from archive_govt_nz.object_store import ContentAddressedStore, ObjectStoreError
 from archive_govt_nz.schemas.medallion import (
     DOMAIN_REGISTRY,
@@ -68,6 +73,22 @@ def _object_schema(properties: dict[str, Any], required: list[str]) -> dict[str,
 
 _NO_ARGUMENTS = _object_schema({}, [])
 _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
+    {
+        "name": "health_appropriations_preflight_source",
+        "description": (
+            "Read-only preflight of approved source profiles; "
+            "no rows, source acquisition or output writes."
+        ),
+        "inputSchema": SOURCE_PREFLIGHT_INPUT_SCHEMA,
+        "outputSchema": SOURCE_OPERATION_SCHEMA,
+        "annotations": {
+            "title": "Preflight an approved health source profile",
+            "readOnlyHint": True,
+            "destructiveHint": False,
+            "idempotentHint": True,
+            "openWorldHint": False,
+        },
+    },
     {
         "name": "archive_doctor",
         "description": (
@@ -600,7 +621,12 @@ class Server:
             key=lambda error: list(error.path),
         )
         if errors:
-            return _error(req_id, JSONRPC_INVALID_PARAMS, errors[0].message)
+            message = (
+                "Invalid source operation arguments"
+                if name == "health_appropriations_preflight_source"
+                else errors[0].message
+            )
+            return _error(req_id, JSONRPC_INVALID_PARAMS, message)
         try:
             structured = call_tool(name, arguments)
         except Exception as exc:  # noqa: BLE001 - MCP requires domain error results
@@ -756,6 +782,24 @@ def _archive_status(arguments: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def _health_read_only_tool(name: str, args: dict[str, Any]) -> dict[str, Any]:
+    if name == "health_appropriations_preflight_source":
+        return preflight_source(args)
+    if name == "health_appropriations_verify_budget":
+        return verify_budget_package(
+            Path(str(args["package_dir"])), str(args["manifest_sha256"])
+        )
+    if name == "health_appropriations_verify_rebuild":
+        return verify_rebuild(
+            Path(str(args["output_dir"])),
+            Path(str(args["store_root"])),
+            str(args["manifest_sha256"]),
+        )
+    return inspect_archive_status(
+        Path(str(args.get("archive_root", "build/health-appropriations")))
+    )
+
+
 def call_tool(name: str, arguments: dict[str, Any] | None = None) -> dict[str, Any]:
     """Execute one known read-only tool and validate its output schema."""
     definition = _TOOLS_BY_NAME.get(name)
@@ -814,20 +858,13 @@ def call_tool(name: str, arguments: dict[str, Any] | None = None) -> dict[str, A
             "title": schema_def.title,
             "fields": fields_list,
         }
-    elif name == "health_appropriations_verify_budget":
-        result = verify_budget_package(
-            Path(str(args["package_dir"])), str(args["manifest_sha256"])
-        )
-    elif name == "health_appropriations_verify_rebuild":
-        result = verify_rebuild(
-            Path(str(args["output_dir"])),
-            Path(str(args["store_root"])),
-            str(args["manifest_sha256"]),
-        )
-    elif name == "health_appropriations_status":
-        result = inspect_archive_status(
-            Path(str(args.get("archive_root", "build/health-appropriations")))
-        )
+    elif name in (
+        "health_appropriations_preflight_source",
+        "health_appropriations_verify_budget",
+        "health_appropriations_verify_rebuild",
+        "health_appropriations_status",
+    ):
+        result = _health_read_only_tool(name, args)
     else:
         result = _archive_status(args)
     Draft202012Validator(definition["outputSchema"]).validate(result)

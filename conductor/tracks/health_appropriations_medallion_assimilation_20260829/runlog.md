@@ -1,5 +1,34 @@
 # Run Log
 
+## Exact GDP quarterly source profile — 2026-08-31
+
+- Required native `./scripts/validate.sh` at `41e7717` passed all gates:
+  2,790 tests/75.20s/97.07%, eight existing cleanup warnings, 41 schemas/31
+  samples, 9/9 parity, all mutation and supply-chain checks. Log SHA
+  `cd0e89c8202eaaceca1bbff207ea5d46145512b68383901461c2abc8b1656656`.
+  Only two reviewed timestamp-only generated files were restored afterwards.
+- Exclusively retained `silver/raw-stats-gdp-20260831-v1`; all four files
+  byte-identical to both pilots and original SHA unchanged. Source-specific
+  output remains noncanonical and unpublished.
+
+- Registered bounded Phase 5.1 task before implementation in independent clone.
+  Red test failed collection on absent `gdp` module, exit 2. Focused suite
+  subsequently passed 45 tests; module coverage 100% (90 statements/20 branches).
+- Parent review corrected locale dependence and lineage omissions; tokens,
+  scaling, number-format attribute and date-range dependencies now have tests.
+  Ruff/typing pass; initial two test typing errors corrected, no gate weakened.
+- `pytest tests/domains/health_appropriations/test_gdp.py --no-cov --gremlins
+  --gremlin-targets=src/archive_govt_nz/domains/health_appropriations/gdp.py
+  --gremlin-workers=2 --gremlin-no-coverage-filter --gremlin-report=json
+  --strict-pardons --gremlin-max-pardons-pct=0 --max-pardons=0 -q`
+  passed: 37/37 killed, no survivors/errors/timeouts/pardons/cache hits, 36.11s.
+  Report SHA `25b0cb80d474351f49ea7a7b58778489ba55b12bb6747b24c39fb1579dd90290`.
+- Two local four-file pilots match; 60 facts/900 lineage/2,287 dispositions,
+  85,176 bytes, all original cells and emitted fields independently reconciled.
+  No source write, download, aggregation, denominator selection or publication.
+- Existing Pharmac PR #295 observed externally merged with seven green checks;
+  exact delivery receipt is in `gdp-profile.md`. No merge call by this agent.
+
 ## Planner main integration checkpoint — 2026-08-31
 
 - Merged main `d6bc0c9` into the feature branch as `841bd5f`, preserving both
@@ -1344,6 +1373,7 @@ samples, 9/9 parity, all repository mutation/security/supply-chain gates and
 Two owned timestamp-only fixture diffs were restored after the process ended.
 Hosted assurance remains pending; originals, derivatives and publication are
 unchanged. This successful harness does not add a semantic or rights claim.
+
 ## 2026-08-31 — Pure historical canonical projection
 
 In independent clone `health-historical-canonical.8ijp7V`, implemented pure
@@ -1398,6 +1428,86 @@ temporary two-character header truncation was corrected before committing and
 full JSON validity checked. Production/test hashes and native evidence are
 unchanged; no second full run is claimed.
 
+## Budget classification occurrence projection
+
+The pure source-label projection passed independent read-only review, 42 focused
+tests with 100% critical line/branch coverage and 29/29 cold mutant kills.
+Two verified retained Budget packages yield 400 unmapped occurrence dimensions
+and full 6800-row lineage accounting without input mutation. Exact Parquet
+round-trip and source-object identity boundary tests pass. No authoritative
+identifier, valid-time interval, crosswalk or rights promotion is invented.
+
+Required native validation at `b651907` passed all 3014 tests (8 existing resource
+warnings), 97.12% coverage and all subsequent gates. Two owned timestamp-only
+fixture changes were restored after exit. Source and tests remain unchanged;
+hosted delivery is pending. See [full receipt](./budget-classification.md).
+## 2026-08-31 — Exclusive historical canonical export
+
+Created independent clone `health-canonical-export.XpIUm2` from the committed
+reader/projection stack `d418b8e`; no edits in the coordinating clone. Conductor
+implementation selected an explicitly bounded Phase 3 local-only task. A
+premature test attempt before environment installation finished exited 127;
+after setup, the missing exporter module produced the expected red exit 2.
+Two initial tests passed; expansion to 48 covered source fixity, semantic
+rejection, output ownership, partial/failed markers, interruption, exact
+readback and byte limits. Two additional dry-run parity tests failed before
+shared bounded serialization was implemented. A typed short-write fixture was
+corrected from `bytes` to the stream's `Buffer` signature. Final 52 focused tests
+passed with 100% of 77 statements/14 branches, plus Ruff and targeted typing.
+
+Cold unfiltered mutation selected all 52 tests: 41/41 killed, no survivors,
+timeouts, errors, pardons or cache hits, one worker, unchanged 30-second deadline,
+51.89 seconds. Receipt SHA-256
+`812b63804573167146de76c1987e86ba6ded36ad38deb659cc2c0dbac4103843`.
+Independent review found no outstanding issue. Four new local builds under
+`/tmp/health-canonical-export-pilot.qjiPfA` form two byte-identical pairs, five
+files and 356,830/363,811 bytes per vintage. Planned and written hashes agree;
+original workbook and package hashes remained unchanged. No HF or candidate
+operation occurred. See `historical-canonical-export.md` for full pins/limits.
+
+Functional checkpoint `8bee922` was followed by main integration `a20393c`,
+including delivered projection PR #305 (`0a076fa`, exact head `01cab50`, seven
+successful checks and expected-SHA merge). The first unresolved pre-305 merge
+was safely aborted from the committed checkpoint before integrating the newer
+main; no owned uncommitted change was lost. Ledger bytes exactly matched main.
+222 composed projection/snapshot/export tests passed in 8.08 seconds. Source
+and test hashes stayed unchanged. Native `./scripts/validate.sh` now runs with
+`COVERAGE_CORE=ctrace`, `PYTHON_JIT=0`, four xdist workers, and an independent
+uv cache. Full completion is pending at this checkpoint.
+
+Native completed exit 0: 3,194 tests in 95.82 seconds, eight existing warnings,
+97.15% coverage, schema/parity and all repository mutation gates, hygiene,
+CAS 609.55 MB/s, audit/licences/secrets and SBOM 111 passed. The tested source
+checkpoint was `a20393c`; documentation was updated afterward, with unchanged
+source/test hashes. Native log SHA-256
+`92e6ce04387c75174c9f0214c614d265798ef88254ba548ec7b64a9a55901f8a`.
+After exit, restored only two generated timestamp-only legislation receipts.
+Broader local capture/CAS/WARC/donor Git-tree preservation evidence is separately
+owned by PR #309; no remote or rights claims are inherited from that audit.
+
+After native exit 0, retained two expressly authorized, previously absent
+Silver directories `canonical-historical-2024-20260831-v1` and
+`canonical-historical-2025-20260831-v1`. Rebuilt rather than moved prior files;
+each five-file output is byte-identical to both temporary builds. Before/after
+hashes agree for each original and all four source-package files. Ten new local
+derivatives total 720,641 bytes; no existing output, v4 or HF bytes changed.
+Retention receipt SHA-256
+`197ee1aa0fa32883005cb234da63488b3da8694d61484b924f475ade7c329eb8`.
+
+## Exclusive local classification export
+
+The source-only occurrence projection now has an exclusive local persistence
+wrapper. Independent review findings were reproduced by red tests and resolved;
+final re-review found no actionable issue in its trusted-parent scope.54tests
+pass at100%critical coverage, and44/44cold mutants were killed without pardons
+or cached results. Nativef46e4b6 passed3426tests and every subsequent gate.
+
+Two builds per retained Budget vintage independently reconcile all five files,
+400dimensions and6800lineage-accounting rows, with originals/input packages
+unchanged. The local marker is not a publication manifest and can survive a
+failed readback; only full validation establishes local completion. Errors are
+redacted and partial evidence retained. See [receipt](./classification-export.md)
+for exact hashes, failure observations and the append-only timestamp correction.
 ## Original-to-products replay — 2026-08-31T16:36:20Z
 
 Two fresh runs at `4bedcf1` each produced 38 files/8,077,673 bytes, exactly
