@@ -31,3 +31,7 @@ The zero global threshold here prevents unrelated, unexecuted tools diluting a
 focused measurement; it does not replace the native 95% overall harness gate or
 the 100% critical-module requirement. Full assurance and exact-head hosted
 results are recorded separately, not inferred from this focused measurement.
+
+## Final local validation
+
+`evidence/seeds/historical-work-ids-0001/validation-01.json` binds the implementation revision, source hashes, native full run, failed/superseded attempts and security receipt hashes. Full attempt 03 passed 2,921 tests at 97.09% aggregate coverage after integration of target base `af427c2632239a8869684c849c0fcc1981277b02`. Exact-head hosted checks and delivery are still separately required.

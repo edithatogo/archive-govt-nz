@@ -55,3 +55,7 @@ Do not rewrite that historical observation or conflate raw and normalized hashes
 - Preserve the reviewed 500 / candidate 33,693 / acquired 500 / published unknown
   distinctions. Any new observation needs its own evidence and version contract.
 - Scheduling, publication, recovery and rights decisions remain outside Prompt 05.
+
+## Existing test-resource warnings
+
+Full validation attempt 03 passed 2,921 tests but emitted eight `ResourceWarning: unclosed database` observations during health silver/gold and health scope tests. Reproduction: `./scripts/validate.sh` at implementation commit `d0e55f6bf18d7d0585978c8fcff94324df934174`; bounded log lines 69–113 are hashed in the validation receipt. These garbage-collection-timed warnings do not establish the allocation site; health maintainers should inspect connection lifetime separately. No health files or warning filters changed.
