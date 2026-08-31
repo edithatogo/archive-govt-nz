@@ -90,10 +90,12 @@ repository validation command. External gates block only their affected task.
 
 ### 1.3 Characterize every donor binary and derivative
 
-- [~] Observe embedded copyright/licence notices for the three exact reviewed
+- [x] Observe embedded copyright/licence notices for the three exact reviewed
   legacy workbook hashes; emit bounded hash-bound cell evidence without source
   text, original modification, network access or eligibility promotion.
   Reject unsupported/tampered inputs. [M-04, M-07, M-18; AC-04, AC-16]
+  (PR #285 observed merged `5ff01ff`, seven exact-head checks; local native
+  timing failure and isolated retry evidence remain retained.)
 
 - [x] Record hash-pinned static behavior and compile characterization of all
   three donor scripts without executing their side effects. [M-09; AC-07]
@@ -328,6 +330,14 @@ repository validation command. External gates block only their affected task.
 
 ### 5.1 Source-family contracts first
 
+- [~] Normalize the retained Pharmac medicines-budget HTML profile into
+  pharmaceutical-budget facts, preserving all 14 financial-year rows, supplied
+  changes/percentages, literal missing markers and trailing empty cells. Bind
+  July–June dates to the page's explicit definition; retain caption mismatch
+  and 2022 budget-holder reform context without claiming actual expenditure,
+  cross-regime equivalence, or new publication rights. [M-05, M-06, M-07,
+  M-11, M-18; AC-05, AC-09, AC-11, AC-16]
+
 - [x] Register bounded BEFU-2026/v1 and HYEFU-2025/v1 literal Health-summary
   contracts from retained originals, with version-specific sheets, coordinates,
   year/type/unit context, synthetic drift tests and independent OOXML pilot
@@ -362,6 +372,16 @@ repository validation command. External gates block only their affected task.
   M-18; AC-09, AC-11, AC-16]
 
 ### 5.2 Normalize direct official datasets
+
+- [~] Normalize the two retained HAIR2024 Ministry CSVs as separately
+  attributed published indicators, preserving exact tokens and unknown units,
+  real-price base and denominator methodology without semantic promotion.
+  [M-05, M-06, M-07, M-11, M-18; AC-05, AC-09, AC-11, AC-16]
+- [x] Characterize and independently rebuild the retained fiscal 1972–2025
+  Health/GDP selection using the existing strict adapter; retain 108 facts,
+  lineage, period transitions and explicit 2017–2024 GDP revisions without
+  replacing the 2024 edition or publishing. This is not whole-workbook or
+  full annual-edition coverage. [M-05, M-06, M-11; AC-05, AC-09, AC-11]
 
 - [ ] Promote eligible Vote Health Estimates/Supplementary Estimates and
   annual Budget expenditure/revenue data from Bronze to Silver, preserving

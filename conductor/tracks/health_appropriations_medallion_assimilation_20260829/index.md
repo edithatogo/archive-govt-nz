@@ -15,6 +15,7 @@ every planned record set, measure or operational workflow.
 
 ## Artifacts
 
+- [Pharmac medicines-budget HTML contract](./pharmac-cpb.md)
 - [Additive eight-record-set structural contracts](./recordset-contracts.md)
 - [Hash-bound embedded-notice observations](./embedded-notices.md)
 - [Standalone Budget-package operations](./budget-operations.md)
@@ -30,7 +31,10 @@ every planned record set, measure or operational workflow.
 - [Raw BEFU/HYEFU extraction](./raw-forecast.md)
 - [BEFU 2026 / HYEFU 2025 versioned source pilots](./forecast-successors.md)
 - [Exact-series CPI source extraction](./cpi-source.md)
+- [Ministry published-indicator profiles](./moh-indicators.md)
+- [Source, schema and population context gaps](./source-schema-gaps.md)
 - [Raw historical Health/GDP extraction and reconciliation](./raw-historical.md)
+- [Preserved fiscal 1972–2025 successor pilot](./fiscal-2025-pilot.md)
 - [Original-workbook orchestration](./raw-rebuild.md)
 - [Typed workbook inspection](./workbook-inspection.md)
 - [Raw compatibility projection and export contract](./raw-compatibility.md)

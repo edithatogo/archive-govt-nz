@@ -78,7 +78,7 @@ Local P5/P6 controls pass focused validation; see durable-controls-local-validat
 
 ## Authorized deployment continuation — 2026-08-31
 
-- [~] P5.6 (AC08, AC10, AC12): Deploy shared GitHub-backed control state, bounded cross-source reservations and hosted restart/conflict evidence; retain publication and donor cutover gates.
-- [~] P5.7 (AC04, AC05, AC06, AC09): Produce every-entity rollout dispositions and verified bounded institutional-data captures with resource-specific denominators.
-- [~] P4.6 (AC07, AC11): Present grouped, reusable rights/privacy publication options with exact candidates and exclusions; no approval inferred.
-- [~] P7.5 (AC12): Repair pre-existing RIOPA canonical-link and equivalent UTC timestamp validation failures without changing acceptance or historical evidence.
+- [x] P5.6 (AC08, AC10, AC12): Deploy shared GitHub-backed control state, bounded cross-source reservations, live authority restart/conflict evidence and hosted writer/health checks; retain publication and donor cutover gates.
+- [x] P5.7 (AC04, AC05, AC06, AC09): Produce every-entity rollout dispositions and verified bounded institutional-data captures with resource-specific denominators.
+- [x] P4.6 (AC07, AC11): Present grouped, reusable rights/privacy publication options with exact candidates and exclusions; no approval inferred.
+- [x] P7.5 (AC12): Repair pre-existing RIOPA canonical-link and equivalent UTC timestamp validation failures without changing acceptance or historical evidence.
