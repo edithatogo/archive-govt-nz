@@ -1,0 +1,20 @@
+{
+  "schema_version": "archive-govt-nz.health-budget-verification/v1",
+  "verification_scope": "reviewed_package_only",
+  "rights_state": "not_evaluated",
+  "publication_state": "local_validation_only",
+  "status": "passed",
+  "manifest_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "source_object_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "source_locator": "synthetic.xlsx",
+  "source_vintage": "Budget-2026",
+  "observed_at": "2026-08-31T00:00:00+00:00",
+  "counts": {"facts": 1, "field_lineage": 8, "dispositions": 2},
+  "disposition_counts": {
+    "input": 2,
+    "normalized": 1,
+    "out_of_scope": 1,
+    "blank": 0,
+    "rejected": 0
+  }
+}

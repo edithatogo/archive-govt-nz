@@ -24,6 +24,9 @@ from archive_govt_nz.cli_integrity import (
     verify_cas,
 )
 from archive_govt_nz.core.registry import AgencyRegistry
+from archive_govt_nz.domains.health_appropriations.budget_operations import (
+    verify_budget_package,
+)
 from archive_govt_nz.domains.health_appropriations.compatibility_export import (
     export_compatibility,
 )
@@ -271,6 +274,14 @@ def health_appropriations_render_plots(
         return 2
     _emit_json({"command": command, **result})
     return 0
+
+
+@app.command(name="health-appropriations-verify-budget")
+def health_appropriations_verify_budget(package_dir: Path, manifest_sha256: str) -> int:
+    """Verify a pinned standalone Budget package without creating archive state."""
+    receipt = verify_budget_package(package_dir, manifest_sha256)
+    _emit_json({"command": "health-appropriations-verify-budget", **receipt})
+    return 0 if receipt["status"] == "passed" else 2
 
 
 @app.command(name="health-appropriations-verify-rebuild")
