@@ -340,7 +340,7 @@ def test_tampering_never_promotes(tmp_path: Path, change: str) -> None:
 )
 def test_path_rejection(name: str) -> None:
     """Reject traversal, ambiguous names and non-state archive payloads."""
-    with pytest.raises(P.v.VerificationError, match="member_path"):
+    with pytest.raises(P.v.VerificationError, match=r"member_(?:path|spelling)"):
         P.unpack(fixtures.zip_bytes([(name, b"x")]))
 
 
@@ -1033,4 +1033,28 @@ def test_malformed_checkpoint_cache_is_not_promoted(
         NOW,
     )
     assert result["status"] == "failed"
+    assert not (tmp_path / "state").exists()
+
+
+def test_original_zip_member_spelling_is_preserved(tmp_path: Path) -> None:
+    """Never bless a malformed member through the ZIP library's NUL truncation."""
+    ref, meta, raw = fixture(tmp_path / "in")
+    files = P.unpack(raw)
+    entries = [
+        ("manifest.json!suffix" if name == "manifest.json" else name, data)
+        for name, data in files.items()
+    ]
+    raw = fixtures.zip_bytes(entries).replace(
+        b"manifest.json!suffix", b"manifest.json\x00suffix"
+    )
+    ref["artifact"].update(size_in_bytes=len(raw), digest="sha256:" + P.v.sha(raw))
+    meta["artifact"].update(ref["artifact"])
+    result = P.restore(
+        request(ref),
+        {"output": tmp_path / "state", "quarantine": tmp_path / "q"},
+        client(meta, raw),
+        "synthetic",
+        NOW,
+    )
+    assert result["failure"] == "member_spelling"
     assert not (tmp_path / "state").exists()

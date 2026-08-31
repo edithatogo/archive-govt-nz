@@ -163,5 +163,10 @@
     "name": "native_checkpoint_structure",
     "old": "LegislationArchiveService.validate_checkpoint(state[\"checkpoint\"])",
     "new": "None"
+  },
+  {
+    "name": "zip_member_spelling",
+    "old": "v.equal(entry.orig_filename, name, \"member_spelling\")",
+    "new": "None"
   }
 ]

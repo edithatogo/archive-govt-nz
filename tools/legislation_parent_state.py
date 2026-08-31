@@ -113,6 +113,7 @@ def unpack(raw: bytes) -> dict[str, bytes]:
         files: dict[str, bytes] = {}
         for entry in entries:
             name = entry.filename
+            v.equal(entry.orig_filename, name, "member_spelling")
             v.require(condition=allowed_name(name), code="member_path")
             v.require(condition=name not in files, code="duplicate_member")
             v.require(
