@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive-govt-nz.org/schemas/legislation-initial-authority-v1.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "mode",
+    "decision_id",
+    "approved_by",
+    "approved_at",
+    "expires_at",
+    "scope",
+    "source",
+    "parent_reference_sha256"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "archive-govt-nz.legislation-initial-authority/v1"
+    },
+    "mode": {
+      "enum": [
+        "bootstrap",
+        "adopt"
+      ]
+    },
+    "decision_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "approved_by": {
+      "const": "edithatogo"
+    },
+    "approved_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository",
+        "branch",
+        "workflow",
+        "execution_id"
+      ],
+      "properties": {
+        "repository": {
+          "const": "edithatogo/archive-govt-nz"
+        },
+        "branch": {
+          "const": "main"
+        },
+        "workflow": {
+          "type": "string",
+          "pattern": "^\\.github/workflows/[a-z0-9][a-z0-9_-]*\\.ya?ml$"
+        },
+        "execution_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        }
+      }
+    },
+    "source": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "source_set",
+            "seed_id",
+            "seed_sha256"
+          ],
+          "properties": {
+            "source_set": {
+              "const": "legislation"
+            },
+            "seed_id": {
+              "const": null
+            },
+            "seed_sha256": {
+              "const": null
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "source_set",
+            "seed_id",
+            "seed_sha256"
+          ],
+          "properties": {
+            "source_set": {
+              "const": "legislation"
+            },
+            "seed_id": {
+              "const": "historical-work-ids-0001"
+            },
+            "seed_sha256": {
+              "const": "59923176fa34796d7673a20b880af9abe5520fe484595edb220f2bbc0e3b33e7"
+            }
+          }
+        }
+      ]
+    },
+    "parent_reference_sha256": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  }
+}

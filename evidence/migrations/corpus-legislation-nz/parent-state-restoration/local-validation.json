@@ -1,0 +1,270 @@
+{
+  "donor": {
+    "archived": true,
+    "final_reachable_main": "b40587f1b1aec7356a0f623916fcc8212397d283",
+    "observed_at": "2026-08-31T16:47:14.060134+00:00",
+    "repository": "edithatogo/corpus-legislation-nz"
+  },
+  "evidence": [
+    {
+      "path": "01-red.log",
+      "sha256": "878db2041dcf20bb34059a31a8edfe6c2f7a51b60d07b7ef71804021d2f0ff4a"
+    },
+    {
+      "path": "03-contract-red.log",
+      "sha256": "93022349c79c97d85b71eb98e1aea4c39a052f5ddee03a0210bc78a069ca9573"
+    },
+    {
+      "path": "09-focused.log",
+      "sha256": "df16fd7b3abf01d06bf4f7c912c06ed112c97f7ef0d06e9f61648fd99c163e22"
+    },
+    {
+      "path": "15-full-validation.log",
+      "sha256": "699d00064e452e7778fc2dd5104fb347932ad5a9a415813910bac60917d22a0e"
+    },
+    {
+      "path": "19-full-validation.log",
+      "sha256": "94ea6860186e3d5741a2406b3c73d8163516829ee5b432a89a5711a8f6184c8f"
+    },
+    {
+      "path": "21-full-validation.log",
+      "sha256": "db5e7f923d82ad5b5817c7dd90259ab86f3a3dee1235ed1d3d4ac34e93acf614"
+    },
+    {
+      "path": "25-full-validation.log",
+      "sha256": "d7ecf0dc10e71d4a00551d276fe91cf8bd9a36e03153afe1844a02b3bcc1ee64"
+    },
+    {
+      "path": "29-full-validation-integrated.log",
+      "sha256": "f535ed658ecba09a67b94d5786940b893d21adc4718983fdc4c9342d0d0d787f"
+    },
+    {
+      "path": "28-focused.log",
+      "sha256": "f867a2a14844538aef1c8cefd90aacea46ec895d2cf7f63dd382414de14f3917"
+    },
+    {
+      "path": "30-workflow-lint-scoped.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "27-workflow-lint-all.log",
+      "sha256": "d75001604148cbbbaeef2b3e66444af4835398619e6e586fb864f68f90f8fee8"
+    },
+    {
+      "path": "critical-final.json",
+      "sha256": "8eb825a1333fcd560a4cf6103e43868b2624091fa6040ad16dd7bc2f942569de"
+    },
+    {
+      "path": "native-coverage-integrated.json",
+      "sha256": "716ffea3350b8956cb93f6e6074413ce6e37f49903643c278a7fce2a7bd8365d"
+    },
+    {
+      "path": "mutations-02/receipt.json",
+      "sha256": "2d0e9bb6115296499522f971906e1fb994362d1749976faa84716456eb3938f0"
+    },
+    {
+      "path": "mutations-03/receipt.json",
+      "sha256": "7b26b2270fb9816323a3bb6ef43412c5eced0c2420dc31e6d6a828ec384ba59d"
+    },
+    {
+      "path": "mutations-delivery/receipt.json",
+      "sha256": "404c8a617f7ab3f1d38df3ca9de897ec3d4b434ded400aaff52c3ac61af945d6"
+    },
+    {
+      "path": "native-generated-25.patch",
+      "sha256": "8fda214b78797269566fd22a66f12df2ef42efd529806db7a05e124aa88f26a4"
+    },
+    {
+      "path": "native-generated-29.patch",
+      "sha256": "1d718ee32ef87ec7b9c12a467790fef3a2e9b2eecb2861e80a86d6368b9f1d79"
+    },
+    {
+      "path": "pr-created-readback.json",
+      "sha256": "16555c24f2f04a2936c1a51e1d61ea6f1cf076eb3382223203ddf17521845545"
+    }
+  ],
+  "evidence_root": "/Volumes/PortableSSD/Quarantine/archive-govt-nz/parent-state-restoration-08",
+  "external_actions": {
+    "branch_pushed": true,
+    "draft_pr_created": 317,
+    "github_issue_created": 312,
+    "hf_or_zenodo_publication": false,
+    "independent_legislation_product_touched": false,
+    "linked_parent_issue": 276,
+    "live_restoration_executed": false,
+    "operational_authority_record_created": false,
+    "operational_parent_reference_created": false,
+    "pr_readback_sha256": "16555c24f2f04a2936c1a51e1d61ea6f1cf076eb3382223203ddf17521845545",
+    "recovery_drill_executed": false,
+    "source_acquisition_executed": false
+  },
+  "files": [
+    {
+      "path": ".github/actions/legislation-parent-state/action.yml",
+      "sha256": "f4d75a1a8b0c230bb9559621a1659fe7b152db3f73f6f6b32f50a0e6efd7a004"
+    },
+    {
+      "path": ".github/workflows/monthly-legislation-reconciliation.yml",
+      "sha256": "1a0defbd9cd1c3731f9f5129b09656ea627ea658bad6435873e355336376125e"
+    },
+    {
+      "path": ".github/workflows/quarterly-legislation-recovery.yml",
+      "sha256": "af14b961d7fd472c28619b17b9ccfffb5d50ef0807503055f448b5a4e8974e69"
+    },
+    {
+      "path": ".github/workflows/scheduled-legislation-harvest.yml",
+      "sha256": "fed559307e518b46c6fbb18e9e9c54d3f37d3eb59989815187a4fd2ac0c3fc01"
+    },
+    {
+      "path": "docs/legislation/parent-state-restoration.md",
+      "sha256": "58059173f70c61c297aa01cb5967e221de23e18e567ed9aaaef864bc3cc51f31"
+    },
+    {
+      "path": "schemas/legislation-continuation-v1.schema.json",
+      "sha256": "6dbd621ac6806e0a38d9cb033a5d59d30ddff1a685eba3388e2c6cda50cdc13f"
+    },
+    {
+      "path": "schemas/legislation-initial-authority-v1.schema.json",
+      "sha256": "a97549b0135c31bed7aa9399f9686d3d7075f5b2d9d442d17db062c640f9dab8"
+    },
+    {
+      "path": "schemas/legislation-parent-lineage-v1.schema.json",
+      "sha256": "1246974289cac54465bd848208cbea86d0c55d28da4831fd2df42de7b2b1c543"
+    },
+    {
+      "path": "schemas/legislation-parent-reference-v1.schema.json",
+      "sha256": "b0b48c05d1f8801e6a1e762c5533900cffe0a9c8da0fe50ef4a1f5e877663afa"
+    },
+    {
+      "path": "tests/tools/legislation_parent_state_mutants.json",
+      "sha256": "5803f0e117b39117d1bf1dc092a834d9100f677fd1a9d76cf1250176fd3fbe71"
+    },
+    {
+      "path": "tests/tools/run_legislation_parent_state_mutations.py",
+      "sha256": "9c70d620cc85d44c22662291367d16bf244db170adf880183ba23a1c4d579834"
+    },
+    {
+      "path": "tests/tools/test_legislation_parent_state.py",
+      "sha256": "3541037cf395608974a0d7d347ed92d4e3d440fd09fe7dda8c0426a43a6727a3"
+    },
+    {
+      "path": "tests/tools/test_legislation_workflow_integrity.py",
+      "sha256": "8dedd2e0eb0342c0f928b3d5a1837722f45a4971c074173e6b169d9208db10d9"
+    },
+    {
+      "path": "tools/legislation_parent_state.py",
+      "sha256": "874c940615db4ef722fd9062ffd366b82a23d572bcea45eca689f8f0e1de255f"
+    },
+    {
+      "path": "tools/merge_legislation_states.py",
+      "sha256": "f909c41192b50e60e8199e26187ab3b4a13a5d2a7dca03fbb8648aba05c9d697"
+    },
+    {
+      "path": "tools/seed_registry.py",
+      "sha256": "fa602798045a04c4289411de23d59a7edd24dc83e87f7e586486fb3e9c494b3a"
+    },
+    {
+      "path": "tools/verify_final_donor_state.py",
+      "sha256": "654ab72b5015d3df7e47d68362d3f2b64598c69aef003fa19ea32c2e2972080f"
+    },
+    {
+      "path": "uv.lock",
+      "sha256": "897f90129ed274f9e1bcbc960437324816050a5bbdc3cb903186fea6b27ed090"
+    }
+  ],
+  "focused": {
+    "covered_branches": 60,
+    "covered_statements": 320,
+    "critical_branches": 60,
+    "critical_coverage_percent": 100,
+    "critical_patch_coverage_percent": 100,
+    "critical_statements": 320,
+    "new_schemas_checked": 4,
+    "tests_passed": 93
+  },
+  "handoffs": {
+    "programme_01": "Carry forward unchanged CKAN/Gazette lint diagnostics and existing branch-only coverage discrepancy from issue 299; no scope expansion.",
+    "prompt_09": "Durable destination and transport decisions remain separate.",
+    "prompts_06_07": "Use the shared action with exact approved workflow pins and stable seed identity; prompts 11/12 remain prerequisite contracts. No implicit source/seed transition."
+  },
+  "issue": 312,
+  "mutations": {
+    "all_killed": true,
+    "killed": 32,
+    "receipt_sha256": "404c8a617f7ab3f1d38df3ca9de897ec3d4b434ded400aaff52c3ac61af945d6",
+    "source_sha256": "874c940615db4ef722fd9062ffd366b82a23d572bcea45eca689f8f0e1de255f",
+    "total": 32
+  },
+  "native_validation": {
+    "branch_coverage_percent": 94.26514399205561,
+    "combined_coverage_percent": 97.19711152714629,
+    "command": "./scripts/validate.sh",
+    "exit_code": 0,
+    "lock_format_lint_typing": "passed",
+    "parity_passed": 9,
+    "repository_mutation_gates": "passed",
+    "representative_documents": 32,
+    "schema_catalogue": 42,
+    "tests_passed": 3580,
+    "warnings": 5
+  },
+  "prior_failures": [
+    "Initial import and missing-contract red tests",
+    "Lint and type iterations",
+    "Randomized fixture mutation of a shared constant; fixed fixture isolation",
+    "Initial mutation campaign: 26 of 27 killed; added isolated continuation-parent-hash negative test",
+    "Native typing and lint failures in property-test construction; corrected without gate changes",
+    "Native credential scan flagged a synthetic credential-shaped URL; retained any-userinfo rejection using a username-only URL fixture"
+  ],
+  "pull_request": 317,
+  "recorded_at": "2026-08-31T16:47:14.060134+00:00",
+  "remaining_delivery_gate": "Exact final-head hosted checks and guarded merge/readback; see issue 312.",
+  "schema_version": "archive-govt-nz.legislation-parent-restoration-validation/v1",
+  "scope": "Prompt 08 repository implementation only; hosted delivery is independently recorded on issue 312",
+  "security": {
+    "credential_scan": {
+      "receipt_sha256": "0db76da639119336f0272de03cf3abe78b9e665233abd3128cf0cd413c28c8af",
+      "status": "passed"
+    },
+    "dependency_audit": {
+      "receipt_sha256": "cf0f39e896b855c75ef5eab925f2b67750db5beae586f90e07f1dc9280796539",
+      "status": "passed"
+    },
+    "licence_inventory": {
+      "receipt_sha256": "8beaa149575043a1d4b854c966c52d6d3fa5624f19d5481cff88fe008ba8a3e8",
+      "status": "passed"
+    },
+    "sbom": {
+      "components": 111,
+      "receipt_sha256": "a16bb82ba13ddbcb92fb5b05bca723b6b81f112408b214886c2abc644cc5b933",
+      "status": "validated"
+    }
+  },
+  "target": {
+    "audited_sha_in_prompt": null,
+    "initial_main": "0a076fa26d2f4fcad9cac445e8c806d8c9e996d5",
+    "integrated_main": "f41ef9b984c15dc84a9afa3e39236388bfcf2197",
+    "native_validated_commit": "834f79446ec7be1f625f0e20bb474ae066a49807",
+    "repository": "edithatogo/archive-govt-nz"
+  },
+  "workflow_lint": {
+    "handoff": [
+      {
+        "diagnostic": "SC2086",
+        "line": 56,
+        "path": ".github/workflows/global-ckan-harvest-huggingface.yml",
+        "sha256": "efb1597f1c546dab97b1e34d873cdb6e362f8dde62b8ec66973b461538ee2fdd",
+        "unchanged_since_initial_main": true
+      },
+      {
+        "diagnostic": "SC2086",
+        "line": 36,
+        "path": ".github/workflows/scheduled-gazette-harvest.yml",
+        "sha256": "4d12ef6bc7c145cc8f556033c7c85a349adfba5265aa8d7680bc5cfbcb4b2d5e",
+        "unchanged_since_initial_main": true
+      }
+    ],
+    "legislation_workflows": "passed",
+    "repository_wide": "failed_existing_out_of_scope_SC2086"
+  }
+}

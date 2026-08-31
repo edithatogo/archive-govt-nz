@@ -56,7 +56,8 @@ def test_harvest_requires_scope_and_carries_complete_state() -> None:
         "batch_id",
         "search_terms",
         "max_works",
-        "prior_state_run_id",
+        "parent_reference",
+        "Seal verified continuation lineage",
         "legislation-state/checkpoint.json",
         "legislation-state/manifest.json",
         "legislation-state/cas",
@@ -70,13 +71,31 @@ def test_reconciliation_and_recovery_require_selected_state() -> None:
     """Do not reconcile or recover implicit empty runner-local state."""
     for path in _WORKFLOWS[1:]:
         content = path.read_text(encoding="utf-8")
-        assert "state_run_id" in content
-        assert "gh run download" in content
-        has_state_dir = (
-            "legislation-state-$TARGET_RUN_ID" in content
-            or "legislation-state-$STATE_RUN_ID" in content
-        )
-        assert has_state_dir
+        assert "parent_reference" in content
+        assert "uses: ./.github/actions/legislation-parent-state" in content
+        assert "gh run download" not in content
+        assert "gh run list" not in content
+        assert "mkdir -p build/legislation-state" not in content
+
+
+def test_all_restoration_precedes_state_consumers() -> None:
+    """A failing shared action must prevent harvest, reconciliation and recovery."""
+    for path in _WORKFLOWS:
+        content = path.read_text(encoding="utf-8")
+        assert content.index(
+            "uses: ./.github/actions/legislation-parent-state"
+        ) < content.index("uv run --locked python tools/run_legislation_")
+        assert "continue-on-error" not in content
+        assert "gh run download" not in content
+        assert "gh run list" not in content
+    helper = Path(".github/actions/legislation-parent-state/action.yml").read_text()
+    assert 'tools/legislation_parent_state.py "${args[@]}"' in helper
+    assert "restoration-receipt.json" in helper
+    assert "if: always()" in helper
+    harvest = _WORKFLOWS[0].read_text()
+    assert harvest.index("Seal verified continuation lineage") < harvest.index(
+        "Upload complete continuation state"
+    )
 
 
 def test_source_set_steady_state_configuration() -> None:

@@ -1,0 +1,172 @@
+[
+  {
+    "name": "schema",
+    "old": "validator.is_valid(value)",
+    "new": "True"
+  },
+  {
+    "name": "timezone",
+    "old": "result.tzinfo is not None",
+    "new": "True"
+  },
+  {
+    "name": "outer_size",
+    "old": "len(raw) <= v.MAX_ZIP",
+    "new": "True"
+  },
+  {
+    "name": "member_count",
+    "old": "0 < len(entries) <= v.MAX_FILES",
+    "new": "True"
+  },
+  {
+    "name": "expanded_size",
+    "old": "sum(e.file_size for e in entries) <= v.MAX_EXPANDED",
+    "new": "True"
+  },
+  {
+    "name": "member_path",
+    "old": "allowed_name(name), code=\"member_path\"",
+    "new": "True, code=\"member_path\""
+  },
+  {
+    "name": "duplicate_member",
+    "old": "name not in files",
+    "new": "True"
+  },
+  {
+    "name": "member_size",
+    "old": "entry.file_size <= v.MAX_MEMBER",
+    "new": "True"
+  },
+  {
+    "name": "member_type",
+    "old": "stat.S_IFMT(entry.external_attr >> 16) in {0, stat.S_IFREG}",
+    "new": "True"
+  },
+  {
+    "name": "encrypted",
+    "old": "not entry.flag_bits & 1",
+    "new": "True"
+  },
+  {
+    "name": "zip_ratio",
+    "old": "entry.file_size <= max(1, entry.compress_size) * MAX_RATIO",
+    "new": "True"
+  },
+  {
+    "name": "complete_docs",
+    "old": "files.keys() >= M.DOCS",
+    "new": "True"
+  },
+  {
+    "name": "state_integrity",
+    "old": "v.equal(state_roots(files), reference[\"roots\"], \"parent_roots\")",
+    "new": "None"
+  },
+  {
+    "name": "artifact_expiry",
+    "old": "instant(artifact[\"expires_at\"]) > now",
+    "new": "True"
+  },
+  {
+    "name": "run_completed",
+    "old": "v.equal(run[\"status\"], \"completed\", \"run_status\")",
+    "new": "None"
+  },
+  {
+    "name": "run_success",
+    "old": "v.equal(run[\"conclusion\"], \"success\", \"run_conclusion\")",
+    "new": "None"
+  },
+  {
+    "name": "download_size",
+    "old": "len(chunks) <= limit",
+    "new": "True"
+  },
+  {
+    "name": "download_deadline",
+    "old": "time.monotonic() - start <= DEADLINE",
+    "new": "True"
+  },
+  {
+    "name": "http_encoding",
+    "old": "response.headers.get(\"content-encoding\", \"identity\")\n            == \"identity\"",
+    "new": "True"
+  },
+  {
+    "name": "https_origin",
+    "old": "location.scheme == \"https\"",
+    "new": "True"
+  },
+  {
+    "name": "blob_origin",
+    "old": "location.host.endswith(suffix)",
+    "new": "True"
+  },
+  {
+    "name": "bootstrap_dispatch",
+    "old": "v.equal(request[\"event_name\"], \"workflow_dispatch\", \"initial_dispatch_required\")",
+    "new": "None"
+  },
+  {
+    "name": "authority_expiry",
+    "old": "instant(authority[\"approved_at\"])\n        <= now\n        < instant(authority[\"expires_at\"])",
+    "new": "True"
+  },
+  {
+    "name": "canonical_authority",
+    "old": "v.equal(raw, M.encoded(document), \"noncanonical_authority\")",
+    "new": "None"
+  },
+  {
+    "name": "worktree_symlink",
+    "old": "not any(p.is_symlink() for p in (path, *path.parents))",
+    "new": "True"
+  },
+  {
+    "name": "sealed_parent_hash",
+    "old": "v.equal(lineage[\"parent_reference_sha256\"], expected_hash, \"lineage_parent_hash\")",
+    "new": "None"
+  },
+  {
+    "name": "sealed_authority_hash",
+    "old": "v.equal(lineage[\"authority_sha256\"], authority_hash, \"lineage_authority_hash\")",
+    "new": "None"
+  },
+  {
+    "name": "state_source_set",
+    "old": "v.equal(\n        v.load(files[\"receipts/harvest.json\"]).get(\"source_set\"),\n        \"legislation\",\n        \"state_source_set\",\n    )",
+    "new": "None"
+  },
+  {
+    "name": "seal_original_lineage",
+    "old": "v.equal(\n        verification[\"parent_lineage_sha256\"],\n        v.sha(files[LINEAGE]),\n        \"seal_original_lineage\",\n    )",
+    "new": "None"
+  },
+  {
+    "name": "seal_lineage_readback",
+    "old": "v.equal(\n        (quarantine / \"lineage.json\").read_bytes(),\n        files[LINEAGE],\n        \"seal_lineage_readback\",\n    )",
+    "new": "None"
+  },
+  {
+    "name": "seal_restoration_status",
+    "old": "v.equal(verification[\"status\"], \"verified\", \"seal_restoration_status\")",
+    "new": "None"
+  },
+  {
+    "name": "seal_execution",
+    "old": "v.equal(\n        v.load(files[\"receipts/harvest.json\"])[\"batch_id\"],\n        context[\"execution_id\"],\n        \"seal_execution\",\n    )",
+    "new": "None"
+  },
+  {
+    "name": "native_checkpoint_structure",
+    "old": "LegislationArchiveService.validate_checkpoint(state[\"checkpoint\"])",
+    "new": "None"
+  },
+  {
+    "name": "zip_member_spelling",
+    "old": "v.equal(entry.orig_filename, name, \"member_spelling\")",
+    "new": "None"
+  }
+]

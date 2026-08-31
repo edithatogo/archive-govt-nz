@@ -8,10 +8,32 @@ on:
         required: true
         type: boolean
         default: false
-      state_run_id:
-        description: "Successful harvest run ID containing complete state"
+      verification_id:
+        description: "Execution identity for a reviewed initial authority; optional for continuation"
+        required: false
+        type: string
+        default: ""
+      parent_reference:
+        description: "Committed pinned parent reference (no latest-run lookup)"
         required: true
         type: string
+        default: "config/legislation/parents/current.json"
+      restoration_mode:
+        description: "Initial modes require separate reviewed authority"
+        required: true
+        type: choice
+        options: [continuation, adopt]
+        default: continuation
+      initial_authority:
+        description: "Committed authority path; required only for initial modes"
+        required: false
+        type: string
+        default: ""
+      confirmed_initial:
+        description: "Confirm the separately reviewed initial-state authority"
+        required: true
+        type: boolean
+        default: false
 
 permissions:
   actions: read
@@ -34,16 +56,19 @@ jobs:
         with:
           python-version: "3.14"
       - run: python -m pip install uv==0.6.5
-      - name: Restore selected complete state
+      - name: Validate explicit operation authority
         env:
           CONFIRMED: ${{ inputs.confirmed_recovery }}
-          GH_TOKEN: ${{ github.token }}
-          STATE_RUN_ID: ${{ inputs.state_run_id }}
-        run: |
-          test "$CONFIRMED" = true
-          case "$STATE_RUN_ID" in (*[!0-9]*|'') exit 2;; esac
-          mkdir -p build/legislation-state
-          gh run download "$STATE_RUN_ID" --repo "$GITHUB_REPOSITORY" --name "legislation-state-$STATE_RUN_ID" --dir build/legislation-state
+        run: test "$CONFIRMED" = true
+      - name: Verify selected parent before any state consumer
+        uses: ./.github/actions/legislation-parent-state
+        with:
+          mode: ${{ inputs.restoration_mode || 'continuation' }}
+          parent-reference: ${{ inputs.parent_reference || 'config/legislation/parents/current.json' }}
+          authority: ${{ inputs.initial_authority }}
+          confirmed-initial: ${{ inputs.confirmed_initial || false }}
+          execution-id: ${{ inputs.verification_id || format('verification-{0}', github.run_id) }}
+          github-token: ${{ github.token }}
       - name: Execute clean authenticated recovery
         run: |
           uv run --locked python tools/run_legislation_recovery_drill.py \

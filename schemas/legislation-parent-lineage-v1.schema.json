@@ -1,0 +1,518 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive-govt-nz.org/schemas/legislation-parent-lineage-v1.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "status",
+    "mode",
+    "context",
+    "source",
+    "verified_at",
+    "verifier_sha256",
+    "parent_reference_sha256",
+    "parent",
+    "authority",
+    "authority_sha256"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "archive-govt-nz.legislation-parent-lineage/v1"
+    },
+    "status": {
+      "const": "verified"
+    },
+    "mode": {
+      "enum": [
+        "continuation",
+        "adopt",
+        "bootstrap"
+      ]
+    },
+    "context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository",
+        "branch",
+        "workflow",
+        "execution_id",
+        "run_id",
+        "run_attempt",
+        "software_commit"
+      ],
+      "properties": {
+        "repository": {
+          "const": "edithatogo/archive-govt-nz"
+        },
+        "branch": {
+          "const": "main"
+        },
+        "workflow": {
+          "type": "string",
+          "pattern": "^\\.github/workflows/[a-z0-9][a-z0-9_-]*\\.ya?ml$"
+        },
+        "execution_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "run_id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "run_attempt": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "software_commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        }
+      }
+    },
+    "source": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "source_set",
+            "seed_id",
+            "seed_sha256"
+          ],
+          "properties": {
+            "source_set": {
+              "const": "legislation"
+            },
+            "seed_id": {
+              "const": null
+            },
+            "seed_sha256": {
+              "const": null
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "source_set",
+            "seed_id",
+            "seed_sha256"
+          ],
+          "properties": {
+            "source_set": {
+              "const": "legislation"
+            },
+            "seed_id": {
+              "const": "historical-work-ids-0001"
+            },
+            "seed_sha256": {
+              "const": "59923176fa34796d7673a20b880af9abe5520fe484595edb220f2bbc0e3b33e7"
+            }
+          }
+        }
+      ]
+    },
+    "verified_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "verifier_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "parent_reference_sha256": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "parent": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "schema_version",
+            "repository",
+            "repository_id",
+            "workflow",
+            "run",
+            "artifact",
+            "roots",
+            "state_schemas",
+            "source",
+            "lineage_sha256"
+          ],
+          "properties": {
+            "schema_version": {
+              "const": "archive-govt-nz.legislation-parent-reference/v1"
+            },
+            "repository": {
+              "const": "edithatogo/archive-govt-nz"
+            },
+            "repository_id": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "workflow": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "id",
+                "name",
+                "path"
+              ],
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 200
+                },
+                "path": {
+                  "type": "string",
+                  "pattern": "^\\.github/workflows/[a-z0-9][a-z0-9_-]*\\.ya?ml$"
+                }
+              }
+            },
+            "run": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "id",
+                "head_sha",
+                "head_branch",
+                "run_attempt"
+              ],
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "head_sha": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{40}$"
+                },
+                "head_branch": {
+                  "const": "main"
+                },
+                "run_attempt": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            },
+            "artifact": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "id",
+                "name",
+                "digest",
+                "size_in_bytes",
+                "expired",
+                "expires_at"
+              ],
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "name": {
+                  "type": "string",
+                  "pattern": "^legislation-state-[1-9][0-9]*$"
+                },
+                "digest": {
+                  "type": "string",
+                  "pattern": "^sha256:[0-9a-f]{64}$"
+                },
+                "size_in_bytes": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 67108864
+                },
+                "expired": {
+                  "const": false
+                },
+                "expires_at": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              }
+            },
+            "roots": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "manifest_sha256",
+                "manifest_file_sha256",
+                "checkpoint_file_sha256",
+                "inventory_sha256",
+                "cas_root_sha256",
+                "success_receipt_sha256"
+              ],
+              "properties": {
+                "manifest_sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                },
+                "manifest_file_sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                },
+                "checkpoint_file_sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                },
+                "inventory_sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                },
+                "cas_root_sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                },
+                "success_receipt_sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                }
+              }
+            },
+            "state_schemas": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "manifest",
+                "checkpoint",
+                "success_receipt"
+              ],
+              "properties": {
+                "manifest": {
+                  "const": "archive-govt-nz.legislation-manifest/v1"
+                },
+                "checkpoint": {
+                  "const": "archive-govt-nz.legislation-checkpoint/v1"
+                },
+                "success_receipt": {
+                  "const": "archive-govt-nz.legislation-harvest-receipt/v2"
+                }
+              }
+            },
+            "source": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "source_set",
+                    "seed_id",
+                    "seed_sha256"
+                  ],
+                  "properties": {
+                    "source_set": {
+                      "const": "legislation"
+                    },
+                    "seed_id": {
+                      "const": null
+                    },
+                    "seed_sha256": {
+                      "const": null
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "source_set",
+                    "seed_id",
+                    "seed_sha256"
+                  ],
+                  "properties": {
+                    "source_set": {
+                      "const": "legislation"
+                    },
+                    "seed_id": {
+                      "const": "historical-work-ids-0001"
+                    },
+                    "seed_sha256": {
+                      "const": "59923176fa34796d7673a20b880af9abe5520fe484595edb220f2bbc0e3b33e7"
+                    }
+                  }
+                }
+              ]
+            },
+            "lineage_sha256": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "authority": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "schema_version",
+            "mode",
+            "decision_id",
+            "approved_by",
+            "approved_at",
+            "expires_at",
+            "scope",
+            "source",
+            "parent_reference_sha256"
+          ],
+          "properties": {
+            "schema_version": {
+              "const": "archive-govt-nz.legislation-initial-authority/v1"
+            },
+            "mode": {
+              "enum": [
+                "bootstrap",
+                "adopt"
+              ]
+            },
+            "decision_id": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "approved_by": {
+              "const": "edithatogo"
+            },
+            "approved_at": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "expires_at": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "scope": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "repository",
+                "branch",
+                "workflow",
+                "execution_id"
+              ],
+              "properties": {
+                "repository": {
+                  "const": "edithatogo/archive-govt-nz"
+                },
+                "branch": {
+                  "const": "main"
+                },
+                "workflow": {
+                  "type": "string",
+                  "pattern": "^\\.github/workflows/[a-z0-9][a-z0-9_-]*\\.ya?ml$"
+                },
+                "execution_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 200
+                }
+              }
+            },
+            "source": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "source_set",
+                    "seed_id",
+                    "seed_sha256"
+                  ],
+                  "properties": {
+                    "source_set": {
+                      "const": "legislation"
+                    },
+                    "seed_id": {
+                      "const": null
+                    },
+                    "seed_sha256": {
+                      "const": null
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "source_set",
+                    "seed_id",
+                    "seed_sha256"
+                  ],
+                  "properties": {
+                    "source_set": {
+                      "const": "legislation"
+                    },
+                    "seed_id": {
+                      "const": "historical-work-ids-0001"
+                    },
+                    "seed_sha256": {
+                      "const": "59923176fa34796d7673a20b880af9abe5520fe484595edb220f2bbc0e3b33e7"
+                    }
+                  }
+                }
+              ]
+            },
+            "parent_reference_sha256": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "authority_sha256": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  }
+}
