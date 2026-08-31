@@ -23,6 +23,7 @@ every planned record set, measure or operational workflow.
 - [Pinned donor behavior](./donor-behavior.md)
 - [Raw Budget extraction](./raw-budget.md)
 - [Raw BEFU/HYEFU extraction](./raw-forecast.md)
+- [BEFU 2026 / HYEFU 2025 versioned source pilots](./forecast-successors.md)
 - [Exact-series CPI source extraction](./cpi-source.md)
 - [Raw historical Health/GDP extraction and reconciliation](./raw-historical.md)
 - [Original-workbook orchestration](./raw-rebuild.md)
