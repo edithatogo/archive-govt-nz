@@ -145,3 +145,8 @@ seven fresh successes and clean status at
 `10731ff4b37f41365eb35eeb49dd37e957c74647`; readback confirmed
 `76295f76c235a1c667b08334382795e78f949ae3` at `2026-08-31T16:57:36Z`.
 These are parent-reported hosted receipts, not this agent's merge operations.
+
+Before PR creation, main `0fafa5a` was integrated at `1fc1d0d` without conflicts.
+Source and test hashes remained unchanged; all 53 focused tests and 75-track
+Conductor validation passed after integration. The full corrected native result
+predates this later base integration; exact-head hosted checks remain separate.
