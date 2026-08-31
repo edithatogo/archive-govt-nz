@@ -80,8 +80,9 @@ This handoff supplies verified input only. It does not authorize or perform a
 canonical merge, publication, donor unarchival, rights clearance, HF dataset,
 Zenodo DOI, or changes to the independent `edithatogo/legislation` product.
 Corpus bytes are outside Git; committed evidence contains only metadata,
-identifiers, inventories and verification receipts. Prompt 04 must also respect
-its separate prerequisite lineage issue and its own acceptance gates.
+identifiers, inventories and verification receipts. Prompt 04 also requires a
+verified current target state and its own acceptance gates, as specified by the
+controller dependency graph; Prompt 02 is not an added prerequisite.
 
 ## Reproduction
 
