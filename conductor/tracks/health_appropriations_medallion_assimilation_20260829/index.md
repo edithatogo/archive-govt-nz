@@ -15,6 +15,7 @@ every planned record set, measure or operational workflow.
 
 ## Artifacts
 
+- [Standalone Budget-package operations](./budget-operations.md)
 - [Specification](./spec.md)
 - [Requirements](./requirements.md)
 - [Design](./design.md)

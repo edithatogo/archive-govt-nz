@@ -194,18 +194,39 @@ def test_cli_argument_dispatch(
 
 @pytest.mark.parametrize("passed", [True, False])
 def test_protocol_failure_flag_preserves_receipt(
-    package: tuple[Path, str], passed: bool
+    package: tuple[Path, str], *, passed: bool
 ) -> None:
     root, pin = package
     if not passed:
         pin = "0" * 64
-    response = Server()._call_tool(
-        1,
+    server = Server()
+    initialized = server.handle_request(
         {
-            "name": "health_appropriations_verify_budget",
-            "arguments": {"package_dir": str(root), "manifest_sha256": pin},
-        },
+            "jsonrpc": "2.0",
+            "id": 1,
+            "method": "initialize",
+            "params": {
+                "protocolVersion": "2025-11-25",
+                "capabilities": {},
+                "clientInfo": {"name": "budget-test", "version": "1.0"},
+            },
+        }
     )
+    assert initialized is not None
+    assert "result" in initialized
+    server.handle_request({"jsonrpc": "2.0", "method": "notifications/initialized"})
+    response = server.handle_request(
+        {
+            "jsonrpc": "2.0",
+            "id": 2,
+            "method": "tools/call",
+            "params": {
+                "name": "health_appropriations_verify_budget",
+                "arguments": {"package_dir": str(root), "manifest_sha256": pin},
+            },
+        }
+    )
+    assert response is not None
     result = response["result"]
     assert result["isError"] is not passed
     assert result["structuredContent"] == budget_operations.verify_budget_package(
