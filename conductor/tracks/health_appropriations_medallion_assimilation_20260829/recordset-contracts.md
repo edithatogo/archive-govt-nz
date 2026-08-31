@@ -93,3 +93,8 @@ SHA2561173a96654a18d6b7f0337f34cff79dd17b21b4011a8a92a62ebc1769a113122
 and test SHA2563d2973906cec0dacb9d9c4050a4033376393f1e67fad9e47b39872eaad32a0db
 match the preintegration head. The prior native pass is retained, not rerun or
 relabelled as integrated assurance; fresh exact-head hosted checks are required.
+
+After QES delivery, main6c23ba8 was integrated with unchanged JSON source/tests.
+69focused checks passed3.47seconds; every ledger line parsed and the complete
+incoming prefix matched byte-for-byte. This second documentation integration
+does not reuse the prior head's hosted checks as evidence for its new head.

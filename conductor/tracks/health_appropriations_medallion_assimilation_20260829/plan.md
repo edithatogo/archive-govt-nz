@@ -374,10 +374,12 @@ repository validation command. External gates block only their affected task.
 
 ### 5.2 Normalize direct official datasets
 
-- [~] Normalize the two retained HAIR2024 Ministry CSVs as separately
+- [x] Normalize the two retained HAIR2024 Ministry CSVs as separately
   attributed published indicators, preserving exact tokens and unknown units,
   real-price base and denominator methodology without semantic promotion.
   [M-05, M-06, M-07, M-11, M-18; AC-05, AC-09, AC-11, AC-16]
+  (PR #291, observed merge25f9fb5 after seven exact-head passing checks;
+  broader Ministry coverage and methodology remain pending)
 - [x] Characterize and independently rebuild the retained fiscal 1972–2025
   Health/GDP selection using the existing strict adapter; retain 108 facts,
   lineage, period transitions and explicit 2017–2024 GDP revisions without
@@ -396,6 +398,11 @@ repository validation command. External gates block only their affected task.
 
 ### 5.3 Normalize analytical context
 
+- [~] Implement the bounded June2026 QES Table8 QEMQ.SASZ9A published
+  ordinary-time hourly earnings profile (nine quarters), with literal values,
+  unknown currency/sex/adjustment flags and all-cell dispositions; no deflator
+  selection or wage-adjusted spending. [M-05, M-06, M-07, M-12, M-18;
+  AC-05, AC-10, AC-16]
 - [x] Implement the bounded, exact nine-column CPIQ.SE9A quarterly source
   profile with Decimal values, independent NA/status retention, unknown-base
   flag, full source-row dispositions and lineage; validate independent local
