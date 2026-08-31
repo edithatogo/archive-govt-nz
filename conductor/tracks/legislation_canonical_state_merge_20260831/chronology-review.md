@@ -37,3 +37,13 @@ mutation, hygiene, CAS benchmark, dependency audit, licence, secret and strict
 Only this scratch checkout's two generated timestamp observations were restored
 to their prior bytes. Independent retained-package regeneration remains outside
 this correction; new-head hosted checks are required for its separate PR.
+
+After opening PR #301, main c4d62ca3bc553c74663d851961fed436e4015dba
+was integrated without conflicts. Its changes concern health-appropriations
+additive staging, not the chronology implementation. On the integrated tree,
+all 53 focused merger tests, Ruff lint/format and strict typing passed.
+An initial Conductor command used a nonexistent script name and failed without
+running validation; the corrected `tools/validate_conductor_state.py` passed.
+The full native result above belongs to the pre-integration tree; it was not
+repeated for this unrelated incoming change. Fresh exact-head hosted checks
+remain required.
