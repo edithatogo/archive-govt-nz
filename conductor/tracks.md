@@ -241,3 +241,5 @@ implementation has occurred under these tracks.
 - [x] **Track: Final donor operational-state verification (Prompt 03)**
   *Link: [./tracks/legislation_final_donor_state_verification_20260831/index.md](./tracks/legislation_final_donor_state_verification_20260831/index.md)*
 
+- [~] **Track: Legislation post-cutover programme controller (Prompt 01)**
+  *Link: [tracks/legislation_post_cutover_state_and_publication_integrity_20260831/index.md](./tracks/legislation_post_cutover_state_and_publication_integrity_20260831/index.md)*

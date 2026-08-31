@@ -1,0 +1,50 @@
+{
+  "merged_target_commit": "3ea0b405268bcb4e3bc12dc13ca0327108d044a6",
+  "reviewed_head": "50732ea1bdc07a1f3d5853e410c5c74f9d753c08",
+  "checks": [
+    {
+      "name": "codecov/patch",
+      "conclusion": "success",
+      "url": "https://github.com/edithatogo/archive-govt-nz/runs/99505088200"
+    },
+    {
+      "name": "CodeQL",
+      "conclusion": "success",
+      "url": "https://github.com/edithatogo/archive-govt-nz/runs/99503528934"
+    },
+    {
+      "name": "analyze",
+      "conclusion": "success",
+      "url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/33395962350/job/99500422151"
+    },
+    {
+      "name": "Assurance (ubuntu-latest)",
+      "conclusion": "success",
+      "url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/33395962343/job/99500422070"
+    },
+    {
+      "name": "Assurance (macos-latest)",
+      "conclusion": "success",
+      "url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/33395962343/job/99500421905"
+    },
+    {
+      "name": "Assurance (windows-latest)",
+      "conclusion": "success",
+      "url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/33395962343/job/99500421640"
+    },
+    {
+      "name": "lint",
+      "conclusion": "success",
+      "url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/33395962318/job/99500421412"
+    }
+  ],
+  "observed_counts": {
+    "seed_ids": 500,
+    "records": 500,
+    "processed_ids": 500,
+    "cas_objects": 500
+  },
+  "verification_receipt_sha256": "46e193732d5a798a33a8647f58f7d5962dc449e9cde0148a51250073e6272e97",
+  "prompt04_inventory_sha256": "61d054a24e39792cdef21783c68c4f5bb31903139608fc5854cdd66e9b68aa7e",
+  "scope": "Prompt 03 verified candidate only; canonical state migration, redundant custody and publication remain separate."
+}

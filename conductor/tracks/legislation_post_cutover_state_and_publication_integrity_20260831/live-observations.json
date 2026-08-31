@@ -1,0 +1,58 @@
+{
+  "observed_at": "2026-08-31T12:55:44.783149+00:00",
+  "target_sha": "d6bc0c96c44488a75b7e98bd9cb95591eeb97a38",
+  "donor": {
+    "archived": true,
+    "head": "b40587f1b1aec7356a0f623916fcc8212397d283"
+  },
+  "http": {
+    "huggingface_living": {
+      "url": "https://huggingface.co/api/datasets/edithatogo/corpus-legislation-nz",
+      "http_status": 200,
+      "id": "edithatogo/corpus-legislation-nz",
+      "sha": "1efa35e72c378068cfb112d060bd0502497f61b1",
+      "private": false,
+      "disabled": false
+    },
+    "huggingface_historical": {
+      "url": "https://huggingface.co/api/datasets/edithatogo/corpus-legislation-nz-historical",
+      "http_status": 200,
+      "id": "edithatogo/corpus-legislation-nz-historical",
+      "sha": "ea9e66fb89c3230fc478f7c6f05f1a82f4fa1174",
+      "private": false,
+      "disabled": false
+    },
+    "zenodo": {
+      "url": "https://zenodo.org/api/records/20592540",
+      "http_status": 200,
+      "id": 20592540,
+      "doi": "10.5281/zenodo.20592540",
+      "conceptdoi": "10.5281/zenodo.20592539",
+      "conceptrecid": "20592539"
+    }
+  },
+  "artifact": {
+    "id": 9450742423,
+    "name": "target-legislation-weekly-32487942675",
+    "expired": false,
+    "expires_at": "2026-11-19T13:38:58Z",
+    "digest": "sha256:1975e473793fd701b81b53a7f6fd696bbeaa257b41bdc55250f064a21ad9e54e"
+  },
+  "weekly_run": {
+    "id": 32487942675,
+    "name": "Target weekly legislation cycle",
+    "head_sha": "b40587f1b1aec7356a0f623916fcc8212397d283",
+    "path": ".github/workflows/target_weekly_legislation_cycle.yml",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32487942675"
+  },
+  "publication_discrepancy": {
+    "repository_claim": "10.5281/zenodo.20592540 labelled concept DOI",
+    "verified_version_doi": "10.5281/zenodo.20592540",
+    "verified_concept_doi": "10.5281/zenodo.20592539",
+    "owner_prompt": null,
+    "status": "blocked_external",
+    "reason": "Exact specialist publication prompt has not been supplied; controller records finding without modifying publication metadata or inventing ownership."
+  }
+}
