@@ -205,6 +205,17 @@ def test_forecast_dispatch_preserves_package_and_partial_failure(
     }
     assert not partial.output_dir.exists()
     assert source.read_bytes() == retained
+    assert source_operations.operate_source(partial, dry_run=False) == failed
+    manifest = json.loads((partial.output_dir / "MANIFEST.json").read_bytes())
+    assert manifest["status"] == "partial"
+    assert manifest["counts"]["rejected"] == 1
+    assert {path.name for path in partial.output_dir.iterdir()} == {
+        "MANIFEST.json",
+        "forecast_facts.parquet",
+        "field_lineage.parquet",
+        "cell_dispositions.parquet",
+    }
+    assert source.read_bytes() == retained
 
 
 @pytest.mark.parametrize("flag", [None, 0, 1, "", "false", [], {}])

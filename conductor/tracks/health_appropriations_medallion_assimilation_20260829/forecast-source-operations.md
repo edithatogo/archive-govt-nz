@@ -44,3 +44,11 @@ test SHA-256 is
 `d3661b21538c4e8cc433a41474e637e6af0402ef9813e4a8887f1d7f3e350d41`.
 Cold mutation, native harness, dependency integration and hosted checks remain
 pending. No real source payloads are committed or used by these tests.
+
+Independent review found no actionable production issue and requested explicit
+write-mode partial-package assurance. The characterization now proves both
+successors return the same failed compact receipt while retaining all four
+partial package files with `status=partial` and one rejected amount. All 279
+tests pass again (8.46 seconds), Ruff is clean, and production is unchanged.
+The updated test SHA-256 is
+`f858ee7cd071cebb1457479a3ed67429849ffc962300364d059b4865be3391f7`.
