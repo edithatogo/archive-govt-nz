@@ -1,0 +1,174 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive-govt-nz.org/schemas/legislation-continuation-v1.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "status",
+    "parent_lineage_sha256",
+    "context",
+    "source",
+    "roots",
+    "state_schemas"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "archive-govt-nz.legislation-continuation/v1"
+    },
+    "status": {
+      "const": "complete"
+    },
+    "parent_lineage_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository",
+        "branch",
+        "workflow",
+        "execution_id",
+        "run_id",
+        "run_attempt",
+        "software_commit"
+      ],
+      "properties": {
+        "repository": {
+          "const": "edithatogo/archive-govt-nz"
+        },
+        "branch": {
+          "const": "main"
+        },
+        "workflow": {
+          "enum": [
+            ".github/workflows/scheduled-legislation-harvest.yml",
+            ".github/workflows/monthly-legislation-reconciliation.yml",
+            ".github/workflows/quarterly-legislation-recovery.yml"
+          ]
+        },
+        "execution_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "run_id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "run_attempt": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "software_commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        }
+      }
+    },
+    "source": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "source_set",
+            "seed_id",
+            "seed_sha256"
+          ],
+          "properties": {
+            "source_set": {
+              "const": "legislation"
+            },
+            "seed_id": {
+              "const": null
+            },
+            "seed_sha256": {
+              "const": null
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "source_set",
+            "seed_id",
+            "seed_sha256"
+          ],
+          "properties": {
+            "source_set": {
+              "const": "legislation"
+            },
+            "seed_id": {
+              "const": "historical-work-ids-0001"
+            },
+            "seed_sha256": {
+              "const": "59923176fa34796d7673a20b880af9abe5520fe484595edb220f2bbc0e3b33e7"
+            }
+          }
+        }
+      ]
+    },
+    "roots": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "manifest_sha256",
+        "manifest_file_sha256",
+        "checkpoint_file_sha256",
+        "inventory_sha256",
+        "cas_root_sha256",
+        "success_receipt_sha256"
+      ],
+      "properties": {
+        "manifest_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "manifest_file_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "checkpoint_file_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "inventory_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "cas_root_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "success_receipt_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "state_schemas": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "manifest",
+        "checkpoint",
+        "success_receipt"
+      ],
+      "properties": {
+        "manifest": {
+          "const": "archive-govt-nz.legislation-manifest/v1"
+        },
+        "checkpoint": {
+          "const": "archive-govt-nz.legislation-checkpoint/v1"
+        },
+        "success_receipt": {
+          "const": "archive-govt-nz.legislation-harvest-receipt/v2"
+        }
+      }
+    }
+  }
+}

@@ -23,11 +23,27 @@ on:
         required: true
         type: number
         default: 25
-      prior_state_run_id:
-        description: "Prior successful run ID containing full state; blank for first batch"
+      parent_reference:
+        description: "Committed pinned parent reference (no latest-run lookup)"
+        required: true
+        type: string
+        default: "config/legislation/parents/current.json"
+      restoration_mode:
+        description: "Initial modes require separate reviewed authority"
+        required: true
+        type: choice
+        options: [continuation, adopt, bootstrap]
+        default: continuation
+      initial_authority:
+        description: "Committed authority path; required only for initial modes"
         required: false
         type: string
         default: ""
+      confirmed_initial:
+        description: "Confirm the separately reviewed initial-state authority"
+        required: true
+        type: boolean
+        default: false
 
 permissions:
   actions: read
@@ -79,36 +95,15 @@ jobs:
           Path("build").mkdir(exist_ok=True)
           Path("build/legislation-search-terms.txt").write_text("\n".join(terms) + "\n", encoding="utf-8")
           PY
-      - name: Prepare full state directories
-        run: mkdir -p build/legislation-state/cas build/legislation-state/receipts
-      - name: Restore prior state (auto-discover latest if prior_state_run_id blank)
-        env:
-          GH_TOKEN: ${{ github.token }}
-          MANUAL_RUN_ID: ${{ inputs.prior_state_run_id }}
-        run: |
-          TARGET_RUN_ID="$MANUAL_RUN_ID"
-          if [ -z "$TARGET_RUN_ID" ]; then
-            echo "No manual prior_state_run_id provided. Auto-discovering latest successful run..."
-            TARGET_RUN_ID=$(gh run list \
-              --repo "$GITHUB_REPOSITORY" \
-              --workflow "scheduled-legislation-harvest.yml" \
-              --branch "${GITHUB_REF_NAME:-main}" \
-              --status "success" \
-              --limit 5 \
-              --json databaseId \
-              --jq '.[0].databaseId // empty')
-          fi
-          if [ -n "$TARGET_RUN_ID" ]; then
-            case "$TARGET_RUN_ID" in (*[!0-9]*|'') exit 2;; esac
-            echo "Restoring state from Run ID: $TARGET_RUN_ID"
-            mkdir -p build/restored-state
-            if gh run download "$TARGET_RUN_ID" --repo "$GITHUB_REPOSITORY" --name "legislation-state-$TARGET_RUN_ID" --dir build/restored-state; then
-              cp -R build/restored-state/. build/legislation-state/
-              echo "Successfully restored state from run $TARGET_RUN_ID"
-            fi
-          else
-            echo "No prior successful run found. Proceeding with initial empty state."
-          fi
+      - name: Verify selected parent before any state consumer
+        uses: ./.github/actions/legislation-parent-state
+        with:
+          mode: ${{ inputs.restoration_mode || 'continuation' }}
+          parent-reference: ${{ inputs.parent_reference || 'config/legislation/parents/current.json' }}
+          authority: ${{ inputs.initial_authority }}
+          confirmed-initial: ${{ inputs.confirmed_initial || false }}
+          execution-id: ${{ github.event_name == 'schedule' && format('scheduled-weekly-{0}', github.run_id) || inputs.batch_id }}
+          github-token: ${{ github.token }}
       - name: Execute bounded service-backed harvest
         env:
           BATCH_ID: ${{ github.event_name == 'schedule' && format('scheduled-weekly-{0}', github.run_id) || inputs.batch_id }}
@@ -122,6 +117,13 @@ jobs:
             --batch-id "$BATCH_ID" \
             --search-terms-file build/legislation-search-terms.txt \
             --max-works "$MAX_WORKS"
+      - name: Seal verified continuation lineage
+        env:
+          PARENT_EXECUTION_ID: ${{ github.event_name == 'schedule' && format('scheduled-weekly-{0}', github.run_id) || inputs.batch_id }}
+        run: >-
+          uv run --locked python tools/legislation_parent_state.py seal
+          --state build/legislation-state
+          --quarantine build/legislation-parent-quarantine
       - name: Upload complete continuation state
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         with:
@@ -134,5 +136,7 @@ jobs:
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         with:
           name: legislation-failure-${{ github.run_id }}
-          path: build/legislation-state/receipts/
+          path: |
+            build/legislation-state/receipts/
+            build/legislation-parent-quarantine/*failure.json
           if-no-files-found: warn
