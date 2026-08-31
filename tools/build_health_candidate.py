@@ -8,8 +8,10 @@ import json
 import shutil
 from pathlib import Path
 from typing import Any, cast
-from urllib.parse import urlsplit
 
+from archive_govt_nz.domains.health_appropriations.candidate_paths import (
+    original_paths,
+)
 from archive_govt_nz.object_store import ContentAddressedStore
 from archive_govt_nz.schemas import (
     generate_domain_croissant_descriptor,
@@ -107,12 +109,13 @@ def main() -> int:
     if args.output_dir.exists():
         error = "candidate_output_exists"
         raise ValueError(error)
-    args.output_dir.mkdir(parents=True)
     capture = json.loads(args.capture_manifest.read_text(encoding="utf-8"))
     results = cast("list[dict[str, Any]]", capture["results"])
+    destinations = original_paths(results)
+    args.output_dir.mkdir(parents=True)
     store = ContentAddressedStore(args.store_root, create=False)
     rights: list[dict[str, object]] = []
-    for row in results:
+    for row, relative in zip(results, destinations, strict=True):
         if (
             row.get("state") != "captured"
             or row.get("rights", {}).get("state") != "eligible"
@@ -120,8 +123,6 @@ def main() -> int:
             error = "candidate_ineligible_capture"
             raise ValueError(error)
         receipt = store.verify(cast("str", row["object_id"]))
-        suffix = Path(urlsplit(cast("str", row["url"])).path).suffix.lower()
-        relative = Path("original") / f"{row['source_id']}{suffix}"
         _copy(receipt.path, args.output_dir / relative)
         rights.append(
             {
