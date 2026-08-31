@@ -1,0 +1,21 @@
+{
+  "artifact": {
+    "id": 9450742423,
+    "name": "target-legislation-weekly-32487942675",
+    "digest": "sha256:1975e473793fd701b81b53a7f6fd696bbeaa257b41bdc55250f064a21ad9e54e"
+  },
+  "run": {
+    "id": 32487942675,
+    "name": "Target weekly legislation cycle",
+    "path": ".github/workflows/target_weekly_legislation_cycle.yml",
+    "head_sha": "b40587f1b1aec7356a0f623916fcc8212397d283"
+  },
+  "repository_id": 1261843947,
+  "batch_id": "weekly-32487942675",
+  "seed_sha256": "59923176fa34796d7673a20b880af9abe5520fe484595edb220f2bbc0e3b33e7",
+  "manifest_sha256": "a32dc371a1a47ae30a4afd58a9cbde2a439f3536d7705eb776e0fa68b4cd16db",
+  "prior_run_id": 32487223314,
+  "prior_artifact": "target-legislation-live-canary-32487223314",
+  "execution_target_commit": "d9abc05fa648f8b2049fb443477bc8f97691cf7f",
+  "target_baseline_commit": "113bac597cb95ce7aba5c877da4cffde6a0346cc"
+}

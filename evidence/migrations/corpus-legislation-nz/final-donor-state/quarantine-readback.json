@@ -1,0 +1,11 @@
+{
+  "observed_at": "2026-08-31T12:29:49.695114+00:00",
+  "verification": "independent post-extraction disk readback",
+  "status": "passed",
+  "files_verified": 511,
+  "read_only_files": 511,
+  "zip_read_only": true,
+  "artifact_sha256": "1975e473793fd701b81b53a7f6fd696bbeaa257b41bdc55250f064a21ad9e54e",
+  "inventory_sha256": "61d054a24e39792cdef21783c68c4f5bb31903139608fc5854cdd66e9b68aa7e",
+  "scope": "Local quarantine only; filesystem permissions are not WORM storage. Rehash before use."
+}
