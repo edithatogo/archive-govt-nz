@@ -1,0 +1,21 @@
+{
+  "source_id": "nz-fyi",
+  "repo_id": "edithatogo/fyi-archive-nz",
+  "manifest_sha256": "3514658895d5e26726f4d23a776a709a4c0fce165dcfb8e307ef10f4d15bb49e",
+  "reviewer": null,
+  "rights_status": "pending",
+  "privacy_status": "pending",
+  "purpose": "public_preservation",
+  "evidence_references": [],
+  "candidate_scope": "New locally reconstructed v2 candidate from retained donor run 33307777685; WARC-Date capture timestamp, one request, two response records. Not the historical a78bef candidate; not a national archive.",
+  "review_requirements": [
+    "Document a source-specific basis for third-party public redistribution; public source visibility alone is insufficient.",
+    "Review the exact candidate for personal information and applicable takedown handling.",
+    "Record attributable review evidence before setting any approval status."
+  ],
+  "policy_observations": [
+    "https://meta.fyi.org.nz/help/privacy/",
+    "https://meta.fyi.org.nz/help/officers/"
+  ],
+  "approved": false
+}

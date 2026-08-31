@@ -22,48 +22,42 @@
       "url": "https://open.canada.ca/data/dataset/0797e893-751e-4695-8229-a5066e4fe43c/resource/19383ca2-b01a-487d-88f7-e1ffbc7d39c2/download/ati-all.csv",
       "format": "CSV",
       "size": 115299271,
-      "last_modified": "2026-08-31T06:49:29.293945",
-      "hash": "c5ac78303c172c419e32c1514c3d0c36"
+      "last_modified": "2026-08-31T06:49:29.293945"
     },
     {
       "id": "5a1386a5-ba69-4725-8338-2f26004d7382",
       "url": "https://open.canada.ca/data/dataset/0797e893-751e-4695-8229-a5066e4fe43c/resource/5a1386a5-ba69-4725-8338-2f26004d7382/download/ati-nil.csv",
       "format": "CSV",
       "size": 653800,
-      "last_modified": "2026-08-31T06:49:46.044182",
-      "hash": "add0884d9f7919ee1572b9327f0b2160"
+      "last_modified": "2026-08-31T06:49:46.044182"
     },
     {
       "id": "c8745108-5138-45f1-b7aa-cb16cef414c1",
       "url": "https://open.canada.ca/en/search/ati",
       "format": "HTML",
       "size": 0,
-      "last_modified": null,
-      "hash": ""
+      "last_modified": null
     },
     {
       "id": "d338974f-b307-4737-88ae-c28af9178f2a",
       "url": "https://ouvert.canada.ca/fr/search/ati",
       "format": "HTML",
       "size": null,
-      "last_modified": null,
-      "hash": ""
+      "last_modified": null
     },
     {
       "id": "9803cf94-f080-46af-8a74-a1fab0c93cb9",
       "url": "https://open.canada.ca/data/recombinant-published-dictionary/ati",
       "format": "XLSX",
       "size": null,
-      "last_modified": null,
-      "hash": ""
+      "last_modified": null
     },
     {
       "id": "5515c59c-130a-4979-81fd-acbb94020a8a",
       "url": "https://open.canada.ca/data/recombinant-published-schema/ati.json",
       "format": "JSON",
       "size": null,
-      "last_modified": null,
-      "hash": ""
+      "last_modified": null
     }
   ],
   "local_files": {
@@ -101,5 +95,6 @@
   ],
   "rights_observation": "Provider declares Open Government Licence - Canada; exclusions and attribution remain applicable.",
   "rights_decision": "candidate_evidence_only_no_source_activation",
-  "publication_decision": "pending_exact_candidate_review_and_registered_destination"
+  "publication_decision": "pending_exact_candidate_review_and_registered_destination",
+  "projection_note": "Unused, unverified provider resource hash fields are omitted from this public projection. Original CKAN metadata bytes remain preserved locally under metadata_sha256; computed SHA-256 values identify acquired originals."
 }

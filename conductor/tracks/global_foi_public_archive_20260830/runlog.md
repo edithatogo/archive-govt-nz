@@ -178,3 +178,5 @@ source activation, source-specific approval, country completeness or cutover is
 claimed. Final integrated validation is recorded in the continuation receipt.
 
 Three full local gate attempts reached the unchanged 300-second test-stage limit. The final cache identifies the existing legislation order-invariance test for isolated diagnosis; no full-pass claim is made. Hosted validation remains pending. A new factual-context NZ v2 candidate was fully verified and cold-restored locally; its distinct manifest is recorded in raw-candidate-reconstruction-20260831.json. It does not inherit the older pending decision.
+
+PR #272 hosted Ubuntu passed 2,048 tests, 96.84 percent coverage and mutation stages. The gate then rejected two non-secret provider hash strings in the Canadian projection. Omitted unused unverified provider hashes while retaining original metadata and its SHA-256; no scanner exemption. A new pending decision binds only the reconstructed 351465 candidate; the historical a78bef decision is unchanged.

@@ -38,3 +38,6 @@ Approved track in progress. Automation repair and source-catalogue foundations a
 - [Verified local sample preservation](local-retention-20260831.json)
 
 - [New local raw candidate reconstruction](raw-candidate-reconstruction-20260831.json)
+
+- [Hosted control validation and checksum-projection correction](durable-controls-hosted-correction-20260831.json)
+- [New reconstructed candidate decision — pending](nz-reconstructed-publication-decision.pending.json)

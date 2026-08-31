@@ -46,3 +46,5 @@ No Canadian source activation, accountable privacy decision or public raw upload
 is inferred. The NZ exact-candidate decision remains pending.
 
 A new NZ v2 candidate was reconstructed and cold-restored from retained WARC evidence, with exact original-byte agreement. Its manifest differs from the historical candidate and is recorded separately. Three full local validation attempts timed out; focused controls remain green, and hosted validation is required before readiness.
+
+Hosted Ubuntu passed 2,048 tests at 96.84 percent coverage. Its later secret-scanner failure involved two provider checksum fields, now omitted from the public projection without changing original metadata or scanner policy. Corrected-head checks remain pending on PR #272. The exact reconstructed candidate has its own pending decision.
