@@ -87,6 +87,11 @@ repository validation command. External gates block only their affected task.
 - [ ] Evaluate published aggregate Health Survey indicators as a non-blocking
   Should item; include only if a documented analytical question, stable
   time/geography contract and public rights evidence exist. [S-05; AC-10]
+- [x] Complete the bounded metadata-only Health Survey assessment, recording
+  a contextual question, annual/pooled and revision boundaries, public rights
+  observations and the unqualified export/dictionary gate. This does not
+  complete conditional acquisition or integration above. [S-05; AC-10]
+  See `health-survey-assessment.md`.
 
 ### 1.3 Characterize every donor binary and derivative
 
@@ -220,6 +225,12 @@ repository validation command. External gates block only their affected task.
 
 ### 3.2 Implement the domain and adapter protocol
 
+- [x] Compose verified historical snapshots and the pure canonical projection
+  into an exclusive local-only export, defaulting to dry-run, with complete
+  readback and retained partial failures. Keep source packages and publication
+  unchanged. [M-05, M-06, M-07, M-16, M-18; AC-05, AC-16]
+  (`8bee922`; 52 focused tests, 41/41 cold mutants, 3,194 native tests;
+  see `historical-canonical-export.md`; standalone verification remains pending.)
 - [x] Project reviewed historical Health/GDP facts and field lineage into the
   canonical Arrow shapes with exact Decimal bounds, vintage-aware identities,
   unknown starts, period dependencies and complete mapped/retained lineage
@@ -345,6 +356,14 @@ repository validation command. External gates block only their affected task.
   full cell dispositions and field lineage. No annual aggregation, denominator
   selection, source download or publication. [M-05, M-06, M-07, M-18; AC-05,
   AC-09, AC-16]
+
+- [x] Persist canonical Budget label occurrences in an exclusive local-only
+  package composed with the pinned Budget reader and original-byte verification.
+  Dry run serializes/caps all planned bytes without state creation; preserve
+  complete lineage accounting and partial failure evidence. No crosswalk,
+  spending-fact mutation or publication. [M-05, M-06, M-07, M-18; AC-05, AC-09, AC-16]
+  Native validation and two-build retained-input pilots pass; hosted delivery
+  remains separate. See [local-only receipt](./classification-export.md).
 
 - [x] Project verified Budget functional-classification source-label occurrences
   into the canonical dimension shape: four literal labels, local scheme,
@@ -536,7 +555,11 @@ repository validation command. External gates block only their affected task.
   (`a85ca41`; 92 focused tests/100% critical coverage, 66 cold mutation kills,
   3,414 native tests at `8ace367`; hosted delivery separate)
 
-- [~] Wire the four approved CPI/Ministry/QES source profiles through a
+- [~] Extend the source-operation allowlist to exact Pharmac CPB and quarterly
+  GDP profiles after dependency delivery, retaining source-specific shapes,
+  compact counts, CLI default dry-run and forced-read-only MCP. Forecast's
+  missing no-write path remains a separate task. [M-15, M-18; AC-13, AC-16]
+- [x] Wire the four approved CPI/Ministry/QES source profiles through a
   dry-run-first CLI and forced-read-only MCP preflight, using compact typed
   redacted receipts without changing donor rebuild or archive-status semantics.
   [M-15, M-18; AC-13, AC-16]
@@ -580,6 +603,12 @@ repository validation command. External gates block only their affected task.
 
 ### 9.1 Clean-room reconstruction
 
+- [x] Perform two fresh empty-derivative four-profile original-to-raw,
+  compatibility SQLite, Gold and plot replays; compare all files and reverify
+  donor originals. Record cross-runtime SQLite drift separately. This excludes
+  Platinum and interrupted-stage recovery. [M-16, M-18; AC-12, AC-16]
+  (38 files per run, byte-identical; all 23 donor objects unchanged;
+  `originals-product-replay.md`)
 - [ ] Add a failing recovery contract for empty derivative state, then rebuild
   Silver, Gold, SQLite, all plots/reports and Platinum metadata from Bronze,
   locked code and parameters. [M-10, M-16, M-18; AC-08, AC-12, AC-16]
