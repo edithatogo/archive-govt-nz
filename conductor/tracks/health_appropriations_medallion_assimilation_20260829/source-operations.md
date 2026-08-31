@@ -75,6 +75,9 @@ incoming evidence prefix plus these delivery receipts; no dispatcher/CLI/MCP
 production code changes during integration. Hosted exact-head assurance pending.
 Post-integration source/Budget/CLI/MCP regression: 309 passed in 13.83 seconds;
 74-track Conductor validation and exact incoming JSONL-prefix check pass.
+Subsequent main `0a076fa` historical projection delivery is also integrated,
+preserving the incoming ledger prefix and the three source-operations delivery/
+assurance appends; dispatcher, CLI and MCP production hashes remain unchanged.
 No gates or deadlines were weakened.
 
 Independent read-only review found no actionable production issue within this
