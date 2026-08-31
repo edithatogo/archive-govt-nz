@@ -1558,3 +1558,13 @@ and supply-chain gates. Post-native #319 stack integration preserved source/test
 hashes and the incoming ledger prefix; 155 focused tests/types/75 tracks passed.
 See [full receipts and boundaries](./readonly-resume-planner.md). Execution,
 semantic approval, rights and publication remain separate.
+
+## 2026-08-31 — Bounded PROV entity projection
+
+Added a pure public projection of validated typed descriptors to inline-context
+PROV entities and derivation edges, alongside the complete unchanged inventory
+and an assertion-only receipt. Red-first collection failure preceded code.
+71 combined tests passed in 2.51 seconds at 100% critical coverage; six cold
+mutants killed with zero cache hits (18 tests, 15.78 seconds). Two independent
+reviews found no actionable issue; Ruff and scoped typing passed. Native/hosted
+validation remain pending; no archival or publication files were touched.

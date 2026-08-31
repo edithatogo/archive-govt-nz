@@ -512,6 +512,12 @@ repository validation command. External gates block only their affected task.
 
 ### 7.1 Metadata and rights contracts first
 
+- [~] Project validated typed local descriptors into an entity-only PROV
+  JSON-LD graph with exact product-to-input derivation edges, retaining the
+  complete inventory and explicit assertion-only scope. No invented activity,
+  actor, date, licence, publication or full standards-conformance claim.
+  [M-14, M-18; AC-14, AC-16]
+
 - [x] Add a bounded pure local provenance inventory for explicitly supplied
   canonical historical and Budget classification product descriptors. Validate
   exact structural schemas, safe identities and dependency closure without I/O,

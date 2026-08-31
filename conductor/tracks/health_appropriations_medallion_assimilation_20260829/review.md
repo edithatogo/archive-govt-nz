@@ -713,3 +713,12 @@ are bounded machine reasons, while global low-level input exceptions are not
 claimed as a CLI redaction boundary. No attempt is copied, repaired or executed.
 102 tests/100% critical coverage, 95/95 cold mutants and the full 3,797-test native
 harness passed. Exact-head hosted delivery remains a separate gate.
+
+## 2026-08-31 — Bounded PROV entity projection review
+
+Two independent reviews found no actionable issue in the entity/derivation-only
+projection. Typed identifiers, edge direction/closure, deterministic digests,
+fresh outputs and unchanged full inventory are tested. No activity, actor,
+time, licence or verification claim is manufactured. Initial missing-module red
+preceded implementation; 71 combined tests/100% critical coverage and six cold
+mutant kills passed. Full standards validation and AC-14 remain open.
