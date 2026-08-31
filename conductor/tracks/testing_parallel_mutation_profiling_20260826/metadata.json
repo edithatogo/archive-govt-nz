@@ -1,8 +1,0 @@
-{
-  "track_id": "testing_parallel_mutation_profiling_20260826",
-  "type": "feature",
-  "status": "in_progress",
-  "created_at": "2026-08-26T01:12:00Z",
-  "updated_at": "2026-08-26T01:12:00Z",
-  "description": "Testing Modernization: Pytest-Gremlins Mutation, Parallel xdist, Property-Based Hypothesis & Scalene Profiling"
-}
