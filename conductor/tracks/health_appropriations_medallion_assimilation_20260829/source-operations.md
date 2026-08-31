@@ -73,6 +73,8 @@ All dispatcher function/class ASTs are identical to the cold-mutation commit.
 Latest main `2061098` is integrated after this run, preserving its complete
 incoming evidence prefix plus these delivery receipts; no dispatcher/CLI/MCP
 production code changes during integration. Hosted exact-head assurance pending.
+Post-integration source/Budget/CLI/MCP regression: 309 passed in 13.83 seconds;
+74-track Conductor validation and exact incoming JSONL-prefix check pass.
 No gates or deadlines were weakened.
 
 Independent read-only review found no actionable production issue within this
