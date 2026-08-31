@@ -1,5 +1,16 @@
 # Self-Review
 
+## Quarterly GDP literal profile — 2026-08-31
+
+- Source identity, actual-versus-adjusted and expenditure-versus-income
+  selection are exact; quarterly observations are not annual denominators.
+- Parent found locale-sensitive month expectations and missing literal token,
+  scaling, format-attribute and century-range lineage. All corrected; locale
+  regression and complete 900-entry closure pass. Currency remains null.
+- 45 focused tests/100% critical coverage and cold 37/37 mutation pass. Original
+  source and both independently reconciled deterministic pilots are retained.
+  Native/hosted gates remain distinct from local assurance and rights approval.
+
 ## Additive inventory planner — 2026-08-31 UTC
 
 Independent read-only source/test review found no actionable correctness issue

@@ -15,6 +15,8 @@ every planned record set, measure or operational workflow.
 
 ## Artifacts
 
+- [Exact quarterly GDP source profile](./gdp-profile.md)
+
 - [Pharmac medicines-budget HTML contract](./pharmac-cpb.md)
 - [Additive eight-record-set structural contracts](./recordset-contracts.md)
 - [Hash-bound embedded-notice observations](./embedded-notices.md)

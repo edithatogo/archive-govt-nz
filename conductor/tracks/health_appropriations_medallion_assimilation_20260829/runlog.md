@@ -1,5 +1,25 @@
 # Run Log
 
+## Exact GDP quarterly source profile — 2026-08-31
+
+- Registered bounded Phase 5.1 task before implementation in independent clone.
+  Red test failed collection on absent `gdp` module, exit 2. Focused suite
+  subsequently passed 45 tests; module coverage 100% (90 statements/20 branches).
+- Parent review corrected locale dependence and lineage omissions; tokens,
+  scaling, number-format attribute and date-range dependencies now have tests.
+  Ruff/typing pass; initial two test typing errors corrected, no gate weakened.
+- `pytest tests/domains/health_appropriations/test_gdp.py --no-cov --gremlins
+  --gremlin-targets=src/archive_govt_nz/domains/health_appropriations/gdp.py
+  --gremlin-workers=2 --gremlin-no-coverage-filter --gremlin-report=json
+  --strict-pardons --gremlin-max-pardons-pct=0 --max-pardons=0 -q`
+  passed: 37/37 killed, no survivors/errors/timeouts/pardons/cache hits, 36.11s.
+  Report SHA `25b0cb80d474351f49ea7a7b58778489ba55b12bb6747b24c39fb1579dd90290`.
+- Two local four-file pilots match; 60 facts/900 lineage/2,287 dispositions,
+  85,176 bytes, all original cells and emitted fields independently reconciled.
+  No source write, download, aggregation, denominator selection or publication.
+- Existing Pharmac PR #295 observed externally merged with seven green checks;
+  exact delivery receipt is in `gdp-profile.md`. No merge call by this agent.
+
 ## Planner main integration checkpoint — 2026-08-31
 
 - Merged main `d6bc0c9` into the feature branch as `841bd5f`, preserving both

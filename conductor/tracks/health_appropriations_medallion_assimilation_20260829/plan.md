@@ -325,6 +325,13 @@ repository validation command. External gates block only their affected task.
 
 ### 5.1 Source-family contracts first
 
+- [~] Normalize the exact retained Stats NZ GDP Table 1 expenditure-measure
+  profile: 60 quarterly current-price actual observations, separate series
+  prefix/reference, literal dollar-million units with ISO currency unverified,
+  full cell dispositions and field lineage. No annual aggregation, denominator
+  selection, source download or publication. [M-05, M-06, M-07, M-18; AC-05,
+  AC-09, AC-16]
+
 - [~] Normalize the retained Pharmac medicines-budget HTML profile into
   pharmaceutical-budget facts, preserving all 14 financial-year rows, supplied
   changes/percentages, literal missing markers and trailing empty cells. Bind
