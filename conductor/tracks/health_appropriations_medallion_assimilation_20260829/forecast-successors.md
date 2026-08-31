@@ -83,7 +83,19 @@ This is not full workbook-area or longitudinal-edition coverage.
   all 50 tests with 100% critical coverage (126 statements, 48 branches).
   Ruff and basedpyright pass. Functional checkpoint: `ce509d4`.
 - Existing property tests continue exercising exact numeric preservation.
-  Cold mutation, full-harness and hosted delivery evidence remain pending.
+- Cold mutation ran the full 50-test selection: 64/64 mutants killed, zero
+  survivors, timeouts, errors, pardons or cache hits. Report SHA-256
+  `e7355e561b0f6f98ea8861289a8f00c8bfab2f413bd43246dcd5878f54d2a7b3`;
+  production source SHA-256
+  `092e7a5052c7df7b2087f50978a7cc061246914f8f34084f7b5a9fc18a612746`.
+- Full native `./scripts/validate.sh` exited zero on CPython 3.14.6 with
+  `COVERAGE_CORE=ctrace`, `PYTHON_JIT=0`, four pytest workers and unchanged gates.
+  1,974 tests passed with eight existing SQLite ResourceWarnings, 96.77%
+  overall coverage, 40 schemas/30 documents, 70 Conductor tracks and 9/9 parity.
+  All native mutation, hygiene and supply-chain gates passed; CAS throughput
+  was 635.44 MB/s against the 25 MB/s gate and the SBOM had 111 components.
+  Timestamp-only unrelated generated evidence was restored.
+- Hosted delivery remains pending; local assurance does not imply publication.
 
 Work was moved non-destructively to a standalone `--no-hardlinks` clone after
 other registered worktrees disappeared externally. The original forecast
