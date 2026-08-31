@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import shutil
 import subprocess
@@ -407,3 +408,103 @@ def test_negative_control_13_stale_external_state_snapshot_rejected(
         repo="nonexistent-org/nonexistent-repo-12345", root=base
     )
     assert state.get("live_state_unavailable") is True
+
+
+def test_acceptance_timeout_is_a_failed_sanitized_receipt(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """A timed-out child never passes or authenticates a stale evidence file."""
+    check = {
+        "check_id": "CHK-TIMEOUT",
+        "executor_id": "pytest_runner",
+        "command": "uv run pytest tests/missing.py",
+        "timeout_seconds": 10,
+        "expected_exit_code": 124,
+        "evidence_destination": "stale.json",
+    }
+    (tmp_path / "stale.json").write_text("old evidence", encoding="utf-8")
+    calls = []
+
+    def timeout(argv: list[str], **kwargs: object) -> subprocess.CompletedProcess[str]:
+        calls.append(kwargs)
+        raise subprocess.TimeoutExpired(
+            argv, 10, output=b"private child stdout", stderr=b"private child stderr"
+        )
+
+    monkeypatch.setattr(subprocess, "run", timeout)
+    passed, receipt = execute_acceptance_check(check, tmp_path)
+    assert passed is False
+    assert receipt["passed"] is False
+    assert receipt["exit_code"] is None
+    assert receipt["timed_out"] is True
+    assert receipt["evidence_sha256"] is None
+    assert receipt["timeout_seconds"] == 10
+    assert len(calls) == 1
+    assert calls[0]["timeout"] == 10
+    assert "private child" not in json.dumps(receipt)
+    assert (
+        receipt["stdout_sha256"] == hashlib.sha256(b"private child stdout").hexdigest()
+    )
+    assert (
+        receipt["stderr_sha256"] == hashlib.sha256(b"private child stderr").hexdigest()
+    )
+
+
+def test_acceptance_timeout_without_output_retains_identity(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """No child output still produces a failed, identified timeout receipt."""
+
+    def timeout(argv: list[str], **_kwargs: object) -> subprocess.CompletedProcess[str]:
+        raise subprocess.TimeoutExpired(argv, 10)
+
+    monkeypatch.setattr(subprocess, "run", timeout)
+    passed, receipt = execute_acceptance_check(
+        {
+            "check_id": "CHK-NO-OUTPUT",
+            "executor_id": "pytest_runner",
+            "command": "uv run pytest tests/missing.py",
+            "timeout_seconds": 10,
+        },
+        tmp_path,
+    )
+    assert passed is False
+    assert receipt["check_id"] == "CHK-NO-OUTPUT"
+    assert receipt["stdout_sha256"] == hashlib.sha256(b"").hexdigest()
+    assert receipt["stderr_sha256"] == hashlib.sha256(b"").hexdigest()
+
+
+def test_completed_expected_nonzero_exit_remains_accepted(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """An observed expected exit remains distinct from a timeout sentinel."""
+
+    def completed(
+        argv: list[str], **_kwargs: object
+    ) -> subprocess.CompletedProcess[str]:
+        return subprocess.CompletedProcess(argv, 124, "captured output", "")
+
+    monkeypatch.setattr(subprocess, "run", completed)
+    evidence = tmp_path / "evidence.json"
+    evidence.write_bytes(b"validated evidence")
+    passed, receipt = execute_acceptance_check(
+        {
+            "check_id": "CHK-OBSERVED-124",
+            "executor_id": "pytest_runner",
+            "command": "uv run pytest tests/negative.py",
+            "timeout_seconds": 10,
+            "expected_exit_code": 124,
+            "evidence_destination": evidence.name,
+        },
+        tmp_path,
+    )
+    assert passed is True
+    assert receipt["exit_code"] == 124
+    assert receipt["timed_out"] is False
+    assert (
+        receipt["evidence_sha256"] == hashlib.sha256(b"validated evidence").hexdigest()
+    )
+    assert receipt["stdout_sha256"] == hashlib.sha256(b"captured output").hexdigest()
