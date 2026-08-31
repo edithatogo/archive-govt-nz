@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 
 from archive_govt_nz.domains.health_appropriations.forecast import (
+    FORECAST_PROFILES,
     normalize_forecast_workbook,
 )
 
@@ -16,7 +17,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source", type=Path, required=True)
     parser.add_argument("--expected-sha256", required=True)
-    parser.add_argument("--profile", choices=("befu", "hyefu"), required=True)
+    parser.add_argument("--profile", choices=FORECAST_PROFILES, required=True)
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--observed-at", required=True)
     parser.add_argument("--source-vintage", required=True)
