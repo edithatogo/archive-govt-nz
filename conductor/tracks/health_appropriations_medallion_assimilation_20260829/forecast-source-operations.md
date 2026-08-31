@@ -79,3 +79,20 @@ SBOM. Log SHA-256:
 Only verified unrelated generated timestamp churn was restored. Dependency
 delivery and exact-head hosted checks remain separate pending gates; this run
 did not acquire sources, write real derivative products or publish anything.
+
+## Dependency stack integration
+
+To run hosted checks concurrently, this branch merges PR314 head
+`830b95f8052af68b3ef2aa18cc44afd1dfa4dd3e`, which contains the PR315
+`10731ff` API dependency. The reviewed forecast API body was identical; the
+dispatcher-owned public alias remains. All three reviewed source/test hashes
+are unchanged. The full 106-line incoming ledger remains the exact prefix,
+followed by four own receipts; both sets of plan/index entries are retained
+without duplicating the API task. Post-integration validation passed 380
+focused forecast/dispatcher/CLI/MCP tests in 28.01 seconds and 75-track
+Conductor validation.
+
+These dependencies are not claimed merged by this integration. Delivery remains
+ordered after PR309, PR315 and PR314, with fresh exact-head checks and clean
+mergeability. Ordinary merge commits preserve dependency ancestry; no force
+push, hosted-settings change, branch deletion or publication is involved.
