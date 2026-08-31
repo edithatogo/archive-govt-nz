@@ -11,3 +11,15 @@
 - `tools/verify_operational_continuity_and_recovery.py`: synthetic local checkpoint rehearsal; not an Actions restoration ingress. No changes.
 
 Validation and delivery results are pending. No source access, state restoration or recovery execution is claimed.
+
+## Local closeout
+
+Native validation passed at commit `834f79446ec7be1f625f0e20bb474ae066a49807`, integrated from main `f41ef9b984c15dc84a9afa3e39236388bfcf2197`: 3,580 tests, five warnings, 97.20% combined coverage; all native mutation, schema, parity and supply-chain stages passed. Scoped restoration tests: 93 passed, 320/320 statements and 60/60 branches covered; 32/32 explicit integrity mutants killed. Four restoration schema definitions and representative runtime documents are checked in the focused suite.
+
+Receipt: `evidence/migrations/corpus-legislation-nz/parent-state-restoration/local-validation.json`
+
+SHA-256: `b0618508d77c7a93fd6a24d485d0fe25b13e16d5c047c4b82bbcb1dc1fecaa49`
+
+The receipt inventories exact source, test, schema, log and security hashes, and preserves prior failed attempts. Whole-repository actionlint reports two unchanged SC2086 diagnostics outside legislation; scoped actionlint passes. Aggregate source branch coverage remains below 95%, as already handed off in [issue #299](https://github.com/edithatogo/archive-govt-nz/issues/299#issuecomment-5480374548); no source code or thresholds in that aggregate were changed by this issue. The new critical helper is fully covered.
+
+PR [#317](https://github.com/edithatogo/archive-govt-nz/pull/317) is the sole delivery PR. Final hosted checks and merge/readback are recorded separately on issue #312; local validation is not a remote restoration or publication claim.

@@ -6,3 +6,5 @@ Prompt 08 only; issue [#312](https://github.com/edithatogo/archive-govt-nz/issue
 - [Design](design.md)
 - [Plan](plan.md)
 - [Evidence](evidence.md)
+
+Delivery: [PR #317](https://github.com/edithatogo/archive-govt-nz/pull/317). Hosted checks and merged status require independent readback on issue #312.
