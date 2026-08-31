@@ -7,24 +7,24 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 EVALUATOR = ROOT / "tools" / "evaluate_preservation.py"
-RECEIPT = ROOT / "evidence" / "preservation-packaging-evaluation.json"
 
 
-def _run_evaluator() -> bytes:
+def _run_evaluator(receipt: Path) -> bytes:
     subprocess.run(
-        [sys.executable, str(EVALUATOR)],
+        [sys.executable, str(EVALUATOR), "--output", str(receipt)],
         cwd=ROOT,
         check=True,
         capture_output=True,
         text=True,
     )
-    return RECEIPT.read_bytes()
+    return receipt.read_bytes()
 
 
-def test_preservation_evaluation_is_deterministic_and_closed() -> None:
+def test_preservation_evaluation_is_deterministic_and_closed(tmp_path: Path) -> None:
     """Require closed integrity receipts and byte-stable reruns."""
-    first = _run_evaluator()
-    second = _run_evaluator()
+    output = tmp_path / "preservation-packaging-evaluation.json"
+    first = _run_evaluator(output)
+    second = _run_evaluator(output)
 
     assert first == second
 

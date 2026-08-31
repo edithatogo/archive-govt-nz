@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import argparse
 import json
 from datetime import UTC, datetime
 from pathlib import Path
@@ -23,8 +24,12 @@ def _load_optional(path: Path) -> dict[str, Any]:
     return cast("dict[str, Any]", value) if isinstance(value, dict) else {}
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
     """Write a bounded ledger describing current evidence, not intent."""
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--output-dir", type=Path, default=JSON_PATH.parent)
+    output = parser.parse_args(argv).output_dir
+    json_path, md_path = output / JSON_PATH.name, output / MD_PATH.name
     now = datetime.now(UTC).isoformat()
     capture_path = ROOT / "evidence" / "phase-6-capture-summary.json"
     release_path = (
@@ -112,8 +117,8 @@ def main() -> int:
         "stages": stages,
         "treasury_resource_outcomes": checkpoint.get("resource_outcomes", {}),
     }
-    JSON_PATH.parent.mkdir(parents=True, exist_ok=True)
-    JSON_PATH.write_text(
+    json_path.parent.mkdir(parents=True, exist_ok=True)
+    json_path.write_text(
         json.dumps(document, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
     )
     lines = [
@@ -150,8 +155,12 @@ def main() -> int:
                 "- Counts overlap; see the checkpoint and do not sum them.",
             ]
         )
-    MD_PATH.write_text("\n".join(lines) + "\n", encoding="utf-8")
-    print(f"wrote {JSON_PATH.relative_to(ROOT)} and {MD_PATH.relative_to(ROOT)}")
+    md_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    json_label = (
+        json_path.relative_to(ROOT) if json_path.is_relative_to(ROOT) else json_path
+    )
+    md_label = md_path.relative_to(ROOT) if md_path.is_relative_to(ROOT) else md_path
+    print(f"wrote {json_label} and {md_label}")
     return 0
 
 

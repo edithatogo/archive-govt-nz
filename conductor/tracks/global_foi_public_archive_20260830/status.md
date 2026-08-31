@@ -1,50 +1,39 @@
 # Current implementation status — 2026-08-31
 
-The approved track is active. Repository setup and source-catalogue foundations are merged; public raw delivery, worldwide acquisition and scheduler takeover are not complete.
+The approved track remains active. Shared execution controls are deployed and verified; worldwide acquisition, public raw preservation and donor takeover remain incomplete.
 
 | Question | Verified answer |
 | --- | --- |
-| Which countries are fully captured? | None has passed full-snapshot raw/public-restore acceptance. Existing captures are partial and must not be promoted by queue counts. |
-| Has it switched over? | No. archive-govt-nz is the approved receiver; fyi-archive remains the owner until parity, public restore and ownership fencing pass. |
-| Is everything public on Hugging Face? | All 23 registered destinations were anonymously public and ungated at inventory time. This does not prove raw completeness. The public source catalogue and its indexes are published and anonymously verified; no new public raw upload was performed in this implementation. The separate AU/NSW private-retention destination remains private. |
-| How many remain? | No global request denominator is known. The pinned discovery universe has 250 geographic entities plus EU: 28 entities have seed sources and 223 require source discovery. This is not a count of sovereign countries. NZ has 15,981 unprocessed queue entries out of 33,208; historic credited entries still require raw-retention reconciliation. |
-| Why is NZ automation paused? | A successful artifact omitted original bytes. Automatic dispatch is disabled until retained-byte restore and durable retention are verified and historical gaps reconciled. |
+| Which countries are fully captured? | Zero countries have passed full-snapshot raw/public-restore acceptance. Bounded resource captures cannot establish country completion. |
+| Has it switched over? | No. The receiver owns the new shared control authority and public catalogue, but the donor retains its existing source ownership until parity, public restore and transfer gates pass. |
+| Is everything public on Hugging Face? | The source catalogue and its indexes are public and ungated at revision 4e5a7832f6536e231d20292c1bffaae7861fd912. The new CA/US pilot originals remain private; no new public raw upload occurred. Historical destination visibility is recorded in the earlier inventory and does not prove raw completeness. |
+| How many remain? | All 250 geographic entities plus EU remain unverified for complete coverage. Thirty named sources seed 28 entities; 223 have no named source yet. Broader discovery is still required for all 251 entities. This is not a sovereign-country count, and no global request denominator is known. |
+| Are the shared controls deployed? | Yes. The GitHub authority passed fresh-process persistence, an actual competing-write rejection, private capture completion, hosted writer execution and hosted read-only health. |
+| Why is NZ automation paused? | The historical raw-retention gap, source eligibility, public restore and donor-transfer evidence remain unresolved. Workflow 322525555 remains disabled manually. |
 
-## Delivered
+## Delivered and verified
 
-- Approved Conductor track, parent issue #233, eight phase subissues, append-only evidence and repaired legacy validation; both Conductor validators report zero errors.
-- Country/source/regime catalogue, donor seed and public-revision provenance, deterministic JSONL indexes and coverage report. Unknown denominators and rights decisions remain explicit.
-- Guarded exact-lease recovery and dedicated HF sync summary/card contract. Hosted recovery succeeded; hosted HF dry run succeeded without uploading.
-- Raw capture inventories, WARC payload and attachment hash verification, upload/clean-download verification before queue credit, and fail-closed legacy publication adapters that no longer fabricate delivery receipts.
+- PR #288 merged at 9c609fe9b617a1d2b76c11930935d9725280e2c7 after all seven checks passed. Linux, macOS and Windows assurance succeeded; local timeouts and the corrected Windows failures remain recorded separately.
+- One metadata-only GitHub authority branch, foi-execution-state, enforces conditional non-forced updates, owner and job leases, pinned policy checks, global active-operation budgets and per-origin exclusion. A real two-client race produced one HTTP 200 and one HTTP 422 while preserving existing state.
+- Fresh local processes reused durable state without recreating it. Hosted controls run 33397203569 subsequently passed against that authority.
+- Canadian institutional nil returns were preserved and cold-restored under a shared lease: 6,191 institution-month rows, manifest 664885e35cba43cbd87d415e79d51146614f71fa8e36c84034ae6a2915436ec9. The job is captured locally, with no publication revision or public credit. This operation reused retained bytes and made no source-origin requests.
+- One US DOJ FY2025 annual XML resource was retained and cold-restored. Its index has 7,170 nonempty text elements, not FOI requests. Narrative and case-title fields remain private pending review.
+- Both CA and US pilot packages have verified copies on the external USB disk and internal disk. All ten package files match; the original six source files are preserved unchanged.
+- Anonymous control health passed. Hosted health run 33397451283 then passed at the writer's final authority revision, with five control scopes, one captured job, three exhausted rehearsal jobs and no findings. Health checks controller integrity, expiry and capacity; it does not establish source coverage or policy clearance.
+- Daily read-only health is configured for 04:41 UTC. Manual hosted execution is verified; a scheduled cycle has not yet been observed. The public source-catalogue workflow remains active.
 
-One-request hosted raw restore passed in run 33307777685: seven retained files, 49,405 bytes, two WARC responses, exact manifest agreement with the queue receipt. That sample had no attachments. This remains temporary storage; no country-completion claim follows.
+The initial hosted bootstrap remained queued without a runner and was cancelled before state creation. Bootstrap, persistence, conflict and private capture were performed from the tested local code against GitHub's live API; subsequent hosted writer and health checks were verified separately. See [deployment evidence](shared-execution-deployment-20260831.json).
 
 ## Still required
 
-- Full source discovery and per-source access, capture, redistribution and privacy decisions.
-- Request/object metadata indexes, durable immutable raw packages and historical retention audit.
-- Eligible raw Hugging Face upload, revision-pinned raw links, anonymous cold restore and raw capacity evidence for NZ plus a second eligible source. The public source catalogue is already delivered.
-- Bounded country schedules, global ownership fencing, shadow parity, rollback and one observed incremental cycle after transfer.
+- Broader source discovery, country-specific adapters and continuous bounded acquisition, with honest denominators and completeness reconciliation.
+- Historical NZ retention-gap reconciliation and durable eligible raw packages beyond the bounded pilots.
+- A source/content publication policy, evidence-based source admission, privacy and licence drift checks, public-file filtering, and historical takedown handling.
+- Eligible raw Hugging Face publication, revision-pinned public indexes/manifests, anonymous cold restore and payload capacity evidence. Catalogue publication is already verified.
+- Donor ownership transfer, shadow parity, rollback and an observed incremental cycle after transfer. Current active-operation ceilings are not rolling daily quotas; unknown executor outcomes remain fenced for explicit recovery.
 
-The user's public-HF authorization is recorded. No repeated routine approval is needed; third-party rights, private data and provider capacity remain separate evidence requirements. Additional safeguards are mapped in recommendations.md. See metadata.json, plan.md and the dated receipts for acceptance state; successful tests do not close the remaining phases.
+## Grouped policy decision
 
-## Continuation scope
+[The proposal](grouped-publication-options-20260831.md) recommends a conditional standing policy. After user approval, the agent can admit qualifying official non-personal institutional/statistical sources and conforming snapshots without repeated approval for each URL. Mixed correspondence requires a defensible source/content rule; restricted or unclear payloads stay quarantined while approved non-sensitive metadata can be public.
 
-The metadata-only publication workflow is active. Latest observed run 33358508220
-succeeded; evidence PR #267 is merged. Donor monitor 322525555 remains manually
-disabled. Public catalogue verification does not satisfy raw publication gates.
-
-Local scheduling, durable queue state and ownership/parity controls are being
-validated. They do not yet provide a hosted shared authority or execute captures.
-Source policy resolution, cumulative run quotas, authoritative sink fencing,
-verified public raw restore and hosted incremental-cycle evidence remain open.
-
-Canadian federal ATI nil-return originals have an explicit provider licence and
-a bounded machine screen, recorded in ca-atip-candidate-evidence-20260831.json.
-The 6,191 rows are institutional monthly nil returns, not released FOI responses.
-No Canadian source activation, accountable privacy decision or public raw upload
-is inferred. The NZ exact-candidate decision remains pending.
-
-A new NZ v2 candidate was reconstructed and cold-restored from retained WARC evidence, with exact original-byte agreement. Its manifest differs from the historical candidate and is recorded separately. Three full local validation attempts timed out; focused controls remain green, and hosted validation is required before readiness.
-
-Hosted Ubuntu passed 2,048 tests at 96.84 percent coverage. Its later secret-scanner failure involved two provider checksum fields, now omitted from the public projection without changing original metadata or scanner policy. Corrected-head checks remain pending on PR #272. The exact reconstructed candidate has its own pending decision.
+The initial Canadian organisation review is an agent conformance check, with human escalation for ambiguity. Complete US XML and NZ correspondence are not approved by that proposal. Alternatives are the current Canadian nil-return candidate only, or metadata-only publication. All policy approvals remain pending, and publication enforcement remains implementation work. No general permission to continue technical work needs to be repeated.

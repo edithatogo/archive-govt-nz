@@ -1,0 +1,457 @@
+{
+  "schema_version": "archive-govt-nz.foi-shared-execution-deployment/v1",
+  "observed_at": "2026-08-31T13:36:07.969302Z",
+  "implementation_pr": 288,
+  "reviewed_head": "e693c77c93877a44ed3de7b92e377dca9c362928",
+  "merged_revision": "9c609fe9b617a1d2b76c11930935d9725280e2c7",
+  "merged_tree_matches_tested_tree": true,
+  "hosted_assurance": {
+    "run_id": 33395261140,
+    "platforms": [
+      "ubuntu-latest",
+      "macos-latest",
+      "windows-latest"
+    ],
+    "all_passed": true,
+    "tests_passed_per_platform": 2390,
+    "ubuntu_windows_coverage_percent": 96.98,
+    "ubuntu_log_sha256": "080c152ff3e036202ab8187a693a91efb23e1a02f1e1ef86545bcf140a5248a3",
+    "windows_log_sha256": "d5c7040429b53bab0c953335c7163a59780a3dba038eafb202f1abc8fd01fe32",
+    "macos_log_sha256": "bb365fb444192509967cd06581c2a59a276ed5d5e352147c596febef4ec17379"
+  },
+  "authority": {
+    "repository": "edithatogo/archive-govt-nz",
+    "branch": "foi-execution-state",
+    "observed_revision": "7e484726245f8f20fd165714ff9aa9a35b0d8c8a",
+    "status": "deployed_and_verified"
+  },
+  "execution_origins": {
+    "bootstrap": "local_process_against_GitHub_API",
+    "fresh_process_restart": "local_process_against_GitHub_API",
+    "real_ref_conflict": "two_local_clients_against_GitHub_API",
+    "private_ca_capture": "local_executor_under_shared_GitHub_lease",
+    "hosted_controls": "GitHub_Actions",
+    "hosted_health": "GitHub_Actions"
+  },
+  "workflow": {
+    "id": 346629531,
+    "state": "active",
+    "daily_health_time_utc": "04:41",
+    "scheduled_cycle_observed": false,
+    "controls_run": 33397203569,
+    "controls_conclusion": "success",
+    "health_run": 33397451283,
+    "health_conclusion": "success",
+    "cancelled_queued_bootstrap_run": 33396131514,
+    "cancelled_before_authority_creation": true
+  },
+  "checks": {
+    "bootstrap": {
+      "receipt_sha256": "928587ecd6e93affee2fee48a577a9be3a8d603b4024ebcc0458ef51d1724975",
+      "receipt": {
+        "status": "passed",
+        "bootstrap_sha": "33dd9ad57f57da5ce6030d4ce0c04a5b21f41a79",
+        "outcomes": [
+          {
+            "status": "persisted",
+            "authority_commit_sha": "7cb5dca4ccd619a3256b4981d8325a53c2ee6317",
+            "source": "rehearsal-20260831-101",
+            "action": "enqueue",
+            "version": 1,
+            "jobs": [
+              "pending"
+            ],
+            "capture_executed": false,
+            "raw_publication_verified": false,
+            "cutover": false
+          },
+          {
+            "status": "persisted",
+            "authority_commit_sha": "e9dfe0770ba13e580efbca071b4d41f1d778a2b4",
+            "source": "rehearsal-20260831-101",
+            "action": "reserve",
+            "version": 2,
+            "jobs": [
+              "leased"
+            ],
+            "capture_executed": false,
+            "raw_publication_verified": false,
+            "cutover": false
+          },
+          {
+            "status": "persisted",
+            "authority_commit_sha": "b24fd92d5821c3f2d41d11533dd5565d5f4c6eea",
+            "source": "rehearsal-20260831-101",
+            "action": "reconcile",
+            "version": 3,
+            "jobs": [
+              "exhausted"
+            ],
+            "capture_executed": false,
+            "raw_publication_verified": false,
+            "cutover": false
+          },
+          {
+            "status": "planned",
+            "authority_commit_sha": "b24fd92d5821c3f2d41d11533dd5565d5f4c6eea",
+            "source": "rehearsal-20260831-101",
+            "disposition": "eligible",
+            "version": 3,
+            "global_active_jobs": 0,
+            "capture_executed": false,
+            "raw_publication_verified": false,
+            "cutover": false
+          }
+        ],
+        "capture_executed": false,
+        "cutover": false
+      }
+    },
+    "fresh_process_restart": {
+      "receipt_sha256": "b60f42ca9ebc96f1d43a164bd1a6a0068b590abdc9bdeebb9d7b6dc96f7aeb4f",
+      "receipt": {
+        "status": "passed",
+        "bootstrap_sha": null,
+        "outcomes": [
+          {
+            "status": "persisted",
+            "authority_commit_sha": "667dc3357386a44d6845aa867e84186a09d24ba4",
+            "source": "rehearsal-20260831-102",
+            "action": "enqueue",
+            "version": 1,
+            "jobs": [
+              "pending"
+            ],
+            "capture_executed": false,
+            "raw_publication_verified": false,
+            "cutover": false
+          },
+          {
+            "status": "persisted",
+            "authority_commit_sha": "2b06092d79fb829377ffdceb76f2dbebc99cc835",
+            "source": "rehearsal-20260831-102",
+            "action": "reserve",
+            "version": 2,
+            "jobs": [
+              "leased"
+            ],
+            "capture_executed": false,
+            "raw_publication_verified": false,
+            "cutover": false
+          },
+          {
+            "status": "persisted",
+            "authority_commit_sha": "0a8f097e9106cd20de601425ebb8f6cb96411923",
+            "source": "rehearsal-20260831-102",
+            "action": "reconcile",
+            "version": 3,
+            "jobs": [
+              "exhausted"
+            ],
+            "capture_executed": false,
+            "raw_publication_verified": false,
+            "cutover": false
+          },
+          {
+            "status": "planned",
+            "authority_commit_sha": "0a8f097e9106cd20de601425ebb8f6cb96411923",
+            "source": "rehearsal-20260831-102",
+            "disposition": "eligible",
+            "version": 3,
+            "global_active_jobs": 0,
+            "capture_executed": false,
+            "raw_publication_verified": false,
+            "cutover": false
+          }
+        ],
+        "capture_executed": false,
+        "cutover": false
+      }
+    },
+    "real_ref_conflict": {
+      "receipt_sha256": "d8c5dbfdcbbca7849a9f057e6d87d6b1cb8acf2df16fde32f1e11f13bd2f362b",
+      "receipt": {
+        "added_keys": [
+          "rehearsal-2026083101-902"
+        ],
+        "automatic_retries": false,
+        "baseline_authority_sha": "0a8f097e9106cd20de601425ebb8f6cb96411923",
+        "candidate_parents": {
+          "de50834cbc919572b57ecc9a03b5b5e4c7de4ec5": [
+            "0a8f097e9106cd20de601425ebb8f6cb96411923"
+          ],
+          "e96d4558638a9d703949fe3892b2b219346ac0da": [
+            "0a8f097e9106cd20de601425ebb8f6cb96411923"
+          ]
+        },
+        "code_sha": "9c609fe9b617a1d2b76c11930935d9725280e2c7",
+        "cutover": false,
+        "final_authority_sha": "de50834cbc919572b57ecc9a03b5b5e4c7de4ec5",
+        "finished_at_unix": 1788182805,
+        "force_updates": 0,
+        "keys": [
+          "rehearsal-2026083101-901",
+          "rehearsal-2026083101-902"
+        ],
+        "mutation_attempts_per_client": 1,
+        "mutations_may_have_occurred": true,
+        "outcomes": [
+          {
+            "error_class": "ValueError",
+            "key": "rehearsal-2026083101-901",
+            "result": "remote_state_conflict"
+          },
+          {
+            "key": "rehearsal-2026083101-902",
+            "result": "committed",
+            "version": 1
+          }
+        ],
+        "patch_observations": [
+          {
+            "candidate_sha": "e96d4558638a9d703949fe3892b2b219346ac0da",
+            "key": "rehearsal-2026083101-901",
+            "patch_http_status": 422,
+            "patch_requests": 1
+          },
+          {
+            "candidate_sha": "de50834cbc919572b57ecc9a03b5b5e4c7de4ec5",
+            "key": "rehearsal-2026083101-902",
+            "patch_http_status": 200,
+            "patch_requests": 1
+          }
+        ],
+        "probe_sha256": "a43f55f8ddb17cccda2955fc0036a7a1f2c21d1d3bb6844d5216b80082537947",
+        "raw_publication": false,
+        "schema_version": "archive-govt-nz.foi-live-conflict/v1",
+        "source_requests": 0,
+        "started_at_unix": 1788182790,
+        "status": "passed",
+        "verified_empty_queue_additions": 1
+      }
+    },
+    "private_ca_capture": {
+      "receipt_sha256": "e310e70dbbad3a2a9a370084e59cc7c7a964eb278743eeadaf0419a2273b5bde",
+      "receipt": {
+        "status": "passed",
+        "bootstrap_sha": null,
+        "outcomes": [
+          {
+            "status": "persisted",
+            "authority_commit_sha": "2e6b8789979c6a22bd06aca53094dd219b5d493f",
+            "source": "ca-federal-atip.nil-returns.20260831-1",
+            "action": "enqueue",
+            "version": 1,
+            "jobs": [
+              "pending"
+            ],
+            "capture_executed": false,
+            "raw_publication_verified": false,
+            "cutover": false
+          },
+          {
+            "status": "persisted",
+            "authority_commit_sha": "ef53698a3216c15c7c6afd51f5200422c7a236b6",
+            "source": "ca-federal-atip.nil-returns.20260831-1",
+            "action": "reserve",
+            "version": 2,
+            "jobs": [
+              "leased"
+            ],
+            "capture_executed": false,
+            "raw_publication_verified": false,
+            "cutover": false
+          },
+          {
+            "status": "capture_attempted",
+            "authority_commit_sha": "ef53698a3216c15c7c6afd51f5200422c7a236b6",
+            "capture_attempted": true,
+            "capture_executed": null,
+            "local_verification_completed": false
+          },
+          {
+            "status": "package_prepared",
+            "authority_commit_sha": "ef53698a3216c15c7c6afd51f5200422c7a236b6",
+            "manifest_sha256": "664885e35cba43cbd87d415e79d51146614f71fa8e36c84034ae6a2915436ec9",
+            "capture_executed": true,
+            "local_verification_completed": false
+          },
+          {
+            "status": "local_restore_verified",
+            "authority_commit_sha": "ef53698a3216c15c7c6afd51f5200422c7a236b6",
+            "manifest_sha256": "664885e35cba43cbd87d415e79d51146614f71fa8e36c84034ae6a2915436ec9",
+            "capture_executed": true,
+            "local_verification_completed": true
+          },
+          {
+            "status": "captured_locally",
+            "authority_commit_sha": "e2532597470680c457d2692149d7a22a36325999",
+            "source": "ca-federal-atip.nil-returns.20260831-1",
+            "version": 3,
+            "manifest_sha256": "664885e35cba43cbd87d415e79d51146614f71fa8e36c84034ae6a2915436ec9",
+            "capture_executed": true,
+            "origin_requests": 0,
+            "raw_publication_verified": false,
+            "cutover": false
+          }
+        ],
+        "capture_executed": true,
+        "cutover": false
+      }
+    },
+    "anonymous_health": {
+      "receipt_sha256": "af4985a291f433a1f85adee7ee62ac45536591364c46e992e282c2f8f14df667",
+      "receipt": {
+        "affected_source_count": 0,
+        "affected_sources": [],
+        "affected_sources_omitted": 0,
+        "authority_commit_sha": "e2532597470680c457d2692149d7a22a36325999",
+        "capacity": {
+          "basis": "Reconstructed envelope and sum of source versions; backend global generation is not exposed.",
+          "estimated": true,
+          "failure_threshold_percent": 90,
+          "generation_limit": 10000,
+          "source_version_sum_estimate": 10,
+          "state_bytes_estimate": 2463,
+          "state_bytes_limit": 1048576
+        },
+        "checked_at_unix": 1788182890,
+        "finding_counts": {},
+        "job_status_counts": {
+          "captured": 1,
+          "exhausted": 2
+        },
+        "jobs": 3,
+        "leases_released": false,
+        "publication_performed": false,
+        "schema_version": "archive-govt-nz.foi-health/v1",
+        "sources": 4,
+        "state_modified": false,
+        "status": "healthy"
+      }
+    },
+    "hosted_controls": {
+      "receipt_sha256": "90c16e5f45ba10b7f06a876fb0122a5aa69797a05343b79069491ee6589ba92e",
+      "receipt": {
+        "status": "passed",
+        "bootstrap_sha": null,
+        "outcomes": [
+          {
+            "status": "persisted",
+            "authority_commit_sha": "15c159a63605486e218a86978348a8d3fc7dd2d1",
+            "source": "rehearsal-33397203569-1",
+            "action": "enqueue",
+            "version": 1,
+            "jobs": [
+              "pending"
+            ],
+            "capture_executed": false,
+            "raw_publication_verified": false,
+            "cutover": false
+          },
+          {
+            "status": "persisted",
+            "authority_commit_sha": "11db8f9bf42e622ec94f210f3b86bc0844676ad0",
+            "source": "rehearsal-33397203569-1",
+            "action": "reserve",
+            "version": 2,
+            "jobs": [
+              "leased"
+            ],
+            "capture_executed": false,
+            "raw_publication_verified": false,
+            "cutover": false
+          },
+          {
+            "status": "persisted",
+            "authority_commit_sha": "7e484726245f8f20fd165714ff9aa9a35b0d8c8a",
+            "source": "rehearsal-33397203569-1",
+            "action": "reconcile",
+            "version": 3,
+            "jobs": [
+              "exhausted"
+            ],
+            "capture_executed": false,
+            "raw_publication_verified": false,
+            "cutover": false
+          },
+          {
+            "status": "planned",
+            "authority_commit_sha": "7e484726245f8f20fd165714ff9aa9a35b0d8c8a",
+            "source": "rehearsal-33397203569-1",
+            "disposition": "eligible",
+            "version": 3,
+            "global_active_jobs": 0,
+            "capture_executed": false,
+            "raw_publication_verified": false,
+            "cutover": false
+          }
+        ],
+        "capture_executed": false,
+        "cutover": false
+      }
+    },
+    "hosted_health": {
+      "receipt_sha256": "efc8425451a12380f129de212483a84c4fd740ab7326317e9aa88d407afc3623",
+      "receipt": {
+        "affected_source_count": 0,
+        "affected_sources": [],
+        "affected_sources_omitted": 0,
+        "authority_commit_sha": "7e484726245f8f20fd165714ff9aa9a35b0d8c8a",
+        "capacity": {
+          "basis": "Reconstructed envelope and sum of source versions; backend global generation is not exposed.",
+          "estimated": true,
+          "failure_threshold_percent": 90,
+          "generation_limit": 10000,
+          "source_version_sum_estimate": 13,
+          "state_bytes_estimate": 3109,
+          "state_bytes_limit": 1048576
+        },
+        "checked_at_unix": 1788183206,
+        "finding_counts": {},
+        "job_status_counts": {
+          "captured": 1,
+          "exhausted": 3
+        },
+        "jobs": 4,
+        "leases_released": false,
+        "publication_performed": false,
+        "schema_version": "archive-govt-nz.foi-health/v1",
+        "sources": 5,
+        "state_modified": false,
+        "status": "healthy"
+      }
+    }
+  },
+  "private_replication": {
+    "receipt_sha256": "f6a822ce0ac48d9f190f170af4af48cfeaaaf9c053a3b87216d4a0c3b4f27be2",
+    "different_filesystem_device": true,
+    "verified_files": 10,
+    "manifests": [
+      "664885e35cba43cbd87d415e79d51146614f71fa8e36c84034ae6a2915436ec9",
+      "eb55ad6f2038ba93f03db21209a6e9e1013c127244bd6726e10ef83e3aa3ea7a"
+    ],
+    "device_observation": {
+      "source_internal": false,
+      "source_protocol": "USB",
+      "replica_internal": true,
+      "replica_protocol": "Apple Fabric"
+    }
+  },
+  "country_rollout": {
+    "entities": 251,
+    "named_sources": 30,
+    "entities_without_named_sources": 223,
+    "country_complete_count": 0
+  },
+  "public_raw_upload": false,
+  "donor_cutover": false,
+  "system_ready": false,
+  "limitations": [
+    "No continuous worldwide acquisition scheduler or donor ownership transfer",
+    "No rolling daily quotas or automatic recovery of unknown executor outcomes",
+    "Rights/privacy decisions and public publisher enforcement remain open",
+    "Scheduled health is configured; only manual hosted health execution was observed",
+    "Privileged ref deletion or forced updates are outside application CAS protection"
+  ]
+}
