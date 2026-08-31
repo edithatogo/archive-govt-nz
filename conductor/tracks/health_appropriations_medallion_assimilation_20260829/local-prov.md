@@ -42,3 +42,24 @@ read-only reviews found no actionable issue in the declared scope.
 - Cold report SHA256: `cd6d6e09c57b7e728127b84ec137e6649cdcde7a55918c9b063da63b73ac7c5c`.
 
 Native and exact-head hosted validation remain pending at this checkpoint.
+
+## Native and stack integration
+
+The required native harness exited zero at `1a58841d7c4667b763d068369393f3145fe383a4`:
+4,030 tests, eight existing warnings, 157.95 seconds, 97.30% total coverage;
+42 schemas/32 samples, 9/9 parity, all mutation/hygiene/supply-chain gates and
+111-component validated SBOM. CAS benchmark was 281.17 MB/s. Native log SHA256:
+`80572c85714a3b9c592cb0e32a175fd882f53ce66851fd6220adea974fef686f`.
+Only native-generated timestamp differences in two unrelated legislation fixtures
+were restored after exit; their exact patch remains in the external evidence root.
+
+Ordinary merge `99fb342` integrates reviewed reader #325 at
+`b898e9d1e9458fbfb40b89b6fb74f20004229522`, including executor #323 and Budget
+#322. Documentation conflicts retained both independent entries; all 119 incoming
+ledger lines are byte-identical and JSON-valid. Production/test hashes above
+are unchanged. Native evidence predates this integration; final focused and hosted
+checks are separate, not a claimed second full local harness run.
+
+Final focused integration passed 141 tests in 10.89 seconds. The broader track
+remains in progress; full standards validation, new source coverage, canonical
+consumers and changed-candidate publication remain separate work.

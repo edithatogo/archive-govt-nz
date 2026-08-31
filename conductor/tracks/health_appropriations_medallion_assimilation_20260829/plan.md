@@ -529,7 +529,7 @@ repository validation command. External gates block only their affected task.
   separate scoped fixity evidence; do not change the pure descriptor helper's
   claims or declare Platinum/publication complete. [M-14, M-16, M-18; AC-14, AC-16]
 
-- [~] Project validated typed local descriptors into an entity-only PROV
+- [x] Project validated typed local descriptors into an entity-only PROV
   JSON-LD graph with exact product-to-input derivation edges, retaining the
   complete inventory and explicit assertion-only scope. No invented activity,
   actor, date, licence, publication or full standards-conformance claim.

@@ -1579,3 +1579,10 @@ and an assertion-only receipt. Red-first collection failure preceded code.
 mutants killed with zero cache hits (18 tests, 15.78 seconds). Two independent
 reviews found no actionable issue; Ruff and scoped typing passed. Native/hosted
 validation remain pending; no archival or publication files were touched.
+
+Follow-up: native at `1a58841` exited zero with 4,030 tests/97.30% coverage,
+all gates and a validated 111-component SBOM. Ordinary stack merge `99fb342`
+preserved 119 incoming ledger lines and both sides of documentation conflicts.
+The frozen source/tests are unchanged; 141 post-integration tests passed in
+10.89 seconds. Exact-head hosted validation remains the delivery gate. See
+[full PROV receipt](./local-prov.md); no broad acceptance criteria were closed.
