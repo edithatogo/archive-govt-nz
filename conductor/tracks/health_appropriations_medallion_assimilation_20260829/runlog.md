@@ -1,5 +1,93 @@
 # Run Log
 
+## Gold hosted assurance and main reconciliation — 2026-08-31 UTC
+
+- Draft PR #261: `ff990026c793156c5bf651c2bc8c0c605bf881be` passed all seven
+  exact-head checks. Windows attempt 1 failed only the existing CAS throughput
+  check (14.74 MB/s vs 15.0; 1772 tests passed). An unchanged bounded failed-job
+  rerun passed, job `99381611460`, run `33354394002`; no threshold was lowered.
+  The earlier failed local and hosted attempts remain failures, not passes.
+- Before merge, main advanced through FOI PRs #262/#264 to `78cd8fa`, creating
+  another schema-list conflict. Retain both registrations and place Gold beside
+  the existing Health schemas, reducing contention at the list head. Require
+  fresh exact-head checks after this integration; the earlier green head alone
+  does not authorize merging an untested new head. Plots remain separate work.
+
+## Verified Gold persistence — 2026-08-30 UTC
+
+- Functional commit `b38069c`, review fix `0d864d4`: 46 focused tests at
+  100% critical coverage. Post-fix mutation reports 63 kills and 16 timeouts,
+  not 79 verified kills (zero survivors/pardons), report
+  `63eb5293fdbabfb980c7fb0551094a9ba3808110099c41f217cd207a68b4da65`.
+  Preserve this report separately before any bounded retry.
+- Four independently generated Gold packages match all eight files, including
+  the post-review build. Manifest remains
+  `ec68a03f597c7792da4337f2babfcb6615c2e6162a3125042c2b8ef6b7665835`.
+  Current-main schema checks pass 37 schemas/27 documents; Conductor 69 tracks.
+  Prepare a draft PR with local limitations explicit and require independent
+  hosted assurance before completion/merge. No local whole-suite pass claimed.
+
+- The first full run ended with 1,669 passing tests and one Hypothesis input
+  generation health-check failure in the unrelated discovery metamorphic test:
+  six valid inputs in 1.15 seconds, seed
+  `29426792313867042829794198730848378331`. Coverage was 96.12%, eight existing
+  SQLite warnings. This is not a passing full harness; preserve the failure
+  and replay its seed without suppressing any health check.
+- Exact-seed single-process replay passed unchanged in 2.71 seconds. Keep the
+  discovery strategy and health checks unchanged; rerun the complete harness
+  with reduced xdist worker concurrency after integrating current main.
+- Analytical PR #257 merged at `bc7949e92ff0fb7b31cdd389d325901ca7c19796`
+  after seven exact-head checks passed. The merged tree includes intervening
+  FOI-package changes, so it is not identical to the analytical head tree.
+  Integrate that main state and rerun full validation before Gold delivery.
+- Main integration retained both Gold and FOI package schema registrations;
+  locked sync includes main's warcio dependency. No health-domain or health-track
+  difference exists between the reviewed analytical head and its merged commit;
+  the whole-tree difference is the intervening FOI work. The retry uses
+  `PYTEST_XDIST_AUTO_NUM_WORKERS=2 ./scripts/validate.sh` with unchanged gates.
+- The two-worker retry reached 98% without reported assertion failures but hit
+  the existing 300-second per-stage timeout (exit 124). No surviving worktree
+  test processes were observed. A third full attempt uses four workers to
+  balance generation contention and the unchanged timeout; no gate is disabled.
+- The third full attempt also timed out at 300 seconds (exit 124), after
+  reporting several failures but before emitting tracebacks. Do not infer
+  their cause from the earlier generation health check. Stop blind full-harness
+  retries; use a fail-fast diagnostic run to capture the first actual traceback.
+- The initial diagnostic incorrectly cleared configured pytest addopts, causing
+  a test_verifier import-name collision during collection. That diagnostic is
+  invalid evidence of a product failure. Preserve configured import behavior
+  for its bounded correction; do not delete caches or rename unrelated tests.
+- Corrected fail-fast diagnosis captured an unrelated legislation property
+  timing failure: 278.29 ms initially versus 0.07 ms on replay, against an
+  unchanged 200 ms Hypothesis deadline; 1,196 tests passed before stopping.
+  This supports local scheduling/timing instability, not a deterministic
+  legislation or Gold assertion failure. Do not disable deadlines or patch
+  unrelated algorithms. Use independent hosted assurance after the in-scope
+  provenance review fix, preserving local failure receipts explicitly.
+- Detailed legacy readback identifies the discontinuous growth calculation:
+  2020 was compared with 2000; the restored source series compares with 2019.
+  The other guarded overlap is the 1997 accounting-basis change; 1972 is the
+  initial observation in both. Old derivatives remain preserved, not rewritten.
+
+- Extracted the tested bounded reader/lineage checks so compatibility and Gold
+  consume the same verified raw snapshots. Moved the synthetic raw-run fixture
+  into a shared conftest and preserved all 28 compatibility checks.
+- Missing-reader and missing-Gold-module tests failed before implementation.
+  CLI and schema tests then failed on missing API/file. Five malformed canonical
+  identity cases failed to raise; the shared reader now rejects them. Formatter,
+  lint and test typing were corrected before final focused checks.
+- All 42 focused tests pass at 100% critical line/branch coverage across the
+  reader and both exporters; 79/79 unfiltered mutants killed, zero pardons.
+  Mutation report and policies are linked from raw-gold. A stranded coverage
+  file was moved recoverably outside the isolated worktree before full coverage.
+- Three live eight-file Gold builds match, including a post-mutation rebuild;
+  independent readback checks hashes, schema, 321 input IDs and 4,798 lineage
+  rows. Refactored SQLite output matches all four retained files byte for byte.
+  Legacy analytical comparisons disclose float tolerance, restored years and
+  gap/basis differences explicitly; donor original hash is unchanged.
+- Full repository harness running. Source files remain unchanged during it.
+  No new HF bytes, scheduling activation or donor-retirement action.
+
 ## Pure source-derived analytics — 2026-08-30 UTC
 
 - PR #254 merged at `4e4586ec2b3732367c4ff8732957b6d40126e0e2` after all

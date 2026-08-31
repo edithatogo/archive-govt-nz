@@ -1,5 +1,30 @@
 # Evidence
 
+## Verified Gold export — 2026-08-31 UTC
+
+Implementation `b38069ce5d560525e19dab22c90eca9dd3d20f3a`, provenance
+review fix `0d864d44e776b2763b80de8c463051fae35b93eb`. Shared bounded
+reading, canonical identities and source/amount lineage feed both persistence
+paths. Gold CLI preflights by default and exclusively creates five typed tables,
+exact input/lineage sidecars and a manifest.
+
+Four eight-file builds match; manifest
+`ec68a03f597c7792da4337f2babfcb6615c2e6162a3125042c2b8ef6b7665835`.
+All 321 selected facts and 4,798 lineage records accounted for; the 20 forecast
+facts are explicitly excluded from these views, not removed from Silver.
+All 16 Budget aggregates/four breakdown values match exactly. Historical
+comparison preserves 29 extra source years and discloses float tolerances,
+the 1997 basis guard and the legacy 2020-to-2000 comparison repaired to 2019.
+Compatibility export remains byte-identical to its four retained files.
+
+46 focused tests pass at 100% critical line/branch coverage. Final mutation
+attempt: 63 kills, 16 timeouts, zero survivors/pardons; timeouts are not kills.
+Full local harness attempts did not pass: a generation health-check failure,
+two 300-second timeouts, and a fail-fast diagnosis of unrelated legislation
+timing variability. Keep these limits explicit; hosted assurance remains
+pending. Schema validation passes 37 schemas/27 documents; Conductor 69 tracks.
+No original or HF publication changed. See raw-gold/runlog for detailed receipts.
+
 ## Pure source-derived analytics — 2026-08-30 UTC
 
 Functional commit `0bf14b07ac07ef5271a5e44626e4a8857907641b` implements

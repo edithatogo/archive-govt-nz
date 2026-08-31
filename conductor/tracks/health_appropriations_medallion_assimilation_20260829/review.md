@@ -1,5 +1,28 @@
 # Self-Review
 
+## Verified Gold persistence — 2026-08-30 UTC
+
+- Review follow-up: source fields named `input_profile` are rejected before
+  output creation, preventing overrides of the derived profile annotation
+  without discarding original source metadata. Four red regression cases
+  cover both selected profiles and null/string collisions; no preserved source
+  or existing package is rewritten. Final focused validation follows the fix.
+
+- Both persistence paths now use one bounded snapshot/lineage reader. Canonical
+  identities are checked before downstream joins. Shared fixture refactoring
+  retains existing negative and limit-boundary tests.
+- Typed schemas preserve decimal amounts and unavailable metrics, including
+  empty breakdown tables. Input sidecars and selected lineage support exact
+  reconstruction; forecast-profile exclusions are explicit in the manifest.
+- Existing/input-overlapping outputs fail closed; new partial bytes are retained
+  with redacted errors. Default CLI is dry-run. No destructive helper from the
+  older donor-derived Gold implementation is used.
+- Verified three identical live builds and unchanged compatibility output.
+  Legacy comparison distinguishes exact Budget sums from tolerance-based
+  binary historical values and reason-coded growth differences.
+- 42 focused tests, 100% critical coverage and 79/79 unfiltered mutation kills.
+  Full harness and hosted delivery are not inferred from these focused checks.
+
 ## Pure source-derived analytics — 2026-08-30 UTC
 
 - Final isolated full harness exited zero for `0bf14b0`: 1,656 tests,

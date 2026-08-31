@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive-govt-nz.example/schemas/health-raw-gold-v1",
+  "title": "Local source-derived health Gold package",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "status",
+    "raw_manifest_sha256",
+    "policy",
+    "selected_facts",
+    "field_lineage",
+    "excluded_profiles",
+    "exclusion_reason",
+    "row_counts",
+    "pyarrow_version",
+    "publication_state",
+    "output_sha256"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "archive-govt-nz.health-raw-gold/v1"
+    },
+    "status": {
+      "const": "passed"
+    },
+    "raw_manifest_sha256": {
+      "$ref": "#/$defs/hash"
+    },
+    "policy": {
+      "const": "source_derived_nominal_budget_period_basis_guarded/v1"
+    },
+    "selected_facts": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "field_lineage": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "excluded_profiles": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "befu",
+        "hyefu"
+      ],
+      "properties": {
+        "befu": {
+          "$ref": "#/$defs/count"
+        },
+        "hyefu": {
+          "$ref": "#/$defs/count"
+        }
+      }
+    },
+    "exclusion_reason": {
+      "const": "forecast_summaries_outside_nominal_budget_analyses"
+    },
+    "row_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "historical_nominal.parquet",
+        "historical_yoy.parquet",
+        "health_spending_gdp_share.parquet",
+        "recent_classification_trends.parquet",
+        "recent_functional_breakdown.parquet"
+      ],
+      "properties": {
+        "historical_nominal.parquet": {
+          "$ref": "#/$defs/count"
+        },
+        "historical_yoy.parquet": {
+          "$ref": "#/$defs/count"
+        },
+        "health_spending_gdp_share.parquet": {
+          "$ref": "#/$defs/count"
+        },
+        "recent_classification_trends.parquet": {
+          "$ref": "#/$defs/count"
+        },
+        "recent_functional_breakdown.parquet": {
+          "$ref": "#/$defs/count"
+        }
+      }
+    },
+    "pyarrow_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "publication_state": {
+      "const": "local_validation_only"
+    },
+    "output_sha256": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "historical_nominal.parquet",
+        "historical_yoy.parquet",
+        "health_spending_gdp_share.parquet",
+        "recent_classification_trends.parquet",
+        "recent_functional_breakdown.parquet",
+        "input_records.jsonl",
+        "field_lineage.jsonl"
+      ],
+      "properties": {
+        "historical_nominal.parquet": {
+          "$ref": "#/$defs/hash"
+        },
+        "historical_yoy.parquet": {
+          "$ref": "#/$defs/hash"
+        },
+        "health_spending_gdp_share.parquet": {
+          "$ref": "#/$defs/hash"
+        },
+        "recent_classification_trends.parquet": {
+          "$ref": "#/$defs/hash"
+        },
+        "recent_functional_breakdown.parquet": {
+          "$ref": "#/$defs/hash"
+        },
+        "input_records.jsonl": {
+          "$ref": "#/$defs/hash"
+        },
+        "field_lineage.jsonl": {
+          "$ref": "#/$defs/hash"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "count": {
+      "type": "integer",
+      "minimum": 0
+    }
+  }
+}
