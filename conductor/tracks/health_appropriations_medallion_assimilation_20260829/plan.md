@@ -539,10 +539,11 @@ repository validation command. External gates block only their affected task.
   validation. Preserve partial failures, exact counts and source-specific
   actual/forecast observations; no annual joins or publication. [M-15, M-18;
   AC-13, AC-16]
-- [~] Extend the source-operation allowlist to exact Pharmac CPB and quarterly
+- [x] Extend the source-operation allowlist to exact Pharmac CPB and quarterly
   GDP profiles after dependency delivery, retaining source-specific shapes,
   compact counts, CLI default dry-run and forced-read-only MCP. Forecast's
   missing no-write path remains a separate task. [M-15, M-18; AC-13, AC-16]
+  (PR313 merged `f41ef9b`; seven exact-head checks passed.)
 - [~] Add an explicit no-write forecast API path while retaining the existing
   default-write contract and all four source profiles. Require real booleans,
   preserve partial/rejected status and prove old written bytes unchanged.

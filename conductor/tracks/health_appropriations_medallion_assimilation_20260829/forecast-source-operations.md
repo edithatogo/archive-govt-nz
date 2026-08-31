@@ -52,3 +52,18 @@ partial package files with `status=partial` and one rejected amount. All 279
 tests pass again (8.46 seconds), Ruff is clean, and production is unchanged.
 The updated test SHA-256 is
 `f858ee7cd071cebb1457479a3ed67429849ffc962300364d059b4865be3391f7`.
+
+## Cold mutation and preceding delivery
+
+Cold unfiltered mutation at `368f121` killed 36/36 mutants: 279 tests in
+260.38 seconds, zero survivors, errors, timeouts, pardons or cache hits,
+one worker and the unchanged 30-second deadline. The external report SHA-256
+is `d1f106b4af510323e6b01ece7c2a1f7be894d6cf90eb6170c76a75d0d74ecb21`.
+
+PR313 was merged after fresh seven-check success and clean mergeability at
+`3f937077ab809ff849cbc1d9a93134079395b3cc`, using an expected-head squash.
+Readback confirmed `f41ef9b984c15dc84a9afa3e39236388bfcf2197` at
+2026-08-31T16:29:51Z. No clone or branch was deleted. This unpublished stack
+was rebased onto that delivered main commit with exact source/test hashes
+unchanged and the incoming ledger prefix preserved. The API dependency remains
+unmerged; native and hosted forecast-dispatch validation remain pending.
