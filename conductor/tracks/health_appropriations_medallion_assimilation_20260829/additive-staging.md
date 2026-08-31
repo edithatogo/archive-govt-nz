@@ -128,3 +128,12 @@ After PR creation, incoming MoH main `25f9fb5` caused a ledger-only conflict.
 Integration preserves that incoming ledger as an exact prefix, followed by the
 staging receipt. The tested staging/planner source and test bytes are unchanged;
 post-integration focused/static checks are separate from the earlier full gate.
+
+The subsequent integration with reviewed structural-recordset revision `5ffb651`
+preserves its full ledger prefix and all staging observations. Both review and
+run-log histories are retained. Staging, planner and recordset production/test
+bytes are unchanged from their reviewed revisions. Combined focused validation
+passes 173 tests in 13.69 seconds; Conductor validates 73 tracks without errors,
+and whitespace validation passes. No full native rerun is claimed for this
+documentation-only conflict resolution. The new pushed head requires fresh
+hosted validation before merge.
