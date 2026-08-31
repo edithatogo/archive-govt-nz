@@ -47,6 +47,7 @@ _VINTAGE_COLUMNS = tuple(range(6, 16))
 _MAX_SOURCE_BYTES = 64 * 1024 * 1024
 _MIN_YEAR_COLUMNS = 2
 _TRANSFORMATION = "treasury-health-expense-summary/v1"
+TRANSFORMATION = _TRANSFORMATION
 _CELL_SCHEMA = pa.schema(
     [
         ("source_object_sha256", pa.string()),

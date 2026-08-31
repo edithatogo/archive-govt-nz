@@ -14,11 +14,16 @@ from dataclasses import replace
 from pathlib import Path
 from typing import Any, cast
 
+import pyarrow.parquet as pq
 import pytest
 from hypothesis import given
 from hypothesis import strategies as st
 from jsonschema import Draft202012Validator, ValidationError
+from openpyxl import load_workbook
 from tests.domains.health_appropriations.test_cpi import HEADER, META
+from tests.domains.health_appropriations.test_forecast_successors import (
+    _source as forecast_fixture,
+)
 from tests.domains.health_appropriations.test_gdp import workbook as gdp_fixture
 from tests.domains.health_appropriations.test_pharmac import (
     fixture_source as pharmac_fixture,
@@ -28,6 +33,7 @@ from tests.domains.health_appropriations.test_qes import fixture as qes_fixture
 from archive_govt_nz import cli, mcp_server
 from archive_govt_nz.cli import app, health_appropriations_extract_source
 from archive_govt_nz.domains.health_appropriations import (
+    forecast,
     gdp,
     moh_indicators,
     pharmac,
@@ -44,6 +50,8 @@ from archive_govt_nz.mcp_server import Server, call_tool, list_tools
         "qes-june2026-table8/v1",
         "pharmac-cpb-20260807/v1",
         "gdp-expenditure-actual-2026q1/v1",
+        "befu-2026/v1",
+        "hyefu-2025/v1",
     ]
 )
 def request_source(
@@ -71,6 +79,9 @@ def request_source(
         )
         source.write_bytes(content.getvalue().encode())
         vintage = "MoH-HAIR-2024"
+    elif profile in {"befu-2026/v1", "hyefu-2025/v1"}:
+        forecast_fixture(source, 9 if profile == "befu-2026/v1" else 8)
+        vintage = "BEFU-2026" if profile == "befu-2026/v1" else "HYEFU-2025"
     elif profile == "pharmac-cpb-20260807/v1":
         source, _ = pharmac_fixture(tmp_path)
         vintage = "Pharmac-CPB-2026-08-07"
@@ -140,6 +151,60 @@ def test_extended_dispatch_preserves_source_specific_package(
         p.name: p.read_bytes() for p in direct.iterdir()
     }
     assert source.read_bytes() == before
+
+
+@pytest.mark.parametrize(
+    ("profile", "vintage", "row"),
+    [("befu-2026/v1", "BEFU-2026", 9), ("hyefu-2025/v1", "HYEFU-2025", 8)],
+)
+def test_forecast_dispatch_preserves_package_and_partial_failure(
+    tmp_path: Path, profile: str, vintage: str, row: int
+) -> None:
+    source = tmp_path / "source.xlsx"
+    pin = forecast_fixture(source, row)
+    context = {
+        "expected_sha256": pin,
+        "source_vintage": vintage,
+        "source_locator": "https://example.invalid/source",
+        "observed_at": "2026-08-31T00:00:00Z",
+    }
+    before = source.read_bytes()
+    direct, destination = tmp_path / "direct", tmp_path / "dispatch"
+    raw = forecast.normalize_forecast_workbook(
+        source, direct, profile=profile, **context, dry_run=False
+    )
+    request = source_operations.SourceRequest(source, destination, profile, **context)
+    result = source_operations.operate_source(request, dry_run=False)
+    assert result["status"] == "written_local"
+    assert result["counts"] == raw["counts"]
+    assert result["transformation_id"] == "treasury-health-expense-summary/v1"
+    assert {p.name: p.read_bytes() for p in destination.iterdir()} == {
+        p.name: p.read_bytes() for p in direct.iterdir()
+    }
+    facts = pq.read_table(destination / "forecast_facts.parquet").to_pylist()
+    assert [fact["amount_type"] for fact in facts] == ["Actual"] * 5 + ["Forecast"] * 5
+    assert source.read_bytes() == before
+    workbook = load_workbook(source)
+    workbook.worksheets[0].cell(row, 6, "=1+1")
+    workbook.save(source)
+    workbook.close()
+    retained = source.read_bytes()
+    partial = replace(
+        request,
+        output_dir=tmp_path / "partial",
+        expected_sha256=hashlib.sha256(retained).hexdigest(),
+    )
+    failed = source_operations.operate_source(partial)
+    assert failed == {
+        "schema_version": "archive-govt-nz.health-source-operation/v1",
+        "verification_scope": "adapter_execution_only",
+        "rights_state": "not_evaluated",
+        "publication_state": "local_validation_only",
+        "status": "failed",
+        "error": "invalid_source_operation",
+    }
+    assert not partial.output_dir.exists()
+    assert source.read_bytes() == retained
 
 
 @pytest.mark.parametrize("flag", [None, 0, 1, "", "false", [], {}])
