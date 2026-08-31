@@ -34,6 +34,19 @@
   `a17b0fd` (FOI attachment schema registration); reconcile both registrations
   without changing FOI code. No hosted pass or plot rendering claimed.
 
+## Gold hosted assurance and main reconciliation — 2026-08-31 UTC
+
+- Draft PR #261: `ff990026c793156c5bf651c2bc8c0c605bf881be` passed all seven
+  exact-head checks. Windows attempt 1 failed only the existing CAS throughput
+  check (14.74 MB/s vs 15.0; 1772 tests passed). An unchanged bounded failed-job
+  rerun passed, job `99381611460`, run `33354394002`; no threshold was lowered.
+  The earlier failed local and hosted attempts remain failures, not passes.
+- Before merge, main advanced through FOI PRs #262/#264 to `78cd8fa`, creating
+  another schema-list conflict. Retain both registrations and place Gold beside
+  the existing Health schemas, reducing contention at the list head. Require
+  fresh exact-head checks after this integration; the earlier green head alone
+  does not authorize merging an untested new head. Plots remain separate work.
+
 ## Verified Gold persistence — 2026-08-30 UTC
 
 - Functional commit `b38069c`, review fix `0d864d4`: 46 focused tests at

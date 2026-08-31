@@ -222,6 +222,12 @@ def catalogue_files(catalogue: dict[str, Any]) -> dict[str, bytes]:
             (json.dumps(row, sort_keys=True, ensure_ascii=False) + "\n").encode()
             for row in catalogue[name]
         )
+    review = catalogue["provenance"].get("directory_review")
+    if review is not None:
+        files["discovery-review.jsonl"] = b"".join(
+            (json.dumps(row, sort_keys=True) + "\n").encode()
+            for row in review["entities"]
+        )
     files["coverage.json"] = (
         json.dumps(catalogue["coverage"], sort_keys=True, indent=2) + "\n"
     ).encode()

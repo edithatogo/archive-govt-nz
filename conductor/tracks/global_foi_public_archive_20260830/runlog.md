@@ -104,3 +104,33 @@ Full attachment harness completed with exit 0: 1621 tests, 96.15% coverage, all 
 The staged-source secret scan flagged the intentionally synthetic Basic Auth rejection fixture. Added the same narrowly scoped synthetic-fixture annotation already used by catalogue tests; no production credential or scanner rule was changed. Re-running the staged scan before commit.
 
 Latest-main integrated validation and PR 258 CI stopped at Ruff E501: the synthetic secret annotation made one fixture line too long. Shortened only the fake credential value, preserving the rejection test and scoped scanner annotation; rerunning the full gate.
+
+## Verified public delivery foundation — 2026-08-31
+
+P4.1/P4.2 implementation adds a distinct eligibility boundary for the safe catalogue and exact source-specific raw decisions, immutable snapshot paths, anonymous fresh-cache downloads, content verification, cold reconstruction, and conditional current-pointer/card promotion. Dataset cards expose separate index tables; viewer readiness remains a separate observation.
+
+Observed red cases included missing transport, absent public card, malformed review references accepted past the intended gate, and a local receipt race that overwrote another receipt and concealed remote outcome. Corrected each with bounded tests: raw eligibility fails before writes; publication exceptions are sanitized; receipts use exclusive creation and report already-verified remote state separately when local saving fails. Original raw decision inputs are not generated or approved by the agent.
+
+Four transport integrity mutations were killed. Focused critical coverage was 100% across transport, SDK boundary and publication guards before the final command/schema checks. Full harness is now running. Foundation PR 255 merged at d37b72e7dbcabad82c68f378ff07274411a7850a after integrated validation (1655 tests, 96.18%) and exact-head green checks. Attachment PR 258 merged at a17b0fda7b4f2ba4f71023ed4e118b7d292c14bb after corrected integrated validation (1676 tests, 96.20%) and green checks. Donor PR 408 has one preview-encoding correction awaiting renewed hosted checks. No public upload or monitor activation has occurred.
+
+Publication full harness attempt 1 reached 1724 passing tests but stopped on Hypothesis input-generation timing in the existing URN property test (no assertion counterexample). Recorded seed 7018757617877908458207565406650075635 passed both URN properties unchanged. Retry uses one test worker after donor validation completed; no health check or test threshold is suppressed. Bounded log: /tmp/foi-delivery-full-validation.log.
+
+## Verified public catalogue — 2026-08-31
+
+Published the approved source metadata catalogue to edithatogo/foi-source-catalogue. Fresh anonymous downloads verified all snapshot bytes before conditional current-pointer promotion. Raw source payloads were not published. Donor #408 merged with exact-head green checks. The second full local receiver gate recorded a subprocess timeout and a Hypothesis generation health check in unchanged tests; the latter passed with its exact seed, while the subprocess still timed out. Host load exceeded 300. No checks were weakened. Hosted receiver assurance remains required. Receipt: public-catalogue-delivery-20260831.json.
+
+Reviewed directory update: 30 known sources, 251 entity review rows, 23 directory-listed entities. All unknown request totals stay null. Snapshot 512fb25519fc1002c411fbcc37f04bb176f0b03c anonymously restored before current promotion. Focused integrated validation: 180 tests, 100 percent critical-module coverage. Original donor seed bytes and historical Argentina identity remain unchanged. Broader country discovery remains open.
+
+## Receiver metadata automation — 2026-08-31
+
+Preparing a main-branch-only weekly/manual catalogue workflow with one scoped
+credentialed command, fixed concurrency, twenty-minute budget and always-retained
+sanitized result receipts. It never accepts a raw-publication decision or starts
+source acquisition. Hosted execution remains pending; donor NZ monitoring stays
+paused. This is catalogue monitoring only, not completed P5 acquisition or P6
+ownership transfer.
+
+Workflow validation first stopped on the test's YAML loader lint rule. Replaced
+BaseLoader with safe_load and explicit YAML 1.1 boolean-key assertions. Actionlint
+and the workflow boundary test pass. The corrected full harness is running; this
+is not a hosted execution receipt.

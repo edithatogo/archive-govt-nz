@@ -10,7 +10,8 @@ import sys
 import tarfile
 from dataclasses import replace
 from pathlib import Path
-from typing import IO
+from typing import IO, TYPE_CHECKING
+from unittest.mock import MagicMock
 
 import pyarrow as pa
 import pyarrow.parquet as pq
@@ -20,6 +21,7 @@ from warcio.statusandheaders import StatusAndHeaders
 from warcio.warcwriter import WARCWriter
 
 import archive_govt_nz.foi_package as module
+import archive_govt_nz.foi_publication as publication
 from archive_govt_nz.foi_package import (
     CaptureContext,
     FOIPackageError,
@@ -27,6 +29,10 @@ from archive_govt_nz.foi_package import (
     restore_package,
     verify_package,
 )
+from archive_govt_nz.foi_publication import publish_raw_package
+
+if TYPE_CHECKING:
+    from collections.abc import Callable
 
 
 def capture(
@@ -850,3 +856,170 @@ def test_attachment_index_tampering_is_rejected(tmp_path: Path, change: str) -> 
     (package / "manifest.json").write_bytes(module.canonical(manifest))
     with pytest.raises(ValueError, match="attachment_index"):
         verify_package(package)
+
+
+@pytest.mark.parametrize(
+    "field",
+    [
+        "manifest_sha256",
+        "source_id",
+        "repo_id",
+        "reviewer",
+        "rights_status",
+        "privacy_status",
+        "purpose",
+        "evidence_references",
+    ],
+)
+def test_raw_publication_requires_exact_decision(tmp_path: Path, field: str) -> None:
+    """Publication intent cannot replace exact source and privacy clearance."""
+    source = tmp_path / "capture"
+    package = tmp_path / "package"
+    prepare(source, package, capture(source))
+    digest = module.sha256(package / "manifest.json")
+    decision = {
+        "manifest_sha256": digest,
+        "source_id": "nz-fyi",
+        "repo_id": "edithatogo/fyi-archive-nz",
+        "reviewer": "edithatogo",
+        "rights_status": "approved",
+        "privacy_status": "approved",
+        "purpose": "public_preservation",
+        "evidence_references": ["https://example.org/fixture-review"],
+    }
+    decision[field] = None
+    with pytest.raises(ValueError, match="exact_publication_decision_required"):
+        publish_raw_package(
+            MagicMock(),
+            package,
+            trusted_manifest_sha256=digest,
+            decision=decision,
+            seeds=ROOT / "config/foi",
+        )
+
+
+def test_publication_checks_source_hash_before_network(tmp_path: Path) -> None:
+    """A valid package cannot substitute for the independently trusted hash."""
+    source = tmp_path / "capture"
+    package = tmp_path / "package"
+    prepare(source, package, capture(source))
+    with pytest.raises(ValueError, match="untrusted_package_manifest"):
+        publish_raw_package(
+            MagicMock(),
+            package,
+            trusted_manifest_sha256="0" * 64,
+            decision={},
+            seeds=ROOT / "config/foi",
+        )
+
+
+def publication_decision(package: Path) -> dict:
+    """Return approval-shaped synthetic data used only with a mocked transport."""
+    return {
+        "manifest_sha256": module.sha256(package / "manifest.json"),
+        "source_id": "nz-fyi",
+        "repo_id": "edithatogo/fyi-archive-nz",
+        "reviewer": "edithatogo",
+        "rights_status": "approved",
+        "privacy_status": "approved",
+        "purpose": "public_preservation",
+        "evidence_references": ["https://example.org/fixture-review"],
+        "reviewed_at": "2026-08-30T01:00:00Z",
+    }
+
+
+def test_eligible_synthetic_package_is_restored_before_transport(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Exercise raw delivery without network calls or real approval claims."""
+    source = tmp_path / "capture"
+    package = tmp_path / "package"
+    prepare(source, package, capture(source))
+    decision = publication_decision(package)
+    observed = []
+
+    def transport(
+        _hub: object,
+        repo: str,
+        files: dict[str, Path],
+        restore: Callable[[Path], None],
+    ) -> dict:
+        assert repo == decision["repo_id"]
+        assert "raw.tar" in files
+        restore(package)
+        observed.append(True)
+        return {"status": "fixture_verified"}
+
+    monkeypatch.setattr(publication, "publish_snapshot", transport)
+    result = publication.publish_raw_package(
+        MagicMock(),
+        package,
+        trusted_manifest_sha256=decision["manifest_sha256"],
+        decision=decision,
+        seeds=ROOT / "config/foi",
+    )
+    assert result["status"] == "fixture_verified"
+    assert observed == [True]
+
+
+@pytest.mark.parametrize("mode", ["legacy", "gap"])
+def test_raw_publication_blocks_legacy_or_missing_census(
+    tmp_path: Path, mode: str
+) -> None:
+    """Rights clearance cannot override an unaccounted attachment gap."""
+    source = tmp_path / "capture"
+    package = tmp_path / "package"
+    manifest = prepare(
+        source, package, capture(source, html=b'<a href="/attach/1/missing">file</a>')
+    )
+    if mode == "legacy":
+        manifest["schema_version"] = module.LEGACY_SCHEMA
+        manifest["files"] = [
+            r
+            for r in manifest["files"]
+            if not r["path"].startswith("indexes/attachments.")
+        ]
+        for extension in ("jsonl", "parquet"):
+            (package / f"indexes/attachments.{extension}").unlink()
+        (package / "manifest.json").write_bytes(module.canonical(manifest))
+    decision = publication_decision(package)
+    with pytest.raises(
+        ValueError,
+        match=r"attachment_census_required|attachment_gaps_block_publication",
+    ):
+        publish_raw_package(
+            MagicMock(),
+            package,
+            trusted_manifest_sha256=decision["manifest_sha256"],
+            decision=decision,
+            seeds=ROOT / "config/foi",
+        )
+
+
+@pytest.mark.parametrize(
+    "value",
+    [
+        "not-a-list",
+        [None],
+        [],
+        ["http://example.org/review"],
+        ["https://example.org/review?token=synthetic"],
+    ],
+)
+def test_raw_review_evidence_has_structured_public_references(
+    tmp_path: Path, value: object
+) -> None:
+    """Approval metadata cannot carry ambiguous or credential-bearing references."""
+    source = tmp_path / "capture"
+    package = tmp_path / "package"
+    prepare(source, package, capture(source))
+    decision = publication_decision(package)
+    decision["evidence_references"] = value
+    with pytest.raises(ValueError, match="exact_publication_decision_required"):
+        publish_raw_package(
+            MagicMock(),
+            package,
+            trusted_manifest_sha256=decision["manifest_sha256"],
+            decision=decision,
+            seeds=ROOT / "config/foi",
+        )

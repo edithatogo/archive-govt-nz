@@ -20,8 +20,8 @@ type JsonValue = (
 REPOSITORY_ROOT = Path(__file__).parents[1]
 VALIDATION_PAIRS = (
     (
-        REPOSITORY_ROOT / "schemas" / "health-raw-gold-v1.schema.json",
-        REPOSITORY_ROOT / "tests" / "fixtures" / "health-raw-gold-sample-v1.json",
+        REPOSITORY_ROOT / "schemas" / "foi-current-v1.schema.json",
+        REPOSITORY_ROOT / "tests" / "fixtures" / "foi-current-sample-v1.json",
     ),
     (
         REPOSITORY_ROOT / "schemas" / "foi-package-v2.schema.json",
@@ -52,6 +52,10 @@ VALIDATION_PAIRS = (
     (
         REPOSITORY_ROOT / "schemas" / "health-raw-rebuild-v1.schema.json",
         REPOSITORY_ROOT / "tests" / "fixtures" / "health-raw-rebuild-sample-v1.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "health-raw-gold-v1.schema.json",
+        REPOSITORY_ROOT / "tests" / "fixtures" / "health-raw-gold-sample-v1.json",
     ),
     (
         REPOSITORY_ROOT / "schemas" / "health-historical-reconciliation-v1.schema.json",

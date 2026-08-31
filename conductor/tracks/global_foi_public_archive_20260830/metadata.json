@@ -3,7 +3,7 @@
   "type": "feature",
   "status": "in_progress",
   "created_at": "2026-08-30T08:38:22Z",
-  "updated_at": "2026-08-30T21:52:53.057639+00:00",
+  "updated_at": "2026-08-31T03:31:09.803178+00:00",
   "description": "Global FOI source catalogue, metadata indexes, public raw preservation and automation repair; archive-govt-nz takeover approved.",
   "evidence_schema": "1.0",
   "approval_status": "approved",
@@ -113,7 +113,9 @@
     "phase_2_receipt": "phase-2-catalogue-validation.json",
     "phase_3_local_package": "passed",
     "phase_3_receipt": "local-package-validation-20260831.json",
-    "phase_3_attachment_receipt": "attachment-package-validation-20260831.json"
+    "phase_3_attachment_receipt": "attachment-package-validation-20260831.json",
+    "publication_receipt": "public-catalogue-delivery-20260831.json",
+    "directory_publication_receipt": "directory-publication-20260831.json"
   },
   "implementation": {
     "baseline_pr": "https://github.com/edithatogo/archive-govt-nz/pull/244",
@@ -142,6 +144,28 @@
     "container_followup_merge": "be992fe036d5a270e228b5277e5b5770b9950ad8",
     "bounded_raw_restore_run": 33307777685,
     "bounded_raw_restore_state": "passed_temporary_artifact_only",
-    "latest_operational_receipt": "hosted-raw-restore-20260830.json"
+    "latest_operational_receipt": "hosted-raw-restore-20260830.json",
+    "public_source_catalogue": {
+      "coverage": {
+        "geographic_entities": 250,
+        "known_sources": 30,
+        "payload_publication_authorized": false,
+        "remaining_unverified": 250,
+        "supranational_entities": 1,
+        "target_regimes": 42,
+        "total_requests": null,
+        "verified_complete": 0
+      },
+      "current_revision": "4e5a7832f6536e231d20292c1bffaae7861fd912",
+      "manifest_sha256": "42d003245024432140ba2070c998c32779bbb587516bf0c62aeb32085c6a1558",
+      "payload_publication": false,
+      "repo_id": "edithatogo/foi-source-catalogue",
+      "scope": "source_catalogue_only",
+      "snapshot_revision": "512fb25519fc1002c411fbcc37f04bb176f0b03c",
+      "status": "verified",
+      "uploaded": true,
+      "viewer_status": "not_checked"
+    },
+    "attachment_gap_donor_merge": "7793293e488bd39d3fbb1e36ceb98820beb40313"
   }
 }

@@ -37,7 +37,7 @@ The approved destination is archive-govt-nz; no cutover has occurred.
 ## Phase 4 — Public Hugging Face delivery
 
 - [~] P4.1 (AC07, AC11): Add red tests for restricted publication, public metadata leakage, private/gated targets, wrong repo identity, partial upload, remote hash mismatch, inconsistent child revisions, provider outages and premature index promotion.
-- [ ] P4.2 (AC07): Wire public global catalogue, existing per-instance identities, raw payloads, metadata indexes, cards and revision-pinned manifests through the approved publisher.
+- [~] P4.2 (AC07): Wire public global catalogue, existing per-instance identities, raw payloads, metadata indexes, cards and revision-pinned manifests through the approved publisher.
 - [ ] P4.3 (AC07, AC11): Reconcile source eligibility, platform capacity and least-privilege credentials; publish the eligible NZ candidate under recorded user authority and verify every accepted object anonymously.
 - [ ] P4.4 (AC07): Verify a second eligible instance, cross-instance isolation, revision-pinned catalogue links, interrupted-publication recovery, cold restore without cache and viewer status separately from raw storage.
 - [ ] P4.5 (AC12): Automated publication/security review, full phase validation and hosted receipts.
