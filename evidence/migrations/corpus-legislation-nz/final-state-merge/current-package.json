@@ -1,0 +1,16 @@
+{
+  "status": "verified_local_only",
+  "execution": "execution-02",
+  "software_commit": "c4287a4eed4db5d5ae67746cc49287b37f4f914e",
+  "receipt_path": "execution-02/final-state-merge-receipt.json",
+  "receipt_sha256": "3fc4a205ed1b8a327f0d91675951ce18a6800f1bc2bdb948b22c45c882e8e679",
+  "completion_marker_sha256": "abc7a76228b53d90e0fc986f702cc9d223d711329a513fc06b509cfcd7b5c65d",
+  "local_package_parts": [
+    "archive-govt-nz",
+    "canonical-state-merge-04",
+    "merged-02"
+  ],
+  "supersedes_execution": "merged-01",
+  "supersession_reason": "Reviewed repeated-artifact descriptor guard added; canonical manifest/checkpoint and object set unchanged. Initial execution and failure reproduction remain retained.",
+  "remote_publication": false
+}

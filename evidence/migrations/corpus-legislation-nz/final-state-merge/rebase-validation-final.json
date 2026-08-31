@@ -1,0 +1,38 @@
+{
+  "observed_at": "2026-08-31T14:24:14.254856+00:00",
+  "rebased_target_commit": "9e559799f441651e79d4109fcd28e5fa89be668e",
+  "validated_checkout_commit": "1f0417f062865224c33c953d10ea036cceb3e1f4",
+  "original_target_commit": "6885c3e50e34f19f15459abe8eca1409675f068b",
+  "execution_software_commit": "c4287a4eed4db5d5ae67746cc49287b37f4f914e",
+  "runtime_tests_schema_unchanged_by_rebase": true,
+  "legislation_parent_state_and_verifier_dependencies_unchanged": true,
+  "full_harness_exit_code": 0,
+  "tests_passed": 2761,
+  "overall_coverage_percent": 97.05,
+  "critical_line_percent": 100,
+  "critical_branch_percent": 100,
+  "critical_tests": 50,
+  "targeted_mutants_killed": 13,
+  "targeted_mutants_total": 13,
+  "schemas": 41,
+  "representative_documents": 31,
+  "new_receipt_schema_validated": true,
+  "parity_passed": "9/9",
+  "repository_mutation_lanes": "all_passed",
+  "workflow_policy": "passed",
+  "dependency_audit": "no_known_vulnerabilities",
+  "licence_inventory": "passed",
+  "secret_scan": {
+    "status": "passed"
+  },
+  "sbom": {
+    "status": "strictly_validated",
+    "components": 111
+  },
+  "log_sha256": "d116cbb66fc6097fd25920b20b670f13d7d6ff7f4388734ac0f6d14fff11d56e",
+  "software_remote_readback": {
+    "html_url": "https://github.com/edithatogo/archive-govt-nz/commit/c4287a4eed4db5d5ae67746cc49287b37f4f914e",
+    "sha": "c4287a4eed4db5d5ae67746cc49287b37f4f914e"
+  },
+  "prior_validation_records": "retained unchanged; this receipt adds validation on the advanced target main"
+}

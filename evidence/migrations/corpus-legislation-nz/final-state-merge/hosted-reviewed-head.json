@@ -1,0 +1,48 @@
+{
+  "head_commit": "1f0417f062865224c33c953d10ea036cceb3e1f4",
+  "checks": [
+    {
+      "name": "Assurance (ubuntu-latest)",
+      "status": "COMPLETED",
+      "conclusion": "SUCCESS",
+      "details_url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/33401867164/job/99520246335"
+    },
+    {
+      "name": "analyze",
+      "status": "COMPLETED",
+      "conclusion": "SUCCESS",
+      "details_url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/33401867111/job/99519865771"
+    },
+    {
+      "name": "lint",
+      "status": "COMPLETED",
+      "conclusion": "SUCCESS",
+      "details_url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/33401867109/job/99519865532"
+    },
+    {
+      "name": "Assurance (macos-latest)",
+      "status": "COMPLETED",
+      "conclusion": "SUCCESS",
+      "details_url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/33401867164/job/99520246460"
+    },
+    {
+      "name": "Assurance (windows-latest)",
+      "status": "COMPLETED",
+      "conclusion": "SUCCESS",
+      "details_url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/33401867164/job/99520245950"
+    },
+    {
+      "name": "CodeQL",
+      "status": "COMPLETED",
+      "conclusion": "SUCCESS",
+      "details_url": "https://github.com/edithatogo/archive-govt-nz/runs/99520481696"
+    },
+    {
+      "name": "codecov/patch",
+      "status": "COMPLETED",
+      "conclusion": "SUCCESS",
+      "details_url": "https://app.codecov.io/gh/edithatogo/archive-govt-nz/pull/297"
+    }
+  ],
+  "scope": "Reviewed implementation and evidence head; final documentation head must pass the same live guard before merge."
+}

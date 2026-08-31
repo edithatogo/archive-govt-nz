@@ -552,6 +552,24 @@ reported as complete.
   operation is exposed. Existing defusedxml is reused without dependency changes.
 - Focused and mutation gates pass. The native CPI timing failure and isolated
   passing diagnostic remain visible; complete local assurance is not claimed.
+
+## 2026-08-31 — Exclusive local additive staging review
+
+- Independent parent and sibling reviews found no substantive copy/path/state
+  defect within the explicitly reviewed-root, copy-integrity-only contract.
+- Parent review identified inherited non-finite JSON acceptance in extra rights
+  metadata. Seven red cases reproduced it; finite parsing and strict staging
+  encoding now reject it without interpreting rights or changing original bytes.
+- Full base history includes the original manifest/card; no active publication
+  manifest, inherited approval or current publication claim is emitted.
+- Exclusivity, copy fixity, full readback and redacted failure retention have
+  focused negative coverage. Supplied forbidden roots are caller responsibility,
+  not automatic publisher-config discovery or arbitrary uploader prevention.
+- Refreshed combined evidence is 139 tests, 100% critical line/branch coverage,
+  and 120/120 cold unfiltered mutant kills. Two final-source live builds match
+  each other and the retained earlier pilot; native delivery evidence follows
+  in [additive staging](./additive-staging.md).
+
 ## 2026-08-31 — Structural record-set review
 
 Review is bounded to the additive eight-shape registry. It grants no
@@ -562,3 +580,16 @@ preserved; future projections must fail exactly rather than round them.
 Independent read-only review found no actionable production issue and
 requested full field type/nullability tests; those now pass together with
 all 30 cold mutants. Native and hosted assurance remain distinct gates.
+
+## 2026-08-31 — JSON row-shape review
+
+The fresh descriptors enforce structural columns, constants, nullability and
+exact fixed-point transport bounds. Deep-copy isolation and unknown-type
+failure prevent mutable shared descriptors or binary/text fallback. Format
+validation explicitly requires the caller's checker. Two independent reviews
+found no actionable finding within this structural scope. All 51 tests and
+two cold source mutants pass; ten separately seeded descriptor counterexamples
+are not counted as production mutants. Native assurance passed at `d71d431`.
+No identity, rights, temporal alignment, source projection or lineage semantic
+claim is made. General/Python style and the repository formatter/type checker
+pass; no platform-specific application guide is selected for this pure module.

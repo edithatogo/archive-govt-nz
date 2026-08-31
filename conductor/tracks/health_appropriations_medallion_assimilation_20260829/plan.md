@@ -196,6 +196,12 @@ repository validation command. External gates block only their affected task.
 
 ### 3.1 Schema contracts first
 
+- [x] Export independent JSON row-shape schemas from the eight Arrow contracts,
+  preserving nullable fields, exact decimal strings and fixed record-set/version
+  constants. Test formats and representation bounds without claiming semantic
+  source validation, identity construction or canonical promotion. [M-05,
+  M-06, M-18; AC-05, AC-16] (`7941162`; 51 focused tests, two cold mutant
+  kills, 2,796 native tests; structural only, hosted delivery separate)
 - [x] Establish an additive immutable Arrow registry for all eight record-set
   shapes, with nullable unknown valid times, source precision and provenance;
   test Parquet round trips without rewriting or promoting v1 source packages.
@@ -502,10 +508,11 @@ repository validation command. External gates block only their affected task.
   dry-run-first CLI and forced-read-only MCP preflight, using compact typed
   redacted receipts without changing donor rebuild or archive-status semantics.
   [M-15, M-18; AC-13, AC-16]
-- [~] Expose a compact hash-pinned standalone Budget-package verification
+- [x] Expose a compact hash-pinned standalone Budget-package verification
   receipt through matching read-only CLI/MCP contracts. Reject missing,
   partial or corrupt packages without creating state; retain not-evaluated
   rights and package-only verification boundaries. [M-15, M-18; AC-13, AC-16]
+  (PR #280 observed merged `113bac5`; exact hosted head `199c82b`)
 
 - [x] Expose hash-pinned read-only raw-run verification through CLI and MCP;
   reject missing, partial, corrupt and mismatched state without creating any
@@ -543,16 +550,24 @@ repository validation command. External gates block only their affected task.
 
 ### 9.2 Build a rights-filtered Hugging Face candidate locally
 
+- [x] Assemble an exclusive local staging bundle from the pinned additive
+  inventory, retaining v4 history and new packages separately with full
+  readback and bounded failure receipts. No publication-shaped candidate or
+  inherited approval is emitted. [M-03, M-16, M-17, M-18; AC-02, AC-12, AC-15,
+  AC-16]
+
 - [x] Reject unsafe or colliding original-object destination paths before
   candidate output creation, including traversal and portable filename hazards.
   This bounded preflight does not establish derivative rights or full release
   readiness. [M-14, M-17, M-18; AC-14, AC-15, AC-16] (`1a3356a`; native
   2,219 tests and five mutation kills; hosted delivery remains separate)
 
-- [~] Add a read-only additive inventory for the four explicitly pinned
+- [x] Add a read-only additive inventory for the four explicitly pinned
   Budget-2026/CPI/BEFU-2026/HYEFU-2025 packages, verifying base bytes and exact
   recorded source-rights joins without building, approving or publishing a
   candidate. [M-03, M-04, M-14, M-17, M-18; AC-02, AC-14, AC-15, AC-16]
+  (PR #290 merged `07143c8`; native timeout remains recorded, exact-head
+  hosted checks passed; subsequent staging changes have separate assurance)
 
 - [ ] Add release-readiness negative tests for missing rights, incomplete
   source disposition, failed parity/recovery, stale evidence, non-pinned
