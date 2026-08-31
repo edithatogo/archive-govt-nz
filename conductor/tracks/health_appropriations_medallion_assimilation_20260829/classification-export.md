@@ -52,7 +52,13 @@ Test SHA256: `2ac17ea2601a73e83d895be163130202f19c698699f014dd406071f81916ee88`.
 Independent read-only re-review found no actionable issue within the stated
 scope. Subsequent test-only strengthening independently checks metadata,
 nullability, row-count and value corruption; production is unchanged.
-Critical mutation and native validation are pending.
+Cold mutation killed all 44 generated mutants in 38.08 seconds, with no
+survivors, errors, timeouts, pardons or cache hits and no coverage filter.
+Report SHA256: `68eea3a254d2b59b42276fec8d8353881c7a3b7a4846f18c50b3db4d75a74fd3`.
+Main `9032f8f` (merged projection PR306) integrated at `32d6810` before native
+validation. The whole incoming ledger matches byte-for-byte; existing projection
+events were not duplicated. Source and tests remain unchanged. Native validation
+is pending.
 
 Initial absent-module tests failed before implementation. A subsequent red test
 identified a failure-marker error masking the primary write failure. Review then
