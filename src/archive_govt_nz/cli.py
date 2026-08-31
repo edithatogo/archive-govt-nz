@@ -27,6 +27,7 @@ from archive_govt_nz.core.registry import AgencyRegistry
 from archive_govt_nz.domains.health_appropriations.compatibility_export import (
     export_compatibility,
 )
+from archive_govt_nz.domains.health_appropriations.gold_export import export_gold
 from archive_govt_nz.domains.health_appropriations.inspection import inspect_workbook
 from archive_govt_nz.domains.health_appropriations.operations import (
     HealthAppropriationsStateError,
@@ -221,6 +222,28 @@ def health_appropriations_export_sqlite(
     command = "health-appropriations-export-sqlite"
     try:
         result = export_compatibility(
+            raw_run, store_root, manifest_sha256, output_dir, dry_run=dry_run
+        )
+    except ValueError as error:
+        _emit_json({"command": command, "status": "failed", "error": str(error)})
+        return 2
+    _emit_json({"command": command, **result})
+    return 0
+
+
+@app.command(name="health-appropriations-export-gold")
+def health_appropriations_export_gold(
+    *,
+    raw_run: Path,
+    store_root: Path,
+    manifest_sha256: str,
+    output_dir: Path,
+    dry_run: bool = True,
+) -> int:
+    """Preflight source-derived Gold; --no-dry-run writes a new local package."""
+    command = "health-appropriations-export-gold"
+    try:
+        result = export_gold(
             raw_run, store_root, manifest_sha256, output_dir, dry_run=dry_run
         )
     except ValueError as error:

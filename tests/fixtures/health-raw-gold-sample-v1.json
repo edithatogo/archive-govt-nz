@@ -1,0 +1,31 @@
+{
+  "schema_version": "archive-govt-nz.health-raw-gold/v1",
+  "status": "passed",
+  "raw_manifest_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "policy": "source_derived_nominal_budget_period_basis_guarded/v1",
+  "selected_facts": 3,
+  "field_lineage": 3,
+  "excluded_profiles": {
+    "befu": 1,
+    "hyefu": 1
+  },
+  "exclusion_reason": "forecast_summaries_outside_nominal_budget_analyses",
+  "row_counts": {
+    "historical_nominal.parquet": 1,
+    "historical_yoy.parquet": 1,
+    "health_spending_gdp_share.parquet": 1,
+    "recent_classification_trends.parquet": 1,
+    "recent_functional_breakdown.parquet": 0
+  },
+  "pyarrow_version": "23.0.1",
+  "publication_state": "local_validation_only",
+  "output_sha256": {
+    "historical_nominal.parquet": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "historical_yoy.parquet": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "health_spending_gdp_share.parquet": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "recent_classification_trends.parquet": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "recent_functional_breakdown.parquet": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "input_records.jsonl": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "field_lineage.jsonl": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+  }
+}

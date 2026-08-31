@@ -18,108 +18,19 @@ from jsonschema import Draft202012Validator
 
 from archive_govt_nz.cli import health_appropriations_export_sqlite
 from archive_govt_nz.domains.health_appropriations import compatibility_export as export
+from archive_govt_nz.domains.health_appropriations import raw_reader as reader
 from archive_govt_nz.domains.health_appropriations import rebuild
 from archive_govt_nz.domains.health_appropriations.compatibility_export import (
-    _read_rows,
-    _validate_stage,
     _write_database,
 )
-from archive_govt_nz.object_store import ContentAddressedStore
+from archive_govt_nz.domains.health_appropriations.raw_reader import (
+    _read_rows,
+    _validate_stage,
+)
 
 
 def _hash(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
-
-
-@pytest.fixture
-def raw_run(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> tuple[Path, Path, str]:
-    store = ContentAddressedStore(tmp_path / "bronze")
-    sources = {}
-    for name, profile in rebuild.PROFILES.items():
-        item = store.put_bytes(name.encode())
-        sources[name] = {
-            "object_id": item.object_id,
-            "sha256": item.sha256,
-            "locator": "data/raw/" + profile.filename,
-            "vintage": profile.vintage,
-        }
-    plan = {
-        "schema_version": "archive-govt-nz.health-raw-rebuild/v1",
-        "donor_manifest_sha256": "a" * 64,
-        "observed_at": "2026-08-30T00:00:00+00:00",
-        "sources": sources,
-    }
-
-    def adapter(source: Path, output: Path, **context: str) -> None:
-        name = source.read_text()
-        profile = rebuild.PROFILES[name]
-        measures = (
-            ["health_spending", "nominal_gdp"]
-            if name == "historical"
-            else ["appropriation_amount" if name == "budget" else "health_spending"]
-        )
-        facts, lineage = [], []
-        for measure in measures:
-            record = "sha256:" + hashlib.sha256((name + measure).encode()).hexdigest()
-            amount = (
-                Decimal("605.70000000000005")
-                if name == "historical" and measure == "health_spending"
-                else Decimal(123)
-            )
-            facts.append(
-                {
-                    "record_id": record,
-                    "source_object_sha256": context["expected_sha256"],
-                    "source_locator": context["source_locator"],
-                    "source_vintage": context["source_vintage"],
-                    "year": 1976,
-                    "measure": measure,
-                    "unit": "NZD_thousands" if name == "budget" else "NZD_millions",
-                    "amount": amount,
-                    "department": "Ministry",
-                    "appropriation_name": "Services",
-                    "functional_classification": "Health",
-                    "amount_type": "Actual",
-                    "portfolio_name": "Health",
-                }
-            )
-            lineage.append(
-                {
-                    "record_id": record,
-                    "field": "amount",
-                    "source_object_sha256": context["expected_sha256"],
-                    "source_locator": context["source_locator"],
-                    "source_coordinate": "'Sheet'!B2",
-                    "normalized_value": str(amount),
-                }
-            )
-        output.mkdir()
-        for filename, rows in zip(
-            profile.outputs,
-            (facts, lineage, [{"disposition": "selected"}]),
-            strict=True,
-        ):
-            pq.write_table(pa.Table.from_pylist(rows), output / filename)
-        receipt = {
-            "schema_version": profile.schema,
-            "status": "passed",
-            "source_object_sha256": context["expected_sha256"],
-            "source_locator": context["source_locator"],
-            "source_vintage": context["source_vintage"],
-            "observed_at": context["observed_at"],
-            "output_sha256": {f: _hash(output / f) for f in profile.outputs},
-        }
-        (output / "MANIFEST.json").write_text(json.dumps(receipt))
-
-    for name in (
-        "normalize_budget_workbook",
-        "normalize_forecast_workbook",
-        "normalize_historical_workbook",
-    ):
-        monkeypatch.setattr(rebuild, name, adapter)
-    root = tmp_path / "raw"
-    rebuild.execute_rebuild(plan, tmp_path / "bronze", root)
-    return root, tmp_path / "bronze", _hash(root / "MANIFEST.json")
 
 
 def test_export_is_deterministic_and_loss_aware(
@@ -281,7 +192,7 @@ def test_resource_limits_fail_closed(
     monkeypatch: pytest.MonkeyPatch,
     limit: str,
 ) -> None:
-    monkeypatch.setattr(export, limit, 1)
+    monkeypatch.setattr(reader, limit, 1)
     with pytest.raises(ValueError, match="compatibility_export_failed"):
         export.export_compatibility(*raw_run, tmp_path / "bad", dry_run=False)
     assert not (tmp_path / "bad").exists()
@@ -292,16 +203,16 @@ def test_parquet_limits_accept_exact_boundary(
 ) -> None:
     path = raw_run[0] / "historical" / "historical_facts.parquet"
     metadata = pq.read_metadata(path)
-    monkeypatch.setattr(export, "_MAX_ROWS", metadata.num_rows)
+    monkeypatch.setattr(reader, "_MAX_ROWS", metadata.num_rows)
     monkeypatch.setattr(
-        export,
+        reader,
         "_MAX_EXPANDED_BYTES",
         sum(
             metadata.row_group(i).total_byte_size
             for i in range(metadata.num_row_groups)
         ),
     )
-    monkeypatch.setattr(export, "_MAX_BYTES", path.stat().st_size)
+    monkeypatch.setattr(reader, "_MAX_BYTES", path.stat().st_size)
     assert len(_read_rows(path, _hash(path))) == 2
 
 
@@ -382,10 +293,10 @@ def _semantic_rows(
         "source_locator": "synthetic",
         "source_vintage": "v1",
     }
-    fact = {**context, "record_id": "one", "amount": amount}
+    fact = {**context, "record_id": "sha256:" + "b" * 64, "amount": amount}
     lineage = {
         **context,
-        "record_id": "one",
+        "record_id": "sha256:" + "b" * 64,
         "field": "amount",
         "source_coordinate": "'Sheet'!A1",
         "normalized_value": str(amount),
@@ -408,4 +319,13 @@ def test_coordinate_requires_nonempty_text(coordinate: object) -> None:
     facts, lineage, context = _semantic_rows(Decimal(1))
     lineage[0]["source_coordinate"] = coordinate
     with pytest.raises(ValueError, match="lineage_context_mismatch"):
+        _validate_stage(facts, lineage, context)
+
+
+@pytest.mark.parametrize("identity", [None, 1, "", "one", "sha256:" + "g" * 64])
+def test_raw_reader_requires_canonical_identity(identity: object) -> None:
+    facts, lineage, context = _semantic_rows(Decimal(1))
+    facts[0]["record_id"] = identity
+    lineage[0]["record_id"] = identity
+    with pytest.raises(ValueError, match="invalid_canonical_record_identity"):
         _validate_stage(facts, lineage, context)
