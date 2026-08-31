@@ -123,3 +123,11 @@ Arrow schemas including metadata, 215/185 rows and 3655/3145 accounting records.
 It independently verified original CAS lengths and hashes plus input manifest
 and all three payload pins, without writes. Its readback script SHA256 is
 `40bf5bbf47863049e9e6072a3bb04c3ab568b731bbf5ba4480dc2be7b1b98634`.
+
+Before PR delivery, merged main `f41ef9b` (after PR313) at `a26a58a`.
+The complete incoming evidence ledger remains an exact prefix; incoming review
+and runlog entries precede the local additions. Exporter source/test hashes
+remain unchanged. Post-integration focused verification passed all 54 tests
+(7.26 seconds) and Conductor validation passed 75 tracks. The full native
+3426-test result predates this later integration; exact-head hosted checks
+remain a separate delivery gate.
