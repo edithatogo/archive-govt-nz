@@ -508,6 +508,13 @@ repository validation command. External gates block only their affected task.
   dry-run-first CLI and forced-read-only MCP preflight, using compact typed
   redacted receipts without changing donor rebuild or archive-status semantics.
   [M-15, M-18; AC-13, AC-16]
+- [x] Read an explicitly pinned historical package and original into bounded,
+  hash-verified snapshots with exact source-specific schemas/counts. Return
+  transport evidence without claiming semantic projection, source rights,
+  original workbook execution or publication. [M-15, M-16, M-18; AC-12, AC-13,
+  AC-16] (`7a0420e`; 49 focused tests, 57 cold mutants, 2,918 native tests;
+  transport-only, hosted delivery separate)
+
 - [x] Expose a compact hash-pinned standalone Budget-package verification
   receipt through matching read-only CLI/MCP contracts. Reject missing,
   partial or corrupt packages without creating state; retain not-evaluated

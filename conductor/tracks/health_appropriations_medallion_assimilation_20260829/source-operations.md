@@ -60,7 +60,19 @@ separate tokens; no secret-scanner allowlist or gate was changed. Second log
 SHA256 `03855f24882acadaa9f7844ecd4525eb11e2e6f41143c07a370d2d559c082784`.
 Post-correction focused tests: 143 passed; native schema registry now includes
 the receipt fixture (42 schemas/32 samples), and secret scanning passes. Exact
-2048/2049-character schema boundaries are covered. Full harness retry pending.
+2048/2049-character schema boundaries are covered.
+
+Full native retry at `b425ca0` exits zero: 3,066 tests, eight existing resource
+warnings, 102.39 seconds, 97.11% overall coverage; dispatcher 100%, MCP 100%.
+All 42 schemas/32 samples, 74 Conductor tracks, 9/9 parity, native mutations,
+dependency audit, licence/secret checks and strict 111-component SBOM validation
+pass. CPython3.14.6, four pytest workers, ctrace and disabled JIT; no thresholds
+changed. CAS benchmark 418.32 MB/s. Log SHA256
+`21da6c82c5702e449bec3549a5fbe2f635b64eaa0539698020939d49d07afcb1`.
+All dispatcher function/class ASTs are identical to the cold-mutation commit.
+Latest main `2061098` is integrated after this run, preserving its complete
+incoming evidence prefix plus these delivery receipts; no dispatcher/CLI/MCP
+production code changes during integration. Hosted exact-head assurance pending.
 No gates or deadlines were weakened.
 
 Independent read-only review found no actionable production issue within this
