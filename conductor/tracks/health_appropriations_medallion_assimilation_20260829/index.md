@@ -15,6 +15,7 @@ every planned record set, measure or operational workflow.
 
 ## Artifacts
 
+- [Standalone Budget-package operations](./budget-operations.md)
 - [Specification](./spec.md)
 - [Requirements](./requirements.md)
 - [Design](./design.md)
@@ -24,6 +25,7 @@ every planned record set, measure or operational workflow.
 - [Raw Budget extraction](./raw-budget.md)
 - [Budget successor pilot and versioned contracts](./raw-budget-successors.md)
 - [Raw BEFU/HYEFU extraction](./raw-forecast.md)
+- [Exact-series CPI source extraction](./cpi-source.md)
 - [Raw historical Health/GDP extraction and reconciliation](./raw-historical.md)
 - [Original-workbook orchestration](./raw-rebuild.md)
 - [Typed workbook inspection](./workbook-inspection.md)
@@ -47,11 +49,22 @@ every planned record set, measure or operational workflow.
   reconstructed, according to the recorded preservation receipts.
 - Official source census: 73 captured resources and 68 discovery-only entries
   in the recorded 141-entry census; discovery is not capture.
+- Exact CPIQ.SE9A source adapter: PR #271 observed merged after seven passing
+  exact-head checks (1,956 hosted tests). Independent local builds retain 449
+  selected facts, including 27 literal NA values, 4,041 lineage entries and
+  all 22,701 source-row dispositions. Base metadata and real/per-capita products
+  remain unresolved; the two local full-harness timeouts remain recorded.
 - Derivatives: 312 Silver records, 1,699 field-lineage records and 12 Gold
   artifacts; donor SQLite parity and clean-room rebuild receipts are recorded.
 - Separate raw Budget extraction: 215 Health facts, 3,655 cell-lineage rows
   and 6,504 input dispositions; all seven donor appropriation fields match in
   order. These new local outputs do not replace the published derivatives.
+- Budget 2026 successor: 185 facts, 3,145 lineage entries and all 6,451 row
+  dispositions in a separate pinned package, with independent XML reconciliation
+  and two byte-identical builds. Standalone reader PR #273 is merged after seven
+  exact-head checks; 61 focused tests achieve 100% critical coverage and the
+  recovered cold mutation run kills all 110 mutants. The interrupted worktree
+  loss and local timeout remain recorded separately.
 - Separate raw BEFU/HYEFU extraction: 20 Health facts, 120 field-lineage rows
   and 4,665 cell dispositions; both ten-row donor summaries match in order.
   Actual/Forecast and vintage are retained; fiscal-year basis remains flagged.
