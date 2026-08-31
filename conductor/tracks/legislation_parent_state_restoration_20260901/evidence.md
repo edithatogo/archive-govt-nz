@@ -23,3 +23,15 @@ SHA-256: `b0618508d77c7a93fd6a24d485d0fe25b13e16d5c047c4b82bbcb1dc1fecaa49`
 The receipt inventories exact source, test, schema, log and security hashes, and preserves prior failed attempts. Whole-repository actionlint reports two unchanged SC2086 diagnostics outside legislation; scoped actionlint passes. Aggregate source branch coverage remains below 95%, as already handed off in [issue #299](https://github.com/edithatogo/archive-govt-nz/issues/299#issuecomment-5480374548); no source code or thresholds in that aggregate were changed by this issue. The new critical helper is fully covered.
 
 PR [#317](https://github.com/edithatogo/archive-govt-nz/pull/317) is the sole delivery PR. Final hosted checks and merge/readback are recorded separately on issue #312; local validation is not a remote restoration or publication claim.
+
+## Superseding final-review validation
+
+The initial receipt above remains immutable. Final review found and fixed nested conditional-cache structure acceptance and ZIP original-name normalization. The failed five-case checkpoint lane and synthetic NUL-member reproduction remain hashed in the new receipt.
+
+Final native validation passed at `1a91be205852beffb96d23f7bb3ca68c83eccfcb`, integrating main `2c7a59913a77badcaece3a87366ee50a4a97c49d`: 4,012 tests, 8 warnings, 97.29% combined coverage; native schemas, parity, mutation gates and supply-chain stages passed. The source and dependencies match the earlier final functional checkpoint `f0be1fefaf68b12ee1d6154d0c70cd3e6a5c70fe` exactly. Focused tests: 99 passed; 323/323 statements and 60/60 branches covered; all 34 integrity mutants killed.
+
+Superseding receipt: `evidence/migrations/corpus-legislation-nz/parent-state-restoration/local-validation-v2.json`
+
+SHA-256: `82f3766f91aa57d181568c6541165e4314274db9bf9562c69cd15895ba2e5343`
+
+Aggregate branch-only coverage is 94.43105%, distinct from native combined coverage and the changed helper's 100%. The existing aggregate handoff and two unrelated SC2086 diagnostics remain; no thresholds or unrelated code were changed. Final metadata/evidence-head hosted checks and guarded merge/readback remain separately recorded on issue #312. No live state restoration or publication was executed.

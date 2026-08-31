@@ -23,3 +23,7 @@ Repository-wide SC2086 diagnostics in two unrelated workflows and the existing
 aggregate branch-coverage discrepancy are precise programme handoffs, not waived
 legislation checks. Required hosted checks and merge/readback remain delivery gates
 on PR #317 / issue #312. No optional external review is claimed.
+
+## Superseding final review
+
+The earlier review and receipt are retained above. Final adversarial review found two additional acceptance gaps: nested checkpoint cache structures and ZIP names normalized by the reader. Both now fail before promotion, with retained red evidence, focused negatives and dedicated mutation controls. Final results are 99 focused tests, 323/323 statements, 60/60 branches and 34/34 killed mutants; the superseding receipt binds the final full native run and exact source/dependency hashes. All issue-scope review findings are resolved. Exact-head hosted checks and guarded merge/readback remain separate delivery gates.

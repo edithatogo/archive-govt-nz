@@ -6,4 +6,4 @@
 - [x] Run adversarial tests, critical coverage, mutation and full assurance.
 - [x] Prepare self-reviewed scoped PR #317 and validation evidence; require exact-head hosted checks and guarded merge/readback on issue #312.
 
-- [ ] Validate the final-review checkpoint-structure correction and record a superseding receipt before delivery.
+- [x] Validate both final-review checkpoint-structure and ZIP-spelling corrections; preserve red reproductions and record a superseding receipt before delivery.
