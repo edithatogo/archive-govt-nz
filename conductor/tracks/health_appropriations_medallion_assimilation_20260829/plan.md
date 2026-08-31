@@ -554,6 +554,11 @@ repository validation command. External gates block only their affected task.
 
 ### 8.2 Implement bounded operations
 
+- [~] Expose only BEFU-2026/HYEFU-2025 successor profiles through the existing
+  dry-run-first CLI and read-only MCP after explicit forecast API dependency
+  validation. Preserve partial failures, exact counts and source-specific
+  actual/forecast observations; no annual joins or publication. [M-15, M-18;
+  AC-13, AC-16]
 - [x] Add an explicit no-write forecast API path while retaining the existing
   default-write contract and all four source profiles. Require real booleans,
   preserve partial/rejected status and prove old written bytes unchanged.
@@ -562,10 +567,11 @@ repository validation command. External gates block only their affected task.
   (`a85ca41`; 92 focused tests/100% critical coverage, 66 cold mutation kills,
   3,414 native tests at `8ace367`; hosted delivery separate)
 
-- [~] Extend the source-operation allowlist to exact Pharmac CPB and quarterly
+- [x] Extend the source-operation allowlist to exact Pharmac CPB and quarterly
   GDP profiles after dependency delivery, retaining source-specific shapes,
   compact counts, CLI default dry-run and forced-read-only MCP. Forecast's
   missing no-write path remains a separate task. [M-15, M-18; AC-13, AC-16]
+  (PR313 merged `f41ef9b`; seven exact-head checks passed.)
 - [x] Wire the four approved CPI/Ministry/QES source profiles through a
   dry-run-first CLI and forced-read-only MCP preflight, using compact typed
   redacted receipts without changing donor rebuild or archive-status semantics.
