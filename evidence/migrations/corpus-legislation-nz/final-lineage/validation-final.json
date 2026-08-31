@@ -1,0 +1,123 @@
+{
+  "observed_at": "2026-08-31T11:41:46.635346+00:00",
+  "command": "./scripts/validate.sh",
+  "exit_code": 1,
+  "source_revision": "d2f8903fa30705c98b60df93885a9ebeef063971",
+  "scope": "Import commit plus uncommitted documentation and receipt additions; runtime identical to pinned target baseline.",
+  "log_sha256": "0b4326d6aa18a4d15d8920b066c43743c16c2faa15a75e1811782b4d0c4796fa",
+  "stages": [
+    {
+      "name": "lock",
+      "status": "passed"
+    },
+    {
+      "name": "conductor",
+      "status": "passed"
+    },
+    {
+      "name": "format",
+      "status": "passed"
+    },
+    {
+      "name": "lint",
+      "status": "passed"
+    },
+    {
+      "name": "types",
+      "status": "passed"
+    },
+    {
+      "name": "tests",
+      "status": "passed"
+    },
+    {
+      "name": "schemas",
+      "status": "passed"
+    },
+    {
+      "name": "parity",
+      "status": "passed"
+    },
+    {
+      "name": "mutation",
+      "status": "passed"
+    },
+    {
+      "name": "mutation-versioning",
+      "status": "passed"
+    },
+    {
+      "name": "mutation-redundancy",
+      "status": "passed"
+    },
+    {
+      "name": "mutation-archivebox-pilot",
+      "status": "passed"
+    },
+    {
+      "name": "mutation-batch-eligibility",
+      "status": "passed"
+    },
+    {
+      "name": "mutation-global-policy",
+      "status": "passed"
+    },
+    {
+      "name": "mutation-adapters",
+      "status": "passed"
+    },
+    {
+      "name": "mutation-gazette",
+      "status": "passed"
+    },
+    {
+      "name": "mutation-medallion",
+      "status": "passed"
+    },
+    {
+      "name": "mutation-platinum",
+      "status": "passed"
+    },
+    {
+      "name": "mutation-nlp-bridge",
+      "status": "passed"
+    },
+    {
+      "name": "mutation-foi-controls",
+      "status": "passed"
+    },
+    {
+      "name": "slops",
+      "status": "passed"
+    },
+    {
+      "name": "benchmark-cas",
+      "status": "passed"
+    },
+    {
+      "name": "audit",
+      "status": "passed"
+    },
+    {
+      "name": "licenses",
+      "status": "passed"
+    },
+    {
+      "name": "secrets",
+      "status": "failed"
+    }
+  ],
+  "tests_passed": 2154,
+  "warnings": 8,
+  "combined_coverage_percent": 96.89,
+  "new_production_code": false,
+  "schemas_validated": 40,
+  "representative_documents_validated": 30,
+  "parity_cases_passed": 9,
+  "secrets_candidate_count": 98,
+  "independent_gitleaks_import": "passed",
+  "independent_gitleaks_lineage": "passed",
+  "sbom_independent": "passed:111 components",
+  "workflow_lint": "failed: two pre-existing SC2086 warnings; see validation-observations.json",
+  "merge_allowed": false
+}

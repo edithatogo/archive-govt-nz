@@ -1,0 +1,33 @@
+{
+  "schema_version": "archive-govt-nz.riopa-hosted-closeout/v1",
+  "observed_at": "2026-08-31T11:40:41Z",
+  "pull_request": "https://github.com/edithatogo/archive-govt-nz/pull/279",
+  "head": "174b7666bb0a6b7d9ac16d66a31c375c1d6f3cf1",
+  "merge_commit": "1b2d7c0699c0629875657ba04cf0c989aaad00c2",
+  "checks": {
+    "Assurance (ubuntu-latest)": "success",
+    "Assurance (macos-latest)": "success",
+    "Assurance (windows-latest)": "success",
+    "analyze": "success",
+    "CodeQL": "success",
+    "lint": "success",
+    "codecov/patch": "success"
+  },
+  "assurance_run": "https://github.com/edithatogo/archive-govt-nz/actions/runs/33387015229",
+  "track_acceptance": "passed",
+  "scope": "Repository-owned archived-receipt mapping and verification",
+  "outside_track_gates": ["external-reproduction", "elapsed-beta-rc", "production-recovery", "national-measurements", "release-authority"],
+  "outside_track_gates_status": "pending",
+  "publication_or_release_implied": false,
+  "archive_documentation_local_validation": {
+    "command": "./scripts/validate.sh",
+    "exit_code": 1,
+    "tests_passed": 2166,
+    "tests_failed": 1,
+    "failure": "URN property Hypothesis slow generation",
+    "coverage_percent": 96.89,
+    "conductor_state_errors": 0,
+    "archive_pull_request_hosted_checks": "pending"
+  },
+  "historical_local_failure_record": "closeout-correction-validation.json"
+}

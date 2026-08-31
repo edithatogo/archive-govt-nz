@@ -1,0 +1,8 @@
+﻿{
+  "track_id": "track_33_artifact_provenance_attestations",
+  "type": "feature",
+  "status": "done",
+  "created_at": "2026-06-09T00:00:00Z",
+  "updated_at": "2026-06-11T00:00:00Z",
+  "description": "Add release evidence ledgers, GitHub artifact attestations or SLSA-style provenance, and signed/checksummed artifact policy."
+}

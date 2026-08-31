@@ -1,0 +1,43 @@
+{
+  "controller_prompt": "01",
+  "controller_issue": 276,
+  "lineage_issue": 278,
+  "specialist_prompt_texts_available": [
+    "01",
+    "02"
+  ],
+  "handoffs": [
+    {
+      "id": "LH-STATE",
+      "status": "pending",
+      "owner_prompt": "01",
+      "owner_issue": 276,
+      "routing_required": true,
+      "scope": "Assign specialist for donor final one-batch/canary/weekly artifact state custody and continuity. Do not recover it in Prompt 02.",
+      "evidence_run_ids": [
+        32477973065,
+        32487223314,
+        32487942675
+      ],
+      "acceptance": "Independently verify payload lineage and recovery under specialist scope before any operational-state or corpus custody completion."
+    },
+    {
+      "id": "LH-WORKFLOW",
+      "status": "pending",
+      "owner_prompt": "01",
+      "owner_issue": 276,
+      "routing_required": true,
+      "scope": "Assign specialist for target parity with reviewed-500-work weekly chain and five-work forced canary. Target scheduled lane uses 50 search-discovered works and conditional download; no exact equivalent inferred.",
+      "source_paths": [
+        ".github/workflows/target_weekly_legislation_cycle.yml",
+        ".github/workflows/target_bounded_live_canary.yml"
+      ],
+      "target_paths": [
+        ".github/workflows/scheduled-legislation-harvest.yml",
+        ".github/workflows/monthly-legislation-reconciliation.yml"
+      ],
+      "acceptance": "Specialist verifies state-authentication, reviewed inventory, forced revalidation and failure retention; no workflow edit in Prompt 02."
+    }
+  ],
+  "routing_limit": "Only Prompt 02 supplied after controller request. Controller owns routing; no absent specialist prompt number or implementation authority invented."
+}
