@@ -117,3 +117,31 @@ mutation killed 70/70 with zero survivors/errors/timeouts/pardons/cache hits,
 59.32 seconds; new report SHA256
 `35c4bdc520093b8bbd6101d61e682a1e7cc8008f5d53e233a98b15bb852ec947`.
 The prior native and mutation reports remain retained separately.
+
+### Corrected native assurance
+
+The required native harness passed with exit zero at corrected commit `e307bb8`:
+3599 tests, eight existing ResourceWarnings, 79.25 seconds, 97.23% coverage;
+42 schemas/32 representative documents, 9/9 parity, all mutation and hygiene
+gates, 497.27 MB/s CAS throughput, dependency audit, licence and secret checks,
+and 111-component SBOM. Corrected full log SHA256:
+`2075dc38ec13f6b3e5cdb6d7da801d0bab7be740f70b9819bbaebf98c4aac001`.
+No source/original/publication bytes changed. The native suite's two unrelated
+timestamp-only generated fixtures were restored after the process completed.
+Hosted checks and later integration remain separate observations.
+
+Root independently re-reviewed the corrected typed namespaces and regression;
+no additional finding. A second agent read the preceding full module/tests and
+found no other issue within descriptor-only scope.
+
+### Related hosted delivery observations
+
+Parent/root performed PR309's exact-head merge after all seven fresh checks
+passed with clean status at `576c999803944b46ec4737ffa6b9234709e78371`.
+REST merge/readback confirmed `550b263254d039be4e857a561e56eb7afd9aa7cf`
+at `2026-08-31T16:52:09Z`. Method `merge` preserved stack ancestry; no hosted
+rule was changed. Parent similarly performed PR315's exact-head merge after
+seven fresh successes and clean status at
+`10731ff4b37f41365eb35eeb49dd37e957c74647`; readback confirmed
+`76295f76c235a1c667b08334382795e78f949ae3` at `2026-08-31T16:57:36Z`.
+These are parent-reported hosted receipts, not this agent's merge operations.

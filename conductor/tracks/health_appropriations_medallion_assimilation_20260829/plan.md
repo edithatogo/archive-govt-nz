@@ -500,7 +500,7 @@ repository validation command. External gates block only their affected task.
 
 ### 7.1 Metadata and rights contracts first
 
-- [~] Add a bounded pure local provenance inventory for explicitly supplied
+- [x] Add a bounded pure local provenance inventory for explicitly supplied
   canonical historical and Budget classification product descriptors. Validate
   exact structural schemas, safe identities and dependency closure without I/O,
   fixity/eligibility claims or publication metadata. This does not complete
