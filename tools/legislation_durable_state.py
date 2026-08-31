@@ -270,6 +270,10 @@ def verify(raw: bytes, expected: str) -> tuple[dict[str, Any], dict[str, bytes]]
     P.schema(document, "legislation-durable-package")
     v.equal(document_raw, M.encoded(document), "package_json_encoding")
     originals = {n.removeprefix("state/"): b for n, b in files.items()}
+    v.require(
+        condition=sum(len(data) for data in originals.values()) <= v.MAX_EXPANDED,
+        code="state_expansion",
+    )
     v.equal(document["files"], inventory(originals), "package_inventory")
     v.equal(document["roots"], state(originals, document["input"]), "package_roots")
     return document, originals
@@ -278,6 +282,7 @@ def verify(raw: bytes, expected: str) -> tuple[dict[str, Any], dict[str, bytes]]
 def read_package(path: Path) -> bytes:
     """Bounded input without symlink traversal."""
     P.no_symlinks(path)
+    v.require(condition=path.is_file(), code="package_regular_file")
     with path.open("rb") as stream:
         data = stream.read(MAX_PACKAGE + 1)
     v.require(condition=len(data) <= MAX_PACKAGE, code="package_limit")

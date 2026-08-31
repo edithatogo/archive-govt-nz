@@ -5,3 +5,5 @@
 - [x] Validate the actual pinned canonical merge locally; retain evidence without Prompt 10 acceptance.
 - [ ] Complete adversarial, property, mutation, critical coverage and full assurance.
 - [ ] Self-review, document authority, open one PR, verify exact-head checks and guarded delivery.
+
+- [~] Review fix: reject expanded state above the shared restore bound and reject non-regular package inputs before open; retain red evidence and rerun final gates.

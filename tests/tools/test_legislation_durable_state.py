@@ -521,3 +521,28 @@ def test_completion_marker_and_unknown_member(tmp_path: Path) -> None:
     files["unexpected"] = b"x"
     with pytest.raises(D.v.VerificationError, match="state_member"):
         D.build(files, pin, RIGHTS, REVISION)
+
+
+def test_verified_package_must_fit_restore_limit(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Verification cannot bless state too large for the shared local restorer."""
+    files, pin = fixture(tmp_path)
+    raw = D.build(files, pin, RIGHTS, REVISION)
+    monkeypatch.setattr(D.v, "MAX_EXPANDED", 1)
+    with pytest.raises(D.v.VerificationError, match="state_expansion"):
+        D.verify(raw, D.v.sha(raw))
+
+
+def test_package_input_requires_regular_file(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Special/directory inputs are rejected before any potentially blocking open."""
+
+    def unexpected_open(*_args: object, **_kwargs: object) -> None:
+        message = "non-file input was opened"
+        raise AssertionError(message)
+
+    monkeypatch.setattr(Path, "open", unexpected_open)
+    with pytest.raises(D.v.VerificationError, match="package_regular_file"):
+        D.read_package(tmp_path)

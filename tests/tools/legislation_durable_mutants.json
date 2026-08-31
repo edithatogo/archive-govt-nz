@@ -118,5 +118,15 @@
     "name": "readback_claim",
     "old": "\"readback_verified\": False",
     "new": "\"readback_verified\": True"
+  },
+  {
+    "name": "state_expansion",
+    "old": "v.require(\n        condition=sum(len(data) for data in originals.values()) <= v.MAX_EXPANDED,\n        code=\"state_expansion\",\n    )",
+    "new": "None"
+  },
+  {
+    "name": "package_regular_file",
+    "old": "v.require(condition=path.is_file(), code=\"package_regular_file\")",
+    "new": "None"
   }
 ]
