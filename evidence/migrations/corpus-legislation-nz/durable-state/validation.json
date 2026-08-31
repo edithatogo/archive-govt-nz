@@ -1,0 +1,324 @@
+{
+  "authority": {
+    "new_identity_created": false,
+    "payload_rights": "blocked",
+    "prompt10_acceptance_executed": false,
+    "provider_retention_guarantee_claimed": false,
+    "publication_executed": false,
+    "selected": "existing HF dataset edithatogo/corpus-legislation-nz at an exact revision and content-addressed package prefix"
+  },
+  "canonical_package": {
+    "builder_sha256": "3e762a37ad3088040877e5a495c5a26c8fd74485e0b264234f7f66ef35ccbd18",
+    "deterministic_repeat_equal": true,
+    "input_pin_sha256": "7d40ee595f4fbee410fbbc56d476e6b3fa6efe8149710bcc371bca562825185e",
+    "local_restore_equal": true,
+    "original_files_verified": 561,
+    "package_sha256": "2e4b75333e947d812842147c939117fc666799e4497b80f125104f721ef68e3c",
+    "package_size_bytes": 71776346,
+    "prompt10_acceptance": false,
+    "publication_plan_sha256": "8aecfc4a75a7c611a879396aafee8855eba1e554175b534c5f988843cea91416",
+    "remote_publication": false,
+    "rights": {
+      "authority_commit": null,
+      "decision_id": null,
+      "payload": "blocked"
+    },
+    "roots": {
+      "inventory_sha256": "9ca6dc505f991e015c6c997827878d8c7e9381b214a1544eb338328a285c6894",
+      "manifest_sha256": "877ba501a25570a29c1aada7979562d8c62c7f043865125cf402310eabc09544",
+      "records": 552,
+      "work_ids": 552
+    },
+    "schema_version": "archive-govt-nz.legislation-durable-local-validation/v1",
+    "software_commit": "abb3d673bb8a082b9c0c8bdf5bb8bfbd3ac91ebe"
+  },
+  "donor": {
+    "archived": true,
+    "final_reachable_main": "b40587f1b1aec7356a0f623916fcc8212397d283",
+    "repository": "edithatogo/corpus-legislation-nz"
+  },
+  "evidence": [
+    {
+      "path": "01-red.log",
+      "sha256": "f85b6226082fe1081d322b539413ec1a4bc337cc7c21938ad7e35b48ea4a138f"
+    },
+    {
+      "path": "02-lint.log",
+      "sha256": "e160162e6057e3881a57ca2b23ecbf24b5c8d5cf5222e137364c71432dc5dd91"
+    },
+    {
+      "path": "03-focused.log",
+      "sha256": "1c0b5120485eeec06115dfbd2521f541f5ae56ef367a300a896fbf5327ed9df7"
+    },
+    {
+      "path": "04-focused.log",
+      "sha256": "4336764fd546cd4b7fa5ee362a0acea9c66419a3bbbd06db15ed4db8ead7d500"
+    },
+    {
+      "path": "05-focused.log",
+      "sha256": "b3a904f61e25689e37a11e80c5887dc389585031cb3a57ed2e3a5a24c0f3ca30"
+    },
+    {
+      "path": "06-focused.log",
+      "sha256": "abfeafbc2790dd4a8b0d80c665de2d72108fdf41f31e6b7fc0a5dc3efaaef32f"
+    },
+    {
+      "path": "07-mutations.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "08-canonical-build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "09-full-validation.log",
+      "sha256": "e8595f92a6ec905dd4b115870ae2c68f4d5cb66dedf3ff6130bcde1c5210aaff"
+    },
+    {
+      "path": "10-canonical-local.log",
+      "sha256": "00c8e1fe31aeca7f6cf6605854373da85cb6a0a966519e9ccc6c3a20775566d1"
+    },
+    {
+      "path": "11-focused.log",
+      "sha256": "0fd0b785547f640c7709f74a674a8f6030bfb2a85861d777034222a4d7698666"
+    },
+    {
+      "path": "12-mutations.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "13-workflow-lint.log",
+      "sha256": "d75001604148cbbbaeef2b3e66444af4835398619e6e586fb864f68f90f8fee8"
+    },
+    {
+      "path": "14-conductor.log",
+      "sha256": "2c9a73e61418e7484448cac07aa128bf6893f51e788bfe7f5a11cb276f11a6a6"
+    },
+    {
+      "path": "15-full-validation-final.log",
+      "sha256": "a2cd59926c421c41bfe6cde0066b3a1d0a298edf4c227e79995a1f0eb89effd9"
+    },
+    {
+      "path": "16-review-red.log",
+      "sha256": "f6d89f58b3ca9cdc5909720305d8255c3efd570e615841df13155772f7508d81"
+    },
+    {
+      "path": "17-reviewed-focused.log",
+      "sha256": "fa4cba66323c9481284d2b6004554d09b698131627bf3e4137bd1be2054d968c"
+    },
+    {
+      "path": "18-mutations-final.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "19-reviewed-canonical.log",
+      "sha256": "633c72a1fde0f3c2d6e58f8c27f6f831bed4f4ec8f3d7d3404bb7bab7c15a8bc"
+    },
+    {
+      "path": "20-full-validation-reviewed.log",
+      "sha256": "1c21745c19682f8fb03cf19b04568b77201c0aeaead7260be0973058df6b9e03"
+    },
+    {
+      "path": "critical-reviewed.json",
+      "sha256": "e593cfd467b9fdbb04c0b3a8ede4de3b166399c396ce84d52602ecb834e728bd"
+    },
+    {
+      "path": "native-coverage-reviewed.json",
+      "sha256": "9709b6df3da3c66a35cfcf1ddeefb9813646143983239d9761f5933cda31a3bf"
+    },
+    {
+      "path": "mutations-01/receipt.json",
+      "sha256": "816bbb3b13f0ad21e4912d6a4ce080e8581201c926745005842fc02b9723500b"
+    },
+    {
+      "path": "mutations-02/receipt.json",
+      "sha256": "9eef4d57b794d11e6297c26a8f9b6d021a5b1f154c5285cb090d95c268eb3056"
+    },
+    {
+      "path": "mutations-final/receipt.json",
+      "sha256": "1c7ecc01305fd20b5d586f2e869820f5810e5367c10f9dd4fa98f5ba498a89a8"
+    },
+    {
+      "path": "native-generated-09.patch",
+      "sha256": "4e4853a919dfc4359081e9fc659c0eddcc214997a7e8d53760b9466ef8b119c7"
+    },
+    {
+      "path": "native-generated-15.patch",
+      "sha256": "5143ed8ff1a2fc5bda0311fb8f02248aef21d8b398a00ac72d56da3c2be92aa3"
+    },
+    {
+      "path": "native-generated-20.patch",
+      "sha256": "0fca76d98079f203b346ddd0ed1234bfb858e02e178ce4627bee5c5d7a19d5cf"
+    }
+  ],
+  "failed_attempts": [
+    "Missing implementation red test",
+    "Initial lint/type corrections",
+    "Fixture initially used its existing commit as the wrong commit, and omitted native TypeError rejection",
+    "First mutation campaign killed 21/24; three redundant guard removals exposed the need to require early name/type/duplicate diagnostics",
+    "Two final-review red tests: expanded verifier/restore bound mismatch and non-regular input open"
+  ],
+  "focused": {
+    "covered_branches": 24,
+    "covered_statements": 190,
+    "critical_branches": 24,
+    "critical_patch_percent": 100,
+    "critical_statements": 190,
+    "new_schemas_validated": 4,
+    "passed": 44
+  },
+  "handoffs": [
+    "Prompt10: independent recovery only after approved durable publication and cold readback",
+    "Prompt06/07: local merge restoration does not bypass Prompt08 adoption/parent authority or Prompt11/12 contracts",
+    "Programme276: existing unrelated actionlint and aggregate branch-only coverage gaps",
+    "Existing Zenodo configuration calls version DOI20592540 a concept; observed concept20592539 recorded without public metadata edits"
+  ],
+  "intermediate_validation_limit": "The 15-full-validation-final run began before review fixes and concurrent-main integration and is retained only as intermediate evidence; the complete frozen reviewed gate is 20-full-validation-reviewed.",
+  "issue": 321,
+  "mutations": {
+    "killed": 26,
+    "receipt_sha256": "1c7ecc01305fd20b5d586f2e869820f5810e5367c10f9dd4fa98f5ba498a89a8",
+    "source_sha256": "3e762a37ad3088040877e5a495c5a26c8fd74485e0b264234f7f66ef35ccbd18",
+    "total": 26
+  },
+  "native": {
+    "aggregate_branch_percent": 94.45244956772335,
+    "combined_coverage_percent": 97.30743538358769,
+    "command": "./scripts/validate.sh",
+    "exit_code": 0,
+    "lock_format_lint_typing": "passed",
+    "mutation_gates": "passed",
+    "parity_passed": 9,
+    "representative_documents": 32,
+    "schemas": 42,
+    "tests_passed": 4093,
+    "warnings": 9
+  },
+  "pull_request": 324,
+  "quarantine_root": "/Volumes/PortableSSD/Quarantine/archive-govt-nz/durable-state-09",
+  "recorded_at": "2026-08-31T18:17:51.833223+00:00",
+  "remaining_delivery": "Exact final evidence-head hosted checks and guarded merge/readback recorded on issue321",
+  "schema_version": "archive-govt-nz.legislation-durable-validation/v1",
+  "security": {
+    "credential_scan": {
+      "receipt_sha256": "2138d940c1945c45ee097982bf8b342ad39a4f8a0dc47c283c29fd32c0fe17fa",
+      "status": "passed"
+    },
+    "dependency_audit": {
+      "receipt_sha256": "cf0f39e896b855c75ef5eab925f2b67750db5beae586f90e07f1dc9280796539",
+      "status": "passed"
+    },
+    "licence_inventory": {
+      "receipt_sha256": "8beaa149575043a1d4b854c966c52d6d3fa5624f19d5481cff88fe008ba8a3e8",
+      "status": "passed"
+    },
+    "sbom_111_components": {
+      "receipt_sha256": "765325e8dcf49aeb8db73ff5e368ef8a44a501d7f7d3f4f1965d75a358a9d499",
+      "status": "passed"
+    }
+  },
+  "source_files": [
+    {
+      "path": "config/legislation/preservation.json",
+      "sha256": "bd138f33bbee2abc08064d7404dacb34c7b61e78bb36542d22e3987b385dff24"
+    },
+    {
+      "path": "docs/legislation/durable-state-preservation.md",
+      "sha256": "17d66e533d5880b2d79c3805d3199e1e9508e5c84303b535bf4e004f8111723c"
+    },
+    {
+      "path": "schemas/legislation-durable-input-v1.schema.json",
+      "sha256": "2dbf1b15f41c6d5c7c9c0c4bd79fdd09708ceca7f01e92c63a8b350b085b83cd"
+    },
+    {
+      "path": "schemas/legislation-durable-package-v1.schema.json",
+      "sha256": "3dcaf4df939b26b99104b8eca39d7536bf0f326eb4bec49bc41cc7c6adeb3767"
+    },
+    {
+      "path": "schemas/legislation-preservation-policy-v1.schema.json",
+      "sha256": "e1803d8fbec074eca746d68d542b9359647a1a43436d78fa6b1a86ec293f94ed"
+    },
+    {
+      "path": "schemas/legislation-publication-observation-v1.schema.json",
+      "sha256": "30e2d8e02304640c261367e008fc801d229e3cdb28f2734c078109495a749eb0"
+    },
+    {
+      "path": "src/archive_govt_nz/domains/legislation/corpus.py",
+      "sha256": "4447aceed10eec0a455320eafa24d2d259e1fe1ed47bb82f9ba093ac2c1a510f"
+    },
+    {
+      "path": "tests/tools/legislation_durable_mutants.json",
+      "sha256": "060b2dabcb185439065af262c34a2ce8c91802a17c980270b1b263a9489feec7"
+    },
+    {
+      "path": "tests/tools/run_legislation_durable_mutations.py",
+      "sha256": "8167999e906e982353e944eb86b7fcf9703481429d9bd364b1bc8a54dce57247"
+    },
+    {
+      "path": "tests/tools/test_legislation_durable_state.py",
+      "sha256": "b9ff075fa8c22a2198db35ddb4562d2ad9d3c846d0e928218e65d0a335d172db"
+    },
+    {
+      "path": "tools/legislation_durable_state.py",
+      "sha256": "3e762a37ad3088040877e5a495c5a26c8fd74485e0b264234f7f66ef35ccbd18"
+    },
+    {
+      "path": "tools/legislation_parent_state.py",
+      "sha256": "c6f346ef0e8225bb2dbb0dcd118377d0b558dd74594eb88935bf37056f60749a"
+    },
+    {
+      "path": "tools/merge_legislation_states.py",
+      "sha256": "f909c41192b50e60e8199e26187ab3b4a13a5d2a7dca03fbb8648aba05c9d697"
+    },
+    {
+      "path": "tools/seed_registry.py",
+      "sha256": "fa602798045a04c4289411de23d59a7edd24dc83e87f7e586486fb3e9c494b3a"
+    },
+    {
+      "path": "tools/verify_final_donor_state.py",
+      "sha256": "654ab72b5015d3df7e47d68362d3f2b64598c69aef003fa19ea32c2e2972080f"
+    },
+    {
+      "path": "uv.lock",
+      "sha256": "897f90129ed274f9e1bcbc960437324816050a5bbdc3cb903186fea6b27ed090"
+    }
+  ],
+  "supersedes_package": {
+    "reason": "Review added verification/restore bound parity and regular-file preflight. Original state bytes, parent evidence and package remain retained; builder revision/hash metadata changes.",
+    "receipt_sha256": "15090f39fa90417c70faebf578cecdb3c1f345b92c1b2887c11d73dd6d20213e",
+    "sha256": "cefdf0ebb7d1a0d883fa6f8e18f8aef8886bbfb87149e44cc9422ec980aff3b6"
+  },
+  "target": {
+    "audited_sha_in_prompt": null,
+    "initial_main": "efca467ebd26af23ba66e86bcc9ae41be74fdb7c",
+    "integrated_main": "874f5bbda5652b853c7d315bff541c5cbcfcd477",
+    "native_validated_commit": "bb0a2da4347527c9c7a49297b8630d601e1b17e0",
+    "repository": "edithatogo/archive-govt-nz"
+  },
+  "versioned_evidence": [
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/durable-state/canonical-local-initial.json",
+      "sha256": "15090f39fa90417c70faebf578cecdb3c1f345b92c1b2887c11d73dd6d20213e"
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/durable-state/canonical-local-reviewed.json",
+      "sha256": "50b5b85a44a33bf93489e1a9729aea547d8fb08cc403c11b95f4ea632c377565"
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/durable-state/destination-observations.json",
+      "sha256": "6038d942d1c9742aad6a69592845a533074abc0583ff5948922d09f7ca582d32"
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/durable-state/publication-plan.json",
+      "sha256": "8aecfc4a75a7c611a879396aafee8855eba1e554175b534c5f988843cea91416"
+    }
+  ],
+  "workflow_lint": {
+    "changed_workflows": 0,
+    "paths": [
+      ".github/workflows/global-ckan-harvest-huggingface.yml:56",
+      ".github/workflows/scheduled-gazette-harvest.yml:36"
+    ],
+    "repository_wide": "two_existing_SC2086_diagnostics"
+  }
+}

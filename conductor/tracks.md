@@ -255,5 +255,5 @@ implementation has occurred under these tracks.
   *Link: [./tracks/legislation_parent_state_restoration_20260901/index.md](./tracks/legislation_parent_state_restoration_20260901/index.md)*
 
 ---
-- [~] **Track: Durable legislation state (Prompt 09)**
+- [x] **Track: Durable legislation state (Prompt 09)**
   *Link: [./tracks/legislation_durable_state_20260901/index.md](./tracks/legislation_durable_state_20260901/index.md)*

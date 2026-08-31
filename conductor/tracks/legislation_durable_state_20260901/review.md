@@ -39,3 +39,7 @@ controls. The reviewed helper has 190 executable statements and 24 branches;
 campaign to 26. The superseding canonical package preserves all original state
 bytes; only builder revision/hash metadata changes. The previous package and
 receipts remain retained. Final full and hosted assurance remain delivery gates.
+
+## Review resolved
+
+All in-scope review findings are resolved and local acceptance criteria pass. Final source and dependencies are hash-bound in the validation receipt. Earlier findings and receipts remain above. Exact final-head hosted checks and guarded merge/readback remain separate delivery gates on PR324.

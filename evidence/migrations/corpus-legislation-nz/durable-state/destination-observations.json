@@ -1,0 +1,41 @@
+[
+  {
+    "destination": "huggingface",
+    "url": "https://huggingface.co/api/datasets/edithatogo/corpus-legislation-nz",
+    "sha256": "49cb5edb73761c887470e2cf129d5ddfed0373b16b76bbecb40a57c3d68b1bcd",
+    "observed_at": "2026-08-31T17:41:05.815845+00:00",
+    "status": "read",
+    "id": "edithatogo/corpus-legislation-nz",
+    "sha": "1efa35e72c378068cfb112d060bd0502497f61b1",
+    "private": false,
+    "gated": "auto"
+  },
+  {
+    "destination": "zenodo",
+    "url": "https://zenodo.org/api/records/20592540",
+    "sha256": "ea33c14be57ab9cca072e25b85930ec9e54cf8d0f4d35a17ab15f298b1a0097a",
+    "observed_at": "2026-08-31T17:41:07.240679+00:00",
+    "status": "read",
+    "id": 20592540,
+    "doi": "10.5281/zenodo.20592540",
+    "conceptdoi": "10.5281/zenodo.20592539"
+  },
+  {
+    "destination": "github",
+    "releases": [
+      {
+        "id": 377118888,
+        "tag_name": "local-donor-backups-20260826",
+        "immutable": false,
+        "draft": true
+      },
+      {
+        "id": 375146205,
+        "tag_name": "legislation-cutover-v1.0.0",
+        "immutable": false,
+        "draft": false
+      }
+    ],
+    "sha256": "6d39152058c30a51a7601ac4671dacddf4adbbfb6c63d23d876a3cc4d1f1ec6a"
+  }
+]
