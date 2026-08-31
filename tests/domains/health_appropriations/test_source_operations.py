@@ -459,17 +459,17 @@ def test_mcp_seeded_redaction_counterexample() -> None:
 
     before = '"Invalid source operation arguments"'
     baseline = _seeded_function(
-        Server._call_tool,
+        Server._call_tool,  # noqa: SLF001 - exact protocol boundary
         vars(mcp_server).copy(),
         before,
-        before,  # noqa: SLF001 - exact protocol boundary
+        before,
     )
     oracle(baseline)
     mutant = _seeded_function(
-        Server._call_tool,
+        Server._call_tool,  # noqa: SLF001 - exact protocol boundary
         vars(mcp_server).copy(),
         before,
-        "errors[0].message",  # noqa: SLF001 - exact protocol boundary
+        "errors[0].message",
     )
     with pytest.raises(AssertionError):
         oracle(mutant)
