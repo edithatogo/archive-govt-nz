@@ -94,6 +94,8 @@ def package_template(tmp_path_factory: pytest.TempPathFactory) -> Path:
 @pytest.fixture
 def package(tmp_path: Path, package_template: Path) -> Path:
     return Path(shutil.copytree(package_template, tmp_path / "package"))
+
+
 def _rewrite(root: Path, name: str, rows: list[dict[str, Any]]) -> str:
     schema = pq.read_schema(root / name)
     pq.write_table(pa.Table.from_pylist(rows, schema=schema), root / name)
