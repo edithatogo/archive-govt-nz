@@ -1569,3 +1569,20 @@ unfiltered mutants were killed. Native at 04c923b4 exited 0: 3,955 tests,
 byte-identical in-memory rebuilds without package changes. See
 [exact receipts and limits](./budget-canonical-projection.md). No rights,
 publication or umbrella-phase completion is implied.
+
+## 2026-08-31 — Bounded PROV entity projection
+
+Added a pure public projection of validated typed descriptors to inline-context
+PROV entities and derivation edges, alongside the complete unchanged inventory
+and an assertion-only receipt. Red-first collection failure preceded code.
+71 combined tests passed in 2.51 seconds at 100% critical coverage; six cold
+mutants killed with zero cache hits (18 tests, 15.78 seconds). Two independent
+reviews found no actionable issue; Ruff and scoped typing passed. Native/hosted
+validation remain pending; no archival or publication files were touched.
+
+Follow-up: native at `1a58841` exited zero with 4,030 tests/97.30% coverage,
+all gates and a validated 111-component SBOM. Ordinary stack merge `99fb342`
+preserved 119 incoming ledger lines and both sides of documentation conflicts.
+The frozen source/tests are unchanged; 141 post-integration tests passed in
+10.89 seconds. Exact-head hosted validation remains the delivery gate. See
+[full PROV receipt](./local-prov.md); no broad acceptance criteria were closed.
