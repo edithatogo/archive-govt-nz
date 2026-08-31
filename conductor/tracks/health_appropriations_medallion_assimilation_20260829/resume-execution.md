@@ -88,3 +88,9 @@ shape after the child read.
   readback; final pin and shape checks fixed both before this gate.
 - Cold mutation, native validation and retained-original pilot are still pending;
   none is inferred from focused coverage or independent review.
+- Functional checkpoint `977b068`; ordinary integration `01adffe` incorporates
+  merged planner PR #320 (`2c7a59913a77badcaece3a87366ee50a4a97c49d`). All three
+  reviewed production hashes are unchanged. The 113-line incoming evidence
+  ledger is preserved as an exact byte prefix before the executor append.
+- Post-integration: 97 executor/completion tests passed in 47.07s; Conductor
+  validated 75 tracks. No reviewed source or test bytes changed during integration.
