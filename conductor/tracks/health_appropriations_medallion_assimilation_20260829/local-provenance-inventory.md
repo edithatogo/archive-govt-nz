@@ -1,0 +1,91 @@
+# Local metadata and replay gap: bounded proposal
+
+Inspection only; no descriptor, candidate, upload or rights grant was generated.
+
+## Existing helpers are not a current-product metadata acceptance gate
+
+`tools/build_health_candidate.py` bundles copy, rights-filtering and publication-
+shaped metadata/card generation. Its card asserts CC-BY-4.0. Do not invoke it on
+the new raw-replay outputs. `schemas/medallion.py` health-domain metadata uses
+UND rights status (appropriately unresolved) but its field list is the legacy
+domain-wide shape, not the exact set of physical source-specific and canonical
+recordsets now produced. Its default public identifiers/distribution semantics
+also require review before treating output as a local-only product description.
+
+`schemas/health_recordsets.py:recordset_schema` provides immutable versioned
+canonical physical schemas, explicitly structural-only. It is reusable for
+field descriptions/fingerprints, not semantic closure or source rights. CPI,
+QES, Ministry, GDP and original source-native facts must be described with their
+actual adapter schemas, not silently advertised as canonical spending records.
+
+## Smallest next pure local metadata slice
+
+Accept explicit already-verified typed product descriptors rather than paths or
+an implicit registry scan: package pin, original SHA, profile/vintage, relative
+product name, layer/recordset role, row count, physical schema fingerprint,
+payload hash and byte count, and input-product dependencies. Produce a canonical
+JSON local inventory with stable source-to-product edges and exact per-field
+Arrow type/nullability/metadata. Use content-addressed local identifiers rather
+than invented public download URLs. Do not embed timestamps, local absolute
+paths, file contents, external credentials or source text in IDs.
+
+Every product starts `rights_state=not_evaluated`, `publication_state=local_only`,
+`approval=not_granted`; any separately supplied hash-bound rights observations
+must remain observations, not synthesized eligibility. No blanket licence,
+publication date, federation equivalence or completed recovery assertion.
+Input fixity should be explicitly outside a pure helper; a separate composed
+reader can establish it later. Unknown profiles/schema mismatches, duplicate
+identities, missing dependencies and ambiguous rights joins fail closed.
+
+## What remains before full Platinum/recovery acceptance
+
+- Red-first contracts for deterministic descriptor output and mixed/unresolved/
+  conflicting rights; exact field-schema coverage across each actual product.
+- Explicit mappings into DCAT/Croissant/RO-Crate/PROV with validators; no claim
+  that a local JSON inventory alone satisfies these standards.
+- Clean empty-derivative replay must produce this same pinned local metadata
+  from Bronze + code + parameters, alongside Silver/Gold/SQLite/plots/reports.
+- Compare bytes or explicitly reviewed rendering differences, prove no original
+  changes, and test interrupted/resumed/partial outputs and missing inputs.
+- Federation remains separate and requires approved namespace/version/mapping
+  evidence; no counterpart repository or live-runtime dependency is invented.
+- Rights-filtered candidate assembly, exact-manifest approval and independent
+  hosted readback remain separate after local replay; current replay excludes
+  Platinum and must not close the whole Phase9 recovery checkbox.
+
+## Bounded implementation now approved
+
+Initial scope is canonical historical Health/GDP and Budget classification only:
+`health_spending_fact`, `fiscal_context_fact`, `field_lineage`,
+`classification_dimension`. Initial missing-module test collection failed red
+before production implementation. This pure descriptor helper does not compose
+disk readers or establish input fixity, semantic truth or metadata replay.
+
+The closed profile/vintage pairs preserve actual retained spellings:
+`historical-health-gdp-canonical/v1` with `fiscal-2024` or
+`Fiscal-Time-Series-1972-2025`; `budget-functional-classification-source-label/v1`
+with `Budget-2025` or `Budget-2026`. Source nodes use original SHA identifiers;
+product dependencies use package-pin/path keys. Product IDs explicitly cover
+descriptor metadata, not a recursive transitive dependency-ID hash. Schema and
+field metadata are represented as lossless hex bytes. No field values are read.
+
+Independent review identified impossible file/directory prefix collisions and
+requested explicit field-metadata and ID-scope declarations. Three regression
+cases failed before correction. Casefolded prefix collisions now fail closed;
+the bounded comparison also handles interleaved path sorts. Final independent
+parent re-review found no further actionable issue.
+
+Local validation: 52 tests, 100% critical coverage (92 statements/14 branches),
+Ruff and basedpyright pass. Cold mutation killed all 70 generated mutants, zero
+survivors/errors/timeouts/pardons/cache hits, 50.09 seconds; report SHA256
+`1c18c142d86681f2e77c9f98be83415aff7daa159de24e448ed6365413092c7a`.
+Source SHA256 `a1bdbe086bd572e97e73ec8babecbe8a5841bf4c917212f6daa4bfecb841b40d`;
+test SHA256 `e49b415921a76f371d6eec7c099c18d8b23187d6f825ec6e2f3b62f406b589e4`.
+Full native validation and hosted delivery are still pending at this checkpoint.
+
+Separately, classification exporter PR316 was merged by this agent after all
+seven required checks passed on exact head
+`2b69abd890a8468f766fdb731f81af0060482490` with fresh clean/mergeable status.
+The exact-head REST merge succeeded, and readback confirmed merge
+`2400a9a4e650f4ed8098cd429d78478487be4602` at `2026-08-31T16:40:49Z`.
+This is code delivery and local retention evidence, not publication approval.
