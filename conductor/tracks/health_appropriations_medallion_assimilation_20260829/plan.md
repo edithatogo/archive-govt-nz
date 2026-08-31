@@ -265,7 +265,7 @@ repository validation command. External gates block only their affected task.
 
 ### 3.3 Determinism and drift hardening
 
-- [~] Bound public Budget reader directory enumeration to four expected files
+- [x] Bound public Budget reader directory enumeration to four expected files
   plus one and impose explicit Parquet Thrift metadata limits before decoding;
   retain existing snapshot/row/expanded-byte guards and transport-only scope.
   [M-07, M-18; AC-05, AC-16]

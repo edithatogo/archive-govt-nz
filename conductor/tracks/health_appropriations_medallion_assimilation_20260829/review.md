@@ -737,3 +737,13 @@ Native assurance subsequently passed all gates at `1a58841`; the reviewed reader
 stack was merged ordinarily without source changes. 141 integration tests passed;
 both conflict-side documentation entries and all 119 incoming ledger lines were
 retained. Hosted delivery is still separate from this local assurance receipt.
+
+## 2026-08-31: Budget reader metadata bounds review
+
+Parent and sibling independently reviewed the exact source/test delta and found
+no remaining actionable issue. Five-entry directory enumeration rejects extras
+without exhausting arbitrary directories; explicit Thrift limits precede parser
+metadata/materialization. Existing byte/row/expanded guards and propagated
+OSError boundary remain. This is not hostile-Parquet sandboxing. All 63 critical
+tests, 112 cold mutants and the full 4,239-test native passed; hosted exact-head remains
+separate. See [scope and evidence](./budget-reader-bounds.md).
