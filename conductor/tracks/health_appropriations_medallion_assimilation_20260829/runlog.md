@@ -1260,3 +1260,26 @@ Parquet `element`. Freeze explicit transport names for those fields, preserving
 metadata/type/nullability checks and all existing files. This is a reader
 contract correction, not source rewriting or ignored schema drift. Ruff also
 identified exception-literal/import/raw-regex styles; strict typing passed.
+
+### Historical snapshot focused and live assurance
+
+After the explicit transport child-name correction, 49 tests passed in 2.22s,
+100% critical coverage (76 statements, ten branches). Ruff and strict typing
+passed. Independent read-only review found no actionable issue; exact-cap
+boundaries and complete-hashes-before-decode tests were added. The deep JSON
+fixture is bounded by manifest admission and tested as a redacted failure;
+no separate recursion-handling claim is made.
+
+Cold unfiltered mutation used all 49 tests, one worker, a clear cache and zero
+pardons: 57/57 killed, no survivors/timeouts/errors/cache hits, 66.08s.
+Command: `uv run pytest tests/domains/health_appropriations/test_historical_snapshot.py -q --gremlins --gremlin-targets=src/archive_govt_nz/domains/health_appropriations/historical_snapshot.py --gremlin-report=json --gremlin-parallel --gremlin-workers=1 --gremlin-clear-cache --gremlin-no-coverage-filter --strict-pardons --gremlin-max-pardons-pct=0 --max-pardons=0 --no-cov`.
+Report SHA-256 `c75a74651ce29feaf07e02ed718d2a2eaaaf456fe01de1ba193451e4b88b62c8`.
+Source/test SHA-256 respectively
+`781e436fb2a3e414b1de78c2ab8bd1be30e478c080f3e697070c18497bf4c261`
+and `e0a470091c2cfa8c8c3e78ead2a6cef511a5c87342d43b8279431cf399bae925`.
+
+Local reads verified both historical manifests, all six Parquet files and
+both original objects, totaling 449,487 and 337,077 bytes respectively.
+No source/package/candidate write or workbook execution occurred. Functional
+commit `7a0420e`; main `6c23ba8` integrated without conflict before the native
+run. Entire incoming machine ledger is retained; snapshot evidence is appended.
