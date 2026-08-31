@@ -109,3 +109,10 @@ fiscal/MoH receipts. No MoH production or test changes were needed. Focused
 MoH and Conductor tests passed61; an initial mistyped Conductor test path
 collected no tests and exited4 before the corrected command passed. Full
 native evidence above predates this integration; hosted checks must rerun.
+
+PR291 was observed merged externally at2026-08-31T13:52:56Z after all seven
+exact-head checks passed on6b49a737feff86c0721c044779a28aa4a44b08d1.
+Merge25f9fb5c4570fa8204b289bc43b8060c2602e1d6 delivers this bounded profile and
+fiscal pilot evidence; it does not complete Ministry historical coverage or
+publish new derivatives. Earlier local failures and unavailable outcome remain
+recorded above, separately from hosted delivery.

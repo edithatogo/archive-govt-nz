@@ -32,6 +32,7 @@ every planned record set, measure or operational workflow.
 - [Raw BEFU/HYEFU extraction](./raw-forecast.md)
 - [BEFU 2026 / HYEFU 2025 versioned source pilots](./forecast-successors.md)
 - [Exact-series CPI source extraction](./cpi-source.md)
+- [Bounded QES published earnings source profile](./qes-source.md)
 - [Ministry published-indicator profiles](./moh-indicators.md)
 - [Source, schema and population context gaps](./source-schema-gaps.md)
 - [Raw historical Health/GDP extraction and reconciliation](./raw-historical.md)
