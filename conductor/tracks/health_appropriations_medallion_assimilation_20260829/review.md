@@ -536,3 +536,20 @@ reported as complete.
   operation is exposed. Existing defusedxml is reused without dependency changes.
 - Focused and mutation gates pass. The native CPI timing failure and isolated
   passing diagnostic remain visible; complete local assurance is not claimed.
+
+## 2026-08-31 — Exclusive local additive staging review
+
+- Independent parent and sibling reviews found no substantive copy/path/state
+  defect within the explicitly reviewed-root, copy-integrity-only contract.
+- Parent review identified inherited non-finite JSON acceptance in extra rights
+  metadata. Seven red cases reproduced it; finite parsing and strict staging
+  encoding now reject it without interpreting rights or changing original bytes.
+- Full base history includes the original manifest/card; no active publication
+  manifest, inherited approval or current publication claim is emitted.
+- Exclusivity, copy fixity, full readback and redacted failure retention have
+  focused negative coverage. Supplied forbidden roots are caller responsibility,
+  not automatic publisher-config discovery or arbitrary uploader prevention.
+- Refreshed combined evidence is 139 tests, 100% critical line/branch coverage,
+  and 120/120 cold unfiltered mutant kills. Two final-source live builds match
+  each other and the retained earlier pilot; native delivery evidence follows
+  in [additive staging](./additive-staging.md).

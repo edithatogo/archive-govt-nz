@@ -505,7 +505,7 @@ repository validation command. External gates block only their affected task.
 
 ### 9.2 Build a rights-filtered Hugging Face candidate locally
 
-- [~] Assemble an exclusive local staging bundle from the pinned additive
+- [x] Assemble an exclusive local staging bundle from the pinned additive
   inventory, retaining v4 history and new packages separately with full
   readback and bounded failure receipts. No publication-shaped candidate or
   inherited approval is emitted. [M-03, M-16, M-17, M-18; AC-02, AC-12, AC-15,

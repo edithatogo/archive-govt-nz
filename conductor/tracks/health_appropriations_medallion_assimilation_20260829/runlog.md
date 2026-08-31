@@ -1139,7 +1139,7 @@ its change set.
   No deadlines were weakened; hosted assurance remains separate. Exact bounded
   receipts are in [embedded notices](./embedded-notices.md).
 
-## 2026-08-31 — Exclusive local additive staging (in progress)
+## 2026-08-31 — Exclusive local additive staging
 
 - Began an independent branch after the pinned inventory planner; PR #290 was
   subsequently observed merged after all seven hosted checks succeeded.
@@ -1149,3 +1149,13 @@ its change set.
   emits no active candidate manifest, and records completion only after full
   copy readback. Review and heavier validation remain pending; see
   [additive staging](./additive-staging.md) for the bounded contract.
+
+- Independent review found non-finite JSON acceptance in inherited inventory
+  metadata; seven red cases drove strict finite parsing/encoding. The combined
+  139-test suite now has 100% critical line/branch coverage and 120/120 cold,
+  unfiltered mutant kills with zero survivors/timeouts/errors/pardons/cache hits.
+- Final-source local replay preserved all 113 listed files and matched both the
+  earlier pilot and a second fresh build. No candidate or publication changed.
+- Native validation completed with exit zero: 2,631 tests, 97.02% coverage,
+  all repository gates and a validated 111-component SBOM. Eight existing
+  SQLite ResourceWarnings remain disclosed. Hosted delivery is a separate gate.
