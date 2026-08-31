@@ -119,7 +119,7 @@ repository validation command. External gates block only their affected task.
   their bytes. [M-03, M-07, S-03; AC-02, AC-03]
 - [x] Characterize the five-table SQLite schema, row order/keys, types, nulls,
   values and totals as parity fixtures. [M-08; AC-06, AC-11]
-- [ ] Characterize the intended behavior and failure behavior of
+- [~] Characterize the intended behavior and failure behavior of
   `inspect_excel.py`, `process_data.py` and `run_analysis.py`, including the
   known compile failure, swallowed exceptions and positional heuristics.
   [M-09, M-18; AC-07, AC-16]
