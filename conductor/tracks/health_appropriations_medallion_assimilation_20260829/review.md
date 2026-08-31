@@ -1,5 +1,15 @@
 # Self-Review
 
+## Forecast explicit preflight — 2026-08-31 UTC
+
+Independent source/test review found no actionable issue. The explicit dry
+path has source-validation-only scope, never Arrow/package-writer execution,
+and retains rejected/partial status. Strict booleans prevent truthy write-mode
+ambiguity. All four prior written packages are byte-identical against a
+pre-change baseline. Combined 92 tests/100% critical coverage and 66/66 cold
+unfiltered mutants pass. Native and hosted delivery remain pending; see
+[forecast-preflight.md](forecast-preflight.md). No originals were changed.
+
 ## Quarterly GDP literal profile — 2026-08-31
 
 - Source identity, actual-versus-adjusted and expenditure-versus-income
@@ -631,7 +641,6 @@ Read-only re-review reports both findings resolved and no additional finding.
 The original input package remains required for retained-only information.
 See `historical-projection.md` for mapping, red-phase evidence and limits.
 
-
 ## Budget classification occurrence projection
 
 The pure source-label projection passed independent read-only review, 42 focused
@@ -657,6 +666,31 @@ completion. Caller parent-directory trust, source-package retention and no
 publication/rights promotion remain explicit. No generic filesystem sandbox or
 global semantic/canonical-registry completion is claimed.
 
+## Exclusive local classification export
+
+The source-only occurrence projection now has an exclusive local persistence
+wrapper. Independent review findings were reproduced by red tests and resolved;
+final re-review found no actionable issue in its trusted-parent scope.54tests
+pass at100%critical coverage, and44/44cold mutants were killed without pardons
+or cached results. Nativef46e4b6 passed3426tests and every subsequent gate.
+
+Two builds per retained Budget vintage independently reconcile all five files,
+400dimensions and6800lineage-accounting rows, with originals/input packages
+unchanged. The local marker is not a publication manifest and can survive a
+failed readback; only full validation establishes local completion. Errors are
+redacted and partial evidence retained. See [receipt](./classification-export.md)
+for exact hashes, failure observations and the append-only timestamp correction.
+## Original-to-products replay — 2026-08-31 UTC
+
+Two fresh output trees independently match all 38 files. Investigated the
+failed older compatibility-byte comparison instead of normalizing its header:
+SQLite versions differ, only offsets 98/99 change, schemas/341 rows and all
+other payloads match. Preserve both versions and exact manifests. No broad
+AC-12, source-area, rights or publication conclusion follows.
+
+Forecast preflight follow-up: full native harness passed at `8ace367` with
+3,414 tests and all gates. This supersedes the earlier native-pending status
+only; hosted delivery and full source/rights/recovery phases remain separate.
 ## Detected structural accounting review — 2026-08-31
 
 Scope remains detected structural units only, never complete normalization.
