@@ -231,3 +231,5 @@ implementation has occurred under these tracks.
 
 - [x] **Track: Imported donor snapshot container catalogue**
   *Link: [archive/imported/index.md](./archive/imported/index.md)*
+- [~] **Track: RIOPA interoperability integration**
+  *Link: [tracks/riopa_interoperability_20260831/index.md](./tracks/riopa_interoperability_20260831/index.md)*
