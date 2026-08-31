@@ -67,3 +67,15 @@ Readback confirmed `f41ef9b984c15dc84a9afa3e39236388bfcf2197` at
 was rebased onto that delivered main commit with exact source/test hashes
 unchanged and the incoming ledger prefix preserved. The API dependency remains
 unmerged; native and hosted forecast-dispatch validation remain pending.
+
+## Native validation
+
+`./scripts/validate.sh` passed at `aead922` with exit 0 on CPython 3.14.6:
+3,602 tests, 8 warnings, 79.47 seconds, 97.20% overall coverage; 75 Conductor
+tracks; formatting, lint, types, 42 schemas/32 samples, 9/9 parity, every
+native mutation gate, dependency audit, licences, secrets and 111-component
+SBOM. Log SHA-256:
+`a5162a3d57cd74391e794ec65bbf69d3ae558778afa0711d1f0b05ca1fdf7517`.
+Only verified unrelated generated timestamp churn was restored. Dependency
+delivery and exact-head hosted checks remain separate pending gates; this run
+did not acquire sources, write real derivative products or publish anything.
