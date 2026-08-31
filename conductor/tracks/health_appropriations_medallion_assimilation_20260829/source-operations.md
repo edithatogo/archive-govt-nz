@@ -36,7 +36,21 @@ CLI default/explicit-write argv, MCP closed input, false-y nonboolean controls,
 source immutability, malformed context, partial evidence preservation and a pure
 receipt-schema property. Ruff passed. An attempted `ty` invocation was unavailable
 in the locked environment; no dependency was installed to bypass the native
-typing lane. Critical coverage, mutation and native harness remain pending.
+typing lane. Native basedpyright subsequently passed with zero errors/warnings.
+
+Critical assurance now passes 138 tests at 100% line/branch coverage (64
+statements, ten branches). Cold unfiltered mutation caught all 31 generated
+dispatcher mutants, no survivors/errors/timeouts/pardons/cache hits, one worker,
+unchanged 30-second deadline, 153.92 seconds. Report SHA256:
+`e7c42c9708d6736fe722476ae93f7e48b63cf36f2e5758ae9597a0c9ed280deb`.
+This receipt predates adding the input schema's explicit draft declaration;
+dispatcher functions are unchanged. The full CLI/MCP regression found that
+missing declaration (303 pass, one failure); after correction, 304 passed in
+12.80 seconds. Four additional executable seeded counterexamples separately
+exercise CLI default dry-run, explicit write propagation, failed exit code and
+MCP error redaction; baseline oracles pass and all four seeded defects fail.
+These are scoped wiring checks, not whole legacy CLI/MCP mutation coverage.
+Native harness remains pending. No gates or deadlines were weakened.
 
 Independent read-only review found no actionable production issue within this
 bounded dispatch. JSON Schema integer counts intentionally follow JSON numeric

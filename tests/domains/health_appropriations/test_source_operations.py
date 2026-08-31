@@ -2,10 +2,14 @@
 
 from __future__ import annotations
 
+import ast
 import csv
 import hashlib
+import inspect
 import io
 import json
+import textwrap
+from collections.abc import Callable
 from dataclasses import replace
 from pathlib import Path
 from typing import Any, cast
@@ -17,6 +21,7 @@ from jsonschema import Draft202012Validator, ValidationError
 from tests.domains.health_appropriations.test_cpi import HEADER, META
 from tests.domains.health_appropriations.test_qes import fixture as qes_fixture
 
+from archive_govt_nz import cli, mcp_server
 from archive_govt_nz.cli import app, health_appropriations_extract_source
 from archive_govt_nz.domains.health_appropriations import (
     moh_indicators,
@@ -375,3 +380,96 @@ def test_committed_receipt_schema() -> None:
         / "schemas/health-source-operation-v1.schema.json"
     )
     assert json.loads(path.read_text()) == source_operations.SOURCE_OPERATION_SCHEMA
+
+
+def _seeded_function(
+    function: Callable[..., Any], namespace: dict[str, Any], before: str, after: str
+) -> Callable[..., Any]:
+    """Compile only trusted local function text, without decorators or IO."""
+    source = textwrap.dedent(inspect.getsource(function))
+    assert source.count(before) == 1
+    tree = ast.parse(source.replace(before, after))
+    node = tree.body[0]
+    assert isinstance(node, ast.FunctionDef)
+    node.decorator_list = []
+    exec(compile(tree, "<trusted-wiring-counterexample>", "exec"), namespace)  # noqa: S102
+    return namespace[function.__name__]
+
+
+@pytest.mark.parametrize(
+    ("before", "after"),
+    [
+        ("dry_run: bool = True", "dry_run: bool = False"),
+        ("dry_run=dry_run", "dry_run=True"),
+        ('return 2 if result["status"] == "failed" else 0', "return 0"),
+    ],
+)
+def test_cli_seeded_wiring_counterexamples(before: str, after: str) -> None:
+    def oracle(function: Callable[..., Any]) -> None:
+        arguments = {
+            "source": Path("source"),
+            "output_dir": Path("output"),
+            "profile": "cpiq-se9a/v1",
+            "expected_sha256": "a" * 64,
+            "source_vintage": "vintage",
+            "source_locator": "https://example.invalid/x",
+            "observed_at": "2026-08-31T00:00:00Z",
+        }
+        assert function(**arguments) == 2
+        assert seen[-1] is True
+        assert function(**arguments, dry_run=False) == 2
+        assert seen[-1] is False
+
+    seen: list[bool] = []
+
+    def invoke(_request: object, *, dry_run: bool) -> dict[str, str]:
+        seen.append(dry_run)
+        return {"status": "failed"}
+
+    namespace = {
+        **vars(cli),
+        "operate_source": invoke,
+        "_emit_json": lambda _result: None,
+    }
+    baseline = _seeded_function(
+        health_appropriations_extract_source, namespace.copy(), before, before
+    )
+    oracle(baseline)
+    mutant = _seeded_function(
+        health_appropriations_extract_source, namespace.copy(), before, after
+    )
+    with pytest.raises(AssertionError):
+        oracle(mutant)
+
+
+def test_mcp_seeded_redaction_counterexample() -> None:
+    args = {
+        "source": "source",
+        "output_dir": "output",
+        "profile": "cpiq-se9a/v1",
+        "expected_sha256": "a" * 64,
+        "source_vintage": "vintage",
+        "source_locator": "https://example.invalid/private-secret" + "x" * 3000,
+        "observed_at": "2026-08-31T00:00:00Z",
+    }
+    params = {"name": "health_appropriations_preflight_source", "arguments": args}
+
+    def oracle(function: Callable[..., Any]) -> None:
+        assert "private-secret" not in json.dumps(function(Server(), 1, params))
+
+    before = '"Invalid source operation arguments"'
+    baseline = _seeded_function(
+        Server._call_tool,
+        vars(mcp_server).copy(),
+        before,
+        before,  # noqa: SLF001 - exact protocol boundary
+    )
+    oracle(baseline)
+    mutant = _seeded_function(
+        Server._call_tool,
+        vars(mcp_server).copy(),
+        before,
+        "errors[0].message",  # noqa: SLF001 - exact protocol boundary
+    )
+    with pytest.raises(AssertionError):
+        oracle(mutant)

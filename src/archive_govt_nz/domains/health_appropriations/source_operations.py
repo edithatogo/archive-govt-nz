@@ -52,6 +52,7 @@ _DIGEST = {"type": "string", "pattern": "^[0-9a-f]{64}$", "maxLength": 64}
 _COUNT = {"type": "integer", "minimum": 0}
 _TEXT = {"type": "string", "minLength": 1, "maxLength": MAX_CONTEXT}
 SOURCE_PREFLIGHT_INPUT_SCHEMA = {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
     "additionalProperties": False,
     "properties": {
