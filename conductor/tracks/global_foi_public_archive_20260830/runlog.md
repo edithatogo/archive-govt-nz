@@ -120,3 +120,17 @@ Publication full harness attempt 1 reached 1724 passing tests but stopped on Hyp
 Published the approved source metadata catalogue to edithatogo/foi-source-catalogue. Fresh anonymous downloads verified all snapshot bytes before conditional current-pointer promotion. Raw source payloads were not published. Donor #408 merged with exact-head green checks. The second full local receiver gate recorded a subprocess timeout and a Hypothesis generation health check in unchanged tests; the latter passed with its exact seed, while the subprocess still timed out. Host load exceeded 300. No checks were weakened. Hosted receiver assurance remains required. Receipt: public-catalogue-delivery-20260831.json.
 
 Reviewed directory update: 30 known sources, 251 entity review rows, 23 directory-listed entities. All unknown request totals stay null. Snapshot 512fb25519fc1002c411fbcc37f04bb176f0b03c anonymously restored before current promotion. Focused integrated validation: 180 tests, 100 percent critical-module coverage. Original donor seed bytes and historical Argentina identity remain unchanged. Broader country discovery remains open.
+
+## Receiver metadata automation — 2026-08-31
+
+Preparing a main-branch-only weekly/manual catalogue workflow with one scoped
+credentialed command, fixed concurrency, twenty-minute budget and always-retained
+sanitized result receipts. It never accepts a raw-publication decision or starts
+source acquisition. Hosted execution remains pending; donor NZ monitoring stays
+paused. This is catalogue monitoring only, not completed P5 acquisition or P6
+ownership transfer.
+
+Workflow validation first stopped on the test's YAML loader lint rule. Replaced
+BaseLoader with safe_load and explicit YAML 1.1 boolean-key assertions. Actionlint
+and the workflow boundary test pass. The corrected full harness is running; this
+is not a hosted execution receipt.
