@@ -1,0 +1,8 @@
+{
+  "schema_version": "archive-govt-nz.health-source-operation/v1",
+  "verification_scope": "adapter_execution_only",
+  "rights_state": "not_evaluated",
+  "publication_state": "local_validation_only",
+  "status": "failed",
+  "error": "invalid_source_operation"
+}

@@ -1,5 +1,18 @@
 # Self-Review
 
+## Quarterly GDP literal profile — 2026-08-31
+
+- Source identity, actual-versus-adjusted and expenditure-versus-income
+  selection are exact; quarterly observations are not annual denominators.
+- Parent found locale-sensitive month expectations and missing literal token,
+  scaling, format-attribute and century-range lineage. All corrected; locale
+  regression and complete 900-entry closure pass. Currency remains null.
+- 45 focused tests/100% critical coverage and cold 37/37 mutation pass. Original
+  source and both independently reconciled deterministic pilots are retained.
+  Native passed at `41e7717`: 2,790 tests/97.07% overall and all gates.
+  Hosted checks and rights approval remain distinct. Exclusive retained Silver
+  package readback is identical; source-specific output is not canonical.
+
 ## Additive inventory planner — 2026-08-31 UTC
 
 Independent read-only source/test review found no actionable correctness issue
@@ -617,3 +630,18 @@ retained snapshots pass exact JSON-string cell joins without numeric coercion.
 Read-only re-review reports both findings resolved and no additional finding.
 The original input package remains required for retained-only information.
 See `historical-projection.md` for mapping, red-phase evidence and limits.
+
+
+## Budget classification occurrence projection
+
+The pure source-label projection passed independent read-only review, 42 focused
+tests with 100% critical line/branch coverage and 29/29 cold mutant kills.
+Two verified retained Budget packages yield 400 unmapped occurrence dimensions
+and full 6800-row lineage accounting without input mutation. Exact Parquet
+round-trip and source-object identity boundary tests pass. No authoritative
+identifier, valid-time interval, crosswalk or rights promotion is invented.
+
+Required native validation at `b651907` passed all 3014 tests (8 existing resource
+warnings), 97.12% coverage and all subsequent gates. Two owned timestamp-only
+fixture changes were restored after exit. Source and tests remain unchanged;
+hosted delivery is pending. See [full receipt](./budget-classification.md).
