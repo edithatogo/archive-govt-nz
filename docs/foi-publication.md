@@ -69,3 +69,20 @@ is not evidence that a country has no FOI source.
 It is included in the immutable manifest, with broader discovery still required.
 The geographic denominator remains 250 countries/areas/project extensions plus
 one separately counted supranational entity; it is not 250 sovereign countries.
+
+## Receiver automation
+
+`foi-catalogue-publication.yml` runs weekly and on manual dispatch, exclusively on
+this repository's main branch. Its only credentialed command publishes the
+reviewed source catalogue; it does not capture sources or publish raw packages.
+A shared workflow concurrency group prevents overlapping catalogue jobs, while
+Hugging Face conditional commits reject concurrent external writes. The workflow
+has a twenty-minute budget and preserves a sanitized result or failure receipt.
+A missing receipt fails the job. There is no automatic retry loop.
+
+This verifies the committed catalogue snapshot and current public visibility.
+It does not refresh the pinned source observations or infer source freshness.
+A successful metadata run does not activate raw acquisition, move the donor's
+queue, establish raw storage capacity, or complete the cross-repository cutover.
+GitHub artifacts expire after ninety days; the immutable public catalogue itself
+remains in Hugging Face and includes its verification manifest.
