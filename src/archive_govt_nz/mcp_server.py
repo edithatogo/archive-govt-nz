@@ -76,7 +76,7 @@ _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
     {
         "name": "health_appropriations_preflight_source",
         "description": (
-            "Read-only preflight of four approved source profiles; "
+            "Read-only preflight of approved source profiles; "
             "no rows, source acquisition or output writes."
         ),
         "inputSchema": SOURCE_PREFLIGHT_INPUT_SCHEMA,

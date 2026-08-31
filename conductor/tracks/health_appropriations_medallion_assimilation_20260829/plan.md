@@ -534,7 +534,11 @@ repository validation command. External gates block only their affected task.
 
 ### 8.2 Implement bounded operations
 
-- [~] Wire the four approved CPI/Ministry/QES source profiles through a
+- [~] Extend the source-operation allowlist to exact Pharmac CPB and quarterly
+  GDP profiles after dependency delivery, retaining source-specific shapes,
+  compact counts, CLI default dry-run and forced-read-only MCP. Forecast's
+  missing no-write path remains a separate task. [M-15, M-18; AC-13, AC-16]
+- [x] Wire the four approved CPI/Ministry/QES source profiles through a
   dry-run-first CLI and forced-read-only MCP preflight, using compact typed
   redacted receipts without changing donor rebuild or archive-status semantics.
   [M-15, M-18; AC-13, AC-16]
