@@ -1,0 +1,122 @@
+{
+  "source_url": "https://alaveteli.org/deployments/",
+  "observed_at": "2026-08-30T21:19:59.739984+00:00",
+  "html_sha256": "56d942fe691a2b3f99cdd64afedcf2572b4ed7200eb69429cf653735f4c62758",
+  "deployments": [
+    {
+      "name": "WhatDoTheyKnow",
+      "country": "United Kingdom",
+      "url": "https://www.whatdotheyknow.com"
+    },
+    {
+      "name": "Ask the EU",
+      "country": "Europe",
+      "url": "https://www.asktheeu.org"
+    },
+    {
+      "name": "Info Pro V\u0161echny",
+      "country": "Czech Republic",
+      "url": "https://www.infoprovsechny.cz"
+    },
+    {
+      "name": "MaDada",
+      "country": "France",
+      "url": "https://madada.fr"
+    },
+    {
+      "name": "Handlingar",
+      "country": "Sweden",
+      "url": "https://handlingar.se"
+    },
+    {
+      "name": "de Woo-Knop",
+      "country": "Netherlands",
+      "url": "https://www.woo-knop.nl"
+    },
+    {
+      "name": "Transparencia",
+      "country": "Belgium",
+      "url": "https://transparencia.be"
+    },
+    {
+      "name": "Imamo pravo znati",
+      "country": "Croatia",
+      "url": "https://imamopravoznati.org"
+    },
+    {
+      "name": "Ki Mit Tud",
+      "country": "Hungary",
+      "url": "https://kimittud.hu/"
+    },
+    {
+      "name": "\u0414\u043e\u0441\u0442\u0443\u043f \u0434\u043e \u043f\u0440\u0430\u0432\u0434\u0438",
+      "country": "Ukraine",
+      "url": "https://dostup.org.ua"
+    },
+    {
+      "name": "arthro5A.gr",
+      "country": "Greece",
+      "url": "https://www.arthro5a.gr"
+    },
+    {
+      "name": "VreauInfo",
+      "country": "Moldova",
+      "url": "https://www.vreauinfo.md"
+    },
+    {
+      "name": "accessinfo.hk",
+      "country": "Hong Kong",
+      "url": "https://accessinfo.hk"
+    },
+    {
+      "name": "Right To Know",
+      "country": "Australia",
+      "url": "https://www.righttoknow.org.au"
+    },
+    {
+      "name": "FYI",
+      "country": "New Zealand",
+      "url": "https://fyi.org.nz"
+    },
+    {
+      "name": "Qu\u00e9 Sab\u00e9s",
+      "country": "Uruguay",
+      "url": "https://quesabes.org"
+    },
+    {
+      "name": "InfoLib",
+      "country": "Liberia",
+      "url": "https://infolib.org.lr"
+    },
+    {
+      "name": "Queremosdatos",
+      "country": "Colombia",
+      "url": "https://www.queremosdatos.co"
+    },
+    {
+      "name": "OPRA Machine",
+      "country": "New Jersey, USA",
+      "url": "https://opramachine.com"
+    },
+    {
+      "name": "Derecho al Dato",
+      "country": "Argentina",
+      "url": "https://derechoaldato.com.ar"
+    },
+    {
+      "name": "Ask Gov",
+      "country": "Georgia",
+      "url": "https://askgov.ge"
+    },
+    {
+      "name": "Ia Statul la \u00centreb\u0103ri",
+      "country": "Romania",
+      "url": "http://iastatullaintrebari.ro"
+    },
+    {
+      "name": "dumedit\u00eb",
+      "country": "Kosovo",
+      "url": "https://dumedite.org"
+    }
+  ]
+}

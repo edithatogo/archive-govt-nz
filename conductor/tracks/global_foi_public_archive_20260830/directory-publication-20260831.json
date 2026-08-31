@@ -1,0 +1,58 @@
+{
+  "critical_module_statement_branch_coverage_percent": 100,
+  "current_viewer_status": "not_yet_rechecked",
+  "cutover": false,
+  "directory_entities_listed": 23,
+  "entities_reviewed_for_directory_presence": 251,
+  "exhaustive_country_discovery": false,
+  "focused_tests": 180,
+  "full_local_gate": "timing_failures_recorded_in_public-catalogue-delivery-20260831.json",
+  "hosted_gate": "pending",
+  "new_source": "ar-derechoaldato",
+  "preserved_historical_source": "ar-information-publica",
+  "publication": {
+    "coverage": {
+      "geographic_entities": 250,
+      "known_sources": 30,
+      "payload_publication_authorized": false,
+      "remaining_unverified": 250,
+      "supranational_entities": 1,
+      "target_regimes": 42,
+      "total_requests": null,
+      "verified_complete": 0
+    },
+    "current_revision": "4e5a7832f6536e231d20292c1bffaae7861fd912",
+    "manifest_sha256": "42d003245024432140ba2070c998c32779bbb587516bf0c62aeb32085c6a1558",
+    "payload_publication": false,
+    "repo_id": "edithatogo/foi-source-catalogue",
+    "scope": "source_catalogue_only",
+    "snapshot_revision": "512fb25519fc1002c411fbcc37f04bb176f0b03c",
+    "status": "verified",
+    "uploaded": true,
+    "viewer_status": "not_checked"
+  },
+  "raw_publication": false,
+  "recorded_at": "2026-08-31T03:31:09.803178+00:00",
+  "scope": "reviewed_directory_and_verified_public_catalogue",
+  "viewer_previous_snapshot": {
+    "failed": [],
+    "pending": [],
+    "splits": [
+      {
+        "config": "entities",
+        "dataset": "edithatogo/foi-source-catalogue",
+        "split": "train"
+      },
+      {
+        "config": "jurisdictions",
+        "dataset": "edithatogo/foi-source-catalogue",
+        "split": "train"
+      },
+      {
+        "config": "sources",
+        "dataset": "edithatogo/foi-source-catalogue",
+        "split": "train"
+      }
+    ]
+  }
+}

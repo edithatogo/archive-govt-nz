@@ -1,0 +1,164 @@
+{
+  "schema_version": "archive-govt-nz.foi-directory-review/v1",
+  "scope": "Alaveteli deployment directory only; not exhaustive national source discovery",
+  "source_file": "alaveteli-directory-20260831.json",
+  "source_sha256": "518626a27878b1ad70da4e4d889317e249e399947f968385ea4db7f02be46816",
+  "source_url": "https://alaveteli.org/deployments/",
+  "observed_at": "2026-08-30T21:19:59.739984+00:00",
+  "country_entities": {
+    "United Kingdom": "GB",
+    "Europe": "EU",
+    "Czech Republic": "CZ",
+    "France": "FR",
+    "Sweden": "SE",
+    "Netherlands": "NL",
+    "Belgium": "BE",
+    "Croatia": "HR",
+    "Hungary": "HU",
+    "Ukraine": "UA",
+    "Greece": "GR",
+    "Moldova": "MD",
+    "Hong Kong": "HK",
+    "Australia": "AU",
+    "New Zealand": "NZ",
+    "Uruguay": "UY",
+    "Liberia": "LR",
+    "Colombia": "CO",
+    "New Jersey, USA": "US",
+    "Argentina": "AR",
+    "Georgia": "GE",
+    "Romania": "RO",
+    "Kosovo": "XK"
+  },
+  "source_links": [
+    {
+      "url": "https://www.whatdotheyknow.com",
+      "source_id": "uk-wdtk",
+      "entity_id": "GB"
+    },
+    {
+      "url": "https://www.asktheeu.org",
+      "source_id": "eu-asktheeu",
+      "entity_id": "EU"
+    },
+    {
+      "url": "https://www.infoprovsechny.cz",
+      "source_id": "cz-infoprovsechny",
+      "entity_id": "CZ"
+    },
+    {
+      "url": "https://madada.fr",
+      "source_id": "fr-madada",
+      "entity_id": "FR"
+    },
+    {
+      "url": "https://handlingar.se",
+      "source_id": "se-handlingar",
+      "entity_id": "SE"
+    },
+    {
+      "url": "https://www.woo-knop.nl",
+      "source_id": "nl-woo-knop",
+      "entity_id": "NL"
+    },
+    {
+      "url": "https://transparencia.be",
+      "source_id": "be-transparencia",
+      "entity_id": "BE"
+    },
+    {
+      "url": "https://imamopravoznati.org",
+      "source_id": "hr-imamopravoznati",
+      "entity_id": "HR"
+    },
+    {
+      "url": "https://kimittud.hu/",
+      "source_id": "hu-kimittud",
+      "entity_id": "HU"
+    },
+    {
+      "url": "https://dostup.org.ua",
+      "source_id": "ua-dostup",
+      "entity_id": "UA"
+    },
+    {
+      "url": "https://www.arthro5a.gr",
+      "source_id": "gr-arthro5a",
+      "entity_id": "GR"
+    },
+    {
+      "url": "https://www.vreauinfo.md",
+      "source_id": "md-vreauinfo",
+      "entity_id": "MD"
+    },
+    {
+      "url": "https://accessinfo.hk",
+      "source_id": "hk-accessinfo",
+      "entity_id": "HK"
+    },
+    {
+      "url": "https://www.righttoknow.org.au",
+      "source_id": "au-rtk",
+      "entity_id": "AU"
+    },
+    {
+      "url": "https://fyi.org.nz",
+      "source_id": "nz-fyi",
+      "entity_id": "NZ"
+    },
+    {
+      "url": "https://quesabes.org",
+      "source_id": "uy-quesabes",
+      "entity_id": "UY"
+    },
+    {
+      "url": "https://infolib.org.lr",
+      "source_id": "lr-infolib",
+      "entity_id": "LR"
+    },
+    {
+      "url": "https://www.queremosdatos.co",
+      "source_id": "co-queremosdatos",
+      "entity_id": "CO"
+    },
+    {
+      "url": "https://opramachine.com",
+      "source_id": "us-opramachine",
+      "entity_id": "US"
+    },
+    {
+      "url": "https://derechoaldato.com.ar",
+      "source_id": "ar-derechoaldato",
+      "entity_id": "AR"
+    },
+    {
+      "url": "https://askgov.ge",
+      "source_id": "ge-askgov",
+      "entity_id": "GE"
+    },
+    {
+      "url": "http://iastatullaintrebari.ro",
+      "source_id": "ro-iastatullaintrebari",
+      "entity_id": "RO"
+    },
+    {
+      "url": "https://dumedite.org",
+      "source_id": "xk-dumedite",
+      "entity_id": "XK"
+    }
+  ],
+  "new_sources": [
+    {
+      "id": "ar-derechoaldato",
+      "country": "AR",
+      "base_url": "https://derechoaldato.com.ar",
+      "source_modes": [],
+      "kind": "directory_candidate"
+    }
+  ],
+  "notes": [
+    "Argentina has a distinct directory-listed hostname; preserve ar-information-publica as a separate historical source pending relationship verification.",
+    "Romania is listed with HTTP; preserve its existing registered HTTPS origin and record the scheme difference without automatic activation.",
+    "Sources absent from this directory, including the existing Ireland seed, are not thereby declared unavailable."
+  ]
+}
