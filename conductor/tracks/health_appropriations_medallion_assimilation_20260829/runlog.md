@@ -1227,3 +1227,41 @@ path with the 34 schema tests. Production/test hashes remain unchanged and the
 entire incoming machine ledger was verified byte-for-byte as a prefix before
 appending the two owned schema receipts. This does not replace the separately
 recorded pre-integration full harness.
+
+## 2026-08-31 — Pure historical canonical projection
+
+In independent clone `health-historical-canonical.8ijp7V`, implemented pure
+`project_historical` on merged structural registry base `ad28694`. No original,
+reader, publisher, candidate or HF operation changed. Initial import and targeted
+dependency, Decimal rendering, Parquet-list and observed context-label tests
+failed before their fixes. Nine independent-review regressions likewise failed
+before source-cell join and unused-field corrections. The final focused run
+passed 121 tests in 0.65 seconds, targeted typing and Ruff passed, and critical
+coverage passed 184 statements/32 branches at 100% in 0.71 seconds. The two
+year-boundary positive fixtures needed their disposition literals synchronized;
+that intermediate two-failure result is retained here, not attributed to code.
+
+Read-only pilots checked two manifest pins plus six Parquet hashes, projected
+each twice identically, verified disjoint cross-vintage IDs and unchanged source
+package file hashes. Counts are 53/53 and 54/54 canonical facts, 1007/1026
+canonical lineage, with all 1143/1164 original lineage rows accounted. No
+canonical files were persisted and original workbook fixity is not claimed by
+this pilot. Full details and source/test hashes: `historical-projection.md`.
+
+Cold mutation command (one worker, no coverage filter, cleared cache, unchanged
+default 30-second deadline and zero pardons):
+`COVERAGE_CORE=ctrace PYTHON_JIT=0 .venv/bin/pytest tests/domains/health_appropriations/test_historical_projection.py -q --gremlins --gremlin-targets=src/archive_govt_nz/domains/health_appropriations/historical_projection.py --gremlin-report=json --gremlin-workers=1 --gremlin-clear-cache --gremlin-no-coverage-filter --strict-pardons --gremlin-max-pardons-pct=0 --max-pardons=0 --no-cov`.
+Cold mutation passed all 129 mutants in 164.86 seconds, with zero survivors,
+timeouts, errors, pardons and cache hits. All 121 tests were selected without
+coverage filtering despite the coverage-collection warning. Receipt SHA-256
+`3a59033572caaec87024fb8e7df046b3d9d5e3936007920c80e88204fab122ff`.
+The native `./scripts/validate.sh` is now running with `COVERAGE_CORE=ctrace`,
+`PYTHON_JIT=0`, four xdist workers and an independent uv cache/interpreter.
+
+Native completed exit 0 on Python 3.14.6/uv 0.11.8: 2,866 tests in 76.99
+seconds, eight existing warnings, 97.08% coverage; 41 schemas/31 documents,
+9/9 parity, all repository mutation and hygiene checks, CAS 474.63 MB/s,
+audit/licences/secrets and SBOM 111 components passed. Native log SHA-256
+`6f0e6f155498ce0bab244eee300222d6d8d985c5c0f93d80ba344d26e9090c7e`.
+After the process exited, restored only the two test-generated timestamp-only
+legislation receipt changes. Original source files and published data unchanged.
