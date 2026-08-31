@@ -13,6 +13,7 @@ import json
 import re
 import stat
 import zipfile
+from datetime import datetime
 from pathlib import Path, PurePosixPath
 from typing import TYPE_CHECKING, Any, cast
 
@@ -282,7 +283,10 @@ def canonical_merge(parents: list[dict[str, Any]]) -> dict[str, Any]:
     ids = sorted({r["work_id"] for r in records})
     manifest_root = root(records)
     inventory_root = v.sha(json.dumps(ids, separators=(",", ":")).encode())
-    timestamp = max(p["checkpoint"]["last_updated"] for p in parents)
+    timestamp = max(
+        (p["checkpoint"]["last_updated"] for p in parents),
+        key=lambda value: (datetime.fromisoformat(value), value),
+    )
     batch = "merged-" + manifest_root
     manifest = {
         "schema_version": "archive-govt-nz.legislation-manifest/v1",
