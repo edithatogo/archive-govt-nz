@@ -97,3 +97,12 @@ On the pinned Python 3.14.6 runtime, 10,000 nested arrays decode successfully
 and the reader rejects the non-object marker with its stable public error.
 All seven strict-JSON cases passed (20.44 seconds); no production fix was needed.
 The extra malformed-input boundary is retained, bringing the test count to 70.
+
+Final 70-test critical coverage passed in 15.50 seconds with the same 100%
+statement/branch coverage. Fresh main `efca467` was integrated without conflicts
+at `2796c3e`; source/test hashes stayed unchanged and 76 Conductor tracks passed.
+Cold mutation then passed all 96/96 mutants, zero survivors and zero cache hits,
+with all 70 tests in 176.70 seconds. The retained JSON report SHA256 is
+`fab4bd25072085df6c9db155c85bbe38acfb807a8a054362f93afc5014c2f7d5`.
+Native validation follows this integrated checkpoint; no source/package writes
+were involved in the synthetic tests or mutation run.
