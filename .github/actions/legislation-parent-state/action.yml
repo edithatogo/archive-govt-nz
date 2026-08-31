@@ -1,0 +1,56 @@
+name: Verify legislation parent state
+description: Fail closed on a pinned complete parent or separately authorized initial state.
+inputs:
+  mode:
+    description: continuation, adopt, or bootstrap; never inferred from failure
+    default: continuation
+  parent-reference:
+    description: Committed reference under config/legislation/parents
+    default: config/legislation/parents/current.json
+  authority:
+    description: Separate committed initial authority under config/legislation/authorities
+    default: ""
+  confirmed-initial:
+    description: Explicit confirmation of the separately reviewed initial authority
+    default: "false"
+  execution-id:
+    description: Caller batch or verification execution identity
+    required: true
+  seed-id:
+    description: Governed seed ID; empty explicitly means discovery without a reviewed seed
+    default: ""
+  github-token:
+    description: Actions read credential used only against the GitHub API
+    required: true
+runs:
+  using: composite
+  steps:
+    - name: Verify in quarantine and promote only complete state
+      shell: bash
+      env:
+        PARENT_MODE: ${{ inputs.mode }}
+        PARENT_REFERENCE: ${{ inputs.parent-reference }}
+        PARENT_AUTHORITY: ${{ inputs.authority }}
+        CONFIRMED_INITIAL: ${{ inputs.confirmed-initial }}
+        PARENT_EXECUTION_ID: ${{ inputs.execution-id }}
+        PARENT_SEED_ID: ${{ inputs.seed-id }}
+        GH_TOKEN: ${{ inputs.github-token }}
+      run: |
+        args=(restore --state build/legislation-state --quarantine build/legislation-parent-quarantine --mode "$PARENT_MODE" --seed-id "$PARENT_SEED_ID")
+        if [ "$PARENT_MODE" != bootstrap ]; then
+          args+=(--parent "$PARENT_REFERENCE")
+        fi
+        if [ -n "$PARENT_AUTHORITY" ]; then
+          args+=(--authority "$PARENT_AUTHORITY")
+        fi
+        uv run --locked python tools/legislation_parent_state.py "${args[@]}"
+    - name: Retain sanitized restoration evidence
+      if: always()
+      uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+      with:
+        name: legislation-parent-${{ github.run_id }}-${{ github.run_attempt }}
+        path: |
+          build/legislation-parent-quarantine/restoration-receipt.json
+          build/legislation-parent-quarantine/lineage.json
+        if-no-files-found: error
+        retention-days: 90

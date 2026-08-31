@@ -1,0 +1,14 @@
+{
+  "completion_scope": "Repository implementation, self-review and PR preparation complete. Delivery requires exact-head hosted checks and guarded merge/readback recorded independently on issue 312.",
+  "created_at": "2026-08-31T15:51:34Z",
+  "description": "Prompt 08 fail-closed parent state restoration",
+  "issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/312",
+  "parent_issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/276",
+  "pr_url": "https://github.com/edithatogo/archive-govt-nz/pull/317",
+  "status": "complete",
+  "track_id": "legislation_parent_state_restoration_20260901",
+  "type": "feature",
+  "updated_at": "2026-08-31T17:28:45.814918+00:00",
+  "validation_receipt": "evidence/migrations/corpus-legislation-nz/parent-state-restoration/local-validation-v2.json",
+  "validation_receipt_sha256": "82f3766f91aa57d181568c6541165e4314274db9bf9562c69cd15895ba2e5343"
+}
