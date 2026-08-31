@@ -1,0 +1,47 @@
+{
+  "conditional_requests_policy": "reset_for_unconditional_revalidation; originals_retained_in_parents",
+  "conflicts": [],
+  "merger_sha256": "5d67b6e1855c7af221f6125e4590e25143bca2d86d956627291d5e04424be651",
+  "mismatches": [],
+  "output": {
+    "checkpoint_sha256": "8afab0cb245c8b0f4c6e42c7d2c863a0f58e99f7c6bded70a1582b2be1a4cbf7",
+    "inventory_sha256": "9ca6dc505f991e015c6c997827878d8c7e9381b214a1544eb338328a285c6894",
+    "manifest_sha256": "877ba501a25570a29c1aada7979562d8c62c7f043865125cf402310eabc09544",
+    "objects": 552,
+    "records": 552,
+    "work_ids": 552
+  },
+  "overlap": {
+    "canonical_uri": 0,
+    "expression_id": 0,
+    "manifestation_id": 0,
+    "raw_cas_hash_blake3": 0,
+    "raw_cas_hash_sha256": 0,
+    "work_id": 0
+  },
+  "parents": [
+    {
+      "artifact_sha256": "1975e473793fd701b81b53a7f6fd696bbeaa257b41bdc55250f064a21ad9e54e",
+      "checkpoint_file_sha256": "fe88ae2da4d2561d4b260f3e4ff25f9e188a7f27f057b72b6f314f07c6c87447",
+      "descriptor_sha256": "f644d8fe7dd8a3423ed1b31a3aed9ea247dc78af0e0fdc81f32e485b10c84d4a",
+      "manifest_file_sha256": "46dc00b8abd0e0f0a0ed774b9ae897d5ff17d7bff5acb945c01457414ccb4c6b",
+      "manifest_sha256": "a32dc371a1a47ae30a4afd58a9cbde2a439f3536d7705eb776e0fa68b4cd16db",
+      "objects": 500,
+      "records": 500,
+      "repository_commit": "b40587f1b1aec7356a0f623916fcc8212397d283"
+    },
+    {
+      "artifact_sha256": "4fe262887bf4d88a02303cc3bbc6023c8762acd36ae4b2bc6891a2ae9a420849",
+      "checkpoint_file_sha256": "898317221aa45cc4b9fa5f98f37222905d89d9475c738ada6bfd890e2fb400ce",
+      "descriptor_sha256": "2dc2cf89492a6cc011e6c53fa3e911a9793f7b134efa84d57c48f3af382acdb0",
+      "manifest_file_sha256": "7d1187d90f4a9659edab23c88dff28fbd048bfd7a77a38c7ff302ca48e60bdc8",
+      "manifest_sha256": "3c7aeaa02aed92f7e1c64a7fff7ca8c82a38e0b62645f90b5efeab4ae078d554",
+      "objects": 52,
+      "records": 52,
+      "repository_commit": "97ae6067d7320fe634f5e202219c412cf4ba754a"
+    }
+  ],
+  "schema_version": "archive-govt-nz.legislation-state-merge/v1",
+  "software_commit": "c4287a4eed4db5d5ae67746cc49287b37f4f914e",
+  "status": "passed"
+}
