@@ -8,3 +8,4 @@
 - Mutation attempt 01 killed all 14 mutants; expanded focused suite passes 49 tests.
 - Live main advanced to af427c2632239a8869684c849c0fcc1981277b02; its three unrelated merges will be incorporated before final validation. Donor archive/head reconfirmed unchanged.
 - Rebased implementation commit d0e55f6bf18d7d0585978c8fcff94324df934174 onto af427c2632239a8869684c849c0fcc1981277b02. Authoritative full attempt 03 passed 2,921 tests, 97.09% aggregate coverage, all mutation/parity/schema/security lanes. Eight existing health SQLite warnings are handed off separately. Generated evidence churn was saved outside the repository and only exact initially-clean generated paths restored.
+- Opened PR #304 from the sole scoped branch after full native validation. Repository implementation/review complete; final documentation head must pass all hosted checks before guarded merge. Issue #299 will carry exact-head merge and independent remote seed readback receipts.

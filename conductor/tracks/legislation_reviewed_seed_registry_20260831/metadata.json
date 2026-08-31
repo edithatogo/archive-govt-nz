@@ -1,12 +1,14 @@
 {
   "track_id": "legislation_reviewed_seed_registry_20260831",
   "type": "feature",
-  "status": "in_progress",
+  "status": "complete",
   "created_at": "2026-08-31T14:47:19.484597+00:00",
-  "updated_at": "2026-08-31T14:47:19.484597+00:00",
+  "updated_at": "2026-08-31T15:06:18.495423+00:00",
   "description": "Prompt 05 governed reviewed seed inventory",
   "issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/299",
   "parent_issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/276",
   "evidence_contract": "chained-v1",
-  "evidence_schema": "1.0"
+  "evidence_schema": "1.0",
+  "pr_url": "https://github.com/edithatogo/archive-govt-nz/pull/304",
+  "completion_scope": "Repository implementation, review and scoped PR preparation complete. Delivery is established only by live PR 304 readback after exact-head checks and guarded merge."
 }
