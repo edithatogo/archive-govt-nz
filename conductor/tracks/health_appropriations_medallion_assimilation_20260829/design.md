@@ -2,6 +2,14 @@
 
 ## Source-derived analytical boundary
 
+The bounded Ministry HAIR2024 CSV path emits a distinct
+`published_indicator_fact` recordset. Supplied real/nominal/per-capita labels
+are preserved without claiming independent reproduction; omitted units, price
+base, denominator and exact fiscal dates remain null with explicit quality
+flags. These records cannot silently replace calculated Gold measures. The
+shared exclusive writer retains original-derived lineage and interrupted
+partial outputs; see [Ministry indicator contracts](./moh-indicators.md).
+
 Pure historical/Budget calculations preserve exact values and IDs, partition
 sources/vintages, and make period/basis gaps and missing/invalid denominators
 explicit. Percentages have an independent Decimal rounding policy; missing
