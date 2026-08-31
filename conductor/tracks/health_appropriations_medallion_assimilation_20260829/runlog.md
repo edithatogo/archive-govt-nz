@@ -1,5 +1,75 @@
 # Run Log
 
+## Source plot context-style review fix — 2026-08-31
+
+- Isolated worktree starts at merged plot commit `b149d37`; its own locked
+  environment uses CPython 3.14.6 and uv 0.11.8, not another actor's `.venv`.
+- Three new focused regression cases fail on the original renderer: one
+  same-context year gap changes markers/colors, while two distinct contexts
+  with colliding abbreviated labels lose a legend entry. Command:
+  `uv run --locked pytest tests/domains/health_appropriations/test_plot_export.py
+  -k 'disconnected_context or colliding_display' -q --no-cov`;
+  exit 1, three failures and 20 deselected (40.62 seconds).
+- Fix keys visual styles by canonical full context, retaining physical line
+  breaks and disambiguating colliding display text with context ordinals.
+  Source objects, existing derivatives and published bytes are untouched.
+- First green run passed all 23 renderer tests (78.51 seconds). Ruff separately
+  flagged a reassigned loop variable; using an explicit display-label variable
+  resolved it without suppressions. Ruff format/check now pass.
+- Isolated renderer coverage run passed all 23 tests (78.05 seconds), with
+  100% line and branch coverage: 132 statements, 30 branches. Command used
+  `COVERAGE_CORE=ctrace PYTHON_JIT=0 uv run --locked pytest
+  tests/domains/health_appropriations/test_plot_export.py -q
+  --cov=archive_govt_nz.domains.health_appropriations.plot_export --cov-branch
+  --cov-report=term-missing --cov-report=json:coverage/plot-context-critical.json
+  --cov-fail-under=100`.
+- First mutation attempt used the documented selection excluding only
+  `preflight_and_two_reproducible_builds` and
+  `cli_preflight_render_and_redacted_failure`, with 21 selected tests,
+  `--gremlin-workers=2 --gremlin-clear-cache --gremlin-no-coverage-filter`,
+  zero allowed pardons and the unchanged timeout. It exited zero after
+  1042.05 seconds but recorded 42 kills and 25 timeouts out of 67 mutants,
+  zero survivors/errors/pardons/cache hits. This is incomplete mutation
+  evidence, not 67 kills; the plugin's combined percentage is not repeated
+  as a mutation-pass claim. Report SHA-256:
+  `bcf99622a4e7339017896f5896b567de3246eb8653c064690b7146aa65de8b03`.
+  Report and stranded coverage bytes were retained outside the checkout before
+  subsequent coverage runs. Coordinated resource isolation precedes retry.
+- A fresh CLI build consumed reviewed Gold manifest
+  `ec68a03f597c7792da4337f2babfcb6615c2e6162a3125042c2b8ef6b7665835`
+  into a new temporary directory. `diff -qr` found all eight files identical
+  to retained `raw-plots-20260831-v2`; both manifests hash to
+  `a04b1b8785d7a4da67ad1b83d6449592838ed0359de792368bb8f150155786d2`.
+  The command exited zero and retained inputs/outputs were not overwritten.
+  Matplotlib 3.11.1, Pillow 12.3.0, FreeType 2.14.3 and Agg remain unchanged.
+- The CLI launch emitted two uv interpreter-cache warnings (invalid MessagePack
+  markers), then uv recreated this isolated environment as CPython 3.14.6.
+  This is an observed runtime/cache event, not proof of the timeout cause;
+  no source or dependency-lock modification was made to work around it.
+- First native harness exited 1 at strict typing, before pytest: the new test
+  treated Matplotlib `ArrayLike` as iterable and legend `Artist | None` handles
+  as lines without narrowing (five diagnostics). Lock, Conductor (70 tracks),
+  formatting (1364 files) and lint passed. This is a test-code defect, not an
+  overload timeout; fix the assertions and rerun required validation.
+- Type repair uses NumPy array equality and explicit `Line2D` runtime narrowing
+  without casts, ignores or weakened value/style assertions. Targeted
+  basedpyright reports zero errors/warnings; Ruff passes; all three regression
+  cases pass (41.54 seconds). Production renderer bytes are unchanged.
+- Corrected native retry used the same command and limits:
+  `COVERAGE_CORE=ctrace PYTHON_JIT=0 PYTEST_XDIST_AUTO_NUM_WORKERS=4
+  ./scripts/validate.sh`. Lock, Conductor (70 tracks), formatting (1364 files),
+  lint and strict typing passed. Pytest collected 1913 tests with seed
+  `3207899423`, reached 97% plus further progress, and displayed one `F` marker
+  before the unchanged 300-second test-stage deadline ended the harness with
+  exit 124. No traceback, final test summary or coverage result was emitted;
+  the failure identity is unknown (the lastfailed cache is empty), not assumed
+  unrelated. Post-test gates were not reached. This is NOT a full-suite pass.
+- Only the two generated timestamp-only legislation receipt diffs were restored
+  in this owned worktree. Process inspection found no residual owned pytest
+  processes. No further heavy local retry is attempted under the observed host
+  contention; the scoped PR will expose these limits and require exact-head
+  hosted validation before any merge decision.
+
 ## Source plot contracts — 2026-08-31 UTC
 
 - Final post-preflight-fix harness exits zero for `eeb6200`: 1,906 tests,
