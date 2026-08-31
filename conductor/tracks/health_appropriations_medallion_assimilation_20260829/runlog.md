@@ -1049,3 +1049,15 @@ its change set.
 - Checkpoint/recovery into an independent clone preserved work during external
   worktree removals. The precise receipt and browser blocker are documented in
   [Budget operations](./budget-operations.md).
+
+## 2026-08-31 — Hash-bound embedded-notice observer
+
+- Red import contract established; 34 focused tests reached 100% line/branch
+  coverage, followed by 29/29 cold unfiltered mutant kills. Independent review
+  found no implementation defect. Ruff, typing, secrets and Conductor pass.
+- All three exact reviewed Bronze workbooks returned notice observations,
+  without source text or eligibility promotion. Originals remain unchanged.
+- Required native gate emitted 2,215 passed and one existing CPI timing failure
+  at 96.91% coverage, then exited 124. The unchanged failed test passed alone.
+  No deadlines were weakened; hosted assurance remains separate. Exact bounded
+  receipts are in [embedded notices](./embedded-notices.md).

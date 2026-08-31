@@ -443,6 +443,7 @@ def test_executor_admission_rejects_invalid_files(
         (0, "[]", "receipt"),
         (0, '{"public_upload":true}', "receipt"),
     ],
+    ids=["nonzero-exit", "oversized-output", "wrong-envelope", "public-claim"],
 )
 def test_offline_subprocess_rejects_untrusted_receipts(
     code: int, stdout: str, reason: str, monkeypatch: pytest.MonkeyPatch

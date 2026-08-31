@@ -90,6 +90,11 @@ repository validation command. External gates block only their affected task.
 
 ### 1.3 Characterize every donor binary and derivative
 
+- [~] Observe embedded copyright/licence notices for the three exact reviewed
+  legacy workbook hashes; emit bounded hash-bound cell evidence without source
+  text, original modification, network access or eligibility promotion.
+  Reject unsupported/tampered inputs. [M-04, M-07, M-18; AC-04, AC-16]
+
 - [x] Record hash-pinned static behavior and compile characterization of all
   three donor scripts without executing their side effects. [M-09; AC-07]
   (`d26e769`)

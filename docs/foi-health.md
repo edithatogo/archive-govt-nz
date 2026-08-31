@@ -22,8 +22,12 @@ unlimited capacity or replace backend enforcement.
 
 Reports contain counts, finding classes and at most 50 affected source IDs, with
 an omitted count so detail limits cannot hide failures. Receipts are capped at
-64 KiB and created exclusively with private file permissions; a missing parent
-is created. Existing receipts are never overwritten. Fetch/validation failures
+64 KiB and created exclusively, requesting owner-only POSIX file and directory
+modes; a missing parent is created. These modes are verified on POSIX systems.
+Windows inherits filesystem ACLs, whose privacy this tool does not configure or
+verify. Operators must use an appropriately protected destination there. Health
+receipts contain public control metadata, never raw source payloads or tokens.
+Existing receipts are never overwritten. Fetch/validation failures
 produce sanitized class-only failure receipts. If receipt writing fails, sanitized
 stdout still records the failure, which exits nonzero. Configure workflow artifact
 retention with an always-run upload step, and preserve the job log if local disk

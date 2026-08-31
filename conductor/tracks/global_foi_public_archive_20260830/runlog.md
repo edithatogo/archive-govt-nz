@@ -217,3 +217,5 @@ PR #272 hosted Ubuntu passed 2,048 tests, 96.84 percent coverage and mutation st
 
 - PR #288 required integration of newly merged main d6bc0c9 (lineage and health delivery). Resolved the additive supply-chain-test conflict by retaining both upstream secret-adjudication tests and the new strict-SBOM regression. Stopped only this worktree's remaining-stage validation before integration; its partial log is not a full pass.
 - The newly merged final-lineage track also required three canonical navigation-label corrections for the generic full Conductor validator. No imported snapshot, acceptance or historical evidence was changed. All 13 integrated supply-chain tests passed.
+
+- Hosted run 33394282528 passed Linux (2,390 tests, 96.98% coverage, strict SBOM) and macOS. Windows failed two POSIX-mode assertions and setup/teardown for an oversized pytest parameter ID. The correction keeps every functional case, uses bounded test IDs and distinguishes POSIX modes from unverified Windows ACL privacy. No failed-platform merge or deployment occurred.

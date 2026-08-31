@@ -19,7 +19,7 @@ RECEIPT_LIMIT = 65536
 
 
 def write_receipt(path: Path, report: dict[str, Any]) -> None:
-    """Create private evidence exclusively, without replacing a previous receipt."""
+    """Create exclusive evidence with owner-only POSIX modes where supported."""
     content = (json.dumps(report, sort_keys=True) + "\n").encode()
     if len(content) > RECEIPT_LIMIT:
         message = "health_receipt_budget"

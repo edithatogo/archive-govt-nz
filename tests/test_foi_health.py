@@ -2,6 +2,7 @@
 
 import importlib.util
 import json
+import os
 import sys
 from dataclasses import replace
 from pathlib import Path
@@ -140,7 +141,8 @@ def test_cli_anonymous_read_and_private_receipt(
     )
     assert store_factory.return_value.method_calls == [("read_all", (), {})]
     assert json.loads(receipt.read_bytes())["status"] == "healthy"
-    assert receipt.stat().st_mode & 0o777 == 0o600
+    if os.name == "posix":
+        assert receipt.stat().st_mode & 0o777 == 0o600
 
 
 def test_network_failure_saves_only_error_class(
@@ -187,7 +189,8 @@ def test_missing_receipt_parent_is_created_privately(tmp_path: Path) -> None:
     path = tmp_path / "build" / "health.json"
     TOOL.write_receipt(path, {"status": "healthy"})
     assert json.loads(path.read_bytes())["status"] == "healthy"
-    assert path.parent.stat().st_mode & 0o777 == 0o700
+    if os.name == "posix":
+        assert path.parent.stat().st_mode & 0o777 == 0o700
 
 
 def test_optional_token_is_only_sent_to_client(
