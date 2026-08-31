@@ -331,6 +331,12 @@ repository validation command. External gates block only their affected task.
 
 ### 5.1 Source-family contracts first
 
+- [~] Persist canonical Budget label occurrences in an exclusive local-only
+  package composed with the pinned Budget reader and original-byte verification.
+  Dry run serializes/caps all planned bytes without state creation; preserve
+  complete lineage accounting and partial failure evidence. No crosswalk,
+  spending-fact mutation or publication. [M-05, M-06, M-07, M-18; AC-05, AC-09, AC-16]
+
 - [x] Project verified Budget functional-classification source-label occurrences
   into the canonical dimension shape: four literal labels, local scheme,
   unknown scheme version/identifier and unmapped state; preserve per-source
