@@ -86,3 +86,16 @@ Prior pilot manifest
 `4cc6e8d36223211d33028ab57f55cfa1a46fe1c4ae12f27ca6381a71574d26ce`
 retains the initial153-lineage schema for review history; it is not silently
 promoted to the revised schema. Source and existing derivatives were unchanged.
+
+## Native assurance
+
+At1ac0f97 (main25f9fb5 integrated), the required
+`COVERAGE_CORE=ctrace PYTHON_JIT=0 PYTEST_XDIST_AUTO_NUM_WORKERS=4 ./scripts/validate.sh`
+completed exit0. CPython3.14.6:2672tests passed,8warnings,92.29seconds,
+97.04%overall coverage;41schemas/31samples,73tracks,9/9parity,all native
+mutation-policy gates, audit/licences/secrets and validated111-component SBOM.
+CAS benchmark394.43MB/s. Durable log SHA256
+`cfd9992d93fe2fef0c60a2250666cbf708086bb8b31934cddb3483f2df2d72b2`;
+exit receipt contains0. Four unrelated timestamp-only generated receipt changes
+were restored after validation. No gates or deadlines were lowered. Hosted
+exact-head checks and delivery are a separate pending boundary.
