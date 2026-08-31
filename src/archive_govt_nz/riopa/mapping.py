@@ -129,6 +129,18 @@ def map_archive_receipt(
             "legal_status": receipt["legal_status"],
         },
         "status": status,
+        "claims": dict.fromkeys(
+            (
+                "network",
+                "timetable",
+                "facility",
+                "national",
+                "clinical",
+                "dispatch",
+                "authoritative",
+            ),
+            False,
+        ),
     }
     if reason is not None:
         result["quarantine_reason"] = reason
@@ -175,11 +187,13 @@ def _is_datetime(value: str) -> bool:
 
 
 def _qualification(receipt: Mapping[str, Any]) -> tuple[str, str | None]:
-    if receipt["status"] in {"partial", "failed", "negative", "unavailable"}:
+    if receipt["status"] != "captured":
         return "quarantined", f"{receipt['status']}_capture"
     rights = receipt["rights"]
     if not isinstance(rights, Mapping) or rights.get("status") != "resolved":
         return "quarantined", "rights_unresolved"
+    if receipt["legal_status"].get("status") not in ("observed", "resolved"):
+        return "quarantined", "legal_status_unresolved"
     return "eligible", None
 
 
