@@ -85,6 +85,13 @@ This verifies extraction consistency, not the omitted analytical methodology.
   survivors/cache hits and no coverage filtering or pardons, in202.30seconds.
   Report SHA-256: `c3796413c7cb1fffe8d3348df43d071513cb04c1c14b07ecccc1bb9d484b8176`.
 - Full native and exact-head hosted assurance remain pending.
+- First native session46275 passed pretest gates and collected2,243tests;
+  one failure marker was observed around70% progress. After runtime/context
+  interruption its session was unavailable, without final exit or traceback.
+  Empty pytest last-failed cache is not treated as success. Only two unrelated
+  generated timestamp diffs were present and were restored. One distinct
+  recovery attempt on integrated main9c609fe uses durable log/exit receipts;
+  no test deadline or threshold is relaxed.
 
 Broader Ministry historical editions, verified base/method metadata, canonical
 real/per-capita derivation and publication remain pending; this does not
