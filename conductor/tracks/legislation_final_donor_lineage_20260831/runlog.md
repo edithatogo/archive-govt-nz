@@ -20,3 +20,6 @@
 
 - Required ./scripts/validate.sh finished exit 1: all stages through dependency audit/licences passed; secret scan stopped the fail-closed harness with 98 path-string candidates. All mutation lanes passed. Separate SBOM validation passed (111 components). Full log hash in validation-final.json.
 - Documented independent fixity command passed against import commit.
+
+- Hosted head 9999efe9588a72354d4b027a22ef92a6b5a7cd58: three assurance jobs failed at formatting of the newly added Python example in final-donor-lineage.md; hosted workflow lint passed. Failed run 33388278921 retained; correcting only the owned documentation formatting.
+- Exact-head local secret scan on 9999efe reports 99 path-string candidates (the added final receipt contributes one); previous 98-candidate receipt remains unchanged.

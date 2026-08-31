@@ -67,12 +67,18 @@ assert {str(x.relative_to(root)) for x in root.rglob("*") if x.is_file()} == {
 for item in f["files"]:
     data = (root / item["path"]).read_bytes()
     assert hashlib.sha256(data).hexdigest() == item["sha256"]
-    assert hashlib.sha1(
-        b"blob " + str(len(data)).encode() + b"\0" + data
-    ).hexdigest() == item["git_blob"]
-assert subprocess.check_output([
-    "git", "rev-parse", r["target_import_commit"] + ":" + r["imported_tree_root"]
-]).decode().strip() == r["imported_git_tree"]
+    assert (
+        hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
+        == item["git_blob"]
+    )
+assert (
+    subprocess.check_output(
+        ["git", "rev-parse", r["target_import_commit"] + ":" + r["imported_tree_root"]]
+    )
+    .decode()
+    .strip()
+    == r["imported_git_tree"]
+)
 for name, digest in r["artifacts"].items():
     assert hashlib.sha256((p / name).read_bytes()).hexdigest() == digest
 ```
