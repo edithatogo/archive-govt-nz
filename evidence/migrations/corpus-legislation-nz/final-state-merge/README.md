@@ -98,3 +98,11 @@ remain idempotent. A regression test failed before the fix and passed afterward.
 The final focused suite has 50 tests at 100% critical line and branch coverage.
 Independent readback and reversed execution passed again for execution 02.
 Full validation is being rerun after the review fix before issue completion.
+
+## Final local validation
+
+The full post-review harness passed: 2,644 tests, 97.00% overall coverage,
+all repository schema/parity/mutation/workflow-policy lanes, dependency audit,
+licence inventory, secret scan and strict SBOM validation (111 components).
+`local-validation-final.json` binds the exact log and reviewed code. Hosted
+checks and remote merge remain separate gates, not implied by these local passes.
