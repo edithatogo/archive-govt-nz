@@ -1398,3 +1398,56 @@ and both projection events; 188 projection/snapshot/Conductor tests passed in
 temporary two-character header truncation was corrected before committing and
 full JSON validity checked. Production/test hashes and native evidence are
 unchanged; no second full run is claimed.
+
+## 2026-08-31 — Exclusive historical canonical export
+
+Created independent clone `health-canonical-export.XpIUm2` from the committed
+reader/projection stack `d418b8e`; no edits in the coordinating clone. Conductor
+implementation selected an explicitly bounded Phase 3 local-only task. A
+premature test attempt before environment installation finished exited 127;
+after setup, the missing exporter module produced the expected red exit 2.
+Two initial tests passed; expansion to 48 covered source fixity, semantic
+rejection, output ownership, partial/failed markers, interruption, exact
+readback and byte limits. Two additional dry-run parity tests failed before
+shared bounded serialization was implemented. A typed short-write fixture was
+corrected from `bytes` to the stream's `Buffer` signature. Final 52 focused tests
+passed with 100% of 77 statements/14 branches, plus Ruff and targeted typing.
+
+Cold unfiltered mutation selected all 52 tests: 41/41 killed, no survivors,
+timeouts, errors, pardons or cache hits, one worker, unchanged 30-second deadline,
+51.89 seconds. Receipt SHA-256
+`812b63804573167146de76c1987e86ba6ded36ad38deb659cc2c0dbac4103843`.
+Independent review found no outstanding issue. Four new local builds under
+`/tmp/health-canonical-export-pilot.qjiPfA` form two byte-identical pairs, five
+files and 356,830/363,811 bytes per vintage. Planned and written hashes agree;
+original workbook and package hashes remained unchanged. No HF or candidate
+operation occurred. See `historical-canonical-export.md` for full pins/limits.
+
+Functional checkpoint `8bee922` was followed by main integration `a20393c`,
+including delivered projection PR #305 (`0a076fa`, exact head `01cab50`, seven
+successful checks and expected-SHA merge). The first unresolved pre-305 merge
+was safely aborted from the committed checkpoint before integrating the newer
+main; no owned uncommitted change was lost. Ledger bytes exactly matched main.
+222 composed projection/snapshot/export tests passed in 8.08 seconds. Source
+and test hashes stayed unchanged. Native `./scripts/validate.sh` now runs with
+`COVERAGE_CORE=ctrace`, `PYTHON_JIT=0`, four xdist workers, and an independent
+uv cache. Full completion is pending at this checkpoint.
+
+Native completed exit 0: 3,194 tests in 95.82 seconds, eight existing warnings,
+97.15% coverage, schema/parity and all repository mutation gates, hygiene,
+CAS 609.55 MB/s, audit/licences/secrets and SBOM 111 passed. The tested source
+checkpoint was `a20393c`; documentation was updated afterward, with unchanged
+source/test hashes. Native log SHA-256
+`92e6ce04387c75174c9f0214c614d265798ef88254ba548ec7b64a9a55901f8a`.
+After exit, restored only two generated timestamp-only legislation receipts.
+Broader local capture/CAS/WARC/donor Git-tree preservation evidence is separately
+owned by PR #309; no remote or rights claims are inherited from that audit.
+
+After native exit 0, retained two expressly authorized, previously absent
+Silver directories `canonical-historical-2024-20260831-v1` and
+`canonical-historical-2025-20260831-v1`. Rebuilt rather than moved prior files;
+each five-file output is byte-identical to both temporary builds. Before/after
+hashes agree for each original and all four source-package files. Ten new local
+derivatives total 720,641 bytes; no existing output, v4 or HF bytes changed.
+Retention receipt SHA-256
+`197ee1aa0fa32883005cb234da63488b3da8694d61484b924f475ade7c329eb8`.

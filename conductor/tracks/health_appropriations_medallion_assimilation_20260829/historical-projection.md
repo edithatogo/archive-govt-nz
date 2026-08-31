@@ -92,6 +92,7 @@ projection/Arrow/JSON/Conductor tests, repository format/lint/types and all 74
 Conductor tracks. The complete incoming machine ledger was preserved byte for
 byte as a prefix before the two owned receipts. The full native result remains
 pre-integration; hosted exact-head checks are a separate gate.
+
 Remaining work includes other source-specific projections, a persisted canonical
 package contract and broader semantic validators. This does not canonicalize
 unresolved MoH/QES units, rewrite historical packages or advance HF publication.

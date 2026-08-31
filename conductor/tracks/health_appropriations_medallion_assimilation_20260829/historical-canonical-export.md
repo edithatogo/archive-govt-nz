@@ -67,7 +67,12 @@ dry-run refinement. Cold unfiltered mutation passed 41/41 mutants in 51.89
 seconds, with one worker and zero survivors, timeouts, errors, pardons or cache
 hits. All 52 tests were selected; the default 30-second deadline was unchanged.
 The coverage-collection warning did not enable coverage filtering. Native
-assurance remains pending at this checkpoint.
+`./scripts/validate.sh` then passed on integrated source checkpoint `a20393c`
+(with documentation updated afterward): 3,194 tests, eight existing warnings,
+97.15% overall coverage, all schema/parity/repository mutation, hygiene, audit,
+licence, secret and SBOM gates; 111 SBOM components. Test stage took 95.82
+seconds. Python 3.14.6/uv 0.11.8 used an independent environment, ctrace,
+disabled JIT and four xdist workers. This is local, not hosted assurance.
 
 Source SHA-256: `5b6399de889645f2c30a199b84efe07b1771a59f313d97adf7d8108243fc21a0`.
 Test SHA-256: `82ac37c14edf60ad84af036ac6f265e61953881ca205bcf71096c50445186d25`.
@@ -75,6 +80,8 @@ Critical coverage receipt SHA-256:
 `b2ccbfa3dd53c86b40cb7b6123e7e67d81e24ae2529483c6ddf629d9efd27bc5`.
 Mutation receipt SHA-256:
 `812b63804573167146de76c1987e86ba6ded36ad38deb659cc2c0dbac4103843`.
+Native log SHA-256:
+`92e6ce04387c75174c9f0214c614d265798ef88254ba548ec7b64a9a55901f8a`.
 
 ## Local retained-source pilots
 
@@ -94,16 +101,17 @@ the earlier package; 54/54 facts and 1026 lineage rows for the later one. Source
 manifest pins are unchanged from `historical-projection.md`. Pilot receipt
 SHA-256: `1000b0bc03fc6889f8398e1c3a79010a1c68d9ad629f3a2d7b075776984a75f9`.
 
-## Independent local preservation audit
+After native validation passed, explicit absence checks preceded two additional
+exclusive builds retained under the archival Silver root:
+`canonical-historical-2024-20260831-v1` and
+`canonical-historical-2025-20260831-v1`. Each retained build matches both of its
+temporary builds byte for byte, including the marker pins above. All original
+and source-package before/after hashes are unchanged. These ten new derivative
+files total 720,641 bytes; v4 and HF were not modified. Retention receipt SHA-256:
+`197ee1aa0fa32883005cb234da63488b3da8694d61484b924f475ade7c329eb8`.
 
-The coordinating agent verified SHA-256 and sizes for 73 capture entries
-(38,877,606 bytes), 23 donor entries (6,604,301 bytes) and 94 v4 candidate
-payloads (39,390,246 bytes). It also verified 73 pinned WARC files
-(38,915,034 bytes), exactly one response each, with decoded body hashes and
-lengths matching CAS originals. Audit script SHA-256:
-`a364465d8191795d427c8e7e5ec3bbba647c626e52bfb73db8570b68862fc335`.
-The capture and candidate manifests were independently pinned; donor manifest
-`893f387e1f361400285ccc84802b497e87802d1ad913826ff7d9055b07a03b74`
-was observed rather than independently pinned. This is local preservation
-evidence only: no remote/HF access, source-semantic revalidation, rights change
-or archive write is claimed.
+The broader capture/donor/v4/WARC and donor Git-blob/tree preservation audit is
+recorded separately in [PR #309](https://github.com/edithatogo/archive-govt-nz/pull/309)
+(`preservation-recheck.md`), not duplicated as an exporter verification claim.
+It is local-only evidence with no remote/HF or rights promotion. The pilot above
+checks its own exact historical inputs and local derivatives only.
