@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import string
 import sys
 from pathlib import Path, PurePosixPath
 
@@ -169,7 +170,7 @@ def test_builder_rejects_unsafe_paths_before_creating_output(
 @settings(max_examples=40)
 @given(
     st.text(
-        alphabet="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-",
+        alphabet=string.ascii_letters + string.digits + "_-",
         max_size=100,
     )
 )
