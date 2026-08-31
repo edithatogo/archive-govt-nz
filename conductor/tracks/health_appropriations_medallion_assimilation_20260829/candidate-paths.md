@@ -35,6 +35,16 @@ broader additive candidate planner remains separate work.
   character set. All 37 focused cases and the unchanged secret gate pass.
   The initial native run is not recorded as a full pass. Integrated assurance
   and hosted delivery will be recorded separately.
+- Corrected native harness at `cddb384` passed completely: 2,219 tests, four
+  reported warnings, 96.90% overall coverage, 41 schemas/31 samples, 9/9 parity,
+  all repository mutation lanes, hygiene, audit, licences, secrets and a
+  validated 111-component SBOM. CAS throughput was 458.51 MB/s (minimum 25).
+  A preceding Conductor preflight caught a missing timestamp in the new local
+  receipt; that clerical field was corrected before this passing run.
+- Subsequent integration of forecast merge `565dd88` and delivery-only receipts
+  preserves the candidate-path production bytes. All 55 candidate-path and
+  forecast-successor focused cases pass after integration; Conductor validates
+  all 70 tracks. This is distinct from a repeated integrated full-suite run.
 - Independent review found no remaining finding in this bounded path contract.
 
 The plot recovery evidence accompanies this delivery: 67/67 mutants killed
