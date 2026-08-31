@@ -97,6 +97,9 @@ stages at the CAS benchmark: 11.48 MB/s versus the unchanged 15 MB/s minimum.
 No GDP-specific failure was reported. The failure is retained, not relabeled
 as success; no benchmark threshold, source code or test was weakened. The
 subsequent required main integration provides a new hosted validation run.
+Main `3be3048` (JSON row-shape contracts) integrated at `8378666` with the full
+incoming ledger prefix preserved. The unchanged GDP source passes 45 focused
+tests and 74-track Conductor validation again; no new native pass is claimed.
 
 ## Prior Pharmac hosted delivery
 
