@@ -109,3 +109,14 @@ Fresh REST observation found PR #295 already merged externally at
 `9e559799f441651e79d4109fcd28e5fa89be668e`, all seven checks successful.
 This implementation agent issued no merge call. The observation grants no
 publication rights or approval.
+
+## Historical-reader main integration
+
+All seven checks, including the unchanged Windows benchmark gate, passed on
+head `3e526f3`; subsequent main `2061098` caused a ledger-only merge conflict.
+Integration `22a1ca6` preserves the complete incoming ledger prefix followed by
+the two existing GDP events. GDP production and tests are unchanged. An initial
+focused invocation named a nonexistent Conductor test path and collected no
+tests; the corrected invocation passed all 63 GDP/Conductor tests. Repository
+Conductor validation was rerun. Prior native assurance is not relabelled as a
+new integrated native pass; the new head requires fresh hosted checks.
