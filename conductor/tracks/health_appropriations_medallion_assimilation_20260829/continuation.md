@@ -36,6 +36,16 @@ No task is complete just because code exists, an issue is closed, or CI is green
 
 ## Execution loop
 
+- Use `source-schema-gaps.md` for the reconciled remaining source/canonical
+  route and `preservation-recheck.md` for the latest independent local
+  CAS/WARC/candidate audit. Consult newer appended receipts and live PR state
+  before deciding which active stream needs implementation versus delivery.
+  The historical notes below record prior increments, not an instruction to
+  repeat an already-merged task.
+- `originals-product-replay.md` records two byte-identical fresh four-profile
+  original-to-SQLite/Gold/plot replays and a separately diagnosed SQLite writer
+  version difference against older artifacts. Do not repeat this as missing
+  component work or call it complete Platinum/interruption recovery.
 - Current raw-source increment: the Budget adapter extracts 215 Health facts
   directly from the pinned original, preserving 3,655 cell-lineage rows and
   all 6,504 input dispositions. Keep these outputs separate from the published
