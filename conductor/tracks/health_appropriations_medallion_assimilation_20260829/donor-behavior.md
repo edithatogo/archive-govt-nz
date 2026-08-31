@@ -34,6 +34,13 @@ It verifies existing bytes; it does not claim another fresh extraction.
 Complete workbook/PDF data-area coverage, contextual datasets, partial-stage
 resume, scheduling and publication remain separate pending tasks.
 
+PR #270 was observed merged on 2026-08-31 at 09:56:10Z, after seven successful
+exact-head checks (CI run 33379586775). Head
+`8375ae372e34d6d92978d657c32da998c5dfb5f9` and merge
+`f94bb5b421d7811649b5396203a29fd5c893ae6a` share tree
+`d824c977baf888b6addbfe8cfab679fb91a8d1cb`. This is hosted delivery evidence for
+the bounded conformance change, not full assimilation or publication approval.
+
 ## Original static characterization
 
 Source: `edithatogo/nz_health_appropriations` commit
