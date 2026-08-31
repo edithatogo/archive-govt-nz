@@ -17,6 +17,25 @@ from archive_govt_nz.foi_publication import (
     publish_raw_package,
 )
 
+SAFE_FAILURE_REASONS = frozenset(
+    {
+        "approved_operator_account_required",
+        "child_repository_not_public",
+        "remote_integrity_failure",
+        "public_repository_identity_required",
+        "invalid_remote_revision",
+        "concurrent_publication",
+        "catalogue_restore_mismatch",
+        "immutable_snapshot_conflict",
+        "invalid_current_pointer",
+        "directory_provenance_mismatch",
+        "directory_source_mapping_mismatch",
+        "exact_publication_decision_required",
+        "attachment_gaps_block_publication",
+        "untrusted_package_manifest",
+    }
+)
+
 
 def _operator(hub: HuggingFaceHub) -> None:
     if hub.writer.whoami()["name"] != "edithatogo":
@@ -87,6 +106,9 @@ def main() -> int:
         failure = {
             "status": "failed",
             "error_class": type(error).__name__,
+            "reason": str(error)
+            if str(error) in SAFE_FAILURE_REASONS
+            else "unclassified",
             "verified_result": result,
             "publication_verified": result is not None
             and result.get("status") == "verified",
