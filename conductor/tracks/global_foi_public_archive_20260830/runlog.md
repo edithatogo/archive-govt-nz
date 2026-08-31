@@ -102,3 +102,5 @@ The adapter inspection found silent HTTP 404 skips. Red tests observed missing m
 Full attachment harness completed with exit 0: 1621 tests, 96.15% coverage, all quality/schema/mutation/supply-chain gates. Six focused integrity mutants killed. Live v2 cold restore and existing v1 verification both passed. Receipt: attachment-package-validation-20260831.json.
 
 The staged-source secret scan flagged the intentionally synthetic Basic Auth rejection fixture. Added the same narrowly scoped synthetic-fixture annotation already used by catalogue tests; no production credential or scanner rule was changed. Re-running the staged scan before commit.
+
+Latest-main integrated validation and PR 258 CI stopped at Ruff E501: the synthetic secret annotation made one fixture line too long. Shortened only the fake credential value, preserving the rejection test and scoped scanner annotation; rerunning the full gate.
