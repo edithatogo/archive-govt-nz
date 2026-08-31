@@ -1,5 +1,31 @@
 # Run Log
 
+## Pharmac preserved-HTML normalization — 2026-08-31
+
+- Registered Phase 5.1 before source edits; functional checkpoint `d3ad31a`
+  remains an in-progress task until required assurance and hosted delivery.
+- Read the whole retained table and surrounding scope, not only preview rows.
+  Reconciled exact census source `pharmac_cpb-010`; no source request occurred.
+- Red pytest collection failed on the absent adapter. Full focused progression
+  reached 69 tests, 100% critical line/branch coverage and passing Ruff/types.
+  A wrong coverage module spelling produced no data; the corrected dotted
+  name passed the unchanged threshold. Parent review's missing-lineage-null
+  regression failed before its narrow correction and then passed.
+- Two exclusive local pilot directories each contain four byte-identical files,
+  31,646 bytes, manifest
+  `5eea323f1f9360fb7a92b7c2d9f92f1922dfb6f447a8252c8ca8b3ebf64ff248`.
+  Independent table parsing reconciled all 64 physical cells and 42 supplied
+  numeric/missing values against fourteen facts and their amount lineage.
+- Source remained byte-identical. Exact source and implementation boundaries,
+  pending heavy gates and prior PR #285 hosted delivery are in
+  [the CPB receipt](./pharmac-cpb.md).
+- Cold mutation command used the complete focused file, `--gremlins`, exact
+  `--gremlin-targets=src/archive_govt_nz/domains/health_appropriations/pharmac.py`,
+  two workers, no coverage filter, JSON reporting and zero allowed pardons.
+  All 93 mutants were killed in 172.27 seconds, with zero cache hits or other
+  outcomes. The generated coverage fragment was retained outside the checkout
+  before the full harness to avoid mixing instrumentation runs.
+
 ## Plot mutation recovery and hosted readback — 2026-08-31
 
 - A coordinated retry in the standalone recovered clone retained the same

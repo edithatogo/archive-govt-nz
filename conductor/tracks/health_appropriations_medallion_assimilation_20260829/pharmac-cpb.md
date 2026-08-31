@@ -1,7 +1,7 @@
 # Pharmac medicines-budget HTML adapter
 
-Local source-specific normalization is implemented; heavy assurance and hosted
-delivery remain pending. No source capture, rights promotion or publication is
+Local source-specific normalization and cold mutation assurance pass; native
+and hosted delivery remain pending. No source capture, rights promotion or publication is
 performed by this adapter.
 
 ## Exact retained source and scope
@@ -74,8 +74,19 @@ existing Silver/Gold package, candidate, Hugging Face revision or donor changes.
   Ruff format/lint and basedpyright passed. One intermediate coverage command
   misspelled the dotted module path, reporting no data despite passing tests;
   the corrected module-scoped command passed the unchanged 100% threshold.
-- Heavy mutation, full repository harness and hosted exact-head checks are
-  pending. Focused assurance is not substituted for those gates.
+- Cold unfiltered mutation: 93/93 killed, zero survivors/timeouts/errors/pardons,
+  zero cache hits, two workers, all 69 tests, 172.27 seconds. Report SHA-256:
+  `4dacb57619169b44569225d3a09fa4aeff5db90527b40e0c41a408d79408cf79`.
+- Full repository harness and hosted exact-head checks remain pending.
+  Focused and mutation assurance are not substituted for those gates.
+
+Two exclusive local pilot builds match byte-for-byte across four files totaling
+31,646 bytes. Manifest SHA-256 is
+`5eea323f1f9360fb7a92b7c2d9f92f1922dfb6f447a8252c8ca8b3ebf64ff248`.
+An independent table parser reconciled every physical cell and all 42
+numeric/missing inputs against facts and amount lineage. The script digest is
+`5b2df7fa2a0702bd430e53f8cdff1de95d2d137ecb6460d8b12da180cf546db8`;
+source hash readback remained unchanged. These packages have not been published.
 
 ## Prior embedded-notice hosted delivery
 

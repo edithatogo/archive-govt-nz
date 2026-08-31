@@ -1,5 +1,21 @@
 # Self-Review
 
+## Pharmac published-budget profile — 2026-08-31
+
+- Parent independently reviewed the strict table/physical-cell profile, fiscal
+  definition and reform/caption boundaries. One finding: missing normalized
+  lineage serialized as string `None`; corrected to true schema null after
+  a red regression, preserving the original `-` token and missing status.
+- Exact decimals receive zero-padding only; published changes and rounded
+  percentages are not recomputed. Original HTML and the separate missing,
+  padding, header and policy-context evidence remain preserved.
+- Source mutation, network execution, rights promotion and publication are
+  absent. The parser is a bounded reviewed-profile reader, not a browser or
+  general HTML display-truth evaluator. Other page content remains in Bronze.
+- Focused 69 tests, 100% critical coverage and cold unfiltered 93/93 mutation
+  kills pass. No survivors/timeouts/errors/pardons/cache hits. Native harness
+  and hosted delivery remain separate pending gates at this checkpoint.
+
 ## Plot context-style regression — 2026-08-31 UTC
 
 - Confirmed a visual identity defect on valid same-context years 2000, 2001
