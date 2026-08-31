@@ -39,15 +39,15 @@ The approved destination is archive-govt-nz; no cutover has occurred.
 - [~] P4.1 (AC07, AC11): Add red tests for restricted publication, public metadata leakage, private/gated targets, wrong repo identity, partial upload, remote hash mismatch, inconsistent child revisions, provider outages and premature index promotion.
 - [~] P4.2 (AC07): Wire public global catalogue, existing per-instance identities, raw payloads, metadata indexes, cards and revision-pinned manifests through the approved publisher.
 - [ ] P4.3 (AC07, AC11): Reconcile source eligibility, platform capacity and least-privilege credentials; publish the eligible NZ candidate under recorded user authority and verify every accepted object anonymously.
-- [ ] P4.4 (AC07): Verify a second eligible instance, cross-instance isolation, revision-pinned catalogue links, interrupted-publication recovery, cold restore without cache and viewer status separately from raw storage.
-- [ ] P4.5 (AC12): Automated publication/security review, full phase validation and hosted receipts.
+- [~] P4.4 (AC07): Verify a second eligible instance, cross-instance isolation, revision-pinned catalogue links, interrupted-publication recovery, cold restore without cache and viewer status separately from raw storage.
+- [~] P4.5 (AC12): Automated publication/security review, full phase validation and hosted receipts.
 
 ## Phase 5 — Sustainable acquisition for every country
 
 - [ ] P5.1 (AC08, AC09): Add red state-machine tests for fairness, per-origin limits, retry exhaustion, stale leases, missing artifacts, changed/withdrawn objects, byte/runtime budgets, fair queue service and blocked adapters.
 - [ ] P5.2 (AC08): Implement registry-derived schedules, historical/incremental queues, durable state and bounded continuation; do not use a blind country loop.
 - [ ] P5.3 (AC04, AC08, AC11): Walk the entire pinned country universe; assess all discovered sources, add bounded adapters where possible, verify capture/storage per eligible source, activate approved schedules, and retain explicit unsupported/blocked dispositions.
-- [ ] P5.4 (AC09): Add freshness/backlog monitoring and actionable stuck-state alerts; prove that green monitor execution cannot conceal failed capture/publication.
+- [~] P5.4 (AC09): Add freshness/backlog monitoring and actionable stuck-state alerts; prove that green monitor execution cannot conceal failed capture/publication.
 - [ ] P5.5 (AC12): Automated review, recovery/property/mutation gates and full validation with evidence-backed country counts.
 
 ## Phase 6 — Shadow parity, cutover and rollback
@@ -71,3 +71,5 @@ Bounded capture 33305989413 advanced the credited cursor to 17226, but its artif
 Bounded original-byte restore passed in run 33307777685 after donor #407 merged. Credited next offset is 17227, with 15981 queue entries unprocessed. P3.3 remains in progress because durable storage, metadata reconstruction and historical raw-gap reconciliation are incomplete. Monitor remains disabled; see hosted-raw-restore-20260830.json.
 
 P3 continuation: v2 packages add explicit attachment gaps and event relationships; v1 restore compatibility is retained. Donor credit must reject discovered-but-unretained attachment references. This does not prove exhaustive source discovery.
+
+Hosted catalogue verification passed in run 33358508220 after retry-order correction. P4.4/P4.5 and P5.4 are partial for metadata only; eligible raw delivery, a second raw instance, acquisition monitoring and full phase acceptance remain pending. The next source-specific gate is documented in nz-publication-decision.pending.json. No raw or ownership gate is satisfied by the metadata run.
