@@ -9,7 +9,9 @@
   regression and complete 900-entry closure pass. Currency remains null.
 - 45 focused tests/100% critical coverage and cold 37/37 mutation pass. Original
   source and both independently reconciled deterministic pilots are retained.
-  Native/hosted gates remain distinct from local assurance and rights approval.
+  Native passed at `41e7717`: 2,790 tests/97.07% overall and all gates.
+  Hosted checks and rights approval remain distinct. Exclusive retained Silver
+  package readback is identical; source-specific output is not canonical.
 
 ## Additive inventory planner — 2026-08-31 UTC
 

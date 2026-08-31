@@ -2,6 +2,15 @@
 
 ## Exact GDP quarterly source profile — 2026-08-31
 
+- Required native `./scripts/validate.sh` at `41e7717` passed all gates:
+  2,790 tests/75.20s/97.07%, eight existing cleanup warnings, 41 schemas/31
+  samples, 9/9 parity, all mutation and supply-chain checks. Log SHA
+  `cd0e89c8202eaaceca1bbff207ea5d46145512b68383901461c2abc8b1656656`.
+  Only two reviewed timestamp-only generated files were restored afterwards.
+- Exclusively retained `silver/raw-stats-gdp-20260831-v1`; all four files
+  byte-identical to both pilots and original SHA unchanged. Source-specific
+  output remains noncanonical and unpublished.
+
 - Registered bounded Phase 5.1 task before implementation in independent clone.
   Red test failed collection on absent `gdp` module, exit 2. Focused suite
   subsequently passed 45 tests; module coverage 100% (90 statements/20 branches).

@@ -1,7 +1,7 @@
 # Exact quarterly GDP source profile
 
-Focused assurance, cold mutation and independent two-build reconciliation pass.
-Native and hosted delivery remain pending. No source download, annual
+Focused, cold mutation, full native and two-build reconciliation assurance pass.
+Hosted delivery remains pending. No source download, annual
 aggregation, health/GDP denominator selection or publication occurs.
 
 ## Retained original and literal meaning
@@ -41,10 +41,12 @@ quarter header and A4's full year range. Literal period/numeric tokens, series,
 scaling and units have lineage. Number-format provenance uses explicit
 `@number_format` attribute coordinates, not invented cell text.
 
-The package has 60 `economic_context_fact` rows, 900 lineage entries and 2,287
+The source-specific package has 60 `economic_context_fact` rows, 900 lineage entries and 2,287
 dispositions covering every nonempty cell across all three sheets. Blank styled
 cells are not observations. Exact formatting and all ZIP members remain in
 unchanged Bronze. Context and selected-value dispositions are distinct.
+This is not canonical registry output. A future semantic projection may map
+these observations to `fiscal_context_fact` under a separate reviewed contract.
 
 Dry-run creates no directory. Explicit writes reserve an absent directory and
 create `gdp_facts.parquet`, `field_lineage.parquet`, `cell_dispositions.parquet`,
@@ -67,7 +69,14 @@ remain `not_evaluated`; no canonical-schema semantic promotion is claimed.
   Independent readback reconciles every nonempty cell, all lineage raw/normalized
   values, all selected amounts and periods. Original bytes unchanged. Script:
   `36c4bd2eecdf02fc8a817032879db2df5a3e9d76e1afdf53850f177ddf791b38`.
-- Native and hosted receipts remain separate pending gates.
+- Native `./scripts/validate.sh` passed at `41e7717`: 2,790 tests in 75.20s,
+  97.07% overall coverage, eight existing resource-cleanup warnings, all typing,
+  41 schemas/31 samples, 9/9 parity, standard mutation and supply-chain gates.
+  Log SHA `cd0e89c8202eaaceca1bbff207ea5d46145512b68383901461c2abc8b1656656`.
+  Hosted exact-head delivery remains pending.
+- Exclusively retained `silver/raw-stats-gdp-20260831-v1` after native assurance;
+  all four files read back identical to the pilots, original hash unchanged.
+  Both temporary pilots remain retained. No previous package was replaced.
 
 Annual/fiscal aggregation, currency qualification, denominator methodology and
 rights/publication remain separate future decisions.
