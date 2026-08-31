@@ -50,7 +50,18 @@ missing declaration (303 pass, one failure); after correction, 304 passed in
 exercise CLI default dry-run, explicit write propagation, failed exit code and
 MCP error redaction; baseline oracles pass and all four seeded defects fail.
 These are scoped wiring checks, not whole legacy CLI/MCP mutation coverage.
-Native harness remains pending. No gates or deadlines were weakened.
+First native launch stopped at lint because formatting moved two test-only
+private-access annotations; corrected on the exact access lines. Second native
+run at `08bf5b1` passed all 3,061 tests (eight existing resource warnings,
+69.91 seconds, 97.11% coverage), schemas/parity/mutations and dependency audit,
+then exited 1 at secret scanning: the synthetic user-info rejection fixture
+looked like embedded credentials. The same fake URL is now constructed from
+separate tokens; no secret-scanner allowlist or gate was changed. Second log
+SHA256 `03855f24882acadaa9f7844ecd4525eb11e2e6f41143c07a370d2d559c082784`.
+Post-correction focused tests: 143 passed; native schema registry now includes
+the receipt fixture (42 schemas/32 samples), and secret scanning passes. Exact
+2048/2049-character schema boundaries are covered. Full harness retry pending.
+No gates or deadlines were weakened.
 
 Independent read-only review found no actionable production issue within this
 bounded dispatch. JSON Schema integer counts intentionally follow JSON numeric

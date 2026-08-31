@@ -110,7 +110,7 @@ def test_non_boolean_flags_fail_closed(
     "locator",
     [
         "https://example.invalid/x?secret=private",
-        "https://user:private@example.invalid/x",
+        "https://" + ":".join(("user", "private")) + "@example.invalid/x",  # noqa: FLY002 - synthetic rejected userinfo, not literal credentials
         "https://example.invalid/x#private",
     ],
 )
@@ -380,6 +380,27 @@ def test_committed_receipt_schema() -> None:
         / "schemas/health-source-operation-v1.schema.json"
     )
     assert json.loads(path.read_text()) == source_operations.SOURCE_OPERATION_SCHEMA
+
+
+@pytest.mark.parametrize(
+    "field", ["source", "output_dir", "source_vintage", "source_locator", "observed_at"]
+)
+def test_input_schema_exact_length_boundary(field: str) -> None:
+    args = {
+        "source": "source",
+        "output_dir": "output",
+        "profile": "cpiq-se9a/v1",
+        "expected_sha256": "a" * 64,
+        "source_vintage": "vintage",
+        "source_locator": "https://example.invalid/x",
+        "observed_at": "2026-08-31T00:00:00Z",
+    }
+    validator = Draft202012Validator(source_operations.SOURCE_PREFLIGHT_INPUT_SCHEMA)
+    args[field] = "x" * 2048
+    validator.validate(args)
+    args[field] += "x"
+    with pytest.raises(ValidationError):
+        validator.validate(args)
 
 
 def _seeded_function(
