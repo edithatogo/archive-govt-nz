@@ -93,7 +93,7 @@ dev = [
     { name = "pytest-xdist", specifier = ">=3.8.0" },
     { name = "ruff", specifier = ">=0.16.1,<0.17" },
     { name = "scalene", specifier = ">=2.3.0" },
-    { name = "syrupy", specifier = ">=5.0.0,<6" },
+    { name = "syrupy", specifier = ">=5.0.0,<7" },
 ]
 
 [[package]]
