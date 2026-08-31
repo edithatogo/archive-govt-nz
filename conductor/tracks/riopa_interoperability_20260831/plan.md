@@ -16,3 +16,8 @@
 - [ ] Run the full repository validation harness on Python 3.14 after this slice.
 - [ ] Run an agent-panel review of implementation and evidence.
 - [ ] Record hosted handoff evidence without claiming external participation or release.
+
+## Review fixes
+
+- [x] Reject unqualified capture/legal states and explicitly disable claims while preserving source observations; verify negative paths and schema compatibility.
+- [ ] Complete full assurance and archive reconciliation after the correction passes hosted checks; retain the track as in progress until then.

@@ -14,3 +14,13 @@ suite now covers 100% of statements and branches (15 tests).
 
 External reproduction, elapsed soak, production recovery, national-scale
 measurement and release-authority gates remain pending.
+
+## Closeout correction
+
+Unknown/withdrawn capture and uncertain legal states now remain quarantined.
+New exports explicitly disable seven operational/authoritative claims while
+preserving original observations. Agent-panel review passed after a malformed
+legal-state correction. See `closeout-correction-validation.json` for bounded
+validation evidence: local full assurance failed under resource pressure and
+hosted assurance is pending. Earlier PR #260 success does not qualify this fix.
+The track remains in progress and has not been archived.

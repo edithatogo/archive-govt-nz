@@ -1,7 +1,7 @@
 # RIOPA interoperability integration
 
 - **Track ID:** `riopa_interoperability_20260831`
-- **Status:** `new`
+- **Status:** `in_progress` (full assurance and archive reconciliation pending)
 - **Specification:** [spec.md](./spec.md)
 - **Requirements:** [requirements.md](./requirements.md)
 - **Design:** [design.md](./design.md)

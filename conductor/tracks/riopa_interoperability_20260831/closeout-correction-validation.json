@@ -1,0 +1,22 @@
+{
+  "schema_version": "archive-govt-nz.riopa-review-correction/v1",
+  "recorded_at": "2026-08-31T11:21:51Z",
+  "status": "pending_hosted_assurance",
+  "reviewers": ["delivery_audit", "repair_272", "root"],
+  "review_status": "passed_after_correction",
+  "full_local_command": "./scripts/validate.sh",
+  "full_local_exit_code": 1,
+  "full_local_tests_passed": 2023,
+  "full_local_tests_failed": 4,
+  "full_local_coverage_percent": 96.80,
+  "failure_classes": ["Hypothesis slow generation", "subprocess timing under resource contention"],
+  "historical_hosted_pull_request": "https://github.com/edithatogo/archive-govt-nz/pull/260",
+  "historical_hosted_head": "ed027dad5442503f347b173a46f675c698dac137",
+  "historical_merge_commit": "fd30a81dd91b4775104915b2f96723e34600d2cb",
+  "current_correction_hosted_status": "pending",
+  "archive_eligible": false,
+  "recovered_focused_tests_passed": 28,
+  "recovered_mapper_statement_branch_coverage_percent": 100,
+  "recovered_focused_exit_code": 0,
+  "external_gates_satisfied": false
+}
