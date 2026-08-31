@@ -304,6 +304,46 @@ def _stage(
     return _reuse(root, name, pin, manifest)
 
 
+def verify_resume_stages(
+    root: Path, source_plan: dict[str, Any], stage_pins: Mapping[str, str]
+) -> dict[str, dict[str, Any]]:
+    """Boundedly verify exactly four stage transports, not the donor/original join.
+
+    The caller supplies its separately verified source plan. This helper is
+    read-only and permits a completed parent's marker; it checks only the four
+    exact stage directories. It neither evaluates rights nor approves semantics.
+    """
+    _safe(root)
+    _require(root.is_dir() and set(stage_pins) == set(PROFILES))
+    _require(
+        set(source_plan)
+        == {"schema_version", "donor_manifest_sha256", "observed_at", "sources"}
+    )
+    _require(source_plan["schema_version"] == "archive-govt-nz.health-raw-rebuild/v1")
+    _pin(source_plan["donor_manifest_sha256"])
+    _require(set(source_plan["sources"]) == set(PROFILES))
+    result = {}
+    for name, profile in PROFILES.items():
+        _pin(stage_pins[name])
+        source = source_plan["sources"][name]
+        _require(set(source) == {"object_id", "sha256", "locator", "vintage"})
+        _pin(source["sha256"])
+        _require(source["object_id"] == "sha256:" + source["sha256"])
+        _require(
+            source["locator"] == "data/raw/" + profile.filename
+            and source["vintage"] == profile.vintage
+        )
+        source_context(
+            source["sha256"],
+            source["locator"],
+            source["vintage"],
+            source_plan["observed_at"],
+        )
+        result[name] = _stage(root / name, name, stage_pins[name], source_plan)
+        _require(result[name]["action"] == "reuse_verified")
+    return result
+
+
 def plan_resume(  # noqa: PLR0913 - independently pinned, explicit read-only inputs.
     *,
     donor_manifest: Path,

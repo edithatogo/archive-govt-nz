@@ -232,6 +232,13 @@ repository validation command. External gates block only their affected task.
 
 ### 3.2 Implement the domain and adapter protocol
 
+- [x] Project reviewed Budget-2025/2026 facts into canonical appropriation
+  fields, composing existing unmapped source-label occurrences and complete
+  lineage accounting. Preserve source Decimal(20,3) exactly, year tokens and
+  amount types; leave dates/currency/price basis unestablished. No I/O, rights
+  promotion or original-token claim beyond extraction lineage. [M-05, M-06,
+  M-07, M-18; AC-05, AC-16]
+
 - [x] Compose verified historical snapshots and the pure canonical projection
   into an exclusive local-only export, defaulting to dry-run, with complete
   readback and retained partial failures. Keep source packages and publication
@@ -560,6 +567,10 @@ repository validation command. External gates block only their affected task.
 
 ### 8.1 Operational contracts first
 
+- [~] Implement an exclusive local resume executor over an explicitly pinned
+  read-only plan, preserving old attempts and originals, with bounded snapshots,
+  separate child/envelope verification, interruption evidence and no publication.
+  [M-15, M-18; AC-13, AC-16]
 - [x] Add a read-only partial-rebuild planner joining pinned donor metadata,
   prior PLAN and explicit stage pins; verify selected originals and classify
   bounded stage fixity/structure reuse without copying or repairing attempts.
