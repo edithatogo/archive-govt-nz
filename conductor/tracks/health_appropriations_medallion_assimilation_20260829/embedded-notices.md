@@ -80,3 +80,15 @@ Native log SHA-256:
 Only reviewed timestamp-only test-generated evidence churn was restored.
 Source/test hashes remained unchanged through mutation and native validation.
 Hosted exact-head assurance remains pending and distinct from local evidence.
+
+## Integration after candidate and lineage delivery
+
+The isolated integration preserves author head `21c576a`, merged candidate-path
+delivery `94e978f` and merged lineage delivery `d6bc0c9`. Every incoming health
+evidence entry is retained, including the native failure above. The notice and
+candidate implementations and their tests remain byte-identical to their
+reviewed revisions. Combined focused validation passes 71 tests in 2.07 seconds;
+Conductor validates 71 tracks without errors after the lineage import, and
+`git diff --check` passes. No full native rerun or new publication/rights
+qualification is claimed. Hosted validation of the pushed integration remains
+required before merge.
