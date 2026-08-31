@@ -54,10 +54,31 @@ preservation. Combined analysis keeps overlapping years, amount types and
 vintages separate; a later Actual does not overwrite an earlier estimate.
 Three tests pass. Invented fixture values are not copied source rows.
 
-A bounded verified Budget-package reader is being added to consume these
-packages without treating the fixed four-profile raw-run wrapper as a universal
-source registry. Reader assurance and live readback remain separate acceptance
-steps; the pilot alone does not complete multi-vintage archival operation.
+A bounded verified Budget-package reader (`07029cc`) consumes these packages
+without treating the fixed four-profile raw-run wrapper as a universal source
+registry. It checks exact file/schema sets, pinned bounded snapshots, strict
+integer counts, fact/source identity, every input disposition and all selected
+field-lineage closure. It accepts reviewed passed/nonempty Budget-v1 packages;
+writer-produced empty packages remain preserved but outside this consumer
+contract. It does not reopen originals or infer missing fiscal-year semantics.
+
+The final 61 reader/vintage tests pass on CPython 3.14.6 with 100% reader line
+and branch coverage (137 statements, 30 branches). Independent literal fixture
+headers and producer-written Parquet schemas avoid coupling corruption tests
+to consumer constants. Each test gets fresh copies of one immutable baseline;
+this removes repeated XLSX setup without sharing mutable test state. The
+retained live pilot reads back as 185 facts, 3,145 lineage entries and 6,451
+dispositions with status passed and the manifest pin above unchanged.
+
+The required native harness was run with ctrace, JIT disabled and four workers.
+Lock, 70-track Conductor validation, formatting, lint and typing passed. The
+test stage collected 1,972 items and reached 100% progress but exited 124 at
+its unchanged 300-second deadline before a final summary/coverage result.
+No failed-test marker was observed; this is not a full validation pass. Heavy
+unrelated machine load was observed; no other actor's processes were changed.
+Reader mutation and hosted assurance remain pending. Original files and
+publication bytes were not modified. CLI/MCP operational exposure is a separate
+follow-up; this pilot alone does not complete multi-vintage archival operation.
 
 ## Remaining boundaries
 

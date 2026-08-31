@@ -1,5 +1,18 @@
 # Self-Review
 
+## Budget successor consumer — 2026-08-31 UTC
+
+- Independent review reproduced and fixed non-integer manifest count acceptance.
+  Additional boundary tests cover duplicate facts, contradictory dispositions,
+  cross-record column drift, exact zero and preserved unsupported empty output.
+- Fixture schemas come from producer output and literal headers, not consumer
+  constants. Fresh per-test copies preserve mutation-test independence.
+- Final focused coverage is 100% line/branch; retained live readback passes.
+  Native full assurance remains incomplete after the bounded timeout; mutation
+  and hosted evidence remain pending. No unsupported completion claim is made.
+- Fiscal-year interpretation, unselected workbook areas, rights evaluation and
+  publication remain explicit boundaries. A valid package is not a licence grant.
+
 ## Donor failure conformance — 2026-08-31 UTC
 
 - Post-integration native harness also exits zero at `62dc6e4`: 1,911 tests

@@ -1,5 +1,21 @@
 # Run Log
 
+## Budget successor consumer — 2026-08-31 UTC
+
+- Budget 2026 remains a separate immutable source vintage. Two local builds
+  match; independent OOXML reconciliation and final verified-package readback
+  account for 185 facts, 3,145 lineage entries and all 6,451 input rows.
+- Reader implementation `07029cc` plus independent corruption fixtures passes
+  61 focused tests at 100% critical coverage on CPython 3.14.6. Strict integer
+  count rejection was added after red tests exposed bool/float equality.
+- Native validation passes pre-test gates but exits 124 at its unchanged
+  300-second test-stage deadline after 100% progress on 1,972 items. No final
+  summary or overall coverage was received; no full-pass claim is made.
+  Detailed receipt and remaining assurance gates: `raw-budget-successors.md`.
+- PR #270 is now observed merged with seven successful exact-head checks and
+  identical head/merge trees. This closes bounded donor conformance delivery,
+  not the broader assimilation track. No originals or publications changed.
+
 ## Source plot hosted delivery — 2026-08-31 UTC
 
 - Integrated full native harness passes on `62dc6e4`, after main's extra CLI
