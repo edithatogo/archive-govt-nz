@@ -42,6 +42,10 @@ from archive_govt_nz.domains.health_appropriations.rebuild import (
     plan_rebuild,
     verify_rebuild,
 )
+from archive_govt_nz.domains.health_appropriations.source_operations import (
+    SourceRequest,
+    operate_source,
+)
 from archive_govt_nz.domains.legislation.api import NZLegislationApiClient
 from archive_govt_nz.domains.legislation.cli_state import (
     coverage_counts,
@@ -282,6 +286,35 @@ def health_appropriations_verify_budget(package_dir: Path, manifest_sha256: str)
     receipt = verify_budget_package(package_dir, manifest_sha256)
     _emit_json({"command": "health-appropriations-verify-budget", **receipt})
     return 0 if receipt["status"] == "passed" else 2
+
+
+@app.command(name="health-appropriations-extract-source")
+def health_appropriations_extract_source(
+    *,
+    source: Path,
+    output_dir: Path,
+    profile: str,
+    expected_sha256: str,
+    source_vintage: str,
+    source_locator: str,
+    observed_at: str,
+    dry_run: bool = True,
+) -> int:
+    """Preflight an approved profile; --no-dry-run writes new local derivatives."""
+    result = operate_source(
+        SourceRequest(
+            source,
+            output_dir,
+            profile,
+            expected_sha256,
+            source_vintage,
+            source_locator,
+            observed_at,
+        ),
+        dry_run=dry_run,
+    )
+    _emit_json({"command": "health-appropriations-extract-source", **result})
+    return 2 if result["status"] == "failed" else 0
 
 
 @app.command(name="health-appropriations-verify-rebuild")

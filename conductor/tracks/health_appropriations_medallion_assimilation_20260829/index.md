@@ -15,6 +15,9 @@ every planned record set, measure or operational workflow.
 
 ## Artifacts
 
+- [Bounded source-profile CLI/MCP operations](./source-operations.md)
+- [Exact quarterly GDP source profile](./gdp-profile.md)
+
 - [Exclusive local classification occurrence export](./classification-export.md)
 - [Budget source-label classification occurrences](./budget-classification.md)
 - [Pharmac medicines-budget HTML contract](./pharmac-cpb.md)

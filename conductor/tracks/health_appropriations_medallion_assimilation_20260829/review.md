@@ -1,5 +1,18 @@
 # Self-Review
 
+## Quarterly GDP literal profile — 2026-08-31
+
+- Source identity, actual-versus-adjusted and expenditure-versus-income
+  selection are exact; quarterly observations are not annual denominators.
+- Parent found locale-sensitive month expectations and missing literal token,
+  scaling, format-attribute and century-range lineage. All corrected; locale
+  regression and complete 900-entry closure pass. Currency remains null.
+- 45 focused tests/100% critical coverage and cold 37/37 mutation pass. Original
+  source and both independently reconciled deterministic pilots are retained.
+  Native passed at `41e7717`: 2,790 tests/97.07% overall and all gates.
+  Hosted checks and rights approval remain distinct. Exclusive retained Silver
+  package readback is identical; source-specific output is not canonical.
+
 ## Additive inventory planner — 2026-08-31 UTC
 
 Independent read-only source/test review found no actionable correctness issue
@@ -605,6 +618,18 @@ Independent review found no actionable issue in that scope and suggested tests
 for exact resource boundaries and hash-before-decode ordering; both now pass.
 The Parquet list-name mismatch was corrected without relaxing metadata checks.
 Native and hosted evidence remain separate from focused/mutation results.
+## 2026-08-31 — Pure historical projection review
+
+Scope is reviewed historical Health/GDP fact and lineage projection only, with
+caller-supplied inputs and no fixity/publication claim. Independent review found
+two integrity gaps: contradictory disposition cell literals were not joined to
+lineage, and six unused historical source fields could disappear if non-null.
+Nine negative tests reproduced both findings before the guards were added.
+The source number format remains an explicit attribute exception, and both
+retained snapshots pass exact JSON-string cell joins without numeric coercion.
+Read-only re-review reports both findings resolved and no additional finding.
+The original input package remains required for retained-only information.
+See `historical-projection.md` for mapping, red-phase evidence and limits.
 
 ## Budget classification occurrence projection
 
