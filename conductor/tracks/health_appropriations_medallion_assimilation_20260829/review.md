@@ -723,3 +723,17 @@ unmapped-classification/inherited-unit/currency-unknown flags. Final frozen
 source/test review had no remaining finding. Critical 100%, 28/28 cold mutants,
 full 3,955-test native and the pinned in-memory 400-fact pilot passed; hosted
 exact-head delivery is separate. See [scope and receipts](./budget-canonical-projection.md).
+
+## 2026-08-31 — Bounded PROV entity projection review
+
+Two independent reviews found no actionable issue in the entity/derivation-only
+projection. Typed identifiers, edge direction/closure, deterministic digests,
+fresh outputs and unchanged full inventory are tested. No activity, actor,
+time, licence or verification claim is manufactured. Initial missing-module red
+preceded implementation; 71 combined tests/100% critical coverage and six cold
+mutant kills passed. Full standards validation and AC-14 remain open.
+
+Native assurance subsequently passed all gates at `1a58841`; the reviewed reader
+stack was merged ordinarily without source changes. 141 integration tests passed;
+both conflict-side documentation entries and all 119 incoming ledger lines were
+retained. Hosted delivery is still separate from this local assurance receipt.
