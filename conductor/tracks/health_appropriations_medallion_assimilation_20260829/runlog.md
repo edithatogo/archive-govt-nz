@@ -1428,7 +1428,6 @@ temporary two-character header truncation was corrected before committing and
 full JSON validity checked. Production/test hashes and native evidence are
 unchanged; no second full run is claimed.
 
-
 ## Budget classification occurrence projection
 
 The pure source-label projection passed independent read-only review, 42 focused
@@ -1494,3 +1493,25 @@ hashes agree for each original and all four source-package files. Ten new local
 derivatives total 720,641 bytes; no existing output, v4 or HF bytes changed.
 Retention receipt SHA-256
 `197ee1aa0fa32883005cb234da63488b3da8694d61484b924f475ade7c329eb8`.
+
+## Exclusive local classification export
+
+The source-only occurrence projection now has an exclusive local persistence
+wrapper. Independent review findings were reproduced by red tests and resolved;
+final re-review found no actionable issue in its trusted-parent scope.54tests
+pass at100%critical coverage, and44/44cold mutants were killed without pardons
+or cached results. Nativef46e4b6 passed3426tests and every subsequent gate.
+
+Two builds per retained Budget vintage independently reconcile all five files,
+400dimensions and6800lineage-accounting rows, with originals/input packages
+unchanged. The local marker is not a publication manifest and can survive a
+failed readback; only full validation establishes local completion. Errors are
+redacted and partial evidence retained. See [receipt](./classification-export.md)
+for exact hashes, failure observations and the append-only timestamp correction.
+## Original-to-products replay — 2026-08-31T16:36:20Z
+
+Two fresh runs at `4bedcf1` each produced 38 files/8,077,673 bytes, exactly
+matching each other; all 23 originals unchanged. The older SQLite comparison
+raised a retained assertion: only writer-version bytes 98/99 differ (3.50.4 vs
+3.53.1); all schemas and 341 rows match. Gold/plots and other payloads match.
+See `originals-product-replay.md`. No Platinum or full recovery completion.

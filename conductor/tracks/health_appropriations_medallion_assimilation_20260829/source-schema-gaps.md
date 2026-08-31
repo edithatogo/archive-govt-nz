@@ -1,10 +1,13 @@
 # Source coverage, canonical schemas and remaining context
 
 This is a bounded reconciliation, not Phase1.2, M-05 or longitudinal completion.
-The 141-record official census contains73captured objects and68discovery or
-non-data dispositions. All73captured CAS objects were freshly SHA-256 checked
-locally with zero missing/mismatched objects. That proves selected-byte fixity,
-not complete annual discovery, rights clearance or publication.
+The 141-record official census contains73captured objects and68out-of-scope
+dispositions (including discovery-only edition pages). Do not describe all141
+records as captured payloads. The independent local preservation audit in
+`preservation-recheck.md` verifies all73captured CAS objects, their73WARC
+receipts/payloads, all23donor objects and the94listed v4candidate files. That
+proves selected-byte fixity, not complete annual discovery, semantic accuracy,
+rights clearance or current remote publication state.
 
 ## Source-family coverage
 
@@ -13,10 +16,10 @@ not complete annual discovery, rights clearance or publication.
 | Annual Budget | 2026 expenditure/revenue captured; 2025 donor and 2026 expenditure extracted | Earlier annual editions unenumerated here; revenue normalization; retrospective rows do not replace edition history |
 | BEFU/HYEFU | 2026 BEFU charts/expenses/economic forecasts; 2025 HYEFU charts/expenses captured; two literal Health-summary editions each extracted | Earlier editions and other expense/chart/forecast areas |
 | Fiscal/Crown expenses | 1972–2025 workbook captured; 2024 and 2025 Health/GDP source pilots retained | Other fiscal measures, exact Crown-expense contract and complete edition history |
-| QES | June2026 workbook captured | Exact sector/sex/hourly-weekly/actual-adjusted series contract |
-| Stats NZ GDP | March2026 current-price income/expenditure workbook captured | Exact quarterly measure and fiscal aggregation; Treasury GDP stays separate |
+| QES | June2026 Table8 QEMQ.SASZ9A ordinary-time average hourly earnings, total sector;9quarters and180lineage rows retained in a source-specific package; PR#298 merged | ISOcurrency, sex and adjustment metadata not inferred; deflator selection and annual alignment remain pending |
+| Stats NZ GDP | March2026 current-price income/expenditure workbook captured; exact60quarter expenditure observations retained; PR#302 merged | Fiscal aggregation and canonical projection; Treasury GDP stays separate |
 | Ministry Vote Health | Two HAIR2024 indicator CSVs captured and source-specific pilot extracted | Unit/base/method metadata; independent real/per-capita reproduction |
-| Pharmac CPB | Budget-information HTML captured | Exact numeric table and historical source contract; capture is not extraction |
+| Pharmac CPB |14published budget-allocation observations,186lineage records and64table-cell dispositions retained; PR#295 merged | Not actual expenditure; caption lag, missing2014amount and2022scope change remain explicit; canonical projection and comparison policy pending |
 | CPI | CPIQ.SE9A source-specific extraction | Base-metadata provenance join and derived-period policy |
 | Population | HLFS working-age workbook captured | Suitable national all-age resident original export; HLFS is not that denominator |
 | Treasury Vote Health | 66landing/discovery records and58captured PDFs | Table normalization and semantic alignment across editions |
@@ -36,13 +39,53 @@ basis fields, CPI-specific fields and Ministry published indicators are not
 yet one canonical federation contract.
 
 The additive eight-record-set Arrow registry and JSON row-shape descriptors
-now provide versioned structural contracts. Semantic validators and explicit
-projections over retained source tables remain pending. Preserve exact precision,
+now provide versioned structural contracts (merged PRs#293/#300). The merged
+historical snapshot reader (#303) verifies pinned originals and source packages;
+it is transport validation, not semantic acceptance. The narrow historical
+Health/GDP semantic projection (#305), its local canonical exporter (#311),
+Budget source-label classification projection (#306), its persistent local
+exporter (#316), and six source-operation profiles (#307/#313) are also merged.
+Forecast operational exposure, donor-area accounting and local provenance
+remain active parallel implementation streams, not
+completion of the full canonical model. Preserve exact precision,
 unknown fields, unmapped classifications, vintage keys and source pointers;
 do not rewrite v1 packages or force unknown Ministry semantics into canonical
 health-spending measures. Read-only Budget/raw-run CLI/MCP verification already
 exists; equivalent family-wide operational exposure, recovery/resume and
 scheduling remain separate acceptance tasks.
+
+## Executable remaining route
+
+1. Finish active exact-head delivery/assurance: forecast preflight and its
+   source-operation profiles, donor-area accounting and local provenance.
+   Check live PRs and appended receipts;
+   the bounded checkpoint above is not a permanently current PR dashboard.
+2. Extend existing local operational profiles to already-reviewed adapters,
+   preserving each source-specific schema. Persist classification occurrences
+   only through verified immutable source packages and exclusive local output.
+3. Add the remaining canonical semantic projections and source-area adapters:
+   Budget/forecast facts, fiscal/Crown expenses, published indicators and
+   contextual series. Keep source facts and every unmapped field available;
+   registry membership alone does not satisfy M-05.
+4. Build denominator-qualified Gold measures and metadata from those contracts.
+   Population-dependent measures remain blocked on a suitable original and
+   period-alignment policy; independent nominal/source-faithful work continues.
+5. Exercise interruption, retained partial failures, deterministic clean-room
+   rebuild and bounded scheduling before assembling a new rights-filtered
+   candidate. A local staging or canonical marker is never upload approval.
+
+The next rights work is an evidence join, not an inferred licence grant: the
+three legacy workbook embedded-notice observations are hash-bound but do not
+yet make those objects members of the complete-capture/v4rights qualification.
+New derivatives need their own candidate-level review. Do not recapture or
+overwrite retained originals to resolve a metadata gap. Earlier-edition source
+discovery and Vote Health PDF table normalization remain substantive work.
+
+The optional published Health Survey aggregates have now received a
+metadata-only assessment in `health-survey-assessment.md`: useful contextual
+linkage is identified, but acquisition and integration are deferred until an
+exact export/dictionary, release vintage and resource-specific rights are
+qualified. Annual and three-year pooled regional estimates must stay distinct.
 
 ## Population route: metadata resolution, not acquisition
 
