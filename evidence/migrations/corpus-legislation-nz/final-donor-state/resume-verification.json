@@ -8,7 +8,9 @@
     "tests_passed": 2344,
     "coverage_percent": 96.9,
     "log_sha256": "7a135aa3fa93e59b89b2db1965c60d3ed6b2617a30b3fce11ae07d6dceb6a86e",
-    "secret_scan": "passed",
+    "secret_scan": {
+      "status": "passed"
+    },
     "dependency_audit": "passed; no known vulnerabilities",
     "licenses": "passed",
     "schemas": "41 schemas and 31 representative documents",
