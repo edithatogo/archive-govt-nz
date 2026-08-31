@@ -29,6 +29,7 @@ every planned record set, measure or operational workflow.
 - [Raw compatibility projection and export contract](./raw-compatibility.md)
 - [Source-derived analytical contracts](./raw-analytics.md)
 - [Verified source-derived Gold export](./raw-gold.md)
+- [Source-derived plot contracts and visual QA](./raw-plots.md)
 - [Next raw-source ranges and semantic boundaries](./next-source-ranges.md)
 - [Metadata](./metadata.json)
 - [Run log](./runlog.md)
@@ -67,8 +68,11 @@ every planned record set, measure or operational workflow.
   4,918 lineage rows and flags 15 binary representation differences. Independent
   builds match; all 312 donor SQLite rows are retained plus 29 historical years.
   Source-derived Gold tables and CLI now rebuild locally with all 321 selected
-  analytical facts and 4,798 lineage records. Full hosted assurance and plots
-  remain pending; local whole-suite attempts have recorded timing failures.
+  analytical facts and 4,798 lineage records. PR #261 merged after seven
+  exact-head checks passed; local timing failures remain recorded. Six new
+  source-derived PNGs have matching independent builds and completed visual
+  QA; final local assurance passes 1,906 tests and 128 current critical mutants.
+  Exact-head hosted plot delivery remains pending.
 - Hugging Face: `published_and_verified` for the pinned candidate, with
   [dataset](https://huggingface.co/datasets/edithatogo/nz-health-appropriations)
   revision `9b85bac06597d4435fd078f6bed0f30bb008542b` and manifest SHA-256

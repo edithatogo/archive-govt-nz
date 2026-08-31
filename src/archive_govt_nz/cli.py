@@ -33,6 +33,7 @@ from archive_govt_nz.domains.health_appropriations.operations import (
     HealthAppropriationsStateError,
     inspect_archive_status,
 )
+from archive_govt_nz.domains.health_appropriations.plot_export import render_plots
 from archive_govt_nz.domains.health_appropriations.rebuild import (
     execute_rebuild,
     plan_rebuild,
@@ -246,6 +247,25 @@ def health_appropriations_export_gold(
         result = export_gold(
             raw_run, store_root, manifest_sha256, output_dir, dry_run=dry_run
         )
+    except ValueError as error:
+        _emit_json({"command": command, "status": "failed", "error": str(error)})
+        return 2
+    _emit_json({"command": command, **result})
+    return 0
+
+
+@app.command(name="health-appropriations-render-plots")
+def health_appropriations_render_plots(
+    *,
+    gold_dir: Path,
+    manifest_sha256: str,
+    output_dir: Path,
+    dry_run: bool = True,
+) -> int:
+    """Preflight six source plots; --no-dry-run writes a new local package."""
+    command = "health-appropriations-render-plots"
+    try:
+        result = render_plots(gold_dir, manifest_sha256, output_dir, dry_run=dry_run)
     except ValueError as error:
         _emit_json({"command": command, "status": "failed", "error": str(error)})
         return 2

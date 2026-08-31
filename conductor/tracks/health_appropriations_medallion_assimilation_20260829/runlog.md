@@ -1,5 +1,92 @@
 # Run Log
 
+## Source plot contracts — 2026-08-31 UTC
+
+- Final post-preflight-fix harness exits zero for `eeb6200`: 1,906 tests,
+  96.48% coverage, eight SQLite warnings, 40 schemas/30 documents, 70 tracks,
+  9/9 parity, all native mutation and supply-chain gates, 111 SBOM components.
+  CAS throughput 391.42 MB/s exceeds unchanged 25.0 minimum. Same runtime
+  controls as below; no gate/deadline was weakened. Timestamp-only unrelated
+  generated evidence was restored after completion.
+- Final renderer mutation: 58/58 killed, zero survivors/timeouts/pardons,
+  cold cache, no coverage filtering; 18 unit/protocol tests and two excluded
+  full-PNG integrations, both retained in normal tests. Report SHA-256
+  `2a0a3be0f3f91d9fd39268510109e967969310f7ed499f64e3bd9482d3c9fb72`.
+  Together with unchanged reader/contract evidence, 128 current mutants killed.
+  All 48 focused tests pass at 100% critical coverage. Third independent plot
+  build after the fix matches all eight retained V2 files.
+- Fresh donor-manifest and all 23 object hashes pass. Read-only full bytecode
+  compilation of three pinned scripts confirms inspection/analysis compile,
+  processor IndentationError line 199 offset 9. No imports or execution,
+  source mutation, publication or donor retirement occurred.
+
+- Full pre-review-fix harness completed successfully: 1,904 tests, 96.48%
+  overall coverage, eight existing SQLite resource warnings, 40 schemas/30
+  documents, 70 Conductor tracks, 9/9 parity, all native mutation gates,
+  audit/licence/secret checks and 111-component SBOM. Command environment:
+  `COVERAGE_CORE=ctrace PYTHON_JIT=0 PYTEST_XDIST_AUTO_NUM_WORKERS=4` with
+  `./scripts/validate.sh`. Plot contracts/renderer killed all 83 selected
+  mutants (test selection as below), report
+  `08ad874967fcce964899fcf243e4e9860de31b508d374d77770492b2a0dd5121`.
+- Review found that dry-run checked Gold integrity but did not enforce the
+  point/series limits until actual rendering. Add red tests for both limits,
+  share the check with dry-run, and revalidate; the successful harness above
+  is evidence for the pre-fix code, not an automatic pass for later changes.
+
+- Reader mutation: 44/44 killed, zero survivors/timeouts/pardons, coverage
+  filtering disabled, two workers. Report
+  `bddf14e38306e763243a087be53ac0b11152f9d5e2a8a99ee4bf65c692c948bb`.
+- Full renderer tests passed (17 tests, 35.87 seconds), exceeding the mutation
+  worker's fixed 30-second per-mutant subprocess limit. Retain both full PNG
+  integration tests in normal validation. For renderer mutation only, use
+  16 unit/protocol tests (100% line/branch, 12.52 seconds), excluding the two
+  full six-PNG/CLI integrations. Transaction tests stub only PNG encoding in a
+  scoped patch; the real writer is restored and explicitly exercised twice,
+  including ambient settings. All mutants remain selected; disclose this test
+  selection rather than calling it an unfiltered full-suite mutation run.
+
+- First retained plot build and independent build agree on all output hashes;
+  53 nominal, 48 growth, 53 GDP-share, four breakdown and six observations per
+  recent classification. Growth omits five reason-coded comparisons. Original
+  Gold manifest remains `ec68a03f597c7792da4337f2babfcb6615c2e6162a3125042c2b8ef6b7665835`.
+- Visual QA of all six PNGs found crowded growth year labels, categorical
+  compression of omitted years, low-contrast hatch strokes and insufficient
+  visibility for two very small breakdown values. Preserve `raw-plots-20260831-v1`
+  as a QA build. Add regression contracts, correct rendering, and create a new
+  version rather than overwriting it. V1 is not the final visual-QA pass.
+
+- Gold reader began with a missing-module red test; 22 focused tests pass at
+  100% line/branch coverage. Renderer began red, then 10 tests passed with
+  97.83% critical coverage: the uncovered resource-limit rejection still needs
+  explicit boundary tests. Lint identified formatting/import corrections.
+  Added an ambient-Matplotlib-settings determinism test before fixing export
+  isolation. No final renderer assurance claim yet.
+
+- Exact-membership and JSON-policy strengthening kills all 26 unfiltered
+  mutants with one worker, zero survivors/timeouts/pardons; report
+  `0c4d98f6a288be8a590861adce990c534a329e8031e507c5a62b58a276733aab`.
+  This precedes the sparse-period rendering adjustment below.
+- Visualization skill review: recent classifications have only six source
+  years, including Actuals/Estimated Actual/Main Estimates. Use discrete
+  grouped bars for those two legacy-named trend images rather than implying a
+  continuous trend; preserve inputs, source labels, units and amount types.
+- Gold PR #261 conflict resolved at `ff99002`; 38 schemas/28 documents pass.
+  Hosted Windows job `99373648468` failed only the existing CAS speed gate:
+  14.74 MB/s versus 15.0 MB/s, 1 failed/1772 passed, coverage 96.28%.
+  macOS assurance passed. Diagnose as runner-throughput variability, not a
+  Gold assertion failure; one unchanged failed-job rerun is the bounded next
+  route. Do not lower the threshold or claim the failed run passed.
+
+- Began with a missing-module red test; five semantic tests now pass with
+  100% line/branch coverage. First unfiltered one-worker mutation check killed
+  21/26 mutants; five survived (JSON policy and segment membership), report
+  `12154c17d7cd08963998f76bdfad15651503603e064fb624c6c6e30ab8a3d9a7`.
+  Strengthen exact segment-membership and serialization contracts before
+  claiming mutation completion. Lint also identified one long line to format.
+- Gold draft PR #261 has no runs because it conflicts with intervening main
+  `a17b0fd` (FOI attachment schema registration); reconcile both registrations
+  without changing FOI code. No hosted pass or plot rendering claimed.
+
 ## Gold hosted assurance and main reconciliation — 2026-08-31 UTC
 
 - Draft PR #261: `ff990026c793156c5bf651c2bc8c0c605bf881be` passed all seven

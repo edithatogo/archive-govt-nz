@@ -1,0 +1,172 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive-govt-nz.example/schemas/health-source-plots-v1",
+  "title": "Local source-derived health plot package",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "status",
+    "gold_manifest_sha256",
+    "raw_manifest_sha256",
+    "publication_state",
+    "renderer",
+    "point_counts",
+    "omission_counts",
+    "output_sha256"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "archive-govt-nz.health-source-plots/v1"
+    },
+    "status": {
+      "const": "passed"
+    },
+    "gold_manifest_sha256": {
+      "$ref": "#/$defs/hash"
+    },
+    "raw_manifest_sha256": {
+      "$ref": "#/$defs/hash"
+    },
+    "publication_state": {
+      "const": "local_validation_only"
+    },
+    "renderer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "matplotlib",
+        "pillow",
+        "freetype",
+        "backend"
+      ],
+      "properties": {
+        "matplotlib": {
+          "type": "string",
+          "minLength": 1
+        },
+        "pillow": {
+          "type": "string",
+          "minLength": 1
+        },
+        "freetype": {
+          "type": "string",
+          "minLength": 1
+        },
+        "backend": {
+          "const": "Agg"
+        }
+      }
+    },
+    "point_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "historical_health_spending_nominal.png",
+        "historical_health_spending_yoy_growth.png",
+        "health_spending_vs_gdp.png",
+        "recent_appropriations_functional_breakdown_2025_Estimated_Actual.png",
+        "recent_trends_health_classification.png",
+        "recent_trends_no_classification.png"
+      ],
+      "properties": {
+        "historical_health_spending_nominal.png": {
+          "$ref": "#/$defs/count"
+        },
+        "historical_health_spending_yoy_growth.png": {
+          "$ref": "#/$defs/count"
+        },
+        "health_spending_vs_gdp.png": {
+          "$ref": "#/$defs/count"
+        },
+        "recent_appropriations_functional_breakdown_2025_Estimated_Actual.png": {
+          "$ref": "#/$defs/count"
+        },
+        "recent_trends_health_classification.png": {
+          "$ref": "#/$defs/count"
+        },
+        "recent_trends_no_classification.png": {
+          "$ref": "#/$defs/count"
+        }
+      }
+    },
+    "omission_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "historical_health_spending_nominal.png",
+        "historical_health_spending_yoy_growth.png",
+        "health_spending_vs_gdp.png",
+        "recent_appropriations_functional_breakdown_2025_Estimated_Actual.png",
+        "recent_trends_health_classification.png",
+        "recent_trends_no_classification.png"
+      ],
+      "properties": {
+        "historical_health_spending_nominal.png": {
+          "$ref": "#/$defs/count"
+        },
+        "historical_health_spending_yoy_growth.png": {
+          "$ref": "#/$defs/count"
+        },
+        "health_spending_vs_gdp.png": {
+          "$ref": "#/$defs/count"
+        },
+        "recent_appropriations_functional_breakdown_2025_Estimated_Actual.png": {
+          "$ref": "#/$defs/count"
+        },
+        "recent_trends_health_classification.png": {
+          "$ref": "#/$defs/count"
+        },
+        "recent_trends_no_classification.png": {
+          "$ref": "#/$defs/count"
+        }
+      }
+    },
+    "output_sha256": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "historical_health_spending_nominal.png",
+        "historical_health_spending_yoy_growth.png",
+        "health_spending_vs_gdp.png",
+        "recent_appropriations_functional_breakdown_2025_Estimated_Actual.png",
+        "recent_trends_health_classification.png",
+        "recent_trends_no_classification.png",
+        "CONTRACTS.json"
+      ],
+      "properties": {
+        "historical_health_spending_nominal.png": {
+          "$ref": "#/$defs/hash"
+        },
+        "historical_health_spending_yoy_growth.png": {
+          "$ref": "#/$defs/hash"
+        },
+        "health_spending_vs_gdp.png": {
+          "$ref": "#/$defs/hash"
+        },
+        "recent_appropriations_functional_breakdown_2025_Estimated_Actual.png": {
+          "$ref": "#/$defs/hash"
+        },
+        "recent_trends_health_classification.png": {
+          "$ref": "#/$defs/hash"
+        },
+        "recent_trends_no_classification.png": {
+          "$ref": "#/$defs/hash"
+        },
+        "CONTRACTS.json": {
+          "$ref": "#/$defs/hash"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "count": {
+      "type": "integer",
+      "minimum": 0
+    }
+  }
+}

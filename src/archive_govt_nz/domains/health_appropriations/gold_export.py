@@ -70,6 +70,12 @@ _BUDGET_SCHEMA = pa.schema(
     ]
 )
 
+GOLD_TABLE_SCHEMAS = {
+    **_SCHEMAS,
+    "recent_classification_trends.parquet": _BUDGET_SCHEMA,
+    "recent_functional_breakdown.parquet": _BUDGET_SCHEMA,
+}
+
 
 def _json(value: object) -> str:
     return json.dumps(

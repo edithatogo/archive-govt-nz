@@ -70,7 +70,12 @@ The provenance review adds four fail-closed cases for source fields colliding
 with the reserved `input_profile` annotation: all 46 focused tests pass at
 100% critical coverage. Such inputs are rejected, not silently overwritten.
 Full local assurance remains unsuccessful because of recorded timing failures
-and stage timeouts; independent hosted assurance is required before delivery.
+and stage timeouts in the original Gold attempts. Independent hosted assurance
+subsequently passed all seven checks at head
+`3895434eea49dec019ae48bdcdf70626ae1b1c71`; PR #261 merged as
+`15b47b946a27a47efd4715002f0c1aff563149d4` at 2026-08-31T04:50:48Z.
+Health source/tests were unchanged at merge; whole trees differ because of
+intervening main work. Hosted success does not retroactively pass local failures.
 The final post-fix mutation attempt records 63 kills, 16 timeouts, zero survivors
 and zero pardons, report
 `63eb5293fdbabfb980c7fb0551094a9ba3808110099c41f217cd207a68b4da65`.
