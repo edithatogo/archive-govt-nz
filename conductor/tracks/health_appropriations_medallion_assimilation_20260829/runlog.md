@@ -1298,6 +1298,52 @@ remain in the ledger. The attempted optional guide path
 `conductor/platform-guides.json` was absent; file discovery found no root
 platform-guide manifest. General/Python guides and repository workflow apply.
 
+## 2026-08-31 — Historical snapshot reader red and transport mismatch
+
+Initial focused collection failed with the expected missing snapshot module
+(exit 2). The first implementation passed 11 negative tests but rejected its
+valid writer-generated fixture. A bounded private-helper traceback isolated
+exact schema comparison; independent field comparison found only historical
+`quality_flags` and `footnotes` child names: in-memory Arrow `item`, stored
+Parquet `element`. Freeze explicit transport names for those fields, preserving
+metadata/type/nullability checks and all existing files. This is a reader
+contract correction, not source rewriting or ignored schema drift. Ruff also
+identified exception-literal/import/raw-regex styles; strict typing passed.
+
+### Historical snapshot focused and live assurance
+
+After the explicit transport child-name correction, 49 tests passed in 2.22s,
+100% critical coverage (76 statements, ten branches). Ruff and strict typing
+passed. Independent read-only review found no actionable issue; exact-cap
+boundaries and complete-hashes-before-decode tests were added. The deep JSON
+fixture is bounded by manifest admission and tested as a redacted failure;
+no separate recursion-handling claim is made.
+
+Cold unfiltered mutation used all 49 tests, one worker, a clear cache and zero
+pardons: 57/57 killed, no survivors/timeouts/errors/cache hits, 66.08s.
+Command: `uv run pytest tests/domains/health_appropriations/test_historical_snapshot.py -q --gremlins --gremlin-targets=src/archive_govt_nz/domains/health_appropriations/historical_snapshot.py --gremlin-report=json --gremlin-parallel --gremlin-workers=1 --gremlin-clear-cache --gremlin-no-coverage-filter --strict-pardons --gremlin-max-pardons-pct=0 --max-pardons=0 --no-cov`.
+Report SHA-256 `c75a74651ce29feaf07e02ed718d2a2eaaaf456fe01de1ba193451e4b88b62c8`.
+Source/test SHA-256 respectively
+`781e436fb2a3e414b1de78c2ab8bd1be30e478c080f3e697070c18497bf4c261`
+and `e0a470091c2cfa8c8c3e78ead2a6cef511a5c87342d43b8279431cf399bae925`.
+
+Local reads verified both historical manifests, all six Parquet files and
+both original objects, totaling 449,487 and 337,077 bytes respectively.
+No source/package/candidate write or workbook execution occurred. Functional
+commit `7a0420e`; main `6c23ba8` integrated without conflict before the native
+run. Entire incoming machine ledger is retained; snapshot evidence is appended.
+
+## Native assurance — 2026-08-31
+
+The required `COVERAGE_CORE=ctrace PYTHON_JIT=0 PYTEST_XDIST_AUTO_NUM_WORKERS=4 ./scripts/validate.sh`
+passed at `b649de6` with exit 0: 2,918 tests, eight warnings, 68.44 seconds,
+97.10% coverage; 74 Conductor tracks, format/lint/strict typing, 41 schemas/31
+samples, 9/9 parity, all repository mutation/security/supply-chain gates and
+111-component validated SBOM. CAS throughput was 512.18 MB/s. Log SHA-256:
+`703d69135ac8fb84a2759303f36306fc1e26b738bf6b6636ac01d018789c4328`.
+Two owned timestamp-only fixture diffs were restored after the process ended.
+Hosted assurance remains pending; originals, derivatives and publication are
+unchanged. This successful harness does not add a semantic or rights claim.
 ## 2026-08-31 — Pure historical canonical projection
 
 In independent clone `health-historical-canonical.8ijp7V`, implemented pure
