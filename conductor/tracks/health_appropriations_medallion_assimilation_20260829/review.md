@@ -631,7 +631,6 @@ Read-only re-review reports both findings resolved and no additional finding.
 The original input package remains required for retained-only information.
 See `historical-projection.md` for mapping, red-phase evidence and limits.
 
-
 ## Budget classification occurrence projection
 
 The pure source-label projection passed independent read-only review, 42 focused
@@ -656,3 +655,18 @@ validity evidence. Exact bytes/schema readback and file membership precede
 completion. Caller parent-directory trust, source-package retention and no
 publication/rights promotion remain explicit. No generic filesystem sandbox or
 global semantic/canonical-registry completion is claimed.
+
+## Exclusive local classification export
+
+The source-only occurrence projection now has an exclusive local persistence
+wrapper. Independent review findings were reproduced by red tests and resolved;
+final re-review found no actionable issue in its trusted-parent scope.54tests
+pass at100%critical coverage, and44/44cold mutants were killed without pardons
+or cached results. Nativef46e4b6 passed3426tests and every subsequent gate.
+
+Two builds per retained Budget vintage independently reconcile all five files,
+400dimensions and6800lineage-accounting rows, with originals/input packages
+unchanged. The local marker is not a publication manifest and can survive a
+failed readback; only full validation establishes local completion. Errors are
+redacted and partial evidence retained. See [receipt](./classification-export.md)
+for exact hashes, failure observations and the append-only timestamp correction.
