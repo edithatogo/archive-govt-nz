@@ -21,6 +21,7 @@ every planned record set, measure or operational workflow.
 - [Design](./design.md)
 - [Implementation plan](./plan.md)
 - [Autonomous continuation route](./continuation.md)
+- [Portable candidate original paths](./candidate-paths.md)
 - [Pinned donor behavior](./donor-behavior.md)
 - [Raw Budget extraction](./raw-budget.md)
 - [Budget successor pilot and versioned contracts](./raw-budget-successors.md)
