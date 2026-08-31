@@ -1,0 +1,13 @@
+{
+  "all_source_files_and_dependencies_unchanged": true,
+  "critical_statement_branch_percent": 100,
+  "focused_log_sha256": "481f846af8c25e710330e60391468f03d556b4414e4d8485a1ba39f4277e18ba",
+  "focused_tests_passed": 44,
+  "integrated_main": "1edd022c6cb0233a7807ebddd46c8b6d3fbf7394",
+  "integration_commit": "ded47e81053b911a6455ece52ff7e2d77f38b4bf",
+  "native_full_rerun_after_integration": false,
+  "native_local_checkpoint": "bb0a2da4347527c9c7a49297b8630d601e1b17e0",
+  "recorded_at": "2026-08-31T18:20:59.298555+00:00",
+  "required_final_gate": "All exact-head hosted checks, including full Ubuntu/macOS/Windows assurance, before guarded merge",
+  "validation_receipt_sha256": "2a30a40a3df1e51fe413c315e3ed7bf53f8a161dee7d295c9c61b71b7cd59b3f"
+}
