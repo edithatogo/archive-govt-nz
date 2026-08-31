@@ -251,5 +251,5 @@ implementation has occurred under these tracks.
 - [x] **Track: Reviewed seed inventory governance (Prompt 05)**
   *Link: [./tracks/legislation_reviewed_seed_registry_20260831/index.md](./tracks/legislation_reviewed_seed_registry_20260831/index.md)*
 
-- [x] **Track: Fail-closed parent-state restoration (Prompt 08)**
+- [~] **Track: Fail-closed parent-state restoration (Prompt 08)**
   *Link: [./tracks/legislation_parent_state_restoration_20260901/index.md](./tracks/legislation_parent_state_restoration_20260901/index.md)*

@@ -1000,3 +1000,37 @@ def test_future_lanes_use_explicit_workflow_pins(tmp_path: Path, workflow: str) 
     meta["run"]["path"] = ".github/workflows/unreviewed.yml"
     with pytest.raises(P.v.VerificationError, match="workflow_path"):
         P.check_metadata(ref, meta, NOW)
+
+
+@pytest.mark.parametrize(
+    "conditional",
+    [
+        {"": {}},
+        {"work": []},
+        {"work": {"etag": 3}},
+        {"work": {"last_modified": ""}},
+        {"work": {"manifestation_id": []}},
+    ],
+)
+def test_malformed_checkpoint_cache_is_not_promoted(
+    tmp_path: Path, conditional: dict[str, Any]
+) -> None:
+    """Valid outer pins cannot authorize malformed inner checkpoint structures."""
+    ref, meta, raw = fixture(tmp_path / "in")
+    files = P.unpack(raw)
+    checkpoint = P.v.load(files["checkpoint.json"])
+    checkpoint["metadata"]["conditional_requests"] = conditional
+    files["checkpoint.json"] = P.M.encoded(checkpoint)
+    raw = fixtures.zip_bytes(list(files.items()))
+    ref["roots"]["checkpoint_file_sha256"] = P.v.sha(files["checkpoint.json"])
+    ref["artifact"].update(size_in_bytes=len(raw), digest="sha256:" + P.v.sha(raw))
+    meta["artifact"].update(ref["artifact"])
+    result = P.restore(
+        request(ref),
+        {"output": tmp_path / "state", "quarantine": tmp_path / "q"},
+        client(meta, raw),
+        "synthetic",
+        NOW,
+    )
+    assert result["status"] == "failed"
+    assert not (tmp_path / "state").exists()

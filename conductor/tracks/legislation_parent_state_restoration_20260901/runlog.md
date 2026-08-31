@@ -15,3 +15,11 @@ Live main advanced to `9032f8f8340a99dc1530fef772b0ea439f462935` through three h
 ## Validated implementation and PR preparation
 
 Final integrated local gate passed at `834f79446ec7be1f625f0e20bb474ae066a49807`; exact implementation/test hashes are in the local-validation receipt. The default missing reference intentionally fails before acquisition. Added future-lane workflow pin coverage without auto-approving any producer or source transition. The final native credential scan passed after removing a synthetic password-shaped URL while retaining the userinfo rejection test. PR #317 was created and independently read back. Documentation/evidence closeout follows the validated source checkpoint; final delivery still requires exact-head hosted checks and guarded merge.
+
+## Later main integration
+
+Integrated main `550b263254d039be4e857a561e56eb7afd9aa7cf` after the native validated checkpoint. Incoming changes are confined to the independently delivered health track. Every implementation, test, schema, helper-dependency and lock hash in local-validation.json remains identical. Re-ran focused restoration and Conductor checks; final exact-head hosted assurance must validate the combined tree before merge. Native 3,580-test results remain attributed to the earlier exact checkpoint, not relabelled as a new execution.
+
+## Final review correction
+
+The original local-validation.json remains an immutable historical receipt. A final cross-check against the native read-only consumer found that the reused parent verifier checked only the outer conditional-request dictionary, not nested cache entry types. Five malformed-cache fixtures reproduced acceptance before promotion. The restoration helper now additionally invokes the existing native checkpoint validator before computing roots/promoting state. No acquisition logic or native validator was changed. A new mutation removes this check; superseding validation will be recorded separately after the full gates pass.

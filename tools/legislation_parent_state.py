@@ -23,6 +23,8 @@ from typing import TYPE_CHECKING, Any, cast
 import httpx
 from jsonschema import Draft202012Validator, FormatChecker
 
+from archive_govt_nz.domains.legislation.corpus import LegislationArchiveService
+
 if TYPE_CHECKING:
     from collections.abc import Sequence
     from importlib.abc import Loader
@@ -134,6 +136,7 @@ def unpack(raw: bytes) -> dict[str, bytes]:
 def state_roots(files: dict[str, bytes]) -> dict[str, str]:
     """Reconcile all inner state, identities, dual hashes, orphans and receipt."""
     state = M.target_state(files)
+    LegislationArchiveService.validate_checkpoint(state["checkpoint"])
     v.equal(
         v.load(files["receipts/harvest.json"]).get("source_set"),
         "legislation",

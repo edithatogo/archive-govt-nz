@@ -158,5 +158,10 @@
     "name": "seal_execution",
     "old": "v.equal(\n        v.load(files[\"receipts/harvest.json\"])[\"batch_id\"],\n        context[\"execution_id\"],\n        \"seal_execution\",\n    )",
     "new": "None"
+  },
+  {
+    "name": "native_checkpoint_structure",
+    "old": "LegislationArchiveService.validate_checkpoint(state[\"checkpoint\"])",
+    "new": "None"
   }
 ]
