@@ -1,0 +1,20 @@
+{
+  "baseline_commit": "d6bc0c96c44488a75b7e98bd9cb95591eeb97a38",
+  "command": "./scripts/validate.sh",
+  "exit_code": 0,
+  "tests_passed": 2242,
+  "coverage_percent": 96.9,
+  "log_sha256": "5a5541f3c5dc4f94725797d71ff17ef415b0afe612cfde89d3d6729473392e95",
+  "all_native_stages": "passed",
+  "changed_executable_code": false,
+  "critical_patch_coverage": "not applicable; controller data/documentation only",
+  "controller_specific_checks": [
+    "20 unique prompt slots",
+    "exact known issue owners 278/284",
+    "acyclic dependency graph",
+    "18 explicitly unregistered specialist scopes",
+    "allowed state values",
+    "Conductor registry validation"
+  ],
+  "programme_acceptance": "INCOMPLETE: missing Prompts 04\u201321 prevents exact child registration and unique defect ownership"
+}
