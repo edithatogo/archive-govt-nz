@@ -593,3 +593,15 @@ are not counted as production mutants. Native assurance passed at `d71d431`.
 No identity, rights, temporal alignment, source projection or lineage semantic
 claim is made. General/Python style and the repository formatter/type checker
 pass; no platform-specific application guide is selected for this pure module.
+## 2026-08-31 — Historical snapshot boundary review
+
+The reader attests byte snapshots, exact physical source-specific schemas and
+manifest counts, not cell semantics or canonical promotion. Source execution,
+network and output writes are absent. Strict JSON rejects duplicate/nonfinite
+values; direct symlinks, wrong pins, extras and corrupt Parquet fail closed.
+All hashes precede decoding and aggregate caps bound the admitted payloads.
+Source parent directories remain caller-trusted, explicitly not a sandbox.
+Independent review found no actionable issue in that scope and suggested tests
+for exact resource boundaries and hash-before-decode ordering; both now pass.
+The Parquet list-name mismatch was corrected without relaxing metadata checks.
+Native and hosted evidence remain separate from focused/mutation results.
