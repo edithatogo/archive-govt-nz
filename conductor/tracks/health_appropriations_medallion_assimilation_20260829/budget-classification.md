@@ -67,3 +67,18 @@ The original source objects remain respectively
 `d67c01b0a3f1fbee5cb5121b641bda42f91f3e5bc84e599d22d32aeacbbb3338` and
 `3fc6bba178c78c4a4b259c920a6f55307ec95a547353f340086c86fc2a26f5a0`.
 No source download, new rights determination or Hugging Face call occurred.
+
+## Hosted integration
+
+All seven required checks passed on PR306 head `f074c4b`. After GDP delivery,
+main `1d134bf` integrated at `bf41000`, preserving every incoming document and
+the exact full incoming ledger prefix before the two classification events.
+60 focused classification/Conductor tests and 75-track validation pass. Source
+and test hashes above are unchanged. Native assurance predates this main
+integration; fresh exact-head hosted checks are required for delivery.
+
+GDP PR302 was merged by this implementation agent under the solo-maintainer
+policy after exact head `98fcb0d03339fb108506254fd5d1666c772664e6` had all seven
+successful checks and fresh clean mergeability. The expected-head merge returned
+`1d134bfea0cdcfea49162da3a99b7db99b3485cc`. Earlier Windows benchmark failures
+and the unchanged successful retry remain recorded in `gdp-profile.md`.
