@@ -69,3 +69,5 @@ The approved destination is archive-govt-nz; no cutover has occurred.
 Bounded capture 33305989413 advanced the credited cursor to 17226, but its artifact omitted original bytes. NZ automatic dispatch is paused. Raw-retention PR fyi-archive#404 and fabricated-publication guard PR archive-govt-nz#247 are approved-scope corrective work while the remaining phase gates stay open. Details: operational-followup-20260830.json. No older raw coverage is retroactively verified.
 
 Bounded original-byte restore passed in run 33307777685 after donor #407 merged. Credited next offset is 17227, with 15981 queue entries unprocessed. P3.3 remains in progress because durable storage, metadata reconstruction and historical raw-gap reconciliation are incomplete. Monitor remains disabled; see hosted-raw-restore-20260830.json.
+
+P3 continuation: v2 packages add explicit attachment gaps and event relationships; v1 restore compatibility is retained. Donor credit must reject discovered-but-unretained attachment references. This does not prove exhaustive source discovery.

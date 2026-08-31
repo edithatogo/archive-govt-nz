@@ -14,6 +14,14 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = Path("src/archive_govt_nz/foi_package.py")
 MUTATIONS = {
+    "attachment_integrity": (
+        '_fail("invalid_attachment_index")',
+        "pass",
+    ),
+    "attachment_census": (
+        '_fail("incomplete_attachment_index")',
+        "pass",
+    ),
     "object_identity": (
         'row["object_id"] != "sha256:" + digest',
         'row["object_id"] == "sha256:" + digest',

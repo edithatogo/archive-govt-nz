@@ -27,3 +27,5 @@ The full code harness is required before a PR or implementation completion.
 It is not claimed as run for this unapproved documentation proposal.
 
 Local immutable package foundation: local-package-validation-20260831.json (full harness pass; cold restore and rebuilt index parity). Source-policy observations: source-eligibility-review-20260831.json. Public payload rights and privacy remain pending; neither receipt authorizes raw publication.
+
+Attachment census and compatible package v2: attachment-package-validation-20260831.json; local full validation and cold restoration passed, public delivery remains pending.

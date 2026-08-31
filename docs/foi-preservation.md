@@ -21,7 +21,7 @@ uv run --locked python tools/foi_package.py restore \
 ```
 
 The package contains original files and stored WARC response bodies deduplicated
-by SHA-256 in `raw.tar`. Four indexes (`objects`, `resources`, `requests`, `events`)
+by SHA-256 in `raw.tar`. Five indexes (`objects`, `resources`, `requests`, `events`, `attachments`)
 are supplied as JSONL and Parquet. Original JSON remains separate from derived
 indexes. Restoration validates the entire package, reconstructs original paths
 without archive extraction, then rebuilds the indexes and compares them.
@@ -33,10 +33,12 @@ Treat candidate folders as sensitive: do not commit them, serve active HTML, or
 upload them without exact source-rights and privacy review. Files are created
 under a private staging directory; local disk storage is not encrypted by this tool.
 
-The package indexes describe retained responses. They do not establish that all
-expected attachments, all source requests, or historical revisions were captured.
-The pinned adapter silently skips attachment HTTP 404 responses; explicit gap
-accounting is still required. A public Hugging Face repository or a successful
+The v2 attachment census compares links in captured HTML/JSON with retained
+responses and preserves missing references explicitly. Event parents are linked
+only when unambiguous. HTTP status remains unknown without observed evidence;
+a missing response is not automatically a 404. Previously built v1 packages remain
+restorable, but have no attachment census. Neither version proves that a source
+returned every attachment, every request or historical revision. A public Hugging Face repository or a successful
 capture job does not resolve that limitation. NZ automatic dispatch remains paused
 until the track's retention, eligibility and recovery requirements are met.
 
