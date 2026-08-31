@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
+import pytest
+
 from archive_govt_nz.distribution.publisher import (
     DistributionPublisher,
     DistributionTarget,
@@ -52,3 +54,21 @@ def test_verify_publication_receipt(tmp_path: Path) -> None:
         is True
     )
     assert RemoteReadbackVerifier.verify_publication_receipt(receipt, [f1, f2]) is True
+
+
+def test_verify_missing_bundle_returns_false(tmp_path: Path) -> None:
+    """Missing local bundles fail closed without attempting a read."""
+    assert (
+        RemoteReadbackVerifier.verify_local_bundle_fixity(
+            tmp_path / "missing.zip", "0" * 64
+        )
+        is False
+    )
+
+
+def test_verify_hf_package_structure_reports_missing_file(tmp_path: Path) -> None:
+    """Incomplete publication packages identify the first missing requirement."""
+    with pytest.raises(
+        FileNotFoundError, match=r"Missing required publication file: README\.md"
+    ):
+        RemoteReadbackVerifier.verify_hf_package_structure(tmp_path)
