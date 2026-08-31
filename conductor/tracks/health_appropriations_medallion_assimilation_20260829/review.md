@@ -1,5 +1,29 @@
 # Self-Review
 
+## Donor failure conformance — 2026-08-31 UTC
+
+- Post-integration native harness also exits zero at `62dc6e4`: 1,911 tests
+  collected, 96.75% overall coverage, all repository gates and 111-component
+  SBOM. Health-domain production coverage remains 100% line/branch.
+
+- The three pinned originals were compiled without import/execution; hash
+  checks precede and follow compilation. The processor fails before runtime.
+  No claim that it produced the SQLite oracle is made. Structured observation
+  records diagnostics only, not source contents or external credentials.
+- A synthetic duplicate-if regression preserves an uncompilable processor in
+  CAS while receiver orchestration succeeds without selecting it. The test
+  stubs adapters; real adapter fixtures and retained live raw-run readback
+  supply distinct evidence, not an exaggerated end-to-end test claim.
+- Donor risks map to named existing tests for positional drift, explicit
+  rejection, nonpositive amounts, missing periods, denominator gates, type
+  mixing and preserved failures. No unnecessary new runtime API or dependency.
+- 253 focused tests pass. Final native harness for `4454d75` passes 1,907 tests,
+  96.48% coverage, eight SQLite warnings, 40 schemas/30 documents, 70 tracks,
+  9/9 parity, all native mutation/supply-chain gates and 111-component SBOM.
+- Only the donor-intended four-profile pipeline and characterization tasks
+  close. Broader raw areas, source expansion, resumability and publication
+  remain open; exact-head hosted delivery is still a separate gate.
+
 ## Source-derived plots — 2026-08-31 UTC
 
 - Read-only Gold consumer verifies pinned snapshots, all eight files, typed

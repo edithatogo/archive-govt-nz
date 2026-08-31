@@ -92,6 +92,31 @@ def test_preflight_is_read_only_and_pins_all_sources(tmp_path: Path) -> None:
     assert not (tmp_path / "output").exists()
 
 
+def test_broken_donor_processor_is_preserved_but_not_a_runtime_dependency(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Synthetic duplicate-if defect cannot prevent receiver orchestration."""
+    manifest, store_root, _ = _inputs(tmp_path)
+    broken = b"if True:\nif True:\n    pass\n"
+    with pytest.raises(IndentationError):
+        compile(broken, "synthetic_process_data.py", "exec", dont_inherit=True)
+    store = ContentAddressedStore(store_root)
+    original = store.put_bytes(broken)
+    donor = json.loads(manifest.read_bytes())
+    donor["objects"].append(
+        {"path": "process_data.py", "object_id": original.object_id}
+    )
+    manifest.write_text(json.dumps(donor))
+    pin = hashlib.sha256(manifest.read_bytes()).hexdigest()
+    plan = rebuild.plan_rebuild(manifest, store_root, pin, OBSERVED)
+    _adapters(monkeypatch)
+    result = rebuild.execute_rebuild(plan, store_root, tmp_path / "run")
+    assert result["status"] == "passed"
+    assert set(plan["sources"]) == set(PATHS)
+    assert store.verify(original.object_id).path.read_bytes() == broken
+    assert hashlib.sha256(manifest.read_bytes()).hexdigest() == pin
+
+
 def test_run_is_deterministic_and_complete_reuse_verifies_bytes(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,

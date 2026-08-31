@@ -1,5 +1,41 @@
 # Run Log
 
+## Source plot hosted delivery — 2026-08-31 UTC
+
+- Integrated full native harness passes on `62dc6e4`, after main's extra CLI
+  coverage/dependency changes: 1,911 tests collected, test gate exits zero,
+  96.75% overall coverage, 100% across Health-domain production modules,
+  40 schemas/30 documents, 70 tracks, 9/9 parity, all native mutation and
+  supply-chain gates, 111-component SBOM. CAS 288.53 MB/s versus 25.0 minimum.
+  Unrelated timestamp-only generated evidence restored after completion.
+
+- PR #269 merged `b149d3725165b4d4116e17452955c5602ac40ec4` at
+  05:52:48 UTC after all seven checks passed on exact head
+  `4f405e2abfba2444b8906412a65f7c128a269a13`, CI run `33361422682`.
+  Health source/tests are unchanged at merge; whole trees differ because of
+  unrelated main additions. No archive or publication bytes changed.
+- Integrated that exact main into conformance. Squash-history conflicts were
+  limited to Health track bookkeeping; retained incoming plot evidence and
+  newer conformance evidence. Verified immutable evidence prefix unchanged.
+
+## Donor failure conformance — 2026-08-31 UTC
+
+- `4454d75` records full compile observations and maps donor semantic/failure
+  risks to replacement tests. A synthetic duplicate-if script remains in CAS
+  while receiver orchestration selects only its four source profiles. All
+  253 selected tests and focused format/lint/types pass; no production changes.
+- Final native harness exits zero: 1,907 tests, 96.48% coverage, eight existing
+  SQLite warnings, 40 schemas/30 documents, 70 tracks, 9/9 parity, all native
+  mutation/supply-chain gates, 111-component SBOM. CAS 586.10 MB/s versus the
+  unchanged 25.0 minimum. Same runtime controls as the source plot harness.
+- CLI verification of raw manifest `da65ee2f38e2450e7273e84fa48b0b29a6a44670d84401fdbb7389f710fa0269`
+  passes without creating new state. This is readback, not a new extraction.
+  Timestamp-only unrelated generated evidence was restored after validation.
+- No raw/HF bytes or donor retirement changed. Next separate pilot: captured
+  Budget 2026 headers match the supported 17-column contract. Captured HLFS
+  working-age population is not silently accepted as total population for
+  health spending per capita; M-12 denominator selection remains open.
+
 ## Source plot contracts — 2026-08-31 UTC
 
 - Final post-preflight-fix harness exits zero for `eeb6200`: 1,906 tests,

@@ -119,10 +119,11 @@ repository validation command. External gates block only their affected task.
   their bytes. [M-03, M-07, S-03; AC-02, AC-03]
 - [x] Characterize the five-table SQLite schema, row order/keys, types, nulls,
   values and totals as parity fixtures. [M-08; AC-06, AC-11]
-- [ ] Characterize the intended behavior and failure behavior of
+- [x] Characterize the intended behavior and failure behavior of
   `inspect_excel.py`, `process_data.py` and `run_analysis.py`, including the
   known compile failure, swallowed exceptions and positional heuristics.
-  [M-09, M-18; AC-07, AC-16]
+  [M-09, M-18; AC-07, AC-16] (`4454d75`; pinned full compile without execution,
+  defect-to-replacement test map, 253 focused and 1,907 full-suite tests)
 
 ### 1.4 Decide workbook and plotting dependencies
 
@@ -278,9 +279,12 @@ repository validation command. External gates block only their affected task.
 - [x] Implement a typed workbook/source inventory CLI equivalent to
   `inspect_excel.py`, with structured output and bounded failures. [M-09,
   M-15; AC-07, AC-13] (`446a82d`)
-- [ ] Implement the raw-to-Silver pipeline equivalent to `process_data.py`;
+- [x] Implement the raw-to-Silver pipeline equivalent to `process_data.py`;
   regression-test the compile defect, positional heuristics and swallowed
   exceptions rather than retaining them. [M-09, M-18; AC-07, AC-16]
+  (`578235c`, conformance `4454d75`; four donor-intended workbook profiles,
+  341 facts and verified raw-run readback; full workbook-area normalization,
+  further vintages and partial-stage resume remain separate pending tasks)
 - [x] Generate the five-table SQLite compatibility database from canonical
   Parquet and validate schema/row/value parity or approved repairs. [M-08,
   M-09, M-10; AC-06, AC-08] (`e91d24b`)
@@ -289,9 +293,11 @@ repository validation command. External gates block only their affected task.
   breakdown and classification trends. [M-09, M-13; AC-07, AC-08]
   (`b38069c`, PR #261 merged `15b47b9`; four matching local builds,
   seven exact-head hosted checks; earlier local timing failures retained)
-- [~] Reproduce all six donor plots with semantic parity contracts covering
+- [x] Reproduce all six donor plots with semantic parity contracts covering
   query inputs, filters, series, units, labels and rendering parameters; retain
   donor PNGs unchanged in Bronze. [M-03, M-09, M-13; AC-02, AC-07, AC-08]
+  (`eeb6200`; PR #269 merged `b149d37`, seven exact-head checks;
+  three byte-identical builds, visual QA and disclosed semantic differences)
 
 ### 4.4 Phase review and checkpoint
 
