@@ -630,3 +630,29 @@ retained snapshots pass exact JSON-string cell joins without numeric coercion.
 Read-only re-review reports both findings resolved and no additional finding.
 The original input package remains required for retained-only information.
 See `historical-projection.md` for mapping, red-phase evidence and limits.
+
+
+## Budget classification occurrence projection
+
+The pure source-label projection passed independent read-only review, 42 focused
+tests with 100% critical line/branch coverage and 29/29 cold mutant kills.
+Two verified retained Budget packages yield 400 unmapped occurrence dimensions
+and full 6800-row lineage accounting without input mutation. Exact Parquet
+round-trip and source-object identity boundary tests pass. No authoritative
+identifier, valid-time interval, crosswalk or rights promotion is invented.
+
+Required native validation at `b651907` passed all 3014 tests (8 existing resource
+warnings), 97.12% coverage and all subsequent gates. Two owned timestamp-only
+fixture changes were restored after exit. Source and tests remain unchanged;
+hosted delivery is pending. See [full receipt](./budget-classification.md).
+## 2026-08-31 — Exclusive canonical export review
+
+Independent read-only review of the complete exporter and tests found no
+actionable issue after the dry-run refinement. Both modes now serialize and
+budget the same complete marker before reservation; only dry-run labels output
+hashes planned. Expected failures cannot write into unowned/raced directories.
+Partial data and partial markers remain intact; a marker filename alone is not
+validity evidence. Exact bytes/schema readback and file membership precede
+completion. Caller parent-directory trust, source-package retention and no
+publication/rights promotion remain explicit. No generic filesystem sandbox or
+global semantic/canonical-registry completion is claimed.

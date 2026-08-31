@@ -225,6 +225,12 @@ repository validation command. External gates block only their affected task.
 
 ### 3.2 Implement the domain and adapter protocol
 
+- [x] Compose verified historical snapshots and the pure canonical projection
+  into an exclusive local-only export, defaulting to dry-run, with complete
+  readback and retained partial failures. Keep source packages and publication
+  unchanged. [M-05, M-06, M-07, M-16, M-18; AC-05, AC-16]
+  (`8bee922`; 52 focused tests, 41/41 cold mutants, 3,194 native tests;
+  see `historical-canonical-export.md`; standalone verification remains pending.)
 - [x] Project reviewed historical Health/GDP facts and field lineage into the
   canonical Arrow shapes with exact Decimal bounds, vintage-aware identities,
   unknown starts, period dependencies and complete mapped/retained lineage
@@ -350,6 +356,15 @@ repository validation command. External gates block only their affected task.
   full cell dispositions and field lineage. No annual aggregation, denominator
   selection, source download or publication. [M-05, M-06, M-07, M-18; AC-05,
   AC-09, AC-16]
+
+- [x] Project verified Budget functional-classification source-label occurrences
+  into the canonical dimension shape: four literal labels, local scheme,
+  unknown scheme version/identifier and unmapped state; preserve per-source
+  vintage/coordinate identity and complete input-lineage accounting. No
+  authoritative crosswalk, source mutation or publication. [M-05, M-06,
+  M-07, M-18; AC-05, AC-09, AC-16]
+  Local pure projection, focused/mutation/native assurance and in-memory pilots
+  pass; hosted delivery remains separate. See [receipt](./budget-classification.md).
 
 - [~] Normalize the retained Pharmac medicines-budget HTML profile into
   pharmaceutical-budget facts, preserving all 14 financial-year rows, supplied
