@@ -374,6 +374,12 @@ reproducibility evidence before production adoption.
 
 ## Security and privacy
 
+The bounded embedded-notice observer consumes only three reviewed legacy
+workbook hashes. It verifies a capped snapshot, checks exact metadata-cell
+decoded-text hashes, and returns a non-eligibility receipt with coordinates and
+digests rather than source text. It never follows relationships, modifies
+Bronze or registers rights automatically; see [embedded notices](./embedded-notices.md).
+
 Only public government fiscal and aggregate context data is intended. Every
 retrieval is size-bounded and type-checked; ZIP packages receive archive-bomb
 and path-safety checks. Logs and evidence retain no credentials, signed URLs,
