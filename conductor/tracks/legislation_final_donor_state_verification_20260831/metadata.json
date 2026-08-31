@@ -4,8 +4,9 @@
   "type": "chore",
   "status": "in_progress",
   "created_at": "2026-08-31T12:11:09.741927+00:00",
-  "updated_at": "2026-08-31T12:11:09.741927+00:00",
+  "updated_at": "2026-08-31T12:41:24.732161+00:00",
   "description": "Prompt 03 quarantined final donor operational-state verification",
   "issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/284",
-  "parent_issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/276"
+  "parent_issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/276",
+  "pr_url": "https://github.com/edithatogo/archive-govt-nz/pull/287"
 }
