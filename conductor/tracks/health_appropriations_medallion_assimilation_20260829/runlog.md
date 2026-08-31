@@ -1389,3 +1389,11 @@ entire machine ledger. Source/test hashes remained unchanged. Post-integration
 224 projection/schema/Conductor tests passed in 4.79 seconds, 1,641 files passed
 format, repository Ruff/types passed, and all 74 Conductor tracks validated.
 This is focused post-integration assurance, not another full native run.
+
+PR #305 needed a second main integration after snapshot-reader PR #303 merged
+as `2061098`. Merge `6da2b84` preserves all incoming ledger bytes as a prefix
+and both projection events; 188 projection/snapshot/Conductor tests passed in
+9.41 seconds, all 74 tracks and scoped lint passed. The append-merge helper's
+temporary two-character header truncation was corrected before committing and
+full JSON validity checked. Production/test hashes and native evidence are
+unchanged; no second full run is claimed.
