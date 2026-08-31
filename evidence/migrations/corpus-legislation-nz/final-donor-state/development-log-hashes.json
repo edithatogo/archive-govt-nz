@@ -1,0 +1,70 @@
+{
+  "location": "External quarantine directory; logs preserved without source payloads",
+  "logs": [
+    {
+      "name": "focused-01.log",
+      "sha256": "e10ee883c570570f4bc5ded03bb3432cad8731e4e4c24bb5c0ee86cc0d0bc427",
+      "size_bytes": 1463
+    },
+    {
+      "name": "focused-02.log",
+      "sha256": "7e368e779c67eea91600211402b8de5be6d4ab3a3bd3ccaa207179fc44f4c831",
+      "size_bytes": 897
+    },
+    {
+      "name": "focused-03.log",
+      "sha256": "40ddb39e77d0bd427956729515d894d2935ed9ab4e46347d105b27d691cc9588",
+      "size_bytes": 58576
+    },
+    {
+      "name": "focused-04.log",
+      "sha256": "901a213a159580cb37f6139985a94bf63f285a1400cac0bce09cd68f4939f4d2",
+      "size_bytes": 789
+    },
+    {
+      "name": "focused-05.log",
+      "sha256": "36693ac995d97ba0596c1d063720975462f84e918f9f1755cb277f7fa2bb207a",
+      "size_bytes": 789
+    },
+    {
+      "name": "focused-06.log",
+      "sha256": "afed4edbbcd01226ebb76671a818b27704ebbe7bee7f39aca4f04af045f47c42",
+      "size_bytes": 790
+    },
+    {
+      "name": "focused-07.log",
+      "sha256": "daac2bcdc2cece572cf801a8583d800ccc0e8a1d22047aa6449a5f68cbcb7fbc",
+      "size_bytes": 790
+    },
+    {
+      "name": "types-01.log",
+      "sha256": "f298899391ad12c5d1c077bbd25b59e86da0130d1ccce48ea8f64645be135299",
+      "size_bytes": 1144
+    },
+    {
+      "name": "types-02.log",
+      "sha256": "56882e01cb80173ef053c4096e4ee43e3123a15f5c0a06715f96988d48fbd91c",
+      "size_bytes": 30
+    },
+    {
+      "name": "types-04.log",
+      "sha256": "56882e01cb80173ef053c4096e4ee43e3123a15f5c0a06715f96988d48fbd91c",
+      "size_bytes": 30
+    },
+    {
+      "name": "actionlint-01.log",
+      "sha256": "d75001604148cbbbaeef2b3e66444af4835398619e6e586fb864f68f90f8fee8",
+      "size_bytes": 450
+    },
+    {
+      "name": "actionlint-baseline.log",
+      "sha256": "22f1e7ff8d800726220d8a3c3b051938cf7a0cc8d69f682299ca29a43961186a",
+      "size_bytes": 600
+    },
+    {
+      "name": "mutation-01.log",
+      "sha256": "51a557fa8b0f701850282959dd9cbf83ca1d9282a87cd533a1b4bfe7e1597678",
+      "size_bytes": 207
+    }
+  ]
+}

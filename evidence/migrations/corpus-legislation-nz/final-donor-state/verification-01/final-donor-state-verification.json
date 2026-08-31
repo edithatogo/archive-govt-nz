@@ -1,0 +1,23 @@
+{
+  "schema_version": "archive-govt-nz.final-donor-state-verification/v1",
+  "status": "failed",
+  "mismatches": [
+    "manifestation_path"
+  ],
+  "observed": {
+    "seed_ids": 500,
+    "manifest_records": 500,
+    "processed_ids": 500,
+    "cas_objects": 500
+  },
+  "artifact_sha256": "1975e473793fd701b81b53a7f6fd696bbeaa257b41bdc55250f064a21ad9e54e",
+  "donor_commit": "b40587f1b1aec7356a0f623916fcc8212397d283",
+  "run_id": 32487942675,
+  "artifact_id": 9450742423,
+  "mismatch_count": 1,
+  "verifier_sha256": "a32c0275a6ec40f605b57e3951472e844fa013d519cfa3c9c69ffff46676270f",
+  "input_hashes": {
+    "expectations_sha256": "5fe2e77fe8edc5c76b0c864e1ecc2923443df21a0bf07356d11c923a2cb770d8",
+    "metadata_sha256": "5b6d91b78dbdd2197fd1cc82f34fbb87bfcb83ccd02ac40fb927181cde264737"
+  }
+}

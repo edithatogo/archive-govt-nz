@@ -2,6 +2,14 @@
 
 ## Source-derived analytical boundary
 
+The bounded Ministry HAIR2024 CSV path emits a distinct
+`published_indicator_fact` recordset. Supplied real/nominal/per-capita labels
+are preserved without claiming independent reproduction; omitted units, price
+base, denominator and exact fiscal dates remain null with explicit quality
+flags. These records cannot silently replace calculated Gold measures. The
+shared exclusive writer retains original-derived lineage and interrupted
+partial outputs; see [Ministry indicator contracts](./moh-indicators.md).
+
 Pure historical/Budget calculations preserve exact values and IDs, partition
 sources/vintages, and make period/basis gaps and missing/invalid denominators
 explicit. Percentages have an independent Decimal rounding policy; missing
@@ -300,6 +308,24 @@ parameters. PNG byte identity is not required across rendering platforms,
 though a pinned environment should make release builds deterministic.
 
 ## Platinum, federation and publication
+
+### Read-only additive inventory boundary
+
+The additive planner accepts explicit pinned base-manifest, complete-capture,
+resource-rights and four versioned Silver-package inputs. It reads capped
+verified snapshots, rejects duplicate JSON keys and portable path collisions,
+checks every base file, and assigns separate fixed Budget-2026, CPI-2026-Q2,
+BEFU-2026 and HYEFU-2025 namespaces. Each package source hash must join exactly
+one capture row, resource-rights entry and original file with consistent
+locator, recorded rights tuple, object identity and byte count. Symlink inputs
+and members are rejected; reviewed local paths are not a concurrent-hostile
+filesystem sandbox.
+
+The output is a deterministic proposed payload inventory, not a candidate.
+Package manifests retain `rights_state: not_evaluated`; recorded source rights
+are evidence joins, not a new rights assessment. Semantic Parquet validation,
+metadata overhead, a future candidate root manifest and publication approval
+remain explicit separate gates. No files are copied and no HF call occurs.
 
 Platinum metadata derives from actual manifests and schemas. Per-resource
 rights determine whether a candidate contains an original payload, a derived

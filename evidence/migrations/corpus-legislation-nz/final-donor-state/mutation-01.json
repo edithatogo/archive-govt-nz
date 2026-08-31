@@ -1,0 +1,78 @@
+{
+  "verifier_sha256": "654ab72b5015d3df7e47d68362d3f2b64598c69aef003fa19ea32c2e2972080f",
+  "method": "individually bypass require for named invariant; assertion failure required, infrastructure errors excluded",
+  "results": [
+    {
+      "guard": "zip_digest",
+      "selector": "archive_boundaries and digest",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "145a22eccdef2d83f03b371e83873370f346fbf918232b16b6a6dd0056d5d312"
+    },
+    {
+      "guard": "manifest_root",
+      "selector": "independent_manifest_root_guard",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "b0283b0fa685d05f1928a8c6d877a5357f3b0df383a77df8c3639c1212546c9e"
+    },
+    {
+      "guard": "cas_sha256",
+      "selector": "independent_sha256_guard",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "75c10e538316c44f3a2ca607ea5387611d0d8e5aeb049a0d6a6ac32c8c294b35"
+    },
+    {
+      "guard": "cas_blake3",
+      "selector": "cas_controls and blake3",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "2c94da987ea6332df211f983c53d001baa030710523c017e50b2809bb15ce803"
+    },
+    {
+      "guard": "cas_size",
+      "selector": "cas_controls and size",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "5250ac1b2b412a062a6d55297e2e857345d49c7fa1183cbeddfca073fa6bb5f0"
+    },
+    {
+      "guard": "cas_unreferenced",
+      "selector": "cas_controls and extra",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "29fda102d960c9de95090179797a0f94a5a620810b7db29d393fee521cdb91cf"
+    },
+    {
+      "guard": "reconciliation_mismatch_count",
+      "selector": "receipt_fields and weekly-reconciliation",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "08c2a880d13eab433f7f52b7dc9d1a24d5ff27d6400af4dab1f5fc61d885c6aa"
+    },
+    {
+      "guard": "lineage_prior_run_id",
+      "selector": "receipt_fields and weekly-state-lineage",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "65a1dbb8f7fb07b197e3ae53e28f17c00af1316e5e08312533896f648d7bfdb9"
+    },
+    {
+      "guard": "retained_mismatch_count",
+      "selector": "retained_receipt_mismatch",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "582d8d744c4114365c2b855c2e5d9895ee7209ed23863c80d051f7a986afa3e5"
+    },
+    {
+      "guard": "zip_path",
+      "selector": "zip_paths",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "98cbef04d7b552721e84aed94f968d1bba69b0210c2a011bc9f4fc650b4699b0"
+    }
+  ],
+  "killed": 10,
+  "total": 10
+}
