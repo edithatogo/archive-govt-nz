@@ -83,6 +83,10 @@ existing Silver/Gold package, candidate, Hugging Face revision or donor changes.
   Durable native log SHA-256:
   `ea23b74dabb6a092e9d637eaa06d7bebddca959f01c703f2e519ba5cefb321f0`.
   Hosted exact-head checks remain a separate pending gate.
+- Subsequent main integration (`25f9fb5`, merge `970599a`) preserves the
+  incoming evidence prefix and both CPB append events. Source and test digests
+  stayed unchanged; 69 focused tests and the 73-track Conductor check pass.
+  The earlier native result is not represented as a rerun on the merge commit.
 
 Two exclusive local pilot builds match byte-for-byte across four files totaling
 31,646 bytes. Manifest SHA-256 is
