@@ -1,0 +1,31 @@
+{
+  "observed_at": "2026-08-31T12:11:09.741927+00:00",
+  "artifact": {
+    "id": 9450742423,
+    "name": "target-legislation-weekly-32487942675",
+    "size_in_bytes": 8744898,
+    "digest": "sha256:1975e473793fd701b81b53a7f6fd696bbeaa257b41bdc55250f064a21ad9e54e",
+    "expired": false,
+    "created_at": "2026-08-21T14:43:21Z",
+    "expires_at": "2026-11-19T13:38:58Z",
+    "workflow_run": {
+      "id": 32487942675,
+      "repository_id": 1261843947,
+      "head_repository_id": 1261843947,
+      "head_branch": "main",
+      "head_sha": "b40587f1b1aec7356a0f623916fcc8212397d283"
+    }
+  },
+  "run": {
+    "id": 32487942675,
+    "name": "Target weekly legislation cycle",
+    "path": ".github/workflows/target_weekly_legislation_cycle.yml",
+    "head_sha": "b40587f1b1aec7356a0f623916fcc8212397d283",
+    "status": "completed",
+    "conclusion": "success",
+    "run_attempt": 1,
+    "created_at": "2026-08-21T13:38:57Z",
+    "updated_at": "2026-08-21T14:43:26Z",
+    "html_url": "https://github.com/edithatogo/corpus-legislation-nz/actions/runs/32487942675"
+  }
+}

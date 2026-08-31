@@ -1,0 +1,48 @@
+{
+  "observed_at": "2026-08-31T12:56:43.744585+00:00",
+  "prompt": 2,
+  "merged_pr": 281,
+  "merged_target_commit": "d6bc0c96c44488a75b7e98bd9cb95591eeb97a38",
+  "reviewed_pr_head": "b7f60abee078cb24367f4de3e310d5836f8f62f4",
+  "imported_tree": "4faf5bebac0d6cf8f06b87e83b282a9953505ce9",
+  "files_rehashed": 216,
+  "omitted_items": 0,
+  "checks": [
+    {
+      "name": "codecov/patch",
+      "conclusion": "success",
+      "url": "https://github.com/edithatogo/archive-govt-nz/runs/99488489970"
+    },
+    {
+      "name": "CodeQL",
+      "conclusion": "success",
+      "url": "https://github.com/edithatogo/archive-govt-nz/runs/99487944632"
+    },
+    {
+      "name": "Assurance (windows-latest)",
+      "conclusion": "success",
+      "url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/33391772652/job/99486835301"
+    },
+    {
+      "name": "Assurance (macos-latest)",
+      "conclusion": "success",
+      "url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/33391772652/job/99486835171"
+    },
+    {
+      "name": "Assurance (ubuntu-latest)",
+      "conclusion": "success",
+      "url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/33391772652/job/99486834844"
+    },
+    {
+      "name": "lint",
+      "conclusion": "success",
+      "url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/33391772554/job/99486834327"
+    },
+    {
+      "name": "analyze",
+      "conclusion": "success",
+      "url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/33391772567/job/99486834263"
+    }
+  ],
+  "scope": "Superseding controller observation of merged lineage and fixity; not operational-state, custody or publication completion."
+}

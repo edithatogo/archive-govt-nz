@@ -1,0 +1,19 @@
+{
+  "observed_at": "2026-08-31T12:11:09.741927+00:00",
+  "status": "outer_digest_verified",
+  "donor_archived": true,
+  "donor_commit": "b40587f1b1aec7356a0f623916fcc8212397d283",
+  "target_commit": "113bac597cb95ce7aba5c877da4cffde6a0346cc",
+  "audited_donor_matches": true,
+  "audited_target_supplied": false,
+  "artifact_sha256": "1975e473793fd701b81b53a7f6fd696bbeaa257b41bdc55250f064a21ad9e54e",
+  "zip_bytes": 8744898,
+  "zip_entries_observed": 511,
+  "expanded_bytes_advertised": 59181774,
+  "acquisition": "gh api repos/edithatogo/corpus-legislation-nz/actions/artifacts/9450742423/zip; authenticated download, signed redirect never recorded",
+  "workflow_sha256": "3a49cc909d46faa526171488ca46cd418c0191bba57dd6e0a559f9cfe98d70a1",
+  "execution_target_commit": "d9abc05fa648f8b2049fb443477bc8f97691cf7f",
+  "extraction": "pending bounded verifier; preliminary inspection only after outer digest pass",
+  "canonical_state_modified": false,
+  "publication_performed": false
+}

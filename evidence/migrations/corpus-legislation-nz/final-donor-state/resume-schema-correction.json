@@ -1,0 +1,13 @@
+{
+  "status": "superseding_schema_correction",
+  "original_receipt_commit": "8d91be45321c92c36332e9d098965f6c4e354561",
+  "original_receipt_blob": "3a816befaf79ed1037f0c883eeebeb4f0a477434",
+  "original_receipt_sha256": "1747da814959a5914b3cd5ba185bb4506be48f1479f936a6fd9d2f8bd35dc849",
+  "original_bytes_preserved": "Exact original in immutable Git blob and external quarantine; no history rewrite.",
+  "failed_hosted_run": 33395056740,
+  "failed_job": 99497607652,
+  "detector": "Secret Keyword",
+  "candidate_value": "passed",
+  "candidate_is_credential": false,
+  "correction": "Current report uses a structured status object for scan outcome, rather than a credential-like scalar assignment. No validation facts, scanner settings, exclusions, thresholds or historical donor/failure receipts changed."
+}

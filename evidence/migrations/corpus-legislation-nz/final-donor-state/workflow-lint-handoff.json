@@ -1,0 +1,19 @@
+{
+  "target_baseline": "113bac597cb95ce7aba5c877da4cffde6a0346cc",
+  "status": "blocked_out_of_scope",
+  "actionlint_exit_code": 1,
+  "baseline_reproduced_SC2086": 2,
+  "files": [
+    {
+      "path": ".github/workflows/global-ckan-harvest-huggingface.yml",
+      "unchanged_from_baseline": true,
+      "sha256": "efb1597f1c546dab97b1e34d873cdb6e362f8dde62b8ec66973b461538ee2fdd"
+    },
+    {
+      "path": ".github/workflows/scheduled-gazette-harvest.yml",
+      "unchanged_from_baseline": true,
+      "sha256": "4d12ef6bc7c145cc8f556033c7c85a349adfba5265aa8d7680bc5cfbcb4b2d5e"
+    }
+  ],
+  "handoff": "Quote shell expansions in the two existing workflows in a separately scoped issue; rerun full workflow lint. No workflow edits or lint suppression in Prompt 03."
+}
