@@ -645,3 +645,14 @@ Required native validation at `b651907` passed all 3014 tests (8 existing resour
 warnings), 97.12% coverage and all subsequent gates. Two owned timestamp-only
 fixture changes were restored after exit. Source and tests remain unchanged;
 hosted delivery is pending. See [full receipt](./budget-classification.md).
+## 2026-08-31 — Exclusive canonical export review
+
+Independent read-only review of the complete exporter and tests found no
+actionable issue after the dry-run refinement. Both modes now serialize and
+budget the same complete marker before reservation; only dry-run labels output
+hashes planned. Expected failures cannot write into unowned/raced directories.
+Partial data and partial markers remain intact; a marker filename alone is not
+validity evidence. Exact bytes/schema readback and file membership precede
+completion. Caller parent-directory trust, source-package retention and no
+publication/rights promotion remain explicit. No generic filesystem sandbox or
+global semantic/canonical-registry completion is claimed.
