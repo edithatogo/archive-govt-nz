@@ -150,3 +150,8 @@ Before PR creation, main `0fafa5a` was integrated at `1fc1d0d` without conflicts
 Source and test hashes remained unchanged; all 53 focused tests and 75-track
 Conductor validation passed after integration. The full corrected native result
 predates this later base integration; exact-head hosted checks remain separate.
+
+PR319's initial head conflicted with the concurrent PR318 main merge before
+hosted runs started. Main `d46d398` was integrated at `a3e31bc`; the whole
+incoming ledger was kept before the local assurance append. Unchanged source
+and tests again passed all 53 focused tests and 75-track Conductor validation.
