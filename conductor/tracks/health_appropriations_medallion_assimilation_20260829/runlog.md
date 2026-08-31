@@ -17,7 +17,6 @@
   Budget 2026 headers match the supported 17-column contract. Captured HLFS
   working-age population is not silently accepted as total population for
   health spending per capita; M-12 denominator selection remains open.
-
 ## Source plot contracts — 2026-08-31 UTC
 
 - Final post-preflight-fix harness exits zero for `eeb6200`: 1,906 tests,

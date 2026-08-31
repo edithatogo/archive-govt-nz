@@ -76,3 +76,5 @@ in regression coverage and must retain the same revision with no new commit.
 Card order is generated from one fixed table registry, retaining compatibility
 with already-published cards. Failure reason output is an explicit allowlist;
 unknown/private exception text remains unclassified and is never printed.
+
+Hosted correction review: the receiver repeated the same public metadata verification successfully and preserved the exact revision, without snapshot/card rewrites. The first failure and its artifact remain recorded. Metadata authentication and public readback are proven; raw write capacity and public raw restoration are not. All country-completion counts remain zero and the donor monitor stays paused.

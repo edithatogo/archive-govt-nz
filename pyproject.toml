@@ -48,7 +48,7 @@ dev = [
   "pytest-xdist>=3.8.0",
   "ruff>=0.16.1,<0.17",
   "scalene>=2.3.0",
-  "syrupy>=5.0.0,<6",
+  "syrupy>=5.0.0,<7",
 ]
 
 [tool.basedpyright]
