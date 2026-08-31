@@ -491,6 +491,12 @@ repository validation command. External gates block only their affected task.
 
 ### 8.2 Implement bounded operations
 
+- [~] Read an explicitly pinned historical package and original into bounded,
+  hash-verified snapshots with exact source-specific schemas/counts. Return
+  transport evidence without claiming semantic projection, source rights,
+  original workbook execution or publication. [M-15, M-16, M-18; AC-12, AC-13,
+  AC-16]
+
 - [~] Expose a compact hash-pinned standalone Budget-package verification
   receipt through matching read-only CLI/MCP contracts. Reject missing,
   partial or corrupt packages without creating state; retain not-evaluated

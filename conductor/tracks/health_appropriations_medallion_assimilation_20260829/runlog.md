@@ -1248,3 +1248,15 @@ path with the 34 schema tests. Production/test hashes remain unchanged and the
 entire incoming machine ledger was verified byte-for-byte as a prefix before
 appending the two owned schema receipts. This does not replace the separately
 recorded pre-integration full harness.
+
+## 2026-08-31 — Historical snapshot reader red and transport mismatch
+
+Initial focused collection failed with the expected missing snapshot module
+(exit 2). The first implementation passed 11 negative tests but rejected its
+valid writer-generated fixture. A bounded private-helper traceback isolated
+exact schema comparison; independent field comparison found only historical
+`quality_flags` and `footnotes` child names: in-memory Arrow `item`, stored
+Parquet `element`. Freeze explicit transport names for those fields, preserving
+metadata/type/nullability checks and all existing files. This is a reader
+contract correction, not source rewriting or ignored schema drift. Ruff also
+identified exception-literal/import/raw-regex styles; strict typing passed.

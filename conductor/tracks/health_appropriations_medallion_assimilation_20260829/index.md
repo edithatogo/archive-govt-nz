@@ -17,6 +17,7 @@ every planned record set, measure or operational workflow.
 
 - [Pharmac medicines-budget HTML contract](./pharmac-cpb.md)
 - [Additive eight-record-set structural contracts](./recordset-contracts.md)
+- [Historical package snapshot verification](./historical-snapshot.md)
 - [Hash-bound embedded-notice observations](./embedded-notices.md)
 - [Standalone Budget-package operations](./budget-operations.md)
 - [Specification](./spec.md)
