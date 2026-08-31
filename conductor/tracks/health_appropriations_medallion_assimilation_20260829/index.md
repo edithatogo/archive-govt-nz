@@ -15,6 +15,7 @@ every planned record set, measure or operational workflow.
 
 ## Artifacts
 
+- [Budget source-label classification occurrences](./budget-classification.md)
 - [Pharmac medicines-budget HTML contract](./pharmac-cpb.md)
 - [Additive eight-record-set structural contracts](./recordset-contracts.md)
 - [Historical package snapshot verification](./historical-snapshot.md)
