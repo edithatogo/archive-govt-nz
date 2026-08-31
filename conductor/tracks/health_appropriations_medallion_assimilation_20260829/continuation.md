@@ -59,9 +59,11 @@ No task is complete just because code exists, an issue is closed, or CI is green
   independent builds match and retain all donor rows plus 29 historical facts.
   Pure historical and Budget analytical computations now have explicit
   period/basis/gap/denominator guards and exact source-vintage aggregates.
-  See `raw-analytics.md`; this does not yet persist Gold tables.
-  Next executable increment: verified raw-reader integration and exclusive
-  Gold tables/manifest/CLI, followed by donor comparison and plot contracts.
+  See `raw-analytics.md`. The shared verified reader and exclusive Gold
+  tables/manifest/CLI now have live independent rebuild and legacy comparison
+  evidence in `raw-gold.md`. Whole-suite local timing failures remain recorded;
+  require fresh hosted assurance before marking the analytical task complete.
+  Next: finish Gold delivery checks, then source-derived plot contracts.
   A fresh read of the canonical historical facts identifies period/basis
   transitions at 1990, 1994, 1997 and 2005, with no year gaps. Growth across
   those transitions must remain explicitly unavailable or separately qualified;
