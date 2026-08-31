@@ -19,6 +19,7 @@
 - Only the donor-intended four-profile pipeline and characterization tasks
   close. Broader raw areas, source expansion, resumability and publication
   remain open; exact-head hosted delivery is still a separate gate.
+
 ## Source-derived plots — 2026-08-31 UTC
 
 - Read-only Gold consumer verifies pinned snapshots, all eight files, typed

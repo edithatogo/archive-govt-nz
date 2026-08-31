@@ -293,9 +293,11 @@ repository validation command. External gates block only their affected task.
   breakdown and classification trends. [M-09, M-13; AC-07, AC-08]
   (`b38069c`, PR #261 merged `15b47b9`; four matching local builds,
   seven exact-head hosted checks; earlier local timing failures retained)
-- [~] Reproduce all six donor plots with semantic parity contracts covering
+- [x] Reproduce all six donor plots with semantic parity contracts covering
   query inputs, filters, series, units, labels and rendering parameters; retain
   donor PNGs unchanged in Bronze. [M-03, M-09, M-13; AC-02, AC-07, AC-08]
+  (`eeb6200`; PR #269 merged `b149d37`, seven exact-head checks;
+  three byte-identical builds, visual QA and disclosed semantic differences)
 
 ### 4.4 Phase review and checkpoint
 

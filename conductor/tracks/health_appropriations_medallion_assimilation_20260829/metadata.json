@@ -4,7 +4,7 @@
   "type": "feature",
   "status": "in_progress",
   "created_at": "2026-08-29T05:39:14Z",
-  "updated_at": "2026-08-31T05:50:25Z",
+  "updated_at": "2026-08-31T05:52:48Z",
   "description": "Zero-loss assimilation of nz_health_appropriations into Bronze, dedicated multi-recordset Silver, reproducible Gold analytics, rights-aware Platinum metadata and gated Hugging Face publication.",
   "requirements_method": "MoSCoW",
   "evidence_schema": "legacy-observation-v1",
@@ -208,11 +208,14 @@
     "hosted_head": "3895434eea49dec019ae48bdcdf70626ae1b1c71",
     "pull_request": 261,
     "merge_commit": "15b47b946a27a47efd4715002f0c1aff563149d4",
-
     "publication_state": "local_validation_only"
   },
   "raw_plot_state": {
-    "status": "local_assurance_passed_hosted_pending",
+    "status": "merged_after_seven_exact_head_checks",
+    "pull_request": 269,
+    "hosted_head": "4f405e2abfba2444b8906412a65f7c128a269a13",
+    "merge_commit": "b149d3725165b4d4116e17452955c5602ac40ec4",
+    "hosted_ci_run": 33361422682,
     "retained_directory": "gold/raw-plots-20260831-v2",
     "manifest_sha256": "a04b1b8785d7a4da67ad1b83d6449592838ed0359de792368bb8f150155786d2",
     "gold_manifest_sha256": "ec68a03f597c7792da4337f2babfcb6615c2e6162a3125042c2b8ef6b7665835",

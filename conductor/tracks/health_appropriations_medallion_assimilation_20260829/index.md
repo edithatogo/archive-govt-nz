@@ -72,7 +72,9 @@ every planned record set, measure or operational workflow.
   exact-head checks passed; local timing failures remain recorded. Six new
   source-derived PNGs have matching independent builds and completed visual
   QA; final local assurance passes 1,906 tests and 128 current critical mutants.
-  Exact-head hosted plot delivery remains pending.
+  Plot PR #269 merged after all seven exact-head checks passed. Donor failure
+  conformance and the four-profile pipeline pass 253 focused and 1,907 full
+  tests; their delivery remains separate from broader source-area coverage.
 - Hugging Face: `published_and_verified` for the pinned candidate, with
   [dataset](https://huggingface.co/datasets/edithatogo/nz-health-appropriations)
   revision `9b85bac06597d4435fd078f6bed0f30bb008542b` and manifest SHA-256

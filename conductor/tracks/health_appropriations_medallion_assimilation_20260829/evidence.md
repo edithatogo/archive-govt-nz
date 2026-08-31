@@ -11,6 +11,7 @@ coverage, eight SQLite warnings, all schema/parity/mutation/supply-chain gates,
 and 111-component SBOM. Read-only CLI verification of the retained 341-fact raw
 run passes. This closes donor-intended pipeline conformance, not full source
 coverage or publication. Hosted delivery is separately pending.
+
 ## Final source plot local assurance — 2026-08-31 UTC
 
 Functional commit `eeb6200` passes the full isolated repository harness:

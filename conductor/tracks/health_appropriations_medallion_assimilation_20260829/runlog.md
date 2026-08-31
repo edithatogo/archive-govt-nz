@@ -1,5 +1,16 @@
 # Run Log
 
+## Source plot hosted delivery — 2026-08-31 UTC
+
+- PR #269 merged `b149d3725165b4d4116e17452955c5602ac40ec4` at
+  05:52:48 UTC after all seven checks passed on exact head
+  `4f405e2abfba2444b8906412a65f7c128a269a13`, CI run `33361422682`.
+  Health source/tests are unchanged at merge; whole trees differ because of
+  unrelated main additions. No archive or publication bytes changed.
+- Integrated that exact main into conformance. Squash-history conflicts were
+  limited to Health track bookkeeping; retained incoming plot evidence and
+  newer conformance evidence. Verified immutable evidence prefix unchanged.
+
 ## Donor failure conformance — 2026-08-31 UTC
 
 - `4454d75` records full compile observations and maps donor semantic/failure
@@ -17,6 +28,7 @@
   Budget 2026 headers match the supported 17-column contract. Captured HLFS
   working-age population is not silently accepted as total population for
   health spending per capita; M-12 denominator selection remains open.
+
 ## Source plot contracts — 2026-08-31 UTC
 
 - Final post-preflight-fix harness exits zero for `eeb6200`: 1,906 tests,

@@ -88,7 +88,11 @@ Final isolated `./scripts/validate.sh` on functional commit `eeb6200` passed:
 all native mutation/supply-chain gates and 111-component SBOM. Runtime controls:
 `COVERAGE_CORE=ctrace PYTHON_JIT=0 PYTEST_XDIST_AUTO_NUM_WORKERS=4`.
 CAS throughput was 391.42 MB/s against the unchanged 25.0 MB/s minimum.
-Hosted delivery remains pending.
+PR #269 merged as `b149d3725165b4d4116e17452955c5602ac40ec4` at
+2026-08-31T05:52:48Z after all seven checks passed on exact head
+`4f405e2abfba2444b8906412a65f7c128a269a13` (CI run `33361422682`).
+Health source and tests are unchanged at merge; whole-tree identity is not
+claimed because main also contains unrelated CLI/dependency/FOI changes.
 
 The visualization skill influenced sparse-series chart selection, explicit
 palette/non-color distinctions and the requirement for final-image inspection.
