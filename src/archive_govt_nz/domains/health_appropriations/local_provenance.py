@@ -100,7 +100,7 @@ def _product(value: ProductDescriptor) -> dict[str, Any]:
     return {
         "key": value.package_sha256 + "/" + value.path,
         "package_sha256": value.package_sha256,
-        "source_id": "sha256:" + value.source_sha256,
+        "source_id": "source:sha256:" + value.source_sha256,
         "payload_sha256": value.payload_sha256,
         "profile": value.profile,
         "vintage": value.vintage,
@@ -170,7 +170,7 @@ def build_local_provenance(values: tuple[ProductDescriptor, ...]) -> dict[str, A
     products = sorted((_product(value) for value in values), key=lambda row: row["key"])
     _closure(products)
     for row in products:
-        row["id"] = "sha256:" + _digest(row)
+        row["id"] = "product:sha256:" + _digest(row)
     ids = {row["key"]: row["id"] for row in products}
     edges = []
     for row in products:
@@ -191,7 +191,7 @@ def build_local_provenance(values: tuple[ProductDescriptor, ...]) -> dict[str, A
         "semantic_validation": "not_performed",
         "products": products,
         "sources": [
-            {"id": key, "sha256": key.removeprefix("sha256:")}
+            {"id": key, "sha256": key.removeprefix("source:sha256:")}
             for key in sorted({row["source_id"] for row in products})
         ],
         "edges": edges,

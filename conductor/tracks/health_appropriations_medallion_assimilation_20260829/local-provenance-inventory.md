@@ -89,3 +89,31 @@ seven required checks passed on exact head
 The exact-head REST merge succeeded, and readback confirmed merge
 `2400a9a4e650f4ed8098cd429d78478487be4602` at `2026-08-31T16:40:49Z`.
 This is code delivery and local retention evidence, not publication approval.
+
+### Pre-correction native checkpoint
+
+Full native validation passed at `e73285e` with source `a1bdbe08...`:
+3598 tests, eight existing ResourceWarnings, 102.03 seconds and 97.23% coverage;
+all subsequent gates passed, including 42 schemas/32 documents, 9/9 parity,
+324.21 MB/s CAS throughput, dependency/secret/licence checks and 111-component
+SBOM. Log SHA256:
+`204e1025ef089815290a69b75978980095f0f3327bf554358d02f711133dce29`.
+
+During the frozen native tail, self-review identified a substantive graph-ID
+alias: source byte hashes and product descriptor hashes shared `sha256:` IDs.
+A caller could compute one product ID then use its digest as another product's
+asserted source hash, yielding ambiguous cross-kind identifiers. This passed
+test run is retained as pre-correction evidence, not final acceptance. Parent
+approved disjoint `source:sha256:` and `product:sha256:` namespaces with a red
+regression and renewed focused, mutation and full native assurance.
+
+The new adversarial fixture reproduced the exact cross-kind intersection before
+the three namespace changes. Corrected source SHA256
+`be15bf09752530eebd7c33c748d3ceb760d90f8a60f6026c7e01f3b00c13490f`
+and test SHA256
+`8f67ccc4fea4b747c292e5ce5fcdf02aff2f8186276b599d1e4ee83b10534532`
+pass 53 tests with 100% critical coverage (92/14), Ruff and typing. Renewed cold
+mutation killed 70/70 with zero survivors/errors/timeouts/pardons/cache hits,
+59.32 seconds; new report SHA256
+`35c4bdc520093b8bbd6101d61e682a1e7cc8008f5d53e233a98b15bb852ec947`.
+The prior native and mutation reports remain retained separately.

@@ -37,7 +37,9 @@ def test_local_status_and_original_node() -> None:
     assert result["rights_state"] == "not_evaluated"
     assert result["approval"] == "not_granted"
     assert result["publication_state"] == "local_only"
-    assert result["sources"] == [{"id": "sha256:" + "2" * 64, "sha256": "2" * 64}]
+    assert result["sources"] == [
+        {"id": "source:sha256:" + "2" * 64, "sha256": "2" * 64}
+    ]
     assert result["products"][0]["recordset"] == "health_spending_fact"
 
 
@@ -119,7 +121,7 @@ def test_graph_order_and_freshness() -> None:
                 allow_nan=False,
             ).encode()
         ).hexdigest()
-        assert product["id"] == "sha256:" + expected
+        assert product["id"] == "product:sha256:" + expected
     assert len(output["edges"]) == 3
     output["products"].clear()
     assert len(build_local_provenance((first, second))["products"]) == 2
@@ -279,3 +281,17 @@ def test_explicit_identity_scope_and_field_metadata() -> None:
     assert all(
         field["field_metadata_hex"] == {} for field in result["products"][0]["fields"]
     )
+
+
+def test_source_and_product_id_namespaces_cannot_alias() -> None:
+    first = descriptor()
+    first_id = build_local_provenance((first,))["products"][0]["id"]
+    second = descriptor(
+        package_sha256="7" * 64, source_sha256=first_id.rsplit(":", 1)[1]
+    )
+    result = build_local_provenance((first, second))
+    source_ids = {row["id"] for row in result["sources"]}
+    product_ids = {row["id"] for row in result["products"]}
+    assert not source_ids & product_ids
+    assert all(key.startswith("source:sha256:") for key in source_ids)
+    assert all(key.startswith("product:sha256:") for key in product_ids)
