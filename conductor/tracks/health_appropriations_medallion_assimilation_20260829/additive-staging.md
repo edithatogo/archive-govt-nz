@@ -123,3 +123,8 @@ Native log SHA-256:
 Four unrelated timestamp-only generated evidence edits were restored after
 checking their diffs. No source/package bytes or earlier receipts were removed.
 This complete local gate does not assert hosted checks, merge or publication.
+
+After PR creation, incoming MoH main `25f9fb5` caused a ledger-only conflict.
+Integration preserves that incoming ledger as an exact prefix, followed by the
+staging receipt. The tested staging/planner source and test bytes are unchanged;
+post-integration focused/static checks are separate from the earlier full gate.
