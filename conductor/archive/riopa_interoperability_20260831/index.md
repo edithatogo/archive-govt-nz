@@ -2,12 +2,12 @@
 
 - **Track ID:** `riopa_interoperability_20260831`
 - **Status:** `completed` (bounded integration; archived after PR #279 assurance)
-- **Specification:** [spec.md](./spec.md)
+- [Specification](./spec.md)
 - **Requirements:** [requirements.md](./requirements.md)
 - **Design:** [design.md](./design.md)
-- **Plan:** [plan.md](./plan.md)
-- **Metadata:** [metadata.json](./metadata.json)
-- **Evidence ledger:** [evidence.jsonl](./evidence.jsonl)
+- [Implementation Plan](./plan.md)
+- [Metadata](./metadata.json)
+- [Evidence](./evidence.jsonl)
 - **Run log:** [runlog.md](./runlog.md)
 - **Evidence report:** [evidence.md](./evidence.md)
 - **Review:** [review.md](./review.md)

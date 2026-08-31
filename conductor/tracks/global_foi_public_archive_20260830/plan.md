@@ -46,7 +46,7 @@ The approved destination is archive-govt-nz; no cutover has occurred.
 
 - [~] P5.1 (AC08, AC09): Add red state-machine tests for fairness, per-origin limits, retry exhaustion, stale leases, missing artifacts, changed/withdrawn objects, byte/runtime budgets, fair queue service and blocked adapters.
 - [~] P5.2 (AC08): Implement registry-derived schedules, historical/incremental queues, durable state and bounded continuation; do not use a blind country loop.
-- [ ] P5.3 (AC04, AC08, AC11): Walk the entire pinned country universe; assess all discovered sources, add bounded adapters where possible, verify capture/storage per eligible source, activate approved schedules, and retain explicit unsupported/blocked dispositions.
+- [~] P5.3 (AC04, AC08, AC11): Walk the entire pinned country universe; assess all discovered sources, add bounded adapters where possible, verify capture/storage per eligible source, activate approved schedules, and retain explicit unsupported/blocked dispositions.
 - [~] P5.4 (AC09): Add freshness/backlog monitoring and actionable stuck-state alerts; prove that green monitor execution cannot conceal failed capture/publication.
 - [ ] P5.5 (AC12): Automated review, recovery/property/mutation gates and full validation with evidence-backed country counts.
 
@@ -75,3 +75,10 @@ P3 continuation: v2 packages add explicit attachment gaps and event relationship
 Hosted catalogue verification passed in run 33358508220 after retry-order correction. P4.4/P4.5 and P5.4 are partial for metadata only; eligible raw delivery, a second raw instance, acquisition monitoring and full phase acceptance remain pending. The next source-specific gate is documented in nz-publication-decision.pending.json. No raw or ownership gate is satisfied by the metadata run.
 
 Local P5/P6 controls pass focused validation; see durable-controls-local-validation-20260831.json. The full gate remains pending after bounded timeouts. Strict owner/queue CAS, durable state and parity proposals are local foundations; production policy resolution, shared dispatch, quotas and hosted evidence remain required.
+
+## Authorized deployment continuation — 2026-08-31
+
+- [~] P5.6 (AC08, AC10, AC12): Deploy shared GitHub-backed control state, bounded cross-source reservations and hosted restart/conflict evidence; retain publication and donor cutover gates.
+- [~] P5.7 (AC04, AC05, AC06, AC09): Produce every-entity rollout dispositions and verified bounded institutional-data captures with resource-specific denominators.
+- [~] P4.6 (AC07, AC11): Present grouped, reusable rights/privacy publication options with exact candidates and exclusions; no approval inferred.
+- [~] P7.5 (AC12): Repair pre-existing RIOPA canonical-link and equivalent UTC timestamp validation failures without changing acceptance or historical evidence.

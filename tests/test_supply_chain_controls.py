@@ -123,6 +123,53 @@ def test_licence_gate_selects_only_a_documented_package_alternative() -> None:
     assert licence_denial("ordinary-package", "UNKNOWN") == "unknown"
 
 
+@pytest.mark.parametrize("valid", [True, False])
+def test_sbom_uses_one_mandatory_strict_validation(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    *,
+    valid: bool,
+) -> None:
+    """Skipping duplicate CLI validation never admits an invalid IRI."""
+    document = {
+        "bomFormat": "CycloneDX",
+        "specVersion": "1.6",
+        "version": 1,
+        "components": [
+            {
+                "type": "library",
+                "name": "synthetic",
+                "version": "1",
+                "externalReferences": [
+                    {
+                        "type": "website",
+                        "url": (
+                            "https://example.org"
+                            if valid
+                            else "https://example.org/invalid space"
+                        ),
+                    }
+                ],
+            }
+        ],
+    }
+
+    def generate(command: tuple[str, ...]) -> str:
+        assert "--no-validate" in command
+        assert command[:2] == ("cyclonedx-py", "environment")
+        (tmp_path / "sbom.cdx.json").write_text(json.dumps(document), encoding="utf-8")
+        return ""
+
+    monkeypatch.setattr(supply_chain, "BUILD_DIRECTORY", tmp_path)
+    monkeypatch.setattr(supply_chain, "REPOSITORY_ROOT", tmp_path)
+    monkeypatch.setattr(supply_chain, "run", generate)
+    if valid:
+        supply_chain.sbom()
+    else:
+        with pytest.raises(SystemExit, match="failed CycloneDX validation"):
+            supply_chain.sbom()
+
+
 def test_public_path_adjudication_does_not_suppress_other_candidates(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:

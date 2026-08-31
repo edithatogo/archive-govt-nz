@@ -180,3 +180,42 @@ claimed. Final integrated validation is recorded in the continuation receipt.
 Three full local gate attempts reached the unchanged 300-second test-stage limit. The final cache identifies the existing legislation order-invariance test for isolated diagnosis; no full-pass claim is made. Hosted validation remains pending. A new factual-context NZ v2 candidate was fully verified and cold-restored locally; its distinct manifest is recorded in raw-candidate-reconstruction-20260831.json. It does not inherit the older pending decision.
 
 PR #272 hosted Ubuntu passed 2,048 tests, 96.84 percent coverage and mutation stages. The gate then rejected two non-secret provider hash strings in the Canadian projection. Omitted unused unverified provider hashes while retaining original metadata and its SHA-256; no scanner exemption. A new pending decision binds only the reconstructed 351465 candidate; the historical a78bef decision is unchanged.
+
+## 2026-08-31 — Shared execution and country capture continuation
+
+- User explicitly authorized autonomous deployment and expanded capture, requesting grouped permissive rights/privacy recommendations afterward. No public raw eligibility decision was supplied.
+- Resumed from merged PR #272 at 33ad03e1204d4b8b4622b8a28dc43c12490857ed in an isolated clean worktree; branch codex/foi-shared-execution. Three agents own shared Git state, dispatcher/workflow, and bounded country pilots/rights groups.
+- GitHub Actions enabled; default token permission read, job-scoped write is required for control state. No repository rulesets observed; privileged out-of-band ref modification remains outside CAS protection. No hosted settings changed.
+- Initial Conductor command incorrectly used a nonexistent repository-local validator; corrected to the installed Conductor validator. Baseline reported five pre-existing RIOPA canonical-navigation/UTC errors. Exact UTC normalization exposed a pre-existing update-before-creation inconsistency. Preserved the original recorded timestamp, recorded this current metadata repair time, and fixed canonical links/status only. Full Conductor validation then passed. No historical evidence was changed.
+- Rollout test red: new module absent (collection failure); green: three tests, 100% line/branch coverage. Ledger represents all 251 entities and 30 sources, no acquisition/publication activation and no completed-country claims. Lint caught one CLI line length, corrected by formatter.
+
+- Shared-backend agent validated 33 new tests plus 21 queue regressions, 100% critical coverage, and four killed mutations. Root independently reran 33 backend tests and reviewed the state model.
+- Added `record_capture` with a terminal local-only state: 48 scheduler tests, 100% line/branch coverage; seven existing/new local-control mutation probes killed. Focused queue/scheduler/rollout regression: 72 passed. Test lint/type findings were corrected; no verification threshold reduced.
+- Root independently hashed and compared six original files across the CA and US pilot/cold-restore directories. Both manifests match their recorded identities. Original bytes remain outside Git on one private local disk. This proves bounded local retention, not independent replication or public durability.
+- Independent review identified a missing CKAN success-envelope check in the CA adapter; correction and hostile-input bounds are being integrated before full validation.
+
+- First full harness passed 2,266 tests at 96.95% coverage, all mutation lanes,
+  schemas/parity, audit/licences and secret scanning, then timed out (124) on
+  final SBOM generation at its unchanged 300-second cap. Full pass is not claimed.
+  One isolated 60-second diagnostic located the wait in the CycloneDX subprocess;
+  environment diagnosis continues with no scanner/gate exemptions.
+- Preserved test-generated evidence diffs outside Git, then restored only the
+  four named unrelated generated receipts. Saved the entire scoped work in stash
+  e97ff79380010ebf13811251f6a9b8751f9b66eb and a separate binary patch before
+  fast-forwarding to current main 565dd8845d151dcd31e5b6448e719f05fa12011d.
+  Applying the exact saved stash produced two RIOPA rename/content conflicts.
+  Preserved upstream archived completion, current UTC metadata and all historical
+  evidence; retained only four canonical link-label corrections in the archived
+  index. Full Conductor validation passes. The saved stash remains available.
+
+- SBOM timeout isolated to duplicate strict validation using the locked IRI parser. A generation-only pass followed by the required strict schema/format validation completed in 135.088 seconds, within the unchanged 300-second bound. No dependency, schema or format checks were removed. The complete combined-main gate remains pending.
+- The generic evidence append helper rejected a historical UTC `+00:00` timestamp. Used repository-native chain validation plus the canonical new-entry constructor and ledger lock to append the failure receipt; historical ledger bytes were preserved exactly.
+
+- The combined-main full gate returned 124 at the unchanged 300-second test bound. Its child completed with 2,312 passing tests, 96.96% coverage and two timing failures (Hypothesis input generation and a nested negative-control pytest timeout) in 318.48 seconds. These are retained as failures, not a full local pass; focused repeat and remaining-stage validation are separate evidence. Hosted full assurance must pass before merge.
+
+- Both failing timing tests passed in isolation with the exact Hypothesis seed (2 passed in 31.19 seconds), without source changes or relaxed checks. This does not replace the failed full-gate result. The remaining-stage run passed schemas, parity and two mutation lanes, then lost access to the workspace during mutation-redundancy. The workspace subsequently became accessible; no permissions or access controls were changed.
+
+- PR #288 required integration of newly merged main d6bc0c9 (lineage and health delivery). Resolved the additive supply-chain-test conflict by retaining both upstream secret-adjudication tests and the new strict-SBOM regression. Stopped only this worktree's remaining-stage validation before integration; its partial log is not a full pass.
+- The newly merged final-lineage track also required three canonical navigation-label corrections for the generic full Conductor validator. No imported snapshot, acceptance or historical evidence was changed. All 13 integrated supply-chain tests passed.
+
+- Hosted run 33394282528 passed Linux (2,390 tests, 96.98% coverage, strict SBOM) and macOS. Windows failed two POSIX-mode assertions and setup/teardown for an oversized pytest parameter ID. The correction keeps every functional case, uses bounded test IDs and distinguishes POSIX modes from unverified Windows ACL privacy. No failed-platform merge or deployment occurred.

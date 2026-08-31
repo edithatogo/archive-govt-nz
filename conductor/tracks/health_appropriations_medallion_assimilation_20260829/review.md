@@ -525,3 +525,14 @@ reported as complete.
 - Focused coverage is 100%; independent parent review found no implementation
   finding. Native timing failures and their isolated passing reruns remain
   explicitly recorded; complete hosted assurance is still required.
+
+## 2026-08-31 — Embedded-notice observation review
+
+- Exact three-source allowlist, pre-parse snapshot hash, fixed cell/text digests,
+  bounded ZIP/XML reads and redacted errors restrict this to reviewed evidence.
+- Independent review found no actionable production issue. Suggested immutable
+  profile, exact-coordinate, part-boundary and interrupt tests were included.
+- No source text, historical external-link strings, rights grant or publication
+  operation is exposed. Existing defusedxml is reused without dependency changes.
+- Focused and mutation gates pass. The native CPI timing failure and isolated
+  passing diagnostic remain visible; complete local assurance is not claimed.
