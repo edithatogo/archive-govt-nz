@@ -1,0 +1,11 @@
+{
+  "finding": "Repeated artifact with different verified descriptor loses second descriptor retention",
+  "reproduction_status": "passed",
+  "referenced_descriptors": 2,
+  "retained_descriptors": 1,
+  "unretained_descriptor_hashes": [
+    "35d768595fb37243acbe6b239539077bf693bd0246c822de2f3be2650aee7f8e"
+  ],
+  "impact": "Only same artifact submitted twice with distinct descriptors; real donor and target have distinct artifact digests and are unaffected.",
+  "required_fix": "Fail closed on differing descriptors for identical artifact before successful canonical output; retain exact repeat idempotence."
+}

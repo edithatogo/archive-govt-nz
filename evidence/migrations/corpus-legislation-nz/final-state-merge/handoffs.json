@@ -1,0 +1,51 @@
+{
+  "issue": 292,
+  "pull_request": 297,
+  "scope": "Prompt 04 only",
+  "canonical_input_receipt": "execution-02/final-state-merge-receipt.json",
+  "receipt_sha256": "3fc4a205ed1b8a327f0d91675951ce18a6800f1bc2bdb948b22c45c882e8e679",
+  "handoffs": [
+    {
+      "prompt": 6,
+      "state": "verified_local_input_available",
+      "contract": "Rehash current-package completion inventory before consuming the exclusive staged package; no publication, rights or schedule activation authority supplied."
+    },
+    {
+      "prompt": 9,
+      "state": "verified_local_input_available",
+      "contract": "Rehash current-package completion inventory before consuming the exclusive staged package; no publication, rights or schedule activation authority supplied."
+    },
+    {
+      "prompt": 13,
+      "state": "verified_local_input_available",
+      "contract": "Rehash current-package completion inventory before consuming the exclusive staged package; no publication, rights or schedule activation authority supplied."
+    }
+  ],
+  "controller_handoff": {
+    "prompt": 1,
+    "issue": 292,
+    "pr": 297,
+    "owned_paths": [
+      "tools/merge_legislation_states.py",
+      "tests/tools/test_merge_legislation_states.py",
+      "schemas/legislation-state-merge-v1.schema.json",
+      "evidence/migrations/corpus-legislation-nz/final-state-merge/",
+      "conductor/tracks/legislation_canonical_state_merge_20260831/"
+    ],
+    "serialized_shared_change": "Only this track entry in conductor/tracks.md; programme records remain controller-owned."
+  },
+  "later_investigation": [
+    {
+      "prompt": 13,
+      "finding": "Target ZIP contains current harvest receipt and cumulative checkpoint batches, but no explicit preceding restore-run receipt.",
+      "reproduction": "Inspect authenticated artifact 9738685368: only manifest.json, checkpoint.json, receipts/harvest.json and 52 CAS objects; metadata inventory and original ZIP are retained in execution-02 parent lineage.",
+      "boundary": "Earlier target artifact reconstruction and recovery not claimed."
+    }
+  ],
+  "remaining_external_boundaries": [
+    "No corpus publication or rights clearance",
+    "No scheduler activation",
+    "No redundant or WORM custody claim",
+    "Independent legislation product unchanged"
+  ]
+}
