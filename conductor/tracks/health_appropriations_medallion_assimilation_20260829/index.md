@@ -15,9 +15,11 @@ every planned record set, measure or operational workflow.
 
 ## Artifacts
 
-- [Pharmac/GDP operational extension](./source-operations-extension.md)
-- [Explicit forecast source-validation preflight](./forecast-preflight.md)
+- [Pure local canonical provenance inventory](./local-provenance-inventory.md)
 
+- [Pharmac/GDP operational extension](./source-operations-extension.md)
+- [Forecast successor operations](./forecast-source-operations.md)
+- [Explicit forecast source-validation preflight](./forecast-preflight.md)
 - [Bounded source-profile CLI/MCP operations](./source-operations.md)
 - [Exact quarterly GDP source profile](./gdp-profile.md)
 

@@ -12,6 +12,7 @@ from jsonschema import Draft202012Validator
 
 from archive_govt_nz.domains.health_appropriations import (
     cpi,
+    forecast,
     gdp,
     moh_indicators,
     pharmac,
@@ -56,6 +57,30 @@ PROFILES = MappingProxyType(
             gdp.TRANSFORMATION,
             ("facts", "lineage", "dispositions"),
             "gdp_facts.parquet",
+            "cell_dispositions.parquet",
+        ),
+        "befu-2026/v1": (
+            forecast.TRANSFORMATION,
+            (
+                "normalized",
+                "rejected",
+                "context",
+                "preserved_only",
+                "inventoried_cells",
+            ),
+            "forecast_facts.parquet",
+            "cell_dispositions.parquet",
+        ),
+        "hyefu-2025/v1": (
+            forecast.TRANSFORMATION,
+            (
+                "normalized",
+                "rejected",
+                "context",
+                "preserved_only",
+                "inventoried_cells",
+            ),
+            "forecast_facts.parquet",
             "cell_dispositions.parquet",
         ),
     }
@@ -231,6 +256,14 @@ def _invoke(request: SourceRequest, *, dry_run: bool) -> dict[str, Any]:
     if request.profile == "gdp-expenditure-actual-2026q1/v1":
         return gdp.normalize_gdp(
             request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile in {"befu-2026/v1", "hyefu-2025/v1"}:
+        return forecast.normalize_forecast_workbook(
+            request.source,
+            request.output_dir,
+            profile=request.profile,
+            **context,
+            dry_run=dry_run,
         )
     profile = {
         "moh-hair2024-fig27/v1": "fig27/v1",
