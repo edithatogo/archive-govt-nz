@@ -617,3 +617,11 @@ retained snapshots pass exact JSON-string cell joins without numeric coercion.
 Read-only re-review reports both findings resolved and no additional finding.
 The original input package remains required for retained-only information.
 See `historical-projection.md` for mapping, red-phase evidence and limits.
+
+## Original-to-products replay — 2026-08-31 UTC
+
+Two fresh output trees independently match all 38 files. Investigated the
+failed older compatibility-byte comparison instead of normalizing its header:
+SQLite versions differ, only offsets 98/99 change, schemas/341 rows and all
+other payloads match. Preserve both versions and exact manifests. No broad
+AC-12, source-area, rights or publication conclusion follows.

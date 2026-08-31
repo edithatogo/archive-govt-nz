@@ -15,6 +15,8 @@ every planned record set, measure or operational workflow.
 
 ## Artifacts
 
+- [Fresh original-to-product replay and SQLite runtime drift](./originals-product-replay.md)
+
 - [Pharmac medicines-budget HTML contract](./pharmac-cpb.md)
 - [Additive eight-record-set structural contracts](./recordset-contracts.md)
 - [Historical package snapshot verification](./historical-snapshot.md)

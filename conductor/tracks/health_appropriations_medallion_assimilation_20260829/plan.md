@@ -557,6 +557,12 @@ repository validation command. External gates block only their affected task.
 
 ### 9.1 Clean-room reconstruction
 
+- [x] Perform two fresh empty-derivative four-profile original-to-raw,
+  compatibility SQLite, Gold and plot replays; compare all files and reverify
+  donor originals. Record cross-runtime SQLite drift separately. This excludes
+  Platinum and interrupted-stage recovery. [M-16, M-18; AC-12, AC-16]
+  (38 files per run, byte-identical; all 23 donor objects unchanged;
+  `originals-product-replay.md`)
 - [ ] Add a failing recovery contract for empty derivative state, then rebuild
   Silver, Gold, SQLite, all plots/reports and Platinum metadata from Bronze,
   locked code and parameters. [M-10, M-16, M-18; AC-08, AC-12, AC-16]
