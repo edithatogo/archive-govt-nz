@@ -91,6 +91,17 @@ rights/publication remain separate future decisions.
 
 ## Prior Pharmac hosted delivery
 
+## GDP hosted Windows benchmark failure
+
+PR #302 head `d3f144e53d5204666ebc3c2027481ff9cdd57cf4` passed six checks,
+but Windows job `99531122435` in run `33405251298` failed after test and mutation
+stages at the CAS benchmark: 11.48 MB/s versus the unchanged 15 MB/s minimum.
+No GDP-specific failure was reported. The failure is retained, not relabeled
+as success; no benchmark threshold, source code or test was weakened. The
+subsequent required main integration provides a new hosted validation run.
+
+## Prior Pharmac hosted delivery
+
 Fresh REST observation found PR #295 already merged externally at
 `2026-08-31T14:13:58Z`, exact head
 `76693f64da664e87d98dc0eb38494ff0ae9e6fa0`, merge
