@@ -102,3 +102,10 @@ This verifies extraction consistency, not the omitted analytical methodology.
 Broader Ministry historical editions, verified base/method metadata, canonical
 real/per-capita derivation and publication remain pending; this does not
 complete the wider Phase1.2 or Phase5 obligations.
+
+PR291 integration follow-up: merged main07143c8 after planner delivery. The
+incoming evidence ledger remains an exact prefix, followed by the existing
+fiscal/MoH receipts. No MoH production or test changes were needed. Focused
+MoH and Conductor tests passed61; an initial mistyped Conductor test path
+collected no tests and exited4 before the corrected command passed. Full
+native evidence above predates this integration; hosted checks must rerun.
