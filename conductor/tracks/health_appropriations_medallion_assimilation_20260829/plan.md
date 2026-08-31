@@ -150,6 +150,13 @@ repository validation command. External gates block only their affected task.
 
 ### 1.5 Phase review and checkpoint
 
+- [x] Reconcile pinned donor structural inventories with adapter-context
+  exclusions and explicit mapping assertions. Default unresolved, preserve
+  partial-sheet remainders and legacy inventory limitations; never infer PDF
+  tables, semantic normalization or phase completion. [M-07; AC-03, AC-16]
+  (`3564f2b`; 107 focused tests, 144 cold mutant kills, 3,531 native tests;
+  see `area-accounting.md`; hosted delivery remains separate.)
+
 - [ ] Verify every discovered item has exactly one disposition and every donor
   binary/data area has an inventory result; report uncertainty and gaps rather
   than inferring completeness. [M-01, M-02, M-07; AC-01, AC-03, AC-09]
@@ -505,6 +512,12 @@ repository validation command. External gates block only their affected task.
 
 ### 7.1 Metadata and rights contracts first
 
+- [x] Add a bounded pure local provenance inventory for explicitly supplied
+  canonical historical and Budget classification product descriptors. Validate
+  exact structural schemas, safe identities and dependency closure without I/O,
+  fixity/eligibility claims or publication metadata. This does not complete
+  Platinum or whole-product recovery. [M-14, M-18; AC-14, AC-16]
+
 - [ ] Add failing contracts for schema-as-code, DCAT, Croissant, RO-Crate,
   PROV, estate cards, mixed/per-resource licensing, citations and fail-closed
   release readiness. Include missing, conflicting and incompatible rights
@@ -537,6 +550,10 @@ repository validation command. External gates block only their affected task.
 
 ### 8.1 Operational contracts first
 
+- [x] Add a read-only partial-rebuild planner joining pinned donor metadata,
+  prior PLAN and explicit stage pins; verify selected originals and classify
+  bounded stage fixity/structure reuse without copying or repairing attempts.
+  Execution, semantic approval and publication remain separate. [M-15; AC-13]
 - [ ] Add CLI/MCP/scheduler tests for inspect, capture, normalize, reconcile,
   analyze, rebuild, candidate-build and status commands, including JSON output,
   dry-run, idempotency, cancellation, partial state, retry/resume, missing
@@ -547,10 +564,24 @@ repository validation command. External gates block only their affected task.
 
 ### 8.2 Implement bounded operations
 
-- [~] Extend the source-operation allowlist to exact Pharmac CPB and quarterly
+- [~] Expose only BEFU-2026/HYEFU-2025 successor profiles through the existing
+  dry-run-first CLI and read-only MCP after explicit forecast API dependency
+  validation. Preserve partial failures, exact counts and source-specific
+  actual/forecast observations; no annual joins or publication. [M-15, M-18;
+  AC-13, AC-16]
+- [x] Add an explicit no-write forecast API path while retaining the existing
+  default-write contract and all four source profiles. Require real booleans,
+  preserve partial/rejected status and prove old written bytes unchanged.
+  This does not expose forecasts through CLI/MCP or assert write readiness.
+  [M-09, M-18; AC-07, AC-16]
+  (`a85ca41`; 92 focused tests/100% critical coverage, 66 cold mutation kills,
+  3,414 native tests at `8ace367`; hosted delivery separate)
+
+- [x] Extend the source-operation allowlist to exact Pharmac CPB and quarterly
   GDP profiles after dependency delivery, retaining source-specific shapes,
   compact counts, CLI default dry-run and forced-read-only MCP. Forecast's
   missing no-write path remains a separate task. [M-15, M-18; AC-13, AC-16]
+  (PR313 merged `f41ef9b`; seven exact-head checks passed.)
 - [x] Wire the four approved CPI/Ministry/QES source profiles through a
   dry-run-first CLI and forced-read-only MCP preflight, using compact typed
   redacted receipts without changing donor rebuild or archive-status semantics.

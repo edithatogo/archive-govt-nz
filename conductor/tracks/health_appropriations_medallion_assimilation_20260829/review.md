@@ -1,5 +1,15 @@
 # Self-Review
 
+## Forecast explicit preflight — 2026-08-31 UTC
+
+Independent source/test review found no actionable issue. The explicit dry
+path has source-validation-only scope, never Arrow/package-writer execution,
+and retains rejected/partial status. Strict booleans prevent truthy write-mode
+ambiguity. All four prior written packages are byte-identical against a
+pre-change baseline. Combined 92 tests/100% critical coverage and 66/66 cold
+unfiltered mutants pass. Native and hosted delivery remain pending; see
+[forecast-preflight.md](forecast-preflight.md). No originals were changed.
+
 ## Quarterly GDP literal profile — 2026-08-31
 
 - Source identity, actual-versus-adjusted and expenditure-versus-income
@@ -677,3 +687,29 @@ failed older compatibility-byte comparison instead of normalizing its header:
 SQLite versions differ, only offsets 98/99 change, schemas/341 rows and all
 other payloads match. Preserve both versions and exact manifests. No broad
 AC-12, source-area, rights or publication conclusion follows.
+
+Forecast preflight follow-up: full native harness passed at `8ace367` with
+3,414 tests and all gates. This supersedes the earlier native-pending status
+only; hosted delivery and full source/rights/recovery phases remain separate.
+## Detected structural accounting review — 2026-08-31
+
+Scope remains detected structural units only, never complete normalization.
+Review identified names-only structural joins and insufficient range bounds;
+11 red cases preceded fixes for shared-attribute/rich-range agreement,
+ordered Excel/sheet boundaries and coordinate-only forecast selection retention.
+Independent re-review found no further actionable finding. Mappings remain
+assertion-only, adapter exclusions never imply global scope, PDF page counts
+never manufacture table/page identities, and partial selections leave unresolved
+whole-unit coverage. Final assurance: 107 focused tests/100% critical coverage,
+144 cold mutant kills, full native 3,531-test pass. Hosted delivery is separate.
+
+## 2026-08-31 — Read-only resume planner review
+
+Independent parent and sibling review identified transformation/profile and
+count consistency plus uncapped directory/Parquet metadata reads. All were
+reproduced by red tests before correction; final review found no further
+issue in the reviewed-root fixity/transport-only scope. Expected stage diagnostics
+are bounded machine reasons, while global low-level input exceptions are not
+claimed as a CLI redaction boundary. No attempt is copied, repaired or executed.
+102 tests/100% critical coverage, 95/95 cold mutants and the full 3,797-test native
+harness passed. Exact-head hosted delivery remains a separate gate.

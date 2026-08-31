@@ -1515,3 +1515,46 @@ matching each other; all 23 originals unchanged. The older SQLite comparison
 raised a retained assertion: only writer-version bytes 98/99 differ (3.50.4 vs
 3.53.1); all schemas and 341 rows match. Gold/plots and other payloads match.
 See `originals-product-replay.md`. No Platinum or full recovery completion.
+## Forecast preflight local assurance — 2026-08-31T16:17:15Z
+
+Checkpoint `a85ca41`: 92 focused tests, 100% critical coverage (131 statements,
+52 branches), independent review and cold unfiltered 66/66 mutation kills pass.
+Four final-code synthetic packages match all 16 pre-change output files exactly;
+originals are unchanged. Initial unsupported-keyword, tuple/list and missing-scope
+red failures were resolved; no test/gate was weakened. Full native/hosted delivery
+remain pending. See [forecast-preflight.md](forecast-preflight.md).
+
+Forecast native assurance completed at `2026-08-31T16:30:38Z`: exit zero at
+`8ace367`, 3,414 tests/97.18%, all gates passed. Exact log pin and retained
+failure history are in `forecast-preflight.md`; hosted delivery remains pending.
+## 2026-08-31 — Detected structural-unit accounting
+
+`3564f2b` adds metadata-only accounting with explicit legacy/rich inventory
+shapes and assertion-only mappings. First red run failed on the missing module;
+expanded tests exposed one shared fixture alias, corrected by deep copy. Review
+then produced 11 expected red failures for contradictory structural metadata,
+invalid table bounds and omitted coordinate-only selections. All 107 final
+focused tests pass, at 100% coverage (198 statements/48 branches), and all 144
+cold unfiltered mutants were killed in 66.82 seconds with zero other outcomes.
+Independent read-only re-review found no remaining actionable issue.
+
+At integrated commit `c3c82b3`, the native harness exited zero: 3,531 tests,
+87.68 seconds, 97.23% overall coverage, eight existing warnings, all schema,
+parity, mutation and supply-chain gates, and 111-component validated SBOM.
+Runtime was CPython 3.14.6 in an independent environment with four native test
+workers. Source/test hashes and exact commands are in `area-accounting.md`.
+A metadata-only pilot verifies six input pins and deterministic accounting for
+158 globally unresolved units and 17 adapter-context exclusions. No original
+or Parquet data was opened. No HF, candidate or source bytes changed.
+
+## 2026-08-31 — Read-only partial-rebuild planner
+
+Added explicit donor/old-plan/stage pin accounting and capped four-original
+snapshots, exact transport schemas/context/counts, bounded stage classifications
+and no writes. Red tests preceded identity/count/metadata/enumeration fixes.
+102 focused tests reached 100% critical coverage; all 95 cold mutants were killed.
+Native at ce9c8b8 exited 0: 3,797 tests, 97.27863% overall coverage and all repository
+and supply-chain gates. Post-native #319 stack integration preserved source/test
+hashes and the incoming ledger prefix; 155 focused tests/types/75 tracks passed.
+See [full receipts and boundaries](./readonly-resume-planner.md). Execution,
+semantic approval, rights and publication remain separate.
