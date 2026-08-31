@@ -95,6 +95,11 @@ This is not full workbook-area or longitudinal-edition coverage.
   All native mutation, hygiene and supply-chain gates passed; CAS throughput
   was 635.44 MB/s against the 25 MB/s gate and the SBOM had 111 components.
   Timestamp-only unrelated generated evidence was restored.
+- The full native result predates integration of main `1b2d7c0`. Integration
+  preserved both branches' evidence and all incoming ledger lines as a prefix;
+  the unchanged forecast source passed all 50 focused tests again (9.46 s),
+  and Conductor validation passed all 70 tracks. The full suite was not rerun
+  after that integration; exact-head hosted assurance remains pending.
 - Hosted delivery remains pending; local assurance does not imply publication.
 
 Work was moved non-destructively to a standalone `--no-hardlinks` clone after

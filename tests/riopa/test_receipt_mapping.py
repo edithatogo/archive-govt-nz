@@ -2,7 +2,11 @@
 
 from __future__ import annotations
 
+import json
+from pathlib import Path
+
 import pytest
+from jsonschema import Draft202012Validator
 
 from archive_govt_nz.riopa.mapping import (
     RiopaMappingError,
@@ -117,3 +121,47 @@ def test_mapping_rejects_invalid_boundary_objects() -> None:
     """Boundary metadata must remain structured objects."""
     with pytest.raises(RiopaMappingError, match="invalid_capability"):
         map_archive_receipt(_receipt(capability=[]))
+
+
+@pytest.mark.parametrize("status", ["unknown", "withdrawn", "restricted"])
+def test_unqualified_capture_status_is_quarantined(status: str) -> None:
+    """Only captured inputs qualify for this bounded projection."""
+    result = map_archive_receipt(_receipt(status=status))
+    assert result["status"] == "quarantined"
+    assert result["capture"]["status"] == status
+
+
+@pytest.mark.parametrize(
+    "status", ["unknown", "unresolved", "restricted", None, [], {}]
+)
+def test_legal_uncertainty_is_preserved_and_quarantined(status: object) -> None:
+    """Legal observations cannot silently confer qualification."""
+    result = map_archive_receipt(_receipt(legal_status={"status": status}))
+    assert result["status"] == "quarantined"
+    assert result["boundaries"]["legal_status"] == {"status": status}
+
+
+def test_mapping_disables_claims_without_rewriting_source_observations() -> None:
+    """Source capability metadata cannot enable operational claims."""
+    capability = {"national": True, "clinical": True}
+    result = map_archive_receipt(_receipt(capability=capability))
+    assert result["boundaries"]["capability"] == capability
+    assert result["claims"] == dict.fromkeys(
+        [
+            "network",
+            "timetable",
+            "facility",
+            "national",
+            "clinical",
+            "dispatch",
+            "authoritative",
+        ],
+        False,
+    )
+    schema = json.loads(
+        Path("schemas/riopa/v1/riopa-source-capture.schema.json").read_text()
+    )
+    validator = Draft202012Validator(schema)
+    validator.validate(result)
+    result["claims"]["national"] = True
+    assert list(validator.iter_errors(result))

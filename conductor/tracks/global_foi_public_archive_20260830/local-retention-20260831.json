@@ -1,0 +1,22 @@
+{
+  "schema": "foi-local-retention/v1",
+  "observed_at": "2026-08-31T10:06:45.620656+00:00",
+  "storage_scope": "single_disk_local_only",
+  "public_publication": false,
+  "replicated": false,
+  "hugging_face_verified": false,
+  "rights_or_privacy_approval": false,
+  "nz_inventory_sha256": "e25240f901e74d1b37ab0685bab69fb5017c0de0ed7ffa2da7be20eee6103e92",
+  "nz_inventory_files": 7,
+  "file_count": 13,
+  "total_bytes": 752674,
+  "directory_mode": "0700",
+  "verification": "trusted inventory and source bytes verified before and after copying; destination bytes match",
+  "caveats": [
+    "Not independent backup or public archive.",
+    "Original temporary bytes retained unchanged.",
+    "Only inventory-listed NZ originals plus their manifest retained; no inferred derived package.",
+    "Canadian nil returns and metadata only, not released ATI response documents."
+  ],
+  "detailed_receipt_sha256": "b4ba54de95b27a0eadca31370a6863d349701d357356a22eedf5617ac1b0b843"
+}

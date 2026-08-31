@@ -161,3 +161,22 @@ The corrected full local harness completed successfully: 1825 tests, 96.34 perce
 coverage, schema/parity/mutation gates, dependency audit, licence inventory,
 secret scan and validated 111-component SBOM. Earlier timing failures remain in
 the evidence history. Final track reconciliation passes 70 records with no errors.
+
+### 2026-08-31 — durable control continuation
+
+Resumed after evidence PR #267 merged; recovered a clean continuation worktree
+from main while leaving the unrelated health worktree untouched. Used all three
+available subagents for source evidence, scheduling, ownership and cross-review.
+Implemented local durable state, strict queue reconstruction, exact owner/version
+transactions, bounded scheduling and parity/transfer proposals. P5.1/P5.2 and
+P6.1/P6.2 remain partial; no hosted owner authority was deployed.
+
+The metadata workflow is active and latest observed run 33358508220 succeeded.
+Donor monitor 322525555 remains disabled. Canadian nil-return evidence and verified
+single-disk sample preservation are recorded separately. No raw publication,
+source activation, source-specific approval, country completeness or cutover is
+claimed. Final integrated validation is recorded in the continuation receipt.
+
+Three full local gate attempts reached the unchanged 300-second test-stage limit. The final cache identifies the existing legislation order-invariance test for isolated diagnosis; no full-pass claim is made. Hosted validation remains pending. A new factual-context NZ v2 candidate was fully verified and cold-restored locally; its distinct manifest is recorded in raw-candidate-reconstruction-20260831.json. It does not inherit the older pending decision.
+
+PR #272 hosted Ubuntu passed 2,048 tests, 96.84 percent coverage and mutation stages. The gate then rejected two non-secret provider hash strings in the Canadian projection. Omitted unused unverified provider hashes while retaining original metadata and its SHA-256; no scanner exemption. A new pending decision binds only the reconstructed 351465 candidate; the historical a78bef decision is unchanged.

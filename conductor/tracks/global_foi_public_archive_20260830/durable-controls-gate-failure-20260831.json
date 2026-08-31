@@ -1,0 +1,18 @@
+{
+  "observed_at": "2026-08-31T10:23:09.874172+00:00",
+  "command": "PYTEST_XDIST_AUTO_NUM_WORKERS=2 ./scripts/validate.sh",
+  "exit_code": 124,
+  "stage": "tests",
+  "reason": "300-second stage timeout after one displayed failure; test identity not emitted before termination",
+  "last_progress_percent": 59,
+  "test_items": 2047,
+  "passed_stages": [
+    "lock",
+    "conductor",
+    "format",
+    "lint",
+    "types"
+  ],
+  "log_sha256": "0dd6097de37897e44780b9cca9e91382ddfdf14b99f198ea75d1041e9194c492",
+  "next_attempt": "Warm-cache rerun with identical random seed, fail-fast and short traceback to identify first failure; no test exclusion or gate relaxation."
+}
