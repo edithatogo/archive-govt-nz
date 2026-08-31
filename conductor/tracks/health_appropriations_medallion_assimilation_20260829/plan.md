@@ -544,6 +544,10 @@ repository validation command. External gates block only their affected task.
 
 ### 8.1 Operational contracts first
 
+- [~] Implement an exclusive local resume executor over an explicitly pinned
+  read-only plan, preserving old attempts and originals, with bounded snapshots,
+  separate child/envelope verification, interruption evidence and no publication.
+  [M-15, M-18; AC-13, AC-16]
 - [~] Add a read-only partial-rebuild planner joining pinned donor metadata,
   prior PLAN and explicit stage pins; verify selected originals and classify
   bounded stage fixity/structure reuse without copying or repairing attempts.
