@@ -1,5 +1,16 @@
 # Run Log
 
+## Planner main integration checkpoint — 2026-08-31
+
+- Merged main `d6bc0c9` into the feature branch as `841bd5f`, preserving both
+  sides of three track-record conflicts. The complete incoming evidence ledger
+  remains an exact prefix followed by the planner event. Source/test hashes
+  remain unchanged; 102 focused tests passed in 9.91 seconds, targeted typing
+  passed, and Conductor validated 71 tracks. No second full harness is claimed.
+- One `uv run ruff` launch failed to initialize the shared uv cache with
+  `File exists`. Direct invocation of this clone's installed Ruff passed both
+  format and lint checks. No shared cache repair or dependency change occurred.
+
 ## Additive inventory assurance checkpoint — 2026-08-31
 
 - Functional commit `c6d0e37` adds the read-only planner and synthetic tests.
