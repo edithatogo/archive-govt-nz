@@ -346,6 +346,13 @@ repository validation command. External gates block only their affected task.
 
 ### 5.3 Normalize analytical context
 
+- [x] Implement the bounded, exact nine-column CPIQ.SE9A quarterly source
+  profile with Decimal values, independent NA/status retention, unknown-base
+  flag, full source-row dispositions and lineage; validate independent local
+  builds without fiscal aggregation, real-value conversion or publication.
+  [M-05, M-06, M-12, M-18; AC-05, AC-10, AC-16] (PR #271, checked head
+  f4b90ea, observed merge 4ec9920; seven checks and 1,956 hosted tests passed;
+  broader context/base/population work below remains pending)
 - [ ] Promote exact CPI, wage, population, GDP and total/core Crown expense
   observations required by Gold formulas, with base/definition/vintage
   metadata. [M-05, M-06, M-12; AC-05, AC-10]

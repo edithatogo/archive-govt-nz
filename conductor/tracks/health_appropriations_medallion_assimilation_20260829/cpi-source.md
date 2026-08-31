@@ -95,6 +95,18 @@ normalized, index-base metadata was acquired or inflation-adjusted products exis
   final basedpyright passed. The 36-mutant report predates these additions and remains
   bound to the unchanged production source above.
 
-Hosted delivery remains pending. CPI base metadata, total-resident population,
+## Hosted delivery
+
+PR #271 was observed merged at `2026-08-31T10:56:19Z`, merge
+`4ec9920a2121f0af5319783c0c1d5bb5decf91d4`, checked head
+`f4b90eabd85ff2f6d709e78552d1b4d490345349`. All seven exact-head checks passed:
+Ubuntu/macOS/Windows assurance, analyze, CodeQL, workflow lint and codecov/patch.
+CI run `33383803345` Ubuntu job `99461794236` passed 1,956 tests with eight
+warnings, 40 schemas/30 representative documents, 9/9 parity and all native
+mutation/supply-chain gates; its SBOM contained 112 components. This hosted
+success does not retroactively change either local exit-124 receipt or explain
+the unidentified local failure marker. The merge actor is not asserted.
+
+CPI base metadata, total-resident population,
 fiscal-period joins, inflation/per-capita products and exact-candidate HF
 publication remain separate tasks and gates.
