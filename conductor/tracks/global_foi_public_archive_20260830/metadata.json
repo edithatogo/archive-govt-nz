@@ -3,7 +3,7 @@
   "type": "feature",
   "status": "in_progress",
   "created_at": "2026-08-30T08:38:22Z",
-  "updated_at": "2026-08-31T04:54:06.597913+00:00",
+  "updated_at": "2026-08-31T10:41:28.697971+00:00",
   "description": "Global FOI source catalogue, metadata indexes, public raw preservation and automation repair; archive-govt-nz takeover approved.",
   "evidence_schema": "1.0",
   "approval_status": "approved",
@@ -120,7 +120,10 @@
     "directory_publication_receipt": "directory-publication-20260831.json",
     "catalogue_retry_receipt": "catalogue-retry-correction-20260831.json",
     "hosted_catalogue_receipt": "hosted-catalogue-verification-20260831.json",
-    "local_publication_full_gate": "passed: 1825 tests, 96.34 percent coverage, all assurance stages"
+    "local_publication_full_gate": "passed: 1825 tests, 96.34 percent coverage, all assurance stages",
+    "local_durable_controls": "focused_passed_full_gate_timed_out",
+    "local_durable_controls_receipt": "durable-controls-local-validation-20260831.json",
+    "latest_raw_reconstruction_receipt": "raw-candidate-reconstruction-20260831.json"
   },
   "implementation": {
     "baseline_pr": "https://github.com/edithatogo/archive-govt-nz/pull/244",
@@ -176,6 +179,8 @@
     "catalogue_workflow_merge": "78cd8fa732af55ea40b7595804f894ce7ea9c5e8",
     "catalogue_workflow_run": 33358508220,
     "catalogue_workflow_state": "success_metadata_only",
-    "catalogue_retry_merge": "3d557bcf9cc9b86945f97e3340d9d6a9d0e0fd44"
+    "catalogue_retry_merge": "3d557bcf9cc9b86945f97e3340d9d6a9d0e0fd44",
+    "durable_control_state": "local_foundation_no_hosted_authority",
+    "catalogue_evidence_merge": "50eb2d48e9cb812a98ff55a66db35b2c50e7ab04"
   }
 }

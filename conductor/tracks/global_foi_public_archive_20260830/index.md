@@ -31,3 +31,10 @@ Approved track in progress. Automation repair and source-catalogue foundations a
 - [Merged repairs, container failure and exact recovery](container-recovery-20260830.json)
 - [Current implementation status and remaining scope](status.md)
 - [Hosted raw restore and current queue receipt](hosted-raw-restore-20260830.json)
+
+- [Canadian nil-return candidate evidence](ca-atip-candidate-evidence-20260831.json)
+
+- [Local durable-control validation and remaining gate](durable-controls-local-validation-20260831.json)
+- [Verified local sample preservation](local-retention-20260831.json)
+
+- [New local raw candidate reconstruction](raw-candidate-reconstruction-20260831.json)

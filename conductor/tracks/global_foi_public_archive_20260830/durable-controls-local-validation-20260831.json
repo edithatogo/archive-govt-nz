@@ -1,0 +1,63 @@
+{
+  "observed_at": "2026-08-31T10:38:11.197949+00:00",
+  "scope": "local_control_foundations_only",
+  "focused_tests": 137,
+  "critical_line_branch_coverage_percent": 100,
+  "mutation_probes": {
+    "scope": "local scheduling and ownership controls",
+    "mutations": [
+      {
+        "name": "state_cas",
+        "exit_code": 1,
+        "killed": true
+      },
+      {
+        "name": "state_head",
+        "exit_code": 1,
+        "killed": true
+      },
+      {
+        "name": "scheduler_evidence",
+        "exit_code": 1,
+        "killed": true
+      },
+      {
+        "name": "scheduler_origin",
+        "exit_code": 1,
+        "killed": true
+      },
+      {
+        "name": "ownership_epoch",
+        "exit_code": 1,
+        "killed": true
+      },
+      {
+        "name": "shadow_parity",
+        "exit_code": 1,
+        "killed": true
+      }
+    ],
+    "passed": true
+  },
+  "full_harness": "pending_after_two_test_stage_timeouts",
+  "failure_receipts": [
+    "durable-controls-gate-failure-20260831.json",
+    "durable-controls-gate-retry-20260831.json"
+  ],
+  "third_attempt": "Identical locked CPython 3.14.6 environment on internal storage, four workers; no test exclusions or timeout relaxation.",
+  "review": "Cross-review corrected history truncation/allocation, numeric and evidence types, origin aliases, owner identity and dimension bounds, retired-token consistency, verified identifiers and mutation cache isolation.",
+  "source_evidence": "ca-atip-candidate-evidence-20260831.json",
+  "local_retention": "local-retention-20260831.json",
+  "raw_publication": false,
+  "capture_activated": false,
+  "cutover": false,
+  "system_ready": false,
+  "remaining": [
+    "source_specific_rights_privacy_pacing",
+    "pinned_registry_policy_resolution",
+    "cumulative_execution_quotas",
+    "shared_authority_and_sink_fencing",
+    "public_raw_capacity_and_anonymous_restore",
+    "global_source_discovery_and_hosted_incremental_cycle"
+  ]
+}

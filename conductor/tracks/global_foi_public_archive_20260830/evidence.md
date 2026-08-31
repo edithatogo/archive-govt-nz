@@ -29,3 +29,7 @@ It is not claimed as run for this unapproved documentation proposal.
 Local immutable package foundation: local-package-validation-20260831.json (full harness pass; cold restore and rebuilt index parity). Source-policy observations: source-eligibility-review-20260831.json. Public payload rights and privacy remain pending; neither receipt authorizes raw publication.
 
 Attachment census and compatible package v2: attachment-package-validation-20260831.json; local full validation and cold restoration passed, public delivery remains pending.
+
+### Durable control continuation — 2026-08-31
+
+Receipt: durable-controls-local-validation-20260831.json. The 137 focused control tests pass with complete critical line/branch coverage and six killed mutations. The full local gate remains pending after two timing-limited attempts. Local persistence is not hosted authority; raw publication and cutover remain open.

@@ -1,0 +1,47 @@
+{
+  "schema": "foi-local-v2-recovery/v1",
+  "observed_at": "2026-08-31T10:36:58.630874+00:00",
+  "status": "new_candidate_from_retained_capture_evidence",
+  "prior_trusted_manifest_sha256": "a78befb393cb011a2e672a78aac3a2ac30740a5ee27eabcbe4f60003947dd534",
+  "candidate_manifest_sha256": "3514658895d5e26726f4d23a776a709a4c0fce165dcfb8e307ef10f4d15bb49e",
+  "matches_prior_manifest": false,
+  "capture_context": {
+    "source_id": "nz-fyi",
+    "country": "NZ",
+    "captured_at": "2026-08-30T10:59:49Z",
+    "source_revision": "be992fe036d5a270e228b5277e5b5770b9950ad8",
+    "source_run_id": "33307777685",
+    "adapter_version": "1.2.1"
+  },
+  "context_derivation": {
+    "captured_at": "Both response records have this exact WARC-Date; no timestamp inferred from log filenames or receipt generation.",
+    "source_revision_run_adapter": "Canonical hosted-raw-restore-20260830.json",
+    "hosted_receipt_sha256": "fb6bce4cca1929e33f2cbbc95f5a9b94ed05f9a91bf2c4d3c20bb794bc4a9625",
+    "warc_sha256": "570d815aef24b94fbf855886913d084396b8357408cdbd5d1cb776b755c02f68"
+  },
+  "inventory_sha256": "e25240f901e74d1b37ab0685bab69fb5017c0de0ed7ffa2da7be20eee6103e92",
+  "counts": {
+    "events": 2,
+    "original_files": 8,
+    "requests": 1,
+    "responses": 2
+  },
+  "storage": {
+    "package": {
+      "files": 13,
+      "bytes": 92320
+    },
+    "cold_restore": {
+      "files": 8,
+      "bytes": 50947
+    }
+  },
+  "verification": "prepare, complete package verification and cold restore with rebuilt index comparison passed",
+  "local_only": true,
+  "single_disk": true,
+  "public_upload": false,
+  "rights_or_privacy_approval": false,
+  "old_pending_decision_changed": false,
+  "directory_mode": "0700",
+  "file_mode": "0600"
+}

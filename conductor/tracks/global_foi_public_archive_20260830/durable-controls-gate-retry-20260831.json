@@ -1,0 +1,11 @@
+{
+  "observed_at": "2026-08-31T10:31:19.060817+00:00",
+  "command": "PYTEST_ADDOPTS=\"-x --tb=short --randomly-seed=300232124\" PYTEST_XDIST_AUTO_NUM_WORKERS=2 ./scripts/validate.sh",
+  "exit_code": 124,
+  "stage": "tests",
+  "reason": "300-second stage timeout; no failures displayed during fail-fast retry",
+  "last_progress_percent": 52,
+  "test_items": 2047,
+  "log_sha256": "592b94937173434f36dc706f1fb133487ca571bdce6b17b2c4ba8296abed6131",
+  "next_attempt": "Identical locked dependencies in an internal temporary environment and four bounded test workers; no excluded tests or longer gate timeout."
+}
