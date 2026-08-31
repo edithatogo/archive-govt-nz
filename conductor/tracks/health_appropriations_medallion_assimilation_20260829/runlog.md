@@ -1,5 +1,29 @@
 # Run Log
 
+## Pure source-derived analytics — 2026-08-30 UTC
+
+- PR #254 merged at `4e4586ec2b3732367c4ff8732957b6d40126e0e2` after all
+  six exact-head checks passed. Hosted/tested trees both equal
+  `1f983d17cfc44e877bed8c19e1d7fd505083058a`. Continued on
+  `codex/health-source-analytics` in the isolated worktree. Original concurrent
+  worktrees were not modified.
+- Initial historical/Budget tests failed collection on missing modules.
+  Historical negative cases exposed two fixture argument collisions, corrected.
+  Two semantic tests then failed because non-month-end dates and non-text bases
+  were accepted; validation now rejects both. Lint/types corrected before mutation.
+- Historical 47 and Budget 32 tests pass at 100% critical line/branch coverage;
+  30 generated growth cases pass. Unfiltered mutation kills 71/71 historical
+  and 33/33 Budget mutants, zero pardons. See raw-analytics for report hashes.
+- Verified retained raw-run snapshot computation accounts for 53 historical
+  rows, 48 growth comparisons, 53 GDP denominators and all 215 appropriation IDs
+  across 16 trend/four breakdown groups. Run verified before/after; no source
+  or publication writes.
+- Stranded mutation coverage file moved recoverably outside the worktree before
+  full validation. Full harness exited zero: 1,656 tests, 96.09% coverage,
+  eight existing SQLite resource warnings, 35 schemas/25 documents, 9/9 parity,
+  all mutation and supply-chain gates; SBOM 110 components. Functional commit
+  `0bf14b0`. No persistence or complete analytical-task claim.
+
 ## Persistent raw compatibility export — 2026-08-30 UTC
 
 - Functional commit `e91d24b`: final isolated `./scripts/validate.sh`

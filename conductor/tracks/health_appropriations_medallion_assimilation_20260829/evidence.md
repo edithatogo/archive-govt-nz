@@ -1,5 +1,26 @@
 # Evidence
 
+## Pure source-derived analytics — 2026-08-30 UTC
+
+Functional commit `0bf14b07ac07ef5271a5e44626e4a8857907641b` implements
+historical nominal/growth/GDP and Budget classification calculations without
+reading donor SQLite. Verified retained snapshots produce 53 historical rows,
+48 comparable growth values and 53 period-aligned GDP shares; 215 appropriation
+IDs contribute to 16 trend and four 2025 Estimated Actual breakdown groups.
+Source objects, vintages, amount types and accounting/period breaks stay explicit.
+
+Seventy-nine focused tests and 30 generated growth cases pass; both modules
+have 100% critical line/branch coverage. All 71 historical and 33 Budget
+unfiltered mutants killed without pardons. Full isolated harness exit 0:
+1,656 tests, 96.09% coverage, eight existing SQLite resource warnings,
+35 schemas/25 documents, 9/9 parity, all mutation and supply-chain gates,
+validated 110-component SBOM. See raw-analytics for detailed policies/hashes.
+Persistence, CLI and plots remain pending; no originals or publication changed.
+
+Compatibility PR #254 merged independently at
+`4e4586ec2b3732367c4ff8732957b6d40126e0e2` after six exact-head checks passed.
+Hosted/tested tree equality: `1f983d17cfc44e877bed8c19e1d7fd505083058a`.
+
 ## Persistent raw compatibility export — 2026-08-30 UTC
 
 Functional commit `e91d24b97fad312ae2c4418f31fc4435f9afd5c1` exports verified
