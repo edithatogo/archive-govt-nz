@@ -1,5 +1,15 @@
 # Self-Review
 
+## Budget assurance recovery — 2026-08-31 UTC
+
+- Hosted exact-head assurance is independently observed successful and merged;
+  it does not retroactively pass the earlier local 300-second timeout.
+- The interrupted mutation report is retained as 83 execution errors, not
+  successes. Recovery changed the isolated checkout/environment, not source,
+  tests, mutation selection or deadlines. All 110 cold mutants are now killed.
+- The two bounded Budget successor/reader tasks are complete. CLI/MCP exposure,
+  broader fiscal/contextual coverage and publication remain separate tasks.
+
 ## Budget successor consumer — 2026-08-31 UTC
 
 - Independent review reproduced and fixed non-integer manifest count acceptance.

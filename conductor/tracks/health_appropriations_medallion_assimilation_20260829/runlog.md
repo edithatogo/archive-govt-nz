@@ -1,5 +1,18 @@
 # Run Log
 
+## Budget hosted delivery and validation recovery — 2026-08-31 UTC
+
+- PR #273 observed merged at 10:59:47Z as `d0a36f1`, seven exact-head checks
+  successful; hosted Ubuntu passes 1,972 tests, eight warnings, native gates
+  and 112-component SBOM. Reader source/tests are unchanged at merge.
+- An active worktree/interpreter disappeared during the subsequent local
+  mutation run: 27 kills, 83 errors, exit 1. Its report is preserved; no cleanup
+  was performed by this task and no implementation was lost from pushed Git.
+- Recovered into an independent no-hardlinks clone outside the shared worktree
+  registry. Fresh cold/unfiltered mutation passes 110/110 kills, no survivors,
+  timeouts, errors, pardons or cache hits. Detailed hashes and boundaries are
+  in `raw-budget-successors.md`; no originals/publications changed.
+
 ## Budget successor consumer — 2026-08-31 UTC
 
 - Budget 2026 remains a separate immutable source vintage. Two local builds

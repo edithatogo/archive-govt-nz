@@ -53,6 +53,12 @@ every planned record set, measure or operational workflow.
 - Separate raw Budget extraction: 215 Health facts, 3,655 cell-lineage rows
   and 6,504 input dispositions; all seven donor appropriation fields match in
   order. These new local outputs do not replace the published derivatives.
+- Budget 2026 successor: 185 facts, 3,145 lineage entries and all 6,451 row
+  dispositions in a separate pinned package, with independent XML reconciliation
+  and two byte-identical builds. Standalone reader PR #273 is merged after seven
+  exact-head checks; 61 focused tests achieve 100% critical coverage and the
+  recovered cold mutation run kills all 110 mutants. The interrupted worktree
+  loss and local timeout remain recorded separately.
 - Separate raw BEFU/HYEFU extraction: 20 Health facts, 120 field-lineage rows
   and 4,665 cell dispositions; both ten-row donor summaries match in order.
   Actual/Forecast and vintage are retained; fiscal-year basis remains flagged.
