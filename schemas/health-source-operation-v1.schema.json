@@ -30,7 +30,8 @@
         "cpiq-se9a/v1",
         "moh-hair2024-fig27/v1",
         "moh-hair2024-fig28/v1",
-        "qes-june2026-table8/v1"
+        "qes-june2026-table8/v1",
+        "pharmac-cpb-20260807/v1"
       ]
     },
     "source_object_sha256": {
@@ -41,6 +42,7 @@
     "transformation_id": {
       "enum": [
         "moh-hair2024-published-indicators/v1",
+        "pharmac-published-budget-20260807/v1",
         "qes-june2026-table8-ordinary-hourly/v1",
         "stats-nz-cpi-all-groups/v1"
       ]
@@ -332,6 +334,65 @@
               },
               "required": [
                 "qes_facts.parquet",
+                "field_lineage.parquet",
+                "cell_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "pharmac-cpb-20260807/v1"
+            },
+            "transformation_id": {
+              "const": "pharmac-published-budget-20260807/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "lineage": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "table_cells": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "facts",
+                "lineage",
+                "table_cells"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pharmaceutical_budget_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "cell_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "pharmaceutical_budget_facts.parquet",
                 "field_lineage.parquet",
                 "cell_dispositions.parquet"
               ]
