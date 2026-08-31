@@ -28,7 +28,9 @@ some other run. Prompt 09 owns durable storage and its selection.
 
 The reference schema is `schemas/legislation-parent-reference-v1.schema.json`:
 
-- Repository full name and numeric ID; workflow path, ID and name.
+- Repository full name and numeric ID; explicitly reviewed workflow path, ID and
+  name. New lane workflow names require reviewed pins, not library edits; live
+  metadata must match the exact pinned workflow.
 - Run ID, attempt, branch and exact software commit.
 - Artifact ID, name, SHA-256 digest, size, `expired: false` and exact expiry instant.
 - Manifest semantic root and exact file hash; checkpoint file hash; inventory

@@ -489,7 +489,7 @@ def test_reference_modes(tmp_path: Path, change: str) -> None:
         "https://evil.example/x",
         "https://blob.core.windows.net/x",
         "https://test.blob.core.windows.net.evil.example/x",
-        "https://user:password@test.blob.core.windows.net/x",
+        "https://user@test.blob.core.windows.net/x",
         "https://test.blob.core.windows.net:444/x",
         "https://test.blob.core.windows.net/x#fragment",
     ],
@@ -831,9 +831,9 @@ def test_archive_order_does_not_change_roots(tmp_path: Path, names: list[str]) -
     """Archive member order cannot affect authenticated state or CAS roots."""
     ref, _, raw = fixture(tmp_path / "in")
     files = P.unpack(raw)
-    entries: list[tuple[str | zipfile.ZipInfo, bytes]] = []
-    for name in names:
-        entries.append((name, files.pop(name)))
+    entries: list[tuple[str | zipfile.ZipInfo, bytes]] = [
+        (name, files.pop(name)) for name in names
+    ]
     entries.extend(files.items())
     assert P.state_roots(P.unpack(fixtures.zip_bytes(entries))) == ref["roots"]
 
@@ -962,3 +962,41 @@ def test_source_receipt_and_current_execution(tmp_path: Path) -> None:
     )
     with pytest.raises(P.v.VerificationError, match="seal_execution"):
         P.seal(output, req["context"], q)
+
+
+def test_restoration_schema_definitions() -> None:
+    """Validate all four new schemas independently of the fixed native catalogue."""
+    for name in (
+        "parent-reference",
+        "initial-authority",
+        "parent-lineage",
+        "continuation",
+    ):
+        path = P.ROOT / "schemas" / ("legislation-" + name + "-v1.schema.json")
+        P.Draft202012Validator.check_schema(P.v.load(path.read_bytes()))
+
+
+@pytest.mark.parametrize(
+    "workflow",
+    [
+        ".github/workflows/exact-inventory.yml",
+        ".github/workflows/bounded-discovery.yml",
+    ],
+)
+def test_future_lanes_use_explicit_workflow_pins(tmp_path: Path, workflow: str) -> None:
+    """Both downstream lanes can use approved exact pins without a library fork."""
+    ref, meta, raw = fixture(tmp_path / "in")
+    ref["workflow"]["path"] = workflow
+    meta["run"]["path"] = workflow
+    req = request(ref)
+    req["context"]["workflow"] = workflow
+    req["authority"]["scope"]["workflow"] = workflow
+    paths = {"output": tmp_path / "state", "quarantine": tmp_path / "q"}
+    assert (
+        P.restore(req, paths, client(meta, raw), "synthetic", NOW)["status"]
+        == "verified"
+    )
+    # The registry reference, not permissive URL matching, authorizes the producer.
+    meta["run"]["path"] = ".github/workflows/unreviewed.yml"
+    with pytest.raises(P.v.VerificationError, match="workflow_path"):
+        P.check_metadata(ref, meta, NOW)

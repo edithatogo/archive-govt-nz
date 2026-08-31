@@ -45,7 +45,8 @@
           "maxLength": 200
         },
         "path": {
-          "const": ".github/workflows/scheduled-legislation-harvest.yml"
+          "type": "string",
+          "pattern": "^\\.github/workflows/[a-z0-9][a-z0-9_-]*\\.ya?ml$"
         }
       }
     },

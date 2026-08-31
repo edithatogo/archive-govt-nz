@@ -313,6 +313,7 @@ def authorize(
 def check_lineage(lineage: dict[str, Any]) -> None:
     """Validate semantic origin links, not merely the receipt's JSON shape."""
     schema(lineage, "legislation-parent-lineage")
+    verified_at = instant(lineage["verified_at"])
     parent, authority = lineage["parent"], lineage["authority"]
     expected_hash = v.sha(M.encoded(parent)) if parent is not None else None
     v.equal(lineage["parent_reference_sha256"], expected_hash, "lineage_parent_hash")
@@ -332,7 +333,7 @@ def check_lineage(lineage: dict[str, Any]) -> None:
         authorize(
             cast("dict[str, Any]", authority),
             {**lineage, "event_name": "workflow_dispatch", "confirmed_initial": True},
-            instant(lineage["verified_at"]),
+            verified_at,
         )
 
 

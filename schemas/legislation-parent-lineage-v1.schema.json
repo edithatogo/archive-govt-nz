@@ -50,11 +50,8 @@
           "const": "main"
         },
         "workflow": {
-          "enum": [
-            ".github/workflows/scheduled-legislation-harvest.yml",
-            ".github/workflows/monthly-legislation-reconciliation.yml",
-            ".github/workflows/quarterly-legislation-recovery.yml"
-          ]
+          "type": "string",
+          "pattern": "^\\.github/workflows/[a-z0-9][a-z0-9_-]*\\.ya?ml$"
         },
         "execution_id": {
           "type": "string",
@@ -185,7 +182,8 @@
                   "maxLength": 200
                 },
                 "path": {
-                  "const": ".github/workflows/scheduled-legislation-harvest.yml"
+                  "type": "string",
+                  "pattern": "^\\.github/workflows/[a-z0-9][a-z0-9_-]*\\.ya?ml$"
                 }
               }
             },
@@ -433,11 +431,8 @@
                   "const": "main"
                 },
                 "workflow": {
-                  "enum": [
-                    ".github/workflows/scheduled-legislation-harvest.yml",
-                    ".github/workflows/monthly-legislation-reconciliation.yml",
-                    ".github/workflows/quarterly-legislation-recovery.yml"
-                  ]
+                  "type": "string",
+                  "pattern": "^\\.github/workflows/[a-z0-9][a-z0-9_-]*\\.ya?ml$"
                 },
                 "execution_id": {
                   "type": "string",
