@@ -1,0 +1,119 @@
+"""Archive receipt to RIOPA source/capture mapping contracts."""
+
+from __future__ import annotations
+
+import pytest
+
+from archive_govt_nz.riopa.mapping import (
+    RiopaMappingError,
+    map_archive_receipt,
+)
+
+
+def _receipt(**overrides: object) -> dict[str, object]:
+    value: dict[str, object] = {
+        "receipt_id": "capture:abc",
+        "archive_id": "archive-govt-nz",
+        "source_url": "https://example.test/catalogue",
+        "revision": "rev-1",
+        "sha256": "a" * 64,
+        "object_id": f"sha256:{'a' * 64}",
+        "status": "captured",
+        "rights": {"status": "resolved", "basis": "public-record"},
+        "capability": {"status": "observed"},
+        "source_health": {"status": "healthy"},
+        "legal_status": {"status": "observed"},
+        "observed_at": "2026-08-31T00:00:00Z",
+    }
+    value.update(overrides)
+    return value
+
+
+def test_mapping_is_content_addressed_and_deterministic() -> None:
+    """Equivalent archived receipts produce byte-stable identities."""
+    first = map_archive_receipt(_receipt())
+    second = map_archive_receipt(_receipt())
+
+    assert first == second
+    assert first["source"]["source_id"].startswith("sha256:")
+    assert first["capture"]["capture_id"].startswith("sha256:")
+    assert first["capture"]["object_id"] == "sha256:" + "a" * 64
+    assert first["status"] == "eligible"
+
+
+@pytest.mark.parametrize(
+    ("field", "value", "error"),
+    [
+        ("revision", "rev-0", "stale_revision"),
+        ("sha256", "b" * 64, "digest_mismatch"),
+        ("object_id", "sha256:" + "b" * 64, "digest_mismatch"),
+    ],
+)
+def test_mapping_fails_closed_on_stale_or_drifted_identity(
+    field: str, value: object, error: str
+) -> None:
+    """Stale or drifted identities are rejected before projection."""
+    with pytest.raises(RiopaMappingError, match=error):
+        map_archive_receipt(_receipt(**{field: value}), expected_revision="rev-1")
+
+
+def test_partial_and_unresolved_receipts_are_quarantined() -> None:
+    """Partial captures and unresolved rights remain non-eligible."""
+    partial = map_archive_receipt(_receipt(status="partial"))
+    unresolved = map_archive_receipt(
+        _receipt(rights={"status": "unresolved", "basis": None})
+    )
+
+    assert partial["status"] == "quarantined"
+    assert partial["quarantine_reason"] == "partial_capture"
+    assert unresolved["status"] == "quarantined"
+    assert unresolved["quarantine_reason"] == "rights_unresolved"
+
+
+def test_mapping_rejects_non_content_addressed_receipts() -> None:
+    """Opaque object identifiers cannot enter the RIOPA projection."""
+    with pytest.raises(RiopaMappingError, match="invalid_object_id"):
+        map_archive_receipt(_receipt(object_id="object:opaque"))
+
+
+@pytest.mark.parametrize(
+    ("field", "value", "error"),
+    [
+        ("source_url", "not-a-uri", "invalid_source_url"),
+        ("observed_at", "not-a-date", "invalid_observed_at"),
+        ("observed_at", "2026-08-31", "invalid_observed_at"),
+        ("observed_at", "2026-08-31T00:00:00", "invalid_observed_at"),
+        ("observed_at", "2026-13-31T00:00:00Z", "invalid_observed_at"),
+        ("archive_id", "", "invalid_archive_id"),
+    ],
+)
+def test_mapping_rejects_schema_invalid_receipts(
+    field: str, value: object, error: str
+) -> None:
+    """Schema-invalid source metadata is rejected before projection."""
+    with pytest.raises(RiopaMappingError, match=error):
+        map_archive_receipt(_receipt(**{field: value}))
+
+
+def test_mapping_rejects_missing_and_invalid_digest_fields() -> None:
+    """Missing and malformed content digests fail closed."""
+    missing = _receipt()
+    del missing["sha256"]
+    with pytest.raises(RiopaMappingError, match="missing_sha256"):
+        map_archive_receipt(missing)
+    with pytest.raises(RiopaMappingError, match="invalid_sha256"):
+        map_archive_receipt(_receipt(sha256="not-a-digest"))
+    with pytest.raises(RiopaMappingError, match="invalid_object_id"):
+        map_archive_receipt(_receipt(object_id=None))
+
+
+def test_mapping_rejects_expected_digest_mismatch() -> None:
+    """An explicitly requested digest must match the archived receipt."""
+    with pytest.raises(RiopaMappingError, match="digest_mismatch"):
+        map_archive_receipt(_receipt(), expected_sha256="b" * 64)
+
+
+def test_mapping_rejects_invalid_boundary_objects() -> None:
+    """Boundary metadata must remain structured objects."""
+    with pytest.raises(RiopaMappingError, match="invalid_capability"):
+        map_archive_receipt(_receipt(capability=[]))

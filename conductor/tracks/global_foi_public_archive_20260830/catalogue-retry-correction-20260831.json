@@ -1,0 +1,40 @@
+{
+  "cutover": false,
+  "delivery_coverage_percent": 100,
+  "diagnosis": "Card table ordering changed after canonical pointer serialization; reproduced using the real catalogue on its second publication call.",
+  "failure_receipt": {
+    "error_class": "ValueError",
+    "publication_verified": false,
+    "remote_state": "not_confirmed",
+    "status": "failed",
+    "verified_result": null
+  },
+  "focused_tests": 27,
+  "hosted_corrected_retry": "pending",
+  "hosted_head": "78cd8fa732af55ea40b7595804f894ce7ea9c5e8",
+  "hosted_result": "failed",
+  "hosted_run": 33357695865,
+  "local_live_retry": {
+    "coverage": {
+      "geographic_entities": 250,
+      "known_sources": 30,
+      "payload_publication_authorized": false,
+      "remaining_unverified": 250,
+      "supranational_entities": 1,
+      "target_regimes": 42,
+      "total_requests": null,
+      "verified_complete": 0
+    },
+    "current_revision": "4e5a7832f6536e231d20292c1bffaae7861fd912",
+    "manifest_sha256": "42d003245024432140ba2070c998c32779bbb587516bf0c62aeb32085c6a1558",
+    "payload_publication": false,
+    "repo_id": "edithatogo/foi-source-catalogue",
+    "scope": "source_catalogue_only",
+    "snapshot_revision": "512fb25519fc1002c411fbcc37f04bb176f0b03c",
+    "status": "verified",
+    "uploaded": false,
+    "viewer_status": "not_checked"
+  },
+  "raw_publication": false,
+  "recorded_at": "2026-08-31T04:42:46.912511+00:00"
+}
