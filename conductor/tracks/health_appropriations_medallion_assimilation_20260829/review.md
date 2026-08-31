@@ -517,3 +517,13 @@ reported as complete.
   operation is exposed. Existing defusedxml is reused without dependency changes.
 - Focused and mutation gates pass. The native CPI timing failure and isolated
   passing diagnostic remain visible; complete local assurance is not claimed.
+## 2026-08-31 — Structural record-set review
+
+Review is bounded to the additive eight-shape registry. It grants no
+semantic projection, rights or full M-05 completion. Self-review caught and
+corrected Parquet nested-list naming drift and rejected a Decimal256 carrier
+unsupported by the locked DuckDB runtime. Wider original values remain
+preserved; future projections must fail exactly rather than round them.
+Independent read-only review found no actionable production issue and
+requested full field type/nullability tests; those now pass together with
+all 30 cold mutants. Native and hosted assurance remain distinct gates.

@@ -15,6 +15,7 @@ every planned record set, measure or operational workflow.
 
 ## Artifacts
 
+- [Additive eight-record-set structural contracts](./recordset-contracts.md)
 - [Hash-bound embedded-notice observations](./embedded-notices.md)
 - [Standalone Budget-package operations](./budget-operations.md)
 - [Specification](./spec.md)

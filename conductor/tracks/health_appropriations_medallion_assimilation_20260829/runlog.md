@@ -1061,3 +1061,24 @@ its change set.
   at 96.91% coverage, then exited 124. The unchanged failed test passed alone.
   No deadlines were weakened; hosted assurance remains separate. Exact bounded
   receipts are in [embedded notices](./embedded-notices.md).
+
+## 2026-08-31 — Additive record-set structural contract red phase
+
+Self-review rejected the first Decimal256 carrier: a synthetic DuckDB Arrow
+registration probe failed with `NotImplementedException` (unsupported Decimal
+76/38/256). Nothing was persisted. Use the established Decimal128(38,18) for
+this bounded structural version, with explicit representability limits and a
+negative overflow fixture; do not claim it represents every possible value
+in every source schema. Wider values remain in original/source-specific
+packages until an explicitly compatible projection exists. Test DuckDB
+queryability as part of the contract rather than assuming Parquet suffices.
+
+`uv run pytest tests/schemas/test_health_recordsets.py -q` first failed collection
+with the expected missing `health_recordsets` module (exit 2). The initial
+implementation then passed nine tests and failed all eight exact Parquet
+schema round trips (exit 1). A bounded independent field comparison identified
+Arrow's default list child name `item` versus Parquet's `element`, not numeric
+or source-data loss. Correct the new schema's list child names explicitly;
+do not weaken exact schema equality or rewrite any existing package.
+Focused Ruff also identified missing test docstrings and tuple parameter syntax.
+No source payload, archive package or hosted publication was modified.
