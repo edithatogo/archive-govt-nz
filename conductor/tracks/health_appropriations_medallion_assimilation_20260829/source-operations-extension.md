@@ -68,6 +68,13 @@ Only unrelated generated timestamp churn was restored after the run.
 Hosted extension assurance remains pending; no acquisition or publication
 was performed.
 
+After PR311 delivery, main `6105a5037d82950fe01d2a1915a1956593a40e77`
+was merged without changing the reviewed source/test hashes. Incoming evidence
+remains the exact ledger prefix. The first focused command referenced two
+nonexistent top-level test paths and collected no tests (exit 4); correcting
+to the existing CLI/MCP directories passed 274 tests in 19.29 seconds, and
+Conductor validation passed for 75 tracks. No production correction was needed.
+
 ## Preceding delivery
 
 PR307 was checked fresh at `d67a0358c9628c905f0dd4aacb9b517085869826`: seven
