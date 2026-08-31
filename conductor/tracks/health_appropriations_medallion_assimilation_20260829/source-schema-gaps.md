@@ -17,7 +17,7 @@ rights clearance or current remote publication state.
 | BEFU/HYEFU | 2026 BEFU charts/expenses/economic forecasts; 2025 HYEFU charts/expenses captured; two literal Health-summary editions each extracted | Earlier editions and other expense/chart/forecast areas |
 | Fiscal/Crown expenses | 1972–2025 workbook captured; 2024 and 2025 Health/GDP source pilots retained | Other fiscal measures, exact Crown-expense contract and complete edition history |
 | QES | June2026 Table8 QEMQ.SASZ9A ordinary-time average hourly earnings, total sector;9quarters and180lineage rows retained in a source-specific package; PR#298 merged | ISOcurrency, sex and adjustment metadata not inferred; deflator selection and annual alignment remain pending |
-| Stats NZ GDP | March2026 current-price income/expenditure workbook captured; exact60quarter expenditure observations retained by the PR#302 implementation | Hosted delivery of that implementation at this checkpoint; fiscal aggregation and canonical projection; Treasury GDP stays separate |
+| Stats NZ GDP | March2026 current-price income/expenditure workbook captured; exact60quarter expenditure observations retained; PR#302 merged | Fiscal aggregation and canonical projection; Treasury GDP stays separate |
 | Ministry Vote Health | Two HAIR2024 indicator CSVs captured and source-specific pilot extracted | Unit/base/method metadata; independent real/per-capita reproduction |
 | Pharmac CPB |14published budget-allocation observations,186lineage records and64table-cell dispositions retained; PR#295 merged | Not actual expenditure; caption lag, missing2014amount and2022scope change remain explicit; canonical projection and comparison policy pending |
 | CPI | CPIQ.SE9A source-specific extraction | Base-metadata provenance join and derived-period policy |
@@ -42,9 +42,11 @@ The additive eight-record-set Arrow registry and JSON row-shape descriptors
 now provide versioned structural contracts (merged PRs#293/#300). The merged
 historical snapshot reader (#303) verifies pinned originals and source packages;
 it is transport validation, not semantic acceptance. The narrow historical
-Health/GDP semantic projection (#305) is also merged. Budget classification,
-local canonical export and source-operation interfaces are active parallel
-implementation streams, not
+Health/GDP semantic projection (#305), its local canonical exporter (#311),
+Budget source-label classification projection (#306), and the initial four
+source-operation profiles (#307) are also merged. Persistent Budget
+classification export and further source-operation profiles remain active
+parallel implementation streams, not
 completion of the full canonical model. Preserve exact precision,
 unknown fields, unmapped classifications, vintage keys and source pointers;
 do not rewrite v1 packages or force unknown Ministry semantics into canonical
@@ -54,9 +56,9 @@ scheduling remain separate acceptance tasks.
 
 ## Executable remaining route
 
-1. Finish the active exact-head delivery/assurance streams: historical canonical
-   export, Budget source-label classification and
-   source-operation CLI/read-only MCP. Check live PRs and appended receipts;
+1. Finish active exact-head delivery/assurance: persistent Budget classification
+   export, further source-operation profiles, forecast preflight and donor-area
+   accounting. Check live PRs and appended receipts;
    the bounded checkpoint above is not a permanently current PR dashboard.
 2. Extend existing local operational profiles to already-reviewed adapters,
    preserving each source-specific schema. Persist classification occurrences
