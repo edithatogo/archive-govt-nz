@@ -1,0 +1,210 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive-govt-nz.org/schemas/legislation-state-merge-v1.schema.json",
+  "title": "Verified local legislation state merge receipt",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "status",
+    "software_commit",
+    "merger_sha256",
+    "parents",
+    "conflicts",
+    "mismatches"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "archive-govt-nz.legislation-state-merge/v1"
+    },
+    "status": {
+      "enum": [
+        "passed",
+        "failed"
+      ]
+    },
+    "software_commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "merger_sha256": {
+      "$ref": "#/$defs/hash"
+    },
+    "parents": {
+      "type": "array",
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "required": [
+          "artifact_sha256",
+          "manifest_sha256",
+          "manifest_file_sha256",
+          "checkpoint_file_sha256",
+          "descriptor_sha256",
+          "repository_commit",
+          "records",
+          "objects"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "artifact_sha256": {
+            "$ref": "#/$defs/hash"
+          },
+          "manifest_sha256": {
+            "$ref": "#/$defs/hash"
+          },
+          "manifest_file_sha256": {
+            "$ref": "#/$defs/hash"
+          },
+          "checkpoint_file_sha256": {
+            "$ref": "#/$defs/hash"
+          },
+          "descriptor_sha256": {
+            "$ref": "#/$defs/hash"
+          },
+          "repository_commit": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{40}$"
+          },
+          "records": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "objects": {
+            "type": "integer",
+            "minimum": 1
+          }
+        }
+      }
+    },
+    "conflicts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "manifestation_id",
+          "class",
+          "record_sha256",
+          "resolution"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "manifestation_id": {
+            "type": "string"
+          },
+          "class": {
+            "enum": [
+              "manifestation_bytes_changed",
+              "manifestation_metadata_conflict"
+            ]
+          },
+          "record_sha256": {
+            "type": "array",
+            "minItems": 2,
+            "uniqueItems": true,
+            "items": {
+              "$ref": "#/$defs/hash"
+            }
+          },
+          "resolution": {
+            "const": "blocked_no_winner"
+          }
+        }
+      }
+    },
+    "mismatches": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "overlap": {
+      "type": "object",
+      "required": [
+        "work_id",
+        "expression_id",
+        "manifestation_id",
+        "canonical_uri",
+        "raw_cas_hash_sha256",
+        "raw_cas_hash_blake3"
+      ],
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "output": {
+      "type": "object",
+      "required": [
+        "records",
+        "work_ids",
+        "objects",
+        "manifest_sha256",
+        "inventory_sha256",
+        "checkpoint_sha256"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "records": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "work_ids": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "objects": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "manifest_sha256": {
+          "$ref": "#/$defs/hash"
+        },
+        "inventory_sha256": {
+          "$ref": "#/$defs/hash"
+        },
+        "checkpoint_sha256": {
+          "$ref": "#/$defs/hash"
+        }
+      }
+    },
+    "conditional_requests_policy": {
+      "const": "reset_for_unconditional_revalidation; originals_retained_in_parents"
+    }
+  },
+  "$defs": {
+    "hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "passed"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "output",
+          "overlap",
+          "conditional_requests_policy"
+        ],
+        "properties": {
+          "conflicts": {
+            "maxItems": 0
+          },
+          "mismatches": {
+            "maxItems": 0
+          },
+          "parents": {
+            "minItems": 2
+          }
+        }
+      }
+    }
+  ]
+}
