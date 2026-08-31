@@ -108,3 +108,15 @@ Retained receipt hashes (SHA-256):
 These are local software/accounting receipts. They do not establish complete
 donor-area discovery, normalized coverage, source-file fixity, rights, publication
 or completion of any umbrella phase. Exact-head hosted checks remain pending.
+
+## Stacked integration checkpoint
+
+Integrated reviewed, not-yet-merged PR #315 head
+`10731ff4b37f41365eb35eeb49dd37e957c74647` (including PR #309) at merge
+`5f45b3e`, preserving its complete 105-line evidence-ledger prefix and appending
+the accounting receipt. Accounting production/test hashes above are unchanged.
+The first focused command referenced a nonexistent forecast test filename and
+exited 4 without running tests; corrected accounting/forecast-preflight selection
+passed all 149 tests in 3.91 seconds, with 75 Conductor tracks and no errors.
+Delivery order remains #309, #315, then #314. Hosted checks do not authorize an
+out-of-order merge; ordinary merge commits preserve reviewed stack ancestry.
