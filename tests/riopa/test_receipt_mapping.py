@@ -83,6 +83,7 @@ def test_mapping_rejects_non_content_addressed_receipts() -> None:
         ("observed_at", "not-a-date", "invalid_observed_at"),
         ("observed_at", "2026-08-31", "invalid_observed_at"),
         ("observed_at", "2026-08-31T00:00:00", "invalid_observed_at"),
+        ("observed_at", "2026-13-31T00:00:00Z", "invalid_observed_at"),
         ("archive_id", "", "invalid_archive_id"),
     ],
 )
@@ -92,3 +93,27 @@ def test_mapping_rejects_schema_invalid_receipts(
     """Schema-invalid source metadata is rejected before projection."""
     with pytest.raises(RiopaMappingError, match=error):
         map_archive_receipt(_receipt(**{field: value}))
+
+
+def test_mapping_rejects_missing_and_invalid_digest_fields() -> None:
+    """Missing and malformed content digests fail closed."""
+    missing = _receipt()
+    del missing["sha256"]
+    with pytest.raises(RiopaMappingError, match="missing_sha256"):
+        map_archive_receipt(missing)
+    with pytest.raises(RiopaMappingError, match="invalid_sha256"):
+        map_archive_receipt(_receipt(sha256="not-a-digest"))
+    with pytest.raises(RiopaMappingError, match="invalid_object_id"):
+        map_archive_receipt(_receipt(object_id=None))
+
+
+def test_mapping_rejects_expected_digest_mismatch() -> None:
+    """An explicitly requested digest must match the archived receipt."""
+    with pytest.raises(RiopaMappingError, match="digest_mismatch"):
+        map_archive_receipt(_receipt(), expected_sha256="b" * 64)
+
+
+def test_mapping_rejects_invalid_boundary_objects() -> None:
+    """Boundary metadata must remain structured objects."""
+    with pytest.raises(RiopaMappingError, match="invalid_capability"):
+        map_archive_receipt(_receipt(capability=[]))
