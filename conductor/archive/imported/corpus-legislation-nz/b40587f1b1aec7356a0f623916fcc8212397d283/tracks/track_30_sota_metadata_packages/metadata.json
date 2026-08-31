@@ -1,0 +1,8 @@
+﻿{
+  "track_id": "track_30_sota_metadata_packages",
+  "type": "feature",
+  "status": "done",
+  "created_at": "2026-06-09T00:00:00Z",
+  "updated_at": "2026-06-11T00:00:00Z",
+  "description": "Generate validated Croissant, RO-Crate, Frictionless, DCAT, and PROV-O metadata packages."
+}

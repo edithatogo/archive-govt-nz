@@ -1,0 +1,309 @@
+{
+  "baseline": "749918c251da59dc890c19dfda2ab9a021fd8ca6",
+  "final": "b40587f1b1aec7356a0f623916fcc8212397d283",
+  "target_revision": "33ad03e1204d4b8b4622b8a28dc43c12490857ed",
+  "commit_count": 15,
+  "commits": [
+    {
+      "donor_commit": "a7b1678b48f7205847a7f6f08731c73e37131d57",
+      "parent_commit": "749918c251da59dc890c19dfda2ab9a021fd8ca6",
+      "subject": "Add an artifact-only bridge for target one-batch reconciliation (#170)",
+      "donor_pr": 170,
+      "changed_files": [
+        ".github/workflows/target_one_batch_reconciliation.yml",
+        "tests/test_target_one_batch_bridge_workflow.py"
+      ],
+      "target_implementation_pin": "8f4f6fa2459f4991eba95499cf69360045b10b27",
+      "pin_is_ancestor_of_target": true,
+      "target_pin_subject": "Accept exact work-ID batches for legislation harvests (#165)",
+      "disposition": "preserved_as_historical_evidence_only",
+      "rationale": "Archived donor execution bridge/pin and policy tests retained as historical provenance; the target implementation pin is already in target ancestry. This does not assert current workflow equivalence or state migration.",
+      "evidence": "late-commit-patches.json",
+      "handoffs": [
+        "LH-STATE",
+        "LH-WORKFLOW"
+      ]
+    },
+    {
+      "donor_commit": "41a95ff6e6393436397034398656507ed3558438",
+      "parent_commit": "a7b1678b48f7205847a7f6f08731c73e37131d57",
+      "subject": "Pin the target bridge to the source parser correction (#171)",
+      "donor_pr": 171,
+      "changed_files": [
+        ".github/workflows/target_one_batch_reconciliation.yml",
+        "tests/test_target_one_batch_bridge_workflow.py"
+      ],
+      "target_implementation_pin": "7223221fe97266bdbd01a982ab4d6fbb8ffe606a",
+      "pin_is_ancestor_of_target": true,
+      "target_pin_subject": "Preserve top-level legislation source authority (#166)",
+      "disposition": "preserved_as_historical_evidence_only",
+      "rationale": "Archived donor execution bridge/pin and policy tests retained as historical provenance; the target implementation pin is already in target ancestry. This does not assert current workflow equivalence or state migration.",
+      "evidence": "late-commit-patches.json",
+      "handoffs": [
+        "LH-STATE",
+        "LH-WORKFLOW"
+      ]
+    },
+    {
+      "donor_commit": "f499d489491033c936b44b981c043ca9a49d2788",
+      "parent_commit": "41a95ff6e6393436397034398656507ed3558438",
+      "subject": "ci: pin one-batch run to search retry fix (#172)",
+      "donor_pr": 172,
+      "changed_files": [
+        ".github/workflows/target_one_batch_reconciliation.yml",
+        "tests/test_target_one_batch_bridge_workflow.py"
+      ],
+      "target_implementation_pin": "a2dd97ac6112e9985a6f19404b24a9f8199e5074",
+      "pin_is_ancestor_of_target": true,
+      "target_pin_subject": "fix(legislation): retry transient work discovery failures (#167)",
+      "disposition": "preserved_as_historical_evidence_only",
+      "rationale": "Archived donor execution bridge/pin and policy tests retained as historical provenance; the target implementation pin is already in target ancestry. This does not assert current workflow equivalence or state migration.",
+      "evidence": "late-commit-patches.json",
+      "handoffs": [
+        "LH-STATE",
+        "LH-WORKFLOW"
+      ]
+    },
+    {
+      "donor_commit": "13d0122e353615e71b689a7753a4686dc602a9f3",
+      "parent_commit": "f499d489491033c936b44b981c043ca9a49d2788",
+      "subject": "ci: pin one-batch run to exact identity fix (#173)",
+      "donor_pr": 173,
+      "changed_files": [
+        ".github/workflows/target_one_batch_reconciliation.yml",
+        "tests/test_target_one_batch_bridge_workflow.py"
+      ],
+      "target_implementation_pin": "6b13c523056fe6998bed7a53655fa7600d8d67a9",
+      "pin_is_ancestor_of_target": true,
+      "target_pin_subject": "fix(legislation): resolve exact canonical identities (#168)",
+      "disposition": "preserved_as_historical_evidence_only",
+      "rationale": "Archived donor execution bridge/pin and policy tests retained as historical provenance; the target implementation pin is already in target ancestry. This does not assert current workflow equivalence or state migration.",
+      "evidence": "late-commit-patches.json",
+      "handoffs": [
+        "LH-STATE",
+        "LH-WORKFLOW"
+      ]
+    },
+    {
+      "donor_commit": "4fd15b315c50bd71d0fda38690074cea55a1972d",
+      "parent_commit": "13d0122e353615e71b689a7753a4686dc602a9f3",
+      "subject": "ci: pin one-batch run to primary format fix (#174)",
+      "donor_pr": 174,
+      "changed_files": [
+        ".github/workflows/target_one_batch_reconciliation.yml",
+        "tests/test_target_one_batch_bridge_workflow.py"
+      ],
+      "target_implementation_pin": "0e0c6747b35f3b0476e1d7dde0a7cdf5acdd4b9d",
+      "pin_is_ancestor_of_target": true,
+      "target_pin_subject": "fix(legislation): select primary preservation format (#169)",
+      "disposition": "preserved_as_historical_evidence_only",
+      "rationale": "Archived donor execution bridge/pin and policy tests retained as historical provenance; the target implementation pin is already in target ancestry. This does not assert current workflow equivalence or state migration.",
+      "evidence": "late-commit-patches.json",
+      "handoffs": [
+        "LH-STATE",
+        "LH-WORKFLOW"
+      ]
+    },
+    {
+      "donor_commit": "f8f9b2f3cda6a62166e1c1b1791de3eb17882101",
+      "parent_commit": "4fd15b315c50bd71d0fda38690074cea55a1972d",
+      "subject": "ci: pin one-batch run to dated fallback fix (#175)",
+      "donor_pr": 175,
+      "changed_files": [
+        ".github/workflows/target_one_batch_reconciliation.yml",
+        "tests/test_target_one_batch_bridge_workflow.py"
+      ],
+      "target_implementation_pin": "5c17cecc41d65cd6d93a3ac4b61ac8e4d030af0c",
+      "pin_is_ancestor_of_target": true,
+      "target_pin_subject": "fix(legislation): use dated manifestation fallbacks (#170)",
+      "disposition": "preserved_as_historical_evidence_only",
+      "rationale": "Archived donor execution bridge/pin and policy tests retained as historical provenance; the target implementation pin is already in target ancestry. This does not assert current workflow equivalence or state migration.",
+      "evidence": "late-commit-patches.json",
+      "handoffs": [
+        "LH-STATE",
+        "LH-WORKFLOW"
+      ]
+    },
+    {
+      "donor_commit": "da6a74c19cc849f158ff896a68e8a43e0647854b",
+      "parent_commit": "f8f9b2f3cda6a62166e1c1b1791de3eb17882101",
+      "subject": "ci: pin one-batch run to key boundary fix (#176)",
+      "donor_pr": 176,
+      "changed_files": [
+        ".github/workflows/target_one_batch_reconciliation.yml",
+        "tests/test_target_one_batch_bridge_workflow.py"
+      ],
+      "target_implementation_pin": "f1aefdc18c987f018567872c6caea0039c7328b6",
+      "pin_is_ancestor_of_target": true,
+      "target_pin_subject": "fix(legislation): bind API key to API origin (#171)",
+      "disposition": "preserved_as_historical_evidence_only",
+      "rationale": "Archived donor execution bridge/pin and policy tests retained as historical provenance; the target implementation pin is already in target ancestry. This does not assert current workflow equivalence or state migration.",
+      "evidence": "late-commit-patches.json",
+      "handoffs": [
+        "LH-STATE",
+        "LH-WORKFLOW"
+      ]
+    },
+    {
+      "donor_commit": "01a1ab7a352acc1aca17e3c2398626b2fadb766f",
+      "parent_commit": "da6a74c19cc849f158ff896a68e8a43e0647854b",
+      "subject": "Pin one-batch workflow to pending-render retry correction (#177)",
+      "donor_pr": 177,
+      "changed_files": [
+        ".github/workflows/target_one_batch_reconciliation.yml",
+        "tests/test_target_one_batch_bridge_workflow.py"
+      ],
+      "target_implementation_pin": "e67a3e3772b216be8f08c52753f8e2b7a6cc3ef3",
+      "pin_is_ancestor_of_target": true,
+      "target_pin_subject": "Retry pending legislation representations (#172)",
+      "disposition": "preserved_as_historical_evidence_only",
+      "rationale": "Archived donor execution bridge/pin and policy tests retained as historical provenance; the target implementation pin is already in target ancestry. This does not assert current workflow equivalence or state migration.",
+      "evidence": "late-commit-patches.json",
+      "handoffs": [
+        "LH-STATE",
+        "LH-WORKFLOW"
+      ]
+    },
+    {
+      "donor_commit": "a54a27ecd593fbd1c303a860749ef5921ce0e2f2",
+      "parent_commit": "01a1ab7a352acc1aca17e3c2398626b2fadb766f",
+      "subject": "Pin one-batch workflow to pending-response evidence (#178)",
+      "donor_pr": 178,
+      "changed_files": [
+        ".github/workflows/target_one_batch_reconciliation.yml",
+        "tests/test_target_one_batch_bridge_workflow.py"
+      ],
+      "target_implementation_pin": "da60097bf126180557ab8a8e2c68dec8f93b4231",
+      "pin_is_ancestor_of_target": true,
+      "target_pin_subject": "Revalidate and evidence pending legislation responses (#173)",
+      "disposition": "preserved_as_historical_evidence_only",
+      "rationale": "Archived donor execution bridge/pin and policy tests retained as historical provenance; the target implementation pin is already in target ancestry. This does not assert current workflow equivalence or state migration.",
+      "evidence": "late-commit-patches.json",
+      "handoffs": [
+        "LH-STATE",
+        "LH-WORKFLOW"
+      ]
+    },
+    {
+      "donor_commit": "273a10c024ecb77abf5c6dfdb410892e645fa362",
+      "parent_commit": "a54a27ecd593fbd1c303a860749ef5921ce0e2f2",
+      "subject": "Pin one-batch workflow to trusted manifestation authentication (#179)",
+      "donor_pr": 179,
+      "changed_files": [
+        ".github/workflows/target_one_batch_reconciliation.yml",
+        "tests/test_target_one_batch_bridge_workflow.py"
+      ],
+      "target_implementation_pin": "dd6aa8eb3a2769fe02a1d62aec2be151f2f0fc9d",
+      "pin_is_ancestor_of_target": true,
+      "target_pin_subject": "Authenticate only trusted legislation format hosts (#174)",
+      "disposition": "preserved_as_historical_evidence_only",
+      "rationale": "Archived donor execution bridge/pin and policy tests retained as historical provenance; the target implementation pin is already in target ancestry. This does not assert current workflow equivalence or state migration.",
+      "evidence": "late-commit-patches.json",
+      "handoffs": [
+        "LH-STATE",
+        "LH-WORKFLOW"
+      ]
+    },
+    {
+      "donor_commit": "44c1e5b30dbaa90ada71ffc125b94f3669dccfa7",
+      "parent_commit": "273a10c024ecb77abf5c6dfdb410892e645fa362",
+      "subject": "Pin one-batch workflow to manifestation auth fallback (#180)",
+      "donor_pr": 180,
+      "changed_files": [
+        ".github/workflows/target_one_batch_reconciliation.yml",
+        "tests/test_target_one_batch_bridge_workflow.py"
+      ],
+      "target_implementation_pin": "a34a02427a156c089c1779772126f24186488237",
+      "pin_is_ancestor_of_target": true,
+      "target_pin_subject": "Retry official format misses without authentication (#175)",
+      "disposition": "preserved_as_historical_evidence_only",
+      "rationale": "Archived donor execution bridge/pin and policy tests retained as historical provenance; the target implementation pin is already in target ancestry. This does not assert current workflow equivalence or state migration.",
+      "evidence": "late-commit-patches.json",
+      "handoffs": [
+        "LH-STATE",
+        "LH-WORKFLOW"
+      ]
+    },
+    {
+      "donor_commit": "e34f1a882ba01ad9e16c46c47d7e5f9c256f3f85",
+      "parent_commit": "44c1e5b30dbaa90ada71ffc125b94f3669dccfa7",
+      "subject": "ci: pin accepted official-site user agent (#181)",
+      "donor_pr": 181,
+      "changed_files": [
+        ".github/workflows/target_one_batch_reconciliation.yml",
+        "tests/test_target_one_batch_bridge_workflow.py"
+      ],
+      "target_implementation_pin": "a8ed771925da354bcaa0aa7c06ed2d1d25efabba",
+      "pin_is_ancestor_of_target": true,
+      "target_pin_subject": "fix(legislation): use accepted official-site user agent (#176)",
+      "disposition": "preserved_as_historical_evidence_only",
+      "rationale": "Archived donor execution bridge/pin and policy tests retained as historical provenance; the target implementation pin is already in target ancestry. This does not assert current workflow equivalence or state migration.",
+      "evidence": "late-commit-patches.json",
+      "handoffs": [
+        "LH-STATE",
+        "LH-WORKFLOW"
+      ]
+    },
+    {
+      "donor_commit": "9654419c13cbdbc3d31be9430330f054a1c55cee",
+      "parent_commit": "e34f1a882ba01ad9e16c46c47d7e5f9c256f3f85",
+      "subject": "ci: pin representation-specific negotiation (#182)",
+      "donor_pr": 182,
+      "changed_files": [
+        ".github/workflows/target_one_batch_reconciliation.yml",
+        "tests/test_target_one_batch_bridge_workflow.py"
+      ],
+      "target_implementation_pin": "c3a34a662492ce470a8d5dcc697d6221b52fb57b",
+      "pin_is_ancestor_of_target": true,
+      "target_pin_subject": "fix(legislation): negotiate exact representation media (#177)",
+      "disposition": "preserved_as_historical_evidence_only",
+      "rationale": "Archived donor execution bridge/pin and policy tests retained as historical provenance; the target implementation pin is already in target ancestry. This does not assert current workflow equivalence or state migration.",
+      "evidence": "late-commit-patches.json",
+      "handoffs": [
+        "LH-STATE",
+        "LH-WORKFLOW"
+      ]
+    },
+    {
+      "donor_commit": "3c2bac391fae35e4f0cef1fe57adf504000545e3",
+      "parent_commit": "9654419c13cbdbc3d31be9430330f054a1c55cee",
+      "subject": "Add pinned bounded live legislation canary (#183)",
+      "donor_pr": 183,
+      "changed_files": [
+        ".github/workflows/target_bounded_live_canary.yml",
+        "seeds/reviewed/bounded-live-canary-0001.txt",
+        "tests/test_target_bounded_live_canary_workflow.py"
+      ],
+      "target_implementation_pin": "d9abc05fa648f8b2049fb443477bc8f97691cf7f",
+      "pin_is_ancestor_of_target": true,
+      "target_pin_subject": "Expose bounded legislation revalidation for live canaries (#178)",
+      "disposition": "preserved_as_historical_evidence_only",
+      "rationale": "Archived donor execution bridge/pin and policy tests retained as historical provenance; the target implementation pin is already in target ancestry. This does not assert current workflow equivalence or state migration.",
+      "evidence": "late-commit-patches.json",
+      "handoffs": [
+        "LH-STATE",
+        "LH-WORKFLOW"
+      ]
+    },
+    {
+      "donor_commit": "b40587f1b1aec7356a0f623916fcc8212397d283",
+      "parent_commit": "3c2bac391fae35e4f0cef1fe57adf504000545e3",
+      "subject": "Add state-chained weekly legislation cycles (#184)",
+      "donor_pr": 184,
+      "changed_files": [
+        ".github/workflows/target_weekly_legislation_cycle.yml",
+        "tests/test_target_weekly_legislation_cycle_workflow.py"
+      ],
+      "target_implementation_pin": "d9abc05fa648f8b2049fb443477bc8f97691cf7f",
+      "pin_is_ancestor_of_target": true,
+      "target_pin_subject": "Expose bounded legislation revalidation for live canaries (#178)",
+      "disposition": "preserved_as_historical_evidence_only",
+      "rationale": "Archived donor execution bridge/pin and policy tests retained as historical provenance; the target implementation pin is already in target ancestry. This does not assert current workflow equivalence or state migration.",
+      "evidence": "late-commit-patches.json",
+      "handoffs": [
+        "LH-STATE",
+        "LH-WORKFLOW"
+      ]
+    }
+  ]
+}
