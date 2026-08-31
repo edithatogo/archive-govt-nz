@@ -26,6 +26,19 @@ flowchart LR
   E --> F
 ```
 
+## Native checkpoint
+
+`COVERAGE_CORE=ctrace PYTHON_JIT=0 PYTEST_XDIST_AUTO_NUM_WORKERS=4
+./scripts/validate.sh` passed with exit 0 at `aaba5ae`: 4,015 tests, eight existing
+SQLite resource warnings, 138.83s main test stage, 97.34% overall coverage; 75
+Conductor tracks, 42 schemas/32 representative documents, 9/9 parity, all native
+mutation gates, dependency/licence/secret checks and the 111-component SBOM.
+Log SHA-256 `4d7ffbed26165324803dca3542d20dfeb90f856032a3d78b327e306b9a0dabc1`;
+exit receipt `9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa`.
+All reviewed source hashes are unchanged. Three generated timestamp-only fields
+in two unrelated legislation migration receipts were restored, not committed.
+Retained-original pilot and hosted delivery are separate pending evidence.
+
 Controlled-boundary ownership checks detect replacement of reviewed directories;
 this is not an atomic whole-filesystem transaction or hostile-race sandbox. A
 child raw-run MANIFEST proves only the independently verifiable legacy run. It
