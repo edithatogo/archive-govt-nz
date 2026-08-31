@@ -691,3 +691,14 @@ AC-12, source-area, rights or publication conclusion follows.
 Forecast preflight follow-up: full native harness passed at `8ace367` with
 3,414 tests and all gates. This supersedes the earlier native-pending status
 only; hosted delivery and full source/rights/recovery phases remain separate.
+## Detected structural accounting review — 2026-08-31
+
+Scope remains detected structural units only, never complete normalization.
+Review identified names-only structural joins and insufficient range bounds;
+11 red cases preceded fixes for shared-attribute/rich-range agreement,
+ordered Excel/sheet boundaries and coordinate-only forecast selection retention.
+Independent re-review found no further actionable finding. Mappings remain
+assertion-only, adapter exclusions never imply global scope, PDF page counts
+never manufacture table/page identities, and partial selections leave unresolved
+whole-unit coverage. Final assurance: 107 focused tests/100% critical coverage,
+144 cold mutant kills, full native 3,531-test pass. Hosted delivery is separate.
