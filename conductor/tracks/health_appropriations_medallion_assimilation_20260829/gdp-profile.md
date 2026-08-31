@@ -74,6 +74,10 @@ remain `not_evaluated`; no canonical-schema semantic promotion is claimed.
   41 schemas/31 samples, 9/9 parity, standard mutation and supply-chain gates.
   Log SHA `cd0e89c8202eaaceca1bbff207ea5d46145512b68383901461c2abc8b1656656`.
   Hosted exact-head delivery remains pending.
+- Main `c4d62ca` integrated afterwards at `f061961`, preserving the exact
+  incoming ledger prefix. Source and test hashes are unchanged; 45 focused
+  tests and the 74-track Conductor check pass. Native was not rerun on this
+  integration commit; the earlier native receipt stays tied to `41e7717`.
 - Exclusively retained `silver/raw-stats-gdp-20260831-v1` after native assurance;
   all four files read back identical to the pilots, original hash unchanged.
   Both temporary pilots remain retained. No previous package was replaced.
