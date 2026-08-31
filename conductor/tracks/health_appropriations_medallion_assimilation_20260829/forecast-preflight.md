@@ -46,6 +46,13 @@ The future CLI/MCP wrapper can impose a stricter output-location contract.
   The report retains a coverage module-already-imported warning; it did not
   filter mutant selection or reduce the test selection.
 
+Main `9032f8f` was integrated as `ce19d85`, retaining all incoming ledger
+entries as an exact prefix and both run-log additions. Production and test
+hashes are unchanged. All 92 focused tests pass again (6.51 s), and Conductor
+validates 75 tracks. An initial guessed validator filename did not exist
+(exit 2); the actual `tools.validate_conductor_state` module passed. The cold
+mutation coverage fragment was retained outside the checkout, not deleted.
+
 Full native assurance and exact-head hosted delivery are still pending.
 No real original, retained package, candidate or Hugging Face bytes
 were modified by these synthetic tests. Broader track phases remain open.
