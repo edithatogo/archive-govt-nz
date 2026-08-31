@@ -287,6 +287,9 @@ def test_live_catalogue_projection_has_no_raw_payload(
     assert result["coverage"]["verified_complete"] == 0
     assert result["coverage"]["geographic_entities"] == 250
     assert not any(name.endswith("raw.tar") for name in hub.files)
+    repeated = publication.publish_catalogue(hub, Path("config/foi"))
+    assert repeated["current_revision"] == result["current_revision"]
+    assert hub.calls == 2
 
 
 @pytest.mark.parametrize(

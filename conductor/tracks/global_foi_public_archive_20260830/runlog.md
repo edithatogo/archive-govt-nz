@@ -134,3 +134,21 @@ Workflow validation first stopped on the test's YAML loader lint rule. Replaced
 BaseLoader with safe_load and explicit YAML 1.1 boolean-key assertions. Actionlint
 and the workflow boundary test pass. The corrected full harness is running; this
 is not a hosted execution receipt.
+
+## Hosted catalogue retry correction — 2026-08-31
+
+Receiver publication PR #262 merged at 071e9541ee6e16771f417afa6b7cc4debc9e7483;
+all three hosted platforms passed 1824 tests. Metadata workflow PR #264 merged at
+78cd8fa732af55ea40b7595804f894ce7ea9c5e8 after green hosted assurance.
+Its first manual run 33357695865 failed safely and retained a failure receipt.
+A regression using the real catalogue projection reproduced remote_integrity_failure
+on an unchanged retry: canonical pointer JSON sorted table keys, while card
+configuration ordering followed the original insertion order. A single fixed
+table order now regenerates the same existing public card across pointer round trips.
+No immutable public bytes or raw source data needed replacement.
+
+Added allowlisted diagnostic reason codes; arbitrary exception text remains
+redacted. Twenty-seven focused delivery/CLI tests pass, with 100 percent delivery
+statement and branch coverage. Hosted retry after the correction remains pending.
+The prepared NZ publication decision stays explicitly pending; no rights/privacy
+approval has been supplied or fabricated.

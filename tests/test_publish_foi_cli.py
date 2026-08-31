@@ -72,7 +72,9 @@ def test_account_mismatch_and_private_exceptions_are_sanitized(
         ["publish_foi", "catalogue", "--receipt", str(tmp_path / "receipt")],
     )
     assert TOOL.main() == 1
-    assert json.loads(capsys.readouterr().out)["publication_verified"] is False
+    failure = json.loads(capsys.readouterr().out)
+    assert failure["publication_verified"] is False
+    assert failure["reason"] == "approved_operator_account_required"
     (tmp_path / "receipt").unlink()
     hub.writer.whoami.return_value = {"name": "edithatogo"}
 
@@ -82,7 +84,9 @@ def test_account_mismatch_and_private_exceptions_are_sanitized(
 
     monkeypatch.setattr(TOOL, "publish_catalogue", failed)
     assert TOOL.main() == 1
-    assert "private diagnostic" not in capsys.readouterr().out
+    output = capsys.readouterr().out
+    assert "private diagnostic" not in output
+    assert json.loads(output)["reason"] == "unclassified"
 
 
 def test_raw_command_passes_exact_decision_to_guard(

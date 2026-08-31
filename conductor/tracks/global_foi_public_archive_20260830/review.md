@@ -69,3 +69,10 @@ Attachment self-review passed for local indexes and restoration. Reviewed unsafe
 Reviewed anonymous revision-pinned fresh downloads, immutable path and digest checks, conditional parent commits, restore before promotion, retry idempotency, public/gated identity, catalogue child visibility, exact raw source/manifest/rights/privacy decisions, attachment gaps, sanitized failures and receipt creation races. The 137 focused tests pass with 100 percent measured critical-module coverage; four integrity mutants are killed. A real public metadata snapshot passed anonymous byte verification. Local full-suite timing failures remain explicit; hosted assurance is pending. Dataset viewer behavior is not yet verified. Raw rights/privacy clearance, public raw restore and cutover remain open.
 
 Directory overlay review: verified saved source hash, explicit country mappings, every source host, path/symlink rejection, ambiguous/missing mappings and unobserved new sources. Twenty directory tests pass with complete branch coverage. Directory absence is never interpreted as national absence; no source adapter or rights status is promoted.
+
+The first hosted metadata run exposed an insufficient idempotency fixture: the
+previous retry case had no table configurations. The real catalogue now runs twice
+in regression coverage and must retain the same revision with no new commit.
+Card order is generated from one fixed table registry, retaining compatibility
+with already-published cards. Failure reason output is an explicit allowlist;
+unknown/private exception text remains unclassified and is never printed.

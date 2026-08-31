@@ -18,6 +18,16 @@ REVISION = re.compile(r"[0-9a-f]{40}")
 MAX_POINTER_BYTES = 4096
 MAX_FILES = 10000
 MAX_BYTES = 6 * 1024**3
+TABLE_PATHS = {
+    "entities": "entities.jsonl",
+    "sources": "sources.jsonl",
+    "jurisdictions": "jurisdictions.jsonl",
+    "requests": "indexes/requests.parquet",
+    "events": "indexes/events.parquet",
+    "resources": "indexes/resources.parquet",
+    "objects": "indexes/objects.parquet",
+    "attachments": "indexes/attachments.parquet",
+}
 
 
 class Hub(Protocol):
@@ -128,7 +138,8 @@ def _card(pointer: dict[str, Any]) -> bytes:
             "config_name": name,
             "data_files": [{"split": "train", "path": f"snapshots/{digest}/{path}"}],
         }
-        for name, path in pointer.get("tables", {}).items()
+        for name, path in TABLE_PATHS.items()
+        if name in pointer.get("tables", {})
     ]
     header = "---\nlanguage: en\n"
     if configs:
@@ -163,20 +174,7 @@ def publish_snapshot(
     proof = {name: (path.stat().st_size, sha256(path)) for name, path in files.items()}
     if sum(size for size, _digest in proof.values()) > MAX_BYTES:
         _fail("snapshot_byte_budget_exceeded")
-    tables = {
-        name: path
-        for name, path in {
-            "entities": "entities.jsonl",
-            "sources": "sources.jsonl",
-            "jurisdictions": "jurisdictions.jsonl",
-            "requests": "indexes/requests.parquet",
-            "events": "indexes/events.parquet",
-            "resources": "indexes/resources.parquet",
-            "objects": "indexes/objects.parquet",
-            "attachments": "indexes/attachments.parquet",
-        }.items()
-        if path in files
-    }
+    tables = {name: path for name, path in TABLE_PATHS.items() if path in files}
     digest = proof["manifest.json"][1]
     prefix = f"snapshots/{digest}/"
     revision = _head(hub, repo)
