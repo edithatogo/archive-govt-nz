@@ -244,7 +244,14 @@
     "publication_state": "local_validation_only"
   },
   "donor_failure_conformance_state": {
-    "status": "local_assurance_passed_hosted_pending",
+    "status": "merged",
+    "pull_request": 270,
+    "hosted_head": "8375ae372e34d6d92978d657c32da998c5dfb5f9",
+    "merge_sha": "f94bb5b421d7811649b5396203a29fd5c893ae6a",
+    "merged_at": "2026-08-31T09:56:10Z",
+    "hosted_checks_passed": 7,
+    "hosted_ci_run": 33379586775,
+    "whole_tree_equal_at_merge": true,
     "functional_commit": "4454d75",
     "observation_sha256": "905c4bcdf8f860b18cbd89d25cab0a9a29ad19e8ef9705bc55120fca987eaa82",
     "donor_scripts_executed": false,

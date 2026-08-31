@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import shutil
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from typing import Any
@@ -49,8 +50,11 @@ def _manifest(root: Path, **changes: object) -> str:
     return _pin(root)
 
 
-@pytest.fixture
-def package(tmp_path: Path) -> Path:
+@pytest.fixture(scope="session")
+def package_template(tmp_path_factory: pytest.TempPathFactory) -> Path:
+    # Produce the immutable baseline once; each corruption test receives fresh
+    # copies, so reader assertions remain independent without repeated XLSX IO.
+    tmp_path = tmp_path_factory.mktemp("budget-reader-template")
     workbook = Workbook()
     sheet = workbook.active
     assert sheet is not None
@@ -87,6 +91,9 @@ def package(tmp_path: Path) -> Path:
     return root
 
 
+@pytest.fixture
+def package(tmp_path: Path, package_template: Path) -> Path:
+    return Path(shutil.copytree(package_template, tmp_path / "package"))
 def _rewrite(root: Path, name: str, rows: list[dict[str, Any]]) -> str:
     schema = pq.read_schema(root / name)
     pq.write_table(pa.Table.from_pylist(rows, schema=schema), root / name)
