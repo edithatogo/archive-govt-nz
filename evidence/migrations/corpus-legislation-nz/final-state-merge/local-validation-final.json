@@ -1,0 +1,42 @@
+{
+  "observed_at": "2026-08-31T14:15:42.728450+00:00",
+  "source_commit": "c4287a4eed4db5d5ae67746cc49287b37f4f914e",
+  "validated_checkout_commit": "c0214f34a0c2b562e362ffb3137c589302741bd8",
+  "full_harness": {
+    "command": [
+      "./scripts/validate.sh"
+    ],
+    "exit_code": 0,
+    "tests_passed": 2644,
+    "overall_coverage_percent": 97.0,
+    "log_sha256": "a2ddb515ae662e00f5c06fc0396fd457e62cf341dde29e66bedb0870454a5f0f"
+  },
+  "critical": {
+    "tests_passed": 50,
+    "line_coverage_percent": 100,
+    "branch_coverage_percent": 100,
+    "statements": 205,
+    "branches": 40,
+    "mutants_killed": 13,
+    "mutants_total": 13,
+    "log_sha256": "11fd891d67f5cb8be6b95f9eff36f9ab27198eff0234d7452de6ea2919e98345"
+  },
+  "conductor_tracks_validated": 74,
+  "repository_schemas": 41,
+  "representative_documents": 31,
+  "new_receipt_schema": "validated against synthetic and real execution-02 receipts",
+  "parity": "9/9 no divergence",
+  "workflow_lint": "repository workflow-policy test lane passed; no workflow changes",
+  "repository_mutation_lanes": "all passed",
+  "dependency_audit": "no known vulnerabilities",
+  "licence_inventory": "passed",
+  "secret_scan": {
+    "status": "passed"
+  },
+  "sbom": {
+    "status": "strictly_validated",
+    "components": 111
+  },
+  "hosted_checks": "pending, no hosted success or issue completion claimed by this local receipt",
+  "unrelated_generated_diffs": "saved in external quarantine and restored only in the initially clean owned worktree"
+}

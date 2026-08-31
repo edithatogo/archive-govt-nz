@@ -119,6 +119,30 @@ def inputs(tmp_path: Path) -> dict[str, Any]:
     return _inputs(tmp_path)
 
 
+@pytest.mark.parametrize("literal", ["NaN", "Infinity", "-Infinity", "1e999"])
+def test_nonfinite_extra_rights_metadata_is_rejected(
+    inputs: dict[str, Any], literal: str
+) -> None:
+    capture = json.loads(inputs["capture"].path.read_bytes())
+    capture["results"][0]["rights"]["extra"] = "NONFINITE"
+    payload = json.dumps(capture).replace('"NONFINITE"', literal).encode()
+    inputs["capture"].path.write_bytes(payload)
+    inputs["capture"] = PinnedInput(
+        inputs["capture"].path, hashlib.sha256(payload).hexdigest()
+    )
+    with pytest.raises(ValueError, match="candidate_inventory_contract"):
+        plan_additive_inventory(**inputs)
+
+
+def test_finite_extra_rights_number_is_retained(inputs: dict[str, Any]) -> None:
+    capture = json.loads(inputs["capture"].path.read_bytes())
+    capture["results"][0]["rights"]["extra"] = 1.25
+    inputs["capture"] = _pin(inputs["capture"].path, capture)
+    result = plan_additive_inventory(**inputs)
+    package = next(row for row in result["packages"] if row["profile"] == "budget-2026")
+    assert package["rights_join"]["recorded_source_rights"]["extra"] == 1.25
+
+
 def test_inventory_is_deterministic_readonly_and_not_approval(
     inputs: dict[str, Any], tmp_path: Path
 ) -> None:

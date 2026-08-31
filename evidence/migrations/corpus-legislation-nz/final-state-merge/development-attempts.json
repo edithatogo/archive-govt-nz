@@ -1,0 +1,105 @@
+{
+  "attempts": [
+    {
+      "stage": "initial_cli",
+      "status": "failed",
+      "reason": "Direct script invocation could not import tools namespace. Fixed by explicitly loading the sibling verifier; direct and module invocation now work."
+    },
+    {
+      "stage": "focused-01",
+      "status": "failed",
+      "reason": "Collection exposed the same tools namespace import failure."
+    },
+    {
+      "stage": "types-01",
+      "status": "failed",
+      "reason": "mypy is not the configured checker; used repository basedpyright instead."
+    },
+    {
+      "stage": "types-02",
+      "status": "failed",
+      "reason": "runpy test path nullable typing fixed without changing runtime contract."
+    },
+    {
+      "stage": "lint-01-and-02",
+      "status": "failed",
+      "reason": "Import ordering, tuple parameter names, local import placement and unused import corrected without suppressing integrity checks."
+    },
+    {
+      "stage": "coverage-02",
+      "status": "passed",
+      "tests": 49,
+      "critical_line_percent": 100,
+      "critical_branch_percent": 100
+    },
+    {
+      "stage": "types-03",
+      "status": "passed",
+      "errors": 0
+    },
+    {
+      "stage": "mutation-01",
+      "status": "passed",
+      "killed": 12,
+      "total": 12
+    }
+  ],
+  "retained_log_hashes": [
+    {
+      "file": "cli-help.log",
+      "sha256": "e14838582f1d544addf68e276659bb6e91b497009f0ae0f1ab2db1ff866d446f"
+    },
+    {
+      "file": "coverage-01.log",
+      "sha256": "7b82320cac84d205f6f29626942d9a539ba30cbc447ef8460e8641f0000da1ca"
+    },
+    {
+      "file": "coverage-02.log",
+      "sha256": "69f286bad1b193b990e76efbe02fdfe72f9c777995a2c43d5b658546a5ffd2b7"
+    },
+    {
+      "file": "execute-01.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "focused-01.log",
+      "sha256": "500f021fe0c6b6baa5975404f3e939c5b75a3eb8fbe31b895da79032846a45a0"
+    },
+    {
+      "file": "focused-02.log",
+      "sha256": "6a3f1edba19f7dde5b524d7b03bf738e1a6e237cb35bb37cdb6fa8a9593605c8"
+    },
+    {
+      "file": "lint-01.log",
+      "sha256": "277b22328ebee1f729c0bca9b009745b0f588c9ba16510595d378760a84147e1"
+    },
+    {
+      "file": "lint-02.log",
+      "sha256": "b516b44cfc1aaddba26a2e83d02905140f68733b08d8ef598886f8fd14f6ffa5"
+    },
+    {
+      "file": "mutation-01.log",
+      "sha256": "a4492083a92ff85d73a7e8e07fcbf663c21918f091d0c65758912ba0def65810"
+    },
+    {
+      "file": "readback-01.log",
+      "sha256": "a550490511b4780a1f455380c71a94b12c3f387e5de615e7492fd27ac52617ce"
+    },
+    {
+      "file": "reversed-01.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "types-01.log",
+      "sha256": "94af4644b954d216669d75837ca93838e1a565c63509c9f243d0f8cb016eee77"
+    },
+    {
+      "file": "types-02.log",
+      "sha256": "31d2a450795239ec09c382110d38ea3c183a614239f461a2710008fe770da425"
+    },
+    {
+      "file": "types-03.log",
+      "sha256": "56882e01cb80173ef053c4096e4ee43e3123a15f5c0a06715f96988d48fbd91c"
+    }
+  ]
+}
