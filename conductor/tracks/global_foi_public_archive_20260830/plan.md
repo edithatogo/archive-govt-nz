@@ -44,16 +44,16 @@ The approved destination is archive-govt-nz; no cutover has occurred.
 
 ## Phase 5 — Sustainable acquisition for every country
 
-- [ ] P5.1 (AC08, AC09): Add red state-machine tests for fairness, per-origin limits, retry exhaustion, stale leases, missing artifacts, changed/withdrawn objects, byte/runtime budgets, fair queue service and blocked adapters.
-- [ ] P5.2 (AC08): Implement registry-derived schedules, historical/incremental queues, durable state and bounded continuation; do not use a blind country loop.
+- [~] P5.1 (AC08, AC09): Add red state-machine tests for fairness, per-origin limits, retry exhaustion, stale leases, missing artifacts, changed/withdrawn objects, byte/runtime budgets, fair queue service and blocked adapters.
+- [~] P5.2 (AC08): Implement registry-derived schedules, historical/incremental queues, durable state and bounded continuation; do not use a blind country loop.
 - [ ] P5.3 (AC04, AC08, AC11): Walk the entire pinned country universe; assess all discovered sources, add bounded adapters where possible, verify capture/storage per eligible source, activate approved schedules, and retain explicit unsupported/blocked dispositions.
 - [~] P5.4 (AC09): Add freshness/backlog monitoring and actionable stuck-state alerts; prove that green monitor execution cannot conceal failed capture/publication.
 - [ ] P5.5 (AC12): Automated review, recovery/property/mutation gates and full validation with evidence-backed country counts.
 
 ## Phase 6 — Shadow parity, cutover and rollback
 
-- [ ] P6.1 (AC01, AC10): Add failing parity tests for cases, events, attachments, raw hashes, revisions, queues, checkpoints, retry, takedown behavior and delayed jobs from the former owner.
-- [ ] P6.2 (AC10): Reconcile shadow outputs using retained capture evidence without duplicate source load; exercise interruption, shared owner fencing, rollback and measured clean-environment recovery.
+- [~] P6.1 (AC01, AC10): Add failing parity tests for cases, events, attachments, raw hashes, revisions, queues, checkpoints, retry, takedown behavior and delayed jobs from the former owner.
+- [~] P6.2 (AC10): Reconcile shadow outputs using retained capture evidence without duplicate source load; exercise interruption, shared owner fencing, rollback and measured clean-environment recovery.
 - [ ] P6.3 (AC10): Transfer scheduler/publication ownership to archive-govt-nz only after hosted parity and anonymous restore pass; record exact donor/receiver/HF revisions, the shared ownership fence and rollback window.
 - [ ] P6.4 (AC10, AC12): Observe a successful scheduled incremental cycle, no duplicate dispatch and publication freshness; automated review and full validation. Donor deletion remains out of scope.
 
@@ -73,3 +73,5 @@ Bounded original-byte restore passed in run 33307777685 after donor #407 merged.
 P3 continuation: v2 packages add explicit attachment gaps and event relationships; v1 restore compatibility is retained. Donor credit must reject discovered-but-unretained attachment references. This does not prove exhaustive source discovery.
 
 Hosted catalogue verification passed in run 33358508220 after retry-order correction. P4.4/P4.5 and P5.4 are partial for metadata only; eligible raw delivery, a second raw instance, acquisition monitoring and full phase acceptance remain pending. The next source-specific gate is documented in nz-publication-decision.pending.json. No raw or ownership gate is satisfied by the metadata run.
+
+Local P5/P6 controls pass focused validation; see durable-controls-local-validation-20260831.json. The full gate remains pending after bounded timeouts. Strict owner/queue CAS, durable state and parity proposals are local foundations; production policy resolution, shared dispatch, quotas and hosted evidence remain required.

@@ -1,0 +1,13 @@
+{
+  "observed_at": "2026-08-31T10:41:28.697971+00:00",
+  "exit_code": 124,
+  "stage": "tests",
+  "attempt": 3,
+  "environment": "same locked CPython3.14.6 on internal storage; four workers; identical seed; no timeout relaxation",
+  "test_items": 2047,
+  "last_progress_percent": 66,
+  "cached_failure_id": "tests/domains/test_legislation.py::test_legislation_manifest_root_is_order_invariant",
+  "cached_failure_status": "isolated diagnosis pending; traceback not emitted before stage timeout",
+  "log_sha256": "903865537ed9d796632497fad5c40a2c7409ffe859df0dde5673e6979bde0744",
+  "next_step": "Independent hosted checks and bounded diagnosis of identified test; no repeated full local retry."
+}

@@ -1,0 +1,100 @@
+{
+  "observed_at": "2026-08-31T09:54:11.991295+00:00",
+  "scope": "Canadian federal ATI nil-return summary CSV and schema originals only; no FOI response records",
+  "source_id": "ca-federal-atip",
+  "registered_hf_repo_id": null,
+  "dataset_id": "0797e893-751e-4695-8229-a5066e4fe43c",
+  "licence": {
+    "id": "ca-ogl-lgo",
+    "url": "https://open.canada.ca/en/open-government-licence-canada",
+    "attribution": "Contains information licensed under the Open Government Licence – Canada.",
+    "exclusions": [
+      "Personal Information",
+      "third-party rights the provider is not authorized to license",
+      "names, crests, logos and official symbols",
+      "other intellectual property including patents, trademarks, official marks"
+    ]
+  },
+  "metadata_sha256": "ab1ae554917ce223c74cac2cd1874344e31e532f4ce0b61833a90a4edf357f76",
+  "resources": [
+    {
+      "id": "19383ca2-b01a-487d-88f7-e1ffbc7d39c2",
+      "url": "https://open.canada.ca/data/dataset/0797e893-751e-4695-8229-a5066e4fe43c/resource/19383ca2-b01a-487d-88f7-e1ffbc7d39c2/download/ati-all.csv",
+      "format": "CSV",
+      "size": 115299271,
+      "last_modified": "2026-08-31T06:49:29.293945"
+    },
+    {
+      "id": "5a1386a5-ba69-4725-8338-2f26004d7382",
+      "url": "https://open.canada.ca/data/dataset/0797e893-751e-4695-8229-a5066e4fe43c/resource/5a1386a5-ba69-4725-8338-2f26004d7382/download/ati-nil.csv",
+      "format": "CSV",
+      "size": 653800,
+      "last_modified": "2026-08-31T06:49:46.044182"
+    },
+    {
+      "id": "c8745108-5138-45f1-b7aa-cb16cef414c1",
+      "url": "https://open.canada.ca/en/search/ati",
+      "format": "HTML",
+      "size": 0,
+      "last_modified": null
+    },
+    {
+      "id": "d338974f-b307-4737-88ae-c28af9178f2a",
+      "url": "https://ouvert.canada.ca/fr/search/ati",
+      "format": "HTML",
+      "size": null,
+      "last_modified": null
+    },
+    {
+      "id": "9803cf94-f080-46af-8a74-a1fab0c93cb9",
+      "url": "https://open.canada.ca/data/recombinant-published-dictionary/ati",
+      "format": "XLSX",
+      "size": null,
+      "last_modified": null
+    },
+    {
+      "id": "5515c59c-130a-4979-81fd-acbb94020a8a",
+      "url": "https://open.canada.ca/data/recombinant-published-schema/ati.json",
+      "format": "JSON",
+      "size": null,
+      "last_modified": null
+    }
+  ],
+  "local_files": {
+    "ati-schema.json": {
+      "bytes": 8664,
+      "sha256": "781ed264af3946efeb70d89ef6026bfa384262e2f39e9b6cabf1b5c46f1bbdc3"
+    },
+    "ati-nil.csv": {
+      "bytes": 653800,
+      "sha256": "cdfdd497e38f9414eba898b1e0fc0e8dbab1a96969ad161f5b1b553b6cd6131e"
+    },
+    "licence.html": {
+      "bytes": 23079,
+      "sha256": "d7648d6d694d66a0891502f85c3383f9263d5e541b47e14fbf33450974af158f"
+    }
+  },
+  "nil_return_checks": {
+    "header_exact": true,
+    "year_numeric": true,
+    "month_valid": true,
+    "organisation_ids_slug": true,
+    "email_like_values": 0,
+    "free_text_request_fields_present": false
+  },
+  "nil_return_rows": 6191,
+  "privacy_status": "bounded_machine_screen_only_not_accountable_approval",
+  "raw_publication_performed": false,
+  "capture_activated": false,
+  "scope_caveats": [
+    "This is an institutional monthly nothing-to-report table, not completed-request summaries or released documents.",
+    "The provider says personal-information and third-party-proprietary requests are excluded from the overall dataset.",
+    "Not all institutions publish to the portal.",
+    "Signed storage redirect was followed in memory and not retained in evidence; use stable public resource URL.",
+    "No registered HF destination or supported adapter exists for ca-federal-atip in the current baseline."
+  ],
+  "rights_observation": "Provider declares Open Government Licence - Canada; exclusions and attribution remain applicable.",
+  "rights_decision": "candidate_evidence_only_no_source_activation",
+  "publication_decision": "pending_exact_candidate_review_and_registered_destination",
+  "projection_note": "Unused, unverified provider resource hash fields are omitted from this public projection. Original CKAN metadata bytes remain preserved locally under metadata_sha256; computed SHA-256 values identify acquired originals."
+}
