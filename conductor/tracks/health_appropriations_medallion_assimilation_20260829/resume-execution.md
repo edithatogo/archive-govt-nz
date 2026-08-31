@@ -94,3 +94,15 @@ shape after the child read.
   ledger is preserved as an exact byte prefix before the executor append.
 - Post-integration: 97 executor/completion tests passed in 47.07s; Conductor
   validated 75 tracks. No reviewed source or test bytes changed during integration.
+- Cold mutation at `71587e2`: 306/306 killed; zero survivors, timeouts, errors,
+  pardons or cache hits. The same 248 tests passed in 385.12s. One worker, unchanged
+  timeout, cold cache and no coverage filtering were used for all three changed
+  modules. Report SHA-256:
+  `d2bd4af8183e416e94fb93cb60237a29e9e5aa2ba650dbd25884c3be031afc0d`;
+  log `f6e8a49e98f8fdb28df84db1d63d2659a28e9412ce6e91df560dde5957b7567b`.
+  Production hashes remain unchanged; native and retained-original validation
+  remain pending at this checkpoint.
+
+```sh
+uv run pytest tests/domains/health_appropriations/test_resume_execution.py tests/domains/health_appropriations/test_rebuild_completion.py tests/domains/health_appropriations/test_rebuild_resume.py tests/domains/health_appropriations/test_rebuild.py -q --gremlins --gremlin-targets=src/archive_govt_nz/domains/health_appropriations/resume_execution.py,src/archive_govt_nz/domains/health_appropriations/rebuild_resume.py,src/archive_govt_nz/domains/health_appropriations/rebuild.py --gremlin-report=json --gremlin-parallel --gremlin-workers=1 --gremlin-clear-cache --gremlin-no-coverage-filter --strict-pardons --gremlin-max-pardons-pct=0 --max-pardons=0 --no-cov
+```
