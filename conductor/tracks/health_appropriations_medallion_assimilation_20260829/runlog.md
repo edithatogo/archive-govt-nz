@@ -1559,6 +1559,17 @@ hashes and the incoming ledger prefix; 155 focused tests/types/75 tracks passed.
 See [full receipts and boundaries](./readonly-resume-planner.md). Execution,
 semantic approval, rights and publication remain separate.
 
+## 2026-08-31: Budget canonical appropriation projection
+
+Completed the bounded pure projection after red-first tests and independent
+parent/sibling review. 37 tests reached 100% critical coverage and all 28 cold
+unfiltered mutants were killed. Native at 04c923b4 exited 0: 3,955 tests,
+97.3074% coverage and all repository/supply-chain gates. The read-only pinned
+400-fact pilot preserved all 6,800 original lineage entries and produced
+byte-identical in-memory rebuilds without package changes. See
+[exact receipts and limits](./budget-canonical-projection.md). No rights,
+publication or umbrella-phase completion is implied.
+
 ## 2026-08-31 — Bounded PROV entity projection
 
 Added a pure public projection of validated typed descriptors to inline-context

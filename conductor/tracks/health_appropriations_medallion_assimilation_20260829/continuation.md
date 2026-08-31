@@ -36,6 +36,11 @@ No task is complete just because code exists, an issue is closed, or CI is green
 
 ## Execution loop
 
+- [Remaining acceptance route](./remaining-acceptance.md) separates established
+  preservation/raw replay from pending canonical consumers, metadata composition,
+  exclusive resume execution and publication gates. Check newer evidence before
+  repeating bounded helpers already delivered.
+
 - Use `source-schema-gaps.md` for the reconciled remaining source/canonical
   route and `preservation-recheck.md` for the latest independent local
   CAS/WARC/candidate audit. Consult newer appended receipts and live PR state

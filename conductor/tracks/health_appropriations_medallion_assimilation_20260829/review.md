@@ -714,6 +714,16 @@ claimed as a CLI redaction boundary. No attempt is copied, repaired or executed.
 102 tests/100% critical coverage, 95/95 cold mutants and the full 3,797-test native
 harness passed. Exact-head hosted delivery remains a separate gate.
 
+## 2026-08-31: Budget appropriation projection review
+
+Parent and sibling independently reviewed exact Decimal copying, contextual IDs,
+all-field retention and lineage closure. Provenance ambiguity findings were
+reproduced by red tests before adding inherited-field receipts and explicit
+unmapped-classification/inherited-unit/currency-unknown flags. Final frozen
+source/test review had no remaining finding. Critical 100%, 28/28 cold mutants,
+full 3,955-test native and the pinned in-memory 400-fact pilot passed; hosted
+exact-head delivery is separate. See [scope and receipts](./budget-canonical-projection.md).
+
 ## 2026-08-31 — Bounded PROV entity projection review
 
 Two independent reviews found no actionable issue in the entity/derivation-only

@@ -232,6 +232,13 @@ repository validation command. External gates block only their affected task.
 
 ### 3.2 Implement the domain and adapter protocol
 
+- [x] Project reviewed Budget-2025/2026 facts into canonical appropriation
+  fields, composing existing unmapped source-label occurrences and complete
+  lineage accounting. Preserve source Decimal(20,3) exactly, year tokens and
+  amount types; leave dates/currency/price basis unestablished. No I/O, rights
+  promotion or original-token claim beyond extraction lineage. [M-05, M-06,
+  M-07, M-18; AC-05, AC-16]
+
 - [x] Compose verified historical snapshots and the pure canonical projection
   into an exclusive local-only export, defaulting to dry-run, with complete
   readback and retained partial failures. Keep source packages and publication
@@ -357,12 +364,14 @@ repository validation command. External gates block only their affected task.
 
 ### 5.1 Source-family contracts first
 
-- [~] Normalize the exact retained Stats NZ GDP Table 1 expenditure-measure
+- [x] Normalize the exact retained Stats NZ GDP Table 1 expenditure-measure
   profile: 60 quarterly current-price actual observations, separate series
   prefix/reference, literal dollar-million units with ISO currency unverified,
   full cell dispositions and field lineage. No annual aggregation, denominator
   selection, source download or publication. [M-05, M-06, M-07, M-18; AC-05,
   AC-09, AC-16]
+  Delivered PR302, merge `1d134bfea0cdcfea49162da3a99b7db99b3485cc`;
+  local native and hosted receipts remain distinct in [GDP receipt](./gdp-profile.md).
 
 - [x] Persist canonical Budget label occurrences in an exclusive local-only
   package composed with the pinned Budget reader and original-byte verification.
@@ -381,13 +390,15 @@ repository validation command. External gates block only their affected task.
   Local pure projection, focused/mutation/native assurance and in-memory pilots
   pass; hosted delivery remains separate. See [receipt](./budget-classification.md).
 
-- [~] Normalize the retained Pharmac medicines-budget HTML profile into
+- [x] Normalize the retained Pharmac medicines-budget HTML profile into
   pharmaceutical-budget facts, preserving all 14 financial-year rows, supplied
   changes/percentages, literal missing markers and trailing empty cells. Bind
   July–June dates to the page's explicit definition; retain caption mismatch
   and 2022 budget-holder reform context without claiming actual expenditure,
   cross-regime equivalence, or new publication rights. [M-05, M-06, M-07,
   M-11, M-18; AC-05, AC-09, AC-11, AC-16]
+  Delivered PR295, merge `9e559799f441651e79d4109fcd28e5fa89be668e`;
+  see separate local/hosted [receipts](./pharmac-cpb.md).
 
 - [x] Register bounded BEFU-2026/v1 and HYEFU-2025/v1 literal Health-summary
   contracts from retained originals, with version-specific sheets, coordinates,
@@ -512,6 +523,12 @@ repository validation command. External gates block only their affected task.
 
 ### 7.1 Metadata and rights contracts first
 
+- [~] Compose a read-only local provenance verifier for explicit canonical
+  historical/classification marker pins, original objects and raw package pins.
+  Compare retained tables/accounting with recomputed pure projections and return
+  separate scoped fixity evidence; do not change the pure descriptor helper's
+  claims or declare Platinum/publication complete. [M-14, M-16, M-18; AC-14, AC-16]
+
 - [~] Project validated typed local descriptors into an entity-only PROV
   JSON-LD graph with exact product-to-input derivation edges, retaining the
   complete inventory and explicit assertion-only scope. No invented activity,
@@ -556,6 +573,10 @@ repository validation command. External gates block only their affected task.
 
 ### 8.1 Operational contracts first
 
+- [x] Implement an exclusive local resume executor over an explicitly pinned
+  read-only plan, preserving old attempts and originals, with bounded snapshots,
+  separate child/envelope verification, interruption evidence and no publication.
+  [M-15, M-18; AC-13, AC-16]
 - [x] Add a read-only partial-rebuild planner joining pinned donor metadata,
   prior PLAN and explicit stage pins; verify selected originals and classify
   bounded stage fixity/structure reuse without copying or repairing attempts.
@@ -570,11 +591,13 @@ repository validation command. External gates block only their affected task.
 
 ### 8.2 Implement bounded operations
 
-- [~] Expose only BEFU-2026/HYEFU-2025 successor profiles through the existing
+- [x] Expose only BEFU-2026/HYEFU-2025 successor profiles through the existing
   dry-run-first CLI and read-only MCP after explicit forecast API dependency
   validation. Preserve partial failures, exact counts and source-specific
   actual/forecast observations; no annual joins or publication. [M-15, M-18;
   AC-13, AC-16]
+  Delivered PR318, merge `d46d3983a1a40581bbd11f446c2b75a35e4f0d15`;
+  see [scoped dispatch assurance](./forecast-source-operations.md).
 - [x] Add an explicit no-write forecast API path while retaining the existing
   default-write contract and all four source profiles. Require real booleans,
   preserve partial/rejected status and prove old written bytes unchanged.
@@ -720,9 +743,10 @@ repository validation command. External gates block only their affected task.
 
 ## Review fixes
 
-- [~] Keep disconnected source-plot segments styled by their full context and
+- [x] Keep disconnected source-plot segments styled by their full context and
   disambiguate colliding display labels without merging source identities.
   [M-09, M-18; AC-07, AC-16]
+  Delivered PR274, merge `4dacd12be50fcc221906db0e497e2073e7e7b0f7`.
 
 - [x] Remove scheduler-dependent Hypothesis deadline flakiness from the batch
   eligibility invariant without weakening generated cases or assertions.
