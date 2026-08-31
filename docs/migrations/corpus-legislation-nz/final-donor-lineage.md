@@ -47,3 +47,34 @@ No identity record changed in the donor interval. `external-identities.json` bin
 ## Verification and commit binding
 
 The precommit receipt is retained. A later final receipt must name the actual import commit and bind hashes of all source inventories; no self-referential commit placeholder counts as completion. Full local validation, fixity, scope checks and exact-head hosted gates must be recorded before merge.
+
+To independently repeat the core fixity check without acquiring donor payload state:
+
+```python
+import hashlib
+import json
+import subprocess
+from pathlib import Path
+
+p = Path("evidence/migrations/corpus-legislation-nz/final-lineage")
+r = json.loads((p / "receipt.json").read_text())
+f = json.loads((p / "import-fixity.json").read_text())
+root = Path(r["imported_tree_root"])
+assert len(f["files"]) == r["file_count"] == 216
+assert {str(x.relative_to(root)) for x in root.rglob("*") if x.is_file()} == {
+    x["path"] for x in f["files"]
+}
+for item in f["files"]:
+    data = (root / item["path"]).read_bytes()
+    assert hashlib.sha256(data).hexdigest() == item["sha256"]
+    assert hashlib.sha1(
+        b"blob " + str(len(data)).encode() + b"\0" + data
+    ).hexdigest() == item["git_blob"]
+assert subprocess.check_output([
+    "git", "rev-parse", r["target_import_commit"] + ":" + r["imported_tree_root"]
+]).decode().strip() == r["imported_git_tree"]
+for name, digest in r["artifacts"].items():
+    assert hashlib.sha256((p / name).read_bytes()).hexdigest() == digest
+```
+
+Run without Python optimization (`-O`), which would disable assertions. The earlier focused run also tested missing, extra and corrupted data in memory; no imported file was modified by those negative controls.

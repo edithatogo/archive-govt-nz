@@ -14,3 +14,9 @@
 
 - Staged Git tree verifies final imported subtree 4faf5bebac0d6cf8f06b87e83b282a9953505ce9, identical to donor.
 - git diff --cached --check reports original blank EOF lines in dataset_identifier_interlinking_20260721/{index.md,metadata.json,plan.md,spec.md} and track_07_full_corpus_bootstrap_download/plan.md. These match donor blobs and are intentionally preserved under the immutable-import requirement; no whitespace normalization or gate configuration change.
+
+- Tests: 2154 passed, 8 warnings, 96.89% combined coverage; schemas 40/40 and representative documents 30/30; parity 9/9.
+- Separate repository secret scan failed with 98 candidate paths, all verified as public commit-addressed imports. Independent Gitleaks scans of imported bytes and lineage evidence passed. Findings and unchanged gate outcome retained in secret-scan-failure.json.
+
+- Required ./scripts/validate.sh finished exit 1: all stages through dependency audit/licences passed; secret scan stopped the fail-closed harness with 98 path-string candidates. All mutation lanes passed. Separate SBOM validation passed (111 components). Full log hash in validation-final.json.
+- Documented independent fixity command passed against import commit.
