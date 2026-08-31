@@ -74,3 +74,13 @@ The subsequent optional Health Survey assessment is a documentation-only
 addition based on primary public landing pages; its75-track Conductor check,
 secret scan and whitespace check passed. No survey payload was acquired and
 the earlier full harness is not relabelled as validation of a survey adapter.
+
+Integration `400770d` incorporated main `2400a9a` after the historical and
+classification exporters and six-profile source operations were delivered.
+All 98 incoming ledger entries remain the exact prefix, followed by five
+unique local audit/assessment/replay events. Conductor validates 75 tracks.
+The fresh original-to-products replay has separate evidence in
+`originals-product-replay.md`; no source bytes changed. These later docs and
+integration do not replace the earlier native checkpoint with a new full-run
+claim. A failed patch matched the wrong heading and made no changes before
+the corrected documentation-only patch.

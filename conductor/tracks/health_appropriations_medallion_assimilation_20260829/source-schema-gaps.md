@@ -43,10 +43,10 @@ now provide versioned structural contracts (merged PRs#293/#300). The merged
 historical snapshot reader (#303) verifies pinned originals and source packages;
 it is transport validation, not semantic acceptance. The narrow historical
 Health/GDP semantic projection (#305), its local canonical exporter (#311),
-Budget source-label classification projection (#306), and the initial four
-source-operation profiles (#307) are also merged. Persistent Budget
-classification export and further source-operation profiles remain active
-parallel implementation streams, not
+Budget source-label classification projection (#306), its persistent local
+exporter (#316), and six source-operation profiles (#307/#313) are also merged.
+Forecast operational exposure, donor-area accounting and local provenance
+remain active parallel implementation streams, not
 completion of the full canonical model. Preserve exact precision,
 unknown fields, unmapped classifications, vintage keys and source pointers;
 do not rewrite v1 packages or force unknown Ministry semantics into canonical
@@ -56,9 +56,9 @@ scheduling remain separate acceptance tasks.
 
 ## Executable remaining route
 
-1. Finish active exact-head delivery/assurance: persistent Budget classification
-   export, further source-operation profiles, forecast preflight and donor-area
-   accounting. Check live PRs and appended receipts;
+1. Finish active exact-head delivery/assurance: forecast preflight and its
+   source-operation profiles, donor-area accounting and local provenance.
+   Check live PRs and appended receipts;
    the bounded checkpoint above is not a permanently current PR dashboard.
 2. Extend existing local operational profiles to already-reviewed adapters,
    preserving each source-specific schema. Persist classification occurrences
