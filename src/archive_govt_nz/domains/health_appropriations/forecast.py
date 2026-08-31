@@ -32,7 +32,17 @@ if TYPE_CHECKING:
     from openpyxl.cell.cell import Cell, MergedCell
     from openpyxl.worksheet.worksheet import Worksheet
 
-_SHEETS = {"befu": "Core Crown Expense Tables", "hyefu": "Expense Tables"}
+_SHEETS = {
+    "befu": "Core Crown Expense Tables",
+    "hyefu": "Expense Tables",
+    "befu-2026/v1": "Core Crown Expense Tables",
+    "hyefu-2025/v1": "Core Crown Expense Tables",
+}
+FORECAST_PROFILES = tuple(_SHEETS)
+_VINTAGE_ROWS = {"befu-2026/v1": ("BEFU-2026", 9), "hyefu-2025/v1": ("HYEFU-2025", 8)}
+_VINTAGE_YEARS = tuple(str(year) for year in range(2021, 2031))
+_VINTAGE_TYPES = ("Actual",) * 5 + ("Forecast",) * 5
+_VINTAGE_COLUMNS = tuple(range(6, 16))
 _MAX_SOURCE_BYTES = 64 * 1024 * 1024
 _MIN_YEAR_COLUMNS = 2
 _TRANSFORMATION = "treasury-health-expense-summary/v1"
@@ -118,6 +128,26 @@ def _layout(sheet: Worksheet) -> _Layout:
 
 def _coordinate(sheet: Worksheet, cell: Cell | MergedCell) -> str:
     return f"'{sheet.title}'!{cell.coordinate}"
+
+
+def _validate_vintage(
+    sheet: Worksheet, layout: _Layout, profile: str, source_vintage: str
+) -> None:
+    """Bind reviewed successors explicitly; do not reinterpret legacy profiles."""
+    if profile not in _VINTAGE_ROWS:
+        return
+    vintage, row = _VINTAGE_ROWS[profile]
+    if (
+        source_vintage != vintage
+        or layout.label.coordinate != f"D{row}"
+        or layout.unit.coordinate != f"D{row - 3}"
+        or layout.columns != _VINTAGE_COLUMNS
+        or tuple(sheet.cell(layout.year_row, column).value for column in layout.columns)
+        != _VINTAGE_YEARS
+        or tuple(sheet.cell(layout.type_row, column).value for column in layout.columns)
+        != _VINTAGE_TYPES
+    ):
+        raise ValueError("forecast_vintage_contract")
 
 
 def _amount_reason(cell: Cell | MergedCell) -> str | None:
@@ -248,6 +278,7 @@ def normalize_forecast_workbook(
             raise ValueError("missing_forecast_sheet")
         sheet = workbook[_SHEETS[profile]]
         layout = _layout(sheet)
+        _validate_vintage(sheet, layout, profile, source_vintage)
         facts, lineage, dispositions = _extract(sheet, layout, context)
         excluded = [
             {"sheet": name, "reason": "not_forecast_summary_sheet"}

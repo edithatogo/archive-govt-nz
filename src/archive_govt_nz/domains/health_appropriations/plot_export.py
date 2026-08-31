@@ -68,6 +68,23 @@ def _finite(value: str) -> float:
     return result
 
 
+def _context_styles(series: list[dict[str, Any]]) -> list[tuple[int, str]]:
+    keys = [json.dumps(group["context"], sort_keys=True) for group in series]
+    contexts = dict(
+        zip(keys, (_label(group["context"]) for group in series), strict=True)
+    )
+    styles = {}
+    for index, (key, label) in enumerate(contexts.items()):
+        # Abbreviated display text must never become a source identity key.
+        display_label = (
+            f"{label} [context {index + 1}]"
+            if list(contexts.values()).count(label) > 1
+            else label
+        )
+        styles[key] = (index, display_label)
+    return [styles[key] for key in keys]
+
+
 def _draw(axis: Any, plot: dict[str, Any]) -> None:  # noqa: ANN401 - Matplotlib axes runtime interface
     series = plot["series"]
     categories = sorted({point["x"] for group in series for point in group["points"]})
@@ -79,17 +96,18 @@ def _draw(axis: Any, plot: dict[str, Any]) -> None:  # noqa: ANN401 - Matplotlib
     for index, group in enumerate(series):
         for point in group["points"]:
             members.setdefault(point["x"], []).append(index)
-    for index, group in enumerate(series):
+    for index, (group, (style, label)) in enumerate(
+        zip(series, _context_styles(series), strict=True)
+    ):
         x = [point["x"] for point in group["points"]]
         y = [_finite(point["y"]) for point in group["points"]]
-        color = _COLORS[index % len(_COLORS)]
-        label = _label(group["context"])
+        color = _COLORS[style % len(_COLORS)]
         if plot["kind"] == "line":
             axis.plot(
                 x,
                 y,
                 color=color,
-                marker=_MARKERS[index % len(_MARKERS)],
+                marker=_MARKERS[style % len(_MARKERS)],
                 markersize=4,
                 linewidth=1.4,
                 label=label,
@@ -105,7 +123,7 @@ def _draw(axis: Any, plot: dict[str, Any]) -> None:  # noqa: ANN401 - Matplotlib
                 "color": ["white" if value < 0 else color for value in y],
                 "edgecolor": "#1e3a8a",
                 "linewidth": 1,
-                "hatch": _HATCHES[index % len(_HATCHES)],
+                "hatch": _HATCHES[style % len(_HATCHES)],
                 "label": label,
             }
             if plot["kind"] == "barh":

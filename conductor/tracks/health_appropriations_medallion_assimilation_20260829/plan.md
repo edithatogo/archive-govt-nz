@@ -311,14 +311,23 @@ repository validation command. External gates block only their affected task.
 
 ### 5.1 Source-family contracts first
 
-- [~] Validate full 17-column Budget-2025/Budget-2026 synthetic layouts and
+- [~] Register bounded BEFU-2026/v1 and HYEFU-2025/v1 literal Health-summary
+  contracts from retained originals, with version-specific sheets, coordinates,
+  year/type/unit context, synthetic drift tests and independent OOXML pilot
+  reconciliation. Keep all other fiscal tables and formula totals excluded.
+  [M-05, M-06, M-07, M-11, M-18; AC-05, AC-09, AC-11, AC-16]
+- [x] Validate full 17-column Budget-2025/Budget-2026 synthetic layouts and
   cross-vintage non-pooling; independently reconcile the captured 2026 pilot
   against literal source XML, retaining its original and all dispositions.
   [M-06, M-07, M-11, M-18; AC-05, AC-09, AC-16]
-- [~] Add a bounded read-only consumer for pinned individual Budget extraction
+  (`525dd5f`; PR #273 merged `d0a36f1`, seven exact-head checks;
+  two byte-identical pilot builds and independent literal-XML reconciliation)
+- [x] Add a bounded read-only consumer for pinned individual Budget extraction
   packages, validating counts, source context, identity and complete lineage
   without assuming every source belongs to the donor's fixed four profiles.
   [M-05, M-07, M-10, M-15, M-18; AC-05, AC-08, AC-13, AC-16]
+  (`07029cc`; PR #273 merged `d0a36f1`, seven exact-head checks;
+  61 focused tests, 100% critical coverage and recovered 110/110 cold mutants)
 
 - [ ] Add versioned fixtures for each approved Vote Health, Budget,
   BEFU/HYEFU, Treasury fiscal, Ministry Vote Health, Pharmac CPB, CPI, wage and
@@ -342,6 +351,13 @@ repository validation command. External gates block only their affected task.
 
 ### 5.3 Normalize analytical context
 
+- [x] Implement the bounded, exact nine-column CPIQ.SE9A quarterly source
+  profile with Decimal values, independent NA/status retention, unknown-base
+  flag, full source-row dispositions and lineage; validate independent local
+  builds without fiscal aggregation, real-value conversion or publication.
+  [M-05, M-06, M-12, M-18; AC-05, AC-10, AC-16] (PR #271, checked head
+  f4b90ea, observed merge 4ec9920; seven checks and 1,956 hosted tests passed;
+  broader context/base/population work below remains pending)
 - [ ] Promote exact CPI, wage, population, GDP and total/core Crown expense
   observations required by Gold formulas, with base/definition/vintage
   metadata. [M-05, M-06, M-12; AC-05, AC-10]
@@ -436,6 +452,11 @@ repository validation command. External gates block only their affected task.
 
 ### 8.2 Implement bounded operations
 
+- [~] Expose a compact hash-pinned standalone Budget-package verification
+  receipt through matching read-only CLI/MCP contracts. Reject missing,
+  partial or corrupt packages without creating state; retain not-evaluated
+  rights and package-only verification boundaries. [M-15, M-18; AC-13, AC-16]
+
 - [x] Expose hash-pinned read-only raw-run verification through CLI and MCP;
   reject missing, partial, corrupt and mismatched state without creating any
   output or invoking normalization. [M-15, M-16, M-18; AC-12, AC-13, AC-16]
@@ -525,6 +546,10 @@ repository validation command. External gates block only their affected task.
   retirement and Zenodo remain out of scope. [M-18, M-19; AC-16]
 
 ## Review fixes
+
+- [~] Keep disconnected source-plot segments styled by their full context and
+  disambiguate colliding display labels without merging source identities.
+  [M-09, M-18; AC-07, AC-16]
 
 - [x] Remove scheduler-dependent Hypothesis deadline flakiness from the batch
   eligibility invariant without weakening generated cases or assertions.

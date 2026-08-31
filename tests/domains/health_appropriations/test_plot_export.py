@@ -6,9 +6,11 @@ from pathlib import Path
 from typing import Any
 
 import matplotlib as mpl
+import numpy as np
 import pytest
 from jsonschema import Draft202012Validator
 from matplotlib.colors import to_rgba
+from matplotlib.lines import Line2D
 from matplotlib.patches import Rectangle
 from tests.domains.health_appropriations.test_plot_contracts import (
     budget,
@@ -207,6 +209,65 @@ def test_segment_markers_and_labels_are_not_color_only() -> None:
         line.get_linewidth() == 1.4 and line.get_markersize() == 4 for line in lines
     )
     assert lines[0].get_label() == "2024 | Cash | 6 | aaaaaaaaaaaa"
+    figure.clear()
+
+
+def test_disconnected_context_keeps_style_and_matching_legend() -> None:
+    source = tables()
+    source["historical_nominal.parquet"] = [
+        historical(2000),
+        historical(2001),
+        historical(2003),
+        historical(2004, accounting_basis="IFRS"),
+    ]
+    contract = build_plot_contracts(source)["historical_health_spending_nominal.png"]
+    # Canonical context identity is independent of dictionary insertion order.
+    contract["series"][1]["context"] = dict(
+        reversed(list(contract["series"][1]["context"].items()))
+    )
+    figure = export.figure_for_contract(contract)
+    lines = figure.axes[0].lines
+    for line, years in zip(lines, [[2000, 2001], [2003], [2004]], strict=True):
+        assert np.array_equal(line.get_xdata(), years)
+    assert [line.get_marker() for line in lines] == ["o", "o", "s"]
+    assert [line.get_color() for line in lines] == ["#2563eb", "#2563eb", "#1d4ed8"]
+    handles = figure.legends[0].legend_handles
+    for handle, style in zip(
+        handles, [("#2563eb", "o"), ("#1d4ed8", "s")], strict=True
+    ):
+        assert isinstance(handle, Line2D)
+        assert (handle.get_color(), handle.get_marker()) == style
+    figure.clear()
+
+
+@pytest.mark.parametrize(
+    "other_context",
+    [
+        {"source_object_sha256": "a" * 12 + "b" * 52},
+        {"unlabelled_source_context": "distinct"},
+    ],
+)
+def test_colliding_display_labels_do_not_merge_full_contexts(
+    other_context: dict[str, str],
+) -> None:
+    contract = build_plot_contracts(tables())["historical_health_spending_nominal.png"]
+    original = contract["series"][0]
+    contract["series"].append(
+        {
+            "context": {**original["context"], **other_context},
+            "points": original["points"],
+        }
+    )
+    figure = export.figure_for_contract(contract)
+    lines = figure.axes[0].lines
+    assert [line.get_marker() for line in lines] == ["o", "s"]
+    assert len({line.get_label() for line in lines}) == 2
+    legend = figure.legends[0]
+    assert len(legend.legend_handles) == 2
+    assert [text.get_text() for text in legend.texts] == [
+        "2024 | Cash | 6 | aaaaaaaaaaaa [context 1]",
+        "2024 | Cash | 6 | aaaaaaaaaaaa [context 2]",
+    ]
     figure.clear()
 
 

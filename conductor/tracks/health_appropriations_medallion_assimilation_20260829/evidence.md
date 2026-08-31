@@ -1,5 +1,36 @@
 # Evidence
 
+## Plot context-style correction — 2026-08-31 UTC
+
+Three red regressions exposed a lost legend key for disconnected same-context
+segments and colliding abbreviated labels. All 23 renderer tests now pass at
+100% line/branch coverage (132 statements, 30 branches), with Ruff clean.
+Renderer SHA-256: `07674afbc970aed73a662e43a8c2450560d40e587524a86c2901fba835566df5`.
+
+The initial cold-cache, two-worker mutation run selected 21 unit/protocol tests
+and excluded the two documented slow full-PNG integration tests only from
+mutation subprocesses. All 67 mutants ran without coverage-guided filtering:
+42 killed, 25 timed out, zero survived/errored/pardoned. Timeouts are not kills;
+this is incomplete mutation assurance. Report SHA-256:
+`bcf99622a4e7339017896f5896b567de3246eb8653c064690b7146aa65de8b03`.
+
+A new temporary CLI rebuild from reviewed Gold pin
+`ec68a03f597c7792da4337f2babfcb6615c2e6162a3125042c2b8ef6b7665835`
+matches all eight retained V2 files byte-for-byte. Its manifest remains
+`a04b1b8785d7a4da67ad1b83d6449592838ed0359de792368bb8f150155786d2`.
+No original, retained derivative or publication was modified. Full-harness
+and hosted outcomes remain separate from this focused/local evidence.
+
+Required native validation was run twice. The first attempt stopped on five
+new-test typing diagnostics; explicit array equality/line-handle narrowing
+fixed these, with targeted strict typing and the three regressions passing.
+The corrected attempt passed lock, Conductor, format, lint and types, then
+exited 124 at the unchanged 300-second pytest stage. It collected 1913 tests
+and showed one unidentified failure marker before timeout, without a final
+summary or coverage result. Post-test gates were not reached. Neither a full
+local pass nor an unrelated-failure diagnosis is claimed; exact-head hosted
+validation and resolution of any hosted failure remain pending.
+
 ## Donor failure conformance — 2026-08-31 UTC
 
 `4454d75` binds full compile observations to all three script hashes and adds

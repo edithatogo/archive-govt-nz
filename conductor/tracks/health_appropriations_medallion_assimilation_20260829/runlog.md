@@ -1,5 +1,106 @@
 # Run Log
 
+## Source plot context-style review fix — 2026-08-31
+
+- Isolated worktree starts at merged plot commit `b149d37`; its own locked
+  environment uses CPython 3.14.6 and uv 0.11.8, not another actor's `.venv`.
+- Three new focused regression cases fail on the original renderer: one
+  same-context year gap changes markers/colors, while two distinct contexts
+  with colliding abbreviated labels lose a legend entry. Command:
+  `uv run --locked pytest tests/domains/health_appropriations/test_plot_export.py
+  -k 'disconnected_context or colliding_display' -q --no-cov`;
+  exit 1, three failures and 20 deselected (40.62 seconds).
+- Fix keys visual styles by canonical full context, retaining physical line
+  breaks and disambiguating colliding display text with context ordinals.
+  Source objects, existing derivatives and published bytes are untouched.
+- First green run passed all 23 renderer tests (78.51 seconds). Ruff separately
+  flagged a reassigned loop variable; using an explicit display-label variable
+  resolved it without suppressions. Ruff format/check now pass.
+- Isolated renderer coverage run passed all 23 tests (78.05 seconds), with
+  100% line and branch coverage: 132 statements, 30 branches. Command used
+  `COVERAGE_CORE=ctrace PYTHON_JIT=0 uv run --locked pytest
+  tests/domains/health_appropriations/test_plot_export.py -q
+  --cov=archive_govt_nz.domains.health_appropriations.plot_export --cov-branch
+  --cov-report=term-missing --cov-report=json:coverage/plot-context-critical.json
+  --cov-fail-under=100`.
+- First mutation attempt used the documented selection excluding only
+  `preflight_and_two_reproducible_builds` and
+  `cli_preflight_render_and_redacted_failure`, with 21 selected tests,
+  `--gremlin-workers=2 --gremlin-clear-cache --gremlin-no-coverage-filter`,
+  zero allowed pardons and the unchanged timeout. It exited zero after
+  1042.05 seconds but recorded 42 kills and 25 timeouts out of 67 mutants,
+  zero survivors/errors/pardons/cache hits. This is incomplete mutation
+  evidence, not 67 kills; the plugin's combined percentage is not repeated
+  as a mutation-pass claim. Report SHA-256:
+  `bcf99622a4e7339017896f5896b567de3246eb8653c064690b7146aa65de8b03`.
+  Report and stranded coverage bytes were retained outside the checkout before
+  subsequent coverage runs. Coordinated resource isolation precedes retry.
+- A fresh CLI build consumed reviewed Gold manifest
+  `ec68a03f597c7792da4337f2babfcb6615c2e6162a3125042c2b8ef6b7665835`
+  into a new temporary directory. `diff -qr` found all eight files identical
+  to retained `raw-plots-20260831-v2`; both manifests hash to
+  `a04b1b8785d7a4da67ad1b83d6449592838ed0359de792368bb8f150155786d2`.
+  The command exited zero and retained inputs/outputs were not overwritten.
+  Matplotlib 3.11.1, Pillow 12.3.0, FreeType 2.14.3 and Agg remain unchanged.
+- The CLI launch emitted two uv interpreter-cache warnings (invalid MessagePack
+  markers), then uv recreated this isolated environment as CPython 3.14.6.
+  This is an observed runtime/cache event, not proof of the timeout cause;
+  no source or dependency-lock modification was made to work around it.
+- First native harness exited 1 at strict typing, before pytest: the new test
+  treated Matplotlib `ArrayLike` as iterable and legend `Artist | None` handles
+  as lines without narrowing (five diagnostics). Lock, Conductor (70 tracks),
+  formatting (1364 files) and lint passed. This is a test-code defect, not an
+  overload timeout; fix the assertions and rerun required validation.
+- Type repair uses NumPy array equality and explicit `Line2D` runtime narrowing
+  without casts, ignores or weakened value/style assertions. Targeted
+  basedpyright reports zero errors/warnings; Ruff passes; all three regression
+  cases pass (41.54 seconds). Production renderer bytes are unchanged.
+- Corrected native retry used the same command and limits:
+  `COVERAGE_CORE=ctrace PYTHON_JIT=0 PYTEST_XDIST_AUTO_NUM_WORKERS=4
+  ./scripts/validate.sh`. Lock, Conductor (70 tracks), formatting (1364 files),
+  lint and strict typing passed. Pytest collected 1913 tests with seed
+  `3207899423`, reached 97% plus further progress, and displayed one `F` marker
+  before the unchanged 300-second test-stage deadline ended the harness with
+  exit 124. No traceback, final test summary or coverage result was emitted;
+  the failure identity is unknown (the lastfailed cache is empty), not assumed
+  unrelated. Post-test gates were not reached. This is NOT a full-suite pass.
+- Only the two generated timestamp-only legislation receipt diffs were restored
+  in this owned worktree. Process inspection found no residual owned pytest
+  processes. No further heavy local retry is attempted under the observed host
+  contention; the scoped PR will expose these limits and require exact-head
+  hosted validation before any merge decision.
+- Functional change and paired evidence were committed/pushed as `0c78b4c`,
+  PR #274. GitHub reported documentation conflicts with main, so checks did
+  not start. Before integration, this agent observed its worktree, registration
+  and local branch disappear; it performed no removal. The pushed commit and
+  external validation artifacts remained available, with no uncommitted work
+  outstanding. A standalone `--no-hardlinks` temporary clone was recovered from
+  the repository without modifying its original checkout and then pointed to
+  GitHub. It is not registered in the original worktree list.
+- Integrated exact main `d0a36f1099fce30427927ebda4f735c3c9617a5a` into the
+  recovered feature branch. Four documentation append conflicts retain both
+  branches' records; main's complete evidence ledger remains a byte prefix,
+  followed by this correction's observations. Renderer SHA-256 remains
+  `07674afbc970aed73a662e43a8c2450560d40e587524a86c2901fba835566df5`.
+  No original data or publication changed; no PR merge was performed.
+- Post-integration checks pass: 23 renderer tests (54.49 seconds), Ruff
+  format/lint, targeted strict typing and Conductor (70 tracks). The complete
+  incoming ledger prefix and original legacy prefix both verify. No full or
+  mutation rerun was performed after recovery; their earlier limitations are
+  not retroactively converted into passes. Hosted checks remain pending.
+## Budget hosted delivery and validation recovery — 2026-08-31 UTC
+
+- PR #273 observed merged at 10:59:47Z as `d0a36f1`, seven exact-head checks
+  successful; hosted Ubuntu passes 1,972 tests, eight warnings, native gates
+  and 112-component SBOM. Reader source/tests are unchanged at merge.
+- An active worktree/interpreter disappeared during the subsequent local
+  mutation run: 27 kills, 83 errors, exit 1. Its report is preserved; no cleanup
+  was performed by this task and no implementation was lost from pushed Git.
+- Recovered into an independent no-hardlinks clone outside the shared worktree
+  registry. Fresh cold/unfiltered mutation passes 110/110 kills, no survivors,
+  timeouts, errors, pardons or cache hits. Detailed hashes and boundaries are
+  in `raw-budget-successors.md`; no originals/publications changed.
+
 ## Budget successor consumer — 2026-08-31 UTC
 
 - Budget 2026 remains a separate immutable source vintage. Two local builds
@@ -907,3 +1008,18 @@ its change set.
 - Timestamp-only unrelated evidence churn was restored. No originals or
   published artifacts were modified. Live GitHub readback still reports the
   donor repository as unarchived; retirement remains outside this track.
+
+## 2026-08-31 — Standalone Budget receipt operations
+
+- Added matching pinned read-only CLI/MCP receipts and a strict shared schema.
+  Failures retain structured receipts while redacting source/parser diagnostics.
+- Fifty-two focused tests passed at 100% helper line/branch coverage; formatting,
+  lint, typing, 41 schemas/31 samples and 70-track Conductor validation passed.
+- Required native gate emitted 2,030 passed/two timing failures at 96.81% overall
+  coverage, then exited 124. Both unchanged failed tests passed in isolation.
+  This is not a complete local gate pass; hosted assurance remains separate.
+- Live retained Budget-2026 package verified 185 facts, 3,145 lineage rows and
+  all 6,451 dispositions. No original or published byte was changed.
+- Checkpoint/recovery into an independent clone preserved work during external
+  worktree removals. The precise receipt and browser blocker are documented in
+  [Budget operations](./budget-operations.md).
