@@ -149,6 +149,7 @@ line-ending = "lf"
 "tools/mutation_adapters.py" = ["S603", "S607"]
 "tools/mutation_source_sets.py" = ["S603"]
 "tools/mutation_legislation_accounting.py" = ["S603"]
+"tools/mutation_legislation_historical_coverage.py" = ["S603"]
 "tools/mutation_gazette.py" = ["S603", "S607"]
 "tools/mutation_medallion.py" = ["S603", "S607", "E501"]
 "tools/reconcile_donor_issues.py" = ["S603", "S607", "E501"]

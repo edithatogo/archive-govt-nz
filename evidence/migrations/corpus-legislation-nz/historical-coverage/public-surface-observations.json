@@ -1,0 +1,185 @@
+{
+  "aggregate_conclusion": "No observed public card or Zenodo metadata equates 33,693 search-derived candidates with acquired or published records. Public counts are surface-specific and remain distinct.",
+  "method": "Anonymous public HTTP GET with revision-pinned content reads; hashes are SHA-256 of exact response bytes observed.",
+  "observed_at": "2026-09-01T12:31:29Z",
+  "schema_version": "archive-govt-nz.prompt14-public-surface-observations/v1",
+  "semantic_boundary": {
+    "candidate_count_proves_acquisition": false,
+    "candidate_count_proves_publication": false,
+    "candidate_ids": 33693,
+    "missing_publication_proves_absence": false
+  },
+  "surfaces": [
+    {
+      "api_response_sha256": "0da01bb6df89c519fab63c619abaef68adc19900a9d433e7c2335f32c38630cf",
+      "api_url": "https://huggingface.co/api/datasets/edithatogo/corpus-legislation-nz",
+      "contents": {
+        "README.md": {
+          "http_status": 200,
+          "sha256": "ebeeffe15050a2cc4b85c9eb88e7f7df6c0e7fd64f5246279e427f8ecf824e20",
+          "size_bytes": 2874,
+          "url": "https://huggingface.co/datasets/edithatogo/corpus-legislation-nz/resolve/1efa35e72c378068cfb112d060bd0502497f61b1/README.md"
+        },
+        "manifests/coverage_report.json": {
+          "http_status": 401,
+          "sha256": null,
+          "size_bytes": null,
+          "url": "https://huggingface.co/datasets/edithatogo/corpus-legislation-nz/resolve/1efa35e72c378068cfb112d060bd0502497f61b1/manifests/coverage_report.json"
+        },
+        "manifests/latest_manifest.json": {
+          "http_status": 401,
+          "sha256": null,
+          "size_bytes": null,
+          "url": "https://huggingface.co/datasets/edithatogo/corpus-legislation-nz/resolve/1efa35e72c378068cfb112d060bd0502497f61b1/manifests/latest_manifest.json"
+        }
+      },
+      "disabled": false,
+      "file_inventory": {
+        "parquet_files": 7,
+        "raw_xml_files": 95,
+        "records_jsonl_files": 1,
+        "total_files": 112
+      },
+      "http_status": 200,
+      "last_modified": "2026-07-29T01:23:18.000Z",
+      "observed_revision": "1efa35e72c378068cfb112d060bd0502497f61b1",
+      "platform": "huggingface",
+      "public": true,
+      "published_row_count": null,
+      "scope_note": "File presence is not a candidate, work, expression, manifestation, or row count. Published row count remains null unless a public primary manifest reports it.",
+      "surface_id": "huggingface:edithatogo/corpus-legislation-nz"
+    },
+    {
+      "api_response_sha256": "903aff9fb411ac608d2c8d27122f0d692e4cdefbf6dbfa59de3636e6dbe6eeb7",
+      "api_url": "https://huggingface.co/api/datasets/edithatogo/corpus-legislation-nz-historical",
+      "contents": {
+        "README.md": {
+          "http_status": 200,
+          "sha256": "e3d8da7c2240f87d84363803344054269d077fb4b9fe96ae3261208be387789e",
+          "size_bytes": 4040,
+          "url": "https://huggingface.co/datasets/edithatogo/corpus-legislation-nz-historical/resolve/ea9e66fb89c3230fc478f7c6f05f1a82f4fa1174/README.md"
+        },
+        "manifests/coverage_report.json": {
+          "http_status": 200,
+          "reported_record_count": 6609,
+          "sha256": "8b5674037eea09e7a513038f7c2d9ba89c47351049d4dd58d7bf8e62b0fdf856",
+          "size_bytes": 3054,
+          "url": "https://huggingface.co/datasets/edithatogo/corpus-legislation-nz-historical/resolve/ea9e66fb89c3230fc478f7c6f05f1a82f4fa1174/manifests/coverage_report.json"
+        },
+        "manifests/latest_manifest.json": {
+          "http_status": 200,
+          "reported_record_count": 6609,
+          "sha256": "279f5eeb384a2f68acace4d12699477ffb216a574d9a0800a1028a226736c0b9",
+          "size_bytes": 1640611,
+          "url": "https://huggingface.co/datasets/edithatogo/corpus-legislation-nz-historical/resolve/ea9e66fb89c3230fc478f7c6f05f1a82f4fa1174/manifests/latest_manifest.json"
+        }
+      },
+      "disabled": false,
+      "file_inventory": {
+        "parquet_files": 164,
+        "raw_xml_files": 6609,
+        "records_jsonl_files": 1,
+        "total_files": 6788
+      },
+      "http_status": 200,
+      "last_modified": "2026-07-29T01:23:23.000Z",
+      "observed_revision": "ea9e66fb89c3230fc478f7c6f05f1a82f4fa1174",
+      "platform": "huggingface",
+      "public": true,
+      "published_row_count": 6609,
+      "published_row_count_evidence": [
+        "https://huggingface.co/datasets/edithatogo/corpus-legislation-nz-historical/resolve/ea9e66fb89c3230fc478f7c6f05f1a82f4fa1174/manifests/coverage_report.json",
+        "https://huggingface.co/datasets/edithatogo/corpus-legislation-nz-historical/resolve/ea9e66fb89c3230fc478f7c6f05f1a82f4fa1174/manifests/latest_manifest.json"
+      ],
+      "scope_note": "File presence is not a candidate, work, expression, manifestation, or row count. Published row count remains null unless a public primary manifest reports it.",
+      "surface_id": "huggingface:edithatogo/corpus-legislation-nz-historical"
+    },
+    {
+      "api_response_sha256": "4c033964ce40c6d40287a19d93678cc94389b133f62f74415a5c0d53097e79d8",
+      "api_url": "https://huggingface.co/api/datasets/edithatogo/nz-legislation-corpus",
+      "contents": {
+        "README.md": {
+          "http_status": 200,
+          "sha256": "1cd10124c024499fd27b9ec331ba8b653cd371bc7f9fdbdf4397a0fbe035be89",
+          "size_bytes": 1881,
+          "url": "https://huggingface.co/datasets/edithatogo/nz-legislation-corpus/resolve/1dea0c678b419a9c16fe7e363488f91d293391d3/README.md"
+        },
+        "manifests/coverage_report.json": {
+          "http_status": 401,
+          "sha256": null,
+          "size_bytes": null,
+          "url": "https://huggingface.co/datasets/edithatogo/nz-legislation-corpus/resolve/1dea0c678b419a9c16fe7e363488f91d293391d3/manifests/coverage_report.json"
+        },
+        "manifests/latest_manifest.json": {
+          "http_status": 401,
+          "sha256": null,
+          "size_bytes": null,
+          "url": "https://huggingface.co/datasets/edithatogo/nz-legislation-corpus/resolve/1dea0c678b419a9c16fe7e363488f91d293391d3/manifests/latest_manifest.json"
+        }
+      },
+      "disabled": false,
+      "file_inventory": {
+        "parquet_files": 1,
+        "raw_xml_files": 9,
+        "records_jsonl_files": 1,
+        "total_files": 20
+      },
+      "http_status": 200,
+      "last_modified": "2026-07-29T01:25:57.000Z",
+      "observed_revision": "1dea0c678b419a9c16fe7e363488f91d293391d3",
+      "platform": "huggingface",
+      "public": true,
+      "published_row_count": null,
+      "scope_note": "File presence is not a candidate, work, expression, manifestation, or row count. Published row count remains null unless a public primary manifest reports it.",
+      "surface_id": "huggingface:edithatogo/nz-legislation-corpus"
+    },
+    {
+      "access_right": "open",
+      "api_response_sha256": "ea33c14be57ab9cca072e25b85930ec9e54cf8d0f4d35a17ab15f298b1a0097a",
+      "api_url": "https://zenodo.org/api/records/20592540",
+      "concept_doi": "10.5281/zenodo.20592539",
+      "doi": "10.5281/zenodo.20592540",
+      "file_inventory": {
+        "files": [
+          {
+            "checksum": "md5:a503b9a61904a836d2b45419347ae823",
+            "key": "nz-legislation-corpus-2026.SHA256SUMS.txt",
+            "size_bytes": 208
+          },
+          {
+            "checksum": "md5:00dee66bc1d66d52f1b31284ed11f516",
+            "key": "nz-legislation-corpus-2026.tar.zst",
+            "size_bytes": 208721
+          },
+          {
+            "checksum": "md5:6139f4539661d50aaa47a03707f2dea0",
+            "key": "nz-legislation-corpus-2026.manifest.json",
+            "size_bytes": 3104
+          }
+        ],
+        "total_files": 3
+      },
+      "http_status": 200,
+      "manifest": {
+        "archive_sha256": "1b7d5b2ab27bea138eb947f5971e993de7cf0e5b6f730bb905bbd9aa033be060",
+        "http_status": 200,
+        "manifest_sha256": "c1c896bcdf81496a4fa74a9925313d07586392dd27e7d5b7fe1069e518aa0311",
+        "payload_file_count": 10,
+        "raw_xml_files": 6,
+        "reported_record_count": 6,
+        "sha256": "ea1212f47b0848971bdf41d87ee9236221c7130a0d55924bbf368b6075adf3a9",
+        "size_bytes": 3104,
+        "url": "https://zenodo.org/api/records/20592540/files/nz-legislation-corpus-2026.manifest.json/content"
+      },
+      "platform": "zenodo",
+      "published_row_count": 6,
+      "published_row_count_evidence": [
+        "https://zenodo.org/api/records/20592540/files/nz-legislation-corpus-2026.manifest.json/content"
+      ],
+      "record_id": "20592540",
+      "scope_note": "The record contains a six-record snapshot. It does not establish acquisition or publication of the 33,693 candidate IDs.",
+      "surface_id": "zenodo:20592540",
+      "updated": "2026-06-10T09:09:41.493552+00:00"
+    }
+  ]
+}
