@@ -143,18 +143,6 @@
     {
       "historical_or_imported": false,
       "occurrences": 1,
-      "path": "conductor/tracks/legislation_historical_coverage_20260901/metadata.json",
-      "sha256": "00be4ab03d525d648838a8f05fec887925b7e6906e1ec1b71af78b8833019a60"
-    },
-    {
-      "historical_or_imported": false,
-      "occurrences": 1,
-      "path": "conductor/tracks/legislation_historical_coverage_20260901/requirements.md",
-      "sha256": "85cdc770c6c2e519760e460472c786fa51b9e62840849b5543df69bfb57188b5"
-    },
-    {
-      "historical_or_imported": false,
-      "occurrences": 1,
       "path": "conductor/tracks/legislation_one_batch_reconciliation_20260820/runlog.md",
       "sha256": "aca40bc8bf91fe54eb1bb5ec915736314fd2d84d9d84328e5cda54ad0ac39be1"
     },
@@ -162,7 +150,7 @@
       "historical_or_imported": false,
       "occurrences": 1,
       "path": "conductor/tracks.md",
-      "sha256": "0c05f4fa205ffef68c0d344fc63aea64ae265942acbca2f5548b1e99262b8930"
+      "sha256": "312c90f8ec2fb8e8dd08c21a2a7d4b82a7dc61ec6ed730ed19a164822067cf36"
     },
     {
       "historical_or_imported": false,
@@ -229,36 +217,6 @@
       "occurrences": 8,
       "path": "evidence/migrations/corpus-legislation-nz/dec-hist-001-finding.md",
       "sha256": "35a7ea3da08c9cbbf2cb33bff1922d922f5cea5f17af3aea5c37cbe82078ceb0"
-    },
-    {
-      "historical_or_imported": false,
-      "occurrences": 1,
-      "path": "evidence/migrations/corpus-legislation-nz/historical-coverage/analyzer-claim-inputs.json",
-      "sha256": "fb4de45bdebe6be156fa57b3079eecaf7fcffc41e6fa6ae267e98bb02b17b391"
-    },
-    {
-      "historical_or_imported": true,
-      "occurrences": 79,
-      "path": "evidence/migrations/corpus-legislation-nz/historical-coverage/claim-correction-manifest.json",
-      "sha256": "2f340ec86ebd065f3792beefecb849814d5eeb0f33e8ac36a459ed52f6bd6d12"
-    },
-    {
-      "historical_or_imported": true,
-      "occurrences": 2,
-      "path": "evidence/migrations/corpus-legislation-nz/historical-coverage/historical-coverage-report.json",
-      "sha256": "64d564e64501968c97cfb71083707ab1d61effb37c14daef680e15d1f4570671"
-    },
-    {
-      "historical_or_imported": true,
-      "occurrences": 2,
-      "path": "evidence/migrations/corpus-legislation-nz/historical-coverage/historical-coverage-report.md",
-      "sha256": "584954047f39a65256b8080297c58964193a14d07c0a4f425f966e37fc0a6f6b"
-    },
-    {
-      "historical_or_imported": false,
-      "occurrences": 3,
-      "path": "evidence/migrations/corpus-legislation-nz/historical-coverage/public-surface-observations.json",
-      "sha256": "e9fa8c2a1e27f7c8b7d791012662a1134b004cfb4912388715bd9005a938b943"
     },
     {
       "historical_or_imported": false,

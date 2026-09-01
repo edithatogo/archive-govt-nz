@@ -1,6 +1,6 @@
 """Build fixity-bound historical legislation coverage evidence."""
 
-# ruff: noqa: C901, EM101, EM102, ISC004, PLR0912, TRY003, TRY004
+# ruff: noqa: C901, EM101, EM102, ISC004, PLR0912, PLR0915, TRY003, TRY004
 
 from __future__ import annotations
 
@@ -8,11 +8,14 @@ import argparse
 import hashlib
 import json
 import re
+from datetime import datetime
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlparse
 
 EXPECTED_BATCHES = 68
 EXPECTED_CANDIDATES = 33_693
+HTTP_OK = 200
 EXPECTED_CANDIDATE_SHA256 = (
     "6f70fa9b596be2baa77bd885df1857e9b89c04013361c9ad80af722b0cc8493b"
 )
@@ -28,6 +31,13 @@ def _load_object(path: Path) -> dict[str, Any]:
     value = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(value, dict):
         raise ValueError(f"expected JSON object: {path}")
+    return value
+
+
+def _load_array(path: Path) -> list[Any]:
+    value = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(value, list):
+        raise ValueError(f"expected JSON array: {path}")
     return value
 
 
@@ -123,6 +133,7 @@ def audit_target_state(target_evidence_root: Path) -> dict[str, Any]:
         base / "final-state-merge/execution-02/final-state-merge-receipt.json"
     )
     readback_path = base / "final-state-merge/execution-02/independent-readback.json"
+    inventory_path = base / "final-state-merge/execution-02/package-inventory.json"
     receipt = _load_object(receipt_path)
     readback = _load_object(readback_path)
     if receipt.get("status") != "passed" or readback.get("status") != "passed":
@@ -144,12 +155,38 @@ def audit_target_state(target_evidence_root: Path) -> dict[str, Any]:
         or sum(int(parent["records"]) for parent in parents) != output["records"]
     ):
         raise ValueError("canonical parent record accounting mismatch")
+    inventory_document = _load_object(inventory_path)
+    inventory = inventory_document.get("files")
+    if not isinstance(inventory, list):
+        raise ValueError("package inventory files missing")
+    cas_entries = [
+        entry
+        for entry in inventory
+        if isinstance(entry, dict)
+        and isinstance(entry.get("path_parts"), list)
+        and entry["path_parts"][:2] == ["cas", "sha256"]
+    ]
+    if len(cas_entries) != output["objects"]:
+        raise ValueError("package inventory CAS count mismatch")
+    for entry in cas_entries:
+        parts = entry["path_parts"]
+        digest = entry.get("sha256")
+        if (
+            not isinstance(digest, str)
+            or re.fullmatch(r"[0-9a-f]{64}", digest) is None
+            or parts[-1] != digest
+            or parts[-2] != digest[:2]
+        ):
+            raise ValueError("malformed package inventory CAS identity")
     return {
         "works": output["work_ids"],
         "state_records": output["records"],
         "cas_objects": output["objects"],
         "receipt_sha256": _sha256(receipt_path.read_bytes()),
         "readback_sha256": _sha256(readback_path.read_bytes()),
+        "package_inventory_sha256": _sha256(inventory_path.read_bytes()),
+        "package_inventory_files": len(inventory),
+        "package_inventory_root_sha256": inventory_document.get("inventory_sha256"),
         "manifest_sha256": output.get("manifest_sha256"),
         "inventory_sha256": output.get("inventory_sha256"),
     }
@@ -159,6 +196,13 @@ def find_claim_inputs(claim_root: Path) -> list[dict[str, Any]]:
     """Enumerate claim-bearing inputs for later correction without editing them."""
     rows: list[dict[str, Any]] = []
     for path in sorted(item for item in claim_root.rglob("*") if item.is_file()):
+        relative_path = path.relative_to(claim_root)
+        if relative_path.is_relative_to(
+            Path("evidence/migrations/corpus-legislation-nz/historical-coverage")
+        ) or relative_path.is_relative_to(
+            Path("conductor/tracks/legislation_historical_coverage_20260901")
+        ):
+            continue
         if {".git", ".venv", "build"}.intersection(
             path.parts
         ) or path.suffix.lower() not in {
@@ -174,7 +218,7 @@ def find_claim_inputs(claim_root: Path) -> list[dict[str, Any]]:
             continue
         matches = list(_CLAIM_RE.finditer(text))
         if matches:
-            relative = str(path.relative_to(claim_root))
+            relative = str(relative_path)
             rows.append(
                 {
                     "path": relative,
@@ -186,6 +230,92 @@ def find_claim_inputs(claim_root: Path) -> list[dict[str, Any]]:
                 }
             )
     return rows
+
+
+def validate_claim_correction_manifest(
+    manifest_path: Path, analyzer_inputs_path: Path, claim_root: Path
+) -> dict[str, Any]:
+    """Bind every correction entry to scanned inputs and exact current lines."""
+    manifest = _load_object(manifest_path)
+    analyzer = _load_object(analyzer_inputs_path)
+    if manifest.get("schema_version") != (
+        "archive-govt-nz.prompt14-claim-correction-manifest/v1"
+    ):
+        raise ValueError("unexpected claim correction manifest schema")
+    inputs_digest = _sha256(analyzer_inputs_path.read_bytes())
+    if manifest.get("analyzer_claim_inputs_sha256") != inputs_digest:
+        raise ValueError("claim correction analyzer input hash mismatch")
+    inputs = analyzer.get("inputs")
+    claims = manifest.get("claims")
+    if not isinstance(inputs, list) or not isinstance(claims, list):
+        raise ValueError("claim correction inputs or claims missing")
+    indexed: dict[str, dict[str, Any]] = {}
+    for item in inputs:
+        if not isinstance(item, dict) or not isinstance(item.get("path"), str):
+            raise ValueError("malformed analyzer claim input")
+        if item["path"] in indexed:
+            raise ValueError("duplicate analyzer claim input")
+        indexed[item["path"]] = item
+    claim_ids: set[str] = set()
+    claim_locations: set[tuple[str, int]] = set()
+    observed: dict[str, int] = dict.fromkeys(indexed, 0)
+    trusted_root = claim_root.resolve()
+    for claim in claims:
+        if not isinstance(claim, dict):
+            raise ValueError("malformed claim correction entry")
+        claim_id = claim.get("claim_id")
+        relative = claim.get("file")
+        line_number = claim.get("line")
+        if not isinstance(claim_id, str) or claim_id in claim_ids:
+            raise ValueError("duplicate or malformed claim correction id")
+        claim_ids.add(claim_id)
+        if not isinstance(relative, str) or relative not in indexed:
+            raise ValueError("claim correction file absent from analyzer inputs")
+        if isinstance(line_number, bool) or not isinstance(line_number, int):
+            raise ValueError("claim correction line is malformed")
+        location = (relative, line_number)
+        if location in claim_locations:
+            raise ValueError("duplicate claim correction source line")
+        claim_locations.add(location)
+        source = claim_root / relative
+        if source.is_symlink() or not source.resolve().is_relative_to(trusted_root):
+            raise ValueError("claim correction source escapes trusted root")
+        raw = source.read_bytes()
+        expected_sha256 = indexed[relative].get("sha256")
+        if (
+            _sha256(raw) != expected_sha256
+            or claim.get("source_sha256") != expected_sha256
+        ):
+            raise ValueError("claim correction source hash mismatch")
+        try:
+            lines = raw.decode("utf-8").splitlines()
+        except UnicodeDecodeError as exc:
+            raise ValueError("claim correction source is not UTF-8") from exc
+        if line_number < 1 or line_number > len(lines):
+            raise ValueError("claim correction line is out of range")
+        text = lines[line_number - 1]
+        if (
+            claim.get("text") != text.strip()
+            or claim.get("source_line_sha256") != _sha256(text.encode("utf-8"))
+            or _CLAIM_RE.search(text) is None
+        ):
+            raise ValueError("claim correction text does not match source line")
+        observed[relative] += len(_CLAIM_RE.findall(text))
+    if any(
+        observed[path] > int(item.get("occurrences", -1))
+        for path, item in indexed.items()
+    ):
+        raise ValueError("claim correction occurrence coverage mismatch")
+    scan = manifest.get("scan_contract")
+    if not isinstance(scan, dict) or scan.get("occurrence_count") != len(claims):
+        raise ValueError("claim correction scan count mismatch")
+    return {
+        "status": "passed",
+        "claims_verified": len(claims),
+        "source_files_verified": len(indexed),
+        "analyzer_claim_inputs_sha256": inputs_digest,
+        "manifest_sha256": _sha256(manifest_path.read_bytes()),
+    }
 
 
 def audit_public_observations(claim_root: Path) -> dict[str, Any]:
@@ -200,6 +330,17 @@ def audit_public_observations(claim_root: Path) -> dict[str, Any]:
         "archive-govt-nz.prompt14-public-surface-observations/v1"
     ):
         raise ValueError("unexpected public observation schema")
+    observed_at = document.get("observed_at")
+    if not isinstance(observed_at, str):
+        raise ValueError("public observation timestamp missing")
+    try:
+        parsed_observed_at = datetime.fromisoformat(observed_at)
+    except ValueError as exc:
+        raise ValueError("invalid public observation timestamp") from exc
+    if parsed_observed_at.tzinfo is None:
+        raise ValueError("public observation timestamp must include a timezone")
+    if not isinstance(document.get("method"), str) or not document["method"].strip():
+        raise ValueError("public observation method missing")
     surfaces = document.get("surfaces")
     if not isinstance(surfaces, list) or not surfaces:
         raise ValueError("public observation surfaces missing")
@@ -213,6 +354,16 @@ def audit_public_observations(claim_root: Path) -> dict[str, Any]:
         if identifier in identifiers:
             raise ValueError("duplicate public observation surface")
         identifiers.add(identifier)
+        platform = surface.get("platform")
+        api_url = surface.get("api_url")
+        if platform not in {"huggingface", "zenodo"}:
+            raise ValueError("unsupported public observation platform")
+        if (
+            not isinstance(api_url, str)
+            or urlparse(api_url).scheme != "https"
+            or surface.get("http_status") != HTTP_OK
+        ):
+            raise ValueError("public observation identity or status invalid")
         digest = surface.get("api_response_sha256")
         if not isinstance(digest, str) or re.fullmatch(r"[0-9a-f]{64}", digest) is None:
             raise ValueError("invalid public observation response hash")
@@ -227,6 +378,58 @@ def audit_public_observations(claim_root: Path) -> dict[str, Any]:
         files = inventory.get("total_files")
         if isinstance(files, bool) or not isinstance(files, int) or files < 0:
             raise ValueError("invalid public file count")
+        if platform == "huggingface":
+            prefix = "https://huggingface.co/api/datasets/"
+            repository = identifier.removeprefix("huggingface:")
+            revision = surface.get("observed_revision")
+            if (
+                not identifier.startswith("huggingface:")
+                or not repository
+                or api_url != prefix + repository
+                or surface.get("public") is not True
+                or surface.get("disabled") is not False
+                or not isinstance(revision, str)
+                or re.fullmatch(r"[0-9a-f]{40}", revision) is None
+            ):
+                raise ValueError("invalid Hugging Face observation identity")
+            classified = 0
+            for key in ("parquet_files", "raw_xml_files", "records_jsonl_files"):
+                count = inventory.get(key)
+                if isinstance(count, bool) or not isinstance(count, int) or count < 0:
+                    raise ValueError("invalid Hugging Face file inventory")
+                classified += count
+            if classified > files:
+                raise ValueError("Hugging Face file inventory exceeds total")
+        else:
+            record_id = surface.get("record_id")
+            listed = inventory.get("files")
+            if (
+                not isinstance(record_id, str)
+                or identifier != f"zenodo:{record_id}"
+                or api_url != f"https://zenodo.org/api/records/{record_id}"
+                or surface.get("access_right") != "open"
+                or not isinstance(listed, list)
+                or len(listed) != files
+            ):
+                raise ValueError("invalid Zenodo observation identity or inventory")
+            for item in listed:
+                if (
+                    not isinstance(item, dict)
+                    or not isinstance(item.get("key"), str)
+                    or re.fullmatch(r"md5:[0-9a-f]{32}", str(item.get("checksum")))
+                    is None
+                    or isinstance(item.get("size_bytes"), bool)
+                    or not isinstance(item.get("size_bytes"), int)
+                    or item["size_bytes"] < 0
+                ):
+                    raise ValueError("invalid Zenodo file inventory item")
+            manifest = surface.get("manifest")
+            if (
+                not isinstance(manifest, dict)
+                or manifest.get("http_status") != HTTP_OK
+                or manifest.get("reported_record_count") != rows
+            ):
+                raise ValueError("invalid Zenodo manifest accounting")
     return {
         "receipt_sha256": _sha256(path.read_bytes()),
         "surfaces": surfaces,
@@ -254,14 +457,30 @@ def build_report(
             if isinstance(count, int) and not isinstance(count, bool):
                 path_parts = entry.get("path_parts")
                 content = entry.get("content")
-                if isinstance(path_parts, list) and isinstance(content, dict):
+                if (
+                    isinstance(path_parts, list)
+                    and path_parts
+                    and all(
+                        isinstance(part, str)
+                        and part not in {"", ".", ".."}
+                        and Path(part).name == part
+                        for part in path_parts
+                    )
+                    and isinstance(content, dict)
+                ):
                     seed_path = claim_root.joinpath(*path_parts)
                     expected = content.get("sha256")
-                    seed_raw = seed_path.read_bytes() if seed_path.is_file() else b""
+                    trusted_root = claim_root.resolve()
+                    seed_is_trusted = (
+                        not seed_path.is_symlink()
+                        and seed_path.is_file()
+                        and seed_path.resolve().is_relative_to(trusted_root)
+                    )
+                    seed_raw = seed_path.read_bytes() if seed_is_trusted else b""
                     seed_ids = seed_raw.decode("ascii").splitlines() if seed_raw else []
                     if (
                         entry.get("seed_id") == "historical-work-ids-0001"
-                        and seed_path.is_file()
+                        and seed_is_trusted
                         and _sha256(seed_raw) == expected
                         and content.get("line_count") == count == len(seed_ids)
                         and content.get("unique") is True
@@ -328,12 +547,12 @@ def build_report(
         "reconciliation": {
             "canonical_state_candidate_overlap": None,
             "canonical_state_outside_candidate_inventory": None,
-            "candidate_disposition_unknown": (
+            "candidate_ids_outside_governed_subset": (
                 candidates["candidate_ids"] - governed_reviewed
                 if governed_reviewed is not None and reviewed_is_candidate_subset
                 else None
             ),
-            "candidate_disposition_unknown_basis": (
+            "candidate_ids_outside_governed_subset_basis": (
                 "Only the governed 500-ID subset is bound to acquired donor state; "
                 "the remaining candidates have no campaign disposition evidence."
             ),

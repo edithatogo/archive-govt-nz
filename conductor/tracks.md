@@ -263,3 +263,6 @@ implementation has occurred under these tracks.
 
 - [x] **Track: Legislation harvest accounting and receipt semantics (Prompt 12)**
   *Link: [./tracks/legislation_harvest_accounting_20260901/index.md](./tracks/legislation_harvest_accounting_20260901/index.md)*
+
+- [~] **Track: Historical coverage and 33,693-candidate reconciliation (Prompt 14)**
+  *Link: [./tracks/legislation_historical_coverage_20260901/index.md](./tracks/legislation_historical_coverage_20260901/index.md)*
