@@ -1,0 +1,244 @@
+{
+  "schema_version": "archive-govt-nz.legislation-github-release-correction/v1",
+  "correction_id": "legislation-cutover-v1.0.0-cycle-1-recovery-run",
+  "issued_at": "2026-09-02T00:00:00Z",
+  "repository": "edithatogo/archive-govt-nz",
+  "release": {
+    "id": 375146205,
+    "tag": "legislation-cutover-v1.0.0",
+    "name": "Legislation consolidation cutover v1.0.0",
+    "url": "https://github.com/edithatogo/archive-govt-nz/releases/tag/legislation-cutover-v1.0.0",
+    "published_at": "2026-08-23T07:41:01Z",
+    "draft": false,
+    "prerelease": false,
+    "is_immutable": false,
+    "tag_commit": "949f6f6abed0cfb668fc5f163129f11e54f335a3",
+    "snapshot_path": "evidence/live-release.json",
+    "body_sha256": "812b5d997a193e37abf21fcf22df7a8ec872efa8407eb29a4f70501e7fb540c6",
+    "pre_readback": {
+      "retrieved_at": "2026-09-01T16:27:02Z",
+      "etag": "W/\"099720399f4fb72f4fe3af88937d831ee0ecf15657f54df60aac43acd8b47cd9\"",
+      "raw_response_sha256": "ec5769a274441890950fff2c7137b8c11ebe68774671380818d8b18ddbd0587f"
+    },
+    "asset_count": 0,
+    "assets": [],
+    "normalized_snapshot_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "original_body": "Public original release body.\n"
+  },
+  "correction": {
+    "field": "cycle_1.recovery_run_id",
+    "incorrect_value": 32626113799,
+    "correct_value": 32625612739,
+    "unchanged_cycle_2_recovery_run_id": 32626113799
+  },
+  "authority": {
+    "path": "evidence/migrations/corpus-legislation-nz/shadow-operation-cutover-attestation.json",
+    "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "schema_version": "archive-govt-nz.shadow-operation-cutover-attestation/v1",
+    "attested_at": "2026-08-23T07:40:30Z"
+  },
+  "addendum": {
+    "local_document_path": "docs/migrations/corpus-legislation-nz/releases/legislation-cutover-v1.0.0-addendum.md",
+    "local_document_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "rendered_remote_addendum_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+  },
+  "external_action": {
+    "status": "prepared_not_applied"
+  },
+  "limitations": [
+    "No remote mutation occurred."
+  ],
+  "target_baseline_commit": "740389b7420ea7ba7382d40a23ad3e23ba2c680a",
+  "hosted_evidence": {
+    "verified_at": "2026-09-02T00:00:00Z",
+    "normalized_sha256": "0ec8c03f295bc866039da9a82500f1ca8e27d760d524e57302cad141f6c68d70",
+    "runs": [
+      {
+        "run_id": 32625516235,
+        "url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/32625516235",
+        "event": "workflow_dispatch",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "cd338bbce9e0d5d7b033377ac9c3794acb8b93d1",
+        "created_at": "2026-08-23T07:25:18Z",
+        "updated_at": "2026-08-23T07:25:41Z",
+        "jobs": [
+          {
+            "id": 97160157379,
+            "name": "harvest-legislation",
+            "status": "completed",
+            "conclusion": "success",
+            "started_at": "2026-08-23T07:25:21Z",
+            "completed_at": "2026-08-23T07:25:40Z"
+          }
+        ],
+        "artifacts": [
+          {
+            "id": 9489568248,
+            "name": "legislation-state-32625516235",
+            "size_in_bytes": 4958,
+            "expired": false,
+            "created_at": "2026-08-23T07:25:37Z",
+            "expires_at": "2026-11-21T07:25:19Z"
+          }
+        ],
+        "receipt_sha256": "8e585267b113d809cdfc76f85af949838d9693c77fdae1f965aa8c1242358cd0"
+      },
+      {
+        "run_id": 32625566353,
+        "url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/32625566353",
+        "event": "workflow_dispatch",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "cd338bbce9e0d5d7b033377ac9c3794acb8b93d1",
+        "created_at": "2026-08-23T07:26:27Z",
+        "updated_at": "2026-08-23T07:26:45Z",
+        "jobs": [
+          {
+            "id": 97160279865,
+            "name": "reconcile",
+            "status": "completed",
+            "conclusion": "success",
+            "started_at": "2026-08-23T07:26:30Z",
+            "completed_at": "2026-08-23T07:26:44Z"
+          }
+        ],
+        "artifacts": [
+          {
+            "id": 9489580978,
+            "name": "legislation-reconciliation-32625566353",
+            "size_in_bytes": 432,
+            "expired": false,
+            "created_at": "2026-08-23T07:26:42Z",
+            "expires_at": "2026-11-21T07:26:28Z"
+          }
+        ],
+        "receipt_sha256": "3c6b03a1bc7279d064e195c701ec2a5a45cdb32069f9352301f48958cb19fd8e"
+      },
+      {
+        "run_id": 32625612739,
+        "url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/32625612739",
+        "event": "workflow_dispatch",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "cd338bbce9e0d5d7b033377ac9c3794acb8b93d1",
+        "created_at": "2026-08-23T07:27:29Z",
+        "updated_at": "2026-08-23T07:27:49Z",
+        "jobs": [
+          {
+            "id": 97160390180,
+            "name": "recovery",
+            "status": "completed",
+            "conclusion": "success",
+            "started_at": "2026-08-23T07:27:32Z",
+            "completed_at": "2026-08-23T07:27:48Z"
+          }
+        ],
+        "artifacts": [
+          {
+            "id": 9489593885,
+            "name": "legislation-recovery-32625612739",
+            "size_in_bytes": 2420,
+            "expired": false,
+            "created_at": "2026-08-23T07:27:46Z",
+            "expires_at": "2026-11-21T07:27:30Z"
+          }
+        ],
+        "receipt_sha256": "c429c2120474dac4c3001b9ca341977312fa50602a60f81ba081ca11b8bb739a"
+      },
+      {
+        "run_id": 32625990438,
+        "url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/32625990438",
+        "event": "workflow_dispatch",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "abdb814347b78caefa3402bae749a13088d6134f",
+        "created_at": "2026-08-23T07:36:01Z",
+        "updated_at": "2026-08-23T07:36:29Z",
+        "jobs": [
+          {
+            "id": 97161327754,
+            "name": "harvest-legislation",
+            "status": "completed",
+            "conclusion": "success",
+            "started_at": "2026-08-23T07:36:04Z",
+            "completed_at": "2026-08-23T07:36:28Z"
+          }
+        ],
+        "artifacts": [
+          {
+            "id": 9489696307,
+            "name": "legislation-state-32625990438",
+            "size_in_bytes": 21774,
+            "expired": false,
+            "created_at": "2026-08-23T07:36:25Z",
+            "expires_at": "2026-11-21T07:36:02Z"
+          }
+        ],
+        "receipt_sha256": "461709c836dfb14ff21ff65568b34ae6f9c306cf2c224a46f52a71b1b8ba0629"
+      },
+      {
+        "run_id": 32626071396,
+        "url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/32626071396",
+        "event": "workflow_dispatch",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "949f6f6abed0cfb668fc5f163129f11e54f335a3",
+        "created_at": "2026-08-23T07:37:51Z",
+        "updated_at": "2026-08-23T07:38:14Z",
+        "jobs": [
+          {
+            "id": 97161523517,
+            "name": "reconcile",
+            "status": "completed",
+            "conclusion": "success",
+            "started_at": "2026-08-23T07:37:54Z",
+            "completed_at": "2026-08-23T07:38:13Z"
+          }
+        ],
+        "artifacts": [
+          {
+            "id": 9489716374,
+            "name": "legislation-reconciliation-32626071396",
+            "size_in_bytes": 434,
+            "expired": false,
+            "created_at": "2026-08-23T07:38:12Z",
+            "expires_at": "2026-11-21T07:37:53Z"
+          }
+        ],
+        "receipt_sha256": "ca6f1d287ede09a85bb11484d7ccc47a5530edf2bae0fe7e5a79efa4cc6cfca3"
+      },
+      {
+        "run_id": 32626113799,
+        "url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/32626113799",
+        "event": "workflow_dispatch",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "949f6f6abed0cfb668fc5f163129f11e54f335a3",
+        "created_at": "2026-08-23T07:38:51Z",
+        "updated_at": "2026-08-23T07:39:10Z",
+        "jobs": [
+          {
+            "id": 97161626752,
+            "name": "recovery",
+            "status": "completed",
+            "conclusion": "success",
+            "started_at": "2026-08-23T07:38:54Z",
+            "completed_at": "2026-08-23T07:39:09Z"
+          }
+        ],
+        "artifacts": [
+          {
+            "id": 9489726767,
+            "name": "legislation-recovery-32626113799",
+            "size_in_bytes": 12535,
+            "expired": false,
+            "created_at": "2026-08-23T07:39:08Z",
+            "expires_at": "2026-11-21T07:38:52Z"
+          }
+        ],
+        "receipt_sha256": "bba10c4325901faf122c76abc6915c8299a3ebc677e9975c7d57765f69e6428a"
+      }
+    ]
+  }
+}
