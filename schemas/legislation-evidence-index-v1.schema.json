@@ -1,0 +1,363 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/edithatogo/archive-govt-nz/schemas/legislation-evidence-index-v1.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "index_id",
+    "generated_at",
+    "target_repository",
+    "target_commit",
+    "donor_repository",
+    "donor_commit",
+    "entries",
+    "evaluator_inputs",
+    "dimensions"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "archive-govt-nz.legislation-evidence-index/v1"
+    },
+    "index_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]+$"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "target_repository": {
+      "const": "edithatogo/archive-govt-nz"
+    },
+    "target_commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "donor_repository": {
+      "const": "edithatogo/corpus-legislation-nz"
+    },
+    "donor_commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/entry"
+      }
+    },
+    "evaluator_inputs": {
+      "$ref": "#/$defs/dimensionEvidence"
+    },
+    "dimensions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "code_capability_migration",
+        "operational_state_migration",
+        "corpus_custody_recoverability",
+        "publication_identity_migration"
+      ],
+      "properties": {
+        "code_capability_migration": {
+          "$ref": "#/$defs/dimensionResult"
+        },
+        "operational_state_migration": {
+          "$ref": "#/$defs/dimensionResult"
+        },
+        "corpus_custody_recoverability": {
+          "$ref": "#/$defs/dimensionResult"
+        },
+        "publication_identity_migration": {
+          "$ref": "#/$defs/dimensionResult"
+        }
+      }
+    },
+    "derived_outputs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "artefact_type",
+          "rationale",
+          "generated_from"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "artefact_type": {
+            "const": "evaluator_output"
+          },
+          "rationale": {
+            "type": "string",
+            "minLength": 1
+          },
+          "generated_from": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "evidenceId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]+$"
+    },
+    "dimension": {
+      "enum": [
+        "code_capability_migration",
+        "operational_state_migration",
+        "corpus_custody_recoverability",
+        "publication_identity_migration"
+      ]
+    },
+    "entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidence_id",
+        "path",
+        "sha256",
+        "classification",
+        "artefact_type",
+        "claim_dimensions",
+        "rationale",
+        "proof_kind"
+      ],
+      "properties": {
+        "evidence_id": {
+          "$ref": "#/$defs/evidenceId"
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "classification": {
+          "enum": [
+            "active",
+            "superseded",
+            "invalidated",
+            "historical",
+            "incomplete",
+            "externally_blocked"
+          ]
+        },
+        "artefact_type": {
+          "enum": [
+            "receipt",
+            "report",
+            "evaluator_output",
+            "track_review",
+            "issue_closeout",
+            "public_claim",
+            "registry",
+            "contract",
+            "evaluator"
+          ]
+        },
+        "claim_dimensions": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/dimension"
+          }
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "superseded_by": {
+          "$ref": "#/$defs/evidenceId"
+        },
+        "invalidated_by": {
+          "$ref": "#/$defs/evidenceId"
+        },
+        "proof_kind": {
+          "enum": [
+            "capability_matrix",
+            "contract",
+            "evaluator",
+            "state_verification",
+            "state_merge",
+            "operational_run",
+            "durable_package",
+            "recovery_readback",
+            "publication_readback",
+            "identity_verification",
+            "blocker_receipt",
+            "claim_inventory",
+            "registry",
+            "closeout_summary",
+            "historical_record"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "classification": {
+                "const": "superseded"
+              }
+            },
+            "required": [
+              "classification"
+            ]
+          },
+          "then": {
+            "required": [
+              "superseded_by"
+            ],
+            "not": {
+              "required": [
+                "invalidated_by"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "classification": {
+                "const": "invalidated"
+              }
+            },
+            "required": [
+              "classification"
+            ]
+          },
+          "then": {
+            "required": [
+              "invalidated_by"
+            ],
+            "not": {
+              "required": [
+                "superseded_by"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "classification": {
+                "enum": [
+                  "active",
+                  "historical",
+                  "incomplete",
+                  "externally_blocked"
+                ]
+              }
+            },
+            "required": [
+              "classification"
+            ]
+          },
+          "then": {
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "superseded_by"
+                  ]
+                },
+                {
+                  "required": [
+                    "invalidated_by"
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "dimensionEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "code_capability_migration",
+        "operational_state_migration",
+        "corpus_custody_recoverability",
+        "publication_identity_migration"
+      ],
+      "properties": {
+        "code_capability_migration": {
+          "$ref": "#/$defs/evidenceIdList"
+        },
+        "operational_state_migration": {
+          "$ref": "#/$defs/evidenceIdList"
+        },
+        "corpus_custody_recoverability": {
+          "$ref": "#/$defs/evidenceIdList"
+        },
+        "publication_identity_migration": {
+          "$ref": "#/$defs/evidenceIdList"
+        }
+      }
+    },
+    "evidenceIdList": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/evidenceId"
+      }
+    },
+    "dimensionResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "proof_ids",
+        "rationale"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "complete",
+            "incomplete",
+            "externally_blocked"
+          ]
+        },
+        "proof_ids": {
+          "$ref": "#/$defs/evidenceIdList"
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "if": {
+        "properties": {
+          "status": {
+            "const": "complete"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "proof_ids": {
+            "minItems": 1
+          }
+        }
+      }
+    }
+  }
+}

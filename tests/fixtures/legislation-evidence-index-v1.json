@@ -1,0 +1,70 @@
+{
+  "schema_version": "archive-govt-nz.legislation-evidence-index/v1",
+  "index_id": "legislation-evidence-sample-v1",
+  "generated_at": "2026-09-02T00:00:00Z",
+  "target_repository": "edithatogo/archive-govt-nz",
+  "target_commit": "6755e12a48536de938b6f5955fe974d4b1de1b75",
+  "donor_repository": "edithatogo/corpus-legislation-nz",
+  "donor_commit": "b40587f1b1aec7356a0f623916fcc8212397d283",
+  "entries": [
+    {
+      "evidence_id": "sample-active-evidence",
+      "path": "tests/fixtures/legislation-evidence-active-sample.json",
+      "sha256": "9fcd0000a36d1f22160d6a64397788c9077285977873d37c336d3a4e38e83ecd",
+      "classification": "active",
+      "artefact_type": "receipt",
+      "claim_dimensions": [
+        "code_capability_migration",
+        "operational_state_migration",
+        "corpus_custody_recoverability",
+        "publication_identity_migration"
+      ],
+      "rationale": "Representative schema fixture only.",
+      "proof_kind": "capability_matrix"
+    }
+  ],
+  "evaluator_inputs": {
+    "code_capability_migration": [
+      "sample-active-evidence"
+    ],
+    "operational_state_migration": [
+      "sample-active-evidence"
+    ],
+    "corpus_custody_recoverability": [
+      "sample-active-evidence"
+    ],
+    "publication_identity_migration": [
+      "sample-active-evidence"
+    ]
+  },
+  "dimensions": {
+    "code_capability_migration": {
+      "status": "complete",
+      "proof_ids": [
+        "sample-active-evidence"
+      ],
+      "rationale": "Fixture proof."
+    },
+    "operational_state_migration": {
+      "status": "complete",
+      "proof_ids": [
+        "sample-active-evidence"
+      ],
+      "rationale": "Fixture proof."
+    },
+    "corpus_custody_recoverability": {
+      "status": "complete",
+      "proof_ids": [
+        "sample-active-evidence"
+      ],
+      "rationale": "Fixture proof."
+    },
+    "publication_identity_migration": {
+      "status": "complete",
+      "proof_ids": [
+        "sample-active-evidence"
+      ],
+      "rationale": "Fixture proof."
+    }
+  }
+}

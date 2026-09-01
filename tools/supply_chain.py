@@ -59,11 +59,36 @@ PUBLIC_IMPORT_VALUE = re.compile(
     r"(?:749918c251da59dc890c19dfda2ab9a021fd8ca6|b40587f1b1aec7356a0f623916fcc8212397d283)"
     r'(?:/(?:tracks|archive)/[a-z0-9_]+)?)"'
 )
+PUBLIC_EVIDENCE_INDEX = "evidence/migrations/corpus-legislation-nz/evidence-index.json"
+PUBLIC_CHECKSUM_PATH = (
+    "evidence/migrations/corpus-legislation-nz/final-donor-state/"
+    "verification-01/SHA256SUMS"
+)
+PUBLIC_CHECKSUM_PATH_CANDIDATE_DIGEST = "202980b9d847d8c9f1af423526b0383990e8e0d7"
+
+
+def _is_indexed_public_checksum_path(relative: str, finding: dict[str, object]) -> bool:
+    if (
+        relative != PUBLIC_EVIDENCE_INDEX
+        or finding.get("type") != "Base64 High Entropy String"
+        or finding.get("hashed_secret") != PUBLIC_CHECKSUM_PATH_CANDIDATE_DIGEST
+    ):
+        return False
+    try:
+        index = json.loads((REPOSITORY_ROOT / relative).read_text(encoding="utf-8"))
+        return any(
+            row.get("path") == PUBLIC_CHECKSUM_PATH
+            for row in cast("list[dict[str, object]]", index.get("entries", []))
+        )
+    except OSError, UnicodeError, json.JSONDecodeError, AttributeError:
+        return False
 
 
 def is_reviewed_public_path(filename: str, finding: dict[str, object]) -> bool:
     """Adjudicate only an exact path candidate in an unchanged reviewed document."""
     relative = filename.replace("\\", "/")
+    if _is_indexed_public_checksum_path(relative, finding):
+        return True
     allowed = {
         PUBLIC_LINEAGE_ROOT + name: digest
         for name, digest in PUBLIC_LINEAGE_DOCUMENTS.items()
