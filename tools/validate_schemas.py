@@ -20,6 +20,10 @@ type JsonValue = (
 REPOSITORY_ROOT = Path(__file__).parents[1]
 VALIDATION_PAIRS = (
     (
+        REPOSITORY_ROOT / "schemas" / "legislation-harvest-receipt-v3.schema.json",
+        REPOSITORY_ROOT / "tests" / "fixtures" / "legislation-harvest-receipt-v3.json",
+    ),
+    (
         REPOSITORY_ROOT / "schemas" / "source-set-v2.schema.json",
         REPOSITORY_ROOT / "tests" / "fixtures" / "source-set-discovery-v2.json",
     ),

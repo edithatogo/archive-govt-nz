@@ -1,0 +1,51 @@
+{
+  "schema_version": "archive-govt-nz.legislation-harvest-receipt/v3",
+  "candidate_works_discovered": 2,
+  "works_in_scope": 2,
+  "works_attempted": 2,
+  "newly_preserved": 1,
+  "changed_preserved": 0,
+  "unchanged_revalidated": 1,
+  "already_processed_skipped": 0,
+  "unavailable": 0,
+  "partial": 0,
+  "failed": 0,
+  "total_state_records_before": 1,
+  "total_state_records_after": 2,
+  "total_cas_objects_before": 1,
+  "total_cas_objects_after": 2,
+  "scope_digests": {
+    "resolved": "1111111111111111111111111111111111111111111111111111111111111111",
+    "seed": "2222222222222222222222222222222222222222222222222222222222222222"
+  },
+  "parent_manifest_root": "3333333333333333333333333333333333333333333333333333333333333333",
+  "parent_checkpoint_root": "4444444444444444444444444444444444444444444444444444444444444444",
+  "output_manifest_root": "5555555555555555555555555555555555555555555555555555555555555555",
+  "output_checkpoint_root": "6666666666666666666666666666666666666666666666666666666666666666",
+  "software_commit": "7777777777777777777777777777777777777777",
+  "workflow_identity": "manual-dispatch",
+  "run_identity": "local-accounting-sample-0001",
+  "state_commit_status": "committed",
+  "state_commit": "8888888888888888888888888888888888888888",
+  "works": [
+    {
+      "work_id": "act_public_2024_1",
+      "disposition": "newly_preserved",
+      "source_response_classifications": [
+        "http_200"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_public_2024_2",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "http_304"
+      ],
+      "retry_count": 0
+    }
+  ],
+  "total_retry_count": 0,
+  "state_record_delta": 1,
+  "cas_object_delta": 1
+}

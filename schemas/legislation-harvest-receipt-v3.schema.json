@@ -1,0 +1,322 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "archive-govt-nz.legislation-harvest-receipt/v3",
+  "title": "Legislation harvest accounting receipt v3",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "candidate_works_discovered",
+    "works_in_scope",
+    "works_attempted",
+    "newly_preserved",
+    "changed_preserved",
+    "unchanged_revalidated",
+    "already_processed_skipped",
+    "unavailable",
+    "partial",
+    "failed",
+    "total_state_records_before",
+    "total_state_records_after",
+    "total_cas_objects_before",
+    "total_cas_objects_after",
+    "total_retry_count",
+    "state_record_delta",
+    "cas_object_delta",
+    "scope_digests",
+    "parent_manifest_root",
+    "parent_checkpoint_root",
+    "output_manifest_root",
+    "output_checkpoint_root",
+    "software_commit",
+    "workflow_identity",
+    "run_identity",
+    "state_commit_status",
+    "state_commit",
+    "works"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "archive-govt-nz.legislation-harvest-receipt/v3"
+    },
+    "candidate_works_discovered": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "works_in_scope": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "works_attempted": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "newly_preserved": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "changed_preserved": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "unchanged_revalidated": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "already_processed_skipped": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "unavailable": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "partial": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "failed": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "total_state_records_before": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "total_state_records_after": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "total_cas_objects_before": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "total_cas_objects_after": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "total_retry_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "state_record_delta": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "cas_object_delta": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "scope_digests": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "type": "string",
+        "minLength": 1
+      },
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{64}$"
+      }
+    },
+    "parent_manifest_root": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "parent_checkpoint_root": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "output_manifest_root": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "output_checkpoint_root": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "software_commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40,64}$"
+    },
+    "workflow_identity": {
+      "type": "string",
+      "minLength": 1
+    },
+    "run_identity": {
+      "type": "string",
+      "minLength": 1
+    },
+    "state_commit_status": {
+      "enum": [
+        "committed",
+        "no_change",
+        "not_committed",
+        "partial_committed",
+        "indeterminate"
+      ]
+    },
+    "state_commit": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40,64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "works": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/work"
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "state_commit_status": {
+            "enum": [
+              "committed",
+              "partial_committed"
+            ]
+          }
+        },
+        "required": [
+          "state_commit_status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "output_manifest_root": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "output_checkpoint_root": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "state_commit": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{40,64}$"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "state_commit_status": {
+            "const": "not_committed"
+          }
+        },
+        "required": [
+          "state_commit_status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "output_manifest_root": {
+            "type": "null"
+          },
+          "output_checkpoint_root": {
+            "type": "null"
+          },
+          "state_commit": {
+            "type": "null"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "state_commit_status": {
+            "const": "indeterminate"
+          }
+        },
+        "required": [
+          "state_commit_status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "state_commit": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "work": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "work_id",
+        "disposition",
+        "source_response_classifications",
+        "retry_count"
+      ],
+      "properties": {
+        "work_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "disposition": {
+          "enum": [
+            "newly_preserved",
+            "changed_preserved",
+            "unchanged_revalidated",
+            "already_processed_skipped",
+            "unavailable",
+            "partial",
+            "failed"
+          ]
+        },
+        "source_response_classifications": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "retry_count": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    }
+  }
+}
