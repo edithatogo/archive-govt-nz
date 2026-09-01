@@ -14,3 +14,8 @@ checkpoint. The entire parent cross-link check now precedes discovery, and a
 manifest failure atomically restores or removes the promoted checkpoint while
 the receipt remains conservatively indeterminate. Dedicated tests cover both
 paths. A final exact-head readback remains part of delivery.
+
+The independent agent re-read repaired head `759e3e36` and qualified both
+findings with no remaining blocker. Subsequent commits only expanded edge-case
+coverage and restored exact retry accounting on exhausted sync/async requests;
+hosted exact-head checks remain the final merge condition.
