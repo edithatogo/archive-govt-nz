@@ -5,13 +5,13 @@
     {
       "id": "zenodo-new-version-publication",
       "kind": "external_publication",
-      "status": "pending",
-      "evidence": "No meaningful new release or explicit minting authority is present"
+      "status": "not_applicable",
+      "evidence": "No meaningful new release was proposed; local metadata correction does not justify minting a version"
     }
   ],
   "issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/343",
-  "status": "in_progress",
+  "status": "completed",
   "track_id": "zenodo_identity_correction_20260902",
   "type": "corrective",
-  "updated_at": "2026-09-02T00:00:00Z"
+  "updated_at": "2026-09-01T14:35:00Z"
 }
