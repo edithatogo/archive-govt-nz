@@ -1,4 +1,5 @@
 {
+  "analyzer_claim_inputs_sha256": "3cddec7de471b9ed60f11f6c4fe9e73b9e8a1d8499f53a971f66cc2891dfa7ed",
   "claims": [
     {
       "bounded_replacement_guidance": "Retain the candidate/acquired/published distinction. Prompt 17 should update only if broader prose needs consistent terminology.",
@@ -10,6 +11,8 @@
       "lifecycle": "historical",
       "line": 153,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "4d23747d47c186dbfcacd9ba1309662941907996ce3890268f5f4435001ad17f",
+      "source_sha256": "0085789b34da49808a703f2e1d4037721ee47f2884e38f29fbe16eb5ea244b79",
       "text": "- `seeds/work_ids.txt` created from search-derived candidate inventory (33,693 work IDs) with provenance header."
     },
     {
@@ -22,6 +25,8 @@
       "lifecycle": "historical",
       "line": 263,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "79962973c98722e10856b0e8ac89b5168ac93d65adddb0c8f249bd5785560878",
+      "source_sha256": "0085789b34da49808a703f2e1d4037721ee47f2884e38f29fbe16eb5ea244b79",
       "text": "- `seeds/work_ids.txt` exists (33,693 work IDs, Track 04). Root blocker resolved."
     },
     {
@@ -34,6 +39,8 @@
       "lifecycle": "historical",
       "line": 1469,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "6c8556ff8ee3183bbefed3cf31123ad9f88f98a945c4248e8f40cc6af587049a",
+      "source_sha256": "0085789b34da49808a703f2e1d4037721ee47f2884e38f29fbe16eb5ea244b79",
       "text": "fallback boundary: all 33,693 reviewed work IDs were assigned across 24"
     },
     {
@@ -46,6 +53,8 @@
       "lifecycle": "historical",
       "line": 5,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "f78ca90afb40b00fc3374a3bff397bd66ccffa5150c9ad31e6885d261f0b8909",
+      "source_sha256": "2eccc70e6300d1332676635dfddfa8a3c651f14e40fd98e014b7e5ce249b6376",
       "text": "- [x] Build `seeds/work_ids.txt` from search-derived candidate inventory (33,693 work IDs) with provenance header."
     },
     {
@@ -58,6 +67,8 @@
       "lifecycle": "historical",
       "line": 26,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "160870e83e697e835646762f99a12e3998fa1c2672003740561e66b3ea7fc43c",
+      "source_sha256": "910d8bc796dd7555c71e4b6cf5a3a1fee31c05f8110b25e96be5bac308a13da5",
       "text": "- Source: `generated/historical-discovery-27313765016/historical-work-ids.txt` (33,693 unique work IDs)."
     },
     {
@@ -70,6 +81,8 @@
       "lifecycle": "historical",
       "line": 29,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "6285975065f2188ba6443f3a0c12a3ed597cff86b5c3d50aff4d6802298e47a1",
+      "source_sha256": "910d8bc796dd7555c71e4b6cf5a3a1fee31c05f8110b25e96be5bac308a13da5",
       "text": "- `seeds/work_ids.txt` now contains 33,693 work IDs with provenance header documenting search terms, types, date, and caveats."
     },
     {
@@ -82,6 +95,8 @@
       "lifecycle": "historical",
       "line": 40,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "0457f7668160b93f850bb2529b0b18ad9f752ac6e30eebf2e88a8c2466c6d5b0",
+      "source_sha256": "910d8bc796dd7555c71e4b6cf5a3a1fee31c05f8110b25e96be5bac308a13da5",
       "text": "- Total (deduplicated): 33,693 work IDs."
     },
     {
@@ -94,6 +109,8 @@
       "lifecycle": "historical",
       "line": 14,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "79962973c98722e10856b0e8ac89b5168ac93d65adddb0c8f249bd5785560878",
+      "source_sha256": "b00032de9a3c4ca29785eec6a6474f30260577f36c458b06876ed936cbe7861a",
       "text": "- `seeds/work_ids.txt` exists (33,693 work IDs, Track 04). Root blocker resolved."
     },
     {
@@ -106,6 +123,8 @@
       "lifecycle": "historical",
       "line": 354,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "0e180946cad95f1a643cdc7abcad340358c59b2cd885e64d0994bbc22cef3a67",
+      "source_sha256": "b00032de9a3c4ca29785eec6a6474f30260577f36c458b06876ed936cbe7861a",
       "text": "3. Expected wall-clock time: 8-15 hours for the full 33,693 work IDs at 0.5s pacing"
     },
     {
@@ -118,6 +137,8 @@
       "lifecycle": "historical",
       "line": 24,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "6f48bc50095417cb73e4fd885096a0062a84b8681d32cbaa19a9dea8a6433c03",
+      "source_sha256": "34e16e3d2d1dfbc735434edf08f9b076606cd3e3077a767bf446603f059336c0",
       "text": "- Seed inventory: `seeds/work_ids.txt` now exists with 33,693 work IDs (search-derived, documented in Track 04)."
     },
     {
@@ -130,6 +151,8 @@
       "lifecycle": "historical",
       "line": 92,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "3b60a8709832c818a6bfb94d5ff0ef52f2d5f95fb3b063c0730623ee2c315572",
+      "source_sha256": "f603293bac14d6dd5c9d7bc39b101ed7f731ed40b3e95b91da9f4b927adb9388",
       "text": "- The generated manifest assigned all 33,693 reviewed work IDs to exactly one"
     },
     {
@@ -142,6 +165,8 @@
       "lifecycle": "historical",
       "line": 153,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "4d23747d47c186dbfcacd9ba1309662941907996ce3890268f5f4435001ad17f",
+      "source_sha256": "0085789b34da49808a703f2e1d4037721ee47f2884e38f29fbe16eb5ea244b79",
       "text": "- `seeds/work_ids.txt` created from search-derived candidate inventory (33,693 work IDs) with provenance header."
     },
     {
@@ -154,6 +179,8 @@
       "lifecycle": "historical",
       "line": 263,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "79962973c98722e10856b0e8ac89b5168ac93d65adddb0c8f249bd5785560878",
+      "source_sha256": "0085789b34da49808a703f2e1d4037721ee47f2884e38f29fbe16eb5ea244b79",
       "text": "- `seeds/work_ids.txt` exists (33,693 work IDs, Track 04). Root blocker resolved."
     },
     {
@@ -166,6 +193,8 @@
       "lifecycle": "historical",
       "line": 1469,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "6c8556ff8ee3183bbefed3cf31123ad9f88f98a945c4248e8f40cc6af587049a",
+      "source_sha256": "0085789b34da49808a703f2e1d4037721ee47f2884e38f29fbe16eb5ea244b79",
       "text": "fallback boundary: all 33,693 reviewed work IDs were assigned across 24"
     },
     {
@@ -178,6 +207,8 @@
       "lifecycle": "historical",
       "line": 5,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "f78ca90afb40b00fc3374a3bff397bd66ccffa5150c9ad31e6885d261f0b8909",
+      "source_sha256": "2eccc70e6300d1332676635dfddfa8a3c651f14e40fd98e014b7e5ce249b6376",
       "text": "- [x] Build `seeds/work_ids.txt` from search-derived candidate inventory (33,693 work IDs) with provenance header."
     },
     {
@@ -190,6 +221,8 @@
       "lifecycle": "historical",
       "line": 26,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "160870e83e697e835646762f99a12e3998fa1c2672003740561e66b3ea7fc43c",
+      "source_sha256": "910d8bc796dd7555c71e4b6cf5a3a1fee31c05f8110b25e96be5bac308a13da5",
       "text": "- Source: `generated/historical-discovery-27313765016/historical-work-ids.txt` (33,693 unique work IDs)."
     },
     {
@@ -202,6 +235,8 @@
       "lifecycle": "historical",
       "line": 29,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "6285975065f2188ba6443f3a0c12a3ed597cff86b5c3d50aff4d6802298e47a1",
+      "source_sha256": "910d8bc796dd7555c71e4b6cf5a3a1fee31c05f8110b25e96be5bac308a13da5",
       "text": "- `seeds/work_ids.txt` now contains 33,693 work IDs with provenance header documenting search terms, types, date, and caveats."
     },
     {
@@ -214,6 +249,8 @@
       "lifecycle": "historical",
       "line": 40,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "0457f7668160b93f850bb2529b0b18ad9f752ac6e30eebf2e88a8c2466c6d5b0",
+      "source_sha256": "910d8bc796dd7555c71e4b6cf5a3a1fee31c05f8110b25e96be5bac308a13da5",
       "text": "- Total (deduplicated): 33,693 work IDs."
     },
     {
@@ -226,6 +263,8 @@
       "lifecycle": "historical",
       "line": 14,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "79962973c98722e10856b0e8ac89b5168ac93d65adddb0c8f249bd5785560878",
+      "source_sha256": "b00032de9a3c4ca29785eec6a6474f30260577f36c458b06876ed936cbe7861a",
       "text": "- `seeds/work_ids.txt` exists (33,693 work IDs, Track 04). Root blocker resolved."
     },
     {
@@ -238,6 +277,8 @@
       "lifecycle": "historical",
       "line": 354,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "0e180946cad95f1a643cdc7abcad340358c59b2cd885e64d0994bbc22cef3a67",
+      "source_sha256": "b00032de9a3c4ca29785eec6a6474f30260577f36c458b06876ed936cbe7861a",
       "text": "3. Expected wall-clock time: 8-15 hours for the full 33,693 work IDs at 0.5s pacing"
     },
     {
@@ -250,6 +291,8 @@
       "lifecycle": "historical",
       "line": 24,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "6f48bc50095417cb73e4fd885096a0062a84b8681d32cbaa19a9dea8a6433c03",
+      "source_sha256": "34e16e3d2d1dfbc735434edf08f9b076606cd3e3077a767bf446603f059336c0",
       "text": "- Seed inventory: `seeds/work_ids.txt` now exists with 33,693 work IDs (search-derived, documented in Track 04)."
     },
     {
@@ -262,6 +305,8 @@
       "lifecycle": "historical",
       "line": 92,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "3b60a8709832c818a6bfb94d5ff0ef52f2d5f95fb3b063c0730623ee2c315572",
+      "source_sha256": "f603293bac14d6dd5c9d7bc39b101ed7f731ed40b3e95b91da9f4b927adb9388",
       "text": "- The generated manifest assigned all 33,693 reviewed work IDs to exactly one"
     },
     {
@@ -274,6 +319,8 @@
       "lifecycle": "active",
       "line": 267,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "9b131f078aea8d29f1f9b0429fc17b74afe7480ee9b4a5c6026c5976b5520823",
+      "source_sha256": "0c05f4fa205ffef68c0d344fc63aea64ae265942acbca2f5548b1e99262b8930",
       "text": "- [~] **Track: Historical coverage and 33,693-candidate reconciliation (Prompt 14)**"
     },
     {
@@ -286,6 +333,8 @@
       "lifecycle": "active",
       "line": 26,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "06a19b9fbbd25e768271c0410145854311664758c614144da262b0b7b74c5bb8",
+      "source_sha256": "caff93832a9de8f28658cfe4ac9817bc1631bfeb19b1e66fa3a97b1dffa9067f",
       "text": "- [x] Reconcile 68 historical batches and 33,693 seed work IDs with actual checksums."
     },
     {
@@ -298,6 +347,8 @@
       "lifecycle": "active",
       "line": 20,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "32e867d8a6ce656da5c52bdcc27d8dfb76a45db62034246ee8381168df7289ab",
+      "source_sha256": "4f21b72d07d59ba26f9decd38a5ef0a04fb55963987d310465bcdb61d9ce245e",
       "text": "- Inventory all 33,693 candidate seeds, 68 historical batches, workflow route tables, donor issues, and publication targets."
     },
     {
@@ -310,6 +361,8 @@
       "lifecycle": "active",
       "line": 71,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "63a5027babc2788f49f02fea368ba3de684edae8cbb3ea3dc9f8c6801314210b",
+      "source_sha256": "4f21b72d07d59ba26f9decd38a5ef0a04fb55963987d310465bcdb61d9ce245e",
       "text": "- Rejection of fixed counts (33,693, 68, 100%, 350 entities, 19 checks)."
     },
     {
@@ -322,6 +375,8 @@
       "lifecycle": "active",
       "line": 32,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "97f6edbda1a89aa5313dad1a2fc236893030acfd17ee8b94d06c62fc2d7315fe",
+      "source_sha256": "cd758ccea517f893c20f0020c92e7bacbc389e384fb07782222a186ef7e39913",
       "text": "2. ~~`[BLOCKER] UNOBSERVED`: 67 historical batches await complete donor historical accounting.~~ **RESOLVED 2026-08-22** \u2014 Historical batch parity verified for all 68 batches (0 mismatches, 33,693 work IDs reconciled). See `evidence/migrations/corpus-legislation-nz/parity/historical-batch-parity.json`."
     },
     {
@@ -334,6 +389,8 @@
       "lifecycle": "active",
       "line": 5,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "4cab29ae035f64df804cdd32d37274f2da94ac97243836b99cf136ca76e7c1c2",
+      "source_sha256": "9f0b1c003777241bed356e12c291667c14299aef170587261411b7dd05f5a1ea",
       "text": "- Remove 33,693 count, 68 batches, 100% fixed coverage, and simulated statuses."
     },
     {
@@ -346,6 +403,8 @@
       "lifecycle": "active",
       "line": 5,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "4cab29ae035f64df804cdd32d37274f2da94ac97243836b99cf136ca76e7c1c2",
+      "source_sha256": "3089e3b56ece8fc5f77453b95b305beb911901b08ea10992e9f40d4db57991cd",
       "text": "- Remove 33,693 count, 68 batches, 100% fixed coverage, and simulated statuses."
     },
     {
@@ -358,6 +417,8 @@
       "lifecycle": "active",
       "line": 16,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "0b78501abc4c0ce79d4d4175a3fdc40a5b39913e43f700ef417a8dd39ee5e7ff",
+      "source_sha256": "73e0106b68aaf67e0c5ee7b4fb1e7bf5d9ce61f213a70d1222a553672f725406",
       "text": "- `coverage`: dynamically calculates coverage from observed records/manifest; removes 33,693 and 100% constants."
     },
     {
@@ -370,6 +431,8 @@
       "lifecycle": "active",
       "line": 24,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "ab7dd375b930ab9688c8ae70e0202f8cbd3678c7f0ee5bed0878dd210a3e8ebd",
+      "source_sha256": "73e0106b68aaf67e0c5ee7b4fb1e7bf5d9ce61f213a70d1222a553672f725406",
       "text": "- Remove 33,693 fixed counts, 68-batch fixed counts, 100% fixed coverage, and unconditional affirmative states."
     },
     {
@@ -382,6 +445,8 @@
       "lifecycle": "active",
       "line": 14,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "97f6edbda1a89aa5313dad1a2fc236893030acfd17ee8b94d06c62fc2d7315fe",
+      "source_sha256": "41a38eaf54dd8c35fc94c803c2e1799f5b28bdf0cd6c7b834fa692ebd402b46b",
       "text": "2. ~~`[BLOCKER] UNOBSERVED`: 67 historical batches await complete donor historical accounting.~~ **RESOLVED 2026-08-22** \u2014 Historical batch parity verified for all 68 batches (0 mismatches, 33,693 work IDs reconciled). See `evidence/migrations/corpus-legislation-nz/parity/historical-batch-parity.json`."
     },
     {
@@ -394,6 +459,8 @@
       "lifecycle": "active",
       "line": 28,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "b0a8bad449f582434a0a16f8e34e42b0020226f677e3ad569ba8bcd0c659f7d5",
+      "source_sha256": "69a318868772cd6f2b9bfea1d0ce361c7b5dab9a4c2d6726c679a878e8322887",
       "text": "33,693 denominator. The separate parity generator remains pending replacement"
     },
     {
@@ -406,6 +473,8 @@
       "lifecycle": "active",
       "line": 5,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "1d169e46381c980734ba5389a8ce9dcba75c46868f32787542510e3248e41f9a",
+      "source_sha256": "2b3edbcea88a95e17dd2e0460582e221aafdc064f01dee1b85bfa95bc07bff7b",
       "text": "- **SVC-M1** Remove the fixed 33,693 candidate denominator from executable"
     },
     {
@@ -418,6 +487,8 @@
       "lifecycle": "active",
       "line": 12,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "ada6a8e8a3d0efe32b37d083c42e4c9a3a7f944b47808b434e9b9196c2af6783",
+      "source_sha256": "21c428de2e3aac77e2daf4c81d04c24c2b38d5f3a3e440f220f8e5caabc58ce2",
       "text": "BasedPyright checks passed with zero findings. Remaining fixed 33,693 use is"
     },
     {
@@ -430,6 +501,8 @@
       "lifecycle": "active",
       "line": 12,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "97f6edbda1a89aa5313dad1a2fc236893030acfd17ee8b94d06c62fc2d7315fe",
+      "source_sha256": "4b750cb2cd1db8e976fcac2b8e912d78dec177806ec3dee3600b8784a2cd11a8",
       "text": "2. ~~`[BLOCKER] UNOBSERVED`: 67 historical batches await complete donor historical accounting.~~ **RESOLVED 2026-08-22** \u2014 Historical batch parity verified for all 68 batches (0 mismatches, 33,693 work IDs reconciled). See `evidence/migrations/corpus-legislation-nz/parity/historical-batch-parity.json`."
     },
     {
@@ -442,6 +515,8 @@
       "lifecycle": "active",
       "line": 4,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "a0ee7360f3aa50ad3eef0729f6be44fa7f100b74bc43d1e7f481d39577c4b3c9",
+      "source_sha256": "aca40bc8bf91fe54eb1bb5ec915736314fd2d84d9d84328e5cda54ad0ac39be1",
       "text": "are absent it fabricates 68 batches and 33,693 works, creates fixture and"
     },
     {
@@ -454,6 +529,8 @@
       "lifecycle": "active",
       "line": 65,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "38f61b89715ae937e0edcb09ede801426d370f2abb2a579612917776195b1cc4",
+      "source_sha256": "33eec0a3d4d0c7851431be46d58fe94dfa725171b3706d0b1d0fde070d4aa28f",
       "text": "capability: \"Historical 33,693 Work Identifier Discovery\""
     },
     {
@@ -466,6 +543,8 @@
       "lifecycle": "active",
       "line": 131,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "644f8bd900249c708a249211db94c02797d6d8ac6917d96ddfe2faf48057d6b6",
+      "source_sha256": "17d66e533d5880b2d79c3805d3199e1e9508e5c84303b535bf4e004f8111723c",
       "text": "seed-only claim. The reviewed 500 IDs and the 33,693 search-derived candidate IDs"
     },
     {
@@ -478,6 +557,8 @@
       "lifecycle": "active",
       "line": 17,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "a2cbd86ab53545fc1670bfb5d7c16bd201772f909a5909e54fb1725796f51ab1",
+      "source_sha256": "2b3b0cc72ce0766c0c1dd2b1a1ab5b1ce8b350fa1967901d461bec4d44afff39",
       "text": "| **Seed Inventory** | 33,693 search-derived works | Canonical multi-source registries |"
     },
     {
@@ -490,6 +571,8 @@
       "lifecycle": "active",
       "line": 17,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "11a00d8caaf9f7511c46c58dd405d6a520004f8b204aa09a05750140e30d7331",
+      "source_sha256": "524c402b8e3ef0576e7183a5fdc22e699e05dcca8c3c244e68fdc30659a2b13b",
       "text": "1. **Pre-Acquisition Discovery & Reusable Checkpoints**: Reused 68 historical batches and 33,693 seed work IDs without redundant public downloads."
     },
     {
@@ -502,6 +585,8 @@
       "lifecycle": "active",
       "line": 20,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "d94c0179809a90a39d11dd3889a67fb68dd5b8a2368e8c780df8abe8af8a620c",
+      "source_sha256": "524c402b8e3ef0576e7183a5fdc22e699e05dcca8c3c244e68fdc30659a2b13b",
       "text": "4. **Parity Verification**: Achieved 100.0% semantic and checksum parity across 33,693 historical records with 0 discrepancies."
     },
     {
@@ -514,6 +599,8 @@
       "lifecycle": "active",
       "line": 15,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "a64fc878da2d1413a653e9095cb22aad29bf3381b5a3c1317910478bcde96ebf",
+      "source_sha256": "bf0c0702ad061a248982b43baec3df4c82a4a64fe1492dc56d28c0bfcda59836",
       "text": "3. **Data Coverage Truthfulness**: 33,693 search-derived candidate work IDs are catalogued as seed candidates rather than falsely asserted as 100% completed extractions."
     },
     {
@@ -526,6 +613,8 @@
       "lifecycle": "active",
       "line": 12,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "2d0bf3cf6b62efe1a7c6284928fff6ae77f0b965b2b98600a6cb2ab7cb5dfa02",
+      "source_sha256": "21c20aeff4da177b1ef0d54658dc64f8187e0eaede848701dc584db12c3e02bd",
       "text": "| **Historical Batch Parity** | 68 Period-Sharded Batches | 33,693 | 100.0% Checksum & Metadata Parity | `passed` |"
     },
     {
@@ -538,6 +627,8 @@
       "lifecycle": "active",
       "line": 15,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "68e48b4ffc1311de406b5a7bdf7bcce50e2f2330805981e26905f752e58e676f",
+      "source_sha256": "21c20aeff4da177b1ef0d54658dc64f8187e0eaede848701dc584db12c3e02bd",
       "text": "| **Aggregate Parity** | Complete Corpus | **33,693** | **100.0% Parity (0 Discrepancies)** | **`fully_reconciled`** |"
     },
     {
@@ -550,6 +641,8 @@
       "lifecycle": "active",
       "line": 21,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "9d5d7316c3ab6ffbcf98d8a29d80ace33bc1367c8a057a0cd4bafbcec449c291",
+      "source_sha256": "6a623aef20217649558f3a8af205a9b7328aa7017a3ae860add528f07a85b4ae",
       "text": "- 68 historical period-sharded batch checkpoints exist covering 33,693 search-derived work identifiers."
     },
     {
@@ -562,6 +655,8 @@
       "lifecycle": "active",
       "line": 23,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "5cc2cff3d1196cca02c49efe89848510a69d40ba1c1034e1ee59b9e0ab31a317",
+      "source_sha256": "6a623aef20217649558f3a8af205a9b7328aa7017a3ae860add528f07a85b4ae",
       "text": "- **Reuse**: The existing 33,693 seed inventory and 68 historical batches are verified and reused."
     },
     {
@@ -574,6 +669,8 @@
       "lifecycle": "active",
       "line": 12,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "51df2ca98622bf73deb1ff868a5537d506b1842eee360a82632a814f11ca89c1",
+      "source_sha256": "7271e2c0f4f4097f5dc15f288058db523df8977764f6851bc07ad63f2b50719e",
       "text": "| **Materially larger corpus** | \u274c Not met. Corpus is growing (Treasury 91 resources, Legislation 33,693 seeds, Global CKAN harvesting) but still modest. No single dataset exceeds 7,000 files. | `archive-evidence-ledger.json`, HF readback receipts |"
     },
     {
@@ -586,6 +683,8 @@
       "lifecycle": "active",
       "line": 11,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "d91c8afeb40fec5d05ca31d2c77a517e9fe327f777af100f6202dd49bff26484",
+      "source_sha256": "8a65681df52b811afd1cf22a702ddf167e2381ae3196375bcf132d2a0c125dcc",
       "text": "\"seed_inventory_size\": 33693,"
     },
     {
@@ -598,6 +697,8 @@
       "lifecycle": "active",
       "line": 37,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "9eed40205d841d3c85219d9abe767007e8e6c6aa38897bc1d2109139f3e735f8",
+      "source_sha256": "d9d8d730b023b872ad18ab7a0f4153850e7ab0f111f333fead589a04d84f3b77",
       "text": "\"description\": \"Treated 33,693 candidate IDs as migrated records with unsupported 100% claim.\","
     },
     {
@@ -610,6 +711,8 @@
       "lifecycle": "active",
       "line": 23,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "9ed691b47b11b457ccd3e64ff52c54bd10bdde6f41e5814fe6ffe3da88b140bd",
+      "source_sha256": "35a7ea3da08c9cbbf2cb33bff1922d922f5cea5f17af3aea5c37cbe82078ceb0",
       "text": "The donor repository `edithatogo/corpus-legislation-nz` at baseline commit `749918c` contained **68 historical batch files** (`seeds/reviewed/0001-0068`), each holding ~500 search-derived work IDs (33,693 total). These were the product of Track 04 (source discovery) and Track 07 (full-corpus bootstrap download) in the donor's internal conductor."
     },
     {
@@ -622,6 +725,8 @@
       "lifecycle": "active",
       "line": 51,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "0128ae72eb797f41e4ac86391a46adf9163fbdb3511e543d092532cdb9c0bdd5",
+      "source_sha256": "35a7ea3da08c9cbbf2cb33bff1922d922f5cea5f17af3aea5c37cbe82078ceb0",
       "text": "| `historical-batch-parity.json` | **68 batches evaluated**, 33,693 work IDs reconciled, **0 mismatches**, status: **passed** | Lines 8\u201312 |"
     },
     {
@@ -634,6 +739,8 @@
       "lifecycle": "active",
       "line": 55,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "d4b871185f3707300dbb550fac21f2dd1477b12a875394cdde3992d5ba1ca204",
+      "source_sha256": "35a7ea3da08c9cbbf2cb33bff1922d922f5cea5f17af3aea5c37cbe82078ceb0",
       "text": "| `consolidation-closeout-report.md` | \"Reused 68 historical batches and 33,693 seed work IDs\" | Line 17 |"
     },
     {
@@ -646,6 +753,8 @@
       "lifecycle": "active",
       "line": 63,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "24fd1011c591eafbf4b286531f1f088d9920e260a64cf24629909818cf915bfd",
+      "source_sha256": "35a7ea3da08c9cbbf2cb33bff1922d922f5cea5f17af3aea5c37cbe82078ceb0",
       "text": "2. **Reconciled** all 33,693 work IDs against the target's own CAS-based content store, producing **0 mismatches** across all parity lanes."
     },
     {
@@ -658,6 +767,8 @@
       "lifecycle": "active",
       "line": 90,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "ad4213b402ebefd51391717f46d91206995eeb9c43ea54e796707127a96d2639",
+      "source_sha256": "35a7ea3da08c9cbbf2cb33bff1922d922f5cea5f17af3aea5c37cbe82078ceb0",
       "text": "| All 33,693 work IDs must be reconciled | Same file: 33,693 candidate work IDs reconciled |"
     },
     {
@@ -670,6 +781,8 @@
       "lifecycle": "active",
       "line": 115,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "340a9e15b3aa0a602ac5d0052e54e2bb27debdfa2d282b932d8e6ad4d07233fb",
+      "source_sha256": "35a7ea3da08c9cbbf2cb33bff1922d922f5cea5f17af3aea5c37cbe82078ceb0",
       "text": "(0 mismatches, 33,693 work IDs reconciled). Remote publication readback confirms"
     },
     {
@@ -682,6 +795,8 @@
       "lifecycle": "active",
       "line": 134,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "b3ece87640b22cf991b753c556b098ea6f874a7d3b4b3f28ac375e3baa912fd3",
+      "source_sha256": "35a7ea3da08c9cbbf2cb33bff1922d922f5cea5f17af3aea5c37cbe82078ceb0",
       "text": "| `evidence/.../parity/historical-batch-parity.json` | 68 batches evaluated, 33,693 work IDs, 0 mismatches, PASSED |"
     },
     {
@@ -694,6 +809,8 @@
       "lifecycle": "active",
       "line": 184,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "3bbfe5c7d81710378c47b21d6373b294b05b7ac13c37ea4dc9de1ffb87fb5d3b",
+      "source_sha256": "88bd520af09ce44a78406049457182922c2d39928bc52f743beb0d3d0b74b5a2",
       "text": "\"resolution_summary\": \"Historical 68-batch manifests and 33,693 search-derived work IDs assimilated (#139).\""
     },
     {
@@ -706,6 +823,8 @@
       "lifecycle": "active",
       "line": 8,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "9605174216053f348f913f9913e22f692e18a07834e7980b9ad011c6dda7a02e",
+      "source_sha256": "57b822f46d0932fef23f44c6b11e456f43939c4effb4d57e49b5d5954ef115c9",
       "text": "The generator could substitute fixed counts (68 batches and 33,693 works),"
     },
     {
@@ -718,6 +837,8 @@
       "lifecycle": "active",
       "line": 9,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "a565070bdf945b76395bd846d89b74a4efa6da75c06e3c7135eca13aff7f4dae",
+      "source_sha256": "416c4d7da05a58876462c29d297c0ed78e27a5c9b06d869bd8c5f1e6435c2b3c",
       "text": "\"candidate_work_ids_reconciled\": 33693,"
     },
     {
@@ -730,6 +851,8 @@
       "lifecycle": "active",
       "line": 23,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "5a97ae7e879bd225026d81b39ee744bb28e3b9a1c35a1e4654969d70d01167fe",
+      "source_sha256": "1400899c3f41ee462c31449bd9899e277cc7059dc094bcf4f19c5c9e9003a998",
       "text": "\"seed_work_ids_count\": 33693,"
     },
     {
@@ -742,6 +865,8 @@
       "lifecycle": "invalidated",
       "line": 4,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "105db70b4b51f66e9bfd35cdc552625f5ab91be8bfa211d71413191014f7297a",
+      "source_sha256": "8b83aec86513ed1ac9eb5ec6757440f1e2e5d164cce7f7aa5d2897cd3c5e2e61",
       "text": "\"invalidated_reason\": \"Asserted 33,693 completed records rather than candidate seed inventory.\","
     },
     {
@@ -754,6 +879,8 @@
       "lifecycle": "active",
       "line": 18,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "3bf3b0032f0a56a913d03a90ca335b3ae165865b510a9aec65473b993969effb",
+      "source_sha256": "bccba3770e93ebe0469ff78e2d02395fb09f868ab6424033e4ded3ff7d8c1e48",
       "text": "The 33,693 unique IDs are ASCII-sorted, and the reviewed bytes equal their first"
     },
     {
@@ -766,6 +893,8 @@
       "lifecycle": "active",
       "line": 31,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "b24924d84aa468de24a3fc8eee123e174b7eacb3cd898c9be16e52a39cce9723",
+      "source_sha256": "bccba3770e93ebe0469ff78e2d02395fb09f868ab6424033e4ded3ff7d8c1e48",
       "text": "rg -n '33,693|CAS|uploaded|readback' evidence/migrations/corpus-legislation-nz/dec-hist-001-finding.md"
     },
     {
@@ -778,6 +907,8 @@
       "lifecycle": "active",
       "line": 34,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "5fac1a3a0ac49f556eb63a1e6f5106c4fd77ce1b03c6d21777c58c49690eb89b",
+      "source_sha256": "bccba3770e93ebe0469ff78e2d02395fb09f868ab6424033e4ded3ff7d8c1e48",
       "text": "That older report says all 33,693 IDs were reconciled against CAS (line 63) and"
     },
     {
@@ -790,6 +921,8 @@
       "lifecycle": "active",
       "line": 55,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "c6c58d9fa54762cecac8c2604ee2f841b29909705b20d174bb11bfad8befd773",
+      "source_sha256": "bccba3770e93ebe0469ff78e2d02395fb09f868ab6424033e4ded3ff7d8c1e48",
       "text": "- Preserve the reviewed 500 / candidate 33,693 / acquired 500 / published unknown"
     },
     {
@@ -802,6 +935,8 @@
       "lifecycle": "active",
       "line": 46,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "5d80911bc1ed8a6c4bed0caf57ab32457d01603c2682d664d2ba3e5946e4a84b",
+      "source_sha256": "d3629d17e2dea6e8b451244f6a180a344ed245ad5b6476b90feceaecb07ccc2b",
       "text": "\"candidate_count\": 33693,"
     },
     {
@@ -814,6 +949,8 @@
       "lifecycle": "active",
       "line": 67,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "62ebaa856701d9d9ab6b212077ffdd3ea500140075cc13666c2e065bae5a55a5",
+      "source_sha256": "d3629d17e2dea6e8b451244f6a180a344ed245ad5b6476b90feceaecb07ccc2b",
       "text": "\"33693 is a search-derived candidate universe, not an authoritative completeness denominator.\","
     },
     {
@@ -826,6 +963,8 @@
       "lifecycle": "active",
       "line": 385,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "463805e98d9a7c4d96eb28566e04dfd433f9f7cdadcdaa8a077189a5fba5ec48",
+      "source_sha256": "c6ba30525083fd86dd9c7b53fb2bf5e74cc01369e0f9bd73082206a4514a458e",
       "text": "\"count\": 33693,"
     },
     {
@@ -838,6 +977,8 @@
       "lifecycle": "active",
       "line": 31,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "39cb576ed02f70a67aabc133fcb577834f1236ddd6fa1bc0e928cf6d5f88c190",
+      "source_sha256": "65f43d0696ec714d605f40fda30ec3aa11459d8340220af9811f98497a2e51e4",
       "text": "| Search candidates | Broader universe: 33,693 unique search-derived IDs |"
     },
     {
@@ -850,6 +991,8 @@
       "lifecycle": "active",
       "line": 65,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "7576a3fa00cab2f9984f08846ada8951c97b53165a8671dcb3d65169554c03b3",
+      "source_sha256": "497f3d369aee13af5bf8549d66450eb3b027bfae66e031a6e68d7013d02336b8",
       "text": "\"count\": 33693,"
     },
     {
@@ -862,6 +1005,8 @@
       "lifecycle": "active",
       "line": 79,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
+      "source_line_sha256": "e760c812a3a9a3c036da514c4ac42ef48bf96c28de386dbe71fc35537c35df02",
+      "source_sha256": "497f3d369aee13af5bf8549d66450eb3b027bfae66e031a6e68d7013d02336b8",
       "text": "\"33693 is a search-derived candidate universe, not an authoritative completeness denominator.\","
     }
   ],
