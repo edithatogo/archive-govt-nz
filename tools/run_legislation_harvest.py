@@ -7,9 +7,15 @@ import asyncio
 import hashlib
 import json
 import os
+import shutil
+import subprocess
 from pathlib import Path
 from typing import Any
 
+from archive_govt_nz.domains.legislation.accounting import (
+    HarvestAccounting,
+    StateCommitStatus,
+)
 from archive_govt_nz.domains.legislation.corpus import LegislationArchiveService
 from archive_govt_nz.object_store import ContentAddressedStore
 from archive_govt_nz.source_sets import SourceSetConfig, parse_source_set_config
@@ -54,6 +60,9 @@ def sync_legislation_records(  # noqa: PLR0913
     force_resync: bool = False,
 ) -> dict[str, Any]:
     """Execute bounded discovery and acquisition through the canonical service."""
+    software_commit = _software_commit()
+    execution_identity = os.environ.get("GITHUB_WORKFLOW", "manual-dispatch")
+    run_identity = os.environ.get("GITHUB_RUN_ID", batch_id)
     if work_ids is not None:
         operation = service.sync_works(
             work_ids=work_ids,
@@ -63,6 +72,9 @@ def sync_legislation_records(  # noqa: PLR0913
             max_works=max_works,
             fail_fast=True,
             force_resync=force_resync,
+            software_commit=software_commit,
+            workflow_identity=execution_identity,
+            run_identity=run_identity,
         )
     else:
         operation = service.sync_works(
@@ -73,6 +85,9 @@ def sync_legislation_records(  # noqa: PLR0913
             max_works=max_works,
             fail_fast=True,
             force_resync=force_resync,
+            software_commit=software_commit,
+            workflow_identity=execution_identity,
+            run_identity=run_identity,
         )
     result = asyncio.run(operation)
     return {
@@ -84,7 +99,63 @@ def sync_legislation_records(  # noqa: PLR0913
         "manifest_sha256": result.manifest.get("manifest_sha256"),
         "discovered_works_count": result.manifest.get("discovered_works_count"),
         "checkpoint": result.checkpoint,
+        "accounting": getattr(result, "accounting", None),
     }
+
+
+def _software_commit() -> str:
+    """Resolve the exact repository commit used by this execution."""
+    hosted = os.environ.get("GITHUB_SHA")
+    if hosted:
+        return hosted
+    git = shutil.which("git")
+    if git is None:
+        message = "git executable is required to bind the software commit"
+        raise RuntimeError(message)
+    completed = subprocess.run(  # noqa: S603 - resolved trusted executable
+        [git, "rev-parse", "HEAD"],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    return completed.stdout.strip()
+
+
+def _failed_accounting(
+    *, batch_id: str, search_terms: list[str] | None, work_ids: list[str] | None
+) -> HarvestAccounting:
+    """Build bounded failure evidence without inventing source dispositions."""
+    scope = work_ids if work_ids is not None else (search_terms or [])
+    scope_digest = hashlib.sha256(
+        json.dumps(scope, separators=(",", ":")).encode()
+    ).hexdigest()
+    return HarvestAccounting(
+        candidate_works_discovered=0,
+        works_in_scope=0,
+        works_attempted=0,
+        newly_preserved=0,
+        changed_preserved=0,
+        unchanged_revalidated=0,
+        already_processed_skipped=0,
+        unavailable=0,
+        partial=0,
+        failed=0,
+        total_state_records_before=0,
+        total_state_records_after=0,
+        total_cas_objects_before=0,
+        total_cas_objects_after=0,
+        scope_digests={"requested": scope_digest},
+        parent_manifest_root=None,
+        parent_checkpoint_root=None,
+        output_manifest_root=None,
+        output_checkpoint_root=None,
+        software_commit=_software_commit(),
+        workflow_identity=os.environ.get("GITHUB_WORKFLOW", "manual-dispatch"),
+        run_identity=os.environ.get("GITHUB_RUN_ID", batch_id or "invalid-dispatch"),
+        state_commit_status=StateCommitStatus.NOT_COMMITTED,
+        state_commit=None,
+        works=(),
+    )
 
 
 def _validate_execution_inputs(  # noqa: PLR0913
@@ -183,40 +254,25 @@ def run_harvest(  # noqa: PLR0913
         report = {"status": "failed", "errors": [str(exc)]}
         config = {"name": "legislation", "execution_mode": "dispatch_only"}
 
-    service_status = str(report.get("status", "failed"))
-    if service_status == "success":
-        outcome = "changed"
-    elif service_status == "no_change":
-        outcome = "no_change"
-    elif service_status == "partial":
-        outcome = "partial_retryable"
-    else:
-        outcome = "failed"
-    exit_code = 0 if outcome in {"changed", "no_change"} else 1
-
-    receipt = {
-        "schema_version": "archive-govt-nz.legislation-harvest-receipt/v2",
-        "source_set": "legislation",
-        "batch_id": batch_id,
-        "search_terms": search_terms or [],
-        "work_ids": work_ids or [],
-        "max_works": max_works,
-        "force_resync": force_resync,
-        "outcome": outcome,
-        "works_attempted": int(report.get("works_attempted", 0)),
-        "works_synced": int(report.get("works_synced", 0)),
-        "records_preserved": int(report.get("records_preserved", 0)),
-        "manifest_sha256": report.get("manifest_sha256"),
-        "discovered_works_count": report.get("discovered_works_count"),
-        "errors": list(report.get("errors", [])),
-        "state_committed": bool(
-            report.get("checkpoint") is not None and outcome in {"changed", "no_change"}
-        ),
-        "config": config.to_dict() if isinstance(config, SourceSetConfig) else config,
+    accounting = report.get("accounting")
+    if not isinstance(accounting, HarvestAccounting):
+        accounting = _failed_accounting(
+            batch_id=batch_id, search_terms=search_terms, work_ids=work_ids
+        )
+    receipt = accounting.to_receipt()
+    successful = accounting.state_commit_status in {
+        StateCommitStatus.COMMITTED,
+        StateCommitStatus.NO_CHANGE,
     }
+    exit_code = (
+        0 if successful and not accounting.failed and not accounting.partial else 1
+    )
     receipt_path.parent.mkdir(parents=True, exist_ok=True)
     receipt_path.write_text(json.dumps(receipt, indent=2), encoding="utf-8")
-    print(f"[HARVEST] Outcome: {outcome}; receipt: {receipt_path}")
+    print(
+        f"[HARVEST] State: {accounting.state_commit_status.value}; "
+        f"receipt: {receipt_path}"
+    )
     return exit_code
 
 

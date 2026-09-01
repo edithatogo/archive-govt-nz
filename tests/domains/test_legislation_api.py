@@ -197,6 +197,7 @@ async def test_api_client_get_document_raw_async_retries() -> None:
     assert status == HTTP_OK
     assert content == b"<act/>"
     assert calls == 4
+    assert client.last_document_retry_count == 3
 
 
 def test_api_client_get_document_raw_304() -> None:
@@ -313,6 +314,7 @@ def test_official_manifestation_404_retries_without_capability() -> None:
     assert status == HTTP_OK
     assert content == b"<act/>"
     assert observed_keys == ["bounded-capability", None]
+    assert client.last_document_retry_count == 0
 
 
 @pytest.mark.anyio
@@ -339,6 +341,7 @@ async def test_official_manifestation_async_404_retries_without_capability() -> 
     assert status == HTTP_OK
     assert content == b"<act/>"
     assert observed_keys == ["bounded-capability", None]
+    assert client.last_document_retry_count == 0
 
 
 def test_api_client_get_document_raw_500_exhaustion() -> None:
@@ -355,6 +358,31 @@ def test_api_client_get_document_raw_500_exhaustion() -> None:
 
     status, _, _ = client.get_document_raw("https://api.legislation.govt.nz/v0/act/1")
     assert status == 500
+    assert client.last_document_retry_count == 1
+
+
+@pytest.mark.anyio
+async def test_api_client_get_document_raw_async_500_exhaustion() -> None:
+    """Async retry exhaustion retains its observed attempt count."""
+
+    async def no_sleep(_seconds: float) -> None:
+        return None
+
+    def handler(_req: httpx.Request) -> httpx.Response:
+        return httpx.Response(500, text="Internal Error")
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as transport:
+        client = NZLegislationApiClient(
+            async_client=transport,
+            max_retries=1,
+            async_sleep_fn=no_sleep,
+        )
+        status, _, _ = await client.get_document_raw_async(
+            "https://api.legislation.govt.nz/v0/act/1"
+        )
+
+    assert status == 500
+    assert client.last_document_retry_count == 1
 
 
 def test_api_client_get_document_raw_transport_error() -> None:

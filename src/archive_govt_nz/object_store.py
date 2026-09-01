@@ -36,6 +36,16 @@ class ObjectStoreReceipt:
     path: Path
 
 
+@dataclass(frozen=True, slots=True)
+class ObjectStoreInventory:
+    """Verified deterministic inventory of canonical SHA-256 objects."""
+
+    object_count: int
+    total_bytes: int
+    inventory_sha256: str
+    objects: tuple[ObjectStoreReceipt, ...]
+
+
 _OBJECT_ID = re.compile(r"^sha256:[0-9a-f]{64}$")
 
 
@@ -120,6 +130,51 @@ class ContentAddressedStore:
             raise ObjectStoreError("object_corrupt")
         return ObjectStoreReceipt(
             object_id, sha256, digest.hexdigest(), byte_count, path
+        )
+
+    def verified_inventory(self) -> ObjectStoreInventory:
+        """Verify every canonical object and hash its ordered inventory.
+
+        The inventory root hashes one UTF-8 line per object containing its object
+        ID, byte count, and independently recomputed BLAKE3 digest. Any
+        non-canonical directory entry fails closed instead of being ignored.
+        """
+        if not self.objects.is_dir() or self.objects.is_symlink():
+            raise ObjectStoreError("store_missing")
+
+        object_ids: list[str] = []
+        for entry in self.objects.iterdir():
+            if (
+                entry.is_symlink()
+                or not entry.is_dir()
+                or not re.fullmatch(r"[0-9a-f]{2}", entry.name)
+            ):
+                raise ObjectStoreError("unexpected_store_entry")
+            for candidate in entry.iterdir():
+                if (
+                    candidate.is_symlink()
+                    or not candidate.is_file()
+                    or not re.fullmatch(r"[0-9a-f]{64}", candidate.name)
+                    or not candidate.name.startswith(entry.name)
+                ):
+                    raise ObjectStoreError("unexpected_store_entry")
+                object_ids.append(f"sha256:{candidate.name}")
+
+        receipts = tuple(self.verify(object_id) for object_id in sorted(object_ids))
+        inventory_hash = hashlib.sha256()
+        total_bytes = 0
+        for receipt in receipts:
+            total_bytes += receipt.byte_count
+            inventory_hash.update(
+                (
+                    f"{receipt.object_id}\t{receipt.byte_count}\t{receipt.blake3}\n"
+                ).encode()
+            )
+        return ObjectStoreInventory(
+            object_count=len(receipts),
+            total_bytes=total_bytes,
+            inventory_sha256=inventory_hash.hexdigest(),
+            objects=receipts,
         )
 
     def get_path(self, object_id: str) -> Path:

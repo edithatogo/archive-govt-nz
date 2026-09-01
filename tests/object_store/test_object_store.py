@@ -8,6 +8,7 @@ import pytest
 from archive_govt_nz.object_store import (
     ContentAddressedStore,
     ObjectStoreError,
+    ObjectStoreInventory,
     ObjectStoreReceipt,
 )
 
@@ -146,3 +147,91 @@ def test_unreadable_object_is_reported(
         store.verify(receipt.object_id)
 
     assert raised.value.error_class == "object_unreadable"
+
+
+def test_verified_inventory_is_deterministic_and_checks_every_object(
+    tmp_path: Path,
+) -> None:
+    """Inventory ordering and root do not depend on object insertion order."""
+    first = ContentAddressedStore(tmp_path / "first")
+    second = ContentAddressedStore(tmp_path / "second")
+    contents = [b"second", b"first", b"second"]
+    for content in contents:
+        first.put_bytes(content)
+    for content in reversed(contents):
+        second.put_bytes(content)
+
+    first_inventory = first.verified_inventory()
+    second_inventory = second.verified_inventory()
+
+    assert isinstance(first_inventory, ObjectStoreInventory)
+    assert first_inventory.object_count == 2
+    assert first_inventory.total_bytes == len(b"firstsecond")
+    assert first_inventory.inventory_sha256 == second_inventory.inventory_sha256
+    assert [item.object_id for item in first_inventory.objects] == sorted(
+        item.object_id for item in first_inventory.objects
+    )
+
+
+def test_verified_empty_inventory_has_canonical_empty_root(tmp_path: Path) -> None:
+    """An initialized empty store has the standard SHA-256 empty root."""
+    store = ContentAddressedStore(tmp_path)
+
+    inventory = store.verified_inventory()
+
+    assert inventory.object_count == 0
+    assert inventory.total_bytes == 0
+    assert inventory.inventory_sha256 == (
+        "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    )
+    assert inventory.objects == ()
+
+
+@pytest.mark.parametrize("kind", ["file", "directory", "symlink"])
+def test_verified_inventory_rejects_noncanonical_entries(
+    tmp_path: Path, kind: str
+) -> None:
+    """Unknown files, layouts, and links cannot disappear from CAS accounting."""
+    store = ContentAddressedStore(tmp_path)
+    if kind == "file":
+        (store.objects / "unexpected").write_text("ignored", encoding="utf-8")
+    elif kind == "directory":
+        (store.objects / "zz").mkdir()
+    else:
+        (store.objects / "link").symlink_to(tmp_path)
+
+    with pytest.raises(ObjectStoreError) as raised:
+        store.verified_inventory()
+
+    assert raised.value.error_class == "unexpected_store_entry"
+
+
+def test_verified_inventory_rejects_corrupt_and_misplaced_objects(
+    tmp_path: Path,
+) -> None:
+    """Every enumerated path must match its prefix and its verified bytes."""
+    store = ContentAddressedStore(tmp_path)
+    receipt = store.put_bytes(b"canonical")
+    receipt.path.write_bytes(b"corrupt")
+
+    with pytest.raises(ObjectStoreError) as corrupt:
+        store.verified_inventory()
+    assert corrupt.value.error_class == "object_corrupt"
+
+    receipt.path.unlink()
+    misplaced = store.objects / "00" / receipt.sha256
+    misplaced.parent.mkdir()
+    misplaced.write_bytes(b"canonical")
+    with pytest.raises(ObjectStoreError) as unexpected:
+        store.verified_inventory()
+    assert unexpected.value.error_class == "unexpected_store_entry"
+
+
+def test_verified_inventory_requires_initialized_object_root(tmp_path: Path) -> None:
+    """Read-only access to an absent store cannot be reported as empty state."""
+    store = ContentAddressedStore(tmp_path / "missing", create=False)
+
+    with pytest.raises(ObjectStoreError) as raised:
+        store.verified_inventory()
+
+    assert raised.value.error_class == "store_missing"

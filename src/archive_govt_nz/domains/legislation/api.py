@@ -214,8 +214,10 @@ class NZLegislationApiClient:
                 backoff *= 2
             else:
                 headers_dict = {k.lower(): v for k, v in resp.headers.items()}
+                self._last_document_attempts = attempts
                 return resp.status_code, resp.content, headers_dict
 
+        self._last_document_attempts = attempts
         return 500, b"", {}
 
     async def get_document_raw_async(
@@ -275,12 +277,19 @@ class NZLegislationApiClient:
                     backoff *= 2
                 else:
                     headers_dict = {k.lower(): v for k, v in resp.headers.items()}
+                    self._last_document_attempts = attempts
                     return resp.status_code, resp.content, headers_dict
         finally:
             if self._async_client is None:
                 await async_client.aclose()
 
+        self._last_document_attempts = attempts
         return 500, b"", {}
+
+    @property
+    def last_document_retry_count(self) -> int:
+        """Return retries used by the most recently completed document request."""
+        return max(0, int(getattr(self, "_last_document_attempts", 1)) - 1)
 
     def iter_search_works(
         self,
