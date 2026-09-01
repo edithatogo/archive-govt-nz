@@ -18,7 +18,30 @@
   },
   "correction_id": "legislation-cutover-v1.0.0-cycle-1-recovery-run",
   "external_action": {
-    "status": "prepared_not_applied"
+    "applied_at": "2026-09-01T16:43:21Z",
+    "operation_id": "github-request-E5FA:1B2FAE:C472:F248:6A9700A8",
+    "readback": {
+      "body": "Formal cutover release for the corpus-legislation-nz consolidation programme (epic #131).\n\nEvidence:\n- 2 successful target observation cycles (2026-08-23), each: bounded harvest -> reconciliation (consistent) -> recovery drill (verified):\n  - Cycle 1: harvest 32625516235, reconciliation 32625566353, recovery 32626113799\n  - Cycle 2 (with full-state continuation): harvest 32625990438, reconciliation 32626071396, recovery 32626113799\n- Donor repository edithatogo/corpus-legislation-nz archived 2026-08-23T07:40:08Z after the contract postcondition (2 observation cycles) was satisfied\n- Attestation: evidence/migrations/corpus-legislation-nz/shadow-operation-cutover-attestation.json\n- Gate authorization: evidence/migrations/corpus-legislation-nz/operational-gate-authorization.json\n\nSupersedes invalidated receipts (observation-receipt, cutover-receipt from PR #124 era).\n\n## Correction addendum \u2014 2026-09-02\n\nThe Cycle 1 recovery run ID in the original release note was incorrect. The verified Cycle 1 tuple is:\n\n- Cycle 1: harvest 32625516235, reconciliation 32625566353, recovery 32625612739\n\nCycle 2 remains unchanged: `Cycle 2 (with full-state continuation): harvest 32625990438, reconciliation 32626071396, recovery 32626113799`. This addendum changes no tag, release asset, archived donor state, or external publication. The authoritative source is `evidence/migrations/corpus-legislation-nz/shadow-operation-cutover-attestation.json`.\n",
+      "body_sha256": "66617b06cce61d19b3a2dadc4e352d32af9292334bb9cae4379a82147fcfd28d",
+      "etag": "W/\"ce56368ebdf86cefa385be27bc6b40e1310140fcf77b1f8f394015700909b0fa\"",
+      "normalized_response_sha256": "fff93e36259836c84c602944b8bbaa079373226449214b44ebf8acde376f75d1",
+      "raw_response_sha256": "dd9a0d71aa8356a5c33cf4134a19d40ff01f38f2a3e3749b33650f7259f2063a",
+      "release_identity": {
+        "assets": [],
+        "body": "Formal cutover release for the corpus-legislation-nz consolidation programme (epic #131).\n\nEvidence:\n- 2 successful target observation cycles (2026-08-23), each: bounded harvest -> reconciliation (consistent) -> recovery drill (verified):\n  - Cycle 1: harvest 32625516235, reconciliation 32625566353, recovery 32626113799\n  - Cycle 2 (with full-state continuation): harvest 32625990438, reconciliation 32626071396, recovery 32626113799\n- Donor repository edithatogo/corpus-legislation-nz archived 2026-08-23T07:40:08Z after the contract postcondition (2 observation cycles) was satisfied\n- Attestation: evidence/migrations/corpus-legislation-nz/shadow-operation-cutover-attestation.json\n- Gate authorization: evidence/migrations/corpus-legislation-nz/operational-gate-authorization.json\n\nSupersedes invalidated receipts (observation-receipt, cutover-receipt from PR #124 era).\n\n## Correction addendum \u2014 2026-09-02\n\nThe Cycle 1 recovery run ID in the original release note was incorrect. The verified Cycle 1 tuple is:\n\n- Cycle 1: harvest 32625516235, reconciliation 32625566353, recovery 32625612739\n\nCycle 2 remains unchanged: `Cycle 2 (with full-state continuation): harvest 32625990438, reconciliation 32626071396, recovery 32626113799`. This addendum changes no tag, release asset, archived donor state, or external publication. The authoritative source is `evidence/migrations/corpus-legislation-nz/shadow-operation-cutover-attestation.json`.\n",
+        "draft": false,
+        "id": 375146205,
+        "is_immutable": false,
+        "name": "Legislation consolidation cutover v1.0.0",
+        "prerelease": false,
+        "published_at": "2026-08-23T07:41:01Z",
+        "tag": "legislation-cutover-v1.0.0",
+        "tag_commit": "949f6f6abed0cfb668fc5f163129f11e54f335a3",
+        "url": "https://github.com/edithatogo/archive-govt-nz/releases/tag/legislation-cutover-v1.0.0"
+      },
+      "retrieved_at": "2026-09-01T16:43:42Z"
+    },
+    "status": "applied_readback_verified"
   },
   "hosted_evidence": {
     "normalized_sha256": "0ec8c03f295bc866039da9a82500f1ca8e27d760d524e57302cad141f6c68d70",
