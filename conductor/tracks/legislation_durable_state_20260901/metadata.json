@@ -1,0 +1,14 @@
+{
+  "completion_scope": "Repository implementation, reviewed local validation and PR preparation complete; final hosted/merge delivery is independently recorded on issue321. No remote preservation or Prompt10 acceptance claimed.",
+  "created_at": "2026-08-31T17:42:13.291413+00:00",
+  "description": "Prompt 09 durable legislation package and preservation authority",
+  "issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/321",
+  "parent_issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/276",
+  "pr_url": "https://github.com/edithatogo/archive-govt-nz/pull/324",
+  "status": "complete",
+  "track_id": "legislation_durable_state_20260901",
+  "type": "feature",
+  "updated_at": "2026-08-31T18:17:51.833223+00:00",
+  "validation_receipt": "evidence/migrations/corpus-legislation-nz/durable-state/validation.json",
+  "validation_receipt_sha256": "2a30a40a3df1e51fe413c315e3ed7bf53f8a161dee7d295c9c61b71b7cd59b3f"
+}

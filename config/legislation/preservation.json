@@ -1,0 +1,19 @@
+{
+  "actions_role": "expiring_operational_cache",
+  "authority": "huggingface_git_revision",
+  "encryption": "none_no_blocked_payload_upload",
+  "expiry": "no_promised_provider_expiry_deletion_and_account_risk",
+  "owner": "edithatogo",
+  "ownership_transfer": "preserve_identity_history_and_verify_before_cutover",
+  "payload_default": "blocked",
+  "prefix_parts": [
+    "durable-state",
+    "v1"
+  ],
+  "publication_gate": "explicit_hash_bound_approval_and_independent_readback",
+  "repository": "edithatogo/corpus-legislation-nz",
+  "retention": "permanent_intent_not_provider_guarantee",
+  "schema_version": "archive-govt-nz.legislation-preservation-policy/v1",
+  "zenodo_concept_doi": "10.5281/zenodo.20592539",
+  "zenodo_observed_version_doi": "10.5281/zenodo.20592540"
+}
