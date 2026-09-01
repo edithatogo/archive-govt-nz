@@ -1586,3 +1586,13 @@ preserved 119 incoming ledger lines and both sides of documentation conflicts.
 The frozen source/tests are unchanged; 141 post-integration tests passed in
 10.89 seconds. Exact-head hosted validation remains the delivery gate. See
 [full PROV receipt](./local-prov.md); no broad acceptance criteria were closed.
+
+## 2026-08-31: Public Budget reader bounded metadata
+
+Four new negative tests failed before bounded five-entry enumeration and
+explicit Thrift limits were added; the exact-closure control passed. Corrected
+new test exception/spy-typing issues without source changes. Independent review,
+63 tests/100% critical coverage, 112/112 cold mutants and full native at 9dd1883a
+passed: 4,239 tests / 97.3804% coverage / all supply-chain gates. Incoming main326
+ledger prefix is preserved. See [full receipts](./budget-reader-bounds.md).
+No original/package/HF bytes were changed.
