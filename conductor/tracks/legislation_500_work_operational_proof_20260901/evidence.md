@@ -16,3 +16,9 @@ The adjacent `operational-observation.md` report explains why the discovery work
 50-work cap cannot be relabelled as exact-inventory execution. This evidence
 closes only the preparation slice; issue #335 remains open until its factual
 execution gates are met.
+
+Local validation passed 4,393 tests at 97.48% repository coverage, 45 schemas,
+35 representative documents, 9/9 parity checks, all repository mutation lanes,
+dependency audit, licence inventory, the corrected secret scan, and the
+111-component SBOM. The initial Conductor-state and secret-keyword failures are
+retained in the run log rather than rewritten as success.
