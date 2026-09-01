@@ -31,6 +31,28 @@ COMPLETE_PROOF_KINDS = {
         "identity_verification",
     },
 }
+COMPLETE_PROOF_CONTRACTS = {
+    "capability_matrix": (
+        "report",
+        "evidence/migrations/corpus-legislation-nz/final-lineage/capability-matrix.json",
+        None,
+    ),
+    "state_verification": (
+        "receipt",
+        "evidence/completion-proofs/operational-state-verification.json",
+        "archive-govt-nz.operational-state-verification/v1",
+    ),
+    "recovery_readback": (
+        "receipt",
+        "evidence/completion-proofs/durable-recovery-readback.json",
+        "archive-govt-nz.durable-recovery-readback/v1",
+    ),
+    "identity_verification": (
+        "receipt",
+        "evidence/completion-proofs/publication-identity-readback.json",
+        "archive-govt-nz.publication-identity-readback/v1",
+    ),
+}
 
 
 class EvidenceIndexError(ValueError):
@@ -86,6 +108,31 @@ def _reject_cycles(entries: dict[str, dict[str, Any]]) -> None:
             if target is None:
                 break
             current = cast("str", target)
+
+
+def _validate_complete_proof_contract(
+    evidence_id: str, row: dict[str, Any], evidence_path: Path
+) -> None:
+    proof_kind = cast("str", row["proof_kind"])
+    contract = COMPLETE_PROOF_CONTRACTS.get(proof_kind)
+    if contract is None:
+        _fail(f"unvalidated_complete_proof_kind:{evidence_id}:{proof_kind}")
+    artefact_type, governed_path, schema_version = contract
+    if row["artefact_type"] != artefact_type or row["path"] != governed_path:
+        _fail(f"complete_proof_contract_mismatch:{evidence_id}:{proof_kind}")
+    document = _load_object(evidence_path)
+    if schema_version is None:
+        if (
+            not isinstance(document.get("target_revision"), str)
+            or not isinstance(document.get("items"), list)
+            or not document["items"]
+        ):
+            _fail(f"complete_proof_semantics_invalid:{evidence_id}:{proof_kind}")
+    elif (
+        document.get("schema_version") != schema_version
+        or document.get("status") != "verified"
+    ):
+        _fail(f"complete_proof_semantics_invalid:{evidence_id}:{proof_kind}")
 
 
 def validate_evidence_index(  # noqa: C901, PLR0912, PLR0915
@@ -176,6 +223,12 @@ def validate_evidence_index(  # noqa: C901, PLR0912, PLR0915
                 and proof_kind not in COMPLETE_PROOF_KINDS[dimension]
             ):
                 _fail(f"proof_kind_not_allowed:{dimension}:{evidence_id}")
+            if status == "complete":
+                _validate_complete_proof_contract(
+                    evidence_id,
+                    entries[evidence_id],
+                    _safe_path(root, entries[evidence_id]["path"]),
+                )
             if status != "complete" and proof_kind != "blocker_receipt":
                 _fail(f"negative_proof_kind_mismatch:{dimension}:{evidence_id}")
     return index

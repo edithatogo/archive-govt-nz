@@ -39,32 +39,50 @@ def _write(root: Path, relative: str, document: dict[str, Any]) -> str:
 
 
 def _index(root: Path) -> dict[str, Any]:
-    digest = _write(root, "proof/active.json", {"status": "verified"})
+    capability_path = (
+        "evidence/migrations/corpus-legislation-nz/final-lineage/capability-matrix.json"
+    )
+    digest = _write(
+        root, capability_path, {"target_revision": "a" * 40, "items": [{"id": "test"}]}
+    )
     entry = {
         "evidence_id": "active-proof",
-        "path": "proof/active.json",
+        "path": capability_path,
         "sha256": digest,
         "classification": "active",
-        "artefact_type": "receipt",
+        "artefact_type": "report",
         "proof_kind": "capability_matrix",
         "claim_dimensions": [DIMENSIONS[0]],
         "rationale": "Exact active proof fixture.",
     }
     proof_kinds = {
-        DIMENSIONS[1]: "state_verification",
-        DIMENSIONS[2]: "recovery_readback",
-        DIMENSIONS[3]: "identity_verification",
+        DIMENSIONS[1]: (
+            "state_verification",
+            "evidence/completion-proofs/operational-state-verification.json",
+            "archive-govt-nz.operational-state-verification/v1",
+        ),
+        DIMENSIONS[2]: (
+            "recovery_readback",
+            "evidence/completion-proofs/durable-recovery-readback.json",
+            "archive-govt-nz.durable-recovery-readback/v1",
+        ),
+        DIMENSIONS[3]: (
+            "identity_verification",
+            "evidence/completion-proofs/publication-identity-readback.json",
+            "archive-govt-nz.publication-identity-readback/v1",
+        ),
     }
     entries = [entry]
     proof_ids = {DIMENSIONS[0]: "active-proof"}
-    for dimension, proof_kind in proof_kinds.items():
+    for dimension, (proof_kind, path, schema_version) in proof_kinds.items():
         evidence_id = f"active-{dimension}"
-        path = f"proof/{evidence_id}.json"
         entries.append(
             {
                 "evidence_id": evidence_id,
                 "path": path,
-                "sha256": _write(root, path, {"status": "verified"}),
+                "sha256": _write(
+                    root, path, {"schema_version": schema_version, "status": "verified"}
+                ),
                 "classification": "active",
                 "artefact_type": "receipt",
                 "proof_kind": proof_kind,
@@ -123,7 +141,9 @@ def test_representative_schema_and_semantic_validation(tmp_path: Path) -> None:
     index = _index(tmp_path)
     loaded = _validate(tmp_path, index)
     assert resolve_active_evidence(tmp_path, loaded, "active-proof") == (
-        tmp_path / "proof/active.json"
+        tmp_path
+        / "evidence/migrations/corpus-legislation-nz/final-lineage"
+        / "capability-matrix.json"
     )
 
 
@@ -159,6 +179,7 @@ def test_symlink_escape_rejected(tmp_path: Path) -> None:
     outside = tmp_path.parent / "outside-proof.json"
     outside.write_text('{"status":"verified"}\n', encoding="utf-8")
     link = tmp_path / "proof/escape.json"
+    link.parent.mkdir()
     link.symlink_to(outside)
     index["entries"][0]["path"] = "proof/escape.json"
     index["entries"][0]["sha256"] = hashlib.sha256(outside.read_bytes()).hexdigest()
@@ -187,7 +208,8 @@ def test_missing_and_hash_mismatched_evidence_rejected(tmp_path: Path) -> None:
 
 def test_active_label_cannot_hide_invalidated_document(tmp_path: Path) -> None:
     index = _index(tmp_path)
-    digest = _write(tmp_path, "proof/active.json", {"status": "invalidated"})
+    active_path = index["entries"][0]["path"]
+    digest = _write(tmp_path, active_path, {"status": "invalidated"})
     index["entries"][0]["sha256"] = digest
     with pytest.raises(
         EvidenceIndexError, match="active_evidence_has_non_active_status"
@@ -362,6 +384,38 @@ def test_complete_proof_kind_is_dimension_specific(tmp_path: Path) -> None:
     index = _index(tmp_path)
     index["entries"][0]["proof_kind"] = "identity_verification"
     with pytest.raises(EvidenceIndexError, match="proof_kind_not_allowed"):
+        _validate(tmp_path, index)
+
+
+def test_complete_proof_kind_requires_registered_contract(tmp_path: Path) -> None:
+    index = _index(tmp_path)
+    index["entries"][0]["proof_kind"] = "contract"
+    with pytest.raises(EvidenceIndexError, match="unvalidated_complete_proof_kind"):
+        _validate(tmp_path, index)
+
+
+def test_legacy_capability_matrix_requires_semantic_shape(tmp_path: Path) -> None:
+    index = _index(tmp_path)
+    row = index["entries"][0]
+    row["sha256"] = _write(tmp_path, row["path"], {"target_revision": "a" * 40})
+    with pytest.raises(EvidenceIndexError, match="complete_proof_semantics_invalid"):
+        _validate(tmp_path, index)
+
+
+def test_typed_complete_proof_requires_verified_schema(tmp_path: Path) -> None:
+    index = _index(tmp_path)
+    row = next(
+        item for item in index["entries"] if item["proof_kind"] == "state_verification"
+    )
+    row["sha256"] = _write(
+        tmp_path,
+        row["path"],
+        {
+            "schema_version": "archive-govt-nz.operational-state-verification/v1",
+            "status": "unverified",
+        },
+    )
+    with pytest.raises(EvidenceIndexError, match="complete_proof_semantics_invalid"):
         _validate(tmp_path, index)
 
 

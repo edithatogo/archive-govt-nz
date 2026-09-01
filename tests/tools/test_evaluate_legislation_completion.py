@@ -31,23 +31,55 @@ def _write_repo(tmp_path: Path, statuses: dict[str, str] | None = None) -> Path:
         "corpus_custody_recoverability": "recovery_readback",
         "publication_identity_migration": "identity_verification",
     }
+    proof_contracts = {
+        "code_capability_migration": (
+            "evidence/migrations/corpus-legislation-nz/final-lineage/capability-matrix.json",
+            "report",
+            {"target_revision": "6" * 40, "items": [{"id": "test"}]},
+        ),
+        "operational_state_migration": (
+            "evidence/completion-proofs/operational-state-verification.json",
+            "receipt",
+            {
+                "schema_version": "archive-govt-nz.operational-state-verification/v1",
+                "status": "verified",
+            },
+        ),
+        "corpus_custody_recoverability": (
+            "evidence/completion-proofs/durable-recovery-readback.json",
+            "receipt",
+            {
+                "schema_version": "archive-govt-nz.durable-recovery-readback/v1",
+                "status": "verified",
+            },
+        ),
+        "publication_identity_migration": (
+            "evidence/completion-proofs/publication-identity-readback.json",
+            "receipt",
+            {
+                "schema_version": "archive-govt-nz.publication-identity-readback/v1",
+                "status": "verified",
+            },
+        ),
+    }
     entries = []
     evaluator_inputs = {}
     dimensions = {}
     for name in DIMENSIONS:
         status = dimension_statuses[name]
         evidence_id = f"proof-{name}"
-        evidence = tmp_path / f"evidence/{evidence_id}.json"
+        relative_path, artefact_type, document = proof_contracts[name]
+        evidence = tmp_path / relative_path
         evidence.parent.mkdir(parents=True, exist_ok=True)
-        evidence.write_text('{"status":"verified"}\n', encoding="utf-8")
+        evidence.write_text(json.dumps(document) + "\n", encoding="utf-8")
         classification = "active" if status == "complete" else status
         entries.append(
             {
                 "evidence_id": evidence_id,
-                "path": f"evidence/{evidence_id}.json",
+                "path": relative_path,
                 "sha256": hashlib.sha256(evidence.read_bytes()).hexdigest(),
                 "classification": classification,
-                "artefact_type": "receipt",
+                "artefact_type": artefact_type,
                 "proof_kind": (
                     complete_kinds[name]
                     if classification == "active"
@@ -76,7 +108,7 @@ def _write_repo(tmp_path: Path, statuses: dict[str, str] | None = None) -> Path:
         "dimensions": dimensions,
     }
     path = tmp_path / "evidence/migrations/corpus-legislation-nz/evidence-index.json"
-    path.parent.mkdir(parents=True)
+    path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(index) + "\n", encoding="utf-8")
     return tmp_path
 
@@ -87,6 +119,33 @@ def test_all_complete_active_selected_proofs_pass(tmp_path: Path) -> None:
     assert complete is True
     assert result["status"] == "complete"
     assert all(row["proof_eligible"] for row in result["dimensions"].values())
+
+
+def test_relabelled_unrelated_receipt_cannot_complete_dimension(tmp_path: Path) -> None:
+    """An allowed proof-kind label cannot authorize an unrelated receipt."""
+    base = _write_repo(tmp_path)
+    path = base / "evidence/migrations/corpus-legislation-nz/evidence-index.json"
+    index = json.loads(path.read_text())
+    row = next(
+        item for item in index["entries"] if item["proof_kind"] == "state_verification"
+    )
+    unrelated = base / "evidence/unrelated-receipt.json"
+    unrelated.write_text(
+        json.dumps(
+            {
+                "schema_version": "archive-govt-nz.operational-state-verification/v1",
+                "status": "verified",
+            }
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    row["path"] = unrelated.relative_to(base).as_posix()
+    row["sha256"] = hashlib.sha256(unrelated.read_bytes()).hexdigest()
+    path.write_text(json.dumps(index) + "\n")
+    complete, result = evaluate_completion(base)
+    assert complete is False
+    assert "complete_proof_contract_mismatch" in result["errors"][0]
 
 
 def test_missing_index_fails_closed(tmp_path: Path) -> None:

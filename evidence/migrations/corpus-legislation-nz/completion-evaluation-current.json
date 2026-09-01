@@ -1,6 +1,6 @@
 {
   "schema_version": "archive-govt-nz.completion-evaluator/v2",
-  "evaluated_at": "2026-09-01T15:14:57Z",
+  "evaluated_at": "2026-09-01T15:57:58Z",
   "evidence_index": "evidence/migrations/corpus-legislation-nz/evidence-index.json",
   "evidence_index_valid": true,
   "dimensions": {
@@ -44,7 +44,7 @@
     "dimension_incomplete:publication_identity_migration:externally_blocked"
   ],
   "errors": [],
-  "evidence_index_sha256": "a51b04c41c3ebb94f55e3cebd1c40baf6d7c423fd7ae8f39ec594d4976080c85",
+  "evidence_index_sha256": "e9ec0c9813a1e3142a4e3f3bcd817a749dda36380b0dcc512d123510118e25d1",
   "index_id": "legislation-consolidation-evidence-20260901",
   "target_commit": "6755e12a48536de938b6f5955fe974d4b1de1b75",
   "donor_commit": "b40587f1b1aec7356a0f623916fcc8212397d283"

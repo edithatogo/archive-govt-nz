@@ -227,6 +227,31 @@ def test_public_path_adjudication_does_not_suppress_other_candidates(
     assert not supply_chain.is_reviewed_public_path(filename, public)
 
 
+def test_reviewed_public_checksum_path_in_evidence_index(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """The one governed public checksum pathname is precisely adjudicated."""
+    monkeypatch.setattr(supply_chain, "REPOSITORY_ROOT", tmp_path)
+    path = tmp_path / supply_chain.PUBLIC_EVIDENCE_INDEX
+    path.parent.mkdir(parents=True)
+    path.write_text(
+        json.dumps({"entries": [{"path": supply_chain.PUBLIC_CHECKSUM_PATH}]}),
+        encoding="utf-8",
+    )
+    finding = {
+        "type": "Base64 High Entropy String",
+        "hashed_secret": supply_chain.PUBLIC_CHECKSUM_PATH_CANDIDATE_DIGEST,
+    }
+    filename = path.relative_to(tmp_path).as_posix()
+    assert supply_chain.is_reviewed_public_path(filename, finding)
+    mismatched = dict(finding)
+    digest_key = next(key for key in finding if key.endswith("_secret"))
+    mismatched[digest_key] = "mismatch"
+    assert not supply_chain.is_reviewed_public_path(filename, mismatched)
+    path.write_text('{"entries": []}', encoding="utf-8")
+    assert not supply_chain.is_reviewed_public_path(filename, finding)
+
+
 def test_reviewed_document_paths_require_known_revisions_and_keys() -> None:
     """Path-shaped unknown input does not qualify by shape alone."""
     value = "conductor/archive/imported/corpus-legislation-nz/" + "0" * 40

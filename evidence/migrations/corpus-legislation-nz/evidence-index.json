@@ -8,7 +8,7 @@
   "donor_commit": "b40587f1b1aec7356a0f623916fcc8212397d283",
   "entries": [
     {
-      "evidence_id": "conductor-tracks-legislation-500-work-operational-proof-20260901-review-md-2bfd3df4a8",
+      "evidence_id": "inventory-2bfd3df4a8a4b6bc",
       "path": "conductor/tracks/legislation_500_work_operational_proof_20260901/review.md",
       "sha256": "63d96f37c8f3d354409a1040758b92562a9375c3dae0b3f0486148c3adad1f10",
       "classification": "historical",
@@ -21,7 +21,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "conductor-tracks-legislation-canonical-state-merge-20260831-review-md-b67b9debc6",
+      "evidence_id": "inventory-b67b9debc6413814",
       "path": "conductor/tracks/legislation_canonical_state_merge_20260831/review.md",
       "sha256": "5fd046fa896e7d6563220ec6227df07097963902c7503d1f66d1ca6c0287a857",
       "classification": "historical",
@@ -34,7 +34,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "conductor-tracks-legislation-cli-service-backing-20260820-review-md-4eeb3d87bc",
+      "evidence_id": "inventory-4eeb3d87bce8c3cd",
       "path": "conductor/tracks/legislation_cli_service_backing_20260820/review.md",
       "sha256": "68dc224891d58916129209e7dda72918d60ef3879052d74572ff2a9c202f039e",
       "classification": "historical",
@@ -46,7 +46,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "conductor-tracks-legislation-corpus-consolidation-20260818-review-md-d4c6477874",
+      "evidence_id": "inventory-d4c6477874996446",
       "path": "conductor/tracks/legislation_corpus_consolidation_20260818/review.md",
       "sha256": "5988e7b651fe8ef22e6a0e7475321cc14add73f09c97954d8483d2c36687743e",
       "classification": "historical",
@@ -74,7 +74,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "conductor-tracks-legislation-corrective-adapter-client-integration-20260818-review-md-e49507056e",
+      "evidence_id": "inventory-e49507056efa8a54",
       "path": "conductor/tracks/legislation_corrective_adapter_client_integration_20260818/review.md",
       "sha256": "a9bfc77c51c074515634e09938d0528a7601459549a6c34609b46d1066a9af03",
       "classification": "historical",
@@ -86,7 +86,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "conductor-tracks-legislation-corrective-cli-contract-compatibility-20260818-review-md-b892d47237",
+      "evidence_id": "inventory-b892d472376b4509",
       "path": "conductor/tracks/legislation_corrective_cli_contract_compatibility_20260818/review.md",
       "sha256": "5a92d4931118609020ac525eefb710461541d816f3ba3d8c9037a8494ee0ed5e",
       "classification": "historical",
@@ -98,7 +98,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "conductor-tracks-legislation-corrective-evidence-chronology-20260818-review-md-fb6fb151a0",
+      "evidence_id": "inventory-fb6fb151a0b2f210",
       "path": "conductor/tracks/legislation_corrective_evidence_chronology_20260818/review.md",
       "sha256": "96336552faab9d4a1e30dc2c3522adfeb0301f455eb0e684eab15822c289393f",
       "classification": "historical",
@@ -110,7 +110,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "conductor-tracks-legislation-corrective-gazette-residual-separation-20260818-review-md-e9c851dc0a",
+      "evidence_id": "inventory-e9c851dc0ae5e151",
       "path": "conductor/tracks/legislation_corrective_gazette_residual_separation_20260818/review.md",
       "sha256": "7e73f3f404268a8009ca80a433405c3c1927ff8c55a6d2c62a5ff6a9f9836ae3",
       "classification": "historical",
@@ -122,7 +122,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "conductor-tracks-legislation-corrective-identity-normalisation-corpus-20260818-review-md-e1f96914d4",
+      "evidence_id": "inventory-e1f96914d455e8d4",
       "path": "conductor/tracks/legislation_corrective_identity_normalisation_corpus_20260818/review.md",
       "sha256": "d85a3fd87e623ebec43b051ab46f3de9afa6632145dad97de49e66951a4ba541",
       "classification": "historical",
@@ -134,7 +134,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "conductor-tracks-legislation-corrective-live-inventory-reuse-20260818-review-md-6a9464853a",
+      "evidence_id": "inventory-6a9464853a0c7362",
       "path": "conductor/tracks/legislation_corrective_live_inventory_reuse_20260818/review.md",
       "sha256": "817283afc6aedaba41450c53f14f9ed301b524dc1f100180ecd63f1f19f3cc0c",
       "classification": "historical",
@@ -146,7 +146,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "conductor-tracks-legislation-corrective-mcp-disposition-conformance-20260818-review-md-5a1b4d7627",
+      "evidence_id": "inventory-5a1b4d7627140283",
       "path": "conductor/tracks/legislation_corrective_mcp_disposition_conformance_20260818/review.md",
       "sha256": "ae6ecd7be06fba6492db3bca6ccb6366614c81021c58d347935f1fdaf2bbdb6b",
       "classification": "historical",
@@ -158,7 +158,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "conductor-tracks-legislation-corrective-reconciliation-parity-publication-20260818-review-9d9bf24d77",
+      "evidence_id": "inventory-9d9bf24d771ededf",
       "path": "conductor/tracks/legislation_corrective_reconciliation_parity_publication_20260818/review.md",
       "sha256": "41a38eaf54dd8c35fc94c803c2e1799f5b28bdf0cd6c7b834fa692ebd402b46b",
       "classification": "historical",
@@ -172,7 +172,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "conductor-tracks-legislation-corrective-rights-redistribution-20260818-review-md-608e2ba52a",
+      "evidence_id": "inventory-608e2ba52af74711",
       "path": "conductor/tracks/legislation_corrective_rights_redistribution_20260818/review.md",
       "sha256": "60a59e73c11a9553abdf8456240669abe601cc17135457fa255e1e8961865466",
       "classification": "historical",
@@ -184,7 +184,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "conductor-tracks-legislation-corrective-service-integrity-20260820-review-md-f8e0ccb6b5",
+      "evidence_id": "inventory-f8e0ccb6b5bfca68",
       "path": "conductor/tracks/legislation_corrective_service_integrity_20260820/review.md",
       "sha256": "99c02ff1173b12967c76b69020574fb05ac17c035d17bf1ebff510ee0513e381",
       "classification": "historical",
@@ -196,7 +196,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "conductor-tracks-legislation-corrective-shadow-operation-cutover-20260818-review-md-f5e0f2d0ca",
+      "evidence_id": "inventory-f5e0f2d0ca31a6aa",
       "path": "conductor/tracks/legislation_corrective_shadow_operation_cutover_20260818/review.md",
       "sha256": "4b750cb2cd1db8e976fcac2b8e912d78dec177806ec3dee3600b8784a2cd11a8",
       "classification": "historical",
@@ -208,7 +208,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "conductor-tracks-legislation-corrective-standards-schema-conformance-20260818-review-md-0e23de1442",
+      "evidence_id": "inventory-0e23de1442a53814",
       "path": "conductor/tracks/legislation_corrective_standards_schema_conformance_20260818/review.md",
       "sha256": "8d0315e9620cd3a441004b6094590b99a731c21f42d6f4babad199a346e77121",
       "classification": "historical",
@@ -220,7 +220,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "conductor-tracks-legislation-corrective-weekly-orchestration-state-20260818-review-md-649d6b72db",
+      "evidence_id": "inventory-649d6b72db790418",
       "path": "conductor/tracks/legislation_corrective_weekly_orchestration_state_20260818/review.md",
       "sha256": "cb3945bdc5c58902effad1ce73eea96055f5664cafb0a2f652822244e799bcbd",
       "classification": "historical",
@@ -233,7 +233,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "conductor-tracks-legislation-durable-state-20260901-review-md-9758dec908",
+      "evidence_id": "inventory-9758dec908d46ba4",
       "path": "conductor/tracks/legislation_durable_state_20260901/review.md",
       "sha256": "e8ec40c7f87b1dd21aebc9c9d89f82e2f317ed36651aed303b62429be6d38367",
       "classification": "historical",
@@ -247,19 +247,19 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "conductor-tracks-legislation-evidence-index-20260902-review-md-0768834490",
+      "evidence_id": "inventory-0768834490c00d7c",
       "path": "conductor/tracks/legislation_evidence_index_20260902/review.md",
-      "sha256": "021b8db91569c5106b53092470f6d9366118d697c7f21e1d7a9e366e0075fc8f",
-      "classification": "historical",
+      "sha256": "591f00c4378b2d33ab3edca642af753a4d1178f8daafd4679d59084a16e241cf",
+      "classification": "active",
       "artefact_type": "track_review",
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "rationale": "Current Prompt 17 review record; indexed for audit but not selected as completion proof.",
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "conductor-tracks-legislation-final-donor-lineage-20260831-review-md-5b46596a44",
+      "evidence_id": "inventory-5b46596a4466712b",
       "path": "conductor/tracks/legislation_final_donor_lineage_20260831/review.md",
       "sha256": "587ffc32cec48caaa985d33cd96d651ff1545f2c6d22f9d86a353dc34f94a0eb",
       "classification": "historical",
@@ -271,7 +271,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "conductor-tracks-legislation-final-donor-state-verification-20260831-review-md-ae8f3b07e2",
+      "evidence_id": "inventory-ae8f3b07e26e2321",
       "path": "conductor/tracks/legislation_final_donor_state_verification_20260831/review.md",
       "sha256": "06ba488d02b8818f1adfbf29fbc6e6dbba106cc2d7c666fb43a4bd746d540bef",
       "classification": "historical",
@@ -284,7 +284,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "conductor-tracks-legislation-harvest-accounting-20260901-review-md-c9e25a1abb",
+      "evidence_id": "inventory-c9e25a1abb470e56",
       "path": "conductor/tracks/legislation_harvest_accounting_20260901/review.md",
       "sha256": "5cf75f8771d18da9a8c34c40af15d784c4110cb2da797980e811d6f3c4c938fb",
       "classification": "historical",
@@ -297,7 +297,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "conductor-tracks-legislation-hf-identity-reconciliation-20260901-review-md-7c85a725d2",
+      "evidence_id": "inventory-7c85a725d2a92a9e",
       "path": "conductor/tracks/legislation_hf_identity_reconciliation_20260901/review.md",
       "sha256": "7e9e1044a0db38a7c754d393186da8767ef3251900331fd5ecc1eb12c8f33f8f",
       "classification": "historical",
@@ -310,7 +310,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "conductor-tracks-legislation-historical-coverage-20260901-review-md-a8bfee8f1a",
+      "evidence_id": "inventory-a8bfee8f1ab7c147",
       "path": "conductor/tracks/legislation_historical_coverage_20260901/review.md",
       "sha256": "29257051edaee4f8a27c68ea81cdb8c10e2020cfe09d2749c8c563a66b3396c8",
       "classification": "historical",
@@ -323,7 +323,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "conductor-tracks-legislation-one-batch-reconciliation-20260820-review-md-5b8c954bcd",
+      "evidence_id": "inventory-5b8c954bcd80abbf",
       "path": "conductor/tracks/legislation_one_batch_reconciliation_20260820/review.md",
       "sha256": "cdb5cbae803cf5053388fd1b6cf093cb16f8e0261c9402b7a26e095beb5e9ded",
       "classification": "historical",
@@ -336,7 +336,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "conductor-tracks-legislation-parent-state-restoration-20260901-review-md-7afa9efbeb",
+      "evidence_id": "inventory-7afa9efbebdb76d5",
       "path": "conductor/tracks/legislation_parent_state_restoration_20260901/review.md",
       "sha256": "c7532857dd9fcba186bffbf6d9d445edb907e71fed0a09941f686ba0d0e2fa84",
       "classification": "historical",
@@ -349,7 +349,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "conductor-tracks-legislation-reviewed-seed-registry-20260831-review-md-034f24de75",
+      "evidence_id": "inventory-034f24de7504b4f2",
       "path": "conductor/tracks/legislation_reviewed_seed_registry_20260831/review.md",
       "sha256": "1760d111e01ff5b7744c7c551336ca06ecaa05576a72ec5b9b74201662f8bf9a",
       "classification": "historical",
@@ -362,7 +362,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "conductor-tracks-legislation-typed-source-set-20260901-review-md-7e7dd80f9d",
+      "evidence_id": "inventory-7e7dd80f9d2b1e8e",
       "path": "conductor/tracks/legislation_typed_source_set_20260901/review.md",
       "sha256": "e12d39ee09f722c17faf8be32c34fe76bf3ef3c6bb64bb28a0243a90a26d7d8f",
       "classification": "historical",
@@ -374,7 +374,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "conductor-tracks-legislation-workflow-fail-closed-20260820-review-md-afba609c6f",
+      "evidence_id": "inventory-afba609c6f9b7760",
       "path": "conductor/tracks/legislation_workflow_fail_closed_20260820/review.md",
       "sha256": "fdfcf13d85ba2978eef9ad56ebf1518250af1dfb7b62013c477a40480efec887",
       "classification": "historical",
@@ -386,7 +386,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "conductor-tracks-zenodo-identity-correction-20260902-review-md-ad2fa194cc",
+      "evidence_id": "inventory-ad2fa194ccc45a5f",
       "path": "conductor/tracks/zenodo_identity_correction_20260902/review.md",
       "sha256": "3868157a4f16d44d6f981f6b4e191868eca85a1c8f457ef741d197e24d59d3cb",
       "classification": "historical",
@@ -399,7 +399,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "contracts-approval-legislation-corrective-approval-profile-yaml-e0119eaed7",
+      "evidence_id": "inventory-e0119eaed7794920",
       "path": "contracts/approval/legislation-corrective-approval-profile.yaml",
       "sha256": "eaebf2d4ea3746de525d694c856c7732fcff117e128abe51f72ee855be6f8725",
       "classification": "active",
@@ -411,7 +411,7 @@
       "proof_kind": "contract"
     },
     {
-      "evidence_id": "contracts-cli-archive-govt-nz-cli-contract-yaml-6795496848",
+      "evidence_id": "inventory-67954968484653ec",
       "path": "contracts/cli/archive-govt-nz-cli.contract.yaml",
       "sha256": "c1c7052d60f90907283e7e2b18a8ab8db3c25e05d2ddc00b0cbfd1c615f5b4d6",
       "classification": "active",
@@ -423,7 +423,7 @@
       "proof_kind": "contract"
     },
     {
-      "evidence_id": "contracts-cli-nzlc-compatibility-contract-yaml-4826753ef1",
+      "evidence_id": "inventory-4826753ef16e6ecf",
       "path": "contracts/cli/nzlc-compatibility.contract.yaml",
       "sha256": "f23a8b38af18ae0931351d08182ffbee820b7ef8bc770e873e258e2d511fb8d0",
       "classification": "active",
@@ -435,7 +435,7 @@
       "proof_kind": "contract"
     },
     {
-      "evidence_id": "contracts-completion-legislation-completion-contract-yaml-bab2718de0",
+      "evidence_id": "inventory-bab2718de0c2cc6b",
       "path": "contracts/completion/legislation-completion.contract.yaml",
       "sha256": "a7deb741c89b1ca27c1eba8ba5ca8fdcbf4a9523efc51ecce7b1fcd089d604c4",
       "classification": "active",
@@ -447,7 +447,7 @@
       "proof_kind": "contract"
     },
     {
-      "evidence_id": "contracts-cutover-legislation-cutover-contract-yaml-6bb6c38ae5",
+      "evidence_id": "inventory-6bb6c38ae5dd3ffc",
       "path": "contracts/cutover/legislation-cutover.contract.yaml",
       "sha256": "e5d48c8f0bf722af2ce883bdc01669d74502de7c3a7178b1ce06c144f423f7ce",
       "classification": "active",
@@ -459,7 +459,7 @@
       "proof_kind": "contract"
     },
     {
-      "evidence_id": "contracts-domain-legislation-domain-contract-yaml-b47ccd8c66",
+      "evidence_id": "inventory-b47ccd8c66e8eb06",
       "path": "contracts/domain/legislation-domain.contract.yaml",
       "sha256": "8517674237ca358277a3bcaffc46eecc9b1552ac5b928cb9ab797785256e882b",
       "classification": "active",
@@ -471,7 +471,7 @@
       "proof_kind": "contract"
     },
     {
-      "evidence_id": "contracts-evidence-legislation-evidence-integrity-contract-yaml-05d8e78127",
+      "evidence_id": "inventory-05d8e781272d1fa4",
       "path": "contracts/evidence/legislation-evidence-integrity.contract.yaml",
       "sha256": "35fd363253ae5fbb72de5def39e5e7ec3c0324b268fcae398802403d9a3d7d4c",
       "classification": "active",
@@ -483,7 +483,7 @@
       "proof_kind": "contract"
     },
     {
-      "evidence_id": "contracts-mcp-archive-govt-nz-mcp-disposition-contract-yaml-c92089a1f4",
+      "evidence_id": "inventory-c92089a1f453bf92",
       "path": "contracts/mcp/archive-govt-nz-mcp-disposition.contract.yaml",
       "sha256": "e285dde22084647a653f36a932512a83aec8d457a662f7df0000bf285b2ac84d",
       "classification": "active",
@@ -495,7 +495,7 @@
       "proof_kind": "contract"
     },
     {
-      "evidence_id": "contracts-migration-legislation-consolidation-contract-yaml-3ac888c17c",
+      "evidence_id": "inventory-3ac888c17c45f278",
       "path": "contracts/migration/legislation-consolidation.contract.yaml",
       "sha256": "8ee18bd7acd6f3f585342ef62f22686200583f1e42df4f9b73d6db82eb73901c",
       "classification": "active",
@@ -507,7 +507,7 @@
       "proof_kind": "contract"
     },
     {
-      "evidence_id": "contracts-publication-legislation-publication-identity-contract-yaml-2a4db5ce15",
+      "evidence_id": "inventory-2a4db5ce159e618d",
       "path": "contracts/publication/legislation-publication-identity.contract.yaml",
       "sha256": "219c9c0855562b22ec262428b86196f176ad65ff122ee8d8b6dd32ab657591da",
       "classification": "active",
@@ -520,7 +520,7 @@
       "proof_kind": "contract"
     },
     {
-      "evidence_id": "contracts-reuse-legislation-reuse-before-create-contract-yaml-c225e60606",
+      "evidence_id": "inventory-c225e60606e07855",
       "path": "contracts/reuse/legislation-reuse-before-create.contract.yaml",
       "sha256": "eb8e3068363acb5f4c1565ed1b432a993ffb06c04376ba7feccf287d7ced66dd",
       "classification": "active",
@@ -532,7 +532,7 @@
       "proof_kind": "contract"
     },
     {
-      "evidence_id": "contracts-rights-legislation-rights-contract-yaml-75d58b42f6",
+      "evidence_id": "inventory-75d58b42f6939605",
       "path": "contracts/rights/legislation-rights.contract.yaml",
       "sha256": "aad4558d347e5fee7ded1dfdb5ec1b1585c0efc1e2b17fb1202f6ce572833479",
       "classification": "active",
@@ -544,7 +544,7 @@
       "proof_kind": "contract"
     },
     {
-      "evidence_id": "contracts-schedule-legislation-archive-slo-contract-yaml-eff72ecd39",
+      "evidence_id": "inventory-eff72ecd397290f2",
       "path": "contracts/schedule/legislation-archive-slo.contract.yaml",
       "sha256": "e7a61fb6035b4b613cdd404c9442c10a2fed9200104b6cb1f7ef6a6425a7406e",
       "classification": "active",
@@ -556,7 +556,7 @@
       "proof_kind": "contract"
     },
     {
-      "evidence_id": "contracts-schemas-legislation-schema-conformance-contract-yaml-f2abeec31c",
+      "evidence_id": "inventory-f2abeec31cc47d86",
       "path": "contracts/schemas/legislation-schema-conformance.contract.yaml",
       "sha256": "5e8b9717678f449d74231dc4130757dce4f206f4ffa331ef9a3c7dc23db8dde2",
       "classification": "active",
@@ -568,7 +568,7 @@
       "proof_kind": "contract"
     },
     {
-      "evidence_id": "docs-migrations-corpus-legislation-nz-baseline-md-91e56c528c",
+      "evidence_id": "inventory-91e56c528c7a79f1",
       "path": "docs/migrations/corpus-legislation-nz/baseline.md",
       "sha256": "2b3b0cc72ce0766c0c1dd2b1a1ab5b1ce8b350fa1967901d461bec4d44afff39",
       "classification": "historical",
@@ -580,7 +580,7 @@
       "proof_kind": "closeout_summary"
     },
     {
-      "evidence_id": "docs-migrations-corpus-legislation-nz-capability-matrix-md-4ea44e6267",
+      "evidence_id": "inventory-4ea44e626737d3f5",
       "path": "docs/migrations/corpus-legislation-nz/capability-matrix.md",
       "sha256": "0472bf5c57493db87f645c3ef40c9a61c65aa8da58c638328d82a737a1885adc",
       "classification": "historical",
@@ -592,7 +592,7 @@
       "proof_kind": "capability_matrix"
     },
     {
-      "evidence_id": "docs-migrations-corpus-legislation-nz-component-inventory-md-78d464ccea",
+      "evidence_id": "inventory-78d464ccea41a8fd",
       "path": "docs/migrations/corpus-legislation-nz/component-inventory.md",
       "sha256": "b84314d262f4d0cd7f501024c722f8a650ecb38610614823074919c109028400",
       "classification": "historical",
@@ -604,7 +604,7 @@
       "proof_kind": "closeout_summary"
     },
     {
-      "evidence_id": "docs-migrations-corpus-legislation-nz-conductor-lineage-md-6f7a28a268",
+      "evidence_id": "inventory-6f7a28a2685fd0fa",
       "path": "docs/migrations/corpus-legislation-nz/conductor-lineage.md",
       "sha256": "4d712aa842243f3f5d8b5783bd81afa65f099bdd2f9f44554dff1c72bd29fc9b",
       "classification": "historical",
@@ -647,7 +647,7 @@
       "proof_kind": "closeout_summary"
     },
     {
-      "evidence_id": "docs-migrations-corpus-legislation-nz-corrective-audit-md-184e8a1c21",
+      "evidence_id": "inventory-184e8a1c216f3a72",
       "path": "docs/migrations/corpus-legislation-nz/corrective-audit.md",
       "sha256": "bf0c0702ad061a248982b43baec3df4c82a4a64fe1492dc56d28c0bfcda59836",
       "classification": "historical",
@@ -659,7 +659,7 @@
       "proof_kind": "closeout_summary"
     },
     {
-      "evidence_id": "docs-migrations-corpus-legislation-nz-cutover-runbook-md-d97a20944b",
+      "evidence_id": "inventory-d97a20944b6a9637",
       "path": "docs/migrations/corpus-legislation-nz/cutover-runbook.md",
       "sha256": "6871bcf56903d6f667d8c1109151cf88da0b4b13d7f8b7a70a08f0f3e3346010",
       "classification": "historical",
@@ -671,7 +671,7 @@
       "proof_kind": "closeout_summary"
     },
     {
-      "evidence_id": "docs-migrations-corpus-legislation-nz-final-donor-lineage-md-aa0e0d7c88",
+      "evidence_id": "inventory-aa0e0d7c887f71ed",
       "path": "docs/migrations/corpus-legislation-nz/final-donor-lineage.md",
       "sha256": "2d9d02251633f562b6845ab7a0c1f270db46aeb8450e5cb5775c8714d96b5c27",
       "classification": "historical",
@@ -683,7 +683,7 @@
       "proof_kind": "closeout_summary"
     },
     {
-      "evidence_id": "docs-migrations-corpus-legislation-nz-issue-reconciliation-md-64b3df8b25",
+      "evidence_id": "inventory-64b3df8b25f12f7a",
       "path": "docs/migrations/corpus-legislation-nz/issue-reconciliation.md",
       "sha256": "f0ab6f91e7e57e3c2cf686995c4ccd9cdd76ccf1d8ac26a2adce4af25096781f",
       "classification": "historical",
@@ -695,7 +695,7 @@
       "proof_kind": "closeout_summary"
     },
     {
-      "evidence_id": "docs-migrations-corpus-legislation-nz-licensing-and-rights-md-9efaca6d4f",
+      "evidence_id": "inventory-9efaca6d4fef59a5",
       "path": "docs/migrations/corpus-legislation-nz/licensing-and-rights.md",
       "sha256": "4a10dcb6a4c9aa8862c4e44796b389811c76bbcfcdc4a45b0a709ae7a46b99da",
       "classification": "historical",
@@ -707,7 +707,7 @@
       "proof_kind": "closeout_summary"
     },
     {
-      "evidence_id": "docs-migrations-corpus-legislation-nz-live-inventory-md-da12388714",
+      "evidence_id": "inventory-da12388714aa0f68",
       "path": "docs/migrations/corpus-legislation-nz/live-inventory.md",
       "sha256": "3579243035acd5d9d3397a26c5fdf9a30fa05fa2b52b225df9d1735ed467505c",
       "classification": "historical",
@@ -733,7 +733,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "docs-migrations-corpus-legislation-nz-pre-acquisition-discovery-md-39d0e2639e",
+      "evidence_id": "inventory-39d0e2639efd86af",
       "path": "docs/migrations/corpus-legislation-nz/pre-acquisition-discovery.md",
       "sha256": "f1492d9538388fbfaa7f9376161275698bd7bb7813f0c6a702ae21b3a3ca6318",
       "classification": "historical",
@@ -745,7 +745,7 @@
       "proof_kind": "closeout_summary"
     },
     {
-      "evidence_id": "docs-migrations-corpus-legislation-nz-publication-identity-reconciliation-md-5e61483beb",
+      "evidence_id": "inventory-5e61483bebc418c7",
       "path": "docs/migrations/corpus-legislation-nz/publication-identity-reconciliation.md",
       "sha256": "1b0f22017475aba898d62df2419ac918e7c986fe9e46a468379f862e4c2ac6bc",
       "classification": "historical",
@@ -758,7 +758,7 @@
       "proof_kind": "identity_verification"
     },
     {
-      "evidence_id": "docs-migrations-corpus-legislation-nz-reuse-decisions-md-1d8343570d",
+      "evidence_id": "inventory-1d8343570daa1308",
       "path": "docs/migrations/corpus-legislation-nz/reuse-decisions.md",
       "sha256": "167b43028fe3124d72cf71261cd0e55f78dcecee1014b5edcf6d1e8c75bfe304",
       "classification": "historical",
@@ -783,7 +783,7 @@
       "proof_kind": "blocker_receipt"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-500-work-operational-proof-operational-observati-3a712b87a9",
+      "evidence_id": "inventory-3a712b87a9a92bfb",
       "path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/operational-observation.md",
       "sha256": "0ecd004b7cc52fe29b13ae9f25f647f12dba71f4d87d1b24a7bdfc5c13349635",
       "classification": "historical",
@@ -795,7 +795,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-baseline-json-a7a98831ac",
+      "evidence_id": "inventory-a7a98831ac012b49",
       "path": "evidence/migrations/corpus-legislation-nz/baseline.json",
       "sha256": "8a65681df52b811afd1cf22a702ddf167e2381ae3196375bcf132d2a0c125dcc",
       "classification": "historical",
@@ -807,7 +807,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-capability-matrix-json-8f7c312211",
+      "evidence_id": "inventory-8f7c312211e21235",
       "path": "evidence/migrations/corpus-legislation-nz/capability-matrix.json",
       "sha256": "eac29a2855f3151a7b4162de1e21071cff01636c339d1636a9a96b6ed8e6dd34",
       "classification": "historical",
@@ -819,7 +819,7 @@
       "proof_kind": "capability_matrix"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-component-inventory-json-a7e2d2cd18",
+      "evidence_id": "inventory-a7e2d2cd180ba030",
       "path": "evidence/migrations/corpus-legislation-nz/component-inventory.json",
       "sha256": "3e9e87902a1cb22ff080a54283fe9b74a104798b1d43b274aad4266d6061cdca",
       "classification": "historical",
@@ -889,7 +889,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-donor-track-lineage-json-4e2ff826a9",
+      "evidence_id": "inventory-4e2ff826a947ae86",
       "path": "evidence/migrations/corpus-legislation-nz/donor-track-lineage.json",
       "sha256": "e77b098c83306fcde7a9bc97d87fe4ac70e26426ce44625fed82a34b986072c7",
       "classification": "historical",
@@ -901,7 +901,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-durable-state-canonical-local-initial-json-b3ba3f0f7b",
+      "evidence_id": "inventory-b3ba3f0f7bf4d961",
       "path": "evidence/migrations/corpus-legislation-nz/durable-state/canonical-local-initial.json",
       "sha256": "15090f39fa90417c70faebf578cecdb3c1f345b92c1b2887c11d73dd6d20213e",
       "classification": "historical",
@@ -938,7 +938,7 @@
       "proof_kind": "blocker_receipt"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-durable-state-integration-json-b722c68794",
+      "evidence_id": "inventory-b722c687943b6002",
       "path": "evidence/migrations/corpus-legislation-nz/durable-state/integration.json",
       "sha256": "81d36a1d95195dd6950343cff753e18f8e154c7a0cc71ff2bb0b8925e76c8286",
       "classification": "historical",
@@ -951,7 +951,7 @@
       "proof_kind": "durable_package"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-durable-state-publication-plan-json-960d60fce3",
+      "evidence_id": "inventory-960d60fce3f2aa02",
       "path": "evidence/migrations/corpus-legislation-nz/durable-state/publication-plan.json",
       "sha256": "8aecfc4a75a7c611a879396aafee8855eba1e554175b534c5f988843cea91416",
       "classification": "historical",
@@ -965,7 +965,7 @@
       "proof_kind": "durable_package"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-durable-state-validation-json-77fa20ed18",
+      "evidence_id": "inventory-77fa20ed18676fc8",
       "path": "evidence/migrations/corpus-legislation-nz/durable-state/validation.json",
       "sha256": "2a30a40a3df1e51fe413c315e3ed7bf53f8a161dee7d295c9c61b71b7cd59b3f",
       "classification": "historical",
@@ -978,7 +978,7 @@
       "proof_kind": "durable_package"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-external-identities-json-723f6f29d9",
+      "evidence_id": "inventory-723f6f29d9f00c9d",
       "path": "evidence/migrations/corpus-legislation-nz/external-identities.json",
       "sha256": "2624c22a54c3bf20ab6395182356b009c7cf87b947d913f4920c1518eeb99c73",
       "classification": "historical",
@@ -1006,7 +1006,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-readme-md-6dcfb9f695",
+      "evidence_id": "inventory-6dcfb9f695315564",
       "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/README.md",
       "sha256": "b5482b9ec028936b564789ac1debf59964bc27dbfd25c06fca3883bbbf56dafe",
       "classification": "historical",
@@ -1018,7 +1018,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-acquisition-json-e8fb313ed0",
+      "evidence_id": "inventory-e8fb313ed0e8680b",
       "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/acquisition.json",
       "sha256": "7cc3d1221720d1b029e670f0d5806863a5da13bc1ce06e0ce49aa1a0c9e2ec8d",
       "classification": "historical",
@@ -1030,7 +1030,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-delivery-base-json-d589b81e8f",
+      "evidence_id": "inventory-d589b81e8f6ae04a",
       "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/delivery-base.json",
       "sha256": "16268a9199307bf23a3b3470df20948ca374123ad84025c0ea4b7e6e6b8c2478",
       "classification": "historical",
@@ -1042,7 +1042,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-development-log-hashes-json-d6b887866b",
+      "evidence_id": "inventory-d6b887866b3f0e00",
       "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/development-log-hashes.json",
       "sha256": "b6acec76d8aaf18b170cae7c24f2c71866f0e07f8807126f82095d34f4e92ce1",
       "classification": "historical",
@@ -1054,7 +1054,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-expectations-json-728f95bb63",
+      "evidence_id": "inventory-728f95bb6363f3f4",
       "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/expectations.json",
       "sha256": "5fe2e77fe8edc5c76b0c864e1ecc2923443df21a0bf07356d11c923a2cb770d8",
       "classification": "historical",
@@ -1066,7 +1066,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-full-validation-handoff-json-04cb597b5b",
+      "evidence_id": "inventory-04cb597b5b4e756c",
       "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/full-validation-handoff.json",
       "sha256": "e116e687655fc85adc8fcc531d748f80cc04efa0c554b748966fdc6fcc8598c2",
       "classification": "historical",
@@ -1078,7 +1078,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-github-metadata-json-2835015812",
+      "evidence_id": "inventory-28350158125dc4c5",
       "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/github-metadata.json",
       "sha256": "5b6d91b78dbdd2197fd1cc82f34fbb87bfcb83ccd02ac40fb927181cde264737",
       "classification": "historical",
@@ -1090,7 +1090,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-mutation-01-json-4b6ffd16e4",
+      "evidence_id": "inventory-4b6ffd16e4e9ce30",
       "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/mutation-01.json",
       "sha256": "acdb29ba456e018e110706f241a58aa7078d216a9276c9906b9c7931502837d5",
       "classification": "historical",
@@ -1102,7 +1102,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-parent-run-readback-json-f4bd65593a",
+      "evidence_id": "inventory-f4bd65593a206e86",
       "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/parent-run-readback.json",
       "sha256": "f4e474e2cfe4fffc6c5ba1cbf644859de0b2b4eb19fe16ebf3632c6612e134b1",
       "classification": "historical",
@@ -1114,7 +1114,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-quarantine-readback-json-727ec7c4d9",
+      "evidence_id": "inventory-727ec7c4d9e1075b",
       "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/quarantine-readback.json",
       "sha256": "80cb87ee9baa0ee8d637cba3c04ad6d3b743ee0832a1082f1c3598e637fc740b",
       "classification": "historical",
@@ -1126,7 +1126,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-resume-schema-correction-json-e03db01b6e",
+      "evidence_id": "inventory-e03db01b6e07ff86",
       "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/resume-schema-correction.json",
       "sha256": "6aaedddcd9cb06f01d03479222f21e23d9f4c1497b8a3df3f4f6adaf21810743",
       "classification": "historical",
@@ -1138,7 +1138,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-resume-verification-json-961c12ae88",
+      "evidence_id": "inventory-961c12ae887f789a",
       "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/resume-verification.json",
       "sha256": "6c4dadfea4d1e451020ab532e69dae95adc1e21183937351489906b857a1d905",
       "classification": "historical",
@@ -1150,8 +1150,8 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-verification-01-sha256sums-17573bd3f9",
-      "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/verification-01/SHA256SUMS",
+      "evidence_id": "inventory-17573bd3f98f9994",
+      "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/verification-01/SHA256\u0053UMS",
       "sha256": "344df52757959e95b0020aa001b532be82de36860fb72818d8c6d1d0eb73d3e1",
       "classification": "historical",
       "artefact_type": "report",
@@ -1175,7 +1175,7 @@
       "proof_kind": "state_verification"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-verification-01-prompt04-inven-2a95b1ebe0",
+      "evidence_id": "inventory-2a95b1ebe0a9819d",
       "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/verification-01/prompt04-inventory.json",
       "sha256": "81569a334e8100378b597e34496db654aa08301e62327580625bb8fdda42054b",
       "classification": "historical",
@@ -1187,7 +1187,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-verification-01-report-md-dc7b208517",
+      "evidence_id": "inventory-dc7b20851754ecc0",
       "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/verification-01/report.md",
       "sha256": "2df52e5727db670290eda5b5be6cbdba88a21b3ec44d34fce2a14ca1d140ded4",
       "classification": "historical",
@@ -1199,7 +1199,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-verification-02-sha256sums-aa29334f2f",
+      "evidence_id": "inventory-aa29334f2fd76746",
       "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/verification-02/SHA256SUMS",
       "sha256": "a3fe0a42d19f35ab0308404678bbbaf6f90f24a6911cb04fb31dc6a4f7131f0d",
       "classification": "historical",
@@ -1223,7 +1223,7 @@
       "proof_kind": "state_verification"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-verification-02-prompt04-inven-ace50ccd6d",
+      "evidence_id": "inventory-ace50ccd6d5b629f",
       "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/verification-02/prompt04-inventory.json",
       "sha256": "61d054a24e39792cdef21783c68c4f5bb31903139608fc5854cdd66e9b68aa7e",
       "classification": "historical",
@@ -1235,7 +1235,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-verification-02-report-md-5cf5d1886a",
+      "evidence_id": "inventory-5cf5d1886a7b5f44",
       "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/verification-02/report.md",
       "sha256": "e31c5ed7819c552ec6c5870882556004b1369375b81b1755a10f96987e215b7d",
       "classification": "historical",
@@ -1247,7 +1247,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-verifier-correction-json-245c5d7f65",
+      "evidence_id": "inventory-245c5d7f654d2b79",
       "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/verifier-correction.json",
       "sha256": "0fe75d873e0d69c9a79adcba78541e29193d5ed241224860b66d3547a2cddc6f",
       "classification": "historical",
@@ -1259,7 +1259,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-workflow-lint-handoff-json-4c6642601b",
+      "evidence_id": "inventory-4c6642601b3be4b8",
       "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/workflow-lint-handoff.json",
       "sha256": "9b672c6d14f28480edf965404afd584566f4e0741862ce631800588be9d003d1",
       "classification": "historical",
@@ -1283,7 +1283,7 @@
       "proof_kind": "capability_matrix"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-commit-dispositions-json-2e54f3d068",
+      "evidence_id": "inventory-2e54f3d068fd738b",
       "path": "evidence/migrations/corpus-legislation-nz/final-lineage/commit-dispositions.json",
       "sha256": "6277c71ad662fb331ff33893e3bbd3d01cfe6bb1b0e70a68e9ce971d05b5d754",
       "classification": "historical",
@@ -1295,7 +1295,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-donor-track-lineage-json-88bcdaeecb",
+      "evidence_id": "inventory-88bcdaeecb4beaa9",
       "path": "evidence/migrations/corpus-legislation-nz/final-lineage/donor-track-lineage.json",
       "sha256": "177d479c3ec6ee6eef3e98ccdda230cd505ccf3797921783d96748f8bb8e58a1",
       "classification": "historical",
@@ -1307,7 +1307,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-external-identities-json-fbbd0120db",
+      "evidence_id": "inventory-fbbd0120dbd2aeff",
       "path": "evidence/migrations/corpus-legislation-nz/final-lineage/external-identities.json",
       "sha256": "0f8b74cac27b83805c164dd5cdeafe8764927b5bf3297c4657b7164e42c7cc67",
       "classification": "historical",
@@ -1320,7 +1320,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-focused-validation-json-608eb8e739",
+      "evidence_id": "inventory-608eb8e739bb3be3",
       "path": "evidence/migrations/corpus-legislation-nz/final-lineage/focused-validation.json",
       "sha256": "31aadd88d466e9494236a569b06b2605e7449920b2f362425cca28a0eb2ccedf",
       "classification": "historical",
@@ -1332,7 +1332,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-handoffs-json-ccdd892f40",
+      "evidence_id": "inventory-ccdd892f402dca46",
       "path": "evidence/migrations/corpus-legislation-nz/final-lineage/handoffs.json",
       "sha256": "468ee357294934f03a0ebf4fb560e3653be9e6b0438a59506f4c644d020fbf3b",
       "classification": "historical",
@@ -1344,7 +1344,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-hosted-evidence-json-6f7e8baf1b",
+      "evidence_id": "inventory-6f7e8baf1b8239cb",
       "path": "evidence/migrations/corpus-legislation-nz/final-lineage/hosted-evidence.json",
       "sha256": "f61bc72e074089542a5c8f81afdee403f23de92f4147f7b8ab9b16d929d99a6b",
       "classification": "historical",
@@ -1356,7 +1356,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-hosted-format-failure-json-e2e9cb3c4e",
+      "evidence_id": "inventory-e2e9cb3c4ec022d8",
       "path": "evidence/migrations/corpus-legislation-nz/final-lineage/hosted-format-failure.json",
       "sha256": "0e1d5947757400ded69a7c17bd2ffb6e733255d22ea9eecbb1e0f6ddcb4cce2b",
       "classification": "historical",
@@ -1368,7 +1368,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-import-fixity-json-b6cc6ad5e7",
+      "evidence_id": "inventory-b6cc6ad5e760623d",
       "path": "evidence/migrations/corpus-legislation-nz/final-lineage/import-fixity.json",
       "sha256": "6e9f9bcbd70ac2adaf6358df50c5c024165c619ae298e9c747f39b58cbe00977",
       "classification": "historical",
@@ -1380,7 +1380,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-issue-pr-reconciliation-json-3fcfc005d6",
+      "evidence_id": "inventory-3fcfc005d6a81e5e",
       "path": "evidence/migrations/corpus-legislation-nz/final-lineage/issue-pr-reconciliation.json",
       "sha256": "eb27b9157c132b33921f53c1bbdf60b9752ebb3874c8345d87b5d456afd505bc",
       "classification": "historical",
@@ -1393,7 +1393,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-late-commit-patches-json-17d4b2eb8f",
+      "evidence_id": "inventory-17d4b2eb8f6a1f38",
       "path": "evidence/migrations/corpus-legislation-nz/final-lineage/late-commit-patches.json",
       "sha256": "b49196d010af7839538a68a62de2b8c14fca0cad157b9d327d780c62f2eb097a",
       "classification": "historical",
@@ -1405,7 +1405,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-late-donor-files-json-a81912df90",
+      "evidence_id": "inventory-a81912df901dcd6d",
       "path": "evidence/migrations/corpus-legislation-nz/final-lineage/late-donor-files.json",
       "sha256": "b1d705e182586c79a361a4752b46441af07a6faa59325f774ec0fafe4b77f2b2",
       "classification": "historical",
@@ -1417,7 +1417,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-receipt-precommit-json-824014ab3b",
+      "evidence_id": "inventory-824014ab3b0d4d18",
       "path": "evidence/migrations/corpus-legislation-nz/final-lineage/receipt-precommit.json",
       "sha256": "9c337b834654e0cf17f6513390c46a4cf1dcf5b5dca091bd9aa0fe67e0cd6449",
       "classification": "historical",
@@ -1429,7 +1429,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-receipt-json-d553857b1f",
+      "evidence_id": "inventory-d553857b1fbbec18",
       "path": "evidence/migrations/corpus-legislation-nz/final-lineage/receipt.json",
       "sha256": "7a90eed0dabd874a835d31a29c42eec52c5c6b3cd2623aa0436e563df53ac52b",
       "classification": "historical",
@@ -1441,7 +1441,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-secret-scan-failure-json-8544575867",
+      "evidence_id": "inventory-8544575867fd5974",
       "path": "evidence/migrations/corpus-legislation-nz/final-lineage/secret-scan-failure.json",
       "sha256": "b2baff3ffe93dbdfff7fc0e032ae96cab69405e5299f5b69a25c6e2136ecd0c3",
       "classification": "historical",
@@ -1453,7 +1453,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-validation-final-json-337e250f6c",
+      "evidence_id": "inventory-337e250f6cabc6d0",
       "path": "evidence/migrations/corpus-legislation-nz/final-lineage/validation-final.json",
       "sha256": "99c9ad348ac11076303adf6d926d24508809629d7614cd6a66dfe69d74873ab2",
       "classification": "historical",
@@ -1465,7 +1465,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-validation-observations-json-119894412b",
+      "evidence_id": "inventory-119894412b199fce",
       "path": "evidence/migrations/corpus-legislation-nz/final-lineage/validation-observations.json",
       "sha256": "8ef8799588121aad1910fd6bf15ad209e39d8454bfb5f220e7cf6483bc9b3010",
       "classification": "historical",
@@ -1477,7 +1477,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-workflow-routes-json-13ae77e259",
+      "evidence_id": "inventory-13ae77e2594e7817",
       "path": "evidence/migrations/corpus-legislation-nz/final-lineage/workflow-routes.json",
       "sha256": "3d7c0e015565f5568ff67f20baffa2edf778c11f7565b478265eb0ebab47e20d",
       "classification": "historical",
@@ -1489,7 +1489,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-readme-md-3a2f6b1d2e",
+      "evidence_id": "inventory-3a2f6b1d2e79cc19",
       "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/README.md",
       "sha256": "261d453bf5ceae3c3dc2a6f1f4c8821f9c86937dc3185ae4ea9a35b86fc9c37d",
       "classification": "historical",
@@ -1501,7 +1501,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-sha256sums-ce95bf274d",
+      "evidence_id": "inventory-ce95bf274dfbf7c8",
       "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/SHA256SUMS",
       "sha256": "059389683fc07620a9f16b51b4b5a8741968e6cdd57ecaa6669e6a60d9d3af57",
       "classification": "historical",
@@ -1513,7 +1513,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-changed-files-json-827e62c0e9",
+      "evidence_id": "inventory-827e62c0e9075312",
       "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/changed-files.json",
       "sha256": "09c6c220290a35585ac2f31f0749c2229656074c902166e36e0cac02ada99fa0",
       "classification": "historical",
@@ -1525,7 +1525,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-current-package-json-a7f7ba8f5b",
+      "evidence_id": "inventory-a7f7ba8f5bb13ae5",
       "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/current-package.json",
       "sha256": "5e63f555b6ba85394f976aeb6c1e2daffce28059e3bc13844ade0c0686f489f3",
       "classification": "historical",
@@ -1537,7 +1537,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-development-attempts-json-1df9fe2a3b",
+      "evidence_id": "inventory-1df9fe2a3bad823d",
       "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/development-attempts.json",
       "sha256": "69aa22dd6e0c0f6240f77168da462928e622e94909cb2082c45ce9fc9ed8ac99",
       "classification": "historical",
@@ -1549,7 +1549,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-execution-02-final-state-merge-6855525d91",
+      "evidence_id": "inventory-6855525d91ed9fc6",
       "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/execution-02/final-state-merge-receipt.json",
       "sha256": "3fc4a205ed1b8a327f0d91675951ce18a6800f1bc2bdb948b22c45c882e8e679",
       "classification": "historical",
@@ -1561,7 +1561,7 @@
       "proof_kind": "state_merge"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-execution-02-independent-readb-386b573a3e",
+      "evidence_id": "inventory-386b573a3e06c9e1",
       "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/execution-02/independent-readback.json",
       "sha256": "09821b3357efc1d6856f1c3b7a52992811d35318574ae62fbb65630a4ce0b6d6",
       "classification": "historical",
@@ -1573,7 +1573,7 @@
       "proof_kind": "state_merge"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-execution-02-package-inventory-02a4e5b98b",
+      "evidence_id": "inventory-02a4e5b98bdc6ea5",
       "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/execution-02/package-inventory.json",
       "sha256": "abc7a76228b53d90e0fc986f702cc9d223d711329a513fc06b509cfcd7b5c65d",
       "classification": "historical",
@@ -1585,7 +1585,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-execution-02-selection-before-b6d48c23a6",
+      "evidence_id": "inventory-b6d48c23a6af5168",
       "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/execution-02/selection-before-execution.json",
       "sha256": "4507e38092d8818d769d94b6306668434f21547b5f54103569e62c20afd076ec",
       "classification": "historical",
@@ -1610,7 +1610,7 @@
       "proof_kind": "state_merge"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-handoffs-json-7b10156ef1",
+      "evidence_id": "inventory-7b10156ef1c98058",
       "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/handoffs.json",
       "sha256": "11b57186601d66e43e97ef93679adf1f99f040c1a4bcf9f0898d3d21f982bcb0",
       "classification": "historical",
@@ -1622,7 +1622,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-hosted-reviewed-head-json-8aec55af7c",
+      "evidence_id": "inventory-8aec55af7c1d1a9d",
       "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/hosted-reviewed-head.json",
       "sha256": "57f7cfe1c164029211c3df828a591e73859c662e294cc2af09d23e435322cd2f",
       "classification": "historical",
@@ -1647,7 +1647,7 @@
       "proof_kind": "state_merge"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-local-validation-final-json-264894bc92",
+      "evidence_id": "inventory-264894bc9292c818",
       "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/local-validation-final.json",
       "sha256": "1935767c20cb3f126fda9d0bd39a1b4b31d8ad2100c205bbde87b841df951de1",
       "classification": "historical",
@@ -1659,7 +1659,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-mutation-01-json-4859f9bd76",
+      "evidence_id": "inventory-4859f9bd766bad15",
       "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/mutation-01.json",
       "sha256": "1e52551b5529bf4ce283c62e0b49c8e6d1e6197fb588b1540aed22accd95ba4d",
       "classification": "historical",
@@ -1671,7 +1671,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-mutation-02-json-af87f17b40",
+      "evidence_id": "inventory-af87f17b404f2eb2",
       "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/mutation-02.json",
       "sha256": "b9e755a1d74e4a6f4d86088bb4cf26de07572cd062baffa11daa2cd53d02cea9",
       "classification": "historical",
@@ -1683,7 +1683,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-package-inventory-01-json-b0e2e2656a",
+      "evidence_id": "inventory-b0e2e2656a179328",
       "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/package-inventory-01.json",
       "sha256": "79538fd44b394fa458b12140b6ef702af38e514c379b2552ca3551831c212129",
       "classification": "historical",
@@ -1695,7 +1695,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-rebase-validation-final-json-23c268b551",
+      "evidence_id": "inventory-23c268b5517d399a",
       "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/rebase-validation-final.json",
       "sha256": "4b86116d48cbab67a4fad6ea5dc1028121ba4af0855dd49cc068a1cf054ff496",
       "classification": "historical",
@@ -1707,7 +1707,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-review-finding-01-json-13f32d3464",
+      "evidence_id": "inventory-13f32d3464c6b0cf",
       "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/review-finding-01.json",
       "sha256": "ccd6856f273ab226b8cedac2097c474cbc75671e8a5afe04d58e8e7cdab953f8",
       "classification": "historical",
@@ -1719,7 +1719,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-review-fix-validation-json-719b1fd235",
+      "evidence_id": "inventory-719b1fd2359c7060",
       "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/review-fix-validation.json",
       "sha256": "7fd2a37830eb670a12886f41236360d2b9425b9e7da8fc38e2fb5ff6141517ef",
       "classification": "historical",
@@ -1731,7 +1731,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-selection-before-execution-jso-ff7472fe7c",
+      "evidence_id": "inventory-ff7472fe7cba20eb",
       "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/selection-before-execution.json",
       "sha256": "4507e38092d8818d769d94b6306668434f21547b5f54103569e62c20afd076ec",
       "classification": "historical",
@@ -1743,7 +1743,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-target-descriptor-json-c4853db4df",
+      "evidence_id": "inventory-c4853db4df76b9d8",
       "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/target-descriptor.json",
       "sha256": "9bac0a2eaebd0cd02c44f7575be475f64ad5102a8be58f2a4f1bb7df4ab31f2d",
       "classification": "historical",
@@ -1755,7 +1755,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-first-operational-cycle-harvest-receipt-json-2eeda1941d",
+      "evidence_id": "inventory-2eeda1941de513f9",
       "path": "evidence/migrations/corpus-legislation-nz/first-operational-cycle/harvest-receipt.json",
       "sha256": "8e585267b113d809cdfc76f85af949838d9693c77fdae1f965aa8c1242358cd0",
       "classification": "historical",
@@ -1767,7 +1767,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-first-operational-cycle-meta-json-32ab0faa86",
+      "evidence_id": "inventory-32ab0faa86698c4c",
       "path": "evidence/migrations/corpus-legislation-nz/first-operational-cycle/meta.json",
       "sha256": "67660d3dc5a8a87efcf15c2c35b84a20cfc313b360f899daf22be7b772e9f70e",
       "classification": "historical",
@@ -1779,7 +1779,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-first-operational-cycle-reconciliation-receipt-j-b04d8c0d6d",
+      "evidence_id": "inventory-b04d8c0d6dfb6234",
       "path": "evidence/migrations/corpus-legislation-nz/first-operational-cycle/reconciliation-receipt.json",
       "sha256": "3c6b03a1bc7279d064e195c701ec2a5a45cdb32069f9352301f48958cb19fd8e",
       "classification": "historical",
@@ -1791,7 +1791,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-first-operational-cycle-recovery-receipt-json-1b69f9f0a8",
+      "evidence_id": "inventory-1b69f9f0a87e6da4",
       "path": "evidence/migrations/corpus-legislation-nz/first-operational-cycle/recovery-receipt.json",
       "sha256": "c429c2120474dac4c3001b9ca341977312fa50602a60f81ba081ca11b8bb739a",
       "classification": "historical",
@@ -1804,7 +1804,7 @@
       "proof_kind": "recovery_readback"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-historical-coverage-analyzer-claim-inputs-json-c12786edb4",
+      "evidence_id": "inventory-c12786edb4c5ce8a",
       "path": "evidence/migrations/corpus-legislation-nz/historical-coverage/analyzer-claim-inputs.json",
       "sha256": "009fecd4a70e61e0b7b58646877d47b8560be8e4a91b24087de27c5c8e9541e1",
       "classification": "historical",
@@ -1844,7 +1844,7 @@
       "proof_kind": "claim_inventory"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-historical-coverage-historical-coverage-report-m-89f221fea2",
+      "evidence_id": "inventory-89f221fea2b5e5e5",
       "path": "evidence/migrations/corpus-legislation-nz/historical-coverage/historical-coverage-report.md",
       "sha256": "584954047f39a65256b8080297c58964193a14d07c0a4f425f966e37fc0a6f6b",
       "classification": "historical",
@@ -1856,7 +1856,7 @@
       "proof_kind": "claim_inventory"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-historical-coverage-public-surface-observations-ff9c13311b",
+      "evidence_id": "inventory-ff9c13311bcd50fb",
       "path": "evidence/migrations/corpus-legislation-nz/historical-coverage/public-surface-observations.json",
       "sha256": "e9fa8c2a1e27f7c8b7d791012662a1134b004cfb4912388715bd9005a938b943",
       "classification": "historical",
@@ -1868,7 +1868,7 @@
       "proof_kind": "claim_inventory"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-hosted-publication-readback-json-8980931512",
+      "evidence_id": "inventory-8980931512ecea53",
       "path": "evidence/migrations/corpus-legislation-nz/hosted-publication-readback.json",
       "sha256": "5fd3e96d698634f8055b9d5bd790e23f90513d514adc42c1bf16993ce71d4c0e",
       "classification": "historical",
@@ -1880,7 +1880,7 @@
       "proof_kind": "publication_readback"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-huggingface-publication-canonical-card-readme-md-4f17623221",
+      "evidence_id": "inventory-4f17623221ca5d34",
       "path": "evidence/migrations/corpus-legislation-nz/huggingface-publication/canonical-card/README.md",
       "sha256": "456e37fe9bc2b54e119b86f349ef54914fea252407e6ebed9d40ceaec76366e9",
       "classification": "historical",
@@ -1892,7 +1892,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-huggingface-publication-canonical-card-rights-md-7313169dec",
+      "evidence_id": "inventory-7313169dec911535",
       "path": "evidence/migrations/corpus-legislation-nz/huggingface-publication/canonical-card/RIGHTS.md",
       "sha256": "8c7aa768b21c27153b7f9bf2de445a45731cbeeb3a044b4a194035787fab9271",
       "classification": "historical",
@@ -1904,7 +1904,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-huggingface-publication-external-action-checklis-251390158f",
+      "evidence_id": "inventory-251390158fa6ca9d",
       "path": "evidence/migrations/corpus-legislation-nz/huggingface-publication/external-action-checklist.md",
       "sha256": "cdaca1ed4525039db47f089a11d06e0a4368283072eb1bd04eadd2b6e2a790bd",
       "classification": "historical",
@@ -1916,7 +1916,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-huggingface-publication-identity-reconciliation-fa404572b8",
+      "evidence_id": "inventory-fa404572b89cca02",
       "path": "evidence/migrations/corpus-legislation-nz/huggingface-publication/identity-reconciliation-report.json",
       "sha256": "9e63ceb813e8f5301de86869ae7d58fffbe6932e374c59fdcf3853bfee6edd1d",
       "classification": "historical",
@@ -1929,7 +1929,7 @@
       "proof_kind": "identity_verification"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-huggingface-publication-identity-reconciliation-82e20067dc",
+      "evidence_id": "inventory-82e20067dc51ee29",
       "path": "evidence/migrations/corpus-legislation-nz/huggingface-publication/identity-reconciliation-report.md",
       "sha256": "121ff994d98bdecfc5365257461cd7b4c54f245443a7e2e14be8783220e1b187",
       "classification": "historical",
@@ -1966,7 +1966,7 @@
       "proof_kind": "blocker_receipt"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-issue-reconciliation-json-60a733468f",
+      "evidence_id": "inventory-60a733468f0378ac",
       "path": "evidence/migrations/corpus-legislation-nz/issue-reconciliation.json",
       "sha256": "88bd520af09ce44a78406049457182922c2d39928bc52f743beb0d3d0b74b5a2",
       "classification": "historical",
@@ -1978,7 +1978,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-live-donor-snapshot-json-fd9d60092e",
+      "evidence_id": "inventory-fd9d60092edc2ce5",
       "path": "evidence/migrations/corpus-legislation-nz/live-donor-snapshot.json",
       "sha256": "b2cd9e75c027e30e1ba68b3738990a5929c7d6275448fb1c6ec2ba0103ee3a4f",
       "classification": "historical",
@@ -1990,7 +1990,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-live-inventory-json-6ef3737e18",
+      "evidence_id": "inventory-6ef3737e18679b3c",
       "path": "evidence/migrations/corpus-legislation-nz/live-inventory.json",
       "sha256": "0d80066a8485c1e5516f674093629a396c7ee223dfe3fdde93f5656510761e32",
       "classification": "historical",
@@ -2015,7 +2015,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-operational-continuity-recovery-receipt-json-d412ff4603",
+      "evidence_id": "inventory-d412ff460341b1a1",
       "path": "evidence/migrations/corpus-legislation-nz/operational-continuity-recovery-receipt.json",
       "sha256": "14af76700eaea158feea7a932a72233356fab88a2674f8aecc171a527fe6e24d",
       "classification": "historical",
@@ -2028,7 +2028,7 @@
       "proof_kind": "recovery_readback"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-operational-gate-authorization-json-c6a6bdda91",
+      "evidence_id": "inventory-c6a6bdda91178fb8",
       "path": "evidence/migrations/corpus-legislation-nz/operational-gate-authorization.json",
       "sha256": "6245751875479c91a2053befd0c2247e25c8d05db40d89b59e73ec8e3d50f23c",
       "classification": "historical",
@@ -2040,7 +2040,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-parent-state-restoration-local-validation-v2-jso-fddc5d0988",
+      "evidence_id": "inventory-fddc5d0988a56568",
       "path": "evidence/migrations/corpus-legislation-nz/parent-state-restoration/local-validation-v2.json",
       "sha256": "82f3766f91aa57d181568c6541165e4314274db9bf9562c69cd15895ba2e5343",
       "classification": "historical",
@@ -2052,7 +2052,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-parent-state-restoration-local-validation-json-400b392b89",
+      "evidence_id": "inventory-400b392b89ce0b62",
       "path": "evidence/migrations/corpus-legislation-nz/parent-state-restoration/local-validation.json",
       "sha256": "b0618508d77c7a93fd6a24d485d0fe25b13e16d5c047c4b82bbcb1dc1fecaa49",
       "classification": "historical",
@@ -2064,7 +2064,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-parity-readme-md-2237cd5b65",
+      "evidence_id": "inventory-2237cd5b652f2ea5",
       "path": "evidence/migrations/corpus-legislation-nz/parity/README.md",
       "sha256": "57b822f46d0932fef23f44c6b11e456f43939c4effb4d57e49b5d5954ef115c9",
       "classification": "historical",
@@ -2076,7 +2076,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-parity-aggregate-parity-json-3da5843b11",
+      "evidence_id": "inventory-3da5843b112a416c",
       "path": "evidence/migrations/corpus-legislation-nz/parity/aggregate-parity.json",
       "sha256": "9ef470d761d6b2d13f75f45f64505c2258306292362923d556697b97bc679af3",
       "classification": "historical",
@@ -2088,7 +2088,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-parity-fixture-parity-json-5218882fc7",
+      "evidence_id": "inventory-5218882fc7104afa",
       "path": "evidence/migrations/corpus-legislation-nz/parity/fixture-parity.json",
       "sha256": "6aa30ef53f16bb175dc6d73f365db18ade247fd929b5680130640a70c64b7bfa",
       "classification": "historical",
@@ -2100,7 +2100,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-parity-historical-batch-parity-json-0dc04c1d21",
+      "evidence_id": "inventory-0dc04c1d21a937c6",
       "path": "evidence/migrations/corpus-legislation-nz/parity/historical-batch-parity.json",
       "sha256": "416c4d7da05a58876462c29d297c0ed78e27a5c9b06d869bd8c5f1e6435c2b3c",
       "classification": "historical",
@@ -2112,7 +2112,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-parity-live-smoke-parity-json-786d1f6e01",
+      "evidence_id": "inventory-786d1f6e01ac69e4",
       "path": "evidence/migrations/corpus-legislation-nz/parity/live-smoke-parity.json",
       "sha256": "892057e3706e330c1165fd691e51740ee5df70b0d5fa13ee3addce9534a8aec0",
       "classification": "historical",
@@ -2124,7 +2124,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-parity-publication-package-parity-json-27ca88b070",
+      "evidence_id": "inventory-27ca88b070db8477",
       "path": "evidence/migrations/corpus-legislation-nz/parity/publication-package-parity.json",
       "sha256": "42f74057eaa397afdad4e149d078c090296aedd675e99e37e69d0b67abc38437",
       "classification": "historical",
@@ -2137,7 +2137,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-pre-acquisition-discovery-json-9afd1ce6bc",
+      "evidence_id": "inventory-9afd1ce6bc673fd1",
       "path": "evidence/migrations/corpus-legislation-nz/pre-acquisition-discovery.json",
       "sha256": "1400899c3f41ee462c31449bd9899e277cc7059dc094bcf4f19c5c9e9003a998",
       "classification": "historical",
@@ -2149,7 +2149,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-remote-publication-readback-receipt-json-4f4eb57996",
+      "evidence_id": "inventory-4f4eb579969d7524",
       "path": "evidence/migrations/corpus-legislation-nz/remote-publication-readback-receipt.json",
       "sha256": "d4f139bdec2f46edf0f3f417c72bfea9273f7adce51b9649156f8e5f61dc6185",
       "classification": "historical",
@@ -2161,7 +2161,7 @@
       "proof_kind": "publication_readback"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-shadow-operation-cutover-attestation-json-4e5f938782",
+      "evidence_id": "inventory-4e5f938782c88825",
       "path": "evidence/migrations/corpus-legislation-nz/shadow-operation-cutover-attestation.json",
       "sha256": "f07f707fb824c770ae43577e62754c9d80167d2b1be56bf039d24c8c0265afbc",
       "classification": "historical",
@@ -2173,7 +2173,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-source-set-contract-inventory-json-91981b9eb4",
+      "evidence_id": "inventory-91981b9eb4add4b5",
       "path": "evidence/migrations/corpus-legislation-nz/source-set-contract/inventory.json",
       "sha256": "1d13f8d79aa153b46477343f406d0d263f5e273b1eaa899c0447fca4cbd25415",
       "classification": "historical",
@@ -2186,7 +2186,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "evidence-migrations-corpus-legislation-nz-source-set-contract-validation-json-0a29cdf27f",
+      "evidence_id": "inventory-0a29cdf27f0f2aec",
       "path": "evidence/migrations/corpus-legislation-nz/source-set-contract/validation.json",
       "sha256": "f58bb19b5e6c1f98bb46cf7b1631cb3e2982c76421a303efd9e3f23bc13c225b",
       "classification": "historical",
@@ -2225,7 +2225,7 @@
       "proof_kind": "identity_verification"
     },
     {
-      "evidence_id": "schemas-legislation-evidence-index-v1-schema-json-2a95ae9dd2",
+      "evidence_id": "inventory-2a95ae9dd258d11d",
       "path": "schemas/legislation-evidence-index-v1.schema.json",
       "sha256": "e83eb643f080371444f7ca9651ad5acf50efc2d7e61c5452fb6af4a7085b8f05",
       "classification": "active",
@@ -2237,7 +2237,7 @@
       "proof_kind": "historical_record"
     },
     {
-      "evidence_id": "tools-evaluate-legislation-completion-py-edf2536339",
+      "evidence_id": "inventory-edf2536339e02ff6",
       "path": "tools/evaluate_legislation_completion.py",
       "sha256": "6afb73618b5c35476db226389c332eadab76d416637b4db9697870a03a586ac9",
       "classification": "active",
@@ -2249,9 +2249,9 @@
       "proof_kind": "evaluator"
     },
     {
-      "evidence_id": "tools-legislation-evidence-index-py-1e3a4d6780",
+      "evidence_id": "inventory-1e3a4d6780b07111",
       "path": "tools/legislation_evidence_index.py",
-      "sha256": "e3d25ff5c249fca55a2f2f6f1aaff67383ddd2a4dacafc89ee870f9016a45b1a",
+      "sha256": "7203dc4f7521eb7233c872925fccf6a735fb5ec4b084ba56be9355974098e672",
       "classification": "active",
       "artefact_type": "evaluator",
       "claim_dimensions": [
@@ -2261,9 +2261,9 @@
       "proof_kind": "evaluator"
     },
     {
-      "evidence_id": "tools-mutation-legislation-evidence-index-py-58375a57e9",
+      "evidence_id": "inventory-58375a57e924a3c7",
       "path": "tools/mutation_legislation_evidence_index.py",
-      "sha256": "024e889d7757029181d4ff2f65d5e629eb85485b562ebd238cd6e8b078191c59",
+      "sha256": "9e088d3e3339627b0b83f6bab354add66d0b96a4e2c7651f78399d36c19d9cb3",
       "classification": "active",
       "artefact_type": "evaluator",
       "claim_dimensions": [

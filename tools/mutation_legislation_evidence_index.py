@@ -55,6 +55,11 @@ MUTANTS = {
         "in COMPLETE_PROOF_KINDS[dimension]",
         "not in COMPLETE_PROOF_KINDS[dimension]",
     ),
+    "proof_contract_binding": (
+        VALIDATOR,
+        'if row["artefact_type"] != artefact_type or row["path"] != governed_path:',
+        'if row["artefact_type"] != artefact_type and row["path"] != governed_path:',
+    ),
     "all_dimensions_required": (
         EVALUATOR,
         'and not result["blockers"]',
