@@ -347,16 +347,11 @@ def read_harvest_receipt(value: Mapping[str, Any]) -> ReadHarvestReceipt:
             historical_counters={},
         )
     if schema == V2_SCHEMA:
-        retained = {
-            key: value[key]
-            for key in ("works_attempted", "works_synced", "records_preserved")
-            if key in value
-        }
         return ReadHarvestReceipt(
             schema=V2_SCHEMA,
             evidence_strength="weak_legacy_accounting",
             accounting=None,
-            historical_counters=retained,
+            historical_counters=dict(value),
         )
     raise ValueError("unsupported legislation harvest receipt schema")
 

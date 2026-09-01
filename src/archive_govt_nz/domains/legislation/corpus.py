@@ -1118,13 +1118,6 @@ class LegislationArchiveService:
     ) -> LegislationSyncResult:
         """Execute the complete 10-step bounded resumable sync pipeline."""
         prior_manifest = self.load_manifest(manifest_path)
-        resolved = self._resolve_targets(
-            work_ids=work_ids,
-            search_terms=search_terms,
-            targets=targets,
-            max_works=max_works,
-        )
-
         chk_mgr = (
             LegislationCheckpointManager(checkpoint_path)
             if checkpoint_path is not None
@@ -1140,6 +1133,15 @@ class LegislationArchiveService:
             self.validate_checkpoint(chk_data)
             processed_ids = set(chk_data.get("processed_work_ids", []))
             completed_batches = list(chk_data.get("completed_batches", []))
+
+        # Authenticate both parent authorities before discovery can issue any
+        # source request. A corrupt checkpoint must fail closed offline.
+        resolved = self._resolve_targets(
+            work_ids=work_ids,
+            search_terms=search_terms,
+            targets=targets,
+            max_works=max_works,
+        )
 
         if prior_manifest is not None:
             checkpoint_metadata = chk_data.get("metadata", {})
@@ -1379,28 +1381,37 @@ class LegislationArchiveService:
         )
 
         persist_state = not (errors and (fail_fast or not records))
-        if manifest_path is not None and persist_state:
-            self._write_manifest(manifest_path, manifest)
-
         checkpoint_total = int(manifest["total_records"])
         if manifest_path is None:
             checkpoint_total = int(chk_data.get("total_records_preserved", 0)) + len(
                 records
             )
 
-        promoted_chk = self._finalize_checkpoint(
-            chk_mgr,
-            batch_id,
-            completed_batches,
-            synced_ids,
-            checkpoint_total,
-            manifest["manifest_sha256"],
-            manifest["discovered_inventory_sha256"],
-            chk_data,
-            updated_conditionals,
-            has_errors=bool(errors),
-            fail_fast=fail_fast,
-        )
+        promoted_chk: dict[str, Any] | None = None
+        commit_error: str | None = None
+        try:
+            promoted_chk = self._finalize_checkpoint(
+                chk_mgr,
+                batch_id,
+                completed_batches,
+                synced_ids,
+                checkpoint_total,
+                manifest["manifest_sha256"],
+                manifest["discovered_inventory_sha256"],
+                chk_data,
+                updated_conditionals,
+                has_errors=bool(errors),
+                fail_fast=fail_fast,
+            )
+            # The manifest is promoted last. Therefore a checkpoint failure
+            # cannot leave a new manifest falsely presented as committed.
+            if manifest_path is not None and persist_state and promoted_chk is not None:
+                self._write_manifest(manifest_path, manifest)
+        except (OSError, RuntimeError, ValueError, TypeError) as exc:
+            if chk_mgr is not None:
+                chk_mgr.discard_staging()
+            commit_error = f"state commit indeterminate: {type(exc).__name__}: {exc}"
+            errors.append(commit_error)
 
         if errors and (fail_fast or not records):
             final_status = "failed"
@@ -1425,7 +1436,12 @@ class LegislationArchiveService:
             )
             for disposition in WorkDisposition
         }
-        if persist_state and promoted_chk is not None:
+        if commit_error is not None:
+            commit_status = StateCommitStatus.INDETERMINATE
+            state_commit = None
+            output_manifest_root = None
+            output_checkpoint_root = None
+        elif persist_state and promoted_chk is not None:
             commit_status = (
                 StateCommitStatus.PARTIAL_COMMITTED
                 if errors
@@ -1452,7 +1468,7 @@ class LegislationArchiveService:
             total_state_records_before=state_records_before,
             total_state_records_after=(
                 int(manifest["total_records"])
-                if persist_state
+                if persist_state and commit_error is None
                 else state_records_before
             ),
             total_cas_objects_before=cas_before,

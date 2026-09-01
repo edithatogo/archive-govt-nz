@@ -835,6 +835,90 @@ async def test_corrupt_cumulative_manifest_fails_closed(tmp_path: Path) -> None:
 
 
 @pytest.mark.anyio
+async def test_corrupt_checkpoint_fails_before_discovery_request(
+    tmp_path: Path,
+) -> None:
+    """Parent checkpoint authority is authenticated before source discovery."""
+    requests = 0
+
+    def handler(_request: httpx.Request) -> httpx.Response:
+        nonlocal requests
+        requests += 1
+        return httpx.Response(200, json=[])
+
+    checkpoint = tmp_path / "checkpoint.json"
+    checkpoint.write_text("{broken", encoding="utf-8")
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    service = LegislationArchiveService(
+        store=ContentAddressedStore(tmp_path / "cas"),
+        api_client=NZLegislationApiClient(async_client=client),
+    )
+
+    with pytest.raises(LegislationCheckpointCorruptError):
+        await service.sync_works(search_terms=["health"], checkpoint_path=checkpoint)
+    assert requests == 0
+    await client.aclose()
+
+
+@pytest.mark.anyio
+async def test_checkpoint_promotion_failure_is_indeterminate_without_manifest(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """A failed state transaction returns truthful evidence and no new manifest."""
+    target = WorkTarget(
+        work_id="act-2026-transaction",
+        title="Transaction Act",
+        canonical_uri="https://www.legislation.govt.nz/transaction.xml",
+        expression_targets=[
+            ExpressionTarget(
+                expression_id="exp:transaction",
+                manifestations=[
+                    ManifestationTarget(
+                        manifestation_id="man:transaction",
+                        target_url="https://www.legislation.govt.nz/transaction.xml",
+                        media_type="application/xml",
+                    )
+                ],
+            )
+        ],
+    )
+
+    def handler(_request: httpx.Request) -> httpx.Response:
+        return httpx.Response(
+            200,
+            headers={"content-type": "application/xml"},
+            content=b'<act status="in-force"><title>Transaction Act</title></act>',
+        )
+
+    def fail_promotion(_self: LegislationCheckpointManager) -> None:
+        message = "injected checkpoint failure"
+        raise OSError(message)
+
+    monkeypatch.setattr(LegislationCheckpointManager, "promote", fail_promotion)
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    manifest = tmp_path / "manifest.json"
+    service = LegislationArchiveService(
+        store=ContentAddressedStore(tmp_path / "cas"),
+        api_client=NZLegislationApiClient(async_client=client),
+    )
+
+    result = await service.sync_works(
+        targets=[target],
+        checkpoint_path=tmp_path / "checkpoint.json",
+        manifest_path=manifest,
+    )
+
+    assert result.accounting is not None
+    assert result.accounting.state_commit_status is StateCommitStatus.INDETERMINATE
+    assert result.accounting.state_commit is None
+    assert result.accounting.total_state_records_after == 0
+    assert result.accounting.total_cas_objects_after >= 1
+    assert not manifest.exists()
+    assert any("state commit indeterminate" in error for error in result.errors)
+    await client.aclose()
+
+
+@pytest.mark.anyio
 @pytest.mark.parametrize(
     ("payload", "message"),
     [

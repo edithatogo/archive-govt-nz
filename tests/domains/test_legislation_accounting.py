@@ -242,9 +242,11 @@ def test_v2_is_retained_as_weak_evidence_without_synthesised_categories() -> Non
     assert parsed.evidence_strength == "weak_legacy_accounting"
     assert parsed.accounting is None
     assert parsed.historical_counters == {
+        "schema_version": V2_SCHEMA,
         "works_attempted": 500,
         "works_synced": 0,
         "records_preserved": 500,
+        "outcome": "success",
     }
 
 
