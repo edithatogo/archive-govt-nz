@@ -1,0 +1,51 @@
+{
+  "schema_version": "archive-govt-nz.completion-evaluator/v2",
+  "evaluated_at": "2026-09-01T15:07:34Z",
+  "evidence_index": "evidence/migrations/corpus-legislation-nz/evidence-index.json",
+  "evidence_index_valid": true,
+  "dimensions": {
+    "code_capability_migration": {
+      "status": "complete",
+      "proof_ids": [
+        "final-capability-matrix"
+      ],
+      "proof_eligible": true,
+      "rationale": "Final donor-head capability accounting and merged target contracts establish code and capability migration only."
+    },
+    "operational_state_migration": {
+      "status": "incomplete",
+      "proof_ids": [
+        "target-500-work-proof"
+      ],
+      "proof_eligible": true,
+      "rationale": "Canonical state was merged, but the target-owned 500-work execution, reconciliation, continuation and recovery proof was not dispatched and remains blocked."
+    },
+    "corpus_custody_recoverability": {
+      "status": "externally_blocked",
+      "proof_ids": [
+        "durable-destination-observations"
+      ],
+      "proof_eligible": true,
+      "rationale": "A deterministic local package exists, while rights, remote authority, independent recovery and Prompt 10 acceptance remain unsatisfied."
+    },
+    "publication_identity_migration": {
+      "status": "externally_blocked",
+      "proof_ids": [
+        "hf-publication-candidate"
+      ],
+      "proof_eligible": true,
+      "rationale": "Zenodo identity is corrected read-only, but Hugging Face target-originated publication remains a candidate awaiting external approval."
+    }
+  },
+  "status": "incomplete",
+  "blockers": [
+    "dimension_incomplete:operational_state_migration:incomplete",
+    "dimension_incomplete:corpus_custody_recoverability:externally_blocked",
+    "dimension_incomplete:publication_identity_migration:externally_blocked"
+  ],
+  "errors": [],
+  "evidence_index_sha256": "89b9783e062cb104fa424c375eae7c9b0f046e4be9821c4c16755c76abae99f5",
+  "index_id": "legislation-consolidation-evidence-20260901",
+  "target_commit": "6755e12a48536de938b6f5955fe974d4b1de1b75",
+  "donor_commit": "b40587f1b1aec7356a0f623916fcc8212397d283"
+}

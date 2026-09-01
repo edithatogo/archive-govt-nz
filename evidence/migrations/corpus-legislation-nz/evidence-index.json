@@ -1,0 +1,2155 @@
+{
+  "schema_version": "archive-govt-nz.legislation-evidence-index/v1",
+  "index_id": "legislation-consolidation-evidence-20260901",
+  "generated_at": "2026-09-01T14:53:44Z",
+  "target_repository": "edithatogo/archive-govt-nz",
+  "target_commit": "6755e12a48536de938b6f5955fe974d4b1de1b75",
+  "donor_repository": "edithatogo/corpus-legislation-nz",
+  "donor_commit": "b40587f1b1aec7356a0f623916fcc8212397d283",
+  "entries": [
+    {
+      "evidence_id": "conductor-tracks-legislation-500-work-operational-proof-20260901-review-md-2bfd3df4a8",
+      "path": "conductor/tracks/legislation_500_work_operational_proof_20260901/review.md",
+      "sha256": "63d96f37c8f3d354409a1040758b92562a9375c3dae0b3f0486148c3adad1f10",
+      "classification": "historical",
+      "artefact_type": "track_review",
+      "claim_dimensions": [
+        "operational_state_migration",
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "conductor-tracks-legislation-canonical-state-merge-20260831-review-md-b67b9debc6",
+      "path": "conductor/tracks/legislation_canonical_state_merge_20260831/review.md",
+      "sha256": "5fd046fa896e7d6563220ec6227df07097963902c7503d1f66d1ca6c0287a857",
+      "classification": "historical",
+      "artefact_type": "track_review",
+      "claim_dimensions": [
+        "operational_state_migration",
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "conductor-tracks-legislation-cli-service-backing-20260820-review-md-4eeb3d87bc",
+      "path": "conductor/tracks/legislation_cli_service_backing_20260820/review.md",
+      "sha256": "68dc224891d58916129209e7dda72918d60ef3879052d74572ff2a9c202f039e",
+      "classification": "historical",
+      "artefact_type": "track_review",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "conductor-tracks-legislation-corpus-consolidation-20260818-review-md-d4c6477874",
+      "path": "conductor/tracks/legislation_corpus_consolidation_20260818/review.md",
+      "sha256": "5988e7b651fe8ef22e6a0e7475321cc14add73f09c97954d8483d2c36687743e",
+      "classification": "historical",
+      "artefact_type": "track_review",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "legacy-corrective-programme-review",
+      "path": "conductor/tracks/legislation_corpus_consolidation_corrective_20260818/review.md",
+      "sha256": "cd758ccea517f893c20f0020c92e7bacbc389e384fb07782222a186ef7e39913",
+      "classification": "superseded",
+      "artefact_type": "track_review",
+      "claim_dimensions": [
+        "code_capability_migration",
+        "operational_state_migration",
+        "corpus_custody_recoverability",
+        "publication_identity_migration"
+      ],
+      "rationale": "Programme review declares undifferentiated completion using evidence that later canonical receipts constrain or invalidate.",
+      "superseded_by": "corrected-closeout"
+    },
+    {
+      "evidence_id": "conductor-tracks-legislation-corrective-adapter-client-integration-20260818-review-md-e49507056e",
+      "path": "conductor/tracks/legislation_corrective_adapter_client_integration_20260818/review.md",
+      "sha256": "a9bfc77c51c074515634e09938d0528a7601459549a6c34609b46d1066a9af03",
+      "classification": "historical",
+      "artefact_type": "track_review",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "conductor-tracks-legislation-corrective-cli-contract-compatibility-20260818-review-md-b892d47237",
+      "path": "conductor/tracks/legislation_corrective_cli_contract_compatibility_20260818/review.md",
+      "sha256": "5a92d4931118609020ac525eefb710461541d816f3ba3d8c9037a8494ee0ed5e",
+      "classification": "historical",
+      "artefact_type": "track_review",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "conductor-tracks-legislation-corrective-evidence-chronology-20260818-review-md-fb6fb151a0",
+      "path": "conductor/tracks/legislation_corrective_evidence_chronology_20260818/review.md",
+      "sha256": "96336552faab9d4a1e30dc2c3522adfeb0301f455eb0e684eab15822c289393f",
+      "classification": "historical",
+      "artefact_type": "track_review",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "conductor-tracks-legislation-corrective-gazette-residual-separation-20260818-review-md-e9c851dc0a",
+      "path": "conductor/tracks/legislation_corrective_gazette_residual_separation_20260818/review.md",
+      "sha256": "7e73f3f404268a8009ca80a433405c3c1927ff8c55a6d2c62a5ff6a9f9836ae3",
+      "classification": "historical",
+      "artefact_type": "track_review",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "conductor-tracks-legislation-corrective-identity-normalisation-corpus-20260818-review-md-e1f96914d4",
+      "path": "conductor/tracks/legislation_corrective_identity_normalisation_corpus_20260818/review.md",
+      "sha256": "d85a3fd87e623ebec43b051ab46f3de9afa6632145dad97de49e66951a4ba541",
+      "classification": "historical",
+      "artefact_type": "track_review",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "conductor-tracks-legislation-corrective-live-inventory-reuse-20260818-review-md-6a9464853a",
+      "path": "conductor/tracks/legislation_corrective_live_inventory_reuse_20260818/review.md",
+      "sha256": "817283afc6aedaba41450c53f14f9ed301b524dc1f100180ecd63f1f19f3cc0c",
+      "classification": "historical",
+      "artefact_type": "track_review",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "conductor-tracks-legislation-corrective-mcp-disposition-conformance-20260818-review-md-5a1b4d7627",
+      "path": "conductor/tracks/legislation_corrective_mcp_disposition_conformance_20260818/review.md",
+      "sha256": "ae6ecd7be06fba6492db3bca6ccb6366614c81021c58d347935f1fdaf2bbdb6b",
+      "classification": "historical",
+      "artefact_type": "track_review",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "conductor-tracks-legislation-corrective-reconciliation-parity-publication-20260818-review-9d9bf24d77",
+      "path": "conductor/tracks/legislation_corrective_reconciliation_parity_publication_20260818/review.md",
+      "sha256": "41a38eaf54dd8c35fc94c803c2e1799f5b28bdf0cd6c7b834fa692ebd402b46b",
+      "classification": "historical",
+      "artefact_type": "track_review",
+      "claim_dimensions": [
+        "publication_identity_migration",
+        "operational_state_migration",
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "conductor-tracks-legislation-corrective-rights-redistribution-20260818-review-md-608e2ba52a",
+      "path": "conductor/tracks/legislation_corrective_rights_redistribution_20260818/review.md",
+      "sha256": "60a59e73c11a9553abdf8456240669abe601cc17135457fa255e1e8961865466",
+      "classification": "historical",
+      "artefact_type": "track_review",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "conductor-tracks-legislation-corrective-service-integrity-20260820-review-md-f8e0ccb6b5",
+      "path": "conductor/tracks/legislation_corrective_service_integrity_20260820/review.md",
+      "sha256": "99c02ff1173b12967c76b69020574fb05ac17c035d17bf1ebff510ee0513e381",
+      "classification": "historical",
+      "artefact_type": "track_review",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "conductor-tracks-legislation-corrective-shadow-operation-cutover-20260818-review-md-f5e0f2d0ca",
+      "path": "conductor/tracks/legislation_corrective_shadow_operation_cutover_20260818/review.md",
+      "sha256": "4b750cb2cd1db8e976fcac2b8e912d78dec177806ec3dee3600b8784a2cd11a8",
+      "classification": "historical",
+      "artefact_type": "track_review",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "conductor-tracks-legislation-corrective-standards-schema-conformance-20260818-review-md-0e23de1442",
+      "path": "conductor/tracks/legislation_corrective_standards_schema_conformance_20260818/review.md",
+      "sha256": "8d0315e9620cd3a441004b6094590b99a731c21f42d6f4babad199a346e77121",
+      "classification": "historical",
+      "artefact_type": "track_review",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "conductor-tracks-legislation-corrective-weekly-orchestration-state-20260818-review-md-649d6b72db",
+      "path": "conductor/tracks/legislation_corrective_weekly_orchestration_state_20260818/review.md",
+      "sha256": "cb3945bdc5c58902effad1ce73eea96055f5664cafb0a2f652822244e799bcbd",
+      "classification": "historical",
+      "artefact_type": "track_review",
+      "claim_dimensions": [
+        "operational_state_migration",
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "conductor-tracks-legislation-durable-state-20260901-review-md-9758dec908",
+      "path": "conductor/tracks/legislation_durable_state_20260901/review.md",
+      "sha256": "e8ec40c7f87b1dd21aebc9c9d89f82e2f317ed36651aed303b62429be6d38367",
+      "classification": "historical",
+      "artefact_type": "track_review",
+      "claim_dimensions": [
+        "operational_state_migration",
+        "corpus_custody_recoverability",
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "conductor-tracks-legislation-evidence-index-20260902-review-md-0768834490",
+      "path": "conductor/tracks/legislation_evidence_index_20260902/review.md",
+      "sha256": "021b8db91569c5106b53092470f6d9366118d697c7f21e1d7a9e366e0075fc8f",
+      "classification": "historical",
+      "artefact_type": "track_review",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "conductor-tracks-legislation-final-donor-lineage-20260831-review-md-5b46596a44",
+      "path": "conductor/tracks/legislation_final_donor_lineage_20260831/review.md",
+      "sha256": "587ffc32cec48caaa985d33cd96d651ff1545f2c6d22f9d86a353dc34f94a0eb",
+      "classification": "historical",
+      "artefact_type": "track_review",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "conductor-tracks-legislation-final-donor-state-verification-20260831-review-md-ae8f3b07e2",
+      "path": "conductor/tracks/legislation_final_donor_state_verification_20260831/review.md",
+      "sha256": "06ba488d02b8818f1adfbf29fbc6e6dbba106cc2d7c666fb43a4bd746d540bef",
+      "classification": "historical",
+      "artefact_type": "track_review",
+      "claim_dimensions": [
+        "operational_state_migration",
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "conductor-tracks-legislation-harvest-accounting-20260901-review-md-c9e25a1abb",
+      "path": "conductor/tracks/legislation_harvest_accounting_20260901/review.md",
+      "sha256": "5cf75f8771d18da9a8c34c40af15d784c4110cb2da797980e811d6f3c4c938fb",
+      "classification": "historical",
+      "artefact_type": "track_review",
+      "claim_dimensions": [
+        "operational_state_migration",
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "conductor-tracks-legislation-hf-identity-reconciliation-20260901-review-md-7c85a725d2",
+      "path": "conductor/tracks/legislation_hf_identity_reconciliation_20260901/review.md",
+      "sha256": "7e9e1044a0db38a7c754d393186da8767ef3251900331fd5ecc1eb12c8f33f8f",
+      "classification": "historical",
+      "artefact_type": "track_review",
+      "claim_dimensions": [
+        "operational_state_migration",
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "conductor-tracks-legislation-historical-coverage-20260901-review-md-a8bfee8f1a",
+      "path": "conductor/tracks/legislation_historical_coverage_20260901/review.md",
+      "sha256": "29257051edaee4f8a27c68ea81cdb8c10e2020cfe09d2749c8c563a66b3396c8",
+      "classification": "historical",
+      "artefact_type": "track_review",
+      "claim_dimensions": [
+        "operational_state_migration",
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "conductor-tracks-legislation-one-batch-reconciliation-20260820-review-md-5b8c954bcd",
+      "path": "conductor/tracks/legislation_one_batch_reconciliation_20260820/review.md",
+      "sha256": "cdb5cbae803cf5053388fd1b6cf093cb16f8e0261c9402b7a26e095beb5e9ded",
+      "classification": "historical",
+      "artefact_type": "track_review",
+      "claim_dimensions": [
+        "operational_state_migration",
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "conductor-tracks-legislation-parent-state-restoration-20260901-review-md-7afa9efbeb",
+      "path": "conductor/tracks/legislation_parent_state_restoration_20260901/review.md",
+      "sha256": "c7532857dd9fcba186bffbf6d9d445edb907e71fed0a09941f686ba0d0e2fa84",
+      "classification": "historical",
+      "artefact_type": "track_review",
+      "claim_dimensions": [
+        "operational_state_migration",
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "conductor-tracks-legislation-reviewed-seed-registry-20260831-review-md-034f24de75",
+      "path": "conductor/tracks/legislation_reviewed_seed_registry_20260831/review.md",
+      "sha256": "1760d111e01ff5b7744c7c551336ca06ecaa05576a72ec5b9b74201662f8bf9a",
+      "classification": "historical",
+      "artefact_type": "track_review",
+      "claim_dimensions": [
+        "operational_state_migration",
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "conductor-tracks-legislation-typed-source-set-20260901-review-md-7e7dd80f9d",
+      "path": "conductor/tracks/legislation_typed_source_set_20260901/review.md",
+      "sha256": "e12d39ee09f722c17faf8be32c34fe76bf3ef3c6bb64bb28a0243a90a26d7d8f",
+      "classification": "historical",
+      "artefact_type": "track_review",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "conductor-tracks-legislation-workflow-fail-closed-20260820-review-md-afba609c6f",
+      "path": "conductor/tracks/legislation_workflow_fail_closed_20260820/review.md",
+      "sha256": "fdfcf13d85ba2978eef9ad56ebf1518250af1dfb7b62013c477a40480efec887",
+      "classification": "historical",
+      "artefact_type": "track_review",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "conductor-tracks-zenodo-identity-correction-20260902-review-md-ad2fa194cc",
+      "path": "conductor/tracks/zenodo_identity_correction_20260902/review.md",
+      "sha256": "3868157a4f16d44d6f981f6b4e191868eca85a1c8f457ef741d197e24d59d3cb",
+      "classification": "historical",
+      "artefact_type": "track_review",
+      "claim_dimensions": [
+        "publication_identity_migration",
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "contracts-approval-legislation-corrective-approval-profile-yaml-e0119eaed7",
+      "path": "contracts/approval/legislation-corrective-approval-profile.yaml",
+      "sha256": "eaebf2d4ea3746de525d694c856c7732fcff117e128abe51f72ee855be6f8725",
+      "classification": "active",
+      "artefact_type": "contract",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code."
+    },
+    {
+      "evidence_id": "contracts-cli-archive-govt-nz-cli-contract-yaml-6795496848",
+      "path": "contracts/cli/archive-govt-nz-cli.contract.yaml",
+      "sha256": "c1c7052d60f90907283e7e2b18a8ab8db3c25e05d2ddc00b0cbfd1c615f5b4d6",
+      "classification": "active",
+      "artefact_type": "contract",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code."
+    },
+    {
+      "evidence_id": "contracts-cli-nzlc-compatibility-contract-yaml-4826753ef1",
+      "path": "contracts/cli/nzlc-compatibility.contract.yaml",
+      "sha256": "f23a8b38af18ae0931351d08182ffbee820b7ef8bc770e873e258e2d511fb8d0",
+      "classification": "active",
+      "artefact_type": "contract",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code."
+    },
+    {
+      "evidence_id": "contracts-completion-legislation-completion-contract-yaml-bab2718de0",
+      "path": "contracts/completion/legislation-completion.contract.yaml",
+      "sha256": "a7deb741c89b1ca27c1eba8ba5ca8fdcbf4a9523efc51ecce7b1fcd089d604c4",
+      "classification": "active",
+      "artefact_type": "contract",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code."
+    },
+    {
+      "evidence_id": "contracts-cutover-legislation-cutover-contract-yaml-6bb6c38ae5",
+      "path": "contracts/cutover/legislation-cutover.contract.yaml",
+      "sha256": "e5d48c8f0bf722af2ce883bdc01669d74502de7c3a7178b1ce06c144f423f7ce",
+      "classification": "active",
+      "artefact_type": "contract",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code."
+    },
+    {
+      "evidence_id": "contracts-domain-legislation-domain-contract-yaml-b47ccd8c66",
+      "path": "contracts/domain/legislation-domain.contract.yaml",
+      "sha256": "8517674237ca358277a3bcaffc46eecc9b1552ac5b928cb9ab797785256e882b",
+      "classification": "active",
+      "artefact_type": "contract",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code."
+    },
+    {
+      "evidence_id": "contracts-evidence-legislation-evidence-integrity-contract-yaml-05d8e78127",
+      "path": "contracts/evidence/legislation-evidence-integrity.contract.yaml",
+      "sha256": "35fd363253ae5fbb72de5def39e5e7ec3c0324b268fcae398802403d9a3d7d4c",
+      "classification": "active",
+      "artefact_type": "contract",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code."
+    },
+    {
+      "evidence_id": "contracts-mcp-archive-govt-nz-mcp-disposition-contract-yaml-c92089a1f4",
+      "path": "contracts/mcp/archive-govt-nz-mcp-disposition.contract.yaml",
+      "sha256": "e285dde22084647a653f36a932512a83aec8d457a662f7df0000bf285b2ac84d",
+      "classification": "active",
+      "artefact_type": "contract",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code."
+    },
+    {
+      "evidence_id": "contracts-migration-legislation-consolidation-contract-yaml-3ac888c17c",
+      "path": "contracts/migration/legislation-consolidation.contract.yaml",
+      "sha256": "8ee18bd7acd6f3f585342ef62f22686200583f1e42df4f9b73d6db82eb73901c",
+      "classification": "active",
+      "artefact_type": "contract",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code."
+    },
+    {
+      "evidence_id": "contracts-publication-legislation-publication-identity-contract-yaml-2a4db5ce15",
+      "path": "contracts/publication/legislation-publication-identity.contract.yaml",
+      "sha256": "219c9c0855562b22ec262428b86196f176ad65ff122ee8d8b6dd32ab657591da",
+      "classification": "active",
+      "artefact_type": "contract",
+      "claim_dimensions": [
+        "publication_identity_migration",
+        "code_capability_migration"
+      ],
+      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code."
+    },
+    {
+      "evidence_id": "contracts-reuse-legislation-reuse-before-create-contract-yaml-c225e60606",
+      "path": "contracts/reuse/legislation-reuse-before-create.contract.yaml",
+      "sha256": "eb8e3068363acb5f4c1565ed1b432a993ffb06c04376ba7feccf287d7ced66dd",
+      "classification": "active",
+      "artefact_type": "contract",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code."
+    },
+    {
+      "evidence_id": "contracts-rights-legislation-rights-contract-yaml-75d58b42f6",
+      "path": "contracts/rights/legislation-rights.contract.yaml",
+      "sha256": "aad4558d347e5fee7ded1dfdb5ec1b1585c0efc1e2b17fb1202f6ce572833479",
+      "classification": "active",
+      "artefact_type": "contract",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code."
+    },
+    {
+      "evidence_id": "contracts-schedule-legislation-archive-slo-contract-yaml-eff72ecd39",
+      "path": "contracts/schedule/legislation-archive-slo.contract.yaml",
+      "sha256": "e7a61fb6035b4b613cdd404c9442c10a2fed9200104b6cb1f7ef6a6425a7406e",
+      "classification": "active",
+      "artefact_type": "contract",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code."
+    },
+    {
+      "evidence_id": "contracts-schemas-legislation-schema-conformance-contract-yaml-f2abeec31c",
+      "path": "contracts/schemas/legislation-schema-conformance.contract.yaml",
+      "sha256": "5e8b9717678f449d74231dc4130757dce4f206f4ffa331ef9a3c7dc23db8dde2",
+      "classification": "active",
+      "artefact_type": "contract",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code."
+    },
+    {
+      "evidence_id": "docs-migrations-corpus-legislation-nz-baseline-md-91e56c528c",
+      "path": "docs/migrations/corpus-legislation-nz/baseline.md",
+      "sha256": "2b3b0cc72ce0766c0c1dd2b1a1ab5b1ce8b350fa1967901d461bec4d44afff39",
+      "classification": "historical",
+      "artefact_type": "public_claim",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "docs-migrations-corpus-legislation-nz-capability-matrix-md-4ea44e6267",
+      "path": "docs/migrations/corpus-legislation-nz/capability-matrix.md",
+      "sha256": "0472bf5c57493db87f645c3ef40c9a61c65aa8da58c638328d82a737a1885adc",
+      "classification": "historical",
+      "artefact_type": "public_claim",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "docs-migrations-corpus-legislation-nz-component-inventory-md-78d464ccea",
+      "path": "docs/migrations/corpus-legislation-nz/component-inventory.md",
+      "sha256": "b84314d262f4d0cd7f501024c722f8a650ecb38610614823074919c109028400",
+      "classification": "historical",
+      "artefact_type": "public_claim",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "docs-migrations-corpus-legislation-nz-conductor-lineage-md-6f7a28a268",
+      "path": "docs/migrations/corpus-legislation-nz/conductor-lineage.md",
+      "sha256": "4d712aa842243f3f5d8b5783bd81afa65f099bdd2f9f44554dff1c72bd29fc9b",
+      "classification": "historical",
+      "artefact_type": "public_claim",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "original-closeout-report",
+      "path": "docs/migrations/corpus-legislation-nz/consolidation-closeout-report.md",
+      "sha256": "524c402b8e3ef0576e7183a5fdc22e699e05dcca8c3c244e68fdc30659a2b13b",
+      "classification": "superseded",
+      "artefact_type": "public_claim",
+      "claim_dimensions": [
+        "code_capability_migration",
+        "operational_state_migration",
+        "corpus_custody_recoverability",
+        "publication_identity_migration"
+      ],
+      "rationale": "Historical report conflates all four dimensions and asserts unsupported 33,693-record parity.",
+      "superseded_by": "corrected-closeout"
+    },
+    {
+      "evidence_id": "corrected-closeout",
+      "path": "docs/migrations/corpus-legislation-nz/corrected-closeout.md",
+      "sha256": "f25717bf285cc9feda59b69817c2f6d143a6f477fca215e613dfffc1cc341b7d",
+      "classification": "active",
+      "artefact_type": "public_claim",
+      "claim_dimensions": [
+        "code_capability_migration",
+        "operational_state_migration",
+        "corpus_custody_recoverability",
+        "publication_identity_migration"
+      ],
+      "rationale": "Current additive closeout separates the four dimensions and preserves every earlier claim as historical evidence."
+    },
+    {
+      "evidence_id": "docs-migrations-corpus-legislation-nz-corrective-audit-md-184e8a1c21",
+      "path": "docs/migrations/corpus-legislation-nz/corrective-audit.md",
+      "sha256": "bf0c0702ad061a248982b43baec3df4c82a4a64fe1492dc56d28c0bfcda59836",
+      "classification": "historical",
+      "artefact_type": "public_claim",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "docs-migrations-corpus-legislation-nz-cutover-runbook-md-d97a20944b",
+      "path": "docs/migrations/corpus-legislation-nz/cutover-runbook.md",
+      "sha256": "6871bcf56903d6f667d8c1109151cf88da0b4b13d7f8b7a70a08f0f3e3346010",
+      "classification": "historical",
+      "artefact_type": "public_claim",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "docs-migrations-corpus-legislation-nz-final-donor-lineage-md-aa0e0d7c88",
+      "path": "docs/migrations/corpus-legislation-nz/final-donor-lineage.md",
+      "sha256": "2d9d02251633f562b6845ab7a0c1f270db46aeb8450e5cb5775c8714d96b5c27",
+      "classification": "historical",
+      "artefact_type": "public_claim",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "docs-migrations-corpus-legislation-nz-issue-reconciliation-md-64b3df8b25",
+      "path": "docs/migrations/corpus-legislation-nz/issue-reconciliation.md",
+      "sha256": "f0ab6f91e7e57e3c2cf686995c4ccd9cdd76ccf1d8ac26a2adce4af25096781f",
+      "classification": "historical",
+      "artefact_type": "public_claim",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "docs-migrations-corpus-legislation-nz-licensing-and-rights-md-9efaca6d4f",
+      "path": "docs/migrations/corpus-legislation-nz/licensing-and-rights.md",
+      "sha256": "4a10dcb6a4c9aa8862c4e44796b389811c76bbcfcdc4a45b0a709ae7a46b99da",
+      "classification": "historical",
+      "artefact_type": "public_claim",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "docs-migrations-corpus-legislation-nz-live-inventory-md-da12388714",
+      "path": "docs/migrations/corpus-legislation-nz/live-inventory.md",
+      "sha256": "3579243035acd5d9d3397a26c5fdf9a30fa05fa2b52b225df9d1735ed467505c",
+      "classification": "historical",
+      "artefact_type": "public_claim",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "original-parity-report",
+      "path": "docs/migrations/corpus-legislation-nz/parity-report.md",
+      "sha256": "21c20aeff4da177b1ef0d54658dc64f8187e0eaede848701dc584db12c3e02bd",
+      "classification": "invalidated",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration",
+        "corpus_custody_recoverability"
+      ],
+      "rationale": "Treats candidate identifiers as evaluated complete-corpus records and is rejected by canonical Prompt 14 coverage.",
+      "invalidated_by": "canonical-historical-coverage"
+    },
+    {
+      "evidence_id": "docs-migrations-corpus-legislation-nz-pre-acquisition-discovery-md-39d0e2639e",
+      "path": "docs/migrations/corpus-legislation-nz/pre-acquisition-discovery.md",
+      "sha256": "f1492d9538388fbfaa7f9376161275698bd7bb7813f0c6a702ae21b3a3ca6318",
+      "classification": "historical",
+      "artefact_type": "public_claim",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "docs-migrations-corpus-legislation-nz-publication-identity-reconciliation-md-5e61483beb",
+      "path": "docs/migrations/corpus-legislation-nz/publication-identity-reconciliation.md",
+      "sha256": "1b0f22017475aba898d62df2419ac918e7c986fe9e46a468379f862e4c2ac6bc",
+      "classification": "historical",
+      "artefact_type": "public_claim",
+      "claim_dimensions": [
+        "publication_identity_migration",
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "docs-migrations-corpus-legislation-nz-reuse-decisions-md-1d8343570d",
+      "path": "docs/migrations/corpus-legislation-nz/reuse-decisions.md",
+      "sha256": "167b43028fe3124d72cf71261cd0e55f78dcecee1014b5edcf6d1e8c75bfe304",
+      "classification": "historical",
+      "artefact_type": "public_claim",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "target-500-work-proof",
+      "path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/500-work-target-revalidation.json",
+      "sha256": "5396f35f4f4061f0c7235414e07d685cf6b3cad1d3a03f8ba97e95216f0c5d16",
+      "classification": "incomplete",
+      "artefact_type": "receipt",
+      "claim_dimensions": [
+        "operational_state_migration",
+        "corpus_custody_recoverability"
+      ],
+      "rationale": "Prompt 13 was not dispatched and records seven blockers with all operational proof booleans false."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-500-work-operational-proof-operational-observati-3a712b87a9",
+      "path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/operational-observation.md",
+      "sha256": "0ecd004b7cc52fe29b13ae9f25f647f12dba71f4d87d1b24a7bdfc5c13349635",
+      "classification": "historical",
+      "artefact_type": "receipt",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-baseline-json-a7a98831ac",
+      "path": "evidence/migrations/corpus-legislation-nz/baseline.json",
+      "sha256": "8a65681df52b811afd1cf22a702ddf167e2381ae3196375bcf132d2a0c125dcc",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-capability-matrix-json-8f7c312211",
+      "path": "evidence/migrations/corpus-legislation-nz/capability-matrix.json",
+      "sha256": "eac29a2855f3151a7b4162de1e21071cff01636c339d1636a9a96b6ed8e6dd34",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-component-inventory-json-a7e2d2cd18",
+      "path": "evidence/migrations/corpus-legislation-nz/component-inventory.json",
+      "sha256": "3e9e87902a1cb22ff080a54283fe9b74a104798b1d43b274aad4266d6061cdca",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "consolidation-closeout-receipt",
+      "path": "evidence/migrations/corpus-legislation-nz/consolidation-closeout-receipt.json",
+      "sha256": "b84605fc4f2ec3994d3f580979e9bd1766925f954ab0419270a1c45003e2e9ae",
+      "classification": "invalidated",
+      "artefact_type": "receipt",
+      "claim_dimensions": [
+        "code_capability_migration",
+        "operational_state_migration",
+        "corpus_custody_recoverability",
+        "publication_identity_migration"
+      ],
+      "rationale": "Receipt is explicitly invalidated as a premature PR 124 closeout assertion.",
+      "invalidated_by": "corrective-audit"
+    },
+    {
+      "evidence_id": "corrective-audit",
+      "path": "evidence/migrations/corpus-legislation-nz/corrective-audit.json",
+      "sha256": "d9d8d730b023b872ad18ab7a0f4153850e7ab0f111f333fead589a04d84f3b77",
+      "classification": "active",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "code_capability_migration",
+        "operational_state_migration",
+        "corpus_custody_recoverability",
+        "publication_identity_migration"
+      ],
+      "rationale": "Contemporaneous corrective audit invalidates the premature PR 124 receipt set."
+    },
+    {
+      "evidence_id": "cutover-receipt",
+      "path": "evidence/migrations/corpus-legislation-nz/cutover-receipt.json",
+      "sha256": "fa6e63798f94cec79c221e90980aabfac9c34f8aab4d909847335657be32c016",
+      "classification": "invalidated",
+      "artefact_type": "receipt",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Receipt is explicitly invalidated as a premature cutover claim.",
+      "invalidated_by": "corrective-audit"
+    },
+    {
+      "evidence_id": "dec-hist-001-finding",
+      "path": "evidence/migrations/corpus-legislation-nz/dec-hist-001-finding.md",
+      "sha256": "35a7ea3da08c9cbbf2cb33bff1922d922f5cea5f17af3aea5c37cbe82078ceb0",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration",
+        "corpus_custody_recoverability",
+        "publication_identity_migration"
+      ],
+      "rationale": "Preserved finding documents the stale 67-batch claim but its CAS reconciliation and publication conclusions are not current proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-donor-track-lineage-json-4e2ff826a9",
+      "path": "evidence/migrations/corpus-legislation-nz/donor-track-lineage.json",
+      "sha256": "e77b098c83306fcde7a9bc97d87fe4ac70e26426ce44625fed82a34b986072c7",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-durable-state-canonical-local-initial-json-b3ba3f0f7b",
+      "path": "evidence/migrations/corpus-legislation-nz/durable-state/canonical-local-initial.json",
+      "sha256": "15090f39fa90417c70faebf578cecdb3c1f345b92c1b2887c11d73dd6d20213e",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration",
+        "corpus_custody_recoverability"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "durable-local-package",
+      "path": "evidence/migrations/corpus-legislation-nz/durable-state/canonical-local-reviewed.json",
+      "sha256": "50b5b85a44a33bf93489e1a9729aea547d8fb08cc403c11b95f4ea632c377565",
+      "classification": "incomplete",
+      "artefact_type": "receipt",
+      "claim_dimensions": [
+        "corpus_custody_recoverability"
+      ],
+      "rationale": "Deterministic local durable package exists, but a local package is not an independently recovered remote authority."
+    },
+    {
+      "evidence_id": "durable-destination-observations",
+      "path": "evidence/migrations/corpus-legislation-nz/durable-state/destination-observations.json",
+      "sha256": "6038d942d1c9742aad6a69592845a533074abc0583ff5948922d09f7ca582d32",
+      "classification": "externally_blocked",
+      "artefact_type": "receipt",
+      "claim_dimensions": [
+        "corpus_custody_recoverability"
+      ],
+      "rationale": "Destination evidence records the rights, publication, provider and readback gates preventing durable remote custody and recovery acceptance."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-durable-state-integration-json-b722c68794",
+      "path": "evidence/migrations/corpus-legislation-nz/durable-state/integration.json",
+      "sha256": "81d36a1d95195dd6950343cff753e18f8e154c7a0cc71ff2bb0b8925e76c8286",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration",
+        "corpus_custody_recoverability"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-durable-state-publication-plan-json-960d60fce3",
+      "path": "evidence/migrations/corpus-legislation-nz/durable-state/publication-plan.json",
+      "sha256": "8aecfc4a75a7c611a879396aafee8855eba1e554175b534c5f988843cea91416",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "publication_identity_migration",
+        "operational_state_migration",
+        "corpus_custody_recoverability"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-durable-state-validation-json-77fa20ed18",
+      "path": "evidence/migrations/corpus-legislation-nz/durable-state/validation.json",
+      "sha256": "2a30a40a3df1e51fe413c315e3ed7bf53f8a161dee7d295c9c61b71b7cd59b3f",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration",
+        "corpus_custody_recoverability"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-external-identities-json-723f6f29d9",
+      "path": "evidence/migrations/corpus-legislation-nz/external-identities.json",
+      "sha256": "2624c22a54c3bf20ab6395182356b009c7cf87b947d913f4920c1518eeb99c73",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "publication_identity_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "legacy-completion-evaluator-output",
+      "path": "evidence/migrations/corpus-legislation-nz/final-adversarial-verification.json",
+      "sha256": "81219add4c2bd0c754484993567a6ffdc0762db692a909b724001a4ab0911aee",
+      "classification": "superseded",
+      "artefact_type": "evaluator_output",
+      "claim_dimensions": [
+        "code_capability_migration",
+        "operational_state_migration",
+        "corpus_custody_recoverability",
+        "publication_identity_migration"
+      ],
+      "rationale": "The 2026-08-26 complete result predates canonical coverage, blocked Prompt 13 proof, durable recovery blockers and pending publication authority.",
+      "superseded_by": "corrected-closeout"
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-readme-md-6dcfb9f695",
+      "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/README.md",
+      "sha256": "b5482b9ec028936b564789ac1debf59964bc27dbfd25c06fca3883bbbf56dafe",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-acquisition-json-e8fb313ed0",
+      "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/acquisition.json",
+      "sha256": "7cc3d1221720d1b029e670f0d5806863a5da13bc1ce06e0ce49aa1a0c9e2ec8d",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-delivery-base-json-d589b81e8f",
+      "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/delivery-base.json",
+      "sha256": "16268a9199307bf23a3b3470df20948ca374123ad84025c0ea4b7e6e6b8c2478",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-development-log-hashes-json-d6b887866b",
+      "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/development-log-hashes.json",
+      "sha256": "b6acec76d8aaf18b170cae7c24f2c71866f0e07f8807126f82095d34f4e92ce1",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-expectations-json-728f95bb63",
+      "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/expectations.json",
+      "sha256": "5fe2e77fe8edc5c76b0c864e1ecc2923443df21a0bf07356d11c923a2cb770d8",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-full-validation-handoff-json-04cb597b5b",
+      "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/full-validation-handoff.json",
+      "sha256": "e116e687655fc85adc8fcc531d748f80cc04efa0c554b748966fdc6fcc8598c2",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-github-metadata-json-2835015812",
+      "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/github-metadata.json",
+      "sha256": "5b6d91b78dbdd2197fd1cc82f34fbb87bfcb83ccd02ac40fb927181cde264737",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-mutation-01-json-4b6ffd16e4",
+      "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/mutation-01.json",
+      "sha256": "acdb29ba456e018e110706f241a58aa7078d216a9276c9906b9c7931502837d5",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-parent-run-readback-json-f4bd65593a",
+      "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/parent-run-readback.json",
+      "sha256": "f4e474e2cfe4fffc6c5ba1cbf644859de0b2b4eb19fe16ebf3632c6612e134b1",
+      "classification": "historical",
+      "artefact_type": "receipt",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-quarantine-readback-json-727ec7c4d9",
+      "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/quarantine-readback.json",
+      "sha256": "80cb87ee9baa0ee8d637cba3c04ad6d3b743ee0832a1082f1c3598e637fc740b",
+      "classification": "historical",
+      "artefact_type": "receipt",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-resume-schema-correction-json-e03db01b6e",
+      "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/resume-schema-correction.json",
+      "sha256": "6aaedddcd9cb06f01d03479222f21e23d9f4c1497b8a3df3f4f6adaf21810743",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-resume-verification-json-961c12ae88",
+      "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/resume-verification.json",
+      "sha256": "6c4dadfea4d1e451020ab532e69dae95adc1e21183937351489906b857a1d905",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-verification-01-sha256sums-17573bd3f9",
+      "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/verification-01/SHA256SUMS",
+      "sha256": "344df52757959e95b0020aa001b532be82de36860fb72818d8c6d1d0eb73d3e1",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "failed-final-donor-verification",
+      "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/verification-01/final-donor-state-verification.json",
+      "sha256": "704cb81110b73430c1cbd0bef19fe9def014df92524ca1f950562d041a0668f6",
+      "classification": "historical",
+      "artefact_type": "receipt",
+      "claim_dimensions": [
+        "operational_state_migration",
+        "corpus_custody_recoverability"
+      ],
+      "rationale": "Failed first attempt is retained as execution chronology and cannot prove current state."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-verification-01-prompt04-inven-2a95b1ebe0",
+      "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/verification-01/prompt04-inventory.json",
+      "sha256": "81569a334e8100378b597e34496db654aa08301e62327580625bb8fdda42054b",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-verification-01-report-md-dc7b208517",
+      "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/verification-01/report.md",
+      "sha256": "2df52e5727db670290eda5b5be6cbdba88a21b3ec44d34fce2a14ca1d140ded4",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-verification-02-sha256sums-aa29334f2f",
+      "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/verification-02/SHA256SUMS",
+      "sha256": "a3fe0a42d19f35ab0308404678bbbaf6f90f24a6911cb04fb31dc6a4f7131f0d",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "final-donor-state-verification",
+      "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/verification-02/final-donor-state-verification.json",
+      "sha256": "46e193732d5a798a33a8647f58f7d5962dc449e9cde0148a51250073e6272e97",
+      "classification": "active",
+      "artefact_type": "receipt",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Superseding Prompt 03 verification passed against the final archived donor package."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-verification-02-prompt04-inven-ace50ccd6d",
+      "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/verification-02/prompt04-inventory.json",
+      "sha256": "61d054a24e39792cdef21783c68c4f5bb31903139608fc5854cdd66e9b68aa7e",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-verification-02-report-md-5cf5d1886a",
+      "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/verification-02/report.md",
+      "sha256": "e31c5ed7819c552ec6c5870882556004b1369375b81b1755a10f96987e215b7d",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-verifier-correction-json-245c5d7f65",
+      "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/verifier-correction.json",
+      "sha256": "0fe75d873e0d69c9a79adcba78541e29193d5ed241224860b66d3547a2cddc6f",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-workflow-lint-handoff-json-4c6642601b",
+      "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/workflow-lint-handoff.json",
+      "sha256": "9b672c6d14f28480edf965404afd584566f4e0741862ce631800588be9d003d1",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "final-capability-matrix",
+      "path": "evidence/migrations/corpus-legislation-nz/final-lineage/capability-matrix.json",
+      "sha256": "acb92bf1710af9d7eade129d566cdaa0bc232bdd3df1de99deb18060c77efae9",
+      "classification": "active",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Final donor-head capability accounting is the active code and contract migration inventory."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-commit-dispositions-json-2e54f3d068",
+      "path": "evidence/migrations/corpus-legislation-nz/final-lineage/commit-dispositions.json",
+      "sha256": "6277c71ad662fb331ff33893e3bbd3d01cfe6bb1b0e70a68e9ce971d05b5d754",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-donor-track-lineage-json-88bcdaeecb",
+      "path": "evidence/migrations/corpus-legislation-nz/final-lineage/donor-track-lineage.json",
+      "sha256": "177d479c3ec6ee6eef3e98ccdda230cd505ccf3797921783d96748f8bb8e58a1",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-external-identities-json-fbbd0120db",
+      "path": "evidence/migrations/corpus-legislation-nz/final-lineage/external-identities.json",
+      "sha256": "0f8b74cac27b83805c164dd5cdeafe8764927b5bf3297c4657b7164e42c7cc67",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "publication_identity_migration",
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-focused-validation-json-608eb8e739",
+      "path": "evidence/migrations/corpus-legislation-nz/final-lineage/focused-validation.json",
+      "sha256": "31aadd88d466e9494236a569b06b2605e7449920b2f362425cca28a0eb2ccedf",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-handoffs-json-ccdd892f40",
+      "path": "evidence/migrations/corpus-legislation-nz/final-lineage/handoffs.json",
+      "sha256": "468ee357294934f03a0ebf4fb560e3653be9e6b0438a59506f4c644d020fbf3b",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-hosted-evidence-json-6f7e8baf1b",
+      "path": "evidence/migrations/corpus-legislation-nz/final-lineage/hosted-evidence.json",
+      "sha256": "f61bc72e074089542a5c8f81afdee403f23de92f4147f7b8ab9b16d929d99a6b",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-hosted-format-failure-json-e2e9cb3c4e",
+      "path": "evidence/migrations/corpus-legislation-nz/final-lineage/hosted-format-failure.json",
+      "sha256": "0e1d5947757400ded69a7c17bd2ffb6e733255d22ea9eecbb1e0f6ddcb4cce2b",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-import-fixity-json-b6cc6ad5e7",
+      "path": "evidence/migrations/corpus-legislation-nz/final-lineage/import-fixity.json",
+      "sha256": "6e9f9bcbd70ac2adaf6358df50c5c024165c619ae298e9c747f39b58cbe00977",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-issue-pr-reconciliation-json-3fcfc005d6",
+      "path": "evidence/migrations/corpus-legislation-nz/final-lineage/issue-pr-reconciliation.json",
+      "sha256": "eb27b9157c132b33921f53c1bbdf60b9752ebb3874c8345d87b5d456afd505bc",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration",
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-late-commit-patches-json-17d4b2eb8f",
+      "path": "evidence/migrations/corpus-legislation-nz/final-lineage/late-commit-patches.json",
+      "sha256": "b49196d010af7839538a68a62de2b8c14fca0cad157b9d327d780c62f2eb097a",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-late-donor-files-json-a81912df90",
+      "path": "evidence/migrations/corpus-legislation-nz/final-lineage/late-donor-files.json",
+      "sha256": "b1d705e182586c79a361a4752b46441af07a6faa59325f774ec0fafe4b77f2b2",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-receipt-precommit-json-824014ab3b",
+      "path": "evidence/migrations/corpus-legislation-nz/final-lineage/receipt-precommit.json",
+      "sha256": "9c337b834654e0cf17f6513390c46a4cf1dcf5b5dca091bd9aa0fe67e0cd6449",
+      "classification": "historical",
+      "artefact_type": "receipt",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-receipt-json-d553857b1f",
+      "path": "evidence/migrations/corpus-legislation-nz/final-lineage/receipt.json",
+      "sha256": "7a90eed0dabd874a835d31a29c42eec52c5c6b3cd2623aa0436e563df53ac52b",
+      "classification": "historical",
+      "artefact_type": "receipt",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-secret-scan-failure-json-8544575867",
+      "path": "evidence/migrations/corpus-legislation-nz/final-lineage/secret-scan-failure.json",
+      "sha256": "b2baff3ffe93dbdfff7fc0e032ae96cab69405e5299f5b69a25c6e2136ecd0c3",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-validation-final-json-337e250f6c",
+      "path": "evidence/migrations/corpus-legislation-nz/final-lineage/validation-final.json",
+      "sha256": "99c9ad348ac11076303adf6d926d24508809629d7614cd6a66dfe69d74873ab2",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-validation-observations-json-119894412b",
+      "path": "evidence/migrations/corpus-legislation-nz/final-lineage/validation-observations.json",
+      "sha256": "8ef8799588121aad1910fd6bf15ad209e39d8454bfb5f220e7cf6483bc9b3010",
+      "classification": "historical",
+      "artefact_type": "receipt",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-workflow-routes-json-13ae77e259",
+      "path": "evidence/migrations/corpus-legislation-nz/final-lineage/workflow-routes.json",
+      "sha256": "3d7c0e015565f5568ff67f20baffa2edf778c11f7565b478265eb0ebab47e20d",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-readme-md-3a2f6b1d2e",
+      "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/README.md",
+      "sha256": "261d453bf5ceae3c3dc2a6f1f4c8821f9c86937dc3185ae4ea9a35b86fc9c37d",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-sha256sums-ce95bf274d",
+      "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/SHA256SUMS",
+      "sha256": "059389683fc07620a9f16b51b4b5a8741968e6cdd57ecaa6669e6a60d9d3af57",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-changed-files-json-827e62c0e9",
+      "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/changed-files.json",
+      "sha256": "09c6c220290a35585ac2f31f0749c2229656074c902166e36e0cac02ada99fa0",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-current-package-json-a7f7ba8f5b",
+      "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/current-package.json",
+      "sha256": "5e63f555b6ba85394f976aeb6c1e2daffce28059e3bc13844ade0c0686f489f3",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-development-attempts-json-1df9fe2a3b",
+      "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/development-attempts.json",
+      "sha256": "69aa22dd6e0c0f6240f77168da462928e622e94909cb2082c45ce9fc9ed8ac99",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-execution-02-final-state-merge-6855525d91",
+      "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/execution-02/final-state-merge-receipt.json",
+      "sha256": "3fc4a205ed1b8a327f0d91675951ce18a6800f1bc2bdb948b22c45c882e8e679",
+      "classification": "historical",
+      "artefact_type": "receipt",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-execution-02-independent-readb-386b573a3e",
+      "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/execution-02/independent-readback.json",
+      "sha256": "09821b3357efc1d6856f1c3b7a52992811d35318574ae62fbb65630a4ce0b6d6",
+      "classification": "historical",
+      "artefact_type": "receipt",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-execution-02-package-inventory-02a4e5b98b",
+      "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/execution-02/package-inventory.json",
+      "sha256": "abc7a76228b53d90e0fc986f702cc9d223d711329a513fc06b509cfcd7b5c65d",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-execution-02-selection-before-b6d48c23a6",
+      "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/execution-02/selection-before-execution.json",
+      "sha256": "4507e38092d8818d769d94b6306668434f21547b5f54103569e62c20afd076ec",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "canonical-state-merge",
+      "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/final-state-merge-receipt.json",
+      "sha256": "9b4093d97584c0073564e00b5a58f8d9651cbe944f78e583370e90e9bdd9497a",
+      "classification": "active",
+      "artefact_type": "receipt",
+      "claim_dimensions": [
+        "operational_state_migration",
+        "corpus_custody_recoverability"
+      ],
+      "rationale": "Deterministic no-overwrite target state merge passed; it does not prove a later 500-work run or remote recovery."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-handoffs-json-7b10156ef1",
+      "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/handoffs.json",
+      "sha256": "11b57186601d66e43e97ef93679adf1f99f040c1a4bcf9f0898d3d21f982bcb0",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-hosted-reviewed-head-json-8aec55af7c",
+      "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/hosted-reviewed-head.json",
+      "sha256": "57f7cfe1c164029211c3df828a591e73859c662e294cc2af09d23e435322cd2f",
+      "classification": "historical",
+      "artefact_type": "track_review",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "canonical-state-independent-readback",
+      "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/independent-readback-01.json",
+      "sha256": "cc8b25cd706c2a17315fdaedc3cc85b21f27e5e69ce3b882cac620069dad1f39",
+      "classification": "active",
+      "artefact_type": "receipt",
+      "claim_dimensions": [
+        "operational_state_migration",
+        "corpus_custody_recoverability"
+      ],
+      "rationale": "Independent local readback verifies the merged canonical state package within its bounded scope."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-local-validation-final-json-264894bc92",
+      "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/local-validation-final.json",
+      "sha256": "1935767c20cb3f126fda9d0bd39a1b4b31d8ad2100c205bbde87b841df951de1",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-mutation-01-json-4859f9bd76",
+      "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/mutation-01.json",
+      "sha256": "1e52551b5529bf4ce283c62e0b49c8e6d1e6197fb588b1540aed22accd95ba4d",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-mutation-02-json-af87f17b40",
+      "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/mutation-02.json",
+      "sha256": "b9e755a1d74e4a6f4d86088bb4cf26de07572cd062baffa11daa2cd53d02cea9",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-package-inventory-01-json-b0e2e2656a",
+      "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/package-inventory-01.json",
+      "sha256": "79538fd44b394fa458b12140b6ef702af38e514c379b2552ca3551831c212129",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-rebase-validation-final-json-23c268b551",
+      "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/rebase-validation-final.json",
+      "sha256": "4b86116d48cbab67a4fad6ea5dc1028121ba4af0855dd49cc068a1cf054ff496",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-review-finding-01-json-13f32d3464",
+      "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/review-finding-01.json",
+      "sha256": "ccd6856f273ab226b8cedac2097c474cbc75671e8a5afe04d58e8e7cdab953f8",
+      "classification": "historical",
+      "artefact_type": "track_review",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-review-fix-validation-json-719b1fd235",
+      "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/review-fix-validation.json",
+      "sha256": "7fd2a37830eb670a12886f41236360d2b9425b9e7da8fc38e2fb5ff6141517ef",
+      "classification": "historical",
+      "artefact_type": "track_review",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-selection-before-execution-jso-ff7472fe7c",
+      "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/selection-before-execution.json",
+      "sha256": "4507e38092d8818d769d94b6306668434f21547b5f54103569e62c20afd076ec",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-target-descriptor-json-c4853db4df",
+      "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/target-descriptor.json",
+      "sha256": "9bac0a2eaebd0cd02c44f7575be475f64ad5102a8be58f2a4f1bb7df4ab31f2d",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-first-operational-cycle-harvest-receipt-json-2eeda1941d",
+      "path": "evidence/migrations/corpus-legislation-nz/first-operational-cycle/harvest-receipt.json",
+      "sha256": "8e585267b113d809cdfc76f85af949838d9693c77fdae1f965aa8c1242358cd0",
+      "classification": "historical",
+      "artefact_type": "receipt",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-first-operational-cycle-meta-json-32ab0faa86",
+      "path": "evidence/migrations/corpus-legislation-nz/first-operational-cycle/meta.json",
+      "sha256": "67660d3dc5a8a87efcf15c2c35b84a20cfc313b360f899daf22be7b772e9f70e",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-first-operational-cycle-reconciliation-receipt-j-b04d8c0d6d",
+      "path": "evidence/migrations/corpus-legislation-nz/first-operational-cycle/reconciliation-receipt.json",
+      "sha256": "3c6b03a1bc7279d064e195c701ec2a5a45cdb32069f9352301f48958cb19fd8e",
+      "classification": "historical",
+      "artefact_type": "receipt",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-first-operational-cycle-recovery-receipt-json-1b69f9f0a8",
+      "path": "evidence/migrations/corpus-legislation-nz/first-operational-cycle/recovery-receipt.json",
+      "sha256": "c429c2120474dac4c3001b9ca341977312fa50602a60f81ba081ca11b8bb739a",
+      "classification": "historical",
+      "artefact_type": "receipt",
+      "claim_dimensions": [
+        "operational_state_migration",
+        "corpus_custody_recoverability"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-historical-coverage-analyzer-claim-inputs-json-c12786edb4",
+      "path": "evidence/migrations/corpus-legislation-nz/historical-coverage/analyzer-claim-inputs.json",
+      "sha256": "009fecd4a70e61e0b7b58646877d47b8560be8e4a91b24087de27c5c8e9541e1",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "claim-correction-manifest",
+      "path": "evidence/migrations/corpus-legislation-nz/historical-coverage/claim-correction-manifest.json",
+      "sha256": "d742ad3a6a7113affc8589773ecf92f9d9b961ceec4e746cfa4e17d2ad8c9800",
+      "classification": "active",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration",
+        "corpus_custody_recoverability",
+        "publication_identity_migration"
+      ],
+      "rationale": "Hash-bound inventory identifies unsupported 33,693 claims while preserving their source bytes."
+    },
+    {
+      "evidence_id": "canonical-historical-coverage",
+      "path": "evidence/migrations/corpus-legislation-nz/historical-coverage/historical-coverage-report.json",
+      "sha256": "b5c3731a800572a367cf6106d038b8ee9d3c03353c96f309866f2bc48fb99f11",
+      "classification": "active",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration",
+        "corpus_custody_recoverability",
+        "publication_identity_migration"
+      ],
+      "rationale": "Canonical Prompt 14 report distinguishes 33,693 candidates, 500 reviewed IDs, 552 state works and unknown downstream outcomes."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-historical-coverage-historical-coverage-report-m-89f221fea2",
+      "path": "evidence/migrations/corpus-legislation-nz/historical-coverage/historical-coverage-report.md",
+      "sha256": "584954047f39a65256b8080297c58964193a14d07c0a4f425f966e37fc0a6f6b",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-historical-coverage-public-surface-observations-ff9c13311b",
+      "path": "evidence/migrations/corpus-legislation-nz/historical-coverage/public-surface-observations.json",
+      "sha256": "e9fa8c2a1e27f7c8b7d791012662a1134b004cfb4912388715bd9005a938b943",
+      "classification": "historical",
+      "artefact_type": "receipt",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-hosted-publication-readback-json-8980931512",
+      "path": "evidence/migrations/corpus-legislation-nz/hosted-publication-readback.json",
+      "sha256": "5fd3e96d698634f8055b9d5bd790e23f90513d514adc42c1bf16993ce71d4c0e",
+      "classification": "historical",
+      "artefact_type": "receipt",
+      "claim_dimensions": [
+        "publication_identity_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-huggingface-publication-canonical-card-readme-md-4f17623221",
+      "path": "evidence/migrations/corpus-legislation-nz/huggingface-publication/canonical-card/README.md",
+      "sha256": "456e37fe9bc2b54e119b86f349ef54914fea252407e6ebed9d40ceaec76366e9",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "publication_identity_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-huggingface-publication-canonical-card-rights-md-7313169dec",
+      "path": "evidence/migrations/corpus-legislation-nz/huggingface-publication/canonical-card/RIGHTS.md",
+      "sha256": "8c7aa768b21c27153b7f9bf2de445a45731cbeeb3a044b4a194035787fab9271",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "publication_identity_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-huggingface-publication-external-action-checklis-251390158f",
+      "path": "evidence/migrations/corpus-legislation-nz/huggingface-publication/external-action-checklist.md",
+      "sha256": "cdaca1ed4525039db47f089a11d06e0a4368283072eb1bd04eadd2b6e2a790bd",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "publication_identity_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-huggingface-publication-identity-reconciliation-fa404572b8",
+      "path": "evidence/migrations/corpus-legislation-nz/huggingface-publication/identity-reconciliation-report.json",
+      "sha256": "9e63ceb813e8f5301de86869ae7d58fffbe6932e374c59fdcf3853bfee6edd1d",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "publication_identity_migration",
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-huggingface-publication-identity-reconciliation-82e20067dc",
+      "path": "evidence/migrations/corpus-legislation-nz/huggingface-publication/identity-reconciliation-report.md",
+      "sha256": "121ff994d98bdecfc5365257461cd7b4c54f245443a7e2e14be8783220e1b187",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "publication_identity_migration",
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "hf-live-identity-observations",
+      "path": "evidence/migrations/corpus-legislation-nz/huggingface-publication/live-identity-observations.json",
+      "sha256": "88c11df98bc91ad09ea6e31f735edca198d58b0ecf37f7a2d634cae5679677f5",
+      "classification": "active",
+      "artefact_type": "receipt",
+      "claim_dimensions": [
+        "publication_identity_migration"
+      ],
+      "rationale": "Read-only live observations establish existing Hugging Face identities without claiming target-originated publication."
+    },
+    {
+      "evidence_id": "hf-publication-candidate",
+      "path": "evidence/migrations/corpus-legislation-nz/huggingface-publication/publication-candidate-manifest.json",
+      "sha256": "fb3caa39ffd3da9204f01ebd764237d276460dc61493eb809b7e207d17813646",
+      "classification": "externally_blocked",
+      "artefact_type": "registry",
+      "claim_dimensions": [
+        "publication_identity_migration"
+      ],
+      "rationale": "Manifest explicitly remains candidate_only_not_published and external publication approval is pending."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-issue-reconciliation-json-60a733468f",
+      "path": "evidence/migrations/corpus-legislation-nz/issue-reconciliation.json",
+      "sha256": "88bd520af09ce44a78406049457182922c2d39928bc52f743beb0d3d0b74b5a2",
+      "classification": "historical",
+      "artefact_type": "issue_closeout",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-live-donor-snapshot-json-fd9d60092e",
+      "path": "evidence/migrations/corpus-legislation-nz/live-donor-snapshot.json",
+      "sha256": "b2cd9e75c027e30e1ba68b3738990a5929c7d6275448fb1c6ec2ba0103ee3a4f",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-live-inventory-json-6ef3737e18",
+      "path": "evidence/migrations/corpus-legislation-nz/live-inventory.json",
+      "sha256": "0d80066a8485c1e5516f674093629a396c7ee223dfe3fdde93f5656510761e32",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "observation-receipt",
+      "path": "evidence/migrations/corpus-legislation-nz/observation-receipt.json",
+      "sha256": "362285a43a0edba37db5518e4cd325e5c8426b1a697e9526ecd79381e114abdc",
+      "classification": "invalidated",
+      "artefact_type": "receipt",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Receipt is explicitly invalidated as a premature operational observation claim.",
+      "invalidated_by": "corrective-audit"
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-operational-continuity-recovery-receipt-json-d412ff4603",
+      "path": "evidence/migrations/corpus-legislation-nz/operational-continuity-recovery-receipt.json",
+      "sha256": "14af76700eaea158feea7a932a72233356fab88a2674f8aecc171a527fe6e24d",
+      "classification": "historical",
+      "artefact_type": "receipt",
+      "claim_dimensions": [
+        "operational_state_migration",
+        "corpus_custody_recoverability"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-operational-gate-authorization-json-c6a6bdda91",
+      "path": "evidence/migrations/corpus-legislation-nz/operational-gate-authorization.json",
+      "sha256": "6245751875479c91a2053befd0c2247e25c8d05db40d89b59e73ec8e3d50f23c",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-parent-state-restoration-local-validation-v2-jso-fddc5d0988",
+      "path": "evidence/migrations/corpus-legislation-nz/parent-state-restoration/local-validation-v2.json",
+      "sha256": "82f3766f91aa57d181568c6541165e4314274db9bf9562c69cd15895ba2e5343",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-parent-state-restoration-local-validation-json-400b392b89",
+      "path": "evidence/migrations/corpus-legislation-nz/parent-state-restoration/local-validation.json",
+      "sha256": "b0618508d77c7a93fd6a24d485d0fe25b13e16d5c047c4b82bbcb1dc1fecaa49",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-parity-readme-md-2237cd5b65",
+      "path": "evidence/migrations/corpus-legislation-nz/parity/README.md",
+      "sha256": "57b822f46d0932fef23f44c6b11e456f43939c4effb4d57e49b5d5954ef115c9",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-parity-aggregate-parity-json-3da5843b11",
+      "path": "evidence/migrations/corpus-legislation-nz/parity/aggregate-parity.json",
+      "sha256": "9ef470d761d6b2d13f75f45f64505c2258306292362923d556697b97bc679af3",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-parity-fixture-parity-json-5218882fc7",
+      "path": "evidence/migrations/corpus-legislation-nz/parity/fixture-parity.json",
+      "sha256": "6aa30ef53f16bb175dc6d73f365db18ade247fd929b5680130640a70c64b7bfa",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-parity-historical-batch-parity-json-0dc04c1d21",
+      "path": "evidence/migrations/corpus-legislation-nz/parity/historical-batch-parity.json",
+      "sha256": "416c4d7da05a58876462c29d297c0ed78e27a5c9b06d869bd8c5f1e6435c2b3c",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-parity-live-smoke-parity-json-786d1f6e01",
+      "path": "evidence/migrations/corpus-legislation-nz/parity/live-smoke-parity.json",
+      "sha256": "892057e3706e330c1165fd691e51740ee5df70b0d5fa13ee3addce9534a8aec0",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-parity-publication-package-parity-json-27ca88b070",
+      "path": "evidence/migrations/corpus-legislation-nz/parity/publication-package-parity.json",
+      "sha256": "42f74057eaa397afdad4e149d078c090296aedd675e99e37e69d0b67abc38437",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "publication_identity_migration",
+        "operational_state_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-pre-acquisition-discovery-json-9afd1ce6bc",
+      "path": "evidence/migrations/corpus-legislation-nz/pre-acquisition-discovery.json",
+      "sha256": "1400899c3f41ee462c31449bd9899e277cc7059dc094bcf4f19c5c9e9003a998",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-remote-publication-readback-receipt-json-4f4eb57996",
+      "path": "evidence/migrations/corpus-legislation-nz/remote-publication-readback-receipt.json",
+      "sha256": "d4f139bdec2f46edf0f3f417c72bfea9273f7adce51b9649156f8e5f61dc6185",
+      "classification": "historical",
+      "artefact_type": "receipt",
+      "claim_dimensions": [
+        "publication_identity_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-shadow-operation-cutover-attestation-json-4e5f938782",
+      "path": "evidence/migrations/corpus-legislation-nz/shadow-operation-cutover-attestation.json",
+      "sha256": "f07f707fb824c770ae43577e62754c9d80167d2b1be56bf039d24c8c0265afbc",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-source-set-contract-inventory-json-91981b9eb4",
+      "path": "evidence/migrations/corpus-legislation-nz/source-set-contract/inventory.json",
+      "sha256": "1d13f8d79aa153b46477343f406d0d263f5e273b1eaa899c0447fca4cbd25415",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration",
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "evidence-migrations-corpus-legislation-nz-source-set-contract-validation-json-0a29cdf27f",
+      "path": "evidence/migrations/corpus-legislation-nz/source-set-contract/validation.json",
+      "sha256": "f58bb19b5e6c1f98bb46cf7b1631cb3e2982c76421a303efd9e3f23bc13c225b",
+      "classification": "historical",
+      "artefact_type": "report",
+      "claim_dimensions": [
+        "operational_state_migration",
+        "code_capability_migration"
+      ],
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+    },
+    {
+      "evidence_id": "state-transfer-receipt",
+      "path": "evidence/migrations/corpus-legislation-nz/state-transfer-receipt.json",
+      "sha256": "8b83aec86513ed1ac9eb5ec6757440f1e2e5d164cce7f7aa5d2897cd3c5e2e61",
+      "classification": "invalidated",
+      "artefact_type": "receipt",
+      "claim_dimensions": [
+        "operational_state_migration",
+        "corpus_custody_recoverability"
+      ],
+      "rationale": "Receipt is explicitly invalidated for treating 33,693 candidate identifiers as completed records.",
+      "invalidated_by": "corrective-audit"
+    },
+    {
+      "evidence_id": "zenodo-identity-correction",
+      "path": "evidence/migrations/corpus-legislation-nz/zenodo-identity-correction.json",
+      "sha256": "eb9e3fc21bad482691814a45791c5e0ca6ef43658f70d2241ec9f56f335b737a",
+      "classification": "active",
+      "artefact_type": "receipt",
+      "claim_dimensions": [
+        "publication_identity_migration"
+      ],
+      "rationale": "Live read-only evidence distinguishes concept and version DOI; no record changed and no version was minted."
+    },
+    {
+      "evidence_id": "schemas-legislation-evidence-index-v1-schema-json-2a95ae9dd2",
+      "path": "schemas/legislation-evidence-index-v1.schema.json",
+      "sha256": "dda8935f99ddfad4b9e16180fecf7a76b269fe3eb2bb07ef3fd048c93ea18ade",
+      "classification": "active",
+      "artefact_type": "contract",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Typed evidence-index classification and evaluator contract."
+    },
+    {
+      "evidence_id": "tools-evaluate-legislation-completion-py-edf2536339",
+      "path": "tools/evaluate_legislation_completion.py",
+      "sha256": "c3cb3fb1ccea9bd7af09da275fe7f95a36c25fe2918ba0cd5fa30fa45c80d582",
+      "classification": "active",
+      "artefact_type": "evaluator",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code."
+    },
+    {
+      "evidence_id": "tools-legislation-evidence-index-py-1e3a4d6780",
+      "path": "tools/legislation_evidence_index.py",
+      "sha256": "7c6906e28d429ad3d8be1867b4c90ed9c36beeae41e9580e8815860c7367f7a6",
+      "classification": "active",
+      "artefact_type": "evaluator",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code."
+    },
+    {
+      "evidence_id": "tools-mutation-legislation-evidence-index-py-58375a57e9",
+      "path": "tools/mutation_legislation_evidence_index.py",
+      "sha256": "f2bdb11afadf5f58e553d134d055058d64b093889126b47a56f1c647d9197e3e",
+      "classification": "active",
+      "artefact_type": "evaluator",
+      "claim_dimensions": [
+        "code_capability_migration"
+      ],
+      "rationale": "Targeted mutation evaluator for evidence-index integrity guards."
+    }
+  ],
+  "evaluator_inputs": {
+    "code_capability_migration": [
+      "final-capability-matrix"
+    ],
+    "operational_state_migration": [
+      "final-donor-state-verification",
+      "canonical-state-merge",
+      "canonical-state-independent-readback",
+      "canonical-historical-coverage",
+      "claim-correction-manifest"
+    ],
+    "corpus_custody_recoverability": [
+      "canonical-state-merge",
+      "canonical-state-independent-readback",
+      "canonical-historical-coverage",
+      "claim-correction-manifest"
+    ],
+    "publication_identity_migration": [
+      "canonical-historical-coverage",
+      "claim-correction-manifest",
+      "hf-live-identity-observations",
+      "zenodo-identity-correction"
+    ]
+  },
+  "dimensions": {
+    "code_capability_migration": {
+      "status": "complete",
+      "proof_ids": [
+        "final-capability-matrix"
+      ],
+      "rationale": "Final donor-head capability accounting and merged target contracts establish code and capability migration only."
+    },
+    "operational_state_migration": {
+      "status": "incomplete",
+      "proof_ids": [
+        "target-500-work-proof"
+      ],
+      "rationale": "Canonical state was merged, but the target-owned 500-work execution, reconciliation, continuation and recovery proof was not dispatched and remains blocked."
+    },
+    "corpus_custody_recoverability": {
+      "status": "externally_blocked",
+      "proof_ids": [
+        "durable-destination-observations"
+      ],
+      "rationale": "A deterministic local package exists, while rights, remote authority, independent recovery and Prompt 10 acceptance remain unsatisfied."
+    },
+    "publication_identity_migration": {
+      "status": "externally_blocked",
+      "proof_ids": [
+        "hf-publication-candidate"
+      ],
+      "rationale": "Zenodo identity is corrected read-only, but Hugging Face target-originated publication remains a candidate awaiting external approval."
+    }
+  },
+  "derived_outputs": [
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/completion-evaluation-current.json",
+      "artefact_type": "evaluator_output",
+      "rationale": "Generated from the index and therefore recorded without a self-referential hash; the output binds the exact index SHA-256.",
+      "generated_from": "evidence/migrations/corpus-legislation-nz/evidence-index.json"
+    }
+  ]
+}
