@@ -2,7 +2,8 @@
   "schema_version": "archive-govt-nz.source-set-inventory/v1",
   "issue": 330,
   "initial_target_sha": "cf2ec75b88963352abbecb89a2b8e2cfe538a070",
-  "target_base_sha": "d3946b8f5380c60b11b5f6e803f7188fc7d8e8df",
+  "prior_target_base_sha": "d3946b8f5380c60b11b5f6e803f7188fc7d8e8df",
+  "target_base_sha": "9b5eee5b7a98393dc62ab6244b8cf5a63b302156",
   "donor_final_head": "b40587f1b1aec7356a0f623916fcc8212397d283",
   "contract": "archive-govt-nz.source-set/v2",
   "fields": [
