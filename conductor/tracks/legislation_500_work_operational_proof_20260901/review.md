@@ -1,0 +1,5 @@
+# Review
+
+Three independent audits converged on the same fail-closed result. Dispatching the discovery workflow with `max_works=500` would not constitute exact-inventory execution and would be rejected by the typed source-set contract. Bootstrap or adoption cannot substitute for the absent reviewed parent. A successful harvest could not currently be sealed because v3 receipt compatibility is missing.
+
+No acquisition, publication, secret read, durable recovery or continuation claim was made. The evidence-only change remains within Prompt 13 owned paths. Later fixes must be separately reviewed and must not relabel this blocked observation as success.

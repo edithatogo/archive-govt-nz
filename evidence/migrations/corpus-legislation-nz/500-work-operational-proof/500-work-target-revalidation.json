@@ -1,0 +1,117 @@
+{
+  "schema_version": "archive-govt-nz.legislation-500-work-target-revalidation/v1",
+  "observed_at": "2026-09-01T12:10:00Z",
+  "status": "blocked",
+  "dispatch_performed": false,
+  "target": {
+    "repository": "edithatogo/archive-govt-nz",
+    "commit": "2c15dcc35a70bf364c443d02a02c6ad281c86d4b"
+  },
+  "donor": {
+    "repository": "edithatogo/corpus-legislation-nz",
+    "archived": true,
+    "final_head": "b40587f1b1aec7356a0f623916fcc8212397d283"
+  },
+  "seed": {
+    "seed_id": "historical-work-ids-0001",
+    "sha256": "59923176fa34796d7673a20b880af9abe5520fe484595edb220f2bbc0e3b33e7",
+    "line_count": 500,
+    "unique": true,
+    "ordering": "ASCII lexicographic ascending",
+    "line_endings": "LF",
+    "terminal_newline": true,
+    "registry_path": "seeds/registry.json",
+    "donor_run_id": 32487942675,
+    "donor_artifact_id": 9450742423,
+    "donor_package_sha256": "1975e473793fd701b81b53a7f6fd696bbeaa257b41bdc55250f064a21ad9e54e"
+  },
+  "prerequisites": {
+    "prompt_04": "passed",
+    "prompt_05": "passed",
+    "prompt_06": "blocked_open_issue_308",
+    "prompt_08": "passed_but_v3_sealing_incompatible",
+    "prompt_09": "local_package_only",
+    "prompt_10": "blocked_open_issue_327",
+    "prompt_11": "passed",
+    "prompt_12": "passed"
+  },
+  "durable_state": {
+    "local_package_sha256": "2e4b75333e947d812842147c939117fc666799e4497b80f125104f721ef68e3c",
+    "remote_authority_verified": false,
+    "prompt_10_acceptance": false,
+    "compatible_parent_reference_present": false,
+    "expected_parent_reference": "config/legislation/parents/current.json"
+  },
+  "preflight": {
+    "credential_configured_names": ["LEGISLATION_API_KEY"],
+    "credential_values_read": false,
+    "credential_validity_verified": false,
+    "source_endpoint_reachable": "not_tested_no_complete_no_write_lane",
+    "state_roots_match": "not_tested_no_compatible_parent",
+    "resource_limits_safe": false,
+    "configured_lane": "discovery",
+    "configured_max_works": 50,
+    "required_lane": "exact_inventory",
+    "required_max_works": 500
+  },
+  "blocking_findings": [
+    {
+      "id": "P13-B01",
+      "kind": "missing_prerequisite",
+      "detail": "Prompt 06 issue 308 is open and has no merged implementation."
+    },
+    {
+      "id": "P13-B02",
+      "kind": "missing_durable_recovery",
+      "detail": "Prompt 10 issue 327 is open; draft PR 329 records preparation only."
+    },
+    {
+      "id": "P13-B03",
+      "kind": "missing_parent",
+      "detail": "config/legislation/parents/current.json is absent."
+    },
+    {
+      "id": "P13-B04",
+      "kind": "wrong_execution_lane",
+      "detail": "The target workflow accepts discovery terms and does not resolve or pass a governed seed ID."
+    },
+    {
+      "id": "P13-B05",
+      "kind": "unsafe_resource_contract",
+      "detail": "The active typed source set is discovery-only and caps acquisition at 50 works."
+    },
+    {
+      "id": "P13-B06",
+      "kind": "receipt_lineage_incompatibility",
+      "detail": "Prompt 08 sealing expects v2 harvest receipt fields while Prompt 12 emits v3."
+    },
+    {
+      "id": "P13-B07",
+      "kind": "missing_preflight",
+      "detail": "No complete no-write lane proves credentials, endpoint reachability, roots and resource limits."
+    }
+  ],
+  "prior_failure": {
+    "run_id": 33500061466,
+    "url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/33500061466",
+    "classification": "parent_state_failed",
+    "reason": "invalid_request_or_output"
+  },
+  "verification": {
+    "all_500_accounted_for": false,
+    "receipt_invariants_verified": false,
+    "complete_state_artifact_verified": false,
+    "cas_fixity_verified": false,
+    "reconciliation_zero_unexplained_mismatches": false,
+    "secret_leakage_scan_of_run": "not_applicable_no_run",
+    "continuation_proven": false,
+    "durable_recovery_proven": false
+  },
+  "next_safe_sequence": [
+    "Complete Prompt 06 without broadening Prompt 13.",
+    "Complete Prompt 10 and independently verify a durable authority.",
+    "Commit a seed-compatible exact parent reference.",
+    "Deliver separately reviewed exact-inventory workflow, preflight and v3 sealing compatibility fixes.",
+    "Rerun exact-main hosted checks, then dispatch under the explicit execution gate."
+  ]
+}

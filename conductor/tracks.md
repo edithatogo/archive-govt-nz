@@ -263,3 +263,6 @@ implementation has occurred under these tracks.
 
 - [x] **Track: Legislation harvest accounting and receipt semantics (Prompt 12)**
   *Link: [./tracks/legislation_harvest_accounting_20260901/index.md](./tracks/legislation_harvest_accounting_20260901/index.md)*
+
+- [~] **Track: Target-owned 500-work operational proof (Prompt 13)**
+  *Link: [./tracks/legislation_500_work_operational_proof_20260901/index.md](./tracks/legislation_500_work_operational_proof_20260901/index.md)*
