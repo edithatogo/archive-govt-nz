@@ -998,6 +998,7 @@ class LegislationArchiveService:
         *,
         fail_fast: bool,
         prior_work_ids: set[str],
+        prior_manifestation_hashes: dict[str, str],
     ) -> tuple[
         list[LegislationRecord],
         list[str],
@@ -1060,11 +1061,18 @@ class LegislationArchiveService:
             elif target_has_err:
                 disposition = WorkDisposition.FAILED
             elif target_recs:
-                disposition = (
-                    WorkDisposition.CHANGED_PRESERVED
-                    if target.work_id in prior_work_ids
-                    else WorkDisposition.NEWLY_PRESERVED
+                byte_equal = all(
+                    bool(record.manifestation_id)
+                    and prior_manifestation_hashes.get(str(record.manifestation_id))
+                    == record.raw_cas_hash_sha256
+                    for record in target_recs
                 )
+                if byte_equal:
+                    disposition = WorkDisposition.UNCHANGED_REVALIDATED
+                elif target.work_id in prior_work_ids:
+                    disposition = WorkDisposition.CHANGED_PRESERVED
+                else:
+                    disposition = WorkDisposition.NEWLY_PRESERVED
             elif target_no_change:
                 disposition = WorkDisposition.UNCHANGED_REVALIDATED
             else:
@@ -1198,6 +1206,13 @@ class LegislationArchiveService:
         prior_work_ids = {
             str(record["work_id"]) for record in prior_records if record.get("work_id")
         }
+        prior_manifestation_hashes = {
+            str(record["manifestation_id"]): str(
+                record.get("raw_cas_hash_sha256") or record.get("raw_sha256") or ""
+            )
+            for record in prior_records
+            if record.get("manifestation_id")
+        }
         state_records_before = len(prior_records)
         cas_before = self.store.verified_inventory().object_count
         parent_manifest_root = (
@@ -1318,6 +1333,7 @@ class LegislationArchiveService:
             prior_manifestation_ids,
             fail_fast=fail_fast,
             prior_work_ids=prior_work_ids,
+            prior_manifestation_hashes=prior_manifestation_hashes,
         )
 
         accounted_ids = {item.work_id for item in work_accounting}

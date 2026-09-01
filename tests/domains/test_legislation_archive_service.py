@@ -10,6 +10,10 @@ import pytest
 
 from archive_govt_nz.adapters.base import AdapterCaptureResult
 from archive_govt_nz.core.manifests import PreservationRecord
+from archive_govt_nz.domains.legislation.accounting import (
+    StateCommitStatus,
+    WorkDisposition,
+)
 from archive_govt_nz.domains.legislation.api import NZLegislationApiClient
 from archive_govt_nz.domains.legislation.checkpoints import (
     LegislationCheckpointCorruptError,
@@ -658,6 +662,12 @@ async def test_304_retains_cumulative_manifest_and_checkpoint(tmp_path: Path) ->
     assert second.manifest["total_records"] == 1
     assert second.checkpoint is not None
     assert second.checkpoint["total_records_preserved"] == 1
+    assert second.accounting is not None
+    assert second.accounting.works_attempted == 1
+    assert second.accounting.unchanged_revalidated == 1
+    assert (
+        second.accounting.works[0].disposition is WorkDisposition.UNCHANGED_REVALIDATED
+    )
 
 
 @pytest.mark.anyio
@@ -1223,6 +1233,10 @@ async def test_partial_batch_is_not_recorded_as_completed(tmp_path: Path) -> Non
     assert result.checkpoint is not None
     assert result.checkpoint["processed_work_ids"] == ["good"]
     assert result.checkpoint["completed_batches"] == []
+    assert result.accounting is not None
+    assert result.accounting.newly_preserved == 1
+    assert result.accounting.failed == 1
+    assert result.accounting.state_commit_status is StateCommitStatus.PARTIAL_COMMITTED
 
 
 @pytest.mark.anyio

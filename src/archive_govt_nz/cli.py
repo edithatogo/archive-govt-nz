@@ -1284,6 +1284,7 @@ def _handle_leg_sync(  # noqa: PLR0917
     attempted = result.works_attempted
     preserved = result.records_preserved
     errors = result.errors
+    accounting = result.accounting
 
     if errors:
         sys.stderr.write(f"Sync errors: {', '.join(errors)}\n")
@@ -1300,13 +1301,28 @@ def _handle_leg_sync(  # noqa: PLR0917
                 "schema_version": "archive-govt-nz.cli/v1",
                 "status": status,
                 "works_attempted": attempted,
+                "harvest_accounting": (
+                    accounting.to_receipt() if accounting is not None else None
+                ),
             }
         )
         return code
 
-    print(
-        f"Legislation sync: status={status} attempted={attempted} preserved={preserved}"
-    )
+    if accounting is None:
+        print(
+            f"Legislation sync: status={status} attempted={attempted} "
+            f"preserved={preserved}"
+        )
+    else:
+        print(
+            f"Legislation sync: status={status} in_scope={accounting.works_in_scope} "
+            f"attempted={accounting.works_attempted} "
+            f"new={accounting.newly_preserved} changed={accounting.changed_preserved} "
+            f"unchanged={accounting.unchanged_revalidated} "
+            f"skipped={accounting.already_processed_skipped} "
+            f"unavailable={accounting.unavailable} partial={accounting.partial} "
+            f"failed={accounting.failed}"
+        )
     return code
 
 

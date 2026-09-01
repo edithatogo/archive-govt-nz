@@ -252,3 +252,85 @@ def test_v2_is_retained_as_weak_evidence_without_synthesised_categories() -> Non
 def test_unknown_receipt_schema_fails_closed(schema: str | None) -> None:
     with pytest.raises(ValueError, match="unsupported"):
         read_harvest_receipt({"schema_version": schema})
+
+
+@pytest.mark.parametrize(
+    ("kwargs", "match"),
+    [
+        ({"work_id": " "}, "work_id"),
+        ({"source_response_classifications": (" ",)}, "classifications"),
+    ],
+)
+def test_work_accounting_rejects_noncanonical_text(
+    kwargs: dict[str, object], match: str
+) -> None:
+    values: dict[str, object] = {
+        "work_id": "id",
+        "disposition": WorkDisposition.FAILED,
+        "source_response_classifications": ("http_500",),
+    }
+    values.update(kwargs)
+    with pytest.raises(ValueError, match=match):
+        WorkAccounting(**values)  # type: ignore[arg-type]
+
+
+def test_work_accounting_reader_rejects_non_string_classifications() -> None:
+    with pytest.raises(TypeError, match="string array"):
+        WorkAccounting.from_dict(
+            {
+                "work_id": "id",
+                "disposition": "failed",
+                "source_response_classifications": [500],
+                "retry_count": 0,
+            }
+        )
+
+
+@pytest.mark.parametrize(
+    ("changes", "match"),
+    [
+        ({"works_in_scope": True}, "non-negative integer"),
+        ({"works_in_scope": 8}, "work accounting count"),
+        ({"scope_digests": {}}, "scope digest"),
+        ({"parent_manifest_root": "BAD"}, "parent_manifest_root"),
+        ({"state_commit": "BAD"}, "state_commit"),
+        ({"state_commit": None}, "committed state"),
+        ({"state_commit_status": StateCommitStatus.NO_CHANGE}, "no_change"),
+        (
+            {"state_commit_status": StateCommitStatus.NOT_COMMITTED},
+            "cannot claim a commit",
+        ),
+        (
+            {
+                "state_commit_status": StateCommitStatus.NOT_COMMITTED,
+                "state_commit": None,
+            },
+            "cannot claim output roots",
+        ),
+    ],
+)
+def test_accounting_rejects_remaining_lineage_contradictions(
+    changes: dict[str, object], match: str
+) -> None:
+    with pytest.raises(ValueError, match=match):
+        replace(accounting(), **changes)
+
+
+@pytest.mark.parametrize(
+    ("mutation", "match"),
+    [
+        ({"schema_version": "wrong"}, "not a v3"),
+        ({"works": "wrong"}, "array of objects"),
+        ({"scope_digests": []}, "string mapping"),
+        ({"software_commit": 1}, "must be a string"),
+        ({"parent_manifest_root": 1}, "string or null"),
+        ({"works_attempted": True}, "must be an integer"),
+    ],
+)
+def test_v3_reader_rejects_remaining_type_boundaries(
+    mutation: dict[str, object], match: str
+) -> None:
+    receipt = accounting().to_receipt()
+    receipt.update(mutation)
+    with pytest.raises((TypeError, ValueError), match=match):
+        HarvestAccounting.from_receipt(receipt)

@@ -197,6 +197,7 @@ async def test_api_client_get_document_raw_async_retries() -> None:
     assert status == HTTP_OK
     assert content == b"<act/>"
     assert calls == 4
+    assert client.last_document_retry_count == 3
 
 
 def test_api_client_get_document_raw_304() -> None:

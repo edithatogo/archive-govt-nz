@@ -166,8 +166,6 @@ class HarvestAccounting:
                 raise ValueError(
                     f"{disposition.value} does not match work dispositions"
                 )
-        if sum(observed.values()) != self.works_in_scope:
-            raise ValueError("terminal dispositions must partition the work scope")
         expected_attempted = self.works_in_scope - self.already_processed_skipped
         if self.works_attempted != expected_attempted:
             raise ValueError(
@@ -179,9 +177,10 @@ class HarvestAccounting:
         if self.total_cas_objects_after < self.total_cas_objects_before:
             raise ValueError("CAS object totals cannot decrease during a harvest")
         mutations = self.newly_preserved + self.changed_preserved
+        state_mutation_capable = mutations + self.partial
         state_delta = self.total_state_records_after - self.total_state_records_before
         cas_delta = self.total_cas_objects_after - self.total_cas_objects_before
-        if mutations == 0 and state_delta:
+        if state_mutation_capable == 0 and state_delta:
             raise ValueError("state-record deltas require a preserved work disposition")
         if mutations and state_delta == 0 and cas_delta == 0:
             raise ValueError("preserved work dispositions require a state or CAS delta")
