@@ -1,5 +1,5 @@
 {
-  "analyzer_claim_inputs_sha256": "3ba0bd47b8e66dd7b4ae3a75a23a4ac5f728640024e76ad380cc6c377ad3bbdf",
+  "analyzer_claim_inputs_sha256": "009fecd4a70e61e0b7b58646877d47b8560be8e4a91b24087de27c5c8e9541e1",
   "claims": [
     {
       "bounded_replacement_guidance": "Retain the candidate/acquired/published distinction. Prompt 17 should update only if broader prose needs consistent terminology.",
@@ -319,9 +319,9 @@
       "lifecycle": "active",
       "line": 267,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
-      "source_line_sha256": "9b131f078aea8d29f1f9b0429fc17b74afe7480ee9b4a5c6026c5976b5520823",
-      "source_sha256": "c448c51999d8f9c20bd1a281640978c191c6f2da578a5983f4af67eab658008b",
-      "text": "- [~] **Track: Historical coverage and 33,693-candidate reconciliation (Prompt 14)**"
+      "source_line_sha256": "f4369556a21493acf1cc8e7aacc3b7ea3acba813bc0448ceef2c22e5f057a9f2",
+      "source_sha256": "f24dc5bceb4be4cbd92d07be26ebf5a4e11a3718a8f9c9e0203ba9bf733f44fd",
+      "text": "- [x] **Track: Historical coverage and 33,693-candidate reconciliation (Prompt 14)**"
     },
     {
       "bounded_replacement_guidance": "Keep explicitly labelled as search-derived candidate inventory; do not describe it as reviewed, acquired, stored, or published without separate primary evidence.",

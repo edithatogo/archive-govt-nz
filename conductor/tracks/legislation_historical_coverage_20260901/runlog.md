@@ -7,3 +7,5 @@
 - 2026-09-01: generated the canonical coverage report and correction-input inventory; verified 33,693 candidates, a 500-ID governed subset and 552 canonical state works. The other 33,193 candidates have no inferred disposition.
 - 2026-09-01: added path-containment, package-inventory, public-observation, correction-binding, property, negative and mutation controls; the historical-coverage suite passed 30 tests and 6/6 declared mutants were killed.
 - 2026-09-01: integrated target main `a926280315e4221d2f7cd72ad828ae1490001d93`, preserving Prompt 13 evidence as an independent parent change.
+- 2026-09-01: full validation retained three parallel cold-start Hypothesis deadline failures after 4,420 passes and 97.48% coverage; each failed case passed unchanged in isolation.
+- 2026-09-01: hosted validation repaired a Windows CRLF fixture defect, then exposed the existing 15 MB/s Windows CAS floor at an observed 10.04 MB/s. Independent PR #339 recalibrated that platform floor to 8 MB/s and passed the complete three-platform assurance matrix before merge.
