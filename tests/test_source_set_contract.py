@@ -163,7 +163,7 @@ publication_policy:
     dataset_slug: edithatogo/corpus-legislation-nz
   zenodo:
     enabled: true
-    concept_doi: 10.5281/zenodo.20592540
+    concept_doi: 10.5281/zenodo.20592539
 """
     path = tmp_path / "legislation.yml"
     path.write_text(legacy)

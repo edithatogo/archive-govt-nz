@@ -1,0 +1,207 @@
+{
+  "schema_version": "zenodo-identity-correction-v1",
+  "receipt_id": "zenodo-identity-correction-20260902",
+  "observed_at_utc": "2026-09-01T14:08:50Z",
+  "status": "verified_read_only_correction",
+  "scope": {
+    "target_repository": "edithatogo/archive-govt-nz",
+    "target_commit": "0158b46265cf2468d04e9aa3322d10f33674ee2c",
+    "archived_donor_repository": "edithatogo/corpus-legislation-nz",
+    "archived_donor_head": "b40587f1b1aec7356a0f623916fcc8212397d283",
+    "independent_product_excluded": "edithatogo/legislation"
+  },
+  "supersedes": [
+    {
+      "path": "conductor/tracks/legislation_corpus_consolidation_20260818/spec.md",
+      "claim": "10.5281/zenodo.20592540 was labelled as the concept DOI",
+      "disposition": "retained_historical_evidence"
+    },
+    {
+      "path": "conductor/tracks/legislation_corpus_consolidation_corrective_20260818/spec.md",
+      "claim": "10.5281/zenodo.20592540 was labelled as the concept DOI",
+      "disposition": "retained_historical_evidence"
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/capability-matrix.json",
+      "claim": "10.5281/zenodo.20592540 was labelled as the concept DOI",
+      "disposition": "retained_immutable_evidence"
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/external-identities.json",
+      "claim": "10.5281/zenodo.20592540 was labelled as the concept DOI",
+      "disposition": "retained_immutable_evidence"
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/issue-reconciliation.json",
+      "claim": "10.5281/zenodo.20592540 was labelled as the concept DOI",
+      "disposition": "retained_immutable_evidence"
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/pre-acquisition-discovery.json",
+      "claim": "10.5281/zenodo.20592540 was labelled as the concept DOI",
+      "disposition": "retained_immutable_evidence"
+    }
+  ],
+  "requests": [
+    {
+      "purpose": "resolve_concept_record_api",
+      "url": "https://zenodo.org/api/records/20592539",
+      "status": 302,
+      "redirect_location": "/api/records/20592540",
+      "response_content_length": 229,
+      "response_sha256": "77346416fdd3fe46bbfe6ec554160c6cfcbe977e598da197f027b0dfbd6f3dd3"
+    },
+    {
+      "purpose": "read_version_record_api",
+      "url": "https://zenodo.org/api/records/20592540",
+      "status": 200,
+      "response_content_length": 4601,
+      "response_etag": "\"4\"",
+      "response_sha256": "ea33c14be57ab9cca072e25b85930ec9e54cf8d0f4d35a17ab15f298b1a0097a"
+    },
+    {
+      "purpose": "enumerate_concept_versions",
+      "url": "https://zenodo.org/api/records/20592540/versions",
+      "status": 200,
+      "response_sha256": "242542a0d40f7c54724a16427b03fe03bb5c2619f5aaacf567f2b7a3923900ad"
+    },
+    {
+      "purpose": "resolve_concept_doi",
+      "url": "https://doi.org/10.5281/zenodo.20592539",
+      "status": 200,
+      "final_url": "https://zenodo.org/records/20592540"
+    },
+    {
+      "purpose": "resolve_version_doi",
+      "url": "https://doi.org/10.5281/zenodo.20592540",
+      "status": 200,
+      "final_url": "https://zenodo.org/records/20592540"
+    }
+  ],
+  "identity": {
+    "concept": {
+      "record_id": "20592539",
+      "doi": "10.5281/zenodo.20592539"
+    },
+    "version": {
+      "record_id": "20592540",
+      "doi": "10.5281/zenodo.20592540",
+      "concept_record_id_from_api": "20592539",
+      "concept_doi_from_api": "10.5281/zenodo.20592539"
+    },
+    "versions_observed": 1,
+    "relationship": "concept_has_version",
+    "relationship_verified": true
+  },
+  "record": {
+    "title": "New Zealand Legislation Corpus: 2026 annual snapshot",
+    "version": "2026",
+    "publication_date": "2026-06-08",
+    "created_at": "2026-06-08T11:19:15.506706+00:00",
+    "updated_at": "2026-06-10T09:09:41.493552+00:00",
+    "resource_type": "dataset",
+    "access_right": "open",
+    "licence_id": "cc-by-4.0",
+    "immutable_existing_record_preserved": true
+  },
+  "files": [
+    {
+      "key": "nz-legislation-corpus-2026.SHA256SUMS.txt",
+      "size": 208,
+      "api_checksum": "md5:a503b9a61904a836d2b45419347ae823",
+      "download_status": 200,
+      "download_sha256": "1910e55aa57b74c5892227ab97eeff6b706e420f782e589a013224a8404e85eb",
+      "api_checksum_verified_against_download": true
+    },
+    {
+      "key": "nz-legislation-corpus-2026.tar.zst",
+      "size": 208721,
+      "api_checksum": "md5:00dee66bc1d66d52f1b31284ed11f516",
+      "download_status": 200,
+      "download_sha256": "1b7d5b2ab27bea138eb947f5971e993de7cf0e5b6f730bb905bbd9aa033be060",
+      "api_checksum_verified_against_download": true
+    },
+    {
+      "key": "nz-legislation-corpus-2026.manifest.json",
+      "size": 3104,
+      "api_checksum": "md5:6139f4539661d50aaa47a03707f2dea0",
+      "download_status": 200,
+      "download_sha256": "ea1212f47b0848971bdf41d87ee9236221c7130a0d55924bbf368b6075adf3a9",
+      "api_checksum_verified_against_download": true
+    }
+  ],
+  "linked_metadata": {
+    "live_related_identifiers": [
+      {
+        "identifier": "https://huggingface.co/datasets/edithatogo/corpus-legislation-nz",
+        "relation": "isSupplementTo",
+        "resource_type": "dataset"
+      }
+    ],
+    "live_github_related_identifier": null,
+    "published_manifest": {
+      "github_repository": "edithatogo/nz-legislation-corpus-pipeline",
+      "github_run_id": "27132519663",
+      "pipeline_version": "295b5f624ca07e9a21e90b1be962959a2e041a9c",
+      "hf_repo_id": "",
+      "record_count": 6,
+      "content_sha256": "da764d2dc63a86b6da00d573843abe33e27d73bc80254bef65ca837316a83ebc",
+      "manifest_sha256": "c1c896bcdf81496a4fa74a9925313d07586392dd27e7d5b7fe1069e518aa0311"
+    }
+  },
+  "future_publication_lineage": {
+    "target_github_authority": "edithatogo/archive-govt-nz",
+    "archived_donor_lineage": {
+      "repository": "edithatogo/corpus-legislation-nz",
+      "head": "b40587f1b1aec7356a0f623916fcc8212397d283"
+    },
+    "source_state": {
+      "manifest_root": "877ba501a25570a29c1aada7979562d8c62c7f043865125cf402310eabc09544",
+      "inventory_sha256": "9ca6dc505f991e015c6c997827878d8c7e9381b214a1544eb338328a285c6894"
+    },
+    "associated_hugging_face": {
+      "repository": "edithatogo/corpus-legislation-nz",
+      "revision": "1efa35e72c378068cfb112d060bd0502497f61b1"
+    },
+    "status": "metadata_template_only_not_published"
+  },
+  "assertions": [
+    {
+      "name": "concept_and_version_dois_are_distinct",
+      "status": "passed"
+    },
+    {
+      "name": "concept_api_redirects_to_current_version",
+      "status": "passed"
+    },
+    {
+      "name": "version_record_declares_concept_parent",
+      "status": "passed"
+    },
+    {
+      "name": "versions_endpoint_contains_exactly_the_observed_2026_version",
+      "status": "passed"
+    },
+    {
+      "name": "api_file_checksums_match_downloaded_bytes",
+      "status": "passed"
+    },
+    {
+      "name": "sha256_sums_file_matches_archive_and_manifest",
+      "status": "passed"
+    },
+    {
+      "name": "live_record_contains_target_github_authority",
+      "status": "not_present",
+      "meaning": "Future metadata must add the target authority; absence does not alter the immutable record."
+    }
+  ],
+  "external_actions": {
+    "read_only_requests_performed": true,
+    "zenodo_record_modified": false,
+    "draft_created": false,
+    "new_version_minted": false,
+    "doi_fabricated": false,
+    "publication_claimed": false
+  }
+}

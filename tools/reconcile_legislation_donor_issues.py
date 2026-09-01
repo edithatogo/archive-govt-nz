@@ -239,8 +239,10 @@ def map_donor_issue(issue: dict[str, Any]) -> dict[str, Any]:
         target_comp = "src/archive_govt_nz/zenodo.py"
         target_subissue = "https://github.com/edithatogo/archive-govt-nz/issues/140"
         resolution = (
-            "Zenodo concept DOI 10.5281/zenodo.20592540 lineage preserved and"
-            " bound to release fixity manifests (#140)."
+            "Zenodo concept DOI 10.5281/zenodo.20592539 lineage preserved; the"
+            " immutable 2026 release remains version DOI"
+            " 10.5281/zenodo.20592540 and is bound to release fixity manifests"
+            " (#140)."
         )
         disposition = "externally_gated_publication"
     elif (

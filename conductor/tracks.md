@@ -272,3 +272,6 @@ implementation has occurred under these tracks.
 
 - [~] **Track: Hugging Face identity, metadata, reconciliation, and target-origin publication (Prompt 15)**
   *Link: [./tracks/legislation_hf_identity_reconciliation_20260901/index.md](./tracks/legislation_hf_identity_reconciliation_20260901/index.md)*
+
+- [x] **Track: Prompt 16 Zenodo concept/version DOI correction**
+  *Link: [./tracks/zenodo_identity_correction_20260902/index.md](./tracks/zenodo_identity_correction_20260902/index.md)*

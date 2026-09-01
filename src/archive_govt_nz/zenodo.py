@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import secrets
 from collections.abc import Callable, Mapping
 from dataclasses import dataclass
@@ -17,6 +18,7 @@ if TYPE_CHECKING:
 HTTP_ERROR_STATUS = 400
 MAX_UPLOAD_BYTES = 256 * 1024 * 1024
 MAX_RESPONSE_BYTES = 4 * 1024 * 1024
+_DOI_PATTERN = re.compile(r"^10\.5281/zenodo\.[0-9]+$")
 
 
 def _fail(error_class: str) -> NoReturn:
@@ -192,15 +194,32 @@ class ZenodoClient:
         return self._parse_deposition(response.body)
 
     def publish(
-        self, deposition_id: str, *, confirm_doi: str | None
+        self,
+        deposition_id: str,
+        *,
+        confirm_doi: str | None,
+        release_approved: bool = False,
     ) -> ZenodoDeposition:
-        """Publish only after explicit confirmation of the returned DOI."""
-        if not confirm_doi:
+        """Publish only after preflight confirmation and independent readback."""
+        if not release_approved:
+            _fail("release_approval_required")
+        if not confirm_doi or not _DOI_PATTERN.fullmatch(confirm_doi):
             _fail("doi_confirmation_required")
-        response = self._request(
+        before = self.reconcile(deposition_id)
+        if before.deposition_id != deposition_id:
+            _fail("deposition_mismatch")
+        if before.state != "draft":
+            _fail("draft_required")
+        if before.doi != confirm_doi:
+            _fail("doi_mismatch")
+        self._request(
             "POST", f"/api/deposit/depositions/{quote(deposition_id)}/actions/publish"
         )
-        deposition = self._parse_deposition(response.body)
+        deposition = self.reconcile(deposition_id)
+        if deposition.deposition_id != deposition_id:
+            _fail("deposition_mismatch")
+        if deposition.state != "published":
+            _fail("publication_readback_failed")
         if deposition.doi != confirm_doi:
             _fail("doi_mismatch")
         return deposition
@@ -217,7 +236,11 @@ class ZenodoClient:
         if not deposition_id:
             _fail("invalid_remote_response")
         response_data: dict[str, object] = dict(body)
-        state = response_data.get("state", "draft")
+        state = response_data.get("state")
+        if state not in {"draft", "published"}:
+            _fail("invalid_remote_response")
+        if doi is not None and not _DOI_PATTERN.fullmatch(doi):
+            _fail("invalid_remote_response")
         return ZenodoDeposition(deposition_id, record_url, str(cast("str", state)), doi)
 
     def _default_transport(
