@@ -30,12 +30,12 @@ def _donor(tmp_path: Path) -> Path:
     ids = [f"work_{index:05d}" for index in range(33_693)]
     for number in range(68):
         values = ids[number * 500 : (number + 1) * 500]
-        (reviewed / f"historical-work-ids-{number + 1:04d}.txt").write_text(
-            "\n".join(values) + "\n", encoding="ascii"
+        (reviewed / f"historical-work-ids-{number + 1:04d}.txt").write_bytes(
+            ("\n".join(values) + "\n").encode("ascii")
         )
     payload = "\n".join(ids) + "\n"
-    (root / "seeds/work_ids.txt").write_text(
-        "# provenance\n" + payload, encoding="ascii"
+    (root / "seeds/work_ids.txt").write_bytes(
+        ("# provenance\n" + payload).encode("ascii")
     )
     return root
 
@@ -187,10 +187,10 @@ def test_batch_audit_fails_closed(
         batch.unlink()
     elif mutation == "duplicate":
         lines[1] = lines[0]
-        batch.write_text("\n".join(lines) + "\n")
+        batch.write_bytes(("\n".join(lines) + "\n").encode("ascii"))
     elif mutation == "reordered":
         lines[0], lines[1] = lines[1], lines[0]
-        batch.write_text("\n".join(lines) + "\n")
+        batch.write_bytes(("\n".join(lines) + "\n").encode("ascii"))
     elif mutation == "crlf":
         batch.write_bytes(("\r\n".join(lines) + "\r\n").encode())
     else:
@@ -274,7 +274,7 @@ def test_reviewed_seed_must_be_a_candidate_subset(
     seed = target / "seeds/reviewed/historical-work-ids-0001.txt"
     seed.parent.mkdir(parents=True)
     seed_ids = [f"outside_{index:04d}" for index in range(500)]
-    seed.write_text("\n".join(seed_ids) + "\n", encoding="ascii")
+    seed.write_bytes(("\n".join(seed_ids) + "\n").encode("ascii"))
     (target / "seeds/registry.json").write_text(
         json.dumps(
             {
