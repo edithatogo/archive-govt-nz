@@ -266,3 +266,6 @@ implementation has occurred under these tracks.
 
 - [~] **Track: Historical coverage and 33,693-candidate reconciliation (Prompt 14)**
   *Link: [./tracks/legislation_historical_coverage_20260901/index.md](./tracks/legislation_historical_coverage_20260901/index.md)*
+
+- [~] **Track: Target-owned 500-work operational proof (Prompt 13)**
+  *Link: [./tracks/legislation_500_work_operational_proof_20260901/index.md](./tracks/legislation_500_work_operational_proof_20260901/index.md)*
