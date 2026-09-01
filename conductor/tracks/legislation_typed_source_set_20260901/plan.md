@@ -6,4 +6,4 @@
 - [x] Migrate legislation config and samples; refactor consumers.
 - [x] Run focused coverage and targeted mutation controls.
 - [x] Run full native/security/workflow validation and review.
-- [ ] Deliver exact-head PR, hosted checks and independent readback.
+- [x] Deliver exact-head PR, hosted checks and independent readback.

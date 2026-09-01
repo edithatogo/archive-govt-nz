@@ -258,7 +258,7 @@ implementation has occurred under these tracks.
 - [x] **Track: Durable legislation state (Prompt 09)**
   *Link: [./tracks/legislation_durable_state_20260901/index.md](./tracks/legislation_durable_state_20260901/index.md)*
 
-- [~] **Track: Typed legislation source-set configuration (Prompt 11)**
+- [x] **Track: Typed legislation source-set configuration (Prompt 11)**
   *Link: [./tracks/legislation_typed_source_set_20260901/index.md](./tracks/legislation_typed_source_set_20260901/index.md)*
 
 - [~] **Track: Legislation harvest accounting and receipt semantics (Prompt 12)**
