@@ -1134,15 +1134,6 @@ class LegislationArchiveService:
             processed_ids = set(chk_data.get("processed_work_ids", []))
             completed_batches = list(chk_data.get("completed_batches", []))
 
-        # Authenticate both parent authorities before discovery can issue any
-        # source request. A corrupt checkpoint must fail closed offline.
-        resolved = self._resolve_targets(
-            work_ids=work_ids,
-            search_terms=search_terms,
-            targets=targets,
-            max_works=max_works,
-        )
-
         if prior_manifest is not None:
             checkpoint_metadata = chk_data.get("metadata", {})
             checkpoint_root = (
@@ -1200,6 +1191,15 @@ class LegislationArchiveService:
         ):
             msg = "cumulative manifest is missing for non-empty checkpoint"
             raise ValueError(msg)
+
+        # Authenticate both parent authorities and their cross-links before
+        # discovery can issue any source request.
+        resolved = self._resolve_targets(
+            work_ids=work_ids,
+            search_terms=search_terms,
+            targets=targets,
+            max_works=max_works,
+        )
 
         conditional_state = self._conditional_state(chk_data)
         prior_records = (
@@ -1389,6 +1389,13 @@ class LegislationArchiveService:
 
         promoted_chk: dict[str, Any] | None = None
         commit_error: str | None = None
+        checkpoint_existed = bool(chk_mgr and chk_mgr.checkpoint_path.is_file())
+        checkpoint_before = (
+            chk_mgr.checkpoint_path.read_bytes()
+            if chk_mgr is not None and checkpoint_existed
+            else None
+        )
+        checkpoint_promoted = False
         try:
             promoted_chk = self._finalize_checkpoint(
                 chk_mgr,
@@ -1403,14 +1410,31 @@ class LegislationArchiveService:
                 has_errors=bool(errors),
                 fail_fast=fail_fast,
             )
+            checkpoint_promoted = bool(chk_mgr is not None and persist_state)
             # The manifest is promoted last. Therefore a checkpoint failure
             # cannot leave a new manifest falsely presented as committed.
             if manifest_path is not None and persist_state and promoted_chk is not None:
                 self._write_manifest(manifest_path, manifest)
         except (OSError, RuntimeError, ValueError, TypeError) as exc:
+            rollback_error: OSError | None = None
             if chk_mgr is not None:
                 chk_mgr.discard_staging()
+                try:
+                    if checkpoint_promoted:
+                        if checkpoint_before is None:
+                            if chk_mgr.checkpoint_path.is_file():
+                                chk_mgr.checkpoint_path.unlink()
+                        else:
+                            rollback = chk_mgr.checkpoint_path.with_suffix(
+                                ".rollback.tmp"
+                            )
+                            rollback.write_bytes(checkpoint_before)
+                            rollback.replace(chk_mgr.checkpoint_path)
+                except OSError as rollback_exc:
+                    rollback_error = rollback_exc
             commit_error = f"state commit indeterminate: {type(exc).__name__}: {exc}"
+            if rollback_error is not None:
+                commit_error += f"; rollback failed: {rollback_error}"
             errors.append(commit_error)
 
         if errors and (fail_fast or not records):
