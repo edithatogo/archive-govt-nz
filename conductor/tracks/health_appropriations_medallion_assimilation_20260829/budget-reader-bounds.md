@@ -65,3 +65,18 @@ reader `--gremlin-targets`, `--gremlin-parallel --gremlin-workers=1`,
 Full gate: `COVERAGE_CORE=ctrace PYTHON_JIT=0 PYTEST_XDIST_AUTO_NUM_WORKERS=4
 ./scripts/validate.sh` with an isolated UV cache. Exact-head hosted delivery
 remains separate; no source capture, output dataset or publication occurred.
+## Hosted Windows timeout remediation
+
+The first Windows hosted run and one unchanged retry both exhausted the existing
+300-second command limit during the full pytest phase without an assertion or
+traceback. Attempt one reached 78%; attempt two reached 57%, demonstrating
+runner-throughput variability rather than a stable failing test. The retained
+attempt-two log SHA-256 is
+`424528c35dd8141f8ab6e1c7b3860633ec2c2f6fbab5bdc969be0c21547c882a`.
+
+The CI invocation now uses the repository's existing `auto` pytest-worker mode,
+matching both native validation scripts, while preserving the same locked
+harness, load-scope distribution, full test set, coverage threshold, 300-second
+command limit and every post-test gate. This is a throughput correction, not a
+timeout, threshold or validation reduction. Fresh exact-head hosted results are
+required before delivery.
