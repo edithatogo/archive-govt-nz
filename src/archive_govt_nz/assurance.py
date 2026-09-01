@@ -100,6 +100,16 @@ def build_stages(
             ("uv", "run", "--locked", "python", "tools/mutation_adapters.py"),
         ),
         GateStage(
+            "mutation-legislation-accounting",
+            (
+                "uv",
+                "run",
+                "--locked",
+                "python",
+                "tools/mutation_legislation_accounting.py",
+            ),
+        ),
+        GateStage(
             "mutation-gazette",
             ("uv", "run", "--locked", "python", "tools/mutation_gazette.py"),
         ),
