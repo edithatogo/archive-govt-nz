@@ -21,3 +21,11 @@ retains the complete original v2 mapping without assigning v3 meaning. The
 focused repaired suite passed 111 tests.
 
 The first hosted patch-coverage result at head `4cfeaf5d53b92e721088ce0c02bb8065e2c8e159` failed at 94.46254% with 17 changed lines uncovered. Focused terminal-disposition, retry, classification, transactional rollback and compatibility tests were added; no threshold or gate was weakened. Final exact-head hosted results are recorded at closeout.
+
+Hosted run `33503994121` on coverage-repair head
+`fc3806f6bac9d3126d5f2ed948c1bbad263b0663` passed Linux and macOS assurance
+and caused the Codecov patch gate to pass. CodeQL, workflow policy lint,
+dependency review, and analysis also passed on that head. The Windows job was
+still running when this closeout-only evidence commit superseded the head; the
+complete three-platform matrix is therefore required again on the final PR
+head before merge.

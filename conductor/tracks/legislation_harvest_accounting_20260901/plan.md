@@ -7,4 +7,4 @@
 - [x] Add backward-compatible, evidence-weak v2 reading.
 - [x] Add negative, property-based, generated and mutation tests.
 - [x] Run focused coverage, full native validation and independent review.
-- [~] Deliver exact-head PR, hosted checks and independent readback.
+- [x] Deliver exact-head PR, hosted checks and independent readback.

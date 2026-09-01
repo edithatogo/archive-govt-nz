@@ -261,5 +261,5 @@ implementation has occurred under these tracks.
 - [x] **Track: Typed legislation source-set configuration (Prompt 11)**
   *Link: [./tracks/legislation_typed_source_set_20260901/index.md](./tracks/legislation_typed_source_set_20260901/index.md)*
 
-- [~] **Track: Legislation harvest accounting and receipt semantics (Prompt 12)**
+- [x] **Track: Legislation harvest accounting and receipt semantics (Prompt 12)**
   *Link: [./tracks/legislation_harvest_accounting_20260901/index.md](./tracks/legislation_harvest_accounting_20260901/index.md)*
