@@ -12,6 +12,13 @@ from typing import TYPE_CHECKING, Any
 import pytest
 import yaml
 
+from archive_govt_nz.domains.legislation.accounting import (
+    HarvestAccounting,
+    StateCommitStatus,
+    WorkAccounting,
+    WorkDisposition,
+)
+
 if TYPE_CHECKING:
     from types import ModuleType
 
@@ -53,6 +60,49 @@ def _paths(tmp_path: Path) -> dict[str, Any]:
         "search_terms": ["public acts 2024"],
         "max_works": 2,
     }
+
+
+def _accounting(status: str) -> HarvestAccounting:
+    disposition = {
+        "success": WorkDisposition.NEWLY_PRESERVED,
+        "no_change": WorkDisposition.UNCHANGED_REVALIDATED,
+        "partial": WorkDisposition.PARTIAL,
+        "failed": WorkDisposition.FAILED,
+    }[status]
+    commit_status = {
+        "success": StateCommitStatus.COMMITTED,
+        "no_change": StateCommitStatus.NO_CHANGE,
+        "partial": StateCommitStatus.PARTIAL_COMMITTED,
+        "failed": StateCommitStatus.NOT_COMMITTED,
+    }[status]
+    changed = status == "success"
+    committed = commit_status in {
+        StateCommitStatus.COMMITTED,
+        StateCommitStatus.PARTIAL_COMMITTED,
+    }
+    counts = {item.value: 0 for item in WorkDisposition}
+    counts[disposition.value] = 1
+    return HarvestAccounting(
+        candidate_works_discovered=1,
+        works_in_scope=1,
+        works_attempted=1,
+        **counts,
+        total_state_records_before=0,
+        total_state_records_after=int(changed),
+        total_cas_objects_before=0,
+        total_cas_objects_after=int(changed),
+        scope_digests={"resolved": "a" * 64},
+        parent_manifest_root=None,
+        parent_checkpoint_root=None,
+        output_manifest_root="b" * 64 if committed else None,
+        output_checkpoint_root="c" * 64 if committed else None,
+        software_commit="d" * 40,
+        workflow_identity="test",
+        run_identity="test-run",
+        state_commit_status=commit_status,
+        state_commit="e" * 40 if committed else None,
+        works=(WorkAccounting("act-1", disposition, ("http_terminal",)),),
+    )
 
 
 def test_validate_source_set_config_is_dispatch_only(tmp_path: Path) -> None:
@@ -205,20 +255,20 @@ def test_sync_routes_explicit_force_resync_to_service(tmp_path: Path) -> None:
 @pytest.mark.parametrize(
     ("service_status", "expected"),
     [
-        ("success", ("changed", 0, True)),
-        ("no_change", ("no_change", 0, True)),
-        ("partial", ("partial_retryable", 1, False)),
-        ("failed", ("failed", 1, False)),
+        ("success", ("committed", 0)),
+        ("no_change", ("no_change", 0)),
+        ("partial", ("partial_committed", 1)),
+        ("failed", ("not_committed", 1)),
     ],
 )
 def test_run_harvest_outcomes_fail_closed(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,
     service_status: str,
-    expected: tuple[str, int, bool],
+    expected: tuple[str, int],
 ) -> None:
-    """Commit only complete changed/no-change service outcomes."""
-    expected_outcome, expected_code, committed = expected
+    """Use typed service accounting without reconstructing legacy counters."""
+    expected_state, expected_code = expected
     report = {
         "status": service_status,
         "works_attempted": 2,
@@ -228,6 +278,7 @@ def test_run_harvest_outcomes_fail_closed(
         "manifest_sha256": "b" * 64,
         "discovered_works_count": 2,
         "checkpoint": {"metadata": {"manifest_sha256": "b" * 64}},
+        "accounting": _accounting(service_status),
     }
 
     def _sync(*_args: object, **_kwargs: object) -> dict[str, object]:
@@ -238,8 +289,9 @@ def test_run_harvest_outcomes_fail_closed(
     code = run_harvest(**arguments)
     receipt = json.loads(arguments["receipt_path"].read_text(encoding="utf-8"))
     assert code == expected_code
-    assert receipt["outcome"] == expected_outcome
-    assert receipt["state_committed"] is committed
+    assert receipt["schema_version"].endswith("/v3")
+    assert receipt["state_commit_status"] == expected_state
+    assert sum(receipt[item.value] for item in WorkDisposition) == 1
 
 
 @pytest.mark.parametrize(
@@ -254,8 +306,7 @@ def test_run_harvest_rejects_unbounded_or_empty_dispatch(
     arguments.update(batch_id=batch_id, search_terms=search_terms, max_works=max_works)
     assert run_harvest(**arguments) == 1
     receipt = json.loads(arguments["receipt_path"].read_text(encoding="utf-8"))
-    assert receipt["outcome"] == "failed"
-    assert receipt["state_committed"] is False
+    assert receipt["state_commit_status"] == "not_committed"
 
 
 def test_run_harvest_requires_exact_explicit_batch_bound(tmp_path: Path) -> None:
@@ -268,26 +319,27 @@ def test_run_harvest_requires_exact_explicit_batch_bound(tmp_path: Path) -> None
     )
     assert run_harvest(**arguments) == 1
     receipt = json.loads(arguments["receipt_path"].read_text(encoding="utf-8"))
-    assert receipt["outcome"] == "failed"
+    assert receipt["state_commit_status"] == "not_committed"
 
 
 @pytest.mark.parametrize(
-    ("change", "error"),
+    "change",
     [
-        ({"max_works": 51}, "exceeds configured bound"),
-        ({"checkpoint_path": Path("wrong-checkpoint.json")}, "configured authority"),
-        ({"work_ids": ["act-1", "act-2"], "search_terms": None}, "does not permit"),
+        {"max_works": 51},
+        {"checkpoint_path": Path("wrong-checkpoint.json")},
+        {"work_ids": ["act-1", "act-2"], "search_terms": None},
     ],
 )
 def test_dispatch_is_bound_to_typed_policy(
-    tmp_path: Path, change: dict[str, object], error: str
+    tmp_path: Path, change: dict[str, object]
 ) -> None:
     """Reject dispatch arguments that contradict the typed source-set policy."""
     arguments = _paths(tmp_path)
     arguments.update(change)
     assert run_harvest(**arguments) == 1
     receipt = json.loads(arguments["receipt_path"].read_text(encoding="utf-8"))
-    assert error in receipt["errors"][0]
+    assert receipt["state_commit_status"] == "not_committed"
+    assert receipt["works_in_scope"] == 0
 
 
 def test_main_accepts_exact_work_id_batch(
@@ -339,7 +391,12 @@ def test_main_accepts_exact_work_id_batch(
 
     def _no_change(*_args: object, **kwargs: object) -> dict[str, object]:
         captured.update(kwargs)
-        return {"status": "no_change", "errors": [], "checkpoint": {}}
+        return {
+            "status": "no_change",
+            "errors": [],
+            "checkpoint": {},
+            "accounting": _accounting("no_change"),
+        }
 
     monkeypatch.setattr(_MODULE, "sync_legislation_records", _no_change)
     with pytest.raises(SystemExit) as raised:
@@ -382,6 +439,7 @@ def test_main_requires_explicit_state_and_scope(
             "status": "no_change",
             "errors": [],
             "checkpoint": {},
+            "accounting": _accounting("no_change"),
         }
 
     monkeypatch.setattr(_MODULE, "sync_legislation_records", _no_change)

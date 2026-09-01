@@ -11,6 +11,7 @@ from archive_govt_nz.adapters.base import (
 )
 from archive_govt_nz.core.identity import SourceType
 from archive_govt_nz.domains.legislation.api import (
+    HTTP_INTERNAL_SERVER_ERROR,
     HTTP_NOT_MODIFIED,
     HTTP_OK,
     HTTP_TOO_MANY_REQUESTS,
@@ -73,12 +74,29 @@ class NZLegislationAdapter(AsyncBaseCaptureAdapter):
 
             response_metadata = {
                 "http_status": str(status_code),
+                "retry_count": int(
+                    getattr(self._api_client, "last_document_retry_count", 0)
+                ),
                 "etag": headers.get("etag"),
                 "last_modified": headers.get("last-modified"),
                 "content_type": headers.get("content-type"),
                 "content_length": str(len(content)),
                 "content_sha256": hashlib.sha256(content).hexdigest(),
             }
+
+            if status_code == HTTP_OK:
+                response_metadata["response_classification"] = "success"
+            elif status_code == HTTP_NOT_MODIFIED:
+                response_metadata["response_classification"] = "not_modified"
+            elif status_code in {404, 410}:
+                response_metadata["response_classification"] = "unavailable"
+            elif (
+                status_code == HTTP_TOO_MANY_REQUESTS
+                or status_code >= HTTP_INTERNAL_SERVER_ERROR
+            ):
+                response_metadata["response_classification"] = "transient_failure"
+            else:
+                response_metadata["response_classification"] = "permanent_failure"
 
             if status_code == HTTP_TOO_MANY_REQUESTS:
                 return AdapterCaptureResult(

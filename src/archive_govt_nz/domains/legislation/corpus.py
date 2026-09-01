@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
+import os
 import re
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
@@ -12,6 +14,12 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 
 from archive_govt_nz.core.identity import SourceIdentity, SourceType
+from archive_govt_nz.domains.legislation.accounting import (
+    HarvestAccounting,
+    StateCommitStatus,
+    WorkAccounting,
+    WorkDisposition,
+)
 from archive_govt_nz.domains.legislation.api import (
     NZLegislationApiClient,
 )
@@ -86,6 +94,7 @@ class LegislationSyncResult:
     coverage: LegislationCoverageReport
     checkpoint: dict[str, Any] | None
     errors: list[str] = field(default_factory=list)
+    accounting: HarvestAccounting | None = None
 
 
 def _primary_manifestation(
@@ -722,7 +731,7 @@ class LegislationArchiveService:
         retrieval_time: str,
         conditional: dict[str, str],
         prior_manifestation_ids: set[str],
-    ) -> tuple[LegislationRecord | None, list[str], str, dict[str, str]]:
+    ) -> tuple[LegislationRecord | None, list[str], str, dict[str, str], str, int]:
         """Fetch, preserve in CAS, normalise, and validate one manifestation."""
         source_id = man.manifestation_id or f"{target.work_id}:{man.target_url}"
         identity = SourceIdentity(
@@ -742,6 +751,10 @@ class LegislationArchiveService:
             validators["etag"] = str(result.metadata["etag"])
         if result.metadata.get("last_modified"):
             validators["last_modified"] = str(result.metadata["last_modified"])
+        response_classification = str(
+            result.metadata.get("response_classification") or result.status
+        )
+        retry_count = int(result.metadata.get("retry_count", 0))
 
         if result.status == "not_modified":
             accounted_manifestation_id = man.manifestation_id or conditional.get(
@@ -756,12 +769,36 @@ class LegislationArchiveService:
                     f"adapter returned not_modified without prior cumulative "
                     f"manifestation {source_id}"
                 )
-                return None, [msg], "failed", validators
-            return None, [], "no_change", validators
+                return (
+                    None,
+                    [msg],
+                    "failed",
+                    validators,
+                    response_classification,
+                    retry_count,
+                )
+            return (
+                None,
+                [],
+                "no_change",
+                validators,
+                response_classification,
+                retry_count,
+            )
         if result.status != "success" or not result.records:
             detail = result.error_message or result.status
             msg = f"adapter acquisition failed for {man.target_url}: {detail}"
-            return None, [msg], "failed", validators
+            terminal = (
+                "unavailable" if response_classification == "unavailable" else "failed"
+            )
+            return (
+                None,
+                [msg],
+                terminal,
+                validators,
+                response_classification,
+                retry_count,
+            )
 
         preservation = result.records[0]
         receipt = self.store.verify(f"sha256:{preservation.sha256}")
@@ -783,11 +820,25 @@ class LegislationArchiveService:
 
         val_errors = validate_legislation_record(record)
         if val_errors:
-            return None, val_errors, "failed", validators
+            return (
+                None,
+                val_errors,
+                "failed",
+                validators,
+                response_classification,
+                retry_count,
+            )
 
         validators["manifestation_id"] = cast("str", record.manifestation_id)
 
-        return record, [], "captured", validators
+        return (
+            record,
+            [],
+            "captured",
+            validators,
+            response_classification,
+            retry_count,
+        )
 
     async def _sync_target_manifestations(  # noqa: C901
         self,
@@ -798,7 +849,13 @@ class LegislationArchiveService:
         *,
         fail_fast: bool,
     ) -> tuple[
-        list[LegislationRecord], list[str], bool, int, dict[str, dict[str, str]]
+        list[LegislationRecord],
+        list[str],
+        bool,
+        int,
+        dict[str, dict[str, str]],
+        list[str],
+        int,
     ]:
         """Traverse and preserve all manifestations for a single work target."""
         recs: list[LegislationRecord] = []
@@ -806,13 +863,22 @@ class LegislationArchiveService:
         has_error = False
         no_change_count = 0
         updated_conditionals: dict[str, dict[str, str]] = {}
+        classifications: list[str] = []
+        retry_count = 0
 
         for exp in target.expression_targets:
             fallback_errors: list[str] = []
             fallback_succeeded = False
             for man in exp.manifestations:
                 key = man.manifestation_id or man.target_url
-                rec, man_errs, outcome, validators = await self._sync_manifestation(
+                (
+                    rec,
+                    man_errs,
+                    outcome,
+                    validators,
+                    classification,
+                    manifestation_retries,
+                ) = await self._sync_manifestation(
                     target,
                     exp,
                     man,
@@ -820,6 +886,8 @@ class LegislationArchiveService:
                     conditional_state.get(key, {}),
                     prior_manifestation_ids,
                 )
+                classifications.append(classification)
+                retry_count += manifestation_retries
                 if validators:
                     updated_conditionals[key] = validators
                 if outcome == "no_change":
@@ -831,7 +899,15 @@ class LegislationArchiveService:
                     errors.extend(man_errs)
                     has_error = True
                     if fail_fast:
-                        return recs, errors, True, no_change_count, updated_conditionals
+                        return (
+                            recs,
+                            errors,
+                            True,
+                            no_change_count,
+                            updated_conditionals,
+                            classifications,
+                            retry_count,
+                        )
                 if rec is not None:
                     recs.append(rec)
                 if exp.fallback_manifestations and (
@@ -843,9 +919,25 @@ class LegislationArchiveService:
                 errors.extend(fallback_errors)
                 has_error = True
                 if fail_fast:
-                    return recs, errors, True, no_change_count, updated_conditionals
+                    return (
+                        recs,
+                        errors,
+                        True,
+                        no_change_count,
+                        updated_conditionals,
+                        classifications,
+                        retry_count,
+                    )
 
-        return recs, errors, has_error, no_change_count, updated_conditionals
+        return (
+            recs,
+            errors,
+            has_error,
+            no_change_count,
+            updated_conditionals,
+            classifications,
+            retry_count,
+        )
 
     def _finalize_checkpoint(  # noqa: PLR0913, PLR0917
         self,
@@ -896,7 +988,7 @@ class LegislationArchiveService:
         chk_mgr.promote()
         return chk_mgr.load()
 
-    async def _execute_sync_loop(  # noqa: PLR0913
+    async def _execute_sync_loop(  # noqa: C901, PLR0912, PLR0913
         self,
         active: list[WorkTarget],
         now_iso: str,
@@ -905,6 +997,7 @@ class LegislationArchiveService:
         prior_manifestation_ids: set[str],
         *,
         fail_fast: bool,
+        prior_work_ids: set[str],
     ) -> tuple[
         list[LegislationRecord],
         list[str],
@@ -913,6 +1006,7 @@ class LegislationArchiveService:
         int,
         int,
         dict[str, dict[str, str]],
+        list[WorkAccounting],
     ]:
         """Iterate over active targets and collect preserved records."""
         records: list[LegislationRecord] = []
@@ -922,6 +1016,7 @@ class LegislationArchiveService:
         html_count = 0
         no_change_count = 0
         updated_conditionals = dict(conditional_state)
+        work_accounting: list[WorkAccounting] = []
 
         for target in active:
             (
@@ -930,6 +1025,8 @@ class LegislationArchiveService:
                 target_has_err,
                 target_no_change,
                 target_conditionals,
+                classifications,
+                target_retries,
             ) = await self._sync_target_manifestations(
                 target,
                 now_iso,
@@ -950,6 +1047,38 @@ class LegislationArchiveService:
             if not target_has_err:
                 synced_ids.add(target.work_id)
             elif fail_fast:
+                pass
+
+            if target_has_err and (target_recs or target_no_change):
+                disposition = WorkDisposition.PARTIAL
+            elif (
+                target_has_err
+                and classifications
+                and all(item == "unavailable" for item in classifications)
+            ):
+                disposition = WorkDisposition.UNAVAILABLE
+            elif target_has_err:
+                disposition = WorkDisposition.FAILED
+            elif target_recs:
+                disposition = (
+                    WorkDisposition.CHANGED_PRESERVED
+                    if target.work_id in prior_work_ids
+                    else WorkDisposition.NEWLY_PRESERVED
+                )
+            elif target_no_change:
+                disposition = WorkDisposition.UNCHANGED_REVALIDATED
+            else:
+                disposition = WorkDisposition.FAILED
+                classifications.append("empty_response")
+            work_accounting.append(
+                WorkAccounting(
+                    work_id=target.work_id,
+                    disposition=disposition,
+                    source_response_classifications=tuple(classifications),
+                    retry_count=target_retries,
+                )
+            )
+            if target_has_err and fail_fast:
                 break
 
         return (
@@ -960,6 +1089,7 @@ class LegislationArchiveService:
             html_count,
             no_change_count,
             updated_conditionals,
+            work_accounting,
         )
 
     async def sync_works(  # noqa: C901, PLR0912, PLR0913, PLR0915, PLR0917
@@ -974,6 +1104,9 @@ class LegislationArchiveService:
         *,
         fail_fast: bool = False,
         force_resync: bool = False,
+        software_commit: str | None = None,
+        workflow_identity: str = "manual",
+        run_identity: str | None = None,
     ) -> LegislationSyncResult:
         """Execute the complete 10-step bounded resumable sync pipeline."""
         prior_manifest = self.load_manifest(manifest_path)
@@ -1062,6 +1195,21 @@ class LegislationArchiveService:
         prior_records = (
             list(prior_manifest.get("records", [])) if prior_manifest else []
         )
+        prior_work_ids = {
+            str(record["work_id"]) for record in prior_records if record.get("work_id")
+        }
+        state_records_before = len(prior_records)
+        cas_before = self.store.verified_inventory().object_count
+        parent_manifest_root = (
+            str(prior_manifest["manifest_sha256"]) if prior_manifest else None
+        )
+        parent_checkpoint_root = (
+            hashlib.sha256(
+                json.dumps(chk_data, sort_keys=True, separators=(",", ":")).encode()
+            ).hexdigest()
+            if chk_data
+            else None
+        )
         prior_manifestation_ids = {
             str(record["manifestation_id"])
             for record in prior_records
@@ -1094,6 +1242,51 @@ class LegislationArchiveService:
                 xml_manifestations_count=0,
                 unresolved_gaps=sorted(resolved_ids - processed_ids),
             )
+            skipped = tuple(
+                WorkAccounting(
+                    work_id=target.work_id,
+                    disposition=WorkDisposition.ALREADY_PROCESSED_SKIPPED,
+                )
+                for target in resolved
+            )
+            output_checkpoint_root = (
+                parent_checkpoint_root
+                or hashlib.sha256(
+                    json.dumps(chk_data, sort_keys=True, separators=(",", ":")).encode()
+                ).hexdigest()
+            )
+            accounting = HarvestAccounting(
+                candidate_works_discovered=len(resolved),
+                works_in_scope=len(resolved),
+                works_attempted=0,
+                newly_preserved=0,
+                changed_preserved=0,
+                unchanged_revalidated=0,
+                already_processed_skipped=len(resolved),
+                unavailable=0,
+                partial=0,
+                failed=0,
+                total_state_records_before=state_records_before,
+                total_state_records_after=state_records_before,
+                total_cas_objects_before=cas_before,
+                total_cas_objects_after=cas_before,
+                scope_digests={
+                    "resolved": compute_legislation_inventory_sha256(
+                        [t.work_id for t in resolved]
+                    )
+                },
+                parent_manifest_root=parent_manifest_root,
+                parent_checkpoint_root=parent_checkpoint_root,
+                output_manifest_root=str(manifest["manifest_sha256"]),
+                output_checkpoint_root=output_checkpoint_root,
+                software_commit=software_commit
+                or os.environ.get("GITHUB_SHA", "0" * 40),
+                workflow_identity=workflow_identity,
+                run_identity=run_identity or batch_id or "manual-no-change",
+                state_commit_status=StateCommitStatus.NO_CHANGE,
+                state_commit=None,
+                works=skipped,
+            )
             return LegislationSyncResult(
                 status="no_change",
                 works_attempted=len(resolved),
@@ -1104,6 +1297,7 @@ class LegislationArchiveService:
                 coverage=cov,
                 checkpoint=chk_data,
                 errors=[],
+                accounting=accounting,
             )
 
         now_iso = datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -1115,6 +1309,7 @@ class LegislationArchiveService:
             html_count,
             no_change_count,
             updated_conditionals,
+            work_accounting,
         ) = await self._execute_sync_loop(
             active,
             now_iso,
@@ -1122,6 +1317,28 @@ class LegislationArchiveService:
             conditional_state,
             prior_manifestation_ids,
             fail_fast=fail_fast,
+            prior_work_ids=prior_work_ids,
+        )
+
+        accounted_ids = {item.work_id for item in work_accounting}
+        for target in active:
+            if target.work_id not in accounted_ids:
+                work_accounting.append(
+                    WorkAccounting(
+                        work_id=target.work_id,
+                        disposition=WorkDisposition.FAILED,
+                        source_response_classifications=("not_attempted_fail_fast",),
+                    )
+                )
+        skipped_ids = {target.work_id for target in resolved} - {
+            target.work_id for target in active
+        }
+        work_accounting.extend(
+            WorkAccounting(
+                work_id=work_id,
+                disposition=WorkDisposition.ALREADY_PROCESSED_SKIPPED,
+            )
+            for work_id in sorted(skipped_ids)
         )
 
         manifest = self.build_manifest(
@@ -1178,6 +1395,69 @@ class LegislationArchiveService:
         else:
             final_status = "success"
 
+        output_checkpoint_root = (
+            hashlib.sha256(
+                json.dumps(promoted_chk, sort_keys=True, separators=(",", ":")).encode()
+            ).hexdigest()
+            if promoted_chk is not None
+            else None
+        )
+        cas_after = self.store.verified_inventory().object_count
+        counts = {
+            disposition.value: sum(
+                item.disposition is disposition for item in work_accounting
+            )
+            for disposition in WorkDisposition
+        }
+        if persist_state and promoted_chk is not None:
+            commit_status = (
+                StateCommitStatus.PARTIAL_COMMITTED
+                if errors
+                else StateCommitStatus.COMMITTED
+            )
+            state_commit = output_checkpoint_root
+            output_manifest_root: str | None = str(manifest["manifest_sha256"])
+        else:
+            commit_status = StateCommitStatus.NOT_COMMITTED
+            state_commit = None
+            output_manifest_root = None
+            output_checkpoint_root = None
+        accounting = HarvestAccounting(
+            candidate_works_discovered=len(resolved),
+            works_in_scope=len(resolved),
+            works_attempted=len(resolved) - counts["already_processed_skipped"],
+            newly_preserved=counts["newly_preserved"],
+            changed_preserved=counts["changed_preserved"],
+            unchanged_revalidated=counts["unchanged_revalidated"],
+            already_processed_skipped=counts["already_processed_skipped"],
+            unavailable=counts["unavailable"],
+            partial=counts["partial"],
+            failed=counts["failed"],
+            total_state_records_before=state_records_before,
+            total_state_records_after=(
+                int(manifest["total_records"])
+                if persist_state
+                else state_records_before
+            ),
+            total_cas_objects_before=cas_before,
+            total_cas_objects_after=cas_after,
+            scope_digests={
+                "resolved": compute_legislation_inventory_sha256(
+                    [target.work_id for target in resolved]
+                )
+            },
+            parent_manifest_root=parent_manifest_root,
+            parent_checkpoint_root=parent_checkpoint_root,
+            output_manifest_root=output_manifest_root,
+            output_checkpoint_root=output_checkpoint_root,
+            software_commit=software_commit or os.environ.get("GITHUB_SHA", "0" * 40),
+            workflow_identity=workflow_identity,
+            run_identity=run_identity or batch_id or f"run-leg-{now_iso}",
+            state_commit_status=commit_status,
+            state_commit=state_commit,
+            works=tuple(sorted(work_accounting, key=lambda item: item.work_id)),
+        )
+
         return LegislationSyncResult(
             status=final_status,
             works_attempted=total_works,
@@ -1188,6 +1468,7 @@ class LegislationArchiveService:
             coverage=cov,
             checkpoint=promoted_chk,
             errors=errors,
+            accounting=accounting,
         )
 
 
