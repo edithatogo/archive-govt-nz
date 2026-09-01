@@ -49,6 +49,22 @@ MUTANTS = {
         'if _sha(canonical_response) != readback["normalized_response_sha256"]:',
         'if _sha(canonical_response) == readback["normalized_response_sha256"]:',
     ),
+    "local_evidence_fixity": (
+        "if observed_sha != expected_sha:",
+        "if observed_sha == expected_sha:",
+    ),
+    "rendered_addendum_fixity": (
+        'if addendum["rendered_remote_addendum_sha256"] != rendered_sha:',
+        'if addendum["rendered_remote_addendum_sha256"] == rendered_sha:',
+    ),
+    "post_response_fixity": (
+        'if _sha(post_bytes) != readback["raw_response_sha256"]:',
+        'if _sha(post_bytes) == readback["raw_response_sha256"]:',
+    ),
+    "post_raw_identity": (
+        "if raw_identity != comparable_identity:",
+        "if raw_identity == comparable_identity:",
+    ),
 }
 
 
@@ -58,6 +74,9 @@ def _prepare(root: Path) -> None:
         Path("tests/tools/test_legislation_release_correction.py"),
         Path("tests/fixtures/legislation-github-release-correction-v1.json"),
         Path("schemas/legislation-github-release-correction-v1.schema.json"),
+        Path(
+            "evidence/migrations/corpus-legislation-nz/cutover-release-provenance/release-post-readback.json"
+        ),
     ):
         destination = root / relative
         destination.parent.mkdir(parents=True, exist_ok=True)

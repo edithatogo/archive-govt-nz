@@ -226,6 +226,18 @@ ATTESTATION = Path(
     "evidence/migrations/corpus-legislation-nz/shadow-operation-cutover-attestation.json"
 )
 SCHEMA = Path("schemas/legislation-github-release-correction-v1.schema.json")
+POST_READBACK = Path(
+    "evidence/migrations/corpus-legislation-nz/cutover-release-provenance/release-post-readback.json"
+)
+POST_RAW_SHA256 = "dd9a0d71aa8356a5c33cf4134a19d40ff01f38f2a3e3749b33650f7259f2063a"
+PREPARED_LIMITATIONS = [
+    "No GitHub release mutation was performed by this preparation step.",
+    "Applied status requires an independent post-write GitHub API readback.",
+]
+APPLIED_LIMITATIONS = [
+    "The GitHub release body addendum was applied and independently read back; tag, assets, and release identity were unchanged.",
+    "No release, tag, asset, DOI, dataset, donor, or external publication was created or altered beyond the release-body addendum.",
+]
 
 
 class ReleaseCorrectionError(ValueError):
@@ -416,17 +428,96 @@ def prepare_correction(
             "rendered_remote_addendum_sha256": _sha(addendum.encode()),
         },
         "external_action": {"status": "prepared_not_applied"},
-        "limitations": [
-            "No GitHub release mutation was performed by this preparation step.",
-            "Applied status requires an independent post-write GitHub API readback.",
-        ],
+        "limitations": PREPARED_LIMITATIONS,
     }
     validate_receipt(root, document)
     return addendum, document
 
 
+def _validate_local_fixity(root: Path, document: dict[str, Any]) -> None:
+    release = cast("dict[str, Any]", document["release"])
+    authority = cast("dict[str, Any]", document["authority"])
+    addendum = cast("dict[str, Any]", document["addendum"])
+    fixity = (
+        (release["snapshot_path"], release["normalized_snapshot_sha256"]),
+        (authority["path"], authority["sha256"]),
+        (addendum["local_document_path"], addendum["local_document_sha256"]),
+    )
+    for relative, expected_sha in fixity:
+        path = _safe(root, Path(relative))
+        try:
+            observed_sha = _sha(path.read_bytes())
+        except OSError as exc:
+            _fail(f"unreadable_evidence:{relative}", exc)
+        if observed_sha != expected_sha:
+            _fail(f"evidence_fixity_mismatch:{relative}")
+    rendered_sha = _sha(render_addendum().encode())
+    if addendum["rendered_remote_addendum_sha256"] != rendered_sha:
+        _fail("rendered_addendum_fixity_mismatch")
+
+
+def _validate_applied(root: Path, document: dict[str, Any]) -> None:
+    if document["limitations"] != APPLIED_LIMITATIONS:
+        _fail("applied_limitations_mismatch")
+    action = cast("dict[str, Any]", document["external_action"])
+    readback = cast("dict[str, Any]", action["readback"])
+    post_path = _safe(root, Path(readback["raw_response_path"]))
+    try:
+        post_bytes = post_path.read_bytes()
+    except OSError as exc:
+        _fail("unreadable_post_readback", exc)
+    if _sha(post_bytes) != readback["raw_response_sha256"]:
+        _fail("post_readback_fixity_mismatch")
+    post_response = _object(post_path)
+    body = readback["body"]
+    expected_body = (
+        cast("str", document["release"]["original_body"]) + "\n" + render_addendum()
+    )
+    if body != expected_body:
+        _fail("applied_readback_claim_mismatch")
+    expected_identity = {
+        "id": RELEASE_ID,
+        "tag": RELEASE_TAG,
+        "name": RELEASE_NAME,
+        "url": RELEASE_URL,
+        "published_at": document["release"]["published_at"],
+        "draft": False,
+        "prerelease": False,
+        "is_immutable": document["release"]["is_immutable"],
+        "tag_commit": TAG_COMMIT,
+        "assets": [],
+        "body": body,
+    }
+    if readback["release_identity"] != expected_identity:
+        _fail("applied_readback_identity_mismatch")
+    raw_identity = {
+        "id": post_response.get("id"),
+        "tag": post_response.get("tag_name"),
+        "name": post_response.get("name"),
+        "url": post_response.get("html_url"),
+        "published_at": post_response.get("published_at"),
+        "draft": post_response.get("draft"),
+        "prerelease": post_response.get("prerelease"),
+        "is_immutable": post_response.get("immutable"),
+        "assets": post_response.get("assets"),
+        "body": post_response.get("body"),
+    }
+    comparable_identity = {
+        key: value for key, value in expected_identity.items() if key != "tag_commit"
+    }
+    if raw_identity != comparable_identity:
+        _fail("post_raw_identity_mismatch")
+    if _sha(body.encode()) != readback["body_sha256"]:
+        _fail("applied_readback_hash_mismatch")
+    canonical_response = json.dumps(
+        expected_identity, sort_keys=True, separators=(",", ":")
+    ).encode()
+    if _sha(canonical_response) != readback["normalized_response_sha256"]:
+        _fail("applied_response_hash_mismatch")
+
+
 def validate_receipt(root: Path, document: dict[str, Any]) -> None:
-    """Validate the correction receipt schema and applied-readback semantics."""
+    """Validate the correction receipt schema, fixity, and readback semantics."""
     schema = _object(_safe(root, SCHEMA))
     errors = list(
         Draft202012Validator(schema, format_checker=FormatChecker()).iter_errors(
@@ -435,6 +526,7 @@ def validate_receipt(root: Path, document: dict[str, Any]) -> None:
     )
     if errors:
         _fail(f"receipt_schema_invalid:{errors[0].message}")
+    _validate_local_fixity(root, document)
     hosted = cast("dict[str, Any]", document["hosted_evidence"])
     canonical_hosted = json.dumps(
         hosted["runs"], sort_keys=True, separators=(",", ":")
@@ -447,35 +539,7 @@ def validate_receipt(root: Path, document: dict[str, Any]) -> None:
         _fail("hosted_evidence_mismatch")
     action = cast("dict[str, Any]", document["external_action"])
     if action["status"] == "applied_readback_verified":
-        readback = cast("dict[str, Any]", action["readback"])
-        body = readback["body"]
-        expected_body = (
-            cast("str", document["release"]["original_body"]) + "\n" + render_addendum()
-        )
-        if body != expected_body:
-            _fail("applied_readback_claim_mismatch")
-        expected_identity = {
-            "id": RELEASE_ID,
-            "tag": RELEASE_TAG,
-            "name": RELEASE_NAME,
-            "url": RELEASE_URL,
-            "published_at": document["release"]["published_at"],
-            "draft": False,
-            "prerelease": False,
-            "is_immutable": document["release"]["is_immutable"],
-            "tag_commit": TAG_COMMIT,
-            "assets": [],
-            "body": body,
-        }
-        if readback["release_identity"] != expected_identity:
-            _fail("applied_readback_identity_mismatch")
-        if _sha(body.encode()) != readback["body_sha256"]:
-            _fail("applied_readback_hash_mismatch")
-        canonical_response = json.dumps(
-            expected_identity, sort_keys=True, separators=(",", ":")
-        ).encode()
-        if _sha(canonical_response) != readback["normalized_response_sha256"]:
-            _fail("applied_response_hash_mismatch")
+        _validate_applied(root, document)
 
 
 __all__ = [

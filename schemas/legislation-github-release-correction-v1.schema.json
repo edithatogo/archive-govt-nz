@@ -234,6 +234,7 @@
               "required": [
                 "retrieved_at",
                 "normalized_response_sha256",
+                "raw_response_path",
                 "raw_response_sha256",
                 "body_sha256",
                 "body",
@@ -314,7 +315,10 @@
                   "$ref": "#/$defs/sha256"
                 },
                 "raw_response_sha256": {
-                  "$ref": "#/$defs/sha256"
+                  "const": "dd9a0d71aa8356a5c33cf4134a19d40ff01f38f2a3e3749b33650f7259f2063a"
+                },
+                "raw_response_path": {
+                  "const": "evidence/migrations/corpus-legislation-nz/cutover-release-provenance/release-post-readback.json"
                 }
               }
             }
@@ -517,5 +521,53 @@
         }
       }
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "external_action": {
+            "properties": {
+              "status": {
+                "const": "prepared_not_applied"
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "limitations": {
+            "const": [
+              "No GitHub release mutation was performed by this preparation step.",
+              "Applied status requires an independent post-write GitHub API readback."
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "external_action": {
+            "properties": {
+              "status": {
+                "const": "applied_readback_verified"
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "limitations": {
+            "const": [
+              "The GitHub release body addendum was applied and independently read back; tag, assets, and release identity were unchanged.",
+              "No release, tag, asset, DOI, dataset, donor, or external publication was created or altered beyond the release-body addendum."
+            ]
+          }
+        }
+      }
+    }
+  ]
 }

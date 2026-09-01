@@ -46,7 +46,8 @@
     "status": "prepared_not_applied"
   },
   "limitations": [
-    "No remote mutation occurred."
+    "No GitHub release mutation was performed by this preparation step.",
+    "Applied status requires an independent post-write GitHub API readback."
   ],
   "target_baseline_commit": "740389b7420ea7ba7382d40a23ad3e23ba2c680a",
   "hosted_evidence": {

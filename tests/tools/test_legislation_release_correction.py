@@ -95,6 +95,16 @@ def _root(tmp_path: Path, release: Any = None, attestation: Any = None) -> Path:
     local_addendum.write_text(
         "Date 2026-09-02; cycles 32625516235 32625566353 32625612739 32626113799\n"
     )
+    post = (
+        tmp_path
+        / "evidence/migrations/corpus-legislation-nz/cutover-release-provenance/release-post-readback.json"
+    )
+    post.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy(
+        ROOT
+        / "evidence/migrations/corpus-legislation-nz/cutover-release-provenance/release-post-readback.json",
+        post,
+    )
     return tmp_path
 
 
@@ -265,7 +275,16 @@ def _applied(root: Path, receipt: dict[str, Any]) -> dict[str, Any]:
             json.dumps(identity, sort_keys=True, separators=(",", ":")).encode()
         ).hexdigest()
     )
-    document["external_action"]["readback"]["raw_response_sha256"] = "f" * 64
+    document["external_action"]["readback"]["raw_response_path"] = (
+        "evidence/migrations/corpus-legislation-nz/cutover-release-provenance/release-post-readback.json"
+    )
+    document["external_action"]["readback"]["raw_response_sha256"] = (
+        "dd9a0d71aa8356a5c33cf4134a19d40ff01f38f2a3e3749b33650f7259f2063a"
+    )
+    document["limitations"] = [
+        "The GitHub release body addendum was applied and independently read back; tag, assets, and release identity were unchanged.",
+        "No release, tag, asset, DOI, dataset, donor, or external publication was created or altered beyond the release-body addendum.",
+    ]
     validate_receipt(root, document)
     return document
 
@@ -342,3 +361,106 @@ def test_applied_identity_and_response_hash_drift_rejected(tmp_path: Path) -> No
     bad["external_action"]["readback"]["normalized_response_sha256"] = "0" * 64
     with pytest.raises(ReleaseCorrectionError, match="applied_response_hash_mismatch"):
         validate_receipt(root, bad)
+
+
+@pytest.mark.parametrize(
+    ("section", "path_key"),
+    [
+        ("release", "snapshot_path"),
+        ("authority", "path"),
+        ("addendum", "local_document_path"),
+    ],
+)
+def test_receipt_rejects_governed_file_drift(
+    tmp_path: Path, section: str, path_key: str
+) -> None:
+    root = _root(tmp_path)
+    _, receipt = _prepare(root)
+    (root / receipt[section][path_key]).write_bytes(b"drift")
+    with pytest.raises(ReleaseCorrectionError, match="evidence_fixity_mismatch"):
+        validate_receipt(root, receipt)
+
+
+def test_receipt_rejects_rendered_addendum_hash_drift(tmp_path: Path) -> None:
+    root = _root(tmp_path)
+    _, receipt = _prepare(root)
+    receipt["addendum"]["rendered_remote_addendum_sha256"] = "0" * 64
+    with pytest.raises(
+        ReleaseCorrectionError, match="rendered_addendum_fixity_mismatch"
+    ):
+        validate_receipt(root, receipt)
+
+
+def test_applied_receipt_rejects_post_snapshot_and_limitations_drift(
+    tmp_path: Path,
+) -> None:
+    root = _root(tmp_path)
+    _, receipt = _prepare(root)
+    applied = _applied(root, receipt)
+    bad = copy.deepcopy(applied)
+    bad["limitations"] = receipt["limitations"]
+    with pytest.raises(ReleaseCorrectionError, match="receipt_schema_invalid"):
+        validate_receipt(root, bad)
+    post = root / applied["external_action"]["readback"]["raw_response_path"]
+    post.write_bytes(b"drift")
+    with pytest.raises(ReleaseCorrectionError, match="post_readback_fixity_mismatch"):
+        validate_receipt(root, applied)
+
+
+def test_applied_receipt_rejects_raw_response_identity_drift(tmp_path: Path) -> None:
+    root = _root(tmp_path)
+    _, receipt = _prepare(root)
+    applied = _applied(root, receipt)
+    post = root / applied["external_action"]["readback"]["raw_response_path"]
+    raw = json.loads(post.read_text())
+    raw["name"] = "wrong"
+    payload = json.dumps(raw, indent=2).encode() + b"\n"
+    post.write_bytes(payload)
+    applied["external_action"]["readback"]["raw_response_sha256"] = hashlib.sha256(
+        payload
+    ).hexdigest()
+    schema = json.loads(
+        (
+            root / "schemas/legislation-github-release-correction-v1.schema.json"
+        ).read_text()
+    )
+    schema["properties"]["external_action"]["oneOf"][1]["properties"]["readback"][
+        "properties"
+    ]["raw_response_sha256"] = {"pattern": "^[0-9a-f]{64}$"}
+    (root / "schemas/legislation-github-release-correction-v1.schema.json").write_text(
+        json.dumps(schema)
+    )
+    with pytest.raises(ReleaseCorrectionError, match="post_raw_identity_mismatch"):
+        validate_receipt(root, applied)
+
+
+def test_receipt_rejects_unreadable_governed_evidence(tmp_path: Path) -> None:
+    root = _root(tmp_path)
+    _, receipt = _prepare(root)
+    (root / receipt["authority"]["path"]).unlink()
+    with pytest.raises(ReleaseCorrectionError, match="unreadable_evidence"):
+        validate_receipt(root, receipt)
+
+
+def test_applied_receipt_rejects_unreadable_post_snapshot(tmp_path: Path) -> None:
+    root = _root(tmp_path)
+    _, receipt = _prepare(root)
+    applied = _applied(root, receipt)
+    (root / applied["external_action"]["readback"]["raw_response_path"]).unlink()
+    with pytest.raises(ReleaseCorrectionError, match="unreadable_post_readback"):
+        validate_receipt(root, applied)
+
+
+def test_applied_semantics_reject_limitations_when_schema_is_relaxed(
+    tmp_path: Path,
+) -> None:
+    root = _root(tmp_path)
+    _, receipt = _prepare(root)
+    applied = _applied(root, receipt)
+    applied["limitations"] = ["misleading"]
+    schema_path = root / "schemas/legislation-github-release-correction-v1.schema.json"
+    schema = json.loads(schema_path.read_text())
+    schema.pop("allOf")
+    schema_path.write_text(json.dumps(schema))
+    with pytest.raises(ReleaseCorrectionError, match="applied_limitations_mismatch"):
+        validate_receipt(root, applied)

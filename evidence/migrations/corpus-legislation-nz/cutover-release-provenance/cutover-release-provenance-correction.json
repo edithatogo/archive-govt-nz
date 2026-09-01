@@ -25,6 +25,7 @@
       "body_sha256": "66617b06cce61d19b3a2dadc4e352d32af9292334bb9cae4379a82147fcfd28d",
       "etag": "W/\"ce56368ebdf86cefa385be27bc6b40e1310140fcf77b1f8f394015700909b0fa\"",
       "normalized_response_sha256": "fff93e36259836c84c602944b8bbaa079373226449214b44ebf8acde376f75d1",
+      "raw_response_path": "evidence/migrations/corpus-legislation-nz/cutover-release-provenance/release-post-readback.json",
       "raw_response_sha256": "dd9a0d71aa8356a5c33cf4134a19d40ff01f38f2a3e3749b33650f7259f2063a",
       "release_identity": {
         "assets": [],
@@ -237,8 +238,8 @@
   },
   "issued_at": "2026-09-01T16:40:00Z",
   "limitations": [
-    "No GitHub release mutation was performed by this preparation step.",
-    "Applied status requires an independent post-write GitHub API readback."
+    "The GitHub release body addendum was applied and independently read back; tag, assets, and release identity were unchanged.",
+    "No release, tag, asset, DOI, dataset, donor, or external publication was created or altered beyond the release-body addendum."
   ],
   "release": {
     "asset_count": 0,
