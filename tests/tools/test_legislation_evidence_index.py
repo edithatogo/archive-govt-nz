@@ -46,9 +46,33 @@ def _index(root: Path) -> dict[str, Any]:
         "sha256": digest,
         "classification": "active",
         "artefact_type": "receipt",
-        "claim_dimensions": list(DIMENSIONS),
+        "proof_kind": "capability_matrix",
+        "claim_dimensions": [DIMENSIONS[0]],
         "rationale": "Exact active proof fixture.",
     }
+    proof_kinds = {
+        DIMENSIONS[1]: "state_verification",
+        DIMENSIONS[2]: "recovery_readback",
+        DIMENSIONS[3]: "identity_verification",
+    }
+    entries = [entry]
+    proof_ids = {DIMENSIONS[0]: "active-proof"}
+    for dimension, proof_kind in proof_kinds.items():
+        evidence_id = f"active-{dimension}"
+        path = f"proof/{evidence_id}.json"
+        entries.append(
+            {
+                "evidence_id": evidence_id,
+                "path": path,
+                "sha256": _write(root, path, {"status": "verified"}),
+                "classification": "active",
+                "artefact_type": "receipt",
+                "proof_kind": proof_kind,
+                "claim_dimensions": [dimension],
+                "rationale": "Dimension-specific active proof fixture.",
+            }
+        )
+        proof_ids[dimension] = evidence_id
     return {
         "schema_version": "archive-govt-nz.legislation-evidence-index/v1",
         "index_id": "test-index-v1",
@@ -57,12 +81,14 @@ def _index(root: Path) -> dict[str, Any]:
         "target_commit": "a" * 40,
         "donor_repository": "edithatogo/corpus-legislation-nz",
         "donor_commit": "b" * 40,
-        "entries": [entry],
-        "evaluator_inputs": {dimension: ["active-proof"] for dimension in DIMENSIONS},
+        "entries": entries,
+        "evaluator_inputs": {
+            dimension: [proof_ids[dimension]] for dimension in DIMENSIONS
+        },
         "dimensions": {
             dimension: {
                 "status": "complete",
-                "proof_ids": ["active-proof"],
+                "proof_ids": [proof_ids[dimension]],
                 "rationale": "Exact active proof fixture.",
             }
             for dimension in DIMENSIONS
@@ -180,6 +206,7 @@ def _add_linked_entry(
         "sha256": digest,
         "classification": classification,
         "artefact_type": "receipt",
+        "proof_kind": "blocker_receipt",
         "claim_dimensions": list(DIMENSIONS),
         "rationale": "Negative or blocked evidence fixture.",
     }
@@ -327,4 +354,26 @@ def test_public_claim_cannot_prove_completed_dimension(tmp_path: Path) -> None:
     with pytest.raises(
         EvidenceIndexError, match="public_claim_cannot_prove_completion"
     ):
+        _validate(tmp_path, index)
+
+
+def test_complete_proof_kind_is_dimension_specific(tmp_path: Path) -> None:
+    """A valid proof for one dimension cannot complete another dimension."""
+    index = _index(tmp_path)
+    index["entries"][0]["proof_kind"] = "identity_verification"
+    with pytest.raises(EvidenceIndexError, match="proof_kind_not_allowed"):
+        _validate(tmp_path, index)
+
+
+def test_negative_dimension_requires_blocker_receipt_kind(tmp_path: Path) -> None:
+    """A negative status needs an explicit blocker receipt semantic role."""
+    index = _index(tmp_path)
+    row = _add_linked_entry(tmp_path, index, "weak-negative", "incomplete")
+    row["proof_kind"] = "historical_record"
+    index["dimensions"][DIMENSIONS[0]] = {
+        "status": "incomplete",
+        "proof_ids": [row["evidence_id"]],
+        "rationale": "Deliberately weak negative evidence.",
+    }
+    with pytest.raises(EvidenceIndexError, match="negative_proof_kind_mismatch"):
         _validate(tmp_path, index)

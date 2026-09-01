@@ -130,7 +130,8 @@
         "classification",
         "artefact_type",
         "claim_dimensions",
-        "rationale"
+        "rationale",
+        "proof_kind"
       ],
       "properties": {
         "evidence_id": {
@@ -184,6 +185,25 @@
         },
         "invalidated_by": {
           "$ref": "#/$defs/evidenceId"
+        },
+        "proof_kind": {
+          "enum": [
+            "capability_matrix",
+            "contract",
+            "evaluator",
+            "state_verification",
+            "state_merge",
+            "operational_run",
+            "durable_package",
+            "recovery_readback",
+            "publication_readback",
+            "identity_verification",
+            "blocker_receipt",
+            "claim_inventory",
+            "registry",
+            "closeout_summary",
+            "historical_record"
+          ]
         }
       },
       "allOf": [

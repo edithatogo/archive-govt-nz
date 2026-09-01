@@ -19,19 +19,52 @@
         "corpus_custody_recoverability",
         "publication_identity_migration"
       ],
-      "rationale": "Representative schema fixture only."
+      "rationale": "Representative schema fixture only.",
+      "proof_kind": "capability_matrix"
     }
   ],
   "evaluator_inputs": {
-    "code_capability_migration": ["sample-active-evidence"],
-    "operational_state_migration": ["sample-active-evidence"],
-    "corpus_custody_recoverability": ["sample-active-evidence"],
-    "publication_identity_migration": ["sample-active-evidence"]
+    "code_capability_migration": [
+      "sample-active-evidence"
+    ],
+    "operational_state_migration": [
+      "sample-active-evidence"
+    ],
+    "corpus_custody_recoverability": [
+      "sample-active-evidence"
+    ],
+    "publication_identity_migration": [
+      "sample-active-evidence"
+    ]
   },
   "dimensions": {
-    "code_capability_migration": {"status": "complete", "proof_ids": ["sample-active-evidence"], "rationale": "Fixture proof."},
-    "operational_state_migration": {"status": "complete", "proof_ids": ["sample-active-evidence"], "rationale": "Fixture proof."},
-    "corpus_custody_recoverability": {"status": "complete", "proof_ids": ["sample-active-evidence"], "rationale": "Fixture proof."},
-    "publication_identity_migration": {"status": "complete", "proof_ids": ["sample-active-evidence"], "rationale": "Fixture proof."}
+    "code_capability_migration": {
+      "status": "complete",
+      "proof_ids": [
+        "sample-active-evidence"
+      ],
+      "rationale": "Fixture proof."
+    },
+    "operational_state_migration": {
+      "status": "complete",
+      "proof_ids": [
+        "sample-active-evidence"
+      ],
+      "rationale": "Fixture proof."
+    },
+    "corpus_custody_recoverability": {
+      "status": "complete",
+      "proof_ids": [
+        "sample-active-evidence"
+      ],
+      "rationale": "Fixture proof."
+    },
+    "publication_identity_migration": {
+      "status": "complete",
+      "proof_ids": [
+        "sample-active-evidence"
+      ],
+      "rationale": "Fixture proof."
+    }
   }
 }

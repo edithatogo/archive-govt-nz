@@ -17,7 +17,8 @@
         "operational_state_migration",
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "conductor-tracks-legislation-canonical-state-merge-20260831-review-md-b67b9debc6",
@@ -29,7 +30,8 @@
         "operational_state_migration",
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "conductor-tracks-legislation-cli-service-backing-20260820-review-md-4eeb3d87bc",
@@ -40,7 +42,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "conductor-tracks-legislation-corpus-consolidation-20260818-review-md-d4c6477874",
@@ -51,7 +54,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "legacy-corrective-programme-review",
@@ -66,7 +70,8 @@
         "publication_identity_migration"
       ],
       "rationale": "Programme review declares undifferentiated completion using evidence that later canonical receipts constrain or invalidate.",
-      "superseded_by": "corrected-closeout"
+      "superseded_by": "corrected-closeout",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "conductor-tracks-legislation-corrective-adapter-client-integration-20260818-review-md-e49507056e",
@@ -77,7 +82,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "conductor-tracks-legislation-corrective-cli-contract-compatibility-20260818-review-md-b892d47237",
@@ -88,7 +94,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "conductor-tracks-legislation-corrective-evidence-chronology-20260818-review-md-fb6fb151a0",
@@ -99,7 +106,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "conductor-tracks-legislation-corrective-gazette-residual-separation-20260818-review-md-e9c851dc0a",
@@ -110,7 +118,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "conductor-tracks-legislation-corrective-identity-normalisation-corpus-20260818-review-md-e1f96914d4",
@@ -121,7 +130,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "conductor-tracks-legislation-corrective-live-inventory-reuse-20260818-review-md-6a9464853a",
@@ -132,7 +142,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "conductor-tracks-legislation-corrective-mcp-disposition-conformance-20260818-review-md-5a1b4d7627",
@@ -143,7 +154,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "conductor-tracks-legislation-corrective-reconciliation-parity-publication-20260818-review-9d9bf24d77",
@@ -156,7 +168,8 @@
         "operational_state_migration",
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "conductor-tracks-legislation-corrective-rights-redistribution-20260818-review-md-608e2ba52a",
@@ -167,7 +180,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "conductor-tracks-legislation-corrective-service-integrity-20260820-review-md-f8e0ccb6b5",
@@ -178,7 +192,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "conductor-tracks-legislation-corrective-shadow-operation-cutover-20260818-review-md-f5e0f2d0ca",
@@ -189,7 +204,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "conductor-tracks-legislation-corrective-standards-schema-conformance-20260818-review-md-0e23de1442",
@@ -200,7 +216,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "conductor-tracks-legislation-corrective-weekly-orchestration-state-20260818-review-md-649d6b72db",
@@ -212,7 +229,8 @@
         "operational_state_migration",
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "conductor-tracks-legislation-durable-state-20260901-review-md-9758dec908",
@@ -225,7 +243,8 @@
         "corpus_custody_recoverability",
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "conductor-tracks-legislation-evidence-index-20260902-review-md-0768834490",
@@ -236,7 +255,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "conductor-tracks-legislation-final-donor-lineage-20260831-review-md-5b46596a44",
@@ -247,7 +267,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "conductor-tracks-legislation-final-donor-state-verification-20260831-review-md-ae8f3b07e2",
@@ -259,7 +280,8 @@
         "operational_state_migration",
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "conductor-tracks-legislation-harvest-accounting-20260901-review-md-c9e25a1abb",
@@ -271,7 +293,8 @@
         "operational_state_migration",
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "conductor-tracks-legislation-hf-identity-reconciliation-20260901-review-md-7c85a725d2",
@@ -283,7 +306,8 @@
         "operational_state_migration",
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "conductor-tracks-legislation-historical-coverage-20260901-review-md-a8bfee8f1a",
@@ -295,7 +319,8 @@
         "operational_state_migration",
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "conductor-tracks-legislation-one-batch-reconciliation-20260820-review-md-5b8c954bcd",
@@ -307,7 +332,8 @@
         "operational_state_migration",
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "conductor-tracks-legislation-parent-state-restoration-20260901-review-md-7afa9efbeb",
@@ -319,7 +345,8 @@
         "operational_state_migration",
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "conductor-tracks-legislation-reviewed-seed-registry-20260831-review-md-034f24de75",
@@ -331,7 +358,8 @@
         "operational_state_migration",
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "conductor-tracks-legislation-typed-source-set-20260901-review-md-7e7dd80f9d",
@@ -342,7 +370,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "conductor-tracks-legislation-workflow-fail-closed-20260820-review-md-afba609c6f",
@@ -353,7 +382,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "conductor-tracks-zenodo-identity-correction-20260902-review-md-ad2fa194cc",
@@ -365,7 +395,8 @@
         "publication_identity_migration",
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "contracts-approval-legislation-corrective-approval-profile-yaml-e0119eaed7",
@@ -376,7 +407,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code."
+      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code.",
+      "proof_kind": "contract"
     },
     {
       "evidence_id": "contracts-cli-archive-govt-nz-cli-contract-yaml-6795496848",
@@ -387,7 +419,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code."
+      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code.",
+      "proof_kind": "contract"
     },
     {
       "evidence_id": "contracts-cli-nzlc-compatibility-contract-yaml-4826753ef1",
@@ -398,7 +431,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code."
+      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code.",
+      "proof_kind": "contract"
     },
     {
       "evidence_id": "contracts-completion-legislation-completion-contract-yaml-bab2718de0",
@@ -409,7 +443,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code."
+      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code.",
+      "proof_kind": "contract"
     },
     {
       "evidence_id": "contracts-cutover-legislation-cutover-contract-yaml-6bb6c38ae5",
@@ -420,7 +455,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code."
+      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code.",
+      "proof_kind": "contract"
     },
     {
       "evidence_id": "contracts-domain-legislation-domain-contract-yaml-b47ccd8c66",
@@ -431,7 +467,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code."
+      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code.",
+      "proof_kind": "contract"
     },
     {
       "evidence_id": "contracts-evidence-legislation-evidence-integrity-contract-yaml-05d8e78127",
@@ -442,7 +479,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code."
+      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code.",
+      "proof_kind": "contract"
     },
     {
       "evidence_id": "contracts-mcp-archive-govt-nz-mcp-disposition-contract-yaml-c92089a1f4",
@@ -453,7 +491,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code."
+      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code.",
+      "proof_kind": "contract"
     },
     {
       "evidence_id": "contracts-migration-legislation-consolidation-contract-yaml-3ac888c17c",
@@ -464,7 +503,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code."
+      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code.",
+      "proof_kind": "contract"
     },
     {
       "evidence_id": "contracts-publication-legislation-publication-identity-contract-yaml-2a4db5ce15",
@@ -476,7 +516,8 @@
         "publication_identity_migration",
         "code_capability_migration"
       ],
-      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code."
+      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code.",
+      "proof_kind": "contract"
     },
     {
       "evidence_id": "contracts-reuse-legislation-reuse-before-create-contract-yaml-c225e60606",
@@ -487,7 +528,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code."
+      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code.",
+      "proof_kind": "contract"
     },
     {
       "evidence_id": "contracts-rights-legislation-rights-contract-yaml-75d58b42f6",
@@ -498,7 +540,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code."
+      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code.",
+      "proof_kind": "contract"
     },
     {
       "evidence_id": "contracts-schedule-legislation-archive-slo-contract-yaml-eff72ecd39",
@@ -509,7 +552,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code."
+      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code.",
+      "proof_kind": "contract"
     },
     {
       "evidence_id": "contracts-schemas-legislation-schema-conformance-contract-yaml-f2abeec31c",
@@ -520,7 +564,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code."
+      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code.",
+      "proof_kind": "contract"
     },
     {
       "evidence_id": "docs-migrations-corpus-legislation-nz-baseline-md-91e56c528c",
@@ -531,7 +576,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "closeout_summary"
     },
     {
       "evidence_id": "docs-migrations-corpus-legislation-nz-capability-matrix-md-4ea44e6267",
@@ -542,7 +588,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "capability_matrix"
     },
     {
       "evidence_id": "docs-migrations-corpus-legislation-nz-component-inventory-md-78d464ccea",
@@ -553,7 +600,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "closeout_summary"
     },
     {
       "evidence_id": "docs-migrations-corpus-legislation-nz-conductor-lineage-md-6f7a28a268",
@@ -564,7 +612,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "closeout_summary"
     },
     {
       "evidence_id": "original-closeout-report",
@@ -579,7 +628,8 @@
         "publication_identity_migration"
       ],
       "rationale": "Historical report conflates all four dimensions and asserts unsupported 33,693-record parity.",
-      "superseded_by": "corrected-closeout"
+      "superseded_by": "corrected-closeout",
+      "proof_kind": "closeout_summary"
     },
     {
       "evidence_id": "corrected-closeout",
@@ -593,7 +643,8 @@
         "corpus_custody_recoverability",
         "publication_identity_migration"
       ],
-      "rationale": "Current additive closeout separates the four dimensions and preserves every earlier claim as historical evidence."
+      "rationale": "Current additive closeout separates the four dimensions and preserves every earlier claim as historical evidence.",
+      "proof_kind": "closeout_summary"
     },
     {
       "evidence_id": "docs-migrations-corpus-legislation-nz-corrective-audit-md-184e8a1c21",
@@ -604,7 +655,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "closeout_summary"
     },
     {
       "evidence_id": "docs-migrations-corpus-legislation-nz-cutover-runbook-md-d97a20944b",
@@ -615,7 +667,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "closeout_summary"
     },
     {
       "evidence_id": "docs-migrations-corpus-legislation-nz-final-donor-lineage-md-aa0e0d7c88",
@@ -626,7 +679,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "closeout_summary"
     },
     {
       "evidence_id": "docs-migrations-corpus-legislation-nz-issue-reconciliation-md-64b3df8b25",
@@ -637,7 +691,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "closeout_summary"
     },
     {
       "evidence_id": "docs-migrations-corpus-legislation-nz-licensing-and-rights-md-9efaca6d4f",
@@ -648,7 +703,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "closeout_summary"
     },
     {
       "evidence_id": "docs-migrations-corpus-legislation-nz-live-inventory-md-da12388714",
@@ -659,7 +715,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "closeout_summary"
     },
     {
       "evidence_id": "original-parity-report",
@@ -672,7 +729,8 @@
         "corpus_custody_recoverability"
       ],
       "rationale": "Treats candidate identifiers as evaluated complete-corpus records and is rejected by canonical Prompt 14 coverage.",
-      "invalidated_by": "canonical-historical-coverage"
+      "invalidated_by": "canonical-historical-coverage",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "docs-migrations-corpus-legislation-nz-pre-acquisition-discovery-md-39d0e2639e",
@@ -683,7 +741,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "closeout_summary"
     },
     {
       "evidence_id": "docs-migrations-corpus-legislation-nz-publication-identity-reconciliation-md-5e61483beb",
@@ -695,7 +754,8 @@
         "publication_identity_migration",
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "identity_verification"
     },
     {
       "evidence_id": "docs-migrations-corpus-legislation-nz-reuse-decisions-md-1d8343570d",
@@ -706,7 +766,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "closeout_summary"
     },
     {
       "evidence_id": "target-500-work-proof",
@@ -718,7 +779,8 @@
         "operational_state_migration",
         "corpus_custody_recoverability"
       ],
-      "rationale": "Prompt 13 was not dispatched and records seven blockers with all operational proof booleans false."
+      "rationale": "Prompt 13 was not dispatched and records seven blockers with all operational proof booleans false.",
+      "proof_kind": "blocker_receipt"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-500-work-operational-proof-operational-observati-3a712b87a9",
@@ -729,7 +791,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-baseline-json-a7a98831ac",
@@ -740,7 +803,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-capability-matrix-json-8f7c312211",
@@ -751,7 +815,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "capability_matrix"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-component-inventory-json-a7e2d2cd18",
@@ -762,7 +827,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "consolidation-closeout-receipt",
@@ -777,7 +843,8 @@
         "publication_identity_migration"
       ],
       "rationale": "Receipt is explicitly invalidated as a premature PR 124 closeout assertion.",
-      "invalidated_by": "corrective-audit"
+      "invalidated_by": "corrective-audit",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "corrective-audit",
@@ -791,7 +858,8 @@
         "corpus_custody_recoverability",
         "publication_identity_migration"
       ],
-      "rationale": "Contemporaneous corrective audit invalidates the premature PR 124 receipt set."
+      "rationale": "Contemporaneous corrective audit invalidates the premature PR 124 receipt set.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "cutover-receipt",
@@ -803,7 +871,8 @@
         "operational_state_migration"
       ],
       "rationale": "Receipt is explicitly invalidated as a premature cutover claim.",
-      "invalidated_by": "corrective-audit"
+      "invalidated_by": "corrective-audit",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "dec-hist-001-finding",
@@ -816,7 +885,8 @@
         "corpus_custody_recoverability",
         "publication_identity_migration"
       ],
-      "rationale": "Preserved finding documents the stale 67-batch claim but its CAS reconciliation and publication conclusions are not current proof."
+      "rationale": "Preserved finding documents the stale 67-batch claim but its CAS reconciliation and publication conclusions are not current proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-donor-track-lineage-json-4e2ff826a9",
@@ -827,7 +897,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-durable-state-canonical-local-initial-json-b3ba3f0f7b",
@@ -839,7 +910,8 @@
         "operational_state_migration",
         "corpus_custody_recoverability"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "durable_package"
     },
     {
       "evidence_id": "durable-local-package",
@@ -850,7 +922,8 @@
       "claim_dimensions": [
         "corpus_custody_recoverability"
       ],
-      "rationale": "Deterministic local durable package exists, but a local package is not an independently recovered remote authority."
+      "rationale": "Deterministic local durable package exists, but a local package is not an independently recovered remote authority.",
+      "proof_kind": "blocker_receipt"
     },
     {
       "evidence_id": "durable-destination-observations",
@@ -861,7 +934,8 @@
       "claim_dimensions": [
         "corpus_custody_recoverability"
       ],
-      "rationale": "Destination evidence records the rights, publication, provider and readback gates preventing durable remote custody and recovery acceptance."
+      "rationale": "Destination evidence records the rights, publication, provider and readback gates preventing durable remote custody and recovery acceptance.",
+      "proof_kind": "blocker_receipt"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-durable-state-integration-json-b722c68794",
@@ -873,7 +947,8 @@
         "operational_state_migration",
         "corpus_custody_recoverability"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "durable_package"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-durable-state-publication-plan-json-960d60fce3",
@@ -886,7 +961,8 @@
         "operational_state_migration",
         "corpus_custody_recoverability"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "durable_package"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-durable-state-validation-json-77fa20ed18",
@@ -898,7 +974,8 @@
         "operational_state_migration",
         "corpus_custody_recoverability"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "durable_package"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-external-identities-json-723f6f29d9",
@@ -909,7 +986,8 @@
       "claim_dimensions": [
         "publication_identity_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "legacy-completion-evaluator-output",
@@ -924,7 +1002,8 @@
         "publication_identity_migration"
       ],
       "rationale": "The 2026-08-26 complete result predates canonical coverage, blocked Prompt 13 proof, durable recovery blockers and pending publication authority.",
-      "superseded_by": "corrected-closeout"
+      "superseded_by": "corrected-closeout",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-readme-md-6dcfb9f695",
@@ -935,7 +1014,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-acquisition-json-e8fb313ed0",
@@ -946,7 +1026,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-delivery-base-json-d589b81e8f",
@@ -957,7 +1038,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-development-log-hashes-json-d6b887866b",
@@ -968,7 +1050,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-expectations-json-728f95bb63",
@@ -979,7 +1062,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-full-validation-handoff-json-04cb597b5b",
@@ -990,7 +1074,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-github-metadata-json-2835015812",
@@ -1001,7 +1086,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-mutation-01-json-4b6ffd16e4",
@@ -1012,7 +1098,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-parent-run-readback-json-f4bd65593a",
@@ -1023,7 +1110,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-quarantine-readback-json-727ec7c4d9",
@@ -1034,7 +1122,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-resume-schema-correction-json-e03db01b6e",
@@ -1045,7 +1134,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-resume-verification-json-961c12ae88",
@@ -1056,7 +1146,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-verification-01-sha256sums-17573bd3f9",
@@ -1067,7 +1158,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "failed-final-donor-verification",
@@ -1079,7 +1171,8 @@
         "operational_state_migration",
         "corpus_custody_recoverability"
       ],
-      "rationale": "Failed first attempt is retained as execution chronology and cannot prove current state."
+      "rationale": "Failed first attempt is retained as execution chronology and cannot prove current state.",
+      "proof_kind": "state_verification"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-verification-01-prompt04-inven-2a95b1ebe0",
@@ -1090,7 +1183,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-verification-01-report-md-dc7b208517",
@@ -1101,7 +1195,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-verification-02-sha256sums-aa29334f2f",
@@ -1112,7 +1207,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "final-donor-state-verification",
@@ -1123,7 +1219,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Superseding Prompt 03 verification passed against the final archived donor package."
+      "rationale": "Superseding Prompt 03 verification passed against the final archived donor package.",
+      "proof_kind": "state_verification"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-verification-02-prompt04-inven-ace50ccd6d",
@@ -1134,7 +1231,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-verification-02-report-md-5cf5d1886a",
@@ -1145,7 +1243,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-verifier-correction-json-245c5d7f65",
@@ -1156,7 +1255,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-donor-state-workflow-lint-handoff-json-4c6642601b",
@@ -1167,7 +1267,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "final-capability-matrix",
@@ -1178,7 +1279,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Final donor-head capability accounting is the active code and contract migration inventory."
+      "rationale": "Final donor-head capability accounting is the active code and contract migration inventory.",
+      "proof_kind": "capability_matrix"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-commit-dispositions-json-2e54f3d068",
@@ -1189,7 +1291,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-donor-track-lineage-json-88bcdaeecb",
@@ -1200,7 +1303,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-external-identities-json-fbbd0120db",
@@ -1212,7 +1316,8 @@
         "publication_identity_migration",
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-focused-validation-json-608eb8e739",
@@ -1223,7 +1328,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-handoffs-json-ccdd892f40",
@@ -1234,7 +1340,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-hosted-evidence-json-6f7e8baf1b",
@@ -1245,7 +1352,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-hosted-format-failure-json-e2e9cb3c4e",
@@ -1256,7 +1364,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-import-fixity-json-b6cc6ad5e7",
@@ -1267,7 +1376,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-issue-pr-reconciliation-json-3fcfc005d6",
@@ -1279,7 +1389,8 @@
         "operational_state_migration",
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-late-commit-patches-json-17d4b2eb8f",
@@ -1290,7 +1401,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-late-donor-files-json-a81912df90",
@@ -1301,7 +1413,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-receipt-precommit-json-824014ab3b",
@@ -1312,7 +1425,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-receipt-json-d553857b1f",
@@ -1323,7 +1437,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-secret-scan-failure-json-8544575867",
@@ -1334,7 +1449,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-validation-final-json-337e250f6c",
@@ -1345,7 +1461,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-validation-observations-json-119894412b",
@@ -1356,7 +1473,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-lineage-workflow-routes-json-13ae77e259",
@@ -1367,7 +1485,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-readme-md-3a2f6b1d2e",
@@ -1378,7 +1497,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-sha256sums-ce95bf274d",
@@ -1389,7 +1509,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-changed-files-json-827e62c0e9",
@@ -1400,7 +1521,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-current-package-json-a7f7ba8f5b",
@@ -1411,7 +1533,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-development-attempts-json-1df9fe2a3b",
@@ -1422,7 +1545,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-execution-02-final-state-merge-6855525d91",
@@ -1433,7 +1557,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "state_merge"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-execution-02-independent-readb-386b573a3e",
@@ -1444,7 +1569,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "state_merge"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-execution-02-package-inventory-02a4e5b98b",
@@ -1455,7 +1581,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-execution-02-selection-before-b6d48c23a6",
@@ -1466,7 +1593,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "canonical-state-merge",
@@ -1478,7 +1606,8 @@
         "operational_state_migration",
         "corpus_custody_recoverability"
       ],
-      "rationale": "Deterministic no-overwrite target state merge passed; it does not prove a later 500-work run or remote recovery."
+      "rationale": "Deterministic no-overwrite target state merge passed; it does not prove a later 500-work run or remote recovery.",
+      "proof_kind": "state_merge"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-handoffs-json-7b10156ef1",
@@ -1489,7 +1618,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-hosted-reviewed-head-json-8aec55af7c",
@@ -1500,7 +1630,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "canonical-state-independent-readback",
@@ -1512,7 +1643,8 @@
         "operational_state_migration",
         "corpus_custody_recoverability"
       ],
-      "rationale": "Independent local readback verifies the merged canonical state package within its bounded scope."
+      "rationale": "Independent local readback verifies the merged canonical state package within its bounded scope.",
+      "proof_kind": "state_merge"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-local-validation-final-json-264894bc92",
@@ -1523,7 +1655,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-mutation-01-json-4859f9bd76",
@@ -1534,7 +1667,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-mutation-02-json-af87f17b40",
@@ -1545,7 +1679,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-package-inventory-01-json-b0e2e2656a",
@@ -1556,7 +1691,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-rebase-validation-final-json-23c268b551",
@@ -1567,7 +1703,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-review-finding-01-json-13f32d3464",
@@ -1578,7 +1715,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-review-fix-validation-json-719b1fd235",
@@ -1589,7 +1727,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-selection-before-execution-jso-ff7472fe7c",
@@ -1600,7 +1739,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-final-state-merge-target-descriptor-json-c4853db4df",
@@ -1611,7 +1751,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-first-operational-cycle-harvest-receipt-json-2eeda1941d",
@@ -1622,7 +1763,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-first-operational-cycle-meta-json-32ab0faa86",
@@ -1633,7 +1775,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-first-operational-cycle-reconciliation-receipt-j-b04d8c0d6d",
@@ -1644,7 +1787,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-first-operational-cycle-recovery-receipt-json-1b69f9f0a8",
@@ -1656,7 +1800,8 @@
         "operational_state_migration",
         "corpus_custody_recoverability"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "recovery_readback"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-historical-coverage-analyzer-claim-inputs-json-c12786edb4",
@@ -1667,7 +1812,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "claim_inventory"
     },
     {
       "evidence_id": "claim-correction-manifest",
@@ -1680,7 +1826,8 @@
         "corpus_custody_recoverability",
         "publication_identity_migration"
       ],
-      "rationale": "Hash-bound inventory identifies unsupported 33,693 claims while preserving their source bytes."
+      "rationale": "Hash-bound inventory identifies unsupported 33,693 claims while preserving their source bytes.",
+      "proof_kind": "claim_inventory"
     },
     {
       "evidence_id": "canonical-historical-coverage",
@@ -1693,7 +1840,8 @@
         "corpus_custody_recoverability",
         "publication_identity_migration"
       ],
-      "rationale": "Canonical Prompt 14 report distinguishes 33,693 candidates, 500 reviewed IDs, 552 state works and unknown downstream outcomes."
+      "rationale": "Canonical Prompt 14 report distinguishes 33,693 candidates, 500 reviewed IDs, 552 state works and unknown downstream outcomes.",
+      "proof_kind": "claim_inventory"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-historical-coverage-historical-coverage-report-m-89f221fea2",
@@ -1704,7 +1852,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "claim_inventory"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-historical-coverage-public-surface-observations-ff9c13311b",
@@ -1715,7 +1864,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "claim_inventory"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-hosted-publication-readback-json-8980931512",
@@ -1726,7 +1876,8 @@
       "claim_dimensions": [
         "publication_identity_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "publication_readback"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-huggingface-publication-canonical-card-readme-md-4f17623221",
@@ -1737,7 +1888,8 @@
       "claim_dimensions": [
         "publication_identity_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-huggingface-publication-canonical-card-rights-md-7313169dec",
@@ -1748,7 +1900,8 @@
       "claim_dimensions": [
         "publication_identity_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-huggingface-publication-external-action-checklis-251390158f",
@@ -1759,7 +1912,8 @@
       "claim_dimensions": [
         "publication_identity_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-huggingface-publication-identity-reconciliation-fa404572b8",
@@ -1771,7 +1925,8 @@
         "publication_identity_migration",
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "identity_verification"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-huggingface-publication-identity-reconciliation-82e20067dc",
@@ -1783,7 +1938,8 @@
         "publication_identity_migration",
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "identity_verification"
     },
     {
       "evidence_id": "hf-live-identity-observations",
@@ -1794,7 +1950,8 @@
       "claim_dimensions": [
         "publication_identity_migration"
       ],
-      "rationale": "Read-only live observations establish existing Hugging Face identities without claiming target-originated publication."
+      "rationale": "Read-only live observations establish existing Hugging Face identities without claiming target-originated publication.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "hf-publication-candidate",
@@ -1805,7 +1962,8 @@
       "claim_dimensions": [
         "publication_identity_migration"
       ],
-      "rationale": "Manifest explicitly remains candidate_only_not_published and external publication approval is pending."
+      "rationale": "Manifest explicitly remains candidate_only_not_published and external publication approval is pending.",
+      "proof_kind": "blocker_receipt"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-issue-reconciliation-json-60a733468f",
@@ -1816,7 +1974,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-live-donor-snapshot-json-fd9d60092e",
@@ -1827,7 +1986,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-live-inventory-json-6ef3737e18",
@@ -1838,7 +1998,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "observation-receipt",
@@ -1850,7 +2011,8 @@
         "operational_state_migration"
       ],
       "rationale": "Receipt is explicitly invalidated as a premature operational observation claim.",
-      "invalidated_by": "corrective-audit"
+      "invalidated_by": "corrective-audit",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-operational-continuity-recovery-receipt-json-d412ff4603",
@@ -1862,7 +2024,8 @@
         "operational_state_migration",
         "corpus_custody_recoverability"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "recovery_readback"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-operational-gate-authorization-json-c6a6bdda91",
@@ -1873,7 +2036,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-parent-state-restoration-local-validation-v2-jso-fddc5d0988",
@@ -1884,7 +2048,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-parent-state-restoration-local-validation-json-400b392b89",
@@ -1895,7 +2060,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-parity-readme-md-2237cd5b65",
@@ -1906,7 +2072,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-parity-aggregate-parity-json-3da5843b11",
@@ -1917,7 +2084,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-parity-fixture-parity-json-5218882fc7",
@@ -1928,7 +2096,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-parity-historical-batch-parity-json-0dc04c1d21",
@@ -1939,7 +2108,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-parity-live-smoke-parity-json-786d1f6e01",
@@ -1950,7 +2120,8 @@
       "claim_dimensions": [
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-parity-publication-package-parity-json-27ca88b070",
@@ -1962,7 +2133,8 @@
         "publication_identity_migration",
         "operational_state_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-pre-acquisition-discovery-json-9afd1ce6bc",
@@ -1973,7 +2145,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-remote-publication-readback-receipt-json-4f4eb57996",
@@ -1984,7 +2157,8 @@
       "claim_dimensions": [
         "publication_identity_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "publication_readback"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-shadow-operation-cutover-attestation-json-4e5f938782",
@@ -1995,7 +2169,8 @@
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-source-set-contract-inventory-json-91981b9eb4",
@@ -2007,7 +2182,8 @@
         "operational_state_migration",
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "evidence-migrations-corpus-legislation-nz-source-set-contract-validation-json-0a29cdf27f",
@@ -2019,7 +2195,8 @@
         "operational_state_migration",
         "code_capability_migration"
       ],
-      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof."
+      "rationale": "Preserved historical or non-completing artefact; indexed for audit and excluded from active completion proof.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "state-transfer-receipt",
@@ -2032,7 +2209,8 @@
         "corpus_custody_recoverability"
       ],
       "rationale": "Receipt is explicitly invalidated for treating 33,693 candidate identifiers as completed records.",
-      "invalidated_by": "corrective-audit"
+      "invalidated_by": "corrective-audit",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "zenodo-identity-correction",
@@ -2043,51 +2221,56 @@
       "claim_dimensions": [
         "publication_identity_migration"
       ],
-      "rationale": "Live read-only evidence distinguishes concept and version DOI; no record changed and no version was minted."
+      "rationale": "Live read-only evidence distinguishes concept and version DOI; no record changed and no version was minted.",
+      "proof_kind": "identity_verification"
     },
     {
       "evidence_id": "schemas-legislation-evidence-index-v1-schema-json-2a95ae9dd2",
       "path": "schemas/legislation-evidence-index-v1.schema.json",
-      "sha256": "dda8935f99ddfad4b9e16180fecf7a76b269fe3eb2bb07ef3fd048c93ea18ade",
+      "sha256": "e83eb643f080371444f7ca9651ad5acf50efc2d7e61c5452fb6af4a7085b8f05",
       "classification": "active",
       "artefact_type": "contract",
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Typed evidence-index classification and evaluator contract."
+      "rationale": "Typed evidence-index classification and evaluator contract.",
+      "proof_kind": "historical_record"
     },
     {
       "evidence_id": "tools-evaluate-legislation-completion-py-edf2536339",
       "path": "tools/evaluate_legislation_completion.py",
-      "sha256": "c3cb3fb1ccea9bd7af09da275fe7f95a36c25fe2918ba0cd5fa30fa45c80d582",
+      "sha256": "6afb73618b5c35476db226389c332eadab76d416637b4db9697870a03a586ac9",
       "classification": "active",
       "artefact_type": "evaluator",
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code."
+      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code.",
+      "proof_kind": "evaluator"
     },
     {
       "evidence_id": "tools-legislation-evidence-index-py-1e3a4d6780",
       "path": "tools/legislation_evidence_index.py",
-      "sha256": "7c6906e28d429ad3d8be1867b4c90ed9c36beeae41e9580e8815860c7367f7a6",
+      "sha256": "e3d25ff5c249fca55a2f2f6f1aaff67383ddd2a4dacafc89ee870f9016a45b1a",
       "classification": "active",
       "artefact_type": "evaluator",
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code."
+      "rationale": "Comprehensive Prompt 17 inventory entry; retained as active evaluator or contract code.",
+      "proof_kind": "evaluator"
     },
     {
       "evidence_id": "tools-mutation-legislation-evidence-index-py-58375a57e9",
       "path": "tools/mutation_legislation_evidence_index.py",
-      "sha256": "e9e248ca3f09cbb23665bdb7b8f475053052c645222374a1c7cdf3e056081656",
+      "sha256": "024e889d7757029181d4ff2f65d5e629eb85485b562ebd238cd6e8b078191c59",
       "classification": "active",
       "artefact_type": "evaluator",
       "claim_dimensions": [
         "code_capability_migration"
       ],
-      "rationale": "Targeted mutation evaluator for evidence-index integrity guards."
+      "rationale": "Targeted mutation evaluator for evidence-index integrity guards.",
+      "proof_kind": "evaluator"
     }
   ],
   "evaluator_inputs": {

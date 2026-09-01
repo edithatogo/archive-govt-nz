@@ -25,6 +25,12 @@ def _write_repo(tmp_path: Path, statuses: dict[str, str] | None = None) -> Path:
     schema.parent.mkdir(parents=True)
     shutil.copy(ROOT / "schemas/legislation-evidence-index-v1.schema.json", schema)
     dimension_statuses = statuses or dict.fromkeys(DIMENSIONS, "complete")
+    complete_kinds = {
+        "code_capability_migration": "capability_matrix",
+        "operational_state_migration": "state_verification",
+        "corpus_custody_recoverability": "recovery_readback",
+        "publication_identity_migration": "identity_verification",
+    }
     entries = []
     evaluator_inputs = {}
     dimensions = {}
@@ -42,6 +48,11 @@ def _write_repo(tmp_path: Path, statuses: dict[str, str] | None = None) -> Path:
                 "sha256": hashlib.sha256(evidence.read_bytes()).hexdigest(),
                 "classification": classification,
                 "artefact_type": "receipt",
+                "proof_kind": (
+                    complete_kinds[name]
+                    if classification == "active"
+                    else "blocker_receipt"
+                ),
                 "claim_dimensions": [name],
                 "rationale": f"Controlled proof for {name}.",
             }
@@ -115,6 +126,7 @@ def test_invalidated_evidence_cannot_be_evaluator_input(tmp_path: Path) -> None:
             "sha256": hashlib.sha256(correction.read_bytes()).hexdigest(),
             "classification": "active",
             "artefact_type": "receipt",
+            "proof_kind": "capability_matrix",
             "claim_dimensions": list(DIMENSIONS),
             "rationale": "Superseding controlled test proof.",
         }

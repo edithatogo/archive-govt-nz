@@ -18,6 +18,19 @@ NON_ACTIVE = {
     "incomplete",
     "externally_blocked",
 }
+COMPLETE_PROOF_KINDS = {
+    "code_capability_migration": {"capability_matrix", "contract", "evaluator"},
+    "operational_state_migration": {
+        "state_verification",
+        "state_merge",
+        "operational_run",
+    },
+    "corpus_custody_recoverability": {"durable_package", "recovery_readback"},
+    "publication_identity_migration": {
+        "publication_readback",
+        "identity_verification",
+    },
+}
 
 
 class EvidenceIndexError(ValueError):
@@ -157,6 +170,14 @@ def validate_evidence_index(  # noqa: C901, PLR0912, PLR0915
                 and entries[evidence_id]["artefact_type"] == "public_claim"
             ):
                 _fail(f"public_claim_cannot_prove_completion:{evidence_id}")
+            proof_kind = entries[evidence_id]["proof_kind"]
+            if (
+                status == "complete"
+                and proof_kind not in COMPLETE_PROOF_KINDS[dimension]
+            ):
+                _fail(f"proof_kind_not_allowed:{dimension}:{evidence_id}")
+            if status != "complete" and proof_kind != "blocker_receipt":
+                _fail(f"negative_proof_kind_mismatch:{dimension}:{evidence_id}")
     return index
 
 

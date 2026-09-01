@@ -50,6 +50,11 @@ MUTANTS = {
         'and entries[proof_id].get("classification") == "active"',
         'and entries[proof_id].get("classification") != "active"',
     ),
+    "proof_kind_allowlist": (
+        EVALUATOR,
+        "in COMPLETE_PROOF_KINDS[dimension]",
+        "not in COMPLETE_PROOF_KINDS[dimension]",
+    ),
     "all_dimensions_required": (
         EVALUATOR,
         'and not result["blockers"]',
@@ -94,7 +99,7 @@ def _run_mutant(
                 "-q",
             ],
             cwd=root,
-            env={"PYTHONPATH": str(root), **os.environ},
+            env={**os.environ, "PYTHONPATH": str(root)},
             capture_output=True,
             text=True,
             check=False,

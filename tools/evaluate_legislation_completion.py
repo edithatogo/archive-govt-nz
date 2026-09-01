@@ -13,6 +13,7 @@ from typing import Any, cast
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from tools.legislation_evidence_index import (
+    COMPLETE_PROOF_KINDS,
     DEFAULT_INDEX,
     EvidenceIndexError,
     validate_evidence_index,
@@ -75,6 +76,8 @@ def evaluate_completion(
                 and entries[proof_id].get("classification") == "active"
                 and dimension in entries[proof_id].get("claim_dimensions", [])
                 and entries[proof_id].get("artefact_type") != "public_claim"
+                and entries[proof_id].get("proof_kind")
+                in COMPLETE_PROOF_KINDS[dimension]
                 for proof_id in proof_ids
             )
         else:
@@ -82,6 +85,7 @@ def evaluate_completion(
                 proof_id in entries
                 and entries[proof_id].get("classification") == status
                 and dimension in entries[proof_id].get("claim_dimensions", [])
+                and entries[proof_id].get("proof_kind") == "blocker_receipt"
                 for proof_id in proof_ids
             )
         result["dimensions"][dimension] = {
