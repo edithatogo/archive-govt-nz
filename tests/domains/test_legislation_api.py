@@ -314,6 +314,7 @@ def test_official_manifestation_404_retries_without_capability() -> None:
     assert status == HTTP_OK
     assert content == b"<act/>"
     assert observed_keys == ["bounded-capability", None]
+    assert client.last_document_retry_count == 0
 
 
 @pytest.mark.anyio
@@ -340,6 +341,7 @@ async def test_official_manifestation_async_404_retries_without_capability() -> 
     assert status == HTTP_OK
     assert content == b"<act/>"
     assert observed_keys == ["bounded-capability", None]
+    assert client.last_document_retry_count == 0
 
 
 def test_api_client_get_document_raw_500_exhaustion() -> None:

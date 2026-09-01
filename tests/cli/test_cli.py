@@ -6,6 +6,7 @@ import hashlib
 import json
 import sys
 from pathlib import Path
+from types import SimpleNamespace
 from typing import TYPE_CHECKING
 
 import yaml
@@ -693,6 +694,46 @@ def test_cli_legislation_sync_and_no_change(
     payload_fail = json.loads(capsys.readouterr().out)
     assert payload_fail["status"] == "failed"
     assert code_fail == 2
+
+
+def test_cli_legislation_sync_legacy_result_without_accounting(
+    tmp_path: Path,
+    capsys: pytest.CaptureFixture[str],
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Retain truthful text output for an older service result during migration."""
+
+    async def mock_sync_works(*_args: object, **_kwargs: object) -> object:
+        return SimpleNamespace(
+            status="no_change",
+            works_attempted=1,
+            records_preserved=7,
+            errors=(),
+            accounting=None,
+        )
+
+    monkeypatch.setattr(
+        "archive_govt_nz.cli.LegislationArchiveService.sync_works", mock_sync_works
+    )
+
+    code = cli_module._handle_leg_sync(  # noqa: SLF001
+        str(tmp_path / "cas"),
+        str(tmp_path / "checkpoint.json"),
+        str(tmp_path / "manifest.json"),
+        ["act-1"],
+        "legacy-result",
+        None,
+        "",
+        "text",
+        fail_fast=False,
+        force_resync=False,
+    )
+
+    assert code == 0
+    assert (
+        capsys.readouterr().out
+        == "Legislation sync: status=no_change attempted=1 preserved=7\n"
+    )
 
 
 def test_cli_legislation_validate(

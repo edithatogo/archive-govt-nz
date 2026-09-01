@@ -37,6 +37,7 @@ async def test_legislation_capture_success(tmp_path: Path) -> None:
     async_client = httpx.AsyncClient(transport=transport)
     api_client = NZLegislationApiClient(async_client=async_client)
     adapter = NZLegislationAdapter(store, api_client=api_client)
+    assert adapter.adapter_name == "archive-govt-nz/capture/legislation:0.1.0"
 
     identity = SourceIdentity(
         source_type=SourceType.LEGISLATION,
@@ -110,6 +111,37 @@ async def test_legislation_capture_http_error(tmp_path: Path) -> None:
         "sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)"
     )
     assert result.metadata["content_length"] == "0"
+
+
+@pytest.mark.anyio
+@pytest.mark.parametrize(
+    ("status_code", "classification"),
+    [(404, "unavailable"), (400, "permanent_failure")],
+)
+async def test_legislation_capture_classifies_terminal_http_responses(
+    tmp_path: Path, status_code: int, classification: str
+) -> None:
+    """Keep unavailable and permanent failures distinct in run accounting."""
+    store = ContentAddressedStore(tmp_path / "cas")
+    async_client = httpx.AsyncClient(
+        transport=httpx.MockTransport(lambda _req: httpx.Response(status_code))
+    )
+    adapter = NZLegislationAdapter(
+        store,
+        api_client=NZLegislationApiClient(async_client=async_client, max_retries=0),
+    )
+    identity = SourceIdentity(
+        source_type=SourceType.LEGISLATION,
+        agency_slug="pco",
+        target="https://www.legislation.govt.nz/act/public/2026/0001/latest/whole.xml",
+        source_id="act-2026-1",
+        uri="legislation://pco/act-2026-1",
+    )
+
+    result = await adapter.capture(identity)
+
+    assert result.status == "failed"
+    assert result.metadata["response_classification"] == classification
 
 
 @pytest.mark.anyio
