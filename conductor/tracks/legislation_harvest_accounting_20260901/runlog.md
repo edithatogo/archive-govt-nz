@@ -12,3 +12,8 @@
 green gate. Transaction-failure truth, corrupt-parent ordering and complete v2
 field retention were repaired; 111 focused regression tests passed. Hosted
 checks were restarted from the repaired exact head.
+
+2026-09-01 UTC: the second readback exposed two remaining half-ordering gaps.
+Cross-authority reconciliation was moved fully ahead of discovery, and
+manifest-write failure now rolls back the already promoted checkpoint. The
+expanded focused legislation/CLI/adapter suite passed 187 tests.
