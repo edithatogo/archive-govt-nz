@@ -1,5 +1,5 @@
 {
-  "analyzer_claim_inputs_sha256": "3cddec7de471b9ed60f11f6c4fe9e73b9e8a1d8499f53a971f66cc2891dfa7ed",
+  "analyzer_claim_inputs_sha256": "3ba0bd47b8e66dd7b4ae3a75a23a4ac5f728640024e76ad380cc6c377ad3bbdf",
   "claims": [
     {
       "bounded_replacement_guidance": "Retain the candidate/acquired/published distinction. Prompt 17 should update only if broader prose needs consistent terminology.",
@@ -320,7 +320,7 @@
       "line": 267,
       "prompt17_owner": "Prompt 17 - broad evidence and claim correction",
       "source_line_sha256": "9b131f078aea8d29f1f9b0429fc17b74afe7480ee9b4a5c6026c5976b5520823",
-      "source_sha256": "0c05f4fa205ffef68c0d344fc63aea64ae265942acbca2f5548b1e99262b8930",
+      "source_sha256": "c448c51999d8f9c20bd1a281640978c191c6f2da578a5983f4af67eab658008b",
       "text": "- [~] **Track: Historical coverage and 33,693-candidate reconciliation (Prompt 14)**"
     },
     {
@@ -1013,6 +1013,7 @@
   "generated_at": "2026-09-01T12:31:29Z",
   "owner_boundary": "Prompt 14 inventories claims only. Prompt 17 owns broad correction. Existing historical, invalidated, and superseded evidence must remain intact.",
   "scan_contract": {
+    "claim_bearing_line_count": 72,
     "excluded": [
       ".git/**",
       "evidence/migrations/corpus-legislation-nz/historical-coverage/**"
@@ -1023,7 +1024,7 @@
       ".yaml",
       ".yml"
     ],
-    "occurrence_count": 72,
+    "occurrence_count": 73,
     "patterns": [
       "33,693",
       "33693"

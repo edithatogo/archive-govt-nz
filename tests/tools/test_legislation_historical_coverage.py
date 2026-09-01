@@ -470,7 +470,10 @@ def _claim_binding_fixture(tmp_path: Path) -> tuple[Path, Path]:
                 "analyzer_claim_inputs_sha256": sha256(
                     analyzer_path.read_bytes()
                 ).hexdigest(),
-                "scan_contract": {"occurrence_count": 2},
+                "scan_contract": {
+                    "occurrence_count": 2,
+                    "claim_bearing_line_count": 2,
+                },
                 "claims": claims,
             }
         )
@@ -498,7 +501,7 @@ def test_claim_correction_manifest_is_bound_to_source_bytes_and_lines(
         ("line", "text does not match"),
         ("text", "text does not match"),
         ("duplicate", "duplicate"),
-        ("missing", "scan count"),
+        ("missing", "occurrence coverage"),
     ],
 )
 def test_claim_correction_manifest_rejects_unbound_entries(

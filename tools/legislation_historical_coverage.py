@@ -301,13 +301,18 @@ def validate_claim_correction_manifest(
         ):
             raise ValueError("claim correction text does not match source line")
         observed[relative] += len(_CLAIM_RE.findall(text))
+    expected_occurrences = sum(int(item.get("occurrences", -1)) for item in inputs)
     if any(
-        observed[path] > int(item.get("occurrences", -1))
+        observed[path] != int(item.get("occurrences", -1))
         for path, item in indexed.items()
     ):
         raise ValueError("claim correction occurrence coverage mismatch")
     scan = manifest.get("scan_contract")
-    if not isinstance(scan, dict) or scan.get("occurrence_count") != len(claims):
+    if (
+        not isinstance(scan, dict)
+        or scan.get("occurrence_count") != expected_occurrences
+        or scan.get("claim_bearing_line_count") != len(claims)
+    ):
         raise ValueError("claim correction scan count mismatch")
     return {
         "status": "passed",
