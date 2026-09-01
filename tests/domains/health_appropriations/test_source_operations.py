@@ -16,7 +16,7 @@ from typing import Any, cast
 
 import pyarrow.parquet as pq
 import pytest
-from hypothesis import given, settings
+from hypothesis import given
 from hypothesis import strategies as st
 from jsonschema import Draft202012Validator, ValidationError
 from openpyxl import load_workbook
@@ -477,7 +477,6 @@ def test_partial_failure_is_preserved(
     st.sampled_from(tuple(source_operations.PROFILES)),
     st.integers(min_value=0, max_value=10**9),
 )
-@settings(deadline=None)
 def test_receipt_schema_count_property(profile: str, count: int) -> None:
     contract = source_operations.PROFILES[profile]
     receipt = {
