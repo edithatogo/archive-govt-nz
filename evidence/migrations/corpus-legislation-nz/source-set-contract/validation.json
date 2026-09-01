@@ -10,7 +10,7 @@
     "platform": "macOS arm64"
   },
   "focused": {
-    "tests_passed": 124,
+    "tests_passed": 126,
     "source_sets_statement_coverage_percent": 100,
     "source_sets_branch_coverage_percent": 100
   },
@@ -21,16 +21,17 @@
     "receipt_sha256": "c0031ef8998cb1e7627b48a05f26d06dca3cb3a60bbd109af63992833fe6e7ce"
   },
   "native_harness": {
-    "command": "COVERAGE_CORE=ctrace PYTHON_JIT=0 uv run --locked python tools/check.py --pytest-workers 1 --pytest-distribution loadscope",
+    "command": "PYTEST_XDIST_AUTO_NUM_WORKERS=4 ./scripts/validate.sh",
     "status": "passed",
-    "tests_passed": 4267,
-    "repository_coverage_percent": 97.29,
+    "tests_passed": 4318,
+    "repository_coverage_percent": 97.43,
     "schemas": "44 schemas and 34 representative documents",
     "parity": "9/9 passed",
     "dependency_audit": "no known vulnerabilities",
     "licences": "passed",
     "credential_scan": "passed",
-    "sbom_components": 111
+    "sbom_components": 111,
+    "log_sha256": "62266ef262654981fa9869df7447bd0f68b9799f771021375c8b472468aac642"
   },
   "failed_attempts": [
     {

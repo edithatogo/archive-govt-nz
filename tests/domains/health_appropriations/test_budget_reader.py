@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import json
 import shutil
+from collections.abc import Iterator
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from typing import Any
@@ -113,6 +114,70 @@ def test_valid_reordered_columns_all_rows_and_no_writes(package: Path) -> None:
     assert str(facts[0]["amount"]) == "-1.125"
     assert facts[0]["rights_state"] == manifest["rights_state"] == "not_evaluated"
     assert {path.name: path.read_bytes() for path in package.iterdir()} == before
+
+
+@pytest.mark.parametrize("extra", [False, True])
+def test_directory_enumeration_stops_at_first_extra(
+    package: Path, monkeypatch: pytest.MonkeyPatch, *, extra: bool
+) -> None:
+    pin = _pin(package)
+    original = Path.iterdir
+    expected = [package / name for name in (*TABLES, "MANIFEST.json")]
+    consumed = []
+
+    def bounded(path: Path) -> Iterator[Path]:
+        if path != package:
+            yield from original(path)
+            return
+        for entry in expected:
+            consumed.append(entry.name)
+            yield entry
+        if extra:
+            consumed.append("unexpected")
+            yield package / "unexpected"
+            pytest.fail("reader consumed a sixth directory entry")
+
+    monkeypatch.setattr(Path, "iterdir", bounded)
+    if extra:
+        with pytest.raises(ValueError, match="budget_package_contract"):
+            reader.read_verified_budget(package, pin)
+    else:
+        reader.read_verified_budget(package, pin)
+    assert consumed == [entry.name for entry in expected] + (
+        ["unexpected"] if extra else []
+    )
+
+
+def test_thrift_caps_precede_parquet_metadata_decode(
+    package: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    original = pq.ParquetFile
+    calls = []
+
+    def bounded(source: object, **kwargs: int) -> pq.ParquetFile:
+        assert kwargs == {
+            "thrift_string_size_limit": 4 * 1024 * 1024,
+            "thrift_container_size_limit": 100_000,
+        }
+        calls.append(True)
+        return original(
+            source,
+            thrift_string_size_limit=kwargs["thrift_string_size_limit"],
+            thrift_container_size_limit=kwargs["thrift_container_size_limit"],
+        )
+
+    monkeypatch.setattr(reader.pq, "ParquetFile", bounded)
+    reader.read_verified_budget(package, _pin(package))
+    assert len(calls) == 3
+
+
+@pytest.mark.parametrize("limit", ["MAX_THRIFT_STRING_BYTES", "MAX_THRIFT_CONTAINERS"])
+def test_thrift_limits_are_enforced_by_decoder(
+    package: Path, monkeypatch: pytest.MonkeyPatch, limit: str
+) -> None:
+    monkeypatch.setattr(reader, limit, 1, raising=False)
+    with pytest.raises(OSError, match=r"[Tt]hrift|[Dd]eserial"):
+        reader.read_verified_budget(package, _pin(package))
 
 
 @pytest.mark.parametrize(

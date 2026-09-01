@@ -9,3 +9,5 @@
 2026-09-01 UTC: three read-only adversarial reviews found runtime enforcement, semantic contradiction, duplicate-name, URI-format, redaction and evidence gaps. All in-scope findings were implemented and covered. Focused integrated lane passed 124 tests with 100% statement/branch coverage for the critical module.
 
 2026-09-01 UTC: first native harness attempt passed lock, Conductor, format, lint and types, then Python 3.14 xdist workers crashed with bus errors during collection. Retry used `tools/check.py --pytest-workers 1 --pytest-distribution loadscope` and passed all 4,267 tests plus every remaining repository gate. Generated donor snapshot side effects were preserved as a quarantine patch and restored from HEAD.
+
+2026-09-01 UTC: hosted Codecov initially reported 91.28% patch coverage for direct-CLI rejection branches. Added independent-dimension and text-receipt tests without changing thresholds. Focused lane increased to 126 tests; the final rebased native harness passed 4,318 tests at 97.43% repository coverage with four xdist workers.
