@@ -21,12 +21,14 @@ def test_zenodo_client_reconciles_draft_upload_and_confirmed_publish(
     """The complete sequence is credentialed, mock-only, and DOI-bound."""
     monkeypatch.setenv("ZENODO_TOKEN", "secret-token")
     calls: list[tuple[str, str, str | None]] = []
+    published = False
     artifact = tmp_path / "release.tar"
     artifact.write_bytes(b"release")
 
     def transport(
         method: str, path: str, headers: Mapping[str, str], body: bytes | None
     ) -> ZenodoResponse:
+        nonlocal published
         assert headers["Authorization"] == "Bearer secret-token"
         calls.append(
             (method, path, None if body is None else body.decode(errors="ignore"))
@@ -49,10 +51,12 @@ def test_zenodo_client_reconciles_draft_upload_and_confirmed_publish(
                 200,
                 {
                     "id": 7,
-                    "state": "draft",
+                    "state": "published" if published else "draft",
+                    "doi": "10.5281/zenodo.7",
                     "links": {"html": "https://zenodo.org/records/7"},
                 },
             )
+        published = True
         return ZenodoResponse(
             200,
             {
@@ -68,9 +72,30 @@ def test_zenodo_client_reconciles_draft_upload_and_confirmed_publish(
     assert draft.deposition_id == "7"
     client.upload(draft.deposition_id, artifact)
     assert client.reconcile("7").state == "draft"
-    published = client.publish("7", confirm_doi="10.5281/zenodo.7")
+    published = client.publish(
+        "7", confirm_doi="10.5281/zenodo.7", release_approved=True
+    )
     assert published.state == "published"
     assert all("secret-token" not in str(call) for call in calls)
+
+
+def test_zenodo_publish_requires_explicit_release_approval_without_network(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """A DOI confirmation alone never authorizes the irreversible action."""
+    monkeypatch.setenv("ZENODO_TOKEN", "token")
+
+    def no_remote(
+        _method: str,
+        _path: str,
+        _headers: Mapping[str, str],
+        _body: bytes | None,
+    ) -> ZenodoResponse:
+        pytest.fail("remote call")
+
+    client = ZenodoClient(transport=no_remote)
+    with pytest.raises(ZenodoError, match="release_approval_required"):
+        client.publish("7", confirm_doi="10.5281/zenodo.7")
 
 
 def test_zenodo_client_fails_closed_at_credential_and_doi_gates(
@@ -92,7 +117,7 @@ def test_zenodo_client_fails_closed_at_credential_and_doi_gates(
         client.reconcile("7")
     monkeypatch.setenv("ZENODO_TOKEN", "token")
     with pytest.raises(ZenodoError, match="doi_confirmation_required"):
-        client.publish("7", confirm_doi=None)
+        client.publish("7", confirm_doi=None, release_approved=True)
 
 
 def test_zenodo_readiness_is_local_and_redacts_credential_state(
@@ -174,11 +199,12 @@ def test_zenodo_client_rejects_invalid_upload_and_remote_errors(
         client.reconcile("7")
 
 
-def test_zenodo_client_rejects_doi_mismatch_and_invalid_remote_response(
+def test_zenodo_client_rejects_doi_mismatch_before_publish(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    """A mismatched DOI or malformed deposition response cannot publish."""
+    """A mismatched reserved DOI cannot trigger the publish action."""
     monkeypatch.setenv("ZENODO_TOKEN", "token")
+    calls: list[tuple[str, str]] = []
 
     def mismatch_transport(
         _method: str,
@@ -186,11 +212,37 @@ def test_zenodo_client_rejects_doi_mismatch_and_invalid_remote_response(
         _headers: Mapping[str, str],
         _body: bytes | None,
     ) -> ZenodoResponse:
-        return ZenodoResponse(200, {"id": 7, "doi": "10.5281/zenodo/other"})
+        calls.append((_method, _path))
+        return ZenodoResponse(
+            200,
+            {"id": 7, "state": "draft", "doi": "10.5281/zenodo.8"},
+        )
 
     client = ZenodoClient(transport=mismatch_transport)
     with pytest.raises(ZenodoError, match="doi_mismatch"):
-        client.publish("7", confirm_doi="10.5281/zenodo/expected")
+        client.publish("7", confirm_doi="10.5281/zenodo.9", release_approved=True)
+    assert calls == [("GET", "/api/deposit/depositions/7")]
+
+
+@pytest.mark.parametrize(
+    ("body", "error"),
+    [
+        ({}, "invalid_remote_response"),
+        ({"id": 7}, "invalid_remote_response"),
+        ({"id": 7, "state": "unknown"}, "invalid_remote_response"),
+        (
+            {"id": 7, "state": "draft", "doi": "10.5281/zenodo/not-a-record"},
+            "invalid_remote_response",
+        ),
+    ],
+)
+def test_zenodo_client_rejects_malformed_remote_response(
+    monkeypatch: pytest.MonkeyPatch,
+    body: Mapping[str, object],
+    error: str,
+) -> None:
+    """Missing or malformed remote identity and state cannot be inferred."""
+    monkeypatch.setenv("ZENODO_TOKEN", "token")
 
     def malformed_transport(
         _method: str,
@@ -198,11 +250,120 @@ def test_zenodo_client_rejects_doi_mismatch_and_invalid_remote_response(
         _headers: Mapping[str, str],
         _body: bytes | None,
     ) -> ZenodoResponse:
-        return ZenodoResponse(200, {})
+        return ZenodoResponse(200, body)
 
     malformed = ZenodoClient(transport=malformed_transport)
-    with pytest.raises(ZenodoError, match="invalid_remote_response"):
+    with pytest.raises(ZenodoError, match=error):
         malformed.reconcile("7")
+
+
+@pytest.mark.parametrize(
+    ("body", "error"),
+    [
+        (
+            {"id": 8, "state": "draft", "doi": "10.5281/zenodo.7"},
+            "deposition_mismatch",
+        ),
+        (
+            {"id": 7, "state": "published", "doi": "10.5281/zenodo.7"},
+            "draft_required",
+        ),
+        ({"id": 7, "state": "draft"}, "doi_mismatch"),
+    ],
+)
+def test_zenodo_publish_preflight_rejects_unsafe_remote_state_without_post(
+    monkeypatch: pytest.MonkeyPatch,
+    body: Mapping[str, object],
+    error: str,
+) -> None:
+    """Unsafe preflight states make no irreversible publish request."""
+    monkeypatch.setenv("ZENODO_TOKEN", "token")
+    calls: list[str] = []
+
+    def transport(
+        method: str,
+        _path: str,
+        _headers: Mapping[str, str],
+        _body: bytes | None,
+    ) -> ZenodoResponse:
+        calls.append(method)
+        return ZenodoResponse(200, body)
+
+    client = ZenodoClient(transport=transport)
+    with pytest.raises(ZenodoError, match=error):
+        client.publish("7", confirm_doi="10.5281/zenodo.7", release_approved=True)
+    assert calls == ["GET"]
+
+
+@pytest.mark.parametrize("confirmation", ["", "invented", "10.1234/example.7"])
+def test_zenodo_publish_rejects_malformed_confirmation_without_network(
+    monkeypatch: pytest.MonkeyPatch, confirmation: str
+) -> None:
+    """Only canonical Zenodo version DOI confirmations may reach the network."""
+    monkeypatch.setenv("ZENODO_TOKEN", "token")
+
+    def no_remote(
+        _method: str,
+        _path: str,
+        _headers: Mapping[str, str],
+        _body: bytes | None,
+    ) -> ZenodoResponse:
+        pytest.fail("remote call")
+
+    with pytest.raises(ZenodoError, match="doi_confirmation_required"):
+        ZenodoClient(transport=no_remote).publish(
+            "7", confirm_doi=confirmation, release_approved=True
+        )
+
+
+@pytest.mark.parametrize(
+    ("readback", "error"),
+    [
+        (
+            {"id": 7, "state": "draft", "doi": "10.5281/zenodo.7"},
+            "publication_readback_failed",
+        ),
+        (
+            {"id": 8, "state": "published", "doi": "10.5281/zenodo.7"},
+            "deposition_mismatch",
+        ),
+        (
+            {"id": 7, "state": "published", "doi": "10.5281/zenodo.8"},
+            "doi_mismatch",
+        ),
+    ],
+)
+def test_zenodo_publish_requires_independent_exact_readback(
+    monkeypatch: pytest.MonkeyPatch,
+    readback: Mapping[str, object],
+    error: str,
+) -> None:
+    """A publish response alone cannot establish the immutable result."""
+    monkeypatch.setenv("ZENODO_TOKEN", "token")
+    calls = 0
+
+    def transport(
+        method: str,
+        _path: str,
+        _headers: Mapping[str, str],
+        _body: bytes | None,
+    ) -> ZenodoResponse:
+        nonlocal calls
+        calls += 1
+        if calls == 1:
+            return ZenodoResponse(
+                200,
+                {"id": 7, "state": "draft", "doi": "10.5281/zenodo.7"},
+            )
+        if method == "POST":
+            return ZenodoResponse(202, {})
+        return ZenodoResponse(200, readback)
+
+    with pytest.raises(ZenodoError, match=error):
+        ZenodoClient(transport=transport).publish(
+            "7", confirm_doi="10.5281/zenodo.7", release_approved=True
+        )
+    assert calls == 3
 
 
 def test_zenodo_default_transport_bounds_response_and_redacts_failures(
@@ -235,7 +396,7 @@ def test_zenodo_default_transport_bounds_response_and_redacts_failures(
     class GoodResponse(Response):
         def read(self, size: int) -> bytes:
             assert size > 0
-            return b'{"id": 7}'
+            return b'{"id": 7, "state": "draft"}'
 
     def good_open(_request: object, *, timeout: int) -> GoodResponse:
         assert timeout == 30

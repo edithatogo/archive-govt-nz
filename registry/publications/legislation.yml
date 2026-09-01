@@ -23,7 +23,8 @@ publications:
 
   zenodo_concept:
     platform: "zenodo"
-    concept_doi: "10.5281/zenodo.20592540"
+    concept_doi: "10.5281/zenodo.20592539"
+    observed_version_doi: "10.5281/zenodo.20592540"
     role: "immutable_versioned_archive"
     format: "warc_and_wacz"
     canonical_source_repo: "edithatogo/archive-govt-nz"

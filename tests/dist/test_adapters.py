@@ -67,24 +67,32 @@ def test_hf_adapter() -> None:
 
 
 def test_zenodo_adapter() -> None:
-    """ZenodoDistributionAdapter handles dry-run and live deposition."""
+    """Legacy adapter cannot fabricate a deposition, DOI, or publication."""
     manifest = _build_test_manifest()
 
     # Dry-run
     adapter_dry = ZenodoDistributionAdapter(token=None)
     res_dry = adapter_dry.publish_deposition(manifest, dry_run=True)
-    assert res_dry.status == "verified"
-    assert "10.5281" in res_dry.doi
+    assert res_dry.status == "prepared-not-published"
+    assert res_dry.deposition_id is None
+    assert res_dry.doi is None
+    assert res_dry.files_uploaded == 0
+    assert res_dry.bytes_uploaded == 0
 
     # Missing token live
     res_missing = adapter_dry.publish_deposition(manifest, dry_run=False)
     assert res_missing.status == "failed"
+    assert res_missing.doi is None
 
     # Live with token
     adapter_live = ZenodoDistributionAdapter(token=DUMMY_VALUE)
     res_live = adapter_live.publish_deposition(manifest, dry_run=False)
-    assert res_live.status == "published"
-    assert res_live.doi is not None
+    assert res_live.status == "failed"
+    assert res_live.deposition_id is None
+    assert res_live.doi is None
+    assert res_live.files_uploaded == 0
+    assert res_live.bytes_uploaded == 0
+    assert "not implemented" in (res_live.error_message or "")
 
 
 def test_osf_adapter() -> None:

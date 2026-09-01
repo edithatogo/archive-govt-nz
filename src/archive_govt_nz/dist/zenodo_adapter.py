@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
 import os
+from dataclasses import dataclass
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -14,8 +14,8 @@ if TYPE_CHECKING:
 class ZenodoDepositionOutcome:
     """Outcome of a Zenodo deposition creation and publishing operation."""
 
-    deposition_id: str
-    doi: str
+    deposition_id: str | None
+    doi: str | None
     title: str
     files_uploaded: int
     bytes_uploaded: int
@@ -38,37 +38,39 @@ class ZenodoDistributionAdapter:
         dry_run: bool = True,
     ) -> ZenodoDepositionOutcome:
         """Publish publication manifest bundle to Zenodo."""
-        total_bytes = sum(item.size_bytes for item in manifest.items)
-        file_count = len(manifest.items)
-        dep_id = target_deposition_id or f"zenodo-{manifest.manifest_id[:10]}"
-        doi = f"10.5281/{dep_id}"
-
+        _ = target_deposition_id
         if dry_run:
             return ZenodoDepositionOutcome(
-                deposition_id=dep_id,
-                doi=doi,
+                deposition_id=None,
+                doi=None,
                 title=manifest.bundle_name,
-                files_uploaded=file_count,
-                bytes_uploaded=total_bytes,
-                status="verified",
+                files_uploaded=0,
+                bytes_uploaded=0,
+                status="prepared-not-published",
             )
 
         if not self.token:
             return ZenodoDepositionOutcome(
-                deposition_id=dep_id,
-                doi=doi,
+                deposition_id=None,
+                doi=None,
                 title=manifest.bundle_name,
                 files_uploaded=0,
                 bytes_uploaded=0,
                 status="failed",
-                error_message="ZENODO_TOKEN environment variable or explicit token is missing",
+                error_message=(
+                    "ZENODO_TOKEN environment variable or explicit token is missing"
+                ),
             )
 
         return ZenodoDepositionOutcome(
-            deposition_id=dep_id,
-            doi=doi,
+            deposition_id=None,
+            doi=None,
             title=manifest.bundle_name,
-            files_uploaded=file_count,
-            bytes_uploaded=total_bytes,
-            status="published",
+            files_uploaded=0,
+            bytes_uploaded=0,
+            status="failed",
+            error_message=(
+                "remote Zenodo deposition is not implemented; use the gated "
+                "ZenodoClient workflow"
+            ),
         )

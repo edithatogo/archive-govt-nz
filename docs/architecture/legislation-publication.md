@@ -17,9 +17,12 @@
 +--------------------+       +--------------------+       +--------------------+
 | Hugging Face       |       | Zenodo             |       | Linked Metadata    |
 | Living Dataset     |       | Concept Lineage    |       | RO-Crate 1.1       |
-| (corpus-leg-nz)    |       | (10.5281/20592540) |       | Croissant JSON-LD  |
+| (corpus-leg-nz)    |       | (concept 20592539) |       | Croissant JSON-LD  |
 +--------------------+       +--------------------+       +--------------------+
 ```
+
+The Zenodo lineage uses concept DOI `10.5281/zenodo.20592539`. Its immutable
+2026 release is version DOI `10.5281/zenodo.20592540`.
 
 ---
 

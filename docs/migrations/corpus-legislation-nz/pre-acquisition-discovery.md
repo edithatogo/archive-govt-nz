@@ -15,7 +15,8 @@ An exhaustive search across local stores, Git histories, Hugging Face, and Zenod
    - Historical Dataset: [`edithatogo/corpus-legislation-nz-historical`](https://huggingface.co/datasets/edithatogo/corpus-legislation-nz-historical).
    - Legacy Compatibility Dataset: `edithatogo/nz-legislation-corpus`.
 2. **Zenodo Release Lineage**:
-   - Concept DOI: `10.5281/zenodo.20592540`.
+   - Concept DOI: `10.5281/zenodo.20592539`.
+   - Immutable 2026 version DOI: `10.5281/zenodo.20592540`.
    - Records annual immutable corpus dumps and XML fixity trees.
 3. **Historical Batch Manifests**:
    - 68 historical period-sharded batch checkpoints exist covering 33,693 search-derived work identifiers.

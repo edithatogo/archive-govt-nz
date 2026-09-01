@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://edithatogo.github.io/archive-govt-nz/schemas/zenodo-publication-identity-v1.schema.json",
+  "title": "Zenodo publication identity and operation contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "identity", "lineage", "source_state", "huggingface", "operation"],
+  "properties": {
+    "schema_version": {"const": "archive-govt-nz.zenodo-publication-identity/v1"},
+    "identity": {
+      "type": "object", "additionalProperties": false,
+      "required": ["concept_doi", "concept_record_id", "version_doi", "version_record_id"],
+      "properties": {
+        "concept_doi": {"type": "string", "pattern": "^10\\.5281/zenodo\\.[1-9][0-9]*$"},
+        "concept_record_id": {"type": "string", "pattern": "^[1-9][0-9]*$"},
+        "version_doi": {"type": "string", "pattern": "^10\\.5281/zenodo\\.[1-9][0-9]*$"},
+        "version_record_id": {"type": "string", "pattern": "^[1-9][0-9]*$"}
+      }
+    },
+    "lineage": {
+      "type": "object", "additionalProperties": false,
+      "required": ["target_repository", "target_commit", "archived_donor_repository", "archived_donor_commit"],
+      "properties": {
+        "target_repository": {"const": "edithatogo/archive-govt-nz"},
+        "target_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "archived_donor_repository": {"const": "edithatogo/corpus-legislation-nz"},
+        "archived_donor_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"}
+      }
+    },
+    "source_state": {
+      "type": "object", "additionalProperties": false,
+      "required": ["manifest_root_sha256", "inventory_sha256"],
+      "properties": {
+        "manifest_root_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "inventory_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "huggingface": {
+      "type": "object", "additionalProperties": false,
+      "required": ["dataset_slug", "revision"],
+      "properties": {
+        "dataset_slug": {"const": "edithatogo/corpus-legislation-nz"},
+        "revision": {"type": "string", "pattern": "^[0-9a-f]{40}$"}
+      }
+    },
+    "operation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["kind", "external_action_authorized", "approval_reference", "status", "remote_receipt_path"],
+      "properties": {
+        "kind": {"enum": ["observe_existing", "update_draft", "create_version_draft", "publish_version"]},
+        "external_action_authorized": {"type": "boolean"},
+        "approval_reference": {"type": ["string", "null"], "minLength": 1},
+        "status": {"enum": ["observed_immutable_version", "draft", "published", "failed"]},
+        "remote_receipt_path": {"type": ["string", "null"], "minLength": 1}
+      }
+    }
+  }
+}
