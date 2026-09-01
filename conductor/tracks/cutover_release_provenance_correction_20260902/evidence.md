@@ -35,3 +35,7 @@ prerelease, and immutability states are unchanged.
 - Targeted mutation gate: 10/10 killed.
 - Schema lane: 47 schemas and 37 representative documents valid.
 - Ruff and Pyright: passed.
+- Complete assurance gate: 4529 tests passed with 97.50% aggregate coverage;
+  all repository mutation, parity, supply-chain, secret, licence, and SBOM lanes
+  passed. The standard auto-worker attempt is preserved in the run log with
+  its host-load deadline flake; the unchanged one-worker gate passed.
