@@ -3,6 +3,7 @@
 import copy
 import json
 from pathlib import Path
+from typing import Any
 
 import pytest
 from hypothesis import given
@@ -16,7 +17,7 @@ from archive_govt_nz.zenodo_identity import (
 CONFIG = Path("config/legislation/zenodo-publication.json")
 
 
-def _config() -> dict[str, object]:
+def _config() -> dict[str, Any]:
     return json.loads(CONFIG.read_text(encoding="utf-8"))
 
 
