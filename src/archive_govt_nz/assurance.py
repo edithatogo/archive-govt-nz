@@ -110,6 +110,16 @@ def build_stages(
             ),
         ),
         GateStage(
+            "mutation-legislation-historical-coverage",
+            (
+                "uv",
+                "run",
+                "--locked",
+                "python",
+                "tools/mutation_legislation_historical_coverage.py",
+            ),
+        ),
+        GateStage(
             "mutation-gazette",
             ("uv", "run", "--locked", "python", "tools/mutation_gazette.py"),
         ),
