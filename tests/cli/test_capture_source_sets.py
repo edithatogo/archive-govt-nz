@@ -3,22 +3,19 @@
 from __future__ import annotations
 
 import json
-from typing import TYPE_CHECKING
+from pathlib import Path
 from unittest.mock import patch
 
 import httpx
 import pytest
 
-from archive_govt_nz.cli import archive, capture
+from archive_govt_nz.cli import _run_source_set_capture, archive, capture
 from archive_govt_nz.source_sets import (
     SourceSetConfigError,
     find_source_set_dir,
     load_source_set,
     parse_source_set_config,
 )
-
-if TYPE_CHECKING:
-    from pathlib import Path
 
 _CONFIG_DIR = "config/source-sets"
 
@@ -276,8 +273,8 @@ def test_parser_nested_non_list_line_ends_list_collection(
         "  description: trailing nested scalar\n",
         encoding="utf-8",
     )
-    parsed = parse_source_set_config(config_path)
-    assert parsed["targets"] == ["https://one.govt.nz"]
+    with pytest.raises(SourceSetConfigError, match="invalid source-set YAML"):
+        parse_source_set_config(config_path)
 
 
 def test_parser_ignores_comments_and_blank_lines(tmp_path: Path) -> None:
@@ -296,7 +293,11 @@ def test_parser_ignores_comments_and_blank_lines(tmp_path: Path) -> None:
         encoding="utf-8",
     )
     parsed = parse_source_set_config(config_path)
-    assert parsed == {"name": "commented", "enabled": True, "adapters": ["feeds"]}
+    assert dict(parsed) == {
+        "name": "commented",
+        "enabled": True,
+        "adapters": ["feeds"],
+    }
 
 
 def test_load_source_set_without_any_config_dir_fails_closed(
@@ -341,6 +342,26 @@ def test_capture_text_format_reports_redirect_and_pending(
     captured = capsys.readouterr()
     assert code_pending == 0
     assert "outcome=capability_pending" in captured.out
+
+
+def test_typed_adapters_respect_capability_and_activation(
+    capsys: pytest.CaptureFixture[str], tmp_path: Path
+) -> None:
+    """Typed adapters expose only capabilities that are supported and active."""
+    source = Path("config/source-sets/legislation.yml")
+    config = tmp_path / "legislation.yml"
+    config.write_bytes(source.read_bytes())
+    parsed = parse_source_set_config(config)
+    with patch("archive_govt_nz.source_sets.load_source_set", return_value=parsed):
+        code = _run_source_set_capture(
+            "legislation", format="json", config_dir=tmp_path, store_root=None
+        )
+    payload = json.loads(capsys.readouterr().out)
+    assert code == 0
+    assert payload["pending_adapters"] == [
+        {"adapter": "nz_legislation", "status": "capability_pending"}
+    ]
+    assert all(item["adapter"] != "feeds" for item in payload["pending_adapters"])
 
 
 def test_archive_manifest_then_verify_round_trip(

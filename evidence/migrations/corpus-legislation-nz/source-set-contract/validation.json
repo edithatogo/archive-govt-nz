@@ -1,0 +1,69 @@
+{
+  "schema_version": "archive-govt-nz.source-set-validation/v1",
+  "issue": 330,
+  "initial_target_sha": "cf2ec75b88963352abbecb89a2b8e2cfe538a070",
+  "prior_target_base_sha": "d3946b8f5380c60b11b5f6e803f7188fc7d8e8df",
+  "target_base_sha": "9b5eee5b7a98393dc62ab6244b8cf5a63b302156",
+  "donor_final_head": "b40587f1b1aec7356a0f623916fcc8212397d283",
+  "environment": {
+    "python": "3.14.6",
+    "uv": "0.11.8",
+    "platform": "macOS arm64"
+  },
+  "focused": {
+    "tests_passed": 126,
+    "source_sets_statement_coverage_percent": 100,
+    "source_sets_branch_coverage_percent": 100
+  },
+  "targeted_mutation": {
+    "killed": 14,
+    "total": 14,
+    "source_sha256": "2504be56411c5e57abc0dfa1186b755185c81be5e48c65508215e8ca4ef64f4e",
+    "receipt_sha256": "c0031ef8998cb1e7627b48a05f26d06dca3cb3a60bbd109af63992833fe6e7ce"
+  },
+  "native_harness": {
+    "command": "PYTEST_XDIST_AUTO_NUM_WORKERS=4 ./scripts/validate.sh",
+    "status": "passed",
+    "tests_passed": 4318,
+    "repository_coverage_percent": 97.43,
+    "schemas": "44 schemas and 34 representative documents",
+    "parity": "9/9 passed",
+    "dependency_audit": "no known vulnerabilities",
+    "licences": "passed",
+    "credential_scan": "passed",
+    "sbom_components": 111,
+    "log_sha256": "62266ef262654981fa9869df7447bd0f68b9799f771021375c8b472468aac642"
+  },
+  "failed_attempts": [
+    {
+      "stage": "focused tests",
+      "outcome": "21 failed",
+      "cause": "custom YAML boolean resolver shared mutable loader state with schema loading"
+    },
+    {
+      "stage": "targeted mutation",
+      "outcome": "10 of 11 killed",
+      "cause": "publication gate independence test was missing"
+    },
+    {
+      "stage": "targeted mutation retry",
+      "outcome": "interrupted, exit 130",
+      "cause": "wrong test target selected"
+    },
+    {
+      "stage": "native harness pytest collection",
+      "outcome": "bus error",
+      "cause": "unbounded xdist auto workers on the concurrent host",
+      "partial_log_sha256": "2a31e0b279f4b670bed2eee353d1e72afddb7c1f8a3f714514c2ea7d5f5d189f"
+    }
+  ],
+  "workflow_lint": {
+    "status": "two pre-existing informational findings",
+    "unchanged_from_base": true,
+    "findings": [
+      ".github/workflows/global-ckan-harvest-huggingface.yml:56 SC2086",
+      ".github/workflows/scheduled-gazette-harvest.yml:36 SC2086"
+    ]
+  },
+  "external_actions_performed": []
+}

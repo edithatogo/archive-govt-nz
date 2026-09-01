@@ -1,0 +1,520 @@
+{
+  "$id": "https://archive-govt-nz.example/schemas/source-set-v2.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "scope": {
+            "properties": {
+              "type": {
+                "const": "exact_inventory"
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "scope": {
+            "properties": {
+              "candidate_count": {
+                "type": "integer"
+              },
+              "inventory_sha256": {
+                "type": "string"
+              },
+              "seed_id": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "scope": {
+            "properties": {
+              "type": {
+                "const": "discovery"
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "scope": {
+            "properties": {
+              "inventory_sha256": {
+                "type": "null"
+              },
+              "seed_id": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "properties": {
+    "adapters": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "active": {
+            "type": "boolean"
+          },
+          "capability": {
+            "enum": [
+              "supported",
+              "declared"
+            ]
+          },
+          "name": {
+            "enum": [
+              "nz_legislation",
+              "feeds"
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "capability",
+          "active"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "description": {
+      "maxLength": 500,
+      "minLength": 1,
+      "type": "string"
+    },
+    "enabled": {
+      "type": "boolean"
+    },
+    "execution": {
+      "additionalProperties": false,
+      "properties": {
+        "activation": {
+          "enum": [
+            "active",
+            "inactive"
+          ]
+        },
+        "lane_type": {
+          "enum": [
+            "discovery",
+            "exact_inventory"
+          ]
+        },
+        "mode": {
+          "enum": [
+            "dispatch_only",
+            "scheduled",
+            "scheduled_and_dispatch"
+          ]
+        }
+      },
+      "required": [
+        "mode",
+        "lane_type",
+        "activation"
+      ],
+      "type": "object"
+    },
+    "gates": {
+      "additionalProperties": false,
+      "properties": {
+        "acquisition": {
+          "enum": [
+            "requires_explicit_dispatch",
+            "inactive"
+          ]
+        },
+        "external_actions": {
+          "enum": [
+            "blocked",
+            "approved"
+          ]
+        },
+        "publication": {
+          "enum": [
+            "blocked",
+            "approved"
+          ]
+        }
+      },
+      "required": [
+        "acquisition",
+        "publication",
+        "external_actions"
+      ],
+      "type": "object"
+    },
+    "limits": {
+      "additionalProperties": false,
+      "properties": {
+        "concurrency_semantics": {
+          "enum": [
+            "serial",
+            "bounded_parallel"
+          ]
+        },
+        "failure_policy": {
+          "const": "fail_closed"
+        },
+        "max_concurrency": {
+          "maximum": 16,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "max_works": {
+          "maximum": 500,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "overlap_policy": {
+          "const": "reject"
+        }
+      },
+      "required": [
+        "max_works",
+        "max_concurrency",
+        "concurrency_semantics",
+        "overlap_policy",
+        "failure_policy"
+      ],
+      "type": "object"
+    },
+    "name": {
+      "pattern": "^[a-z][a-z0-9-]{1,63}$",
+      "type": "string"
+    },
+    "preservation": {
+      "additionalProperties": false,
+      "properties": {
+        "compression": {
+          "enum": [
+            "none",
+            "gzip"
+          ]
+        },
+        "formats": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "active": {
+                "type": "boolean"
+              },
+              "capability": {
+                "enum": [
+                  "supported",
+                  "declared"
+                ]
+              },
+              "name": {
+                "enum": [
+                  "warc",
+                  "parquet",
+                  "manifest",
+                  "cas"
+                ]
+              }
+            },
+            "required": [
+              "name",
+              "capability",
+              "active"
+            ],
+            "type": "object"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "hash_algorithms": {
+          "items": {
+            "enum": [
+              "sha256",
+              "blake3"
+            ]
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "retention": {
+          "enum": [
+            "permanent_intent",
+            "permanent_subject_to_rights_review"
+          ]
+        }
+      },
+      "required": [
+        "formats",
+        "compression",
+        "hash_algorithms",
+        "retention"
+      ],
+      "type": "object"
+    },
+    "publication": {
+      "additionalProperties": false,
+      "properties": {
+        "external_actions_enabled": {
+          "type": "boolean"
+        },
+        "huggingface": {
+          "additionalProperties": false,
+          "properties": {
+            "activation": {
+              "enum": [
+                "active",
+                "inactive"
+              ]
+            },
+            "capability": {
+              "enum": [
+                "supported",
+                "unsupported"
+              ]
+            },
+            "identifier": {
+              "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$",
+              "type": "string"
+            },
+            "identifier_type": {
+              "const": "dataset_slug"
+            }
+          },
+          "required": [
+            "capability",
+            "activation",
+            "identifier",
+            "identifier_type"
+          ],
+          "type": "object"
+        },
+        "zenodo": {
+          "additionalProperties": false,
+          "properties": {
+            "activation": {
+              "enum": [
+                "active",
+                "inactive"
+              ]
+            },
+            "capability": {
+              "enum": [
+                "supported",
+                "unsupported"
+              ]
+            },
+            "identifier": {
+              "pattern": "^10\\.5281/zenodo\\.[0-9]+$",
+              "type": "string"
+            },
+            "identifier_type": {
+              "enum": [
+                "concept_doi",
+                "observed_version_doi",
+                "legacy_unverified_doi"
+              ]
+            }
+          },
+          "required": [
+            "capability",
+            "activation",
+            "identifier",
+            "identifier_type"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "external_actions_enabled",
+        "huggingface",
+        "zenodo"
+      ],
+      "type": "object"
+    },
+    "rights": {
+      "additionalProperties": false,
+      "properties": {
+        "decision_id": {
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "payload_publication": {
+          "enum": [
+            "blocked_pending_review",
+            "approved"
+          ]
+        },
+        "rights_class": {
+          "enum": [
+            "crown_copyright",
+            "crown_copyright_open",
+            "source_specific_review_required"
+          ]
+        }
+      },
+      "required": [
+        "rights_class",
+        "payload_publication",
+        "decision_id"
+      ],
+      "type": "object"
+    },
+    "schedule": {
+      "additionalProperties": false,
+      "properties": {
+        "active": {
+          "type": "boolean"
+        },
+        "descriptor": {
+          "maxLength": 100,
+          "minLength": 1,
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "manual",
+            "cron",
+            "descriptor"
+          ]
+        }
+      },
+      "required": [
+        "kind",
+        "descriptor",
+        "active"
+      ],
+      "type": "object"
+    },
+    "schema_version": {
+      "const": "archive-govt-nz.source-set/v2"
+    },
+    "scope": {
+      "additionalProperties": false,
+      "properties": {
+        "candidate_count": {
+          "minimum": 1,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "coverage_claim": {
+          "const": false
+        },
+        "identifier": {
+          "pattern": "^[a-z0-9][a-z0-9._-]+$",
+          "type": "string"
+        },
+        "inventory_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "seed_id": {
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "type": {
+          "enum": [
+            "discovery",
+            "exact_inventory"
+          ]
+        }
+      },
+      "required": [
+        "type",
+        "identifier",
+        "seed_id",
+        "inventory_sha256",
+        "candidate_count",
+        "coverage_claim"
+      ],
+      "type": "object"
+    },
+    "state": {
+      "additionalProperties": false,
+      "properties": {
+        "actions_role": {
+          "const": "expiring_operational_cache"
+        },
+        "checkpoint_authority": {
+          "enum": [
+            "prompt_08_parent_reference",
+            "durable_package"
+          ]
+        },
+        "checkpoint_path": {
+          "pattern": "^(?!.*\\.\\.).+",
+          "type": "string"
+        },
+        "parent_authority": {
+          "enum": [
+            "explicit_adoption_required",
+            "reviewed_reference"
+          ]
+        }
+      },
+      "required": [
+        "checkpoint_path",
+        "checkpoint_authority",
+        "actions_role",
+        "parent_authority"
+      ],
+      "type": "object"
+    },
+    "targets": {
+      "items": {
+        "format": "uri",
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "version": {
+      "const": 2
+    }
+  },
+  "required": [
+    "schema_version",
+    "name",
+    "version",
+    "description",
+    "enabled",
+    "adapters",
+    "execution",
+    "schedule",
+    "state",
+    "scope",
+    "rights",
+    "preservation",
+    "publication",
+    "gates",
+    "limits"
+  ],
+  "title": "Archive Govt NZ source-set v2",
+  "type": "object"
+}

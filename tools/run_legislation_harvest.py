@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import asyncio
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -11,39 +12,28 @@ from typing import Any
 
 from archive_govt_nz.domains.legislation.corpus import LegislationArchiveService
 from archive_govt_nz.object_store import ContentAddressedStore
+from archive_govt_nz.source_sets import SourceSetConfig, parse_source_set_config
 
 
-def validate_source_set_config(config_path: Path) -> dict[str, Any]:
-    """Validate the minimal fail-closed source-set execution configuration."""
-    if not config_path.is_file():
-        message = f"Source-set configuration file not found: {config_path}"
-        raise FileNotFoundError(message)
-    config: dict[str, Any] = {}
-    for raw_line in config_path.read_text(encoding="utf-8").splitlines():
-        if raw_line != raw_line.lstrip():
-            continue
-        line = raw_line.strip()
-        if not line or line.startswith("#") or ":" not in line:
-            continue
-        key, value = line.split(":", 1)
-        normalized = value.split("#", 1)[0].strip().strip('"').strip("'")
-        if normalized.lower() in {"true", "false"}:
-            config[key.strip()] = normalized.lower() == "true"
-        else:
-            config[key.strip()] = normalized
-    if config.get("name") != "legislation":
-        message = f"Expected source-set name 'legislation', got {config.get('name')}"
-        raise ValueError(message)
-    if not config.get("enabled", False):
-        message = "Source-set 'legislation' is disabled in configuration"
-        raise ValueError(message)
-    allowed_modes = {"dispatch_only", "scheduled", "scheduled_and_dispatch"}
-    if config.get("execution_mode") not in allowed_modes:
-        message = (
-            "Legislation execution_mode must be one of "
-            f"{sorted(allowed_modes)}; got {config.get('execution_mode')!r}"
-        )
-        raise ValueError(message)
+def validate_source_set_config(config_path: Path) -> SourceSetConfig:
+    """Load the shared typed legislation execution contract."""
+    config = parse_source_set_config(config_path)
+    if not isinstance(config, SourceSetConfig) or config.name != "legislation":
+        msg = "Expected typed source-set name 'legislation'"
+        raise ValueError(msg)
+    if not config.enabled:
+        msg = "Source-set 'legislation' is disabled in configuration"
+        raise ValueError(msg)
+    active_formats = {item.name for item in config.preservation.formats if item.active}
+    if not {"cas", "manifest"}.issubset(active_formats):
+        msg = "Legislation execution requires active CAS and manifest preservation"
+        raise ValueError(msg)
+    if config.preservation.compression != "none":
+        msg = "Legislation execution supports only uncompressed canonical state"
+        raise ValueError(msg)
+    if "sha256" not in config.preservation.hash_algorithms:
+        msg = "Legislation execution requires SHA-256 fixity"
+        raise ValueError(msg)
     return config
 
 
@@ -97,10 +87,13 @@ def sync_legislation_records(  # noqa: PLR0913
     }
 
 
-def _validate_execution_inputs(
+def _validate_execution_inputs(  # noqa: PLR0913
+    config: SourceSetConfig,
+    *,
     batch_id: str,
     search_terms: list[str] | None,
     work_ids: list[str] | None,
+    checkpoint_path: Path,
     max_works: int,
 ) -> None:
     if not batch_id or batch_id != batch_id.strip():
@@ -116,8 +109,38 @@ def _validate_execution_inputs(
     if max_works <= 0:
         message = "max_works must be a positive bound"
         raise ValueError(message)
+    expected_scope = "exact_inventory" if work_ids is not None else "discovery"
+    if config.scope.type != expected_scope:
+        message = (
+            f"Configured scope {config.scope.type!r} does not permit "
+            f"{expected_scope!r} dispatch"
+        )
+        raise ValueError(message)
+    if max_works > config.limits.max_works:
+        message = (
+            f"max_works {max_works} exceeds configured bound {config.limits.max_works}"
+        )
+        raise ValueError(message)
+    if checkpoint_path != Path(config.state.checkpoint_path):
+        message = (
+            "checkpoint path must match configured authority "
+            f"{config.state.checkpoint_path!r}"
+        )
+        raise ValueError(message)
     if work_ids is not None and max_works != len(work_ids):
         message = "Explicit work-ID batches require max_works to equal batch size"
+        raise ValueError(message)
+    if work_ids is not None:
+        _validate_exact_inventory(config, work_ids)
+
+
+def _validate_exact_inventory(config: SourceSetConfig, work_ids: list[str]) -> None:
+    canonical = ("\n".join(work_ids) + "\n").encode()
+    if config.scope.candidate_count != len(work_ids):
+        message = "Exact inventory count does not match configured scope"
+        raise ValueError(message)
+    if config.scope.inventory_sha256 != hashlib.sha256(canonical).hexdigest():
+        message = "Exact inventory hash does not match configured scope"
         raise ValueError(message)
 
 
@@ -137,7 +160,14 @@ def run_harvest(  # noqa: PLR0913
     """Run one explicitly bounded, state-authenticated harvest attempt."""
     try:
         config = validate_source_set_config(config_path)
-        _validate_execution_inputs(batch_id, search_terms, work_ids, max_works)
+        _validate_execution_inputs(
+            config,
+            batch_id=batch_id,
+            search_terms=search_terms,
+            work_ids=work_ids,
+            checkpoint_path=checkpoint_path,
+            max_works=max_works,
+        )
         service = LegislationArchiveService(ContentAddressedStore(cas_path))
         report = sync_legislation_records(
             service,
@@ -182,7 +212,7 @@ def run_harvest(  # noqa: PLR0913
         "state_committed": bool(
             report.get("checkpoint") is not None and outcome in {"changed", "no_change"}
         ),
-        "config": config,
+        "config": config.to_dict() if isinstance(config, SourceSetConfig) else config,
     }
     receipt_path.parent.mkdir(parents=True, exist_ok=True)
     receipt_path.write_text(json.dumps(receipt, indent=2), encoding="utf-8")

@@ -2,9 +2,13 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import sys
+from pathlib import Path
 from typing import TYPE_CHECKING
+
+import yaml
 
 from archive_govt_nz import cli as cli_module
 from archive_govt_nz.cli import (
@@ -32,9 +36,29 @@ from archive_govt_nz.cli_compat import (
 from archive_govt_nz.object_store import ContentAddressedStore
 
 if TYPE_CHECKING:
-    from pathlib import Path
-
     import pytest
+
+
+def _exact_source_set(tmp_path: Path, work_ids: list[str], checkpoint: str) -> str:
+    source = Path(__file__).parents[2] / "config/source-sets/legislation.yml"
+    value = yaml.safe_load(source.read_text(encoding="utf-8"))
+    value["execution"].update({"mode": "dispatch_only", "lane_type": "exact_inventory"})
+    value["schedule"]["active"] = False
+    value["state"]["checkpoint_path"] = checkpoint
+    value["scope"].update(
+        {
+            "type": "exact_inventory",
+            "identifier": "test-exact-inventory",
+            "seed_id": "test-seed",
+            "inventory_sha256": hashlib.sha256(
+                ("\n".join(work_ids) + "\n").encode()
+            ).hexdigest(),
+            "candidate_count": len(work_ids),
+        }
+    )
+    path = tmp_path / "source-set.yml"
+    path.write_text(yaml.safe_dump(value, sort_keys=False), encoding="utf-8")
+    return str(path)
 
 
 def test_cli_version(capsys: pytest.CaptureFixture[str]) -> None:
@@ -624,6 +648,7 @@ def test_cli_legislation_sync_and_no_change(
         batch_id="batch-1",
         max_works=5,
         format="json",
+        source_set_config=_exact_source_set(tmp_path, ["act-1975-9"], chk_path),
     )
     payload_sync1 = json.loads(capsys.readouterr().out)
     assert payload_sync1["status"] == "success"
@@ -638,6 +663,7 @@ def test_cli_legislation_sync_and_no_change(
         work_ids=["act-1975-9"],
         batch_id="batch-1",
         format="text",
+        source_set_config=_exact_source_set(tmp_path, ["act-1975-9"], chk_path),
     )
     captured_sync2 = capsys.readouterr()
     assert "status=no_change" in captured_sync2.out
@@ -662,6 +688,7 @@ def test_cli_legislation_sync_and_no_change(
         fail_fast=True,
         force_resync=True,
         format="json",
+        source_set_config=_exact_source_set(tmp_path, ["act-failing"], chk_path),
     )
     payload_fail = json.loads(capsys.readouterr().out)
     assert payload_fail["status"] == "failed"
@@ -1167,6 +1194,7 @@ def test_cli_legislation_sync_partial_and_total_failure(
         fail_fast=False,
         force_resync=True,
         format="json",
+        source_set_config=_exact_source_set(tmp_path, ["act-ok", "act-bad"], chk_path),
     )
     payload_partial = json.loads(capsys.readouterr().out)
     assert payload_partial["status"] == "partial"
@@ -1183,6 +1211,7 @@ def test_cli_legislation_sync_partial_and_total_failure(
         fail_fast=False,
         force_resync=True,
         format="json",
+        source_set_config=_exact_source_set(tmp_path, ["act-bad"], chk_path),
     )
     payload_total_fail = json.loads(capsys.readouterr().out)
     assert payload_total_fail["status"] == "failed"

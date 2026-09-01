@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import importlib.util
 import json
 from pathlib import Path
@@ -9,6 +10,7 @@ from types import SimpleNamespace
 from typing import TYPE_CHECKING, Any
 
 import pytest
+import yaml
 
 if TYPE_CHECKING:
     from types import ModuleType
@@ -29,17 +31,21 @@ main = _MODULE.main
 
 def _config(tmp_path: Path) -> Path:
     path = tmp_path / "legislation.yml"
-    path.write_text(
-        "name: legislation\nenabled: true\nexecution_mode: dispatch_only\n",
-        encoding="utf-8",
-    )
+    source = Path(__file__).parents[2] / "config/source-sets/legislation.yml"
+    document = yaml.safe_load(source.read_text(encoding="utf-8"))
+    document["execution"]["mode"] = "dispatch_only"
+    document["schedule"]["active"] = False
+    document["state"]["checkpoint_path"] = f"build/test-{tmp_path.name}/checkpoint.json"
+    path.write_text(yaml.safe_dump(document, sort_keys=False), encoding="utf-8")
     return path
 
 
 def _paths(tmp_path: Path) -> dict[str, Any]:
+    config_path = _config(tmp_path)
+    config = yaml.safe_load(config_path.read_text(encoding="utf-8"))
     return {
-        "config_path": _config(tmp_path),
-        "checkpoint_path": tmp_path / "state" / "checkpoint.json",
+        "config_path": config_path,
+        "checkpoint_path": Path(config["state"]["checkpoint_path"]),
         "manifest_path": tmp_path / "state" / "manifest.json",
         "receipt_path": tmp_path / "state" / "receipt.json",
         "cas_path": tmp_path / "state" / "cas",
@@ -51,22 +57,30 @@ def _paths(tmp_path: Path) -> dict[str, Any]:
 
 def test_validate_source_set_config_is_dispatch_only(tmp_path: Path) -> None:
     """Accept only the enabled legislation source set in dispatch-only mode."""
-    assert validate_source_set_config(_config(tmp_path))["execution_mode"] == (
-        "dispatch_only"
+    assert (
+        validate_source_set_config(_config(tmp_path)).execution.mode == "dispatch_only"
     )
     with pytest.raises(FileNotFoundError):
         validate_source_set_config(tmp_path / "missing.yml")
     invalid = tmp_path / "invalid.yml"
-    invalid.write_text("name: other\nenabled: true\n", encoding="utf-8")
-    with pytest.raises(ValueError, match="Expected source-set"):
+    invalid.write_text(
+        _config(tmp_path).read_text().replace("name: legislation", "name: other")
+    )
+    with pytest.raises(ValueError, match="Expected typed source-set"):
         validate_source_set_config(invalid)
     disabled = tmp_path / "disabled.yml"
-    disabled.write_text("name: legislation\nenabled: false\n", encoding="utf-8")
+    disabled_doc = yaml.safe_load(_config(tmp_path).read_text())
+    disabled_doc["enabled"] = False
+    disabled_doc["execution"]["activation"] = "inactive"
+    disabled_doc["gates"]["acquisition"] = "inactive"
+    for adapter in disabled_doc["adapters"]:
+        adapter["active"] = False
+    disabled.write_text(yaml.safe_dump(disabled_doc, sort_keys=False))
     with pytest.raises(ValueError, match="disabled"):
         validate_source_set_config(disabled)
     scheduled = tmp_path / "scheduled.yml"
     scheduled.write_text("name: legislation\nenabled: true\n", encoding="utf-8")
-    with pytest.raises(ValueError, match="dispatch_only"):
+    with pytest.raises(ValueError, match="legacy legislation fields"):
         validate_source_set_config(scheduled)
 
 
@@ -75,18 +89,7 @@ def test_validate_source_set_config_ignores_nested_enabled_flags(
 ) -> None:
     """Nested publication policy cannot overwrite top-level execution authority."""
     config = tmp_path / "legislation.yml"
-    config.write_text(
-        """name: legislation
-enabled: true
-execution_mode: dispatch_only
-publication_policy:
-  huggingface:
-    enabled: false
-  zenodo:
-    enabled: false
-""",
-        encoding="utf-8",
-    )
+    config.write_text(_config(tmp_path).read_text(), encoding="utf-8")
     parsed = validate_source_set_config(config)
     assert parsed["enabled"] is True
 
@@ -268,11 +271,46 @@ def test_run_harvest_requires_exact_explicit_batch_bound(tmp_path: Path) -> None
     assert receipt["outcome"] == "failed"
 
 
+@pytest.mark.parametrize(
+    ("change", "error"),
+    [
+        ({"max_works": 51}, "exceeds configured bound"),
+        ({"checkpoint_path": Path("wrong-checkpoint.json")}, "configured authority"),
+        ({"work_ids": ["act-1", "act-2"], "search_terms": None}, "does not permit"),
+    ],
+)
+def test_dispatch_is_bound_to_typed_policy(
+    tmp_path: Path, change: dict[str, object], error: str
+) -> None:
+    """Reject dispatch arguments that contradict the typed source-set policy."""
+    arguments = _paths(tmp_path)
+    arguments.update(change)
+    assert run_harvest(**arguments) == 1
+    receipt = json.loads(arguments["receipt_path"].read_text(encoding="utf-8"))
+    assert error in receipt["errors"][0]
+
+
 def test_main_accepts_exact_work_id_batch(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     """Parse an explicit donor work-ID file as an exact discovery scope."""
     arguments = _paths(tmp_path)
+    config = yaml.safe_load(arguments["config_path"].read_text(encoding="utf-8"))
+    config["execution"]["lane_type"] = "exact_inventory"
+    config["scope"].update(
+        {
+            "type": "exact_inventory",
+            "identifier": "test-exact-inventory",
+            "seed_id": "test-seed",
+            "inventory_sha256": hashlib.sha256(
+                b"act_public_2024_1\nact_public_2024_2\n"
+            ).hexdigest(),
+            "candidate_count": 2,
+        }
+    )
+    arguments["config_path"].write_text(
+        yaml.safe_dump(config, sort_keys=False), encoding="utf-8"
+    )
     work_ids_path = tmp_path / "batch.txt"
     work_ids_path.write_text("act_public_2024_1\nact_public_2024_2\n", encoding="utf-8")
     monkeypatch.setattr(
@@ -366,13 +404,17 @@ def test_execution_mode_gate_accepts_promoted_modes_only(
 ) -> None:
     """Steady-state promotion allows scheduled modes; everything else fails closed."""
     config = tmp_path / "legislation.yml"
-    config.write_text(
-        f"name: legislation\nenabled: true\nexecution_mode: {execution_mode}\n",
-        encoding="utf-8",
-    )
+    config.write_text(_config(tmp_path).read_text(), encoding="utf-8")
+    document = yaml.safe_load(config.read_text())
+    document["execution"]["mode"] = execution_mode
+    document["schedule"]["active"] = execution_mode in {
+        "scheduled",
+        "scheduled_and_dispatch",
+    }
+    config.write_text(yaml.safe_dump(document, sort_keys=False))
     if expected_ok:
         parsed = validate_source_set_config(config)
-        assert parsed["execution_mode"] == execution_mode
+        assert parsed.execution.mode == execution_mode
     else:
-        with pytest.raises(ValueError, match="execution_mode"):
+        with pytest.raises(ValueError, match=r"execution|mode"):
             validate_source_set_config(config)
