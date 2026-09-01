@@ -1,0 +1,56 @@
+{
+  "schema_version": "archive-govt-nz.source-set-inventory/v1",
+  "issue": 330,
+  "initial_target_sha": "cf2ec75b88963352abbecb89a2b8e2cfe538a070",
+  "target_base_sha": "d3946b8f5380c60b11b5f6e803f7188fc7d8e8df",
+  "donor_final_head": "b40587f1b1aec7356a0f623916fcc8212397d283",
+  "contract": "archive-govt-nz.source-set/v2",
+  "fields": [
+    "identity and version",
+    "adapters capability and activation",
+    "execution lane and activation",
+    "schedule descriptor and activation",
+    "state and parent authority",
+    "seed or discovery scope",
+    "rights and attributable decision",
+    "preservation formats, compression, hashes and retention",
+    "Hugging Face and Zenodo capability and activation",
+    "acquisition, publication and external-action gates",
+    "limits, concurrency, overlap and failure policy"
+  ],
+  "consumers": [
+    {
+      "path": "src/archive_govt_nz/source_sets.py",
+      "before": "ad hoc top-level line parsing ignored nested policy",
+      "after": "shared safe parser, schema, typed immutable model, migration and semantic validation"
+    },
+    {
+      "path": "tools/run_legislation_harvest.py",
+      "before": "independent top-level parser checked only name, enabled and execution mode",
+      "after": "shared model plus lane, bound, checkpoint, exact inventory and preservation preflight"
+    },
+    {
+      "path": "src/archive_govt_nz/cli.py:legislation",
+      "before": "direct discover and sync bypassed source-set configuration",
+      "after": "action preflight binds acquisition to typed activation, adapter, scope, bound and state"
+    },
+    {
+      "path": "src/archive_govt_nz/cli.py:_run_source_set_capture",
+      "before": "legacy string adapters only; legislation redirected before this path",
+      "after": "typed active/supported adapter handling retained for generic consumers; redirect remains explicit"
+    },
+    {
+      "path": ".github/workflows/scheduled-legislation-harvest.yml",
+      "before": "invoked harvest runner with canonical checkpoint, terms and work bound",
+      "after": "unchanged caller whose arguments are now enforced by the shared contract"
+    }
+  ],
+  "explicitly_inactive": [
+    "feeds adapter",
+    "WARC and Parquet preservation",
+    "Hugging Face publication",
+    "Zenodo publication",
+    "all external publication actions"
+  ],
+  "external_actions_performed": []
+}

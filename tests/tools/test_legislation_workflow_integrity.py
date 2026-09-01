@@ -101,7 +101,8 @@ def test_all_restoration_precedes_state_consumers() -> None:
 def test_source_set_steady_state_configuration() -> None:
     """Validate source-set production operational configuration."""
     content = Path("config/source-sets/legislation.yml").read_text(encoding="utf-8")
-    assert 'execution_mode: "scheduled_and_dispatch"' in content
-    assert 'schedule: "weekly"' in content
-    assert 'rights_class: "crown_copyright"' in content
-    assert content.count("enabled: true") >= 3
+    assert "mode: scheduled_and_dispatch" in content
+    assert "descriptor: weekly" in content
+    assert "rights_class: crown_copyright" in content
+    assert "external_actions_enabled: false" in content
+    assert content.count("activation: inactive") == 2

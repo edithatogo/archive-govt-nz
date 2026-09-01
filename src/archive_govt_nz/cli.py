@@ -3,8 +3,10 @@
 from __future__ import annotations
 
 import asyncio
+import hashlib
 import json
 import sys
+from collections.abc import Mapping
 from dataclasses import asdict
 from pathlib import Path
 from typing import TYPE_CHECKING, Any, Literal
@@ -56,6 +58,11 @@ from archive_govt_nz.domains.legislation.corpus import LegislationArchiveService
 from archive_govt_nz.domains.legislation.discovery import build_work_inventory
 from archive_govt_nz.object_store import ContentAddressedStore, ObjectStoreError
 from archive_govt_nz.publication import PublicationConfig, prepare_publication
+from archive_govt_nz.source_sets import (
+    SourceSetConfig,
+    SourceSetConfigError,
+    parse_source_set_config,
+)
 
 if TYPE_CHECKING:
     from archive_govt_nz.cli_integrity import PublicationPackage
@@ -527,7 +534,7 @@ def _run_source_set_capture(
 
 def _execute_source_set_targets(  # noqa: C901
     source_type: str,
-    config: dict[str, Any],
+    config: Mapping[str, Any],
     *,
     format: Literal["text", "json"],
     store_root: Path | None,
@@ -535,7 +542,16 @@ def _execute_source_set_targets(  # noqa: C901
 ) -> int:
     """Capture configured URL targets and report pending adapter capabilities."""
     targets = list(config.get("targets", []))
-    adapters = [str(a) for a in config.get("adapters", [])]
+    adapters: list[str] = []
+    for adapter in config.get("adapters", []):
+        if isinstance(adapter, Mapping):
+            if (
+                adapter.get("capability") == "supported"
+                and adapter.get("active") is True
+            ):
+                adapters.append(str(adapter.get("name", "")))
+        else:
+            adapters.append(str(adapter))
     executable_adapters = {"web", "feeds", "ckan"}
     pending = [name for name in adapters if name not in executable_adapters]
 
@@ -1801,8 +1817,34 @@ def legislation(
     batch_id: str = "",
     fail_fast: bool = False,
     force_resync: bool = False,
+    source_set_config: str = "config/source-sets/legislation.yml",
 ) -> int:
     """Execute real New Zealand Legislation corpus preservation operations."""
+    has_selection = action == "discover" or bool(work_ids) or bool(search_term)
+    if action in {"discover", "sync"} and has_selection:
+        try:
+            _validate_legislation_action_policy(
+                action,
+                Path(source_set_config),
+                checkpoint_path=checkpoint_path,
+                work_ids=work_ids,
+                search_term=search_term,
+                max_works=max_works,
+            )
+        except (OSError, SourceSetConfigError, ValueError) as exc:
+            if format == "json":
+                _emit_json(
+                    {
+                        "action": action,
+                        "command": "legislation",
+                        "schema_version": "archive-govt-nz.cli/v1",
+                        "status": "invalid_config",
+                        "error": str(exc),
+                    }
+                )
+            else:
+                sys.stderr.write(f"Invalid legislation source-set config: {exc}\n")
+            return 5
     handlers = {
         "doctor": lambda: _handle_leg_doctor(cas_path, checkpoint_path, format),
         "discover": lambda: _handle_leg_discover(search_term, max_works, format),
@@ -1840,6 +1882,52 @@ def legislation(
     err_msg = f"Unknown legislation action: {action}"
     sys.stderr.write(f"{err_msg}\n")
     return 5
+
+
+def _validate_legislation_action_policy(  # noqa: C901
+    action: str,
+    config_path: Path,
+    *,
+    checkpoint_path: str,
+    work_ids: list[str] | None,
+    search_term: str,
+    max_works: int | None,
+) -> None:
+    """Bind direct acquisition commands to the typed legislation policy."""
+    config = parse_source_set_config(config_path)
+    if not isinstance(config, SourceSetConfig) or config.name != "legislation":
+        msg = "Expected typed source-set name 'legislation'"
+        raise ValueError(msg)
+    if not config.enabled or config.gates.acquisition != "requires_explicit_dispatch":
+        msg = "Legislation acquisition is inactive"
+        raise ValueError(msg)
+    active_adapters = {item.name for item in config.adapters if item.active}
+    if "nz_legislation" not in active_adapters:
+        msg = "NZ Legislation adapter is not active"
+        raise ValueError(msg)
+    if max_works is not None and max_works > config.limits.max_works:
+        msg = "Requested work bound exceeds configured limit"
+        raise ValueError(msg)
+    if action == "discover":
+        if config.scope.type != "discovery" or not search_term:
+            msg = "Discovery action contradicts configured scope"
+            raise ValueError(msg)
+        return
+    expected_scope = "exact_inventory" if work_ids else "discovery"
+    if config.scope.type != expected_scope:
+        msg = "Sync selection contradicts configured scope"
+        raise ValueError(msg)
+    if Path(checkpoint_path) != Path(config.state.checkpoint_path):
+        msg = "Checkpoint path contradicts configured state authority"
+        raise ValueError(msg)
+    if work_ids:
+        canonical = ("\n".join(work_ids) + "\n").encode()
+        if config.scope.candidate_count != len(work_ids):
+            msg = "Exact inventory count contradicts configured scope"
+            raise ValueError(msg)
+        if config.scope.inventory_sha256 != hashlib.sha256(canonical).hexdigest():
+            msg = "Exact inventory hash contradicts configured scope"
+            raise ValueError(msg)
 
 
 def _run_croissant_query(domain: str) -> int:

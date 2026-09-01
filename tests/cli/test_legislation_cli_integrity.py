@@ -2,11 +2,14 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import sys
-from typing import TYPE_CHECKING, Any
+from pathlib import Path
+from typing import Any
 
 import pytest
+import yaml
 
 from archive_govt_nz.cli import legislation
 from archive_govt_nz.cli_compat import compat_nzlc_main
@@ -25,8 +28,27 @@ from archive_govt_nz.domains.legislation.manifest import (
 )
 from archive_govt_nz.object_store import ContentAddressedStore
 
-if TYPE_CHECKING:
-    from pathlib import Path
+
+def _exact_config(tmp_path: Path, work_ids: list[str], checkpoint: str) -> str:
+    source = Path(__file__).parents[2] / "config/source-sets/legislation.yml"
+    value = yaml.safe_load(source.read_text(encoding="utf-8"))
+    value["execution"].update({"mode": "dispatch_only", "lane_type": "exact_inventory"})
+    value["schedule"]["active"] = False
+    value["state"]["checkpoint_path"] = checkpoint
+    value["scope"].update(
+        {
+            "type": "exact_inventory",
+            "identifier": "test-exact-inventory",
+            "seed_id": "test-seed",
+            "inventory_sha256": hashlib.sha256(
+                ("\n".join(work_ids) + "\n").encode()
+            ).hexdigest(),
+            "candidate_count": len(work_ids),
+        }
+    )
+    path = tmp_path / "source-set.yml"
+    path.write_text(yaml.safe_dump(value, sort_keys=False), encoding="utf-8")
+    return str(path)
 
 
 def _record(work_id: str = "work-1") -> dict[str, Any]:
@@ -136,6 +158,33 @@ def test_sync_rejects_fabricated_default_selection(
     assert not (tmp_path / "cas").exists()
 
 
+def test_action_config_fails_before_discovery(
+    tmp_path: Path,
+    capsys: pytest.CaptureFixture[str],
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """An invalid typed contract prevents the acquisition client from running."""
+    invalid = tmp_path / "invalid.yml"
+    invalid.write_text("name: legislation\nenabled: true\n", encoding="utf-8")
+
+    def unexpected(*_args: object, **_kwargs: object) -> object:
+        message = "discovery must not run"
+        raise AssertionError(message)
+
+    monkeypatch.setattr(
+        "archive_govt_nz.domains.legislation.api.NZLegislationApiClient.iter_search_works",
+        unexpected,
+    )
+    code = legislation(
+        action="discover",
+        search_term="act",
+        format="json",
+        source_set_config=str(invalid),
+    )
+    assert code == 5
+    assert json.loads(capsys.readouterr().out)["status"] == "invalid_config"
+
+
 def test_sync_delegates_explicit_selection_to_archive_service(
     tmp_path: Path,
     capsys: pytest.CaptureFixture[str],
@@ -160,14 +209,16 @@ def test_sync_delegates_explicit_selection_to_archive_service(
     monkeypatch.setattr(
         "archive_govt_nz.cli.LegislationArchiveService.sync_works", fake_sync
     )
+    monkeypatch.chdir(tmp_path)
     code = legislation(
         action="sync",
         work_ids=["work-1"],
         batch_id="batch-1",
         cas_path=str(tmp_path / "cas"),
-        checkpoint_path=str(tmp_path / "checkpoint.json"),
+        checkpoint_path="checkpoint.json",
         manifest_path=str(tmp_path / "manifest.json"),
         format="json",
+        source_set_config=_exact_config(tmp_path, ["work-1"], "checkpoint.json"),
     )
     result = json.loads(capsys.readouterr().out)
     assert code == 0
@@ -480,14 +531,16 @@ def test_sync_transport_failure_is_non_success(
     monkeypatch.setattr(
         "archive_govt_nz.cli.LegislationArchiveService.sync_works", fail_sync
     )
+    monkeypatch.chdir(tmp_path)
     code = legislation(
         action="sync",
         work_ids=["work-1"],
         batch_id="batch-1",
         cas_path=str(tmp_path / "cas"),
-        checkpoint_path=str(tmp_path / "checkpoint.json"),
+        checkpoint_path="checkpoint.json",
         manifest_path=str(tmp_path / "manifest.json"),
         format=output_format,  # type: ignore[arg-type]
+        source_set_config=_exact_config(tmp_path, ["work-1"], "checkpoint.json"),
     )
     output = capsys.readouterr()
     assert code == 2

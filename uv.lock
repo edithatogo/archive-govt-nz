@@ -39,6 +39,7 @@ dependencies = [
     { name = "matplotlib" },
     { name = "openpyxl" },
     { name = "pyarrow" },
+    { name = "pyyaml" },
     { name = "warcio" },
 ]
 
@@ -74,6 +75,7 @@ requires-dist = [
     { name = "matplotlib", specifier = ">=3.10.8,<4" },
     { name = "openpyxl", specifier = ">=3.1.5,<4" },
     { name = "pyarrow", specifier = ">=23.0.1,<26" },
+    { name = "pyyaml", specifier = ">=6.0.3,<7" },
     { name = "warcio", specifier = ">=1.8.1,<2" },
 ]
 
