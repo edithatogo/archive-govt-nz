@@ -4,5 +4,6 @@
 - 2026-09-01: three parallel read-only audits covered candidate/batch bytes, live public surfaces and analyzer design.
 - 2026-09-01: cloned the public archived donor at its exact head into an ignored build directory for primary-byte analysis; no donor mutation occurred.
 - 2026-09-01: confirmed the historical parity JSON is explicitly invalidated by its adjacent README and cannot support acquisition, publication or completeness claims.
-- 2026-09-01: generated the canonical coverage report and correction-input inventory; verified 33,693 candidates, a 500-ID governed subset and 552 canonical state works while retaining 33,193 unknown candidate dispositions.
-- 2026-09-01: added path-containment, property, negative and mutation controls; 26 focused tests passed and 6/6 declared mutants were killed.
+- 2026-09-01: generated the canonical coverage report and correction-input inventory; verified 33,693 candidates, a 500-ID governed subset and 552 canonical state works. The other 33,193 candidates have no inferred disposition.
+- 2026-09-01: added path-containment, package-inventory, public-observation, correction-binding, property, negative and mutation controls; the historical-coverage suite passed 30 tests and 6/6 declared mutants were killed.
+- 2026-09-01: integrated target main `a926280315e4221d2f7cd72ad828ae1490001d93`, preserving Prompt 13 evidence as an independent parent change.
