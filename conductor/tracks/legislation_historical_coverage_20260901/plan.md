@@ -5,4 +5,4 @@
 - [x] Add negative, property and mutation tests for integrity and semantic boundaries.
 - [x] Generate canonical JSON/Markdown reports and Prompt 17 correction inputs.
 - [x] Run focused validation and mutation qualification.
-- [~] Deliver through an exact-head pull request and independently read back delivery.
+- [x] Deliver through an exact-head pull request and independently read back delivery.
