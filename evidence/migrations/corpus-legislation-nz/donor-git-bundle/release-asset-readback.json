@@ -1,0 +1,29 @@
+{
+  "schema_version": "archive-govt-nz.legislation-donor-bundle-release-readback/v1",
+  "observed_at": "2026-09-02T03:44:00Z",
+  "target_repository": "edithatogo/archive-govt-nz",
+  "release": {
+    "id": 377118888,
+    "tag_name": "local-donor-backups-20260826",
+    "name": "Donor repository archives (2026-08-26)",
+    "draft": true,
+    "prerelease": false,
+    "immutable": false,
+    "created_at": "2026-08-26T12:27:56Z",
+    "published_at": null,
+    "target_commitish": "main"
+  },
+  "asset": {
+    "id": 530775782,
+    "name": "corpus-legislation-nz-full-20260826.bundle",
+    "size": 2365303,
+    "digest": "sha256:f125f91b06264a97e59f65fac47878a74d646c915f12c0b05841c1550ec741c2",
+    "state": "uploaded",
+    "content_type": "application/octet-stream",
+    "created_at": "2026-08-26T12:27:57Z",
+    "updated_at": "2026-08-26T12:27:59Z"
+  },
+  "raw_response_sha256": "827c6ab2910984e9fad3160fa8b67a242084bfd824313734e28b0045e84a213e",
+  "disposition": "verified_gated_backup",
+  "publication_authorized": false
+}

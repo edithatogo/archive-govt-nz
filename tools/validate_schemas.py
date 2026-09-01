@@ -22,6 +22,15 @@ VALIDATION_PAIRS = (
     (
         REPOSITORY_ROOT
         / "schemas"
+        / "legislation-donor-bundle-verification-v1.schema.json",
+        REPOSITORY_ROOT
+        / "tests"
+        / "fixtures"
+        / "legislation-donor-bundle-verification-v1.json",
+    ),
+    (
+        REPOSITORY_ROOT
+        / "schemas"
         / "legislation-github-release-correction-v1.schema.json",
         REPOSITORY_ROOT
         / "tests"

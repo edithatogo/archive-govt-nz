@@ -281,3 +281,6 @@ implementation has occurred under these tracks.
 
 - [x] **Track: Cutover release provenance correction (Prompt 18)**
   *Link: [./tracks/cutover_release_provenance_correction_20260902/index.md](./tracks/cutover_release_provenance_correction_20260902/index.md)*
+
+- [~] **Track: Donor Git bundle and archival presentation (Prompt 19)**
+  *Link: [./tracks/legislation_donor_bundle_archival_presentation_20260902/index.md](./tracks/legislation_donor_bundle_archival_presentation_20260902/index.md)*
