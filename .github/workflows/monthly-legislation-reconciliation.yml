@@ -73,12 +73,20 @@ jobs:
           github-token: ${{ github.token }}
       - name: Reconcile authenticated state
         run: |
+          set +e
+          uv run --locked python tools/verify_public_publication_identities.py \
+            --receipt-path build/reconciliation/publication-readback.json \
+            --hf-dataset edithatogo/corpus-legislation-nz
+          readback_exit=$?
           uv run --locked python tools/run_legislation_reconciliation.py \
             --manifest-path build/legislation-state/manifest.json \
             --checkpoint-path build/legislation-state/checkpoint.json \
             --cas-path build/legislation-state/cas \
             --receipt-path build/reconciliation/receipt.json \
-            --hosted-dataset-slug ""
+            --hosted-dataset-slug edithatogo/corpus-legislation-nz \
+            --hosted-observation-path build/reconciliation/publication-readback.json
+          reconciliation_exit=$?
+          test "$readback_exit" -eq 0 -a "$reconciliation_exit" -eq 0
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         if: always()
         with:

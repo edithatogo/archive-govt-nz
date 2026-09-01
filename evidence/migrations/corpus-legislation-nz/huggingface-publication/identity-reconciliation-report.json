@@ -1,0 +1,108 @@
+{
+  "canonical_identity": "edithatogo/corpus-legislation-nz",
+  "contradictions": [
+    {
+      "finding": "All three cards identify the archived donor as the origin repository; none identifies edithatogo/archive-govt-nz as current origin authority.",
+      "id": "origin-authority-stale",
+      "required_action": "Supersede canonical card metadata while retaining donor lineage."
+    },
+    {
+      "finding": "The historical card declares superseded_operational_dataset and historical, but its body calls the repository the live operational home and contains future upload instructions.",
+      "id": "historical-card-mixed-status",
+      "required_action": "Preserve historical role and remove active-operation implications in a superseding card revision only if authorised."
+    },
+    {
+      "finding": "The open historical repository viewer converts manifests/validation_report.json into a one-row validation split instead of exposing the 6,609 record corpus.",
+      "id": "viewer-selects-validation-report",
+      "required_action": "Treat viewer row count as unrelated to corpus record count; configure data files explicitly in a future authorised revision."
+    },
+    {
+      "finding": "Canonical and DOI dataset APIs list RIGHTS.md, while anonymous resolve returns 401 because both repositories are auto-gated. File presence is true even when anonymous byte readback is unavailable.",
+      "id": "rights-presence-access-confusion",
+      "required_action": "Readback must derive has_rights_statement from the exact-revision inventory and separately record content access/verification."
+    },
+    {
+      "finding": "The historical API lists 6,610 raw_xml directory entries, of which raw_xml/README.md is documentation; the controlled manifest contains 6,609 raw content files matching 6,609 records.",
+      "id": "historical-directory-count-trap",
+      "required_action": "Count payload extensions or manifest members, not directory prefix alone."
+    }
+  ],
+  "cross_identity_comparison": {
+    "manifest_roots": {
+      "canonical": null,
+      "doi_snapshot": null,
+      "historical": "bc6d1b1d5d308dc2797ad18126b272767c1a05cf1feee173c322adf4cdfeb8a9"
+    },
+    "record_counts": {
+      "canonical": null,
+      "doi_snapshot": null,
+      "historical": 6609
+    },
+    "schema": {
+      "canonical": null,
+      "doi_snapshot": null,
+      "historical": {
+        "record_schema": "nzlc-record-v1",
+        "version": "1.0"
+      }
+    },
+    "unknown_reason": "Canonical and DOI snapshot payload metadata is inaccessible without authentication under auto-gating; no count/root/schema is inferred from filenames."
+  },
+  "evidence_kind": "huggingface_identity_reconciliation",
+  "identities": [
+    {
+      "dataset_id": "edithatogo/corpus-legislation-nz",
+      "gated": "auto",
+      "listed_file_count": 112,
+      "origin_authority_observed": "https://github.com/edithatogo/corpus-legislation-nz",
+      "parquet_file_count": 7,
+      "raw_content_file_count": 95,
+      "revision": "1efa35e72c378068cfb112d060bd0502497f61b1",
+      "rights_status": "source_specific_review_required",
+      "role": "canonical_dataset",
+      "status": "active"
+    },
+    {
+      "dataset_id": "edithatogo/corpus-legislation-nz-historical",
+      "gated": false,
+      "listed_file_count": 6788,
+      "origin_authority_observed": "https://github.com/edithatogo/corpus-legislation-nz",
+      "parquet_file_count": 164,
+      "raw_content_file_count": 6609,
+      "revision": "ea9e66fb89c3230fc478f7c6f05f1a82f4fa1174",
+      "rights_status": "source_specific_review_required",
+      "role": "superseded_operational_dataset",
+      "status": "historical"
+    },
+    {
+      "dataset_id": "edithatogo/nz-legislation-corpus",
+      "gated": "auto",
+      "listed_file_count": 20,
+      "origin_authority_observed": "https://github.com/edithatogo/corpus-legislation-nz",
+      "parquet_file_count": 1,
+      "raw_content_file_count": 9,
+      "revision": "1dea0c678b419a9c16fe7e363488f91d293391d3",
+      "rights_status": "source_specific_review_required",
+      "role": "immutable_doi_snapshot",
+      "status": "frozen_snapshot"
+    }
+  ],
+  "observation_source": "live-identity-observations.json",
+  "publication_gate": {
+    "external_authorisation_observed": false,
+    "minimum_action": "Publish only the reviewed canonical card/state candidate to edithatogo/corpus-legislation-nz, then bind and independently read back the exact returned revision through the gated-access contract.",
+    "remote_write_performed": false,
+    "status": "externally_blocked"
+  },
+  "reconciliation": {
+    "archived_donor_lineage_currently_explicit_as_origin": true,
+    "canonical_anonymous_payload_readback_available": false,
+    "canonical_rights_file_anonymously_readable": false,
+    "canonical_rights_file_listed": true,
+    "remote_origin_authority_is_target": false,
+    "remote_publication_continuity_established": false,
+    "required_origin_authority": "https://github.com/edithatogo/archive-govt-nz",
+    "roles_non_conflicting": true
+  },
+  "schema_version": "1.0"
+}

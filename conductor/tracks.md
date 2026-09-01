@@ -269,3 +269,6 @@ implementation has occurred under these tracks.
 
 - [~] **Track: Target-owned 500-work operational proof (Prompt 13)**
   *Link: [./tracks/legislation_500_work_operational_proof_20260901/index.md](./tracks/legislation_500_work_operational_proof_20260901/index.md)*
+
+- [~] **Track: Hugging Face identity, metadata, reconciliation, and target-origin publication (Prompt 15)**
+  *Link: [./tracks/legislation_hf_identity_reconciliation_20260901/index.md](./tracks/legislation_hf_identity_reconciliation_20260901/index.md)*

@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 import sys
 import urllib.error
 import urllib.request
@@ -26,6 +27,76 @@ DEFAULT_RECEIPT_PATH = Path(
 )
 
 FetchFnType = Callable[..., tuple[int, bytes, str, dict[str, str]]]
+GIT_SHA_PATTERN = re.compile(r"^[0-9a-f]{40}$")
+
+
+def _parse_huggingface_identity(body: bytes) -> tuple[dict[str, Any], str, list[str]]:
+    """Parse the immutable identity and file inventory from an API response."""
+    try:
+        data = json.loads(body.decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        msg = f"Hugging Face API response is not valid JSON: {exc}"
+        raise ValueError(msg) from exc
+    if not isinstance(data, dict):
+        msg = "Hugging Face API response is not an object"
+        raise TypeError(msg)
+    revision_sha = data.get("sha")
+    if not isinstance(revision_sha, str) or not GIT_SHA_PATTERN.fullmatch(revision_sha):
+        msg = "Hugging Face API revision is not a 40-character Git SHA"
+        raise ValueError(msg)
+    raw_siblings = data.get("siblings")
+    if not isinstance(raw_siblings, list) or not all(
+        isinstance(sibling, dict)
+        and isinstance(sibling.get("rfilename"), str)
+        and sibling["rfilename"]
+        for sibling in raw_siblings
+    ):
+        msg = "Hugging Face API siblings are not named file objects"
+        raise ValueError(msg)
+    return data, revision_sha, [sibling["rfilename"] for sibling in raw_siblings]
+
+
+def _read_huggingface_viewer(
+    dataset_slug: str, fetch_fn: FetchFnType
+) -> dict[str, Any]:
+    """Read the viewer state without changing identity verification semantics."""
+    url = f"https://datasets-server.huggingface.co/is-valid?dataset={dataset_slug}"
+    status, body, _, _ = fetch_fn(url)
+    if status != HTTP_OK:
+        return {
+            "http_status": status,
+            "message": body.decode("utf-8", errors="replace")[:200],
+        }
+    try:
+        parsed = json.loads(body.decode("utf-8"))
+        return parsed if isinstance(parsed, dict) else {"raw": parsed}
+    except Exception:  # noqa: BLE001
+        return {"raw": body.decode("utf-8", errors="replace")}
+
+
+def _read_huggingface_info(
+    dataset_slug: str, fetch_fn: FetchFnType
+) -> tuple[list[str], dict[str, int]]:
+    """Read configs and direct row counts from datasets-server."""
+    url = f"https://datasets-server.huggingface.co/info?dataset={dataset_slug}"
+    status, body, _, _ = fetch_fn(url)
+    if status != HTTP_OK:
+        return [], {}
+    try:
+        parsed = json.loads(body.decode("utf-8"))
+        dataset_info = parsed.get("dataset_info", {})
+        configs = list(dataset_info.keys())
+        counts = {
+            f"{config_name}.{split_name}": split["num_examples"]
+            for config_name, config in dataset_info.items()
+            if isinstance(config, dict) and isinstance(config.get("splits"), dict)
+            for split_name, split in config["splits"].items()
+            if isinstance(split, dict) and "num_examples" in split
+        }
+    except Exception:  # noqa: BLE001
+        return [], {}
+    else:
+        return configs, counts
 
 
 def fetch_url(
@@ -72,54 +143,48 @@ def verify_huggingface_dataset(
             "error": body.decode("utf-8", errors="replace")[:300],
         }
 
-    data = json.loads(body.decode("utf-8"))
-    revision_sha = data.get("sha")
-    card_data = data.get("cardData", {})
-    siblings = [s.get("rfilename") for s in data.get("siblings", [])]
-
-    # Check datasets-server viewer validity
-    is_valid_url = (
-        f"https://datasets-server.huggingface.co/is-valid?dataset={dataset_slug}"
-    )
-    v_status, v_body, _, _ = fetch_fn(is_valid_url)
-    viewer_state: dict[str, Any] = {}
-    if v_status == HTTP_OK:
-        try:
-            viewer_state = json.loads(v_body.decode("utf-8"))
-        except Exception:  # noqa: BLE001
-            viewer_state = {"raw": v_body.decode("utf-8", errors="replace")}
-    else:
-        viewer_state = {
-            "http_status": v_status,
-            "message": v_body.decode("utf-8", errors="replace")[:200],
+    try:
+        data, revision_sha, siblings = _parse_huggingface_identity(body)
+    except (TypeError, ValueError) as exc:
+        return {
+            "dataset_slug": dataset_slug,
+            "request_url": api_url,
+            "retrieval_timestamp": now_iso,
+            "http_status": status,
+            "response_sha256": sha256,
+            "status": "invalid_metadata",
+            "error": str(exc),
         }
+    card_data = data.get("cardData", {})
 
-    # Check datasets-server info
-    info_url = f"https://datasets-server.huggingface.co/info?dataset={dataset_slug}"
-    i_status, i_body, _, _ = fetch_fn(info_url)
-    configs: list[str] = []
-    direct_row_counts: dict[str, int] = {}
-    if i_status == HTTP_OK:
-        try:
-            info_data = json.loads(i_body.decode("utf-8"))
-            dataset_info = info_data.get("dataset_info", {})
-            configs = list(dataset_info.keys())
-            for cfg_name, cfg_val in dataset_info.items():
-                if isinstance(cfg_val, dict) and "splits" in cfg_val:
-                    for split_name, split_val in cfg_val["splits"].items():
-                        if isinstance(split_val, dict) and "num_examples" in split_val:
-                            direct_row_counts[f"{cfg_name}.{split_name}"] = split_val[
-                                "num_examples"
-                            ]
-        except Exception:  # noqa: BLE001
-            direct_row_counts = {}
+    viewer_state = _read_huggingface_viewer(dataset_slug, fetch_fn)
+    configs, direct_row_counts = _read_huggingface_info(dataset_slug, fetch_fn)
 
-    # Check rights statement raw file
-    rights_url = f"https://huggingface.co/datasets/{dataset_slug}/raw/main/RIGHTS.md"
-    r_status, r_body, r_sha256, _ = fetch_fn(rights_url)
-    rights_text = (
-        r_body.decode("utf-8", errors="replace") if r_status == HTTP_OK else None
+    # Bind the rights inventory and readback to the same immutable revision.
+    rights_listed = "RIGHTS.md" in siblings
+    rights_url = (
+        f"https://huggingface.co/datasets/{dataset_slug}/resolve/"
+        f"{revision_sha}/RIGHTS.md"
     )
+    r_status: int | None = None
+    r_sha256: str | None = None
+    rights_text: str | None = None
+    rights_readback_verified = False
+    rights_readback_status = "not_listed"
+    result_status = "verified"
+    if rights_listed:
+        r_status, r_body, r_sha256, _ = fetch_fn(rights_url)
+        if r_status == HTTP_OK and r_body:
+            rights_text = r_body.decode("utf-8", errors="replace")
+            rights_readback_verified = True
+            rights_readback_status = "verified"
+        else:
+            result_status = "inconsistent_readback"
+            rights_readback_status = (
+                "listed_access_controlled"
+                if r_status in {401, 403}
+                else "listed_unreadable"
+            )
 
     return {
         "dataset_slug": dataset_slug,
@@ -134,10 +199,15 @@ def verify_huggingface_dataset(
         "viewer_state": viewer_state,
         "configs": configs,
         "direct_row_counts": direct_row_counts,
-        "has_rights_statement": rights_text is not None,
+        "has_rights_statement": rights_listed,
+        "rights_listed_at_revision": rights_listed,
+        "rights_readback_verified": rights_readback_verified,
+        "rights_readback_status": rights_readback_status,
+        "rights_request_url": rights_url if rights_listed else None,
+        "rights_http_status": r_status,
         "rights_preview": rights_text[:200] if rights_text else None,
         "rights_sha256": r_sha256 if rights_text else None,
-        "status": "verified",
+        "status": result_status,
     }
 
 

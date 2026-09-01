@@ -78,6 +78,20 @@ def test_reconciliation_and_recovery_require_selected_state() -> None:
         assert "mkdir -p build/legislation-state" not in content
 
 
+def test_monthly_reconciliation_reads_back_only_the_canonical_identity() -> None:
+    """Pin monthly hosted comparison to an exact readback of the living dataset."""
+    content = _WORKFLOWS[1].read_text(encoding="utf-8")
+    assert "tools/verify_public_publication_identities.py" in content
+    assert "--hosted-dataset-slug edithatogo/corpus-legislation-nz" in content
+    assert (
+        "--hosted-observation-path build/reconciliation/publication-readback.json"
+        in content
+    )
+    assert '--hosted-dataset-slug ""' not in content
+    assert "corpus-legislation-nz-historical" not in content
+    assert "nz-legislation-corpus" not in content
+
+
 def test_all_restoration_precedes_state_consumers() -> None:
     """A failing shared action must prevent harvest, reconciliation and recovery."""
     for path in _WORKFLOWS:

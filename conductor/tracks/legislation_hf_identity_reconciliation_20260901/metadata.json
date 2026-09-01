@@ -1,0 +1,17 @@
+{
+  "created_at": "2026-09-01T13:45:00Z",
+  "description": "Prompt 15 Hugging Face identity, metadata, reconciliation, and target-origin publication",
+  "gates": [
+    {
+      "id": "hf-canonical-publication",
+      "kind": "external_publication",
+      "status": "pending",
+      "evidence": "Prompt 15 requires the applicable explicit publication gate"
+    }
+  ],
+  "issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/341",
+  "status": "in_progress",
+  "track_id": "legislation_hf_identity_reconciliation_20260901",
+  "type": "feature",
+  "updated_at": "2026-09-01T13:45:00Z"
+}
