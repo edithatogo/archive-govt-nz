@@ -30,9 +30,9 @@ prerelease, and immutability states are unchanged.
 
 ## Validation
 
-- Focused tests: 19 passed.
+- Focused tests: 29 passed after the Windows portability regression test.
 - Critical-code coverage: 100% line and branch.
-- Targeted mutation gate: 10/10 killed.
+- Targeted mutation gate: 15/15 killed.
 - Schema lane: 47 schemas and 37 representative documents valid.
 - Ruff and Pyright: passed.
 - Complete assurance gate: 4529 tests passed with 97.50% aggregate coverage;

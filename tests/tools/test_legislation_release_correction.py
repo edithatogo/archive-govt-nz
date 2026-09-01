@@ -213,7 +213,8 @@ def test_attestation_failures_rejected(tmp_path: Path) -> None:
 
 
 @pytest.mark.parametrize(
-    "relative", [Path("../outside.json"), Path("/tmp/outside.json")]
+    "relative",
+    [Path("../outside.json"), Path("/tmp/outside.json"), Path(r"evidence\..\outside")],
 )
 def test_unsafe_paths_rejected(tmp_path: Path, relative: Path) -> None:
     with pytest.raises(ReleaseCorrectionError, match="unsafe_path"):

@@ -251,7 +251,11 @@ def _fail(message: str, cause: BaseException | None = None) -> NoReturn:
 
 
 def _safe(root: Path, relative: Path) -> Path:
-    if relative.is_absolute() or ".." in relative.parts or "\\" in str(relative):
+    if (
+        relative.is_absolute()
+        or ".." in relative.parts
+        or any("\\" in part for part in relative.parts)
+    ):
         _fail(f"unsafe_path:{relative}")
     path = (root / relative).resolve()
     try:

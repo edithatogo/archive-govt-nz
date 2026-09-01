@@ -12,4 +12,4 @@ Three independent reviews were completed after the public edit:
   retained preparation-only limitation prose. Both were fixed with negative
   tests and four additional killed mutants.
 
-Final focused result: 28 tests, 100% line/branch coverage, 14/14 mutants killed.
+Final focused result: 29 tests, 100% line/branch coverage, 15/15 mutants killed.

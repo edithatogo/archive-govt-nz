@@ -15,6 +15,10 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 TOOL = Path("tools/legislation_release_correction.py")
 MUTANTS = {
+    "ambiguous_backslash_path": (
+        'or any("\\\\" in part for part in relative.parts)',
+        'or any("\\\\" not in part for part in relative.parts)',
+    ),
     "release_identity": (
         "if any(snapshot.get(key) != value for key, value in expected.items()):",
         "if any(snapshot.get(key) == value for key, value in expected.items()):",
