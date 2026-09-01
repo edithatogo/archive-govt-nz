@@ -1,0 +1,326 @@
+{
+  "candidate_claim": 33693,
+  "canonical_state_works": 552,
+  "inputs": [
+    {
+      "historical_or_imported": true,
+      "occurrences": 1,
+      "path": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_04_source_discovery_completeness/plan.md",
+      "sha256": "2eccc70e6300d1332676635dfddfa8a3c651f14e40fd98e014b7e5ce249b6376"
+    },
+    {
+      "historical_or_imported": true,
+      "occurrences": 3,
+      "path": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_04_source_discovery_completeness/spec.md",
+      "sha256": "910d8bc796dd7555c71e4b6cf5a3a1fee31c05f8110b25e96be5bac308a13da5"
+    },
+    {
+      "historical_or_imported": true,
+      "occurrences": 2,
+      "path": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_07_full_corpus_bootstrap_download/plan.md",
+      "sha256": "b00032de9a3c4ca29785eec6a6474f30260577f36c458b06876ed936cbe7861a"
+    },
+    {
+      "historical_or_imported": true,
+      "occurrences": 1,
+      "path": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_07_full_corpus_bootstrap_download/spec.md",
+      "sha256": "34e16e3d2d1dfbc735434edf08f9b076606cd3e3077a767bf446603f059336c0"
+    },
+    {
+      "historical_or_imported": true,
+      "occurrences": 1,
+      "path": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks/track_36_period_sharded_bootstrap_agent_handoff/plan.md",
+      "sha256": "f603293bac14d6dd5c9d7bc39b101ed7f731ed40b3e95b91da9f4b927adb9388"
+    },
+    {
+      "historical_or_imported": true,
+      "occurrences": 3,
+      "path": "conductor/archive/imported/corpus-legislation-nz/749918c251da59dc890c19dfda2ab9a021fd8ca6/tracks.md",
+      "sha256": "0085789b34da49808a703f2e1d4037721ee47f2884e38f29fbe16eb5ea244b79"
+    },
+    {
+      "historical_or_imported": true,
+      "occurrences": 1,
+      "path": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_04_source_discovery_completeness/plan.md",
+      "sha256": "2eccc70e6300d1332676635dfddfa8a3c651f14e40fd98e014b7e5ce249b6376"
+    },
+    {
+      "historical_or_imported": true,
+      "occurrences": 3,
+      "path": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_04_source_discovery_completeness/spec.md",
+      "sha256": "910d8bc796dd7555c71e4b6cf5a3a1fee31c05f8110b25e96be5bac308a13da5"
+    },
+    {
+      "historical_or_imported": true,
+      "occurrences": 2,
+      "path": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_07_full_corpus_bootstrap_download/plan.md",
+      "sha256": "b00032de9a3c4ca29785eec6a6474f30260577f36c458b06876ed936cbe7861a"
+    },
+    {
+      "historical_or_imported": true,
+      "occurrences": 1,
+      "path": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_07_full_corpus_bootstrap_download/spec.md",
+      "sha256": "34e16e3d2d1dfbc735434edf08f9b076606cd3e3077a767bf446603f059336c0"
+    },
+    {
+      "historical_or_imported": true,
+      "occurrences": 1,
+      "path": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks/track_36_period_sharded_bootstrap_agent_handoff/plan.md",
+      "sha256": "f603293bac14d6dd5c9d7bc39b101ed7f731ed40b3e95b91da9f4b927adb9388"
+    },
+    {
+      "historical_or_imported": true,
+      "occurrences": 3,
+      "path": "conductor/archive/imported/corpus-legislation-nz/b40587f1b1aec7356a0f623916fcc8212397d283/tracks.md",
+      "sha256": "0085789b34da49808a703f2e1d4037721ee47f2884e38f29fbe16eb5ea244b79"
+    },
+    {
+      "historical_or_imported": false,
+      "occurrences": 1,
+      "path": "conductor/tracks/legislation_corpus_consolidation_corrective_20260818/plan.md",
+      "sha256": "caff93832a9de8f28658cfe4ac9817bc1631bfeb19b1e66fa3a97b1dffa9067f"
+    },
+    {
+      "historical_or_imported": true,
+      "occurrences": 2,
+      "path": "conductor/tracks/legislation_corpus_consolidation_corrective_20260818/requirements.md",
+      "sha256": "4f21b72d07d59ba26f9decd38a5ef0a04fb55963987d310465bcdb61d9ce245e"
+    },
+    {
+      "historical_or_imported": true,
+      "occurrences": 1,
+      "path": "conductor/tracks/legislation_corpus_consolidation_corrective_20260818/review.md",
+      "sha256": "cd758ccea517f893c20f0020c92e7bacbc389e384fb07782222a186ef7e39913"
+    },
+    {
+      "historical_or_imported": false,
+      "occurrences": 1,
+      "path": "conductor/tracks/legislation_corrective_cli_contract_compatibility_20260818/plan.md",
+      "sha256": "9f0b1c003777241bed356e12c291667c14299aef170587261411b7dd05f5a1ea"
+    },
+    {
+      "historical_or_imported": false,
+      "occurrences": 1,
+      "path": "conductor/tracks/legislation_corrective_cli_contract_compatibility_20260818/plan.original.md",
+      "sha256": "3089e3b56ece8fc5f77453b95b305beb911901b08ea10992e9f40d4db57991cd"
+    },
+    {
+      "historical_or_imported": false,
+      "occurrences": 2,
+      "path": "conductor/tracks/legislation_corrective_cli_contract_compatibility_20260818/requirements.md",
+      "sha256": "73e0106b68aaf67e0c5ee7b4fb1e7bf5d9ce61f213a70d1222a553672f725406"
+    },
+    {
+      "historical_or_imported": false,
+      "occurrences": 1,
+      "path": "conductor/tracks/legislation_corrective_reconciliation_parity_publication_20260818/review.md",
+      "sha256": "41a38eaf54dd8c35fc94c803c2e1799f5b28bdf0cd6c7b834fa692ebd402b46b"
+    },
+    {
+      "historical_or_imported": false,
+      "occurrences": 1,
+      "path": "conductor/tracks/legislation_corrective_service_integrity_20260820/evidence.md",
+      "sha256": "69a318868772cd6f2b9bfea1d0ce361c7b5dab9a4c2d6726c679a878e8322887"
+    },
+    {
+      "historical_or_imported": false,
+      "occurrences": 1,
+      "path": "conductor/tracks/legislation_corrective_service_integrity_20260820/requirements.md",
+      "sha256": "2b3edbcea88a95e17dd2e0460582e221aafdc064f01dee1b85bfa95bc07bff7b"
+    },
+    {
+      "historical_or_imported": false,
+      "occurrences": 1,
+      "path": "conductor/tracks/legislation_corrective_service_integrity_20260820/runlog.md",
+      "sha256": "21c428de2e3aac77e2daf4c81d04c24c2b38d5f3a3e440f220f8e5caabc58ce2"
+    },
+    {
+      "historical_or_imported": false,
+      "occurrences": 1,
+      "path": "conductor/tracks/legislation_corrective_shadow_operation_cutover_20260818/review.md",
+      "sha256": "4b750cb2cd1db8e976fcac2b8e912d78dec177806ec3dee3600b8784a2cd11a8"
+    },
+    {
+      "historical_or_imported": false,
+      "occurrences": 1,
+      "path": "conductor/tracks/legislation_historical_coverage_20260901/metadata.json",
+      "sha256": "00be4ab03d525d648838a8f05fec887925b7e6906e1ec1b71af78b8833019a60"
+    },
+    {
+      "historical_or_imported": false,
+      "occurrences": 1,
+      "path": "conductor/tracks/legislation_historical_coverage_20260901/requirements.md",
+      "sha256": "85cdc770c6c2e519760e460472c786fa51b9e62840849b5543df69bfb57188b5"
+    },
+    {
+      "historical_or_imported": false,
+      "occurrences": 1,
+      "path": "conductor/tracks/legislation_one_batch_reconciliation_20260820/runlog.md",
+      "sha256": "aca40bc8bf91fe54eb1bb5ec915736314fd2d84d9d84328e5cda54ad0ac39be1"
+    },
+    {
+      "historical_or_imported": false,
+      "occurrences": 1,
+      "path": "conductor/tracks.md",
+      "sha256": "0c05f4fa205ffef68c0d344fc63aea64ae265942acbca2f5548b1e99262b8930"
+    },
+    {
+      "historical_or_imported": false,
+      "occurrences": 1,
+      "path": "config/migrations/corpus-legislation-nz/workflow-route-table.yml",
+      "sha256": "33eec0a3d4d0c7851431be46d58fe94dfa725171b3706d0b1d0fde070d4aa28f"
+    },
+    {
+      "historical_or_imported": false,
+      "occurrences": 1,
+      "path": "docs/legislation/durable-state-preservation.md",
+      "sha256": "17d66e533d5880b2d79c3805d3199e1e9508e5c84303b535bf4e004f8111723c"
+    },
+    {
+      "historical_or_imported": false,
+      "occurrences": 1,
+      "path": "docs/migrations/corpus-legislation-nz/baseline.md",
+      "sha256": "2b3b0cc72ce0766c0c1dd2b1a1ab5b1ce8b350fa1967901d461bec4d44afff39"
+    },
+    {
+      "historical_or_imported": false,
+      "occurrences": 2,
+      "path": "docs/migrations/corpus-legislation-nz/consolidation-closeout-report.md",
+      "sha256": "524c402b8e3ef0576e7183a5fdc22e699e05dcca8c3c244e68fdc30659a2b13b"
+    },
+    {
+      "historical_or_imported": true,
+      "occurrences": 1,
+      "path": "docs/migrations/corpus-legislation-nz/corrective-audit.md",
+      "sha256": "bf0c0702ad061a248982b43baec3df4c82a4a64fe1492dc56d28c0bfcda59836"
+    },
+    {
+      "historical_or_imported": false,
+      "occurrences": 2,
+      "path": "docs/migrations/corpus-legislation-nz/parity-report.md",
+      "sha256": "21c20aeff4da177b1ef0d54658dc64f8187e0eaede848701dc584db12c3e02bd"
+    },
+    {
+      "historical_or_imported": false,
+      "occurrences": 2,
+      "path": "docs/migrations/corpus-legislation-nz/pre-acquisition-discovery.md",
+      "sha256": "6a623aef20217649558f3a8af205a9b7328aa7017a3ae860add528f07a85b4ae"
+    },
+    {
+      "historical_or_imported": false,
+      "occurrences": 1,
+      "path": "evidence/deferral-gate-assessment.md",
+      "sha256": "7271e2c0f4f4097f5dc15f288058db523df8977764f6851bc07ad63f2b50719e"
+    },
+    {
+      "historical_or_imported": false,
+      "occurrences": 1,
+      "path": "evidence/migrations/corpus-legislation-nz/baseline.json",
+      "sha256": "8a65681df52b811afd1cf22a702ddf167e2381ae3196375bcf132d2a0c125dcc"
+    },
+    {
+      "historical_or_imported": false,
+      "occurrences": 1,
+      "path": "evidence/migrations/corpus-legislation-nz/corrective-audit.json",
+      "sha256": "d9d8d730b023b872ad18ab7a0f4153850e7ab0f111f333fead589a04d84f3b77"
+    },
+    {
+      "historical_or_imported": false,
+      "occurrences": 8,
+      "path": "evidence/migrations/corpus-legislation-nz/dec-hist-001-finding.md",
+      "sha256": "35a7ea3da08c9cbbf2cb33bff1922d922f5cea5f17af3aea5c37cbe82078ceb0"
+    },
+    {
+      "historical_or_imported": false,
+      "occurrences": 1,
+      "path": "evidence/migrations/corpus-legislation-nz/historical-coverage/analyzer-claim-inputs.json",
+      "sha256": "fb4de45bdebe6be156fa57b3079eecaf7fcffc41e6fa6ae267e98bb02b17b391"
+    },
+    {
+      "historical_or_imported": true,
+      "occurrences": 79,
+      "path": "evidence/migrations/corpus-legislation-nz/historical-coverage/claim-correction-manifest.json",
+      "sha256": "2f340ec86ebd065f3792beefecb849814d5eeb0f33e8ac36a459ed52f6bd6d12"
+    },
+    {
+      "historical_or_imported": true,
+      "occurrences": 2,
+      "path": "evidence/migrations/corpus-legislation-nz/historical-coverage/historical-coverage-report.json",
+      "sha256": "64d564e64501968c97cfb71083707ab1d61effb37c14daef680e15d1f4570671"
+    },
+    {
+      "historical_or_imported": true,
+      "occurrences": 2,
+      "path": "evidence/migrations/corpus-legislation-nz/historical-coverage/historical-coverage-report.md",
+      "sha256": "584954047f39a65256b8080297c58964193a14d07c0a4f425f966e37fc0a6f6b"
+    },
+    {
+      "historical_or_imported": false,
+      "occurrences": 3,
+      "path": "evidence/migrations/corpus-legislation-nz/historical-coverage/public-surface-observations.json",
+      "sha256": "e9fa8c2a1e27f7c8b7d791012662a1134b004cfb4912388715bd9005a938b943"
+    },
+    {
+      "historical_or_imported": false,
+      "occurrences": 1,
+      "path": "evidence/migrations/corpus-legislation-nz/issue-reconciliation.json",
+      "sha256": "88bd520af09ce44a78406049457182922c2d39928bc52f743beb0d3d0b74b5a2"
+    },
+    {
+      "historical_or_imported": true,
+      "occurrences": 1,
+      "path": "evidence/migrations/corpus-legislation-nz/parity/README.md",
+      "sha256": "57b822f46d0932fef23f44c6b11e456f43939c4effb4d57e49b5d5954ef115c9"
+    },
+    {
+      "historical_or_imported": true,
+      "occurrences": 1,
+      "path": "evidence/migrations/corpus-legislation-nz/parity/historical-batch-parity.json",
+      "sha256": "416c4d7da05a58876462c29d297c0ed78e27a5c9b06d869bd8c5f1e6435c2b3c"
+    },
+    {
+      "historical_or_imported": false,
+      "occurrences": 1,
+      "path": "evidence/migrations/corpus-legislation-nz/pre-acquisition-discovery.json",
+      "sha256": "1400899c3f41ee462c31449bd9899e277cc7059dc094bcf4f19c5c9e9003a998"
+    },
+    {
+      "historical_or_imported": true,
+      "occurrences": 1,
+      "path": "evidence/migrations/corpus-legislation-nz/state-transfer-receipt.json",
+      "sha256": "8b83aec86513ed1ac9eb5ec6757440f1e2e5d164cce7f7aa5d2897cd3c5e2e61"
+    },
+    {
+      "historical_or_imported": false,
+      "occurrences": 4,
+      "path": "evidence/seeds/historical-work-ids-0001/handoff.md",
+      "sha256": "bccba3770e93ebe0469ff78e2d02395fb09f868ab6424033e4ded3ff7d8c1e48"
+    },
+    {
+      "historical_or_imported": false,
+      "occurrences": 2,
+      "path": "evidence/seeds/historical-work-ids-0001/provenance-01.json",
+      "sha256": "d3629d17e2dea6e8b451244f6a180a344ed245ad5b6476b90feceaecb07ccc2b"
+    },
+    {
+      "historical_or_imported": false,
+      "occurrences": 1,
+      "path": "schemas/seed-registry-v1.schema.json",
+      "sha256": "c6ba30525083fd86dd9c7b53fb2bf5e74cc01369e0f9bd73082206a4514a458e"
+    },
+    {
+      "historical_or_imported": false,
+      "occurrences": 1,
+      "path": "seeds/README.md",
+      "sha256": "65f43d0696ec714d605f40fda30ec3aa11459d8340220af9811f98497a2e51e4"
+    },
+    {
+      "historical_or_imported": false,
+      "occurrences": 2,
+      "path": "seeds/registry.json",
+      "sha256": "497f3d369aee13af5bf8549d66450eb3b027bfae66e031a6e68d7013d02336b8"
+    }
+  ],
+  "replacement_acquired_count": null,
+  "schema_version": "archive-govt-nz.legislation-coverage-correction-inputs/v1"
+}
