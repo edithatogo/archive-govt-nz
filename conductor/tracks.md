@@ -279,5 +279,5 @@ implementation has occurred under these tracks.
 - [x] **Track: Evidence index and closeout-claim correction (Prompt 17)**
   *Link: [./tracks/legislation_evidence_index_20260902/index.md](./tracks/legislation_evidence_index_20260902/index.md)*
 
-- [~] **Track: Cutover release provenance correction (Prompt 18)**
+- [x] **Track: Cutover release provenance correction (Prompt 18)**
   *Link: [./tracks/cutover_release_provenance_correction_20260902/index.md](./tracks/cutover_release_provenance_correction_20260902/index.md)*
