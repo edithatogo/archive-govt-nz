@@ -1,0 +1,69 @@
+{
+  "$id": "https://archive-govt-nz.org/schemas/legislation-preservation-policy-v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "actions_role": {
+      "const": "expiring_operational_cache"
+    },
+    "authority": {
+      "const": "huggingface_git_revision"
+    },
+    "encryption": {
+      "const": "none_no_blocked_payload_upload"
+    },
+    "expiry": {
+      "const": "no_promised_provider_expiry_deletion_and_account_risk"
+    },
+    "owner": {
+      "const": "edithatogo"
+    },
+    "ownership_transfer": {
+      "const": "preserve_identity_history_and_verify_before_cutover"
+    },
+    "payload_default": {
+      "const": "blocked"
+    },
+    "prefix_parts": {
+      "const": [
+        "durable-state",
+        "v1"
+      ]
+    },
+    "publication_gate": {
+      "const": "explicit_hash_bound_approval_and_independent_readback"
+    },
+    "repository": {
+      "const": "edithatogo/corpus-legislation-nz"
+    },
+    "retention": {
+      "const": "permanent_intent_not_provider_guarantee"
+    },
+    "schema_version": {
+      "const": "archive-govt-nz.legislation-preservation-policy/v1"
+    },
+    "zenodo_concept_doi": {
+      "const": "10.5281/zenodo.20592539"
+    },
+    "zenodo_observed_version_doi": {
+      "const": "10.5281/zenodo.20592540"
+    }
+  },
+  "required": [
+    "schema_version",
+    "authority",
+    "repository",
+    "prefix_parts",
+    "owner",
+    "retention",
+    "actions_role",
+    "payload_default",
+    "encryption",
+    "publication_gate",
+    "ownership_transfer",
+    "expiry",
+    "zenodo_concept_doi",
+    "zenodo_observed_version_doi"
+  ],
+  "type": "object"
+}

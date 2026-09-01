@@ -36,7 +36,8 @@ jobs:
       - name: Run locked assurance gate
         run: >-
           uv run --locked python tools/check.py
-          --pytest-workers auto --pytest-distribution loadscope
+          --pytest-workers auto
+          --pytest-distribution loadscope
       - name: Export Cobertura coverage
         if: matrix.os == 'ubuntu-latest' && always()
         run: uv run --locked coverage xml -o coverage.xml

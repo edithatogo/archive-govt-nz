@@ -1,0 +1,132 @@
+[
+  {
+    "name": "pinned_manifest",
+    "old": "v.equal(manifest[\"manifest_sha256\"], pin[\"manifest_sha256\"], \"pinned_manifest\")",
+    "new": "None"
+  },
+  {
+    "name": "package_digest",
+    "old": "v.equal(v.sha(raw), expected, \"package_digest\")",
+    "new": "None"
+  },
+  {
+    "name": "package_encoding",
+    "old": "v.equal(raw, zip_bytes(files), \"package_encoding\")",
+    "new": "None"
+  },
+  {
+    "name": "restore_instructions",
+    "old": "v.equal(files.pop(\"RESTORE.txt\"), INSTRUCTIONS, \"restore_instructions\")",
+    "new": "None"
+  },
+  {
+    "name": "package_json_encoding",
+    "old": "v.equal(document_raw, M.encoded(document), \"package_json_encoding\")",
+    "new": "None"
+  },
+  {
+    "name": "package_inventory",
+    "old": "v.equal(document[\"files\"], inventory(originals), \"package_inventory\")",
+    "new": "None"
+  },
+  {
+    "name": "package_roots",
+    "old": "v.equal(document[\"roots\"], state(originals, document[\"input\"]), \"package_roots\")",
+    "new": "None"
+  },
+  {
+    "name": "restore_readback",
+    "old": "v.equal(P.read_state(stage), files, \"restore_readback\")",
+    "new": "None"
+  },
+  {
+    "name": "output_race",
+    "old": "v.require(condition=not output.exists(), code=\"output_race\")",
+    "new": "None"
+  },
+  {
+    "name": "merged_source",
+    "old": "v.equal(pin[\"source\"], P.source_identity(\"\"), \"merged_source\")",
+    "new": "None"
+  },
+  {
+    "name": "pinned_completion",
+    "old": "v.equal(\n            v.sha(files[\"COMPLETE.json\"]), pin[\"marker_sha256\"], \"pinned_completion\"\n        )",
+    "new": "None"
+  },
+  {
+    "name": "completion_inventory",
+    "old": "v.equal(\n            v.load(files[\"COMPLETE.json\"]),\n            {\"files\": entries, \"inventory_sha256\": v.sha(M.encoded(entries))},\n            \"completion_inventory\",\n        )",
+    "new": "None"
+  },
+  {
+    "name": "parent_members",
+    "old": "v.equal(\n            {n for n in files if n.startswith(\"parents/\")},\n            parent_names,\n            \"parent_members\",\n        )",
+    "new": "None"
+  },
+  {
+    "name": "versions",
+    "old": "v.equal(\n            v.load(files[\"versions_by_work.json\"]),\n            {\n                w: sorted(r[\"manifestation_id\"] for r in records if r[\"work_id\"] == w)\n                for w in manifest[\"discovered_work_ids\"]\n            },\n            \"versions\",\n        )",
+    "new": "None"
+  },
+  {
+    "name": "merge_output",
+    "old": "v.equal(\n            receipt[\"output\"],\n            {\n                \"records\": len(records),\n                \"work_ids\": len(manifest[\"discovered_work_ids\"]),\n                \"objects\": len(objects),\n                \"manifest_sha256\": pin[\"manifest_sha256\"],\n                \"inventory_sha256\": manifest[\"discovered_inventory_sha256\"],\n                \"checkpoint_sha256\": v.sha(files[\"checkpoint.json\"]),\n            },\n            \"merge_output\",\n        )",
+    "new": "None"
+  },
+  {
+    "name": "merged_member",
+    "old": "v.require(\n            condition=all(\n                n in MERGED_DOCS or n.startswith((M.CAS, \"parents/\")) for n in files\n            ),\n            code=\"merged_member\",\n        )",
+    "new": "None"
+  },
+  {
+    "name": "parent_archive",
+    "old": "v.equal(\n                v.sha(files[prefix + \"artifact.zip\"]),\n                parent[\"artifact_sha256\"],\n                \"parent_archive\",\n            )",
+    "new": "None"
+  },
+  {
+    "name": "parent_descriptor",
+    "old": "v.equal(\n                v.sha(files[prefix + \"descriptor.json\"]),\n                parent[\"descriptor_sha256\"],\n                \"parent_descriptor\",\n            )",
+    "new": "None"
+  },
+  {
+    "name": "parent_commit",
+    "old": "v.equal(\n                descriptor[\"metadata\"][\"run\"][\"head_sha\"],\n                parent[\"repository_commit\"],\n                \"parent_commit\",\n            )",
+    "new": "None"
+  },
+  {
+    "name": "package_spelling",
+    "old": "v.equal(entry.orig_filename, name, \"package_spelling\")",
+    "new": "None"
+  },
+  {
+    "name": "package_duplicate",
+    "old": "v.require(condition=name not in files, code=\"package_duplicate\")",
+    "new": "None"
+  },
+  {
+    "name": "package_member_type",
+    "old": "v.require(\n                condition=entry.compress_type == zipfile.ZIP_STORED\n                and not entry.flag_bits & 1\n                and stat.S_IFMT(entry.external_attr >> 16) == stat.S_IFREG,\n                code=\"package_member_type\",\n            )",
+    "new": "None"
+  },
+  {
+    "name": "rights_block",
+    "old": "if document[\"rights\"][\"payload\"] == \"public_approved\":",
+    "new": "if document[\"rights\"][\"payload\"] == \"blocked\":"
+  },
+  {
+    "name": "readback_claim",
+    "old": "\"readback_verified\": False",
+    "new": "\"readback_verified\": True"
+  },
+  {
+    "name": "state_expansion",
+    "old": "v.require(\n        condition=sum(len(data) for data in originals.values()) <= v.MAX_EXPANDED,\n        code=\"state_expansion\",\n    )",
+    "new": "None"
+  },
+  {
+    "name": "package_regular_file",
+    "old": "v.require(condition=path.is_file(), code=\"package_regular_file\")",
+    "new": "None"
+  }
+]
