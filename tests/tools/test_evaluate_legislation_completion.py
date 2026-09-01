@@ -35,15 +35,17 @@ def _write_repo(tmp_path: Path, statuses: dict[str, str] | None = None) -> Path:
         evidence.parent.mkdir(parents=True, exist_ok=True)
         evidence.write_text('{"status":"verified"}\n', encoding="utf-8")
         classification = "active" if status == "complete" else status
-        entries.append({
-            "evidence_id": evidence_id,
-            "path": f"evidence/{evidence_id}.json",
-            "sha256": hashlib.sha256(evidence.read_bytes()).hexdigest(),
-            "classification": classification,
-            "artefact_type": "receipt",
-            "claim_dimensions": [name],
-            "rationale": f"Controlled proof for {name}.",
-        })
+        entries.append(
+            {
+                "evidence_id": evidence_id,
+                "path": f"evidence/{evidence_id}.json",
+                "sha256": hashlib.sha256(evidence.read_bytes()).hexdigest(),
+                "classification": classification,
+                "artefact_type": "receipt",
+                "claim_dimensions": [name],
+                "rationale": f"Controlled proof for {name}.",
+            }
+        )
         evaluator_inputs[name] = [evidence_id] if classification == "active" else []
         dimensions[name] = {
             "status": status,
@@ -106,15 +108,17 @@ def test_invalidated_evidence_cannot_be_evaluator_input(tmp_path: Path) -> None:
     index["entries"][0]["invalidated_by"] = "correction"
     correction = base / "evidence/correction.json"
     correction.write_text('{"status":"verified"}\n', encoding="utf-8")
-    index["entries"].append({
-        "evidence_id": "correction",
-        "path": "evidence/correction.json",
-        "sha256": hashlib.sha256(correction.read_bytes()).hexdigest(),
-        "classification": "active",
-        "artefact_type": "receipt",
-        "claim_dimensions": list(DIMENSIONS),
-        "rationale": "Superseding controlled test proof.",
-    })
+    index["entries"].append(
+        {
+            "evidence_id": "correction",
+            "path": "evidence/correction.json",
+            "sha256": hashlib.sha256(correction.read_bytes()).hexdigest(),
+            "classification": "active",
+            "artefact_type": "receipt",
+            "claim_dimensions": list(DIMENSIONS),
+            "rationale": "Superseding controlled test proof.",
+        }
+    )
     path.write_text(json.dumps(index) + "\n", encoding="utf-8")
     complete, result = evaluate_completion(base)
     assert complete is False
@@ -125,7 +129,9 @@ def test_hash_mismatch_fails_closed(tmp_path: Path) -> None:
     """Changed evidence bytes invalidate their indexed proof."""
     base = _write_repo(tmp_path)
     first_path = json.loads(
-        (base / "evidence/migrations/corpus-legislation-nz/evidence-index.json").read_text()
+        (
+            base / "evidence/migrations/corpus-legislation-nz/evidence-index.json"
+        ).read_text()
     )["entries"][0]["path"]
     (base / first_path).write_text('{"status":"changed"}\n', encoding="utf-8")
     complete, result = evaluate_completion(base)
@@ -140,7 +146,10 @@ def test_incomplete_dimension_blocks_overall_completion(tmp_path: Path) -> None:
     complete, result = evaluate_completion(_write_repo(tmp_path, statuses))
     assert complete is False
     assert result["status"] == "incomplete"
-    assert "dimension_incomplete:corpus_custody_recoverability:incomplete" in result["blockers"]
+    assert (
+        "dimension_incomplete:corpus_custody_recoverability:incomplete"
+        in result["blockers"]
+    )
 
 
 def test_unselected_proof_is_ineligible(tmp_path: Path) -> None:
@@ -152,7 +161,10 @@ def test_unselected_proof_is_ineligible(tmp_path: Path) -> None:
     path.write_text(json.dumps(index) + "\n", encoding="utf-8")
     complete, result = evaluate_completion(base)
     assert complete is False
-    assert "dimension_proof_ineligible:publication_identity_migration" in result["blockers"]
+    assert (
+        "dimension_proof_ineligible:publication_identity_migration"
+        in result["blockers"]
+    )
 
 
 def test_main_writes_incomplete_receipt(
@@ -161,7 +173,10 @@ def test_main_writes_incomplete_receipt(
     """The CLI writes and reports the truthful non-complete state."""
     base = _write_repo(
         tmp_path,
-        {name: "incomplete" if name == DIMENSIONS[0] else "complete" for name in DIMENSIONS},
+        {
+            name: "incomplete" if name == DIMENSIONS[0] else "complete"
+            for name in DIMENSIONS
+        },
     )
     output = base / "current.json"
     monkeypatch.setattr(

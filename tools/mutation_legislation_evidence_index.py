@@ -16,7 +16,11 @@ ROOT = Path(__file__).resolve().parents[1]
 VALIDATOR = Path("tools/legislation_evidence_index.py")
 EVALUATOR = Path("tools/evaluate_legislation_completion.py")
 MUTANTS = {
-    "fixity_comparison": (VALIDATOR, 'if observed != row["sha256"]:', 'if observed == row["sha256"]:'),
+    "fixity_comparison": (
+        VALIDATOR,
+        'if observed != row["sha256"]:',
+        'if observed == row["sha256"]:',
+    ),
     "active_input_guard": (
         VALIDATOR,
         'if entries[evidence_id]["classification"] != "active":',
