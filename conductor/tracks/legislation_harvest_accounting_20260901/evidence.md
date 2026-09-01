@@ -8,9 +8,9 @@ Validation and delivery evidence will be appended without replacing failed attem
 
 The donor was independently re-read as archived at final reachable head `b40587f1b1aec7356a0f623916fcc8212397d283`. Target `main` advanced after work began to `0c3afba452b26d7721e75310b2e4d2b19d82782f`; that exact state was merged into the issue branch before final validation.
 
-Focused accounting, API, service, runner, CAS, and CLI tests passed: 206 tests. The first full harness attempt ran 4,372 tests at 97.40% total coverage and failed only because the assurance-stage sequence fixture did not yet include the new mutation stage. The fixture was corrected, preserving the failed attempt here. The repeated complete harness passed all 4,372 tests, 45 schemas, 35 representative documents, 9/9 parity checks, every repository mutation lane, dependency audit, licence inventory, secret scan, and SBOM validation. The changed accounting module reached 100% statement and branch coverage; the full repository reached 97.40%.
+Focused accounting, API, service, runner, CAS, and CLI tests passed: 206 tests. The first full harness attempt ran 4,372 tests at 97.35% total coverage and failed only because the assurance-stage sequence fixture did not yet include the new mutation stage. The fixture was corrected, preserving the failed attempt here. The repeated complete harness passed all 4,392 tests, 45 schemas, 35 representative documents, 9/9 parity checks, every repository mutation lane, dependency audit, licence inventory, secret scan, and SBOM validation. The changed accounting module reached 100% statement and branch coverage; the full repository reached 97.35%.
 
-The Prompt 12 mutation receipt killed 13/13 mutants. Its accounting source hash is `1a0088c7eee11b7566684a9755c8eb5b0eec4aec06f53ceee9c57d41d0e37334`. The v3 schema hash is `436c20386263466fb96b763db253677bfc434cc1b0e9241aff623b3e04dec67c`; the representative receipt hash is `295fe7566e4f736dce624f4e7fa1ba610c0ef39ea70d9e8ea646ae45d57dd2b3`; and the mutation runner hash is `e10de62876e17986dd32806404781fb6b867fc068c11649163e15a5f3f59705d`.
+The Prompt 12 mutation receipt killed 13/13 mutants. Its accounting source hash is `73be2a1f1c0363b190303fb68a2fe66a5482d8717571e3c4c5b360181f97f95f`. The v3 schema hash is `436c20386263466fb96b763db253677bfc434cc1b0e9241aff623b3e04dec67c`; the representative receipt hash is `295fe7566e4f736dce624f4e7fa1ba610c0ef39ea70d9e8ea646ae45d57dd2b3`; and the mutation runner hash is `e10de62876e17986dd32806404781fb6b867fc068c11649163e15a5f3f59705d`.
 
 Independent agent review found three blocking gaps after the first green local
 gate: manifest promotion preceded checkpoint promotion, discovery preceded
@@ -19,3 +19,5 @@ The repair reverses the parent-validation ordering, represents checkpoint
 promotion failure as indeterminate without publishing the manifest, and
 retains the complete original v2 mapping without assigning v3 meaning. The
 focused repaired suite passed 111 tests.
+
+The first hosted patch-coverage result at head `4cfeaf5d53b92e721088ce0c02bb8065e2c8e159` failed at 94.46254% with 17 changed lines uncovered. Focused terminal-disposition, retry, classification, transactional rollback and compatibility tests were added; no threshold or gate was weakened. Final exact-head hosted results are recorded at closeout.

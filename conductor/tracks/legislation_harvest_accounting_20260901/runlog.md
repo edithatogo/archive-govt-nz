@@ -6,7 +6,7 @@
 
 2026-09-01 UTC: service, API adapter, runner and CLI were refactored to preserve per-work dispositions, response classifications, retry totals, state roots and verified CAS inventories. Historical v2 receipts remain readable only as weak legacy evidence.
 
-2026-09-01 UTC: focused tests passed. Mutation testing killed 13/13 accounting mutants. The first full harness attempt failed one stage-list expectation after 4,371/4,372 tests; the missing expected stage was added. The repeated full harness passed all 4,372 tests and every schema, parity, mutation, supply-chain, licence, secret and SBOM gate.
+2026-09-01 UTC: focused tests passed. Mutation testing killed 13/13 accounting mutants. The first full harness attempt failed one stage-list expectation after 4,371/4,372 tests; the missing expected stage was added. The repeated full harness passed all 4,392 tests and every schema, parity, mutation, supply-chain, licence, secret and SBOM gate.
 
 2026-09-01 UTC: independent readback rejected three semantic gaps despite the
 green gate. Transaction-failure truth, corrupt-parent ordering and complete v2
@@ -17,3 +17,5 @@ checks were restarted from the repaired exact head.
 Cross-authority reconciliation was moved fully ahead of discovery, and
 manifest-write failure now rolls back the already promoted checkpoint. The
 expanded focused legislation/CLI/adapter suite passed 187 tests.
+
+2026-09-01 UTC: initial hosted patch coverage failed at 94.46254%. Added focused source-outcome, fail-fast, transactional rollback, retry and CLI compatibility tests, then repeated the full local harness successfully with 4,392 tests and 97.35% total coverage.
