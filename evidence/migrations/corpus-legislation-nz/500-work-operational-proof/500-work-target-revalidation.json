@@ -43,8 +43,7 @@
     "expected_parent_reference": "config/legislation/parents/current.json"
   },
   "preflight": {
-    "credential_configured_names": ["LEGISLATION_API_KEY"],
-    "credential_values_read": false,
+    "required_credential_name_configured": true,
     "credential_validity_verified": false,
     "source_endpoint_reachable": "not_tested_no_complete_no_write_lane",
     "state_roots_match": "not_tested_no_compatible_parent",
@@ -52,7 +51,8 @@
     "configured_lane": "discovery",
     "configured_max_works": 50,
     "required_lane": "exact_inventory",
-    "required_max_works": 500
+    "required_max_works": 500,
+    "credential_values_accessed": false
   },
   "blocking_findings": [
     {
@@ -103,9 +103,9 @@
     "complete_state_artifact_verified": false,
     "cas_fixity_verified": false,
     "reconciliation_zero_unexplained_mismatches": false,
-    "secret_leakage_scan_of_run": "not_applicable_no_run",
     "continuation_proven": false,
-    "durable_recovery_proven": false
+    "durable_recovery_proven": false,
+    "sensitive_value_scan_of_run": "not_applicable_no_run"
   },
   "next_safe_sequence": [
     "Complete Prompt 06 without broadening Prompt 13.",
