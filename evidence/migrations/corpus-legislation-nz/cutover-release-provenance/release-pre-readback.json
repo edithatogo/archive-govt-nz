@@ -1,0 +1,17 @@
+{
+  "assets": [],
+  "body": "Formal cutover release for the corpus-legislation-nz consolidation programme (epic #131).\n\nEvidence:\n- 2 successful target observation cycles (2026-08-23), each: bounded harvest -> reconciliation (consistent) -> recovery drill (verified):\n  - Cycle 1: harvest 32625516235, reconciliation 32625566353, recovery 32626113799\n  - Cycle 2 (with full-state continuation): harvest 32625990438, reconciliation 32626071396, recovery 32626113799\n- Donor repository edithatogo/corpus-legislation-nz archived 2026-08-23T07:40:08Z after the contract postcondition (2 observation cycles) was satisfied\n- Attestation: evidence/migrations/corpus-legislation-nz/shadow-operation-cutover-attestation.json\n- Gate authorization: evidence/migrations/corpus-legislation-nz/operational-gate-authorization.json\n\nSupersedes invalidated receipts (observation-receipt, cutover-receipt from PR #124 era).\n",
+  "body_sha256": "812b5d997a193e37abf21fcf22df7a8ec872efa8407eb29a4f70501e7fb540c6",
+  "draft": false,
+  "etag": "W/\"099720399f4fb72f4fe3af88937d831ee0ecf15657f54df60aac43acd8b47cd9\"",
+  "html_url": "https://github.com/edithatogo/archive-govt-nz/releases/tag/legislation-cutover-v1.0.0",
+  "id": 375146205,
+  "immutable": false,
+  "name": "Legislation consolidation cutover v1.0.0",
+  "prerelease": false,
+  "published_at": "2026-08-23T07:41:01Z",
+  "raw_response_sha256": "ec5769a274441890950fff2c7137b8c11ebe68774671380818d8b18ddbd0587f",
+  "resolved_tag_commit": "949f6f6abed0cfb668fc5f163129f11e54f335a3",
+  "retrieved_at": "2026-09-01T16:27:02Z",
+  "tag_name": "legislation-cutover-v1.0.0"
+}

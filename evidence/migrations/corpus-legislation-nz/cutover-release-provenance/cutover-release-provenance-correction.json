@@ -1,0 +1,269 @@
+{
+  "addendum": {
+    "local_document_path": "docs/migrations/corpus-legislation-nz/releases/legislation-cutover-v1.0.0-addendum.md",
+    "local_document_sha256": "269e6a5a859e0db4ea1641bc435a487e36f0a721398052624bcbb68ad8095d87",
+    "rendered_remote_addendum_sha256": "55b96921e0bc1ba2002283d8b6219d59c6356ac133d6c4620d03e13e76747e35"
+  },
+  "authority": {
+    "attested_at": "2026-08-23T07:40:30Z",
+    "path": "evidence/migrations/corpus-legislation-nz/shadow-operation-cutover-attestation.json",
+    "schema_version": "archive-govt-nz.shadow-operation-cutover-attestation/v1",
+    "sha256": "f07f707fb824c770ae43577e62754c9d80167d2b1be56bf039d24c8c0265afbc"
+  },
+  "correction": {
+    "correct_value": 32625612739,
+    "field": "cycle_1.recovery_run_id",
+    "incorrect_value": 32626113799,
+    "unchanged_cycle_2_recovery_run_id": 32626113799
+  },
+  "correction_id": "legislation-cutover-v1.0.0-cycle-1-recovery-run",
+  "external_action": {
+    "applied_at": "2026-09-01T16:43:21Z",
+    "operation_id": "github-request-E5FA:1B2FAE:C472:F248:6A9700A8",
+    "readback": {
+      "body": "Formal cutover release for the corpus-legislation-nz consolidation programme (epic #131).\n\nEvidence:\n- 2 successful target observation cycles (2026-08-23), each: bounded harvest -> reconciliation (consistent) -> recovery drill (verified):\n  - Cycle 1: harvest 32625516235, reconciliation 32625566353, recovery 32626113799\n  - Cycle 2 (with full-state continuation): harvest 32625990438, reconciliation 32626071396, recovery 32626113799\n- Donor repository edithatogo/corpus-legislation-nz archived 2026-08-23T07:40:08Z after the contract postcondition (2 observation cycles) was satisfied\n- Attestation: evidence/migrations/corpus-legislation-nz/shadow-operation-cutover-attestation.json\n- Gate authorization: evidence/migrations/corpus-legislation-nz/operational-gate-authorization.json\n\nSupersedes invalidated receipts (observation-receipt, cutover-receipt from PR #124 era).\n\n## Correction addendum \u2014 2026-09-02\n\nThe Cycle 1 recovery run ID in the original release note was incorrect. The verified Cycle 1 tuple is:\n\n- Cycle 1: harvest 32625516235, reconciliation 32625566353, recovery 32625612739\n\nCycle 2 remains unchanged: `Cycle 2 (with full-state continuation): harvest 32625990438, reconciliation 32626071396, recovery 32626113799`. This addendum changes no tag, release asset, archived donor state, or external publication. The authoritative source is `evidence/migrations/corpus-legislation-nz/shadow-operation-cutover-attestation.json`.\n",
+      "body_sha256": "66617b06cce61d19b3a2dadc4e352d32af9292334bb9cae4379a82147fcfd28d",
+      "etag": "W/\"ce56368ebdf86cefa385be27bc6b40e1310140fcf77b1f8f394015700909b0fa\"",
+      "normalized_response_sha256": "fff93e36259836c84c602944b8bbaa079373226449214b44ebf8acde376f75d1",
+      "raw_response_path": "evidence/migrations/corpus-legislation-nz/cutover-release-provenance/release-post-readback.json",
+      "raw_response_sha256": "dd9a0d71aa8356a5c33cf4134a19d40ff01f38f2a3e3749b33650f7259f2063a",
+      "release_identity": {
+        "assets": [],
+        "body": "Formal cutover release for the corpus-legislation-nz consolidation programme (epic #131).\n\nEvidence:\n- 2 successful target observation cycles (2026-08-23), each: bounded harvest -> reconciliation (consistent) -> recovery drill (verified):\n  - Cycle 1: harvest 32625516235, reconciliation 32625566353, recovery 32626113799\n  - Cycle 2 (with full-state continuation): harvest 32625990438, reconciliation 32626071396, recovery 32626113799\n- Donor repository edithatogo/corpus-legislation-nz archived 2026-08-23T07:40:08Z after the contract postcondition (2 observation cycles) was satisfied\n- Attestation: evidence/migrations/corpus-legislation-nz/shadow-operation-cutover-attestation.json\n- Gate authorization: evidence/migrations/corpus-legislation-nz/operational-gate-authorization.json\n\nSupersedes invalidated receipts (observation-receipt, cutover-receipt from PR #124 era).\n\n## Correction addendum \u2014 2026-09-02\n\nThe Cycle 1 recovery run ID in the original release note was incorrect. The verified Cycle 1 tuple is:\n\n- Cycle 1: harvest 32625516235, reconciliation 32625566353, recovery 32625612739\n\nCycle 2 remains unchanged: `Cycle 2 (with full-state continuation): harvest 32625990438, reconciliation 32626071396, recovery 32626113799`. This addendum changes no tag, release asset, archived donor state, or external publication. The authoritative source is `evidence/migrations/corpus-legislation-nz/shadow-operation-cutover-attestation.json`.\n",
+        "draft": false,
+        "id": 375146205,
+        "is_immutable": false,
+        "name": "Legislation consolidation cutover v1.0.0",
+        "prerelease": false,
+        "published_at": "2026-08-23T07:41:01Z",
+        "tag": "legislation-cutover-v1.0.0",
+        "tag_commit": "949f6f6abed0cfb668fc5f163129f11e54f335a3",
+        "url": "https://github.com/edithatogo/archive-govt-nz/releases/tag/legislation-cutover-v1.0.0"
+      },
+      "retrieved_at": "2026-09-01T16:43:42Z"
+    },
+    "status": "applied_readback_verified"
+  },
+  "hosted_evidence": {
+    "normalized_sha256": "0ec8c03f295bc866039da9a82500f1ca8e27d760d524e57302cad141f6c68d70",
+    "runs": [
+      {
+        "artifacts": [
+          {
+            "created_at": "2026-08-23T07:25:37Z",
+            "expired": false,
+            "expires_at": "2026-11-21T07:25:19Z",
+            "id": 9489568248,
+            "name": "legislation-state-32625516235",
+            "size_in_bytes": 4958
+          }
+        ],
+        "conclusion": "success",
+        "created_at": "2026-08-23T07:25:18Z",
+        "event": "workflow_dispatch",
+        "head_sha": "cd338bbce9e0d5d7b033377ac9c3794acb8b93d1",
+        "jobs": [
+          {
+            "completed_at": "2026-08-23T07:25:40Z",
+            "conclusion": "success",
+            "id": 97160157379,
+            "name": "harvest-legislation",
+            "started_at": "2026-08-23T07:25:21Z",
+            "status": "completed"
+          }
+        ],
+        "receipt_sha256": "8e585267b113d809cdfc76f85af949838d9693c77fdae1f965aa8c1242358cd0",
+        "run_id": 32625516235,
+        "status": "completed",
+        "updated_at": "2026-08-23T07:25:41Z",
+        "url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/32625516235"
+      },
+      {
+        "artifacts": [
+          {
+            "created_at": "2026-08-23T07:26:42Z",
+            "expired": false,
+            "expires_at": "2026-11-21T07:26:28Z",
+            "id": 9489580978,
+            "name": "legislation-reconciliation-32625566353",
+            "size_in_bytes": 432
+          }
+        ],
+        "conclusion": "success",
+        "created_at": "2026-08-23T07:26:27Z",
+        "event": "workflow_dispatch",
+        "head_sha": "cd338bbce9e0d5d7b033377ac9c3794acb8b93d1",
+        "jobs": [
+          {
+            "completed_at": "2026-08-23T07:26:44Z",
+            "conclusion": "success",
+            "id": 97160279865,
+            "name": "reconcile",
+            "started_at": "2026-08-23T07:26:30Z",
+            "status": "completed"
+          }
+        ],
+        "receipt_sha256": "3c6b03a1bc7279d064e195c701ec2a5a45cdb32069f9352301f48958cb19fd8e",
+        "run_id": 32625566353,
+        "status": "completed",
+        "updated_at": "2026-08-23T07:26:45Z",
+        "url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/32625566353"
+      },
+      {
+        "artifacts": [
+          {
+            "created_at": "2026-08-23T07:27:46Z",
+            "expired": false,
+            "expires_at": "2026-11-21T07:27:30Z",
+            "id": 9489593885,
+            "name": "legislation-recovery-32625612739",
+            "size_in_bytes": 2420
+          }
+        ],
+        "conclusion": "success",
+        "created_at": "2026-08-23T07:27:29Z",
+        "event": "workflow_dispatch",
+        "head_sha": "cd338bbce9e0d5d7b033377ac9c3794acb8b93d1",
+        "jobs": [
+          {
+            "completed_at": "2026-08-23T07:27:48Z",
+            "conclusion": "success",
+            "id": 97160390180,
+            "name": "recovery",
+            "started_at": "2026-08-23T07:27:32Z",
+            "status": "completed"
+          }
+        ],
+        "receipt_sha256": "c429c2120474dac4c3001b9ca341977312fa50602a60f81ba081ca11b8bb739a",
+        "run_id": 32625612739,
+        "status": "completed",
+        "updated_at": "2026-08-23T07:27:49Z",
+        "url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/32625612739"
+      },
+      {
+        "artifacts": [
+          {
+            "created_at": "2026-08-23T07:36:25Z",
+            "expired": false,
+            "expires_at": "2026-11-21T07:36:02Z",
+            "id": 9489696307,
+            "name": "legislation-state-32625990438",
+            "size_in_bytes": 21774
+          }
+        ],
+        "conclusion": "success",
+        "created_at": "2026-08-23T07:36:01Z",
+        "event": "workflow_dispatch",
+        "head_sha": "abdb814347b78caefa3402bae749a13088d6134f",
+        "jobs": [
+          {
+            "completed_at": "2026-08-23T07:36:28Z",
+            "conclusion": "success",
+            "id": 97161327754,
+            "name": "harvest-legislation",
+            "started_at": "2026-08-23T07:36:04Z",
+            "status": "completed"
+          }
+        ],
+        "receipt_sha256": "461709c836dfb14ff21ff65568b34ae6f9c306cf2c224a46f52a71b1b8ba0629",
+        "run_id": 32625990438,
+        "status": "completed",
+        "updated_at": "2026-08-23T07:36:29Z",
+        "url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/32625990438"
+      },
+      {
+        "artifacts": [
+          {
+            "created_at": "2026-08-23T07:38:12Z",
+            "expired": false,
+            "expires_at": "2026-11-21T07:37:53Z",
+            "id": 9489716374,
+            "name": "legislation-reconciliation-32626071396",
+            "size_in_bytes": 434
+          }
+        ],
+        "conclusion": "success",
+        "created_at": "2026-08-23T07:37:51Z",
+        "event": "workflow_dispatch",
+        "head_sha": "949f6f6abed0cfb668fc5f163129f11e54f335a3",
+        "jobs": [
+          {
+            "completed_at": "2026-08-23T07:38:13Z",
+            "conclusion": "success",
+            "id": 97161523517,
+            "name": "reconcile",
+            "started_at": "2026-08-23T07:37:54Z",
+            "status": "completed"
+          }
+        ],
+        "receipt_sha256": "ca6f1d287ede09a85bb11484d7ccc47a5530edf2bae0fe7e5a79efa4cc6cfca3",
+        "run_id": 32626071396,
+        "status": "completed",
+        "updated_at": "2026-08-23T07:38:14Z",
+        "url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/32626071396"
+      },
+      {
+        "artifacts": [
+          {
+            "created_at": "2026-08-23T07:39:08Z",
+            "expired": false,
+            "expires_at": "2026-11-21T07:38:52Z",
+            "id": 9489726767,
+            "name": "legislation-recovery-32626113799",
+            "size_in_bytes": 12535
+          }
+        ],
+        "conclusion": "success",
+        "created_at": "2026-08-23T07:38:51Z",
+        "event": "workflow_dispatch",
+        "head_sha": "949f6f6abed0cfb668fc5f163129f11e54f335a3",
+        "jobs": [
+          {
+            "completed_at": "2026-08-23T07:39:09Z",
+            "conclusion": "success",
+            "id": 97161626752,
+            "name": "recovery",
+            "started_at": "2026-08-23T07:38:54Z",
+            "status": "completed"
+          }
+        ],
+        "receipt_sha256": "bba10c4325901faf122c76abc6915c8299a3ebc677e9975c7d57765f69e6428a",
+        "run_id": 32626113799,
+        "status": "completed",
+        "updated_at": "2026-08-23T07:39:10Z",
+        "url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/32626113799"
+      }
+    ],
+    "verified_at": "2026-09-01T16:40:00Z"
+  },
+  "issued_at": "2026-09-01T16:40:00Z",
+  "limitations": [
+    "The GitHub release body addendum was applied and independently read back; tag, assets, and release identity were unchanged.",
+    "No release, tag, asset, DOI, dataset, donor, or external publication was created or altered beyond the release-body addendum."
+  ],
+  "release": {
+    "asset_count": 0,
+    "assets": [],
+    "body_sha256": "812b5d997a193e37abf21fcf22df7a8ec872efa8407eb29a4f70501e7fb540c6",
+    "draft": false,
+    "id": 375146205,
+    "is_immutable": false,
+    "name": "Legislation consolidation cutover v1.0.0",
+    "normalized_snapshot_sha256": "6a3635dfa6a8c21239b30c2a8576a23bf5f6eadc68fbaaec4b4d8583473d6bd7",
+    "original_body": "Formal cutover release for the corpus-legislation-nz consolidation programme (epic #131).\n\nEvidence:\n- 2 successful target observation cycles (2026-08-23), each: bounded harvest -> reconciliation (consistent) -> recovery drill (verified):\n  - Cycle 1: harvest 32625516235, reconciliation 32625566353, recovery 32626113799\n  - Cycle 2 (with full-state continuation): harvest 32625990438, reconciliation 32626071396, recovery 32626113799\n- Donor repository edithatogo/corpus-legislation-nz archived 2026-08-23T07:40:08Z after the contract postcondition (2 observation cycles) was satisfied\n- Attestation: evidence/migrations/corpus-legislation-nz/shadow-operation-cutover-attestation.json\n- Gate authorization: evidence/migrations/corpus-legislation-nz/operational-gate-authorization.json\n\nSupersedes invalidated receipts (observation-receipt, cutover-receipt from PR #124 era).\n",
+    "pre_readback": {
+      "etag": "W/\"099720399f4fb72f4fe3af88937d831ee0ecf15657f54df60aac43acd8b47cd9\"",
+      "raw_response_sha256": "ec5769a274441890950fff2c7137b8c11ebe68774671380818d8b18ddbd0587f",
+      "retrieved_at": "2026-09-01T16:27:02Z"
+    },
+    "prerelease": false,
+    "published_at": "2026-08-23T07:41:01Z",
+    "snapshot_path": "evidence/migrations/corpus-legislation-nz/cutover-release-provenance/release-pre-readback.json",
+    "tag": "legislation-cutover-v1.0.0",
+    "tag_commit": "949f6f6abed0cfb668fc5f163129f11e54f335a3",
+    "url": "https://github.com/edithatogo/archive-govt-nz/releases/tag/legislation-cutover-v1.0.0"
+  },
+  "repository": "edithatogo/archive-govt-nz",
+  "schema_version": "archive-govt-nz.legislation-github-release-correction/v1",
+  "target_baseline_commit": "740389b7420ea7ba7382d40a23ad3e23ba2c680a"
+}

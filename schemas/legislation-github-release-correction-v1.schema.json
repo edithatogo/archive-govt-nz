@@ -1,0 +1,573 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/edithatogo/archive-govt-nz/schemas/legislation-github-release-correction-v1.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "correction_id",
+    "issued_at",
+    "repository",
+    "target_baseline_commit",
+    "release",
+    "hosted_evidence",
+    "correction",
+    "authority",
+    "addendum",
+    "external_action",
+    "limitations"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "archive-govt-nz.legislation-github-release-correction/v1"
+    },
+    "correction_id": {
+      "const": "legislation-cutover-v1.0.0-cycle-1-recovery-run"
+    },
+    "issued_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "repository": {
+      "const": "edithatogo/archive-govt-nz"
+    },
+    "release": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "tag",
+        "name",
+        "url",
+        "published_at",
+        "draft",
+        "prerelease",
+        "is_immutable",
+        "tag_commit",
+        "snapshot_path",
+        "normalized_snapshot_sha256",
+        "body_sha256",
+        "original_body",
+        "pre_readback",
+        "asset_count",
+        "assets"
+      ],
+      "properties": {
+        "id": {
+          "const": 375146205
+        },
+        "tag": {
+          "const": "legislation-cutover-v1.0.0"
+        },
+        "name": {
+          "const": "Legislation consolidation cutover v1.0.0"
+        },
+        "url": {
+          "const": "https://github.com/edithatogo/archive-govt-nz/releases/tag/legislation-cutover-v1.0.0"
+        },
+        "published_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "draft": {
+          "const": false
+        },
+        "prerelease": {
+          "const": false
+        },
+        "is_immutable": {
+          "type": "boolean"
+        },
+        "tag_commit": {
+          "const": "949f6f6abed0cfb668fc5f163129f11e54f335a3"
+        },
+        "snapshot_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "body_sha256": {
+          "const": "812b5d997a193e37abf21fcf22df7a8ec872efa8407eb29a4f70501e7fb540c6"
+        },
+        "pre_readback": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "retrieved_at",
+            "etag",
+            "raw_response_sha256"
+          ],
+          "properties": {
+            "retrieved_at": {
+              "const": "2026-09-01T16:27:02Z"
+            },
+            "etag": {
+              "const": "W/\"099720399f4fb72f4fe3af88937d831ee0ecf15657f54df60aac43acd8b47cd9\""
+            },
+            "raw_response_sha256": {
+              "const": "ec5769a274441890950fff2c7137b8c11ebe68774671380818d8b18ddbd0587f"
+            }
+          }
+        },
+        "asset_count": {
+          "const": 0
+        },
+        "assets": {
+          "const": []
+        },
+        "normalized_snapshot_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "original_body": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "correction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "field",
+        "incorrect_value",
+        "correct_value",
+        "unchanged_cycle_2_recovery_run_id"
+      ],
+      "properties": {
+        "field": {
+          "const": "cycle_1.recovery_run_id"
+        },
+        "incorrect_value": {
+          "const": 32626113799
+        },
+        "correct_value": {
+          "const": 32625612739
+        },
+        "unchanged_cycle_2_recovery_run_id": {
+          "const": 32626113799
+        }
+      }
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "schema_version",
+        "attested_at"
+      ],
+      "properties": {
+        "path": {
+          "const": "evidence/migrations/corpus-legislation-nz/shadow-operation-cutover-attestation.json"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "schema_version": {
+          "const": "archive-govt-nz.shadow-operation-cutover-attestation/v1"
+        },
+        "attested_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "addendum": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "local_document_path",
+        "local_document_sha256",
+        "rendered_remote_addendum_sha256"
+      ],
+      "properties": {
+        "local_document_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "local_document_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "rendered_remote_addendum_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "external_action": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status"
+          ],
+          "properties": {
+            "status": {
+              "const": "prepared_not_applied"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "applied_at",
+            "operation_id",
+            "readback"
+          ],
+          "properties": {
+            "status": {
+              "const": "applied_readback_verified"
+            },
+            "applied_at": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "operation_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "readback": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "retrieved_at",
+                "normalized_response_sha256",
+                "raw_response_path",
+                "raw_response_sha256",
+                "body_sha256",
+                "body",
+                "etag",
+                "release_identity"
+              ],
+              "properties": {
+                "retrieved_at": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "body_sha256": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "body": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "etag": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "release_identity": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "id",
+                    "tag",
+                    "name",
+                    "url",
+                    "published_at",
+                    "draft",
+                    "prerelease",
+                    "is_immutable",
+                    "tag_commit",
+                    "assets",
+                    "body"
+                  ],
+                  "properties": {
+                    "id": {
+                      "const": 375146205
+                    },
+                    "tag": {
+                      "const": "legislation-cutover-v1.0.0"
+                    },
+                    "name": {
+                      "const": "Legislation consolidation cutover v1.0.0"
+                    },
+                    "url": {
+                      "const": "https://github.com/edithatogo/archive-govt-nz/releases/tag/legislation-cutover-v1.0.0"
+                    },
+                    "published_at": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "draft": {
+                      "const": false
+                    },
+                    "prerelease": {
+                      "const": false
+                    },
+                    "is_immutable": {
+                      "type": "boolean"
+                    },
+                    "tag_commit": {
+                      "const": "949f6f6abed0cfb668fc5f163129f11e54f335a3"
+                    },
+                    "assets": {
+                      "const": []
+                    },
+                    "body": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                },
+                "normalized_response_sha256": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "raw_response_sha256": {
+                  "const": "dd9a0d71aa8356a5c33cf4134a19d40ff01f38f2a3e3749b33650f7259f2063a"
+                },
+                "raw_response_path": {
+                  "const": "evidence/migrations/corpus-legislation-nz/cutover-release-provenance/release-post-readback.json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "reason"
+          ],
+          "properties": {
+            "status": {
+              "const": "blocked"
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      ]
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "target_baseline_commit": {
+      "const": "740389b7420ea7ba7382d40a23ad3e23ba2c680a"
+    },
+    "hosted_evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "verified_at",
+        "normalized_sha256",
+        "runs"
+      ],
+      "properties": {
+        "verified_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "normalized_sha256": {
+          "const": "0ec8c03f295bc866039da9a82500f1ca8e27d760d524e57302cad141f6c68d70"
+        },
+        "runs": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6,
+          "items": {
+            "$ref": "#/$defs/hosted_run"
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "hosted_run": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "run_id",
+        "url",
+        "event",
+        "status",
+        "conclusion",
+        "head_sha",
+        "created_at",
+        "updated_at",
+        "jobs",
+        "artifacts",
+        "receipt_sha256"
+      ],
+      "properties": {
+        "run_id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "event": {
+          "const": "workflow_dispatch"
+        },
+        "status": {
+          "const": "completed"
+        },
+        "conclusion": {
+          "const": "success"
+        },
+        "head_sha": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "jobs": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "name",
+              "status",
+              "conclusion",
+              "started_at",
+              "completed_at"
+            ],
+            "properties": {
+              "id": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "status": {
+                "const": "completed"
+              },
+              "conclusion": {
+                "const": "success"
+              },
+              "started_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "completed_at": {
+                "type": "string",
+                "format": "date-time"
+              }
+            }
+          }
+        },
+        "artifacts": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "name",
+              "size_in_bytes",
+              "expired",
+              "created_at",
+              "expires_at"
+            ],
+            "properties": {
+              "id": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "size_in_bytes": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "expired": {
+                "const": false
+              },
+              "created_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "expires_at": {
+                "type": "string",
+                "format": "date-time"
+              }
+            }
+          }
+        },
+        "receipt_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "external_action": {
+            "properties": {
+              "status": {
+                "const": "prepared_not_applied"
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "limitations": {
+            "const": [
+              "No GitHub release mutation was performed by this preparation step.",
+              "Applied status requires an independent post-write GitHub API readback."
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "external_action": {
+            "properties": {
+              "status": {
+                "const": "applied_readback_verified"
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "limitations": {
+            "const": [
+              "The GitHub release body addendum was applied and independently read back; tag, assets, and release identity were unchanged.",
+              "No release, tag, asset, DOI, dataset, donor, or external publication was created or altered beyond the release-body addendum."
+            ]
+          }
+        }
+      }
+    }
+  ]
+}
