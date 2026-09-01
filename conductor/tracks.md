@@ -276,5 +276,5 @@ implementation has occurred under these tracks.
 - [x] **Track: Prompt 16 Zenodo concept/version DOI correction**
   *Link: [./tracks/zenodo_identity_correction_20260902/index.md](./tracks/zenodo_identity_correction_20260902/index.md)*
 
-- [~] **Track: Evidence index and closeout-claim correction (Prompt 17)**
+- [x] **Track: Evidence index and closeout-claim correction (Prompt 17)**
   *Link: [./tracks/legislation_evidence_index_20260902/index.md](./tracks/legislation_evidence_index_20260902/index.md)*

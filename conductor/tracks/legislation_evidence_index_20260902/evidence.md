@@ -12,4 +12,5 @@
 - Supply-chain controls: the secret scan passed after exact adjudication of one public checksum pathname; the SBOM validated with 111 components; the licence inventory passed.
 - Final local harness rerun: 4,497 tests passed at 97.50% coverage after one preserved Hypothesis deadline flake passed in isolation. Every subsequent lane passed through the CAS benchmark; OSV again returned HTTP 500 on all three audit attempts.
 - Post-review final harness: 4,501 tests passed at 97.53% coverage; schemas, parity, all configured mutation lanes, hygiene, CAS benchmark, dependency audit, licences, secret scan, and the 111-component SBOM all passed end to end.
+- Hosted exact-head validation: PR #346 head `fcf99b635e52ba62b984a17a1990c1c02c46c0e6` passed CI assurance on Ubuntu, macOS, and Windows (run `33529173734`), CodeQL (run `33529173703` plus CodeQL status check), dependency review (`33529173723`), workflow policy lint (`33529173646`), and Amazon Q Developer.
 - No external dataset, metadata, DOI, release, donor state, or publication surface was changed.
