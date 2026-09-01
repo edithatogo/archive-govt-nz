@@ -1,0 +1,532 @@
+[
+  {
+    "License": "Apache-2.0",
+    "Name": "CacheControl",
+    "Version": "0.14.4"
+  },
+  {
+    "License": "BSD License",
+    "Name": "Jinja2",
+    "Version": "3.1.6"
+  },
+  {
+    "License": "BSD-3-Clause",
+    "Name": "MarkupSafe",
+    "Version": "3.0.3"
+  },
+  {
+    "License": "MIT License",
+    "Name": "PyYAML",
+    "Version": "6.0.3"
+  },
+  {
+    "License": "BSD-2-Clause",
+    "Name": "Pygments",
+    "Version": "2.20.0"
+  },
+  {
+    "License": "MIT",
+    "Name": "annotated-types",
+    "Version": "0.8.0"
+  },
+  {
+    "License": "MIT",
+    "Name": "anyio",
+    "Version": "4.14.2"
+  },
+  {
+    "License": "Apache-2.0",
+    "Name": "archive-govt-nz",
+    "Version": "0.1.0"
+  },
+  {
+    "License": "Apache Software License",
+    "Name": "arrow",
+    "Version": "1.4.0"
+  },
+  {
+    "License": "MIT",
+    "Name": "attrs",
+    "Version": "26.1.0"
+  },
+  {
+    "License": "MIT License",
+    "Name": "basedpyright",
+    "Version": "1.39.10"
+  },
+  {
+    "License": "CC0-1.0 OR Apache-2.0",
+    "Name": "blake3",
+    "Version": "1.0.9"
+  },
+  {
+    "License": "BSD-2-Clause",
+    "Name": "boolean.py",
+    "Version": "5.0"
+  },
+  {
+    "License": "Mozilla Public License 2.0 (MPL 2.0)",
+    "Name": "certifi",
+    "Version": "2026.7.22"
+  },
+  {
+    "License": "GNU Lesser General Public License v2 or later (LGPLv2+)",
+    "Name": "chardet",
+    "Version": "5.2.0"
+  },
+  {
+    "License": "MIT",
+    "Name": "charset-normalizer",
+    "Version": "3.4.9"
+  },
+  {
+    "License": "MIT License",
+    "Name": "ckanapi",
+    "Version": "4.11"
+  },
+  {
+    "License": "BSD License",
+    "Name": "cloudpickle",
+    "Version": "3.1.2"
+  },
+  {
+    "License": "BSD License",
+    "Name": "contourpy",
+    "Version": "1.3.3"
+  },
+  {
+    "License": "Apache-2.0",
+    "Name": "coverage",
+    "Version": "7.15.2"
+  },
+  {
+    "License": "BSD License",
+    "Name": "cycler",
+    "Version": "0.12.1"
+  },
+  {
+    "License": "Apache Software License",
+    "Name": "cyclonedx-bom",
+    "Version": "7.3.1"
+  },
+  {
+    "License": "Apache Software License",
+    "Name": "cyclonedx-python-lib",
+    "Version": "11.11.0"
+  },
+  {
+    "License": "Apache-2.0",
+    "Name": "cyclopts",
+    "Version": "4.22.3"
+  },
+  {
+    "License": "Python Software Foundation License",
+    "Name": "defusedxml",
+    "Version": "0.7.1"
+  },
+  {
+    "License": "Apache Software License",
+    "Name": "detect-secrets",
+    "Version": "1.5.0"
+  },
+  {
+    "License": "MIT License",
+    "Name": "docopt",
+    "Version": "0.6.2"
+  },
+  {
+    "License": "MIT License",
+    "Name": "docstring_parser",
+    "Version": "0.18.0"
+  },
+  {
+    "License": "MIT License",
+    "Name": "duckdb",
+    "Version": "1.5.5"
+  },
+  {
+    "License": "MIT License",
+    "Name": "et_xmlfile",
+    "Version": "2.0.0"
+  },
+  {
+    "License": "MIT",
+    "Name": "execnet",
+    "Version": "2.1.2"
+  },
+  {
+    "License": "MIT",
+    "Name": "filelock",
+    "Version": "3.32.2"
+  },
+  {
+    "License": "MIT",
+    "Name": "fonttools",
+    "Version": "4.63.0"
+  },
+  {
+    "License": "Mozilla Public License 2.0 (MPL 2.0)",
+    "Name": "fqdn",
+    "Version": "1.5.1"
+  },
+  {
+    "License": "BSD-3-Clause",
+    "Name": "fsspec",
+    "Version": "2026.7.0"
+  },
+  {
+    "License": "MIT License",
+    "Name": "h11",
+    "Version": "0.16.0"
+  },
+  {
+    "License": "Apache-2.0",
+    "Name": "hf-xet",
+    "Version": "1.6.0"
+  },
+  {
+    "License": "BSD-3-Clause",
+    "Name": "httpcore",
+    "Version": "1.0.9"
+  },
+  {
+    "License": "BSD License",
+    "Name": "httpx",
+    "Version": "0.28.1"
+  },
+  {
+    "License": "Apache Software License",
+    "Name": "huggingface_hub",
+    "Version": "0.36.2"
+  },
+  {
+    "License": "MPL-2.0",
+    "Name": "hypothesis",
+    "Version": "6.164.0"
+  },
+  {
+    "License": "BSD-3-Clause",
+    "Name": "idna",
+    "Version": "3.18"
+  },
+  {
+    "License": "MIT",
+    "Name": "iniconfig",
+    "Version": "2.3.0"
+  },
+  {
+    "License": "ISC License (ISCL)",
+    "Name": "isoduration",
+    "Version": "20.11.0"
+  },
+  {
+    "License": "BSD License",
+    "Name": "jsonpointer",
+    "Version": "3.1.1"
+  },
+  {
+    "License": "MIT",
+    "Name": "jsonschema",
+    "Version": "4.26.0"
+  },
+  {
+    "License": "MIT",
+    "Name": "jsonschema-specifications",
+    "Version": "2025.9.1"
+  },
+  {
+    "License": "BSD License",
+    "Name": "kiwisolver",
+    "Version": "1.5.1"
+  },
+  {
+    "License": "MIT License",
+    "Name": "lark",
+    "Version": "1.3.1"
+  },
+  {
+    "License": "Apache-2.0",
+    "Name": "license-expression",
+    "Version": "30.4.4"
+  },
+  {
+    "License": "BSD-3-Clause",
+    "Name": "lxml",
+    "Version": "6.1.1"
+  },
+  {
+    "License": "MIT License",
+    "Name": "markdown-it-py",
+    "Version": "4.2.0"
+  },
+  {
+    "License": "Python Software Foundation License",
+    "Name": "matplotlib",
+    "Version": "3.11.1"
+  },
+  {
+    "License": "MIT License",
+    "Name": "mdurl",
+    "Version": "0.1.2"
+  },
+  {
+    "License": "Apache-2.0",
+    "Name": "msgpack",
+    "Version": "1.2.1"
+  },
+  {
+    "License": "BSD License",
+    "Name": "nodeenv",
+    "Version": "1.10.0"
+  },
+  {
+    "License": "MIT License",
+    "Name": "nodejs-wheel-binaries",
+    "Version": "24.16.0"
+  },
+  {
+    "License": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+    "Name": "numpy",
+    "Version": "2.5.2"
+  },
+  {
+    "License": "MIT License",
+    "Name": "openpyxl",
+    "Version": "3.1.5"
+  },
+  {
+    "License": "MIT License",
+    "Name": "packageurl-python",
+    "Version": "0.17.6"
+  },
+  {
+    "License": "Apache-2.0 OR BSD-2-Clause",
+    "Name": "packaging",
+    "Version": "26.2"
+  },
+  {
+    "License": "MIT-CMU",
+    "Name": "pillow",
+    "Version": "12.3.0"
+  },
+  {
+    "License": "Apache Software License",
+    "Name": "pip-api",
+    "Version": "0.0.34"
+  },
+  {
+    "License": "MIT",
+    "Name": "pip-requirements-parser",
+    "Version": "32.0.1"
+  },
+  {
+    "License": "Apache Software License",
+    "Name": "pip_audit",
+    "Version": "2.10.1"
+  },
+  {
+    "License": "MIT",
+    "Name": "platformdirs",
+    "Version": "4.11.0"
+  },
+  {
+    "License": "MIT License",
+    "Name": "pluggy",
+    "Version": "1.6.0"
+  },
+  {
+    "License": "BSD-3-Clause",
+    "Name": "psutil",
+    "Version": "7.2.2"
+  },
+  {
+    "License": "Apache Software License",
+    "Name": "py-serializable",
+    "Version": "2.1.0"
+  },
+  {
+    "License": "Apache-2.0",
+    "Name": "pyarrow",
+    "Version": "23.0.1"
+  },
+  {
+    "License": "MIT",
+    "Name": "pydantic",
+    "Version": "2.13.4"
+  },
+  {
+    "License": "MIT",
+    "Name": "pydantic_core",
+    "Version": "2.46.4"
+  },
+  {
+    "License": "MIT",
+    "Name": "pyparsing",
+    "Version": "3.3.2"
+  },
+  {
+    "License": "MIT",
+    "Name": "pyright",
+    "Version": "1.1.411"
+  },
+  {
+    "License": "MIT",
+    "Name": "pytest",
+    "Version": "9.1.1"
+  },
+  {
+    "License": "MIT",
+    "Name": "pytest-cov",
+    "Version": "7.1.0"
+  },
+  {
+    "License": "MIT License",
+    "Name": "pytest-gremlins",
+    "Version": "1.9.0"
+  },
+  {
+    "License": "MIT License",
+    "Name": "pytest-randomly",
+    "Version": "3.16.0"
+  },
+  {
+    "License": "MIT",
+    "Name": "pytest-xdist",
+    "Version": "3.8.0"
+  },
+  {
+    "License": "Apache Software License; BSD License",
+    "Name": "python-dateutil",
+    "Version": "2.9.0.post0"
+  },
+  {
+    "License": "MIT License",
+    "Name": "python-slugify",
+    "Version": "8.0.4"
+  },
+  {
+    "License": "MIT",
+    "Name": "referencing",
+    "Version": "0.37.0"
+  },
+  {
+    "License": "Apache Software License",
+    "Name": "requests",
+    "Version": "2.34.2"
+  },
+  {
+    "License": "MIT License",
+    "Name": "rfc3339-validator",
+    "Version": "0.1.4"
+  },
+  {
+    "License": "MIT License",
+    "Name": "rfc3986-validator",
+    "Version": "0.1.1"
+  },
+  {
+    "License": "MIT",
+    "Name": "rfc3987-syntax",
+    "Version": "1.1.0"
+  },
+  {
+    "License": "MIT License",
+    "Name": "rich",
+    "Version": "15.0.0"
+  },
+  {
+    "License": "MIT",
+    "Name": "rich-rst",
+    "Version": "2.1.0"
+  },
+  {
+    "License": "MIT",
+    "Name": "rpds-py",
+    "Version": "2026.6.3"
+  },
+  {
+    "License": "MIT",
+    "Name": "ruff",
+    "Version": "0.16.1"
+  },
+  {
+    "License": "Apache Software License",
+    "Name": "scalene",
+    "Version": "2.3.0"
+  },
+  {
+    "License": "MIT OR AFL-2.1",
+    "Name": "simplejson",
+    "Version": "4.1.1"
+  },
+  {
+    "License": "MIT License",
+    "Name": "six",
+    "Version": "1.17.0"
+  },
+  {
+    "License": "Apache Software License",
+    "Name": "sortedcontainers",
+    "Version": "2.4.0"
+  },
+  {
+    "License": "MIT",
+    "Name": "syrupy",
+    "Version": "5.5.3"
+  },
+  {
+    "License": "Artistic License; GNU General Public License (GPL); GNU General Public License v2 or later (GPLv2+)",
+    "Name": "text-unidecode",
+    "Version": "1.3"
+  },
+  {
+    "License": "MIT",
+    "Name": "tomli",
+    "Version": "2.4.1"
+  },
+  {
+    "License": "MIT License",
+    "Name": "tomli_w",
+    "Version": "1.2.0"
+  },
+  {
+    "License": "MPL-2.0 AND MIT",
+    "Name": "tqdm",
+    "Version": "4.70.0"
+  },
+  {
+    "License": "MIT",
+    "Name": "typing-inspection",
+    "Version": "0.4.4"
+  },
+  {
+    "License": "PSF-2.0",
+    "Name": "typing_extensions",
+    "Version": "4.16.0"
+  },
+  {
+    "License": "Apache-2.0",
+    "Name": "tzdata",
+    "Version": "2026.3"
+  },
+  {
+    "License": "MIT License",
+    "Name": "uri-template",
+    "Version": "1.3.0"
+  },
+  {
+    "License": "MIT",
+    "Name": "urllib3",
+    "Version": "2.7.0"
+  },
+  {
+    "License": "Apache Software License",
+    "Name": "warcio",
+    "Version": "1.8.1"
+  },
+  {
+    "License": "BSD License",
+    "Name": "webcolors",
+    "Version": "25.10.0"
+  }
+]

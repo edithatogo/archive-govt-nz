@@ -1,0 +1,377 @@
+==> lock: uv lock --check
+Resolved 113 packages in 44ms
+==> conductor: uv run --locked python tools/validate_conductor_state.py
+{
+  "errors": [],
+  "track_count": 86
+}
+==> format: uv run --locked ruff format --check .
+1833 files already formatted
+==> lint: uv run --locked ruff check .
+All checks passed!
+==> types: uv run --locked basedpyright --threads 4
+0 errors, 0 warnings, 0 notes
+==> tests: uv run --locked pytest --cov=archive_govt_nz --cov-branch --cov-report=term-missing -n auto --dist loadscope
+============================= test session starts ==============================
+platform darwin -- Python 3.14.6, pytest-9.1.1, pluggy-1.6.0
+Using --randomly-seed=2815504840
+rootdir: /Volumes/PortableSSD/GitHub/archive-govt-nz-integrated-assurance
+configfile: pyproject.toml
+testpaths: tests
+plugins: syrupy-5.5.3, randomly-3.16.0, cov-7.1.0, xdist-3.8.0, anyio-4.14.2, gremlins-1.9.0, hypothesis-6.164.0
+created: 10/10 workers
+10 workers [4543 items]
+
+........................................................................ [  1%]
+........................................................................ [  3%]
+........................................................................ [  4%]
+........................................................................ [  6%]
+........................................................................ [  7%]
+........................................................................ [  9%]
+........................................................................ [ 11%]
+........................................................................ [ 12%]
+........................................................................ [ 14%]
+........................................................................ [ 15%]
+........................................................................ [ 17%]
+........................................................................ [ 19%]
+........................................................................ [ 20%]
+........................................................................ [ 22%]
+........................................................................ [ 23%]
+........................................................................ [ 25%]
+........................................................................ [ 26%]
+........................................................................ [ 28%]
+........................................................................ [ 30%]
+........................................................................ [ 31%]
+........................................................................ [ 33%]
+........................................................................ [ 34%]
+........................................................................ [ 36%]
+........................................................................ [ 38%]
+........................................................................ [ 39%]
+........................................................................ [ 41%]
+........................................................................ [ 42%]
+........................................................................ [ 44%]
+........................................................................ [ 45%]
+........................................................................ [ 47%]
+........................................................................ [ 49%]
+........................................................................ [ 50%]
+........................................................................ [ 52%]
+........................................................................ [ 53%]
+........................................................................ [ 55%]
+........................................................................ [ 57%]
+........................................................................ [ 58%]
+........................................................................ [ 60%]
+........................................................................ [ 61%]
+........................................................................ [ 63%]
+........................................................................ [ 64%]
+........................................................................ [ 66%]
+........................................................................ [ 68%]
+........................................................................ [ 69%]
+........................................................................ [ 71%]
+........................................................................ [ 72%]
+........................................................................ [ 74%]
+........................................................................ [ 76%]
+........................................................................ [ 77%]
+........................................................................ [ 79%]
+........................................................................ [ 80%]
+........................................................................ [ 82%]
+........................................................................ [ 83%]
+........................................................................ [ 85%]
+........................................................................ [ 87%]
+........................................................................ [ 88%]
+........................................................................ [ 90%]
+........................................................................ [ 91%]
+........................................................................ [ 93%]
+........................................................................ [ 95%]
+........................................................................ [ 96%]
+........................................................................ [ 98%]
+............................................/Volumes/PortableSSD/GitHub/archive-govt-nz-integrated-assurance/.venv/lib/python3.14/site-packages/coverage/collector.py:478: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x11e4c64d0>
+  tuples.append((l1, l2))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/Volumes/PortableSSD/GitHub/archive-govt-nz-integrated-assurance/.venv/lib/python3.14/site-packages/coverage/collector.py:478: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x11e4c6e30>
+  tuples.append((l1, l2))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/Volumes/PortableSSD/GitHub/archive-govt-nz-integrated-assurance/.venv/lib/python3.14/site-packages/coverage/collector.py:478: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x11e4c7010>
+  tuples.append((l1, l2))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+............................ [ 99%]
+.......
+ERROR: Coverage failure: total of 86 is less than fail-under=95
+                                                                         [100%]
+=============================== warnings summary ===============================
+tests/tools/test_legislation_durable_state.py::test_archive_abuse[duplicate]
+  /Volumes/PortableSSD/appdata/local-dotdir/share/uv/python/cpython-3.14.6-macos-aarch64-none/lib/python3.14/zipfile/__init__.py:1730: UserWarning: Duplicate name: 'state/manifest.json'
+    return self._open_to_write(zinfo, force_zip64=force_zip64)
+
+tests/domains/health_appropriations/test_inventory.py::test_workbook_inventory_rejects_traversal_member
+  /Volumes/PortableSSD/appdata/local-dotdir/share/uv/python/cpython-3.14.6-macos-aarch64-none/lib/python3.14/re/_parser.py:113: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x11b5b67a0>
+    def __init__(self, state, data=None):
+  Enable tracemalloc to get traceback where the object was allocated.
+  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+
+tests/domains/health_appropriations/test_silver.py::test_gold_rebuilds_compatibility_analytics_and_six_plots
+  /Volumes/PortableSSD/GitHub/archive-govt-nz-integrated-assurance/.venv/lib/python3.14/site-packages/matplotlib/cbook.py:156: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x11e22ab60>
+    def __init__(self, pairs):
+  Enable tracemalloc to get traceback where the object was allocated.
+  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+
+tests/domains/health_appropriations/test_silver.py::test_gold_rebuilds_compatibility_analytics_and_six_plots
+  /Volumes/PortableSSD/GitHub/archive-govt-nz-integrated-assurance/.venv/lib/python3.14/site-packages/matplotlib/cbook.py:156: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x11e22a7a0>
+    def __init__(self, pairs):
+  Enable tracemalloc to get traceback where the object was allocated.
+  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+
+tests/domains/health_appropriations/test_silver.py::test_gold_rebuilds_compatibility_analytics_and_six_plots
+  /Volumes/PortableSSD/GitHub/archive-govt-nz-integrated-assurance/.venv/lib/python3.14/site-packages/matplotlib/cbook.py:156: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x11e228040>
+    def __init__(self, pairs):
+  Enable tracemalloc to get traceback where the object was allocated.
+  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+
+tests/domains/health_appropriations/test_silver.py::test_gold_rebuilds_compatibility_analytics_and_six_plots
+  /Volumes/PortableSSD/GitHub/archive-govt-nz-integrated-assurance/.venv/lib/python3.14/site-packages/matplotlib/cbook.py:156: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x11e22a6b0>
+    def __init__(self, pairs):
+  Enable tracemalloc to get traceback where the object was allocated.
+  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================ tests coverage ================================
+_______________ coverage: platform darwin, python 3.14.6-final-0 _______________
+
+Name                                                                               Stmts   Miss Branch BrPart  Cover   Missing
+------------------------------------------------------------------------------------------------------------------------------
+src/archive_govt_nz/__init__.py                                                        3      0      0      0   100%
+src/archive_govt_nz/adapters/__init__.py                                              11      0      0      0   100%
+src/archive_govt_nz/adapters/base.py                                                  33      3      0      0    91%   33-37
+src/archive_govt_nz/adapters/bluesky.py                                               36      5      8      2    84%   41, 72, 85, 109-110
+src/archive_govt_nz/adapters/email.py                                                 27      1      6      1    94%   29, 77->86
+src/archive_govt_nz/adapters/feeds.py                                                 35      5      8      2    84%   38, 66, 79, 100-101
+src/archive_govt_nz/adapters/nz_gazette.py                                            35      7      8      4    74%   38, 43, 66, 69, 79, 101-102
+src/archive_govt_nz/adapters/nz_legislation.py                                        43      0     16      0   100%
+src/archive_govt_nz/adapters/threads.py                                               35      5      8      2    84%   38, 67, 80, 102-103
+src/archive_govt_nz/adapters/x_twitter.py                                             35      5      8      2    84%   38, 69, 82, 104-105
+src/archive_govt_nz/adapters/youtube.py                                               35      5      8      2    84%   38, 67, 80, 102-103
+src/archive_govt_nz/analytical_derivatives.py                                         54     29      6      0    42%   44-49, 58-98, 119-145
+src/archive_govt_nz/archival/__init__.py                                               4      0      0      0   100%
+src/archive_govt_nz/archival/donor_freeze.py                                          24      0      0      0   100%
+src/archive_govt_nz/archival/receipts.py                                              16      0      0      0   100%
+src/archive_govt_nz/archivebox_pilot.py                                              159    130     72      0    13%   33-34, 47, 51-54, 62-77, 84-95, 110-126, 130-139, 143-151, 155-176, 181-219, 231-266, 294-296
+src/archive_govt_nz/assurance.py                                                      43     21     14      5    47%   41-42, 44-45, 47-48, 52, 172, 192-203, 212-217
+src/archive_govt_nz/batch_capture.py                                                  31      0      8      0   100%
+src/archive_govt_nz/bronze/__init__.py                                                10      0      0      0   100%
+src/archive_govt_nz/bronze/adapter.py                                                 71      4     14      3    92%   118-119, 167->185, 225-226
+src/archive_govt_nz/bronze/attestation.py                                            173     19     34      8    84%   115, 126-127, 171-175, 214-218, 234-235, 249-252, 267->273, 286-289, 295-298, 302
+src/archive_govt_nz/bronze/fingerprint.py                                             59      6     14      3    85%   37, 44, 55-58
+src/archive_govt_nz/bronze/heartbeat.py                                               72      7     16      4    88%   91, 95-96, 144, 151, 154->148, 156-157
+src/archive_govt_nz/bronze/manifest.py                                                36      2      2      0    95%   12-13
+src/archive_govt_nz/bronze/models.py                                                  89      1      2      0    99%   65
+src/archive_govt_nz/bronze/multihash.py                                               59      7     12      2    82%   36, 77-78, 84, 94-96
+src/archive_govt_nz/bronze/ots.py                                                    114      8     28      5    91%   109-110, 179-180, 198-199, 225-226, 233->239
+src/archive_govt_nz/bronze/sniffer.py                                                 77      8     34      5    86%   96-97, 104, 129-139, 166->169, 197->212, 202
+src/archive_govt_nz/canary/__init__.py                                                 4      0      0      0   100%
+src/archive_govt_nz/canary/receipts.py                                                16      0      0      0   100%
+src/archive_govt_nz/canary/shadow_runner.py                                           32      1      6      1    95%   58
+src/archive_govt_nz/capture.py                                                       129     15     36      8    86%   58, 101, 152-160, 176-184, 190-198, 208, 262-270, 274->276, 307-317
+src/archive_govt_nz/capture_reconciliation.py                                         24      0      2      0   100%
+src/archive_govt_nz/ckan/__init__.py                                                   0      0      0      0   100%
+src/archive_govt_nz/ckan/client.py                                                   176      1     42      1    99%   246
+src/archive_govt_nz/ckan/discovery.py                                                138      0     24      0   100%
+src/archive_govt_nz/ckan/envelope.py                                                  54      0     16      0   100%
+src/archive_govt_nz/ckan/global_discovery.py                                         180     11     32     11    90%   164-165, 174, 196-197, 199, 203, 224, 227, 234, 257->263, 265->313, 268, 271->266
+src/archive_govt_nz/ckan/live_evidence.py                                             34     23      2      0    31%   24, 29, 42-44, 49, 73-91, 100-119
+src/archive_govt_nz/ckan/redaction.py                                                 23      0      8      0   100%
+src/archive_govt_nz/cli.py                                                           781    348    242     25    52%   142-143, 162-164, 353-381, 392, 395-409, 415->418, 430-431, 446-465, 498-499, 663-679, 683-699, 727-728, 746-750, 811-827, 848-852, 929-930, 941-955, 973, 976-990, 999-1020, 1061-1062, 1070, 1115, 1119-1120, 1132-1163, 1172-1213, 1230-1326, 1334-1396, 1406-1423, 1429-1446, 1450-1462, 1475-1538, 1546-1584, 1594-1662, 1672-1713, 1721-1783, 1790-1807, 1839-1900, 1913-1946, 1954-1956, 1966-1968, 2002->2006, 2018
+src/archive_govt_nz/cli_compat.py                                                     22     15      4      0    27%   13-17, 22-26, 31-82
+src/archive_govt_nz/cli_integrity.py                                                 303      0    126      0   100%
+src/archive_govt_nz/compactor.py                                                      36      0      2      0   100%
+src/archive_govt_nz/config.py                                                          9      1      0      0    89%   21
+src/archive_govt_nz/core/__init__.py                                                   3      0      0      0   100%
+src/archive_govt_nz/core/identity.py                                                  38      0      2      0   100%
+src/archive_govt_nz/core/manifests.py                                                 76      0      0      0   100%
+src/archive_govt_nz/core/registry.py                                                  84      3     20      2    95%   41->53, 152, 191-192
+src/archive_govt_nz/core/urn.py                                                       40      0      8      0   100%
+src/archive_govt_nz/cutover/__init__.py                                                4      0      0      0   100%
+src/archive_govt_nz/cutover/orchestrator.py                                           20      0      2      0   100%
+src/archive_govt_nz/cutover/receipts.py                                               22      0      0      0   100%
+src/archive_govt_nz/derivatives.py                                                    38     16      0      0    58%   39-64, 79
+src/archive_govt_nz/dist/__init__.py                                                   8      0      0      0   100%
+src/archive_govt_nz/dist/hf_adapter.py                                                22      0      4      0   100%
+src/archive_govt_nz/dist/osf_adapter.py                                               23      0      4      0   100%
+src/archive_govt_nz/dist/packaging.py                                                 77      0      8      0   100%
+src/archive_govt_nz/dist/router.py                                                    44      2      8      2    92%   66, 86
+src/archive_govt_nz/dist/verifier.py                                                  36      4     12      3    85%   63-64, 72, 76
+src/archive_govt_nz/dist/zenodo_adapter.py                                            23      0      4      0   100%
+src/archive_govt_nz/distribution/__init__.py                                           4      0      0      0   100%
+src/archive_govt_nz/distribution/metadata.py                                          13      0      0      0   100%
+src/archive_govt_nz/distribution/publisher.py                                         63      0      2      0   100%
+src/archive_govt_nz/distribution/verifier.py                                          31      0      8      0   100%
+src/archive_govt_nz/domains/__init__.py                                                0      0      0      0   100%
+src/archive_govt_nz/domains/gazette/__init__.py                                        2      0      0      0   100%
+src/archive_govt_nz/domains/gazette/courts_notices.py                                 11      0      0      0   100%
+src/archive_govt_nz/domains/gazette/discovery.py                                      25      0      4      0   100%
+src/archive_govt_nz/domains/gazette/identity.py                                       15      0      0      0   100%
+src/archive_govt_nz/domains/gazette/models.py                                         20      0      0      0   100%
+src/archive_govt_nz/domains/gazette/reconcile.py                                      14      0      0      0   100%
+src/archive_govt_nz/domains/gazette/service.py                                        71     44     16      0    31%   34-36, 44-45, 48-49, 52-53, 56, 61-63, 68-71, 96-99, 106-152
+src/archive_govt_nz/domains/gazette/validate.py                                       45      2     18      2    94%   21, 24
+src/archive_govt_nz/domains/hansard/__init__.py                                        4      0      0      0   100%
+src/archive_govt_nz/domains/hansard/adapter.py                                        26      0      0      0   100%
+src/archive_govt_nz/domains/hansard/normalizer.py                                     25      0      2      0   100%
+src/archive_govt_nz/domains/hansard/parser.py                                         74      3     14      3    93%   35, 61, 82->79, 84->79, 140
+src/archive_govt_nz/domains/hathi/__init__.py                                          5      0      0      0   100%
+src/archive_govt_nz/domains/hathi/adapter.py                                          33      0      4      0   100%
+src/archive_govt_nz/domains/hathi/normalizer.py                                       49      1     14      1    97%   50
+src/archive_govt_nz/domains/hathi/parser.py                                          120      5     40      4    92%   79, 81-84, 179->184, 181->184
+src/archive_govt_nz/domains/health/__init__.py                                         3      0      0      0   100%
+src/archive_govt_nz/domains/health/covid_data.py                                      11      4      0      0    64%   25, 43-50, 66
+src/archive_govt_nz/domains/health/pae_ora.py                                         11      4      0      0    64%   25, 44-52, 68
+src/archive_govt_nz/domains/health_appropriations/__init__.py                          2      0      0      0   100%
+src/archive_govt_nz/domains/health_appropriations/additive_staging.py                 88      0     18      0   100%
+src/archive_govt_nz/domains/health_appropriations/appropriation_analysis.py           31      0     10      0   100%
+src/archive_govt_nz/domains/health_appropriations/area_accounting.py                 198      0     48      0   100%
+src/archive_govt_nz/domains/health_appropriations/budget.py                           74      0     26      0   100%
+src/archive_govt_nz/domains/health_appropriations/budget_classification.py            68      0     10      0   100%
+src/archive_govt_nz/domains/health_appropriations/budget_operations.py                18      0      2      0   100%
+src/archive_govt_nz/domains/health_appropriations/budget_projection.py                79      0     16      0   100%
+src/archive_govt_nz/domains/health_appropriations/budget_reader.py                   140      0     30      0   100%
+src/archive_govt_nz/domains/health_appropriations/candidate_inventory.py             125      0     20      0   100%
+src/archive_govt_nz/domains/health_appropriations/candidate_paths.py                  26     19      8      0    21%   24-47
+src/archive_govt_nz/domains/health_appropriations/census.py                           27      0      8      0   100%
+src/archive_govt_nz/domains/health_appropriations/classification_export.py            93     16     16      2    82%   41-42, 168-170, 179, 183-185, 193-202
+src/archive_govt_nz/domains/health_appropriations/compatibility_export.py             72      0     16      0   100%
+src/archive_govt_nz/domains/health_appropriations/cpi.py                              77      0     14      0   100%
+src/archive_govt_nz/domains/health_appropriations/donor.py                            66      0     28      0   100%
+src/archive_govt_nz/domains/health_appropriations/embedded_notices.py                 64      0     16      0   100%
+src/archive_govt_nz/domains/health_appropriations/forecast.py                        132      0     52      0   100%
+src/archive_govt_nz/domains/health_appropriations/formats.py                          98     12     26      3    86%   77, 115, 131, 187-190, 199-219
+src/archive_govt_nz/domains/health_appropriations/gdp.py                              90      0     20      0   100%
+src/archive_govt_nz/domains/health_appropriations/gold.py                            117      0     18      0   100%
+src/archive_govt_nz/domains/health_appropriations/gold_export.py                      84      0     22      0   100%
+src/archive_govt_nz/domains/health_appropriations/gold_reader.py                      84     20     36     10    75%   41-42, 44-45, 51-52, 57-58, 75-76, 81-82, 92-93, 100-101, 104-105, 130-131
+src/archive_govt_nz/domains/health_appropriations/historical.py                      202      0     84      0   100%
+src/archive_govt_nz/domains/health_appropriations/historical_analysis.py              76      0     34      0   100%
+src/archive_govt_nz/domains/health_appropriations/historical_canonical_export.py      77      0     14      0   100%
+src/archive_govt_nz/domains/health_appropriations/historical_projection.py           184      0     32      0   100%
+src/archive_govt_nz/domains/health_appropriations/historical_reconciliation.py        65     54     32      0    11%   18-24, 30-54, 60-69, 75-92, 106-132
+src/archive_govt_nz/domains/health_appropriations/historical_snapshot.py              76      0     10      0   100%
+src/archive_govt_nz/domains/health_appropriations/inspection.py                       67      0     22      0   100%
+src/archive_govt_nz/domains/health_appropriations/inventory.py                        69     24     20      2    53%   32, 39, 64-81, 86-89, 94-101
+src/archive_govt_nz/domains/health_appropriations/local_prov.py                       23      0      2      0   100%
+src/archive_govt_nz/domains/health_appropriations/local_provenance.py                 92      0     14      0   100%
+src/archive_govt_nz/domains/health_appropriations/local_provenance_reader.py         168      0     26      0   100%
+src/archive_govt_nz/domains/health_appropriations/moh_indicators.py                   65      2     12      1    96%   100-101
+src/archive_govt_nz/domains/health_appropriations/operations.py                       59     13     12      3    75%   37-39, 41-42, 53-54, 89-94
+src/archive_govt_nz/domains/health_appropriations/pharmac.py                         145      5     48      3    96%   103-104, 144-145, 149
+src/archive_govt_nz/domains/health_appropriations/plot_contracts.py                   62      0     16      0   100%
+src/archive_govt_nz/domains/health_appropriations/plot_export.py                     132      0     30      0   100%
+src/archive_govt_nz/domains/health_appropriations/qes.py                              98     18     36      9    80%   129-130, 141-142, 144-145, 156-157, 286-287, 289-290, 300-301, 306-307, 311-312
+src/archive_govt_nz/domains/health_appropriations/raw_compatibility.py                45     14     20      7    68%   42-43, 49-50, 64-65, 67-68, 71-72, 81-82, 87-88
+src/archive_govt_nz/domains/health_appropriations/raw_reader.py                       69      0     24      0   100%
+src/archive_govt_nz/domains/health_appropriations/rebuild.py                         199      7     68      2    97%   326-327, 330-331, 345-347
+src/archive_govt_nz/domains/health_appropriations/rebuild_resume.py                  179      0     38      0   100%
+src/archive_govt_nz/domains/health_appropriations/resume_execution.py                230      0     48      0   100%
+src/archive_govt_nz/domains/health_appropriations/silver.py                           66      0     16      0   100%
+src/archive_govt_nz/domains/health_appropriations/source_operations.py                70      0     16      0   100%
+src/archive_govt_nz/domains/health_appropriations/workbook_common.py                  62      0     24      0   100%
+src/archive_govt_nz/domains/legislation/__init__.py                                   14      0      0      0   100%
+src/archive_govt_nz/domains/legislation/accounting.py                                193      0     84      0   100%
+src/archive_govt_nz/domains/legislation/api.py                                       256     30     76     14    86%   124->130, 212, 220-221, 239->283, 273-277, 284-287, 308, 345-346, 349-351, 353-354, 360-361, 364-366, 372, 376-377, 411, 417-418
+src/archive_govt_nz/domains/legislation/bootstrap.py                                  15     11      4      0    21%   13-16, 27-35
+src/archive_govt_nz/domains/legislation/changes.py                                    21      2      0      0    90%   34, 38
+src/archive_govt_nz/domains/legislation/checkpoints.py                                49      1     14      1    97%   46
+src/archive_govt_nz/domains/legislation/cli_state.py                                  59     24     22      8    58%   26-27, 29-30, 36-37, 43-52, 67-68, 72-73, 75-76, 84-85, 87-88
+src/archive_govt_nz/domains/legislation/corpus.py                                    663     45    278     17    93%   111-114, 138-139, 271-272, 288, 290-291, 356-357, 362-363, 365-366, 379-380, 412, 418-422, 446, 454, 461-469, 490->494, 492-493, 496-497, 500-501, 505, 507->503, 508->510, 521-523, 919-922
+src/archive_govt_nz/domains/legislation/coverage.py                                   21      2      2      1    87%   29, 34
+src/archive_govt_nz/domains/legislation/discovery.py                                  23      1     14      7    78%   23->50, 24->47, 25->45, 31, 43->25, 45->24, 47->23
+src/archive_govt_nz/domains/legislation/identity.py                                   57      1     12      1    97%   26
+src/archive_govt_nz/domains/legislation/manifest.py                                   61     10     22      5    82%   45-46, 48-49, 51-52, 62-63, 75-76
+src/archive_govt_nz/domains/legislation/models.py                                    177      2     24      2    98%   303, 332
+src/archive_govt_nz/domains/legislation/normalise.py                                 249      5    134      9    96%   97->exit, 135, 185, 187, 195, 236, 263->265, 315->311, 322->311
+src/archive_govt_nz/domains/legislation/one_batch_reconciliation.py                  228      0    106      0   100%
+src/archive_govt_nz/domains/legislation/publication.py                                17     10      0      0    41%   29-41
+src/archive_govt_nz/domains/legislation/validate.py                                   24      6     16      6    70%   19, 22, 25, 28, 31, 43
+src/archive_govt_nz/domains/medilegal/__init__.py                                      6      0      0      0   100%
+src/archive_govt_nz/domains/medilegal/adapter.py                                      34      0      4      0   100%
+src/archive_govt_nz/domains/medilegal/normalizer.py                                   26      0      2      0   100%
+src/archive_govt_nz/domains/medilegal/parser.py                                       87     25     28     12    66%   52, 71->69, 75, 83-84, 88-89, 95-96, 100-101, 105-106, 115-117, 120-121, 129, 136, 140-143, 167-168
+src/archive_govt_nz/domains/medilegal/sanitizer.py                                    17      0      2      0   100%
+src/archive_govt_nz/drift_engine.py                                                   65     44     18      0    25%   35-122, 141
+src/archive_govt_nz/exit_codes.py                                                      8      0      0      0   100%
+src/archive_govt_nz/foi_attachments.py                                                67      0     34      0   100%
+src/archive_govt_nz/foi_catalogue.py                                                 101      0     32      0   100%
+src/archive_govt_nz/foi_delivery.py                                                  123      0     38      0   100%
+src/archive_govt_nz/foi_discovery.py                                                  63      0     22      0   100%
+src/archive_govt_nz/foi_github_state.py                                              166      0     70      0   100%
+src/archive_govt_nz/foi_health.py                                                     41      0     18      0   100%
+src/archive_govt_nz/foi_hub.py                                                        37      0      8      0   100%
+src/archive_govt_nz/foi_ownership.py                                                  65      0     18      0   100%
+src/archive_govt_nz/foi_package.py                                                   357    276    162      2    17%   37, 49, 100, 105, 111-116, 120-128, 132-172, 176-178, 187-221, 238-291, 300-303, 319-396, 412-473, 484-516, 521-551, 555-561, 567-576, 580-608, 612-637, 641-669, 674-722
+src/archive_govt_nz/foi_publication.py                                                68     31     26      0    50%   27-43, 92-132
+src/archive_govt_nz/foi_queue.py                                                      77      0     22      0   100%
+src/archive_govt_nz/foi_rollout.py                                                    14      0      2      0   100%
+src/archive_govt_nz/foi_scheduler.py                                                 116      0     42      0   100%
+src/archive_govt_nz/foi_state.py                                                     104      0     32      0   100%
+src/archive_govt_nz/global_capture.py                                                 64     35      4      0    43%   54-138
+src/archive_govt_nz/global_policy.py                                                  74      4     26      4    92%   90, 153, 187, 191
+src/archive_govt_nz/gold/__init__.py                                                   4      0      0      0   100%
+src/archive_govt_nz/gold/analytics.py                                                 71      0     20      2    98%   48->47, 50->47
+src/archive_govt_nz/gold/dcat.py                                                      16      0      0      0   100%
+src/archive_govt_nz/gold/federation.py                                                18      0      0      0   100%
+src/archive_govt_nz/gold/nlp_export.py                                                29      0      0      0   100%
+src/archive_govt_nz/gold/search.py                                                    95      4     24      7    91%   51, 62->65, 88, 121->124, 135, 145, 157->155
+src/archive_govt_nz/health_discovery.py                                               56     45     16      0    15%   11-15, 19, 25-45, 53-56, 63-72, 94-105, 116-119
+src/archive_govt_nz/health_package.py                                                 98      0     30      0   100%
+src/archive_govt_nz/health_scope.py                                                   22      0     12      0   100%
+src/archive_govt_nz/http.py                                                           28      0      2      0   100%
+src/archive_govt_nz/huggingface_publisher.py                                          66      2     14      3    94%   100, 134->138, 152
+src/archive_govt_nz/layer_reconciliation.py                                            7      0      0      0   100%
+src/archive_govt_nz/ledger.py                                                         80      1      6      1    98%   134
+src/archive_govt_nz/licensing.py                                                      12      0      4      0   100%
+src/archive_govt_nz/logging.py                                                        24      1      4      1    93%   30
+src/archive_govt_nz/mcp_server.py                                                    252      0     96      0   100%
+src/archive_govt_nz/notifications.py                                                  38      0      6      0   100%
+src/archive_govt_nz/object_store.py                                                  116     13     32      7    86%   81, 95, 102-105, 113, 127-128, 143, 152, 160, 183
+src/archive_govt_nz/parity/__init__.py                                                 4      0      0      0   100%
+src/archive_govt_nz/parity/harness.py                                                 18      0      2      0   100%
+src/archive_govt_nz/parity/models.py                                                  38      1      2      1    95%   31
+src/archive_govt_nz/preservation.py                                                  105      7     34      7    90%   136->141, 138->137, 162, 170, 179->182, 222, 227-230
+src/archive_govt_nz/profiling.py                                                      16      0      0      0   100%
+src/archive_govt_nz/provenance.py                                                     49      8     26      6    81%   41, 46, 49, 54, 94, 98-100
+src/archive_govt_nz/publication.py                                                    42      3      8      3    88%   28, 69, 81
+src/archive_govt_nz/publisher_response.py                                             47      2     24      1    96%   43-44
+src/archive_govt_nz/records.py                                                       189      0     10      0   100%
+src/archive_govt_nz/recovery.py                                                       29      0      4      0   100%
+src/archive_govt_nz/recovery_harness.py                                               35     21      6      0    34%   37-65
+src/archive_govt_nz/redundancy.py                                                     98      0     32      0   100%
+src/archive_govt_nz/release_package.py                                                32     17      6      0    39%   31-34, 41-59
+src/archive_govt_nz/release_reconciliation.py                                         53      0     10      0   100%
+src/archive_govt_nz/replay.py                                                         36      1      6      1    95%   41
+src/archive_govt_nz/resource_policy.py                                               127     61     44      0    39%   32-33, 38, 65-74, 107, 118-122, 131, 143-161, 169-242, 252
+src/archive_govt_nz/riopa/__init__.py                                                  5      0      0      0   100%
+src/archive_govt_nz/riopa/interop.py                                                  12      0      0      0   100%
+src/archive_govt_nz/riopa/mapping.py                                                  84      0     32      0   100%
+src/archive_govt_nz/riopa/receipts.py                                                 15      0      0      0   100%
+src/archive_govt_nz/rolling.py                                                        59     32     14      0    37%   51-64, 71-83, 87-96, 100
+src/archive_govt_nz/schemas/__init__.py                                                2      0      0      0   100%
+src/archive_govt_nz/schemas/health_recordset_json.py                                  17      0      2      0   100%
+src/archive_govt_nz/schemas/health_recordsets.py                                      10      0      0      0   100%
+src/archive_govt_nz/schemas/medallion.py                                              66      8      6      1    82%   500-502, 542-548
+src/archive_govt_nz/semantic_search.py                                               133      1     46      3    98%   65, 96->103, 232->236
+src/archive_govt_nz/silver/__init__.py                                                 5      0      0      0   100%
+src/archive_govt_nz/silver/base.py                                                    43      0      0      0   100%
+src/archive_govt_nz/silver/interlink.py                                               87      1     16      2    97%   191, 196->189
+src/archive_govt_nz/silver/normalizers.py                                             67      0      0      0   100%
+src/archive_govt_nz/silver/pipeline.py                                               104     20     30      7    78%   110-118, 123, 155-156, 176, 185->188, 196-207, 209->219, 220
+src/archive_govt_nz/simulation.py                                                     43      0      2      0   100%
+src/archive_govt_nz/source_policy.py                                                  94     21     58     19    72%   27, 31, 35, 39->33, 54, 59, 65, 68, 75, 103, 116, 119, 122, 126, 132, 134, 136, 154, 159-162, 177
+src/archive_govt_nz/source_resolution.py                                              41      1     18      3    93%   50->53, 56, 71->54
+src/archive_govt_nz/source_sets.py                                                   306      0     72      0   100%
+src/archive_govt_nz/versioning.py                                                     32      0      6      0   100%
+src/archive_govt_nz/warc.py                                                           33      0      2      0   100%
+src/archive_govt_nz/wayback_triangulation.py                                          80      5     14      5    89%   53->57, 60, 69, 78, 90-91, 109->116
+src/archive_govt_nz/zenodo.py                                                        144     90     42      0    29%   25, 33-34, 90-91, 94-97, 111-125, 142-152, 156-161, 165-182, 191-194, 204-225, 228-244, 249-265
+src/archive_govt_nz/zenodo_identity.py                                                44      0     18      0   100%
+------------------------------------------------------------------------------------------------------------------------------
+TOTAL                                                                              16429   1916   4496    324    86%
+FAIL Required test coverage of 95.0% not reached. Total coverage: 86.20%
+--------------------------- snapshot report summary ----------------------------
+2 snapshots passed.
+================= 4543 passed, 6 warnings in 134.82s (0:02:14) =================
