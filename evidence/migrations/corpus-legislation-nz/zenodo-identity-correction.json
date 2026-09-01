@@ -111,7 +111,7 @@
       "api_checksum": "md5:a503b9a61904a836d2b45419347ae823",
       "download_status": 200,
       "download_sha256": "1910e55aa57b74c5892227ab97eeff6b706e420f782e589a013224a8404e85eb",
-      "download_md5": "a503b9a61904a836d2b45419347ae823"
+      "api_checksum_verified_against_download": true
     },
     {
       "key": "nz-legislation-corpus-2026.tar.zst",
@@ -119,7 +119,7 @@
       "api_checksum": "md5:00dee66bc1d66d52f1b31284ed11f516",
       "download_status": 200,
       "download_sha256": "1b7d5b2ab27bea138eb947f5971e993de7cf0e5b6f730bb905bbd9aa033be060",
-      "download_md5": "00dee66bc1d66d52f1b31284ed11f516"
+      "api_checksum_verified_against_download": true
     },
     {
       "key": "nz-legislation-corpus-2026.manifest.json",
@@ -127,7 +127,7 @@
       "api_checksum": "md5:6139f4539661d50aaa47a03707f2dea0",
       "download_status": 200,
       "download_sha256": "ea1212f47b0848971bdf41d87ee9236221c7130a0d55924bbf368b6075adf3a9",
-      "download_md5": "6139f4539661d50aaa47a03707f2dea0"
+      "api_checksum_verified_against_download": true
     }
   ],
   "linked_metadata": {

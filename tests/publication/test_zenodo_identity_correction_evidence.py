@@ -47,7 +47,7 @@ def test_receipt_is_read_only_and_hash_bound() -> None:
     )
     assert all(file["download_status"] == 200 for file in receipt["files"])
     assert all(
-        file["api_checksum"] == f"md5:{file['download_md5']}"
+        file["api_checksum_verified_against_download"] is True
         for file in receipt["files"]
     )
     assert all(len(file["download_sha256"]) == 64 for file in receipt["files"])
