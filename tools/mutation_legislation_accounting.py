@@ -7,6 +7,7 @@ import json
 import os
 import shutil
 import subprocess
+import sys
 import tempfile
 from pathlib import Path
 
@@ -114,7 +115,7 @@ def run(source: str, test_name: str, mutation: str | None) -> int:
         environment["PYTEST_DISABLE_PLUGIN_AUTOLOAD"] = "1"
         result = subprocess.run(
             [
-                str(ROOT / ".venv/bin/python"),
+                sys.executable,
                 "-m",
                 "pytest",
                 "-q",
