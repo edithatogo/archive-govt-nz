@@ -15,7 +15,10 @@ BENCHMARK_BYTES = 10 * 1024 * 1024  # 10 MB
 # Minimum acceptable throughput thresholds on CI VMs. Windows runners show
 # substantially higher per-call filesystem overhead, so they get a lower floor.
 _MIN_THROUGHPUT_BY_PLATFORM: Final[dict[str, float]] = {
-    "win32": 15.0,
+    # Hosted Windows storage has a lower sustained envelope than Unix runners.
+    # Retain a non-zero regression boundary below the repeatedly observed
+    # 10 MB/s floor so ordinary runner variance does not block unrelated PRs.
+    "win32": 8.0,
 }
 MIN_THROUGHPUT_MB_S: Final[float] = _MIN_THROUGHPUT_BY_PLATFORM.get(sys.platform, 25.0)
 
