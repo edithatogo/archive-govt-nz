@@ -217,7 +217,6 @@ class NZLegislationApiClient:
                 self._last_document_attempts = attempts
                 return resp.status_code, resp.content, headers_dict
 
-        self._last_document_attempts = attempts
         return 500, b"", {}
 
     async def get_document_raw_async(
@@ -283,7 +282,6 @@ class NZLegislationApiClient:
             if self._async_client is None:
                 await async_client.aclose()
 
-        self._last_document_attempts = attempts
         return 500, b"", {}
 
     @property

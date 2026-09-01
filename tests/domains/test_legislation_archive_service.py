@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+from pathlib import Path
 from typing import TYPE_CHECKING
 
 import httpx
@@ -37,8 +38,6 @@ from archive_govt_nz.domains.legislation.models import (
 from archive_govt_nz.object_store import ContentAddressedStore
 
 if TYPE_CHECKING:
-    from pathlib import Path
-
     from archive_govt_nz.core.identity import SourceIdentity
 
 
@@ -2209,6 +2208,182 @@ async def test_manifest_commit_failure_is_indeterminate(
     assert result.accounting.output_manifest_root is None
     assert result.accounting.output_checkpoint_root is None
     assert any("injected manifest failure" in error for error in result.errors)
+    await client.aclose()
+
+
+@pytest.mark.anyio
+async def test_manifest_failure_restores_existing_checkpoint(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """A split commit restores the exact prior checkpoint bytes."""
+    client = httpx.AsyncClient(
+        transport=httpx.MockTransport(
+            lambda _request: httpx.Response(200, content=b"<act><title>A</title></act>")
+        )
+    )
+    service = LegislationArchiveService(
+        ContentAddressedStore(tmp_path / "cas"),
+        api_client=NZLegislationApiClient(async_client=client),
+    )
+    checkpoint = tmp_path / "checkpoint.json"
+    manifest = tmp_path / "manifest.json"
+    target = _accounting_target("restore-work", "https://example.test/restore.xml")
+    await service.sync_works(
+        targets=[target], checkpoint_path=checkpoint, manifest_path=manifest
+    )
+    checkpoint_before = checkpoint.read_bytes()
+
+    def fail_manifest_write(_path: Path, _manifest: dict[str, object]) -> None:
+        message = "injected second manifest failure"
+        raise OSError(message)
+
+    monkeypatch.setattr(service, "_write_manifest", fail_manifest_write)
+    result = await service.sync_works(
+        targets=[target],
+        checkpoint_path=checkpoint,
+        manifest_path=manifest,
+        force_resync=True,
+    )
+    assert result.accounting is not None
+    assert result.accounting.state_commit_status is StateCommitStatus.INDETERMINATE
+    assert checkpoint.read_bytes() == checkpoint_before
+    await client.aclose()
+
+
+@pytest.mark.anyio
+async def test_manifest_failure_without_checkpoint_manager_is_indeterminate(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """A manifest-only commit failure does not invent rollback evidence."""
+    client = httpx.AsyncClient(
+        transport=httpx.MockTransport(
+            lambda _request: httpx.Response(200, content=b"<act><title>A</title></act>")
+        )
+    )
+    service = LegislationArchiveService(
+        ContentAddressedStore(tmp_path / "cas"),
+        api_client=NZLegislationApiClient(async_client=client),
+    )
+    monkeypatch.setattr(
+        service,
+        "_write_manifest",
+        lambda *_args: (_ for _ in ()).throw(OSError("manifest only failure")),
+    )
+    result = await service.sync_works(
+        targets=[_accounting_target("no-checkpoint", "https://example.test/a.xml")],
+        manifest_path=tmp_path / "manifest.json",
+    )
+    assert result.accounting is not None
+    assert result.accounting.state_commit_status is StateCommitStatus.INDETERMINATE
+    await client.aclose()
+
+
+@pytest.mark.anyio
+async def test_manifest_failure_tolerates_already_absent_new_checkpoint(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Rollback accepts a new checkpoint already removed by the failing writer."""
+    client = httpx.AsyncClient(
+        transport=httpx.MockTransport(
+            lambda _request: httpx.Response(200, content=b"<act><title>A</title></act>")
+        )
+    )
+    service = LegislationArchiveService(
+        ContentAddressedStore(tmp_path / "cas"),
+        api_client=NZLegislationApiClient(async_client=client),
+    )
+    checkpoint = tmp_path / "checkpoint.json"
+
+    def remove_checkpoint_then_fail(_path: Path, _manifest: dict[str, object]) -> None:
+        checkpoint.unlink()
+        message = "manifest failure after checkpoint removal"
+        raise OSError(message)
+
+    monkeypatch.setattr(service, "_write_manifest", remove_checkpoint_then_fail)
+    result = await service.sync_works(
+        targets=[
+            _accounting_target("removed-checkpoint", "https://example.test/a.xml")
+        ],
+        checkpoint_path=checkpoint,
+        manifest_path=tmp_path / "manifest.json",
+    )
+    assert result.accounting is not None
+    assert result.accounting.state_commit_status is StateCommitStatus.INDETERMINATE
+    assert not checkpoint.exists()
+    await client.aclose()
+
+
+@pytest.mark.anyio
+async def test_checkpoint_failure_before_promotion_needs_no_rollback(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """A staging failure leaves the prior checkpoint untouched."""
+    client = httpx.AsyncClient(
+        transport=httpx.MockTransport(
+            lambda _request: httpx.Response(200, content=b"<act><title>A</title></act>")
+        )
+    )
+    service = LegislationArchiveService(
+        ContentAddressedStore(tmp_path / "cas"),
+        api_client=NZLegislationApiClient(async_client=client),
+    )
+
+    def fail_checkpoint(*_args: object, **_kwargs: object) -> None:
+        message = "checkpoint staging failure"
+        raise OSError(message)
+
+    monkeypatch.setattr(service, "_finalize_checkpoint", fail_checkpoint)
+    result = await service.sync_works(
+        targets=[_accounting_target("stage-fail", "https://example.test/a.xml")],
+        checkpoint_path=tmp_path / "checkpoint.json",
+        manifest_path=tmp_path / "manifest.json",
+    )
+    assert result.accounting is not None
+    assert result.accounting.state_commit_status is StateCommitStatus.INDETERMINATE
+    await client.aclose()
+
+
+@pytest.mark.anyio
+async def test_rollback_failure_is_reported(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Rollback failure remains explicit indeterminate evidence."""
+    client = httpx.AsyncClient(
+        transport=httpx.MockTransport(
+            lambda _request: httpx.Response(200, content=b"<act><title>A</title></act>")
+        )
+    )
+    service = LegislationArchiveService(
+        ContentAddressedStore(tmp_path / "cas"),
+        api_client=NZLegislationApiClient(async_client=client),
+    )
+    checkpoint = tmp_path / "checkpoint.json"
+    manifest = tmp_path / "manifest.json"
+    target = _accounting_target("rollback-fail", "https://example.test/a.xml")
+    await service.sync_works(
+        targets=[target], checkpoint_path=checkpoint, manifest_path=manifest
+    )
+    monkeypatch.setattr(
+        service,
+        "_write_manifest",
+        lambda *_args: (_ for _ in ()).throw(OSError("manifest failure")),
+    )
+    original_write_bytes = Path.write_bytes
+
+    def fail_rollback(path: Path, data: bytes) -> int:
+        if path.suffixes[-2:] == [".rollback", ".tmp"]:
+            message = "rollback write failure"
+            raise OSError(message)
+        return original_write_bytes(path, data)
+
+    monkeypatch.setattr(Path, "write_bytes", fail_rollback)
+    result = await service.sync_works(
+        targets=[target],
+        checkpoint_path=checkpoint,
+        manifest_path=manifest,
+        force_resync=True,
+    )
+    assert any("rollback failed" in error for error in result.errors)
     await client.aclose()
 
 
