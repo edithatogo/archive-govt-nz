@@ -10,7 +10,7 @@ The donor was independently re-read as archived at final reachable head `b40587f
 
 Focused accounting, API, service, runner, CAS, and CLI tests passed: 206 tests. The first full harness attempt ran 4,372 tests at 97.35% total coverage and failed only because the assurance-stage sequence fixture did not yet include the new mutation stage. The fixture was corrected, preserving the failed attempt here. The repeated complete harness passed all 4,392 tests, 45 schemas, 35 representative documents, 9/9 parity checks, every repository mutation lane, dependency audit, licence inventory, secret scan, and SBOM validation. The changed accounting module reached 100% statement and branch coverage; the full repository reached 97.35%.
 
-The Prompt 12 mutation receipt killed 13/13 mutants. Its accounting source hash is `73be2a1f1c0363b190303fb68a2fe66a5482d8717571e3c4c5b360181f97f95f`. The v3 schema hash is `436c20386263466fb96b763db253677bfc434cc1b0e9241aff623b3e04dec67c`; the representative receipt hash is `295fe7566e4f736dce624f4e7fa1ba610c0ef39ea70d9e8ea646ae45d57dd2b3`; and the mutation runner hash is `e10de62876e17986dd32806404781fb6b867fc068c11649163e15a5f3f59705d`.
+The Prompt 12 mutation receipt killed 13/13 mutants. Its accounting source hash is `73be2a1f1c0363b190303fb68a2fe66a5482d8717571e3c4c5b360181f97f95f`. The v3 schema hash is `436c20386263466fb96b763db253677bfc434cc1b0e9241aff623b3e04dec67c`; the representative receipt hash is `295fe7566e4f736dce624f4e7fa1ba610c0ef39ea70d9e8ea646ae45d57dd2b3`; and the final portable mutation runner hash is `ed222a78058059b2fb049a53b40ccfc6b42295594fe5510852f7fb9c6b3066a5`.
 
 Independent agent review found three blocking gaps after the first green local
 gate: manifest promotion preceded checkpoint promotion, discovery preceded
@@ -29,3 +29,9 @@ dependency review, and analysis also passed on that head. The Windows job was
 still running when this closeout-only evidence commit superseded the head; the
 complete three-platform matrix is therefore required again on the final PR
 head before merge.
+
+
+The first final-head Windows job exposed a platform-specific hard-coded
+`.venv/bin/python` path in the new mutation runner. Commit `d6470ef6` replaced
+that path with the running interpreter (`sys.executable`); this is a tooling
+portability correction and does not change the mutants or acceptance logic.
