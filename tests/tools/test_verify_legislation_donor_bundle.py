@@ -31,12 +31,11 @@ def _git_input(root: Path, payload: str, *args: str) -> str:
     result = subprocess.run(
         ["git", *args],
         cwd=root,
-        input=payload,
-        text=True,
+        input=payload.encode("utf-8"),
         capture_output=True,
         check=True,
     )
-    return result.stdout.strip()
+    return result.stdout.decode("ascii").strip()
 
 
 def _repository(
