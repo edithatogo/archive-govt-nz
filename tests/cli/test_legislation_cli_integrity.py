@@ -6,12 +6,12 @@ import hashlib
 import json
 import sys
 from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
 import pytest
 import yaml
 
-from archive_govt_nz.cli import legislation
+from archive_govt_nz.cli import _validate_legislation_action_policy, legislation
 from archive_govt_nz.cli_compat import compat_nzlc_main
 from archive_govt_nz.domains.legislation.cli_state import (
     coverage_counts,
@@ -27,6 +27,9 @@ from archive_govt_nz.domains.legislation.manifest import (
     compute_legislation_manifest_sha256,
 )
 from archive_govt_nz.object_store import ContentAddressedStore
+
+if TYPE_CHECKING:
+    from collections.abc import Callable
 
 
 def _exact_config(tmp_path: Path, work_ids: list[str], checkpoint: str) -> str:
@@ -49,6 +52,23 @@ def _exact_config(tmp_path: Path, work_ids: list[str], checkpoint: str) -> str:
     path = tmp_path / "source-set.yml"
     path.write_text(yaml.safe_dump(value, sort_keys=False), encoding="utf-8")
     return str(path)
+
+
+def _policy_config(
+    tmp_path: Path,
+    checkpoint: str,
+    update: Callable[[dict[str, Any]], None] | None = None,
+) -> Path:
+    source = Path(__file__).parents[2] / "config/source-sets/legislation.yml"
+    value = yaml.safe_load(source.read_text(encoding="utf-8"))
+    value["execution"]["mode"] = "dispatch_only"
+    value["schedule"]["active"] = False
+    value["state"]["checkpoint_path"] = checkpoint
+    if update is not None:
+        update(value)
+    path = tmp_path / f"policy-{len(list(tmp_path.glob('policy-*')))}.yml"
+    path.write_text(yaml.safe_dump(value, sort_keys=False), encoding="utf-8")
+    return path
 
 
 def _record(work_id: str = "work-1") -> dict[str, Any]:
@@ -183,6 +203,124 @@ def test_action_config_fails_before_discovery(
     )
     assert code == 5
     assert json.loads(capsys.readouterr().out)["status"] == "invalid_config"
+
+
+def test_action_config_text_failure_is_reported(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    """Text mode reports typed-policy failures without entering acquisition."""
+    invalid = tmp_path / "invalid.yml"
+    invalid.write_text("name: legislation\nenabled: true\n", encoding="utf-8")
+    assert (
+        legislation(
+            action="discover",
+            search_term="act",
+            format="text",
+            source_set_config=str(invalid),
+        )
+        == 5
+    )
+    assert "Invalid legislation source-set config" in capsys.readouterr().err
+
+
+def test_direct_policy_rejects_every_unbound_execution_dimension(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Each direct acquisition policy dimension fails independently."""
+    common: dict[str, Any] = {
+        "action": "sync",
+        "checkpoint_path": "checkpoint.json",
+        "work_ids": None,
+        "search_term": "act",
+        "max_works": 1,
+    }
+
+    monkeypatch.setattr(
+        "archive_govt_nz.cli.parse_source_set_config",
+        lambda _path: {"name": "legislation"},
+    )
+    with pytest.raises(ValueError, match="Expected typed"):
+        _validate_legislation_action_policy(config_path=Path("unused"), **common)
+    monkeypatch.undo()
+
+    def disable(value: dict[str, Any]) -> None:
+        value["enabled"] = False
+        value["execution"]["activation"] = "inactive"
+        value["gates"]["acquisition"] = "inactive"
+        for adapter in value["adapters"]:
+            adapter["active"] = False
+
+    with pytest.raises(ValueError, match="acquisition is inactive"):
+        _validate_legislation_action_policy(
+            config_path=_policy_config(tmp_path, "checkpoint.json", disable), **common
+        )
+
+    def inactive_adapter(value: dict[str, Any]) -> None:
+        value["adapters"][0]["active"] = False
+
+    with pytest.raises(ValueError, match="adapter is not active"):
+        _validate_legislation_action_policy(
+            config_path=_policy_config(tmp_path, "checkpoint.json", inactive_adapter),
+            **common,
+        )
+    with pytest.raises(ValueError, match="exceeds configured limit"):
+        _validate_legislation_action_policy(
+            config_path=_policy_config(tmp_path, "checkpoint.json"),
+            action="sync",
+            checkpoint_path="checkpoint.json",
+            work_ids=None,
+            search_term="act",
+            max_works=51,
+        )
+    with pytest.raises(ValueError, match="Checkpoint path"):
+        _validate_legislation_action_policy(
+            config_path=_policy_config(tmp_path, "different.json"), **common
+        )
+
+    exact_path = Path(_exact_config(tmp_path, ["work-1"], "checkpoint.json"))
+    with pytest.raises(ValueError, match="Discovery action"):
+        _validate_legislation_action_policy(
+            action="discover",
+            config_path=exact_path,
+            checkpoint_path="checkpoint.json",
+            work_ids=None,
+            search_term="act",
+            max_works=1,
+        )
+    with pytest.raises(ValueError, match="Sync selection"):
+        _validate_legislation_action_policy(
+            config_path=_policy_config(tmp_path, "checkpoint.json"),
+            **(common | {"work_ids": ["work-1"], "search_term": ""}),
+        )
+
+    count_path = Path(_exact_config(tmp_path, ["work-1"], "checkpoint.json"))
+    count_value = yaml.safe_load(count_path.read_text(encoding="utf-8"))
+    count_value["scope"]["candidate_count"] = 2
+    count_path.write_text(
+        yaml.safe_dump(count_value, sort_keys=False), encoding="utf-8"
+    )
+    with pytest.raises(ValueError, match="inventory count"):
+        _validate_legislation_action_policy(
+            action="sync",
+            config_path=count_path,
+            checkpoint_path="checkpoint.json",
+            work_ids=["work-1"],
+            search_term="",
+            max_works=1,
+        )
+    hash_path = Path(_exact_config(tmp_path, ["work-1"], "checkpoint.json"))
+    hash_value = yaml.safe_load(hash_path.read_text(encoding="utf-8"))
+    hash_value["scope"]["inventory_sha256"] = "0" * 64
+    hash_path.write_text(yaml.safe_dump(hash_value, sort_keys=False), encoding="utf-8")
+    with pytest.raises(ValueError, match="inventory hash"):
+        _validate_legislation_action_policy(
+            action="sync",
+            config_path=hash_path,
+            checkpoint_path="checkpoint.json",
+            work_ids=["work-1"],
+            search_term="",
+            max_works=1,
+        )
 
 
 def test_sync_delegates_explicit_selection_to_archive_service(
