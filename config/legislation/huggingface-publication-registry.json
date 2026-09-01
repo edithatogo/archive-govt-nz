@@ -1,0 +1,72 @@
+{
+  "schema_version": "archive-govt-nz.legislation-huggingface-registry/v1",
+  "origin": {
+    "authority_repository": "edithatogo/archive-govt-nz",
+    "target_commit": "ff01566b5e6fff2f4e2b5f93ecdec11bb0c3c7e8",
+    "archived_donor_repository": "edithatogo/corpus-legislation-nz",
+    "archived_donor_commit": "b40587f1b1aec7356a0f623916fcc8212397d283"
+  },
+  "state": {
+    "manifest_sha256": "877ba501a25570a29c1aada7979562d8c62c7f043865125cf402310eabc09544",
+    "inventory_sha256": "9ca6dc505f991e015c6c997827878d8c7e9381b214a1544eb338328a285c6894",
+    "durable_package_sha256": "2e4b75333e947d812842147c939117fc666799e4497b80f125104f721ef68e3c",
+    "work_count": 552,
+    "record_count": 552,
+    "object_count": 552
+  },
+  "coverage": {
+    "candidate_ids": 33693,
+    "governed_reviewed_ids": 500,
+    "candidate_inventory_sha256": "6f70fa9b596be2baa77bd885df1857e9b89c04013361c9ad80af722b0cc8493b",
+    "published_counts_aggregate": null,
+    "limitations": [
+      "Candidate and reviewed counts do not prove acquisition or full legislative coverage.",
+      "Publication surfaces are distinct and their file or row counts must not be summed."
+    ]
+  },
+  "publication_gate": {
+    "status": "blocked_prerequisite",
+    "remote_write_authorized": false,
+    "prompt13_operational_proof": false,
+    "prompt13_receipt_sha256": "5396f35f4f4061f0c7235414e07d685cf6b3cad1d3a03f8ba97e95216f0c5d16",
+    "payload_rights": "source_specific_review_required"
+  },
+  "identities": [
+    {
+      "slug": "edithatogo/corpus-legislation-nz",
+      "role": "canonical_living_dataset",
+      "observed_revision": "1efa35e72c378068cfb112d060bd0502497f61b1",
+      "visibility": "public",
+      "gating": "auto",
+      "file_count": 112,
+      "published_row_count": null,
+      "rights_status": "source_specific_review_required",
+      "origin_metadata_status": "target_candidate_not_published",
+      "mutable": true
+    },
+    {
+      "slug": "edithatogo/corpus-legislation-nz-historical",
+      "role": "historical_superseded_operational_dataset",
+      "observed_revision": "ea9e66fb89c3230fc478f7c6f05f1a82f4fa1174",
+      "visibility": "public",
+      "gating": "none",
+      "file_count": 6788,
+      "published_row_count": 6609,
+      "rights_status": "source_specific_review_required",
+      "origin_metadata_status": "historical_donor_lineage",
+      "mutable": false
+    },
+    {
+      "slug": "edithatogo/nz-legislation-corpus",
+      "role": "immutable_doi_snapshot",
+      "observed_revision": "1dea0c678b419a9c16fe7e363488f91d293391d3",
+      "visibility": "public",
+      "gating": "auto",
+      "file_count": 20,
+      "published_row_count": null,
+      "rights_status": "source_specific_review_required",
+      "origin_metadata_status": "frozen_snapshot_lineage",
+      "mutable": false
+    }
+  ]
+}

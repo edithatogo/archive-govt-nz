@@ -1,0 +1,189 @@
+{
+  "common_card_metadata": {
+    "language": [
+      "en"
+    ],
+    "license": "other",
+    "rights_interpretation": "source-specific review required; no blanket relicense",
+    "task_categories": [
+      "text-retrieval"
+    ]
+  },
+  "evidence_kind": "huggingface_live_identity_observation",
+  "limitations": [
+    "Anonymous gating prevents byte, schema, manifest, and row verification for the canonical and DOI snapshot identities.",
+    "API response hashes include mutable counters and are observation receipts, not stable revision identifiers.",
+    "Listed-file counts come from the dataset API; raw-content counts classify .xml/.html payloads and exclude directory README files."
+  ],
+  "method": {
+    "api": "Hugging Face dataset and datasets-server public HTTP APIs",
+    "authentication": "none",
+    "mutation": "none",
+    "revision_binding": "Every file URL used the exact dataset revision."
+  },
+  "observation_time_precision": "calendar_day_Australia_Brisbane",
+  "observed_on": "2026-09-01",
+  "repositories": [
+    {
+      "access_note": "Public repository metadata and card are visible, but auto-gating requires authentication and accepted access for non-card file bytes and the dataset viewer.",
+      "anonymous_readback": {
+        "card": 200,
+        "coverage_report": 401,
+        "latest_manifest": 401,
+        "records": 401,
+        "rights": 401,
+        "sync_state": 401,
+        "viewer_first_rows": 401,
+        "viewer_info": 401,
+        "viewer_parquet": 401
+      },
+      "api_observation": {
+        "hash_stability": "volatile counters are present; revision and fields are the durable evidence",
+        "response_bytes": 8201,
+        "response_sha256": "0da01bb6df89c519fab63c619abaef68adc19900a9d433e7c2335f32c38630cf",
+        "status": 200,
+        "url": "https://huggingface.co/api/datasets/edithatogo/corpus-legislation-nz?full=true"
+      },
+      "card_bytes": 2874,
+      "card_origin_repository": "https://github.com/edithatogo/corpus-legislation-nz",
+      "card_rights_status": "source_specific_review_required",
+      "card_sha256": "ebeeffe15050a2cc4b85c9eb88e7f7df6c0e7fd64f5246279e427f8ecf824e20",
+      "created_at": "2026-06-10T08:54:16.000Z",
+      "dataset_id": "edithatogo/corpus-legislation-nz",
+      "disabled": false,
+      "gated": "auto",
+      "has_dataset_infos_file": false,
+      "has_rights_file": true,
+      "last_modified": "2026-07-29T01:23:18.000Z",
+      "listed_file_count": 112,
+      "operational_status": "active",
+      "parquet_file_count": 7,
+      "private": false,
+      "raw_content_file_count": 95,
+      "revision": "1efa35e72c378068cfb112d060bd0502497f61b1",
+      "role": "canonical_dataset",
+      "used_storage_bytes": 151928179
+    },
+    {
+      "access_note": "Anonymous raw-file readback succeeds. The generated viewer exposes the validation report as one row and does not expose the 6,609 corpus records.",
+      "anonymous_readback": {
+        "card": 200,
+        "coverage_report": 200,
+        "latest_manifest": 200,
+        "records_range": 206,
+        "rights": 200,
+        "sync_state": 200,
+        "viewer_first_rows_validation": 200,
+        "viewer_info": 200,
+        "viewer_parquet": 200,
+        "viewer_splits": 200
+      },
+      "api_observation": {
+        "hash_stability": "volatile counters are present; revision and fields are the durable evidence",
+        "response_bytes": 417123,
+        "response_sha256": "903aff9fb411ac608d2c8d27122f0d692e4cdefbf6dbfa59de3636e6dbe6eeb7",
+        "status": 200,
+        "url": "https://huggingface.co/api/datasets/edithatogo/corpus-legislation-nz-historical?full=true"
+      },
+      "card_bytes": 4040,
+      "card_origin_repository": "https://github.com/edithatogo/corpus-legislation-nz",
+      "card_rights_status": "source_specific_review_required",
+      "card_sha256": "e3d8da7c2240f87d84363803344054269d077fb4b9fe96ae3261208be387789e",
+      "coverage_report_sha256": "8b5674037eea09e7a513038f7c2d9ba89c47351049d4dd58d7bf8e62b0fdf856",
+      "created_at": "2026-06-09T09:38:54.000Z",
+      "dataset_id": "edithatogo/corpus-legislation-nz-historical",
+      "dataset_infos_sha256": "316fc6374ea7929ceb120ea7ccba63e1e2771dca245af553882349338d663e53",
+      "disabled": false,
+      "gated": false,
+      "has_dataset_infos_file": true,
+      "has_rights_file": true,
+      "last_modified": "2026-07-29T01:23:23.000Z",
+      "latest_manifest_sha256": "279f5eeb384a2f68acace4d12699477ffb216a574d9a0800a1028a226736c0b9",
+      "listed_file_count": 6788,
+      "manifest": {
+        "content_sha256": "bc6d1b1d5d308dc2797ad18126b272767c1a05cf1feee173c322adf4cdfeb8a9",
+        "controlled_bytes": 5712316655,
+        "controlled_file_count": 6775,
+        "declared_manifest_sha256": "885c7d3dc0a7d0db97a1a89c714954c47ee6f0d3c97ec3f82d91dee8ef47ea56",
+        "github_repository": "edithatogo/corpus-legislation-nz",
+        "github_run_id": "27392372310",
+        "parquet_file_count": 164,
+        "pipeline_version": "296b9663c286782b44ca2497d07336bdf4d2c1c9",
+        "raw_content_file_count": 6609,
+        "record_count": 6609,
+        "record_schema": "nzlc-record-v1",
+        "record_schema_version": "1.0",
+        "schema_version": "1.1"
+      },
+      "operational_status": "historical",
+      "parquet_file_count": 164,
+      "private": false,
+      "raw_content_file_count": 6609,
+      "raw_xml_directory_entry_count": 6610,
+      "revision": "ea9e66fb89c3230fc478f7c6f05f1a82f4fa1174",
+      "rights_bytes": 439,
+      "rights_sha256": "b856ce52ed9a5e5963492ba4a304a0f7c55071560109b23751f99a45206eaa49",
+      "role": "superseded_operational_dataset",
+      "sync_state_sha256": "39bd8d1dc7ae1343d4104a5fb691b0fa7913a8ab7ee2577e67160f4d4eae7e99",
+      "used_storage_bytes": 17064079088,
+      "validation_report_sha256": "f277fec9eb22c800bed4088b2122e23e40a81c0fc1974de12283ac5bfcf3b39c",
+      "viewer": {
+        "configs": [
+          "default"
+        ],
+        "converted_row_count": 1,
+        "converted_source": "manifests/validation_report.json",
+        "first_rows_response_sha256": "d3e64197280242f817cd4e674a942a594a386db22cb825a737f7a0efc58326f2",
+        "info_response_sha256": "c9bd9621a2f4b08e872c5b08b6071119e89dd5acd6f0f82ddfb62a25ca37d7e0",
+        "parquet_response_sha256": "c7e5979da84e6f7d124d87ab59b54bb25b156594e4f34b93bba8b27ed060202f",
+        "reported_corpus_record_count": 6609,
+        "splits": [
+          "validation"
+        ],
+        "splits_response_sha256": "a1415186c92be66258fe5be6ec4fa4f7534e2c75f37cbb401b9ad102aa6757eb"
+      }
+    },
+    {
+      "access_note": "Public repository metadata and card are visible, but auto-gating requires authentication and accepted access for non-card file bytes and the dataset viewer.",
+      "anonymous_readback": {
+        "card": 200,
+        "coverage_report": 401,
+        "latest_manifest": 401,
+        "records": 401,
+        "rights": 401,
+        "sync_state": 401,
+        "viewer_first_rows": 401,
+        "viewer_info": 401,
+        "viewer_parquet": 401
+      },
+      "api_observation": {
+        "hash_stability": "volatile counters are present; revision and fields are the durable evidence",
+        "response_bytes": 2488,
+        "response_sha256": "4c033964ce40c6d40287a19d93678cc94389b133f62f74415a5c0d53097e79d8",
+        "status": 200,
+        "url": "https://huggingface.co/api/datasets/edithatogo/nz-legislation-corpus?full=true"
+      },
+      "card_bytes": 1881,
+      "card_origin_repository": "https://github.com/edithatogo/corpus-legislation-nz",
+      "card_rights_status": "source_specific_review_required",
+      "card_sha256": "1cd10124c024499fd27b9ec331ba8b653cd371bc7f9fdbdf4397a0fbe035be89",
+      "created_at": "2026-06-08T08:21:17.000Z",
+      "dataset_id": "edithatogo/nz-legislation-corpus",
+      "disabled": false,
+      "doi": "10.57967/hf/9087",
+      "gated": "auto",
+      "has_dataset_infos_file": false,
+      "has_rights_file": true,
+      "last_modified": "2026-07-29T01:25:57.000Z",
+      "listed_file_count": 20,
+      "operational_status": "frozen_snapshot",
+      "parquet_file_count": 1,
+      "private": false,
+      "raw_content_file_count": 9,
+      "revision": "1dea0c678b419a9c16fe7e363488f91d293391d3",
+      "role": "immutable_doi_snapshot",
+      "used_storage_bytes": 412117
+    }
+  ],
+  "schema_version": "1.0"
+}

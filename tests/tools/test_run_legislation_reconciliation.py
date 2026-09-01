@@ -33,6 +33,7 @@ authenticated_count = _MODULE._authenticated_discovered_count  # noqa: SLF001
 reconcile_inventory = _MODULE.reconcile_inventory
 run_monthly_reconciliation = _MODULE.run_monthly_reconciliation
 main = _MODULE.main
+canonical_slug = _MODULE.CANONICAL_HOSTED_DATASET
 
 
 def _state(tmp_path: Path, *, populated: bool = True) -> tuple[Path, Path, Path]:
@@ -116,6 +117,94 @@ def test_reconcile_rejects_denominator_override(tmp_path: Path) -> None:
     manifest, checkpoint, cas = _state(tmp_path)
     with pytest.raises(ValueError, match="overrides"):
         reconcile_inventory(manifest, checkpoint, cas, candidate_works_denominator=100)
+
+
+def _hosted_files(tmp_path: Path, *, complete: bool) -> tuple[Path, Path]:
+    registry = {
+        "origin": {
+            "authority_repository": "edithatogo/archive-govt-nz",
+            "target_commit": "a" * 40,
+        },
+        "state": {
+            "manifest_sha256": "b" * 64,
+            "inventory_sha256": "c" * 64,
+            "work_count": 1,
+            "record_count": 1,
+        },
+        "identities": [
+            {"slug": canonical_slug, "observed_revision": "d" * 40, "file_count": 3}
+        ],
+    }
+    card = {
+        "origin_repository": "edithatogo/archive-govt-nz",
+        "origin_commit": "a" * 40,
+        "publication_role": "canonical_living",
+        "manifest_root_sha256": "b" * 64,
+        "inventory_sha256": "c" * 64,
+        "work_count": 1,
+        "record_count": 1,
+    }
+    hosted = {
+        "status": "verified",
+        "revision_sha": "d" * 40,
+        "files_count": 3,
+        "rights_listed_at_revision": True,
+        "rights_readback_verified": True,
+        "card_metadata": card if complete else {},
+    }
+    registry_path = tmp_path / "registry.json"
+    observation_path = tmp_path / "observation.json"
+    registry_path.write_text(json.dumps(registry), encoding="utf-8")
+    observation_path.write_text(
+        json.dumps({"huggingface": {canonical_slug: hosted}}), encoding="utf-8"
+    )
+    return registry_path, observation_path
+
+
+def test_hosted_comparison_requires_exact_consistent_readback(tmp_path: Path) -> None:
+    """Bind monthly results to revision, rights, roots, counts and origin."""
+    manifest, checkpoint, cas = _state(tmp_path)
+    registry, observation = _hosted_files(tmp_path, complete=True)
+    report = reconcile_inventory(
+        manifest,
+        checkpoint,
+        cas,
+        hosted_dataset_slug=canonical_slug,
+        hosted_observation_path=observation,
+        hosted_registry_path=registry,
+    )
+    assert report["status"] == "consistent"
+    assert report["hosted_dataset_comparison"]["status"] == "consistent"
+
+
+def test_hosted_comparison_fails_closed_for_wrong_slug_or_missing_metadata(
+    tmp_path: Path,
+) -> None:
+    """Reject a noncanonical identity and report incomplete card readback."""
+    manifest, checkpoint, cas = _state(tmp_path)
+    registry, observation = _hosted_files(tmp_path, complete=False)
+    with pytest.raises(ValueError, match="canonical dataset slug"):
+        reconcile_inventory(
+            manifest,
+            checkpoint,
+            cas,
+            hosted_dataset_slug="edithatogo/corpus-legislation-nz-historical",
+            hosted_observation_path=observation,
+            hosted_registry_path=registry,
+        )
+    report = reconcile_inventory(
+        manifest,
+        checkpoint,
+        cas,
+        hosted_dataset_slug=canonical_slug,
+        hosted_observation_path=observation,
+        hosted_registry_path=registry,
+    )
+    assert report["status"] == "inconsistent"
+    assert (
+        "card_metadata.origin_repository"
+        in report["hosted_dataset_comparison"]["mismatches"]
+    )
 
 
 def test_reconciliation_no_state_is_nonzero(tmp_path: Path) -> None:

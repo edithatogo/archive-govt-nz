@@ -22,6 +22,76 @@ from archive_govt_nz.domains.legislation.models import (
     validate_legislation_record,
 )
 
+CANONICAL_HOSTED_DATASET = "edithatogo/corpus-legislation-nz"
+DEFAULT_HOSTED_REGISTRY = Path(
+    "config/legislation/huggingface-publication-registry.json"
+)
+
+
+def _compare_hosted_dataset(  # noqa: C901, PLR0912
+    dataset_slug: str,
+    observation_path: Path | None,
+    registry_path: Path,
+) -> dict[str, Any]:
+    """Compare an exact hosted readback with the governed identity registry."""
+    mismatches: list[str] = []
+    if dataset_slug != CANONICAL_HOSTED_DATASET:
+        msg = "hosted comparison must use the canonical dataset slug"
+        raise ValueError(msg)
+    if observation_path is None or not observation_path.is_file():
+        msg = "hosted comparison requires an exact readback receipt"
+        raise ValueError(msg)
+
+    registry = json.loads(registry_path.read_text(encoding="utf-8"))
+    observations = json.loads(observation_path.read_text(encoding="utf-8"))
+    identities = registry.get("identities")
+    if not isinstance(identities, list):
+        msg = "hosted registry identities are missing"
+        raise TypeError(msg)
+    expected = next(
+        (item for item in identities if item.get("slug") == dataset_slug), None
+    )
+    if not isinstance(expected, dict):
+        msg = "canonical dataset is absent from hosted registry"
+        raise TypeError(msg)
+    hosted = observations.get("huggingface", {}).get(dataset_slug)
+    if not isinstance(hosted, dict):
+        msg = "canonical dataset is absent from readback receipt"
+        raise TypeError(msg)
+
+    if hosted.get("status") != "verified":
+        mismatches.append("readback_status")
+    if hosted.get("revision_sha") != expected.get("observed_revision"):
+        mismatches.append("revision")
+    if hosted.get("files_count") != expected.get("file_count"):
+        mismatches.append("file_count")
+    if hosted.get("rights_listed_at_revision") is not True:
+        mismatches.append("rights_inventory")
+    if hosted.get("rights_readback_verified") is not True:
+        mismatches.append("rights_readback")
+
+    card = hosted.get("card_metadata")
+    if not isinstance(card, dict):
+        card = {}
+    required_card = {
+        "origin_repository": registry.get("origin", {}).get("authority_repository"),
+        "origin_commit": registry.get("origin", {}).get("target_commit"),
+        "publication_role": "canonical_living",
+        "manifest_root_sha256": registry.get("state", {}).get("manifest_sha256"),
+        "inventory_sha256": registry.get("state", {}).get("inventory_sha256"),
+        "work_count": registry.get("state", {}).get("work_count"),
+        "record_count": registry.get("state", {}).get("record_count"),
+    }
+    for field, expected_value in required_card.items():
+        if card.get(field) != expected_value:
+            mismatches.append(f"card_metadata.{field}")
+    return {
+        "dataset_slug": dataset_slug,
+        "revision_sha": hosted.get("revision_sha"),
+        "status": "consistent" if not mismatches else "inconsistent",
+        "mismatches": mismatches,
+    }
+
 
 def _authenticated_discovered_count(
     manifest: dict[str, Any], record_work_ids: set[str]
@@ -88,12 +158,14 @@ def _load_manifest_records(
     return manifest, records
 
 
-def reconcile_inventory(
+def reconcile_inventory(  # noqa: PLR0913, PLR0917
     manifest_path: Path,
     checkpoint_path: Path,
     cas_path: Path,
     candidate_works_denominator: int | None = None,
     hosted_dataset_slug: str | None = None,
+    hosted_observation_path: Path | None = None,
+    hosted_registry_path: Path = DEFAULT_HOSTED_REGISTRY,
 ) -> dict[str, Any]:
     """Execute multi-layer reconciliation across inventory and manifest."""
     print(f"[RECONCILE] Reading manifest from: {manifest_path}")
@@ -151,9 +223,15 @@ def reconcile_inventory(
     )
 
     # Hosted comparison status (read-only without fabrication)
-    hosted_status = "not_configured"
+    hosted_comparison: dict[str, Any] = {
+        "dataset_slug": hosted_dataset_slug,
+        "status": "not_configured",
+        "mismatches": [],
+    }
     if hosted_dataset_slug:
-        hosted_status = "readback_unverified"
+        hosted_comparison = _compare_hosted_dataset(
+            hosted_dataset_slug, hosted_observation_path, hosted_registry_path
+        )
 
     coverage_gap = total_candidate - len(work_ids)
     if total_candidate == 0:
@@ -163,6 +241,7 @@ def reconcile_inventory(
         and not checkpoint_gap
         and not manifest_gap
         and coverage_gap == 0
+        and hosted_comparison["status"] in {"not_configured", "consistent"}
     ):
         status = "consistent"
     else:
@@ -184,10 +263,7 @@ def reconcile_inventory(
         "validation_findings": validation_findings[:20],
         "cas_objects_verified": cas_objects_verified,
         "unretrieved_discovered_works_count": coverage_gap,
-        "hosted_dataset_comparison": {
-            "dataset_slug": hosted_dataset_slug,
-            "status": hosted_status,
-        },
+        "hosted_dataset_comparison": hosted_comparison,
     }
 
 
@@ -199,6 +275,8 @@ def run_monthly_reconciliation(  # noqa: PLR0913
     receipt_path: Path,
     candidate_works_denominator: int | None = None,
     hosted_dataset_slug: str | None = None,
+    hosted_observation_path: Path | None = None,
+    hosted_registry_path: Path = DEFAULT_HOSTED_REGISTRY,
 ) -> int:
     """Run monthly reconciliation and save structured evidence receipt."""
     print("[RECONCILE] Starting monthly legislation inventory reconciliation...")
@@ -209,6 +287,8 @@ def run_monthly_reconciliation(  # noqa: PLR0913
             cas_path=cas_path,
             candidate_works_denominator=candidate_works_denominator,
             hosted_dataset_slug=hosted_dataset_slug,
+            hosted_observation_path=hosted_observation_path,
+            hosted_registry_path=hosted_registry_path,
         )
     except Exception as exc:  # noqa: BLE001
         print(f"[ERROR] Reconciliation failed: {exc}", file=sys.stderr)
@@ -243,6 +323,18 @@ def main() -> None:
         type=Path,
         required=True,
         help="Path to the linked sharded legislation CAS",
+    )
+    parser.add_argument(
+        "--hosted-observation-path",
+        type=Path,
+        default=None,
+        help="Exact remote publication readback receipt",
+    )
+    parser.add_argument(
+        "--hosted-registry-path",
+        type=Path,
+        default=DEFAULT_HOSTED_REGISTRY,
+        help="Governed Hugging Face identity registry",
     )
     parser.add_argument(
         "--manifest-path",
@@ -283,6 +375,8 @@ def main() -> None:
         receipt_path=args.receipt_path,
         candidate_works_denominator=args.candidate_denominator,
         hosted_dataset_slug=args.hosted_dataset_slug,
+        hosted_observation_path=args.hosted_observation_path,
+        hosted_registry_path=args.hosted_registry_path,
     )
     sys.exit(code)
 

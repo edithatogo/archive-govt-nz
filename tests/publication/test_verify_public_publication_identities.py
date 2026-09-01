@@ -8,6 +8,8 @@ from pathlib import Path
 from typing import TYPE_CHECKING
 
 import pytest
+from hypothesis import given
+from hypothesis import strategies as st
 
 if TYPE_CHECKING:
     from types import ModuleType
@@ -44,6 +46,7 @@ def test_verify_huggingface_dataset_mocked() -> None:
                     "cardData": {"license": "cc-by-4.0"},
                     "siblings": [
                         {"rfilename": "README.md"},
+                        {"rfilename": "RIGHTS.md"},
                         {"rfilename": "data.parquet"},
                     ],
                 }
@@ -67,11 +70,133 @@ def test_verify_huggingface_dataset_mocked() -> None:
     )
     assert res["status"] == "verified"
     assert res["revision_sha"] == "1efa35e72c378068cfb112d060bd0502497f61b1"
-    assert res["files_count"] == 2
+    assert res["files_count"] == 3
     assert res["viewer_state"] == {"viewer": True}
     assert res["configs"] == ["default"]
     assert res["direct_row_counts"] == {"default.train": 100}
     assert res["has_rights_statement"] is True
+    assert res["rights_readback_verified"] is True
+    assert res["rights_readback_status"] == "verified"
+    assert res["rights_request_url"].endswith(
+        "/resolve/1efa35e72c378068cfb112d060bd0502497f61b1/RIGHTS.md"
+    )
+
+
+@pytest.mark.parametrize(
+    ("rights_http_status", "expected_readback_status"),
+    [(404, "listed_unreadable"), (401, "listed_access_controlled")],
+)
+def test_verify_huggingface_dataset_blocks_listed_rights_readback_failure(
+    rights_http_status: int, expected_readback_status: str
+) -> None:
+    """A listed RIGHTS.md must be read back from the exact API revision."""
+    revision = "a" * 40
+
+    def mock_fetch(
+        url: str,
+        timeout: float = 15.0,  # noqa: ARG001
+    ) -> tuple[int, bytes, str, dict[str, str]]:
+        if "api/datasets" in url:
+            body = json.dumps(
+                {"sha": revision, "siblings": [{"rfilename": "RIGHTS.md"}]}
+            ).encode()
+            return 200, body, "api-hash", {}
+        if "RIGHTS.md" in url:
+            assert f"/resolve/{revision}/RIGHTS.md" in url
+            assert "/main/" not in url
+            return rights_http_status, b"not found", "rights-error-hash", {}
+        return 503, b"unavailable", "service-hash", {}
+
+    result = verify_huggingface_dataset("edithatogo/example", fetch_fn=mock_fetch)
+
+    assert result["status"] == "inconsistent_readback"
+    assert result["has_rights_statement"] is True
+    assert result["rights_listed_at_revision"] is True
+    assert result["rights_readback_verified"] is False
+    assert result["rights_http_status"] == rights_http_status
+    assert result["rights_readback_status"] == expected_readback_status
+
+
+def test_verify_huggingface_dataset_does_not_probe_unlisted_rights() -> None:
+    """An absent inventory entry stays absent without a mutable-branch probe."""
+    requested: list[str] = []
+
+    def mock_fetch(
+        url: str,
+        timeout: float = 15.0,  # noqa: ARG001
+    ) -> tuple[int, bytes, str, dict[str, str]]:
+        requested.append(url)
+        if "api/datasets" in url:
+            body = json.dumps(
+                {"sha": "b" * 40, "siblings": [{"rfilename": "README.md"}]}
+            ).encode()
+            return 200, body, "api-hash", {}
+        return 503, b"unavailable", "service-hash", {}
+
+    result = verify_huggingface_dataset("edithatogo/example", fetch_fn=mock_fetch)
+
+    assert result["status"] == "verified"
+    assert result["has_rights_statement"] is False
+    assert result["rights_readback_status"] == "not_listed"
+    assert result["rights_request_url"] is None
+    assert not any("RIGHTS.md" in url for url in requested)
+
+
+@given(revision=st.text(alphabet="0123456789abcdef", min_size=40, max_size=40))
+def test_rights_readback_is_bound_to_every_valid_revision(revision: str) -> None:
+    """Every valid API revision is used verbatim for the rights readback."""
+    rights_urls: list[str] = []
+
+    def mock_fetch(
+        url: str,
+        timeout: float = 15.0,  # noqa: ARG001
+    ) -> tuple[int, bytes, str, dict[str, str]]:
+        if "api/datasets" in url:
+            body = json.dumps(
+                {"sha": revision, "siblings": [{"rfilename": "RIGHTS.md"}]}
+            ).encode()
+            return 200, body, "api-hash", {}
+        if "RIGHTS.md" in url:
+            rights_urls.append(url)
+            return 200, b"source-specific rights", "rights-hash", {}
+        return 503, b"unavailable", "service-hash", {}
+
+    result = verify_huggingface_dataset("edithatogo/example", fetch_fn=mock_fetch)
+
+    assert result["status"] == "verified"
+    assert rights_urls == [
+        f"https://huggingface.co/datasets/edithatogo/example/resolve/{revision}/RIGHTS.md"
+    ]
+
+
+@pytest.mark.parametrize(
+    ("api_body", "error_fragment"),
+    [
+        (b"not json", "not valid JSON"),
+        (b"[]", "not an object"),
+        (json.dumps({"sha": "main", "siblings": []}).encode(), "Git SHA"),
+        (json.dumps({"sha": "c" * 40, "siblings": [None]}).encode(), "siblings"),
+    ],
+)
+def test_verify_huggingface_dataset_rejects_invalid_api_metadata(
+    api_body: bytes, error_fragment: str
+) -> None:
+    """Malformed identity metadata fails before mutable or derived readbacks."""
+    calls = 0
+
+    def mock_fetch(
+        _url: str,
+        timeout: float = 15.0,  # noqa: ARG001
+    ) -> tuple[int, bytes, str, dict[str, str]]:
+        nonlocal calls
+        calls += 1
+        return 200, api_body, "api-hash", {}
+
+    result = verify_huggingface_dataset("edithatogo/example", fetch_fn=mock_fetch)
+
+    assert result["status"] == "invalid_metadata"
+    assert error_fragment in result["error"]
+    assert calls == 1
 
 
 def test_verify_huggingface_dataset_unreachable() -> None:
@@ -183,8 +308,8 @@ def test_run_publication_verification_pipeline(tmp_path: Path) -> None:
         body = json.dumps(
             {
                 "id": "edithatogo/corpus-legislation-nz",
-                "sha": "rev-1",
-                "siblings": [],
+                "sha": "d" * 40,
+                "siblings": [{"rfilename": "README.md"}],
             }
         ).encode("utf-8")
         return 200, body, "hash-h", {}
