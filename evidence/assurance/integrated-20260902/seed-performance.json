@@ -1,0 +1,222 @@
+{
+  "all_passed": true,
+  "candidate_count": 500,
+  "command": [
+    "uv",
+    "run",
+    "--locked",
+    "python",
+    "tools/seed_registry.py",
+    "historical-work-ids-0001",
+    "--root",
+    "."
+  ],
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "python": "3.14.7",
+  "runs": [
+    {
+      "child_system_s": 0.045855,
+      "child_user_s": 0.758795,
+      "exit_code": 0,
+      "iteration": 1,
+      "max_rss_platform_units": 52592640,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "8601f198caab77589a4bbb6875154a01bf457c760d44b1f8abedb7540a9a66b0",
+      "wall_ms": 3902.436
+    },
+    {
+      "child_system_s": 0.044107,
+      "child_user_s": 0.751652,
+      "exit_code": 0,
+      "iteration": 2,
+      "max_rss_platform_units": 52756480,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "8601f198caab77589a4bbb6875154a01bf457c760d44b1f8abedb7540a9a66b0",
+      "wall_ms": 3513.063
+    },
+    {
+      "child_system_s": 0.041323,
+      "child_user_s": 0.729091,
+      "exit_code": 0,
+      "iteration": 3,
+      "max_rss_platform_units": 52756480,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "8601f198caab77589a4bbb6875154a01bf457c760d44b1f8abedb7540a9a66b0",
+      "wall_ms": 2305.611
+    },
+    {
+      "child_system_s": 0.043747,
+      "child_user_s": 0.759292,
+      "exit_code": 0,
+      "iteration": 4,
+      "max_rss_platform_units": 52756480,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "8601f198caab77589a4bbb6875154a01bf457c760d44b1f8abedb7540a9a66b0",
+      "wall_ms": 3605.33
+    },
+    {
+      "child_system_s": 0.044497,
+      "child_user_s": 0.742712,
+      "exit_code": 0,
+      "iteration": 5,
+      "max_rss_platform_units": 52756480,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "8601f198caab77589a4bbb6875154a01bf457c760d44b1f8abedb7540a9a66b0",
+      "wall_ms": 2574.782
+    },
+    {
+      "child_system_s": 0.048997,
+      "child_user_s": 0.763827,
+      "exit_code": 0,
+      "iteration": 6,
+      "max_rss_platform_units": 52756480,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "8601f198caab77589a4bbb6875154a01bf457c760d44b1f8abedb7540a9a66b0",
+      "wall_ms": 2480.629
+    },
+    {
+      "child_system_s": 0.043021,
+      "child_user_s": 0.757234,
+      "exit_code": 0,
+      "iteration": 7,
+      "max_rss_platform_units": 52756480,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "8601f198caab77589a4bbb6875154a01bf457c760d44b1f8abedb7540a9a66b0",
+      "wall_ms": 3677.171
+    },
+    {
+      "child_system_s": 0.044024,
+      "child_user_s": 0.725986,
+      "exit_code": 0,
+      "iteration": 8,
+      "max_rss_platform_units": 52756480,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "8601f198caab77589a4bbb6875154a01bf457c760d44b1f8abedb7540a9a66b0",
+      "wall_ms": 1560.451
+    },
+    {
+      "child_system_s": 0.040155,
+      "child_user_s": 0.752102,
+      "exit_code": 0,
+      "iteration": 9,
+      "max_rss_platform_units": 52756480,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "8601f198caab77589a4bbb6875154a01bf457c760d44b1f8abedb7540a9a66b0",
+      "wall_ms": 3029.451
+    },
+    {
+      "child_system_s": 0.039394,
+      "child_user_s": 0.760959,
+      "exit_code": 0,
+      "iteration": 10,
+      "max_rss_platform_units": 52756480,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "8601f198caab77589a4bbb6875154a01bf457c760d44b1f8abedb7540a9a66b0",
+      "wall_ms": 4636.637
+    },
+    {
+      "child_system_s": 0.03861,
+      "child_user_s": 0.750132,
+      "exit_code": 0,
+      "iteration": 11,
+      "max_rss_platform_units": 52756480,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "8601f198caab77589a4bbb6875154a01bf457c760d44b1f8abedb7540a9a66b0",
+      "wall_ms": 2651.038
+    },
+    {
+      "child_system_s": 0.039077,
+      "child_user_s": 0.755665,
+      "exit_code": 0,
+      "iteration": 12,
+      "max_rss_platform_units": 52756480,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "8601f198caab77589a4bbb6875154a01bf457c760d44b1f8abedb7540a9a66b0",
+      "wall_ms": 2942.359
+    },
+    {
+      "child_system_s": 0.048665,
+      "child_user_s": 0.765504,
+      "exit_code": 0,
+      "iteration": 13,
+      "max_rss_platform_units": 52756480,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "8601f198caab77589a4bbb6875154a01bf457c760d44b1f8abedb7540a9a66b0",
+      "wall_ms": 3667.215
+    },
+    {
+      "child_system_s": 0.047016,
+      "child_user_s": 0.776721,
+      "exit_code": 0,
+      "iteration": 14,
+      "max_rss_platform_units": 52756480,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "8601f198caab77589a4bbb6875154a01bf457c760d44b1f8abedb7540a9a66b0",
+      "wall_ms": 5006.848
+    },
+    {
+      "child_system_s": 0.045818,
+      "child_user_s": 0.764663,
+      "exit_code": 0,
+      "iteration": 15,
+      "max_rss_platform_units": 52756480,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "8601f198caab77589a4bbb6875154a01bf457c760d44b1f8abedb7540a9a66b0",
+      "wall_ms": 4621.617
+    },
+    {
+      "child_system_s": 0.04636,
+      "child_user_s": 0.76459,
+      "exit_code": 0,
+      "iteration": 16,
+      "max_rss_platform_units": 52756480,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "8601f198caab77589a4bbb6875154a01bf457c760d44b1f8abedb7540a9a66b0",
+      "wall_ms": 2602.448
+    },
+    {
+      "child_system_s": 0.044967,
+      "child_user_s": 0.801356,
+      "exit_code": 0,
+      "iteration": 17,
+      "max_rss_platform_units": 52903936,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "8601f198caab77589a4bbb6875154a01bf457c760d44b1f8abedb7540a9a66b0",
+      "wall_ms": 6696.297
+    },
+    {
+      "child_system_s": 0.044907,
+      "child_user_s": 0.781394,
+      "exit_code": 0,
+      "iteration": 18,
+      "max_rss_platform_units": 52903936,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "8601f198caab77589a4bbb6875154a01bf457c760d44b1f8abedb7540a9a66b0",
+      "wall_ms": 5954.433
+    },
+    {
+      "child_system_s": 0.043476,
+      "child_user_s": 0.777185,
+      "exit_code": 0,
+      "iteration": 19,
+      "max_rss_platform_units": 52903936,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "8601f198caab77589a4bbb6875154a01bf457c760d44b1f8abedb7540a9a66b0",
+      "wall_ms": 5540.951
+    },
+    {
+      "child_system_s": 0.042933,
+      "child_user_s": 0.794699,
+      "exit_code": 0,
+      "iteration": 20,
+      "max_rss_platform_units": 52903936,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "8601f198caab77589a4bbb6875154a01bf457c760d44b1f8abedb7540a9a66b0",
+      "wall_ms": 6104.022
+    }
+  ],
+  "schema_version": "archive-govt-nz.prompt20-seed-performance/v1",
+  "seed_id": "historical-work-ids-0001",
+  "seed_sha256": "59923176fa34796d7673a20b880af9abe5520fe484595edb220f2bbc0e3b33e7",
+  "target_commit": "dd90f8ec01c91290895e9f2a684d948a520b0f1f"
+}

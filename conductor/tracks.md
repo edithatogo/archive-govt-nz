@@ -284,3 +284,6 @@ implementation has occurred under these tracks.
 
 - [~] **Track: Donor Git bundle and archival presentation (Prompt 19)**
   *Link: [./tracks/legislation_donor_bundle_archival_presentation_20260902/index.md](./tracks/legislation_donor_bundle_archival_presentation_20260902/index.md)*
+
+- [~] **Track: Integrated quality, security, and hosted assurance (Prompt 20)**
+  *Link: [./tracks/integrated_assurance_20260902/index.md](./tracks/integrated_assurance_20260902/index.md)*
