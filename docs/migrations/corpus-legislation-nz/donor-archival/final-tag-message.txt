@@ -1,0 +1,19 @@
+corpus-legislation-nz migration final state
+
+Final operational donor commit:
+b40587f1b1aec7356a0f623916fcc8212397d283
+
+Operational work moved to edithatogo/archive-govt-nz. This annotated tag marks
+the frozen donor source state committed on 2026-08-21; it does not rewrite the
+commit, publish a dataset, alter an existing DOI, or claim that all referenced
+source content is relicensed.
+
+Existing public identities remain:
+- Hugging Face: edithatogo/corpus-legislation-nz
+- Hugging Face historical: edithatogo/corpus-legislation-nz-historical
+- Zenodo concept DOI: 10.5281/zenodo.20592539
+- Zenodo 2026 version DOI: 10.5281/zenodo.20592540
+
+The independent edithatogo/legislation product remains separate and untouched.
+See the Prompt 19 verification receipt in edithatogo/archive-govt-nz before
+using any preservation bundle.

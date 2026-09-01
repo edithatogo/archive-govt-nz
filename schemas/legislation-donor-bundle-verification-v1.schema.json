@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/edithatogo/archive-govt-nz/schemas/legislation-donor-bundle-verification-v1.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "status", "preservation_classification", "donor", "final_head", "asset", "git", "governed_content", "limitations", "external_action"],
+  "properties": {
+    "schema_version": {"const": "archive-govt-nz.legislation-donor-bundle-verification/v1"},
+    "status": {"const": "passed"},
+    "preservation_classification": {"enum": ["complete_reachable_git_copy", "incomplete", "verification_failed"]},
+    "donor": {"const": "edithatogo/corpus-legislation-nz"},
+    "final_head": {"$ref": "#/$defs/sha1"},
+    "asset": {
+      "type": "object", "additionalProperties": false,
+      "required": ["release_id", "asset_id", "name", "size", "sha256"],
+      "properties": {
+        "release_id": {"const": 377118888}, "asset_id": {"const": 530775782},
+        "name": {"const": "corpus-legislation-nz-full-20260826.bundle"},
+        "size": {"type": "integer", "minimum": 1}, "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "git": {
+      "type": "object", "additionalProperties": false,
+      "required": ["version", "bundle_verify_passed", "fsck_passed", "restored_refs", "missing_refs", "mismatched_refs", "bundle_only_refs", "reachable_object_count", "reachable_object_inventory_sha256", "commit_metadata_count", "commit_metadata_sha256", "signature_objects_preserved"],
+      "properties": {
+        "version": {"type": "string", "pattern": "^git version "},
+        "bundle_verify_passed": {"const": true}, "fsck_passed": {"const": true},
+        "restored_refs": {"type": "object", "minProperties": 1, "additionalProperties": {"$ref": "#/$defs/ref"}},
+        "missing_refs": {"type": "array", "maxItems": 0}, "mismatched_refs": {"type": "array", "maxItems": 0},
+        "bundle_only_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "reachable_object_count": {"type": "integer", "minimum": 1}, "reachable_object_inventory_sha256": {"$ref": "#/$defs/sha256"},
+        "commit_metadata_count": {"type": "integer", "minimum": 1}, "commit_metadata_sha256": {"$ref": "#/$defs/sha256"},
+        "signature_objects_preserved": {"type": "integer", "minimum": 0}
+      }
+    },
+    "governed_content": {
+      "type": "object", "additionalProperties": false,
+      "required": ["required_blobs", "workflow_paths", "conductor_paths"],
+      "properties": {
+        "required_blobs": {"type": "object", "required": ["LICENSE", "NOTICE.md", "CITATION.cff", "README.md", "DATASET_CARD.md"], "additionalProperties": {"$ref": "#/$defs/sha1"}},
+        "workflow_paths": {"type": "array", "minItems": 1, "items": {"type": "string", "pattern": "^\\.github/workflows/.+\\.ya?ml$"}, "uniqueItems": true},
+        "conductor_paths": {"type": "array", "minItems": 1, "items": {"type": "string", "pattern": "^conductor/"}, "uniqueItems": true}
+      }
+    },
+    "limitations": {"type": "array", "minItems": 3, "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+    "external_action": {
+      "type": "object", "additionalProperties": false,
+      "required": ["release_published", "donor_modified", "donor_unarchived"],
+      "properties": {"release_published": {"const": false}, "donor_modified": {"const": false}, "donor_unarchived": {"const": false}}
+    }
+  },
+  "$defs": {
+    "sha1": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "ref": {
+      "type": "object", "additionalProperties": false, "required": ["object", "type", "peeled"],
+      "properties": {"object": {"$ref": "#/$defs/sha1"}, "type": {"enum": ["commit", "tag"]}, "peeled": {"oneOf": [{"$ref": "#/$defs/sha1"}, {"type": "null"}]}}
+    }
+  }
+}

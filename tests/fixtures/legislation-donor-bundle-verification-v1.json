@@ -1,0 +1,22 @@
+{
+  "schema_version": "archive-govt-nz.legislation-donor-bundle-verification/v1",
+  "status": "passed",
+  "preservation_classification": "complete_reachable_git_copy",
+  "donor": "edithatogo/corpus-legislation-nz",
+  "final_head": "b40587f1b1aec7356a0f623916fcc8212397d283",
+  "asset": {"release_id": 377118888, "asset_id": 530775782, "name": "corpus-legislation-nz-full-20260826.bundle", "size": 2365303, "sha256": "f125f91b06264a97e59f65fac47878a74d646c915f12c0b05841c1550ec741c2"},
+  "git": {
+    "version": "git version 2.51.0", "bundle_verify_passed": true, "fsck_passed": true,
+    "restored_refs": {"refs/heads/main": {"object": "b40587f1b1aec7356a0f623916fcc8212397d283", "type": "commit", "peeled": null}},
+    "missing_refs": [], "mismatched_refs": [], "bundle_only_refs": [],
+    "reachable_object_count": 1, "reachable_object_inventory_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "commit_metadata_count": 1, "commit_metadata_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "signature_objects_preserved": 1
+  },
+  "governed_content": {
+    "required_blobs": {"LICENSE": "1111111111111111111111111111111111111111", "NOTICE.md": "2222222222222222222222222222222222222222", "CITATION.cff": "3333333333333333333333333333333333333333", "README.md": "4444444444444444444444444444444444444444", "DATASET_CARD.md": "5555555555555555555555555555555555555555"},
+    "workflow_paths": [".github/workflows/ci.yml"], "conductor_paths": ["conductor/index.md"]
+  },
+  "limitations": ["Reachable public Git refs only.", "Hosted GitHub state is excluded.", "Signature trust needs a keyring."],
+  "external_action": {"release_published": false, "donor_modified": false, "donor_unarchived": false}
+}
