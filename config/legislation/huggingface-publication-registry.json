@@ -1,10 +1,11 @@
 {
-  "schema_version": "archive-govt-nz.legislation-huggingface-registry/v1",
+  "schema_version": "archive-govt-nz.legislation-huggingface-registry/v2",
   "origin": {
     "authority_repository": "edithatogo/archive-govt-nz",
     "target_commit": "ff01566b5e6fff2f4e2b5f93ecdec11bb0c3c7e8",
     "archived_donor_repository": "edithatogo/corpus-legislation-nz",
-    "archived_donor_commit": "b40587f1b1aec7356a0f623916fcc8212397d283"
+    "archived_donor_commit": "b40587f1b1aec7356a0f623916fcc8212397d283",
+    "durable_package_source_commit": "abb3d673bb8a082b9c0c8bdf5bb8bfbd3ac91ebe"
   },
   "state": {
     "manifest_sha256": "877ba501a25570a29c1aada7979562d8c62c7f043865125cf402310eabc09544",
@@ -25,23 +26,28 @@
     ]
   },
   "publication_gate": {
-    "status": "blocked_prerequisite",
-    "remote_write_authorized": false,
+    "status": "published_verified",
+    "remote_write_authorized": true,
+    "authorization_date": "2026-09-03",
     "prompt13_operational_proof": false,
     "prompt13_receipt_sha256": "5396f35f4f4061f0c7235414e07d685cf6b3cad1d3a03f8ba97e95216f0c5d16",
-    "payload_rights": "source_specific_review_required"
+    "payload_rights": "approved_public_selected_552",
+    "durable_package_revision": "ae4da4ef0446f68fddd8f53279ecb1245f1529b9",
+    "metadata_revision": "04688f12dd687618e2085ae31f9b8a4a50a88b16",
+    "readback_receipt_path": "evidence/migrations/corpus-legislation-nz/huggingface-publication/publication-readback-20260903.json",
+    "readback_receipt_sha256": "e71cc7fb43c03b29412bf974ce925176709f2f34f6009a470efc3610584ba1f4"
   },
   "identities": [
     {
       "slug": "edithatogo/corpus-legislation-nz",
       "role": "canonical_living_dataset",
-      "observed_revision": "1efa35e72c378068cfb112d060bd0502497f61b1",
+      "observed_revision": "04688f12dd687618e2085ae31f9b8a4a50a88b16",
       "visibility": "public",
-      "gating": "auto",
-      "file_count": 112,
+      "gating": "none",
+      "file_count": 114,
       "published_row_count": null,
-      "rights_status": "source_specific_review_required",
-      "origin_metadata_status": "target_candidate_not_published",
+      "rights_status": "approved_public_selected_552",
+      "origin_metadata_status": "target_publication_verified",
       "mutable": true
     },
     {

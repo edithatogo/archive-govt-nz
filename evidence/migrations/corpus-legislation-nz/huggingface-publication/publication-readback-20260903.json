@@ -1,0 +1,91 @@
+{
+  "schema_version": "archive-govt-nz.huggingface-publication-readback/v1",
+  "publication_date": "2026-09-03",
+  "dataset": {
+    "slug": "edithatogo/corpus-legislation-nz",
+    "role": "canonical_living_dataset",
+    "created_new_identity": false,
+    "private": false,
+    "gated": false
+  },
+  "authority": {
+    "decision": "approved_public_redistribution_selected_state",
+    "selected_record_count": 552,
+    "decision_date": "2026-09-03",
+    "canonical_repository": "edithatogo/archive-govt-nz",
+    "card_origin_commit": "ff01566b5e6fff2f4e2b5f93ecdec11bb0c3c7e8",
+    "durable_package_source_commit": "abb3d673bb8a082b9c0c8bdf5bb8bfbd3ac91ebe",
+    "archived_donor_repository": "edithatogo/corpus-legislation-nz",
+    "archived_donor_operational_head": "b40587f1b1aec7356a0f623916fcc8212397d283"
+  },
+  "commits": {
+    "durable_package": {
+      "revision": "ae4da4ef0446f68fddd8f53279ecb1245f1529b9",
+      "committed_at": "2026-09-03T09:05:45Z"
+    },
+    "card_and_rights": {
+      "revision": "04688f12dd687618e2085ae31f9b8a4a50a88b16",
+      "committed_at": "2026-09-03T09:15:38Z"
+    }
+  },
+  "anonymous_exact_revision_readback": {
+    "observed_at": "2026-09-03T09:21:50.872016Z",
+    "api": {
+      "url": "https://huggingface.co/api/datasets/edithatogo/corpus-legislation-nz/revision/04688f12dd687618e2085ae31f9b8a4a50a88b16",
+      "http_status": 200,
+      "response_size_bytes": 8456,
+      "response_sha256": "dcda8c5961500b624cb5787b4ce2f06d8d6c1b1f1258133b4efa487056ed9ae4",
+      "returned_revision": "04688f12dd687618e2085ae31f9b8a4a50a88b16",
+      "private": false,
+      "gated": false,
+      "file_count": 114
+    },
+    "files": [
+      {
+        "path": "README.md",
+        "revision": "04688f12dd687618e2085ae31f9b8a4a50a88b16",
+        "http_status": 200,
+        "size_bytes": 2713,
+        "sha256": "d41be7b72c10b1e79754bed9b59deed5862d535b6ed0eead2a02df01392e8c4d"
+      },
+      {
+        "path": "RIGHTS.md",
+        "revision": "04688f12dd687618e2085ae31f9b8a4a50a88b16",
+        "http_status": 200,
+        "size_bytes": 771,
+        "sha256": "1cf3df1c833ab9f8a44b703a7668a91b25dfa1b2626972f89d11f7607a776d03"
+      },
+      {
+        "path": "durable-state/v1/2e4b75333e947d812842147c939117fc666799e4497b80f125104f721ef68e3c/metadata.json",
+        "revision": "04688f12dd687618e2085ae31f9b8a4a50a88b16",
+        "http_status": 200,
+        "size_bytes": 1450,
+        "sha256": "ed886263fead010a540663515b24440db59371dbd9bb0abca2138942b44f8e74"
+      },
+      {
+        "path": "durable-state/v1/2e4b75333e947d812842147c939117fc666799e4497b80f125104f721ef68e3c/canonical-state.zip",
+        "revision": "04688f12dd687618e2085ae31f9b8a4a50a88b16",
+        "first_published_revision": "ae4da4ef0446f68fddd8f53279ecb1245f1529b9",
+        "http_status": 200,
+        "size_bytes": 71776346,
+        "sha256": "2e4b75333e947d812842147c939117fc666799e4497b80f125104f721ef68e3c"
+      }
+    ]
+  },
+  "rights": {
+    "status": "approved_public_selected_552",
+    "boundary": "Source-specific copyright, statutory terms, attribution, and reuse conditions remain authoritative; no blanket relicensing is asserted."
+  },
+  "coverage": {
+    "selected_state_records": 552,
+    "governed_reviewed_seed_ids": 500,
+    "search_derived_candidate_ids": 33693,
+    "limitation": "These populations have different semantics and none alone proves full legislative coverage."
+  },
+  "github_relationship": {
+    "authority_repository": "https://github.com/edithatogo/archive-govt-nz",
+    "related_release": "https://github.com/edithatogo/archive-govt-nz/releases/tag/corpus-legislation-nz-final-archive-20260903",
+    "relationship": "The GitHub release indexes and links the Hugging Face durable publication. Its attached Git bundle is repository-history preservation, not a copy of canonical-state.zip. Hugging Face is the byte-hosting authority for the durable state package."
+  },
+  "status": "public_verified"
+}

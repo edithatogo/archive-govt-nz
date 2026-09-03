@@ -6,4 +6,5 @@
 - [x] Add the deterministic canonical card candidate and external-action checklist.
 - [x] Correct monthly reconciliation to compare the canonical dataset observation.
 - [x] Generate superseding evidence, review, and run full validation.
-- [ ] Publish and independently read back the existing canonical identity under explicit authority. Blocked by the pending publication gate, Prompt 13 operational proof, and item-level rights review.
+- [x] Publish and independently read back the existing canonical identity under explicit authority. Completed 2026-09-03 with immutable anonymous readback evidence.
+- [ ] Reconcile the Prompt 13 operational-proof prerequisite when its target-owned hosted run is complete; do not infer it from publication.

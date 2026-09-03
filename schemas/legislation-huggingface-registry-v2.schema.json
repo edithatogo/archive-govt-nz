@@ -1,0 +1,252 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive-govt-nz.example/schemas/legislation-huggingface-registry-v2.schema.json",
+  "title": "Legislation Hugging Face published identity registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "origin",
+    "state",
+    "coverage",
+    "publication_gate",
+    "identities"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "archive-govt-nz.legislation-huggingface-registry/v2"
+    },
+    "origin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority_repository",
+        "target_commit",
+        "archived_donor_repository",
+        "archived_donor_commit",
+        "durable_package_source_commit"
+      ],
+      "properties": {
+        "authority_repository": {
+          "const": "edithatogo/archive-govt-nz"
+        },
+        "target_commit": {
+          "$ref": "#/$defs/git_sha"
+        },
+        "archived_donor_repository": {
+          "const": "edithatogo/corpus-legislation-nz"
+        },
+        "archived_donor_commit": {
+          "$ref": "#/$defs/git_sha"
+        },
+        "durable_package_source_commit": {
+          "$ref": "#/$defs/git_sha"
+        }
+      }
+    },
+    "state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "manifest_sha256",
+        "inventory_sha256",
+        "durable_package_sha256",
+        "work_count",
+        "record_count",
+        "object_count"
+      ],
+      "properties": {
+        "manifest_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "inventory_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "durable_package_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "work_count": {
+          "const": 552
+        },
+        "record_count": {
+          "const": 552
+        },
+        "object_count": {
+          "const": 552
+        }
+      }
+    },
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_ids",
+        "governed_reviewed_ids",
+        "candidate_inventory_sha256",
+        "published_counts_aggregate",
+        "limitations"
+      ],
+      "properties": {
+        "candidate_ids": {
+          "const": 33693
+        },
+        "governed_reviewed_ids": {
+          "const": 500
+        },
+        "candidate_inventory_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "published_counts_aggregate": {
+          "type": "null"
+        },
+        "limitations": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "publication_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "remote_write_authorized",
+        "authorization_date",
+        "prompt13_operational_proof",
+        "prompt13_receipt_sha256",
+        "payload_rights",
+        "durable_package_revision",
+        "metadata_revision",
+        "readback_receipt_path",
+        "readback_receipt_sha256"
+      ],
+      "properties": {
+        "status": {
+          "const": "published_verified"
+        },
+        "remote_write_authorized": {
+          "const": true
+        },
+        "authorization_date": {
+          "const": "2026-09-03"
+        },
+        "prompt13_operational_proof": {
+          "const": false
+        },
+        "prompt13_receipt_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "payload_rights": {
+          "const": "approved_public_selected_552"
+        },
+        "durable_package_revision": {
+          "const": "ae4da4ef0446f68fddd8f53279ecb1245f1529b9"
+        },
+        "metadata_revision": {
+          "const": "04688f12dd687618e2085ae31f9b8a4a50a88b16"
+        },
+        "readback_receipt_path": {
+          "const": "evidence/migrations/corpus-legislation-nz/huggingface-publication/publication-readback-20260903.json"
+        },
+        "readback_receipt_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "identities": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "$ref": "#/$defs/identity"
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "git_sha": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "slug",
+        "role",
+        "observed_revision",
+        "visibility",
+        "gating",
+        "file_count",
+        "published_row_count",
+        "rights_status",
+        "origin_metadata_status",
+        "mutable"
+      ],
+      "properties": {
+        "slug": {
+          "enum": [
+            "edithatogo/corpus-legislation-nz",
+            "edithatogo/corpus-legislation-nz-historical",
+            "edithatogo/nz-legislation-corpus"
+          ]
+        },
+        "role": {
+          "enum": [
+            "canonical_living_dataset",
+            "historical_superseded_operational_dataset",
+            "immutable_doi_snapshot"
+          ]
+        },
+        "observed_revision": {
+          "$ref": "#/$defs/git_sha"
+        },
+        "visibility": {
+          "const": "public"
+        },
+        "gating": {
+          "enum": [
+            "auto",
+            "none"
+          ]
+        },
+        "file_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "published_row_count": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "rights_status": {
+          "enum": [
+            "source_specific_review_required",
+            "approved_public_selected_552"
+          ]
+        },
+        "origin_metadata_status": {
+          "enum": [
+            "target_candidate_not_published",
+            "target_publication_verified",
+            "historical_donor_lineage",
+            "frozen_snapshot_lineage"
+          ]
+        },
+        "mutable": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

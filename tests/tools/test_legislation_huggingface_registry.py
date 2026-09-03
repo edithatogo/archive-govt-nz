@@ -12,7 +12,7 @@ import pytest
 from jsonschema import Draft202012Validator, ValidationError
 
 ROOT = Path(__file__).resolve().parents[2]
-SCHEMA_PATH = ROOT / "schemas/legislation-huggingface-registry-v1.schema.json"
+SCHEMA_PATH = ROOT / "schemas/legislation-huggingface-registry-v2.schema.json"
 REGISTRY_PATH = ROOT / "config/legislation/huggingface-publication-registry.json"
 EVIDENCE_ROOT = ROOT / "evidence/migrations/corpus-legislation-nz"
 
@@ -75,8 +75,8 @@ def test_registry_is_bound_to_canonical_state_and_durable_package() -> None:
     )
 
 
-def test_registry_is_bound_to_coverage_and_blocked_operational_proof() -> None:
-    """Coverage remains bounded and the failed Prompt 13 prerequisite is explicit."""
+def test_registry_is_bound_to_coverage_and_publication_authority() -> None:
+    """Coverage remains bounded and publication does not fabricate Prompt 13 proof."""
     registry = _load(REGISTRY_PATH)
     coverage = _load(
         EVIDENCE_ROOT / "historical-coverage/historical-coverage-report.json"
@@ -95,11 +95,21 @@ def test_registry_is_bound_to_coverage_and_blocked_operational_proof() -> None:
     assert registry["publication_gate"]["prompt13_receipt_sha256"] == _sha256(prompt13)
     assert _load(prompt13)["dispatch_performed"] is False
     assert registry["publication_gate"] == {
-        "status": "blocked_prerequisite",
-        "remote_write_authorized": False,
+        "status": "published_verified",
+        "remote_write_authorized": True,
+        "authorization_date": "2026-09-03",
         "prompt13_operational_proof": False,
         "prompt13_receipt_sha256": _sha256(prompt13),
-        "payload_rights": "source_specific_review_required",
+        "payload_rights": "approved_public_selected_552",
+        "durable_package_revision": "ae4da4ef0446f68fddd8f53279ecb1245f1529b9",
+        "metadata_revision": "04688f12dd687618e2085ae31f9b8a4a50a88b16",
+        "readback_receipt_path": (
+            "evidence/migrations/corpus-legislation-nz/huggingface-publication/"
+            "publication-readback-20260903.json"
+        ),
+        "readback_receipt_sha256": _sha256(
+            EVIDENCE_ROOT / "huggingface-publication/publication-readback-20260903.json"
+        ),
     }
 
 
@@ -118,17 +128,17 @@ def test_registry_rejects_unpinned_or_donor_origin(field: str, value: str) -> No
         Draft202012Validator(_load(SCHEMA_PATH)).validate(registry)
 
 
-def test_registry_rejects_publication_authority_and_aggregate_count() -> None:
-    """A registry candidate cannot grant publication or sum unlike surfaces."""
+def test_registry_rejects_withdrawn_authority_and_aggregate_count() -> None:
+    """Published state cannot lose its authority or sum unlike surfaces."""
     registry = copy.deepcopy(_load(REGISTRY_PATH))
-    registry["publication_gate"]["remote_write_authorized"] = True
+    registry["publication_gate"]["remote_write_authorized"] = False
     registry["coverage"]["published_counts_aggregate"] = 6609
     errors = list(Draft202012Validator(_load(SCHEMA_PATH)).iter_errors(registry))
     assert len(errors) == 2
 
 
-def test_registry_revisions_and_surface_counts_match_prompt14_observations() -> None:
-    """Each identity must retain its own observed revision and surface counts."""
+def test_registry_revisions_match_superseding_and_historical_observations() -> None:
+    """Canonical publication supersedes only the mutable identity observation."""
     registry = _load(REGISTRY_PATH)
     report = _load(
         EVIDENCE_ROOT / "historical-coverage/historical-coverage-report.json"
@@ -139,7 +149,53 @@ def test_registry_revisions_and_surface_counts_match_prompt14_observations() -> 
         if item["platform"] == "huggingface"
     }
     for identity in registry["identities"]:
-        observed = surfaces[identity["slug"]]
-        assert identity["observed_revision"] == observed["observed_revision"]
-        assert identity["file_count"] == observed["file_inventory"]["total_files"]
-        assert identity["published_row_count"] == observed["published_row_count"]
+        if identity["slug"] == "edithatogo/corpus-legislation-nz":
+            receipt = _load(
+                EVIDENCE_ROOT
+                / "huggingface-publication/publication-readback-20260903.json"
+            )
+            api = receipt["anonymous_exact_revision_readback"]["api"]
+            assert identity["observed_revision"] == api["returned_revision"]
+            assert identity["file_count"] == api["file_count"]
+            assert identity["published_row_count"] is None
+        else:
+            observed = surfaces[identity["slug"]]
+            assert identity["observed_revision"] == observed["observed_revision"]
+            assert identity["file_count"] == observed["file_inventory"]["total_files"]
+            assert identity["published_row_count"] == observed["published_row_count"]
+
+
+def test_public_readback_binds_all_published_bytes_and_access() -> None:
+    """The receipt proves anonymous access and exact expected publication bytes."""
+    receipt = _load(
+        EVIDENCE_ROOT / "huggingface-publication/publication-readback-20260903.json"
+    )
+    assert receipt["status"] == "public_verified"
+    assert receipt["dataset"] == {
+        "slug": "edithatogo/corpus-legislation-nz",
+        "role": "canonical_living_dataset",
+        "created_new_identity": False,
+        "private": False,
+        "gated": False,
+    }
+    files = {
+        item["path"]: (item["size_bytes"], item["sha256"])
+        for item in receipt["anonymous_exact_revision_readback"]["files"]
+    }
+    assert files["README.md"] == (
+        2713,
+        "d41be7b72c10b1e79754bed9b59deed5862d535b6ed0eead2a02df01392e8c4d",
+    )
+    assert files["RIGHTS.md"] == (
+        771,
+        "1cf3df1c833ab9f8a44b703a7668a91b25dfa1b2626972f89d11f7607a776d03",
+    )
+    package = next(value for path, value in files.items() if path.endswith(".zip"))
+    assert package == (
+        71776346,
+        "2e4b75333e947d812842147c939117fc666799e4497b80f125104f721ef68e3c",
+    )
+    assert (
+        "not a copy of canonical-state.zip"
+        in receipt["github_relationship"]["relationship"]
+    )
