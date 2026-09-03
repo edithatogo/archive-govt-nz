@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "authorization": {
+    "actor": "solo maintainer edithatogo",
+    "recorded_in": "operator instruction dated 2026-09-03",
+    "scope": "Create an active main ruleset requiring cross-platform assurance, CodeQL, workflow-policy lint, and patch coverage, with an audited maintainer emergency bypass and no second-person reviewer requirement."
+  },
+  "default_branch": "main",
+  "issue": {
+    "number": 354,
+    "url": "https://github.com/edithatogo/archive-govt-nz/issues/354"
+  },
+  "local_validation": {
+    "command": [
+      "./scripts/validate.sh"
+    ],
+    "dependency_vulnerabilities": 0,
+    "exit_code": 0,
+    "licence_inventory": "passed",
+    "mutation_lanes": "all repository harness mutation lanes passed",
+    "project_coverage_percent": 97.52,
+    "representative_documents": 38,
+    "sbom_components": 111,
+    "schemas_validated": 48,
+    "secret_scan": "passed",
+    "tests_passed": 4575
+  },
+  "observed_at": "2026-09-03T09:39:08Z",
+  "policy_interpretation": {
+    "maintainer_emergency_bypass": "RepositoryRole actor_id 5 may always bypass. The ruleset explicitly identifies the actor and mode; any actual bypass use requires separate hosted evidence.",
+    "review_thread_resolution_required": true,
+    "scope_limit": "This receipt proves hosted configuration readback. It does not prove that every required context has run successfully on the target commit.",
+    "second_person_review_required": false
+  },
+  "readbacks": [
+    {
+      "bytes": 1423,
+      "endpoint": "GET /repos/edithatogo/archive-govt-nz/rulesets/22180861",
+      "path": "evidence/assurance/main-ruleset-20260903/ruleset-22180861-readback.json",
+      "sha256": "722f9795bc7afcc3ef522fcaa0d4556b141fd0966442bd62e1f8991267ac2bbb"
+    },
+    {
+      "bytes": 478,
+      "endpoint": "GET /repos/edithatogo/archive-govt-nz/rulesets",
+      "path": "evidence/assurance/main-ruleset-20260903/repository-rulesets-readback.json",
+      "sha256": "72c7918ddc9e4d48e78ce18eeafa039680b318cac4aee3bd03aedb6465efb5a0"
+    }
+  ],
+  "receipt_type": "github-main-ruleset-readback",
+  "receipt_version": "1.0",
+  "repository": "edithatogo/archive-govt-nz",
+  "ruleset": {
+    "bypass_actors": [
+      {
+        "actor_id": 5,
+        "actor_type": "RepositoryRole",
+        "bypass_mode": "always"
+      }
+    ],
+    "conditions": {
+      "ref_name": {
+        "exclude": [],
+        "include": [
+          "~DEFAULT_BRANCH"
+        ]
+      }
+    },
+    "created_at": "2026-09-03T19:06:32.780+10:00",
+    "current_user_can_bypass": "always",
+    "enforcement": "active",
+    "id": 22180861,
+    "name": "main-integrated-assurance",
+    "protects_deletion": true,
+    "protects_non_fast_forward": true,
+    "pull_request": {
+      "allowed_merge_methods": [
+        "squash",
+        "merge",
+        "rebase"
+      ],
+      "dismiss_stale_reviews_on_push": false,
+      "require_code_owner_review": false,
+      "require_extra_approval_for_unattributed_changes": false,
+      "require_last_push_approval": false,
+      "required_approving_review_count": 0,
+      "required_review_thread_resolution": true,
+      "required_reviewers": []
+    },
+    "required_status_checks": [
+      "Assurance (ubuntu-latest)",
+      "Assurance (macos-latest)",
+      "Assurance (windows-latest)",
+      "analyze",
+      "lint",
+      "codecov/patch"
+    ],
+    "source": "edithatogo/archive-govt-nz",
+    "source_type": "Repository",
+    "strict_required_status_checks_policy": true,
+    "target": "branch",
+    "updated_at": "2026-09-03T19:14:42.593+10:00"
+  },
+  "target_commit": "b408aa3660b5de9d68fec31ef2273938226e5f18",
+  "verification": {
+    "historical_receipts_modified": false,
+    "result": "pass",
+    "secrets_recorded": false
+  }
+}
