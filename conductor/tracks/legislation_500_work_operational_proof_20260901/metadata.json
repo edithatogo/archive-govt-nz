@@ -36,7 +36,7 @@
       "id": "execution",
       "kind": "external_acquisition",
       "status": "blocked",
-      "evidence": "run 33772828586 stale in acquisition; cancellation requested without terminal evidence"
+      "evidence": "run 33772828586 completed cancelled after stale acquisition; retained attempt artifacts include verified parent lineage/restoration receipts, build-seed.json, and failed reconciliation receipt (mismatch_count=1); no 500-work acquisition or operational proof"
     }
   ]
 }
