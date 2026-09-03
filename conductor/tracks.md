@@ -291,8 +291,8 @@ implementation has occurred under these tracks.
 - [~] **Track: Donor Git bundle and archival presentation (Prompt 19)**
   *Link: [./tracks/legislation_donor_bundle_archival_presentation_20260902/index.md](./tracks/legislation_donor_bundle_archival_presentation_20260902/index.md)*
 
-- [~] **Track: Integrated quality, security, and hosted assurance (Prompt 20)**
-  *Link: [./tracks/integrated_assurance_20260902/index.md](./tracks/integrated_assurance_20260902/index.md)*
+- [x] **Track: Integrated quality, security, and hosted assurance (Prompt 20)**
+  *Archived: [./archive/integrated_assurance_20260902/index.md](./archive/integrated_assurance_20260902/index.md)*
 
 - [~] **Track: Prompt 20 security and workflow repairs**
   *Link: [./tracks/prompt20_security_workflow_repairs_20260903/index.md](./tracks/prompt20_security_workflow_repairs_20260903/index.md)*
