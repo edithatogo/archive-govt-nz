@@ -19,6 +19,12 @@ from archive_govt_nz.domains.health_appropriations.budget_classification import 
     RULE,
     project_budget_classification,
 )
+from archive_govt_nz.domains.health_appropriations.budget_projection import (
+    RULE as BUDGET_RULE,
+)
+from archive_govt_nz.domains.health_appropriations.budget_projection import (
+    project_budget_appropriations,
+)
 from archive_govt_nz.domains.health_appropriations.budget_reader import (
     DISPOSITION_SCHEMA,
     read_verified_budget,
@@ -41,7 +47,7 @@ from archive_govt_nz.domains.health_appropriations.workbook_common import (
     verified_snapshot,
 )
 
-MAX_PACKAGES = 4
+MAX_PACKAGES = 6
 MAX_MARKER = 2 * 1024 * 1024
 MAX_FILE = 64 * 1024 * 1024
 MAX_PACKAGE = 128 * 1024 * 1024
@@ -50,14 +56,17 @@ MAX_ROWS = 100_000
 _MARKERS = {
     "historical": "LOCAL_CANONICAL.json",
     "classification": "LOCAL_CLASSIFICATION.json",
+    "budget": "LOCAL_BUDGET.json",
 }
 _TABLES = {
     "historical": ("health_spending_fact", "fiscal_context_fact", "field_lineage"),
     "classification": ("classification_dimension", "field_lineage"),
+    "budget": ("appropriation_fact", "classification_dimension", "field_lineage"),
 }
 _EXTRA = {
     "historical": ("lineage_accounting.json",),
     "classification": ("projection_receipt.json", "lineage_accounting.jsonl"),
+    "budget": ("projection_receipt.json", "lineage_accounting.jsonl"),
 }
 
 
@@ -116,6 +125,12 @@ def _encoded(value: object) -> bytes:
     ).encode()
 
 
+def _budget_json(value: object) -> bytes:
+    """Independently reproduce the public exporter's persisted JSON contract."""
+    encoder = json.JSONEncoder(ensure_ascii=False, sort_keys=True, allow_nan=False)
+    return b"".join(chunk.encode() for chunk in encoder.iterencode(value)) + b"\n"
+
+
 def _names(kind: str) -> set[str]:
     return {
         _MARKERS[kind],
@@ -166,7 +181,12 @@ def _projection(value: CanonicalPackageInput) -> _Projection:
     original = verified_snapshot(
         value.original, manifest["source_object_sha256"], max_bytes=MAX_FILE
     )
-    result = project_budget_classification(
+    projector = (
+        project_budget_appropriations
+        if value.kind == "budget"
+        else project_budget_classification
+    )
+    result = projector(
         manifest=manifest,
         manifest_sha256=value.raw_manifest_sha256,
         facts=pa.Table.from_pylist(facts, schema=SILVER_SCHEMA),
@@ -284,14 +304,18 @@ def _expected_marker(
             )
         files.append(item)
     return {
-        "schema_version": "archive-govt-nz.health-local-classification/v1",
+        "schema_version": (
+            "archive-govt-nz.health-local-budget-appropriation/v1"
+            if value.kind == "budget"
+            else "archive-govt-nz.health-local-classification/v1"
+        ),
         "descriptor_state": "verify_all_files_before_use",
         "publication_state": "local_validation_only",
         "rights_state": "not_evaluated",
         "authoritative_mapping": "not_performed",
         "publication_approval": "not_granted",
         "self_contained_archive": False,
-        "transformation_id": RULE,
+        "transformation_id": BUDGET_RULE if value.kind == "budget" else RULE,
         "input_manifest_sha256": value.raw_manifest_sha256,
         "input_payload_sha256": projection.manifest["output_sha256"],
         "source_vintage": projection.manifest["source_vintage"],
@@ -318,28 +342,40 @@ def _package(
         else "projection_receipt.json"
     )
     _require(_encoded(_decode(snapshots[receipt_name])) == _encoded(projection.receipt))
-    if value.kind == "classification":
+    if value.kind == "budget":
+        _require(snapshots[receipt_name] == _budget_json(projection.receipt))
+    if value.kind != "historical":
         accounting = [
             _decode(line) for line in snapshots["lineage_accounting.jsonl"].splitlines()
         ]
         _require(
             _encoded(accounting) == _encoded(projection.receipt["lineage_accounting"])
         )
-    profile = (
-        "historical-health-gdp-canonical/v1" if value.kind == "historical" else RULE
-    )
+        if value.kind == "budget":
+            _require(
+                snapshots["lineage_accounting.jsonl"]
+                == b"".join(
+                    _budget_json(row)
+                    for row in projection.receipt["lineage_accounting"]
+                )
+            )
+    profile = {
+        "historical": "historical-health-gdp-canonical/v1",
+        "classification": RULE,
+        "budget": BUDGET_RULE,
+    }[value.kind]
     products = []
     for name, table in sorted(projection.tables.items()):
         path = name + ".parquet"
-        dependencies = (
-            tuple(
+        dependencies: tuple[str, ...] = ()
+        if name == "field_lineage":
+            dependencies = tuple(
                 value.marker_sha256 + "/" + target + ".parquet"
                 for target in sorted(projection.tables)
                 if target != "field_lineage"
             )
-            if name == "field_lineage"
-            else ()
-        )
+        elif value.kind == "budget" and name == "appropriation_fact":
+            dependencies = (value.marker_sha256 + "/classification_dimension.parquet",)
         products.append(
             ProductDescriptor(
                 package_sha256=value.marker_sha256,
