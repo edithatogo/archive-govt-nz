@@ -18,7 +18,7 @@ The approved destination is archive-govt-nz; no cutover has occurred.
 - [x] P1.3 (AC03): Add failing CLI/workflow tests for concatenated JSON, diagnostics on stdout, missing summary, changed/unchanged runs, and cross-instance card data. Local implementation: donor `85685a8`; hosted proof remains P1.5.
 - [x] P1.4 (AC03): Implement a dedicated schema-valid summary artifact, clean stdout/stderr contract, guarded card rendering and always-retained redacted failure evidence. Local implementation: donor `85685a8`; hosted proof remains P1.5.
 - [ ] P1.5 (AC02, AC03, AC09): Verify repair in hosted runs, safe NZ progress past offset 17,225, public revision/card consistency, no skipped work and no runaway retry.
-- [~] P1.6 (AC12): Automated review, active-owner required full validation harness, CI, and issue/evidence reconciliation; do not call local repair hosted recovery.
+- [x] P1.6 (AC12): Automated review, active-owner required full validation harness, CI, and issue/evidence reconciliation; do not call local repair hosted recovery. Receipt: 2026-09-03 local harness pass.
 
 ## Phase 2 — Complete source and country catalogue
 
