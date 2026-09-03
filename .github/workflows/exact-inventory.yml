@@ -154,7 +154,7 @@ jobs:
             --manifest-path build/legislation-state/manifest.json \
             --checkpoint-path build/legislation-state/checkpoint.json \
             --cas-path build/legislation-state/cas \
-            --receipt-path build/legislation-state/receipts/reconciliation.json
+            --receipt-path build/legislation-attempt/reconciliation.json
           code=$?
           echo "exit_code=$code" >> "$GITHUB_OUTPUT"
           exit 0
@@ -171,7 +171,7 @@ jobs:
 
           root = Path("build/legislation-state")
           receipt = json.loads((root / "receipts/harvest.json").read_text())
-          reconciliation = json.loads((root / "receipts/reconciliation.json").read_text())
+          reconciliation = json.loads(Path("build/legislation-attempt/reconciliation.json").read_text())
           assert receipt["schema_version"] == "archive-govt-nz.legislation-harvest-receipt/v3"
           assert receipt["works_in_scope"] == int(os.environ["MAX_WORKS"])
           assert receipt["works_attempted"] == int(os.environ["MAX_WORKS"])
@@ -225,6 +225,7 @@ jobs:
           name: legislation-exact-inventory-attempt-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
             build/legislation-state/receipts/
+            build/legislation-attempt/reconciliation.json
             build/legislation-parent-quarantine/restoration-receipt.json
             build/legislation-parent-quarantine/lineage.json
             build-seed.json
