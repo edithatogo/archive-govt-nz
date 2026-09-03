@@ -23,6 +23,10 @@ from typing import TYPE_CHECKING, Any, cast
 import httpx
 from jsonschema import Draft202012Validator, FormatChecker
 
+from archive_govt_nz.domains.legislation.accounting import (
+    V3_SCHEMA,
+    read_harvest_receipt,
+)
 from archive_govt_nz.domains.legislation.corpus import LegislationArchiveService
 
 if TYPE_CHECKING:
@@ -43,7 +47,7 @@ REPOSITORY = "edithatogo/archive-govt-nz"
 VERSIONS = {
     "manifest": "archive-govt-nz.legislation-manifest/v1",
     "checkpoint": "archive-govt-nz.legislation-checkpoint/v1",
-    "success_receipt": "archive-govt-nz.legislation-harvest-receipt/v2",
+    "success_receipt": V3_SCHEMA,
 }
 
 
@@ -138,11 +142,10 @@ def state_roots(files: dict[str, bytes]) -> dict[str, str]:
     """Reconcile all inner state, identities, dual hashes, orphans and receipt."""
     state = M.target_state(files)
     LegislationArchiveService.validate_checkpoint(state["checkpoint"])
-    v.equal(
-        v.load(files["receipts/harvest.json"]).get("source_set"),
-        "legislation",
-        "state_source_set",
-    )
+    receipt = v.load(files["receipts/harvest.json"])
+    parsed = read_harvest_receipt(receipt)
+    if parsed.accounting is None:
+        v.equal(receipt.get("source_set"), "legislation", "state_source_set")
     for name, data in files.items():
         v.require(condition=allowed_name(name), code="state_path")
         if name.startswith(HISTORY):
@@ -344,18 +347,27 @@ def check_lineage(lineage: dict[str, Any]) -> None:
 def verify_parent(files: dict[str, bytes], reference: dict[str, Any]) -> None:
     """Validate sealed continuation or explicitly authorized legacy adoption."""
     v.equal(state_roots(files), reference["roots"], "parent_roots")
+    parsed = read_harvest_receipt(v.load(files["receipts/harvest.json"]))
+    v.equal(
+        parsed.schema,
+        reference["state_schemas"]["success_receipt"],
+        "parent_receipt_schema",
+    )
     if reference["lineage_sha256"] is None:
         v.require(
             condition=SEAL not in files and LINEAGE not in files,
             code="legacy_has_lineage",
         )
         return
+    v.equal(parsed.evidence_strength, "strong", "continuation_receipt_strength")
+    v.require(condition=parsed.accounting is not None, code="continuation_accounting")
+    accounting = cast("Any", parsed.accounting)
     v.equal(v.sha(files[SEAL]), reference["lineage_sha256"], "continuation_hash")
     complete = v.load(files[SEAL])
     schema(complete, "legislation-continuation")
     v.equal(complete["roots"], reference["roots"], "continuation_roots")
     v.equal(
-        v.load(files["receipts/harvest.json"])["batch_id"],
+        accounting.run_identity,
         complete["context"]["execution_id"],
         "continuation_execution",
     )
@@ -560,8 +572,12 @@ def seal(directory: Path, context: dict[str, Any], quarantine: Path) -> dict[str
     lineage = v.load(files[LINEAGE])
     check_lineage(lineage)
     v.equal(lineage["context"], context, "seal_context")
+    parsed = read_harvest_receipt(v.load(files["receipts/harvest.json"]))
+    v.equal(parsed.evidence_strength, "strong", "seal_receipt_strength")
+    v.require(condition=parsed.accounting is not None, code="seal_accounting")
+    accounting = cast("Any", parsed.accounting)
     v.equal(
-        v.load(files["receipts/harvest.json"])["batch_id"],
+        accounting.run_identity,
         context["execution_id"],
         "seal_execution",
     )

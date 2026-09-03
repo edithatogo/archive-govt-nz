@@ -4,6 +4,13 @@
 
 Target main: `0a076fa26d2f4fcad9cac445e8c806d8c9e996d5`. No audited SHA supplied. Donor archived: true; final reachable main `b40587f1b1aec7356a0f623916fcc8212397d283`. Issue #312 linked to #276, clean worktree and branch `codex/legislation-parent-state-restoration`. Original checkout dirty evidence files remain untouched.
 
+2026-09-03 Prompt 08/12 integration addendum: issue #359, branch
+`codex/legislation-parent-v3-contract`, target base
+`dcc8f37f5642fc6b4337c49bd482b126325e6b6c`, archived donor head
+`b40587f1b1aec7356a0f623916fcc8212397d283`. The final local harness and
+final-byte mutation runs passed. Failed mutation/test attempts remain listed in
+the superseding validation receipt. No operational or external action occurred.
+
 ## Implementation and validation attempts
 
 Implemented the three workflow integrations, typed reference/authority/lineage/seal contracts, bounded quarantine checks, preserved receipt history and pre-acquisition lineage binding. No operational parent reference or authority was created and no restoration was dispatched.

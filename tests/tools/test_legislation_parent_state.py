@@ -11,6 +11,7 @@ import stat
 import struct
 import sys
 import zipfile
+from dataclasses import replace
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
@@ -100,7 +101,10 @@ def fixture(tmp_path: Path) -> tuple[dict[str, Any], dict[str, Any], bytes]:
         },
         "roots": P.state_roots(P.unpack(raw)),
         "source": P.source_identity(""),
-        "state_schemas": copy.deepcopy(P.VERSIONS),
+        "state_schemas": {
+            **copy.deepcopy(P.VERSIONS),
+            "success_receipt": "archive-govt-nz.legislation-harvest-receipt/v2",
+        },
         "lineage_sha256": None,
     }
     metadata = {
@@ -163,6 +167,51 @@ def client(metadata: dict[str, Any], raw: bytes) -> httpx.Client:
     return httpx.Client(transport=httpx.MockTransport(handle))
 
 
+def v3_harvest(files: dict[str, bytes]) -> bytes:
+    """Build a strong no-change receipt bound to the synthetic restored state."""
+    roots = P.state_roots(files)
+    return P.M.encoded(
+        {
+            "schema_version": "archive-govt-nz.legislation-harvest-receipt/v3",
+            "candidate_works_discovered": 1,
+            "works_in_scope": 1,
+            "works_attempted": 1,
+            "newly_preserved": 0,
+            "changed_preserved": 0,
+            "unchanged_revalidated": 1,
+            "already_processed_skipped": 0,
+            "unavailable": 0,
+            "partial": 0,
+            "failed": 0,
+            "total_state_records_before": 2,
+            "total_state_records_after": 2,
+            "total_cas_objects_before": 2,
+            "total_cas_objects_after": 2,
+            "scope_digests": {"resolved": roots["inventory_sha256"]},
+            "parent_manifest_root": roots["manifest_sha256"],
+            "parent_checkpoint_root": roots["checkpoint_file_sha256"],
+            "output_manifest_root": roots["manifest_sha256"],
+            "output_checkpoint_root": roots["checkpoint_file_sha256"],
+            "software_commit": CONTEXT["software_commit"],
+            "workflow_identity": CONTEXT["workflow"],
+            "run_identity": CONTEXT["execution_id"],
+            "state_commit_status": "no_change",
+            "state_commit": None,
+            "works": [
+                {
+                    "work_id": "act_public_2024_1",
+                    "disposition": "unchanged_revalidated",
+                    "source_response_classifications": ["http_304"],
+                    "retry_count": 0,
+                }
+            ],
+            "total_retry_count": 0,
+            "state_record_delta": 0,
+            "cas_object_delta": 0,
+        }
+    )
+
+
 def test_legacy_adoption_and_continuation(tmp_path: Path) -> None:
     """Promotion precedes acquisition; sealing binds complete child and parent."""
     ref, meta, raw = fixture(tmp_path / "in")
@@ -172,10 +221,9 @@ def test_legacy_adoption_and_continuation(tmp_path: Path) -> None:
     lineage = P.v.load((paths["output"] / P.LINEAGE).read_bytes())
     P.check_lineage(lineage)
     assert lineage["parent"]["artifact"]["digest"] == ref["artifact"]["digest"]
-    # Synthetic no-change acquisition receipt; no source request is made.
-    (paths["output"] / "receipts/harvest.json").write_bytes(
-        P.unpack(raw)["receipts/harvest.json"]
-    )
+    # Synthetic typed no-change receipt; no source request is made.
+    restored = P.read_state(paths["output"])
+    (paths["output"] / "receipts/harvest.json").write_bytes(v3_harvest(restored))
     complete = P.seal(paths["output"], CONTEXT, paths["quarantine"])
     assert complete["parent_lineage_sha256"] == result["parent_lineage_sha256"]
     files = P.read_state(paths["output"])
@@ -183,6 +231,7 @@ def test_legacy_adoption_and_continuation(tmp_path: Path) -> None:
     next_ref = copy.deepcopy(ref)
     next_ref["roots"] = complete["roots"]
     next_ref["lineage_sha256"] = P.v.sha(files[P.SEAL])
+    next_ref["state_schemas"] = copy.deepcopy(P.VERSIONS)
     next_ref["artifact"].update(
         size_in_bytes=len(sealed), digest="sha256:" + P.v.sha(sealed)
     )
@@ -202,6 +251,32 @@ def test_legacy_adoption_and_continuation(tmp_path: Path) -> None:
     continuation["parent_reference_sha256"] = "b" * 64
     with pytest.raises(P.v.VerificationError, match="lineage_parent_hash"):
         P.check_lineage(continuation)
+
+
+def test_legacy_receipt_cannot_be_sealed_as_new_continuation(tmp_path: Path) -> None:
+    """Historical v2 remains adoptable but cannot masquerade as strong v3 output."""
+    ref, meta, raw = fixture(tmp_path / "in")
+    paths = {"output": tmp_path / "state", "quarantine": tmp_path / "q"}
+    P.restore(request(ref), paths, client(meta, raw), "synthetic", NOW)
+    with pytest.raises(P.v.VerificationError, match="seal_receipt_strength"):
+        P.seal(paths["output"], CONTEXT, paths["quarantine"])
+
+
+def test_parent_reference_schema_accepts_legacy_and_v3_only(tmp_path: Path) -> None:
+    """References preserve v2 adoption and accept only the current strong schema."""
+    ref, _, _ = fixture(tmp_path)
+    P.schema(ref, "legislation-parent-reference")
+    ref["state_schemas"]["success_receipt"] = (
+        "archive-govt-nz.legislation-harvest-receipt/v3"
+    )
+    P.schema(ref, "legislation-parent-reference")
+    ref["state_schemas"]["success_receipt"] = (
+        "archive-govt-nz.legislation-harvest-receipt/v4"
+    )
+    with pytest.raises(
+        P.v.VerificationError, match="schema_legislation-parent-reference"
+    ):
+        P.schema(ref, "legislation-parent-reference")
 
 
 @pytest.mark.parametrize(
@@ -673,11 +748,15 @@ def test_lineage_tampering_and_duplicate_seal(tmp_path: Path) -> None:
             P.check_lineage(bad)
     with pytest.raises(P.v.VerificationError, match="seal_context"):
         P.seal(output, {**CONTEXT, "run_id": 102}, tmp_path / "q")
+    files = P.read_state(output)
+    (output / "receipts/harvest.json").write_bytes(v3_harvest(files))
     P.seal(output, CONTEXT, tmp_path / "q")
     with pytest.raises(FileExistsError):
         P.seal(output, CONTEXT, tmp_path / "q")
     files = P.read_state(output)
     ref["lineage_sha256"] = P.v.sha(files[P.SEAL])
+    ref["roots"] = P.state_roots(files)
+    ref["state_schemas"] = copy.deepcopy(P.VERSIONS)
     P.verify_parent(files, ref)
     for field in ("roots", "source", "parent_lineage_sha256", "context"):
         altered = copy.deepcopy(files)
@@ -960,8 +1039,81 @@ def test_source_receipt_and_current_execution(tmp_path: Path) -> None:
         )["status"]
         == "verified"
     )
+    files = P.read_state(output)
+    receipt = P.v.load(v3_harvest(files))
+    receipt["run_identity"] = "another-execution"
+    (output / "receipts/harvest.json").write_bytes(P.M.encoded(receipt))
+    with pytest.raises(P.v.VerificationError, match="receipt_run"):
+        P.seal(output, req["context"], q)
+
+
+def test_seal_rechecks_receipt_execution_after_state_validation(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """The seal binds the parsed receipt to the authorized execution itself."""
+    ref, meta, raw = fixture(tmp_path / "in")
+    output = tmp_path / "state"
+    q = tmp_path / "q"
+    req = request(ref)
+    P.restore(
+        req, {"output": output, "quarantine": q}, client(meta, raw), "synthetic", NOW
+    )
+    restored = P.read_state(output)
+    (output / "receipts/harvest.json").write_bytes(v3_harvest(restored))
+    original = P.read_harvest_receipt
+    calls = 0
+
+    def changed_on_seal(document: dict[str, object]) -> object:
+        nonlocal calls
+        parsed = original(document)
+        calls += 1
+        if calls == 2:
+            assert parsed.accounting is not None
+            parsed = replace(
+                parsed,
+                accounting=replace(parsed.accounting, run_identity="another-execution"),
+            )
+        return parsed
+
+    monkeypatch.setattr(P, "read_harvest_receipt", changed_on_seal)
     with pytest.raises(P.v.VerificationError, match="seal_execution"):
         P.seal(output, req["context"], q)
+
+
+def test_sealed_parent_binds_receipt_schema_and_strength(tmp_path: Path) -> None:
+    """A sealed parent cannot relabel or weaken its harvest receipt contract."""
+    ref, meta, raw = fixture(tmp_path / "in")
+    output = tmp_path / "state"
+    q = tmp_path / "q"
+    req = request(ref)
+    P.restore(
+        req, {"output": output, "quarantine": q}, client(meta, raw), "synthetic", NOW
+    )
+    restored = P.read_state(output)
+    (output / "receipts/harvest.json").write_bytes(v3_harvest(restored))
+    continuation = P.seal(output, req["context"], q)
+    sealed = P.read_state(output)
+    reference = copy.deepcopy(ref)
+    reference.update(
+        roots=continuation["roots"],
+        source=continuation["source"],
+        lineage_sha256=P.v.sha(sealed[P.SEAL]),
+        state_schemas=ref["state_schemas"] | {"success_receipt": P.V3_SCHEMA},
+    )
+    P.verify_parent(sealed, reference)
+    reference["state_schemas"]["success_receipt"] = (
+        "archive-govt-nz.legislation-harvest-receipt/v2"
+    )
+    with pytest.raises(P.v.VerificationError, match="parent_receipt_schema"):
+        P.verify_parent(sealed, reference)
+    reference["state_schemas"]["success_receipt"] = P.V3_SCHEMA
+    sealed["receipts/harvest.json"] = P.unpack(raw)["receipts/harvest.json"]
+    reference["roots"] = P.state_roots(sealed)
+    reference["state_schemas"]["success_receipt"] = (
+        "archive-govt-nz.legislation-harvest-receipt/v2"
+    )
+    with pytest.raises(P.v.VerificationError, match="continuation_receipt_strength"):
+        P.verify_parent(sealed, reference)
 
 
 def test_restoration_schema_definitions() -> None:

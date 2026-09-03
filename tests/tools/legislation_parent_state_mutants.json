@@ -136,7 +136,7 @@
   },
   {
     "name": "state_source_set",
-    "old": "v.equal(\n        v.load(files[\"receipts/harvest.json\"]).get(\"source_set\"),\n        \"legislation\",\n        \"state_source_set\",\n    )",
+    "old": "v.equal(receipt.get(\"source_set\"), \"legislation\", \"state_source_set\")",
     "new": "None"
   },
   {
@@ -156,7 +156,7 @@
   },
   {
     "name": "seal_execution",
-    "old": "v.equal(\n        v.load(files[\"receipts/harvest.json\"])[\"batch_id\"],\n        context[\"execution_id\"],\n        \"seal_execution\",\n    )",
+    "old": "v.equal(\n        accounting.run_identity,\n        context[\"execution_id\"],\n        \"seal_execution\",\n    )",
     "new": "None"
   },
   {
@@ -167,6 +167,21 @@
   {
     "name": "zip_member_spelling",
     "old": "v.equal(entry.orig_filename, name, \"member_spelling\")",
+    "new": "None"
+  },
+  {
+    "name": "parent_receipt_schema",
+    "old": "v.equal(\n        parsed.schema,\n        reference[\"state_schemas\"][\"success_receipt\"],\n        \"parent_receipt_schema\",\n    )",
+    "new": "None"
+  },
+  {
+    "name": "continuation_receipt_strength",
+    "old": "v.equal(parsed.evidence_strength, \"strong\", \"continuation_receipt_strength\")",
+    "new": "None"
+  },
+  {
+    "name": "seal_receipt_strength",
+    "old": "v.equal(parsed.evidence_strength, \"strong\", \"seal_receipt_strength\")",
     "new": "None"
   }
 ]

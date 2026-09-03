@@ -149,10 +149,19 @@ parents. The CLI records sealing preflight failure separately without replacing
 restoration evidence. Read-only reconciliation and recovery use verified restored
 state; this issue does not execute either operation or create a new continuation.
 
+New continuations use
+`archive-govt-nz.legislation-harvest-receipt/v3`. The parent verifier binds that
+receipt to its declared schema, manifest and checkpoint roots, state and CAS
+counts, and execution identity. Historical v2 receipts remain admissible only
+for an explicitly authorized legacy adoption; they cannot be sealed or reused as
+a continuation parent. Parent references, lineage, and durable package inputs
+therefore accept v2 or v3 so historical evidence remains readable, while the
+continuation contract requires v3.
+
 ## Downstream handoff
 
-Prompts 06/07 can use this action and stable seed interface. They still need
-approved Prompt 11/12 concurrency and failure-semantics interfaces. Source/seed
+Prompts 06/07 can use this action, the stable seed interface, and Prompt 12's v3
+accounting contract. Source/seed
 transitions, bootstrap replay policy and partial-acquisition retry handling must
 be explicit; this helper must not silently relabel or bless those states.
 Prompt 09 may supply a different authenticated transport through a future reviewed
