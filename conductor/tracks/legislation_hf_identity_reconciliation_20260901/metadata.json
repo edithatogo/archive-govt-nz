@@ -5,13 +5,19 @@
     {
       "id": "hf-canonical-publication",
       "kind": "external_publication",
+      "status": "satisfied",
+      "evidence": "evidence/migrations/corpus-legislation-nz/huggingface-publication/publication-readback-20260903.json"
+    },
+    {
+      "id": "prompt13-operational-proof",
+      "kind": "prerequisite",
       "status": "pending",
-      "evidence": "Prompt 15 requires the applicable explicit publication gate"
+      "evidence": "Prompt 13 target-owned hosted operational proof remains incomplete"
     }
   ],
   "issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/341",
   "status": "in_progress",
   "track_id": "legislation_hf_identity_reconciliation_20260901",
   "type": "feature",
-  "updated_at": "2026-09-01T13:45:00Z"
+  "updated_at": "2026-09-03T09:21:51Z"
 }
