@@ -163,7 +163,7 @@
           "const": "archive-govt-nz.legislation-checkpoint/v1"
         },
         "success_receipt": {
-          "const": "archive-govt-nz.legislation-harvest-receipt/v2"
+          "const": "archive-govt-nz.legislation-harvest-receipt/v3"
         }
       }
     }

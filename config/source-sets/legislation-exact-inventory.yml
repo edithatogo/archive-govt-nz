@@ -1,0 +1,78 @@
+schema_version: archive-govt-nz.source-set/v2
+name: legislation
+version: 2
+description: Governed 500-work exact-inventory legislation revalidation lane.
+enabled: true
+adapters:
+  - name: nz_legislation
+    capability: supported
+    active: true
+  - name: feeds
+    capability: declared
+    active: false
+execution:
+  mode: dispatch_only
+  lane_type: exact_inventory
+  activation: active
+schedule:
+  kind: manual
+  descriptor: explicit reviewed seed dispatch
+  active: false
+state:
+  checkpoint_path: build/legislation-state/checkpoint.json
+  checkpoint_authority: prompt_08_parent_reference
+  actions_role: expiring_operational_cache
+  parent_authority: explicit_adoption_required
+scope:
+  type: exact_inventory
+  identifier: historical-work-ids-0001
+  seed_id: historical-work-ids-0001
+  inventory_sha256: 59923176fa34796d7673a20b880af9abe5520fe484595edb220f2bbc0e3b33e7
+  candidate_count: 500
+  coverage_claim: false
+rights:
+  rights_class: crown_copyright
+  payload_publication: blocked_pending_review
+  decision_id: null
+preservation:
+  formats:
+    - name: cas
+      capability: supported
+      active: true
+    - name: manifest
+      capability: supported
+      active: true
+    - name: warc
+      capability: declared
+      active: false
+    - name: parquet
+      capability: declared
+      active: false
+  compression: none
+  hash_algorithms:
+    - sha256
+    - blake3
+  retention: permanent_intent
+publication:
+  external_actions_enabled: false
+  huggingface:
+    capability: supported
+    activation: inactive
+    identifier: edithatogo/corpus-legislation-nz
+    identifier_type: dataset_slug
+  zenodo:
+    capability: supported
+    activation: inactive
+    identifier: 10.5281/zenodo.20592540
+    identifier_type: observed_version_doi
+gates:
+  acquisition: requires_explicit_dispatch
+  publication: blocked
+  external_actions: blocked
+limits:
+  max_works: 500
+  max_concurrency: 1
+  concurrency_semantics: serial
+  overlap_policy: reject
+  failure_policy: fail_closed
+targets: []

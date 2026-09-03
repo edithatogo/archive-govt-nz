@@ -1,0 +1,343 @@
+{
+  "applicable_rulesets": [],
+  "branch_protection": false,
+  "ci": {
+    "conclusion": "success",
+    "createdAt": "2026-09-01T18:43:40Z",
+    "headSha": "dd90f8ec01c91290895e9f2a684d948a520b0f1f",
+    "jobs": [
+      {
+        "completedAt": "2026-09-01T18:59:03Z",
+        "conclusion": "success",
+        "databaseId": 99981330152,
+        "name": "Assurance (windows-latest)",
+        "startedAt": "2026-09-01T18:43:43Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-09-01T18:43:47Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-09-01T18:43:44Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-01T18:43:56Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "number": 2,
+            "startedAt": "2026-09-01T18:43:47Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-01T18:43:56Z",
+            "conclusion": "success",
+            "name": "Run actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97",
+            "number": 3,
+            "startedAt": "2026-09-01T18:43:56Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-01T18:44:10Z",
+            "conclusion": "success",
+            "name": "Run astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d",
+            "number": 4,
+            "startedAt": "2026-09-01T18:43:56Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-01T18:58:57Z",
+            "conclusion": "success",
+            "name": "Run locked assurance gate",
+            "number": 5,
+            "startedAt": "2026-09-01T18:44:10Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-01T18:58:57Z",
+            "conclusion": "skipped",
+            "name": "Export Cobertura coverage",
+            "number": 6,
+            "startedAt": "2026-09-01T18:58:57Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-01T18:58:57Z",
+            "conclusion": "skipped",
+            "name": "Upload coverage to Codecov",
+            "number": 7,
+            "startedAt": "2026-09-01T18:58:57Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-01T18:58:58Z",
+            "conclusion": "success",
+            "name": "Post Run astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d",
+            "number": 12,
+            "startedAt": "2026-09-01T18:58:57Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-01T18:58:58Z",
+            "conclusion": "success",
+            "name": "Post Run actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97",
+            "number": 13,
+            "startedAt": "2026-09-01T18:58:58Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-01T18:59:00Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "number": 14,
+            "startedAt": "2026-09-01T18:58:58Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-01T18:59:00Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 15,
+            "startedAt": "2026-09-01T18:59:00Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/33545341871/job/99981330152"
+      },
+      {
+        "completedAt": "2026-09-01T18:48:45Z",
+        "conclusion": "success",
+        "databaseId": 99981330548,
+        "name": "Assurance (ubuntu-latest)",
+        "startedAt": "2026-09-01T18:43:43Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-09-01T18:43:46Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-09-01T18:43:44Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-01T18:43:47Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "number": 2,
+            "startedAt": "2026-09-01T18:43:46Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-01T18:43:48Z",
+            "conclusion": "success",
+            "name": "Run actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97",
+            "number": 3,
+            "startedAt": "2026-09-01T18:43:47Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-01T18:43:53Z",
+            "conclusion": "success",
+            "name": "Run astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d",
+            "number": 4,
+            "startedAt": "2026-09-01T18:43:48Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-01T18:48:38Z",
+            "conclusion": "success",
+            "name": "Run locked assurance gate",
+            "number": 5,
+            "startedAt": "2026-09-01T18:43:53Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-01T18:48:40Z",
+            "conclusion": "success",
+            "name": "Export Cobertura coverage",
+            "number": 6,
+            "startedAt": "2026-09-01T18:48:38Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-01T18:48:43Z",
+            "conclusion": "success",
+            "name": "Upload coverage to Codecov",
+            "number": 7,
+            "startedAt": "2026-09-01T18:48:40Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-01T18:48:43Z",
+            "conclusion": "success",
+            "name": "Post Run astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d",
+            "number": 12,
+            "startedAt": "2026-09-01T18:48:43Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-01T18:48:43Z",
+            "conclusion": "success",
+            "name": "Post Run actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97",
+            "number": 13,
+            "startedAt": "2026-09-01T18:48:43Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-01T18:48:44Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "number": 14,
+            "startedAt": "2026-09-01T18:48:43Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-01T18:48:44Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 15,
+            "startedAt": "2026-09-01T18:48:44Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/33545341871/job/99981330548"
+      },
+      {
+        "completedAt": "2026-09-01T18:48:57Z",
+        "conclusion": "success",
+        "databaseId": 99981330823,
+        "name": "Assurance (macos-latest)",
+        "startedAt": "2026-09-01T18:43:45Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-09-01T18:43:49Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-09-01T18:43:46Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-01T18:43:52Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "number": 2,
+            "startedAt": "2026-09-01T18:43:49Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-01T18:43:52Z",
+            "conclusion": "success",
+            "name": "Run actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97",
+            "number": 3,
+            "startedAt": "2026-09-01T18:43:52Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-01T18:44:02Z",
+            "conclusion": "success",
+            "name": "Run astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d",
+            "number": 4,
+            "startedAt": "2026-09-01T18:43:52Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-01T18:48:50Z",
+            "conclusion": "success",
+            "name": "Run locked assurance gate",
+            "number": 5,
+            "startedAt": "2026-09-01T18:44:02Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-01T18:48:50Z",
+            "conclusion": "skipped",
+            "name": "Export Cobertura coverage",
+            "number": 6,
+            "startedAt": "2026-09-01T18:48:50Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-01T18:48:50Z",
+            "conclusion": "skipped",
+            "name": "Upload coverage to Codecov",
+            "number": 7,
+            "startedAt": "2026-09-01T18:48:50Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-01T18:48:51Z",
+            "conclusion": "success",
+            "name": "Post Run astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d",
+            "number": 12,
+            "startedAt": "2026-09-01T18:48:50Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-01T18:48:51Z",
+            "conclusion": "success",
+            "name": "Post Run actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97",
+            "number": 13,
+            "startedAt": "2026-09-01T18:48:51Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-01T18:48:51Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "number": 14,
+            "startedAt": "2026-09-01T18:48:51Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-01T18:48:53Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 15,
+            "startedAt": "2026-09-01T18:48:51Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/33545341871/job/99981330823"
+      }
+    ],
+    "status": "completed",
+    "updatedAt": "2026-09-01T18:59:04Z"
+  },
+  "codeql_analysis": {
+    "conclusion": "success",
+    "run_id": 33545341907
+  },
+  "observed_at": "2026-09-02T05:10:00+10:00",
+  "open_codeql_alerts": [
+    {
+      "commit": "dd90f8ec01c91290895e9f2a684d948a520b0f1f",
+      "line": 101,
+      "number": 2,
+      "path": "tests/test_notifications.py",
+      "rule": "py/incomplete-url-substring-sanitization",
+      "severity": "high",
+      "state": "open"
+    },
+    {
+      "commit": "dd90f8ec01c91290895e9f2a684d948a520b0f1f",
+      "line": 176,
+      "number": 1,
+      "path": "src/archive_govt_nz/notifications.py",
+      "rule": "py/incomplete-url-substring-sanitization",
+      "severity": "high",
+      "state": "open"
+    }
+  ],
+  "open_dependabot_alerts": 0,
+  "open_secret_scanning_alerts": 0,
+  "schema_version": "archive-govt-nz.prompt20-hosted-readback/v1",
+  "target_head": "dd90f8ec01c91290895e9f2a684d948a520b0f1f",
+  "workflow_policy": {
+    "conclusion": "success",
+    "run_id": 33545341876
+  }
+}

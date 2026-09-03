@@ -1,6 +1,7 @@
 """Unit tests for automated webhook notifications."""
 
 import asyncio
+import json
 from typing import Any
 
 import httpx
@@ -98,7 +99,39 @@ def test_dispatch_webhook_slack_endpoint() -> None:
     )
     assert success is True
     assert len(observed) == 1
-    assert "hooks.slack.com" in observed[0]["url"]
+    assert observed[0]["url"] == "https://hooks.slack.com/services/test"
+
+
+def test_dispatch_webhook_auto_classification_uses_parsed_hostname() -> None:
+    """Deceptive URL substrings must not select a vendor-specific payload."""
+    payload = HarvestNotificationPayload(
+        status="success",
+        discovered_datasets=10,
+        evaluated_resources=20,
+        successful_captures=18,
+        broken_urls_count=1,
+        parquet_derivatives_count=15,
+        hf_repo_url=None,
+        completed_at="2026-08-16T12:00:00Z",
+    )
+    observed: list[dict[str, Any]] = []
+
+    def mock_handler(request: httpx.Request) -> httpx.Response:
+        observed.append(json.loads(request.read()))
+        return httpx.Response(204)
+
+    transport = httpx.MockTransport(mock_handler)
+    deceptive_urls = (
+        "https://hooks.slack.com.evil.example/services/test",
+        "https://hooks.slack.com@evil.example/services/test",
+        "https://evil.example/hooks.slack.com/services/test",
+        "https://evil.example/discord.com/api/webhooks/123/abc",
+    )
+    for url in deceptive_urls:
+        assert asyncio.run(dispatch_webhook(url, payload, transport=transport))
+
+    assert len(observed) == len(deceptive_urls)
+    assert all("blocks" not in body and "embeds" not in body for body in observed)
 
 
 def test_dispatch_webhook_discord_and_generic() -> None:
@@ -133,6 +166,15 @@ def test_dispatch_webhook_discord_and_generic() -> None:
     )
     assert success_discord is True
 
+    success_discord_auto = asyncio.run(
+        dispatch_webhook(
+            "https://discord.com/api/webhooks/123/abc",
+            payload,
+            transport=transport,
+        )
+    )
+    assert success_discord_auto is True
+
     success_generic = asyncio.run(
         dispatch_webhook(
             "https://api.example.com/harvest-webhook",
@@ -142,4 +184,4 @@ def test_dispatch_webhook_discord_and_generic() -> None:
         )
     )
     assert success_generic is True
-    assert len(observed) == 2
+    assert len(observed) == 3

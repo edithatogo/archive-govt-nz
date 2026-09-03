@@ -359,13 +359,13 @@ def test_native_continuation(tmp_path: Path) -> None:
         native.request(ref), paths, native.client(meta, raw), "synthetic", native.NOW
     )
     assert result["status"] == "verified"
-    (paths["output"] / "receipts/harvest.json").write_bytes(
-        native.P.unpack(raw)["receipts/harvest.json"]
-    )
+    files = native.P.read_state(paths["output"])
+    (paths["output"] / "receipts/harvest.json").write_bytes(native.v3_harvest(files))
     native.P.seal(paths["output"], native.CONTEXT, paths["quarantine"])
     files = D.P.read_state(paths["output"])
     ref["roots"] = D.P.state_roots(files)
     ref["lineage_sha256"] = D.v.sha(files[D.P.SEAL])
+    ref["state_schemas"] = dict(D.P.VERSIONS)
     pin = {
         "schema_version": "archive-govt-nz.legislation-durable-input/v1",
         "kind": "continuation",

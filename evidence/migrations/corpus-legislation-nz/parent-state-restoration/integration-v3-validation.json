@@ -1,0 +1,118 @@
+{
+  "contract": {
+    "legacy_adoption_receipt": "archive-govt-nz.legislation-harvest-receipt/v2",
+    "legacy_sealing_allowed": false,
+    "new_continuation_receipt": "archive-govt-nz.legislation-harvest-receipt/v3"
+  },
+  "donor_archived": true,
+  "donor_final_reachable_head": "b40587f1b1aec7356a0f623916fcc8212397d283",
+  "environment": {
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "python": "3.14.6"
+  },
+  "external_actions": [],
+  "failed_attempts": [
+    {
+      "attempt": "parent-mutants-01",
+      "reason": "output directory was pre-created",
+      "result": "failed"
+    },
+    {
+      "attempt": "parent-mutants-02",
+      "reason": "three new guards initially survived; focused negative tests added",
+      "result": "failed"
+    },
+    {
+      "attempt": "focused-after-new-tests",
+      "reason": "test fixture construction and frozen accounting replacement corrected",
+      "result": "failed"
+    }
+  ],
+  "files": [
+    {
+      "path": "schemas/legislation-continuation-v1.schema.json",
+      "sha256": "c68905a9dc25fc06936f2688fd1ac8b4dfbf15176db917a03ee793496df3c87a"
+    },
+    {
+      "path": "schemas/legislation-durable-input-v1.schema.json",
+      "sha256": "2b65758adb082cdf440c2b3c9079644163f65fb848e1777dc3e39d113d738c57"
+    },
+    {
+      "path": "schemas/legislation-durable-package-v1.schema.json",
+      "sha256": "9be2db252baa2751b12b8e0561696bc4dcf18fbf34834b73d81660b7c1d4c847"
+    },
+    {
+      "path": "schemas/legislation-parent-lineage-v1.schema.json",
+      "sha256": "5f5ada290e53e20cd85c0d66b4c7b417c4621527d3182ac586732bfef7af1b0f"
+    },
+    {
+      "path": "schemas/legislation-parent-reference-v1.schema.json",
+      "sha256": "952794bf07c67fb79780735b6bb5f9117a37989caf030ec2f89a2a2b547c656d"
+    },
+    {
+      "path": "tools/legislation_parent_state.py",
+      "sha256": "cab689ca147bc810ab00acaf37eb411441b23ac0feec719c58579cac62e0a6da"
+    },
+    {
+      "path": "tools/merge_legislation_states.py",
+      "sha256": "ccf230b2802d19c09360748c5e648d05863db651f7c8ae81c0b3014d601934ab"
+    },
+    {
+      "path": "tests/tools/test_legislation_parent_state.py",
+      "sha256": "7b1c4fd9e1ce40942ebf291bc876188ce9efeb92b8bd9e3ffc71a169a08e7407"
+    },
+    {
+      "path": "tests/tools/test_legislation_durable_state.py",
+      "sha256": "667bec8fec31ab4adc2faf128b2be8f77fa612faf11c1a81a9acdeb418de970a"
+    },
+    {
+      "path": "tests/tools/legislation_parent_state_mutants.json",
+      "sha256": "5e1ea29c92512cb44fc1f1fd7bd6f7843c984d58a742a06a757878b336fd3600"
+    },
+    {
+      "path": "docs/legislation/parent-state-restoration.md",
+      "sha256": "35d54bd67d56b849d2364feb42bd595872423727ccbe264613527524b305c1c7"
+    }
+  ],
+  "handoffs": [
+    "Prompt 06 and Prompt 07 may consume sealed v3 continuations after their separate delivery gates",
+    "Prompt 13 still requires a valid operational parent and explicit live-run authorization"
+  ],
+  "issue": 359,
+  "schema_version": "archive-govt-nz.parent-state-v3-integration-validation/v1",
+  "scope": "Prompt 08/12 repository contract compatibility; no live restoration, harvest, publication, or external mutation",
+  "status": "complete_repository_scope",
+  "target_base_commit": "dcc8f37f5642fc6b4337c49bd482b126325e6b6c",
+  "unresolved_blockers": [],
+  "validation": {
+    "confidential_material_scan": "passed",
+    "dependency_audit": "passed",
+    "durable_state_mutation": {
+      "killed": 26,
+      "receipt_sha256": "db7118c89f19ed1849f866683cb33ea49c42225bdec7d040bf3f741c62935a66",
+      "total": 26
+    },
+    "focused": {
+      "passed": 194,
+      "warnings": 1
+    },
+    "full_harness": {
+      "coverage_percent": 97.5,
+      "passed": 4549,
+      "status": "passed",
+      "warnings": 9
+    },
+    "licenses": "passed",
+    "parent_state_mutation": {
+      "killed": 37,
+      "receipt_sha256": "7c2e862fd69e51daf929f363d2dffbdd1fc41556876cf70d864233f3eb74c1ef",
+      "total": 37
+    },
+    "parity": "9/9",
+    "sbom_components": 111,
+    "schemas": {
+      "representative_documents": 38,
+      "validated": 48
+    }
+  }
+}

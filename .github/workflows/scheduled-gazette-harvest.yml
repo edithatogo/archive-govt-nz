@@ -34,11 +34,11 @@ jobs:
         run: mkdir -p build/receipts/gazette build/manifests build/checkpoints build/cas
       - name: Execute Verified Gazette Harvest Orchestration
         run: |
-          BACKFILL_FLAG=""
+          BACKFILL_ARGS=()
           if [ -n "${{ github.event.inputs.backfill_limit }}" ]; then
-            BACKFILL_FLAG="--backfill-limit ${{ github.event.inputs.backfill_limit }}"
+            BACKFILL_ARGS=(--backfill-limit "${{ github.event.inputs.backfill_limit }}")
           fi
-          uv run --locked python tools/run_gazette_harvest.py $BACKFILL_FLAG
+          uv run --locked python tools/run_gazette_harvest.py "${BACKFILL_ARGS[@]}"
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         if: always()
         with:

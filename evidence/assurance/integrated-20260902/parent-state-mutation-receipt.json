@@ -1,0 +1,210 @@
+{
+  "source_sha256": "c6f346ef0e8225bb2dbb0dcd118377d0b558dd74594eb88935bf37056f60749a",
+  "mutants": [
+    {
+      "name": "schema",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "c3fe2e3d3177c13a7801719249c26b70bc8505019f525fc680d353365b78680c"
+    },
+    {
+      "name": "timezone",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "7d96c57df000eead567e221af7af94fbb6a22788a8a35b06e0f2a50eaa40702d"
+    },
+    {
+      "name": "outer_size",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "d308f958467a250144aba16324d0356af9b95950fcb406954150ba3f3b09f3e3"
+    },
+    {
+      "name": "member_count",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "e7e716de346a915b36b8d417570692c70695bb0de3eaf908803f916ad0972073"
+    },
+    {
+      "name": "expanded_size",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "7fdec102376e5b934fb76b5370302491a3469fb6a3dc7d12415e4b9ac3fa0fe1"
+    },
+    {
+      "name": "member_path",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "1f269a5d70c81a7240367ee4fed96d611ab9eb5874bbc0c27dd076e18520adad"
+    },
+    {
+      "name": "duplicate_member",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "3f809ef6c0d395516547342e4374fb5917ed63f5444360d4f17d2a5f4decace2"
+    },
+    {
+      "name": "member_size",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "de850f64d33a298ba5aa33057bddd4073620ca31af1c0101856b63665d7ff71c"
+    },
+    {
+      "name": "member_type",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "fd16c13506bc5880123f9c13bdd0b691d5a924e4b40239fadef14d9daa77063c"
+    },
+    {
+      "name": "encrypted",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "c35a600d558408e9776923fef3e0f67402f94301991e5623ad15a46afca3c13b"
+    },
+    {
+      "name": "zip_ratio",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "91ae1097110d8d302e76c810ce4e52252c024cfff61587e0eaa872bf8844e492"
+    },
+    {
+      "name": "complete_docs",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "3d34a3fa5cdf36e00b740d4e881e175c22de86d2fc72917698e6ffad9c999fe9"
+    },
+    {
+      "name": "state_integrity",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "abc04926f862219da7843f9e686d572726cf9259b2378142d44608427edc7c5c"
+    },
+    {
+      "name": "artifact_expiry",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "ac68ee68d7e7d38a1a6881901b2a53e95c95f7ee553f91b0628268ad9e5e13fe"
+    },
+    {
+      "name": "run_completed",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "4fee40fc9dede83db19340e4850d38943dd77b711c13b1c98138da1ed127cf80"
+    },
+    {
+      "name": "run_success",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "59e223b42d3795995242eac5e9aac6945a6afba86eab4f7cc5a95e8e2c2afc2d"
+    },
+    {
+      "name": "download_size",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "e950bd9ceb591a33071bc802c41f7dd9ef1c3d940022553bfdc0503fe0044448"
+    },
+    {
+      "name": "download_deadline",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "27ffa98c675ac4a87a5edf300fc6275875ef23f958b00ed4f3969b82cf93e603"
+    },
+    {
+      "name": "http_encoding",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "fbbbd99455b0df13322ef24eeef4df4d95a85964c44d8abd16447632730c788c"
+    },
+    {
+      "name": "https_origin",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "13fdb6913cd7301b93ea11dd112566f8762521ab5fc104d1ce4385dee1cf312b"
+    },
+    {
+      "name": "blob_origin",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "7e3261827da2b9b89127b0f560da9109a2ac86a9c88c4e41104da8bf2f6f9f0d"
+    },
+    {
+      "name": "bootstrap_dispatch",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "a176000a3c139c64520fec750116114780baf24b8d74b95904f46d447bc8ee5d"
+    },
+    {
+      "name": "authority_expiry",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "224629dab06a950fa5a0ebdf4c196779dd246563bffbd684314368471fe0a48c"
+    },
+    {
+      "name": "canonical_authority",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "13884cd7a1a572b81f0afe6ef366f185debc0331ed0c976a71cd31d680d52499"
+    },
+    {
+      "name": "worktree_symlink",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "e1082980445b78d989b2644bea80fa03a4e98e7a15958952580664fd63201db6"
+    },
+    {
+      "name": "sealed_parent_hash",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "53852ce4ac557d68521b4c2c9197dc2013585561f11bcbdad672d71c2faf38e2"
+    },
+    {
+      "name": "sealed_authority_hash",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "8f97766a7ce1da79e113be48c33c8d0de9c674c557fc8ac558f3a263fd4f97e5"
+    },
+    {
+      "name": "state_source_set",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "67fe870f6d1c10bddf1e6bea9ca884f073d2654a60c6c0812fdc3f2117de1f16"
+    },
+    {
+      "name": "seal_original_lineage",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "dbf1bd8db217482d86f32a0e82d20e51d1e752a61d345b87f941937f28580575"
+    },
+    {
+      "name": "seal_lineage_readback",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "17de30f8600a00b6870fb23b96e6e619798a4c82ad52f6ba817ad6c0f5192e52"
+    },
+    {
+      "name": "seal_restoration_status",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "b085e5caae69dffe947dd19b39e946d698a14dc37c514ffe6f22463ab88e2f6c"
+    },
+    {
+      "name": "seal_execution",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "de33f602faacddfa2c0b21bf03e95c3cf757effd18fa8c1e7344dbe530dd2ef7"
+    },
+    {
+      "name": "native_checkpoint_structure",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "f650fd47c4752bb7afe4635c4b964f989be72763379cfc7179ed917b6c50c2c5"
+    },
+    {
+      "name": "zip_member_spelling",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "a62338df9402d2c70c1715d46ea93cb5cf39fab9b0447d246b7624e7786c10dc"
+    }
+  ],
+  "all_killed": true
+}

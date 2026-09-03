@@ -1,0 +1,271 @@
+{
+  "additional_mutation": {
+    "donor_bundle": {
+      "killed": 9,
+      "total": 9
+    },
+    "durable_state": {
+      "killed": 26,
+      "receipt_sha256": "66a5fd7ec86c2f8d8d305f0956b0cab892278a6aca7c8abf4efaedae82e25d30",
+      "total": 26
+    },
+    "evidence_index": {
+      "killed": 9,
+      "total": 9
+    },
+    "parent_state": {
+      "killed": 34,
+      "receipt_sha256": "722d9805f42e19e3376b65e2cc294573165560145f07a80db434756be14a7fca",
+      "total": 34
+    },
+    "release_correction": {
+      "killed": 15,
+      "total": 15
+    }
+  },
+  "artifact_hashes": {
+    "actionlint_findings_sha256": "d6226a2d38ae28cb4411939669e927386ddb1d261d242daefa93316397fbc4ae",
+    "hosted_readback_sha256": "6413059757a6f1540363623e2c3c9d086d2e6c0e9adbcd48ceec09ffac4a262f",
+    "licence_inventory_sha256": "8beaa149575043a1d4b854c966c52d6d3fa5624f19d5481cff88fe008ba8a3e8",
+    "pip_audit_sha256": "cf0f39e896b855c75ef5eab925f2b67750db5beae586f90e07f1dc9280796539",
+    "sbom_sha256": "3ba6cebcc16775839947ac5f14c8dfe00999fa4f1bb13605dcf98a1b906a0995",
+    "secret_scan_sha256": "4052e76c8da5909d36ee973db85889a395b4cbb798dbd82da721b4abfc8a3c35"
+  },
+  "defects": [
+    {
+      "issue": 352,
+      "scope": "open high-severity CodeQL alerts"
+    },
+    {
+      "issue": 353,
+      "scope": "two actionlint SC2086 findings"
+    },
+    {
+      "issue": 354,
+      "scope": "main has no branch protection or ruleset"
+    }
+  ],
+  "donor": {
+    "archived": true,
+    "final_head": "b40587f1b1aec7356a0f623916fcc8212397d283",
+    "repository": "edithatogo/corpus-legislation-nz"
+  },
+  "external_actions": {
+    "donor_modified": false,
+    "hosted_settings_modified": false,
+    "publication": false
+  },
+  "failed_attempts": [
+    {
+      "detail": "unmatched actionlint yaml glob",
+      "kind": "shell_glob",
+      "result": "failed_before_action"
+    },
+    {
+      "detail": "unquoted GitHub API query characters",
+      "kind": "shell_glob",
+      "result": "failed_before_readback"
+    },
+    {
+      "detail": "20-iteration seed timing exceeded local execution window",
+      "kind": "resource_bound",
+      "result": "terminated_without_receipt"
+    },
+    {
+      "coverage_percent": 86.2,
+      "kind": "coverage_collision",
+      "log_sha256": "441690376291e0c50e042d18973104c0ff9f2a97385efed17138bafe74453a85",
+      "resolution": "isolated COVERAGE_FILE rerun passed",
+      "result": "failed",
+      "tests_passed": 4543
+    }
+  ],
+  "hosted_exact_main": {
+    "all_workflows_completed_successfully": true,
+    "ci_run": 33545341871,
+    "codeql_run": 33545341907,
+    "macos_job": 99981330823,
+    "ubuntu_job": 99981330548,
+    "windows_job": 99981330152,
+    "workflow_policy_run": 33545341876
+  },
+  "integrated_pull_requests": [
+    {
+      "head": "f1ffc801a64e104544fb9caf7859e408c93a57a7",
+      "merge": "6885c3e50e34f19f15459abe8eca1409675f068b",
+      "number": 289
+    },
+    {
+      "head": "b7f60abee078cb24367f4de3e310d5836f8f62f4",
+      "merge": "d6bc0c96c44488a75b7e98bd9cb95591eeb97a38",
+      "number": 281
+    },
+    {
+      "head": "50732ea1bdc07a1f3d5853e410c5c74f9d753c08",
+      "merge": "3ea0b405268bcb4e3bc12dc13ca0327108d044a6",
+      "number": 287
+    },
+    {
+      "head": "c489c5de9d0485f5c0137f541ecd5e079323d08e",
+      "merge": "8ebbb69ddbf8268cd85c2df8885645943b0ab525",
+      "number": 297
+    },
+    {
+      "head": "8b2545ad37a3432d4c6a5aeb433548d735b9ae93",
+      "merge": "af427c2632239a8869684c849c0fcc1981277b02",
+      "number": 301
+    },
+    {
+      "head": "239bf6db381e96a72e7a2ecddef011f00700b0e8",
+      "merge": "6ea843c1ead90a40b30f5e01d36b3a9bf0e5c8af",
+      "number": 304
+    },
+    {
+      "head": "1572d51ac6855bbe81c167385e3950041d93abef",
+      "merge": "efca467ebd26af23ba66e86bcc9ae41be74fdb7c",
+      "number": 317
+    },
+    {
+      "head": "0252ef19e122786d75406e11a2dcaf53410fc4c9",
+      "merge": "d3946b8f5380c60b11b5f6e803f7188fc7d8e8df",
+      "number": 324
+    },
+    {
+      "head": "64753cc00e5cc104d1b34440e68174955a19c035",
+      "merge": "bd53d7c71f6f0d366d337365f751e44d1c9b2995",
+      "number": 331
+    },
+    {
+      "head": "38ecc2317b8a1c2b05add74944015b7663a7a019",
+      "merge": "0c3afba452b26d7721e75310b2e4d2b19d82782f",
+      "number": 332
+    },
+    {
+      "head": "27b9b42832c57daab80c5394e841f64b3a6fac88",
+      "merge": "2c15dcc35a70bf364c443d02a02c6ad281c86d4b",
+      "number": 334
+    },
+    {
+      "head": "6f5608e2092b3822cb5ac7ea747fb21314e8001a",
+      "merge": "a926280315e4221d2f7cd72ad828ae1490001d93",
+      "number": 336
+    },
+    {
+      "head": "fcf65e153183b09a6c667f82d4c31211474f3ced",
+      "merge": "ff01566b5e6fff2f4e2b5f93ecdec11bb0c3c7e8",
+      "number": 338
+    },
+    {
+      "head": "06c06edaeca3887256853d78838f1777de302ce4",
+      "merge": "ee3b1aeb93bf94f4980012a7cc2e71ebdc5127c0",
+      "number": 339
+    },
+    {
+      "head": "9c8a1310464a74582142e8dcecfad84e4f45b7ad",
+      "merge": "06f9d095ffe7a81bd096ac73fa92b6bfe035d7e4",
+      "number": 340
+    },
+    {
+      "head": "85950810e88584e91ca45c2298fa1a25d7d934da",
+      "merge": "0158b46265cf2468d04e9aa3322d10f33674ee2c",
+      "number": 342
+    },
+    {
+      "head": "5acb360929d2eb971796a102875b13d0d56f3332",
+      "merge": "6755e12a48536de938b6f5955fe974d4b1de1b75",
+      "number": 344
+    },
+    {
+      "head": "2f4c3f8b62cd127a46a298383e31f8a019df8e41",
+      "merge": "740389b7420ea7ba7382d40a23ad3e23ba2c680a",
+      "number": 346
+    },
+    {
+      "head": "f756cc0301c37cb1f99ae7136935779cd486e8b4",
+      "merge": "b89df7e8f44031d892d014108deec9570f5d8755",
+      "number": 348
+    },
+    {
+      "head": "7d7363bdd44a161c21d4a88088892d9fc668a6cc",
+      "merge": "dd90f8ec01c91290895e9f2a684d948a520b0f1f",
+      "number": 350
+    }
+  ],
+  "limitations": [
+    "No live 500-work acquisition or continuation run was safe because Prompt 13 remains blocked.",
+    "Standalone zizmor was unavailable; repository workflow policy passed but actionlint failed.",
+    "Prompt 6, Prompt 7 and Prompt 10 are not integrated into the selected head."
+  ],
+  "local_validation": {
+    "cas_throughput_mb_s": 438.44,
+    "clean_worktree": true,
+    "command": [
+      "./scripts/validate.sh"
+    ],
+    "dependency_vulnerabilities": 0,
+    "exit_code": 0,
+    "log_sha256": "178a03c93964ecfcdffa765911f9f8bab155722155ce49b736056c2c62ec3997",
+    "parity_passed": 9,
+    "project_coverage_percent": 97.5,
+    "representative_documents": 38,
+    "rerun_count": 3,
+    "sbom_components": 111,
+    "schemas": 48,
+    "secret_findings": 0,
+    "tests": 4543
+  },
+  "not_integrated": [
+    {
+      "issue": 308,
+      "prompt": 6
+    },
+    {
+      "issue": 310,
+      "prompt": 7
+    },
+    {
+      "draft_pr": 329,
+      "issue": 327,
+      "prompt": 10
+    }
+  ],
+  "observed_at": "2026-09-02T05:05:00+10:00",
+  "performance": {
+    "all_passed": true,
+    "candidate_count": 500,
+    "live_500_work_lane_executed": false,
+    "receipt_sha256": "faf25cdd41cb7d7223fadbdd426aa05d182426aa28cc3620db26b5033f78ed85",
+    "runs": 5,
+    "scope": "offline reviewed-seed registry validation only"
+  },
+  "reproducible_build": {
+    "byte_identical": true,
+    "run_count": 2,
+    "sdist_sha256": "c5ac7bffaf945cc6148d08ec2316302818bedbca643f181b6ab18400e0dc9841",
+    "source_date_epoch": 1788288217,
+    "wheel_sha256": "e24eed5a6285d23709714084d44cef172083bfb4cd0d8896e856a57fdde7bc2d"
+  },
+  "schema_version": "archive-govt-nz.integrated-assurance/v1",
+  "security_readback": {
+    "codeql_alert_numbers": [
+      1,
+      2
+    ],
+    "open_dependabot_alerts": 0,
+    "open_high_codeql_alerts": 2,
+    "open_secret_scanning_alerts": 0
+  },
+  "status": "incomplete",
+  "target": {
+    "integrated_head": "dd90f8ec01c91290895e9f2a684d948a520b0f1f",
+    "repository": "edithatogo/archive-govt-nz"
+  },
+  "workflow_lint": {
+    "actionlint_version": "1.7.12",
+    "defect_issue": 353,
+    "exit_code": 1,
+    "finding_count": 2,
+    "repository_workflow_policy_passed": true,
+    "zizmor_available": false
+  }
+}
