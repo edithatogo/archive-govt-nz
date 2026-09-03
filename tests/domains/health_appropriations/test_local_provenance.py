@@ -187,6 +187,13 @@ def test_field_metadata_and_nullability_exact() -> None:
             "fiscal_context_fact",
         ),
         ("historical-health-gdp-canonical/v1", "fiscal-2024", "field_lineage"),
+        ("budget-appropriation-canonical/v1", "Budget-2025", "appropriation_fact"),
+        (
+            "budget-appropriation-canonical/v1",
+            "Budget-2026",
+            "classification_dimension",
+        ),
+        ("budget-appropriation-canonical/v1", "Budget-2025", "field_lineage"),
         (
             "budget-functional-classification-source-label/v1",
             "Budget-2025",

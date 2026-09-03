@@ -131,8 +131,10 @@ def objects_for(
     return objects
 
 
-def target_state(files: dict[str, bytes]) -> dict[str, Any]:
-    """Independently reconcile target roots, cumulative membership and receipt."""
+def target_state(
+    files: dict[str, bytes], expected_run_identity: str | None = None
+) -> dict[str, Any]:
+    """Reconcile target state, optionally binding its authenticated execution."""
     docs = {Path(name).stem: v.load(files[name]) for name in sorted(DOCS)}
     manifest, checkpoint, receipt = (
         docs[k] for k in ("manifest", "checkpoint", "harvest")
@@ -192,7 +194,12 @@ def target_state(files: dict[str, bytes]) -> dict[str, Any]:
             code="receipt_accounting_missing",
         )
         accounting = cast("Any", parsed.accounting)
-        v.equal(accounting.run_identity, manifest["run_id"], "receipt_run")
+        if expected_run_identity is not None:
+            v.equal(
+                accounting.run_identity,
+                expected_run_identity,
+                "receipt_execution",
+            )
         v.equal(
             accounting.output_manifest_root,
             manifest["manifest_sha256"],
@@ -267,7 +274,7 @@ def parent(archive: Path, descriptor: dict[str, Any]) -> dict[str, Any]:
         }
     else:
         files = read_target(raw)
-        state = target_state(files)
+        state = target_state(files, str(metadata["run"]["id"]))
     prefix = v.STATE if role == "donor" else ""
     state.update(
         archive=raw,

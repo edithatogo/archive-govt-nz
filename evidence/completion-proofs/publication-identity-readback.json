@@ -1,0 +1,29 @@
+{
+  "schema_version": "archive-govt-nz.publication-identity-readback/v1",
+  "status": "verified",
+  "verified_at": "2026-09-03T09:21:50.872016Z",
+  "authority_repository": "edithatogo/archive-govt-nz",
+  "dataset": {
+    "slug": "edithatogo/corpus-legislation-nz",
+    "role": "canonical_living_dataset",
+    "created_new_identity": false,
+    "private": false,
+    "gated": false,
+    "revision": "04688f12dd687618e2085ae31f9b8a4a50a88b16"
+  },
+  "authority_decision_id": "archive-govt-nz-hf-publication-20260903-selected-552-v1",
+  "selected_record_count": 552,
+  "package": {
+    "bytes": 71776346,
+    "sha256": "2e4b75333e947d812842147c939117fc666799e4497b80f125104f721ef68e3c",
+    "anonymous_http_status": 200
+  },
+  "metadata_sha256": "ed886263fead010a540663515b24440db59371dbd9bb0abca2138942b44f8e74",
+  "card_sha256": "d41be7b72c10b1e79754bed9b59deed5862d535b6ed0eead2a02df01392e8c4d",
+  "rights_sha256": "1cf3df1c833ab9f8a44b703a7668a91b25dfa1b2626972f89d11f7607a776d03",
+  "source_evidence": {
+    "path": "evidence/migrations/corpus-legislation-nz/huggingface-publication/publication-readback-20260903.json",
+    "sha256": "38160c4683112d951351e20d68fe34198dcab797eb371d6cf6e6d91160ba9fed"
+  },
+  "rights_boundary": "Approved public redistribution applies to the selected state; source-specific copyright, statutory terms, attribution, and reuse conditions remain authoritative."
+}

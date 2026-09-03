@@ -1629,6 +1629,53 @@ passed: 4,239 tests / 97.3804% coverage / all supply-chain gates. Incoming main3
 ledger prefix is preserved. See [full receipts](./budget-reader-bounds.md).
 No original/package/HF bytes were changed.
 
+## 2026-09-03 — Exclusive local Budget canonical export
+
+- Implemented the reviewed `budget-canonical-export-proposal.md` as a separate
+  public orchestration module over the verified Budget reader, original snapshot
+  verifier and pure appropriation projection.
+- The exporter emits exactly three canonical Parquets, the unchanged projection
+  receipt, complete lineage accounting and `LOCAL_BUDGET.json`; dry runs and
+  persisted builds serialize identical bytes while retaining local-only,
+  rights-not-evaluated and publication-not-granted states.
+- Enforced exclusive output reservation, source/output disjointness, literal
+  boolean dry-run state, per-file/aggregate/original caps, bounded Parquet Thrift
+  metadata, schema/value readback, six-file closure, retained partial failures
+  and interrupt propagation.
+- Focused validation: 111 Budget reader, projection and exporter tests passed;
+  Ruff formatting and lint passed. This closes only the Budget export slice of
+  AC-05/AC-08; remaining adapters and the canonical consumer bridge remain open.
+- Extended the read-only local provenance verifier and pure descriptor inventory
+  to recompute, validate and dependency-link the three-recordset Budget package,
+  including exact marker, raw/original fixity, Parquet schema/value, projection
+  receipt and complete lineage-accounting equality. The combined provenance and
+  exporter suites pass 138 tests; this remains scoped local verification, not
+  rights, publication, standards or whole-recovery acceptance.
+- Review hardening pins the reserved output directory by descriptor on platforms
+  supporting directory-relative opens, uses no-follow exclusive file creation,
+  verifies directory identity before and after every operation, and fails closed
+  on replacement. A regression proves a rename-and-symlink swap cannot write a
+  marker or failure receipt into the retained input package. The complete focused
+  Budget reader/projection/export and provenance set passes 239 tests, Ruff and
+  basedpyright.
+
+## 2026-09-03 — First canonical-recordset consumer bridge
+
+- Added a public verified-table reader that returns freshly recomputed canonical
+  package tables only after exact marker, raw/original, schema/value, receipt and
+  lineage-accounting verification.
+- Added read-only DuckDB nominal Budget and historical queries over those
+  canonical tables. The Budget query
+  groups only identical source labels, units, periods and vintages; preserves
+  Decimal(38,18) amounts and exact sorted input record IDs. The historical query
+  is an identity projection that preserves source currency/accounting assertions
+  without cross-source aggregation. Both explicitly leave price basis,
+  classification mapping and publication unresolved.
+- Duplicate package identities, wrong package kinds, non-tuple inputs and any
+  verification drift fail closed. Focused canonical-consumer and provenance
+  validation passes 78 tests plus Ruff and basedpyright.
+- This is the first AC-08 canonical consumer slice, not completion of historical,
+  contextual, SQLite, plot, report, recovery or publication consumers.
 ## 2026-09-03: Exclusive Budget appropriation export
 
 Observed red: the focused test module failed collection because
@@ -1777,3 +1824,25 @@ before calling the real open. The full job log SHA-256 is
 The test now preserves a native flag and synthesizes/strips one only when absent.
 All 88 cold mutants and the full 4,636-test native harness pass; final native log
 SHA-256: `44f166e33adddedf6ab43c1ea1a11c87d25e4905d0497b46c371bb274d3a9b50`.
+
+## 2026-09-03: Pure historical canonical consumer bridge
+
+The focused test first failed at collection because `historical_consumer` did
+not exist. After persisted-receipt and six-table resource-bound corrections,
+22 focused tests passed at 100% line/branch coverage over 107 statements and 18
+branches. The final cold-cache lane used one worker, no coverage filtering and
+strict zero pardons; 51/51 mutants were killed with zero survivors, errors,
+timeouts, pardons or cache hits. The retained log SHA-256 is
+`b03da3b6179393e79a36292c3bc8c5117cb32a31023906b1384b4ea13656d6f0`;
+the JSON report SHA-256 is
+`fe3463021cfab67d0664679186e54793cac6895625bd13a7c07ae06f5944d14b`.
+
+The first native attempt failed at full static typing because the test helper's
+return annotation used `object`; its log SHA-256 is
+`7d2dab72e4980c40aec1533a1e44f9787ffa33610089258650c0fb293abcbbba`.
+After an annotation-only correction and a fresh exact-test-hash mutation run,
+the final native harness at `50564fc` exited zero: 4,615 tests, nine existing
+resource warnings, 68.81 seconds, 97.53% coverage, 48 schemas / 38 documents,
+9/9 parity, all mutation and supply-chain gates, and 111 SBOM components. Final
+native log SHA-256:
+`4b988cfe7a65ec04b6c166230303f84a091a1d65afba83e03f610087fa11e690`.
