@@ -291,5 +291,5 @@ implementation has occurred under these tracks.
 - [~] **Track: Integrated quality, security, and hosted assurance (Prompt 20)**
   *Link: [./tracks/integrated_assurance_20260902/index.md](./tracks/integrated_assurance_20260902/index.md)*
 
-- [~] **Track: Prompt 20 security and workflow repairs**
-  *Link: [./tracks/prompt20_security_workflow_repairs_20260903/index.md](./tracks/prompt20_security_workflow_repairs_20260903/index.md)*
+- [x] **Track: Prompt 20 security and workflow repairs**
+  *Archived: [./archive/prompt20_security_workflow_repairs_20260903/index.md](./archive/prompt20_security_workflow_repairs_20260903/index.md)*
