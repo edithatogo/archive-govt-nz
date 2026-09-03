@@ -1,5 +1,10 @@
 [
   {
+    "name": "state_path_allowlist",
+    "old": "v.require(condition=allowed_name(name), code=\"state_path\")",
+    "new": "None"
+  },
+  {
     "name": "schema",
     "old": "validator.is_valid(value)",
     "new": "True"
