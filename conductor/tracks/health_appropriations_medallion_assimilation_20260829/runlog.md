@@ -1626,3 +1626,20 @@ nine warnings, 97.54% coverage, 48 schemas/38 documents, 9/9 parity, all
 repository and supply-chain gates, and 111 SBOM components. Log SHA-256:
 `6355ac9739a96c63c2278ada72f1ec26554de5889c5c6b5f9b74da1fa38804be`.
 No retained input, original, HF or publication state changed.
+
+## 2026-09-03: Retained Budget-2025/2026 exporter replay
+
+Executed `COVERAGE_CORE=ctrace PYTHON_JIT=0 uv run --no-sync python
+/tmp/health-budget-export-replay.kz7mWj/replay.py` at exact exporter head
+`7e82ed0938de5490190795d0a7c0134d993871a9`; actual exit 0. The driver and
+log SHA-256 values are `af89d4b8a420c30220a6c70da71c6b1038216e7ea4f91acea81076178ca32af0`
+and `dd26aa7a274b00d86d91cd5a0bdc0bb8c5cd49d29f3895c7e8b12d7770ddc70d`.
+
+Two fresh outputs per vintage had exact six-file closure and byte-identical
+paired builds. Planned and persisted file hashes/lengths agreed. Independent
+public-reader/projector recomputation matched marker pins, all canonical table
+values and schema metadata, receipt bytes and lineage-accounting bytes. Totals:
+400 facts, 4,400 canonical lineage records and 6,800 original lineage entries.
+Both original hashes and all eight raw-package file hashes were unchanged.
+Package sizes were 1,737,166 and 1,502,784 bytes. No rights, publication,
+candidate or HF mutation was performed.
