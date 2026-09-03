@@ -299,4 +299,3 @@ implementation has occurred under these tracks.
 
 - [x] **Track: Prompt 07 bounded legislation discovery and freshness**
   *Link: [tracks/legislation_bounded_discovery_20260903/index.md](./tracks/legislation_bounded_discovery_20260903/index.md)*
->>>>>>> origin/main
