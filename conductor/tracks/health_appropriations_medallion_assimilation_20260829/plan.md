@@ -258,7 +258,7 @@ repository validation command. External gates block only their affected task.
   (121 focused tests, 129/129 cold mutants, 2,866 native tests; see
   `historical-projection.md`; other source projections remain pending.)
 
-- [ ] Register the dedicated health-appropriations domain and versioned
+- [x] Register the dedicated health-appropriations domain and versioned
   multi-recordset schemas without weakening other domain contracts. [M-05;
   AC-05]
 - [ ] Implement safe workbook, CSV, PDF-table and SQLite adapter interfaces
