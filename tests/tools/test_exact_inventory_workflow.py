@@ -88,7 +88,9 @@ def test_workflow_reconciles_seals_and_retains_every_attempt() -> None:
     assert acquisition < reconcile < verify < seal
     assert "--expected-batch-sha256" in text
     assert SEED_HASH in text
-    assert "receipts/reconciliation.json" in text
+    reconciliation_path = "build/legislation-attempt/reconciliation.json"
+    assert text.count(reconciliation_path) == 3
+    assert "build/legislation-state/receipts/reconciliation.json" not in text
     assert "receipts/continuation.json" in text
     assert text.count("!inputs.preflight_only && always()") >= 2
     assert "legislation-exact-inventory-attempt-" in text
