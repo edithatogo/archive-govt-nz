@@ -701,17 +701,26 @@ repository validation command. External gates block only their affected task.
   (PR #290 merged `07143c8`; native timeout remains recorded, exact-head
   hosted checks passed; subsequent staging changes have separate assurance)
 
-- [ ] Add release-readiness negative tests for missing rights, incomplete
+- [x] Add release-readiness negative tests for missing rights, incomplete
   source disposition, failed parity/recovery, stale evidence, non-pinned
   revisions, restricted content and candidate-manifest mismatch. [M-14, M-17,
   M-18; AC-14, AC-15, AC-16]
-- [ ] Build a local candidate for `edithatogo/nz-health-appropriations` with
+  Exact local candidate bytes, file-set closure, required metadata, per-original
+  rights rows, source dispositions and release-state claims fail closed. A
+  separately hash-pinned assurance receipt binds exact code/candidate revisions,
+  parity, recovery and UTC freshness without performing publication.
+- [x] Build a local candidate for `edithatogo/nz-health-appropriations` with
   rights-eligible originals/derivatives only, schemas, manifests, cards,
   limitations and checksums. Metadata-only/tombstone representations must
   remain explicit. [M-14, M-17; AC-14, AC-15]
-- [ ] Record exact candidate manifest hash, byte/file counts, intended splits,
+  Candidate `2026-08-29-v4` was built and later published without broadening;
+  see the checksum-pinned candidate and publication entries in `evidence.jsonl`.
+- [x] Record exact candidate manifest hash, byte/file counts, intended splits,
   viewer expectations, collection target and rollback/reconciliation plan.
   [M-17, M-19; AC-15]
+  Manifest `9a33babda857b0aa7c60a6012000cf1e730fed729781cb8ceb6e7a4714cae40e`
+  binds 94 pre-manifest files/39,390,246 bytes and the approved collection;
+  upload and anonymous readback remain separately evidenced.
 
 ### 9.3 Final local assurance and review
 
