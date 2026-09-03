@@ -7,3 +7,11 @@ No new runtime or integrity algorithm was introduced; focused checks compare imm
 Merge blocked: actionlint reports two pre-existing SC2086 findings outside scope; repository secret gate identifies 98 public commit-addressed paths as high-entropy strings. Independent import and lineage Gitleaks scans pass. Do not change shared scanner/workflow policy or rewrite historical evidence to force green. Import whitespace warnings reflect unchanged donor bytes and are retained under the explicit preservation requirement.
 
 Scope review: no operational workflows, source runtime, state/CAS, publication metadata, prior imported snapshot or closeout claims changed. Generated unrelated validation receipts are excluded. Handoffs LH-STATE/LH-WORKFLOW go to controller #276 for exact specialist routing.
+
+## Closeout review — 2026-09-03
+
+PR #281 merged at `d6bc0c96c44488a75b7e98bd9cb95591eeb97a38` after seven
+exact-head hosted checks passed. The imported tree and receipt were independently
+read back with zero unaccounted lineage omissions. This track is complete;
+operational migration, rights, publication, and donor-retirement gates remain
+outside its acceptance scope.
