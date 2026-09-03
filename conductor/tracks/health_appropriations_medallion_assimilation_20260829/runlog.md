@@ -1,5 +1,37 @@
 # Run Log
 
+## Optional graph/vector evaluation — 2026-09-04
+
+- Re-read C-01/C-02, W-07, the Platinum design, and the existing generic
+  deterministic search and graph modules and tests.
+- No health-appropriations-specific query benchmark, consumer requirement, or
+  pinned embedding-model quality/drift contract is present. Adding Lance or
+  LanceDB would therefore add a dependency and derivative state without the
+  requirement's demonstrated benefit.
+- Closed the evaluation task as `evaluated_deferred`. Existing generic indexes
+  remain rebuildable discovery aids and are not preservation, rights,
+  publication, or analytical truth.
+
+## Phase 1 disposition reconciliation — 2026-09-04
+
+- Revalidated `source-census.json`: its declared count equals 141 records,
+  source IDs are unique, every record has exactly one disposition, and the only
+  terminal classes are 73 `captured` and 68 `out_of_scope` records.
+- The capture reconciliation binds all 73 retained official originals to the
+  complete capture manifest. Existing donor structural evidence covers all
+  seven workbooks, the 471-page PDF, and all five SQLite tables/312 rows.
+- This closes disposition accounting, not the separately pending retrospective
+  annual-source enumeration, normalization, rights, or release tasks.
+
+## Bronze tracked-byte boundary — 2026-09-04
+
+- Hashed all 2,998 tracked regular files and compared them with the 73 captured
+  official-source object hashes in the final source census.
+- No tracked file reproduces a captured source payload and no tracked file
+  exceeds 10 MiB. The one tracked Parquet artefact belongs to an older bounded
+  prepared-package evidence fixture and is neither a captured health source nor
+  a large generated derivative.
+
 ## Exact GDP quarterly source profile — 2026-08-31
 
 - Required native `./scripts/validate.sh` at `41e7717` passed all gates:

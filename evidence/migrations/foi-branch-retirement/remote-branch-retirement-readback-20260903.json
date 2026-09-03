@@ -1,0 +1,32 @@
+{
+  "schema_version": "archive-govt-nz.remote-branch-retirement-readback/v1",
+  "observed_at": "2026-09-03T09:35:00Z",
+  "repository": "edithatogo/archive-govt-nz",
+  "status": "retirement_not_established",
+  "refs": [
+    {
+      "name": "foi-execution-state",
+      "sha": "7e484726245f8f20fd165714ff9aa9a35b0d8c8a",
+      "role": "active shared FOI control authority",
+      "retirement": "prohibited",
+      "reason": "docs/foi-shared-execution.md identifies this ref as the live CAS authority; retirement requires an observed drain, migration, and accountable authorization."
+    },
+    {
+      "name": "backup/local-main-20260826",
+      "sha": "3ed041d1d7e5f424914442707c51055bc01c3b60",
+      "role": "historical backup ref",
+      "retirement": "not_established",
+      "reason": "No independent inventory, reachability comparison, and preservation readback has established that this ref is redundant."
+    }
+  ],
+  "actions_taken": [
+    "Read branch metadata from the GitHub API.",
+    "Preserved both remote refs unchanged.",
+    "Recorded the exact SHA and retirement decision boundary."
+  ],
+  "required_before_retirement": [
+    "Independent full ref/object inventory and comparison against retained bundles or another durable authority.",
+    "For foi-execution-state: drain and migrate all active leases and verify a replacement authority with a fresh readback.",
+    "Accountable authorization for remote ref deletion."
+  ]
+}

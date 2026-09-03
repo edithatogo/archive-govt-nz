@@ -28,6 +28,17 @@ It is not claimed as run for this unapproved documentation proposal.
 
 Local immutable package foundation: local-package-validation-20260831.json (full harness pass; cold restore and rebuilt index parity). Source-policy observations: source-eligibility-review-20260831.json. Public payload rights and privacy remain pending; neither receipt authorizes raw publication.
 
+### Repository assurance refresh — 2026-09-03
+
+The required local validation harness passed on Python 3.14.6: Conductor
+integrity (90 tracks, zero errors), formatting, lint, typing, 4,559 tests with
+97.50% coverage, 48 schemas/38 representative documents, 9/9 parity, all
+registered mutation suites, hygiene, CAS throughput, dependency, licence,
+secret-scan, and 111-component SBOM checks. This is repository readiness
+evidence only. Hosted source progress, public raw publication/readback,
+rights/privacy review, donor transfer, and scheduled-cycle evidence remain
+external gates.
+
 Attachment census and compatible package v2: attachment-package-validation-20260831.json; local full validation and cold restoration passed, public delivery remains pending.
 
 ### Durable control continuation — 2026-08-31
