@@ -59,3 +59,27 @@ def test_health_discovery_preserves_failure_receipts() -> None:
     assert "if: always()" in upload
     assert "build/live/health-discovery.json" in upload
     assert "if-no-files-found: error" in upload
+
+
+def test_optional_workflow_arguments_use_shell_arrays() -> None:
+    """Optional CLI values must preserve argument boundaries and empty state."""
+    root = Path(__file__).parents[2]
+    cases = (
+        (
+            root / ".github/workflows/scheduled-gazette-harvest.yml",
+            "BACKFILL_ARGS=()",
+            '"${BACKFILL_ARGS[@]}"',
+            "$BACKFILL_FLAG",
+        ),
+        (
+            root / ".github/workflows/global-ckan-harvest-huggingface.yml",
+            "EXTRA_ARGS=()",
+            '"${EXTRA_ARGS[@]}"',
+            "$EXTRA_ARGS",
+        ),
+    )
+    for path, declaration, expansion, unsafe_expansion in cases:
+        workflow = path.read_text(encoding="utf-8")
+        assert declaration in workflow
+        assert expansion in workflow
+        assert unsafe_expansion not in workflow
