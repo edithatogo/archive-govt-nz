@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import argparse
 import sys
 import tempfile
 import time
@@ -57,14 +58,31 @@ def run_cas_benchmark() -> float:
     return (BENCHMARK_BYTES / (1024 * 1024)) / elapsed
 
 
+def _parse_args() -> argparse.Namespace:
+    """Parse benchmark controls for dedicated gates and CLI contract tests."""
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--minimum-throughput",
+        type=float,
+        default=MIN_THROUGHPUT_MB_S,
+        help="Minimum acceptable throughput in MB/s.",
+    )
+    return parser.parse_args()
+
+
 def main() -> int:
     """Run benchmark and fail if throughput falls below minimum boundary."""
+    args = _parse_args()
+    minimum_throughput = args.minimum_throughput
+    if minimum_throughput < 0:
+        print("FAIL: minimum throughput must be non-negative")
+        return 2
     throughputs = [run_cas_benchmark() for _ in range(3)]
     throughput = max(throughputs)
     print(
-        f"CAS Streaming Throughput: {throughput:.2f} MB/s (min: {MIN_THROUGHPUT_MB_S})"
+        f"CAS Streaming Throughput: {throughput:.2f} MB/s (min: {minimum_throughput})"
     )
-    if throughput < MIN_THROUGHPUT_MB_S:
+    if throughput < minimum_throughput:
         print(f"FAIL: CAS throughput {throughput:.2f} MB/s below minimum")
         return 1
     return 0

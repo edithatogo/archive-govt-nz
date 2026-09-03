@@ -6,5 +6,5 @@
 - [x] Validate the README, annotated tag, action checklist, and preservation disposition candidates.
 - [x] Run focused tests, mutation coverage, schema validation, full repository validation, secret scan, workflow lint, dependency/security checks, and independent review.
 - [x] Stop at unresolved external gates and prepare exact gated commands without changing remote state.
-- [~] Deliver the issue through one PR and exact-head hosted checks; preserve precise handoffs and blockers.
+- [x] Deliver the issue through one PR and exact-head hosted checks; preserve precise handoffs and blockers. (PR #350, merged `7d7363b`)
 - [x] Preserve a dated superseding receipt for the authorised donor redirect, final tag, archival state, and public target release.
