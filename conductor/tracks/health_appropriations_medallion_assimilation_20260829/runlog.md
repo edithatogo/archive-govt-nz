@@ -1628,3 +1628,152 @@ new test exception/spy-typing issues without source changes. Independent review,
 passed: 4,239 tests / 97.3804% coverage / all supply-chain gates. Incoming main326
 ledger prefix is preserved. See [full receipts](./budget-reader-bounds.md).
 No original/package/HF bytes were changed.
+
+## 2026-09-03: Exclusive Budget appropriation export
+
+Observed red: the focused test module failed collection because
+`budget_export` did not exist. The initial implementation reached 22 tests,
+100% critical coverage and 52/52 cold mutation kills. A pre-review native run
+exited zero but is retained only as diagnostic evidence.
+
+Independent review found four actionable gaps: pathname replacement could
+redirect writes, serialization caps followed materialization, required
+adversarial parity tests were incomplete, and failure-marker creation could
+replace the original `BaseException`. The corrected implementation anchors all
+writes/readbacks to a no-follow directory descriptor, incrementally bounds JSON
+and aggregate admission, adds conservative expanded-table preflight and the
+missing race/parity/failure cases, and preserves the saved exception.
+
+Final focused command: `COVERAGE_CORE=ctrace PYTHON_JIT=0 uv run pytest
+tests/domains/health_appropriations/test_budget_export.py
+--cov=archive_govt_nz.domains.health_appropriations.budget_export --cov-branch
+--cov-report=term-missing -q`; 31 passed, 157 statements/24 branches at 100%.
+Cold mutation used the complete focused file with the exact exporter target,
+one worker, cleared cache, no coverage filter and zero pardons; 63/63 killed.
+Ruff and scoped Pyright passed.
+
+Final native command: `COVERAGE_CORE=ctrace PYTHON_JIT=0
+PYTEST_XDIST_AUTO_NUM_WORKERS=4 ./scripts/validate.sh`; exit 0, 4,624 tests,
+nine warnings, 97.54% coverage, 48 schemas/38 documents, 9/9 parity, all
+repository and supply-chain gates, and 111 SBOM components. Log SHA-256:
+`6355ac9739a96c63c2278ada72f1ec26554de5889c5c6b5f9b74da1fa38804be`.
+No retained input, original, HF or publication state changed.
+
+## 2026-09-03: Retained Budget-2025/2026 exporter replay
+
+Executed `COVERAGE_CORE=ctrace PYTHON_JIT=0 uv run --no-sync python
+/tmp/health-budget-export-replay.kz7mWj/replay.py` at exact exporter head
+`7e82ed0938de5490190795d0a7c0134d993871a9`; actual exit 0. The driver and
+log SHA-256 values are `af89d4b8a420c30220a6c70da71c6b1038216e7ea4f91acea81076178ca32af0`
+and `dd26aa7a274b00d86d91cd5a0bdc0bb8c5cd49d29f3895c7e8b12d7770ddc70d`.
+
+Two fresh outputs per vintage had exact six-file closure and byte-identical
+paired builds. Planned and persisted file hashes/lengths agreed. Independent
+public-reader/projector recomputation matched marker pins, all canonical table
+values and schema metadata, receipt bytes and lineage-accounting bytes. Totals:
+400 facts, 4,400 canonical lineage records and 6,800 original lineage entries.
+Both original hashes and all eight raw-package file hashes were unchanged.
+Package sizes were 1,737,166 and 1,502,784 bytes. No rights, publication,
+candidate or HF mutation was performed.
+
+## 2026-09-03: Hosted macOS Decimal test isolation correction
+
+At PR #383 head `db4cc541786546833c4a68770217cb905f3b2147`, macOS
+Assurance job `100748210753` failed after 4,625 tests: 4,624 passed and only
+`test_decimal_context_is_isolated_and_exact` failed. The full retained job log
+SHA-256 is `dee4a78ada7d90482dc58cb856b8da498d08c201e84b7cdc7da32825f4f41ae1`.
+This was an assertion failure, not a timeout or infrastructure failure.
+
+The test already proved its caller-local Decimal precision, rounding, flags and
+traps were unchanged. A trailing assertion nevertheless required the unrelated
+process-global `Inexact` flag to be false, which prior tests need not guarantee.
+Removed only that order-dependent assertion. Exact Decimal(38,18) values and
+the caller-context before/after equality remain. Ruff, scoped Pyright and 31
+focused tests at 100% critical line/branch coverage passed. No production code,
+timeout, worker, coverage threshold or other gate changed. Cold/native refresh
+and fresh exact-head hosted checks remain required.
+
+Refresh completed at correction commit `f7989e4`: the unchanged exporter target
+killed all 63 cold mutants again with zero other outcomes or cache hits. The
+full native harness exited zero with 4,626 tests, nine warnings, 97.54% overall
+coverage, 48 schemas/38 representative documents, 9/9 parity and all
+supply-chain gates including the 111-component SBOM. Native log SHA-256:
+`b5f220f99a8f31d67f30437049dcbe42d40bcf02d11fe5aaa9aa9786ff557a9f`;
+mutation report SHA-256:
+`c02912100823891ecae098842952384b68a06c986b1ab5380dd438dcf776da25`.
+Fresh hosted checks remain separate.
+
+At PR #383 head `3b4ea1c4d761aba994b9440ad57894e28ac1ea67`, Windows
+Assurance job `100752396708` failed deterministically with eight exporter
+persistence failures after 4,618 passing tests. The retained full log SHA-256 is
+`9e5f57febfef574e7f6adb051c89d868ac81bd695f91433a5c0238b5037ffe70`.
+This was directory-fd platform incompatibility at `budget_export_reserve`, not
+a timeout or infrastructure failure; no blind retry or gate change was made.
+
+The correction retains descriptor-relative no-follow persistence on POSIX and
+adds a bounded fallback for platforms without directory-fd support. The fallback
+captures the output identity immediately after exclusive creation, rejects
+symlinks and Windows junctions at reservation and every ownership boundary, and
+rechecks identity before and after child open and directory enumeration. Its
+contract remains a trusted parent with deterministic redirection detection, not
+a hostile-filesystem transaction. Tests model symlink and ordinary-directory
+replacement before reservation, replacement before child writes and during
+enumeration, and descriptor cleanup on identity failure. Focused validation
+passed 36 tests and 196 statements/34 branches at 100%; Ruff and scoped Pyright
+passed. Cold mutation, native validation and fresh exact-head hosted checks
+remain required. No source inputs, originals, HF or publication state changed.
+
+The first native attempt stopped at the format gate before tests (exit 1; log
+SHA-256 `9589194ab24f51af24a412e44fee03c979c8da3c14cd4b84f5fbc7f795c62e8a`).
+After applying only the required formatter changes, exact-byte focused coverage
+again passed 36 tests at 100% and the cold lane killed all 83 mutants with zero
+other outcomes or cache hits. Mutation report SHA-256:
+`09829251c65176f89d5664b6d349d0bb4ac10f05a660a4d244fe9b86e94c5c08`;
+mutation log SHA-256:
+`f588959f2db88e7dfec2f7d7fd832a6acb1db1576ed9e757cd7234aa7c00a3f9`.
+The final native harness exited zero with 4,631 tests, nine warnings, 97.54%
+coverage, 48 schemas/38 representative documents, 9/9 parity and all supply-
+chain gates including 111 SBOM components. Native log SHA-256:
+`059c674bb9a2d4a48e7fce52dc29c031e35ed35f41277c7975218b9c83e46661`.
+Fresh exact-head hosted checks remain separate.
+
+At head `625106a997374d8b701f12c6447947d97209b3d9`, Windows
+Assurance job `100759706949` failed seven tests after 4,624 passed. The full
+retained log SHA-256 is
+`bacf43914a57a196b2d8bfb48593a55469b4a869f43fb1a22ed2c5b3ae32380f`.
+The fallback reserved the directory correctly, but the writer assumed one
+`os.write` call consumed every byte; Windows may report a short write. Three
+fault tests also assumed POSIX descriptor availability. This was deterministic
+platform behavior, not timeout or infrastructure failure.
+
+The writer now advances a bounded memoryview until the full payload is written
+and rejects zero or negative progress. A forced-short-write test proves exact
+completion. Descriptor-only reservation/cleanup tests run only where that
+capability exists; all fallback identity, reparse and redirection tests remain
+cross-platform, and fallback extra-entry injection uses the owned path. Focused
+coverage passed 37 tests/201 statements/36 branches at 100%; all 88 cold mutants
+were killed with zero other outcomes or cache hits. Mutation log SHA-256:
+`eebd18f1364d964cc84480e96db34d39af34031e7f6855870bf913503d22e0ea`;
+report SHA-256:
+`3c32673fe943a211d7064888c93b0ee4c9c6c366ec6dd0a24613b638bcdc874e`.
+The native harness exited zero with 4,632 tests, nine warnings, 97.55% coverage,
+48 schemas/38 documents, 9/9 parity and 111 SBOM components. Native log SHA-256:
+`a71d67cdb9269f60e72c0a14acbf5cc943409524435002a316a336897e8a68a5`.
+No gate, original, HF, rights or publication state changed.
+
+The next Windows job (`100764555836`) failed six exporter tests after 4,627
+passes and two capability skips; retained log SHA-256:
+`087faf1c600596c69392862bd5a0a1c2aa9ce49ff4c6aff958008d9b4a478b2a`.
+The fallback CRT descriptors also required explicit binary mode. Read and write
+opens now compose `O_BINARY` when available; a capability-safe regression proves
+both directions. Focused coverage passed 38 tests at 100%, 88/88 cold mutants
+were killed, and native passed 4,636 tests at 97.55% with all downstream gates.
+Native log SHA-256: `ff0eee95f8751ccea42fff5cb23a1df80cbf31177fd65840eb70166a86e08f8b`.
+
+At head `1359fe0`, every Windows production persistence test passed; only the
+synthetic binary-flag test failed because it replaced the platform's real flag
+before calling the real open. The full job log SHA-256 is
+`0f3efcf76083199c26a3c8f0fea91cf775d3e1440a56d497bc6fddf983d77fda`.
+The test now preserves a native flag and synthesizes/strips one only when absent.
+All 88 cold mutants and the full 4,636-test native harness pass; final native log
+SHA-256: `44f166e33adddedf6ab43c1ea1a11c87d25e4905d0497b46c371bb274d3a9b50`.
