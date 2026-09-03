@@ -747,3 +747,13 @@ metadata/materialization. Existing byte/row/expanded guards and propagated
 OSError boundary remain. This is not hostile-Parquet sandboxing. All 63 critical
 tests, 112 cold mutants and the full 4,239-test native passed; hosted exact-head remains
 separate. See [scope and evidence](./budget-reader-bounds.md).
+# 2026-09-03 historical canonical consumer checkpoint
+
+Reviewed `historical_consumer.py`, its adversarial tests and the paired track
+records against M-07, M-09, M-10 and M-18. Exact canonical schema/value/order
+and receipt checks, public analysis semantics, reversible accounting, resource
+bounds, Decimal context isolation and interruption behavior are covered. No
+secret, personal data, filesystem mutation, network action, new dependency or
+unsupported rights/publication claim was introduced. No actionable focused
+finding remains; cold mutation, full native and hosted delivery remain pending
+evidence, not implied completion.

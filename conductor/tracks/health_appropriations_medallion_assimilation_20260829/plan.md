@@ -748,6 +748,13 @@ repository validation command. External gates block only their affected task.
 
 ## Review fixes
 
+- [x] Add a bounded pure bridge from exact historical canonical projections to
+  the existing public historical analysis contract, retaining canonical
+  lineage, reversible identifiers and explicit field accounting without I/O,
+  fixity, rights, execution or publication claims. [M-07, M-09, M-10, M-18;
+  AC-05, AC-07, AC-08, AC-16] (`02d36bc`, `13e8d85`; focused mutation/native
+  and hosted delivery remain separate)
+
 - [x] Keep disconnected source-plot segments styled by their full context and
   disambiguate colliding display labels without merging source identities.
   [M-09, M-18; AC-07, AC-16]

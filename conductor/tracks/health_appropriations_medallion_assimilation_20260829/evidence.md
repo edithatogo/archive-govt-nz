@@ -1,5 +1,16 @@
 # Evidence
 
+## Pure historical canonical consumer — 2026-09-03 UTC
+
+Commits `02d36bc` and `13e8d85` add an in-memory bridge that accepts only an
+exact recomputation of the historical canonical projection and parent receipt.
+Twenty-two focused tests pass at 100% line and branch coverage over 98 critical
+statements and 16 branches; Ruff and scoped basedpyright pass. The tests cover
+raw-order independence, canonical physical order, typed JSON aliases, Decimal
+and period boundaries, reversible lineage/accounting and public historical
+analysis equivalence. Cold mutation, full native and hosted delivery remain
+pending. No file fixity, rights, analysis execution or publication is claimed.
+
 ## Additive inventory planner — 2026-08-31 UTC
 
 `c6d0e37` implements fixity and recorded-rights reconciliation only. It performs

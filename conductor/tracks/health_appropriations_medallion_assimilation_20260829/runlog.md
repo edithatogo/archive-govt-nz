@@ -1596,3 +1596,13 @@ new test exception/spy-typing issues without source changes. Independent review,
 passed: 4,239 tests / 97.3804% coverage / all supply-chain gates. Incoming main326
 ledger prefix is preserved. See [full receipts](./budget-reader-bounds.md).
 No original/package/HF bytes were changed.
+
+## 2026-09-03: Pure historical canonical consumer bridge
+
+The focused test first failed at collection because `historical_consumer` did
+not exist. The implemented and adversarial suites then passed 22 tests at 100%
+line and branch coverage over the new module; Ruff and scoped basedpyright also
+passed. The bridge recomputes the public projection, requires exact canonical
+tables and receipt bytes, and retains reversible identity and field accounting.
+Full native and hosted checks are pending behind the serialized assurance lane.
+See [the bounded receipt and limits](./historical-consumer.md).
