@@ -10,7 +10,7 @@
     {
       "evidence_id": "inventory-2bfd3df4a8a4b6bc",
       "path": "conductor/tracks/legislation_500_work_operational_proof_20260901/review.md",
-      "sha256": "63d96f37c8f3d354409a1040758b92562a9375c3dae0b3f0486148c3adad1f10",
+      "sha256": "0a1ba1b85d26f6538552738f1cccfa2d9cfa15aeaa6d171c30713598e60f2fb6",
       "classification": "historical",
       "artefact_type": "track_review",
       "claim_dimensions": [
@@ -260,8 +260,8 @@
     },
     {
       "evidence_id": "inventory-5b46596a4466712b",
-      "path": "conductor/tracks/legislation_final_donor_lineage_20260831/review.md",
-      "sha256": "587ffc32cec48caaa985d33cd96d651ff1545f2c6d22f9d86a353dc34f94a0eb",
+      "path": "conductor/archive/legislation_final_donor_lineage_20260831/review.md",
+      "sha256": "2fd2db7c787dd85e7920dd2daa1349781e1c16dc9a10c9931264d6ef7f94f167",
       "classification": "historical",
       "artefact_type": "track_review",
       "claim_dimensions": [
@@ -299,7 +299,7 @@
     {
       "evidence_id": "inventory-7c85a725d2a92a9e",
       "path": "conductor/tracks/legislation_hf_identity_reconciliation_20260901/review.md",
-      "sha256": "7e9e1044a0db38a7c754d393186da8767ef3251900331fd5ecc1eb12c8f33f8f",
+      "sha256": "e802dab045bd679049680a4adb8eb13b35dd40f1a69acdd6c64a6d0f5eb00300",
       "classification": "historical",
       "artefact_type": "track_review",
       "claim_dimensions": [
@@ -338,7 +338,7 @@
     {
       "evidence_id": "inventory-7afa9efbebdb76d5",
       "path": "conductor/tracks/legislation_parent_state_restoration_20260901/review.md",
-      "sha256": "c7532857dd9fcba186bffbf6d9d445edb907e71fed0a09941f686ba0d0e2fa84",
+      "sha256": "f1a529e0c1f64932f48feafa24423f58903c530f792233f7788d741db6844987",
       "classification": "historical",
       "artefact_type": "track_review",
       "claim_dimensions": [
