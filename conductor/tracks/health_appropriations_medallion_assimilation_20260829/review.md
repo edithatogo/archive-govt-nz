@@ -1,17 +1,14 @@
 # Self-Review
 
-## Eight-recordset schema reconciliation — 2026-09-04 UTC
+## Health domain registration reconciliation — 2026-09-04 UTC
 
-The immutable Arrow registry and independent JSON row-shape schemas cover all
-eight required recordsets and preserve version constants, exact decimal-string
-bounds, required IDs, nullable/null-reason fields, units, vintages, valid and
-recorded times, rights state, and lineage. Parquet round-trip tests preserve
-schema metadata and nested field shapes. The current combined schema suites
-pass 85 tests. This closes the stale fixture task only; adapter semantics and
-canonical promotion remain separately open.
-The same registry exposes the dedicated `health_appropriations` domain and its
-versioned recordset schemas without modifying any other domain contract, so the
-separate registration task is also evidence-complete.
+The immutable Arrow registry exposes the dedicated `health_appropriations`
+domain and all eight versioned recordset shapes without modifying any other
+domain contract. The combined Arrow/JSON schema suites pass 85 tests, so the
+separate domain-registration task is evidence-complete. The broader fixture
+task remains open: these contracts are explicitly structural-only and do not
+yet prove cross-row stable-ID uniqueness, period compatibility, null-reason
+consistency, or lineage closure.
 
 ## Preservation acceptance reconciliation — 2026-09-04 UTC
 
