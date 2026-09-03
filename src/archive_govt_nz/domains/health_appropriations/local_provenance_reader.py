@@ -330,7 +330,7 @@ def _expected_marker(
 
 def _package(
     value: CanonicalPackageInput,
-) -> tuple[list[ProductDescriptor], dict[str, Any]]:
+) -> tuple[list[ProductDescriptor], dict[str, Any], dict[str, pa.Table]]:
     marker, snapshots, total = _snapshots(value)
     with localcontext(Context(prec=50)):
         projection = _projection(value)
@@ -383,17 +383,42 @@ def _package(
                 dependencies=dependencies,
             )
         )
-    return products, {
-        "kind": value.kind,
-        "vintage": projection.manifest["source_vintage"],
-        "marker_sha256": value.marker_sha256,
-        "raw_manifest_sha256": value.raw_manifest_sha256,
-        "original_sha256": projection.manifest["source_object_sha256"],
-        "original_bytes": projection.original_bytes,
-        "canonical_bytes": total,
-        "outputs": _entries(snapshots),
-        "projection_equality": profile,
-    }
+    return (
+        products,
+        {
+            "kind": value.kind,
+            "vintage": projection.manifest["source_vintage"],
+            "marker_sha256": value.marker_sha256,
+            "raw_manifest_sha256": value.raw_manifest_sha256,
+            "original_sha256": projection.manifest["source_object_sha256"],
+            "original_bytes": projection.original_bytes,
+            "canonical_bytes": total,
+            "outputs": _entries(snapshots),
+            "projection_equality": profile,
+        },
+        projection.tables,
+    )
+
+
+def read_verified_canonical_tables(
+    value: CanonicalPackageInput,
+) -> tuple[dict[str, pa.Table], dict[str, Any]]:
+    """Return fresh verified canonical tables and their scoped package receipt."""
+    try:
+        _preflight(value)
+        _products, receipt, tables = _package(value)
+    except (
+        OSError,
+        ValueError,
+        TypeError,
+        KeyError,
+        AttributeError,
+        pa.ArrowException,
+    ):
+        message = "local_provenance_reader_invalid"
+        raise ValueError(message) from None
+    else:
+        return tables, receipt
 
 
 def read_local_provenance(values: tuple[CanonicalPackageInput, ...]) -> dict[str, Any]:
@@ -410,7 +435,7 @@ def read_local_provenance(values: tuple[CanonicalPackageInput, ...]) -> dict[str
         _require(len({value.root.resolve() for value in values}) == len(values))
         products, receipts = [], []
         for value in values:
-            rows, receipt = _package(value)
+            rows, receipt, _tables_by_name = _package(value)
             products.extend(rows)
             receipts.append(receipt)
         _require(
