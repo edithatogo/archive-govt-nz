@@ -822,3 +822,59 @@ rights/privacy qualification, public Hugging Face delivery/readback, hosted
 recovery and operational evidence, and final release acceptance. These remain
 factual or external gates. No unsupported completion or publication claim is
 made.
+
+## 2026-09-03: Exclusive Budget appropriation exporter review
+
+Independent review found four actionable issues in the initial reconstruction:
+output-root pathname replacement, post-materialization resource checks, missing
+adversarial/exact-parity cases, and failure-marker exception precedence. The
+fix anchors I/O to the exclusively opened directory descriptor and verifies
+the public output pathname still names that inode at every boundary, adds bounded
+incremental serialization and running aggregate admission, covers source-order,
+Decimal/context, equality/over-boundary, extra-entry, root-replacement,
+readback and double-interrupt cases, and ensures the saved original exception
+wins. Post-fix review found no unresolved issue in this bounded local-only
+scope. Final focused coverage, 63 cold mutants and the full native harness pass.
+
+The subsequent exact-head retained two-vintage replay passed independently of
+the focused fixtures: four fresh packages, exact six-file closure, dry/write
+hash parity, paired-build byte identity, public projector/readback equality,
+400 facts, 4,400 canonical lineage records and complete 6,800-entry original
+lineage accounting. Ten retained input files were byte-unchanged. This evidence
+remains local-only and does not alter the rights or publication assessment.
+
+Hosted macOS subsequently exposed an order-dependent test-only assertion: the
+caller-local Decimal context was correctly unchanged, but the test additionally
+assumed an unrelated process-global `Inexact` flag began false. The failed log
+was retained and classified as an assertion failure. Removing only that global
+precondition preserves the exact local flags/traps/precision and Decimal(38,18)
+checks without changing production code or weakening a repository gate.
+The refreshed 63-mutant cold lane and 4,626-test native harness both passed;
+the correction is locally closed subject to fresh exact-head hosted checks.
+
+## 2026-09-03: Windows persistence portability review
+
+Hosted Windows exposed a deterministic platform mismatch in the POSIX-only
+directory-fd reservation path. The scoped correction preserves descriptor-
+relative no-follow I/O on POSIX and uses repeated inode and reparse-point checks
+under the existing trusted-parent contract where directory fds are unavailable.
+It explicitly does not claim hostile-filesystem transactional equivalence.
+Adversarial tests cover junction/symlink rejection and modeled ordinary root
+replacement at reservation, write and listing boundaries. Focused line/branch
+coverage is 100%; all 83 cold mutants and the 4,631-test native harness pass.
+Fresh exact-head hosted validation remains pending.
+
+The next Windows run exposed short-write semantics rather than another path-
+identity defect. The final writer loops over a bounded memoryview, rejects no-
+progress writes, and retains the existing size and identity checks. POSIX-only
+fault injection is capability-scoped without weakening any fallback test. The
+focused, 88-mutant cold and 4,632-test native lanes pass; hosted exact-head
+validation remains separate.
+
+Explicit capability-safe binary flags on Windows complete the fallback
+descriptor correction. Focused, cold mutation and native validation pass;
+fresh exact-head hosted validation remains required.
+
+The last Windows failure was isolated to synthetic test setup; all production
+tests passed. The capability-aware correction is test-only, and focused, cold
+mutation and full native validation pass.
