@@ -36,9 +36,9 @@ retained-package verification, final predecessor integration, native assurance
 and hosted delivery remain separate gates at this checkpoint.
 
 Cold one-worker mutation at the integrated exporter head killed all 181 generated
-mutants with zero survivors, pardons or cache hits; all 137 tests passed in 88.69
+mutants with zero survivors, pardons or cache hits; all 137 tests passed in 90.17
 seconds. Report SHA-256:
-`dd543971844e328e1728f77906ad4d006bc81cc296c9a3e4e1ddc1618214a5d4`;
+`a76439d41db5c66d90739022631a2986a75f6ad379dcf56612e4311e608a3cc0`;
 log SHA-256:
-`af5cb0878da5aff15d8ad8dfded63c7571fb49b4c5c1508c747d31eb8b771890`.
+`b5c462c1a9163f336eff095f0f47a48434f5c6a9ccd31dfbf02f46d5a49067d7`.
 No original, raw, canonical, rights or publication state was changed.
