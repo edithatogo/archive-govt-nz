@@ -1777,3 +1777,25 @@ before calling the real open. The full job log SHA-256 is
 The test now preserves a native flag and synthesizes/strips one only when absent.
 All 88 cold mutants and the full 4,636-test native harness pass; final native log
 SHA-256: `44f166e33adddedf6ab43c1ea1a11c87d25e4905d0497b46c371bb274d3a9b50`.
+
+## 2026-09-03: Pure historical canonical consumer bridge
+
+The focused test first failed at collection because `historical_consumer` did
+not exist. After persisted-receipt and six-table resource-bound corrections,
+22 focused tests passed at 100% line/branch coverage over 107 statements and 18
+branches. The final cold-cache lane used one worker, no coverage filtering and
+strict zero pardons; 51/51 mutants were killed with zero survivors, errors,
+timeouts, pardons or cache hits. The retained log SHA-256 is
+`b03da3b6179393e79a36292c3bc8c5117cb32a31023906b1384b4ea13656d6f0`;
+the JSON report SHA-256 is
+`fe3463021cfab67d0664679186e54793cac6895625bd13a7c07ae06f5944d14b`.
+
+The first native attempt failed at full static typing because the test helper's
+return annotation used `object`; its log SHA-256 is
+`7d2dab72e4980c40aec1533a1e44f9787ffa33610089258650c0fb293abcbbba`.
+After an annotation-only correction and a fresh exact-test-hash mutation run,
+the final native harness at `50564fc` exited zero: 4,615 tests, nine existing
+resource warnings, 68.81 seconds, 97.53% coverage, 48 schemas / 38 documents,
+9/9 parity, all mutation and supply-chain gates, and 111 SBOM components. Final
+native log SHA-256:
+`4b988cfe7a65ec04b6c166230303f84a091a1d65afba83e03f610087fa11e690`.
