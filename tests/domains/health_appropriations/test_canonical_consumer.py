@@ -14,7 +14,7 @@ from tests.domains.health_appropriations.test_historical_snapshot import (
 )
 
 from archive_govt_nz.domains.health_appropriations import canonical_consumer
-from archive_govt_nz.domains.health_appropriations.budget_canonical_export import (
+from archive_govt_nz.domains.health_appropriations.budget_export import (
     export_budget_appropriations,
 )
 from archive_govt_nz.domains.health_appropriations.canonical_consumer import (

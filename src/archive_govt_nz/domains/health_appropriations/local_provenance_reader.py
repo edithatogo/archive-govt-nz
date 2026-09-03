@@ -49,7 +49,7 @@ from archive_govt_nz.domains.health_appropriations.workbook_common import (
     verified_snapshot,
 )
 
-MAX_PACKAGES = 4
+MAX_PACKAGES = 6
 MAX_MARKER = 2 * 1024 * 1024
 MAX_FILE = 64 * 1024 * 1024
 MAX_PACKAGE = 128 * 1024 * 1024
@@ -129,6 +129,12 @@ def _encoded(value: object) -> bytes:
         allow_nan=False,
         separators=(",", ":"),
     ).encode()
+
+
+def _budget_json(value: object) -> bytes:
+    """Independently reproduce the public exporter's persisted JSON contract."""
+    encoder = json.JSONEncoder(ensure_ascii=False, sort_keys=True, allow_nan=False)
+    return b"".join(chunk.encode() for chunk in encoder.iterencode(value)) + b"\n"
 
 
 def _names(kind: str) -> set[str]:
@@ -344,13 +350,23 @@ def _package(
         else "projection_receipt.json"
     )
     _require(_encoded(_decode(snapshots[receipt_name])) == _encoded(projection.receipt))
-    if value.kind in {"classification", "budget"}:
+    if value.kind == "budget":
+        _require(snapshots[receipt_name] == _budget_json(projection.receipt))
+    if value.kind != "historical":
         accounting = [
             _decode(line) for line in snapshots["lineage_accounting.jsonl"].splitlines()
         ]
         _require(
             _encoded(accounting) == _encoded(projection.receipt["lineage_accounting"])
         )
+        if value.kind == "budget":
+            _require(
+                snapshots["lineage_accounting.jsonl"]
+                == b"".join(
+                    _budget_json(row)
+                    for row in projection.receipt["lineage_accounting"]
+                )
+            )
     profile = {
         "historical": "historical-health-gdp-canonical/v1",
         "classification": CLASSIFICATION_RULE,
@@ -359,15 +375,15 @@ def _package(
     products = []
     for name, table in sorted(projection.tables.items()):
         path = name + ".parquet"
-        dependencies = (
-            tuple(
+        dependencies: tuple[str, ...] = ()
+        if name == "field_lineage":
+            dependencies = tuple(
                 value.marker_sha256 + "/" + target + ".parquet"
                 for target in sorted(projection.tables)
                 if target != "field_lineage"
             )
-            if name == "field_lineage"
-            else ()
-        )
+        elif value.kind == "budget" and name == "appropriation_fact":
+            dependencies = (value.marker_sha256 + "/classification_dimension.parquet",)
         products.append(
             ProductDescriptor(
                 package_sha256=value.marker_sha256,
