@@ -5,7 +5,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
-from decimal import Context, Decimal, Inexact, Rounded, getcontext, localcontext
+from decimal import Context, Decimal, Inexact, Rounded, localcontext
 from pathlib import Path
 from typing import Any
 
@@ -317,7 +317,6 @@ def test_decimal_context_is_isolated_and_exact(tmp_path: Path) -> None:
     facts = pq.read_table(args[3] / "appropriation_fact.parquet")
     assert facts.schema.field("amount").type == pa.decimal128(38, 18)
     assert all(value == Decimal("123.000") for value in facts["amount"].to_pylist())
-    assert getcontext().flags[Inexact] is False
 
 
 @pytest.mark.parametrize("delta", [-1, 0, 1])

@@ -767,3 +767,10 @@ hash parity, paired-build byte identity, public projector/readback equality,
 400 facts, 4,400 canonical lineage records and complete 6,800-entry original
 lineage accounting. Ten retained input files were byte-unchanged. This evidence
 remains local-only and does not alter the rights or publication assessment.
+
+Hosted macOS subsequently exposed an order-dependent test-only assertion: the
+caller-local Decimal context was correctly unchanged, but the test additionally
+assumed an unrelated process-global `Inexact` flag began false. The failed log
+was retained and classified as an assertion failure. Removing only that global
+precondition preserves the exact local flags/traps/precision and Decimal(38,18)
+checks without changing production code or weakening a repository gate.

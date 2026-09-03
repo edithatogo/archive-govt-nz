@@ -760,6 +760,9 @@ repository validation command. External gates block only their affected task.
   byte-identical builds and unchanged raw/original hashes. This is local
   validation only, not rights or publication evidence. [M-03, M-04, M-16,
   M-18; AC-02, AC-04, AC-05, AC-12, AC-16]
+- [x] Remove the exporter Decimal test's process-global flag precondition after
+  hosted macOS exposed test-order dependence; retain exact before/after local
+  context and Decimal value assertions. [M-18; AC-16]
 
 - [x] Keep disconnected source-plot segments styled by their full context and
   disambiguate colliding display labels without merging source identities.
