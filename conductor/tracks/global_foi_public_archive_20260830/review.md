@@ -1,5 +1,31 @@
 # Draft self-review
 
+## Private-network redirect fix — 2026-09-04
+
+The P3.1 completion review exposed an SSRF path in the generic capture client.
+The fix validates both the initial URL and each joined redirect destination
+immediately before transport use. It rejects non-HTTP(S), missing-host,
+userinfo, localhost/local/internal suffixes, and literal non-global IPv4/IPv6
+targets. Relative public redirects remain supported. Tests verify no request is
+made to the rejected destination and receipts disclose no transport detail.
+The exact full gate subsequently exposed one secret-scanner false positive in
+the inert userinfo fixture. Fragmenting the test token retains coverage while
+making its non-secret nature explicit; the focused suite and scanner pass with
+no suppression or allowlist change.
+Codecov then identified the malformed-port exception branch as the sole
+uncovered changed line. A transport-forbidden regression now proves that this
+syntax returns the same redacted `unsafe_url` outcome before any request.
+
+## Phase 3 closeout review — 2026-09-03
+
+Reviewed the P3 task evidence and plan transition. The preservation contract is
+implemented and validated locally: original bytes remain immutable, manifests
+are deterministic, indexes preserve request/object/event/resource and
+attachment relationships, and restore rejects tampering, interruption and
+unsafe members. The recorded full harness and mutation receipts support the
+P3.1–P3.4 completion marks. No external/publication claim was promoted; rights,
+hosted restore and public raw delivery remain separate gates.
+
 ## Conductor closeout review — 2026-09-03
 
 Review result: repository-owned validation is current and passing, but the

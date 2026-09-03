@@ -1,5 +1,40 @@
 # Run log
 
+## 2026-09-04 — secret-scan review correction
+
+- The exact full assurance gate passed all 4,600 tests at 97.51% coverage and
+  every quality, schema, parity, and mutation stage, then correctly stopped at
+  secret scanning because the new inert userinfo URL fixture resembled Basic
+  Auth credentials.
+- Retained the same rejection case but constructed its inert token in fragments.
+  The 16-test capture suite and repository secret scan now pass; no finding was
+  allowlisted or suppressed.
+
+## 2026-09-04 — private-network redirect review fix
+
+- PR #378 review identified that `capture_url` followed an HTTP redirect to a
+  literal private, loopback, link-local, localhost, unsafe-scheme, or
+  credential-bearing destination without validating it first.
+- Seven red cases reproduced the gap, including an initial private-network URL
+  that reached the transport and redirects that ended as unrelated failures.
+- Added one shared pre-request URL guard for initial and redirected URLs. The
+  corrected capture suite passes all 16 tests and proves unsafe redirect targets
+  receive no second request and stable redacted `unsafe_url` evidence.
+
+## 2026-09-03 — Phase 3 closeout
+
+- Reconciled the plan against the merged preservation implementation and its
+  receipts. P3.1–P3.3 are complete: negative-path coverage, CAS/WARC and
+  JSONL/Parquet indexes, deterministic manifests, interruption handling,
+  corruption detection and cold clean-room restoration are implemented.
+- P3.4 is complete on repository-owned evidence: the attachment-package
+  validation receipt records exit 0, 1,621 tests, 96.15% coverage, quality,
+  schema, mutation and supply-chain gates, six killed integrity mutants, and
+  both v2 cold-restore and v1 compatibility checks.
+- This closeout does not assert source rights, public raw publication,
+  anonymous hosted restore, country completeness or donor cutover; those gates
+  remain explicitly pending in later phases.
+
 ## 2026-08-30 — Draft preparation
 
 - Read the invoked conductor-newtrack skill and its common/new-track contracts.

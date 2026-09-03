@@ -3,11 +3,12 @@
 from __future__ import annotations
 
 import asyncio
+import ipaddress
 import tempfile
 from dataclasses import dataclass
 from pathlib import Path
 from time import monotonic
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlsplit
 
 import httpx
 
@@ -83,6 +84,30 @@ class CaptureResult:
     attempt_receipts: tuple[CaptureAttempt, ...] = ()
 
 
+def _safe_capture_url(url: str) -> bool:
+    """Reject URL forms that can directly address non-public network targets."""
+    try:
+        parsed = urlsplit(url)
+        host = parsed.hostname or ""
+        _ = parsed.port
+    except ValueError:
+        return False
+    if (
+        parsed.scheme not in {"http", "https"}
+        or not host
+        or parsed.username is not None
+        or parsed.password is not None
+        or host == "localhost"
+        or host.endswith((".local", ".internal", ".localhost"))
+    ):
+        return False
+    try:
+        address = ipaddress.ip_address(host)
+    except ValueError:
+        return True
+    return address.is_global
+
+
 async def capture_url(  # noqa: PLR0915, PLR0912
     client: httpx.AsyncClient,
     url: str,
@@ -95,6 +120,11 @@ async def capture_url(  # noqa: PLR0915, PLR0912
     current_url = url
     started = monotonic()
     attempt_receipts: list[CaptureAttempt] = []
+    if not _safe_capture_url(current_url):
+        attempt_receipts.append(
+            CaptureAttempt(redact_url(current_url), None, "unsafe_url", 0.0)
+        )
+        raise CaptureError("unsafe_url", tuple(attempt_receipts))
     max_duration = config.max_duration_seconds or config.timeout_seconds
     for redirect_count in range(config.max_redirects + 1):
         if monotonic() - started >= max_duration:
@@ -126,7 +156,18 @@ async def capture_url(  # noqa: PLR0915, PLR0912
                             monotonic() - started,
                         )
                     )
-                    current_url = urljoin(current_url, location)
+                    destination = urljoin(current_url, location)
+                    if not _safe_capture_url(destination):
+                        attempt_receipts.append(
+                            CaptureAttempt(
+                                redact_url(destination),
+                                None,
+                                "unsafe_url",
+                                monotonic() - started,
+                            )
+                        )
+                        raise CaptureError("unsafe_url", tuple(attempt_receipts))
+                    current_url = destination
                     continue
                 if response.status_code == 206:
                     attempt_receipts.append(
