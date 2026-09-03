@@ -928,6 +928,49 @@ def test_read_state_bounds(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> N
         P.read_state(tmp_path)
 
 
+def test_seal_rejects_auxiliary_reconciliation_inside_state(tmp_path: Path) -> None:
+    """Attempt evidence cannot become an unbound continuation-package member."""
+    ref, meta, raw = fixture(tmp_path / "in")
+    output = tmp_path / "state"
+    quarantine = tmp_path / "q"
+    req = request(ref)
+    P.restore(
+        req,
+        {"output": output, "quarantine": quarantine},
+        client(meta, raw),
+        "synthetic",
+        NOW,
+    )
+    files = P.read_state(output)
+    (output / "receipts/harvest.json").write_bytes(v3_harvest(files))
+    (output / "receipts/reconciliation.json").write_bytes(b"{}\n")
+    with pytest.raises(P.v.VerificationError, match="state_path"):
+        P.seal(output, req["context"], quarantine)
+    assert not (output / P.SEAL).exists()
+
+
+@given(
+    st.text(
+        alphabet=st.characters(whitelist_categories=("Ll", "Nd")),
+        min_size=1,
+        max_size=20,
+    )
+)
+@settings(suppress_health_check=[HealthCheck.function_scoped_fixture])
+def test_state_rejects_arbitrary_unrecognized_receipts(
+    tmp_path: Path, name: str
+) -> None:
+    """No auxiliary receipt filename may bypass the canonical-state allowlist."""
+    _ref, _meta, raw = fixture(tmp_path / "in")
+    files = P.unpack(raw)
+    candidate = f"receipts/{name}.json"
+    if P.allowed_name(candidate):
+        return
+    files[candidate] = b"{}\n"
+    with pytest.raises(P.v.VerificationError, match="state_path"):
+        P.state_roots(files)
+
+
 def test_lineage_tampering_and_duplicate_seal(tmp_path: Path) -> None:
     """Origin hashes, authority and context remain checked at sealing and restore."""
     ref, meta, raw = fixture(tmp_path / "in")

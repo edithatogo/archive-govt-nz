@@ -1,5 +1,51 @@
 # Self-Review
 
+## Preservation acceptance reconciliation — 2026-09-04 UTC
+
+- Reconciled five stale plan boxes against retained evidence without promoting
+  rights, semantic, publication, or historical-coverage claims. The workbook
+  fixture umbrella is supported by completed member-level, formula, hidden
+  content, macro, external-link, unsupported-part, and bounded-scan contracts.
+- The source census contains 141 unique records with exactly one disposition:
+  73 captured resources and 68 reason-coded out-of-scope records. The
+  independent preservation audit rehashed all 73 CAS objects and their 73 WARC
+  payloads with no missing or mismatched object.
+- The retained checkpoint also records donor reconstruction, controlled
+  interruption/resume and restriction paths, focused/property/mutation checks,
+  and an exit-zero full harness. These marks describe the observed bounded
+  source set only; new editions, rights decisions, and publication remain open.
+- The earlier `health-survey-assessment.md` already completed the plan's
+  non-blocking evaluation task: it records the analytical question, temporal
+  and geography boundaries, rights observations, and the still-unmet export
+  and dictionary gate. Marking that evaluation complete does not authorize or
+  claim survey acquisition or integration.
+
+## Optional graph/vector evaluation — 2026-09-04 UTC
+
+The decision is consistent with C-01/C-02 and W-07. Existing repository search
+code demonstrates a generic deterministic projection, but the health track has
+no measured health-specific retrieval use case and no pinned external model,
+quality threshold, or drift receipt. Deferral avoids making optional derived
+state authoritative and introduces no dependency, payload, publication, or
+rights change. Reopening requires a scoped query set and reproducibility
+contract; no code finding is created by this evaluation.
+
+## Phase 1 disposition reconciliation — 2026-09-04 UTC
+
+The existing final census and donor structural evidence satisfy the bounded
+accounting task: 141 unique source records have one explicit terminal
+disposition and no unresolved/retryable state; all donor binaries and modeled
+data areas have inventory evidence. The review preserves the documented scope
+gap: this does not assert all historical annual Budget/forecast editions were
+  enumerated or that every captured source is rights-cleared for republication.
+
+## Bronze tracked-byte boundary — 2026-09-04 UTC
+
+The hash comparison covers every tracked regular file, not only extension-based
+candidates. None matches the 73 captured source-object hashes and none exceeds
+10 MiB. This supports the repository storage boundary without claiming that
+external CAS/WARC custody, rights eligibility, or publication is complete.
+
 ## Forecast explicit preflight — 2026-08-31 UTC
 
 Independent source/test review found no actionable issue. The explicit dry

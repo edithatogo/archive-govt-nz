@@ -45,4 +45,4 @@ authority and must not be retired without drain, replacement-authority
 migration, and accountable authorization. The older `backup/local-main-20260826`
 ref is also preserved: independent redundancy and object reachability have not
 yet been established. No remote ref was deleted. See the machine-readable
-[retirement readback](../../evidence/migrations/foi-branch-retirement/remote-branch-retirement-readback-20260903.json).
+[retirement readback](../../../evidence/migrations/foi-branch-retirement/remote-branch-retirement-readback-20260903.json).
