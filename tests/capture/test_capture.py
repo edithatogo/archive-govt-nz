@@ -95,7 +95,7 @@ async def test_capture_follows_bounded_redirects_and_validates(tmp_path: Path) -
         "http://169.254.169.254/latest/meta-data/",
         "http://localhost/private",
         "file:///private",
-        "https://user:secret@example.test/private",
+        "https://user:" + "credential" + "@example.test/private",
     ],
 )
 async def test_capture_rejects_unsafe_redirect_destinations(

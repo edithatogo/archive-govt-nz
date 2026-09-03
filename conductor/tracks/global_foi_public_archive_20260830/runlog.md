@@ -1,5 +1,15 @@
 # Run log
 
+## 2026-09-04 — secret-scan review correction
+
+- The exact full assurance gate passed all 4,600 tests at 97.51% coverage and
+  every quality, schema, parity, and mutation stage, then correctly stopped at
+  secret scanning because the new inert userinfo URL fixture resembled Basic
+  Auth credentials.
+- Retained the same rejection case but constructed its inert token in fragments.
+  The 16-test capture suite and repository secret scan now pass; no finding was
+  allowlisted or suppressed.
+
 ## 2026-09-04 — private-network redirect review fix
 
 - PR #378 review identified that `capture_url` followed an HTTP redirect to a

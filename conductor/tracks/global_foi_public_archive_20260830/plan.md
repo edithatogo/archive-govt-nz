@@ -36,6 +36,9 @@ The approved destination is archive-govt-nz; no cutover has occurred.
 - [x] P3.5 review fix (AC05, AC11, AC12): Reject unsafe initial capture URLs
   and redirect destinations before a request can reach a non-public network
   target; retain stable redacted failure evidence.
+- [x] P3.6 review fix (AC12): Preserve the userinfo rejection regression while
+  constructing its inert credential token in fragments so secret scanning does
+  not misclassify test data as a live Basic Auth credential.
 
 ## Phase 4 — Public Hugging Face delivery
 

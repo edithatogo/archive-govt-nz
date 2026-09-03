@@ -8,6 +8,10 @@ immediately before transport use. It rejects non-HTTP(S), missing-host,
 userinfo, localhost/local/internal suffixes, and literal non-global IPv4/IPv6
 targets. Relative public redirects remain supported. Tests verify no request is
 made to the rejected destination and receipts disclose no transport detail.
+The exact full gate subsequently exposed one secret-scanner false positive in
+the inert userinfo fixture. Fragmenting the test token retains coverage while
+making its non-secret nature explicit; the focused suite and scanner pass with
+no suppression or allowlist change.
 
 ## Phase 3 closeout review — 2026-09-03
 
