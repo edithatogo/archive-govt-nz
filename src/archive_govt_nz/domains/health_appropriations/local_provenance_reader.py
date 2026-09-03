@@ -375,9 +375,7 @@ def _package(
                 if target != "field_lineage"
             )
         elif value.kind == "budget" and name == "appropriation_fact":
-            dependencies = (
-                value.marker_sha256 + "/classification_dimension.parquet",
-            )
+            dependencies = (value.marker_sha256 + "/classification_dimension.parquet",)
         products.append(
             ProductDescriptor(
                 package_sha256=value.marker_sha256,

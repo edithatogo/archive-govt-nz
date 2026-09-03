@@ -74,7 +74,9 @@ def test_verified_inventory_keeps_pure_claims_separate(
     assert result["status"] == "verified_scoped_snapshots"
     assert result["inventory"]["input_fixity"] == "not_performed"
     assert result["inventory"]["rights_state"] == "not_evaluated"
-    assert len(result["inventory"]["products"]) == (2 if kind == "classification" else 3)
+    assert len(result["inventory"]["products"]) == (
+        2 if kind == "classification" else 3
+    )
     assert result == read_local_provenance((value,))
     assert before == {p: p.read_bytes() for p in before}
 
