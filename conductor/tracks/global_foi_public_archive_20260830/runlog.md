@@ -268,3 +268,16 @@ PR #272 hosted Ubuntu passed 2,048 tests, 96.84 percent coverage and mutation st
 - Integrated main through 25f9fb5 without conflicts, preserving upstream health and legislation work. Generic Conductor validation found newly imported link labels, `complete` versus registry `completed`, and calendar-only timestamps. Canonicalized labels/status without changing acceptance; retained original dates and used the first tracked commit time as the documented controller timestamp basis. Five output-isolation tests passed with two workers; Ruff/format/type checks passed.
 
 - 2026-09-03: Ran the required `./scripts/validate.sh` on Python 3.14.6. Conductor validation, formatting, Ruff, basedpyright, 4,559 tests (97.50% coverage), schemas, parity, all configured mutation suites, hygiene, CAS benchmark (540.76 MB/s), dependency audit, licence inventory, secret scan, and 111-component SBOM all passed. This closes repository-owned P1.6 validation evidence only; it does not establish hosted acquisition, public raw publication, rights clearance, or donor cutover.
+
+## 2026-09-03 — Catalogue phase acceptance validator
+
+Added a deterministic fail-closed validator and CLI for Phase 2 accounting.
+Forty-nine focused catalogue/discovery/phase tests pass, plus formatting, lint
+and strict typing. The current reviewed catalogue is structurally valid at 251
+entities, 30 sources and 42 jurisdictions, but returns exit 2 and `blocked`:
+all 251 entities still require broader discovery, 223 have no named source and
+zero countries are verified complete. This advances P2.4 validation machinery;
+it does not satisfy P2.2/P2.3 or manufacture worldwide completeness.
+The exact branch then passed the full local harness: 4,655 tests, 97.50%
+coverage, all schema/parity/mutation and supply-chain gates, and a validated
+111-component SBOM. Hosted exact-head checks remain separate.

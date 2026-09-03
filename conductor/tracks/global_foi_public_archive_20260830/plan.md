@@ -25,7 +25,11 @@ The approved destination is archive-govt-nz; no cutover has occurred.
 - [x] P2.1 (AC04, AC11): Pin the country/territory universe and write failing coverage/uniqueness/seed-parity/rights-export tests. Implementation: `c1bf57b`; 23 focused tests passed.
 - [~] P2.2 (AC04): Implement one registry and importer reconciling all 23 runtime instances, 29 sites and 42 target regimes; represent every country with reviewed sources or an explicit evidence-backed disposition.
 - [~] P2.3 (AC04, AC09): Generate the public source index, machine coverage ledger and human report; keep unknown denominators null and states distinct.
-- [ ] P2.4 (AC12): Automated review, schema/property tests and full phase validation.
+- [~] P2.4 (AC12): Automated review, schema/property tests and full phase validation.
+  The fail-closed phase validator now proves internal entity/source/jurisdiction
+  accounting and reports current acceptance blockers separately. Full phase
+  acceptance remains open while broader discovery and country completion are
+  unverified.
 
 ## Phase 3 — Metadata indexes and immutable raw storage
 
