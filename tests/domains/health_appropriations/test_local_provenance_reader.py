@@ -29,6 +29,7 @@ from archive_govt_nz.domains.health_appropriations.historical_canonical_export i
 from archive_govt_nz.domains.health_appropriations.local_provenance_reader import (
     CanonicalPackageInput,
     read_local_provenance,
+    read_verified_canonical_tables,
 )
 
 
@@ -84,6 +85,21 @@ def test_verified_inventory_keeps_pure_claims_separate(
     )
     assert result == read_local_provenance((value,))
     assert before == {p: p.read_bytes() for p in before}
+
+
+def test_verified_table_reader_normalizes_invalid_package_error(tmp_path: Path) -> None:
+    """The direct consumer boundary must not leak parser or filesystem detail."""
+    invalid = CanonicalPackageInput(
+        kind="budget",
+        root=tmp_path / "missing-canonical",
+        marker_sha256="a" * 64,
+        original=tmp_path / "missing-source.xlsx",
+        raw_root=tmp_path / "missing-raw",
+        raw_manifest_sha256="b" * 64,
+    )
+
+    with pytest.raises(ValueError, match=r"^local_provenance_reader_invalid$"):
+        read_verified_canonical_tables(invalid)
 
 
 @pytest.mark.parametrize(
