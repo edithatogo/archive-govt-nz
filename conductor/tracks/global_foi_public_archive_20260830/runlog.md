@@ -1,5 +1,16 @@
 # Run log
 
+## 2026-09-04 — private-network redirect review fix
+
+- PR #378 review identified that `capture_url` followed an HTTP redirect to a
+  literal private, loopback, link-local, localhost, unsafe-scheme, or
+  credential-bearing destination without validating it first.
+- Seven red cases reproduced the gap, including an initial private-network URL
+  that reached the transport and redirects that ended as unrelated failures.
+- Added one shared pre-request URL guard for initial and redirected URLs. The
+  corrected capture suite passes all 16 tests and proves unsafe redirect targets
+  receive no second request and stable redacted `unsafe_url` evidence.
+
 ## 2026-09-03 — Phase 3 closeout
 
 - Reconciled the plan against the merged preservation implementation and its

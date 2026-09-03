@@ -87,6 +87,63 @@ async def test_capture_follows_bounded_redirects_and_validates(tmp_path: Path) -
 
 
 @pytest.mark.anyio
+@pytest.mark.parametrize(
+    "location",
+    [
+        "http://127.0.0.1/private",
+        "http://[::1]/private",
+        "http://169.254.169.254/latest/meta-data/",
+        "http://localhost/private",
+        "file:///private",
+        "https://user:secret@example.test/private",
+    ],
+)
+async def test_capture_rejects_unsafe_redirect_destinations(
+    tmp_path: Path, location: str
+) -> None:
+    requests: list[str] = []
+
+    async def handler(request: httpx.Request) -> httpx.Response:
+        requests.append(str(request.url))
+        return httpx.Response(302, headers={"location": location})
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+        with pytest.raises(CaptureError) as raised:
+            await capture_url(
+                client,
+                "https://example.test/start",
+                ContentAddressedStore(tmp_path),
+            )
+
+    assert raised.value.error_class == "unsafe_url"
+    assert requests == ["https://example.test/start"]
+    assert raised.value.attempts[-1].outcome == "unsafe_url"
+
+
+@pytest.mark.anyio
+async def test_capture_rejects_unsafe_initial_url_before_request(
+    tmp_path: Path,
+) -> None:
+    requested = False
+
+    async def handler(request: httpx.Request) -> httpx.Response:
+        nonlocal requested
+        requested = True
+        return httpx.Response(200, content=b"must not be requested")
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+        with pytest.raises(CaptureError) as raised:
+            await capture_url(
+                client,
+                "http://10.0.0.1/private",
+                ContentAddressedStore(tmp_path),
+            )
+
+    assert raised.value.error_class == "unsafe_url"
+    assert requested is False
+
+
+@pytest.mark.anyio
 async def test_capture_rejects_partial_content_ranges(tmp_path: Path) -> None:
     """HTTP 206 responses are explicit unsupported range outcomes."""
 

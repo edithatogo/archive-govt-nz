@@ -2,6 +2,16 @@
 
 This is read-only diagnosis, not implementation or publication success.
 
+## Private-network redirect correction — 2026-09-04
+
+Seven red regression cases demonstrated that capture URL safety was not
+enforced before initial or redirected transport. After the correction, all 16
+capture tests pass: unsafe initial destinations make zero requests, and unsafe
+redirect destinations make no second request. The stable outcome is
+`unsafe_url`; no raw exception, credential, payload, publication, or external
+state is retained. This repairs repository preservation safety only and does
+not alter any source-rights or publication gate.
+
 ## Phase 3 closeout — 2026-09-03
 
 The repository-owned preservation phase is complete. Receipt

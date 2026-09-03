@@ -33,6 +33,9 @@ The approved destination is archive-govt-nz; no cutover has occurred.
 - [x] P3.2 (AC05, AC06): Integrate pinned capture adapters, CAS/WARC packaging, JSONL/Parquet object metadata and complete provenance; reuse existing Bronze/storage primitives.
 - [x] P3.3 (AC05, AC06, AC08): Implement durable checkpoint/package manifests and clean-room reconstruction; prove deduplication, interruption, temporary-artifact loss and corruption handling using bounded shards and stable IDs.
 - [x] P3.4 (AC12): Automated review, integrity mutation tests, privacy checks and full phase validation.
+- [x] P3.5 review fix (AC05, AC11, AC12): Reject unsafe initial capture URLs
+  and redirect destinations before a request can reach a non-public network
+  target; retain stable redacted failure evidence.
 
 ## Phase 4 — Public Hugging Face delivery
 

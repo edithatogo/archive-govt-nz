@@ -1,5 +1,14 @@
 # Draft self-review
 
+## Private-network redirect fix — 2026-09-04
+
+The P3.1 completion review exposed an SSRF path in the generic capture client.
+The fix validates both the initial URL and each joined redirect destination
+immediately before transport use. It rejects non-HTTP(S), missing-host,
+userinfo, localhost/local/internal suffixes, and literal non-global IPv4/IPv6
+targets. Relative public redirects remain supported. Tests verify no request is
+made to the rejected destination and receipts disclose no transport detail.
+
 ## Phase 3 closeout review — 2026-09-03
 
 Reviewed the P3 task evidence and plan transition. The preservation contract is
