@@ -98,6 +98,25 @@ def test_registry_is_bound_to_coverage_and_publication_authority() -> None:
         "status": "published_verified",
         "remote_write_authorized": True,
         "authorization_date": "2026-09-03",
+        "authorization_decision_id": (
+            "archive-govt-nz-hf-publication-20260903-selected-552-v1"
+        ),
+        "authorization_source": (
+            "accountable maintainer authorization in the canonical programme "
+            "thread on 2026-09-03"
+        ),
+        "candidate_manifest_sha256": (
+            "fb3caa39ffd3da9204f01ebd764237d276460dc61493eb809b7e207d17813646"
+        ),
+        "approved_package_sha256": (
+            "2e4b75333e947d812842147c939117fc666799e4497b80f125104f721ef68e3c"
+        ),
+        "permitted_files": [
+            "durable-state/v1/2e4b75333e947d812842147c939117fc666799e4497b80f125104f721ef68e3c/canonical-state.zip",
+            "durable-state/v1/2e4b75333e947d812842147c939117fc666799e4497b80f125104f721ef68e3c/metadata.json",
+            "README.md",
+            "RIGHTS.md",
+        ],
         "prompt13_operational_proof": False,
         "prompt13_receipt_sha256": _sha256(prompt13),
         "payload_rights": "approved_public_selected_552",
@@ -135,6 +154,35 @@ def test_registry_rejects_withdrawn_authority_and_aggregate_count() -> None:
     registry["coverage"]["published_counts_aggregate"] = 6609
     errors = list(Draft202012Validator(_load(SCHEMA_PATH)).iter_errors(registry))
     assert len(errors) == 2
+
+
+@pytest.mark.parametrize(
+    "slug",
+    [
+        "edithatogo/corpus-legislation-nz-historical",
+        "edithatogo/nz-legislation-corpus",
+    ],
+)
+def test_registry_rejects_broadened_rights_approval(slug: str) -> None:
+    """The selected-state approval cannot be assigned to preserved identities."""
+    registry = copy.deepcopy(_load(REGISTRY_PATH))
+    identity = next(item for item in registry["identities"] if item["slug"] == slug)
+    identity["rights_status"] = "approved_public_selected_552"
+    with pytest.raises(ValidationError):
+        Draft202012Validator(_load(SCHEMA_PATH)).validate(registry)
+
+
+def test_registry_rejects_canonical_rights_approval_downgrade() -> None:
+    """Published canonical state cannot silently lose its bound approval."""
+    registry = copy.deepcopy(_load(REGISTRY_PATH))
+    identity = next(
+        item
+        for item in registry["identities"]
+        if item["slug"] == "edithatogo/corpus-legislation-nz"
+    )
+    identity["rights_status"] = "source_specific_review_required"
+    with pytest.raises(ValidationError):
+        Draft202012Validator(_load(SCHEMA_PATH)).validate(registry)
 
 
 def test_registry_revisions_match_superseding_and_historical_observations() -> None:
@@ -178,6 +226,17 @@ def test_public_readback_binds_all_published_bytes_and_access() -> None:
         "private": False,
         "gated": False,
     }
+    authority = receipt["authority"]
+    assert authority["decision_id"] == (
+        "archive-govt-nz-hf-publication-20260903-selected-552-v1"
+    )
+    assert authority["candidate_manifest_sha256"] == _sha256(
+        EVIDENCE_ROOT / "huggingface-publication/publication-candidate-manifest.json"
+    )
+    assert authority["approved_package_sha256"] == (
+        "2e4b75333e947d812842147c939117fc666799e4497b80f125104f721ef68e3c"
+    )
+    assert authority["payload_bytes_permitted"] is True
     files = {
         item["path"]: (item["size_bytes"], item["sha256"])
         for item in receipt["anonymous_exact_revision_readback"]["files"]
@@ -195,6 +254,11 @@ def test_public_readback_binds_all_published_bytes_and_access() -> None:
         71776346,
         "2e4b75333e947d812842147c939117fc666799e4497b80f125104f721ef68e3c",
     )
+    permitted = {
+        item["path"]: (item["size_bytes"], item["sha256"])
+        for item in authority["permitted_files"]
+    }
+    assert permitted == files
     assert (
         "not a copy of canonical-state.zip"
         in receipt["github_relationship"]["relationship"]

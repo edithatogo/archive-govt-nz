@@ -41,3 +41,9 @@ This supersedes the earlier publication-blocked claim without deleting it. Promp
 ## Superseding validation
 
 Focused Prompt 15 and related publication/reconciliation suite: 34 passed. The first full harness run retained one unrelated Hypothesis deadline flake after 4,559 passes; its exact test then passed unchanged. The second full harness passed 4,560 tests with 97.50% branch-aware coverage, 48 schemas and 38 representative documents, parity 9/9, every configured mutation lane, dependency/security audit, licence inventory, secret scan, and SBOM validation.
+
+## Review-fix authority binding
+
+Decision `archive-govt-nz-hf-publication-20260903-selected-552-v1` records the accountable maintainer's 2026-09-03 authorization in the canonical programme thread. The receipt binds candidate manifest SHA-256 `fb3caa39ffd3da9204f01ebd764237d276460dc61493eb809b7e207d17813646`, state manifest SHA-256 `877ba501a25570a29c1aada7979562d8c62c7f043865125cf402310eabc09544`, package SHA-256 `2e4b75333e947d812842147c939117fc666799e4497b80f125104f721ef68e3c`, and the exact permitted package, metadata, card, and rights files. The v2 schema restricts `approved_public_selected_552` to the canonical slug; both preserved identities must retain `source_specific_review_required`.
+
+The review-fix full harness passed 4,579 tests at 97.52% branch-aware coverage, 48 schemas/38 representative documents, parity 9/9, all mutation lanes, dependency audit, licence inventory, secret scan, and SBOM validation. The superseding publication receipt SHA-256 is `38160c4683112d951351e20d68fe34198dcab797eb371d6cf6e6d91160ba9fed`.
