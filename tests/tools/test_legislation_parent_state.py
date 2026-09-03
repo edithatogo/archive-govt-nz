@@ -1329,6 +1329,30 @@ def test_seal_rechecks_receipt_execution_after_state_validation(
         P.seal(output, req["context"], q)
 
 
+def test_persisted_checkpoint_byte_root_seals_end_to_end(tmp_path: Path) -> None:
+    """The hosted checkpoint-root contract produces a sealable continuation."""
+    ref, meta, raw = fixture(tmp_path / "in")
+    output = tmp_path / "state"
+    quarantine = tmp_path / "q"
+    req = request(ref)
+    P.restore(
+        req,
+        {"output": output, "quarantine": quarantine},
+        client(meta, raw),
+        "synthetic",
+        NOW,
+    )
+    restored = P.read_state(output)
+    receipt = P.v.load(v3_harvest(restored))
+    assert receipt["output_checkpoint_root"] == P.v.sha(
+        (output / "checkpoint.json").read_bytes()
+    )
+    (output / "receipts/harvest.json").write_bytes(P.M.encoded(receipt))
+    complete = P.seal(output, req["context"], quarantine)
+    assert complete["status"] == "complete"
+    assert (output / P.SEAL).is_file()
+
+
 def test_sealed_parent_binds_receipt_schema_and_strength(tmp_path: Path) -> None:
     """A sealed parent cannot relabel or weaken its harvest receipt contract."""
     ref, meta, raw = fixture(tmp_path / "in")
