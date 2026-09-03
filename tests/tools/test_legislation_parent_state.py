@@ -1292,8 +1292,22 @@ def test_source_receipt_and_current_execution(tmp_path: Path) -> None:
     receipt = P.v.load(v3_harvest(files))
     receipt["run_identity"] = "another-execution"
     (output / "receipts/harvest.json").write_bytes(P.M.encoded(receipt))
-    with pytest.raises(P.v.VerificationError, match="receipt_run"):
+    with pytest.raises(P.v.VerificationError, match="seal_execution"):
         P.seal(output, req["context"], q)
+
+
+def test_state_validator_can_bind_authenticated_execution(tmp_path: Path) -> None:
+    """An outer archive consumer may bind v3 receipt identity before sealing."""
+    _ref, _meta, raw = fixture(tmp_path / "in")
+    files = P.unpack(raw)
+    receipt = P.v.load(v3_harvest(files))
+    receipt["run_identity"] = "hosted-execution-101"
+    files["receipts/harvest.json"] = P.M.encoded(receipt)
+
+    state = P.M.target_state(files, "hosted-execution-101")
+    assert state["manifest"]["run_id"] != receipt["run_identity"]
+    with pytest.raises(P.v.VerificationError, match="receipt_execution"):
+        P.M.target_state(files, "different-execution")
 
 
 def test_seal_rechecks_receipt_execution_after_state_validation(
@@ -1335,6 +1349,8 @@ def test_persisted_checkpoint_byte_root_seals_end_to_end(tmp_path: Path) -> None
     output = tmp_path / "state"
     quarantine = tmp_path / "q"
     req = request(ref)
+    req["context"]["execution_id"] = "hosted-execution-101"
+    req["authority"]["scope"]["execution_id"] = "hosted-execution-101"
     P.restore(
         req,
         {"output": output, "quarantine": quarantine},
@@ -1344,6 +1360,9 @@ def test_persisted_checkpoint_byte_root_seals_end_to_end(tmp_path: Path) -> None
     )
     restored = P.read_state(output)
     receipt = P.v.load(v3_harvest(restored))
+    receipt["run_identity"] = req["context"]["execution_id"]
+    manifest = P.v.load(restored["manifest.json"])
+    assert receipt["run_identity"] != manifest["run_id"]
     assert receipt["output_checkpoint_root"] == P.v.sha(
         (output / "checkpoint.json").read_bytes()
     )
