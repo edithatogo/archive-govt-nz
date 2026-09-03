@@ -1,6 +1,7 @@
 # Prompt 19 external-action receipt addendum
 
-Observed at `2026-09-03T09:16:30Z` from the GitHub API. This dated addendum
+API metadata was observed at `2026-09-03T09:16:30Z`; the receipt was finalized
+after public asset readback at `2026-09-03T09:24:01Z`. This dated addendum
 supersedes only the external-action and publication-status fields in the earlier
 verification receipt. The earlier bundle verification and failed-attempt
 evidence remain unchanged.

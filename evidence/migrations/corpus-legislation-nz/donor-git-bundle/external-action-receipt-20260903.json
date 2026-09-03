@@ -1,6 +1,7 @@
 {
   "receipt_id": "corpus-legislation-nz-prompt19-external-actions-20260903",
-  "observed_at": "2026-09-03T09:16:30Z",
+  "observed_at": "2026-09-03T09:24:01Z",
+  "api_metadata_observed_at": "2026-09-03T09:16:30Z",
   "supersedes_claims_in": {
     "path": "evidence/migrations/corpus-legislation-nz/donor-git-bundle/verification-receipt.json",
     "sha256": "4ca84f51a56a7e697b4a6d337e8acd4aa1677940a2f591208f56f008487157b3",
