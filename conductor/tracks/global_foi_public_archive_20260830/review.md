@@ -1,5 +1,15 @@
 # Draft self-review
 
+## Phase 3 closeout review — 2026-09-03
+
+Reviewed the P3 task evidence and plan transition. The preservation contract is
+implemented and validated locally: original bytes remain immutable, manifests
+are deterministic, indexes preserve request/object/event/resource and
+attachment relationships, and restore rejects tampering, interruption and
+unsafe members. The recorded full harness and mutation receipts support the
+P3.1–P3.4 completion marks. No external/publication claim was promoted; rights,
+hosted restore and public raw delivery remain separate gates.
+
 - Scope: covers source catalogue, original metadata and index, raw objects,
   public HF verification, global country discovery and the two observed failures.
 - Ownership: unresolved DEC-FOI-001 is explicit; old separation rule is preserved.
