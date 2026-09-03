@@ -1,5 +1,15 @@
 # Self-Review
 
+## Eight-recordset schema reconciliation — 2026-09-04 UTC
+
+The immutable Arrow registry and independent JSON row-shape schemas cover all
+eight required recordsets and preserve version constants, exact decimal-string
+bounds, required IDs, nullable/null-reason fields, units, vintages, valid and
+recorded times, rights state, and lineage. Parquet round-trip tests preserve
+schema metadata and nested field shapes. The current combined schema suites
+pass 85 tests. This closes the stale fixture task only; adapter semantics and
+canonical promotion remain separately open.
+
 ## Preservation acceptance reconciliation — 2026-09-04 UTC
 
 - Reconciled five stale plan boxes against retained evidence without promoting

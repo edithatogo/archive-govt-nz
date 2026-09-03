@@ -226,7 +226,7 @@ repository validation command. External gates block only their affected task.
   Functional commit `d67bd41`; 34 focused tests, 30 cold mutant kills and a
   full local harness pass with 2,424 tests. Hosted delivery remains separate.
   [M-05, M-06, M-18; AC-05, AC-16]
-- [ ] Add failing JSON Schema/Arrow/Parquet fixtures for the eight required
+- [x] Add failing JSON Schema/Arrow/Parquet fixtures for the eight required
   `health_appropriations` record sets, versioning, stable IDs, fixed-precision
   money, null reasons, units, vintages, bitemporal fields, rights and lineage.
   [M-05, M-06, M-18; AC-05, AC-16]
