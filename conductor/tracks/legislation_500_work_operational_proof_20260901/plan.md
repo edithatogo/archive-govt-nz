@@ -21,4 +21,5 @@
 - [ ] Dispatch and independently verify the target-owned 500-work run.
 - [ ] Prove continuation and durable recovery; complete hosted closeout.
 - [x] Reproduce and remediate the failed run's Work-level document identity/version semantics without weakening cross-Work or Manifestation uniqueness.
-- [ ] Review and merge the remediation, then stop at an explicit hosted retry gate.
+- [x] Review and merge the remediation, then stop at an explicit hosted retry gate
+  (PR #379; merge `cbad1dd9`).

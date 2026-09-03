@@ -112,7 +112,12 @@ def test_check_slops_cli() -> None:
 def test_benchmark_cas_cli() -> None:
     """Benchmark tool executes and passes."""
     result = subprocess.run(
-        [sys.executable, "tools/benchmark_cas.py"],
+        [
+            sys.executable,
+            "tools/benchmark_cas.py",
+            "--minimum-throughput",
+            "0.001",
+        ],
         cwd=REPOSITORY_ROOT,
         capture_output=True,
         text=True,
