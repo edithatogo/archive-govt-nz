@@ -52,3 +52,9 @@
 - 2026-09-03: A focused static check required `runpy.run_path`'s path argument
   to be an explicit string. Converting the repository `Path` to `str` resolved
   the type error without changing scanner behavior.
+- 2026-09-04: live code-scanning API readback confirmed both previously high
+  URL-sanitization alerts (`1`, `2`) are `fixed` on `main`; PR #361 merged as
+  `382a5061d1a0bc7b1b5ee58aa3083b0c6ecba1ad` with every required hosted check
+  successful. Fresh local `actionlint .github/workflows/*.yml` returned no
+  findings. Combined with ruleset receipt `22180861`, this supplies the dated
+  superseding evidence requested by PR #373's remaining review thread.

@@ -1736,3 +1736,44 @@ coverage, 48 schemas/38 representative documents, 9/9 parity and all supply-
 chain gates including 111 SBOM components. Native log SHA-256:
 `059c674bb9a2d4a48e7fce52dc29c031e35ed35f41277c7975218b9c83e46661`.
 Fresh exact-head hosted checks remain separate.
+
+At head `625106a997374d8b701f12c6447947d97209b3d9`, Windows
+Assurance job `100759706949` failed seven tests after 4,624 passed. The full
+retained log SHA-256 is
+`bacf43914a57a196b2d8bfb48593a55469b4a869f43fb1a22ed2c5b3ae32380f`.
+The fallback reserved the directory correctly, but the writer assumed one
+`os.write` call consumed every byte; Windows may report a short write. Three
+fault tests also assumed POSIX descriptor availability. This was deterministic
+platform behavior, not timeout or infrastructure failure.
+
+The writer now advances a bounded memoryview until the full payload is written
+and rejects zero or negative progress. A forced-short-write test proves exact
+completion. Descriptor-only reservation/cleanup tests run only where that
+capability exists; all fallback identity, reparse and redirection tests remain
+cross-platform, and fallback extra-entry injection uses the owned path. Focused
+coverage passed 37 tests/201 statements/36 branches at 100%; all 88 cold mutants
+were killed with zero other outcomes or cache hits. Mutation log SHA-256:
+`eebd18f1364d964cc84480e96db34d39af34031e7f6855870bf913503d22e0ea`;
+report SHA-256:
+`3c32673fe943a211d7064888c93b0ee4c9c6c366ec6dd0a24613b638bcdc874e`.
+The native harness exited zero with 4,632 tests, nine warnings, 97.55% coverage,
+48 schemas/38 documents, 9/9 parity and 111 SBOM components. Native log SHA-256:
+`a71d67cdb9269f60e72c0a14acbf5cc943409524435002a316a336897e8a68a5`.
+No gate, original, HF, rights or publication state changed.
+
+The next Windows job (`100764555836`) failed six exporter tests after 4,627
+passes and two capability skips; retained log SHA-256:
+`087faf1c600596c69392862bd5a0a1c2aa9ce49ff4c6aff958008d9b4a478b2a`.
+The fallback CRT descriptors also required explicit binary mode. Read and write
+opens now compose `O_BINARY` when available; a capability-safe regression proves
+both directions. Focused coverage passed 38 tests at 100%, 88/88 cold mutants
+were killed, and native passed 4,636 tests at 97.55% with all downstream gates.
+Native log SHA-256: `ff0eee95f8751ccea42fff5cb23a1df80cbf31177fd65840eb70166a86e08f8b`.
+
+At head `1359fe0`, every Windows production persistence test passed; only the
+synthetic binary-flag test failed because it replaced the platform's real flag
+before calling the real open. The full job log SHA-256 is
+`0f3efcf76083199c26a3c8f0fea91cf775d3e1440a56d497bc6fddf983d77fda`.
+The test now preserves a native flag and synthesizes/strips one only when absent.
+All 88 cold mutants and the full 4,636-test native harness pass; final native log
+SHA-256: `44f166e33adddedf6ab43c1ea1a11c87d25e4905d0497b46c371bb274d3a9b50`.

@@ -1,5 +1,15 @@
 # Self-Review
 
+## Health domain registration reconciliation — 2026-09-04 UTC
+
+The immutable Arrow registry exposes the dedicated `health_appropriations`
+domain and all eight versioned recordset shapes without modifying any other
+domain contract. The combined Arrow/JSON schema suites pass 85 tests, so the
+separate domain-registration task is evidence-complete. The broader fixture
+task remains open: these contracts are explicitly structural-only and do not
+yet prove cross-row stable-ID uniqueness, period compatibility, null-reason
+consistency, or lineage closure.
+
 ## Preservation acceptance reconciliation — 2026-09-04 UTC
 
 - Reconciled five stale plan boxes against retained evidence without promoting
@@ -853,3 +863,18 @@ Adversarial tests cover junction/symlink rejection and modeled ordinary root
 replacement at reservation, write and listing boundaries. Focused line/branch
 coverage is 100%; all 83 cold mutants and the 4,631-test native harness pass.
 Fresh exact-head hosted validation remains pending.
+
+The next Windows run exposed short-write semantics rather than another path-
+identity defect. The final writer loops over a bounded memoryview, rejects no-
+progress writes, and retains the existing size and identity checks. POSIX-only
+fault injection is capability-scoped without weakening any fallback test. The
+focused, 88-mutant cold and 4,632-test native lanes pass; hosted exact-head
+validation remains separate.
+
+Explicit capability-safe binary flags on Windows complete the fallback
+descriptor correction. Focused, cold mutation and native validation pass;
+fresh exact-head hosted validation remains required.
+
+The last Windows failure was isolated to synthetic test setup; all production
+tests passed. The capability-aware correction is test-only, and focused, cold
+mutation and full native validation pass.
