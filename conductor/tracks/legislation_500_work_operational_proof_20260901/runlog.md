@@ -53,3 +53,14 @@
 - Corrected reconciliation to bind each document identity to exactly one Work, allowing retained versions within that Work while continuing to reject cross-Work document collisions and globally duplicate Manifestations.
 - Added property coverage for 2–12 retained versions and a dedicated two-mutant gate covering both over-rejection and permissive cross-Work collision behavior.
 - No workflow retry or publication was performed. The next hosted run remains an explicit retry gate after PR review and exact-head checks.
+
+# 2026-09-04 — remediation merge readback
+
+- PR #379 merged the document-identity remediation to `main` as
+  `cbad1dd9fb5a89197cf37bd53a673b021685812e` after Ubuntu, macOS, Windows,
+  CodeQL, workflow-lint, and Codecov checks passed.
+- Focused reconciliation and assurance tests passed 90 tests after merging that
+  exact `main` head into PR #373; the full repository harness then passed 4,593
+  tests at 97.52% coverage and every configured mutation and supply-chain gate.
+- The remediation review task is complete. No hosted retry was dispatched:
+  `plan.md` deliberately retains the 500-work execution as an explicit gate.
