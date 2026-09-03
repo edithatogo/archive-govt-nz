@@ -1,5 +1,15 @@
 # Self-Review
 
+## Optional graph/vector evaluation — 2026-09-04 UTC
+
+The decision is consistent with C-01/C-02 and W-07. Existing repository search
+code demonstrates a generic deterministic projection, but the health track has
+no measured health-specific retrieval use case and no pinned external model,
+quality threshold, or drift receipt. Deferral avoids making optional derived
+state authoritative and introduces no dependency, payload, publication, or
+rights change. Reopening requires a scoped query set and reproducibility
+contract; no code finding is created by this evaluation.
+
 ## Forecast explicit preflight — 2026-08-31 UTC
 
 Independent source/test review found no actionable issue. The explicit dry

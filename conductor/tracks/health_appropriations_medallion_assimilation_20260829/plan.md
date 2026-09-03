@@ -562,9 +562,11 @@ repository validation command. External gates block only their affected task.
 - [ ] Add rebuildable federation tables for approved links to
   `reimbursement-atlas` and `global-medicines-atlas`; preserve unmatched and
   ambiguous mappings. [M-14; AC-14]
-- [ ] Evaluate graph/vector projections only as non-authoritative Could work
+- [x] Evaluate graph/vector projections only as non-authoritative Could work
   after a demonstrated query/discovery benefit and pinned reproducibility
-  contract. [C-01, C-02; AC-14]
+  contract. Evaluated and deferred: no health-specific discovery benefit or
+  pinned embedding-model contract is evidenced; generic rebuildable search
+  remains non-authoritative. [C-01, C-02; AC-14]
 
 ### 7.3 Phase review and checkpoint
 

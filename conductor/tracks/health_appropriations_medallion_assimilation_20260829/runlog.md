@@ -1,5 +1,17 @@
 # Run Log
 
+## Optional graph/vector evaluation — 2026-09-04
+
+- Re-read C-01/C-02, W-07, the Platinum design, and the existing generic
+  deterministic search and graph modules and tests.
+- No health-appropriations-specific query benchmark, consumer requirement, or
+  pinned embedding-model quality/drift contract is present. Adding Lance or
+  LanceDB would therefore add a dependency and derivative state without the
+  requirement's demonstrated benefit.
+- Closed the evaluation task as `evaluated_deferred`. Existing generic indexes
+  remain rebuildable discovery aids and are not preservation, rights,
+  publication, or analytical truth.
+
 ## Exact GDP quarterly source profile — 2026-08-31
 
 - Required native `./scripts/validate.sh` at `41e7717` passed all gates:
