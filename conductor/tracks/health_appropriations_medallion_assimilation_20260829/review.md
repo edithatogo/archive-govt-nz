@@ -853,3 +853,10 @@ Adversarial tests cover junction/symlink rejection and modeled ordinary root
 replacement at reservation, write and listing boundaries. Focused line/branch
 coverage is 100%; all 83 cold mutants and the 4,631-test native harness pass.
 Fresh exact-head hosted validation remains pending.
+
+The next Windows run exposed short-write semantics rather than another path-
+identity defect. The final writer loops over a bounded memoryview, rejects no-
+progress writes, and retains the existing size and identity checks. POSIX-only
+fault injection is capability-scoped without weakening any fallback test. The
+focused, 88-mutant cold and 4,632-test native lanes pass; hosted exact-head
+validation remains separate.

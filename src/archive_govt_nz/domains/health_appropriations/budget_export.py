@@ -199,7 +199,12 @@ def _write(directory: _Directory, name: str, payload: bytes) -> None:
         descriptor = os.open(name, flags, 0o600, dir_fd=directory.descriptor)
     try:
         _owned(directory.path, directory)
-        _require(os.write(descriptor, payload) == len(payload))
+        written = 0
+        view = memoryview(payload)
+        while written < len(view):
+            count = os.write(descriptor, view[written:])
+            _require(count > 0)
+            written += count
     finally:
         os.close(descriptor)
 

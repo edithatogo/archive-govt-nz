@@ -170,6 +170,20 @@ def test_partial_failure_is_retained_and_redacted(
     }
 
 
+def test_short_os_writes_are_completed(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    args = _args(tmp_path)
+    real_write = os.write
+
+    def short_write(descriptor: int, payload: bytes | memoryview) -> int:
+        return real_write(descriptor, payload[:1024])
+
+    monkeypatch.setattr(os, "write", short_write)
+    export_budget_appropriations(*args, dry_run=False)
+    assert (args[3] / "LOCAL_BUDGET.json").is_file()
+
+
 def test_interrupt_propagates_and_retains_failure_marker(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
@@ -211,6 +225,8 @@ def test_reservation_race_does_not_write_failure(
 def test_reserved_root_replacement_before_open_is_rejected(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
+    if not budget_export._DIR_FD_SUPPORTED:  # noqa: SLF001 - platform contract
+        pytest.skip("descriptor reservation is POSIX-only")
     args = _args(tmp_path)
     real_open = os.open
 
@@ -338,6 +354,8 @@ def test_path_identity_fallback_rejects_ordinary_directory_before_reserve(
 def test_descriptor_reserve_closes_handle_on_identity_failure(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
+    if not budget_export._DIR_FD_SUPPORTED:  # noqa: SLF001 - platform contract
+        pytest.skip("descriptor reservation is POSIX-only")
     output = tmp_path / "reserve-close"
     output.mkdir()
     state = output.lstat()
@@ -477,8 +495,11 @@ def test_extra_entry_and_final_readback_failure_retain_evidence(
         nonlocal calls
         calls += 1
         if calls == 2:
+            target: str | Path = "unexpected"
+            if directory.descriptor is None:
+                target = directory.path / "unexpected"
             descriptor = os.open(
-                "unexpected",
+                target,
                 os.O_WRONLY | os.O_CREAT | os.O_EXCL,
                 0o600,
                 dir_fd=directory.descriptor,
