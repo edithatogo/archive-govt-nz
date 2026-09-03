@@ -110,6 +110,16 @@ def build_stages(
             ),
         ),
         GateStage(
+            "mutation-legislation-reconciliation",
+            (
+                "uv",
+                "run",
+                "--locked",
+                "python",
+                "tools/mutation_legislation_reconciliation.py",
+            ),
+        ),
+        GateStage(
             "mutation-legislation-historical-coverage",
             (
                 "uv",

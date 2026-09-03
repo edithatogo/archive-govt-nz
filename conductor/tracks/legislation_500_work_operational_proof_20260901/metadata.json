@@ -6,7 +6,7 @@
   "status": "in_progress",
   "track_id": "legislation_500_work_operational_proof_20260901",
   "type": "operations",
-  "updated_at": "2026-09-03T11:16:00+00:00",
+  "updated_at": "2026-09-04T00:00:00+10:00",
   "gates": [
     {
       "id": "prompt-06",
@@ -41,8 +41,8 @@
     {
       "id": "execution",
       "kind": "external_acquisition",
-      "status": "pending",
-      "evidence": "authorized; pending merged exact-head hosted preflight and dispatch"
+      "status": "blocked",
+      "evidence": "run 33774317947 failed closed with document_identity_duplicate; repository remediation pending review"
     }
   ]
 }
