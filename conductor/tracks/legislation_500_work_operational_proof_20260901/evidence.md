@@ -56,3 +56,16 @@ Prompt 15 merged at `d60ed58420d1fe39dc420bbe047b9bf901b0d66d` and Prompt 10 mer
 The append-only `parent-preflight-20260903.json` retains two failed attempts before the successful no-write restoration. The successful attempt anonymously retrieved the exact package, verified outer and inner fixity, restored 555 files, and reproduced the expected roots and 552-record parent scope. It did not read the NZ legislation credential, acquire sources, write canonical state, publish, or dispatch GitHub Actions. Its receipt SHA-256 is `ff5ff6dbc6520c9b81be0cc621ed21a50700a5933d035360663b930a7ecb6a1b`.
 
 The remaining gate is the authorized hosted exact-inventory execution after this PR merges and its exact-head checks pass.
+
+## Remediation merge readback — 2026-09-04
+
+PR #379 merged the Work-level document-identity correction to `main` at
+`cbad1dd9fb5a89197cf37bd53a673b021685812e`. Its exact head passed the required
+Ubuntu, macOS, Windows, CodeQL, workflow-lint, and Codecov checks. After merging
+that `main` revision into PR #373, 90 focused tests and the complete repository
+harness passed locally, including 4,593 tests at 97.52% coverage and the new
+two-mutant legislation reconciliation lane.
+
+This closes the repository remediation task only. The target-owned 500-work
+execution and durable continuation/recovery tasks remain pending until an
+explicit hosted retry is authorized and independently verified.

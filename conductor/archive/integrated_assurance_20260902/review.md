@@ -1,0 +1,12 @@
+# Conductor review — 2026-09-03
+
+Repository review confirms the previously reported CodeQL URL alerts are now
+closed as `fixed` in the live code-scanning API, and `actionlint
+.github/workflows/*.yml` exits successfully with no findings. The remaining
+blocker is hosted governance: branch protection/ruleset enforcement for
+`main` has not been established (Issue #354 remains open). This is a hosted
+settings gate and cannot be satisfied by local code or agent inference.
+
+The active `main-integrated-assurance` ruleset now enforces the required exact-
+head checks and was independently read back. The final hosted-governance gate
+is satisfied; no further review defect remains for this track.
