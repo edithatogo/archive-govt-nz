@@ -1,0 +1,142 @@
+{
+  "attempt": 2,
+  "cleanup": {
+    "owner_marker_verified": true,
+    "path_scope_verified": true,
+    "workspace_destroyed": true
+  },
+  "environment": {
+    "curl": "curl 8.7.1 (x86_64-apple-darwin25.0) libcurl/8.7.1 (SecureTransport) LibreSSL/3.3.6 zlib/1.2.12 nghttp2/1.68.1",
+    "lockfile_sha256": "737d7fe26e2b17ea9d5c84722489942126674c40faf5e3ed4e7e66ed50665f64",
+    "python": "3.14.6",
+    "reconciliation_tool_sha256": "f703b72a28ceed0f07d19772074ee69b37328f35b8001371dbaf8229880a55ec",
+    "recovery_tool_sha256": "9d3cb6beacdd2f851dedf85057cc28ee5c0300138c7079eee95609a09696aa57",
+    "software_commit": "9ceeeccf4e0efe6bac4ec1ae0fa2dd39a766d681",
+    "system": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "uv": "uv 0.11.8 (0e961dd9a 2026-04-27 aarch64-apple-darwin)",
+    "verify_tool_sha256": "3e762a37ad3088040877e5a495c5a26c8fd74485e0b264234f7f66ef35ccbd18"
+  },
+  "independence": {
+    "actions_artifact_used": false,
+    "fresh_direct_download": true,
+    "fresh_workspace": true,
+    "huggingface_cache_used": false,
+    "separate_download_from_other_attempt": true,
+    "token_used": false
+  },
+  "no_write_parent_preflight": {
+    "acquisition_performed": false,
+    "continuation_dispatched": false,
+    "input_tree_sha256": "cb1fab38cc1d64404a7a89093c81ecbaba79d459eff89c1e6db23bee428e6fa4",
+    "merge_mismatches": [],
+    "merge_status": "passed",
+    "output_tree_sha256": "cb1fab38cc1d64404a7a89093c81ecbaba79d459eff89c1e6db23bee428e6fa4",
+    "publication_performed": false,
+    "status": "valid_bounded_parent_state",
+    "unchanged": true
+  },
+  "package": {
+    "builder_sha256": "3e762a37ad3088040877e5a495c5a26c8fd74485e0b264234f7f66ef35ccbd18",
+    "file_inventory_sha256": "c3f18c1638824a9899c923d6a16959e937bd06eb522e500caaef99ed89b093ea",
+    "inner_fixity_verified": true,
+    "original_files_verified": 561,
+    "outer_fixity_match": true,
+    "sha256": "2e4b75333e947d812842147c939117fc666799e4497b80f125104f721ef68e3c",
+    "size_bytes": 71776346,
+    "source_target_commit": "abb3d673bb8a082b9c0c8bdf5bb8bfbd3ac91ebe"
+  },
+  "reconciliation": {
+    "cas_objects_verified": 552,
+    "checkpoint_gaps_count": 0,
+    "command_exit_code": 1,
+    "explained_hosted_metadata_mismatches": [
+      "rights_inventory",
+      "rights_readback",
+      "card_metadata.origin_repository",
+      "card_metadata.origin_commit",
+      "card_metadata.publication_role",
+      "card_metadata.manifest_root_sha256",
+      "card_metadata.inventory_sha256",
+      "card_metadata.work_count",
+      "card_metadata.record_count"
+    ],
+    "explanation": "The governed hosted-publication registry/readback predates the new durable path and lacks rights/card metadata. This is external publication-metadata drift; restored state integrity has zero findings or gaps.",
+    "internal_validation_findings": [],
+    "manifest_gaps_count": 0,
+    "unexplained_mismatches": []
+  },
+  "reconstruction": {
+    "mismatches_count": 0,
+    "objects": 552,
+    "receipt_sha256": "25fe5acb6e79141d2258b17759a86f2df16c2184c763893893e293b18f765181",
+    "schema_findings_count": 0,
+    "status": "verified"
+  },
+  "remote_authority": {
+    "gated": false,
+    "metadata_sha256": "ed886263fead010a540663515b24440db59371dbd9bb0abca2138942b44f8e74",
+    "path": "durable-state/v1/2e4b75333e947d812842147c939117fc666799e4497b80f125104f721ef68e3c/canonical-state.zip",
+    "private": false,
+    "repository": "edithatogo/corpus-legislation-nz",
+    "revision": "ae4da4ef0446f68fddd8f53279ecb1245f1529b9"
+  },
+  "restored": {
+    "all_object_hashes_verified": true,
+    "checkpoint_file_sha256": "8afab0cb245c8b0f4c6e42c7d2c863a0f58e99f7c6bded70a1582b2be1a4cbf7",
+    "checkpoint_inventory_root": "9ca6dc505f991e015c6c997827878d8c7e9381b214a1544eb338328a285c6894",
+    "expression_count": 552,
+    "inner_rights": {
+      "authority_commit": null,
+      "decision_id": null,
+      "payload": "blocked"
+    },
+    "manifest_file_sha256": "28ba53df227067faaa202e9114b27e3a4ee8aa89c9049ff8abe6b21378ca3003",
+    "manifest_root": "877ba501a25570a29c1aada7979562d8c62c7f043865125cf402310eabc09544",
+    "manifestation_count": 552,
+    "object_count": 552,
+    "parents": [
+      {
+        "artifact_sha256": "1975e473793fd701b81b53a7f6fd696bbeaa257b41bdc55250f064a21ad9e54e",
+        "checkpoint_file_sha256": "fe88ae2da4d2561d4b260f3e4ff25f9e188a7f27f057b72b6f314f07c6c87447",
+        "descriptor_sha256": "f644d8fe7dd8a3423ed1b31a3aed9ea247dc78af0e0fdc81f32e485b10c84d4a",
+        "manifest_file_sha256": "46dc00b8abd0e0f0a0ed774b9ae897d5ff17d7bff5acb945c01457414ccb4c6b",
+        "manifest_sha256": "a32dc371a1a47ae30a4afd58a9cbde2a439f3536d7705eb776e0fa68b4cd16db",
+        "objects": 500,
+        "records": 500,
+        "repository_commit": "b40587f1b1aec7356a0f623916fcc8212397d283"
+      },
+      {
+        "artifact_sha256": "4fe262887bf4d88a02303cc3bbc6023c8762acd36ae4b2bc6891a2ae9a420849",
+        "checkpoint_file_sha256": "898317221aa45cc4b9fa5f98f37222905d89d9475c738ada6bfd890e2fb400ce",
+        "descriptor_sha256": "2dc2cf89492a6cc011e6c53fa3e911a9793f7b134efa84d57c48f3af382acdb0",
+        "manifest_file_sha256": "7d1187d90f4a9659edab23c88dff28fbd048bfd7a77a38c7ff302ca48e60bdc8",
+        "manifest_sha256": "3c7aeaa02aed92f7e1c64a7fff7ca8c82a38e0b62645f90b5efeab4ae078d554",
+        "objects": 52,
+        "records": 52,
+        "repository_commit": "97ae6067d7320fe634f5e202219c412cf4ba754a"
+      }
+    ],
+    "record_count": 552,
+    "remote_access_and_rights": {
+      "access": "public",
+      "limitations": "Public legislative source material; this bounded package contains 552 selected records and does not prove complete legislative coverage. Source-specific notices and provenance remain authoritative.",
+      "payload_redistribution": "approved"
+    },
+    "scope_inventory_sha256": "9ca6dc505f991e015c6c997827878d8c7e9381b214a1544eb338328a285c6894",
+    "source": {
+      "seed_id": null,
+      "seed_sha256": null,
+      "source_set": "legislation"
+    },
+    "tree_file_count": 561,
+    "tree_inventory_sha256": "cb1fab38cc1d64404a7a89093c81ecbaba79d459eff89c1e6db23bee428e6fa4",
+    "work_count": 552
+  },
+  "schema_version": "archive-govt-nz.independent-durable-recovery-attempt/v1",
+  "stage_receipts": {
+    "download_headers_sha256": "514647eea64f9e48c7f5a60dec68e229073aa590d84287107a75b004d095deaf",
+    "reconciliation_sha256": "a4c2c43f047bfca53c64474e6cedd5076e417bf529e3bf3a158b25d07e7c0583",
+    "verify_sha256": "667987bbd871996408863a761f0b8617576ccaa6897f3c41ea955fca261387cc"
+  },
+  "status": "verified_with_explained_hosted_metadata_mismatches"
+}

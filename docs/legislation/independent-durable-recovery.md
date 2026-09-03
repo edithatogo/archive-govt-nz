@@ -1,9 +1,31 @@
 # Independent durable legislation recovery
 
 Prompt 10, issue [#327](https://github.com/edithatogo/archive-govt-nz/issues/327).
-**INCOMPLETE: prerequisite audit only; no recovery executed.**
+**COMPLETE recovery evidence prepared; merge remains separate.**
 
-## Current selection and blockers
+## Completed independent recovery
+
+On 2026-09-03, two separate private workspaces each downloaded the package
+directly, without a token, Hugging Face cache, or Actions artefact, from pinned
+revision `ae4da4ef0446f68fddd8f53279ecb1245f1529b9`. Both downloads matched
+SHA-256 `2e4b75333e947d812842147c939117fc666799e4497b80f125104f721ef68e3c`
+and size 71,776,346 bytes. Outer and all 561 inner-file fixity checks passed.
+Both restores produced the same tree, roots, 552 records, 552 works, 552
+expressions, 552 manifestations, and 552 CAS objects. Both clean reconstruction
+drills reported zero object mismatches and zero schema findings. A bounded
+no-write parent preflight left each restored tree unchanged. Both owned
+workspaces were then destroyed after the receipts were copied.
+
+The existing reconciliation tool reported zero restored-state validation
+findings, checkpoint gaps, manifest gaps, or missing CAS objects. It also
+reported the same hosted metadata mismatches on both attempts because the
+governed Hugging Face registry/readback predates the new durable path and rights
+authority. Those external metadata differences are enumerated and explained in
+the receipts; refreshing that registry belongs to Prompt 15 and does not change
+the recovered bytes. No harvest, continuation, publication, or Prompt 13 lane
+was dispatched by this drill.
+
+## Selected authority and historical blockers
 
 Prompt 09 selects the existing HF dataset `edithatogo/corpus-legislation-nz`.
 The candidate package SHA-256 is
@@ -12,7 +34,7 @@ The candidate package SHA-256 is
 `abb3d673bb8a082b9c0c8bdf5bb8bfbd3ac91ebe`.
 These values come from the reviewed Prompt 09 receipt, not a fresh retrieval.
 
-The live HF revision `1efa35e72c378068cfb112d060bd0502497f61b1`
+The earlier live HF revision `1efa35e72c378068cfb112d060bd0502497f61b1`
 listed 124 paths and no `durable-state/` paths during the 2026-09-03
 superseding audit. It is a metadata
 observation revision, **not a published package revision**. The expected path is
@@ -108,6 +130,6 @@ The initial blocked receipt is
 `evidence/migrations/corpus-legislation-nz/durable-recovery/preflight-20260831.json`.
 Add later attempts as new records; do not overwrite it. Keep statuses separate:
 prerequisite audit, retrieval, verified fixity, restoration, reconciliation,
-parent preflight, independent repeat and final acceptance. Two complete attempts
-with matching roots/counts and zero unexplained mismatches are required. Neither
-a green documentation PR nor a local packaging test completes Prompt 10.
+parent preflight, independent repeat and final acceptance. The successful attempt
+receipts and cross-attempt summary are in the same directory. Historical blocked
+and failed records remain intact.
