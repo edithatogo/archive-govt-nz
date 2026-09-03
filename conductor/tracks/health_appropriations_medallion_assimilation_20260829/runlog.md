@@ -1606,3 +1606,9 @@ passed. The bridge recomputes the public projection, requires exact canonical
 tables and receipt bytes, and retains reversible identity and field accounting.
 Full native and hosted checks are pending behind the serialized assurance lane.
 See [the bounded receipt and limits](./historical-consumer.md).
+
+The subsequently authorized cold-cache mutation lane used one worker, no
+coverage filtering and strict zero pardons. It exited zero after 20.85 seconds:
+41/41 mutants were killed with zero survivors, errors, timeouts, pardons or
+cache hits. The retained log SHA-256 is `5b9d25deb4f2cbb18f3afe5294fc4ac99223b3776ee08a5ffc3136f473738a19`;
+the JSON report SHA-256 is `e10471bfb031c1dbf1ffb47a997316e54c83e5128ecfe0f5fb5b21ef5d1c62f9`.

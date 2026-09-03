@@ -8,8 +8,10 @@ Twenty-two focused tests pass at 100% line and branch coverage over 98 critical
 statements and 16 branches; Ruff and scoped basedpyright pass. The tests cover
 raw-order independence, canonical physical order, typed JSON aliases, Decimal
 and period boundaries, reversible lineage/accounting and public historical
-analysis equivalence. Cold mutation, full native and hosted delivery remain
-pending. No file fixity, rights, analysis execution or publication is claimed.
+analysis equivalence. Full native and hosted delivery remain pending. The
+cold-cache, one-worker, unfiltered strict-zero-pardon gate
+killed 41/41 mutants with zero cache hits, survivors, errors, timeouts or
+pardons. No file fixity, rights, analysis execution or publication is claimed.
 
 ## Additive inventory planner — 2026-08-31 UTC
 

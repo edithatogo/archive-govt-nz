@@ -42,5 +42,12 @@ source scale 17 and canonical scale 18 can produce different string encodings;
 the tests compare exact numeric values and retain the reversible identifier
 substitution instead of claiming byte-equivalent analytical inputs.
 
-Cold mutation, full native validation, retained-package replay, persisted
-canonical-reader support and hosted delivery remain separate evidence events.
+The cold-cache, one-worker, unfiltered mutation gate killed all 41 mutants with
+zero survivors, errors, timeouts, pardons or cache hits (22 tests, 20.85
+seconds). Its JSON report SHA-256 is
+`e10471bfb031c1dbf1ffb47a997316e54c83e5128ecfe0f5fb5b21ef5d1c62f9` and
+the retained log SHA-256 is
+`5b9d25deb4f2cbb18f3afe5294fc4ac99223b3776ee08a5ffc3136f473738a19`.
+
+Full native validation, retained-package replay, persisted canonical-reader
+support and hosted delivery remain separate evidence events.
