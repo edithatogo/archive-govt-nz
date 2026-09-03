@@ -1,5 +1,15 @@
 # Evidence
 
+## Review-fix evidence — 2026-09-04
+
+Three red identity mutations validated before the schema correction. The
+corrected suite passes 15 tests and validates 48 schemas with 38 representative
+documents. The canonical publication receipt is now independently checked for
+`durable-state/v1/2e4b75333e947d812842147c939117fc666799e4497b80f125104f721ef68e3c/metadata.json`,
+1,450 bytes, SHA-256
+`ed886263fead010a540663515b24440db59371dbd9bb0abca2138942b44f8e74`.
+This is validation hardening only; Prompt 13 remains pending.
+
 ## Live readback
 
 - `evidence/migrations/corpus-legislation-nz/huggingface-publication/live-identity-observations.json` — SHA-256 `88c11df98bc91ad09ea6e31f735edca198d58b0ecf37f7a2d634cae5679677f5`.
