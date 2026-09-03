@@ -1637,7 +1637,7 @@ requires the health dataset identity and pending-approval state, reconciles
 every included original to a complete rights row, and rejects incomplete source
 dispositions. A separately hash-pinned assurance receipt must match the exact
 candidate and 40-character code revision, passed parity/recovery outcomes and a
-bounded UTC freshness window. Fifteen red/green tests, formatting, lint and
+bounded UTC freshness window. Sixteen red/green tests, formatting, lint and
 strict typing pass. This closes the negative-test contract only; no upload or
 remote mutation is performed.
 
