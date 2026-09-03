@@ -7,6 +7,11 @@ SHA-256, deterministic verification receipt, mutation report, and report of
 successful and failed attempts. Historical evidence remains intact.
 
 The verified preservation classification is `complete_reachable_git_copy`.
-The custody classification remains `verified_gated_backup`: draft release
-`377118888` is unpublished and mutable. No public/durable/immutable claim is
-made.
+
+The dated `external-action-receipt-20260903.json` and matching Markdown
+addendum supersede only the earlier external-action status: the donor redirect
+merged through PR #185 after a protected direct push failed, the donor remains
+archived, the annotated tag preserves the operational commit, and target
+release `corpus-legislation-nz-final-archive-20260903` is public with a bundle
+digest matching the verified copy. This is public GitHub custody evidence; no
+independent non-GitHub durability or immutability claim is made.

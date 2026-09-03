@@ -1,0 +1,107 @@
+{
+  "receipt_id": "corpus-legislation-nz-prompt19-external-actions-20260903",
+  "observed_at": "2026-09-03T09:16:30Z",
+  "supersedes_claims_in": {
+    "path": "evidence/migrations/corpus-legislation-nz/donor-git-bundle/verification-receipt.json",
+    "sha256": "4ca84f51a56a7e697b4a6d337e8acd4aa1677940a2f591208f56f008487157b3",
+    "scope": "external_action and asset publication status only"
+  },
+  "target": {
+    "repository": "edithatogo/archive-govt-nz",
+    "source_commit": "e559d675c347615d64ae5e1c1f3ad5efd5d120f6"
+  },
+  "donor": {
+    "repository": "edithatogo/corpus-legislation-nz",
+    "archived": true,
+    "default_branch": "main",
+    "current_main": "905f9e07c17af9d9d25dbe2b1c052fb8a290a4e3",
+    "archive_transition_receipts": {
+      "unarchive_response_mtime": "2026-09-03T19:09:27+10:00",
+      "emergency_rearchive_response_mtime": "2026-09-03T19:09:32+10:00",
+      "final_readback_archived": true
+    },
+    "redirect": {
+      "pull_request": 185,
+      "pull_request_url": "https://github.com/edithatogo/corpus-legislation-nz/pull/185",
+      "pull_request_state": "MERGED",
+      "head_commit": "2f49dda4e6b4e2864eeaf8840f6a28b91ca2fd00",
+      "base_commit": "b40587f1b1aec7356a0f623916fcc8212397d283",
+      "merge_commit": "905f9e07c17af9d9d25dbe2b1c052fb8a290a4e3",
+      "merged_at": "2026-09-03T09:13:44Z",
+      "hosted_checks_passed": 16,
+      "changed_file": "README.md",
+      "candidate_sha256": "692c703b360fc404f314826fcea2b3c014710e9d1721320a5c346f6dcae0f6f0",
+      "remote_readback_sha256": "692c703b360fc404f314826fcea2b3c014710e9d1721320a5c346f6dcae0f6f0"
+    },
+    "annotated_tag": {
+      "name": "migration-final-20260821",
+      "ref_object_type": "tag",
+      "tag_object": "cdd6a397a96773c06519e2e86bbe7a606b26bd58",
+      "target_type": "commit",
+      "target_commit": "b40587f1b1aec7356a0f623916fcc8212397d283",
+      "message_candidate_sha256": "0e707b9af12fca40ef685670125eab620d35c206736d39910205b95e1d76e48e",
+      "remote_message_sha256": "0e707b9af12fca40ef685670125eab620d35c206736d39910205b95e1d76e48e",
+      "tagger_date": "2026-09-03T09:09:29Z",
+      "signature_status": "unsigned"
+    }
+  },
+  "public_release": {
+    "repository": "edithatogo/archive-govt-nz",
+    "release_id": 381883563,
+    "tag": "corpus-legislation-nz-final-archive-20260903",
+    "name": "corpus-legislation-nz final archive",
+    "url": "https://github.com/edithatogo/archive-govt-nz/releases/tag/corpus-legislation-nz-final-archive-20260903",
+    "draft": false,
+    "prerelease": false,
+    "published_at": "2026-09-03T09:14:15Z",
+    "target_commitish": "e559d675c347615d64ae5e1c1f3ad5efd5d120f6",
+    "asset": {
+      "id": 542511808,
+      "name": "corpus-legislation-nz-full-20260826.bundle",
+      "size": 2365303,
+      "digest": "sha256:f125f91b06264a97e59f65fac47878a74d646c915f12c0b05841c1550ec741c2",
+      "state": "uploaded",
+      "created_at": "2026-09-03T09:14:13Z",
+      "updated_at": "2026-09-03T09:14:14Z"
+    },
+    "unauthenticated_download_readback": {
+      "verified_at": "2026-09-03T09:24:01Z",
+      "size": 2365303,
+      "sha256": "f125f91b06264a97e59f65fac47878a74d646c915f12c0b05841c1550ec741c2",
+      "matched_api_metadata": true
+    }
+  },
+  "attempts": [
+    {
+      "sequence": 1,
+      "operation": "direct push of donor redirect",
+      "outcome": "failed",
+      "reason": "donor branch protection required the tests status check",
+      "remote_error": [
+        "remote: error: GH006: Protected branch update failed for refs/heads/main.",
+        "remote: - Required status check \"tests\" is expected."
+      ],
+      "evidence_basis": "operator command receipt",
+      "remote_state_changed": false
+    },
+    {
+      "sequence": 2,
+      "operation": "donor pull request merge",
+      "outcome": "succeeded",
+      "authority": "https://github.com/edithatogo/corpus-legislation-nz/pull/185",
+      "remote_state_changed": true
+    },
+    {
+      "sequence": 3,
+      "operation": "target release publication",
+      "outcome": "succeeded",
+      "authority": "https://github.com/edithatogo/archive-govt-nz/releases/tag/corpus-legislation-nz-final-archive-20260903",
+      "remote_state_changed": true
+    }
+  ],
+  "limitations": [
+    "The failed direct-push result is bound to the operator command receipt; GitHub does not expose rejected pushes as a durable public API object.",
+    "The annotated tag intentionally targets the frozen operational donor commit; the donor default branch later gained only the redirect README merge.",
+    "The GitHub release is public and remotely readable, but this receipt does not claim independent non-GitHub durability or preservation of GitHub-only metadata."
+  ]
+}
