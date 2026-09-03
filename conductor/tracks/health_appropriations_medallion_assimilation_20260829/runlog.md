@@ -1629,6 +1629,53 @@ passed: 4,239 tests / 97.3804% coverage / all supply-chain gates. Incoming main3
 ledger prefix is preserved. See [full receipts](./budget-reader-bounds.md).
 No original/package/HF bytes were changed.
 
+## 2026-09-03 — Exclusive local Budget canonical export
+
+- Implemented the reviewed `budget-canonical-export-proposal.md` as a separate
+  public orchestration module over the verified Budget reader, original snapshot
+  verifier and pure appropriation projection.
+- The exporter emits exactly three canonical Parquets, the unchanged projection
+  receipt, complete lineage accounting and `LOCAL_BUDGET.json`; dry runs and
+  persisted builds serialize identical bytes while retaining local-only,
+  rights-not-evaluated and publication-not-granted states.
+- Enforced exclusive output reservation, source/output disjointness, literal
+  boolean dry-run state, per-file/aggregate/original caps, bounded Parquet Thrift
+  metadata, schema/value readback, six-file closure, retained partial failures
+  and interrupt propagation.
+- Focused validation: 111 Budget reader, projection and exporter tests passed;
+  Ruff formatting and lint passed. This closes only the Budget export slice of
+  AC-05/AC-08; remaining adapters and the canonical consumer bridge remain open.
+- Extended the read-only local provenance verifier and pure descriptor inventory
+  to recompute, validate and dependency-link the three-recordset Budget package,
+  including exact marker, raw/original fixity, Parquet schema/value, projection
+  receipt and complete lineage-accounting equality. The combined provenance and
+  exporter suites pass 138 tests; this remains scoped local verification, not
+  rights, publication, standards or whole-recovery acceptance.
+- Review hardening pins the reserved output directory by descriptor on platforms
+  supporting directory-relative opens, uses no-follow exclusive file creation,
+  verifies directory identity before and after every operation, and fails closed
+  on replacement. A regression proves a rename-and-symlink swap cannot write a
+  marker or failure receipt into the retained input package. The complete focused
+  Budget reader/projection/export and provenance set passes 239 tests, Ruff and
+  basedpyright.
+
+## 2026-09-03 — First canonical-recordset consumer bridge
+
+- Added a public verified-table reader that returns freshly recomputed canonical
+  package tables only after exact marker, raw/original, schema/value, receipt and
+  lineage-accounting verification.
+- Added read-only DuckDB nominal Budget and historical queries over those
+  canonical tables. The Budget query
+  groups only identical source labels, units, periods and vintages; preserves
+  Decimal(38,18) amounts and exact sorted input record IDs. The historical query
+  is an identity projection that preserves source currency/accounting assertions
+  without cross-source aggregation. Both explicitly leave price basis,
+  classification mapping and publication unresolved.
+- Duplicate package identities, wrong package kinds, non-tuple inputs and any
+  verification drift fail closed. Focused canonical-consumer and provenance
+  validation passes 78 tests plus Ruff and basedpyright.
+- This is the first AC-08 canonical consumer slice, not completion of historical,
+  contextual, SQLite, plot, report, recovery or publication consumers.
 ## 2026-09-03: Exclusive Budget appropriation export
 
 Observed red: the focused test module failed collection because

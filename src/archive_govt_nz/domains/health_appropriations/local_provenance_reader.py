@@ -16,7 +16,9 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 
 from archive_govt_nz.domains.health_appropriations.budget_classification import (
-    RULE,
+    RULE as CLASSIFICATION_RULE,
+)
+from archive_govt_nz.domains.health_appropriations.budget_classification import (
     project_budget_classification,
 )
 from archive_govt_nz.domains.health_appropriations.budget_projection import (
@@ -61,7 +63,11 @@ _MARKERS = {
 _TABLES = {
     "historical": ("health_spending_fact", "fiscal_context_fact", "field_lineage"),
     "classification": ("classification_dimension", "field_lineage"),
-    "budget": ("appropriation_fact", "classification_dimension", "field_lineage"),
+    "budget": (
+        "appropriation_fact",
+        "classification_dimension",
+        "field_lineage",
+    ),
 }
 _EXTRA = {
     "historical": ("lineage_accounting.json",),
@@ -315,7 +321,9 @@ def _expected_marker(
         "authoritative_mapping": "not_performed",
         "publication_approval": "not_granted",
         "self_contained_archive": False,
-        "transformation_id": BUDGET_RULE if value.kind == "budget" else RULE,
+        "transformation_id": (
+            BUDGET_RULE if value.kind == "budget" else CLASSIFICATION_RULE
+        ),
         "input_manifest_sha256": value.raw_manifest_sha256,
         "input_payload_sha256": projection.manifest["output_sha256"],
         "source_vintage": projection.manifest["source_vintage"],
@@ -328,7 +336,7 @@ def _expected_marker(
 
 def _package(
     value: CanonicalPackageInput,
-) -> tuple[list[ProductDescriptor], dict[str, Any]]:
+) -> tuple[list[ProductDescriptor], dict[str, Any], dict[str, pa.Table]]:
     marker, snapshots, total = _snapshots(value)
     with localcontext(Context(prec=50)):
         projection = _projection(value)
@@ -361,7 +369,7 @@ def _package(
             )
     profile = {
         "historical": "historical-health-gdp-canonical/v1",
-        "classification": RULE,
+        "classification": CLASSIFICATION_RULE,
         "budget": BUDGET_RULE,
     }[value.kind]
     products = []
@@ -391,17 +399,42 @@ def _package(
                 dependencies=dependencies,
             )
         )
-    return products, {
-        "kind": value.kind,
-        "vintage": projection.manifest["source_vintage"],
-        "marker_sha256": value.marker_sha256,
-        "raw_manifest_sha256": value.raw_manifest_sha256,
-        "original_sha256": projection.manifest["source_object_sha256"],
-        "original_bytes": projection.original_bytes,
-        "canonical_bytes": total,
-        "outputs": _entries(snapshots),
-        "projection_equality": profile,
-    }
+    return (
+        products,
+        {
+            "kind": value.kind,
+            "vintage": projection.manifest["source_vintage"],
+            "marker_sha256": value.marker_sha256,
+            "raw_manifest_sha256": value.raw_manifest_sha256,
+            "original_sha256": projection.manifest["source_object_sha256"],
+            "original_bytes": projection.original_bytes,
+            "canonical_bytes": total,
+            "outputs": _entries(snapshots),
+            "projection_equality": profile,
+        },
+        projection.tables,
+    )
+
+
+def read_verified_canonical_tables(
+    value: CanonicalPackageInput,
+) -> tuple[dict[str, pa.Table], dict[str, Any]]:
+    """Return fresh verified canonical tables and their scoped package receipt."""
+    try:
+        _preflight(value)
+        _products, receipt, tables = _package(value)
+    except (
+        OSError,
+        ValueError,
+        TypeError,
+        KeyError,
+        AttributeError,
+        pa.ArrowException,
+    ):
+        message = "local_provenance_reader_invalid"
+        raise ValueError(message) from None
+    else:
+        return tables, receipt
 
 
 def read_local_provenance(values: tuple[CanonicalPackageInput, ...]) -> dict[str, Any]:
@@ -418,7 +451,7 @@ def read_local_provenance(values: tuple[CanonicalPackageInput, ...]) -> dict[str
         _require(len({value.root.resolve() for value in values}) == len(values))
         products, receipts = [], []
         for value in values:
-            rows, receipt = _package(value)
+            rows, receipt, _tables_by_name = _package(value)
             products.extend(rows)
             receipts.append(receipt)
         _require(
