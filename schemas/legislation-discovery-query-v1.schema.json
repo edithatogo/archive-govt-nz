@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive-govt-nz.org/schemas/legislation-discovery-query-v1.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "query", "query_sha256", "pages", "candidates", "candidate_count", "candidate_inventory_sha256", "duplicates", "rejected", "next_page", "bounded", "authoritative_completeness", "custody_or_acquisition_proven"],
+  "properties": {
+    "schema_version": {"const": "archive-govt-nz.legislation-discovery-query/v1"},
+    "query": {"type": "object"},
+    "query_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "pages": {"type": "array", "items": {"type": "object"}},
+    "candidates": {"type": "array", "items": {"type": "object"}},
+    "candidate_count": {"type": "integer", "minimum": 0},
+    "candidate_inventory_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "duplicates": {"type": "array", "items": {"type": "object"}},
+    "rejected": {"type": "array", "items": {"type": "object"}},
+    "next_page": {"type": ["integer", "null"], "minimum": 1},
+    "bounded": {"const": true},
+    "authoritative_completeness": {"const": false},
+    "custody_or_acquisition_proven": {"const": false}
+  }
+}
