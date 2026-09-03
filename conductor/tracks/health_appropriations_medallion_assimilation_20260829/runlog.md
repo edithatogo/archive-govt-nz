@@ -1760,3 +1760,12 @@ The native harness exited zero with 4,632 tests, nine warnings, 97.55% coverage,
 48 schemas/38 documents, 9/9 parity and 111 SBOM components. Native log SHA-256:
 `a71d67cdb9269f60e72c0a14acbf5cc943409524435002a316a336897e8a68a5`.
 No gate, original, HF, rights or publication state changed.
+
+The next Windows job (`100764555836`) failed six exporter tests after 4,627
+passes and two capability skips; retained log SHA-256:
+`087faf1c600596c69392862bd5a0a1c2aa9ce49ff4c6aff958008d9b4a478b2a`.
+The fallback CRT descriptors also required explicit binary mode. Read and write
+opens now compose `O_BINARY` when available; a capability-safe regression proves
+both directions. Focused coverage passed 38 tests at 100%, 88/88 cold mutants
+were killed, and native passed 4,636 tests at 97.55% with all downstream gates.
+Native log SHA-256: `ff0eee95f8751ccea42fff5cb23a1df80cbf31177fd65840eb70166a86e08f8b`.

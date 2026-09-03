@@ -184,6 +184,26 @@ def test_short_os_writes_are_completed(
     assert (args[3] / "LOCAL_BUDGET.json").is_file()
 
 
+def test_path_fallback_opens_payloads_in_binary_mode(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    args = _args(tmp_path)
+    binary = 1 << 29
+    real_open = os.open
+    observed: list[int] = []
+
+    def inspect(path: object, flags: int, *rest: object, **kwargs: object) -> int:
+        observed.append(flags)
+        return real_open(path, flags & ~binary, *rest, **kwargs)  # type: ignore[call-overload]
+
+    monkeypatch.setattr(budget_export, "_DIR_FD_SUPPORTED", False)
+    monkeypatch.setattr(os, "O_BINARY", binary, raising=False)
+    monkeypatch.setattr(os, "open", inspect)
+    export_budget_appropriations(*args, dry_run=False)
+    assert observed
+    assert all(flags & binary for flags in observed)
+
+
 def test_interrupt_propagates_and_retains_failure_marker(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:

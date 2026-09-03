@@ -192,7 +192,7 @@ def _prepare(package: Path, pin: str, original: Path) -> dict[str, bytes]:
 def _write(directory: _Directory, name: str, payload: bytes) -> None:
     _owned(directory.path, directory)
     flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL
-    flags |= getattr(os, "O_NOFOLLOW", 0)
+    flags |= getattr(os, "O_NOFOLLOW", 0) | getattr(os, "O_BINARY", 0)
     if directory.descriptor is None:
         descriptor = os.open(directory.path / name, flags, 0o600)
     else:
@@ -226,7 +226,7 @@ def _owned(output: Path, directory: _Directory) -> None:
 def _readback(output: Path, directory: _Directory, files: dict[str, bytes]) -> None:
     _owned(output, directory)
     for name, payload in files.items():
-        flags = os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0)
+        flags = os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0) | getattr(os, "O_BINARY", 0)
         if directory.descriptor is None:
             descriptor = os.open(directory.path / name, flags)
         else:

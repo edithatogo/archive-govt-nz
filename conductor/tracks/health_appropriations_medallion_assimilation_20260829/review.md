@@ -870,3 +870,7 @@ progress writes, and retains the existing size and identity checks. POSIX-only
 fault injection is capability-scoped without weakening any fallback test. The
 focused, 88-mutant cold and 4,632-test native lanes pass; hosted exact-head
 validation remains separate.
+
+Explicit capability-safe binary flags on Windows complete the fallback
+descriptor correction. Focused, cold mutation and native validation pass;
+fresh exact-head hosted validation remains required.
