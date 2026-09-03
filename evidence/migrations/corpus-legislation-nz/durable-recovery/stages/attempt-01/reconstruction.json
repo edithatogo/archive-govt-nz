@@ -1,0 +1,14 @@
+{
+  "cas_objects_reconstructed": 552,
+  "checkpoint_processed_ids_count": 552,
+  "elapsed_seconds": 1.3804,
+  "mismatches": [],
+  "mismatches_count": 0,
+  "records_evaluated": 552,
+  "recovery_directory": "/Volumes/PortableSSD/GitHub/.prompt10-review-stage-01.gpJNnR/reconstructed",
+  "recovery_end": "2026-09-03T09:48:25Z",
+  "recovery_start": "2026-09-03T09:48:24Z",
+  "schema_findings_count": 0,
+  "schema_version": "archive-govt-nz.legislation-quarterly-recovery/v1",
+  "status": "verified"
+}

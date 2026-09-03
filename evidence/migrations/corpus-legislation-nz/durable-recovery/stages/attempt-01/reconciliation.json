@@ -1,0 +1,33 @@
+{
+  "candidate_works_denominator": 552,
+  "cas_objects_verified": 552,
+  "checkpoint_gaps_count": 0,
+  "checkpoint_processed_ids_count": 552,
+  "coverage_percent": 100.0,
+  "distinct_expressions_count": 552,
+  "distinct_manifestations_count": 552,
+  "distinct_works_count": 552,
+  "hosted_dataset_comparison": {
+    "dataset_slug": "edithatogo/corpus-legislation-nz",
+    "mismatches": [
+      "rights_inventory",
+      "rights_readback",
+      "card_metadata.origin_repository",
+      "card_metadata.origin_commit",
+      "card_metadata.publication_role",
+      "card_metadata.manifest_root_sha256",
+      "card_metadata.inventory_sha256",
+      "card_metadata.work_count",
+      "card_metadata.record_count"
+    ],
+    "revision_sha": "1efa35e72c378068cfb112d060bd0502497f61b1",
+    "status": "inconsistent"
+  },
+  "manifest_gaps_count": 0,
+  "schema_version": "archive-govt-nz.legislation-monthly-reconciliation/v1",
+  "status": "inconsistent",
+  "total_manifest_records": 552,
+  "unretrieved_discovered_works_count": 0,
+  "validation_findings": [],
+  "validation_findings_count": 0
+}
