@@ -51,6 +51,13 @@ if TYPE_CHECKING:
     from archive_govt_nz.object_store import ContentAddressedStore
 
 
+def _checkpoint_file_root(manager: LegislationCheckpointManager | None) -> str | None:
+    """Hash exact persisted checkpoint bytes when a checkpoint file exists."""
+    if manager is not None and manager.checkpoint_path.is_file():
+        return hashlib.sha256(manager.checkpoint_path.read_bytes()).hexdigest()
+    return None
+
+
 @dataclass(frozen=True, slots=True)
 class ManifestationTarget:
     """Target manifestation specification with URL and media type."""
@@ -1220,13 +1227,11 @@ class LegislationArchiveService:
         parent_manifest_root = (
             str(prior_manifest["manifest_sha256"]) if prior_manifest else None
         )
-        parent_checkpoint_root = (
-            hashlib.sha256(
+        parent_checkpoint_root = _checkpoint_file_root(chk_mgr)
+        if parent_checkpoint_root is None and chk_data:
+            parent_checkpoint_root = hashlib.sha256(
                 json.dumps(chk_data, sort_keys=True, separators=(",", ":")).encode()
             ).hexdigest()
-            if chk_data
-            else None
-        )
         prior_manifestation_ids = {
             str(record["manifestation_id"])
             for record in prior_records
@@ -1446,13 +1451,11 @@ class LegislationArchiveService:
         else:
             final_status = "success"
 
-        output_checkpoint_root = (
-            hashlib.sha256(
+        output_checkpoint_root = _checkpoint_file_root(chk_mgr)
+        if output_checkpoint_root is None and promoted_chk is not None:
+            output_checkpoint_root = hashlib.sha256(
                 json.dumps(promoted_chk, sort_keys=True, separators=(",", ":")).encode()
             ).hexdigest()
-            if promoted_chk is not None
-            else None
-        )
         cas_after = self.store.verified_inventory().object_count
         counts = {
             disposition.value: sum(
