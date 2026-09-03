@@ -114,7 +114,7 @@ repository validation command. External gates block only their affected task.
   duplicate-part rejection and a cumulative cell-scan limit; verify immutable
   inputs and exact limit boundaries before expanding operational exposure.
   [M-07, M-18; AC-03, AC-16] (`b2956a7`)
-- [ ] Add fixtures/contracts for safe ZIP/workbook inventory, archive-bomb and
+- [x] Add fixtures/contracts for safe ZIP/workbook inventory, archive-bomb and
   path controls, sheet/range discovery, formulas/cached values, hidden content,
   named ranges, tables, charts, external links, macros and unsupported parts.
   [M-07, M-18, S-03; AC-03, AC-16]
@@ -163,7 +163,7 @@ repository validation command. External gates block only their affected task.
   one disposition (73 captured, 68 out of scope, zero unresolved) and retained
   the bounded donor binary/data-area census. [M-01, M-02, M-07; AC-01, AC-03,
   AC-09]
-- [ ] Run focused format/security/property checks, self-review and the full
+- [x] Run focused format/security/property checks, self-review and the full
   repository harness; record paired evidence. [M-18, M-19; AC-16]
 
 ## Phase 2 — Bronze zero-loss preservation
@@ -189,7 +189,7 @@ repository validation command. External gates block only their affected task.
 
 ### 2.3 Capture eligible official originals
 
-- [ ] Apply per-resource preflight rights/access/size/type checks and capture
+- [x] Apply per-resource preflight rights/access/size/type checks and capture
   every eligible census item with HTTP/WARC evidence; retain metadata-only or
   tombstone records for non-eligible and unavailable items. [M-02, M-03, M-04,
   M-11, M-12; AC-02, AC-04, AC-09]
@@ -203,10 +203,10 @@ repository validation command. External gates block only their affected task.
 
 ### 2.4 Phase review and checkpoint
 
-- [ ] Run CAS/WARC/manifest validation, property and mutation lanes, donor
+- [x] Run CAS/WARC/manifest validation, property and mutation lanes, donor
   reconstruction, interruption/resume and restriction negative paths. [M-03,
   M-04, M-16, M-18; AC-01, AC-04, AC-12, AC-16]
-- [ ] Self-review and run the full repository harness; record which source
+- [x] Self-review and run the full repository harness; record which source
   states are observed, captured or still gated. [M-18, M-19; AC-16]
 
 ## Phase 3 — Silver schema and extraction foundation

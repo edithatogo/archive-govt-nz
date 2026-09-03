@@ -1,5 +1,20 @@
 # Self-Review
 
+## Preservation acceptance reconciliation — 2026-09-04 UTC
+
+- Reconciled five stale plan boxes against retained evidence without promoting
+  rights, semantic, publication, or historical-coverage claims. The workbook
+  fixture umbrella is supported by completed member-level, formula, hidden
+  content, macro, external-link, unsupported-part, and bounded-scan contracts.
+- The source census contains 141 unique records with exactly one disposition:
+  73 captured resources and 68 reason-coded out-of-scope records. The
+  independent preservation audit rehashed all 73 CAS objects and their 73 WARC
+  payloads with no missing or mismatched object.
+- The retained checkpoint also records donor reconstruction, controlled
+  interruption/resume and restriction paths, focused/property/mutation checks,
+  and an exit-zero full harness. These marks describe the observed bounded
+  source set only; new editions, rights decisions, and publication remain open.
+
 ## Optional graph/vector evaluation — 2026-09-04 UTC
 
 The decision is consistent with C-01/C-02 and W-07. Existing repository search
