@@ -19,6 +19,7 @@ import zlib
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import TYPE_CHECKING, Any, cast
+from urllib.parse import quote
 
 import httpx
 from jsonschema import Draft202012Validator, FormatChecker
@@ -37,6 +38,7 @@ if TYPE_CHECKING:
 
 ROOT = Path(__file__).resolve().parents[1]
 REFERENCE_SCHEMA = "archive-govt-nz.legislation-parent-reference/v1"
+DURABLE_REFERENCE_SCHEMA = "archive-govt-nz.legislation-durable-parent-reference/v1"
 LINEAGE = "receipts/parent-lineage.json"
 SEAL = "receipts/continuation.json"
 HISTORY = "receipts/history/"
@@ -290,6 +292,95 @@ def download(
     return response.content
 
 
+def durable_download(client: httpx.Client, reference: dict[str, Any]) -> bytes:
+    """Read one immutable public Hub revision without credentials or URL drift."""
+    durable = reference["durable"]
+    dataset = durable["dataset"]
+    revision = durable["revision"]
+    path = "/".join(quote(part, safe="") for part in durable["path_parts"])
+    url = f"https://huggingface.co/datasets/{dataset}/resolve/{revision}/{path}"
+    allowed = ("huggingface.co", ".huggingface.co", ".hf.co", ".xethub.hf.co")
+    response = None
+    for _ in range(4):
+        response = fetch(client, url, {}, durable["size_bytes"])
+        if not response.is_redirect:
+            break
+        location = httpx.URL(response.headers["location"])
+        host = location.host or ""
+        v.require(
+            condition=location.scheme == "https"
+            and not location.userinfo
+            and location.port in {None, 443}
+            and not location.fragment
+            and any(host == suffix or host.endswith(suffix) for suffix in allowed),
+            code="durable_download_origin",
+        )
+        url = str(location)
+    v.require(condition=response is not None, code="durable_download_missing")
+    response = cast("httpx.Response", response)
+    v.equal(response.status_code, 200, "durable_download_status")
+    raw = response.content
+    v.equal(len(raw), durable["size_bytes"], "durable_package_size")
+    v.equal(v.sha(raw), durable["sha256"], "durable_package_digest")
+    return raw
+
+
+def durable_files(raw: bytes, reference: dict[str, Any]) -> dict[str, bytes]:
+    """Verify the Prompt 09 envelope, inner inventory, roots, rights and scope."""
+    durable = reference["durable"]
+    module = sibling("legislation_durable_state")
+    document, files = module.verify(raw, durable["sha256"])
+    v.equal(document["roots"], durable["roots"], "durable_roots")
+    v.equal(document["rights"]["payload"], "blocked", "durable_historical_rights")
+    v.equal(document["input"]["source"], reference["parent_source"], "durable_scope")
+    v.equal(reference["parent_source"], source_identity(""), "durable_parent_scope")
+    v.equal(
+        reference["child_source"],
+        source_identity("historical-work-ids-0001"),
+        "durable_child_scope",
+    )
+    # The durable envelope also preserves merge receipts and embedded source
+    # packages. They authenticate the recovery but are not writable canonical
+    # state and must not leak into the child continuation package.
+    return {
+        name: data
+        for name, data in files.items()
+        if name in {"manifest.json", "checkpoint.json"} or name.startswith(M.CAS)
+    }
+
+
+def check_durable_authority(reference: dict[str, Any]) -> None:
+    """Bind later public rights approval and recovery to committed exact evidence."""
+    authority = reference["authority"]
+    path = authority["publication_receipt_path"]
+    raw = git_bytes(["show", authority["publication_commit"] + ":" + path])
+    v.equal(
+        v.sha(raw), authority["publication_receipt_sha256"], "durable_authority_hash"
+    )
+    receipt = v.load(raw)
+    v.equal(receipt["status"], "public_verified", "durable_authority_status")
+    v.equal(
+        receipt["authority"]["decision_id"],
+        authority["decision_id"],
+        "durable_authority_decision",
+    )
+    v.equal(
+        receipt["rights"]["status"],
+        "approved_public_selected_552",
+        "durable_authority_rights",
+    )
+    expected = {
+        "path": "/".join(reference["durable"]["path_parts"]),
+        "size_bytes": reference["durable"]["size_bytes"],
+        "sha256": reference["durable"]["sha256"],
+    }
+    v.require(
+        condition=expected in receipt["authority"]["permitted_files"],
+        code="durable_authority_package",
+    )
+    git_bytes(["merge-base", "--is-ancestor", authority["recovery_commit"], "HEAD"])
+
+
 def authorize(
     authority: dict[str, Any], request: dict[str, Any], now: datetime
 ) -> None:
@@ -330,10 +421,19 @@ def check_lineage(lineage: dict[str, Any]) -> None:
     if mode == "bootstrap":
         v.equal(parent, None, "lineage_bootstrap_parent")
     else:
-        schema(parent, "legislation-parent-reference")
         parent = cast("dict[str, Any]", parent)
-        v.equal(parent["source"], lineage["source"], "lineage_parent_source")
-        v.equal(parent["lineage_sha256"] is None, mode == "adopt", "lineage_adoption")
+        if parent["schema_version"] == DURABLE_REFERENCE_SCHEMA:
+            schema(parent, "legislation-durable-parent-reference")
+        else:
+            schema(parent, "legislation-parent-reference")
+        if parent["schema_version"] == DURABLE_REFERENCE_SCHEMA:
+            v.equal(parent["child_source"], lineage["source"], "lineage_child_source")
+            v.equal(mode, "continuation", "durable_continuation_mode")
+        else:
+            v.equal(parent["source"], lineage["source"], "lineage_parent_source")
+            v.equal(
+                parent["lineage_sha256"] is None, mode == "adopt", "lineage_adoption"
+            )
     if mode == "continuation":
         v.equal(authority, None, "lineage_unexpected_authority")
     else:
@@ -407,7 +507,7 @@ def write_new(path: Path, data: bytes) -> None:
     v.equal(path.read_bytes(), data, "write_readback")
 
 
-def restore(  # noqa: PLR0915 - ordered verify-before-promotion transaction
+def restore(  # noqa: C901, PLR0912, PLR0915 - ordered verification transaction
     request: dict[str, Any],
     paths: dict[str, Path],
     client: httpx.Client,
@@ -444,12 +544,27 @@ def restore(  # noqa: PLR0915 - ordered verify-before-promotion transaction
         if mode == "bootstrap":
             v.equal(reference, None, "bootstrap_parent_forbidden")
         else:
-            schema(reference, "legislation-parent-reference")
             reference = cast("dict[str, Any]", reference)
-            v.equal(reference["source"], request["source"], "parent_source")
-            v.equal(
-                reference["lineage_sha256"] is None, mode == "adopt", "adoption_mode"
+            durable = reference.get("schema_version") == DURABLE_REFERENCE_SCHEMA
+            schema(
+                reference,
+                "legislation-durable-parent-reference"
+                if durable
+                else "legislation-parent-reference",
             )
+            if durable:
+                v.equal(
+                    reference["child_source"], request["source"], "parent_child_source"
+                )
+                v.equal(mode, "continuation", "durable_mode")
+                check_durable_authority(reference)
+            else:
+                v.equal(reference["source"], request["source"], "parent_source")
+                v.equal(
+                    reference["lineage_sha256"] is None,
+                    mode == "adopt",
+                    "adoption_mode",
+                )
         if mode != "continuation":
             authorize(request["authority"], request, now)
         else:
@@ -471,20 +586,28 @@ def restore(  # noqa: PLR0915 - ordered verify-before-promotion transaction
         }
         check_lineage(lineage)
         if reference is not None:
-            raw = download(client, reference, credential, now)
+            is_durable = reference["schema_version"] == DURABLE_REFERENCE_SCHEMA
+            raw = (
+                durable_download(client, reference)
+                if is_durable
+                else download(client, reference, credential, now)
+            )
             write_new(quarantine / "artifact.zip", raw)
-            v.equal(
-                len(raw),
-                reference["artifact"]["size_in_bytes"],
-                "archive_size_metadata",
-            )
-            v.equal(
-                "sha256:" + v.sha(raw),
-                reference["artifact"]["digest"],
-                "archive_digest",
-            )
-            files = unpack(raw)
-            verify_parent(files, reference)
+            if is_durable:
+                files = durable_files(raw, reference)
+            else:
+                v.equal(
+                    len(raw),
+                    reference["artifact"]["size_in_bytes"],
+                    "archive_size_metadata",
+                )
+                v.equal(
+                    "sha256:" + v.sha(raw),
+                    reference["artifact"]["digest"],
+                    "archive_digest",
+                )
+                files = unpack(raw)
+                verify_parent(files, reference)
             for name in (LINEAGE, SEAL, "receipts/harvest.json"):
                 if name in files:
                     data = files[name]
