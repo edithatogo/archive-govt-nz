@@ -1,5 +1,15 @@
 # Self-Review
 
+## Health domain registration reconciliation — 2026-09-04 UTC
+
+The immutable Arrow registry exposes the dedicated `health_appropriations`
+domain and all eight versioned recordset shapes without modifying any other
+domain contract. The combined Arrow/JSON schema suites pass 85 tests, so the
+separate domain-registration task is evidence-complete. The broader fixture
+task remains open: these contracts are explicitly structural-only and do not
+yet prove cross-row stable-ID uniqueness, period compatibility, null-reason
+consistency, or lineage closure.
+
 ## Preservation acceptance reconciliation — 2026-09-04 UTC
 
 - Reconciled five stale plan boxes against retained evidence without promoting
