@@ -54,3 +54,27 @@ four were corrected and revalidated. The final review also tightened the
 anchored path contract so a replaced output pathname fails without redirecting
 bytes. No retained package, original, candidate,
 Hugging Face object, rights state, or publication state was changed.
+
+## Retained two-vintage replay
+
+At exact exporter head `7e82ed0938de5490190795d0a7c0134d993871a9`, an
+external driver read the pinned retained Budget-2025 and Budget-2026 raw
+packages and their CAS originals. Two fresh outputs per vintage produced exact
+six-file closures. Each dry-run file length/hash map equalled its persisted
+write map; the two builds for each vintage were byte-identical.
+
+Independent public-reader and pure-projector recomputation matched all three
+Parquet tables including schema metadata, the complete projection receipt,
+lineage-accounting JSONL, marker input/output pins, row counts and schema
+hashes. Totals were 400 appropriation facts, 4,400 canonical lineage records,
+and all 6,800 original lineage-accounting entries. Before/after hashes matched
+for both originals and all eight raw-package files.
+
+The retained driver is
+`/tmp/health-budget-export-replay.kz7mWj/replay.py` (SHA-256
+`af89d4b8a420c30220a6c70da71c6b1038216e7ea4f91acea81076178ca32af0`);
+its exit-zero log is `replay.log` (SHA-256
+`dd26aa7a274b00d86d91cd5a0bdc0bb8c5cd49d29f3895c7e8b12d7770ddc70d`).
+The two package sizes were 1,737,166 and 1,502,784 bytes. Outputs remain
+temporary local evidence. No source, rights, publication, candidate or
+Hugging Face state changed.

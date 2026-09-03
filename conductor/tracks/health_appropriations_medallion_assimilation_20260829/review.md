@@ -760,3 +760,10 @@ Decimal/context, equality/over-boundary, extra-entry, root-replacement,
 readback and double-interrupt cases, and ensures the saved original exception
 wins. Post-fix review found no unresolved issue in this bounded local-only
 scope. Final focused coverage, 63 cold mutants and the full native harness pass.
+
+The subsequent exact-head retained two-vintage replay passed independently of
+the focused fixtures: four fresh packages, exact six-file closure, dry/write
+hash parity, paired-build byte identity, public projector/readback equality,
+400 facts, 4,400 canonical lineage records and complete 6,800-entry original
+lineage accounting. Ten retained input files were byte-unchanged. This evidence
+remains local-only and does not alter the rights or publication assessment.

@@ -754,6 +754,12 @@ repository validation command. External gates block only their affected task.
   retained failures. This closes only the bounded exporter slice; retained
   two-vintage replay, persisted-provenance consumption, rights and publication
   remain separate. [M-03, M-04, M-07, M-18; AC-02, AC-04, AC-05, AC-16]
+- [x] Replay the pinned retained Budget-2025/2026 packages twice each into
+  fresh temporary outputs; independently prove exact dry-run/write hashes,
+  six-file closure, canonical tables/schemas, full receipts/accounting,
+  byte-identical builds and unchanged raw/original hashes. This is local
+  validation only, not rights or publication evidence. [M-03, M-04, M-16,
+  M-18; AC-02, AC-04, AC-05, AC-12, AC-16]
 
 - [x] Keep disconnected source-plot segments styled by their full context and
   disambiguate colliding display labels without merging source identities.
