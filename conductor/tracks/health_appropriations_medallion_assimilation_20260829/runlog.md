@@ -1,5 +1,37 @@
 # Run Log
 
+## Optional graph/vector evaluation — 2026-09-04
+
+- Re-read C-01/C-02, W-07, the Platinum design, and the existing generic
+  deterministic search and graph modules and tests.
+- No health-appropriations-specific query benchmark, consumer requirement, or
+  pinned embedding-model quality/drift contract is present. Adding Lance or
+  LanceDB would therefore add a dependency and derivative state without the
+  requirement's demonstrated benefit.
+- Closed the evaluation task as `evaluated_deferred`. Existing generic indexes
+  remain rebuildable discovery aids and are not preservation, rights,
+  publication, or analytical truth.
+
+## Phase 1 disposition reconciliation — 2026-09-04
+
+- Revalidated `source-census.json`: its declared count equals 141 records,
+  source IDs are unique, every record has exactly one disposition, and the only
+  terminal classes are 73 `captured` and 68 `out_of_scope` records.
+- The capture reconciliation binds all 73 retained official originals to the
+  complete capture manifest. Existing donor structural evidence covers all
+  seven workbooks, the 471-page PDF, and all five SQLite tables/312 rows.
+- This closes disposition accounting, not the separately pending retrospective
+  annual-source enumeration, normalization, rights, or release tasks.
+
+## Bronze tracked-byte boundary — 2026-09-04
+
+- Hashed all 2,998 tracked regular files and compared them with the 73 captured
+  official-source object hashes in the final source census.
+- No tracked file reproduces a captured source payload and no tracked file
+  exceeds 10 MiB. The one tracked Parquet artefact belongs to an older bounded
+  prepared-package evidence fixture and is neither a captured health source nor
+  a large generated derivative.
+
 ## Exact GDP quarterly source profile — 2026-08-31
 
 - Required native `./scripts/validate.sh` at `41e7717` passed all gates:
@@ -1670,3 +1702,37 @@ supply-chain gates including the 111-component SBOM. Native log SHA-256:
 mutation report SHA-256:
 `c02912100823891ecae098842952384b68a06c986b1ab5380dd438dcf776da25`.
 Fresh hosted checks remain separate.
+
+At PR #383 head `3b4ea1c4d761aba994b9440ad57894e28ac1ea67`, Windows
+Assurance job `100752396708` failed deterministically with eight exporter
+persistence failures after 4,618 passing tests. The retained full log SHA-256 is
+`9e5f57febfef574e7f6adb051c89d868ac81bd695f91433a5c0238b5037ffe70`.
+This was directory-fd platform incompatibility at `budget_export_reserve`, not
+a timeout or infrastructure failure; no blind retry or gate change was made.
+
+The correction retains descriptor-relative no-follow persistence on POSIX and
+adds a bounded fallback for platforms without directory-fd support. The fallback
+captures the output identity immediately after exclusive creation, rejects
+symlinks and Windows junctions at reservation and every ownership boundary, and
+rechecks identity before and after child open and directory enumeration. Its
+contract remains a trusted parent with deterministic redirection detection, not
+a hostile-filesystem transaction. Tests model symlink and ordinary-directory
+replacement before reservation, replacement before child writes and during
+enumeration, and descriptor cleanup on identity failure. Focused validation
+passed 36 tests and 196 statements/34 branches at 100%; Ruff and scoped Pyright
+passed. Cold mutation, native validation and fresh exact-head hosted checks
+remain required. No source inputs, originals, HF or publication state changed.
+
+The first native attempt stopped at the format gate before tests (exit 1; log
+SHA-256 `9589194ab24f51af24a412e44fee03c979c8da3c14cd4b84f5fbc7f795c62e8a`).
+After applying only the required formatter changes, exact-byte focused coverage
+again passed 36 tests at 100% and the cold lane killed all 83 mutants with zero
+other outcomes or cache hits. Mutation report SHA-256:
+`09829251c65176f89d5664b6d349d0bb4ac10f05a660a4d244fe9b86e94c5c08`;
+mutation log SHA-256:
+`f588959f2db88e7dfec2f7d7fd832a6acb1db1576ed9e757cd7234aa7c00a3f9`.
+The final native harness exited zero with 4,631 tests, nine warnings, 97.54%
+coverage, 48 schemas/38 representative documents, 9/9 parity and all supply-
+chain gates including 111 SBOM components. Native log SHA-256:
+`059c674bb9a2d4a48e7fce52dc29c031e35ed35f41277c7975218b9c83e46661`.
+Fresh exact-head hosted checks remain separate.
