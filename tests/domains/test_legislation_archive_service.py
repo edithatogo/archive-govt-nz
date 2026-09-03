@@ -2,12 +2,15 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 from pathlib import Path
 from typing import TYPE_CHECKING
 
 import httpx
 import pytest
+from hypothesis import HealthCheck, given, settings
+from hypothesis import strategies as st
 
 from archive_govt_nz.adapters.base import AdapterCaptureResult
 from archive_govt_nz.core.manifests import PreservationRecord
@@ -26,6 +29,7 @@ from archive_govt_nz.domains.legislation.corpus import (
     ManifestationTarget,
     WorkTarget,
     _build_discovered_work_targets,
+    _checkpoint_file_root,
 )
 from archive_govt_nz.domains.legislation.manifest import (
     build_legislation_manifest,
@@ -964,6 +968,48 @@ async def test_checkpoint_promotion_failure_is_indeterminate_without_manifest(
     assert result.accounting.total_cas_objects_after >= 1
     assert not manifest.exists()
     assert any("state commit indeterminate" in error for error in result.errors)
+    await client.aclose()
+
+
+@pytest.mark.anyio
+async def test_checkpoint_hash_failure_is_rolled_back_before_promotion(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Failure to hash staged bytes cannot promote unreceipted state."""
+    client = httpx.AsyncClient(
+        transport=httpx.MockTransport(
+            lambda _request: httpx.Response(200, content=b"<act><title>A</title></act>")
+        )
+    )
+    service = LegislationArchiveService(
+        ContentAddressedStore(tmp_path / "cas"),
+        api_client=NZLegislationApiClient(async_client=client),
+    )
+    checkpoint = tmp_path / "checkpoint.json"
+    manifest = tmp_path / "manifest.json"
+    original_read_bytes = Path.read_bytes
+
+    def fail_staged_hash(path: Path) -> bytes:
+        if path.name.endswith(".staging.tmp"):
+            message = "injected staged checkpoint read failure"
+            raise OSError(message)
+        return original_read_bytes(path)
+
+    monkeypatch.setattr(Path, "read_bytes", fail_staged_hash)
+    result = await service.sync_works(
+        targets=[_accounting_target("hash-failure", "https://example.test/work.xml")],
+        checkpoint_path=checkpoint,
+        manifest_path=manifest,
+    )
+
+    assert result.accounting is not None
+    assert result.accounting.state_commit_status is StateCommitStatus.INDETERMINATE
+    assert result.accounting.state_commit is None
+    assert result.accounting.output_checkpoint_root is None
+    assert not checkpoint.exists()
+    assert not checkpoint.with_suffix(".staging.tmp").exists()
+    assert not manifest.exists()
+    assert any("injected staged checkpoint read failure" in e for e in result.errors)
     await client.aclose()
 
 
@@ -1992,6 +2038,67 @@ def _accounting_target(work_id: str, *urls: str) -> WorkTarget:
             )
         ],
     )
+
+
+@pytest.mark.anyio
+async def test_checkpoint_roots_hash_exact_persisted_bytes(tmp_path: Path) -> None:
+    """Accounting roots must match the checkpoint bytes consumed by sealing."""
+    client = httpx.AsyncClient(
+        transport=httpx.MockTransport(
+            lambda _request: httpx.Response(
+                200,
+                content=b"<act><title>Persisted root</title></act>",
+                headers={"Content-Type": "application/xml"},
+            )
+        )
+    )
+    service = LegislationArchiveService(
+        store=ContentAddressedStore(tmp_path / "cas"),
+        api_client=NZLegislationApiClient(async_client=client),
+    )
+    checkpoint = tmp_path / "checkpoint.json"
+    manifest = tmp_path / "manifest.json"
+    target = _accounting_target("root-work", "https://example.test/root.xml")
+
+    first = await service.sync_works(
+        targets=[target], checkpoint_path=checkpoint, manifest_path=manifest
+    )
+    persisted = hashlib.sha256(checkpoint.read_bytes()).hexdigest()
+    compact = hashlib.sha256(
+        json.dumps(
+            json.loads(checkpoint.read_text()), sort_keys=True, separators=(",", ":")
+        ).encode()
+    ).hexdigest()
+    assert persisted != compact
+    assert first.accounting is not None
+    assert first.accounting.output_checkpoint_root == persisted
+    assert first.accounting.state_commit == persisted
+
+    second = await service.sync_works(
+        targets=[target],
+        checkpoint_path=checkpoint,
+        manifest_path=manifest,
+        force_resync=True,
+    )
+    assert second.accounting is not None
+    assert second.accounting.parent_checkpoint_root == persisted
+    assert (
+        second.accounting.output_checkpoint_root
+        == hashlib.sha256(checkpoint.read_bytes()).hexdigest()
+    )
+    await client.aclose()
+
+
+@given(st.dictionaries(st.text(min_size=1), st.integers(), max_size=8))
+@settings(suppress_health_check=[HealthCheck.function_scoped_fixture])
+def test_checkpoint_root_preserves_arbitrary_persisted_json_bytes(
+    tmp_path: Path, checkpoint: dict[str, int]
+) -> None:
+    """Formatting and key order cannot change the persisted checkpoint root."""
+    manager = LegislationCheckpointManager(tmp_path / "checkpoint.json")
+    raw = json.dumps(checkpoint, indent=2, sort_keys=False).encode()
+    manager.checkpoint_path.write_bytes(raw)
+    assert _checkpoint_file_root(manager) == hashlib.sha256(raw).hexdigest()
 
 
 @pytest.mark.anyio

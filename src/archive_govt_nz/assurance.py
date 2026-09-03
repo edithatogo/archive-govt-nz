@@ -120,6 +120,16 @@ def build_stages(
             ),
         ),
         GateStage(
+            "mutation-legislation-checkpoint-root",
+            (
+                "uv",
+                "run",
+                "--locked",
+                "python",
+                "tools/mutation_legislation_checkpoint_root.py",
+            ),
+        ),
+        GateStage(
             "mutation-legislation-historical-coverage",
             (
                 "uv",
