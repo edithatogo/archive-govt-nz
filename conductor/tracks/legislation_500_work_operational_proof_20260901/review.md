@@ -38,3 +38,7 @@ gate by itself.
 ## Review update — recovered public parent
 
 The merged Prompt 10 recovery and Prompt 15 publication provide the missing authority. The current parent reference binds the immutable Hugging Face revision and package bytes to those two target commits and checks the separate public-rights receipt without rewriting the package's historical inner rights field. The successful repository-native preflight independently downloaded and restored the package with exact roots and counts. Hosted preflight and the authorized 500-work execution remain post-merge operational gates.
+
+## Review update — document identity remediation
+
+The failed hosted run exposed an identity-level mismatch rather than incomplete acquisition. In the FRBR model, `document_id` denotes the Work-level document and therefore repeats across retained version records; `expression_id` and `manifestation_id` distinguish the versions and encodings. The reconciler had incorrectly treated every repeated Work document as a collision. The correction maintains a document-to-Work binding: repetition within one Work is valid, while reuse by a different Work still fails closed. Expression cross-Work collisions and all duplicate Manifestations remain rejected. No operational retry is part of this repository-only correction.

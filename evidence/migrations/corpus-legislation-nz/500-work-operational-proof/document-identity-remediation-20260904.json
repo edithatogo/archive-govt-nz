@@ -1,0 +1,72 @@
+{
+  "schema_version": "archive-govt-nz.legislation-document-identity-remediation/v1",
+  "status": "retry_ready_repository_only",
+  "target_commit": "447bbbf000f6217388ac72d992ca3444b4df0dde",
+  "failed_run": {
+    "run_id": 33774317947,
+    "job_id": 100712112326,
+    "attempt_artifact": {
+      "id": 9901297502,
+      "name": "legislation-exact-inventory-attempt-33774317947-1",
+      "size_bytes": 7889,
+      "sha256": "e67c0542e25258f9ace189374ad4d33c754e47a31374689427d38c1f1fe68ec0"
+    },
+    "parent_artifact": {
+      "id": 9900931189,
+      "name": "legislation-parent-33774317947-1",
+      "size_bytes": 1465,
+      "sha256": "64c5296f453b72d3f85fbddacfb35d1d84649351eb71d25c04bfb028a7c6e417"
+    },
+    "harvest_receipt_sha256": "36a37ef170c81259600796efebc20a87bccab9ed4b3a8a550eac4bde94444d8a",
+    "reconciliation_receipt_sha256": "09a568756f3f44ea5c76bc8ff4bdda484a20d0f6c546f631eb9ea70dbbdddd5c",
+    "reconciliation_error": "document_identity_duplicate",
+    "accounting": {
+      "candidate_works_discovered": 500,
+      "works_in_scope": 500,
+      "works_attempted": 500,
+      "changed_preserved": 352,
+      "unchanged_revalidated": 148,
+      "unavailable": 0,
+      "partial": 0,
+      "failed": 0,
+      "already_processed_skipped": 0,
+      "total_state_records_before": 552,
+      "total_state_records_after": 904,
+      "total_cas_objects_before": 552,
+      "total_cas_objects_after": 904
+    }
+  },
+  "reproduction": {
+    "cause": "the cumulative reconciler required document_id uniqueness per record even though normalisation intentionally assigns one document_id per Work and retains changed Expressions and Manifestations as additional records",
+    "deterministic_case": "two schema-valid records for one work with the same document_id and distinct expression_id, manifestation_id and CAS object",
+    "pre_fix_result": "document_identity_duplicate",
+    "post_fix_result": "passed"
+  },
+  "fix_contract": {
+    "document_id": "may repeat only for records of the same work_id",
+    "expression_id": "may repeat only within one work_id",
+    "manifestation_id": "must remain globally unique",
+    "cross_work_document_collision": "rejected_as_document_identity_duplicate"
+  },
+  "external_actions": {
+    "workflow_dispatch_performed": false,
+    "publication_performed": false,
+    "retry_authorized_or_claimed": false
+  },
+  "limitations": [
+    "repository_only_remediation",
+    "failed_run_state_was_not_published",
+    "a_new_hosted_run_is_required_to_complete_prompt_13"
+  ],
+  "validation": {
+    "focused_tests": "90 passed",
+    "property_versions_range": "2_to_12",
+    "mutation": "2_of_2_killed",
+    "full_tests": "4593 passed",
+    "coverage_percent": 97.52,
+    "schemas": "48 schemas and 38 representative documents",
+    "parity": "9/9 passed",
+    "security": "dependency audit, licence inventory, secret scan passed",
+    "sbom_components": 111
+  }
+}

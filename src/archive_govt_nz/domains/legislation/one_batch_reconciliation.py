@@ -114,9 +114,9 @@ def _validate_inventory(manifest: dict[str, Any]) -> set[str]:
 
 
 def _validate_record_header(
-    record: dict[str, Any], discovered: set[str], document_ids: set[str]
+    record: dict[str, Any], discovered: set[str], document_work_ids: dict[str, str]
 ) -> tuple[str, str]:
-    """Validate one record schema, work membership, and document identity."""
+    """Validate one record schema and bind its document identity to one work."""
     schema_version = record.get("schema_version")
     if schema_version not in {
         "archive-govt-nz.legislation/v1",
@@ -129,9 +129,9 @@ def _validate_record_header(
     document_id = record.get("document_id")
     if not isinstance(document_id, str) or not document_id:
         _fail("canonical_document_missing")
-    if document_id in document_ids:
+    prior_work = document_work_ids.setdefault(document_id, work_id)
+    if prior_work != work_id:
         _fail("document_identity_duplicate")
-    document_ids.add(document_id)
     return str(schema_version), work_id
 
 
@@ -168,11 +168,11 @@ def _validate_record_identities(
 ) -> None:
     """Validate cumulative record schemas and canonical identity uniqueness."""
     manifestation_ids: set[str] = set()
-    document_ids: set[str] = set()
+    document_work_ids: dict[str, str] = {}
     expression_work_ids: dict[str, str] = {}
     for record in records:
         schema_version, work_id = _validate_record_header(
-            record, discovered, document_ids
+            record, discovered, document_work_ids
         )
         _validate_expression_identity(record, work_id, expression_work_ids)
         _validate_manifestation_identity(record, manifestation_ids)
