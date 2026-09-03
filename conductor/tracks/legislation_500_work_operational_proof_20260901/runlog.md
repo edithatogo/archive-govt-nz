@@ -30,3 +30,12 @@
 - Reviewed and validated the durable parent-reference implementation: 111
   focused tests passed and schema validation covered 48 schemas/38 documents.
   No live Hugging Face retrieval or parent adoption occurred.
+
+
+# 2026-09-03 — durable parent selected and preflighted
+
+- Observed Prompt 15 merged at `d60ed58420d1fe39dc420bbe047b9bf901b0d66d` and Prompt 10 merged at `5745bf3e38924dc968af70842dc6ed7a776e9e05`.
+- Pinned the approved public Hugging Face package at revision `ae4da4ef0446f68fddd8f53279ecb1245f1529b9`, exact size 71,776,346 and SHA-256 `2e4b75333e947d812842147c939117fc666799e4497b80f125104f721ef68e3c`.
+- Retained failed preflight attempts for noncanonical reference bytes and an incorrect conflation of historical package rights with later publication authority. The correction validates both facts independently.
+- The third repository-native no-write preflight restored 555 files and reproduced manifest root `877ba501a25570a29c1aada7979562d8c62c7f043865125cf402310eabc09544` and inventory root `9ca6dc505f991e015c6c997827878d8c7e9381b214a1544eb338328a285c6894`.
+- No credential was read and no source acquisition, hosted dispatch, state upload, or publication occurred. The authorized hosted run remains pending merge and green exact-head checks.

@@ -47,3 +47,12 @@ and seal with the same GitHub Actions run identity recorded by the harvest
 receipt. This removes the deterministic pre-seal mismatch without asserting
 that the hosted lane has run. Batch IDs remain non-authoritative correlation
 fields.
+
+
+## Superseding durable-parent preflight — 2026-09-03
+
+Prompt 15 merged at `d60ed58420d1fe39dc420bbe047b9bf901b0d66d` and Prompt 10 merged at `5745bf3e38924dc968af70842dc6ed7a776e9e05`. `config/legislation/parents/current.json` pins the public Hugging Face package by immutable revision, 71,776,346-byte size, outer SHA-256, inner manifest/inventory roots, and the separately verified public-rights authority.
+
+The append-only `parent-preflight-20260903.json` retains two failed attempts before the successful no-write restoration. The successful attempt anonymously retrieved the exact package, verified outer and inner fixity, restored 555 files, and reproduced the expected roots and 552-record parent scope. It did not read the NZ legislation credential, acquire sources, write canonical state, publish, or dispatch GitHub Actions. Its receipt SHA-256 is `ff5ff6dbc6520c9b81be0cc621ed21a50700a5933d035360663b930a7ecb6a1b`.
+
+The remaining gate is the authorized hosted exact-inventory execution after this PR merges and its exact-head checks pass.

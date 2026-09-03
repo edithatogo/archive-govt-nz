@@ -6,7 +6,7 @@
   "status": "in_progress",
   "track_id": "legislation_500_work_operational_proof_20260901",
   "type": "operations",
-  "updated_at": "2026-09-03T08:57:36+00:00",
+  "updated_at": "2026-09-03T11:16:00+00:00",
   "gates": [
     {
       "id": "prompt-06",
@@ -17,8 +17,8 @@
     {
       "id": "prompt-10",
       "kind": "durable_recovery",
-      "status": "blocked",
-      "evidence": "https://github.com/edithatogo/archive-govt-nz/issues/327"
+      "status": "passed",
+      "evidence": "https://github.com/edithatogo/archive-govt-nz/pull/329"
     },
     {
       "id": "exact-lane",
@@ -35,14 +35,14 @@
     {
       "id": "compatible-parent",
       "kind": "lineage",
-      "status": "blocked",
-      "evidence": "config/legislation/parents/current.json absent"
+      "status": "passed",
+      "evidence": "config/legislation/parents/current.json and evidence/migrations/corpus-legislation-nz/500-work-operational-proof/parent-preflight-20260903.json"
     },
     {
       "id": "execution",
       "kind": "external_acquisition",
-      "status": "blocked",
-      "evidence": "fail-closed preflight observation"
+      "status": "pending",
+      "evidence": "authorized; pending merged exact-head hosted preflight and dispatch"
     }
   ]
 }

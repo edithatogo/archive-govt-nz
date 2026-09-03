@@ -33,3 +33,8 @@ Focused parent-state/workflow tests (111) and schema validation (48 schemas,
 38 documents) pass. The implementation remains fail-closed: it does not
 publish, retrieve a live package, create a parent, or satisfy the operational
 gate by itself.
+
+
+## Review update — recovered public parent
+
+The merged Prompt 10 recovery and Prompt 15 publication provide the missing authority. The current parent reference binds the immutable Hugging Face revision and package bytes to those two target commits and checks the separate public-rights receipt without rewriting the package's historical inner rights field. The successful repository-native preflight independently downloaded and restored the package with exact roots and counts. Hosted preflight and the authorized 500-work execution remain post-merge operational gates.
