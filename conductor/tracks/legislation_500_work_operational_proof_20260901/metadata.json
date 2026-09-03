@@ -6,7 +6,7 @@
   "status": "in_progress",
   "track_id": "legislation_500_work_operational_proof_20260901",
   "type": "operations",
-  "updated_at": "2026-09-04T00:00:00+10:00",
+  "updated_at": "2026-09-03T16:56:00Z",
   "gates": [
     {
       "id": "prompt-06",
@@ -42,7 +42,7 @@
       "id": "execution",
       "kind": "external_acquisition",
       "status": "blocked",
-      "evidence": "run 33774317947 failed closed with document_identity_duplicate; repository remediation pending review"
+      "evidence": "run 33772828586 was manually cancelled during acquisition before the 360-minute workflow timeout; run 33774317947 then failed closed with document_identity_duplicate; remediation merged to main as cbad1dd9 in PR #379, and the track contract requires explicit authorization before a hosted 500-work retry"
     }
   ]
 }

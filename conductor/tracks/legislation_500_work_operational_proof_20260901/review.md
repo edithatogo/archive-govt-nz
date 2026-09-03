@@ -42,3 +42,8 @@ The merged Prompt 10 recovery and Prompt 15 publication provide the missing auth
 ## Review update — document identity remediation
 
 The failed hosted run exposed an identity-level mismatch rather than incomplete acquisition. In the FRBR model, `document_id` denotes the Work-level document and therefore repeats across retained version records; `expression_id` and `manifestation_id` distinguish the versions and encodings. The reconciler had incorrectly treated every repeated Work document as a collision. The correction maintains a document-to-Work binding: repetition within one Work is valid, while reuse by a different Work still fails closed. Expression cross-Work collisions and all duplicate Manifestations remain rejected. No operational retry is part of this repository-only correction.
+
+PR #379 merged this correction to `main` at `cbad1dd9` after all required
+hosted checks passed. Post-merge focused and full local validation passed. No
+new correctness, security, provenance, or contract finding was identified in
+the merged diff; the remaining work is operational execution, not code repair.
