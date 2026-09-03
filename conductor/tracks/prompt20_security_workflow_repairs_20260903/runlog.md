@@ -14,3 +14,11 @@
 - Candidate green phase: the same focused suite passed (10 passed), and
   actionlint returned exit 0. Ruff first found one 91-character line; this was
   corrected without changing behavior.
+- Notification-focused coverage passed with 100% line and branch coverage.
+- The first `./scripts/validate.sh` run reached 4,543 passes but failed on two
+  unrelated Hypothesis deadline flakes under ten-worker load:
+  `test_union_algebra` and `test_decimal_property_matches_arrow`.
+- The two tests passed together in isolation (2 passed). The unchanged full
+  harness then passed: 4,545 tests, 97.50% overall coverage, 48 schemas and 38
+  representative documents, 9/9 parity, all registered mutation gates,
+  dependency audit, licence inventory, secret scan, and 111-component SBOM.
