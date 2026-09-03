@@ -56,6 +56,7 @@ def test_workflow_is_manual_least_privilege_and_globally_serialized() -> None:
     assert "timeout-minutes: 360" in text
     assert "confirmed_execution" in text
     assert "persist-credentials: false" in text
+    assert "fetch-depth: 0" in text
     assert "HF_TOKEN" not in text
     assert "ZENODO" not in text
     assert "contents: write" not in text
@@ -89,8 +90,28 @@ def test_workflow_reconciles_seals_and_retains_every_attempt() -> None:
     assert SEED_HASH in text
     assert "receipts/reconciliation.json" in text
     assert "receipts/continuation.json" in text
-    assert text.count("if: always()") >= 2
+    assert text.count("!inputs.preflight_only && always()") >= 2
     assert "legislation-exact-inventory-attempt-" in text
+
+
+def test_parent_preflight_cannot_acquire_or_upload() -> None:
+    """The first hosted run verifies only the durable parent and exposes no secret."""
+    text = WORKFLOW.read_text(encoding="utf-8")
+    assert "preflight_only:" in text
+    assert (
+        "Restore and verify the parent without source acquisition or state upload"
+        in text
+    )
+    assert "default: false" in text
+    assert "if: inputs.preflight_only" in text
+    assert text.count("if: ${{ !inputs.preflight_only") >= 6
+    preflight = text[
+        text.index("Verify no-write parent preflight") : text.index(
+            "Revalidate every governed work ID"
+        )
+    ]
+    assert "NZ_LEGISLATION_API_KEY" not in preflight
+    assert "upload-artifact" not in preflight
     assert "if-no-files-found: error" in text
     assert 'MAX_STATE_BYTES: "134217728"' in text
     assert 'MAX_CAS_BYTES: "67108864"' in text

@@ -27,10 +27,16 @@
       "evidence": ".github/workflows/exact-inventory.yml"
     },
     {
+      "id": "parent-v3-compatibility",
+      "kind": "lineage_contract",
+      "status": "passed",
+      "evidence": "https://github.com/edithatogo/archive-govt-nz/pull/364"
+    },
+    {
       "id": "compatible-parent",
       "kind": "lineage",
       "status": "passed",
-      "evidence": "config/legislation/parents/current.json"
+      "evidence": "config/legislation/parents/current.json and evidence/migrations/corpus-legislation-nz/500-work-operational-proof/parent-preflight-20260903.json"
     },
     {
       "id": "execution",

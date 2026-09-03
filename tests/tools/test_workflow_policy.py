@@ -49,6 +49,13 @@ def test_workflows_use_immutable_action_refs() -> None:
     assert "use_oidc: true" in ci
 
 
+def test_ci_fetches_history_for_commit_bound_authority() -> None:
+    """Authority lineage tests need the pinned historical commits available."""
+    root = Path(__file__).parents[2]
+    text = (root / ".github/workflows/ci.yml").read_text(encoding="utf-8")
+    assert "fetch-depth: 0" in text
+
+
 def test_health_discovery_preserves_failure_receipts() -> None:
     """Hosted source failures must still upload the bounded discovery receipt."""
     root = Path(__file__).parents[2]

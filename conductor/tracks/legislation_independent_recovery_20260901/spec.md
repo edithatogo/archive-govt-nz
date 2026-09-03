@@ -1,0 +1,3 @@
+# Specification
+
+Prove two clean recoveries from the exact durable authority selected in Prompt 09 without Actions cache dependency. Scope is recovery receipts and runbook, then narrowly necessary execution tooling when prerequisites exist. No publication, rights decision, metadata migration, DOI correction, package redesign or unrelated CI repair. This preparation does not complete the drill. Authoritative pending input: Prompt 09 PR #324 at 1392195f7947d1dec1e89f43788e3734537a6981, config/legislation/preservation.json and tools/legislation_durable_state.py. Prompt 08 on main supplies parent authority controls.

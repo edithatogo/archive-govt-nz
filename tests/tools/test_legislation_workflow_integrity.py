@@ -125,3 +125,13 @@ def test_source_set_steady_state_configuration() -> None:
     assert "rights_class: crown_copyright" in content
     assert "external_actions_enabled: false" in content
     assert content.count("activation: inactive") == 2
+
+
+def test_exact_inventory_uses_one_hosted_execution_identity() -> None:
+    """Bind restore and seal to the GitHub run that emits the receipt."""
+    content = Path(".github/workflows/exact-inventory.yml").read_text(encoding="utf-8")
+    assert "execution-id: ${{ github.run_id }}" in content
+    assert "PARENT_EXECUTION_ID: ${{ github.run_id }}" in content
+    assert "execution-id: ${{ inputs.batch_id }}" not in content
+    assert "PARENT_EXECUTION_ID: ${{ inputs.batch_id }}" not in content
+    assert "Batch correlation identifier" in content

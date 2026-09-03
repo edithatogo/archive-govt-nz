@@ -1,0 +1,18 @@
+{
+  "acquisition_performed": false,
+  "authority_commit": "b408aa3660b5de9d68fec31ef2273938226e5f18",
+  "authority_receipt_path": "evidence/migrations/corpus-legislation-nz/durable-recovery/authority-decision-20260903.json",
+  "authority_receipt_sha256": "2a41eb63979f9276b6f30a35fd87693a51f31b9a80a0af8be9a8a6e833599fa5",
+  "continuation_dispatched": false,
+  "decision_id": "maintainer-legislation-selected-552-20260903",
+  "expires_at": null,
+  "expiry_policy": "exact_hash_bound_no_expiry",
+  "governed_rights_authority_commit": "d60ed58420d1fe39dc420bbe047b9bf901b0d66d",
+  "governed_rights_readback_sha256": "38160c4683112d951351e20d68fe34198dcab797eb371d6cf6e6d91160ba9fed",
+  "mode": "adopt_recovered_merged_state_bounded_no_write",
+  "publication_performed": false,
+  "stage_input_tree_sha256": "cb1fab38cc1d64404a7a89093c81ecbaba79d459eff89c1e6db23bee428e6fa4",
+  "stage_output_tree_sha256": "cb1fab38cc1d64404a7a89093c81ecbaba79d459eff89c1e6db23bee428e6fa4",
+  "stage_unchanged": true,
+  "status": "authorized_valid_parent_no_write"
+}
