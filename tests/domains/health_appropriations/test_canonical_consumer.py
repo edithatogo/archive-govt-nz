@@ -6,12 +6,14 @@ import hashlib
 from decimal import Decimal
 from pathlib import Path
 
+import pyarrow as pa
 import pytest
 from tests.domains.health_appropriations.test_budget_classification import inputs
 from tests.domains.health_appropriations.test_historical_snapshot import (
     _package as historical_raw_package,
 )
 
+from archive_govt_nz.domains.health_appropriations import canonical_consumer
 from archive_govt_nz.domains.health_appropriations.budget_canonical_export import (
     export_budget_appropriations,
 )
@@ -106,6 +108,25 @@ def test_wrong_kind_and_repeated_identity_fail_closed(tmp_path: Path) -> None:
     )
     with pytest.raises(ValueError, match=r"^canonical_consumer_invalid$"):
         query_nominal_budget((wrong,))
+
+
+def test_alternative_packages_for_one_vintage_fail_closed(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    package = _package(tmp_path)
+    canonical, receipt = canonical_consumer.read_verified_canonical_tables(package)
+    table = canonical["appropriation_fact"]
+    ids = [f"alternative-{index}" for index in range(table.num_rows)]
+    alternative = table.set_column(
+        table.schema.get_field_index("record_id"), "record_id", pa.array(ids)
+    )
+    responses = iter(((canonical, receipt), ({"appropriation_fact": alternative}, receipt)))
+    monkeypatch.setattr(
+        canonical_consumer, "read_verified_canonical_tables", lambda _package: next(responses)
+    )
+
+    with pytest.raises(ValueError, match=r"^canonical_consumer_invalid$"):
+        query_nominal_budget((package, package))
 
 
 def test_historical_query_is_an_identity_projection(tmp_path: Path) -> None:

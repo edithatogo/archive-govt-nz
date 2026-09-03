@@ -120,6 +120,8 @@ def query_nominal_budget(
             tables.append(table)
             receipts.append(receipt)
         combined = pa.concat_tables(tables)
+        vintages = [receipt["vintage"] for receipt in receipts]
+        _require(len(vintages) == len(set(vintages)))
         rows = combined.to_pylist()
         ids = [row["record_id"] for row in rows]
         _require(len(ids) == len(set(ids)))
@@ -193,6 +195,8 @@ def query_historical_nominal(
             tables.append(table)
             receipts.append(receipt)
         combined = pa.concat_tables(tables)
+        vintages = [receipt["vintage"] for receipt in receipts]
+        _require(len(vintages) == len(set(vintages)))
         rows = combined.to_pylist()
         ids = [row["record_id"] for row in rows]
         _require(len(ids) == len(set(ids)))
