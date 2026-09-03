@@ -206,7 +206,7 @@
   },
   {
     "name": "durable_rights",
-    "old": "v.equal(document[\"rights\"][\"payload\"], \"public_approved\", \"durable_rights\")",
+    "old": "v.equal(document[\"rights\"][\"payload\"], \"blocked\", \"durable_historical_rights\")",
     "new": "None"
   },
   {

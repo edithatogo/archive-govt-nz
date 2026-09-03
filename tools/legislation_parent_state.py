@@ -331,7 +331,7 @@ def durable_files(raw: bytes, reference: dict[str, Any]) -> dict[str, bytes]:
     module = sibling("legislation_durable_state")
     document, files = module.verify(raw, durable["sha256"])
     v.equal(document["roots"], durable["roots"], "durable_roots")
-    v.equal(document["rights"]["payload"], "public_approved", "durable_rights")
+    v.equal(document["rights"]["payload"], "blocked", "durable_historical_rights")
     v.equal(document["input"]["source"], reference["parent_source"], "durable_scope")
     v.equal(reference["parent_source"], source_identity(""), "durable_parent_scope")
     v.equal(
@@ -347,6 +347,38 @@ def durable_files(raw: bytes, reference: dict[str, Any]) -> dict[str, bytes]:
         for name, data in files.items()
         if name in {"manifest.json", "checkpoint.json"} or name.startswith(M.CAS)
     }
+
+
+def check_durable_authority(reference: dict[str, Any]) -> None:
+    """Bind later public rights approval and recovery to committed exact evidence."""
+    authority = reference["authority"]
+    path = authority["publication_receipt_path"]
+    raw = git_bytes(["show", authority["publication_commit"] + ":" + path])
+    v.equal(
+        v.sha(raw), authority["publication_receipt_sha256"], "durable_authority_hash"
+    )
+    receipt = v.load(raw)
+    v.equal(receipt["status"], "public_verified", "durable_authority_status")
+    v.equal(
+        receipt["authority"]["decision_id"],
+        authority["decision_id"],
+        "durable_authority_decision",
+    )
+    v.equal(
+        receipt["rights"]["status"],
+        "approved_public_selected_552",
+        "durable_authority_rights",
+    )
+    expected = {
+        "path": "/".join(reference["durable"]["path_parts"]),
+        "size_bytes": reference["durable"]["size_bytes"],
+        "sha256": reference["durable"]["sha256"],
+    }
+    v.require(
+        condition=expected in receipt["authority"]["permitted_files"],
+        code="durable_authority_package",
+    )
+    git_bytes(["merge-base", "--is-ancestor", authority["recovery_commit"], "HEAD"])
 
 
 def authorize(
@@ -525,6 +557,7 @@ def restore(  # noqa: C901, PLR0912, PLR0915 - ordered verification transaction
                     reference["child_source"], request["source"], "parent_child_source"
                 )
                 v.equal(mode, "continuation", "durable_mode")
+                check_durable_authority(reference)
             else:
                 v.equal(reference["source"], request["source"], "parent_source")
                 v.equal(

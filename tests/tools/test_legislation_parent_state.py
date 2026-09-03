@@ -279,6 +279,7 @@ def test_current_durable_parent_is_bound_to_merged_authorities() -> None:
         (P.ROOT / "config/legislation/parents/current.json").read_bytes()
     )
     P.schema(reference, "legislation-durable-parent-reference")
+    P.check_durable_authority(reference)
     assert (
         P.ROOT / "config/legislation/parents/current.json"
     ).read_bytes() == P.M.encoded(reference)
@@ -322,7 +323,7 @@ def test_durable_inner_verifier_binds_rights_roots_and_parent_scope(
     reference = durable_reference()
     document = {
         "roots": copy.deepcopy(reference["durable"]["roots"]),
-        "rights": {"payload": "public_approved"},
+        "rights": {"payload": "blocked"},
         "input": {"source": copy.deepcopy(reference["parent_source"])},
     }
     fake = type(
@@ -338,7 +339,7 @@ def test_durable_inner_verifier_binds_rights_roots_and_parent_scope(
     assert P.durable_files(b"durable", reference) == {"manifest.json": b"{}"}
     for key, value, failure in (
         ("roots", {**document["roots"], "records": 551}, "durable_roots"),
-        ("rights", {"payload": "blocked"}, "durable_rights"),
+        ("rights", {"payload": "public_approved"}, "durable_historical_rights"),
         ("input", {"source": reference["child_source"]}, "durable_scope"),
     ):
         changed = copy.deepcopy(document)
