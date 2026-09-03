@@ -22,7 +22,7 @@
     "representative_documents": 38,
     "sbom_components": 111,
     "schemas_validated": 48,
-    "secret_scan": "passed",
+    "credential_scan": "passed",
     "tests_passed": 4575
   },
   "observed_at": "2026-09-03T09:39:08Z",
@@ -34,16 +34,26 @@
   },
   "readbacks": [
     {
-      "bytes": 1423,
+      "bytes": 1194,
       "endpoint": "GET /repos/edithatogo/archive-govt-nz/rulesets/22180861",
+      "excluded_response_fields": [
+        "_links",
+        "node_id"
+      ],
       "path": "evidence/assurance/main-ruleset-20260903/ruleset-22180861-readback.json",
-      "sha256": "722f9795bc7afcc3ef522fcaa0d4556b141fd0966442bd62e1f8991267ac2bbb"
+      "sha256": "33076a0f1e6a280997dba83163dd845ef95c374cacf258bb118b5b7f3d641364",
+      "source_response_sha256": "722f9795bc7afcc3ef522fcaa0d4556b141fd0966442bd62e1f8991267ac2bbb"
     },
     {
-      "bytes": 478,
+      "bytes": 249,
       "endpoint": "GET /repos/edithatogo/archive-govt-nz/rulesets",
+      "excluded_response_fields": [
+        "_links",
+        "node_id"
+      ],
       "path": "evidence/assurance/main-ruleset-20260903/repository-rulesets-readback.json",
-      "sha256": "72c7918ddc9e4d48e78ce18eeafa039680b318cac4aee3bd03aedb6465efb5a0"
+      "sha256": "790998f99481caaad117006da19a09d8ea84aa0f03defe69dc2acd33a3e190fa",
+      "source_response_sha256": "72c7918ddc9e4d48e78ce18eeafa039680b318cac4aee3bd03aedb6465efb5a0"
     }
   ],
   "receipt_type": "github-main-ruleset-readback",

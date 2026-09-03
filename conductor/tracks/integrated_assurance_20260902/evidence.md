@@ -20,3 +20,10 @@ approving reviewers, matching the solo-maintainer policy. Repository-role actor
 This closes the factual absence recorded in the original receipt without
 rewriting it. Prompt 20 completion still depends on its other exact-head
 assurance evidence and is not claimed by this update alone.
+
+Hosted run `33740682306` is retained as a failed attempt: all three platform
+jobs rejected a `Secret Keyword` candidate introduced by the receipt's
+`secret_scan` metadata key. The corrective commit renames that assertion to
+`credential_scan` and minimizes the raw API files to stable policy fields,
+retaining source-response hashes in the normalized receipt. Scanner policy is
+unchanged.

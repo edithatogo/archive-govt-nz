@@ -37,7 +37,12 @@ run results remain separate assurance evidence.
 
 Files:
 
-- `ruleset-22180861-readback.json`: exact direct GitHub API response;
-- `repository-rulesets-readback.json`: independent repository-list response;
+- `ruleset-22180861-readback.json`: deterministic direct-response projection;
+- `repository-rulesets-readback.json`: deterministic repository-list projection;
 - `main-ruleset-readback-receipt.json`: normalized assertions, hashes, target
   commit, authorization scope, and bounded interpretation.
+
+The projections omit only GitHub's opaque `node_id` and redundant `_links`
+fields. The receipt retains SHA-256 hashes of both source responses and the
+projected files, so the evidence remains fixity-bound without storing
+scanner-sensitive opaque identifiers.

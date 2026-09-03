@@ -20,3 +20,35 @@
   4,575 tests, 97.52% project coverage, 48 schemas, 38 representative
   documents, every repository mutation lane, dependency audit, licence
   inventory, secret scan, and 111-component SBOM validation.
+- 2026-09-03: Hosted run `33740682306` failed closed on Ubuntu, macOS, and
+  Windows after the credential scanner found one candidate in the new receipt:
+  the metadata key `secret_scan`. The failure is retained. The receipt now uses
+  `credential_scan`, and the two API readbacks are deterministic projections
+  that omit only opaque `node_id` and redundant `_links` values while retaining
+  the original response hashes. No scanner exclusion or threshold changed.
+- 2026-09-03: The first focused regression attempt applied projection-only
+  assertions to the enclosing receipt as well and failed because the receipt
+  names the deliberately excluded fields. The corrected test limits structural
+  minimization assertions to the two projections and scans all three evidence
+  JSON files for credential candidates.
+- 2026-09-03: The second focused attempt called `detect-secrets` without the
+  repository's standard receipt-line exclusions and correctly detected a
+  receipt SHA-256 as high entropy. The final test imports the production
+  exclusion contract, so it exercises the same strict scanner semantics as the
+  assurance harness rather than a different command.
+- 2026-09-03: A third focused attempt imported the repository-root `tools`
+  directory as a Python package and failed collection because it is not one.
+  The corrected test adds the tools directory itself to the import path before
+  importing the production scanner constant.
+- 2026-09-03: The first full harness stopped at lint because the new focused
+  test lacked required docstrings and used an unresolved executable path. The
+  test now documents its contract and resolves `detect-secrets` explicitly;
+  no lint or security rule was suppressed.
+- 2026-09-03: The next harness passed lint and then stopped at typing because
+  the tools-directory import was intentionally invisible to static resolution.
+  The test now loads the production scanner constant through `runpy` with an
+  explicit type assertion, preserving static analysis without duplicating the
+  exclusion expression.
+- 2026-09-03: A focused static check required `runpy.run_path`'s path argument
+  to be an explicit string. Converting the repository `Path` to `str` resolved
+  the type error without changing scanner behavior.
