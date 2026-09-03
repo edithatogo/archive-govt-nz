@@ -238,8 +238,8 @@ implementation has occurred under these tracks.
   *Link: [archive/riopa_interoperability_20260831/index.md](./archive/riopa_interoperability_20260831/index.md)*
 
 ---
-- [~] **Track: Final donor lineage reconciliation (Prompt 02)**
-  *Link: [./tracks/legislation_final_donor_lineage_20260831/index.md](./tracks/legislation_final_donor_lineage_20260831/index.md)*
+- [x] **Track: Final donor lineage reconciliation (Prompt 02)**
+  *Archived: [./archive/legislation_final_donor_lineage_20260831/index.md](./archive/legislation_final_donor_lineage_20260831/index.md)*
 
 - [x] **Track: Final donor operational-state verification (Prompt 03)**
   *Link: [./tracks/legislation_final_donor_state_verification_20260831/index.md](./tracks/legislation_final_donor_state_verification_20260831/index.md)*
