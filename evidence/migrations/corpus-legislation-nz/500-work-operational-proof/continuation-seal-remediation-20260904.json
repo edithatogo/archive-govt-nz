@@ -1,0 +1,71 @@
+{
+  "diagnosis": {
+    "cause": "auxiliary reconciliation receipt was written inside the closed canonical state namespace",
+    "deterministic_failure_class": "state_path",
+    "fix": "write and retain reconciliation under build/legislation-attempt without changing the canonical state package format or allowlist"
+  },
+  "issue": 380,
+  "limitations": [
+    "failed_run_is_not_a_valid_parent",
+    "complete_continuation_package_not_uploaded",
+    "no_additional_retry_dispatched",
+    "operational_completion_remains_unproven"
+  ],
+  "operational_chain": {
+    "batch_id": "prompt13-final-bounded-retry-20260904",
+    "cancelled_run": 33772828586,
+    "duplicate_failure_run": 33774317947,
+    "job": 100736366820,
+    "seal_failure_run": 33781603950
+  },
+  "remote_evidence": {
+    "artifact_list_sha256": "096dd7aaa27a55d3890099bb949635c99c92cd163e39d08d0bfc2af99c8afbd5",
+    "attempt_artifact": {
+      "id": 9904099762,
+      "sha256": "d7c1a91048ba43c44879a905d536f093d53414e9274c7c19e949162f8f82af67",
+      "size_bytes": 8133
+    },
+    "harvest_receipt_sha256": "24e168054ee187e90f44a203d34502a757d8ebfeae65290d17a2d824c1de7b96",
+    "issue_comment_id": 5529279750,
+    "issue_comment_readback_sha256": "cd98bdb0acda189521db44e8d8d23427315ac8e2fa2d3a24bc34cdcad58383be",
+    "parent_artifact": {
+      "id": 9903782230,
+      "sha256": "1e09b3ba08397f392933dadf678740170566b0fb7313b9ffbf84b5805d9bcd85",
+      "size_bytes": 1465
+    },
+    "reconciliation_receipt_sha256": "f69dac23f98b3575ae14231e65567581a0e4083f7f10cb5f0e1af67e8d6c4f51",
+    "run_json_sha256": "c8125ce3c62da9925434a00f00272738d5b75dc321291a370aadc046e5fc6c8f",
+    "run_log_sha256": "8ef66242a397bd69892dd6ceddc4c0c882b4c1389cfce63dca440a89d52faeff"
+  },
+  "schema_version": "archive-govt-nz.prompt13-continuation-seal-remediation/v1",
+  "status": "remediation_prepared_retry_not_authorized",
+  "successful_bounded_work": {
+    "already_processed_skipped": 0,
+    "cas_objects_after": 904,
+    "cas_objects_before": 552,
+    "changed_preserved": 352,
+    "failed": 0,
+    "output_checkpoint_root": "249744bbec3e0791babd9cb2aa18a7e010e04c54577ea7248dbd9448ee2badf7",
+    "output_manifest_root": "d12dffb1e80d9cafa6d54f459a662c90bb57f04372ed19580626e8ad931ff928",
+    "parent_checkpoint_root": "f67e1bce7952f2bedb1840e5dad4237e383b784bdc44dea76b28ae5c27c100c3",
+    "parent_manifest_root": "877ba501a25570a29c1aada7979562d8c62c7f043865125cf402310eabc09544",
+    "partial": 0,
+    "reconciliation_mismatch_count": 0,
+    "reconciliation_status": "passed",
+    "records_after": 904,
+    "records_before": 552,
+    "total_retry_count": 0,
+    "unavailable": 0,
+    "unchanged_revalidated": 148,
+    "works_attempted": 500,
+    "works_in_scope": 500
+  },
+  "target_commit": "cbad1dd9fb5a89197cf37bd53a673b021685812e",
+  "terminal_failure": {
+    "complete_state_uploaded": false,
+    "failure": "parent_state_failed: invalid_request_or_output",
+    "publication_claimed": false,
+    "seal_exit_code": 1,
+    "step": "Seal verified continuation lineage"
+  }
+}

@@ -1,5 +1,61 @@
 # Self-Review
 
+## Health domain registration reconciliation — 2026-09-04 UTC
+
+The immutable Arrow registry exposes the dedicated `health_appropriations`
+domain and all eight versioned recordset shapes without modifying any other
+domain contract. The combined Arrow/JSON schema suites pass 85 tests, so the
+separate domain-registration task is evidence-complete. The broader fixture
+task remains open: these contracts are explicitly structural-only and do not
+yet prove cross-row stable-ID uniqueness, period compatibility, null-reason
+consistency, or lineage closure.
+
+## Preservation acceptance reconciliation — 2026-09-04 UTC
+
+- Reconciled five stale plan boxes against retained evidence without promoting
+  rights, semantic, publication, or historical-coverage claims. The workbook
+  fixture umbrella is supported by completed member-level, formula, hidden
+  content, macro, external-link, unsupported-part, and bounded-scan contracts.
+- The source census contains 141 unique records with exactly one disposition:
+  73 captured resources and 68 reason-coded out-of-scope records. The
+  independent preservation audit rehashed all 73 CAS objects and their 73 WARC
+  payloads with no missing or mismatched object.
+- The retained checkpoint also records donor reconstruction, controlled
+  interruption/resume and restriction paths, focused/property/mutation checks,
+  and an exit-zero full harness. These marks describe the observed bounded
+  source set only; new editions, rights decisions, and publication remain open.
+- The earlier `health-survey-assessment.md` already completed the plan's
+  non-blocking evaluation task: it records the analytical question, temporal
+  and geography boundaries, rights observations, and the still-unmet export
+  and dictionary gate. Marking that evaluation complete does not authorize or
+  claim survey acquisition or integration.
+
+## Optional graph/vector evaluation — 2026-09-04 UTC
+
+The decision is consistent with C-01/C-02 and W-07. Existing repository search
+code demonstrates a generic deterministic projection, but the health track has
+no measured health-specific retrieval use case and no pinned external model,
+quality threshold, or drift receipt. Deferral avoids making optional derived
+state authoritative and introduces no dependency, payload, publication, or
+rights change. Reopening requires a scoped query set and reproducibility
+contract; no code finding is created by this evaluation.
+
+## Phase 1 disposition reconciliation — 2026-09-04 UTC
+
+The existing final census and donor structural evidence satisfy the bounded
+accounting task: 141 unique source records have one explicit terminal
+disposition and no unresolved/retryable state; all donor binaries and modeled
+data areas have inventory evidence. The review preserves the documented scope
+gap: this does not assert all historical annual Budget/forecast editions were
+  enumerated or that every captured source is rights-cleared for republication.
+
+## Bronze tracked-byte boundary — 2026-09-04 UTC
+
+The hash comparison covers every tracked regular file, not only extension-based
+candidates. None matches the 73 captured source-object hashes and none exceeds
+10 MiB. This supports the repository storage boundary without claiming that
+external CAS/WARC custody, rights eligibility, or publication is complete.
+
 ## Forecast explicit preflight — 2026-08-31 UTC
 
 Independent source/test review found no actionable issue. The explicit dry
@@ -747,6 +803,82 @@ metadata/materialization. Existing byte/row/expanded guards and propagated
 OSError boundary remain. This is not hostile-Parquet sandboxing. All 63 critical
 tests, 112 cold mutants and the full 4,239-test native passed; hosted exact-head remains
 separate. See [scope and evidence](./budget-reader-bounds.md).
+# Implementation continuation review — 2026-09-03
+
+Repository-owned validation is current and passing on Python 3.14.6. Existing
+inventory, workbook-safety, formula-cache, macro/embedded-part, and bounded
+format contracts are present and covered by the test suite. The track is not
+archive-eligible: source enumeration and national derived-series work remain
+incomplete, and public publication, rights/privacy review, external payload
+access, and hosted evidence are still gated. No external repository outside
+`edithatogo` was contacted or mutated.
+# Conductor review — 2026-09-03
+
+Review outcome: repository-owned implementation and Python 3.14 validation are
+current; no high-confidence code defect was identified in this review slice.
+The track remains incomplete and cannot be archived. Pending plan tasks cover
+official source enumeration, derived-series and Gold/Platinum construction,
+rights/privacy qualification, public Hugging Face delivery/readback, hosted
+recovery and operational evidence, and final release acceptance. These remain
+factual or external gates. No unsupported completion or publication claim is
+made.
+
+## 2026-09-03: Exclusive Budget appropriation exporter review
+
+Independent review found four actionable issues in the initial reconstruction:
+output-root pathname replacement, post-materialization resource checks, missing
+adversarial/exact-parity cases, and failure-marker exception precedence. The
+fix anchors I/O to the exclusively opened directory descriptor and verifies
+the public output pathname still names that inode at every boundary, adds bounded
+incremental serialization and running aggregate admission, covers source-order,
+Decimal/context, equality/over-boundary, extra-entry, root-replacement,
+readback and double-interrupt cases, and ensures the saved original exception
+wins. Post-fix review found no unresolved issue in this bounded local-only
+scope. Final focused coverage, 63 cold mutants and the full native harness pass.
+
+The subsequent exact-head retained two-vintage replay passed independently of
+the focused fixtures: four fresh packages, exact six-file closure, dry/write
+hash parity, paired-build byte identity, public projector/readback equality,
+400 facts, 4,400 canonical lineage records and complete 6,800-entry original
+lineage accounting. Ten retained input files were byte-unchanged. This evidence
+remains local-only and does not alter the rights or publication assessment.
+
+Hosted macOS subsequently exposed an order-dependent test-only assertion: the
+caller-local Decimal context was correctly unchanged, but the test additionally
+assumed an unrelated process-global `Inexact` flag began false. The failed log
+was retained and classified as an assertion failure. Removing only that global
+precondition preserves the exact local flags/traps/precision and Decimal(38,18)
+checks without changing production code or weakening a repository gate.
+The refreshed 63-mutant cold lane and 4,626-test native harness both passed;
+the correction is locally closed subject to fresh exact-head hosted checks.
+
+## 2026-09-03: Windows persistence portability review
+
+Hosted Windows exposed a deterministic platform mismatch in the POSIX-only
+directory-fd reservation path. The scoped correction preserves descriptor-
+relative no-follow I/O on POSIX and uses repeated inode and reparse-point checks
+under the existing trusted-parent contract where directory fds are unavailable.
+It explicitly does not claim hostile-filesystem transactional equivalence.
+Adversarial tests cover junction/symlink rejection and modeled ordinary root
+replacement at reservation, write and listing boundaries. Focused line/branch
+coverage is 100%; all 83 cold mutants and the 4,631-test native harness pass.
+Fresh exact-head hosted validation remains pending.
+
+The next Windows run exposed short-write semantics rather than another path-
+identity defect. The final writer loops over a bounded memoryview, rejects no-
+progress writes, and retains the existing size and identity checks. POSIX-only
+fault injection is capability-scoped without weakening any fallback test. The
+focused, 88-mutant cold and 4,632-test native lanes pass; hosted exact-head
+validation remains separate.
+
+Explicit capability-safe binary flags on Windows complete the fallback
+descriptor correction. Focused, cold mutation and native validation pass;
+fresh exact-head hosted validation remains required.
+
+The last Windows failure was isolated to synthetic test setup; all production
+tests passed. The capability-aware correction is test-only, and focused, cold
+mutation and full native validation pass.
+
 # 2026-09-03 historical canonical consumer checkpoint
 
 Reviewed `historical_consumer.py`, its adversarial tests and the paired track

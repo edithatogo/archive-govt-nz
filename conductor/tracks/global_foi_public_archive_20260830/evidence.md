@@ -2,6 +2,27 @@
 
 This is read-only diagnosis, not implementation or publication success.
 
+## Private-network redirect correction — 2026-09-04
+
+Seven red regression cases demonstrated that capture URL safety was not
+enforced before initial or redirected transport. After the correction, all 16
+capture tests pass: unsafe initial destinations make zero requests, and unsafe
+redirect destinations make no second request. The stable outcome is
+`unsafe_url`; no raw exception, credential, payload, publication, or external
+state is retained. This repairs repository preservation safety only and does
+not alter any source-rights or publication gate.
+
+## Phase 3 closeout — 2026-09-03
+
+The repository-owned preservation phase is complete. Receipt
+`attachment-package-validation-20260831.json` records a successful full
+validation (1,621 tests, 96.15% coverage, all quality/schema/mutation and
+supply-chain stages), six killed integrity mutants, deterministic v2 package
+and index checks, v2 cold restoration, and existing v1 compatibility
+verification. These results establish implementation and local integrity only;
+they do not establish rights, public delivery, anonymous hosted restore,
+country completeness, or donor transfer.
+
 | Observation | Evidence and limitation |
 | --- | --- |
 | Receiver baseline | `5eda36dd2d204a6a859100f913b411c44a08bf62`; unrelated health work in the user's checkout is preserved through an isolated worktree. |
@@ -27,6 +48,17 @@ The full code harness is required before a PR or implementation completion.
 It is not claimed as run for this unapproved documentation proposal.
 
 Local immutable package foundation: local-package-validation-20260831.json (full harness pass; cold restore and rebuilt index parity). Source-policy observations: source-eligibility-review-20260831.json. Public payload rights and privacy remain pending; neither receipt authorizes raw publication.
+
+### Repository assurance refresh — 2026-09-03
+
+The required local validation harness passed on Python 3.14.6: Conductor
+integrity (90 tracks, zero errors), formatting, lint, typing, 4,559 tests with
+97.50% coverage, 48 schemas/38 representative documents, 9/9 parity, all
+registered mutation suites, hygiene, CAS throughput, dependency, licence,
+secret-scan, and 111-component SBOM checks. This is repository readiness
+evidence only. Hosted source progress, public raw publication/readback,
+rights/privacy review, donor transfer, and scheduled-cycle evidence remain
+external gates.
 
 Attachment census and compatible package v2: attachment-package-validation-20260831.json; local full validation and cold restoration passed, public delivery remains pending.
 

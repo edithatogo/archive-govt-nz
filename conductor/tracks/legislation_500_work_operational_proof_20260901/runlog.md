@@ -5,6 +5,11 @@
 - 2026-09-01: observed Prompt 06 issue #308 open; Prompt 10 issue #327 and preparation-only draft PR #329 open.
 - 2026-09-01: observed the governed 500-line seed and registry hash; no source acquisition occurred.
 - 2026-09-01: no dispatch attempted because the current lane is discovery-only, its cap is 50, the compatible parent reference is absent, and Prompt 08 sealing is incompatible with Prompt 12 v3 receipts.
+- 2026-09-04: superseding live readback confirmed Prompt 06 and Prompt 10 are merged, the exact-inventory lane is present, and `config/legislation/parents/current.json` is committed on `main`.
+- 2026-09-04: authorized run `33772828586` passed seed and parent restoration, then was manually cancelled during the 500-work acquisition step after about six minutes. The workflow's configured timeout is 360 minutes; elapsed time did not prove a stall. No acquisition, reconciliation, sealing, or recovery claim is made.
+- 2026-09-04: run `33772828586` reached terminal `cancelled` state. Retained artifacts verify parent lineage/restoration and the sanitized attempt seed; reconciliation is `failed` with `mismatch_count=1`, while acquisition, verify/accounting, and continuation were skipped. Operational proof remains blocked pending a complete authorized execution.
+- 2026-09-04: PR #373 assurance runs `33773918650`, `33774276982`, and `33774503187`, plus CodeQL run `33774503447`, were manually cancelled after roughly one to three minutes. Historical successful CI runs take about 10–13 minutes, and GitHub's run-level `updatedAt` does not update continuously during a running step; these cancellations do not establish a runner or workflow hang. Workflow policy lint `33774503378` passed.
+- 2026-09-04: the exact locked assurance command subsequently completed locally without modification: 4,592 tests passed with 97.52% coverage, 48 schemas/38 representative documents, parity 9/9, every configured mutation lane, dependency and licence audits, secret scan, and 111-component SBOM validation. This corrects the earlier hang diagnosis but remains local evidence, not a hosted check or Prompt 13 operational proof.
 - 2026-09-01: first repository harness attempt stopped at Conductor validation because the new in-progress track used a blocked metadata status and a noncanonical gate status. Both were corrected without weakening the validator.
 - 2026-09-01: repeated harness passed 4,393 tests at 97.48% coverage, schemas and parity, then the secret scan correctly flagged a receipt-keyword candidate. The key was renamed; the repeated secret scan and SBOM validation passed.
 - 2026-09-03: re-read target `e559d675c347615d64ae5e1c1f3ad5efd5d120f6`
@@ -48,3 +53,14 @@
 - Corrected reconciliation to bind each document identity to exactly one Work, allowing retained versions within that Work while continuing to reject cross-Work document collisions and globally duplicate Manifestations.
 - Added property coverage for 2–12 retained versions and a dedicated two-mutant gate covering both over-rejection and permissive cross-Work collision behavior.
 - No workflow retry or publication was performed. The next hosted run remains an explicit retry gate after PR review and exact-head checks.
+
+# 2026-09-04 — remediation merge readback
+
+- PR #379 merged the document-identity remediation to `main` as
+  `cbad1dd9fb5a89197cf37bd53a673b021685812e` after Ubuntu, macOS, Windows,
+  CodeQL, workflow-lint, and Codecov checks passed.
+- Focused reconciliation and assurance tests passed 90 tests after merging that
+  exact `main` head into PR #373; the full repository harness then passed 4,593
+  tests at 97.52% coverage and every configured mutation and supply-chain gate.
+- The remediation review task is complete. No hosted retry was dispatched:
+  `plan.md` deliberately retains the 500-work execution as an explicit gate.

@@ -238,8 +238,8 @@ implementation has occurred under these tracks.
   *Link: [archive/riopa_interoperability_20260831/index.md](./archive/riopa_interoperability_20260831/index.md)*
 
 ---
-- [~] **Track: Final donor lineage reconciliation (Prompt 02)**
-  *Link: [./tracks/legislation_final_donor_lineage_20260831/index.md](./tracks/legislation_final_donor_lineage_20260831/index.md)*
+- [x] **Track: Final donor lineage reconciliation (Prompt 02)**
+  *Archived: [./archive/legislation_final_donor_lineage_20260831/index.md](./archive/legislation_final_donor_lineage_20260831/index.md)*
 
 - [x] **Track: Final donor operational-state verification (Prompt 03)**
   *Link: [./tracks/legislation_final_donor_state_verification_20260831/index.md](./tracks/legislation_final_donor_state_verification_20260831/index.md)*
@@ -288,14 +288,14 @@ implementation has occurred under these tracks.
 - [x] **Track: Cutover release provenance correction (Prompt 18)**
   *Link: [./tracks/cutover_release_provenance_correction_20260902/index.md](./tracks/cutover_release_provenance_correction_20260902/index.md)*
 
-- [~] **Track: Donor Git bundle and archival presentation (Prompt 19)**
-  *Link: [./tracks/legislation_donor_bundle_archival_presentation_20260902/index.md](./tracks/legislation_donor_bundle_archival_presentation_20260902/index.md)*
+- [x] **Track: Donor Git bundle and archival presentation (Prompt 19)**
+  *Archived: [./archive/legislation_donor_bundle_archival_presentation_20260902/index.md](./archive/legislation_donor_bundle_archival_presentation_20260902/index.md)*
 
-- [~] **Track: Integrated quality, security, and hosted assurance (Prompt 20)**
-  *Link: [./tracks/integrated_assurance_20260902/index.md](./tracks/integrated_assurance_20260902/index.md)*
+- [x] **Track: Integrated quality, security, and hosted assurance (Prompt 20)**
+  *Archived: [./archive/integrated_assurance_20260902/index.md](./archive/integrated_assurance_20260902/index.md)*
 
-- [~] **Track: Prompt 20 security and workflow repairs**
-  *Link: [./tracks/prompt20_security_workflow_repairs_20260903/index.md](./tracks/prompt20_security_workflow_repairs_20260903/index.md)*
+- [x] **Track: Prompt 20 security and workflow repairs**
+  *Archived: [./archive/prompt20_security_workflow_repairs_20260903/index.md](./archive/prompt20_security_workflow_repairs_20260903/index.md)*
 
 - [x] **Track: Prompt 07 bounded legislation discovery and freshness**
   *Link: [tracks/legislation_bounded_discovery_20260903/index.md](./tracks/legislation_bounded_discovery_20260903/index.md)*

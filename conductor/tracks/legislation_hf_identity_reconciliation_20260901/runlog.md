@@ -18,3 +18,9 @@
 - 2026-09-03: the second full `./scripts/validate.sh` passed: 4,560 tests, 97.50% coverage, 48 schemas/38 documents, parity 9/9, every configured mutation lane, dependency audit, licence inventory, secret scan, and SBOM validation.
 - 2026-09-03: PR review found that the publication decision was not explicitly bound to the candidate hash/permitted files and that the shared identity schema allowed rights-status broadening. Added stable decision `archive-govt-nz-hf-publication-20260903-selected-552-v1`, approval source, candidate/state/package hashes, the exact four-file allowlist, and canonical-slug conditional rights validation.
 - 2026-09-03: review-fix full `./scripts/validate.sh` passed on current base: 4,579 tests, 97.52% branch-aware coverage, 48 schemas/38 documents, parity 9/9, all mutation lanes, dependency audit, licence inventory, secret scan, and SBOM validation.
+- 2026-09-03: implementation continuation confirmed publication/readback evidence is complete, but the final task remains pending because Prompt 13 operational proof is a named prerequisite. No additional Hugging Face mutation was attempted.
+- 2026-09-04: review regressions proved the v2 schema allowed role/provenance
+  swaps between the three fixed slugs. Slug-specific schema conditionals now
+  bind role, origin metadata, mutability, and gating. The readback test also
+  independently pins the authorized `metadata.json` path, 1,450-byte size, and
+  SHA-256. All 15 registry tests and all 48 schemas/38 documents pass.

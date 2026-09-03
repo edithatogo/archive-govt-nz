@@ -1,0 +1,19 @@
+{
+  "schema_version": "archive-govt-nz.clone-retirement-bundle/v1",
+  "status": "verified",
+  "observed_at": "2026-09-03T09:30:15Z",
+  "repository": "edithatogo/archive-govt-nz",
+  "ref": "refs/heads/main",
+  "head": "e559d675c347615d64ae5e1c1f3ad5efd5d120f6",
+  "bundle": {
+    "filename": "archive-govt-nz-final-main-20260903.bundle",
+    "path": "/Volumes/PortableSSD/Quarantine/archive-govt-nz/clone-retirement-20260903/archive-govt-nz-final-main-20260903.bundle",
+    "size_bytes": 5844571,
+    "sha256": "d7c2479cc8e696b9c1ffa265abd2ff1f8c13818f0173ab9232108ee7e147f1f7",
+    "verification": "git bundle verify passed; complete history"
+  },
+  "limitations": [
+    "This bundle covers the reachable main history only.",
+    "GitHub settings, issues, pull requests, Actions artefacts, secrets, and external data are not included."
+  ]
+}
