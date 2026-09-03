@@ -17,6 +17,9 @@ from tests.domains.health_appropriations.test_historical_snapshot import _packag
 from archive_govt_nz.domains.health_appropriations import (
     local_provenance_reader as reader,
 )
+from archive_govt_nz.domains.health_appropriations.budget_export import (
+    export_budget_appropriations,
+)
 from archive_govt_nz.domains.health_appropriations.classification_export import (
     export_budget_classification,
 )
@@ -42,8 +45,12 @@ def package(tmp_path: Path, kind: str) -> CanonicalPackageInput:
             tmp_path / "source.xlsx",
             data["manifest_sha256"],
         )
-        export_budget_classification(raw, pin, source, output, dry_run=False)
-        marker = "LOCAL_CLASSIFICATION.json"
+        if kind == "budget":
+            export_budget_appropriations(raw, pin, source, output, dry_run=False)
+            marker = "LOCAL_BUDGET.json"
+        else:
+            export_budget_classification(raw, pin, source, output, dry_run=False)
+            marker = "LOCAL_CLASSIFICATION.json"
     return CanonicalPackageInput(
         kind=kind,
         root=output,
@@ -54,7 +61,7 @@ def package(tmp_path: Path, kind: str) -> CanonicalPackageInput:
     )
 
 
-@pytest.mark.parametrize("kind", ["historical", "classification"])
+@pytest.mark.parametrize("kind", ["historical", "classification", "budget"])
 def test_verified_inventory_keeps_pure_claims_separate(
     tmp_path: Path, kind: str
 ) -> None:
@@ -67,7 +74,7 @@ def test_verified_inventory_keeps_pure_claims_separate(
     assert result["status"] == "verified_scoped_snapshots"
     assert result["inventory"]["input_fixity"] == "not_performed"
     assert result["inventory"]["rights_state"] == "not_evaluated"
-    assert len(result["inventory"]["products"]) == (3 if kind == "historical" else 2)
+    assert len(result["inventory"]["products"]) == (2 if kind == "classification" else 3)
     assert result == read_local_provenance((value,))
     assert before == {p: p.read_bytes() for p in before}
 
@@ -93,11 +100,11 @@ def test_fail_closed_does_not_create_state(tmp_path: Path, change: str) -> None:
 
 
 def _marker_name(value: CanonicalPackageInput) -> str:
-    return (
-        "LOCAL_CANONICAL.json"
-        if value.kind == "historical"
-        else "LOCAL_CLASSIFICATION.json"
-    )
+    return {
+        "historical": "LOCAL_CANONICAL.json",
+        "classification": "LOCAL_CLASSIFICATION.json",
+        "budget": "LOCAL_BUDGET.json",
+    }[value.kind]
 
 
 def _repin(value: CanonicalPackageInput, marker: object) -> CanonicalPackageInput:
@@ -120,7 +127,7 @@ def _changed_payload(
     return _repin(value, marker)
 
 
-@pytest.mark.parametrize("kind", ["historical", "classification"])
+@pytest.mark.parametrize("kind", ["historical", "classification", "budget"])
 @pytest.mark.parametrize("change", ["value", "schema", "accounting"])
 def test_repin_cannot_legitimize_wrong_projection(
     tmp_path: Path, kind: str, change: str
@@ -155,7 +162,7 @@ def test_repin_cannot_legitimize_wrong_projection(
         read_local_provenance((value,))
 
 
-@pytest.mark.parametrize("kind", ["historical", "classification"])
+@pytest.mark.parametrize("kind", ["historical", "classification", "budget"])
 @pytest.mark.parametrize("change", ["float", "bool", "extra", "rights"])
 def test_marker_types_and_claims_are_exact(
     tmp_path: Path, kind: str, change: str
@@ -200,7 +207,7 @@ def test_strict_repinned_marker_json(tmp_path: Path, payload: bytes) -> None:
         read_local_provenance((value,))
 
 
-@pytest.mark.parametrize("kind", ["historical", "classification"])
+@pytest.mark.parametrize("kind", ["historical", "classification", "budget"])
 def test_hostile_decimal_context_does_not_change_result(
     tmp_path: Path, kind: str
 ) -> None:
@@ -245,6 +252,29 @@ def test_mixed_profiles_order_is_deterministic(tmp_path: Path) -> None:
     assert read_local_provenance((first, second)) == read_local_provenance(
         (second, first)
     )
+
+
+def test_budget_dependency_graph_is_closed_and_explicit(tmp_path: Path) -> None:
+    value = package(tmp_path, "budget")
+    inventory = read_local_provenance((value,))["inventory"]
+    products = {row["recordset"]: row for row in inventory["products"]}
+    dimension = products["classification_dimension"]["key"]
+    fact = products["appropriation_fact"]["key"]
+    assert products["classification_dimension"]["dependencies"] == []
+    assert products["appropriation_fact"]["dependencies"] == [dimension]
+    assert products["field_lineage"]["dependencies"] == [fact, dimension]
+    assert sum(row["kind"] == "product" for row in inventory["edges"]) == 3
+
+
+@pytest.mark.parametrize("name", ["appropriation_fact.parquet", "LOCAL_BUDGET.json"])
+def test_budget_six_file_closure_rejects_change(tmp_path: Path, name: str) -> None:
+    value = package(tmp_path, "budget")
+    if name == "LOCAL_BUDGET.json":
+        (value.root / "unexpected").write_bytes(b"retained evidence")
+    else:
+        (value.root / name).write_bytes(b"changed")
+    with pytest.raises(ValueError, match=r"^local_provenance_reader_invalid$"):
+        read_local_provenance((value,))
 
 
 @pytest.mark.parametrize("target", ["root", "raw_root", "original", "payload"])
