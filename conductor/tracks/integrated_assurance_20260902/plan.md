@@ -7,3 +7,5 @@
 - [x] Preserve failures and open issues #352, #353, and #354.
 - [~] Obtain zero unresolved high/critical alerts, clean actionlint/equivalent
   results, and exact-head enforced hosted gates before complete classification.
+  CodeQL alerts are fixed and actionlint is clean; hosted enforcement remains
+  blocked by Issue #354.
