@@ -120,9 +120,13 @@ def test_alternative_packages_for_one_vintage_fail_closed(
     alternative = table.set_column(
         table.schema.get_field_index("record_id"), "record_id", pa.array(ids)
     )
-    responses = iter(((canonical, receipt), ({"appropriation_fact": alternative}, receipt)))
+    responses = iter(
+        ((canonical, receipt), ({"appropriation_fact": alternative}, receipt))
+    )
     monkeypatch.setattr(
-        canonical_consumer, "read_verified_canonical_tables", lambda _package: next(responses)
+        canonical_consumer,
+        "read_verified_canonical_tables",
+        lambda _package: next(responses),
     )
 
     with pytest.raises(ValueError, match=r"^canonical_consumer_invalid$"):
