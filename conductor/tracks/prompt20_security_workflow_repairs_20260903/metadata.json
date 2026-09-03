@@ -1,0 +1,12 @@
+{
+  "created_at": "2026-09-03T07:54:55Z",
+  "description": "Repair Prompt 20 CodeQL URL classification and actionlint findings",
+  "issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/352",
+  "related_issue_urls": [
+    "https://github.com/edithatogo/archive-govt-nz/issues/353"
+  ],
+  "status": "in_progress",
+  "track_id": "prompt20_security_workflow_repairs_20260903",
+  "type": "security",
+  "updated_at": "2026-09-03T08:05:00Z"
+}

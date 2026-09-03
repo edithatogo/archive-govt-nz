@@ -1,0 +1,24 @@
+# Run log
+
+## 2026-09-03
+
+- Bound the repair to issues #352 and #353 at target
+  `dcc8f37f5642fc6b4337c49bd482b126325e6b6c`.
+- Confirmed donor repository remained archived at
+  `b40587f1b1aec7356a0f623916fcc8212397d283`.
+- GitHub code-scanning readback showed both high-severity alerts open at the
+  target baseline.
+- Red phase: `uv run pytest tests/test_notifications.py
+  tests/tools/test_workflow_policy.py -q` failed in the new deceptive-URL and
+  shell-array contracts (2 failed, 8 passed).
+- Candidate green phase: the same focused suite passed (10 passed), and
+  actionlint returned exit 0. Ruff first found one 91-character line; this was
+  corrected without changing behavior.
+- Notification-focused coverage passed with 100% line and branch coverage.
+- The first `./scripts/validate.sh` run reached 4,543 passes but failed on two
+  unrelated Hypothesis deadline flakes under ten-worker load:
+  `test_union_algebra` and `test_decimal_property_matches_arrow`.
+- The two tests passed together in isolation (2 passed). The unchanged full
+  harness then passed: 4,545 tests, 97.50% overall coverage, 48 schemas and 38
+  representative documents, 9/9 parity, all registered mutation gates,
+  dependency audit, licence inventory, secret scan, and 111-component SBOM.
