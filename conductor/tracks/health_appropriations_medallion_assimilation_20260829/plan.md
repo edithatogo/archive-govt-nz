@@ -196,8 +196,10 @@ repository validation command. External gates block only their affected task.
 - [ ] Record heartbeats, retries, source replacements and immutable versions;
   never let a current workbook replace a historical edition. [M-02, M-04,
   M-15, S-04; AC-04, AC-09, AC-13]
-- [ ] Confirm Git contains manifests/schemas/evidence only, not source payloads
-  or large generated derivatives. [M-03, M-18; AC-02, AC-16]
+- [x] Confirm Git contains manifests/schemas/evidence only, not source payloads
+  or large generated derivatives. Verified 2,998 tracked paths against all 73
+  captured object hashes: zero source-byte matches and zero tracked files above
+  10 MiB. [M-03, M-18; AC-02, AC-16]
 
 ### 2.4 Phase review and checkpoint
 

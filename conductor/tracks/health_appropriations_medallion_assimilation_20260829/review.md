@@ -17,7 +17,14 @@ accounting task: 141 unique source records have one explicit terminal
 disposition and no unresolved/retryable state; all donor binaries and modeled
 data areas have inventory evidence. The review preserves the documented scope
 gap: this does not assert all historical annual Budget/forecast editions were
-enumerated or that every captured source is rights-cleared for republication.
+  enumerated or that every captured source is rights-cleared for republication.
+
+## Bronze tracked-byte boundary — 2026-09-04 UTC
+
+The hash comparison covers every tracked regular file, not only extension-based
+candidates. None matches the 73 captured source-object hashes and none exceeds
+10 MiB. This supports the repository storage boundary without claiming that
+external CAS/WARC custody, rights eligibility, or publication is complete.
 
 ## Forecast explicit preflight — 2026-08-31 UTC
 

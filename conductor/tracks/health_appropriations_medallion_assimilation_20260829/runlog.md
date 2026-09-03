@@ -23,6 +23,15 @@
 - This closes disposition accounting, not the separately pending retrospective
   annual-source enumeration, normalization, rights, or release tasks.
 
+## Bronze tracked-byte boundary — 2026-09-04
+
+- Hashed all 2,998 tracked regular files and compared them with the 73 captured
+  official-source object hashes in the final source census.
+- No tracked file reproduces a captured source payload and no tracked file
+  exceeds 10 MiB. The one tracked Parquet artefact belongs to an older bounded
+  prepared-package evidence fixture and is neither a captured health source nor
+  a large generated derivative.
+
 ## Exact GDP quarterly source profile — 2026-08-31
 
 - Required native `./scripts/validate.sh` at `41e7717` passed all gates:
