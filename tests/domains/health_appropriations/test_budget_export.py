@@ -188,16 +188,19 @@ def test_path_fallback_opens_payloads_in_binary_mode(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     args = _args(tmp_path)
-    binary = 1 << 29
+    native_binary = getattr(os, "O_BINARY", None)
+    binary = native_binary if native_binary is not None else 1 << 29
     real_open = os.open
     observed: list[int] = []
 
     def inspect(path: object, flags: int, *rest: object, **kwargs: object) -> int:
         observed.append(flags)
-        return real_open(path, flags & ~binary, *rest, **kwargs)  # type: ignore[call-overload]
+        real_flags = flags if native_binary is not None else flags & ~binary
+        return real_open(path, real_flags, *rest, **kwargs)  # type: ignore[call-overload]
 
     monkeypatch.setattr(budget_export, "_DIR_FD_SUPPORTED", False)
-    monkeypatch.setattr(os, "O_BINARY", binary, raising=False)
+    if native_binary is None:
+        monkeypatch.setattr(os, "O_BINARY", binary, raising=False)
     monkeypatch.setattr(os, "open", inspect)
     export_budget_appropriations(*args, dry_run=False)
     assert observed

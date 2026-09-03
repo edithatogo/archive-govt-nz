@@ -1769,3 +1769,11 @@ opens now compose `O_BINARY` when available; a capability-safe regression proves
 both directions. Focused coverage passed 38 tests at 100%, 88/88 cold mutants
 were killed, and native passed 4,636 tests at 97.55% with all downstream gates.
 Native log SHA-256: `ff0eee95f8751ccea42fff5cb23a1df80cbf31177fd65840eb70166a86e08f8b`.
+
+At head `1359fe0`, every Windows production persistence test passed; only the
+synthetic binary-flag test failed because it replaced the platform's real flag
+before calling the real open. The full job log SHA-256 is
+`0f3efcf76083199c26a3c8f0fea91cf775d3e1440a56d497bc6fddf983d77fda`.
+The test now preserves a native flag and synthesizes/strips one only when absent.
+All 88 cold mutants and the full 4,636-test native harness pass; final native log
+SHA-256: `44f166e33adddedf6ab43c1ea1a11c87d25e4905d0497b46c371bb274d3a9b50`.

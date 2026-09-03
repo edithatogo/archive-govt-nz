@@ -874,3 +874,7 @@ validation remains separate.
 Explicit capability-safe binary flags on Windows complete the fallback
 descriptor correction. Focused, cold mutation and native validation pass;
 fresh exact-head hosted validation remains required.
+
+The last Windows failure was isolated to synthetic test setup; all production
+tests passed. The capability-aware correction is test-only, and focused, cold
+mutation and full native validation pass.
