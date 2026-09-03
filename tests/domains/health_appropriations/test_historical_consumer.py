@@ -6,6 +6,7 @@ import json
 from copy import deepcopy
 from datetime import date
 from decimal import Decimal, Inexact, Rounded, getcontext, localcontext
+from typing import Any
 
 import pyarrow as pa
 import pytest
@@ -40,7 +41,7 @@ def _json(value: object) -> bytes:
     ).encode()
 
 
-def _case() -> tuple[dict[str, object], dict[str, pa.Table], bytes]:
+def _case() -> tuple[dict[str, Any], dict[str, pa.Table], bytes]:
     inputs = _inputs()
     projected = project_historical(**inputs)
     return inputs, projected.tables, _json(projected.receipt)
@@ -52,21 +53,21 @@ def _series_case(  # noqa: C901 - test builder mirrors mutually exclusive source
     second_month: int,
     second_basis: str,
     gdp_month: int | None = None,
-) -> tuple[dict[str, object], dict[str, pa.Table], bytes]:
+) -> tuple[dict[str, Any], dict[str, pa.Table], bytes]:
     base = _inputs()
     fact0 = base["facts"].to_pylist()[0]
     links0 = base["lineage"].to_pylist()
 
     def variant(  # noqa: PLR0913 - explicit source dimensions keep cases legible
-        fact: dict[str, object],
-        links: list[dict[str, object]],
+        fact: dict[str, Any],
+        links: list[dict[str, Any]],
         index: int,
         *,
         year: int,
         month: int,
         basis: str | None,
         measure: str,
-    ) -> tuple[dict[str, object], list[dict[str, object]]]:
+    ) -> tuple[dict[str, Any], list[dict[str, Any]]]:
         row = deepcopy(fact)
         label = str(year)
         token = (
