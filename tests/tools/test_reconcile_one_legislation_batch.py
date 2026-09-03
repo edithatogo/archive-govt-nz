@@ -10,6 +10,8 @@ from typing import TYPE_CHECKING, Any, cast
 
 import jsonschema
 import pytest
+from hypothesis import HealthCheck, given, settings
+from hypothesis import strategies as st
 
 from archive_govt_nz.domains.legislation.manifest import (
     compute_legislation_inventory_sha256,
@@ -156,6 +158,32 @@ def test_one_batch_reconciliation_passes_on_real_cumulative_state(
         "not_corpus_completeness_evidence",
         "no_remote_publication_or_rights_verification",
     ]
+
+
+@settings(deadline=None, suppress_health_check=[HealthCheck.function_scoped_fixture])
+@given(version_count=st.integers(min_value=2, max_value=12))
+def test_one_work_accepts_multiple_version_records(
+    tmp_path: Path, version_count: int
+) -> None:
+    """A Work document identity may own many distinct version manifestations."""
+    state = _write_valid_state(tmp_path)
+    records = state["manifest"]["records"]
+    first = records[1]
+    store = ContentAddressedStore(state["cas_path"])
+    for index in range(1, version_count):
+        version = _record("work-1", f"one-version-{index}".encode(), store)
+        version["document_id"] = first["document_id"]
+        version["expression_id"] = f"expression-work-1-v{index}"
+        version["manifestation_id"] = f"manifestation-work-1-v{index}"
+        records.append(version)
+    state["manifest"]["total_records"] = len(records)
+    state["checkpoint"]["total_records_preserved"] = len(records)
+    _rewrite_manifest_with_root(state)
+
+    receipt = _reconcile(state)
+
+    assert receipt["status"] == "passed"
+    assert receipt["selected_records_count"] == version_count + 1
 
 
 def test_batch_sha256_is_canonical_and_rejects_ambiguous_ids(tmp_path: Path) -> None:

@@ -22,3 +22,37 @@ Local validation passed 4,393 tests at 97.48% repository coverage, 45 schemas,
 dependency audit, licence inventory, the corrected secret scan, and the
 111-component SBOM. The initial Conductor-state and secret-keyword failures are
 retained in the run log rather than rewritten as success.
+
+## Superseding repository preflight — 2026-09-03
+
+The append-only
+`evidence/migrations/corpus-legislation-nz/500-work-operational-proof/preflight-refresh-20260903.json`
+and paired Markdown report bind the current observation to target
+`e559d675c347615d64ae5e1c1f3ad5efd5d120f6`. They record Prompt 06 and
+parent-v3 compatibility as passed in repository scope and verify the active
+exact lane with 107 focused tests and clean actionlint.
+
+Prompt 10 recovery, a committed compatible parent, live no-write checks, and
+explicit dispatch remain blocked. No credential value, endpoint, state, or
+workflow run was used.
+
+The full repository harness passed 4,559 tests at 97.50% combined coverage,
+48 schemas and 38 representative documents, 9/9 parity, all registered
+mutations, dependency and licence checks, the credential scan, and the
+111-component SBOM.
+# Repository correction — 2026-09-03
+
+PR #365 correction aligns the exact-inventory workflow's parent-state restore
+and seal with the same GitHub Actions run identity recorded by the harvest
+receipt. This removes the deterministic pre-seal mismatch without asserting
+that the hosted lane has run. Batch IDs remain non-authoritative correlation
+fields.
+
+
+## Superseding durable-parent preflight — 2026-09-03
+
+Prompt 15 merged at `d60ed58420d1fe39dc420bbe047b9bf901b0d66d` and Prompt 10 merged at `5745bf3e38924dc968af70842dc6ed7a776e9e05`. `config/legislation/parents/current.json` pins the public Hugging Face package by immutable revision, 71,776,346-byte size, outer SHA-256, inner manifest/inventory roots, and the separately verified public-rights authority.
+
+The append-only `parent-preflight-20260903.json` retains two failed attempts before the successful no-write restoration. The successful attempt anonymously retrieved the exact package, verified outer and inner fixity, restored 555 files, and reproduced the expected roots and 552-record parent scope. It did not read the NZ legislation credential, acquire sources, write canonical state, publish, or dispatch GitHub Actions. Its receipt SHA-256 is `ff5ff6dbc6520c9b81be0cc621ed21a50700a5933d035360663b930a7ecb6a1b`.
+
+The remaining gate is the authorized hosted exact-inventory execution after this PR merges and its exact-head checks pass.
