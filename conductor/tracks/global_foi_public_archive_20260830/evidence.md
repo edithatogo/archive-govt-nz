@@ -2,6 +2,17 @@
 
 This is read-only diagnosis, not implementation or publication success.
 
+## Phase 3 closeout — 2026-09-03
+
+The repository-owned preservation phase is complete. Receipt
+`attachment-package-validation-20260831.json` records a successful full
+validation (1,621 tests, 96.15% coverage, all quality/schema/mutation and
+supply-chain stages), six killed integrity mutants, deterministic v2 package
+and index checks, v2 cold restoration, and existing v1 compatibility
+verification. These results establish implementation and local integrity only;
+they do not establish rights, public delivery, anonymous hosted restore,
+country completeness, or donor transfer.
+
 | Observation | Evidence and limitation |
 | --- | --- |
 | Receiver baseline | `5eda36dd2d204a6a859100f913b411c44a08bf62`; unrelated health work in the user's checkout is preserved through an isolated worktree. |

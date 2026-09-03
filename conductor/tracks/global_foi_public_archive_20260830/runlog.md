@@ -1,5 +1,19 @@
 # Run log
 
+## 2026-09-03 — Phase 3 closeout
+
+- Reconciled the plan against the merged preservation implementation and its
+  receipts. P3.1–P3.3 are complete: negative-path coverage, CAS/WARC and
+  JSONL/Parquet indexes, deterministic manifests, interruption handling,
+  corruption detection and cold clean-room restoration are implemented.
+- P3.4 is complete on repository-owned evidence: the attachment-package
+  validation receipt records exit 0, 1,621 tests, 96.15% coverage, quality,
+  schema, mutation and supply-chain gates, six killed integrity mutants, and
+  both v2 cold-restore and v1 compatibility checks.
+- This closeout does not assert source rights, public raw publication,
+  anonymous hosted restore, country completeness or donor cutover; those gates
+  remain explicitly pending in later phases.
+
 ## 2026-08-30 — Draft preparation
 
 - Read the invoked conductor-newtrack skill and its common/new-track contracts.
