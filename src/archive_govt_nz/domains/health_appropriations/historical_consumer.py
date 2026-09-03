@@ -29,6 +29,7 @@ _FACTS = _TABLES[:2]
 _MAX_ROWS = 100_000
 _MAX_TABLE_BYTES = 64 << 20
 _MAX_RECEIPT_BYTES = 4 << 20
+_RAW_TABLE_COUNT = 3
 _ERROR = "historical_consumer_contract"
 _CONSUMER_FIELDS = (
     "record_id",
@@ -99,6 +100,15 @@ def _verified_tables(
         _require(table.equals(expected[name]))
         result[name] = table
     return result
+
+
+def _bounded_raw_tables(*tables: object) -> None:
+    _require(len(tables) == _RAW_TABLE_COUNT)
+    for value in tables:
+        _require(isinstance(value, pa.Table))
+        table = cast("pa.Table", value)
+        _require(0 < table.num_rows <= _MAX_ROWS)
+        _require(table.nbytes <= _MAX_TABLE_BYTES)
 
 
 def _backward_ids(tables: dict[str, pa.Table]) -> tuple[dict[str, str], ...]:
@@ -179,6 +189,7 @@ def bridge_historical_inputs(  # noqa: PLR0913 - mirrors the public pure project
     """
     try:
         _require(type(manifest_sha256) is str)
+        _bounded_raw_tables(facts, lineage, dispositions)
         projected = project_historical(
             manifest=manifest,
             manifest_sha256=manifest_sha256,

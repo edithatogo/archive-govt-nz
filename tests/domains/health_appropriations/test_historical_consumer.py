@@ -424,6 +424,10 @@ def test_bridge_rejects_receipt_and_table_resource_bounds() -> None:
         bridge_historical_inputs(
             **raw, canonical_tables=oversized, parent_receipt=receipt
         )
+    raw, tables, receipt = _case()
+    raw["facts"] = pa.concat_tables([raw["facts"]] * 100_001)
+    with pytest.raises(ValueError, match="historical_consumer_contract"):
+        bridge_historical_inputs(**raw, canonical_tables=tables, parent_receipt=receipt)
 
 
 def test_bridge_rejects_unrepresentable_canonical_decimal_and_period_contradiction() -> (
