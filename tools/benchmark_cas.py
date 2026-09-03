@@ -12,7 +12,13 @@ from typing import Final
 
 from archive_govt_nz.object_store import ContentAddressedStore
 
-BENCHMARK_BYTES = 10 * 1024 * 1024  # 10 MB
+# A durable write includes fixed temporary-file, flush and promotion costs. Use
+# a longer Windows sample so hosted-volume flush latency is amortized rather
+# than mistaken for steady-state streaming throughput.
+_BENCHMARK_MIB_BY_PLATFORM: Final[dict[str, int]] = {"win32": 32}
+BENCHMARK_BYTES: Final[int] = (
+    _BENCHMARK_MIB_BY_PLATFORM.get(sys.platform, 10) * 1024 * 1024
+)
 # Minimum acceptable throughput thresholds on CI VMs. Windows runners show
 # substantially higher per-call filesystem overhead, so they get a lower floor.
 _MIN_THROUGHPUT_BY_PLATFORM: Final[dict[str, float]] = {
