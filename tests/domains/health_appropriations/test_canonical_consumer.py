@@ -8,13 +8,21 @@ from pathlib import Path
 
 import pytest
 from tests.domains.health_appropriations.test_budget_classification import inputs
+from tests.domains.health_appropriations.test_historical_snapshot import (
+    _package as historical_raw_package,
+)
 
 from archive_govt_nz.domains.health_appropriations.budget_canonical_export import (
     export_budget_appropriations,
 )
 from archive_govt_nz.domains.health_appropriations.canonical_consumer import (
+    HISTORICAL_NOMINAL_SCHEMA,
     NOMINAL_BUDGET_SCHEMA,
+    query_historical_nominal,
     query_nominal_budget,
+)
+from archive_govt_nz.domains.health_appropriations.historical_canonical_export import (
+    export_historical_canonical,
 )
 from archive_govt_nz.domains.health_appropriations.local_provenance_reader import (
     CanonicalPackageInput,
@@ -39,6 +47,21 @@ def _package(tmp_path: Path) -> CanonicalPackageInput:
         original=tmp_path / "source.xlsx",
         raw_root=tmp_path / "package",
         raw_manifest_sha256=source["manifest_sha256"],
+    )
+
+
+def _historical_package(tmp_path: Path) -> CanonicalPackageInput:
+    raw, original, pin = historical_raw_package(tmp_path)
+    output = tmp_path / "historical-canonical"
+    export_historical_canonical(raw, original, pin, output, write=True)
+    marker = output / "LOCAL_CANONICAL.json"
+    return CanonicalPackageInput(
+        kind="historical",
+        root=output,
+        marker_sha256=hashlib.sha256(marker.read_bytes()).hexdigest(),
+        original=original,
+        raw_root=raw,
+        raw_manifest_sha256=pin,
     )
 
 
@@ -83,6 +106,25 @@ def test_wrong_kind_and_repeated_identity_fail_closed(tmp_path: Path) -> None:
     )
     with pytest.raises(ValueError, match=r"^canonical_consumer_invalid$"):
         query_nominal_budget((wrong,))
+
+
+def test_historical_query_is_an_identity_projection(tmp_path: Path) -> None:
+    package = _historical_package(tmp_path)
+    table, receipt = query_historical_nominal((package,))
+    assert table.schema.equals(HISTORICAL_NOMINAL_SCHEMA, check_metadata=True)
+    assert table.num_rows == receipt["input_records"]
+    assert receipt["aggregation"] == "none"
+    assert receipt["currency_state"] == "source_assertion_preserved"
+    assert receipt["price_basis_state"] == "unknown"
+    assert all(
+        row["formula_policy"] == "identity_projection_no_cross_source_aggregation/v1"
+        for row in table.to_pylist()
+    )
+
+
+def test_historical_query_rejects_budget_package(tmp_path: Path) -> None:
+    with pytest.raises(ValueError, match=r"^canonical_consumer_invalid$"):
+        query_historical_nominal((_package(tmp_path),))
 
 
 @pytest.mark.parametrize("packages", [[], (), [object()]])

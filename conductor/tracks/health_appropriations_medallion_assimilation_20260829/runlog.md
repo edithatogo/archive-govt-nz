@@ -1664,12 +1664,15 @@ No original/package/HF bytes were changed.
 - Added a public verified-table reader that returns freshly recomputed canonical
   package tables only after exact marker, raw/original, schema/value, receipt and
   lineage-accounting verification.
-- Added a read-only DuckDB nominal Budget query over those canonical tables. It
+- Added read-only DuckDB nominal Budget and historical queries over those
+  canonical tables. The Budget query
   groups only identical source labels, units, periods and vintages; preserves
-  Decimal(38,18) amounts and exact sorted input record IDs; and explicitly leaves
-  currency, price basis, classification mapping and publication unresolved.
+  Decimal(38,18) amounts and exact sorted input record IDs. The historical query
+  is an identity projection that preserves source currency/accounting assertions
+  without cross-source aggregation. Both explicitly leave price basis,
+  classification mapping and publication unresolved.
 - Duplicate package identities, wrong package kinds, non-tuple inputs and any
   verification drift fail closed. Focused canonical-consumer and provenance
-  validation passes 76 tests plus Ruff and basedpyright.
+  validation passes 78 tests plus Ruff and basedpyright.
 - This is the first AC-08 canonical consumer slice, not completion of historical,
   contextual, SQLite, plot, report, recovery or publication consumers.
