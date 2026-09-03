@@ -1643,3 +1643,30 @@ values and schema metadata, receipt bytes and lineage-accounting bytes. Totals:
 Both original hashes and all eight raw-package file hashes were unchanged.
 Package sizes were 1,737,166 and 1,502,784 bytes. No rights, publication,
 candidate or HF mutation was performed.
+
+## 2026-09-03: Hosted macOS Decimal test isolation correction
+
+At PR #383 head `db4cc541786546833c4a68770217cb905f3b2147`, macOS
+Assurance job `100748210753` failed after 4,625 tests: 4,624 passed and only
+`test_decimal_context_is_isolated_and_exact` failed. The full retained job log
+SHA-256 is `dee4a78ada7d90482dc58cb856b8da498d08c201e84b7cdc7da32825f4f41ae1`.
+This was an assertion failure, not a timeout or infrastructure failure.
+
+The test already proved its caller-local Decimal precision, rounding, flags and
+traps were unchanged. A trailing assertion nevertheless required the unrelated
+process-global `Inexact` flag to be false, which prior tests need not guarantee.
+Removed only that order-dependent assertion. Exact Decimal(38,18) values and
+the caller-context before/after equality remain. Ruff, scoped Pyright and 31
+focused tests at 100% critical line/branch coverage passed. No production code,
+timeout, worker, coverage threshold or other gate changed. Cold/native refresh
+and fresh exact-head hosted checks remain required.
+
+Refresh completed at correction commit `f7989e4`: the unchanged exporter target
+killed all 63 cold mutants again with zero other outcomes or cache hits. The
+full native harness exited zero with 4,626 tests, nine warnings, 97.54% overall
+coverage, 48 schemas/38 representative documents, 9/9 parity and all
+supply-chain gates including the 111-component SBOM. Native log SHA-256:
+`b5f220f99a8f31d67f30437049dcbe42d40bcf02d11fe5aaa9aa9786ff557a9f`;
+mutation report SHA-256:
+`c02912100823891ecae098842952384b68a06c986b1ab5380dd438dcf776da25`.
+Fresh hosted checks remain separate.
