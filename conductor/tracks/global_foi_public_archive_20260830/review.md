@@ -12,6 +12,9 @@ The exact full gate subsequently exposed one secret-scanner false positive in
 the inert userinfo fixture. Fragmenting the test token retains coverage while
 making its non-secret nature explicit; the focused suite and scanner pass with
 no suppression or allowlist change.
+Codecov then identified the malformed-port exception branch as the sole
+uncovered changed line. A transport-forbidden regression now proves that this
+syntax returns the same redacted `unsafe_url` outcome before any request.
 
 ## Phase 3 closeout review — 2026-09-03
 

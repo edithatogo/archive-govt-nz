@@ -144,6 +144,25 @@ async def test_capture_rejects_unsafe_initial_url_before_request(
 
 
 @pytest.mark.anyio
+async def test_capture_rejects_malformed_port_before_request(tmp_path: Path) -> None:
+    """Malformed authority syntax fails closed without reaching transport."""
+
+    async def handler(request: httpx.Request) -> httpx.Response:
+        pytest.fail(f"unsafe request reached transport: {request.url}")
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+        with pytest.raises(CaptureError) as raised:
+            await capture_url(
+                client,
+                "https://example.test:not-a-port/private",
+                ContentAddressedStore(tmp_path),
+            )
+
+    assert raised.value.error_class == "unsafe_url"
+    assert raised.value.attempts[-1].outcome == "unsafe_url"
+
+
+@pytest.mark.anyio
 async def test_capture_rejects_partial_content_ranges(tmp_path: Path) -> None:
     """HTTP 206 responses are explicit unsupported range outcomes."""
 

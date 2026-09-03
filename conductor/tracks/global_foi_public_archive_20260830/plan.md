@@ -39,6 +39,8 @@ The approved destination is archive-govt-nz; no cutover has occurred.
 - [x] P3.6 review fix (AC12): Preserve the userinfo rejection regression while
   constructing its inert credential token in fragments so secret scanning does
   not misclassify test data as a live Basic Auth credential.
+- [x] P3.7 review fix (AC11, AC12): Exercise malformed authority-port parsing
+  explicitly so the fail-closed URL guard is fully covered on the changed lines.
 
 ## Phase 4 — Public Hugging Face delivery
 
