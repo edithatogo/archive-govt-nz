@@ -1,0 +1,66 @@
+{
+  "change_scope": "prose_and_blocked_prerequisite_evidence_only",
+  "combined_coverage_percent": 97.38,
+  "conductor": {
+    "project_validator": "passed",
+    "track_count": 77,
+    "upstream_adapter": "rejected existing project status/index conventions; retained, not used to rewrite existing tracks"
+  },
+  "critical_code_changed": false,
+  "hosted_checks": "not_yet_run",
+  "logs_sha256": {
+    "candidate-receipt-api-readback.json": "2293dfaed791c261e730aa4b585f5453edda127b2d12e750a9ee1e5c2221677b",
+    "conductor-initial.log": "b2b72f500f2e91d679dda5f2edbeaa3d2d68005921557930e2878019ce731d89",
+    "full-validation.log": "7e7e60057228b6c8d7e52f308fbaca11e98198441ca62a52d3cc936e5562e17d",
+    "hf-live.json": "49cb5edb73761c887470e2cf129d5ddfed0373b16b76bbecb40a57c3d68b1bcd",
+    "hf-pinned.json": "49cb5edb73761c887470e2cf129d5ddfed0373b16b76bbecb40a57c3d68b1bcd",
+    "native-generated.patch": "41632a5b0c32ed55cc8481e63c54dfcf9f26aae5a2030945337ea8d495c1b05a",
+    "preparation-review.json": "ff97c17795ac56655e29e7f60734837347e999e0ca83360fb6911e8e34e797e3",
+    "upstream-validator-failure.log": "7d3fac8ebcd97a2006459d5a09ad51d101de04ebf02fc6c86f790ff6e2921ee1",
+    "workflow-lint.log": "d75001604148cbbbaeef2b3e66444af4835398619e6e586fb864f68f90f8fee8"
+  },
+  "native_command": "./scripts/validate.sh",
+  "native_exit_code": 0,
+  "native_mutation_gates": "passed",
+  "new_targeted_mutations": "not_applicable_no_executable_change",
+  "parity": {
+    "divergences": 0,
+    "passed": 9
+  },
+  "patch_branch_coverage": "not_applicable_no_executable_change",
+  "preflight_sha256": "f6ef1fd4f2f3ea9b0784b6ccb963a19c811fd2fe5bf73a3b70f220f9496e4577",
+  "recorded_at": "2026-08-31T18:57:46.214113+00:00",
+  "recovery_executed": false,
+  "schema_catalogue": {
+    "documents": 32,
+    "schemas": 42,
+    "status": "passed"
+  },
+  "schema_version": "archive-govt-nz.durable-recovery-preparation-validation/v1",
+  "security": {
+    "credential_scan": "passed",
+    "dependency_audit": "passed",
+    "licenses": "passed",
+    "sbom_components": 111
+  },
+  "source_base": "cf2ec75b88963352abbecb89a2b8e2cfe538a070",
+  "staged_scan_attempt_1": {
+    "field": "security status label",
+    "literal_value": "passed",
+    "log_sha256": "3321bb6d0f5aa0d37a8880b4a9982d8351e4fe60a929c779e6988abd15d602fb",
+    "resolution": "Rename the status field; unchanged scanner and exclusions. Original draft retained externally.",
+    "status": "false_positive"
+  },
+  "status": "preparation_validated_drill_blocked",
+  "supersedes_draft_sha256": "991f56e936f06c8abffe672d8f9bae3c1a58ceae510217e384cfaaf118eabd4b",
+  "tests_passed": 4234,
+  "warnings": 5,
+  "workflow_lint": {
+    "files_unchanged_from_base": true,
+    "findings": [
+      "global-ckan-harvest-huggingface.yml:56 SC2086",
+      "scheduled-gazette-harvest.yml:36 SC2086"
+    ],
+    "status": "preexisting_findings"
+  }
+}

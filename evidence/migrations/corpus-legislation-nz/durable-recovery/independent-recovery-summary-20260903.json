@@ -1,0 +1,68 @@
+{
+  "actions": {
+    "harvest_dispatched": false,
+    "prompt13_dispatched": false,
+    "publication_performed": false,
+    "recovery_executed": true
+  },
+  "attempt_receipts": [
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/durable-recovery/recovery-attempt-01-20260903.json",
+      "sha256": "a79f492e51652e746d04349617e0ab6361d8c6a4a0ed9a6aace423fdfa862266"
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/durable-recovery/recovery-attempt-02-20260903.json",
+      "sha256": "a271775cf1557a299d0d7bc333393947d6f6e882dedd039c2155ba9e2b3695ca"
+    }
+  ],
+  "authority_receipt": {
+    "governed_readback_sha256": "38160c4683112d951351e20d68fe34198dcab797eb371d6cf6e6d91160ba9fed",
+    "governed_rights_authority_commit": "d60ed58420d1fe39dc420bbe047b9bf901b0d66d",
+    "path": "evidence/migrations/corpus-legislation-nz/durable-recovery/authority-decision-20260903.json",
+    "sha256": "2a41eb63979f9276b6f30a35fd87693a51f31b9a80a0af8be9a8a6e833599fa5"
+  },
+  "cross_attempt": {
+    "counts_match": true,
+    "package_match": true,
+    "restored_tree_match": true,
+    "roots_match": true
+  },
+  "donor_head": "b40587f1b1aec7356a0f623916fcc8212397d283",
+  "durable_stage_receipts": [
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/durable-recovery/stages/attempt-01-stage-receipts-20260903.json",
+      "sha256": "88bfae383d0029452bc3655adf56a5d8901e4ae8b7a432f89ff6fe9df451b2d4"
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/durable-recovery/stages/attempt-02-stage-receipts-20260903.json",
+      "sha256": "7fbdaa97abc773521243abca81896a8871f82cc9d6e7034c03886ea976d985bf"
+    }
+  ],
+  "external_metadata_handoff": {
+    "finding": "The current governed registry/readback predates the new durable path and publication authority. Both restored-state reconciliations have zero internal findings/gaps, with hosted rights/card mismatches fully enumerated.",
+    "scope": "Prompt 15 registry/readback refresh",
+    "unresolved": true
+  },
+  "package_sha256": "2e4b75333e947d812842147c939117fc666799e4497b80f125104f721ef68e3c",
+  "preserved_failed_attempts": [
+    {
+      "cause": "macOS /tmp is a symlink and the fail-closed output-path guard rejected it before verification output",
+      "package_downloaded": true,
+      "recovery_executed": false,
+      "stage": "output-path preflight",
+      "status": "failed"
+    },
+    {
+      "cause": "exact hosted readback receipt is mandatory",
+      "recovery_executed": false,
+      "stage": "reconciliation without hosted receipt",
+      "status": "failed"
+    }
+  ],
+  "recorded_at": "2026-09-03T09:10:00Z",
+  "remote_revision": "ae4da4ef0446f68fddd8f53279ecb1245f1529b9",
+  "schema_version": "archive-govt-nz.independent-durable-recovery/v1",
+  "status": "complete_with_explained_external_metadata_handoff",
+  "target_base": "e559d675c347615d64ae5e1c1f3ad5efd5d120f6",
+  "workspaces_destroyed": true
+}

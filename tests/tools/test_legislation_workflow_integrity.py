@@ -48,20 +48,21 @@ def test_operational_gates_opened_only_with_recorded_authorization() -> None:
     assert receipt["retained_controls"], "fail-closed controls must be listed"
 
 
-def test_harvest_requires_scope_and_carries_complete_state() -> None:
-    """Require confirmation and persist all linked continuation evidence."""
+def test_discovery_requires_versioned_scope_and_isolated_state() -> None:
+    """Require confirmation and keep candidates outside canonical state."""
     content = _WORKFLOWS[0].read_text(encoding="utf-8")
     for required in (
         "confirmed_execution",
         "batch_id",
-        "search_terms",
-        "max_works",
+        "scope_path",
+        "discovery-scope-v1.json",
         "parent_reference",
-        "Seal verified continuation lineage",
+        "accepted-pending-merge",
+        "tools/merge_legislation_states.py",
         "legislation-state/checkpoint.json",
         "legislation-state/manifest.json",
         "legislation-state/cas",
-        "legislation-state-${{ github.run_id }}",
+        "legislation-discovery-${{ github.run_id }}",
     ):
         assert required in content
     assert "backfill_limit" not in content
@@ -96,9 +97,14 @@ def test_all_restoration_precedes_state_consumers() -> None:
     """A failing shared action must prevent harvest, reconciliation and recovery."""
     for path in _WORKFLOWS:
         content = path.read_text(encoding="utf-8")
+        consumer = (
+            "uv run --locked python tools/run_legislation_harvest.py"
+            if path == _WORKFLOWS[0]
+            else "uv run --locked python tools/run_legislation_"
+        )
         assert content.index(
             "uses: ./.github/actions/legislation-parent-state"
-        ) < content.index("uv run --locked python tools/run_legislation_")
+        ) < content.index(consumer)
         assert "continue-on-error" not in content
         assert "gh run download" not in content
         assert "gh run list" not in content
@@ -106,10 +112,9 @@ def test_all_restoration_precedes_state_consumers() -> None:
     assert 'tools/legislation_parent_state.py "${args[@]}"' in helper
     assert "restoration-receipt.json" in helper
     assert "if: always()" in helper
-    harvest = _WORKFLOWS[0].read_text()
-    assert harvest.index("Seal verified continuation lineage") < harvest.index(
-        "Upload complete continuation state"
-    )
+    discovery = _WORKFLOWS[0].read_text()
+    assert "Seal verified continuation lineage" not in discovery
+    assert "group: legislation-canonical-state" in discovery
 
 
 def test_source_set_steady_state_configuration() -> None:
@@ -120,3 +125,13 @@ def test_source_set_steady_state_configuration() -> None:
     assert "rights_class: crown_copyright" in content
     assert "external_actions_enabled: false" in content
     assert content.count("activation: inactive") == 2
+
+
+def test_exact_inventory_uses_one_hosted_execution_identity() -> None:
+    """Bind restore and seal to the GitHub run that emits the receipt."""
+    content = Path(".github/workflows/exact-inventory.yml").read_text(encoding="utf-8")
+    assert "execution-id: ${{ github.run_id }}" in content
+    assert "PARENT_EXECUTION_ID: ${{ github.run_id }}" in content
+    assert "execution-id: ${{ inputs.batch_id }}" not in content
+    assert "PARENT_EXECUTION_ID: ${{ inputs.batch_id }}" not in content
+    assert "Batch correlation identifier" in content

@@ -296,3 +296,9 @@ implementation has occurred under these tracks.
 
 - [~] **Track: Prompt 20 security and workflow repairs**
   *Link: [./tracks/prompt20_security_workflow_repairs_20260903/index.md](./tracks/prompt20_security_workflow_repairs_20260903/index.md)*
+
+- [x] **Track: Prompt 07 bounded legislation discovery and freshness**
+  *Link: [tracks/legislation_bounded_discovery_20260903/index.md](./tracks/legislation_bounded_discovery_20260903/index.md)*
+
+- [~] **Track: Independent durable legislation recovery (Prompt 10)**
+  *Link: [./tracks/legislation_independent_recovery_20260901/index.md](./tracks/legislation_independent_recovery_20260901/index.md)*
