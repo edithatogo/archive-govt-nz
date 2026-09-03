@@ -1,6 +1,6 @@
 {
   "schema_version": "archive-govt-nz.completion-evaluator/v2",
-  "evaluated_at": "2026-09-01T15:57:58Z",
+  "evaluated_at": "2026-09-03T18:33:57Z",
   "evidence_index": "evidence/migrations/corpus-legislation-nz/evidence-index.json",
   "evidence_index_valid": true,
   "dimensions": {
@@ -21,30 +21,28 @@
       "rationale": "Canonical state was merged, but the target-owned 500-work execution, reconciliation, continuation and recovery proof was not dispatched and remains blocked."
     },
     "corpus_custody_recoverability": {
-      "status": "externally_blocked",
+      "status": "complete",
       "proof_ids": [
-        "durable-destination-observations"
+        "durable-recovery-completion-readback"
       ],
       "proof_eligible": true,
-      "rationale": "A deterministic local package exists, while rights, remote authority, independent recovery and Prompt 10 acceptance remain unsatisfied."
+      "rationale": "Two anonymous fresh-workspace recoveries independently reproduced the exact public package, restored all 552 records and CAS objects, and returned zero reconciliation findings."
     },
     "publication_identity_migration": {
-      "status": "externally_blocked",
+      "status": "complete",
       "proof_ids": [
-        "hf-publication-candidate"
+        "publication-identity-completion-readback"
       ],
       "proof_eligible": true,
-      "rationale": "Zenodo identity is corrected read-only, but Hugging Face target-originated publication remains a candidate awaiting external approval."
+      "rationale": "Maintainer-authorized target-origin publication and anonymous exact-revision readback verify the canonical Hugging Face identity, package, metadata, card, and rights boundary."
     }
   },
   "status": "incomplete",
   "blockers": [
-    "dimension_incomplete:operational_state_migration:incomplete",
-    "dimension_incomplete:corpus_custody_recoverability:externally_blocked",
-    "dimension_incomplete:publication_identity_migration:externally_blocked"
+    "dimension_incomplete:operational_state_migration:incomplete"
   ],
   "errors": [],
-  "evidence_index_sha256": "e9ec0c9813a1e3142a4e3f3bcd817a749dda36380b0dcc512d123510118e25d1",
+  "evidence_index_sha256": "e23a0f1024819f3198c343f574e8cd202f25da3c77d2a477ff824fed2ec4cccf",
   "index_id": "legislation-consolidation-evidence-20260901",
   "target_commit": "6755e12a48536de938b6f5955fe974d4b1de1b75",
   "donor_commit": "b40587f1b1aec7356a0f623916fcc8212397d283"

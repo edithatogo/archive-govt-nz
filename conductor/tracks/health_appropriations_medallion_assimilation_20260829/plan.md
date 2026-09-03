@@ -764,6 +764,14 @@ repository validation command. External gates block only their affected task.
 
 ## Review fixes
 
+- [x] Add a bounded pure bridge from exact historical canonical projections to
+  the existing public historical analysis contract, retaining canonical
+  lineage, reversible identifiers and explicit field accounting without I/O,
+  fixity, rights, execution or publication claims. [M-07, M-09, M-10, M-18;
+  AC-05, AC-07, AC-08, AC-16] (`02d36bc`, `13e8d85`, `fbf710d`, `c867f97`,
+  `50564fc`; focused mutation and native passed; hosted delivery remains
+  separate)
+
 - [x] Add the exclusive, deterministic six-file local Budget appropriation
   exporter with directory-descriptor race resistance, pre-serialization and
   running byte bounds, exact readback/closure, complete receipts, and redacted

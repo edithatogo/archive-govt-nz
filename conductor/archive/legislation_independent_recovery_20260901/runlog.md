@@ -21,3 +21,10 @@ Review-hardening validation attempt 2 stopped at lint because the new test modul
 Prompt 15 PR #369 merged at `d60ed58420d1fe39dc420bbe047b9bf901b0d66d`. Rebased onto that exact main and verified its governed rights/readback receipt SHA-256 `38160c4683112d951351e20d68fe34198dcab797eb371d6cf6e6d91160ba9fed`. Rebound the authority decision, both attempt receipts, both parent-preflight receipts, stage indexes and summary through their full hash chain.
 
 Exact-main validation attempt 3 reached the full test lane and had one Hypothesis flaky deadline failure in the unchanged `test_archive_order_does_not_change_roots` test (425.87 ms first call versus the 200 ms deadline; 127.05 ms on replay). No product assertion failed. The failure was retained in the session output; the unchanged focused test and full harness were rerun without weakening its deadline.
+
+2026-09-03 UTC closeout: independently reconciled the merged Prompt 15 rights
+and anonymous readback with both Prompt 10 attempts. Added the governed
+`durable-recovery-readback` completion proof and promoted only the corpus
+custody/recoverability dimension. The completion evaluator now reports that
+dimension complete with no index errors; operational Prompt 13 remains the sole
+incomplete dimension. Archived the track after final review.
