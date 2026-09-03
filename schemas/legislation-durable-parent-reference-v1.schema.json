@@ -105,7 +105,8 @@
         "decision_id",
         "publication_receipt_path",
         "publication_receipt_sha256",
-        "publication_commit"
+        "publication_commit",
+        "recovery_commit"
       ],
       "properties": {
         "decision_id": {
@@ -115,12 +116,13 @@
           "const": "evidence/migrations/corpus-legislation-nz/huggingface-publication/publication-readback-20260903.json"
         },
         "publication_receipt_sha256": {
-          "type": "string",
-          "pattern": "^[0-9a-f]{64}$"
+          "const": "38160c4683112d951351e20d68fe34198dcab797eb371d6cf6e6d91160ba9fed"
         },
         "publication_commit": {
-          "type": "string",
-          "pattern": "^[0-9a-f]{40}$"
+          "const": "d60ed58420d1fe39dc420bbe047b9bf901b0d66d"
+        },
+        "recovery_commit": {
+          "const": "5745bf3e38924dc968af70842dc6ed7a776e9e05"
         }
       }
     }

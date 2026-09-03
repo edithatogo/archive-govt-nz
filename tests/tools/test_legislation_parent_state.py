@@ -198,8 +198,11 @@ def durable_reference(raw: bytes = b"durable") -> dict[str, Any]:
                 "evidence/migrations/corpus-legislation-nz/huggingface-publication/"
                 "publication-readback-20260903.json"
             ),
-            "publication_receipt_sha256": "d" * 64,
-            "publication_commit": "e" * 40,
+            "publication_receipt_sha256": (
+                "38160c4683112d951351e20d68fe34198dcab797eb371d6cf6e6d91160ba9fed"
+            ),
+            "publication_commit": "d60ed58420d1fe39dc420bbe047b9bf901b0d66d",
+            "recovery_commit": "5745bf3e38924dc968af70842dc6ed7a776e9e05",
         },
     }
 
@@ -268,6 +271,48 @@ def test_durable_reference_rejects_revision_rights_and_scope_drift() -> None:
             P.v.VerificationError, match="schema_legislation-durable-parent-reference"
         ):
             P.schema(changed, "legislation-durable-parent-reference")
+
+
+def test_current_durable_parent_is_bound_to_merged_authorities() -> None:
+    """The selected parent pins Prompt 10 recovery and Prompt 15 publication."""
+    reference = P.v.load(
+        (P.ROOT / "config/legislation/parents/current.json").read_bytes()
+    )
+    P.schema(reference, "legislation-durable-parent-reference")
+    assert (
+        P.ROOT / "config/legislation/parents/current.json"
+    ).read_bytes() == P.M.encoded(reference)
+    assert reference["durable"] == {
+        "provider": "hugging_face_dataset",
+        "dataset": "edithatogo/corpus-legislation-nz",
+        "revision": "ae4da4ef0446f68fddd8f53279ecb1245f1529b9",
+        "path_parts": [
+            "durable-state",
+            "v1",
+            "2e4b75333e947d812842147c939117fc666799e4497b80f125104f721ef68e3c",
+            "canonical-state.zip",
+        ],
+        "sha256": "2e4b75333e947d812842147c939117fc666799e4497b80f125104f721ef68e3c",
+        "size_bytes": 71776346,
+        "roots": {
+            "manifest_sha256": (
+                "877ba501a25570a29c1aada7979562d8c62c7f043865125cf402310eabc09544"
+            ),
+            "inventory_sha256": (
+                "9ca6dc505f991e015c6c997827878d8c7e9381b214a1544eb338328a285c6894"
+            ),
+            "records": 552,
+            "work_ids": 552,
+        },
+    }
+    assert (
+        reference["authority"]["publication_commit"]
+        == "d60ed58420d1fe39dc420bbe047b9bf901b0d66d"
+    )
+    assert (
+        reference["authority"]["recovery_commit"]
+        == "5745bf3e38924dc968af70842dc6ed7a776e9e05"
+    )
 
 
 def test_durable_inner_verifier_binds_rights_roots_and_parent_scope(
