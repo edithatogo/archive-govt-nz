@@ -13,3 +13,13 @@ commits and file hashes. The absent committed parent, incomplete Prompt 10
 recovery, untested credential and endpoint state, and dispatch gate remain
 explicit. No parent, credential, live request, workflow run, state, or
 publication was created or used.
+# Review update — hosted execution identity correction
+
+The panel finding on PR #365 identified a contract mismatch: restore and seal
+were bound to the operator-supplied batch identifier while harvest receipts
+recorded the GitHub run identity. The exact-inventory workflow now binds both
+restore and seal to `github.run_id`; `batch_id` remains correlation metadata
+for harvest and reconciliation. A static regression test prevents recurrence.
+
+This is repository-only evidence. The exact lane remains blocked pending a
+real hosted dispatch, durable parent, and independent operator reproduction.

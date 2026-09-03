@@ -9,7 +9,7 @@ on:
         type: boolean
         default: false
       batch_id:
-        description: Unique canonical execution identifier
+        description: Batch correlation identifier for harvest and reconciliation
         required: true
         type: string
       parent_reference:
@@ -85,7 +85,7 @@ jobs:
         with:
           mode: continuation
           parent-reference: ${{ inputs.parent_reference }}
-          execution-id: ${{ inputs.batch_id }}
+          execution-id: ${{ github.run_id }}
           seed-id: historical-work-ids-0001
           github-token: ${{ github.token }}
 
@@ -169,7 +169,7 @@ jobs:
         if: always() && steps.verification.outputs.exit_code == '0'
         id: seal
         env:
-          PARENT_EXECUTION_ID: ${{ inputs.batch_id }}
+      PARENT_EXECUTION_ID: ${{ github.run_id }}
         run: |
           set +e
           uv run --locked python tools/legislation_parent_state.py seal \

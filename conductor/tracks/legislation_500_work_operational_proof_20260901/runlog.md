@@ -21,3 +21,9 @@
 - 2026-09-03: `./scripts/validate.sh` passed 4,559 tests at 97.50% coverage,
   48 schemas/38 documents, 9/9 parity, all registered mutation lanes,
   dependency, licence, credential-scan, and 111-component SBOM gates.
+# 2026-09-03 — identity contract correction
+
+- Addressed PR #365 panel P1: unified parent restore and seal execution identity
+  on `${{ github.run_id }}`; retained `batch_id` as batch correlation only.
+- Added static workflow-integrity regression coverage.
+- No hosted execution dispatched; operational gates remain fail-closed.

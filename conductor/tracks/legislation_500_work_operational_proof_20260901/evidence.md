@@ -40,3 +40,10 @@ The full repository harness passed 4,559 tests at 97.50% combined coverage,
 48 schemas and 38 representative documents, 9/9 parity, all registered
 mutations, dependency and licence checks, the credential scan, and the
 111-component SBOM.
+# Repository correction — 2026-09-03
+
+PR #365 correction aligns the exact-inventory workflow's parent-state restore
+and seal with the same GitHub Actions run identity recorded by the harvest
+receipt. This removes the deterministic pre-seal mismatch without asserting
+that the hosted lane has run. Batch IDs remain non-authoritative correlation
+fields.
