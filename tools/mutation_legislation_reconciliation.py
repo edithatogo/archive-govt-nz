@@ -19,11 +19,13 @@ MUTANTS = (
         "reject_valid_work_versions",
         (
             "prior_work = document_work_ids.setdefault(document_id, work_id)\n"
-            "    if prior_work != work_id:"
+            "    if prior_work != work_id:\n"
+            '        _fail("document_identity_duplicate")'
         ),
         (
-            "prior_work = document_work_ids.setdefault(document_id, work_id)\n"
-            "    if document_id in document_work_ids:"
+            "if document_id in document_work_ids:\n"
+            '        _fail("document_identity_duplicate")\n'
+            "    document_work_ids[document_id] = work_id"
         ),
         "test_one_work_accepts_multiple_version_records",
     ),
