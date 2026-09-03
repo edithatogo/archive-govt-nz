@@ -1660,3 +1660,13 @@ the caller-context before/after equality remain. Ruff, scoped Pyright and 31
 focused tests at 100% critical line/branch coverage passed. No production code,
 timeout, worker, coverage threshold or other gate changed. Cold/native refresh
 and fresh exact-head hosted checks remain required.
+
+Refresh completed at correction commit `f7989e4`: the unchanged exporter target
+killed all 63 cold mutants again with zero other outcomes or cache hits. The
+full native harness exited zero with 4,626 tests, nine warnings, 97.54% overall
+coverage, 48 schemas/38 representative documents, 9/9 parity and all
+supply-chain gates including the 111-component SBOM. Native log SHA-256:
+`b5f220f99a8f31d67f30437049dcbe42d40bcf02d11fe5aaa9aa9786ff557a9f`;
+mutation report SHA-256:
+`c02912100823891ecae098842952384b68a06c986b1ab5380dd438dcf776da25`.
+Fresh hosted checks remain separate.

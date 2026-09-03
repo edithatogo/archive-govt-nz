@@ -774,3 +774,5 @@ assumed an unrelated process-global `Inexact` flag began false. The failed log
 was retained and classified as an assertion failure. Removing only that global
 precondition preserves the exact local flags/traps/precision and Decimal(38,18)
 checks without changing production code or weakening a repository gate.
+The refreshed 63-mutant cold lane and 4,626-test native harness both passed;
+the correction is locally closed subject to fresh exact-head hosted checks.
