@@ -4,7 +4,10 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
+import stat
 from contextlib import suppress
+from dataclasses import dataclass
 from io import BytesIO
 from itertools import islice
 from typing import TYPE_CHECKING, Any
@@ -39,6 +42,13 @@ MAX_ORIGINAL_BYTES = 64 * 1024 * 1024
 MAX_THRIFT_STRING_BYTES = 4 * 1024 * 1024
 MAX_THRIFT_CONTAINERS = 100_000
 EXPECTED_FILES = 6
+
+
+@dataclass(frozen=True)
+class _PinnedDirectory:
+    path: Path
+    identity: tuple[int, int]
+    descriptor: int | None
 
 
 def _require(value: object) -> None:
@@ -154,21 +164,68 @@ def _prepare(package: Path, pin: str, original: Path) -> dict[str, bytes]:
     return files
 
 
-def _write(path: Path, payload: bytes) -> None:
-    with path.open("xb") as handle:
-        _require(handle.write(payload) == len(payload))
+def _pin(path: Path) -> _PinnedDirectory:
+    status = path.lstat()
+    _require(stat.S_ISDIR(status.st_mode) and not path.is_symlink())
+    descriptor = None
+    if os.name != "nt":
+        flags = os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW
+        descriptor = os.open(path, flags)
+        try:
+            current = os.fstat(descriptor)
+            _require((current.st_dev, current.st_ino) == (status.st_dev, status.st_ino))
+        except BaseException:
+            os.close(descriptor)
+            raise
+    return _PinnedDirectory(path, (status.st_dev, status.st_ino), descriptor)
 
 
-def _readback(output: Path, files: dict[str, bytes]) -> None:
+def _guard(root: _PinnedDirectory) -> None:
+    status = root.path.lstat()
     _require(
-        {path.name for path in islice(output.iterdir(), len(files) + 1)} == set(files)
+        stat.S_ISDIR(status.st_mode)
+        and not root.path.is_symlink()
+        and (status.st_dev, status.st_ino) == root.identity
     )
+
+
+def _write(root: _PinnedDirectory, name: str, payload: bytes) -> None:
+    _guard(root)
+    if root.descriptor is None:
+        handle = (root.path / name).open("xb")
+    else:
+        flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW
+        descriptor = os.open(name, flags, 0o600, dir_fd=root.descriptor)
+        handle = os.fdopen(descriptor, "wb")
+    with handle:
+        _require(handle.write(payload) == len(payload))
+    _guard(root)
+
+
+def _readback(root: _PinnedDirectory, files: dict[str, bytes]) -> None:
+    _guard(root)
+    if root.descriptor is None:
+        names = {path.name for path in islice(root.path.iterdir(), len(files) + 1)}
+    else:
+        with os.scandir(root.descriptor) as iterator:
+            names = {path.name for path in islice(iterator, len(files) + 1)}
+    _require(names == set(files))
     for name, payload in files.items():
-        path = output / name
-        _require(not path.is_symlink() and path.is_file())
-        verified_snapshot(
-            path, hashlib.sha256(payload).hexdigest(), max_bytes=MAX_FILE_BYTES
-        )
+        if root.descriptor is None:
+            path = root.path / name
+            _require(not path.is_symlink() and path.is_file())
+            observed = verified_snapshot(
+                path, hashlib.sha256(payload).hexdigest(), max_bytes=MAX_FILE_BYTES
+            )
+        else:
+            descriptor = os.open(
+                name, os.O_RDONLY | os.O_NOFOLLOW, dir_fd=root.descriptor
+            )
+            with os.fdopen(descriptor, "rb") as handle:
+                observed = handle.read(MAX_FILE_BYTES + 1)
+            _require(len(observed) <= MAX_FILE_BYTES)
+        _require(observed == payload)
+    _guard(root)
 
 
 def export_budget_appropriations(
@@ -200,21 +257,28 @@ def export_budget_appropriations(
     except OSError:
         message = "budget_canonical_export_reserve"
         raise ValueError(message) from None
+    root: _PinnedDirectory | None = None
     try:
+        root = _pin(output)
         payloads = {name: payload for name, payload in files.items() if name != MARKER}
         for name, payload in payloads.items():
-            _write(output / name, payload)
-        _readback(output, payloads)
-        _write(output / MARKER, files[MARKER])
-        _readback(output, files)
+            _write(root, name, payload)
+        _readback(root, payloads)
+        _write(root, MARKER, files[MARKER])
+        _readback(root, files)
     except BaseException as error:
-        with suppress(OSError, ValueError, TypeError, pa.ArrowException):
-            _write(
-                output / "FAILURE.json",
-                _json({"schema_version": SCHEMA, "status": "failed"}),
-            )
+        if root is not None:
+            with suppress(OSError, ValueError, TypeError, pa.ArrowException):
+                _write(
+                    root,
+                    "FAILURE.json",
+                    _json({"schema_version": SCHEMA, "status": "failed"}),
+                )
         if isinstance(error, (OSError, ValueError, TypeError, pa.ArrowException)):
             message = "budget_canonical_export_write"
             raise ValueError(message) from None  # noqa: TRY004 - redact I/O failures
         raise
+    finally:
+        if root is not None and root.descriptor is not None:
+            os.close(root.descriptor)
     return receipt
