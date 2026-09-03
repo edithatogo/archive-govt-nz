@@ -1628,3 +1628,26 @@ new test exception/spy-typing issues without source changes. Independent review,
 passed: 4,239 tests / 97.3804% coverage / all supply-chain gates. Incoming main326
 ledger prefix is preserved. See [full receipts](./budget-reader-bounds.md).
 No original/package/HF bytes were changed.
+
+## 2026-09-03 — Exclusive local Budget canonical export
+
+- Implemented the reviewed `budget-canonical-export-proposal.md` as a separate
+  public orchestration module over the verified Budget reader, original snapshot
+  verifier and pure appropriation projection.
+- The exporter emits exactly three canonical Parquets, the unchanged projection
+  receipt, complete lineage accounting and `LOCAL_BUDGET.json`; dry runs and
+  persisted builds serialize identical bytes while retaining local-only,
+  rights-not-evaluated and publication-not-granted states.
+- Enforced exclusive output reservation, source/output disjointness, literal
+  boolean dry-run state, per-file/aggregate/original caps, bounded Parquet Thrift
+  metadata, schema/value readback, six-file closure, retained partial failures
+  and interrupt propagation.
+- Focused validation: 111 Budget reader, projection and exporter tests passed;
+  Ruff formatting and lint passed. This closes only the Budget export slice of
+  AC-05/AC-08; remaining adapters and the canonical consumer bridge remain open.
+- Extended the read-only local provenance verifier and pure descriptor inventory
+  to recompute, validate and dependency-link the three-recordset Budget package,
+  including exact marker, raw/original fixity, Parquet schema/value, projection
+  receipt and complete lineage-accounting equality. The combined provenance and
+  exporter suites pass 138 tests; this remains scoped local verification, not
+  rights, publication, standards or whole-recovery acceptance.

@@ -38,7 +38,7 @@ provenance reader receipt for exact scope; hosted delivery is recorded separatel
 | AC-02 no original loss | CAS/WARC/candidate audit; new outputs remain separate | Continue exact per-item disposition accounting as new resources or versions are admitted. |
 | AC-03 census | Complete donor inventory and explicit unresolved-area accounting | Resolve or reason-code the 158 structural units; a PDF structural unit is not proof of table/page extraction. Adapter-specific exclusions are not global irrelevance decisions. |
 | AC-04 provenance/fixity | Source-specific manifests and cell lineage; local fixity readers | Complete resource-specific rights and observation joins across new derivatives; do not upgrade a pure metadata assertion to verified bytes. |
-| AC-05 Silver | Canonical structural schemas, historical projection/export, Budget appropriation projection (#322) and unmapped label occurrences | Add exclusive Budget appropriation export and remaining source-native-to-canonical adapters, preserving exact period/unit/Decimal semantics. |
+| AC-05 Silver | Canonical structural schemas, historical projection/export, Budget appropriation projection (#322), exclusive deterministic local Budget export, and unmapped label occurrences | Add remaining source-native-to-canonical adapters, preserving exact period/unit/Decimal semantics. |
 | AC-06 donor database parity | Five-table compatibility and documented additional historical observations/precision differences | Keep row-level difference receipts attached; neither total-row equality nor a successful export proves all semantic repair approvals. |
 | AC-07 functional parity | Inspection, source processing, analytical/plot contracts and original-driven replay | Reconcile full donor utility/analysis scope against fixtures; do not treat unnormalized workbook areas as covered by six plots. |
 | AC-08 rebuildable compatibility | Verified raw-Parquet-to-SQLite/Gold/plots pipeline | Complete the explicit canonical-recordset consumer bridge; source-native raw Parquet is not automatically the new canonical contract. |
@@ -57,13 +57,10 @@ provenance reader receipt for exact scope; hosted delivery is recorded separatel
    projection; keep their already-passed local/pilot evidence distinct. Executor
    #323 merged as `1edd022c6cb0233a7807ebddd46c8b6d3fbf7394` at
    2026-08-31T18:17:38Z after seven successful checks at `f866da40`.
-2. Implement the [exclusive Budget export proposal](./budget-canonical-export-proposal.md),
-   then extend verified provenance to those appropriation packages, retaining
-   the complete lineage accounting and input metadata caps.
-3. Complete the canonical consumer/metadata/recovery bridge before considering a
+2. Complete the canonical consumer/metadata/recovery bridge before considering a
    changed candidate. Keep contextual sources with unresolved identity, access,
    units or rights out of analytical promotion while working other sources.
-4. Reconcile the remaining criteria against exact evidence before opening a
+3. Reconcile the remaining criteria against exact evidence before opening a
    publication gate. The existing candidate approval covers only its existing
    bytes. Donor retirement and Zenodo remain outside this approved track.
 

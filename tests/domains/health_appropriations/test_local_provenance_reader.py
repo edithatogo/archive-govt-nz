@@ -17,6 +17,9 @@ from tests.domains.health_appropriations.test_historical_snapshot import _packag
 from archive_govt_nz.domains.health_appropriations import (
     local_provenance_reader as reader,
 )
+from archive_govt_nz.domains.health_appropriations.budget_canonical_export import (
+    export_budget_appropriations,
+)
 from archive_govt_nz.domains.health_appropriations.classification_export import (
     export_budget_classification,
 )
@@ -42,8 +45,12 @@ def package(tmp_path: Path, kind: str) -> CanonicalPackageInput:
             tmp_path / "source.xlsx",
             data["manifest_sha256"],
         )
-        export_budget_classification(raw, pin, source, output, dry_run=False)
-        marker = "LOCAL_CLASSIFICATION.json"
+        if kind == "budget":
+            export_budget_appropriations(raw, pin, source, output, dry_run=False)
+            marker = "LOCAL_BUDGET.json"
+        else:
+            export_budget_classification(raw, pin, source, output, dry_run=False)
+            marker = "LOCAL_CLASSIFICATION.json"
     return CanonicalPackageInput(
         kind=kind,
         root=output,
@@ -54,7 +61,7 @@ def package(tmp_path: Path, kind: str) -> CanonicalPackageInput:
     )
 
 
-@pytest.mark.parametrize("kind", ["historical", "classification"])
+@pytest.mark.parametrize("kind", ["historical", "classification", "budget"])
 def test_verified_inventory_keeps_pure_claims_separate(
     tmp_path: Path, kind: str
 ) -> None:
@@ -67,7 +74,14 @@ def test_verified_inventory_keeps_pure_claims_separate(
     assert result["status"] == "verified_scoped_snapshots"
     assert result["inventory"]["input_fixity"] == "not_performed"
     assert result["inventory"]["rights_state"] == "not_evaluated"
-    assert len(result["inventory"]["products"]) == (3 if kind == "historical" else 2)
+    assert (
+        len(result["inventory"]["products"])
+        == {
+            "historical": 3,
+            "classification": 2,
+            "budget": 3,
+        }[kind]
+    )
     assert result == read_local_provenance((value,))
     assert before == {p: p.read_bytes() for p in before}
 
@@ -93,11 +107,11 @@ def test_fail_closed_does_not_create_state(tmp_path: Path, change: str) -> None:
 
 
 def _marker_name(value: CanonicalPackageInput) -> str:
-    return (
-        "LOCAL_CANONICAL.json"
-        if value.kind == "historical"
-        else "LOCAL_CLASSIFICATION.json"
-    )
+    return {
+        "historical": "LOCAL_CANONICAL.json",
+        "classification": "LOCAL_CLASSIFICATION.json",
+        "budget": "LOCAL_BUDGET.json",
+    }[value.kind]
 
 
 def _repin(value: CanonicalPackageInput, marker: object) -> CanonicalPackageInput:
