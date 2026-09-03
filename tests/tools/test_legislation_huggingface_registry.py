@@ -55,6 +55,30 @@ def test_registry_has_exact_non_conflicting_identity_roles() -> None:
     )
 
 
+@pytest.mark.parametrize(
+    ("slug", "field", "invalid"),
+    [
+        ("edithatogo/corpus-legislation-nz", "role", "immutable_doi_snapshot"),
+        (
+            "edithatogo/corpus-legislation-nz-historical",
+            "origin_metadata_status",
+            "frozen_snapshot_lineage",
+        ),
+        ("edithatogo/nz-legislation-corpus", "mutable", True),
+    ],
+)
+def test_registry_schema_binds_identity_provenance_to_slug(
+    slug: str, field: str, invalid: object
+) -> None:
+    """Each identity slug fixes its role and provenance semantics."""
+    schema = _load(SCHEMA_PATH)
+    registry = copy.deepcopy(_load(REGISTRY_PATH))
+    identity = next(item for item in registry["identities"] if item["slug"] == slug)
+    identity[field] = invalid
+    with pytest.raises(ValidationError):
+        Draft202012Validator(schema).validate(registry)
+
+
 def test_registry_is_bound_to_canonical_state_and_durable_package() -> None:
     """State roots and counts must reproduce Prompt 04 and Prompt 09 evidence."""
     registry = _load(REGISTRY_PATH)
@@ -248,6 +272,12 @@ def test_public_readback_binds_all_published_bytes_and_access() -> None:
     assert files["RIGHTS.md"] == (
         771,
         "1cf3df1c833ab9f8a44b703a7668a91b25dfa1b2626972f89d11f7607a776d03",
+    )
+    assert files[
+        "durable-state/v1/2e4b75333e947d812842147c939117fc666799e4497b80f125104f721ef68e3c/metadata.json"
+    ] == (
+        1450,
+        "ed886263fead010a540663515b24440db59371dbd9bb0abca2138942b44f8e74",
     )
     package = next(value for path, value in files.items() if path.endswith(".zip"))
     assert package == (
