@@ -1,5 +1,10 @@
 # Run log
 
+- 2026-09-04: corrected the historical evidence-index path after archival and
+  rebound it to the archived review SHA-256 after the prior lifecycle-finalizing
+  review update. Conductor state and evidence-index tests pass. The lifecycle
+  metadata and completed plan already agree.
+
 - Live target fetch: 33ad03e1204d4b8b4622b8a28dc43c12490857ed. No audited target SHA supplied.
 - Live donor REST archived=true; ls-remote HEAD b40587f1b1aec7356a0f623916fcc8212397d283, matching audit.
 - Interval count 15; seven changed files; Conductor tree unchanged at 4faf5bebac0d6cf8f06b87e83b282a9953505ce9.
