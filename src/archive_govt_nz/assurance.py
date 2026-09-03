@@ -5,7 +5,7 @@ import subprocess
 from collections.abc import Callable, Sequence
 from dataclasses import dataclass
 
-COMMAND_TIMEOUT_SECONDS = 600
+COMMAND_TIMEOUT_SECONDS = 900
 
 
 @dataclass(frozen=True, slots=True)
