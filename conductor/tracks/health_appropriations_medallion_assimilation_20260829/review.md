@@ -14,6 +14,11 @@
   interruption/resume and restriction paths, focused/property/mutation checks,
   and an exit-zero full harness. These marks describe the observed bounded
   source set only; new editions, rights decisions, and publication remain open.
+- The earlier `health-survey-assessment.md` already completed the plan's
+  non-blocking evaluation task: it records the analytical question, temporal
+  and geography boundaries, rights observations, and the still-unmet export
+  and dictionary gate. Marking that evaluation complete does not authorize or
+  claim survey acquisition or integration.
 
 ## Optional graph/vector evaluation — 2026-09-04 UTC
 

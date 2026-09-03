@@ -84,7 +84,7 @@ repository validation command. External gates block only their affected task.
 - [ ] Enumerate the exact official CPI, QES wage, population, GDP and Crown
   expense series needed for approved derived measures; reject discovery leads
   that lack a stable definition or join. [M-02, M-12; AC-03, AC-10]
-- [ ] Evaluate published aggregate Health Survey indicators as a non-blocking
+- [x] Evaluate published aggregate Health Survey indicators as a non-blocking
   Should item; include only if a documented analytical question, stable
   time/geography contract and public rights evidence exist. [S-05; AC-10]
 - [x] Complete the bounded metadata-only Health Survey assessment, recording
