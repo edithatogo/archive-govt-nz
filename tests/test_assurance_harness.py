@@ -81,6 +81,7 @@ def test_repository_gate_lists_all_required_stages() -> None:
         "mutation-adapters",
         "mutation-legislation-accounting",
         "mutation-legislation-reconciliation",
+        "mutation-legislation-checkpoint-root",
         "mutation-legislation-historical-coverage",
         "mutation-gazette",
         "mutation-medallion",
