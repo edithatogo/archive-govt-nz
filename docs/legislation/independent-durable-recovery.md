@@ -13,10 +13,18 @@ The candidate package SHA-256 is
 These values come from the reviewed Prompt 09 receipt, not a fresh retrieval.
 
 The live HF revision `1efa35e72c378068cfb112d060bd0502497f61b1`
-listed 112 paths and no `durable-state/` paths during this audit. It is a metadata
+listed 124 paths and no `durable-state/` paths during the 2026-09-03
+superseding audit. It is a metadata
 observation revision, **not a published package revision**. The expected path is
 `durable-state/v1/<package SHA-256>/state.zip`. Payload rights remain blocked;
-there is no exact package publication/access receipt. PR #324 remains unmerged.
+there is no exact package publication/access receipt. Prompt 09 PR #324 is now
+merged at `d3946b8f5380c60b11b5f6e803f7188fc7d8e8df`; that merge supplies the
+package format and tooling but does not publish the package or satisfy this
+drill. The repository-wide actionlint lane also passes at target main
+`e559d675c347615d64ae5e1c1f3ad5efd5d120f6`; the two SC2086 findings in the
+2026-08-31 preparation receipt are retained as historical observations and are
+not current blockers. See `prerequisite-readback-20260903.json` for the dated
+superseding readback.
 Do not upload, relax access controls, reuse a retained local package, substitute
 an Actions artifact or call the earlier local round-trip this drill.
 
@@ -79,7 +87,7 @@ an Actions artifact or call the earlier local round-trip this drill.
 
 ## Command interfaces
 
-Once Prompt 09 is delivered, use its exact pinned software and these interfaces
+Use the merged Prompt 09 interfaces at an exact pinned software revision
 with absolute, attempt-specific paths. Placeholders must be replaced from the
 approved reference; these examples have not been executed by Prompt 10.
 
