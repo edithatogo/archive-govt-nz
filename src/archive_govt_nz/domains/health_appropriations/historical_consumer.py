@@ -73,7 +73,7 @@ def _canonical_json(value: object) -> bytes:
 
 def _verified_receipt(payload: object, expected: dict[str, Any]) -> dict[str, Any]:
     _require(type(payload) is bytes and len(payload) <= _MAX_RECEIPT_BYTES)
-    raw = cast(bytes, payload)
+    raw = cast("bytes", payload)
     parsed = json.loads(raw)
     _require(isinstance(parsed, dict))
     # Exact canonical bytes deliberately distinguish true, 1 and 1.0.
@@ -85,12 +85,12 @@ def _verified_tables(
     supplied: object, expected: dict[str, pa.Table]
 ) -> dict[str, pa.Table]:
     _require(isinstance(supplied, dict) and set(supplied) == set(_TABLES))
-    mapping = cast(dict[str, object], supplied)
+    mapping = cast("dict[str, object]", supplied)
     result: dict[str, pa.Table] = {}
     for name in _TABLES:
         table = mapping[name]
         _require(isinstance(table, pa.Table))
-        table = cast(pa.Table, table)
+        table = cast("pa.Table", table)
         _require(0 <= table.num_rows <= _MAX_ROWS and table.nbytes <= _MAX_TABLE_BYTES)
         _require(table.schema.equals(expected[name].schema, check_metadata=True))
         _require(table.equals(expected[name]))
@@ -147,7 +147,7 @@ def _consumer_facts(tables: dict[str, pa.Table]) -> list[dict[str, Any]]:
         end = row["valid_time_end"]
         token = row["period_token"]
         _require(isinstance(end, date))
-        end = cast(date, end)
+        end = cast("date", end)
         _require(
             end.month in (3, 6)
             and isinstance(token, str)

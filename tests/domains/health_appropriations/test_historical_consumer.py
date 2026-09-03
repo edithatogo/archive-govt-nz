@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 from copy import deepcopy
 from datetime import date
-from decimal import Decimal
+from decimal import Decimal, Inexact, Rounded, getcontext, localcontext
 
 import pyarrow as pa
 import pytest
@@ -44,21 +44,33 @@ def _case() -> tuple[dict[str, object], dict[str, pa.Table], bytes]:
 
 
 def _series_case(  # noqa: C901 - test builder mirrors mutually exclusive source dependencies
-    *, second_year: int, second_month: int, second_basis: str
+    *,
+    second_year: int,
+    second_month: int,
+    second_basis: str,
+    gdp_month: int | None = None,
 ) -> tuple[dict[str, object], dict[str, pa.Table], bytes]:
     base = _inputs()
     fact0 = base["facts"].to_pylist()[0]
     links0 = base["lineage"].to_pylist()
 
-    def variant(
-        fact: dict[str, object], links: list[dict[str, object]], index: int
+    def variant(  # noqa: PLR0913 - explicit source dimensions keep cases legible
+        fact: dict[str, object],
+        links: list[dict[str, object]],
+        index: int,
+        *,
+        year: int,
+        month: int,
+        basis: str | None,
+        measure: str,
     ) -> tuple[dict[str, object], list[dict[str, object]]]:
         row = deepcopy(fact)
-        year = 2025 if index == 0 else second_year
-        month = 6 if index == 0 else second_month
-        basis = "PBE Standards" if index == 0 else second_basis
         label = str(year)
-        token = "12.00000000000000000" if index == 0 else "15.00000000000000000"
+        token = (
+            "100.00000000000000000"
+            if measure == "nominal_gdp"
+            else ("12.00000000000000000" if index == 0 else "15.00000000000000000")
+        )
         row.update(
             record_id="sha256:" + str(index + 1) * 64,
             source_observation_id="sha256:" + str(index + 3) * 64,
@@ -69,10 +81,17 @@ def _series_case(  # noqa: C901 - test builder mirrors mutually exclusive source
             source_number_token=token,
             period_end_month=month,
             accounting_basis=basis,
+            recordset=(
+                "fiscal_context_fact"
+                if measure == "nominal_gdp"
+                else "health_spending_fact"
+            ),
+            measure=measure,
             valid_time_end=date(year, month, 31 if month == 3 else 30),
             footnotes=[],
         )
-        context = f"{basis}, {'March' if month == 3 else 'June'} Years"
+        month_label = "March" if month == 3 else "June"
+        context = f"{basis}, {month_label} Years" if basis else f"{month_label} Years"
         result = []
         for original in links:
             link = deepcopy(original)
@@ -84,6 +103,8 @@ def _series_case(  # noqa: C901 - test builder mirrors mutually exclusive source
                 ),
             )
             field = link["field"]
+            if field == "accounting_basis" and basis is None:
+                continue
             link["normalized_value"] = str(row[field])
             if field in {"amount", "source_number_token"}:
                 link["raw_value"] = token
@@ -97,12 +118,47 @@ def _series_case(  # noqa: C901 - test builder mirrors mutually exclusive source
                 )
             elif field == "accounting_basis":
                 link["raw_value"] = context
+            elif field == "measure":
+                link["raw_value"] = (
+                    "Nominal GDP" if measure == "nominal_gdp" else "Health"
+                )
             elif field == "footnotes":
                 continue
             result.append(link)
         return row, result
 
-    variants = [variant(fact0, links0, 0), variant(fact0, links0, 1)]
+    variants = [
+        variant(
+            fact0,
+            links0,
+            0,
+            year=2025,
+            month=6,
+            basis="PBE Standards",
+            measure="health_spending",
+        ),
+        variant(
+            fact0,
+            links0,
+            1,
+            year=second_year,
+            month=second_month,
+            basis=second_basis,
+            measure="health_spending",
+        ),
+    ]
+    if gdp_month is not None:
+        variants.append(
+            variant(
+                fact0,
+                links0,
+                2,
+                year=second_year,
+                month=gdp_month,
+                basis=None,
+                measure="nominal_gdp",
+            )
+        )
     facts = [item[0] for item in variants]
     links = [link for item in variants for link in item[1]]
     cells = []
@@ -253,6 +309,71 @@ def test_bridge_preserves_public_analysis_policy(
     ]
 
 
+@pytest.mark.parametrize(
+    ("gdp_month", "status"), [(6, "aligned"), (3, "period_mismatch")]
+)
+def test_bridge_preserves_gdp_alignment_policy(gdp_month: int, status: str) -> None:
+    raw, tables, receipt = _series_case(
+        second_year=2026,
+        second_month=6,
+        second_basis="PBE Standards",
+        gdp_month=gdp_month,
+    )
+    result = bridge_historical_inputs(
+        **raw, canonical_tables=tables, parent_receipt=receipt
+    )
+    canonical = analyze_historical(list(result.inputs))
+    source = analyze_historical(raw["facts"].to_pylist())
+    assert canonical[1]["gdp_share_status"] == status
+    assert canonical[1]["gdp_share_status"] == source[1]["gdp_share_status"]
+    assert canonical[1]["gdp_share_percent"] == source[1]["gdp_share_percent"]
+
+
+def test_bridge_is_independent_of_valid_raw_physical_order() -> None:
+    raw, tables, receipt = _series_case(
+        second_year=2026, second_month=6, second_basis="PBE Standards"
+    )
+    for name in ("facts", "lineage", "dispositions"):
+        table = raw[name]
+        raw[name] = table.take(list(reversed(range(table.num_rows))))
+    result = bridge_historical_inputs(
+        **raw, canonical_tables=tables, parent_receipt=receipt
+    )
+    assert len(result.inputs) == 2
+
+
+def test_bridge_accounts_every_lineage_reference_and_identity_substitution() -> None:
+    raw, tables, receipt = _series_case(
+        second_year=2026, second_month=6, second_basis="PBE Standards", gdp_month=6
+    )
+    result = bridge_historical_inputs(
+        **raw, canonical_tables=tables, parent_receipt=receipt
+    )
+    lineage_ids = {row["record_id"] for row in result.canonical_lineage}
+    assert all(
+        set(row["canonical_lineage_record_ids"]) <= lineage_ids
+        for row in result.field_accounting
+    )
+    assert all(
+        row["state"]
+        == (
+            "canonical_lineage"
+            if row["canonical_lineage_record_ids"]
+            else "canonical_metadata_transport"
+        )
+        for row in result.field_accounting
+    )
+    substitutions = {
+        row["canonical_record_id"]: row["source_record_id"]
+        for row in result.backward_ids
+    }
+    assert all(
+        substitutions[row["record_id"]] == row["source_record_id"]
+        and row["record_id"] != row["source_record_id"]
+        for row in result.inputs
+    )
+
+
 @pytest.mark.parametrize("change", ["value", "schema", "order", "extra"])
 def test_bridge_rejects_non_exact_canonical_projection(change: str) -> None:
     raw, tables, receipt = _case()
@@ -300,6 +421,49 @@ def test_bridge_rejects_receipt_and_table_resource_bounds() -> None:
         bridge_historical_inputs(
             **raw, canonical_tables=oversized, parent_receipt=receipt
         )
+
+
+def test_bridge_rejects_unrepresentable_canonical_decimal_and_period_contradiction() -> (
+    None
+):
+    raw, tables, receipt = _case()
+    rows = tables["health_spending_fact"].to_pylist()
+    rows[0]["amount"] = Decimal("12.345678901234560001")
+    changed = dict(tables)
+    changed["health_spending_fact"] = pa.Table.from_pylist(
+        rows, schema=tables["health_spending_fact"].schema
+    )
+    with pytest.raises(ValueError, match="historical_consumer_contract"):
+        bridge_historical_inputs(
+            **raw, canonical_tables=changed, parent_receipt=receipt
+        )
+
+    raw, tables, receipt = _case()
+    rows = raw["facts"].to_pylist()
+    rows[0]["valid_time_end"] = date(2024, 6, 30)
+    raw["facts"] = pa.Table.from_pylist(rows, schema=_SCHEMA)
+    with pytest.raises(ValueError, match="historical_consumer_contract"):
+        bridge_historical_inputs(**raw, canonical_tables=tables, parent_receipt=receipt)
+
+
+def test_bridge_ignores_hostile_decimal_context_without_mutating_it() -> None:
+    raw, tables, receipt = _case()
+    original = str(getcontext())
+    with localcontext() as context:
+        context.prec = 2
+        context.traps[Inexact] = True
+        context.traps[Rounded] = True
+        context.clear_flags()
+        result = bridge_historical_inputs(
+            **raw, canonical_tables=tables, parent_receipt=receipt
+        )
+        assert len(result.inputs) == 1
+        assert context.prec == 2
+        assert context.traps[Inexact]
+        assert context.traps[Rounded]
+        assert not context.flags[Inexact]
+        assert not context.flags[Rounded]
+    assert str(getcontext()) == original
 
 
 def test_bridge_rejects_boolean_manifest_pin_and_interrupts_propagate(
