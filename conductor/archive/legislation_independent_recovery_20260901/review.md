@@ -11,3 +11,10 @@ Two-pass recovery review: exact remote revision and package identity matched ind
 Review findings are addressed locally by durable stage evidence, explicit authority/preflight binding, and the exact published filename. Final verification must confirm the Prompt 15 governed rights/readback receipt exists at its bound path and hash after PR #369 merges; fail closed until then.
 
 Final rights binding is no longer pending: Prompt 15's merged commit and exact governed readback hash are present and verified in the base. The review-hardening evidence fails closed if that file, hash, authority decision, parent preflight, or stage artifact changes.
+
+Closeout review, 2026-09-03: PR #329 is merged and the final governed
+publication receipt remains hash-bound. The new completion proof does not infer
+recovery from publication alone: it binds both independent attempt receipts,
+the exact public package, restored counts and roots, zero reconciliation
+findings, and destroyed test workspaces. Prompt 13 dispatch remains explicitly
+outside this track. No unresolved Prompt 10 defect or gate remains.

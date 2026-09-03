@@ -48,7 +48,7 @@ def test_static_and_coverage_policy_is_fail_closed() -> None:
     assert tools["coverage"]["run"]["branch"] is True
     assert tools["coverage"]["report"]["fail_under"] == 95
     assert tools["coverage"]["report"]["show_missing"] is True
-    assert COMMAND_TIMEOUT_SECONDS >= 600
+    assert COMMAND_TIMEOUT_SECONDS == 900
 
 
 def test_repository_gate_lists_all_required_stages() -> None:
@@ -81,6 +81,7 @@ def test_repository_gate_lists_all_required_stages() -> None:
         "mutation-adapters",
         "mutation-legislation-accounting",
         "mutation-legislation-reconciliation",
+        "mutation-legislation-checkpoint-root",
         "mutation-legislation-historical-coverage",
         "mutation-gazette",
         "mutation-medallion",

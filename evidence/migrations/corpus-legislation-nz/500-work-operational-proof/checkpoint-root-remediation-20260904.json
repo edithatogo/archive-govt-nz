@@ -1,0 +1,57 @@
+{
+  "accounting": {
+    "cas_after": 904,
+    "cas_before": 552,
+    "changed_preserved": 352,
+    "failed": 0,
+    "mismatch_count": 0,
+    "output_manifest_root": "4d20037717dbff2d6dc3002daa6fa80cac693cfb0c92f988824e7428a7fa37e4",
+    "partial": 0,
+    "reconciliation_status": "passed",
+    "records_after": 904,
+    "records_before": 552,
+    "reported_output_checkpoint_root": "c18596b572d4f33f79b939c65d34a8428f0f7f9d2b0ad5fa6b47fa606ed51010",
+    "retries": 0,
+    "skipped": 0,
+    "unavailable": 0,
+    "unchanged_revalidated": 148,
+    "works_attempted": 500
+  },
+  "diagnosis": {
+    "cause": "harvest re-encoded checkpoint as compact JSON for its root while checkpoint manager persisted indented JSON bytes and the sealer compared the actual file digest",
+    "deterministic_failure_class": "receipt_checkpoint_root",
+    "fix": "when a checkpoint file exists, compute parent and output roots from its exact persisted bytes; retain the existing canonical in-memory fallback only when no checkpoint file exists"
+  },
+  "failed_run": {
+    "attempt_artifact": {
+      "id": 9905431502,
+      "sha256": "88d79483a8a43d1dae851fd1c6d9a14173996b5ca18759737cff91764d9c80c6"
+    },
+    "harvest_receipt_sha256": "6b2013b692c288475e26c6f891831c57e7d28182b2918dbed9e90fd4234759a5",
+    "head_sha": "e2e194d33eb6f0ec68d3aa6969e5e47bdfb8bf49",
+    "issue_comment_id": 5529723494,
+    "job_id": 100747662510,
+    "parent_artifact": {
+      "id": 9905079496,
+      "sha256": "77fc9e5536041dea38a3001c574c976c9c09492ab4b19fa9a2b956c6849361ba"
+    },
+    "reconciliation_receipt_sha256": "12ef07ad33a72ed095a6dd1e228341b468578e195c8f4ad2b7a8d500bb70a86b",
+    "run_id": 33785045808,
+    "run_log_sha256": "feb176f6404cb72f81f8ee143951ac23a6d5041d579de43654230931302e11eb"
+  },
+  "issue": 385,
+  "limitations": [
+    "failed_run_is_not_a_valid_parent",
+    "no_complete_state_artifact",
+    "no_additional_run_dispatched_before_merge"
+  ],
+  "schema_version": "archive-govt-nz.prompt13-checkpoint-root-remediation/v1",
+  "status": "remediation_prepared_retry_not_dispatched",
+  "target_commit": "e2e194d33eb6f0ec68d3aa6969e5e47bdfb8bf49",
+  "verification": {
+    "end_to_end_synthetic_seal": "passed",
+    "focused_checkpoint_and_seal_tests": "passed",
+    "mutation": "1/1 killed",
+    "property_test": "passed"
+  }
+}

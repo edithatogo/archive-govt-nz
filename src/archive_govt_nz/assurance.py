@@ -5,7 +5,7 @@ import subprocess
 from collections.abc import Callable, Sequence
 from dataclasses import dataclass
 
-COMMAND_TIMEOUT_SECONDS = 600
+COMMAND_TIMEOUT_SECONDS = 900
 
 
 @dataclass(frozen=True, slots=True)
@@ -117,6 +117,16 @@ def build_stages(
                 "--locked",
                 "python",
                 "tools/mutation_legislation_reconciliation.py",
+            ),
+        ),
+        GateStage(
+            "mutation-legislation-checkpoint-root",
+            (
+                "uv",
+                "run",
+                "--locked",
+                "python",
+                "tools/mutation_legislation_checkpoint_root.py",
             ),
         ),
         GateStage(

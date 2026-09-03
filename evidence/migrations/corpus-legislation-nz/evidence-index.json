@@ -299,7 +299,7 @@
     {
       "evidence_id": "inventory-7c85a725d2a92a9e",
       "path": "conductor/tracks/legislation_hf_identity_reconciliation_20260901/review.md",
-      "sha256": "e802dab045bd679049680a4adb8eb13b35dd40f1a69acdd6c64a6d0f5eb00300",
+      "sha256": "02b36d8ca3ab48f13b1324c7d110c035707d220aeec556976040fab565166b07",
       "classification": "historical",
       "artefact_type": "track_review",
       "claim_dimensions": [
@@ -2271,6 +2271,30 @@
       ],
       "rationale": "Targeted mutation evaluator for evidence-index integrity guards.",
       "proof_kind": "evaluator"
+    },
+    {
+      "evidence_id": "durable-recovery-completion-readback",
+      "path": "evidence/completion-proofs/durable-recovery-readback.json",
+      "sha256": "0569951f25e4c3097bdc3869807a4c4efbe967fdc1af991a9896a3bf7798c21d",
+      "classification": "active",
+      "artefact_type": "receipt",
+      "claim_dimensions": [
+        "corpus_custody_recoverability"
+      ],
+      "rationale": "Governed completion proof binds two anonymous fresh-workspace recoveries, exact package and restored-state fixity, and zero reconciliation findings.",
+      "proof_kind": "recovery_readback"
+    },
+    {
+      "evidence_id": "publication-identity-completion-readback",
+      "path": "evidence/completion-proofs/publication-identity-readback.json",
+      "sha256": "c6bb63699645b6ef87175197b8c1e145d6b53d897266e4edb771e62f893c6512",
+      "classification": "active",
+      "artefact_type": "receipt",
+      "claim_dimensions": [
+        "publication_identity_migration"
+      ],
+      "rationale": "Governed completion proof binds the approved canonical identity, target-origin card and rights files, durable package, and anonymous exact-revision readback.",
+      "proof_kind": "identity_verification"
     }
   ],
   "evaluator_inputs": {
@@ -2288,13 +2312,15 @@
       "canonical-state-merge",
       "canonical-state-independent-readback",
       "canonical-historical-coverage",
-      "claim-correction-manifest"
+      "claim-correction-manifest",
+      "durable-recovery-completion-readback"
     ],
     "publication_identity_migration": [
       "canonical-historical-coverage",
       "claim-correction-manifest",
       "hf-live-identity-observations",
-      "zenodo-identity-correction"
+      "zenodo-identity-correction",
+      "publication-identity-completion-readback"
     ]
   },
   "dimensions": {
@@ -2313,18 +2339,18 @@
       "rationale": "Canonical state was merged, but the target-owned 500-work execution, reconciliation, continuation and recovery proof was not dispatched and remains blocked."
     },
     "corpus_custody_recoverability": {
-      "status": "externally_blocked",
+      "status": "complete",
       "proof_ids": [
-        "durable-destination-observations"
+        "durable-recovery-completion-readback"
       ],
-      "rationale": "A deterministic local package exists, while rights, remote authority, independent recovery and Prompt 10 acceptance remain unsatisfied."
+      "rationale": "Two anonymous fresh-workspace recoveries independently reproduced the exact public package, restored all 552 records and CAS objects, and returned zero reconciliation findings."
     },
     "publication_identity_migration": {
-      "status": "externally_blocked",
+      "status": "complete",
       "proof_ids": [
-        "hf-publication-candidate"
+        "publication-identity-completion-readback"
       ],
-      "rationale": "Zenodo identity is corrected read-only, but Hugging Face target-originated publication remains a candidate awaiting external approval."
+      "rationale": "Maintainer-authorized target-origin publication and anonymous exact-revision readback verify the canonical Hugging Face identity, package, metadata, card, and rights boundary."
     }
   },
   "derived_outputs": [

@@ -43,9 +43,9 @@ log SHA-256:
 `b5c462c1a9163f336eff095f0f47a48434f5c6a9ccd31dfbf02f46d5a49067d7`.
 No original, raw, canonical, rights or publication state was changed.
 
-The unchanged repository-native harness then returned exit 0: 4,640 tests in
-36.07 seconds at 98% displayed total coverage, nine existing resource warnings,
+The final main-integrated repository-native harness returned exit 0: 4,658 tests
+in 35.67 seconds at 98% displayed total coverage, nine existing resource warnings,
 48 schemas and 38 representative documents, parity 9/9, all native mutation,
 hygiene and supply-chain gates, and a 111-component SBOM. Log SHA-256:
-`ce913b8f4ef2ca7d64f71a8e9b032242634a64e0192e0eba97f155645dd810fc`.
+`998927112a4a88026148d24bedd329afb0969709683d967db3875835d8857ce3`.
 Hosted exact-head delivery remains a separate gate.
