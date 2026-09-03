@@ -7,5 +7,6 @@ blocker is hosted governance: branch protection/ruleset enforcement for
 `main` has not been established (Issue #354 remains open). This is a hosted
 settings gate and cannot be satisfied by local code or agent inference.
 
-The track remains incomplete and must not be archived until exact-head checks
-are enforced and independently read back. No hosted settings were changed.
+The active `main-integrated-assurance` ruleset now enforces the required exact-
+head checks and was independently read back. The final hosted-governance gate
+is satisfied; no further review defect remains for this track.
