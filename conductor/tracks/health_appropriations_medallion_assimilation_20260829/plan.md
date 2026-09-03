@@ -157,9 +157,12 @@ repository validation command. External gates block only their affected task.
   (`3564f2b`; 107 focused tests, 144 cold mutant kills, 3,531 native tests;
   see `area-accounting.md`; hosted delivery remains separate.)
 
-- [ ] Verify every discovered item has exactly one disposition and every donor
+- [x] Verify every discovered item has exactly one disposition and every donor
   binary/data area has an inventory result; report uncertainty and gaps rather
-  than inferring completeness. [M-01, M-02, M-07; AC-01, AC-03, AC-09]
+  than inferring completeness. Verified 141 unique source records with exactly
+  one disposition (73 captured, 68 out of scope, zero unresolved) and retained
+  the bounded donor binary/data-area census. [M-01, M-02, M-07; AC-01, AC-03,
+  AC-09]
 - [ ] Run focused format/security/property checks, self-review and the full
   repository harness; record paired evidence. [M-18, M-19; AC-16]
 

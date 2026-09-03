@@ -12,6 +12,17 @@
   remain rebuildable discovery aids and are not preservation, rights,
   publication, or analytical truth.
 
+## Phase 1 disposition reconciliation — 2026-09-04
+
+- Revalidated `source-census.json`: its declared count equals 141 records,
+  source IDs are unique, every record has exactly one disposition, and the only
+  terminal classes are 73 `captured` and 68 `out_of_scope` records.
+- The capture reconciliation binds all 73 retained official originals to the
+  complete capture manifest. Existing donor structural evidence covers all
+  seven workbooks, the 471-page PDF, and all five SQLite tables/312 rows.
+- This closes disposition accounting, not the separately pending retrospective
+  annual-source enumeration, normalization, rights, or release tasks.
+
 ## Exact GDP quarterly source profile — 2026-08-31
 
 - Required native `./scripts/validate.sh` at `41e7717` passed all gates:
