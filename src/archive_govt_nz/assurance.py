@@ -130,6 +130,16 @@ def build_stages(
             ),
         ),
         GateStage(
+            "mutation-legislation-continuation-integrity",
+            (
+                "uv",
+                "run",
+                "--locked",
+                "python",
+                "tools/mutation_legislation_continuation_integrity.py",
+            ),
+        ),
+        GateStage(
             "mutation-legislation-historical-coverage",
             (
                 "uv",
