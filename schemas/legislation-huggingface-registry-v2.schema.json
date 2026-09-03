@@ -299,6 +299,90 @@
           },
           "then": {
             "properties": {
+              "role": {
+                "const": "canonical_living_dataset"
+              },
+              "origin_metadata_status": {
+                "const": "target_publication_verified"
+              },
+              "mutable": {
+                "const": true
+              },
+              "gating": {
+                "const": "none"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "slug": {
+                "const": "edithatogo/corpus-legislation-nz-historical"
+              }
+            },
+            "required": [
+              "slug"
+            ]
+          },
+          "then": {
+            "properties": {
+              "role": {
+                "const": "historical_superseded_operational_dataset"
+              },
+              "origin_metadata_status": {
+                "const": "historical_donor_lineage"
+              },
+              "mutable": {
+                "const": false
+              },
+              "gating": {
+                "const": "none"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "slug": {
+                "const": "edithatogo/nz-legislation-corpus"
+              }
+            },
+            "required": [
+              "slug"
+            ]
+          },
+          "then": {
+            "properties": {
+              "role": {
+                "const": "immutable_doi_snapshot"
+              },
+              "origin_metadata_status": {
+                "const": "frozen_snapshot_lineage"
+              },
+              "mutable": {
+                "const": false
+              },
+              "gating": {
+                "const": "auto"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "slug": {
+                "const": "edithatogo/corpus-legislation-nz"
+              }
+            },
+            "required": [
+              "slug"
+            ]
+          },
+          "then": {
+            "properties": {
               "rights_status": {
                 "const": "approved_public_selected_552"
               }
