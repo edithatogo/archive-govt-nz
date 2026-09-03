@@ -56,6 +56,7 @@ def test_workflow_is_manual_least_privilege_and_globally_serialized() -> None:
     assert "timeout-minutes: 360" in text
     assert "confirmed_execution" in text
     assert "persist-credentials: false" in text
+    assert "fetch-depth: 0" in text
     assert "HF_TOKEN" not in text
     assert "ZENODO" not in text
     assert "contents: write" not in text
