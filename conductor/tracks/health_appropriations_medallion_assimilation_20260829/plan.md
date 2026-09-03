@@ -84,7 +84,7 @@ repository validation command. External gates block only their affected task.
 - [ ] Enumerate the exact official CPI, QES wage, population, GDP and Crown
   expense series needed for approved derived measures; reject discovery leads
   that lack a stable definition or join. [M-02, M-12; AC-03, AC-10]
-- [ ] Evaluate published aggregate Health Survey indicators as a non-blocking
+- [x] Evaluate published aggregate Health Survey indicators as a non-blocking
   Should item; include only if a documented analytical question, stable
   time/geography contract and public rights evidence exist. [S-05; AC-10]
 - [x] Complete the bounded metadata-only Health Survey assessment, recording
@@ -114,7 +114,7 @@ repository validation command. External gates block only their affected task.
   duplicate-part rejection and a cumulative cell-scan limit; verify immutable
   inputs and exact limit boundaries before expanding operational exposure.
   [M-07, M-18; AC-03, AC-16] (`b2956a7`)
-- [ ] Add fixtures/contracts for safe ZIP/workbook inventory, archive-bomb and
+- [x] Add fixtures/contracts for safe ZIP/workbook inventory, archive-bomb and
   path controls, sheet/range discovery, formulas/cached values, hidden content,
   named ranges, tables, charts, external links, macros and unsupported parts.
   [M-07, M-18, S-03; AC-03, AC-16]
@@ -157,10 +157,13 @@ repository validation command. External gates block only their affected task.
   (`3564f2b`; 107 focused tests, 144 cold mutant kills, 3,531 native tests;
   see `area-accounting.md`; hosted delivery remains separate.)
 
-- [ ] Verify every discovered item has exactly one disposition and every donor
+- [x] Verify every discovered item has exactly one disposition and every donor
   binary/data area has an inventory result; report uncertainty and gaps rather
-  than inferring completeness. [M-01, M-02, M-07; AC-01, AC-03, AC-09]
-- [ ] Run focused format/security/property checks, self-review and the full
+  than inferring completeness. Verified 141 unique source records with exactly
+  one disposition (73 captured, 68 out of scope, zero unresolved) and retained
+  the bounded donor binary/data-area census. [M-01, M-02, M-07; AC-01, AC-03,
+  AC-09]
+- [x] Run focused format/security/property checks, self-review and the full
   repository harness; record paired evidence. [M-18, M-19; AC-16]
 
 ## Phase 2 — Bronze zero-loss preservation
@@ -186,22 +189,24 @@ repository validation command. External gates block only their affected task.
 
 ### 2.3 Capture eligible official originals
 
-- [ ] Apply per-resource preflight rights/access/size/type checks and capture
+- [x] Apply per-resource preflight rights/access/size/type checks and capture
   every eligible census item with HTTP/WARC evidence; retain metadata-only or
   tombstone records for non-eligible and unavailable items. [M-02, M-03, M-04,
   M-11, M-12; AC-02, AC-04, AC-09]
 - [ ] Record heartbeats, retries, source replacements and immutable versions;
   never let a current workbook replace a historical edition. [M-02, M-04,
   M-15, S-04; AC-04, AC-09, AC-13]
-- [ ] Confirm Git contains manifests/schemas/evidence only, not source payloads
-  or large generated derivatives. [M-03, M-18; AC-02, AC-16]
+- [x] Confirm Git contains manifests/schemas/evidence only, not source payloads
+  or large generated derivatives. Verified 2,998 tracked paths against all 73
+  captured object hashes: zero source-byte matches and zero tracked files above
+  10 MiB. [M-03, M-18; AC-02, AC-16]
 
 ### 2.4 Phase review and checkpoint
 
-- [ ] Run CAS/WARC/manifest validation, property and mutation lanes, donor
+- [x] Run CAS/WARC/manifest validation, property and mutation lanes, donor
   reconstruction, interruption/resume and restriction negative paths. [M-03,
   M-04, M-16, M-18; AC-01, AC-04, AC-12, AC-16]
-- [ ] Self-review and run the full repository harness; record which source
+- [x] Self-review and run the full repository harness; record which source
   states are observed, captured or still gated. [M-18, M-19; AC-16]
 
 ## Phase 3 — Silver schema and extraction foundation
@@ -253,7 +258,7 @@ repository validation command. External gates block only their affected task.
   (121 focused tests, 129/129 cold mutants, 2,866 native tests; see
   `historical-projection.md`; other source projections remain pending.)
 
-- [ ] Register the dedicated health-appropriations domain and versioned
+- [x] Register the dedicated health-appropriations domain and versioned
   multi-recordset schemas without weakening other domain contracts. [M-05;
   AC-05]
 - [ ] Implement safe workbook, CSV, PDF-table and SQLite adapter interfaces
@@ -562,9 +567,11 @@ repository validation command. External gates block only their affected task.
 - [ ] Add rebuildable federation tables for approved links to
   `reimbursement-atlas` and `global-medicines-atlas`; preserve unmatched and
   ambiguous mappings. [M-14; AC-14]
-- [ ] Evaluate graph/vector projections only as non-authoritative Could work
+- [x] Evaluate graph/vector projections only as non-authoritative Could work
   after a demonstrated query/discovery benefit and pinned reproducibility
-  contract. [C-01, C-02; AC-14]
+  contract. Evaluated and deferred: no health-specific discovery benefit or
+  pinned embedding-model contract is evidenced; generic rebuildable search
+  remains non-authoritative. [C-01, C-02; AC-14]
 
 ### 7.3 Phase review and checkpoint
 

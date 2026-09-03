@@ -7,6 +7,7 @@ import json
 import os
 import stat
 from contextlib import suppress
+from dataclasses import dataclass
 from decimal import Context, localcontext
 from io import BytesIO
 from itertools import islice
@@ -47,6 +48,14 @@ _TABLES = {
     "classification_dimension.parquet",
     "field_lineage.parquet",
 }
+_DIR_FD_SUPPORTED = os.name != "nt" and os.open in os.supports_dir_fd
+
+
+@dataclass(frozen=True)
+class _Directory:
+    path: Path
+    identity: tuple[int, int]
+    descriptor: int | None
 
 
 def _require(condition: object) -> None:
@@ -180,32 +189,50 @@ def _prepare(package: Path, pin: str, original: Path) -> dict[str, bytes]:
     return files
 
 
-def _write(directory: int, name: str, payload: bytes) -> None:
+def _write(directory: _Directory, name: str, payload: bytes) -> None:
+    _owned(directory.path, directory)
     flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL
-    flags |= getattr(os, "O_NOFOLLOW", 0)
-    descriptor = os.open(name, flags, 0o600, dir_fd=directory)
+    flags |= getattr(os, "O_NOFOLLOW", 0) | getattr(os, "O_BINARY", 0)
+    if directory.descriptor is None:
+        descriptor = os.open(directory.path / name, flags, 0o600)
+    else:
+        descriptor = os.open(name, flags, 0o600, dir_fd=directory.descriptor)
     try:
-        _require(os.write(descriptor, payload) == len(payload))
+        _owned(directory.path, directory)
+        written = 0
+        view = memoryview(payload)
+        while written < len(view):
+            count = os.write(descriptor, view[written:])
+            _require(count > 0)
+            written += count
     finally:
         os.close(descriptor)
 
 
-def _owned(output: Path, directory: int) -> None:
+def _owned(output: Path, directory: _Directory) -> None:
     path_state = output.lstat()
-    descriptor_state = os.fstat(directory)
+    descriptor_identity = directory.identity
+    if directory.descriptor is not None:
+        descriptor_state = os.fstat(directory.descriptor)
+        descriptor_identity = (descriptor_state.st_dev, descriptor_state.st_ino)
     _require(
         stat.S_ISDIR(path_state.st_mode)
-        and (path_state.st_dev, path_state.st_ino)
-        == (descriptor_state.st_dev, descriptor_state.st_ino)
+        and not output.is_symlink()
+        and not (hasattr(output, "is_junction") and output.is_junction())
+        and (path_state.st_dev, path_state.st_ino) == descriptor_identity
     )
 
 
-def _readback(output: Path, directory: int, files: dict[str, bytes]) -> None:
+def _readback(output: Path, directory: _Directory, files: dict[str, bytes]) -> None:
     _owned(output, directory)
     for name, payload in files.items():
-        flags = os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0)
-        descriptor = os.open(name, flags, dir_fd=directory)
+        flags = os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0) | getattr(os, "O_BINARY", 0)
+        if directory.descriptor is None:
+            descriptor = os.open(directory.path / name, flags)
+        else:
+            descriptor = os.open(name, flags, dir_fd=directory.descriptor)
         try:
+            _owned(output, directory)
             stat = os.fstat(descriptor)
             _require(stat.st_size <= MAX_FILE_BYTES)
             observed = bytearray()
@@ -224,7 +251,36 @@ def _readback(output: Path, directory: int, files: dict[str, bytes]) -> None:
                 thrift_container_size_limit=MAX_THRIFT_CONTAINERS,
             ) as file:
                 _require(file.schema_arrow.serialize().to_pybytes())
-    _require(set(islice(os.listdir(directory), 7)) == set(files))
+    _owned(output, directory)
+    listing = (
+        os.listdir(directory.descriptor)  # noqa: PTH208 - descriptor-relative listing
+        if directory.descriptor is not None
+        else os.listdir(directory.path)  # noqa: PTH208 - shared bounded iterator
+    )
+    _owned(output, directory)
+    _require(set(islice(listing, 7)) == set(files))
+
+
+def _reserve(output: Path, expected: tuple[int, int]) -> _Directory:
+    state = output.lstat()
+    _require(
+        stat.S_ISDIR(state.st_mode)
+        and not output.is_symlink()
+        and not (hasattr(output, "is_junction") and output.is_junction())
+    )
+    identity = (state.st_dev, state.st_ino)
+    _require(identity == expected)
+    if not _DIR_FD_SUPPORTED:
+        return _Directory(output, identity, None)
+    flags = os.O_RDONLY | getattr(os, "O_DIRECTORY", 0) | getattr(os, "O_NOFOLLOW", 0)
+    descriptor = os.open(output, flags)
+    directory = _Directory(output, identity, descriptor)
+    try:
+        _owned(output, directory)
+    except BaseException:
+        os.close(descriptor)
+        raise
+    return directory
 
 
 def export_budget_appropriations(
@@ -240,6 +296,9 @@ def export_budget_appropriations(
     The default performs full deterministic preparation and validation without
     writing. Inputs are retained read-only. Partial outputs and a redacted
     failure marker survive write errors; marker existence alone proves nothing.
+    POSIX persistence is descriptor-relative. Platforms without directory-fd
+    support use repeated identity and reparse-point checks beneath the required
+    trusted parent; that fallback is not a hostile-filesystem transaction.
     """
     try:
         _paths(package, original, output, dry_run=dry_run)
@@ -258,13 +317,19 @@ def export_budget_appropriations(
         return receipt
     try:
         output.mkdir()
-    except OSError:
+        state = output.lstat()
+        _require(
+            stat.S_ISDIR(state.st_mode)
+            and not output.is_symlink()
+            and not (hasattr(output, "is_junction") and output.is_junction())
+        )
+        expected = (state.st_dev, state.st_ino)
+    except OSError, ValueError:
         message = "budget_export_reserve"
         raise ValueError(message) from None
-    flags = os.O_RDONLY | getattr(os, "O_DIRECTORY", 0) | getattr(os, "O_NOFOLLOW", 0)
     try:
-        directory = os.open(output, flags)
-    except OSError:
+        directory = _reserve(output, expected)
+    except OSError, ValueError:
         message = "budget_export_reserve"
         raise ValueError(message) from None
     try:
@@ -288,5 +353,6 @@ def export_budget_appropriations(
             raise ValueError(message) from None  # noqa: TRY004 - redact I/O failures
         raise
     finally:
-        os.close(directory)
+        if directory.descriptor is not None:
+            os.close(directory.descriptor)
     return receipt
