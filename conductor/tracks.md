@@ -294,8 +294,8 @@ implementation has occurred under these tracks.
 - [x] **Track: Integrated quality, security, and hosted assurance (Prompt 20)**
   *Archived: [./archive/integrated_assurance_20260902/index.md](./archive/integrated_assurance_20260902/index.md)*
 
-- [~] **Track: Prompt 20 security and workflow repairs**
-  *Link: [./tracks/prompt20_security_workflow_repairs_20260903/index.md](./tracks/prompt20_security_workflow_repairs_20260903/index.md)*
+- [x] **Track: Prompt 20 security and workflow repairs**
+  *Archived: [./archive/prompt20_security_workflow_repairs_20260903/index.md](./archive/prompt20_security_workflow_repairs_20260903/index.md)*
 
 - [x] **Track: Prompt 07 bounded legislation discovery and freshness**
   *Link: [tracks/legislation_bounded_discovery_20260903/index.md](./tracks/legislation_bounded_discovery_20260903/index.md)*
