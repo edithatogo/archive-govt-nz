@@ -1,0 +1,11 @@
+{
+  "endpoint": "https://api.legislation.govt.nz/v0/works/",
+  "legislation_types": ["public", "local", "private", "secondary"],
+  "max_candidates": 50,
+  "max_pages": 4,
+  "page_size": 25,
+  "scope_id": "legislation-freshness-0001",
+  "sort": "work_id",
+  "start_page": 1,
+  "terms": ["enacted 2026", "amendment 2026"]
+}
