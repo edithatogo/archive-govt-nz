@@ -747,3 +747,16 @@ metadata/materialization. Existing byte/row/expanded guards and propagated
 OSError boundary remain. This is not hostile-Parquet sandboxing. All 63 critical
 tests, 112 cold mutants and the full 4,239-test native passed; hosted exact-head remains
 separate. See [scope and evidence](./budget-reader-bounds.md).
+
+## 2026-09-03: Exclusive Budget appropriation exporter review
+
+Independent review found four actionable issues in the initial reconstruction:
+output-root pathname replacement, post-materialization resource checks, missing
+adversarial/exact-parity cases, and failure-marker exception precedence. The
+fix anchors I/O to the exclusively opened directory descriptor and verifies
+the public output pathname still names that inode at every boundary, adds bounded
+incremental serialization and running aggregate admission, covers source-order,
+Decimal/context, equality/over-boundary, extra-entry, root-replacement,
+readback and double-interrupt cases, and ensures the saved original exception
+wins. Post-fix review found no unresolved issue in this bounded local-only
+scope. Final focused coverage, 63 cold mutants and the full native harness pass.

@@ -1596,3 +1596,33 @@ new test exception/spy-typing issues without source changes. Independent review,
 passed: 4,239 tests / 97.3804% coverage / all supply-chain gates. Incoming main326
 ledger prefix is preserved. See [full receipts](./budget-reader-bounds.md).
 No original/package/HF bytes were changed.
+
+## 2026-09-03: Exclusive Budget appropriation export
+
+Observed red: the focused test module failed collection because
+`budget_export` did not exist. The initial implementation reached 22 tests,
+100% critical coverage and 52/52 cold mutation kills. A pre-review native run
+exited zero but is retained only as diagnostic evidence.
+
+Independent review found four actionable gaps: pathname replacement could
+redirect writes, serialization caps followed materialization, required
+adversarial parity tests were incomplete, and failure-marker creation could
+replace the original `BaseException`. The corrected implementation anchors all
+writes/readbacks to a no-follow directory descriptor, incrementally bounds JSON
+and aggregate admission, adds conservative expanded-table preflight and the
+missing race/parity/failure cases, and preserves the saved exception.
+
+Final focused command: `COVERAGE_CORE=ctrace PYTHON_JIT=0 uv run pytest
+tests/domains/health_appropriations/test_budget_export.py
+--cov=archive_govt_nz.domains.health_appropriations.budget_export --cov-branch
+--cov-report=term-missing -q`; 31 passed, 157 statements/24 branches at 100%.
+Cold mutation used the complete focused file with the exact exporter target,
+one worker, cleared cache, no coverage filter and zero pardons; 63/63 killed.
+Ruff and scoped Pyright passed.
+
+Final native command: `COVERAGE_CORE=ctrace PYTHON_JIT=0
+PYTEST_XDIST_AUTO_NUM_WORKERS=4 ./scripts/validate.sh`; exit 0, 4,624 tests,
+nine warnings, 97.54% coverage, 48 schemas/38 documents, 9/9 parity, all
+repository and supply-chain gates, and 111 SBOM components. Log SHA-256:
+`6355ac9739a96c63c2278ada72f1ec26554de5889c5c6b5f9b74da1fa38804be`.
+No retained input, original, HF or publication state changed.

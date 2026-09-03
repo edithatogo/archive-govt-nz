@@ -748,6 +748,13 @@ repository validation command. External gates block only their affected task.
 
 ## Review fixes
 
+- [x] Add the exclusive, deterministic six-file local Budget appropriation
+  exporter with directory-descriptor race resistance, pre-serialization and
+  running byte bounds, exact readback/closure, complete receipts, and redacted
+  retained failures. This closes only the bounded exporter slice; retained
+  two-vintage replay, persisted-provenance consumption, rights and publication
+  remain separate. [M-03, M-04, M-07, M-18; AC-02, AC-04, AC-05, AC-16]
+
 - [x] Keep disconnected source-plot segments styled by their full context and
   disambiguate colliding display labels without merging source identities.
   [M-09, M-18; AC-07, AC-16]
