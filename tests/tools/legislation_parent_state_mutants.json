@@ -96,8 +96,8 @@
   },
   {
     "name": "https_origin",
-    "old": "location.scheme == \"https\"",
-    "new": "True"
+    "old": "condition=location.scheme == \"https\"\n        and not location.userinfo",
+    "new": "condition=True\n        and not location.userinfo"
   },
   {
     "name": "blob_origin",

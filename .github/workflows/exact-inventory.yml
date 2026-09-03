@@ -169,7 +169,7 @@ jobs:
         if: always() && steps.verification.outputs.exit_code == '0'
         id: seal
         env:
-      PARENT_EXECUTION_ID: ${{ github.run_id }}
+          PARENT_EXECUTION_ID: ${{ github.run_id }}
         run: |
           set +e
           uv run --locked python tools/legislation_parent_state.py seal \

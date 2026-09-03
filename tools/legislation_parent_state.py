@@ -308,7 +308,7 @@ def durable_download(client: httpx.Client, reference: dict[str, Any]) -> bytes:
         location = httpx.URL(response.headers["location"])
         host = location.host or ""
         v.require(
-            condition=location.scheme in {"https"}
+            condition=location.scheme == "https"
             and not location.userinfo
             and location.port in {None, 443}
             and not location.fragment

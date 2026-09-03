@@ -301,6 +301,18 @@ def test_durable_inner_verifier_binds_rights_roots_and_parent_scope(
         fake.verify = staticmethod(lambda _raw, _digest, changed=changed: (changed, {}))
         with pytest.raises(P.v.VerificationError, match=failure):
             P.durable_files(b"durable", reference)
+    changed_reference = copy.deepcopy(reference)
+    changed_reference["parent_source"] = reference["child_source"]
+    changed_document = copy.deepcopy(document)
+    changed_document["input"]["source"] = reference["child_source"]
+    fake.verify = staticmethod(lambda _raw, _digest: (changed_document, {}))
+    with pytest.raises(P.v.VerificationError, match="durable_parent_scope"):
+        P.durable_files(b"durable", changed_reference)
+    changed_reference = copy.deepcopy(reference)
+    changed_reference["child_source"] = reference["parent_source"]
+    fake.verify = staticmethod(lambda _raw, _digest: (document, {}))
+    with pytest.raises(P.v.VerificationError, match="durable_child_scope"):
+        P.durable_files(b"durable", changed_reference)
 
 
 def v3_harvest(files: dict[str, bytes]) -> bytes:
