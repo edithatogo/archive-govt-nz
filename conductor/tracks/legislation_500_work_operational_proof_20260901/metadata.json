@@ -6,7 +6,7 @@
   "status": "in_progress",
   "track_id": "legislation_500_work_operational_proof_20260901",
   "type": "operations",
-  "updated_at": "2026-09-03T10:35:00Z",
+  "updated_at": "2026-09-03T16:42:00Z",
   "gates": [
     {
       "id": "prompt-06",
@@ -42,7 +42,7 @@
       "id": "execution",
       "kind": "external_acquisition",
       "status": "blocked",
-      "evidence": "run 33772828586 was manually cancelled during acquisition before the 360-minute workflow timeout; retained attempt artifacts include verified parent lineage/restoration receipts, build-seed.json, and failed reconciliation receipt (mismatch_count=1); no 500-work acquisition or operational proof"
+      "evidence": "run 33772828586 was manually cancelled during acquisition before the 360-minute workflow timeout; run 33774317947 then failed closed with document_identity_duplicate; remediation merged to main in PR #379, and a successful 500-work rerun remains pending"
     }
   ]
 }

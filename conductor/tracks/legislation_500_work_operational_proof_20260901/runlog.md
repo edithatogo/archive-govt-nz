@@ -45,3 +45,11 @@
 - The third repository-native no-write preflight restored 555 files and reproduced manifest root `877ba501a25570a29c1aada7979562d8c62c7f043865125cf402310eabc09544` and inventory root `9ca6dc505f991e015c6c997827878d8c7e9381b214a1544eb338328a285c6894`.
 - No credential was read and no source acquisition, hosted dispatch, state upload, or publication occurred. The authorized hosted run remains pending merge and green exact-head checks.
 - Hosted CI run `33747996055` preserved the first exact-head failure: Ubuntu job `100625110025` and macOS job `100625110041` rejected `authority_git` because the default shallow checkout omitted the pinned Prompt 15/10 commits; Windows job `100625109830` was cancelled by the superseding push. The fix retains full checkout history in CI and the operational workflow; no lineage check was weakened.
+
+# 2026-09-04 — document identity remediation
+
+- Downloaded and independently hashed run `33774317947` artifacts and receipts. The complete 500-work acquisition accounted for 352 changed and 148 unchanged works, but reconciliation failed closed with `document_identity_duplicate`; no complete state artifact was uploaded.
+- Reproduced the failure with two valid version records for one Work: normalisation deliberately assigns `document_id = leg-{work_id}`, while each retained version has a distinct Expression, Manifestation and CAS object.
+- Corrected reconciliation to bind each document identity to exactly one Work, allowing retained versions within that Work while continuing to reject cross-Work document collisions and globally duplicate Manifestations.
+- Added property coverage for 2–12 retained versions and a dedicated two-mutant gate covering both over-rejection and permissive cross-Work collision behavior.
+- No workflow retry or publication was performed. The next hosted run remains an explicit retry gate after PR review and exact-head checks.
