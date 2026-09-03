@@ -1,0 +1,216 @@
+name: Exact inventory legislation revalidation
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirmed_execution:
+        description: Confirm live revalidation of the governed 500-work inventory
+        required: true
+        type: boolean
+        default: false
+      batch_id:
+        description: Unique canonical execution identifier
+        required: true
+        type: string
+      parent_reference:
+        description: Committed reviewed reference under config/legislation/parents/
+        required: true
+        type: string
+
+permissions:
+  actions: read
+  contents: read
+
+concurrency:
+  group: legislation-canonical-state
+  cancel-in-progress: false
+
+jobs:
+  revalidate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    env:
+      SEED_ID: historical-work-ids-0001
+      SEED_PATH: seeds/reviewed/historical-work-ids-0001.txt
+      SEED_SHA256: 59923176fa34796d7673a20b880af9abe5520fe484595edb220f2bbc0e3b33e7
+      MAX_WORKS: "500"
+      MAX_CAS_BYTES: "67108864"
+      MAX_STATE_BYTES: "134217728"
+      MAX_CAS_OBJECTS: "4096"
+      MAX_RETRIES_PER_WORK: "3"
+    steps:
+      - name: Check out exact target revision
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.14"
+
+      - name: Install locked environment
+        run: python -m pip install uv==0.6.5 && uv sync --frozen
+
+      - name: Resolve governed reviewed inventory
+        env:
+          CONFIRMED_EXECUTION: ${{ inputs.confirmed_execution }}
+          BATCH_ID: ${{ inputs.batch_id }}
+          PARENT_REFERENCE: ${{ inputs.parent_reference }}
+        run: |
+          set -euo pipefail
+          test "$CONFIRMED_EXECUTION" = "true"
+          test -n "$BATCH_ID"
+          test "$BATCH_ID" = "$(printf '%s' "$BATCH_ID" | tr -d '\r\n')"
+          case "$PARENT_REFERENCE" in
+            config/legislation/parents/*.json) ;;
+            *) echo "parent_reference must select a committed reviewed parent" >&2; exit 1 ;;
+          esac
+          test -f "$PARENT_REFERENCE"
+          uv run --locked python tools/seed_registry.py historical-work-ids-0001 > build-seed.json
+          uv run --locked python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          selected = json.loads(Path("build-seed.json").read_text())
+          assert selected["seed_id"] == os.environ["SEED_ID"]
+          assert selected["sha256"] == os.environ["SEED_SHA256"]
+          assert selected["path_parts"] == os.environ["SEED_PATH"].split("/")
+          assert len(selected["work_ids"]) == int(os.environ["MAX_WORKS"])
+          PY
+
+      - name: Restore and authenticate selected parent
+        uses: ./.github/actions/legislation-parent-state
+        with:
+          mode: continuation
+          parent-reference: ${{ inputs.parent_reference }}
+          execution-id: ${{ inputs.batch_id }}
+          seed-id: historical-work-ids-0001
+          github-token: ${{ github.token }}
+
+      - name: Revalidate every governed work ID
+        id: harvest
+        env:
+          BATCH_ID: ${{ inputs.batch_id }}
+          LEGISLATION_API_KEY: ${{ secrets.NZ_LEGISLATION_API_KEY }}
+        run: |
+          set +e
+          uv run --locked python tools/run_legislation_harvest.py \
+            --source-set-config config/source-sets/legislation-exact-inventory.yml \
+            --checkpoint-path build/legislation-state/checkpoint.json \
+            --manifest-path build/legislation-state/manifest.json \
+            --cas-path build/legislation-state/cas \
+            --receipt-path build/legislation-state/receipts/harvest.json \
+            --batch-id "$BATCH_ID" \
+            --work-ids-file seeds/reviewed/historical-work-ids-0001.txt \
+            --max-works 500 \
+            --force-resync
+          code=$?
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Reconcile exact inventory and cumulative state
+        if: always() && steps.harvest.outputs.exit_code == '0'
+        id: reconciliation
+        env:
+          BATCH_ID: ${{ inputs.batch_id }}
+        run: |
+          set +e
+          uv run --locked python tools/reconcile_one_legislation_batch.py \
+            --batch-id "$BATCH_ID" \
+            --batch-path "$SEED_PATH" \
+            --expected-batch-sha256 59923176fa34796d7673a20b880af9abe5520fe484595edb220f2bbc0e3b33e7 \
+            --manifest-path build/legislation-state/manifest.json \
+            --checkpoint-path build/legislation-state/checkpoint.json \
+            --cas-path build/legislation-state/cas \
+            --receipt-path build/legislation-state/receipts/reconciliation.json
+          code=$?
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Verify accounting and bounded output
+        if: always() && steps.reconciliation.outputs.exit_code == '0'
+        id: verification
+        run: |
+          set +e
+          uv run --locked python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          root = Path("build/legislation-state")
+          receipt = json.loads((root / "receipts/harvest.json").read_text())
+          reconciliation = json.loads((root / "receipts/reconciliation.json").read_text())
+          assert receipt["schema_version"] == "archive-govt-nz.legislation-harvest-receipt/v3"
+          assert receipt["works_in_scope"] == int(os.environ["MAX_WORKS"])
+          assert receipt["works_attempted"] == int(os.environ["MAX_WORKS"])
+          assert receipt["unavailable"] == 0
+          assert receipt["partial"] == 0
+          assert receipt["failed"] == 0
+          assert receipt["already_processed_skipped"] == 0
+          assert receipt["total_retry_count"] <= int(os.environ["MAX_WORKS"]) * int(os.environ["MAX_RETRIES_PER_WORK"])
+          assert receipt["state_commit_status"] in {"committed", "no_change"}
+          assert reconciliation["status"] == "passed"
+          assert reconciliation["mismatch_count"] == 0
+          assert reconciliation["batch_work_ids_count"] == int(os.environ["MAX_WORKS"])
+          files = [path for path in root.rglob("*") if path.is_file()]
+          assert sum(path.stat().st_size for path in files) <= int(os.environ["MAX_STATE_BYTES"])
+          cas_objects = [path for path in (root / "cas").rglob("*") if path.is_file()]
+          assert len(cas_objects) <= int(os.environ["MAX_CAS_OBJECTS"])
+          assert sum(path.stat().st_size for path in cas_objects) <= int(os.environ["MAX_CAS_BYTES"])
+          # Sealing below must create receipts/continuation.json before upload.
+          PY
+          code=$?
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Seal verified continuation lineage
+        if: always() && steps.verification.outputs.exit_code == '0'
+        id: seal
+        env:
+          PARENT_EXECUTION_ID: ${{ inputs.batch_id }}
+        run: |
+          set +e
+          uv run --locked python tools/legislation_parent_state.py seal \
+            --state build/legislation-state \
+            --quarantine build/legislation-parent-quarantine
+          code=$?
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Upload complete continuation package
+        if: always() && steps.seal.outputs.exit_code == '0'
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: legislation-exact-inventory-state-${{ github.run_id }}-${{ github.run_attempt }}
+          path: build/legislation-state/
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Upload sanitized complete attempt evidence
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: legislation-exact-inventory-attempt-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            build/legislation-state/receipts/
+            build/legislation-parent-quarantine/restoration-receipt.json
+            build/legislation-parent-quarantine/lineage.json
+            build-seed.json
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Enforce fail-closed exact-inventory outcome
+        if: always()
+        env:
+          HARVEST_EXIT_CODE: ${{ steps.harvest.outputs.exit_code }}
+          RECONCILIATION_EXIT_CODE: ${{ steps.reconciliation.outputs.exit_code }}
+          VERIFICATION_EXIT_CODE: ${{ steps.verification.outputs.exit_code }}
+          SEAL_EXIT_CODE: ${{ steps.seal.outputs.exit_code }}
+        run: |
+          set -euo pipefail
+          test "$HARVEST_EXIT_CODE" = "0"
+          test "$RECONCILIATION_EXIT_CODE" = "0"
+          test "$VERIFICATION_EXIT_CODE" = "0"
+          test "$SEAL_EXIT_CODE" = "0"

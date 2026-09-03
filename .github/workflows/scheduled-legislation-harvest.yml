@@ -50,7 +50,8 @@ permissions:
   contents: read
 
 concurrency:
-  group: bounded-legislation-harvest-${{ github.ref }}
+  # Shared with exact-inventory and bounded-discovery state writers.
+  group: legislation-canonical-state
   cancel-in-progress: false
 
 jobs:

@@ -267,6 +267,9 @@ implementation has occurred under these tracks.
 - [x] **Track: Legislation harvest accounting and receipt semantics (Prompt 12)**
   *Link: [./tracks/legislation_harvest_accounting_20260901/index.md](./tracks/legislation_harvest_accounting_20260901/index.md)*
 
+- [x] **Track: Exact-inventory custody and revalidation lane (Prompt 06)**
+  *Link: [./tracks/legislation_exact_inventory_revalidation_20260903/index.md](./tracks/legislation_exact_inventory_revalidation_20260903/index.md)*
+
 - [x] **Track: Historical coverage and 33,693-candidate reconciliation (Prompt 14)**
   *Link: [./tracks/legislation_historical_coverage_20260901/index.md](./tracks/legislation_historical_coverage_20260901/index.md)*
 
