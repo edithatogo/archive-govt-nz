@@ -317,6 +317,7 @@ def durable_download(client: httpx.Client, reference: dict[str, Any]) -> bytes:
         )
         url = str(location)
     v.require(condition=response is not None, code="durable_download_missing")
+    response = cast("httpx.Response", response)
     v.equal(response.status_code, 200, "durable_download_status")
     raw = response.content
     v.equal(len(raw), durable["size_bytes"], "durable_package_size")
@@ -388,11 +389,11 @@ def check_lineage(lineage: dict[str, Any]) -> None:
     if mode == "bootstrap":
         v.equal(parent, None, "lineage_bootstrap_parent")
     else:
+        parent = cast("dict[str, Any]", parent)
         if parent["schema_version"] == DURABLE_REFERENCE_SCHEMA:
             schema(parent, "legislation-durable-parent-reference")
         else:
             schema(parent, "legislation-parent-reference")
-        parent = cast("dict[str, Any]", parent)
         if parent["schema_version"] == DURABLE_REFERENCE_SCHEMA:
             v.equal(parent["child_source"], lineage["source"], "lineage_child_source")
             v.equal(mode, "continuation", "durable_continuation_mode")
@@ -511,6 +512,7 @@ def restore(  # noqa: C901, PLR0912, PLR0915 - ordered verification transaction
         if mode == "bootstrap":
             v.equal(reference, None, "bootstrap_parent_forbidden")
         else:
+            reference = cast("dict[str, Any]", reference)
             durable = reference.get("schema_version") == DURABLE_REFERENCE_SCHEMA
             schema(
                 reference,
@@ -518,7 +520,6 @@ def restore(  # noqa: C901, PLR0912, PLR0915 - ordered verification transaction
                 if durable
                 else "legislation-parent-reference",
             )
-            reference = cast("dict[str, Any]", reference)
             if durable:
                 v.equal(
                     reference["child_source"], request["source"], "parent_child_source"
