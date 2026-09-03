@@ -972,6 +972,48 @@ async def test_checkpoint_promotion_failure_is_indeterminate_without_manifest(
 
 
 @pytest.mark.anyio
+async def test_checkpoint_hash_failure_is_rolled_back_before_promotion(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Failure to hash staged bytes cannot promote unreceipted state."""
+    client = httpx.AsyncClient(
+        transport=httpx.MockTransport(
+            lambda _request: httpx.Response(200, content=b"<act><title>A</title></act>")
+        )
+    )
+    service = LegislationArchiveService(
+        ContentAddressedStore(tmp_path / "cas"),
+        api_client=NZLegislationApiClient(async_client=client),
+    )
+    checkpoint = tmp_path / "checkpoint.json"
+    manifest = tmp_path / "manifest.json"
+    original_read_bytes = Path.read_bytes
+
+    def fail_staged_hash(path: Path) -> bytes:
+        if path.name.endswith(".staging.tmp"):
+            message = "injected staged checkpoint read failure"
+            raise OSError(message)
+        return original_read_bytes(path)
+
+    monkeypatch.setattr(Path, "read_bytes", fail_staged_hash)
+    result = await service.sync_works(
+        targets=[_accounting_target("hash-failure", "https://example.test/work.xml")],
+        checkpoint_path=checkpoint,
+        manifest_path=manifest,
+    )
+
+    assert result.accounting is not None
+    assert result.accounting.state_commit_status is StateCommitStatus.INDETERMINATE
+    assert result.accounting.state_commit is None
+    assert result.accounting.output_checkpoint_root is None
+    assert not checkpoint.exists()
+    assert not checkpoint.with_suffix(".staging.tmp").exists()
+    assert not manifest.exists()
+    assert any("injected staged checkpoint read failure" in e for e in result.errors)
+    await client.aclose()
+
+
+@pytest.mark.anyio
 async def test_manifest_failure_rolls_back_promoted_checkpoint(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:

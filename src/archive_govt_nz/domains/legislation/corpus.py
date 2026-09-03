@@ -960,18 +960,18 @@ class LegislationArchiveService:
         *,
         has_errors: bool,
         fail_fast: bool,
-    ) -> dict[str, Any] | None:
+    ) -> tuple[dict[str, Any] | None, str | None]:
         """Stage and atomically promote or discard checkpoint based on status."""
         if chk_mgr is None:
-            return chk_data
+            return chk_data, None
 
         if has_errors and fail_fast:
             chk_mgr.discard_staging()
-            return chk_data
+            return chk_data, None
 
         if has_errors and total_records == 0:
             chk_mgr.discard_staging()
-            return chk_data
+            return chk_data, None
 
         new_batches = list(completed_batches)
         if not has_errors and batch_id and batch_id not in new_batches:
@@ -986,14 +986,15 @@ class LegislationArchiveService:
                 "conditional_requests": conditional_state,
             }
         )
-        chk_mgr.stage(
+        staged_path = chk_mgr.stage(
             completed_batches=new_batches,
             processed_work_ids=sorted(synced_work_ids),
             total_records=total_records,
             metadata=metadata,
         )
+        staged_root = hashlib.sha256(staged_path.read_bytes()).hexdigest()
         chk_mgr.promote()
-        return chk_mgr.load()
+        return chk_mgr.load(), staged_root
 
     async def _execute_sync_loop(  # noqa: C901, PLR0912, PLR0913
         self,
@@ -1393,6 +1394,7 @@ class LegislationArchiveService:
             )
 
         promoted_chk: dict[str, Any] | None = None
+        promoted_checkpoint_root: str | None = None
         commit_error: str | None = None
         checkpoint_existed = bool(chk_mgr and chk_mgr.checkpoint_path.is_file())
         checkpoint_before = (
@@ -1402,7 +1404,7 @@ class LegislationArchiveService:
         )
         checkpoint_promoted = False
         try:
-            promoted_chk = self._finalize_checkpoint(
+            promoted_chk, promoted_checkpoint_root = self._finalize_checkpoint(
                 chk_mgr,
                 batch_id,
                 completed_batches,
@@ -1451,7 +1453,13 @@ class LegislationArchiveService:
         else:
             final_status = "success"
 
-        output_checkpoint_root = _checkpoint_file_root(chk_mgr)
+        output_checkpoint_root = promoted_checkpoint_root
+        if output_checkpoint_root is None and chk_mgr is not None:
+            output_checkpoint_root = (
+                hashlib.sha256(checkpoint_before).hexdigest()
+                if checkpoint_before is not None
+                else None
+            )
         if output_checkpoint_root is None and promoted_chk is not None:
             output_checkpoint_root = hashlib.sha256(
                 json.dumps(promoted_chk, sort_keys=True, separators=(",", ":")).encode()
