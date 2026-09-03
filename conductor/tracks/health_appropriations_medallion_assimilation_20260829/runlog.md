@@ -1651,3 +1651,10 @@ No original/package/HF bytes were changed.
   receipt and complete lineage-accounting equality. The combined provenance and
   exporter suites pass 138 tests; this remains scoped local verification, not
   rights, publication, standards or whole-recovery acceptance.
+- Review hardening pins the reserved output directory by descriptor on platforms
+  supporting directory-relative opens, uses no-follow exclusive file creation,
+  verifies directory identity before and after every operation, and fails closed
+  on replacement. A regression proves a rename-and-symlink swap cannot write a
+  marker or failure receipt into the retained input package. The complete focused
+  Budget reader/projection/export and provenance set passes 239 tests, Ruff and
+  basedpyright.

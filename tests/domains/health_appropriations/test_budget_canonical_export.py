@@ -4,7 +4,9 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 from pathlib import Path
+from typing import Protocol
 
 import pyarrow.parquet as pq
 import pytest
@@ -15,6 +17,11 @@ from archive_govt_nz.domains.health_appropriations.budget_canonical_export impor
     export_budget_appropriations,
 )
 from archive_govt_nz.schemas.health_recordsets import recordset_schema
+
+
+class _PinnedRoot(Protocol):
+    @property
+    def descriptor(self) -> int | None: ...
 
 
 def test_dry_run_write_parity_and_determinism(tmp_path: Path) -> None:
@@ -101,11 +108,11 @@ def test_write_failure_retains_partial_state_and_failure_marker(
     output = tmp_path / "output"
     real_write = budget_canonical_export._write  # noqa: SLF001 - failure injection
 
-    def fail_second(path: Path, payload: bytes) -> None:
-        if path.name == "classification_dimension.parquet":
+    def fail_second(root: object, name: str, payload: bytes) -> None:
+        if name == "classification_dimension.parquet":
             message = "injected"
             raise OSError(message)
-        real_write(path, payload)
+        real_write(root, name, payload)  # type: ignore[arg-type]
 
     monkeypatch.setattr(budget_canonical_export, "_write", fail_second)
     with pytest.raises(ValueError, match=r"^budget_canonical_export_write$"):
@@ -126,7 +133,7 @@ def test_keyboard_interrupt_propagates(
 ) -> None:
     source = inputs(tmp_path)
 
-    def interrupt(_path: Path, _payload: bytes) -> None:
+    def interrupt(_root: object, _name: str, _payload: bytes) -> None:
         raise KeyboardInterrupt
 
     monkeypatch.setattr(budget_canonical_export, "_write", interrupt)
@@ -138,3 +145,39 @@ def test_keyboard_interrupt_propagates(
             tmp_path / "output",
             dry_run=False,
         )
+
+
+def test_reserved_directory_replacement_cannot_mutate_input(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    source = inputs(tmp_path)
+    package = tmp_path / "package"
+    original = tmp_path / "source.xlsx"
+    before = {path.name: path.read_bytes() for path in package.iterdir()}
+    output = tmp_path / "output"
+    moved = tmp_path / "moved-output"
+    real_pin = budget_canonical_export._pin  # noqa: SLF001 - race injection
+
+    def replace_after_pin(path: Path) -> _PinnedRoot:
+        root = real_pin(path)
+        path.rename(moved)
+        try:
+            path.symlink_to(package, target_is_directory=True)
+        except OSError:
+            if root.descriptor is not None:
+                os.close(root.descriptor)
+            pytest.skip("directory symlink creation unavailable")
+        return root
+
+    monkeypatch.setattr(budget_canonical_export, "_pin", replace_after_pin)
+    with pytest.raises(ValueError, match=r"^budget_canonical_export_write$"):
+        export_budget_appropriations(
+            package,
+            source["manifest_sha256"],
+            original,
+            output,
+            dry_run=False,
+        )
+    assert {path.name: path.read_bytes() for path in package.iterdir()} == before
+    assert not (package / "FAILURE.json").exists()
+    assert not (package / "LOCAL_BUDGET.json").exists()
