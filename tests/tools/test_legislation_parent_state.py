@@ -167,6 +167,142 @@ def client(metadata: dict[str, Any], raw: bytes) -> httpx.Client:
     return httpx.Client(transport=httpx.MockTransport(handle))
 
 
+def durable_reference(raw: bytes = b"durable") -> dict[str, Any]:
+    """Build a synthetic public durable reference with production identities."""
+    return {
+        "schema_version": P.DURABLE_REFERENCE_SCHEMA,
+        "durable": {
+            "provider": "hugging_face_dataset",
+            "dataset": "edithatogo/corpus-legislation-nz",
+            "revision": "a" * 40,
+            "path_parts": [
+                "durable-state",
+                "v1",
+                "2e4b75333e947d812842147c939117fc666799e4497b80f125104f721ef68e3c",
+                "canonical-state.zip",
+            ],
+            "sha256": P.v.sha(raw),
+            "size_bytes": len(raw),
+            "roots": {
+                "manifest_sha256": "b" * 64,
+                "inventory_sha256": "c" * 64,
+                "records": 552,
+                "work_ids": 552,
+            },
+        },
+        "parent_source": P.source_identity(""),
+        "child_source": P.source_identity("historical-work-ids-0001"),
+        "authority": {
+            "decision_id": "archive-govt-nz-hf-publication-20260903-selected-552-v1",
+            "publication_receipt_path": (
+                "evidence/migrations/corpus-legislation-nz/huggingface-publication/"
+                "publication-readback-20260903.json"
+            ),
+            "publication_receipt_sha256": "d" * 64,
+            "publication_commit": "e" * 40,
+        },
+    }
+
+
+def test_durable_download_is_anonymous_exact_revision_and_fixed_bytes() -> None:
+    """Use an immutable anonymous Hub URL and no authorization header."""
+    raw = b"durable"
+    reference = durable_reference(raw)
+    seen: list[httpx.Request] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        seen.append(request)
+        return httpx.Response(200, content=raw)
+
+    with httpx.Client(transport=httpx.MockTransport(handler)) as session:
+        assert P.durable_download(session, reference) == raw
+    assert seen[0].url.host == "huggingface.co"
+    assert reference["durable"]["revision"] in seen[0].url.path
+    assert "authorization" not in seen[0].headers
+
+
+@pytest.mark.parametrize("field", ["sha256", "size_bytes"])
+def test_durable_download_rejects_wrong_outer_fixity(field: str) -> None:
+    """Reject wrong public package sizes and hashes before inner parsing."""
+    reference = durable_reference()
+    reference["durable"][field] = "0" * 64 if field == "sha256" else 8
+    with (
+        httpx.Client(
+            transport=httpx.MockTransport(
+                lambda _: httpx.Response(200, content=b"durable")
+            )
+        ) as session,
+        pytest.raises(P.v.VerificationError, match="durable_package_"),
+    ):
+        P.durable_download(session, reference)
+
+
+def test_durable_download_rejects_untrusted_redirect() -> None:
+    """Reject redirects away from the bounded Hugging Face delivery hosts."""
+    reference = durable_reference()
+    with (
+        httpx.Client(
+            transport=httpx.MockTransport(
+                lambda _: httpx.Response(
+                    302, headers={"location": "https://example.test/file"}
+                )
+            )
+        ) as session,
+        pytest.raises(P.v.VerificationError, match="durable_download_origin"),
+    ):
+        P.durable_download(session, reference)
+
+
+def test_durable_reference_rejects_revision_rights_and_scope_drift() -> None:
+    """Reject mutable revisions, different decisions, and scope substitution."""
+    reference = durable_reference()
+    P.schema(reference, "legislation-durable-parent-reference")
+    for path, value in (
+        (("durable", "revision"), "main"),
+        (("authority", "decision_id"), "unapproved"),
+        (("child_source", "seed_id"), None),
+    ):
+        changed = copy.deepcopy(reference)
+        changed[path[0]][path[1]] = value
+        with pytest.raises(
+            P.v.VerificationError, match="schema_legislation-durable-parent-reference"
+        ):
+            P.schema(changed, "legislation-durable-parent-reference")
+
+
+def test_durable_inner_verifier_binds_rights_roots_and_parent_scope(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Require verified inner roots, public rights, and unseeded parent scope."""
+    reference = durable_reference()
+    document = {
+        "roots": copy.deepcopy(reference["durable"]["roots"]),
+        "rights": {"payload": "public_approved"},
+        "input": {"source": copy.deepcopy(reference["parent_source"])},
+    }
+    fake = type(
+        "Durable",
+        (),
+        {
+            "verify": staticmethod(
+                lambda _raw, _digest: (document, {"manifest.json": b"{}"})
+            )
+        },
+    )
+    monkeypatch.setattr(P, "sibling", lambda _name: fake)
+    assert P.durable_files(b"durable", reference) == {"manifest.json": b"{}"}
+    for key, value, failure in (
+        ("roots", {**document["roots"], "records": 551}, "durable_roots"),
+        ("rights", {"payload": "blocked"}, "durable_rights"),
+        ("input", {"source": reference["child_source"]}, "durable_scope"),
+    ):
+        changed = copy.deepcopy(document)
+        changed[key] = value
+        fake.verify = staticmethod(lambda _raw, _digest, changed=changed: (changed, {}))
+        with pytest.raises(P.v.VerificationError, match=failure):
+            P.durable_files(b"durable", reference)
+
+
 def v3_harvest(files: dict[str, bytes]) -> bytes:
     """Build a strong no-change receipt bound to the synthetic restored state."""
     roots = P.state_roots(files)

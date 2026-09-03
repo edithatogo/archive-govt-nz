@@ -27,3 +27,6 @@
   on `${{ github.run_id }}`; retained `batch_id` as batch correlation only.
 - Added static workflow-integrity regression coverage.
 - No hosted execution dispatched; operational gates remain fail-closed.
+- Reviewed and validated the durable parent-reference implementation: 111
+  focused tests passed and schema validation covered 48 schemas/38 documents.
+  No live Hugging Face retrieval or parent adoption occurred.

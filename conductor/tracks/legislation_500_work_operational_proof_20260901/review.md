@@ -23,3 +23,13 @@ for harvest and reconciliation. A static regression test prevents recurrence.
 
 This is repository-only evidence. The exact lane remains blocked pending a
 real hosted dispatch, durable parent, and independent operator reproduction.
+
+## Review fix — durable parent-reference contract
+
+The uncommitted implementation adds a typed durable Hugging Face reference,
+bounded anonymous exact-revision download, inner package verification, and
+negative-path tests for redirect, fixity, rights, scope, and revision drift.
+Focused parent-state/workflow tests (111) and schema validation (48 schemas,
+38 documents) pass. The implementation remains fail-closed: it does not
+publish, retrieve a live package, create a parent, or satisfy the operational
+gate by itself.

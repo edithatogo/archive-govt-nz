@@ -183,5 +183,45 @@
     "name": "seal_receipt_strength",
     "old": "v.equal(parsed.evidence_strength, \"strong\", \"seal_receipt_strength\")",
     "new": "None"
+  },
+  {
+    "name": "durable_download_origin",
+    "old": "any(host == suffix or host.endswith(suffix) for suffix in allowed)",
+    "new": "True"
+  },
+  {
+    "name": "durable_package_size",
+    "old": "v.equal(len(raw), durable[\"size_bytes\"], \"durable_package_size\")",
+    "new": "None"
+  },
+  {
+    "name": "durable_package_digest",
+    "old": "v.equal(v.sha(raw), durable[\"sha256\"], \"durable_package_digest\")",
+    "new": "None"
+  },
+  {
+    "name": "durable_roots",
+    "old": "v.equal(document[\"roots\"], durable[\"roots\"], \"durable_roots\")",
+    "new": "None"
+  },
+  {
+    "name": "durable_rights",
+    "old": "v.equal(document[\"rights\"][\"payload\"], \"public_approved\", \"durable_rights\")",
+    "new": "None"
+  },
+  {
+    "name": "durable_scope",
+    "old": "v.equal(document[\"input\"][\"source\"], reference[\"parent_source\"], \"durable_scope\")",
+    "new": "None"
+  },
+  {
+    "name": "durable_parent_scope",
+    "old": "v.equal(reference[\"parent_source\"], source_identity(\"\"), \"durable_parent_scope\")",
+    "new": "None"
+  },
+  {
+    "name": "durable_child_scope",
+    "old": "v.equal(\n        reference[\"child_source\"],\n        source_identity(\"historical-work-ids-0001\"),\n        \"durable_child_scope\",\n    )",
+    "new": "None"
   }
 ]

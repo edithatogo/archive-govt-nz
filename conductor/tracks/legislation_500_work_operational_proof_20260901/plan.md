@@ -12,5 +12,8 @@
   Prompt 06 head without executing the lane.
 - [x] Unify hosted restore, harvest receipt, and seal on the GitHub run identity
   (`github.run_id`); retain `batch_id` only as correlation metadata.
+- [x] Add a fail-closed durable Hugging Face parent-reference schema and
+  verifier contracts for exact revision, outer/inner fixity, roots, scope,
+  rights, and anonymous redirects; no remote retrieval was performed.
 - [ ] Dispatch and independently verify the target-owned 500-work run.
 - [ ] Prove continuation and durable recovery; complete hosted closeout.
