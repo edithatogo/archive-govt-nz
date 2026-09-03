@@ -19,6 +19,12 @@ from typing import TYPE_CHECKING, Any, cast
 
 import blake3
 
+from archive_govt_nz.domains.legislation.accounting import (
+    V2_SCHEMA,
+    V3_SCHEMA,
+    read_harvest_receipt,
+)
+
 if TYPE_CHECKING:
     from collections.abc import Sequence
     from importlib.abc import Loader
@@ -142,35 +148,63 @@ def target_state(files: dict[str, bytes]) -> dict[str, Any]:
         "work_membership",
     )
     objects = objects_for(records, files)
-    v.equal(
-        receipt["schema_version"],
-        "archive-govt-nz.legislation-harvest-receipt/v2",
-        "receipt_schema",
-    )
-    v.equal(receipt["batch_id"], manifest["run_id"], "receipt_batch")
-    v.equal(receipt["manifest_sha256"], manifest["manifest_sha256"], "receipt_root")
-    v.equal(
-        receipt["discovered_works_count"],
-        len(manifest["discovered_work_ids"]),
-        "receipt_inventory",
-    )
-    v.equal(receipt["state_committed"], expected=True, code="receipt_commit")
-    v.equal(receipt["errors"], [], "receipt_errors")
     v.require(
-        condition=receipt["outcome"] in {"changed", "no_change"}, code="receipt_outcome"
+        condition=receipt.get("schema_version") in {V2_SCHEMA, V3_SCHEMA},
+        code="receipt_schema",
     )
-    counts = [
-        receipt[k]
-        for k in ("max_works", "works_attempted", "works_synced", "records_preserved")
-    ]
-    v.require(
-        condition=all(type(n) is int and n >= 0 for n in counts), code="receipt_counts"
-    )
-    maximum, attempted, synced, preserved = counts
-    v.require(
-        condition=preserved <= attempted <= maximum and synced <= attempted,
-        code="receipt_accounting",
-    )
+    parsed = read_harvest_receipt(receipt)
+    if parsed.schema == V2_SCHEMA:
+        v.equal(receipt["batch_id"], manifest["run_id"], "receipt_batch")
+        v.equal(receipt["manifest_sha256"], manifest["manifest_sha256"], "receipt_root")
+        v.equal(
+            receipt["discovered_works_count"],
+            len(manifest["discovered_work_ids"]),
+            "receipt_inventory",
+        )
+        v.equal(receipt["state_committed"], expected=True, code="receipt_commit")
+        v.equal(receipt["errors"], [], "receipt_errors")
+        v.require(
+            condition=receipt["outcome"] in {"changed", "no_change"},
+            code="receipt_outcome",
+        )
+        counts = [
+            receipt[k]
+            for k in (
+                "max_works",
+                "works_attempted",
+                "works_synced",
+                "records_preserved",
+            )
+        ]
+        v.require(
+            condition=all(type(n) is int and n >= 0 for n in counts),
+            code="receipt_counts",
+        )
+        maximum, attempted, synced, preserved = counts
+        v.require(
+            condition=preserved <= attempted <= maximum and synced <= attempted,
+            code="receipt_accounting",
+        )
+    else:
+        v.equal(parsed.schema, V3_SCHEMA, "receipt_schema")
+        v.require(
+            condition=parsed.accounting is not None,
+            code="receipt_accounting_missing",
+        )
+        accounting = cast("Any", parsed.accounting)
+        v.equal(accounting.run_identity, manifest["run_id"], "receipt_run")
+        v.equal(
+            accounting.output_manifest_root,
+            manifest["manifest_sha256"],
+            "receipt_root",
+        )
+        v.equal(
+            accounting.output_checkpoint_root,
+            v.sha(files["checkpoint.json"]),
+            "receipt_checkpoint_root",
+        )
+        v.equal(accounting.total_state_records_after, len(records), "receipt_records")
+        v.equal(accounting.total_cas_objects_after, len(objects), "receipt_objects")
     return {"manifest": manifest, "checkpoint": checkpoint, "objects": objects}
 
 

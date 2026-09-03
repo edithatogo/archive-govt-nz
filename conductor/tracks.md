@@ -267,6 +267,9 @@ implementation has occurred under these tracks.
 - [x] **Track: Legislation harvest accounting and receipt semantics (Prompt 12)**
   *Link: [./tracks/legislation_harvest_accounting_20260901/index.md](./tracks/legislation_harvest_accounting_20260901/index.md)*
 
+- [x] **Track: Exact-inventory custody and revalidation lane (Prompt 06)**
+  *Link: [./tracks/legislation_exact_inventory_revalidation_20260903/index.md](./tracks/legislation_exact_inventory_revalidation_20260903/index.md)*
+
 - [x] **Track: Historical coverage and 33,693-candidate reconciliation (Prompt 14)**
   *Link: [./tracks/legislation_historical_coverage_20260901/index.md](./tracks/legislation_historical_coverage_20260901/index.md)*
 
@@ -290,3 +293,12 @@ implementation has occurred under these tracks.
 
 - [~] **Track: Integrated quality, security, and hosted assurance (Prompt 20)**
   *Link: [./tracks/integrated_assurance_20260902/index.md](./tracks/integrated_assurance_20260902/index.md)*
+
+- [~] **Track: Prompt 20 security and workflow repairs**
+  *Link: [./tracks/prompt20_security_workflow_repairs_20260903/index.md](./tracks/prompt20_security_workflow_repairs_20260903/index.md)*
+
+- [x] **Track: Prompt 07 bounded legislation discovery and freshness**
+  *Link: [tracks/legislation_bounded_discovery_20260903/index.md](./tracks/legislation_bounded_discovery_20260903/index.md)*
+
+- [~] **Track: Independent durable legislation recovery (Prompt 10)**
+  *Link: [./tracks/legislation_independent_recovery_20260901/index.md](./tracks/legislation_independent_recovery_20260901/index.md)*

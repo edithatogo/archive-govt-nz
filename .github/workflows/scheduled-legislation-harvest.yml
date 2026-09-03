@@ -1,4 +1,4 @@
-name: Bounded Legislation Harvest
+name: Bounded Legislation Discovery and Freshness
 
 on:
   schedule:
@@ -6,59 +6,40 @@ on:
   workflow_dispatch:
     inputs:
       confirmed_execution:
-        description: "Confirm this bounded source acquisition"
+        description: "Confirm bounded public-source discovery and isolated acquisition"
         required: true
         type: boolean
         default: false
       batch_id:
-        description: "Unique canonical batch identity"
+        description: "Unique discovery attempt identity"
         required: true
         type: string
-      search_terms:
-        description: "One discovery search term per line"
+      scope_path:
+        description: "Committed versioned discovery scope"
         required: true
         type: string
-      max_works:
-        description: "Positive maximum discovered works"
-        required: true
-        type: number
-        default: 25
+        default: "config/legislation/discovery-scope-v1.json"
       parent_reference:
-        description: "Committed pinned parent reference (no latest-run lookup)"
+        description: "Committed pinned parent reference"
         required: true
         type: string
         default: "config/legislation/parents/current.json"
-      restoration_mode:
-        description: "Initial modes require separate reviewed authority"
-        required: true
-        type: choice
-        options: [continuation, adopt, bootstrap]
-        default: continuation
-      initial_authority:
-        description: "Committed authority path; required only for initial modes"
-        required: false
-        type: string
-        default: ""
-      confirmed_initial:
-        description: "Confirm the separately reviewed initial-state authority"
-        required: true
-        type: boolean
-        default: false
 
 permissions:
   actions: read
   contents: read
 
+# Shared with the exact-inventory lane: neither may prepare a child from the same
+# canonical parent concurrently. Canonical admission remains a later exclusive merge.
 concurrency:
-  group: bounded-legislation-harvest-${{ github.ref }}
+  # Exact-inventory and discovery work share one repository-wide state lock.
+  group: legislation-canonical-state
   cancel-in-progress: false
 
 jobs:
-  harvest-legislation:
+  discover-and-stage:
     runs-on: ubuntu-latest
     env:
-      HF_TOKEN: ${{ secrets.HF_TOKEN }}
-      ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
       LEGISLATION_API_KEY: ${{ secrets.LEGISLATION_API_KEY }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
@@ -66,77 +47,85 @@ jobs:
         with:
           python-version: "3.14"
       - run: python -m pip install uv==0.6.5
-      - name: Validate explicit dispatch authority and scope
+      - name: Validate explicit authority
         env:
-          EVENT_NAME: ${{ github.event_name }}
-          CONFIRMED_EXECUTION: ${{ github.event_name == 'schedule' || inputs.confirmed_execution }}
-          BATCH_ID: ${{ github.event_name == 'schedule' && format('scheduled-weekly-{0}', github.run_id) || inputs.batch_id }}
-          MAX_WORKS: ${{ github.event_name == 'schedule' && 50 || inputs.max_works }}
-          SEARCH_TERMS: ${{ github.event_name == 'schedule' && 'Act,Bill,Regulation' || inputs.search_terms }}
+          CONFIRMED: ${{ github.event_name == 'schedule' || inputs.confirmed_execution }}
+          BATCH_ID: ${{ github.event_name == 'schedule' && format('freshness-{0}', github.run_id) || inputs.batch_id }}
         run: |
-          python - <<'PY'
-          import os
-          import re
+          test "$CONFIRMED" = true
+          test -n "$BATCH_ID"
+      - name: Query bounded candidate pages
+        env:
+          SCOPE_PATH: ${{ inputs.scope_path || 'config/legislation/discovery-scope-v1.json' }}
+        run: >-
+          uv run --locked python tools/run_legislation_discovery.py query
+          --scope "$SCOPE_PATH"
+          --output build/legislation-discovery/candidates.json
+      - name: Materialize candidate IDs without a coverage claim
+        run: |
+          uv run --locked python - <<'PY'
+          import hashlib
+          import json
           from pathlib import Path
 
-          if os.environ["CONFIRMED_EXECUTION"] != "true":
-              raise SystemExit("confirmed_execution must be true")
-          if not os.environ["BATCH_ID"].strip():
-              raise SystemExit("batch_id is required")
-          if int(os.environ["MAX_WORKS"]) <= 0:
-              raise SystemExit("max_works must be positive")
-          terms = [
-              term.strip()
-              for term in re.split(r"[,\n\r]+|\\n", os.environ["SEARCH_TERMS"])
-              if term.strip()
-          ]
-          if not terms:
-              raise SystemExit("at least one search term is required")
-          Path("build").mkdir(exist_ok=True)
-          Path("build/legislation-search-terms.txt").write_text("\n".join(terms) + "\n", encoding="utf-8")
+          receipt = json.loads(Path("build/legislation-discovery/candidates.json").read_text())
+          ids = "".join(item["work_id"] + "\n" for item in receipt["candidates"])
+          Path("build/legislation-discovery/work-ids.txt").write_text(ids)
+          config = json.loads(Path("tests/fixtures/source-set-discovery-v2.json").read_text())
+          config["execution"]["mode"] = "dispatch_only"
+          config["schedule"]["active"] = False
+          config["scope"] = {
+              "type": "exact_inventory",
+              "identifier": receipt["query"]["scope_id"] + "-acquisition",
+              "seed_id": "discovery-receipt:" + receipt["query_sha256"],
+              "inventory_sha256": hashlib.sha256(ids.encode()).hexdigest(),
+              "candidate_count": receipt["candidate_count"],
+              "coverage_claim": False,
+          }
+          Path("build/legislation-discovery/acquisition-source-set.json").write_text(
+              json.dumps(config, sort_keys=True, indent=2) + "\n"
+          )
           PY
-      - name: Verify selected parent before any state consumer
+      - name: Verify selected parent before acquisition
         uses: ./.github/actions/legislation-parent-state
         with:
-          mode: ${{ inputs.restoration_mode || 'continuation' }}
+          mode: continuation
           parent-reference: ${{ inputs.parent_reference || 'config/legislation/parents/current.json' }}
-          authority: ${{ inputs.initial_authority }}
-          confirmed-initial: ${{ inputs.confirmed_initial || false }}
-          execution-id: ${{ github.event_name == 'schedule' && format('scheduled-weekly-{0}', github.run_id) || inputs.batch_id }}
+          execution-id: ${{ github.event_name == 'schedule' && format('freshness-{0}', github.run_id) || inputs.batch_id }}
           github-token: ${{ github.token }}
-      - name: Execute bounded service-backed harvest
+      - name: Acquire into isolated child state
         env:
-          BATCH_ID: ${{ github.event_name == 'schedule' && format('scheduled-weekly-{0}', github.run_id) || inputs.batch_id }}
-          MAX_WORKS: ${{ github.event_name == 'schedule' && 50 || inputs.max_works }}
+          BATCH_ID: ${{ github.event_name == 'schedule' && format('freshness-{0}', github.run_id) || inputs.batch_id }}
         run: |
+          COUNT=$(wc -l < build/legislation-discovery/work-ids.txt | tr -d ' ')
+          if test "$COUNT" -eq 0; then
+            cp build/legislation-discovery/candidates.json build/legislation-discovery/no-change.json
+            exit 0
+          fi
           uv run --locked python tools/run_legislation_harvest.py \
+            --source-set-config build/legislation-discovery/acquisition-source-set.json \
             --checkpoint-path build/legislation-state/checkpoint.json \
             --manifest-path build/legislation-state/manifest.json \
             --cas-path build/legislation-state/cas \
             --receipt-path build/legislation-state/receipts/harvest.json \
             --batch-id "$BATCH_ID" \
-            --search-terms-file build/legislation-search-terms.txt \
-            --max-works "$MAX_WORKS"
-      - name: Seal verified continuation lineage
-        env:
-          PARENT_EXECUTION_ID: ${{ github.event_name == 'schedule' && format('scheduled-weekly-{0}', github.run_id) || inputs.batch_id }}
+            --work-ids-file build/legislation-discovery/work-ids.txt \
+            --max-works "$COUNT"
+      - name: Classify outcomes and request verified merge
+        # The accepted-pending-merge receipt requires a later exclusive
+        # tools/merge_legislation_states.py run for canonical admission.
+        if: ${{ hashFiles('build/legislation-state/receipts/harvest.json') != '' }}
         run: >-
-          uv run --locked python tools/legislation_parent_state.py seal
-          --state build/legislation-state
-          --quarantine build/legislation-parent-quarantine
-      - name: Upload complete continuation state
+          uv run --locked python tools/run_legislation_discovery.py classify
+          --candidate-receipt build/legislation-discovery/candidates.json
+          --harvest-receipt build/legislation-state/receipts/harvest.json
+          --output-dir build/legislation-discovery/outcomes
+      - name: Upload candidates, isolated child, and outcome receipts
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         with:
-          name: legislation-state-${{ github.run_id }}
-          path: build/legislation-state/
+          name: legislation-discovery-${{ github.run_id }}
+          path: |
+            build/legislation-discovery/
+            build/legislation-state/
           if-no-files-found: error
           retention-days: 90
-      - name: Upload bounded failure receipt
-        if: failure()
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
-        with:
-          name: legislation-failure-${{ github.run_id }}
-          path: |
-            build/legislation-state/receipts/
-            build/legislation-parent-quarantine/*failure.json
-          if-no-files-found: warn

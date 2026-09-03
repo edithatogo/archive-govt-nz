@@ -96,8 +96,8 @@
   },
   {
     "name": "https_origin",
-    "old": "location.scheme == \"https\"",
-    "new": "True"
+    "old": "condition=location.scheme == \"https\"\n        and not location.userinfo",
+    "new": "condition=True\n        and not location.userinfo"
   },
   {
     "name": "blob_origin",
@@ -136,7 +136,7 @@
   },
   {
     "name": "state_source_set",
-    "old": "v.equal(\n        v.load(files[\"receipts/harvest.json\"]).get(\"source_set\"),\n        \"legislation\",\n        \"state_source_set\",\n    )",
+    "old": "v.equal(receipt.get(\"source_set\"), \"legislation\", \"state_source_set\")",
     "new": "None"
   },
   {
@@ -156,7 +156,7 @@
   },
   {
     "name": "seal_execution",
-    "old": "v.equal(\n        v.load(files[\"receipts/harvest.json\"])[\"batch_id\"],\n        context[\"execution_id\"],\n        \"seal_execution\",\n    )",
+    "old": "v.equal(\n        accounting.run_identity,\n        context[\"execution_id\"],\n        \"seal_execution\",\n    )",
     "new": "None"
   },
   {
@@ -167,6 +167,61 @@
   {
     "name": "zip_member_spelling",
     "old": "v.equal(entry.orig_filename, name, \"member_spelling\")",
+    "new": "None"
+  },
+  {
+    "name": "parent_receipt_schema",
+    "old": "v.equal(\n        parsed.schema,\n        reference[\"state_schemas\"][\"success_receipt\"],\n        \"parent_receipt_schema\",\n    )",
+    "new": "None"
+  },
+  {
+    "name": "continuation_receipt_strength",
+    "old": "v.equal(parsed.evidence_strength, \"strong\", \"continuation_receipt_strength\")",
+    "new": "None"
+  },
+  {
+    "name": "seal_receipt_strength",
+    "old": "v.equal(parsed.evidence_strength, \"strong\", \"seal_receipt_strength\")",
+    "new": "None"
+  },
+  {
+    "name": "durable_download_origin",
+    "old": "any(host == suffix or host.endswith(suffix) for suffix in allowed)",
+    "new": "True"
+  },
+  {
+    "name": "durable_package_size",
+    "old": "v.equal(len(raw), durable[\"size_bytes\"], \"durable_package_size\")",
+    "new": "None"
+  },
+  {
+    "name": "durable_package_digest",
+    "old": "v.equal(v.sha(raw), durable[\"sha256\"], \"durable_package_digest\")",
+    "new": "None"
+  },
+  {
+    "name": "durable_roots",
+    "old": "v.equal(document[\"roots\"], durable[\"roots\"], \"durable_roots\")",
+    "new": "None"
+  },
+  {
+    "name": "durable_rights",
+    "old": "v.equal(document[\"rights\"][\"payload\"], \"blocked\", \"durable_historical_rights\")",
+    "new": "None"
+  },
+  {
+    "name": "durable_scope",
+    "old": "v.equal(document[\"input\"][\"source\"], reference[\"parent_source\"], \"durable_scope\")",
+    "new": "None"
+  },
+  {
+    "name": "durable_parent_scope",
+    "old": "v.equal(reference[\"parent_source\"], source_identity(\"\"), \"durable_parent_scope\")",
+    "new": "None"
+  },
+  {
+    "name": "durable_child_scope",
+    "old": "v.equal(\n        reference[\"child_source\"],\n        source_identity(\"historical-work-ids-0001\"),\n        \"durable_child_scope\",\n    )",
     "new": "None"
   }
 ]

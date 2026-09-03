@@ -1,0 +1,140 @@
+{
+  "schema_version": "archive-govt-nz.legislation-500-work-preflight-refresh/v1",
+  "observed_at": "2026-09-03T08:57:36Z",
+  "status": "blocked",
+  "scope": "repository-only prerequisite refresh; no credential access, endpoint request, parent restore, workflow dispatch, acquisition, state write, or publication",
+  "supersedes": {
+    "path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/500-work-target-revalidation.json",
+    "sha256": "5396f35f4f4061f0c7235414e07d685cf6b3cad1d3a03f8ba97e95216f0c5d16"
+  },
+  "target": {
+    "repository": "edithatogo/archive-govt-nz",
+    "commit": "e559d675c347615d64ae5e1c1f3ad5efd5d120f6"
+  },
+  "donor": {
+    "repository": "edithatogo/corpus-legislation-nz",
+    "archived": true,
+    "final_reachable_head": "b40587f1b1aec7356a0f623916fcc8212397d283"
+  },
+  "seed": {
+    "seed_id": "historical-work-ids-0001",
+    "sha256": "59923176fa34796d7673a20b880af9abe5520fe484595edb220f2bbc0e3b33e7",
+    "byte_size": 8987,
+    "line_count": 500,
+    "unique": true,
+    "ascii_sorted": true,
+    "lf_only": true,
+    "terminal_newline": true
+  },
+  "resolved_prerequisites": [
+    {
+      "id": "prompt-06",
+      "status": "passed_repository_scope",
+      "issue": 308,
+      "pull_request": 362,
+      "reviewed_head": "d22bf167ed8f56197eab9098cfc2ab0991ca320e",
+      "merge_commit": "e559d675c347615d64ae5e1c1f3ad5efd5d120f6",
+      "merged_at": "2026-09-03T08:55:42Z"
+    },
+    {
+      "id": "parent-v3-compatibility",
+      "status": "passed_repository_scope",
+      "pull_request": 364,
+      "merge_commit": "031b68782e68eaf9263b9163fe1e1e8ac501d0d6",
+      "continuation_receipt_schema": "archive-govt-nz.legislation-harvest-receipt/v3",
+      "legacy_v2_adoption_only": true
+    }
+  ],
+  "exact_lane": {
+    "status": "available_not_executed",
+    "workflow_path": ".github/workflows/exact-inventory.yml",
+    "workflow_sha256": "031b45ae84b8dd44a2b877681df0d01bdbfda556ce3c1284aa10949330b3e8ae",
+    "github_workflow_id": 349172482,
+    "github_workflow_state": "active",
+    "observed_runs": [],
+    "source_set_path": "config/source-sets/legislation-exact-inventory.yml",
+    "source_set_sha256": "81b3ef4a7e6524e6ff6506682d5848d0d4ddc4ccec169d0d3ece7c5da5763457",
+    "lane_type": "exact_inventory",
+    "max_works": 500,
+    "concurrency_group": "legislation-canonical-state",
+    "requires_confirmed_execution": true,
+    "requires_committed_parent_reference": true,
+    "credential_scoped_to_acquisition": true,
+    "external_publication_enabled": false
+  },
+  "parent": {
+    "expected_path": "config/legislation/parents/current.json",
+    "committed_reference_present": false,
+    "fabricated_or_local_substitute_used": false,
+    "restore_attempted": false
+  },
+  "operational_preflight": {
+    "performed": false,
+    "credential_name": "NZ_LEGISLATION_API_KEY",
+    "credential_value_accessed": false,
+    "credential_validity": "not_tested",
+    "source_endpoint_reachability": "not_tested",
+    "parent_roots": "not_tested",
+    "resource_limits": "repository_contract_present_not_live_verified"
+  },
+  "resolved_prior_findings": [
+    "P13-B01",
+    "P13-B04",
+    "P13-B05",
+    "P13-B06"
+  ],
+  "blocking_findings": [
+    {
+      "id": "P13-B02",
+      "kind": "missing_durable_recovery",
+      "detail": "Prompt 10 issue 327 remains open; no accepted independent recovery from a remotely identified durable package exists."
+    },
+    {
+      "id": "P13-B03",
+      "kind": "missing_parent",
+      "detail": "config/legislation/parents/current.json is absent; no local package or retained Actions artifact was substituted."
+    },
+    {
+      "id": "P13-B07",
+      "kind": "missing_live_preflight",
+      "detail": "Credential validity, endpoint reachability, parent roots, and live resource limits have not been tested."
+    },
+    {
+      "id": "P13-B08",
+      "kind": "execution_gate",
+      "detail": "No authorization-bound exact-inventory dispatch has been performed."
+    }
+  ],
+  "verification": {
+    "focused_command": "uv run pytest tests/tools/test_exact_inventory_workflow.py tests/tools/test_legislation_parent_state.py -q",
+    "focused_passed": 107,
+    "actionlint_findings": [],
+    "seed_registry_resolution": "passed",
+    "dispatch_performed": false,
+    "all_500_accounted_for": false,
+    "reconciliation_zero_unexplained_mismatches": false,
+    "continuation_proven": false,
+    "durable_recovery_proven": false
+  },
+  "full_validation": {
+    "command": "./scripts/validate.sh",
+    "status": "passed",
+    "tests_passed": 4559,
+    "coverage_percent": 97.5,
+    "schema_count": 48,
+    "representative_document_count": 38,
+    "parity": "9/9",
+    "registered_mutations": "passed",
+    "dependency_audit": "passed",
+    "licence_inventory": "passed",
+    "credential_scan": "passed",
+    "sbom_components": 111
+  },
+  "next_safe_sequence": [
+    "Complete Prompt 10 against an independently readable durable package revision.",
+    "Adopt the independently recovered compatible parent through a committed reviewed reference.",
+    "Run a bounded no-write operational preflight without recording credential values.",
+    "Request the exact execution gate for the reviewed 500-work inventory.",
+    "Dispatch, reconcile, seal, independently read back, and prove continuation and recovery."
+  ]
+}

@@ -35,3 +35,18 @@ Superseding receipt: `evidence/migrations/corpus-legislation-nz/parent-state-res
 SHA-256: `82f3766f91aa57d181568c6541165e4314274db9bf9562c69cd15895ba2e5343`
 
 Aggregate branch-only coverage is 94.43105%, distinct from native combined coverage and the changed helper's 100%. The existing aggregate handoff and two unrelated SC2086 diagnostics remain; no thresholds or unrelated code were changed. Final metadata/evidence-head hosted checks and guarded merge/readback remain separately recorded on issue #312. No live state restoration or publication was executed.
+
+## Prompt 08/12 integration addendum
+
+Issue #359 supersedes the compatibility limitation without rewriting the earlier
+receipts. New seals and continuations require the Prompt 12 v3 accounting
+receipt. Explicit legacy adoption continues to read v2, but cannot seal it as a
+new continuation. The validator binds v3 execution identity, manifest and
+checkpoint roots, record count, and CAS count.
+
+Final local validation: 4,549 tests passed with 97.50% combined coverage; 48
+schemas and 38 representative documents passed; parity, dependency, licence,
+secret and SBOM gates passed. The final-byte mutation runs killed 37/37
+parent-state and 26/26 durable-state mutants. Receipt:
+`evidence/migrations/corpus-legislation-nz/parent-state-restoration/integration-v3-validation.json`.
+No live restoration, harvest, publication or external mutation was performed.

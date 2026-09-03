@@ -5,11 +5,22 @@ from __future__ import annotations
 
 from dataclasses import asdict, dataclass
 from typing import Any
+from urllib.parse import urlsplit
 
 import httpx
 
 _DISCORD_SUCCESS_COLOR = 0x2ECC71
 _DISCORD_WARNING_COLOR = 0xE67E22
+
+
+def _classify_webhook_url(webhook_url: str) -> str:
+    """Classify known webhook endpoints from parsed URL components."""
+    parsed = urlsplit(webhook_url)
+    if parsed.hostname == "hooks.slack.com":
+        return "slack"
+    if parsed.hostname == "discord.com" and parsed.path.startswith("/api/webhooks/"):
+        return "discord"
+    return "generic"
 
 
 @dataclass(frozen=True, slots=True)
@@ -171,11 +182,13 @@ async def dispatch_webhook(
     transport: httpx.AsyncBaseTransport | None = None,
 ) -> bool:
     """Send structured payload to target webhook URL."""
-    url_lower = webhook_url.lower()
+    selected_service = (
+        _classify_webhook_url(webhook_url) if service == "auto" else service
+    )
 
-    if service == "slack" or "hooks.slack.com" in url_lower:
+    if selected_service == "slack":
         body = format_slack_payload(payload)
-    elif service == "discord" or "discord.com/api/webhooks" in url_lower:
+    elif selected_service == "discord":
         body = format_discord_payload(payload)
     else:
         body = asdict(payload)

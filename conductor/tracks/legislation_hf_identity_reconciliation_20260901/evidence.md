@@ -22,3 +22,28 @@ Focused Prompt 15 suite: 40 passed. Full repository harness: 4,444 passed with 9
 ## Retained blockers
 
 External publication approval is pending. Prompt 13 operational proof is incomplete and the selected 552 records remain `source_specific_review_required`. The candidate status is `candidate_only_not_published`; no hosted metadata or payload was changed.
+
+## Superseding public publication receipt — 2026-09-03
+
+The accountable maintainer authorised public redistribution of the selected 552-record state and an update to the existing canonical identity. Hugging Face revision `ae4da4ef0446f68fddd8f53279ecb1245f1529b9` first published the durable package; revision `04688f12dd687618e2085ae31f9b8a4a50a88b16` published the target-origin card and source-specific rights boundary.
+
+`evidence/migrations/corpus-legislation-nz/huggingface-publication/publication-readback-20260903.json` records an anonymous exact-revision readback. It returned public, ungated access and reproduced:
+
+- `canonical-state.zip`: 71,776,346 bytes, SHA-256 `2e4b75333e947d812842147c939117fc666799e4497b80f125104f721ef68e3c`;
+- `metadata.json`: 1,450 bytes, SHA-256 `ed886263fead010a540663515b24440db59371dbd9bb0abca2138942b44f8e74`;
+- `README.md`: 2,713 bytes, SHA-256 `d41be7b72c10b1e79754bed9b59deed5862d535b6ed0eead2a02df01392e8c4d`;
+- `RIGHTS.md`: 771 bytes, SHA-256 `1cf3df1c833ab9f8a44b703a7668a91b25dfa1b2626972f89d11f7607a776d03`.
+
+The related target GitHub Release indexes this publication. Its Git bundle preserves repository history and is not a duplicate host for the durable dataset bytes. Hugging Face remains the durable package byte authority.
+
+This supersedes the earlier publication-blocked claim without deleting it. Prompt 13 operational proof remains independently incomplete and is not implied by publication success.
+
+## Superseding validation
+
+Focused Prompt 15 and related publication/reconciliation suite: 34 passed. The first full harness run retained one unrelated Hypothesis deadline flake after 4,559 passes; its exact test then passed unchanged. The second full harness passed 4,560 tests with 97.50% branch-aware coverage, 48 schemas and 38 representative documents, parity 9/9, every configured mutation lane, dependency/security audit, licence inventory, secret scan, and SBOM validation.
+
+## Review-fix authority binding
+
+Decision `archive-govt-nz-hf-publication-20260903-selected-552-v1` records the accountable maintainer's 2026-09-03 authorization in the canonical programme thread. The receipt binds candidate manifest SHA-256 `fb3caa39ffd3da9204f01ebd764237d276460dc61493eb809b7e207d17813646`, state manifest SHA-256 `877ba501a25570a29c1aada7979562d8c62c7f043865125cf402310eabc09544`, package SHA-256 `2e4b75333e947d812842147c939117fc666799e4497b80f125104f721ef68e3c`, and the exact permitted package, metadata, card, and rights files. The v2 schema restricts `approved_public_selected_552` to the canonical slug; both preserved identities must retain `source_specific_review_required`.
+
+The review-fix full harness passed 4,579 tests at 97.52% branch-aware coverage, 48 schemas/38 representative documents, parity 9/9, all mutation lanes, dependency audit, licence inventory, secret scan, and SBOM validation. The superseding publication receipt SHA-256 is `38160c4683112d951351e20d68fe34198dcab797eb371d6cf6e6d91160ba9fed`.

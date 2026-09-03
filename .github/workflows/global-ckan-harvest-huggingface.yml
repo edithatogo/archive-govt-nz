@@ -54,9 +54,9 @@ jobs:
 
       - name: Run Global CKAN Harvest Pipeline
         run: |
-          EXTRA_ARGS=""
+          EXTRA_ARGS=()
           if [ -n "${{ inputs.max_datasets }}" ]; then
-            EXTRA_ARGS="--max-datasets ${{ inputs.max_datasets }}"
+            EXTRA_ARGS=(--max-datasets "${{ inputs.max_datasets }}")
           fi
           uv run --locked python tools/harvest_ckan.py \
             --workers ${{ inputs.workers || 8 }} \
@@ -64,7 +64,7 @@ jobs:
             --page-size ${{ inputs.page_size || 100 }} \
             --evidence-dir evidence \
             --objects-dir objects \
-            $EXTRA_ARGS
+            "${EXTRA_ARGS[@]}"
 
       - name: Recover Broken URLs via Wayback Machine
         run: |
