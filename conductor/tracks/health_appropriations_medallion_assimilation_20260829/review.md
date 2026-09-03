@@ -755,5 +755,8 @@ and receipt checks, public analysis semantics, reversible accounting, resource
 bounds, Decimal context isolation and interruption behavior are covered. No
 secret, personal data, filesystem mutation, network action, new dependency or
 unsupported rights/publication claim was introduced. No actionable focused
-finding remains; cold mutation, full native and hosted delivery remain pending
-evidence, not implied completion.
+finding remains. Self-review corrected the parent receipt to match the existing
+exporter's exact newline-terminated canonical bytes and applied the declared
+100,000-row / 64-MiB bound to all three raw and all three canonical tables. The
+fresh 51-mutant cold gate and full native harness pass. Hosted delivery remains
+separate evidence, not implied completion.

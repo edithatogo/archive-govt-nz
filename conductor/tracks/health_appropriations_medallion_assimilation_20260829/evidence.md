@@ -4,14 +4,16 @@
 
 Commits `02d36bc` and `13e8d85` add an in-memory bridge that accepts only an
 exact recomputation of the historical canonical projection and parent receipt.
-Twenty-two focused tests pass at 100% line and branch coverage over 98 critical
-statements and 16 branches; Ruff and scoped basedpyright pass. The tests cover
+Twenty-two focused tests pass at 100% line and branch coverage over 107 critical
+statements and 18 branches; Ruff and full basedpyright pass. The tests cover
 raw-order independence, canonical physical order, typed JSON aliases, Decimal
 and period boundaries, reversible lineage/accounting and public historical
-analysis equivalence. Full native and hosted delivery remain pending. The
+analysis equivalence. Hosted delivery remains pending. The
 cold-cache, one-worker, unfiltered strict-zero-pardon gate
-killed 41/41 mutants with zero cache hits, survivors, errors, timeouts or
-pardons. No file fixity, rights, analysis execution or publication is claimed.
+killed 51/51 mutants with zero cache hits, survivors, errors, timeouts or
+pardons. The native harness passed 4,615 tests at 97.53% overall coverage plus
+all schema, parity, mutation and supply-chain gates. No file fixity, rights,
+analysis execution or publication is claimed.
 
 ## Additive inventory planner — 2026-08-31 UTC
 

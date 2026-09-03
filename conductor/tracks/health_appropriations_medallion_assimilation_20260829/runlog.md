@@ -1607,8 +1607,20 @@ tables and receipt bytes, and retains reversible identity and field accounting.
 Full native and hosted checks are pending behind the serialized assurance lane.
 See [the bounded receipt and limits](./historical-consumer.md).
 
-The subsequently authorized cold-cache mutation lane used one worker, no
-coverage filtering and strict zero pardons. It exited zero after 20.85 seconds:
-41/41 mutants were killed with zero survivors, errors, timeouts, pardons or
-cache hits. The retained log SHA-256 is `5b9d25deb4f2cbb18f3afe5294fc4ac99223b3776ee08a5ffc3136f473738a19`;
-the JSON report SHA-256 is `e10471bfb031c1dbf1ffb47a997316e54c83e5128ecfe0f5fb5b21ef5d1c62f9`.
+After persisted-receipt and six-table resource-bound corrections, the final
+cold-cache mutation lane used one worker, no coverage filtering and strict zero
+pardons. It exited zero after 31.72 seconds: 51/51 mutants were killed with zero
+survivors, errors, timeouts, pardons or cache hits. The retained log SHA-256 is
+`b03da3b6179393e79a36292c3bc8c5117cb32a31023906b1384b4ea13656d6f0`;
+the JSON report SHA-256 is
+`fe3463021cfab67d0664679186e54793cac6895625bd13a7c07ae06f5944d14b`.
+
+The first native attempt failed at full static typing because the test helper's
+return annotation used `object`; its log SHA-256 is
+`7d2dab72e4980c40aec1533a1e44f9787ffa33610089258650c0fb293abcbbba`.
+After an annotation-only correction and a fresh exact-test-hash mutation run,
+the final native harness at `50564fc` exited zero: 4,615 tests, nine existing
+resource warnings, 68.81 seconds, 97.53% coverage, 48 schemas / 38 documents,
+9/9 parity, all mutation and supply-chain gates, and 111 SBOM components. Final
+native log SHA-256:
+`4b988cfe7a65ec04b6c166230303f84a091a1d65afba83e03f610087fa11e690`.
