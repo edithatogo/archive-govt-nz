@@ -299,3 +299,6 @@ implementation has occurred under these tracks.
 
 - [x] **Track: Prompt 07 bounded legislation discovery and freshness**
   *Link: [tracks/legislation_bounded_discovery_20260903/index.md](./tracks/legislation_bounded_discovery_20260903/index.md)*
+
+- [~] **Track: Independent durable legislation recovery (Prompt 10)**
+  *Link: [./tracks/legislation_independent_recovery_20260901/index.md](./tracks/legislation_independent_recovery_20260901/index.md)*

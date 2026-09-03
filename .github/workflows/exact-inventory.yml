@@ -9,13 +9,18 @@ on:
         type: boolean
         default: false
       batch_id:
-        description: Unique canonical execution identifier
+        description: Batch correlation identifier for harvest and reconciliation
         required: true
         type: string
       parent_reference:
         description: Committed reviewed reference under config/legislation/parents/
         required: true
         type: string
+      preflight_only:
+        description: Restore and verify the parent without source acquisition or state upload
+        required: true
+        type: boolean
+        default: false
 
 permissions:
   actions: read
@@ -42,6 +47,7 @@ jobs:
       - name: Check out exact target revision
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
         with:
+          fetch-depth: 0
           persist-credentials: false
 
       - name: Set up Python
@@ -85,11 +91,35 @@ jobs:
         with:
           mode: continuation
           parent-reference: ${{ inputs.parent_reference }}
-          execution-id: ${{ inputs.batch_id }}
+          execution-id: ${{ github.run_id }}
           seed-id: historical-work-ids-0001
           github-token: ${{ github.token }}
 
+      - name: Verify no-write parent preflight
+        if: inputs.preflight_only
+        env:
+          PARENT_REFERENCE: ${{ inputs.parent_reference }}
+        run: |
+          set -euo pipefail
+          uv run --locked python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          reference = json.loads(Path(os.environ["PARENT_REFERENCE"]).read_text())
+          manifest = json.loads(Path("build/legislation-state/manifest.json").read_text())
+          receipt = json.loads(
+              Path("build/legislation-parent-quarantine/restoration-receipt.json").read_text()
+          )
+          assert reference["schema_version"] == "archive-govt-nz.legislation-durable-parent-reference/v1"
+          assert receipt["status"] == "verified"
+          assert manifest["manifest_sha256"] == reference["durable"]["roots"]["manifest_sha256"]
+          assert len(manifest["records"]) == reference["durable"]["roots"]["records"]
+          assert len(manifest["discovered_work_ids"]) == reference["durable"]["roots"]["work_ids"]
+          PY
+
       - name: Revalidate every governed work ID
+        if: ${{ !inputs.preflight_only }}
         id: harvest
         env:
           BATCH_ID: ${{ inputs.batch_id }}
@@ -111,7 +141,7 @@ jobs:
           exit 0
 
       - name: Reconcile exact inventory and cumulative state
-        if: always() && steps.harvest.outputs.exit_code == '0'
+        if: ${{ !inputs.preflight_only && always() && steps.harvest.outputs.exit_code == '0' }}
         id: reconciliation
         env:
           BATCH_ID: ${{ inputs.batch_id }}
@@ -130,7 +160,7 @@ jobs:
           exit 0
 
       - name: Verify accounting and bounded output
-        if: always() && steps.reconciliation.outputs.exit_code == '0'
+        if: ${{ !inputs.preflight_only && always() && steps.reconciliation.outputs.exit_code == '0' }}
         id: verification
         run: |
           set +e
@@ -166,10 +196,10 @@ jobs:
           exit 0
 
       - name: Seal verified continuation lineage
-        if: always() && steps.verification.outputs.exit_code == '0'
+        if: ${{ !inputs.preflight_only && always() && steps.verification.outputs.exit_code == '0' }}
         id: seal
         env:
-          PARENT_EXECUTION_ID: ${{ inputs.batch_id }}
+          PARENT_EXECUTION_ID: ${{ github.run_id }}
         run: |
           set +e
           uv run --locked python tools/legislation_parent_state.py seal \
@@ -180,7 +210,7 @@ jobs:
           exit 0
 
       - name: Upload complete continuation package
-        if: always() && steps.seal.outputs.exit_code == '0'
+        if: ${{ !inputs.preflight_only && always() && steps.seal.outputs.exit_code == '0' }}
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         with:
           name: legislation-exact-inventory-state-${{ github.run_id }}-${{ github.run_attempt }}
@@ -189,7 +219,7 @@ jobs:
           retention-days: 90
 
       - name: Upload sanitized complete attempt evidence
-        if: always()
+        if: ${{ !inputs.preflight_only && always() }}
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         with:
           name: legislation-exact-inventory-attempt-${{ github.run_id }}-${{ github.run_attempt }}
@@ -202,7 +232,7 @@ jobs:
           retention-days: 90
 
       - name: Enforce fail-closed exact-inventory outcome
-        if: always()
+        if: ${{ !inputs.preflight_only && always() }}
         env:
           HARVEST_EXIT_CODE: ${{ steps.harvest.outputs.exit_code }}
           RECONCILIATION_EXIT_CODE: ${{ steps.reconciliation.outputs.exit_code }}
