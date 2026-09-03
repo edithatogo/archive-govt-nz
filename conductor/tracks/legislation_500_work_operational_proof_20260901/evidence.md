@@ -22,3 +22,21 @@ Local validation passed 4,393 tests at 97.48% repository coverage, 45 schemas,
 dependency audit, licence inventory, the corrected secret scan, and the
 111-component SBOM. The initial Conductor-state and secret-keyword failures are
 retained in the run log rather than rewritten as success.
+
+## Superseding repository preflight — 2026-09-03
+
+The append-only
+`evidence/migrations/corpus-legislation-nz/500-work-operational-proof/preflight-refresh-20260903.json`
+and paired Markdown report bind the current observation to target
+`e559d675c347615d64ae5e1c1f3ad5efd5d120f6`. They record Prompt 06 and
+parent-v3 compatibility as passed in repository scope and verify the active
+exact lane with 107 focused tests and clean actionlint.
+
+Prompt 10 recovery, a committed compatible parent, live no-write checks, and
+explicit dispatch remain blocked. No credential value, endpoint, state, or
+workflow run was used.
+
+The full repository harness passed 4,559 tests at 97.50% combined coverage,
+48 schemas and 38 representative documents, 9/9 parity, all registered
+mutations, dependency and licence checks, the credential scan, and the
+111-component SBOM.
