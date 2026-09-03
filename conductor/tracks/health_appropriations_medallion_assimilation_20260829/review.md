@@ -841,3 +841,15 @@ precondition preserves the exact local flags/traps/precision and Decimal(38,18)
 checks without changing production code or weakening a repository gate.
 The refreshed 63-mutant cold lane and 4,626-test native harness both passed;
 the correction is locally closed subject to fresh exact-head hosted checks.
+
+## 2026-09-03: Windows persistence portability review
+
+Hosted Windows exposed a deterministic platform mismatch in the POSIX-only
+directory-fd reservation path. The scoped correction preserves descriptor-
+relative no-follow I/O on POSIX and uses repeated inode and reparse-point checks
+under the existing trusted-parent contract where directory fds are unavailable.
+It explicitly does not claim hostile-filesystem transactional equivalence.
+Adversarial tests cover junction/symlink rejection and modeled ordinary root
+replacement at reservation, write and listing boundaries. Focused line/branch
+coverage is 100%; all 83 cold mutants and the 4,631-test native harness pass.
+Fresh exact-head hosted validation remains pending.

@@ -153,7 +153,7 @@ def test_partial_failure_is_retained_and_redacted(
     args = _args(tmp_path)
     real_write = budget_export._write  # noqa: SLF001 - synthetic fault boundary
 
-    def fail(directory: int, name: str, payload: bytes) -> None:
+    def fail(directory: budget_export._Directory, name: str, payload: bytes) -> None:
         if name == "field_lineage.parquet":
             real_write(directory, name, payload[:7])
             message = "private locator"
@@ -177,7 +177,9 @@ def test_interrupt_propagates_and_retains_failure_marker(
     real_write = budget_export._write  # noqa: SLF001 - synthetic fault boundary
     calls = 0
 
-    def interrupt(directory: int, name: str, payload: bytes) -> None:
+    def interrupt(
+        directory: budget_export._Directory, name: str, payload: bytes
+    ) -> None:
         nonlocal calls
         calls += 1
         if calls == 1:
@@ -237,7 +239,7 @@ def test_output_root_replacement_cannot_redirect_writes(
     real_write = budget_export._write  # noqa: SLF001 - synthetic race boundary
     replaced = False
 
-    def replace(directory: int, name: str, payload: bytes) -> None:
+    def replace(directory: budget_export._Directory, name: str, payload: bytes) -> None:
         nonlocal replaced
         if not replaced:
             args[3].rename(owned)
@@ -249,10 +251,132 @@ def test_output_root_replacement_cannot_redirect_writes(
     with pytest.raises(ValueError, match=r"^budget_export_write$"):
         export_budget_appropriations(*args, dry_run=False)
     assert not list(outside.iterdir())
-    assert {path.name for path in owned.iterdir()} == {
+    assert not list(owned.iterdir())
+
+
+def test_path_identity_fallback_persists_and_rejects_root_replacement(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    first_root = tmp_path / "first"
+    first_root.mkdir()
+    first = _args(first_root)
+    monkeypatch.setattr(budget_export, "_DIR_FD_SUPPORTED", False)
+    export_budget_appropriations(*first, dry_run=False)
+    assert {path.name for path in first[3].iterdir()} == {
         "appropriation_fact.parquet",
-        "FAILURE.json",
+        "classification_dimension.parquet",
+        "field_lineage.parquet",
+        "projection_receipt.json",
+        "lineage_accounting.jsonl",
+        "LOCAL_BUDGET.json",
     }
+
+    second_root = tmp_path / "second"
+    second_root.mkdir()
+    second = _args(second_root)
+    owned = tmp_path / "owned-fallback"
+    outside = tmp_path / "outside-fallback"
+    outside.mkdir()
+    real_write = budget_export._write  # noqa: SLF001 - synthetic race boundary
+    replaced = False
+
+    def replace(directory: budget_export._Directory, name: str, payload: bytes) -> None:
+        nonlocal replaced
+        if not replaced:
+            second[3].rename(owned)
+            second[3].symlink_to(outside, target_is_directory=True)
+            replaced = True
+        real_write(directory, name, payload)
+
+    monkeypatch.setattr(budget_export, "_write", replace)
+    with pytest.raises(ValueError, match=r"^budget_export_write$"):
+        export_budget_appropriations(*second, dry_run=False)
+    assert not list(outside.iterdir())
+    assert not list(owned.iterdir())
+
+
+def test_path_identity_fallback_rejects_replacement_before_reserve(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    args = _args(tmp_path)
+    outside = tmp_path / "outside-before-reserve"
+    outside.mkdir()
+    real_reserve = budget_export._reserve  # noqa: SLF001 - synthetic race boundary
+
+    def replace(output: Path, expected: tuple[int, int]) -> object:
+        output.rmdir()
+        output.symlink_to(outside, target_is_directory=True)
+        return real_reserve(output, expected)
+
+    monkeypatch.setattr(budget_export, "_DIR_FD_SUPPORTED", False)
+    monkeypatch.setattr(budget_export, "_reserve", replace)
+    with pytest.raises(ValueError, match=r"^budget_export_reserve$"):
+        export_budget_appropriations(*args, dry_run=False)
+    assert not list(outside.iterdir())
+
+
+def test_path_identity_fallback_rejects_ordinary_directory_before_reserve(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    args = _args(tmp_path)
+    replaced = tmp_path / "replaced-before-reserve"
+    real_reserve = budget_export._reserve  # noqa: SLF001 - synthetic race boundary
+
+    def replace(output: Path, expected: tuple[int, int]) -> object:
+        output.rename(replaced)
+        output.mkdir()
+        return real_reserve(output, expected)
+
+    monkeypatch.setattr(budget_export, "_DIR_FD_SUPPORTED", False)
+    monkeypatch.setattr(budget_export, "_reserve", replace)
+    with pytest.raises(ValueError, match=r"^budget_export_reserve$"):
+        export_budget_appropriations(*args, dry_run=False)
+    assert not list(args[3].iterdir())
+    assert not list(replaced.iterdir())
+
+
+def test_descriptor_reserve_closes_handle_on_identity_failure(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    output = tmp_path / "reserve-close"
+    output.mkdir()
+    state = output.lstat()
+
+    def reject(_output: Path, _directory: budget_export._Directory) -> None:
+        message = "synthetic identity failure"
+        raise ValueError(message)
+
+    monkeypatch.setattr(budget_export, "_owned", reject)
+    with pytest.raises(ValueError, match="synthetic identity failure"):
+        budget_export._reserve(  # noqa: SLF001 - direct cleanup boundary
+            output, (state.st_dev, state.st_ino)
+        )
+
+
+def test_path_identity_fallback_rejects_replacement_during_listing(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    args = _args(tmp_path)
+    owned = tmp_path / "owned-during-listing"
+    outside = tmp_path / "outside-during-listing"
+    outside.mkdir()
+    real_listdir = os.listdir
+    replaced = False
+
+    def replace(path: object) -> list[str]:
+        nonlocal replaced
+        listing = real_listdir(path)  # type: ignore[arg-type]
+        if path == args[3] and not replaced:
+            args[3].rename(owned)
+            args[3].symlink_to(outside, target_is_directory=True)
+            replaced = True
+        return listing
+
+    monkeypatch.setattr(budget_export, "_DIR_FD_SUPPORTED", False)
+    monkeypatch.setattr(os, "listdir", replace)
+    with pytest.raises(ValueError, match=r"^budget_export_write$"):
+        export_budget_appropriations(*args, dry_run=False)
+    assert not list(outside.iterdir())
 
 
 def test_failure_marker_base_exception_does_not_replace_original(
@@ -261,7 +385,9 @@ def test_failure_marker_base_exception_does_not_replace_original(
     args = _args(tmp_path)
     calls = 0
 
-    def doubly_interrupted(_directory: int, _name: str, _payload: bytes) -> None:
+    def doubly_interrupted(
+        _directory: budget_export._Directory, _name: str, _payload: bytes
+    ) -> None:
         nonlocal calls
         calls += 1
         if calls == 1:
@@ -343,7 +469,11 @@ def test_extra_entry_and_final_readback_failure_retain_evidence(
     real_readback = budget_export._readback  # noqa: SLF001 - fault boundary
     calls = 0
 
-    def extra(output: Path, directory: int, files: dict[str, bytes]) -> None:
+    def extra(
+        output: Path,
+        directory: budget_export._Directory,
+        files: dict[str, bytes],
+    ) -> None:
         nonlocal calls
         calls += 1
         if calls == 2:
@@ -351,7 +481,7 @@ def test_extra_entry_and_final_readback_failure_retain_evidence(
                 "unexpected",
                 os.O_WRONLY | os.O_CREAT | os.O_EXCL,
                 0o600,
-                dir_fd=directory,
+                dir_fd=directory.descriptor,
             )
             os.close(descriptor)
         real_readback(output, directory, files)
