@@ -59,7 +59,11 @@ def test_expired_pending_owner_and_capture_are_separate_failures() -> None:
 def test_live_work_is_healthy_and_terminal_old_owners_do_not_fail() -> None:
     """Terminal history does not cause endless alerts after a completed pilot."""
     pending = Job("pending", "ca", 0, 1, 1, 1)
-    assert foi_health.evaluate(snapshot(pending), 99)["status"] == "healthy"
+    live = foi_health.evaluate(snapshot(pending), 99)
+    assert live["status"] == "healthy"
+    assert live["monitor_status"] == "healthy"
+    assert live["corpus_progress"]["counts"] == {"backlog_due": 1}
+    assert live["corpus_progress"]["oldest_due_backlog_seconds"] == 99
     captured = replace(
         pending, id="captured", status="captured", manifest_sha256="a" * 64
     )
@@ -73,8 +77,33 @@ def test_live_work_is_healthy_and_terminal_old_owners_do_not_fail() -> None:
     exhausted = replace(pending, id="exhausted", status="exhausted")
     report = foi_health.evaluate(snapshot(captured, verified, exhausted), 10000)
     assert report["status"] == "healthy"
+    assert report["monitor_status"] == "attention_required"
     assert report["job_status_counts"] == {"captured": 1, "verified": 1, "exhausted": 1}
-    assert foi_health.evaluate({}, 100)["status"] == "healthy"
+    assert report["corpus_progress"] == {
+        "status": "incomplete",
+        "counts": {
+            "capture_retry_exhausted": 1,
+            "captured_not_published": 1,
+            "publication_verified": 1,
+        },
+        "incomplete_jobs": 2,
+        "oldest_due_backlog_seconds": None,
+        "control_health_implies_corpus_complete": False,
+    }
+    empty = foi_health.evaluate({}, 100)
+    assert empty["status"] == empty["monitor_status"] == "healthy"
+    assert empty["corpus_progress"]["status"] == "complete"
+
+
+def test_future_scheduled_work_is_not_reported_as_complete() -> None:
+    """A green control check cannot turn a future queue into a complete corpus."""
+    pending = Job("future", "ca", 200, 1, 1, 1)
+    report = foi_health.evaluate(snapshot(pending), 99)
+    assert report["status"] == "healthy"
+    assert report["monitor_status"] == "healthy"
+    assert report["corpus_progress"]["counts"] == {"backlog_scheduled": 1}
+    assert report["corpus_progress"]["incomplete_jobs"] == 1
+    assert report["corpus_progress"]["oldest_due_backlog_seconds"] is None
 
 
 def test_capacity_thresholds_are_estimates_and_fail_at_ninety_percent(
@@ -143,6 +172,30 @@ def test_cli_anonymous_read_and_private_receipt(
     assert json.loads(receipt.read_bytes())["status"] == "healthy"
     if os.name == "posix":
         assert receipt.stat().st_mode & 0o777 == 0o600
+
+
+def test_cli_requires_attention_for_unpublished_capture(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Healthy controls do not suppress stalled corpus-progress alerts."""
+    pending = Job("captured", "ca", 0, 1, 1, 1)
+    captured = replace(
+        pending, status="captured", manifest_sha256="a" * 64
+    )
+    factory = MagicMock()
+    factory.return_value.read_all.return_value = snapshot(captured)
+    factory.return_value.batch_head = "a" * 40
+    monkeypatch.setattr(TOOL, "GitHubStateStore", factory)
+    receipt = tmp_path / "attention.json"
+    monkeypatch.setattr(sys, "argv", ["health", "--receipt", str(receipt)])
+
+    assert TOOL.main() == 1
+    report = json.loads(receipt.read_bytes())
+    assert report["status"] == "healthy"
+    assert report["monitor_status"] == "attention_required"
+    assert report["corpus_progress"]["counts"] == {
+        "captured_not_published": 1
+    }
 
 
 def test_network_failure_saves_only_error_class(

@@ -11,13 +11,39 @@ from archive_govt_nz.foi_github_state import LIMIT, MAX_GENERATIONS, SCHEMA
 from archive_govt_nz.foi_queue import _decode
 
 if TYPE_CHECKING:
+    from archive_govt_nz.foi_scheduler import Job
     from archive_govt_nz.foi_state import StoredState
 
 MAX_DETAIL_SOURCES = 50
+_PROGRESS_NAMES = {
+    "leased": "capture_in_progress",
+    "captured": "captured_not_published",
+    "exhausted": "capture_retry_exhausted",
+    "blocked": "adapter_blocked",
+    "verified": "publication_verified",
+    "restricted": "terminal_disposition",
+    "withdrawn": "terminal_disposition",
+    "unsupported": "terminal_disposition",
+}
 
 
 def _fail(reason: str) -> NoReturn:
     raise ValueError(reason)
+
+
+def _record_progress(
+    job: Job, now: int, progress: Counter[str], backlog_ages: list[int]
+) -> None:
+    if job.status == "pending":
+        if job.ready_at <= now:
+            progress["backlog_due"] += 1
+            backlog_ages.append(now - job.ready_at)
+        else:
+            progress["backlog_scheduled"] += 1
+        return
+    name = _PROGRESS_NAMES.get(job.status)
+    if name is not None:
+        progress[name] += 1
 
 
 def evaluate(snapshot: dict[str, StoredState], now: int) -> dict[str, Any]:
@@ -27,6 +53,8 @@ def evaluate(snapshot: dict[str, StoredState], now: int) -> dict[str, Any]:
     findings: Counter[str] = Counter()
     statuses: Counter[str] = Counter()
     affected: set[str] = set()
+    progress: Counter[str] = Counter()
+    backlog_ages: list[int] = []
     documents = {}
     for source, stored in snapshot.items():
         if (
@@ -44,6 +72,7 @@ def evaluate(snapshot: dict[str, StoredState], now: int) -> dict[str, Any]:
             affected.add(source)
         for job in queue.jobs:
             statuses[job.status] += 1
+            _record_progress(job, now, progress, backlog_ages)
             if job.status == "leased" and now >= job.expires_at:
                 findings["capture_lease_expired"] += 1
                 affected.add(source)
@@ -63,9 +92,33 @@ def evaluate(snapshot: dict[str, StoredState], now: int) -> dict[str, Any]:
         findings["state_bytes_near_capacity"] += 1
     if versions * 10 >= MAX_GENERATIONS * 9:
         findings["state_versions_near_capacity"] += 1
+    incomplete = sum(
+        progress[name]
+        for name in (
+            "backlog_due",
+            "backlog_scheduled",
+            "capture_in_progress",
+            "captured_not_published",
+            "capture_retry_exhausted",
+            "adapter_blocked",
+        )
+    )
+    control_status = "failed" if findings else "healthy"
+    corpus_status = "incomplete" if incomplete else "complete"
+    attention = control_status == "failed" or any(
+        progress[name]
+        for name in (
+            "captured_not_published",
+            "capture_retry_exhausted",
+            "adapter_blocked",
+        )
+    )
     return {
         "schema_version": "archive-govt-nz.foi-health/v1",
-        "status": "failed" if findings else "healthy",
+        "status": control_status,
+        "monitor_status": (
+            "attention_required" if attention else "healthy"
+        ),
         "checked_at_unix": now,
         "sources": len(snapshot),
         "jobs": sum(statuses.values()),
@@ -74,6 +127,13 @@ def evaluate(snapshot: dict[str, StoredState], now: int) -> dict[str, Any]:
         "affected_sources": sorted(affected)[:MAX_DETAIL_SOURCES],
         "affected_source_count": len(affected),
         "affected_sources_omitted": max(0, len(affected) - MAX_DETAIL_SOURCES),
+        "corpus_progress": {
+            "status": corpus_status,
+            "counts": dict(sorted(progress.items())),
+            "incomplete_jobs": incomplete,
+            "oldest_due_backlog_seconds": max(backlog_ages, default=None),
+            "control_health_implies_corpus_complete": False,
+        },
         "capacity": {
             "estimated": True,
             "state_bytes_estimate": size,
