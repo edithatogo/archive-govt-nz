@@ -5,6 +5,10 @@
     "path_scope_verified": true,
     "workspace_destroyed": true
   },
+  "durable_stage_receipt": {
+    "path": "evidence/migrations/corpus-legislation-nz/durable-recovery/stages/attempt-02-stage-receipts-20260903.json",
+    "sha256": "7fbdaa97abc773521243abca81896a8871f82cc9d6e7034c03886ea976d985bf"
+  },
   "environment": {
     "curl": "curl 8.7.1 (x86_64-apple-darwin25.0) libcurl/8.7.1 (SecureTransport) LibreSSL/3.3.6 zlib/1.2.12 nghttp2/1.68.1",
     "lockfile_sha256": "737d7fe26e2b17ea9d5c84722489942126674c40faf5e3ed4e7e66ed50665f64",
@@ -26,14 +30,21 @@
   },
   "no_write_parent_preflight": {
     "acquisition_performed": false,
+    "authority_commit": "b408aa3660b5de9d68fec31ef2273938226e5f18",
+    "authority_receipt_path": "evidence/migrations/corpus-legislation-nz/durable-recovery/authority-decision-20260903.json",
+    "authority_receipt_sha256": "2a41eb63979f9276b6f30a35fd87693a51f31b9a80a0af8be9a8a6e833599fa5",
     "continuation_dispatched": false,
-    "input_tree_sha256": "cb1fab38cc1d64404a7a89093c81ecbaba79d459eff89c1e6db23bee428e6fa4",
-    "merge_mismatches": [],
-    "merge_status": "passed",
-    "output_tree_sha256": "cb1fab38cc1d64404a7a89093c81ecbaba79d459eff89c1e6db23bee428e6fa4",
+    "decision_id": "maintainer-legislation-selected-552-20260903",
+    "expires_at": null,
+    "expiry_policy": "exact_hash_bound_no_expiry",
+    "governed_rights_authority_commit": "d60ed58420d1fe39dc420bbe047b9bf901b0d66d",
+    "governed_rights_readback_sha256": "38160c4683112d951351e20d68fe34198dcab797eb371d6cf6e6d91160ba9fed",
+    "mode": "adopt_recovered_merged_state_bounded_no_write",
     "publication_performed": false,
-    "status": "valid_bounded_parent_state",
-    "unchanged": true
+    "stage_input_tree_sha256": "cb1fab38cc1d64404a7a89093c81ecbaba79d459eff89c1e6db23bee428e6fa4",
+    "stage_output_tree_sha256": "cb1fab38cc1d64404a7a89093c81ecbaba79d459eff89c1e6db23bee428e6fa4",
+    "stage_unchanged": true,
+    "status": "authorized_valid_parent_no_write"
   },
   "package": {
     "builder_sha256": "3e762a37ad3088040877e5a495c5a26c8fd74485e0b264234f7f66ef35ccbd18",
@@ -68,7 +79,7 @@
   "reconstruction": {
     "mismatches_count": 0,
     "objects": 552,
-    "receipt_sha256": "25fe5acb6e79141d2258b17759a86f2df16c2184c763893893e293b18f765181",
+    "receipt_sha256": "6bb0295d303f58ee92518f02c688744dc3e607bcb6b5024d3ec0d02a169c9de8",
     "schema_findings_count": 0,
     "status": "verified"
   },
@@ -132,11 +143,20 @@
     "tree_inventory_sha256": "cb1fab38cc1d64404a7a89093c81ecbaba79d459eff89c1e6db23bee428e6fa4",
     "work_count": 552
   },
+  "rights_authority": {
+    "authority_commit": "b408aa3660b5de9d68fec31ef2273938226e5f18",
+    "decision_id": "maintainer-legislation-selected-552-20260903",
+    "governed_huggingface_readback_path": "evidence/migrations/corpus-legislation-nz/huggingface-publication/publication-readback-20260903.json",
+    "governed_readback_expected_sha256": "38160c4683112d951351e20d68fe34198dcab797eb371d6cf6e6d91160ba9fed",
+    "governed_rights_authority_commit": "d60ed58420d1fe39dc420bbe047b9bf901b0d66d",
+    "receipt_path": "evidence/migrations/corpus-legislation-nz/durable-recovery/authority-decision-20260903.json",
+    "receipt_sha256": "2a41eb63979f9276b6f30a35fd87693a51f31b9a80a0af8be9a8a6e833599fa5"
+  },
   "schema_version": "archive-govt-nz.independent-durable-recovery-attempt/v1",
   "stage_receipts": {
-    "download_headers_sha256": "514647eea64f9e48c7f5a60dec68e229073aa590d84287107a75b004d095deaf",
-    "reconciliation_sha256": "a4c2c43f047bfca53c64474e6cedd5076e417bf529e3bf3a158b25d07e7c0583",
-    "verify_sha256": "667987bbd871996408863a761f0b8617576ccaa6897f3c41ea955fca261387cc"
+    "artifact_directory": "evidence/migrations/corpus-legislation-nz/durable-recovery/stages/attempt-02",
+    "durable_stage_path": "evidence/migrations/corpus-legislation-nz/durable-recovery/stages/attempt-02-stage-receipts-20260903.json",
+    "durable_stage_sha256": "7fbdaa97abc773521243abca81896a8871f82cc9d6e7034c03886ea976d985bf"
   },
   "status": "verified_with_explained_hosted_metadata_mismatches"
 }

@@ -38,7 +38,7 @@ The earlier live HF revision `1efa35e72c378068cfb112d060bd0502497f61b1`
 listed 124 paths and no `durable-state/` paths during the 2026-09-03
 superseding audit. It is a metadata
 observation revision, **not a published package revision**. The expected path is
-`durable-state/v1/<package SHA-256>/state.zip`. Payload rights remain blocked;
+`durable-state/v1/<package SHA-256>/canonical-state.zip`. Payload rights remain blocked;
 there is no exact package publication/access receipt. Prompt 09 PR #324 is now
 merged at `d3946b8f5380c60b11b5f6e803f7188fc7d8e8df`; that merge supplies the
 package format and tooling but does not publish the package or satisfy this
@@ -64,7 +64,7 @@ an Actions artifact or call the earlier local round-trip this drill.
    lockfile hash, helper hashes, Git SHA, UTC times and exact command exits.
 3. Retrieve the exact file from the selected HF repository at the full revision,
    using its supported download path and a new empty cache. The revision-specific
-   URL is `https://huggingface.co/datasets/edithatogo/corpus-legislation-nz/resolve/<revision>/durable-state/v1/<digest>/state.zip`.
+   URL is `https://huggingface.co/datasets/edithatogo/corpus-legislation-nz/resolve/<revision>/durable-state/v1/<digest>/canonical-state.zip`.
    Use only legitimately available access; stop on missing bytes or an access
    gate. Never log tokens, authorization headers or redirected signed URLs.
    Enforce the approved size and package bound while downloading, write
@@ -133,3 +133,23 @@ prerequisite audit, retrieval, verified fixity, restoration, reconciliation,
 parent preflight, independent repeat and final acceptance. The successful attempt
 receipts and cross-attempt summary are in the same directory. Historical blocked
 and failed records remain intact.
+
+## Authority and durable stage receipts
+
+The hash-bound maintainer decision is preserved at
+`evidence/migrations/corpus-legislation-nz/durable-recovery/authority-decision-20260903.json`.
+It records the decision ID, actor and role, repository authority commit, exact
+package/state scope, public redistribution and recovered-parent decisions,
+effective date, expiry policy, and the boundary against harvest/continuation
+dispatch. The governed Prompt 15 Hugging Face receipt, merged at
+`d60ed58420d1fe39dc420bbe047b9bf901b0d66d`, supplies the independently
+verified public rights/readback binding. Its exact SHA-256 is
+`38160c4683112d951351e20d68fe34198dcab797eb371d6cf6e6d91160ba9fed`.
+
+Each attempt's durable stage bundle is under `durable-recovery/stages/`. These
+bundles preserve safe response-header facts, download identity and exit semantics,
+verification output, restored-tree root, full reconciliation output and its
+interpretation, reconstruction output, authority-bound parent-preflight mode and
+stage roots, and workspace destruction. Redirect locations and signed query
+parameters are deliberately excluded. The top-level attempt and summary receipts
+bind these stage files by path and SHA-256.

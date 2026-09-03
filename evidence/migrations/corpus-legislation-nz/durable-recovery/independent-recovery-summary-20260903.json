@@ -8,13 +8,19 @@
   "attempt_receipts": [
     {
       "path": "evidence/migrations/corpus-legislation-nz/durable-recovery/recovery-attempt-01-20260903.json",
-      "sha256": "fe216bd6eb7bf54cd97b8107c36693f0ac1ce1caa8ea788f5aad1e21645951c8"
+      "sha256": "a79f492e51652e746d04349617e0ab6361d8c6a4a0ed9a6aace423fdfa862266"
     },
     {
       "path": "evidence/migrations/corpus-legislation-nz/durable-recovery/recovery-attempt-02-20260903.json",
-      "sha256": "3bc8a034606e02a95b73a18ba030395e4204dfbba3fe2deaf48ac3b01ec183ce"
+      "sha256": "a271775cf1557a299d0d7bc333393947d6f6e882dedd039c2155ba9e2b3695ca"
     }
   ],
+  "authority_receipt": {
+    "governed_readback_sha256": "38160c4683112d951351e20d68fe34198dcab797eb371d6cf6e6d91160ba9fed",
+    "governed_rights_authority_commit": "d60ed58420d1fe39dc420bbe047b9bf901b0d66d",
+    "path": "evidence/migrations/corpus-legislation-nz/durable-recovery/authority-decision-20260903.json",
+    "sha256": "2a41eb63979f9276b6f30a35fd87693a51f31b9a80a0af8be9a8a6e833599fa5"
+  },
   "cross_attempt": {
     "counts_match": true,
     "package_match": true,
@@ -22,6 +28,16 @@
     "roots_match": true
   },
   "donor_head": "b40587f1b1aec7356a0f623916fcc8212397d283",
+  "durable_stage_receipts": [
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/durable-recovery/stages/attempt-01-stage-receipts-20260903.json",
+      "sha256": "88bfae383d0029452bc3655adf56a5d8901e4ae8b7a432f89ff6fe9df451b2d4"
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/durable-recovery/stages/attempt-02-stage-receipts-20260903.json",
+      "sha256": "7fbdaa97abc773521243abca81896a8871f82cc9d6e7034c03886ea976d985bf"
+    }
+  ],
   "external_metadata_handoff": {
     "finding": "The current governed registry/readback predates the new durable path and publication authority. Both restored-state reconciliations have zero internal findings/gaps, with hosted rights/card mismatches fully enumerated.",
     "scope": "Prompt 15 registry/readback refresh",
