@@ -277,6 +277,19 @@ def test_budget_six_file_closure_rejects_change(tmp_path: Path, name: str) -> No
         read_local_provenance((value,))
 
 
+@pytest.mark.parametrize(
+    "name", ["projection_receipt.json", "lineage_accounting.jsonl"]
+)
+def test_budget_repinned_semantic_json_byte_change_is_rejected(
+    tmp_path: Path, name: str
+) -> None:
+    value = package(tmp_path, "budget")
+    payload = (value.root / name).read_bytes()
+    value = _changed_payload(value, name, b" " + payload)
+    with pytest.raises(ValueError, match=r"^local_provenance_reader_invalid$"):
+        read_local_provenance((value,))
+
+
 @pytest.mark.parametrize("target", ["root", "raw_root", "original", "payload"])
 def test_direct_symlinks_are_rejected(tmp_path: Path, target: str) -> None:
     value = package(tmp_path, "classification")

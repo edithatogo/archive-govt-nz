@@ -125,6 +125,12 @@ def _encoded(value: object) -> bytes:
     ).encode()
 
 
+def _budget_json(value: object) -> bytes:
+    """Independently reproduce the public exporter's persisted JSON contract."""
+    encoder = json.JSONEncoder(ensure_ascii=False, sort_keys=True, allow_nan=False)
+    return b"".join(chunk.encode() for chunk in encoder.iterencode(value)) + b"\n"
+
+
 def _names(kind: str) -> set[str]:
     return {
         _MARKERS[kind],
@@ -336,6 +342,8 @@ def _package(
         else "projection_receipt.json"
     )
     _require(_encoded(_decode(snapshots[receipt_name])) == _encoded(projection.receipt))
+    if value.kind == "budget":
+        _require(snapshots[receipt_name] == _budget_json(projection.receipt))
     if value.kind != "historical":
         accounting = [
             _decode(line) for line in snapshots["lineage_accounting.jsonl"].splitlines()
@@ -343,6 +351,14 @@ def _package(
         _require(
             _encoded(accounting) == _encoded(projection.receipt["lineage_accounting"])
         )
+        if value.kind == "budget":
+            _require(
+                snapshots["lineage_accounting.jsonl"]
+                == b"".join(
+                    _budget_json(row)
+                    for row in projection.receipt["lineage_accounting"]
+                )
+            )
     profile = {
         "historical": "historical-health-gdp-canonical/v1",
         "classification": RULE,
