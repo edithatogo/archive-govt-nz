@@ -128,13 +128,68 @@ def test_write_failure_retains_partial_state_and_failure_marker(
     assert not (output / "LOCAL_BUDGET.json").exists()
 
 
+def test_output_reservation_failure_is_redacted(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    source = inputs(tmp_path)
+
+    def fail_mkdir(_path: Path) -> None:
+        message = "injected"
+        raise OSError(message)
+
+    monkeypatch.setattr(Path, "mkdir", fail_mkdir)
+    with pytest.raises(ValueError, match=r"^budget_canonical_export_reserve$"):
+        export_budget_appropriations(
+            tmp_path / "package",
+            source["manifest_sha256"],
+            tmp_path / "source.xlsx",
+            tmp_path / "output",
+            dry_run=False,
+        )
+
+
+def test_pin_failure_closes_descriptor(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    source = inputs(tmp_path)
+    real_close = os.close
+    closed: list[int] = []
+
+    def fail_fstat(_descriptor: int) -> os.stat_result:
+        message = "injected"
+        raise OSError(message)
+
+    def observe_close(descriptor: int) -> None:
+        closed.append(descriptor)
+        real_close(descriptor)
+
+    monkeypatch.setattr(os, "fstat", fail_fstat)
+    monkeypatch.setattr(os, "close", observe_close)
+    with pytest.raises(ValueError, match=r"^budget_canonical_export_write$"):
+        export_budget_appropriations(
+            tmp_path / "package",
+            source["manifest_sha256"],
+            tmp_path / "source.xlsx",
+            tmp_path / "output",
+            dry_run=False,
+        )
+    assert len(closed) == 1
+
+
 def test_keyboard_interrupt_propagates(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     source = inputs(tmp_path)
 
-    def interrupt(_root: object, _name: str, _payload: bytes) -> None:
-        raise KeyboardInterrupt
+    real_write = budget_canonical_export._write  # noqa: SLF001 - failure injection
+    interrupted = False
+
+    def interrupt(root: object, name: str, payload: bytes) -> None:
+        nonlocal interrupted
+        if not interrupted:
+            interrupted = True
+            raise KeyboardInterrupt
+        real_write(root, name, payload)  # type: ignore[arg-type]
 
     monkeypatch.setattr(budget_canonical_export, "_write", interrupt)
     with pytest.raises(KeyboardInterrupt):
@@ -145,6 +200,19 @@ def test_keyboard_interrupt_propagates(
             tmp_path / "output",
             dry_run=False,
         )
+
+
+def test_descriptorless_fallback_round_trip(tmp_path: Path) -> None:
+    output = tmp_path / "output"
+    output.mkdir()
+    status = output.stat()
+    root = budget_canonical_export._PinnedDirectory(  # noqa: SLF001
+        output, (status.st_dev, status.st_ino), None
+    )
+    files = {"receipt.json": b"{}\n"}
+
+    budget_canonical_export._write(root, "receipt.json", files["receipt.json"])  # noqa: SLF001
+    budget_canonical_export._readback(root, files)  # noqa: SLF001
 
 
 def test_reserved_directory_replacement_cannot_mutate_input(
