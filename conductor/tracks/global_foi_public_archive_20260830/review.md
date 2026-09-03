@@ -1,5 +1,15 @@
 # Draft self-review
 
+## Conductor closeout review — 2026-09-03
+
+Review result: repository-owned validation is current and passing, but the
+track is not archive-eligible. Pending plan work includes hosted NZ progress,
+public raw Hugging Face publication/readback, source rights/privacy decisions,
+shadow parity and donor ownership transfer, scheduled-cycle evidence, and
+final traceability/acceptance. These are factual or external gates, not
+review defects. No task is marked complete to manufacture closeout, and no
+remote publication, donor cutover, or destructive retirement was performed.
+
 - Scope: covers source catalogue, original metadata and index, raw objects,
   public HF verification, global country discovery and the two observed failures.
 - Ownership: unresolved DEC-FOI-001 is explicit; old separation rule is preserved.
