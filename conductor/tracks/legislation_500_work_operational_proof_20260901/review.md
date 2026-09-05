@@ -47,3 +47,7 @@ PR #379 merged this correction to `main` at `cbad1dd9` after all required
 hosted checks passed. Post-merge focused and full local validation passed. No
 new correctness, security, provenance, or contract finding was identified in
 the merged diff; the remaining work is operational execution, not code repair.
+
+## Superseding operational evidence — 2026-09-05
+
+The dated `evidence/migrations/corpus-legislation-nz/500-work-operational-proof/closeout-20260905/500-work-target-revalidation.json` and `operational-observation.md` bind the successful run 33800180992 and independent complete artifact verification. Original blocked records remain unchanged. Required no-write credential/endpoint preflight remains a precise blocker: the existing preflight_only lane validates state only. Issue #335 is reopened; no publication, workflow dispatch or state mutation is performed by this evidence correction.
