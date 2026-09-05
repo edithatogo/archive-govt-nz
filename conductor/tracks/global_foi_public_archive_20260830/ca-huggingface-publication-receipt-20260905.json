@@ -3,7 +3,7 @@
   "source_id": "ca-federal-atip",
   "repo_id": "edithatogo/foi-ca-federal-atip",
   "visibility": "public_ungated",
-  "status": "published_direct_restore_verified_viewer_conversion_pending",
+  "status": "published_direct_restore_verified_viewer_conversion_failed",
   "commits": [
     "697affad7ac962b2e649df648f6ac3568f1289de",
     "791623a0f823f1111c6ac2d592c48e5bb58b3e87",
@@ -15,7 +15,7 @@
     {"path": "manifest.json", "bytes": 454, "sha256": "940a38d45e30ed06dc91b0d653bd72e3122e82ba86f4be92036f5a309975c450"}
   ],
   "anonymous_direct_restore": "passed",
-  "dataset_viewer_validation": "pending_conversion_config_default_http_200",
+  "dataset_viewer_validation": "failed_conversion_config_default",
   "hub_api": {"private": false, "sha": "59b2c32150c11e0cd841977f5cd9a7de447e2456"},
   "private_evidence_excluded": true
 }
