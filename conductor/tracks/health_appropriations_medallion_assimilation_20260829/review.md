@@ -14,7 +14,7 @@ I/O guard; the guard is not represented as an operating-system sandbox.
 Forty-seven combined tests and targeted static checks pass. Source-only runtime
 helpers remain unchanged, and no RDF store/index/service or publication authority
 is introduced. The pinned parser's internal ConjunctiveGraph deprecation warnings
-remain visible. Supply-chain and full/hosted gates are pending; no full DCAT
+remain visible. Supply-chain gates passed; full/hosted gates are pending. No full DCAT
 application-profile, rights or track acceptance is claimed.
 
 ## DCAT media type and interoperable fixity — 2026-09-05 UTC

@@ -1,5 +1,20 @@
 # Run Log
 
+## DCAT delivery and follow-up reconciliation — 2026-09-05 UTC
+
+PR #398 was merged at `791845bc699a915f7f5583e3c3eef93470611c10`
+after all eight hosted checks passed on `3d6facb57f4672417bba2504283e925cacb000ed`.
+Live GitHub readback confirmed the merge. The corrected local two-worker full
+gate terminated with 4,764 passes and four property timing/input-generation
+failures in 853.19 seconds; no DCAT test failed. Hosted success does not erase
+that local failure. No deadline or coverage threshold was relaxed.
+
+The RDF follow-up's staged secret scan passed. Its audit, licence inventory
+and strict CycloneDX validation passed (112 components). Full assurance for
+the new development dependency and RDF tests remains pending. Squash-ancestry
+documentation conflicts were resolved after verifying that origin/main's tree
+was identical to the delivered DCAT head; new RDF evidence was preserved.
+
 ## Offline RDF processor validation — 2026-09-05 UTC
 
 Recorded the development-only RDFLib adoption rationale in `tech-stack.md`
