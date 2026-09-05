@@ -11,13 +11,13 @@
     {
       "id": "prompt13-operational-proof",
       "kind": "prerequisite",
-      "status": "pending",
-      "evidence": "Prompt 13 target-owned hosted operational proof remains incomplete"
+      "status": "passed",
+      "evidence": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/hosted-closeout-20260906/500-work-target-revalidation.json"
     }
   ],
   "issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/341",
   "status": "in_progress",
   "track_id": "legislation_hf_identity_reconciliation_20260901",
   "type": "feature",
-  "updated_at": "2026-09-03T17:27:00Z"
+  "updated_at": "2026-09-05T14:10:00Z"
 }

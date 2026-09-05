@@ -1,5 +1,20 @@
 # Review
 
+## Operational reconciliation review — 2026-09-06
+
+The registry's false operational-proof flag and original blocked receipt digest
+were stale after verified ordered execution. The registry now binds the
+superseding receipt by path and SHA-256. The v2 schema permits state progression
+and requires the named receipt when the proof flag is true; negative fixtures
+reject omitted and redirected evidence. Historical v1 and original receipts are
+preserved. The regression first failed on the old digest, then all 17 focused
+registry tests passed with the correction.
+
+Fresh anonymous readback verified the exact revisions/access states of all
+three identities and all four authorized canonical files, including the full
+71,776,346-byte durable package. The approved publication remains 552 records;
+the 904-record operational output does not expand publication or rights scope.
+
 ## Identity/readback review fixes — 2026-09-04
 
 Two PR findings remained valid after integration. The shared identity schema

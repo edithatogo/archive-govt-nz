@@ -113,6 +113,11 @@
     "publication_gate": {
       "type": "object",
       "additionalProperties": false,
+      "if": {
+        "properties": {"prompt13_operational_proof": {"const": true}},
+        "required": ["prompt13_operational_proof"]
+      },
+      "then": {"required": ["prompt13_receipt_path"]},
       "required": [
         "status",
         "remote_write_authorized",
@@ -141,7 +146,10 @@
           "const": "2026-09-03"
         },
         "prompt13_operational_proof": {
-          "const": false
+          "type": "boolean"
+        },
+        "prompt13_receipt_path": {
+          "const": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/hosted-closeout-20260906/500-work-target-revalidation.json"
         },
         "prompt13_receipt_sha256": {
           "$ref": "#/$defs/sha256"

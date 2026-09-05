@@ -1,5 +1,9 @@
 # Plan
 
+## Continuation review follow-up
+
+- [~] Bind exact-inventory artifact names to their workflow/run/attempt without weakening parent verification, then exercise and independently verify the next continuation before final archival.
+
 - [x] Re-read exact target/donor identities, governed seed and prerequisite evidence.
 - [x] Audit workflow, preflight, parent, receipt, artifact and recovery contracts in parallel.
 - [x] Emit a fail-closed machine receipt and operational observation report.
@@ -20,7 +24,7 @@
   fixity, then complete a repository-native no-write restoration preflight.
 - [x] Dispatch and independently verify the target-owned 500-work run (33800180992).
 - [x] Verify executed continuation, valid output parent and referenced independent durable recovery.
-- [ ] Complete the missing no-write credential/endpoint preflight and hosted repository closeout.
+- [x] Complete the missing no-write credential/endpoint preflight and hosted repository closeout (ordered runs 33968519628 and 33968609350; independent hosted-closeout-20260906 evidence).
 - [x] Reproduce and remediate the failed run's Work-level document identity/version semantics without weakening cross-Work or Manifestation uniqueness.
 - [x] Review and merge the remediation, then stop at an explicit hosted retry gate
   (PR #379; merge `cbad1dd9`).

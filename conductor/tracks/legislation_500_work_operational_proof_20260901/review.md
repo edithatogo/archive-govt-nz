@@ -1,5 +1,16 @@
 # Review
 
+## Superseding closeout review — 2026-09-06
+
+The earlier credential-preflight finding is resolved by merged PR #400 and
+primary runs 33968519628/33968609350. Artifact, CAS, lineage, governed-scope,
+per-work accounting and fresh reconciliation checks passed. A changed CAS object
+was rejected. The complete-state artifact is retained by GitHub; it is not
+claimed as a newly published durable dataset. The optional second continuation
+from the 904-record output remains an explicit limitation. No Must criterion is
+silently deferred. Full repository validation and hosted delivery are recorded
+separately before archival.
+
 Three independent audits converged on the same fail-closed result. Dispatching the discovery workflow with `max_works=500` would not constitute exact-inventory execution and would be rejected by the typed source-set contract. Bootstrap or adoption cannot substitute for the absent reviewed parent. A successful harvest could not currently be sealed because v3 receipt compatibility is missing.
 
 No acquisition, publication, secret read, durable recovery or continuation claim was made. The evidence-only change remains within Prompt 13 owned paths. Later fixes must be separately reviewed and must not relabel this blocked observation as success.

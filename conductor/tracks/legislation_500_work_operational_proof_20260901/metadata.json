@@ -6,7 +6,7 @@
   "status": "in_progress",
   "track_id": "legislation_500_work_operational_proof_20260901",
   "type": "operations",
-  "updated_at": "2026-09-05T00:00:00Z",
+  "updated_at": "2026-09-05T14:10:00Z",
   "gates": [
     {
       "id": "prompt-06",
@@ -47,8 +47,8 @@
     {
       "id": "credential-endpoint-preflight",
       "kind": "required_preflight",
-      "status": "blocked",
-      "evidence": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/closeout-20260905/500-work-target-revalidation.json"
+      "status": "passed",
+      "evidence": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/hosted-closeout-20260906/500-work-target-revalidation.json"
     }
   ]
 }

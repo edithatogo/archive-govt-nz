@@ -1,5 +1,26 @@
 # Run log
 
+## Operational prerequisite closeout — 2026-09-06
+
+Read all three public identity APIs anonymously and streamed all four approved
+canonical files from the exact pinned revision, checking size and SHA-256.
+`evidence/migrations/corpus-legislation-nz/huggingface-publication/operational-reconciliation-20260906.json`
+records successful readback without publication. The registry now binds the
+independently verified Prompt 13 receipt from `hosted-closeout-20260906`.
+
+Red: `uv run --locked pytest tests/tools/test_legislation_huggingface_registry.py -q --no-cov`
+failed on the old blocked-receipt digest (1 failed, 14 passed).
+Green after registry/schema correction and negative evidence-path fixtures:
+the same command passed all 17 tests. Ruff lint and format checks passed.
+
+The baseline full `./scripts/validate.sh` passed all stages (4,799 tests).
+The final-tree run reached 4,800 passes and one timing-only Hypothesis failure:
+`tests/publication/test_zenodo_identity.py::test_noncanonical_concept_dois_are_rejected`
+took 262.81 ms once and 31.35 ms on replay against its unchanged 200 ms deadline.
+No assertion failure was reported. Recovery uses an unchanged focused replay
+and the existing `PYTEST_XDIST_AUTO_NUM_WORKERS=2` setting to reduce contention;
+test deadlines, examples, coverage thresholds and harness stages are unchanged.
+
 - 2026-09-01: fetched target main `ff01566b5e6fff2f4e2b5f93ecdec11bb0c3c7e8`; confirmed donor archived at `b40587f1b1aec7356a0f623916fcc8212397d283`.
 - 2026-09-01: created issue #341, branch `codex/legislation-hf-reconciliation`, and an isolated clean worktree.
 - 2026-09-01: publication gate retained as pending; repository-owned audit and candidate work continues independently.

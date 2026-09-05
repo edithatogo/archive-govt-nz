@@ -1,0 +1,9 @@
+{
+  "baseline_commit": "c5233ae7fc0beb065071cf3554596456f6575131",
+  "attempts": [
+    {"kind": "baseline", "command": "./scripts/validate.sh", "exit_code": 0, "tests_passed": 4799, "all_stages_passed": true},
+    {"kind": "final_tree", "command": "./scripts/validate.sh", "exit_code": 1, "tests_passed": 4800, "tests_failed": 1, "failure": "Hypothesis FlakyFailure: test_noncanonical_concept_dois_are_rejected", "first_runtime_ms": 262.81, "replay_runtime_ms": 31.35, "unchanged_deadline_ms": 200, "coverage_percent": 97.60},
+    {"kind": "isolated_failure_recheck", "tests_passed": 8, "exit_code": 0, "deadline_changed": false},
+    {"kind": "final_tree_recheck", "command": "PYTEST_XDIST_AUTO_NUM_WORKERS=2 ./scripts/validate.sh", "exit_code": 0, "tests_passed": 4801, "coverage_percent": 97.61, "all_stages_passed": true, "deadline_changed": false}
+  ]
+}

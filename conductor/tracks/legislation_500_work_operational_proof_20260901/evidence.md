@@ -1,5 +1,17 @@
 # Evidence
 
+## Current operational evidence — 2026-09-06
+
+The superseding `hosted-closeout-20260906/500-work-target-revalidation.json`
+under `evidence/migrations/corpus-legislation-nz/500-work-operational-proof/`
+records complete operational acceptance. Its SHA-256 is
+`e1383a7839cd6e07bd5e3596b3bdb906cf1c80cd925ca6afd00d3c30ab94d7b8`.
+The paired `verification.json` records fresh artifact hashes, exact run/head,
+step chronology, 904 verified CAS objects, exact 500 Work outcomes and zero
+fresh reconciliation mismatches. The paired `operational-observation.md`
+documents reproduction and the optional second-cycle/durable-output limits.
+Older observations below remain historical and are superseded for acceptance.
+
 The target observation is bound to target `main`
 `2c15dcc35a70bf364c443d02a02c6ad281c86d4b`, donor archived head
 `b40587f1b1aec7356a0f623916fcc8212397d283`, and reviewed seed SHA-256

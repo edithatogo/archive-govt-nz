@@ -1,0 +1,423 @@
+{
+  "roots": {
+    "manifest_sha256": "ab4ff4fbeb5f2d5df583c513ac4afd9806ca2bacd1b7851d8a7d979b8f667004",
+    "manifest_file_sha256": "2bf2d45d1544d73c7b1ae0c0dbaf8495d294c78b7b1bd0d49155d0d7f20546f6",
+    "checkpoint_file_sha256": "de917823c8c5e8d167afa23bc3a4b72495443150df37844ce124e26dbcd19c0c",
+    "inventory_sha256": "9ca6dc505f991e015c6c997827878d8c7e9381b214a1544eb338328a285c6894",
+    "cas_root_sha256": "ed93a3f7cddac8f6bc938f1005f47cfe4c309707b34b3a511cc3b66fedb47a40",
+    "success_receipt_sha256": "768e2ee0d52aa0780505da3c38b7461e07d0c2abc2f8c076fc78666e4f8257dc"
+  },
+  "seal_sha256": "b597c2bd6cdb8a94c41b0d239e3e42a60485053d06a167a5bd05bb2fce4a528a",
+  "cas_count": 904,
+  "manifest_records": 904,
+  "33968519628": {
+    "status": "passed",
+    "source_probe": {
+      "credential_present": true,
+      "endpoint": "https://api.legislation.govt.nz/v0/works/act_imperial_1539_1/versions/",
+      "method": "GET",
+      "request_budget": 1,
+      "requests_attempted": 1,
+      "timeout_seconds": 15.0,
+      "redirects_allowed": false,
+      "payload_bytes_preserved": 0,
+      "http_status": 200,
+      "status": "passed"
+    },
+    "state_unchanged": true
+  },
+  "33968609350": {
+    "status": "passed",
+    "source_probe": {
+      "credential_present": true,
+      "endpoint": "https://api.legislation.govt.nz/v0/works/act_imperial_1539_1/versions/",
+      "method": "GET",
+      "request_budget": 1,
+      "requests_attempted": 1,
+      "timeout_seconds": 15.0,
+      "redirects_allowed": false,
+      "payload_bytes_preserved": 0,
+      "http_status": 200,
+      "status": "passed"
+    },
+    "state_unchanged": true
+  },
+  "observed_at": "2026-09-05T14:06:49.360270+00:00",
+  "status": "verified",
+  "run_id": 33968609350,
+  "software_commit": "87f65e8b37cbc16bc6c7cf8b5b93a19e48f0f207",
+  "verifier_commit": "c5233ae7fc0beb065071cf3554596456f6575131",
+  "accounting": {
+    "schema_version": "archive-govt-nz.legislation-harvest-receipt/v3",
+    "candidate_works_discovered": 500,
+    "works_in_scope": 500,
+    "works_attempted": 500,
+    "newly_preserved": 0,
+    "changed_preserved": 352,
+    "unchanged_revalidated": 148,
+    "already_processed_skipped": 0,
+    "unavailable": 0,
+    "partial": 0,
+    "failed": 0,
+    "total_state_records_before": 552,
+    "total_state_records_after": 904,
+    "total_cas_objects_before": 552,
+    "total_cas_objects_after": 904,
+    "scope_digests": {
+      "resolved": "2abf0d8b76cc60e9b4e442724987b81848698dbdd98e56266f8726d468b33eaf"
+    },
+    "parent_manifest_root": "877ba501a25570a29c1aada7979562d8c62c7f043865125cf402310eabc09544",
+    "parent_checkpoint_root": "8afab0cb245c8b0f4c6e42c7d2c863a0f58e99f7c6bded70a1582b2be1a4cbf7",
+    "output_manifest_root": "ab4ff4fbeb5f2d5df583c513ac4afd9806ca2bacd1b7851d8a7d979b8f667004",
+    "output_checkpoint_root": "de917823c8c5e8d167afa23bc3a4b72495443150df37844ce124e26dbcd19c0c",
+    "software_commit": "87f65e8b37cbc16bc6c7cf8b5b93a19e48f0f207",
+    "workflow_identity": "Exact inventory legislation revalidation",
+    "run_identity": "33968609350",
+    "state_commit_status": "committed",
+    "state_commit": "de917823c8c5e8d167afa23bc3a4b72495443150df37844ce124e26dbcd19c0c",
+    "total_retry_count": 1,
+    "state_record_delta": 352,
+    "cas_object_delta": 352
+  },
+  "fresh_reconciliation": {
+    "batch_file": "historical-work-ids-0001.txt",
+    "batch_id": "prompt13-ordered500-20260905",
+    "batch_sha256": "59923176fa34796d7673a20b880af9abe5520fe484595edb220f2bbc0e3b33e7",
+    "batch_work_ids_count": 500,
+    "cas_objects_verified": 852,
+    "checkpoint_processed_ids_count": 552,
+    "discovered_inventory_sha256": "9ca6dc505f991e015c6c997827878d8c7e9381b214a1544eb338328a285c6894",
+    "discovered_works_count": 552,
+    "evaluated_at": "2026-09-05T14:06:41Z",
+    "limitations": [
+      "one_search_derived_batch_only",
+      "not_corpus_completeness_evidence",
+      "no_remote_publication_or_rights_verification"
+    ],
+    "manifest_sha256": "ab4ff4fbeb5f2d5df583c513ac4afd9806ca2bacd1b7851d8a7d979b8f667004",
+    "manifest_total_records": 904,
+    "mismatch_count": 0,
+    "mismatches": [],
+    "reconciled_work_ids_count": 500,
+    "schema_version": "archive-govt-nz.legislation-one-batch-reconciliation/v1",
+    "selected_records_count": 852,
+    "status": "passed"
+  },
+  "negative_control": {
+    "rejected": true,
+    "exception": "VerificationError",
+    "code": "object_sha256"
+  },
+  "standalone_preflight_before_acquisition": true,
+  "artifacts": [
+    {
+      "id": 9970198031,
+      "name": "legislation-source-preflight-33968519628-1",
+      "size_in_bytes": 47329,
+      "digest": "sha256:984875852a68f82988739b5408413e696ee689823b0ededf5b66b85523263ce1",
+      "expires_at": "2026-12-04T13:18:35Z"
+    },
+    {
+      "id": 9970197208,
+      "name": "legislation-parent-33968519628-1",
+      "size_in_bytes": 1465,
+      "digest": "sha256:4c9d0ed4961f97c86898a458e55da3e7554a5b8b5034cda21b1c2d29cc08e33f",
+      "expires_at": "2026-12-04T13:18:35Z"
+    },
+    {
+      "id": 9970365226,
+      "name": "legislation-exact-inventory-attempt-33968609350-1",
+      "size_in_bytes": 9044,
+      "digest": "sha256:64df4e850953f33d1e84a630b4e18a3ca65b2b037df34643b8cf07590713db86",
+      "expires_at": "2026-12-04T13:20:25Z"
+    },
+    {
+      "id": 9970365066,
+      "name": "legislation-exact-inventory-state-33968609350-1",
+      "size_in_bytes": 10628850,
+      "digest": "sha256:9f9b9bd856de05ba2a9481781564e0a49d368d1c6c2770b74b807a4845adc318",
+      "expires_at": "2026-12-04T13:20:25Z"
+    },
+    {
+      "id": 9970223837,
+      "name": "legislation-source-preflight-33968609350-1",
+      "size_in_bytes": 47326,
+      "digest": "sha256:7e4f6bf94d0ba2d597f75def74cd5959beac0e4a7db89a643fdcc6290efa6fdf",
+      "expires_at": "2026-12-04T13:20:25Z"
+    },
+    {
+      "id": 9970223126,
+      "name": "legislation-parent-33968609350-1",
+      "size_in_bytes": 1465,
+      "digest": "sha256:5bb9567799d2a437ee502824632ebfae7473a7ab179aafab10460fc041afd5eb",
+      "expires_at": "2026-12-04T13:20:25Z"
+    }
+  ],
+  "runs": [
+    {
+      "id": 33968519628,
+      "head_sha": "87f65e8b37cbc16bc6c7cf8b5b93a19e48f0f207",
+      "html_url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/33968519628",
+      "conclusion": "success",
+      "completed_at": "2026-09-05T13:19:08Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success",
+          "started_at": "2026-09-05T13:18:43Z",
+          "completed_at": "2026-09-05T13:18:44Z"
+        },
+        {
+          "name": "Check out exact target revision",
+          "conclusion": "success",
+          "started_at": "2026-09-05T13:18:44Z",
+          "completed_at": "2026-09-05T13:18:46Z"
+        },
+        {
+          "name": "Set up Python",
+          "conclusion": "success",
+          "started_at": "2026-09-05T13:18:46Z",
+          "completed_at": "2026-09-05T13:18:46Z"
+        },
+        {
+          "name": "Install locked environment",
+          "conclusion": "success",
+          "started_at": "2026-09-05T13:18:46Z",
+          "completed_at": "2026-09-05T13:18:54Z"
+        },
+        {
+          "name": "Resolve governed reviewed inventory",
+          "conclusion": "success",
+          "started_at": "2026-09-05T13:18:54Z",
+          "completed_at": "2026-09-05T13:18:55Z"
+        },
+        {
+          "name": "Restore and authenticate selected parent",
+          "conclusion": "success",
+          "started_at": "2026-09-05T13:18:55Z",
+          "completed_at": "2026-09-05T13:19:02Z"
+        },
+        {
+          "name": "Verify no-write parent preflight",
+          "conclusion": "success",
+          "started_at": "2026-09-05T13:19:02Z",
+          "completed_at": "2026-09-05T13:19:02Z"
+        },
+        {
+          "name": "Verify authenticated no-write source preflight",
+          "conclusion": "success",
+          "started_at": "2026-09-05T13:19:02Z",
+          "completed_at": "2026-09-05T13:19:04Z"
+        },
+        {
+          "name": "Preserve sanitized source preflight receipt",
+          "conclusion": "success",
+          "started_at": "2026-09-05T13:19:04Z",
+          "completed_at": "2026-09-05T13:19:06Z"
+        },
+        {
+          "name": "Revalidate every governed work ID",
+          "conclusion": "skipped",
+          "started_at": "2026-09-05T13:19:06Z",
+          "completed_at": "2026-09-05T13:19:06Z"
+        },
+        {
+          "name": "Reconcile exact inventory and cumulative state",
+          "conclusion": "skipped",
+          "started_at": "2026-09-05T13:19:06Z",
+          "completed_at": "2026-09-05T13:19:06Z"
+        },
+        {
+          "name": "Verify accounting and bounded output",
+          "conclusion": "skipped",
+          "started_at": "2026-09-05T13:19:06Z",
+          "completed_at": "2026-09-05T13:19:06Z"
+        },
+        {
+          "name": "Seal verified continuation lineage",
+          "conclusion": "skipped",
+          "started_at": "2026-09-05T13:19:06Z",
+          "completed_at": "2026-09-05T13:19:06Z"
+        },
+        {
+          "name": "Upload complete continuation package",
+          "conclusion": "skipped",
+          "started_at": "2026-09-05T13:19:06Z",
+          "completed_at": "2026-09-05T13:19:06Z"
+        },
+        {
+          "name": "Upload sanitized complete attempt evidence",
+          "conclusion": "skipped",
+          "started_at": "2026-09-05T13:19:06Z",
+          "completed_at": "2026-09-05T13:19:06Z"
+        },
+        {
+          "name": "Enforce fail-closed exact-inventory outcome",
+          "conclusion": "skipped",
+          "started_at": "2026-09-05T13:19:06Z",
+          "completed_at": "2026-09-05T13:19:06Z"
+        },
+        {
+          "name": "Post Set up Python",
+          "conclusion": "success",
+          "started_at": "2026-09-05T13:19:06Z",
+          "completed_at": "2026-09-05T13:19:06Z"
+        },
+        {
+          "name": "Post Check out exact target revision",
+          "conclusion": "success",
+          "started_at": "2026-09-05T13:19:06Z",
+          "completed_at": "2026-09-05T13:19:06Z"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success",
+          "started_at": "2026-09-05T13:19:06Z",
+          "completed_at": "2026-09-05T13:19:06Z"
+        }
+      ]
+    },
+    {
+      "id": 33968609350,
+      "head_sha": "87f65e8b37cbc16bc6c7cf8b5b93a19e48f0f207",
+      "html_url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/33968609350",
+      "conclusion": "success",
+      "completed_at": "2026-09-05T13:30:51Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success",
+          "started_at": "2026-09-05T13:20:31Z",
+          "completed_at": "2026-09-05T13:20:32Z"
+        },
+        {
+          "name": "Check out exact target revision",
+          "conclusion": "success",
+          "started_at": "2026-09-05T13:20:32Z",
+          "completed_at": "2026-09-05T13:20:33Z"
+        },
+        {
+          "name": "Set up Python",
+          "conclusion": "success",
+          "started_at": "2026-09-05T13:20:33Z",
+          "completed_at": "2026-09-05T13:20:33Z"
+        },
+        {
+          "name": "Install locked environment",
+          "conclusion": "success",
+          "started_at": "2026-09-05T13:20:33Z",
+          "completed_at": "2026-09-05T13:20:39Z"
+        },
+        {
+          "name": "Resolve governed reviewed inventory",
+          "conclusion": "success",
+          "started_at": "2026-09-05T13:20:39Z",
+          "completed_at": "2026-09-05T13:20:41Z"
+        },
+        {
+          "name": "Restore and authenticate selected parent",
+          "conclusion": "success",
+          "started_at": "2026-09-05T13:20:41Z",
+          "completed_at": "2026-09-05T13:20:51Z"
+        },
+        {
+          "name": "Verify no-write parent preflight",
+          "conclusion": "skipped",
+          "started_at": "2026-09-05T13:20:51Z",
+          "completed_at": "2026-09-05T13:20:51Z"
+        },
+        {
+          "name": "Verify authenticated no-write source preflight",
+          "conclusion": "success",
+          "started_at": "2026-09-05T13:20:51Z",
+          "completed_at": "2026-09-05T13:20:53Z"
+        },
+        {
+          "name": "Preserve sanitized source preflight receipt",
+          "conclusion": "success",
+          "started_at": "2026-09-05T13:20:53Z",
+          "completed_at": "2026-09-05T13:20:54Z"
+        },
+        {
+          "name": "Revalidate every governed work ID",
+          "conclusion": "success",
+          "started_at": "2026-09-05T13:20:54Z",
+          "completed_at": "2026-09-05T13:30:42Z"
+        },
+        {
+          "name": "Reconcile exact inventory and cumulative state",
+          "conclusion": "success",
+          "started_at": "2026-09-05T13:30:42Z",
+          "completed_at": "2026-09-05T13:30:44Z"
+        },
+        {
+          "name": "Verify accounting and bounded output",
+          "conclusion": "success",
+          "started_at": "2026-09-05T13:30:44Z",
+          "completed_at": "2026-09-05T13:30:44Z"
+        },
+        {
+          "name": "Seal verified continuation lineage",
+          "conclusion": "success",
+          "started_at": "2026-09-05T13:30:44Z",
+          "completed_at": "2026-09-05T13:30:46Z"
+        },
+        {
+          "name": "Upload complete continuation package",
+          "conclusion": "success",
+          "started_at": "2026-09-05T13:30:46Z",
+          "completed_at": "2026-09-05T13:30:49Z"
+        },
+        {
+          "name": "Upload sanitized complete attempt evidence",
+          "conclusion": "success",
+          "started_at": "2026-09-05T13:30:49Z",
+          "completed_at": "2026-09-05T13:30:50Z"
+        },
+        {
+          "name": "Enforce fail-closed exact-inventory outcome",
+          "conclusion": "success",
+          "started_at": "2026-09-05T13:30:50Z",
+          "completed_at": "2026-09-05T13:30:50Z"
+        },
+        {
+          "name": "Post Set up Python",
+          "conclusion": "success",
+          "started_at": "2026-09-05T13:30:50Z",
+          "completed_at": "2026-09-05T13:30:50Z"
+        },
+        {
+          "name": "Post Check out exact target revision",
+          "conclusion": "success",
+          "started_at": "2026-09-05T13:30:50Z",
+          "completed_at": "2026-09-05T13:30:50Z"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success",
+          "started_at": "2026-09-05T13:30:50Z",
+          "completed_at": "2026-09-05T13:30:50Z"
+        }
+      ]
+    }
+  ],
+  "retained_receipts": [
+    {
+      "path": "harvest.json",
+      "sha256": "768e2ee0d52aa0780505da3c38b7461e07d0c2abc2f8c076fc78666e4f8257dc"
+    },
+    {
+      "path": "continuation.json",
+      "sha256": "b597c2bd6cdb8a94c41b0d239e3e42a60485053d06a167a5bd05bb2fce4a528a"
+    },
+    {
+      "path": "parent-lineage.json",
+      "sha256": "3994ff6b2c1e82f3702a465f8cccfd562807b8ade3398dbf52f19c55f1835fcb"
+    }
+  ],
+  "limitations": [
+    "Two successful full runs use the approved 552-record durable parent; a 904-to-child second cycle is not proven.",
+    "The 904-record output is retained in GitHub Actions, not published as a new durable Hugging Face state.",
+    "HTTP 200 using the configured credential does not prove rejection of anonymous requests."
+  ]
+}
