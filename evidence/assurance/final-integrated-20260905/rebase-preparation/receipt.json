@@ -1,0 +1,47 @@
+{
+  "observed_at": "2026-09-05T12:46:33.217771+00:00",
+  "integrated_completion": false,
+  "main_base": "6579c09b4e2d167f57a36794b07bee3467148262",
+  "prepared_head": "ceaedf9bdd3248819879cdd71832a4eecff80953",
+  "rebase_commit_mapping": [
+    {
+      "prior": "4e0af41b4cf8a31dcc644ce08e4e550021de70e1",
+      "rebased": "5ab4d930d364f4919fc71637e5c31540870b580a"
+    },
+    {
+      "prior": "037266ca92f999e9642653f4f757311c95709388",
+      "rebased": "94f4389abd10f2d7f38e9e4dad246a230365d8e3"
+    },
+    {
+      "prior": "522c914fc568a16a817180254adb78cce1fd9929",
+      "rebased": "ceaedf9bdd3248819879cdd71832a4eecff80953"
+    }
+  ],
+  "runs": [
+    {
+      "name": "workflow-focused",
+      "command": [
+        "uv",
+        "run",
+        "--locked",
+        "pytest",
+        "tests/tools/test_legislation_integrity_assurance_workflow.py",
+        "tests/tools/test_workflow_policy.py",
+        "--no-cov",
+        "-q"
+      ],
+      "exit_code": 1,
+      "log_sha256": "276238808c9d2120e5fa67d380a741b1c179d31cf1d60e5e0d27857aadbd0dea"
+    },
+    {
+      "name": "actionlint",
+      "command": [
+        "actionlint",
+        ".github/workflows/legislation-integrity-assurance.yml"
+      ],
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "remaining_dependency": "PR400 has not merged; source-preflight runner absent at selected main. Focused existence failure is expected and remains a real blocked gate."
+}
