@@ -1,0 +1,1238 @@
+{
+  "schema_version": "archive-govt-nz.legislation-handoff-index/v1",
+  "supersedes": "handoff-index.json",
+  "supersedes_sha256": "866f71ecbb50c54e2d965f1e4875a112343607da4806038db98cc72d9b827cb8",
+  "handoffs": [
+    {
+      "id": "PROMPT-03-TO-04",
+      "from_prompt": 3,
+      "to_prompt": 4,
+      "source_issue": 284,
+      "consumer_issue": 292,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/verification-02/prompt04-inventory.json",
+          "sha256": "61d054a24e39792cdef21783c68c4f5bb31903139608fc5854cdd66e9b68aa7e"
+        },
+        {
+          "path": "conductor/tracks/legislation_final_donor_state_verification_20260831/evidence.md",
+          "sha256": "a8befac28419e395cc93fa41b8277c2239b17587cb2c413dcde0d2bae48e6b09"
+        }
+      ],
+      "boundary": "also verified current target state"
+    },
+    {
+      "id": "PROMPT-05-TO-06",
+      "from_prompt": 5,
+      "to_prompt": 6,
+      "source_issue": 299,
+      "consumer_issue": 308,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "evidence/seeds/historical-work-ids-0001/provenance-01.json",
+          "sha256": "d3629d17e2dea6e8b451244f6a180a344ed245ad5b6476b90feceaecb07ccc2b"
+        },
+        {
+          "path": "conductor/tracks/legislation_reviewed_seed_registry_20260831/evidence.md",
+          "sha256": "461a02e89791ead063a79bebf844d19114f621ad02151c17ea6e268a2cf431e8"
+        }
+      ],
+      "boundary": "Consumer independently verifies source evidence; no inherited claim beyond source scope."
+    },
+    {
+      "id": "PROMPT-08-TO-06",
+      "from_prompt": 8,
+      "to_prompt": 6,
+      "source_issue": 312,
+      "consumer_issue": 308,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "conductor/tracks/legislation_parent_state_restoration_20260901/evidence.md",
+          "sha256": "94129dfb68631842cfe550e6a1b641bb18664e1f7193337c719db03e82533ab4"
+        },
+        {
+          "path": "conductor/tracks/legislation_parent_state_restoration_20260901/evidence.md",
+          "sha256": "94129dfb68631842cfe550e6a1b641bb18664e1f7193337c719db03e82533ab4"
+        }
+      ],
+      "boundary": "Consumer independently verifies source evidence; no inherited claim beyond source scope."
+    },
+    {
+      "id": "PROMPT-11-TO-06",
+      "from_prompt": 11,
+      "to_prompt": 6,
+      "source_issue": 330,
+      "consumer_issue": 308,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "conductor/tracks/legislation_typed_source_set_20260901/evidence.md",
+          "sha256": "2f6797c732c2fe014c1a76f5a293f2f29c7f0d870d48807f9d2fe561e5cd1244"
+        },
+        {
+          "path": "conductor/tracks/legislation_typed_source_set_20260901/evidence.md",
+          "sha256": "2f6797c732c2fe014c1a76f5a293f2f29c7f0d870d48807f9d2fe561e5cd1244"
+        }
+      ],
+      "boundary": "Consumer independently verifies source evidence; no inherited claim beyond source scope."
+    },
+    {
+      "id": "PROMPT-12-TO-06",
+      "from_prompt": 12,
+      "to_prompt": 6,
+      "source_issue": 333,
+      "consumer_issue": 308,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "conductor/tracks/legislation_harvest_accounting_20260901/evidence.md",
+          "sha256": "be2dbf9bbe0c1b103c011021000fa38b30fcaf257b2c56a764c520e2cdcb788b"
+        },
+        {
+          "path": "conductor/tracks/legislation_harvest_accounting_20260901/evidence.md",
+          "sha256": "be2dbf9bbe0c1b103c011021000fa38b30fcaf257b2c56a764c520e2cdcb788b"
+        }
+      ],
+      "boundary": "Consumer independently verifies source evidence; no inherited claim beyond source scope."
+    },
+    {
+      "id": "PROMPT-08-TO-07",
+      "from_prompt": 8,
+      "to_prompt": 7,
+      "source_issue": 312,
+      "consumer_issue": 310,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "conductor/tracks/legislation_parent_state_restoration_20260901/evidence.md",
+          "sha256": "94129dfb68631842cfe550e6a1b641bb18664e1f7193337c719db03e82533ab4"
+        },
+        {
+          "path": "conductor/tracks/legislation_parent_state_restoration_20260901/evidence.md",
+          "sha256": "94129dfb68631842cfe550e6a1b641bb18664e1f7193337c719db03e82533ab4"
+        }
+      ],
+      "boundary": "Consumer independently verifies source evidence; no inherited claim beyond source scope."
+    },
+    {
+      "id": "PROMPT-11-TO-07",
+      "from_prompt": 11,
+      "to_prompt": 7,
+      "source_issue": 330,
+      "consumer_issue": 310,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "conductor/tracks/legislation_typed_source_set_20260901/evidence.md",
+          "sha256": "2f6797c732c2fe014c1a76f5a293f2f29c7f0d870d48807f9d2fe561e5cd1244"
+        },
+        {
+          "path": "conductor/tracks/legislation_typed_source_set_20260901/evidence.md",
+          "sha256": "2f6797c732c2fe014c1a76f5a293f2f29c7f0d870d48807f9d2fe561e5cd1244"
+        }
+      ],
+      "boundary": "Consumer independently verifies source evidence; no inherited claim beyond source scope."
+    },
+    {
+      "id": "PROMPT-12-TO-07",
+      "from_prompt": 12,
+      "to_prompt": 7,
+      "source_issue": 333,
+      "consumer_issue": 310,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "conductor/tracks/legislation_harvest_accounting_20260901/evidence.md",
+          "sha256": "be2dbf9bbe0c1b103c011021000fa38b30fcaf257b2c56a764c520e2cdcb788b"
+        },
+        {
+          "path": "conductor/tracks/legislation_harvest_accounting_20260901/evidence.md",
+          "sha256": "be2dbf9bbe0c1b103c011021000fa38b30fcaf257b2c56a764c520e2cdcb788b"
+        }
+      ],
+      "boundary": "Consumer independently verifies source evidence; no inherited claim beyond source scope."
+    },
+    {
+      "id": "PROMPT-04-TO-09",
+      "from_prompt": 4,
+      "to_prompt": 9,
+      "source_issue": 292,
+      "consumer_issue": 321,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/execution-02/final-state-merge-receipt.json",
+          "sha256": "3fc4a205ed1b8a327f0d91675951ce18a6800f1bc2bdb948b22c45c882e8e679"
+        },
+        {
+          "path": "conductor/tracks/legislation_canonical_state_merge_20260831/evidence.md",
+          "sha256": "9aac36e22875e6323fbc37fa595bead2d929d7d60a35e701b9dfb05f3ddb3178"
+        }
+      ],
+      "boundary": "Consumer independently verifies source evidence; no inherited claim beyond source scope."
+    },
+    {
+      "id": "PROMPT-08-TO-09",
+      "from_prompt": 8,
+      "to_prompt": 9,
+      "source_issue": 312,
+      "consumer_issue": 321,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "conductor/tracks/legislation_parent_state_restoration_20260901/evidence.md",
+          "sha256": "94129dfb68631842cfe550e6a1b641bb18664e1f7193337c719db03e82533ab4"
+        },
+        {
+          "path": "conductor/tracks/legislation_parent_state_restoration_20260901/evidence.md",
+          "sha256": "94129dfb68631842cfe550e6a1b641bb18664e1f7193337c719db03e82533ab4"
+        }
+      ],
+      "boundary": "Consumer independently verifies source evidence; no inherited claim beyond source scope."
+    },
+    {
+      "id": "PROMPT-09-TO-10",
+      "from_prompt": 9,
+      "to_prompt": 10,
+      "source_issue": 321,
+      "consumer_issue": 327,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/durable-state/integration.json",
+          "sha256": "81d36a1d95195dd6950343cff753e18f8e154c7a0cc71ff2bb0b8925e76c8286"
+        },
+        {
+          "path": "conductor/tracks/legislation_durable_state_20260901/evidence.md",
+          "sha256": "9470848b41848eba1db47465c1adfe647fb753c432fb3c18beb9cd9b5dfc89e9"
+        }
+      ],
+      "boundary": "Consumer independently verifies source evidence; no inherited claim beyond source scope."
+    },
+    {
+      "id": "PROMPT-04-TO-13",
+      "from_prompt": 4,
+      "to_prompt": 13,
+      "source_issue": 292,
+      "consumer_issue": 335,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/execution-02/final-state-merge-receipt.json",
+          "sha256": "3fc4a205ed1b8a327f0d91675951ce18a6800f1bc2bdb948b22c45c882e8e679"
+        },
+        {
+          "path": "conductor/tracks/legislation_canonical_state_merge_20260831/evidence.md",
+          "sha256": "9aac36e22875e6323fbc37fa595bead2d929d7d60a35e701b9dfb05f3ddb3178"
+        }
+      ],
+      "boundary": "04\u201312 as applicable; qualify after prompt supplied"
+    },
+    {
+      "id": "PROMPT-05-TO-13",
+      "from_prompt": 5,
+      "to_prompt": 13,
+      "source_issue": 299,
+      "consumer_issue": 335,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "evidence/seeds/historical-work-ids-0001/provenance-01.json",
+          "sha256": "d3629d17e2dea6e8b451244f6a180a344ed245ad5b6476b90feceaecb07ccc2b"
+        },
+        {
+          "path": "conductor/tracks/legislation_reviewed_seed_registry_20260831/evidence.md",
+          "sha256": "461a02e89791ead063a79bebf844d19114f621ad02151c17ea6e268a2cf431e8"
+        }
+      ],
+      "boundary": "04\u201312 as applicable; qualify after prompt supplied"
+    },
+    {
+      "id": "PROMPT-06-TO-13",
+      "from_prompt": 6,
+      "to_prompt": 13,
+      "source_issue": 308,
+      "consumer_issue": 335,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "conductor/tracks/legislation_exact_inventory_revalidation_20260903/evidence.md",
+          "sha256": "6bb76a08dec507f349900e3ecce60096cffdd42b8501662431c6e67310e27f64"
+        },
+        {
+          "path": "conductor/tracks/legislation_exact_inventory_revalidation_20260903/evidence.md",
+          "sha256": "6bb76a08dec507f349900e3ecce60096cffdd42b8501662431c6e67310e27f64"
+        }
+      ],
+      "boundary": "04\u201312 as applicable; qualify after prompt supplied"
+    },
+    {
+      "id": "PROMPT-07-TO-13",
+      "from_prompt": 7,
+      "to_prompt": 13,
+      "source_issue": 310,
+      "consumer_issue": 335,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "conductor/tracks/legislation_bounded_discovery_20260903/evidence.md",
+          "sha256": "fa2ac9d31e4a5b9356bda97b0d6388a06d52ad2f72c34ee25f314e3acc152837"
+        },
+        {
+          "path": "conductor/tracks/legislation_bounded_discovery_20260903/evidence.md",
+          "sha256": "fa2ac9d31e4a5b9356bda97b0d6388a06d52ad2f72c34ee25f314e3acc152837"
+        }
+      ],
+      "boundary": "04\u201312 as applicable; qualify after prompt supplied"
+    },
+    {
+      "id": "PROMPT-08-TO-13",
+      "from_prompt": 8,
+      "to_prompt": 13,
+      "source_issue": 312,
+      "consumer_issue": 335,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "conductor/tracks/legislation_parent_state_restoration_20260901/evidence.md",
+          "sha256": "94129dfb68631842cfe550e6a1b641bb18664e1f7193337c719db03e82533ab4"
+        },
+        {
+          "path": "conductor/tracks/legislation_parent_state_restoration_20260901/evidence.md",
+          "sha256": "94129dfb68631842cfe550e6a1b641bb18664e1f7193337c719db03e82533ab4"
+        }
+      ],
+      "boundary": "04\u201312 as applicable; qualify after prompt supplied"
+    },
+    {
+      "id": "PROMPT-09-TO-13",
+      "from_prompt": 9,
+      "to_prompt": 13,
+      "source_issue": 321,
+      "consumer_issue": 335,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/durable-state/integration.json",
+          "sha256": "81d36a1d95195dd6950343cff753e18f8e154c7a0cc71ff2bb0b8925e76c8286"
+        },
+        {
+          "path": "conductor/tracks/legislation_durable_state_20260901/evidence.md",
+          "sha256": "9470848b41848eba1db47465c1adfe647fb753c432fb3c18beb9cd9b5dfc89e9"
+        }
+      ],
+      "boundary": "04\u201312 as applicable; qualify after prompt supplied"
+    },
+    {
+      "id": "PROMPT-10-TO-13",
+      "from_prompt": 10,
+      "to_prompt": 13,
+      "source_issue": 327,
+      "consumer_issue": 335,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/durable-recovery/independent-recovery-summary-20260903.json",
+          "sha256": "c9aabd3c2e6f65e03ba420fd14a09d2030b51bdc8a2a0689ddf3960d73de763f"
+        }
+      ],
+      "boundary": "04\u201312 as applicable; qualify after prompt supplied"
+    },
+    {
+      "id": "PROMPT-11-TO-13",
+      "from_prompt": 11,
+      "to_prompt": 13,
+      "source_issue": 330,
+      "consumer_issue": 335,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "conductor/tracks/legislation_typed_source_set_20260901/evidence.md",
+          "sha256": "2f6797c732c2fe014c1a76f5a293f2f29c7f0d870d48807f9d2fe561e5cd1244"
+        },
+        {
+          "path": "conductor/tracks/legislation_typed_source_set_20260901/evidence.md",
+          "sha256": "2f6797c732c2fe014c1a76f5a293f2f29c7f0d870d48807f9d2fe561e5cd1244"
+        }
+      ],
+      "boundary": "04\u201312 as applicable; qualify after prompt supplied"
+    },
+    {
+      "id": "PROMPT-12-TO-13",
+      "from_prompt": 12,
+      "to_prompt": 13,
+      "source_issue": 333,
+      "consumer_issue": 335,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "conductor/tracks/legislation_harvest_accounting_20260901/evidence.md",
+          "sha256": "be2dbf9bbe0c1b103c011021000fa38b30fcaf257b2c56a764c520e2cdcb788b"
+        },
+        {
+          "path": "conductor/tracks/legislation_harvest_accounting_20260901/evidence.md",
+          "sha256": "be2dbf9bbe0c1b103c011021000fa38b30fcaf257b2c56a764c520e2cdcb788b"
+        }
+      ],
+      "boundary": "04\u201312 as applicable; qualify after prompt supplied"
+    },
+    {
+      "id": "PROMPT-03-TO-14",
+      "from_prompt": 3,
+      "to_prompt": 14,
+      "source_issue": 284,
+      "consumer_issue": 337,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/verification-02/prompt04-inventory.json",
+          "sha256": "61d054a24e39792cdef21783c68c4f5bb31903139608fc5854cdd66e9b68aa7e"
+        },
+        {
+          "path": "conductor/tracks/legislation_final_donor_state_verification_20260831/evidence.md",
+          "sha256": "a8befac28419e395cc93fa41b8277c2239b17587cb2c413dcde0d2bae48e6b09"
+        }
+      ],
+      "boundary": "Consumer independently verifies source evidence; no inherited claim beyond source scope."
+    },
+    {
+      "id": "PROMPT-04-TO-14",
+      "from_prompt": 4,
+      "to_prompt": 14,
+      "source_issue": 292,
+      "consumer_issue": 337,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/execution-02/final-state-merge-receipt.json",
+          "sha256": "3fc4a205ed1b8a327f0d91675951ce18a6800f1bc2bdb948b22c45c882e8e679"
+        },
+        {
+          "path": "conductor/tracks/legislation_canonical_state_merge_20260831/evidence.md",
+          "sha256": "9aac36e22875e6323fbc37fa595bead2d929d7d60a35e701b9dfb05f3ddb3178"
+        }
+      ],
+      "boundary": "Consumer independently verifies source evidence; no inherited claim beyond source scope."
+    },
+    {
+      "id": "PROMPT-13-TO-14",
+      "from_prompt": 13,
+      "to_prompt": 14,
+      "source_issue": 335,
+      "consumer_issue": 337,
+      "status": "passed",
+      "artifacts": [
+        {
+          "url": "https://github.com/edithatogo/archive-govt-nz/issues/335#issuecomment-5531588185",
+          "verification": "live issue and run observations; no local receipt hash implied"
+        },
+        {
+          "path": "conductor/tracks/legislation_500_work_operational_proof_20260901/evidence.md",
+          "sha256": "b391c62adebb448da78f65e54a39912f7e6629a26daded546d54e3a07147fb27"
+        }
+      ],
+      "boundary": "Consumer independently verifies source evidence; no inherited claim beyond source scope."
+    },
+    {
+      "id": "PROMPT-04-TO-15",
+      "from_prompt": 4,
+      "to_prompt": 15,
+      "source_issue": 292,
+      "consumer_issue": 341,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/execution-02/final-state-merge-receipt.json",
+          "sha256": "3fc4a205ed1b8a327f0d91675951ce18a6800f1bc2bdb948b22c45c882e8e679"
+        },
+        {
+          "path": "conductor/tracks/legislation_canonical_state_merge_20260831/evidence.md",
+          "sha256": "9aac36e22875e6323fbc37fa595bead2d929d7d60a35e701b9dfb05f3ddb3178"
+        }
+      ],
+      "boundary": "Consumer independently verifies source evidence; no inherited claim beyond source scope."
+    },
+    {
+      "id": "PROMPT-09-TO-15",
+      "from_prompt": 9,
+      "to_prompt": 15,
+      "source_issue": 321,
+      "consumer_issue": 341,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/durable-state/integration.json",
+          "sha256": "81d36a1d95195dd6950343cff753e18f8e154c7a0cc71ff2bb0b8925e76c8286"
+        },
+        {
+          "path": "conductor/tracks/legislation_durable_state_20260901/evidence.md",
+          "sha256": "9470848b41848eba1db47465c1adfe647fb753c432fb3c18beb9cd9b5dfc89e9"
+        }
+      ],
+      "boundary": "Consumer independently verifies source evidence; no inherited claim beyond source scope."
+    },
+    {
+      "id": "PROMPT-12-TO-15",
+      "from_prompt": 12,
+      "to_prompt": 15,
+      "source_issue": 333,
+      "consumer_issue": 341,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "conductor/tracks/legislation_harvest_accounting_20260901/evidence.md",
+          "sha256": "be2dbf9bbe0c1b103c011021000fa38b30fcaf257b2c56a764c520e2cdcb788b"
+        },
+        {
+          "path": "conductor/tracks/legislation_harvest_accounting_20260901/evidence.md",
+          "sha256": "be2dbf9bbe0c1b103c011021000fa38b30fcaf257b2c56a764c520e2cdcb788b"
+        }
+      ],
+      "boundary": "Consumer independently verifies source evidence; no inherited claim beyond source scope."
+    },
+    {
+      "id": "PROMPT-13-TO-15",
+      "from_prompt": 13,
+      "to_prompt": 15,
+      "source_issue": 335,
+      "consumer_issue": 341,
+      "status": "passed",
+      "artifacts": [
+        {
+          "url": "https://github.com/edithatogo/archive-govt-nz/issues/335#issuecomment-5531588185",
+          "verification": "live issue and run observations; no local receipt hash implied"
+        },
+        {
+          "path": "conductor/tracks/legislation_500_work_operational_proof_20260901/evidence.md",
+          "sha256": "b391c62adebb448da78f65e54a39912f7e6629a26daded546d54e3a07147fb27"
+        }
+      ],
+      "boundary": "Consumer independently verifies source evidence; no inherited claim beyond source scope."
+    },
+    {
+      "id": "PROMPT-14-TO-15",
+      "from_prompt": 14,
+      "to_prompt": 15,
+      "source_issue": 337,
+      "consumer_issue": 341,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/historical-coverage/historical-coverage-report.json",
+          "sha256": "b5c3731a800572a367cf6106d038b8ee9d3c03353c96f309866f2bc48fb99f11"
+        },
+        {
+          "path": "conductor/tracks/legislation_historical_coverage_20260901/evidence.md",
+          "sha256": "e76b8ff2a46f61962d0d593e7164e4c30905fb0532f6f12b2f4fbd01ad64f6cb"
+        }
+      ],
+      "boundary": "Consumer independently verifies source evidence; no inherited claim beyond source scope."
+    },
+    {
+      "id": "PROMPT-02-TO-17",
+      "from_prompt": 2,
+      "to_prompt": 17,
+      "source_issue": 278,
+      "consumer_issue": 345,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/final-lineage/receipt.json",
+          "sha256": "7a90eed0dabd874a835d31a29c42eec52c5c6b3cd2623aa0436e563df53ac52b"
+        }
+      ],
+      "boundary": "substantive outputs of 02\u201316"
+    },
+    {
+      "id": "PROMPT-03-TO-17",
+      "from_prompt": 3,
+      "to_prompt": 17,
+      "source_issue": 284,
+      "consumer_issue": 345,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/verification-02/prompt04-inventory.json",
+          "sha256": "61d054a24e39792cdef21783c68c4f5bb31903139608fc5854cdd66e9b68aa7e"
+        },
+        {
+          "path": "conductor/tracks/legislation_final_donor_state_verification_20260831/evidence.md",
+          "sha256": "a8befac28419e395cc93fa41b8277c2239b17587cb2c413dcde0d2bae48e6b09"
+        }
+      ],
+      "boundary": "substantive outputs of 02\u201316"
+    },
+    {
+      "id": "PROMPT-04-TO-17",
+      "from_prompt": 4,
+      "to_prompt": 17,
+      "source_issue": 292,
+      "consumer_issue": 345,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/execution-02/final-state-merge-receipt.json",
+          "sha256": "3fc4a205ed1b8a327f0d91675951ce18a6800f1bc2bdb948b22c45c882e8e679"
+        },
+        {
+          "path": "conductor/tracks/legislation_canonical_state_merge_20260831/evidence.md",
+          "sha256": "9aac36e22875e6323fbc37fa595bead2d929d7d60a35e701b9dfb05f3ddb3178"
+        }
+      ],
+      "boundary": "substantive outputs of 02\u201316"
+    },
+    {
+      "id": "PROMPT-05-TO-17",
+      "from_prompt": 5,
+      "to_prompt": 17,
+      "source_issue": 299,
+      "consumer_issue": 345,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "evidence/seeds/historical-work-ids-0001/provenance-01.json",
+          "sha256": "d3629d17e2dea6e8b451244f6a180a344ed245ad5b6476b90feceaecb07ccc2b"
+        },
+        {
+          "path": "conductor/tracks/legislation_reviewed_seed_registry_20260831/evidence.md",
+          "sha256": "461a02e89791ead063a79bebf844d19114f621ad02151c17ea6e268a2cf431e8"
+        }
+      ],
+      "boundary": "substantive outputs of 02\u201316"
+    },
+    {
+      "id": "PROMPT-06-TO-17",
+      "from_prompt": 6,
+      "to_prompt": 17,
+      "source_issue": 308,
+      "consumer_issue": 345,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "conductor/tracks/legislation_exact_inventory_revalidation_20260903/evidence.md",
+          "sha256": "6bb76a08dec507f349900e3ecce60096cffdd42b8501662431c6e67310e27f64"
+        },
+        {
+          "path": "conductor/tracks/legislation_exact_inventory_revalidation_20260903/evidence.md",
+          "sha256": "6bb76a08dec507f349900e3ecce60096cffdd42b8501662431c6e67310e27f64"
+        }
+      ],
+      "boundary": "substantive outputs of 02\u201316"
+    },
+    {
+      "id": "PROMPT-07-TO-17",
+      "from_prompt": 7,
+      "to_prompt": 17,
+      "source_issue": 310,
+      "consumer_issue": 345,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "conductor/tracks/legislation_bounded_discovery_20260903/evidence.md",
+          "sha256": "fa2ac9d31e4a5b9356bda97b0d6388a06d52ad2f72c34ee25f314e3acc152837"
+        },
+        {
+          "path": "conductor/tracks/legislation_bounded_discovery_20260903/evidence.md",
+          "sha256": "fa2ac9d31e4a5b9356bda97b0d6388a06d52ad2f72c34ee25f314e3acc152837"
+        }
+      ],
+      "boundary": "substantive outputs of 02\u201316"
+    },
+    {
+      "id": "PROMPT-08-TO-17",
+      "from_prompt": 8,
+      "to_prompt": 17,
+      "source_issue": 312,
+      "consumer_issue": 345,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "conductor/tracks/legislation_parent_state_restoration_20260901/evidence.md",
+          "sha256": "94129dfb68631842cfe550e6a1b641bb18664e1f7193337c719db03e82533ab4"
+        },
+        {
+          "path": "conductor/tracks/legislation_parent_state_restoration_20260901/evidence.md",
+          "sha256": "94129dfb68631842cfe550e6a1b641bb18664e1f7193337c719db03e82533ab4"
+        }
+      ],
+      "boundary": "substantive outputs of 02\u201316"
+    },
+    {
+      "id": "PROMPT-09-TO-17",
+      "from_prompt": 9,
+      "to_prompt": 17,
+      "source_issue": 321,
+      "consumer_issue": 345,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/durable-state/integration.json",
+          "sha256": "81d36a1d95195dd6950343cff753e18f8e154c7a0cc71ff2bb0b8925e76c8286"
+        },
+        {
+          "path": "conductor/tracks/legislation_durable_state_20260901/evidence.md",
+          "sha256": "9470848b41848eba1db47465c1adfe647fb753c432fb3c18beb9cd9b5dfc89e9"
+        }
+      ],
+      "boundary": "substantive outputs of 02\u201316"
+    },
+    {
+      "id": "PROMPT-10-TO-17",
+      "from_prompt": 10,
+      "to_prompt": 17,
+      "source_issue": 327,
+      "consumer_issue": 345,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/durable-recovery/independent-recovery-summary-20260903.json",
+          "sha256": "c9aabd3c2e6f65e03ba420fd14a09d2030b51bdc8a2a0689ddf3960d73de763f"
+        }
+      ],
+      "boundary": "substantive outputs of 02\u201316"
+    },
+    {
+      "id": "PROMPT-11-TO-17",
+      "from_prompt": 11,
+      "to_prompt": 17,
+      "source_issue": 330,
+      "consumer_issue": 345,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "conductor/tracks/legislation_typed_source_set_20260901/evidence.md",
+          "sha256": "2f6797c732c2fe014c1a76f5a293f2f29c7f0d870d48807f9d2fe561e5cd1244"
+        },
+        {
+          "path": "conductor/tracks/legislation_typed_source_set_20260901/evidence.md",
+          "sha256": "2f6797c732c2fe014c1a76f5a293f2f29c7f0d870d48807f9d2fe561e5cd1244"
+        }
+      ],
+      "boundary": "substantive outputs of 02\u201316"
+    },
+    {
+      "id": "PROMPT-12-TO-17",
+      "from_prompt": 12,
+      "to_prompt": 17,
+      "source_issue": 333,
+      "consumer_issue": 345,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "conductor/tracks/legislation_harvest_accounting_20260901/evidence.md",
+          "sha256": "be2dbf9bbe0c1b103c011021000fa38b30fcaf257b2c56a764c520e2cdcb788b"
+        },
+        {
+          "path": "conductor/tracks/legislation_harvest_accounting_20260901/evidence.md",
+          "sha256": "be2dbf9bbe0c1b103c011021000fa38b30fcaf257b2c56a764c520e2cdcb788b"
+        }
+      ],
+      "boundary": "substantive outputs of 02\u201316"
+    },
+    {
+      "id": "PROMPT-13-TO-17",
+      "from_prompt": 13,
+      "to_prompt": 17,
+      "source_issue": 335,
+      "consumer_issue": 345,
+      "status": "passed",
+      "artifacts": [
+        {
+          "url": "https://github.com/edithatogo/archive-govt-nz/issues/335#issuecomment-5531588185",
+          "verification": "live issue and run observations; no local receipt hash implied"
+        },
+        {
+          "path": "conductor/tracks/legislation_500_work_operational_proof_20260901/evidence.md",
+          "sha256": "b391c62adebb448da78f65e54a39912f7e6629a26daded546d54e3a07147fb27"
+        }
+      ],
+      "boundary": "substantive outputs of 02\u201316"
+    },
+    {
+      "id": "PROMPT-14-TO-17",
+      "from_prompt": 14,
+      "to_prompt": 17,
+      "source_issue": 337,
+      "consumer_issue": 345,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/historical-coverage/historical-coverage-report.json",
+          "sha256": "b5c3731a800572a367cf6106d038b8ee9d3c03353c96f309866f2bc48fb99f11"
+        },
+        {
+          "path": "conductor/tracks/legislation_historical_coverage_20260901/evidence.md",
+          "sha256": "e76b8ff2a46f61962d0d593e7164e4c30905fb0532f6f12b2f4fbd01ad64f6cb"
+        }
+      ],
+      "boundary": "substantive outputs of 02\u201316"
+    },
+    {
+      "id": "PROMPT-15-TO-17",
+      "from_prompt": 15,
+      "to_prompt": 17,
+      "source_issue": 341,
+      "consumer_issue": 345,
+      "status": "in_progress",
+      "artifacts": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/huggingface-publication/publication-readback-20260903.json",
+          "sha256": "38160c4683112d951351e20d68fe34198dcab797eb371d6cf6e6d91160ba9fed"
+        },
+        {
+          "path": "conductor/tracks/legislation_hf_identity_reconciliation_20260901/evidence.md",
+          "sha256": "9247933ab798e60f04d02f82687a101953456003b65bb2cabb41f52bfb611508"
+        }
+      ],
+      "boundary": "substantive outputs of 02\u201316"
+    },
+    {
+      "id": "PROMPT-16-TO-17",
+      "from_prompt": 16,
+      "to_prompt": 17,
+      "source_issue": 343,
+      "consumer_issue": 345,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/zenodo-identity-correction.json",
+          "sha256": "eb9e3fc21bad482691814a45791c5e0ca6ef43658f70d2241ec9f56f335b737a"
+        },
+        {
+          "path": "conductor/tracks/zenodo_identity_correction_20260902/evidence.md",
+          "sha256": "ed766d4cce9816f1776cbb0733881fd2ed94d9f9779c650fd8b9576fd74ec360"
+        }
+      ],
+      "boundary": "substantive outputs of 02\u201316"
+    },
+    {
+      "id": "PROMPT-02-TO-20",
+      "from_prompt": 2,
+      "to_prompt": 20,
+      "source_issue": 278,
+      "consumer_issue": 351,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/final-lineage/receipt.json",
+          "sha256": "7a90eed0dabd874a835d31a29c42eec52c5c6b3cd2623aa0436e563df53ac52b"
+        }
+      ],
+      "boundary": "after all implementation PRs integrated"
+    },
+    {
+      "id": "PROMPT-03-TO-20",
+      "from_prompt": 3,
+      "to_prompt": 20,
+      "source_issue": 284,
+      "consumer_issue": 351,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/verification-02/prompt04-inventory.json",
+          "sha256": "61d054a24e39792cdef21783c68c4f5bb31903139608fc5854cdd66e9b68aa7e"
+        },
+        {
+          "path": "conductor/tracks/legislation_final_donor_state_verification_20260831/evidence.md",
+          "sha256": "a8befac28419e395cc93fa41b8277c2239b17587cb2c413dcde0d2bae48e6b09"
+        }
+      ],
+      "boundary": "after all implementation PRs integrated"
+    },
+    {
+      "id": "PROMPT-04-TO-20",
+      "from_prompt": 4,
+      "to_prompt": 20,
+      "source_issue": 292,
+      "consumer_issue": 351,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/execution-02/final-state-merge-receipt.json",
+          "sha256": "3fc4a205ed1b8a327f0d91675951ce18a6800f1bc2bdb948b22c45c882e8e679"
+        },
+        {
+          "path": "conductor/tracks/legislation_canonical_state_merge_20260831/evidence.md",
+          "sha256": "9aac36e22875e6323fbc37fa595bead2d929d7d60a35e701b9dfb05f3ddb3178"
+        }
+      ],
+      "boundary": "after all implementation PRs integrated"
+    },
+    {
+      "id": "PROMPT-05-TO-20",
+      "from_prompt": 5,
+      "to_prompt": 20,
+      "source_issue": 299,
+      "consumer_issue": 351,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "evidence/seeds/historical-work-ids-0001/provenance-01.json",
+          "sha256": "d3629d17e2dea6e8b451244f6a180a344ed245ad5b6476b90feceaecb07ccc2b"
+        },
+        {
+          "path": "conductor/tracks/legislation_reviewed_seed_registry_20260831/evidence.md",
+          "sha256": "461a02e89791ead063a79bebf844d19114f621ad02151c17ea6e268a2cf431e8"
+        }
+      ],
+      "boundary": "after all implementation PRs integrated"
+    },
+    {
+      "id": "PROMPT-06-TO-20",
+      "from_prompt": 6,
+      "to_prompt": 20,
+      "source_issue": 308,
+      "consumer_issue": 351,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "conductor/tracks/legislation_exact_inventory_revalidation_20260903/evidence.md",
+          "sha256": "6bb76a08dec507f349900e3ecce60096cffdd42b8501662431c6e67310e27f64"
+        },
+        {
+          "path": "conductor/tracks/legislation_exact_inventory_revalidation_20260903/evidence.md",
+          "sha256": "6bb76a08dec507f349900e3ecce60096cffdd42b8501662431c6e67310e27f64"
+        }
+      ],
+      "boundary": "after all implementation PRs integrated"
+    },
+    {
+      "id": "PROMPT-07-TO-20",
+      "from_prompt": 7,
+      "to_prompt": 20,
+      "source_issue": 310,
+      "consumer_issue": 351,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "conductor/tracks/legislation_bounded_discovery_20260903/evidence.md",
+          "sha256": "fa2ac9d31e4a5b9356bda97b0d6388a06d52ad2f72c34ee25f314e3acc152837"
+        },
+        {
+          "path": "conductor/tracks/legislation_bounded_discovery_20260903/evidence.md",
+          "sha256": "fa2ac9d31e4a5b9356bda97b0d6388a06d52ad2f72c34ee25f314e3acc152837"
+        }
+      ],
+      "boundary": "after all implementation PRs integrated"
+    },
+    {
+      "id": "PROMPT-08-TO-20",
+      "from_prompt": 8,
+      "to_prompt": 20,
+      "source_issue": 312,
+      "consumer_issue": 351,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "conductor/tracks/legislation_parent_state_restoration_20260901/evidence.md",
+          "sha256": "94129dfb68631842cfe550e6a1b641bb18664e1f7193337c719db03e82533ab4"
+        },
+        {
+          "path": "conductor/tracks/legislation_parent_state_restoration_20260901/evidence.md",
+          "sha256": "94129dfb68631842cfe550e6a1b641bb18664e1f7193337c719db03e82533ab4"
+        }
+      ],
+      "boundary": "after all implementation PRs integrated"
+    },
+    {
+      "id": "PROMPT-09-TO-20",
+      "from_prompt": 9,
+      "to_prompt": 20,
+      "source_issue": 321,
+      "consumer_issue": 351,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/durable-state/integration.json",
+          "sha256": "81d36a1d95195dd6950343cff753e18f8e154c7a0cc71ff2bb0b8925e76c8286"
+        },
+        {
+          "path": "conductor/tracks/legislation_durable_state_20260901/evidence.md",
+          "sha256": "9470848b41848eba1db47465c1adfe647fb753c432fb3c18beb9cd9b5dfc89e9"
+        }
+      ],
+      "boundary": "after all implementation PRs integrated"
+    },
+    {
+      "id": "PROMPT-10-TO-20",
+      "from_prompt": 10,
+      "to_prompt": 20,
+      "source_issue": 327,
+      "consumer_issue": 351,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/durable-recovery/independent-recovery-summary-20260903.json",
+          "sha256": "c9aabd3c2e6f65e03ba420fd14a09d2030b51bdc8a2a0689ddf3960d73de763f"
+        }
+      ],
+      "boundary": "after all implementation PRs integrated"
+    },
+    {
+      "id": "PROMPT-11-TO-20",
+      "from_prompt": 11,
+      "to_prompt": 20,
+      "source_issue": 330,
+      "consumer_issue": 351,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "conductor/tracks/legislation_typed_source_set_20260901/evidence.md",
+          "sha256": "2f6797c732c2fe014c1a76f5a293f2f29c7f0d870d48807f9d2fe561e5cd1244"
+        },
+        {
+          "path": "conductor/tracks/legislation_typed_source_set_20260901/evidence.md",
+          "sha256": "2f6797c732c2fe014c1a76f5a293f2f29c7f0d870d48807f9d2fe561e5cd1244"
+        }
+      ],
+      "boundary": "after all implementation PRs integrated"
+    },
+    {
+      "id": "PROMPT-12-TO-20",
+      "from_prompt": 12,
+      "to_prompt": 20,
+      "source_issue": 333,
+      "consumer_issue": 351,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "conductor/tracks/legislation_harvest_accounting_20260901/evidence.md",
+          "sha256": "be2dbf9bbe0c1b103c011021000fa38b30fcaf257b2c56a764c520e2cdcb788b"
+        },
+        {
+          "path": "conductor/tracks/legislation_harvest_accounting_20260901/evidence.md",
+          "sha256": "be2dbf9bbe0c1b103c011021000fa38b30fcaf257b2c56a764c520e2cdcb788b"
+        }
+      ],
+      "boundary": "after all implementation PRs integrated"
+    },
+    {
+      "id": "PROMPT-13-TO-20",
+      "from_prompt": 13,
+      "to_prompt": 20,
+      "source_issue": 335,
+      "consumer_issue": 351,
+      "status": "passed",
+      "artifacts": [
+        {
+          "url": "https://github.com/edithatogo/archive-govt-nz/issues/335#issuecomment-5531588185",
+          "verification": "live issue and run observations; no local receipt hash implied"
+        },
+        {
+          "path": "conductor/tracks/legislation_500_work_operational_proof_20260901/evidence.md",
+          "sha256": "b391c62adebb448da78f65e54a39912f7e6629a26daded546d54e3a07147fb27"
+        }
+      ],
+      "boundary": "after all implementation PRs integrated"
+    },
+    {
+      "id": "PROMPT-14-TO-20",
+      "from_prompt": 14,
+      "to_prompt": 20,
+      "source_issue": 337,
+      "consumer_issue": 351,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/historical-coverage/historical-coverage-report.json",
+          "sha256": "b5c3731a800572a367cf6106d038b8ee9d3c03353c96f309866f2bc48fb99f11"
+        },
+        {
+          "path": "conductor/tracks/legislation_historical_coverage_20260901/evidence.md",
+          "sha256": "e76b8ff2a46f61962d0d593e7164e4c30905fb0532f6f12b2f4fbd01ad64f6cb"
+        }
+      ],
+      "boundary": "after all implementation PRs integrated"
+    },
+    {
+      "id": "PROMPT-15-TO-20",
+      "from_prompt": 15,
+      "to_prompt": 20,
+      "source_issue": 341,
+      "consumer_issue": 351,
+      "status": "in_progress",
+      "artifacts": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/huggingface-publication/publication-readback-20260903.json",
+          "sha256": "38160c4683112d951351e20d68fe34198dcab797eb371d6cf6e6d91160ba9fed"
+        },
+        {
+          "path": "conductor/tracks/legislation_hf_identity_reconciliation_20260901/evidence.md",
+          "sha256": "9247933ab798e60f04d02f82687a101953456003b65bb2cabb41f52bfb611508"
+        }
+      ],
+      "boundary": "after all implementation PRs integrated"
+    },
+    {
+      "id": "PROMPT-16-TO-20",
+      "from_prompt": 16,
+      "to_prompt": 20,
+      "source_issue": 343,
+      "consumer_issue": 351,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/zenodo-identity-correction.json",
+          "sha256": "eb9e3fc21bad482691814a45791c5e0ca6ef43658f70d2241ec9f56f335b737a"
+        },
+        {
+          "path": "conductor/tracks/zenodo_identity_correction_20260902/evidence.md",
+          "sha256": "ed766d4cce9816f1776cbb0733881fd2ed94d9f9779c650fd8b9576fd74ec360"
+        }
+      ],
+      "boundary": "after all implementation PRs integrated"
+    },
+    {
+      "id": "PROMPT-17-TO-20",
+      "from_prompt": 17,
+      "to_prompt": 20,
+      "source_issue": 345,
+      "consumer_issue": 351,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/evidence-index.json",
+          "sha256": "e23a0f1024819f3198c343f574e8cd202f25da3c77d2a477ff824fed2ec4cccf"
+        },
+        {
+          "path": "conductor/tracks/legislation_evidence_index_20260902/evidence.md",
+          "sha256": "f1ec7a114f7262dbe7354a3242e6fb612db414e250e56f0e47aa087bf5d7de4f"
+        }
+      ],
+      "boundary": "after all implementation PRs integrated"
+    },
+    {
+      "id": "PROMPT-18-TO-20",
+      "from_prompt": 18,
+      "to_prompt": 20,
+      "source_issue": 347,
+      "consumer_issue": 351,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/cutover-release-provenance/cutover-release-provenance-correction.json",
+          "sha256": "cbd657d80d9d3b83b7b3778db5b30243b530b708e98e668ead22aaa43e28a52a"
+        },
+        {
+          "path": "conductor/tracks/cutover_release_provenance_correction_20260902/evidence.md",
+          "sha256": "9d6acb3c89b8fa430b83036ac3e27a1703544e5f336712a60827d6039795f24c"
+        }
+      ],
+      "boundary": "after all implementation PRs integrated"
+    },
+    {
+      "id": "PROMPT-19-TO-20",
+      "from_prompt": 19,
+      "to_prompt": 20,
+      "source_issue": 349,
+      "consumer_issue": 351,
+      "status": "passed",
+      "artifacts": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/donor-git-bundle/external-action-receipt-20260903.json",
+          "sha256": "690c7ca5ee1d0854c645e072e6a1c8ac60dfd5eac49d40d286ef0d9325e25950"
+        }
+      ],
+      "boundary": "after all implementation PRs integrated"
+    },
+    {
+      "id": "PROMPT-20-TO-21",
+      "from_prompt": 20,
+      "to_prompt": 21,
+      "source_issue": 351,
+      "consumer_issue": 356,
+      "status": "in_progress",
+      "artifacts": [
+        {
+          "url": "https://github.com/edithatogo/archive-govt-nz/issues/351",
+          "verification": "live issue and run observations; no local receipt hash implied"
+        }
+      ],
+      "boundary": "terminal independent gate"
+    }
+  ],
+  "material_defect_owners": [
+    {
+      "defect": "final donor lineage",
+      "owner_prompt": 2,
+      "issue": 278
+    },
+    {
+      "defect": "wrong concept DOI",
+      "owner_prompt": 16,
+      "issue": 343,
+      "followup_issues": [
+        357
+      ]
+    },
+    {
+      "defect": "workflow lint and CodeQL",
+      "owner_prompt": 20,
+      "issue": 351,
+      "followup_issues": [
+        352,
+        353
+      ]
+    },
+    {
+      "defect": "main enforcement",
+      "owner_prompt": 20,
+      "issue": 351,
+      "followup_issues": [
+        354
+      ]
+    },
+    {
+      "defect": "parent-state v3 compatibility",
+      "owner_prompt": 8,
+      "issue": 312,
+      "followup_issues": [
+        359
+      ],
+      "consumer_prompt": 12
+    },
+    {
+      "defect": "operational continuation sealing",
+      "owner_prompt": 13,
+      "issue": 335,
+      "followup_issues": [
+        380,
+        385,
+        393
+      ]
+    }
+  ],
+  "active_writer_ownership": [
+    {
+      "owner_prompt": 15,
+      "paths": [
+        "config/legislation/huggingface-publication-registry.json",
+        "evidence/migrations/corpus-legislation-nz/huggingface-publication/"
+      ]
+    },
+    {
+      "owner_prompt": 20,
+      "paths": [
+        "evidence/assurance/"
+      ]
+    },
+    {
+      "owner_prompt": 21,
+      "paths": [
+        "evidence/migrations/corpus-legislation-nz/post-cutover-final-verification dated superseding record"
+      ]
+    },
+    {
+      "owner_prompt": 1,
+      "paths": [
+        "conductor/tracks/legislation_post_cutover_state_and_publication_integrity_20260831/"
+      ]
+    }
+  ],
+  "shared_path_policy": "No concurrent writes to shared registry; hand off serially. Prompt21 final evaluation follows20; Prompt01 final status follows21.",
+  "unique_material_defect_ownership_gate": "in_progress",
+  "reason": "All supplied prompts registered; final defect inventory subject to terminal independent verification."
+}
