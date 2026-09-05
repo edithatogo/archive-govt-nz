@@ -1,0 +1,77 @@
+{
+  "schema_version": "health-normalization-validation/v1",
+  "base_commit": "c5233ae7",
+  "scope": "phase_3_1_exact_json_arrow_prerequisite",
+  "status": "focused_passed_combined_full_gate_delegated_to_parent",
+  "recorded_at": "2026-09-05T14:18:41Z",
+  "suite_retry": {
+    "command": "COVERAGE_CORE=ctrace PYTHON_JIT=0 uv run --locked pytest --cov=archive_govt_nz --cov-branch --cov-report=term -n 2 --dist loadscope -q",
+    "exit_code": 2,
+    "tests_passed_before_interrupt": 1553,
+    "status": "interrupted_by_agent_at_user_request_to_avoid_parent_harness_contention",
+    "combined_full_checks_owner": "parent_after_integration"
+  },
+  "red": {
+    "command": ["uv", "run", "--locked", "pytest", "tests/schemas/test_health_recordset_normalization.py", "-q"],
+    "exit_code": 2,
+    "reason": "ModuleNotFoundError for not-yet-implemented normalization module"
+  },
+  "initial_focused": {
+    "tests_passed": 32,
+    "line_and_branch_coverage_percent": 100
+  },
+  "final_focused": {
+    "command": "COVERAGE_CORE=ctrace PYTHON_JIT=0 uv run --locked pytest tests/schemas/test_health_recordset_normalization.py tests/schemas/test_health_recordset_json.py tests/schemas/test_health_recordsets.py -q --cov=archive_govt_nz.schemas.health_recordset_normalization --cov-branch --cov-report=term-missing",
+    "exit_code": 0,
+    "tests_passed": 117,
+    "statements": 60,
+    "branches": 16,
+    "line_and_branch_coverage_percent": 100
+  },
+  "post_test_assurance": {
+    "command": "COVERAGE_CORE=ctrace PYTHON_JIT=0 uv run --locked python -c 'from archive_govt_nz.assurance import build_stages, run_stages; stages = build_stages(); start = next(i for i, stage in enumerate(stages) if stage.name == \"schemas\"); raise SystemExit(run_stages(stages[start:]))'",
+    "exit_code": 0,
+    "schemas": 48,
+    "representative_documents": 38,
+    "parity_passed": 9,
+    "repository_mutation_stages": "passed",
+    "hygiene_and_cas_benchmark": "passed",
+    "audit_licenses_secrets_sbom": "passed",
+    "sbom_components": 112
+  },
+  "cold_mutation": {
+    "command": "COVERAGE_CORE=ctrace PYTHON_JIT=0 uv run --locked pytest tests/schemas/test_health_recordset_normalization.py -q --gremlins --gremlin-targets=src/archive_govt_nz/schemas/health_recordset_normalization.py --gremlin-workers=1 --gremlin-clear-cache --gremlin-no-coverage-filter --strict-pardons --max-pardons=0 --gremlin-report=console,json",
+    "exit_code": 0,
+    "killed": 35,
+    "total": 35,
+    "survived": 0,
+    "errors": 0,
+    "timeouts": 0,
+    "pardoned": 0,
+    "cache_hits": 0,
+    "report_sha256": "c3d664b8b126757caa6299afbab9e66ba5ea93f48e165376192f2d9c60e016b6",
+    "source_sha256": "48406dc9069e497780f84ee34ac6eef4206eb983b1aab396cb9063db8d3e4ea8",
+    "test_sha256": "3b6ef731c203bc5c34919de6d0f22c86189de9f63d4acfcefd6ca6acfe5ff1ae"
+  },
+  "initial_repository_gate": {
+    "command": "COVERAGE_CORE=ctrace PYTHON_JIT=0 PYTEST_XDIST_AUTO_NUM_WORKERS=4 ./scripts/validate.sh",
+    "exit_code": 1,
+    "tests_passed": 4829,
+    "tests_failed": 2,
+    "coverage_percent": 97.62,
+    "failure_kind": "Hypothesis FailedHealthCheck input generation too slow",
+    "failed_tests": [
+      "tests/health/test_health_discovery.py::test_deduplication_is_metamorphic_under_scope_order",
+      "tests/domains/test_legislation.py::test_legislation_manifest_root_is_order_invariant"
+    ],
+    "overlapping_work": "cold normalization mutation run",
+    "recovery": "retry suite without overlapping mutation work; preserve both original tests"
+  },
+  "boundaries": {
+    "main_and_other_worktrees_edited": false,
+    "global_registry_edited": false,
+    "source_payloads_read_or_modified": false,
+    "rights_decisions_made": false,
+    "push_merge_or_publication": false
+  }
+}

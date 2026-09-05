@@ -190,6 +190,11 @@ loss accounting but does not itself claim normalization or source completeness.
 
 ## Silver domain model
 
+The opt-in [exact normalization boundary](./recordset-normalization.md) converts
+decoded JSON rows into the eight Arrow shapes after local identity uniqueness,
+time-order and decimal/null consistency checks. It preserves unknown source
+context and does not substitute for source-specific semantic or lineage review.
+
 The additive [record-set registry](./recordset-contracts.md) specifies eight
 versioned structural Arrow shapes without rewriting source-specific v1 tables.
 Its bounded Decimal128 carrier preserves representable source values; future

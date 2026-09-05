@@ -2073,3 +2073,41 @@ resource warnings, 68.81 seconds, 97.53% coverage, 48 schemas / 38 documents,
 9/9 parity, all mutation and supply-chain gates, and 111 SBOM components. Final
 native log SHA-256:
 `4b988cfe7a65ec04b6c166230303f84a091a1d65afba83e03f610087fa11e690`.
+
+## 2026-09-05 — Phase 3.1 exact normalization prerequisite
+
+Created `codex/health-normalization-contracts-20260905` in an independent
+worktree at user-requested `c5233ae7`. Read canonical Conductor implement/review
+instructions, project workflow, VCS handshake and track contracts. Initial
+`uv run --locked python tools/validate_conductor_state.py` passed 92 tracks.
+Inspected main's three pending fixture/test paths read-only; did not copy or
+edit them. No subagent spawn capability was available; independent validation
+commands were parallelized and the diff was reviewed directly.
+
+Added a bounded prerequisite task under 3.1 before source edits. The focused
+pytest command in `normalization-validation.json` first exited 2 because the
+new module did not exist. Implemented opt-in exact conversion without changing
+the structural registry, source adapters or publication paths. All 32 focused
+tests passed with 100% line/branch coverage. Ruff and scoped Pyright findings
+were corrected; global format/lint/basedpyright subsequently passed.
+
+The cold, unfiltered, one-worker mutation command in the receipt killed all
+35 mutants, with no survivors, timeouts, errors, pardons or cache hits. Initial
+full harness: 4,829 passed, two Hypothesis slow-generation health checks failed
+in existing discovery/legislation tests, 97.62% coverage. The mutation lane
+overlapped this first suite run; preserve the failure and retry without that
+overlap. Neither failing test was edited. Separate continuation starts at the
+existing harness's `schemas` stage to exercise gates skipped after test failure.
+
+Final validation results and local commit are recorded in the paired receipt
+and the bookkeeping entry below; no hosted execution is inferred.
+
+Parent coordination update: user reported a parent two-worker full harness and
+assigned combined checks after integration. Stopped this worktree's retry with
+SIGINT to its verified pytest PID; exit 2 after 1,553 passing tests, no completed
+retry claim. Final focused schema/normalization suite passed 117 tests with
+60 statements/16 branches at 100%. All post-test harness stages passed,
+including 48 schemas/38 documents, 9/9 parity, repository mutation lanes,
+hygiene/CAS benchmark, audit/licences/secrets and 112-component validated SBOM.
+This closes the bounded local implementation; the full combined gate remains
+with the parent. Global registry status stays in progress without edits.

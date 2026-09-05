@@ -220,6 +220,18 @@ repository validation command. External gates block only their affected task.
 
 ### 3.1 Schema contracts first
 
+- [x] Add an opt-in exact JSON-to-Arrow normalization boundary and synthetic
+  eight-recordset contracts for duplicate IDs, time ordering, null reasons and
+  declared decimal precision. Preserve unknown units and rights verbatim;
+  source semantics and cross-record lineage closure remain separate.
+  [M-05, M-06, M-18; AC-05, AC-16]
+
+  Bounded prerequisite only: 117 focused tests, 100% new-module coverage,
+  35/35 cold mutants. Full combined checks are assigned to the parent after
+  integration per the user's coordination instruction; see
+  `normalization-validation.json`. Neither original broad fixture task nor
+  the whole Phase 3 checkpoint is completed by this increment.
+
 - [x] Export independent JSON row-shape schemas from the eight Arrow contracts,
   preserving nullable fields, exact decimal strings and fixed record-set/version
   constants. Test formats and representation bounds without claiming semantic

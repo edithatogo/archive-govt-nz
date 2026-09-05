@@ -15,6 +15,9 @@ every planned record set, measure or operational workflow.
 
 ## Artifacts
 
+- [Exact record-set normalization prerequisite](./recordset-normalization.md)
+- [Normalization validation receipt](./normalization-validation.json)
+
 - [Metadata standards and verified local DCAT route](./metadata-standards-route.md)
 
 - [Exclusive local resume execution](./resume-execution.md)

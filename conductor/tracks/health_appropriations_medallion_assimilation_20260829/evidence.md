@@ -606,3 +606,20 @@ supply-chain gates. The durable log hashes to
 This satisfies local assurance for the bounded structural registry; row-level
 validation, canonical projections, full Phase 3 completion and hosted delivery
 are not inferred from it. No existing source package or publication changed.
+
+## 2026-09-05 — Exact normalization prerequisite
+
+See [contract and limits](./recordset-normalization.md) and the
+[machine validation receipt](./normalization-validation.json). Final focused
+schema/normalization checks passed 117 tests and reached 100% line/branch
+coverage for all 60 statements/16 branches of the new module. Cold mutation
+killed all 35 mutants with zero other outcomes or cache hits. All post-test
+repository assurance stages passed, including schema/parity, mutation,
+audit/licences/secrets and the validated 112-component SBOM.
+
+The first full suite had 4,829 passes and two existing Hypothesis generation
+timing failures, at 97.62% overall coverage. A two-worker retry was interrupted
+after 1,553 passes on the user's parent-harness coordination instruction.
+Combined full validation is delegated to the parent after integration; this is
+not a full-harness pass or whole Phase 3 completion claim. The global registry,
+main's pending schema fixtures and all other worktrees remain unedited.
