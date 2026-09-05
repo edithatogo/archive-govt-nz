@@ -29,10 +29,17 @@ def verify_rollout(rollout_path: Path, evidence_dir: Path) -> dict[str, Any]:
     entity_ids = [row["entity_id"] for row in entities]
     source_ids = [row["source_id"] for row in sources]
     missing_evidence = []
+    invalid_evidence = []
     for row in sources:
         reference = row["capture_evidence"]
         if not _evidence_exists(reference, evidence_dir):
             missing_evidence.append(
+                {"source_id": row["source_id"], "evidence": reference}
+            )
+        elif reference != "separate_pilot_receipt_required" and not _receipt_matches(
+            evidence_dir / reference, row
+        ):
+            invalid_evidence.append(
                 {"source_id": row["source_id"], "evidence": reference}
             )
     summary = rollout["summary"]
@@ -99,10 +106,12 @@ def verify_rollout(rollout_path: Path, evidence_dir: Path) -> dict[str, Any]:
         "unreferenced_sources": unreferenced_sources,
         "cross_entity_sources": cross_entity_sources,
         "missing_evidence": missing_evidence,
+        "invalid_evidence": invalid_evidence,
         "summary_matches": summary == calculated,
         "calculated_summary": calculated,
         "valid": not (
             missing_evidence
+            or invalid_evidence
             or summary != calculated
             or duplicate_entities
             or duplicate_sources
@@ -112,3 +121,15 @@ def verify_rollout(rollout_path: Path, evidence_dir: Path) -> dict[str, Any]:
             or cross_entity_sources
         ),
     }
+
+
+def _receipt_matches(path: Path, source: dict[str, Any]) -> bool:
+    try:
+        receipt = json.loads(path.read_bytes())
+    except OSError, ValueError:
+        return False
+    return (
+        isinstance(receipt, dict)
+        and receipt.get("source_id") == source["source_id"]
+        and ("entity_id" not in receipt or receipt["entity_id"] == source["entity_id"])
+    )

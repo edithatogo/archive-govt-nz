@@ -2594,7 +2594,7 @@
       "source_denominator": null,
       "schedule_active": false,
       "publication_approved": false,
-      "capture_evidence": "nz-metadata-disposition-20260905.json"
+      "capture_evidence": "separate_pilot_receipt_required"
     },
     {
       "source_id": "ar-information-publica",
