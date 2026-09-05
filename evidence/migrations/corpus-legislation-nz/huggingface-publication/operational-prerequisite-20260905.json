@@ -1,0 +1,72 @@
+{
+  "schema_version": "archive-govt-nz.hf-operational-prerequisite/v1",
+  "status": "verified",
+  "observed_at": "2026-09-05T06:33:04.798545+00:00",
+  "target_main_commit": "f2669f1ce6ae48f3e09387608acbb8c58aa20334",
+  "donor_presentation_commit": "905f9e07c17af9d9d25dbe2b1c052fb8a290a4e3",
+  "donor_archived": true,
+  "run": {
+    "id": 33800180992,
+    "run_attempt": 1,
+    "head_sha": "95d5e0959158df3e5f816b012b66049135ff3d54",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/33800180992",
+    "created_at": "2026-09-03T20:05:07Z",
+    "updated_at": "2026-09-03T20:15:35Z"
+  },
+  "artifact": {
+    "id": 9911101072,
+    "size_bytes": 9047,
+    "sha256": "548d66784856f295d01ff385f98c4162eb8e0aa84cd4252f66884481f70ca3c1",
+    "remote_digest_matched": true
+  },
+  "receipts": [
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/huggingface-publication/operational-run-33800180992/continuation.json",
+      "sha256": "f950516c731a41a2a01e636024fb3d30ee19951d7dcdc49da0ceee2836272ab9",
+      "size_bytes": 1470,
+      "artifact_member": "build/legislation-state/receipts/continuation.json"
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/huggingface-publication/operational-run-33800180992/harvest.json",
+      "sha256": "7368c93fb37a5ab4fe41f790002ff4e4ffc78fdcca5b61f26e0ca63292a64b41",
+      "size_bytes": 94927,
+      "artifact_member": "build/legislation-state/receipts/harvest.json"
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/huggingface-publication/operational-run-33800180992/parent-lineage.json",
+      "sha256": "b4e08770f7acfc4e545b882825f0f55ed0433b5d9acac72e10d7bbd6f17113d3",
+      "size_bytes": 2521,
+      "artifact_member": "build/legislation-state/receipts/parent-lineage.json"
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/huggingface-publication/operational-run-33800180992/reconciliation.json",
+      "sha256": "a35c70490bdc80d7371014f80a288e57c4ed2be5b5e427c18242e0aa98802f66",
+      "size_bytes": 967,
+      "artifact_member": "build/legislation-attempt/reconciliation.json"
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/huggingface-publication/operational-run-33800180992/restoration-receipt.json",
+      "sha256": "62739035d07dab5d51abbf5545a4ad79397e3ceb499e33c66d849eec2228a84d",
+      "size_bytes": 148,
+      "artifact_member": "build/legislation-parent-quarantine/restoration-receipt.json"
+    }
+  ],
+  "publication_scope": {
+    "published_records": 552,
+    "operational_cumulative_records": 904,
+    "operational_batch_records": 852,
+    "reviewed_work_ids": 500,
+    "continuation_published_to_huggingface": false,
+    "relationship": "The published 552-record durable state was independently recovered and used as the successful 500-work run parent. The 904-record continuation is hosted operational evidence, not a new Hugging Face publication."
+  },
+  "supersedes_prerequisite_receipt": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/500-work-target-revalidation.json",
+  "retained_failed_runs": [
+    33772828586,
+    33774317947,
+    33781603950,
+    33785045808,
+    33794784825
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "schema_version": "archive-govt-nz.legislation-huggingface-registry/v2",
+  "schema_version": "archive-govt-nz.legislation-huggingface-registry/v3",
   "origin": {
     "authority_repository": "edithatogo/archive-govt-nz",
     "target_commit": "ff01566b5e6fff2f4e2b5f93ecdec11bb0c3c7e8",
@@ -29,8 +29,8 @@
     "status": "published_verified",
     "remote_write_authorized": true,
     "authorization_date": "2026-09-03",
-    "prompt13_operational_proof": false,
-    "prompt13_receipt_sha256": "5396f35f4f4061f0c7235414e07d685cf6b3cad1d3a03f8ba97e95216f0c5d16",
+    "prompt13_operational_proof": true,
+    "prompt13_receipt_sha256": "bcfa99bedd7b08bf6a4c079c08fe61c2a3d752210095c0476fb7b54df5cd9411",
     "payload_rights": "approved_public_selected_552",
     "durable_package_revision": "ae4da4ef0446f68fddd8f53279ecb1245f1529b9",
     "metadata_revision": "04688f12dd687618e2085ae31f9b8a4a50a88b16",
