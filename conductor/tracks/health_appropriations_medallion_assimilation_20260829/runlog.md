@@ -1,5 +1,16 @@
 # Run Log
 
+## RDF delivery closeout — 2026-09-05T08:32:58Z
+
+The clarified-head full harness terminated with exit 0; all 4,774 tests and
+all subsequent gates passed. GitHub CI run 33955010646 passed all three
+platforms. All eight PR checks were successful and the sole review thread
+was resolved before merging PR #401 with exact-head matching.
+Merge readback: `c92c3d2f717b55537b5d338d430689125e95fa66`, 08:32:53Z.
+The merged tree equals `f111dbf0`. Created a clean bookkeeping branch from
+that main revision; reconciled only six bounded implemented/reviewed tasks.
+No source acquisition, hosted operational retry or publication occurred.
+
 ## RDF full assurance and review clarification — 2026-09-05 UTC
 
 `./scripts/validate.sh` completed successfully on `fc672e0b`: 4,774 tests,

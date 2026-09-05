@@ -83,11 +83,12 @@ repository validation command. External gates block only their affected task.
   schemas. [M-02, M-11; AC-03, AC-09]
   Historical scope and unresolved editions are recorded in
   `historical-source-register.json`; link discovery does not establish capture.
-- [~] Review fix: isolate invariant legislation fixtures from generated archive
+- [x] Review fix: isolate invariant legislation fixtures from generated archive
   ordering and union-algebra examples; retain all strategies, deadlines and
-  semantic assertions, then verify full assurance. [M-18; AC-16]
-- [~] Review fix: give historical discovery rows stable URL-derived source IDs
+  semantic assertions, then verify full assurance. [M-18; AC-16; d1f2ff31]
+- [x] Review fix: give historical discovery rows stable URL-derived source IDs
   and verify uniqueness without substituting locator identity for byte fixity.
+  [d1f2ff31; full assurance f111dbf0]
 - [ ] Enumerate the exact official CPI, QES wage, population, GDP and Crown
   expense series needed for approved derived measures; reject discovery leads
   that lack a stable definition or join. [M-02, M-12; AC-03, AC-10]
@@ -540,24 +541,24 @@ repository validation command. External gates block only their affected task.
 
 ### 7.1 Metadata and rights contracts first
 
-- [~] Review clarification: explicitly load the JSON-LD parser plugin without
+- [x] Review clarification: explicitly load the JSON-LD parser plugin without
   an unguarded warm-up parse; retain offline positive/negative fixtures and
-  revalidate the exact change. [M-14, M-18; AC-14, AC-16]
+  revalidate the exact change. [M-14, M-18; AC-14, AC-16; f111dbf0]
 
-- [~] Validate generated DCAT and PROV JSON-LD with an offline RDF processor:
+- [x] Validate generated DCAT and PROV JSON-LD with an offline RDF processor:
   compare expanded predicates, resource/literal types, checksum bytes and exact
   derivation edges; deny external context/file/network reads. Keep application
-  profiles, rights, publication and graph indexing separate. [M-14; AC-14]
+  profiles, rights, publication and graph indexing separate. [M-14; AC-14; c92c3d2f]
 
-- [~] DCAT standards review: use the registered Parquet media-type IRI and
+- [x] DCAT standards review: use the registered Parquet media-type IRI and
   expose verified payload SHA256 values through typed SPDX checksum nodes;
-  independently compare graph digests with retained file bytes. [M-14; AC-14]
+  independently compare graph digests with retained file bytes. [M-14; AC-14; 791845bc]
 
-- [~] Generate local DCAT recordset/distribution metadata only after original,
+- [x] Generate local DCAT recordset/distribution metadata only after original,
   raw and canonical package verification and projection equality. Retain exact
   physical-schema/fixity inventory; reject forged or altered inputs and do not
   infer access URLs, licensing, publication dates or full standards conformance.
-  [M-14, M-18; AC-14, AC-16]
+  [M-14, M-18; AC-14, AC-16; 791845bc]
 
 - [~] Compose a read-only local provenance verifier for explicit canonical
   historical/classification marker pins, original objects and raw package pins.

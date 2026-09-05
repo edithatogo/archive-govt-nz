@@ -4,7 +4,20 @@
   "type": "feature",
   "status": "in_progress",
   "created_at": "2026-08-29T05:39:14Z",
-  "updated_at": "2026-09-05T08:02:18Z",
+  "updated_at": "2026-09-05T08:32:58Z",
+  "local_rdf_validation": {
+    "status": "merged_after_full_local_and_eight_hosted_checks",
+    "pull_request": 401,
+    "hosted_head": "f111dbf0d7148c13c9fa69caba86c5ebf0506c06",
+    "merge_commit": "c92c3d2f717b55537b5d338d430689125e95fa66",
+    "hosted_ci_run": 33955010646,
+    "focused_tests": 47,
+    "full_tests": 4774,
+    "full_coverage_percent": 97.61,
+    "application_profile_validation": "not_performed",
+    "rights_state": "not_evaluated",
+    "publication_state": "local_validation_only"
+  },
   "historical_source_discovery": {
     "receipt": "historical-source-register.json",
     "status": "partial_metadata_only",
