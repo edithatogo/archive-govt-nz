@@ -85,19 +85,13 @@ repository validation command. External gates block only their affected task.
   `historical-source-register.json`; link discovery does not establish capture.
 - [x] Review fix: isolate invariant legislation fixtures from generated archive
   ordering and union-algebra examples; retain all strategies, deadlines and
-  semantic assertions, then verify full assurance. [M-18; AC-16]
+  semantic assertions, then verify full assurance. [M-18; AC-16; d1f2ff31]
 - [x] Review fix: give historical discovery rows stable URL-derived source IDs
   and verify uniqueness without substituting locator identity for byte fixity.
-  Both review fixes passed the full local gate and all three hosted platform
-  gates in PR #414 (merge `4b1764bb`); source census completion remains separate.
-- [~] Enumerate the exact official CPI, QES wage, population, GDP and Crown
+  [d1f2ff31; full assurance f111dbf0]
+- [ ] Enumerate the exact official CPI, QES wage, population, GDP and Crown
   expense series needed for approved derived measures; reject discovery leads
   that lack a stable definition or join. [M-02, M-12; AC-03, AC-10]
-  Context-family selectors and retained Crown ranges are recorded in
-  `context-census.json`. Population definition enumeration is complete in
-  `population-context.json`: national/all-age DPE054AA selectors, quarterly
-  dates, 2023 base and August-2026 vintage. Numeric capture and analytical
-  denominator qualification remain separate; no interpolation was selected.
 - [x] Evaluate published aggregate Health Survey indicators as a non-blocking
   Should item; include only if a documented analytical question, stable
   time/geography contract and public rights evidence exist. [S-05; AC-10]
@@ -184,27 +178,11 @@ repository validation command. External gates block only their affected task.
 
 ### 2.1 Bronze integrity contracts first
 
-- [x] Add failing tests for streaming single-pass ingestion, expected-length
+- [ ] Add failing tests for streaming single-pass ingestion, expected-length
   mismatch, SHA-256/BLAKE3/CID identity, CAS deduplication, atomicity, WARC
   linkage, resume, interruption, unchanged/changed observations, corrupt ZIPs,
   withdrawal, restriction and tombstones. [M-03, M-04, M-18, S-01, S-02;
   AC-01, AC-02, AC-04, AC-16]
-  Audited shared/health contracts; added 23 tests and fixed identity-encoded
-  HTTP length mismatch before CAS/WARC promotion. 129 affected tests pass;
-  98.99% scoped coverage, three length-guard mutants killed in the initial slice.
-  The final redirect-boundary follow-up now has 169 affected tests passing and
-  100% capture line/branch coverage without exclusions; see
-  `bronze-redirect-boundary.md`. Full assurance, independent review and protected
-  delivery completed in PR #421 (merge `2c76fc3c`); strict WARC/source/CAS binding
-  and malformed-record regressions are included. See `ordered-delivery-20260907.md`.
-  Encoded transport-body length has 11 additional executable
-  cases and four killed mutants; see `bronze-wire-length.md` (161 affected
-  tests pass). Cooperative per-resource resume and non-overwriting
-  WARC paths now have 149 affected passing tests and 100% runner coverage;
-  see `bronze-checkpoint-contracts.md`. Preceding audit:
-  `bronze-ingestion-contracts.md` and `bronze-ingestion-validation.json`.
-  Process-death ownership recovery now passes a real kill/resume contract,
-  without PID-based lock deletion; see `bronze-process-recovery.md`.
 - [x] Add a 23-path donor-manifest contract that fails on any omitted path,
   altered byte, wrong Git mode/blob, length mismatch or archive-digest drift.
   [M-01, M-03, M-18; AC-01, AC-16]
@@ -243,26 +221,6 @@ repository validation command. External gates block only their affected task.
 
 ### 3.1 Schema contracts first
 
-- [x] Harden exact normalization admission with bounded UTF-8 JSON arrays,
-  duplicate-member rejection, representable UTC timestamps and redacted Arrow
-  failures; extend all-eight-set negative and Parquet replay fixtures.
-  [M-05, M-06, M-18; AC-05, AC-16]
-  Also revalidate already-decoded Arrow/Parquet rows against exact schema
-  metadata and local invariants. See `normalization-admission-validation.json`.
-  Functional commit `57d592df`.
-
-- [x] Add an opt-in exact JSON-to-Arrow normalization boundary and synthetic
-  eight-recordset contracts for duplicate IDs, time ordering, null reasons and
-  declared decimal precision. Preserve unknown units and rights verbatim;
-  source semantics and cross-record lineage closure remain separate.
-  [M-05, M-06, M-18; AC-05, AC-16]
-
-  Functional commit `95a5638a`. Bounded prerequisite only: 117 focused tests, 100% new-module coverage,
-  35/35 cold mutants. Full combined checks are assigned to the parent after
-  integration per the user's coordination instruction; see
-  `normalization-validation.json`. Neither original broad fixture task nor
-  the whole Phase 3 checkpoint is completed by this increment.
-
 - [x] Export independent JSON row-shape schemas from the eight Arrow contracts,
   preserving nullable fields, exact decimal strings and fixed record-set/version
   constants. Test formats and representation bounds without claiming semantic
@@ -276,34 +234,16 @@ repository validation command. External gates block only their affected task.
   Functional commit `d67bd41`; 34 focused tests, 30 cold mutant kills and a
   full local harness pass with 2,424 tests. Hosted delivery remains separate.
   [M-05, M-06, M-18; AC-05, AC-16]
-- [x] Add failing JSON Schema/Arrow/Parquet fixtures for the eight required
+- [ ] Add failing JSON Schema/Arrow/Parquet fixtures for the eight required
   `health_appropriations` record sets, versioning, stable IDs, fixed-precision
   money, null reasons, units, vintages, bitemporal fields, rights and lineage.
   [M-05, M-06, M-18; AC-05, AC-16]
-  Initial fixture commit `7d2eafc8`; completed with linked synthetic Bronze,
-  approved adapter ID/lineage replay and corruption assertions (166 new cases
-  total; 673 affected tests pass). See `eight-recordset-fixture-completion.md`
-  and `eight-recordset-fixture-completion.json`. The initial assessment
-  incorrectly treated live/source qualification as fixture blockers; corrected
-  without closing those separate tasks. Full integrated AC-16 checkpoint
-  remains assigned to the parent; no whole-phase completion claim.
-- [x] Add negative fixtures for binary-as-text decoding, unknown layouts,
+- [ ] Add negative fixtures for binary-as-text decoding, unknown layouts,
   ambiguous units, duplicate keys, incompatible periods, missing lineage,
   formula/cached-value ambiguity and unjustified classification mappings.
   [M-05, M-06, M-07, M-18; AC-05, AC-11, AC-16]
-  Covered for the existing bounded source profiles by new admission/readback
-  negatives plus existing source-layout/lineage/mapping contracts; see
-  `negative-fixture-matrix.md`. This does not qualify additional source families.
 
 ### 3.2 Implement the domain and adapter protocol
-
-- [x] Harden the existing read-only SQLite inventory adapter for URI-sensitive
-  source paths and quoted table identifiers; prove originals and neighboring
-  files remain unchanged and missing paths are not created. This is structural
-  inventory only, not row normalization or donor parity completion.
-  [M-03, M-07, M-18; AC-02, AC-03, AC-16]
-  Nine dedicated regression tests, 100% format-module coverage and 35 cold
-  format-module mutant kills; see `sqlite-inventory-boundary.md`.
 
 - [x] Project reviewed Budget-2025/2026 facts into canonical appropriation
   fields, composing existing unmapped source-label occurrences and complete
@@ -346,11 +286,9 @@ repository validation command. External gates block only their affected task.
 - [ ] Add schema fingerprints, adapter selection evidence, deterministic
   ordering/serialization, source-layout drift reports and fail-closed unknown
   layout handling. [M-05, M-07, M-18, S-04; AC-03, AC-05, AC-16]
-- [x] Demonstrate repeat normalization yields identical manifests and Parquet
+- [ ] Demonstrate repeat normalization yields identical manifests and Parquet
   content identity for the same inputs/environment. [M-10, M-16; AC-08,
   AC-12]
-  Supported profiles accepted after PR #428 protected merge; see
-  `ordered-delivery-20260907.md`. Not cross-runtime or all-future-adapter identity.
 
 ### 3.4 Phase review and checkpoint
 
@@ -364,19 +302,13 @@ repository validation command. External gates block only their affected task.
 
 ### 4.1 Donor normalization tests first
 
-- [x] Create red/golden tests for the donor's fiscal spending, GDP,
+- [ ] Create red/golden tests for the donor's fiscal spending, GDP,
   appropriation and HYEFU/BEFU summary extraction using Bronze-derived test
   fixtures; cover headers, footers, blanks, formulas, duplicates, units and
   source-layout failures. [M-07, M-08, M-18; AC-03, AC-06, AC-16]
-  Named selection fixtures accepted after PR #428 protected merge; see
-  `ordered-delivery-20260907.md`. Not every workbook area or repair approval.
-- [x] Create a row-level parity oracle for all five SQLite tables/312 rows and
+- [ ] Create a row-level parity oracle for all five SQLite tables/312 rows and
   a repair-ledger schema requiring source coordinates and rationale for every
   deviation. [M-08, M-18; AC-06, AC-11, AC-16]
-  Delivered in PR #421 (merge `2c76fc3c`), including generated-column rejection
-  and exact source-coordinate deviation accounting. This closes oracle/schema
-  implementation only; acceptance of the 29 restorations and one precision
-  difference remains pending. See `donor-parity.md` and `ordered-delivery-20260907.md`.
 
 ### 4.2 Build source-faithful donor Silver records
 
@@ -440,12 +372,9 @@ repository validation command. External gates block only their affected task.
 
 ### 4.4 Phase review and checkpoint
 
-- [x] Run the 23-file, 312-row, four-analysis-family and six-plot parity suites,
+- [ ] Run the 23-file, 312-row, four-analysis-family and six-plot parity suites,
   plus deterministic rebuild and unsupported-layout tests. [M-01, M-08,
   M-09, M-16; AC-01, AC-06, AC-07, AC-12]
-  Bounded parity acceptance is recorded in `parity-acceptance-20260908.md`;
-  donor repair approval, whole-area normalization and pixel-level equivalence
-  remain separate.
 - [ ] Self-review, full harness, and paired evidence; no parity claim may hide
   an unexplained difference. [M-18, M-19; AC-16]
 
@@ -614,31 +543,29 @@ repository validation command. External gates block only their affected task.
 
 - [x] Review clarification: explicitly load the JSON-LD parser plugin without
   an unguarded warm-up parse; retain offline positive/negative fixtures and
-  revalidate the exact change. [M-14, M-18; AC-14, AC-16]
+  revalidate the exact change. [M-14, M-18; AC-14, AC-16; f111dbf0]
 
 - [x] Validate generated DCAT and PROV JSON-LD with an offline RDF processor:
   compare expanded predicates, resource/literal types, checksum bytes and exact
   derivation edges; deny external context/file/network reads. Keep application
-  profiles, rights, publication and graph indexing separate. [M-14; AC-14]
+  profiles, rights, publication and graph indexing separate. [M-14; AC-14; c92c3d2f]
 
 - [x] DCAT standards review: use the registered Parquet media-type IRI and
   expose verified payload SHA256 values through typed SPDX checksum nodes;
-  independently compare graph digests with retained file bytes. [M-14; AC-14]
+  independently compare graph digests with retained file bytes. [M-14; AC-14; 791845bc]
 
 - [x] Generate local DCAT recordset/distribution metadata only after original,
   raw and canonical package verification and projection equality. Retain exact
   physical-schema/fixity inventory; reject forged or altered inputs and do not
   infer access URLs, licensing, publication dates or full standards conformance.
-  [M-14, M-18; AC-14, AC-16]
+  [M-14, M-18; AC-14, AC-16; 791845bc]
 
 - [x] Compose a read-only local provenance verifier for explicit canonical
   historical/classification marker pins, original objects and raw package pins.
   Compare retained tables/accounting with recomputed pure projections and return
   separate scoped fixity evidence; do not change the pure descriptor helper's
-  claims or declare Platinum/publication complete. [M-14, M-16, M-18; AC-14, AC-16]
-  These five scoped clauses match merged PRs #414/#415 and their successful
-  hosted gates. Independent review reran 188 focused tests on 2026-09-07.
-  See `integration-review-20260907.md`; broader Phase 7 acceptance remains open.
+  claims or declare Platinum/publication complete. [M-14, M-16, M-18; AC-14, AC-16;
+  merged reader evidence and full assurance]
 
 - [x] Project validated typed local descriptors into an entity-only PROV
   JSON-LD graph with exact product-to-input derivation edges, retaining the
