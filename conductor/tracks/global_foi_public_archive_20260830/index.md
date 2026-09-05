@@ -50,3 +50,14 @@ Approved track in progress. Automation repair and source-catalogue foundations a
 - [Verified shared deployment and private country-pilot replicas](shared-execution-deployment-20260831.json)
 - [Post-merge Windows runtime correction](postmerge-ci-timeout-20260831.json)
 - [Validation runtime failures and bounded repairs](validation-runtime-followup-20260831.json)
+
+## 2026-09-05 rollout receipts
+
+- [System readiness report](system-readiness-report-20260905.json)
+- [Corpus progress report](corpus-progress-report-20260905.json)
+- [Canada publication receipt](ca-huggingface-publication-receipt-20260905.json)
+- [Canada refresh manifest candidate](ca-public-only-manifest-candidate-20260905.json)
+- [Canada captured-job reconciliation](captured-job-reconciliation-20260905.json)
+- [Hosted health failure](hosted-health-failure-33955611192.json)
+- [NZ metadata disposition](nz-metadata-disposition-20260905.json)
+- [US numeric projection review](us-numeric-projection-review-20260905.json)
