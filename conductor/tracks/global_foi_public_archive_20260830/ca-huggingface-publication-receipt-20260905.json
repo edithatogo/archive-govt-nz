@@ -8,7 +8,9 @@
     "697affad7ac962b2e649df648f6ac3568f1289de",
     "791623a0f823f1111c6ac2d592c48e5bb58b3e87",
     "59b2c32150c11e0cd841977f5cd9a7de447e2456",
-    "04292927d982447203409b6c26715145ee4ed750"
+    "04292927d982447203409b6c26715145ee4ed750",
+    "8fa950daf2c2f9ceaa2665e510f32397cf2f75e0",
+    "09346a0bfb2ec7035a5f22e7bb07a3a59ade1526"
   ],
   "files": [
     {"path": "ati-nil.csv", "bytes": 657619, "sha256": "6782abe38a0be0412bc5271c4a094dcfc12b4640b0bf25663518efc0043c10a2"},
@@ -17,7 +19,7 @@
   ],
   "anonymous_direct_restore": "passed",
   "dataset_viewer_validation": "repair_uploaded_recheck_busy",
-  "viewer_repair": "README.md explicitly selects index.jsonl as default/train and documents manifest.json as non-tabular documentation",
+  "viewer_repair": "README.md explicitly selects index.jsonl as default/train; manifest moved to metadata/manifest.json and removed from data root to prevent schema collision",
   "hub_api": {"private": false, "sha": "59b2c32150c11e0cd841977f5cd9a7de447e2456"},
   "private_evidence_excluded": true
 }

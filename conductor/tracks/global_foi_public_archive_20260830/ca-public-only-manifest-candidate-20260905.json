@@ -15,7 +15,7 @@
   "public_files": [
     {"path": "ati-nil.csv", "sha256": "6782abe38a0be0412bc5271c4a094dcfc12b4640b0bf25663518efc0043c10a2"},
     {"path": "index.jsonl", "bytes": 1578794, "sha256": "cf01ac37cd8bd4eec4d795c7d713f438d0c9df74bb1e6b732e3e273275e6990f"},
-    {"path": "manifest.json", "status": "generated_and_hash_verified"}
+    {"path": "metadata/manifest.json", "status": "generated_and_hash_verified"}
   ],
   "private_files": ["source-metadata.json", "ati-schema.json", "licence.html"],
   "restore": {"anonymous_verified": false, "local_hash_verified": true, "required_before_public_upload": true},
