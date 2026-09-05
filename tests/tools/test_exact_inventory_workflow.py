@@ -102,8 +102,7 @@ def test_parent_preflight_cannot_acquire_or_upload() -> None:
     assert "preflight_only:" in text
     assert (
         "Verify parent and authenticated endpoint without payload acquisition "
-        "or state upload"
-        in text
+        "or state upload" in text
     )
     assert "default: false" in text
     assert "if: inputs.preflight_only" in text
