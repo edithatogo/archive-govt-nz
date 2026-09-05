@@ -4,7 +4,15 @@
   "type": "feature",
   "status": "in_progress",
   "created_at": "2026-08-29T05:39:14Z",
-  "updated_at": "2026-09-03T17:55:00Z",
+  "updated_at": "2026-09-05T07:00:07Z",
+  "historical_source_discovery": {
+    "receipt": "historical-source-register.json",
+    "status": "partial_metadata_only",
+    "edition_count": 30,
+    "new_resource_locators": 15,
+    "fully_enumerated_editions": 0,
+    "payload_capture_performed": false
+  },
   "gdp_profile_validation": {
     "status": "native_passed_hosted_pending",
     "functional_commit": "2cc7bc7",

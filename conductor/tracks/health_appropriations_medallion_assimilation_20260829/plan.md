@@ -76,11 +76,18 @@ repository validation command. External gates block only their affected task.
   Estimates/Supplementary Estimates across its observed 1998–2026 span; record
   exact edition, URL, media type, rights evidence and gap disposition. [M-02,
   M-11; AC-03, AC-09]
-- [ ] Enumerate annual Budget expenditure/revenue workbooks, BEFU/HYEFU
+- [~] Enumerate annual Budget expenditure/revenue workbooks, BEFU/HYEFU
   charts/core Crown expense/forecast files, the current Fiscal Time Series,
   Ministry of Health Vote Health series and Pharmac CPB series. Include Budget
   2025 seed inputs and Budget 2026 successors without assuming identical
   schemas. [M-02, M-11; AC-03, AC-09]
+  Historical scope and unresolved editions are recorded in
+  `historical-source-register.json`; link discovery does not establish capture.
+- [~] Review fix: isolate invariant legislation fixtures from generated archive
+  ordering and union-algebra examples; retain all strategies, deadlines and
+  semantic assertions, then verify full assurance. [M-18; AC-16]
+- [~] Review fix: give historical discovery rows stable URL-derived source IDs
+  and verify uniqueness without substituting locator identity for byte fixity.
 - [ ] Enumerate the exact official CPI, QES wage, population, GDP and Crown
   expense series needed for approved derived measures; reject discovery leads
   that lack a stable definition or join. [M-02, M-12; AC-03, AC-10]
