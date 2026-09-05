@@ -3,10 +3,22 @@
 from __future__ import annotations
 
 import json
-from typing import TYPE_CHECKING, Any
+from pathlib import Path
+from typing import Any
 
-if TYPE_CHECKING:
-    from pathlib import Path
+
+def _evidence_exists(reference: str, evidence_dir: Path) -> bool:
+    if reference == "separate_pilot_receipt_required":
+        return True
+    relative = Path(reference)
+    root = evidence_dir.resolve()
+    path = root / relative
+    return (
+        not relative.is_absolute()
+        and ".." not in relative.parts
+        and path.resolve().is_relative_to(root)
+        and path.is_file()
+    )
 
 
 def verify_rollout(rollout_path: Path, evidence_dir: Path) -> dict[str, Any]:
@@ -19,10 +31,7 @@ def verify_rollout(rollout_path: Path, evidence_dir: Path) -> dict[str, Any]:
     missing_evidence = []
     for row in sources:
         reference = row["capture_evidence"]
-        if (
-            reference != "separate_pilot_receipt_required"
-            and not (evidence_dir / reference).is_file()
-        ):
+        if not _evidence_exists(reference, evidence_dir):
             missing_evidence.append(
                 {"source_id": row["source_id"], "evidence": reference}
             )
@@ -42,6 +51,11 @@ def verify_rollout(rollout_path: Path, evidence_dir: Path) -> dict[str, Any]:
     }
     duplicate_entities = len(entity_ids) != len(set(entity_ids))
     duplicate_sources = len(source_ids) != len(set(source_ids))
+    duplicate_entity_source_links = sorted(
+        row["entity_id"]
+        for row in entities
+        if len(row["source_ids"]) != len(set(row["source_ids"]))
+    )
     entity_by_id = {row["entity_id"]: row for row in entities}
     source_by_id = {row["source_id"]: row for row in sources}
     dangling_entity_sources = sorted(
@@ -63,6 +77,13 @@ def verify_rollout(rollout_path: Path, evidence_dir: Path) -> dict[str, Any]:
             if source.get("entity_id") not in entity_by_id
             or source_id not in entity_by_id[source["entity_id"]].get("source_ids", [])
         }
+        | {
+            source_id
+            for entity in entities
+            for source_id in entity["source_ids"]
+            if source_id in source_by_id
+            and source_by_id[source_id].get("entity_id") != entity["entity_id"]
+        }
     )
     return {
         "schema_version": "archive-govt-nz.foi-rollout-integrity/v1",
@@ -74,6 +95,7 @@ def verify_rollout(rollout_path: Path, evidence_dir: Path) -> dict[str, Any]:
             {value for value in source_ids if source_ids.count(value) > 1}
         ),
         "dangling_entity_sources": dangling_entity_sources,
+        "duplicate_entity_source_links": duplicate_entity_source_links,
         "unreferenced_sources": unreferenced_sources,
         "cross_entity_sources": cross_entity_sources,
         "missing_evidence": missing_evidence,
@@ -84,6 +106,7 @@ def verify_rollout(rollout_path: Path, evidence_dir: Path) -> dict[str, Any]:
             or summary != calculated
             or duplicate_entities
             or duplicate_sources
+            or duplicate_entity_source_links
             or dangling_entity_sources
             or unreferenced_sources
             or cross_entity_sources

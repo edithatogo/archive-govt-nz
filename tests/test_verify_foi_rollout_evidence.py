@@ -3,10 +3,52 @@
 import json
 from pathlib import Path
 
+import pytest
+
 from archive_govt_nz.foi_rollout_evidence import verify_rollout
 
 ROOT = Path(__file__).parents[1]
 TRACK = ROOT / "conductor/tracks/global_foi_public_archive_20260830"
+
+
+@pytest.mark.parametrize("mode", ["cross_entity", "duplicate_link"])
+def test_rollout_rejects_ambiguous_entity_links(tmp_path: Path, mode: str) -> None:
+    """A source cannot be claimed twice, even when its correct owner lists it."""
+    rollout = json.loads((TRACK / "country-rollout-20260831.json").read_bytes())
+    source_id = rollout["entities"][0]["source_ids"][0]
+    index = 1 if mode == "cross_entity" else 0
+    rollout["entities"][index]["source_ids"].append(source_id)
+    path = tmp_path / "rollout.json"
+    path.write_text(json.dumps(rollout), encoding="utf-8")
+    report = verify_rollout(path, TRACK)
+    assert report["valid"] is False
+
+
+@pytest.mark.parametrize("mode", ["traversal", "absolute", "symlink"])
+def test_rollout_evidence_must_stay_inside_track(tmp_path: Path, mode: str) -> None:
+    """An existing unrelated file cannot satisfy the receipt existence gate."""
+    rollout = json.loads((TRACK / "country-rollout-20260831.json").read_bytes())
+    folder = tmp_path / "track"
+    folder.mkdir()
+    outside = tmp_path / "outside.json"
+    outside.write_text("{}", encoding="utf-8")
+    if mode == "traversal":
+        reference = "../outside.json"
+    elif mode == "absolute":
+        reference = str(outside)
+    else:
+        try:
+            (folder / "link.json").symlink_to(outside)
+        except OSError:
+            pytest.skip("symlink creation unavailable on this platform")
+        reference = "link.json"
+    for source in rollout["sources"]:
+        source["capture_evidence"] = "separate_pilot_receipt_required"
+    rollout["sources"][0]["capture_evidence"] = reference
+    path = folder / "rollout.json"
+    path.write_text(json.dumps(rollout), encoding="utf-8")
+    report = verify_rollout(path, folder)
+    assert report["valid"] is False
 
 
 def test_current_rollout_has_resolvable_evidence_and_consistent_counts() -> None:
