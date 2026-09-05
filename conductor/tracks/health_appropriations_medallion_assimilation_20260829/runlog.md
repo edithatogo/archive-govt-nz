@@ -34,6 +34,63 @@ The graph was generated in memory, not retained or uploaded. Script
 This covers those two historical snapshots, not every supported source family,
 whole-estate recovery, rights decisions or full standards validation.
 
+## Full-gate timing findings — 2026-09-05 UTC
+
+The two-worker full gate on `68c952de` terminated with exit 1: 4,743 passed,
+two failed, nine warnings, 97.61% coverage in 691.14 seconds. Archive-order
+invariance exceeded its 200-ms deadline at 426.71 ms; union algebra exceeded
+it at 401.61 ms and replayed at 95.95 ms. These are failed local assurance,
+not a pass. After fast-forwarding to stable-ID correction `e028f20c`, both
+properties and the register regression passed in isolation (3 tests, 6.85 s).
+
+Review moved invariant fixture construction outside the two generated property
+bodies. Archive unpacking, reordering, root verification, per-example record
+and checkpoint copies, and every algebra assertion remain inside the property.
+The original strategies and default deadlines remain unchanged; the obsolete
+function-scoped-fixture suppression is removed from the nested archive property.
+Fresh focused and hosted checks are required for this test-only correction.
+
+## Stable source-ID review fix — 2026-09-05 UTC
+
+Prepared in an isolated worktree while the two-worker full gate continued on
+`68c952de`. A red register test reproduced missing source IDs; the corrected
+15-row artifact passes deterministic URL-digest derivation and uniqueness.
+Focused pytest, Ruff and formatting passed. No source bytes, rights, publication
+or full-edition states changed. The original full run cannot validate this later
+correction; integration requires its own focused and Conductor checks plus
+hosted assurance. No full-pass claim is inferred from the focused result.
+
+## Historical inventory validation and continuation — 2026-09-05 UTC
+
+The required `./scripts/validate.sh` run on the initial inventory returned 1:
+4,735 tests passed, four Hypothesis timing checks failed, and overall coverage
+was 97.60%. Failures affected unrecognized receipt names, checkpoint JSON
+generation, union algebra and exact amount lineage. All four passed in isolation
+with seed 182042616212009531304200361229053514142 after integrating main through
+FOI merge `c3504f92`, including its fixture-setup correction. No deadlines,
+health checks or semantic assertions were suppressed.
+
+Added six observed 2023 workbook links and three 1997 BEFU table PDF links,
+bringing the register to 15. The expanded register test failed at six versus
+15 entries before the observations were added. Original fixity, source rights,
+other 1997 sections and full annual closure remain unverified. A corrected
+full two-worker run is pending; isolated successes do not replace full assurance.
+
+## Historical source enumeration — 2026-09-05 UTC
+
+Recorded the Treasury index's 30 Budget editions (1997–2026) and six observed
+2024 annual/BEFU/HYEFU workbook locators in `historical-source-register.json`.
+All editions retain pending full-enumeration status. This additive observation
+does not modify the earlier source census, imply byte identity with donor
+files, or grant capture/publication credit. A direct index request returned
+403 and was not retried; read-only web metadata retrieval supplied the cited
+observations. Workbook inspection was unsupported by the web reader.
+
+The register regression failed first on the absent artifact, then passed.
+Ruff, formatting and native Conductor validation (92 tracks, zero errors)
+passed; locked dependencies were installed in the isolated worktree. Full
+repository validation is pending. Phase 1.2 and the track remain in progress.
+
 ## Optional graph/vector evaluation — 2026-09-04
 
 - Re-read C-01/C-02, W-07, the Platinum design, and the existing generic

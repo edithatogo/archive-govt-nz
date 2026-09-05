@@ -22,6 +22,15 @@ Exact replay and mutation hashes are recorded in `runlog.md`. This adds actual
 historical-snapshot evidence without claiming all-source metadata coverage or
 persisted/released metadata. Full and hosted assurance remain pending.
 
+## Historical source enumeration — 2026-09-05 UTC
+
+See [the human register](./historical-source-register.md) and its paired
+[machine observation](./historical-source-register.json). These advance M-02
+and M-11 with 30 visible edition obligations and six exact workbook leads.
+The focused test `tests/tools/test_health_historical_source_register.py`
+passed after an observed missing-artifact failure. Full assurance, payload
+fixity, source rights and remaining annual enumeration are not established.
+
 ## Pure historical canonical consumer — 2026-09-03 UTC
 
 Commits `02d36bc` and `13e8d85` add an in-memory bridge that accepts only an

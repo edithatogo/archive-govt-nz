@@ -24,6 +24,42 @@ returned six separate recordsets and unchanged input hashes in both input
 orders. Full/hosted assurance still remains outstanding; there is no source
 rights promotion or permanent metadata-output retention in this replay.
 
+## Validation fixture isolation — 2026-09-05 UTC
+
+The local two-worker run on `68c952de` failed two existing property deadlines
+(4,743 passed, two failed). Both properties recreate invariant source fixtures
+inside the timed body. The correction constructs those fixtures once, outside
+nested generated examples. It keeps archive unpack/reorder/root checks timed,
+preserves all union assertions and strategies, and gives each algebra example
+fresh records and checkpoint state. No deadline or production behavior changed.
+The 162-test register/parent-state/merge selection passes; Conductor validates
+92 tracks and targeted typing, Ruff and formatting pass. The first formatting
+check found a long nested decorator; formatting corrected it. Full local and
+hosted validation of the correction remain pending. Neither historical coverage
+nor operational/rights/publication acceptance is promoted by this test fix.
+
+## Historical register stable-identity correction — 2026-09-05 UTC
+
+M-02 review found that the new rows had locators but lacked explicit stable
+source IDs. Added namespace-qualified URL-digest IDs for all 15 observations.
+The regression failed on missing `source_id`, then passed with uniqueness and
+derivation checks. These are not payload hashes; every byte count, fixity and
+rights gate remains unchanged. Corrected wording to distinguish web-reader
+observation from local payload retention. Ruff and formatting pass. The change
+was isolated from the live full-validation tree; integration and assurance
+remain pending before the review task can be marked complete.
+
+## Historical source register — 2026-09-05 UTC
+
+Reviewed all six locators against their official linked edition pages and the
+30-year denominator against Treasury's historical index. No workbook digest,
+byte count, licence approval, capture or completeness state is inferred from
+a filename, page label, printed size, or web-reader error. All editions remain
+pending full enumeration, including 2024's separate forecast-file discovery.
+Existing donor objects, census observations and published candidates are
+unchanged. The executable register test guards these boundaries; full local
+and hosted assurance remain pending. No phase or track closeout is claimed.
+
 ## Health domain registration reconciliation — 2026-09-04 UTC
 
 The immutable Arrow registry exposes the dedicated `health_appropriations`
