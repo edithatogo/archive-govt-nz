@@ -1,0 +1,373 @@
+{
+  "schema_version": "archive-govt-nz.adversarial-verification-plan/v1",
+  "created_at": "2026-09-05T07:49:35.482857+00:00",
+  "issue": 356,
+  "status": "preparatory_not_terminal",
+  "prerequisite": {
+    "prompt": 20,
+    "required": "passed on integrated candidate",
+    "currently_satisfied": false
+  },
+  "source_requirements": "Prompt21 original user attachment; fresh requirements derived before assigning statuses",
+  "preserved_previous_report": {
+    "path": "evidence/migrations/corpus-legislation-nz/post-cutover-final-verification.json",
+    "sha256": "703896ee1b52555658e195ec82a72ee2b5a25d8f08e3cd9eda52a7d4651bf28c"
+  },
+  "criteria": [
+    {
+      "criterion": 1,
+      "id": "donor-lineage",
+      "required_verification": "Compare restored bundle operational final head and imported conductor tree; enumerate the15 post-baseline commits and disposal; verify later redirect is separate.",
+      "evidence_candidates": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/final-lineage/receipt.json",
+          "sha256": "7a90eed0dabd874a835d31a29c42eec52c5c6b3cd2623aa0436e563df53ac52b"
+        },
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/final-lineage/issue-pr-reconciliation.json",
+          "sha256": "eb27b9157c132b33921f53c1bbdf60b9752ebb3874c8345d87b5d456afd505bc"
+        }
+      ],
+      "terminal_status": "not_evaluated"
+    },
+    {
+      "criterion": 2,
+      "id": "donor-500-work-state",
+      "required_verification": "Rehash original donor artifact or prove all500 original object hashes survive in verified durable authority; compare donor manifest, checkpoint, seed and run identity.",
+      "evidence_candidates": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/verification-02/final-donor-state-verification.json",
+          "sha256": "46e193732d5a798a33a8647f58f7d5962dc449e9cde0148a51250073e6272e97"
+        }
+      ],
+      "terminal_status": "not_evaluated"
+    },
+    {
+      "criterion": 3,
+      "id": "donor-target-merge",
+      "required_verification": "Verify exact donor500 plus target52 inputs and all conflict dispositions against552 durable state; no overwritten identity/content conflicts.",
+      "evidence_candidates": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/execution-02/final-state-merge-receipt.json",
+          "sha256": "3fc4a205ed1b8a327f0d91675951ce18a6800f1bc2bdb948b22c45c882e8e679"
+        },
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/execution-02/independent-readback.json",
+          "sha256": "09821b3357efc1d6856f1c3b7a52992811d35318574ae62fbb65630a4ce0b6d6"
+        }
+      ],
+      "terminal_status": "not_evaluated"
+    },
+    {
+      "criterion": 4,
+      "id": "governed-seed",
+      "required_verification": "Recompute bytes, LF,500 unique nonblank ASCII ordering and exactSHA; invoke registry validator and verify origin artifact/commit binding.",
+      "evidence_candidates": [
+        {
+          "path": "seeds/reviewed/historical-work-ids-0001.txt",
+          "sha256": "59923176fa34796d7673a20b880af9abe5520fe484595edb220f2bbc0e3b33e7"
+        },
+        {
+          "path": "seeds/registry.json",
+          "sha256": "497f3d369aee13af5bf8549d66450eb3b027bfae66e031a6e68d7013d02336b8"
+        }
+      ],
+      "terminal_status": "not_evaluated"
+    },
+    {
+      "criterion": 5,
+      "id": "exact-and-discovery-lanes",
+      "required_verification": "Inspect both integrated workflows/source contracts for separate scopes, bounded budgets and shared canonical state lock; verify focused negative tests in P20.",
+      "evidence_candidates": [
+        {
+          "path": ".github/workflows/exact-inventory.yml",
+          "sha256": "a9c4b588a8e32fb5465b04609d79e7e72a52f16fee9c47c177c21c1ffaa399dc"
+        },
+        {
+          "path": ".github/workflows/scheduled-discovery.yml",
+          "sha256": "3f1119da6a49d5bf06402857b811bfd3fce7ea73e39e9eb5d82e0995aa9ed632"
+        }
+      ],
+      "terminal_status": "not_evaluated"
+    },
+    {
+      "criterion": 6,
+      "id": "parent-restoration",
+      "required_verification": "Verify restored package and sealed904 continuation using native fail-closed verifier; altered CAS is rejected; verify parent-source and child-source scope distinction.",
+      "evidence_candidates": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/final-verification-20260905/operational-run-33800180992/parent-check.log",
+          "sha256": "d16a480ede2f609f0c2038b63d4e120f90eb7dd692d2bd53e7604cd746c3b207"
+        },
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/parent-state-restoration/integration-v3-validation.json",
+          "sha256": "3d7e3e9aec9dc851866184d5be15dd861253fae89dd1828d20f2662010811a07"
+        }
+      ],
+      "terminal_status": "not_evaluated"
+    },
+    {
+      "criterion": 7,
+      "id": "durable-state-package",
+      "required_verification": "Independently retrieve public HF revision-pinned552 package, verify outer digest and all inner fixity and rights; do not substitute Actions artifact.",
+      "evidence_candidates": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/durable-state/canonical-local-reviewed.json",
+          "sha256": "50b5b85a44a33bf93489e1a9729aea547d8fb08cc403c11b95f4ea632c377565"
+        },
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/huggingface-publication/publication-readback-20260903.json",
+          "sha256": "38160c4683112d951351e20d68fe34198dcab797eb371d6cf6e6d91160ba9fed"
+        }
+      ],
+      "terminal_status": "not_evaluated"
+    },
+    {
+      "criterion": 8,
+      "id": "independent-recovery",
+      "required_verification": "Rehash both independent attempt and durable stage receipts, crosscompare roots/counts/input trees and no-write preflight; resolve explained hosted metadata handoff via P15.",
+      "evidence_candidates": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/durable-recovery/independent-recovery-summary-20260903.json",
+          "sha256": "c9aabd3c2e6f65e03ba420fd14a09d2030b51bdc8a2a0689ddf3960d73de763f"
+        },
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/durable-recovery/recovery-attempt-01-20260903.json",
+          "sha256": "a79f492e51652e746d04349617e0ab6361d8c6a4a0ed9a6aace423fdfa862266"
+        },
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/durable-recovery/recovery-attempt-02-20260903.json",
+          "sha256": "a271775cf1557a299d0d7bc333393947d6f6e882dedd039c2155ba9e2b3695ca"
+        }
+      ],
+      "terminal_status": "not_evaluated"
+    },
+    {
+      "criterion": 9,
+      "id": "target-500-operation",
+      "required_verification": "Preserve independently verified run33800180992 as actual historical success, but require the new authorized exact500 run after reviewed source-preflight repair. Fetch fresh run/jobs/all artifacts and verify mandatory credential-bearing endpoint preflight finished successfully before harvest started, then independently verify all scoped accounting, CAS, roots and reconciliation.",
+      "evidence_candidates": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/final-verification-20260905/operational-run-33800180992/hosted-readback.json",
+          "sha256": "146fb75c405e577ae1df0990edc77e5d89d8c9fe396311ab83710db863e54022"
+        },
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/final-verification-20260905/operational-run-33800180992/verification.json",
+          "sha256": "370b7dcbe647911c38155c4dbff9d63a96668ffd924b71f0d1818d8c92ece501"
+        },
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/final-verification-20260905/operational-run-33800180992/reconciliation.json",
+          "sha256": "7a9e026f7af4620e2176aeb9396c79927b71bd9822d245324a89de5a7228d04e"
+        }
+      ],
+      "terminal_status": "not_evaluated",
+      "pending_subrequirements": [
+        {
+          "id": "source-preflight-before-harvest",
+          "status": "not_evaluated",
+          "required_evidence": [
+            "New full run exact target SHA includes reviewed source-preflight repair.",
+            "Same run/job successful source-preflight step has completed_at <= harvest started_at.",
+            "Independent sanitized artifact readback binds run identity, credential-present flag, endpoint HTTP200, safe resource bounds and unchanged state hashes.",
+            "Standalone preflight may additionally establish readiness but does not replace in-run ordering."
+          ],
+          "failure_conditions": [
+            "Missing source-preflight step or missing source receipt.",
+            "Preflight skipped,failed,cancelled or lacking trusted timestamps.",
+            "Preflight belongs to another later run or completes after harvest starts.",
+            "Receipt/software/run identity or artifact digest mismatch."
+          ],
+          "scope_boundary": "HTTP200 with configured credential proves reachability; no claim that anonymous access is rejected. No credential values or response bodies retained."
+        }
+      ]
+    },
+    {
+      "criterion": 10,
+      "id": "historical-coverage",
+      "required_verification": "Recompute68 candidate batch declarations sum33693; distinguish available candidate bytes from declarations; separate552 preserved and500 operational scope and unknown whole-corpus completeness.",
+      "evidence_candidates": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/historical-coverage/historical-coverage-report.json",
+          "sha256": "b5c3731a800572a367cf6106d038b8ee9d3c03353c96f309866f2bc48fb99f11"
+        }
+      ],
+      "terminal_status": "not_evaluated"
+    },
+    {
+      "criterion": 11,
+      "id": "hugging-face-identity",
+      "required_verification": "Read all registry identities/roles and live canonical card, rights,metadata,package at exact revision; reconcile target authority and552 publication separately from904 operation.",
+      "evidence_candidates": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/huggingface-publication/publication-readback-20260903.json",
+          "sha256": "38160c4683112d951351e20d68fe34198dcab797eb371d6cf6e6d91160ba9fed"
+        }
+      ],
+      "terminal_status": "not_evaluated"
+    },
+    {
+      "criterion": 12,
+      "id": "zenodo-identity",
+      "required_verification": "Live API verifies concept20592539/version20592540,title,2026 version,date,files/checksums/licence and related dataset; compare active fields and immutable prior record without publication.",
+      "evidence_candidates": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/final-verification-20260905/external-readback/zenodo-readback.json",
+          "sha256": "22b5a29942f7f20d1cef5d289f4ee678d8e738aece50dff4bc6487a19b784052"
+        },
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/zenodo-identity-correction.json",
+          "sha256": "eb9e3fc21bad482691814a45791c5e0ca6ef43658f70d2241ec9f56f335b737a"
+        }
+      ],
+      "terminal_status": "not_evaluated"
+    },
+    {
+      "criterion": 13,
+      "id": "evidence-hierarchy",
+      "required_verification": "Create additive index/evaluation only after P20; select valid primary operational proof, exclude invalidated/superseded files and stale current-name records; run evaluator and negative probes.",
+      "evidence_candidates": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/evidence-index.json",
+          "sha256": "e23a0f1024819f3198c343f574e8cd202f25da3c77d2a477ff824fed2ec4cccf"
+        },
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/completion-evaluation-current.json",
+          "sha256": "b9ceafae8e92010a7d66f3cc17f8ea30b07230fac290ca04d7f6557807ceabca"
+        }
+      ],
+      "terminal_status": "not_evaluated"
+    },
+    {
+      "criterion": 14,
+      "id": "cutover-release-addendum",
+      "required_verification": "Live release body retains original wording and dated corrected cycle1 recovery32625612739; cycle2 remains32626113799. Verify primary linked runs/chains from provenance receipt.",
+      "evidence_candidates": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/final-verification-20260905/external-readback/cutover-release-body.md",
+          "sha256": "66617b06cce61d19b3a2dadc4e352d32af9292334bb9cae4379a82147fcfd28d"
+        },
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/cutover-release-provenance/cutover-release-provenance-correction.json",
+          "sha256": "cbd657d80d9d3b83b7b3778db5b30243b530b708e98e668ead22aaa43e28a52a"
+        }
+      ],
+      "terminal_status": "not_evaluated"
+    },
+    {
+      "criterion": 15,
+      "id": "donor-bundle-and-presentation",
+      "required_verification": "Anonymous exact bundle download, fresh bare clone and fsck; confirm mainb405 in bundle; live archived redirect905f and annotated tag resolvingb405 separately.",
+      "evidence_candidates": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/final-verification-20260905/external-readback/github-readback.json",
+          "sha256": "7604292f15b789b1315337a308478e17c1b2e0ef6e73521d05a282615ea31ad1"
+        },
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/final-verification-20260905/external-readback/bundle-restore.log",
+          "sha256": "3e052a1f3f9b975b96d06a1cec21e354fa64d4f75085e916f646dd49a2b820b8"
+        }
+      ],
+      "terminal_status": "not_evaluated"
+    },
+    {
+      "criterion": 16,
+      "id": "integrated-assurance",
+      "required_verification": "Require P20 final receipt on integrated candidate with required full harness,mutation,security,schemas,all platforms,CodeQL,lint,patch and live enforcement readback; inspect unresolvedP0/P1.",
+      "evidence_candidates": [
+        {
+          "expected_path": "evidence/assurance",
+          "resolution_required": true
+        }
+      ],
+      "terminal_status": "not_evaluated"
+    }
+  ],
+  "false_completion_probes": [
+    {
+      "mechanism": "candidate_ids_counted_as_records",
+      "required_check": "Require explicit counted populations and validate33693 remains candidates, not records.",
+      "terminal_status": "not_evaluated"
+    },
+    {
+      "mechanism": "workflow_configuration_counted_as_operation",
+      "required_check": "Require primary successful run33800180992 and independently checked artifact contents.",
+      "terminal_status": "not_evaluated"
+    },
+    {
+      "mechanism": "green_jobs_without_artifacts",
+      "required_check": "Match remote artifact digests,all904 CAS and accounting; green jobs alone rejected.",
+      "terminal_status": "not_evaluated"
+    },
+    {
+      "mechanism": "actions_cache_as_durable_recovery",
+      "required_check": "Check independent P10 source is exact public HF package and fresh workspaces, not Actions.",
+      "terminal_status": "not_evaluated"
+    },
+    {
+      "mechanism": "upload_without_readback",
+      "required_check": "Require anonymous revision-pinned readback and hashes for card,rights,metadata,package.",
+      "terminal_status": "not_evaluated"
+    },
+    {
+      "mechanism": "invalidated_receipt_reused",
+      "required_check": "Require active index selections and negative test rejecting invalidated state-transfer receipt.",
+      "terminal_status": "not_evaluated"
+    },
+    {
+      "mechanism": "closed_issue_as_implementation",
+      "required_check": "Inspect merged code and tests plus operational evidence independently of issue status.",
+      "terminal_status": "not_evaluated"
+    },
+    {
+      "mechanism": "archive_before_custody",
+      "required_check": "Confirm bundle/public552 durable package and independent recoveries; archival bit alone insufficient.",
+      "terminal_status": "not_evaluated"
+    },
+    {
+      "mechanism": "same_id_changed_content_overwrite",
+      "required_check": "Verify CAS hash identities and cumulative904 records preserve parent552; test tampered bytes rejected.",
+      "terminal_status": "not_evaluated"
+    },
+    {
+      "mechanism": "software_licence_as_public_rights",
+      "required_check": "Bind explicit selected552 authority and source-specific terms; reject software licence as data permission.",
+      "terminal_status": "not_evaluated"
+    },
+    {
+      "mechanism": "later_or_missing_preflight_retroactively_counted",
+      "required_check": "Use primary hosted step timestamps and exact sanitized artifact identity for the new full run. A missing preflight or preflight ending after harvest begins must make the new-run criterion incomplete; run33800180992 stays historical successful acquisition and cannot inherit a later preflight.",
+      "planned_negative_cases": [
+        {
+          "preflight_present": false,
+          "expected": "reject"
+        },
+        {
+          "preflight_completed_at": "2026-09-05T00:02:00Z",
+          "harvest_started_at": "2026-09-05T00:01:00Z",
+          "expected": "reject"
+        },
+        {
+          "preflight_status": "skipped",
+          "expected": "reject"
+        },
+        {
+          "receipt_run_identity": "different-run",
+          "expected": "reject"
+        }
+      ],
+      "terminal_status": "not_evaluated"
+    }
+  ],
+  "final_dimensions": [
+    "code_capability_migration",
+    "operational_state_migration",
+    "corpus_custody_recoverability",
+    "publication_identity_migration"
+  ],
+  "supersedes": {
+    "path": "evidence/migrations/corpus-legislation-nz/final-verification-20260905/acceptance-plan.json",
+    "sha256": "ce983b237082467d4f9ef6dd0fedebb97dd23fe0097d26325b2463719acb97af",
+    "scope": "Add mandatory source preflight chronology discovered during Prompt13 closeout review; original preparation remains historical."
+  },
+  "continuation_boundary": "Existing552-to904 continuation is proven. New authorized full run uses the same approved552 durable parent; no904-to-child second cycle or904public durable publication is inferred."
+}

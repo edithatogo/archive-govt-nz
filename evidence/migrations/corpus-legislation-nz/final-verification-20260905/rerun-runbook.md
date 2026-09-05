@@ -264,3 +264,16 @@ private temporary directory. Do not use a glob or delete another agent's path.
 Record cleanup completion and retain failure logs. Finally run the repository
 validation harness and required exact-head hosted checks before opening/merging
 the evidence PR. Never rewrite the original preparatory or historical evidence.
+
+
+## Mandatory source-preflight chronology supersession
+
+Use `acceptance-plan-preflight-supersession.json` for the terminal execution.
+It preserves the original 16-criterion preparation while adding the source
+preflight subrequirement and an eleventh false-completion probe. None is passed
+by this plan. The new full run must have successful credential-bearing endpoint
+preflight before harvest in the same run, with independently verified sanitized
+receipt and trusted hosted step timestamps. Missing, skipped, later, or wrong-run
+preflight evidence must reject completion. Preserve run 33800180992 as actual
+historical success; it cannot inherit a preflight performed later. Final evaluation
+still waits for Prompt 20 on the integrated candidate.
