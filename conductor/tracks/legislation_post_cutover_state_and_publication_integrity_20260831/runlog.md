@@ -7,3 +7,7 @@
 
 - Full required harness passed: 2242 tests, 96.90% overall coverage, all schema/parity/mutation/audit/licence/secret/SBOM lanes. No executable code changed. Test-generated unrelated evidence diffs saved externally and restored only in this owned worktree.
 - Prompt 02 issue #278 closed after merged-tree fixity and seven final-head checks were reverified; historical blocked records remain unchanged.
+
+## Reopened Prompt13 dependency — 2026-09-05
+
+The additive `programme-status-20260905-preflight-reopen.json`, `handoff-index-20260905-preflight-reopen.json`, and `live-observations-20260905-preflight-reopen.json` supersede the earlier provisional dependency snapshot. Issue335 is open: source preflight repair and main-only hosted verification precede final13/15/20/21/01 closeout. Previous snapshots and successful operational evidence remain preserved; no completion or external execution is inferred.

@@ -11,3 +11,7 @@ Controller only; parent issue #276. Programme remains incomplete.
 - [Live observations](./live-observations.json)
 - [Validation](./validation.json)
 - [Metadata](./metadata.json)
+
+## Reopened Prompt13 dependency — 2026-09-05
+
+The additive `programme-status-20260905-preflight-reopen.json`, `handoff-index-20260905-preflight-reopen.json`, and `live-observations-20260905-preflight-reopen.json` supersede the earlier provisional dependency snapshot. Issue335 is open: source preflight repair and main-only hosted verification precede final13/15/20/21/01 closeout. Previous snapshots and successful operational evidence remain preserved; no completion or external execution is inferred.
