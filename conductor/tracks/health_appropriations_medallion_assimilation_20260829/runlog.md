@@ -1,5 +1,86 @@
 # Run Log
 
+## Initial DCAT native assurance result — 2026-09-05 UTC
+
+The required `./scripts/validate.sh` on `c481b42d` terminated with exit 1:
+4,763 passed, five failed, nine warnings, 97.61% overall coverage, 507.73 seconds.
+Lock, Conductor (92 tracks), format, lint and typing passed. No DCAT test failed.
+The five failures were:
+
+- Union algebra: timing instability, 359.07 ms initially versus 1.78 ms replay.
+- Decimal/Arrow property: timing instability, 271.45 ms versus 105.87 ms.
+- Candidate inventory order: timing instability, 383.97 ms versus 0.07 ms.
+- URN property: slow input generation (seed 29962679333241180859575896216303019954).
+- MCP subprocess protocol: child exit exceeded the existing five-second timeout.
+
+Host load was observed at 87.95 during the run. This remains failed local
+assurance, not a waived gate. No deadline, health check or timeout was changed.
+The later isolated media/checksum correction is not validated by this earlier
+full run; fresh full/hosted checks remain required. The original run handle was
+followed through terminal exit before integration or another run.
+
+## DCAT standardized media/fixity review fix — 2026-09-05 UTC
+
+Isolated the correction from the still-running native gate at `c481b42d`.
+The new expected graph failed for historical, classification and Budget package
+kinds (3 failed, 20 deselected, 18.53 seconds). After implementation, the complete
+23-test suite passed in 22.85 seconds at 100% line/branch coverage. Ruff and
+formatting pass. Dependency setup and the original regression both completed;
+the initially quiet process was followed to its terminal result, not restarted.
+
+The corrected graph uses the registered Parquet media-type IRI and SPDX SHA256
+checksum with a typed hex value calculated by the existing verified reader.
+The regression derives its expectation directly from file bytes. Repeated
+mutation, typing and retained-source replay remain pending at this checkpoint;
+the earlier graph digest records remain valid evidence of the earlier revision.
+
+Corrected cold mutation then passed: 10/10 killed, zero survivors, timeouts,
+errors, pardons or cache hits in 146.26 seconds. Report SHA256
+`484e4fc612763b7b494cebc37b70d81b8ff8781f0096a8213de5c913972b0e3d`.
+Typing passed with zero errors/warnings/notes. The unchanged read-only replay
+script passed again with six dataset/distribution pairs and all 20 input files
+unchanged. New graph SHA256
+`3017b176fd35842a8b4cb5d1d168d809b53a3cd9c327aef15181225d0e73b1e1`;
+verification SHA256 remains
+`1ac8ea6a9214e9fe2873e9bc5f4e2c5f8f3312c0c0130e9273e58d88eaebfe77`.
+Corrected source SHA256
+`4197625f78425d62ddf32d10dc526ef56532f34604fa13d70f63d13214fe50ca`;
+test SHA256 `19e76d648fdaf0558648f308ee6ec5695e77d5fe197c224c9cb7fe3264470cf7`.
+
+## Verified local DCAT generation — 2026-09-05 UTC
+
+Started from `c3504f92` in an isolated worktree, preserving the inventory PR's
+running validation tree. `uv sync --locked --all-groups` succeeded. The initial
+focused regression failed collection with missing `local_dcat`, then the
+implementation passed 13 tests. Adversarial review added re-pinned semantic,
+schema and rights changes plus duplicate packages, bringing the suite to 23.
+
+Commands completed:
+
+- `uv run --locked ruff format --check src/archive_govt_nz/domains/health_appropriations/local_dcat.py tests/domains/health_appropriations/test_local_dcat.py`
+- `uv run --locked ruff check src/archive_govt_nz/domains/health_appropriations/local_dcat.py tests/domains/health_appropriations/test_local_dcat.py`
+- `uv run --locked pytest -q --cov=archive_govt_nz.domains.health_appropriations.local_dcat --cov-branch --cov-report=term-missing --cov-fail-under=100 tests/domains/health_appropriations/test_local_dcat.py`: 23 passed, 100%.
+- `uv run --locked basedpyright --threads 4 src/archive_govt_nz/domains/health_appropriations/local_dcat.py tests/domains/health_appropriations/test_local_dcat.py`: zero errors/warnings/notes.
+
+Cold mutation completed in 52.94 seconds: 10/10 killed, zero survivors, errors,
+timeouts, pardons or cache hits, one worker and no coverage filter. Command:
+`uv run --locked pytest tests/domains/health_appropriations/test_local_dcat.py -q --gremlins --gremlin-targets=src/archive_govt_nz/domains/health_appropriations/local_dcat.py --gremlin-report=json --gremlin-workers=1 --gremlin-clear-cache --gremlin-no-coverage-filter --strict-pardons --gremlin-max-pardons-pct=0 --max-pardons=0 --no-cov`.
+Report SHA256 `b92cb69a4c8ca990853040d9e8334705bed83da5e78030832e8afc669c8615d4`.
+The coverage-collection warning did not enable filtering. Conductor validation
+passes for all 92 tracks. Full and hosted assurance remain pending.
+
+A subsequent read-only replay used the separately recorded historical marker
+and raw-manifest pins for the retained 2024/2025 packages. It generated six
+Dataset/Distribution pairs with identical results on reversed input order;
+before/after SHA256s for all 20 original/raw/canonical files matched. Graph
+SHA256 `bf9c84e09d32aef5ff9877e8ac84c5c6dab5d2fed5050199689f45f1cd7b5b6a`;
+verification SHA256 `1ac8ea6a9214e9fe2873e9bc5f4e2c5f8f3312c0c0130e9273e58d88eaebfe77`.
+The graph was generated in memory, not retained or uploaded. Script
+`/tmp/health-dcat-replay.n6K1jz/replay.py` SHA256
+`8869ffa61729639d59d2600d99caceaa362f2e5d62ea0a66eae98b3167da2c2c`.
+This covers those two historical snapshots, not every supported source family,
+whole-estate recovery, rights decisions or full standards validation.
+
 ## Full-gate timing findings — 2026-09-05 UTC
 
 The two-worker full gate on `68c952de` terminated with exit 1: 4,743 passed,
