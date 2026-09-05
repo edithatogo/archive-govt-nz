@@ -1,5 +1,82 @@
 # Run Log
 
+## RDF full assurance and review clarification — 2026-09-05 UTC
+
+`./scripts/validate.sh` completed successfully on `fc672e0b`: 4,774 tests,
+21 warnings, 97.61% branch-aware coverage, 48 schemas and 38 representative
+documents, 9/9 parity comparisons, every configured mutation lane, hygiene,
+CAS throughput, audit, licence, secret scan and strict 112-component SBOM.
+The test stage took 210.12 seconds. PR #401 contains the follow-up; hosted
+Ubuntu/macOS passed while Windows was still running at this observation.
+
+Automated review incorrectly described the empty inline warm-up context as
+external. Nevertheless, explicit plugin loading is clearer than a warm-up
+parse. Replaced it with `plugin.get("json-ld", Parser)` so every parse now
+occurs inside the I/O guard. This is test-setup clarification, not a production
+SSRF correction; existing positive/negative graph fixtures characterize it.
+The preceding full result applies to the original fixture; fresh validation
+of the clarified fixture remains required.
+
+The clarified fixture passed all 47 RDF/DCAT/PROV tests in 4.46 seconds,
+with six upstream deprecation warnings (the removed warm-up no longer emits
+six additional warnings). Ruff lint/format and strict targeted typing passed.
+
+
+## DCAT delivery and follow-up reconciliation — 2026-09-05 UTC
+
+PR #398 was merged at `791845bc699a915f7f5583e3c3eef93470611c10`
+after all eight hosted checks passed on `3d6facb57f4672417bba2504283e925cacb000ed`.
+Live GitHub readback confirmed the merge. The corrected local two-worker full
+gate terminated with 4,764 passes and four property timing/input-generation
+failures in 853.19 seconds; no DCAT test failed. Hosted success does not erase
+that local failure. No deadline or coverage threshold was relaxed.
+
+The RDF follow-up's staged secret scan passed. Its audit, licence inventory
+and strict CycloneDX validation passed (112 components). Full assurance for
+the new development dependency and RDF tests remains pending. Squash-ancestry
+documentation conflicts were resolved after verifying that origin/main's tree
+was identical to the delivered DCAT head; new RDF evidence was preserved.
+
+## Offline RDF processor validation — 2026-09-05 UTC
+
+Recorded the development-only RDFLib adoption rationale in `tech-stack.md`
+before installing it. The initial test failed collection because RDFLib was
+absent. `uv lock` added only RDFLib 7.6.0, with the existing pyparsing dependency
+unchanged; no optional stores or runtime requirements were added. The resolver
+reported normalization warnings for historical package metadata but did not
+change any pre-existing locked version.
+
+Six parser tests passed after installation. Lint then rejected `Any` annotations
+in the denial callback; changing them to `object`/`Never` and formatting the file
+resolved the findings. Targeted Ruff and typing pass. The combined RDF/DCAT/PROV
+suite passes 47 tests in 14.43 seconds, with 12 upstream RDFLib deprecation
+warnings retained. It proves graph expansion, exact relationships and typed
+literal interpretation, plus blocked HTTP/file contexts. It does not alter the
+production helpers' per-call `standards_processor_validation` receipts.
+
+Dependency audit, licence inventory and SBOM validation are running. Full and
+hosted assurance for this test/dependency change remain pending. PR #398 and
+its live full validation remain isolated from this follow-up branch.
+
+The three supply-chain controls subsequently passed: no known vulnerabilities,
+accepted installed licence inventory and a strictly validated 112-component
+CycloneDX SBOM. The generator's internal validation-skipped warning refers only
+to the duplicate pass; the mandatory strict validator completed successfully.
+Audit receipt SHA256
+`2bf9fd0b5d1f48f6cffe5236a2f064ef2357a089a7511a718e3e1a569a1775b0`;
+licence receipt SHA256
+`dcc9caf97314d07c589b2233bee18bfa0f016a499135a017ad31b4a029e7497a`.
+
+The retained historical replay also passed RDF interpretation with 66 triples,
+six datasets, six distributions and six checksum nodes. External file/network
+access was denied during parsing. Its input graph SHA256 remains
+`3017b176fd35842a8b4cb5d1d168d809b53a3cd9c327aef15181225d0e73b1e1`,
+and the preceding original/raw/canonical replay again verified 20 unchanged
+input files. Script `/tmp/health-dcat-replay.n6K1jz/rdf-replay.py` SHA256
+`f5462e4f2bfd459f074dce1b9c12e247f92e6b8d8f1247d3191614fff3d14a29`.
+These are local processor results, not application-profile or publication
+acceptance. No production helper or source payload changed in this follow-up.
+
 ## Initial DCAT native assurance result — 2026-09-05 UTC
 
 The required `./scripts/validate.sh` on `c481b42d` terminated with exit 1:

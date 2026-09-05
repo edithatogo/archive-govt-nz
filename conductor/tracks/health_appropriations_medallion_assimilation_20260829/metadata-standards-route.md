@@ -3,7 +3,7 @@
 The initial primary-specification review produced no standards-shaped output.
 The entity-only PROV helper is now implemented in `local_prov.py`; its receipt
 remains descriptor-only. The verified local DCAT projection described below is
-under implementation/review. Neither helper claims full standards conformance,
+implemented and merged in PR #398. Neither helper claims full standards conformance,
 rights eligibility or publication. Version selection identifies documents
 inspected, not a claim to use the newest release.
 
@@ -73,8 +73,12 @@ publisher, generated dates and fallback access locations do not satisfy this
 evidence boundary. No global exporter behavior or dependency is changed.
 
 Verification covers the read snapshots under the existing trusted-parent
-contract, not later filesystem state. Full RDF/JSON-LD processing and a selected
-DCAT application-profile validation remain separate gates. Croissant, RO-Crate,
+contract, not later filesystem state. An independent RDFLib test lane now
+expands generated DCAT and PROV JSON-LD under scoped external-resource denial.
+It checks exact graph predicates/counts, resource/literal distinction, integer
+byte sizes, binary SHA256 values against file bytes, and entity/derivation
+edges. This is a development test, not a runtime claim made by either helper.
+DCAT application-profile validation remains a separate gate. Croissant, RO-Crate,
 cards, resource-specific rights decisions and federation are still outstanding.
 
 ## Croissant1.0: required publication-shaped inputs remain explicit
