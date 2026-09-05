@@ -1,0 +1,7 @@
+[run]
+branch = True
+source = tools
+[report]
+include = */legislation_source_preflight.py
+fail_under = 100
+show_missing = True

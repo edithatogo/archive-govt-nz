@@ -1,0 +1,28 @@
+............F
+=================================== FAILURES ===================================
+_______________________ test_run_detects_state_mutation ________________________
+
+tmp_path = PosixPath('/private/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/pytest-of-doughnut/pytest-4268/test_run_detects_state_mutatio0')
+
+    def test_run_detects_state_mutation(tmp_path: Path) -> None:
+        """Concurrent state changes cannot be called a successful no-write preflight."""
+        state = state_at(tmp_path)
+    
+        def handler(_: httpx.Request) -> httpx.Response:
+            (state / "manifest.json").write_text("changed")
+            return httpx.Response(200)
+    
+        receipt = tmp_path / "receipt.json"
+        with client_for(handler) as client:
+>           assert (
+                preflight.run(state, receipt, client, {"LEGISLATION_API_KEY": "fake"}) == 1
+            )
+E           AssertionError: assert 0 == 1
+E            +  where 0 = <function run at 0x10ece3a00>(PosixPath('/private/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/pytest-of-doughnut/pytest-4268/test_run_detects_state_mutatio0/state'), PosixPath('/private/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/pytest-of-doughnut/pytest-4268/test_run_detects_state_mutatio0/receipt.json'), <httpx.Client object at 0x10ed43590>, {'LEGISLATION_API_KEY': 'fake'})
+E            +    where <function run at 0x10ece3a00> = preflight.run
+
+tests/tools/test_legislation_source_preflight.py:137: AssertionError
+=========================== short test summary info ============================
+FAILED tests/tools/test_legislation_source_preflight.py::test_run_detects_state_mutation
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 12 passed in 8.80s

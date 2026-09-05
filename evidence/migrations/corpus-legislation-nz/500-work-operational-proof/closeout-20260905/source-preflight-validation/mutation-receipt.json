@@ -1,0 +1,54 @@
+{
+  "source_sha256": "45060fe735ff62c600d87d409aa576432f36b63f30073df59fa7cbd2cf943f54",
+  "mutants": [
+    {
+      "name": "missing-credential",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "f793ae8e2acb2896a9334ce39d2c7fdae1d8e68c71ed84820189bed02d37a391"
+    },
+    {
+      "name": "status-acceptance",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "b494ed090194897adb61c4f138f4f1c03b8b4d339014d1875bad6c085657902c"
+    },
+    {
+      "name": "redirect-boundary",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "f439794cfe349e955a21f734edf03842a64c058092b049c1d844e61c18729725"
+    },
+    {
+      "name": "state-fixity",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "b2e4f6515235a19550838fe8c908215d9acf32d3a898ee6320eb26c78102bb0d"
+    },
+    {
+      "name": "state-size",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "9c70aae3fa2180b89b3e3c07a70508f65d6b37d1edade1ad864542db1ed171c4"
+    },
+    {
+      "name": "cas-size",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "5ea6149332a0b779c62e9eb0653ad7ba5da0354ec77b392e3a6924c12f146d04"
+    },
+    {
+      "name": "cas-count",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "199d701e2c958c0cb6370d57597eabb1614dbd528316f4a50fd1d275c1969a38"
+    },
+    {
+      "name": "auth-header",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "b710e39995d3c3f1eb4699a92414646605f0d4edd8f7ca5ad8e7db9087c23c7e"
+    }
+  ],
+  "all_killed": true
+}

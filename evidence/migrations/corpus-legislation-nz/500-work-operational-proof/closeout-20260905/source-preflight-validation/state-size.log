@@ -1,0 +1,31 @@
+......F
+=================================== FAILURES ===================================
+_________ test_resource_overruns_fail_before_request[MAX_STATE_BYTES] __________
+
+tmp_path = PosixPath('/private/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/pytest-of-doughnut/pytest-4269/test_resource_overruns_fail_be0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x110d175c0>
+limit = 'MAX_STATE_BYTES'
+
+    @pytest.mark.parametrize(
+        "limit", ["MAX_STATE_BYTES", "MAX_CAS_BYTES", "MAX_CAS_OBJECTS"]
+    )
+    def test_resource_overruns_fail_before_request(
+        tmp_path: Path, monkeypatch: pytest.MonkeyPatch, limit: str
+    ) -> None:
+        """Existing governed resource ceilings are enforced before credential use."""
+        state = state_at(tmp_path)
+        monkeypatch.setattr(preflight, limit, 0)
+        receipt = tmp_path / "receipt.json"
+        with client_for(lambda _: pytest.fail("unexpected network")) as client:
+            assert preflight.run(state, receipt, client, {}) == 1
+        assert (
+>           json.loads(receipt.read_text())["failure_code"] == "state_verification_failed"
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        )
+E       KeyError: 'failure_code'
+
+tests/tools/test_legislation_source_preflight.py:156: KeyError
+=========================== short test summary info ============================
+FAILED tests/tools/test_legislation_source_preflight.py::test_resource_overruns_fail_before_request[MAX_STATE_BYTES]
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 6 passed in 5.58s
