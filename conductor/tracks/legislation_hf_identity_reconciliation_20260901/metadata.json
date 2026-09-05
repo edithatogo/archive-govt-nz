@@ -16,8 +16,9 @@
     }
   ],
   "issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/341",
-  "status": "in_progress",
+  "status": "completed",
   "track_id": "legislation_hf_identity_reconciliation_20260901",
   "type": "feature",
-  "updated_at": "2026-09-05T06:47:46.310364Z"
+  "updated_at": "2026-09-05T07:04:36.241506Z",
+  "pr_url": "https://github.com/edithatogo/archive-govt-nz/pull/396"
 }

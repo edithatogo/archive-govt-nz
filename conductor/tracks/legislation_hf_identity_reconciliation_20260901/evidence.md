@@ -84,3 +84,9 @@ Dated live audit SHA-256: `ab4bf796bde6c323389a87869fac71a539f2638cffd25b1c1965a
 ### Executed monthly metadata comparison
 
 The repository's `verify_public_publication_identities.py` returned `passed` against live canonical Hugging Face and Zenodo APIs. The exact `_compare_hosted_dataset` implementation then returned `consistent` with no mismatches against the v3 registry. `monthly-publication-readback-20260905.json` and `monthly-comparison-20260905.json` preserve that result. This explicitly resolves the earlier Prompt 10 external metadata comparison handoff for the selected published parent; no 904-record publication claim is added.
+
+## Acceptance closeout for PR #396
+
+All six acceptance/prerequisite rows above have primary evidence. Hosted implementation head `abfd287a18be654b7bbc97e5c536ac144d4ef268` passed all required checks: Ubuntu and macOS each 4,742 tests with 97.60% coverage; Windows 4,740 passed and two skips with 97.52%. All configured schema/parity/mutation/security/licence/SBOM stages passed on each runner. CodeQL, workflow lint and required patch coverage passed. No production Python changed, so this does not invent a numeric changed-production coverage figure. `hosted-validation-20260905.json` binds run/job IDs and exact downloaded log hashes.
+
+Independent review found no remaining Prompt 15 acceptance blocker. No remote dataset write occurred during this closeout. Preserved local failures are not retrospectively reported as successful. The final documentation/rebase head must pass its own protected checks before merge and issue closure. Prompts 20/21 consume this evidence independently; the controller remains a later gate.
