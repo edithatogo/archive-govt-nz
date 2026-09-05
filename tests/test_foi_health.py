@@ -26,13 +26,45 @@ TOOL = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(TOOL)
 
 
-def snapshot(*jobs: Job, version: int = 1) -> dict[str, StoredState]:
+def snapshot(
+    *jobs: Job, version: int = 1, source: str = "ca"
+) -> dict[str, StoredState]:
     """Create valid synthetic control state without external credentials."""
-    owner = OwnerFence("ca", "edithatogo/archive-govt-nz", 1, "owner", 100)
+    owner = OwnerFence(source, "edithatogo/archive-govt-nz", 1, "owner", 100)
     queue = Queue(
         tuple(jobs), lease_history=tuple(j.lease_id for j in jobs if j.lease_id)
     )
-    return {"ca": StoredState(version, _encode(owner, queue), "a" * 64)}
+    return {source: StoredState(version, _encode(owner, queue), "a" * 64)}
+
+
+@pytest.mark.parametrize(
+    ("source", "rehearsal"),
+    [("rehearsal-123-1", True), ("rehearsal-country", False), ("ca", False)],
+)
+def test_terminal_rehearsals_are_not_capture_failures(
+    source: str, *, rehearsal: bool
+) -> None:
+    """Only the dispatcher's reserved rehearsal namespace avoids capture alerts."""
+    job = Job("job", source, 0, 1, 1, 1, status="exhausted", attempts=1)
+    report = foi_health.evaluate(snapshot(job, source=source), 10000)
+    assert report["monitor_status"] == (
+        "healthy" if rehearsal else "attention_required"
+    )
+    assert report["corpus_progress"]["counts"] == {
+        "control_rehearsal_completed" if rehearsal else "capture_retry_exhausted": 1
+    }
+    assert report["corpus_progress"]["incomplete_jobs"] == (0 if rehearsal else 1)
+    assert report["job_status_counts"] == {"exhausted": 1}
+
+
+def test_unfinished_rehearsal_still_reports_expired_control() -> None:
+    """Reserved rehearsal names do not suppress unfinished ownership failures."""
+    source = "rehearsal-123-1"
+    report = foi_health.evaluate(
+        snapshot(Job("job", source, 0, 1, 1, 1), source=source), 10000
+    )
+    assert report["monitor_status"] == "attention_required"
+    assert report["finding_counts"] == {"owner_expired_with_unfinished_work": 1}
 
 
 def test_expired_pending_owner_and_capture_are_separate_failures() -> None:
@@ -92,7 +124,9 @@ def test_live_work_is_healthy_and_terminal_old_owners_do_not_fail() -> None:
     }
     empty = foi_health.evaluate({}, 100)
     assert empty["status"] == empty["monitor_status"] == "healthy"
-    assert empty["corpus_progress"]["status"] == "complete"
+    assert empty["corpus_progress"]["status"] == "unknown"
+    terminal = foi_health.evaluate(snapshot(verified), 10000)
+    assert terminal["corpus_progress"]["status"] == "unknown"
 
 
 def test_future_scheduled_work_is_not_reported_as_complete() -> None:

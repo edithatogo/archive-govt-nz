@@ -303,3 +303,18 @@ while each example receives a fresh file mapping and retains the original
 assertion and deadline. The corrected property, lint, formatting and typing
 passed. A full two-worker validation is pending. These focused results do not
 replace the failed full run or establish operational monitoring acceptance.
+
+## 2026-09-05 — PR 395 monitor review corrections
+
+Review identified permanent false capture alarms from exhausted control
+rehearsals and unsupported corpus-complete claims from unscoped queue state.
+The reserved `rehearsal-[0-9]+-[0-9]+` namespace now has a separate terminal
+control count; real exhausted work and unfinished rehearsal ownership still
+require attention. Empty and terminal-only queues report `unknown`, never
+complete, because the monitor has no revision-bound catalogue denominator.
+The rehearsal regression failed as expected before implementation. All 22
+focused tests then passed with 100% line and branch coverage for `foi_health`:
+`uv run --locked pytest tests/test_foi_health.py --cov=archive_govt_nz.foi_health
+--cov-branch --cov-report=term-missing --cov-fail-under=100 -q`.
+Full repository validation remains pending; this does not complete P5.4 or
+establish notification delivery, source freshness, publication, or cutover.

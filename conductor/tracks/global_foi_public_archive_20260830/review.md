@@ -166,4 +166,15 @@ they remain on one physical disk and are not independently replicated or public.
 
 ## Deployed bounded controls review
 
+### 2026-09-05 — PR 395 progress-monitor review
+
+- Corrected P1: expected terminal control rehearsals were counted as exhausted
+  corpus captures, permanently failing scheduled health. Only the dispatcher's
+  reserved numeric rehearsal namespace is counted separately; real exhaustion
+  and unfinished ownership still alert.
+- Corrected P1: unscoped queue snapshots could claim corpus completion. Empty
+  and terminal-only state now reports unknown without a catalogue denominator.
+- Twenty-two focused tests pass with 100% module line and branch coverage.
+  Full and hosted validation remain pending; P5.4a remains in progress.
+
 PR #288 passed three-platform assurance, CodeQL and workflow checks. Live evidence verifies exact-parent conflict rejection, persistence across local and hosted processes, private capture completion without public credit, and unchanged authority during read-only hosted health. Source discovery, continuous acquisition, source eligibility, publisher enforcement, public raw restore and donor transfer remain open. The track stays in progress; local timeout and Windows correction receipts remain preserved. See shared-execution-deployment-20260831.json.

@@ -34,6 +34,13 @@ def _fail(reason: str) -> NoReturn:
 def _record_progress(
     job: Job, now: int, progress: Counter[str], backlog_ages: list[int]
 ) -> None:
+    # The dispatcher's reserved scope deliberately exhausts one control attempt;
+    # it never captures corpus objects. Keep the history without a capture alarm.
+    if job.status == "exhausted" and re.fullmatch(
+        r"rehearsal-[0-9]+-[0-9]+", job.source_id
+    ):
+        progress["control_rehearsal_completed"] += 1
+        return
     if job.status == "pending":
         if job.ready_at <= now:
             progress["backlog_due"] += 1
@@ -41,9 +48,7 @@ def _record_progress(
         else:
             progress["backlog_scheduled"] += 1
         return
-    name = _PROGRESS_NAMES.get(job.status)
-    if name is not None:
-        progress[name] += 1
+    progress[_PROGRESS_NAMES[job.status]] += 1
 
 
 def evaluate(snapshot: dict[str, StoredState], now: int) -> dict[str, Any]:
@@ -104,7 +109,8 @@ def evaluate(snapshot: dict[str, StoredState], now: int) -> dict[str, Any]:
         )
     )
     control_status = "failed" if findings else "healthy"
-    corpus_status = "incomplete" if incomplete else "complete"
+    # A queue snapshot has no revision-bound catalogue denominator.
+    corpus_status = "incomplete" if incomplete else "unknown"
     attention = control_status == "failed" or any(
         progress[name]
         for name in (
