@@ -1,0 +1,45 @@
+{
+  "observed_at": "2026-09-05T08:03:48.122787+00:00",
+  "scope": "Full harness attempts for source preflight repair; neither failure markers nor timeout are retrospectively classified as flakes.",
+  "attempts": [
+    {
+      "attempt": 1,
+      "command": "CI=1 ./scripts/validate.sh",
+      "status": "failed",
+      "exit_code": 1,
+      "log_path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/closeout-20260905/source-preflight-validation/full-harness-attempts/attempt-01.log",
+      "log_bytes": 700,
+      "log_sha256": "2549341186e620bced9fa97a17e8aaba996f8b3a20e970c3b8ef0b29752e7f33",
+      "finding": "E501: tests/tools/test_exact_inventory_workflow.py line104 exceeded88characters; later corrected."
+    },
+    {
+      "attempt": 2,
+      "command": "CI=1 ./scripts/validate.sh",
+      "status": "failed",
+      "exit_code": 1,
+      "log_path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/closeout-20260905/source-preflight-validation/full-harness-attempts/attempt-02.log",
+      "log_bytes": 579,
+      "log_sha256": "89702b9515da0fad5b012838e52c0a10e706337ee14f9faeb40069b41cca650a",
+      "finding": "Ruff formatter reported one file would be reformatted after the E501 correction; later corrected."
+    },
+    {
+      "attempt": 3,
+      "command": "CI=1 ./scripts/validate.sh",
+      "status": "timed_out",
+      "exit_code": 124,
+      "log_path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/closeout-20260905/source-preflight-validation/full-harness-attempts/attempt-03.log",
+      "log_bytes": 6220,
+      "log_sha256": "3d76651fe868ea29f0caad13c0550bde59c6ad31c44b52f45ac6592cadc26eb8",
+      "finding": "Configured900-second command deadline reached while full tests displayed98percent progress. Five F markers were visible, but no test failure tracebacks or test IDs were emitted before timeout. Cause and identity of failures remain unresolved.",
+      "tested_head": "2bd24ab15c132ea5bf339cdac75b098ec43704d5",
+      "configured_timeout_seconds": 900,
+      "failure_marker_count": 5,
+      "traceback_available": false,
+      "failed_test_ids": [],
+      "lastfailed_cache_observed": {},
+      "classification": "unresolved_test_failures_and_timeout_not_a_pass",
+      "environment_cause_established": false
+    }
+  ],
+  "required_followup": "Identify failure IDs with authoritative traces or rerun appropriate full lane; supplementary focused checks do not turn this attempt into success."
+}

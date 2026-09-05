@@ -1,0 +1,66 @@
+................F
+=================================== FAILURES ===================================
+_________ test_fixed_endpoint_headers_timeout_and_no_body_consumption __________
+
+    def test_fixed_endpoint_headers_timeout_and_no_body_consumption() -> None:
+        """One authenticated official-origin request never follows or reads payload."""
+    
+        class Unreadable(httpx.SyncByteStream):
+            def __iter__(self) -> Iterator[bytes]:
+                pytest.fail("response body must not be consumed")
+                yield b""
+    
+        def handler(request: httpx.Request) -> httpx.Response:
+            assert str(request.url) == (
+                "https://api.legislation.govt.nz/v0/works/act_imperial_1539_1/versions/"
+            )
+            assert request.method == "GET"
+            assert request.headers["X-Api-Key"] == "synthetic-value"
+            assert request.extensions["timeout"]["read"] == preflight.TIMEOUT_SECONDS
+            return httpx.Response(200, stream=Unreadable())
+    
+        with client_for(handler) as client:
+>           result = preflight.probe(client, "synthetic-value")
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tools/test_legislation_source_preflight.py:96: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/private/tmp/source-preflight-mutations-01/auth-header.py:64: in probe
+    with client.stream(
+../../appdata/local-dotdir/share/uv/python/cpython-3.14.6-macos-aarch64-none/lib/python3.14/contextlib.py:141: in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/httpx/_client.py:868: in stream
+    response = self.send(
+.venv/lib/python3.14/site-packages/httpx/_client.py:914: in send
+    response = self._send_handling_auth(
+.venv/lib/python3.14/site-packages/httpx/_client.py:942: in _send_handling_auth
+    response = self._send_handling_redirects(
+.venv/lib/python3.14/site-packages/httpx/_client.py:979: in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/httpx/_client.py:1014: in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/httpx/_transports/mock.py:24: in handle_request
+    response = self.handler(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+request = <Request('GET', 'https://api.legislation.govt.nz/v0/works/act_imperial_1539_1/versions/')>
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        assert str(request.url) == (
+            "https://api.legislation.govt.nz/v0/works/act_imperial_1539_1/versions/"
+        )
+        assert request.method == "GET"
+>       assert request.headers["X-Api-Key"] == "synthetic-value"
+E       AssertionError: assert '' == 'synthetic-value'
+E         
+E         - synthetic-value
+
+tests/tools/test_legislation_source_preflight.py:91: AssertionError
+=========================== short test summary info ============================
+FAILED tests/tools/test_legislation_source_preflight.py::test_fixed_endpoint_headers_timeout_and_no_body_consumption
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 16 passed in 7.27s

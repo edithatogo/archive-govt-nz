@@ -1,0 +1,35 @@
+{
+  "scope": "P13 source preflight repair",
+  "attempts": [
+    {
+      "kind": "collection_failure",
+      "result": "ModuleNotFoundError tools namespace; changed tests to existing importlib loader pattern",
+      "status": "failed"
+    },
+    {
+      "kind": "lint_types",
+      "result": "Initial annotations/format/import findings corrected without suppressions",
+      "status": "failed_then_corrected"
+    },
+    {
+      "kind": "coverage_selector_failure",
+      "result": "18 tests passed but file path used as module selector produced no coverage data and failed100 threshold",
+      "status": "failed"
+    },
+    {
+      "kind": "corrected_coverage",
+      "result": "Directorysource plus report include for exactly new source preflight module;18 tests passed,56statements8branches100percent",
+      "status": "passed"
+    },
+    {
+      "kind": "baseline_contract_reproduction",
+      "result": "git show HEAD exact-inventory preflight section lacksNZ_LEGISLATION_API_KEY; assertion baseline preflight cannot verify configured source credential failed as expected",
+      "status": "expected_failure"
+    },
+    {
+      "kind": "focused_integration",
+      "result": "28tests passed before added redirect/boundary tests",
+      "status": "passed"
+    }
+  ]
+}

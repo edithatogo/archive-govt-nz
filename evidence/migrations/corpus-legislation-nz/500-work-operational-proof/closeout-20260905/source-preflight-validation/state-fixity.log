@@ -1,0 +1,6 @@
+Sanitized derivative of the retained source-preflight state-fixity mutant failure.
+The mutant incorrectly accepted changed state.
+FAILED test_run_detects_state_mutation
+AssertionError: assert 0 == 1
+Synthetic configuration values and machine-specific paths omitted.
+Exact original bytes remain bound by diagnostic-sanitization.json and the prior Git blob.
