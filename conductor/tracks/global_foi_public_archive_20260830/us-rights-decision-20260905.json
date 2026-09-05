@@ -1,0 +1,22 @@
+{
+  "schema_version": "archive-govt-nz.rights-decision/v1",
+  "source_id": "us-federal-foia",
+  "decision_owner": "edithatogo",
+  "decision": "approved_numeric_projection_only",
+  "approved_at": "2026-09-05",
+  "raw_source_publication": false,
+  "approved_artifact": "numeric_only_projection",
+  "excluded_artifacts": [
+    "annual-report.xml",
+    "nonnumeric_text",
+    "dates",
+    "case_titles",
+    "organization_names",
+    "statute_descriptions",
+    "footnotes",
+    "codes",
+    "source_and_licence_html"
+  ],
+  "next_action": "capture_projection_from_private_source_and_anonymously_verify_public_artifact",
+  "rights_basis": "owner_approval_recorded; source licence and field-level privacy evidence must still be attached to the projection receipt before upload"
+}

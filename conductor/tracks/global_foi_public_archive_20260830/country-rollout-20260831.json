@@ -2875,11 +2875,11 @@
       "source_id": "us-federal-foia",
       "entity_id": "US",
       "publication_group": "institutional_open_data",
-      "group_is_candidate_only": true,
-      "next_action": "field_level_review_numeric_projection",
+      "group_is_candidate_only": false,
+      "next_action": "capture_and_publish_validated_numeric_projection_only",
       "source_denominator": null,
       "schedule_active": false,
-      "publication_approved": false,
+      "publication_approved": true,
       "capture_evidence": "us-numeric-projection-review-20260905.json"
     },
     {
