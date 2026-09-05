@@ -19,6 +19,9 @@ EXPECTED_FIELDS = ["year", "month", "owner_org", "owner_org_title"]
 REPO_ID = "edithatogo/foi-ca-federal-atip"
 EXPECTED_ROWS = 6226
 EXPECTED_ORGANISATION_PAIRS = 162
+EXPECTED_ORGANISATION_PAIRS_SHA256 = (
+    "33df4f9a6e445f219cb781d80aceb8d66efb0c55371ade2e9b6ff9e729cf0671"
+)
 
 
 def _sha256(path: Path) -> str:
@@ -43,6 +46,12 @@ def build_package(output: Path) -> dict[str, object]:
     pairs = {(row["owner_org"], row["owner_org_title"]) for row in rows}
     if len(pairs) != EXPECTED_ORGANISATION_PAIRS:
         reason = "approved_organisation_allowlist_drift"
+        raise ValueError(reason) from None
+    pair_digest = hashlib.sha256(
+        ("\n".join(f"{org}\t{title}" for org, title in sorted(pairs)) + "\n").encode()
+    ).hexdigest()
+    if pair_digest != EXPECTED_ORGANISATION_PAIRS_SHA256:
+        reason = "approved_organisation_pair_allowlist_drift"
         raise ValueError(reason) from None
     index_path = output / "index.jsonl"
     with index_path.open("w", encoding="utf-8", newline="\n") as stream:
@@ -81,6 +90,7 @@ def build_package(output: Path) -> dict[str, object]:
         ],
         "rows": len(rows),
         "organisation_pairs": len(pairs),
+        "organisation_pairs_sha256": pair_digest,
     }
     (output / "manifest.json").write_text(
         json.dumps(manifest, indent=2) + "\n", encoding="utf-8"

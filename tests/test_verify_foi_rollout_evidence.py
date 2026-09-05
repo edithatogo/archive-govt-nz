@@ -64,3 +64,43 @@ def test_missing_capture_evidence_is_rejected(tmp_path: Path) -> None:
     assert report["missing_evidence"] == [
         {"source_id": "missing", "evidence": "missing.json"}
     ]
+
+
+def test_entity_source_relationships_fail_closed(tmp_path: Path) -> None:
+    """Dangling, unreferenced, and cross-entity sources are invalid."""
+    rollout = {
+        "entities": [
+            {
+                "entity_id": "NZ",
+                "source_ids": ["linked", "dangling"],
+                "broader_discovery_required": True,
+                "country_complete": False,
+            }
+        ],
+        "sources": [
+            {
+                "source_id": "linked",
+                "entity_id": "NZ",
+                "capture_evidence": "separate_pilot_receipt_required",
+            },
+            {
+                "source_id": "wrong",
+                "entity_id": "AU",
+                "capture_evidence": "separate_pilot_receipt_required",
+            },
+        ],
+        "summary": {
+            "entities": 1,
+            "sources": 2,
+            "entities_requiring_broader_discovery": 1,
+            "entities_without_named_sources": 0,
+            "public_raw_complete_countries_verified": 0,
+        },
+    }
+    path = tmp_path / "rollout.json"
+    path.write_text(json.dumps(rollout), encoding="utf-8")
+    report = verify_rollout(path, tmp_path)
+    assert report["valid"] is False
+    assert report["dangling_entity_sources"] == ["dangling"]
+    assert report["unreferenced_sources"] == ["wrong"]
+    assert report["cross_entity_sources"] == ["wrong"]

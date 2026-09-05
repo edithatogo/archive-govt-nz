@@ -32,9 +32,11 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          uv run --locked hf upload edithatogo/foi-ca-federal-atip build/ca-atip/ati-nil.csv ati-nil.csv --repo-type dataset --commit-message "Refresh approved Canada ATI source"
-          uv run --locked hf upload edithatogo/foi-ca-federal-atip build/ca-atip/index.jsonl index.jsonl --repo-type dataset --commit-message "Refresh approved Canada ATI index"
-          uv run --locked hf upload edithatogo/foi-ca-federal-atip build/ca-atip/manifest.json metadata/manifest.json --repo-type dataset --commit-message "Refresh Canada package manifest"
+          mkdir -p build/ca-atip-upload/metadata
+          cp build/ca-atip/ati-nil.csv build/ca-atip-upload/ati-nil.csv
+          cp build/ca-atip/index.jsonl build/ca-atip-upload/index.jsonl
+          cp build/ca-atip/manifest.json build/ca-atip-upload/metadata/manifest.json
+          uv run --locked hf upload edithatogo/foi-ca-federal-atip build/ca-atip-upload . --repo-type dataset --commit-message "Refresh approved Canada ATI package"
       - name: Preserve refresh receipt
         if: always()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a

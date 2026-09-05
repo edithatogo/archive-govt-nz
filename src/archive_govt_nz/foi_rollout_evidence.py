@@ -42,6 +42,28 @@ def verify_rollout(rollout_path: Path, evidence_dir: Path) -> dict[str, Any]:
     }
     duplicate_entities = len(entity_ids) != len(set(entity_ids))
     duplicate_sources = len(source_ids) != len(set(source_ids))
+    entity_by_id = {row["entity_id"]: row for row in entities}
+    source_by_id = {row["source_id"]: row for row in sources}
+    dangling_entity_sources = sorted(
+        {
+            source_id
+            for row in entities
+            for source_id in row["source_ids"]
+            if source_id not in source_by_id
+        }
+    )
+    unreferenced_sources = sorted(
+        set(source_by_id)
+        - {source_id for row in entities for source_id in row["source_ids"]}
+    )
+    cross_entity_sources = sorted(
+        {
+            source_id
+            for source_id, source in source_by_id.items()
+            if source.get("entity_id") not in entity_by_id
+            or source_id not in entity_by_id[source["entity_id"]].get("source_ids", [])
+        }
+    )
     return {
         "schema_version": "archive-govt-nz.foi-rollout-integrity/v1",
         "rollout": str(rollout_path),
@@ -51,6 +73,9 @@ def verify_rollout(rollout_path: Path, evidence_dir: Path) -> dict[str, Any]:
         "duplicate_source_ids": sorted(
             {value for value in source_ids if source_ids.count(value) > 1}
         ),
+        "dangling_entity_sources": dangling_entity_sources,
+        "unreferenced_sources": unreferenced_sources,
+        "cross_entity_sources": cross_entity_sources,
         "missing_evidence": missing_evidence,
         "summary_matches": summary == calculated,
         "calculated_summary": calculated,
@@ -59,5 +84,8 @@ def verify_rollout(rollout_path: Path, evidence_dir: Path) -> dict[str, Any]:
             or summary != calculated
             or duplicate_entities
             or duplicate_sources
+            or dangling_entity_sources
+            or unreferenced_sources
+            or cross_entity_sources
         ),
     }

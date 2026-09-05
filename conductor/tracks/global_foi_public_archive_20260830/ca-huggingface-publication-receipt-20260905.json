@@ -15,7 +15,7 @@
   "files": [
     {"path": "ati-nil.csv", "bytes": 657619, "sha256": "6782abe38a0be0412bc5271c4a094dcfc12b4640b0bf25663518efc0043c10a2"},
     {"path": "index.jsonl", "bytes": 1578794, "sha256": "cf01ac37cd8bd4eec4d795c7d713f438d0c9df74bb1e6b732e3e273275e6990f"},
-    {"path": "manifest.json", "bytes": 454, "sha256": "940a38d45e30ed06dc91b0d653bd72e3122e82ba86f4be92036f5a309975c450"}
+    {"path": "metadata/manifest.json", "bytes": 454, "sha256": "940a38d45e30ed06dc91b0d653bd72e3122e82ba86f4be92036f5a309975c450"}
   ],
   "anonymous_direct_restore": "passed",
   "dataset_viewer_validation": "passed_default_train_6226_rows",
