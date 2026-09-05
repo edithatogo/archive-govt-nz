@@ -17,6 +17,9 @@ Approved track in progress. Automation repair and source-catalogue foundations a
 
 ## Implementation receipts
 
+- [Bounded hosted prerequisite readback](hosted-prerequisite-readback-20260906.md)
+- [Readback digests and registry reconciliation](hosted-prerequisite-readback-20260906.json)
+
 - [Local provenance and accounting review](local-safe-gaps-20260906.md)
 - [Local validation and commit receipt](local-safe-gaps-20260906.json)
 

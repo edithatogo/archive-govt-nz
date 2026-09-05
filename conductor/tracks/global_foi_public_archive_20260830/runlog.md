@@ -1,5 +1,17 @@
 # Run log
 
+## 2026-09-06 — Read-only P1/P2 prerequisite continuation
+
+Fresh GitHub/HF reads verified the bounded 17226–17227 artifact, recorded
+contiguous progress, and unchanged sync/public manifest/card agreement.
+Catalogue/rollout entity sets match and all 30 pinned sources are preserved;
+225 extra candidates do not establish broader discovery completion. Found and
+fixed AR's NZ receipt association in `7732230a`. Six red regressions became
+15 passing focused tests with 100% module coverage; two identity mutants killed.
+Ruff and BasedPyright pass. Exact commands and hashes are in
+[readback](hosted-prerequisite-readback-20260906.md). P1.5/P2 acceptance stays
+open; no full harness, publication, dispatch or ownership transfer occurred.
+
 ## 2026-09-06 — Isolated local FOI continuation
 
 Read canonical Conductor implement/review contracts and repository workflow.

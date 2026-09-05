@@ -2,6 +2,13 @@
 
 This is read-only diagnosis, not implementation or publication success.
 
+## Hosted prerequisites and receipt attribution — 2026-09-06
+
+[Readback](hosted-prerequisite-readback-20260906.json) binds GitHub artifacts,
+queue arithmetic and anonymous revision-pinned HF metadata to exact digests.
+No whole pending P1/P2 criterion is promoted. `7732230a` fixes the observed AR
+receipt misattribution with focused tests and explicit missing evidence.
+
 ## Local FOI fixes — 2026-09-06
 
 P2.5 `337e71d9`, P2.6 `455f7d4a`, P2.7 `f5483f18` implement bounded

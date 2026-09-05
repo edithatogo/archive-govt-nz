@@ -50,6 +50,8 @@ The approved destination is archive-govt-nz; no cutover has occurred.
 - [~] P2.8 (AC04, AC09, AC11, AC12): Bind rollout receipts to their source
   and declared entity; reject cross-source evidence and remove the unsupported
   Argentina-to-NZ receipt association. Keep discovery and phase acceptance open.
+  Local fix: `7732230a`; 15 focused tests and two guard mutations pass;
+  parent combined full/hosted gate pending.
 
 ## Phase 3 — Metadata indexes and immutable raw storage
 

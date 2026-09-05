@@ -1,5 +1,18 @@
 # Draft self-review
 
+## 2026-09-06 — Receipt attribution and hosted prerequisites
+
+Corrected cross-source receipt attribution: existence alone previously allowed
+Argentina to cite NZ's metadata disposition. `7732230a` validates receipt
+source IDs and optional entity IDs and restores the AR row to an explicit
+missing-receipt disposition. No alternate evidence, licence or approval was
+invented. Reviewed JSON failure behavior, the additive report field, six
+regressions, two guard mutants and the corrected 255-row ledger. Identity
+binding authenticates neither receipt content nor broader source coverage.
+Readback establishes only the bounded claims in
+[hosted evidence](hosted-prerequisite-readback-20260906.json); pending whole
+criteria remain pending. Combined gates belong to the parent.
+
 ## 2026-09-06 — P2.5–P2.7 local review
 
 Resolved seed inventory/verified-byte mismatch, untyped or unreconciled
