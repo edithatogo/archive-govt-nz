@@ -97,12 +97,12 @@ def test_workflow_reconciles_seals_and_retains_every_attempt() -> None:
 
 
 def test_parent_preflight_cannot_acquire_or_upload() -> None:
-    """The first hosted run verifies only the durable parent and exposes no secret."""
+    """Preflight sends only a bounded authenticated probe and uploads its receipt."""
     text = WORKFLOW.read_text(encoding="utf-8")
     assert "preflight_only:" in text
     assert (
-        "Restore and verify the parent without source acquisition or state upload"
-        in text
+        "Verify parent and authenticated endpoint without payload acquisition "
+        "or state upload" in text
     )
     assert "default: false" in text
     assert "if: inputs.preflight_only" in text
@@ -112,8 +112,10 @@ def test_parent_preflight_cannot_acquire_or_upload() -> None:
             "Revalidate every governed work ID"
         )
     ]
-    assert "NZ_LEGISLATION_API_KEY" not in preflight
-    assert "upload-artifact" not in preflight
+    assert "NZ_LEGISLATION_API_KEY" in preflight
+    assert "tools/legislation_source_preflight.py" in preflight
+    assert "path: build/legislation-attempt/source-preflight.json" in preflight
+    assert "if: always()" in preflight
     assert "if-no-files-found: error" in text
     assert 'MAX_STATE_BYTES: "134217728"' in text
     assert 'MAX_CAS_BYTES: "67108864"' in text

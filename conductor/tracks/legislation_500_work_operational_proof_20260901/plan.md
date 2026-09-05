@@ -18,8 +18,9 @@
   rights, and anonymous redirects.
 - [x] Pin the public Prompt 15 durable authority by exact revision and package
   fixity, then complete a repository-native no-write restoration preflight.
-- [ ] Dispatch and independently verify the target-owned 500-work run.
-- [ ] Prove continuation and durable recovery; complete hosted closeout.
+- [x] Dispatch and independently verify the target-owned 500-work run (33800180992).
+- [x] Verify executed continuation, valid output parent and referenced independent durable recovery.
+- [ ] Complete the missing no-write credential/endpoint preflight and hosted repository closeout.
 - [x] Reproduce and remediate the failed run's Work-level document identity/version semantics without weakening cross-Work or Manifestation uniqueness.
 - [x] Review and merge the remediation, then stop at an explicit hosted retry gate
   (PR #379; merge `cbad1dd9`).

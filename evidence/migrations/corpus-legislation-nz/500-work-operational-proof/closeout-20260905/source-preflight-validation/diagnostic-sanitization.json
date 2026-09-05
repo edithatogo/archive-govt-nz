@@ -1,0 +1,20 @@
+{
+  "schema_version": "archive-govt-nz.synthetic-diagnostic-sanitization/v1",
+  "reason": "Remove synthetic credential-shaped assertion diagnostics and machine-specific temporary-path entropy; no real credential was used or exposed. No scanner rule changed.",
+  "original": {
+    "path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/closeout-20260905/source-preflight-validation/state-fixity.log",
+    "commit": "83cf5d1fe8ac7486c07bed465fb94de25b244aa9",
+    "git_blob": "354c303eb1a83daec66ef5cf77540839f508c10a",
+    "sha256": "b2e4f6515235a19550838fe8c908215d9acf32d3a898ee6320eb26c78102bb0d",
+    "size_bytes": 1768,
+    "retention": "Original observed commit identity retained above. Exact original bytes are also present in the named reachable retention commit on this branch; merge by merge commit to preserve that ancestry on main. Do not squash or rebase merge this provenance chain.",
+    "reachable_retention_commit": "e0313f4622fe9959977a0c3512b4224f7c8c3ca6"
+  },
+  "derivative": {
+    "path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/closeout-20260905/source-preflight-validation/state-fixity.log",
+    "sha256": "56174910eb2efc8b507274eba3997f8f1134c73a9d5a6a6d01652600258f8058",
+    "size_bytes": 356
+  },
+  "original_mutation_receipt": "mutation-receipt.json",
+  "mutation_receipt_log_hash_semantics": "The historical mutation receipt binds original execution bytes, not this sanitized presentation derivative."
+}

@@ -1,0 +1,208 @@
+{
+  "observed_at": "2026-09-05T06:38:43.051319+00:00",
+  "response_sha256": {
+    "run": "9778cbee4d80475bbdca2e066a16f87e1c5048c0c6533bf9a7c89f991358bdb5",
+    "jobs": "9b7206fbee2871bb3afa6fcd7ecaebc3cc2931cc4bdcc4eedb150b8b2730a30d",
+    "artifacts": "c9897d9587ebfc27d4274109be582bc7b2c84ad78b95e5fedfbc0850a331c234"
+  },
+  "run": {
+    "id": 33800180992,
+    "name": "Exact inventory legislation revalidation",
+    "head_branch": "main",
+    "head_sha": "95d5e0959158df3e5f816b012b66049135ff3d54",
+    "path": ".github/workflows/exact-inventory.yml",
+    "run_number": 9,
+    "event": "workflow_dispatch",
+    "status": "completed",
+    "conclusion": "success",
+    "workflow_id": 349172482,
+    "html_url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/33800180992",
+    "created_at": "2026-09-03T20:05:07Z",
+    "updated_at": "2026-09-03T20:15:35Z",
+    "run_attempt": 1,
+    "run_started_at": "2026-09-03T20:05:07Z"
+  },
+  "jobs": [
+    {
+      "id": 100797533488,
+      "run_id": 33800180992,
+      "head_sha": "95d5e0959158df3e5f816b012b66049135ff3d54",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-09-03T20:05:10Z",
+      "completed_at": "2026-09-03T20:15:34Z",
+      "name": "revalidate",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-09-03T20:05:11Z",
+          "completed_at": "2026-09-03T20:05:12Z"
+        },
+        {
+          "name": "Check out exact target revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-09-03T20:05:12Z",
+          "completed_at": "2026-09-03T20:05:14Z"
+        },
+        {
+          "name": "Set up Python",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-09-03T20:05:14Z",
+          "completed_at": "2026-09-03T20:05:14Z"
+        },
+        {
+          "name": "Install locked environment",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-09-03T20:05:14Z",
+          "completed_at": "2026-09-03T20:05:23Z"
+        },
+        {
+          "name": "Resolve governed reviewed inventory",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-09-03T20:05:23Z",
+          "completed_at": "2026-09-03T20:05:25Z"
+        },
+        {
+          "name": "Restore and authenticate selected parent",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-09-03T20:05:25Z",
+          "completed_at": "2026-09-03T20:05:32Z"
+        },
+        {
+          "name": "Verify no-write parent preflight",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 7,
+          "started_at": "2026-09-03T20:05:32Z",
+          "completed_at": "2026-09-03T20:05:32Z"
+        },
+        {
+          "name": "Revalidate every governed work ID",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-09-03T20:05:32Z",
+          "completed_at": "2026-09-03T20:15:22Z"
+        },
+        {
+          "name": "Reconcile exact inventory and cumulative state",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-09-03T20:15:22Z",
+          "completed_at": "2026-09-03T20:15:24Z"
+        },
+        {
+          "name": "Verify accounting and bounded output",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-09-03T20:15:24Z",
+          "completed_at": "2026-09-03T20:15:25Z"
+        },
+        {
+          "name": "Seal verified continuation lineage",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-09-03T20:15:25Z",
+          "completed_at": "2026-09-03T20:15:27Z"
+        },
+        {
+          "name": "Upload complete continuation package",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-09-03T20:15:27Z",
+          "completed_at": "2026-09-03T20:15:30Z"
+        },
+        {
+          "name": "Upload sanitized complete attempt evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-09-03T20:15:30Z",
+          "completed_at": "2026-09-03T20:15:31Z"
+        },
+        {
+          "name": "Enforce fail-closed exact-inventory outcome",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-09-03T20:15:31Z",
+          "completed_at": "2026-09-03T20:15:31Z"
+        },
+        {
+          "name": "Post Set up Python",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 27,
+          "started_at": "2026-09-03T20:15:31Z",
+          "completed_at": "2026-09-03T20:15:31Z"
+        },
+        {
+          "name": "Post Check out exact target revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 28,
+          "started_at": "2026-09-03T20:15:31Z",
+          "completed_at": "2026-09-03T20:15:32Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 29,
+          "started_at": "2026-09-03T20:15:32Z",
+          "completed_at": "2026-09-03T20:15:32Z"
+        }
+      ],
+      "html_url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/33800180992/job/100797533488"
+    }
+  ],
+  "artifacts": [
+    {
+      "id": 9911101072,
+      "name": "legislation-exact-inventory-attempt-33800180992-1",
+      "size_in_bytes": 9047,
+      "digest": "sha256:548d66784856f295d01ff385f98c4162eb8e0aa84cd4252f66884481f70ca3c1",
+      "expired": false,
+      "created_at": "2026-09-03T20:15:31Z",
+      "updated_at": "2026-09-03T20:15:31Z",
+      "expires_at": "2026-12-02T20:05:08Z"
+    },
+    {
+      "id": 9911100379,
+      "name": "legislation-exact-inventory-state-33800180992-1",
+      "size_in_bytes": 10628815,
+      "digest": "sha256:ae49243398367932873cdbc01f6953c204c082ba8df6fd68641d202627812491",
+      "expired": false,
+      "created_at": "2026-09-03T20:15:30Z",
+      "updated_at": "2026-09-03T20:15:30Z",
+      "expires_at": "2026-12-02T20:05:08Z"
+    },
+    {
+      "id": 9910743836,
+      "name": "legislation-parent-33800180992-1",
+      "size_in_bytes": 1466,
+      "digest": "sha256:71ddc6816d41981750b13542feb76e0b3610266bee599a25fac629b385bbd92a",
+      "expired": false,
+      "created_at": "2026-09-03T20:05:31Z",
+      "updated_at": "2026-09-03T20:05:31Z",
+      "expires_at": "2026-12-02T20:05:08Z"
+    }
+  ]
+}

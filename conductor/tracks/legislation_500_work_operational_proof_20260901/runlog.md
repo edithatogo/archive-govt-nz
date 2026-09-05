@@ -64,3 +64,7 @@
   tests at 97.52% coverage and every configured mutation and supply-chain gate.
 - The remediation review task is complete. No hosted retry was dispatched:
   `plan.md` deliberately retains the 500-work execution as an explicit gate.
+
+## Superseding operational evidence — 2026-09-05
+
+The dated `evidence/migrations/corpus-legislation-nz/500-work-operational-proof/closeout-20260905/500-work-target-revalidation.json` and `operational-observation.md` bind the successful run 33800180992 and independent complete artifact verification. Original blocked records remain unchanged. Required no-write credential/endpoint preflight remains a precise blocker: the existing preflight_only lane validates state only. Issue #335 is reopened; no publication, workflow dispatch or state mutation is performed by this evidence correction.

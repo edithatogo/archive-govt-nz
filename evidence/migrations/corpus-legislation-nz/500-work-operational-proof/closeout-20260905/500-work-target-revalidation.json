@@ -1,0 +1,290 @@
+{
+  "schema_version": "archive-govt-nz.legislation-500-work-target-revalidation/v1",
+  "observed_at": "2026-09-05T07:22:37.503656+00:00",
+  "status": "incomplete",
+  "scope": "Verified operational run; required no-write credential and endpoint preflight is still missing.",
+  "supersedes": {
+    "path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/500-work-target-revalidation.json",
+    "sha256": "5396f35f4f4061f0c7235414e07d685cf6b3cad1d3a03f8ba97e95216f0c5d16",
+    "reason": "Previously blocked readiness snapshot predates verified successful execution; original bytes retained."
+  },
+  "target": {
+    "repository": "edithatogo/archive-govt-nz",
+    "audit_baseline": "c3504f920cfe20367687ee71668d8cf068709ab3",
+    "execution_commit": "95d5e0959158df3e5f816b012b66049135ff3d54"
+  },
+  "donor": {
+    "repository": "edithatogo/corpus-legislation-nz",
+    "archived": true,
+    "current_redirect_head": "905f9e07c17af9d9d25dbe2b1c052fb8a290a4e3",
+    "operational_final_head": "b40587f1b1aec7356a0f623916fcc8212397d283"
+  },
+  "dispatch_performed": true,
+  "dispatch_performed_by_this_closeout": false,
+  "run": {
+    "id": 33800180992,
+    "name": "Exact inventory legislation revalidation",
+    "head_branch": "main",
+    "head_sha": "95d5e0959158df3e5f816b012b66049135ff3d54",
+    "path": ".github/workflows/exact-inventory.yml",
+    "run_number": 9,
+    "event": "workflow_dispatch",
+    "status": "completed",
+    "conclusion": "success",
+    "workflow_id": 349172482,
+    "html_url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/33800180992",
+    "created_at": "2026-09-03T20:05:07Z",
+    "updated_at": "2026-09-03T20:15:35Z",
+    "run_attempt": 1,
+    "run_started_at": "2026-09-03T20:05:07Z"
+  },
+  "seed": {
+    "seed_id": "historical-work-ids-0001",
+    "sha256": "59923176fa34796d7673a20b880af9abe5520fe484595edb220f2bbc0e3b33e7",
+    "line_count": 500,
+    "unique": true,
+    "ordering": "ASCII lexicographic ascending",
+    "line_endings": "LF",
+    "terminal_newline": true,
+    "registry_path": "seeds/registry.json",
+    "donor_run_id": 32487942675,
+    "donor_artifact_id": 9450742423,
+    "donor_package_sha256": "1975e473793fd701b81b53a7f6fd696bbeaa257b41bdc55250f064a21ad9e54e"
+  },
+  "parent": {
+    "authority": {
+      "decision_id": "archive-govt-nz-hf-publication-20260903-selected-552-v1",
+      "publication_commit": "d60ed58420d1fe39dc420bbe047b9bf901b0d66d",
+      "publication_receipt_path": "evidence/migrations/corpus-legislation-nz/huggingface-publication/publication-readback-20260903.json",
+      "publication_receipt_sha256": "38160c4683112d951351e20d68fe34198dcab797eb371d6cf6e6d91160ba9fed",
+      "recovery_commit": "5745bf3e38924dc968af70842dc6ed7a776e9e05"
+    },
+    "child_source": {
+      "seed_id": "historical-work-ids-0001",
+      "seed_sha256": "59923176fa34796d7673a20b880af9abe5520fe484595edb220f2bbc0e3b33e7",
+      "source_set": "legislation"
+    },
+    "durable": {
+      "dataset": "edithatogo/corpus-legislation-nz",
+      "path_parts": [
+        "durable-state",
+        "v1",
+        "2e4b75333e947d812842147c939117fc666799e4497b80f125104f721ef68e3c",
+        "canonical-state.zip"
+      ],
+      "provider": "hugging_face_dataset",
+      "revision": "ae4da4ef0446f68fddd8f53279ecb1245f1529b9",
+      "roots": {
+        "inventory_sha256": "9ca6dc505f991e015c6c997827878d8c7e9381b214a1544eb338328a285c6894",
+        "manifest_sha256": "877ba501a25570a29c1aada7979562d8c62c7f043865125cf402310eabc09544",
+        "records": 552,
+        "work_ids": 552
+      },
+      "sha256": "2e4b75333e947d812842147c939117fc666799e4497b80f125104f721ef68e3c",
+      "size_bytes": 71776346
+    },
+    "parent_source": {
+      "seed_id": null,
+      "seed_sha256": null,
+      "source_set": "legislation"
+    },
+    "schema_version": "archive-govt-nz.legislation-durable-parent-reference/v1"
+  },
+  "roots": {
+    "manifest_sha256": "eb1afcd85d8135604d86f8b23b438e8ecc96a6e944a790758770746a64e2d6f2",
+    "manifest_file_sha256": "0f5511dacbd5a674ccdd4c91e6b3974ce405207b87b08f33a6df95e57e495eae",
+    "checkpoint_file_sha256": "0b7faaefad7191eaa0f2e27db36cfd49ea209a3b266cd573a180ee4cf1c6d4d3",
+    "inventory_sha256": "9ca6dc505f991e015c6c997827878d8c7e9381b214a1544eb338328a285c6894",
+    "cas_root_sha256": "ed93a3f7cddac8f6bc938f1005f47cfe4c309707b34b3a511cc3b66fedb47a40",
+    "success_receipt_sha256": "7368c93fb37a5ab4fe41f790002ff4e4ffc78fdcca5b61f26e0ca63292a64b41"
+  },
+  "accounting": {
+    "schema_version": "archive-govt-nz.legislation-harvest-receipt/v3",
+    "candidate_works_discovered": 500,
+    "works_in_scope": 500,
+    "works_attempted": 500,
+    "newly_preserved": 0,
+    "changed_preserved": 352,
+    "unchanged_revalidated": 148,
+    "already_processed_skipped": 0,
+    "unavailable": 0,
+    "partial": 0,
+    "failed": 0,
+    "total_state_records_before": 552,
+    "total_state_records_after": 904,
+    "total_cas_objects_before": 552,
+    "total_cas_objects_after": 904,
+    "scope_digests": {
+      "resolved": "2abf0d8b76cc60e9b4e442724987b81848698dbdd98e56266f8726d468b33eaf"
+    },
+    "parent_manifest_root": "877ba501a25570a29c1aada7979562d8c62c7f043865125cf402310eabc09544",
+    "parent_checkpoint_root": "8afab0cb245c8b0f4c6e42c7d2c863a0f58e99f7c6bded70a1582b2be1a4cbf7",
+    "output_manifest_root": "eb1afcd85d8135604d86f8b23b438e8ecc96a6e944a790758770746a64e2d6f2",
+    "output_checkpoint_root": "0b7faaefad7191eaa0f2e27db36cfd49ea209a3b266cd573a180ee4cf1c6d4d3",
+    "software_commit": "95d5e0959158df3e5f816b012b66049135ff3d54",
+    "workflow_identity": "Exact inventory legislation revalidation",
+    "run_identity": "33800180992",
+    "state_commit_status": "committed",
+    "state_commit": "0b7faaefad7191eaa0f2e27db36cfd49ea209a3b266cd573a180ee4cf1c6d4d3",
+    "total_retry_count": 0,
+    "state_record_delta": 352,
+    "cas_object_delta": 352
+  },
+  "verification": {
+    "all_500_accounted_for": true,
+    "receipt_invariants_verified": true,
+    "complete_state_artifact_verified": true,
+    "cas_fixity_verified": true,
+    "reconciliation_zero_unexplained_mismatches": true,
+    "continuation_proven": true,
+    "durable_recovery_proven": true,
+    "sensitive_value_scan_of_run": "detect-secrets all plugins;0 candidates"
+  },
+  "continuation": {
+    "executed_cycle": "33800180992 continued from independently recovered public 552-record parent and produced sealed904-record cumulative state.",
+    "output_valid_as_next_parent": true,
+    "negative_control": "One-byte CAS mutation rejected object_sha256.",
+    "additional_second_hosted_cycle_dispatched": false,
+    "additional_cycle_disposition": "Optional where safe: no additional source acquisition repeated merely for evidence closeout; both changed and unchanged semantics proven in the 500-work continuation."
+  },
+  "durable_recovery": {
+    "summary_path": "evidence/migrations/corpus-legislation-nz/durable-recovery/independent-recovery-summary-20260903.json",
+    "summary_sha256": "c9aabd3c2e6f65e03ba420fd14a09d2030b51bdc8a2a0689ddf3960d73de763f",
+    "scope": "Two independent durable 552parent restores are proven. Newly downloaded904output was unpacked,reconciled and verified as valid sealed parent;904public durable publication is not claimed or performed."
+  },
+  "artifact_retention": {
+    "complete_state": {
+      "id": 9911100379,
+      "name": "legislation-exact-inventory-state-33800180992-1",
+      "size_in_bytes": 10628815,
+      "digest": "sha256:ae49243398367932873cdbc01f6953c204c082ba8df6fd68641d202627812491",
+      "expired": false,
+      "created_at": "2026-09-03T20:15:30Z",
+      "updated_at": "2026-09-03T20:15:30Z",
+      "expires_at": "2026-12-02T20:05:08Z"
+    },
+    "all_retained_artifacts": [
+      {
+        "id": 9911101072,
+        "name": "legislation-exact-inventory-attempt-33800180992-1",
+        "size_in_bytes": 9047,
+        "digest": "sha256:548d66784856f295d01ff385f98c4162eb8e0aa84cd4252f66884481f70ca3c1",
+        "expired": false,
+        "created_at": "2026-09-03T20:15:31Z",
+        "updated_at": "2026-09-03T20:15:31Z",
+        "expires_at": "2026-12-02T20:05:08Z"
+      },
+      {
+        "id": 9911100379,
+        "name": "legislation-exact-inventory-state-33800180992-1",
+        "size_in_bytes": 10628815,
+        "digest": "sha256:ae49243398367932873cdbc01f6953c204c082ba8df6fd68641d202627812491",
+        "expired": false,
+        "created_at": "2026-09-03T20:15:30Z",
+        "updated_at": "2026-09-03T20:15:30Z",
+        "expires_at": "2026-12-02T20:05:08Z"
+      },
+      {
+        "id": 9910743836,
+        "name": "legislation-parent-33800180992-1",
+        "size_in_bytes": 1466,
+        "digest": "sha256:71ddc6816d41981750b13542feb76e0b3610266bee599a25fac629b385bbd92a",
+        "expired": false,
+        "created_at": "2026-09-03T20:05:31Z",
+        "updated_at": "2026-09-03T20:05:31Z",
+        "expires_at": "2026-12-02T20:05:08Z"
+      }
+    ],
+    "payload_policy": "Complete canonical payload remains in the verified hosted artifact. The repository retains identities,digests,accounting,logs and receipts only. Actions retention is not durable publication authority."
+  },
+  "preflight_evidence": {
+    "parent_path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/parent-preflight-20260903.json",
+    "parent_sha256": "ff5ff6dbc6520c9b81be0cc621ed21a50700a5933d035360663b930a7ecb6a1b",
+    "credential_values_accessed": false,
+    "qualification": "Recorded no-write parent preflight verified roots. The successful hosted acquisition independently proves credential/source operation; a separate pre-dispatch credential/endpoint test is not retrospectively asserted."
+  },
+  "preserved_failed_runs": [
+    33772828586,
+    33773087252,
+    33774317947,
+    33781603950,
+    33785045808,
+    33794784825
+  ],
+  "failure_evidence": "https://github.com/edithatogo/archive-govt-nz/issues/335#issuecomment-5531588185",
+  "publication_performed": false,
+  "handoffs": [
+    {
+      "prompt": 15,
+      "issue": 341,
+      "scope": "Use this named operational receipt to distinguish verified 500 scope/904 cumulative state from approved 552 HF publication."
+    },
+    {
+      "prompt": 20,
+      "issue": 351,
+      "scope": "Current integrated quality/security and exact-head assurance."
+    },
+    {
+      "prompt": 21,
+      "issue": 356,
+      "scope": "Independent terminal requirements audit; this operational status is a claim to reprove."
+    }
+  ],
+  "evidence": [
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/closeout-20260905/continuation.json",
+      "sha256": "f950516c731a41a2a01e636024fb3d30ee19951d7dcdc49da0ceee2836272ab9"
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/closeout-20260905/harvest.json",
+      "sha256": "7368c93fb37a5ab4fe41f790002ff4e4ffc78fdcca5b61f26e0ca63292a64b41"
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/closeout-20260905/hosted-log-scan.json",
+      "sha256": "66d82f99c6ad928e9f4ce7694afd6160eeb1307a80d48c62d172590339196048"
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/closeout-20260905/hosted-readback.json",
+      "sha256": "146fb75c405e577ae1df0990edc77e5d89d8c9fe396311ab83710db863e54022"
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/closeout-20260905/parent-check.log",
+      "sha256": "d16a480ede2f609f0c2038b63d4e120f90eb7dd692d2bd53e7604cd746c3b207"
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/closeout-20260905/parent-lineage.json",
+      "sha256": "b4e08770f7acfc4e545b882825f0f55ed0433b5d9acac72e10d7bbd6f17113d3"
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/closeout-20260905/reconciliation.json",
+      "sha256": "7a9e026f7af4620e2176aeb9396c79927b71bd9822d245324a89de5a7228d04e"
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/closeout-20260905/reconciliation.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/closeout-20260905/verification-method.md",
+      "sha256": "1e7e3e43c02b2c3ec3607add0697eef1ce158f3012d34e9f70c4cbe04ab93a7f"
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/closeout-20260905/verification.json",
+      "sha256": "370b7dcbe647911c38155c4dbff9d63a96668ffd924b71f0d1818d8c92ece501"
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/closeout-20260905/verification.log",
+      "sha256": "370b7dcbe647911c38155c4dbff9d63a96668ffd924b71f0d1818d8c92ece501"
+    }
+  ],
+  "blocking_findings": [
+    {
+      "id": "P13-PREFLIGHT-REMAINING",
+      "owner_prompt": 13,
+      "issue": 335,
+      "required_action": 3,
+      "detail": "Existing preflight_only lane validates state only; NZ_LEGISLATION_API_KEY is injected exclusively in the skipped harvest step. No successful standalone credential/endpoint preflight exists.",
+      "reproduction": ".github/workflows/exact-inventory.yml lines 98-132; workflow run history has no successful preflight-only run.",
+      "required_correction": "Narrow reviewed no-write credential-presence and bounded authenticated endpoint probe with sanitized receipt; then authorized hosted preflight."
+    }
+  ]
+}

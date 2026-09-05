@@ -1,0 +1,79 @@
+{
+  "scope": "Focused validation of separately reviewed source preflight correction; no hosted execution claim.",
+  "source_path": "tools/legislation_source_preflight.py",
+  "source_sha256": "45060fe735ff62c600d87d409aa576432f36b63f30073df59fa7cbd2cf943f54",
+  "coverage": {
+    "covered_lines": 56,
+    "num_statements": 56,
+    "percent_covered": 100.0,
+    "percent_covered_display": "100",
+    "missing_lines": 0,
+    "excluded_lines": 2,
+    "percent_statements_covered": 100.0,
+    "percent_statements_covered_display": "100",
+    "num_branches": 8,
+    "num_partial_branches": 0,
+    "covered_branches": 8,
+    "missing_branches": 0,
+    "percent_branches_covered": 100.0,
+    "percent_branches_covered_display": "100"
+  },
+  "mutation_count": 8,
+  "mutants_killed": 8,
+  "source_agent_reported_focused_tests": 30,
+  "hosted_no_write_execution": "pending after reviewed merge to main",
+  "evidence": [
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/closeout-20260905/source-preflight-validation/attempts.json",
+      "sha256": "3d10e5827e4c2846a74fb5643eea9c0fda2a7b3b83386e3c4237c9fb63c9864d"
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/closeout-20260905/source-preflight-validation/auth-header.log",
+      "sha256": "b710e39995d3c3f1eb4699a92414646605f0d4edd8f7ca5ad8e7db9087c23c7e"
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/closeout-20260905/source-preflight-validation/baseline.log",
+      "sha256": "d843eea322bb3fe9a6f661139bb6ef029f6cb74854c118b45aa98e65a75cb231"
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/closeout-20260905/source-preflight-validation/cas-count.log",
+      "sha256": "199d701e2c958c0cb6370d57597eabb1614dbd528316f4a50fd1d275c1969a38"
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/closeout-20260905/source-preflight-validation/cas-size.log",
+      "sha256": "5ea6149332a0b779c62e9eb0653ad7ba5da0354ec77b392e3a6924c12f146d04"
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/closeout-20260905/source-preflight-validation/coverage-config.txt",
+      "sha256": "9c73496c7372b97bf7c8b91a87f7c85b000cee9f4ddde4273e83716c41415bf9"
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/closeout-20260905/source-preflight-validation/coverage.json",
+      "sha256": "1178b2910aa85ae5cdfb5bec9366bd01654948927a9f885b0833d7f80f9bb2bb"
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/closeout-20260905/source-preflight-validation/missing-credential.log",
+      "sha256": "f793ae8e2acb2896a9334ce39d2c7fdae1d8e68c71ed84820189bed02d37a391"
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/closeout-20260905/source-preflight-validation/mutation-receipt.json",
+      "sha256": "36371fd428967f34074561a22c61f915553d13f1a445e05ceb94779d7c4e2cc4"
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/closeout-20260905/source-preflight-validation/redirect-boundary.log",
+      "sha256": "f439794cfe349e955a21f734edf03842a64c058092b049c1d844e61c18729725"
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/closeout-20260905/source-preflight-validation/state-fixity.log",
+      "sha256": "b2e4f6515235a19550838fe8c908215d9acf32d3a898ee6320eb26c78102bb0d"
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/closeout-20260905/source-preflight-validation/state-size.log",
+      "sha256": "9c70aae3fa2180b89b3e3c07a70508f65d6b37d1edade1ad864542db1ed171c4"
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/closeout-20260905/source-preflight-validation/status-acceptance.log",
+      "sha256": "b494ed090194897adb61c4f138f4f1c03b8b4d339014d1875bad6c085657902c"
+    }
+  ]
+}

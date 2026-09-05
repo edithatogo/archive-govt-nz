@@ -1,0 +1,15 @@
+{
+  "command": "CI=1 ./scripts/validate.sh",
+  "status": "interrupted",
+  "exit_code": 130,
+  "reason": "Coordinator requested pause before separately owned preflight source correction in this same issue worktree. This was not a validation pass.",
+  "completed_lanes": [
+    "lock",
+    "conductor",
+    "format",
+    "lint"
+  ],
+  "interrupted_lane": "types",
+  "log_sha256": "599b15485e86f2804a836ccc511ac0118060180075f1d59bd168d9aee727a35c",
+  "log_bytes": 5575
+}

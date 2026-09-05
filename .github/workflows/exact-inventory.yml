@@ -17,7 +17,7 @@ on:
         required: true
         type: string
       preflight_only:
-        description: Restore and verify the parent without source acquisition or state upload
+        description: Verify parent and authenticated endpoint without payload acquisition or state upload
         required: true
         type: boolean
         default: false
@@ -117,6 +117,20 @@ jobs:
           assert len(manifest["records"]) == reference["durable"]["roots"]["records"]
           assert len(manifest["discovered_work_ids"]) == reference["durable"]["roots"]["work_ids"]
           PY
+
+      - name: Verify authenticated no-write source preflight
+        env:
+          LEGISLATION_API_KEY: ${{ secrets.NZ_LEGISLATION_API_KEY }}
+        run: uv run --locked python tools/legislation_source_preflight.py
+
+      - name: Preserve sanitized source preflight receipt
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: legislation-source-preflight-${{ github.run_id }}-${{ github.run_attempt }}
+          path: build/legislation-attempt/source-preflight.json
+          if-no-files-found: error
+          retention-days: 90
 
       - name: Revalidate every governed work ID
         if: ${{ !inputs.preflight_only }}

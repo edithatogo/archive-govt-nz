@@ -1,0 +1,24 @@
+{
+  "batch_file": "historical-work-ids-0001.txt",
+  "batch_id": "prompt13-500-verification-20260904-identity-fix",
+  "batch_sha256": "59923176fa34796d7673a20b880af9abe5520fe484595edb220f2bbc0e3b33e7",
+  "batch_work_ids_count": 500,
+  "cas_objects_verified": 852,
+  "checkpoint_processed_ids_count": 552,
+  "discovered_inventory_sha256": "9ca6dc505f991e015c6c997827878d8c7e9381b214a1544eb338328a285c6894",
+  "discovered_works_count": 552,
+  "evaluated_at": "2026-09-05T06:37:32Z",
+  "limitations": [
+    "one_search_derived_batch_only",
+    "not_corpus_completeness_evidence",
+    "no_remote_publication_or_rights_verification"
+  ],
+  "manifest_sha256": "eb1afcd85d8135604d86f8b23b438e8ecc96a6e944a790758770746a64e2d6f2",
+  "manifest_total_records": 904,
+  "mismatch_count": 0,
+  "mismatches": [],
+  "reconciled_work_ids_count": 500,
+  "schema_version": "archive-govt-nz.legislation-one-batch-reconciliation/v1",
+  "selected_records_count": 852,
+  "status": "passed"
+}

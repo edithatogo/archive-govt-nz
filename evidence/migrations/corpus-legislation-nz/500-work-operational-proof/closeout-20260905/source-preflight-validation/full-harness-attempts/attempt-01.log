@@ -1,0 +1,22 @@
+==> lock: uv lock --check
+Resolved 113 packages in 41ms
+==> conductor: uv run --locked python tools/validate_conductor_state.py
+{
+  "errors": [],
+  "track_count": 92
+}
+==> format: uv run --locked ruff format --check .
+1911 files already formatted
+==> lint: uv run --locked ruff check .
+E501 Line too long (94 > 88)
+   --> tests/tools/test_exact_inventory_workflow.py:104:89
+    |
+102 |     assert "preflight_only:" in text
+103 |     assert (
+104 |         "Verify parent and authenticated endpoint without payload acquisition or state upload"
+    |                                                                                         ^^^^^^
+105 |         in text
+106 |     )
+    |
+
+Found 1 error.
