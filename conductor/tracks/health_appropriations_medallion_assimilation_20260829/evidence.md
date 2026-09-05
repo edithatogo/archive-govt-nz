@@ -1,17 +1,23 @@
 # Evidence
 
-## 2026-09-07 — Bronze ingestion contract audit and bounded fix
+## Merged RDF validation and bounded task reconciliation — 2026-09-05 UTC
 
-[Audit and exact gaps](./bronze-ingestion-contracts.md) and
-[machine receipt](./bronze-ingestion-validation.json) record 23 new cases,
-129 affected passes, three killed guard mutants and 98.99% scoped coverage.
-Short/overlong identity-encoded bodies now fail before CAS/WARC promotion.
-An offline runner characterization proves completed resources are re-requested
-after cancellation and prior WARC bytes are overwritten. Durable batch resume,
-version-preserving WARC linkage, compressed wire-length validation and full
-integrated assurance remain pending. Phase 2.4 historical completion is not
-reinterpreted as these missing contracts. Parent owns full harness; no live
-capture, rights, registry or publication changes.
+PR #401 merged at `c92c3d2f717b55537b5d338d430689125e95fa66` after all
+eight exact-head hosted checks passed on `f111dbf0d7148c13c9fa69caba86c5ebf0506c06`.
+GitHub readback confirmed the merge at 08:32:53Z; the merged tree equals the
+validated head. CI run `33955010646` passed Ubuntu, macOS and Windows assurance.
+The warm-up review thread was resolved after the tested explicit-plugin fix.
+
+The exact-head local `./scripts/validate.sh` also exited 0: 4,774 tests,
+15 retained warnings, 97.61% coverage, 48 schemas/38 representative documents,
+9/9 parity, all mutation lanes, hygiene, throughput and every supply-chain gate.
+The test stage took 122.08 seconds. Test SHA256:
+`0f642a6fb234bdd2a3271544fd877e1789ccda36d5a6cbec1559452763f30515`.
+
+Six bounded task checkboxes are reconciled against PRs #397, #398 and #401
+and this integrated full assurance. This does not complete historical source
+enumeration, the whole metadata/application-profile requirement, rights,
+publication, recovery, or track acceptance. The track remains in progress.
 
 ## Independent offline RDF interpretation — 2026-09-05 UTC
 
@@ -619,86 +625,13 @@ supply-chain gates. The durable log hashes to
 This satisfies local assurance for the bounded structural registry; row-level
 validation, canonical projections, full Phase 3 completion and hosted delivery
 are not inferred from it. No existing source package or publication changed.
+@@
+ # Evidence
 
-## 2026-09-05 — Exact normalization prerequisite
+## Analytical context register — 2026-09-05 UTC
 
-See [contract and limits](./recordset-normalization.md) and the
-[machine validation receipt](./normalization-validation.json). Final focused
-schema/normalization checks passed 117 tests and reached 100% line/branch
-coverage for all 60 statements/16 branches of the new module. Cold mutation
-killed all 35 mutants with zero other outcomes or cache hits. All post-test
-repository assurance stages passed, including schema/parity, mutation,
-audit/licences/secrets and the validated 112-component SBOM.
-
-The first full suite had 4,829 passes and two existing Hypothesis generation
-timing failures, at 97.62% overall coverage. A two-worker retry was interrupted
-after 1,553 passes on the user's parent-harness coordination instruction.
-Combined full validation is delegated to the parent after integration; this is
-not a full-harness pass or whole Phase 3 completion claim. The global registry,
-main's pending schema fixtures and all other worktrees remain unedited.
-
-## 2026-09-05 — Bounded admission and readback negatives
-
-[Paired validation](./normalization-admission-validation.json) records 585
-focused tests, 100% coverage across both changed modules, and all 107 cold
-mutants killed. The [negative-fixture matrix](./negative-fixture-matrix.md)
-closes the negative-fixture task for existing bounded profiles. Full combined
-checks remain assigned to the parent; broad positive semantic qualification,
-source/parity/promotion and whole-track completion remain pending.
-
-## 2026-09-07 — Full fixture-dimension assessment
-
-[Fixture matrix](./eight-recordset-fixture-acceptance.md) and
-[machine receipt](./eight-recordset-fixture-validation.json) map all Phase 3.1
-fixture dimensions to M-05/M-06/M-18 and AC-05/AC-16. All eight sets cross JSON
-Schema, Arrow and generated Parquet; 335 affected tests pass, including 142 new
-cases. Stable source-key construction, unit/time/rights qualification and
-complete verified Bronze lineage remain unmet. The broad task stays `[~]`.
-Focused lint/format/types pass; parent retains full integrated assurance.
-
-## 2026-09-07 — Fixture task completed; initial interpretation superseded
-
-[Completion assessment](./eight-recordset-fixture-completion.md) and
-[receipt](./eight-recordset-fixture-completion.json) supersede the immediately
-preceding blocking interpretation. All named fixture dimensions now have
-transport, linked synthetic Bronze and approved adapter contract assertions.
-Added 24 cases (166 total new fixture tests); 673 affected tests pass. The
-original Phase 3.1 fixture task is `[x]`; whole-phase status remains in progress.
-No live rights/source qualification is inferred. AC-16 full integrated checkpoint
-remains assigned to the parent; no full harness, push, merge or publication.
-# 2026-09-07 — Bronze checkpoint follow-up
-
-Phase 2.1 cooperative per-resource resume and non-overwriting WARC paths are
-implemented in the isolated Bronze worktree after `0cf0f32b`. Initial missing
-checkpoint red is retained in `bronze-checkpoint-contracts.md`; final 43 focused
-and 149 affected tests pass, runner coverage is 100% line/branch, four seeded
-mutants are caught, and Ruff/format/basedpyright pass. The paired machine
-receipt is `bronze-checkpoint-validation.json`. Self-review checked receipt
-fixity, repeated interruption, orphan preservation, competing-writer fencing,
-and manifest compatibility. Exact Phase 2.1 gaps remain documented; no broad
-completion, full-harness, source-census, rights, parent-edit or Phase 3 claim.
-# 2026-09-07 — Phase 2.1 hard-kill recovery
-
-Replaced ambiguous directory ownership with an OS-released SQLite transaction
-lock. Real subprocess kill/resume passed after the recorded red failure;
-44 tests, 100% runner coverage and three killed mutants. Static checks pass.
-Paired evidence: `bronze-process-recovery.md` / `bronze-process-recovery.json`.
-Self-review retains legacy-lock, power-loss and filesystem boundaries. No
-parent, census, rights, registry, Phase 3 or full-harness changes.
-# 2026-09-07 — Phase 2.1 encoded length
-
-Reviewed pinned HTTPX raw-counter/decoder semantics before three red tests.
-Encoded transport-body length is now verified without comparing decoded size;
-preconsumed encoded responses with length fail closed as unverifiable.
-161 affected tests pass, with 99.02% capture coverage and four caught mutants.
-Paired evidence: `bronze-wire-length.md` / `bronze-wire-length.json`. Static
-checks pass. Review retains precise framing/codec and AC-16 coverage limits;
-no weaker verification, raw-wire assurance, source promotion or full harness.
-# 2026-09-07 — Phase 2.1 local review boundary
-
-Eight valid HTTP redirect-budget characterization tests passed before the
-behavior-preserving fallback routing change. Final affected suite: 169 passed,
-capture 100% line/branch coverage, three killed mutants, static checks passed.
-Paired evidence: `bronze-redirect-boundary.md` / `.json`. Self-review found no
-remaining actionable defect in the requested slice. Stop here for parent full
-assurance and independent review; no full harness or further implementation.
+Added analytical-context-register.md as a read-only reconciliation of existing
+census records and source-specific profiles. It identifies exact CPI, QES, GDP
+and HLFS working-age objects, records the resident-population metadata lead
+without acquiring it, and keeps Crown-expense definitions source-specific. No
+Gold measure, rights decision, new capture or publication state changed.
