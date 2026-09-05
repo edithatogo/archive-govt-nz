@@ -74,7 +74,7 @@ def main() -> int:
             "state_modified": False,
         }
     print(json.dumps(report, sort_keys=True))
-    return 0 if report["status"] == "healthy" else 1
+    return 0 if report.get("monitor_status", report["status"]) == "healthy" else 1
 
 
 if __name__ == "__main__":
