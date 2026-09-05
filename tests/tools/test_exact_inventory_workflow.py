@@ -101,7 +101,8 @@ def test_parent_preflight_cannot_acquire_or_upload() -> None:
     text = WORKFLOW.read_text(encoding="utf-8")
     assert "preflight_only:" in text
     assert (
-        "Verify parent and authenticated endpoint without payload acquisition or state upload"
+        "Verify parent and authenticated endpoint without payload acquisition "
+        "or state upload"
         in text
     )
     assert "default: false" in text
