@@ -125,7 +125,7 @@
     {
       "criterion": 8,
       "id": "independent-recovery",
-      "required_verification": "Rehash both independent attempt and durable stage receipts, crosscompare roots/counts/input trees and no-write preflight; resolve explained hosted metadata handoff via P15.",
+      "required_verification": "Rehash both independent attempt and durable stage receipts, crosscompare roots/counts/input trees and no-write preflight; resolve explained hosted metadata handoff via P15. The final Prompt13 recovery gate must bind actual public durable authority and both primary executed recovery receipts at recovery commit5745bf3e38924dc968af70842dc6ed7a776e9e05; PR329 alone is delivery/readiness evidence, not proof a recovery executed.",
       "evidence_candidates": [
         {
           "path": "evidence/migrations/corpus-legislation-nz/durable-recovery/independent-recovery-summary-20260903.json",
