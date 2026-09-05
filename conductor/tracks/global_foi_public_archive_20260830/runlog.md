@@ -318,3 +318,14 @@ focused tests then passed with 100% line and branch coverage for `foi_health`:
 --cov-branch --cov-report=term-missing --cov-fail-under=100 -q`.
 Full repository validation remains pending; this does not complete P5.4 or
 establish notification delivery, source freshness, publication, or cutover.
+
+The two-worker full run terminated with 4,708 passes, 97.59% coverage and two
+Hypothesis timing failures: checkpoint JSON input generation and union algebra.
+The isolated checkpoint property passed with seed
+87631357486710835346458405623809083968; union algebra remained timing-flaky
+(406.55 ms initially, 2.69 ms on replay). No semantic assertion failure was
+reported, but no full pass is claimed. Deadlines and health checks are unchanged.
+Ruff, formatting and basedpyright passed for the monitor corrections. Commit
+`8af58914` is pushed to PR 395 and both reported review threads are resolved.
+Integrated Health readiness PR 392 at merge `3c867a9e` into this branch; its
+acceptance and external rights gates remain distinct from FOI monitoring.
