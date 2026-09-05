@@ -51,6 +51,7 @@ def test_supplementary_assurance_runs_only_existing_fixed_mutation_suites() -> N
         "tests/tools/run_legislation_parent_state_mutations.py",
         "tests/tools/run_legislation_durable_mutations.py",
         "tests/tools/run_seed_registry_mutations.py",
+        "tests/tools/run_legislation_source_preflight_mutations.py",
         "tools/mutation_source_sets.py",
         "tools/mutation_legislation_discovery.py",
         "tools/mutation_zenodo_identity.py",

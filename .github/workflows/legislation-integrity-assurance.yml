@@ -41,6 +41,9 @@ jobs:
           - suite: seed-registry
             script: tests/tools/run_seed_registry_mutations.py
             directory: true
+          - suite: source-preflight
+            script: tests/tools/run_legislation_source_preflight_mutations.py
+            directory: true
           - suite: source-sets
             script: tools/mutation_source_sets.py
             directory: false

@@ -5,3 +5,4 @@
 - 2026-09-05: Prepared opt-in static hosted matrix for existing suites under the independently reviewed harness-defect exception. Root and peer reviewed permission, gate, exact revision, receipt and failure semantics; fixes record full argv and check size before hashing.
 - 2026-09-05: Focused workflow/policy tests passed (8 tests), actionlint reported no findings, ruff passed, and targeted typing reported zero errors. Full and hosted validation remain pending.
 - 2026-09-05: Harness correction committed as `4e0af41b4cf8a31dcc644ce08e4e550021de70e1`; supplementary baseline evidence added separately. Parent mutations remain unverified after two timing failures. No PR, hosted run, or completion claim yet.
+- 2026-09-05: Prepared the eleventh static suite for the source-preflight runner from Prompt 13. Its file is deliberately not copied into this branch: full validation and hosted execution must wait for the dependency merge/rebase. No suite success is claimed.
