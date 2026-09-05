@@ -15,6 +15,8 @@ every planned record set, measure or operational workflow.
 
 ## Artifacts
 
+- [Metadata standards and verified local DCAT route](./metadata-standards-route.md)
+
 - [Exclusive local resume execution](./resume-execution.md)
 - [Pure local canonical provenance inventory](./local-provenance-inventory.md)
 
@@ -138,3 +140,4 @@ they are not current-state assertions.
 
 - [Implementation Plan](plan.md)
 - [Read-only partial-rebuild planner](readonly-resume-planner.md)
+- [Historical Budget and forecast source register](historical-source-register.md)

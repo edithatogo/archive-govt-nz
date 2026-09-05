@@ -76,11 +76,18 @@ repository validation command. External gates block only their affected task.
   Estimates/Supplementary Estimates across its observed 1998–2026 span; record
   exact edition, URL, media type, rights evidence and gap disposition. [M-02,
   M-11; AC-03, AC-09]
-- [ ] Enumerate annual Budget expenditure/revenue workbooks, BEFU/HYEFU
+- [~] Enumerate annual Budget expenditure/revenue workbooks, BEFU/HYEFU
   charts/core Crown expense/forecast files, the current Fiscal Time Series,
   Ministry of Health Vote Health series and Pharmac CPB series. Include Budget
   2025 seed inputs and Budget 2026 successors without assuming identical
   schemas. [M-02, M-11; AC-03, AC-09]
+  Historical scope and unresolved editions are recorded in
+  `historical-source-register.json`; link discovery does not establish capture.
+- [~] Review fix: isolate invariant legislation fixtures from generated archive
+  ordering and union-algebra examples; retain all strategies, deadlines and
+  semantic assertions, then verify full assurance. [M-18; AC-16]
+- [~] Review fix: give historical discovery rows stable URL-derived source IDs
+  and verify uniqueness without substituting locator identity for byte fixity.
 - [ ] Enumerate the exact official CPI, QES wage, population, GDP and Crown
   expense series needed for approved derived measures; reject discovery leads
   that lack a stable definition or join. [M-02, M-12; AC-03, AC-10]
@@ -258,7 +265,7 @@ repository validation command. External gates block only their affected task.
   (121 focused tests, 129/129 cold mutants, 2,866 native tests; see
   `historical-projection.md`; other source projections remain pending.)
 
-- [ ] Register the dedicated health-appropriations domain and versioned
+- [x] Register the dedicated health-appropriations domain and versioned
   multi-recordset schemas without weakening other domain contracts. [M-05;
   AC-05]
 - [ ] Implement safe workbook, CSV, PDF-table and SQLite adapter interfaces
@@ -533,6 +540,25 @@ repository validation command. External gates block only their affected task.
 
 ### 7.1 Metadata and rights contracts first
 
+- [~] Review clarification: explicitly load the JSON-LD parser plugin without
+  an unguarded warm-up parse; retain offline positive/negative fixtures and
+  revalidate the exact change. [M-14, M-18; AC-14, AC-16]
+
+- [~] Validate generated DCAT and PROV JSON-LD with an offline RDF processor:
+  compare expanded predicates, resource/literal types, checksum bytes and exact
+  derivation edges; deny external context/file/network reads. Keep application
+  profiles, rights, publication and graph indexing separate. [M-14; AC-14]
+
+- [~] DCAT standards review: use the registered Parquet media-type IRI and
+  expose verified payload SHA256 values through typed SPDX checksum nodes;
+  independently compare graph digests with retained file bytes. [M-14; AC-14]
+
+- [~] Generate local DCAT recordset/distribution metadata only after original,
+  raw and canonical package verification and projection equality. Retain exact
+  physical-schema/fixity inventory; reject forged or altered inputs and do not
+  infer access URLs, licensing, publication dates or full standards conformance.
+  [M-14, M-18; AC-14, AC-16]
+
 - [~] Compose a read-only local provenance verifier for explicit canonical
   historical/classification marker pins, original objects and raw package pins.
   Compare retained tables/accounting with recomputed pure projections and return
@@ -701,17 +727,26 @@ repository validation command. External gates block only their affected task.
   (PR #290 merged `07143c8`; native timeout remains recorded, exact-head
   hosted checks passed; subsequent staging changes have separate assurance)
 
-- [ ] Add release-readiness negative tests for missing rights, incomplete
+- [x] Add release-readiness negative tests for missing rights, incomplete
   source disposition, failed parity/recovery, stale evidence, non-pinned
   revisions, restricted content and candidate-manifest mismatch. [M-14, M-17,
   M-18; AC-14, AC-15, AC-16]
-- [ ] Build a local candidate for `edithatogo/nz-health-appropriations` with
+  Exact local candidate bytes, file-set closure, required metadata, per-original
+  rights rows, source dispositions and release-state claims fail closed. A
+  separately hash-pinned assurance receipt binds exact code/candidate revisions,
+  parity, recovery and UTC freshness without performing publication.
+- [x] Build a local candidate for `edithatogo/nz-health-appropriations` with
   rights-eligible originals/derivatives only, schemas, manifests, cards,
   limitations and checksums. Metadata-only/tombstone representations must
   remain explicit. [M-14, M-17; AC-14, AC-15]
-- [ ] Record exact candidate manifest hash, byte/file counts, intended splits,
+  Candidate `2026-08-29-v4` was built and later published without broadening;
+  see the checksum-pinned candidate and publication entries in `evidence.jsonl`.
+- [x] Record exact candidate manifest hash, byte/file counts, intended splits,
   viewer expectations, collection target and rollback/reconciliation plan.
   [M-17, M-19; AC-15]
+  Manifest `9a33babda857b0aa7c60a6012000cf1e730fed729781cb8ceb6e7a4714cae40e`
+  binds 94 pre-manifest files/39,390,246 bytes and the approved collection;
+  upload and anonymous readback remain separately evidenced.
 
 ### 9.3 Final local assurance and review
 
@@ -754,6 +789,30 @@ repository validation command. External gates block only their affected task.
   retirement and Zenodo remain out of scope. [M-18, M-19; AC-16]
 
 ## Review fixes
+
+- [x] Add a bounded pure bridge from exact historical canonical projections to
+  the existing public historical analysis contract, retaining canonical
+  lineage, reversible identifiers and explicit field accounting without I/O,
+  fixity, rights, execution or publication claims. [M-07, M-09, M-10, M-18;
+  AC-05, AC-07, AC-08, AC-16] (`02d36bc`, `13e8d85`, `fbf710d`, `c867f97`,
+  `50564fc`; focused mutation and native passed; hosted delivery remains
+  separate)
+
+- [x] Add the exclusive, deterministic six-file local Budget appropriation
+  exporter with directory-descriptor race resistance, pre-serialization and
+  running byte bounds, exact readback/closure, complete receipts, and redacted
+  retained failures. This closes only the bounded exporter slice; retained
+  two-vintage replay, persisted-provenance consumption, rights and publication
+  remain separate. [M-03, M-04, M-07, M-18; AC-02, AC-04, AC-05, AC-16]
+- [x] Replay the pinned retained Budget-2025/2026 packages twice each into
+  fresh temporary outputs; independently prove exact dry-run/write hashes,
+  six-file closure, canonical tables/schemas, full receipts/accounting,
+  byte-identical builds and unchanged raw/original hashes. This is local
+  validation only, not rights or publication evidence. [M-03, M-04, M-16,
+  M-18; AC-02, AC-04, AC-05, AC-12, AC-16]
+- [x] Remove the exporter Decimal test's process-global flag precondition after
+  hosted macOS exposed test-order dependence; retain exact before/after local
+  context and Decimal value assertions. [M-18; AC-16]
 
 - [x] Keep disconnected source-plot segments styled by their full context and
   disambiguate colliding display labels without merging source identities.

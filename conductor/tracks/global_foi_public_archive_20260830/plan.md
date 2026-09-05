@@ -25,14 +25,26 @@ The approved destination is archive-govt-nz; no cutover has occurred.
 - [x] P2.1 (AC04, AC11): Pin the country/territory universe and write failing coverage/uniqueness/seed-parity/rights-export tests. Implementation: `c1bf57b`; 23 focused tests passed.
 - [~] P2.2 (AC04): Implement one registry and importer reconciling all 23 runtime instances, 29 sites and 42 target regimes; represent every country with reviewed sources or an explicit evidence-backed disposition.
 - [~] P2.3 (AC04, AC09): Generate the public source index, machine coverage ledger and human report; keep unknown denominators null and states distinct.
-- [ ] P2.4 (AC12): Automated review, schema/property tests and full phase validation.
+- [~] P2.4 (AC12): Automated review, schema/property tests and full phase validation.
+  The fail-closed phase validator now proves internal entity/source/jurisdiction
+  accounting and reports current acceptance blockers separately. Full phase
+  acceptance remains open while broader discovery and country completion are
+  unverified.
 
 ## Phase 3 — Metadata indexes and immutable raw storage
 
-- [~] P3.1 (AC05, AC06, AC11): Add red tests for original metadata preservation, request/correspondence/attachment relationships, revisions, missing objects, synthetic/CDX rejection, unsafe archive members, private-network redirects, expansion/resource limits, active content and sensitive exports.
-- [~] P3.2 (AC05, AC06): Integrate pinned capture adapters, CAS/WARC packaging, JSONL/Parquet object metadata and complete provenance; reuse existing Bronze/storage primitives.
-- [~] P3.3 (AC05, AC06, AC08): Implement durable checkpoint/package manifests and clean-room reconstruction; prove deduplication, interruption, temporary-artifact loss and corruption handling using bounded shards and stable IDs.
-- [ ] P3.4 (AC12): Automated review, integrity mutation tests, privacy checks and full phase validation.
+- [x] P3.1 (AC05, AC06, AC11): Add red tests for original metadata preservation, request/correspondence/attachment relationships, revisions, missing objects, synthetic/CDX rejection, unsafe archive members, private-network redirects, expansion/resource limits, active content and sensitive exports.
+- [x] P3.2 (AC05, AC06): Integrate pinned capture adapters, CAS/WARC packaging, JSONL/Parquet object metadata and complete provenance; reuse existing Bronze/storage primitives.
+- [x] P3.3 (AC05, AC06, AC08): Implement durable checkpoint/package manifests and clean-room reconstruction; prove deduplication, interruption, temporary-artifact loss and corruption handling using bounded shards and stable IDs.
+- [x] P3.4 (AC12): Automated review, integrity mutation tests, privacy checks and full phase validation.
+- [x] P3.5 review fix (AC05, AC11, AC12): Reject unsafe initial capture URLs
+  and redirect destinations before a request can reach a non-public network
+  target; retain stable redacted failure evidence.
+- [x] P3.6 review fix (AC12): Preserve the userinfo rejection regression while
+  constructing its inert credential token in fragments so secret scanning does
+  not misclassify test data as a live Basic Auth credential.
+- [x] P3.7 review fix (AC11, AC12): Exercise malformed authority-port parsing
+  explicitly so the fail-closed URL guard is fully covered on the changed lines.
 
 ## Phase 4 — Public Hugging Face delivery
 
@@ -48,6 +60,9 @@ The approved destination is archive-govt-nz; no cutover has occurred.
 - [~] P5.2 (AC08): Implement registry-derived schedules, historical/incremental queues, durable state and bounded continuation; do not use a blind country loop.
 - [~] P5.3 (AC04, AC08, AC11): Walk the entire pinned country universe; assess all discovered sources, add bounded adapters where possible, verify capture/storage per eligible source, activate approved schedules, and retain explicit unsupported/blocked dispositions.
 - [~] P5.4 (AC09): Add freshness/backlog monitoring and actionable stuck-state alerts; prove that green monitor execution cannot conceal failed capture/publication.
+- [~] P5.4a review fix (AC09, AC12): Distinguish terminal control rehearsals
+  from exhausted capture work and report unknown corpus completion without a
+  revision-bound catalogue denominator; validate regression and full gates.
 - [ ] P5.5 (AC12): Automated review, recovery/property/mutation gates and full validation with evidence-backed country counts.
 
 ## Phase 6 — Shadow parity, cutover and rollback

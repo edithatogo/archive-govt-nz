@@ -949,26 +949,29 @@ def test_seal_rejects_auxiliary_reconciliation_inside_state(tmp_path: Path) -> N
     assert not (output / P.SEAL).exists()
 
 
-@given(
-    st.text(
-        alphabet=st.characters(whitelist_categories=("Ll", "Nd")),
-        min_size=1,
-        max_size=20,
-    )
-)
-@settings(suppress_health_check=[HealthCheck.function_scoped_fixture])
 def test_state_rejects_arbitrary_unrecognized_receipts(
-    tmp_path: Path, name: str
+    tmp_path: Path,
 ) -> None:
     """No auxiliary receipt filename may bypass the canonical-state allowlist."""
     _ref, _meta, raw = fixture(tmp_path / "in")
-    files = P.unpack(raw)
-    candidate = f"receipts/{name}.json"
-    if P.allowed_name(candidate):
-        return
-    files[candidate] = b"{}\n"
-    with pytest.raises(P.v.VerificationError, match="state_path"):
-        P.state_roots(files)
+    original_files = P.unpack(raw)
+
+    @given(
+        st.text(
+            alphabet=st.characters(whitelist_categories=("Ll", "Nd")),
+            min_size=1,
+            max_size=20,
+        )
+    )
+    def check_name(name: str) -> None:
+        candidate = f"receipts/{name}.json"
+        if P.allowed_name(candidate):
+            return
+        files = {**original_files, candidate: b"{}\n"}
+        with pytest.raises(P.v.VerificationError, match="state_path"):
+            P.state_roots(files)
+
+    check_name()
 
 
 def test_lineage_tampering_and_duplicate_seal(tmp_path: Path) -> None:
@@ -1149,17 +1152,22 @@ def test_cli_preflight_and_success(
         P.context_from_environment()
 
 
-@given(st.permutations(["manifest.json", "checkpoint.json", "receipts/harvest.json"]))
-@settings(suppress_health_check=[HealthCheck.function_scoped_fixture])
-def test_archive_order_does_not_change_roots(tmp_path: Path, names: list[str]) -> None:
+def test_archive_order_does_not_change_roots(tmp_path: Path) -> None:
     """Archive member order cannot affect authenticated state or CAS roots."""
     ref, _, raw = fixture(tmp_path / "in")
-    files = P.unpack(raw)
-    entries: list[tuple[str | zipfile.ZipInfo, bytes]] = [
-        (name, files.pop(name)) for name in names
-    ]
-    entries.extend(files.items())
-    assert P.state_roots(P.unpack(fixtures.zip_bytes(entries))) == ref["roots"]
+
+    @given(
+        st.permutations(["manifest.json", "checkpoint.json", "receipts/harvest.json"])
+    )
+    def exercise(names: list[str]) -> None:
+        files = P.unpack(raw)
+        entries: list[tuple[str | zipfile.ZipInfo, bytes]] = [
+            (name, files.pop(name)) for name in names
+        ]
+        entries.extend(files.items())
+        assert P.state_roots(P.unpack(fixtures.zip_bytes(entries))) == ref["roots"]
+
+    exercise()
 
 
 @given(st.binary(min_size=1, max_size=64))
@@ -1292,8 +1300,22 @@ def test_source_receipt_and_current_execution(tmp_path: Path) -> None:
     receipt = P.v.load(v3_harvest(files))
     receipt["run_identity"] = "another-execution"
     (output / "receipts/harvest.json").write_bytes(P.M.encoded(receipt))
-    with pytest.raises(P.v.VerificationError, match="receipt_run"):
+    with pytest.raises(P.v.VerificationError, match="seal_execution"):
         P.seal(output, req["context"], q)
+
+
+def test_state_validator_can_bind_authenticated_execution(tmp_path: Path) -> None:
+    """An outer archive consumer may bind v3 receipt identity before sealing."""
+    _ref, _meta, raw = fixture(tmp_path / "in")
+    files = P.unpack(raw)
+    receipt = P.v.load(v3_harvest(files))
+    receipt["run_identity"] = "hosted-execution-101"
+    files["receipts/harvest.json"] = P.M.encoded(receipt)
+
+    state = P.M.target_state(files, "hosted-execution-101")
+    assert state["manifest"]["run_id"] != receipt["run_identity"]
+    with pytest.raises(P.v.VerificationError, match="receipt_execution"):
+        P.M.target_state(files, "different-execution")
 
 
 def test_seal_rechecks_receipt_execution_after_state_validation(
@@ -1327,6 +1349,35 @@ def test_seal_rechecks_receipt_execution_after_state_validation(
     monkeypatch.setattr(P, "read_harvest_receipt", changed_on_seal)
     with pytest.raises(P.v.VerificationError, match="seal_execution"):
         P.seal(output, req["context"], q)
+
+
+def test_persisted_checkpoint_byte_root_seals_end_to_end(tmp_path: Path) -> None:
+    """The hosted checkpoint-root contract produces a sealable continuation."""
+    ref, meta, raw = fixture(tmp_path / "in")
+    output = tmp_path / "state"
+    quarantine = tmp_path / "q"
+    req = request(ref)
+    req["context"]["execution_id"] = "hosted-execution-101"
+    req["authority"]["scope"]["execution_id"] = "hosted-execution-101"
+    P.restore(
+        req,
+        {"output": output, "quarantine": quarantine},
+        client(meta, raw),
+        "synthetic",
+        NOW,
+    )
+    restored = P.read_state(output)
+    receipt = P.v.load(v3_harvest(restored))
+    receipt["run_identity"] = req["context"]["execution_id"]
+    manifest = P.v.load(restored["manifest.json"])
+    assert receipt["run_identity"] != manifest["run_id"]
+    assert receipt["output_checkpoint_root"] == P.v.sha(
+        (output / "checkpoint.json").read_bytes()
+    )
+    (output / "receipts/harvest.json").write_bytes(P.M.encoded(receipt))
+    complete = P.seal(output, req["context"], quarantine)
+    assert complete["status"] == "complete"
+    assert (output / P.SEAL).is_file()
 
 
 def test_sealed_parent_binds_receipt_schema_and_strength(tmp_path: Path) -> None:

@@ -1,5 +1,31 @@
 # Draft self-review
 
+## Private-network redirect fix — 2026-09-04
+
+The P3.1 completion review exposed an SSRF path in the generic capture client.
+The fix validates both the initial URL and each joined redirect destination
+immediately before transport use. It rejects non-HTTP(S), missing-host,
+userinfo, localhost/local/internal suffixes, and literal non-global IPv4/IPv6
+targets. Relative public redirects remain supported. Tests verify no request is
+made to the rejected destination and receipts disclose no transport detail.
+The exact full gate subsequently exposed one secret-scanner false positive in
+the inert userinfo fixture. Fragmenting the test token retains coverage while
+making its non-secret nature explicit; the focused suite and scanner pass with
+no suppression or allowlist change.
+Codecov then identified the malformed-port exception branch as the sole
+uncovered changed line. A transport-forbidden regression now proves that this
+syntax returns the same redacted `unsafe_url` outcome before any request.
+
+## Phase 3 closeout review — 2026-09-03
+
+Reviewed the P3 task evidence and plan transition. The preservation contract is
+implemented and validated locally: original bytes remain immutable, manifests
+are deterministic, indexes preserve request/object/event/resource and
+attachment relationships, and restore rejects tampering, interruption and
+unsafe members. The recorded full harness and mutation receipts support the
+P3.1–P3.4 completion marks. No external/publication claim was promoted; rights,
+hosted restore and public raw delivery remain separate gates.
+
 ## Conductor closeout review — 2026-09-03
 
 Review result: repository-owned validation is current and passing, but the
@@ -139,5 +165,16 @@ they remain on one physical disk and are not independently replicated or public.
   checkpoint; no cutover, public raw upload or complete-system claim is made.
 
 ## Deployed bounded controls review
+
+### 2026-09-05 — PR 395 progress-monitor review
+
+- Corrected P1: expected terminal control rehearsals were counted as exhausted
+  corpus captures, permanently failing scheduled health. Only the dispatcher's
+  reserved numeric rehearsal namespace is counted separately; real exhaustion
+  and unfinished ownership still alert.
+- Corrected P1: unscoped queue snapshots could claim corpus completion. Empty
+  and terminal-only state now reports unknown without a catalogue denominator.
+- Twenty-two focused tests pass with 100% module line and branch coverage.
+  Full and hosted validation remain pending; P5.4a remains in progress.
 
 PR #288 passed three-platform assurance, CodeQL and workflow checks. Live evidence verifies exact-parent conflict rejection, persistence across local and hosted processes, private capture completion without public credit, and unchanged authority during read-only hosted health. Source discovery, continuous acquisition, source eligibility, publisher enforcement, public raw restore and donor transfer remain open. The track stays in progress; local timeout and Windows correction receipts remain preserved. See shared-execution-deployment-20260831.json.

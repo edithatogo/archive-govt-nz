@@ -1,5 +1,69 @@
 # Evidence
 
+## Independent offline RDF interpretation — 2026-09-05 UTC
+
+Added development-only RDFLib 7.6.0, with no existing locked dependency version
+changed, after recording its stack/security rationale. The combined RDF/DCAT/
+PROV suite passes 47 tests; six new parser tests cover exact expanded triples,
+resource/literal types, actual payload checksum bytes and blocked external
+contexts. Ruff and typing pass. The 12 upstream parser deprecation warnings
+remain visible. Dependency vulnerability and licence gates pass, and the
+strict CycloneDX validator accepts the 112-component SBOM.
+
+A separate guarded parse of the two retained historical snapshots yielded
+66 triples, six datasets, six distributions and six checksums. The accompanying
+replay verified all 20 original/raw/canonical files unchanged. Exact script and
+graph hashes are recorded in `runlog.md`. This advances RDF processing evidence
+without rewriting the generation helpers' per-call receipts or claiming a full
+DCAT application profile, rights decision, publication or graph-index deployment.
+Full/hosted assurance for the follow-up is still pending.
+
+## Verified local DCAT projection — 2026-09-05 UTC
+
+`local_dcat.py` composes strict original/raw/canonical snapshot verification
+before producing separate Dataset/Distribution nodes for each retained recordset.
+The graph and full verification inventory receive deterministic digest bindings.
+Twenty-three tests pass in 17.52 seconds at 100% line/branch coverage (24 statements,
+two branches). Cases cover all three supported package kinds, deterministic
+input-order independence, fresh outputs, no writes, duplicate/untyped inputs,
+wrong pins and originals, and re-pinned wrong values/schema metadata/rights.
+Targeted typing, Ruff and formatting pass. The initial red test failed because
+the implementation module did not yet exist. Mutation and full/hosted assurance
+are pending at the initial checkpoint. This is local synthetic-fixture evidence, not retained-corpus replay,
+RDF processor conformance, source-specific rights, federation or publication.
+
+Subsequent cold mutation killed 10/10 mutants with no survivors/errors/timeouts/
+pardons/cache hits. A read-only retained historical replay then verified both
+independently pinned packages, produced six Dataset/Distribution pairs, proved
+input-order-independent output and checked all 20 input files unchanged.
+Exact replay and mutation hashes are recorded in `runlog.md`. This adds actual
+historical-snapshot evidence without claiming all-source metadata coverage or
+persisted/released metadata. Full and hosted assurance remain pending.
+
+## Historical source enumeration — 2026-09-05 UTC
+
+See [the human register](./historical-source-register.md) and its paired
+[machine observation](./historical-source-register.json). These advance M-02
+and M-11 with 30 visible edition obligations and six exact workbook leads.
+The focused test `tests/tools/test_health_historical_source_register.py`
+passed after an observed missing-artifact failure. Full assurance, payload
+fixity, source rights and remaining annual enumeration are not established.
+
+## Pure historical canonical consumer — 2026-09-03 UTC
+
+Commits `02d36bc` and `13e8d85` add an in-memory bridge that accepts only an
+exact recomputation of the historical canonical projection and parent receipt.
+Twenty-two focused tests pass at 100% line and branch coverage over 107 critical
+statements and 18 branches; Ruff and full basedpyright pass. The tests cover
+raw-order independence, canonical physical order, typed JSON aliases, Decimal
+and period boundaries, reversible lineage/accounting and public historical
+analysis equivalence. Hosted delivery remains pending. The
+cold-cache, one-worker, unfiltered strict-zero-pardon gate
+killed 51/51 mutants with zero cache hits, survivors, errors, timeouts or
+pardons. The native harness passed 4,615 tests at 97.53% overall coverage plus
+all schema, parity, mutation and supply-chain gates. No file fixity, rights,
+analysis execution or publication is claimed.
+
 ## Additive inventory planner — 2026-08-31 UTC
 
 `c6d0e37` implements fixity and recorded-rights reconciliation only. It performs

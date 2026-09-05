@@ -1,5 +1,124 @@
 # Self-Review
 
+## PR #401 parser setup clarification — 2026-09-05 UTC
+
+The reported external warm-up context was actually an empty inline context,
+not a demonstrated SSRF path. Replaced the warm-up parse with explicit parser
+plugin loading anyway, making every parse occur inside the external-I/O guard.
+All 47 metadata tests and focused lint/format/types passed afterward. The
+initial full harness passed on `fc672e0b`; exact clarified-head full/hosted
+validation is still pending. No production behavior or rights state changed.
+
+## Offline RDF interpretation review — 2026-09-05 UTC
+
+The prior JSON-shape checks did not independently expand predicates, check RDF
+object kinds or exercise the typed literal mapping. Added a development-only
+RDFLib lane rather than a bespoke partial JSON-LD parser. DCAT fixtures require
+exact triple counts, separate recordset/distribution nodes, registered media-type
+resources, non-negative integer byte sizes and binary SHA256 values matching
+retained fixture bytes. PROV fixtures require every entity and exact directed
+derivation pair. External HTTP and file contexts fail under the parser's scoped
+I/O guard; the guard is not represented as an operating-system sandbox.
+
+Forty-seven combined tests and targeted static checks pass. Source-only runtime
+helpers remain unchanged, and no RDF store/index/service or publication authority
+is introduced. The pinned parser's internal ConjunctiveGraph deprecation warnings
+remain visible. Supply-chain gates passed; full/hosted gates are pending. No full DCAT
+application-profile, rights or track acceptance is claimed.
+
+## DCAT media type and interoperable fixity — 2026-09-05 UTC
+
+Primary-source review verified Parquet's IANA registration and DCAT's preference
+for `dcat:mediaType` when a registered type exists. The draft used only a text
+format label, and its exact payload digests were available only through the
+companion inventory. Three red tests reproduced the missing standardized media
+type/checksum graph entries before correction. The graph now carries the IANA
+IRI and typed SPDX SHA256 payload checksum; tests calculate the expected digest
+from actual fixture bytes, independently of the returned verification metadata.
+
+All 23 focused tests pass in 22.85 seconds with 100% line/branch coverage;
+Ruff and formatting pass. Cold mutation, typing and retained replay are being
+repeated for this graph revision. The live full run on `c481b42d` was kept in a
+separate unchanged worktree and cannot validate this later correction. No
+rights, availability, full RDF processor or publication claim is added.
+
+Corrected typing passes with zero errors/warnings/notes. Cold mutation killed
+10/10 mutants with no survivors, errors, timeouts, pardons or cache hits in
+146.26 seconds. Retained replay again produced six dataset/distribution pairs
+and verified all 20 inputs unchanged. The new graph hash is recorded in the
+run log; its verification-inventory hash is unchanged. The bounded correction
+has no further focused finding; full/hosted assurance remains outstanding.
+
+## Verified DCAT implementation review — 2026-09-05 UTC
+
+Reviewed M-14/AC-14 mapping against DCAT3 Distribution and byte-size semantics.
+Recordsets and package versions are distinct datasets; their local Parquet
+representations have separate identities. Identity derives from validated
+product metadata, while exact source/package/payload pins and physical schemas
+remain in the accompanying verified inventory. No made-up publisher, location,
+licence, date or full conformance claim is emitted. The graph uses only inline
+namespace declarations and the existing read-only verifier, without a new
+dependency or changes to the general Gold exporter.
+
+Negative review cases ensure a new marker/payload hash cannot excuse changed
+canonical values, schema metadata or rights claims. All 23 focused tests and
+targeted static checks pass. Mutation, full assurance and hosted delivery remain
+pending; the plan task and whole metadata phase remain in progress. The stale
+standards route now distinguishes the already implemented assertion-only PROV
+helper from this verified-snapshot DCAT work.
+
+Follow-up validation killed all 10 cold mutants and passed a read-only replay
+on the two independently pinned retained historical packages. The replay
+returned six separate recordsets and unchanged input hashes in both input
+orders. Full/hosted assurance still remains outstanding; there is no source
+rights promotion or permanent metadata-output retention in this replay.
+
+## Validation fixture isolation — 2026-09-05 UTC
+
+The local two-worker run on `68c952de` failed two existing property deadlines
+(4,743 passed, two failed). Both properties recreate invariant source fixtures
+inside the timed body. The correction constructs those fixtures once, outside
+nested generated examples. It keeps archive unpack/reorder/root checks timed,
+preserves all union assertions and strategies, and gives each algebra example
+fresh records and checkpoint state. No deadline or production behavior changed.
+The 162-test register/parent-state/merge selection passes; Conductor validates
+92 tracks and targeted typing, Ruff and formatting pass. The first formatting
+check found a long nested decorator; formatting corrected it. Full local and
+hosted validation of the correction remain pending. Neither historical coverage
+nor operational/rights/publication acceptance is promoted by this test fix.
+
+## Historical register stable-identity correction — 2026-09-05 UTC
+
+M-02 review found that the new rows had locators but lacked explicit stable
+source IDs. Added namespace-qualified URL-digest IDs for all 15 observations.
+The regression failed on missing `source_id`, then passed with uniqueness and
+derivation checks. These are not payload hashes; every byte count, fixity and
+rights gate remains unchanged. Corrected wording to distinguish web-reader
+observation from local payload retention. Ruff and formatting pass. The change
+was isolated from the live full-validation tree; integration and assurance
+remain pending before the review task can be marked complete.
+
+## Historical source register — 2026-09-05 UTC
+
+Reviewed all six locators against their official linked edition pages and the
+30-year denominator against Treasury's historical index. No workbook digest,
+byte count, licence approval, capture or completeness state is inferred from
+a filename, page label, printed size, or web-reader error. All editions remain
+pending full enumeration, including 2024's separate forecast-file discovery.
+Existing donor objects, census observations and published candidates are
+unchanged. The executable register test guards these boundaries; full local
+and hosted assurance remain pending. No phase or track closeout is claimed.
+
+## Health domain registration reconciliation — 2026-09-04 UTC
+
+The immutable Arrow registry exposes the dedicated `health_appropriations`
+domain and all eight versioned recordset shapes without modifying any other
+domain contract. The combined Arrow/JSON schema suites pass 85 tests, so the
+separate domain-registration task is evidence-complete. The broader fixture
+task remains open: these contracts are explicitly structural-only and do not
+yet prove cross-row stable-ID uniqueness, period compatibility, null-reason
+consistency, or lineage closure.
+
 ## Preservation acceptance reconciliation — 2026-09-04 UTC
 
 - Reconciled five stale plan boxes against retained evidence without promoting
@@ -812,3 +931,89 @@ rights/privacy qualification, public Hugging Face delivery/readback, hosted
 recovery and operational evidence, and final release acceptance. These remain
 factual or external gates. No unsupported completion or publication claim is
 made.
+
+## 2026-09-05 — Donor retirement reconciliation
+
+The legacy donor repository was archived after the user-authorized retirement
+action. The bounded `donor_retirement_github_observation` receipt in
+`evidence.jsonl` preserves the observed response fields and
+`response_sha256=6c1e320396c23b0868dcef7fa345a331f8d1f033b82e0cfc6896fe8709e3dd44`;
+the response records `isArchived=true` and `archivedAt=2026-09-05T07:53:19Z` for
+`edithatogo/nz_health_appropriations`. The donor remains recoverable by its owner;
+no files were deleted, and the retained raw/original evidence and provenance
+boundary are unchanged. The Conductor `donor-retirement` gate is therefore
+reconciled to `satisfied` (explicitly out of this track's implementation scope).
+This observation does not close the track: official-source enumeration,
+derived-series and Gold/Platinum construction, rights/privacy qualification,
+hosted recovery/operational evidence, and final release acceptance remain
+pending as documented in `remaining-acceptance.md`.
+
+## 2026-09-03: Exclusive Budget appropriation exporter review
+
+Independent review found four actionable issues in the initial reconstruction:
+output-root pathname replacement, post-materialization resource checks, missing
+adversarial/exact-parity cases, and failure-marker exception precedence. The
+fix anchors I/O to the exclusively opened directory descriptor and verifies
+the public output pathname still names that inode at every boundary, adds bounded
+incremental serialization and running aggregate admission, covers source-order,
+Decimal/context, equality/over-boundary, extra-entry, root-replacement,
+readback and double-interrupt cases, and ensures the saved original exception
+wins. Post-fix review found no unresolved issue in this bounded local-only
+scope. Final focused coverage, 63 cold mutants and the full native harness pass.
+
+The subsequent exact-head retained two-vintage replay passed independently of
+the focused fixtures: four fresh packages, exact six-file closure, dry/write
+hash parity, paired-build byte identity, public projector/readback equality,
+400 facts, 4,400 canonical lineage records and complete 6,800-entry original
+lineage accounting. Ten retained input files were byte-unchanged. This evidence
+remains local-only and does not alter the rights or publication assessment.
+
+Hosted macOS subsequently exposed an order-dependent test-only assertion: the
+caller-local Decimal context was correctly unchanged, but the test additionally
+assumed an unrelated process-global `Inexact` flag began false. The failed log
+was retained and classified as an assertion failure. Removing only that global
+precondition preserves the exact local flags/traps/precision and Decimal(38,18)
+checks without changing production code or weakening a repository gate.
+The refreshed 63-mutant cold lane and 4,626-test native harness both passed;
+the correction is locally closed subject to fresh exact-head hosted checks.
+
+## 2026-09-03: Windows persistence portability review
+
+Hosted Windows exposed a deterministic platform mismatch in the POSIX-only
+directory-fd reservation path. The scoped correction preserves descriptor-
+relative no-follow I/O on POSIX and uses repeated inode and reparse-point checks
+under the existing trusted-parent contract where directory fds are unavailable.
+It explicitly does not claim hostile-filesystem transactional equivalence.
+Adversarial tests cover junction/symlink rejection and modeled ordinary root
+replacement at reservation, write and listing boundaries. Focused line/branch
+coverage is 100%; all 83 cold mutants and the 4,631-test native harness pass.
+Fresh exact-head hosted validation remains pending.
+
+The next Windows run exposed short-write semantics rather than another path-
+identity defect. The final writer loops over a bounded memoryview, rejects no-
+progress writes, and retains the existing size and identity checks. POSIX-only
+fault injection is capability-scoped without weakening any fallback test. The
+focused, 88-mutant cold and 4,632-test native lanes pass; hosted exact-head
+validation remains separate.
+
+Explicit capability-safe binary flags on Windows complete the fallback
+descriptor correction. Focused, cold mutation and native validation pass;
+fresh exact-head hosted validation remains required.
+
+The last Windows failure was isolated to synthetic test setup; all production
+tests passed. The capability-aware correction is test-only, and focused, cold
+mutation and full native validation pass.
+
+# 2026-09-03 historical canonical consumer checkpoint
+
+Reviewed `historical_consumer.py`, its adversarial tests and the paired track
+records against M-07, M-09, M-10 and M-18. Exact canonical schema/value/order
+and receipt checks, public analysis semantics, reversible accounting, resource
+bounds, Decimal context isolation and interruption behavior are covered. No
+secret, personal data, filesystem mutation, network action, new dependency or
+unsupported rights/publication claim was introduced. No actionable focused
+finding remains. Self-review corrected the parent receipt to match the existing
+exporter's exact newline-terminated canonical bytes and applied the declared
+100,000-row / 64-MiB bound to all three raw and all three canonical tables. The
+fresh 51-mutant cold gate and full native harness pass. Hosted delivery remains
+separate evidence, not implied completion.

@@ -1,11 +1,13 @@
 # Metadata standards: explicit local mapping route
 
-Primary-specification review only. No standards-shaped output, validator result,
-new dependency, candidate or publication was produced by this review. Version
-selection below identifies documents inspected, not a claim to use the newest
-release. Existing local metadata remains a separately named inventory.
+The initial primary-specification review produced no standards-shaped output.
+The entity-only PROV helper is now implemented in `local_prov.py`; its receipt
+remains descriptor-only. The verified local DCAT projection described below is
+implemented and merged in PR #398. Neither helper claims full standards conformance,
+rights eligibility or publication. Version selection identifies documents
+inspected, not a claim to use the newest release.
 
-## Implementable next slice: PROV entities and derivation
+## Implemented bounded slice: PROV entities and derivation
 
 PROV-O allows entity-to-entity derivation without requiring an invented activity
 or actor. A scoped projection can map each verified original/product identity to
@@ -34,6 +36,51 @@ because metadata exists or original bytes were hash-verified. Exact physical
 distribution metadata can be prepared locally; new public locations and rights
 eligibility remain separately evidenced inputs.
 
+### Verified local DCAT projection
+
+`read_local_dcat(tuple[CanonicalPackageInput, ...])` in the health domain's
+`local_dcat.py` composes the existing strict local reader. It verifies original
+and raw-package hashes, canonical file closure, schema metadata, and equality
+with recomputed canonical projections before returning any graph. Arbitrary
+JSON claiming to be verified is not accepted. It retains the complete reader
+receipt, exact row/byte/schema/payload metadata and derivation inventory beside
+the graph, with deterministic hashes binding both outputs.
+
+Each package-version recordset is one Dataset with one local Parquet
+Distribution. Different tables and years are not silently modeled as alternate
+representations of the same data; this follows the
+[DCAT distribution distinction](https://www.w3.org/TR/vocab-dcat-3/#Class:Distribution).
+Dataset/distribution URNs use distinct namespaces and the validated product
+identity digest; they identify snapshots, not a permanent cross-version concept.
+Exact byte counts use explicit `xsd:nonNegativeInteger` literals, consistent with
+[DCAT byte size](https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_byte_size).
+
+Standards review replaced the draft's free-text format with the
+[IANA Parquet media-type identifier](https://www.iana.org/assignments/media-types/application/vnd.apache.parquet),
+using `dcat:mediaType` as recommended for registered types. Each Distribution
+also exposes its already verified payload digest through `spdx:checksum`, an
+explicit SHA256 algorithm IRI and an `xsd:hexBinary` value, following
+[DCAT checksum semantics](https://www.w3.org/TR/vocab-dcat-3/#Class:Checksum).
+This is the retained Parquet file's hash, not the source workbook, metadata
+graph or package marker hash. Tests independently hash the fixture file bytes.
+
+The context is inline and does not fetch remote definitions. The graph contains
+no access/download URL, creator, publisher, licence, access-rights claim, release
+date or conformance assertion. Local retention is not public availability, and
+the graph does not establish rights to release its accompanying inventory.
+The existing general Gold exporter is not reused here because its default
+publisher, generated dates and fallback access locations do not satisfy this
+evidence boundary. No global exporter behavior or dependency is changed.
+
+Verification covers the read snapshots under the existing trusted-parent
+contract, not later filesystem state. An independent RDFLib test lane now
+expands generated DCAT and PROV JSON-LD under scoped external-resource denial.
+It checks exact graph predicates/counts, resource/literal distinction, integer
+byte sizes, binary SHA256 values against file bytes, and entity/derivation
+edges. This is a development test, not a runtime claim made by either helper.
+DCAT application-profile validation remains a separate gate. Croissant, RO-Crate,
+cards, resource-specific rights decisions and federation are still outstanding.
+
 ## Croissant1.0: required publication-shaped inputs remain explicit
 
 The reviewed specification requires dataset-level licence, URL, creator and
@@ -61,8 +108,8 @@ reviewed. Descriptive unresolved-rights text must not be presented as permission
 
 ## Delivery boundary
 
-PROV's bounded entity graph is a useful next implementation after the current
-verified local reader. Croissant/RO-Crate drafts and negative readiness tests can
+PROV's bounded entity graph and the verified local DCAT projection do not close
+the metadata phase. Croissant/RO-Crate drafts and negative readiness tests can
 proceed without publication, but missing mandatory evidence must stay visible.
 New RDF/JSON-LD validator dependencies require the repository's normal adoption
 review; none was found in the inspected project lockfile. No full AC-14 or AC-12

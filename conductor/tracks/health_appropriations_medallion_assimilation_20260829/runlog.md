@@ -1,5 +1,220 @@
 # Run Log
 
+## RDF full assurance and review clarification — 2026-09-05 UTC
+
+`./scripts/validate.sh` completed successfully on `fc672e0b`: 4,774 tests,
+21 warnings, 97.61% branch-aware coverage, 48 schemas and 38 representative
+documents, 9/9 parity comparisons, every configured mutation lane, hygiene,
+CAS throughput, audit, licence, secret scan and strict 112-component SBOM.
+The test stage took 210.12 seconds. PR #401 contains the follow-up; hosted
+Ubuntu/macOS passed while Windows was still running at this observation.
+
+Automated review incorrectly described the empty inline warm-up context as
+external. Nevertheless, explicit plugin loading is clearer than a warm-up
+parse. Replaced it with `plugin.get("json-ld", Parser)` so every parse now
+occurs inside the I/O guard. This is test-setup clarification, not a production
+SSRF correction; existing positive/negative graph fixtures characterize it.
+The preceding full result applies to the original fixture; fresh validation
+of the clarified fixture remains required.
+
+The clarified fixture passed all 47 RDF/DCAT/PROV tests in 4.46 seconds,
+with six upstream deprecation warnings (the removed warm-up no longer emits
+six additional warnings). Ruff lint/format and strict targeted typing passed.
+
+
+## DCAT delivery and follow-up reconciliation — 2026-09-05 UTC
+
+PR #398 was merged at `791845bc699a915f7f5583e3c3eef93470611c10`
+after all eight hosted checks passed on `3d6facb57f4672417bba2504283e925cacb000ed`.
+Live GitHub readback confirmed the merge. The corrected local two-worker full
+gate terminated with 4,764 passes and four property timing/input-generation
+failures in 853.19 seconds; no DCAT test failed. Hosted success does not erase
+that local failure. No deadline or coverage threshold was relaxed.
+
+The RDF follow-up's staged secret scan passed. Its audit, licence inventory
+and strict CycloneDX validation passed (112 components). Full assurance for
+the new development dependency and RDF tests remains pending. Squash-ancestry
+documentation conflicts were resolved after verifying that origin/main's tree
+was identical to the delivered DCAT head; new RDF evidence was preserved.
+
+## Offline RDF processor validation — 2026-09-05 UTC
+
+Recorded the development-only RDFLib adoption rationale in `tech-stack.md`
+before installing it. The initial test failed collection because RDFLib was
+absent. `uv lock` added only RDFLib 7.6.0, with the existing pyparsing dependency
+unchanged; no optional stores or runtime requirements were added. The resolver
+reported normalization warnings for historical package metadata but did not
+change any pre-existing locked version.
+
+Six parser tests passed after installation. Lint then rejected `Any` annotations
+in the denial callback; changing them to `object`/`Never` and formatting the file
+resolved the findings. Targeted Ruff and typing pass. The combined RDF/DCAT/PROV
+suite passes 47 tests in 14.43 seconds, with 12 upstream RDFLib deprecation
+warnings retained. It proves graph expansion, exact relationships and typed
+literal interpretation, plus blocked HTTP/file contexts. It does not alter the
+production helpers' per-call `standards_processor_validation` receipts.
+
+Dependency audit, licence inventory and SBOM validation are running. Full and
+hosted assurance for this test/dependency change remain pending. PR #398 and
+its live full validation remain isolated from this follow-up branch.
+
+The three supply-chain controls subsequently passed: no known vulnerabilities,
+accepted installed licence inventory and a strictly validated 112-component
+CycloneDX SBOM. The generator's internal validation-skipped warning refers only
+to the duplicate pass; the mandatory strict validator completed successfully.
+Audit receipt SHA256
+`2bf9fd0b5d1f48f6cffe5236a2f064ef2357a089a7511a718e3e1a569a1775b0`;
+licence receipt SHA256
+`dcc9caf97314d07c589b2233bee18bfa0f016a499135a017ad31b4a029e7497a`.
+
+The retained historical replay also passed RDF interpretation with 66 triples,
+six datasets, six distributions and six checksum nodes. External file/network
+access was denied during parsing. Its input graph SHA256 remains
+`3017b176fd35842a8b4cb5d1d168d809b53a3cd9c327aef15181225d0e73b1e1`,
+and the preceding original/raw/canonical replay again verified 20 unchanged
+input files. Script `/tmp/health-dcat-replay.n6K1jz/rdf-replay.py` SHA256
+`f5462e4f2bfd459f074dce1b9c12e247f92e6b8d8f1247d3191614fff3d14a29`.
+These are local processor results, not application-profile or publication
+acceptance. No production helper or source payload changed in this follow-up.
+
+## Initial DCAT native assurance result — 2026-09-05 UTC
+
+The required `./scripts/validate.sh` on `c481b42d` terminated with exit 1:
+4,763 passed, five failed, nine warnings, 97.61% overall coverage, 507.73 seconds.
+Lock, Conductor (92 tracks), format, lint and typing passed. No DCAT test failed.
+The five failures were:
+
+- Union algebra: timing instability, 359.07 ms initially versus 1.78 ms replay.
+- Decimal/Arrow property: timing instability, 271.45 ms versus 105.87 ms.
+- Candidate inventory order: timing instability, 383.97 ms versus 0.07 ms.
+- URN property: slow input generation (seed 29962679333241180859575896216303019954).
+- MCP subprocess protocol: child exit exceeded the existing five-second timeout.
+
+Host load was observed at 87.95 during the run. This remains failed local
+assurance, not a waived gate. No deadline, health check or timeout was changed.
+The later isolated media/checksum correction is not validated by this earlier
+full run; fresh full/hosted checks remain required. The original run handle was
+followed through terminal exit before integration or another run.
+
+## DCAT standardized media/fixity review fix — 2026-09-05 UTC
+
+Isolated the correction from the still-running native gate at `c481b42d`.
+The new expected graph failed for historical, classification and Budget package
+kinds (3 failed, 20 deselected, 18.53 seconds). After implementation, the complete
+23-test suite passed in 22.85 seconds at 100% line/branch coverage. Ruff and
+formatting pass. Dependency setup and the original regression both completed;
+the initially quiet process was followed to its terminal result, not restarted.
+
+The corrected graph uses the registered Parquet media-type IRI and SPDX SHA256
+checksum with a typed hex value calculated by the existing verified reader.
+The regression derives its expectation directly from file bytes. Repeated
+mutation, typing and retained-source replay remain pending at this checkpoint;
+the earlier graph digest records remain valid evidence of the earlier revision.
+
+Corrected cold mutation then passed: 10/10 killed, zero survivors, timeouts,
+errors, pardons or cache hits in 146.26 seconds. Report SHA256
+`484e4fc612763b7b494cebc37b70d81b8ff8781f0096a8213de5c913972b0e3d`.
+Typing passed with zero errors/warnings/notes. The unchanged read-only replay
+script passed again with six dataset/distribution pairs and all 20 input files
+unchanged. New graph SHA256
+`3017b176fd35842a8b4cb5d1d168d809b53a3cd9c327aef15181225d0e73b1e1`;
+verification SHA256 remains
+`1ac8ea6a9214e9fe2873e9bc5f4e2c5f8f3312c0c0130e9273e58d88eaebfe77`.
+Corrected source SHA256
+`4197625f78425d62ddf32d10dc526ef56532f34604fa13d70f63d13214fe50ca`;
+test SHA256 `19e76d648fdaf0558648f308ee6ec5695e77d5fe197c224c9cb7fe3264470cf7`.
+
+## Verified local DCAT generation — 2026-09-05 UTC
+
+Started from `c3504f92` in an isolated worktree, preserving the inventory PR's
+running validation tree. `uv sync --locked --all-groups` succeeded. The initial
+focused regression failed collection with missing `local_dcat`, then the
+implementation passed 13 tests. Adversarial review added re-pinned semantic,
+schema and rights changes plus duplicate packages, bringing the suite to 23.
+
+Commands completed:
+
+- `uv run --locked ruff format --check src/archive_govt_nz/domains/health_appropriations/local_dcat.py tests/domains/health_appropriations/test_local_dcat.py`
+- `uv run --locked ruff check src/archive_govt_nz/domains/health_appropriations/local_dcat.py tests/domains/health_appropriations/test_local_dcat.py`
+- `uv run --locked pytest -q --cov=archive_govt_nz.domains.health_appropriations.local_dcat --cov-branch --cov-report=term-missing --cov-fail-under=100 tests/domains/health_appropriations/test_local_dcat.py`: 23 passed, 100%.
+- `uv run --locked basedpyright --threads 4 src/archive_govt_nz/domains/health_appropriations/local_dcat.py tests/domains/health_appropriations/test_local_dcat.py`: zero errors/warnings/notes.
+
+Cold mutation completed in 52.94 seconds: 10/10 killed, zero survivors, errors,
+timeouts, pardons or cache hits, one worker and no coverage filter. Command:
+`uv run --locked pytest tests/domains/health_appropriations/test_local_dcat.py -q --gremlins --gremlin-targets=src/archive_govt_nz/domains/health_appropriations/local_dcat.py --gremlin-report=json --gremlin-workers=1 --gremlin-clear-cache --gremlin-no-coverage-filter --strict-pardons --gremlin-max-pardons-pct=0 --max-pardons=0 --no-cov`.
+Report SHA256 `b92cb69a4c8ca990853040d9e8334705bed83da5e78030832e8afc669c8615d4`.
+The coverage-collection warning did not enable filtering. Conductor validation
+passes for all 92 tracks. Full and hosted assurance remain pending.
+
+A subsequent read-only replay used the separately recorded historical marker
+and raw-manifest pins for the retained 2024/2025 packages. It generated six
+Dataset/Distribution pairs with identical results on reversed input order;
+before/after SHA256s for all 20 original/raw/canonical files matched. Graph
+SHA256 `bf9c84e09d32aef5ff9877e8ac84c5c6dab5d2fed5050199689f45f1cd7b5b6a`;
+verification SHA256 `1ac8ea6a9214e9fe2873e9bc5f4e2c5f8f3312c0c0130e9273e58d88eaebfe77`.
+The graph was generated in memory, not retained or uploaded. Script
+`/tmp/health-dcat-replay.n6K1jz/replay.py` SHA256
+`8869ffa61729639d59d2600d99caceaa362f2e5d62ea0a66eae98b3167da2c2c`.
+This covers those two historical snapshots, not every supported source family,
+whole-estate recovery, rights decisions or full standards validation.
+
+## Full-gate timing findings — 2026-09-05 UTC
+
+The two-worker full gate on `68c952de` terminated with exit 1: 4,743 passed,
+two failed, nine warnings, 97.61% coverage in 691.14 seconds. Archive-order
+invariance exceeded its 200-ms deadline at 426.71 ms; union algebra exceeded
+it at 401.61 ms and replayed at 95.95 ms. These are failed local assurance,
+not a pass. After fast-forwarding to stable-ID correction `e028f20c`, both
+properties and the register regression passed in isolation (3 tests, 6.85 s).
+
+Review moved invariant fixture construction outside the two generated property
+bodies. Archive unpacking, reordering, root verification, per-example record
+and checkpoint copies, and every algebra assertion remain inside the property.
+The original strategies and default deadlines remain unchanged; the obsolete
+function-scoped-fixture suppression is removed from the nested archive property.
+Fresh focused and hosted checks are required for this test-only correction.
+
+## Stable source-ID review fix — 2026-09-05 UTC
+
+Prepared in an isolated worktree while the two-worker full gate continued on
+`68c952de`. A red register test reproduced missing source IDs; the corrected
+15-row artifact passes deterministic URL-digest derivation and uniqueness.
+Focused pytest, Ruff and formatting passed. No source bytes, rights, publication
+or full-edition states changed. The original full run cannot validate this later
+correction; integration requires its own focused and Conductor checks plus
+hosted assurance. No full-pass claim is inferred from the focused result.
+
+## Historical inventory validation and continuation — 2026-09-05 UTC
+
+The required `./scripts/validate.sh` run on the initial inventory returned 1:
+4,735 tests passed, four Hypothesis timing checks failed, and overall coverage
+was 97.60%. Failures affected unrecognized receipt names, checkpoint JSON
+generation, union algebra and exact amount lineage. All four passed in isolation
+with seed 182042616212009531304200361229053514142 after integrating main through
+FOI merge `c3504f92`, including its fixture-setup correction. No deadlines,
+health checks or semantic assertions were suppressed.
+
+Added six observed 2023 workbook links and three 1997 BEFU table PDF links,
+bringing the register to 15. The expanded register test failed at six versus
+15 entries before the observations were added. Original fixity, source rights,
+other 1997 sections and full annual closure remain unverified. A corrected
+full two-worker run is pending; isolated successes do not replace full assurance.
+
+## Historical source enumeration — 2026-09-05 UTC
+
+Recorded the Treasury index's 30 Budget editions (1997–2026) and six observed
+2024 annual/BEFU/HYEFU workbook locators in `historical-source-register.json`.
+All editions retain pending full-enumeration status. This additive observation
+does not modify the earlier source census, imply byte identity with donor
+files, or grant capture/publication credit. A direct index request returned
+403 and was not retried; read-only web metadata retrieval supplied the cited
+observations. Workbook inspection was unsupported by the web reader.
+
+The register regression failed first on the absent artifact, then passed.
+Ruff, formatting and native Conductor validation (92 tracks, zero errors)
+passed; locked dependencies were installed in the isolated worktree. Full
+repository validation is pending. Phase 1.2 and the track remain in progress.
+
 ## Optional graph/vector evaluation — 2026-09-04
 
 - Re-read C-01/C-02, W-07, the Platinum design, and the existing generic
@@ -1628,3 +1843,233 @@ new test exception/spy-typing issues without source changes. Independent review,
 passed: 4,239 tests / 97.3804% coverage / all supply-chain gates. Incoming main326
 ledger prefix is preserved. See [full receipts](./budget-reader-bounds.md).
 No original/package/HF bytes were changed.
+
+## 2026-09-03 — Local candidate release-readiness verification
+
+Added a read-only verifier that binds the exact candidate manifest, checks the
+closed file set and every file hash/size, rejects symlinks and unsafe paths,
+requires the health dataset identity and pending-approval state, reconciles
+every included original to a complete rights row, and rejects incomplete source
+dispositions. A separately hash-pinned assurance receipt must match the exact
+candidate and 40-character code revision, passed parity/recovery outcomes and a
+bounded UTC freshness window. Sixteen red/green tests, formatting, lint and
+strict typing pass. This closes the negative-test contract only; no upload or
+remote mutation is performed.
+
+## 2026-09-03 — Exclusive local Budget canonical export
+
+- Implemented the reviewed `budget-canonical-export-proposal.md` as a separate
+  public orchestration module over the verified Budget reader, original snapshot
+  verifier and pure appropriation projection.
+- The exporter emits exactly three canonical Parquets, the unchanged projection
+  receipt, complete lineage accounting and `LOCAL_BUDGET.json`; dry runs and
+  persisted builds serialize identical bytes while retaining local-only,
+  rights-not-evaluated and publication-not-granted states.
+- Enforced exclusive output reservation, source/output disjointness, literal
+  boolean dry-run state, per-file/aggregate/original caps, bounded Parquet Thrift
+  metadata, schema/value readback, six-file closure, retained partial failures
+  and interrupt propagation.
+- Focused validation: 111 Budget reader, projection and exporter tests passed;
+  Ruff formatting and lint passed. This closes only the Budget export slice of
+  AC-05/AC-08; remaining adapters and the canonical consumer bridge remain open.
+- Extended the read-only local provenance verifier and pure descriptor inventory
+  to recompute, validate and dependency-link the three-recordset Budget package,
+  including exact marker, raw/original fixity, Parquet schema/value, projection
+  receipt and complete lineage-accounting equality. The combined provenance and
+  exporter suites pass 138 tests; this remains scoped local verification, not
+  rights, publication, standards or whole-recovery acceptance.
+- Review hardening pins the reserved output directory by descriptor on platforms
+  supporting directory-relative opens, uses no-follow exclusive file creation,
+  verifies directory identity before and after every operation, and fails closed
+  on replacement. A regression proves a rename-and-symlink swap cannot write a
+  marker or failure receipt into the retained input package. The complete focused
+  Budget reader/projection/export and provenance set passes 239 tests, Ruff and
+  basedpyright.
+
+## 2026-09-03 — First canonical-recordset consumer bridge
+
+- Added a public verified-table reader that returns freshly recomputed canonical
+  package tables only after exact marker, raw/original, schema/value, receipt and
+  lineage-accounting verification.
+- Added read-only DuckDB nominal Budget and historical queries over those
+  canonical tables. The Budget query
+  groups only identical source labels, units, periods and vintages; preserves
+  Decimal(38,18) amounts and exact sorted input record IDs. The historical query
+  is an identity projection that preserves source currency/accounting assertions
+  without cross-source aggregation. Both explicitly leave price basis,
+  classification mapping and publication unresolved.
+- Duplicate package identities, wrong package kinds, non-tuple inputs and any
+  verification drift fail closed. Focused canonical-consumer and provenance
+  validation passes 78 tests plus Ruff and basedpyright.
+- This is the first AC-08 canonical consumer slice, not completion of historical,
+  contextual, SQLite, plot, report, recovery or publication consumers.
+## 2026-09-03: Exclusive Budget appropriation export
+
+Observed red: the focused test module failed collection because
+`budget_export` did not exist. The initial implementation reached 22 tests,
+100% critical coverage and 52/52 cold mutation kills. A pre-review native run
+exited zero but is retained only as diagnostic evidence.
+
+Independent review found four actionable gaps: pathname replacement could
+redirect writes, serialization caps followed materialization, required
+adversarial parity tests were incomplete, and failure-marker creation could
+replace the original `BaseException`. The corrected implementation anchors all
+writes/readbacks to a no-follow directory descriptor, incrementally bounds JSON
+and aggregate admission, adds conservative expanded-table preflight and the
+missing race/parity/failure cases, and preserves the saved exception.
+
+Final focused command: `COVERAGE_CORE=ctrace PYTHON_JIT=0 uv run pytest
+tests/domains/health_appropriations/test_budget_export.py
+--cov=archive_govt_nz.domains.health_appropriations.budget_export --cov-branch
+--cov-report=term-missing -q`; 31 passed, 157 statements/24 branches at 100%.
+Cold mutation used the complete focused file with the exact exporter target,
+one worker, cleared cache, no coverage filter and zero pardons; 63/63 killed.
+Ruff and scoped Pyright passed.
+
+Final native command: `COVERAGE_CORE=ctrace PYTHON_JIT=0
+PYTEST_XDIST_AUTO_NUM_WORKERS=4 ./scripts/validate.sh`; exit 0, 4,624 tests,
+nine warnings, 97.54% coverage, 48 schemas/38 documents, 9/9 parity, all
+repository and supply-chain gates, and 111 SBOM components. Log SHA-256:
+`6355ac9739a96c63c2278ada72f1ec26554de5889c5c6b5f9b74da1fa38804be`.
+No retained input, original, HF or publication state changed.
+
+## 2026-09-03: Retained Budget-2025/2026 exporter replay
+
+Executed `COVERAGE_CORE=ctrace PYTHON_JIT=0 uv run --no-sync python
+/tmp/health-budget-export-replay.kz7mWj/replay.py` at exact exporter head
+`7e82ed0938de5490190795d0a7c0134d993871a9`; actual exit 0. The driver and
+log SHA-256 values are `af89d4b8a420c30220a6c70da71c6b1038216e7ea4f91acea81076178ca32af0`
+and `dd26aa7a274b00d86d91cd5a0bdc0bb8c5cd49d29f3895c7e8b12d7770ddc70d`.
+
+Two fresh outputs per vintage had exact six-file closure and byte-identical
+paired builds. Planned and persisted file hashes/lengths agreed. Independent
+public-reader/projector recomputation matched marker pins, all canonical table
+values and schema metadata, receipt bytes and lineage-accounting bytes. Totals:
+400 facts, 4,400 canonical lineage records and 6,800 original lineage entries.
+Both original hashes and all eight raw-package file hashes were unchanged.
+Package sizes were 1,737,166 and 1,502,784 bytes. No rights, publication,
+candidate or HF mutation was performed.
+
+## 2026-09-03: Hosted macOS Decimal test isolation correction
+
+At PR #383 head `db4cc541786546833c4a68770217cb905f3b2147`, macOS
+Assurance job `100748210753` failed after 4,625 tests: 4,624 passed and only
+`test_decimal_context_is_isolated_and_exact` failed. The full retained job log
+SHA-256 is `dee4a78ada7d90482dc58cb856b8da498d08c201e84b7cdc7da32825f4f41ae1`.
+This was an assertion failure, not a timeout or infrastructure failure.
+
+The test already proved its caller-local Decimal precision, rounding, flags and
+traps were unchanged. A trailing assertion nevertheless required the unrelated
+process-global `Inexact` flag to be false, which prior tests need not guarantee.
+Removed only that order-dependent assertion. Exact Decimal(38,18) values and
+the caller-context before/after equality remain. Ruff, scoped Pyright and 31
+focused tests at 100% critical line/branch coverage passed. No production code,
+timeout, worker, coverage threshold or other gate changed. Cold/native refresh
+and fresh exact-head hosted checks remain required.
+
+Refresh completed at correction commit `f7989e4`: the unchanged exporter target
+killed all 63 cold mutants again with zero other outcomes or cache hits. The
+full native harness exited zero with 4,626 tests, nine warnings, 97.54% overall
+coverage, 48 schemas/38 representative documents, 9/9 parity and all
+supply-chain gates including the 111-component SBOM. Native log SHA-256:
+`b5f220f99a8f31d67f30437049dcbe42d40bcf02d11fe5aaa9aa9786ff557a9f`;
+mutation report SHA-256:
+`c02912100823891ecae098842952384b68a06c986b1ab5380dd438dcf776da25`.
+Fresh hosted checks remain separate.
+
+At PR #383 head `3b4ea1c4d761aba994b9440ad57894e28ac1ea67`, Windows
+Assurance job `100752396708` failed deterministically with eight exporter
+persistence failures after 4,618 passing tests. The retained full log SHA-256 is
+`9e5f57febfef574e7f6adb051c89d868ac81bd695f91433a5c0238b5037ffe70`.
+This was directory-fd platform incompatibility at `budget_export_reserve`, not
+a timeout or infrastructure failure; no blind retry or gate change was made.
+
+The correction retains descriptor-relative no-follow persistence on POSIX and
+adds a bounded fallback for platforms without directory-fd support. The fallback
+captures the output identity immediately after exclusive creation, rejects
+symlinks and Windows junctions at reservation and every ownership boundary, and
+rechecks identity before and after child open and directory enumeration. Its
+contract remains a trusted parent with deterministic redirection detection, not
+a hostile-filesystem transaction. Tests model symlink and ordinary-directory
+replacement before reservation, replacement before child writes and during
+enumeration, and descriptor cleanup on identity failure. Focused validation
+passed 36 tests and 196 statements/34 branches at 100%; Ruff and scoped Pyright
+passed. Cold mutation, native validation and fresh exact-head hosted checks
+remain required. No source inputs, originals, HF or publication state changed.
+
+The first native attempt stopped at the format gate before tests (exit 1; log
+SHA-256 `9589194ab24f51af24a412e44fee03c979c8da3c14cd4b84f5fbc7f795c62e8a`).
+After applying only the required formatter changes, exact-byte focused coverage
+again passed 36 tests at 100% and the cold lane killed all 83 mutants with zero
+other outcomes or cache hits. Mutation report SHA-256:
+`09829251c65176f89d5664b6d349d0bb4ac10f05a660a4d244fe9b86e94c5c08`;
+mutation log SHA-256:
+`f588959f2db88e7dfec2f7d7fd832a6acb1db1576ed9e757cd7234aa7c00a3f9`.
+The final native harness exited zero with 4,631 tests, nine warnings, 97.54%
+coverage, 48 schemas/38 representative documents, 9/9 parity and all supply-
+chain gates including 111 SBOM components. Native log SHA-256:
+`059c674bb9a2d4a48e7fce52dc29c031e35ed35f41277c7975218b9c83e46661`.
+Fresh exact-head hosted checks remain separate.
+
+At head `625106a997374d8b701f12c6447947d97209b3d9`, Windows
+Assurance job `100759706949` failed seven tests after 4,624 passed. The full
+retained log SHA-256 is
+`bacf43914a57a196b2d8bfb48593a55469b4a869f43fb1a22ed2c5b3ae32380f`.
+The fallback reserved the directory correctly, but the writer assumed one
+`os.write` call consumed every byte; Windows may report a short write. Three
+fault tests also assumed POSIX descriptor availability. This was deterministic
+platform behavior, not timeout or infrastructure failure.
+
+The writer now advances a bounded memoryview until the full payload is written
+and rejects zero or negative progress. A forced-short-write test proves exact
+completion. Descriptor-only reservation/cleanup tests run only where that
+capability exists; all fallback identity, reparse and redirection tests remain
+cross-platform, and fallback extra-entry injection uses the owned path. Focused
+coverage passed 37 tests/201 statements/36 branches at 100%; all 88 cold mutants
+were killed with zero other outcomes or cache hits. Mutation log SHA-256:
+`eebd18f1364d964cc84480e96db34d39af34031e7f6855870bf913503d22e0ea`;
+report SHA-256:
+`3c32673fe943a211d7064888c93b0ee4c9c6c366ec6dd0a24613b638bcdc874e`.
+The native harness exited zero with 4,632 tests, nine warnings, 97.55% coverage,
+48 schemas/38 documents, 9/9 parity and 111 SBOM components. Native log SHA-256:
+`a71d67cdb9269f60e72c0a14acbf5cc943409524435002a316a336897e8a68a5`.
+No gate, original, HF, rights or publication state changed.
+
+The next Windows job (`100764555836`) failed six exporter tests after 4,627
+passes and two capability skips; retained log SHA-256:
+`087faf1c600596c69392862bd5a0a1c2aa9ce49ff4c6aff958008d9b4a478b2a`.
+The fallback CRT descriptors also required explicit binary mode. Read and write
+opens now compose `O_BINARY` when available; a capability-safe regression proves
+both directions. Focused coverage passed 38 tests at 100%, 88/88 cold mutants
+were killed, and native passed 4,636 tests at 97.55% with all downstream gates.
+Native log SHA-256: `ff0eee95f8751ccea42fff5cb23a1df80cbf31177fd65840eb70166a86e08f8b`.
+
+At head `1359fe0`, every Windows production persistence test passed; only the
+synthetic binary-flag test failed because it replaced the platform's real flag
+before calling the real open. The full job log SHA-256 is
+`0f3efcf76083199c26a3c8f0fea91cf775d3e1440a56d497bc6fddf983d77fda`.
+The test now preserves a native flag and synthesizes/strips one only when absent.
+All 88 cold mutants and the full 4,636-test native harness pass; final native log
+SHA-256: `44f166e33adddedf6ab43c1ea1a11c87d25e4905d0497b46c371bb274d3a9b50`.
+
+## 2026-09-03: Pure historical canonical consumer bridge
+
+The focused test first failed at collection because `historical_consumer` did
+not exist. After persisted-receipt and six-table resource-bound corrections,
+22 focused tests passed at 100% line/branch coverage over 107 statements and 18
+branches. The final cold-cache lane used one worker, no coverage filtering and
+strict zero pardons; 51/51 mutants were killed with zero survivors, errors,
+timeouts, pardons or cache hits. The retained log SHA-256 is
+`b03da3b6179393e79a36292c3bc8c5117cb32a31023906b1384b4ea13656d6f0`;
+the JSON report SHA-256 is
+`fe3463021cfab67d0664679186e54793cac6895625bd13a7c07ae06f5944d14b`.
+
+The first native attempt failed at full static typing because the test helper's
+return annotation used `object`; its log SHA-256 is
+`7d2dab72e4980c40aec1533a1e44f9787ffa33610089258650c0fb293abcbbba`.
+After an annotation-only correction and a fresh exact-test-hash mutation run,
+the final native harness at `50564fc` exited zero: 4,615 tests, nine existing
+resource warnings, 68.81 seconds, 97.53% coverage, 48 schemas / 38 documents,
+9/9 parity, all mutation and supply-chain gates, and 111 SBOM components. Final
+native log SHA-256:
+`4b988cfe7a65ec04b6c166230303f84a091a1d65afba83e03f610087fa11e690`.
