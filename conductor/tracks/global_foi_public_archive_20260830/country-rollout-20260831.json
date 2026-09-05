@@ -2119,12 +2119,12 @@
       "source_id": "ca-federal-atip",
       "entity_id": "CA",
       "publication_group": "institutional_open_data",
-      "group_is_candidate_only": true,
-      "next_action": "verify_bounded_statistical_subset",
+      "group_is_candidate_only": false,
+      "next_action": "verify_viewer_conversion_and_schedule_refresh",
       "source_denominator": null,
       "schedule_active": false,
-      "publication_approved": false,
-      "capture_evidence": "separate_pilot_receipt_required"
+      "publication_approved": true,
+      "capture_evidence": "ca-huggingface-publication-receipt-20260905.json"
     },
     {
       "source_id": "co-queremosdatos",
