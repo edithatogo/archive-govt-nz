@@ -1736,8 +1736,10 @@
     },
     {
       "entity_id": "PF",
-      "source_ids": [],
-      "next_action": "discover_official_and_civic_sources",
+      "source_ids": [
+        "pf-government-portal"
+      ],
+      "next_action": "review_named_sources_and_discover_gaps",
       "broader_discovery_required": true,
       "country_denominator": null,
       "country_complete": false
@@ -1798,8 +1800,10 @@
     },
     {
       "entity_id": "PR",
-      "source_ids": [],
-      "next_action": "discover_official_and_civic_sources",
+      "source_ids": [
+        "pr-government-portal"
+      ],
+      "next_action": "review_named_sources_and_discover_gaps",
       "broader_discovery_required": true,
       "country_denominator": null,
       "country_complete": false
@@ -4855,13 +4859,35 @@
       "schedule_active": false,
       "publication_approved": false,
       "capture_evidence": "ni-government-portal-discovery-20260905.json"
+    },
+    {
+      "source_id": "pr-government-portal",
+      "entity_id": "PR",
+      "publication_group": "restricted_or_unclear",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "pr-government-portal-discovery-20260905.json"
+    },
+    {
+      "source_id": "pf-government-portal",
+      "entity_id": "PF",
+      "publication_group": "restricted_or_unclear",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "pf-government-portal-discovery-20260905.json"
     }
   ],
   "summary": {
     "entities": 251,
-    "sources": 219,
+    "sources": 221,
     "entities_requiring_broader_discovery": 251,
-    "entities_without_named_sources": 36,
+    "entities_without_named_sources": 34,
     "public_raw_complete_countries_verified": 0
   }
 }
