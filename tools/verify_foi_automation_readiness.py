@@ -17,7 +17,8 @@ from typing import Any
 def _load(path: Path) -> dict[str, Any]:
     value = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(value, dict):
-        raise ValueError(f"expected object: {path}")
+        message = f"expected object: {path}"
+        raise TypeError(message)
     return value
 
 
