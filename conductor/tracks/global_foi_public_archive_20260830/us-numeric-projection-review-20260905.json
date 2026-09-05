@@ -45,7 +45,7 @@
     ],
     "public_upload": false,
     "rights_approval": "not established",
-    "privacy_review": "field-level human review required",
+    "privacy_review": "field-level accountable owner review required",
     "country_complete": false
   },
   "decision": "A numeric-only projection is technically reproducible from the captured source, but numeric appearance does not establish that field context is non-sensitive or licensed for redistribution. Keep both source XML and projection private pending accountable field-level review."

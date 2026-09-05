@@ -59,7 +59,7 @@
       ]
     }
   ],
-  "future_snapshot_rule": "After attributable standing-policy approval, new origins/resources require evidence-based agent admission within the approved institutional category, not automatic human approval. Conforming snapshots require fresh checks. Uncertain rights/privacy/provenance, new categories and unresolved drift escalate to human review.",
+  "future_snapshot_rule": "After attributable standing-policy approval, new origins/resources require evidence-based agent admission within the approved institutional category, not automatic human approval. Conforming snapshots require fresh checks. Uncertain rights/privacy/provenance, new categories and unresolved drift escalate to accountable owner review.",
   "required_decision_fields": [
     "reviewer",
     "reviewed_at",
@@ -150,7 +150,7 @@
           "status": "pending",
           "basis": "Verify each proposed organisation identifier/title against primary official institutional evidence and the approved non-personal category.",
           "straightforward_conformance": "No second human approval is required for straightforward official non-personal pairs after standing-policy approval.",
-          "human_escalation": "Ambiguous identity, personal information, conflicting rights or a new content category remain quarantined for human review.",
+          "owner_escalation": "Ambiguous identity, personal information, conflicting rights or a new content category remain quarantined for accountable owner review.",
           "changed_pair_rule": "New or changed pairs trigger a fresh agent conformance check; only ambiguous cases require human escalation.",
           "attribution": "Agent checks must identify the agent and evidence; never impersonate user review."
         }
@@ -220,7 +220,7 @@
       "exclusions and evidence hashes"
     ],
     "allowlist_role": "output of successful admission and runtime enforcement; not separate human approval for every URL",
-    "human_escalation": [
+    "owner_escalation": [
       "uncertain rights or conflicting terms",
       "ambiguous provenance",
       "personal information or narrative correspondence",
@@ -230,6 +230,6 @@
     ],
     "existing_exclusions_unchanged": true,
     "enforcement_implemented": true,
-    "initial_organisation_review": "Required before CA raw admission: agent evidence-based conformance review of the 162 proposed pairs; ambiguous cases remain quarantined for human review."
+    "initial_organisation_review": "Required before CA raw admission: agent evidence-based conformance review of the 162 proposed pairs; ambiguous cases remain quarantined for accountable owner review."
   }
 }

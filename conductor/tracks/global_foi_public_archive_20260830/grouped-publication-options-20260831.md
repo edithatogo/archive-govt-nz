@@ -75,7 +75,7 @@ free-text title contains personal information. Before standing-policy publicatio
 the publisher must reject new or changed identifier/title pairs relative to the
 reviewed allowlist. New or changed pairs remain quarantined until an agent
 conformance check establishes the same official, non-personal category; ambiguous
-cases require human review. Future matching institution-month rows can then follow the
+cases require accountable owner review. Future matching institution-month rows can then follow the
 same standing decision without repeated per-file approval. A changed organisation
 name triggers that agent check, not automatic clearance or mandatory human approval.
 
@@ -99,7 +99,7 @@ not a mandatory new human decision for every URL. Agent-authored admission recei
 link to the user-approved policy; they must not impersonate user review or imply
 legal certainty. New origins trigger these checks. Ambiguous rights, provenance,
 personal information, narratives, unlicensed third-party works or new data
-categories return to human review. Numeric syntax alone proves no privacy outcome.
+categories return to accountable owner review. Numeric syntax alone proves no privacy outcome.
 
 The standing policy still requires user approval, and the initial Canadian
 agent conformance review remains pending rather than implicitly completed by this

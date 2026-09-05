@@ -1,0 +1,13 @@
+{
+  "schema_version": "archive-govt-nz.rights-decision-owner/v1",
+  "decision_owner": "edithatogo",
+  "scope": "global_foi_public_archive_20260830",
+  "policy": "Only the accountable owner may approve raw public capture or publication. No other human-review queue or implied delegation is required.",
+  "default_dispositions": {
+    "institutional_open_data": "owner_decision_required_until_explicit_licence_and_non_personal_schema_are evidenced",
+    "mixed_correspondence": "metadata_only",
+    "restricted_or_unclear": "private_raw_metadata_public"
+  },
+  "current_blocked_source": "us-federal-foia",
+  "current_blocked_reason": "owner_decision_required_for_rights_and_field_level_privacy"
+}
