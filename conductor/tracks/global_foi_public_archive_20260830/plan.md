@@ -61,7 +61,7 @@ The approved destination is archive-govt-nz; no cutover has occurred.
 
 - [ ] P7.1 (AC01–AC12): Audit requirement-to-test-to-receipt traceability, reproduce source/metadata/raw restoration, and reconcile every country and eligible source schedule.
 - [ ] P7.2 (AC12): Run `./scripts/validate.sh` in archive-govt-nz and the active owner's required harness before any PR; verify exact hosted head checks and run automated Conductor review with bounded fixes.
-- [ ] P7.3 (AC09, AC12): Publish verified system-readiness and corpus-progress reports separately; outstanding raw gaps prevent full-capture claims, and blocked countries remain explicit.
+- [x] P7.3 (AC09, AC12): Publish verified system-readiness and corpus-progress reports separately; outstanding raw gaps prevent full-capture claims, and blocked countries remain explicit. Evidence: `system-readiness-report-20260905.json`, `corpus-progress-report-20260905.json`.
 - [ ] P7.4 (AC12): Synchronize metadata, registry, issues, evidence and commit history only after the matching acceptance criteria pass; record continuing schedules and unresolved external limits.
 
 ## Critical operational findings

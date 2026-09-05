@@ -1,0 +1,26 @@
+{
+  "schema_version": "archive-govt-nz.system-readiness/v1",
+  "observed_at": "2026-09-05",
+  "status": "partially_ready_with_explicit_gates",
+  "verified": {
+    "shared_execution_controls": true,
+    "rollout_integrity": true,
+    "canada_public_package_and_viewer": true,
+    "canada_scheduled_refresh_workflow": true,
+    "automation_readiness": true
+  },
+  "not_verified": {
+    "global_raw_completeness": true,
+    "us_field_level_rights": true,
+    "nz_raw_rights_privacy": true,
+    "donor_cutover": true,
+    "successful_receiver_incremental_cycle": true
+  },
+  "evidence": [
+    "ca-huggingface-publication-receipt-20260905.json",
+    "ca-local-restore-receipt-20260905.json",
+    "shared-execution-deployment-20260831.json",
+    "shared-execution-validation-20260831.json"
+  ],
+  "interpretation": "Green repository and Canada checks do not authorize global completeness, US/NZ raw publication, donor transfer or release."
+}
