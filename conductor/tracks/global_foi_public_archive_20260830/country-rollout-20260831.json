@@ -5,8 +5,10 @@
   "entities": [
     {
       "entity_id": "AD",
-      "source_ids": [],
-      "next_action": "discover_official_and_civic_sources",
+      "source_ids": [
+        "ad-transparency-portal"
+      ],
+      "next_action": "review_named_sources_and_discover_gaps",
       "broader_discovery_required": true,
       "country_denominator": null,
       "country_complete": false
@@ -2076,6 +2078,17 @@
   ],
   "sources": [
     {
+      "source_id": "ad-transparency-portal",
+      "entity_id": "AD",
+      "publication_group": "restricted_or_unclear",
+      "group_is_candidate_only": true,
+      "next_action": "verify_publication_catalogue_and_disclosure_scope",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "ad-transparency-discovery-20260905.json"
+    },
+    {
       "source_id": "ae-government-open-data",
       "entity_id": "AE",
       "publication_group": "restricted_or_unclear",
@@ -2430,9 +2443,9 @@
   ],
   "summary": {
     "entities": 251,
-    "sources": 32,
+    "sources": 33,
     "entities_requiring_broader_discovery": 251,
-    "entities_without_named_sources": 221,
+    "entities_without_named_sources": 220,
     "public_raw_complete_countries_verified": 0
   }
 }
