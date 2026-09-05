@@ -12,8 +12,9 @@ from typing import TYPE_CHECKING
 from urllib.request import OpenerDirector
 
 import pytest
-from rdflib import BNode, Graph, Literal, URIRef
+from rdflib import BNode, Graph, Literal, URIRef, plugin
 from rdflib.namespace import DCAT, DCTERMS, PROV, RDF, XSD
+from rdflib.parser import Parser
 from tests.domains.health_appropriations.test_local_prov import graph_case
 from tests.domains.health_appropriations.test_local_provenance_reader import package
 
@@ -29,8 +30,8 @@ SPDX = "http://spdx.org/rdf/terms#"
 
 @pytest.fixture
 def parse_offline(monkeypatch: pytest.MonkeyPatch) -> Callable[[object], Graph]:
-    """Warm parser code imports, then prohibit all external resource access."""
-    Graph().parse(data='{"@context": {}, "@graph": []}', format="json-ld")
+    """Load parser code, then guard every parse against external resource access."""
+    plugin.get("json-ld", Parser)
 
     def denied(*_args: object, **_kwargs: object) -> Never:
         message = "rdf_external_access_denied"

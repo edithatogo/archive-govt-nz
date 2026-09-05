@@ -3,7 +3,7 @@
 The initial primary-specification review produced no standards-shaped output.
 The entity-only PROV helper is now implemented in `local_prov.py`; its receipt
 remains descriptor-only. The verified local DCAT projection described below is
-under implementation/review. Neither helper claims full standards conformance,
+implemented and merged in PR #398. Neither helper claims full standards conformance,
 rights eligibility or publication. Version selection identifies documents
 inspected, not a claim to use the newest release.
 

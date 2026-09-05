@@ -1,5 +1,27 @@
 # Run Log
 
+## RDF full assurance and review clarification — 2026-09-05 UTC
+
+`./scripts/validate.sh` completed successfully on `fc672e0b`: 4,774 tests,
+21 warnings, 97.61% branch-aware coverage, 48 schemas and 38 representative
+documents, 9/9 parity comparisons, every configured mutation lane, hygiene,
+CAS throughput, audit, licence, secret scan and strict 112-component SBOM.
+The test stage took 210.12 seconds. PR #401 contains the follow-up; hosted
+Ubuntu/macOS passed while Windows was still running at this observation.
+
+Automated review incorrectly described the empty inline warm-up context as
+external. Nevertheless, explicit plugin loading is clearer than a warm-up
+parse. Replaced it with `plugin.get("json-ld", Parser)` so every parse now
+occurs inside the I/O guard. This is test-setup clarification, not a production
+SSRF correction; existing positive/negative graph fixtures characterize it.
+The preceding full result applies to the original fixture; fresh validation
+of the clarified fixture remains required.
+
+The clarified fixture passed all 47 RDF/DCAT/PROV tests in 4.46 seconds,
+with six upstream deprecation warnings (the removed warm-up no longer emits
+six additional warnings). Ruff lint/format and strict targeted typing passed.
+
+
 ## DCAT delivery and follow-up reconciliation — 2026-09-05 UTC
 
 PR #398 was merged at `791845bc699a915f7f5583e3c3eef93470611c10`

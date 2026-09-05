@@ -540,6 +540,10 @@ repository validation command. External gates block only their affected task.
 
 ### 7.1 Metadata and rights contracts first
 
+- [~] Review clarification: explicitly load the JSON-LD parser plugin without
+  an unguarded warm-up parse; retain offline positive/negative fixtures and
+  revalidate the exact change. [M-14, M-18; AC-14, AC-16]
+
 - [~] Validate generated DCAT and PROV JSON-LD with an offline RDF processor:
   compare expanded predicates, resource/literal types, checksum bytes and exact
   derivation edges; deny external context/file/network reads. Keep application

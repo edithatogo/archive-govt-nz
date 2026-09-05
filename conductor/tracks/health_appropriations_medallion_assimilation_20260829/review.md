@@ -1,5 +1,14 @@
 # Self-Review
 
+## PR #401 parser setup clarification — 2026-09-05 UTC
+
+The reported external warm-up context was actually an empty inline context,
+not a demonstrated SSRF path. Replaced the warm-up parse with explicit parser
+plugin loading anyway, making every parse occur inside the external-I/O guard.
+All 47 metadata tests and focused lint/format/types passed afterward. The
+initial full harness passed on `fc672e0b`; exact clarified-head full/hosted
+validation is still pending. No production behavior or rights state changed.
+
 ## Offline RDF interpretation review — 2026-09-05 UTC
 
 The prior JSON-shape checks did not independently expand predicates, check RDF
