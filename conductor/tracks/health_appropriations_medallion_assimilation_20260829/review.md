@@ -859,6 +859,20 @@ recovery and operational evidence, and final release acceptance. These remain
 factual or external gates. No unsupported completion or publication claim is
 made.
 
+## 2026-09-05 — Donor retirement reconciliation
+
+The legacy donor repository was archived after the user-authorized retirement
+action. Live GitHub evidence records `isArchived=true` and
+`archivedAt=2026-09-05T07:53:19Z` for
+`edithatogo/nz_health_appropriations`. The donor remains recoverable by its owner;
+no files were deleted, and the retained raw/original evidence and provenance
+boundary are unchanged. The Conductor `donor-retirement` gate is therefore
+reconciled to `satisfied` (explicitly out of this track's implementation scope).
+This observation does not close the track: official-source enumeration,
+derived-series and Gold/Platinum construction, rights/privacy qualification,
+hosted recovery/operational evidence, and final release acceptance remain
+pending as documented in `remaining-acceptance.md`.
+
 ## 2026-09-03: Exclusive Budget appropriation exporter review
 
 Independent review found four actionable issues in the initial reconstruction:

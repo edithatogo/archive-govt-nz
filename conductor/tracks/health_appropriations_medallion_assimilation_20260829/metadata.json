@@ -4,7 +4,7 @@
   "type": "feature",
   "status": "in_progress",
   "created_at": "2026-08-29T05:39:14Z",
-  "updated_at": "2026-09-05T07:00:07Z",
+  "updated_at": "2026-09-05T08:02:18Z",
   "historical_source_discovery": {
     "receipt": "historical-source-register.json",
     "status": "partial_metadata_only",
@@ -413,8 +413,9 @@
     {
       "id": "donor-retirement",
       "kind": "destructive",
-      "status": "pending",
-      "scope": "out_of_track_scope"
+      "status": "satisfied",
+      "scope": "out_of_track_scope",
+      "evidence": "Live GitHub observation on 2026-09-05: https://github.com/edithatogo/nz_health_appropriations reports isArchived=true and archivedAt=2026-09-05T07:53:19Z; archival preserves owner recovery and does not remove retained raw/original evidence"
     },
     {
       "id": "zenodo-release",
@@ -425,6 +426,6 @@
   ],
   "legacy_evidence_sha256": "d9161c2252b583cd9b6c17d3142126e525abbd6bc768b915bb4132508055e5a5",
   "evidence_format_basis": "Existing observations were never hash-chained; the recorded original byte prefix remains immutable while new structured observations may be appended.",
-  "metadata_reconciled_at": "2026-08-30T09:09:36.938960Z",
+  "metadata_reconciled_at": "2026-09-05T08:02:18Z",
   "legacy_evidence_prefix_bytes": 20356
 }
