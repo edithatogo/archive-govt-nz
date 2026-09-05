@@ -1,5 +1,52 @@
 # Self-Review
 
+## DCAT media type and interoperable fixity — 2026-09-05 UTC
+
+Primary-source review verified Parquet's IANA registration and DCAT's preference
+for `dcat:mediaType` when a registered type exists. The draft used only a text
+format label, and its exact payload digests were available only through the
+companion inventory. Three red tests reproduced the missing standardized media
+type/checksum graph entries before correction. The graph now carries the IANA
+IRI and typed SPDX SHA256 payload checksum; tests calculate the expected digest
+from actual fixture bytes, independently of the returned verification metadata.
+
+All 23 focused tests pass in 22.85 seconds with 100% line/branch coverage;
+Ruff and formatting pass. Cold mutation, typing and retained replay are being
+repeated for this graph revision. The live full run on `c481b42d` was kept in a
+separate unchanged worktree and cannot validate this later correction. No
+rights, availability, full RDF processor or publication claim is added.
+
+Corrected typing passes with zero errors/warnings/notes. Cold mutation killed
+10/10 mutants with no survivors, errors, timeouts, pardons or cache hits in
+146.26 seconds. Retained replay again produced six dataset/distribution pairs
+and verified all 20 inputs unchanged. The new graph hash is recorded in the
+run log; its verification-inventory hash is unchanged. The bounded correction
+has no further focused finding; full/hosted assurance remains outstanding.
+
+## Verified DCAT implementation review — 2026-09-05 UTC
+
+Reviewed M-14/AC-14 mapping against DCAT3 Distribution and byte-size semantics.
+Recordsets and package versions are distinct datasets; their local Parquet
+representations have separate identities. Identity derives from validated
+product metadata, while exact source/package/payload pins and physical schemas
+remain in the accompanying verified inventory. No made-up publisher, location,
+licence, date or full conformance claim is emitted. The graph uses only inline
+namespace declarations and the existing read-only verifier, without a new
+dependency or changes to the general Gold exporter.
+
+Negative review cases ensure a new marker/payload hash cannot excuse changed
+canonical values, schema metadata or rights claims. All 23 focused tests and
+targeted static checks pass. Mutation, full assurance and hosted delivery remain
+pending; the plan task and whole metadata phase remain in progress. The stale
+standards route now distinguishes the already implemented assertion-only PROV
+helper from this verified-snapshot DCAT work.
+
+Follow-up validation killed all 10 cold mutants and passed a read-only replay
+on the two independently pinned retained historical packages. The replay
+returned six separate recordsets and unchanged input hashes in both input
+orders. Full/hosted assurance still remains outstanding; there is no source
+rights promotion or permanent metadata-output retention in this replay.
+
 ## Validation fixture isolation — 2026-09-05 UTC
 
 The local two-worker run on `68c952de` failed two existing property deadlines

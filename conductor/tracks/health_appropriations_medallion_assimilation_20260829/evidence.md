@@ -1,5 +1,27 @@
 # Evidence
 
+## Verified local DCAT projection — 2026-09-05 UTC
+
+`local_dcat.py` composes strict original/raw/canonical snapshot verification
+before producing separate Dataset/Distribution nodes for each retained recordset.
+The graph and full verification inventory receive deterministic digest bindings.
+Twenty-three tests pass in 17.52 seconds at 100% line/branch coverage (24 statements,
+two branches). Cases cover all three supported package kinds, deterministic
+input-order independence, fresh outputs, no writes, duplicate/untyped inputs,
+wrong pins and originals, and re-pinned wrong values/schema metadata/rights.
+Targeted typing, Ruff and formatting pass. The initial red test failed because
+the implementation module did not yet exist. Mutation and full/hosted assurance
+are pending at the initial checkpoint. This is local synthetic-fixture evidence, not retained-corpus replay,
+RDF processor conformance, source-specific rights, federation or publication.
+
+Subsequent cold mutation killed 10/10 mutants with no survivors/errors/timeouts/
+pardons/cache hits. A read-only retained historical replay then verified both
+independently pinned packages, produced six Dataset/Distribution pairs, proved
+input-order-independent output and checked all 20 input files unchanged.
+Exact replay and mutation hashes are recorded in `runlog.md`. This adds actual
+historical-snapshot evidence without claiming all-source metadata coverage or
+persisted/released metadata. Full and hosted assurance remain pending.
+
 ## Historical source enumeration — 2026-09-05 UTC
 
 See [the human register](./historical-source-register.md) and its paired

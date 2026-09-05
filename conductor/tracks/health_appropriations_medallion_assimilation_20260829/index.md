@@ -15,6 +15,8 @@ every planned record set, measure or operational workflow.
 
 ## Artifacts
 
+- [Metadata standards and verified local DCAT route](./metadata-standards-route.md)
+
 - [Exclusive local resume execution](./resume-execution.md)
 - [Pure local canonical provenance inventory](./local-provenance-inventory.md)
 
