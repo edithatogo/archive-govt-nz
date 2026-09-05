@@ -1,0 +1,46 @@
+F.................................F..............                        [100%]
+=================================== FAILURES ===================================
+___________________________ test_symlink_seed[False] ___________________________
+
+fixture_root = PosixPath('/private/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/pytest-of-doughnut/pytest-4125/test_symlink_seed_False_0')
+parent = False
+
+    @pytest.mark.parametrize("parent", [False, True])
+    def test_symlink_seed(fixture_root: Path, parent: bool) -> None:  # noqa: FBT001
+        """Reject symlink substitution at either file or governed parent boundary."""
+        path = fixture_root / (SEED_PATH.parent if parent else SEED_PATH)
+        original = path.with_name("original")
+        path.rename(original)
+        try:
+            path.symlink_to(original, target_is_directory=parent)
+        except OSError as exc:
+            pytest.skip(f"Host cannot create symlinks: {exc}")
+>       with pytest.raises(ValueError, match="symlink seed path"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/tools/test_seed_registry.py:260: Failed
+___________________________ test_symlink_seed[True] ____________________________
+
+fixture_root = PosixPath('/private/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/pytest-of-doughnut/pytest-4125/test_symlink_seed_True_0')
+parent = True
+
+    @pytest.mark.parametrize("parent", [False, True])
+    def test_symlink_seed(fixture_root: Path, parent: bool) -> None:  # noqa: FBT001
+        """Reject symlink substitution at either file or governed parent boundary."""
+        path = fixture_root / (SEED_PATH.parent if parent else SEED_PATH)
+        original = path.with_name("original")
+        path.rename(original)
+        try:
+            path.symlink_to(original, target_is_directory=parent)
+        except OSError as exc:
+            pytest.skip(f"Host cannot create symlinks: {exc}")
+>       with pytest.raises(ValueError, match="symlink seed path"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/tools/test_seed_registry.py:260: Failed
+=========================== short test summary info ============================
+FAILED tests/tools/test_seed_registry.py::test_symlink_seed[False] - Failed: ...
+FAILED tests/tools/test_seed_registry.py::test_symlink_seed[True] - Failed: D...
+2 failed, 47 passed in 2.11s

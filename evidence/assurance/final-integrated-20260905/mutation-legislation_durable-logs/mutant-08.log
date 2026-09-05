@@ -1,0 +1,40 @@
+.......F
+=================================== FAILURES ===================================
+_________________________ test_promotion_guards[race] __________________________
+
+tmp_path = PosixPath('/private/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/pytest-of-doughnut/pytest-4073/test_promotion_guards_race_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10c23c770>
+change = 'race'
+
+    @pytest.mark.parametrize("change", ["readback", "race", "symlink"])
+    def test_promotion_guards(
+        tmp_path: Path, monkeypatch: pytest.MonkeyPatch, change: str
+    ) -> None:
+        """Writes remain quarantined if readback or destination exclusivity changes."""
+        files, pin = fixture(tmp_path)
+        raw = D.build(files, pin, RIGHTS, REVISION)
+        output = tmp_path / "restored"
+        if change == "symlink":
+            output.symlink_to(tmp_path / "merged", target_is_directory=True)
+            code = "workspace_symlink"
+        elif change == "readback":
+            monkeypatch.setattr(D.P, "read_state", lambda _path: {})
+            code = "restore_readback"
+        else:
+            original = D.P.write_new
+    
+            def competing(path: Path, data: bytes) -> None:
+                original(path, data)
+                output.mkdir(exist_ok=True)
+    
+            monkeypatch.setattr(D.P, "write_new", competing)
+            code = "output_race"
+>       with pytest.raises(D.v.VerificationError, match=code):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE VerificationError
+
+tests/tools/test_legislation_durable_state.py:510: Failed
+=========================== short test summary info ============================
+FAILED tests/tools/test_legislation_durable_state.py::test_promotion_guards[race]
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 7 passed in 14.37s

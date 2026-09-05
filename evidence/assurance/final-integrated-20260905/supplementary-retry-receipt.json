@@ -1,0 +1,33 @@
+{
+  "target_commit": "f2669f1ce6ae48f3e09387608acbb8c58aa20334",
+  "condition_change": "Parent agent full-suite workload stopped; same tests, same deadlines, no threshold changes.",
+  "runs": [
+    {
+      "name": "source_sets",
+      "command": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "tools/mutation_source_sets.py"
+      ],
+      "exit_code": 0,
+      "seconds": 199.685,
+      "log_sha256": "c0031ef8998cb1e7627b48a05f26d06dca3cb3a60bbd109af63992833fe6e7ce"
+    },
+    {
+      "name": "legislation_parent_state",
+      "command": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "tests/tools/run_legislation_parent_state_mutations.py",
+        "/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/p20-retry-0b5bayz5/parent"
+      ],
+      "exit_code": 1,
+      "seconds": 72.835,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

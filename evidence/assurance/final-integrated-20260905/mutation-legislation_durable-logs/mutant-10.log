@@ -1,0 +1,23 @@
+...F
+=================================== FAILURES ===================================
+________________________ test_wrong_pins[marker_sha256] ________________________
+
+tmp_path = PosixPath('/private/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/pytest-of-doughnut/pytest-4075/test_wrong_pins_marker_sha256_0')
+field = 'marker_sha256'
+
+    @pytest.mark.parametrize(
+        "field", ["marker_sha256", "receipt_sha256", "manifest_sha256"]
+    )
+    def test_wrong_pins(tmp_path: Path, field: str) -> None:
+        """External state pins cannot be silently replaced."""
+        files, pin = fixture(tmp_path)
+        pin[field] = "f" * 64
+>       with pytest.raises(D.v.VerificationError, match="pinned_"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE VerificationError
+
+tests/tools/test_legislation_durable_state.py:113: Failed
+=========================== short test summary info ============================
+FAILED tests/tools/test_legislation_durable_state.py::test_wrong_pins[marker_sha256]
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 3 passed in 14.03s

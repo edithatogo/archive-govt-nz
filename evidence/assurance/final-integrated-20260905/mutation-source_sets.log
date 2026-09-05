@@ -1,0 +1,27 @@
+Traceback (most recent call last):
+  File "/Volumes/PortableSSD/GitHub/archive-govt-nz-prompt20-final-assurance/tools/mutation_source_sets.py", line 176, in <module>
+    main()
+    ~~~~^^
+  File "/Volumes/PortableSSD/GitHub/archive-govt-nz-prompt20-final-assurance/tools/mutation_source_sets.py", line 161, in main
+    code = run(source.replace(old, new), test_name, name)
+  File "/Volumes/PortableSSD/GitHub/archive-govt-nz-prompt20-final-assurance/tools/mutation_source_sets.py", line 125, in run
+    result = subprocess.run(
+        [
+    ...<11 lines>...
+        check=False,
+    )
+  File "/Volumes/PortableSSD/appdata/local-dotdir/share/uv/python/cpython-3.14.6-macos-aarch64-none/lib/python3.14/subprocess.py", line 557, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Volumes/PortableSSD/appdata/local-dotdir/share/uv/python/cpython-3.14.6-macos-aarch64-none/lib/python3.14/subprocess.py", line 1221, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Volumes/PortableSSD/appdata/local-dotdir/share/uv/python/cpython-3.14.6-macos-aarch64-none/lib/python3.14/subprocess.py", line 2179, in _communicate
+    self.wait(timeout=self._remaining_time(endtime))
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Volumes/PortableSSD/appdata/local-dotdir/share/uv/python/cpython-3.14.6-macos-aarch64-none/lib/python3.14/subprocess.py", line 1279, in wait
+    return self._wait(timeout=timeout)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Volumes/PortableSSD/appdata/local-dotdir/share/uv/python/cpython-3.14.6-macos-aarch64-none/lib/python3.14/subprocess.py", line 2076, in _wait
+    raise TimeoutExpired(self.args, timeout)
+subprocess.TimeoutExpired: Command '['/Volumes/PortableSSD/GitHub/archive-govt-nz-prompt20-final-assurance/.venv/bin/python', '-m', 'pytest', '-q', 'tests/test_source_set_contract.py::test_invalid_nested_contracts_fail_before_action']' timed out after 60 seconds

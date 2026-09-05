@@ -1,0 +1,1 @@
+{"schema_version":"archive-govt-nz.zenodo-identity-mutation/v1","source":"src/archive_govt_nz/zenodo_identity.py","mutants":[{"name":"distinct_identity","killed":true},{"name":"version_record_binding","killed":true},{"name":"observation_authority","killed":true},{"name":"publication_approval","killed":true},{"name":"published_receipt","killed":true}],"killed":5,"total":5}

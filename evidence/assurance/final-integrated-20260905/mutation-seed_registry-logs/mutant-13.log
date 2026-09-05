@@ -1,0 +1,60 @@
+.................F.........F.....................                        [100%]
+=================================== FAILURES ===================================
+______ test_invalid_bytes[act_public_2000_1/../../x\n-malformed or blank] ______
+
+data = b'act_public_2000_1/../../x\n', reason = 'malformed or blank'
+
+    @pytest.mark.parametrize(
+        ("data", "reason"),
+        [
+            (b"act_public_2000_1", "terminal LF"),
+            (b"act_public_2000_1\r\n", "CR line"),
+            (b"act_public_2000_1\n\n", "malformed or blank"),
+            (b"\n", "malformed or blank"),
+            (b"act_public_2000_1\nact_public_2000_1\n", "duplicate work"),
+            (b"act_public_2000_2\nact_public_2000_1\n", "noncanonical order"),
+            (b"act_public_2000_1/../../x\n", "malformed or blank"),
+            (b" act_public_2000_1\n", "malformed or blank"),
+            (b"act_public_2000_1\t\n", "malformed or blank"),
+            (b"bill_public_20_1\n", "malformed or blank"),
+            (b"bill_public_2000_a\n", "malformed or blank"),
+        ],
+    )
+    def test_invalid_bytes(data: bytes, reason: str) -> None:
+        """Reject defects even when a caller recomputes the content hash."""
+>       with pytest.raises(ValueError, match=reason):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/tools/test_seed_registry.py:137: Failed
+_________ test_invalid_bytes[act_public_2000_1\t\n-malformed or blank] _________
+
+data = b'act_public_2000_1\t\n', reason = 'malformed or blank'
+
+    @pytest.mark.parametrize(
+        ("data", "reason"),
+        [
+            (b"act_public_2000_1", "terminal LF"),
+            (b"act_public_2000_1\r\n", "CR line"),
+            (b"act_public_2000_1\n\n", "malformed or blank"),
+            (b"\n", "malformed or blank"),
+            (b"act_public_2000_1\nact_public_2000_1\n", "duplicate work"),
+            (b"act_public_2000_2\nact_public_2000_1\n", "noncanonical order"),
+            (b"act_public_2000_1/../../x\n", "malformed or blank"),
+            (b" act_public_2000_1\n", "malformed or blank"),
+            (b"act_public_2000_1\t\n", "malformed or blank"),
+            (b"bill_public_20_1\n", "malformed or blank"),
+            (b"bill_public_2000_a\n", "malformed or blank"),
+        ],
+    )
+    def test_invalid_bytes(data: bytes, reason: str) -> None:
+        """Reject defects even when a caller recomputes the content hash."""
+>       with pytest.raises(ValueError, match=reason):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/tools/test_seed_registry.py:137: Failed
+=========================== short test summary info ============================
+FAILED tests/tools/test_seed_registry.py::test_invalid_bytes[act_public_2000_1/../../x\n-malformed or blank]
+FAILED tests/tools/test_seed_registry.py::test_invalid_bytes[act_public_2000_1\t\n-malformed or blank]
+2 failed, 47 passed in 2.49s

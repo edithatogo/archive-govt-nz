@@ -1,0 +1,27 @@
+..F..............................................                        [100%]
+=================================== FAILURES ===================================
+____________________ test_wrong_pin[byte_size-1-byte size] _____________________
+
+field = 'byte_size', value = 1, reason = 'byte size'
+
+    @pytest.mark.parametrize(
+        ("field", "value", "reason"),
+        [
+            ("line_count", 2, "line count"),
+            ("byte_size", 1, "byte size"),
+            ("sha256", "0" * 64, "hash mismatch"),
+        ],
+    )
+    def test_wrong_pin(field: str, value: object, reason: str) -> None:
+        """Each independent content pin is enforced."""
+        data = b"act_public_2000_1\n"
+        content = _content(data)
+        content[field] = value
+>       with pytest.raises(ValueError, match=reason):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/tools/test_seed_registry.py:161: Failed
+=========================== short test summary info ============================
+FAILED tests/tools/test_seed_registry.py::test_wrong_pin[byte_size-1-byte size]
+1 failed, 48 passed in 3.66s

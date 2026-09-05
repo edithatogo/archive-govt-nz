@@ -1,0 +1,185 @@
+{
+  "target_commit": "f2669f1ce6ae48f3e09387608acbb8c58aa20334",
+  "environment": {
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "uv": "uv 0.11.8 (0e961dd9a 2026-04-27 aarch64-apple-darwin)",
+    "python": "Python 3.14.6"
+  },
+  "runs": [
+    {
+      "name": "mutation-legislation_parent_state",
+      "command": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "tests/tools/run_legislation_parent_state_mutations.py",
+        "/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/p20-mutations-0kx7t1r2/legislation_parent_state"
+      ],
+      "exit_code": 1,
+      "seconds": 50.992,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "mutation-legislation_durable",
+      "command": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "tests/tools/run_legislation_durable_mutations.py",
+        "/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/p20-mutations-0kx7t1r2/legislation_durable"
+      ],
+      "exit_code": 0,
+      "seconds": 505.631,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "mutation-seed_registry",
+      "command": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "tests/tools/run_seed_registry_mutations.py",
+        "/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/p20-mutations-0kx7t1r2/seed_registry"
+      ],
+      "exit_code": 0,
+      "seconds": 162.461,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "mutation-source_sets",
+      "command": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "tools/mutation_source_sets.py"
+      ],
+      "exit_code": 1,
+      "seconds": 267.579,
+      "log_sha256": "3dd80c5ee2a9124cc163b2b01662a5774c1c7f5ae271a17a5dad1adb933d905e"
+    },
+    {
+      "name": "mutation-legislation_discovery",
+      "command": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "tools/mutation_legislation_discovery.py"
+      ],
+      "exit_code": 0,
+      "seconds": 127.86,
+      "log_sha256": "290eb869582aee3b9ca44ffbc0c09cdbf47231df76266594da046543186bcab4"
+    },
+    {
+      "name": "mutation-zenodo_identity",
+      "command": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "tools/mutation_zenodo_identity.py"
+      ],
+      "exit_code": 0,
+      "seconds": 71.53,
+      "log_sha256": "11577af0418502edb9ddf21daebd7bc38bf348905e164d0e6e6f88ed1ed978ed"
+    },
+    {
+      "name": "mutation-zenodo_publication",
+      "command": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "tools/mutation_zenodo_publication.py"
+      ],
+      "exit_code": 0,
+      "seconds": 6.003,
+      "log_sha256": "bc446a5029409aedc234e1d03256cead75f596a9ffaba279c87c6b415b4cab10"
+    },
+    {
+      "name": "mutation-legislation_donor_bundle",
+      "command": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "tools/mutation_legislation_donor_bundle.py"
+      ],
+      "exit_code": 0,
+      "seconds": 164.072,
+      "log_sha256": "eb8357028927dff1645c294b6b93b4ec34fc684d920a3bbafc4e6555b6d40aab"
+    },
+    {
+      "name": "mutation-legislation_evidence_index",
+      "command": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "tools/mutation_legislation_evidence_index.py"
+      ],
+      "exit_code": 0,
+      "seconds": 14.287,
+      "log_sha256": "2bf786341c7013a6be11470661a037d1f895030ec2e09a5d0bf5482199f22281"
+    },
+    {
+      "name": "mutation-legislation_release_correction",
+      "command": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "tools/mutation_legislation_release_correction.py"
+      ],
+      "exit_code": 0,
+      "seconds": 11.917,
+      "log_sha256": "bf680104fd3f60bb87449c66f159264ea452d93752face683506663c03a7b6e7"
+    },
+    {
+      "name": "build-1",
+      "command": [
+        "uv",
+        "build",
+        "--out-dir",
+        "/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/p20-mutations-0kx7t1r2/build-1"
+      ],
+      "exit_code": 0,
+      "seconds": 4.721,
+      "log_sha256": "7c722dafaa9c72e738819d00709c77202166cc42f8219cf4577aeb39963706ca"
+    },
+    {
+      "name": "build-2",
+      "command": [
+        "uv",
+        "build",
+        "--out-dir",
+        "/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/p20-mutations-0kx7t1r2/build-2"
+      ],
+      "exit_code": 0,
+      "seconds": 6.722,
+      "log_sha256": "b7169e8843d527f11a4b6a2205c53c970faa5a81050388c1e42c3cfbf8fe1807"
+    }
+  ],
+  "reproducible_build": {
+    "source_date_epoch": "1788468251",
+    "builds": [
+      {
+        "archive_govt_nz-0.1.0-py3-none-any.whl": "04b8ea7dda54b0659349c0c2e6a687b28ca9cb2801c25529907138c91cda7223",
+        ".gitignore": "684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1",
+        "archive_govt_nz-0.1.0.tar.gz": "6d5a4556bda3fddc0b3feb2fc7b30f5bcac00cc8e18ca8b6122de3349d5bc7ca"
+      },
+      {
+        "archive_govt_nz-0.1.0-py3-none-any.whl": "04b8ea7dda54b0659349c0c2e6a687b28ca9cb2801c25529907138c91cda7223",
+        ".gitignore": "684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1",
+        "archive_govt_nz-0.1.0.tar.gz": "6d5a4556bda3fddc0b3feb2fc7b30f5bcac00cc8e18ca8b6122de3349d5bc7ca"
+      }
+    ],
+    "byte_identical": true
+  },
+  "status": "supplementary_only",
+  "scratch_path": "/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/p20-mutations-0kx7t1r2"
+}

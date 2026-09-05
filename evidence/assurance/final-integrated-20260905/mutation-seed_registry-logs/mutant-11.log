@@ -1,0 +1,58 @@
+............F................F.........F.........                        [100%]
+=================================== FAILURES ===================================
+_____________________ test_ambiguous_json[{"x":Infinity}] ______________________
+
+tmp_path = PosixPath('/private/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/pytest-of-doughnut/pytest-4127/test_ambiguous_json___x__Infin0')
+data = '{"x":Infinity}'
+
+    @pytest.mark.parametrize(
+        "data", ['{"a":1,"a":2}', '{"x":NaN}', '{"x":Infinity}', '{"x":-Infinity}', "{"]
+    )
+    def test_ambiguous_json(tmp_path: Path, data: str) -> None:
+        """Reject duplicate keys, nonfinite numbers and invalid syntax."""
+        path = tmp_path / "bad.json"
+        path.write_text(data)
+>       with pytest.raises(ValueError, match=r"duplicate JSON|NaN|Infinity|property name"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/tools/test_seed_registry.py:246: Failed
+________________________ test_ambiguous_json[{"x":NaN}] ________________________
+
+tmp_path = PosixPath('/private/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/pytest-of-doughnut/pytest-4127/test_ambiguous_json___x__NaN__0')
+data = '{"x":NaN}'
+
+    @pytest.mark.parametrize(
+        "data", ['{"a":1,"a":2}', '{"x":NaN}', '{"x":Infinity}', '{"x":-Infinity}', "{"]
+    )
+    def test_ambiguous_json(tmp_path: Path, data: str) -> None:
+        """Reject duplicate keys, nonfinite numbers and invalid syntax."""
+        path = tmp_path / "bad.json"
+        path.write_text(data)
+>       with pytest.raises(ValueError, match=r"duplicate JSON|NaN|Infinity|property name"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/tools/test_seed_registry.py:246: Failed
+_____________________ test_ambiguous_json[{"x":-Infinity}] _____________________
+
+tmp_path = PosixPath('/private/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/pytest-of-doughnut/pytest-4127/test_ambiguous_json___x___Infi0')
+data = '{"x":-Infinity}'
+
+    @pytest.mark.parametrize(
+        "data", ['{"a":1,"a":2}', '{"x":NaN}', '{"x":Infinity}', '{"x":-Infinity}', "{"]
+    )
+    def test_ambiguous_json(tmp_path: Path, data: str) -> None:
+        """Reject duplicate keys, nonfinite numbers and invalid syntax."""
+        path = tmp_path / "bad.json"
+        path.write_text(data)
+>       with pytest.raises(ValueError, match=r"duplicate JSON|NaN|Infinity|property name"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/tools/test_seed_registry.py:246: Failed
+=========================== short test summary info ============================
+FAILED tests/tools/test_seed_registry.py::test_ambiguous_json[{"x":Infinity}]
+FAILED tests/tools/test_seed_registry.py::test_ambiguous_json[{"x":NaN}] - Fa...
+FAILED tests/tools/test_seed_registry.py::test_ambiguous_json[{"x":-Infinity}]
+3 failed, 46 passed in 8.32s

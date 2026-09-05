@@ -1,0 +1,162 @@
+{
+  "source_sha256": "3e762a37ad3088040877e5a495c5a26c8fd74485e0b264234f7f66ef35ccbd18",
+  "mutants": [
+    {
+      "name": "pinned_manifest",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "afba68418863d1ef0116c8ff8e940bae369d632cc0b26f962a185feafd43e833"
+    },
+    {
+      "name": "package_digest",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "4be04e713f13a46b7da624761397033f84cabb0a881357bb46a34920d54e633b"
+    },
+    {
+      "name": "package_encoding",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "899bc37318d314be6e0af807c77664c0ddf83092c956ae02c3c27382192c8908"
+    },
+    {
+      "name": "restore_instructions",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "1a017a6ba133ac7f7a041da05621ecca378f6d8c65ec88d05fb3cfb76f2667bc"
+    },
+    {
+      "name": "package_json_encoding",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "f591fbfe438d8d7ab871ffe810f533f3e164d98f0d4063b86b9c69efb6953644"
+    },
+    {
+      "name": "package_inventory",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "e0339a439e63e2c867f6db055c7ba721e4b2b08d283b8b24e881dbe0124b0ad3"
+    },
+    {
+      "name": "package_roots",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "29d138f6eca6195053362c7922166addd321b6ee7525860fb0b320383e0c4a4c"
+    },
+    {
+      "name": "restore_readback",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "9e2e544f7c20a5e5dcee6bd1d300d04932542573ace637d93965eb7c6e22a6eb"
+    },
+    {
+      "name": "output_race",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "ae5a2ef5621cba28e45df2f987d9c401120cceb67ff860d72afd4fdcc5e10067"
+    },
+    {
+      "name": "merged_source",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "ddd8c997f343059c7109861f10db8ced3310b8e6beb6ee2eb50bdd6333835e60"
+    },
+    {
+      "name": "pinned_completion",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "d8d6010d6327b6462a5b04b145eb6e6168b4a3c44ba0cbae13b4b8124508e4ea"
+    },
+    {
+      "name": "completion_inventory",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "1c6992a0f304648824e55885a11929e0877055c9f49a555ccac94bdf4c7b6a4d"
+    },
+    {
+      "name": "parent_members",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "df1b6b849966be3530472add5ce04f6f5679f6f2637ba63ff14244441c9a13b7"
+    },
+    {
+      "name": "versions",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "8ba1c25e1eee13e525b86399078ddd740b293552f91958c3ce47551ed8c0566d"
+    },
+    {
+      "name": "merge_output",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "b182c6b44fddbea7f3614b04d7d7f6c58355b32aa7931fec25beab08d81efc7e"
+    },
+    {
+      "name": "merged_member",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "8e74b34c1e849ddf02171edf9f48f6e460921544d003cb7af4a44a43faf610ff"
+    },
+    {
+      "name": "parent_archive",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "e72ac19125e78b7d6c9a11673827993fe3df71648296f9bc3037dbf3c16d7338"
+    },
+    {
+      "name": "parent_descriptor",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "c973ea156335427f1379f7ae357388b95ac185e05e2d1f2769b063e91b492c16"
+    },
+    {
+      "name": "parent_commit",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "6a0cd3eb0cf6e0d1405a322167be84af973990f32f023453b7b3f32ac8d0def2"
+    },
+    {
+      "name": "package_spelling",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "9bce199584d22f7cae8a190f1f070b1b528fd8ffd04ee4bb68bf1db4772fd545"
+    },
+    {
+      "name": "package_duplicate",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "21c01b10051837f9a8b64802d5f5707b598a7ed3f99d55044c44507d4b1eda05"
+    },
+    {
+      "name": "package_member_type",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "c146f6e059c2faac57c7bd25dd5b549dc14d768157fb38122b3a6c74d17cb909"
+    },
+    {
+      "name": "rights_block",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "26e0e196b74cbfadfbd68fb9d0dfbd7ff46da95074221b87579796cc3cf3f923"
+    },
+    {
+      "name": "readback_claim",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "415dc02353fb6c199adfcb0b6b75ec784f1bf0a1431ba014e27ee152322b4f96"
+    },
+    {
+      "name": "state_expansion",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "09081c43bd709abd0392663e4cc49f25de009fe0f4b5ed917be5f7e2191f8086"
+    },
+    {
+      "name": "package_regular_file",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "aa7cb8776f68ee8518c17c8fd0f574ea3ddf39f8f3e0de119ddf165477972c65"
+    }
+  ],
+  "all_killed": true
+}

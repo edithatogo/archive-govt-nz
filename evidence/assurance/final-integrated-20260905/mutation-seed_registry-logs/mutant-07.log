@@ -1,0 +1,43 @@
+......F....................F.....................                        [100%]
+=================================== FAILURES ===================================
+_ test_wrong_pin[sha256-0000000000000000000000000000000000000000000000000000000000000000-hash mismatch] _
+
+field = 'sha256'
+value = '0000000000000000000000000000000000000000000000000000000000000000'
+reason = 'hash mismatch'
+
+    @pytest.mark.parametrize(
+        ("field", "value", "reason"),
+        [
+            ("line_count", 2, "line count"),
+            ("byte_size", 1, "byte size"),
+            ("sha256", "0" * 64, "hash mismatch"),
+        ],
+    )
+    def test_wrong_pin(field: str, value: object, reason: str) -> None:
+        """Each independent content pin is enforced."""
+        data = b"act_public_2000_1\n"
+        content = _content(data)
+        content[field] = value
+>       with pytest.raises(ValueError, match=reason):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/tools/test_seed_registry.py:161: Failed
+______________________________ test_modified_seed ______________________________
+
+fixture_root = PosixPath('/private/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/pytest-of-doughnut/pytest-4122/test_modified_seed0')
+
+    def test_modified_seed(fixture_root: Path) -> None:
+        """The stable-ID resolver checks the file, not just registry assertions."""
+        path = fixture_root / SEED_PATH
+        path.write_bytes(path.read_bytes().replace(b"1539", b"1538"))
+>       with pytest.raises(ValueError, match="hash mismatch"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/tools/test_seed_registry.py:219: Failed
+=========================== short test summary info ============================
+FAILED tests/tools/test_seed_registry.py::test_wrong_pin[sha256-0000000000000000000000000000000000000000000000000000000000000000-hash mismatch]
+FAILED tests/tools/test_seed_registry.py::test_modified_seed - Failed: DID NO...
+2 failed, 47 passed in 2.54s

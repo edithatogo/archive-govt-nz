@@ -1,0 +1,56 @@
+....F
+=================================== FAILURES ===================================
+___________________________ test_native_continuation ___________________________
+
+tmp_path = PosixPath('/private/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/pytest-of-doughnut/pytest-4064/test_native_continuation0')
+
+    def test_native_continuation(tmp_path: Path) -> None:
+        """Prompt 08 sealed continuations retain and verify their lineage."""
+        ref, meta, raw = native.fixture(tmp_path / "native")
+        paths = {"output": tmp_path / "state", "quarantine": tmp_path / "q"}
+        result = native.P.restore(
+            native.request(ref), paths, native.client(meta, raw), "synthetic", native.NOW
+        )
+        assert result["status"] == "verified"
+        files = native.P.read_state(paths["output"])
+        (paths["output"] / "receipts/harvest.json").write_bytes(native.v3_harvest(files))
+        native.P.seal(paths["output"], native.CONTEXT, paths["quarantine"])
+        files = D.P.read_state(paths["output"])
+        ref["roots"] = D.P.state_roots(files)
+        ref["lineage_sha256"] = D.v.sha(files[D.P.SEAL])
+        ref["state_schemas"] = dict(D.P.VERSIONS)
+        pin = {
+            "schema_version": "archive-govt-nz.legislation-durable-input/v1",
+            "kind": "continuation",
+            "marker_sha256": ref["lineage_sha256"],
+            "receipt_sha256": D.v.sha(files["receipts/harvest.json"]),
+            "manifest_sha256": ref["roots"]["manifest_sha256"],
+            "source": ref["source"],
+            "parent_reference": ref,
+        }
+>       package = D.build(files, pin, RIGHTS, REVISION)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tools/test_legislation_durable_state.py:378: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/private/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/p20-mutations-0kx7t1r2/legislation_durable/mutant-03.py:227: in build
+    verify(raw, v.sha(raw))
+/private/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/p20-mutations-0kx7t1r2/legislation_durable/mutant-03.py:277: in verify
+    v.equal(document["files"], inventory(originals), "package_inventory")
+/private/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/p20-mutations-0kx7t1r2/legislation_durable/verify_final_donor_state.py:61: in equal
+    require(condition=type(actual) is type(expected) and actual == expected, code=code)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+condition = False, code = 'package_inventory'
+
+    def require(*, condition: bool, code: str) -> None:
+        """Fail closed on one violated invariant."""
+        if not condition:
+>           raise VerificationError(code)
+E           donor_state_verifier.VerificationError: package_inventory
+
+/private/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/p20-mutations-0kx7t1r2/legislation_durable/verify_final_donor_state.py:56: VerificationError
+=========================== short test summary info ============================
+FAILED tests/tools/test_legislation_durable_state.py::test_native_continuation
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 4 passed in 14.74s

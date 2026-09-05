@@ -1,0 +1,59 @@
+..........F
+=================================== FAILURES ===================================
+________________________ test_package_tampering[roots] _________________________
+
+tmp_path = PosixPath('/private/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/pytest-of-doughnut/pytest-4069/test_package_tampering_roots_0')
+change = 'roots'
+
+    @pytest.mark.parametrize(
+        "change",
+        [
+            "completion",
+            "unexpected",
+            "metadata",
+            "roots",
+            "inventory",
+            "instructions",
+            "canonical_json",
+            "encoding",
+        ],
+    )
+    def test_package_tampering(tmp_path: Path, change: str) -> None:
+        """An outer digest alone cannot bless malformed package contents."""
+        files, pin = fixture(tmp_path)
+        raw = D.build(files, pin, RIGHTS, REVISION)
+        parts = archive_files(raw)
+        doc = D.v.load(parts["package.json"])
+        if change == "completion":
+            parts["state/COMPLETE.json"] = b"{}"
+        elif change == "unexpected":
+            parts["state/unexpected.txt"] = b"x"
+        elif change == "metadata":
+            doc["unreviewed"] = True
+        elif change == "roots":
+            doc["roots"]["records"] += 1
+        elif change == "inventory":
+            doc["files"][0]["blake3"] = "f" * 64
+        elif change == "instructions":
+            parts["RESTORE.txt"] = b"unsafe instructions"
+        parts["package.json"] = D.M.encoded(doc)
+        if change == "canonical_json":
+            parts["package.json"] += b" "
+        altered = D.zip_bytes(parts)
+        if change == "encoding":
+            altered += b"trailing"
+>       with pytest.raises((D.v.VerificationError, KeyError)):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE any of (VerificationError, KeyError)
+
+tests/tools/test_legislation_durable_state.py:212: Failed
+=============================== warnings summary ===============================
+tests/tools/test_legislation_durable_state.py::test_archive_abuse[duplicate]
+  /Volumes/PortableSSD/appdata/local-dotdir/share/uv/python/cpython-3.14.6-macos-aarch64-none/lib/python3.14/zipfile/__init__.py:1730: UserWarning: Duplicate name: 'state/manifest.json'
+    return self._open_to_write(zinfo, force_zip64=force_zip64)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/tools/test_legislation_durable_state.py::test_package_tampering[roots]
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 10 passed, 1 warning in 14.18s

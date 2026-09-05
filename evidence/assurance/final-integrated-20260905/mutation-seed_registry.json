@@ -1,0 +1,90 @@
+{
+  "source_sha256": "fa602798045a04c4289411de23d59a7edd24dc83e87f7e586486fb3e9c494b3a",
+  "mutants": [
+    {
+      "name": "omit missing terminal LF",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "3ce325da8d93d7512e27c7b77d7433ef00844841a83c6f29e2fde9b5da92ab18"
+    },
+    {
+      "name": "omit CR line ending",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "001cdc93c13528e2104c7308e90a108b83bb28eda52d2aa1ba0f266fafb72b60"
+    },
+    {
+      "name": "omit malformed or blank work ID",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "23a32b613c0dab520ac105f8fac9a3a4960a2d4d05663f8c06ece2950371ede9"
+    },
+    {
+      "name": "omit duplicate work ID",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "99cb52a3cacb195abc7aff7c2ba284a7d1efadf100ff47c3f63ffc400dd23da7"
+    },
+    {
+      "name": "omit noncanonical order; do not reorder an existing version",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "3623d101ad6e9556deafb66199103b245475d0877c34d512b1f78f43e8eea5ef"
+    },
+    {
+      "name": "omit line count mismatch",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "3ef4470954bfd00d6948ba6c1bed3535f43ed6c0ab26e5c30f222cf9631e04a9"
+    },
+    {
+      "name": "omit byte size mismatch",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "3a24ab693d40028d4856911cf069b01ab5a41178e09740755581aa1846b8131b"
+    },
+    {
+      "name": "omit seed hash mismatch",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "8b121296f6c0e26439dd9c89b8de372aaeb0a43e571826f9fe5d02e9c6df3304"
+    },
+    {
+      "name": "omit unknown seed ID",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "a5fecf66945cedc18e71919021e5f82ab80af479d2f5569d38d685e20b6d275e"
+    },
+    {
+      "name": "omit symlink seed path",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "57305156a321ef7d5174910bccee39fc20e039e90e794c5ee0dbb6074ce296e1"
+    },
+    {
+      "name": "omit duplicate JSON key",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "36124009653b35141266352b3bcafd93bdc2429d47fd2dd243e70b029d7c280b"
+    },
+    {
+      "name": "accept nonfinite JSON",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "da47b5cc60af837c43ee01468f5d99b2db24b33bb9d64e1396564ddaf78e339e"
+    },
+    {
+      "name": "omit schema validation",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "a49b30a7ce5c63c032e7ebf734e3b78f0bd33e45adddf89e75dcb61fc49c411e"
+    },
+    {
+      "name": "permit malformed suffix",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "910c467b560a9219e4935f77d8d7b5bfc4aee5c3e19d7c2df2143310d9ef84c8"
+    }
+  ],
+  "all_killed": true
+}

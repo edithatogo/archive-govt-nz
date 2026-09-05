@@ -1,0 +1,26 @@
+....................................F
+=================================== FAILURES ===================================
+__________________ test_completion_marker_and_unknown_member ___________________
+
+tmp_path = PosixPath('/private/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/pytest-of-doughnut/pytest-4077/test_completion_marker_and_unk0')
+
+    def test_completion_marker_and_unknown_member(tmp_path: Path) -> None:
+        """A newly pinned marker still needs an exact inventory of originals."""
+        files, pin = fixture(tmp_path)
+        files["COMPLETE.json"] = b"{}"
+        pin["marker_sha256"] = D.v.sha(files["COMPLETE.json"])
+>       with pytest.raises(D.v.VerificationError, match="completion_inventory"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE VerificationError
+
+tests/tools/test_legislation_durable_state.py:519: Failed
+=============================== warnings summary ===============================
+tests/tools/test_legislation_durable_state.py::test_archive_abuse[duplicate]
+  /Volumes/PortableSSD/appdata/local-dotdir/share/uv/python/cpython-3.14.6-macos-aarch64-none/lib/python3.14/zipfile/__init__.py:1730: UserWarning: Duplicate name: 'state/manifest.json'
+    return self._open_to_write(zinfo, force_zip64=force_zip64)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/tools/test_legislation_durable_state.py::test_completion_marker_and_unknown_member
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 36 passed, 1 warning in 13.31s

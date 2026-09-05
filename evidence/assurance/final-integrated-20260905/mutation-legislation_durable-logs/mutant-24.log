@@ -1,0 +1,23 @@
+F
+=================================== FAILURES ===================================
+_________________ test_verified_package_must_fit_restore_limit _________________
+
+tmp_path = PosixPath('/private/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/pytest-of-doughnut/pytest-4095/test_verified_package_must_fit0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1087fcb00>
+
+    def test_verified_package_must_fit_restore_limit(
+        tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        """Verification cannot bless state too large for the shared local restorer."""
+        files, pin = fixture(tmp_path)
+        raw = D.build(files, pin, RIGHTS, REVISION)
+        monkeypatch.setattr(D.v, "MAX_EXPANDED", 1)
+>       with pytest.raises(D.v.VerificationError, match="state_expansion"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE VerificationError
+
+tests/tools/test_legislation_durable_state.py:533: Failed
+=========================== short test summary info ============================
+FAILED tests/tools/test_legislation_durable_state.py::test_verified_package_must_fit_restore_limit
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed in 6.87s
