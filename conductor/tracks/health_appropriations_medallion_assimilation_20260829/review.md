@@ -909,8 +909,10 @@ made.
 ## 2026-09-05 — Donor retirement reconciliation
 
 The legacy donor repository was archived after the user-authorized retirement
-action. Live GitHub evidence records `isArchived=true` and
-`archivedAt=2026-09-05T07:53:19Z` for
+action. The bounded `donor_retirement_github_observation` receipt in
+`evidence.jsonl` preserves the observed response fields and
+`response_sha256=6c1e320396c23b0868dcef7fa345a331f8d1f033b82e0cfc6896fe8709e3dd44`;
+the response records `isArchived=true` and `archivedAt=2026-09-05T07:53:19Z` for
 `edithatogo/nz_health_appropriations`. The donor remains recoverable by its owner;
 no files were deleted, and the retained raw/original evidence and provenance
 boundary are unchanged. The Conductor `donor-retirement` gate is therefore

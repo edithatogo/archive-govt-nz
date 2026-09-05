@@ -415,7 +415,7 @@
       "kind": "destructive",
       "status": "satisfied",
       "scope": "out_of_track_scope",
-      "evidence": "Live GitHub observation on 2026-09-05: https://github.com/edithatogo/nz_health_appropriations reports isArchived=true and archivedAt=2026-09-05T07:53:19Z; archival preserves owner recovery and does not remove retained raw/original evidence"
+      "evidence": "Structured receipt donor_retirement_github_observation in evidence.jsonl; response_sha256=6c1e320396c23b0868dcef7fa345a331f8d1f033b82e0cfc6896fe8709e3dd44; live response reports isArchived=true and archivedAt=2026-09-05T07:53:19Z; archival preserves owner recovery and does not remove retained raw/original evidence"
     },
     {
       "id": "zenodo-release",
