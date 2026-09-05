@@ -34,3 +34,7 @@ Downloaded run 33800180992 sanitized attempt artifact 9911101072 again; exact ZI
 Red test run: 11 failed and 4 passed because the new v3 schema and successful prerequisite receipt did not yet exist. Added a superseding schema, preserving v1/v2. The registry now records operational proof while retaining the published 552-record state. Pending full validation and hosted checks; no terminal closeout claimed.
 
 First full harness: 4,706 passed, six timing/health-check failures, 97.58% coverage. Failed attempt is preserved in `validation-attempt-01-20260905.json`; unchanged serial rerun and two-worker harness follow. No thresholds or test selection weakened.
+
+All six first-attempt failures passed unchanged in a serial rerun. Rebased onto main `3c867a9e3140a9575ebe5a2805c98ea85119cb5b` (unrelated health readiness merge). Second full run with two workers: 4,740 passed, two Hypothesis deadline flakes, 97.60% coverage; both initial examples passed on replay. `validation-attempt-02-20260905.json` preserves the outcome. A one-worker third run is underway. Draft PR hosted CI will provide independent runner evidence; no local success or merge readiness is claimed from the failed runs.
+
+The monthly public readback and canonical selected-state comparison executed successfully and are preserved separately. This resolves the prior recovery metadata handoff without broadening the published payload.

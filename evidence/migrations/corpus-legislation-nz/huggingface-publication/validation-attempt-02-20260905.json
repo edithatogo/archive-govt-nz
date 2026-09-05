@@ -1,0 +1,23 @@
+{
+  "status": "failed",
+  "command": "PYTEST_XDIST_AUTO_NUM_WORKERS=2 ./scripts/validate.sh",
+  "validation_head": "b33889675720a241f8270b178c26c808a67dadb3",
+  "log_sha256": "eff8ae8cd99f6a91726d1e9749797357380750e4da822523c9d5f90623aaa4d2",
+  "passed_tests": 4740,
+  "failed_tests": 2,
+  "coverage_percent": 97.6,
+  "failure_class": "Hypothesis FlakyFailure: initial deadline exceeded, subsequent replay passed",
+  "failures": [
+    {
+      "test": "tests/domains/health_appropriations/test_source_operations.py::test_receipt_schema_count_property",
+      "first_ms": 267.87,
+      "deadline_ms": 200
+    },
+    {
+      "test": "tests/tools/test_merge_legislation_states.py::test_union_algebra",
+      "first_ms": 298.86,
+      "deadline_ms": 200
+    }
+  ],
+  "remediation": "Repeat unchanged focused tests; use one xdist worker for third full local run; obtain independent exact-head hosted checks. No thresholds changed."
+}
