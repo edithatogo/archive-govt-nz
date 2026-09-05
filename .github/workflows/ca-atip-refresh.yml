@@ -1,0 +1,45 @@
+name: Canada ATI approved refresh
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "31 4 * * 1"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ca-atip-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    if: github.repository == 'edithatogo/archive-govt-nz' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b
+        with:
+          version: "0.6.5"
+      - name: Install locked dependencies
+        run: uv sync --locked
+      - name: Build and verify approved package
+        run: uv run --locked python tools/refresh_ca_atip.py --output build/ca-atip
+      - name: Publish allowlisted files
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          uv run --locked hf upload edithatogo/foi-ca-federal-atip build/ca-atip/ati-nil.csv ati-nil.csv --repo-type dataset --commit-message "Refresh approved Canada ATI source"
+          uv run --locked hf upload edithatogo/foi-ca-federal-atip build/ca-atip/index.jsonl index.jsonl --repo-type dataset --commit-message "Refresh approved Canada ATI index"
+          uv run --locked hf upload edithatogo/foi-ca-federal-atip build/ca-atip/manifest.json metadata/manifest.json --repo-type dataset --commit-message "Refresh Canada package manifest"
+      - name: Preserve refresh receipt
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: ca-atip-refresh-${{ github.run_id }}-${{ github.run_attempt }}
+          path: build/ca-atip
+          if-no-files-found: error
+          retention-days: 90
