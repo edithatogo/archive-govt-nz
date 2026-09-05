@@ -2111,3 +2111,7 @@ including 48 schemas/38 documents, 9/9 parity, repository mutation lanes,
 hygiene/CAS benchmark, audit/licences/secrets and 112-component validated SBOM.
 This closes the bounded local implementation; the full combined gate remains
 with the parent. Global registry status stays in progress without edits.
+
+Local functional commit: `95a5638aaaecefc0761bb0e51797e8a71d8983a5`.
+The following bookkeeping commit records that SHA without rewriting history.
+Integrate both commits in order; retain the health registry's in-progress state.

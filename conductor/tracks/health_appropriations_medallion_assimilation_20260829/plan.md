@@ -226,7 +226,7 @@ repository validation command. External gates block only their affected task.
   source semantics and cross-record lineage closure remain separate.
   [M-05, M-06, M-18; AC-05, AC-16]
 
-  Bounded prerequisite only: 117 focused tests, 100% new-module coverage,
+  Functional commit `95a5638a`. Bounded prerequisite only: 117 focused tests, 100% new-module coverage,
   35/35 cold mutants. Full combined checks are assigned to the parent after
   integration per the user's coordination instruction; see
   `normalization-validation.json`. Neither original broad fixture task nor

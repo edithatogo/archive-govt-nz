@@ -1,6 +1,7 @@
 {
   "schema_version": "health-normalization-validation/v1",
   "base_commit": "c5233ae7",
+  "functional_commit": "95a5638aaaecefc0761bb0e51797e8a71d8983a5",
   "scope": "phase_3_1_exact_json_arrow_prerequisite",
   "status": "focused_passed_combined_full_gate_delegated_to_parent",
   "recorded_at": "2026-09-05T14:18:41Z",
