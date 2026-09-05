@@ -2351,11 +2351,11 @@
       "entity_id": "US",
       "publication_group": "institutional_open_data",
       "group_is_candidate_only": true,
-      "next_action": "verify_bounded_statistical_subset",
+      "next_action": "field_level_review_numeric_projection",
       "source_denominator": null,
       "schedule_active": false,
       "publication_approved": false,
-      "capture_evidence": "separate_pilot_receipt_required"
+      "capture_evidence": "us-numeric-projection-review-20260905.json"
     },
     {
       "source_id": "us-opramachine",
