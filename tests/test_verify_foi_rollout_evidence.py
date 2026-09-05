@@ -48,9 +48,7 @@ def test_missing_capture_evidence_is_rejected(tmp_path: Path) -> None:
     """A source receipt that is absent from the evidence directory fails closed."""
     rollout = {
         "entities": [],
-        "sources": [
-            {"source_id": "missing", "capture_evidence": "missing.json"}
-        ],
+        "sources": [{"source_id": "missing", "capture_evidence": "missing.json"}],
         "summary": {
             "entities": 0,
             "sources": 1,
