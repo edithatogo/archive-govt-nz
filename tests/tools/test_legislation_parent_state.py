@@ -949,26 +949,29 @@ def test_seal_rejects_auxiliary_reconciliation_inside_state(tmp_path: Path) -> N
     assert not (output / P.SEAL).exists()
 
 
-@given(
-    st.text(
-        alphabet=st.characters(whitelist_categories=("Ll", "Nd")),
-        min_size=1,
-        max_size=20,
-    )
-)
-@settings(suppress_health_check=[HealthCheck.function_scoped_fixture])
 def test_state_rejects_arbitrary_unrecognized_receipts(
-    tmp_path: Path, name: str
+    tmp_path: Path,
 ) -> None:
     """No auxiliary receipt filename may bypass the canonical-state allowlist."""
     _ref, _meta, raw = fixture(tmp_path / "in")
-    files = P.unpack(raw)
-    candidate = f"receipts/{name}.json"
-    if P.allowed_name(candidate):
-        return
-    files[candidate] = b"{}\n"
-    with pytest.raises(P.v.VerificationError, match="state_path"):
-        P.state_roots(files)
+    original_files = P.unpack(raw)
+
+    @given(
+        st.text(
+            alphabet=st.characters(whitelist_categories=("Ll", "Nd")),
+            min_size=1,
+            max_size=20,
+        )
+    )
+    def check_name(name: str) -> None:
+        candidate = f"receipts/{name}.json"
+        if P.allowed_name(candidate):
+            return
+        files = {**original_files, candidate: b"{}\n"}
+        with pytest.raises(P.v.VerificationError, match="state_path"):
+            P.state_roots(files)
+
+    check_name()
 
 
 def test_lineage_tampering_and_duplicate_seal(tmp_path: Path) -> None:

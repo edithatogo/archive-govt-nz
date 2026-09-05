@@ -269,6 +269,16 @@ PR #272 hosted Ubuntu passed 2,048 tests, 96.84 percent coverage and mutation st
 
 - 2026-09-03: Ran the required `./scripts/validate.sh` on Python 3.14.6. Conductor validation, formatting, Ruff, basedpyright, 4,559 tests (97.50% coverage), schemas, parity, all configured mutation suites, hygiene, CAS benchmark (540.76 MB/s), dependency audit, licence inventory, secret scan, and 111-component SBOM all passed. This closes repository-owned P1.6 validation evidence only; it does not establish hosted acquisition, public raw publication, rights clearance, or donor cutover.
 
+- 2026-09-03: Extended the read-only shared-control health report with a separate
+  corpus-progress surface. Due and scheduled backlog, active capture,
+  captured-but-unpublished work, exhausted retries, blocked adapters, verified
+  publications and terminal dispositions are counted without treating green
+  control health as corpus completion. The CLI now returns attention-required
+  for captured-but-unpublished, exhausted or blocked work while ordinary queued
+  work remains a healthy incomplete corpus. Eighteen focused tests, Ruff and
+  basedpyright passed. This advances P5.4 but does not prove scheduled freshness,
+  notification delivery or complete worldwide acquisition.
+
 ## 2026-09-03 — Catalogue phase acceptance validator
 
 Added a deterministic fail-closed validator and CLI for Phase 2 accounting.
@@ -281,3 +291,41 @@ it does not satisfy P2.2/P2.3 or manufacture worldwide completeness.
 The exact branch then passed the full local harness: 4,655 tests, 97.50%
 coverage, all schema/parity/mutation and supply-chain gates, and a validated
 111-component SBOM. Hosted exact-head checks remain separate.
+
+## 2026-09-05 — Progress-monitor validation follow-up
+
+The full local run on the monitor branch finished with 4,708 passing tests,
+two failing Hypothesis timing checks and 97.58% coverage. The URN generation
+failure passed with recorded seed 225385357854653241213053794728394182631.
+The receipt-name property reproduced timing instability in isolation; its
+unchanging filesystem fixture is now built once outside generated examples,
+while each example receives a fresh file mapping and retains the original
+assertion and deadline. The corrected property, lint, formatting and typing
+passed. A full two-worker validation is pending. These focused results do not
+replace the failed full run or establish operational monitoring acceptance.
+
+## 2026-09-05 — PR 395 monitor review corrections
+
+Review identified permanent false capture alarms from exhausted control
+rehearsals and unsupported corpus-complete claims from unscoped queue state.
+The reserved `rehearsal-[0-9]+-[0-9]+` namespace now has a separate terminal
+control count; real exhausted work and unfinished rehearsal ownership still
+require attention. Empty and terminal-only queues report `unknown`, never
+complete, because the monitor has no revision-bound catalogue denominator.
+The rehearsal regression failed as expected before implementation. All 22
+focused tests then passed with 100% line and branch coverage for `foi_health`:
+`uv run --locked pytest tests/test_foi_health.py --cov=archive_govt_nz.foi_health
+--cov-branch --cov-report=term-missing --cov-fail-under=100 -q`.
+Full repository validation remains pending; this does not complete P5.4 or
+establish notification delivery, source freshness, publication, or cutover.
+
+The two-worker full run terminated with 4,708 passes, 97.59% coverage and two
+Hypothesis timing failures: checkpoint JSON input generation and union algebra.
+The isolated checkpoint property passed with seed
+87631357486710835346458405623809083968; union algebra remained timing-flaky
+(406.55 ms initially, 2.69 ms on replay). No semantic assertion failure was
+reported, but no full pass is claimed. Deadlines and health checks are unchanged.
+Ruff, formatting and basedpyright passed for the monitor corrections. Commit
+`8af58914` is pushed to PR 395 and both reported review threads are resolved.
+Integrated Health readiness PR 392 at merge `3c867a9e` into this branch; its
+acceptance and external rights gates remain distinct from FOI monitoring.
