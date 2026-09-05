@@ -1,0 +1,90 @@
+{
+  "observations": [
+    {
+      "id": "donor",
+      "source": "https://api.github.com/repos/edithatogo/corpus-legislation-nz",
+      "response_sha256": "815d9b4eae52cb747ba539ff6d4429eb7cdf1fa8b9cdf7ff731d272c2c22912d",
+      "observed_at": "2026-09-05T06:42:52.997099+00:00"
+    },
+    {
+      "id": "donor-head",
+      "source": "https://api.github.com/repos/edithatogo/corpus-legislation-nz/git/ref/heads/main",
+      "response_sha256": "f2122688f7f118944b5b93e1f1a6a58c1129cc551dbf25ee1d8a1b14228dc6ea",
+      "observed_at": "2026-09-05T06:42:53.763219+00:00"
+    },
+    {
+      "id": "donor-tag-ref",
+      "source": "https://api.github.com/repos/edithatogo/corpus-legislation-nz/git/ref/tags/migration-final-20260821",
+      "response_sha256": "3853a136a0e511d43a9f379023499e477ce81f011a9a8dfe68434139ed52692f",
+      "observed_at": "2026-09-05T06:42:54.689411+00:00"
+    },
+    {
+      "id": "donor-tag-object",
+      "source": "https://api.github.com/repos/edithatogo/corpus-legislation-nz/git/tags/cdd6a397a96773c06519e2e86bbe7a606b26bd58",
+      "response_sha256": "8b1a7c6a04509ae0318c934a18e3feba71d33171c69ca454ba4b3ffd53d7019b",
+      "observed_at": "2026-09-05T06:42:55.612606+00:00"
+    },
+    {
+      "id": "bundle-release",
+      "source": "https://api.github.com/repos/edithatogo/archive-govt-nz/releases/tags/corpus-legislation-nz-final-archive-20260903",
+      "response_sha256": "380e54e68af0d9b1c46a23a1d7e795c4f4ba0e36b9b250016af49aca6ea95e6e",
+      "observed_at": "2026-09-05T06:42:56.326592+00:00"
+    },
+    {
+      "id": "cutover-release",
+      "source": "https://api.github.com/repos/edithatogo/archive-govt-nz/releases/tags/legislation-cutover-v1.0.0",
+      "response_sha256": "96ec1c72bdf35c2ad5cd87180f793881a5d57f63effeb237a3726e1e6cb50696",
+      "observed_at": "2026-09-05T06:42:57.239051+00:00"
+    },
+    {
+      "id": "donor-redirect",
+      "source": "https://api.github.com/repos/edithatogo/corpus-legislation-nz/contents/README.md?ref=905f9e07c17af9d9d25dbe2b1c052fb8a290a4e3",
+      "response_sha256": "8c3314a58b2baf48ab9c0edde6a330a6f3ecdd38f0eaa204d9d09a01f90071c2",
+      "observed_at": "2026-09-05T06:42:58.312407+00:00"
+    }
+  ],
+  "donor": {
+    "archived": true,
+    "head": "905f9e07c17af9d9d25dbe2b1c052fb8a290a4e3",
+    "operational_final_commit": "b40587f1b1aec7356a0f623916fcc8212397d283",
+    "tag": "migration-final-20260821",
+    "tag_object": "cdd6a397a96773c06519e2e86bbe7a606b26bd58",
+    "tag_message_sha256": "0e707b9af12fca40ef685670125eab620d35c206736d39910205b95e1d76e48e",
+    "redirect_readme_sha256": "692c703b360fc404f314826fcea2b3c014710e9d1721320a5c346f6dcae0f6f0"
+  },
+  "bundle_release": {
+    "id": 381883563,
+    "draft": false,
+    "published_at": "2026-09-03T09:14:15Z",
+    "url": "https://github.com/edithatogo/archive-govt-nz/releases/tag/corpus-legislation-nz-final-archive-20260903",
+    "asset": {
+      "id": 542511808,
+      "name": "corpus-legislation-nz-full-20260826.bundle",
+      "size": 2365303,
+      "digest": "sha256:f125f91b06264a97e59f65fac47878a74d646c915f12c0b05841c1550ec741c2",
+      "browser_download_url": "https://github.com/edithatogo/archive-govt-nz/releases/download/corpus-legislation-nz-final-archive-20260903/corpus-legislation-nz-full-20260826.bundle"
+    },
+    "anonymous_readback": {
+      "http_status": 200,
+      "bytes": 2365303,
+      "sha256": "f125f91b06264a97e59f65fac47878a74d646c915f12c0b05841c1550ec741c2"
+    }
+  },
+  "cutover_release": {
+    "id": 375146205,
+    "url": "https://github.com/edithatogo/archive-govt-nz/releases/tag/legislation-cutover-v1.0.0",
+    "body_sha256": "66617b06cce61d19b3a2dadc4e352d32af9292334bb9cae4379a82147fcfd28d",
+    "body_path": "evidence/migrations/corpus-legislation-nz/final-verification-20260905/external-readback/cutover-release-body.md"
+  },
+  "external_mutations": false,
+  "bundle_restoration": {
+    "fresh_bare_clone": true,
+    "fsck_exit_code": 0,
+    "restored_main": "b40587f1b1aec7356a0f623916fcc8212397d283",
+    "dangling_historical_objects_reported": true,
+    "corruption_reported": false,
+    "log_path": "evidence/migrations/corpus-legislation-nz/final-verification-20260905/external-readback/bundle-restore.log",
+    "log_sha256": "3e052a1f3f9b975b96d06a1cec21e354fa64d4f75085e916f646dd49a2b820b8",
+    "transient_bundle_and_restore_removed": true
+  }
+}
