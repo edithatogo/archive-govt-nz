@@ -2300,7 +2300,7 @@
       "source_denominator": null,
       "schedule_active": false,
       "publication_approved": false,
-      "capture_evidence": "separate_pilot_receipt_required"
+      "capture_evidence": "nz-metadata-disposition-20260905.json"
     },
     {
       "source_id": "ro-iastatullaintrebari",
