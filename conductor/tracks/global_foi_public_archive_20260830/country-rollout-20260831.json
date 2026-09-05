@@ -244,8 +244,10 @@
     },
     {
       "entity_id": "BN",
-      "source_ids": [],
-      "next_action": "discover_official_and_civic_sources",
+      "source_ids": [
+        "bn-open-data"
+      ],
+      "next_action": "review_named_sources_and_discover_gaps",
       "broader_discovery_required": true,
       "country_denominator": null,
       "country_complete": false
@@ -1358,8 +1360,10 @@
     },
     {
       "entity_id": "MY",
-      "source_ids": [],
-      "next_action": "discover_official_and_civic_sources",
+      "source_ids": [
+        "my-open-data"
+      ],
+      "next_action": "review_named_sources_and_discover_gaps",
       "broader_discovery_required": true,
       "country_denominator": null,
       "country_complete": false
@@ -2828,13 +2832,35 @@
       "schedule_active": false,
       "publication_approved": false,
       "capture_evidence": "ph-open-data-discovery-20260905.json"
+    },
+    {
+      "source_id": "my-open-data",
+      "entity_id": "MY",
+      "publication_group": "restricted_or_unclear",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "my-open-data-discovery-20260905.json"
+    },
+    {
+      "source_id": "bn-open-data",
+      "entity_id": "BN",
+      "publication_group": "restricted_or_unclear",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "bn-open-data-discovery-20260905.json"
     }
   ],
   "summary": {
     "entities": 251,
-    "sources": 63,
+    "sources": 65,
     "entities_requiring_broader_discovery": 251,
-    "entities_without_named_sources": 191,
+    "entities_without_named_sources": 189,
     "public_raw_complete_countries_verified": 0
   }
 }
