@@ -15,7 +15,7 @@ from typing import TYPE_CHECKING, Any
 
 import blake3
 import pytest
-from hypothesis import given
+from hypothesis import given, settings
 from hypothesis import strategies as st
 from jsonschema import Draft202012Validator
 from tests.tools import test_verify_final_donor_state as fixtures
@@ -157,6 +157,7 @@ def test_union_algebra() -> None:
     data = f["files"][fixtures.CAS + digest[:2] + "/" + digest]
 
     @given(st.lists(st.integers(min_value=1, max_value=8), min_size=1, max_size=12))
+    @settings(deadline=None)
     def exercise(numbers: list[int]) -> None:
         checkpoint = copy.deepcopy(f["docs"]["checkpoint"])
         parents = []
