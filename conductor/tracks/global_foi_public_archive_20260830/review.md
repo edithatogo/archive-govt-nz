@@ -1,5 +1,17 @@
 # Draft self-review
 
+## 2026-09-06 — P2.5–P2.7 local review
+
+Resolved seed inventory/verified-byte mismatch, untyped or unreconciled
+coverage counts, ambiguous entity/source rollout links and escaped evidence
+paths. Reviewed all three source/test diffs and track-local evidence against
+AC04/AC09/AC11/AC12. No unresolved high-confidence finding remains in these
+bounded fixes. Detailed limits and remaining acceptance gates are recorded in
+[local review](local-safe-gaps-20260906.md). The full harness has three
+Hypothesis timing failures in unchanged legislation/health tests; isolated
+rechecks pass, which does not turn the original run green. Keep track and
+review-fix tasks in progress until the matching full/hosted gates pass.
+
 ## Private-network redirect fix — 2026-09-04
 
 The P3.1 completion review exposed an SSRF path in the generic capture client.

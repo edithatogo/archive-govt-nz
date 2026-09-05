@@ -1,0 +1,91 @@
+{
+  "schema_version": "archive-govt-nz.foi-safe-local-continuation/v1",
+  "observed_at": "2026-09-05T14:16:59Z",
+  "base_commit": "c5233ae7fc0beb065071cf3554596456f6575131",
+  "branch": "codex/global-foi-safe-gaps-20260905",
+  "commits": {
+    "P2.5": "337e71d91094bed408f0e8e361ade971f550dc57",
+    "P2.6": "455f7d4a76c9e6db12d626ff5760e68463296676",
+    "P2.7": "f5483f189ca85f3ab99cb6ca416a1ee0049a4153"
+  },
+  "validation": {
+    "final_foi_tests": {
+      "passed": 483,
+      "failed": 0,
+      "log_sha256": "35b95a2e41de33e53d1d3f392bb2e3c57360f4e7d1c9357c94aa5792de5bf694"
+    },
+    "changed_module_line_and_branch_coverage_percent": 100,
+    "guard_mutants_killed": 7,
+    "ruff_format": "passed",
+    "ruff_lint": "passed",
+    "changed_python_basedpyright": "passed",
+    "schemas": 48,
+    "representative_documents": 38,
+    "secrets": "passed",
+    "conductor_tracks": 92,
+    "full_harness": {
+      "command": [
+        "./scripts/validate.sh"
+      ],
+      "environment": {
+        "PYTEST_XDIST_AUTO_NUM_WORKERS": "2"
+      },
+      "exit_code": 1,
+      "passed": 4810,
+      "failed": 3,
+      "coverage_percent": 97.62,
+      "log_sha256": "1fbdad57ff4a51cb0a23cede12dffda3d723b8d059353ea3e052d33ed7cd242a",
+      "failure_class": "Hypothesis FlakyFailure from 200ms deadline",
+      "failed_tests": [
+        "tests/tools/test_legislation_parent_state.py::test_state_rejects_arbitrary_unrecognized_receipts",
+        "tests/tools/test_merge_legislation_states.py::test_union_algebra",
+        "tests/schemas/test_health_recordset_json.py::test_decimal_property_matches_arrow"
+      ],
+      "final_tree_certified": false,
+      "note": "Started before P2.7; final FOI suite covers all fixes. Later harness stages not reached."
+    },
+    "isolated_failure_recheck": {
+      "passed": 3,
+      "failed": 0,
+      "seconds": 3.14,
+      "log_sha256": "b99805ff525e49ecb5929d39beae6f1a6dccd6625389d6f2ee8eb018dd539012",
+      "note": "No coverage/xdist; does not replace failed full harness."
+    }
+  },
+  "reconciliation": {
+    "merged_pr": 403,
+    "merge_commit": "463feb5476fc62c8fb0af01dbd65455e5e396dd3",
+    "included_in_base": true,
+    "pinned_catalogue": {
+      "entities": 251,
+      "sources": 30,
+      "jurisdictions": 42,
+      "structural_validation": "passed",
+      "phase_acceptance": "not_satisfied"
+    },
+    "materialized_rollout": {
+      "entities": 251,
+      "sources": 255,
+      "valid": true,
+      "verified_complete_countries": 0
+    },
+    "automation_readiness": {
+      "valid": true,
+      "scope": "saved evidence and local workflow guards only"
+    }
+  },
+  "remaining_gates": [
+    "full repository and hosted validation",
+    "reviewed source discovery and catalogue/rollout reconciliation",
+    "source-specific rights/privacy eligibility",
+    "hosted recovery and shadow parity",
+    "public NZ and second-source acceptance plus anonymous restore",
+    "eligible source schedules and receiver incremental cycle",
+    "separately authorized donor ownership transfer"
+  ],
+  "publication_performed": false,
+  "pushed": false,
+  "global_registry_changed": false,
+  "other_worktrees_changed": false,
+  "track_complete": false
+}

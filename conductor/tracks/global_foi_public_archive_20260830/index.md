@@ -17,6 +17,9 @@ Approved track in progress. Automation repair and source-catalogue foundations a
 
 ## Implementation receipts
 
+- [Local provenance and accounting review](local-safe-gaps-20260906.md)
+- [Local validation and commit receipt](local-safe-gaps-20260906.json)
+
 - [GitHub work breakdown](github.json)
 - [Live source and public-repository inventory](live-inventory.json)
 - [Artifact retention summary](artifact-inventory-summary.json)

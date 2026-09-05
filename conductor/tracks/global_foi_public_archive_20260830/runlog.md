@@ -1,5 +1,17 @@
 # Run log
 
+## 2026-09-06 — Isolated local FOI continuation
+
+Read canonical Conductor implement/review contracts and repository workflow.
+Reconciled PR #403 against requested base `c5233ae7`, then implemented P2.5,
+P2.6 and P2.7 in separate local commits. Red cases: 7, 7 and 5. Final FOI suite:
+483 passed; changed modules: 100% line/branch coverage; seven guard mutants
+killed. Full harness: 4810 passed, three unrelated timing failures; all three
+passed the single isolated diagnostic rerun. Full certification remains open.
+Commands, precise limits and receipts: [review](local-safe-gaps-20260906.md),
+[machine record](local-safe-gaps-20260906.json). No global registry edits,
+push, publication or ownership transfer. Other worktrees preserved.
+
 ## 2026-08-30 — Draft preparation
 
 - Read the invoked conductor-newtrack skill and its common/new-track contracts.

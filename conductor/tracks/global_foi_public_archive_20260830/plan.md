@@ -31,7 +31,22 @@ The approved destination is archive-govt-nz; no cutover has occurred.
   acceptance remains open while broader discovery and country completion are
   unverified.
 
+### P2 review fixes — local continuation 2026-09-06
+
+- [~] P2.5 (AC04, AC11, AC12): Bind every consumed seed to exactly one
+  provenance record and parse the verified bytes; reject omitted, substituted,
+  duplicate and symlinked seed inputs without changing the pinned registries.
+  Local fix: `337e71d9`; focused validation passed; full/hosted gate pending.
+- [~] P2.6 (AC04, AC09, AC12): Reconcile entity source counts and remaining
+  coverage in phase validation; retain unknown denominators and external gates.
+  Local fix: `455f7d4a`; focused validation passed; full/hosted gate pending.
+- [~] P2.7 (AC04, AC09, AC12): Reject duplicate/cross-entity rollout links
+  and evidence paths outside the track, including symlink targets; verify the
+  existing 255-source materialized rollout without altering its dispositions.
+  Local fix: `f5483f18`; focused validation passed; full/hosted gate pending.
+
 ## Phase 3 — Metadata indexes and immutable raw storage
+
 
 - [x] P3.1 (AC05, AC06, AC11): Add red tests for original metadata preservation, request/correspondence/attachment relationships, revisions, missing objects, synthetic/CDX rejection, unsafe archive members, private-network redirects, expansion/resource limits, active content and sensitive exports.
 - [x] P3.2 (AC05, AC06): Integrate pinned capture adapters, CAS/WARC packaging, JSONL/Parquet object metadata and complete provenance; reuse existing Bronze/storage primitives.
