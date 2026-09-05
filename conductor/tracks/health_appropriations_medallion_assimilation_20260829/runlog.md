@@ -11,6 +11,17 @@ The merged tree equals `f111dbf0`. Created a clean bookkeeping branch from
 that main revision; reconciled only six bounded implemented/reviewed tasks.
 No source acquisition, hosted operational retry or publication occurred.
 
+## Documentation-head assurance result — 2026-09-05 UTC
+
+The required `./scripts/validate.sh` on documentation head `d6b4affc`
+terminated with exit 1 after 4,770 passed tests and four Hypothesis deadline
+flakes, 97.61% coverage and 10 warnings in 314.66 seconds. The failures were
+the existing timing-sensitive legislation receipt-name, decimal/Arrow,
+union-algebra and FOI byte-budget properties; no failure implicated the
+documentation delta. This remains a failed local assurance receipt, not a
+waived gate or a basis for claiming PR #402 complete. Hosted exact-head checks
+remain pending.
+
 ## RDF full assurance and review clarification — 2026-09-05 UTC
 
 `./scripts/validate.sh` completed successfully on `fc672e0b`: 4,774 tests,
