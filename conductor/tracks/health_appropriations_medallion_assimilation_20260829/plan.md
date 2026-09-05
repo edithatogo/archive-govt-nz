@@ -83,6 +83,8 @@ repository validation command. External gates block only their affected task.
   schemas. [M-02, M-11; AC-03, AC-09]
   Historical scope and unresolved editions are recorded in
   `historical-source-register.json`; link discovery does not establish capture.
+- [~] Review fix: give historical discovery rows stable URL-derived source IDs
+  and verify uniqueness without substituting locator identity for byte fixity.
 - [ ] Enumerate the exact official CPI, QES wage, population, GDP and Crown
   expense series needed for approved derived measures; reject discovery leads
   that lack a stable definition or join. [M-02, M-12; AC-03, AC-10]

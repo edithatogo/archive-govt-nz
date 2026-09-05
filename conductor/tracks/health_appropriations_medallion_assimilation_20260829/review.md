@@ -1,5 +1,16 @@
 # Self-Review
 
+## Historical register stable-identity correction — 2026-09-05 UTC
+
+M-02 review found that the new rows had locators but lacked explicit stable
+source IDs. Added namespace-qualified URL-digest IDs for all 15 observations.
+The regression failed on missing `source_id`, then passed with uniqueness and
+derivation checks. These are not payload hashes; every byte count, fixity and
+rights gate remains unchanged. Corrected wording to distinguish web-reader
+observation from local payload retention. Ruff and formatting pass. The change
+was isolated from the live full-validation tree; integration and assurance
+remain pending before the review task can be marked complete.
+
 ## Historical source register — 2026-09-05 UTC
 
 Reviewed all six locators against their official linked edition pages and the

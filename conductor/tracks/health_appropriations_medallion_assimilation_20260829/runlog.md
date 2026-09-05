@@ -1,5 +1,15 @@
 # Run Log
 
+## Stable source-ID review fix — 2026-09-05 UTC
+
+Prepared in an isolated worktree while the two-worker full gate continued on
+`68c952de`. A red register test reproduced missing source IDs; the corrected
+15-row artifact passes deterministic URL-digest derivation and uniqueness.
+Focused pytest, Ruff and formatting passed. No source bytes, rights, publication
+or full-edition states changed. The original full run cannot validate this later
+correction; integration requires its own focused and Conductor checks plus
+hosted assurance. No full-pass claim is inferred from the focused result.
+
 ## Historical inventory validation and continuation — 2026-09-05 UTC
 
 The required `./scripts/validate.sh` run on the initial inventory returned 1:

@@ -105,7 +105,8 @@
       "disposition": "discovered",
       "sha256": null,
       "byte_count": null,
-      "rights_state": "not_evaluated"
+      "rights_state": "not_evaluated",
+      "source_id": "treasury-historical-ff5ef101ec75d1b8"
     },
     {
       "edition_year": 2024,
@@ -116,7 +117,8 @@
       "disposition": "discovered",
       "sha256": null,
       "byte_count": null,
-      "rights_state": "not_evaluated"
+      "rights_state": "not_evaluated",
+      "source_id": "treasury-historical-c445260e928c9454"
     },
     {
       "edition_year": 2024,
@@ -127,7 +129,8 @@
       "disposition": "discovered",
       "sha256": null,
       "byte_count": null,
-      "rights_state": "not_evaluated"
+      "rights_state": "not_evaluated",
+      "source_id": "treasury-historical-5aec404a7372fba4"
     },
     {
       "edition_year": 2024,
@@ -138,7 +141,8 @@
       "disposition": "discovered",
       "sha256": null,
       "byte_count": null,
-      "rights_state": "not_evaluated"
+      "rights_state": "not_evaluated",
+      "source_id": "treasury-historical-e95fef527a021369"
     },
     {
       "edition_year": 2024,
@@ -149,7 +153,8 @@
       "disposition": "discovered",
       "sha256": null,
       "byte_count": null,
-      "rights_state": "not_evaluated"
+      "rights_state": "not_evaluated",
+      "source_id": "treasury-historical-6c2e2c58f72f3e8b"
     },
     {
       "edition_year": 2024,
@@ -160,7 +165,8 @@
       "disposition": "discovered",
       "sha256": null,
       "byte_count": null,
-      "rights_state": "not_evaluated"
+      "rights_state": "not_evaluated",
+      "source_id": "treasury-historical-3b219d39cb04ec15"
     },
     {
       "edition_year": 2023,
@@ -171,7 +177,8 @@
       "disposition": "discovered",
       "sha256": null,
       "byte_count": null,
-      "rights_state": "not_evaluated"
+      "rights_state": "not_evaluated",
+      "source_id": "treasury-historical-dec1ca1018d3dac5"
     },
     {
       "edition_year": 2023,
@@ -182,7 +189,8 @@
       "disposition": "discovered",
       "sha256": null,
       "byte_count": null,
-      "rights_state": "not_evaluated"
+      "rights_state": "not_evaluated",
+      "source_id": "treasury-historical-501fbe11fbc07010"
     },
     {
       "edition_year": 2023,
@@ -193,7 +201,8 @@
       "disposition": "discovered",
       "sha256": null,
       "byte_count": null,
-      "rights_state": "not_evaluated"
+      "rights_state": "not_evaluated",
+      "source_id": "treasury-historical-54cbcd6785f58cce"
     },
     {
       "edition_year": 2023,
@@ -204,7 +213,8 @@
       "disposition": "discovered",
       "sha256": null,
       "byte_count": null,
-      "rights_state": "not_evaluated"
+      "rights_state": "not_evaluated",
+      "source_id": "treasury-historical-88c122b3b6c53763"
     },
     {
       "edition_year": 2023,
@@ -215,7 +225,8 @@
       "disposition": "discovered",
       "sha256": null,
       "byte_count": null,
-      "rights_state": "not_evaluated"
+      "rights_state": "not_evaluated",
+      "source_id": "treasury-historical-0f92bc77806a1196"
     },
     {
       "edition_year": 2023,
@@ -226,7 +237,8 @@
       "disposition": "discovered",
       "sha256": null,
       "byte_count": null,
-      "rights_state": "not_evaluated"
+      "rights_state": "not_evaluated",
+      "source_id": "treasury-historical-b652e634002bdb14"
     },
     {
       "edition_year": 1997,
@@ -237,7 +249,8 @@
       "disposition": "discovered",
       "sha256": null,
       "byte_count": null,
-      "rights_state": "not_evaluated"
+      "rights_state": "not_evaluated",
+      "source_id": "treasury-historical-9a9545a5d6ba4697"
     },
     {
       "edition_year": 1997,
@@ -248,7 +261,8 @@
       "disposition": "discovered",
       "sha256": null,
       "byte_count": null,
-      "rights_state": "not_evaluated"
+      "rights_state": "not_evaluated",
+      "source_id": "treasury-historical-851294f223b8831b"
     },
     {
       "edition_year": 1997,
@@ -259,7 +273,8 @@
       "disposition": "discovered",
       "sha256": null,
       "byte_count": null,
-      "rights_state": "not_evaluated"
+      "rights_state": "not_evaluated",
+      "source_id": "treasury-historical-45eabdd51ad1caa7"
     }
   ],
   "unresolved": [

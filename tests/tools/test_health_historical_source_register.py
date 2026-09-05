@@ -1,5 +1,6 @@
 """Historical discovery evidence must retain the full scope and unknown fixity."""
 
+import hashlib
 import json
 from datetime import datetime
 from pathlib import Path
@@ -26,6 +27,7 @@ def test_historical_source_register_retains_scope_and_discovery_boundary() -> No
     records = report["resource_observations"]
     assert len(records) == 15
     assert len({row["url"] for row in records}) == len(records)
+    assert len({row["source_id"] for row in records}) == len(records)
     assert len({(r["edition_year"], r["family"], r["kind"]) for r in records}) == 15
     assert {(r["family"], r["kind"]) for r in records} == {
         ("budget", "expenditure"),
@@ -39,6 +41,10 @@ def test_historical_source_register_retains_scope_and_discovery_boundary() -> No
         ("befu", "expenses"),
     }
     for row in records:
+        assert row["source_id"] == (
+            "treasury-historical-"
+            + hashlib.sha256(row["url"].encode()).hexdigest()[:16]
+        )
         assert row["edition_year"] in report["edition_years"]
         assert row["disposition"] == "discovered"
         assert row["sha256"] is None

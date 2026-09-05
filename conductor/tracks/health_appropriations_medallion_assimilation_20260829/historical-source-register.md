@@ -7,6 +7,13 @@ electronic documents are not held by Treasury according to that index; other
 custodians have not been investigated. All 30 editions remain pending full
 payload enumeration and reconciliation with existing retained objects.
 
+Each resource has a stable `treasury-historical-` source ID followed by the
+first 16 hexadecimal characters of the SHA-256 of its exact observed URL.
+Uniqueness and derivation are checked by the register test. These identify
+locators, not original bytes; payload hashes remain unknown until preservation
+and fixity verification. A source replacement at the same URL must remain a
+separate immutable object observation.
+
 The [1997 edition page](https://www.treasury.govt.nz/publications/budgets/budget-1997)
 specifically says its Estimates and Supplementary Estimates were not published
 electronically on Treasury's website. The register retains that reason-coded
@@ -28,7 +35,7 @@ longitudinal series. The page-level licence statement is a discovery lead,
 not resource-level redistribution approval.
 
 A direct index request returned HTTP 403 and was not retried. The metadata
-observations above came from read-only web page retrieval. No payload download,
+observations above came from read-only web page retrieval. No local payload
 retention, publication or rights qualification is claimed. The existing
 141-record source census and its historical capture claims are unchanged.
 
