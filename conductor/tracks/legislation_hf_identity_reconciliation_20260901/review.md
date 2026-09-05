@@ -25,3 +25,9 @@ The superseding registry and evidence must preserve the published parent versus 
 ## Final acceptance review
 
 Independent review of `abfd287a18be654b7bbc97e5c536ac144d4ef268` found no additional acceptance blocker. The five receipt identities are exact and unique; context, lineage, harvest hash, reconciliation root, durable revision/dataset and publication-authority hash are cross-bound by tests. Three-identity live readback, viewer/gated limits and preserved legacy surfaces are explicit. All required hosted checks subsequently passed on that reviewed head. Final integration remains protected by fresh exact-head checks; failed local attempts remain evidence.
+
+## PR #396 review corrections
+
+The later automated review found a valid schema gap: three individually valid copies of one identity could satisfy v3. Six red tests reproduced duplicate slugs, including otherwise differing revisions. Exact per-slug `contains`/`minContains`/`maxContains` constraints correct this without changing historical v1/v2.
+
+The review also identified stale formal Prompt 13 repository closure despite independently verified operation. Issue #335 has been reopened for a separate owned evidence correction; Prompt 15 delivery waits for its named superseding reports and authoritative track synchronization. Prior prospective acceptance statements above are retained; they do not override this unresolved prerequisite record.

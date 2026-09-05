@@ -9,6 +9,8 @@ from pathlib import Path
 from typing import Any
 
 import pytest
+from hypothesis import given
+from hypothesis import strategies as st
 from jsonschema import Draft202012Validator, ValidationError
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -364,5 +366,46 @@ def test_completed_registry_rejects_missing_operational_proof(invalid: object) -
     """The superseding completed contract cannot regress to a pending claim."""
     registry = copy.deepcopy(_load(REGISTRY_PATH))
     registry["publication_gate"]["prompt13_operational_proof"] = invalid
+    with pytest.raises(ValidationError):
+        Draft202012Validator(_load(SCHEMA_PATH)).validate(registry)
+
+
+@pytest.mark.parametrize("duplicated", [0, 1, 2])
+@pytest.mark.parametrize("different_revision", [False, True])
+def test_registry_rejects_duplicate_identity_slugs(
+    duplicated: int, *, different_revision: bool
+) -> None:
+    """Each slug occurs once even when duplicate objects differ in other fields."""
+    registry = copy.deepcopy(_load(REGISTRY_PATH))
+    replacement = copy.deepcopy(registry["identities"][duplicated])
+    if different_revision:
+        replacement["observed_revision"] = "a" * 40
+    registry["identities"][(duplicated + 1) % 3] = replacement
+    with pytest.raises(ValidationError):
+        Draft202012Validator(_load(SCHEMA_PATH)).validate(registry)
+
+
+@given(order=st.permutations((0, 1, 2)))
+def test_registry_identity_order_does_not_change_roles(order: list[int]) -> None:
+    """The identity set is exact without inventing an ordering requirement."""
+    registry = copy.deepcopy(_load(REGISTRY_PATH))
+    identities = registry["identities"]
+    registry["identities"] = [identities[index] for index in order]
+    Draft202012Validator(_load(SCHEMA_PATH)).validate(registry)
+
+
+@given(
+    duplicate=st.integers(min_value=0, max_value=2),
+    offset=st.integers(min_value=1, max_value=2),
+    revision=st.text(alphabet="0123456789abcdef", min_size=40, max_size=40),
+)
+def test_registry_rejects_duplicate_slug_with_arbitrary_revision(
+    duplicate: int, offset: int, revision: str
+) -> None:
+    """Different pinned revisions cannot disguise duplicate identities."""
+    registry = copy.deepcopy(_load(REGISTRY_PATH))
+    replacement = copy.deepcopy(registry["identities"][duplicate])
+    replacement["observed_revision"] = revision
+    registry["identities"][(duplicate + offset) % 3] = replacement
     with pytest.raises(ValidationError):
         Draft202012Validator(_load(SCHEMA_PATH)).validate(registry)
