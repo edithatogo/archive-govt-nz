@@ -1,0 +1,23 @@
+{
+  "schema_version": "archive-govt-nz.public-only-manifest/v1",
+  "source_id": "ca-federal-atip",
+  "scope_id": "ca-federal-atip.nil-returns",
+  "status": "published_direct_restore_verified_viewer_pending",
+  "source_revision": {
+    "resource_url": "https://open.canada.ca/data/dataset/0797e893-751e-4695-8229-a5066e4fe43c/resource/5a1386a5-ba69-4725-8338-2f26004d7382/download/ati-nil.csv",
+    "captured_at": "2026-09-05",
+    "raw_path": "data/raw/ca-federal-atip/2026-09-05/ati-nil.csv",
+    "bytes": 657619,
+    "sha256": "6782abe38a0be0412bc5271c4a094dcfc12b4640b0bf25663518efc0043c10a2",
+    "rows": 6226,
+    "organisation_pairs": 162
+  },
+  "public_files": [
+    {"path": "ati-nil.csv", "sha256": "6782abe38a0be0412bc5271c4a094dcfc12b4640b0bf25663518efc0043c10a2"},
+    {"path": "index.jsonl", "bytes": 1578794, "sha256": "cf01ac37cd8bd4eec4d795c7d713f438d0c9df74bb1e6b732e3e273275e6990f"},
+    {"path": "metadata/manifest.json", "status": "generated_and_hash_verified"}
+  ],
+  "private_files": ["source-metadata.json", "ati-schema.json", "licence.html"],
+  "restore": {"anonymous_verified": false, "local_hash_verified": true, "required_before_public_upload": true},
+  "publication": {"hugging_face_repo": "edithatogo/foi-ca-federal-atip", "uploaded": true, "visibility": "public_ungated"}
+}

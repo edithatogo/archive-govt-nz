@@ -1,0 +1,14 @@
+{
+  "schema_version": "archive-govt-nz.corpus-progress/v1",
+  "observed_at": "2026-09-05",
+  "scope": {"geographic_entities": 250, "supranational_entities": 1, "total_entities": 251},
+  "sources": {"named_sources": 41, "entities_without_named_sources": 212},
+  "coverage": {"entities_requiring_broader_discovery": 251, "complete_entities_verified": 0, "country_denominators_known": 0},
+  "public_payloads": {"approved_and_verified": ["ca-federal-atip"], "raw_sources_pending": ["us-federal-foia", "nz-fyi"]},
+  "limitations": [
+    "A named source is not a complete country capture.",
+    "The Canada package covers an institutional nil-return subset, not all ATI requests.",
+    "US and NZ raw payloads remain private pending source-specific review.",
+    "Donor ownership and scheduler cutover remain unchanged."
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "archive-govt-nz.metadata-disposition/v1",
+  "source_id": "nz-fyi",
+  "repo_id": "edithatogo/fyi-archive-nz",
+  "status": "metadata_only_private_raw",
+  "public_payload": false,
+  "metadata_fields_permitted": [
+    "source_id",
+    "source_url",
+    "capture_timestamp",
+    "package_schema_version",
+    "raw_object_count",
+    "attachment_reference_count",
+    "rights_status",
+    "privacy_status",
+    "takedown_status"
+  ],
+  "metadata_fields_excluded": [
+    "requester_identity",
+    "correspondence_body",
+    "attachment_content",
+    "personal_information",
+    "third_party_material"
+  ],
+  "candidate": {
+    "donor_run": "33307777685",
+    "manifest_sha256": "a78befb393cb011a2e672a78aac3a2ac30740a5ee27eabcbe4f60003947dd534",
+    "scope": "one retained donor request; not national coverage",
+    "raw_object_count": 2,
+    "attachment_reference_count": 0
+  },
+  "rights_status": "pending_source_specific_review",
+  "privacy_status": "pending_source_specific_review",
+  "takedown_status": "not_activated",
+  "next_gate": "attributable source-specific rights/privacy review before any payload publication"
+}

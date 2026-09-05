@@ -1,0 +1,20 @@
+{
+  "evidence_schema": "archive-govt-nz.source-discovery/v1",
+  "source_id": "bv-government-portal",
+  "entity_id": "BV",
+  "discovery_kind": "official_government_portal_metadata",
+  "observed_at": "2026-09-05",
+  "source_url": "https://www.npolar.no/en/themes/bouvet-island/",
+  "publisher": "Norwegian Polar Institute Bouvet Island information",
+  "public_metadata_observed": true,
+  "public_response_catalogue_observed": false,
+  "capture_performed": false,
+  "publication_approved": false,
+  "raw_upload_allowed": false,
+  "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+  "limitations": [
+    "This is an official government or administration portal candidate only; it is not evidence of a public FOI response archive.",
+    "No requests, responses, datasets, or raw records were downloaded or retained.",
+    "This discovery receipt does not establish completeness, rights, privacy, licence status, or a request denominator."
+  ]
+}

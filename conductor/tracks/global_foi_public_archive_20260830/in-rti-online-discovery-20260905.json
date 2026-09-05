@@ -1,0 +1,20 @@
+{
+  "evidence_schema": "archive-govt-nz.source-discovery/v1",
+  "source_id": "in-rti-online",
+  "entity_id": "IN",
+  "discovery_kind": "official_request_portal_metadata",
+  "observed_at": "2026-09-05",
+  "source_url": "https://rtionline.gov.in/",
+  "publisher": "Government of India",
+  "public_metadata_observed": true,
+  "public_response_catalogue_observed": false,
+  "capture_performed": false,
+  "publication_approved": false,
+  "raw_upload_allowed": false,
+  "next_action": "verify_public_disclosure_catalogue_or_annual_statistics",
+  "limitations": [
+    "The portal is a request-submission service, not evidence of a public response archive.",
+    "No request or response records were downloaded or retained.",
+    "This discovery receipt does not establish completeness, rights, privacy, or licence status."
+  ]
+}

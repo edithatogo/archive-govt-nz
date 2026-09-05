@@ -1,0 +1,37 @@
+{
+  "schema_version": "archive-govt-nz.ca-organisation-conformance/v1",
+  "observed_at": "2026-09-05",
+  "source_id": "ca-federal-atip",
+  "scope_id": "ca-federal-atip.nil-returns",
+  "status": "conformant_recapture_required",
+  "publication_eligible": false,
+  "allowlist": {
+    "expected_count": 162,
+    "expected_sha256": "6782abe38a0be0412bc5271c4a094dcfc12b4640b0bf25663518efc0043c10a2",
+    "materialized_rows": 162,
+    "materialized_sha256": "6782abe38a0be0412bc5271c4a094dcfc12b4640b0bf25663518efc0043c10a2",
+    "canonical_pair_hashes_tested": [
+      "33df4f9a6e445f219cb781d80aceb8d66efb0c55371ade2e9b6ff9e729cf0671",
+      "dfbe45b59aa700a160bfd8bcd9c210bc1bde02a3210b9aa155ca63a45f25a751",
+      "76e535acf9a3885570bf5f003caddc5c0bdc0f6d09e1d1ad7b407fef0916f5cd",
+      "b02e80affd0d9d97a14b6bba9c838b6cba6167bc09d0b934a62c92c69e54b21c"
+    ],
+    "result": "The current public ati-nil.csv contains the expected 162 organisation pairs and matches the reconciled live-source digest. The private pilot is an older revision and must be recaptured before any publication package is eligible."
+  },
+  "checks": {
+    "source_resource_exact": true,
+    "ogl_attribution_recorded": true,
+    "nil_return_schema_screen": true,
+    "personal_or_requester_fields_detected": false,
+    "organisation_id_title_allowlist_match": true,
+    "public_only_manifest_generated": false,
+    "anonymous_public_restore": false
+  },
+  "required_follow_up": [
+    "Recapture and preserve the reconciled live source revision.",
+    "Quarantine any missing, changed, ambiguous or non-institutional pair.",
+    "Generate a public-only manifest containing only ati-nil.csv, index.jsonl and manifest.json after the comparison passes.",
+    "Verify anonymous restore before any Hugging Face publication."
+  ],
+  "rights_boundary": "No raw publication, source activation or Hugging Face repository creation follows from this receipt."
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "archive-govt-nz.us-numeric-projection-review/v1",
+  "observed_at": "2026-09-05",
+  "source_id": "us-federal-foia",
+  "scope_id": "us-federal-foia.annual-statistics",
+  "source": {
+    "resource_url": "https://www.justice.gov/oip/media/1437156/dl?inline=",
+    "captured_bytes": 1071233,
+    "captured_sha256": "21f6de90200889dd74d412ffed33f0c683cf3e0ad19fd6b30387922499e1ca7f",
+    "recorded_private_sha256_match": true,
+    "raw_publication": false,
+    "raw_storage": "private"
+  },
+  "inspection": {
+    "nonempty_xml_text_elements": 7170,
+    "numeric_only_text_elements": 4598,
+    "numeric_field_names": 53,
+    "nonnumeric_text_elements_retained_private": 2572,
+    "nonnumeric_field_categories_observed": [
+      "CaseTitleText",
+      "DocumentDescriptionText",
+      "FootnoteText",
+      "OrganizationAbbreviationText",
+      "OrganizationName",
+      "OtherDenialReasonDescriptionText",
+      "ReliedUponStatuteInformationWithheldText",
+      "StatuteDescriptionText",
+      "TimeIncrementCode",
+      "OldItemReceiptDate",
+      "ResponseTimeLowestDaysCode",
+      "AppliedExemptionCode",
+      "NonExemptionDenialReasonCode"
+    ]
+  },
+  "candidate_projection": {
+    "status": "candidate_private_only",
+    "format": "jsonl",
+    "allowed_value_rule": "element text must match ^[-+]?[0-9]+(\\.[0-9]+)?$",
+    "allowed_fields": "the 53 observed numeric field local-names only",
+    "excluded": [
+      "complete annual-report.xml",
+      "all nonnumeric text and date values",
+      "case titles, organization names, statute descriptions, footnotes and codes",
+      "source and licence HTML"
+    ],
+    "public_upload": false,
+    "rights_approval": "not established",
+    "privacy_review": "field-level human review required",
+    "country_complete": false
+  },
+  "decision": "A numeric-only projection is technically reproducible from the captured source, but numeric appearance does not establish that field context is non-sensitive or licensed for redistribution. Keep both source XML and projection private pending accountable field-level review."
+}
