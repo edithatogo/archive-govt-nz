@@ -215,6 +215,28 @@ Creating or publishing a DOI remains an explicit external publication gate.
 
 ## Quality engineering
 
+### Offline RDF metadata validation — 2026-09-05
+
+Adopt RDFLib 7.6-compatible 7.x as a development-only parser for generated
+DCAT/PROV JSON-LD conformance fixtures. The standard library JSON decoder does
+not expand RDF predicates, distinguish literal/resource objects or validate
+typed graph interpretation. RDFLib provides that independent processor without
+adding a runtime graph database, network service, index or publication path.
+On Python 3.14 its required dependency is the already-used `pyparsing`; optional
+stores and HTTP extras are not selected. The release declares BSD-3-Clause and
+Python 3.14 support in its
+[package metadata](https://github.com/RDFLib/rdflib/blob/7.6.0/pyproject.toml).
+
+Tests feed only generated inline-context JSON through the explicit in-memory
+parser. External context/file/network access is denied during parsing and
+covered by negative tests, following the
+[upstream security guidance](https://rdflib.readthedocs.io/en/stable/security_considerations/).
+This is a scoped test guard, not a hostile-input operating-system sandbox or a
+general RDF ingestion API. No SPARQL endpoint or persistent store is configured.
+Lock, Python 3.14 compatibility, focused graph fixtures, vulnerability/licence
+audit, SBOM and full hosted assurance gate adoption. Parsing tests establish
+RDF interpretation, not source rights or an unimplemented application profile.
+
 ### Python
 
 - Ruff for formatting and linting.

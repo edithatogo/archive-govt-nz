@@ -47,6 +47,7 @@ dev = [
   "pytest-gremlins>=1.9.0,<2",
   "pytest-randomly>=3.16.0,<5",
   "pytest-xdist>=3.8.0",
+  "rdflib>=7.6.0,<8",
   "ruff>=0.16.1,<0.17",
   "scalene>=2.3.0",
   "syrupy>=5.0.0,<7",
