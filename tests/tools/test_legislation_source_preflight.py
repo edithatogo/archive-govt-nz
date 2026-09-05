@@ -29,6 +29,15 @@ if TYPE_CHECKING:
     from collections.abc import Callable, Iterator
 
 
+ENVIRONMENT_KEY = "LEGISLATION_API_KEY"
+SAMPLE_VALUE = "synthetic-value"
+
+
+def sample_environment() -> dict[str, str]:
+    """Build synthetic configuration without credential-shaped diagnostic literals."""
+    return {ENVIRONMENT_KEY: SAMPLE_VALUE}
+
+
 def client_for(handler: Callable[[httpx.Request], httpx.Response]) -> httpx.Client:
     """Make a synthetic transport that cannot access the network."""
     return httpx.Client(transport=httpx.MockTransport(handler), follow_redirects=True)
@@ -116,12 +125,12 @@ def test_run_retains_sanitized_success_and_failure(
     before = preflight.snapshot(state)
     receipt = tmp_path / "evidence/receipt.json"
     with client_for(lambda _: httpx.Response(200 if passed else 401)) as client:
-        code = preflight.run(state, receipt, client, {"LEGISLATION_API_KEY": "fake"})
+        code = preflight.run(state, receipt, client, sample_environment())
     result = json.loads(receipt.read_text())
     assert code == (0 if passed else 1)
     assert result["state_unchanged"] is True
     assert result["state_files_before"] == result["state_files_after"] == before
-    assert "fake" not in receipt.read_text()
+    assert SAMPLE_VALUE not in receipt.read_text()
 
 
 def test_run_detects_state_mutation(tmp_path: Path) -> None:
@@ -134,9 +143,8 @@ def test_run_detects_state_mutation(tmp_path: Path) -> None:
 
     receipt = tmp_path / "receipt.json"
     with client_for(handler) as client:
-        assert (
-            preflight.run(state, receipt, client, {"LEGISLATION_API_KEY": "fake"}) == 1
-        )
+        code = preflight.run(state, receipt, client, sample_environment())
+        assert code == 1
     assert json.loads(receipt.read_text())["state_unchanged"] is False
 
 
