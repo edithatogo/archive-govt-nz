@@ -68,10 +68,23 @@ def read_local_dcat(values: tuple[CanonicalPackageInput, ...]) -> DcatProjection
                 {
                     "@id": distribution_id,
                     "@type": "dcat:Distribution",
-                    "dct:format": "Apache Parquet",
+                    "dcat:mediaType": {
+                        "@id": (
+                            "https://www.iana.org/assignments/media-types/"
+                            "application/vnd.apache.parquet"
+                        ),
+                    },
                     "dcat:byteSize": {
                         "@value": str(product["bytes"]),
                         "@type": "xsd:nonNegativeInteger",
+                    },
+                    "spdx:checksum": {
+                        "@type": "spdx:Checksum",
+                        "spdx:algorithm": {"@id": "spdx:checksumAlgorithm_sha256"},
+                        "spdx:checksumValue": {
+                            "@value": product["payload_sha256"],
+                            "@type": "xsd:hexBinary",
+                        },
                     },
                 },
             ]
@@ -81,6 +94,7 @@ def read_local_dcat(values: tuple[CanonicalPackageInput, ...]) -> DcatProjection
             "dcat": "http://www.w3.org/ns/dcat#",
             "dct": "http://purl.org/dc/terms/",
             "xsd": "http://www.w3.org/2001/XMLSchema#",
+            "spdx": "http://spdx.org/rdf/terms#",
         },
         "@graph": sorted(nodes, key=lambda node: node["@id"]),
     }

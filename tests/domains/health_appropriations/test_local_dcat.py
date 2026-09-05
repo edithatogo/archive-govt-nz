@@ -60,10 +60,25 @@ def test_verified_recordsets_have_separate_distributions(
                 {
                     "@id": distribution_id,
                     "@type": "dcat:Distribution",
-                    "dct:format": "Apache Parquet",
+                    "dcat:mediaType": {
+                        "@id": (
+                            "https://www.iana.org/assignments/media-types/"
+                            "application/vnd.apache.parquet"
+                        ),
+                    },
                     "dcat:byteSize": {
                         "@value": str(product["bytes"]),
                         "@type": "xsd:nonNegativeInteger",
+                    },
+                    "spdx:checksum": {
+                        "@type": "spdx:Checksum",
+                        "spdx:algorithm": {"@id": "spdx:checksumAlgorithm_sha256"},
+                        "spdx:checksumValue": {
+                            "@value": hashlib.sha256(
+                                before[value.root / product["path"]]
+                            ).hexdigest(),
+                            "@type": "xsd:hexBinary",
+                        },
                     },
                 },
             ]
@@ -73,6 +88,7 @@ def test_verified_recordsets_have_separate_distributions(
             "dcat": "http://www.w3.org/ns/dcat#",
             "dct": "http://purl.org/dc/terms/",
             "xsd": "http://www.w3.org/2001/XMLSchema#",
+            "spdx": "http://spdx.org/rdf/terms#",
         },
         "@graph": sorted(expected, key=lambda node: node["@id"]),
     }

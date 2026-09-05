@@ -540,6 +540,10 @@ repository validation command. External gates block only their affected task.
 
 ### 7.1 Metadata and rights contracts first
 
+- [~] DCAT standards review: use the registered Parquet media-type IRI and
+  expose verified payload SHA256 values through typed SPDX checksum nodes;
+  independently compare graph digests with retained file bytes. [M-14; AC-14]
+
 - [~] Generate local DCAT recordset/distribution metadata only after original,
   raw and canonical package verification and projection equality. Retain exact
   physical-schema/fixity inventory; reject forged or altered inputs and do not

@@ -1,5 +1,52 @@
 # Run Log
 
+## Initial DCAT native assurance result — 2026-09-05 UTC
+
+The required `./scripts/validate.sh` on `c481b42d` terminated with exit 1:
+4,763 passed, five failed, nine warnings, 97.61% overall coverage, 507.73 seconds.
+Lock, Conductor (92 tracks), format, lint and typing passed. No DCAT test failed.
+The five failures were:
+
+- Union algebra: timing instability, 359.07 ms initially versus 1.78 ms replay.
+- Decimal/Arrow property: timing instability, 271.45 ms versus 105.87 ms.
+- Candidate inventory order: timing instability, 383.97 ms versus 0.07 ms.
+- URN property: slow input generation (seed 29962679333241180859575896216303019954).
+- MCP subprocess protocol: child exit exceeded the existing five-second timeout.
+
+Host load was observed at 87.95 during the run. This remains failed local
+assurance, not a waived gate. No deadline, health check or timeout was changed.
+The later isolated media/checksum correction is not validated by this earlier
+full run; fresh full/hosted checks remain required. The original run handle was
+followed through terminal exit before integration or another run.
+
+## DCAT standardized media/fixity review fix — 2026-09-05 UTC
+
+Isolated the correction from the still-running native gate at `c481b42d`.
+The new expected graph failed for historical, classification and Budget package
+kinds (3 failed, 20 deselected, 18.53 seconds). After implementation, the complete
+23-test suite passed in 22.85 seconds at 100% line/branch coverage. Ruff and
+formatting pass. Dependency setup and the original regression both completed;
+the initially quiet process was followed to its terminal result, not restarted.
+
+The corrected graph uses the registered Parquet media-type IRI and SPDX SHA256
+checksum with a typed hex value calculated by the existing verified reader.
+The regression derives its expectation directly from file bytes. Repeated
+mutation, typing and retained-source replay remain pending at this checkpoint;
+the earlier graph digest records remain valid evidence of the earlier revision.
+
+Corrected cold mutation then passed: 10/10 killed, zero survivors, timeouts,
+errors, pardons or cache hits in 146.26 seconds. Report SHA256
+`484e4fc612763b7b494cebc37b70d81b8ff8781f0096a8213de5c913972b0e3d`.
+Typing passed with zero errors/warnings/notes. The unchanged read-only replay
+script passed again with six dataset/distribution pairs and all 20 input files
+unchanged. New graph SHA256
+`3017b176fd35842a8b4cb5d1d168d809b53a3cd9c327aef15181225d0e73b1e1`;
+verification SHA256 remains
+`1ac8ea6a9214e9fe2873e9bc5f4e2c5f8f3312c0c0130e9273e58d88eaebfe77`.
+Corrected source SHA256
+`4197625f78425d62ddf32d10dc526ef56532f34604fa13d70f63d13214fe50ca`;
+test SHA256 `19e76d648fdaf0558648f308ee6ec5695e77d5fe197c224c9cb7fe3264470cf7`.
+
 ## Verified local DCAT generation — 2026-09-05 UTC
 
 Started from `c3504f92` in an isolated worktree, preserving the inventory PR's

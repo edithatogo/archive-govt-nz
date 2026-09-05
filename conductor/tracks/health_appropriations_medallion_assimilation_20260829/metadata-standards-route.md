@@ -55,6 +55,15 @@ identity digest; they identify snapshots, not a permanent cross-version concept.
 Exact byte counts use explicit `xsd:nonNegativeInteger` literals, consistent with
 [DCAT byte size](https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_byte_size).
 
+Standards review replaced the draft's free-text format with the
+[IANA Parquet media-type identifier](https://www.iana.org/assignments/media-types/application/vnd.apache.parquet),
+using `dcat:mediaType` as recommended for registered types. Each Distribution
+also exposes its already verified payload digest through `spdx:checksum`, an
+explicit SHA256 algorithm IRI and an `xsd:hexBinary` value, following
+[DCAT checksum semantics](https://www.w3.org/TR/vocab-dcat-3/#Class:Checksum).
+This is the retained Parquet file's hash, not the source workbook, metadata
+graph or package marker hash. Tests independently hash the fixture file bytes.
+
 The context is inline and does not fetch remote definitions. The graph contains
 no access/download URL, creator, publisher, licence, access-rights claim, release
 date or conformance assertion. Local retention is not public availability, and
