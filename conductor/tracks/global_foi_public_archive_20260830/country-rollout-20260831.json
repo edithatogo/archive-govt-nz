@@ -25,8 +25,10 @@
     },
     {
       "entity_id": "AF",
-      "source_ids": [],
-      "next_action": "discover_official_and_civic_sources",
+      "source_ids": [
+        "af-government-open-data"
+      ],
+      "next_action": "review_named_sources_and_discover_gaps",
       "broader_discovery_required": true,
       "country_denominator": null,
       "country_complete": false
@@ -192,8 +194,10 @@
     },
     {
       "entity_id": "BH",
-      "source_ids": [],
-      "next_action": "discover_official_and_civic_sources",
+      "source_ids": [
+        "bh-government-open-data"
+      ],
+      "next_action": "review_named_sources_and_discover_gaps",
       "broader_discovery_required": true,
       "country_denominator": null,
       "country_complete": false
@@ -256,8 +260,10 @@
     },
     {
       "entity_id": "BR",
-      "source_ids": [],
-      "next_action": "discover_official_and_civic_sources",
+      "source_ids": [
+        "br-cgu-transparency"
+      ],
+      "next_action": "review_named_sources_and_discover_gaps",
       "broader_discovery_required": true,
       "country_denominator": null,
       "country_complete": false
@@ -2100,6 +2106,39 @@
       "capture_evidence": "ae-government-open-data-discovery-20260905.json"
     },
     {
+      "source_id": "br-cgu-transparency",
+      "entity_id": "BR",
+      "publication_group": "restricted_or_unclear",
+      "group_is_candidate_only": true,
+      "next_action": "verify_publication_catalogue_and_disclosure_scope",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "br-transparency-discovery-20260905.json"
+    },
+    {
+      "source_id": "af-government-open-data",
+      "entity_id": "AF",
+      "publication_group": "restricted_or_unclear",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "af-government-open-data-discovery-20260905.json"
+    },
+    {
+      "source_id": "bh-government-open-data",
+      "entity_id": "BH",
+      "publication_group": "restricted_or_unclear",
+      "group_is_candidate_only": true,
+      "next_action": "verify_whether_portal_contains_a_public_disclosure_catalogue_or_only_general_open_data",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "bh-government-open-data-discovery-20260905.json"
+    },
+    {
       "source_id": "ar-derechoaldato",
       "entity_id": "AR",
       "publication_group": "mixed_correspondence",
@@ -2443,9 +2482,9 @@
   ],
   "summary": {
     "entities": 251,
-    "sources": 33,
+    "sources": 36,
     "entities_requiring_broader_discovery": 251,
-    "entities_without_named_sources": 220,
+    "entities_without_named_sources": 217,
     "public_raw_complete_countries_verified": 0
   }
 }

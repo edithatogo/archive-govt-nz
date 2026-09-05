@@ -1,0 +1,18 @@
+{
+  "schema_version": "archive-govt-nz.source-discovery/v1",
+  "observed_at": "2026-09-05T09:06:05+00:00",
+  "source_id": "bh-government-open-data",
+  "entity_id": "BH",
+  "source_type": "official_government_metadata_portal",
+  "url": "https://data.gov.bh/",
+  "observations": [
+    "The URL resolves to the Bahrain Government Open Data portal.",
+    "This is a discovery lead only; no FOI request, response, catalogue export, or raw payload was captured."
+  ],
+  "disposition": "candidate_only",
+  "rights_decision": "not_assessed",
+  "privacy_decision": "not_assessed",
+  "publication_approved": false,
+  "country_complete": false,
+  "next_action": "verify_whether_portal_contains_a_public_disclosure_catalogue_or_only_general_open_data"
+}
