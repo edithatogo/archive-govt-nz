@@ -1,5 +1,24 @@
 # Evidence
 
+## Merged RDF validation and bounded task reconciliation — 2026-09-05 UTC
+
+PR #401 merged at `c92c3d2f717b55537b5d338d430689125e95fa66` after all
+eight exact-head hosted checks passed on `f111dbf0d7148c13c9fa69caba86c5ebf0506c06`.
+GitHub readback confirmed the merge at 08:32:53Z; the merged tree equals the
+validated head. CI run `33955010646` passed Ubuntu, macOS and Windows assurance.
+The warm-up review thread was resolved after the tested explicit-plugin fix.
+
+The exact-head local `./scripts/validate.sh` also exited 0: 4,774 tests,
+15 retained warnings, 97.61% coverage, 48 schemas/38 representative documents,
+9/9 parity, all mutation lanes, hygiene, throughput and every supply-chain gate.
+The test stage took 122.08 seconds. Test SHA256:
+`0f642a6fb234bdd2a3271544fd877e1789ccda36d5a6cbec1559452763f30515`.
+
+Six bounded task checkboxes are reconciled against PRs #397, #398 and #401
+and this integrated full assurance. This does not complete historical source
+enumeration, the whole metadata/application-profile requirement, rights,
+publication, recovery, or track acceptance. The track remains in progress.
+
 ## Independent offline RDF interpretation — 2026-09-05 UTC
 
 Added development-only RDFLib 7.6.0, with no existing locked dependency version
@@ -606,3 +625,21 @@ supply-chain gates. The durable log hashes to
 This satisfies local assurance for the bounded structural registry; row-level
 validation, canonical projections, full Phase 3 completion and hosted delivery
 are not inferred from it. No existing source package or publication changed.
+## Analytical context register — 2026-09-05 UTC
+
+Added analytical-context-register.md as a read-only reconciliation of existing
+census records and source-specific profiles. It identifies exact CPI, QES, GDP
+and HLFS working-age objects, records the resident-population metadata lead
+without acquiring it, and keeps Crown-expense definitions source-specific. No
+Gold measure, rights decision, new capture or publication state changed.
+
+## Local provenance verifier reconciliation — 2026-09-05 UTC
+
+The read-only verifier task is implemented by the strict local provenance
+reader and its retained-source regression suite. It checks marker, original,
+raw-package and canonical-file fixity, recomputes pure projections, rejects
+altered or unexpected roots, and returns scoped verification evidence. The
+descriptor-only PROV helper remains assertion-only and still reports rights,
+approval and publication as unresolved. The exact Health full assurance on
+the merged follow-up passed 4,774 tests and all configured gates. This task
+does not complete Platinum metadata, rights, publication or the track.

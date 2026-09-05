@@ -175,6 +175,8 @@ they remain on one physical disk and are not independently replicated or public.
 - Corrected P1: unscoped queue snapshots could claim corpus completion. Empty
   and terminal-only state now reports unknown without a catalogue denominator.
 - Twenty-two focused tests pass with 100% module line and branch coverage.
-  Full and hosted validation remain pending; P5.4a remains in progress.
+  PR #395 subsequently merged after seven hosted checks passed; P5.4a is
+  reconciled complete. Full scheduled-monitor operation, corpus coverage and
+  external publication remain pending.
 
 PR #288 passed three-platform assurance, CodeQL and workflow checks. Live evidence verifies exact-parent conflict rejection, persistence across local and hosted processes, private capture completion without public credit, and unchanged authority during read-only hosted health. Source discovery, continuous acquisition, source eligibility, publisher enforcement, public raw restore and donor transfer remain open. The track stays in progress; local timeout and Windows correction receipts remain preserved. See shared-execution-deployment-20260831.json.

@@ -2,6 +2,18 @@
 
 This is read-only diagnosis, not implementation or publication success.
 
+## P5.4a bounded review-fix reconciliation — 2026-09-05
+
+PR #395 merged at c3504f920cfe20367687ee71668d8cf068709ab3. Live GitHub
+readback records seven successful hosted checks, including Ubuntu, macOS,
+Windows, CodeQL, workflow lint, Codecov and dependency review. The correction
+separates terminal control rehearsals from exhausted capture work, retains
+unknown corpus completion when no revision-bound catalogue denominator exists,
+and returns a nonzero monitor outcome for unpublished or otherwise actionable
+states. This completes the bounded P5.4a review fix only; P5.4 scheduled
+freshness evidence, country/source coverage, public publication, rights and
+cutover remain open.
+
 ## Private-network redirect correction — 2026-09-04
 
 Seven red regression cases demonstrated that capture URL safety was not
