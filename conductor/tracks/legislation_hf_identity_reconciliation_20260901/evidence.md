@@ -80,3 +80,7 @@ Monthly reconciliation explicitly selects the canonical slug and compares the se
 | Prompt 13 prerequisite | Successful exact run, signed-in GitHub artifact download with remote digest comparison, raw continuation/harvest/lineage/reconciliation receipts, and registry hash binding. |
 
 Dated live audit SHA-256: `ab4bf796bde6c323389a87869fac71a539f2638cffd25b1c1965adf69d9c6f38`. Operational prerequisite receipt SHA-256: `bcfa99bedd7b08bf6a4c079c08fe61c2a3d752210095c0476fb7b54df5cd9411`. These are verification additions; no external write was necessary.
+
+### Executed monthly metadata comparison
+
+The repository's `verify_public_publication_identities.py` returned `passed` against live canonical Hugging Face and Zenodo APIs. The exact `_compare_hosted_dataset` implementation then returned `consistent` with no mismatches against the v3 registry. `monthly-publication-readback-20260905.json` and `monthly-comparison-20260905.json` preserve that result. This explicitly resolves the earlier Prompt 10 external metadata comparison handoff for the selected published parent; no 904-record publication claim is added.
