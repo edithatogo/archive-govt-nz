@@ -51,8 +51,10 @@
     },
     {
       "entity_id": "AL",
-      "source_ids": [],
-      "next_action": "discover_official_and_civic_sources",
+      "source_ids": [
+        "al-idp-transparency"
+      ],
+      "next_action": "review_named_sources_and_discover_gaps",
       "broader_discovery_required": true,
       "country_denominator": null,
       "country_complete": false
@@ -1558,8 +1560,10 @@
     },
     {
       "entity_id": "QA",
-      "source_ids": [],
-      "next_action": "discover_official_and_civic_sources",
+      "source_ids": [
+        "qa-government-open-data"
+      ],
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
       "broader_discovery_required": true,
       "country_denominator": null,
       "country_complete": false
@@ -2491,13 +2495,35 @@
       "schedule_active": false,
       "publication_approved": false,
       "capture_evidence": "separate_pilot_receipt_required"
+    },
+    {
+      "source_id": "al-idp-transparency",
+      "entity_id": "AL",
+      "publication_group": "restricted_or_unclear",
+      "group_is_candidate_only": true,
+      "next_action": "verify_whether_portal_exposes_public_disclosure_catalogue",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "al-idp-transparency-discovery-20260905.json"
+    },
+    {
+      "source_id": "qa-government-open-data",
+      "entity_id": "QA",
+      "publication_group": "restricted_or_unclear",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "qa-government-open-data-discovery-20260905.json"
     }
   ],
   "summary": {
     "entities": 251,
-    "sources": 37,
+    "sources": 38,
     "entities_requiring_broader_discovery": 251,
-    "entities_without_named_sources": 216,
+    "entities_without_named_sources": 215,
     "public_raw_complete_countries_verified": 0
   }
 }

@@ -1,0 +1,18 @@
+{
+  "schema_version": "archive-govt-nz.source-discovery/v1",
+  "observed_at": "2026-09-05T09:30:00+00:00",
+  "source_id": "al-idp-transparency",
+  "entity_id": "AL",
+  "source_type": "official_information_rights_metadata_portal",
+  "url": "https://www.idp.al/",
+  "observations": [
+    "The URL is the official website of Albania's Commissioner for the Right to Information and Protection of Personal Data.",
+    "This is a discovery lead only; no requests, responses, catalogue export, or raw payload was captured."
+  ],
+  "disposition": "candidate_only",
+  "rights_decision": "not_assessed",
+  "privacy_decision": "not_assessed",
+  "publication_approved": false,
+  "country_complete": false,
+  "next_action": "verify_whether_the_portal_exposes_a_public_disclosure_catalogue_or_only_information_about_the_right_to_information"
+}
