@@ -194,6 +194,9 @@ The opt-in [exact normalization boundary](./recordset-normalization.md) converts
 decoded JSON rows into the eight Arrow shapes after local identity uniqueness,
 time-order and decimal/null consistency checks. It preserves unknown source
 context and does not substitute for source-specific semantic or lineage review.
+Bounded JSON-byte admission now rejects duplicate members and binary inputs;
+Arrow/Parquet readback reuses the same local invariants after exact metadata
+validation. File parsing/fixity and source-semantic promotion remain separate.
 
 The additive [record-set registry](./recordset-contracts.md) specifies eight
 versioned structural Arrow shapes without rewriting source-specific v1 tables.

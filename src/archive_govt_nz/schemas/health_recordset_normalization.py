@@ -8,10 +8,11 @@ mapping, formula freshness, source fixity or cross-record lineage closure.
 
 from __future__ import annotations
 
+import json
 import re
-from datetime import date, datetime
+from datetime import UTC, date, datetime
 from decimal import Decimal
-from typing import Any, cast
+from typing import Any, Never, cast
 
 import jsonschema
 import pyarrow as pa
@@ -24,6 +25,9 @@ _TIMESTAMP = re.compile(
     r"(?:\.[0-9]{1,6})?(?:[Zz]|[+-][0-9]{2}:[0-9]{2})"
 )
 _MAX_PRECISION = 38
+_MAX_ROWS = 100_000
+_MAX_BYTES = 8 * 1024 * 1024
+_ERROR = "health_recordset_normalization"
 
 
 def _require(condition: object) -> None:
@@ -67,6 +71,7 @@ def normalize_rows(
     rows: list[dict[str, Any]],
     *,
     version: str = "v1",
+    max_rows: int = _MAX_ROWS,
 ) -> pa.Table:
     """Return fresh typed rows without rounding, dropping or sorting records.
 
@@ -75,6 +80,8 @@ def normalize_rows(
     JSON decoding and duplicate JSON member detection belong to the caller.
     """
     schema = recordset_schema(name, version=version)
+    _require(type(max_rows) is int and max_rows >= 0)
+    _require(isinstance(rows, list) and len(rows) <= max_rows)
     validator = jsonschema.Draft202012Validator(
         recordset_json_schema(name, version=version),
         format_checker=jsonschema.FormatChecker(),
@@ -88,7 +95,14 @@ def normalize_rows(
         _require(bool(identifier.strip()) and identifier not in seen)
         seen.add(identifier)
         _require(_TIMESTAMP.fullmatch(row["observed_at"]) is not None)
-        row["observed_at"] = datetime.fromisoformat(row["observed_at"].upper())
+        # RFC 3339 -00:00 means an unknown local offset, not known UTC.
+        _require(not row["observed_at"].endswith("-00:00"))
+        try:
+            row["observed_at"] = datetime.fromisoformat(
+                row["observed_at"].upper()
+            ).astimezone(UTC)
+        except OverflowError:
+            raise ValueError(_ERROR) from None
         for field in ("valid_time_start", "valid_time_end"):
             if row[field] is not None:
                 row[field] = date.fromisoformat(row[field])
@@ -97,4 +111,81 @@ def normalize_rows(
         if "amount" in row:
             _number(row)
         converted.append(row)
-    return pa.Table.from_pylist(converted, schema=schema)
+    try:
+        return pa.Table.from_pylist(converted, schema=schema)
+    except UnicodeEncodeError, pa.ArrowException:
+        raise ValueError(_ERROR) from None
+
+
+def _unique_members(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    result: dict[str, Any] = {}
+    for key, value in pairs:
+        _require(key not in result)
+        result[key] = value
+    return result
+
+
+def _reject_constant(_value: str) -> Never:
+    raise ValueError(_ERROR)
+
+
+def normalize_json(
+    name: str,
+    payload: bytes,
+    *,
+    version: str = "v1",
+    max_bytes: int = _MAX_BYTES,
+    max_rows: int = _MAX_ROWS,
+) -> pa.Table:
+    """Normalize a bounded UTF-8 JSON array without binary/text heuristics.
+
+    Reject duplicate members at every depth, nonfinite constants, BOMs and
+    malformed UTF-8/JSON. No source format is inferred and no I/O occurs.
+    The byte budget bounds parsing; the row budget bounds Arrow conversion.
+    """
+    recordset_schema(name, version=version)
+    _require(type(max_bytes) is int and max_bytes > 0)
+    _require(isinstance(payload, bytes) and len(payload) <= max_bytes)
+    try:
+        rows = json.loads(
+            payload.decode("utf-8"),
+            object_pairs_hook=_unique_members,
+            parse_constant=_reject_constant,
+        )
+    except ValueError, RecursionError:
+        raise ValueError(_ERROR) from None
+    return normalize_rows(name, rows, version=version, max_rows=max_rows)
+
+
+def validate_table(
+    name: str,
+    table: pa.Table,
+    *,
+    version: str = "v1",
+    max_rows: int = _MAX_ROWS,
+    max_bytes: int = _MAX_BYTES,
+) -> None:
+    """Revalidate bounded Arrow or caller-decoded Parquet rows and metadata.
+
+    Exact schema equality includes metadata and nullability. Arrow's schema
+    alone does not enforce nonnull values or row constants. Readback here checks
+    those and the same numeric/time/ID invariants as JSON admission. Parquet
+    decoding, file bounds and fixity verification remain caller responsibilities.
+    """
+    schema = recordset_schema(name, version=version)
+    _require(type(max_rows) is int and max_rows >= 0)
+    _require(type(max_bytes) is int and max_bytes >= 0)
+    _require(isinstance(table, pa.Table))
+    _require(table.num_rows <= max_rows and table.nbytes <= max_bytes)
+    _require(table.schema.equals(schema, check_metadata=True))
+    try:
+        rows = table.to_pylist()
+    except OverflowError, pa.ArrowException:
+        raise ValueError(_ERROR) from None
+    for row in rows:
+        for field, value in row.items():
+            if isinstance(value, date):
+                row[field] = value.isoformat()
+            elif isinstance(value, Decimal):
+                row[field] = format(value, "f")
+    normalize_rows(name, rows, version=version, max_rows=max_rows)

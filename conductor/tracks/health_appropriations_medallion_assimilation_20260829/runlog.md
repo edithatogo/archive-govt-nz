@@ -2115,3 +2115,24 @@ with the parent. Global registry status stays in progress without edits.
 Local functional commit: `95a5638aaaecefc0761bb0e51797e8a71d8983a5`.
 The following bookkeeping commit records that SHA without rewriting history.
 Integrate both commits in order; retain the health registry's in-progress state.
+
+## 2026-09-05 — Phase 3.1 admission/readback continuation
+
+Continued at `a401858e` under explicit health-only ownership and no-concurrent-
+full-harness instructions. Added red contracts for `normalize_json` and
+`validate_table`; each first failed import with exit 2. Implemented bounded
+UTF-8 JSON admission, duplicate-member rejection, exact UTC conversion with
+unknown-offset/overflow rejection, redacted Arrow errors, and bounded typed
+readback using the same normalizer. Added all-eight-set context, nullability,
+metadata and version negative fixtures plus two-vintage Parquet replay.
+
+The final matrix passes 585 tests and reaches 100% line/branch coverage across
+108 normalization statements/26 branches and 100 format-inventory statements/
+26 branches. One existing SQLite ResourceWarning remains visible. Scoped Ruff
+format/lint and basedpyright pass. Commands, code/test hashes, observed red
+results and mutation recovery are in `normalization-admission-validation.json`.
+The final cold unfiltered one-worker mutation run passes 154 tests and kills
+107/107 mutants (72 normalization, 35 formats), with no other outcomes or cache
+hits. No full harness, source acquisition, rights decision or external write
+was performed. Existing source-profile negatives are mapped explicitly in
+`negative-fixture-matrix.md`; broad positive fixture qualification stays pending.

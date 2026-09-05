@@ -1043,3 +1043,18 @@ pass. All post-test assurance stages pass. No actionable in-scope finding
 remains. The original full-suite timing failures and interrupted retry remain
 in the receipt; combined full checks are explicitly assigned to the parent by
 the user, without suppressing or editing the unrelated failing tests.
+
+## 2026-09-05 — Admission/readback negative-fixture review
+
+Reviewed JSON bytes, typed Arrow/Parquet readback, metadata, nullability,
+precision, time and resource-bound failures. Exact schema equality does not
+substitute for row checks; unknown offsets and out-of-range UTC dates fail
+before a table is emitted. Binary inputs, duplicate members and invalid UTF-8
+receive fixed diagnostics. No public schema or source adapter is promoted.
+
+The existing source-profile negatives cover layouts, units, periods, lineage,
+formula/cache distinction and unsupported classification labels; their bounded
+scope is recorded instead of asserting universal source qualification. The
+original positive-fixture task and Phase 3 checkpoint stay pending. Final
+focused and cold mutation gates pass; no in-scope finding remains. Parent owns
+combined full validation. Global registry and main fixture files are unchanged.

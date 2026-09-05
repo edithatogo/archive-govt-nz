@@ -15,6 +15,9 @@ every planned record set, measure or operational workflow.
 
 ## Artifacts
 
+- [Negative-fixture matrix](./negative-fixture-matrix.md)
+- [JSON admission and readback validation](./normalization-admission-validation.json)
+
 - [Exact record-set normalization prerequisite](./recordset-normalization.md)
 - [Normalization validation receipt](./normalization-validation.json)
 

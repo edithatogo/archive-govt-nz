@@ -1,0 +1,63 @@
+{
+  "schema_version": "health-normalization-admission-validation/v1",
+  "base_commit": "a401858e42b631516e7b60c83f131989646ded08",
+  "status": "focused_and_mutation_passed_combined_full_gate_owned_by_parent",
+  "recorded_at": "2026-09-05T14:44:16Z",
+  "source_sha256": {
+    "normalization": "e675e1680a6d7aa8159bf5c2cf68e542d0cd9b675b7e92766524a76688104116",
+    "formats": "1dd9bca786d6a79413fd3e271ef4c0f5ca96c24028597af2bec519e9403ac5d7"
+  },
+  "test_sha256": {
+    "normalization": "85d8e3573d39556db2645c82570c1622e94181b01b019446a348381645d3df22",
+    "sqlite_inventory": "09084034f756560b5084d0608dcb0f1982f2cdaa2531e33351faea1c4f47aca0"
+  },
+  "requirements": ["M-03", "M-05", "M-06", "M-07", "M-18"],
+  "red": {
+    "normalize_json": "ImportError for unimplemented entrypoint, pytest exit 2",
+    "validate_table": "ImportError for unimplemented entrypoint, pytest exit 2",
+    "sqlite_inventory": {"tests_failed": 6, "tests_passed": 3, "exit_code": 1}
+  },
+  "focused": {
+    "environment": {"COVERAGE_CORE": "ctrace", "PYTHON_JIT": "0"},
+    "command": ["uv", "run", "--locked", "pytest", "tests/schemas/test_health_recordset_normalization.py", "tests/schemas/test_health_recordset_json.py", "tests/schemas/test_health_recordsets.py", "tests/domains/health_appropriations/test_sqlite_inventory.py", "tests/domains/health_appropriations/test_inventory.py", "tests/domains/health_appropriations/test_workbook_parts.py", "tests/domains/health_appropriations/test_formula_cache.py", "tests/domains/health_appropriations/test_workbook_bounds.py", "tests/domains/health_appropriations/test_workbook_census.py", "tests/domains/health_appropriations/test_budget.py", "tests/domains/health_appropriations/test_forecast.py", "tests/domains/health_appropriations/test_historical.py", "tests/domains/health_appropriations/test_budget_classification.py", "tests/domains/health_appropriations/test_budget_projection.py", "tests/domains/health_appropriations/test_historical_projection.py", "tests/domains/health_appropriations/test_moh_indicators.py", "-q", "--cov=archive_govt_nz.schemas.health_recordset_normalization", "--cov=archive_govt_nz.domains.health_appropriations.formats", "--cov-branch", "--cov-report=term-missing"],
+    "exit_code": 0,
+    "tests_passed": 585,
+    "warnings": 1,
+    "statements": 208,
+    "branches": 52,
+    "line_and_branch_coverage_percent": 100,
+    "final_rerun_after_test_isolation_fix": true
+  },
+  "cold_mutation": {
+    "command": ["uv", "run", "--locked", "pytest", "tests/schemas/test_health_recordset_normalization.py", "tests/domains/health_appropriations/test_sqlite_inventory.py", "tests/domains/health_appropriations/test_inventory.py", "tests/domains/health_appropriations/test_workbook_parts.py", "tests/domains/health_appropriations/test_formula_cache.py", "tests/domains/health_appropriations/test_workbook_bounds.py", "tests/domains/health_appropriations/test_workbook_census.py", "-q", "--gremlins", "--gremlin-targets=src/archive_govt_nz/schemas/health_recordset_normalization.py,src/archive_govt_nz/domains/health_appropriations/formats.py", "--gremlin-workers=1", "--gremlin-clear-cache", "--gremlin-no-coverage-filter", "--strict-pardons", "--max-pardons=0", "--gremlin-report=console,json"],
+    "environment": {"COVERAGE_CORE": "ctrace", "PYTHON_JIT": "0"},
+    "exit_code": 0,
+    "tests_passed": 154,
+    "total": 107,
+    "killed": 107,
+    "normalization_killed": 72,
+    "formats_killed": 35,
+    "survived": 0,
+    "timeouts": 0,
+    "errors": 0,
+    "pardoned": 0,
+    "cache_hits": 0,
+    "report_sha256": "db18de9ef8be7567313d97f91896b859731fd4d77c9702d3d774614b000d71ed"
+  },
+  "mutation_recovery": {
+    "first_combined_exit_code": 3,
+    "reason": "SQLite connection spy intercepted coverage-tool connect(check_same_thread=...) calls",
+    "repair": "replace only formats.sqlite3 namespace with a scoped connection spy",
+    "failed_run_counted_as_mutation_evidence": false
+  },
+  "boundaries": {
+    "full_harness_run": false,
+    "combined_full_gate_owner": "parent_after_integration",
+    "source_payloads_used": false,
+    "main_fixtures_edited": false,
+    "global_registry_edited": false,
+    "rights_decisions_made": false,
+    "push_merge_or_publication": false,
+    "whole_health_track_complete": false
+  }
+}

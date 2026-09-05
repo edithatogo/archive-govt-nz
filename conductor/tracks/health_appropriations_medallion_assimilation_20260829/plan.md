@@ -220,6 +220,13 @@ repository validation command. External gates block only their affected task.
 
 ### 3.1 Schema contracts first
 
+- [x] Harden exact normalization admission with bounded UTF-8 JSON arrays,
+  duplicate-member rejection, representable UTC timestamps and redacted Arrow
+  failures; extend all-eight-set negative and Parquet replay fixtures.
+  [M-05, M-06, M-18; AC-05, AC-16]
+  Also revalidate already-decoded Arrow/Parquet rows against exact schema
+  metadata and local invariants. See `normalization-admission-validation.json`.
+
 - [x] Add an opt-in exact JSON-to-Arrow normalization boundary and synthetic
   eight-recordset contracts for duplicate IDs, time ordering, null reasons and
   declared decimal precision. Preserve unknown units and rights verbatim;
@@ -249,12 +256,21 @@ repository validation command. External gates block only their affected task.
   `health_appropriations` record sets, versioning, stable IDs, fixed-precision
   money, null reasons, units, vintages, bitemporal fields, rights and lineage.
   [M-05, M-06, M-18; AC-05, AC-16]
-- [ ] Add negative fixtures for binary-as-text decoding, unknown layouts,
+- [x] Add negative fixtures for binary-as-text decoding, unknown layouts,
   ambiguous units, duplicate keys, incompatible periods, missing lineage,
   formula/cached-value ambiguity and unjustified classification mappings.
   [M-05, M-06, M-07, M-18; AC-05, AC-11, AC-16]
+  Covered for the existing bounded source profiles by new admission/readback
+  negatives plus existing source-layout/lineage/mapping contracts; see
+  `negative-fixture-matrix.md`. This does not qualify additional source families.
 
 ### 3.2 Implement the domain and adapter protocol
+
+- [~] Harden the existing read-only SQLite inventory adapter for URI-sensitive
+  source paths and quoted table identifiers; prove originals and neighboring
+  files remain unchanged and missing paths are not created. This is structural
+  inventory only, not row normalization or donor parity completion.
+  [M-03, M-07, M-18; AC-02, AC-03, AC-16]
 
 - [x] Project reviewed Budget-2025/2026 facts into canonical appropriation
   fields, composing existing unmapped source-label occurrences and complete

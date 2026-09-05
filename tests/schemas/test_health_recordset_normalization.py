@@ -1,5 +1,6 @@
 """Synthetic normalization contracts complement main's transport fixtures."""
 
+import json
 from copy import deepcopy
 from decimal import Decimal, localcontext
 from io import BytesIO
@@ -11,7 +12,11 @@ import pytest
 from hypothesis import given
 from hypothesis import strategies as st
 
-from archive_govt_nz.schemas.health_recordset_normalization import normalize_rows
+from archive_govt_nz.schemas.health_recordset_normalization import (
+    normalize_json,
+    normalize_rows,
+    validate_table,
+)
 from archive_govt_nz.schemas.health_recordsets import RECORDSETS, recordset_schema
 
 
@@ -144,4 +149,180 @@ def test_decimal_context_cannot_round_values(coefficient: int) -> None:
         context.prec = 2
         assert (
             normalize_rows("fiscal_context_fact", [row])["amount"][0].as_py() == amount
+        )
+
+
+@pytest.mark.parametrize("name", tuple(RECORDSETS))
+def test_json_byte_replay_preserves_order_and_context(name: str) -> None:
+    """Byte admission retains two vintages and all nullable source context."""
+    rows = [row_for(name), row_for(name)]
+    rows[0].update(record_id="z", source_vintage="older", quality_flags=["é", None])
+    rows[1].update(record_id="a", source_vintage="newer", rights_state="restricted")
+    payload = json.dumps(rows, ensure_ascii=False).encode()
+    table = normalize_json(name, payload, max_bytes=len(payload), max_rows=2)
+    assert table.equals(normalize_rows(name, rows), check_metadata=True)
+    assert table["record_id"].to_pylist() == ["z", "a"]
+    assert table["source_vintage"].to_pylist() == ["older", "newer"]
+    assert table["rights_state"].to_pylist() == ["not_evaluated", "restricted"]
+    stream = BytesIO()
+    pq.write_table(table, stream)
+    stream.seek(0)
+    assert pq.read_table(stream).equals(table, check_metadata=True)
+    with pytest.raises(ValueError, match="health_recordset_normalization"):
+        normalize_json(name, payload, max_bytes=len(payload) - 1)
+    with pytest.raises(ValueError, match="health_recordset_normalization"):
+        normalize_json(name, payload, max_rows=1)
+
+
+@pytest.mark.parametrize(
+    "payload",
+    [
+        b'[{"record_id":"one","record_id":"two"}]',
+        b'[{"nested":{"key":1,"key":2}}]',
+        b'[{"value":NaN}]',
+        b'[{"value":Infinity}]',
+        b'[{"value":-Infinity}]',
+        b"{",
+        b"{}",
+        b"null",
+        b'"text"',
+        b"PK\x03\x04\xff",
+        b"%PDF-1.7",
+        b"SQLite format 3\x00",
+        b"\xff",
+        b"\xef\xbb\xbf[]",
+        b"[" * 2000,
+    ],
+)
+def test_json_invalid_and_binary_inputs_are_redacted(payload: bytes) -> None:
+    """Do not repair duplicate keys, nonfinite values, BOMs or binary sources."""
+    with pytest.raises(ValueError, match=r"^health_recordset_normalization$"):
+        normalize_json("source_inventory", payload)
+
+
+@pytest.mark.parametrize(
+    "limits",
+    [
+        {"max_bytes": 0},
+        {"max_bytes": -1},
+        {"max_bytes": True},
+        {"max_rows": -1},
+        {"max_rows": True},
+        {"max_rows": 1.5},
+    ],
+)
+def test_json_limit_configuration_is_strict(limits: dict[str, Any]) -> None:
+    """Invalid bounds are rejected even for empty arrays."""
+    with pytest.raises(ValueError, match="health_recordset_normalization"):
+        normalize_json("source_inventory", b"[]", **limits)
+
+
+@pytest.mark.parametrize(
+    "stamp",
+    [
+        "2026-01-01T00:00:00-00:00",
+        "0001-01-01T00:00:00+01:00",
+        "9999-12-31T23:59:59-01:00",
+    ],
+)
+def test_unknown_offset_and_utc_overflow_rejected(stamp: str) -> None:
+    """Never turn an unknown offset into UTC or emit unreadable UTC dates."""
+    row = row_for("source_inventory")
+    row["observed_at"] = stamp
+    with pytest.raises(ValueError, match=r"^health_recordset_normalization$"):
+        normalize_rows("source_inventory", [row])
+
+
+@pytest.mark.parametrize("name", tuple(RECORDSETS))
+def test_arrow_invalid_unicode_is_redacted(name: str) -> None:
+    """JSON permits escaped lone surrogates; Arrow UTF-8 cannot represent them."""
+    row = row_for(name)
+    row["source_locator"] = "secret-\ud800"
+    with pytest.raises(ValueError, match=r"^health_recordset_normalization$"):
+        normalize_rows(name, [row])
+
+
+@pytest.mark.parametrize("name", tuple(RECORDSETS))
+@pytest.mark.parametrize("field", ["lineage_id", "source_vintage", "rights_state"])
+def test_missing_context_rejected_for_every_recordset(name: str, field: str) -> None:
+    """Required lineage/vintage/rights slots cannot disappear in transport."""
+    row = row_for(name)
+    del row[field]
+    with pytest.raises(ValueError, match="health_recordset_normalization"):
+        normalize_rows(name, [row])
+
+
+def test_zero_row_budget_and_wrong_input_container() -> None:
+    """Zero rows are legitimate; text is never auto-decoded by the byte API."""
+    assert normalize_json("source_inventory", b"[]", max_rows=0).num_rows == 0
+    with pytest.raises(ValueError, match="health_recordset_normalization"):
+        normalize_rows("source_inventory", [row_for("source_inventory")], max_rows=0)
+    with pytest.raises(ValueError, match="health_recordset_normalization"):
+        normalize_json("source_inventory", "[]")  # type: ignore[arg-type]
+
+
+@pytest.mark.parametrize("name", tuple(RECORDSETS))
+def test_arrow_parquet_readback_revalidates_rows(name: str) -> None:
+    """Stored column types alone cannot establish row constants or nullability."""
+    table = normalize_rows(name, [row_for(name)])
+    validate_table(name, table, max_rows=1, max_bytes=table.nbytes)
+    stream = BytesIO()
+    pq.write_table(table, stream)
+    stream.seek(0)
+    restored = pq.read_table(stream)
+    validate_table(name, restored)
+    for field, value in (("schema_version", "unknown"), ("lineage_id", None)):
+        index = table.schema.get_field_index(field)
+        bad = table.set_column(
+            index, table.schema.field(field), pa.array([value], type=pa.string())
+        )
+        with pytest.raises(ValueError, match="health_recordset_normalization"):
+            validate_table(name, bad)
+    for bad in (table.replace_schema_metadata({}), table.drop(["rights_state"])):
+        with pytest.raises(ValueError, match="health_recordset_normalization"):
+            validate_table(name, bad)
+    with pytest.raises(ValueError, match="health_recordset_normalization"):
+        validate_table(name, table, max_bytes=table.nbytes - 1)
+    with pytest.raises(ValueError, match="health_recordset_normalization"):
+        validate_table(name, table, max_rows=0)
+
+
+def test_arrow_dates_and_empty_tables() -> None:
+    """Date conversion preserves explicit endpoints and empty valid schemas."""
+    row = row_for("fiscal_context_fact")
+    row.update(valid_time_start="2025-01-01", valid_time_end="2025-12-31")
+    validate_table("fiscal_context_fact", normalize_rows("fiscal_context_fact", [row]))
+    empty = normalize_rows("source_inventory", [])
+    validate_table("source_inventory", empty, max_bytes=0, max_rows=0)
+    invalid_limits: tuple[dict[str, Any], ...] = (
+        {"max_bytes": -1},
+        {"max_bytes": True},
+        {"max_rows": -1},
+        {"max_rows": True},
+    )
+    for limits in invalid_limits:
+        with pytest.raises(ValueError, match="health_recordset_normalization"):
+            validate_table("source_inventory", empty, **limits)
+
+
+def test_arrow_conversion_error_is_redacted() -> None:
+    """Raw Arrow diagnostics must not expose sensitive values on conversion."""
+    table = normalize_rows("source_inventory", [row_for("source_inventory")])
+    field = table.schema.field("observed_at")
+    broken = table.set_column(
+        table.schema.get_field_index("observed_at"),
+        field,
+        pa.array([2**63 - 1], type=field.type),
+    )
+    with pytest.raises(ValueError, match=r"^health_recordset_normalization$"):
+        validate_table("source_inventory", broken)
+
+
+def test_additional_entrypoints_reject_unknown_versions() -> None:
+    """Empty inputs cannot bypass version selection."""
+    with pytest.raises(KeyError):
+        normalize_json("source_inventory", b"[]", version="future")
+    with pytest.raises(KeyError):
+        validate_table(
+            "source_inventory", normalize_rows("source_inventory", []), version="future"
         )

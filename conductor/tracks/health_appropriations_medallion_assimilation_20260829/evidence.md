@@ -623,3 +623,12 @@ after 1,553 passes on the user's parent-harness coordination instruction.
 Combined full validation is delegated to the parent after integration; this is
 not a full-harness pass or whole Phase 3 completion claim. The global registry,
 main's pending schema fixtures and all other worktrees remain unedited.
+
+## 2026-09-05 — Bounded admission and readback negatives
+
+[Paired validation](./normalization-admission-validation.json) records 585
+focused tests, 100% coverage across both changed modules, and all 107 cold
+mutants killed. The [negative-fixture matrix](./negative-fixture-matrix.md)
+closes the negative-fixture task for existing bounded profiles. Full combined
+checks remain assigned to the parent; broad positive semantic qualification,
+source/parity/promotion and whole-track completion remain pending.
