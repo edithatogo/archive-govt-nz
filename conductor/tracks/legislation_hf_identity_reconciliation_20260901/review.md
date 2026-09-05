@@ -17,3 +17,7 @@ The 2026-09-03 superseding receipt records the accountable authorization and ind
 No fourth dataset identity, blanket relicensing claim, Zenodo change, historical identity mutation, or Prompt 13 success claim is introduced. The publication portion of Prompt 15 is complete. The overall track remains in progress because Prompt 13 operational proof is still a named prerequisite.
 
 PR review identified two valid fail-closed gaps. The approval receipt now includes a stable decision identifier and source plus exact candidate, state, package, and permitted-file bindings. Conditional schema constraints and negative tests prevent the canonical selected-state approval from being copied to either preserved identity, and prevent the canonical published state from silently reverting to an unapproved status.
+
+## Closeout review in progress — 2026-09-05
+
+The superseding registry and evidence must preserve the published parent versus operational continuation boundary. Raw run receipts are byte-preserved, versioned schemas retain historical contracts, and negative schema tests reject a completed registry with false or malformed operational proof. Live public readback independently re-hashed the 71,776,346-byte package. Full validation and exact-head hosted checks remain required before issue closure.

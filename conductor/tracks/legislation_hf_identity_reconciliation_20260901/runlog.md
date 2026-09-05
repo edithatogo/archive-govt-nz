@@ -24,3 +24,13 @@
   bind role, origin metadata, mutability, and gating. The readback test also
   independently pins the authorized `metadata.json` path, 1,450-byte size, and
   SHA-256. All 15 registry tests and all 48 schemas/38 documents pass.
+
+## 2026-09-05 — Operational prerequisite reconciliation
+
+Fresh target main: `f2669f1ce6ae48f3e09387608acbb8c58aa20334`. Donor remains archived at redirect head `905f9e07c17af9d9d25dbe2b1c052fb8a290a4e3`; final operational donor remains `b40587f1b1aec7356a0f623916fcc8212397d283`. No audited baseline SHA was supplied by Prompt 15.
+
+Downloaded run 33800180992 sanitized attempt artifact 9911101072 again; exact ZIP SHA-256 matched the hosted digest. Preserved five original JSON receipt byte streams and bound their hashes to the dated operational prerequisite receipt. Independent anonymous Hugging Face audit confirms unchanged revisions and durable package fixity. No remote dataset write was performed.
+
+Red test run: 11 failed and 4 passed because the new v3 schema and successful prerequisite receipt did not yet exist. Added a superseding schema, preserving v1/v2. The registry now records operational proof while retaining the published 552-record state. Pending full validation and hosted checks; no terminal closeout claimed.
+
+First full harness: 4,706 passed, six timing/health-check failures, 97.58% coverage. Failed attempt is preserved in `validation-attempt-01-20260905.json`; unchanged serial rerun and two-worker harness follow. No thresholds or test selection weakened.
