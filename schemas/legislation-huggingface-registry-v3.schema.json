@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://archive-govt-nz.example/schemas/legislation-huggingface-registry-v2.schema.json",
+  "$id": "https://archive-govt-nz.example/schemas/legislation-huggingface-registry-v3.schema.json",
   "title": "Legislation Hugging Face published identity registry",
   "type": "object",
   "additionalProperties": false,
@@ -14,7 +14,7 @@
   ],
   "properties": {
     "schema_version": {
-      "const": "archive-govt-nz.legislation-huggingface-registry/v2"
+      "const": "archive-govt-nz.legislation-huggingface-registry/v3"
     },
     "origin": {
       "type": "object",
@@ -128,7 +128,8 @@
         "durable_package_revision",
         "metadata_revision",
         "readback_receipt_path",
-        "readback_receipt_sha256"
+        "readback_receipt_sha256",
+        "prompt13_receipt_path"
       ],
       "properties": {
         "status": {
@@ -141,7 +142,7 @@
           "const": "2026-09-03"
         },
         "prompt13_operational_proof": {
-          "const": false
+          "const": true
         },
         "prompt13_receipt_sha256": {
           "$ref": "#/$defs/sha256"
@@ -193,6 +194,9 @@
             }
           ],
           "items": false
+        },
+        "prompt13_receipt_path": {
+          "const": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/hosted-closeout-20260906/500-work-target-revalidation.json"
         }
       }
     },
@@ -202,7 +206,54 @@
       "maxItems": 3,
       "items": {
         "$ref": "#/$defs/identity"
-      }
+      },
+      "allOf": [
+        {
+          "contains": {
+            "type": "object",
+            "required": [
+              "slug"
+            ],
+            "properties": {
+              "slug": {
+                "const": "edithatogo/corpus-legislation-nz"
+              }
+            }
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "required": [
+              "slug"
+            ],
+            "properties": {
+              "slug": {
+                "const": "edithatogo/corpus-legislation-nz-historical"
+              }
+            }
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "required": [
+              "slug"
+            ],
+            "properties": {
+              "slug": {
+                "const": "edithatogo/nz-legislation-corpus"
+              }
+            }
+          },
+          "minContains": 1,
+          "maxContains": 1
+        }
+      ]
     }
   },
   "$defs": {

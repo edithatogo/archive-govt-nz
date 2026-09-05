@@ -1,5 +1,5 @@
 {
-  "schema_version": "archive-govt-nz.legislation-huggingface-registry/v2",
+  "schema_version": "archive-govt-nz.legislation-huggingface-registry/v3",
   "origin": {
     "authority_repository": "edithatogo/archive-govt-nz",
     "target_commit": "ff01566b5e6fff2f4e2b5f93ecdec11bb0c3c7e8",

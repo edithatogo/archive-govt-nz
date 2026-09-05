@@ -4,11 +4,14 @@
 
 The registry's false operational-proof flag and original blocked receipt digest
 were stale after verified ordered execution. The registry now binds the
-superseding receipt by path and SHA-256. The v2 schema permits state progression
-and requires the named receipt when the proof flag is true; negative fixtures
-reject omitted and redirected evidence. Historical v1 and original receipts are
-preserved. The regression first failed on the old digest, then all 17 focused
-registry tests passed with the correction.
+superseding receipt by path and SHA-256. The v3 schema requires verified proof,
+the named receipt, and exactly one of each governed identity. Historical v1/v2
+schemas remain byte-unchanged. The first correction passed 17 focused tests;
+subsequent review reproduced seven failures for duplicate identities and false
+proof. Adopting the existing v3 proposal with the newer independently verified
+receipt path resolves all seven; 26 focused tests now pass. Missing or redirected
+evidence is rejected. Neither version progression nor operational acceptance
+grants publication authority.
 
 Fresh anonymous readback verified the exact revisions/access states of all
 three identities and all four authorized canonical files, including the full

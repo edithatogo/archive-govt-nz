@@ -146,7 +146,7 @@
       }
     },
     "donor_tag": {
-      "endpoint": "repos/edithatogo/corpus-legislation-nz/git/tags/cdd6a397a96773c06519e2e86bbe7a606b26bd58",
+      "endpoint_path_parts": ["repos", "edithatogo", "corpus-legislation-nz", "git", "tags", "cdd6a397a96773c06519e2e86bbe7a606b26bd58"],
       "response_sha256": "8b1a7c6a04509ae0318c934a18e3feba71d33171c69ca454ba4b3ffd53d7019b",
       "value": {
         "sha": "cdd6a397a96773c06519e2e86bbe7a606b26bd58",
@@ -227,7 +227,7 @@
       ]
     },
     "33968519628/jobs": {
-      "endpoint": "repos/edithatogo/archive-govt-nz/actions/runs/33968519628/jobs",
+      "endpoint_path_parts": ["repos", "edithatogo", "archive-govt-nz", "actions", "runs", "33968519628", "jobs"],
       "response_sha256": "13fb690bf52f39b6e76c2b237ab57fc75547b13f6e4f8fe3b355784f1cf2c9b4",
       "value": [
         {

@@ -37,7 +37,7 @@
     "parity_passed": 9,
     "repository_mutation_stages": "passed",
     "hygiene_and_cas_benchmark": "passed",
-    "audit_licenses_secrets_sbom": "passed",
+    "audit_licenses_secrets_sbom_passed": true,
     "sbom_components": 112
   },
   "cold_mutation": {

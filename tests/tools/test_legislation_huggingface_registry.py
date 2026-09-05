@@ -12,7 +12,7 @@ import pytest
 from jsonschema import Draft202012Validator, ValidationError
 
 ROOT = Path(__file__).resolve().parents[2]
-SCHEMA_PATH = ROOT / "schemas/legislation-huggingface-registry-v2.schema.json"
+SCHEMA_PATH = ROOT / "schemas/legislation-huggingface-registry-v3.schema.json"
 REGISTRY_PATH = ROOT / "config/legislation/huggingface-publication-registry.json"
 EVIDENCE_ROOT = ROOT / "evidence/migrations/corpus-legislation-nz"
 
@@ -30,6 +30,30 @@ def test_registry_schema_and_document_are_valid() -> None:
     schema = _load(SCHEMA_PATH)
     Draft202012Validator.check_schema(schema)
     Draft202012Validator(schema).validate(_load(REGISTRY_PATH))
+
+
+@pytest.mark.parametrize("invalid", [False, "true", None])
+def test_completed_registry_rejects_unverified_proof(invalid: object) -> None:
+    """The completed contract cannot silently downgrade its prerequisite."""
+    registry = copy.deepcopy(_load(REGISTRY_PATH))
+    registry["publication_gate"]["prompt13_operational_proof"] = invalid
+    with pytest.raises(ValidationError):
+        Draft202012Validator(_load(SCHEMA_PATH)).validate(registry)
+
+
+@pytest.mark.parametrize("duplicate", [0, 1, 2])
+@pytest.mark.parametrize("changed_revision", [False, True])
+def test_registry_rejects_duplicate_slugs(
+    duplicate: int, *, changed_revision: bool
+) -> None:
+    """Different revisions must not disguise a missing governed identity."""
+    registry = copy.deepcopy(_load(REGISTRY_PATH))
+    item = copy.deepcopy(registry["identities"][duplicate])
+    if changed_revision:
+        item["observed_revision"] = "a" * 40
+    registry["identities"][(duplicate + 1) % 3] = item
+    with pytest.raises(ValidationError):
+        Draft202012Validator(_load(SCHEMA_PATH)).validate(registry)
 
 
 @pytest.mark.parametrize("receipt_path", [None, "unverified.json"])
