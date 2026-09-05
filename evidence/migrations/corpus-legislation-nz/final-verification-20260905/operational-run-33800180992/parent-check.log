@@ -1,0 +1,2 @@
+PASS: independently downloaded state is valid sealed continuation parent
+PASS: tampered CAS rejected: VerificationError object_sha256

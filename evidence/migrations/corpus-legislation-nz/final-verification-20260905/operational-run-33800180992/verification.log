@@ -1,0 +1,62 @@
+{
+  "roots": {
+    "manifest_sha256": "eb1afcd85d8135604d86f8b23b438e8ecc96a6e944a790758770746a64e2d6f2",
+    "manifest_file_sha256": "0f5511dacbd5a674ccdd4c91e6b3974ce405207b87b08f33a6df95e57e495eae",
+    "checkpoint_file_sha256": "0b7faaefad7191eaa0f2e27db36cfd49ea209a3b266cd573a180ee4cf1c6d4d3",
+    "inventory_sha256": "9ca6dc505f991e015c6c997827878d8c7e9381b214a1544eb338328a285c6894",
+    "cas_root_sha256": "ed93a3f7cddac8f6bc938f1005f47cfe4c309707b34b3a511cc3b66fedb47a40",
+    "success_receipt_sha256": "7368c93fb37a5ab4fe41f790002ff4e4ffc78fdcca5b61f26e0ca63292a64b41"
+  },
+  "cas_count": 904,
+  "manifest_records": 904,
+  "checkpoint_processed_ids": 552,
+  "lineage_sha256": "b4e08770f7acfc4e545b882825f0f55ed0433b5d9acac72e10d7bbd6f17113d3",
+  "continuation_sha256": "f950516c731a41a2a01e636024fb3d30ee19951d7dcdc49da0ceee2836272ab9",
+  "harvest_summary": {
+    "schema_version": "archive-govt-nz.legislation-harvest-receipt/v3",
+    "candidate_works_discovered": 500,
+    "works_in_scope": 500,
+    "works_attempted": 500,
+    "newly_preserved": 0,
+    "changed_preserved": 352,
+    "unchanged_revalidated": 148,
+    "already_processed_skipped": 0,
+    "unavailable": 0,
+    "partial": 0,
+    "failed": 0,
+    "total_state_records_before": 552,
+    "total_state_records_after": 904,
+    "total_cas_objects_before": 552,
+    "total_cas_objects_after": 904,
+    "scope_digests": {
+      "resolved": "2abf0d8b76cc60e9b4e442724987b81848698dbdd98e56266f8726d468b33eaf"
+    },
+    "parent_manifest_root": "877ba501a25570a29c1aada7979562d8c62c7f043865125cf402310eabc09544",
+    "parent_checkpoint_root": "8afab0cb245c8b0f4c6e42c7d2c863a0f58e99f7c6bded70a1582b2be1a4cbf7",
+    "output_manifest_root": "eb1afcd85d8135604d86f8b23b438e8ecc96a6e944a790758770746a64e2d6f2",
+    "output_checkpoint_root": "0b7faaefad7191eaa0f2e27db36cfd49ea209a3b266cd573a180ee4cf1c6d4d3",
+    "software_commit": "95d5e0959158df3e5f816b012b66049135ff3d54",
+    "workflow_identity": "Exact inventory legislation revalidation",
+    "run_identity": "33800180992",
+    "state_commit_status": "committed",
+    "state_commit": "0b7faaefad7191eaa0f2e27db36cfd49ea209a3b266cd573a180ee4cf1c6d4d3",
+    "total_retry_count": 0,
+    "state_record_delta": 352,
+    "cas_object_delta": 352
+  },
+  "environment": {
+    "python": "3.14.6",
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O"
+  },
+  "software_commit": "f2669f1ce6ae48f3e09387608acbb8c58aa20334",
+  "checks": [
+    "all three artifact API digests and sizes",
+    "successful primary run and jobs",
+    "strict state path validation",
+    "904 physical CAS hashes and no orphan/missing objects via target_state",
+    "semantic manifest and persisted checkpoint roots",
+    "500 exact governed seed IDs and balanced accounting",
+    "continuation and parent lineage schemas and hashes",
+    "authenticated run and software identity"
+  ]
+}
