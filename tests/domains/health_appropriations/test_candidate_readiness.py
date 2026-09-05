@@ -192,7 +192,9 @@ def test_incomplete_rights_row_fails_before_path_reconciliation(
     rights_path = tmp_path / "metadata/rights.json"
     rights_path.write_text('{"resources":[{"path":"original/source.csv"}]}\n')
     manifest = json.loads((tmp_path / "MANIFEST.json").read_text())
-    record = next(row for row in manifest["files"] if row["path"] == "metadata/rights.json")
+    record = next(
+        row for row in manifest["files"] if row["path"] == "metadata/rights.json"
+    )
     payload = rights_path.read_bytes()
     record.update(bytes=len(payload), sha256=hashlib.sha256(payload).hexdigest())
     rendered = json.dumps(manifest, sort_keys=True).encode()
