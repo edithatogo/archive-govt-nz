@@ -1152,17 +1152,22 @@ def test_cli_preflight_and_success(
         P.context_from_environment()
 
 
-@given(st.permutations(["manifest.json", "checkpoint.json", "receipts/harvest.json"]))
-@settings(suppress_health_check=[HealthCheck.function_scoped_fixture])
-def test_archive_order_does_not_change_roots(tmp_path: Path, names: list[str]) -> None:
+def test_archive_order_does_not_change_roots(tmp_path: Path) -> None:
     """Archive member order cannot affect authenticated state or CAS roots."""
     ref, _, raw = fixture(tmp_path / "in")
-    files = P.unpack(raw)
-    entries: list[tuple[str | zipfile.ZipInfo, bytes]] = [
-        (name, files.pop(name)) for name in names
-    ]
-    entries.extend(files.items())
-    assert P.state_roots(P.unpack(fixtures.zip_bytes(entries))) == ref["roots"]
+
+    @given(
+        st.permutations(["manifest.json", "checkpoint.json", "receipts/harvest.json"])
+    )
+    def exercise(names: list[str]) -> None:
+        files = P.unpack(raw)
+        entries: list[tuple[str | zipfile.ZipInfo, bytes]] = [
+            (name, files.pop(name)) for name in names
+        ]
+        entries.extend(files.items())
+        assert P.state_roots(P.unpack(fixtures.zip_bytes(entries))) == ref["roots"]
+
+    exercise()
 
 
 @given(st.binary(min_size=1, max_size=64))

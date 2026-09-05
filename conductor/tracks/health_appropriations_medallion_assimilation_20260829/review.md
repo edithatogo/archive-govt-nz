@@ -1,5 +1,19 @@
 # Self-Review
 
+## Validation fixture isolation — 2026-09-05 UTC
+
+The local two-worker run on `68c952de` failed two existing property deadlines
+(4,743 passed, two failed). Both properties recreate invariant source fixtures
+inside the timed body. The correction constructs those fixtures once, outside
+nested generated examples. It keeps archive unpack/reorder/root checks timed,
+preserves all union assertions and strategies, and gives each algebra example
+fresh records and checkpoint state. No deadline or production behavior changed.
+The 162-test register/parent-state/merge selection passes; Conductor validates
+92 tracks and targeted typing, Ruff and formatting pass. The first formatting
+check found a long nested decorator; formatting corrected it. Full local and
+hosted validation of the correction remain pending. Neither historical coverage
+nor operational/rights/publication acceptance is promoted by this test fix.
+
 ## Historical register stable-identity correction — 2026-09-05 UTC
 
 M-02 review found that the new rows had locators but lacked explicit stable

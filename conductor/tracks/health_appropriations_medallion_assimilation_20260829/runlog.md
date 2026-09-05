@@ -1,5 +1,21 @@
 # Run Log
 
+## Full-gate timing findings — 2026-09-05 UTC
+
+The two-worker full gate on `68c952de` terminated with exit 1: 4,743 passed,
+two failed, nine warnings, 97.61% coverage in 691.14 seconds. Archive-order
+invariance exceeded its 200-ms deadline at 426.71 ms; union algebra exceeded
+it at 401.61 ms and replayed at 95.95 ms. These are failed local assurance,
+not a pass. After fast-forwarding to stable-ID correction `e028f20c`, both
+properties and the register regression passed in isolation (3 tests, 6.85 s).
+
+Review moved invariant fixture construction outside the two generated property
+bodies. Archive unpacking, reordering, root verification, per-example record
+and checkpoint copies, and every algebra assertion remain inside the property.
+The original strategies and default deadlines remain unchanged; the obsolete
+function-scoped-fixture suppression is removed from the nested archive property.
+Fresh focused and hosted checks are required for this test-only correction.
+
 ## Stable source-ID review fix — 2026-09-05 UTC
 
 Prepared in an isolated worktree while the two-worker full gate continued on

@@ -149,36 +149,41 @@ def test_cli_and_entrypoint(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> 
     assert exc.value.code == 1
 
 
-@given(st.lists(st.integers(min_value=1, max_value=8), min_size=1, max_size=12))
-def test_union_algebra(numbers: list[int]) -> None:
+def test_union_algebra() -> None:
     """Union is order independent, idempotent, retains versions and shared CAS."""
     f = fixtures._fixture(1)  # noqa: SLF001
     template = f["records"][0]
     digest = template["raw_cas_hash_sha256"]
     data = f["files"][fixtures.CAS + digest[:2] + "/" + digest]
-    parents = []
-    for n in numbers:
-        record = copy.deepcopy(template)
-        record["manifestation_id"] = record["manifestation_id"].replace(
-            "2001-01-01", f"2001-01-{n:02d}"
-        )
-        record["canonical_uri"] = record["manifestation_id"]
-        record["expression_id"] = record["expression_id"].replace(
-            "2001-01-01", f"2001-01-{n:02d}"
-        )
-        parents.append(
-            {
-                "manifest": {"records": [record]},
-                "checkpoint": f["docs"]["checkpoint"],
-                "objects": {digest: data},
-            }
-        )
-    merged = M.canonical_merge(parents)
-    assert merged == M.canonical_merge(list(reversed(parents)))
-    assert merged == M.canonical_merge([merged, merged])
-    assert merged["manifest"]["total_records"] == len(set(numbers))
-    assert len(merged["objects"]) == 1
-    assert len(merged["versions_by_work"][template["work_id"]]) == len(set(numbers))
+
+    @given(st.lists(st.integers(min_value=1, max_value=8), min_size=1, max_size=12))
+    def exercise(numbers: list[int]) -> None:
+        checkpoint = copy.deepcopy(f["docs"]["checkpoint"])
+        parents = []
+        for n in numbers:
+            record = copy.deepcopy(template)
+            record["manifestation_id"] = record["manifestation_id"].replace(
+                "2001-01-01", f"2001-01-{n:02d}"
+            )
+            record["canonical_uri"] = record["manifestation_id"]
+            record["expression_id"] = record["expression_id"].replace(
+                "2001-01-01", f"2001-01-{n:02d}"
+            )
+            parents.append(
+                {
+                    "manifest": {"records": [record]},
+                    "checkpoint": checkpoint,
+                    "objects": {digest: data},
+                }
+            )
+        merged = M.canonical_merge(parents)
+        assert merged == M.canonical_merge(list(reversed(parents)))
+        assert merged == M.canonical_merge([merged, merged])
+        assert merged["manifest"]["total_records"] == len(set(numbers))
+        assert len(merged["objects"]) == 1
+        assert len(merged["versions_by_work"][template["work_id"]]) == len(set(numbers))
+
+    exercise()
 
 
 @pytest.mark.parametrize(

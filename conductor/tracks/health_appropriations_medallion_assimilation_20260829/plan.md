@@ -83,6 +83,9 @@ repository validation command. External gates block only their affected task.
   schemas. [M-02, M-11; AC-03, AC-09]
   Historical scope and unresolved editions are recorded in
   `historical-source-register.json`; link discovery does not establish capture.
+- [~] Review fix: isolate invariant legislation fixtures from generated archive
+  ordering and union-algebra examples; retain all strategies, deadlines and
+  semantic assertions, then verify full assurance. [M-18; AC-16]
 - [~] Review fix: give historical discovery rows stable URL-derived source IDs
   and verify uniqueness without substituting locator identity for byte fixity.
 - [ ] Enumerate the exact official CPI, QES wage, population, GDP and Crown
