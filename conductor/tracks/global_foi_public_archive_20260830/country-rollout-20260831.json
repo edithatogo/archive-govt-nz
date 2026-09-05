@@ -2521,9 +2521,9 @@
   ],
   "summary": {
     "entities": 251,
-    "sources": 38,
+    "sources": 39,
     "entities_requiring_broader_discovery": 251,
-    "entities_without_named_sources": 215,
+    "entities_without_named_sources": 214,
     "public_raw_complete_countries_verified": 0
   }
 }
