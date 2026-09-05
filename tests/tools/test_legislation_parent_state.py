@@ -414,19 +414,30 @@ def v3_harvest(files: dict[str, bytes]) -> bytes:
     )
 
 
-def test_legacy_adoption_and_continuation(tmp_path: Path) -> None:
+@pytest.mark.parametrize(
+    "workflow", [WORKFLOW, ".github/workflows/exact-inventory.yml"]
+)
+@pytest.mark.parametrize("attempt", [1, 2])
+def test_legacy_adoption_and_continuation(
+    tmp_path: Path, workflow: str, attempt: int
+) -> None:
     """Promotion precedes acquisition; sealing binds complete child and parent."""
     ref, meta, raw = fixture(tmp_path / "in")
     paths = {"output": tmp_path / "state", "quarantine": tmp_path / "q"}
-    result = P.restore(request(ref), paths, client(meta, raw), "synthetic", NOW)
+    req = request(ref)
+    req["context"].update(workflow=workflow, run_attempt=attempt)
+    req["authority"]["scope"]["workflow"] = workflow
+    result = P.restore(req, paths, client(meta, raw), "synthetic", NOW)
     assert result["status"] == "verified"
     lineage = P.v.load((paths["output"] / P.LINEAGE).read_bytes())
     P.check_lineage(lineage)
     assert lineage["parent"]["artifact"]["digest"] == ref["artifact"]["digest"]
     # Synthetic typed no-change receipt; no source request is made.
     restored = P.read_state(paths["output"])
-    (paths["output"] / "receipts/harvest.json").write_bytes(v3_harvest(restored))
-    complete = P.seal(paths["output"], CONTEXT, paths["quarantine"])
+    harvest = P.v.load(v3_harvest(restored))
+    harvest["workflow_identity"] = workflow
+    (paths["output"] / "receipts/harvest.json").write_bytes(P.M.encoded(harvest))
+    complete = P.seal(paths["output"], req["context"], paths["quarantine"])
     assert complete["parent_lineage_sha256"] == result["parent_lineage_sha256"]
     files = P.read_state(paths["output"])
     sealed = fixtures.zip_bytes(list(files.items()))
@@ -434,13 +445,21 @@ def test_legacy_adoption_and_continuation(tmp_path: Path) -> None:
     next_ref["roots"] = complete["roots"]
     next_ref["lineage_sha256"] = P.v.sha(files[P.SEAL])
     next_ref["state_schemas"] = copy.deepcopy(P.VERSIONS)
+    next_ref["workflow"]["path"] = meta["run"]["path"] = workflow
+    next_ref["run"]["run_attempt"] = meta["run"]["run_attempt"] = attempt
+    if workflow == ".github/workflows/exact-inventory.yml":
+        next_ref["artifact"]["name"] = (
+            f"legislation-exact-inventory-state-101-{attempt}"
+        )
     next_ref["artifact"].update(
         size_in_bytes=len(sealed), digest="sha256:" + P.v.sha(sealed)
     )
     meta["artifact"].update(next_ref["artifact"])
     next_paths = {"output": tmp_path / "child", "quarantine": tmp_path / "q2"}
+    child_request = request(next_ref, "continuation")
+    child_request["context"].update(workflow=workflow, run_id=102)
     result = P.restore(
-        request(next_ref, "continuation"),
+        child_request,
         next_paths,
         client(meta, sealed),
         "synthetic",
@@ -450,6 +469,7 @@ def test_legacy_adoption_and_continuation(tmp_path: Path) -> None:
     history = next_paths["output"] / P.HISTORY / (P.v.sha(files[P.LINEAGE]) + ".json")
     assert history.read_bytes() == files[P.LINEAGE]
     continuation = P.v.load((next_paths["output"] / P.LINEAGE).read_bytes())
+    P.check_lineage(continuation)
     continuation["parent_reference_sha256"] = "b" * 64
     with pytest.raises(P.v.VerificationError, match="lineage_parent_hash"):
         P.check_lineage(continuation)
@@ -529,6 +549,100 @@ def test_artifact_run_binding(tmp_path: Path, field: str) -> None:
     meta["artifact"]["workflow_run"][field] = "wrong"
     with pytest.raises(P.v.VerificationError):
         P.check_metadata(ref, meta, NOW)
+
+
+@pytest.mark.parametrize("run_id", [101, 202])
+@pytest.mark.parametrize("attempt", [1, 3])
+def test_exact_workflow_bound_artifact_name(
+    tmp_path: Path, run_id: int, attempt: int
+) -> None:
+    """The expected name is derived from the pinned run and its live attempt."""
+    ref, meta, _ = fixture(tmp_path)
+    ref["workflow"]["path"] = meta["run"]["path"] = (
+        ".github/workflows/exact-inventory.yml"
+    )
+    ref["run"]["id"] = meta["run"]["id"] = run_id
+    meta["artifact"]["workflow_run"]["id"] = run_id
+    ref["run"]["run_attempt"] = meta["run"]["run_attempt"] = attempt
+    ref["artifact"]["name"] = meta["artifact"]["name"] = (
+        f"legislation-exact-inventory-state-{run_id}-{attempt}"
+    )
+    P.schema(ref, "legislation-parent-reference")
+    P.check_metadata(ref, meta, NOW)
+
+
+@pytest.mark.parametrize(
+    ("workflow", "name"),
+    [
+        (WORKFLOW, "legislation-exact-inventory-state-101-1"),
+        (".github/workflows/exact-inventory.yml", "legislation-state-101"),
+        (
+            ".github/workflows/exact-inventory.yml",
+            "legislation-exact-inventory-state-102-1",
+        ),
+        (
+            ".github/workflows/exact-inventory.yml",
+            "legislation-exact-inventory-state-101-2",
+        ),
+        (
+            ".github/workflows/exact-inventory.yml",
+            "legislation-exact-inventory-state-101",
+        ),
+        (
+            ".github/workflows/exact-inventory.yml",
+            "legislation-exact-inventory-attempt-101-1",
+        ),
+        (
+            ".github/workflows/exact-inventory.yaml",
+            "legislation-exact-inventory-state-101-1",
+        ),
+    ],
+)
+def test_workflow_bound_artifact_name(tmp_path: Path, workflow: str, name: str) -> None:
+    """Even mutually matching pins and metadata must bind producer, run and attempt."""
+    ref, meta, _ = fixture(tmp_path)
+    ref["workflow"]["path"] = meta["run"]["path"] = workflow
+    ref["artifact"]["name"] = meta["artifact"]["name"] = name
+    with pytest.raises(P.v.VerificationError, match="artifact_run_name"):
+        P.check_metadata(ref, meta, NOW)
+
+
+@pytest.mark.parametrize(
+    "name",
+    [
+        "legislation-state-101",
+        "legislation-exact-inventory-state-101",
+        "legislation-exact-inventory-state-101-0",
+        "legislation-exact-inventory-state-101-01",
+        "legislation-exact-inventory-state-0-1",
+        "legislation-exact-inventory-attempt-101-1",
+        "legislation-exact-inventory-state-101-1-extra",
+    ],
+)
+def test_exact_name_schema_boundaries(tmp_path: Path, name: str) -> None:
+    """Standalone and embedded reference schemas enforce the same bounded names."""
+    ref, _, _ = fixture(tmp_path)
+    ref["workflow"]["path"] = ".github/workflows/exact-inventory.yml"
+    ref["artifact"]["name"] = "legislation-exact-inventory-state-101-1"
+    standalone = P.v.load(
+        (P.ROOT / "schemas/legislation-parent-reference-v1.schema.json").read_bytes()
+    )
+    lineage = P.v.load(
+        (P.ROOT / "schemas/legislation-parent-lineage-v1.schema.json").read_bytes()
+    )
+    embedded = lineage["properties"]["parent"]["anyOf"][0]
+    assert embedded == {
+        k: v for k, v in standalone.items() if k not in {"$id", "$schema"}
+    }
+    for definition in (standalone, embedded):
+        validator = P.Draft202012Validator(definition)
+        assert validator.is_valid(ref)
+        invalid = copy.deepcopy(ref)
+        invalid["artifact"]["name"] = name
+        assert not validator.is_valid(invalid)
+        invalid = copy.deepcopy(ref)
+        invalid["workflow"]["path"] = WORKFLOW
+        assert not validator.is_valid(invalid)
 
 
 def test_expiry_and_run_name(tmp_path: Path) -> None:
@@ -1440,6 +1554,10 @@ def test_future_lanes_use_explicit_workflow_pins(tmp_path: Path, workflow: str) 
     ref, meta, raw = fixture(tmp_path / "in")
     ref["workflow"]["path"] = workflow
     meta["run"]["path"] = workflow
+    if workflow == ".github/workflows/exact-inventory.yml":
+        ref["artifact"]["name"] = meta["artifact"]["name"] = (
+            "legislation-exact-inventory-state-101-1"
+        )
     req = request(ref)
     req["context"]["workflow"] = workflow
     req["authority"]["scope"]["workflow"] = workflow
