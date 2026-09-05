@@ -1,5 +1,16 @@
 # Self-Review
 
+## Historical source register — 2026-09-05 UTC
+
+Reviewed all six locators against their official linked edition pages and the
+30-year denominator against Treasury's historical index. No workbook digest,
+byte count, licence approval, capture or completeness state is inferred from
+a filename, page label, printed size, or web-reader error. All editions remain
+pending full enumeration, including 2024's separate forecast-file discovery.
+Existing donor objects, census observations and published candidates are
+unchanged. The executable register test guards these boundaries; full local
+and hosted assurance remain pending. No phase or track closeout is claimed.
+
 ## Health domain registration reconciliation — 2026-09-04 UTC
 
 The immutable Arrow registry exposes the dedicated `health_appropriations`

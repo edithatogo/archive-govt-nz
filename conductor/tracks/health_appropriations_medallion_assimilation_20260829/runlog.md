@@ -1,5 +1,20 @@
 # Run Log
 
+## Historical source enumeration — 2026-09-05 UTC
+
+Recorded the Treasury index's 30 Budget editions (1997–2026) and six observed
+2024 annual/BEFU/HYEFU workbook locators in `historical-source-register.json`.
+All editions retain pending full-enumeration status. This additive observation
+does not modify the earlier source census, imply byte identity with donor
+files, or grant capture/publication credit. A direct index request returned
+403 and was not retried; read-only web metadata retrieval supplied the cited
+observations. Workbook inspection was unsupported by the web reader.
+
+The register regression failed first on the absent artifact, then passed.
+Ruff, formatting and native Conductor validation (92 tracks, zero errors)
+passed; locked dependencies were installed in the isolated worktree. Full
+repository validation is pending. Phase 1.2 and the track remain in progress.
+
 ## Optional graph/vector evaluation — 2026-09-04
 
 - Re-read C-01/C-02, W-07, the Platinum design, and the existing generic
