@@ -625,9 +625,6 @@ supply-chain gates. The durable log hashes to
 This satisfies local assurance for the bounded structural registry; row-level
 validation, canonical projections, full Phase 3 completion and hosted delivery
 are not inferred from it. No existing source package or publication changed.
-@@
- # Evidence
-
 ## Analytical context register — 2026-09-05 UTC
 
 Added analytical-context-register.md as a read-only reconciliation of existing
