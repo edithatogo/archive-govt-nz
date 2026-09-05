@@ -278,3 +278,16 @@ PR #272 hosted Ubuntu passed 2,048 tests, 96.84 percent coverage and mutation st
   work remains a healthy incomplete corpus. Eighteen focused tests, Ruff and
   basedpyright passed. This advances P5.4 but does not prove scheduled freshness,
   notification delivery or complete worldwide acquisition.
+
+## 2026-09-03 — Catalogue phase acceptance validator
+
+Added a deterministic fail-closed validator and CLI for Phase 2 accounting.
+Forty-nine focused catalogue/discovery/phase tests pass, plus formatting, lint
+and strict typing. The current reviewed catalogue is structurally valid at 251
+entities, 30 sources and 42 jurisdictions, but returns exit 2 and `blocked`:
+all 251 entities still require broader discovery, 223 have no named source and
+zero countries are verified complete. This advances P2.4 validation machinery;
+it does not satisfy P2.2/P2.3 or manufacture worldwide completeness.
+The exact branch then passed the full local harness: 4,655 tests, 97.50%
+coverage, all schema/parity/mutation and supply-chain gates, and a validated
+111-component SBOM. Hosted exact-head checks remain separate.
