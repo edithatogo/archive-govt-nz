@@ -1629,6 +1629,18 @@ passed: 4,239 tests / 97.3804% coverage / all supply-chain gates. Incoming main3
 ledger prefix is preserved. See [full receipts](./budget-reader-bounds.md).
 No original/package/HF bytes were changed.
 
+## 2026-09-03 — Local candidate release-readiness verification
+
+Added a read-only verifier that binds the exact candidate manifest, checks the
+closed file set and every file hash/size, rejects symlinks and unsafe paths,
+requires the health dataset identity and pending-approval state, reconciles
+every included original to a complete rights row, and rejects incomplete source
+dispositions. A separately hash-pinned assurance receipt must match the exact
+candidate and 40-character code revision, passed parity/recovery outcomes and a
+bounded UTC freshness window. Sixteen red/green tests, formatting, lint and
+strict typing pass. This closes the negative-test contract only; no upload or
+remote mutation is performed.
+
 ## 2026-09-03 — Exclusive local Budget canonical export
 
 - Implemented the reviewed `budget-canonical-export-proposal.md` as a separate
