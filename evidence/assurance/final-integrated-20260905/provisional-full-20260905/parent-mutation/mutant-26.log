@@ -1,0 +1,53 @@
+........................................................................ [ 66%]
+...........................F
+=================================== FAILURES ===================================
+____________________ test_legacy_adoption_and_continuation _____________________
+
+tmp_path = PosixPath('/private/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/pytest-of-doughnut/pytest-4805/test_legacy_adoption_and_conti0')
+
+    def test_legacy_adoption_and_continuation(tmp_path: Path) -> None:
+        """Promotion precedes acquisition; sealing binds complete child and parent."""
+        ref, meta, raw = fixture(tmp_path / "in")
+        paths = {"output": tmp_path / "state", "quarantine": tmp_path / "q"}
+        result = P.restore(request(ref), paths, client(meta, raw), "synthetic", NOW)
+        assert result["status"] == "verified"
+        lineage = P.v.load((paths["output"] / P.LINEAGE).read_bytes())
+        P.check_lineage(lineage)
+        assert lineage["parent"]["artifact"]["digest"] == ref["artifact"]["digest"]
+        # Synthetic typed no-change receipt; no source request is made.
+        restored = P.read_state(paths["output"])
+        (paths["output"] / "receipts/harvest.json").write_bytes(v3_harvest(restored))
+        complete = P.seal(paths["output"], CONTEXT, paths["quarantine"])
+        assert complete["parent_lineage_sha256"] == result["parent_lineage_sha256"]
+        files = P.read_state(paths["output"])
+        sealed = fixtures.zip_bytes(list(files.items()))
+        next_ref = copy.deepcopy(ref)
+        next_ref["roots"] = complete["roots"]
+        next_ref["lineage_sha256"] = P.v.sha(files[P.SEAL])
+        next_ref["state_schemas"] = copy.deepcopy(P.VERSIONS)
+        next_ref["artifact"].update(
+            size_in_bytes=len(sealed), digest="sha256:" + P.v.sha(sealed)
+        )
+        meta["artifact"].update(next_ref["artifact"])
+        next_paths = {"output": tmp_path / "child", "quarantine": tmp_path / "q2"}
+        result = P.restore(
+            request(next_ref, "continuation"),
+            next_paths,
+            client(meta, sealed),
+            "synthetic",
+            NOW,
+        )
+        assert result["status"] == "verified"
+        history = next_paths["output"] / P.HISTORY / (P.v.sha(files[P.LINEAGE]) + ".json")
+        assert history.read_bytes() == files[P.LINEAGE]
+        continuation = P.v.load((next_paths["output"] / P.LINEAGE).read_bytes())
+        continuation["parent_reference_sha256"] = "b" * 64
+>       with pytest.raises(P.v.VerificationError, match="lineage_parent_hash"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE VerificationError
+
+tests/tools/test_legislation_parent_state.py:454: Failed
+=========================== short test summary info ============================
+FAILED tests/tools/test_legislation_parent_state.py::test_legacy_adoption_and_continuation
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 99 passed in 2.04s

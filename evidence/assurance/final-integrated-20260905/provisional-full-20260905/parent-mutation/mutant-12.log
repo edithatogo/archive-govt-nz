@@ -1,0 +1,39 @@
+..............................................................F
+=================================== FAILURES ===================================
+______________________ test_archive_bombs_and_structures _______________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10bf2c150>
+
+    def test_archive_bombs_and_structures(monkeypatch: pytest.MonkeyPatch) -> None:
+        """Reject empty, duplicate, symlink, encrypted and expansion-abuse archives."""
+        with pytest.raises(P.v.VerificationError, match="member_count"):
+            P.unpack(fixtures.zip_bytes([]))
+        with pytest.warns(UserWarning, match="Duplicate"):
+            duplicate = fixtures.zip_bytes(
+                [("manifest.json", b"{}"), ("manifest.json", b"{}")]
+            )
+        with pytest.raises(P.v.VerificationError, match="duplicate_member"):
+            P.unpack(duplicate)
+        info = zipfile.ZipInfo("manifest.json")
+        info.external_attr = (stat.S_IFLNK | 0o777) << 16
+        with pytest.raises(P.v.VerificationError, match="member_type"):
+            P.unpack(fixtures.zip_bytes([(info, b"x")]))
+        raw = fixtures.zip_bytes([("manifest.json", b"x")])
+        encrypted = bytearray(raw)
+        struct.pack_into("<H", encrypted, encrypted.index(b"PK\x01\x02") + 8, 1)
+        with pytest.raises(P.v.VerificationError, match="member_type"):
+            P.unpack(bytes(encrypted))
+        compressed = io.BytesIO()
+        with zipfile.ZipFile(compressed, "w", compression=zipfile.ZIP_DEFLATED) as z:
+            z.writestr("manifest.json", b"x" * 100000)
+        with pytest.raises(P.v.VerificationError, match="expansion_ratio"):
+            P.unpack(compressed.getvalue())
+>       with pytest.raises(P.v.VerificationError, match="documents_missing"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE VerificationError
+
+tests/tools/test_legislation_parent_state.py:648: Failed
+=========================== short test summary info ============================
+FAILED tests/tools/test_legislation_parent_state.py::test_archive_bombs_and_structures
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 62 passed in 5.35s

@@ -1,0 +1,27 @@
+............F
+=================================== FAILURES ===================================
+_________ test_durable_download_rejects_wrong_outer_fixity[size_bytes] _________
+
+field = 'size_bytes'
+
+    @pytest.mark.parametrize("field", ["sha256", "size_bytes"])
+    def test_durable_download_rejects_wrong_outer_fixity(field: str) -> None:
+        """Reject wrong public package sizes and hashes before inner parsing."""
+        reference = durable_reference()
+        reference["durable"][field] = "0" * 64 if field == "sha256" else 8
+        with (
+            httpx.Client(
+                transport=httpx.MockTransport(
+                    lambda _: httpx.Response(200, content=b"durable")
+                )
+            ) as session,
+>           pytest.raises(P.v.VerificationError, match="durable_package_"),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        ):
+E       Failed: DID NOT RAISE VerificationError
+
+tests/tools/test_legislation_parent_state.py:238: Failed
+=========================== short test summary info ============================
+FAILED tests/tools/test_legislation_parent_state.py::test_durable_download_rejects_wrong_outer_fixity[size_bytes]
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 12 passed in 1.27s

@@ -1,0 +1,282 @@
+{
+  "source_sha256": "1e737efef6f1903ac09baba4c05869a8a2c4cebf643a78f0dab73d476d86c527",
+  "mutants": [
+    {
+      "name": "state_path_allowlist",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "e7f6940b7331d3b0ae2ba66fdd93e23951e07d1c5216a9340799748db0f511c4"
+    },
+    {
+      "name": "schema",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "e7fea3326e8c2df622b7a39e5df1c6992f5c32e0ef4b435fd0cb239f4b84aadc"
+    },
+    {
+      "name": "timezone",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "16af06e55feb0c36596282394bc15a3b5dc82da7f25be517a9cdef47b0107456"
+    },
+    {
+      "name": "outer_size",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "3e8cb46dc2fcd6874161700db2bd4001c0aa24c89c45421310dd061b260733c8"
+    },
+    {
+      "name": "member_count",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "6fcbc52bba65351352c0e36718f97fdc227a0af03463e9729656e66608a17eb9"
+    },
+    {
+      "name": "expanded_size",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "cdeddde4bfd430abaa21e2b12e17c32cf263a99571cc4bffb7688127e91cbbb3"
+    },
+    {
+      "name": "member_path",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "a72bed1c51e7f330298b40935a51b29d6922cb538784ab4d157e7702ef671e4b"
+    },
+    {
+      "name": "duplicate_member",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "52367a67b4a17d6aa8b5532b292562df395fec582a81f1940b3401d782b492f7"
+    },
+    {
+      "name": "member_size",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "74949c424f44ee5ba9690d0db54f9c252d0f7469f63221731b5e8aa05de87dc8"
+    },
+    {
+      "name": "member_type",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "f0fbcc1ddee7011a98d315a4b26367b94eaf088bb6a5de877735cf1ee8ddf725"
+    },
+    {
+      "name": "encrypted",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "9f123c97ac784634dbe7b0a64fca0e3b6bf6e28b88d9285a15c9b1ab299c284a"
+    },
+    {
+      "name": "zip_ratio",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "a1d1c7dd62f5e2035c5758494de381f1d04f4e97ae8cc6884f517a3d87a92b95"
+    },
+    {
+      "name": "complete_docs",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "0fac6db605fa2539c99059cc6ffc7558de3fe7f3405c0dba2f2a976cb7dc02cf"
+    },
+    {
+      "name": "state_integrity",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "553c307d4c44fe3912ab43091cc57fea615f24df9d07ba00023f5ec5907d282b"
+    },
+    {
+      "name": "artifact_expiry",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "1870ab1dd17574abdd43b18a0373426c7a3da553a51e42243874f22f16937eb9"
+    },
+    {
+      "name": "run_completed",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "178b30198e2d2a98af953fe715eeca9403079229359f0e98da96c9d4232768ea"
+    },
+    {
+      "name": "run_success",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "f44674fd4c0535682686e5a8905e1bf7d64e440174c64e021254f646931e52d3"
+    },
+    {
+      "name": "download_size",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "988900ebf334b7acf9b9b86841277839085b312179a485384c71747b0eab1bbc"
+    },
+    {
+      "name": "download_deadline",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "c32bc99d6b88a12ff210929981c209b4a5e1266143af2546a2917a92b75a772d"
+    },
+    {
+      "name": "http_encoding",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "ab1f7512f6be561e8847a4a3135b28c716abb3be2fe6fdebdecda736211fccd7"
+    },
+    {
+      "name": "https_origin",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "1dd283288d0a099e512c10c0a5683dac45aa7200159f4bf7a3ba85d4e4fcf29a"
+    },
+    {
+      "name": "blob_origin",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "924a34ad688c5c59a4fa7c987d12202d3f379d9bd4d053a47bbb8e782224bbb5"
+    },
+    {
+      "name": "bootstrap_dispatch",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "60ec03b91889b4e29364a9dfdc1f31c999402b3103608f8149cb71564b74735d"
+    },
+    {
+      "name": "authority_expiry",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "c3e7482b177cfd3940eee1784aac51684cebf568328345a27c524782020fc55f"
+    },
+    {
+      "name": "canonical_authority",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "48daf5acfe5efd234803a2945b920a9f02c9352f81a6091a280c0ff32294b72a"
+    },
+    {
+      "name": "worktree_symlink",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "ec0a3d00c86e3db8709452bf8dd5d6c59276bcd59fdda57f470d95acbbdcbf78"
+    },
+    {
+      "name": "sealed_parent_hash",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "e820a23eed056654f1a0276b2336bc2f8993cb61272cf3a5491f268546d5e4a3"
+    },
+    {
+      "name": "sealed_authority_hash",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "38606d13b05ee17fdac4cbb8b32dc8830895427d44641f8481244190630a22af"
+    },
+    {
+      "name": "state_source_set",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "1ce06827e2781eedf0aae67b239a814302a3b0b4e994fc9fc32d336d07f6952d"
+    },
+    {
+      "name": "seal_original_lineage",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "af08e7815902b479c779f9222b239aa79e60a854c31eade748e13f38a2befafd"
+    },
+    {
+      "name": "seal_lineage_readback",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "dbae98cb05356da6f97655dd528e76124810fdc21be5455227cf753346a15ee9"
+    },
+    {
+      "name": "seal_restoration_status",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "e34fc3d7a86fad2407574afa173f0b9860a6bace3bc83ef2f430777855124245"
+    },
+    {
+      "name": "seal_execution",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "fec68e1db379127b8979da23ebb8e553a80a8b9d9afd967e736aca752c91b9fa"
+    },
+    {
+      "name": "native_checkpoint_structure",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "9e7e71a00a8ff5cd3654ef0556fc889be2f30684db1d60bd1e9c2a40397c7ac9"
+    },
+    {
+      "name": "zip_member_spelling",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "63ee42285e84925aec06ec1ec480f6c4997b1c345bebd226ed44d7feb352b3a6"
+    },
+    {
+      "name": "parent_receipt_schema",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "71df083bf3cb94090aca6f21fdd28e98a16be781667f63e91c3a483f780afe37"
+    },
+    {
+      "name": "continuation_receipt_strength",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "df010a5c01841a1898f742ac21dea24b72e055455f25640ba2060474f6aca93a"
+    },
+    {
+      "name": "seal_receipt_strength",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "a5a26686cb280f66684b35a7b1d6cb668c74411d2dde310e9a128aa4abfb13b4"
+    },
+    {
+      "name": "durable_download_origin",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "13efd562f42f71147757e9c536666cd6bf6ece8dc44eedaec0a3a2058b5ecc48"
+    },
+    {
+      "name": "durable_package_size",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "3b55940efe48bd610049eb16fa090d4622e7e542adb61f173060f6d80bec34f7"
+    },
+    {
+      "name": "durable_package_digest",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "4c509c166dcc6a95f2606ee9ea8a993e318efd0960e23285104caac51afed42f"
+    },
+    {
+      "name": "durable_roots",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "cd71eee904a281756c69217bb6376f5d40635ce9668ae8dcea6678976b79b514"
+    },
+    {
+      "name": "durable_rights",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "fa1f5f01e7f0241b58336b8c84432b938add861fb2e00b873c94550448180734"
+    },
+    {
+      "name": "durable_scope",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "881d81cd47ffe674cb6b1bf91bfe13a2ec7755434046531f7dc3365cd4e77da6"
+    },
+    {
+      "name": "durable_parent_scope",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "648b6e9279eff3172796efa82d4eb48689551a385686bb35e8d4fe445d7a4bbb"
+    },
+    {
+      "name": "durable_child_scope",
+      "exit_code": 1,
+      "killed": true,
+      "log_sha256": "cb03dbf890212b2bd4b036f3f67d3031261b699550466b275070a24c9151bc7f"
+    }
+  ],
+  "all_killed": true
+}

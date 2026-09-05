@@ -1,0 +1,19 @@
+import hashlib,json,resource,time,sys,subprocess,zipfile,stat
+from pathlib import Path,PurePosixPath
+from archive_govt_nz.domains.legislation.cli_state import verify_linked_state
+scratch=Path('/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/p20-state-benchmark-8ociycka'); archive=scratch/'state.zip';dest=scratch/'state';report=Path(sys.argv[1]);start=time.perf_counter();before=resource.getrusage(resource.RUSAGE_SELF)
+assert hashlib.sha256(archive.read_bytes()).hexdigest()=='ae49243398367932873cdbc01f6953c204c082ba8df6fd68641d202627812491'
+with zipfile.ZipFile(archive) as zipped:
+ members=zipped.infolist(); assert len(members)<1100;assert sum(x.file_size for x in members)<134217728;assert len({x.filename for x in members})==len(members)
+ for info in members:
+  relative=PurePosixPath(info.filename);assert not relative.is_absolute() and '..' not in relative.parts and '\\' not in info.filename;assert not stat.S_ISLNK(info.external_attr>>16)
+  if info.is_dir(): continue
+  target=dest.joinpath(*relative.parts);target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(zipped.read(info))
+files=sorted(p for p in dest.rglob('*') if p.is_file()); original={p.relative_to(dest).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in files}
+count=verify_linked_state(dest/'cas',dest/'checkpoint.json',dest/'manifest.json');assert count==904
+manifest=json.loads((dest/'manifest.json').read_text());assert manifest['manifest_sha256']=='eb1afcd85d8135604d86f8b23b438e8ecc96a6e944a790758770746a64e2d6f2'
+recon=scratch/'benchmark-reconciliation.json';command=['uv','run','--locked','python','tools/reconcile_one_legislation_batch.py','--batch-id','prompt13-500-verification-20260904-identity-fix','--batch-path','seeds/reviewed/historical-work-ids-0001.txt','--expected-batch-sha256','59923176fa34796d7673a20b880af9abe5520fe484595edb220f2bbc0e3b33e7','--manifest-path',str(dest/'manifest.json'),'--checkpoint-path',str(dest/'checkpoint.json'),'--cas-path',str(dest/'cas'),'--receipt-path',str(recon)]
+result=subprocess.run(command,stdout=subprocess.PIPE,stderr=subprocess.STDOUT);assert result.returncode==0,result.stdout.decode();r=json.loads(recon.read_text());assert r['mismatch_count']==0 and r['reconciled_work_ids_count']==500;assert {p.relative_to(dest).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(dest.rglob('*')) if p.is_file()}==original
+after=resource.getrusage(resource.RUSAGE_SELF);child=resource.getrusage(resource.RUSAGE_CHILDREN)
+receipt={'schema_version':'archive-govt-nz.read-only-state-resource-benchmark/v1','target_commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'status':'passed','provisional_until_prompt15':True,'artifact_sha256':'ae49243398367932873cdbc01f6953c204c082ba8df6fd68641d202627812491','artifact_size_bytes':archive.stat().st_size,'manifest_sha256':manifest['manifest_sha256'],'objects_verified':count,'physical_state_files':len(files),'state_bytes':sum(p.stat().st_size for p in files),'mismatch_count':r['mismatch_count'],'scope_records':r['selected_records_count'],'scope_works':r['reconciled_work_ids_count'],'wall_seconds':time.perf_counter()-start,'user_seconds':after.ru_utime-before.ru_utime,'system_seconds':after.ru_stime-before.ru_stime,'peak_rss_bytes':after.ru_maxrss,'child_user_seconds':child.ru_utime,'child_system_seconds':child.ru_stime,'child_peak_rss_bytes':child.ru_maxrss,'platform':'macOS;ru_maxrss measured in bytes','state_unchanged':True,'reconciliation_command':command,'reconciliation_sha256':hashlib.sha256(recon.read_bytes()).hexdigest(),'source_acquisition_performed':False,'publication_performed':False}
+report.write_text(json.dumps(receipt,indent=2)+'\n');report.with_name('resource-reconciliation.json').write_bytes(recon.read_bytes());print(json.dumps(receipt))
