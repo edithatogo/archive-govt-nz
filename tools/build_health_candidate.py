@@ -131,6 +131,7 @@ def main() -> int:
                 "license": row["rights"]["license"],
                 "rights_evidence": row["rights"]["evidence"],
                 "attribution": row["rights"]["attribution"],
+                "eligibility": "verified_eligible",
                 "source_sha256": row["sha256"],
             }
         )
