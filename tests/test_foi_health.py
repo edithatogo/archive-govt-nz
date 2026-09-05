@@ -179,9 +179,7 @@ def test_cli_requires_attention_for_unpublished_capture(
 ) -> None:
     """Healthy controls do not suppress stalled corpus-progress alerts."""
     pending = Job("captured", "ca", 0, 1, 1, 1)
-    captured = replace(
-        pending, status="captured", manifest_sha256="a" * 64
-    )
+    captured = replace(pending, status="captured", manifest_sha256="a" * 64)
     factory = MagicMock()
     factory.return_value.read_all.return_value = snapshot(captured)
     factory.return_value.batch_head = "a" * 40
@@ -193,9 +191,7 @@ def test_cli_requires_attention_for_unpublished_capture(
     report = json.loads(receipt.read_bytes())
     assert report["status"] == "healthy"
     assert report["monitor_status"] == "attention_required"
-    assert report["corpus_progress"]["counts"] == {
-        "captured_not_published": 1
-    }
+    assert report["corpus_progress"]["counts"] == {"captured_not_published": 1}
 
 
 def test_network_failure_saves_only_error_class(

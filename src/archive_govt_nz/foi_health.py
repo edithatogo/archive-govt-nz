@@ -116,9 +116,7 @@ def evaluate(snapshot: dict[str, StoredState], now: int) -> dict[str, Any]:
     return {
         "schema_version": "archive-govt-nz.foi-health/v1",
         "status": control_status,
-        "monitor_status": (
-            "attention_required" if attention else "healthy"
-        ),
+        "monitor_status": ("attention_required" if attention else "healthy"),
         "checked_at_unix": now,
         "sources": len(snapshot),
         "jobs": sum(statuses.values()),
