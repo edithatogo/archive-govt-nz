@@ -1,0 +1,91 @@
+{
+  "schema_version": "archive-govt-nz.prompt13-ordered-proof/v1",
+  "observed_at": "2026-09-05T13:43:10.756698+00:00",
+  "status": "ordered_operational_run_independently_verified",
+  "source_commit": "87f65e8b37cbc16bc6c7cf8b5b93a19e48f0f207",
+  "source_pr": 400,
+  "preflight_run": 33968519628,
+  "operational_run": 33968609350,
+  "work_count": 500,
+  "changed": 352,
+  "unchanged": 148,
+  "failed": 0,
+  "parent_records": 552,
+  "output_records": 904,
+  "physical_objects_verified": 904,
+  "scoped_records": 852,
+  "unexplained_mismatches": 0,
+  "publication_performed": false,
+  "limitations": [
+    "This demonstrates continuation from the independently recovered 552-record durable parent, not a subsequent child whose parent is the earlier 904-record output.",
+    "No new durable publication of the 904-record output is claimed.",
+    "GitHub Actions output retention is temporary and does not replace durable authority."
+  ],
+  "evidence": [
+    {
+      "path": "artifact-fixity.json",
+      "sha256": "387c2387c3c6a74b409d7674253c0e29bf41d7d622b66941e5ea8868b8949ca2",
+      "size_bytes": 2991
+    },
+    {
+      "path": "full-continuation.json",
+      "sha256": "b597c2bd6cdb8a94c41b0d239e3e42a60485053d06a167a5bd05bb2fce4a528a",
+      "size_bytes": 1470
+    },
+    {
+      "path": "full-harvest.json",
+      "sha256": "768e2ee0d52aa0780505da3c38b7461e07d0c2abc2f8c076fc78666e4f8257dc",
+      "size_bytes": 94927
+    },
+    {
+      "path": "full-lineage.json",
+      "sha256": "3994ff6b2c1e82f3702a465f8cccfd562807b8ade3398dbf52f19c55f1835fcb",
+      "size_bytes": 2521
+    },
+    {
+      "path": "full-reconciliation.json",
+      "sha256": "4fc1071237aeb43b666d6c5e42cbc0b97b40c0aa8f3935412bbeb8ea3ab1688d",
+      "size_bytes": 948
+    },
+    {
+      "path": "full-restoration-receipt.json",
+      "sha256": "ab60ee2ec4fbdd9674c6f1c50f29800f0cfbae10a35a91b5a4dea478699143bb",
+      "size_bytes": 148
+    },
+    {
+      "path": "full-run.json",
+      "sha256": "cf6eac629b135c65d27af8f86b28ae963d337b3e65bf0e648431496fd228e135",
+      "size_bytes": 3736
+    },
+    {
+      "path": "full-source-preflight.json",
+      "sha256": "3b10952662ef41415d0f671ce280a959d3e80824406b9014939d6b2c850de2cd",
+      "size_bytes": 171130
+    },
+    {
+      "path": "preflight-lineage.json",
+      "sha256": "a10e3cd369bc1256c4f44b6c2955ff276c345f833e27f609ed310d05f30b7328",
+      "size_bytes": 2521
+    },
+    {
+      "path": "preflight-restoration-receipt.json",
+      "sha256": "3e0e74859a13d54b858b4fcb4c11dc233f2df49bfd8c2a3b7549493e7ae47cf4",
+      "size_bytes": 148
+    },
+    {
+      "path": "preflight-run.json",
+      "sha256": "55b3f24e160a6323bd977c6b607bf87c1aabf3676bc0a7e94349c4b3e66425b4",
+      "size_bytes": 3736
+    },
+    {
+      "path": "preflight-source-preflight.json",
+      "sha256": "c27a5a6e453928430cef4c8d3243b8ecf3de6f2087ebb81efaee1eca73dd007d",
+      "size_bytes": 171130
+    },
+    {
+      "path": "state-verification.json",
+      "sha256": "2d02078f62ea28a1879d70aa312e18b77f83bd35888fd82acd7cdce43618bf54",
+      "size_bytes": 641
+    }
+  ]
+}

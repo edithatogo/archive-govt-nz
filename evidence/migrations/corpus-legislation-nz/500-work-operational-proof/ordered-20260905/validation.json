@@ -1,0 +1,17 @@
+{
+  "schema_version": "archive-govt-nz.prompt13-evidence-validation/v1",
+  "command": "COVERAGE_CORE=ctrace PYTHON_JIT=0 PYTEST_XDIST_AUTO_NUM_WORKERS=2 ./scripts/validate.sh",
+  "exit_code": 0,
+  "full_harness_status": "passed",
+  "log_sha256": "fe9ddc68f238f9e1d8f94f8fe147e29850b2539bdcd78ef1489fe13252dbcdfb",
+  "log_size_bytes": 56888,
+  "failed_attempts_preserved": [
+    "OSV returned HTTP503 during dependency audit; existing fallback/retry subsequently passed. Exact log preserves both events."
+  ],
+  "receipts": {
+    "pip-audit.json": "2bf9fd0b5d1f48f6cffe5236a2f064ef2357a089a7511a718e3e1a569a1775b0",
+    "python-licenses.json": "dcc9caf97314d07c589b2233bee18bfa0f016a499135a017ad31b4a029e7497a",
+    "detect-secrets.json": "6e8cb001395419be98e10e1cdfedac0998477b72734a53e17b4e936c45c1a052",
+    "sbom.cdx.json": "bc0d9036c615f59eea6fe53d94627064b649e461dbed916cae323b07a36d4fcc"
+  }
+}

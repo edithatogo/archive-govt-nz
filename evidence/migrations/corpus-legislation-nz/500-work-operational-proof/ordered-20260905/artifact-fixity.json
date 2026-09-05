@@ -1,0 +1,77 @@
+{
+  "observed_at": "2026-09-05T13:42:39.576026+00:00",
+  "artifacts": [
+    {
+      "id": 9970198031,
+      "name": "legislation-source-preflight-33968519628-1",
+      "size_in_bytes": 47329,
+      "digest": "sha256:984875852a68f82988739b5408413e696ee689823b0ededf5b66b85523263ce1",
+      "created_at": "2026-09-05T13:19:05Z",
+      "expires_at": "2026-12-04T13:18:35Z",
+      "expired": false,
+      "run_id": 33968519628,
+      "download_sha256": "984875852a68f82988739b5408413e696ee689823b0ededf5b66b85523263ce1",
+      "download_size_bytes": 47329
+    },
+    {
+      "id": 9970197208,
+      "name": "legislation-parent-33968519628-1",
+      "size_in_bytes": 1465,
+      "digest": "sha256:4c9d0ed4961f97c86898a458e55da3e7554a5b8b5034cda21b1c2d29cc08e33f",
+      "created_at": "2026-09-05T13:19:02Z",
+      "expires_at": "2026-12-04T13:18:35Z",
+      "expired": false,
+      "run_id": 33968519628,
+      "download_sha256": "4c9d0ed4961f97c86898a458e55da3e7554a5b8b5034cda21b1c2d29cc08e33f",
+      "download_size_bytes": 1465
+    },
+    {
+      "id": 9970365226,
+      "name": "legislation-exact-inventory-attempt-33968609350-1",
+      "size_in_bytes": 9044,
+      "digest": "sha256:64df4e850953f33d1e84a630b4e18a3ca65b2b037df34643b8cf07590713db86",
+      "created_at": "2026-09-05T13:30:49Z",
+      "expires_at": "2026-12-04T13:20:25Z",
+      "expired": false,
+      "run_id": 33968609350,
+      "download_sha256": "64df4e850953f33d1e84a630b4e18a3ca65b2b037df34643b8cf07590713db86",
+      "download_size_bytes": 9044
+    },
+    {
+      "id": 9970365066,
+      "name": "legislation-exact-inventory-state-33968609350-1",
+      "size_in_bytes": 10628850,
+      "digest": "sha256:9f9b9bd856de05ba2a9481781564e0a49d368d1c6c2770b74b807a4845adc318",
+      "created_at": "2026-09-05T13:30:49Z",
+      "expires_at": "2026-12-04T13:20:25Z",
+      "expired": false,
+      "run_id": 33968609350,
+      "download_sha256": "9f9b9bd856de05ba2a9481781564e0a49d368d1c6c2770b74b807a4845adc318",
+      "download_size_bytes": 10628850
+    },
+    {
+      "id": 9970223837,
+      "name": "legislation-source-preflight-33968609350-1",
+      "size_in_bytes": 47326,
+      "digest": "sha256:7e4f6bf94d0ba2d597f75def74cd5959beac0e4a7db89a643fdcc6290efa6fdf",
+      "created_at": "2026-09-05T13:20:54Z",
+      "expires_at": "2026-12-04T13:20:25Z",
+      "expired": false,
+      "run_id": 33968609350,
+      "download_sha256": "7e4f6bf94d0ba2d597f75def74cd5959beac0e4a7db89a643fdcc6290efa6fdf",
+      "download_size_bytes": 47326
+    },
+    {
+      "id": 9970223126,
+      "name": "legislation-parent-33968609350-1",
+      "size_in_bytes": 1465,
+      "digest": "sha256:5bb9567799d2a437ee502824632ebfae7473a7ab179aafab10460fc041afd5eb",
+      "created_at": "2026-09-05T13:20:51Z",
+      "expires_at": "2026-12-04T13:20:25Z",
+      "expired": false,
+      "run_id": 33968609350,
+      "download_sha256": "5bb9567799d2a437ee502824632ebfae7473a7ab179aafab10460fc041afd5eb",
+      "download_size_bytes": 1465
+    }
+  ]
+}
