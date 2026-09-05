@@ -15,6 +15,14 @@ every planned record set, measure or operational workflow.
 
 ## Artifacts
 
+- [SQLite inventory path and identifier repair](./sqlite-inventory-boundary.md)
+
+- [Negative-fixture matrix](./negative-fixture-matrix.md)
+- [JSON admission and readback validation](./normalization-admission-validation.json)
+
+- [Exact record-set normalization prerequisite](./recordset-normalization.md)
+- [Normalization validation receipt](./normalization-validation.json)
+
 - [Metadata standards and verified local DCAT route](./metadata-standards-route.md)
 
 - [Exclusive local resume execution](./resume-execution.md)

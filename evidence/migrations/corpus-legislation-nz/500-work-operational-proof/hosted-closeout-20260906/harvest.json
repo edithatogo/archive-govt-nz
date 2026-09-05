@@ -1,0 +1,4034 @@
+{
+  "schema_version": "archive-govt-nz.legislation-harvest-receipt/v3",
+  "candidate_works_discovered": 500,
+  "works_in_scope": 500,
+  "works_attempted": 500,
+  "newly_preserved": 0,
+  "changed_preserved": 352,
+  "unchanged_revalidated": 148,
+  "already_processed_skipped": 0,
+  "unavailable": 0,
+  "partial": 0,
+  "failed": 0,
+  "total_state_records_before": 552,
+  "total_state_records_after": 904,
+  "total_cas_objects_before": 552,
+  "total_cas_objects_after": 904,
+  "scope_digests": {
+    "resolved": "2abf0d8b76cc60e9b4e442724987b81848698dbdd98e56266f8726d468b33eaf"
+  },
+  "parent_manifest_root": "877ba501a25570a29c1aada7979562d8c62c7f043865125cf402310eabc09544",
+  "parent_checkpoint_root": "8afab0cb245c8b0f4c6e42c7d2c863a0f58e99f7c6bded70a1582b2be1a4cbf7",
+  "output_manifest_root": "ab4ff4fbeb5f2d5df583c513ac4afd9806ca2bacd1b7851d8a7d979b8f667004",
+  "output_checkpoint_root": "de917823c8c5e8d167afa23bc3a4b72495443150df37844ce124e26dbcd19c0c",
+  "software_commit": "87f65e8b37cbc16bc6c7cf8b5b93a19e48f0f207",
+  "workflow_identity": "Exact inventory legislation revalidation",
+  "run_identity": "33968609350",
+  "state_commit_status": "committed",
+  "state_commit": "de917823c8c5e8d167afa23bc3a4b72495443150df37844ce124e26dbcd19c0c",
+  "works": [
+    {
+      "work_id": "act_imperial_1539_1",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1540_32",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1540_34",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1688_2",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1689_5",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1700_2",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1705_3",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1709_18",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1729_22",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1730_28",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 1
+    },
+    {
+      "work_id": "act_imperial_1735_24",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1737_19",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1751_23",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1772_11",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1774_78",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1828_14",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1832_71",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1833_41",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1837_26",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1843_38",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1844_69",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1851_25",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1851_83",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1852_24",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1853_85",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1861_101",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1863_23",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1864_25",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1874_35",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1875_66",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1876_59",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1881_3",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1887_54",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1887_70",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1888_57",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1894_39",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1895_44",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1908_51",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1910_29",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1913_21",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1914_13",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1915_57",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1915_92",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1916_2",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1928_26",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1939_65",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_imperial_1945_7",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1841_1",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1844_1",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1845_1",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1860_1",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1860_2",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1860_3",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1860_4",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1860_5",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1860_6",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1860_7",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1861_1",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1861_3",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1863_1",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1863_2",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1863_3",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1863_4",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1864_1",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1864_2",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1864_3",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1864_5",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1864_6",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1865_3",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1866_1",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1866_2",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1866_3",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1867_1",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1870_1",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1870_2",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1870_3",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1871_1",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1871_2",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1871_4",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1872_1",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1872_2",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1872_3",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1873_1",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1873_2",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1873_3",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1874_1",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1874_2",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1875_1",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1875_3",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1875_4",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_1",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_10",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_11",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_12",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_13",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_14",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_15",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_16",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_17",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_18",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_19",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_2",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_20",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_21",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_22",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_23",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_24",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_25",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_26",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_27",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_28",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_29",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_3",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_30",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_31",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_32",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_33",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_34",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_35",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_36",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_37",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_38",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_39",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_4",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_40",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_41",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_42",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_43",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_44",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_45",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_46",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_47",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_48",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_49",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_5",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_50",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_51",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_52",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_53",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_54",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_55",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_56",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_57",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_58",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_59",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_6",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_60",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_61",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_62",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_63",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_64",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_65",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_66",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_67",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_68",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_7",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_70",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_71",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_72",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_73",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_74",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_75",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_76",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_77",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_78",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_79",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_8",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_80",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_81",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_82",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_83",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_84",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_85",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_86",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_87",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_88",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1877_9",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_1",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_10",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_11",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_12",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_13",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_14",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_15",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_16",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_17",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_18",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_19",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_20",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_21",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_22",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_23",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_24",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_25",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_26",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_27",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_28",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_29",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_3",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_30",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_31",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_32",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_33",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_34",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_35",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_36",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_37",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_38",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_39",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_4",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_40",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_41",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_42",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_43",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_44",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_45",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_46",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_47",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_48",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_49",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_5",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_50",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_51",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_52",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_53",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_54",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_55",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_56",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_57",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_58",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_59",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_6",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_60",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_61",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_62",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_63",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_64",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_7",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_8",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1878_9",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1879_11",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1879_12",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1879_13",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1879_14",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1879_15",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1879_16",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1879_17",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1879_18",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1879_19",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1879_2",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1879_20",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1879_21",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1879_23",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1879_24",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1879_25",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1879_26",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1879_27",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1879_28",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1879_29",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1879_3",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1879_30",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1879_31",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1879_32",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1879_33",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1879_34",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1879_35",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1879_36",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1879_37",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1879_38",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1879_39",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1879_4",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1879_5",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1879_6",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1879_7",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1879_8",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1879_9",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1880_1",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1880_10",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1880_11",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1880_12",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1880_13",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1880_14",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1880_15",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1880_16",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1880_17",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1880_18",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1880_19",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1880_2",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1880_20",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1880_21",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1880_22",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1880_23",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1880_3",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1880_4",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1880_5",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1880_6",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1880_7",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1880_8",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1880_9",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1881_1",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1881_10",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1881_11",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1881_12",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1881_13",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1881_14",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1881_15",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1881_16",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1881_17",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1881_18",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1881_19",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1881_2",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1881_20",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1881_21",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1881_22",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1881_23",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1881_24",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1881_25",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1881_26",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1881_27",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1881_3",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1881_4",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1881_5",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1881_6",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1881_7",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1881_8",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1881_9",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1882_1",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1882_10",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1882_11",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1882_12",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1882_13",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1882_14",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1882_15",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1882_16",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1882_17",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1882_18",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1882_19",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1882_2",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1882_20",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1882_21",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1882_22",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1882_23",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1882_24",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1882_25",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1882_26",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1882_27",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1882_28",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1882_29",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1882_3",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1882_4",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1882_5",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1882_6",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1882_7",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1882_8",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1882_9",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1883_1",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1883_10",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1883_11",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1883_12",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1883_13",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1883_14",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1883_15",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1883_16",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1883_17",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1883_18",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1883_19",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1883_2",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1883_20",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1883_21",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1883_22",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1883_23",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1883_24",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1883_25",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1883_27",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1883_3",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1883_4",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1883_5",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1883_6",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1883_7",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1883_8",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1883_9",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1884_1",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1884_10",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1884_11",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1884_12",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1884_13",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1884_14",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1884_15",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1884_16",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1884_17",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1884_18",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1884_19",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1884_2",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1884_20",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1884_21",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1884_22",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1884_23",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1884_24",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1884_3",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1884_4",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1884_5",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1884_6",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1884_7",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1884_8",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1884_9",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1885_1",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1885_10",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1885_11",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1885_12",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1885_13",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1885_14",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1885_15",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1885_17",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1885_18",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1885_19",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1885_2",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1885_20",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1885_5",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1885_6",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1885_7",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1885_9",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1886_1",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1886_10",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1886_11",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1886_12",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1886_13",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1886_14",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1886_15",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1886_16",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1886_2",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1886_3",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1886_4",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1886_5",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1886_6",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1886_7",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1886_8",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1886_9",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1887_1",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1887_10",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1887_11",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1887_12",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1887_13",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1887_14",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1887_15",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1887_16",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1887_17",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1887_18",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1887_19",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1887_2",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1887_20",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1887_21",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1887_4",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1887_5",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1887_6",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1887_7",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1887_8",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1887_9",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1888_1",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1888_10",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1888_11",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1888_12",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1888_13",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1888_14",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1888_15",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1888_16",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1888_17",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1888_18",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1888_19",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1888_2",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1888_20",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1888_21",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1888_22",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1888_23",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1888_24",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1888_25",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1888_26",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1888_27",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1888_28",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1888_3",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1888_4",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1888_5",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1888_6",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1888_7",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1888_8",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1888_9",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1889_1",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1889_10",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1889_11",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1889_12",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1889_13",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1889_14",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1889_15",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1889_16",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1889_17",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1889_18",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1889_19",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1889_2",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1889_20",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1889_21",
+      "disposition": "changed_preserved",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    },
+    {
+      "work_id": "act_local_1889_22",
+      "disposition": "unchanged_revalidated",
+      "source_response_classifications": [
+        "success"
+      ],
+      "retry_count": 0
+    }
+  ],
+  "total_retry_count": 1,
+  "state_record_delta": 352,
+  "cas_object_delta": 352
+}

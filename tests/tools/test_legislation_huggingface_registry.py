@@ -12,7 +12,7 @@ import pytest
 from jsonschema import Draft202012Validator, ValidationError
 
 ROOT = Path(__file__).resolve().parents[2]
-SCHEMA_PATH = ROOT / "schemas/legislation-huggingface-registry-v2.schema.json"
+SCHEMA_PATH = ROOT / "schemas/legislation-huggingface-registry-v3.schema.json"
 REGISTRY_PATH = ROOT / "config/legislation/huggingface-publication-registry.json"
 EVIDENCE_ROOT = ROOT / "evidence/migrations/corpus-legislation-nz"
 
@@ -30,6 +30,44 @@ def test_registry_schema_and_document_are_valid() -> None:
     schema = _load(SCHEMA_PATH)
     Draft202012Validator.check_schema(schema)
     Draft202012Validator(schema).validate(_load(REGISTRY_PATH))
+
+
+@pytest.mark.parametrize("invalid", [False, "true", None])
+def test_completed_registry_rejects_unverified_proof(invalid: object) -> None:
+    """The completed contract cannot silently downgrade its prerequisite."""
+    registry = copy.deepcopy(_load(REGISTRY_PATH))
+    registry["publication_gate"]["prompt13_operational_proof"] = invalid
+    with pytest.raises(ValidationError):
+        Draft202012Validator(_load(SCHEMA_PATH)).validate(registry)
+
+
+@pytest.mark.parametrize("duplicate", [0, 1, 2])
+@pytest.mark.parametrize("changed_revision", [False, True])
+def test_registry_rejects_duplicate_slugs(
+    duplicate: int, *, changed_revision: bool
+) -> None:
+    """Different revisions must not disguise a missing governed identity."""
+    registry = copy.deepcopy(_load(REGISTRY_PATH))
+    item = copy.deepcopy(registry["identities"][duplicate])
+    if changed_revision:
+        item["observed_revision"] = "a" * 40
+    registry["identities"][(duplicate + 1) % 3] = item
+    with pytest.raises(ValidationError):
+        Draft202012Validator(_load(SCHEMA_PATH)).validate(registry)
+
+
+@pytest.mark.parametrize("receipt_path", [None, "unverified.json"])
+def test_completed_operational_proof_requires_named_receipt(
+    receipt_path: str | None,
+) -> None:
+    """A true proof flag cannot omit or redirect its primary evidence."""
+    registry = _load(REGISTRY_PATH)
+    if receipt_path is None:
+        registry["publication_gate"].pop("prompt13_receipt_path")
+    else:
+        registry["publication_gate"]["prompt13_receipt_path"] = receipt_path
+    with pytest.raises(ValidationError):
+        Draft202012Validator(_load(SCHEMA_PATH)).validate(registry)
 
 
 def test_registry_has_exact_non_conflicting_identity_roles() -> None:
@@ -105,9 +143,11 @@ def test_registry_is_bound_to_coverage_and_publication_authority() -> None:
     coverage = _load(
         EVIDENCE_ROOT / "historical-coverage/historical-coverage-report.json"
     )
-    prompt13 = (
-        EVIDENCE_ROOT / "500-work-operational-proof/500-work-target-revalidation.json"
+    prompt13_path = (
+        "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/"
+        "hosted-closeout-20260906/500-work-target-revalidation.json"
     )
+    prompt13 = ROOT / prompt13_path
     assert (
         registry["coverage"]["candidate_ids"]
         == coverage["candidate_inventory"]["candidate_ids"]
@@ -117,7 +157,18 @@ def test_registry_is_bound_to_coverage_and_publication_authority() -> None:
         == coverage["candidate_inventory"]["candidate_sha256"]
     )
     assert registry["publication_gate"]["prompt13_receipt_sha256"] == _sha256(prompt13)
-    assert _load(prompt13)["dispatch_performed"] is False
+    proof = _load(prompt13)
+    assert proof["dispatch_performed"] is True
+    assert proof["status"] == "complete"
+    assert proof["blocking_findings"] == []
+    assert all(proof["verification"].values())
+    primary = proof["primary_verification"]
+    assert _sha256(ROOT / primary["path"]) == primary["sha256"]
+    verified = _load(ROOT / primary["path"])
+    assert verified["fresh_reconciliation"]["mismatch_count"] == 0
+    assert verified["accounting"]["works_attempted"] == 500
+    assert verified["cas_count"] == verified["manifest_records"] == 904
+    assert verified["standalone_preflight_before_acquisition"] is True
     assert registry["publication_gate"] == {
         "status": "published_verified",
         "remote_write_authorized": True,
@@ -141,7 +192,8 @@ def test_registry_is_bound_to_coverage_and_publication_authority() -> None:
             "README.md",
             "RIGHTS.md",
         ],
-        "prompt13_operational_proof": False,
+        "prompt13_operational_proof": True,
+        "prompt13_receipt_path": prompt13_path,
         "prompt13_receipt_sha256": _sha256(prompt13),
         "payload_rights": "approved_public_selected_552",
         "durable_package_revision": "ae4da4ef0446f68fddd8f53279ecb1245f1529b9",

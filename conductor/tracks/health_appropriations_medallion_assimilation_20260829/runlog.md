@@ -2073,3 +2073,85 @@ resource warnings, 68.81 seconds, 97.53% coverage, 48 schemas / 38 documents,
 9/9 parity, all mutation and supply-chain gates, and 111 SBOM components. Final
 native log SHA-256:
 `4b988cfe7a65ec04b6c166230303f84a091a1d65afba83e03f610087fa11e690`.
+
+## 2026-09-05 — Phase 3.1 exact normalization prerequisite
+
+Created `codex/health-normalization-contracts-20260905` in an independent
+worktree at user-requested `c5233ae7`. Read canonical Conductor implement/review
+instructions, project workflow, VCS handshake and track contracts. Initial
+`uv run --locked python tools/validate_conductor_state.py` passed 92 tracks.
+Inspected main's three pending fixture/test paths read-only; did not copy or
+edit them. No subagent spawn capability was available; independent validation
+commands were parallelized and the diff was reviewed directly.
+
+Added a bounded prerequisite task under 3.1 before source edits. The focused
+pytest command in `normalization-validation.json` first exited 2 because the
+new module did not exist. Implemented opt-in exact conversion without changing
+the structural registry, source adapters or publication paths. All 32 focused
+tests passed with 100% line/branch coverage. Ruff and scoped Pyright findings
+were corrected; global format/lint/basedpyright subsequently passed.
+
+The cold, unfiltered, one-worker mutation command in the receipt killed all
+35 mutants, with no survivors, timeouts, errors, pardons or cache hits. Initial
+full harness: 4,829 passed, two Hypothesis slow-generation health checks failed
+in existing discovery/legislation tests, 97.62% coverage. The mutation lane
+overlapped this first suite run; preserve the failure and retry without that
+overlap. Neither failing test was edited. Separate continuation starts at the
+existing harness's `schemas` stage to exercise gates skipped after test failure.
+
+Final validation results and local commit are recorded in the paired receipt
+and the bookkeeping entry below; no hosted execution is inferred.
+
+Parent coordination update: user reported a parent two-worker full harness and
+assigned combined checks after integration. Stopped this worktree's retry with
+SIGINT to its verified pytest PID; exit 2 after 1,553 passing tests, no completed
+retry claim. Final focused schema/normalization suite passed 117 tests with
+60 statements/16 branches at 100%. All post-test harness stages passed,
+including 48 schemas/38 documents, 9/9 parity, repository mutation lanes,
+hygiene/CAS benchmark, audit/licences/secrets and 112-component validated SBOM.
+This closes the bounded local implementation; the full combined gate remains
+with the parent. Global registry status stays in progress without edits.
+
+Local functional commit: `95a5638aaaecefc0761bb0e51797e8a71d8983a5`.
+The following bookkeeping commit records that SHA without rewriting history.
+Integrate both commits in order; retain the health registry's in-progress state.
+
+## 2026-09-05 — Phase 3.1 admission/readback continuation
+
+Continued at `a401858e` under explicit health-only ownership and no-concurrent-
+full-harness instructions. Added red contracts for `normalize_json` and
+`validate_table`; each first failed import with exit 2. Implemented bounded
+UTF-8 JSON admission, duplicate-member rejection, exact UTC conversion with
+unknown-offset/overflow rejection, redacted Arrow errors, and bounded typed
+readback using the same normalizer. Added all-eight-set context, nullability,
+metadata and version negative fixtures plus two-vintage Parquet replay.
+
+The final matrix passes 585 tests and reaches 100% line/branch coverage across
+108 normalization statements/26 branches and 100 format-inventory statements/
+26 branches. One existing SQLite ResourceWarning remains visible. Scoped Ruff
+format/lint and basedpyright pass. Commands, code/test hashes, observed red
+results and mutation recovery are in `normalization-admission-validation.json`.
+The final cold unfiltered one-worker mutation run passes 154 tests and kills
+107/107 mutants (72 normalization, 35 formats), with no other outcomes or cache
+hits. No full harness, source acquisition, rights decision or external write
+was performed. Existing source-profile negatives are mapped explicitly in
+`negative-fixture-matrix.md`; broad positive fixture qualification stays pending.
+
+## 2026-09-05 — Phase 3.2 SQLite inventory repair
+
+The dedicated SQLite tests first produced six failures and three passes.
+URI fragments hid `mode=ro`, a missing fragment-bearing path created an alias
+database inside the test temporary directory, percent escapes changed path
+selection, and quoted table names broke SQL parsing. Replaced raw URI assembly
+with `path.resolve().as_uri()` plus explicit read-only mode, and doubled embedded
+identifier quotes. All nine new contracts pass; byte/neighbor preservation and
+connection closure are exercised without retained source payloads.
+
+The first combined mutation run exited 3 because the test spy patched the shared
+sqlite3 module used by coverage. Restricted the spy to `formats.sqlite3` through
+an isolated namespace, then reran the complete focused matrix and cold mutation
+lane. Final results are 585 tests/100% changed-module coverage and 107/107 kills;
+35 of those mutants belong to formats. No production test suppression was added.
+Normalization commit `57d592dfd723c671c49265e1f4306a137c78d732` precedes this
+separate SQLite source checkpoint. The original normalization receipt was not
+edited, preserving the parent's boolean audit-field correction on integration.

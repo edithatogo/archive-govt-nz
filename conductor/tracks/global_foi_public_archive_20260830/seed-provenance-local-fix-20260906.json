@@ -1,0 +1,30 @@
+{
+  "schema_version": "archive-govt-nz.foi-local-fix/v1",
+  "task_id": "P2.5",
+  "base_commit": "c5233ae7fc0beb065071cf3554596456f6575131",
+  "observed_at": "2026-09-05T14:15:29Z",
+  "scope": "local_code_and_tests_only",
+  "paths": [
+    "src/archive_govt_nz/foi_catalogue.py",
+    "tests/test_foi_seed_provenance.py"
+  ],
+  "red_regressions": 7,
+  "validation": {
+    "final_foi_suite": {
+      "passed": 483,
+      "failed": 0,
+      "command": "uv run --locked pytest tests/test_foi*.py tests/test_verify_foi_rollout_evidence.py tests/test_publish_foi_cli.py tests/tools/test_verify_foi_automation_readiness.py -q --no-cov"
+    },
+    "module_line_and_branch_coverage_percent": 100,
+    "ruff": "passed",
+    "basedpyright": "passed",
+    "mutations_killed": [
+      "seed_inventory",
+      "seed_symlink"
+    ]
+  },
+  "repository_gate": "See local-safe-gaps-20260906.json; focused success is not whole-repository certification.",
+  "phase_acceptance": "not_satisfied",
+  "publication_performed": false,
+  "ownership_transfer_performed": false
+}

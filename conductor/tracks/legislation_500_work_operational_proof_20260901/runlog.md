@@ -1,5 +1,21 @@
 # Run log
 
+## Superseding ordered verification — 2026-09-06 (Australia/Brisbane)
+
+Verified main `c5233ae7` and preserved unrelated work in an isolated checkout.
+Fresh read-only GitHub downloads covered both run/job records and six artifacts
+for preflight 33968519628 and full run 33968609350. All ZIP sizes and SHA-256
+digests matched provider metadata. Native unpack/state-root/parent verification
+passed for 904 CAS objects; the native one-batch reconciler passed with zero
+mismatches and all 500 governed Work IDs. A corrupted CAS object was rejected.
+Primary timestamps and sanitized receipts prove the required preflight order.
+
+The paired superseding report and receipt are in
+`evidence/migrations/corpus-legislation-nz/500-work-operational-proof/hosted-closeout-20260906/`.
+No new dispatch or publication was performed. The older 33800180992 execution
+and all failed attempts remain historical evidence. The optional 904-to-child
+cycle remains unproven; it is not substituted for this verified 552-parent run.
+
 - 2026-09-01: fetched target main and independently read donor archive/head.
 - 2026-09-01: three parallel read-only audits inspected prerequisites, workflow/credential contracts, and independent verification design.
 - 2026-09-01: observed Prompt 06 issue #308 open; Prompt 10 issue #327 and preparation-only draft PR #329 open.

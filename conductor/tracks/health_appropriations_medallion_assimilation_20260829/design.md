@@ -190,6 +190,14 @@ loss accounting but does not itself claim normalization or source completeness.
 
 ## Silver domain model
 
+The opt-in [exact normalization boundary](./recordset-normalization.md) converts
+decoded JSON rows into the eight Arrow shapes after local identity uniqueness,
+time-order and decimal/null consistency checks. It preserves unknown source
+context and does not substitute for source-specific semantic or lineage review.
+Bounded JSON-byte admission now rejects duplicate members and binary inputs;
+Arrow/Parquet readback reuses the same local invariants after exact metadata
+validation. File parsing/fixity and source-semantic promotion remain separate.
+
 The additive [record-set registry](./recordset-contracts.md) specifies eight
 versioned structural Arrow shapes without rewriting source-specific v1 tables.
 Its bounded Decimal128 carrier preserves representable source values; future
@@ -296,6 +304,11 @@ unresolved until joined to resource-level rights evidence. Output completion
 requires a valid manifest and matching hashes in a newly reserved directory.
 
 ## Gold analytical model
+
+The existing SQLite structural inventory now uses encoded literal file URIs and
+quoted schema identifiers; see [the bounded repair](./sqlite-inventory-boundary.md).
+This preserves the read-only interface but does not add fact extraction,
+hash-verified snapshots, concurrent-source guarantees or donor parity claims.
 
 ### Raw compatibility export boundary
 

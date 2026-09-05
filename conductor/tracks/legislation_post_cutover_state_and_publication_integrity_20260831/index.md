@@ -11,3 +11,6 @@ Controller only; parent issue #276. Programme remains incomplete.
 - [Live observations](./live-observations.json)
 - [Validation](./validation.json)
 - [Metadata](./metadata.json)
+- Current independent acceptance: `evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json`
+  and paired `report.md`. Overall incomplete pending hosted-parent compatibility
+  and integrated validation; first-cycle operational evidence remains verified.

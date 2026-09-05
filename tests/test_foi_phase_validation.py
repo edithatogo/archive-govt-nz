@@ -91,11 +91,35 @@ def test_fully_evidenced_catalogue_satisfies_phase_acceptance() -> None:
             row["complete_verified"] = True
             geographic += 1
     catalogue["coverage"]["verified_complete"] = geographic
+    catalogue["coverage"]["remaining_unverified"] = 0
 
     result = validate_catalogue_phase(catalogue)
     assert result["status"] == "passed"
     assert result["phase_acceptance"] == "satisfied"
     assert result["blockers"] == []
+
+
+@pytest.mark.parametrize(
+    ("section", "field", "value", "reason"),
+    [
+        ("entity", "known_sources", 999, "entity_source_count_mismatch"),
+        ("entity", "known_sources", False, "entity_source_count_mismatch"),
+        ("coverage", "remaining_unverified", 0, "remaining_coverage_mismatch"),
+        ("coverage", "remaining_unverified", 250.0, "remaining_coverage_mismatch"),
+        ("coverage", "verified_complete", False, "completion_evidence_mismatch"),
+        ("coverage", "supranational_entities", True, "coverage_count_mismatch"),
+        ("entity", "complete_verified", "false", "invalid_completion_flag"),
+    ],
+)
+def test_denominator_counts_require_consistent_typed_values(
+    section: str, field: str, value: object, reason: str
+) -> None:
+    """Python boolean/integer equality must not validate malformed accounting."""
+    catalogue = build_reviewed_catalogue(SEEDS)
+    target = catalogue["entities"][0] if section == "entity" else catalogue["coverage"]
+    target[field] = value
+    with pytest.raises(ValueError, match=reason):
+        validate_catalogue_phase(catalogue)
 
 
 def test_cli_writes_blocked_receipt_and_returns_two(

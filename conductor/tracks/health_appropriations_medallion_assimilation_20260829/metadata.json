@@ -4,7 +4,28 @@
   "type": "feature",
   "status": "in_progress",
   "created_at": "2026-08-29T05:39:14Z",
-  "updated_at": "2026-09-05T08:02:18Z",
+  "updated_at": "2026-09-05T14:44:16Z",
+  "sqlite_inventory_repair": {
+    "status": "focused_and_mutation_passed_combined_full_gate_owned_by_parent",
+    "evidence": "sqlite-inventory-boundary.md",
+    "source_normalization_complete": false,
+    "donor_parity_complete": false
+  },
+  "normalization_admission": {
+    "status": "focused_and_mutation_passed_combined_full_gate_owned_by_parent",
+    "evidence": "normalization-admission-validation.json",
+    "negative_fixtures": "complete_for_existing_bounded_profiles",
+    "whole_phase_complete": false,
+    "hosted_delivery": "not_attempted"
+  },
+  "normalization_prerequisite": {
+    "status": "focused_passed_combined_full_gate_delegated_to_parent",
+    "evidence": "normalization-validation.json",
+    "base_commit": "c5233ae7",
+    "scope": "phase_3_1_exact_json_arrow_prerequisite",
+    "whole_phase_complete": false,
+    "hosted_delivery": "not_attempted"
+  },
   "historical_source_discovery": {
     "receipt": "historical-source-register.json",
     "status": "partial_metadata_only",
