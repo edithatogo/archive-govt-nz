@@ -16,39 +16,47 @@ if TYPE_CHECKING:
 
 def load_seeds(folder: Path) -> tuple[dict[str, Any], list[Any], list[Any], list[Any]]:
     """Read byte-verified donor seeds without trusting their completion claims."""
-    provenance = json.loads(
-        (folder / "seed-provenance.json").read_text(encoding="utf-8")
-    )
+    provenance_path = folder / "seed-provenance.json"
+    if provenance_path.is_symlink():
+        msg = "seed provenance uses a symlink"
+        raise ValueError(msg)
+    provenance = json.loads(provenance_path.read_bytes())
+    donor_files = [record["local_file"] for record in provenance["files"]]
+    if (
+        sorted(donor_files)
+        != [
+            "donor-additional-sites.json",
+            "donor-instances.json",
+            "donor-jurisdiction-targets.json",
+        ]
+        or provenance["universe"]["local_file"] != "country-universe.json"
+        or provenance["hf_snapshot"]["local_file"] != "hf-repository-snapshot.json"
+    ):
+        msg = "seed provenance inventory mismatch"
+        raise ValueError(msg)
+    verified: dict[str, Any] = {}
     for record in [
         *provenance["files"],
         provenance["universe"],
         provenance["hf_snapshot"],
     ]:
         path = folder / record["local_file"]
-        if (
-            path.parent != folder
-            or hashlib.sha256(path.read_bytes()).hexdigest() != record["sha256"]
-        ):
+        if path.is_symlink():
+            msg = "seed provenance uses a symlink"
+            raise ValueError(msg)
+        payload = path.read_bytes()
+        if hashlib.sha256(payload).hexdigest() != record["sha256"]:
             msg = "seed provenance hash mismatch or unsafe path"
             raise ValueError(msg)
-    universe = json.loads(
-        (folder / "country-universe.json").read_text(encoding="utf-8")
-    )
+        verified[record["local_file"]] = json.loads(payload)
+    universe = verified["country-universe.json"]
     universe["seed_provenance"] = provenance
-    universe["hf_snapshot"] = json.loads(
-        (folder / "hf-repository-snapshot.json").read_text(encoding="utf-8")
-    )
+    universe["hf_snapshot"] = verified["hf-repository-snapshot.json"]
     return (
         universe,
-        json.loads((folder / "donor-instances.json").read_text(encoding="utf-8"))[
-            "instances"
-        ],
-        json.loads(
-            (folder / "donor-additional-sites.json").read_text(encoding="utf-8")
-        )["sites"],
-        json.loads(
-            (folder / "donor-jurisdiction-targets.json").read_text(encoding="utf-8")
-        )["targets"],
+        verified["donor-instances.json"]["instances"],
+        verified["donor-additional-sites.json"]["sites"],
+        verified["donor-jurisdiction-targets.json"]["targets"],
     )
 
 
