@@ -3,14 +3,20 @@
   "observed_at": "2026-09-05",
   "source_id": "ca-federal-atip",
   "scope_id": "ca-federal-atip.nil-returns",
-  "status": "blocked_missing_allowlist_evidence",
+  "status": "blocked_allowlist_digest_mismatch",
   "publication_eligible": false,
   "allowlist": {
     "expected_count": 162,
     "expected_sha256": "74524ed8b5a8a279e40ab9406ebfadbdd0bdef79a283caa7625950df55f82033",
-    "materialized_rows": null,
-    "materialized_sha256": null,
-    "result": "Only the expected digest and count are present in the policy; the row-level allowlist is not available for comparison."
+    "materialized_rows": 162,
+    "materialized_sha256": "6782abe38a0be0412bc5271c4a094dcfc12b4640b0bf25663518efc0043c10a2",
+    "canonical_pair_hashes_tested": [
+      "33df4f9a6e445f219cb781d80aceb8d66efb0c55371ade2e9b6ff9e729cf0671",
+      "dfbe45b59aa700a160bfd8bcd9c210bc1bde02a3210b9aa155ca63a45f25a751",
+      "76e535acf9a3885570bf5f003caddc5c0bdc0f6d09e1d1ad7b407fef0916f5cd",
+      "b02e80affd0d9d97a14b6bba9c838b6cba6167bc09d0b934a62c92c69e54b21c"
+    ],
+    "result": "The current public ati-nil.csv contains the expected row count, but its source hash and tested canonical id/title-pair hashes do not match the policy digest. The allowlist definition or revision must be reconciled before admission."
   },
   "checks": {
     "source_resource_exact": true,
@@ -22,8 +28,8 @@
     "anonymous_public_restore": false
   },
   "required_follow_up": [
-    "Materialize the 162 organisation id/title pairs from an attributable primary source or preserved allowlist artifact.",
-    "Hash the materialized allowlist and compare it with the policy digest.",
+    "Reconcile the policy digest definition with the current attributable 162-pair source revision.",
+    "Record the canonicalization algorithm or replace the stale allowlist digest before admission.",
     "Quarantine any missing, changed, ambiguous or non-institutional pair.",
     "Generate a public-only manifest containing only ati-nil.csv, index.jsonl and manifest.json after the comparison passes.",
     "Verify anonymous restore before any Hugging Face publication."
