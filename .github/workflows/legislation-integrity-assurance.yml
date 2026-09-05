@@ -1,0 +1,148 @@
+name: Supplemental legislation integrity assurance
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled]
+  workflow_dispatch:
+    inputs:
+      confirmed_execution:
+        description: "Run the bounded supplementary integrity suites"
+        required: true
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+concurrency:
+  group: legislation-integrity-assurance-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  supplementary:
+    if: >-
+      (github.event_name == 'pull_request' &&
+      contains(github.event.pull_request.labels.*.name, 'legislation-integrity-assurance')) ||
+      (github.event_name == 'workflow_dispatch' && inputs.confirmed_execution)
+    name: Supplemental (${{ matrix.suite }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        include:
+          - suite: parent-state
+            script: tests/tools/run_legislation_parent_state_mutations.py
+            directory: true
+          - suite: durable-state
+            script: tests/tools/run_legislation_durable_mutations.py
+            directory: true
+          - suite: seed-registry
+            script: tests/tools/run_seed_registry_mutations.py
+            directory: true
+          - suite: source-sets
+            script: tools/mutation_source_sets.py
+            directory: false
+          - suite: discovery
+            script: tools/mutation_legislation_discovery.py
+            directory: false
+          - suite: zenodo-identity
+            script: tools/mutation_zenodo_identity.py
+            directory: false
+          - suite: zenodo-publication
+            script: tools/mutation_zenodo_publication.py
+            directory: false
+          - suite: donor-bundle
+            script: tools/mutation_legislation_donor_bundle.py
+            directory: false
+          - suite: evidence-index
+            script: tools/mutation_legislation_evidence_index.py
+            directory: false
+          - suite: release-correction
+            script: tools/mutation_legislation_release_correction.py
+            directory: false
+    env:
+      COVERAGE_CORE: ctrace
+      PYTHON_JIT: "0"
+    steps:
+      - name: Check out exact reviewed revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Set up locked runtime
+        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+        with:
+          version: "0.6.5"
+          python-version: "3.14"
+      - name: Install locked environment
+        run: uv sync --locked
+      - name: Run existing integrity suite
+        env:
+          MUTATION_SCRIPT: ${{ matrix.script }}
+          DIRECTORY_OUTPUT: ${{ matrix.directory }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p build/supplementary
+          output="$RUNNER_TEMP/supplementary-mutants"
+          args=()
+          if [ "$DIRECTORY_OUTPUT" = "true" ]; then
+            args+=("$output")
+          fi
+          set +e
+          uv run --locked python "$MUTATION_SCRIPT" "${args[@]}" > build/supplementary/execution.log 2>&1
+          result=$?
+          set -e
+          if [ -d "$output" ]; then
+            for path in "$output"/*.log "$output"/*.json; do
+              if [ -f "$path" ]; then
+                cp "$path" build/supplementary/
+              fi
+            done
+          fi
+          export MUTATION_EXIT_CODE="$result"
+          export MUTATION_OUTPUT_DIRECTORY="$output"
+          uv run --locked python - <<'PY'
+          import hashlib
+          import json
+          import os
+          import platform
+          import subprocess
+          import sys
+          from pathlib import Path
+
+          root = Path("build/supplementary")
+          files = [path for path in root.iterdir() if path.is_file()]
+          assert len(files) <= 100
+          assert sum(path.stat().st_size for path in files) <= 25 * 1024 * 1024
+          receipt = {
+              "schema_version": "archive-govt-nz.supplementary-hosted-assurance/v1",
+              "target_commit": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
+              "run_id": os.environ["GITHUB_RUN_ID"],
+              "run_attempt": os.environ["GITHUB_RUN_ATTEMPT"],
+              "command": ["uv", "run", "--locked", "python", os.environ["MUTATION_SCRIPT"]]
+                         + ([os.environ["MUTATION_OUTPUT_DIRECTORY"]]
+                            if os.environ["DIRECTORY_OUTPUT"] == "true" else []),
+              "directory_output": os.environ["DIRECTORY_OUTPUT"] == "true",
+              "exit_code": int(os.environ["MUTATION_EXIT_CODE"]),
+              "python": sys.version,
+              "platform": platform.platform(),
+              "files": [{"name": path.name, "size_bytes": path.stat().st_size,
+                         "sha256": hashlib.sha256(path.read_bytes()).hexdigest()}
+                        for path in sorted(files)],
+              "publication_performed": False,
+          }
+          (root / "execution-receipt.json").write_text(json.dumps(receipt, indent=2) + "\n")
+          PY
+          exit "$result"
+      - name: Preserve success and failure receipts
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: legislation-integrity-${{ matrix.suite }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: build/supplementary/
+          retention-days: 14
+          if-no-files-found: error

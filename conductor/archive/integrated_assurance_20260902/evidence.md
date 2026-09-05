@@ -43,3 +43,12 @@ jobs rejected a `Secret Keyword` candidate introduced by the receipt's
 `credential_scan` and minimizes the raw API files to stable policy fields,
 retaining source-response hashes in the normalized receipt. Scanner policy is
 unchanged.
+
+## Superseding closeout scope — 2026-09-05
+
+The earlier statement that every incomplete condition was superseded was too
+broad: resolving the three security/policy defects did not establish final
+integrated-head assurance after the operational fixes. The historical record
+remains preserved. The [new closeout supplement](../../tracks/integrated_assurance_closeout_20260905/index.md)
+tracks remaining exact-head full and supplementary validation for the same
+issue #351; Prompt 20 remains incomplete until those gates pass.
