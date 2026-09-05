@@ -533,6 +533,12 @@ repository validation command. External gates block only their affected task.
 
 ### 7.1 Metadata and rights contracts first
 
+- [~] Generate local DCAT recordset/distribution metadata only after original,
+  raw and canonical package verification and projection equality. Retain exact
+  physical-schema/fixity inventory; reject forged or altered inputs and do not
+  infer access URLs, licensing, publication dates or full standards conformance.
+  [M-14, M-18; AC-14, AC-16]
+
 - [~] Compose a read-only local provenance verifier for explicit canonical
   historical/classification marker pins, original objects and raw package pins.
   Compare retained tables/accounting with recomputed pure projections and return

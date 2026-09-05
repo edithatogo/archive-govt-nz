@@ -1,5 +1,39 @@
 # Run Log
 
+## Verified local DCAT generation — 2026-09-05 UTC
+
+Started from `c3504f92` in an isolated worktree, preserving the inventory PR's
+running validation tree. `uv sync --locked --all-groups` succeeded. The initial
+focused regression failed collection with missing `local_dcat`, then the
+implementation passed 13 tests. Adversarial review added re-pinned semantic,
+schema and rights changes plus duplicate packages, bringing the suite to 23.
+
+Commands completed:
+
+- `uv run --locked ruff format --check src/archive_govt_nz/domains/health_appropriations/local_dcat.py tests/domains/health_appropriations/test_local_dcat.py`
+- `uv run --locked ruff check src/archive_govt_nz/domains/health_appropriations/local_dcat.py tests/domains/health_appropriations/test_local_dcat.py`
+- `uv run --locked pytest -q --cov=archive_govt_nz.domains.health_appropriations.local_dcat --cov-branch --cov-report=term-missing --cov-fail-under=100 tests/domains/health_appropriations/test_local_dcat.py`: 23 passed, 100%.
+- `uv run --locked basedpyright --threads 4 src/archive_govt_nz/domains/health_appropriations/local_dcat.py tests/domains/health_appropriations/test_local_dcat.py`: zero errors/warnings/notes.
+
+Cold mutation completed in 52.94 seconds: 10/10 killed, zero survivors, errors,
+timeouts, pardons or cache hits, one worker and no coverage filter. Command:
+`uv run --locked pytest tests/domains/health_appropriations/test_local_dcat.py -q --gremlins --gremlin-targets=src/archive_govt_nz/domains/health_appropriations/local_dcat.py --gremlin-report=json --gremlin-workers=1 --gremlin-clear-cache --gremlin-no-coverage-filter --strict-pardons --gremlin-max-pardons-pct=0 --max-pardons=0 --no-cov`.
+Report SHA256 `b92cb69a4c8ca990853040d9e8334705bed83da5e78030832e8afc669c8615d4`.
+The coverage-collection warning did not enable filtering. Conductor validation
+passes for all 92 tracks. Full and hosted assurance remain pending.
+
+A subsequent read-only replay used the separately recorded historical marker
+and raw-manifest pins for the retained 2024/2025 packages. It generated six
+Dataset/Distribution pairs with identical results on reversed input order;
+before/after SHA256s for all 20 original/raw/canonical files matched. Graph
+SHA256 `bf9c84e09d32aef5ff9877e8ac84c5c6dab5d2fed5050199689f45f1cd7b5b6a`;
+verification SHA256 `1ac8ea6a9214e9fe2873e9bc5f4e2c5f8f3312c0c0130e9273e58d88eaebfe77`.
+The graph was generated in memory, not retained or uploaded. Script
+`/tmp/health-dcat-replay.n6K1jz/replay.py` SHA256
+`8869ffa61729639d59d2600d99caceaa362f2e5d62ea0a66eae98b3167da2c2c`.
+This covers those two historical snapshots, not every supported source family,
+whole-estate recovery, rights decisions or full standards validation.
+
 ## Optional graph/vector evaluation — 2026-09-04
 
 - Re-read C-01/C-02, W-07, the Platinum design, and the existing generic

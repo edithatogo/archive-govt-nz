@@ -1,5 +1,29 @@
 # Self-Review
 
+## Verified DCAT implementation review — 2026-09-05 UTC
+
+Reviewed M-14/AC-14 mapping against DCAT3 Distribution and byte-size semantics.
+Recordsets and package versions are distinct datasets; their local Parquet
+representations have separate identities. Identity derives from validated
+product metadata, while exact source/package/payload pins and physical schemas
+remain in the accompanying verified inventory. No made-up publisher, location,
+licence, date or full conformance claim is emitted. The graph uses only inline
+namespace declarations and the existing read-only verifier, without a new
+dependency or changes to the general Gold exporter.
+
+Negative review cases ensure a new marker/payload hash cannot excuse changed
+canonical values, schema metadata or rights claims. All 23 focused tests and
+targeted static checks pass. Mutation, full assurance and hosted delivery remain
+pending; the plan task and whole metadata phase remain in progress. The stale
+standards route now distinguishes the already implemented assertion-only PROV
+helper from this verified-snapshot DCAT work.
+
+Follow-up validation killed all 10 cold mutants and passed a read-only replay
+on the two independently pinned retained historical packages. The replay
+returned six separate recordsets and unchanged input hashes in both input
+orders. Full/hosted assurance still remains outstanding; there is no source
+rights promotion or permanent metadata-output retention in this replay.
+
 ## Health domain registration reconciliation — 2026-09-04 UTC
 
 The immutable Arrow registry exposes the dedicated `health_appropriations`
