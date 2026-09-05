@@ -63,8 +63,10 @@
     },
     {
       "entity_id": "AM",
-      "source_ids": [],
-      "next_action": "discover_official_and_civic_sources",
+      "source_ids": [
+        "am-open-data"
+      ],
+      "next_action": "review_named_sources_and_discover_gaps",
       "broader_discovery_required": true,
       "country_denominator": null,
       "country_complete": false
@@ -142,8 +144,10 @@
     },
     {
       "entity_id": "AZ",
-      "source_ids": [],
-      "next_action": "discover_official_and_civic_sources",
+      "source_ids": [
+        "az-open-data"
+      ],
+      "next_action": "review_named_sources_and_discover_gaps",
       "broader_discovery_required": true,
       "country_denominator": null,
       "country_complete": false
@@ -2983,13 +2987,35 @@
       "schedule_active": false,
       "publication_approved": false,
       "capture_evidence": "lk-open-data-discovery-20260905.json"
+    },
+    {
+      "source_id": "am-open-data",
+      "entity_id": "AM",
+      "publication_group": "restricted_or_unclear",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_discover_scope",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "am-open-data-discovery-20260905.json"
+    },
+    {
+      "source_id": "az-open-data",
+      "entity_id": "AZ",
+      "publication_group": "restricted_or_unclear",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_discover_scope",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "az-open-data-discovery-20260905.json"
     }
   ],
   "summary": {
     "entities": 251,
-    "sources": 75,
+    "sources": 77,
     "entities_requiring_broader_discovery": 251,
-    "entities_without_named_sources": 180,
+    "entities_without_named_sources": 178,
     "public_raw_complete_countries_verified": 0
   }
 }
