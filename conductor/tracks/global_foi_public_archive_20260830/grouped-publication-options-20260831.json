@@ -132,9 +132,9 @@
           "owner_org",
           "owner_org_title"
         ],
-        "organisation_allowlist_sha256": "74524ed8b5a8a279e40ab9406ebfadbdd0bdef79a283caa7625950df55f82033",
+        "organisation_allowlist_sha256": "6782abe38a0be0412bc5271c4a094dcfc12b4640b0bf25663518efc0043c10a2",
         "organisation_count": 162,
-        "organisation_allowlist_status": "pending_initial_agent_conformance_review",
+        "organisation_allowlist_status": "agent_conformant_to_live_source_revision_2026-09-05; recapture_required",
         "attribution": "Contains information licensed under the Open Government Licence \u2013 Canada.",
         "licence_url": "https://open.canada.ca/en/open-government-licence-canada",
         "proposed_public_destination": {
