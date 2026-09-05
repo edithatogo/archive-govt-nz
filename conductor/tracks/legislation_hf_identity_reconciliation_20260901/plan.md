@@ -13,4 +13,4 @@
 - [x] Review fix: verify the authorized `metadata.json` path, size, and SHA-256
   independently in the anonymous exact-revision readback test.
 
-- [~] Complete final validation, exact-head hosted checks, and issue closeout for the superseding evidence.
+- [x] Establish final validation evidence and reviewed acceptance closeout; enforce fresh exact-head hosted checks before integration via PR #396.
