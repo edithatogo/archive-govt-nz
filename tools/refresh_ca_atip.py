@@ -17,6 +17,8 @@ SOURCE_URL = (
 EXPECTED_SHA256 = "6782abe38a0be0412bc5271c4a094dcfc12b4640b0bf25663518efc0043c10a2"
 EXPECTED_FIELDS = ["year", "month", "owner_org", "owner_org_title"]
 REPO_ID = "edithatogo/foi-ca-federal-atip"
+EXPECTED_ROWS = 6226
+EXPECTED_ORGANISATION_PAIRS = 162
 
 
 def _sha256(path: Path) -> str:
@@ -31,14 +33,17 @@ def build_package(output: Path) -> dict[str, object]:
     with urlopen(request, timeout=60) as response:  # noqa: S310 - pinned HTTPS URL
         csv_path.write_bytes(response.read())
     if _sha256(csv_path) != EXPECTED_SHA256:
-        raise ValueError("approved_source_hash_drift")
+        reason = "approved_source_hash_drift"
+        raise ValueError(reason) from None
     with csv_path.open(newline="", encoding="utf-8-sig") as stream:
         rows = list(csv.DictReader(stream))
-    if list(rows[0]) != EXPECTED_FIELDS or len(rows) != 6226:
-        raise ValueError("approved_source_schema_or_count_drift")
+    if list(rows[0]) != EXPECTED_FIELDS or len(rows) != EXPECTED_ROWS:
+        reason = "approved_source_schema_or_count_drift"
+        raise ValueError(reason) from None
     pairs = {(row["owner_org"], row["owner_org_title"]) for row in rows}
-    if len(pairs) != 162:
-        raise ValueError("approved_organisation_allowlist_drift")
+    if len(pairs) != EXPECTED_ORGANISATION_PAIRS:
+        reason = "approved_organisation_allowlist_drift"
+        raise ValueError(reason) from None
     index_path = output / "index.jsonl"
     with index_path.open("w", encoding="utf-8", newline="\n") as stream:
         for number, row in enumerate(rows, 1):
@@ -63,17 +68,28 @@ def build_package(output: Path) -> dict[str, object]:
         "source_id": "ca-federal-atip",
         "source_url": SOURCE_URL,
         "files": [
-            {"path": "ati-nil.csv", "bytes": csv_path.stat().st_size, "sha256": _sha256(csv_path)},
-            {"path": "index.jsonl", "bytes": index_path.stat().st_size, "sha256": _sha256(index_path)},
+            {
+                "path": "ati-nil.csv",
+                "bytes": csv_path.stat().st_size,
+                "sha256": _sha256(csv_path),
+            },
+            {
+                "path": "index.jsonl",
+                "bytes": index_path.stat().st_size,
+                "sha256": _sha256(index_path),
+            },
         ],
         "rows": len(rows),
         "organisation_pairs": len(pairs),
     }
-    (output / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+    (output / "manifest.json").write_text(
+        json.dumps(manifest, indent=2) + "\n", encoding="utf-8"
+    )
     return manifest
 
 
 def main() -> int:
+    """Build and verify the approved package from the pinned source."""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
@@ -83,7 +99,11 @@ def main() -> int:
         destination.mkdir(parents=True, exist_ok=True)
         for name in ("ati-nil.csv", "index.jsonl", "manifest.json"):
             (destination / name).write_bytes((Path(temporary) / name).read_bytes())
-    print(json.dumps({"status": "verified", "repo_id": REPO_ID, **manifest}, sort_keys=True))
+    print(
+        json.dumps(
+            {"status": "verified", "repo_id": REPO_ID, **manifest}, sort_keys=True
+        )
+    )
     return 0
 
 
