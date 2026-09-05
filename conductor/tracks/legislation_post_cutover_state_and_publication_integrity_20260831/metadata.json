@@ -6,11 +6,26 @@
   "description": "Prompt 01 controller and serial dependency registration",
   "issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/276",
   "created_at": "2026-08-31T13:45:32Z",
-  "updated_at": "2026-09-03T11:55:00Z",
+  "updated_at": "2026-09-05T14:25:00Z",
   "pr_url": "https://github.com/edithatogo/archive-govt-nz/pull/289",
   "legacy_date_only_timestamps": {
     "created_at": "2026-08-31",
     "updated_at": "2026-08-31"
   },
-  "created_at_basis": "First tracked commit 6885c3e50e34f19f15459abe8eca1409675f068b committer timestamp; prior calendar-only values retained separately."
+  "created_at_basis": "First tracked commit 6885c3e50e34f19f15459abe8eca1409675f068b committer timestamp; prior calendar-only values retained separately.",
+  "acceptance_report": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json",
+  "gates": [
+    {
+      "id": "HOSTED-PARENT-NAME-001",
+      "kind": "integration",
+      "status": "pending",
+      "evidence": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/hosted-parent-interface-defect.json"
+    },
+    {
+      "id": "parent-final-integrated-tree",
+      "kind": "validation",
+      "status": "pending",
+      "evidence": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json"
+    }
+  ]
 }

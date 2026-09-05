@@ -1,0 +1,150 @@
+{
+  "observed_at": "2026-09-05T14:16:00Z",
+  "issues": [
+    {
+      "number": 278,
+      "state": "CLOSED",
+      "title": "Prompt 02: reconcile final donor lineage after imported baseline",
+      "url": "https://github.com/edithatogo/archive-govt-nz/issues/278"
+    },
+    {
+      "number": 284,
+      "state": "CLOSED",
+      "title": "Prompt 03: independently verify final donor operational-state artifact",
+      "url": "https://github.com/edithatogo/archive-govt-nz/issues/284"
+    },
+    {
+      "number": 292,
+      "state": "CLOSED",
+      "title": "Prompt 04: deterministic donor and target canonical-state merge",
+      "url": "https://github.com/edithatogo/archive-govt-nz/issues/292"
+    },
+    {
+      "number": 299,
+      "state": "CLOSED",
+      "title": "Prompt 05: restore reviewed seed and govern stable inventory selection",
+      "url": "https://github.com/edithatogo/archive-govt-nz/issues/299"
+    },
+    {
+      "number": 308,
+      "state": "CLOSED",
+      "title": "Prompt 06: exact-inventory custody and revalidation lane",
+      "url": "https://github.com/edithatogo/archive-govt-nz/issues/308"
+    },
+    {
+      "number": 310,
+      "state": "CLOSED",
+      "title": "Prompt 07: bounded discovery and freshness lane",
+      "url": "https://github.com/edithatogo/archive-govt-nz/issues/310"
+    },
+    {
+      "number": 312,
+      "state": "CLOSED",
+      "title": "Prompt 08: fail-closed parent-state restoration and lineage",
+      "url": "https://github.com/edithatogo/archive-govt-nz/issues/312"
+    },
+    {
+      "number": 321,
+      "state": "CLOSED",
+      "title": "Prompt 09: durable legislation state package and preservation authority",
+      "url": "https://github.com/edithatogo/archive-govt-nz/issues/321"
+    },
+    {
+      "number": 327,
+      "state": "CLOSED",
+      "title": "Prompt 10: independent durable legislation recovery drill",
+      "url": "https://github.com/edithatogo/archive-govt-nz/issues/327"
+    },
+    {
+      "number": 330,
+      "state": "CLOSED",
+      "title": "Prompt 11: typed legislation source-set configuration contract",
+      "url": "https://github.com/edithatogo/archive-govt-nz/issues/330"
+    },
+    {
+      "number": 333,
+      "state": "CLOSED",
+      "title": "Prompt 12: legislation harvest accounting and receipt semantics",
+      "url": "https://github.com/edithatogo/archive-govt-nz/issues/333"
+    },
+    {
+      "number": 335,
+      "state": "OPEN",
+      "title": "Prompt 13: target-owned 500-work operational proof",
+      "url": "https://github.com/edithatogo/archive-govt-nz/issues/335"
+    },
+    {
+      "number": 337,
+      "state": "CLOSED",
+      "title": "Prompt 14: historical coverage and 33,693-candidate reconciliation",
+      "url": "https://github.com/edithatogo/archive-govt-nz/issues/337"
+    },
+    {
+      "number": 341,
+      "state": "OPEN",
+      "title": "Prompt 15: Hugging Face identity and target-origin reconciliation",
+      "url": "https://github.com/edithatogo/archive-govt-nz/issues/341"
+    },
+    {
+      "number": 343,
+      "state": "CLOSED",
+      "title": "Prompt 16: correct Zenodo concept and version DOI identity",
+      "url": "https://github.com/edithatogo/archive-govt-nz/issues/343"
+    },
+    {
+      "number": 345,
+      "state": "CLOSED",
+      "title": "Correct legislation evidence index and closeout claims",
+      "url": "https://github.com/edithatogo/archive-govt-nz/issues/345"
+    },
+    {
+      "number": 347,
+      "state": "CLOSED",
+      "title": "Correct cutover release recovery provenance",
+      "url": "https://github.com/edithatogo/archive-govt-nz/issues/347"
+    },
+    {
+      "number": 349,
+      "state": "CLOSED",
+      "title": "Prompt 19: verify donor bundle and prepare archival presentation",
+      "url": "https://github.com/edithatogo/archive-govt-nz/issues/349"
+    },
+    {
+      "number": 351,
+      "state": "OPEN",
+      "title": "Prompt 20: integrated quality, security, and hosted assurance gate",
+      "url": "https://github.com/edithatogo/archive-govt-nz/issues/351"
+    },
+    {
+      "number": 356,
+      "state": "OPEN",
+      "title": "Prompt 21: final independent adversarial verification",
+      "url": "https://github.com/edithatogo/archive-govt-nz/issues/356"
+    },
+    {
+      "number": 352,
+      "state": "CLOSED",
+      "title": "Security: resolve open high-severity CodeQL URL alerts",
+      "url": "https://github.com/edithatogo/archive-govt-nz/issues/352"
+    },
+    {
+      "number": 353,
+      "state": "CLOSED",
+      "title": "Workflow lint: resolve two actionlint SC2086 findings",
+      "url": "https://github.com/edithatogo/archive-govt-nz/issues/353"
+    },
+    {
+      "number": 354,
+      "state": "CLOSED",
+      "title": "Governance: enforce exact-head checks on main",
+      "url": "https://github.com/edithatogo/archive-govt-nz/issues/354"
+    },
+    {
+      "number": 357,
+      "state": "CLOSED",
+      "title": "Prompt 16 defect: active files retain wrong Zenodo concept DOI",
+      "url": "https://github.com/edithatogo/archive-govt-nz/issues/357"
+    }
+  ],
+  "note": "Issue status is administrative evidence only. Open #351 does not reverse verified exact-head assurance; parent owns hosted closeout."
+}

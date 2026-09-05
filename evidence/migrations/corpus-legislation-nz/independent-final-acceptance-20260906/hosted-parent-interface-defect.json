@@ -1,0 +1,27 @@
+{
+  "observed_at": "2026-09-05T14:22:39.979820+00:00",
+  "actual_artifact": {
+    "id": 9970365066,
+    "name": "legislation-exact-inventory-state-33968609350-1",
+    "size_in_bytes": 10628850,
+    "digest": "sha256:9f9b9bd856de05ba2a9481781564e0a49d368d1c6c2770b74b807a4845adc318"
+  },
+  "metadata_check": {
+    "exception": "VerificationError",
+    "code": "artifact_run_name"
+  },
+  "artifact_name_schema": {
+    "type": "string",
+    "pattern": "^legislation-state-[1-9][0-9]*$"
+  },
+  "schema_rejects_actual_name": true,
+  "requirements_classification": {
+    "second_cycle": "Should in committed requirements; issue335 says where possible",
+    "actual_interface_defect": "Current hosted metadata/schema reject actual producer output; native inner-state acceptance does not prove hosted parent usability"
+  },
+  "owner_prompt": 8,
+  "consumer_prompt": 6,
+  "tracking_issue": 335,
+  "fix_owner": "parent delegated compatibility agent",
+  "modified_production": false
+}

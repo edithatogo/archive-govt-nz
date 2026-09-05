@@ -1,0 +1,33 @@
+{
+  "bundle_sha256": "f125f91b06264a97e59f65fac47878a74d646c915f12c0b05841c1550ec741c2",
+  "bundle_size_bytes": 2365303,
+  "git_bundle_verify": true,
+  "git_fsck_exit_code": 0,
+  "bundle_refs": 124,
+  "live_ref_differences": [
+    {
+      "ref": "refs/heads/main",
+      "remote": "905f9e07c17af9d9d25dbe2b1c052fb8a290a4e3",
+      "bundle": "b40587f1b1aec7356a0f623916fcc8212397d283"
+    },
+    {
+      "ref": "refs/tags/migration-final-20260821",
+      "remote": "cdd6a397a96773c06519e2e86bbe7a606b26bd58",
+      "bundle": null
+    },
+    {
+      "ref": "refs/tags/migration-final-20260821^{}",
+      "remote": "b40587f1b1aec7356a0f623916fcc8212397d283",
+      "bundle": null
+    }
+  ],
+  "historical_batches": 68,
+  "candidate_count": 33693,
+  "candidate_sha256": "6f70fa9b596be2baa77bd885df1857e9b89c04013361c9ad80af722b0cc8493b",
+  "all_batch_hashes_sizes_counts_verified": true,
+  "source_inventory_equal": true,
+  "import_files_verified": 216,
+  "import_tree": "4faf5bebac0d6cf8f06b87e83b282a9953505ce9",
+  "import_receipt_sha256": "6e9f9bcbd70ac2adaf6358df50c5c024165c619ae298e9c747f39b58cbe00977",
+  "disposition": "Complete frozen operational graph; later README presentation and annotated tag differences explicitly retained. No claim that the original bundle contains later presentation history."
+}

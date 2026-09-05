@@ -1,0 +1,44 @@
+{
+  "command": "./scripts/validate.sh",
+  "baseline": "c5233ae7fc0beb065071cf3554596456f6575131",
+  "production_changes": false,
+  "attempts": [
+    {
+      "attempt": 1,
+      "exit_code": 1,
+      "tests_passed": 4798,
+      "tests_failed": 1,
+      "coverage_percent": 97.61,
+      "random_seed": 2731850223,
+      "failure": "tests/tools/test_merge_legislation_states.py::test_union_algebra",
+      "classification": "Hypothesis timing FlakyFailure",
+      "initial_ms": 338.19,
+      "replay_ms": 162.4,
+      "deadline_ms": 200
+    },
+    {
+      "attempt": "focused_unchanged_replay",
+      "command": "uv run --locked pytest tests/tools/test_merge_legislation_states.py::test_union_algebra -q --no-cov --randomly-seed=2731850223",
+      "exit_code": 0,
+      "tests_passed": 1,
+      "seconds": 6.53
+    },
+    {
+      "attempt": 2,
+      "exit_code": 0,
+      "random_seed": 1433983807,
+      "tests_collected": 4799,
+      "tests_passed": 4799,
+      "all_configured_stages_passed": true,
+      "dependency_vulnerabilities": 0,
+      "credential_findings": 0,
+      "sbom_components": 112,
+      "cas_throughput_mb_s": 575.33
+    }
+  ],
+  "actionlint": {
+    "command": "actionlint .github/workflows/*.yml",
+    "exit_code": 0
+  },
+  "limitation": "The harness began on the pinned baseline; track-local documentation/evidence was added during the rerun. Post-edit Conductor, JSON, diff and credential checks are recorded separately. Parent integrated final-tree harness remains a separate gate."
+}

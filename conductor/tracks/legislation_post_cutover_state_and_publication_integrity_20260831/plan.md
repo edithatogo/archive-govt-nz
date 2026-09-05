@@ -1,5 +1,18 @@
 # Plan
 
+## Independent acceptance review — 2026-09-06
+
+- [x] Re-read exact baseline contracts and independently verify live hosted and
+  anonymous primary evidence; retain dated final matrix and report.
+- [x] Review parent P13/P15 evidence and receipt/schema binding without changing
+  their tracks or the global registry.
+- [x] Reproduce and route HOSTED-PARENT-NAME-001 to the parent-delegated Prompt08
+  compatibility owner; distinguish first-cycle acceptance from hosted usability.
+- [~] Complete final validation and integrate the compatibility correction before
+  any overall completion or lifecycle archival; parent owns delivery.
+
+## Historical plan
+
 - [x] Recover parent issue #276 and inspect current target/donor and child deliveries.
 - [x] Register supplied Prompts 02 and 03 with exact owners, boundaries and handoffs.
 - [x] Encode the supplied dependency graph and four independent completion dimensions.
