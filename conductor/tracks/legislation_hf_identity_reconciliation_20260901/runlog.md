@@ -40,3 +40,9 @@ All six first-attempt failures passed unchanged in a serial rerun. Rebased onto 
 The monthly public readback and canonical selected-state comparison executed successfully and are preserved separately. This resolves the prior recovery metadata handoff without broadening the published payload.
 
 Additional outcomes are preserved in `validation-additional-attempts-20260905.json`: the second focused rerun had one further algebra timing flake; the one-worker run was deliberately interrupted after 730 passes and two deadline flakes; the separately executed post-test gates stopped at a checkpoint mutation subprocess timeout. None is a local full-pass claim. Independent hosted Ubuntu and macOS full harnesses each passed all 4,742 tests at 97.60% coverage on `abfd287a18be654b7bbc97e5c536ac144d4ef268`, plus all configured downstream gates. Windows remains pending at this entry.
+
+## PR review follow-up
+
+Full final-head checks passed at `2eb2a1449b6b562455391dfe9a9e873c936e6540`, but two subsequent review findings prevent merge. The duplicate-slug schema finding reproduced with six red tests, then all 27 focused/property tests passed after exact-once constraints. The constraint-removal mutation was detected by all six negative cases. A lint finding on a positional Boolean test parameter was corrected with a keyword-only argument. Historical v1/v2 remain unchanged.
+
+The Prompt 13 formal-prerequisite review exposed a missing credential/endpoint no-write check, not merely a status typo. The owning issue #335 was reopened for its separately reviewed fix and named superseding reports. Prompt 15 metadata/plan are explicitly in progress until that full prerequisite passes. The registry's operational-proof Boolean remains factual about the independently verified run; it is not a claim that every Prompt 13 action is complete.
