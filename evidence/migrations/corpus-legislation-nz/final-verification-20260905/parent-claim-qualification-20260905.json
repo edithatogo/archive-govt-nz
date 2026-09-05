@@ -1,0 +1,30 @@
+{
+  "schema_version": "archive-govt-nz.parent-claim-qualification/v1",
+  "observed_at": "2026-09-05T08:48:27.985544+00:00",
+  "target_commit": "c92c3d2f717b55537b5d338d430689125e95fa66",
+  "supersedes_claims_only": [
+    {
+      "path": "evidence/completion-proofs/operational-state-verification.json",
+      "sha256": "5e1e3a0907493e6a830fde9b3d2a57c4e066a47fb9c6a6f34eb861f61696e101",
+      "claim": "checks.valid_sealed_continuation_parent is a local state-integrity verification, not a supported hosted parent reference."
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/closeout-20260905/500-work-target-revalidation.json",
+      "delivery": "PR400 branch only; not merged at observation",
+      "claim": "continuation.output_valid_as_next_parent requires explicit local-versus-hosted qualification."
+    }
+  ],
+  "run_id": 33800180992,
+  "local_state_parent_valid": true,
+  "hosted_parent_reference_compatible": false,
+  "second_cycle_proven": false,
+  "primary_contract": {
+    "path": "schemas/legislation-parent-reference-v1.schema.json",
+    "sha256": "952794bf07c67fb79780735b6bb5f9117a37989caf030ec2f89a2a2b547c656d",
+    "artifact_name_pattern": "^legislation-state-[1-9][0-9]*$",
+    "observed_artifact_name": "legislation-exact-inventory-state-33800180992-1",
+    "independent_regex_match": false
+  },
+  "additional_constraint": "Current preflight_only asserts durable-parent-reference/v1; does not accept an Actions parent descriptor.",
+  "boundary": "Historical552-to904 executed continuation is proven; local verification cannot imply904-to-child hosted second cycle or public durable904publication. No guard altered."
+}

@@ -1,0 +1,57 @@
+{
+  "schema_version": "archive-govt-nz.terminal-gate-readiness/v1",
+  "observed_at": "2026-09-05T08:48:27.985544+00:00",
+  "status": "incomplete",
+  "terminal_evaluation_performed": false,
+  "target_commit": "c92c3d2f717b55537b5d338d430689125e95fa66",
+  "main_response_sha256": "eef5313a79991cc5b64d59fff0423e0b847a8d42ebf0dfb13b9d9e5e24e1fb7e",
+  "source_fix_pr": {
+    "number": 400,
+    "state": "open",
+    "merged": false,
+    "head": "0f94cd8fa9f7a701c2523ea04041554f10c80a0b",
+    "response_sha256": "86a991e5bec84ffc385f3e060f4d2dc5dfbd1aa3d65db89d138e7f7c47d76c24"
+  },
+  "workflow_run_response_sha256": "9c0753946ed7697dcae0f492101c45f1067cfccf8c59def3841e31964a094ec8",
+  "latest_exact_run": {
+    "id": 33800180992,
+    "head_sha": "95d5e0959158df3e5f816b012b66049135ff3d54",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-09-03T20:05:07Z"
+  },
+  "blockers": [
+    {
+      "owner_prompt": 13,
+      "issue": 335,
+      "requirement": "Reviewed sourcepreflight repair merged; authorized standalone no-write preflight plus new full500run with preflight beforeharvest; independent artifact verification and named repositorycloseout.",
+      "status": "pending"
+    },
+    {
+      "owner_prompt": 15,
+      "issue": 341,
+      "requirement": "Consume exact finalizedP13receipt and resolve metadatareadback/schema acceptance.",
+      "status": "pending"
+    },
+    {
+      "owner_prompt": 20,
+      "issue": 351,
+      "requirement": "Integrated final assurance on candidate containing all repairs and evidence.",
+      "status": "pending"
+    },
+    {
+      "owner_prompt": 21,
+      "issue": 356,
+      "requirement": "Terminal16criteria plus11planned probes rerun afterP20; original/preparatoryreports cannot substitute.",
+      "status": "pending"
+    }
+  ],
+  "evaluator_plan": {
+    "stage1": "Preserve old index/evaluation bytes and dates.",
+    "stage2": "Bind new exactrun sourcepreflight artifact and stepchronology plus accounting/CAS/reconciliation proofs.",
+    "stage3": "Use current strict evaluator with datedsuperseding index/output, active validatedproofs only.",
+    "stage4": "Reject missing/later/wrongrun preflight; distinguish localstate validity from supportedhostedparent reference and executedsecondcycle.",
+    "stage5": "Require all16criteria,11probes and fourdimensions separately beforecomplete."
+  },
+  "no_external_mutations": true
+}
