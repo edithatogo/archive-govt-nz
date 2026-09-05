@@ -1,0 +1,28 @@
+{
+  "schema_version": "archive-govt-nz.prompt13-ordered-closeout/v1",
+  "issue": 335,
+  "status": "INCOMPLETE",
+  "repository_base_commit": "c5233ae7fc0beb065071cf3554596456f6575131",
+  "operational_commit": "87f65e8b37cbc16bc6c7cf8b5b93a19e48f0f207",
+  "donor_final_head": "905f9e07c17af9d9d25dbe2b1c052fb8a290a4e3",
+  "donor_archived": true,
+  "ordered_proof": {
+    "path": "ordered-operational-proof.json",
+    "sha256": "fb1a345a3ec2d20c4e3f744a426abbf0928a1e7050a1fdee6a0b007099804671"
+  },
+  "verified": [
+    "authenticated_no_write_preflight",
+    "target_owned_500_work_run",
+    "all_500_dispositions",
+    "904_cas_object_fixity",
+    "zero_unexplained_reconciliation_mismatches",
+    "six_retained_artifact_archive_hashes",
+    "two_clean_restores_of_verified904_output_artifact"
+  ],
+  "remaining_blockers": [
+    "Second continuation with the new904-record output as parent is not executed; repeated552-to904 execution is not that chain."
+  ],
+  "external_publication_performed": false,
+  "historical_evidence_preserved": true,
+  "durable_recovery_scope": "Prompt10 proves selected552 durable parent recovery. Two clean restores separately prove resulting904 output restorability from verified Actions artifact; new904 durable publication/recovery is not claimed."
+}
