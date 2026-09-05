@@ -38,7 +38,18 @@
     "scanner_final_recheck": "passed",
     "independent_integration_review": "passed"
   },
-  "final_full_gate": "pending",
+  "final_full_gate": {
+    "status": "passed",
+    "source_commit": "0a6b4a82df3059e75994a111b68489939369cf69",
+    "command": "PYTEST_XDIST_AUTO_NUM_WORKERS=2 ./scripts/validate.sh",
+    "exit_code": 0,
+    "tests_passed": 4979,
+    "coverage_percent": 97.63,
+    "all_stages_passed": true,
+    "sbom_components": 112,
+    "historical_receipt_bytes_preserved": true,
+    "scanner_test_ast_unchanged": true
+  },
   "hosted_delivery": "pending",
   "next_parent_continuation": "pending",
   "publication_performed": false
