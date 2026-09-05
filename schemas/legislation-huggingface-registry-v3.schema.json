@@ -128,7 +128,8 @@
         "durable_package_revision",
         "metadata_revision",
         "readback_receipt_path",
-        "readback_receipt_sha256"
+        "readback_receipt_sha256",
+        "prompt13_receipt_path"
       ],
       "properties": {
         "status": {
@@ -193,6 +194,9 @@
             }
           ],
           "items": false
+        },
+        "prompt13_receipt_path": {
+          "const": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/ordered-20260905/ordered-operational-proof.json"
         }
       }
     },

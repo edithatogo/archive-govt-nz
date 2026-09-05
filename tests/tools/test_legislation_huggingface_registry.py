@@ -107,9 +107,7 @@ def test_registry_is_bound_to_coverage_and_publication_authority() -> None:
     coverage = _load(
         EVIDENCE_ROOT / "historical-coverage/historical-coverage-report.json"
     )
-    prompt13 = (
-        EVIDENCE_ROOT / "huggingface-publication/operational-prerequisite-20260905.json"
-    )
+    prompt13 = ROOT / registry["publication_gate"]["prompt13_receipt_path"]
     assert (
         registry["coverage"]["candidate_ids"]
         == coverage["candidate_inventory"]["candidate_ids"]
@@ -119,7 +117,7 @@ def test_registry_is_bound_to_coverage_and_publication_authority() -> None:
         == coverage["candidate_inventory"]["candidate_sha256"]
     )
     assert registry["publication_gate"]["prompt13_receipt_sha256"] == _sha256(prompt13)
-    assert _load(prompt13)["status"] == "verified"
+    assert _load(prompt13)["status"] == "ordered_operational_run_independently_verified"
     assert registry["publication_gate"] == {
         "status": "published_verified",
         "remote_write_authorized": True,
@@ -145,6 +143,7 @@ def test_registry_is_bound_to_coverage_and_publication_authority() -> None:
         ],
         "prompt13_operational_proof": True,
         "prompt13_receipt_sha256": _sha256(prompt13),
+        "prompt13_receipt_path": prompt13.relative_to(ROOT).as_posix(),
         "payload_rights": "approved_public_selected_552",
         "durable_package_revision": "ae4da4ef0446f68fddd8f53279ecb1245f1529b9",
         "metadata_revision": "04688f12dd687618e2085ae31f9b8a4a50a88b16",
@@ -407,5 +406,42 @@ def test_registry_rejects_duplicate_slug_with_arbitrary_revision(
     replacement = copy.deepcopy(registry["identities"][duplicate])
     replacement["observed_revision"] = revision
     registry["identities"][(duplicate + offset) % 3] = replacement
+    with pytest.raises(ValidationError):
+        Draft202012Validator(_load(SCHEMA_PATH)).validate(registry)
+
+
+@pytest.mark.parametrize("invalid", [None, "", "../proof.json", "unverified.json"])
+def test_registry_rejects_unowned_operational_receipt_path(invalid: object) -> None:
+    """P15 cannot redirect operational proof to an unverified path."""
+    registry = copy.deepcopy(_load(REGISTRY_PATH))
+    registry["publication_gate"]["prompt13_receipt_path"] = invalid
+    with pytest.raises(ValidationError):
+        Draft202012Validator(_load(SCHEMA_PATH)).validate(registry)
+
+
+def test_ordered_operational_proof_matches_published_parent() -> None:
+    """Ordered operation is verified without expanding published state scope."""
+    registry = _load(REGISTRY_PATH)
+    path = ROOT / registry["publication_gate"]["prompt13_receipt_path"]
+    proof = _load(path)
+    assert _sha256(path) == registry["publication_gate"]["prompt13_receipt_sha256"]
+    assert proof["operational_run"] == 33968609350
+    assert proof["preflight_run"] == 33968519628
+    assert proof["work_count"] == 500
+    assert proof["changed"] + proof["unchanged"] == proof["work_count"]
+    assert proof["failed"] == proof["unexplained_mismatches"] == 0
+    assert proof["parent_records"] == registry["state"]["record_count"] == 552
+    assert proof["output_records"] == proof["physical_objects_verified"] == 904
+    assert proof["publication_performed"] is False
+    for item in proof["evidence"]:
+        evidence = path.parent / item["path"]
+        assert _sha256(evidence) == item["sha256"]
+        assert evidence.stat().st_size == item["size_bytes"]
+
+
+def test_registry_requires_operational_receipt_path() -> None:
+    """A digest alone must not omit the governed specialist receipt identity."""
+    registry = copy.deepcopy(_load(REGISTRY_PATH))
+    del registry["publication_gate"]["prompt13_receipt_path"]
     with pytest.raises(ValidationError):
         Draft202012Validator(_load(SCHEMA_PATH)).validate(registry)

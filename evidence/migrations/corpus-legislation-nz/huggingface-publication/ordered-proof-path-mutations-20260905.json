@@ -1,0 +1,20 @@
+{
+  "scope": "Focused schema mutation witnesses for new required exact specialist receipt identity; not general runtime mutation coverage.",
+  "schema_sha256": "aa1440c90a0c97abf2e2de210eee730ef92e8af0a2794557f7f92b2b8a51dcb1",
+  "mutants": [
+    {
+      "mutation": "missing-path-guard",
+      "original_rejects": true,
+      "mutant_accepts": true,
+      "witness_kills_guard_removal": true
+    },
+    {
+      "mutation": "wrong-path-guard",
+      "original_rejects": true,
+      "mutant_accepts": true,
+      "witness_kills_guard_removal": true
+    }
+  ],
+  "killed": 2,
+  "total": 2
+}
