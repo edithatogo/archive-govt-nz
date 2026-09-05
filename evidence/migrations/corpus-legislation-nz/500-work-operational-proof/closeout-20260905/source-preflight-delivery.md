@@ -39,3 +39,28 @@ The new tool's focused validation is bound by source SHA in
 all eight specific integrity mutants killed. Historical collection/lint/coverage
 selector failures are retained in attempts.json. These focused results do not
 replace the required full harness or successful hosted execution.
+
+
+## Ordered verification after the new no-write preflight
+
+After the standalone no-write preflight succeeds on reviewed main, execute one
+new authorized full exact-500 run from the same approved 552-record durable
+parent. The repaired workflow must complete its mandatory source preflight
+before harvest in that new run. Verify primary step timestamps, sanitized receipt,
+all retained artifact digests and per-work outcomes independently before closeout.
+This supplies the required chronology without changing run 33800180992's history.
+
+The historical 552-to904 run and this additional approved 552-parent run are
+continuations, but neither proves a 904-to-child second cycle. Existing Actions
+parent-reference artifact-name constraints reject the actual exact-inventory
+artifact name, while preflight-only requires the durable-parent contract. Do not
+fabricate compatibility, relax a guard, or infer public 904 publication. Keep the
+conditional second-cycle limitation explicit in the final assessment.
+
+## Full harness failed attempts
+
+`source-preflight-validation/full-harness-attempts/attempts.json` retains the
+E501 failure, subsequent formatter failure, and the configured 900-second timeout
+at head 2bd24ab15c132ea5bf339cdac75b098ec43704d5. The timeout log has five failure
+markers at 98 percent progress without test IDs or tracebacks. Their cause remains
+unresolved; this is not a passed harness or an established environment flake.
