@@ -291,3 +291,15 @@ it does not satisfy P2.2/P2.3 or manufacture worldwide completeness.
 The exact branch then passed the full local harness: 4,655 tests, 97.50%
 coverage, all schema/parity/mutation and supply-chain gates, and a validated
 111-component SBOM. Hosted exact-head checks remain separate.
+
+## 2026-09-05 — Progress-monitor validation follow-up
+
+The full local run on the monitor branch finished with 4,708 passing tests,
+two failing Hypothesis timing checks and 97.58% coverage. The URN generation
+failure passed with recorded seed 225385357854653241213053794728394182631.
+The receipt-name property reproduced timing instability in isolation; its
+unchanging filesystem fixture is now built once outside generated examples,
+while each example receives a fresh file mapping and retains the original
+assertion and deadline. The corrected property, lint, formatting and typing
+passed. A full two-worker validation is pending. These focused results do not
+replace the failed full run or establish operational monitoring acceptance.
