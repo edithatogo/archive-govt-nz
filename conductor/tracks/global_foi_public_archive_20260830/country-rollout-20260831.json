@@ -880,8 +880,10 @@
     },
     {
       "entity_id": "IN",
-      "source_ids": [],
-      "next_action": "discover_official_and_civic_sources",
+      "source_ids": [
+        "in-rti-online"
+      ],
+      "next_action": "verify_public_disclosure_catalogue_or_annual_statistics",
       "broader_discovery_required": true,
       "country_denominator": null,
       "country_complete": false
@@ -2248,6 +2250,17 @@
       "capture_evidence": "separate_pilot_receipt_required"
     },
     {
+      "source_id": "in-rti-online",
+      "entity_id": "IN",
+      "publication_group": "restricted_or_unclear",
+      "group_is_candidate_only": true,
+      "next_action": "verify_public_disclosure_catalogue_or_annual_statistics",
+      "source_denominator": null,
+      "schedule_active": false,
+      "publication_approved": false,
+      "capture_evidence": "in-rti-online-discovery-20260905.json"
+    },
+    {
       "source_id": "ie-myrighttoknow",
       "entity_id": "IE",
       "publication_group": "mixed_correspondence",
@@ -2404,9 +2417,9 @@
   ],
   "summary": {
     "entities": 251,
-    "sources": 30,
+    "sources": 31,
     "entities_requiring_broader_discovery": 251,
-    "entities_without_named_sources": 223,
+    "entities_without_named_sources": 222,
     "public_raw_complete_countries_verified": 0
   }
 }
