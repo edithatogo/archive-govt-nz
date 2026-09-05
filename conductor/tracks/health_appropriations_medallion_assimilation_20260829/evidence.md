@@ -1,5 +1,23 @@
 # Evidence
 
+## Independent offline RDF interpretation — 2026-09-05 UTC
+
+Added development-only RDFLib 7.6.0, with no existing locked dependency version
+changed, after recording its stack/security rationale. The combined RDF/DCAT/
+PROV suite passes 47 tests; six new parser tests cover exact expanded triples,
+resource/literal types, actual payload checksum bytes and blocked external
+contexts. Ruff and typing pass. The 12 upstream parser deprecation warnings
+remain visible. Dependency vulnerability and licence gates pass, and the
+strict CycloneDX validator accepts the 112-component SBOM.
+
+A separate guarded parse of the two retained historical snapshots yielded
+66 triples, six datasets, six distributions and six checksums. The accompanying
+replay verified all 20 original/raw/canonical files unchanged. Exact script and
+graph hashes are recorded in `runlog.md`. This advances RDF processing evidence
+without rewriting the generation helpers' per-call receipts or claiming a full
+DCAT application profile, rights decision, publication or graph-index deployment.
+Full/hosted assurance for the follow-up is still pending.
+
 ## Verified local DCAT projection — 2026-09-05 UTC
 
 `local_dcat.py` composes strict original/raw/canonical snapshot verification

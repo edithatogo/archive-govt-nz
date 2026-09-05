@@ -1,5 +1,22 @@
 # Self-Review
 
+## Offline RDF interpretation review — 2026-09-05 UTC
+
+The prior JSON-shape checks did not independently expand predicates, check RDF
+object kinds or exercise the typed literal mapping. Added a development-only
+RDFLib lane rather than a bespoke partial JSON-LD parser. DCAT fixtures require
+exact triple counts, separate recordset/distribution nodes, registered media-type
+resources, non-negative integer byte sizes and binary SHA256 values matching
+retained fixture bytes. PROV fixtures require every entity and exact directed
+derivation pair. External HTTP and file contexts fail under the parser's scoped
+I/O guard; the guard is not represented as an operating-system sandbox.
+
+Forty-seven combined tests and targeted static checks pass. Source-only runtime
+helpers remain unchanged, and no RDF store/index/service or publication authority
+is introduced. The pinned parser's internal ConjunctiveGraph deprecation warnings
+remain visible. Supply-chain and full/hosted gates are pending; no full DCAT
+application-profile, rights or track acceptance is claimed.
+
 ## DCAT media type and interoperable fixity — 2026-09-05 UTC
 
 Primary-source review verified Parquet's IANA registration and DCAT's preference

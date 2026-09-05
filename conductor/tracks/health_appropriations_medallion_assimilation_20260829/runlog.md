@@ -1,5 +1,45 @@
 # Run Log
 
+## Offline RDF processor validation — 2026-09-05 UTC
+
+Recorded the development-only RDFLib adoption rationale in `tech-stack.md`
+before installing it. The initial test failed collection because RDFLib was
+absent. `uv lock` added only RDFLib 7.6.0, with the existing pyparsing dependency
+unchanged; no optional stores or runtime requirements were added. The resolver
+reported normalization warnings for historical package metadata but did not
+change any pre-existing locked version.
+
+Six parser tests passed after installation. Lint then rejected `Any` annotations
+in the denial callback; changing them to `object`/`Never` and formatting the file
+resolved the findings. Targeted Ruff and typing pass. The combined RDF/DCAT/PROV
+suite passes 47 tests in 14.43 seconds, with 12 upstream RDFLib deprecation
+warnings retained. It proves graph expansion, exact relationships and typed
+literal interpretation, plus blocked HTTP/file contexts. It does not alter the
+production helpers' per-call `standards_processor_validation` receipts.
+
+Dependency audit, licence inventory and SBOM validation are running. Full and
+hosted assurance for this test/dependency change remain pending. PR #398 and
+its live full validation remain isolated from this follow-up branch.
+
+The three supply-chain controls subsequently passed: no known vulnerabilities,
+accepted installed licence inventory and a strictly validated 112-component
+CycloneDX SBOM. The generator's internal validation-skipped warning refers only
+to the duplicate pass; the mandatory strict validator completed successfully.
+Audit receipt SHA256
+`2bf9fd0b5d1f48f6cffe5236a2f064ef2357a089a7511a718e3e1a569a1775b0`;
+licence receipt SHA256
+`dcc9caf97314d07c589b2233bee18bfa0f016a499135a017ad31b4a029e7497a`.
+
+The retained historical replay also passed RDF interpretation with 66 triples,
+six datasets, six distributions and six checksum nodes. External file/network
+access was denied during parsing. Its input graph SHA256 remains
+`3017b176fd35842a8b4cb5d1d168d809b53a3cd9c327aef15181225d0e73b1e1`,
+and the preceding original/raw/canonical replay again verified 20 unchanged
+input files. Script `/tmp/health-dcat-replay.n6K1jz/rdf-replay.py` SHA256
+`f5462e4f2bfd459f074dce1b9c12e247f92e6b8d8f1247d3191614fff3d14a29`.
+These are local processor results, not application-profile or publication
+acceptance. No production helper or source payload changed in this follow-up.
+
 ## Initial DCAT native assurance result — 2026-09-05 UTC
 
 The required `./scripts/validate.sh` on `c481b42d` terminated with exit 1:
