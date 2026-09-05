@@ -33,9 +33,9 @@ def test_only_complete_passed_status_is_excluded(field: str) -> None:
         line.replace(field, "other_" + field),
         line.removesuffix(","),
         "prefix " + line,
-        line + ' "password": "synthetic-credential-value"',
-        line + ' // password="synthetic-credential-value"',
-        line + '\npassword="synthetic-credential-value"',
+        line + ' "password": "synthetic-credential-value"',  # pragma: allowlist secret
+        line + ' // password="synthetic-credential-value"',  # pragma: allowlist secret
+        line + '\npassword="synthetic-credential-value"',  # pragma: allowlist secret
     ):
         assert re.search(PATTERN, invalid) is None
 
@@ -43,10 +43,13 @@ def test_only_complete_passed_status_is_excluded(field: str) -> None:
 @pytest.mark.parametrize(
     ("line", "excluded"),
     [
-        ('  "secrets": "passed",', True),
+        ('  "secrets": "passed",', True),  # pragma: allowlist secret
+        # pragma: allowlist nextline secret
         ('  "audit_licenses_secrets_sbom": "passed",', True),
+        # pragma: allowlist nextline secret
         ('  "secrets": "synthetic-credential-value",', False),
         (
+            # pragma: allowlist nextline secret
             '  "secrets": "passed", "password": "different-synthetic-credential"',
             False,
         ),
