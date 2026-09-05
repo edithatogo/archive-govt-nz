@@ -1,0 +1,32 @@
+{
+  "schema_version": "archive-govt-nz.ca-organisation-conformance/v1",
+  "observed_at": "2026-09-05",
+  "source_id": "ca-federal-atip",
+  "scope_id": "ca-federal-atip.nil-returns",
+  "status": "blocked_missing_allowlist_evidence",
+  "publication_eligible": false,
+  "allowlist": {
+    "expected_count": 162,
+    "expected_sha256": "74524ed8b5a8a279e40ab9406ebfadbdd0bdef79a283caa7625950df55f82033",
+    "materialized_rows": null,
+    "materialized_sha256": null,
+    "result": "Only the expected digest and count are present in the policy; the row-level allowlist is not available for comparison."
+  },
+  "checks": {
+    "source_resource_exact": true,
+    "ogl_attribution_recorded": true,
+    "nil_return_schema_screen": true,
+    "personal_or_requester_fields_detected": false,
+    "organisation_id_title_allowlist_match": false,
+    "public_only_manifest_generated": false,
+    "anonymous_public_restore": false
+  },
+  "required_follow_up": [
+    "Materialize the 162 organisation id/title pairs from an attributable primary source or preserved allowlist artifact.",
+    "Hash the materialized allowlist and compare it with the policy digest.",
+    "Quarantine any missing, changed, ambiguous or non-institutional pair.",
+    "Generate a public-only manifest containing only ati-nil.csv, index.jsonl and manifest.json after the comparison passes.",
+    "Verify anonymous restore before any Hugging Face publication."
+  ],
+  "rights_boundary": "No raw publication, source activation or Hugging Face repository creation follows from this receipt."
+}
