@@ -15,6 +15,8 @@ every planned record set, measure or operational workflow.
 
 ## Artifacts
 
+- [SQLite inventory path and identifier repair](./sqlite-inventory-boundary.md)
+
 - [Negative-fixture matrix](./negative-fixture-matrix.md)
 - [JSON admission and readback validation](./normalization-admission-validation.json)
 

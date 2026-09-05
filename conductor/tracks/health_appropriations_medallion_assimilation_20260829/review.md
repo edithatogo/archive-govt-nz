@@ -1058,3 +1058,17 @@ scope is recorded instead of asserting universal source qualification. The
 original positive-fixture task and Phase 3 checkpoint stay pending. Final
 focused and cold mutation gates pass; no in-scope finding remains. Parent owns
 combined full validation. Global registry and main fixture files are unchanged.
+
+## 2026-09-05 — SQLite structural adapter review
+
+Verified literal path encoding keeps `mode=ro` outside URI fragments and table
+names are identifiers rather than SQL syntax. The observed alias creation was
+confined to synthetic red tests. Successful tests prove no missing file is
+created, actual connections reject writes and close, and stable source bytes
+and directory contents survive repeated inventory. Source schema text and row
+counts are unchanged. The scoped spy avoids coverage-tool interception.
+
+The complete formats module reaches 100% line/branch coverage and all 35 cold
+mutants are killed. This does not grant snapshot, WAL sidecar, hostile database,
+row normalization or donor parity guarantees; those remain explicit future
+contracts. No high-confidence in-scope finding remains. No full harness ran.

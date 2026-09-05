@@ -305,6 +305,11 @@ requires a valid manifest and matching hashes in a newly reserved directory.
 
 ## Gold analytical model
 
+The existing SQLite structural inventory now uses encoded literal file URIs and
+quoted schema identifiers; see [the bounded repair](./sqlite-inventory-boundary.md).
+This preserves the read-only interface but does not add fact extraction,
+hash-verified snapshots, concurrent-source guarantees or donor parity claims.
+
 ### Raw compatibility export boundary
 
 The source-derived export verifies the entire pinned raw run and its Bronze

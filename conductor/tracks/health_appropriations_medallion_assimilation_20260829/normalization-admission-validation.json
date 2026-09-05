@@ -1,6 +1,7 @@
 {
   "schema_version": "health-normalization-admission-validation/v1",
   "base_commit": "a401858e42b631516e7b60c83f131989646ded08",
+  "normalization_commit": "57d592dfd723c671c49265e1f4306a137c78d732",
   "status": "focused_and_mutation_passed_combined_full_gate_owned_by_parent",
   "recorded_at": "2026-09-05T14:44:16Z",
   "source_sha256": {

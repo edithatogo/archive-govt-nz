@@ -226,6 +226,7 @@ repository validation command. External gates block only their affected task.
   [M-05, M-06, M-18; AC-05, AC-16]
   Also revalidate already-decoded Arrow/Parquet rows against exact schema
   metadata and local invariants. See `normalization-admission-validation.json`.
+  Functional commit `57d592df`.
 
 - [x] Add an opt-in exact JSON-to-Arrow normalization boundary and synthetic
   eight-recordset contracts for duplicate IDs, time ordering, null reasons and
@@ -266,11 +267,13 @@ repository validation command. External gates block only their affected task.
 
 ### 3.2 Implement the domain and adapter protocol
 
-- [~] Harden the existing read-only SQLite inventory adapter for URI-sensitive
+- [x] Harden the existing read-only SQLite inventory adapter for URI-sensitive
   source paths and quoted table identifiers; prove originals and neighboring
   files remain unchanged and missing paths are not created. This is structural
   inventory only, not row normalization or donor parity completion.
   [M-03, M-07, M-18; AC-02, AC-03, AC-16]
+  Nine dedicated regression tests, 100% format-module coverage and 35 cold
+  format-module mutant kills; see `sqlite-inventory-boundary.md`.
 
 - [x] Project reviewed Budget-2025/2026 facts into canonical appropriation
   fields, composing existing unmapped source-label occurrences and complete

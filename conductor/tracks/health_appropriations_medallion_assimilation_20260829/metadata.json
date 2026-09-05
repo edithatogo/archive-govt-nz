@@ -5,6 +5,12 @@
   "status": "in_progress",
   "created_at": "2026-08-29T05:39:14Z",
   "updated_at": "2026-09-05T14:44:16Z",
+  "sqlite_inventory_repair": {
+    "status": "focused_and_mutation_passed_combined_full_gate_owned_by_parent",
+    "evidence": "sqlite-inventory-boundary.md",
+    "source_normalization_complete": false,
+    "donor_parity_complete": false
+  },
   "normalization_admission": {
     "status": "focused_and_mutation_passed_combined_full_gate_owned_by_parent",
     "evidence": "normalization-admission-validation.json",

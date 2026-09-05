@@ -2136,3 +2136,22 @@ The final cold unfiltered one-worker mutation run passes 154 tests and kills
 hits. No full harness, source acquisition, rights decision or external write
 was performed. Existing source-profile negatives are mapped explicitly in
 `negative-fixture-matrix.md`; broad positive fixture qualification stays pending.
+
+## 2026-09-05 — Phase 3.2 SQLite inventory repair
+
+The dedicated SQLite tests first produced six failures and three passes.
+URI fragments hid `mode=ro`, a missing fragment-bearing path created an alias
+database inside the test temporary directory, percent escapes changed path
+selection, and quoted table names broke SQL parsing. Replaced raw URI assembly
+with `path.resolve().as_uri()` plus explicit read-only mode, and doubled embedded
+identifier quotes. All nine new contracts pass; byte/neighbor preservation and
+connection closure are exercised without retained source payloads.
+
+The first combined mutation run exited 3 because the test spy patched the shared
+sqlite3 module used by coverage. Restricted the spy to `formats.sqlite3` through
+an isolated namespace, then reran the complete focused matrix and cold mutation
+lane. Final results are 585 tests/100% changed-module coverage and 107/107 kills;
+35 of those mutants belong to formats. No production test suppression was added.
+Normalization commit `57d592dfd723c671c49265e1f4306a137c78d732` precedes this
+separate SQLite source checkpoint. The original normalization receipt was not
+edited, preserving the parent's boolean audit-field correction on integration.
