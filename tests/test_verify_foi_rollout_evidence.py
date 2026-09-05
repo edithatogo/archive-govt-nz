@@ -42,3 +42,27 @@ def test_summary_drift_is_rejected(tmp_path: Path) -> None:
     report = verify_rollout(path, tmp_path)
     assert report["valid"] is False
     assert report["summary_matches"] is False
+
+
+def test_missing_capture_evidence_is_rejected(tmp_path: Path) -> None:
+    """A source receipt that is absent from the evidence directory fails closed."""
+    rollout = {
+        "entities": [],
+        "sources": [
+            {"source_id": "missing", "capture_evidence": "missing.json"}
+        ],
+        "summary": {
+            "entities": 0,
+            "sources": 1,
+            "entities_requiring_broader_discovery": 0,
+            "entities_without_named_sources": 0,
+            "public_raw_complete_countries_verified": 0,
+        },
+    }
+    path = tmp_path / "rollout.json"
+    path.write_text(json.dumps(rollout), encoding="utf-8")
+    report = verify_rollout(path, tmp_path)
+    assert report["valid"] is False
+    assert report["missing_evidence"] == [
+        {"source_id": "missing", "evidence": "missing.json"}
+    ]
