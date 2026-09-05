@@ -1,0 +1,24 @@
+{
+  "status": "failed",
+  "command": "./scripts/validate.sh",
+  "validation_base": "f2669f1ce6ae48f3e09387608acbb8c58aa20334",
+  "log_sha256": "9bcda1808945f0125baae68e4e5f6052df7701602e3b920070ec26ccfbb104e7",
+  "passed_tests": 4706,
+  "failed_tests": 6,
+  "coverage_percent": 97.58,
+  "failures": {
+    "hypothesis_deadline": [
+      "test_archive_order_does_not_change_roots",
+      "test_union_algebra",
+      "test_state_rejects_arbitrary_unrecognized_receipts",
+      "test_decimal_property_matches_arrow"
+    ],
+    "hypothesis_generation_health_check": [
+      "test_checkpoint_root_preserves_arbitrary_persisted_json_bytes"
+    ],
+    "subprocess_timeout_5_seconds": [
+      "test_mcp_subprocess_initialization_and_tools"
+    ]
+  },
+  "remediation": "Repeat unchanged focused tests; bound xdist auto workers to 2 for the subsequent full harness. No deadlines, checks, thresholds, or tests disabled."
+}

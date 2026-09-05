@@ -12,12 +12,13 @@
       "id": "prompt13-operational-proof",
       "kind": "prerequisite",
       "status": "pending",
-      "evidence": "Prompt 13 target-owned hosted operational proof remains incomplete"
+      "evidence": "https://github.com/edithatogo/archive-govt-nz/issues/335"
     }
   ],
   "issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/341",
   "status": "in_progress",
   "track_id": "legislation_hf_identity_reconciliation_20260901",
   "type": "feature",
-  "updated_at": "2026-09-03T17:27:00Z"
+  "updated_at": "2026-09-05T07:31:28.707848Z",
+  "pr_url": "https://github.com/edithatogo/archive-govt-nz/pull/396"
 }

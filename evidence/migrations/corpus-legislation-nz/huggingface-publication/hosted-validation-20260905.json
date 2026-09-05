@@ -1,0 +1,45 @@
+{
+  "schema_version": "archive-govt-nz.hf-closeout-validation/v1",
+  "observed_at": "2026-09-05T07:04:36.239838+00:00",
+  "verified_head": "abfd287a18be654b7bbc97e5c536ac144d4ef268",
+  "ci_run_id": 33950880895,
+  "platforms": [
+    {
+      "platform": "ubuntu",
+      "job_id": 101265288751,
+      "status": "success",
+      "passed_tests": 4742,
+      "skipped_tests": 0,
+      "coverage_percent": 97.6,
+      "log_sha256": "7b5e512060c2fa6f89ea449fa6fa83b341500706ebfc090ae40c52bd57cadda7",
+      "log_size_bytes": 124115
+    },
+    {
+      "platform": "macos",
+      "job_id": 101265288817,
+      "status": "success",
+      "passed_tests": 4742,
+      "skipped_tests": 0,
+      "coverage_percent": 97.6,
+      "log_sha256": "8eea4f3eea0cde087de010af754efb803492bacd9ab32a60cd7515aee8abaa54",
+      "log_size_bytes": 94067
+    },
+    {
+      "platform": "windows",
+      "job_id": 101265288838,
+      "status": "success",
+      "passed_tests": 4740,
+      "skipped_tests": 2,
+      "coverage_percent": 97.52,
+      "log_sha256": "60bf5a0111ec29d37f46e176cbb9b06c13a37a142973e55b7d40a0046772f287",
+      "log_size_bytes": 94805
+    }
+  ],
+  "codeql_run_id": 33950880921,
+  "workflow_lint_run_id": 33950880908,
+  "codecov_patch": "success",
+  "production_python_changed": false,
+  "focused_registry_tests": 19,
+  "required_harness_stages": "All configured stages passed on each hosted platform, including schema, parity, mutation, dependency audit, licence, secret scan and SBOM. Local failed/interrupted attempts remain separately recorded.",
+  "delivery_boundary": "This receipt proves the named implementation head. A subsequent documentation/rebase head requires its own required hosted checks before merge."
+}

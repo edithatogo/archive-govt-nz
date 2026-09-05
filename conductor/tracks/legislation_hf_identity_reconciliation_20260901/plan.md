@@ -7,8 +7,10 @@
 - [x] Correct monthly reconciliation to compare the canonical dataset observation.
 - [x] Generate superseding evidence, review, and run full validation.
 - [x] Publish and independently read back the existing canonical identity under explicit authority. Completed 2026-09-03 with immutable anonymous readback evidence.
-- [ ] Reconcile the Prompt 13 operational-proof prerequisite when its target-owned hosted run is complete; do not infer it from publication.
+- [~] Reconcile the full Prompt 13 prerequisite: successful run 33800180992 is independently verified, but issue #335 must complete the credential/endpoint preflight and formal named reports.
 - [x] Review fix: bind each Hugging Face slug to its exact role, mutability,
   gating, and origin-metadata semantics in the registry schema.
 - [x] Review fix: verify the authorized `metadata.json` path, size, and SHA-256
   independently in the anonymous exact-revision readback test.
+
+- [~] Resolve PR #396 review findings and enforce fresh exact-head hosted checks before integration.

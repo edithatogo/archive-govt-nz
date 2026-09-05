@@ -1,0 +1,26 @@
+{
+  "observed_at": "2026-09-05T06:59:37.357798+00:00",
+  "attempts": [
+    {
+      "log": "timing-rerun-02.log",
+      "log_sha256": "a465faf0df1d6e4581b970ce4e5c4f42d98ad0d5d95359e5c67e9e17cf1f866b",
+      "status": "failed",
+      "result": "1 passed; test_union_algebra initial262.12ms exceeded200ms; Hypothesis replay passed"
+    },
+    {
+      "log": "validate-03.log",
+      "log_sha256": "a1abd8b184d7df192f94d7627d9f73dbfafaccfb05b4e8a8fecf51b4136d1cbe",
+      "status": "interrupted",
+      "result": "One-worker full harness:730passed,2deadlineflakes; controlled KeyboardInterrupt after364.89seconds to reduce machine contention; no full pass claimed"
+    },
+    {
+      "log": "post-test-gates.log",
+      "log_sha256": "b1a203a265144490bd2a81e896adb3369c148c2a452125cd9df0c104abb82732",
+      "status": "failed",
+      "result": "Schemas/parity and first mutation stages passed; checkpoint mutation subprocess exceeded60seconds; no credit for timed-out mutation"
+    }
+  ],
+  "thresholds_changed": false,
+  "tests_excluded": false,
+  "hosted_validation": "Independent full harnesses on PR396 exact head abfd287a18be654b7bbc97e5c536ac144d4ef268 provide separate results, never retrospective local success."
+}

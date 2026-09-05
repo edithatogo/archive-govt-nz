@@ -57,3 +57,36 @@ Focused Prompt 15 and related publication/reconciliation suite: 34 passed. The f
 Decision `archive-govt-nz-hf-publication-20260903-selected-552-v1` records the accountable maintainer's 2026-09-03 authorization in the canonical programme thread. The receipt binds candidate manifest SHA-256 `fb3caa39ffd3da9204f01ebd764237d276460dc61493eb809b7e207d17813646`, state manifest SHA-256 `877ba501a25570a29c1aada7979562d8c62c7f043865125cf402310eabc09544`, package SHA-256 `2e4b75333e947d812842147c939117fc666799e4497b80f125104f721ef68e3c`, and the exact permitted package, metadata, card, and rights files. The v2 schema restricts `approved_public_selected_552` to the canonical slug; both preserved identities must retain `source_specific_review_required`.
 
 The review-fix full harness passed 4,579 tests at 97.52% branch-aware coverage, 48 schemas/38 representative documents, parity 9/9, all mutation lanes, dependency audit, licence inventory, secret scan, and SBOM validation. The superseding publication receipt SHA-256 is `38160c4683112d951351e20d68fe34198dcab797eb371d6cf6e6d91160ba9fed`.
+
+## Superseding operational prerequisite — 2026-09-05
+
+The earlier Prompt 13 incomplete statements are historical. Run [33800180992](https://github.com/edithatogo/archive-govt-nz/actions/runs/33800180992) succeeded at `95d5e0959158df3e5f816b012b66049135ff3d54`. The dated `huggingface-publication/operational-prerequisite-20260905.json` binds its exact hosted attempt artifact, raw receipts, software revision, recovered parent and zero-mismatch accounting.
+
+The 552-record published durable package is the parent of the 904-record cumulative continuation. The batch reconciliation selects 852 records for 500 reviewed works; 52 retained parent works explain the difference. Neither the continuation nor its additional versions are claimed as published to Hugging Face.
+
+`huggingface-publication/live-identity-audit-20260905.json` records independent anonymous API and fixed-revision reads for all three existing identities. Canonical card and durable-package metadata describe the selected 552-record state. Its preserved legacy manifest describes 95 donor-era records, and the historical legacy manifest describes 6,609 records. These are distinct surfaces. Viewer `default/validation` contains one validation-report row, not a corpus count. The immutable DOI identity is gated: listed files are not evidence of anonymous payload access. Historical body wording is preserved as historical documentation; its top-level superseded role remains explicit.
+
+Monthly reconciliation explicitly selects the canonical slug and compares the selected-state card roots/counts and rights to the governed publication registry; it does not equate legacy manifest or viewer row counts to selected-state counts. No identity, DOI, immutable snapshot or remote payload changed during this closeout.
+
+### Acceptance reconciliation
+
+| Requirement | Evidence and boundary |
+| --- | --- |
+| Three non-conflicting identities | Dated live audit fixes each exact revision and role; historical and DOI identities unchanged. |
+| Target authority and donor lineage | Canonical fixed-revision card metadata names target authority and exact source commit; its body retains operational donor SHA. |
+| Evidence-based rights and coverage | Public selected-state approval remains limited to 552; candidate 33,693 and reviewed 500 counts are not complete coverage. |
+| Monthly canonical reconciliation | `.github/workflows/monthly-legislation-reconciliation.yml` passes the canonical slug to both tools; registry and card selected-state roots/counts agree. |
+| Exact remote-write readback | September 3 publication receipt remains immutable; September 5 anonymous streaming download independently reproduces the exact approved package hash. |
+| Prompt 13 prerequisite | Successful exact run, signed-in GitHub artifact download with remote digest comparison, raw continuation/harvest/lineage/reconciliation receipts, and registry hash binding. |
+
+Dated live audit SHA-256: `ab4bf796bde6c323389a87869fac71a539f2638cffd25b1c1965adf69d9c6f38`. Operational prerequisite receipt SHA-256: `bcfa99bedd7b08bf6a4c079c08fe61c2a3d752210095c0476fb7b54df5cd9411`. These are verification additions; no external write was necessary.
+
+### Executed monthly metadata comparison
+
+The repository's `verify_public_publication_identities.py` returned `passed` against live canonical Hugging Face and Zenodo APIs. The exact `_compare_hosted_dataset` implementation then returned `consistent` with no mismatches against the v3 registry. `monthly-publication-readback-20260905.json` and `monthly-comparison-20260905.json` preserve that result. This explicitly resolves the earlier Prompt 10 external metadata comparison handoff for the selected published parent; no 904-record publication claim is added.
+
+## Acceptance closeout for PR #396
+
+All six acceptance/prerequisite rows above have primary evidence. Hosted implementation head `abfd287a18be654b7bbc97e5c536ac144d4ef268` passed all required checks: Ubuntu and macOS each 4,742 tests with 97.60% coverage; Windows 4,740 passed and two skips with 97.52%. All configured schema/parity/mutation/security/licence/SBOM stages passed on each runner. CodeQL, workflow lint and required patch coverage passed. No production Python changed, so this does not invent a numeric changed-production coverage figure. `hosted-validation-20260905.json` binds run/job IDs and exact downloaded log hashes.
+
+Independent review found no remaining Prompt 15 acceptance blocker. No remote dataset write occurred during this closeout. Preserved local failures are not retrospectively reported as successful. The final documentation/rebase head must pass its own protected checks before merge and issue closure. Prompts 20/21 consume this evidence independently; the controller remains a later gate.

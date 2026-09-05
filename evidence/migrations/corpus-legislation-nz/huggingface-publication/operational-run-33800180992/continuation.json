@@ -1,0 +1,32 @@
+{
+  "context": {
+    "branch": "main",
+    "execution_id": "33800180992",
+    "repository": "edithatogo/archive-govt-nz",
+    "run_attempt": 1,
+    "run_id": 33800180992,
+    "software_commit": "95d5e0959158df3e5f816b012b66049135ff3d54",
+    "workflow": ".github/workflows/exact-inventory.yml"
+  },
+  "parent_lineage_sha256": "b4e08770f7acfc4e545b882825f0f55ed0433b5d9acac72e10d7bbd6f17113d3",
+  "roots": {
+    "cas_root_sha256": "ed93a3f7cddac8f6bc938f1005f47cfe4c309707b34b3a511cc3b66fedb47a40",
+    "checkpoint_file_sha256": "0b7faaefad7191eaa0f2e27db36cfd49ea209a3b266cd573a180ee4cf1c6d4d3",
+    "inventory_sha256": "9ca6dc505f991e015c6c997827878d8c7e9381b214a1544eb338328a285c6894",
+    "manifest_file_sha256": "0f5511dacbd5a674ccdd4c91e6b3974ce405207b87b08f33a6df95e57e495eae",
+    "manifest_sha256": "eb1afcd85d8135604d86f8b23b438e8ecc96a6e944a790758770746a64e2d6f2",
+    "success_receipt_sha256": "7368c93fb37a5ab4fe41f790002ff4e4ffc78fdcca5b61f26e0ca63292a64b41"
+  },
+  "schema_version": "archive-govt-nz.legislation-continuation/v1",
+  "source": {
+    "seed_id": "historical-work-ids-0001",
+    "seed_sha256": "59923176fa34796d7673a20b880af9abe5520fe484595edb220f2bbc0e3b33e7",
+    "source_set": "legislation"
+  },
+  "state_schemas": {
+    "checkpoint": "archive-govt-nz.legislation-checkpoint/v1",
+    "manifest": "archive-govt-nz.legislation-manifest/v1",
+    "success_receipt": "archive-govt-nz.legislation-harvest-receipt/v3"
+  },
+  "status": "complete"
+}

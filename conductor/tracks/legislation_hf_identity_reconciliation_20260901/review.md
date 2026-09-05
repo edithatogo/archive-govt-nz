@@ -17,3 +17,17 @@ The 2026-09-03 superseding receipt records the accountable authorization and ind
 No fourth dataset identity, blanket relicensing claim, Zenodo change, historical identity mutation, or Prompt 13 success claim is introduced. The publication portion of Prompt 15 is complete. The overall track remains in progress because Prompt 13 operational proof is still a named prerequisite.
 
 PR review identified two valid fail-closed gaps. The approval receipt now includes a stable decision identifier and source plus exact candidate, state, package, and permitted-file bindings. Conditional schema constraints and negative tests prevent the canonical selected-state approval from being copied to either preserved identity, and prevent the canonical published state from silently reverting to an unapproved status.
+
+## Closeout review in progress — 2026-09-05
+
+The superseding registry and evidence must preserve the published parent versus operational continuation boundary. Raw run receipts are byte-preserved, versioned schemas retain historical contracts, and negative schema tests reject a completed registry with false or malformed operational proof. Live public readback independently re-hashed the 71,776,346-byte package. Full validation and exact-head hosted checks remain required before issue closure.
+
+## Final acceptance review
+
+Independent review of `abfd287a18be654b7bbc97e5c536ac144d4ef268` found no additional acceptance blocker. The five receipt identities are exact and unique; context, lineage, harvest hash, reconciliation root, durable revision/dataset and publication-authority hash are cross-bound by tests. Three-identity live readback, viewer/gated limits and preserved legacy surfaces are explicit. All required hosted checks subsequently passed on that reviewed head. Final integration remains protected by fresh exact-head checks; failed local attempts remain evidence.
+
+## PR #396 review corrections
+
+The later automated review found a valid schema gap: three individually valid copies of one identity could satisfy v3. Six red tests reproduced duplicate slugs, including otherwise differing revisions. Exact per-slug `contains`/`minContains`/`maxContains` constraints correct this without changing historical v1/v2.
+
+The review also identified stale formal Prompt 13 repository closure despite independently verified operation. Issue #335 has been reopened for a separate owned evidence correction; Prompt 15 delivery waits for its named superseding reports and authoritative track synchronization. Prior prospective acceptance statements above are retained; they do not override this unresolved prerequisite record.

@@ -24,3 +24,25 @@
   bind role, origin metadata, mutability, and gating. The readback test also
   independently pins the authorized `metadata.json` path, 1,450-byte size, and
   SHA-256. All 15 registry tests and all 48 schemas/38 documents pass.
+
+## 2026-09-05 — Operational prerequisite reconciliation
+
+Fresh target main: `f2669f1ce6ae48f3e09387608acbb8c58aa20334`. Donor remains archived at redirect head `905f9e07c17af9d9d25dbe2b1c052fb8a290a4e3`; final operational donor remains `b40587f1b1aec7356a0f623916fcc8212397d283`. No audited baseline SHA was supplied by Prompt 15.
+
+Downloaded run 33800180992 sanitized attempt artifact 9911101072 again; exact ZIP SHA-256 matched the hosted digest. Preserved five original JSON receipt byte streams and bound their hashes to the dated operational prerequisite receipt. Independent anonymous Hugging Face audit confirms unchanged revisions and durable package fixity. No remote dataset write was performed.
+
+Red test run: 11 failed and 4 passed because the new v3 schema and successful prerequisite receipt did not yet exist. Added a superseding schema, preserving v1/v2. The registry now records operational proof while retaining the published 552-record state. Pending full validation and hosted checks; no terminal closeout claimed.
+
+First full harness: 4,706 passed, six timing/health-check failures, 97.58% coverage. Failed attempt is preserved in `validation-attempt-01-20260905.json`; unchanged serial rerun and two-worker harness follow. No thresholds or test selection weakened.
+
+All six first-attempt failures passed unchanged in a serial rerun. Rebased onto main `3c867a9e3140a9575ebe5a2805c98ea85119cb5b` (unrelated health readiness merge). Second full run with two workers: 4,740 passed, two Hypothesis deadline flakes, 97.60% coverage; both initial examples passed on replay. `validation-attempt-02-20260905.json` preserves the outcome. A one-worker third run is underway. Draft PR hosted CI will provide independent runner evidence; no local success or merge readiness is claimed from the failed runs.
+
+The monthly public readback and canonical selected-state comparison executed successfully and are preserved separately. This resolves the prior recovery metadata handoff without broadening the published payload.
+
+Additional outcomes are preserved in `validation-additional-attempts-20260905.json`: the second focused rerun had one further algebra timing flake; the one-worker run was deliberately interrupted after 730 passes and two deadline flakes; the separately executed post-test gates stopped at a checkpoint mutation subprocess timeout. None is a local full-pass claim. Independent hosted Ubuntu and macOS full harnesses each passed all 4,742 tests at 97.60% coverage on `abfd287a18be654b7bbc97e5c536ac144d4ef268`, plus all configured downstream gates. Windows remains pending at this entry.
+
+## PR review follow-up
+
+Full final-head checks passed at `2eb2a1449b6b562455391dfe9a9e873c936e6540`, but two subsequent review findings prevent merge. The duplicate-slug schema finding reproduced with six red tests, then all 27 focused/property tests passed after exact-once constraints. The constraint-removal mutation was detected by all six negative cases. A lint finding on a positional Boolean test parameter was corrected with a keyword-only argument. Historical v1/v2 remain unchanged.
+
+The Prompt 13 formal-prerequisite review exposed a missing credential/endpoint no-write check, not merely a status typo. The owning issue #335 was reopened for its separately reviewed fix and named superseding reports. Prompt 15 metadata/plan are explicitly in progress until that full prerequisite passes. The registry's operational-proof Boolean remains factual about the independently verified run; it is not a claim that every Prompt 13 action is complete.
