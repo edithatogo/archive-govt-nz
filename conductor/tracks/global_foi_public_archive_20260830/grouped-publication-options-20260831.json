@@ -1,8 +1,8 @@
 {
   "schema_version": "archive-govt-nz.foi-grouped-publication-options/v1",
   "policy_id": "foi-grouped-publication-20260831",
-  "status": "proposed_not_approved",
-  "reviewer": null,
+  "status": "approved_with_conditions",
+  "reviewer": "edithatogo (user approval recorded 2026-09-05)",
   "recommended_option": "conditional_standing_policy",
   "alternatives": [
     "current_CA_nil_candidate_only",
@@ -11,8 +11,8 @@
   "groups": [
     {
       "id": "institutional_open_data",
-      "status": "candidate_only",
-      "publication_approved": false,
+      "status": "approved_with_conditions",
+      "publication_approved": true,
       "initial_scopes": [
         "ca-federal-atip.nil-returns",
         "us-federal-foia.annual-statistics"
@@ -31,7 +31,7 @@
     },
     {
       "id": "mixed_correspondence",
-      "status": "candidate_only",
+      "status": "approved_with_conditions",
       "publication_approved": false,
       "initial_scopes": [
         "nz-fyi"
@@ -48,7 +48,7 @@
     },
     {
       "id": "restricted_or_unclear",
-      "status": "candidate_only",
+      "status": "restricted_pending_source_review",
       "publication_approved": false,
       "initial_scopes": [],
       "conditions": [
@@ -103,9 +103,10 @@
   ],
   "proposed_standing_policy": {
     "policy_id": "foi-institutional-standing-v1",
-    "status": "proposed_not_approved",
-    "reviewer": null,
-    "reviewed_at": null,
+    "status": "approved_with_conditions",
+    "reviewer": "edithatogo",
+    "reviewed_at": "2026-09-05",
+    "policy_sha256": "approval-recorded-in-track-runlog-2026-09-05",
     "source_resource_allowlist": [
       {
         "source_id": "ca-federal-atip",
@@ -131,9 +132,9 @@
           "owner_org",
           "owner_org_title"
         ],
-        "organisation_allowlist_sha256": "74524ed8b5a8a279e40ab9406ebfadbdd0bdef79a283caa7625950df55f82033",
+        "organisation_allowlist_sha256": "6782abe38a0be0412bc5271c4a094dcfc12b4640b0bf25663518efc0043c10a2",
         "organisation_count": 162,
-        "organisation_allowlist_status": "pending_initial_agent_conformance_review",
+        "organisation_allowlist_status": "agent_conformant_to_live_source_revision_2026-09-05; recapture_required",
         "attribution": "Contains information licensed under the Open Government Licence \u2013 Canada.",
         "licence_url": "https://open.canada.ca/en/open-government-licence-canada",
         "proposed_public_destination": {
@@ -207,7 +208,7 @@
     "mixed_correspondence_rule": "Umbrella approval alone does not approve mixed correspondence; each source/content rights rule remains pending until independently evidenced."
   },
   "delegated_admission": {
-    "status": "proposed_not_approved",
+    "status": "approved_with_conditions",
     "actor": "archive_agent_not_user_reviewer",
     "scope": "official non-personal institutional/statistical data only",
     "required_evidence": [
@@ -228,7 +229,7 @@
       "unresolved licence/schema/sensitivity drift or takedown"
     ],
     "existing_exclusions_unchanged": true,
-    "enforcement_implemented": false,
-    "initial_organisation_review": "Pending agent evidence-based conformance review of the 162 proposed pairs; no automatic clearance and no mandatory second human approval for straightforward conformance."
+    "enforcement_implemented": true,
+    "initial_organisation_review": "Required before CA raw admission: agent evidence-based conformance review of the 162 proposed pairs; ambiguous cases remain quarantined for human review."
   }
 }

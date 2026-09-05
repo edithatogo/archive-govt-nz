@@ -1,0 +1,20 @@
+{
+  "evidence_schema": "archive-govt-nz.source-discovery/v1",
+  "source_id": "br-cgu-transparency",
+  "entity_id": "BR",
+  "discovery_kind": "official_transparency_portal_metadata",
+  "observed_at": "2026-09-05",
+  "source_url": "https://www.gov.br/cgu/pt-br/assuntos/transparencia-publica",
+  "publisher": "Controladoria-Geral da União (Brazil)",
+  "public_metadata_observed": true,
+  "public_response_catalogue_observed": false,
+  "capture_performed": false,
+  "publication_approved": false,
+  "raw_upload_allowed": false,
+  "next_action": "verify_publication_catalogue_and_disclosure_scope",
+  "limitations": [
+    "The official page is a transparency information and services entry point, not evidence of a public FOI response archive.",
+    "No requests, responses, datasets, or raw records were downloaded or retained.",
+    "This discovery receipt does not establish completeness, rights, privacy, licence status, or a request denominator."
+  ]
+}

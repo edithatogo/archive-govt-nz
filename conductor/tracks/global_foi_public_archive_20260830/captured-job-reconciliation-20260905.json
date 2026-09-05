@@ -1,0 +1,17 @@
+{
+  "schema_version": "archive-govt-nz.captured-job-reconciliation/v1",
+  "job_id": "ca-federal-atip.nil-returns.20260831-1",
+  "historical_status": "captured_locally",
+  "historical_authority_commit": "e2532597470680c457d2692149d7a22a36325999",
+  "current_public_evidence": {
+    "source_id": "ca-federal-atip",
+    "repo_id": "edithatogo/foi-ca-federal-atip",
+    "publication_receipt": "ca-huggingface-publication-receipt-20260905.json",
+    "direct_restore_verified": true,
+    "viewer_verified": true
+  },
+  "shared_state_mutated": false,
+  "status": "reconciled_external_publication_pending_shared_health_cycle",
+  "required_follow_up": "Run the receiver health/state reconciliation on the current authority revision; do not rewrite the historical receipt or infer cutover.",
+  "interpretation": "The separate approved public package resolves the payload publication gap for this source, but hosted shared state must observe and record the transition before health can become green."
+}

@@ -1,0 +1,15 @@
+{
+  "schema_version": "archive-govt-nz.local-restore/v1",
+  "source_id": "ca-federal-atip",
+  "package_path": "data/raw/ca-federal-atip/2026-09-05",
+  "status": "passed_local_hash_restore",
+  "verified_at": "2026-09-05",
+  "files_verified": [
+    {"path": "ati-nil.csv", "bytes": 657619, "sha256": "6782abe38a0be0412bc5271c4a094dcfc12b4640b0bf25663518efc0043c10a2"},
+    {"path": "index.jsonl", "bytes": 1578794, "sha256": "cf01ac37cd8bd4eec4d795c7d713f438d0c9df74bb1e6b732e3e273275e6990f"},
+    {"path": "manifest.json", "verified": true}
+  ],
+  "anonymous_hugging_face_restore": false,
+  "publication_authorized": false,
+  "next_gate": "provider-side anonymous restore after upload"
+}

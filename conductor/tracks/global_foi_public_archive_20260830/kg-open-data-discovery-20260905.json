@@ -1,0 +1,20 @@
+{
+  "evidence_schema": "archive-govt-nz.source-discovery/v1",
+  "source_id": "kg-open-data",
+  "entity_id": "KG",
+  "discovery_kind": "official_open_data_catalogue_metadata",
+  "observed_at": "2026-09-05",
+  "source_url": "https://data.gov.kg/",
+  "publisher": "Government of the Kyrgyz Republic",
+  "public_metadata_observed": true,
+  "public_response_catalogue_observed": false,
+  "capture_performed": false,
+  "publication_approved": false,
+  "raw_upload_allowed": false,
+  "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+  "limitations": [
+    "This is an official open-data portal candidate only; it is not evidence of a public FOI response archive.",
+    "No datasets, requests, responses, or raw records were downloaded or retained.",
+    "This discovery receipt does not establish completeness, rights, privacy, licence status, or a request denominator."
+  ]
+}

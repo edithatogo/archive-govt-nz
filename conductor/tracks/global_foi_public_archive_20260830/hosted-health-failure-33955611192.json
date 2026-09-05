@@ -1,0 +1,25 @@
+{
+  "schema_version": "archive-govt-nz.hosted-health-failure/v1",
+  "run_id": 33955611192,
+  "workflow": "FOI shared execution controls",
+  "job": "health",
+  "status": "attention_required",
+  "failure_reason": "captured_not_published",
+  "authority_commit_sha": "7e484726245f8f20fd165714ff9aa9a35b0d8c8a",
+  "observed": {
+    "jobs": 4,
+    "captured_jobs": 1,
+    "exhausted_jobs": 3,
+    "incomplete_jobs": 1,
+    "affected_source_count": 0,
+    "publication_performed": false,
+    "leases_released": false,
+    "state_modified": false,
+    "capacity_status": "healthy"
+  },
+  "interpretation": "The health control correctly failed closed because a captured job has not reached publication. Capacity and state integrity remain healthy; this does not authorize publication or cutover.",
+  "required_follow_up": [
+    "Resolve or explicitly quarantine the captured-but-unpublished job.",
+    "Re-run hosted health and require monitor_status healthy before enabling broader schedules."
+  ]
+}
