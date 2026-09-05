@@ -37,3 +37,20 @@ families, reconcile duplicate locators against retained hashes, and perform
 approved immutable capture with material HTTP context. Separate forecast-file
 discovery remains open even for the 2024 edition. This advances M-02/M-11 and
 Phase 1.2 without closing AC-03 or AC-09.
+
+## Follow-up edition observations
+
+The register now contains 15 locators. Six further workbooks are linked from
+the official [2023 annual data page](https://www.treasury.govt.nz/publications/data/budget-2023-data-estimates-appropriations-2023-24),
+[BEFU 2023](https://www.treasury.govt.nz/publications/efu/budget-economic-and-fiscal-update-2023),
+and [HYEFU 2023](https://www.treasury.govt.nz/publications/efu/half-year-economic-and-fiscal-update-2023).
+The BEFU expense filename is `befu23-data-expensetables.xlsx`, unlike the later
+hyphenated pattern. Preserve the observed locator rather than guessing URLs.
+
+The [1997 BEFU page](https://www.treasury.govt.nz/publications/efu/budget-economic-and-fiscal-update-befu-1997)
+links separate SNA-series, GAAP-series and Expenses PDFs. These are now
+discovered resources, not absent spreadsheets or captured originals. Its other
+sections remain unenumerated here. The [SNA introduction](https://www.treasury.govt.nz/sites/default/files/2017-11/befu97-sna.pdf)
+distinguishes Central Government coverage from the GAAP Crown reporting entity
+and discusses reconciliation differences. No cross-basis join or numerical
+extraction is performed. PDF text observation is not byte-preservation evidence.

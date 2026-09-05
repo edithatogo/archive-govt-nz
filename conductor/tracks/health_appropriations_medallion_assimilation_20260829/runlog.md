@@ -1,5 +1,21 @@
 # Run Log
 
+## Historical inventory validation and continuation — 2026-09-05 UTC
+
+The required `./scripts/validate.sh` run on the initial inventory returned 1:
+4,735 tests passed, four Hypothesis timing checks failed, and overall coverage
+was 97.60%. Failures affected unrecognized receipt names, checkpoint JSON
+generation, union algebra and exact amount lineage. All four passed in isolation
+with seed 182042616212009531304200361229053514142 after integrating main through
+FOI merge `c3504f92`, including its fixture-setup correction. No deadlines,
+health checks or semantic assertions were suppressed.
+
+Added six observed 2023 workbook links and three 1997 BEFU table PDF links,
+bringing the register to 15. The expanded register test failed at six versus
+15 entries before the observations were added. Original fixity, source rights,
+other 1997 sections and full annual closure remain unverified. A corrected
+full two-worker run is pending; isolated successes do not replace full assurance.
+
 ## Historical source enumeration — 2026-09-05 UTC
 
 Recorded the Treasury index's 30 Budget editions (1997–2026) and six observed

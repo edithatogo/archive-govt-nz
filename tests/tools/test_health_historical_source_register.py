@@ -24,8 +24,9 @@ def test_historical_source_register_retains_scope_and_discovery_boundary() -> No
     assert report["publication_authorized"] is False
     assert report["whole_history_complete"] is False
     records = report["resource_observations"]
-    assert len(records) == 6
+    assert len(records) == 15
     assert len({row["url"] for row in records}) == len(records)
+    assert len({(r["edition_year"], r["family"], r["kind"]) for r in records}) == 15
     assert {(r["family"], r["kind"]) for r in records} == {
         ("budget", "expenditure"),
         ("budget", "revenue"),
@@ -33,6 +34,9 @@ def test_historical_source_register_retains_scope_and_discovery_boundary() -> No
         ("befu", "expense_tables"),
         ("hyefu", "charts"),
         ("hyefu", "expense_tables"),
+        ("befu", "sna_series_tables"),
+        ("befu", "gaap_series_tables"),
+        ("befu", "expenses"),
     }
     for row in records:
         assert row["edition_year"] in report["edition_years"]
@@ -44,6 +48,10 @@ def test_historical_source_register_retains_scope_and_discovery_boundary() -> No
         parsed = urlsplit(row["url"])
         assert parsed.scheme == "https"
         assert parsed.netloc == "www.treasury.govt.nz"
-        assert parsed.path.endswith(".xlsx")
+        assert parsed.path.endswith((".xlsx", ".pdf"))
         assert not parsed.query
         assert not parsed.fragment
+    for gap in report["edition_dispositions"]:
+        assert gap["edition_year"] in report["edition_years"]
+        assert gap["evidence_url"] in report["observed_pages"]
+        assert gap["other_custodian_availability"] == "not_investigated"
