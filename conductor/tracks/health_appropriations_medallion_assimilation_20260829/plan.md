@@ -560,11 +560,12 @@ repository validation command. External gates block only their affected task.
   infer access URLs, licensing, publication dates or full standards conformance.
   [M-14, M-18; AC-14, AC-16; 791845bc]
 
-- [~] Compose a read-only local provenance verifier for explicit canonical
+- [x] Compose a read-only local provenance verifier for explicit canonical
   historical/classification marker pins, original objects and raw package pins.
   Compare retained tables/accounting with recomputed pure projections and return
   separate scoped fixity evidence; do not change the pure descriptor helper's
-  claims or declare Platinum/publication complete. [M-14, M-16, M-18; AC-14, AC-16]
+  claims or declare Platinum/publication complete. [M-14, M-16, M-18; AC-14, AC-16;
+  merged reader evidence and full assurance]
 
 - [x] Project validated typed local descriptors into an entity-only PROV
   JSON-LD graph with exact product-to-input derivation edges, retaining the

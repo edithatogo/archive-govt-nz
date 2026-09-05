@@ -632,3 +632,14 @@ census records and source-specific profiles. It identifies exact CPI, QES, GDP
 and HLFS working-age objects, records the resident-population metadata lead
 without acquiring it, and keeps Crown-expense definitions source-specific. No
 Gold measure, rights decision, new capture or publication state changed.
+
+## Local provenance verifier reconciliation — 2026-09-05 UTC
+
+The read-only verifier task is implemented by the strict local provenance
+reader and its retained-source regression suite. It checks marker, original,
+raw-package and canonical-file fixity, recomputes pure projections, rejects
+altered or unexpected roots, and returns scoped verification evidence. The
+descriptor-only PROV helper remains assertion-only and still reports rights,
+approval and publication as unresolved. The exact Health full assurance on
+the merged follow-up passed 4,774 tests and all configured gates. This task
+does not complete Platinum metadata, rights, publication or the track.
