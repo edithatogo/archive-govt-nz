@@ -1,0 +1,42 @@
+diff --git a/tests/domains/health_appropriations/test_source_operations.py b/tests/domains/health_appropriations/test_source_operations.py
+index f8cec49e..4b7aa0d7 100644
+--- a/tests/domains/health_appropriations/test_source_operations.py
++++ b/tests/domains/health_appropriations/test_source_operations.py
+@@ -16,7 +16,7 @@
+ 
+ import pyarrow.parquet as pq
+ import pytest
+-from hypothesis import given
++from hypothesis import given, settings
+ from hypothesis import strategies as st
+ from jsonschema import Draft202012Validator, ValidationError
+ from openpyxl import load_workbook
+@@ -477,6 +477,7 @@ def fail(*_args: object, **_kwargs: object) -> None:
+     st.sampled_from(tuple(source_operations.PROFILES)),
+     st.integers(min_value=0, max_value=10**9),
+ )
++@settings(deadline=None)
+ def test_receipt_schema_count_property(profile: str, count: int) -> None:
+     contract = source_operations.PROFILES[profile]
+     receipt = {
+diff --git a/tests/tools/test_merge_legislation_states.py b/tests/tools/test_merge_legislation_states.py
+index 7c3c5402..67a480ea 100644
+--- a/tests/tools/test_merge_legislation_states.py
++++ b/tests/tools/test_merge_legislation_states.py
+@@ -15,7 +15,7 @@
+ 
+ import blake3
+ import pytest
+-from hypothesis import given
++from hypothesis import given, settings
+ from hypothesis import strategies as st
+ from jsonschema import Draft202012Validator
+ from tests.tools import test_verify_final_donor_state as fixtures
+@@ -157,6 +157,7 @@ def test_union_algebra() -> None:
+     data = f["files"][fixtures.CAS + digest[:2] + "/" + digest]
+ 
+     @given(st.lists(st.integers(min_value=1, max_value=8), min_size=1, max_size=12))
++    @settings(deadline=None)
+     def exercise(numbers: list[int]) -> None:
+         checkpoint = copy.deepcopy(f["docs"]["checkpoint"])
+         parents = []

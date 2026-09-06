@@ -1,0 +1,53 @@
+{
+  "schema_version": "archive-govt-nz.assurance-defect-handoff/v1",
+  "observed_at": "2026-09-06T11:14:25.949366+00:00",
+  "reviewed_pr": {
+    "headRefOid": "912dc38d6f60e0884aa22e560b9dd2109fe770d5",
+    "mergeCommit": null,
+    "mergedAt": null,
+    "state": "OPEN",
+    "url": "https://github.com/edithatogo/archive-govt-nz/pull/404"
+  },
+  "readback_response_sha256": "162ca66e59202b6a926a8e5f4886e45b2f123e35093eed211f7e877690e903c5",
+  "reviewed_diff_sha256": "4f310b03d9f69299e754e7186da45840728a1f2c7a05a952ff07116ff352daef",
+  "main_commit": "c5233ae7fc0beb065071cf3554596456f6575131",
+  "main_observations": [
+    {
+      "path": "tests/domains/health_appropriations/test_source_operations.py",
+      "target_function": "test_receipt_schema_count_property",
+      "main_source_sha256": "f858ee7cd071cebb1457479a3ed67429849ffc962300364d059b4865be3391f7",
+      "main_decorator_context": "\n@given(\n    st.sampled_from(tuple(source_operations.PROFILES)),\n    st.integers(min_value=0, max_value=10**9),\n)\ndef test_receipt_schema_count_property(profile: str, count: int) -> None:",
+      "deadline_disabled_in_context": false,
+      "api_response_sha256": "514f27997fdad6d116bd9ad52b4803ac8dc9fc6836348c859bf9a08afaf128ce"
+    },
+    {
+      "path": "tests/tools/test_merge_legislation_states.py",
+      "target_function": "exercise",
+      "main_source_sha256": "3eee3b3d605ad58f0778b2ed2755cfd4135711769481715e00b27cd8e9c63fb4",
+      "main_decorator_context": "    template = f[\"records\"][0]\n    digest = template[\"raw_cas_hash_sha256\"]\n    data = f[\"files\"][fixtures.CAS + digest[:2] + \"/\" + digest]\n\n    @given(st.lists(st.integers(min_value=1, max_value=8), min_size=1, max_size=12))\n    def exercise(numbers: list[int]) -> None:",
+      "deadline_disabled_in_context": false,
+      "api_response_sha256": "2684707b5348bffaf198740bc3071b5262aed5ac1f2d31020bfae5f4c2868992"
+    }
+  ],
+  "changes_present_on_main": false,
+  "classification": "unacceptable_as_written_under_programme_contract",
+  "finding": "Both added deadline=None settings remove existing Hypothesis wall-clock enforcement. Assertions and generated input bounds remain, but no equivalent replacement or contractual exception is supplied.",
+  "controlling_user_contract": [
+    "Do not weaken tests, thresholds, branch protection, workflow guards, or evidence requirements to obtain a pass.",
+    "Do not lower thresholds, add pardons without contractual basis, or exclude failing tests simply to pass."
+  ],
+  "repository_policy": [
+    "conductor/workflow.md: A Must requirement cannot be silently deferred or weakened.",
+    "conductor/requirements.md: acceptance criteria without silently weakening any Must requirement."
+  ],
+  "actual_p20_failed_tests": [
+    "tests/health/test_health_discovery.py::test_deduplication_is_metamorphic_under_scope_order",
+    "tests/mcp/test_mcp_protocol.py::test_mcp_subprocess_resources_and_errors",
+    "tests/properties/test_urn_properties.py::test_canonical_urn_roundtrips_all_valid_components"
+  ],
+  "relationship_to_actual_failures": "Neither edited property is one of the three failed tests in the latest provisional P20 full harness. This PR cannot close those failures.",
+  "recommended_disposition": "Do not use PR404 as P20 remediation. Retain timing enforcement or present a separately reviewed, evidence-based test/harness improvement that satisfies the existing quality contract. No exception or merge authorized by this audit.",
+  "external_mutations_performed": false,
+  "tests_modified_by_audit": false,
+  "p20_status": "incomplete"
+}
