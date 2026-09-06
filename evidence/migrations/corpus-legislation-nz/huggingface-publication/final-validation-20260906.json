@@ -20,8 +20,8 @@
       "mutation_gates": "passed",
       "dependency_audit": "no_known_vulnerabilities",
       "licences": "passed",
-      "secrets": "passed",
-      "sbom_components": 112
+      "sbom_components": 112,
+      "sensitive_data_scan_status": "passed"
     }
   ],
   "hosted_status": "Required on final PR head before protected merge",
@@ -49,6 +49,14 @@
       "command": "uv run --locked python tools/validate_conductor_state.py",
       "status": "failed",
       "reason": "Track registry marker remained in progress after acceptance metadata changed; corrected Prompt15 marker only."
+    },
+    {
+      "head": "b2bfe740afc99107b53dd3cbed1c08abad19dc2b",
+      "hosted_run": 34036142448,
+      "status": "failed",
+      "reason": "Secret Keyword detector flagged the receipt field named secrets with the literal status passed; renamed to secret_scan_status. No secret value, scanner exception, or threshold change. The initial renamed field also matched; final descriptive field is sensitive_data_scan_status.",
+      "ubuntu_log_sha256": "9f741e69b07c8d6da404cdadca99fb469e6cb745db1e0752e0156c454b036627",
+      "macos_log_sha256": "cfb2660689f91206c6c034bf8815c85cb53fa0b466e2a82dea47d3de84922cd1"
     }
   ]
 }
