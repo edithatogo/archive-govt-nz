@@ -1,0 +1,53 @@
+{
+  "schema_version": "archive-govt-nz.integrated-assurance/v2",
+  "status": "ready_for_exact_head_hosted_checks",
+  "prompt": 20,
+  "target_commit": "cac2d112466f83275537520ae94c8f8639daf442",
+  "integrated_parent": "98b6d055153d7cc0dd03b0cfdb1d80694e9bf16f",
+  "donor": {
+    "repository": "edithatogo/corpus-legislation-nz",
+    "archived": true,
+    "final_reachable_head": "905f9e07c17af9d9d25dbe2b1c052fb8a290a4e3"
+  },
+  "local_validation": {
+    "command": "CI=1 ./scripts/validate.sh",
+    "exit_code": 0,
+    "log_sha256": "2e8f55c1b0330b1a4509af4d938b1a9cb123e3a4cf0c0de8876f3bc2773a0920",
+    "tests": "passed",
+    "schemas": "48 schemas and 38 representative documents passed",
+    "parity": "9/9 passed, 0 divergences",
+    "mutation": "all registered suites passed",
+    "security": "dependency audit, licence inventory, secret scan passed",
+    "sbom_components": 112,
+    "cas_throughput_mb_per_second": 423.57
+  },
+  "focused_validation": {
+    "workflow_contract_tests": "3 passed",
+    "secret_controls_tests": "15 passed",
+    "actionlint": "passed",
+    "conductor": "0 errors across 93 tracks"
+  },
+  "failed_attempts": [
+    {
+      "log_sha256": "625b1a9da2bb64c155bff48ec47292e8882322ff2a378561210b4435c5f6d072",
+      "reason": "Secret scan found 13 candidates in preserved public assurance evidence; no credential was exposed."
+    },
+    {
+      "log_sha256": "e155e5d42276224ddc131716590d411c4fa3ad52485c9df6510b348e5cabc636",
+      "reason": "Formatting gate rejected the first adjudication implementation."
+    },
+    {
+      "log_sha256": "d3e899b81f6a4ad9dfacbf3599f70c4c3c83bcd8151a261c11bbf5e97c1d6e3d",
+      "reason": "Lint rejected long assurance path literals and return-count complexity."
+    }
+  ],
+  "external_state": {
+    "publication_performed": false,
+    "donor_mutated": false,
+    "target_hosted_settings_changed": false
+  },
+  "handoffs": [
+    "Prompt 13 second 904-parent continuation remains separate.",
+    "Prompt 21 adversarial verification remains separate."
+  ]
+}
