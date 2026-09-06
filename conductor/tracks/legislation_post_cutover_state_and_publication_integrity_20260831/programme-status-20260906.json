@@ -647,7 +647,7 @@
         },
         {
           "path": "conductor/tracks/legislation_500_work_operational_proof_20260901/evidence.md",
-          "sha256": "b391c62adebb448da78f65e54a39912f7e6629a26daded546d54e3a07147fb27"
+          "sha256": "88ac346b195b1679542b1db422bff24578d663bfdaa3c4e49b2c48e570a5fda0"
         }
       ],
       "external_gates": [
@@ -667,7 +667,9 @@
         "historical_parent_records": 552,
         "historical_output_records": 904,
         "new_preflight_before_historical_run": false,
-        "additional_post_preflight_execution_assessment": "Pending exact required-action ordering assessment; no automatic dispatch or completion inferred."
+        "additional_post_preflight_execution_assessment": "Verified: preflight33968519628 and ordered full run33968609350; same-run source preflight completed before harvest. Second904-parent continuation remains unproven.",
+        "verified_preflight_run": 33968519628,
+        "verified_ordered_run": 33968609350
       }
     },
     {

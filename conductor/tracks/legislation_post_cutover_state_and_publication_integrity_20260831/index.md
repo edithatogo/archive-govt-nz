@@ -23,3 +23,5 @@ The additive `programme-status-20260905-preflight-reopen.json`, `handoff-index-2
 ## Current controller delivery — 2026-09-06
 
 [Programme status](./programme-status-20260906.json) and [live observations](./live-observations-20260906.json) supersede the older pending-preflight snapshot. Ordered operational proof and two output restores are merged. The controller records all specialist owners and gates; the parent programme remains incomplete pending the second parent cycle and Prompts 15, 20 and 21. Issue closure alone is not acceptance.
+
+The [current handoff index](./handoff-index-20260906.json) binds the current status snapshot; previous handoff indices remain historical.
