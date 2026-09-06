@@ -75,6 +75,9 @@ PUBLIC_ASSURANCE_DOCUMENTS = {
     ASSURANCE_ROOT + "supplementary-receipt.json": (
         "a26f087bd36d133dddd2f3c2f15640763e294fa98fde41ed3f7b91a3f80e041e"
     ),
+    ASSURANCE_ROOT + "final-closeout-receipt-20260907.json": (
+        "20ef778fc3b286d11328c2af744f351fcbeca3336d1379c9bd25eed53d20fa3a"
+    ),
 }
 PUBLIC_LINEAGE_ROOT = "evidence/migrations/corpus-legislation-nz/final-lineage/"
 PUBLIC_IMPORT_VALUE = re.compile(
@@ -98,6 +101,7 @@ def _is_reviewed_document(
     if finding.get("type") not in {
         "Base64 High Entropy String",
         "Hex High Entropy String",
+        "Secret Keyword",
     }:
         return False
     path = REPOSITORY_ROOT / relative
