@@ -19,3 +19,7 @@ The additive `programme-status-20260905-preflight-reopen.json`, `handoff-index-2
 ## Current gate and parent-claim addendum
 
 `programme-gate-addendum-20260905.json` records the latest main and pending sequence without overwriting earlier snapshots. Local state-parent validity is distinct from hosted parent-reference compatibility and an executed second cycle. Programme status remains in progress.
+
+## Current controller delivery — 2026-09-06
+
+[Programme status](./programme-status-20260906.json) and [live observations](./live-observations-20260906.json) supersede the older pending-preflight snapshot. Ordered operational proof and two output restores are merged. The controller records all specialist owners and gates; the parent programme remains incomplete pending the second parent cycle and Prompts 15, 20 and 21. Issue closure alone is not acceptance.
