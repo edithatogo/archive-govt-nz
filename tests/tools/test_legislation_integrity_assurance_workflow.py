@@ -82,6 +82,7 @@ def test_supplementary_assurance_preserves_failures_and_exact_revision() -> None
     }
     assert {step["uses"] for step in steps if "uses" in step} == {
         "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+        "actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97",
         "astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d",
         "actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a",
     }
