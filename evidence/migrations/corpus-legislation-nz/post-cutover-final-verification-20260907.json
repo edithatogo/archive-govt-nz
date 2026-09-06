@@ -1,0 +1,44 @@
+{
+  "schema_version": "archive-govt-nz.post-cutover-final-verification/v2",
+  "verification_id": "prompt21-20260907",
+  "observed_at": "2026-09-07T00:00:00Z",
+  "status": "incomplete",
+  "independent_method": "Fresh matrix assembled from current primary repository and live API readbacks; prior status labels were not inherited.",
+  "scope": {
+    "target_repository": "edithatogo/archive-govt-nz",
+    "target_main": "cc6b95b2f98cf8df5ac4173dd6d2b40201d0b1e2",
+    "archived_donor_repository": "edithatogo/corpus-legislation-nz",
+    "archived_donor_head": "905f9e07c17af9d9d25dbe2b1c052fb8a290a4e3",
+    "independent_product_excluded": "edithatogo/legislation"
+  },
+  "dimensions": {
+    "code_capability_migration": {"status": "complete", "evidence": ["evidence/assurance/final-integrated-20260905/final-closeout-receipt-20260907.json", "https://github.com/edithatogo/archive-govt-nz/pull/409"]},
+    "operational_state_migration": {"status": "incomplete", "reason": "The current 500-work revalidation remains blocked; no fresh target-owned successful dispatch and continuation proof is present in primary evidence.", "evidence": ["evidence/migrations/corpus-legislation-nz/500-work-operational-proof/500-work-target-revalidation.json", "evidence/migrations/corpus-legislation-nz/durable-recovery/independent-recovery-summary-20260903.json"]},
+    "corpus_custody_recoverability": {"status": "complete", "reason": "Independent recovery evidence is complete with an explicitly explained external metadata handoff; donor remains archived and the bundle release asset has readback evidence.", "evidence": ["evidence/migrations/corpus-legislation-nz/durable-recovery/independent-recovery-summary-20260903.json", "evidence/migrations/corpus-legislation-nz/donor-git-bundle/release-asset-readback.json"]},
+    "publication_identity_migration": {"status": "blocked_external", "reason": "Live Hugging Face metadata/readback remains an external publication state requiring the authorised target-origin operation; Zenodo identity is verified separately.", "evidence": ["evidence/migrations/corpus-legislation-nz/huggingface-publication/live-readback-refresh-20260906.json", "evidence/migrations/corpus-legislation-nz/zenodo-identity-correction.json"]}
+  },
+  "criteria": [
+    {"id":"donor-lineage","status":"complete","evidence":["evidence/migrations/corpus-legislation-nz/final-donor-state/verification-02/final-donor-state-verification.json","https://api.github.com/repos/edithatogo/corpus-legislation-nz" ]},
+    {"id":"donor-500-work-state","status":"complete","evidence":["evidence/migrations/corpus-legislation-nz/final-donor-state/verification-02/final-donor-state-verification.json"]},
+    {"id":"donor-target-merge","status":"complete","evidence":["evidence/migrations/corpus-legislation-nz/final-state-merge/final-state-merge-receipt.json","evidence/migrations/corpus-legislation-nz/final-state-merge/independent-readback-01.json"]},
+    {"id":"governed-seed","status":"complete","evidence":["seeds/reviewed/historical-work-ids-0001.txt","seeds/registry.json"]},
+    {"id":"exact-and-discovery-lanes","status":"complete","evidence":["evidence/migrations/corpus-legislation-nz/exact-inventory-revalidation/","evidence/migrations/corpus-legislation-nz/bounded-discovery/"]},
+    {"id":"parent-restoration","status":"complete","evidence":["evidence/migrations/corpus-legislation-nz/500-work-operational-proof/parent-preflight-20260903.json","evidence/migrations/corpus-legislation-nz/durable-recovery/independent-recovery-summary-20260903.json"]},
+    {"id":"durable-state-package","status":"complete","evidence":["evidence/migrations/corpus-legislation-nz/durable-state/validation.json","evidence/migrations/corpus-legislation-nz/durable-recovery/recovery-attempt-01-20260903.json"]},
+    {"id":"independent-recovery","status":"complete","evidence":["evidence/migrations/corpus-legislation-nz/durable-recovery/recovery-attempt-01-20260903.json","evidence/migrations/corpus-legislation-nz/durable-recovery/recovery-attempt-02-20260903.json"]},
+    {"id":"target-500-operation","status":"incomplete","evidence":["evidence/migrations/corpus-legislation-nz/500-work-operational-proof/500-work-target-revalidation.json"]},
+    {"id":"historical-coverage","status":"complete","evidence":["evidence/migrations/corpus-legislation-nz/historical-coverage/historical-coverage-report.json"]},
+    {"id":"hugging-face-identity","status":"blocked_external","evidence":["evidence/migrations/corpus-legislation-nz/huggingface-publication/live-readback-refresh-20260906.json","https://huggingface.co/api/datasets/edithatogo/corpus-legislation-nz"]},
+    {"id":"zenodo-identity","status":"complete","evidence":["evidence/migrations/corpus-legislation-nz/zenodo-identity-correction.json","https://zenodo.org/api/records/20592540"]},
+    {"id":"evidence-hierarchy","status":"complete","evidence":["evidence/assurance/final-integrated-20260905/final-closeout-receipt-20260907.json"]},
+    {"id":"cutover-release-addendum","status":"complete","evidence":["evidence/migrations/corpus-legislation-nz/cutover-release-provenance/release-post-readback.json"]},
+    {"id":"donor-bundle-and-presentation","status":"complete","evidence":["evidence/migrations/corpus-legislation-nz/donor-git-bundle/release-asset-readback.json","evidence/migrations/corpus-legislation-nz/donor-git-bundle/remote-refs-readback.json"]},
+    {"id":"integrated-assurance","status":"complete","evidence":["evidence/assurance/final-integrated-20260905/final-closeout-receipt-20260907.json","https://github.com/edithatogo/archive-govt-nz/pull/409"]}
+  ],
+  "recomputed": {"seed":{"bytes":8987,"lines":500,"unique":500,"sha256":"59923176fa34796d7673a20b880af9abe5520fe484595edb220f2bbc0e3b33e7"},"historical_batches":{"declared_candidate_sum":33693},"live_readback":{"hugging_face_response_sha256":"d7fed0657325e790b9851f7aa75a9115eda584e95913d33385e3c5f4c23c2ff3","zenodo_response_sha256":"9c82c2d090ac5ce7d6e9240122e2b182f5f11af06db9c5901b763dc57ed4029c","donor_archived":true,"donor_head":"905f9e07c17af9d9d25dbe2b1c052fb8a290a4e3"}},
+  "false_completion_probes": ["candidate IDs counted as records","workflow configuration counted as operation","green jobs without artifact verification","Actions cache counted as durable recovery","metadata upload counted without remote readback","invalidated receipt reused","closed issue counted as implementation","donor archival counted as custody","same ID with changed content silently overwritten","software licence inferred as source rights"],
+  "probe_result": "All probes rejected by the current evidence model.",
+  "unresolved_defects": [{"issue":335,"prompt":13,"reason":"target-owned 500-work operational proof remains blocked"},{"issue":356,"prompt":21,"reason":"this terminal report remains incomplete while issue 335 and HF external publication gate remain unresolved"}],
+  "external_actions": {"read_only_verification":true,"publication_performed":false,"donor_modified":false,"hosted_settings_modified":false},
+  "overall_rule": "INCOMPLETE: non-waivable operational and external publication criteria remain unresolved."
+}
