@@ -9,10 +9,12 @@ from pathlib import Path
 from typing import Any
 
 import pytest
+from hypothesis import given
+from hypothesis import strategies as st
 from jsonschema import Draft202012Validator, ValidationError
 
 ROOT = Path(__file__).resolve().parents[2]
-SCHEMA_PATH = ROOT / "schemas/legislation-huggingface-registry-v2.schema.json"
+SCHEMA_PATH = ROOT / "schemas/legislation-huggingface-registry-v3.schema.json"
 REGISTRY_PATH = ROOT / "config/legislation/huggingface-publication-registry.json"
 EVIDENCE_ROOT = ROOT / "evidence/migrations/corpus-legislation-nz"
 
@@ -105,9 +107,7 @@ def test_registry_is_bound_to_coverage_and_publication_authority() -> None:
     coverage = _load(
         EVIDENCE_ROOT / "historical-coverage/historical-coverage-report.json"
     )
-    prompt13 = (
-        EVIDENCE_ROOT / "500-work-operational-proof/500-work-target-revalidation.json"
-    )
+    prompt13 = ROOT / registry["publication_gate"]["prompt13_receipt_path"]
     assert (
         registry["coverage"]["candidate_ids"]
         == coverage["candidate_inventory"]["candidate_ids"]
@@ -117,7 +117,7 @@ def test_registry_is_bound_to_coverage_and_publication_authority() -> None:
         == coverage["candidate_inventory"]["candidate_sha256"]
     )
     assert registry["publication_gate"]["prompt13_receipt_sha256"] == _sha256(prompt13)
-    assert _load(prompt13)["dispatch_performed"] is False
+    assert _load(prompt13)["status"] == "ordered_operational_run_independently_verified"
     assert registry["publication_gate"] == {
         "status": "published_verified",
         "remote_write_authorized": True,
@@ -141,8 +141,9 @@ def test_registry_is_bound_to_coverage_and_publication_authority() -> None:
             "README.md",
             "RIGHTS.md",
         ],
-        "prompt13_operational_proof": False,
+        "prompt13_operational_proof": True,
         "prompt13_receipt_sha256": _sha256(prompt13),
+        "prompt13_receipt_path": prompt13.relative_to(ROOT).as_posix(),
         "payload_rights": "approved_public_selected_552",
         "durable_package_revision": "ae4da4ef0446f68fddd8f53279ecb1245f1529b9",
         "metadata_revision": "04688f12dd687618e2085ae31f9b8a4a50a88b16",
@@ -293,3 +294,154 @@ def test_public_readback_binds_all_published_bytes_and_access() -> None:
         "not a copy of canonical-state.zip"
         in receipt["github_relationship"]["relationship"]
     )
+
+
+def test_operational_prerequisite_binds_hosted_receipts_to_published_parent() -> None:
+    """Operational success is receipt-bound and cannot expand publication scope."""
+    proof = _load(
+        EVIDENCE_ROOT / "huggingface-publication/operational-prerequisite-20260905.json"
+    )
+    assert proof["run"]["id"] == 33800180992
+    assert proof["run"]["conclusion"] == "success"
+    assert proof["artifact"]["sha256"] == (
+        "548d66784856f295d01ff385f98c4162eb8e0aa84cd4252f66884481f70ca3c1"
+    )
+    receipts = {}
+    for item in proof["receipts"]:
+        path = ROOT / item["path"]
+        assert _sha256(path) == item["sha256"]
+        assert path.stat().st_size == item["size_bytes"]
+        receipts[path.name] = _load(path)
+    assert set(receipts) == {
+        "harvest.json",
+        "continuation.json",
+        "parent-lineage.json",
+        "reconciliation.json",
+        "restoration-receipt.json",
+    }
+    assert len(proof["receipts"]) == len(receipts)
+    harvest = receipts["harvest.json"]
+    parent = receipts["parent-lineage.json"]["parent"]
+    registry = _load(REGISTRY_PATH)
+    assert parent["durable"]["sha256"] == registry["state"]["durable_package_sha256"]
+    assert harvest["parent_manifest_root"] == registry["state"]["manifest_sha256"]
+    assert harvest["run_identity"] == str(proof["run"]["id"])
+    assert harvest["software_commit"] == proof["run"]["head_sha"]
+    continuation = receipts["continuation.json"]
+    lineage = receipts["parent-lineage.json"]
+    hashes = {Path(item["path"]).name: item["sha256"] for item in proof["receipts"]}
+    assert continuation["context"] == lineage["context"]
+    assert continuation["parent_lineage_sha256"] == hashes["parent-lineage.json"]
+    assert continuation["roots"]["success_receipt_sha256"] == hashes["harvest.json"]
+    assert (
+        receipts["reconciliation.json"]["manifest_sha256"]
+        == harvest["output_manifest_root"]
+    )
+    assert parent["durable"]["dataset"] == "edithatogo/corpus-legislation-nz"
+    assert (
+        parent["durable"]["revision"]
+        == registry["publication_gate"]["durable_package_revision"]
+    )
+    assert (
+        parent["authority"]["publication_receipt_sha256"]
+        == registry["publication_gate"]["readback_receipt_sha256"]
+    )
+    assert harvest["works_attempted"] == 500
+    assert harvest["changed_preserved"] + harvest["unchanged_revalidated"] == 500
+    assert harvest["failed"] == harvest["partial"] == harvest["unavailable"] == 0
+    assert receipts["reconciliation.json"]["mismatch_count"] == 0
+    assert receipts["continuation.json"]["status"] == "complete"
+    assert (
+        receipts["continuation.json"]["roots"]["manifest_sha256"]
+        == (harvest["output_manifest_root"])
+    )
+    assert proof["publication_scope"]["continuation_published_to_huggingface"] is False
+    assert registry["state"]["record_count"] == 552
+    assert harvest["total_state_records_after"] == 904
+
+
+@pytest.mark.parametrize("invalid", [False, "true", None])
+def test_completed_registry_rejects_missing_operational_proof(invalid: object) -> None:
+    """The superseding completed contract cannot regress to a pending claim."""
+    registry = copy.deepcopy(_load(REGISTRY_PATH))
+    registry["publication_gate"]["prompt13_operational_proof"] = invalid
+    with pytest.raises(ValidationError):
+        Draft202012Validator(_load(SCHEMA_PATH)).validate(registry)
+
+
+@pytest.mark.parametrize("duplicated", [0, 1, 2])
+@pytest.mark.parametrize("different_revision", [False, True])
+def test_registry_rejects_duplicate_identity_slugs(
+    duplicated: int, *, different_revision: bool
+) -> None:
+    """Each slug occurs once even when duplicate objects differ in other fields."""
+    registry = copy.deepcopy(_load(REGISTRY_PATH))
+    replacement = copy.deepcopy(registry["identities"][duplicated])
+    if different_revision:
+        replacement["observed_revision"] = "a" * 40
+    registry["identities"][(duplicated + 1) % 3] = replacement
+    with pytest.raises(ValidationError):
+        Draft202012Validator(_load(SCHEMA_PATH)).validate(registry)
+
+
+@given(order=st.permutations((0, 1, 2)))
+def test_registry_identity_order_does_not_change_roles(order: list[int]) -> None:
+    """The identity set is exact without inventing an ordering requirement."""
+    registry = copy.deepcopy(_load(REGISTRY_PATH))
+    identities = registry["identities"]
+    registry["identities"] = [identities[index] for index in order]
+    Draft202012Validator(_load(SCHEMA_PATH)).validate(registry)
+
+
+@given(
+    duplicate=st.integers(min_value=0, max_value=2),
+    offset=st.integers(min_value=1, max_value=2),
+    revision=st.text(alphabet="0123456789abcdef", min_size=40, max_size=40),
+)
+def test_registry_rejects_duplicate_slug_with_arbitrary_revision(
+    duplicate: int, offset: int, revision: str
+) -> None:
+    """Different pinned revisions cannot disguise duplicate identities."""
+    registry = copy.deepcopy(_load(REGISTRY_PATH))
+    replacement = copy.deepcopy(registry["identities"][duplicate])
+    replacement["observed_revision"] = revision
+    registry["identities"][(duplicate + offset) % 3] = replacement
+    with pytest.raises(ValidationError):
+        Draft202012Validator(_load(SCHEMA_PATH)).validate(registry)
+
+
+@pytest.mark.parametrize("invalid", [None, "", "../proof.json", "unverified.json"])
+def test_registry_rejects_unowned_operational_receipt_path(invalid: object) -> None:
+    """P15 cannot redirect operational proof to an unverified path."""
+    registry = copy.deepcopy(_load(REGISTRY_PATH))
+    registry["publication_gate"]["prompt13_receipt_path"] = invalid
+    with pytest.raises(ValidationError):
+        Draft202012Validator(_load(SCHEMA_PATH)).validate(registry)
+
+
+def test_ordered_operational_proof_matches_published_parent() -> None:
+    """Ordered operation is verified without expanding published state scope."""
+    registry = _load(REGISTRY_PATH)
+    path = ROOT / registry["publication_gate"]["prompt13_receipt_path"]
+    proof = _load(path)
+    assert _sha256(path) == registry["publication_gate"]["prompt13_receipt_sha256"]
+    assert proof["operational_run"] == 33968609350
+    assert proof["preflight_run"] == 33968519628
+    assert proof["work_count"] == 500
+    assert proof["changed"] + proof["unchanged"] == proof["work_count"]
+    assert proof["failed"] == proof["unexplained_mismatches"] == 0
+    assert proof["parent_records"] == registry["state"]["record_count"] == 552
+    assert proof["output_records"] == proof["physical_objects_verified"] == 904
+    assert proof["publication_performed"] is False
+    for item in proof["evidence"]:
+        evidence = path.parent / item["path"]
+        assert _sha256(evidence) == item["sha256"]
+        assert evidence.stat().st_size == item["size_bytes"]
+
+
+def test_registry_requires_operational_receipt_path() -> None:
+    """A digest alone must not omit the governed specialist receipt identity."""
+    registry = copy.deepcopy(_load(REGISTRY_PATH))
+    del registry["publication_gate"]["prompt13_receipt_path"]
+    with pytest.raises(ValidationError):
+        Draft202012Validator(_load(SCHEMA_PATH)).validate(registry)

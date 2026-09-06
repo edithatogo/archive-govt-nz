@@ -1,0 +1,11 @@
+{
+  "schema_version": "archive-govt-nz.hf-registry-schema-mutation/v1",
+  "source_sha256": "5cd1dfb513be7cd02cb838f0041df9c791f2870f7e6f209c1a74d155e4ded5b9",
+  "mutation": "remove identities.allOf exact per-slug membership constraints",
+  "baseline_cases_passed": 6,
+  "mutants_total": 1,
+  "mutants_killed": 1,
+  "detecting_negative_cases": 6,
+  "failure_class": "pytest Failed: DID NOT RAISE ValidationError",
+  "historical_schemas_modified": false
+}

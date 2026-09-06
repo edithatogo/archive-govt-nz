@@ -1,0 +1,11 @@
+{
+  "dataset_slug": "edithatogo/corpus-legislation-nz",
+  "revision_sha": "04688f12dd687618e2085ae31f9b8a4a50a88b16",
+  "status": "consistent",
+  "mismatches": [],
+  "schema_version": "archive-govt-nz.hf-monthly-comparison/v1",
+  "readback_sha256": "484fa38d6eed54970aa661991e7d70e6b3caa4604ce3f6f14ac59bd5172f69a3",
+  "registry_sha256": "74feeba0def27a23a22dbd8810496ad13733cd6c294b6b73c372c819a79150fe",
+  "software_commit": "b33889675720a241f8270b178c26c808a67dadb3",
+  "scope": "Canonical selected published552 state. Resolves prior Prompt10 external metadata comparison handoff; does not claim publication of904 continuation."
+}

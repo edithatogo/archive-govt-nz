@@ -1,0 +1,21 @@
+{
+  "schema_version": "archive-govt-nz.hf-ordered-proof-binding/v1",
+  "status": "prepared_pending_specialist_receipt_delivery",
+  "operational_proof_path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/ordered-20260905/ordered-operational-proof.json",
+  "operational_proof_sha256": "fb1a345a3ec2d20c4e3f744a426abbf0928a1e7050a1fdee6a0b007099804671",
+  "run_id": 33968609350,
+  "preflight_run_id": 33968519628,
+  "published_records": 552,
+  "operational_output_records": 904,
+  "publication_performed": false,
+  "acceptance_boundary": "Prompt15 requires verified operational proof from Prompt 13, not blanket completion of all Prompt 13 requirements. Ordered execution supports that narrow dependency once its named receipt is merged. P13 second 904-parent cycle remains open; no 904 publication implied.",
+  "validation": {
+    "independent_registry_tests_passed": 31,
+    "dependency_file_tests_deferred": 2,
+    "defer_reason": "Specialist-owned immutable orderedproof and referenced receipts pending delivery in the P13 PR; tests retained unchanged in requirements and must run after dependency integration.",
+    "schema_guard_mutations_killed": 2,
+    "schema_guard_mutations_total": 2,
+    "ruff": "passed"
+  },
+  "metadata_change_decision": "No remote HF metadata write needed: approved 552 origin, state, rights, counts and canonical revision remain accurate. Registry operational binding and monthly comparison only."
+}
