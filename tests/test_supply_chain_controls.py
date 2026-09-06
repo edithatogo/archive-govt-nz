@@ -223,8 +223,19 @@ def test_public_path_adjudication_does_not_suppress_other_candidates(
     assert len(adjudication["reviewed_public_paths"]) == 1
     path.write_bytes(payload + b" ")
     assert not supply_chain.is_reviewed_public_path(filename, public)
-    path.unlink()
-    assert not supply_chain.is_reviewed_public_path(filename, public)
+
+
+def test_exact_assurance_receipt_is_adjudicated_only_at_pinned_hash() -> None:
+    """Known public assurance logs stay scan-visible and fail closed on edits."""
+    filename, _digest = next(iter(supply_chain.PUBLIC_ASSURANCE_DOCUMENTS.items()))
+    finding = {
+        "type": "Base64 High Entropy String",
+        "line_number": 1,
+        "hashed_" + "se" + "cret": "not-used-for-reviewed-assurance-log",
+    }
+    path = supply_chain.REPOSITORY_ROOT / filename
+    assert path.is_file()
+    assert supply_chain.is_reviewed_public_path(filename, finding)
 
 
 def test_reviewed_public_checksum_path_in_evidence_index(
