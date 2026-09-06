@@ -76,7 +76,7 @@ PUBLIC_ASSURANCE_DOCUMENTS = {
         "a26f087bd36d133dddd2f3c2f15640763e294fa98fde41ed3f7b91a3f80e041e"
     ),
     ASSURANCE_ROOT + "final-closeout-receipt-20260907.json": (
-        "20ef778fc3b286d11328c2af744f351fcbeca3336d1379c9bd25eed53d20fa3a"
+        "2a6b94bdd07f678196f0273de658257fe8b2503a1a500d335717f10a31ba65fd"
     ),
 }
 PUBLIC_LINEAGE_ROOT = "evidence/migrations/corpus-legislation-nz/final-lineage/"
