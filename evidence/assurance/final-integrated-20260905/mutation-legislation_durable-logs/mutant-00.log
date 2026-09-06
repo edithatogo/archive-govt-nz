@@ -1,0 +1,31 @@
+.....................F
+=================================== FAILURES ===================================
+_______________________ test_wrong_pins[manifest_sha256] _______________________
+
+tmp_path = PosixPath('/private/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/pytest-of-doughnut/pytest-4060/test_wrong_pins_manifest_sha250')
+field = 'manifest_sha256'
+
+    @pytest.mark.parametrize(
+        "field", ["marker_sha256", "receipt_sha256", "manifest_sha256"]
+    )
+    def test_wrong_pins(tmp_path: Path, field: str) -> None:
+        """External state pins cannot be silently replaced."""
+        files, pin = fixture(tmp_path)
+        pin[field] = "f" * 64
+>       with pytest.raises(D.v.VerificationError, match="pinned_"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'pinned_'
+E         Actual message: 'audited_manifest_root'
+
+tests/tools/test_legislation_durable_state.py:113: AssertionError
+=============================== warnings summary ===============================
+tests/tools/test_legislation_durable_state.py::test_archive_abuse[duplicate]
+  /Volumes/PortableSSD/appdata/local-dotdir/share/uv/python/cpython-3.14.6-macos-aarch64-none/lib/python3.14/zipfile/__init__.py:1730: UserWarning: Duplicate name: 'state/manifest.json'
+    return self._open_to_write(zinfo, force_zip64=force_zip64)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/tools/test_legislation_durable_state.py::test_wrong_pins[manifest_sha256]
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 21 passed, 1 warning in 29.64s

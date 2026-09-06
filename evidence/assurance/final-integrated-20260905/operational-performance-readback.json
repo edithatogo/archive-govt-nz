@@ -1,0 +1,176 @@
+{
+  "schema_version": "archive-govt-nz.operational-performance-readback/v1",
+  "observed_at": "2026-09-05T06:36:53.428333+00:00",
+  "source_response_sha256": "9b7206fbee2871bb3afa6fcd7ecaebc3cc2931cc4bdcc4eedb150b8b2730a30d",
+  "source": "https://api.github.com/repos/edithatogo/archive-govt-nz/actions/runs/33800180992/jobs",
+  "run_id": 33800180992,
+  "scope": "Exact500 hosted stage wall-clock durations; not a synthetic benchmark or a claim of resource profiling. No workflow dispatched by this observation.",
+  "jobs": [
+    {
+      "id": 100797533488,
+      "name": "revalidate",
+      "head_sha": "95d5e0959158df3e5f816b012b66049135ff3d54",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-09-03T20:05:10Z",
+      "completed_at": "2026-09-03T20:15:34Z",
+      "html_url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/33800180992/job/100797533488",
+      "seconds": 624.0,
+      "steps": [
+        {
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-09-03T20:05:11Z",
+          "completed_at": "2026-09-03T20:05:12Z",
+          "seconds": 1.0
+        },
+        {
+          "name": "Check out exact target revision",
+          "number": 2,
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-09-03T20:05:12Z",
+          "completed_at": "2026-09-03T20:05:14Z",
+          "seconds": 2.0
+        },
+        {
+          "name": "Set up Python",
+          "number": 3,
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-09-03T20:05:14Z",
+          "completed_at": "2026-09-03T20:05:14Z",
+          "seconds": 0.0
+        },
+        {
+          "name": "Install locked environment",
+          "number": 4,
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-09-03T20:05:14Z",
+          "completed_at": "2026-09-03T20:05:23Z",
+          "seconds": 9.0
+        },
+        {
+          "name": "Resolve governed reviewed inventory",
+          "number": 5,
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-09-03T20:05:23Z",
+          "completed_at": "2026-09-03T20:05:25Z",
+          "seconds": 2.0
+        },
+        {
+          "name": "Restore and authenticate selected parent",
+          "number": 6,
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-09-03T20:05:25Z",
+          "completed_at": "2026-09-03T20:05:32Z",
+          "seconds": 7.0
+        },
+        {
+          "name": "Verify no-write parent preflight",
+          "number": 7,
+          "status": "completed",
+          "conclusion": "skipped",
+          "started_at": "2026-09-03T20:05:32Z",
+          "completed_at": "2026-09-03T20:05:32Z",
+          "seconds": 0.0
+        },
+        {
+          "name": "Revalidate every governed work ID",
+          "number": 8,
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-09-03T20:05:32Z",
+          "completed_at": "2026-09-03T20:15:22Z",
+          "seconds": 590.0
+        },
+        {
+          "name": "Reconcile exact inventory and cumulative state",
+          "number": 9,
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-09-03T20:15:22Z",
+          "completed_at": "2026-09-03T20:15:24Z",
+          "seconds": 2.0
+        },
+        {
+          "name": "Verify accounting and bounded output",
+          "number": 10,
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-09-03T20:15:24Z",
+          "completed_at": "2026-09-03T20:15:25Z",
+          "seconds": 1.0
+        },
+        {
+          "name": "Seal verified continuation lineage",
+          "number": 11,
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-09-03T20:15:25Z",
+          "completed_at": "2026-09-03T20:15:27Z",
+          "seconds": 2.0
+        },
+        {
+          "name": "Upload complete continuation package",
+          "number": 12,
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-09-03T20:15:27Z",
+          "completed_at": "2026-09-03T20:15:30Z",
+          "seconds": 3.0
+        },
+        {
+          "name": "Upload sanitized complete attempt evidence",
+          "number": 13,
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-09-03T20:15:30Z",
+          "completed_at": "2026-09-03T20:15:31Z",
+          "seconds": 1.0
+        },
+        {
+          "name": "Enforce fail-closed exact-inventory outcome",
+          "number": 14,
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-09-03T20:15:31Z",
+          "completed_at": "2026-09-03T20:15:31Z",
+          "seconds": 0.0
+        },
+        {
+          "name": "Post Set up Python",
+          "number": 27,
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-09-03T20:15:31Z",
+          "completed_at": "2026-09-03T20:15:31Z",
+          "seconds": 0.0
+        },
+        {
+          "name": "Post Check out exact target revision",
+          "number": 28,
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-09-03T20:15:31Z",
+          "completed_at": "2026-09-03T20:15:32Z",
+          "seconds": 1.0
+        },
+        {
+          "name": "Complete job",
+          "number": 29,
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-09-03T20:15:32Z",
+          "completed_at": "2026-09-03T20:15:32Z",
+          "seconds": 0.0
+        }
+      ]
+    }
+  ]
+}

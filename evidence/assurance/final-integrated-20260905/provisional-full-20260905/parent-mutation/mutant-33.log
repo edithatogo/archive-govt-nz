@@ -1,0 +1,48 @@
+..................F
+=================================== FAILURES ===================================
+________ test_malformed_checkpoint_cache_is_not_promoted[conditional1] _________
+
+tmp_path = PosixPath('/private/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/pytest-of-doughnut/pytest-4812/test_malformed_checkpoint_cach0')
+conditional = {'work': []}
+
+    @pytest.mark.parametrize(
+        "conditional",
+        [
+            {"": {}},
+            {"work": []},
+            {"work": {"etag": 3}},
+            {"work": {"last_modified": ""}},
+            {"work": {"manifestation_id": []}},
+        ],
+    )
+    def test_malformed_checkpoint_cache_is_not_promoted(
+        tmp_path: Path, conditional: dict[str, Any]
+    ) -> None:
+        """Valid outer pins cannot authorize malformed inner checkpoint structures."""
+        ref, meta, raw = fixture(tmp_path / "in")
+        files = P.unpack(raw)
+        checkpoint = P.v.load(files["checkpoint.json"])
+        checkpoint["metadata"]["conditional_requests"] = conditional
+        files["checkpoint.json"] = P.M.encoded(checkpoint)
+        raw = fixtures.zip_bytes(list(files.items()))
+        ref["roots"]["checkpoint_file_sha256"] = P.v.sha(files["checkpoint.json"])
+        ref["artifact"].update(size_in_bytes=len(raw), digest="sha256:" + P.v.sha(raw))
+        meta["artifact"].update(ref["artifact"])
+        result = P.restore(
+            request(ref),
+            {"output": tmp_path / "state", "quarantine": tmp_path / "q"},
+            client(meta, raw),
+            "synthetic",
+            NOW,
+        )
+>       assert result["status"] == "failed"
+E       AssertionError: assert 'verified' == 'failed'
+E         
+E         - failed
+E         + verified
+
+tests/tools/test_legislation_parent_state.py:1487: AssertionError
+=========================== short test summary info ============================
+FAILED tests/tools/test_legislation_parent_state.py::test_malformed_checkpoint_cache_is_not_promoted[conditional1]
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 18 passed in 1.21s

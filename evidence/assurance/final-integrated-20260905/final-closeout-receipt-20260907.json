@@ -1,0 +1,53 @@
+{
+  "donor": {
+    "archived": true,
+    "final_reachable_head": "905f9e07c17af9d9d25dbe2b1c052fb8a290a4e3",
+    "repository": "edithatogo/corpus-legislation-nz"
+  },
+  "external_state": {
+    "donor_mutated": false,
+    "publication_performed": false,
+    "target_hosted_settings_changed": false
+  },
+  "failed_attempts": [
+    {
+      "log_sha256": "625b1a9da2bb64c155bff48ec47292e8882322ff2a378561210b4435c5f6d072",
+      "reason": "Secret scan found 13 candidates in preserved public assurance evidence; no credential was exposed."
+    },
+    {
+      "log_sha256": "e155e5d42276224ddc131716590d411c4fa3ad52485c9df6510b348e5cabc636",
+      "reason": "Formatting gate rejected the first adjudication implementation."
+    },
+    {
+      "log_sha256": "d3e899b81f6a4ad9dfacbf3599f70c4c3c83bcd8151a261c11bbf5e97c1d6e3d",
+      "reason": "Lint rejected long assurance path literals and return-count complexity."
+    }
+  ],
+  "focused_validation": {
+    "actionlint": "passed",
+    "conductor": "0 errors across 93 tracks",
+    "secret_controls_tests": "15 passed",
+    "workflow_contract_tests": "3 passed"
+  },
+  "handoffs": [
+    "Prompt 13 second 904-parent continuation remains separate.",
+    "Prompt 21 adversarial verification remains separate."
+  ],
+  "integrated_parent": "98b6d055153d7cc0dd03b0cfdb1d80694e9bf16f",
+  "local_validation": {
+    "cas_throughput_mb_per_second": 423.57,
+    "command": "CI=1 ./scripts/validate.sh",
+    "exit_code": 0,
+    "log_sha256": "2e8f55c1b0330b1a4509af4d938b1a9cb123e3a4cf0c0de8876f3bc2773a0920",
+    "mutation": "all registered suites passed",
+    "parity": "9/9 passed, 0 divergences",
+    "sbom_components": 112,
+    "schemas": "48 schemas and 38 representative documents passed",
+    "security": "dependency audit, licence inventory, secret scan passed",
+    "tests": "passed"
+  },
+  "prompt": 20,
+  "schema_version": "archive-govt-nz.integrated-assurance/v2",
+  "status": "ready_for_exact_head_hosted_checks",
+  "target_commit": "9ccf9413d5eb8c883e434581122f25227a3b5ef3"
+}

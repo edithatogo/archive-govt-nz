@@ -1,0 +1,290 @@
+{
+  "status": "provisional",
+  "files": [
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/README.md",
+      "size_bytes": 1804,
+      "sha256": "2f1764d07b5450e72d38c6bdb5e572eb381d871ca99d88a49fde908040af7480"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/full-harness.log",
+      "size_bytes": 53186,
+      "sha256": "2900c1599eb032762cd4b7bb1df2c2aabc314cd2f9d417defc3ec1adde933949"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/isolated-failure-diagnostic.log",
+      "size_bytes": 98,
+      "sha256": "acb78a5166f01d8a3d7506fbc03bb944110b25dac08640e346db6d31e3736871"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/baseline.log",
+      "size_bytes": 180,
+      "sha256": "f568a5e8d4036ce4d4a21d1652580377a6a3e74badbb13eb227ff2affd61b321"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-00.log",
+      "size_bytes": 1620,
+      "sha256": "e7f6940b7331d3b0ae2ba66fdd93e23951e07d1c5216a9340799748db0f511c4"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-01.log",
+      "size_bytes": 1393,
+      "sha256": "e7fea3326e8c2df622b7a39e5df1c6992f5c32e0ef4b435fd0cb239f4b84aadc"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-02.log",
+      "size_bytes": 906,
+      "sha256": "16af06e55feb0c36596282394bc15a3b5dc82da7f25be517a9cdef47b0107456"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-03.log",
+      "size_bytes": 2755,
+      "sha256": "3e8cb46dc2fcd6874161700db2bd4001c0aa24c89c45421310dd061b260733c8"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-04.log",
+      "size_bytes": 1099,
+      "sha256": "6fcbc52bba65351352c0e36718f97fdc227a0af03463e9729656e66608a17eb9"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-05.log",
+      "size_bytes": 2841,
+      "sha256": "cdeddde4bfd430abaa21e2b12e17c32cf263a99571cc4bffb7688127e91cbbb3"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-06.log",
+      "size_bytes": 1475,
+      "sha256": "a72bed1c51e7f330298b40935a51b29d6922cb538784ab4d157e7702ef671e4b"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-07.log",
+      "size_bytes": 1413,
+      "sha256": "52367a67b4a17d6aa8b5532b292562df395fec582a81f1940b3401d782b492f7"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-08.log",
+      "size_bytes": 2845,
+      "sha256": "74949c424f44ee5ba9690d0db54f9c252d0f7469f63221731b5e8aa05de87dc8"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-09.log",
+      "size_bytes": 1577,
+      "sha256": "f0fbcc1ddee7011a98d315a4b26367b94eaf088bb6a5de877735cf1ee8ddf725"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-10.log",
+      "size_bytes": 7100,
+      "sha256": "9f123c97ac784634dbe7b0a64fca0e3b6bf6e28b88d9285a15c9b1ab299c284a"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-11.log",
+      "size_bytes": 2222,
+      "sha256": "a1d1c7dd62f5e2035c5758494de381f1d04f4e97ae8cc6884f517a3d87a92b95"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-12.log",
+      "size_bytes": 2239,
+      "sha256": "0fac6db605fa2539c99059cc6ffc7558de3fe7f3405c0dba2f2a976cb7dc02cf"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-13.log",
+      "size_bytes": 2103,
+      "sha256": "553c307d4c44fe3912ab43091cc57fea615f24df9d07ba00023f5ec5907d282b"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-14.log",
+      "size_bytes": 1065,
+      "sha256": "1870ab1dd17574abdd43b18a0373426c7a3da553a51e42243874f22f16937eb9"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-15.log",
+      "size_bytes": 2357,
+      "sha256": "178b30198e2d2a98af953fe715eeca9403079229359f0e98da96c9d4232768ea"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-16.log",
+      "size_bytes": 2356,
+      "sha256": "f44674fd4c0535682686e5a8905e1bf7d64e440174c64e021254f646931e52d3"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-17.log",
+      "size_bytes": 1085,
+      "sha256": "988900ebf334b7acf9b9b86841277839085b312179a485384c71747b0eab1bbc"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-18.log",
+      "size_bytes": 1429,
+      "sha256": "c32bc99d6b88a12ff210929981c209b4a5e1266143af2546a2917a92b75a772d"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-19.log",
+      "size_bytes": 1281,
+      "sha256": "ab1f7512f6be561e8847a4a3135b28c716abb3be2fe6fdebdecda736211fccd7"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-20.log",
+      "size_bytes": 2212,
+      "sha256": "1dd283288d0a099e512c10c0a5683dac45aa7200159f4bf7a3ba85d4e4fcf29a"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-21.log",
+      "size_bytes": 2129,
+      "sha256": "924a34ad688c5c59a4fa7c987d12202d3f379d9bd4d053a47bbb8e782224bbb5"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-22.log",
+      "size_bytes": 2131,
+      "sha256": "60ec03b91889b4e29364a9dfdc1f31c999402b3103608f8149cb71564b74735d"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-23.log",
+      "size_bytes": 1726,
+      "sha256": "c3e7482b177cfd3940eee1784aac51684cebf568328345a27c524782020fc55f"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-24.log",
+      "size_bytes": 1386,
+      "sha256": "48daf5acfe5efd234803a2945b920a9f02c9352f81a6091a280c0ff32294b72a"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-25.log",
+      "size_bytes": 1600,
+      "sha256": "ec0a3d00c86e3db8709452bf8dd5d6c59276bcd59fdda57f470d95acbbdcbf78"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-26.log",
+      "size_bytes": 3017,
+      "sha256": "e820a23eed056654f1a0276b2336bc2f8993cb61272cf3a5491f268546d5e4a3"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-27.log",
+      "size_bytes": 1660,
+      "sha256": "38606d13b05ee17fdac4cbb8b32dc8830895427d44641f8481244190630a22af"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-28.log",
+      "size_bytes": 1282,
+      "sha256": "1ce06827e2781eedf0aae67b239a814302a3b0b4e994fc9fc32d336d07f6952d"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-29.log",
+      "size_bytes": 1805,
+      "sha256": "af08e7815902b479c779f9222b239aa79e60a854c31eade748e13f38a2befafd"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-30.log",
+      "size_bytes": 2005,
+      "sha256": "dbae98cb05356da6f97655dd528e76124810fdc21be5455227cf753346a15ee9"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-31.log",
+      "size_bytes": 2293,
+      "sha256": "e34fc3d7a86fad2407574afa173f0b9860a6bace3bc83ef2f430777855124245"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-32.log",
+      "size_bytes": 2144,
+      "sha256": "fec68e1db379127b8979da23ebb8e553a80a8b9d9afd967e736aca752c91b9fa"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-33.log",
+      "size_bytes": 2093,
+      "sha256": "9e7e71a00a8ff5cd3654ef0556fc889be2f30684db1d60bd1e9c2a40397c7ac9"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-34.log",
+      "size_bytes": 1684,
+      "sha256": "63ee42285e84925aec06ec1ec480f6c4997b1c345bebd226ed44d7feb352b3a6"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-35.log",
+      "size_bytes": 2028,
+      "sha256": "71df083bf3cb94090aca6f21fdd28e98a16be781667f63e91c3a483f780afe37"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-36.log",
+      "size_bytes": 2618,
+      "sha256": "df010a5c01841a1898f742ac21dea24b72e055455f25640ba2060474f6aca93a"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-37.log",
+      "size_bytes": 1381,
+      "sha256": "a5a26686cb280f66684b35a7b1d6cb668c74411d2dde310e9a128aa4abfb13b4"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-38.log",
+      "size_bytes": 1341,
+      "sha256": "13efd562f42f71147757e9c536666cd6bf6ece8dc44eedaec0a3a2058b5ecc48"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-39.log",
+      "size_bytes": 1312,
+      "sha256": "3b55940efe48bd610049eb16fa090d4622e7e542adb61f173060f6d80bec34f7"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-40.log",
+      "size_bytes": 1403,
+      "sha256": "4c509c166dcc6a95f2606ee9ea8a993e318efd0960e23285104caac51afed42f"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-41.log",
+      "size_bytes": 2297,
+      "sha256": "cd71eee904a281756c69217bb6376f5d40635ce9668ae8dcea6678976b79b514"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-42.log",
+      "size_bytes": 2224,
+      "sha256": "fa1f5f01e7f0241b58336b8c84432b938add861fb2e00b873c94550448180734"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-43.log",
+      "size_bytes": 2295,
+      "sha256": "881d81cd47ffe674cb6b1bf91bfe13a2ec7755434046531f7dc3365cd4e77da6"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-44.log",
+      "size_bytes": 2775,
+      "sha256": "648b6e9279eff3172796efa82d4eb48689551a385686bb35e8d4fe445d7a4bbb"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/mutant-45.log",
+      "size_bytes": 3159,
+      "sha256": "cb03dbf890212b2bd4b036f3f67d3031261b699550466b275070a24c9151bc7f"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/parent-mutation/receipt.json",
+      "size_bytes": 8316,
+      "sha256": "fbc4e2053d93321d7a114b7896f1a1240fffa4d9847f1b92ab3427937066760a"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/receipt.json",
+      "size_bytes": 719,
+      "sha256": "93ff08ca32b6b22e7eaab945cafa414b13c06346b5fe70f10cc2b1663030563e"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/resource-cleanup.json",
+      "size_bytes": 304,
+      "sha256": "687577a5d664ffe860a5e1c2ebabe2bde371889d41aa236a03d492e0e4f539e1"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/resource-probe-source.txt",
+      "size_bytes": 3806,
+      "sha256": "2575eba212e9a7c7676ef520c4801bee8a745f34943ac94a4db4ff46093374c9"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/resource-probe.log",
+      "size_bytes": 1818,
+      "sha256": "59c3013a9714ef6cb5447afa543cdfbe787543985ba32c238450faddc9f29160"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/resource-receipt.json",
+      "size_bytes": 1952,
+      "sha256": "25746b67a459cef7e2e029598b5d92b92acf942ba3ed55b5bb2e46fb7d15cca1"
+    },
+    {
+      "path": "evidence/assurance/final-integrated-20260905/provisional-full-20260905/resource-reconciliation.json",
+      "size_bytes": 967,
+      "sha256": "1acb5c1a0bdcf39f4357da834c4e4986cbf7f7268e11924765c28ff5873f7d8d"
+    }
+  ]
+}

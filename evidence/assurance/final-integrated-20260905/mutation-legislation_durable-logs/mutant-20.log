@@ -1,0 +1,63 @@
+..............F
+=================================== FAILURES ===================================
+________________________ test_archive_abuse[duplicate] _________________________
+
+tmp_path = PosixPath('/private/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/pytest-of-doughnut/pytest-4089/test_archive_abuse_duplicate_0')
+change = 'duplicate'
+
+    @pytest.mark.parametrize(
+        "change", ["duplicate", "traversal", "symlink", "compressed", "name_normalization"]
+    )
+    def test_archive_abuse(tmp_path: Path, change: str) -> None:
+        """Duplicate and hostile archive members never reach disk."""
+        files, pin = fixture(tmp_path)
+        raw = D.build(files, pin, RIGHTS, REVISION)
+        parts = archive_files(raw)
+        if change in {"symlink", "compressed"}:
+            del parts["state/checkpoint.json"]
+        stream = io.BytesIO()
+        with zipfile.ZipFile(stream, "w") as z:
+            for name, data in parts.items():
+                info = zipfile.ZipInfo(name)
+                info.external_attr = (stat.S_IFREG | 0o444) << 16
+                z.writestr(info, data)
+            info = zipfile.ZipInfo(
+                "state/manifest.json" if change == "duplicate" else "state/checkpoint.json"
+            )
+            info.external_attr = (stat.S_IFREG | 0o444) << 16
+            if change == "traversal":
+                info.filename = "state/../escape"
+            if change == "symlink":
+                info.external_attr = (stat.S_IFLNK | 0o777) << 16
+            if change == "compressed":
+                info.compress_type = zipfile.ZIP_DEFLATED
+            if change == "name_normalization":
+                info.filename = "state/manifest.jsonX"
+            z.writestr(info, b"x" * 10000)
+        altered = stream.getvalue()
+        if change == "name_normalization":
+            altered = altered.replace(b"state/manifest.jsonX", b"state/manifest.json\x00")
+        code = {
+            "duplicate": "package_duplicate",
+            "traversal": "package_path",
+            "symlink": "package_member_type",
+            "compressed": "package_member_type",
+            "name_normalization": "package_spelling",
+        }[change]
+>       with pytest.raises(D.v.VerificationError, match=code):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'package_duplicate'
+E         Actual message: 'package_encoding'
+
+tests/tools/test_legislation_durable_state.py:255: AssertionError
+=============================== warnings summary ===============================
+tests/tools/test_legislation_durable_state.py::test_archive_abuse[duplicate]
+  /Volumes/PortableSSD/appdata/local-dotdir/share/uv/python/cpython-3.14.6-macos-aarch64-none/lib/python3.14/zipfile/__init__.py:1730: UserWarning: Duplicate name: 'state/manifest.json'
+    return self._open_to_write(zinfo, force_zip64=force_zip64)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/tools/test_legislation_durable_state.py::test_archive_abuse[duplicate]
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 14 passed, 1 warning in 15.54s

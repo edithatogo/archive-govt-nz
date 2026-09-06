@@ -1,0 +1,37 @@
+................F
+=================================== FAILURES ===================================
+_____________________ test_authority_binding[approved_at] ______________________
+
+tmp_path = PosixPath('/private/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/pytest-of-doughnut/pytest-4802/test_authority_binding_approve0')
+field = 'approved_at'
+
+    @pytest.mark.parametrize(
+        "field",
+        ["mode", "source", "parent_reference_sha256", "scope", "approved_at", "expires_at"],
+    )
+    def test_authority_binding(tmp_path: Path, field: str) -> None:
+        """A separate authority cannot be reused for different bytes, scope or time."""
+        ref, _, _ = fixture(tmp_path)
+        req = request(ref)
+        auth = req["authority"]
+        if field == "mode":
+            auth[field] = "bootstrap"
+        elif field == "source":
+            auth[field] = P.source_identity("historical-work-ids-0001")
+        elif field == "parent_reference_sha256":
+            auth[field] = "b" * 64
+        elif field == "scope":
+            auth[field]["execution_id"] = "another-batch"
+        elif field == "approved_at":
+            auth[field] = "2026-09-03T00:00:00Z"
+        else:
+            auth[field] = "2026-08-31T00:00:00Z"
+>       with pytest.raises(P.v.VerificationError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE VerificationError
+
+tests/tools/test_legislation_parent_state.py:720: Failed
+=========================== short test summary info ============================
+FAILED tests/tools/test_legislation_parent_state.py::test_authority_binding[approved_at]
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 16 passed in 1.19s

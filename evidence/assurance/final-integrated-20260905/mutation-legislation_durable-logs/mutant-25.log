@@ -1,0 +1,46 @@
+......................................F
+=================================== FAILURES ===================================
+___________________ test_package_input_requires_regular_file ___________________
+
+tmp_path = PosixPath('/private/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/pytest-of-doughnut/pytest-4097/test_package_input_requires_re0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10c9e5250>
+
+    def test_package_input_requires_regular_file(
+        tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        """Special/directory inputs are rejected before any potentially blocking open."""
+    
+        def unexpected_open(*_args: object, **_kwargs: object) -> None:
+            message = "non-file input was opened"
+            raise AssertionError(message)
+    
+        monkeypatch.setattr(Path, "open", unexpected_open)
+        with pytest.raises(D.v.VerificationError, match="package_regular_file"):
+>           D.read_package(tmp_path)
+
+tests/tools/test_legislation_durable_state.py:548: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/private/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/p20-mutations-0kx7t1r2/legislation_durable/mutant-25.py:286: in read_package
+    with path.open("rb") as stream:
+         ^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+_args = (PosixPath('/private/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/pytest-of-doughnut/pytest-4097/test_package_input_requires_re0'), 'rb')
+_kwargs = {}
+
+    def unexpected_open(*_args: object, **_kwargs: object) -> None:
+        message = "non-file input was opened"
+>       raise AssertionError(message)
+E       AssertionError: non-file input was opened
+
+tests/tools/test_legislation_durable_state.py:544: AssertionError
+=============================== warnings summary ===============================
+tests/tools/test_legislation_durable_state.py::test_archive_abuse[duplicate]
+  /Volumes/PortableSSD/appdata/local-dotdir/share/uv/python/cpython-3.14.6-macos-aarch64-none/lib/python3.14/zipfile/__init__.py:1730: UserWarning: Duplicate name: 'state/manifest.json'
+    return self._open_to_write(zinfo, force_zip64=force_zip64)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/tools/test_legislation_durable_state.py::test_package_input_requires_regular_file
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 38 passed, 1 warning in 3.34s

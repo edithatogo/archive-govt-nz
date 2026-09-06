@@ -1,0 +1,35 @@
+{
+  "schema_version": "archive-govt-nz.assurance-independent-review/v1",
+  "observed_at": "2026-09-05T07:43:33.156763+00:00",
+  "reviewed_source_commit": "642a951e6d5b66da247d04f6122ef64d80278929",
+  "review_scope": "Read-only independent review of source-preflight fixed-path hosted use; no P13 changes made by reviewer.",
+  "files": [
+    {
+      "path": "tools/legislation_source_preflight.py",
+      "sha256": "45060fe735ff62c600d87d409aa576432f36b63f30073df59fa7cbd2cf943f54"
+    },
+    {
+      "path": "tests/tools/run_legislation_source_preflight_mutations.py",
+      "sha256": "ee70856c7451a3ab43e01882c7d7c711d6b23ef25a1e5ce83d839cd78947b55c"
+    },
+    {
+      "path": ".github/workflows/exact-inventory.yml",
+      "sha256": "61de962788d625c35c00e580e217a39e05f14cc398ba5038790c454fe51173e0"
+    }
+  ],
+  "blocking_findings": [],
+  "verified_boundaries": [
+    "Parent restoration and authentication precede credential access.",
+    "One fixed official-origin request; redirects and environment proxies disabled.",
+    "Response body not consumed or preserved; transport errors sanitized.",
+    "State bytes hashed before and after; mismatches and HTTP failures return nonzero.",
+    "Receipt is outside canonical state and uploaded on failure."
+  ],
+  "claim_limit": "HTTP200 establishes a successful credential-bearing request, not independent proof that the server required or validated the credential.",
+  "p20_followup": {
+    "static_suite_added": "tests/tools/run_legislation_source_preflight_mutations.py",
+    "execution_status": "pending_dependency_integration",
+    "execution_performed": false,
+    "dependency_commit": "642a951e6d5b66da247d04f6122ef64d80278929"
+  }
+}

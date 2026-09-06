@@ -1,0 +1,38 @@
+..F
+=================================== FAILURES ===================================
+___________________ test_archive_order_does_not_change_roots ___________________
+  + Exception Group Traceback (most recent call last):
+  |   File "/Volumes/PortableSSD/GitHub/archive-govt-nz-prompt20-final-assurance/tests/tools/test_legislation_parent_state.py", line 1153, in test_archive_order_does_not_change_roots
+  |     @settings(suppress_health_check=[HealthCheck.function_scoped_fixture])
+  |                    ^^^^^^^^^^^
+  |   File "/Volumes/PortableSSD/GitHub/archive-govt-nz-prompt20-final-assurance/.venv/lib/python3.14/site-packages/hypothesis/core.py", line 2287, in wrapped_test
+  |     raise the_error_hypothesis_found
+  | hypothesis.errors.FlakyFailure: Hypothesis test_archive_order_does_not_change_roots(tmp_path=PosixPath('/private/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/pytest-of-doughnut/pytest-4214/test_archive_order_does_not_ch0'), names=['receipts/harvest.json', 'checkpoint.json', 'manifest.json']) produces unreliable results: Failed on the first call but did not on a subsequent one (1 sub-exception)
+  | Failing test case: test_archive_order_does_not_change_roots(
+  |     tmp_path=PosixPath('/private/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/pytest-of-doughnut/pytest-4214/test_archive_order_does_not_ch0'),
+  |     names=['receipts/harvest.json', 'checkpoint.json', 'manifest.json'],
+  | )
+  | Unreliable test timings! On an initial run, this test took 321.87ms, which exceeded the deadline of 200.00ms, but on a subsequent run it took 18.93 ms, which did not. If you expect this sort of variability in your test timings, consider turning deadlines off for this test by setting deadline=None.
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/Volumes/PortableSSD/GitHub/archive-govt-nz-prompt20-final-assurance/.venv/lib/python3.14/site-packages/hypothesis/core.py", line 1223, in _execute_once_for_engine
+    |     result = self.execute_once(data)
+    |   File "/Volumes/PortableSSD/GitHub/archive-govt-nz-prompt20-final-assurance/.venv/lib/python3.14/site-packages/hypothesis/core.py", line 1161, in execute_once
+    |     result = self.test_runner(data, run)
+    |   File "/Volumes/PortableSSD/GitHub/archive-govt-nz-prompt20-final-assurance/.venv/lib/python3.14/site-packages/hypothesis/core.py", line 828, in default_executor
+    |     return function(data)
+    |   File "/Volumes/PortableSSD/GitHub/archive-govt-nz-prompt20-final-assurance/.venv/lib/python3.14/site-packages/hypothesis/core.py", line 1118, in run
+    |     return test(*args, **kwargs)
+    |   File "/Volumes/PortableSSD/GitHub/archive-govt-nz-prompt20-final-assurance/tests/tools/test_legislation_parent_state.py", line 1153, in test_archive_order_does_not_change_roots
+    |     @settings(suppress_health_check=[HealthCheck.function_scoped_fixture])
+    |                    ^^^^^^^^^^^^^^^^^^
+    |   File "/Volumes/PortableSSD/GitHub/archive-govt-nz-prompt20-final-assurance/.venv/lib/python3.14/site-packages/hypothesis/core.py", line 1050, in test
+    |     raise DeadlineExceeded(
+    |         datetime.timedelta(seconds=runtime), self.settings.deadline
+    |     )
+    | hypothesis.errors.DeadlineExceeded: Test took 321.87ms, which exceeds the deadline of 200.00ms. If you expect test cases to take this long, you can use @settings(deadline=...) to either set a higher deadline, or to disable it with deadline=None.
+    +------------------------------------
+=========================== short test summary info ============================
+FAILED tests/tools/test_legislation_parent_state.py::test_archive_order_does_not_change_roots
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 2 passed in 47.45s

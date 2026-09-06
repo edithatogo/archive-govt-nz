@@ -1,0 +1,64 @@
+{
+  "observed_at": "2026-09-05T13:19:57.350787+00:00",
+  "main_base": "87f65e8b37cbc16bc6c7cf8b5b93a19e48f0f207",
+  "prepared_head": "ef79ca87849095c9e33a420e5ef6018f1aaac96f",
+  "integrated_completion": false,
+  "remaining_dependency": "Prompt15 integration and final full/hosted assurance",
+  "rebase_mapping": [
+    {
+      "prior": "5ab4d930d364f4919fc71637e5c31540870b580a",
+      "rebased": "f8fe7c0ad11cb34626b2c543f2e9ecec347ee178"
+    },
+    {
+      "prior": "94f4389abd10f2d7f38e9e4dad246a230365d8e3",
+      "rebased": "caab1b16b33b94b881f3b20671e870c4dccffc8c"
+    },
+    {
+      "prior": "ceaedf9bdd3248819879cdd71832a4eecff80953",
+      "rebased": "79d29e36747813e98cb58b1f32ea8d1a8b5077cc"
+    },
+    {
+      "prior": "00dad4c41fadd963ba499d1803ad698403c6c663",
+      "rebased": "ef79ca87849095c9e33a420e5ef6018f1aaac96f"
+    }
+  ],
+  "runs": [
+    {
+      "name": "focused",
+      "command": [
+        "uv",
+        "run",
+        "--locked",
+        "pytest",
+        "tests/tools/test_legislation_integrity_assurance_workflow.py",
+        "tests/tools/test_legislation_source_preflight.py",
+        "tests/tools/test_workflow_policy.py",
+        "--no-cov",
+        "-q"
+      ],
+      "exit_code": 0,
+      "log_sha256": "e5c6205ea68c494d3586d2f6c184511cd0c4cb40226bce6440e6bba1ce8ff9fe"
+    },
+    {
+      "name": "actionlint",
+      "command": [
+        "actionlint",
+        ".github/workflows/legislation-integrity-assurance.yml"
+      ],
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "conductor",
+      "command": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "tools/validate_conductor_state.py"
+      ],
+      "exit_code": 0,
+      "log_sha256": "be7b0e678f0581caa2a6234abf52ffc1e00519aaef0afb53883c8873fb963b38"
+    }
+  ]
+}

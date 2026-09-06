@@ -1,0 +1,46 @@
+.......................................F
+=================================== FAILURES ===================================
+_______________________ test_promotion_guards[readback] ________________________
+
+tmp_path = PosixPath('/private/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/pytest-of-doughnut/pytest-4070/test_promotion_guards_readback0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10e8e9a50>
+change = 'readback'
+
+    @pytest.mark.parametrize("change", ["readback", "race", "symlink"])
+    def test_promotion_guards(
+        tmp_path: Path, monkeypatch: pytest.MonkeyPatch, change: str
+    ) -> None:
+        """Writes remain quarantined if readback or destination exclusivity changes."""
+        files, pin = fixture(tmp_path)
+        raw = D.build(files, pin, RIGHTS, REVISION)
+        output = tmp_path / "restored"
+        if change == "symlink":
+            output.symlink_to(tmp_path / "merged", target_is_directory=True)
+            code = "workspace_symlink"
+        elif change == "readback":
+            monkeypatch.setattr(D.P, "read_state", lambda _path: {})
+            code = "restore_readback"
+        else:
+            original = D.P.write_new
+    
+            def competing(path: Path, data: bytes) -> None:
+                original(path, data)
+                output.mkdir(exist_ok=True)
+    
+            monkeypatch.setattr(D.P, "write_new", competing)
+            code = "output_race"
+>       with pytest.raises(D.v.VerificationError, match=code):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE VerificationError
+
+tests/tools/test_legislation_durable_state.py:510: Failed
+=============================== warnings summary ===============================
+tests/tools/test_legislation_durable_state.py::test_archive_abuse[duplicate]
+  /Volumes/PortableSSD/appdata/local-dotdir/share/uv/python/cpython-3.14.6-macos-aarch64-none/lib/python3.14/zipfile/__init__.py:1730: UserWarning: Duplicate name: 'state/manifest.json'
+    return self._open_to_write(zinfo, force_zip64=force_zip64)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/tools/test_legislation_durable_state.py::test_promotion_guards[readback]
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 39 passed, 1 warning in 30.47s

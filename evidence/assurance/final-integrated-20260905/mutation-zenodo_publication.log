@@ -1,0 +1,1 @@
+{"schema_version":"archive-govt-nz.zenodo-publication-mutation/v1","source":"src/archive_govt_nz/zenodo.py","mutants":[{"name":"release_approval","killed":true},{"name":"draft_preflight","killed":true},{"name":"preflight_identity","killed":true},{"name":"published_readback","killed":true},{"name":"doi_readback","killed":true}],"killed":5,"total":5}

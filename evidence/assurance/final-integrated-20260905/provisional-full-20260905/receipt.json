@@ -1,0 +1,23 @@
+{
+  "observed_at": "2026-09-05T13:41:12.723046+00:00",
+  "target_commit": "9fe6894d5ba952aacaffa8bc05dc3f24ad4e2f08",
+  "command": [
+    "./scripts/validate.sh"
+  ],
+  "ci_environment": {
+    "COVERAGE_CORE": "ctrace",
+    "PYTHON_JIT": "0"
+  },
+  "exit_code": 1,
+  "tests_passed": 4799,
+  "tests_failed": 3,
+  "test_seconds": 616.4,
+  "log_sha256": "2900c1599eb032762cd4b7bb1df2c2aabc314cd2f9d417defc3ec1adde933949",
+  "load_averages_after": [
+    235.28955078125,
+    308.10791015625,
+    216.54248046875
+  ],
+  "failure_disposition": "Unresolved failed assurance; timing and slow-generation mechanisms observed, exclusive cause unproven. No tests disabled or thresholds changed.",
+  "integrated_completion": false
+}

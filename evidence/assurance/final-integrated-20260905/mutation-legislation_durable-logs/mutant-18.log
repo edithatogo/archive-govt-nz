@@ -1,0 +1,70 @@
+..............................F
+=================================== FAILURES ===================================
+______________________ test_inner_state_tampering[commit] ______________________
+
+tmp_path = PosixPath('/private/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/pytest-of-doughnut/pytest-4085/test_inner_state_tampering_com0')
+change = 'commit'
+
+    @pytest.mark.parametrize(
+        "change",
+        [
+            "object",
+            "missing",
+            "orphan",
+            "versions",
+            "checkpoint",
+            "receipt",
+            "parent",
+            "descriptor",
+            "commit",
+            "parent_count",
+            "parent_missing",
+            "member",
+            "source",
+        ],
+    )
+    def test_inner_state_tampering(tmp_path: Path, change: str) -> None:  # noqa: C901, PLR0912 - independent negative cases
+        """Rebound outer pins cannot hide inner object or lineage corruption."""
+        files, pin = fixture(tmp_path)
+        obj = next(n for n in files if n.startswith("cas/"))
+        receipt = D.v.load(files["final-state-merge-receipt.json"])
+        parent = receipt["parents"][0]
+        if change == "object":
+            files[obj] += b"changed"
+        elif change == "missing":
+            del files[obj]
+        elif change == "orphan":
+            files["cas/sha256/" + "f" * 2 + "/" + "f" * 64] = b"orphan"
+        elif change == "versions":
+            files["versions_by_work.json"] = b"{}"
+        elif change == "checkpoint":
+            c = D.v.load(files["checkpoint.json"])
+            c["metadata"]["conditional_requests"] = {"bad": []}
+            files["checkpoint.json"] = D.M.encoded(c)
+        elif change == "receipt":
+            receipt["output"]["objects"] += 1
+        elif change == "parent":
+            files["parents/" + parent["artifact_sha256"] + "/artifact.zip"] += b"changed"
+        elif change == "descriptor":
+            parent["descriptor_sha256"] = "f" * 64
+        elif change == "commit":
+            parent["repository_commit"] = "0" * 40
+        elif change == "parent_count":
+            receipt["parents"] = []
+        elif change == "parent_missing":
+            files["parents/" + "f" * 64 + "/descriptor.json"] = b"{}"
+        elif change == "member":
+            files["receipts/harvest.json"] = b"{}"
+        else:
+            pin["source"] = D.P.source_identity("historical-work-ids-0001")
+        files["final-state-merge-receipt.json"] = D.M.encoded(receipt)
+        repin(files, pin)
+>       with pytest.raises((D.v.VerificationError, ValueError, KeyError, TypeError)):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE any of (VerificationError, ValueError, KeyError, TypeError)
+
+tests/tools/test_legislation_durable_state.py:171: Failed
+=========================== short test summary info ============================
+FAILED tests/tools/test_legislation_durable_state.py::test_inner_state_tampering[commit]
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 30 passed in 4.03s

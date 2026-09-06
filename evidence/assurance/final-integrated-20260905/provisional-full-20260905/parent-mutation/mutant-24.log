@@ -1,0 +1,25 @@
+......F
+=================================== FAILURES ===================================
+______________________ test_noncanonical_governance_bytes ______________________
+
+tmp_path = PosixPath('/private/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/pytest-of-doughnut/pytest-4803/test_noncanonical_governance_b0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10c1b2780>
+
+    def test_noncanonical_governance_bytes(
+        tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        """Canonical document hashes must also be exact committed-file hashes."""
+        monkeypatch.setattr(P, "ROOT", tmp_path)
+        path = tmp_path / "config/legislation/parents/pinned.json"
+        path.parent.mkdir(parents=True)
+        path.write_bytes(b"{}")
+        monkeypatch.setattr(P, "git_bytes", lambda _args: b"{}")
+>       with pytest.raises(P.v.VerificationError, match="noncanonical_authority"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE VerificationError
+
+tests/tools/test_legislation_parent_state.py:1239: Failed
+=========================== short test summary info ============================
+FAILED tests/tools/test_legislation_parent_state.py::test_noncanonical_governance_bytes
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 6 passed in 1.12s

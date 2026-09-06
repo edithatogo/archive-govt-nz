@@ -1,0 +1,28 @@
+................F
+=================================== FAILURES ===================================
+_________________________________ test_limits __________________________________
+
+tmp_path = PosixPath('/private/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/pytest-of-doughnut/pytest-4061/test_limits0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10d231a50>
+
+    def test_limits(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+        """Archive bounds and expected digest apply before restoration."""
+        files, pin = fixture(tmp_path)
+        raw = D.build(files, pin, RIGHTS, REVISION)
+        with pytest.raises(D.v.VerificationError, match="expected_digest"):
+            D.verify(raw, "bad")
+>       with pytest.raises(D.v.VerificationError, match="package_digest"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE VerificationError
+
+tests/tools/test_legislation_durable_state.py:265: Failed
+=============================== warnings summary ===============================
+tests/tools/test_legislation_durable_state.py::test_archive_abuse[duplicate]
+  /Volumes/PortableSSD/appdata/local-dotdir/share/uv/python/cpython-3.14.6-macos-aarch64-none/lib/python3.14/zipfile/__init__.py:1730: UserWarning: Duplicate name: 'state/manifest.json'
+    return self._open_to_write(zinfo, force_zip64=force_zip64)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/tools/test_legislation_durable_state.py::test_limits - Failed: D...
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 16 passed, 1 warning in 27.65s

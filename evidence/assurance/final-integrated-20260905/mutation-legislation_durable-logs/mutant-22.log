@@ -1,0 +1,26 @@
+..........................F
+=================================== FAILURES ===================================
+__________________ test_rights_partial_upload_and_idempotence __________________
+
+tmp_path = PosixPath('/private/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/pytest-of-doughnut/pytest-4092/test_rights_partial_upload_and0')
+
+    def test_rights_partial_upload_and_idempotence(tmp_path: Path) -> None:
+        """Plans exclude blocked payload and never infer remote success."""
+        files, pin = fixture(tmp_path)
+        observed = {
+            "repository": "edithatogo/corpus-legislation-nz",
+            "revision": None,
+            "files": {},
+        }
+        raw = D.build(files, pin, RIGHTS, REVISION)
+        blocked = D.publication_plan(raw, D.v.sha(raw), observed)
+        assert blocked["payload_blocked"] is True
+>       assert len(blocked["uploads"]) == 1
+E       AssertionError: assert 2 == 1
+E        +  where 2 = len([{'path_parts': ['durable-state', 'v1', 'b13caa044fff3bded3f187b8f888ee141be3426cd2d3cc9e0f922380436b1884', 'metadata....aa044fff3bded3f187b8f888ee141be3426cd2d3cc9e0f922380436b1884', 'size_bytes': 35529, 'action': 'upload_after_approval'}])
+
+tests/tools/test_legislation_durable_state.py:297: AssertionError
+=========================== short test summary info ============================
+FAILED tests/tools/test_legislation_durable_state.py::test_rights_partial_upload_and_idempotence
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 26 passed in 16.52s

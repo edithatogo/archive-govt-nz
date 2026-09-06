@@ -52,6 +52,33 @@ PUBLIC_LINEAGE_DOCUMENTS = {
     ),
     "receipt.json": "7a90eed0dabd874a835d31a29c42eec52c5c6b3cd2623aa0436e563df53ac52b",
 }
+ASSURANCE_ROOT = "evidence/assurance/final-integrated-20260905/"
+PUBLIC_ASSURANCE_DOCUMENTS = {
+    ASSURANCE_ROOT + "mutation-legislation_durable-logs/mutant-25.log": (
+        "aa7cb8776f68ee8518c17c8fd0f574ea3ddf39f8f3e0de119ddf165477972c65"
+    ),
+    ASSURANCE_ROOT + "provisional-full-20260905/resource-cleanup.json": (
+        "687577a5d664ffe860a5e1c2ebabe2bde371889d41aa236a03d492e0e4f539e1"
+    ),
+    ASSURANCE_ROOT + "provisional-full-20260905/resource-probe-source.txt": (
+        "2575eba212e9a7c7676ef520c4801bee8a745f34943ac94a4db4ff46093374c9"
+    ),
+    ASSURANCE_ROOT + "provisional-full-20260905/resource-probe.log": (
+        "59c3013a9714ef6cb5447afa543cdfbe787543985ba32c238450faddc9f29160"
+    ),
+    ASSURANCE_ROOT + "provisional-full-20260905/resource-receipt.json": (
+        "25746b67a459cef7e2e029598b5d92b92acf942ba3ed55b5bb2e46fb7d15cca1"
+    ),
+    ASSURANCE_ROOT + "rebase-preparation/workflow-focused.log": (
+        "276238808c9d2120e5fa67d380a741b1c179d31cf1d60e5e0d27857aadbd0dea"
+    ),
+    ASSURANCE_ROOT + "supplementary-receipt.json": (
+        "a26f087bd36d133dddd2f3c2f15640763e294fa98fde41ed3f7b91a3f80e041e"
+    ),
+    ASSURANCE_ROOT + "final-closeout-receipt-20260907.json": (
+        "2a6b94bdd07f678196f0273de658257fe8b2503a1a500d335717f10a31ba65fd"
+    ),
+}
 PUBLIC_LINEAGE_ROOT = "evidence/migrations/corpus-legislation-nz/final-lineage/"
 PUBLIC_IMPORT_VALUE = re.compile(
     r'"(?:previous_import|final_import|imported_root|imported_tree_root)"\s*:\s*'
@@ -65,6 +92,37 @@ PUBLIC_CHECKSUM_PATH = (
     "verification-01/SHA256SUMS"
 )
 PUBLIC_CHECKSUM_PATH_CANDIDATE_DIGEST = "202980b9d847d8c9f1af423526b0383990e8e0d7"
+
+
+def _is_reviewed_document(
+    relative: str, finding: dict[str, object], documents: dict[str, str]
+) -> bool:
+    """Adjudicate a finding only when the exact reviewed document is unchanged."""
+    if finding.get("type") not in {
+        "Base64 High Entropy String",
+        "Hex High Entropy String",
+        "Secret Keyword",
+    }:
+        return False
+    path = REPOSITORY_ROOT / relative
+    try:
+        payload = path.read_bytes()
+        if hashlib.sha256(payload).hexdigest() != documents[relative]:
+            return False
+        number = finding.get("line_number")
+        lines = payload.decode("utf-8").splitlines()
+        if type(number) is not int or not 1 <= number <= len(lines):
+            return False
+        candidates = re.findall(r"[A-Za-z0-9+/=_-]{16,}", lines[number - 1])
+        if relative in PUBLIC_ASSURANCE_DOCUMENTS:
+            return True
+        return any(
+            hashlib.sha1(candidate.encode(), usedforsecurity=False).hexdigest()
+            == finding.get("hashed_secret")
+            for candidate in candidates
+        )
+    except OSError, UnicodeError:
+        return False
 
 
 def _is_indexed_public_checksum_path(relative: str, finding: dict[str, object]) -> bool:
@@ -84,11 +142,15 @@ def _is_indexed_public_checksum_path(relative: str, finding: dict[str, object]) 
         return False
 
 
-def is_reviewed_public_path(filename: str, finding: dict[str, object]) -> bool:
+def is_reviewed_public_path(  # noqa: PLR0911
+    filename: str, finding: dict[str, object]
+) -> bool:
     """Adjudicate only an exact path candidate in an unchanged reviewed document."""
     relative = filename.replace("\\", "/")
     if _is_indexed_public_checksum_path(relative, finding):
         return True
+    if relative in PUBLIC_ASSURANCE_DOCUMENTS:
+        return _is_reviewed_document(relative, finding, PUBLIC_ASSURANCE_DOCUMENTS)
     allowed = {
         PUBLIC_LINEAGE_ROOT + name: digest
         for name, digest in PUBLIC_LINEAGE_DOCUMENTS.items()
