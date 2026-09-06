@@ -1,0 +1,75 @@
+{
+  "schema_version": "archive-govt-nz.legislation-controller-observations/v1",
+  "observed_at": "2026-09-05T07:46:49.644122+00:00",
+  "scope": "Focused refresh after reopened Prompt13 required-preflight gap; previous full identity readbacks retained, not silently refreshed.",
+  "issues": [
+    {
+      "issue": 335,
+      "observed_at": "2026-09-05T07:46:49.644122+00:00",
+      "response_sha256": "02018ca423dce58a22ee36cb17ae7d2d335cd437a43c65b2ffcf8c8915886122",
+      "value": {
+        "number": 335,
+        "title": "Prompt 13: target-owned 500-work operational proof",
+        "state": "open",
+        "state_reason": "reopened",
+        "closed_at": null,
+        "html_url": "https://github.com/edithatogo/archive-govt-nz/issues/335"
+      }
+    },
+    {
+      "issue": 341,
+      "observed_at": "2026-09-05T07:46:49.644122+00:00",
+      "response_sha256": "67e088ebc9a08736fd445bb4b3d3417c3ea5e300ab3ecfa1d162065dc58be47f",
+      "value": {
+        "number": 341,
+        "title": "Prompt 15: Hugging Face identity and target-origin reconciliation",
+        "state": "open",
+        "state_reason": null,
+        "closed_at": null,
+        "html_url": "https://github.com/edithatogo/archive-govt-nz/issues/341"
+      }
+    },
+    {
+      "issue": 351,
+      "observed_at": "2026-09-05T07:46:49.644122+00:00",
+      "response_sha256": "eeafeca6732ee0969b8c4d7aeacfb22fa3ac65ee7de5c19bb5d4e57ab8abdf1f",
+      "value": {
+        "number": 351,
+        "title": "Prompt 20: integrated quality, security, and hosted assurance gate",
+        "state": "open",
+        "state_reason": "reopened",
+        "closed_at": null,
+        "html_url": "https://github.com/edithatogo/archive-govt-nz/issues/351"
+      }
+    },
+    {
+      "issue": 356,
+      "observed_at": "2026-09-05T07:46:49.644122+00:00",
+      "response_sha256": "e1eb552381933a1b11abea2654cc0c1b5a7c0f807e7e06e7b13c9c4c82cf807d",
+      "value": {
+        "number": 356,
+        "title": "Prompt 21: final independent adversarial verification",
+        "state": "open",
+        "state_reason": null,
+        "closed_at": null,
+        "html_url": "https://github.com/edithatogo/archive-govt-nz/issues/356"
+      }
+    },
+    {
+      "issue": 276,
+      "observed_at": "2026-09-05T07:46:49.644122+00:00",
+      "response_sha256": "370dad2f5419bc022c49ae5714a1f5b38796f9f9a09f660c32ea3c7e0b6cfadc",
+      "value": {
+        "number": 276,
+        "title": "Prompt 01: legislation post-cutover programme controller and dependency manager",
+        "state": "open",
+        "state_reason": null,
+        "closed_at": null,
+        "html_url": "https://github.com/edithatogo/archive-govt-nz/issues/276"
+      }
+    }
+  ],
+  "target_head": "d1f2ff3162f448fdfc1b68e24374a8169bb9e24c",
+  "target_response_sha256": "e64ca7b2ee1f64f964ed1007b79fa03477164becbc51dd82bffbe22c067b7077",
+  "external_mutations_performed": false
+}

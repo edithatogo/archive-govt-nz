@@ -1,0 +1,114 @@
+{
+  "schema_version": "archive-govt-nz.programme-status-addendum/v1",
+  "observed_at": "2026-09-05T08:49:16.371758+00:00",
+  "parent_issue": 276,
+  "status": "in_progress",
+  "supplements": {
+    "path": "conductor/tracks/legislation_post_cutover_state_and_publication_integrity_20260831/programme-status-20260905-preflight-reopen.json",
+    "sha256": "9c47e2848c8d45edd316e32a17f7c50325eedca70ce189bd365b8ab9952fe6cc"
+  },
+  "target_commit": "c92c3d2f717b55537b5d338d430689125e95fa66",
+  "required_merge_and_execution_order": [
+    {
+      "prompt": 13,
+      "issue": 335,
+      "steps": [
+        "SourcefixPR400 reviewed and merged with requiredchecks",
+        "Authorized main-only standalone no-writepreflight",
+        "Authorized newfull500run from approved552durableparent with mandatorypreflight precedingharvest",
+        "Independent artifactreadback and separate namedreceipt closeoutPR"
+      ]
+    },
+    {
+      "prompt": 15,
+      "issue": 341,
+      "steps": [
+        "Bind finalizedP13namedreceipt",
+        "Verify monthly livecanonical552metadata/package acceptance"
+      ]
+    },
+    {
+      "prompt": 20,
+      "issue": 351,
+      "steps": [
+        "Required integrated assurance on finalcandidate afterallimplementation"
+      ]
+    },
+    {
+      "prompt": 21,
+      "issue": 356,
+      "steps": [
+        "Fresh terminal16criterion/11probe evaluation afterP20"
+      ]
+    },
+    {
+      "prompt": 1,
+      "issue": 276,
+      "steps": [
+        "Derive fourdimensions from exactterminalproofs; close onlywhen allrequiredcriteria satisfied"
+      ]
+    }
+  ],
+  "parent_claim_correction": {
+    "run_id": 33800180992,
+    "local_state_parent_valid": true,
+    "hosted_parent_reference_compatible": false,
+    "second_cycle_proven": false,
+    "reason": "Existing parent-reference artifact-name pattern rejects exact-inventory artifact name; no904-to-childcycle executed. Historical552-to904continuation remains actualsuccess."
+  },
+  "specialist_ownership": {
+    "missing_preflight_and_ordered_operational_closeout": {
+      "prompt": 13,
+      "issue": 335
+    },
+    "published552readback_binding": {
+      "prompt": 15,
+      "issue": 341
+    },
+    "integrated_quality": {
+      "prompt": 20,
+      "issue": 351
+    },
+    "terminalclaimverification": {
+      "prompt": 21,
+      "issue": 356
+    }
+  },
+  "dimensions": {
+    "code_capability_migration": {
+      "state": "in_progress",
+      "reason": "Final integrated and independent gates pending; prior scoped operational/publication facts remain valid but do not imply terminalcompletion."
+    },
+    "operational_state_migration": {
+      "state": "in_progress",
+      "reason": "Final integrated and independent gates pending; prior scoped operational/publication facts remain valid but do not imply terminalcompletion."
+    },
+    "corpus_custody_recoverability": {
+      "state": "in_progress",
+      "reason": "Final integrated and independent gates pending; prior scoped operational/publication facts remain valid but do not imply terminalcompletion."
+    },
+    "publication_identity_migration": {
+      "state": "in_progress",
+      "reason": "Final integrated and independent gates pending; prior scoped operational/publication facts remain valid but do not imply terminalcompletion."
+    }
+  },
+  "source_readback": {
+    "scope": "Fresh liveAPI observations captured by independentP21prep; no mergedclaim made for unpublishedprep.",
+    "target_main_response_sha256": "eef5313a79991cc5b64d59fff0423e0b847a8d42ebf0dfb13b9d9e5e24e1fb7e",
+    "source_fix_pr": {
+      "number": 400,
+      "state": "open",
+      "merged": false,
+      "head": "0f94cd8fa9f7a701c2523ea04041554f10c80a0b",
+      "response_sha256": "86a991e5bec84ffc385f3e060f4d2dc5dfbd1aa3d65db89d138e7f7c47d76c24"
+    },
+    "latest_exact_run": {
+      "id": 33800180992,
+      "head_sha": "95d5e0959158df3e5f816b012b66049135ff3d54",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-09-03T20:05:07Z"
+    }
+  },
+  "external_mutations_performed": false
+}
