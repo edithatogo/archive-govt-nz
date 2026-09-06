@@ -80,6 +80,8 @@ jobs:
         with:
           version: "0.6.5"
           python-version: "3.14.6"
+      - name: Install stable Python interpreter
+        run: uv python install 3.14.6
       - name: Install locked environment
         run: uv sync --locked
       - name: Run existing integrity suite
