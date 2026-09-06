@@ -73,3 +73,7 @@ explicit hosted retry is authorized and independently verified.
 ## Superseding operational evidence — 2026-09-05
 
 The dated `evidence/migrations/corpus-legislation-nz/500-work-operational-proof/closeout-20260905/500-work-target-revalidation.json` and `operational-observation.md` bind the successful run 33800180992 and independent complete artifact verification. Original blocked records remain unchanged. Required no-write credential/endpoint preflight remains a precise blocker: the existing preflight_only lane validates state only. Issue #335 is reopened; no publication, workflow dispatch or state mutation is performed by this evidence correction.
+
+## Ordered authenticated operational proof — 2026-09-05
+
+The additive `evidence/migrations/corpus-legislation-nz/500-work-operational-proof/ordered-20260905/500-work-target-revalidation.json` binds preflight 33968519628 and full run 33968609350 to merge 87f65e8b37cbc16bc6c7cf8b5b93a19e48f0f207. All 500 dispositions, 904 physical object hashes, zero reconciliation mismatches, and six retained artifact archive hashes are independently verified. The credential/endpoint preflight blocker is resolved. Two clean restores prove the new output is restorable from its verified Actions artifact, separately from Prompt10 durable552 recovery. Second continuation from the new 904-record output remains an explicit blocker; issue #335 is not declared complete. No publication is performed.

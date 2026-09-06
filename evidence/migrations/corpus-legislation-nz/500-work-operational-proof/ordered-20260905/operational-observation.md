@@ -1,0 +1,9 @@
+# Ordered operational observation — 2026-09-05
+
+PR #400 merged normally at `87f65e8b37cbc16bc6c7cf8b5b93a19e48f0f207` after all seven checks passed. The merge preserves the original diagnostic ancestry. The assistant cancelled CI run 33966240889 attempt 1; no observed stall or test failure is asserted. Its replacement and subsequent reviewed heads passed hosted assurance.
+
+Preflight run 33968519628 used the configured Actions secret without exposing it. Its receipt records one fixed-endpoint HTTP 200 request, zero payload bytes preserved, and identical hashes for all 555 state files. Full run 33968609350 followed it on the same commit and independently repeated its own authenticated preflight.
+
+All 500 reviewed IDs were attempted: 352 changed and 148 unchanged, with no failed, unavailable, partial or skipped work. The independently recovered 552-record parent produced 904 cumulative records. Reconciliation covered 852 records in the 500-work scope with zero unexplained mismatches. Independent state verification checked all 904 physical CAS objects and matched every continuation root. All six retained artifact archive digests matched GitHub readback. JSON receipts contain no credential values or signed download URLs; payload archives are not committed here.
+
+Issue #335 remains **INCOMPLETE** for the original prompt's second parent-chain cycle. This repeated 552-to-904 run does not substitute for a 904-to-child cycle. Prompt 10 proves recovery of the selected 552-record durable parent. Two clean isolated restores additionally reproduce every root of the new 904-record output from its independently verified complete Actions artifact; both test workspaces were destroyed. This proves output restorability, not a new durable publication or durable recovery of 904. No new Hugging Face or Zenodo publication was performed or claimed. Historical observations remain unchanged.
