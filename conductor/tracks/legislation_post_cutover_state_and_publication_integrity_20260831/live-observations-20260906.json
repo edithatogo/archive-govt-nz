@@ -1,0 +1,931 @@
+{
+  "schema_version": "archive-govt-nz.legislation-controller-observations/v1",
+  "observed_at": "2026-09-06T11:42:30.032542+00:00",
+  "observations": [
+    {
+      "endpoint": "repos/edithatogo/archive-govt-nz/issues/276",
+      "observed_at": "2026-09-06T11:42:24.445942+00:00",
+      "status": "observed",
+      "response_sha256": "370dad2f5419bc022c49ae5714a1f5b38796f9f9a09f660c32ea3c7e0b6cfadc",
+      "value": {
+        "number": 276,
+        "title": "Prompt 01: legislation post-cutover programme controller and dependency manager",
+        "state": "open",
+        "state_reason": null,
+        "closed_at": null,
+        "html_url": "https://github.com/edithatogo/archive-govt-nz/issues/276"
+      }
+    },
+    {
+      "endpoint": "repos/edithatogo/archive-govt-nz/issues/278",
+      "observed_at": "2026-09-06T11:42:24.450557+00:00",
+      "status": "observed",
+      "response_sha256": "08d294e07268b8ab7afa6edcb23ad64839f67dc0f8dbfac4aa5c9c74021277fb",
+      "value": {
+        "number": 278,
+        "title": "Prompt 02: reconcile final donor lineage after imported baseline",
+        "state": "closed",
+        "state_reason": "completed",
+        "closed_at": "2026-08-31T13:03:32Z",
+        "html_url": "https://github.com/edithatogo/archive-govt-nz/issues/278"
+      }
+    },
+    {
+      "endpoint": "repos/edithatogo/archive-govt-nz/issues/284",
+      "observed_at": "2026-09-06T11:42:24.455853+00:00",
+      "status": "observed",
+      "response_sha256": "ba45cb8e8f16a4d9d8acf3377e4f1d8c3dc80fa72b86da90ae481c8656a5b725",
+      "value": {
+        "number": 284,
+        "title": "Prompt 03: independently verify final donor operational-state artifact",
+        "state": "closed",
+        "state_reason": "completed",
+        "closed_at": "2026-08-31T13:32:27Z",
+        "html_url": "https://github.com/edithatogo/archive-govt-nz/issues/284"
+      }
+    },
+    {
+      "endpoint": "repos/edithatogo/archive-govt-nz/issues/292",
+      "observed_at": "2026-09-06T11:42:24.460038+00:00",
+      "status": "observed",
+      "response_sha256": "f6dc043c821fbc3054dd0dfc280186564b51d3cc8f697e763f835bc79b4163d9",
+      "value": {
+        "number": 292,
+        "title": "Prompt 04: deterministic donor and target canonical-state merge",
+        "state": "closed",
+        "state_reason": "completed",
+        "closed_at": "2026-08-31T14:36:43Z",
+        "html_url": "https://github.com/edithatogo/archive-govt-nz/issues/292"
+      }
+    },
+    {
+      "endpoint": "repos/edithatogo/archive-govt-nz/issues/299",
+      "observed_at": "2026-09-06T11:42:24.479705+00:00",
+      "status": "observed",
+      "response_sha256": "17b452366739cea27978b43be1fcd3f31c3618c700cf5fe42291f34255dad03a",
+      "value": {
+        "number": 299,
+        "title": "Prompt 05: restore reviewed seed and govern stable inventory selection",
+        "state": "closed",
+        "state_reason": "completed",
+        "closed_at": "2026-08-31T15:28:20Z",
+        "html_url": "https://github.com/edithatogo/archive-govt-nz/issues/299"
+      }
+    },
+    {
+      "endpoint": "repos/edithatogo/archive-govt-nz/issues/308",
+      "observed_at": "2026-09-06T11:42:24.485020+00:00",
+      "status": "observed",
+      "response_sha256": "33945413f6221868e709794323b4ba16834abfc96067a0ebb603309e73917b9a",
+      "value": {
+        "number": 308,
+        "title": "Prompt 06: exact-inventory custody and revalidation lane",
+        "state": "closed",
+        "state_reason": "completed",
+        "closed_at": "2026-09-03T08:55:44Z",
+        "html_url": "https://github.com/edithatogo/archive-govt-nz/issues/308"
+      }
+    },
+    {
+      "endpoint": "repos/edithatogo/archive-govt-nz/issues/310",
+      "observed_at": "2026-09-06T11:42:25.249283+00:00",
+      "status": "observed",
+      "response_sha256": "05a5f979fb8caca19041fc50ddff19572c3c7fe9a3db7e464cfdc773acc4521b",
+      "value": {
+        "number": 310,
+        "title": "Prompt 07: bounded discovery and freshness lane",
+        "state": "closed",
+        "state_reason": "completed",
+        "closed_at": "2026-09-03T09:27:55Z",
+        "html_url": "https://github.com/edithatogo/archive-govt-nz/issues/310"
+      }
+    },
+    {
+      "endpoint": "repos/edithatogo/archive-govt-nz/issues/312",
+      "observed_at": "2026-09-06T11:42:25.271828+00:00",
+      "status": "observed",
+      "response_sha256": "a862e34e2a0067f5e1764e42989dbac4193b892f9a1f32b331b38e74a0664c5a",
+      "value": {
+        "number": 312,
+        "title": "Prompt 08: fail-closed parent-state restoration and lineage",
+        "state": "closed",
+        "state_reason": "completed",
+        "closed_at": "2026-08-31T17:37:20Z",
+        "html_url": "https://github.com/edithatogo/archive-govt-nz/issues/312"
+      }
+    },
+    {
+      "endpoint": "repos/edithatogo/archive-govt-nz/issues/321",
+      "observed_at": "2026-09-06T11:42:25.288082+00:00",
+      "status": "observed",
+      "response_sha256": "fcf7932de78b20f3575a805e33a7f6173ef58b5f228362bb7d9e164dc045c818",
+      "value": {
+        "number": 321,
+        "title": "Prompt 09: durable legislation state package and preservation authority",
+        "state": "closed",
+        "state_reason": "completed",
+        "closed_at": "2026-09-01T10:08:17Z",
+        "html_url": "https://github.com/edithatogo/archive-govt-nz/issues/321"
+      }
+    },
+    {
+      "endpoint": "repos/edithatogo/archive-govt-nz/issues/327",
+      "observed_at": "2026-09-06T11:42:25.294831+00:00",
+      "status": "observed",
+      "response_sha256": "8620aab624492ecbc6414d384906564f101ee1769fb2460b915a058d9f44073d",
+      "value": {
+        "number": 327,
+        "title": "Prompt 10: independent durable legislation recovery drill",
+        "state": "closed",
+        "state_reason": "completed",
+        "closed_at": "2026-09-03T10:56:42Z",
+        "html_url": "https://github.com/edithatogo/archive-govt-nz/issues/327"
+      }
+    },
+    {
+      "endpoint": "repos/edithatogo/archive-govt-nz/issues/330",
+      "observed_at": "2026-09-06T11:42:25.338546+00:00",
+      "status": "observed",
+      "response_sha256": "43aed0d5c34188b5e250d842ab27cf98e280caa2cd4c87dabaf2cdb730390f66",
+      "value": {
+        "number": 330,
+        "title": "Prompt 11: typed legislation source-set configuration contract",
+        "state": "closed",
+        "state_reason": "completed",
+        "closed_at": "2026-09-01T10:54:34Z",
+        "html_url": "https://github.com/edithatogo/archive-govt-nz/issues/330"
+      }
+    },
+    {
+      "endpoint": "repos/edithatogo/archive-govt-nz/issues/333",
+      "observed_at": "2026-09-06T11:42:25.345159+00:00",
+      "status": "observed",
+      "response_sha256": "8cc86e91748fc1c3fcbdfc93ffe9a55e607b5e36e3b1d7e17569dbf9fd3abf80",
+      "value": {
+        "number": 333,
+        "title": "Prompt 12: legislation harvest accounting and receipt semantics",
+        "state": "closed",
+        "state_reason": "completed",
+        "closed_at": "2026-09-01T12:06:47Z",
+        "html_url": "https://github.com/edithatogo/archive-govt-nz/issues/333"
+      }
+    },
+    {
+      "endpoint": "repos/edithatogo/archive-govt-nz/issues/335",
+      "observed_at": "2026-09-06T11:42:26.171321+00:00",
+      "status": "observed",
+      "response_sha256": "da9d2ff2801b471152095806d009e6774f5ea1130dbb31a964cb4e9c4677ea5b",
+      "value": {
+        "number": 335,
+        "title": "Prompt 13: target-owned 500-work operational proof",
+        "state": "closed",
+        "state_reason": "completed",
+        "closed_at": "2026-09-06T11:25:10Z",
+        "html_url": "https://github.com/edithatogo/archive-govt-nz/issues/335"
+      }
+    },
+    {
+      "endpoint": "repos/edithatogo/archive-govt-nz/issues/337",
+      "observed_at": "2026-09-06T11:42:26.438123+00:00",
+      "status": "observed",
+      "response_sha256": "37fd220b27ea646c420c0da1bc3aebab14c1eaf5729d846838d6f87c8a933cf9",
+      "value": {
+        "number": 337,
+        "title": "Prompt 14: historical coverage and 33,693-candidate reconciliation",
+        "state": "closed",
+        "state_reason": "completed",
+        "closed_at": "2026-09-01T13:32:07Z",
+        "html_url": "https://github.com/edithatogo/archive-govt-nz/issues/337"
+      }
+    },
+    {
+      "endpoint": "repos/edithatogo/archive-govt-nz/issues/341",
+      "observed_at": "2026-09-06T11:42:26.462584+00:00",
+      "status": "observed",
+      "response_sha256": "67e088ebc9a08736fd445bb4b3d3417c3ea5e300ab3ecfa1d162065dc58be47f",
+      "value": {
+        "number": 341,
+        "title": "Prompt 15: Hugging Face identity and target-origin reconciliation",
+        "state": "open",
+        "state_reason": null,
+        "closed_at": null,
+        "html_url": "https://github.com/edithatogo/archive-govt-nz/issues/341"
+      }
+    },
+    {
+      "endpoint": "repos/edithatogo/archive-govt-nz/issues/343",
+      "observed_at": "2026-09-06T11:42:26.476561+00:00",
+      "status": "observed",
+      "response_sha256": "c71660e1be0e9fd3a4aac3a34969f34d6f0c15992dc46754974ddf96f640f640",
+      "value": {
+        "number": 343,
+        "title": "Prompt 16: correct Zenodo concept and version DOI identity",
+        "state": "closed",
+        "state_reason": "completed",
+        "closed_at": "2026-09-01T14:47:50Z",
+        "html_url": "https://github.com/edithatogo/archive-govt-nz/issues/343"
+      }
+    },
+    {
+      "endpoint": "repos/edithatogo/archive-govt-nz/issues/345",
+      "observed_at": "2026-09-06T11:42:26.494597+00:00",
+      "status": "observed",
+      "response_sha256": "d47fd1e3bd0971a56e2928f2845981fc1bdaa472ad7f3359e2dfe786f3b86073",
+      "value": {
+        "number": 345,
+        "title": "Correct legislation evidence index and closeout claims",
+        "state": "closed",
+        "state_reason": "completed",
+        "closed_at": "2026-09-01T16:22:55Z",
+        "html_url": "https://github.com/edithatogo/archive-govt-nz/issues/345"
+      }
+    },
+    {
+      "endpoint": "repos/edithatogo/archive-govt-nz/issues/347",
+      "observed_at": "2026-09-06T11:42:26.631689+00:00",
+      "status": "observed",
+      "response_sha256": "e2a25fa830435fbd7c64db6a9da04e54e418ede8fec9d975fbd5a610440d1f5c",
+      "value": {
+        "number": 347,
+        "title": "Correct cutover release recovery provenance",
+        "state": "closed",
+        "state_reason": "completed",
+        "closed_at": "2026-09-01T17:42:59Z",
+        "html_url": "https://github.com/edithatogo/archive-govt-nz/issues/347"
+      }
+    },
+    {
+      "endpoint": "repos/edithatogo/archive-govt-nz/issues/349",
+      "observed_at": "2026-09-06T11:42:27.037633+00:00",
+      "status": "observed",
+      "response_sha256": "7fffabc40357490783ce1f31181739f8bf478d860a853af8ffeaea39651594f5",
+      "value": {
+        "number": 349,
+        "title": "Prompt 19: verify donor bundle and prepare archival presentation",
+        "state": "closed",
+        "state_reason": "completed",
+        "closed_at": "2026-09-01T18:43:38Z",
+        "html_url": "https://github.com/edithatogo/archive-govt-nz/issues/349"
+      }
+    },
+    {
+      "endpoint": "repos/edithatogo/archive-govt-nz/issues/351",
+      "observed_at": "2026-09-06T11:42:27.249304+00:00",
+      "status": "observed",
+      "response_sha256": "eeafeca6732ee0969b8c4d7aeacfb22fa3ac65ee7de5c19bb5d4e57ab8abdf1f",
+      "value": {
+        "number": 351,
+        "title": "Prompt 20: integrated quality, security, and hosted assurance gate",
+        "state": "open",
+        "state_reason": "reopened",
+        "closed_at": null,
+        "html_url": "https://github.com/edithatogo/archive-govt-nz/issues/351"
+      }
+    },
+    {
+      "endpoint": "repos/edithatogo/archive-govt-nz/issues/356",
+      "observed_at": "2026-09-06T11:42:27.258750+00:00",
+      "status": "observed",
+      "response_sha256": "e1eb552381933a1b11abea2654cc0c1b5a7c0f807e7e06e7b13c9c4c82cf807d",
+      "value": {
+        "number": 356,
+        "title": "Prompt 21: final independent adversarial verification",
+        "state": "open",
+        "state_reason": null,
+        "closed_at": null,
+        "html_url": "https://github.com/edithatogo/archive-govt-nz/issues/356"
+      }
+    },
+    {
+      "endpoint": "repos/edithatogo/archive-govt-nz/commits/main",
+      "observed_at": "2026-09-06T11:42:27.293733+00:00",
+      "status": "observed",
+      "response_sha256": "14b4790090f987dffebd5278e872edd1237ff14a470e02af9bea9d8f97c3ba03",
+      "value": {
+        "sha": "abce27ae6b3043e10d96a48e3b386b1c4f70d7b0"
+      }
+    },
+    {
+      "endpoint": "repos/edithatogo/corpus-legislation-nz",
+      "observed_at": "2026-09-06T11:42:27.346782+00:00",
+      "status": "observed",
+      "response_sha256": "815d9b4eae52cb747ba539ff6d4429eb7cdf1fa8b9cdf7ff731d272c2c22912d",
+      "value": {
+        "full_name": "edithatogo/corpus-legislation-nz",
+        "archived": true,
+        "default_branch": "main"
+      }
+    },
+    {
+      "endpoint": "repos/edithatogo/corpus-legislation-nz/commits/main",
+      "observed_at": "2026-09-06T11:42:27.484153+00:00",
+      "status": "observed",
+      "response_sha256": "a125b0fb6fe591da90cdbbe6f3c661e0e9c89a494a723bcdb922fbf756c4863f",
+      "value": {
+        "sha": "905f9e07c17af9d9d25dbe2b1c052fb8a290a4e3"
+      }
+    },
+    {
+      "endpoint": "repos/edithatogo/archive-govt-nz/actions/workflows",
+      "observed_at": "2026-09-06T11:42:27.808466+00:00",
+      "status": "observed",
+      "response_sha256": "66ff4617d0c4c7a43a140b86c7fa0314ef6059eaf709ecfdbf7d1a4441005301",
+      "value": {
+        "total_count": 25,
+        "workflows": [
+          {
+            "id": 331620437,
+            "node_id": "W_kwDOTo2MOM4TxCBV",
+            "name": "ArchiveBox preservation pilot",
+            "path": ".github/workflows/archivebox-pilot.yml",
+            "state": "active",
+            "created_at": "2026-08-11T14:51:55.000+10:00",
+            "updated_at": "2026-08-11T14:51:55.000+10:00",
+            "url": "https://api.github.com/repos/edithatogo/archive-govt-nz/actions/workflows/331620437",
+            "html_url": "https://github.com/edithatogo/archive-govt-nz/blob/main/.github/workflows/archivebox-pilot.yml",
+            "badge_url": "https://github.com/edithatogo/archive-govt-nz/workflows/ArchiveBox%20preservation%20pilot/badge.svg"
+          },
+          {
+            "id": 350912792,
+            "node_id": "W_kwDOTo2MOM4U6oEY",
+            "name": "Canada ATI approved refresh",
+            "path": ".github/workflows/ca-atip-refresh.yml",
+            "state": "active",
+            "created_at": "2026-09-05T22:57:36.000+10:00",
+            "updated_at": "2026-09-05T22:57:36.000+10:00",
+            "url": "https://api.github.com/repos/edithatogo/archive-govt-nz/actions/workflows/350912792",
+            "html_url": "https://github.com/edithatogo/archive-govt-nz/blob/main/.github/workflows/ca-atip-refresh.yml",
+            "badge_url": "https://github.com/edithatogo/archive-govt-nz/workflows/Canada%20ATI%20approved%20refresh/badge.svg"
+          },
+          {
+            "id": 324267218,
+            "node_id": "W_kwDOTo2MOM4TU-zS",
+            "name": "CI",
+            "path": ".github/workflows/ci.yml",
+            "state": "active",
+            "created_at": "2026-07-31T16:54:43.000+10:00",
+            "updated_at": "2026-07-31T16:54:43.000+10:00",
+            "url": "https://api.github.com/repos/edithatogo/archive-govt-nz/actions/workflows/324267218",
+            "html_url": "https://github.com/edithatogo/archive-govt-nz/blob/main/.github/workflows/ci.yml",
+            "badge_url": "https://github.com/edithatogo/archive-govt-nz/workflows/CI/badge.svg"
+          },
+          {
+            "id": 331198839,
+            "node_id": "W_kwDOTo2MOM4TvbF3",
+            "name": "CodeQL",
+            "path": ".github/workflows/codeql.yml",
+            "state": "active",
+            "created_at": "2026-08-11T00:44:03.000+10:00",
+            "updated_at": "2026-08-11T00:44:08.000+10:00",
+            "url": "https://api.github.com/repos/edithatogo/archive-govt-nz/actions/workflows/331198839",
+            "html_url": "https://github.com/edithatogo/archive-govt-nz/blob/main/.github/workflows/codeql.yml",
+            "badge_url": "https://github.com/edithatogo/archive-govt-nz/workflows/CodeQL/badge.svg"
+          },
+          {
+            "id": 324270378,
+            "node_id": "W_kwDOTo2MOM4TU_kq",
+            "name": "Dependency lanes",
+            "path": ".github/workflows/dependency-lanes.yml",
+            "state": "active",
+            "created_at": "2026-07-31T17:00:57.000+10:00",
+            "updated_at": "2026-07-31T17:00:57.000+10:00",
+            "url": "https://api.github.com/repos/edithatogo/archive-govt-nz/actions/workflows/324270378",
+            "html_url": "https://github.com/edithatogo/archive-govt-nz/blob/main/.github/workflows/dependency-lanes.yml",
+            "badge_url": "https://github.com/edithatogo/archive-govt-nz/workflows/Dependency%20lanes/badge.svg"
+          },
+          {
+            "id": 331163984,
+            "node_id": "W_kwDOTo2MOM4TvSlQ",
+            "name": "dependency-review",
+            "path": ".github/workflows/dependency-review.yml",
+            "state": "active",
+            "created_at": "2026-08-10T23:50:41.000+10:00",
+            "updated_at": "2026-08-10T23:50:41.000+10:00",
+            "url": "https://api.github.com/repos/edithatogo/archive-govt-nz/actions/workflows/331163984",
+            "html_url": "https://github.com/edithatogo/archive-govt-nz/blob/main/.github/workflows/dependency-review.yml",
+            "badge_url": "https://github.com/edithatogo/archive-govt-nz/workflows/dependency-review/badge.svg"
+          },
+          {
+            "id": 349172482,
+            "node_id": "W_kwDOTo2MOM4Uz_MC",
+            "name": "Exact inventory legislation revalidation",
+            "path": ".github/workflows/exact-inventory.yml",
+            "state": "active",
+            "created_at": "2026-09-03T18:55:44.000+10:00",
+            "updated_at": "2026-09-03T18:55:44.000+10:00",
+            "url": "https://api.github.com/repos/edithatogo/archive-govt-nz/actions/workflows/349172482",
+            "html_url": "https://github.com/edithatogo/archive-govt-nz/blob/main/.github/workflows/exact-inventory.yml",
+            "badge_url": "https://github.com/edithatogo/archive-govt-nz/workflows/Exact%20inventory%20legislation%20revalidation/badge.svg"
+          },
+          {
+            "id": 346316354,
+            "node_id": "W_kwDOTo2MOM4UpF5C",
+            "name": "FOI public catalogue verification",
+            "path": ".github/workflows/foi-catalogue-publication.yml",
+            "state": "active",
+            "created_at": "2026-08-31T14:36:40.000+10:00",
+            "updated_at": "2026-08-31T14:36:40.000+10:00",
+            "url": "https://api.github.com/repos/edithatogo/archive-govt-nz/actions/workflows/346316354",
+            "html_url": "https://github.com/edithatogo/archive-govt-nz/blob/main/.github/workflows/foi-catalogue-publication.yml",
+            "badge_url": "https://github.com/edithatogo/archive-govt-nz/workflows/FOI%20public%20catalogue%20verification/badge.svg"
+          },
+          {
+            "id": 346629531,
+            "node_id": "W_kwDOTo2MOM4UqSWb",
+            "name": "FOI shared execution controls",
+            "path": ".github/workflows/foi-shared-execution.yml",
+            "state": "active",
+            "created_at": "2026-08-31T23:16:44.000+10:00",
+            "updated_at": "2026-08-31T23:16:44.000+10:00",
+            "url": "https://api.github.com/repos/edithatogo/archive-govt-nz/actions/workflows/346629531",
+            "html_url": "https://github.com/edithatogo/archive-govt-nz/blob/main/.github/workflows/foi-shared-execution.yml",
+            "badge_url": "https://github.com/edithatogo/archive-govt-nz/workflows/FOI%20shared%20execution%20controls/badge.svg"
+          },
+          {
+            "id": 335272449,
+            "node_id": "W_kwDOTo2MOM4T-9oB",
+            "name": "Global CKAN Harvest & Hugging Face Publication",
+            "path": ".github/workflows/global-ckan-harvest-huggingface.yml",
+            "state": "active",
+            "created_at": "2026-08-16T09:00:31.000+10:00",
+            "updated_at": "2026-08-16T09:00:31.000+10:00",
+            "url": "https://api.github.com/repos/edithatogo/archive-govt-nz/actions/workflows/335272449",
+            "html_url": "https://github.com/edithatogo/archive-govt-nz/blob/main/.github/workflows/global-ckan-harvest-huggingface.yml",
+            "badge_url": "https://github.com/edithatogo/archive-govt-nz/workflows/Global%20CKAN%20Harvest%20&%20Hugging%20Face%20Publication/badge.svg"
+          },
+          {
+            "id": 336998278,
+            "node_id": "W_kwDOTo2MOM4UFi-G",
+            "name": "Gated Legislation Reconciliation",
+            "path": ".github/workflows/monthly-legislation-reconciliation.yml",
+            "state": "active",
+            "created_at": "2026-08-18T23:04:36.000+10:00",
+            "updated_at": "2026-08-21T07:56:29.000+10:00",
+            "url": "https://api.github.com/repos/edithatogo/archive-govt-nz/actions/workflows/336998278",
+            "html_url": "https://github.com/edithatogo/archive-govt-nz/blob/main/.github/workflows/monthly-legislation-reconciliation.yml",
+            "badge_url": "https://github.com/edithatogo/archive-govt-nz/workflows/Gated%20Legislation%20Reconciliation/badge.svg"
+          },
+          {
+            "id": 336998282,
+            "node_id": "W_kwDOTo2MOM4UFi-K",
+            "name": "Gated Legislation Recovery Drill",
+            "path": ".github/workflows/quarterly-legislation-recovery.yml",
+            "state": "active",
+            "created_at": "2026-08-18T23:04:36.000+10:00",
+            "updated_at": "2026-08-21T07:56:30.000+10:00",
+            "url": "https://api.github.com/repos/edithatogo/archive-govt-nz/actions/workflows/336998282",
+            "html_url": "https://github.com/edithatogo/archive-govt-nz/blob/main/.github/workflows/quarterly-legislation-recovery.yml",
+            "badge_url": "https://github.com/edithatogo/archive-govt-nz/workflows/Gated%20Legislation%20Recovery%20Drill/badge.svg"
+          },
+          {
+            "id": 324267219,
+            "node_id": "W_kwDOTo2MOM4TU-zT",
+            "name": "Scheduled bounded capture",
+            "path": ".github/workflows/scheduled-capture.yml",
+            "state": "active",
+            "created_at": "2026-07-31T16:54:43.000+10:00",
+            "updated_at": "2026-07-31T16:54:43.000+10:00",
+            "url": "https://api.github.com/repos/edithatogo/archive-govt-nz/actions/workflows/324267219",
+            "html_url": "https://github.com/edithatogo/archive-govt-nz/blob/main/.github/workflows/scheduled-capture.yml",
+            "badge_url": "https://github.com/edithatogo/archive-govt-nz/workflows/Scheduled%20bounded%20capture/badge.svg"
+          },
+          {
+            "id": 341267679,
+            "node_id": "W_kwDOTo2MOM4UV1Tf",
+            "name": "Conductor Claim Drift Detection",
+            "path": ".github/workflows/scheduled-claim-drift-detection.yml",
+            "state": "active",
+            "created_at": "2026-08-24T23:39:12.000+10:00",
+            "updated_at": "2026-08-24T23:39:12.000+10:00",
+            "url": "https://api.github.com/repos/edithatogo/archive-govt-nz/actions/workflows/341267679",
+            "html_url": "https://github.com/edithatogo/archive-govt-nz/blob/main/.github/workflows/scheduled-claim-drift-detection.yml",
+            "badge_url": "https://github.com/edithatogo/archive-govt-nz/workflows/Conductor%20Claim%20Drift%20Detection/badge.svg"
+          },
+          {
+            "id": 324267220,
+            "node_id": "W_kwDOTo2MOM4TU-zU",
+            "name": "Scheduled read-only discovery",
+            "path": ".github/workflows/scheduled-discovery.yml",
+            "state": "active",
+            "created_at": "2026-07-31T16:54:43.000+10:00",
+            "updated_at": "2026-07-31T16:54:43.000+10:00",
+            "url": "https://api.github.com/repos/edithatogo/archive-govt-nz/actions/workflows/324267220",
+            "html_url": "https://github.com/edithatogo/archive-govt-nz/blob/main/.github/workflows/scheduled-discovery.yml",
+            "badge_url": "https://github.com/edithatogo/archive-govt-nz/workflows/Scheduled%20read-only%20discovery/badge.svg"
+          },
+          {
+            "id": 340426056,
+            "node_id": "W_kwDOTo2MOM4USn1I",
+            "name": "Scheduled Gazette Harvest",
+            "path": ".github/workflows/scheduled-gazette-harvest.yml",
+            "state": "active",
+            "created_at": "2026-08-23T17:09:59.000+10:00",
+            "updated_at": "2026-08-23T17:09:59.000+10:00",
+            "url": "https://api.github.com/repos/edithatogo/archive-govt-nz/actions/workflows/340426056",
+            "html_url": "https://github.com/edithatogo/archive-govt-nz/blob/main/.github/workflows/scheduled-gazette-harvest.yml",
+            "badge_url": "https://github.com/edithatogo/archive-govt-nz/workflows/Scheduled%20Gazette%20Harvest/badge.svg"
+          },
+          {
+            "id": 325525484,
+            "node_id": "W_kwDOTo2MOM4TZx_s",
+            "name": "Scheduled broader-health discovery",
+            "path": ".github/workflows/scheduled-health-discovery.yml",
+            "state": "active",
+            "created_at": "2026-08-02T21:22:50.000+10:00",
+            "updated_at": "2026-08-02T21:22:50.000+10:00",
+            "url": "https://api.github.com/repos/edithatogo/archive-govt-nz/actions/workflows/325525484",
+            "html_url": "https://github.com/edithatogo/archive-govt-nz/blob/main/.github/workflows/scheduled-health-discovery.yml",
+            "badge_url": "https://github.com/edithatogo/archive-govt-nz/workflows/Scheduled%20broader-health%20discovery/badge.svg"
+          },
+          {
+            "id": 336998286,
+            "node_id": "W_kwDOTo2MOM4UFi-O",
+            "name": "Bounded Legislation Discovery and Freshness",
+            "path": ".github/workflows/scheduled-legislation-harvest.yml",
+            "state": "active",
+            "created_at": "2026-08-18T23:04:36.000+10:00",
+            "updated_at": "2026-09-03T19:27:55.000+10:00",
+            "url": "https://api.github.com/repos/edithatogo/archive-govt-nz/actions/workflows/336998286",
+            "html_url": "https://github.com/edithatogo/archive-govt-nz/blob/main/.github/workflows/scheduled-legislation-harvest.yml",
+            "badge_url": "https://github.com/edithatogo/archive-govt-nz/workflows/Bounded%20Legislation%20Discovery%20and%20Freshness/badge.svg"
+          },
+          {
+            "id": 336804784,
+            "node_id": "W_kwDOTo2MOM4UEzuw",
+            "name": "Scheduled Multi-Source Harvest",
+            "path": ".github/workflows/scheduled-multi-source-harvest.yml",
+            "state": "active",
+            "created_at": "2026-08-18T18:15:10.000+10:00",
+            "updated_at": "2026-08-18T18:15:10.000+10:00",
+            "url": "https://api.github.com/repos/edithatogo/archive-govt-nz/actions/workflows/336804784",
+            "html_url": "https://github.com/edithatogo/archive-govt-nz/blob/main/.github/workflows/scheduled-multi-source-harvest.yml",
+            "badge_url": "https://github.com/edithatogo/archive-govt-nz/workflows/Scheduled%20Multi-Source%20Harvest/badge.svg"
+          },
+          {
+            "id": 324337912,
+            "node_id": "W_kwDOTo2MOM4TVQD4",
+            "name": "Scheduled bounded resource preflight",
+            "path": ".github/workflows/scheduled-preflight.yml",
+            "state": "active",
+            "created_at": "2026-07-31T19:05:02.000+10:00",
+            "updated_at": "2026-07-31T19:05:02.000+10:00",
+            "url": "https://api.github.com/repos/edithatogo/archive-govt-nz/actions/workflows/324337912",
+            "html_url": "https://github.com/edithatogo/archive-govt-nz/blob/main/.github/workflows/scheduled-preflight.yml",
+            "badge_url": "https://github.com/edithatogo/archive-govt-nz/workflows/Scheduled%20bounded%20resource%20preflight/badge.svg"
+          },
+          {
+            "id": 331589374,
+            "node_id": "W_kwDOTo2MOM4Tw6b-",
+            "name": "Scheduled Internet Archive redundancy",
+            "path": ".github/workflows/scheduled-redundancy.yml",
+            "state": "active",
+            "created_at": "2026-08-11T13:34:33.000+10:00",
+            "updated_at": "2026-08-11T13:34:33.000+10:00",
+            "url": "https://api.github.com/repos/edithatogo/archive-govt-nz/actions/workflows/331589374",
+            "html_url": "https://github.com/edithatogo/archive-govt-nz/blob/main/.github/workflows/scheduled-redundancy.yml",
+            "badge_url": "https://github.com/edithatogo/archive-govt-nz/workflows/Scheduled%20Internet%20Archive%20redundancy/badge.svg"
+          },
+          {
+            "id": 335127258,
+            "node_id": "W_kwDOTo2MOM4T-aLa",
+            "name": "Weekly catalogue drift detection",
+            "path": ".github/workflows/weekly-catalogue-drift.yml",
+            "state": "active",
+            "created_at": "2026-08-16T02:46:49.000+10:00",
+            "updated_at": "2026-08-16T02:46:49.000+10:00",
+            "url": "https://api.github.com/repos/edithatogo/archive-govt-nz/actions/workflows/335127258",
+            "html_url": "https://github.com/edithatogo/archive-govt-nz/blob/main/.github/workflows/weekly-catalogue-drift.yml",
+            "badge_url": "https://github.com/edithatogo/archive-govt-nz/workflows/Weekly%20catalogue%20drift%20detection/badge.svg"
+          },
+          {
+            "id": 331199452,
+            "node_id": "W_kwDOTo2MOM4TvbPc",
+            "name": "Workflow policy lint",
+            "path": ".github/workflows/workflow-lint.yml",
+            "state": "active",
+            "created_at": "2026-08-11T00:45:03.000+10:00",
+            "updated_at": "2026-08-11T00:46:46.000+10:00",
+            "url": "https://api.github.com/repos/edithatogo/archive-govt-nz/actions/workflows/331199452",
+            "html_url": "https://github.com/edithatogo/archive-govt-nz/blob/main/.github/workflows/workflow-lint.yml",
+            "badge_url": "https://github.com/edithatogo/archive-govt-nz/workflows/Workflow%20policy%20lint/badge.svg"
+          },
+          {
+            "id": 324259718,
+            "node_id": "W_kwDOTo2MOM4TU8-G",
+            "name": "Dependabot Updates",
+            "path": "dynamic/dependabot/dependabot-updates",
+            "state": "active",
+            "created_at": "2026-07-31T16:40:20.000+10:00",
+            "updated_at": "2026-07-31T16:40:20.000+10:00",
+            "url": "https://api.github.com/repos/edithatogo/archive-govt-nz/actions/workflows/324259718",
+            "html_url": "https://github.com/edithatogo/archive-govt-nz/actions/workflows/dependabot/dependabot-updates",
+            "badge_url": "https://github.com/edithatogo/archive-govt-nz/actions/workflows/dependabot/dependabot-updates/badge.svg"
+          },
+          {
+            "id": 324192860,
+            "node_id": "W_kwDOTo2MOM4TUspc",
+            "name": "Dependency Graph",
+            "path": "dynamic/dependabot/update-graph",
+            "state": "active",
+            "created_at": "2026-07-31T13:53:57.000+10:00",
+            "updated_at": "2026-07-31T13:53:57.000+10:00",
+            "url": "https://api.github.com/repos/edithatogo/archive-govt-nz/actions/workflows/324192860",
+            "html_url": "https://github.com/edithatogo/archive-govt-nz/actions/workflows/dependabot/update-graph",
+            "badge_url": "https://github.com/edithatogo/archive-govt-nz/actions/workflows/dependabot/update-graph/badge.svg"
+          }
+        ]
+      }
+    },
+    {
+      "endpoint": "repos/edithatogo/archive-govt-nz/actions/runs/33968609350/artifacts",
+      "observed_at": "2026-09-06T11:42:27.940791+00:00",
+      "status": "observed",
+      "response_sha256": "2722f740dd03fc054c5107932992793615de01d870a17c0b3cbb8951020d58fb",
+      "value": {
+        "total_count": 4,
+        "artifacts": [
+          {
+            "id": 9970365226,
+            "node_id": "MDg6QXJ0aWZhY3Q5OTcwMzY1MjI2",
+            "name": "legislation-exact-inventory-attempt-33968609350-1",
+            "size_in_bytes": 9044,
+            "url": "https://api.github.com/repos/edithatogo/archive-govt-nz/actions/artifacts/9970365226",
+            "archive_download_url": "https://api.github.com/repos/edithatogo/archive-govt-nz/actions/artifacts/9970365226/zip",
+            "expired": false,
+            "digest": "sha256:64df4e850953f33d1e84a630b4e18a3ca65b2b037df34643b8cf07590713db86",
+            "created_at": "2026-09-05T13:30:49Z",
+            "updated_at": "2026-09-05T13:30:49Z",
+            "expires_at": "2026-12-04T13:20:25Z",
+            "workflow_run": {
+              "id": 33968609350,
+              "repository_id": 1317899320,
+              "head_repository_id": 1317899320,
+              "head_branch": "main",
+              "head_sha": "87f65e8b37cbc16bc6c7cf8b5b93a19e48f0f207"
+            }
+          },
+          {
+            "id": 9970365066,
+            "node_id": "MDg6QXJ0aWZhY3Q5OTcwMzY1MDY2",
+            "name": "legislation-exact-inventory-state-33968609350-1",
+            "size_in_bytes": 10628850,
+            "url": "https://api.github.com/repos/edithatogo/archive-govt-nz/actions/artifacts/9970365066",
+            "archive_download_url": "https://api.github.com/repos/edithatogo/archive-govt-nz/actions/artifacts/9970365066/zip",
+            "expired": false,
+            "digest": "sha256:9f9b9bd856de05ba2a9481781564e0a49d368d1c6c2770b74b807a4845adc318",
+            "created_at": "2026-09-05T13:30:49Z",
+            "updated_at": "2026-09-05T13:30:49Z",
+            "expires_at": "2026-12-04T13:20:25Z",
+            "workflow_run": {
+              "id": 33968609350,
+              "repository_id": 1317899320,
+              "head_repository_id": 1317899320,
+              "head_branch": "main",
+              "head_sha": "87f65e8b37cbc16bc6c7cf8b5b93a19e48f0f207"
+            }
+          },
+          {
+            "id": 9970223837,
+            "node_id": "MDg6QXJ0aWZhY3Q5OTcwMjIzODM3",
+            "name": "legislation-source-preflight-33968609350-1",
+            "size_in_bytes": 47326,
+            "url": "https://api.github.com/repos/edithatogo/archive-govt-nz/actions/artifacts/9970223837",
+            "archive_download_url": "https://api.github.com/repos/edithatogo/archive-govt-nz/actions/artifacts/9970223837/zip",
+            "expired": false,
+            "digest": "sha256:7e4f6bf94d0ba2d597f75def74cd5959beac0e4a7db89a643fdcc6290efa6fdf",
+            "created_at": "2026-09-05T13:20:54Z",
+            "updated_at": "2026-09-05T13:20:54Z",
+            "expires_at": "2026-12-04T13:20:25Z",
+            "workflow_run": {
+              "id": 33968609350,
+              "repository_id": 1317899320,
+              "head_repository_id": 1317899320,
+              "head_branch": "main",
+              "head_sha": "87f65e8b37cbc16bc6c7cf8b5b93a19e48f0f207"
+            }
+          },
+          {
+            "id": 9970223126,
+            "node_id": "MDg6QXJ0aWZhY3Q5OTcwMjIzMTI2",
+            "name": "legislation-parent-33968609350-1",
+            "size_in_bytes": 1465,
+            "url": "https://api.github.com/repos/edithatogo/archive-govt-nz/actions/artifacts/9970223126",
+            "archive_download_url": "https://api.github.com/repos/edithatogo/archive-govt-nz/actions/artifacts/9970223126/zip",
+            "expired": false,
+            "digest": "sha256:5bb9567799d2a437ee502824632ebfae7473a7ab179aafab10460fc041afd5eb",
+            "created_at": "2026-09-05T13:20:51Z",
+            "updated_at": "2026-09-05T13:20:51Z",
+            "expires_at": "2026-12-04T13:20:25Z",
+            "workflow_run": {
+              "id": 33968609350,
+              "repository_id": 1317899320,
+              "head_repository_id": 1317899320,
+              "head_branch": "main",
+              "head_sha": "87f65e8b37cbc16bc6c7cf8b5b93a19e48f0f207"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "endpoint": "repos/edithatogo/archive-govt-nz/pulls/406",
+      "observed_at": "2026-09-06T11:42:27.995413+00:00",
+      "status": "observed",
+      "response_sha256": "c4fee8bb0a0125050eed83f31191733650b2d195f6aa613a41b626d583554731",
+      "value": {
+        "number": 406,
+        "state": "closed",
+        "merged": true,
+        "merge_commit_sha": "abce27ae6b3043e10d96a48e3b386b1c4f70d7b0",
+        "head_sha": "6793fd66d72a1e715744a64475b2e9898c4cf39f"
+      }
+    },
+    {
+      "endpoint": "repos/edithatogo/archive-govt-nz/pulls/396",
+      "observed_at": "2026-09-06T11:42:28.007534+00:00",
+      "status": "observed",
+      "response_sha256": "5972c8b99c0a3bba37eb981bf29051518aae614b0495fff36be6c69e5034cc0b",
+      "value": {
+        "number": 396,
+        "state": "open",
+        "merged": false,
+        "merge_commit_sha": "7d28749ebe3be991b9461d8ed55585c2dd2b8320",
+        "head_sha": "c2db27ed7553ff33484d918b44ac39455284002b"
+      }
+    },
+    {
+      "endpoint": "https://huggingface.co/api/datasets/edithatogo/corpus-legislation-nz",
+      "observed_at": "2026-09-06T11:42:28.199783+00:00",
+      "status": "observed",
+      "response_sha256": "d7fed0657325e790b9851f7aa75a9115eda584e95913d33385e3c5f4c23c2ff3",
+      "value": {
+        "id": "edithatogo/corpus-legislation-nz",
+        "sha": "04688f12dd687618e2085ae31f9b8a4a50a88b16",
+        "private": false,
+        "gated": false,
+        "lastModified": "2026-09-03T09:15:38.000Z",
+        "cardData": {
+          "origin_repository": "edithatogo/archive-govt-nz",
+          "origin_commit": "ff01566b5e6fff2f4e2b5f93ecdec11bb0c3c7e8",
+          "publication_role": "canonical_living",
+          "publication_status": "public_verified",
+          "manifest_root_sha256": "877ba501a25570a29c1aada7979562d8c62c7f043865125cf402310eabc09544",
+          "inventory_sha256": "9ca6dc505f991e015c6c997827878d8c7e9381b214a1544eb338328a285c6894",
+          "work_count": 552,
+          "record_count": 552,
+          "cas_object_count": 552,
+          "candidate_universe_count": 33693,
+          "reviewed_seed_count": 500
+        }
+      }
+    },
+    {
+      "endpoint": "https://huggingface.co/api/datasets/edithatogo/corpus-legislation-nz-historical",
+      "observed_at": "2026-09-06T11:42:28.250594+00:00",
+      "status": "observed",
+      "response_sha256": "ff56f1f47291930a134fcdb68e5a41d225ddbf4efe0437987c7dec6fb945f1f2",
+      "value": {
+        "id": "edithatogo/corpus-legislation-nz-historical",
+        "sha": "ea9e66fb89c3230fc478f7c6f05f1a82f4fa1174",
+        "private": false,
+        "gated": false,
+        "lastModified": "2026-07-29T01:23:23.000Z",
+        "cardData": {
+          "pretty_name": "New Zealand Legislation Corpus - Historical Operational Repository",
+          "language": [
+            "en"
+          ],
+          "license": "other",
+          "task_categories": [
+            "text-retrieval"
+          ],
+          "tags": [
+            "new-zealand",
+            "legislation",
+            "historical",
+            "superseded"
+          ]
+        }
+      }
+    },
+    {
+      "endpoint": "https://huggingface.co/api/datasets/edithatogo/nz-legislation-corpus",
+      "observed_at": "2026-09-06T11:42:28.447372+00:00",
+      "status": "observed",
+      "response_sha256": "06b3333090c8894bed2e0ef894fa91813bbb413cf84fc8f9586c7831cbb9d4a4",
+      "value": {
+        "id": "edithatogo/nz-legislation-corpus",
+        "sha": "1dea0c678b419a9c16fe7e363488f91d293391d3",
+        "private": false,
+        "gated": "auto",
+        "lastModified": "2026-07-29T01:25:57.000Z",
+        "cardData": {
+          "pretty_name": "New Zealand Legislation Corpus - DOI Snapshot",
+          "language": [
+            "en"
+          ],
+          "license": "other",
+          "task_categories": [
+            "text-retrieval"
+          ],
+          "tags": [
+            "new-zealand",
+            "legislation",
+            "doi-snapshot",
+            "frozen"
+          ]
+        }
+      }
+    },
+    {
+      "endpoint": "https://zenodo.org/api/records/20592540",
+      "observed_at": "2026-09-06T11:42:28.566662+00:00",
+      "status": "observed",
+      "response_sha256": "9c82c2d090ac5ce7d6e9240122e2b182f5f11af06db9c5901b763dc57ed4029c",
+      "value": {
+        "id": 20592540,
+        "doi": "10.5281/zenodo.20592540",
+        "conceptrecid": "20592539",
+        "conceptdoi": "10.5281/zenodo.20592539",
+        "metadata": {
+          "title": "New Zealand Legislation Corpus: 2026 annual snapshot",
+          "doi": "10.5281/zenodo.20592540",
+          "publication_date": "2026-06-08",
+          "description": "Annual, version-locked snapshot of the New Zealand legislation corpus. The live continuously updated corpus is maintained on Hugging Face Datasets.",
+          "access_right": "open",
+          "creators": [
+            {
+              "name": "edithatogo",
+              "affiliation": null
+            }
+          ],
+          "keywords": [
+            "New Zealand",
+            "legislation",
+            "corpus",
+            "law",
+            "open data"
+          ],
+          "related_identifiers": [
+            {
+              "identifier": "https://huggingface.co/datasets/edithatogo/corpus-legislation-nz",
+              "relation": "isSupplementTo",
+              "resource_type": "dataset",
+              "scheme": "url"
+            }
+          ],
+          "version": "2026",
+          "resource_type": {
+            "title": "Dataset",
+            "type": "dataset"
+          },
+          "license": {
+            "id": "cc-by-4.0"
+          },
+          "relations": {
+            "version": [
+              {
+                "index": 0,
+                "is_last": true,
+                "parent": {
+                  "pid_type": "recid",
+                  "pid_value": "20592539"
+                }
+              }
+            ]
+          }
+        },
+        "files": [
+          {
+            "id": "3a4eecdb-b254-4744-9480-eabbed07472b",
+            "key": "nz-legislation-corpus-2026.SHA256SUMS.txt",
+            "size": 208,
+            "checksum": "md5:a503b9a61904a836d2b45419347ae823",
+            "links": {
+              "self": "https://zenodo.org/api/records/20592540/files/nz-legislation-corpus-2026.SHA256SUMS.txt/content"
+            }
+          },
+          {
+            "id": "2a8f7623-6e2a-49c0-9d4a-988300ae29e7",
+            "key": "nz-legislation-corpus-2026.tar.zst",
+            "size": 208721,
+            "checksum": "md5:00dee66bc1d66d52f1b31284ed11f516",
+            "links": {
+              "self": "https://zenodo.org/api/records/20592540/files/nz-legislation-corpus-2026.tar.zst/content"
+            }
+          },
+          {
+            "id": "c8876866-65ba-428e-ae92-3431e0096d7c",
+            "key": "nz-legislation-corpus-2026.manifest.json",
+            "size": 3104,
+            "checksum": "md5:6139f4539661d50aaa47a03707f2dea0",
+            "links": {
+              "self": "https://zenodo.org/api/records/20592540/files/nz-legislation-corpus-2026.manifest.json/content"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "external_mutations_performed": false
+}

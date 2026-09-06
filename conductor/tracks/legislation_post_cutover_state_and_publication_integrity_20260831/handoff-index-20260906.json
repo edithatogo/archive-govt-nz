@@ -1,0 +1,29 @@
+{
+  "schema_version": "archive-govt-nz.controller-handoffs/v1",
+  "programme_status": "programme-status-20260906.json",
+  "programme_status_sha256": "00c963371ad4fbd2d040e13e892867e63955a7aaaa47c83bb72dbab8b3f61e3b",
+  "supersedes": "handoff-index-20260905-preflight-reopen.json",
+  "remaining_handoffs": [
+    {
+      "owner_prompt": 13,
+      "state": "in_progress",
+      "requirement": "Second continuation using the 904-record output as parent remains unproven."
+    },
+    {
+      "owner_prompt": 15,
+      "state": "in_progress",
+      "requirement": "Finalize bindings to merged ordered proof and deliver PR396."
+    },
+    {
+      "owner_prompt": 20,
+      "state": "in_progress",
+      "requirement": "Final integrated full and hosted assurance; provisional timing failures remain recorded."
+    },
+    {
+      "owner_prompt": 21,
+      "state": "in_progress",
+      "requirement": "Terminal independent audit after Prompt20."
+    }
+  ],
+  "historical_policy": "Earlier snapshots and digests describe earlier observed trees and remain preserved."
+}

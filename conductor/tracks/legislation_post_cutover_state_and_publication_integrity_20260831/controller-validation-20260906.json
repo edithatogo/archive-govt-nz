@@ -1,0 +1,34 @@
+{
+  "scope": "Prompt01 controller delivery; parent programme remains in_progress",
+  "command": "CI=1 ./scripts/validate.sh",
+  "exit_code": 0,
+  "tests_passed": 4799,
+  "coverage_percent": 97.61,
+  "full_log_sha256": "be9688f7b62bba4022be6944a607b752622ccb0c068722aebe9c9914db660609",
+  "gates_passed": [
+    "lock",
+    "conductor",
+    "format",
+    "lint",
+    "typing",
+    "tests",
+    "schemas",
+    "mutation",
+    "hygiene",
+    "CAS benchmark",
+    "dependency audit",
+    "licence audit",
+    "secrets",
+    "SBOM"
+  ],
+  "evidence_files": [
+    {
+      "path": "programme-status-20260906.json",
+      "sha256": "7241593445a384e789db1d65d255388d6063cba637a7a54e7d89904b1e9edad5"
+    },
+    {
+      "path": "live-observations-20260906.json",
+      "sha256": "7145a2dd1879e94130cb20e0d3cc9e79d768bc27670016f623201b99a71b9e83"
+    }
+  ]
+}
