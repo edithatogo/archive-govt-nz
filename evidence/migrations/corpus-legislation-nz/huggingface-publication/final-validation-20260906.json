@@ -38,5 +38,17 @@
       "path": "ordered-proof-delivery-20260906.json",
       "sha256": "137197f17a2af1bffb441379bac245c4b8b51ad96ab02454da654990169956c4"
     }
+  ],
+  "post_closeout_validation_attempts": [
+    {
+      "command": "uv run --locked python tools/validate_conductor.py",
+      "status": "failed",
+      "reason": "Incorrect validator filename; no such file."
+    },
+    {
+      "command": "uv run --locked python tools/validate_conductor_state.py",
+      "status": "failed",
+      "reason": "Track registry marker remained in progress after acceptance metadata changed; corrected Prompt15 marker only."
+    }
   ]
 }
