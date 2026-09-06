@@ -1,0 +1,11 @@
+{
+  "dataset_slug": "edithatogo/corpus-legislation-nz",
+  "revision_sha": "04688f12dd687618e2085ae31f9b8a4a50a88b16",
+  "status": "consistent",
+  "mismatches": [],
+  "observed_at": "2026-09-06T13:20:09.889270+00:00",
+  "registry_sha256": "7564a68e4382827ea032832b859392ea29870cce0f453eaec6117757c6ded7d6",
+  "readback_sha256": "a2d3de2994a104c9e36da14d795982bb7e0c8f525e933595a6a7f192fe7fca64",
+  "scope": "Selected published552; specialist ordered proof delivered by PR406. Separate Prompt13 second904-parent continuation remains incomplete.",
+  "live_refresh": "live-readback-refresh-20260906.json"
+}

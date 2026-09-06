@@ -50,3 +50,11 @@ The Prompt 13 formal-prerequisite review exposed a missing credential/endpoint n
 ## Ordered operational binding preparation — 2026-09-05
 
 The registry now identifies the immutable specialist-owned ordered proof for run 33968609350 and preflight 33968519628 by governed path and SHA-256. Delivery of that P13 receipt remains pending; the P15 prerequisite gate is not yet satisfied. The new monthly readback/comparison confirms the same approved 552 canonical publication with zero mismatches. No remote metadata or payload write was necessary. P13 residual second 904-parent cycle is not converted into a pass, and no 904 publication is claimed. The original 33800180992 proof and earlier readbacks remain preserved.
+
+## Merged ordered operational input — 2026-09-06
+
+PR #406 merged at `abce27ae6b3043e10d96a48e3b386b1c4f70d7b0`. The specialist-owned `ordered-20260905/ordered-operational-proof.json` exactly matches SHA-256 `fb1a345a3ec2d20c4e3f744a426abbf0928a1e7050a1fdee6a0b007099804671`. It proves the ordered 500-work run 33968609350 after source preflight, with zero unexplained mismatches. This supersedes earlier statements that Prompt 15 must wait for all of issue #335 to close: its actual prerequisite is verified operational proof, now delivered. The separate second 904-parent continuation remains an explicit Prompt 13 blocker; no 904-record publication is claimed. Prompt 15 remains in progress until its own final validation and hosted checks pass.
+
+## Prompt 15 acceptance closeout — 2026-09-06
+
+The three live revisions remain unchanged. Anonymous canonical README, RIGHTS, and package metadata hashes and sizes exactly match the authorized 552-record publication receipt. The refreshed monthly comparison has zero mismatches. All Prompt 15 acceptance evidence is satisfied; delivery through PR #396 remains conditional on required exact-head hosted checks and protected merge. This supersedes the earlier in-progress statement for this issue only. No new remote dataset write was needed. The independent Prompt 13 second904-parent continuation is not marked complete. See `live-readback-refresh-20260906.json`, `monthly-comparison-20260906.json`, and `final-validation-20260906.json` in the Hugging Face publication evidence directory.

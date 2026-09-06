@@ -11,14 +11,17 @@
     {
       "id": "prompt13-operational-proof",
       "kind": "prerequisite",
-      "status": "pending",
-      "evidence": "https://github.com/edithatogo/archive-govt-nz/issues/335"
+      "status": "satisfied",
+      "evidence": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/ordered-20260905/ordered-operational-proof.json",
+      "evidence_sha256": "fb1a345a3ec2d20c4e3f744a426abbf0928a1e7050a1fdee6a0b007099804671",
+      "merge_commit": "abce27ae6b3043e10d96a48e3b386b1c4f70d7b0",
+      "scope": "Verified ordered500 operational proof only; separate Prompt13 second904-parent continuation remains incomplete."
     }
   ],
   "issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/341",
-  "status": "in_progress",
+  "status": "completed",
   "track_id": "legislation_hf_identity_reconciliation_20260901",
   "type": "feature",
-  "updated_at": "2026-09-05T07:31:28.707848Z",
+  "updated_at": "2026-09-06T13:24:41.595580+00:00",
   "pr_url": "https://github.com/edithatogo/archive-govt-nz/pull/396"
 }

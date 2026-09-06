@@ -1,0 +1,14 @@
+{
+  "schema_version": "archive-govt-nz.hf-ordered-proof-delivery/v1",
+  "observed_at": "2026-09-06T11:40:17.763073+00:00",
+  "status": "specialist_operational_input_delivered",
+  "source_merge": "abce27ae6b3043e10d96a48e3b386b1c4f70d7b0",
+  "proof_path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/ordered-20260905/ordered-operational-proof.json",
+  "proof_sha256": "fb1a345a3ec2d20c4e3f744a426abbf0928a1e7050a1fdee6a0b007099804671",
+  "supersedes_scope": "Pending specialist receipt delivery in ordered-proof-binding-20260905.json only. Historical observations remain intact.",
+  "prompt15_operational_input_satisfied": true,
+  "prompt13_all_requirements_complete": false,
+  "remaining_prompt13_scope": "Second904-parent continuation is unproven; do not substitute552-parent reruns.",
+  "published_records": 552,
+  "publication_performed_by_this_closeout": false
+}

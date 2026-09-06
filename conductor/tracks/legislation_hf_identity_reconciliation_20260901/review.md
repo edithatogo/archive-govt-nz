@@ -31,3 +31,11 @@ Independent review of `abfd287a18be654b7bbc97e5c536ac144d4ef268` found no additi
 The later automated review found a valid schema gap: three individually valid copies of one identity could satisfy v3. Six red tests reproduced duplicate slugs, including otherwise differing revisions. Exact per-slug `contains`/`minContains`/`maxContains` constraints correct this without changing historical v1/v2.
 
 The review also identified stale formal Prompt 13 repository closure despite independently verified operation. Issue #335 has been reopened for a separate owned evidence correction; Prompt 15 delivery waits for its named superseding reports and authoritative track synchronization. Prior prospective acceptance statements above are retained; they do not override this unresolved prerequisite record.
+
+## Merged ordered operational input — 2026-09-06
+
+PR #406 merged at `abce27ae6b3043e10d96a48e3b386b1c4f70d7b0`. The specialist-owned `ordered-20260905/ordered-operational-proof.json` exactly matches SHA-256 `fb1a345a3ec2d20c4e3f744a426abbf0928a1e7050a1fdee6a0b007099804671`. It proves the ordered 500-work run 33968609350 after source preflight, with zero unexplained mismatches. This supersedes earlier statements that Prompt 15 must wait for all of issue #335 to close: its actual prerequisite is verified operational proof, now delivered. The separate second 904-parent continuation remains an explicit Prompt 13 blocker; no 904-record publication is claimed. Prompt 15 remains in progress until its own final validation and hosted checks pass.
+
+## Prompt 15 acceptance closeout — 2026-09-06
+
+The three live revisions remain unchanged. Anonymous canonical README, RIGHTS, and package metadata hashes and sizes exactly match the authorized 552-record publication receipt. The refreshed monthly comparison has zero mismatches. All Prompt 15 acceptance evidence is satisfied; delivery through PR #396 remains conditional on required exact-head hosted checks and protected merge. This supersedes the earlier in-progress statement for this issue only. No new remote dataset write was needed. The independent Prompt 13 second904-parent continuation is not marked complete. See `live-readback-refresh-20260906.json`, `monthly-comparison-20260906.json`, and `final-validation-20260906.json` in the Hugging Face publication evidence directory.
