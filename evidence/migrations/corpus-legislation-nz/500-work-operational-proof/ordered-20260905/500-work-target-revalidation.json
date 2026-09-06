@@ -24,5 +24,10 @@
   ],
   "external_publication_performed": false,
   "historical_evidence_preserved": true,
-  "durable_recovery_scope": "Prompt10 proves selected552 durable parent recovery. Two clean restores separately prove resulting904 output restorability from verified Actions artifact; new904 durable publication/recovery is not claimed."
+  "durable_recovery_scope": "Prompt10 proves selected552 durable parent recovery. Two clean restores separately prove resulting904 output restorability from verified Actions artifact; new904 durable publication/recovery is not claimed.",
+  "clean_output_restoration": {
+    "path": "clean-output-restoration.json",
+    "sha256": "2f8edfd7c9e59a62f5926a85d1deb78bf5214323884baede90c9769e6b0cf6f8",
+    "size_bytes": 2267
+  }
 }
