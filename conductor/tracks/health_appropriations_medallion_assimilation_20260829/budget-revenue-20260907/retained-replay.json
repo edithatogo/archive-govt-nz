@@ -1,0 +1,21 @@
+{
+  "schema_version": "archive-govt-nz.health-budget-revenue-replay/v1",
+  "source_sha256": "2aef43eb419420a549fe56a946539f6e9afcbd91f95e9242457f26c97bafafaa",
+  "source_bytes": 106159,
+  "source_unchanged": true,
+  "input_rows_verified": 1000,
+  "normalized_rows_verified": 69,
+  "lineage_rows_verified": 1104,
+  "revenue_type_counts": {"Capital Receipts": 13, "Non-Tax Revenue": 56},
+  "builds_byte_identical": true,
+  "output_root": "/tmp/health-budget-revenue-replay.A3JZt4",
+  "output_sha256": {
+    "MANIFEST.json": "0e4433dfe1757e47e62f1b486d35aaab2228b33c8d2f5045e99dc1f7a6782de7",
+    "field_lineage.parquet": "d7def4793cfcb893a73c51be66cba8fb910508685e9ce257626f2cacf2ba27b7",
+    "revenue_facts.parquet": "85a77d643bc4aac22b193f10e79b225eb91ac2aa42a224078cd454efc5e3e7f9",
+    "row_dispositions.parquet": "588434c96f9a83e2d2b0b60589a8df8d866d880d24d3ba511bab97ca06e4173b"
+  },
+  "rights_state": "not_evaluated",
+  "publication": "not_performed",
+  "observation_context": "reused_donor_context_not_new_capture"
+}

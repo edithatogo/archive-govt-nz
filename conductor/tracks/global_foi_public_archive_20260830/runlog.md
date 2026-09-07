@@ -472,3 +472,12 @@ are in p15-hosted-receipt-search-20260907.md/.json. No changed-sync proof or mis
 17225–17226 originals found. P1.5 remains pending; no dispatch, activation, source
 capture, remote write, public HF readback or rights decision. Offline receipt and
 track-chain checks only; no full harness.
+
+## P4.7 canonical publisher handoff — 2026-09-07
+
+Isolated from health-interfaces 6c567c2c. TDD red six missing-keyword failures,
+then 194 focused tests passed including seven canonical guard mutants; publisher
+100% statement/branch coverage. Ruff format/lint and BasedPyright pass. Exact
+commands, bounded transport failures and output digests are recorded in
+canonical-publisher-20260907.md/.json. All Hub operations used MemoryHub; no full
+harness, workflow change, source input change, raw approval or remote publication.

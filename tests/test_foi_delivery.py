@@ -12,7 +12,13 @@ from jsonschema import Draft202012Validator
 
 import archive_govt_nz.foi_delivery as module
 import archive_govt_nz.foi_publication as publication
+from archive_govt_nz.foi_canonical import build_source_index
+from archive_govt_nz.foi_catalogue import catalogue_files
 from archive_govt_nz.foi_delivery import publish_snapshot
+from archive_govt_nz.foi_discovery import build_reviewed_catalogue
+
+TRACK = Path("conductor/tracks/global_foi_public_archive_20260830")
+SEEDS = Path("config/foi")
 
 
 class MemoryHub:
@@ -331,3 +337,129 @@ def test_catalogue_restore_rejects_a_different_projection(
     monkeypatch.setattr(publication, "publish_snapshot", changed)
     with pytest.raises(ValueError, match="catalogue_restore_mismatch"):
         publication.publish_catalogue(hub, Path("config/foi"))
+
+
+def catalogue_hub(monkeypatch: pytest.MonkeyPatch) -> MemoryHub:
+    """Keep all catalogue and child repository operations in memory."""
+    hub = MemoryHub()
+    hub.identity = hub.expected_repo = publication.CATALOGUE_REPO
+    original = hub.info
+    monkeypatch.setattr(
+        hub,
+        "info",
+        lambda repo: (
+            original(repo)
+            if repo == publication.CATALOGUE_REPO
+            else {"id": repo, "private": False, "gated": False}
+        ),
+    )
+    return hub
+
+
+@pytest.mark.parametrize("canonical", [False, True])
+def test_publisher_exact_builder_bytes(
+    monkeypatch: pytest.MonkeyPatch, *, canonical: bool
+) -> None:
+    """Default v1 and explicit v2 retain exact pinned metadata, never raw bytes."""
+    hub = catalogue_hub(monkeypatch)
+    options = {"canonical_track": TRACK} if canonical else {}
+    expected = (
+        build_source_index(SEEDS, TRACK)
+        if canonical
+        else catalogue_files(build_reviewed_catalogue(SEEDS))
+    )
+    result = publication.publish_catalogue(hub, SEEDS, **options)
+    prefix = f"snapshots/{result['manifest_sha256']}/"
+    assert {
+        name.removeprefix(prefix): data
+        for name, data in hub.files.items()
+        if name.startswith(prefix)
+    } == expected
+    assert result["payload_publication"] is False
+    assert result["coverage"] == json.loads(expected["coverage.json"])
+    manifest = json.loads(expected["manifest.json"])
+    assert manifest["schema_version"].endswith("/v2" if canonical else "/v1")
+    assert manifest["payload_publication_authorized"] is False
+    if canonical:
+        registry = json.loads(expected["registry.json"])
+        schema = json.loads(
+            (TRACK / "canonical-source-catalogue-v2.schema.json").read_bytes()
+        )
+        Draft202012Validator(schema).validate(registry)
+        assert len(registry["sources"]) == 255
+        pins = json.loads((TRACK / "canonical-inputs-20260907.json").read_bytes())
+        assert (
+            manifest["provenance"]["canonical_join"]["inputs"]["files"] == pins["files"]
+        )
+        original = build_reviewed_catalogue(SEEDS)["sources"]
+        by_id = {source["id"]: source for source in registry["sources"]}
+        assert [by_id[source["id"]] for source in original] == original
+    publication.publish_catalogue(hub, SEEDS, **options)
+    assert hub.calls == 2
+
+
+def test_canonical_publisher_bad_pin_before_transport(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Invalid canonical inputs cannot fall back to v1 or touch the Hub."""
+    hub = MemoryHub()
+    monkeypatch.setattr(hub, "info", lambda _repo: pytest.fail("transport reached"))
+    pins = json.loads((TRACK / "canonical-inputs-20260907.json").read_bytes())
+    pins["files"].pop(next(iter(pins["files"])))
+    (tmp_path / "canonical-inputs-20260907.json").write_text(json.dumps(pins))
+    with pytest.raises(ValueError, match="canonical_input_set"):
+        publication.publish_catalogue(hub, SEEDS, canonical_track=tmp_path)
+    assert hub.calls == 0
+
+
+@pytest.mark.parametrize("failure", ["bytes", "files", "readback", "child"])
+def test_canonical_publisher_failure_never_promotes(
+    failure: str, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Canonical metadata inherits transport bounds and restore/identity guards."""
+    hub = catalogue_hub(monkeypatch)
+    if failure == "bytes":
+        monkeypatch.setattr(module, "MAX_BYTES", 1)
+    elif failure == "files":
+        monkeypatch.setattr(module, "MAX_FILES", 1)
+    elif failure == "readback":
+        hub.corrupt = True
+    else:
+        monkeypatch.setattr(
+            hub, "info", lambda repo: {"id": repo, "private": True, "gated": False}
+        )
+    reasons = {
+        "bytes": "snapshot_byte_budget_exceeded",
+        "files": "invalid_snapshot_file_set",
+        "readback": "remote_integrity_failure",
+        "child": "child_repository_not_public",
+    }
+    with pytest.raises(ValueError, match=reasons[failure]):
+        publication.publish_catalogue(hub, SEEDS, canonical_track=TRACK)
+    assert "current.json" not in hub.files
+    assert "README.md" not in hub.files
+    assert hub.calls == (1 if failure == "readback" else 0)
+
+
+def test_failed_canonical_upgrade_preserves_v1_pointer(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """A failed v2 cold restore cannot move the previously verified v1 pointer."""
+    hub = catalogue_hub(monkeypatch)
+    publication.publish_catalogue(hub, SEEDS)
+    pointer, card = hub.files["current.json"], hub.files["README.md"]
+    original = hub.download
+
+    def corrupt_registry(
+        repo: str, revision: str, name: str, output: Path, size: int
+    ) -> None:
+        original(repo, revision, name, output, size)
+        if name.endswith("/registry.json"):
+            output.write_bytes(b"bad")
+
+    monkeypatch.setattr(hub, "download", corrupt_registry)
+    with pytest.raises(ValueError, match="remote_integrity_failure"):
+        publication.publish_catalogue(hub, SEEDS, canonical_track=TRACK)
+    assert hub.files["current.json"] == pointer
+    assert hub.files["README.md"] == card
+    assert hub.calls == 3  # Only immutable candidate bytes were staged.

@@ -1,0 +1,98 @@
+{
+  "recorded_date": "2026-09-07",
+  "base_commit": "6c567c2c6de7324f324a2464a8a03f5e13057881",
+  "scope": "local_mock_canonical_publisher_handoff",
+  "transport": "MemoryHub_only",
+  "focused_tests_passed": 194,
+  "canonical_guard_mutants_killed": 7,
+  "publisher_statement_branch_coverage_percent": 100,
+  "ruff_format_lint": "passed",
+  "basedpyright": "passed",
+  "full_harness_run": false,
+  "actual_publication": false,
+  "rights_approval": false,
+  "schedule_changes": false,
+  "lifecycle_acceptance": false,
+  "outputs": {
+    "default_v1": {
+      "file_count": 7,
+      "total_bytes": 254875,
+      "files": {
+        "coverage.json": {
+          "bytes": 237,
+          "sha256": "185a2f78a55b77137cdde285fd4c8e7ef82f0a18859c13a5e547d8a226786eab"
+        },
+        "coverage.md": {
+          "bytes": 12005,
+          "sha256": "a8d832696a070c4ef02bb5db680c5ca5569efdc49ee8f86c6ba1927ae755fe79"
+        },
+        "discovery-review.jsonl": {
+          "bytes": 48174,
+          "sha256": "9e5157e3b71313db84672dcaa43b7767b2f281ed7944221d8d235943a3e043d1"
+        },
+        "entities.jsonl": {
+          "bytes": 92565,
+          "sha256": "1882508bdf5c3a4c6fa0ce42837bc8c4c36464659b4850113d315a85c298d549"
+        },
+        "jurisdictions.jsonl": {
+          "bytes": 5383,
+          "sha256": "1bf19a6e79d5f313119ee1ec7b6be34fad3980aab04fe98d9e9cd55a015a201d"
+        },
+        "manifest.json": {
+          "bytes": 79292,
+          "sha256": "42d003245024432140ba2070c998c32779bbb587516bf0c62aeb32085c6a1558"
+        },
+        "sources.jsonl": {
+          "bytes": 17219,
+          "sha256": "9b8104d8d801556202f10e02087e6d3aea51ccc9ca53e17d2f813df84838e9cd"
+        }
+      }
+    },
+    "explicit_v2": {
+      "file_count": 10,
+      "total_bytes": 1816540,
+      "files": {
+        "coverage.json": {
+          "bytes": 626,
+          "sha256": "2bb8ab4d2401ab2436677570bc771fb63a03b5556ea8a313d5186a8c6a660d97"
+        },
+        "coverage.md": {
+          "bytes": 34257,
+          "sha256": "8b5b091ed0d3f03fe7cc56beb6cd523af52c96f8bbac023089f32342812016fd"
+        },
+        "discovery-review.jsonl": {
+          "bytes": 48174,
+          "sha256": "9e5157e3b71313db84672dcaa43b7767b2f281ed7944221d8d235943a3e043d1"
+        },
+        "entities.jsonl": {
+          "bytes": 131324,
+          "sha256": "37a936b4cbff88c28978f84f97bcc6c142b46256c05faf74d42c636aefb45903"
+        },
+        "jurisdictions.jsonl": {
+          "bytes": 5383,
+          "sha256": "1bf19a6e79d5f313119ee1ec7b6be34fad3980aab04fe98d9e9cd55a015a201d"
+        },
+        "manifest.json": {
+          "bytes": 81860,
+          "sha256": "9643d020b039f775817046c19c72c3353390fcd1259063c2a385c9c53bea13b7"
+        },
+        "registry.json": {
+          "bytes": 942949,
+          "sha256": "2409391a667f0c39b72c6fc261af468e3c28025979fb901616021bc6db419421"
+        },
+        "rollout_state.json": {
+          "bytes": 174295,
+          "sha256": "1b9b3a790602302dc822aec15628485bb3f583ce49ea10b5b14ce77ddaac230f"
+        },
+        "sources.jsonl": {
+          "bytes": 390452,
+          "sha256": "ebd6e28326e5fb6e1b539fec5e782b7162ce90f49b33b94594f639e943657fc5"
+        },
+        "year_navigation_assessment.json": {
+          "bytes": 7220,
+          "sha256": "b851ca338b1478fdd613764c2d6593d9647fd5daa7842b5a711faaae15df597c"
+        }
+      }
+    }
+  }
+}

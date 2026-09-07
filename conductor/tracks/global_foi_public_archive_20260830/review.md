@@ -322,3 +322,12 @@ availability facts do not close changed-sync or historical no-skipped-work proof
 Later raw inventory is not attributed to the preceding missing batch. No tokens,
 signed download URLs, raw request bodies or unbounded-world conclusions retained.
 P1.5 and parent lifecycle unchanged; see p15-hosted-receipt-search-20260907.md.
+
+## P4.7 canonical handoff focused review — 2026-09-07
+
+No outstanding scoped finding. Default v1 byte/receipt behavior, explicit v2
+source pins/schema, original identities, idempotent readback and failed-upgrade
+pointer preservation pass. Existing raw decision negatives remain enforced.
+194 tests, seven guard mutants, publisher 100% statement/branch; static checks
+pass. This is a local mock handoff, not AC07/AC11 umbrella or hosted acceptance.
+See canonical-publisher-20260907.md; parent owns full harness and lifecycle.
