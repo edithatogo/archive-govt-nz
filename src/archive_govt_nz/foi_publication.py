@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import TYPE_CHECKING, Any, NoReturn
 from urllib.parse import urlsplit
 
+from archive_govt_nz.foi_canonical import build_source_index
 from archive_govt_nz.foi_catalogue import catalogue_files
 from archive_govt_nz.foi_delivery import publish_snapshot
 from archive_govt_nz.foi_discovery import build_reviewed_catalogue
@@ -43,9 +44,21 @@ def _review_evidence(decision: dict[str, Any]) -> bool:
     return True
 
 
-def publish_catalogue(hub: Hub, seeds: Path) -> dict[str, Any]:
-    """Publish only deterministic metadata from the approved pinned seed importer."""
-    catalogue = build_reviewed_catalogue(seeds)
+def publish_catalogue(
+    hub: Hub, seeds: Path, *, canonical_track: Path | None = None
+) -> dict[str, Any]:
+    """Publish pinned metadata; explicit canonical input opts into v2, not rights.
+
+    The two-argument interface retains v1. Canonical input validation completes
+    before transport, with no fallback on invalid pins. Neither path authorizes
+    raw packages or activates acquisition schedules.
+    """
+    if canonical_track is None:
+        catalogue = build_reviewed_catalogue(seeds)
+        content = catalogue_files(catalogue)
+    else:
+        content = build_source_index(seeds, canonical_track)
+        catalogue = json.loads(content["registry.json"])
     for source in catalogue["sources"]:
         if source["hf_repo_id"] is None:
             continue
@@ -56,7 +69,6 @@ def publish_catalogue(hub: Hub, seeds: Path) -> dict[str, Any]:
             or info["gated"] is not False
         ):
             _fail("child_repository_not_public")
-    content = catalogue_files(catalogue)
     with tempfile.TemporaryDirectory(prefix="foi-catalogue-candidate-") as temporary:
         root = Path(temporary)
         files = {}

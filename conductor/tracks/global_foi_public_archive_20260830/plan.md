@@ -185,6 +185,7 @@ The approved destination is archive-govt-nz; no cutover has occurred.
 - [ ] P4.3 (AC07, AC11): Reconcile source eligibility, platform capacity and least-privilege credentials; publish the eligible NZ candidate under recorded user authority and verify every accepted object anonymously.
 - [~] P4.4 (AC07): Verify a second eligible instance, cross-instance isolation, revision-pinned catalogue links, interrupted-publication recovery, cold restore without cache and viewer status separately from raw storage.
 - [~] P4.5 (AC12): Automated publication/security review, full phase validation and hosted receipts.
+- [x] P4.7 (AC07, AC11, AC12; local only): Explicit canonical v2 publisher handoff reuses pinned builder and snapshot transport, preserving default v1 and raw approval guards. Mock byte parity, failed-upgrade preservation and focused review: `canonical-publisher-20260907.md`. Hosted delivery and umbrella acceptance remain pending.
 
 ## Phase 5 — Sustainable acquisition for every country
 
