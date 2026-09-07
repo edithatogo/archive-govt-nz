@@ -460,3 +460,15 @@ identical output rewrites. Final exact pytest command in canonical-cli-20260907.
 .venv/bin/ruff format --check and check, plus .venv/bin/basedpyright, passed for
 tools/build_foi_catalogue.py and tests/test_build_foi_catalogue.py. No full harness
 or network; generated canonical255 bytes and publishing defaults unchanged.
+
+## P1.5 bounded receipt recovery — 2026-09-07
+
+Evidence-only branch codex/foi-p15-receipts-20260907 from 47619aad; no implementation
+or frozen-tree mutation. Queried existing donor run/artifact metadata and recovered
+nine post-repair sync ZIPs plus two selected backfill ZIPs in memory. Verified
+GitHub ZIP digests, run/head/summary bindings and empty changes ledgers. Failed
+backfill 33307488567 has zero artifacts. Exact commands, bounds, hashes and scope
+are in p15-hosted-receipt-search-20260907.md/.json. No changed-sync proof or missing
+17225–17226 originals found. P1.5 remains pending; no dispatch, activation, source
+capture, remote write, public HF readback or rights decision. Offline receipt and
+track-chain checks only; no full harness.

@@ -1,0 +1,1343 @@
+{
+  "schema_version": "archive-govt-nz.foi-p15-hosted-receipt-search/v1",
+  "observed_at": "2026-09-07T04:42:32.387583+00:00",
+  "scope": "read_only_bounded_existing_GitHub_receipts_no_dispatch_or_publication",
+  "receiver_base": "47619aada6aeeb10e35cfbf0bdd3bc7bddf38c2d",
+  "sync": {
+    "bounds": {
+      "archive_expanded_bytes_max": 128000000,
+      "artifact_bytes_max": 12000000,
+      "cohort_start_guard_seconds": 180,
+      "member_bytes_max": 65536,
+      "per_command_seconds": 45,
+      "run_list_limit": 30,
+      "selected_runs_max": 9,
+      "workers": 2
+    },
+    "listed_runs": [
+      {
+        "conclusion": "success",
+        "createdAt": "2026-09-06T17:00:42Z",
+        "databaseId": 34047241453,
+        "event": "schedule",
+        "headSha": "7793293e488bd39d3fbb1e36ceb98820beb40313",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/34047241453"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-09-05T16:48:54Z",
+        "databaseId": 33979018048,
+        "event": "schedule",
+        "headSha": "7793293e488bd39d3fbb1e36ceb98820beb40313",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/33979018048"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-09-04T17:35:06Z",
+        "databaseId": 33901357761,
+        "event": "schedule",
+        "headSha": "7793293e488bd39d3fbb1e36ceb98820beb40313",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/33901357761"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-09-03T17:49:59Z",
+        "databaseId": 33786880797,
+        "event": "schedule",
+        "headSha": "7793293e488bd39d3fbb1e36ceb98820beb40313",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/33786880797"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-09-02T17:53:07Z",
+        "databaseId": 33663819472,
+        "event": "schedule",
+        "headSha": "7793293e488bd39d3fbb1e36ceb98820beb40313",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/33663819472"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-09-01T17:48:23Z",
+        "databaseId": 33539917839,
+        "event": "schedule",
+        "headSha": "7793293e488bd39d3fbb1e36ceb98820beb40313",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/33539917839"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-08-31T20:02:10Z",
+        "databaseId": 33433808727,
+        "event": "schedule",
+        "headSha": "7793293e488bd39d3fbb1e36ceb98820beb40313",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/33433808727"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-08-30T18:03:20Z",
+        "databaseId": 33326963683,
+        "event": "schedule",
+        "headSha": "be992fe036d5a270e228b5277e5b5770b9950ad8",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/33326963683"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-08-30T10:17:14Z",
+        "databaseId": 33306106031,
+        "event": "workflow_dispatch",
+        "headSha": "b6e78703d871082433fb33f8fa610761c2eb4062",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/33306106031"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-29T17:42:54Z",
+        "databaseId": 33266353489,
+        "event": "schedule",
+        "headSha": "cba7b0dec2734bdc9ff51c69610fc55cb1fc5aa1",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/33266353489"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-28T23:32:22Z",
+        "databaseId": 33220760500,
+        "event": "schedule",
+        "headSha": "cba7b0dec2734bdc9ff51c69610fc55cb1fc5aa1",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/33220760500"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-27T23:46:24Z",
+        "databaseId": 33127456718,
+        "event": "schedule",
+        "headSha": "cba7b0dec2734bdc9ff51c69610fc55cb1fc5aa1",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/33127456718"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-26T15:50:48Z",
+        "databaseId": 32986215016,
+        "event": "schedule",
+        "headSha": "cba7b0dec2734bdc9ff51c69610fc55cb1fc5aa1",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/32986215016"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-25T15:03:00Z",
+        "databaseId": 32863347646,
+        "event": "schedule",
+        "headSha": "cba7b0dec2734bdc9ff51c69610fc55cb1fc5aa1",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/32863347646"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-24T14:58:06Z",
+        "databaseId": 32741966447,
+        "event": "schedule",
+        "headSha": "cba7b0dec2734bdc9ff51c69610fc55cb1fc5aa1",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/32741966447"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-23T14:36:39Z",
+        "databaseId": 32645954227,
+        "event": "schedule",
+        "headSha": "cba7b0dec2734bdc9ff51c69610fc55cb1fc5aa1",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/32645954227"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-22T14:36:01Z",
+        "databaseId": 32579167587,
+        "event": "schedule",
+        "headSha": "cba7b0dec2734bdc9ff51c69610fc55cb1fc5aa1",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/32579167587"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-21T14:52:01Z",
+        "databaseId": 32494464111,
+        "event": "schedule",
+        "headSha": "fb06d6cb740a2f2386b42dd1c09a4be2a3ae5693",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/32494464111"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-20T14:53:23Z",
+        "databaseId": 32382842213,
+        "event": "schedule",
+        "headSha": "fb06d6cb740a2f2386b42dd1c09a4be2a3ae5693",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/32382842213"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-19T14:51:50Z",
+        "databaseId": 32266557626,
+        "event": "schedule",
+        "headSha": "fb06d6cb740a2f2386b42dd1c09a4be2a3ae5693",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/32266557626"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-18T14:50:40Z",
+        "databaseId": 32150820850,
+        "event": "schedule",
+        "headSha": "fb06d6cb740a2f2386b42dd1c09a4be2a3ae5693",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/32150820850"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-17T14:42:28Z",
+        "databaseId": 32039971682,
+        "event": "schedule",
+        "headSha": "fb06d6cb740a2f2386b42dd1c09a4be2a3ae5693",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/32039971682"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-16T14:36:23Z",
+        "databaseId": 31953193734,
+        "event": "schedule",
+        "headSha": "fb06d6cb740a2f2386b42dd1c09a4be2a3ae5693",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/31953193734"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-15T14:36:41Z",
+        "databaseId": 31890383152,
+        "event": "schedule",
+        "headSha": "fb06d6cb740a2f2386b42dd1c09a4be2a3ae5693",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/31890383152"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-14T15:05:46Z",
+        "databaseId": 31812777709,
+        "event": "schedule",
+        "headSha": "fb06d6cb740a2f2386b42dd1c09a4be2a3ae5693",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/31812777709"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-13T15:13:05Z",
+        "databaseId": 31714213275,
+        "event": "schedule",
+        "headSha": "fb06d6cb740a2f2386b42dd1c09a4be2a3ae5693",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/31714213275"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-12T15:12:41Z",
+        "databaseId": 31611046403,
+        "event": "schedule",
+        "headSha": "5cdb97a6bf52ecd2f70485aa8fd8270d7de5bb7c",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/31611046403"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-08-12T12:00:11Z",
+        "databaseId": 31594393987,
+        "event": "workflow_dispatch",
+        "headSha": "255d46b414e3d39a4a47e87e7bf0eb9082885625",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/31594393987"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-08-12T11:59:29Z",
+        "databaseId": 31594342729,
+        "event": "workflow_dispatch",
+        "headSha": "255d46b414e3d39a4a47e87e7bf0eb9082885625",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/31594342729"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-12T11:50:22Z",
+        "databaseId": 31593655257,
+        "event": "workflow_dispatch",
+        "headSha": "575fdc88614850377cf7e651c1aaea44e854b0cf",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/31593655257"
+      }
+    ],
+    "observed_at": "2026-09-07T04:40:12.622200+00:00",
+    "post_repair_syncs": [
+      {
+        "artifacts": [
+          {
+            "digest": "sha256:3c1ecda280efb666a342f2bf2c53f9bceef00ec40e90a2addbe1518c2192b874",
+            "expired": false,
+            "id": 9993472082,
+            "name": "hf-sync",
+            "records": {
+              "manifests/latest_changes.json": {
+                "bytes": 167,
+                "sha256": "80b743a204d205b10c7964d3a10c0136a0c1d4d39ea1d03e44982dbda171c802",
+                "value": {
+                  "added": [],
+                  "meta": {
+                    "generated_at": "2026-09-06T17:01:00.754028+00:00",
+                    "since": null,
+                    "version": "0.6.0"
+                  },
+                  "removed": [],
+                  "updated": []
+                }
+              },
+              "sync-execution-receipt.json": {
+                "bytes": 339,
+                "sha256": "757f3af98bcbbeea6df333b500e5e6e95182c4a42c9b89068b45a053d4eb7d2b",
+                "value": {
+                  "job_status": "success",
+                  "repository": "edithatogo/fyi-archive",
+                  "revision": "7793293e488bd39d3fbb1e36ceb98820beb40313",
+                  "run_attempt": "1",
+                  "run_id": "34047241453",
+                  "schema": "fyi-archive.sync-execution.v1",
+                  "summary_present": true,
+                  "summary_sha256": "fb45d630b05d3f17db1637b1047b52f98eb7a4cd395448608656d6822956d57c"
+                }
+              },
+              "sync-summary.json": {
+                "bytes": 337,
+                "sha256": "fb45d630b05d3f17db1637b1047b52f98eb7a4cd395448608656d6822956d57c",
+                "value": {
+                  "generated_at": "2026-09-06T17:01:00.754028+00:00",
+                  "instance_id": "nz-fyi",
+                  "jurisdiction": null,
+                  "manifest_sha256": "0823ad1214d60264770692d801eff8eba79ac109280616f91096ea0b3a0cd604",
+                  "materialized_records": 0,
+                  "rate_limit_name": "archive-discovery-nz-fyi",
+                  "record_count": 33217,
+                  "since": null,
+                  "verified": true
+                }
+              }
+            },
+            "size_in_bytes": 8764235,
+            "zip_sha256": "3c1ecda280efb666a342f2bf2c53f9bceef00ec40e90a2addbe1518c2192b874"
+          }
+        ],
+        "run": {
+          "conclusion": "success",
+          "createdAt": "2026-09-06T17:00:42Z",
+          "databaseId": 34047241453,
+          "event": "schedule",
+          "headSha": "7793293e488bd39d3fbb1e36ceb98820beb40313",
+          "status": "completed",
+          "url": "https://github.com/edithatogo/fyi-archive/actions/runs/34047241453"
+        }
+      },
+      {
+        "artifacts": [
+          {
+            "digest": "sha256:3dfc5049960274cf50e9b3cde129ce092b38368bcbb0491151a93b192d2e2286",
+            "expired": false,
+            "id": 9973183647,
+            "name": "hf-sync",
+            "records": {
+              "manifests/latest_changes.json": {
+                "bytes": 167,
+                "sha256": "591d53ba5c6da815d2344c52ac9f664366efc14782f239dec87fd1d1be5de4c8",
+                "value": {
+                  "added": [],
+                  "meta": {
+                    "generated_at": "2026-09-05T16:49:14.784896+00:00",
+                    "since": null,
+                    "version": "0.6.0"
+                  },
+                  "removed": [],
+                  "updated": []
+                }
+              },
+              "sync-execution-receipt.json": {
+                "bytes": 339,
+                "sha256": "9b95d9074c14f70201a1eab6e65ff3efb60ac93b77216e5a6c11f2599849ceb2",
+                "value": {
+                  "job_status": "success",
+                  "repository": "edithatogo/fyi-archive",
+                  "revision": "7793293e488bd39d3fbb1e36ceb98820beb40313",
+                  "run_attempt": "1",
+                  "run_id": "33979018048",
+                  "schema": "fyi-archive.sync-execution.v1",
+                  "summary_present": true,
+                  "summary_sha256": "e99a09032f7f18b39449f2dc63dd6151964265e9da03e8f9a1a0111bad528805"
+                }
+              },
+              "sync-summary.json": {
+                "bytes": 337,
+                "sha256": "e99a09032f7f18b39449f2dc63dd6151964265e9da03e8f9a1a0111bad528805",
+                "value": {
+                  "generated_at": "2026-09-05T16:49:14.784896+00:00",
+                  "instance_id": "nz-fyi",
+                  "jurisdiction": null,
+                  "manifest_sha256": "0823ad1214d60264770692d801eff8eba79ac109280616f91096ea0b3a0cd604",
+                  "materialized_records": 0,
+                  "rate_limit_name": "archive-discovery-nz-fyi",
+                  "record_count": 33217,
+                  "since": null,
+                  "verified": true
+                }
+              }
+            },
+            "size_in_bytes": 8764240,
+            "zip_sha256": "3dfc5049960274cf50e9b3cde129ce092b38368bcbb0491151a93b192d2e2286"
+          }
+        ],
+        "run": {
+          "conclusion": "success",
+          "createdAt": "2026-09-05T16:48:54Z",
+          "databaseId": 33979018048,
+          "event": "schedule",
+          "headSha": "7793293e488bd39d3fbb1e36ceb98820beb40313",
+          "status": "completed",
+          "url": "https://github.com/edithatogo/fyi-archive/actions/runs/33979018048"
+        }
+      },
+      {
+        "artifacts": [
+          {
+            "digest": "sha256:d845d74211a5d7b3adc12aa558aae621813a6b855dd266ed7031ce54faa7c35e",
+            "expired": false,
+            "id": 9947761049,
+            "name": "hf-sync",
+            "records": {
+              "manifests/latest_changes.json": {
+                "bytes": 167,
+                "sha256": "c96b3e9bf1fdd108542b8e121aadec4fb1116451e093a339217a818af39e1c77",
+                "value": {
+                  "added": [],
+                  "meta": {
+                    "generated_at": "2026-09-04T17:35:31.259039+00:00",
+                    "since": null,
+                    "version": "0.6.0"
+                  },
+                  "removed": [],
+                  "updated": []
+                }
+              },
+              "sync-execution-receipt.json": {
+                "bytes": 339,
+                "sha256": "f87b8e9d63df45bb0a097b8648c5729a8274525a3d7e665e944110c0a6e75380",
+                "value": {
+                  "job_status": "success",
+                  "repository": "edithatogo/fyi-archive",
+                  "revision": "7793293e488bd39d3fbb1e36ceb98820beb40313",
+                  "run_attempt": "1",
+                  "run_id": "33901357761",
+                  "schema": "fyi-archive.sync-execution.v1",
+                  "summary_present": true,
+                  "summary_sha256": "ed0fc7a0d9021a12222281cbbaa831abc50ff964e6243c5d91911b766d3d5140"
+                }
+              },
+              "sync-summary.json": {
+                "bytes": 337,
+                "sha256": "ed0fc7a0d9021a12222281cbbaa831abc50ff964e6243c5d91911b766d3d5140",
+                "value": {
+                  "generated_at": "2026-09-04T17:35:31.259039+00:00",
+                  "instance_id": "nz-fyi",
+                  "jurisdiction": null,
+                  "manifest_sha256": "0823ad1214d60264770692d801eff8eba79ac109280616f91096ea0b3a0cd604",
+                  "materialized_records": 0,
+                  "rate_limit_name": "archive-discovery-nz-fyi",
+                  "record_count": 33217,
+                  "since": null,
+                  "verified": true
+                }
+              }
+            },
+            "size_in_bytes": 8764237,
+            "zip_sha256": "d845d74211a5d7b3adc12aa558aae621813a6b855dd266ed7031ce54faa7c35e"
+          }
+        ],
+        "run": {
+          "conclusion": "success",
+          "createdAt": "2026-09-04T17:35:06Z",
+          "databaseId": 33901357761,
+          "event": "schedule",
+          "headSha": "7793293e488bd39d3fbb1e36ceb98820beb40313",
+          "status": "completed",
+          "url": "https://github.com/edithatogo/fyi-archive/actions/runs/33901357761"
+        }
+      },
+      {
+        "artifacts": [
+          {
+            "digest": "sha256:e039f5f1cbd3f6139c75dc3c29d1b95d1da0cb5d787a77901420edddbbe766b7",
+            "expired": false,
+            "id": 9905763070,
+            "name": "hf-sync",
+            "records": {
+              "manifests/latest_changes.json": {
+                "bytes": 167,
+                "sha256": "333eca93c61b8622a213395f5c6489b4a2b91ac3b030dc3feff711798e2f4953",
+                "value": {
+                  "added": [],
+                  "meta": {
+                    "generated_at": "2026-09-03T17:50:16.784028+00:00",
+                    "since": null,
+                    "version": "0.6.0"
+                  },
+                  "removed": [],
+                  "updated": []
+                }
+              },
+              "sync-execution-receipt.json": {
+                "bytes": 339,
+                "sha256": "1ed5592642399d0fe006712a45692c71b227bb2e08df3df72de489a10d3405e0",
+                "value": {
+                  "job_status": "success",
+                  "repository": "edithatogo/fyi-archive",
+                  "revision": "7793293e488bd39d3fbb1e36ceb98820beb40313",
+                  "run_attempt": "1",
+                  "run_id": "33786880797",
+                  "schema": "fyi-archive.sync-execution.v1",
+                  "summary_present": true,
+                  "summary_sha256": "b253822b949e32dfb5892486225316fd591a8e05a0116a5b13721b5e28bbf315"
+                }
+              },
+              "sync-summary.json": {
+                "bytes": 337,
+                "sha256": "b253822b949e32dfb5892486225316fd591a8e05a0116a5b13721b5e28bbf315",
+                "value": {
+                  "generated_at": "2026-09-03T17:50:16.784028+00:00",
+                  "instance_id": "nz-fyi",
+                  "jurisdiction": null,
+                  "manifest_sha256": "0823ad1214d60264770692d801eff8eba79ac109280616f91096ea0b3a0cd604",
+                  "materialized_records": 0,
+                  "rate_limit_name": "archive-discovery-nz-fyi",
+                  "record_count": 33217,
+                  "since": null,
+                  "verified": true
+                }
+              }
+            },
+            "size_in_bytes": 8764236,
+            "zip_sha256": "e039f5f1cbd3f6139c75dc3c29d1b95d1da0cb5d787a77901420edddbbe766b7"
+          }
+        ],
+        "run": {
+          "conclusion": "success",
+          "createdAt": "2026-09-03T17:49:59Z",
+          "databaseId": 33786880797,
+          "event": "schedule",
+          "headSha": "7793293e488bd39d3fbb1e36ceb98820beb40313",
+          "status": "completed",
+          "url": "https://github.com/edithatogo/fyi-archive/actions/runs/33786880797"
+        }
+      },
+      {
+        "artifacts": [
+          {
+            "digest": "sha256:c0e57339a6df63cde6f9f3b760170a20a925e1bad0b0fb39bb10e3c107f203c5",
+            "expired": false,
+            "id": 9859749545,
+            "name": "hf-sync",
+            "records": {
+              "manifests/latest_changes.json": {
+                "bytes": 167,
+                "sha256": "2e6c9c88339533a506dd61765a165e1d3afffd66b3c0fdbe49a562ba351fee86",
+                "value": {
+                  "added": [],
+                  "meta": {
+                    "generated_at": "2026-09-02T17:53:29.174055+00:00",
+                    "since": null,
+                    "version": "0.6.0"
+                  },
+                  "removed": [],
+                  "updated": []
+                }
+              },
+              "sync-execution-receipt.json": {
+                "bytes": 339,
+                "sha256": "bc256f9486cab50773209f068f60a820c36606aaf9d83e6d9d80c44e31e7fcbc",
+                "value": {
+                  "job_status": "success",
+                  "repository": "edithatogo/fyi-archive",
+                  "revision": "7793293e488bd39d3fbb1e36ceb98820beb40313",
+                  "run_attempt": "1",
+                  "run_id": "33663819472",
+                  "schema": "fyi-archive.sync-execution.v1",
+                  "summary_present": true,
+                  "summary_sha256": "04bd2e0a25cd818751a84b103d88f09ccab7462cd3abcdc9beace978391edea0"
+                }
+              },
+              "sync-summary.json": {
+                "bytes": 337,
+                "sha256": "04bd2e0a25cd818751a84b103d88f09ccab7462cd3abcdc9beace978391edea0",
+                "value": {
+                  "generated_at": "2026-09-02T17:53:29.174055+00:00",
+                  "instance_id": "nz-fyi",
+                  "jurisdiction": null,
+                  "manifest_sha256": "0823ad1214d60264770692d801eff8eba79ac109280616f91096ea0b3a0cd604",
+                  "materialized_records": 0,
+                  "rate_limit_name": "archive-discovery-nz-fyi",
+                  "record_count": 33217,
+                  "since": null,
+                  "verified": true
+                }
+              }
+            },
+            "size_in_bytes": 8764238,
+            "zip_sha256": "c0e57339a6df63cde6f9f3b760170a20a925e1bad0b0fb39bb10e3c107f203c5"
+          }
+        ],
+        "run": {
+          "conclusion": "success",
+          "createdAt": "2026-09-02T17:53:07Z",
+          "databaseId": 33663819472,
+          "event": "schedule",
+          "headSha": "7793293e488bd39d3fbb1e36ceb98820beb40313",
+          "status": "completed",
+          "url": "https://github.com/edithatogo/fyi-archive/actions/runs/33663819472"
+        }
+      },
+      {
+        "artifacts": [
+          {
+            "digest": "sha256:908b1d32404ec579cfd043b2c53937fb9ad2c44116522a833619a8cf3218d781",
+            "expired": false,
+            "id": 9813174624,
+            "name": "hf-sync",
+            "records": {
+              "manifests/latest_changes.json": {
+                "bytes": 167,
+                "sha256": "39d4c8e5cd7417f5ab7ff7fe0e56f054c0e7eb3af07710c3562ce490637522c3",
+                "value": {
+                  "added": [],
+                  "meta": {
+                    "generated_at": "2026-09-01T17:48:47.855246+00:00",
+                    "since": null,
+                    "version": "0.6.0"
+                  },
+                  "removed": [],
+                  "updated": []
+                }
+              },
+              "sync-execution-receipt.json": {
+                "bytes": 339,
+                "sha256": "42e37e2cf7454967059d7068a3653a0d0415ae1729fab6d93a6036598be40ac2",
+                "value": {
+                  "job_status": "success",
+                  "repository": "edithatogo/fyi-archive",
+                  "revision": "7793293e488bd39d3fbb1e36ceb98820beb40313",
+                  "run_attempt": "1",
+                  "run_id": "33539917839",
+                  "schema": "fyi-archive.sync-execution.v1",
+                  "summary_present": true,
+                  "summary_sha256": "a475acd7388900773297c2a0fed2608d78bc3f6090a09d7bdcd58f9be17fc7d5"
+                }
+              },
+              "sync-summary.json": {
+                "bytes": 337,
+                "sha256": "a475acd7388900773297c2a0fed2608d78bc3f6090a09d7bdcd58f9be17fc7d5",
+                "value": {
+                  "generated_at": "2026-09-01T17:48:47.855246+00:00",
+                  "instance_id": "nz-fyi",
+                  "jurisdiction": null,
+                  "manifest_sha256": "0823ad1214d60264770692d801eff8eba79ac109280616f91096ea0b3a0cd604",
+                  "materialized_records": 0,
+                  "rate_limit_name": "archive-discovery-nz-fyi",
+                  "record_count": 33217,
+                  "since": null,
+                  "verified": true
+                }
+              }
+            },
+            "size_in_bytes": 8764239,
+            "zip_sha256": "908b1d32404ec579cfd043b2c53937fb9ad2c44116522a833619a8cf3218d781"
+          }
+        ],
+        "run": {
+          "conclusion": "success",
+          "createdAt": "2026-09-01T17:48:23Z",
+          "databaseId": 33539917839,
+          "event": "schedule",
+          "headSha": "7793293e488bd39d3fbb1e36ceb98820beb40313",
+          "status": "completed",
+          "url": "https://github.com/edithatogo/fyi-archive/actions/runs/33539917839"
+        }
+      },
+      {
+        "artifacts": [
+          {
+            "digest": "sha256:a5cc49fec5baf5d0c90834d9fb7591d0fe765fa2a08b68130aa3f9409b0a16c5",
+            "expired": false,
+            "id": 9773623578,
+            "name": "hf-sync",
+            "records": {
+              "manifests/latest_changes.json": {
+                "bytes": 167,
+                "sha256": "d93ab9fb5de749be25985ad15ec9ff013ccbe2c386ec19569c7295b61033a82d",
+                "value": {
+                  "added": [],
+                  "meta": {
+                    "generated_at": "2026-08-31T20:02:35.109046+00:00",
+                    "since": null,
+                    "version": "0.6.0"
+                  },
+                  "removed": [],
+                  "updated": []
+                }
+              },
+              "sync-execution-receipt.json": {
+                "bytes": 339,
+                "sha256": "1879c4cfaa11f5e3b513b710847bc67208202ee600de10a77a1852b21821531f",
+                "value": {
+                  "job_status": "success",
+                  "repository": "edithatogo/fyi-archive",
+                  "revision": "7793293e488bd39d3fbb1e36ceb98820beb40313",
+                  "run_attempt": "1",
+                  "run_id": "33433808727",
+                  "schema": "fyi-archive.sync-execution.v1",
+                  "summary_present": true,
+                  "summary_sha256": "33dc605d69fb4fd0e80faebf4aee5f44b6212f956fd5a33512b5d6cd50f47284"
+                }
+              },
+              "sync-summary.json": {
+                "bytes": 337,
+                "sha256": "33dc605d69fb4fd0e80faebf4aee5f44b6212f956fd5a33512b5d6cd50f47284",
+                "value": {
+                  "generated_at": "2026-08-31T20:02:35.109046+00:00",
+                  "instance_id": "nz-fyi",
+                  "jurisdiction": null,
+                  "manifest_sha256": "23cab9ee0ac6986326d67c91a91e415456a1d0589c90ec1c1628556e0d0d6e1e",
+                  "materialized_records": 0,
+                  "rate_limit_name": "archive-discovery-nz-fyi",
+                  "record_count": 33217,
+                  "since": null,
+                  "verified": true
+                }
+              }
+            },
+            "size_in_bytes": 8707262,
+            "zip_sha256": "a5cc49fec5baf5d0c90834d9fb7591d0fe765fa2a08b68130aa3f9409b0a16c5"
+          }
+        ],
+        "run": {
+          "conclusion": "success",
+          "createdAt": "2026-08-31T20:02:10Z",
+          "databaseId": 33433808727,
+          "event": "schedule",
+          "headSha": "7793293e488bd39d3fbb1e36ceb98820beb40313",
+          "status": "completed",
+          "url": "https://github.com/edithatogo/fyi-archive/actions/runs/33433808727"
+        }
+      },
+      {
+        "artifacts": [
+          {
+            "digest": "sha256:e5f75bd7c1dc6e836f0a3960fab5750f626de1924f778ebbe0b200325afe1e09",
+            "expired": false,
+            "id": 9736507335,
+            "name": "hf-sync",
+            "records": {
+              "manifests/latest_changes.json": {
+                "bytes": 167,
+                "sha256": "e8d018cccc4d8e7cb722b73b0774cc135fb9f54f7ba2329bfa44a0037e5ced70",
+                "value": {
+                  "added": [],
+                  "meta": {
+                    "generated_at": "2026-08-30T18:03:42.859879+00:00",
+                    "since": null,
+                    "version": "0.6.0"
+                  },
+                  "removed": [],
+                  "updated": []
+                }
+              },
+              "sync-execution-receipt.json": {
+                "bytes": 339,
+                "sha256": "38be205e5c21f182a60b08efe591d3a9ff752b2c6b28cf6667950f0a3638c779",
+                "value": {
+                  "job_status": "success",
+                  "repository": "edithatogo/fyi-archive",
+                  "revision": "be992fe036d5a270e228b5277e5b5770b9950ad8",
+                  "run_attempt": "1",
+                  "run_id": "33326963683",
+                  "schema": "fyi-archive.sync-execution.v1",
+                  "summary_present": true,
+                  "summary_sha256": "dbd5d66b20e1368eb353550526d1bc8445ecd92a054902114ce10e25a7b624f7"
+                }
+              },
+              "sync-summary.json": {
+                "bytes": 337,
+                "sha256": "dbd5d66b20e1368eb353550526d1bc8445ecd92a054902114ce10e25a7b624f7",
+                "value": {
+                  "generated_at": "2026-08-30T18:03:42.859879+00:00",
+                  "instance_id": "nz-fyi",
+                  "jurisdiction": null,
+                  "manifest_sha256": "23cab9ee0ac6986326d67c91a91e415456a1d0589c90ec1c1628556e0d0d6e1e",
+                  "materialized_records": 0,
+                  "rate_limit_name": "archive-discovery-nz-fyi",
+                  "record_count": 33217,
+                  "since": null,
+                  "verified": true
+                }
+              }
+            },
+            "size_in_bytes": 8707263,
+            "zip_sha256": "e5f75bd7c1dc6e836f0a3960fab5750f626de1924f778ebbe0b200325afe1e09"
+          }
+        ],
+        "run": {
+          "conclusion": "success",
+          "createdAt": "2026-08-30T18:03:20Z",
+          "databaseId": 33326963683,
+          "event": "schedule",
+          "headSha": "be992fe036d5a270e228b5277e5b5770b9950ad8",
+          "status": "completed",
+          "url": "https://github.com/edithatogo/fyi-archive/actions/runs/33326963683"
+        }
+      },
+      {
+        "artifacts": [
+          {
+            "digest": "sha256:b9ed3c1314bfa08f226e147569d079ec9de56f1fae20ab68436a612fc10503b3",
+            "expired": false,
+            "id": 9730512147,
+            "name": "hf-sync",
+            "records": {
+              "manifests/latest_changes.json": {
+                "bytes": 168,
+                "sha256": "7ee3fec398e203fe7873fa5454a5123ed0228c28bb44e6b364d3d134eb1a5591",
+                "value": {
+                  "added": [],
+                  "meta": {
+                    "generated_at": "2026-08-30T10:17:36.965379+00:00",
+                    "since": null,
+                    "version": "0.20.2"
+                  },
+                  "removed": [],
+                  "updated": []
+                }
+              },
+              "sync-execution-receipt.json": {
+                "bytes": 339,
+                "sha256": "11ecb976072b5b913e7ddddcc8f62b5a8ad5d83ad533ce4b1352814a0a09956a",
+                "value": {
+                  "job_status": "success",
+                  "repository": "edithatogo/fyi-archive",
+                  "revision": "b6e78703d871082433fb33f8fa610761c2eb4062",
+                  "run_attempt": "1",
+                  "run_id": "33306106031",
+                  "schema": "fyi-archive.sync-execution.v1",
+                  "summary_present": true,
+                  "summary_sha256": "1dc62b6f1e818538e97ceb853038076733889d220369fac52c31dfd22b517006"
+                }
+              },
+              "sync-summary.json": {
+                "bytes": 333,
+                "sha256": "1dc62b6f1e818538e97ceb853038076733889d220369fac52c31dfd22b517006",
+                "value": {
+                  "generated_at": "2026-08-30T10:17:36.965379+00:00",
+                  "instance_id": "nz-fyi",
+                  "jurisdiction": null,
+                  "manifest_sha256": "fdebc422ffe91fe463042565dc2aec7a7b372c26aa3b7aeb83c5897b1bbd5f80",
+                  "materialized_records": 0,
+                  "rate_limit_name": "archive-discovery-nz-fyi",
+                  "record_count": 0,
+                  "since": null,
+                  "verified": null
+                }
+              }
+            },
+            "size_in_bytes": 5267,
+            "zip_sha256": "b9ed3c1314bfa08f226e147569d079ec9de56f1fae20ab68436a612fc10503b3"
+          }
+        ],
+        "run": {
+          "conclusion": "success",
+          "createdAt": "2026-08-30T10:17:14Z",
+          "databaseId": 33306106031,
+          "event": "workflow_dispatch",
+          "headSha": "b6e78703d871082433fb33f8fa610761c2eb4062",
+          "status": "completed",
+          "url": "https://github.com/edithatogo/fyi-archive/actions/runs/33306106031"
+        }
+      }
+    ],
+    "run_list_sha256": "197f0ea05282dbc149f30bd6ee35162b6a32466ddb51addd55f008f26a9c3e54"
+  },
+  "sync_source_pins": [
+    {
+      "head_sha": "7793293e488bd39d3fbb1e36ceb98820beb40313",
+      "path": "src/fyi_archive/sync.py",
+      "git_blob_sha": "7c3dd546cf4478577cf46e9d400ae6f23f8f5726",
+      "sha256": "a08c69da972959763a7bc39c376b92fb69dc82a8a376c556bcd371b9d0398298",
+      "guards": [
+        {
+          "line": 364,
+          "text": "sync_has_changes = changes_have_records(changes)"
+        },
+        {
+          "line": 368,
+          "text": "if sync_has_changes:"
+        }
+      ]
+    },
+    {
+      "head_sha": "be992fe036d5a270e228b5277e5b5770b9950ad8",
+      "path": "src/fyi_archive/sync.py",
+      "git_blob_sha": "7c3dd546cf4478577cf46e9d400ae6f23f8f5726",
+      "sha256": "a08c69da972959763a7bc39c376b92fb69dc82a8a376c556bcd371b9d0398298",
+      "guards": [
+        {
+          "line": 364,
+          "text": "sync_has_changes = changes_have_records(changes)"
+        },
+        {
+          "line": 368,
+          "text": "if sync_has_changes:"
+        }
+      ]
+    },
+    {
+      "head_sha": "b6e78703d871082433fb33f8fa610761c2eb4062",
+      "path": "src/fyi_archive/sync.py",
+      "git_blob_sha": "7c3dd546cf4478577cf46e9d400ae6f23f8f5726",
+      "sha256": "a08c69da972959763a7bc39c376b92fb69dc82a8a376c556bcd371b9d0398298",
+      "guards": [
+        {
+          "line": 364,
+          "text": "sync_has_changes = changes_have_records(changes)"
+        },
+        {
+          "line": 368,
+          "text": "if sync_has_changes:"
+        }
+      ]
+    }
+  ],
+  "backfill": {
+    "inspected_runs": [
+      {
+        "artifact_count": 1,
+        "artifact_list_sha256": "e63e43813835ea95fc62d2ed2e3a0d56ea13b67086588f647d17487fc9d9fb96",
+        "artifacts": [
+          {
+            "batch_evidence": {
+              "attachments_sha256": "ab0df4c447a4859a77f7d715d765e29a22ab7a4712839980815cbd5ecefe2a43",
+              "batch_size": 1,
+              "dry_run": false,
+              "events_sha256": "ff73d2f837705d9402f6e356193c8b20a3d6e25321733476abf4dec3b824264c",
+              "generated_at": "2026-08-30T10:16:32.664350+00:00",
+              "manifest_sha256": "6f1942c43d48fee1b85e9e042641721d1bd1679634801517c2c29619831371d9",
+              "publication": "none",
+              "schema": "fyi-archive.nz-real-backfill-batch.v1",
+              "source_run_id": "30395825959",
+              "start_offset": 17225
+            },
+            "batch_evidence_sha256": "ef64367c76de8ffe5b1be5a4071f398f11dab4d403654d5284eb3fe85837277c",
+            "digest": "sha256:67bb806bd47854b9ae6af4357f9ec6206baa0c52a1f9633bdc493579db9b17f2",
+            "expired": false,
+            "id": 9730497676,
+            "member_count": 14,
+            "name": "nz-real-backfill-range-17225-17226-33305989413",
+            "raw_package_manifest_present": false,
+            "raw_prefix_members": 0,
+            "size_in_bytes": 21462,
+            "workflow_run": {
+              "head_branch": "main",
+              "head_repository_id": 1281404103,
+              "head_sha": "b6e78703d871082433fb33f8fa610761c2eb4062",
+              "id": 33305989413,
+              "repository_id": 1281404103
+            },
+            "zip_sha256": "67bb806bd47854b9ae6af4357f9ec6206baa0c52a1f9633bdc493579db9b17f2"
+          }
+        ],
+        "run": {
+          "conclusion": "success",
+          "createdAt": "2026-08-30T10:14:24Z",
+          "databaseId": 33305989413,
+          "headSha": "b6e78703d871082433fb33f8fa610761c2eb4062",
+          "status": "completed",
+          "url": "https://github.com/edithatogo/fyi-archive/actions/runs/33305989413"
+        }
+      },
+      {
+        "artifact_count": 0,
+        "artifact_list_sha256": "244563f989470892c537c9a4622920af0d228ee4528f7d00c64a06d6cd95856c",
+        "artifacts": [],
+        "run": {
+          "conclusion": "failure",
+          "createdAt": "2026-08-30T10:51:31Z",
+          "databaseId": 33307488567,
+          "headSha": "676461907887ace3f3a42a270b0b05ad0ed29ec6",
+          "status": "completed",
+          "url": "https://github.com/edithatogo/fyi-archive/actions/runs/33307488567"
+        }
+      },
+      {
+        "artifact_count": 1,
+        "artifact_list_sha256": "5bef61b95c55fa901f07287b4c6f5f900bb17e0b02cd80a298f36ef6a074d117",
+        "artifacts": [
+          {
+            "batch_evidence": {
+              "attachments_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "batch_size": 1,
+              "dry_run": false,
+              "events_sha256": "bbcf00b39c92c7adaeb8917697ccf243315538b997999247a40893e456d45428",
+              "generated_at": "2026-08-30T10:59:57.162275+00:00",
+              "manifest_sha256": "e84ec850f3acc8815cd9ed4adc2c9a04ed0f1d030760323f2a9801c6d5ca7c1a",
+              "publication": "none",
+              "raw_package_manifest_sha256": "e25240f901e74d1b37ab0685bab69fb5017c0de0ed7ffa2da7be20eee6103e92",
+              "schema": "fyi-archive.nz-real-backfill-batch.v1",
+              "source_run_id": "30395825959",
+              "start_offset": 17226
+            },
+            "batch_evidence_sha256": "a0dd452ec6553b24e7e19e82b779b40bb98b91e95571bd512da6c7535f81d296",
+            "digest": "sha256:c4404a60ef239274b1a6973be13ab2b07bad24e85fbd734af8c7f457868b9946",
+            "expired": false,
+            "id": 9731030582,
+            "member_count": 21,
+            "name": "nz-real-backfill-range-17226-17227-33307777685",
+            "raw_file_field_names": [
+              "path",
+              "sha256",
+              "size"
+            ],
+            "raw_inventory": {
+              "file_count": 7,
+              "public_publication_verified": false,
+              "request_count": 1,
+              "schema": "fyi-archive.raw-batch-inventory.v1",
+              "storage_scope": "temporary GitHub artifact; durable publication still required",
+              "total_bytes": 49405,
+              "warc_resource_count": 2
+            },
+            "raw_package_manifest_present": true,
+            "raw_package_manifest_sha256": "e25240f901e74d1b37ab0685bab69fb5017c0de0ed7ffa2da7be20eee6103e92",
+            "raw_prefix_members": 4,
+            "size_in_bytes": 41602,
+            "workflow_run": {
+              "head_branch": "main",
+              "head_repository_id": 1281404103,
+              "head_sha": "be992fe036d5a270e228b5277e5b5770b9950ad8",
+              "id": 33307777685,
+              "repository_id": 1281404103
+            },
+            "zip_sha256": "c4404a60ef239274b1a6973be13ab2b07bad24e85fbd734af8c7f457868b9946"
+          }
+        ],
+        "run": {
+          "conclusion": "success",
+          "createdAt": "2026-08-30T10:59:10Z",
+          "databaseId": 33307777685,
+          "headSha": "be992fe036d5a270e228b5277e5b5770b9950ad8",
+          "status": "completed",
+          "url": "https://github.com/edithatogo/fyi-archive/actions/runs/33307777685"
+        }
+      }
+    ],
+    "listed_runs": [
+      {
+        "conclusion": "success",
+        "createdAt": "2026-08-30T10:59:10Z",
+        "databaseId": 33307777685,
+        "headSha": "be992fe036d5a270e228b5277e5b5770b9950ad8",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/33307777685"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-30T10:51:31Z",
+        "databaseId": 33307488567,
+        "headSha": "676461907887ace3f3a42a270b0b05ad0ed29ec6",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/33307488567"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-08-30T10:14:24Z",
+        "databaseId": 33305989413,
+        "headSha": "b6e78703d871082433fb33f8fa610761c2eb4062",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/33305989413"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-30T07:27:03Z",
+        "databaseId": 33299233005,
+        "headSha": "cba7b0dec2734bdc9ff51c69610fc55cb1fc5aa1",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/33299233005"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-30T01:41:27Z",
+        "databaseId": 33286249470,
+        "headSha": "cba7b0dec2734bdc9ff51c69610fc55cb1fc5aa1",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/33286249470"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-29T23:38:22Z",
+        "databaseId": 33281446502,
+        "headSha": "cba7b0dec2734bdc9ff51c69610fc55cb1fc5aa1",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/33281446502"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-29T21:44:42Z",
+        "databaseId": 33276848146,
+        "headSha": "cba7b0dec2734bdc9ff51c69610fc55cb1fc5aa1",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/33276848146"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-29T18:52:52Z",
+        "databaseId": 33269436262,
+        "headSha": "cba7b0dec2734bdc9ff51c69610fc55cb1fc5aa1",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/33269436262"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-29T15:19:59Z",
+        "databaseId": 33259959434,
+        "headSha": "cba7b0dec2734bdc9ff51c69610fc55cb1fc5aa1",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/33259959434"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-29T10:26:08Z",
+        "databaseId": 33247814020,
+        "headSha": "cba7b0dec2734bdc9ff51c69610fc55cb1fc5aa1",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/33247814020"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-29T03:23:05Z",
+        "databaseId": 33231258886,
+        "headSha": "cba7b0dec2734bdc9ff51c69610fc55cb1fc5aa1",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/33231258886"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-28T21:31:50Z",
+        "databaseId": 33212961005,
+        "headSha": "cba7b0dec2734bdc9ff51c69610fc55cb1fc5aa1",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/33212961005"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-28T11:24:46Z",
+        "databaseId": 33167049937,
+        "headSha": "cba7b0dec2734bdc9ff51c69610fc55cb1fc5aa1",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/33167049937"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-27T14:46:59Z",
+        "databaseId": 33084151405,
+        "headSha": "cba7b0dec2734bdc9ff51c69610fc55cb1fc5aa1",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/33084151405"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-27T03:35:01Z",
+        "databaseId": 33036802430,
+        "headSha": "cba7b0dec2734bdc9ff51c69610fc55cb1fc5aa1",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/33036802430"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-26T22:30:46Z",
+        "databaseId": 33019935460,
+        "headSha": "cba7b0dec2734bdc9ff51c69610fc55cb1fc5aa1",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/33019935460"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-26T19:19:11Z",
+        "databaseId": 33004515497,
+        "headSha": "cba7b0dec2734bdc9ff51c69610fc55cb1fc5aa1",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/33004515497"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-26T17:00:05Z",
+        "databaseId": 32991653321,
+        "headSha": "cba7b0dec2734bdc9ff51c69610fc55cb1fc5aa1",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/32991653321"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-26T16:05:18Z",
+        "databaseId": 32986770201,
+        "headSha": "cba7b0dec2734bdc9ff51c69610fc55cb1fc5aa1",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/32986770201"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-26T14:26:55Z",
+        "databaseId": 32980341105,
+        "headSha": "cba7b0dec2734bdc9ff51c69610fc55cb1fc5aa1",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/32980341105"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-26T13:40:20Z",
+        "databaseId": 32975588012,
+        "headSha": "cba7b0dec2734bdc9ff51c69610fc55cb1fc5aa1",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/32975588012"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-26T12:18:18Z",
+        "databaseId": 32967851100,
+        "headSha": "cba7b0dec2734bdc9ff51c69610fc55cb1fc5aa1",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/32967851100"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-26T11:46:05Z",
+        "databaseId": 32965002269,
+        "headSha": "cba7b0dec2734bdc9ff51c69610fc55cb1fc5aa1",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/32965002269"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-26T10:51:49Z",
+        "databaseId": 32960386917,
+        "headSha": "cba7b0dec2734bdc9ff51c69610fc55cb1fc5aa1",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/32960386917"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-26T08:00:18Z",
+        "databaseId": 32945536205,
+        "headSha": "cba7b0dec2734bdc9ff51c69610fc55cb1fc5aa1",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/32945536205"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-26T07:09:27Z",
+        "databaseId": 32941395585,
+        "headSha": "cba7b0dec2734bdc9ff51c69610fc55cb1fc5aa1",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/32941395585"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-26T05:53:20Z",
+        "databaseId": 32935823533,
+        "headSha": "cba7b0dec2734bdc9ff51c69610fc55cb1fc5aa1",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/32935823533"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-26T04:24:34Z",
+        "databaseId": 32930107785,
+        "headSha": "cba7b0dec2734bdc9ff51c69610fc55cb1fc5aa1",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/32930107785"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-26T01:59:01Z",
+        "databaseId": 32921003338,
+        "headSha": "cba7b0dec2734bdc9ff51c69610fc55cb1fc5aa1",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/32921003338"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-08-25T23:39:08Z",
+        "databaseId": 32911716210,
+        "headSha": "cba7b0dec2734bdc9ff51c69610fc55cb1fc5aa1",
+        "status": "completed",
+        "url": "https://github.com/edithatogo/fyi-archive/actions/runs/32911716210"
+      }
+    ],
+    "observed_at": "2026-09-07T04:42:32.387583+00:00"
+  },
+  "results": {
+    "recovered_post_repair_sync_artifacts": 9,
+    "empty_changes_ledgers": 9,
+    "summaries_reporting_verified_true": 8,
+    "summaries_with_verified_null": 1,
+    "changed_sync_branch_proof_found": false,
+    "historical_no_skipped_work_proof_found": false,
+    "P1_5_completed": false,
+    "public_HF_readback_performed": false,
+    "latest_backfill_run": 33307777685,
+    "missing_originals_batch": [
+      17225,
+      17226
+    ],
+    "later_retained_batch": [
+      17226,
+      17227
+    ],
+    "remaining_evidence": [
+      "Existing nonempty-changes hosted sync receipt bound to exact repaired head, summary, immutable public manifest revision and card",
+      "Original-object retention evidence for the 17225-17226 credited batch and source-bound historical coverage reconciliation; queue interval arithmetic alone is insufficient"
+    ]
+  },
+  "limitations": [
+    "Thirty latest runs inspected for each named workflow; artifact content inspected for nine post-repair syncs and three selected backfill runs only.",
+    "No exhaustive search of other workflows, pre-repair receipts, external mirrors or all historical raw objects.",
+    "Manifest digest differences between zero-change runs do not prove the changed-sync publishing branch executed.",
+    "Only small receipt/change JSON members were parsed; raw payloads were not exported to the repository.",
+    "GitHub zip digests and source/run/head/summary associations were verified; reported verified flags are not a new anonymous Hugging Face restore.",
+    "No credentials, tokens, signed download URLs or raw request/correspondence bodies are retained."
+  ],
+  "authorization": {
+    "workflow_dispatch": false,
+    "schedule_activation": false,
+    "source_capture": false,
+    "remote_write": false,
+    "publication": false,
+    "rights_decision": false
+  }
+}
