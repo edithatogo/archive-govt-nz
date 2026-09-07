@@ -10,8 +10,9 @@ from typing import TYPE_CHECKING, Any
 
 from jsonschema import Draft202012Validator
 
-from archive_govt_nz import __version__
+from archive_govt_nz import __version__, mcp_health_inspection
 from archive_govt_nz.core.registry import AgencyRegistry
+from archive_govt_nz.domains.health_appropriations import resume_operations
 from archive_govt_nz.domains.health_appropriations.budget_operations import (
     BUDGET_VERIFICATION_SCHEMA,
     verify_budget_package,
@@ -73,6 +74,24 @@ def _object_schema(properties: dict[str, Any], required: list[str]) -> dict[str,
 
 _NO_ARGUMENTS = _object_schema({}, [])
 _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
+    *resume_operations.MCP_TOOLS,
+    {
+        "name": "health_appropriations_inspect_workbook",
+        "description": (
+            "Inspect a caller-selected local workbook with mandatory SHA-256. "
+            "Inventory only by default; explicit previews may disclose source cells "
+            "and are decoded displays, not canonical facts or rights approval."
+        ),
+        "inputSchema": mcp_health_inspection.INPUT_SCHEMA,
+        "outputSchema": mcp_health_inspection.OUTPUT_SCHEMA,
+        "annotations": {
+            "title": "Inspect a pinned local workbook",
+            "readOnlyHint": True,
+            "destructiveHint": False,
+            "idempotentHint": True,
+            "openWorldHint": False,
+        },
+    },
     {
         "name": "health_appropriations_preflight_source",
         "description": (
@@ -616,13 +635,23 @@ class Server:
         arguments = params.get("arguments", {})
         if not isinstance(arguments, dict):
             return _error(req_id, JSONRPC_INVALID_PARAMS, "Expected arguments object")
+        inspection_error = False
+        if name == "health_appropriations_inspect_workbook":
+            try:
+                mcp_health_inspection.validate_arguments(arguments)
+            except ValueError:
+                inspection_error = True
         errors = sorted(
             Draft202012Validator(definition["inputSchema"]).iter_errors(arguments),
             key=lambda error: list(error.path),
         )
-        if errors:
+        if errors or inspection_error:
             message = (
-                "Invalid source operation arguments"
+                "Invalid resume operation arguments"
+                if name in resume_operations.MCP_OPERATIONS
+                else "Invalid workbook inspection arguments"
+                if name == "health_appropriations_inspect_workbook"
+                else "Invalid source operation arguments"
                 if name == "health_appropriations_preflight_source"
                 else errors[0].message
             )
@@ -783,6 +812,8 @@ def _archive_status(arguments: dict[str, Any]) -> dict[str, Any]:
 
 
 def _health_read_only_tool(name: str, args: dict[str, Any]) -> dict[str, Any]:
+    if name == "health_appropriations_inspect_workbook":
+        return mcp_health_inspection.inspect(args)
     if name == "health_appropriations_preflight_source":
         return preflight_source(args)
     if name == "health_appropriations_verify_budget":
@@ -858,7 +889,10 @@ def call_tool(name: str, arguments: dict[str, Any] | None = None) -> dict[str, A
             "title": schema_def.title,
             "fields": fields_list,
         }
+    elif name in resume_operations.MCP_OPERATIONS:
+        result = resume_operations.mcp_call(name, args)
     elif name in (
+        "health_appropriations_inspect_workbook",
         "health_appropriations_preflight_source",
         "health_appropriations_verify_budget",
         "health_appropriations_verify_rebuild",

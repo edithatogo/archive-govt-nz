@@ -112,3 +112,6 @@ Approved track in progress. Automation repair and source-catalogue foundations a
 - [V2 schema](canonical-source-catalogue-v2.schema.json)
 
 - [Local generator canonical opt-in and next-scope audit](canonical-cli-20260907.md)
+
+- [P1.5 hosted receipt recovery](p15-hosted-receipt-search-20260907.md)
+- [P1.5 exact runs, artifact hashes and remaining evidence](p15-hosted-receipt-search-20260907.json)

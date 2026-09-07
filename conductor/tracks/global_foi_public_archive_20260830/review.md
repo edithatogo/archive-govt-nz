@@ -313,3 +313,12 @@ coverage. Default v1 and explicit canonical v2 files reproduce exactly. Bad pins
 and path conflicts fail before writes, repeated matching files retain mtimes,
 and socket connections are prohibited by tests. Static checks pass. No outstanding
 scoped finding; parent full gate/lifecycle and raw-rights boundaries are unchanged.
+
+## P1.5 evidence-only review — 2026-09-07
+
+Reviewed the nine run/head/artifact/summary bindings and empty changes ledgers,
+exact executed sync source blobs, and three backfill artifact listings. Fresh
+availability facts do not close changed-sync or historical no-skipped-work proof.
+Later raw inventory is not attributed to the preceding missing batch. No tokens,
+signed download URLs, raw request bodies or unbounded-world conclusions retained.
+P1.5 and parent lifecycle unchanged; see p15-hosted-receipt-search-20260907.md.
