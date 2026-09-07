@@ -192,11 +192,13 @@ repository validation command. External gates block only their affected task.
   Audited shared/health contracts; added 23 tests and fixed identity-encoded
   HTTP length mismatch before CAS/WARC promotion. 129 affected tests pass;
   98.99% scoped coverage, three length-guard mutants killed. Remains pending
-  for encoded wire-length checking, hard-kill/stale-lock recovery and full
+  for encoded wire-length checking and full
   integrated assurance. Cooperative per-resource resume and non-overwriting
   WARC paths now have 149 affected passing tests and 100% runner coverage;
   see `bronze-checkpoint-contracts.md`. Preceding audit:
   `bronze-ingestion-contracts.md` and `bronze-ingestion-validation.json`.
+  Process-death ownership recovery now passes a real kill/resume contract,
+  without PID-based lock deletion; see `bronze-process-recovery.md`.
 - [x] Add a 23-path donor-manifest contract that fails on any omitted path,
   altered byte, wrong Git mode/blob, length mismatch or archive-digest drift.
   [M-01, M-03, M-18; AC-01, AC-16]

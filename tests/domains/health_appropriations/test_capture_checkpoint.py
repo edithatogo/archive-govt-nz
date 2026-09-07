@@ -126,7 +126,7 @@ async def test_resume_rejects_drift_before_network(
         await execute(args)
     assert len(calls) == 1
     assert args.manifest.read_bytes() == before
-    assert not args.manifest.with_name(args.manifest.name + ".lock").exists()
+    assert args.manifest.with_name(args.manifest.name + ".lock").is_file()
 
 
 @pytest.mark.anyio
@@ -241,7 +241,7 @@ async def test_repeated_interruption_keeps_unvisited_retained_captures(
     complete = await execute(args)
     assert complete["captured"] == 3
     assert complete["results"][1] == two
-    assert not args.manifest.with_name(args.manifest.name + ".lock").exists()
+    assert args.manifest.with_name(args.manifest.name + ".lock").is_file()
 
 
 @pytest.mark.anyio
@@ -254,6 +254,8 @@ async def test_refuse_implicit_overwrite_and_competing_writer(
     before = args.manifest.read_bytes()
     with pytest.raises(ValueError, match="manifest_exists"):
         await execute(args)
+    # A legacy directory has no trustworthy ownership record; do not reclaim.
+    args.manifest = tmp_path / "legacy.json"
     lock = args.manifest.with_name(args.manifest.name + ".lock")
     lock.mkdir()
     args.resume = True
@@ -261,7 +263,7 @@ async def test_refuse_implicit_overwrite_and_competing_writer(
         await execute(args)
     assert len(calls) == 1
     assert lock.is_dir()
-    assert args.manifest.read_bytes() == before
+    assert (tmp_path / "manifest.json").read_bytes() == before
 
 
 @pytest.mark.anyio

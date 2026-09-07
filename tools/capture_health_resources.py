@@ -7,7 +7,9 @@ import asyncio
 import hashlib
 import json
 import os
+import sqlite3
 import tempfile
+from contextlib import closing
 from pathlib import Path
 from typing import Any, cast
 from urllib.parse import urlsplit
@@ -72,14 +74,20 @@ def _write(path: Path, value: object) -> None:
 
 
 async def _capture(args: argparse.Namespace) -> dict[str, object]:
-    # One writer per manifest; a hard-kill leaves a fail-closed lock for review.
+    # The kernel releases SQLite's ownership on process death. Never unlink
+    # this file: concurrent writers must continue locking the same inode.
     args.manifest.parent.mkdir(parents=True, exist_ok=True)
     lock = args.manifest.with_name(args.manifest.name + ".lock")
-    lock.mkdir()
-    try:
+    if lock.is_dir():
+        message = "legacy_capture_lock_requires_review"
+        raise FileExistsError(message)
+    with closing(sqlite3.connect(lock, timeout=0)) as connection:
+        try:
+            connection.execute("BEGIN EXCLUSIVE")
+        except sqlite3.OperationalError as error:
+            message = "capture_lock_unavailable"
+            raise FileExistsError(message) from error
         return await _capture_locked(args)
-    finally:
-        lock.rmdir()
 
 
 def _resume_results(

@@ -2207,3 +2207,11 @@ receipt is `bronze-checkpoint-validation.json`. Self-review checked receipt
 fixity, repeated interruption, orphan preservation, competing-writer fencing,
 and manifest compatibility. Exact Phase 2.1 gaps remain documented; no broad
 completion, full-harness, source-census, rights, parent-edit or Phase 3 claim.
+# 2026-09-07 — Phase 2.1 hard-kill recovery
+
+Replaced ambiguous directory ownership with an OS-released SQLite transaction
+lock. Real subprocess kill/resume passed after the recorded red failure;
+44 tests, 100% runner coverage and three killed mutants. Static checks pass.
+Paired evidence: `bronze-process-recovery.md` / `bronze-process-recovery.json`.
+Self-review retains legacy-lock, power-loss and filesystem boundaries. No
+parent, census, rights, registry, Phase 3 or full-harness changes.
