@@ -1,5 +1,20 @@
 # Run Log
 
+## 2026-09-07 — Bounded Phase 2.1 ingestion contracts
+
+Read-only parent follow-up review at `1f53a6e8` found no actionable diff issue;
+reproduced FOI reports and nine assurance hashes without parent writes or full
+harness. Created `codex/health-bronze-contracts-20260907` at that commit.
+Audited generic and fiscal capture/CAS/WARC/recovery tests and the existing
+Phase 2.4 evidence before adding 23 targeted cases. Two HTTP length tests failed
+red; added a pre-promotion identity-encoding length check. The first 117-test
+coverage run failed at 86.87%; after relevant rejection tests and one corrected
+test-edit NameError, 129 tests pass at 98.99% without gate overrides. Three
+in-memory source guard mutants killed; lint/format/types pass. See
+`bronze-ingestion-contracts.md` and its paired receipt for exact commands,
+review and remaining resume/WARC/encoded-length/assurance gaps. Phase 2.1 stays
+in progress, Phase 2.4 unchanged. No source-census or rights promotion.
+
 ## RDF full assurance and review clarification — 2026-09-05 UTC
 
 `./scripts/validate.sh` completed successfully on `fc672e0b`: 4,774 tests,

@@ -1,5 +1,18 @@
 # Evidence
 
+## 2026-09-07 — Bronze ingestion contract audit and bounded fix
+
+[Audit and exact gaps](./bronze-ingestion-contracts.md) and
+[machine receipt](./bronze-ingestion-validation.json) record 23 new cases,
+129 affected passes, three killed guard mutants and 98.99% scoped coverage.
+Short/overlong identity-encoded bodies now fail before CAS/WARC promotion.
+An offline runner characterization proves completed resources are re-requested
+after cancellation and prior WARC bytes are overwritten. Durable batch resume,
+version-preserving WARC linkage, compressed wire-length validation and full
+integrated assurance remain pending. Phase 2.4 historical completion is not
+reinterpreted as these missing contracts. Parent owns full harness; no live
+capture, rights, registry or publication changes.
+
 ## Independent offline RDF interpretation — 2026-09-05 UTC
 
 Added development-only RDFLib 7.6.0, with no existing locked dependency version

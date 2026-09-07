@@ -240,7 +240,10 @@ async def capture_url(  # noqa: PLR0915, PLR0912
 
                 attempt_url = current_url
 
-                async def chunks(bound_url: str = attempt_url):
+                async def chunks(
+                    bound_url: str = attempt_url,
+                    expected_length: str | None = length,
+                ):
                     total = 0
                     encoded = response.headers.get("content-encoding", "").lower()
                     decompression_bound = encoded not in {"", "identity"}
@@ -264,6 +267,24 @@ async def capture_url(  # noqa: PLR0915, PLR0912
                             )
                             raise CaptureError(error_class, tuple(attempt_receipts))
                         yield chunk
+                    # Content-Length describes encoded bytes. Compare only an
+                    # identity response here: aiter_bytes yields decoded bytes.
+                    # Reject before promotion so a short/overlong body cannot
+                    # acquire a successful CAS or WARC receipt.
+                    if (
+                        expected_length is not None
+                        and not decompression_bound
+                        and total != int(expected_length)
+                    ):
+                        attempt_receipts.append(
+                            CaptureAttempt(
+                                redact_url(bound_url),
+                                response.status_code,
+                                "length_mismatch",
+                                monotonic() - started,
+                            )
+                        )
+                        raise CaptureError("length_mismatch", tuple(attempt_receipts))
 
                 temporary: Path | None = None
                 try:

@@ -1,5 +1,19 @@
 # Self-Review
 
+## 2026-09-07 — Phase 2.1 bounded review
+
+The changed length guard rejects incomplete identity-encoded bodies before
+promotion and preserves the distinction between compressed wire length and
+decoded body size. Expected length is bound to each HTTP attempt. Red tests,
+boundary tests and three killed source mutants exercise both guard outcomes.
+CAS/WARC hash and actual body linkage, partial disconnect, fsync/storage/time
+failures and retained tombstone originals are verified with synthetic bytes.
+No eligibility decision was added. Existing tests are mapped rather than
+duplicated; runner resume/WARC gaps are explicitly characterization, not
+positive acceptance. All focused tests, lint, format and types pass; critical
+whole-module 100% and integrated checkpoints are not claimed. No additional
+in-scope fix remains in this bounded change. See `bronze-ingestion-contracts.md`.
+
 ## PR #401 parser setup clarification — 2026-09-05 UTC
 
 The reported external warm-up context was actually an empty inline context,
