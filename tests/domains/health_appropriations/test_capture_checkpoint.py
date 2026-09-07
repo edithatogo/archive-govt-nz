@@ -9,7 +9,7 @@ import json
 import runpy
 import sys
 from pathlib import Path
-from typing import Any, BinaryIO, TextIO
+from typing import IO, Any
 
 import pytest
 
@@ -79,7 +79,7 @@ async def test_warc_sync_uses_writable_handle(
     execute, args, _ = setup(tmp_path, monkeypatch)
     original_open = Path.open
     original_sync = execute.__globals__["os"].fsync
-    handles: list[BinaryIO | TextIO] = []
+    handles: list[IO[Any]] = []
     synced: list[bool] = []
 
     def tracked_open(  # noqa: PLR0913, PLR0917 -- mirrors Path.open
@@ -89,7 +89,7 @@ async def test_warc_sync_uses_writable_handle(
         encoding: str | None = None,
         errors: str | None = None,
         newline: str | None = None,
-    ) -> BinaryIO | TextIO:
+    ) -> IO[Any]:
         handle = original_open(path, mode, buffering, encoding, errors, newline)
         if path.name == "response.warc":
             handles.append(handle)
