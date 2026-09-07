@@ -1,0 +1,26 @@
+{
+  "schema_version": "archive-govt-nz.reproducible-builds/v1",
+  "date": "2026-09-07",
+  "target_commit": "e015a059c88e605dd43b6127d1e7a9d81d37f574",
+  "source_date_epoch": 1788746978,
+  "commands": [
+    ["uv", "build", "--out-dir", "build/repro-20260907-a"],
+    ["uv", "build", "--out-dir", "build/repro-20260907-b"]
+  ],
+  "exit_codes": [0, 0],
+  "artifacts": [
+    {
+      "name": "archive_govt_nz-0.1.0-py3-none-any.whl",
+      "first_sha256": "85c9ba5dcc6ac586ec27ee7fcff768a5222e06db3e1d238881f3cf3eb29188ec",
+      "second_sha256": "85c9ba5dcc6ac586ec27ee7fcff768a5222e06db3e1d238881f3cf3eb29188ec"
+    },
+    {
+      "name": "archive_govt_nz-0.1.0.tar.gz",
+      "first_sha256": "242f523569dfbc99f6b716fdaac614ad8f204e06b6b84aa0d04df92712d8f330",
+      "second_sha256": "242f523569dfbc99f6b716fdaac614ad8f204e06b6b84aa0d04df92712d8f330"
+    }
+  ],
+  "identical": true,
+  "publication_performed": false,
+  "scope": "Two local builds of the reviewed PR414 integration revision; later source revisions require their own build evidence."
+}

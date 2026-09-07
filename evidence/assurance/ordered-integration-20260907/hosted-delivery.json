@@ -1,0 +1,321 @@
+{
+  "schema_version": "archive-govt-nz.ordered-integration-delivery/v1",
+  "pull_request": {
+    "headRefOid": "e015a059c88e605dd43b6127d1e7a9d81d37f574",
+    "mergeCommit": {
+      "oid": "4b1764bbdc275d400204e6974bcde621a8f8d037"
+    },
+    "mergedAt": "2026-09-07T02:22:38Z",
+    "number": 414,
+    "state": "MERGED",
+    "statusCheckRollup": [
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-09-07T02:16:00Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/edithatogo/archive-govt-nz/actions/runs/34075370601/job/101600308977",
+        "name": "Assurance (ubuntu-latest)",
+        "startedAt": "2026-09-07T02:10:07Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-09-07T02:11:29Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/edithatogo/archive-govt-nz/actions/runs/34075370619/job/101600308476",
+        "name": "analyze",
+        "startedAt": "2026-09-07T02:10:05Z",
+        "status": "COMPLETED",
+        "workflowName": "CodeQL"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-09-07T02:12:09Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/edithatogo/archive-govt-nz/actions/runs/34075370618/job/101600309024",
+        "name": "Supplemental (parent-state)",
+        "startedAt": "2026-09-07T02:10:05Z",
+        "status": "COMPLETED",
+        "workflowName": "Supplemental legislation integrity assurance"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-09-07T02:16:53Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/edithatogo/archive-govt-nz/actions/runs/34075370987/job/101600942945",
+        "name": "Supplemental (parent-state)",
+        "startedAt": "2026-09-07T02:13:54Z",
+        "status": "COMPLETED",
+        "workflowName": "Supplemental legislation integrity assurance"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-09-07T02:10:27Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/edithatogo/archive-govt-nz/actions/runs/34075370671/job/101600308814",
+        "name": "lint",
+        "startedAt": "2026-09-07T02:10:10Z",
+        "status": "COMPLETED",
+        "workflowName": "Workflow policy lint"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-09-07T02:15:52Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/edithatogo/archive-govt-nz/actions/runs/34075370601/job/101600309091",
+        "name": "Assurance (macos-latest)",
+        "startedAt": "2026-09-07T02:10:10Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-09-07T02:13:08Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/edithatogo/archive-govt-nz/actions/runs/34075370618/job/101600308969",
+        "name": "Supplemental (durable-state)",
+        "startedAt": "2026-09-07T02:11:13Z",
+        "status": "COMPLETED",
+        "workflowName": "Supplemental legislation integrity assurance"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-09-07T02:15:32Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/edithatogo/archive-govt-nz/actions/runs/34075370987/job/101600942915",
+        "name": "Supplemental (durable-state)",
+        "startedAt": "2026-09-07T02:13:54Z",
+        "status": "COMPLETED",
+        "workflowName": "Supplemental legislation integrity assurance"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-09-07T02:21:31Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/edithatogo/archive-govt-nz/actions/runs/34075370601/job/101600309116",
+        "name": "Assurance (windows-latest)",
+        "startedAt": "2026-09-07T02:10:05Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-09-07T02:11:01Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/edithatogo/archive-govt-nz/actions/runs/34075370618/job/101600308833",
+        "name": "Supplemental (seed-registry)",
+        "startedAt": "2026-09-07T02:10:05Z",
+        "status": "COMPLETED",
+        "workflowName": "Supplemental legislation integrity assurance"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-09-07T02:14:59Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/edithatogo/archive-govt-nz/actions/runs/34075370987/job/101600942902",
+        "name": "Supplemental (seed-registry)",
+        "startedAt": "2026-09-07T02:13:55Z",
+        "status": "COMPLETED",
+        "workflowName": "Supplemental legislation integrity assurance"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-09-07T02:11:42Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/edithatogo/archive-govt-nz/actions/runs/34075370618/job/101600309040",
+        "name": "Supplemental (source-preflight)",
+        "startedAt": "2026-09-07T02:11:02Z",
+        "status": "COMPLETED",
+        "workflowName": "Supplemental legislation integrity assurance"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-09-07T02:15:49Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/edithatogo/archive-govt-nz/actions/runs/34075370987/job/101600942925",
+        "name": "Supplemental (source-preflight)",
+        "startedAt": "2026-09-07T02:15:01Z",
+        "status": "COMPLETED",
+        "workflowName": "Supplemental legislation integrity assurance"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-09-07T02:12:27Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/edithatogo/archive-govt-nz/actions/runs/34075370618/job/101600308999",
+        "name": "Supplemental (source-sets)",
+        "startedAt": "2026-09-07T02:11:44Z",
+        "status": "COMPLETED",
+        "workflowName": "Supplemental legislation integrity assurance"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-09-07T02:16:19Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/edithatogo/archive-govt-nz/actions/runs/34075370987/job/101600942876",
+        "name": "Supplemental (source-sets)",
+        "startedAt": "2026-09-07T02:15:34Z",
+        "status": "COMPLETED",
+        "workflowName": "Supplemental legislation integrity assurance"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-09-07T02:12:36Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/edithatogo/archive-govt-nz/actions/runs/34075370618/job/101600309007",
+        "name": "Supplemental (discovery)",
+        "startedAt": "2026-09-07T02:12:11Z",
+        "status": "COMPLETED",
+        "workflowName": "Supplemental legislation integrity assurance"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-09-07T02:16:14Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/edithatogo/archive-govt-nz/actions/runs/34075370987/job/101600942908",
+        "name": "Supplemental (discovery)",
+        "startedAt": "2026-09-07T02:15:51Z",
+        "status": "COMPLETED",
+        "workflowName": "Supplemental legislation integrity assurance"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-09-07T02:13:01Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/edithatogo/archive-govt-nz/actions/runs/34075370618/job/101600309017",
+        "name": "Supplemental (zenodo-identity)",
+        "startedAt": "2026-09-07T02:12:29Z",
+        "status": "COMPLETED",
+        "workflowName": "Supplemental legislation integrity assurance"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-09-07T02:16:55Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/edithatogo/archive-govt-nz/actions/runs/34075370987/job/101600942926",
+        "name": "Supplemental (zenodo-identity)",
+        "startedAt": "2026-09-07T02:16:16Z",
+        "status": "COMPLETED",
+        "workflowName": "Supplemental legislation integrity assurance"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-09-07T02:13:08Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/edithatogo/archive-govt-nz/actions/runs/34075370618/job/101600309018",
+        "name": "Supplemental (zenodo-publication)",
+        "startedAt": "2026-09-07T02:12:40Z",
+        "status": "COMPLETED",
+        "workflowName": "Supplemental legislation integrity assurance"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-09-07T02:16:41Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/edithatogo/archive-govt-nz/actions/runs/34075370987/job/101600943039",
+        "name": "Supplemental (zenodo-publication)",
+        "startedAt": "2026-09-07T02:16:20Z",
+        "status": "COMPLETED",
+        "workflowName": "Supplemental legislation integrity assurance"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-09-07T02:13:37Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/edithatogo/archive-govt-nz/actions/runs/34075370618/job/101600309120",
+        "name": "Supplemental (donor-bundle)",
+        "startedAt": "2026-09-07T02:13:03Z",
+        "status": "COMPLETED",
+        "workflowName": "Supplemental legislation integrity assurance"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-09-07T02:17:24Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/edithatogo/archive-govt-nz/actions/runs/34075370987/job/101600943018",
+        "name": "Supplemental (donor-bundle)",
+        "startedAt": "2026-09-07T02:16:43Z",
+        "status": "COMPLETED",
+        "workflowName": "Supplemental legislation integrity assurance"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-09-07T02:13:46Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/edithatogo/archive-govt-nz/actions/runs/34075370618/job/101600309031",
+        "name": "Supplemental (evidence-index)",
+        "startedAt": "2026-09-07T02:13:11Z",
+        "status": "COMPLETED",
+        "workflowName": "Supplemental legislation integrity assurance"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-09-07T02:17:36Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/edithatogo/archive-govt-nz/actions/runs/34075370987/job/101600942893",
+        "name": "Supplemental (evidence-index)",
+        "startedAt": "2026-09-07T02:16:55Z",
+        "status": "COMPLETED",
+        "workflowName": "Supplemental legislation integrity assurance"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-09-07T02:13:51Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/edithatogo/archive-govt-nz/actions/runs/34075370618/job/101600309045",
+        "name": "Supplemental (release-correction)",
+        "startedAt": "2026-09-07T02:13:10Z",
+        "status": "COMPLETED",
+        "workflowName": "Supplemental legislation integrity assurance"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-09-07T02:17:41Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/edithatogo/archive-govt-nz/actions/runs/34075370987/job/101600942757",
+        "name": "Supplemental (release-correction)",
+        "startedAt": "2026-09-07T02:16:57Z",
+        "status": "COMPLETED",
+        "workflowName": "Supplemental legislation integrity assurance"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-09-07T02:11:10Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://aws.amazon.com/q/developer/",
+        "name": "Amazon Q Developer",
+        "startedAt": "2026-09-07T02:10:04Z",
+        "status": "COMPLETED",
+        "workflowName": ""
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-09-07T02:11:22Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/edithatogo/archive-govt-nz/runs/101600525707",
+        "name": "CodeQL",
+        "startedAt": "2026-09-07T02:11:19Z",
+        "status": "COMPLETED",
+        "workflowName": ""
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-09-07T02:16:40Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://app.codecov.io/gh/edithatogo/archive-govt-nz/pull/414",
+        "name": "codecov/patch",
+        "startedAt": "2026-09-07T02:16:39Z",
+        "status": "COMPLETED",
+        "workflowName": ""
+      }
+    ],
+    "url": "https://github.com/edithatogo/archive-govt-nz/pull/414"
+  },
+  "review": {
+    "syntax_findings": "Python >=3.14 supports the reported except syntax; compiled/executed successfully on all three platforms",
+    "all_threads_resolved_before_merge": true,
+    "policy_bypass_used": false
+  },
+  "scope": "PR414 delivery only. Followup source changes and second-parent execution need separate acceptance."
+}
