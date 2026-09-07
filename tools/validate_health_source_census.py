@@ -32,6 +32,9 @@ def validate(path: Path) -> dict[str, int]:
     if not isinstance(rows, list) or not rows:
         message = "records must be a non-empty list"
         raise CensusValidationError(message)
+    if data.get("record_count") != len(rows):
+        message = "record_count must equal the number of records"
+        raise CensusValidationError(message)
     ids: set[str] = set()
     for index, row in enumerate(rows):
         if not isinstance(row, dict) or not row.keys() >= REQUIRED:

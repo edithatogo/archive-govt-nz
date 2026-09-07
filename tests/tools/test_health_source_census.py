@@ -41,4 +41,14 @@ def test_census_rejects_unsupported_or_unevidenced_dispositions(
         validate(path)
 
 
+def test_census_rejects_inconsistent_record_count(tmp_path: Path) -> None:
+    """Reject a census whose declared count does not match its rows."""
+    data = json.loads(CENSUS.read_text())
+    data["record_count"] -= 1
+    path = tmp_path / "census.json"
+    path.write_text(json.dumps(data))
+    with pytest.raises(ValueError, match="record_count"):
+        validate(path)
+
+
 """Tests for the health appropriations source census validator."""
