@@ -3,13 +3,16 @@
 import copy
 import importlib.util
 import json
+import runpy
 import sys
 from pathlib import Path
 
 import pytest
 
 from archive_govt_nz.foi_discovery import build_reviewed_catalogue
+from archive_govt_nz.foi_disposition_validation import validate_canonical_dispositions
 from archive_govt_nz.foi_phase_validation import validate_catalogue_phase
+from tools import validate_foi_catalogue_phase as cli
 
 SEEDS = Path(__file__).parents[1] / "config/foi"
 SPEC = importlib.util.spec_from_file_location(
@@ -137,3 +140,64 @@ def test_cli_writes_blocked_receipt_and_returns_two(
     result = json.loads(output.read_text(encoding="utf-8"))
     assert result["status"] == "blocked"
     assert json.loads(capsys.readouterr().out)["status"] == "blocked"
+
+
+def test_explicit_canonical_cli(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    """Opt-in emits only disposition validation and refuses receipt overwrite."""
+    track = Path("conductor/tracks/global_foi_public_archive_20260830")
+    output = tmp_path / "receipt.json"
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        ["validate", "--canonical-track", str(track), "--output", str(output)],
+    )
+    assert cli.main() == 0
+    expected = validate_canonical_dispositions(SEEDS, track)
+    assert json.loads(output.read_bytes()) == expected
+    assert json.loads(capsys.readouterr().out) == expected
+    before = output.read_bytes()
+    with pytest.raises(FileExistsError):
+        TOOL.main()
+    assert output.read_bytes() == before
+
+
+def test_canonical_cli_bad_inputs_no_output(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Invalid canonical inputs do not fall back to a legacy result."""
+    output = tmp_path / "receipt.json"
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        ["validate", "--canonical-track", str(tmp_path), "--output", str(output)],
+    )
+    with pytest.raises(FileNotFoundError):
+        TOOL.main()
+    assert not output.exists()
+
+
+def test_canonical_cli_stdout_entrypoint(
+    monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    """The script supports a no-output-file bounded validation path."""
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        [
+            "validate",
+            "--canonical-track",
+            "conductor/tracks/global_foi_public_archive_20260830",
+        ],
+    )
+    with pytest.raises(SystemExit) as error:
+        runpy.run_path(
+            str(Path(__file__).parents[1] / "tools/validate_foi_catalogue_phase.py"),
+            run_name="__main__",
+        )
+    assert error.value.code == 0
+    assert (
+        json.loads(capsys.readouterr().out)["scope"]
+        == "catalogue_disposition_validation"
+    )

@@ -117,3 +117,6 @@ Approved track in progress. Automation repair and source-catalogue foundations a
 - [P1.5 exact runs, artifact hashes and remaining evidence](p15-hosted-receipt-search-20260907.json)
 - [P4 local canonical publisher handoff and review](canonical-publisher-20260907.md)
 - [P4 mock-only validation and deterministic output pins](canonical-publisher-20260907.json)
+
+- [Canonical disposition validation, without phase closure](canonical-disposition-validation-20260907.md)
+- [Actual offline disposition receipt](canonical-disposition-validation-20260907.json)

@@ -331,3 +331,14 @@ pointer preservation pass. Existing raw decision negatives remain enforced.
 194 tests, seven guard mutants, publisher 100% statement/branch; static checks
 pass. This is a local mock handoff, not AC07/AC11 umbrella or hosted acceptance.
 See canonical-publisher-20260907.md; parent owns full harness and lifecycle.
+
+## Canonical disposition validation focused review — 2026-09-07
+
+No outstanding scoped finding. Validation consumes only seeds/track and replays
+all pinned evidence; cached catalogue substitution and rehashed forged reports
+are rejected by executable negatives/static mutants. Unknown/blocked dispositions
+remain valid bounded outcomes without exhaustive/capture/publication assertions.
+Legacy validator is byte-unchanged. Canonical CLI output is exclusive; default
+legacy receipt and exit behavior remain compatible. 100 tests and ten mutant
+kills; critical changed paths 100% statement/branch; static checks pass. Parent
+AC04 audit, programme gates and plan phase statuses remain untouched.
