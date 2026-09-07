@@ -1,0 +1,38 @@
+{
+  "schema_version": "archive-govt-nz.post-cutover-final-verification/v3",
+  "verification_id": "prompt21-current-state-20260907",
+  "supersedes": "evidence/migrations/corpus-legislation-nz/post-cutover-final-verification-20260907.json",
+  "observed_at": "2026-09-07T01:30:00Z",
+  "status": "complete",
+  "method": "Independent re-read of current target evidence, GitHub primary records, and Hugging Face API/connector readback; no prior status labels inherited.",
+  "scope": {"target_repository":"edithatogo/archive-govt-nz","target_main":"eefe451395a5b9e0312a6ecf3bc75690f5f263c2","archived_donor_repository":"edithatogo/corpus-legislation-nz","archived_donor_head":"905f9e07c17af9d9d25dbe2b1c052fb8a290a4e3","independent_product_excluded":"edithatogo/legislation"},
+  "dimensions": {
+    "code_capability_migration":{"status":"complete","evidence":["evidence/assurance/final-integrated-20260905/final-closeout-receipt-20260907.json","https://github.com/edithatogo/archive-govt-nz/pull/409"]},
+    "operational_state_migration":{"status":"complete","evidence":["https://github.com/edithatogo/archive-govt-nz/issues/335","https://github.com/edithatogo/archive-govt-nz/actions/runs/33800180992"],"finding":"Prompt 13 final hosted run independently read back: 500/500 accounted, zero reconciliation mismatches, complete continuation seal."},
+    "corpus_custody_recoverability":{"status":"complete","evidence":["evidence/migrations/corpus-legislation-nz/durable-recovery/independent-recovery-summary-20260903.json","evidence/migrations/corpus-legislation-nz/donor-git-bundle/release-asset-readback.json"]},
+    "publication_identity_migration":{"status":"complete","evidence":["https://huggingface.co/datasets/edithatogo/corpus-legislation-nz","https://zenodo.org/api/records/20592540"],"finding":"Hugging Face is public and card metadata reports public_verified target origin; Zenodo concept/version identity remains verified."}
+  },
+  "criteria": [
+    {"id":"donor-lineage","status":"complete","evidence":["evidence/migrations/corpus-legislation-nz/final-donor-state/verification-02/final-donor-state-verification.json","https://api.github.com/repos/edithatogo/corpus-legislation-nz"]},
+    {"id":"donor-500-work-state","status":"complete","evidence":["evidence/migrations/corpus-legislation-nz/final-donor-state/verification-02/final-donor-state-verification.json"]},
+    {"id":"donor-target-merge","status":"complete","evidence":["evidence/migrations/corpus-legislation-nz/final-state-merge/final-state-merge-receipt.json"]},
+    {"id":"governed-seed","status":"complete","evidence":["seeds/reviewed/historical-work-ids-0001.txt","seeds/registry.json"]},
+    {"id":"exact-and-discovery-lanes","status":"complete","evidence":["evidence/migrations/corpus-legislation-nz/exact-inventory-revalidation/","evidence/migrations/corpus-legislation-nz/bounded-discovery/"]},
+    {"id":"parent-restoration","status":"complete","evidence":["evidence/migrations/corpus-legislation-nz/500-work-operational-proof/parent-preflight-20260903.json","evidence/migrations/corpus-legislation-nz/durable-recovery/independent-recovery-summary-20260903.json"]},
+    {"id":"durable-state-package","status":"complete","evidence":["evidence/migrations/corpus-legislation-nz/durable-state/validation.json"]},
+    {"id":"independent-recovery","status":"complete","evidence":["evidence/migrations/corpus-legislation-nz/durable-recovery/recovery-attempt-01-20260903.json","evidence/migrations/corpus-legislation-nz/durable-recovery/recovery-attempt-02-20260903.json"]},
+    {"id":"target-500-operation","status":"complete","evidence":["https://github.com/edithatogo/archive-govt-nz/issues/335","https://github.com/edithatogo/archive-govt-nz/actions/runs/33800180992"]},
+    {"id":"historical-coverage","status":"complete","evidence":["evidence/migrations/corpus-legislation-nz/historical-coverage/historical-coverage-report.json"]},
+    {"id":"hugging-face-identity","status":"complete","evidence":["https://huggingface.co/api/datasets/edithatogo/corpus-legislation-nz"],"readback":{"sha":"04688f12dd687618e2085ae31f9b8a4a50a88b16","private":false,"gated":false,"origin_repository":"edithatogo/archive-govt-nz","publication_status":"public_verified","work_count":552,"record_count":552,"cas_object_count":552,"candidate_universe_count":33693,"reviewed_seed_count":500,"response_sha256":"d7fed0657325e790b9851f7aa75a9115eda584e95913d33385e3c5f4c23c2ff3"}},
+    {"id":"zenodo-identity","status":"complete","evidence":["evidence/migrations/corpus-legislation-nz/zenodo-identity-correction.json","https://zenodo.org/api/records/20592540"]},
+    {"id":"evidence-hierarchy","status":"complete","evidence":["evidence/assurance/final-integrated-20260905/final-closeout-receipt-20260907.json"]},
+    {"id":"cutover-release-addendum","status":"complete","evidence":["evidence/migrations/corpus-legislation-nz/cutover-release-provenance/release-post-readback.json"]},
+    {"id":"donor-bundle-and-presentation","status":"complete","evidence":["evidence/migrations/corpus-legislation-nz/donor-git-bundle/release-asset-readback.json"]},
+    {"id":"integrated-assurance","status":"complete","evidence":["https://github.com/edithatogo/archive-govt-nz/pull/409"]}
+  ],
+  "recomputed":{"seed":{"bytes":8987,"lines":500,"unique":500,"sha256":"59923176fa34796d7673a20b880af9abe5520fe484595edb220f2bbc0e3b33e7"},"historical_candidate_universe":33693,"hf_dataset_records":552,"hf_dataset_cas_objects":552},
+  "false_completion_probes":{"all_rejected":true,"probes":["candidate IDs counted as records","workflow configuration counted as operation","green jobs without artifact verification","Actions cache counted as durable recovery","metadata upload counted without remote readback","invalidated receipt reused","closed issue counted as implementation","donor archival counted as custody","same ID with changed content silently overwritten","software licence inferred as source rights"]},
+  "external_actions":{"hugging_face_readback":true,"hugging_face_write_by_this_agent":false,"hugging_face_write_needed":false,"zenodo_readback":true,"donor_modified":false,"hosted_settings_modified":false},
+  "unresolved_blockers":[],
+  "overall_rule":"COMPLETE: every current non-waivable criterion has primary evidence or independent remote readback; prior incomplete status is superseded by this dated record."
+}
