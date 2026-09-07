@@ -1,5 +1,14 @@
 # Run log
 
+## 2026-09-07 — terminal controller acceptance
+
+The final snapshot retains all supplied scopes02–21, unique owners, dependency
+boundaries and hash-bound acceptance. Final handoffs are empty. Prompts13,15,20
+and21 are accepted and archived; archive the controller after terminal review.
+The native evaluator passes all four dimensions. Earlier snapshots and future
+permission boundaries remain unchanged. Reconcile issue276 after protected
+delivery; an issue label is not proof. Health/FOI remain independent active work.
+
 ## 2026-09-07 — parent-interface blocker closed
 
 PR #414 merged the authenticated artifact-name repair. Independent proof of

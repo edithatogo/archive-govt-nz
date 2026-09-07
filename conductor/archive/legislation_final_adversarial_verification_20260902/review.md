@@ -1,5 +1,15 @@
 # Review
 
+## Terminal review — 2026-09-07
+
+The final matrix binds all19 prerequisite specialist criteria to existing,
+hash-verified primary files. Root verification of all68 donor batch blobs
+matched individual hashes/sizes and the33,693-ID aggregate. Independent workers
+verified execution/custody, hosted artifacts, identities and the frozen fix.
+The old operational blocker is superseded by real proof, with a regression
+covering500/904/552 distinctions and recovery ordering. Historical false claims
+were corrected rather than inherited. All four dimensions pass; archive accepted.
+
 Independent audits attacked stale-current filenames, individually green but
 incompatible contracts, issue/PR status as proof, green jobs with unresolved
 alerts, local packages as durable custody, and metadata candidates as remote

@@ -1,5 +1,14 @@
 # Implementation review — 2026-09-03
 
+## Terminal controller review — 2026-09-07
+
+All20 supplied child owners02–21 occur exactly once in the final snapshot.
+Acceptance references are existing hash-bound files, not issue labels. The
+final handoff index pins the status bytes and has no remaining handoff.
+Archived paths follow lifecycle moves; standing new-action boundaries remain
+explicit and do not become open programme tasks. The controller is separate
+from health/FOI. Terminal matrix accepted; archival approved.
+
 The controller registry now contains the supplied Prompt 04–21 child tracks,
 with exact Conductor paths and issue references where available. Unique defect
 ownership and terminal acceptance cannot yet be claimed: Prompt 13 operations,

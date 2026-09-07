@@ -1,6 +1,12 @@
 # Legislation post-cutover programme
 
-Controller only; parent issue #276. Programme remains incomplete.
+Controller only; parent issue #276. Programme accepted and archived.
+
+Current [terminal programme status](./programme-status-20260907-final.json) and
+[final handoff index](./handoff-index-20260907-final.json) supersede the dated
+snapshots below. The terminal matrix is
+`evidence/migrations/corpus-legislation-nz/final-acceptance-20260907/matrix.json`.
+All four legislation dimensions pass; health/FOI remain independent active work.
 
 - [Specification](./spec.md)
 - [Implementation Plan](./plan.md)
@@ -26,6 +32,5 @@ The additive `programme-status-20260905-preflight-reopen.json`, `handoff-index-2
 
 The [current handoff index](./handoff-index-20260906.json) binds the current status snapshot; previous handoff indices remain historical.
 
-- Current independent acceptance: `evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json`
-  and paired `report.md`. Overall incomplete pending hosted-parent compatibility
-  and integrated validation; first-cycle operational evidence remains verified.
+- Historical independent acceptance: `evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json`
+  and paired `report.md`; superseded by the terminal report linked above.

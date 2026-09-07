@@ -11,7 +11,7 @@
   their tracks or the global registry.
 - [x] Reproduce and route HOSTED-PARENT-NAME-001 to the parent-delegated Prompt08
   compatibility owner; distinguish first-cycle acceptance from hosted usability.
-- [~] Complete final validation and integrate the compatibility correction before
+- [x] Complete final validation and integrate the compatibility correction before
   any overall completion or lifecycle archival; parent owns delivery.
 
 ## Historical plan
@@ -21,4 +21,4 @@
 - [x] Encode the supplied dependency graph and four independent completion dimensions.
 - [x] Capture live identity observations, passing local validation and partial draft controller delivery in PR #289.
 - [x] Obtain Prompts 04–21; register their exact child issues, owned paths and acceptance gates. Current registry maps the supplied Prompt 04–21 tracks and their issue/Conductor records.
-- [~] Demonstrate complete unique defect ownership and terminal independent acceptance. Remaining operational, publication, rights, and release gates are retained in owning tracks.
+- [x] Demonstrate complete unique defect ownership and terminal independent acceptance. `programme-status-20260907-final.json` retains every supplied scope with hash-bound acceptance; the final handoff index has no remaining programme handoff. Standing boundaries for future external actions remain unchanged.

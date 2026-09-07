@@ -1,5 +1,16 @@
 # Run log
 
+## 2026-09-07 — terminal acceptance
+
+Re-read primary evidence for all19 specialist scopes02–20, fresh identities,
+exact donor batch blobs, operational runs, fresh durable reconstruction and
+integrated assurance/peer acceptance. All68 batch hashes and33,693 unique IDs
+match. The canonical evaluator now selects hash-bound operational proof and
+passes all four dimensions. The terminal matrix replaces absent-path and
+issue-label-only references, preserving older reports. Known gated RIGHTS401
+and distinct552-public/904-Actions populations remain explicit. No non-waivable
+programme gate remains; archive this track. Health/FOI are separate active work.
+
 ## 2026-09-07 — synthetic recovery correction
 
 Adversarial inspection found `verify_operational_continuity_and_recovery.py`

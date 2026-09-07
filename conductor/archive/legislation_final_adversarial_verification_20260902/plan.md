@@ -6,7 +6,7 @@
   cycle claim: emit a distinct synthetic receipt, zero observed cycles, no
   asserted target revision, and a non-evidence default output path. Use genuine
   BLAKE3 rather than a truncated BLAKE2 digest. Preserve historical evidence.
-- [~] Validate and deliver this correction with the ordered integration before
+- [x] Validate and deliver this correction with the ordered integration before
   accepting terminal operational assurance.
 
 ## Independent acceptance review — 2026-09-06
@@ -17,7 +17,7 @@
   their tracks or the global registry.
 - [x] Reproduce and route HOSTED-PARENT-NAME-001 to the parent-delegated Prompt08
   compatibility owner; distinguish first-cycle acceptance from hosted usability.
-- [~] Complete final validation and integrate the compatibility correction before
+- [x] Complete final validation and integrate the compatibility correction before
   any overall completion or lifecycle archival; parent owns delivery.
 
 ## Historical plan
@@ -27,4 +27,4 @@
 - [x] Recompute practical seed, merge, and historical counts and hashes.
 - [x] Red-team false completion and route new specialist defect #357.
 - [x] Produce the terminal machine receipt and report.
-- [~] Reach complete status only after every referenced specialist defect and external gate is resolved and independently reverified.
+- [x] Reach complete status only after every referenced specialist defect and external gate is resolved and independently reverified. Terminal matrix/report: `evidence/migrations/corpus-legislation-nz/final-acceptance-20260907/`.

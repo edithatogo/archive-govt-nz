@@ -1,0 +1,12 @@
+{
+  "schema_version": "archive-govt-nz.controller-handoff/v1",
+  "supersedes": "handoff-index-20260906.json",
+  "programme_status": "programme-status-20260907-final.json",
+  "programme_status_sha256": "e40d05b072f2134f4a05abfa25450df14e803e9d557bae02b8a71edf70ae3adc",
+  "terminal_acceptance": {
+    "path": "evidence/migrations/corpus-legislation-nz/final-acceptance-20260907/matrix.json",
+    "sha256": "f341c1e97fceec8967e58c08ae758805da5acd17d806d76575e02db36f12bd85"
+  },
+  "remaining_handoffs": [],
+  "historical_policy": "Earlier registries, observations and failed attempts remain unchanged; standing authority limits still apply to future actions."
+}

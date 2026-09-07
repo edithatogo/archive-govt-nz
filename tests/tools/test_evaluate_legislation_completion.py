@@ -20,6 +20,43 @@ from tools.evaluate_legislation_completion import DIMENSIONS, evaluate_completio
 ROOT = Path(__file__).parents[2]
 
 
+def test_terminal_programme_handoff_preserves_scope_and_primary_fixity() -> None:
+    """Terminal labels require every supplied owner and its actual proof bytes."""
+    folder = (
+        ROOT
+        / "conductor/archive/legislation_post_cutover_state_and_publication_integrity_20260831"
+    )
+    handoff = json.loads((folder / "handoff-index-20260907-final.json").read_text())
+    status_bytes = (folder / handoff["programme_status"]).read_bytes()
+    assert (
+        hashlib.sha256(status_bytes).hexdigest() == handoff["programme_status_sha256"]
+    )
+    status = json.loads(status_bytes)
+    assert status["status"] == "passed"
+    assert status["remaining_gates"] == handoff["remaining_handoffs"] == []
+    assert {row["owner_prompt"] for row in status["prompts"]} == set(range(2, 22))
+    for row in status["prompts"]:
+        assert row["state"] == "passed"
+        assert row["registration"] == "scope_supplied"
+        assert row["acceptance_evidence"]
+        for reference in row["acceptance_evidence"]:
+            payload = (ROOT / reference["path"]).read_bytes()
+            assert hashlib.sha256(payload).hexdigest() == reference["sha256"]
+    reference = handoff["terminal_acceptance"]
+    matrix_bytes = (ROOT / reference["path"]).read_bytes()
+    assert hashlib.sha256(matrix_bytes).hexdigest() == reference["sha256"]
+    matrix = json.loads(matrix_bytes)
+    assert matrix["status"] == "complete"
+    assert matrix["unresolved_nonwaivable_gates"] == []
+    assert len(matrix["criteria"]) == 19
+    assert matrix["recomputed"]["reviewed_seed_unique"] == 500
+    assert matrix["recomputed"]["unique_candidates"] == 33693
+    for criterion in matrix["criteria"]:
+        for reference in criterion["evidence"]:
+            payload = (ROOT / reference["path"]).read_bytes()
+            assert hashlib.sha256(payload).hexdigest() == reference["sha256"]
+
+
 def test_repository_operation_completion_is_bound_to_primary_proof() -> None:
     """Actual hosted proof, not a closed issue, must resolve the old blocker."""
     complete, evaluation = evaluate_completion(ROOT)
