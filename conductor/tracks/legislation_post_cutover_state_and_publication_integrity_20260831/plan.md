@@ -1,5 +1,8 @@
 # Plan
 
+- [x] Reconcile the duplicate deferred graph/vector evaluation with its recorded
+  medallion-track owner; preserve product qualification and publication boundaries.
+
 ## Independent acceptance review — 2026-09-06
 
 - [x] Re-read exact baseline contracts and independently verify live hosted and

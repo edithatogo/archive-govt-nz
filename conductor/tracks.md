@@ -153,9 +153,12 @@ active only after the MVP checkpoint and their stated decision gates pass.
   *Link: [tracks/preservation_conformance_20260801/index.md](./tracks/preservation_conformance_20260801/index.md)*
 - [x] **Track: Track 14: Health payload capture**
   *Link: [tracks/health_payload_capture_20260802/index.md](./tracks/health_payload_capture_20260802/index.md)*
-- [~] **Deferred evaluation: graph/vector indexing**
+- [x] **Deferred evaluation: graph/vector indexing — subsumption recorded**
   *Proposed slug: `graph_vector_evaluation_20260801`*
   *Subsumed 2026-08-23 into Medallion Architecture Consolidation track as Gold-tier DuckDB, LanceDB, and DCAT-AP/Croissant derivative products.*
+  *Reconciled 2026-09-07: this checkbox closes the duplicate evaluation/ownership
+  decision. Implementation acceptance belongs to the archived medallion track;
+  it does not assert new corpus indexing, retrieval quality or publication.*
 
 ## Programme: Medallion Architecture & Unified Data Engine (2026-08-23)
 
