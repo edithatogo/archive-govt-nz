@@ -28,6 +28,38 @@ BASE_NOTE = (
     "All population estimates at 30 June 2023 and beyond are based on the "
     "2023 Estimated Resident Population (ERP)."
 )
+REVIEWED_FOOTER = (
+    "Units:",
+    "Number, Magnitude = Units",
+    "Footnotes:",
+    "Due to rounding, individual figures may not sum to stated totals.",
+    BASE_NOTE,
+    (
+        "Population estimates after 30 June 2018 have been revised to incorporate "
+        "results from the 2023 Census and 2023 Post-enumeration Survey."
+    ),
+    (
+        "Estimates flagged as provisional are subject to revision, mainly to "
+        "incorporate revisions to external (international) migration "
+        "and birth estimates."
+    ),
+    "Symbols:",
+    ".. figure not available",
+    "C: Confidential",
+    "E: Early Estimate",
+    "P: Provisional",
+    "R: Revised",
+    "S: Suppressed",
+    "Status flags are not displayed",
+    "Table reference: ",
+    "DPE054AA",
+    "Last updated:",
+    "Total All Ages: 18 August 2026 10:45am",
+    "Source: Statistics New Zealand",
+    "Contact: Information Centre",
+    "Telephone: 0508 525 525",
+    "Email:info@stats.govt.nz",
+)
 
 
 class PopulationExportError(ValueError):
@@ -74,23 +106,10 @@ def _rows(payload: bytes) -> list[list[str]]:
 
 def _footer(rows: list[list[str]]) -> None:
     _require(all(len(row) <= 1 for row in rows))
-    values = [row[0] if row else "" for row in rows]
-    expected = {
-        "Units:": "Number, Magnitude = Units",
-        "Table reference: ": "DPE054AA",
-        "Last updated:": "Total All Ages: 18 August 2026 10:45am",
-    }
-    for label, value in expected.items():
-        _require(values.count(label) == 1)
-        position = values.index(label)
-        _require(position + 1 < len(values))
-        _require(values[position + 1] == value)
-    for literal in (
-        BASE_NOTE,
-        "Status flags are not displayed",
-        "Source: Statistics New Zealand",
-    ):
-        _require(values.count(literal) == 1)
+    # Only the publisher's observed blank separator forms are ignorable.
+    # Every substantive row is ordered and accounted for, including notes.
+    values = tuple(row[0] for row in rows if row and row[0] not in ("", " "))
+    _require(values == REVIEWED_FOOTER)
 
 
 def inspect_export(

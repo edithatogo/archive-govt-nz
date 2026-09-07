@@ -39,13 +39,26 @@ def payload() -> bytes:
         b'"Units:"\r\n'
         b'"Number, Magnitude = Units"\r\n'
         b'"Footnotes:"\r\n'
+        b'"Due to rounding, individual figures may not sum to stated totals."\r\n'
         b'"All population estimates at 30 June 2023 and beyond are based on the 2023 Estimated Resident Population (ERP)."\r\n'
+        b'"Population estimates after 30 June 2018 have been revised to incorporate results from the 2023 Census and 2023 Post-enumeration Survey."\r\n'
+        b'"Estimates flagged as provisional are subject to revision, mainly to incorporate revisions to external (international) migration and birth estimates."\r\n'
+        b'"Symbols:"\r\n'
+        b'".. figure not available"\r\n'
+        b'"C: Confidential"\r\n'
+        b'"E: Early Estimate"\r\n'
+        b'"P: Provisional"\r\n'
+        b'"R: Revised"\r\n'
+        b'"S: Suppressed"\r\n'
         b'"Status flags are not displayed"\r\n'
         b'"Table reference: "\r\n'
         b'"DPE054AA"\r\n'
         b'"Last updated:"\r\n'
         b'"Total All Ages: 18 August 2026 10:45am"\r\n'
         b'"Source: Statistics New Zealand"\r\n'
+        b'"Contact: Information Centre"\r\n'
+        b'"Telephone: 0508 525 525"\r\n'
+        b'"Email:info@stats.govt.nz"\r\n'
     )
 
 
@@ -178,3 +191,34 @@ def test_multi_quarter_values_remain_separate_without_aggregation() -> None:
         "2026-03-31",
     ]
     assert len({fact["record_id"] for fact in facts}) == 4
+
+
+@pytest.mark.parametrize(
+    "extra",
+    [
+        b'"Status flags are displayed"\r\n',
+        b'"All values are in thousands"\r\n',
+        b'"All estimates use the 2018 population base"\r\n',
+        b'"Status flags are displayed"\r\n"All values are in thousands"\r\n',
+        b'"New publisher note not reviewed"\r\n',
+    ],
+)
+def test_additive_footer_notes_fail_closed(extra: bytes) -> None:
+    with pytest.raises(PopulationExportError):
+        inspect(payload() + extra)
+
+
+def test_reviewed_footer_blank_separators_are_allowed() -> None:
+    data = payload().replace(b'"Symbols:"', b'""\r\n" "\r\n\r\n"Symbols:"')
+    assert inspect(data)["status_visibility"] == "not_displayed"
+
+
+def test_footer_reordering_and_omission_fail_closed() -> None:
+    for changed in (
+        payload().replace(
+            b'"R: Revised"\r\n"S: Suppressed"', b'"S: Suppressed"\r\n"R: Revised"'
+        ),
+        payload().replace(b'"Contact: Information Centre"\r\n', b""),
+    ):
+        with pytest.raises(PopulationExportError):
+            inspect(changed)
