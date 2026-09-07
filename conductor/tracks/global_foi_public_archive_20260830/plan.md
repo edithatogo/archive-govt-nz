@@ -46,22 +46,23 @@ The approved destination is archive-govt-nz; no cutover has occurred.
   79 focused tests pass, new module has 100% line/branch coverage.
   Full integration and hosted gates remain with the parent.
 
-- [~] P2.5 (AC04, AC11, AC12): Bind every consumed seed to exactly one
+- [x] P2.5 (AC04, AC11, AC12): Bind every consumed seed to exactly one
   provenance record and parse the verified bytes; reject omitted, substituted,
   duplicate and symlinked seed inputs without changing the pinned registries.
-  Local fix: `337e71d9`; focused validation passed; full/hosted gate pending.
-- [~] P2.6 (AC04, AC09, AC12): Reconcile entity source counts and remaining
+  Fix: `337e71d9`; full local and three-platform hosted gates passed in PR #414.
+- [x] P2.6 (AC04, AC09, AC12): Reconcile entity source counts and remaining
   coverage in phase validation; retain unknown denominators and external gates.
-  Local fix: `455f7d4a`; focused validation passed; full/hosted gate pending.
-- [~] P2.7 (AC04, AC09, AC12): Reject duplicate/cross-entity rollout links
+  Fix: `455f7d4a`; full local and three-platform hosted gates passed in PR #414.
+- [x] P2.7 (AC04, AC09, AC12): Reject duplicate/cross-entity rollout links
   and evidence paths outside the track, including symlink targets; verify the
   existing 255-source materialized rollout without altering its dispositions.
-  Local fix: `f5483f18`; focused validation passed; full/hosted gate pending.
-- [~] P2.8 (AC04, AC09, AC11, AC12): Bind rollout receipts to their source
+  Fix: `f5483f18`; full local and three-platform hosted gates passed in PR #414.
+- [x] P2.8 (AC04, AC09, AC11, AC12): Bind rollout receipts to their source
   and declared entity; reject cross-source evidence and remove the unsupported
   Argentina-to-NZ receipt association. Keep discovery and phase acceptance open.
   Local fix: `7732230a`; 15 focused tests and two guard mutations pass;
-  parent combined full/hosted gate pending.
+  combined full local and three-platform hosted gates passed in PR #414,
+  merged as `4b1764bb`. Broader source assessment remains P2.2/P2.3.
 
 ## Phase 3 — Metadata indexes and immutable raw storage
 
