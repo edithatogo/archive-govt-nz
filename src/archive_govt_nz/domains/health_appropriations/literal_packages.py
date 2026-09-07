@@ -7,6 +7,9 @@ from typing import TYPE_CHECKING, Any
 import pyarrow as pa
 
 from archive_govt_nz.domains.health_appropriations import (
+    befu_chart_literals as befu_chart,
+)
+from archive_govt_nz.domains.health_appropriations import (
     hyefu_allowance_literals as allowance,
 )
 from archive_govt_nz.domains.health_appropriations.donor_health_detail import (
@@ -32,6 +35,7 @@ if TYPE_CHECKING:
 SCHEMA = "archive-govt-nz.health-literal-package/v1"
 MAX_RECORDS = 1000
 PROFILES = {
+    "befu-chart": "BEFU-2025",
     "hyefu-allowance": "HYEFU-2024",
     "befu-detail": "BEFU-2025",
     "hyefu-detail": "HYEFU-2024",
@@ -82,7 +86,7 @@ def _require(condition: object) -> None:
         raise ValueError(message)
 
 
-def write_literal_package(
+def write_literal_package(  # noqa: C901 -- explicit source-profile persistence branches.
     output: Path, admission: dict[str, Any], *, profile: str, context: dict[str, Any]
 ) -> dict[str, object]:
     """Persist exact admission records and disjoint adapter-scoped remainders.
@@ -163,7 +167,7 @@ def write_literal_package(
                 "except_selectors": [],
             }
         )
-        if profile == "hyefu-allowance":
+        if profile in {"hyefu-allowance", "befu-chart"}:
             for field, reference in sorted(record["lineage"].items()):
                 if field != "amount":
                     links.append(
@@ -173,7 +177,7 @@ def write_literal_package(
                             "source_coordinate": reference,
                             "field": field,
                             "raw_value_json": encode_json(
-                                record["raw_context"][reference.split("!", 1)[1]]
+                                record["raw_context"].get(reference.split("!", 1)[1])
                             ),
                         }
                     )
@@ -192,6 +196,22 @@ def write_literal_package(
                 "except_selectors": [],
             }
         )
+    if profile == "befu-chart":
+        for excluded in admission["excluded_formulas"]:
+            sheet, selector = excluded["sheet"], excluded["coordinate"]
+            _require(selector not in claimed[sheet])
+            claimed[sheet].append(selector)
+            areas.append(
+                {
+                    "source_object_sha256": context["source_object_sha256"],
+                    "sheet": sheet,
+                    "selector": selector,
+                    "state": "excluded",
+                    "reason": excluded["reason"],
+                    "record_ids": [],
+                    "except_selectors": [],
+                }
+            )
     for sheet, selectors in sorted(claimed.items()):
         areas.append(
             {
@@ -244,6 +264,10 @@ def package_admitted_source(
         )
         # The source observation belongs to the admission, never the new run.
         context = {**context, "observed_at": retained["observed_at"].isoformat()}
+    elif profile == "befu-chart":
+        _require(context["source_object_sha256"] == befu_chart.SOURCE_SHA256)
+        admission = befu_chart.admit_befu_chart_literals(source)
+        _require(context["source_locator"] == admission["records"][0]["source_locator"])
     elif profile == "hyefu-allowance":
         _require(context["source_object_sha256"] == allowance.SOURCE_SHA256)
         admission = allowance.admit_hyefu_allowances(source)

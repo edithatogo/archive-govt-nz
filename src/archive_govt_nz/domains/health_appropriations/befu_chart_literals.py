@@ -150,7 +150,7 @@ def admit_befu_chart_literals(source: Path) -> dict[str, Any]:
     """Read one hash-pinned original into distinct raw/context records only."""
     _require(source.is_file() and not source.is_symlink())
     payload = verified_snapshot(source, SOURCE_SHA256, max_bytes=4 * 1024 * 1024)
-    inventory_workbook(BytesIO(payload))
+    inventory = inventory_workbook(BytesIO(payload))
     tokens = _selected_tokens(payload)
     book = load_workbook(BytesIO(payload), data_only=False, keep_links=True)
     try:
@@ -226,6 +226,7 @@ def admit_befu_chart_literals(source: Path) -> dict[str, Any]:
             "schema_version": "befu-chart-literal-context/v1",
             "status": "raw_context_only",
             "records": records,
+            "workbook_inventory": inventory,
             "excluded_formulas": excluded,
             "rights_state": "not_evaluated",
             "analytical_addition_or_netting": "not_performed",
