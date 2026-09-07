@@ -1,0 +1,74 @@
+[
+  {
+    "exit_code": 1,
+    "guard": "data[digest_key] == row[\"source_object_sha256\"]",
+    "outcome": "killed",
+    "output_sha256": "e043b010965dc672ac08557ebff59e9a6d90816422cdf24e9414f8c976f238ed"
+  },
+  {
+    "exit_code": 1,
+    "guard": "data[\"source_locator\"] == row[\"source_locator\"]",
+    "outcome": "killed",
+    "output_sha256": "8d590b907696247537f1279b6510005cbd48b29fe9fc9cfe1fe729be9333e736"
+  },
+  {
+    "exit_code": 1,
+    "guard": "data[\"source_vintage\"] == row[\"vintage\"]",
+    "outcome": "killed",
+    "output_sha256": "e1f927925d1f6827ac19fc014bcc8c56ca1d86e08feb4d570fd6422495c517ec"
+  },
+  {
+    "exit_code": 1,
+    "guard": "completion[\"stages\"][name] == row[\"receipt_sha256\"]",
+    "outcome": "killed",
+    "output_sha256": "bed8b38eb8eca004939c0d3276db378e7b9dc4fe28a5998aee8e1ea4c2120409"
+  },
+  {
+    "exit_code": 1,
+    "guard": "coverage[\"manifest_sha256\"] == row[\"receipt_sha256\"]",
+    "outcome": "killed",
+    "output_sha256": "85813c05b30fea3687e3ac2080df61d4cce9cf00528b13ce309d7f774613e52e"
+  },
+  {
+    "exit_code": 1,
+    "guard": "coverage[\"facts\"] == count",
+    "outcome": "killed",
+    "output_sha256": "5ef07b7e7067045f866333a0f9fa193c3a68f3e164cbe459d6627e85db5fc78d"
+  },
+  {
+    "exit_code": 1,
+    "guard": "data[\"profile\"] == name",
+    "outcome": "killed",
+    "output_sha256": "b2f4994d67686ac166ad68108878fbe082eb19745ee9069da6afcac3e0c8a527"
+  },
+  {
+    "exit_code": 0,
+    "guard": "item.sha256 == row[\"receipt_sha256\"]",
+    "outcome": "not_killed",
+    "output_sha256": "f1d02f578784ae26c484a53402bfb6126c32b1346d44e349b68aa969fa8e59f0"
+  },
+  {
+    "exit_code": 1,
+    "guard": "data[\"schema_version\"] == PROFILES[row[\"profile\"]][1]",
+    "outcome": "killed",
+    "output_sha256": "8b8ea79083ae39a77994b46e30de7a89be27fedf87f950f68329ef6e75968366"
+  },
+  {
+    "exit_code": 1,
+    "guard": "data[\"rights_state\"] == \"not_evaluated\"",
+    "outcome": "killed",
+    "output_sha256": "22b3473088524c68aa84036484284512024c21e33922a563ab42541500fc935d"
+  },
+  {
+    "exit_code": 1,
+    "guard": "key not in seen",
+    "outcome": "killed",
+    "output_sha256": "49968f077463d7d8943fbb23f45705b6b9cefc70ac6c714a498cb5f289bd30c6"
+  },
+  {
+    "exit_code": 1,
+    "guard": "row[\"family\"] == PROFILES[row[\"profile\"]][0]",
+    "outcome": "killed",
+    "output_sha256": "dc7002c760d48c4362656ffae1646762f1dae692ef020561c4bb10154bdc1ec8"
+  }
+]

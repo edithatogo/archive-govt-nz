@@ -1,0 +1,113 @@
+{
+  "schema_version": "archive-govt-nz.health-coverage-selections/v1",
+  "selections": [
+    {
+      "selection_id": "budget-Budget-2025",
+      "profile": "budget",
+      "family": "budget",
+      "vintage": "Budget-2025",
+      "source_locator": "data/raw/b25-expenditure-data.xlsx",
+      "source_object_sha256": "d67c01b0a3f1fbee5cb5121b641bda42f91f3e5bc84e599d22d32aeacbbb3338",
+      "receipt_sha256": "1b1e5dfd3fa90d98dcf5200997001db236df7b40f4404b658c36f5cb0264d2fe"
+    },
+    {
+      "selection_id": "befu-BEFU-2025",
+      "profile": "befu",
+      "family": "befu",
+      "vintage": "BEFU-2025",
+      "source_locator": "data/raw/befu25-data-expense-tables.xlsx",
+      "source_object_sha256": "dbde3256b1cbfb847f9f6caec66e7adffabca0489b218997a431220da584a3d6",
+      "receipt_sha256": "9217b02ffb2a03e56a0a45cb7b865cb05227d6ed3a59e3f429d8faf154d3644e"
+    },
+    {
+      "selection_id": "hyefu-HYEFU-2024",
+      "profile": "hyefu",
+      "family": "hyefu",
+      "vintage": "HYEFU-2024",
+      "source_locator": "data/raw/hyefu24-data-expense-tables.xlsx",
+      "source_object_sha256": "725399c09323594c921dbcc493206abe59bf7b91dd968b8c7f6f3a67d4707969",
+      "receipt_sha256": "c1d04065992825f1e122e0c9b384cf23e94104a8e0fc2310155161c60a6fa9d6"
+    },
+    {
+      "selection_id": "historical-fiscal-2024",
+      "profile": "historical",
+      "family": "fiscal",
+      "vintage": "fiscal-2024",
+      "source_locator": "data/raw/fiscaltimeseries1972-2024.xlsx",
+      "source_object_sha256": "769f2e7dd6000878cd29c2d913ad6979f28c5391c971292e6abf6148e83eb32d",
+      "receipt_sha256": "dbdba7dbae941e29f25fc5bc1227479107d8d1eaa8d761d6fe2d03ec63347f1f"
+    },
+    {
+      "selection_id": "revenue-Budget-2025",
+      "profile": "revenue",
+      "family": "budget",
+      "vintage": "Budget-2025",
+      "source_locator": "data/raw/b25-revenue-data.xlsx",
+      "source_object_sha256": "2aef43eb419420a549fe56a946539f6e9afcbd91f95e9242457f26c97bafafaa",
+      "receipt_sha256": "0e4433dfe1757e47e62f1b486d35aaab2228b33c8d2f5045e99dc1f7a6782de7"
+    },
+    {
+      "selection_id": "befu-detail-BEFU-2025",
+      "profile": "befu-detail",
+      "family": "befu",
+      "vintage": "BEFU-2025",
+      "source_locator": "data/raw/befu25-data-expense-tables.xlsx",
+      "source_object_sha256": "dbde3256b1cbfb847f9f6caec66e7adffabca0489b218997a431220da584a3d6",
+      "receipt_sha256": "42cf811aef35d5adf24421c917525ae8f0d6f9d83bd6b10cdf430e64a60c287d"
+    },
+    {
+      "selection_id": "hyefu-detail-HYEFU-2024",
+      "profile": "hyefu-detail",
+      "family": "hyefu",
+      "vintage": "HYEFU-2024",
+      "source_locator": "data/raw/hyefu24-data-expense-tables.xlsx",
+      "source_object_sha256": "725399c09323594c921dbcc493206abe59bf7b91dd968b8c7f6f3a67d4707969",
+      "receipt_sha256": "6615ca6b601283aae75b80dd15627bae32d2769b95f4b7b71f18c9fa9ce5a321"
+    },
+    {
+      "selection_id": "crown-Fiscal-Time-Series-1972-2025",
+      "profile": "crown",
+      "family": "fiscal",
+      "vintage": "Fiscal-Time-Series-1972-2025",
+      "source_locator": "https://budget.govt.nz/budget/excel/fiscal-time-series/fiscaltimeseries1972-2025-year-end25.xlsx",
+      "source_object_sha256": "de59f9028a81a697ee66eea04861edfd8e2c3a7e472b3b8798d976951964f70f",
+      "receipt_sha256": "0df04c977f870a6abba4105706a7e51af179eba35234221fcbf5a13482139503"
+    },
+    {
+      "selection_id": "befu-chart-BEFU-2025",
+      "profile": "befu-chart",
+      "family": "befu",
+      "vintage": "BEFU-2025",
+      "source_locator": "data/raw/befu25-charts-data.xlsx",
+      "source_object_sha256": "cf98f5e21f60c76c7d05f788df7955fb45cfdd780c12cb18e26ff8e83615e168",
+      "receipt_sha256": "8bcf1427b3151ddc296a43632ea5fa87e9ecb777bb439160008a864e9ec8a40b"
+    },
+    {
+      "selection_id": "hyefu-allowance-HYEFU-2024",
+      "profile": "hyefu-allowance",
+      "family": "hyefu",
+      "vintage": "HYEFU-2024",
+      "source_locator": "data/raw/hyefu24-charts-data.xlsx",
+      "source_object_sha256": "f77bdab5ef808b0e451a52b9b448a52b07899bc4523da3c02aa5725325d6203c",
+      "receipt_sha256": "b0a56475bed1bd79efa064afb17bf698c07713ce0459962a81931b30ac2f654f"
+    },
+    {
+      "selection_id": "befu-residual-BEFU-2025",
+      "profile": "befu-residual",
+      "family": "befu",
+      "vintage": "BEFU-2025",
+      "source_locator": "data/raw/befu25-charts-data.xlsx",
+      "source_object_sha256": "cf98f5e21f60c76c7d05f788df7955fb45cfdd780c12cb18e26ff8e83615e168",
+      "receipt_sha256": "b4b1e9fe13d2e5a37234b280a88aeae731482065d44ef3140f10a4da7ff67f4e"
+    },
+    {
+      "selection_id": "hyefu-residual-HYEFU-2024",
+      "profile": "hyefu-residual",
+      "family": "hyefu",
+      "vintage": "HYEFU-2024",
+      "source_locator": "data/raw/hyefu24-charts-data.xlsx",
+      "source_object_sha256": "f77bdab5ef808b0e451a52b9b448a52b07899bc4523da3c02aa5725325d6203c",
+      "receipt_sha256": "8ffb2c29bf6c44e6816ede0860b333d4cc32f1c40190ea247c6ff86453be5e36"
+    }
+  ]
+}
