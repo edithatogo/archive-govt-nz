@@ -42,7 +42,7 @@ The approved destination is archive-govt-nz; no cutover has occurred.
   Reject pin, membership, identity and integrity drift. Receipt association
   must not promote candidates into reviewed coverage. This bounded local
   reconciliation does not complete P2.2/P2.3 or authorize publication.
-  Receipt: `rollout-reconciliation.json`, `rollout-reconciliation.md`;
+  Implementation: `3f1f4ad9`. Receipt: `rollout-reconciliation.json`, `rollout-reconciliation.md`;
   79 focused tests pass, new module has 100% line/branch coverage.
   Full integration and hosted gates remain with the parent.
 
