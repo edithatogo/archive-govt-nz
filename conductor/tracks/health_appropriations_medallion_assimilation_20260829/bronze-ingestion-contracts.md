@@ -1,5 +1,9 @@
 # Phase 2.1 Bronze ingestion contract audit — 2026-09-07
 
+Historical audit at `0cf0f32b`. Cooperative resume and WARC overwrite findings
+are addressed by [the checkpoint follow-up](./bronze-checkpoint-contracts.md);
+the observations and original validation below remain retained unchanged.
+
 Bounded implementation on `1f53a6e80873a99acc67c746fa6f1478b78b24aa` in an
 independent worktree. The original Phase 2.1 test task remains `[~]`; Phase 2.4
 is unchanged. No source-census state, live rights decision, publication, parent

@@ -317,10 +317,10 @@ def test_durability_failure_precedes_promotion_and_preserves_prior_objects(
 
 
 @pytest.mark.anyio
-async def test_health_capture_resume_and_warc_gaps_are_explicit(
+async def test_health_capture_resumes_verified_checkpoint_without_replacing_warc(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    """Characterize missing durable batch resume/versioned WARC, not acceptance."""
+    """Resume skips durable captures; new observations retain earlier WARCs."""
     namespace = runpy.run_path(
         str(Path(__file__).parents[3] / "tools/capture_health_resources.py")
     )
@@ -347,6 +347,8 @@ async def test_health_capture_resume_and_warc_gaps_are_explicit(
         store_root=tmp_path / "cas",
         warc_dir=tmp_path / "warc",
         max_resource_bytes=1024,
+        manifest=tmp_path / "manifest.json",
+        resume=False,
     )
     calls = []
 
@@ -371,18 +373,31 @@ async def test_health_capture_resume_and_warc_gaps_are_explicit(
     monkeypatch.setitem(execute.__globals__, "capture_url", local_capture)
     with pytest.raises(asyncio.CancelledError):
         await execute(args)
-    prior_warc = (args.warc_dir / "one.warc").read_bytes()
+    checkpoint = json.loads(args.manifest.read_text())
+    first = checkpoint["results"][0]
+    prior_path = args.warc_dir / first["warc_path"]
+    prior_warc = prior_path.read_bytes()
     assert (
         ContentAddressedStore(args.store_root, create=False)
         .verified_inventory()
         .object_count
         == 1
     )
+    args.resume = True
     result = await execute(args)
-    assert len(calls) == 4  # First completed resource was requested again.
-    assert calls[0] == calls[2]
+    assert len(calls) == 3
+    assert calls[1] == calls[2]
     assert result["captured"] == 2
-    assert (args.warc_dir / "one.warc").read_bytes() != prior_warc
+    assert prior_path.read_bytes() == prior_warc
+    assert result["results"][0] == first
+    assert await execute(args) == result
+    assert len(calls) == 3
+    args.resume = False
+    args.manifest = tmp_path / "new-observation.json"
+    subsequent = await execute(args)
+    assert len(calls) == 5
+    assert subsequent["results"][0]["warc_path"] != first["warc_path"]
+    assert prior_path.read_bytes() == prior_warc
     assert (
         ContentAddressedStore(args.store_root, create=False)
         .verified_inventory()

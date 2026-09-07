@@ -1115,3 +1115,14 @@ The [final matrix](./eight-recordset-fixture-completion.md) identifies no unmet
 fixture clause. Marking the fixture task complete does not close source-family
 projection tasks or the full AC-16 checkpoint. No new production validator,
 dependency or external action was needed. No in-scope review finding remains.
+# 2026-09-07 — Bronze checkpoint follow-up
+
+Phase 2.1 cooperative per-resource resume and non-overwriting WARC paths are
+implemented in the isolated Bronze worktree after `0cf0f32b`. Initial missing
+checkpoint red is retained in `bronze-checkpoint-contracts.md`; final 43 focused
+and 149 affected tests pass, runner coverage is 100% line/branch, four seeded
+mutants are caught, and Ruff/format/basedpyright pass. The paired machine
+receipt is `bronze-checkpoint-validation.json`. Self-review checked receipt
+fixity, repeated interruption, orphan preservation, competing-writer fencing,
+and manifest compatibility. Exact Phase 2.1 gaps remain documented; no broad
+completion, full-harness, source-census, rights, parent-edit or Phase 3 claim.

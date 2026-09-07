@@ -400,6 +400,12 @@ and `Collected` retain distinct receipts.
 
 ## Operational state and recovery
 
+The fiscal capture runner's bounded cooperative checkpoint/attempt storage
+contract is documented in [Bronze checkpoints](./bronze-checkpoint-contracts.md).
+It verifies retained CAS/WARC receipts before explicit resume, reserves unique
+WARC attempt paths and atomically checkpoints after each resource. A hard-kill
+leaves a fail-closed lock; automated stale-owner recovery is not yet claimed.
+
 The existing transactional SQLite ledger records discovery cursors, attempts,
 retry schedule, object/observation links and publication stages. Durable
 manifests and objects remain sufficient to reconstruct the analytical layers.
