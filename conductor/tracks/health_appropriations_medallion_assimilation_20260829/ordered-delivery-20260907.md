@@ -51,3 +51,19 @@ It does not supply the missing historical FOI raw package or changed-sync proof.
 The full local gate passed 6,069 tests and all subsequent checks; exact tested
 commit and prior evidence are in `evidence/assurance/health-interfaces-integration-20260907.md`.
 No whole-phase acceptance or rights/publication inference is made.
+
+## Raw extraction delivery
+
+PR #427 merged at 2026-09-07T06:12:59Z as
+`decbcf077d9ee5ff797a40f3eb16520811c3ffd8`, reviewed head
+`44c2cd57b99b9bb2411e519ea31ad929167dee5f`. All required checks passed,
+including three OS checks in run `34088852847`; Windows job `101638094692`
+completed in 13m46s. The ancestry update preserved tree
+`656716e64bf6bcc7fc212010d4baaa344183b297`.
+
+This delivers 160 donor-detail literal observations, 69 Budget revenue facts
+and explicit canonical publisher handoff with default v1 unchanged. The full
+local gate passed 6,137 tests and all follow-on checks; see
+`evidence/assurance/health-extraction-integration-20260907.md` for exact local
+head and retained typing-failure correction. Raw admission is not Gold selection,
+resource rights or actual external publication. No whole-phase closure is inferred.
