@@ -1,5 +1,17 @@
 # Run log
 
+## 2026-09-07 — final integrated acceptance and archival
+
+PR #415 merged `7afaec8e` with exactly the reviewed `fcb8f7c8` tree after all
+three OS gates passed. Independent readback verified11 supplementary artifacts,
+113 files, reproducible builds,904 real-state objects with zero mismatches,
+archived donor identity, empty security alerts and the active ruleset. Popper
+returned no actionable finding on the frozen change; the parent verified merge
+and evidence hashes. `acceptance.json` closes the earlier peer-pending receipt
+without editing its bytes. Prior timeout/log-readback failures remain retained.
+Issue351 was already closed; its label was not used as acceptance evidence.
+All four acceptance criteria pass for this selected integrated revision.
+
 - 2026-09-05: Selected target f2669f1ce6ae48f3e09387608acbb8c58aa20334 and issue #351 in an isolated worktree. Donor remains archived at presentation head 905f9e07c17af9d9d25dbe2b1c052fb8a290a4e3.
 - 2026-09-05: Existing supplementary runs preserved two parent-state timing failures and a source-set child timeout. Unchanged source-set retry passed; no timeout is credited as a killed mutant. Dedicated hosted parent mutation execution was absent from CI.
 - 2026-09-05: Prepared opt-in static hosted matrix for existing suites under the independently reviewed harness-defect exception. Root and peer reviewed permission, gate, exact revision, receipt and failure semantics; fixes record full argv and check size before hashing.

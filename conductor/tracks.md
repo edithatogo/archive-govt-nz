@@ -306,5 +306,5 @@ implementation has occurred under these tracks.
 - [x] **Track: Independent durable legislation recovery (Prompt 10)**
   *Link: [./archive/legislation_independent_recovery_20260901/index.md](./archive/legislation_independent_recovery_20260901/index.md)*
 
-- [~] **Track: Final integrated assurance closeout (Prompt 20)**
-  *Track: [./tracks/integrated_assurance_closeout_20260905/index.md](./tracks/integrated_assurance_closeout_20260905/index.md)*
+- [x] **Track: Final integrated assurance closeout (Prompt 20)**
+  *Archived: [./archive/integrated_assurance_closeout_20260905/index.md](./archive/integrated_assurance_closeout_20260905/index.md)*
