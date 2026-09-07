@@ -203,3 +203,25 @@ they remain on one physical disk and are not independently replicated or public.
   Full and hosted validation remain pending; P5.4a remains in progress.
 
 PR #288 passed three-platform assurance, CodeQL and workflow checks. Live evidence verifies exact-parent conflict rejection, persistence across local and hosted processes, private capture completion without public credit, and unchanged authority during read-only hosted health. Source discovery, continuous acquisition, source eligibility, publisher enforcement, public raw restore and donor transfer remain open. The track stays in progress; local timeout and Windows correction receipts remain preserved. See shared-execution-deployment-20260831.json.
+
+## 2026-09-07 — P2.9 conductor self-review
+
+Pass: AC04/AC09/AC11 bounded reconciliation acceptance. Existing rollout
+integrity checks are reused; catalogue hash, universe equality and retained
+source identity are additionally enforced. Reports expose exact input/receipt
+hashes and do not copy arbitrary receipt fields, URLs, raw data, approval
+assertions or local absolute paths. Candidates never acquire review credit.
+Source configuration and historical receipts remain unchanged.
+
+Pass: deterministic JSON/Markdown regeneration and order-insensitive lineage;
+source reassignment, omitted source, substituted pin, duplicate, unsafe receipt,
+contract drift, changing input, CLI rejection and hostile approval-claim tests.
+79 focused tests pass with 100% new-module line and branch coverage. Ruff,
+formatting and scoped BasedPyright pass. Python/general style guides apply;
+no new dependency or platform integration is introduced.
+
+Boundary: the user explicitly assigned the parent the full integration harness.
+This self-review establishes the local subtask only, not phase acceptance,
+hosted validation, rights approval or publication. P2.2/P2.3 stay in progress;
+no global registry edits or remote writes were made. No unresolved in-scope
+correctness finding remains.

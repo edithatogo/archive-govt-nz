@@ -1,5 +1,14 @@
 # Plan
 
+## Rehearsal evidence correction — 2026-09-07
+
+- [x] Reproduce and correct the legacy recovery tool's fabricated operational
+  cycle claim: emit a distinct synthetic receipt, zero observed cycles, no
+  asserted target revision, and a non-evidence default output path. Use genuine
+  BLAKE3 rather than a truncated BLAKE2 digest. Preserve historical evidence.
+- [~] Validate and deliver this correction with the ordered integration before
+  accepting terminal operational assurance.
+
 ## Independent acceptance review — 2026-09-06
 
 - [x] Re-read exact baseline contracts and independently verify live hosted and

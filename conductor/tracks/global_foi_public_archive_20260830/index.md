@@ -17,6 +17,9 @@ Approved track in progress. Automation repair and source-catalogue foundations a
 
 ## Implementation receipts
 
+- [Rollout lineage reconciliation](rollout-reconciliation.md)
+- [Deterministic source lineage and receipt hashes](rollout-reconciliation.json)
+
 - [Bounded hosted prerequisite readback](hosted-prerequisite-readback-20260906.md)
 - [Readback digests and registry reconciliation](hosted-prerequisite-readback-20260906.json)
 

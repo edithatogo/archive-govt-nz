@@ -21,3 +21,15 @@ acceptance, not claims about track initialization. See approval.json and recomme
 | R14 | Should | Estimate volume/cost and expose coverage/freshness in a generated human-readable report from the same machine ledger. |
 | R15 | Could | Add independent redundant mirrors after HF reconstruction works and separate mirror authority is established. |
 | R16 | Won't | Claim every national record is captured, infer redistribution permission from public access, delete/retire donors, publish DOIs, or add analysis/model training under this track. |
+
+## Bounded P2.9 acceptance — 2026-09-07
+
+Under R04/R09/R11, local lineage reconciliation must reproduce the pinned
+catalogue hash, prove entity-set equality and retain every catalogue source
+with its original entity. Every additional rollout source must be labelled as
+an additional candidate, with a source-associated local receipt digest or an
+explicit missing-receipt marker. JSON and Markdown must reproduce byte-for-byte.
+Invalid provenance, duplicate links, receipt substitution and catalogue drift
+must fail. No receipt claim can grant catalogue review or coverage credit.
+This completes a repository-owned reconciliation subtask only; R04 publication,
+reviewed country dispositions and broader P2.2/P2.3 acceptance remain open.

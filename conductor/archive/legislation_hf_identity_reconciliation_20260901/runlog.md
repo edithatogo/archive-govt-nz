@@ -1,5 +1,16 @@
 # Run log
 
+## Archival reconciliation — 2026-09-07
+
+PR #396 is merged at `98b6d055153d7cc0dd03b0cfdb1d80694e9bf16f`.
+Anonymous API readback reconfirmed all three registry revisions and access
+states: canonical `04688f12` public/ungated, historical `ea9e66fb` public/ungated,
+immutable snapshot `1dea0c67` public/auto-gated. Earlier exact-byte publication
+readbacks remain authoritative; this refresh does not claim new payload reads.
+The full integration gate passed and 80 evidence/publication tests passed.
+All plan items and both metadata gates are satisfied. Archive the track while
+retaining the distinct Prompt 13 second-parent task. No remote dataset change.
+
 ## Operational prerequisite closeout — 2026-09-06
 
 Read all three public identity APIs anonymously and streamed all four approved

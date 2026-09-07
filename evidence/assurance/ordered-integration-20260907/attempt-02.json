@@ -1,0 +1,11 @@
+{
+  "status": "partial",
+  "resource_benchmark": "passed",
+  "wall_seconds": 2.0407172499999433,
+  "peak_rss_bytes": 248659968,
+  "child_peak_rss_bytes": 134823936,
+  "probe_sha256": "3300e7373d123c68ad3c91c9d79a1bf00672ce2fbde8e9853ed6a482f33f6f39",
+  "failed_stage": "security_readback",
+  "cause": "Dependabot returned HTTP 400 because it does not support the page query parameter.",
+  "correction": "Use gh api --paginate --slurp to follow API-provided pagination links across all three alert endpoints. No authentication scope changes."
+}

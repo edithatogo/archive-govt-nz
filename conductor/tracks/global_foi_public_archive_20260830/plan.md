@@ -36,6 +36,16 @@ The approved destination is archive-govt-nz; no cutover has occurred.
 
 ### P2 review fixes — local continuation 2026-09-06
 
+- [x] P2.9 (AC04, AC09, AC11): Reconcile the materialized rollout against
+  the byte-verified pinned catalogue; enumerate retained sources and additional
+  candidates with receipt hashes in deterministic JSON/Markdown reports.
+  Reject pin, membership, identity and integrity drift. Receipt association
+  must not promote candidates into reviewed coverage. This bounded local
+  reconciliation does not complete P2.2/P2.3 or authorize publication.
+  Implementation: `3f1f4ad9`. Receipt: `rollout-reconciliation.json`, `rollout-reconciliation.md`;
+  79 focused tests pass, new module has 100% line/branch coverage.
+  Full integration and hosted gates remain with the parent.
+
 - [~] P2.5 (AC04, AC11, AC12): Bind every consumed seed to exactly one
   provenance record and parse the verified bytes; reject omitted, substituted,
   duplicate and symlinked seed inputs without changing the pinned registries.

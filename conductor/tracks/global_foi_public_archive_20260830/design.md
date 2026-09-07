@@ -64,6 +64,24 @@ bounded scoped patches while it remains the active operational owner.
 
 ## Global rollout
 
+P2.9 adds a read-only lineage projection from the byte-verified seed/directory
+catalogue, the materialized rollout and contained source-associated receipts.
+It reuses rollout integrity checks, requires the exact catalogue pin and source
+membership, then emits paired local JSON/Markdown reports. Source IDs found
+only in the rollout are candidates outside the pinned catalogue. Hashes bind
+receipt bytes without adopting their assertions. No source configuration,
+schedule, publication state or reviewed-coverage count is changed.
+
+```mermaid
+flowchart LR
+  C[Pinned seed and directory catalogue] --> R[Lineage reconciliation]
+  L[Materialized rollout] --> R
+  E[Source-associated local receipts] --> R
+  R --> J[JSON lineage and hashes]
+  J --> M[Markdown report]
+  R --> X[Reject pin or identity drift]
+```
+
 The country universe is versioned; territories and the EU are separate entities.
 For every country: discover named public sources, assess adapter/rights/pacing,
 perform a bounded capture and restore, then enable backlog and incremental

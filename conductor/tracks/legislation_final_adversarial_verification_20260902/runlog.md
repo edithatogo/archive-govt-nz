@@ -1,5 +1,16 @@
 # Run log
 
+## 2026-09-07 — synthetic recovery correction
+
+Adversarial inspection found `verify_operational_continuity_and_recovery.py`
+labeling two hard-coded scenarios as verified operational cycles and emitting
+an unconditional historical target commit. A regression failed on the old
+`passed` status. The tool now emits `synthetic_rehearsal`, zero observed cycles,
+`rehearsal_passed` on local success, and no target claim; default output is in
+`build/rehearsals`, not the immutable evidence tree. Its sample fixity now uses
+actual BLAKE3. Five focused tests and lint pass. Full and hosted validation
+remain separate delivery gates. Existing historical receipts are unchanged.
+
 - 2026-09-02: Fetched target main `f42cbbfe...`; independently confirmed donor archived at `b40587f...`.
 - 2026-09-02: Three independent audits reviewed repository claims, state/custody artefacts, and live hosted/publication state.
 - 2026-09-02: Recomputed the governed seed, historical batch arithmetic, referenced receipt hashes, and current API response hashes.

@@ -1,0 +1,122 @@
+{
+  "fixture_version": "health-eight-recordsets/v1",
+  "synthetic": true,
+  "description": "Invented transport examples, not official values, source fixity, rights evidence or canonical promotion. Merge common, fact (five facts only), recordset, then observation fields.",
+  "common": {
+    "schema_version": "archive-govt-nz.health-recordsets/v1",
+    "domain": "health_appropriations",
+    "source_object_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "source_observation_id": "fixture:observation:1",
+    "source_locator": "https://example.invalid/synthetic-health.xlsx",
+    "source_vintage": "synthetic-budget-2025",
+    "valid_time_start": "2025-07-01",
+    "valid_time_end": "2026-06-30",
+    "valid_time_status": "fixture_explicit",
+    "period_token": "2025/26",
+    "observed_at": "2026-09-05T10:00:00.123456+10:00",
+    "observation_context": "synthetic_not_capture_attestation",
+    "rights_state": "not_evaluated",
+    "quality_flags": ["synthetic", "source_semantics_not_qualified"],
+    "transformation_id": "fixture:normalization:v1",
+    "lineage_id": "fixture:lineage:1",
+    "source_record_id": "fixture:source-row:2",
+    "source_schema_version": "fixture:workbook:v1"
+  },
+  "fact": {
+    "measure": "synthetic_expenditure",
+    "amount": "123.450",
+    "value_token": "123.450",
+    "null_reason": null,
+    "source_decimal_precision": 6,
+    "source_decimal_scale": 3,
+    "unit": "NZD_millions",
+    "currency": "NZD",
+    "price_basis": "nominal",
+    "base_period": null,
+    "denominator_definition": null,
+    "amount_type": "estimate",
+    "source_label": "Synthetic health allocation"
+  },
+  "recordsets": {
+    "source_inventory": {
+      "source_coordinate": "Synthetic!B2",
+      "item_kind": "cell",
+      "disposition": "preserved_only",
+      "reason": "synthetic_not_acquired",
+      "source_fingerprint": "fixture:layout:v1"
+    },
+    "appropriation_fact": {
+      "vote": "Synthetic Health",
+      "appropriation": "Synthetic services",
+      "department": "Synthetic department",
+      "portfolio": "Synthetic portfolio",
+      "classification_ids": ["fixture:classification_dimension:0"]
+    },
+    "health_spending_fact": {
+      "institutional_coverage": "synthetic_public_health",
+      "accounting_basis": "synthetic_accrual"
+    },
+    "fiscal_context_fact": {
+      "measure": "synthetic_gdp",
+      "institutional_coverage": "synthetic_national",
+      "accounting_basis": "synthetic_national_accounts",
+      "seasonal_adjustment": "unadjusted"
+    },
+    "pharmaceutical_budget_fact": {
+      "budget_scope": "synthetic_combined_pharmaceutical_budget",
+      "funding_regime": "synthetic_regime_2025"
+    },
+    "price_population_fact": {
+      "measure": "synthetic_price_index",
+      "unit": "index_points",
+      "currency": null,
+      "price_basis": "index",
+      "base_period": "synthetic_2025_Q2_1000",
+      "denominator_definition": "synthetic_fixed_basket",
+      "amount_type": "actual",
+      "series_id": "fixture:cpi",
+      "geography": "synthetic_NZ",
+      "population_definition": null,
+      "seasonal_adjustment": "unadjusted"
+    },
+    "classification_dimension": {
+      "scheme": "synthetic_health",
+      "scheme_version": "fixture:v1",
+      "source_label": "Synthetic health allocation",
+      "normalized_identifier": null,
+      "mapping_state": "unresolved",
+      "mapping_method": null,
+      "mapping_evidence": null
+    },
+    "field_lineage": {
+      "target_record_id": "fixture:appropriation_fact:0",
+      "field": "amount",
+      "source_coordinate": "Synthetic!B2",
+      "raw_value": "123.450",
+      "normalized_value": "123.450",
+      "rule": "fixture:exact_decimal:v1"
+    }
+  },
+  "source_cells": {
+    "source_inventory": {"disposition": "preserved_only", "reason": "synthetic_not_acquired"},
+    "appropriation_fact": {"amount": "123.450", "unit": "NZD_millions", "source_label": "Synthetic health allocation"},
+    "health_spending_fact": {"amount": "123.450", "unit": "NZD_millions", "accounting_basis": "synthetic_accrual"},
+    "fiscal_context_fact": {"amount": "123.450", "unit": "NZD_millions", "measure": "synthetic_gdp"},
+    "pharmaceutical_budget_fact": {"amount": "123.450", "unit": "NZD_millions", "funding_regime": "synthetic_regime_2025"},
+    "price_population_fact": {"amount": "123.450", "unit": "index_points", "base_period": "synthetic_2025_Q2_1000", "denominator_definition": "synthetic_fixed_basket"},
+    "classification_dimension": {"source_label": "Synthetic health allocation", "mapping_state": "unresolved"}
+  },
+  "observations": [
+    {},
+    {
+      "source_vintage": "synthetic-budget-2026",
+      "source_observation_id": "fixture:observation:2",
+      "observed_at": "2026-09-06T00:00:00+00:00",
+      "valid_time_start": null,
+      "valid_time_end": null,
+      "valid_time_status": "not_established",
+      "rights_state": "restricted",
+      "quality_flags": ["synthetic", "dates_not_inferred_from_period_token"]
+    }
+  ]
+}

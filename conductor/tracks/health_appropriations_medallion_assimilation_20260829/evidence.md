@@ -632,3 +632,24 @@ mutants killed. The [negative-fixture matrix](./negative-fixture-matrix.md)
 closes the negative-fixture task for existing bounded profiles. Full combined
 checks remain assigned to the parent; broad positive semantic qualification,
 source/parity/promotion and whole-track completion remain pending.
+
+## 2026-09-07 — Full fixture-dimension assessment
+
+[Fixture matrix](./eight-recordset-fixture-acceptance.md) and
+[machine receipt](./eight-recordset-fixture-validation.json) map all Phase 3.1
+fixture dimensions to M-05/M-06/M-18 and AC-05/AC-16. All eight sets cross JSON
+Schema, Arrow and generated Parquet; 335 affected tests pass, including 142 new
+cases. Stable source-key construction, unit/time/rights qualification and
+complete verified Bronze lineage remain unmet. The broad task stays `[~]`.
+Focused lint/format/types pass; parent retains full integrated assurance.
+
+## 2026-09-07 — Fixture task completed; initial interpretation superseded
+
+[Completion assessment](./eight-recordset-fixture-completion.md) and
+[receipt](./eight-recordset-fixture-completion.json) supersede the immediately
+preceding blocking interpretation. All named fixture dimensions now have
+transport, linked synthetic Bronze and approved adapter contract assertions.
+Added 24 cases (166 total new fixture tests); 673 affected tests pass. The
+original Phase 3.1 fixture task is `[x]`; whole-phase status remains in progress.
+No live rights/source qualification is inferred. AC-16 full integrated checkpoint
+remains assigned to the parent; no full harness, push, merge or publication.

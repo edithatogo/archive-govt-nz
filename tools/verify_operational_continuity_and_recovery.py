@@ -1,4 +1,4 @@
-"""Verify operational continuity target cycles and recovery drill."""
+"""Run a synthetic recovery rehearsal; never attest hosted operational cycles."""
 
 from __future__ import annotations
 
@@ -11,6 +11,8 @@ import time
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
+
+from blake3 import blake3
 
 from archive_govt_nz.domains.legislation.checkpoints import (
     LegislationCheckpointManager,
@@ -30,18 +32,18 @@ from archive_govt_nz.domains.legislation.models import (
 )
 
 DEFAULT_RECEIPT_PATH = Path(
-    "evidence/migrations/corpus-legislation-nz/"
-    "operational-continuity-recovery-receipt.json"
+    "build/rehearsals/operational-continuity-recovery-receipt.json"
 )
 DEFAULT_TARGET_COMMIT = "c154578f4e7de3585e6b5885c157fc6ef2c7564b"
 
 
-def get_observed_target_cycles(
+def get_simulated_target_cycles(
     baseline_manifest_hash: str,
 ) -> list[dict[str, Any]]:
-    """Return genuine observed pipeline execution cycles."""
+    """Return inert scenario descriptions, not observed workflow executions."""
     return [
         {
+            "evidence_kind": "synthetic_rehearsal",
             "cycle_number": 1,
             "cycle_type": "scheduled_weekly_harvest",
             "workflow_name": "Scheduled Legislation Harvest",
@@ -73,6 +75,7 @@ def get_observed_target_cycles(
             "publication_state": "prepared_locally_not_published",
         },
         {
+            "evidence_kind": "synthetic_rehearsal",
             "cycle_number": 2,
             "cycle_type": "monthly_reconciliation",
             "workflow_name": "Monthly Legislation Reconciliation",
@@ -138,7 +141,7 @@ def load_canonical_sample_records() -> list[LegislationRecord]:
     for wid, title, ltype in sample_specs:
         raw_bytes = f"<statute id='{wid}'>{title}</statute>".encode()
         sha256_hash = hashlib.sha256(raw_bytes).hexdigest()
-        blake3_hash = hashlib.blake2b(raw_bytes).hexdigest()[:64]
+        blake3_hash = blake3(raw_bytes).hexdigest()
         uri = (
             f"https://www.legislation.govt.nz/{wid.replace('-', '/')}/latest/whole.html"
         )
@@ -196,7 +199,7 @@ def run_clean_workspace_recovery_drill(  # noqa: C901
         for r in records:
             raw_payload = f"<statute id='{r.work_id}'>{r.title}</statute>".encode()
             calc_sha256 = hashlib.sha256(raw_payload).hexdigest()
-            calc_blake3 = hashlib.blake2b(raw_payload).hexdigest()[:64]
+            calc_blake3 = blake3(raw_payload).hexdigest()
             if calc_sha256 != r.raw_cas_hash_sha256:
                 mismatches.append(
                     f"CAS SHA-256 mismatch for {r.work_id}: "
@@ -270,7 +273,7 @@ def run_clean_workspace_recovery_drill(  # noqa: C901
 def execute_operational_continuity_and_recovery(
     receipt_path: Path = DEFAULT_RECEIPT_PATH,
 ) -> dict[str, Any]:
-    """Verify operational continuity cycles and run recovery drill."""
+    """Run a synthetic drill without granting operational acceptance."""
     now_iso = datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
     print("[OPS-CONTINUITY] Loading sample records and baseline state...")
     records = load_canonical_sample_records()
@@ -283,19 +286,21 @@ def execute_operational_continuity_and_recovery(
     )
 
     baseline_manifest_hash = recovery_result["baseline_manifest_sha256"]
-    cycles = get_observed_target_cycles(baseline_manifest_hash)
-    print(f"[OPS-CONTINUITY] Verified {len(cycles)} operational cycles.")
+    cycles = get_simulated_target_cycles(baseline_manifest_hash)
+    print("[OPS-CONTINUITY] Synthetic rehearsal only; no operational cycles verified.")
 
-    overall_status = "passed" if recovery_result["status"] == "passed" else "failed"
+    overall_status = (
+        "rehearsal_passed" if recovery_result["status"] == "passed" else "failed"
+    )
 
     receipt = {
-        "schema_version": (
-            "archive-govt-nz.operational-continuity-recovery-receipt/v1"
-        ),
+        "schema_version": ("archive-govt-nz.operational-continuity-rehearsal/v1"),
         "evaluated_at": now_iso,
-        "target_commit": DEFAULT_TARGET_COMMIT,
-        "operational_cycles_count": len(cycles),
-        "operational_cycles": cycles,
+        "evidence_kind": "synthetic_rehearsal",
+        "target_commit": None,
+        "operational_cycles_count": 0,
+        "operational_cycles": [],
+        "simulated_cycles": cycles,
         "recovery_drill": recovery_result,
         "publication_state": "prepared_locally_not_published",
         "remote_publish_attempted": False,
@@ -313,7 +318,7 @@ def execute_operational_continuity_and_recovery(
 def main() -> None:
     """CLI entrypoint."""
     parser = argparse.ArgumentParser(
-        description="Verify Operational Continuity and Run Recovery Drill"
+        description="Run a synthetic recovery rehearsal (not operational evidence)"
     )
     parser.add_argument(
         "--receipt-path",
@@ -326,7 +331,7 @@ def main() -> None:
     receipt = execute_operational_continuity_and_recovery(
         receipt_path=args.receipt_path
     )
-    code = 0 if receipt["status"] == "passed" else 1
+    code = 0 if receipt["status"] == "rehearsal_passed" else 1
     sys.exit(code)
 
 

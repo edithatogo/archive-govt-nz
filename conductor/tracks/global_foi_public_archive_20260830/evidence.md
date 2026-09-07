@@ -82,3 +82,29 @@ Attachment census and compatible package v2: attachment-package-validation-20260
 ### Durable control continuation — 2026-08-31
 
 Receipt: durable-controls-local-validation-20260831.json. The 137 focused control tests pass with complete critical line/branch coverage and six killed mutations. The full local gate remains pending after two timing-limited attempts. Local persistence is not hosted authority; raw publication and cutover remain open.
+
+## P2.9 — local lineage result, 2026-09-07
+
+The paired [machine ledger](rollout-reconciliation.json) and
+[human report](rollout-reconciliation.md) reconcile all 255 materialized sources
+with the exact 30-source pinned catalogue. Both source retention and 251-entity
+set equality pass. Every one of the 225 additions remains a candidate outside
+the pinned catalogue. A source-discovery schema label describes receipt type,
+not the truth of its claims. The three other source receipts are not reverified;
+27 catalogue sources have no pilot receipt. Unknown request totals remain null.
+
+Reproduce from the worktree root in the locked project environment (stdout only):
+
+```sh
+uv run --locked python -m archive_govt_nz.foi_reconciliation --seeds config/foi --rollout conductor/tracks/global_foi_public_archive_20260830/country-rollout-20260831.json --evidence-dir conductor/tracks/global_foi_public_archive_20260830 --format json
+```
+
+Use `--format md` for the paired human report. Exit 2 reports invalid or
+unavailable inputs without emitting a report or echoing input details. The
+library exposes `reconcile_rollout` and `reconciliation_files` for consumers.
+
+Validation: see the exact focused commands in runlog.md. P2.9 is locally
+complete; P2.2/P2.3 and the track remain in progress. The parent must integrate
+and run the full harness. Next source work is evidence-backed candidate
+assessment of FOI scope, origin, adapter, rights and pacing before catalogue
+admission; naming every entity does not satisfy reviewed country coverage.

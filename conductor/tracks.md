@@ -153,9 +153,12 @@ active only after the MVP checkpoint and their stated decision gates pass.
   *Link: [tracks/preservation_conformance_20260801/index.md](./tracks/preservation_conformance_20260801/index.md)*
 - [x] **Track: Track 14: Health payload capture**
   *Link: [tracks/health_payload_capture_20260802/index.md](./tracks/health_payload_capture_20260802/index.md)*
-- [~] **Deferred evaluation: graph/vector indexing**
+- [x] **Deferred evaluation: graph/vector indexing — subsumption recorded**
   *Proposed slug: `graph_vector_evaluation_20260801`*
   *Subsumed 2026-08-23 into Medallion Architecture Consolidation track as Gold-tier DuckDB, LanceDB, and DCAT-AP/Croissant derivative products.*
+  *Reconciled 2026-09-07: this checkbox closes the duplicate evaluation/ownership
+  decision. Implementation acceptance belongs to the archived medallion track;
+  it does not assert new corpus indexing, retrieval quality or publication.*
 
 ## Programme: Medallion Architecture & Unified Data Engine (2026-08-23)
 
@@ -277,7 +280,7 @@ implementation has occurred under these tracks.
   *Link: [./tracks/legislation_500_work_operational_proof_20260901/index.md](./tracks/legislation_500_work_operational_proof_20260901/index.md)*
 
 - [x] **Track: Hugging Face identity, metadata, reconciliation, and target-origin publication (Prompt 15)**
-  *Link: [./tracks/legislation_hf_identity_reconciliation_20260901/index.md](./tracks/legislation_hf_identity_reconciliation_20260901/index.md)*
+  *Archived: [./archive/legislation_hf_identity_reconciliation_20260901/index.md](./archive/legislation_hf_identity_reconciliation_20260901/index.md)*
 
 - [x] **Track: Prompt 16 Zenodo concept/version DOI correction**
   *Link: [./tracks/zenodo_identity_correction_20260902/index.md](./tracks/zenodo_identity_correction_20260902/index.md)*

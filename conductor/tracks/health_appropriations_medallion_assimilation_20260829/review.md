@@ -1072,3 +1072,32 @@ The complete formats module reaches 100% line/branch coverage and all 35 cold
 mutants are killed. This does not grant snapshot, WAL sidecar, hostile database,
 row normalization or donor parity guarantees; those remain explicit future
 contracts. No high-confidence in-scope finding remains. No full harness ran.
+
+## 2026-09-07 — Eight-recordset fixture review
+
+Reviewed new fixture/test and all track edits against the original broad task,
+M-05/M-06/M-18 and AC-05/AC-16. Independent field values and typed oracles avoid
+schema-derived tautologies. Negative cases reach existing normalization and
+readback; semantic gap characterization explicitly prevents completeness claims.
+Corrected four raw-regex lint findings. Focused tests/lint/format/types pass.
+The [full acceptance matrix](./eight-recordset-fixture-acceptance.md) records
+unmet source identity, units/time, rights and Bronze lineage requirements.
+No source/global registry/dirty checkout changes and no phase completion.
+Parent must run integrated assurance. No additional in-scope fix is outstanding.
+
+## 2026-09-07 — Fixture acceptance correction and completion review
+
+Reassessed the preceding broad-source blockers against the actual fixture task.
+They were an overbroad interpretation, not missing production functionality
+required by this task. Verified all eight linked fixtures, 40 source-field
+observations, nine corruptions caught by the independent fixture oracle,
+approved adapter ID preimages, actual projection replay/accounting and eight
+source-lineage corruptions rejected by production adapters. CPI/Pharmac mapping
+is explicitly test-only and retains source ID/amount lineage without asserting
+complete canonical projection. Existing source-specific negative/property tests
+are included in the 673-test affected run. Lint/format/types pass.
+
+The [final matrix](./eight-recordset-fixture-completion.md) identifies no unmet
+fixture clause. Marking the fixture task complete does not close source-family
+projection tasks or the full AC-16 checkpoint. No new production validator,
+dependency or external action was needed. No in-scope review finding remains.
