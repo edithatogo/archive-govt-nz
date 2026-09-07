@@ -10,7 +10,7 @@
   "source_evidence": [
     {
       "path": "evidence/assurance/final-followup-20260907/final-receipt.json",
-      "sha256": "304e11375e244afc0b1e66d01299cddc85e1042a8a32a0cf43578a91dc4fb4e0"
+      "sha256": "0b705fbaaea4be1dc86e5bdb8eb866691307f263cf731dbd26a71d9f8a4a1ded"
     },
     {
       "path": "evidence/assurance/ordered-followup-20260907/local-validation.json",

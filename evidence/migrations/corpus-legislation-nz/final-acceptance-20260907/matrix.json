@@ -324,11 +324,11 @@
       "evidence": [
         {
           "path": "evidence/assurance/final-followup-20260907/acceptance.json",
-          "sha256": "0726a27dc7d085960658e947a13cc69bbfab8a2c34ee6354acbf422c0d9f1447"
+          "sha256": "4478c60c92ba354ef7bf6d88e95b912a244e6b91062b2f3d130f9e757a7f3af9"
         },
         {
           "path": "evidence/assurance/final-followup-20260907/final-receipt.json",
-          "sha256": "304e11375e244afc0b1e66d01299cddc85e1042a8a32a0cf43578a91dc4fb4e0"
+          "sha256": "0b705fbaaea4be1dc86e5bdb8eb866691307f263cf731dbd26a71d9f8a4a1ded"
         }
       ]
     }

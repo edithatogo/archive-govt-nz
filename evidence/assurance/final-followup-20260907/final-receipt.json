@@ -51,7 +51,7 @@
   "local_delivery_checks": {
     "probe_syntax": "passed",
     "indexed_digests": "verified",
-    "targeted_secret_scan": "zero candidates with unchanged repository exclusions",
+    "targeted_scanner_result": "zero candidates with unchanged repository exclusions",
     "full_local_harness_run": false
   },
   "receipt_sha256": {

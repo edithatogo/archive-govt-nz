@@ -38,6 +38,13 @@ def test_terminal_programme_handoff_preserves_scope_and_primary_fixity() -> None
     for row in status["prompts"]:
         assert row["state"] == "passed"
         assert row["registration"] == "scope_supplied"
+        if row["owner_prompt"] == 13:
+            chronology = row["execution_chronology"]
+            assert chronology["verified_second_parent_run"] == 34076094680
+            assert (
+                "remains unproven"
+                not in chronology["additional_post_preflight_execution_assessment"]
+            )
         assert row["acceptance_evidence"]
         for reference in row["acceptance_evidence"]:
             payload = (ROOT / reference["path"]).read_bytes()
