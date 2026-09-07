@@ -1,0 +1,22 @@
+{
+  "schema_version": "archive-govt-nz.health-donor-sqlite-boundary-validation/v1",
+  "date": "2026-09-07",
+  "base_commit": "b70ddf75594da985f01938cf4724be7e019a416d",
+  "branch": "codex/health-donor-boundary-20260907",
+  "plan_requirement": "Phase 3.2 safe SQLite adapter library boundary",
+  "initial_red_tests": 8,
+  "new_cases": 23,
+  "affected_tests_passed": 105,
+  "shared_reader_coverage": {"lines": [50, 50], "branches": [16, 16]},
+  "silver_coverage": {"lines": [61, 61], "branches": [14, 14]},
+  "mutant_test_failures": {"skip_fixity": 2, "unbounded_read": 1, "byte_boundary": 2, "row_truncation": 3, "skip_columns": 10, "skip_objects": 4, "reuse_directory": 1, "overwrite_output": 1},
+  "static_checks": "ruff check, ruff format and basedpyright passed",
+  "full_harness_run": false,
+  "shared_plan_runlog_metadata_edits": false,
+  "cli_cas_verification_changed": false,
+  "external_acquisition": false,
+  "publication": false,
+  "scope_complete_locally": true,
+  "whole_phase_complete": false,
+  "remaining_gates": ["parent integrated full assurance", "parent independent review"]
+}

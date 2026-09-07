@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import hashlib
 import json
-import sqlite3
 from datetime import date, datetime
 from decimal import Decimal
 from pathlib import Path
@@ -12,6 +11,13 @@ from typing import Any
 
 import pyarrow as pa
 import pyarrow.parquet as pq
+
+from archive_govt_nz.domains.health_appropriations.donor_sqlite import (
+    MAX_BYTES,
+    MAX_ROWS,
+    TABLE_DEFINITIONS,
+    read_rows,
+)
 
 _SCHEMA_VERSION = "archive-govt-nz.health-appropriations-silver/v1"
 _TABLES = {
@@ -144,50 +150,41 @@ def normalize_donor_sqlite(
         "observed_at": observed_at,
         "rights_state": rights_state,
     }
-    connection = sqlite3.connect(f"file:{database}?mode=ro", uri=True)
-    connection.row_factory = sqlite3.Row
+    snapshot = read_rows(
+        database, source_sha256, max_bytes=MAX_BYTES, max_rows=MAX_ROWS
+    )
     records: list[dict[str, object]] = []
     lineage: list[dict[str, object]] = []
     counts: dict[str, int] = {}
-    try:
-        actual = {
-            row[0]
-            for row in connection.execute(
-                "SELECT name FROM sqlite_master WHERE type='table'"
+    for table, rows in snapshot.items():
+        counts[table] = len(rows)
+        for row_number, row in enumerate(rows, start=1):
+            values = dict(
+                zip((name for name, _ in TABLE_DEFINITIONS[table]), row, strict=True)
             )
-        }
-        if actual != set(_TABLES):
-            raise ValueError("donor_sqlite_table_drift")
-        for table in sorted(_TABLES):
-            rows = connection.execute(f'SELECT * FROM "{table}"').fetchall()
-            counts[table] = len(rows)
-            for row_number, row in enumerate(rows, start=1):
-                values = dict(row)
-                record = _record(table, row_number, values, context)
-                records.append(record)
-                for field, raw in values.items():
-                    lineage.append(
-                        {
-                            "lineage_id": record["lineage_id"],
-                            "record_id": record["record_id"],
-                            "field": field,
-                            "source_object_sha256": source_sha256,
-                            "source_locator": context["source_locator"],
-                            "source_coordinate": f"table:{table}/row:{row_number}/column:{field}",
-                            "raw_value": None if raw is None else str(raw),
-                            "normalized_value": None if raw is None else str(raw),
-                            "rule": "donor_sqlite_identity_or_typed_decimal/v1",
-                        }
-                    )
-    finally:
-        connection.close()
-    output_dir.mkdir(parents=True, exist_ok=True)
+            record = _record(table, row_number, values, context)
+            records.append(record)
+            for field, raw in values.items():
+                lineage.append(
+                    {
+                        "lineage_id": record["lineage_id"],
+                        "record_id": record["record_id"],
+                        "field": field,
+                        "source_object_sha256": source_sha256,
+                        "source_locator": context["source_locator"],
+                        "source_coordinate": f"table:{table}/row:{row_number}/column:{field}",
+                        "raw_value": None if raw is None else str(raw),
+                        "normalized_value": None if raw is None else str(raw),
+                        "rule": "donor_sqlite_identity_or_typed_decimal/v1",
+                    }
+                )
     record_table = pa.Table.from_pylist(records, schema=SILVER_SCHEMA)
     lineage_table = pa.Table.from_pylist(lineage, schema=LINEAGE_SCHEMA)
-    pq.write_table(record_table, output_dir / "donor_facts.parquet", compression="zstd")
-    pq.write_table(
-        lineage_table, output_dir / "field_lineage.parquet", compression="zstd"
-    )
+    output_dir.mkdir(parents=True, exist_ok=False)
+    with (output_dir / "donor_facts.parquet").open("xb") as facts_file:
+        pq.write_table(record_table, facts_file, compression="zstd")
+    with (output_dir / "field_lineage.parquet").open("xb") as lineage_file:
+        pq.write_table(lineage_table, lineage_file, compression="zstd")
     return {
         "schema_version": _SCHEMA_VERSION,
         "record_count": len(records),
