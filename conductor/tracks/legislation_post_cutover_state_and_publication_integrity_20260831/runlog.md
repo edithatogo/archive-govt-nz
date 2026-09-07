@@ -1,5 +1,16 @@
 # Run log
 
+## 2026-09-07 — parent-interface blocker closed
+
+PR #414 merged the authenticated artifact-name repair. Independent proof of
+run `34076094680` verifies restoration from the 904-record output parent,
+500 unchanged revalidations, preserved CAS bytes, native output-parent
+acceptance and zero reconciliation mismatches. `HOSTED-PARENT-NAME-001` is
+passed, and Prompt 13 is archived locally with that proof. The final integrated
+gate remains pending for the newer synthetic-evidence correction in PR #415;
+neither a closed issue nor the earlier blanket completion report substitutes
+for those revision-bound checks. Health and FOI remain independent active work.
+
 - Resumed after PortableSSD disappeared and returned. Original dirty checkout preserved; controller work isolated from Prompt 03.
 - Reused parent #276 and children #278/#284. No duplicate specialist issues created.
 - Reconciled Prompt 02's merged delivery and final-head checks without overwriting historical blocked evidence.
