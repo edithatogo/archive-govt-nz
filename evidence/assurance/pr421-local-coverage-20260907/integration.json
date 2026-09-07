@@ -1,0 +1,14 @@
+{
+  "tested_commit": "7774993941f77f0a7d2031095089370134ae4868",
+  "command": "PYTEST_XDIST_AUTO_NUM_WORKERS=2 ./scripts/validate.sh",
+  "status": "passed_local",
+  "exit_code": 0,
+  "tests_passed": 5543,
+  "coverage_percent": 97.85662439690876,
+  "cas_throughput_mb_s": 671.90,
+  "all_configured_mutation_suites": "passed",
+  "supply_chain_and_sbom": "passed; 112 components",
+  "repairs": "Writable non-truncating WARC fsync, portable literal filenames, bounded pytest IDs and meaningful probe/cohort failure tests; thresholds and payload assertions unchanged",
+  "independent_review": "Meitner cleared portability changes with 102 focused tests; local changed-package coverage proof is documented in README.md",
+  "hosted_windows_and_external_patch_check": "pending on corrected head; local results do not substitute for hosted acceptance"
+}
