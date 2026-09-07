@@ -1,0 +1,23 @@
+{
+  "base_commit": "78c17e2d55356097c02ec50b4c6c4511a1462073",
+  "execution": "local-synthetic-focused",
+  "initial_red": {"failed": 18, "passed": 9, "seconds": 0.82},
+  "final_green": {"passed": 117, "seconds": 2.98},
+  "verifier_coverage": {"statements": 44, "branches": 18, "missing": 0, "partial_branches": 0, "percent": 100},
+  "static": {"ruff_check": "pass", "ruff_format": "pass", "basedpyright": "0 errors, 0 warnings, 0 notes", "diff_check": "pass"},
+  "mutations": {
+    "baseline_exit": 0,
+    "all_assertion_failures": true,
+    "collection_errors": 0,
+    "killed": ["skip_framing", "suffix_only", "extra_terminator", "duplicate_length", "duplicate_content_type", "case_sensitive_content_type", "length_offset"],
+    "survived": []
+  },
+  "sha256": {
+    "src/archive_govt_nz/warc_binding.py": "7826257c15a3d58513a9c96ba0deded23a592bb5b8b22694d8bc6db75413bfd8",
+    "tests/warc/test_warc_binding_strict.py": "b35394313d552e478683ac0ee7191a04e98a88ba49ad5168abd4e6706ed5b5a0",
+    "evidence/assurance/health-warc-strict-framing-20260907/mutations.py": "10027adec02e316bdc427ec1b9437407fbb47fb2410f80c1ebe47c42d43118ca"
+  },
+  "full_harness_run": false,
+  "remote_mutations": false,
+  "peer_review": "pending-independent-Banach"
+}
