@@ -17,7 +17,7 @@ jobs:
   quality:
     name: Assurance (${{ matrix.os }})
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 30
+    timeout-minutes: 10
     env:
       COVERAGE_CORE: ctrace
       PYTHON_JIT: "0"
