@@ -379,3 +379,23 @@ PYTHONPATH=src /Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/python -m p
 
 Combined changed-module coverage 87%, not whole-repository coverage or full harness
 certification. Existing coverage gaps are not suppressed or represented as passes.
+
+
+## 2026-09-07 — P2.12 linked cohort delivery
+
+Initial red test: missing new module, expected. Six linked targets were observed
+03:31:24.854772–03:31:36.679504 UTC before P2.13 fixes: five HTML pages and GG
+timeout. Delivery review is offline after `8272a2a0`; no historical compliance
+claim or replay. Exact provenance and results: `linked-foi-provenance-20260907.json`
+and `linked-foi-review-20260907.md`.
+
+```sh
+PYTHONPATH=src /Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/python -m pytest -q tests/test_foi_linked_assessment.py tests/test_foi_candidate_probe.py tests/test_foi_candidate_cohort.py tests/test_foi_candidate_assessment.py tests/test_foi_reconciliation.py tests/test_foi_catalogue.py tests/test_foi_discovery.py tests/test_foi_rollout.py tests/test_verify_foi_rollout_evidence.py --cov=archive_govt_nz.foi_linked_assessment --cov-branch --cov-report=term-missing --cov-fail-under=100
+/Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/ruff check src/archive_govt_nz/foi_linked_assessment.py tests/test_foi_linked_assessment.py
+/Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/ruff format --check src/archive_govt_nz/foi_linked_assessment.py tests/test_foi_linked_assessment.py
+/Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/basedpyright src/archive_govt_nz/foi_linked_assessment.py tests/test_foi_linked_assessment.py
+```
+
+236 tests pass; 100% new-module line/branch coverage; lint/format/typing pass.
+Parent owns full harness and integration. Only additive P2.12 plan changes;
+preserve accepted P2.5–P2.8 and rechain new evidence on parent integration.

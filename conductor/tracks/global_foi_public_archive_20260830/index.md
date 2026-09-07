@@ -84,3 +84,10 @@ Approved track in progress. Automation repair and source-catalogue foundations a
 
 - [Priority correction: historical pacing and assessment guards](candidate-probe-review-correction-20260907.md)
 - [Priority correction receipt](candidate-probe-review-correction-20260907.json)
+
+
+- [Linked FOI factual assessment](linked-foi-assessment.md)
+- [Linked FOI machine assessment](linked-foi-assessment.json)
+- [Linked FOI historical observations](linked-foi-observations-20260907.json)
+- [Linked FOI pre-fix provenance](linked-foi-provenance-20260907.json)
+- [Linked FOI review and limitations](linked-foi-review-20260907.md)

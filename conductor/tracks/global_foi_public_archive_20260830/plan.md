@@ -103,6 +103,19 @@ The approved destination is archive-govt-nz; no cutover has occurred.
   Receipt: `candidate-probe-review-correction-20260907.json` / `.md`.
   208 focused tests pass; historical pacing compliance is explicitly not certified.
 
+### P2 linked FOI metadata cohort — 2026-09-07
+
+- [x] P2.12 (AC04, AC09, AC11): Deliver the four linked FOI pages and
+  two AL year-register observations as a separate factual metadata cohort.
+  P2.13 fixes are prerequisite: `8272a2a0`. Validate retained pre-fix observations
+  offline using the corrected assessor; disclose acquisition provenance without
+  historical pacing compliance or capture/rights/publication credit. No fresh
+  reads are needed for this factual cohort; GG timeout remains unresolved access.
+  Preserve prior observations and parent accepted P2.5–P2.8 statuses.
+  Receipts: `linked-foi-assessment.json` / `.md`, `linked-foi-provenance-20260907.json`
+  and `linked-foi-review-20260907.md`. 236 focused tests pass; new module has 100%
+  line/branch coverage. Full integration remains with parent.
+
 ## Phase 3 — Metadata indexes and immutable raw storage
 
 - [x] P3.1 (AC05, AC06, AC11): Add red tests for original metadata preservation, request/correspondence/attachment relationships, revisions, missing objects, synthetic/CDX rejection, unsafe archive members, private-network redirects, expansion/resource limits, active content and sensitive exports.

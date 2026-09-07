@@ -69,3 +69,14 @@ AC04/AC09/AC11/AC12: reject nonfinite/mistyped budgets before collection, honor
 known crawl delay per origin inside the lock on every hop, and reject page-success
 claims not backed by terminal 200 HTML. Preserve immutable observations and append
 an explicit historical pacing correction. No full-cohort replay or rights decision.
+
+
+## P2.12 linked factual cohort acceptance
+
+AC04/AC09/AC11: derive and assess all four retained FOI navigation links and both
+AL year-register links without unbounded discovery. Preserve dated failures,
+parent source/page identities and pre-fix observation provenance. Structural
+metadata must exclude arbitrary personal text and attachments; reports must
+reproduce offline and cannot grant policy compliance, rights, capture coverage,
+publication, schedules or non-null request denominators. No fresh reads required
+for this dated factual end state. Full integration remains with parent.

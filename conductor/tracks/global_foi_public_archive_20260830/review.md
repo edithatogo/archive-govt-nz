@@ -266,3 +266,13 @@ nonfinite budgets. Applied fixes with observed red/green regression evidence;
 [dated correction](candidate-probe-review-correction-20260907.md) withdraws the
 historical blanket pacing claim without rewriting original evidence. 208 focused
 tests pass. Full integration remains with parent; P2.12 delivery held separately.
+
+
+## P2.12 linked cohort delivery — 2026-09-07
+
+[Review and limits](linked-foi-review-20260907.md): six dated interfaces assessed,
+including GG timeout; pre-fix transport explicitly disclosed, never certified.
+P2.13 corrected assessor rejects forged GG success. Structure on failed/robots
+responses is validated as well as successful HTML. 236 focused tests pass, new
+module 100% line/branch coverage; scoped lint/type/format checks pass. No fresh
+read, publication, rights decision, schedule or historical-observation rewrite.

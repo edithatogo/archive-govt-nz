@@ -170,3 +170,15 @@ non-HTML conversion. Duration/count inputs fail before collection if nonfinite,
 mistyped or outside hard count caps. Historical collector bytes remain in an inert
 track snapshot; observation hashes and earlier reports remain unchanged. See the
 dated correction for the confirmed Italy pacing breach; no replay is implied.
+
+
+## P2.12 linked interface projection
+
+Previously retained page links select exactly six targets; the existing guarded
+collector is the only HTTP path. A finite-vocabulary structural parser retains
+counts and recognized schema/navigation labels, never correspondence values or
+attachment names/bodies. Offline assessment reuses corrected P2.13 terminal
+validation. A separate hash-bound provenance receipt identifies pre-fix transport
+for retained observations; current validation does not certify historical pacing.
+Existing flow remains observation -> factual assessor -> local paired reports,
+with unchanged rights/publication gates. No source activation or global registry.
