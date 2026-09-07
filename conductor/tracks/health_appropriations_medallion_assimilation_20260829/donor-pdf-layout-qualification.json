@@ -1,0 +1,187 @@
+{
+  "schema_version": "health-pdf-layout-qualification/v1",
+  "source_sha256": "620ff6a34e7be955ce70316af8f6fa4a9ca95689fa5036e076b50c13431d1fa8",
+  "source_byte_count": 1339480,
+  "base_commit": "df7bbd4debdce6986c7331afe30e11d86f294d35",
+  "parser": "Poppler pdfinfo 26.09.0",
+  "parsed_page_count": 471,
+  "lexical_page_marker_count_prior": 471,
+  "selected_physical_pages": [
+    253,
+    268
+  ],
+  "selected_count": 16,
+  "geometry_points": [
+    842,
+    595
+  ],
+  "rotation_degrees": 0,
+  "render_tool": "pdftoppm 26.09.0",
+  "render_scale_to_pixels": 1300,
+  "text_tool": "pdftotext 26.09.0 -layout",
+  "page_origin": "one_based_physical",
+  "qualified_numeric_facts": 0,
+  "source_fixity_after": "unchanged",
+  "pages": [
+    {
+      "physical_page": 253,
+      "printed_page": 235,
+      "section": "B1",
+      "header_source_physical_page": 253,
+      "text_byte_count": 4891,
+      "text_sha256": "8e1a0d348e08d8df173e17b1f2d1722375294a184aa226a71c29a11d73af466b",
+      "render_sha256": "e95ad19c10ad04da0f6340e3cc2d8dab8610c97c6f002e0c32e1de2ac95e1d59",
+      "visual_inspection": "completed_layout_only"
+    },
+    {
+      "physical_page": 254,
+      "printed_page": 236,
+      "section": "B1",
+      "header_source_physical_page": 254,
+      "text_byte_count": 5125,
+      "text_sha256": "cfc9299ac3ff43b4209e295691b2ccbd50759cbff6197afcbc981d8c8df17d31",
+      "render_sha256": "fc774f73c8316eeedb93612044aaab66fa82ac0eec46f4e55ec9d51aff350654",
+      "visual_inspection": "completed_layout_only"
+    },
+    {
+      "physical_page": 255,
+      "printed_page": 237,
+      "section": "B1",
+      "header_source_physical_page": 254,
+      "text_byte_count": 4030,
+      "text_sha256": "8cdfd0618bebd02586e6796e1996af17aea12ae67016e2dbf10920ec1142a706",
+      "render_sha256": "e075485a9b0908c19adb78652a958f61200864249949f8b2d794500ca32bc1c7",
+      "visual_inspection": "completed_layout_only"
+    },
+    {
+      "physical_page": 256,
+      "printed_page": 238,
+      "section": "B1",
+      "header_source_physical_page": 256,
+      "text_byte_count": 3951,
+      "text_sha256": "583388a1c756bc9fb5e149c3695d39851b14b63cad29cd4bdcbba8d63ae0651a",
+      "render_sha256": "400b58ec651c690ab40a73c46f5f07e677fce74266b3d7c861b20210a0478122",
+      "visual_inspection": "completed_layout_only"
+    },
+    {
+      "physical_page": 257,
+      "printed_page": 239,
+      "section": "B1",
+      "header_source_physical_page": 256,
+      "text_byte_count": 5396,
+      "text_sha256": "47bea9c223c98e861d015be5fad316d01bde7f56b659740834506c74e32dce28",
+      "render_sha256": "007a8b298bca9e4a78e1d97a6d0146c1a72418a8c2482c66617110ad187469cf",
+      "visual_inspection": "completed_layout_only"
+    },
+    {
+      "physical_page": 258,
+      "printed_page": 240,
+      "section": "B1",
+      "header_source_physical_page": 258,
+      "text_byte_count": 4421,
+      "text_sha256": "dcac0cbe4f016d0f8c67206f428ebab4453639d2b0c8a88b18137b6f4c2dd622",
+      "render_sha256": "b17064a8061d2d9159bae9e73ca01b4a79a35ac7d3daf19f4bff2e0acbb91f0e",
+      "visual_inspection": "completed_layout_only"
+    },
+    {
+      "physical_page": 259,
+      "printed_page": 241,
+      "section": "B1",
+      "header_source_physical_page": 258,
+      "text_byte_count": 5085,
+      "text_sha256": "c1370472456e693b9990cb0229abdd287bea24c6daed10879d9ba9e8da6ea1fe",
+      "render_sha256": "a0d0b6a5f4661bc810b98a8da472a0314894401f05219e51f2b9e4b98ecdde4e",
+      "visual_inspection": "completed_layout_only"
+    },
+    {
+      "physical_page": 260,
+      "printed_page": 242,
+      "section": "B1",
+      "header_source_physical_page": 260,
+      "text_byte_count": 4454,
+      "text_sha256": "9fc5d74e604fc5049ed78068cc67e68ef570f1fdf919d63a4c2928942d3f2c92",
+      "render_sha256": "4d453de5c010196b4afb99680bf097b2717be8d364a2625566dc0118b784455b",
+      "visual_inspection": "completed_layout_only"
+    },
+    {
+      "physical_page": 261,
+      "printed_page": 243,
+      "section": "B1",
+      "header_source_physical_page": 260,
+      "text_byte_count": 6106,
+      "text_sha256": "fa18be03b77a6f46709a0a3d94d39b518822c89572f6663f56af49b1ab59ce7c",
+      "render_sha256": "e5cfdbd81b5d939c8bd52db6c009c39e90ba937dbb02dcdcc6b9c83e5a45e511",
+      "visual_inspection": "completed_layout_only"
+    },
+    {
+      "physical_page": 262,
+      "printed_page": 244,
+      "section": "B1",
+      "header_source_physical_page": 262,
+      "text_byte_count": 3587,
+      "text_sha256": "e5beb5be545db83d66c7ce464d618dbb4e9827e7cbec40a5c67499689b6240db",
+      "render_sha256": "2cf5465276b833b4280d968eb552e2edc7a3792a781ef76712a73cba50d62bf9",
+      "visual_inspection": "completed_layout_only"
+    },
+    {
+      "physical_page": 263,
+      "printed_page": 245,
+      "section": "B1",
+      "header_source_physical_page": 262,
+      "text_byte_count": 5676,
+      "text_sha256": "ea6f2c0c6783ea0a5fad1c19edd74b9095cfcdde6067b3907aab1746d2966059",
+      "render_sha256": "3cfe773adf84906f6eceb152fb6852ad1eaa8794c3ea83b0144772a4c68d8d1c",
+      "visual_inspection": "completed_layout_only"
+    },
+    {
+      "physical_page": 264,
+      "printed_page": 246,
+      "section": "B1",
+      "header_source_physical_page": 264,
+      "text_byte_count": 3374,
+      "text_sha256": "55f3a9d2af386637acf9b05d6a919f1dcd2cf2fe432d0fa9aae3ff55719c94a7",
+      "render_sha256": "6e36d3fb95d6328892e545494a00d69e51b6aabf0b2c6a6de8a1a67fe9bfa50d",
+      "visual_inspection": "completed_layout_only"
+    },
+    {
+      "physical_page": 265,
+      "printed_page": 247,
+      "section": "B1",
+      "header_source_physical_page": 264,
+      "text_byte_count": 4914,
+      "text_sha256": "bdf29ff4fd0c2caba8369cfd6cdd134e44a94085801dd2a0e7c2a236331c2227",
+      "render_sha256": "227c27213de67fef38f03ad0514d2bbe4815789d1190d95b2b168f753578e83b",
+      "visual_inspection": "completed_layout_only"
+    },
+    {
+      "physical_page": 266,
+      "printed_page": 248,
+      "section": "B1",
+      "header_source_physical_page": 266,
+      "text_byte_count": 1897,
+      "text_sha256": "40447d2267f35d855ae6805f28a89c15662a5b8b8833ae80bd362725c02fcc71",
+      "render_sha256": "2fee5fdec79e8cb5c0d2f9d19e3e2b7445d2d3d625ab3fa4306af6532e8c2633",
+      "visual_inspection": "completed_layout_only"
+    },
+    {
+      "physical_page": 267,
+      "printed_page": 249,
+      "section": "F1",
+      "header_source_physical_page": 267,
+      "text_byte_count": 3897,
+      "text_sha256": "ef195cd6627f6f2b6e9763d39dcd8873d8d3c0402c0d36f367fa52162bab83ac",
+      "render_sha256": "65b1803df74d5dc96241a1257f95c30c089c8714970fcdbecfb2c33373890cd3",
+      "visual_inspection": "completed_layout_only"
+    },
+    {
+      "physical_page": 268,
+      "printed_page": 250,
+      "section": "F1",
+      "header_source_physical_page": 268,
+      "text_byte_count": 2462,
+      "text_sha256": "f00f272366b891066fd372fa32b040b53777e3a70982de90d9c5541f4fbc1327",
+      "render_sha256": "990aa0f619806e61e3e93efd2508a3ae37030c39af48e1ffae1da2f3145770ca",
+      "visual_inspection": "completed_layout_only"
+    }
+  ]
+}
