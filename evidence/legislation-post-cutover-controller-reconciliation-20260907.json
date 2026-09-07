@@ -1,0 +1,28 @@
+{
+  "schema_version": "archive-govt-nz.legislation-post-cutover-controller-reconciliation/v1",
+  "recorded_at": "2026-09-07",
+  "supersedes": "conductor/tracks/legislation_post_cutover_state_and_publication_integrity_20260831/programme-status.json",
+  "scope": "Prompt 01 controller reconciliation",
+  "prompt_inputs": {
+    "prompts_01_21_supplied": true,
+    "specialist_scopes_registered": true,
+    "issue_records": "All Prompt 01-21 issue records are closed; delivery and external completion remain distinct."
+  },
+  "repository_owned_completion": {
+    "prompt_registration_blocker": "resolved",
+    "controller_status": "blocked_external",
+    "remaining_owned_work": [],
+    "reason": "Remaining gates require independently authorised external publication, operational execution, or archival presentation evidence."
+  },
+  "external_handoffs": [
+    "Hugging Face durable package publication and readback",
+    "Authorised 500-work operational dispatch and hosted receipts",
+    "Donor bundle release asset and archival presentation",
+    "Any remaining external identity or access verification"
+  ],
+  "integrity": {
+    "historical_status_preserved": true,
+    "original_records_rewritten": false,
+    "source_of_truth": "target repository evidence and closed issue/PR records"
+  }
+}
