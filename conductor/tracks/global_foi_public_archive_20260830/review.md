@@ -248,3 +248,40 @@ pass. Python/general guides apply. No unresolved in-scope correctness finding.
 Full harness and hosted/integration evidence remain with the parent. The diff
 adds P2.10 without changing P2.5–P2.8, global registry, rights policy, seeds or
 historical receipts. No remote writes or rights decisions occurred.
+
+
+## P2.11 scoped review — 2026-09-07
+
+Reviewed exact cohort accounting, transport/source binding, robots and DNS guards,
+metadata-only evidence, determinism, restrictive policy preservation and challenge
+handling. [Detailed review](candidate-cohort-review-20260907.md) records focused
+validation and coverage limits. No complete-country, rights or publication claim.
+No required human factual-review queue. Parent full integration remains pending.
+
+
+## P2.13 priority independent findings — 2026-09-07
+
+Confirmed all three findings: redirect pacing, forged AE 404 assessment and
+nonfinite budgets. Applied fixes with observed red/green regression evidence;
+[dated correction](candidate-probe-review-correction-20260907.md) withdraws the
+historical blanket pacing claim without rewriting original evidence. 208 focused
+tests pass. Full integration remains with parent; P2.12 delivery held separately.
+
+
+## P2.12 linked cohort delivery — 2026-09-07
+
+[Review and limits](linked-foi-review-20260907.md): six dated interfaces assessed,
+including GG timeout; pre-fix transport explicitly disclosed, never certified.
+P2.13 corrected assessor rejects forged GG success. Structure on failed/robots
+responses is validated as well as successful HTML. 236 focused tests pass, new
+module 100% line/branch coverage; scoped lint/type/format checks pass. No fresh
+read, publication, rights decision, schedule or historical-observation rewrite.
+
+
+## P2.14 runtime compatibility — 2026-09-07
+
+Confirmed upstream 3.14.0/3.14.6 parser semantic difference. The probe now rejects
+complex path rules before parser admission; [review](robots-runtime-compatibility-20260907.md)
+records the conservative scope. 249 focused tests pass, including legacy-allow
+mock and unchanged historical reports. No source request/replay or parent-owned
+candidate-assessment edit. Full gate pending with parent.

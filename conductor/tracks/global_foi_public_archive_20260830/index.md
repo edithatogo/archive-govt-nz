@@ -74,3 +74,24 @@ Approved track in progress. Automation repair and source-catalogue foundations a
 - [Hosted health failure](hosted-health-failure-33955611192.json)
 - [NZ metadata disposition](nz-metadata-disposition-20260905.json)
 - [US numeric projection review](us-numeric-projection-review-20260905.json)
+
+
+- [Complete candidate assessment](candidate-assessment-complete.md)
+- [Complete candidate assessment JSON](candidate-assessment-complete.json)
+- [Remaining 223 dated observations](candidate-observations-remaining-20260907.json)
+- [P2.11 cohort review and limits](candidate-cohort-review-20260907.md)
+
+
+- [Priority correction: historical pacing and assessment guards](candidate-probe-review-correction-20260907.md)
+- [Priority correction receipt](candidate-probe-review-correction-20260907.json)
+
+
+- [Linked FOI factual assessment](linked-foi-assessment.md)
+- [Linked FOI machine assessment](linked-foi-assessment.json)
+- [Linked FOI historical observations](linked-foi-observations-20260907.json)
+- [Linked FOI pre-fix provenance](linked-foi-provenance-20260907.json)
+- [Linked FOI review and limitations](linked-foi-review-20260907.md)
+
+
+- [Probe robots runtime compatibility review](robots-runtime-compatibility-20260907.md)
+- [Probe robots runtime compatibility receipt](robots-runtime-compatibility-20260907.json)

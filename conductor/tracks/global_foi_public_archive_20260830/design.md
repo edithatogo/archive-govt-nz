@@ -159,3 +159,36 @@ claimed fenced at a publication sink until they use this authority and the sink
 serializes or conditionally rejects stale-owner writes. Privileged force-push,
 branch deletion, malicious application code and GitHub service durability are
 not solved by an optimistic CAS API. No new paid service is introduced.
+
+
+## P2.13 guard correction
+
+Every hop now shares a locked per-origin maximum learned robots delay; the earlier
+one-off sleep was insufficient for redirects. The offline assessor binds media and
+outcome to the terminal response with only an explicit observed plain-text to
+non-HTML conversion. Duration/count inputs fail before collection if nonfinite,
+mistyped or outside hard count caps. Historical collector bytes remain in an inert
+track snapshot; observation hashes and earlier reports remain unchanged. See the
+dated correction for the confirmed Italy pacing breach; no replay is implied.
+
+
+## P2.12 linked interface projection
+
+Previously retained page links select exactly six targets; the existing guarded
+collector is the only HTTP path. A finite-vocabulary structural parser retains
+counts and recognized schema/navigation labels, never correspondence values or
+attachment names/bodies. Offline assessment reuses corrected P2.13 terminal
+validation. A separate hash-bound provenance receipt identifies pre-fix transport
+for retained observations; current validation does not certify historical pacing.
+Existing flow remains observation -> factual assessor -> local paired reports,
+with unchanged rights/publication gates. No source activation or global registry.
+
+
+## P2.14 conservative robots compatibility gate
+
+A small path-rule preflight precedes parser construction in the shared probe.
+Wildcard/end-anchor Allow/Disallow rules anywhere in the file produce a dated
+unsupported-rules result without requesting the page. This is deliberately
+more conservative than user-agent matching and not a general RFC-compliance
+claim. Linked observation inherits the gate through the same collector. Parent
+owns the separate offline candidate-assessment guard; historical bytes stay fixed.

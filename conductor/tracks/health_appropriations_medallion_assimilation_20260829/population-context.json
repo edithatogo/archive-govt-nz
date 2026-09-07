@@ -1,0 +1,47 @@
+{
+  "schema_version": "archive-govt-nz.population-context/v1",
+  "table_id": "DPE054AA",
+  "table_title": "Estimated Resident Population by Age and Sex (1991+) (Qrtly-Mar/Jun/Sep/Dec)",
+  "legacy_identifiers_found": [
+    "DPEQ.SG1CTOT",
+    "DPEQ.SG2CTOT"
+  ],
+  "population_code": "C",
+  "population_label": "Total",
+  "age_code": "DPE054FF",
+  "age_label": "Total All Ages",
+  "unit": "persons",
+  "frequency": "quarterly",
+  "reference_period": "2026Q2",
+  "reference_date": "2026-06-30",
+  "basis_date": "2023-06-30",
+  "release_date": "2026-08-18",
+  "available_period_start": "1991Q1",
+  "available_period_end": "2026Q2",
+  "estimates": [
+    {
+      "code": "1",
+      "label": "As at"
+    },
+    {
+      "code": "2",
+      "label": "Mean year ended"
+    }
+  ],
+  "metadata_url": "https://datainfoplus.stats.govt.nz/Item/nz.govt.stats/4c9f3523-5386-4ce0-a8bd-993bb905f119",
+  "release_url": "https://www.stats.govt.nz/information-releases/national-population-estimates-at-30-june-2026/",
+  "export_entry_url": "https://infoshare.stats.govt.nz/ExportDirect.aspx",
+  "query_entry_url": "https://infoshare.stats.govt.nz/QueryUpload.aspx",
+  "query_export": {
+    "http_status": 200,
+    "response_kind": "tqx_selection_metadata",
+    "media_type": "text/plain",
+    "byte_count": 798,
+    "sha256": "2e5dec8c31c4636d2729acc7e299876a047085ebd7a78e1708908b782e93867d",
+    "selected_time_code": "20262",
+    "contains_observations": false
+  },
+  "numeric_export_response": "not_verified",
+  "analytical_selection": "not_selected",
+  "rights": "not_evaluated"
+}

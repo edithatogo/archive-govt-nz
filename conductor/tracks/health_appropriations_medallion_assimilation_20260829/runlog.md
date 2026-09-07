@@ -1,5 +1,20 @@
 # Run Log
 
+## 2026-09-07 — Bounded Phase 2.1 ingestion contracts
+
+Read-only parent follow-up review at `1f53a6e8` found no actionable diff issue;
+reproduced FOI reports and nine assurance hashes without parent writes or full
+harness. Created `codex/health-bronze-contracts-20260907` at that commit.
+Audited generic and fiscal capture/CAS/WARC/recovery tests and the existing
+Phase 2.4 evidence before adding 23 targeted cases. Two HTTP length tests failed
+red; added a pre-promotion identity-encoding length check. The first 117-test
+coverage run failed at 86.87%; after relevant rejection tests and one corrected
+test-edit NameError, 129 tests pass at 98.99% without gate overrides. Three
+in-memory source guard mutants killed; lint/format/types pass. See
+`bronze-ingestion-contracts.md` and its paired receipt for exact commands,
+review and remaining resume/WARC/encoded-length/assurance gaps. Phase 2.1 stays
+in progress, Phase 2.4 unchanged. No source-census or rights promotion.
+
 ## RDF full assurance and review clarification — 2026-09-05 UTC
 
 `./scripts/validate.sh` completed successfully on `fc672e0b`: 4,774 tests,
@@ -2181,3 +2196,39 @@ Exact command and scope: `eight-recordset-fixture-completion.md`; paired receipt
 `eight-recordset-fixture-completion.json`. Marked the original task complete,
 with full integrated checkpoint still delegated to parent. No production,
 global registry, original checkout, dependency or external-state changes.
+# 2026-09-07 — Bronze checkpoint follow-up
+
+Phase 2.1 cooperative per-resource resume and non-overwriting WARC paths are
+implemented in the isolated Bronze worktree after `0cf0f32b`. Initial missing
+checkpoint red is retained in `bronze-checkpoint-contracts.md`; final 43 focused
+and 149 affected tests pass, runner coverage is 100% line/branch, four seeded
+mutants are caught, and Ruff/format/basedpyright pass. The paired machine
+receipt is `bronze-checkpoint-validation.json`. Self-review checked receipt
+fixity, repeated interruption, orphan preservation, competing-writer fencing,
+and manifest compatibility. Exact Phase 2.1 gaps remain documented; no broad
+completion, full-harness, source-census, rights, parent-edit or Phase 3 claim.
+# 2026-09-07 — Phase 2.1 hard-kill recovery
+
+Replaced ambiguous directory ownership with an OS-released SQLite transaction
+lock. Real subprocess kill/resume passed after the recorded red failure;
+44 tests, 100% runner coverage and three killed mutants. Static checks pass.
+Paired evidence: `bronze-process-recovery.md` / `bronze-process-recovery.json`.
+Self-review retains legacy-lock, power-loss and filesystem boundaries. No
+parent, census, rights, registry, Phase 3 or full-harness changes.
+# 2026-09-07 — Phase 2.1 encoded length
+
+Reviewed pinned HTTPX raw-counter/decoder semantics before three red tests.
+Encoded transport-body length is now verified without comparing decoded size;
+preconsumed encoded responses with length fail closed as unverifiable.
+161 affected tests pass, with 99.02% capture coverage and four caught mutants.
+Paired evidence: `bronze-wire-length.md` / `bronze-wire-length.json`. Static
+checks pass. Review retains precise framing/codec and AC-16 coverage limits;
+no weaker verification, raw-wire assurance, source promotion or full harness.
+# 2026-09-07 — Phase 2.1 local review boundary
+
+Eight valid HTTP redirect-budget characterization tests passed before the
+behavior-preserving fallback routing change. Final affected suite: 169 passed,
+capture 100% line/branch coverage, three killed mutants, static checks passed.
+Paired evidence: `bronze-redirect-boundary.md` / `.json`. Self-review found no
+remaining actionable defect in the requested slice. Stop here for parent full
+assurance and independent review; no full harness or further implementation.

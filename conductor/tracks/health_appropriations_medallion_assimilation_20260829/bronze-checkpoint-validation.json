@@ -1,0 +1,44 @@
+{
+  "schema_version": "archive-govt-nz.health-bronze-checkpoint-validation/v1",
+  "date": "2026-09-07",
+  "base_commit": "0cf0f32b635d484989bab815ba40e2e6446a0133",
+  "task": "Phase 2.1",
+  "task_complete": false,
+  "scope": "offline cooperative resume and non-overwriting WARC attempt paths",
+  "focused_tests_passed": 43,
+  "affected_tests_passed": 149,
+  "runner_coverage": {
+    "lines_covered": 133,
+    "lines_total": 133,
+    "branches_covered": 30,
+    "branches_total": 30
+  },
+  "static_checks": {
+    "ruff": "passed",
+    "ruff_format": "passed",
+    "basedpyright": "passed"
+  },
+  "mutants_killed": {
+    "skip_retained": 2,
+    "skip_warc_fixity": 2,
+    "skip_context": 1,
+    "drop_future_receipts": 1
+  },
+  "mutant_values": "number of failing tests per killed in-memory mutant",
+  "sha256": {
+    "tools/capture_health_resources.py": "3edbaef6f0c920d8dee4d7941eedf142512f6dbf5297ab8127b178edac2a186d",
+    "tests/domains/health_appropriations/test_capture_checkpoint.py": "8404f0a677c4e5b8669bc9d2fc4b42d8373b0900b14110d3a4081e9c6593344f",
+    "tests/domains/health_appropriations/test_bronze_ingestion_contracts.py": "22512393ff1e2ad4b37eeb39d883f0d374ec5160b345260eeddfea31a30a6292"
+  },
+  "affected_command": "PYTHONPATH=src /Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/python -m pytest tests/domains/health_appropriations/test_capture_checkpoint.py tests/domains/health_appropriations/test_bronze_ingestion_contracts.py tests/capture/test_capture.py tests/object_store/test_object_store.py tests/recovery/test_capture_recovery_integration.py tests/recovery/test_recovery.py tests/bronze/test_multihash.py tests/warc/test_warc.py tests/capture/test_capture_reconciliation.py tests/policy/test_resource_policy.py tests/capture/test_batch_eligibility.py tests/capture/test_run_capture_batch.py tests/policy/test_source_policy.py tests/domains/health_appropriations/test_inventory.py tests/domains/health_appropriations/test_donor.py -q",
+  "full_harness_run": false,
+  "external_acquisition": false,
+  "rights_promotion": false,
+  "parent_edits": false,
+  "remaining": [
+    "compressed-wire expected-length verification",
+    "hard-kill stale-owner recovery and subprocess-kill acceptance",
+    "pre-existing capture.py defensive fallback critical coverage",
+    "parent integrated assurance"
+  ]
+}

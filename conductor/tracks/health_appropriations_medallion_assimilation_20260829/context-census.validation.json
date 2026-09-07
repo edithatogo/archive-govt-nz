@@ -1,0 +1,34 @@
+{
+  "schema_version": "archive-govt-nz.health-context-validation/v1",
+  "base_commit": "fcb8f7c89ffe18afd854f23f40c448fcc3a9efeb",
+  "requirements": [
+    "M-02",
+    "M-12",
+    "AC-03",
+    "AC-10"
+  ],
+  "tests": {
+    "command": "PYTHONPATH=src /Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/python -m pytest tests/domains/health_appropriations/test_source_context_census.py -q --cov=archive_govt_nz.domains.health_appropriations.source_context_census --cov-branch --cov-report=term-missing",
+    "exit_code": 0,
+    "passed": 22,
+    "statements": 83,
+    "branches": 22,
+    "coverage_percent": 100
+  },
+  "lint": {
+    "command": "/Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/ruff check src/archive_govt_nz/domains/health_appropriations/source_context_census.py tests/domains/health_appropriations/test_source_context_census.py",
+    "exit_code": 0
+  },
+  "types": {
+    "command": "/Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/pyright src/archive_govt_nz/domains/health_appropriations/source_context_census.py tests/domains/health_appropriations/test_source_context_census.py",
+    "exit_code": 0,
+    "errors": 0,
+    "warnings": 0
+  },
+  "full_harness": "delegated_to_parent_not_run",
+  "mutation": "not_run_in_this_slice",
+  "status": "local_census_validated_analytical_qualification_incomplete",
+  "remote_mutations": false,
+  "raw_payloads_committed": false,
+  "shared_status_files_modified": false
+}

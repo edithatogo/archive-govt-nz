@@ -1,0 +1,102 @@
+{
+  "schema_version": "archive-govt-nz.health-context-observation/v1",
+  "observed_on": "2026-09-07",
+  "mode": "read_only_retained_bytes",
+  "network_requests": 0,
+  "raw_values_exported": false,
+  "formula_evaluation": false,
+  "rights": "not_evaluated",
+  "method": "SHA-256 original bytes, openpyxl read_only=True/data_only=False; inspect labels, cell types, year/status coordinates only; no amount payload retained in Git. An initial EmptyCell.row diagnostic failed; enumerate(sheet.iter_rows(),1) corrected it before completed readback.",
+  "sources": [
+    {
+      "object_sha256": "de59f9028a81a697ee66eea04861edfd8e2c3a7e472b3b8798d976951964f70f",
+      "hash_verified": true,
+      "sheet": "Spending",
+      "unit_coordinate": "A3",
+      "unit": "$ millions",
+      "core_crown": {
+        "label_coordinate": "D4",
+        "label": "Core Crown Expenses",
+        "range": "D27:D58",
+        "years": "1994-2025",
+        "count": 32
+      },
+      "total_crown": {
+        "label_coordinate": "E4",
+        "label": "Total Crown Expenses",
+        "range": "E30:E58",
+        "years": "1997-2025",
+        "count": 29
+      },
+      "value_cell_type": "n",
+      "year_column": "B",
+      "basis_coordinates": {
+        "A27": "old-GAAP",
+        "A30": "IFRS, June Years",
+        "A38": "PBE Standards, June Years"
+      },
+      "footnote_coordinates": [
+        "A60",
+        "A61",
+        "A64",
+        "A65"
+      ],
+      "excluded": "Financial Net Expenditure column C; percent-GDP block beginning A68; blanks before series starts"
+    },
+    {
+      "object_sha256": "313ee040abd9a332cc36245da5a0c2cb0d38fe2cedc013d731c1f12db463b0d1",
+      "hash_verified": true,
+      "sheet": "Core Crown Expense Tables",
+      "label_coordinate": "D26",
+      "label": "Core Crown expenses",
+      "range": "F26:O26",
+      "year_range": "F5:O5",
+      "status_range": "F6:O6",
+      "unit_coordinate": "D6",
+      "unit": "($millions)",
+      "years": "2021-2030",
+      "actual_years": "2021-2025",
+      "forecast_years": "2026-2030",
+      "value_cell_type": "f",
+      "example_formula": "F26=SUM(F8:F24)",
+      "cache_qualification": "not_performed"
+    },
+    {
+      "object_sha256": "f9f9190a69ce0a7c53b89d690d50170e2a6a457e6821afeb93edc08cef4b9c7d",
+      "hash_verified": true,
+      "sheet": "Core Crown Expense Tables",
+      "label_coordinate": "D25",
+      "label": "Core Crown expenses",
+      "range": "F25:O25",
+      "year_range": "F4:O4",
+      "status_range": "F5:O5",
+      "unit_coordinate": "D5",
+      "unit": "($millions)",
+      "years": "2021-2030",
+      "actual_years": "2021-2025",
+      "forecast_years": "2026-2030",
+      "value_cell_type": "f",
+      "example_formula": "F25=SUM(F7:F23)",
+      "cache_qualification": "not_performed"
+    }
+  ],
+  "retained_manifests": [
+    {
+      "path": "silver/raw-cpi-20260831-v1/MANIFEST.json",
+      "sha256": "edb62f4b106948502e717f5f6c5e3da00efc0a64bb10b5dcbafc48cd1a6c257e"
+    },
+    {
+      "path": "silver/raw-qes-2026q2-20260831-v2/MANIFEST.json",
+      "sha256": "35114105c86085ee49aeb97ac9f8d8b696ef72692b5eea12d348496a8b920d41"
+    },
+    {
+      "path": "silver/raw-stats-gdp-20260831-v1/MANIFEST.json",
+      "sha256": "639b3c7da60f2afa1b860c5f6c8f1c4c0ae24bf17aa7af63bf8a06a1f6471b35"
+    },
+    {
+      "path": "silver/raw-historical-2025-20260831-v1/MANIFEST.json",
+      "sha256": "aee4578f1ee83f8c1ede63e36e840c6cd2140df8c6f463e71ec93da9e4e7d75a"
+    }
+  ],
+  "limitation": "Manifest byte hashes verified; derivative member bytes not revalidated in this slice. No fresh HTTP capture or source rights qualification."
+}

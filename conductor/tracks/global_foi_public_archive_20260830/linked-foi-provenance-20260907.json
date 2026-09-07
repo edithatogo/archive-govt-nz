@@ -1,0 +1,20 @@
+{
+  "acquired_before_guard_fix": true,
+  "acquisition_base_commit": "f8206f38fada690eff7d79469add77b658917223",
+  "acquisition_extension": "metadata_get and Structure in foi_linked_assessment.py; transient HTML structure extraction, no additional requests",
+  "acquisition_transport_sha256": "a2f7cc5573022da5863a83599f14a8430a53de05337e9f0734bd3145a5f964b3",
+  "acquisition_transport_source_snapshot": "candidate-probe-acquisition-20260907.py.txt",
+  "assessment": "Offline factual validation after guard fix; not retroactive policy compliance. Historical observations preserved.",
+  "corrected_collector_fresh_read": false,
+  "full_cohort_replay": false,
+  "guard_fix_commit": "8272a2a0b493f90bb647347050b623a7291d2e5e",
+  "observation_content_sha256": "0708f4da7b0c01d892516660efcdfcdc5e2d2b58603d0013256c1581257cc7d7",
+  "observations_path": "linked-foi-observations-20260907.json",
+  "observations_sha256": "ea4fd9bf98a61c71f454282c515f559eebfb513a3a44ed66a3bdb3a94e9da2bd",
+  "observed_end": "2026-09-07T03:31:36.679504+00:00",
+  "observed_start": "2026-09-07T03:31:24.854772+00:00",
+  "recorded_at": "2026-09-07T03:44:50.902179+00:00",
+  "rights_publication_schedule_gates": "unchanged",
+  "schema_version": "archive-govt-nz.foi-linked-provenance/v1",
+  "transport_policy_compliance": "not_certified"
+}

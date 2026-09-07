@@ -90,9 +90,14 @@ repository validation command. External gates block only their affected task.
   and verify uniqueness without substituting locator identity for byte fixity.
   Both review fixes passed the full local gate and all three hosted platform
   gates in PR #414 (merge `4b1764bb`); source census completion remains separate.
-- [ ] Enumerate the exact official CPI, QES wage, population, GDP and Crown
+- [~] Enumerate the exact official CPI, QES wage, population, GDP and Crown
   expense series needed for approved derived measures; reject discovery leads
   that lack a stable definition or join. [M-02, M-12; AC-03, AC-10]
+  Context-family selectors and retained Crown ranges are recorded in
+  `context-census.json`. Population definition enumeration is complete in
+  `population-context.json`: national/all-age DPE054AA selectors, quarterly
+  dates, 2023 base and August-2026 vintage. Numeric capture and analytical
+  denominator qualification remain separate; no interpolation was selected.
 - [x] Evaluate published aggregate Health Survey indicators as a non-blocking
   Should item; include only if a documented analytical question, stable
   time/geography contract and public rights evidence exist. [S-05; AC-10]
@@ -179,11 +184,26 @@ repository validation command. External gates block only their affected task.
 
 ### 2.1 Bronze integrity contracts first
 
-- [ ] Add failing tests for streaming single-pass ingestion, expected-length
+- [~] Add failing tests for streaming single-pass ingestion, expected-length
   mismatch, SHA-256/BLAKE3/CID identity, CAS deduplication, atomicity, WARC
   linkage, resume, interruption, unchanged/changed observations, corrupt ZIPs,
   withdrawal, restriction and tombstones. [M-03, M-04, M-18, S-01, S-02;
   AC-01, AC-02, AC-04, AC-16]
+  Audited shared/health contracts; added 23 tests and fixed identity-encoded
+  HTTP length mismatch before CAS/WARC promotion. 129 affected tests pass;
+  98.99% scoped coverage, three length-guard mutants killed in the initial slice.
+  The final redirect-boundary follow-up now has 169 affected tests passing and
+  100% capture line/branch coverage without exclusions; see
+  `bronze-redirect-boundary.md`. Local implementation stops at the requested
+  review boundary, pending parent full assurance and independent review only.
+  Encoded transport-body length has 11 additional executable
+  cases and four killed mutants; see `bronze-wire-length.md` (161 affected
+  tests pass). Cooperative per-resource resume and non-overwriting
+  WARC paths now have 149 affected passing tests and 100% runner coverage;
+  see `bronze-checkpoint-contracts.md`. Preceding audit:
+  `bronze-ingestion-contracts.md` and `bronze-ingestion-validation.json`.
+  Process-death ownership recovery now passes a real kill/resume contract,
+  without PID-based lock deletion; see `bronze-process-recovery.md`.
 - [x] Add a 23-path donor-manifest contract that fails on any omitted path,
   altered byte, wrong Git mode/blob, length mismatch or archive-digest drift.
   [M-01, M-03, M-18; AC-01, AC-16]
@@ -580,30 +600,33 @@ repository validation command. External gates block only their affected task.
 
 ### 7.1 Metadata and rights contracts first
 
-- [~] Review clarification: explicitly load the JSON-LD parser plugin without
+- [x] Review clarification: explicitly load the JSON-LD parser plugin without
   an unguarded warm-up parse; retain offline positive/negative fixtures and
   revalidate the exact change. [M-14, M-18; AC-14, AC-16]
 
-- [~] Validate generated DCAT and PROV JSON-LD with an offline RDF processor:
+- [x] Validate generated DCAT and PROV JSON-LD with an offline RDF processor:
   compare expanded predicates, resource/literal types, checksum bytes and exact
   derivation edges; deny external context/file/network reads. Keep application
   profiles, rights, publication and graph indexing separate. [M-14; AC-14]
 
-- [~] DCAT standards review: use the registered Parquet media-type IRI and
+- [x] DCAT standards review: use the registered Parquet media-type IRI and
   expose verified payload SHA256 values through typed SPDX checksum nodes;
   independently compare graph digests with retained file bytes. [M-14; AC-14]
 
-- [~] Generate local DCAT recordset/distribution metadata only after original,
+- [x] Generate local DCAT recordset/distribution metadata only after original,
   raw and canonical package verification and projection equality. Retain exact
   physical-schema/fixity inventory; reject forged or altered inputs and do not
   infer access URLs, licensing, publication dates or full standards conformance.
   [M-14, M-18; AC-14, AC-16]
 
-- [~] Compose a read-only local provenance verifier for explicit canonical
+- [x] Compose a read-only local provenance verifier for explicit canonical
   historical/classification marker pins, original objects and raw package pins.
   Compare retained tables/accounting with recomputed pure projections and return
   separate scoped fixity evidence; do not change the pure descriptor helper's
   claims or declare Platinum/publication complete. [M-14, M-16, M-18; AC-14, AC-16]
+  These five scoped clauses match merged PRs #414/#415 and their successful
+  hosted gates. Independent review reran 188 focused tests on 2026-09-07.
+  See `integration-review-20260907.md`; broader Phase 7 acceptance remains open.
 
 - [x] Project validated typed local descriptors into an entity-only PROV
   JSON-LD graph with exact product-to-input derivation edges, retaining the

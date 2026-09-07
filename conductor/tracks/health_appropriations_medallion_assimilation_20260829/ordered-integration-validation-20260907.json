@@ -1,0 +1,17 @@
+{
+  "tested_commit": "8b878a18a5b9e42298f3da8533d6a26e1cab97f9",
+  "command": "PYTEST_XDIST_AUTO_NUM_WORKERS=2 ./scripts/validate.sh",
+  "status": "passed_local",
+  "exit_code": 0,
+  "tests_passed": 5523,
+  "coverage_percent": 97.60898339097392,
+  "cas_throughput_mb_s": 734.03,
+  "schemas": 48,
+  "representative_documents": 38,
+  "parity_cases": 9,
+  "all_configured_mutation_suites": "passed",
+  "supply_chain_and_sbom": "passed; 112 SBOM components",
+  "review": "Independent reviews cleared capture, generated-column oracle fix, population footer, FOI pacing/transport/bounds and linked-cohort provenance. Parent inspected the probe runtime guard and complete harness includes its regressions.",
+  "integration_attempt": "Initial isolated guard cherry-pick exposed a missing linked-cohort parent. Aborted only that owned cherry-pick, then integrated parent and guard in order. The attempted harness stopped at Conductor conflict markers; no passing claim for that attempt.",
+  "boundaries": "No raw publication, rights decision, analytic denominator selection, full health/FOI track acceptance or hosted delivery is asserted. Next normalization work is separate."
+}

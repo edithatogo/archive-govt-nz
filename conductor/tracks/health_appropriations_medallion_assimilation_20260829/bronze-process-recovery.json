@@ -1,0 +1,18 @@
+{
+  "schema_version": "archive-govt-nz.health-process-recovery-validation/v1",
+  "date": "2026-09-07",
+  "base_commit": "3daedf4c201a0033cb1f78aae0ea951f0f317405",
+  "task": "Phase 2.1",
+  "red": "post-kill resume fails with FileExistsError using legacy directory lock",
+  "focused_tests_passed": 44,
+  "runner_lines": [141, 141],
+  "runner_branches": [32, 32],
+  "mutants_killed": ["deferred_ownership", "no_ownership", "skip_legacy_guard"],
+  "static_checks": "ruff, ruff format and basedpyright passed",
+  "hard_process_termination": "tested locally on macOS",
+  "cross_platform_hosted_checks": "not run by this worker",
+  "full_harness_run": false,
+  "external_acquisition": false,
+  "publication": false,
+  "task_complete": false
+}

@@ -145,6 +145,12 @@ the only preservation copy.
 
 ## Bronze object and observation model
 
+The [encoded-length contract](./bronze-wire-length.md) compares advertised
+Content-Length with HTTPX's raw transport-body counter before decoded CAS
+promotion. Already-consumed encoded responses with an advertised length are
+unverifiable and rejected; absent lengths are not invented. This does not
+change the decoded payload representation or claim raw-socket preservation.
+
 Each immutable object is keyed by SHA-256 and may also carry BLAKE3 and CID.
 An observation links a source locator and observation time to an object or a
 reason-coded no-object state. Re-observing the same bytes creates a new
@@ -399,6 +405,14 @@ A release claim requires the final `Released` state. `Uploaded`, `Verified`,
 and `Collected` retain distinct receipts.
 
 ## Operational state and recovery
+
+The fiscal capture runner's bounded cooperative checkpoint/attempt storage
+contract is documented in [Bronze checkpoints](./bronze-checkpoint-contracts.md).
+It verifies retained CAS/WARC receipts before explicit resume, reserves unique
+WARC attempt paths and atomically checkpoints after each resource. The
+[process-death follow-up](./bronze-process-recovery.md) now uses a persistent
+SQLite exclusive transaction lock: OS ownership ends on process death without
+unlinking the shared lock file. Legacy directory locks remain fail-closed.
 
 The existing transactional SQLite ledger records discovery cursors, attempts,
 retry schedule, object/observation links and publication stages. Durable

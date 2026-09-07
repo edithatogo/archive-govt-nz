@@ -350,3 +350,69 @@ PYTHONPATH=src /Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/python -m p
 
 114 tests pass, 100% new-module line/branch coverage. No full harness, hosted
 pass, remote mutation, source activation or publication is claimed.
+
+
+## 2026-09-07 — P2.11 complete remaining factual cohort
+
+Completed all 223 bounded probes in approximately 174 seconds; retained inputs
+and deterministic complete 225-candidate reports. No remote mutations. See
+[candidate cohort review](candidate-cohort-review-20260907.md) for caps, counts,
+focused validation, evidence limits and remaining factual inputs. 148 focused
+tests pass; combined changed-module coverage 86%; scoped Ruff/BasedPyright pass.
+Parent owns full harness and integration; preserve accepted P2.5–P2.8 statuses.
+
+
+## 2026-09-07 — P2.13 priority guard corrections
+
+No network reads or replay during correction. Red: 6/8 pacing/outcome regressions
+and 40/52 budget cases failed on original implementation. Green: 208 focused tests.
+Historical observations/reports retain exact bytes; paired dated correction records
+Italy's 1.015811-second redirect gap against Crawl-delay 10. P2.12 uncommitted
+files remain excluded from this fix delivery.
+
+```sh
+PYTHONPATH=src /Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/python -m pytest -q tests/test_foi_candidate_probe.py tests/test_foi_candidate_cohort.py tests/test_foi_candidate_assessment.py tests/test_foi_reconciliation.py tests/test_foi_catalogue.py tests/test_foi_discovery.py tests/test_foi_rollout.py tests/test_verify_foi_rollout_evidence.py --cov=archive_govt_nz.foi_candidate_probe --cov=archive_govt_nz.foi_candidate_cohort --cov-branch --cov-report=term-missing --cov-fail-under=0
+/Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/ruff check src/archive_govt_nz/foi_candidate_probe.py src/archive_govt_nz/foi_candidate_cohort.py tests/test_foi_candidate_probe.py tests/test_foi_candidate_cohort.py
+/Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/ruff format --check src/archive_govt_nz/foi_candidate_probe.py src/archive_govt_nz/foi_candidate_cohort.py tests/test_foi_candidate_probe.py tests/test_foi_candidate_cohort.py
+/Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/basedpyright src/archive_govt_nz/foi_candidate_probe.py src/archive_govt_nz/foi_candidate_cohort.py tests/test_foi_candidate_probe.py tests/test_foi_candidate_cohort.py
+```
+
+Combined changed-module coverage 87%, not whole-repository coverage or full harness
+certification. Existing coverage gaps are not suppressed or represented as passes.
+
+
+## 2026-09-07 — P2.12 linked cohort delivery
+
+Initial red test: missing new module, expected. Six linked targets were observed
+03:31:24.854772–03:31:36.679504 UTC before P2.13 fixes: five HTML pages and GG
+timeout. Delivery review is offline after `8272a2a0`; no historical compliance
+claim or replay. Exact provenance and results: `linked-foi-provenance-20260907.json`
+and `linked-foi-review-20260907.md`.
+
+```sh
+PYTHONPATH=src /Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/python -m pytest -q tests/test_foi_linked_assessment.py tests/test_foi_candidate_probe.py tests/test_foi_candidate_cohort.py tests/test_foi_candidate_assessment.py tests/test_foi_reconciliation.py tests/test_foi_catalogue.py tests/test_foi_discovery.py tests/test_foi_rollout.py tests/test_verify_foi_rollout_evidence.py --cov=archive_govt_nz.foi_linked_assessment --cov-branch --cov-report=term-missing --cov-fail-under=100
+/Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/ruff check src/archive_govt_nz/foi_linked_assessment.py tests/test_foi_linked_assessment.py
+/Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/ruff format --check src/archive_govt_nz/foi_linked_assessment.py tests/test_foi_linked_assessment.py
+/Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/basedpyright src/archive_govt_nz/foi_linked_assessment.py tests/test_foi_linked_assessment.py
+```
+
+236 tests pass; 100% new-module line/branch coverage; lint/format/typing pass.
+Parent owns full harness and integration. Only additive P2.12 plan changes;
+preserve accepted P2.5–P2.8 and rechain new evidence on parent integration.
+
+
+## 2026-09-07 — P2.14 separate runtime compatibility fix
+
+Linked cohort committed separately as `cd6967da49a1ae3bbbcd74b4c8d3dca896bbedc6`.
+Inspected upstream CPython v3.14.0/v3.14.6 robotparser source read-only; no source
+cohort requests. Seven mocked legacy-allow cases failed red, then passed after
+the conservative pre-parser rule guard. Final 249 focused tests pass; probe
+module coverage 84%, newly added guard lines/branches exercised. Ruff, format
+and scoped BasedPyright pass. Full combined gate remains with parent.
+
+```sh
+PYTHONPATH=src /Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/python -m pytest -q tests/test_foi_linked_assessment.py tests/test_foi_candidate_probe.py tests/test_foi_candidate_cohort.py tests/test_foi_candidate_assessment.py tests/test_foi_reconciliation.py tests/test_foi_catalogue.py tests/test_foi_discovery.py tests/test_foi_rollout.py tests/test_verify_foi_rollout_evidence.py --cov=archive_govt_nz.foi_candidate_probe --cov-branch --cov-report=term-missing --cov-fail-under=0
+/Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/ruff check src/archive_govt_nz/foi_candidate_probe.py tests/test_foi_candidate_probe.py
+/Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/ruff format --check src/archive_govt_nz/foi_candidate_probe.py tests/test_foi_candidate_probe.py
+/Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/basedpyright src/archive_govt_nz/foi_candidate_probe.py tests/test_foi_candidate_probe.py
+```

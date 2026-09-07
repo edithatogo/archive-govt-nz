@@ -77,8 +77,57 @@ The approved destination is archive-govt-nz; no cutover has occurred.
   `factual-observations-al-bh-20260907.json`. 114 focused tests pass with 100%
   new-module line/branch coverage. Parent owns full integration validation.
 
-## Phase 3 — Metadata indexes and immutable raw storage
+### P2 remaining factual cohort — 2026-09-07
 
+- [x] P2.11 (AC04, AC09, AC11): Complete bounded factual assessment for
+  every remaining 223 candidate URL. Reuse safe URL checks, validate and pin
+  public DNS addresses, cap concurrency/time/bytes, and retain dated failures.
+  Generate deterministic all-candidate reports with evidence-backed dispositions
+  for observed institutional non-FOI catalogues, scoped to the observed URL.
+  Preserve FOI uncertainty, prior AL/BH dates, rights and publication boundaries;
+  no schedules, remote writes or extra human factual-review queue.
+  Evidence: `candidate-observations-remaining-20260907.json` and
+  `candidate-assessment-complete.json` / `.md`. All 223 receive dated outcomes;
+  prior two assessments are unchanged. Scoped validation and limitations:
+  `candidate-cohort-review-20260907.md`. Parent owns full integration.
+
+### P2 priority review corrections — 2026-09-07
+
+- [x] P2.13 (AC04, AC09, AC11, AC12): Resolve independent reviewer findings
+  before further cohort delivery: enforce learned robots crawl-delay under the
+  shared origin lock on every hop; bind successful page outcome/media to the
+  observed 200 HTML terminal; reject nonfinite/mistyped duration and count bounds.
+  Preserve historical bytes, including the Italy timing violation, and append
+  an explicit dated correction of the earlier pacing-compliance claim. No replay
+  or network reads; focused regression/mutation checks only, parent full harness.
+  Receipt: `candidate-probe-review-correction-20260907.json` / `.md`.
+  208 focused tests pass; historical pacing compliance is explicitly not certified.
+
+### P2 linked FOI metadata cohort — 2026-09-07
+
+- [x] P2.12 (AC04, AC09, AC11): Deliver the four linked FOI pages and
+  two AL year-register observations as a separate factual metadata cohort.
+  P2.13 fixes are prerequisite: `8272a2a0`. Validate retained pre-fix observations
+  offline using the corrected assessor; disclose acquisition provenance without
+  historical pacing compliance or capture/rights/publication credit. No fresh
+  reads are needed for this factual cohort; GG timeout remains unresolved access.
+  Preserve prior observations and parent accepted P2.5–P2.8 statuses.
+  Receipts: `linked-foi-assessment.json` / `.md`, `linked-foi-provenance-20260907.json`
+  and `linked-foi-review-20260907.md`. 236 focused tests pass; new module has 100%
+  line/branch coverage. Full integration remains with parent.
+
+### P2 robots runtime compatibility — 2026-09-07
+
+- [x] P2.14 (AC04, AC11, AC12): Fail closed before probe page access on
+  wildcard/end-anchor robots path rules across the supported Python runtime
+  range. Cover a permissive legacy-parser mock; do not infer broad Python 3.14
+  support from 3.14.6 behavior. Keep parent-owned candidate-assessment changes
+  separate, preserve all observations and perform no source replay.
+  Receipt: `robots-runtime-compatibility-20260907.md` / `.json`.
+  249 focused tests pass, including permissive legacy-parser regressions;
+  full combined harness remains with parent.
+
+## Phase 3 — Metadata indexes and immutable raw storage
 
 - [x] P3.1 (AC05, AC06, AC11): Add red tests for original metadata preservation, request/correspondence/attachment relationships, revisions, missing objects, synthetic/CDX rejection, unsafe archive members, private-network redirects, expansion/resource limits, active content and sensitive exports.
 - [x] P3.2 (AC05, AC06): Integrate pinned capture adapters, CAS/WARC packaging, JSONL/Parquet object metadata and complete provenance; reuse existing Bronze/storage primitives.

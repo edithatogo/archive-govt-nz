@@ -52,3 +52,39 @@ rights-decision-owner-20260905.json policy remains unchanged: institutional raw
 eligibility needs explicit licence and nonpersonal schema evidence; mixed
 correspondence remains metadata-only under the applicable decision boundary.
 This task does not perform those decisions or satisfy R04 catalogue publication.
+
+
+## P2.11 bounded complete-cohort acceptance
+
+AC04/AC09/AC11: account for all remaining 223 candidate URLs with source-bound,
+dated metadata-only observations, including access failures. Preserve AL/BH
+observations unchanged. Distinguish general catalogue interfaces out of FOI
+capture scope from FOI leads and uncertainty; no exhaustive discovery, rights,
+activation or publication inference. Evidence and review: candidate-cohort-review-20260907.md.
+
+
+## P2.13 review correction acceptance
+
+AC04/AC09/AC11/AC12: reject nonfinite/mistyped budgets before collection, honor
+known crawl delay per origin inside the lock on every hop, and reject page-success
+claims not backed by terminal 200 HTML. Preserve immutable observations and append
+an explicit historical pacing correction. No full-cohort replay or rights decision.
+
+
+## P2.12 linked factual cohort acceptance
+
+AC04/AC09/AC11: derive and assess all four retained FOI navigation links and both
+AL year-register links without unbounded discovery. Preserve dated failures,
+parent source/page identities and pre-fix observation provenance. Structural
+metadata must exclude arbitrary personal text and attachments; reports must
+reproduce offline and cannot grant policy compliance, rights, capture coverage,
+publication, schedules or non-null request denominators. No fresh reads required
+for this dated factual end state. Full integration remains with parent.
+
+
+## P2.14 runtime compatibility acceptance
+
+AC04/AC11/AC12: reject wildcard/end-anchor robots path rules before probe page
+admission independently of the Python 3.14 patch release. Exercise a permissive
+legacy parser mock; preserve simple rules, default-agent selectors and comments.
+Unsupported rules remain unknown access, not rights decisions or publication.

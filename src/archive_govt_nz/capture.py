@@ -147,7 +147,14 @@ async def capture_url(  # noqa: PLR0915, PLR0912
                                 monotonic() - started,
                             )
                         )
-                        raise CaptureError("redirect_limit", tuple(attempt_receipts))
+                        if location is None:
+                            raise CaptureError(
+                                "redirect_limit", tuple(attempt_receipts)
+                            )
+                        # The final permitted response exhausted the finite
+                        # request budget. Close it and use the terminal failure
+                        # below the loop without issuing another request.
+                        continue
                     attempt_receipts.append(
                         CaptureAttempt(
                             redact_url(current_url),
@@ -240,10 +247,14 @@ async def capture_url(  # noqa: PLR0915, PLR0912
 
                 attempt_url = current_url
 
-                async def chunks(bound_url: str = attempt_url):
+                async def chunks(
+                    bound_url: str = attempt_url,
+                    expected_length: str | None = length,
+                ):
                     total = 0
                     encoded = response.headers.get("content-encoding", "").lower()
                     decompression_bound = encoded not in {"", "identity"}
+                    wire_observable = not response.is_stream_consumed
                     async for chunk in response.aiter_bytes(config.chunk_bytes):
                         if monotonic() - started >= max_duration:
                             raise CaptureError("timeout", tuple(attempt_receipts))
@@ -264,6 +275,40 @@ async def capture_url(  # noqa: PLR0915, PLR0912
                             )
                             raise CaptureError(error_class, tuple(attempt_receipts))
                         yield chunk
+                    # HTTPX increments num_bytes_downloaded on raw transport
+                    # chunks before decoding. A cached response bypasses that
+                    # path; do not invent a wire count from decoded bytes.
+                    if (
+                        expected_length is not None
+                        and decompression_bound
+                        and not wire_observable
+                    ):
+                        attempt_receipts.append(
+                            CaptureAttempt(
+                                redact_url(bound_url),
+                                response.status_code,
+                                "wire_length_unverifiable",
+                                monotonic() - started,
+                            )
+                        )
+                        raise CaptureError(
+                            "wire_length_unverifiable", tuple(attempt_receipts)
+                        )
+                    actual_length = (
+                        response.num_bytes_downloaded if decompression_bound else total
+                    )
+                    if expected_length is not None and actual_length != int(
+                        expected_length
+                    ):
+                        attempt_receipts.append(
+                            CaptureAttempt(
+                                redact_url(bound_url),
+                                response.status_code,
+                                "length_mismatch",
+                                monotonic() - started,
+                            )
+                        )
+                        raise CaptureError("length_mismatch", tuple(attempt_receipts))
 
                 temporary: Path | None = None
                 try:
@@ -284,6 +329,7 @@ async def capture_url(  # noqa: PLR0915, PLR0912
                                 write_response_record,
                                 transaction_warc_path,
                                 url=current_url,
+                                request_url=url,
                                 status_code=response.status_code,
                                 headers={
                                     k: str(v) for k, v in dict(response.headers).items()
