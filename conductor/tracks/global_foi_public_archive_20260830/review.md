@@ -248,3 +248,12 @@ pass. Python/general guides apply. No unresolved in-scope correctness finding.
 Full harness and hosted/integration evidence remain with the parent. The diff
 adds P2.10 without changing P2.5–P2.8, global registry, rights policy, seeds or
 historical receipts. No remote writes or rights decisions occurred.
+
+
+## P2.11 scoped review — 2026-09-07
+
+Reviewed exact cohort accounting, transport/source binding, robots and DNS guards,
+metadata-only evidence, determinism, restrictive policy preservation and challenge
+handling. [Detailed review](candidate-cohort-review-20260907.md) records focused
+validation and coverage limits. No complete-country, rights or publication claim.
+No required human factual-review queue. Parent full integration remains pending.

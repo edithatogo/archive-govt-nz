@@ -77,8 +77,21 @@ The approved destination is archive-govt-nz; no cutover has occurred.
   `factual-observations-al-bh-20260907.json`. 114 focused tests pass with 100%
   new-module line/branch coverage. Parent owns full integration validation.
 
-## Phase 3 — Metadata indexes and immutable raw storage
+### P2 remaining factual cohort — 2026-09-07
 
+- [x] P2.11 (AC04, AC09, AC11): Complete bounded factual assessment for
+  every remaining 223 candidate URL. Reuse safe URL checks, validate and pin
+  public DNS addresses, cap concurrency/time/bytes, and retain dated failures.
+  Generate deterministic all-candidate reports with evidence-backed dispositions
+  for observed institutional non-FOI catalogues, scoped to the observed URL.
+  Preserve FOI uncertainty, prior AL/BH dates, rights and publication boundaries;
+  no schedules, remote writes or extra human factual-review queue.
+  Evidence: `candidate-observations-remaining-20260907.json` and
+  `candidate-assessment-complete.json` / `.md`. All 223 receive dated outcomes;
+  prior two assessments are unchanged. Scoped validation and limitations:
+  `candidate-cohort-review-20260907.md`. Parent owns full integration.
+
+## Phase 3 — Metadata indexes and immutable raw storage
 
 - [x] P3.1 (AC05, AC06, AC11): Add red tests for original metadata preservation, request/correspondence/attachment relationships, revisions, missing objects, synthetic/CDX rejection, unsafe archive members, private-network redirects, expansion/resource limits, active content and sensitive exports.
 - [x] P3.2 (AC05, AC06): Integrate pinned capture adapters, CAS/WARC packaging, JSONL/Parquet object metadata and complete provenance; reuse existing Bronze/storage primitives.

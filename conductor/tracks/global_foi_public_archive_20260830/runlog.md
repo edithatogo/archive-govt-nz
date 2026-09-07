@@ -350,3 +350,13 @@ PYTHONPATH=src /Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/python -m p
 
 114 tests pass, 100% new-module line/branch coverage. No full harness, hosted
 pass, remote mutation, source activation or publication is claimed.
+
+
+## 2026-09-07 — P2.11 complete remaining factual cohort
+
+Completed all 223 bounded probes in approximately 174 seconds; retained inputs
+and deterministic complete 225-candidate reports. No remote mutations. See
+[candidate cohort review](candidate-cohort-review-20260907.md) for caps, counts,
+focused validation, evidence limits and remaining factual inputs. 148 focused
+tests pass; combined changed-module coverage 86%; scoped Ruff/BasedPyright pass.
+Parent owns full harness and integration; preserve accepted P2.5–P2.8 statuses.

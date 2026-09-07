@@ -52,3 +52,12 @@ rights-decision-owner-20260905.json policy remains unchanged: institutional raw
 eligibility needs explicit licence and nonpersonal schema evidence; mixed
 correspondence remains metadata-only under the applicable decision boundary.
 This task does not perform those decisions or satisfy R04 catalogue publication.
+
+
+## P2.11 bounded complete-cohort acceptance
+
+AC04/AC09/AC11: account for all remaining 223 candidate URLs with source-bound,
+dated metadata-only observations, including access failures. Preserve AL/BH
+observations unchanged. Distinguish general catalogue interfaces out of FOI
+capture scope from FOI leads and uncertainty; no exhaustive discovery, rights,
+activation or publication inference. Evidence and review: candidate-cohort-review-20260907.md.

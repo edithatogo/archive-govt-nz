@@ -74,3 +74,9 @@ Approved track in progress. Automation repair and source-catalogue foundations a
 - [Hosted health failure](hosted-health-failure-33955611192.json)
 - [NZ metadata disposition](nz-metadata-disposition-20260905.json)
 - [US numeric projection review](us-numeric-projection-review-20260905.json)
+
+
+- [Complete candidate assessment](candidate-assessment-complete.md)
+- [Complete candidate assessment JSON](candidate-assessment-complete.json)
+- [Remaining 223 dated observations](candidate-observations-remaining-20260907.json)
+- [P2.11 cohort review and limits](candidate-cohort-review-20260907.md)
