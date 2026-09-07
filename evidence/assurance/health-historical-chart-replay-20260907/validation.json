@@ -1,0 +1,23 @@
+{
+  "base_commit": "acf06c153c1f6900262da588c0308a57bb5dd985",
+  "execution_context": "local_python_3.14.6",
+  "red": {"test_file": "tests/domains/health_appropriations/test_historical_chart_replay.py", "exit_code": 1, "failed": 11, "cause": "historical_chart_v1 helper absent before implementation"},
+  "green": {"passed": 139, "failed": 0, "seconds": 0.73, "command": "PYTHONPATH=src python -m pytest -q tests/domains/health_appropriations/test_historical_chart_replay.py tests/domains/health_appropriations/test_expanded_coverage.py tests/domains/health_appropriations/test_direct_coverage.py tests/domains/health_appropriations/test_befu_chart_literals.py tests/domains/health_appropriations/test_hyefu_allowance_literals.py tests/domains/health_appropriations/test_health_chart_residual_literals.py"},
+  "static": {"ruff_check": "passed", "ruff_format_check": "2 files already formatted", "basedpyright": "0 errors, 0 warnings, 0 notes", "scope": "changed replay recipe and new regression file"},
+  "actual_replays": [
+    {"build": "/tmp/health-crown-receipt-replay.iNn9fa/first", "exit_code": 0, "matches_retained_report": true, "stderr": "", "stdout_sha256": "53c5f901bcb71ba54886b6abea5f6e6a45e2015d7deb55dd6f10b1865f5bd186"},
+    {"build": "/tmp/health-crown-receipt-replay.iNn9fa/second", "exit_code": 0, "matches_retained_report": true, "stderr": "", "stdout_sha256": "53c5f901bcb71ba54886b6abea5f6e6a45e2015d7deb55dd6f10b1865f5bd186"}
+  ],
+  "pins": {
+    "changed_replay_sha256": "d71c24cd232637bebeee3a01d9e9e87df3d5e30e3d8ec7805a6acd54e6783a77",
+    "new_test_sha256": "e12aec704857c167ea2e4bed94a4ba8f450fbeac8312829a91b2bf43def1c5dd",
+    "unchanged_selection_register_sha256": "21a93faa348c0de1a96d3c7aaa1439c389282efed74b9fcad3b3516368ef2691",
+    "unchanged_report_sha256": "53c5f901bcb71ba54886b6abea5f6e6a45e2015d7deb55dd6f10b1865f5bd186"
+  },
+  "producers_package_writers_verifiers": "unchanged",
+  "new_builds": false,
+  "full_harness": "not_run_user_scope",
+  "network_capture_publication": "not_performed",
+  "parent_worktree_edits": false,
+  "independent_review": "pending"
+}

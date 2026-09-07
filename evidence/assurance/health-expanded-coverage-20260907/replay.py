@@ -32,6 +32,70 @@ OLD_REPORT_PIN = "765b5352db948e5d586414367d2b22befa71a4b50c26ce0f37bcb5b0d2ac6f
 OLD_TARGET_PIN = "402389ed59038e2e709621a408b05a5a2ec4352c8c380ef9fd36532fc33e49e9"
 
 
+def historical_chart_v1(name: str, data: dict[str, Any], digest: str) -> Pinned:
+    """Reproduce the pre-inventory v1 receipt, not a current package receipt.
+
+    Only the known additive workbook_inventory field is omitted. Unknown root
+    fields/schemas fail closed; every retained field remains covered by the
+    original independently pinned digest. Source identity is additionally joined
+    by selection_report. Never mutate the producer result or silently re-pin it.
+    """
+    contracts = {
+        "befu-chart": (
+            "befu-chart-literal-context/v1",
+            "analytical_addition_or_netting",
+        ),
+        "hyefu-allowance": (
+            "hyefu-allowance-literal-context/v1",
+            "arithmetic_or_cross_vintage_equivalence",
+        ),
+        "befu-residual": (
+            "health-chart-residual-literal-context/v1",
+            "arithmetic_or_cross_measure_equivalence",
+        ),
+        "hyefu-residual": (
+            "health-chart-residual-literal-context/v1",
+            "arithmetic_or_cross_measure_equivalence",
+        ),
+    }
+    try:
+        schema, boundary = contracts[name]
+        keys = {
+            "schema_version",
+            "status",
+            "records",
+            "rights_state",
+            "workbook_inventory",
+            boundary,
+        }
+        if name == "befu-chart":
+            keys.add("excluded_formulas")
+        inventory = data["workbook_inventory"]
+        valid = (
+            set(data) == keys
+            and data["schema_version"] == schema
+            and data["status"] == "raw_context_only"
+            and data["rights_state"] == "not_evaluated"
+            and data[boundary] == "not_performed"
+            and isinstance(inventory, dict)
+            and inventory["schema_version"] == "archive-govt-nz.workbook-inventory/v1"
+            and isinstance(inventory["sheets"], list)
+        )
+        payload = encode_json(
+            {key: value for key, value in data.items() if key != "workbook_inventory"}
+        ).encode()
+        if (
+            valid
+            and len(payload) <= MAX_BYTES
+            and hashlib.sha256(payload).hexdigest() == digest
+        ):
+            return Pinned(payload, digest)
+    except KeyError, TypeError, ValueError:
+        pass
+    message = "historical_chart_v1_contract"
+    raise ValueError(message)
+
+
 def snapshot(path: Path, digest: str) -> Pinned:
     """Bound a caller-selected local input and reject wrong bytes."""
     with path.open("rb") as stream:
@@ -76,7 +140,7 @@ def replay(archive: Path, build: Path) -> dict[str, Any]:
             data = health_chart_residual_literals.admit_health_chart_residuals(
                 source, row["vintage"]
             )
-        receipts[identity] = Pinned(encode_json(data).encode(), row["receipt_sha256"])
+        receipts[identity] = historical_chart_v1(name, data, row["receipt_sha256"])
     selections = selection_report(
         register, receipts, snapshot(build / "MANIFEST.json", RUN_PIN)
     )
