@@ -238,11 +238,13 @@ def test_run_command_kills_process_group_on_timeout(
                 raise subprocess.TimeoutExpired(("stage",), timeout)
             return -9
 
-    monkeypatch.setattr(
-        "archive_govt_nz.assurance.subprocess.Popen", lambda *a, **k: TimedOutProcess()
-    )
+    def fake_popen(*_args: object, **_kwargs: object) -> TimedOutProcess:
+        return TimedOutProcess()
+
+    monkeypatch.setattr("archive_govt_nz.assurance.subprocess.Popen", fake_popen)
     monkeypatch.setattr(
         "archive_govt_nz.assurance.os.killpg", lambda pid, sig: calls.append((pid, sig))
     )
     assert run_command(("stage",)) == 124
-    assert calls and calls[0][0] == 4242
+    assert calls
+    assert calls[0][0] == 4242
