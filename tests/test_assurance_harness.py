@@ -8,6 +8,7 @@ from typing import Any
 
 import pytest
 
+import archive_govt_nz.assurance as assurance
 from archive_govt_nz.assurance import (
     COMMAND_TIMEOUT_SECONDS,
     STAGES,
@@ -249,3 +250,29 @@ def test_run_command_kills_process_group_on_timeout(
     assert run_command(("stage",)) == 124
     assert calls
     assert calls[0][0] == 4242
+
+
+def test_run_command_kills_process_on_windows_timeout(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """A timed-out Windows stage uses direct process termination."""
+    killed: list[bool] = []
+
+    class TimedOutProcess:
+        pid = 4343
+
+        def wait(self, *, timeout: int | None = None) -> int:
+            if timeout is not None:
+                raise subprocess.TimeoutExpired(("stage",), timeout)
+            return -9
+
+        def kill(self) -> None:
+            killed.append(True)
+
+    def fake_popen(*_args: object, **_kwargs: object) -> TimedOutProcess:
+        return TimedOutProcess()
+
+    monkeypatch.setattr(assurance.os, "name", "nt")
+    monkeypatch.setattr(assurance.subprocess, "Popen", fake_popen)
+    assert run_command(("stage",)) == 124
+    assert killed
