@@ -366,7 +366,11 @@ async def test_health_capture_resumes_verified_checkpoint_without_replacing_warc
         payload = b"synthetic health original"
         receipt = store.put_bytes(payload)
         warc = write_response_record(
-            transaction_warc_path, url=url, status_code=200, headers={}, body=payload
+            transaction_warc_path,
+            url=url,
+            status_code=200,
+            headers={"content-type": "text/csv"},
+            body=payload,
         )
         return capture.CaptureResult(url, 200, "text/csv", receipt, warc)
 
