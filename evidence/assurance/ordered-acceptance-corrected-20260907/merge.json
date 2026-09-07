@@ -1,0 +1,15 @@
+{
+  "repository": "edithatogo/archive-govt-nz",
+  "pull_request": 417,
+  "reviewed_head": "3c8c8425d5c57f6a8ceee8e0a4c1c416b32c9f28",
+  "merge_commit": "8d38c3bea6ad8d3e94add33d4e5ee91f69aced38",
+  "merged_at": "2026-09-07T04:06:21Z",
+  "state": "MERGED",
+  "merge_method": "normal protected merge; no administrator bypass",
+  "all_three_platform_checks": "passed",
+  "supplemental_run": 34081180231,
+  "independent_supplemental_suites": 11,
+  "independent_receipt_files": 113,
+  "supplemental_receipt_sha256": "bb26a7cd1966bd7a29d13613a7ce357126d2d7c1b6c393e36cba5ccf52be194a",
+  "scope": "Delivers terminal legislation acceptance and archival; health and global FOI remain active. No new dataset publication."
+}
