@@ -53,6 +53,19 @@ def test_identical_rows_and_deterministic_receipt(tmp_path: Path) -> None:
     assert hashlib.sha256(path.read_bytes()).hexdigest() == pin
 
 
+def test_generated_column_is_rejected_before_row_query(tmp_path: Path) -> None:
+    path = tmp_path / "generated.sqlite"
+    database(path)
+    with closing(sqlite3.connect(path)) as connection, connection:
+        connection.execute(
+            "ALTER TABLE historical_health_spending ADD COLUMN surprise BLOB "
+            "GENERATED ALWAYS AS (zeroblob(1024)) VIRTUAL"
+        )
+    pin = hashlib.sha256(path.read_bytes()).hexdigest()
+    with pytest.raises(ValueError, match="database_column_drift"):
+        read_database(path, pin)
+
+
 def test_extra_row_requires_exact_test_backed_repair(tmp_path: Path) -> None:
     donor = tmp_path / "donor.sqlite"
     candidate = tmp_path / "candidate.sqlite"

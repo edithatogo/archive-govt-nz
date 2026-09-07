@@ -123,9 +123,9 @@ def read_database(path: Path, expected_sha256: str) -> Database:
         total = 0
         for table, columns in sorted(_TABLE_DEFINITIONS.items()):
             # Names come exclusively from the existing fixed export schema.
-            schema = connection.execute(f'PRAGMA table_info("{table}")').fetchall()
+            schema = connection.execute(f'PRAGMA table_xinfo("{table}")').fetchall()
             expected = [
-                (index, name, kind, 0, None, 0)
+                (index, name, kind, 0, None, 0, 0)
                 for index, (name, kind) in enumerate(columns)
             ]
             if schema != expected:
