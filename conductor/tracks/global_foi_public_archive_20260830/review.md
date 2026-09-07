@@ -285,3 +285,13 @@ complex path rules before parser admission; [review](robots-runtime-compatibilit
 records the conservative scope. 249 focused tests pass, including legacy-allow
 mock and unchanged historical reports. No source request/replay or parent-owned
 candidate-assessment edit. Full gate pending with parent.
+
+
+## P2.15 isolated next-delivery review — 2026-09-07
+
+[Review and adapter contract](guarded-linked-20260907/README.md) binds six guarded
+outcomes and one AL index read to distinct dates. Ten register links span eleven
+year labels; no annual resource was followed and record denominators remain null.
+GG stays unverified; UM stays blocked before page access. 269 focused tests pass,
+new module 100% line/branch coverage; lint/type/format pass. Frozen delivery tree,
+existing collector, historical evidence and rights/publication gates untouched.

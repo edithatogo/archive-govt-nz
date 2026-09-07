@@ -298,6 +298,24 @@ PYTHONPATH=src /Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/python -m p
 /Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/basedpyright src/archive_govt_nz/foi_reconciliation.py tests/test_foi_reconciliation.py
 ```
 
+
+## 2026-09-07 — P2.15 isolated next-delivery worktree
+
+Retained held guarded cohort from 03:55:17–03:55:29 UTC, then made one additional
+AL year-index read 03:59:06–03:59:10 UTC under corrected guard `9ed5f491`. No annual
+resources, bypass, 223 replay or rights/publication action. Initial parser test
+failed for missing module; final focused checks pass. See `guarded-linked-20260907/README.md`.
+
+```sh
+PYTHONPATH=src /Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/python -m pytest -q tests/test_foi_year_navigation.py tests/test_foi_linked_assessment.py tests/test_foi_candidate_probe.py tests/test_foi_candidate_cohort.py tests/test_foi_candidate_assessment.py tests/test_foi_reconciliation.py tests/test_foi_catalogue.py tests/test_foi_discovery.py tests/test_foi_rollout.py tests/test_verify_foi_rollout_evidence.py --cov=archive_govt_nz.foi_year_navigation --cov-branch --cov-report=term-missing --cov-fail-under=100
+/Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/ruff check src/archive_govt_nz/foi_year_navigation.py tests/test_foi_year_navigation.py
+/Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/ruff format --check src/archive_govt_nz/foi_year_navigation.py tests/test_foi_year_navigation.py
+/Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/basedpyright src/archive_govt_nz/foi_year_navigation.py tests/test_foi_year_navigation.py
+```
+
+269 tests pass; new module 100% line/branch coverage. Parent owns full harness and
+lifecycle. Current frozen delivery worktree remains at `9ed5f491`, clean.
+
 Result: 79 focused tests passed; 100% new-module line/branch coverage; scoped
 Ruff, formatting and typing passed. Checked-in report byte reproduction is
 covered by a regression test. Full integration harness is delegated to the

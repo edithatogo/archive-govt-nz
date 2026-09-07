@@ -127,6 +127,21 @@ The approved destination is archive-govt-nz; no cutover has occurred.
   249 focused tests pass, including permissive legacy-parser regressions;
   full combined harness remains with parent.
 
+### P2 next-delivery guarded observations — 2026-09-07
+
+- [x] P2.15 (AC04, AC09, AC11): Observe only the six linked targets with
+  the corrected collector at `9ed5f491` in an isolated next-delivery worktree.
+  Record unsupported robots rules as blocked/unverified access, never bypass.
+  Keep new observations distinct from the pre-fix cohort; no 223-source replay,
+  rights/publication/schedules or runtime changes to the frozen batch. Reuse the
+  existing assessor and focused tests; parent owns full integration.
+  Continue with one guarded read of AL's already-linked 2015–2025 index to
+  retain year-navigation metadata and a bounded adapter contract, without
+  fetching linked resources or inferring record counts.
+  Receipts: `guarded-linked-20260907/README.md` and paired assessments.
+  269 focused tests pass; new module has 100% line/branch coverage. GG timeout
+  and UM unsupported-rules blocks remain factual outcomes, not bypass queues.
+
 ## Phase 3 — Metadata indexes and immutable raw storage
 
 - [x] P3.1 (AC05, AC06, AC11): Add red tests for original metadata preservation, request/correspondence/attachment relationships, revisions, missing objects, synthetic/CDX rejection, unsafe archive members, private-network redirects, expansion/resource limits, active content and sensitive exports.

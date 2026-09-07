@@ -192,3 +192,13 @@ unsupported-rules result without requesting the page. This is deliberately
 more conservative than user-agent matching and not a general RFC-compliance
 claim. Linked observation inherits the gate through the same collector. Parent
 owns the separate offline candidate-assessment guard; historical bytes stay fixed.
+
+
+## P2.15 AL navigation contract
+
+The isolated next-delivery increment adds only a metadata parser/validator, reusing
+the existing corrected collector. Finite year labels and safe same-site register
+links form an HTML year-index entrypoint contract; the parser never follows them.
+The next stage is a separately guarded resource-type observation and format-parser
+qualification, not automatic acquisition. New dated guarded evidence lives under
+`guarded-linked-20260907/`; pre-fix evidence and current-batch source stay unchanged.
