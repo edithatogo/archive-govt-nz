@@ -6,13 +6,15 @@ acceptance receipt. It follows independent audits of integration head
 Historical task counts are not current implementation counts: several broad
 unchecked clauses contain completed, separately evidenced components.
 
-1. Finish protected delivery of the reviewed extraction and workflow batches
-   (#427 then #428). Local full-gate success is not hosted completion.
+1. Extraction and workflow batches #427 and #428 are now protected merges;
+   exact receipts are in `ordered-delivery-20260907.md`. Two additional bounded
+   normalization/fixture clauses are accepted, without whole-phase closure.
 2. Deliver the reviewed chart packages: 16 HYEFU allowance observations, 86 BEFU
    and six residual-context literals now persist and verify with source tokens,
    native lineage and explicit remainders. Averages, totals, changes and unknown
-   periods remain distinct. Combined full local gate passed 6,501 tests; hosted
-   delivery remains separate. Do not reimplement these extractors or packages.
+   periods remain distinct. The latest combined full local gate passed 6,517
+   tests, including the inherited verifier correction. PR #429 is pending final
+   exact-head hosted delivery. Do not reimplement these extractors or packages.
 3. Deliver the reviewed pinned family/vintage coverage register. The historical
    11-target report remains unchanged; eight stage and four chart selections are
    overlapping evidence views, not additional unique sources or world coverage.

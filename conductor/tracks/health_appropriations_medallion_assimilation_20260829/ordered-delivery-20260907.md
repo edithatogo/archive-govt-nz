@@ -67,3 +67,31 @@ local gate passed 6,137 tests and all follow-on checks; see
 `evidence/assurance/health-extraction-integration-20260907.md` for exact local
 head and retained typing-failure correction. Raw admission is not Gold selection,
 resource rights or actual external publication. No whole-phase closure is inferred.
+
+## Verified workflow delivery and bounded acceptance
+
+PR #428 merged at 2026-09-07T06:52:35Z as
+`3963fbd360345a122a59c1e5e36af18872aa93b3`, reviewed head
+`bba407c849f80a84a6849edd2de752aa9010f93f`, tree
+`f4375ab61e737f9df8a40fc1188ef3a7e9e4582b`.
+All required checks passed, including three OS checks in run `34091650936`;
+Windows job `101646201876` completed in 14m51s. The supplemental job was
+skipped, not executed. All review threads were resolved; no bypass was used.
+The late verifier error-boundary fix received its own independent review and
+full local rerun: 6,412 tests and every follow-on gate passed.
+
+Independent acceptance review passed 152 focused tests and supports two clauses:
+
+- Phase 3.3 repeat normalization: supported Budget, historical and both forecast
+  profiles compare every output byte, including manifests and Parquet. Retained
+  originals replay corroborates the synthetic tests. This is same-input,
+  same-parameter, same-environment evidence, not cross-runtime identity.
+- Phase 4.1 named donor extraction fixtures: fiscal Health/GDP, appropriation and
+  BEFU/HYEFU summary tests cover headers, footer notes, blanks, formulas,
+  duplicate rows/years/labels, units and layout failures. This is not admission
+  of every workbook area or formula total.
+
+References: `originals-product-replay.md`, `donor-parity.md` and
+`evidence/assurance/health-workflows-integration-20260907.md`.
+No mappings, 29-row repair acceptance, denominator choice, source rights,
+publication or whole-track completion is inferred. Health remains in progress.
