@@ -21,27 +21,38 @@ ALLOWED = {
 REQUIRED = {"source_id", "title", "family", "url", "disposition", "reason", "cutoff"}
 
 
+class CensusValidationError(ValueError):
+    """Indicate that a source census violates its validation contract."""
+
+
 def validate(path: Path) -> dict[str, int]:
+    """Validate a source census and return its record and family counts."""
     data = json.loads(path.read_text(encoding="utf-8"))
     rows = data.get("records")
     if not isinstance(rows, list) or not rows:
-        raise ValueError("records must be a non-empty list")
+        message = "records must be a non-empty list"
+        raise CensusValidationError(message)
     ids: set[str] = set()
     for index, row in enumerate(rows):
-        if not isinstance(row, dict) or not REQUIRED <= row.keys():
-            raise ValueError(f"record {index} lacks required fields")
+        if not isinstance(row, dict) or not row.keys() >= REQUIRED:
+            message = f"record {index} lacks required fields"
+            raise CensusValidationError(message)
         source_id = row["source_id"]
         if not isinstance(source_id, str) or not source_id or source_id in ids:
-            raise ValueError(f"duplicate or invalid source_id at record {index}")
+            message = f"duplicate or invalid source_id at record {index}"
+            raise CensusValidationError(message)
         ids.add(source_id)
         if row["disposition"] not in ALLOWED:
-            raise ValueError(f"record {source_id} has invalid disposition")
+            message = f"record {source_id} has invalid disposition"
+            raise CensusValidationError(message)
         if not isinstance(row["reason"], str) or not row["reason"].strip():
-            raise ValueError(f"record {source_id} lacks disposition evidence")
+            message = f"record {source_id} lacks disposition evidence"
+            raise CensusValidationError(message)
     return {"records": len(rows), "families": len({r["family"] for r in rows})}
 
 
 def main() -> int:
+    """Run census validation from the command line."""
     parser = argparse.ArgumentParser()
     parser.add_argument("census", type=Path)
     args = parser.parse_args()
