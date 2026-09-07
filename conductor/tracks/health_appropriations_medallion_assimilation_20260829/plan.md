@@ -90,9 +90,14 @@ repository validation command. External gates block only their affected task.
   and verify uniqueness without substituting locator identity for byte fixity.
   Both review fixes passed the full local gate and all three hosted platform
   gates in PR #414 (merge `4b1764bb`); source census completion remains separate.
-- [ ] Enumerate the exact official CPI, QES wage, population, GDP and Crown
+- [~] Enumerate the exact official CPI, QES wage, population, GDP and Crown
   expense series needed for approved derived measures; reject discovery leads
   that lack a stable definition or join. [M-02, M-12; AC-03, AC-10]
+  Context-family selectors and retained Crown ranges are recorded in
+  `context-census.json`. Population definition enumeration is complete in
+  `population-context.json`: national/all-age DPE054AA selectors, quarterly
+  dates, 2023 base and August-2026 vintage. Numeric capture and analytical
+  denominator qualification remain separate; no interpolation was selected.
 - [x] Evaluate published aggregate Health Survey indicators as a non-blocking
   Should item; include only if a documented analytical question, stable
   time/geography contract and public rights evidence exist. [S-05; AC-10]
