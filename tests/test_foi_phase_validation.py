@@ -12,7 +12,6 @@ import pytest
 from archive_govt_nz.foi_discovery import build_reviewed_catalogue
 from archive_govt_nz.foi_disposition_validation import validate_canonical_dispositions
 from archive_govt_nz.foi_phase_validation import validate_catalogue_phase
-from tools import validate_foi_catalogue_phase as cli
 
 SEEDS = Path(__file__).parents[1] / "config/foi"
 SPEC = importlib.util.spec_from_file_location(
@@ -153,7 +152,7 @@ def test_explicit_canonical_cli(
         "argv",
         ["validate", "--canonical-track", str(track), "--output", str(output)],
     )
-    assert cli.main() == 0
+    assert TOOL.main() == 0
     expected = validate_canonical_dispositions(SEEDS, track)
     assert json.loads(output.read_bytes()) == expected
     assert json.loads(capsys.readouterr().out) == expected
