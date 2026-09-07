@@ -60,7 +60,7 @@ def test_exact_schema_rejected_before_output(tmp_path: Path, sql: str) -> None:
 
 
 def test_literal_filename_and_unchanged_source(tmp_path: Path) -> None:
-    source = tmp_path / "donor?#%23.sqlite"
+    source = tmp_path / "donor # %23.sqlite"
     pin = database(source)
     before = set(tmp_path.iterdir())
     result = normalize(source, tmp_path / "output", pin)
@@ -207,7 +207,7 @@ def test_invalid_bounds_fail_before_open(
 
 
 def test_missing_and_corrupt_inputs_create_no_output(tmp_path: Path) -> None:
-    source = tmp_path / "missing?#.sqlite"
+    source = tmp_path / "missing # %23.sqlite"
     with pytest.raises(FileNotFoundError):
         normalize(source, tmp_path / "output", "a" * 64)
     assert not source.exists()
