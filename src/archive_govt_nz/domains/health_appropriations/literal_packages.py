@@ -6,6 +6,9 @@ from typing import TYPE_CHECKING, Any
 
 import pyarrow as pa
 
+from archive_govt_nz.domains.health_appropriations import (
+    hyefu_allowance_literals as allowance,
+)
 from archive_govt_nz.domains.health_appropriations.donor_health_detail import (
     PROFILES as DETAIL_PROFILES,
 )
@@ -29,6 +32,7 @@ if TYPE_CHECKING:
 SCHEMA = "archive-govt-nz.health-literal-package/v1"
 MAX_RECORDS = 1000
 PROFILES = {
+    "hyefu-allowance": "HYEFU-2024",
     "befu-detail": "BEFU-2025",
     "hyefu-detail": "HYEFU-2024",
     "crown": "Fiscal-Time-Series-1972-2025",
@@ -159,7 +163,21 @@ def write_literal_package(
                 "except_selectors": [],
             }
         )
-    if profile != "crown":
+        if profile == "hyefu-allowance":
+            for field, reference in sorted(record["lineage"].items()):
+                if field != "amount":
+                    links.append(
+                        {
+                            "record_id": record_id,
+                            "source_object_sha256": context["source_object_sha256"],
+                            "source_coordinate": reference,
+                            "field": field,
+                            "raw_value_json": encode_json(
+                                record["raw_context"][reference.split("!", 1)[1]]
+                            ),
+                        }
+                    )
+    if profile in {"befu-detail", "hyefu-detail"}:
         sheet = records[0]["sheet"]
         selector = admission["formula_totals"]["range"]
         claimed[sheet].append(selector)
@@ -226,6 +244,10 @@ def package_admitted_source(
         )
         # The source observation belongs to the admission, never the new run.
         context = {**context, "observed_at": retained["observed_at"].isoformat()}
+    elif profile == "hyefu-allowance":
+        _require(context["source_object_sha256"] == allowance.SOURCE_SHA256)
+        admission = allowance.admit_hyefu_allowances(source)
+        _require(context["source_locator"] == admission["records"][0]["source_locator"])
     else:
         vintage = PROFILES[profile]
         _require(context["source_object_sha256"] == DETAIL_PROFILES[vintage][0])

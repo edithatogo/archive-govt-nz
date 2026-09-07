@@ -20,12 +20,18 @@ from archive_govt_nz.domains.health_appropriations import (
     literal_packages,
 )
 from archive_govt_nz.domains.health_appropriations import rebuild as legacy
+from archive_govt_nz.domains.health_appropriations.hyefu_allowance_literals import (
+    ANCHORS,
+)
 from archive_govt_nz.domains.health_appropriations.raw_reader import (
     _read_rows,
     _validate_stage,
 )
 from archive_govt_nz.domains.health_appropriations.silver import LINEAGE_SCHEMA
-from archive_govt_nz.domains.health_appropriations.workbook_common import encode_json
+from archive_govt_nz.domains.health_appropriations.workbook_common import (
+    encode_json,
+    identity,
+)
 
 if TYPE_CHECKING:
     from pathlib import Path
@@ -68,6 +74,10 @@ def _literal(
             )
         }
     )
+    if profile == "hyefu-allowance":
+        expected = {
+            f"Table 2.4!{column}{row}" for column in "CDEF" for row in (6, 7, 8, 10)
+        }
     _require(
         {r["source_coordinate"] for r in facts} == expected
         and len(facts) == len(expected)
@@ -111,6 +121,22 @@ def _literal(
             )
             for key, value in context.items()
         )
+        if profile == "hyefu-allowance":
+            _allowance_record(original, fact)
+            expected_links = sorted(
+                expected_links
+                + [
+                    (
+                        reference,
+                        field,
+                        encode_json(
+                            original["raw_context"][reference.split("!", 1)[1]]
+                        ),
+                    )
+                    for field, reference in original["lineage"].items()
+                    if field != "amount"
+                ]
+            )
         actual = [r for r in links if r["record_id"] == fact["record_id"]]
         _require(
             sorted(
@@ -138,7 +164,7 @@ def _literal(
         len(remainders) == len(sheets) and {r["sheet"] for r in remainders} == sheets
     )
     excluded = [r for r in areas if r["state"] == "excluded"]
-    _require(len(excluded) == (0 if profile == "crown" else 1))
+    _require(len(excluded) == (1 if profile in {"befu-detail", "hyefu-detail"} else 0))
     if excluded:
         _require(
             excluded[0]["selector"]
@@ -182,6 +208,46 @@ def _literal(
     _require(
         receipt["counts"]
         == {"facts": len(facts), "lineage": len(links), "areas": len(areas)}
+    )
+
+
+def _allowance_record(original: dict[str, Any], fact: dict[str, Any]) -> None:
+    """Check native allowance meaning and six exact field-coordinate bindings."""
+    cell = original["coordinate"]
+    fields = {
+        "amount": cell,
+        "label": "B" + cell[1:],
+        "budget_label": cell[0] + "5",
+        "unit": "B5",
+        "period_context": "B4",
+        "table_title": "B1",
+    }
+    _require(
+        original["lineage"]
+        == {field: "Table 2.4!" + ref for field, ref in fields.items()}
+    )
+    _require(
+        all(original["raw_context"].get(ref) == value for ref, value in ANCHORS.items())
+    )
+    _require(
+        all(
+            original[field] == ANCHORS[fields[field]]
+            for field in ("label", "budget_label", "unit")
+        )
+    )
+    _require(
+        original["currency"] is None
+        and original["period_interpretation"] == "budget_label_not_annual_total"
+    )
+    _require(
+        fact["record_id"]
+        == identity(
+            literal_packages.SCHEMA,
+            "hyefu-allowance",
+            fact["source_object_sha256"],
+            "Table 2.4",
+            cell,
+        )
     )
 
 

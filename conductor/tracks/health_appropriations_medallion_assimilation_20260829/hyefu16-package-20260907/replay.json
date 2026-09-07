@@ -1,0 +1,15 @@
+{
+  "source_sha256": "f77bdab5ef808b0e451a52b9b448a52b07899bc4523da3c02aa5725325d6203c",
+  "output_root": "/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/health-hyefu16-_buvf5qi",
+  "builds_identical": true,
+  "facts": 16,
+  "native_lineage_references": 96,
+  "files": {
+    "MANIFEST.json": "bd033aff9bb90cd60ca99b65fb1405aa8b02f488ff9e9754b3a0837af71ea0c9",
+    "area_dispositions.parquet": "d6246416c5a02702850126a89eebb76df1d3a60fd7afd237bb1f4b73a0d3ce08",
+    "field_lineage.parquet": "d6b91f67e116bc96daa654b04b56625733e9c53f6706e5fe698d371497d1caaf",
+    "literal_facts.parquet": "52deff2d2ef9b967f73b01a6566377ce173ab9a0b2f177b1896ea6f9454ab06b"
+  },
+  "rights_state": "not_evaluated",
+  "promotion": "not_performed"
+}

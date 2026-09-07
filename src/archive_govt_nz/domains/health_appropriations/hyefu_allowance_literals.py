@@ -49,7 +49,7 @@ def admit_hyefu_allowances(source: Path) -> dict[str, Any]:
     """Return 16 source observations, never converted to yearly totals."""
     _require(source.is_file() and not source.is_symlink())
     payload = verified_snapshot(source, SOURCE_SHA256, max_bytes=4 * 1024 * 1024)
-    inventory_workbook(BytesIO(payload))
+    inventory = inventory_workbook(BytesIO(payload))
     tokens = _selected_tokens(payload, selected_sheets=frozenset({SHEET}))[SHEET]
     book = load_workbook(BytesIO(payload), data_only=False, keep_links=True)
     try:
@@ -98,6 +98,7 @@ def admit_hyefu_allowances(source: Path) -> dict[str, Any]:
             "schema_version": "hyefu-allowance-literal-context/v1",
             "status": "raw_context_only",
             "records": records,
+            "workbook_inventory": inventory,
             "arithmetic_or_cross_vintage_equivalence": "not_performed",
             "rights_state": "not_evaluated",
         }
