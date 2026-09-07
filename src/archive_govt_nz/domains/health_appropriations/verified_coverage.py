@@ -13,19 +13,27 @@ from typing import TYPE_CHECKING, Any
 import pyarrow.parquet as pq
 
 from archive_govt_nz.domains.health_appropriations import (
+    befu_chart_literals,
     budget,
     budget_revenue,
     forecast,
+    health_chart_residual_literals,
     historical,
     literal_packages,
 )
 from archive_govt_nz.domains.health_appropriations import rebuild as legacy
+from archive_govt_nz.domains.health_appropriations.hyefu_allowance_literals import (
+    ANCHORS,
+)
 from archive_govt_nz.domains.health_appropriations.raw_reader import (
     _read_rows,
     _validate_stage,
 )
 from archive_govt_nz.domains.health_appropriations.silver import LINEAGE_SCHEMA
-from archive_govt_nz.domains.health_appropriations.workbook_common import encode_json
+from archive_govt_nz.domains.health_appropriations.workbook_common import (
+    encode_json,
+    identity,
+)
 
 if TYPE_CHECKING:
     from pathlib import Path
@@ -40,7 +48,7 @@ def _require(condition: object) -> None:
         raise ValueError(message)
 
 
-def _literal(
+def _literal(  # noqa: C901, PLR0912, PLR0915 -- explicit profile and disposition contracts.
     facts: list[dict[str, Any]],
     links: list[dict[str, Any]],
     areas: list[dict[str, Any]],
@@ -68,6 +76,21 @@ def _literal(
             )
         }
     )
+    if profile == "hyefu-allowance":
+        expected = {
+            f"Table 2.4!{column}{row}" for column in "CDEF" for row in (6, 7, 8, 10)
+        }
+    if profile == "befu-chart":
+        expected = {
+            sheet + "!" + cell
+            for sheet, definition in befu_chart_literals.PROFILES.items()
+            for cell in definition["selected"]
+        }
+    if profile in {"befu-residual", "hyefu-residual"}:
+        definition = health_chart_residual_literals.PROFILES[
+            literal_packages.PROFILES[profile]
+        ]
+        expected = {definition["sheet"] + "!" + cell for cell in definition["selected"]}
     _require(
         {r["source_coordinate"] for r in facts} == expected
         and len(facts) == len(expected)
@@ -76,6 +99,7 @@ def _literal(
     _require(len(ids) == len(facts))
     for fact in facts:
         original = json.loads(fact["source_record_json"])
+        _require(isinstance(original.get("raw_context"), dict))
         _nested_record(original, fact, profile)
         _require(
             Decimal(original["amount"])
@@ -111,6 +135,32 @@ def _literal(
             )
             for key, value in context.items()
         )
+        if profile in {
+            "hyefu-allowance",
+            "befu-chart",
+            "befu-residual",
+            "hyefu-residual",
+        }:
+            if profile == "hyefu-allowance":
+                _allowance_record(original, fact)
+            elif profile == "befu-chart":
+                _befu_record(original, fact)
+            else:
+                _residual_record(original, fact, profile)
+            expected_links = sorted(
+                expected_links
+                + [
+                    (
+                        reference,
+                        field,
+                        encode_json(
+                            original["raw_context"].get(reference.split("!", 1)[1])
+                        ),
+                    )
+                    for field, reference in original["lineage"].items()
+                    if field != "amount"
+                ]
+            )
         actual = [r for r in links if r["record_id"] == fact["record_id"]]
         _require(
             sorted(
@@ -138,8 +188,22 @@ def _literal(
         len(remainders) == len(sheets) and {r["sheet"] for r in remainders} == sheets
     )
     excluded = [r for r in areas if r["state"] == "excluded"]
-    _require(len(excluded) == (0 if profile == "crown" else 1))
-    if excluded:
+    if profile == "befu-chart":
+        expected_excluded = {
+            (sheet, cell, "formula_cache_not_admitted")
+            for sheet, definition in befu_chart_literals.PROFILES.items()
+            for cell in definition["excluded"]
+        }
+        _require(
+            len(excluded) == len(expected_excluded)
+            and {(r["sheet"], r["selector"], r["reason"]) for r in excluded}
+            == expected_excluded
+        )
+    else:
+        _require(
+            len(excluded) == (1 if profile in {"befu-detail", "hyefu-detail"} else 0)
+        )
+    if excluded and profile != "befu-chart":
         _require(
             excluded[0]["selector"]
             == ("F111:O111" if profile == "befu-detail" else "F112:O112")
@@ -168,7 +232,8 @@ def _literal(
         elif row["state"] == "excluded":
             _require(not row["record_ids"] and not row["except_selectors"])
             _require(
-                row["sheet"]
+                profile == "befu-chart"
+                or row["sheet"]
                 == (
                     "Core Crown Expense Tables"
                     if profile == "befu-detail"
@@ -182,6 +247,129 @@ def _literal(
     _require(
         receipt["counts"]
         == {"facts": len(facts), "lineage": len(links), "areas": len(areas)}
+    )
+
+
+def _residual_record(
+    original: dict[str, Any], fact: dict[str, Any], profile: str
+) -> None:
+    """Retain explicit unknown periods and non-spending OBEGALx meaning."""
+    definition = health_chart_residual_literals.PROFILES[
+        literal_packages.PROFILES[profile]
+    ]
+    cell, sheet = original["coordinate"], original["sheet"]
+    anchors = definition["anchors"]
+    _require(original["raw_context"] == anchors)
+    _require(
+        original["measure"] == definition["measure"]
+        and original["period_status"] == definition["period_status"]
+    )
+    _require(
+        original["period_start"] is None
+        and original["period_end"] is None
+        and original["currency"] is None
+    )
+    _require(
+        original["label"] == anchors[definition["label_cell"]]
+        and original["unit"] == anchors[definition["unit_cell"]]
+    )
+    _require(
+        original["column_headers"]
+        == [anchors[cell[0] + str(row)] for row in definition["header_rows"]]
+    )
+    _require(
+        original["lineage"]
+        == {
+            "amount": sheet + "!" + cell,
+            **{"context:" + key: sheet + "!" + key for key in anchors},
+        }
+    )
+    _require(
+        fact["record_id"]
+        == identity(
+            literal_packages.SCHEMA, profile, fact["source_object_sha256"], sheet, cell
+        )
+    )
+
+
+def _befu_record(original: dict[str, Any], fact: dict[str, Any]) -> None:
+    """Keep annual, multi-year total and operating/capital observations distinct."""
+    sheet, cell = original["sheet"], original["coordinate"]
+    definition = befu_chart_literals.PROFILES[sheet]
+    context = original["raw_context"]
+    _require(
+        all(context.get(key) == value for key, value in definition["anchors"].items())
+    )
+    _require(
+        original["family"] == definition["family"]
+        and original["period_interpretation"] == "source_headers_only"
+        and original["currency"] is None
+        and original["unit"] == "$millions"
+    )
+    _require(
+        original["label"] == context["B" + cell[1:]]
+        and original["column_headers"]
+        == [context.get(cell[0] + "4"), context.get(cell[0] + "5")]
+    )
+    _require(
+        original["lineage"]
+        == {
+            "amount": sheet + "!" + cell,
+            "label": sheet + "!B" + cell[1:],
+            "unit": sheet + "!B5",
+            "column_header_4": sheet + "!" + cell[0] + "4",
+            "column_header_5": sheet + "!" + cell[0] + "5",
+        }
+    )
+    _require(
+        fact["record_id"]
+        == identity(
+            literal_packages.SCHEMA,
+            "befu-chart",
+            fact["source_object_sha256"],
+            sheet,
+            cell,
+        )
+    )
+
+
+def _allowance_record(original: dict[str, Any], fact: dict[str, Any]) -> None:
+    """Check native allowance meaning and six exact field-coordinate bindings."""
+    cell = original["coordinate"]
+    fields = {
+        "amount": cell,
+        "label": "B" + cell[1:],
+        "budget_label": cell[0] + "5",
+        "unit": "B5",
+        "period_context": "B4",
+        "table_title": "B1",
+    }
+    _require(
+        original["lineage"]
+        == {field: "Table 2.4!" + ref for field, ref in fields.items()}
+    )
+    _require(
+        all(original["raw_context"].get(ref) == value for ref, value in ANCHORS.items())
+    )
+    _require(
+        all(
+            original[field] == ANCHORS[fields[field]]
+            for field in ("label", "budget_label", "unit")
+        )
+    )
+    _require(
+        original["currency"] is None
+        and original["period_interpretation"] == "budget_label_not_annual_total"
+    )
+    _require(
+        fact["record_id"]
+        == identity(
+            literal_packages.SCHEMA,
+            "hyefu-allowance",
+            fact["source_object_sha256"],
+            "Table 2.4",
+            cell,
+        )
     )
 
 

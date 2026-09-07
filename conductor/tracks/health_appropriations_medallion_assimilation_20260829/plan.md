@@ -346,9 +346,11 @@ repository validation command. External gates block only their affected task.
 - [ ] Add schema fingerprints, adapter selection evidence, deterministic
   ordering/serialization, source-layout drift reports and fail-closed unknown
   layout handling. [M-05, M-07, M-18, S-04; AC-03, AC-05, AC-16]
-- [ ] Demonstrate repeat normalization yields identical manifests and Parquet
+- [x] Demonstrate repeat normalization yields identical manifests and Parquet
   content identity for the same inputs/environment. [M-10, M-16; AC-08,
   AC-12]
+  Supported profiles accepted after PR #428 protected merge; see
+  `ordered-delivery-20260907.md`. Not cross-runtime or all-future-adapter identity.
 
 ### 3.4 Phase review and checkpoint
 
@@ -362,10 +364,12 @@ repository validation command. External gates block only their affected task.
 
 ### 4.1 Donor normalization tests first
 
-- [ ] Create red/golden tests for the donor's fiscal spending, GDP,
+- [x] Create red/golden tests for the donor's fiscal spending, GDP,
   appropriation and HYEFU/BEFU summary extraction using Bronze-derived test
   fixtures; cover headers, footers, blanks, formulas, duplicates, units and
   source-layout failures. [M-07, M-08, M-18; AC-03, AC-06, AC-16]
+  Named selection fixtures accepted after PR #428 protected merge; see
+  `ordered-delivery-20260907.md`. Not every workbook area or repair approval.
 - [x] Create a row-level parity oracle for all five SQLite tables/312 rows and
   a repair-ledger schema requiring source coordinates and rationale for every
   deviation. [M-08, M-18; AC-06, AC-11, AC-16]

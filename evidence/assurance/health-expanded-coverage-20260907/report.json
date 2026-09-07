@@ -1,0 +1,582 @@
+{
+  "additional_selections": {
+    "capture": "not_assessed",
+    "completion_sha256": "f0b0b08790f52caed502efac23de5967718446fec30f007e7d30a67d4f805d97",
+    "future_vintage_completeness": "not_claimed",
+    "gold_selection": "not_assessed",
+    "payload_verification": "not_performed",
+    "publication": "not_performed",
+    "rows": [
+      {
+        "family": "befu",
+        "implementation_state": "existing_profile",
+        "profile": "befu",
+        "reason_counts": {
+          "literal_summary": 10,
+          "outside_literal_health_summary": 2300,
+          "summary_context": 22
+        },
+        "receipt_counts": {
+          "context": 22,
+          "inventoried_cells": 2332,
+          "normalized": 10,
+          "preserved_only": 2300,
+          "rejected": 0
+        },
+        "receipt_sha256": "9217b02ffb2a03e56a0a45cb7b865cb05227d6ed3a59e3f429d8faf154d3644e",
+        "record_count": 10,
+        "remainder_state": "not_qualified_by_this_join",
+        "selection_id": "befu-BEFU-2025",
+        "selection_state": "receipt_reported_passed_selection",
+        "source_locator": "data/raw/befu25-data-expense-tables.xlsx",
+        "source_object_sha256": "dbde3256b1cbfb847f9f6caec66e7adffabca0489b218997a431220da584a3d6",
+        "vintage": "BEFU-2025",
+        "whole_source_qualification": "not_established"
+      },
+      {
+        "family": "befu",
+        "implementation_state": "existing_profile",
+        "profile": "befu-chart",
+        "reason_counts": null,
+        "receipt_counts": null,
+        "receipt_sha256": "8bcf1427b3151ddc296a43632ea5fa87e9ecb777bb439160008a864e9ec8a40b",
+        "record_count": 86,
+        "remainder_state": "not_qualified_by_this_join",
+        "selection_id": "befu-chart-BEFU-2025",
+        "selection_state": "receipt_reported_raw_context_only",
+        "source_locator": "data/raw/befu25-charts-data.xlsx",
+        "source_object_sha256": "cf98f5e21f60c76c7d05f788df7955fb45cfdd780c12cb18e26ff8e83615e168",
+        "vintage": "BEFU-2025",
+        "whole_source_qualification": "not_established"
+      },
+      {
+        "family": "befu",
+        "implementation_state": "existing_profile",
+        "profile": "befu-detail",
+        "reason_counts": {
+          "excluded_formula_cache_not_admitted": 1,
+          "literal_context_only": 80,
+          "outside_admitted_literal_selection": 3
+        },
+        "receipt_counts": {
+          "areas": 84,
+          "facts": 80,
+          "lineage": 832
+        },
+        "receipt_sha256": "42cf811aef35d5adf24421c917525ae8f0d6f9d83bd6b10cdf430e64a60c287d",
+        "record_count": 80,
+        "remainder_state": "not_qualified_by_this_join",
+        "selection_id": "befu-detail-BEFU-2025",
+        "selection_state": "receipt_reported_passed_selection",
+        "source_locator": "data/raw/befu25-data-expense-tables.xlsx",
+        "source_object_sha256": "dbde3256b1cbfb847f9f6caec66e7adffabca0489b218997a431220da584a3d6",
+        "vintage": "BEFU-2025",
+        "whole_source_qualification": "not_established"
+      },
+      {
+        "family": "befu",
+        "implementation_state": "existing_profile",
+        "profile": "befu-residual",
+        "reason_counts": null,
+        "receipt_counts": null,
+        "receipt_sha256": "b4b1e9fe13d2e5a37234b280a88aeae731482065d44ef3140f10a4da7ff67f4e",
+        "record_count": 1,
+        "remainder_state": "not_qualified_by_this_join",
+        "selection_id": "befu-residual-BEFU-2025",
+        "selection_state": "receipt_reported_raw_context_only",
+        "source_locator": "data/raw/befu25-charts-data.xlsx",
+        "source_object_sha256": "cf98f5e21f60c76c7d05f788df7955fb45cfdd780c12cb18e26ff8e83615e168",
+        "vintage": "BEFU-2025",
+        "whole_source_qualification": "not_established"
+      },
+      {
+        "family": "budget",
+        "implementation_state": "existing_profile",
+        "profile": "budget",
+        "reason_counts": {
+          "named_columns": 215,
+          "non_health_vote": 6289
+        },
+        "receipt_counts": {
+          "blank": 0,
+          "input": 6504,
+          "normalized": 215,
+          "out_of_scope": 6289,
+          "rejected": 0
+        },
+        "receipt_sha256": "1b1e5dfd3fa90d98dcf5200997001db236df7b40f4404b658c36f5cb0264d2fe",
+        "record_count": 215,
+        "remainder_state": "not_qualified_by_this_join",
+        "selection_id": "budget-Budget-2025",
+        "selection_state": "receipt_reported_passed_selection",
+        "source_locator": "data/raw/b25-expenditure-data.xlsx",
+        "source_object_sha256": "d67c01b0a3f1fbee5cb5121b641bda42f91f3e5bc84e599d22d32aeacbbb3338",
+        "vintage": "Budget-2025",
+        "whole_source_qualification": "not_established"
+      },
+      {
+        "family": "fiscal",
+        "implementation_state": "existing_profile",
+        "profile": "crown",
+        "reason_counts": {
+          "literal_context_only": 61,
+          "outside_admitted_literal_selection": 8
+        },
+        "receipt_counts": {
+          "areas": 69,
+          "facts": 61,
+          "lineage": 369
+        },
+        "receipt_sha256": "0df04c977f870a6abba4105706a7e51af179eba35234221fcbf5a13482139503",
+        "record_count": 61,
+        "remainder_state": "not_qualified_by_this_join",
+        "selection_id": "crown-Fiscal-Time-Series-1972-2025",
+        "selection_state": "receipt_reported_passed_selection",
+        "source_locator": "https://budget.govt.nz/budget/excel/fiscal-time-series/fiscaltimeseries1972-2025-year-end25.xlsx",
+        "source_object_sha256": "de59f9028a81a697ee66eea04861edfd8e2c3a7e472b3b8798d976951964f70f",
+        "vintage": "Fiscal-Time-Series-1972-2025",
+        "whole_source_qualification": "not_established"
+      },
+      {
+        "family": "fiscal",
+        "implementation_state": "existing_profile",
+        "profile": "historical",
+        "reason_counts": {
+          "historical_context": 121,
+          "literal_historical_observation": 106,
+          "outside_historical_currency_selection": 1276
+        },
+        "receipt_counts": {
+          "dispositions": 1503,
+          "facts": 106,
+          "lineage": 1143,
+          "rejected": 0
+        },
+        "receipt_sha256": "dbdba7dbae941e29f25fc5bc1227479107d8d1eaa8d761d6fe2d03ec63347f1f",
+        "record_count": 106,
+        "remainder_state": "not_qualified_by_this_join",
+        "selection_id": "historical-fiscal-2024",
+        "selection_state": "receipt_reported_passed_selection",
+        "source_locator": "data/raw/fiscaltimeseries1972-2024.xlsx",
+        "source_object_sha256": "769f2e7dd6000878cd29c2d913ad6979f28c5391c971292e6abf6148e83eb32d",
+        "vintage": "fiscal-2024",
+        "whole_source_qualification": "not_established"
+      },
+      {
+        "family": "hyefu",
+        "implementation_state": "existing_profile",
+        "profile": "hyefu",
+        "reason_counts": {
+          "literal_summary": 10,
+          "outside_literal_health_summary": 2301,
+          "summary_context": 22
+        },
+        "receipt_counts": {
+          "context": 22,
+          "inventoried_cells": 2333,
+          "normalized": 10,
+          "preserved_only": 2301,
+          "rejected": 0
+        },
+        "receipt_sha256": "c1d04065992825f1e122e0c9b384cf23e94104a8e0fc2310155161c60a6fa9d6",
+        "record_count": 10,
+        "remainder_state": "not_qualified_by_this_join",
+        "selection_id": "hyefu-HYEFU-2024",
+        "selection_state": "receipt_reported_passed_selection",
+        "source_locator": "data/raw/hyefu24-data-expense-tables.xlsx",
+        "source_object_sha256": "725399c09323594c921dbcc493206abe59bf7b91dd968b8c7f6f3a67d4707969",
+        "vintage": "HYEFU-2024",
+        "whole_source_qualification": "not_established"
+      },
+      {
+        "family": "hyefu",
+        "implementation_state": "existing_profile",
+        "profile": "hyefu-allowance",
+        "reason_counts": null,
+        "receipt_counts": null,
+        "receipt_sha256": "b0a56475bed1bd79efa064afb17bf698c07713ce0459962a81931b30ac2f654f",
+        "record_count": 16,
+        "remainder_state": "not_qualified_by_this_join",
+        "selection_id": "hyefu-allowance-HYEFU-2024",
+        "selection_state": "receipt_reported_raw_context_only",
+        "source_locator": "data/raw/hyefu24-charts-data.xlsx",
+        "source_object_sha256": "f77bdab5ef808b0e451a52b9b448a52b07899bc4523da3c02aa5725325d6203c",
+        "vintage": "HYEFU-2024",
+        "whole_source_qualification": "not_established"
+      },
+      {
+        "family": "hyefu",
+        "implementation_state": "existing_profile",
+        "profile": "hyefu-detail",
+        "reason_counts": {
+          "excluded_formula_cache_not_admitted": 1,
+          "literal_context_only": 80,
+          "outside_admitted_literal_selection": 3
+        },
+        "receipt_counts": {
+          "areas": 84,
+          "facts": 80,
+          "lineage": 832
+        },
+        "receipt_sha256": "6615ca6b601283aae75b80dd15627bae32d2769b95f4b7b71f18c9fa9ce5a321",
+        "record_count": 80,
+        "remainder_state": "not_qualified_by_this_join",
+        "selection_id": "hyefu-detail-HYEFU-2024",
+        "selection_state": "receipt_reported_passed_selection",
+        "source_locator": "data/raw/hyefu24-data-expense-tables.xlsx",
+        "source_object_sha256": "725399c09323594c921dbcc493206abe59bf7b91dd968b8c7f6f3a67d4707969",
+        "vintage": "HYEFU-2024",
+        "whole_source_qualification": "not_established"
+      },
+      {
+        "family": "hyefu",
+        "implementation_state": "existing_profile",
+        "profile": "hyefu-residual",
+        "reason_counts": null,
+        "receipt_counts": null,
+        "receipt_sha256": "8ffb2c29bf6c44e6816ede0860b333d4cc32f1c40190ea247c6ff86453be5e36",
+        "record_count": 5,
+        "remainder_state": "not_qualified_by_this_join",
+        "selection_id": "hyefu-residual-HYEFU-2024",
+        "selection_state": "receipt_reported_raw_context_only",
+        "source_locator": "data/raw/hyefu24-charts-data.xlsx",
+        "source_object_sha256": "f77bdab5ef808b0e451a52b9b448a52b07899bc4523da3c02aa5725325d6203c",
+        "vintage": "HYEFU-2024",
+        "whole_source_qualification": "not_established"
+      },
+      {
+        "family": "budget",
+        "implementation_state": "existing_profile",
+        "profile": "revenue",
+        "reason_counts": {
+          "named_revenue_columns": 69,
+          "non_health_vote": 931
+        },
+        "receipt_counts": {
+          "blank": 0,
+          "input": 1000,
+          "normalized": 69,
+          "out_of_scope": 931,
+          "rejected": 0
+        },
+        "receipt_sha256": "0e4433dfe1757e47e62f1b486d35aaab2228b33c8d2f5045e99dc1f7a6782de7",
+        "record_count": 69,
+        "remainder_state": "not_qualified_by_this_join",
+        "selection_id": "revenue-Budget-2025",
+        "selection_state": "receipt_reported_passed_selection",
+        "source_locator": "data/raw/b25-revenue-data.xlsx",
+        "source_object_sha256": "2aef43eb419420a549fe56a946539f6e9afcbd91f95e9242457f26c97bafafaa",
+        "vintage": "Budget-2025",
+        "whole_source_qualification": "not_established"
+      }
+    ],
+    "schema_version": "archive-govt-nz.health-expanded-coverage/v1",
+    "scope": "explicit_source_family_vintage_selections_only",
+    "selection_register_sha256": "21a93faa348c0de1a96d3c7aaa1439c389282efed74b9fcad3b3516368ef2691",
+    "source_rights": "not_assessed",
+    "supplied_receipt_sha256": {
+      "befu-BEFU-2025": "9217b02ffb2a03e56a0a45cb7b865cb05227d6ed3a59e3f429d8faf154d3644e",
+      "befu-chart-BEFU-2025": "8bcf1427b3151ddc296a43632ea5fa87e9ecb777bb439160008a864e9ec8a40b",
+      "befu-detail-BEFU-2025": "42cf811aef35d5adf24421c917525ae8f0d6f9d83bd6b10cdf430e64a60c287d",
+      "befu-residual-BEFU-2025": "b4b1e9fe13d2e5a37234b280a88aeae731482065d44ef3140f10a4da7ff67f4e",
+      "budget-Budget-2025": "1b1e5dfd3fa90d98dcf5200997001db236df7b40f4404b658c36f5cb0264d2fe",
+      "crown-Fiscal-Time-Series-1972-2025": "0df04c977f870a6abba4105706a7e51af179eba35234221fcbf5a13482139503",
+      "historical-fiscal-2024": "dbdba7dbae941e29f25fc5bc1227479107d8d1eaa8d761d6fe2d03ec63347f1f",
+      "hyefu-HYEFU-2024": "c1d04065992825f1e122e0c9b384cf23e94104a8e0fc2310155161c60a6fa9d6",
+      "hyefu-allowance-HYEFU-2024": "b0a56475bed1bd79efa064afb17bf698c07713ce0459962a81931b30ac2f654f",
+      "hyefu-detail-HYEFU-2024": "6615ca6b601283aae75b80dd15627bae32d2769b95f4b7b71f18c9fa9ce5a321",
+      "hyefu-residual-HYEFU-2024": "8ffb2c29bf6c44e6816ede0860b333d4cc32f1c40190ea247c6ff86453be5e36",
+      "revenue-Budget-2025": "0e4433dfe1757e47e62f1b486d35aaab2228b33c8d2f5045e99dc1f7a6782de7"
+    }
+  },
+  "prior_direct_targets": {
+    "capture_manifest_sha256": "04145e4030bfddaecade1af542e12cb8a56a187c9c924b7a4c135537ccae9dab",
+    "cutoff": "2026-08-29",
+    "normalization_approval": "not_granted",
+    "payload_verification": "not_performed",
+    "publication_approval": "not_granted",
+    "rows": [
+      {
+        "capture_rights": {
+          "attribution": "The Treasury New Zealand",
+          "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+          "license": "CC-BY-4.0",
+          "state": "eligible"
+        },
+        "capture_state": "captured",
+        "counts": null,
+        "discovery_state": "discovered",
+        "extraction_manifest_sha256": null,
+        "extraction_rights_state": null,
+        "extraction_state": null,
+        "family": "befu",
+        "gaps": [
+          "extraction_receipt_not_supplied"
+        ],
+        "source_id": "befu_2026-002",
+        "source_object_sha256": "521e7649b3814c8de2efa2e72502c8e35c6db7a94d6f84ebc22fd3fa9f7976d4",
+        "target_id": "befu_2026-002",
+        "url": "https://budget.govt.nz/budget/excel/befu2026/befu26-charts-data.xlsx",
+        "vintage": "BEFU-2026"
+      },
+      {
+        "capture_rights": {
+          "attribution": "The Treasury New Zealand",
+          "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+          "license": "CC-BY-4.0",
+          "state": "eligible"
+        },
+        "capture_state": "captured",
+        "counts": {
+          "context": 22,
+          "inventoried_cells": 2375,
+          "normalized": 10,
+          "preserved_only": 2343,
+          "rejected": 0
+        },
+        "discovery_state": "discovered",
+        "extraction_manifest_sha256": "83bd8c0d661383712ade0e7ec1c14bb7cbdba9c93a83df74abbfc64a4586afea",
+        "extraction_rights_state": "not_evaluated",
+        "extraction_state": "passed",
+        "family": "befu",
+        "gaps": [],
+        "source_id": "befu_2026-003",
+        "source_object_sha256": "313ee040abd9a332cc36245da5a0c2cb0d38fe2cedc013d731c1f12db463b0d1",
+        "target_id": "befu_2026-003",
+        "url": "https://budget.govt.nz/budget/excel/befu2026/befu26-data-expense-tables.xlsx",
+        "vintage": "BEFU-2026"
+      },
+      {
+        "capture_rights": {
+          "attribution": "The Treasury New Zealand",
+          "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+          "license": "CC-BY-4.0",
+          "state": "eligible"
+        },
+        "capture_state": "captured",
+        "counts": null,
+        "discovery_state": "discovered",
+        "extraction_manifest_sha256": null,
+        "extraction_rights_state": null,
+        "extraction_state": null,
+        "family": "befu",
+        "gaps": [
+          "extraction_receipt_not_supplied"
+        ],
+        "source_id": "befu_2026-004",
+        "source_object_sha256": "632afd3c24b4ca9c9f2066dd1112f4e5d6a0c9c503ae20f845d4153a7f2ac472",
+        "target_id": "befu_2026-004",
+        "url": "https://budget.govt.nz/budget/excel/befu2026/befu26-economic-forecasts-data.xlsx",
+        "vintage": "BEFU-2026"
+      },
+      {
+        "capture_rights": {
+          "attribution": "The Treasury New Zealand",
+          "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+          "license": "CC-BY-4.0",
+          "state": "eligible"
+        },
+        "capture_state": "captured",
+        "counts": {
+          "blank": 0,
+          "input": 6451,
+          "normalized": 185,
+          "out_of_scope": 6266,
+          "rejected": 0
+        },
+        "discovery_state": "discovered",
+        "extraction_manifest_sha256": "f34000992fd65dca445e7ad251cb06df3c68107410355ea057ea9a2bf8481738",
+        "extraction_rights_state": "not_evaluated",
+        "extraction_state": "passed",
+        "family": "budget",
+        "gaps": [],
+        "source_id": "budget_2026-000",
+        "source_object_sha256": "3fc6bba178c78c4a4b259c920a6f55307ec95a547353f340086c86fc2a26f5a0",
+        "target_id": "budget_2026-000",
+        "url": "https://budget.govt.nz/budget/excel/data/b26-expenditure-data.xlsx",
+        "vintage": "Budget-2026"
+      },
+      {
+        "capture_rights": {
+          "attribution": "The Treasury New Zealand",
+          "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+          "license": "CC-BY-4.0",
+          "state": "eligible"
+        },
+        "capture_state": "captured",
+        "counts": null,
+        "discovery_state": "discovered",
+        "extraction_manifest_sha256": null,
+        "extraction_rights_state": null,
+        "extraction_state": null,
+        "family": "budget",
+        "gaps": [
+          "extraction_receipt_not_supplied"
+        ],
+        "source_id": "budget_2026-001",
+        "source_object_sha256": "8243f6a3f9575af5ee048133f2695f3c4764ff7d86e7a74849fdafcf478cbfdb",
+        "target_id": "budget_2026-001",
+        "url": "https://budget.govt.nz/budget/excel/data/b26-revenue-data.xlsx",
+        "vintage": "Budget-2026"
+      },
+      {
+        "capture_rights": {
+          "attribution": "The Treasury New Zealand",
+          "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+          "license": "CC-BY-4.0",
+          "state": "eligible"
+        },
+        "capture_state": "captured",
+        "counts": {
+          "dispositions": 1531,
+          "facts": 108,
+          "lineage": 1164,
+          "rejected": 0
+        },
+        "discovery_state": "discovered",
+        "extraction_manifest_sha256": "aee4578f1ee83f8c1ede63e36e840c6cd2140df8c6f463e71ec93da9e4e7d75a",
+        "extraction_rights_state": "not_evaluated",
+        "extraction_state": "passed",
+        "family": "fiscal",
+        "gaps": [],
+        "source_id": "fiscal_time_series-007",
+        "source_object_sha256": "de59f9028a81a697ee66eea04861edfd8e2c3a7e472b3b8798d976951964f70f",
+        "target_id": "fiscal_time_series-007",
+        "url": "https://budget.govt.nz/budget/excel/fiscal-time-series/fiscaltimeseries1972-2025-year-end25.xlsx",
+        "vintage": "Fiscal-Time-Series-1972-2025"
+      },
+      {
+        "capture_rights": {
+          "attribution": "The Treasury New Zealand",
+          "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+          "license": "CC-BY-4.0",
+          "state": "eligible"
+        },
+        "capture_state": "captured",
+        "counts": null,
+        "discovery_state": "discovered",
+        "extraction_manifest_sha256": null,
+        "extraction_rights_state": null,
+        "extraction_state": null,
+        "family": "hyefu",
+        "gaps": [
+          "extraction_receipt_not_supplied"
+        ],
+        "source_id": "hyefu_2025-005",
+        "source_object_sha256": "588bb95b3c8632261b40f90eecf42ecb89559103d7ab277c0046ee30a995a4b0",
+        "target_id": "hyefu_2025-005",
+        "url": "https://budget.govt.nz/budget/excel/hyefu2025/hyefu25-charts-data.xlsx",
+        "vintage": "HYEFU-2025"
+      },
+      {
+        "capture_rights": {
+          "attribution": "The Treasury New Zealand",
+          "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+          "license": "CC-BY-4.0",
+          "state": "eligible"
+        },
+        "capture_state": "captured",
+        "counts": {
+          "context": 22,
+          "inventoried_cells": 2346,
+          "normalized": 10,
+          "preserved_only": 2314,
+          "rejected": 0
+        },
+        "discovery_state": "discovered",
+        "extraction_manifest_sha256": "5ef89741ad695efd078ba7b7dca2a059948c5bc12069fb434c695ad9293083b5",
+        "extraction_rights_state": "not_evaluated",
+        "extraction_state": "passed",
+        "family": "hyefu",
+        "gaps": [],
+        "source_id": "hyefu_2025-006",
+        "source_object_sha256": "f9f9190a69ce0a7c53b89d690d50170e2a6a457e6821afeb93edc08cef4b9c7d",
+        "target_id": "hyefu_2025-006",
+        "url": "https://budget.govt.nz/budget/excel/hyefu2025/hyefu25-data-expense-tables.xlsx",
+        "vintage": "HYEFU-2025"
+      },
+      {
+        "capture_rights": {
+          "attribution": "Ministry of Health New Zealand",
+          "evidence": "https://www.health.govt.nz/about-this-site/copyright",
+          "license": "CC-BY-4.0",
+          "state": "eligible"
+        },
+        "capture_state": "captured",
+        "counts": {
+          "facts": 40,
+          "input": 20,
+          "lineage": 120
+        },
+        "discovery_state": "discovered",
+        "extraction_manifest_sha256": "b3a9afc2bab6562373b73d2f5c45b76a244792acbf813bfb54b4e2b66bce76a2",
+        "extraction_rights_state": "not_evaluated",
+        "extraction_state": "passed",
+        "family": "ministry",
+        "gaps": [],
+        "source_id": "moh_vote_health-008",
+        "source_object_sha256": "c1e7758667b8255e049603de8325d732f34a76e6099e0fe4de6553a36d48e9fc",
+        "target_id": "moh_vote_health-008",
+        "url": "https://www.health.govt.nz/system/files/2025-08/hair2024-fig27.csv",
+        "vintage": "MoH-HAIR-2024"
+      },
+      {
+        "capture_rights": {
+          "attribution": "Ministry of Health New Zealand",
+          "evidence": "https://www.health.govt.nz/about-this-site/copyright",
+          "license": "CC-BY-4.0",
+          "state": "eligible"
+        },
+        "capture_state": "captured",
+        "counts": {
+          "facts": 40,
+          "input": 20,
+          "lineage": 120
+        },
+        "discovery_state": "discovered",
+        "extraction_manifest_sha256": "714a0dd3fb53fa2ff26100e760983b791e81162fa30fb48d9f1d7131d8e338ed",
+        "extraction_rights_state": "not_evaluated",
+        "extraction_state": "passed",
+        "family": "ministry",
+        "gaps": [],
+        "source_id": "moh_vote_health-009",
+        "source_object_sha256": "7b9a51643550e3d890f4f341f27346d3466708fe924702ade4a731d1bb6266e4",
+        "target_id": "moh_vote_health-009",
+        "url": "https://www.health.govt.nz/system/files/2025-08/hair2024-fig28.csv",
+        "vintage": "MoH-HAIR-2024"
+      },
+      {
+        "capture_rights": {
+          "attribution": "Pharmac Te Pataka Whaioranga",
+          "evidence": "https://www.pharmac.govt.nz/about-this-site/copyright",
+          "license": "CC-BY-4.0",
+          "state": "eligible"
+        },
+        "capture_state": "captured",
+        "counts": {
+          "facts": 14,
+          "lineage": 186,
+          "table_cells": 64
+        },
+        "discovery_state": "discovered",
+        "extraction_manifest_sha256": "5eea323f1f9360fb7a92b7c2d9f92f1922dfb6f447a8252c8ca8b3ebf64ff248",
+        "extraction_rights_state": "not_evaluated",
+        "extraction_state": "passed",
+        "family": "pharmac",
+        "gaps": [],
+        "source_id": "pharmac_cpb-010",
+        "source_object_sha256": "eaf5801b819321f8aed7544fb16e6348779267fd3d5f8fb1d59410803acffbea",
+        "target_id": "pharmac_cpb-010",
+        "url": "https://www.pharmac.govt.nz/medicine-funding-and-supply/the-funding-process/setting-and-managing-the-combined-pharmaceutical-budget-cpb/budget-bid-information",
+        "vintage": "Pharmac-CPB-2026-08-07"
+      }
+    ],
+    "schema_version": "archive-govt-nz.health-direct-coverage/v1",
+    "scope": "explicit_targets_only",
+    "target_register_sha256": "402389ed59038e2e709621a408b05a5a2ec4352c8c380ef9fd36532fc33e49e9"
+  },
+  "prior_report_sha256": "765b5352db948e5d586414367d2b22befa71a4b50c26ce0f37bcb5b0d2ac6f3f",
+  "qualification": "metadata_join_only_no_phase_closure",
+  "relationship": "overlapping_selections_not_additive_sources_or_money",
+  "schema_version": "archive-govt-nz.health-coverage-register-bundle/v1"
+}

@@ -95,7 +95,7 @@ def admit_health_chart_residuals(source: Path, vintage: str) -> dict[str, Any]:
     profile = PROFILES[vintage]
     _require(source.is_file() and not source.is_symlink())
     payload = verified_snapshot(source, profile["sha256"], max_bytes=4 * 1024 * 1024)
-    inventory_workbook(BytesIO(payload))
+    inventory = inventory_workbook(BytesIO(payload))
     title = profile["sheet"]
     tokens = _selected_tokens(payload, selected_sheets=frozenset({title}))[title]
     book = load_workbook(BytesIO(payload), data_only=False, keep_links=True)
@@ -142,6 +142,7 @@ def admit_health_chart_residuals(source: Path, vintage: str) -> dict[str, Any]:
             "schema_version": "health-chart-residual-literal-context/v1",
             "status": "raw_context_only",
             "records": records,
+            "workbook_inventory": inventory,
             "arithmetic_or_cross_measure_equivalence": "not_performed",
             "rights_state": "not_evaluated",
         }

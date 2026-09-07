@@ -1,0 +1,25 @@
+{
+  "base_commit": "1521071388394ad14bec9e5967e3e46e659a8ee4",
+  "execution_context": "local",
+  "python": "3.14.6",
+  "focused_tests": {"passed": 95, "failed": 0, "statements": 104, "branches": 22, "coverage_percent": 100},
+  "static": {"ruff": "passed", "basedpyright": "0 errors, 0 warnings, 0 notes", "diff_check": "passed"},
+  "mutations": {"attempt_1_killed": 11, "attempt_1_survived": 1, "final_killed": 12, "final_survived": 0, "scope": "twelve explicit in-memory guard removals, not exhaustive mutation analysis"},
+  "red_attempts": [
+    {"command": "PYTHONPATH=src python -m pytest -q tests/domains/health_appropriations/test_expanded_coverage.py", "exit_code": 2, "outcome": "ModuleNotFoundError: expanded_coverage before implementation"},
+    {"command": "local pinned replay.py", "exit_code": 1, "outcome": "expanded_coverage_contract; historical native facts count incorrectly read as normalized"},
+    {"command": "PYTHONPATH=src python -m pytest -q tests/domains/health_appropriations/test_expanded_coverage.py -k historical", "exit_code": 1, "outcome": "1 failed, 35 deselected before native facts-count correction"}
+  ],
+  "deterministic_replays": {"count": 2, "identical": true, "new_builds": false, "report_sha256": "53c5f901bcb71ba54886b6abea5f6e6a45e2015d7deb55dd6f10b1865f5bd186"},
+  "pins": {
+    "module_sha256": "115f637152231658a27b040c552d57f8d3854e36fb03f4285c82531798aa5e89",
+    "tests_sha256": "f0b888b92bf9ef0e717ef8c5d3afd0fb6f28200509e87b44524bd23cdad9dbab",
+    "replay_sha256": "babac2bd3896c3a8825ea06a5e281d2fd906470ecfbf1e2c20b62915d59d578a",
+    "register_sha256": "21a93faa348c0de1a96d3c7aaa1439c389282efed74b9fcad3b3516368ef2691",
+    "prior_report_sha256": "765b5352db948e5d586414367d2b22befa71a4b50c26ce0f37bcb5b0d2ac6f3f"
+  },
+  "full_harness": "not_run_user_scope",
+  "network_capture_publication": "not_performed",
+  "independent_peer_review": "pending",
+  "phase_closure": "not_claimed"
+}
