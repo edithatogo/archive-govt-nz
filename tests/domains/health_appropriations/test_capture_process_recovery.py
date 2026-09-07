@@ -22,7 +22,8 @@ args = argparse.Namespace(census=root/"census.json", store_root=root/"cas",
     max_resource_bytes=1024, resume=False)
 async def local(client, url, store, config, *, transaction_warc_path):
     if url.endswith("two.csv"):
-        print("checkpoint_ready", flush=True)
+        sys.stdout.buffer.write(b"checkpoint_ready\\n")
+        sys.stdout.buffer.flush()
         await asyncio.Event().wait()
     payload = b"synthetic"
     receipt = store.put_bytes(payload)
