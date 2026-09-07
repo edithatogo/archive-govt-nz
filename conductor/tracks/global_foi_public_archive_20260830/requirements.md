@@ -109,3 +109,10 @@ receipts and factual-to-execution promotion. Generate paired schema-valid machin
 and human reports with null unknown denominators. Explicit blocked/unknown
 outcomes satisfy bounded factual disposition coverage; exhaustive discovery is
 not required. Parent owns umbrella lifecycle and full integration; no publication.
+
+## P2.17 local CLI acceptance
+
+Provide explicit --canonical-track PATH selection through the existing generator.
+Default v1 files and no-overwrite behavior remain compatible. Reproduce actual
+v2 bytes; reject invalid pins and conflicting output paths before writes. No
+network, publication, schedule/default publisher or shared lifecycle changes.

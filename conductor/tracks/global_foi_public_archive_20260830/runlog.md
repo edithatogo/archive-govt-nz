@@ -450,3 +450,13 @@ format --check and check, and .venv/bin/basedpyright, on
 src/archive_govt_nz/foi_canonical.py, src/archive_govt_nz/foi_catalogue.py,
 tests/test_foi_canonical.py and tests/test_foi_canonical_mutants.py; all passed.
 No full harness, publication, schedule change or shared lifecycle mutation.
+
+## P2.17 generator opt-in — 2026-09-07
+
+Added the explicit canonical-track option on the existing isolated branch after
+a5352fa47d60dcf44f75e3c012c4f0beba9f0367. Initial red: unrecognized option and
+identical output rewrites. Final exact pytest command in canonical-cli-20260907.md:
+86 passed, CLI 100% line/branch, seven canonical guard mutants killed. Existing
+.venv/bin/ruff format --check and check, plus .venv/bin/basedpyright, passed for
+tools/build_foi_catalogue.py and tests/test_build_foi_catalogue.py. No full harness
+or network; generated canonical255 bytes and publishing defaults unchanged.

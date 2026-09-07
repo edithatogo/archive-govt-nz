@@ -110,3 +110,5 @@ Approved track in progress. Automation repair and source-catalogue foundations a
 - [Machine coverage](canonical-index-20260907/coverage.json)
 - [Input pins](canonical-inputs-20260907.json)
 - [V2 schema](canonical-source-catalogue-v2.schema.json)
+
+- [Local generator canonical opt-in and next-scope audit](canonical-cli-20260907.md)

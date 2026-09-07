@@ -154,6 +154,15 @@ The approved destination is archive-govt-nz; no cutover has occurred.
   330 focused tests pass, seven guard mutants killed; both changed production
   modules have 100% line/branch coverage. Parent owns P2.2/P2.3 lifecycle acceptance.
 
+### P2 local generator usability — 2026-09-07
+
+- [x] P2.17 (AC04, AC09, AC11): Add an opt-in --canonical-track path to the
+  existing local catalogue generator, preserving default v1 and no-overwrite
+  behavior. Test actual canonical byte parity, invalid pins and output conflicts
+  without network/publication. Parent owns full integration and lifecycle.
+  Receipt: canonical-cli-20260907.md. 86 focused tests pass, including seven
+  canonical guard mutants; CLI line/branch coverage is 100%.
+
 ## Phase 3 — Metadata indexes and immutable raw storage
 
 - [x] P3.1 (AC05, AC06, AC11): Add red tests for original metadata preservation, request/correspondence/attachment relationships, revisions, missing objects, synthetic/CDX rejection, unsafe archive members, private-network redirects, expansion/resource limits, active content and sensitive exports.

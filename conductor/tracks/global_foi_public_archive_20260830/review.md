@@ -305,3 +305,11 @@ tests pass; both changed production modules have 100% line/branch coverage and
 seven guard mutants are killed. Ruff/format/BasedPyright pass. See
 canonical-join-20260907.md for reproduction and development findings. No outstanding
 local finding; parent full gate and lifecycle remain separate. No remote writes.
+
+## P2.17 local CLI review — 2026-09-07
+
+86 focused tests pass, including canonical guard mutants; CLI has 100% line/branch
+coverage. Default v1 and explicit canonical v2 files reproduce exactly. Bad pins
+and path conflicts fail before writes, repeated matching files retain mtimes,
+and socket connections are prohibited by tests. Static checks pass. No outstanding
+scoped finding; parent full gate/lifecycle and raw-rights boundaries are unchanged.

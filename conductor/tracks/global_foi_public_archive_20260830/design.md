@@ -223,3 +223,7 @@ flowchart LR
   J --> H[Unchanged historical rollout state]
   J --> X[Reject drift or execution promotion]
 ```
+
+P2.17 adds only an explicit local CLI selector for the canonical build API. The
+existing v1 path remains the default; both use preflighted output paths and
+exclusive creation without rewriting identical files. No publisher is wired.
