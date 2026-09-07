@@ -1,0 +1,71 @@
+{
+  "schema_version": "archive-govt-nz.population-export-validation/v1",
+  "base_commit": "067e07baf4692da2098ac0199463cc2655e7ee8b",
+  "scope": "response_contract_no_persistent_capture",
+  "source_module_sha256": "48f39d0e9d3ee6792cba981428da74b20602008ab7886c6b00c8505885b39870",
+  "test_module_sha256": "ecd6510618c0946c360b0a6b50117d40ced175f321011170988c0ec5b6012cd9",
+  "source_context_sha256": "4030cac19c844647547abf01b28580e8eaf4ccf055044c6438db41e7d4134bca",
+  "source_context_hash_method": "sha256(PopulationContext.model_dump_json().encode())",
+  "official_entry_url": "https://infoshare.stats.govt.nz/SearchPage.aspx",
+  "table_id": "DPE054AA",
+  "selection": {
+    "estimate_types": [
+      "1:As at",
+      "2:Mean year ended"
+    ],
+    "population": "C:Total",
+    "age": "DPE054FF:Total All Ages",
+    "output": "csv",
+    "status_flags": "not_displayed"
+  },
+  "observations": [
+    {
+      "observed_at": "2026-09-07T03:33:45.467103+00:00",
+      "source_sha256": "66e498c4e8fad297656c13c1ed7a13703c30f511a0e55414d4a8fd764be443a6",
+      "bytes": 1162,
+      "periods": [
+        "2026Q2"
+      ],
+      "cells": 2,
+      "http_status": 200,
+      "media_type": "text/csv",
+      "verification": "passed"
+    },
+    {
+      "observed_at": "2026-09-07T03:35:01.735156+00:00",
+      "source_sha256": "d486140e51e3f8b30889c54c69bb199be0f598e2e785c441a77ad39b56c59606",
+      "bytes": 4819,
+      "first_period": "1991Q1",
+      "last_period": "2026Q2",
+      "period_count": 142,
+      "cells": 284,
+      "missing": 3,
+      "http_status": 200,
+      "media_type": "text/csv",
+      "verification": "passed"
+    }
+  ],
+  "tests": {
+    "command": "PYTHONPATH=src /Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/python -m pytest tests/domains/health_appropriations/test_population_export.py tests/domains/health_appropriations/test_population_context.py -q --cov=archive_govt_nz.domains.health_appropriations.population_export --cov-branch --cov-report=term-missing",
+    "exit_code": 0,
+    "passed": 47,
+    "export_tests": 29,
+    "context_tests": 18,
+    "statements": 85,
+    "branches": 14,
+    "coverage_percent": 100
+  },
+  "static_checks": {
+    "ruff": "passed",
+    "format": "passed",
+    "pyright": "0 errors, 0 warnings"
+  },
+  "full_harness": "not_run_parent_owned",
+  "mutation": "not_run",
+  "capture_state": "response_verified_not_persisted",
+  "rights": "not_evaluated",
+  "analytical_selection": "not_selected",
+  "unresolved_analytical_choice": "published mean year ended versus as-at stock at the matching spending-year endpoint",
+  "raw_payloads_in_git": false,
+  "shared_files_edited": false
+}
