@@ -9,7 +9,7 @@ import json
 import runpy
 import sys
 from pathlib import Path
-from typing import Any
+from typing import Any, BinaryIO, TextIO
 
 import pytest
 
@@ -69,6 +69,49 @@ def setup(
 
     monkeypatch.setitem(execute.__globals__, "capture_url", local)
     return execute, args, calls
+
+
+@pytest.mark.anyio
+async def test_warc_sync_uses_writable_handle(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Model Windows fsync while retaining the actual sync and WARC bytes."""
+    execute, args, _ = setup(tmp_path, monkeypatch)
+    original_open = Path.open
+    original_sync = execute.__globals__["os"].fsync
+    handles: list[BinaryIO | TextIO] = []
+    synced: list[bool] = []
+
+    def tracked_open(  # noqa: PLR0913, PLR0917 -- mirrors Path.open
+        path: Path,
+        mode: str = "r",
+        buffering: int = -1,
+        encoding: str | None = None,
+        errors: str | None = None,
+        newline: str | None = None,
+    ) -> BinaryIO | TextIO:
+        handle = original_open(path, mode, buffering, encoding, errors, newline)
+        if path.name == "response.warc":
+            handles.append(handle)
+        return handle
+
+    def checked_sync(descriptor: int) -> None:
+        for handle in handles:
+            if not handle.closed and handle.fileno() == descriptor:
+                synced.append(handle.writable())
+                assert handle.writable(), "Windows requires a writable sync handle"
+        original_sync(descriptor)
+
+    monkeypatch.setattr(Path, "open", tracked_open)
+    monkeypatch.setattr(execute.__globals__["os"], "fsync", checked_sync)
+    result = await execute(args)
+    assert result["captured"] == 1
+    assert synced == [True]
+    row = result["results"][0]
+    assert (
+        hashlib.sha256((args.warc_dir / row["warc_path"]).read_bytes()).hexdigest()
+        == row["warc_sha256"]
+    )
 
 
 @pytest.mark.anyio

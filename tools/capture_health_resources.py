@@ -219,7 +219,7 @@ async def _capture_locked(args: argparse.Namespace) -> dict[str, object]:
                     ),
                     transaction_warc_path=warc,
                 )
-                with warc.open("rb") as handle:
+                with warc.open("r+b") as handle:
                     os.fsync(handle.fileno())
                 results.append(
                     {
