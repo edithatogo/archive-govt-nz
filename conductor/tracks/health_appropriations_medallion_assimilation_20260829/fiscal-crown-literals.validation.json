@@ -1,0 +1,79 @@
+{
+  "schema_version": "archive-govt-nz.fiscal-crown-literal-validation/v1",
+  "profile": "fiscal-crown-literals.profile.json",
+  "status": "literal_context_admitted_local_only",
+  "source": {
+    "sha256": "de59f9028a81a697ee66eea04861edfd8e2c3a7e472b3b8798d976951964f70f",
+    "bytes": 116265,
+    "vintage": "Fiscal-Time-Series-1972-2025",
+    "capture_observed_at": "2026-08-29T09:00:17Z"
+  },
+  "red": "expected_absent_module_import_error",
+  "bounded_corrections": [
+    "wrong_hash_test_expected_error_name_corrected_to_source_hash_mismatch",
+    "real_replay_rejected_A68_percent_GDP_transcription_corrected_to_blank_A68_and_A69_label",
+    "real_replay_rejected_double_backslash_number_format_corrected_from_source_codepoints"
+  ],
+  "focused": {
+    "tests": 51,
+    "new_module_tests": 29,
+    "statements": 73,
+    "branches": 12,
+    "coverage_percent": 100,
+    "lint": "passed",
+    "format": "passed",
+    "types": "passed"
+  },
+  "mutants": {
+    "total": 35,
+    "killed": 35,
+    "survived": 0,
+    "timeouts": 0,
+    "errors": 0,
+    "pardoned": 0,
+    "cache_hits": 0,
+    "coverage_filter": false,
+    "workers": 2,
+    "report_sha256": "4467a7dff3b4ced5301517f70901c438e35307ca0dbf9fb50b1c7c8e769068d6"
+  },
+  "real_replay": {
+    "method": "independent_OOXML_relationship_shared_string_style_value_readback",
+    "records": 61,
+    "counts": {
+      "core_crown": 32,
+      "total_crown": 29
+    },
+    "lineage_references_reconciled": 671,
+    "year_note_references_reconciled": 43,
+    "facts_sha256": "29221ede928543afdadf39da2bc709f31a7803106ee819cfafa7f94d2f5377cd",
+    "facts_hash_encoding": "UTF8_workbook_common.encode_json_of_in_memory_facts",
+    "repeat_read_equal": true,
+    "source_unchanged": true
+  },
+  "semantics": {
+    "unit": "$ millions",
+    "scaling": "million",
+    "currency": null,
+    "price_basis": null,
+    "amount_type": "historical_as_published",
+    "consolidation_equivalence": "not_asserted",
+    "period_start": null,
+    "period_end_month": 6,
+    "rights": "not_evaluated",
+    "analytical_selection": "not_selected"
+  },
+  "formula_cache_admission": "not_performed",
+  "raw_values_persisted": false,
+  "new_output_packages": 0,
+  "network_requests": 0,
+  "publication": "not_performed",
+  "full_harness": "not_run",
+  "shared_lifecycle_edits": false,
+  "review": "passed_scoped_self_review",
+  "remaining": [
+    "canonical_projection_and_loss_accounted_package",
+    "ISO_currency_and_price_basis_evidence",
+    "analytical_period_and_consolidation_qualification",
+    "forecast_formula_cache_qualification"
+  ]
+}
