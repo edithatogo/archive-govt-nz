@@ -7,13 +7,13 @@ import sys
 from pathlib import Path
 
 import pytest
-from tools.build_foi_catalogue import main
 
 from archive_govt_nz.foi_canonical import build_source_index
 from archive_govt_nz.foi_catalogue import catalogue_files
 from archive_govt_nz.foi_discovery import build_reviewed_catalogue
 
 ROOT = Path(__file__).parents[1]
+main = runpy.run_path(str(ROOT / "tools/build_foi_catalogue.py"))["main"]
 TRACK = ROOT / "conductor/tracks/global_foi_public_archive_20260830"
 SEEDS = ROOT / "config/foi"
 
