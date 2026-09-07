@@ -7,8 +7,16 @@ import json
 from pathlib import Path
 
 ALLOWED = {
-    "captured", "unchanged", "superseded", "unavailable", "withdrawn",
-    "restricted", "corrupt", "retryable", "duplicate", "out_of_scope",
+    "captured",
+    "unchanged",
+    "superseded",
+    "unavailable",
+    "withdrawn",
+    "restricted",
+    "corrupt",
+    "retryable",
+    "duplicate",
+    "out_of_scope",
 }
 REQUIRED = {"source_id", "title", "family", "url", "disposition", "reason", "cutoff"}
 

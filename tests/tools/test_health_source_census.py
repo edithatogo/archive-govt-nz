@@ -12,7 +12,10 @@ from tools.validate_health_source_census import validate
 
 
 ROOT = Path(__file__).parents[2]
-CENSUS = ROOT / "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census.json"
+CENSUS = (
+    ROOT
+    / "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census.json"
+)
 
 
 def test_canonical_census_has_one_evidenced_disposition_per_source() -> None:
@@ -20,8 +23,12 @@ def test_canonical_census_has_one_evidenced_disposition_per_source() -> None:
     assert result["records"] == json.loads(CENSUS.read_text())["record_count"]
 
 
-@pytest.mark.parametrize("field,value", [("disposition", "not-a-disposition"), ("reason", "")])
-def test_census_rejects_unsupported_or_unevidenced_dispositions(tmp_path: Path, field: str, value: str) -> None:
+@pytest.mark.parametrize(
+    "field,value", [("disposition", "not-a-disposition"), ("reason", "")]
+)
+def test_census_rejects_unsupported_or_unevidenced_dispositions(
+    tmp_path: Path, field: str, value: str
+) -> None:
     data = json.loads(CENSUS.read_text())
     data["records"][0][field] = value
     path = tmp_path / "census.json"
