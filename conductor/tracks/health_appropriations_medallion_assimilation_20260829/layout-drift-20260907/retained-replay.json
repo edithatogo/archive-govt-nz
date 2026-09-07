@@ -1,0 +1,576 @@
+{
+  "cross_vintage_comparison": "not_permitted",
+  "kind": "local_read_only_retained_package_replay",
+  "new_normalization": false,
+  "original_reinspection": "not_performed",
+  "results": [
+    {
+      "input_sha256": {
+        "MANIFEST.json": "1b1e5dfd3fa90d98dcf5200997001db236df7b40f4404b658c36f5cb0264d2fe",
+        "budget_facts.parquet": "4de50276340292f659bdc70795fe70c352e428f6012d1a4c4108a07a59649165",
+        "field_lineage.parquet": "f8d80b30e5d4641707e7c39cbb435de97bb4b44a49fd8c5ae705072ed867ad9c",
+        "row_dispositions.parquet": "dabc8533c1ff8b49ff46b4301374225315771a76c27e64020526ebcda6486397"
+      },
+      "inputs_unchanged": true,
+      "package": "raw-orchestrated-20260830-v1/budget",
+      "receipt": {
+        "changes": [],
+        "normalization_approval": "not_granted",
+        "observation": {
+          "counts": {
+            "blank": 0,
+            "input": 6504,
+            "normalized": 215,
+            "out_of_scope": 6289,
+            "rejected": 0
+          },
+          "manifest_sha256": "1b1e5dfd3fa90d98dcf5200997001db236df7b40f4404b658c36f5cb0264d2fe",
+          "output_sha256": {
+            "budget_facts.parquet": "4de50276340292f659bdc70795fe70c352e428f6012d1a4c4108a07a59649165",
+            "field_lineage.parquet": "f8d80b30e5d4641707e7c39cbb435de97bb4b44a49fd8c5ae705072ed867ad9c",
+            "row_dispositions.parquet": "dabc8533c1ff8b49ff46b4301374225315771a76c27e64020526ebcda6486397"
+          },
+          "selection": {
+            "columns": [
+              {
+                "column": 1,
+                "selection_role": "retained_field",
+                "source_label_sha256": "5304ab98e5815a35d33c39ddd9557ecf39e7902f29f1c132da4e69c265e9b9bf",
+                "target_field": "department"
+              },
+              {
+                "column": 2,
+                "selection_role": "vote_filter",
+                "source_label_sha256": "cd5588db6fc6fb44dd76b006202f9efa2ba5d715272a1ae06fb3c805e6a25289",
+                "target_field": "retained_only"
+              },
+              {
+                "column": 3,
+                "selection_role": "retained_field",
+                "source_label_sha256": "3c2f1e20ab37389239e917ad63d911d7d663ed0e0eab04efc542ebe44ad6bed5",
+                "target_field": "retained_only"
+              },
+              {
+                "column": 4,
+                "selection_role": "retained_field",
+                "source_label_sha256": "9db1a8a9cb7caa00a4df4852affc98472c68e0af45090bb7e55cd1d9e1e9e351",
+                "target_field": "retained_only"
+              },
+              {
+                "column": 5,
+                "selection_role": "retained_field",
+                "source_label_sha256": "d58504ced5110af76b3e2e8ea51e5c2924a82482046770c53355bda4ea62d6cf",
+                "target_field": "appropriation_name"
+              },
+              {
+                "column": 6,
+                "selection_role": "retained_field",
+                "source_label_sha256": "84ee96428530c64f3e39f9149e318cc48fa45371a5813f6f152a605823ef2b7f",
+                "target_field": "retained_only"
+              },
+              {
+                "column": 7,
+                "selection_role": "retained_field",
+                "source_label_sha256": "cd2566160fe38e357688950cf645f6119df791644b4ae77708005522a535627b",
+                "target_field": "retained_only"
+              },
+              {
+                "column": 8,
+                "selection_role": "retained_field",
+                "source_label_sha256": "b5b79673303b212cb97875c22caf30ec68d81d641803f9923642e5994e3e8053",
+                "target_field": "retained_only"
+              },
+              {
+                "column": 9,
+                "selection_role": "retained_field",
+                "source_label_sha256": "a2d9c33bc7e1b26601fb01074905f9fd22c2e9539561e9d7ae4cfb2a0d0fa1ab",
+                "target_field": "retained_only"
+              },
+              {
+                "column": 10,
+                "selection_role": "retained_field",
+                "source_label_sha256": "37090894b4c207ba9e710051ee22c6f43ec20a5ad755617200cfc7b8fca01049",
+                "target_field": "functional_classification"
+              },
+              {
+                "column": 11,
+                "selection_role": "retained_field",
+                "source_label_sha256": "1658954b7938cde84bd64589529c2daa5bb08eba394ee8edef024f5b36e6b7e8",
+                "target_field": "amount"
+              },
+              {
+                "column": 12,
+                "selection_role": "retained_field",
+                "source_label_sha256": "89f6832560dec0b7f8721d1fe3ba0b5036a5d1464ce4339bb16c3e1485bfec34",
+                "target_field": "year"
+              },
+              {
+                "column": 13,
+                "selection_role": "retained_field",
+                "source_label_sha256": "b596262e38550910a3fe87af572624d9eeea58062b55311c7b53116d8b119107",
+                "target_field": "amount_type"
+              },
+              {
+                "column": 14,
+                "selection_role": "retained_field",
+                "source_label_sha256": "7bf44d60d0ff03f38acfc548ba1918deec27679ff822be294b2ef0df9bcb1dbd",
+                "target_field": "retained_only"
+              },
+              {
+                "column": 15,
+                "selection_role": "retained_field",
+                "source_label_sha256": "4f8d06b834abcffe1a000f1833dcfcfe66f6c51e5b0676c37bd9d6599b326d3b",
+                "target_field": "retained_only"
+              },
+              {
+                "column": 16,
+                "selection_role": "retained_field",
+                "source_label_sha256": "daa76e98f97fa220ebffd4a09f8183dd1f6a9c5ed182080f9f01dd406d30b1d2",
+                "target_field": "retained_only"
+              },
+              {
+                "column": 17,
+                "selection_role": "retained_field",
+                "source_label_sha256": "343385016c0487a69d7e78fd720c86b012049a8cfbe8832358c72850f050796c",
+                "target_field": "portfolio_name"
+              }
+            ],
+            "first_data_row": 2,
+            "header_row": 1,
+            "predicate": "Vote equals Health",
+            "sheet": "Raw Data"
+          },
+          "selection_sha256": "11584d38b79fa4b6e2b828b8eded9367fe7f0ea7352395a348479d821fbdc45f",
+          "source_object_sha256": "d67c01b0a3f1fbee5cb5121b641bda42f91f3e5bc84e599d22d32aeacbbb3338"
+        },
+        "original_reinspection": "not_performed",
+        "output_schema_sha256": {
+          "budget_facts.parquet": "fd17f583c7132a1738b0c6c46c0a0847589c13c72c82bba34a37be4fbaece2c7",
+          "field_lineage.parquet": "deee992aab464eda1c15b73d8cb68bbd3546135c025d5bdb030a886c676999b0",
+          "row_dispositions.parquet": "60e5ddf3801f6961055af6c6e19e6589e91ac38cd41495b62dff176217e5cc46"
+        },
+        "package_fixity": "verified_snapshots",
+        "profile": "budget-2025/v1",
+        "reference": {
+          "counts": {
+            "blank": 0,
+            "input": 6504,
+            "normalized": 215,
+            "out_of_scope": 6289,
+            "rejected": 0
+          },
+          "manifest_sha256": "1b1e5dfd3fa90d98dcf5200997001db236df7b40f4404b658c36f5cb0264d2fe",
+          "output_sha256": {
+            "budget_facts.parquet": "4de50276340292f659bdc70795fe70c352e428f6012d1a4c4108a07a59649165",
+            "field_lineage.parquet": "f8d80b30e5d4641707e7c39cbb435de97bb4b44a49fd8c5ae705072ed867ad9c",
+            "row_dispositions.parquet": "dabc8533c1ff8b49ff46b4301374225315771a76c27e64020526ebcda6486397"
+          },
+          "selection": {
+            "columns": [
+              {
+                "column": 1,
+                "selection_role": "retained_field",
+                "source_label_sha256": "5304ab98e5815a35d33c39ddd9557ecf39e7902f29f1c132da4e69c265e9b9bf",
+                "target_field": "department"
+              },
+              {
+                "column": 2,
+                "selection_role": "vote_filter",
+                "source_label_sha256": "cd5588db6fc6fb44dd76b006202f9efa2ba5d715272a1ae06fb3c805e6a25289",
+                "target_field": "retained_only"
+              },
+              {
+                "column": 3,
+                "selection_role": "retained_field",
+                "source_label_sha256": "3c2f1e20ab37389239e917ad63d911d7d663ed0e0eab04efc542ebe44ad6bed5",
+                "target_field": "retained_only"
+              },
+              {
+                "column": 4,
+                "selection_role": "retained_field",
+                "source_label_sha256": "9db1a8a9cb7caa00a4df4852affc98472c68e0af45090bb7e55cd1d9e1e9e351",
+                "target_field": "retained_only"
+              },
+              {
+                "column": 5,
+                "selection_role": "retained_field",
+                "source_label_sha256": "d58504ced5110af76b3e2e8ea51e5c2924a82482046770c53355bda4ea62d6cf",
+                "target_field": "appropriation_name"
+              },
+              {
+                "column": 6,
+                "selection_role": "retained_field",
+                "source_label_sha256": "84ee96428530c64f3e39f9149e318cc48fa45371a5813f6f152a605823ef2b7f",
+                "target_field": "retained_only"
+              },
+              {
+                "column": 7,
+                "selection_role": "retained_field",
+                "source_label_sha256": "cd2566160fe38e357688950cf645f6119df791644b4ae77708005522a535627b",
+                "target_field": "retained_only"
+              },
+              {
+                "column": 8,
+                "selection_role": "retained_field",
+                "source_label_sha256": "b5b79673303b212cb97875c22caf30ec68d81d641803f9923642e5994e3e8053",
+                "target_field": "retained_only"
+              },
+              {
+                "column": 9,
+                "selection_role": "retained_field",
+                "source_label_sha256": "a2d9c33bc7e1b26601fb01074905f9fd22c2e9539561e9d7ae4cfb2a0d0fa1ab",
+                "target_field": "retained_only"
+              },
+              {
+                "column": 10,
+                "selection_role": "retained_field",
+                "source_label_sha256": "37090894b4c207ba9e710051ee22c6f43ec20a5ad755617200cfc7b8fca01049",
+                "target_field": "functional_classification"
+              },
+              {
+                "column": 11,
+                "selection_role": "retained_field",
+                "source_label_sha256": "1658954b7938cde84bd64589529c2daa5bb08eba394ee8edef024f5b36e6b7e8",
+                "target_field": "amount"
+              },
+              {
+                "column": 12,
+                "selection_role": "retained_field",
+                "source_label_sha256": "89f6832560dec0b7f8721d1fe3ba0b5036a5d1464ce4339bb16c3e1485bfec34",
+                "target_field": "year"
+              },
+              {
+                "column": 13,
+                "selection_role": "retained_field",
+                "source_label_sha256": "b596262e38550910a3fe87af572624d9eeea58062b55311c7b53116d8b119107",
+                "target_field": "amount_type"
+              },
+              {
+                "column": 14,
+                "selection_role": "retained_field",
+                "source_label_sha256": "7bf44d60d0ff03f38acfc548ba1918deec27679ff822be294b2ef0df9bcb1dbd",
+                "target_field": "retained_only"
+              },
+              {
+                "column": 15,
+                "selection_role": "retained_field",
+                "source_label_sha256": "4f8d06b834abcffe1a000f1833dcfcfe66f6c51e5b0676c37bd9d6599b326d3b",
+                "target_field": "retained_only"
+              },
+              {
+                "column": 16,
+                "selection_role": "retained_field",
+                "source_label_sha256": "daa76e98f97fa220ebffd4a09f8183dd1f6a9c5ed182080f9f01dd406d30b1d2",
+                "target_field": "retained_only"
+              },
+              {
+                "column": 17,
+                "selection_role": "retained_field",
+                "source_label_sha256": "343385016c0487a69d7e78fd720c86b012049a8cfbe8832358c72850f050796c",
+                "target_field": "portfolio_name"
+              }
+            ],
+            "first_data_row": 2,
+            "header_row": 1,
+            "predicate": "Vote equals Health",
+            "sheet": "Raw Data"
+          },
+          "selection_sha256": "11584d38b79fa4b6e2b828b8eded9367fe7f0ea7352395a348479d821fbdc45f",
+          "source_object_sha256": "d67c01b0a3f1fbee5cb5121b641bda42f91f3e5bc84e599d22d32aeacbbb3338"
+        },
+        "reference_selection_matches": true,
+        "rights_state": "not_evaluated",
+        "schema_version": "archive-govt-nz.health-budget-layout-drift/v1",
+        "scope": "selected_sheet_lineage_column_bijection_only",
+        "status": "matching_selection",
+        "transformation_id": "budget-expenditure/v1"
+      },
+      "repeat_identical": true
+    },
+    {
+      "input_sha256": {
+        "MANIFEST.json": "f34000992fd65dca445e7ad251cb06df3c68107410355ea057ea9a2bf8481738",
+        "budget_facts.parquet": "42781cb2723f9b1b32a536a46389b0c5a54431d9c600380c6058e740a96b6f9f",
+        "field_lineage.parquet": "917e14e0de9d5fc3f7c56d14da9cc103031aa475e59157da46824d63c06c9a4b",
+        "row_dispositions.parquet": "e4bad4ad0a92b80257526fddcf4d7b7e665d1eddee90cedf6706977e65260b0f"
+      },
+      "inputs_unchanged": true,
+      "package": "raw-budget-2026-20260831-v1",
+      "receipt": {
+        "changes": [],
+        "normalization_approval": "not_granted",
+        "observation": {
+          "counts": {
+            "blank": 0,
+            "input": 6451,
+            "normalized": 185,
+            "out_of_scope": 6266,
+            "rejected": 0
+          },
+          "manifest_sha256": "f34000992fd65dca445e7ad251cb06df3c68107410355ea057ea9a2bf8481738",
+          "output_sha256": {
+            "budget_facts.parquet": "42781cb2723f9b1b32a536a46389b0c5a54431d9c600380c6058e740a96b6f9f",
+            "field_lineage.parquet": "917e14e0de9d5fc3f7c56d14da9cc103031aa475e59157da46824d63c06c9a4b",
+            "row_dispositions.parquet": "e4bad4ad0a92b80257526fddcf4d7b7e665d1eddee90cedf6706977e65260b0f"
+          },
+          "selection": {
+            "columns": [
+              {
+                "column": 1,
+                "selection_role": "retained_field",
+                "source_label_sha256": "5304ab98e5815a35d33c39ddd9557ecf39e7902f29f1c132da4e69c265e9b9bf",
+                "target_field": "department"
+              },
+              {
+                "column": 2,
+                "selection_role": "vote_filter",
+                "source_label_sha256": "cd5588db6fc6fb44dd76b006202f9efa2ba5d715272a1ae06fb3c805e6a25289",
+                "target_field": "retained_only"
+              },
+              {
+                "column": 3,
+                "selection_role": "retained_field",
+                "source_label_sha256": "3c2f1e20ab37389239e917ad63d911d7d663ed0e0eab04efc542ebe44ad6bed5",
+                "target_field": "retained_only"
+              },
+              {
+                "column": 4,
+                "selection_role": "retained_field",
+                "source_label_sha256": "9db1a8a9cb7caa00a4df4852affc98472c68e0af45090bb7e55cd1d9e1e9e351",
+                "target_field": "retained_only"
+              },
+              {
+                "column": 5,
+                "selection_role": "retained_field",
+                "source_label_sha256": "d58504ced5110af76b3e2e8ea51e5c2924a82482046770c53355bda4ea62d6cf",
+                "target_field": "appropriation_name"
+              },
+              {
+                "column": 6,
+                "selection_role": "retained_field",
+                "source_label_sha256": "84ee96428530c64f3e39f9149e318cc48fa45371a5813f6f152a605823ef2b7f",
+                "target_field": "retained_only"
+              },
+              {
+                "column": 7,
+                "selection_role": "retained_field",
+                "source_label_sha256": "cd2566160fe38e357688950cf645f6119df791644b4ae77708005522a535627b",
+                "target_field": "retained_only"
+              },
+              {
+                "column": 8,
+                "selection_role": "retained_field",
+                "source_label_sha256": "b5b79673303b212cb97875c22caf30ec68d81d641803f9923642e5994e3e8053",
+                "target_field": "retained_only"
+              },
+              {
+                "column": 9,
+                "selection_role": "retained_field",
+                "source_label_sha256": "a2d9c33bc7e1b26601fb01074905f9fd22c2e9539561e9d7ae4cfb2a0d0fa1ab",
+                "target_field": "retained_only"
+              },
+              {
+                "column": 10,
+                "selection_role": "retained_field",
+                "source_label_sha256": "37090894b4c207ba9e710051ee22c6f43ec20a5ad755617200cfc7b8fca01049",
+                "target_field": "functional_classification"
+              },
+              {
+                "column": 11,
+                "selection_role": "retained_field",
+                "source_label_sha256": "1658954b7938cde84bd64589529c2daa5bb08eba394ee8edef024f5b36e6b7e8",
+                "target_field": "amount"
+              },
+              {
+                "column": 12,
+                "selection_role": "retained_field",
+                "source_label_sha256": "89f6832560dec0b7f8721d1fe3ba0b5036a5d1464ce4339bb16c3e1485bfec34",
+                "target_field": "year"
+              },
+              {
+                "column": 13,
+                "selection_role": "retained_field",
+                "source_label_sha256": "b596262e38550910a3fe87af572624d9eeea58062b55311c7b53116d8b119107",
+                "target_field": "amount_type"
+              },
+              {
+                "column": 14,
+                "selection_role": "retained_field",
+                "source_label_sha256": "7bf44d60d0ff03f38acfc548ba1918deec27679ff822be294b2ef0df9bcb1dbd",
+                "target_field": "retained_only"
+              },
+              {
+                "column": 15,
+                "selection_role": "retained_field",
+                "source_label_sha256": "4f8d06b834abcffe1a000f1833dcfcfe66f6c51e5b0676c37bd9d6599b326d3b",
+                "target_field": "retained_only"
+              },
+              {
+                "column": 16,
+                "selection_role": "retained_field",
+                "source_label_sha256": "daa76e98f97fa220ebffd4a09f8183dd1f6a9c5ed182080f9f01dd406d30b1d2",
+                "target_field": "retained_only"
+              },
+              {
+                "column": 17,
+                "selection_role": "retained_field",
+                "source_label_sha256": "343385016c0487a69d7e78fd720c86b012049a8cfbe8832358c72850f050796c",
+                "target_field": "portfolio_name"
+              }
+            ],
+            "first_data_row": 2,
+            "header_row": 1,
+            "predicate": "Vote equals Health",
+            "sheet": "Raw Data"
+          },
+          "selection_sha256": "11584d38b79fa4b6e2b828b8eded9367fe7f0ea7352395a348479d821fbdc45f",
+          "source_object_sha256": "3fc6bba178c78c4a4b259c920a6f55307ec95a547353f340086c86fc2a26f5a0"
+        },
+        "original_reinspection": "not_performed",
+        "output_schema_sha256": {
+          "budget_facts.parquet": "fd17f583c7132a1738b0c6c46c0a0847589c13c72c82bba34a37be4fbaece2c7",
+          "field_lineage.parquet": "deee992aab464eda1c15b73d8cb68bbd3546135c025d5bdb030a886c676999b0",
+          "row_dispositions.parquet": "60e5ddf3801f6961055af6c6e19e6589e91ac38cd41495b62dff176217e5cc46"
+        },
+        "package_fixity": "verified_snapshots",
+        "profile": "budget-2026/v1",
+        "reference": {
+          "counts": {
+            "blank": 0,
+            "input": 6451,
+            "normalized": 185,
+            "out_of_scope": 6266,
+            "rejected": 0
+          },
+          "manifest_sha256": "f34000992fd65dca445e7ad251cb06df3c68107410355ea057ea9a2bf8481738",
+          "output_sha256": {
+            "budget_facts.parquet": "42781cb2723f9b1b32a536a46389b0c5a54431d9c600380c6058e740a96b6f9f",
+            "field_lineage.parquet": "917e14e0de9d5fc3f7c56d14da9cc103031aa475e59157da46824d63c06c9a4b",
+            "row_dispositions.parquet": "e4bad4ad0a92b80257526fddcf4d7b7e665d1eddee90cedf6706977e65260b0f"
+          },
+          "selection": {
+            "columns": [
+              {
+                "column": 1,
+                "selection_role": "retained_field",
+                "source_label_sha256": "5304ab98e5815a35d33c39ddd9557ecf39e7902f29f1c132da4e69c265e9b9bf",
+                "target_field": "department"
+              },
+              {
+                "column": 2,
+                "selection_role": "vote_filter",
+                "source_label_sha256": "cd5588db6fc6fb44dd76b006202f9efa2ba5d715272a1ae06fb3c805e6a25289",
+                "target_field": "retained_only"
+              },
+              {
+                "column": 3,
+                "selection_role": "retained_field",
+                "source_label_sha256": "3c2f1e20ab37389239e917ad63d911d7d663ed0e0eab04efc542ebe44ad6bed5",
+                "target_field": "retained_only"
+              },
+              {
+                "column": 4,
+                "selection_role": "retained_field",
+                "source_label_sha256": "9db1a8a9cb7caa00a4df4852affc98472c68e0af45090bb7e55cd1d9e1e9e351",
+                "target_field": "retained_only"
+              },
+              {
+                "column": 5,
+                "selection_role": "retained_field",
+                "source_label_sha256": "d58504ced5110af76b3e2e8ea51e5c2924a82482046770c53355bda4ea62d6cf",
+                "target_field": "appropriation_name"
+              },
+              {
+                "column": 6,
+                "selection_role": "retained_field",
+                "source_label_sha256": "84ee96428530c64f3e39f9149e318cc48fa45371a5813f6f152a605823ef2b7f",
+                "target_field": "retained_only"
+              },
+              {
+                "column": 7,
+                "selection_role": "retained_field",
+                "source_label_sha256": "cd2566160fe38e357688950cf645f6119df791644b4ae77708005522a535627b",
+                "target_field": "retained_only"
+              },
+              {
+                "column": 8,
+                "selection_role": "retained_field",
+                "source_label_sha256": "b5b79673303b212cb97875c22caf30ec68d81d641803f9923642e5994e3e8053",
+                "target_field": "retained_only"
+              },
+              {
+                "column": 9,
+                "selection_role": "retained_field",
+                "source_label_sha256": "a2d9c33bc7e1b26601fb01074905f9fd22c2e9539561e9d7ae4cfb2a0d0fa1ab",
+                "target_field": "retained_only"
+              },
+              {
+                "column": 10,
+                "selection_role": "retained_field",
+                "source_label_sha256": "37090894b4c207ba9e710051ee22c6f43ec20a5ad755617200cfc7b8fca01049",
+                "target_field": "functional_classification"
+              },
+              {
+                "column": 11,
+                "selection_role": "retained_field",
+                "source_label_sha256": "1658954b7938cde84bd64589529c2daa5bb08eba394ee8edef024f5b36e6b7e8",
+                "target_field": "amount"
+              },
+              {
+                "column": 12,
+                "selection_role": "retained_field",
+                "source_label_sha256": "89f6832560dec0b7f8721d1fe3ba0b5036a5d1464ce4339bb16c3e1485bfec34",
+                "target_field": "year"
+              },
+              {
+                "column": 13,
+                "selection_role": "retained_field",
+                "source_label_sha256": "b596262e38550910a3fe87af572624d9eeea58062b55311c7b53116d8b119107",
+                "target_field": "amount_type"
+              },
+              {
+                "column": 14,
+                "selection_role": "retained_field",
+                "source_label_sha256": "7bf44d60d0ff03f38acfc548ba1918deec27679ff822be294b2ef0df9bcb1dbd",
+                "target_field": "retained_only"
+              },
+              {
+                "column": 15,
+                "selection_role": "retained_field",
+                "source_label_sha256": "4f8d06b834abcffe1a000f1833dcfcfe66f6c51e5b0676c37bd9d6599b326d3b",
+                "target_field": "retained_only"
+              },
+              {
+                "column": 16,
+                "selection_role": "retained_field",
+                "source_label_sha256": "daa76e98f97fa220ebffd4a09f8183dd1f6a9c5ed182080f9f01dd406d30b1d2",
+                "target_field": "retained_only"
+              },
+              {
+                "column": 17,
+                "selection_role": "retained_field",
+                "source_label_sha256": "343385016c0487a69d7e78fd720c86b012049a8cfbe8832358c72850f050796c",
+                "target_field": "portfolio_name"
+              }
+            ],
+            "first_data_row": 2,
+            "header_row": 1,
+            "predicate": "Vote equals Health",
+            "sheet": "Raw Data"
+          },
+          "selection_sha256": "11584d38b79fa4b6e2b828b8eded9367fe7f0ea7352395a348479d821fbdc45f",
+          "source_object_sha256": "3fc6bba178c78c4a4b259c920a6f55307ec95a547353f340086c86fc2a26f5a0"
+        },
+        "reference_selection_matches": true,
+        "rights_state": "not_evaluated",
+        "schema_version": "archive-govt-nz.health-budget-layout-drift/v1",
+        "scope": "selected_sheet_lineage_column_bijection_only",
+        "status": "matching_selection",
+        "transformation_id": "budget-expenditure/v1"
+      },
+      "repeat_identical": true
+    }
+  ],
+  "schema_version": "archive-govt-nz.health-layout-replay/v1",
+  "self_comparisons_only": true
+}
