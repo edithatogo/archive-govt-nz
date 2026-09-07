@@ -42,7 +42,7 @@ jobs:
           python-version: "3.14"
       - uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b
         with:
-          version: "0.6.5"
+          version: "0.12.10"
       - name: Install locked dependencies
         run: uv sync --locked
       - name: Persist and reconcile a bounded shared control rehearsal
@@ -84,7 +84,7 @@ jobs:
           python-version: "3.14"
       - uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b
         with:
-          version: "0.6.5"
+          version: "0.12.10"
       - name: Install locked dependencies
         run: uv sync --locked
       - name: Fail on stuck leases or state capacity limits
