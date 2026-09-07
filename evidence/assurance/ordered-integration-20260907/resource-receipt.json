@@ -1,0 +1,88 @@
+{
+  "artifact_readback_sha256": "eb766640ab82191e6b1e2a47ed113e4affce8bc31b136c4c5e0769fa05a20f14",
+  "bounds": {
+    "each_process_peak_rss_bytes": 536870912,
+    "expanded_bytes": 134217728,
+    "files": 1100,
+    "wall_seconds": 60
+  },
+  "bounds_policy": "declared local acceptance budgets, not an inherited performance SLA; time/RSS assessed after execution, subprocesses timeout bounded",
+  "child_peak_rss_bytes": 134643712,
+  "commands": [
+    [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    [
+      "git",
+      "check-ignore",
+      ".tmp/probe-state.zip"
+    ],
+    [
+      "gh",
+      "api",
+      "repos/edithatogo/archive-govt-nz/actions/artifacts/9970365066"
+    ],
+    [
+      "gh",
+      "api",
+      "repos/edithatogo/archive-govt-nz/actions/runs/33968609350"
+    ],
+    [
+      "gh",
+      "api",
+      "repos/edithatogo/archive-govt-nz/actions/artifacts/9970365066/zip"
+    ],
+    [
+      "/Volumes/PortableSSD/GitHub/archive-govt-nz-ordered-resource-20260907/.venv/bin/python3",
+      "tools/reconcile_one_legislation_batch.py",
+      "--batch-id",
+      "prompt13-ordered500-20260905",
+      "--batch-path",
+      "seeds/reviewed/historical-work-ids-0001.txt",
+      "--expected-batch-sha256",
+      "59923176fa34796d7673a20b880af9abe5520fe484595edb220f2bbc0e3b33e7",
+      "--manifest-path",
+      "/Volumes/PortableSSD/GitHub/archive-govt-nz-ordered-resource-20260907/.tmp/ordered-resource-cxxaxu2z/state/manifest.json",
+      "--checkpoint-path",
+      "/Volumes/PortableSSD/GitHub/archive-govt-nz-ordered-resource-20260907/.tmp/ordered-resource-cxxaxu2z/state/checkpoint.json",
+      "--cas-path",
+      "/Volumes/PortableSSD/GitHub/archive-govt-nz-ordered-resource-20260907/.tmp/ordered-resource-cxxaxu2z/state/cas",
+      "--receipt-path",
+      "/Volumes/PortableSSD/GitHub/archive-govt-nz-ordered-resource-20260907/.tmp/ordered-resource-cxxaxu2z/reconciliation.json"
+    ],
+    [
+      "uv",
+      "--version"
+    ]
+  ],
+  "execution_context": "local",
+  "measurement_scope": "unpack, native parent verification, scratch materialization, linked CAS verification, reconciliation, before/after file hashing; network excluded",
+  "mismatch_count": 0,
+  "objects_verified": 904,
+  "observed_at": "2026-09-07T02:15:54.391283+00:00",
+  "peak_rss_bytes": 242434048,
+  "physical_state_files": 909,
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "probe_sha256": "e0c203df6bb3018e2d9fd4c2624eef13ea9b678c1d050fa04c66c9ba4e8aa450",
+  "publication_performed": false,
+  "python": "3.14.6 (main, Aug  4 2026, 19:23:56) [Clang 22.1.3 ]",
+  "reconciliation_sha256": "dc205bc1a1db7a18711de033d59cb5e7e3f006b459470f846418399605e48756",
+  "reference_sha256": "2201042c6e8a9b2b77165d1e2ba5269e88332f1e0c0d504e2ab04662eba1711f",
+  "rss_scope": "process lifetime high-water marks; children includes prior gh/git calls; separate maxima are not additive concurrent memory",
+  "schema_version": "archive-govt-nz.local-resource-assurance/v1",
+  "scope_records": 852,
+  "scope_works": 500,
+  "source_acquisition_performed": false,
+  "state_bytes": 68770413,
+  "state_file_hashes_sha256": "76bd56625c1e2db7a82c067c7a5b123b5991f815b45e7723310985e5bc34cdaa",
+  "state_unchanged": true,
+  "status": "passed",
+  "system_seconds": 0.261429,
+  "target_commit": "e015a059c88e605dd43b6127d1e7a9d81d37f574",
+  "user_seconds": 0.6014070000000001,
+  "uv": "uv 0.11.8 (0e961dd9a 2026-04-27 aarch64-apple-darwin)",
+  "uv_lock_sha256": "4ec74f2e62d344cfa754f7938b636d800f0527887660fbbc3d007919c965f612",
+  "wall_seconds": 2.0106730829993467
+}

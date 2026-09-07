@@ -1,0 +1,13 @@
+{
+  "status": "failed",
+  "execution_context": "local",
+  "target_commit": "e015a059c88e605dd43b6127d1e7a9d81d37f574",
+  "evaluated_at": "2026-09-07T02:13:29Z",
+  "stage": "reconciliation",
+  "error_class": "batch_not_completed",
+  "mismatch_count": 1,
+  "original_reconciliation_sha256": "acc27daf2328b168824f45b11287d48236248cfe406b31cf60e22bbf0e2b4f48",
+  "reason": "The probe initially passed its new benchmark label as the batch ID, rather than the completed batch identity in the authenticated checkpoint.",
+  "correction": "Use existing completed batch prompt13-ordered500-20260905; no state, verifier, threshold or reconciliation logic change.",
+  "development_note": "An exploratory Ruff check reported standalone-script style findings. Source is retained as executable Python text, following the earlier evidence probe convention; it is not a production module. Formatting occurred while the first attempt was active, so no source-digest assurance is claimed for that failed attempt. The final attempt uses frozen source."
+}

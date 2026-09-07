@@ -1,0 +1,181 @@
+{
+  "alerts": {
+    "code-scanning": [],
+    "dependabot": [],
+    "secret-scanning": []
+  },
+  "commands": [
+    [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    [
+      "git",
+      "check-ignore",
+      ".tmp/probe-state.zip"
+    ],
+    [
+      "gh",
+      "api",
+      "repos/edithatogo/archive-govt-nz/actions/artifacts/9970365066"
+    ],
+    [
+      "gh",
+      "api",
+      "repos/edithatogo/archive-govt-nz/actions/runs/33968609350"
+    ],
+    [
+      "gh",
+      "api",
+      "repos/edithatogo/archive-govt-nz/actions/artifacts/9970365066/zip"
+    ],
+    [
+      "/Volumes/PortableSSD/GitHub/archive-govt-nz-ordered-resource-20260907/.venv/bin/python3",
+      "tools/reconcile_one_legislation_batch.py",
+      "--batch-id",
+      "prompt13-ordered500-20260905",
+      "--batch-path",
+      "seeds/reviewed/historical-work-ids-0001.txt",
+      "--expected-batch-sha256",
+      "59923176fa34796d7673a20b880af9abe5520fe484595edb220f2bbc0e3b33e7",
+      "--manifest-path",
+      "/Volumes/PortableSSD/GitHub/archive-govt-nz-ordered-resource-20260907/.tmp/ordered-resource-cxxaxu2z/state/manifest.json",
+      "--checkpoint-path",
+      "/Volumes/PortableSSD/GitHub/archive-govt-nz-ordered-resource-20260907/.tmp/ordered-resource-cxxaxu2z/state/checkpoint.json",
+      "--cas-path",
+      "/Volumes/PortableSSD/GitHub/archive-govt-nz-ordered-resource-20260907/.tmp/ordered-resource-cxxaxu2z/state/cas",
+      "--receipt-path",
+      "/Volumes/PortableSSD/GitHub/archive-govt-nz-ordered-resource-20260907/.tmp/ordered-resource-cxxaxu2z/reconciliation.json"
+    ],
+    [
+      "uv",
+      "--version"
+    ],
+    [
+      "gh",
+      "api",
+      "--paginate",
+      "--slurp",
+      "repos/edithatogo/archive-govt-nz/code-scanning/alerts?state=open&per_page=100"
+    ],
+    [
+      "gh",
+      "api",
+      "--paginate",
+      "--slurp",
+      "repos/edithatogo/archive-govt-nz/dependabot/alerts?state=open&per_page=100"
+    ],
+    [
+      "gh",
+      "api",
+      "--paginate",
+      "--slurp",
+      "repos/edithatogo/archive-govt-nz/secret-scanning/alerts?state=open&per_page=100"
+    ],
+    [
+      "gh",
+      "api",
+      "repos/edithatogo/archive-govt-nz/rulesets/22180861"
+    ],
+    [
+      "gh",
+      "api",
+      "repos/edithatogo/archive-govt-nz/rulesets"
+    ]
+  ],
+  "execution_context": "local_authenticated_read_only",
+  "limitations": "current hosted policy/alert observation, not exact-head CI or a local dependency/secret scan; maintainer always-bypass is retained",
+  "observed_at": "2026-09-07T02:15:57.575808+00:00",
+  "probe_sha256": "e0c203df6bb3018e2d9fd4c2624eef13ea9b678c1d050fa04c66c9ba4e8aa450",
+  "remote_mutations": false,
+  "ruleset": {
+    "bypass_actors": [
+      {
+        "actor_id": 5,
+        "actor_type": "RepositoryRole",
+        "bypass_mode": "always"
+      }
+    ],
+    "conditions": {
+      "ref_name": {
+        "exclude": [],
+        "include": [
+          "~DEFAULT_BRANCH"
+        ]
+      }
+    },
+    "created_at": "2026-09-03T19:06:32.780+10:00",
+    "current_user_can_bypass": "always",
+    "enforcement": "active",
+    "id": 22180861,
+    "name": "main-integrated-assurance",
+    "rules": [
+      {
+        "type": "deletion"
+      },
+      {
+        "type": "non_fast_forward"
+      },
+      {
+        "parameters": {
+          "allowed_merge_methods": [
+            "squash",
+            "merge",
+            "rebase"
+          ],
+          "dismiss_stale_reviews_on_push": false,
+          "require_code_owner_review": false,
+          "require_extra_approval_for_unattributed_changes": false,
+          "require_last_push_approval": false,
+          "required_approving_review_count": 0,
+          "required_review_thread_resolution": true,
+          "required_reviewers": []
+        },
+        "type": "pull_request"
+      },
+      {
+        "parameters": {
+          "do_not_enforce_on_create": false,
+          "required_status_checks": [
+            {
+              "context": "Assurance (ubuntu-latest)"
+            },
+            {
+              "context": "Assurance (macos-latest)"
+            },
+            {
+              "context": "Assurance (windows-latest)"
+            },
+            {
+              "context": "analyze"
+            },
+            {
+              "context": "lint"
+            },
+            {
+              "context": "codecov/patch"
+            }
+          ],
+          "strict_required_status_checks_policy": true
+        },
+        "type": "required_status_checks"
+      }
+    ],
+    "source": "edithatogo/archive-govt-nz",
+    "source_type": "Repository",
+    "target": "branch",
+    "updated_at": "2026-09-03T19:14:42.593+10:00"
+  },
+  "source_sha256": {
+    "actions/artifacts/9970365066": "89e94b2b4a12543e30ba6c31fabe1b7f66f81b533ee7c4ce4d3cce59a884a6eb",
+    "actions/runs/33968609350": "a22dcfa68715738cc77c0d7935340970ef1556f44f97fd776041df227bfce2c5",
+    "code-scanning/alerts?state=open&per_page=100": "cf1cbb66a638b4860a516671fb74850e6ccf787fe6c4c8d29e9c04efe880bd05",
+    "dependabot/alerts?state=open&per_page=100": "cf1cbb66a638b4860a516671fb74850e6ccf787fe6c4c8d29e9c04efe880bd05",
+    "rulesets": "72c7918ddc9e4d48e78ce18eeafa039680b318cac4aee3bd03aedb6465efb5a0",
+    "rulesets/22180861": "722f9795bc7afcc3ef522fcaa0d4556b141fd0966442bd62e1f8991267ac2bbb",
+    "secret-scanning/alerts?state=open&per_page=100": "cf1cbb66a638b4860a516671fb74850e6ccf787fe6c4c8d29e9c04efe880bd05"
+  },
+  "status": "passed",
+  "target_commit": "e015a059c88e605dd43b6127d1e7a9d81d37f574"
+}
