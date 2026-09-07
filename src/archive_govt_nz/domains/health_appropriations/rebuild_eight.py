@@ -204,6 +204,17 @@ def _completion(
 
 def verify_eight(root: Path, store: Path, pin: str) -> dict[str, Any]:
     """Verify the pinned completed eight-stage run without producing new files."""
+    try:
+        result = _verify_eight(root, store, pin)
+    except Exception as error:  # noqa: BLE001 -- read-only protocol redaction boundary.
+        message = "eight_stage_verification_failed:" + type(error).__name__
+        raise ValueError(message) from None
+    else:
+        return result
+
+
+def _verify_eight(root: Path, store: Path, pin: str) -> dict[str, Any]:
+    """Validate retained state inside the public exception-redaction boundary."""
     require(not root.is_symlink() and legacy._hash(root / "MANIFEST.json") == pin)
     require({p.name for p in root.iterdir()} == {*STAGES, "PLAN.json", "MANIFEST.json"})
     plan = legacy._read(root / "PLAN.json")
