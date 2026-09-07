@@ -222,3 +222,21 @@ def test_validation_wrappers_use_the_verified_parallel_lane() -> None:
     for wrapper in (shell, powershell):
         assert "--pytest-workers auto" in wrapper
         assert "--pytest-distribution loadscope" in wrapper
+
+
+def test_run_command_kills_process_group_on_timeout(monkeypatch: pytest.MonkeyPatch) -> None:
+    """A timed-out stage terminates its isolated process group and returns 124."""
+    calls: list[tuple[int, int]] = []
+
+    class TimedOutProcess:
+        pid = 4242
+
+        def wait(self, *, timeout: int | None = None) -> int:
+            if timeout is not None:
+                raise subprocess.TimeoutExpired(("stage",), timeout)
+            return -9
+
+    monkeypatch.setattr("archive_govt_nz.assurance.subprocess.Popen", lambda *a, **k: TimedOutProcess())
+    monkeypatch.setattr("archive_govt_nz.assurance.os.killpg", lambda pid, sig: calls.append((pid, sig)))
+    assert run_command(("stage",)) == 124
+    assert calls and calls[0][0] == 4242
