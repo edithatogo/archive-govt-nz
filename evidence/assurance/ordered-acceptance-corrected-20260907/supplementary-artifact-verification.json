@@ -1,0 +1,1030 @@
+{
+  "artifacts": [
+    {
+      "artifact_id": 10003761533,
+      "artifact_name": "legislation-integrity-discovery-34081180231-1",
+      "execution_receipt": {
+        "command": [
+          "uv",
+          "run",
+          "--locked",
+          "python",
+          "tools/mutation_legislation_discovery.py"
+        ],
+        "directory_output": false,
+        "exit_code": 0,
+        "files": [
+          {
+            "name": "execution.log",
+            "sha256": "290eb869582aee3b9ca44ffbc0c09cdbf47231df76266594da046543186bcab4",
+            "size_bytes": 444
+          }
+        ],
+        "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+        "publication_performed": false,
+        "python": "3.14.7 (main, Aug  6 2026, 02:19:46) [GCC 13.3.0]",
+        "run_attempt": "1",
+        "run_id": "34081180231",
+        "schema_version": "archive-govt-nz.supplementary-hosted-assurance/v1",
+        "target_commit": "3c8c8425d5c57f6a8ceee8e0a4c1c416b32c9f28"
+      },
+      "execution_receipt_sha256": "df1adcd095a0bea943738fd455fb9cdb6b90e9a298a1e7c6308cd923c91c96c1",
+      "expanded_bytes": 1127,
+      "expires_at": "2026-09-21T03:55:38Z",
+      "files_verified": 1,
+      "status": "verified",
+      "suite": "discovery",
+      "zip_bytes": 949,
+      "zip_sha256": "5f71bf0e0cefe0edba365a1557daf85d0636a12226c3ad3fe506f9f5254a2b95"
+    },
+    {
+      "artifact_id": 10003782883,
+      "artifact_name": "legislation-integrity-donor-bundle-34081180231-1",
+      "execution_receipt": {
+        "command": [
+          "uv",
+          "run",
+          "--locked",
+          "python",
+          "tools/mutation_legislation_donor_bundle.py"
+        ],
+        "directory_output": false,
+        "exit_code": 0,
+        "files": [
+          {
+            "name": "execution.log",
+            "sha256": "eb8357028927dff1645c294b6b93b4ec34fc684d920a3bbafc4e6555b6d40aab",
+            "size_bytes": 472
+          }
+        ],
+        "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+        "publication_performed": false,
+        "python": "3.14.7 (main, Aug  6 2026, 02:19:46) [GCC 13.3.0]",
+        "run_attempt": "1",
+        "run_id": "34081180231",
+        "schema_version": "archive-govt-nz.supplementary-hosted-assurance/v1",
+        "target_commit": "3c8c8425d5c57f6a8ceee8e0a4c1c416b32c9f28"
+      },
+      "execution_receipt_sha256": "ea128ec3c397fb7c4fa50519e711f98991ea0f61afe1347aa054f38c072b0586",
+      "expanded_bytes": 1158,
+      "expires_at": "2026-09-21T03:56:54Z",
+      "files_verified": 1,
+      "status": "verified",
+      "suite": "donor-bundle",
+      "zip_bytes": 906,
+      "zip_sha256": "71d47b07d46a321996e5774dce1497df999c16021a25b99853adbd57b4eb5d9b"
+    },
+    {
+      "artifact_id": 10003751307,
+      "artifact_name": "legislation-integrity-durable-state-34081180231-1",
+      "execution_receipt": {
+        "command": [
+          "uv",
+          "run",
+          "--locked",
+          "python",
+          "tests/tools/run_legislation_durable_mutations.py",
+          "/home/runner/work/_temp/supplementary-mutants"
+        ],
+        "directory_output": true,
+        "exit_code": 0,
+        "files": [
+          {
+            "name": "baseline.log",
+            "sha256": "dcee8e9ff04b6e3d8b2aaa0aaa4812f6e518a558671d6e5c62187278cbe2f68c",
+            "size_bytes": 537
+          },
+          {
+            "name": "execution.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "size_bytes": 0
+          },
+          {
+            "name": "mutant-00.log",
+            "sha256": "e3c414c68a2570c97d414fbfc7c3e4d6d56e1662c71c51e908e85729c7d44c73",
+            "size_bytes": 1321
+          },
+          {
+            "name": "mutant-01.log",
+            "sha256": "917c5734402d0db4f58c16fdd6ad1a3c617de781a224fd8bcc61948278d59620",
+            "size_bytes": 2297
+          },
+          {
+            "name": "mutant-02.log",
+            "sha256": "3612d47da35327ef0d2cb2d4786b0e6c17708764a0df7916144048054bc3ea41",
+            "size_bytes": 2199
+          },
+          {
+            "name": "mutant-03.log",
+            "sha256": "c84ff5d0aa6e5bded4c5b780e5ce60984e3dd8c0bcfb4f2d94a89b933bcdd7fa",
+            "size_bytes": 2016
+          },
+          {
+            "name": "mutant-04.log",
+            "sha256": "8b11901f10a57b0ff17b62a8170935b00fcfb6f204d72632010933c21a617103",
+            "size_bytes": 2673
+          },
+          {
+            "name": "mutant-05.log",
+            "sha256": "e55b08489e133d7690eeacd3c49fdb492f693e4b208073f32a9b688bb02c0c50",
+            "size_bytes": 2220
+          },
+          {
+            "name": "mutant-06.log",
+            "sha256": "fc86b389eb4e8e3cbe980f2a314fa7f87c24a5d89d51f46563db191e89890044",
+            "size_bytes": 2201
+          },
+          {
+            "name": "mutant-07.log",
+            "sha256": "0d5945383cdde68285e859d95dfefbe90c3b93564b9f316be799c01c734f8d8b",
+            "size_bytes": 2361
+          },
+          {
+            "name": "mutant-08.log",
+            "sha256": "a18ee3df9a817037a4ba2decee61bcd1615911e48728e861d6cf4be7987b20f0",
+            "size_bytes": 1890
+          },
+          {
+            "name": "mutant-09.log",
+            "sha256": "8a7fd37e3de78706e9fcf41742f1af2cf07b6ca0ed6e56d4a28822318f1a5b66",
+            "size_bytes": 3591
+          },
+          {
+            "name": "mutant-10.log",
+            "sha256": "75306a9f48ccb279e20c3964930890db06d2f04d847ef10201436192bbaa6678",
+            "size_bytes": 1597
+          },
+          {
+            "name": "mutant-11.log",
+            "sha256": "581869ce54f7737897e6cf9a96a0a7bce4a4d704460e182ab57e859288073e08",
+            "size_bytes": 1604
+          },
+          {
+            "name": "mutant-12.log",
+            "sha256": "969001bc897ee594b9b09d6d0c16d5b19eb8c046a08f964ba09bafcb87b7ef0f",
+            "size_bytes": 3136
+          },
+          {
+            "name": "mutant-13.log",
+            "sha256": "d3ffb0622399e68f1ea30995e3d8f52441f18db975f9c404ded15af431e1a6d3",
+            "size_bytes": 3136
+          },
+          {
+            "name": "mutant-14.log",
+            "sha256": "674d65e07c3be6b7007a42e02f0bcce6f14ea1eb3f3d7cd50e71349958666235",
+            "size_bytes": 3582
+          },
+          {
+            "name": "mutant-15.log",
+            "sha256": "88caeb335fe46e4c256ee26a2033f3e2f10041fe0cb89428141546ac6e4d20de",
+            "size_bytes": 3588
+          },
+          {
+            "name": "mutant-16.log",
+            "sha256": "1f930701f3cd626b300a2933f032f5247e54a188950fd050c8171b44e7be6c10",
+            "size_bytes": 3114
+          },
+          {
+            "name": "mutant-17.log",
+            "sha256": "5b4a4378b1df57f3c403b09d3e6823e47dfde338834a94f218dcd23c7b81e215",
+            "size_bytes": 3153
+          },
+          {
+            "name": "mutant-18.log",
+            "sha256": "281edc0e8bb7bbdfd7415adc25ee3577bb6cbd94bbd3792c9a0419d4bbe62f34",
+            "size_bytes": 3130
+          },
+          {
+            "name": "mutant-19.log",
+            "sha256": "3274ad2e2890f0e619e172410400fe8c8da5793bcc888a340227d42692afe0b9",
+            "size_bytes": 3340
+          },
+          {
+            "name": "mutant-20.log",
+            "sha256": "c12005544a5384a1084c6ae0cc9c467008ac00884880036586084019669192ed",
+            "size_bytes": 3314
+          },
+          {
+            "name": "mutant-21.log",
+            "sha256": "14299939205f442fed98f2c74ad87fb03afb77faaf9cb0598a1581c142045c81",
+            "size_bytes": 2855
+          },
+          {
+            "name": "mutant-22.log",
+            "sha256": "52a46ea3aafd53b51ba6300eb21e4148eb0698e80984f868f83469cc1cb7bb67",
+            "size_bytes": 1766
+          },
+          {
+            "name": "mutant-23.log",
+            "sha256": "ae5a9ad58b047e300e317a633a18e6ca0f52e35cd22d49f8353349a82a2934c1",
+            "size_bytes": 1987
+          },
+          {
+            "name": "mutant-24.log",
+            "sha256": "28d9179f4c531f764127b2f2440e2873957f1844d3027f17fbbe8b0a4e488417",
+            "size_bytes": 1293
+          },
+          {
+            "name": "mutant-25.log",
+            "sha256": "8f8596f8dccbe7ca1eb532246f0fccc5613cbef5fa6235ff63d263dfa03e1299",
+            "size_bytes": 1942
+          },
+          {
+            "name": "receipt.json",
+            "sha256": "28bd247d04d23a42536ceaf62a9e3a69f6a5802972b0b3cd758144ead64d21de",
+            "size_bytes": 4740
+          }
+        ],
+        "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+        "publication_performed": false,
+        "python": "3.14.7 (main, Aug  6 2026, 02:19:46) [GCC 13.3.0]",
+        "run_attempt": "1",
+        "run_id": "34081180231",
+        "schema_version": "archive-govt-nz.supplementary-hosted-assurance/v1",
+        "target_commit": "3c8c8425d5c57f6a8ceee8e0a4c1c416b32c9f28"
+      },
+      "execution_receipt_sha256": "163abebae19ef7821c873c54786d4117a33781c8a348ce71dc515bf416128d36",
+      "expanded_bytes": 75606,
+      "expires_at": "2026-09-21T03:55:01Z",
+      "files_verified": 29,
+      "status": "verified",
+      "suite": "durable-state",
+      "zip_bytes": 30209,
+      "zip_sha256": "7440ba5c89bde64c498d6adcfe650fa6e9933c4fb7ea719d9f0d3bba829297bb"
+    },
+    {
+      "artifact_id": 10003780512,
+      "artifact_name": "legislation-integrity-evidence-index-34081180231-1",
+      "execution_receipt": {
+        "command": [
+          "uv",
+          "run",
+          "--locked",
+          "python",
+          "tools/mutation_legislation_evidence_index.py"
+        ],
+        "directory_output": false,
+        "exit_code": 0,
+        "files": [
+          {
+            "name": "execution.log",
+            "sha256": "2bf786341c7013a6be11470661a037d1f895030ec2e09a5d0bf5482199f22281",
+            "size_bytes": 528
+          }
+        ],
+        "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+        "publication_performed": false,
+        "python": "3.14.7 (main, Aug  6 2026, 02:19:46) [GCC 13.3.0]",
+        "run_attempt": "1",
+        "run_id": "34081180231",
+        "schema_version": "archive-govt-nz.supplementary-hosted-assurance/v1",
+        "target_commit": "3c8c8425d5c57f6a8ceee8e0a4c1c416b32c9f28"
+      },
+      "execution_receipt_sha256": "af13bde79f5eab88654a11e6a5a3569ae5cb578c2a459ca6b6282dccce2a0944",
+      "expanded_bytes": 1216,
+      "expires_at": "2026-09-21T03:56:45Z",
+      "files_verified": 1,
+      "status": "verified",
+      "suite": "evidence-index",
+      "zip_bytes": 937,
+      "zip_sha256": "6f46248a18def51554e36979926c1978ad5e3aa3fe3dfccf0934e5cebd0776a4"
+    },
+    {
+      "artifact_id": 10003770769,
+      "artifact_name": "legislation-integrity-parent-state-34081180231-1",
+      "execution_receipt": {
+        "command": [
+          "uv",
+          "run",
+          "--locked",
+          "python",
+          "tests/tools/run_legislation_parent_state_mutations.py",
+          "/home/runner/work/_temp/supplementary-mutants"
+        ],
+        "directory_output": true,
+        "exit_code": 0,
+        "files": [
+          {
+            "name": "baseline.log",
+            "sha256": "eb6427219d7ec8ba8c7b7031a2b0629554242bd103a6fced934827813c8ab612",
+            "size_bytes": 180
+          },
+          {
+            "name": "execution.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "size_bytes": 0
+          },
+          {
+            "name": "mutant-00.log",
+            "sha256": "0034de7cae488bb977def559f72a6a44b1eee597a7fcbeb17195293a3b013a47",
+            "size_bytes": 2836
+          },
+          {
+            "name": "mutant-01.log",
+            "sha256": "9db8441cbfafcdb4ff424620ae543f573828219bc381192a6d866d7aa9c7ee2c",
+            "size_bytes": 1474
+          },
+          {
+            "name": "mutant-02.log",
+            "sha256": "ce7287909f64135040c0cfbfe62f09bf8a2ffd4ad76b24f8962914ddecdecf0f",
+            "size_bytes": 907
+          },
+          {
+            "name": "mutant-03.log",
+            "sha256": "d40de3f36433c20b6d53bd2650c0b29364a2580182c2a69ac6a4bbe302dfeb31",
+            "size_bytes": 2943
+          },
+          {
+            "name": "mutant-04.log",
+            "sha256": "84f3eb5ef2d46d9701a09d642db1f132b737ed9b8e45357d6aae382c0f3914fc",
+            "size_bytes": 1221
+          },
+          {
+            "name": "mutant-05.log",
+            "sha256": "55b06e8358861886831a981cb34edabfcf1bdb4a0124a67a0005fe93090a1120",
+            "size_bytes": 2865
+          },
+          {
+            "name": "mutant-06.log",
+            "sha256": "8e631408a7d114ab369f7dbaa82d3ea45276fecd0fe140e078312686408d76b2",
+            "size_bytes": 1453
+          },
+          {
+            "name": "mutant-07.log",
+            "sha256": "0acd9b10908f1a604a00587fcd8c90c240c41624c73b85f538f4b220ab8ef6ec",
+            "size_bytes": 1600
+          },
+          {
+            "name": "mutant-08.log",
+            "sha256": "7f161e42f67af23f9afbb14cdc54a6e855e3e0227a180d9cb7552cbf6f6d22d2",
+            "size_bytes": 2884
+          },
+          {
+            "name": "mutant-09.log",
+            "sha256": "ba3dd6e96fbda807a5861d510469567d29f74262177979f25e77bae1dcf9d664",
+            "size_bytes": 1700
+          },
+          {
+            "name": "mutant-10.log",
+            "sha256": "f4d7771c01e6c5f41d69681e860bcd6cb5aa68a4aae3343ab1580861824c5ba5",
+            "size_bytes": 7134
+          },
+          {
+            "name": "mutant-11.log",
+            "sha256": "acf6ab7075f0714f6fb8345cb6faa0c8acde9a754d0dc8d7329b89ad369d5ef4",
+            "size_bytes": 2323
+          },
+          {
+            "name": "mutant-12.log",
+            "sha256": "abe5512ba8c449e068d25c6557f484692c1e04a519ad8d4af251c54896e1a77b",
+            "size_bytes": 2257
+          },
+          {
+            "name": "mutant-13.log",
+            "sha256": "f5ff6524098d7a2ed758b6655cb781f721c4072d4fd030ce42c9a13a4f380b7e",
+            "size_bytes": 3030
+          },
+          {
+            "name": "mutant-14.log",
+            "sha256": "dbfc3c9e0f44aafe14e586a96e27e9ea6f12f8ed05aa559e8702b561ee82be79",
+            "size_bytes": 1038
+          },
+          {
+            "name": "mutant-15.log",
+            "sha256": "bb66f12121e671a5d8bb9cd0c767e1aa3aa57333c830256e8427123622175dc8",
+            "size_bytes": 2365
+          },
+          {
+            "name": "mutant-16.log",
+            "sha256": "ca91226f60cfaea9b385bf835c11842b969039a7af33f35e4b28f1bfa3a9f139",
+            "size_bytes": 2431
+          },
+          {
+            "name": "mutant-17.log",
+            "sha256": "99236fc504b161af1179cc19c577024d205aee9ec57f13c9976008f56e0f8431",
+            "size_bytes": 1179
+          },
+          {
+            "name": "mutant-18.log",
+            "sha256": "5f76c78cd25a58b237056b57eb159c7f9fda1141e461154196dd60ce86e71caa",
+            "size_bytes": 1444
+          },
+          {
+            "name": "mutant-19.log",
+            "sha256": "099e25d914788393f3731a5006ccc1f8ed644b9c923239321d7a9436fde8e66e",
+            "size_bytes": 1281
+          },
+          {
+            "name": "mutant-20.log",
+            "sha256": "8e97981d40d8db0be2cefd4964d8c6ef8f8b8c9eaa5cbd3fef1d91d8032ffda8",
+            "size_bytes": 2152
+          },
+          {
+            "name": "mutant-21.log",
+            "sha256": "4a69d96fdc577b443a29833026e696fcd4b53b1e59ccfdee56ba3d1245dd46e8",
+            "size_bytes": 2083
+          },
+          {
+            "name": "mutant-22.log",
+            "sha256": "088d91b016b5d7efe3d0e85b43923c641ee118185d59c2df343269c5785eded3",
+            "size_bytes": 2168
+          },
+          {
+            "name": "mutant-23.log",
+            "sha256": "73b7d789b24cf5918267f75b9a5be198ca84a11e5bfccfde58284155b00153df",
+            "size_bytes": 1707
+          },
+          {
+            "name": "mutant-24.log",
+            "sha256": "6ad52d0b5fbfe422db401cee9b2666512023a01b518264aa8fc25aeb85c4c78d",
+            "size_bytes": 1438
+          },
+          {
+            "name": "mutant-25.log",
+            "sha256": "3d739e1d2f8627d6075816e107978dc5adc456ee47808a280d3ca889910ba6a4",
+            "size_bytes": 1713
+          },
+          {
+            "name": "mutant-26.log",
+            "sha256": "7d10846ced35973e35dfc3d885c573ac261e39ea85c76ce2858c1c6b47fd6ca3",
+            "size_bytes": 3958
+          },
+          {
+            "name": "mutant-27.log",
+            "sha256": "882a75dd31e49de933d3b86f5f3e8fec5992cc3d087a9bd975a8dff1690e76ca",
+            "size_bytes": 1619
+          },
+          {
+            "name": "mutant-28.log",
+            "sha256": "b41558d659fc093ae9ad3b9b34a967e1aa6cedfd764d2c7c65922f84e35dcca9",
+            "size_bytes": 1352
+          },
+          {
+            "name": "mutant-29.log",
+            "sha256": "79f5e155cbd12c14b609457cbd0aef244b93381c92db89d5a8eb2df1d7a0d98b",
+            "size_bytes": 1891
+          },
+          {
+            "name": "mutant-30.log",
+            "sha256": "6841391c5121e1fe8c3be1adecd2b719a32aee39290bc88f7c25557923ce84c4",
+            "size_bytes": 2132
+          },
+          {
+            "name": "mutant-31.log",
+            "sha256": "5f5195f8ec1646f11b074b8f1a586435044fb52861b60141aac536569f24634c",
+            "size_bytes": 2439
+          },
+          {
+            "name": "mutant-32.log",
+            "sha256": "ce88e801fffd0a2d27ff26e2066ad5baf08abd6bf2ac636edd57478045eddef3",
+            "size_bytes": 2200
+          },
+          {
+            "name": "mutant-33.log",
+            "sha256": "d7b9febc534bb58837841f362cfe33ce5d3e3c82a18dbee768587d21d42806e0",
+            "size_bytes": 2102
+          },
+          {
+            "name": "mutant-34.log",
+            "sha256": "877dc94bbf33deeec4f980040836eaa767958f2aa1e5a8006f37a1b8e72f9e20",
+            "size_bytes": 1682
+          },
+          {
+            "name": "mutant-35.log",
+            "sha256": "a45026bbce9b5030d55b5a96076c3267073a8f20e93d86117e87576820dcd2ad",
+            "size_bytes": 2009
+          },
+          {
+            "name": "mutant-36.log",
+            "sha256": "12b8c35cd701b8bbef99a447c6e9450b3b6fffc97445912b80a37e0a013848d1",
+            "size_bytes": 2768
+          },
+          {
+            "name": "mutant-37.log",
+            "sha256": "64179c33e8f92d956f85094e8f4c2f584726cc41b5671a6b6b2ed6e0d95b7db3",
+            "size_bytes": 1486
+          },
+          {
+            "name": "mutant-38.log",
+            "sha256": "0c5d9b4f68c889180316a0c311a66d645ace06b3b3eabbe5b5631e8e68098082",
+            "size_bytes": 1505
+          },
+          {
+            "name": "mutant-39.log",
+            "sha256": "1c1422eff2e5d9c7631222552c336f489bd9a36d4009ec6768833e590939dad8",
+            "size_bytes": 1377
+          },
+          {
+            "name": "mutant-40.log",
+            "sha256": "2a565b5f7002085bfb6ca1b074efa29e22eebdea768e300609d2b9d9c95a2be7",
+            "size_bytes": 1398
+          },
+          {
+            "name": "mutant-41.log",
+            "sha256": "cc8fc7520cc97b2d5a157fc68f16a5d15bcf7d2c86a72fd4c45e84e76acde47b",
+            "size_bytes": 2341
+          },
+          {
+            "name": "mutant-42.log",
+            "sha256": "96cb55028a5d1c1c1c85e794ecc8b9b44e6ad37d7f4a7cbcab0e9725c08f0086",
+            "size_bytes": 2291
+          },
+          {
+            "name": "mutant-43.log",
+            "sha256": "7146ec988aea18db43f7f7cc8dccd4401285d73a1a7d994a6e870fb2b9bf395f",
+            "size_bytes": 2366
+          },
+          {
+            "name": "mutant-44.log",
+            "sha256": "9b2232e33786af4529e9256428d69dfa0cd53887c27ea34232ce78806f768a50",
+            "size_bytes": 2786
+          },
+          {
+            "name": "mutant-45.log",
+            "sha256": "48f447433525acd76763cf8996bbeb767a4566a6cb2371d57d88ac2344b3b930",
+            "size_bytes": 3127
+          },
+          {
+            "name": "receipt.json",
+            "sha256": "6bc30cacfb5403c642d4b81ed48faafbec2d1b22504b7c7dc3dc96038f646516",
+            "size_bytes": 8316
+          }
+        ],
+        "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+        "publication_performed": false,
+        "python": "3.14.7 (main, Aug  6 2026, 02:19:46) [GCC 13.3.0]",
+        "run_attempt": "1",
+        "run_id": "34081180231",
+        "schema_version": "archive-govt-nz.supplementary-hosted-assurance/v1",
+        "target_commit": "3c8c8425d5c57f6a8ceee8e0a4c1c416b32c9f28"
+      },
+      "execution_receipt_sha256": "ee781e656dde61fab33786fd66ee5c3855c1b52253117c318b74e7b9b1aba379",
+      "expanded_bytes": 115038,
+      "expires_at": "2026-09-21T03:56:10Z",
+      "files_verified": 49,
+      "status": "verified",
+      "suite": "parent-state",
+      "zip_bytes": 45081,
+      "zip_sha256": "a90e4e92329771a0d84381aa48b040f0e552d931cde18045c4cd02ed3b2f86dc"
+    },
+    {
+      "artifact_id": 10003785208,
+      "artifact_name": "legislation-integrity-release-correction-34081180231-1",
+      "execution_receipt": {
+        "command": [
+          "uv",
+          "run",
+          "--locked",
+          "python",
+          "tools/mutation_legislation_release_correction.py"
+        ],
+        "directory_output": false,
+        "exit_code": 0,
+        "files": [
+          {
+            "name": "execution.log",
+            "sha256": "bf680104fd3f60bb87449c66f159264ea452d93752face683506663c03a7b6e7",
+            "size_bytes": 788
+          }
+        ],
+        "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+        "publication_performed": false,
+        "python": "3.14.7 (main, Aug  6 2026, 02:19:46) [GCC 13.3.0]",
+        "run_attempt": "1",
+        "run_id": "34081180231",
+        "schema_version": "archive-govt-nz.supplementary-hosted-assurance/v1",
+        "target_commit": "3c8c8425d5c57f6a8ceee8e0a4c1c416b32c9f28"
+      },
+      "execution_receipt_sha256": "24eab891f3fce13bb7bd4f09aa62682aec53bcc6250c1e01f4752c9329a05aa9",
+      "expanded_bytes": 1480,
+      "expires_at": "2026-09-21T03:57:03Z",
+      "files_verified": 1,
+      "status": "verified",
+      "suite": "release-correction",
+      "zip_bytes": 967,
+      "zip_sha256": "84e7de651a51145815fd22577356c47b02d6df6c85687780293cd3b7a8455597"
+    },
+    {
+      "artifact_id": 10003744539,
+      "artifact_name": "legislation-integrity-seed-registry-34081180231-1",
+      "execution_receipt": {
+        "command": [
+          "uv",
+          "run",
+          "--locked",
+          "python",
+          "tests/tools/run_seed_registry_mutations.py",
+          "/home/runner/work/_temp/supplementary-mutants"
+        ],
+        "directory_output": true,
+        "exit_code": 0,
+        "files": [
+          {
+            "name": "baseline.log",
+            "sha256": "92382fd47641009d9e256fcff27140da6bdbb284ff2be48e8a6521ec83557b78",
+            "size_bytes": 99
+          },
+          {
+            "name": "execution.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "size_bytes": 0
+          },
+          {
+            "name": "mutant-00.log",
+            "sha256": "7f5c11bc261f0322820c7b9430a7e657c1fad3b9ea8e36592551853f09ae745a",
+            "size_bytes": 1624
+          },
+          {
+            "name": "mutant-01.log",
+            "sha256": "da6c2414fde76b30b66326f8c69a2c4d39acff4e47c5894501cd8da1699af036",
+            "size_bytes": 1822
+          },
+          {
+            "name": "mutant-02.log",
+            "sha256": "2a761d7c9aae908577bc24ab15cb207fe8a105698fa99a159efe5d06e2f05106",
+            "size_bytes": 10136
+          },
+          {
+            "name": "mutant-03.log",
+            "sha256": "7ad724ccbfd472d5e32af1c14be1700c276e52e9ca84535f1ff266a9a118bfcb",
+            "size_bytes": 3450
+          },
+          {
+            "name": "mutant-04.log",
+            "sha256": "5ccb6b590c6199bb6a7576a877dd50b17f7f51e5e37edc37d2f328d1e773173d",
+            "size_bytes": 1681
+          },
+          {
+            "name": "mutant-05.log",
+            "sha256": "8bdd8835e139c0118dccb9e239fb2804e64e1ad7ba5dd0293a68deb893908460",
+            "size_bytes": 1185
+          },
+          {
+            "name": "mutant-06.log",
+            "sha256": "4cf4d3cdeb2bc08ef23e65f7512628b3f6a4b972007b9a2eef29c2c8811b8a7b",
+            "size_bytes": 1181
+          },
+          {
+            "name": "mutant-07.log",
+            "sha256": "4498e083dff5c44987d27a01459a3861fe2756e4a6a432a966081be75ffa145b",
+            "size_bytes": 2055
+          },
+          {
+            "name": "mutant-08.log",
+            "sha256": "4069cb4e6b8eca26ec478cf4a19333a9f0fa5e8cd025fa72f84d69a5f0f20be6",
+            "size_bytes": 8487
+          },
+          {
+            "name": "mutant-09.log",
+            "sha256": "3c7db03675aea686a7cfea09140928248a7f0a49fe0bd7018c10a2b13ecc1a30",
+            "size_bytes": 2378
+          },
+          {
+            "name": "mutant-10.log",
+            "sha256": "c861568ac86506a9f7ade456554be63ce6c0a21ddaaece61b31afd0f1fc51a56",
+            "size_bytes": 1179
+          },
+          {
+            "name": "mutant-11.log",
+            "sha256": "ba327ecf217646e9fee621e53937f374cdcf55991a43ff3a765bb0ab4c544baa",
+            "size_bytes": 2993
+          },
+          {
+            "name": "mutant-12.log",
+            "sha256": "f2e3215d988189db69576bed21d9c77c429eaf2a90dab7a8a40e30b501fb81f6",
+            "size_bytes": 27215
+          },
+          {
+            "name": "mutant-13.log",
+            "sha256": "38dac147cc19eb15362fba0aedaf4a279f73935f26401a9f956b3711864bab3f",
+            "size_bytes": 3033
+          },
+          {
+            "name": "receipt.json",
+            "sha256": "b53530944ac3d5b1211c2d8bc2eb612725da6aa68085b1287bcdde948caa4e3a",
+            "size_bytes": 2755
+          }
+        ],
+        "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+        "publication_performed": false,
+        "python": "3.14.7 (main, Aug  6 2026, 02:19:46) [GCC 13.3.0]",
+        "run_attempt": "1",
+        "run_id": "34081180231",
+        "schema_version": "archive-govt-nz.supplementary-hosted-assurance/v1",
+        "target_commit": "3c8c8425d5c57f6a8ceee8e0a4c1c416b32c9f28"
+      },
+      "execution_receipt_sha256": "b3950042e0befa8c4a5ac86beadcc35b36342b21904884743fa314a4f2fdf3bf",
+      "expanded_bytes": 74455,
+      "expires_at": "2026-09-21T03:54:36Z",
+      "files_verified": 17,
+      "status": "verified",
+      "suite": "seed-registry",
+      "zip_bytes": 15360,
+      "zip_sha256": "444a1b97c5426ce40bdcd8bc376be8364aba15cc28ab1d653384a64da4e7a3ff"
+    },
+    {
+      "artifact_id": 10003755955,
+      "artifact_name": "legislation-integrity-source-preflight-34081180231-1",
+      "execution_receipt": {
+        "command": [
+          "uv",
+          "run",
+          "--locked",
+          "python",
+          "tests/tools/run_legislation_source_preflight_mutations.py",
+          "/home/runner/work/_temp/supplementary-mutants"
+        ],
+        "directory_output": true,
+        "exit_code": 0,
+        "files": [
+          {
+            "name": "auth-header.log",
+            "sha256": "1677ccae66c4a50c8c7cfed78a43b9fb8c43b176929572cc4dbec54418317864",
+            "size_bytes": 3406
+          },
+          {
+            "name": "baseline.log",
+            "sha256": "4573c10fb03e0bf6a9db77d262262739e1de255f99ff363fc9d885a43b8ad03d",
+            "size_bytes": 99
+          },
+          {
+            "name": "cas-count.log",
+            "sha256": "76606086cc2c3121875ca9aac00760e68002c6714b2adab60495a19f7c69cdd1",
+            "size_bytes": 1584
+          },
+          {
+            "name": "cas-size.log",
+            "sha256": "04cb681308bcf2c007d870f50cd9e6285d71c651130582b07869ff9c49254e9d",
+            "size_bytes": 1574
+          },
+          {
+            "name": "execution.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "size_bytes": 0
+          },
+          {
+            "name": "missing-credential.log",
+            "sha256": "0426b11b3024f6f7b57f3873c2458ac88731b23baf11f06d65b332b6bcac13a3",
+            "size_bytes": 2569
+          },
+          {
+            "name": "receipt.json",
+            "sha256": "c52a2f72f0c638ca9c10b0564ec292eed413090ec5c52da77300eb11d17ee1cd",
+            "size_bytes": 1529
+          },
+          {
+            "name": "redirect-boundary.log",
+            "sha256": "f0c4515000c656b80bf8ef92f8a11f6ac7afe846534ee4c643fa0ffacf7e8d2d",
+            "size_bytes": 3132
+          },
+          {
+            "name": "state-fixity.log",
+            "sha256": "903dbf988edd80b106c4c84be9c88d1efc7fa1a1b7976e2e3e62af2de90e6aaa",
+            "size_bytes": 1214
+          },
+          {
+            "name": "state-size.log",
+            "sha256": "969d407af1bb0cd1f2666f143b771c4b7a695316a4cbdc4cdc48550734779360",
+            "size_bytes": 1581
+          },
+          {
+            "name": "status-acceptance.log",
+            "sha256": "b267d1a908a456b79c74575e572515438f9b527d6f4881566b9672b4e49674fe",
+            "size_bytes": 1935
+          }
+        ],
+        "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+        "publication_performed": false,
+        "python": "3.14.7 (main, Aug  6 2026, 02:19:46) [GCC 13.3.0]",
+        "run_attempt": "1",
+        "run_id": "34081180231",
+        "schema_version": "archive-govt-nz.supplementary-hosted-assurance/v1",
+        "target_commit": "3c8c8425d5c57f6a8ceee8e0a4c1c416b32c9f28"
+      },
+      "execution_receipt_sha256": "76744bc03586bba75bbdc354d4c267a27285c89d780e4927f76ee1497e1f4ec3",
+      "expanded_bytes": 20930,
+      "expires_at": "2026-09-21T03:55:18Z",
+      "files_verified": 11,
+      "status": "verified",
+      "suite": "source-preflight",
+      "zip_bytes": 8573,
+      "zip_sha256": "600e1769ae5c326214b64375147821813fa9abbaf1d884fb0ab81712122ac457"
+    },
+    {
+      "artifact_id": 10003764878,
+      "artifact_name": "legislation-integrity-source-sets-34081180231-1",
+      "execution_receipt": {
+        "command": [
+          "uv",
+          "run",
+          "--locked",
+          "python",
+          "tools/mutation_source_sets.py"
+        ],
+        "directory_output": false,
+        "exit_code": 0,
+        "files": [
+          {
+            "name": "execution.log",
+            "sha256": "c0031ef8998cb1e7627b48a05f26d06dca3cb3a60bbd109af63992833fe6e7ce",
+            "size_bytes": 987
+          }
+        ],
+        "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+        "publication_performed": false,
+        "python": "3.14.7 (main, Aug  6 2026, 02:19:46) [GCC 13.3.0]",
+        "run_attempt": "1",
+        "run_id": "34081180231",
+        "schema_version": "archive-govt-nz.supplementary-hosted-assurance/v1",
+        "target_commit": "3c8c8425d5c57f6a8ceee8e0a4c1c416b32c9f28"
+      },
+      "execution_receipt_sha256": "319d5212343b31cb4b26d8d0f91857bc638fbd0ab02c452321cb26ec9c308292",
+      "expanded_bytes": 1660,
+      "expires_at": "2026-09-21T03:55:50Z",
+      "files_verified": 1,
+      "status": "verified",
+      "suite": "source-sets",
+      "zip_bytes": 985,
+      "zip_sha256": "579216b512d66e2fc013622630ee55afc11442ad42c832ec6e317177174e8344"
+    },
+    {
+      "artifact_id": 10003772548,
+      "artifact_name": "legislation-integrity-zenodo-identity-34081180231-1",
+      "execution_receipt": {
+        "command": [
+          "uv",
+          "run",
+          "--locked",
+          "python",
+          "tools/mutation_zenodo_identity.py"
+        ],
+        "directory_output": false,
+        "exit_code": 0,
+        "files": [
+          {
+            "name": "execution.log",
+            "sha256": "11577af0418502edb9ddf21daebd7bc38bf348905e164d0e6e6f88ed1ed978ed",
+            "size_bytes": 375
+          }
+        ],
+        "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+        "publication_performed": false,
+        "python": "3.14.7 (main, Aug  6 2026, 02:19:46) [GCC 13.3.0]",
+        "run_attempt": "1",
+        "run_id": "34081180231",
+        "schema_version": "archive-govt-nz.supplementary-hosted-assurance/v1",
+        "target_commit": "3c8c8425d5c57f6a8ceee8e0a4c1c416b32c9f28"
+      },
+      "execution_receipt_sha256": "09fc4e07a4ed462812b292ae04d544765a230392b06de25c182caf3b02fe9b00",
+      "expanded_bytes": 1052,
+      "expires_at": "2026-09-21T03:56:16Z",
+      "files_verified": 1,
+      "status": "verified",
+      "suite": "zenodo-identity",
+      "zip_bytes": 896,
+      "zip_sha256": "9e709901d5d01f57b75c09f65516d84ae02baad6c45b2b6fb58679323a88d0c6"
+    },
+    {
+      "artifact_id": 10003772249,
+      "artifact_name": "legislation-integrity-zenodo-publication-34081180231-1",
+      "execution_receipt": {
+        "command": [
+          "uv",
+          "run",
+          "--locked",
+          "python",
+          "tools/mutation_zenodo_publication.py"
+        ],
+        "directory_output": false,
+        "exit_code": 0,
+        "files": [
+          {
+            "name": "execution.log",
+            "sha256": "bc446a5029409aedc234e1d03256cead75f596a9ffaba279c87c6b415b4cab10",
+            "size_bytes": 351
+          }
+        ],
+        "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+        "publication_performed": false,
+        "python": "3.14.7 (main, Aug  6 2026, 02:19:46) [GCC 13.3.0]",
+        "run_attempt": "1",
+        "run_id": "34081180231",
+        "schema_version": "archive-govt-nz.supplementary-hosted-assurance/v1",
+        "target_commit": "3c8c8425d5c57f6a8ceee8e0a4c1c416b32c9f28"
+      },
+      "execution_receipt_sha256": "11d6585d28313844e84517052ea9c056c08b069343bc5f7744509657648550cf",
+      "expanded_bytes": 1031,
+      "expires_at": "2026-09-21T03:56:15Z",
+      "files_verified": 1,
+      "status": "verified",
+      "suite": "zenodo-publication",
+      "zip_bytes": 887,
+      "zip_sha256": "7ba6b801b56c4926edf43eb797d3e8220630e480d0dcba75e387d8777125126f"
+    }
+  ],
+  "bounds": {
+    "expanded_bytes_each": 27262976,
+    "members_each": 101,
+    "parallel_downloads": 3,
+    "request_timeout_seconds": 120,
+    "zip_bytes_each": 26214400
+  },
+  "execution_context": "local_read_only_verifier",
+  "files_verified": 113,
+  "hosted_execution_event": "pull_request",
+  "jobs": [
+    {
+      "conclusion": "success",
+      "head_sha": "3c8c8425d5c57f6a8ceee8e0a4c1c416b32c9f28",
+      "id": 101616606880,
+      "name": "Supplemental (zenodo-identity)",
+      "status": "completed"
+    },
+    {
+      "conclusion": "success",
+      "head_sha": "3c8c8425d5c57f6a8ceee8e0a4c1c416b32c9f28",
+      "id": 101616606939,
+      "name": "Supplemental (seed-registry)",
+      "status": "completed"
+    },
+    {
+      "conclusion": "success",
+      "head_sha": "3c8c8425d5c57f6a8ceee8e0a4c1c416b32c9f28",
+      "id": 101616606944,
+      "name": "Supplemental (source-sets)",
+      "status": "completed"
+    },
+    {
+      "conclusion": "success",
+      "head_sha": "3c8c8425d5c57f6a8ceee8e0a4c1c416b32c9f28",
+      "id": 101616606946,
+      "name": "Supplemental (source-preflight)",
+      "status": "completed"
+    },
+    {
+      "conclusion": "success",
+      "head_sha": "3c8c8425d5c57f6a8ceee8e0a4c1c416b32c9f28",
+      "id": 101616606957,
+      "name": "Supplemental (evidence-index)",
+      "status": "completed"
+    },
+    {
+      "conclusion": "success",
+      "head_sha": "3c8c8425d5c57f6a8ceee8e0a4c1c416b32c9f28",
+      "id": 101616606966,
+      "name": "Supplemental (release-correction)",
+      "status": "completed"
+    },
+    {
+      "conclusion": "success",
+      "head_sha": "3c8c8425d5c57f6a8ceee8e0a4c1c416b32c9f28",
+      "id": 101616606986,
+      "name": "Supplemental (parent-state)",
+      "status": "completed"
+    },
+    {
+      "conclusion": "success",
+      "head_sha": "3c8c8425d5c57f6a8ceee8e0a4c1c416b32c9f28",
+      "id": 101616606993,
+      "name": "Supplemental (discovery)",
+      "status": "completed"
+    },
+    {
+      "conclusion": "success",
+      "head_sha": "3c8c8425d5c57f6a8ceee8e0a4c1c416b32c9f28",
+      "id": 101616607046,
+      "name": "Supplemental (donor-bundle)",
+      "status": "completed"
+    },
+    {
+      "conclusion": "success",
+      "head_sha": "3c8c8425d5c57f6a8ceee8e0a4c1c416b32c9f28",
+      "id": 101616607054,
+      "name": "Supplemental (durable-state)",
+      "status": "completed"
+    },
+    {
+      "conclusion": "success",
+      "head_sha": "3c8c8425d5c57f6a8ceee8e0a4c1c416b32c9f28",
+      "id": 101616607100,
+      "name": "Supplemental (zenodo-publication)",
+      "status": "completed"
+    }
+  ],
+  "observed_at": "2026-09-07T03:58:31.790221+00:00",
+  "probe_sha256": "d64b6bf351aabf46fb51806b83bac109c7189ccb2ec5bbd51e343b22c57a2025",
+  "remote_mutations": false,
+  "run_attempt": 1,
+  "run_id": 34081180231,
+  "schema_version": "archive-govt-nz.independent-supplementary-verification/v1",
+  "scope": "Independent ZIP digest and exhaustive execution-receipt file fixity, identities, commands and successful jobs. Does not independently re-execute mutants or certify other PR checks/builds.",
+  "source_sha256": {
+    "artifacts_paginated": "36605fc7c4b73f7895ba3da3ee555995f4108bab3c7961015c89ab4d24aa773b",
+    "jobs_paginated": "9f878c1a7ad0909bf40ab13e456c7411c58826830d5c4802705eeba8d3c7bbd0",
+    "run": "c4462be99a9b221ee88058736543c8f43c210aa4fc257bbffb8a0f2790585f5c"
+  },
+  "status": "passed",
+  "suites_verified": 11,
+  "target_commit": "3c8c8425d5c57f6a8ceee8e0a4c1c416b32c9f28",
+  "zip_bytes": 105750
+}
