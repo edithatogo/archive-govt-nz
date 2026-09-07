@@ -26,6 +26,7 @@ from archive_govt_nz.cli_integrity import (
     verify_cas,
 )
 from archive_govt_nz.core.registry import AgencyRegistry
+from archive_govt_nz.domains.health_appropriations import resume_operations
 from archive_govt_nz.domains.health_appropriations.budget_operations import (
     verify_budget_package,
 )
@@ -71,6 +72,9 @@ app = App(
     name="archive-govt-nz",
     help="Evidence-first archival tooling for New Zealand government data.",
 )
+app.command(resume_operations.cli_plan, name="health-appropriations-plan-resume")
+app.command(resume_operations.cli_resume, name="health-appropriations-resume")
+app.command(resume_operations.cli_verify, name="health-appropriations-verify-resume")
 
 _KNOWN_DERIVATIVES = (
     "parquet_curated_records",
