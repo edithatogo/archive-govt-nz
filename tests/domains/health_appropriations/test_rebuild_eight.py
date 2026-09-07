@@ -14,6 +14,9 @@ from archive_govt_nz.cli import (
     health_appropriations_verify_rebuild,
 )
 from archive_govt_nz.domains.health_appropriations import rebuild, rebuild_eight
+from archive_govt_nz.domains.health_appropriations.fiscal_crown_literals import (
+    SOURCE_URL,
+)
 from archive_govt_nz.object_store import ContentAddressedStore
 
 
@@ -36,6 +39,26 @@ def inputs(root: Path, monkeypatch: pytest.MonkeyPatch) -> tuple[dict[str, Any],
         )
     crown = store.put_bytes(b"direct-crown")
     monkeypatch.setattr(rebuild_eight, "SOURCE_SHA256", crown.sha256)
+    census = root / "crown-receipt.json"
+    census.write_text(
+        json.dumps(
+            {
+                "schema_version": "archive-govt-nz.health-source-census/v1",
+                "record_count": 1,
+                "records": [
+                    {
+                        "source_id": "fiscal_time_series-007",
+                        "object_sha256": crown.sha256,
+                        "url": SOURCE_URL,
+                        "family": "fiscal_time_series",
+                        "title": "Historical fiscal indicators 1972-2025",
+                        "disposition": "captured",
+                        "observed_at": "2026-08-29T09:00:17Z",
+                    }
+                ],
+            }
+        )
+    )
     donor = root / "donor.json"
     donor.write_text(
         json.dumps(
@@ -51,6 +74,8 @@ def inputs(root: Path, monkeypatch: pytest.MonkeyPatch) -> tuple[dict[str, Any],
         hashlib.sha256(donor.read_bytes()).hexdigest(),
         "2026-01-01T00:00:00Z",
         crown.sha256,
+        crown_receipt=census,
+        crown_receipt_sha256=hashlib.sha256(census.read_bytes()).hexdigest(),
     )
     return plan, store_path
 
@@ -117,7 +142,7 @@ def test_orchestration_transactions(  # noqa: C901 -- transaction fault matrix
         return
     result = rebuild_eight.execute_eight(plan, store, root)
     assert [name for name, _ in calls] == list(rebuild_eight.STAGES)
-    assert calls[-1][1] == "2026-08-29T09:00:17+00:00"
+    assert calls[-1][1] == "2026-08-29T09:00:17Z"
     if fault == "extra":
         (root / "extra").touch()
     elif fault == "plan":
@@ -213,7 +238,11 @@ def test_cli_requires_explicit_optin_and_crown_pin(
     )
     assert (
         health_appropriations_rebuild(
-            **args, eight_stage=True, crown_source_sha256=rebuild_eight.SOURCE_SHA256
+            **args,
+            eight_stage=True,
+            crown_source_sha256=rebuild_eight.SOURCE_SHA256,
+            crown_receipt=tmp_path / "crown-receipt.json",
+            crown_receipt_sha256=plan["crown_receipt_sha256"],
         )
         == 0
     )
@@ -226,6 +255,8 @@ def test_cli_requires_explicit_optin_and_crown_pin(
             **args,
             eight_stage=True,
             crown_source_sha256=rebuild_eight.SOURCE_SHA256,
+            crown_receipt=tmp_path / "crown-receipt.json",
+            crown_receipt_sha256=plan["crown_receipt_sha256"],
             dry_run=False,
         )
         == 0
@@ -250,6 +281,71 @@ def test_profiles_are_explicit_and_legacy_unchanged() -> None:
         "hyefu-detail",
         "crown",
     }
+
+
+@pytest.mark.parametrize(
+    "fault", ["pin", "duplicate", "url", "time", "object", "missing"]
+)
+def test_crown_receipt_reverified_before_output(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, fault: str
+) -> None:
+    """Execution rechecks embedded evidence, even after receipt re-pinning."""
+    plan, store = inputs(tmp_path, monkeypatch)
+    value = json.loads(plan["crown_receipt_json"])
+    row = value["records"][0]
+    if fault == "duplicate":
+        value["records"].append(row.copy())
+        value["record_count"] = 2
+    elif fault == "missing":
+        value["records"] = []
+        value["record_count"] = 0
+    elif fault == "url":
+        row["url"] = "https://example.test/other"
+    elif fault == "time":
+        row["observed_at"] = "2030-01-01T00:00:00Z"
+    elif fault == "object":
+        row["object_sha256"] = "0" * 64
+    plan["crown_receipt_json"] = json.dumps(value)
+    plan["crown_receipt_sha256"] = (
+        "0" * 64
+        if fault == "pin"
+        else hashlib.sha256(plan["crown_receipt_json"].encode()).hexdigest()
+    )
+    with pytest.raises(ValueError, match="crown_receipt"):
+        rebuild_eight.execute_eight(plan, store, tmp_path / "output")
+    assert not (tmp_path / "output").exists()
+
+
+def test_crown_cli_requires_receipt_pair_before_output(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Object-only opt-in and stray v1 receipt options cannot launch execution."""
+    plan, store = inputs(tmp_path, monkeypatch)
+    arguments: dict[str, Any] = {
+        "donor_manifest": tmp_path / "donor.json",
+        "store_root": store,
+        "manifest_sha256": plan["legacy_plan"]["donor_manifest_sha256"],
+        "observed_at": "2026-01-01T00:00:00Z",
+        "output_dir": tmp_path / "out",
+        "dry_run": False,
+    }
+    for options in (
+        {"eight_stage": True, "crown_source_sha256": rebuild_eight.SOURCE_SHA256},
+        {
+            "eight_stage": True,
+            "crown_source_sha256": rebuild_eight.SOURCE_SHA256,
+            "crown_receipt": tmp_path / "crown-receipt.json",
+        },
+        {"crown_receipt": tmp_path / "crown-receipt.json"},
+        {"crown_receipt_sha256": plan["crown_receipt_sha256"]},
+    ):
+        assert (
+            health_appropriations_rebuild(
+                **arguments, **cast("dict[str, Any]", options)
+            )
+            == 2
+        )
+        assert not (tmp_path / "out").exists()
 
 
 def test_wrong_schema_fails_before_storage(tmp_path: Path) -> None:

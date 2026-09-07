@@ -9,7 +9,7 @@ import sys
 from collections.abc import Mapping
 from dataclasses import asdict
 from pathlib import Path
-from typing import TYPE_CHECKING, Any, Literal
+from typing import TYPE_CHECKING, Any, Literal, cast
 
 import httpx
 from cyclopts import App
@@ -208,6 +208,8 @@ def health_appropriations_rebuild(
     dry_run: bool = True,
     eight_stage: bool = False,
     crown_source_sha256: str | None = None,
+    crown_receipt: Path | None = None,
+    crown_receipt_sha256: str | None = None,
 ) -> int:
     """Preflight originals; --no-dry-run builds a separate local Silver run."""
     try:
@@ -218,16 +220,26 @@ def health_appropriations_rebuild(
         )
 
         if eight_stage:
-            require(crown_source_sha256 is not None)
+            require(
+                crown_source_sha256 is not None
+                and crown_receipt is not None
+                and crown_receipt_sha256 is not None
+            )
             plan = plan_eight(
                 donor_manifest,
                 store_root,
                 manifest_sha256,
                 observed_at,
                 str(crown_source_sha256),
+                crown_receipt=cast("Path", crown_receipt),
+                crown_receipt_sha256=str(crown_receipt_sha256),
             )
         else:
-            require(crown_source_sha256 is None)
+            require(
+                crown_source_sha256 is None
+                and crown_receipt is None
+                and crown_receipt_sha256 is None
+            )
             plan = plan_rebuild(
                 donor_manifest, store_root, manifest_sha256, observed_at
             )

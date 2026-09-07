@@ -11,10 +11,12 @@ from archive_govt_nz.domains.health_appropriations import rebuild as legacy
 from archive_govt_nz.domains.health_appropriations.budget_revenue import (
     normalize_budget_revenue,
 )
+from archive_govt_nz.domains.health_appropriations.crown_receipt import (
+    parse_crown_receipt,
+    read_crown_receipt,
+)
 from archive_govt_nz.domains.health_appropriations.fiscal_crown_literals import (
     SOURCE_SHA256,
-    SOURCE_URL,
-    VINTAGE,
 )
 from archive_govt_nz.domains.health_appropriations.literal_packages import (
     package_admitted_source,
@@ -48,12 +50,15 @@ def require(condition: object) -> None:
         raise ValueError(message)
 
 
-def plan_eight(
+def plan_eight(  # noqa: PLR0913 -- independently pinned donor and direct-source inputs.
     donor_manifest: Path,
     store: Path,
     pin: str,
     observed_at: str,
     crown_source_sha256: str,
+    *,
+    crown_receipt: Path,
+    crown_receipt_sha256: str,
 ) -> dict[str, Any]:
     """Pin donor selections separately from the explicit direct Crown object."""
     require(crown_source_sha256 == SOURCE_SHA256)
@@ -64,6 +69,8 @@ def plan_eight(
         "legacy_plan": base,
         "donor_manifest_json": payload.decode("utf-8"),
         "crown_source_sha256": crown_source_sha256,
+        "crown_receipt_json": read_crown_receipt(crown_receipt, crown_receipt_sha256),
+        "crown_receipt_sha256": crown_receipt_sha256,
     }
     _sources(result, store)
     return result
@@ -77,6 +84,8 @@ def _sources(plan: dict[str, Any], store: Path) -> dict[str, dict[str, Any]]:
             "legacy_plan",
             "donor_manifest_json",
             "crown_source_sha256",
+            "crown_receipt_json",
+            "crown_receipt_sha256",
         }
         and plan["schema_version"] == SCHEMA
     )
@@ -94,18 +103,19 @@ def _sources(plan: dict[str, Any], store: Path) -> dict[str, dict[str, Any]]:
     rows = {r["path"]: r for r in objects}
     sources = {}
     cas = ContentAddressedStore(store, create=False)
+    require(plan["crown_source_sha256"] == SOURCE_SHA256)
+    crown = parse_crown_receipt(
+        plan["crown_receipt_json"].encode("utf-8"),
+        plan["crown_receipt_sha256"],
+        plan["crown_source_sha256"],
+    )
     for name in STAGES:
         if name in legacy.PROFILES:
             context = base["sources"][name]
             path = paths[name]
         elif name == "crown":
             require(plan["crown_source_sha256"] == SOURCE_SHA256)
-            context = {
-                "sha256": SOURCE_SHA256,
-                "object_id": "sha256:" + SOURCE_SHA256,
-                "locator": SOURCE_URL,
-                "vintage": VINTAGE,
-            }
+            context = crown
             path = cas.verify(context["object_id"]).path
         else:
             locator = "data/raw/" + EXTRA_FILES[name]
@@ -131,7 +141,7 @@ def _sources(plan: dict[str, Any], store: Path) -> dict[str, dict[str, Any]]:
         sources[name] = {
             **context,
             "path": path,
-            "observed_at": "2026-08-29T09:00:17+00:00"
+            "observed_at": crown["observed_at"]
             if name == "crown"
             else base["observed_at"],
         }
