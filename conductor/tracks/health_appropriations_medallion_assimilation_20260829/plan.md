@@ -597,30 +597,33 @@ repository validation command. External gates block only their affected task.
 
 ### 7.1 Metadata and rights contracts first
 
-- [~] Review clarification: explicitly load the JSON-LD parser plugin without
+- [x] Review clarification: explicitly load the JSON-LD parser plugin without
   an unguarded warm-up parse; retain offline positive/negative fixtures and
   revalidate the exact change. [M-14, M-18; AC-14, AC-16]
 
-- [~] Validate generated DCAT and PROV JSON-LD with an offline RDF processor:
+- [x] Validate generated DCAT and PROV JSON-LD with an offline RDF processor:
   compare expanded predicates, resource/literal types, checksum bytes and exact
   derivation edges; deny external context/file/network reads. Keep application
   profiles, rights, publication and graph indexing separate. [M-14; AC-14]
 
-- [~] DCAT standards review: use the registered Parquet media-type IRI and
+- [x] DCAT standards review: use the registered Parquet media-type IRI and
   expose verified payload SHA256 values through typed SPDX checksum nodes;
   independently compare graph digests with retained file bytes. [M-14; AC-14]
 
-- [~] Generate local DCAT recordset/distribution metadata only after original,
+- [x] Generate local DCAT recordset/distribution metadata only after original,
   raw and canonical package verification and projection equality. Retain exact
   physical-schema/fixity inventory; reject forged or altered inputs and do not
   infer access URLs, licensing, publication dates or full standards conformance.
   [M-14, M-18; AC-14, AC-16]
 
-- [~] Compose a read-only local provenance verifier for explicit canonical
+- [x] Compose a read-only local provenance verifier for explicit canonical
   historical/classification marker pins, original objects and raw package pins.
   Compare retained tables/accounting with recomputed pure projections and return
   separate scoped fixity evidence; do not change the pure descriptor helper's
   claims or declare Platinum/publication complete. [M-14, M-16, M-18; AC-14, AC-16]
+  These five scoped clauses match merged PRs #414/#415 and their successful
+  hosted gates. Independent review reran 188 focused tests on 2026-09-07.
+  See `integration-review-20260907.md`; broader Phase 7 acceptance remains open.
 
 - [x] Project validated typed local descriptors into an entity-only PROV
   JSON-LD graph with exact product-to-input derivation edges, retaining the

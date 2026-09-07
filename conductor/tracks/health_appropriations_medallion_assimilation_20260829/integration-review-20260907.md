@@ -21,3 +21,14 @@ historical evidence, not a claim that every collector policy was met.
 
 Health and FOI tracks remain active. No publication, semantic repair approval,
 schedule activation or terminal track acceptance is asserted here.
+
+## Previously delivered local metadata clauses
+
+Independent reviewer Banach compared the nine relevant source/test files with
+both merged trees `4b1764bb` (PR #414) and `7afaec8e` (PR #415), verified their
+successful hosted checks, and ran 188 focused tests successfully (six RDFLib
+deprecation warnings). The five narrow Phase 7 clauses for guarded parser
+loading, offline DCAT/PROV interpretation, Parquet/SPDX identities, verified
+local DCAT generation and local provenance verification are accepted.
+Croissant/RO-Crate application profiles, complete rights statements, cards,
+federation ambiguity accounting and broader Phase 7 assurance remain open.
