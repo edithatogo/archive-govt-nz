@@ -3,10 +3,10 @@
   "description": "Prompt 13 target-owned 500-work operational proof",
   "issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/335",
   "parent_issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/276",
-  "status": "in_progress",
+  "status": "archived",
   "track_id": "legislation_500_work_operational_proof_20260901",
   "type": "operations",
-  "updated_at": "2026-09-06T00:00:00+10:00",
+  "updated_at": "2026-09-07T02:37:04Z",
   "gates": [
     {
       "id": "prompt-06",
@@ -53,8 +53,8 @@
     {
       "id": "second-parent-continuation",
       "kind": "lineage_continuation",
-      "status": "blocked",
-      "evidence": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/ordered-20260905/500-work-target-revalidation.json"
+      "status": "passed",
+      "evidence": "evidence/migrations/corpus-legislation-nz/second-parent20260907/outcome.json"
     }
   ]
 }

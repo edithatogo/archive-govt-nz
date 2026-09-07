@@ -1,5 +1,23 @@
 # Run log
 
+## 2026-09-07 — independently verified second parent and archival
+
+PR #414 merged as `4b1764bb` after the full local, three-platform hosted and
+eleven supplementary gates passed. Run `34076094680` then restored the exact
+904-record parent and revalidated all 500 governed works unchanged, with zero
+retries or incomplete outcomes. Independent verification checked all artifact
+digests, source-preflight ordering, per-work accounting, checkpoint, seal,
+lineage, all 904 CAS objects and zero reconciliation mismatches. Its output
+artifact `10002260735` also passes native validation as a parent. A copied
+corrupt object was rejected. All eleven retained proof-file hashes were
+rechecked during integration.
+
+Proof: `evidence/migrations/corpus-legislation-nz/second-parent20260907/proof.md`.
+The original failed and blocked receipts remain unchanged. All Must and Should
+items are satisfied; archive this track. The output remains retention-bounded
+Actions state, not a newly published durable dataset. Final integrated
+assurance and programme-controller acceptance remain separate.
+
 ## Superseding ordered verification — 2026-09-06 (Australia/Brisbane)
 
 Verified main `c5233ae7` and preserved unrelated work in an isolated checkout.

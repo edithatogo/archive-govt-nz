@@ -1,5 +1,16 @@
 # Review
 
+## Second-parent acceptance — 2026-09-07
+
+Independently verified `34076094680` from its actual parent and child artifacts,
+not its green status alone. The 904→904 continuation preserves all parent CAS
+bytes, accounts for all 500 works unchanged, and passes native output-parent
+verification. Integrated all proof files with their original hashes. The merged
+interface repair has full local, three-platform hosted and eleven-suite
+supplementary evidence in PR #414. No outstanding Prompt 13 finding remains;
+archival is approved within the user's requested workflow. This review does
+not approve Prompt 20/21 or infer a new durable publication.
+
 ## Integration review — 2026-09-07
 
 Integrated PR #407 with main `eefe4513` in an isolated worktree. Resolved eight

@@ -6,7 +6,7 @@
   review bytes separately from living reviews; verify the complete real evidence
   index and integrated harness before delivery.
 
-- [~] Bind exact-inventory artifact names to their workflow/run/attempt without weakening parent verification, then exercise and independently verify the next continuation before final archival.
+- [x] Bind exact-inventory artifact names to their workflow/run/attempt without weakening parent verification, then exercise and independently verify the next continuation before final archival. PR #414 and independently verified run 34076094680 close this follow-up.
 
 - [x] Re-read exact target/donor identities, governed seed and prerequisite evidence.
 - [x] Audit workflow, preflight, parent, receipt, artifact and recovery contracts in parallel.
