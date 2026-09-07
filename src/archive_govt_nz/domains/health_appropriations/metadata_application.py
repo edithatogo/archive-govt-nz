@@ -29,6 +29,11 @@ MAX_PAYLOAD = 16 * 1024 * 1024
 MAX_TOTAL = 64 * 1024 * 1024
 MAX_TEXT = 4096
 MAX_PATH = 240
+# Required health metadata owns these portable root names. Reserving the whole
+# metadata directory also protects current/future descriptor member names.
+_METADATA_ROOTS = frozenset(
+    {"manifest.json", "ro-crate-metadata.json", "readme.md", "metadata"}
+)
 _RESERVED = {"CON", "PRN", "AUX", "NUL"} | {
     f"{prefix}{number}" for prefix in ("COM", "LPT") for number in range(1, 10)
 }
@@ -98,7 +103,7 @@ def _path(value: object) -> None:
     for part in str(value).split("/"):
         _require(re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.-]{0,79}", part))
         _require(not part.endswith(".") and part.split(".")[0].upper() not in _RESERVED)
-    _require(value not in {"MANIFEST.json", "ro-crate-metadata.json"})
+    _require(str(value).split("/", 1)[0].casefold() not in _METADATA_ROOTS)
 
 
 def _items(

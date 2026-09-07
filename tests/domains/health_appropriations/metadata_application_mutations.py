@@ -16,6 +16,18 @@ SOURCE = Path(
 )
 TEST = "tests/domains/health_appropriations/test_metadata_application.py"
 MUTANTS = {
+    "metadata_root_casefold": (
+        'str(value).split("/", 1)[0].casefold() not in _METADATA_ROOTS',
+        'str(value).split("/", 1)[0] not in _METADATA_ROOTS',
+    ),
+    "metadata_root_descendants": (
+        'str(value).split("/", 1)[0].casefold() not in _METADATA_ROOTS',
+        "str(value).casefold() not in _METADATA_ROOTS",
+    ),
+    "metadata_directory_reservation": (
+        '"readme.md", "metadata"',
+        '"readme.md", "metadata-disabled"',
+    ),
     "croissant_binding": (
         "json.dumps(croissant, sort_keys=True) == json.dumps(expected, sort_keys=True)",
         "True",

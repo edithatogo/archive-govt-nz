@@ -455,9 +455,9 @@ def test_duplicate_member_in_otherwise_valid_manifest() -> None:
         )
 
 
-def test_reserved_path_with_otherwise_consistent_descriptors() -> None:
+def with_path(path: str) -> tuple[dict[str, Any], dict[str, bytes], dict[str, Any]]:
+    """Bind every fixture reference and digest to the selected path."""
     manifest, payloads, rights = fixture()
-    path = "NUL.bin"
     payloads[path] = payloads.pop("data/example.bin")
     manifest["items"][0]["item_path"] = path
     rights["resources"][0]["path"] = path
@@ -469,9 +469,46 @@ def test_reserved_path_with_otherwise_consistent_descriptors() -> None:
     )
     manifest["ro_crate"]["@graph"][1]["hasPart"] = [{"@id": path}]
     manifest["ro_crate"]["@graph"][2]["@id"] = path
+    return manifest, payloads, rights
+
+
+def test_reserved_path_with_otherwise_consistent_descriptors() -> None:
     with pytest.raises(ValueError, match="metadata_application_contract"):
-        check(manifest, payloads, rights)
+        check(*with_path("NUL.bin"))
     manifest, payloads, rights = fixture()
     rights["resources"][0]["payload_sha256"] = "0" * 64
     with pytest.raises(ValueError, match="metadata_application_contract"):
         check(manifest, payloads, rights)
+
+
+@pytest.mark.parametrize(
+    "root", ["manifest.json", "ro-crate-metadata.json", "readme.md", "metadata"]
+)
+@pytest.mark.parametrize("upper", [False, True])
+@pytest.mark.parametrize("suffix", ["", "/child.bin"])
+def test_reserved_metadata_roots_are_not_payloads(
+    root: str, suffix: str, *, upper: bool
+) -> None:
+    path = (root.upper() if upper else root) + suffix
+    with pytest.raises(ValueError, match="metadata_application_contract"):
+        check(*with_path(path))
+
+
+@pytest.mark.parametrize(
+    "path",
+    [
+        "MANIFEST.json/child.bin",
+        "ro-crate-metadata.json/child.bin",
+        "MeTaDaTa/croissant.json",
+    ],
+)
+def test_mixed_case_reserved_descendants(path: str) -> None:
+    with pytest.raises(ValueError, match="metadata_application_contract"):
+        check(*with_path(path))
+
+
+@pytest.mark.parametrize(
+    "path", ["data/manifest.json", "metadata-copy/payload.bin", "manifest.jsonl"]
+)
+def test_only_reserved_roots_are_excluded(path: str) -> None:
+    assert check(*with_path(path))["payloads_verified"] == 1
