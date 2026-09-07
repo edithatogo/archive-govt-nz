@@ -8,7 +8,7 @@ from typing import Any
 
 import pytest
 
-import archive_govt_nz.assurance as assurance
+from archive_govt_nz import assurance
 from archive_govt_nz.assurance import (
     COMMAND_TIMEOUT_SECONDS,
     STAGES,
