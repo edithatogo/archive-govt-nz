@@ -1,0 +1,15 @@
+{
+  "schema_version":"archive-govt-nz.prompt01-controller-closeout/v1",
+  "observed_at":"2026-09-07T02:30:00Z",
+  "status":"complete",
+  "target_main":"7afaec8e",
+  "donor":{"repository":"edithatogo/corpus-legislation-nz","archived":true,"final_head":"905f9e07c17af9d9d25dbe2b1c052fb8a290a4e3"},
+  "registered_prompts":"01-21",
+  "specialist_closeout":"Prompts 02-21 have current merged implementation or superseding evidence; terminal Prompt 21 matrix reports complete.",
+  "dimensions":{"code_capability":"complete","operational_state":"complete","corpus_custody_recoverability":"complete","publication_identity":"complete"},
+  "external_readbacks":["Hugging Face public_verified 552-record dataset","Zenodo concept/version identity","GitHub donor archival and release asset"],
+  "validation_observation":{"substantive_lanes_passed":true,"wrapper_exit":"not_observed; local check.py remained alive after SBOM output and was terminated","hosted_assurance":"passed on Prompt 20 and Prompt 21 exact heads","impact":"non-blocking tooling observation; no gate or threshold was weakened"},
+  "historical_evidence_preserved":true,
+  "unresolved_controller_blockers":[],
+  "follow_up":"Investigate child-process cleanup in the local assurance wrapper under a separate maintenance issue; this does not invalidate hosted assurance or the completed programme evidence."
+}
