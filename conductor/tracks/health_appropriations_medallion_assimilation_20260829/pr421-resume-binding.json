@@ -1,0 +1,19 @@
+{
+  "schema_version": "archive-govt-nz.focused-review-evidence/v1",
+  "base_commit": "7b672a9c7448ec4ffb5f925553b70761db2f3993",
+  "review_finding": "PRRT_kwDOTo2MOM6fyBeB",
+  "red_regressions": 6,
+  "focused_tests_passed": 90,
+  "verifier_statements": {"covered": 36, "total": 36},
+  "verifier_branches": {"covered": 14, "total": 14},
+  "cold_mutants": {"killed": 20, "survived": 0, "cache_hits": 0},
+  "ruff_check": "passed",
+  "ruff_format_check": "passed",
+  "basedpyright": "passed",
+  "legacy_missing_binding": "reject_preserve_require_fresh_capture",
+  "authenticity_against_coordinated_rewrite": "not_claimed",
+  "independent_redirect_history": "not_claimed",
+  "integrated_full_harness": "not_run_parent_owned",
+  "independent_review": "parent_owned",
+  "publication": "not_performed"
+}

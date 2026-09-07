@@ -18,6 +18,69 @@ from archive_govt_nz.object_store import ContentAddressedStore, ObjectStoreError
 from archive_govt_nz.warc import write_response_record
 
 
+@pytest.mark.anyio
+@pytest.mark.parametrize("fault", ["swap", "query", "url", "status", "body", "legacy"])
+async def test_resume_requires_warc_source_response_binding(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, fault: str
+) -> None:
+    """Mutable manifest hashes cannot reassign a retained response to a source."""
+    execute, args, calls = setup(tmp_path, monkeypatch)
+    census = json.loads(args.census.read_text())
+    first = census["records"][0]
+    census["records"] = [
+        dict(first, source_id=str(i), url=f"https://www.treasury.govt.nz/one.csv?q={i}")
+        for i in range(2)
+    ]
+    args.census.write_text(json.dumps(census))
+    if fault == "swap":
+        census["records"][1]["url"] = "https://www.treasury.govt.nz/two.csv"
+        args.census.write_text(json.dumps(census))
+    result = await execute(args)
+    row, other = result["results"]
+    if fault in {"swap", "query"}:
+        for key in (
+            "object_id",
+            "sha256",
+            "blake3",
+            "bytes",
+            "warc_path",
+            "warc_sha256",
+            "url",
+            "status_code",
+        ):
+            row[key] = other[key]
+    elif fault == "url":
+        row["url"] += "&different=1"
+    elif fault == "status":
+        row["status_code"] = 201
+    elif fault == "body":
+        receipt = ContentAddressedStore(args.store_root).put_bytes(b"different")
+        row.update(
+            object_id=receipt.object_id,
+            sha256=receipt.sha256,
+            blake3=receipt.blake3,
+            bytes=receipt.byte_count,
+        )
+    else:
+        path = args.warc_dir / row["warc_path"]
+        payload = b"\r\n".join(
+            line
+            for line in path.read_bytes().split(b"\r\n")
+            if not line.startswith(
+                (b"WARC-Request-URL-SHA256:", b"WARC-Final-URL-SHA256:")
+            )
+        )
+        path.write_bytes(payload)
+        row["warc_sha256"] = hashlib.sha256(payload).hexdigest()
+    args.manifest.write_text(json.dumps(result))
+    before = args.manifest.read_bytes()
+    args.resume = True
+    with pytest.raises(ValueError, match="resume_warc"):
+        await execute(args)
+    assert len(calls) == 2
+    assert args.manifest.read_bytes() == before
+
+
 def setup(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> tuple[Any, argparse.Namespace, list[str]]:
@@ -63,7 +126,11 @@ def setup(
         payload = b"synthetic"
         receipt = store.put_bytes(payload)
         warc = write_response_record(
-            transaction_warc_path, url=url, status_code=200, headers={}, body=payload
+            transaction_warc_path,
+            url=url,
+            status_code=200,
+            headers={"content-type": "text/csv"},
+            body=payload,
         )
         return CaptureResult(url, 200, "text/csv", receipt, warc)
 

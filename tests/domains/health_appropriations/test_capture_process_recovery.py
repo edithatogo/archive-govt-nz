@@ -28,7 +28,7 @@ async def local(client, url, store, config, *, transaction_warc_path):
     payload = b"synthetic"
     receipt = store.put_bytes(payload)
     warc = write_response_record(transaction_warc_path, url=url,
-        status_code=200, headers={}, body=payload)
+        status_code=200, headers={"content-type": "text/csv"}, body=payload)
     return CaptureResult(url, 200, "text/csv", receipt, warc)
 execute.__globals__["capture_url"] = local
 asyncio.run(execute(args))
