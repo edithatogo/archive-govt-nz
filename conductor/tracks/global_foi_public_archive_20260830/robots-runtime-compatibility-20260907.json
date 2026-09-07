@@ -1,0 +1,28 @@
+{
+  "basedpyright": "passed",
+  "focused_tests_passed": 249,
+  "format": "passed",
+  "full_harness": "parent_pending",
+  "guard": "reject_all_allow_disallow_wildcard_end_anchor_path_rules_before_parser_admission",
+  "historical_compliance": "not_certified",
+  "legacy_parser_mock": "can_fetch_always_true_never_consulted_for_complex_rules",
+  "parent_candidate_assessment_edits": false,
+  "preserved_artifacts": {
+    "candidate-observations-remaining-20260907.json": "3f5f120344b9afedb8357cbe93ed8c021377223b8533d8b07e9fafbe51a502bd",
+    "candidate-probe-review-correction-20260907.json": "9069cac976a18f8ec4427da7fbbee45bfeb6517cfa5433812a14f9d8438d7167",
+    "linked-foi-observations-20260907.json": "ea4fd9bf98a61c71f454282c515f559eebfb513a3a44ed66a3bdb3a94e9da2bd",
+    "linked-foi-provenance-20260907.json": "99f6690d859d19868adf8ce00dcb02935d27c434963a7b654f5b4e562cbd35b8"
+  },
+  "probe_module_line_branch_coverage_percent": 84,
+  "recorded_at": "2026-09-07T03:52:43.043808+00:00",
+  "red_cases_failed": 7,
+  "ruff": "passed",
+  "schema_version": "archive-govt-nz.foi-robots-compatibility/v1",
+  "source_network_reads": false,
+  "task_id": "P2.14",
+  "unsupported_outcome": "robots_unsupported_rules",
+  "upstream_sources": [
+    "https://raw.githubusercontent.com/python/cpython/v3.14.0/Lib/urllib/robotparser.py",
+    "https://raw.githubusercontent.com/python/cpython/v3.14.6/Lib/urllib/robotparser.py"
+  ]
+}

@@ -91,3 +91,7 @@ Approved track in progress. Automation repair and source-catalogue foundations a
 - [Linked FOI historical observations](linked-foi-observations-20260907.json)
 - [Linked FOI pre-fix provenance](linked-foi-provenance-20260907.json)
 - [Linked FOI review and limitations](linked-foi-review-20260907.md)
+
+
+- [Probe robots runtime compatibility review](robots-runtime-compatibility-20260907.md)
+- [Probe robots runtime compatibility receipt](robots-runtime-compatibility-20260907.json)

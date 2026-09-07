@@ -276,3 +276,12 @@ P2.13 corrected assessor rejects forged GG success. Structure on failed/robots
 responses is validated as well as successful HTML. 236 focused tests pass, new
 module 100% line/branch coverage; scoped lint/type/format checks pass. No fresh
 read, publication, rights decision, schedule or historical-observation rewrite.
+
+
+## P2.14 runtime compatibility — 2026-09-07
+
+Confirmed upstream 3.14.0/3.14.6 parser semantic difference. The probe now rejects
+complex path rules before parser admission; [review](robots-runtime-compatibility-20260907.md)
+records the conservative scope. 249 focused tests pass, including legacy-allow
+mock and unchanged historical reports. No source request/replay or parent-owned
+candidate-assessment edit. Full gate pending with parent.

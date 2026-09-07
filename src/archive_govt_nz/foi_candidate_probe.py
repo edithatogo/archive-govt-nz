@@ -15,7 +15,7 @@ from html.parser import HTMLParser
 from http import HTTPStatus
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
-from urllib.parse import urljoin, urlsplit
+from urllib.parse import unquote, urljoin, urlsplit
 from urllib.robotparser import RobotFileParser
 
 import httpx
@@ -320,6 +320,22 @@ def classify_metadata(page: dict[str, Any]) -> str:
     return "foi_scope_unverified"
 
 
+def robots_path_rules_supported(text: str) -> bool:
+    """Reject path syntax whose interpretation differs across Python 3.14 releases.
+
+    Conservatively inspect every Allow/Disallow directive, including other
+    agents' groups. This is not a robots implementation or RFC conformance claim.
+    Default User-agent stars, sitemap values and comments are not path rules.
+    """
+    for line in text.splitlines():
+        directive, _, value = line.split("#", 1)[0].partition(":")
+        if directive.strip().lower() in {"allow", "disallow"}:
+            path = unquote(value.strip())
+            if "*" in path or "$" in path:
+                return False
+    return True
+
+
 class _Collector:
     def __init__(self, bounds: Bounds, get: Callable) -> None:
         self.bounds, self.get = bounds, get
@@ -388,8 +404,17 @@ class _Collector:
         terminal = result["robots"][-1]
         robot = None
         if terminal["outcome"] == "observed" and b"user-agent:" in body.lower():
+            text = body.decode("utf-8", errors="replace")
+            if not robots_path_rules_supported(text):
+                result["robots_policy"] = {
+                    "allowed": None,
+                    "scope": "entire_robots_file_before_page_access",
+                    "reason": "wildcard_or_end_anchor_path_rule",
+                }
+                result["outcome"] = "robots_unsupported_rules"
+                return
             robot = RobotFileParser(robots_url)
-            robot.parse(body.decode("utf-8", errors="replace").splitlines())
+            robot.parse(text.splitlines())
             allowed = robot.can_fetch(USER_AGENT, row["source_url"])
             result["robots_policy"] = {
                 "allowed": allowed,

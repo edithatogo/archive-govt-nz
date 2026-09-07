@@ -193,6 +193,28 @@ def test_robots_restriction_stops_page_request() -> None:
 
 
 @pytest.mark.parametrize(
+    "text",
+    [
+        "User-agent: *\nDisallow: /private/",
+        "User-agent: *\nAllow: /public/\nDisallow: /private/",
+        "# Disallow: /*$\nUser-agent: *\nDisallow: /private/ # *$",
+        "User-agent: *\nSitemap: https://example.org/*$",
+        "User-agent: *\nDisallow:\nCrawl-delay: 5",
+    ],
+)
+def test_simple_robots_rules_remain_supported(text: str) -> None:
+    """Do not confuse the default agent or comments with complex path rules."""
+    assert probe.robots_path_rules_supported(text)
+
+
+def test_other_agent_complex_path_also_fails_closed() -> None:
+    """Avoid relying on runtime-specific group selection to bypass the guard."""
+    assert not probe.robots_path_rules_supported(
+        "User-agent: other\nDisallow: /private/*\n\nUser-agent: *\nAllow: /\n"
+    )
+
+
+@pytest.mark.parametrize(
     ("headers", "payload", "expected"),
     [
         ({"content-length": "101"}, b"", "byte_limit"),
@@ -376,3 +398,53 @@ def test_count_budgets_cannot_expand_hard_caps(kwargs: dict) -> None:
     """Configured cohorts cannot silently exceed the declared hard count caps."""
     with pytest.raises(ValueError, match="invalid_probe_bounds"):
         Bounds(**kwargs)
+
+
+@pytest.mark.parametrize(
+    "rule",
+    [
+        "Disallow: /private/*",
+        "Disallow: /*.pdf$",
+        "Allow: /public/*",
+        "Disallow: /end$",
+        "  dIsAlLoW: /x%2A",
+        "Allow: /x%24",
+        "Disallow: /elsewhere/* # unrelated path",
+    ],
+)
+def test_complex_robots_rules_fail_closed_even_with_legacy_allow(
+    monkeypatch: pytest.MonkeyPatch, rule: str
+) -> None:
+    """A permissive old parser cannot admit any page when rule semantics differ."""
+    calls = []
+    parser_calls = []
+
+    def legacy_allow(*args: object) -> bool:
+        parser_calls.append(args)
+        return True
+
+    async def get(url: str, limit: int, bounds: Bounds) -> tuple[dict, bytes]:
+        calls.append(url)
+        assert limit
+        assert bounds
+        body = ("User-agent: *\n" + rule + "\n").encode()
+        return {
+            "url": url,
+            "status": 200,
+            "outcome": "observed",
+            "media_type": "text/plain",
+        }, body
+
+    monkeypatch.setattr(probe.RobotFileParser, "can_fetch", legacy_allow)
+    row = {
+        "source_id": "s",
+        "entity_id": "NZ",
+        "source_url": "https://example.org/",
+        "retained_receipt_sha256": "0" * 64,
+    }
+    result = asyncio.run(collect_candidates([row], Bounds(origin_interval=0), get=get))
+    assert result[0]["outcome"] == "robots_unsupported_rules"
+    assert result[0]["homepage"] is None
+    assert result[0]["robots_policy"]["allowed"] is None
+    assert parser_calls == []
+    assert calls == ["https://example.org/robots.txt"]

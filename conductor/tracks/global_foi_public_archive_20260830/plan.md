@@ -116,6 +116,17 @@ The approved destination is archive-govt-nz; no cutover has occurred.
   and `linked-foi-review-20260907.md`. 236 focused tests pass; new module has 100%
   line/branch coverage. Full integration remains with parent.
 
+### P2 robots runtime compatibility — 2026-09-07
+
+- [x] P2.14 (AC04, AC11, AC12): Fail closed before probe page access on
+  wildcard/end-anchor robots path rules across the supported Python runtime
+  range. Cover a permissive legacy-parser mock; do not infer broad Python 3.14
+  support from 3.14.6 behavior. Keep parent-owned candidate-assessment changes
+  separate, preserve all observations and perform no source replay.
+  Receipt: `robots-runtime-compatibility-20260907.md` / `.json`.
+  249 focused tests pass, including permissive legacy-parser regressions;
+  full combined harness remains with parent.
+
 ## Phase 3 — Metadata indexes and immutable raw storage
 
 - [x] P3.1 (AC05, AC06, AC11): Add red tests for original metadata preservation, request/correspondence/attachment relationships, revisions, missing objects, synthetic/CDX rejection, unsafe archive members, private-network redirects, expansion/resource limits, active content and sensitive exports.

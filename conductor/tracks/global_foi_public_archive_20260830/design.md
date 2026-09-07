@@ -182,3 +182,13 @@ validation. A separate hash-bound provenance receipt identifies pre-fix transpor
 for retained observations; current validation does not certify historical pacing.
 Existing flow remains observation -> factual assessor -> local paired reports,
 with unchanged rights/publication gates. No source activation or global registry.
+
+
+## P2.14 conservative robots compatibility gate
+
+A small path-rule preflight precedes parser construction in the shared probe.
+Wildcard/end-anchor Allow/Disallow rules anywhere in the file produce a dated
+unsupported-rules result without requesting the page. This is deliberately
+more conservative than user-agent matching and not a general RFC-compliance
+claim. Linked observation inherits the gate through the same collector. Parent
+owns the separate offline candidate-assessment guard; historical bytes stay fixed.

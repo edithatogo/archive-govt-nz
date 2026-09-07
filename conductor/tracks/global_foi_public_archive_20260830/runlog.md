@@ -399,3 +399,20 @@ PYTHONPATH=src /Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/python -m p
 236 tests pass; 100% new-module line/branch coverage; lint/format/typing pass.
 Parent owns full harness and integration. Only additive P2.12 plan changes;
 preserve accepted P2.5–P2.8 and rechain new evidence on parent integration.
+
+
+## 2026-09-07 — P2.14 separate runtime compatibility fix
+
+Linked cohort committed separately as `cd6967da49a1ae3bbbcd74b4c8d3dca896bbedc6`.
+Inspected upstream CPython v3.14.0/v3.14.6 robotparser source read-only; no source
+cohort requests. Seven mocked legacy-allow cases failed red, then passed after
+the conservative pre-parser rule guard. Final 249 focused tests pass; probe
+module coverage 84%, newly added guard lines/branches exercised. Ruff, format
+and scoped BasedPyright pass. Full combined gate remains with parent.
+
+```sh
+PYTHONPATH=src /Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/python -m pytest -q tests/test_foi_linked_assessment.py tests/test_foi_candidate_probe.py tests/test_foi_candidate_cohort.py tests/test_foi_candidate_assessment.py tests/test_foi_reconciliation.py tests/test_foi_catalogue.py tests/test_foi_discovery.py tests/test_foi_rollout.py tests/test_verify_foi_rollout_evidence.py --cov=archive_govt_nz.foi_candidate_probe --cov-branch --cov-report=term-missing --cov-fail-under=0
+/Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/ruff check src/archive_govt_nz/foi_candidate_probe.py tests/test_foi_candidate_probe.py
+/Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/ruff format --check src/archive_govt_nz/foi_candidate_probe.py tests/test_foi_candidate_probe.py
+/Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/basedpyright src/archive_govt_nz/foi_candidate_probe.py tests/test_foi_candidate_probe.py
+```

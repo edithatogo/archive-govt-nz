@@ -80,3 +80,11 @@ metadata must exclude arbitrary personal text and attachments; reports must
 reproduce offline and cannot grant policy compliance, rights, capture coverage,
 publication, schedules or non-null request denominators. No fresh reads required
 for this dated factual end state. Full integration remains with parent.
+
+
+## P2.14 runtime compatibility acceptance
+
+AC04/AC11/AC12: reject wildcard/end-anchor robots path rules before probe page
+admission independently of the Python 3.14 patch release. Exercise a permissive
+legacy parser mock; preserve simple rules, default-agent selectors and comments.
+Unsupported rules remain unknown access, not rights decisions or publication.
