@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import TYPE_CHECKING
 
 import pytest
+from blake3 import blake3
 
 from archive_govt_nz.domains.legislation.models import (
     LegislationRecord,
@@ -37,6 +38,14 @@ execute_operational_continuity_and_recovery = (
 load_canonical_sample_records = _MODULE.load_canonical_sample_records
 run_clean_workspace_recovery_drill = _MODULE.run_clean_workspace_recovery_drill
 main = _MODULE.main
+
+
+def test_rehearsal_defaults_and_hash_algorithm() -> None:
+    """Samples use genuine BLAKE3 and cannot overwrite the historical receipt."""
+    assert _MODULE.DEFAULT_RECEIPT_PATH.parts[:2] == ("build", "rehearsals")
+    for record in load_canonical_sample_records():
+        payload = f"<statute id='{record.work_id}'>{record.title}</statute>".encode()
+        assert record.raw_cas_hash_blake3 == blake3(payload).hexdigest()
 
 
 def test_run_clean_workspace_recovery_drill(tmp_path: Path) -> None:
@@ -89,19 +98,25 @@ def test_recovery_drill_negative_control_corrupted_cas(tmp_path: Path) -> None:
 
 
 def test_execute_operational_continuity_and_recovery(tmp_path: Path) -> None:
-    """Verify operational continuity execution records 2 cycles and valid receipt."""
+    """Synthetic scenarios must not confer hosted operational acceptance."""
     receipt_path = tmp_path / "continuity_receipt.json"
 
     receipt = execute_operational_continuity_and_recovery(receipt_path=receipt_path)
 
-    assert receipt["status"] == "passed"
-    assert receipt["operational_cycles_count"] == 2
+    assert receipt["status"] == "rehearsal_passed"
+    assert receipt["evidence_kind"] == "synthetic_rehearsal"
+    assert receipt["operational_cycles_count"] == 0
+    assert receipt["operational_cycles"] == []
+    assert receipt["target_commit"] is None
     assert receipt["remote_publish_attempted"] is False
     assert receipt_path.is_file()
 
     data = json.loads(receipt_path.read_text(encoding="utf-8"))
-    assert data["operational_cycles"][0]["cycle_type"] == "scheduled_weekly_harvest"
-    assert data["operational_cycles"][1]["cycle_type"] == "monthly_reconciliation"
+    assert len(data["simulated_cycles"]) == 2
+    assert all(
+        row["evidence_kind"] == "synthetic_rehearsal"
+        for row in data["simulated_cycles"]
+    )
     assert data["recovery_drill"]["manifest_root_match"] is True
 
 
