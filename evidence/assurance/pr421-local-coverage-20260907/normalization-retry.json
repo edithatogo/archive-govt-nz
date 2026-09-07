@@ -1,0 +1,13 @@
+{
+  "tested_commit": "4a65da30011dd186a5f184ee447ffa64d659c3e0",
+  "command": "PYTEST_XDIST_AUTO_NUM_WORKERS=2 ./scripts/validate.sh",
+  "status": "passed_local",
+  "exit_code": 0,
+  "tests_passed": 5580,
+  "coverage_percent": 97.8615548455804,
+  "cas_throughput_mb_s": 641.57,
+  "all_configured_mutation_suites": "passed",
+  "supply_chain_and_sbom": "passed; 112 components",
+  "independent_review": "Normalization-only 110 changed package statements covered; shared reader/layout modules at 100 percent line and branch coverage. Portable fixture corrections retain literal-path assertions.",
+  "hosted_windows": "pending corrected-head confirmation; prior run 34081970376 remains a failed observation"
+}

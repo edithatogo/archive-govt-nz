@@ -156,7 +156,9 @@ def test_transport_and_fixity_fail_closed() -> None:
 
 
 @pytest.mark.parametrize(
-    "data", [b"", b"x" * 65537, b"\xff", b'"unfinished', b"a" * 2049, b"\n" * 201]
+    "data",
+    [b"", b"x" * 65537, b"\xff", b'"unfinished', b"a" * 2049, b"\n" * 201],
+    ids=["empty", "byte-limit", "encoding", "csv", "line-length", "line-count"],
 )
 def test_bounds_and_bad_csv(data: bytes) -> None:
     with pytest.raises(PopulationExportError):
