@@ -1,5 +1,6 @@
 """Contracts for the repository-wide assurance harness."""
 
+import os
 import subprocess
 import sys
 import tomllib
