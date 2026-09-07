@@ -1,0 +1,25 @@
+{
+  "schema_version": "archive-govt-nz.historical-review-recovery/v1",
+  "date": "2026-09-07",
+  "reason": "Indexed historical review paths were edited after hash binding. Recover exact historical bytes without replacing living reviews or changing pinned hashes.",
+  "entries": [
+    {
+      "id": "inventory-2bfd3df4a8a4b6bc",
+      "original": "conductor/tracks/legislation_500_work_operational_proof_20260901/review.md",
+      "sha256": "ca9662f51156cc4137f6f26109774c319873b7f94d03e2dc1083f7b8c2d7f26f",
+      "commit": "3bd3f68a88b5157745b95e191a337838d3515b1d",
+      "path": "evidence/migrations/corpus-legislation-nz/historical-reviews/inventory-2bfd3df4a8a4b6bc.md"
+    },
+    {
+      "id": "inventory-7c85a725d2a92a9e",
+      "original": "conductor/tracks/legislation_hf_identity_reconciliation_20260901/review.md",
+      "sha256": "02b36d8ca3ab48f13b1324c7d110c035707d220aeec556976040fab565166b07",
+      "commit": "7f53418d5bbb0adc1725bf69ed6763520a9e7b7a",
+      "path": "evidence/migrations/corpus-legislation-nz/historical-reviews/inventory-7c85a725d2a92a9e.md"
+    }
+  ],
+  "validation": {
+    "entries": 185,
+    "all_hashes_and_relationships_verified": true
+  }
+}

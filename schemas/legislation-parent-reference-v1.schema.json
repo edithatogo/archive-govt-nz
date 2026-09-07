@@ -15,6 +15,39 @@
     "source",
     "lineage_sha256"
   ],
+  "if": {
+    "properties": {
+      "workflow": {
+        "properties": {
+          "path": {
+            "const": ".github/workflows/exact-inventory.yml"
+          }
+        }
+      }
+    }
+  },
+  "then": {
+    "properties": {
+      "artifact": {
+        "properties": {
+          "name": {
+            "pattern": "^legislation-exact-inventory-state-[1-9][0-9]*-[1-9][0-9]*$"
+          }
+        }
+      }
+    }
+  },
+  "else": {
+    "properties": {
+      "artifact": {
+        "properties": {
+          "name": {
+            "pattern": "^legislation-state-[1-9][0-9]*$"
+          }
+        }
+      }
+    }
+  },
   "properties": {
     "schema_version": {
       "const": "archive-govt-nz.legislation-parent-reference/v1"
@@ -94,8 +127,7 @@
           "minimum": 1
         },
         "name": {
-          "type": "string",
-          "pattern": "^legislation-state-[1-9][0-9]*$"
+          "type": "string"
         },
         "digest": {
           "type": "string",

@@ -1,5 +1,7 @@
 # Plan
 
+- [x] Reconcile the integration with completed PR #396: retain its pinned ordered operational receipt and completed status. The separate second-parent continuation remains owned by Prompt 13.
+
 - [x] Audit prerequisites and all three live Hugging Face identities.
 - [x] Correct exact-revision rights readback and add fail-closed tests.
 - [x] Create and validate the typed three-identity publication registry.

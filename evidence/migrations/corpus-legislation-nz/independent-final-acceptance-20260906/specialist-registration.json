@@ -1,0 +1,170 @@
+[
+  {
+    "prompt": 1,
+    "track": "conductor/tracks/legislation_post_cutover_state_and_publication_integrity_20260831",
+    "issue": "https://github.com/edithatogo/archive-govt-nz/issues/276",
+    "requirements": "conductor/tracks/legislation_post_cutover_state_and_publication_integrity_20260831/spec.md",
+    "baseline_lifecycle_status": "in_progress",
+    "scope_basis": "Existing canonical track requirements and read-only live issue scope; original dependency edges retained in programme-status.json."
+  },
+  {
+    "prompt": 2,
+    "track": "conductor/archive/legislation_final_donor_lineage_20260831",
+    "issue": "https://github.com/edithatogo/archive-govt-nz/issues/278",
+    "requirements": "conductor/archive/legislation_final_donor_lineage_20260831/requirements.md",
+    "baseline_lifecycle_status": "completed",
+    "scope_basis": "Existing canonical track requirements and read-only live issue scope; original dependency edges retained in programme-status.json."
+  },
+  {
+    "prompt": 3,
+    "track": "conductor/tracks/legislation_final_donor_state_verification_20260831",
+    "issue": "https://github.com/edithatogo/archive-govt-nz/issues/284",
+    "requirements": "conductor/tracks/legislation_final_donor_state_verification_20260831/requirements.md",
+    "baseline_lifecycle_status": "completed",
+    "scope_basis": "Existing canonical track requirements and read-only live issue scope; original dependency edges retained in programme-status.json."
+  },
+  {
+    "prompt": 4,
+    "track": "conductor/tracks/legislation_canonical_state_merge_20260831",
+    "issue": "https://github.com/edithatogo/archive-govt-nz/issues/292",
+    "requirements": "conductor/tracks/legislation_canonical_state_merge_20260831/requirements.md",
+    "baseline_lifecycle_status": "complete",
+    "scope_basis": "Existing canonical track requirements and read-only live issue scope; original dependency edges retained in programme-status.json."
+  },
+  {
+    "prompt": 5,
+    "track": "conductor/tracks/legislation_reviewed_seed_registry_20260831",
+    "issue": "https://github.com/edithatogo/archive-govt-nz/issues/299",
+    "requirements": "conductor/tracks/legislation_reviewed_seed_registry_20260831/requirements.md",
+    "baseline_lifecycle_status": "complete",
+    "scope_basis": "Existing canonical track requirements and read-only live issue scope; original dependency edges retained in programme-status.json."
+  },
+  {
+    "prompt": 6,
+    "track": "conductor/tracks/legislation_exact_inventory_revalidation_20260903",
+    "issue": "https://github.com/edithatogo/archive-govt-nz/issues/308",
+    "requirements": "conductor/tracks/legislation_exact_inventory_revalidation_20260903/requirements.md",
+    "baseline_lifecycle_status": "completed",
+    "scope_basis": "Existing canonical track requirements and read-only live issue scope; original dependency edges retained in programme-status.json."
+  },
+  {
+    "prompt": 7,
+    "track": "conductor/tracks/legislation_bounded_discovery_20260903",
+    "issue": "https://github.com/edithatogo/archive-govt-nz/issues/310",
+    "requirements": "conductor/tracks/legislation_bounded_discovery_20260903/requirements.md",
+    "baseline_lifecycle_status": "complete",
+    "scope_basis": "Existing canonical track requirements and read-only live issue scope; original dependency edges retained in programme-status.json."
+  },
+  {
+    "prompt": 8,
+    "track": "conductor/tracks/legislation_parent_state_restoration_20260901",
+    "issue": "https://github.com/edithatogo/archive-govt-nz/issues/312",
+    "requirements": "conductor/tracks/legislation_parent_state_restoration_20260901/requirements.md",
+    "baseline_lifecycle_status": "complete",
+    "scope_basis": "Existing canonical track requirements and read-only live issue scope; original dependency edges retained in programme-status.json."
+  },
+  {
+    "prompt": 9,
+    "track": "conductor/tracks/legislation_durable_state_20260901",
+    "issue": "https://github.com/edithatogo/archive-govt-nz/issues/321",
+    "requirements": "conductor/tracks/legislation_durable_state_20260901/requirements.md",
+    "baseline_lifecycle_status": "complete",
+    "scope_basis": "Existing canonical track requirements and read-only live issue scope; original dependency edges retained in programme-status.json."
+  },
+  {
+    "prompt": 10,
+    "track": "conductor/archive/legislation_independent_recovery_20260901",
+    "issue": "https://github.com/edithatogo/archive-govt-nz/issues/327",
+    "requirements": "conductor/archive/legislation_independent_recovery_20260901/requirements.md",
+    "baseline_lifecycle_status": "completed",
+    "scope_basis": "Existing canonical track requirements and read-only live issue scope; original dependency edges retained in programme-status.json."
+  },
+  {
+    "prompt": 11,
+    "track": "conductor/tracks/legislation_typed_source_set_20260901",
+    "issue": "https://github.com/edithatogo/archive-govt-nz/issues/330",
+    "requirements": "conductor/tracks/legislation_typed_source_set_20260901/requirements.md",
+    "baseline_lifecycle_status": "complete",
+    "scope_basis": "Existing canonical track requirements and read-only live issue scope; original dependency edges retained in programme-status.json."
+  },
+  {
+    "prompt": 12,
+    "track": "conductor/tracks/legislation_harvest_accounting_20260901",
+    "issue": "https://github.com/edithatogo/archive-govt-nz/issues/333",
+    "requirements": "conductor/tracks/legislation_harvest_accounting_20260901/requirements.md",
+    "baseline_lifecycle_status": "complete",
+    "scope_basis": "Existing canonical track requirements and read-only live issue scope; original dependency edges retained in programme-status.json."
+  },
+  {
+    "prompt": 13,
+    "track": "conductor/tracks/legislation_500_work_operational_proof_20260901",
+    "issue": "https://github.com/edithatogo/archive-govt-nz/issues/335",
+    "requirements": "conductor/tracks/legislation_500_work_operational_proof_20260901/requirements.md",
+    "baseline_lifecycle_status": "in_progress",
+    "scope_basis": "Existing canonical track requirements and read-only live issue scope; original dependency edges retained in programme-status.json."
+  },
+  {
+    "prompt": 14,
+    "track": "conductor/tracks/legislation_historical_coverage_20260901",
+    "issue": "https://github.com/edithatogo/archive-govt-nz/issues/337",
+    "requirements": "conductor/tracks/legislation_historical_coverage_20260901/requirements.md",
+    "baseline_lifecycle_status": "complete",
+    "scope_basis": "Existing canonical track requirements and read-only live issue scope; original dependency edges retained in programme-status.json."
+  },
+  {
+    "prompt": 15,
+    "track": "conductor/tracks/legislation_hf_identity_reconciliation_20260901",
+    "issue": "https://github.com/edithatogo/archive-govt-nz/issues/341",
+    "requirements": "conductor/tracks/legislation_hf_identity_reconciliation_20260901/requirements.md",
+    "baseline_lifecycle_status": "in_progress",
+    "scope_basis": "Existing canonical track requirements and read-only live issue scope; original dependency edges retained in programme-status.json."
+  },
+  {
+    "prompt": 16,
+    "track": "conductor/tracks/zenodo_identity_correction_20260902",
+    "issue": "https://github.com/edithatogo/archive-govt-nz/issues/343",
+    "requirements": "conductor/tracks/zenodo_identity_correction_20260902/requirements.md",
+    "baseline_lifecycle_status": "completed",
+    "scope_basis": "Existing canonical track requirements and read-only live issue scope; original dependency edges retained in programme-status.json."
+  },
+  {
+    "prompt": 17,
+    "track": "conductor/tracks/legislation_evidence_index_20260902",
+    "issue": "https://github.com/edithatogo/archive-govt-nz/issues/345",
+    "requirements": "conductor/tracks/legislation_evidence_index_20260902/requirements.md",
+    "baseline_lifecycle_status": "completed",
+    "scope_basis": "Existing canonical track requirements and read-only live issue scope; original dependency edges retained in programme-status.json."
+  },
+  {
+    "prompt": 18,
+    "track": "conductor/tracks/cutover_release_provenance_correction_20260902",
+    "issue": "https://github.com/edithatogo/archive-govt-nz/issues/347",
+    "requirements": "conductor/tracks/cutover_release_provenance_correction_20260902/requirements.md",
+    "baseline_lifecycle_status": "completed",
+    "scope_basis": "Existing canonical track requirements and read-only live issue scope; original dependency edges retained in programme-status.json."
+  },
+  {
+    "prompt": 19,
+    "track": "conductor/archive/legislation_donor_bundle_archival_presentation_20260902",
+    "issue": "https://github.com/edithatogo/archive-govt-nz/issues/349",
+    "requirements": "conductor/archive/legislation_donor_bundle_archival_presentation_20260902/requirements.md",
+    "baseline_lifecycle_status": "complete",
+    "scope_basis": "Existing canonical track requirements and read-only live issue scope; original dependency edges retained in programme-status.json."
+  },
+  {
+    "prompt": 20,
+    "track": "conductor/archive/integrated_assurance_20260902",
+    "issue": "https://github.com/edithatogo/archive-govt-nz/issues/351",
+    "requirements": "conductor/archive/integrated_assurance_20260902/requirements.md",
+    "baseline_lifecycle_status": "completed",
+    "scope_basis": "Existing canonical track requirements and read-only live issue scope; original dependency edges retained in programme-status.json."
+  },
+  {
+    "prompt": 21,
+    "track": "conductor/tracks/legislation_final_adversarial_verification_20260902",
+    "issue": "https://github.com/edithatogo/archive-govt-nz/issues/356",
+    "requirements": "conductor/tracks/legislation_final_adversarial_verification_20260902/requirements.md",
+    "baseline_lifecycle_status": "in_progress",
+    "scope_basis": "Existing canonical track requirements and read-only live issue scope; original dependency edges retained in programme-status.json."
+  }
+]

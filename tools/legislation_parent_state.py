@@ -207,9 +207,12 @@ def check_metadata(
             reference["repository_id"],
             "artifact_" + field,
         )
-    v.equal(
-        artifact["name"], "legislation-state-" + str(run["id"]), "artifact_run_name"
-    )
+    expected_name = "legislation-state-" + str(run["id"])
+    if reference["workflow"]["path"] == ".github/workflows/exact-inventory.yml":
+        expected_name = (
+            f"legislation-exact-inventory-state-{run['id']}-{run['run_attempt']}"
+        )
+    v.equal(artifact["name"], expected_name, "artifact_run_name")
 
 
 def fetch(

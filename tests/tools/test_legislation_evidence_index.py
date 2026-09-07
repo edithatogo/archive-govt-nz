@@ -23,6 +23,14 @@ from tools.legislation_evidence_index import (
 )
 
 ROOT = Path(__file__).parents[2]
+
+
+def test_repository_evidence_index_preserves_pinned_bytes() -> None:
+    """Validate real indexed evidence as well as synthetic relationship fixtures."""
+    index = validate_evidence_index(ROOT)
+    assert index["entries"]
+
+
 DIMENSIONS = (
     "code_capability_migration",
     "operational_state_migration",

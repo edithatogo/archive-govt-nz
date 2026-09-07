@@ -1017,3 +1017,58 @@ exporter's exact newline-terminated canonical bytes and applied the declared
 100,000-row / 64-MiB bound to all three raw and all three canonical tables. The
 fresh 51-mutant cold gate and full native harness pass. Hosted delivery remains
 separate evidence, not implied completion.
+
+## 2026-09-05 — Exact normalization prerequisite review
+
+Reviewed new source/tests plus track diff against M-05/M-06/M-18 and
+AC-05/AC-16. Existing JSON and Arrow registries remain byte-unchanged. Exact
+coefficient arithmetic avoids Decimal-context rounding; microsecond admission
+prevents timestamp truncation; input dictionaries and list order are preserved.
+All eight synthetic row sets round-trip through Parquet deterministically.
+Invalid row errors contain a fixed reason only. No source file, remote system,
+rights decision or publication path is accessed by the API.
+
+Review boundary: local ID uniqueness is not stable-ID derivation; null/date/
+precision consistency is not source-level semantic validation. Unit inference,
+classification approval, formula freshness, source fixity, input file bounds
+and lineage closure remain with separately tested callers. Main's pending
+fixture work is preserved and its conversion/precision follow-up is documented.
+No selected platform-guide manifest was found; platform-specific guides are
+not applicable to this pure Python/Arrow increment. Shared registry edits are
+excluded by explicit user ownership instructions, and its in-progress health
+entry remains consistent. Whole Phase 3 completion is not claimed.
+
+Final focused review: 117 tests, 100% new-module coverage and 35/35 cold mutants
+pass. All post-test assurance stages pass. No actionable in-scope finding
+remains. The original full-suite timing failures and interrupted retry remain
+in the receipt; combined full checks are explicitly assigned to the parent by
+the user, without suppressing or editing the unrelated failing tests.
+
+## 2026-09-05 — Admission/readback negative-fixture review
+
+Reviewed JSON bytes, typed Arrow/Parquet readback, metadata, nullability,
+precision, time and resource-bound failures. Exact schema equality does not
+substitute for row checks; unknown offsets and out-of-range UTC dates fail
+before a table is emitted. Binary inputs, duplicate members and invalid UTF-8
+receive fixed diagnostics. No public schema or source adapter is promoted.
+
+The existing source-profile negatives cover layouts, units, periods, lineage,
+formula/cache distinction and unsupported classification labels; their bounded
+scope is recorded instead of asserting universal source qualification. The
+original positive-fixture task and Phase 3 checkpoint stay pending. Final
+focused and cold mutation gates pass; no in-scope finding remains. Parent owns
+combined full validation. Global registry and main fixture files are unchanged.
+
+## 2026-09-05 — SQLite structural adapter review
+
+Verified literal path encoding keeps `mode=ro` outside URI fragments and table
+names are identifiers rather than SQL syntax. The observed alias creation was
+confined to synthetic red tests. Successful tests prove no missing file is
+created, actual connections reject writes and close, and stable source bytes
+and directory contents survive repeated inventory. Source schema text and row
+counts are unchanged. The scoped spy avoids coverage-tool interception.
+
+The complete formats module reaches 100% line/branch coverage and all 35 cold
+mutants are killed. This does not grant snapshot, WAL sidecar, hostile database,
+row normalization or donor parity guarantees; those remain explicit future
+contracts. No high-confidence in-scope finding remains. No full harness ran.

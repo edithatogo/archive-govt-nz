@@ -11,3 +11,18 @@
 ## Reopened Prompt13 dependency — 2026-09-05
 
 The additive `programme-status-20260905-preflight-reopen.json`, `handoff-index-20260905-preflight-reopen.json`, and `live-observations-20260905-preflight-reopen.json` supersede the earlier provisional dependency snapshot. Issue335 is open: source preflight repair and main-only hosted verification precede final13/15/20/21/01 closeout. Previous snapshots and successful operational evidence remain preserved; no completion or external execution is inferred.
+
+# Superseding independent acceptance — 2026-09-06
+
+Current result: **INCOMPLETE**. The dated independent matrix and report at
+`evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/` supersede historical status claims below.
+First-cycle operation, approved 552-record durable custody and publication are
+verified. Actual hosted parent metadata rejects the exact-inventory output name
+(`HOSTED-PARENT-NAME-001`, issue335; Prompt08 owner, Prompt06 consumer).
+Parent delegated compatibility repair to Lovelace and retains P13/P15 active.
+Second-cycle execution is a Should in the original track, while the interface
+defect is a concrete integration limitation. This audit changes only Prompt01/21
+track-local records and dated new evidence. No publication, push, merge or archive.
+
+See the dated `validation.json` for local harness attempts and `report.md` for
+primary readbacks, exact source hashes, scope limits and remaining delivery gates.

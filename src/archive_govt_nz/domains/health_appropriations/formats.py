@@ -194,9 +194,14 @@ def inventory_pdf(path: Path) -> dict[str, object]:
     }
 
 
+def _sqlite_identifier(name: str) -> str:
+    """Quote a schema-provided identifier without interpreting its contents."""
+    return '"' + name.replace('"', '""') + '"'
+
+
 def inventory_sqlite(path: Path) -> dict[str, object]:
     """Inventory user tables, schemas, and row counts read-only."""
-    connection = sqlite3.connect(f"file:{path}?mode=ro", uri=True)
+    connection = sqlite3.connect(path.resolve().as_uri() + "?mode=ro", uri=True)
     try:
         tables = connection.execute(
             "SELECT name, sql FROM sqlite_master WHERE type='table' ORDER BY name"
@@ -209,7 +214,7 @@ def inventory_sqlite(path: Path) -> dict[str, object]:
                     "name": name,
                     "sql": sql,
                     "row_count": connection.execute(
-                        f'SELECT COUNT(*) FROM "{name}"'
+                        f"SELECT COUNT(*) FROM {_sqlite_identifier(name)}"
                     ).fetchone()[0],
                 }
                 for name, sql in tables

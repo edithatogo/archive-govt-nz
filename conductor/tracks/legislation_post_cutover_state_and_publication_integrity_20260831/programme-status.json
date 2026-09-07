@@ -1,8 +1,8 @@
 {
   "schema_version": "archive-govt-nz.legislation-programme/v1",
   "parent_issue": 276,
-  "status": "blocked_external",
-  "target_baseline": "d6bc0c96c44488a75b7e98bd9cb95591eeb97a38",
+  "status": "in_progress",
+  "target_baseline": "c5233ae7fc0beb065071cf3554596456f6575131",
   "donor_head": "b40587f1b1aec7356a0f623916fcc8212397d283",
   "allowed_states": [
     "not_started",
@@ -12,23 +12,23 @@
     "passed",
     "superseded"
   ],
-  "blocking_input": "Prompts 04\u201321 have not been supplied; exact specialist scopes, defect ownership and acceptance gates cannot be invented.",
+  "blocking_input": null,
   "dimensions": {
     "code_capability_migration": {
-      "state": "in_progress",
-      "evidence": "Prompt 02 lineage is merged; this does not certify all runtime capability migration."
+      "state": "failed",
+      "evidence": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/hosted-parent-interface-defect.json"
     },
     "operational_state_migration": {
-      "state": "not_started",
-      "evidence": "Prompt 03 verified candidate only; Prompt 04 target-state merge has not been executed."
+      "state": "passed",
+      "evidence": "Run 33968609350: ordered preflight, exactly 500 outcomes, 904 CAS; receipt e1383a7839cd6e07bd5e3596b3bdb906cf1c80cd925ca6afd00d3c30ab94d7b8 is in the parent integration worktree."
     },
     "corpus_custody_recoverability": {
-      "state": "in_progress",
-      "evidence": "Prompt 03 local ZIP and 511 files rehashed after drive reconnection. Redundant custody and independent restore remain later work."
+      "state": "passed",
+      "evidence": "Approved 552-record durable authority independently downloaded and native-verified; two retained clean recovery attempts. 904-record output is Actions-retained only."
     },
     "publication_identity_migration": {
-      "state": "blocked_external",
-      "evidence": "Live identity observations are separate from metadata migration, rights clearance and publication authority."
+      "state": "passed",
+      "evidence": "All three roles/access/revisions and all four approved canonical files freshly verified anonymously. Parent owns P15 schema/registry receipt binding integration."
     }
   },
   "shared_path_serialization": {
@@ -48,41 +48,31 @@
       "dependency_qualification": null,
       "merge_order": "topological dependency order; no implied permission to merge",
       "external_gates": [
-        "no publication, DOI mutation, donor unarchive, secrets/settings changes or destructive actions without explicit applicable authorization"
+        "This audit does not publish, push, merge, archive, dispatch or modify hosted settings."
       ],
       "issue": 278,
       "pr": 281,
       "state": "passed",
-      "delivery": "merged",
+      "delivery": "integrated_on_audited_main",
       "owned_paths": [
-        {
-          "path_parts": [
-            "conductor",
-            "archive",
-            "imported",
-            "corpus-legislation-nz",
-            "b40587f1b1aec7356a0f623916fcc8212397d283"
-          ],
-          "kind": "directory"
-        },
-        "evidence/migrations/corpus-legislation-nz/final-lineage/",
-        "conductor/tracks/legislation_final_donor_lineage_20260831/"
+        "conductor/archive/legislation_final_donor_lineage_20260831/"
       ],
       "non_owned_paths": [
-        "operational workflows",
-        "state manifests",
-        "CAS objects",
-        "Hugging Face metadata",
-        "Zenodo metadata",
-        "closeout claims"
+        "Other specialist contracts except an explicitly serialized interface handoff",
+        "conductor/tracks.md (parent integration owner for this audit)"
       ],
       "acceptance_evidence": [
-        "15 commits explicitly disposed",
-        "216 imported files; immutable tree fixity",
-        "zero unaccounted lineage omissions",
-        "PR 281 merged; seven final-head checks successful"
+        "conductor/archive/legislation_final_donor_lineage_20260831/requirements.md",
+        "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json"
       ],
-      "handoff": "evidence/migrations/corpus-legislation-nz/final-lineage/receipt.json"
+      "handoff": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json",
+      "track_path": "conductor/archive/legislation_final_donor_lineage_20260831",
+      "specialist_scope_source": {
+        "requirements": "conductor/archive/legislation_final_donor_lineage_20260831/requirements.md",
+        "issue": "https://github.com/edithatogo/archive-govt-nz/issues/278",
+        "interpretation": "Track-local path is the unique administrative owner. Functional scope and exclusions are the linked requirement contract and original issue; this audit grants no new implementation ownership."
+      },
+      "hosted_issue_state": "CLOSED"
     },
     {
       "owner_prompt": 3,
@@ -91,76 +81,104 @@
       "dependency_qualification": null,
       "merge_order": "topological dependency order; no implied permission to merge",
       "external_gates": [
-        "no publication, DOI mutation, donor unarchive, secrets/settings changes or destructive actions without explicit applicable authorization"
+        "This audit does not publish, push, merge, archive, dispatch or modify hosted settings."
       ],
       "issue": 284,
       "pr": 287,
       "state": "passed",
-      "delivery": "merged",
+      "delivery": "integrated_on_audited_main",
       "owned_paths": [
-        "tools/verify_final_donor_state.py",
-        "tests/tools/test_verify_final_donor_state.py",
-        "evidence/migrations/corpus-legislation-nz/final-donor-state/",
         "conductor/tracks/legislation_final_donor_state_verification_20260831/"
       ],
       "non_owned_paths": [
-        "target canonical state",
-        "workflows",
-        "seed registries",
-        "publication surfaces"
+        "Other specialist contracts except an explicitly serialized interface handoff",
+        "conductor/tracks.md (parent integration owner for this audit)"
       ],
       "acceptance_evidence": [
-        "audited artifact outer digest",
-        "all observed roots, W/E/M and CAS identities",
-        "zero reconciliation mismatches",
-        "read-only local verified package"
+        "conductor/tracks/legislation_final_donor_state_verification_20260831/requirements.md",
+        "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json"
       ],
-      "handoff": "evidence/migrations/corpus-legislation-nz/final-donor-state/verification-02/prompt04-inventory.json",
-      "merge_commit": "3ea0b405268bcb4e3bc12dc13ca0327108d044a6"
+      "handoff": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json",
+      "merge_commit": "3ea0b405268bcb4e3bc12dc13ca0327108d044a6",
+      "track_path": "conductor/tracks/legislation_final_donor_state_verification_20260831",
+      "specialist_scope_source": {
+        "requirements": "conductor/tracks/legislation_final_donor_state_verification_20260831/requirements.md",
+        "issue": "https://github.com/edithatogo/archive-govt-nz/issues/284",
+        "interpretation": "Track-local path is the unique administrative owner. Functional scope and exclusions are the linked requirement contract and original issue; this audit grants no new implementation ownership."
+      },
+      "hosted_issue_state": "CLOSED"
     },
     {
       "owner_prompt": 4,
-      "registration": "awaiting_prompt_text",
+      "registration": "scope_supplied",
       "prerequisites": [
         3
       ],
       "dependency_qualification": "also verified current target state",
       "merge_order": "topological dependency order; no implied permission to merge",
       "external_gates": [
-        "no publication, DOI mutation, donor unarchive, secrets/settings changes or destructive actions without explicit applicable authorization"
+        "This audit does not publish, push, merge, archive, dispatch or modify hosted settings."
       ],
-      "issue": null,
+      "issue": 292,
       "pr": null,
-      "state": "blocked_external",
-      "owned_paths": [],
-      "non_owned_paths": [
-        "all implementation paths until exact scope is supplied"
+      "state": "passed",
+      "owned_paths": [
+        "conductor/tracks/legislation_canonical_state_merge_20260831/"
       ],
-      "acceptance_evidence": [],
-      "handoff": null
+      "non_owned_paths": [
+        "Other specialist contracts except an explicitly serialized interface handoff",
+        "conductor/tracks.md (parent integration owner for this audit)"
+      ],
+      "acceptance_evidence": [
+        "conductor/tracks/legislation_canonical_state_merge_20260831/requirements.md",
+        "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json"
+      ],
+      "handoff": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json",
+      "track_path": "conductor/tracks/legislation_canonical_state_merge_20260831",
+      "delivery": "integrated_on_audited_main",
+      "specialist_scope_source": {
+        "requirements": "conductor/tracks/legislation_canonical_state_merge_20260831/requirements.md",
+        "issue": "https://github.com/edithatogo/archive-govt-nz/issues/292",
+        "interpretation": "Track-local path is the unique administrative owner. Functional scope and exclusions are the linked requirement contract and original issue; this audit grants no new implementation ownership."
+      },
+      "hosted_issue_state": "CLOSED"
     },
     {
       "owner_prompt": 5,
-      "registration": "awaiting_prompt_text",
+      "registration": "scope_supplied",
       "prerequisites": [],
       "dependency_qualification": null,
       "merge_order": "topological dependency order; no implied permission to merge",
       "external_gates": [
-        "no publication, DOI mutation, donor unarchive, secrets/settings changes or destructive actions without explicit applicable authorization"
+        "This audit does not publish, push, merge, archive, dispatch or modify hosted settings."
       ],
-      "issue": null,
+      "issue": 299,
       "pr": null,
-      "state": "blocked_external",
-      "owned_paths": [],
-      "non_owned_paths": [
-        "all implementation paths until exact scope is supplied"
+      "state": "passed",
+      "owned_paths": [
+        "conductor/tracks/legislation_reviewed_seed_registry_20260831/"
       ],
-      "acceptance_evidence": [],
-      "handoff": null
+      "non_owned_paths": [
+        "Other specialist contracts except an explicitly serialized interface handoff",
+        "conductor/tracks.md (parent integration owner for this audit)"
+      ],
+      "acceptance_evidence": [
+        "conductor/tracks/legislation_reviewed_seed_registry_20260831/requirements.md",
+        "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json"
+      ],
+      "handoff": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json",
+      "track_path": "conductor/tracks/legislation_reviewed_seed_registry_20260831",
+      "delivery": "integrated_on_audited_main",
+      "specialist_scope_source": {
+        "requirements": "conductor/tracks/legislation_reviewed_seed_registry_20260831/requirements.md",
+        "issue": "https://github.com/edithatogo/archive-govt-nz/issues/299",
+        "interpretation": "Track-local path is the unique administrative owner. Functional scope and exclusions are the linked requirement contract and original issue; this audit grants no new implementation ownership."
+      },
+      "hosted_issue_state": "CLOSED"
     },
     {
       "owner_prompt": 6,
-      "registration": "awaiting_prompt_text",
+      "registration": "scope_supplied",
       "prerequisites": [
         5,
         8,
@@ -170,21 +188,35 @@
       "dependency_qualification": null,
       "merge_order": "topological dependency order; no implied permission to merge",
       "external_gates": [
-        "no publication, DOI mutation, donor unarchive, secrets/settings changes or destructive actions without explicit applicable authorization"
+        "This audit does not publish, push, merge, archive, dispatch or modify hosted settings."
       ],
-      "issue": null,
+      "issue": 308,
       "pr": null,
-      "state": "blocked_external",
-      "owned_paths": [],
-      "non_owned_paths": [
-        "all implementation paths until exact scope is supplied"
+      "state": "in_progress",
+      "owned_paths": [
+        "conductor/tracks/legislation_exact_inventory_revalidation_20260903/"
       ],
-      "acceptance_evidence": [],
-      "handoff": null
+      "non_owned_paths": [
+        "Other specialist contracts except an explicitly serialized interface handoff",
+        "conductor/tracks.md (parent integration owner for this audit)"
+      ],
+      "acceptance_evidence": [
+        "conductor/tracks/legislation_exact_inventory_revalidation_20260903/requirements.md",
+        "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json"
+      ],
+      "handoff": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json",
+      "track_path": "conductor/tracks/legislation_exact_inventory_revalidation_20260903",
+      "delivery": "integrated_on_audited_main",
+      "specialist_scope_source": {
+        "requirements": "conductor/tracks/legislation_exact_inventory_revalidation_20260903/requirements.md",
+        "issue": "https://github.com/edithatogo/archive-govt-nz/issues/308",
+        "interpretation": "Track-local path is the unique administrative owner. Functional scope and exclusions are the linked requirement contract and original issue; this audit grants no new implementation ownership."
+      },
+      "hosted_issue_state": "CLOSED"
     },
     {
       "owner_prompt": 7,
-      "registration": "awaiting_prompt_text",
+      "registration": "scope_supplied",
       "prerequisites": [
         8,
         11,
@@ -193,40 +225,68 @@
       "dependency_qualification": null,
       "merge_order": "topological dependency order; no implied permission to merge",
       "external_gates": [
-        "no publication, DOI mutation, donor unarchive, secrets/settings changes or destructive actions without explicit applicable authorization"
+        "This audit does not publish, push, merge, archive, dispatch or modify hosted settings."
       ],
-      "issue": null,
+      "issue": 310,
       "pr": null,
-      "state": "blocked_external",
-      "owned_paths": [],
-      "non_owned_paths": [
-        "all implementation paths until exact scope is supplied"
+      "state": "passed",
+      "owned_paths": [
+        "conductor/tracks/legislation_bounded_discovery_20260903/"
       ],
-      "acceptance_evidence": [],
-      "handoff": null
+      "non_owned_paths": [
+        "Other specialist contracts except an explicitly serialized interface handoff",
+        "conductor/tracks.md (parent integration owner for this audit)"
+      ],
+      "acceptance_evidence": [
+        "conductor/tracks/legislation_bounded_discovery_20260903/requirements.md",
+        "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json"
+      ],
+      "handoff": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json",
+      "track_path": "conductor/tracks/legislation_bounded_discovery_20260903",
+      "delivery": "integrated_on_audited_main",
+      "specialist_scope_source": {
+        "requirements": "conductor/tracks/legislation_bounded_discovery_20260903/requirements.md",
+        "issue": "https://github.com/edithatogo/archive-govt-nz/issues/310",
+        "interpretation": "Track-local path is the unique administrative owner. Functional scope and exclusions are the linked requirement contract and original issue; this audit grants no new implementation ownership."
+      },
+      "hosted_issue_state": "CLOSED"
     },
     {
       "owner_prompt": 8,
-      "registration": "awaiting_prompt_text",
+      "registration": "scope_supplied",
       "prerequisites": [],
       "dependency_qualification": null,
       "merge_order": "topological dependency order; no implied permission to merge",
       "external_gates": [
-        "no publication, DOI mutation, donor unarchive, secrets/settings changes or destructive actions without explicit applicable authorization"
+        "This audit does not publish, push, merge, archive, dispatch or modify hosted settings."
       ],
-      "issue": null,
+      "issue": 312,
       "pr": null,
-      "state": "blocked_external",
-      "owned_paths": [],
-      "non_owned_paths": [
-        "all implementation paths until exact scope is supplied"
+      "state": "failed",
+      "owned_paths": [
+        "conductor/tracks/legislation_parent_state_restoration_20260901/"
       ],
-      "acceptance_evidence": [],
-      "handoff": null
+      "non_owned_paths": [
+        "Other specialist contracts except an explicitly serialized interface handoff",
+        "conductor/tracks.md (parent integration owner for this audit)"
+      ],
+      "acceptance_evidence": [
+        "conductor/tracks/legislation_parent_state_restoration_20260901/requirements.md",
+        "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json"
+      ],
+      "handoff": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json",
+      "track_path": "conductor/tracks/legislation_parent_state_restoration_20260901",
+      "delivery": "integrated_on_audited_main",
+      "specialist_scope_source": {
+        "requirements": "conductor/tracks/legislation_parent_state_restoration_20260901/requirements.md",
+        "issue": "https://github.com/edithatogo/archive-govt-nz/issues/312",
+        "interpretation": "Track-local path is the unique administrative owner. Functional scope and exclusions are the linked requirement contract and original issue; this audit grants no new implementation ownership."
+      },
+      "hosted_issue_state": "CLOSED"
     },
     {
       "owner_prompt": 9,
-      "registration": "awaiting_prompt_text",
+      "registration": "scope_supplied",
       "prerequisites": [
         4,
         8
@@ -234,80 +294,136 @@
       "dependency_qualification": null,
       "merge_order": "topological dependency order; no implied permission to merge",
       "external_gates": [
-        "no publication, DOI mutation, donor unarchive, secrets/settings changes or destructive actions without explicit applicable authorization"
+        "This audit does not publish, push, merge, archive, dispatch or modify hosted settings."
       ],
-      "issue": null,
+      "issue": 321,
       "pr": null,
-      "state": "blocked_external",
-      "owned_paths": [],
-      "non_owned_paths": [
-        "all implementation paths until exact scope is supplied"
+      "state": "passed",
+      "owned_paths": [
+        "conductor/tracks/legislation_durable_state_20260901/"
       ],
-      "acceptance_evidence": [],
-      "handoff": null
+      "non_owned_paths": [
+        "Other specialist contracts except an explicitly serialized interface handoff",
+        "conductor/tracks.md (parent integration owner for this audit)"
+      ],
+      "acceptance_evidence": [
+        "conductor/tracks/legislation_durable_state_20260901/requirements.md",
+        "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json"
+      ],
+      "handoff": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json",
+      "track_path": "conductor/tracks/legislation_durable_state_20260901",
+      "delivery": "integrated_on_audited_main",
+      "specialist_scope_source": {
+        "requirements": "conductor/tracks/legislation_durable_state_20260901/requirements.md",
+        "issue": "https://github.com/edithatogo/archive-govt-nz/issues/321",
+        "interpretation": "Track-local path is the unique administrative owner. Functional scope and exclusions are the linked requirement contract and original issue; this audit grants no new implementation ownership."
+      },
+      "hosted_issue_state": "CLOSED"
     },
     {
       "owner_prompt": 10,
-      "registration": "awaiting_prompt_text",
+      "registration": "scope_supplied",
       "prerequisites": [
         9
       ],
       "dependency_qualification": null,
       "merge_order": "topological dependency order; no implied permission to merge",
       "external_gates": [
-        "no publication, DOI mutation, donor unarchive, secrets/settings changes or destructive actions without explicit applicable authorization"
+        "This audit does not publish, push, merge, archive, dispatch or modify hosted settings."
       ],
-      "issue": null,
+      "issue": 327,
       "pr": null,
-      "state": "blocked_external",
-      "owned_paths": [],
-      "non_owned_paths": [
-        "all implementation paths until exact scope is supplied"
+      "state": "passed",
+      "owned_paths": [
+        "conductor/archive/legislation_independent_recovery_20260901/"
       ],
-      "acceptance_evidence": [],
-      "handoff": null
+      "non_owned_paths": [
+        "Other specialist contracts except an explicitly serialized interface handoff",
+        "conductor/tracks.md (parent integration owner for this audit)"
+      ],
+      "acceptance_evidence": [
+        "conductor/archive/legislation_independent_recovery_20260901/requirements.md",
+        "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json"
+      ],
+      "handoff": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json",
+      "track_path": "conductor/archive/legislation_independent_recovery_20260901",
+      "delivery": "integrated_on_audited_main",
+      "specialist_scope_source": {
+        "requirements": "conductor/archive/legislation_independent_recovery_20260901/requirements.md",
+        "issue": "https://github.com/edithatogo/archive-govt-nz/issues/327",
+        "interpretation": "Track-local path is the unique administrative owner. Functional scope and exclusions are the linked requirement contract and original issue; this audit grants no new implementation ownership."
+      },
+      "hosted_issue_state": "CLOSED"
     },
     {
       "owner_prompt": 11,
-      "registration": "awaiting_prompt_text",
+      "registration": "scope_supplied",
       "prerequisites": [],
       "dependency_qualification": null,
       "merge_order": "topological dependency order; no implied permission to merge",
       "external_gates": [
-        "no publication, DOI mutation, donor unarchive, secrets/settings changes or destructive actions without explicit applicable authorization"
+        "This audit does not publish, push, merge, archive, dispatch or modify hosted settings."
       ],
-      "issue": null,
+      "issue": 330,
       "pr": null,
-      "state": "blocked_external",
-      "owned_paths": [],
-      "non_owned_paths": [
-        "all implementation paths until exact scope is supplied"
+      "state": "passed",
+      "owned_paths": [
+        "conductor/tracks/legislation_typed_source_set_20260901/"
       ],
-      "acceptance_evidence": [],
-      "handoff": null
+      "non_owned_paths": [
+        "Other specialist contracts except an explicitly serialized interface handoff",
+        "conductor/tracks.md (parent integration owner for this audit)"
+      ],
+      "acceptance_evidence": [
+        "conductor/tracks/legislation_typed_source_set_20260901/requirements.md",
+        "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json"
+      ],
+      "handoff": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json",
+      "track_path": "conductor/tracks/legislation_typed_source_set_20260901",
+      "delivery": "integrated_on_audited_main",
+      "specialist_scope_source": {
+        "requirements": "conductor/tracks/legislation_typed_source_set_20260901/requirements.md",
+        "issue": "https://github.com/edithatogo/archive-govt-nz/issues/330",
+        "interpretation": "Track-local path is the unique administrative owner. Functional scope and exclusions are the linked requirement contract and original issue; this audit grants no new implementation ownership."
+      },
+      "hosted_issue_state": "CLOSED"
     },
     {
       "owner_prompt": 12,
-      "registration": "awaiting_prompt_text",
+      "registration": "scope_supplied",
       "prerequisites": [],
       "dependency_qualification": null,
       "merge_order": "topological dependency order; no implied permission to merge",
       "external_gates": [
-        "no publication, DOI mutation, donor unarchive, secrets/settings changes or destructive actions without explicit applicable authorization"
+        "This audit does not publish, push, merge, archive, dispatch or modify hosted settings."
       ],
-      "issue": null,
+      "issue": 333,
       "pr": null,
-      "state": "blocked_external",
-      "owned_paths": [],
-      "non_owned_paths": [
-        "all implementation paths until exact scope is supplied"
+      "state": "passed",
+      "owned_paths": [
+        "conductor/tracks/legislation_harvest_accounting_20260901/"
       ],
-      "acceptance_evidence": [],
-      "handoff": null
+      "non_owned_paths": [
+        "Other specialist contracts except an explicitly serialized interface handoff",
+        "conductor/tracks.md (parent integration owner for this audit)"
+      ],
+      "acceptance_evidence": [
+        "conductor/tracks/legislation_harvest_accounting_20260901/requirements.md",
+        "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json"
+      ],
+      "handoff": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json",
+      "track_path": "conductor/tracks/legislation_harvest_accounting_20260901",
+      "delivery": "integrated_on_audited_main",
+      "specialist_scope_source": {
+        "requirements": "conductor/tracks/legislation_harvest_accounting_20260901/requirements.md",
+        "issue": "https://github.com/edithatogo/archive-govt-nz/issues/333",
+        "interpretation": "Track-local path is the unique administrative owner. Functional scope and exclusions are the linked requirement contract and original issue; this audit grants no new implementation ownership."
+      },
+      "hosted_issue_state": "CLOSED"
     },
     {
       "owner_prompt": 13,
-      "registration": "awaiting_prompt_text",
+      "registration": "scope_supplied",
       "prerequisites": [
         4,
         5,
@@ -319,24 +435,38 @@
         11,
         12
       ],
-      "dependency_qualification": "04\u201312 as applicable; qualify after prompt supplied",
+      "dependency_qualification": "04–12 as applicable; qualify after prompt supplied",
       "merge_order": "topological dependency order; no implied permission to merge",
       "external_gates": [
-        "no publication, DOI mutation, donor unarchive, secrets/settings changes or destructive actions without explicit applicable authorization"
+        "This audit does not publish, push, merge, archive, dispatch or modify hosted settings."
       ],
-      "issue": null,
+      "issue": 335,
       "pr": null,
-      "state": "blocked_external",
-      "owned_paths": [],
-      "non_owned_paths": [
-        "all implementation paths until exact scope is supplied"
+      "state": "in_progress",
+      "owned_paths": [
+        "conductor/tracks/legislation_500_work_operational_proof_20260901/"
       ],
-      "acceptance_evidence": [],
-      "handoff": null
+      "non_owned_paths": [
+        "Other specialist contracts except an explicitly serialized interface handoff",
+        "conductor/tracks.md (parent integration owner for this audit)"
+      ],
+      "acceptance_evidence": [
+        "conductor/tracks/legislation_500_work_operational_proof_20260901/requirements.md",
+        "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json"
+      ],
+      "handoff": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json",
+      "track_path": "conductor/tracks/legislation_500_work_operational_proof_20260901",
+      "delivery": "acceptance_evidence_prepared_pending_parent_integration",
+      "specialist_scope_source": {
+        "requirements": "conductor/tracks/legislation_500_work_operational_proof_20260901/requirements.md",
+        "issue": "https://github.com/edithatogo/archive-govt-nz/issues/335",
+        "interpretation": "Track-local path is the unique administrative owner. Functional scope and exclusions are the linked requirement contract and original issue; this audit grants no new implementation ownership."
+      },
+      "hosted_issue_state": "OPEN"
     },
     {
       "owner_prompt": 14,
-      "registration": "awaiting_prompt_text",
+      "registration": "scope_supplied",
       "prerequisites": [
         3,
         4,
@@ -345,21 +475,35 @@
       "dependency_qualification": null,
       "merge_order": "topological dependency order; no implied permission to merge",
       "external_gates": [
-        "no publication, DOI mutation, donor unarchive, secrets/settings changes or destructive actions without explicit applicable authorization"
+        "This audit does not publish, push, merge, archive, dispatch or modify hosted settings."
       ],
-      "issue": null,
+      "issue": 337,
       "pr": null,
-      "state": "blocked_external",
-      "owned_paths": [],
-      "non_owned_paths": [
-        "all implementation paths until exact scope is supplied"
+      "state": "passed",
+      "owned_paths": [
+        "conductor/tracks/legislation_historical_coverage_20260901/"
       ],
-      "acceptance_evidence": [],
-      "handoff": null
+      "non_owned_paths": [
+        "Other specialist contracts except an explicitly serialized interface handoff",
+        "conductor/tracks.md (parent integration owner for this audit)"
+      ],
+      "acceptance_evidence": [
+        "conductor/tracks/legislation_historical_coverage_20260901/requirements.md",
+        "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json"
+      ],
+      "handoff": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json",
+      "track_path": "conductor/tracks/legislation_historical_coverage_20260901",
+      "delivery": "integrated_on_audited_main",
+      "specialist_scope_source": {
+        "requirements": "conductor/tracks/legislation_historical_coverage_20260901/requirements.md",
+        "issue": "https://github.com/edithatogo/archive-govt-nz/issues/337",
+        "interpretation": "Track-local path is the unique administrative owner. Functional scope and exclusions are the linked requirement contract and original issue; this audit grants no new implementation ownership."
+      },
+      "hosted_issue_state": "CLOSED"
     },
     {
       "owner_prompt": 15,
-      "registration": "awaiting_prompt_text",
+      "registration": "scope_supplied",
       "prerequisites": [
         4,
         9,
@@ -370,40 +514,68 @@
       "dependency_qualification": null,
       "merge_order": "topological dependency order; no implied permission to merge",
       "external_gates": [
-        "no publication, DOI mutation, donor unarchive, secrets/settings changes or destructive actions without explicit applicable authorization"
+        "This audit does not publish, push, merge, archive, dispatch or modify hosted settings."
       ],
-      "issue": null,
+      "issue": 341,
       "pr": null,
-      "state": "blocked_external",
-      "owned_paths": [],
-      "non_owned_paths": [
-        "all implementation paths until exact scope is supplied"
+      "state": "in_progress",
+      "owned_paths": [
+        "conductor/tracks/legislation_hf_identity_reconciliation_20260901/"
       ],
-      "acceptance_evidence": [],
-      "handoff": null
+      "non_owned_paths": [
+        "Other specialist contracts except an explicitly serialized interface handoff",
+        "conductor/tracks.md (parent integration owner for this audit)"
+      ],
+      "acceptance_evidence": [
+        "conductor/tracks/legislation_hf_identity_reconciliation_20260901/requirements.md",
+        "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json"
+      ],
+      "handoff": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json",
+      "track_path": "conductor/tracks/legislation_hf_identity_reconciliation_20260901",
+      "delivery": "acceptance_evidence_prepared_pending_parent_integration",
+      "specialist_scope_source": {
+        "requirements": "conductor/tracks/legislation_hf_identity_reconciliation_20260901/requirements.md",
+        "issue": "https://github.com/edithatogo/archive-govt-nz/issues/341",
+        "interpretation": "Track-local path is the unique administrative owner. Functional scope and exclusions are the linked requirement contract and original issue; this audit grants no new implementation ownership."
+      },
+      "hosted_issue_state": "OPEN"
     },
     {
       "owner_prompt": 16,
-      "registration": "awaiting_prompt_text",
+      "registration": "scope_supplied",
       "prerequisites": [],
       "dependency_qualification": null,
       "merge_order": "topological dependency order; no implied permission to merge",
       "external_gates": [
-        "no publication, DOI mutation, donor unarchive, secrets/settings changes or destructive actions without explicit applicable authorization"
+        "This audit does not publish, push, merge, archive, dispatch or modify hosted settings."
       ],
-      "issue": null,
+      "issue": 343,
       "pr": null,
-      "state": "blocked_external",
-      "owned_paths": [],
-      "non_owned_paths": [
-        "all implementation paths until exact scope is supplied"
+      "state": "passed",
+      "owned_paths": [
+        "conductor/tracks/zenodo_identity_correction_20260902/"
       ],
-      "acceptance_evidence": [],
-      "handoff": null
+      "non_owned_paths": [
+        "Other specialist contracts except an explicitly serialized interface handoff",
+        "conductor/tracks.md (parent integration owner for this audit)"
+      ],
+      "acceptance_evidence": [
+        "conductor/tracks/zenodo_identity_correction_20260902/requirements.md",
+        "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json"
+      ],
+      "handoff": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json",
+      "track_path": "conductor/tracks/zenodo_identity_correction_20260902",
+      "delivery": "integrated_on_audited_main",
+      "specialist_scope_source": {
+        "requirements": "conductor/tracks/zenodo_identity_correction_20260902/requirements.md",
+        "issue": "https://github.com/edithatogo/archive-govt-nz/issues/343",
+        "interpretation": "Track-local path is the unique administrative owner. Functional scope and exclusions are the linked requirement contract and original issue; this audit grants no new implementation ownership."
+      },
+      "hosted_issue_state": "CLOSED"
     },
     {
       "owner_prompt": 17,
-      "registration": "awaiting_prompt_text",
+      "registration": "scope_supplied",
       "prerequisites": [
         2,
         3,
@@ -421,62 +593,104 @@
         15,
         16
       ],
-      "dependency_qualification": "substantive outputs of 02\u201316",
+      "dependency_qualification": "substantive outputs of 02–16",
       "merge_order": "topological dependency order; no implied permission to merge",
       "external_gates": [
-        "no publication, DOI mutation, donor unarchive, secrets/settings changes or destructive actions without explicit applicable authorization"
+        "This audit does not publish, push, merge, archive, dispatch or modify hosted settings."
       ],
-      "issue": null,
+      "issue": 345,
       "pr": null,
-      "state": "blocked_external",
-      "owned_paths": [],
-      "non_owned_paths": [
-        "all implementation paths until exact scope is supplied"
+      "state": "passed",
+      "owned_paths": [
+        "conductor/tracks/legislation_evidence_index_20260902/"
       ],
-      "acceptance_evidence": [],
-      "handoff": null
+      "non_owned_paths": [
+        "Other specialist contracts except an explicitly serialized interface handoff",
+        "conductor/tracks.md (parent integration owner for this audit)"
+      ],
+      "acceptance_evidence": [
+        "conductor/tracks/legislation_evidence_index_20260902/requirements.md",
+        "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json"
+      ],
+      "handoff": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json",
+      "track_path": "conductor/tracks/legislation_evidence_index_20260902",
+      "delivery": "integrated_on_audited_main",
+      "specialist_scope_source": {
+        "requirements": "conductor/tracks/legislation_evidence_index_20260902/requirements.md",
+        "issue": "https://github.com/edithatogo/archive-govt-nz/issues/345",
+        "interpretation": "Track-local path is the unique administrative owner. Functional scope and exclusions are the linked requirement contract and original issue; this audit grants no new implementation ownership."
+      },
+      "hosted_issue_state": "CLOSED"
     },
     {
       "owner_prompt": 18,
-      "registration": "awaiting_prompt_text",
+      "registration": "scope_supplied",
       "prerequisites": [],
       "dependency_qualification": null,
       "merge_order": "topological dependency order; no implied permission to merge",
       "external_gates": [
-        "no publication, DOI mutation, donor unarchive, secrets/settings changes or destructive actions without explicit applicable authorization"
+        "This audit does not publish, push, merge, archive, dispatch or modify hosted settings."
       ],
-      "issue": null,
+      "issue": 347,
       "pr": null,
-      "state": "blocked_external",
-      "owned_paths": [],
-      "non_owned_paths": [
-        "all implementation paths until exact scope is supplied"
+      "state": "passed",
+      "owned_paths": [
+        "conductor/tracks/cutover_release_provenance_correction_20260902/"
       ],
-      "acceptance_evidence": [],
-      "handoff": null
+      "non_owned_paths": [
+        "Other specialist contracts except an explicitly serialized interface handoff",
+        "conductor/tracks.md (parent integration owner for this audit)"
+      ],
+      "acceptance_evidence": [
+        "conductor/tracks/cutover_release_provenance_correction_20260902/requirements.md",
+        "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json"
+      ],
+      "handoff": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json",
+      "track_path": "conductor/tracks/cutover_release_provenance_correction_20260902",
+      "delivery": "integrated_on_audited_main",
+      "specialist_scope_source": {
+        "requirements": "conductor/tracks/cutover_release_provenance_correction_20260902/requirements.md",
+        "issue": "https://github.com/edithatogo/archive-govt-nz/issues/347",
+        "interpretation": "Track-local path is the unique administrative owner. Functional scope and exclusions are the linked requirement contract and original issue; this audit grants no new implementation ownership."
+      },
+      "hosted_issue_state": "CLOSED"
     },
     {
       "owner_prompt": 19,
-      "registration": "awaiting_prompt_text",
+      "registration": "scope_supplied",
       "prerequisites": [],
       "dependency_qualification": null,
       "merge_order": "topological dependency order; no implied permission to merge",
       "external_gates": [
-        "no publication, DOI mutation, donor unarchive, secrets/settings changes or destructive actions without explicit applicable authorization"
+        "This audit does not publish, push, merge, archive, dispatch or modify hosted settings."
       ],
-      "issue": null,
+      "issue": 349,
       "pr": null,
-      "state": "blocked_external",
-      "owned_paths": [],
-      "non_owned_paths": [
-        "all implementation paths until exact scope is supplied"
+      "state": "passed",
+      "owned_paths": [
+        "conductor/archive/legislation_donor_bundle_archival_presentation_20260902/"
       ],
-      "acceptance_evidence": [],
-      "handoff": null
+      "non_owned_paths": [
+        "Other specialist contracts except an explicitly serialized interface handoff",
+        "conductor/tracks.md (parent integration owner for this audit)"
+      ],
+      "acceptance_evidence": [
+        "conductor/archive/legislation_donor_bundle_archival_presentation_20260902/requirements.md",
+        "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json"
+      ],
+      "handoff": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json",
+      "track_path": "conductor/archive/legislation_donor_bundle_archival_presentation_20260902",
+      "delivery": "integrated_on_audited_main",
+      "specialist_scope_source": {
+        "requirements": "conductor/archive/legislation_donor_bundle_archival_presentation_20260902/requirements.md",
+        "issue": "https://github.com/edithatogo/archive-govt-nz/issues/349",
+        "interpretation": "Track-local path is the unique administrative owner. Functional scope and exclusions are the linked requirement contract and original issue; this audit grants no new implementation ownership."
+      },
+      "hosted_issue_state": "CLOSED"
     },
     {
       "owner_prompt": 20,
-      "registration": "awaiting_prompt_text",
+      "registration": "scope_supplied",
       "prerequisites": [
         2,
         3,
@@ -500,40 +714,90 @@
       "dependency_qualification": "after all implementation PRs integrated",
       "merge_order": "topological dependency order; no implied permission to merge",
       "external_gates": [
-        "no publication, DOI mutation, donor unarchive, secrets/settings changes or destructive actions without explicit applicable authorization"
+        "This audit does not publish, push, merge, archive, dispatch or modify hosted settings."
       ],
-      "issue": null,
+      "issue": 351,
       "pr": null,
-      "state": "blocked_external",
-      "owned_paths": [],
-      "non_owned_paths": [
-        "all implementation paths until exact scope is supplied"
+      "state": "passed",
+      "owned_paths": [
+        "conductor/archive/integrated_assurance_20260902/"
       ],
-      "acceptance_evidence": [],
-      "handoff": null
+      "non_owned_paths": [
+        "Other specialist contracts except an explicitly serialized interface handoff",
+        "conductor/tracks.md (parent integration owner for this audit)"
+      ],
+      "acceptance_evidence": [
+        "conductor/archive/integrated_assurance_20260902/requirements.md",
+        "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json"
+      ],
+      "handoff": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json",
+      "track_path": "conductor/archive/integrated_assurance_20260902",
+      "delivery": "integrated_on_audited_main",
+      "specialist_scope_source": {
+        "requirements": "conductor/archive/integrated_assurance_20260902/requirements.md",
+        "issue": "https://github.com/edithatogo/archive-govt-nz/issues/351",
+        "interpretation": "Track-local path is the unique administrative owner. Functional scope and exclusions are the linked requirement contract and original issue; this audit grants no new implementation ownership."
+      },
+      "hosted_issue_state": "OPEN"
     },
     {
       "owner_prompt": 21,
-      "registration": "awaiting_prompt_text",
+      "registration": "scope_supplied",
       "prerequisites": [
         20
       ],
       "dependency_qualification": "terminal independent gate",
       "merge_order": "topological dependency order; no implied permission to merge",
       "external_gates": [
-        "no publication, DOI mutation, donor unarchive, secrets/settings changes or destructive actions without explicit applicable authorization"
+        "This audit does not publish, push, merge, archive, dispatch or modify hosted settings."
       ],
-      "issue": null,
+      "issue": 356,
       "pr": null,
-      "state": "blocked_external",
-      "owned_paths": [],
-      "non_owned_paths": [
-        "all implementation paths until exact scope is supplied"
+      "state": "in_progress",
+      "owned_paths": [
+        "conductor/tracks/legislation_final_adversarial_verification_20260902/"
       ],
-      "acceptance_evidence": [],
-      "handoff": null
+      "non_owned_paths": [
+        "Other specialist contracts except an explicitly serialized interface handoff",
+        "conductor/tracks.md (parent integration owner for this audit)"
+      ],
+      "acceptance_evidence": [
+        "conductor/tracks/legislation_final_adversarial_verification_20260902/requirements.md",
+        "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json"
+      ],
+      "handoff": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json",
+      "track_path": "conductor/tracks/legislation_final_adversarial_verification_20260902",
+      "delivery": "acceptance_evidence_prepared_pending_parent_integration",
+      "specialist_scope_source": {
+        "requirements": "conductor/tracks/legislation_final_adversarial_verification_20260902/requirements.md",
+        "issue": "https://github.com/edithatogo/archive-govt-nz/issues/356",
+        "interpretation": "Track-local path is the unique administrative owner. Functional scope and exclusions are the linked requirement contract and original issue; this audit grants no new implementation ownership."
+      },
+      "hosted_issue_state": "OPEN"
     }
   ],
-  "observed_at": "2026-08-31T13:32:26.415251+00:00",
-  "current_target_commit": "3ea0b405268bcb4e3bc12dc13ca0327108d044a6"
+  "observed_at": "2026-09-05T14:15:00Z",
+  "current_target_commit": "3ea0b405268bcb4e3bc12dc13ca0327108d044a6",
+  "donor_presentation_head": "905f9e07c17af9d9d25dbe2b1c052fb8a290a4e3",
+  "superseding_acceptance": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json",
+  "delivery_gates": [
+    {
+      "id": "HOSTED-PARENT-NAME-001",
+      "owner_prompt": 8,
+      "status": "failed",
+      "reason": "Parent delegated compatibility agent owns actual producer/consumer naming fix; tracked in issue335. No overall completion until integrated and independently verified."
+    },
+    {
+      "id": "parent-integration",
+      "owner_prompt": 1,
+      "status": "pending",
+      "reason": "Integrate reviewed P13/P15 receipt and registry/schema changes plus this audit; run full harness on integrated tree before final lifecycle transition."
+    },
+    {
+      "id": "final-audit-validation",
+      "owner_prompt": 21,
+      "status": "passed",
+      "reason": "Full unchanged rerun passed all stages; initial timing failure and replay retained in dated validation.json."
+    }
+  ]
 }

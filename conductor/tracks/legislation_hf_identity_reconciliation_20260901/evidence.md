@@ -1,5 +1,15 @@
 # Evidence
 
+## Current reconciliation evidence — 2026-09-06
+
+`evidence/migrations/corpus-legislation-nz/huggingface-publication/operational-reconciliation-20260906.json`
+records fresh anonymous verification of all three identity revisions and all
+four authorized canonical files by exact size and SHA-256. The verified Prompt
+13 receipt is now pinned in the publication registry. This resolves the
+operational prerequisite without changing the approved 552-record publication,
+historical/snapshot identities or resource-specific rights. Earlier incomplete
+observations below remain historical. No remote writes were performed.
+
 ## Review-fix evidence — 2026-09-04
 
 Three red identity mutations validated before the schema correction. The

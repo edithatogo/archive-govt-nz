@@ -27,11 +27,71 @@ def _sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def test_parallel_operational_receipts_agree() -> None:
+    """Integrated evidence must agree with the already accepted publication input."""
+    registry = _load(REGISTRY_PATH)
+    accepted = _load(ROOT / registry["publication_gate"]["prompt13_receipt_path"])
+    proof = _load(
+        EVIDENCE_ROOT
+        / "500-work-operational-proof/hosted-closeout-20260906"
+        / "500-work-target-revalidation.json"
+    )
+    assert proof["run"]["id"] == accepted["operational_run"]
+    assert proof["accounting"]["works_attempted"] == accepted["work_count"] == 500
+    assert (
+        proof["accounting"]["total_state_records_after"] == accepted["output_records"]
+    )
+    primary = proof["primary_verification"]
+    assert _sha256(ROOT / primary["path"]) == primary["sha256"]
+    verified = _load(ROOT / primary["path"])
+    assert verified["fresh_reconciliation"]["mismatch_count"] == 0
+    assert verified["cas_count"] == verified["manifest_records"] == 904
+    assert verified["standalone_preflight_before_acquisition"] is True
+
+
 def test_registry_schema_and_document_are_valid() -> None:
     """The checked-in schema and registry must validate together."""
     schema = _load(SCHEMA_PATH)
     Draft202012Validator.check_schema(schema)
     Draft202012Validator(schema).validate(_load(REGISTRY_PATH))
+
+
+@pytest.mark.parametrize("invalid", [False, "true", None])
+def test_completed_registry_rejects_unverified_proof(invalid: object) -> None:
+    """The completed contract cannot silently downgrade its prerequisite."""
+    registry = copy.deepcopy(_load(REGISTRY_PATH))
+    registry["publication_gate"]["prompt13_operational_proof"] = invalid
+    with pytest.raises(ValidationError):
+        Draft202012Validator(_load(SCHEMA_PATH)).validate(registry)
+
+
+@pytest.mark.parametrize("duplicate", [0, 1, 2])
+@pytest.mark.parametrize("changed_revision", [False, True])
+def test_registry_rejects_duplicate_slugs(
+    duplicate: int, *, changed_revision: bool
+) -> None:
+    """Different revisions must not disguise a missing governed identity."""
+    registry = copy.deepcopy(_load(REGISTRY_PATH))
+    item = copy.deepcopy(registry["identities"][duplicate])
+    if changed_revision:
+        item["observed_revision"] = "a" * 40
+    registry["identities"][(duplicate + 1) % 3] = item
+    with pytest.raises(ValidationError):
+        Draft202012Validator(_load(SCHEMA_PATH)).validate(registry)
+
+
+@pytest.mark.parametrize("receipt_path", [None, "unverified.json"])
+def test_completed_operational_proof_requires_named_receipt(
+    receipt_path: str | None,
+) -> None:
+    """A true proof flag cannot omit or redirect its primary evidence."""
+    registry = _load(REGISTRY_PATH)
+    if receipt_path is None:
+        registry["publication_gate"].pop("prompt13_receipt_path")
+    else:
+        registry["publication_gate"]["prompt13_receipt_path"] = receipt_path
+    with pytest.raises(ValidationError):
+        Draft202012Validator(_load(SCHEMA_PATH)).validate(registry)
 
 
 def test_registry_has_exact_non_conflicting_identity_roles() -> None:

@@ -16,6 +16,10 @@ def _unique(rows: list[dict[str, Any]], key: str, reason: str) -> dict[str, Any]
     return indexed
 
 
+def _count_matches(value: object, expected: int) -> bool:
+    return type(value) is int and value == expected
+
+
 def _validate_coverage(
     coverage: dict[str, Any],
     entities: dict[str, Any],
@@ -29,16 +33,14 @@ def _validate_coverage(
         "known_sources": len(sources),
         "target_regimes": len(jurisdictions),
     }
-    if any(coverage.get(key) != value for key, value in expected.items()):
+    if any(
+        not _count_matches(coverage.get(key), value) for key, value in expected.items()
+    ):
         _fail("coverage_count_mismatch")
     return geographic
 
 
-def validate_catalogue_phase(catalogue: dict[str, Any]) -> dict[str, Any]:
-    """Validate structural accounting without promoting incomplete discovery."""
-    entities = _unique(catalogue["entities"], "id", "duplicate_entity")
-    sources = _unique(catalogue["sources"], "id", "duplicate_source")
-    jurisdictions = _unique(catalogue["jurisdictions"], "id", "duplicate_jurisdiction")
+def _validate_entities(entities: dict[str, Any], sources: dict[str, Any]) -> None:
     if any(row["entity_id"] not in entities for row in sources.values()):
         _fail("unknown_source_entity")
     for entity in entities.values():
@@ -49,6 +51,18 @@ def validate_catalogue_phase(catalogue: dict[str, Any]) -> dict[str, Any]:
         )
         if entity["source_ids"] != expected:
             _fail("entity_source_mismatch")
+        if not _count_matches(entity.get("known_sources"), len(expected)):
+            _fail("entity_source_count_mismatch")
+        if type(entity.get("complete_verified")) is not bool:
+            _fail("invalid_completion_flag")
+
+
+def validate_catalogue_phase(catalogue: dict[str, Any]) -> dict[str, Any]:
+    """Validate structural accounting without promoting incomplete discovery."""
+    entities = _unique(catalogue["entities"], "id", "duplicate_entity")
+    sources = _unique(catalogue["sources"], "id", "duplicate_source")
+    jurisdictions = _unique(catalogue["jurisdictions"], "id", "duplicate_jurisdiction")
+    _validate_entities(entities, sources)
     if any(row["entity_id"] not in entities for row in jurisdictions.values()):
         _fail("unknown_jurisdiction_entity")
 
@@ -68,12 +82,14 @@ def validate_catalogue_phase(catalogue: dict[str, Any]) -> dict[str, Any]:
         row.get("broader_discovery") != "complete" for row in reviews.values()
     )
     complete = sum(
-        bool(row.get("complete_verified"))
+        row["complete_verified"] is True
         for row in entities.values()
         if row["kind"] != "supranational"
     )
-    if coverage.get("verified_complete") != complete:
+    if not _count_matches(coverage.get("verified_complete"), complete):
         _fail("completion_evidence_mismatch")
+    if not _count_matches(coverage.get("remaining_unverified"), geographic - complete):
+        _fail("remaining_coverage_mismatch")
 
     blockers = []
     if broader:

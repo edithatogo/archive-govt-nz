@@ -1,0 +1,43 @@
+{
+  "artifact": {
+    "digest": "sha256:9f9b9bd856de05ba2a9481781564e0a49d368d1c6c2770b74b807a4845adc318",
+    "expired": false,
+    "expires_at": "2026-12-04T13:20:25Z",
+    "id": 9970365066,
+    "name": "legislation-exact-inventory-state-33968609350-1",
+    "size_in_bytes": 10628850
+  },
+  "lineage_sha256": "b597c2bd6cdb8a94c41b0d239e3e42a60485053d06a167a5bd05bb2fce4a528a",
+  "repository": "edithatogo/archive-govt-nz",
+  "repository_id": 1317899320,
+  "roots": {
+    "cas_root_sha256": "ed93a3f7cddac8f6bc938f1005f47cfe4c309707b34b3a511cc3b66fedb47a40",
+    "checkpoint_file_sha256": "de917823c8c5e8d167afa23bc3a4b72495443150df37844ce124e26dbcd19c0c",
+    "inventory_sha256": "9ca6dc505f991e015c6c997827878d8c7e9381b214a1544eb338328a285c6894",
+    "manifest_file_sha256": "2bf2d45d1544d73c7b1ae0c0dbaf8495d294c78b7b1bd0d49155d0d7f20546f6",
+    "manifest_sha256": "ab4ff4fbeb5f2d5df583c513ac4afd9806ca2bacd1b7851d8a7d979b8f667004",
+    "success_receipt_sha256": "768e2ee0d52aa0780505da3c38b7461e07d0c2abc2f8c076fc78666e4f8257dc"
+  },
+  "run": {
+    "head_branch": "main",
+    "head_sha": "87f65e8b37cbc16bc6c7cf8b5b93a19e48f0f207",
+    "id": 33968609350,
+    "run_attempt": 1
+  },
+  "schema_version": "archive-govt-nz.legislation-parent-reference/v1",
+  "source": {
+    "seed_id": "historical-work-ids-0001",
+    "seed_sha256": "59923176fa34796d7673a20b880af9abe5520fe484595edb220f2bbc0e3b33e7",
+    "source_set": "legislation"
+  },
+  "state_schemas": {
+    "checkpoint": "archive-govt-nz.legislation-checkpoint/v1",
+    "manifest": "archive-govt-nz.legislation-manifest/v1",
+    "success_receipt": "archive-govt-nz.legislation-harvest-receipt/v3"
+  },
+  "workflow": {
+    "id": 349172482,
+    "name": "Exact inventory legislation revalidation",
+    "path": ".github/workflows/exact-inventory.yml"
+  }
+}
