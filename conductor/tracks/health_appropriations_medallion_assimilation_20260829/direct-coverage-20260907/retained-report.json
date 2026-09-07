@@ -1,0 +1,286 @@
+{
+  "capture_manifest_sha256": "04145e4030bfddaecade1af542e12cb8a56a187c9c924b7a4c135537ccae9dab",
+  "cutoff": "2026-08-29",
+  "normalization_approval": "not_granted",
+  "payload_verification": "not_performed",
+  "publication_approval": "not_granted",
+  "rows": [
+    {
+      "capture_rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "capture_state": "captured",
+      "counts": null,
+      "discovery_state": "discovered",
+      "extraction_manifest_sha256": null,
+      "extraction_rights_state": null,
+      "extraction_state": null,
+      "family": "befu",
+      "gaps": [
+        "extraction_receipt_not_supplied"
+      ],
+      "source_id": "befu_2026-002",
+      "source_object_sha256": "521e7649b3814c8de2efa2e72502c8e35c6db7a94d6f84ebc22fd3fa9f7976d4",
+      "target_id": "befu_2026-002",
+      "url": "https://budget.govt.nz/budget/excel/befu2026/befu26-charts-data.xlsx",
+      "vintage": "BEFU-2026"
+    },
+    {
+      "capture_rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "capture_state": "captured",
+      "counts": {
+        "context": 22,
+        "inventoried_cells": 2375,
+        "normalized": 10,
+        "preserved_only": 2343,
+        "rejected": 0
+      },
+      "discovery_state": "discovered",
+      "extraction_manifest_sha256": "83bd8c0d661383712ade0e7ec1c14bb7cbdba9c93a83df74abbfc64a4586afea",
+      "extraction_rights_state": "not_evaluated",
+      "extraction_state": "passed",
+      "family": "befu",
+      "gaps": [],
+      "source_id": "befu_2026-003",
+      "source_object_sha256": "313ee040abd9a332cc36245da5a0c2cb0d38fe2cedc013d731c1f12db463b0d1",
+      "target_id": "befu_2026-003",
+      "url": "https://budget.govt.nz/budget/excel/befu2026/befu26-data-expense-tables.xlsx",
+      "vintage": "BEFU-2026"
+    },
+    {
+      "capture_rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "capture_state": "captured",
+      "counts": null,
+      "discovery_state": "discovered",
+      "extraction_manifest_sha256": null,
+      "extraction_rights_state": null,
+      "extraction_state": null,
+      "family": "befu",
+      "gaps": [
+        "extraction_receipt_not_supplied"
+      ],
+      "source_id": "befu_2026-004",
+      "source_object_sha256": "632afd3c24b4ca9c9f2066dd1112f4e5d6a0c9c503ae20f845d4153a7f2ac472",
+      "target_id": "befu_2026-004",
+      "url": "https://budget.govt.nz/budget/excel/befu2026/befu26-economic-forecasts-data.xlsx",
+      "vintage": "BEFU-2026"
+    },
+    {
+      "capture_rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "capture_state": "captured",
+      "counts": {
+        "blank": 0,
+        "input": 6451,
+        "normalized": 185,
+        "out_of_scope": 6266,
+        "rejected": 0
+      },
+      "discovery_state": "discovered",
+      "extraction_manifest_sha256": "f34000992fd65dca445e7ad251cb06df3c68107410355ea057ea9a2bf8481738",
+      "extraction_rights_state": "not_evaluated",
+      "extraction_state": "passed",
+      "family": "budget",
+      "gaps": [],
+      "source_id": "budget_2026-000",
+      "source_object_sha256": "3fc6bba178c78c4a4b259c920a6f55307ec95a547353f340086c86fc2a26f5a0",
+      "target_id": "budget_2026-000",
+      "url": "https://budget.govt.nz/budget/excel/data/b26-expenditure-data.xlsx",
+      "vintage": "Budget-2026"
+    },
+    {
+      "capture_rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "capture_state": "captured",
+      "counts": null,
+      "discovery_state": "discovered",
+      "extraction_manifest_sha256": null,
+      "extraction_rights_state": null,
+      "extraction_state": null,
+      "family": "budget",
+      "gaps": [
+        "extraction_receipt_not_supplied"
+      ],
+      "source_id": "budget_2026-001",
+      "source_object_sha256": "8243f6a3f9575af5ee048133f2695f3c4764ff7d86e7a74849fdafcf478cbfdb",
+      "target_id": "budget_2026-001",
+      "url": "https://budget.govt.nz/budget/excel/data/b26-revenue-data.xlsx",
+      "vintage": "Budget-2026"
+    },
+    {
+      "capture_rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "capture_state": "captured",
+      "counts": {
+        "dispositions": 1531,
+        "facts": 108,
+        "lineage": 1164,
+        "rejected": 0
+      },
+      "discovery_state": "discovered",
+      "extraction_manifest_sha256": "aee4578f1ee83f8c1ede63e36e840c6cd2140df8c6f463e71ec93da9e4e7d75a",
+      "extraction_rights_state": "not_evaluated",
+      "extraction_state": "passed",
+      "family": "fiscal",
+      "gaps": [],
+      "source_id": "fiscal_time_series-007",
+      "source_object_sha256": "de59f9028a81a697ee66eea04861edfd8e2c3a7e472b3b8798d976951964f70f",
+      "target_id": "fiscal_time_series-007",
+      "url": "https://budget.govt.nz/budget/excel/fiscal-time-series/fiscaltimeseries1972-2025-year-end25.xlsx",
+      "vintage": "Fiscal-Time-Series-1972-2025"
+    },
+    {
+      "capture_rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "capture_state": "captured",
+      "counts": null,
+      "discovery_state": "discovered",
+      "extraction_manifest_sha256": null,
+      "extraction_rights_state": null,
+      "extraction_state": null,
+      "family": "hyefu",
+      "gaps": [
+        "extraction_receipt_not_supplied"
+      ],
+      "source_id": "hyefu_2025-005",
+      "source_object_sha256": "588bb95b3c8632261b40f90eecf42ecb89559103d7ab277c0046ee30a995a4b0",
+      "target_id": "hyefu_2025-005",
+      "url": "https://budget.govt.nz/budget/excel/hyefu2025/hyefu25-charts-data.xlsx",
+      "vintage": "HYEFU-2025"
+    },
+    {
+      "capture_rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "capture_state": "captured",
+      "counts": {
+        "context": 22,
+        "inventoried_cells": 2346,
+        "normalized": 10,
+        "preserved_only": 2314,
+        "rejected": 0
+      },
+      "discovery_state": "discovered",
+      "extraction_manifest_sha256": "5ef89741ad695efd078ba7b7dca2a059948c5bc12069fb434c695ad9293083b5",
+      "extraction_rights_state": "not_evaluated",
+      "extraction_state": "passed",
+      "family": "hyefu",
+      "gaps": [],
+      "source_id": "hyefu_2025-006",
+      "source_object_sha256": "f9f9190a69ce0a7c53b89d690d50170e2a6a457e6821afeb93edc08cef4b9c7d",
+      "target_id": "hyefu_2025-006",
+      "url": "https://budget.govt.nz/budget/excel/hyefu2025/hyefu25-data-expense-tables.xlsx",
+      "vintage": "HYEFU-2025"
+    },
+    {
+      "capture_rights": {
+        "attribution": "Ministry of Health New Zealand",
+        "evidence": "https://www.health.govt.nz/about-this-site/copyright",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "capture_state": "captured",
+      "counts": {
+        "facts": 40,
+        "input": 20,
+        "lineage": 120
+      },
+      "discovery_state": "discovered",
+      "extraction_manifest_sha256": "b3a9afc2bab6562373b73d2f5c45b76a244792acbf813bfb54b4e2b66bce76a2",
+      "extraction_rights_state": "not_evaluated",
+      "extraction_state": "passed",
+      "family": "ministry",
+      "gaps": [],
+      "source_id": "moh_vote_health-008",
+      "source_object_sha256": "c1e7758667b8255e049603de8325d732f34a76e6099e0fe4de6553a36d48e9fc",
+      "target_id": "moh_vote_health-008",
+      "url": "https://www.health.govt.nz/system/files/2025-08/hair2024-fig27.csv",
+      "vintage": "MoH-HAIR-2024"
+    },
+    {
+      "capture_rights": {
+        "attribution": "Ministry of Health New Zealand",
+        "evidence": "https://www.health.govt.nz/about-this-site/copyright",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "capture_state": "captured",
+      "counts": {
+        "facts": 40,
+        "input": 20,
+        "lineage": 120
+      },
+      "discovery_state": "discovered",
+      "extraction_manifest_sha256": "714a0dd3fb53fa2ff26100e760983b791e81162fa30fb48d9f1d7131d8e338ed",
+      "extraction_rights_state": "not_evaluated",
+      "extraction_state": "passed",
+      "family": "ministry",
+      "gaps": [],
+      "source_id": "moh_vote_health-009",
+      "source_object_sha256": "7b9a51643550e3d890f4f341f27346d3466708fe924702ade4a731d1bb6266e4",
+      "target_id": "moh_vote_health-009",
+      "url": "https://www.health.govt.nz/system/files/2025-08/hair2024-fig28.csv",
+      "vintage": "MoH-HAIR-2024"
+    },
+    {
+      "capture_rights": {
+        "attribution": "Pharmac Te Pataka Whaioranga",
+        "evidence": "https://www.pharmac.govt.nz/about-this-site/copyright",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "capture_state": "captured",
+      "counts": {
+        "facts": 14,
+        "lineage": 186,
+        "table_cells": 64
+      },
+      "discovery_state": "discovered",
+      "extraction_manifest_sha256": "5eea323f1f9360fb7a92b7c2d9f92f1922dfb6f447a8252c8ca8b3ebf64ff248",
+      "extraction_rights_state": "not_evaluated",
+      "extraction_state": "passed",
+      "family": "pharmac",
+      "gaps": [],
+      "source_id": "pharmac_cpb-010",
+      "source_object_sha256": "eaf5801b819321f8aed7544fb16e6348779267fd3d5f8fb1d59410803acffbea",
+      "target_id": "pharmac_cpb-010",
+      "url": "https://www.pharmac.govt.nz/medicine-funding-and-supply/the-funding-process/setting-and-managing-the-combined-pharmaceutical-budget-cpb/budget-bid-information",
+      "vintage": "Pharmac-CPB-2026-08-07"
+    }
+  ],
+  "schema_version": "archive-govt-nz.health-direct-coverage/v1",
+  "scope": "explicit_targets_only",
+  "target_register_sha256": "402389ed59038e2e709621a408b05a5a2ec4352c8c380ef9fd36532fc33e49e9"
+}

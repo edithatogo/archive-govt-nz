@@ -1,0 +1,63 @@
+{
+  "schema_version": "archive-govt-nz.health-direct-coverage-validation/v1",
+  "base_commit": "917cbd449678f50b2f048f799462ae1ad226ad8b",
+  "scope": "Phase5.4 explicit direct targets metadata reporting only",
+  "requirements": [
+    "M-02",
+    "M-11",
+    "S-04"
+  ],
+  "acceptance": [
+    "AC-09",
+    "AC-11",
+    "AC-16"
+  ],
+  "dedicated_tests": 55,
+  "affected_tests": 79,
+  "coverage": {
+    "statements": [
+      129,
+      129
+    ],
+    "branches": [
+      30,
+      30
+    ],
+    "percent": 100
+  },
+  "mutation": {
+    "killed": 69,
+    "survived": 0,
+    "cache_hits": 0,
+    "cache_misses": 69,
+    "report_sha256": "894e5883a2dd88c37481a1d0dfc2dcbfe904fce5636b60f175e8f6ab2e2802e2"
+  },
+  "ruff": "passed",
+  "format": "passed",
+  "basedpyright": "passed",
+  "retained": {
+    "targets": 11,
+    "captured_receipts": 11,
+    "passed_extraction_receipts": 7,
+    "extraction_receipt_not_supplied": 4,
+    "independent_subprocess_replays": 2,
+    "byte_identical": true,
+    "input_metadata_hashes_unchanged": 9,
+    "payload_verification": "not_performed"
+  },
+  "files_sha256": {
+    "direct_coverage.py": "5bcd9254e49e6654ae5c35d74b6a2b7f6bb02dbbfec3ba6443d6b8496655fbf9",
+    "test_direct_coverage.py": "cb70fe559468381b5a645204c5aaf39fd660b2be8ded126775a46ed8a3e3195f",
+    "targets.json": "402389ed59038e2e709621a408b05a5a2ec4352c8c380ef9fd36532fc33e49e9",
+    "replay.py": "e3026dd0e6f4748b58db87161bb59ac9e54ddec798d585812f7aa7bf175d145d",
+    "retained-report.json": "765b5352db948e5d586414367d2b22befa71a4b50c26ce0f37bcb5b0d2ac6f3f",
+    "repair-decision.json": "5dd268440e93fc44d0abe2f99f51031565ad892c8007e63ff14c635fd0c89083"
+  },
+  "repair_approval": "pending_human_decision",
+  "self_review": "no_unresolved_findings",
+  "independent_review": "parent_pending",
+  "full_harness_run": false,
+  "shared_lifecycle_edited": false,
+  "publication": false,
+  "whole_phase_complete": false
+}
