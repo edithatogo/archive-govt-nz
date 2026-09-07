@@ -2167,3 +2167,17 @@ The exact commands and bounded failures are in
 red, 335 affected green tests (142 new), corrected Ruff regex warnings and
 passing configured basedpyright after unavailable ty. No production changes.
 Broad task remains in progress because semantic counterexamples are admitted.
+
+## 2026-09-07 — Fixture completion after acceptance correction
+
+Continued on the same isolated worktree after `7d2eafc8`. Re-read the exact
+Silver/AC-05/AC-16 clauses and approved Budget/historical/census/CPI/Pharmac
+contracts. Corrected the previous conflation of permissive transport admission
+with missing fixture acceptance. Added linked synthetic source cells and 24
+tests; observed `KeyError: source_cells` red before adding the fixture cells.
+Final affected suite: 673 passed in 4.24 seconds; Ruff check/format-check and
+basedpyright pass for both added test modules. Fixed unused/type-only imports.
+Exact command and scope: `eight-recordset-fixture-completion.md`; paired receipt
+`eight-recordset-fixture-completion.json`. Marked the original task complete,
+with full integrated checkpoint still delegated to parent. No production,
+global registry, original checkout, dependency or external-state changes.

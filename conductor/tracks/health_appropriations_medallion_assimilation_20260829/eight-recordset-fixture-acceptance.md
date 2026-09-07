@@ -1,5 +1,11 @@
 # Eight-recordset fixture acceptance — 2026-09-07
 
+**Historical assessment, superseded:** see
+[fixture completion](./eight-recordset-fixture-completion.md). The initial
+blocking interpretation below conflated fixture verification with live/source
+qualification. Linked fixture and approved adapter assertions now complete the
+original fixture task locally; parent retains integrated checkpoint assurance.
+
 Phase 3.1's original broad fixture task remains pending (`[~]`); this is not
 a substitute completed task. Requirement mapping: M-05, M-06, M-18; AC-05,
 AC-16. Base: `0526365a48f58d241d52a301a901760147cc3eee` (PR407).

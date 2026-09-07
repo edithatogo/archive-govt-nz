@@ -1084,3 +1084,20 @@ The [full acceptance matrix](./eight-recordset-fixture-acceptance.md) records
 unmet source identity, units/time, rights and Bronze lineage requirements.
 No source/global registry/dirty checkout changes and no phase completion.
 Parent must run integrated assurance. No additional in-scope fix is outstanding.
+
+## 2026-09-07 — Fixture acceptance correction and completion review
+
+Reassessed the preceding broad-source blockers against the actual fixture task.
+They were an overbroad interpretation, not missing production functionality
+required by this task. Verified all eight linked fixtures, 40 source-field
+observations, nine corruptions caught by the independent fixture oracle,
+approved adapter ID preimages, actual projection replay/accounting and eight
+source-lineage corruptions rejected by production adapters. CPI/Pharmac mapping
+is explicitly test-only and retains source ID/amount lineage without asserting
+complete canonical projection. Existing source-specific negative/property tests
+are included in the 673-test affected run. Lint/format/types pass.
+
+The [final matrix](./eight-recordset-fixture-completion.md) identifies no unmet
+fixture clause. Marking the fixture task complete does not close source-family
+projection tasks or the full AC-16 checkpoint. No new production validator,
+dependency or external action was needed. No in-scope review finding remains.

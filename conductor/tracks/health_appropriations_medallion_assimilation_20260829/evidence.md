@@ -642,3 +642,14 @@ Schema, Arrow and generated Parquet; 335 affected tests pass, including 142 new
 cases. Stable source-key construction, unit/time/rights qualification and
 complete verified Bronze lineage remain unmet. The broad task stays `[~]`.
 Focused lint/format/types pass; parent retains full integrated assurance.
+
+## 2026-09-07 — Fixture task completed; initial interpretation superseded
+
+[Completion assessment](./eight-recordset-fixture-completion.md) and
+[receipt](./eight-recordset-fixture-completion.json) supersede the immediately
+preceding blocking interpretation. All named fixture dimensions now have
+transport, linked synthetic Bronze and approved adapter contract assertions.
+Added 24 cases (166 total new fixture tests); 673 affected tests pass. The
+original Phase 3.1 fixture task is `[x]`; whole-phase status remains in progress.
+No live rights/source qualification is inferred. AC-16 full integrated checkpoint
+remains assigned to the parent; no full harness, push, merge or publication.

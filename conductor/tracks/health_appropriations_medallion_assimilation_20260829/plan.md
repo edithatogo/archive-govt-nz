@@ -253,16 +253,17 @@ repository validation command. External gates block only their affected task.
   Functional commit `d67bd41`; 34 focused tests, 30 cold mutant kills and a
   full local harness pass with 2,424 tests. Hosted delivery remains separate.
   [M-05, M-06, M-18; AC-05, AC-16]
-- [~] Add failing JSON Schema/Arrow/Parquet fixtures for the eight required
+- [x] Add failing JSON Schema/Arrow/Parquet fixtures for the eight required
   `health_appropriations` record sets, versioning, stable IDs, fixed-precision
   money, null reasons, units, vintages, bitemporal fields, rights and lineage.
   [M-05, M-06, M-18; AC-05, AC-16]
-  All eight synthetic fixture contracts and 142 new cases now exercise the
-  existing normalization boundary; 335 affected tests pass. Broad acceptance
-  remains pending: source-derived identity, unit/time qualification, rights
-  evidence and complete lineage to verified Bronze are not enforced. See
-  `eight-recordset-fixture-acceptance.md` and its paired validation receipt.
-  Full integrated assurance remains assigned to the parent.
+  Initial fixture commit `7d2eafc8`; completed with linked synthetic Bronze,
+  approved adapter ID/lineage replay and corruption assertions (166 new cases
+  total; 673 affected tests pass). See `eight-recordset-fixture-completion.md`
+  and `eight-recordset-fixture-completion.json`. The initial assessment
+  incorrectly treated live/source qualification as fixture blockers; corrected
+  without closing those separate tasks. Full integrated AC-16 checkpoint
+  remains assigned to the parent; no whole-phase completion claim.
 - [x] Add negative fixtures for binary-as-text decoding, unknown layouts,
   ambiguous units, duplicate keys, incompatible periods, missing lineage,
   formula/cached-value ambiguity and unjustified classification mappings.

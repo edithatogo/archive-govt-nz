@@ -179,7 +179,7 @@ def test_money_contradictions_fail_for_each_fact(
 def test_semantic_gaps_are_characterized_not_approved(
     name: str, changes: dict[str, Any]
 ) -> None:
-    """Admission currently accepts these counterexamples; broad AC-05 stays open."""
+    """Transport is permissive; approved adapters enforce source semantics."""
     row = {**rows_for(name)[0], **changes}
     table = normalize_rows(name, [row])
     validate_table(name, table)

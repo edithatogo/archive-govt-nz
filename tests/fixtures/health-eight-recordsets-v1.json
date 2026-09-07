@@ -97,6 +97,15 @@
       "rule": "fixture:exact_decimal:v1"
     }
   },
+  "source_cells": {
+    "source_inventory": {"disposition": "preserved_only", "reason": "synthetic_not_acquired"},
+    "appropriation_fact": {"amount": "123.450", "unit": "NZD_millions", "source_label": "Synthetic health allocation"},
+    "health_spending_fact": {"amount": "123.450", "unit": "NZD_millions", "accounting_basis": "synthetic_accrual"},
+    "fiscal_context_fact": {"amount": "123.450", "unit": "NZD_millions", "measure": "synthetic_gdp"},
+    "pharmaceutical_budget_fact": {"amount": "123.450", "unit": "NZD_millions", "funding_regime": "synthetic_regime_2025"},
+    "price_population_fact": {"amount": "123.450", "unit": "index_points", "base_period": "synthetic_2025_Q2_1000", "denominator_definition": "synthetic_fixed_basket"},
+    "classification_dimension": {"source_label": "Synthetic health allocation", "mapping_state": "unresolved"}
+  },
   "observations": [
     {},
     {
