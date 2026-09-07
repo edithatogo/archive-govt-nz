@@ -8,6 +8,7 @@ from typing import Any
 
 import pytest
 
+from archive_govt_nz import assurance
 from archive_govt_nz.assurance import (
     COMMAND_TIMEOUT_SECONDS,
     STAGES,
@@ -222,3 +223,56 @@ def test_validation_wrappers_use_the_verified_parallel_lane() -> None:
     for wrapper in (shell, powershell):
         assert "--pytest-workers auto" in wrapper
         assert "--pytest-distribution loadscope" in wrapper
+
+
+@pytest.mark.skipif(sys.platform == "win32", reason="process groups are POSIX-specific")
+def test_run_command_kills_process_group_on_timeout(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """A timed-out stage terminates its isolated process group and returns 124."""
+    calls: list[tuple[int, int]] = []
+
+    class TimedOutProcess:
+        pid = 4242
+
+        def wait(self, *, timeout: int | None = None) -> int:
+            if timeout is not None:
+                raise subprocess.TimeoutExpired(("stage",), timeout)
+            return -9
+
+    def fake_popen(*_args: object, **_kwargs: object) -> TimedOutProcess:
+        return TimedOutProcess()
+
+    monkeypatch.setattr("archive_govt_nz.assurance.subprocess.Popen", fake_popen)
+    monkeypatch.setattr(
+        "archive_govt_nz.assurance.os.killpg", lambda pid, sig: calls.append((pid, sig))
+    )
+    assert run_command(("stage",)) == 124
+    assert calls
+    assert calls[0][0] == 4242
+
+
+def test_run_command_kills_process_on_windows_timeout(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """A timed-out Windows stage uses direct process termination."""
+    killed: list[bool] = []
+
+    class TimedOutProcess:
+        pid = 4343
+
+        def wait(self, *, timeout: int | None = None) -> int:
+            if timeout is not None:
+                raise subprocess.TimeoutExpired(("stage",), timeout)
+            return -9
+
+        def kill(self) -> None:
+            killed.append(True)
+
+    def fake_popen(*_args: object, **_kwargs: object) -> TimedOutProcess:
+        return TimedOutProcess()
+
+    monkeypatch.setattr(assurance.os, "name", "nt")
+    monkeypatch.setattr(assurance.subprocess, "Popen", fake_popen)
+    assert run_command(("stage",)) == 124
+    assert killed

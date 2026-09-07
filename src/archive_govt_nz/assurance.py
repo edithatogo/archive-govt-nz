@@ -1,6 +1,7 @@
 """Typed orchestration for the repository assurance gate."""
 
 import os
+import signal
 import subprocess
 from collections.abc import Callable, Sequence
 from dataclasses import dataclass
@@ -222,14 +223,19 @@ def run_command(command: tuple[str, ...]) -> int:
     env = dict(os.environ)
     env.setdefault("COVERAGE_CORE", "ctrace")
     env.setdefault("PYTHON_JIT", "0")
+    process = subprocess.Popen(
+        command,
+        env=env,
+        start_new_session=(os.name == "posix"),
+    )
     try:
-        return subprocess.run(
-            command,
-            check=False,
-            timeout=COMMAND_TIMEOUT_SECONDS,
-            env=env,
-        ).returncode
+        return process.wait(timeout=COMMAND_TIMEOUT_SECONDS)
     except subprocess.TimeoutExpired:
+        if os.name == "posix":
+            os.killpg(process.pid, signal.SIGKILL)
+        else:
+            process.kill()
+        process.wait()
         return 124
 
 
