@@ -184,7 +184,7 @@ repository validation command. External gates block only their affected task.
 
 ### 2.1 Bronze integrity contracts first
 
-- [~] Add failing tests for streaming single-pass ingestion, expected-length
+- [x] Add failing tests for streaming single-pass ingestion, expected-length
   mismatch, SHA-256/BLAKE3/CID identity, CAS deduplication, atomicity, WARC
   linkage, resume, interruption, unchanged/changed observations, corrupt ZIPs,
   withdrawal, restriction and tombstones. [M-03, M-04, M-18, S-01, S-02;
@@ -194,8 +194,9 @@ repository validation command. External gates block only their affected task.
   98.99% scoped coverage, three length-guard mutants killed in the initial slice.
   The final redirect-boundary follow-up now has 169 affected tests passing and
   100% capture line/branch coverage without exclusions; see
-  `bronze-redirect-boundary.md`. Local implementation stops at the requested
-  review boundary, pending parent full assurance and independent review only.
+  `bronze-redirect-boundary.md`. Full assurance, independent review and protected
+  delivery completed in PR #421 (merge `2c76fc3c`); strict WARC/source/CAS binding
+  and malformed-record regressions are included. See `ordered-delivery-20260907.md`.
   Encoded transport-body length has 11 additional executable
   cases and four killed mutants; see `bronze-wire-length.md` (161 affected
   tests pass). Cooperative per-resource resume and non-overwriting
@@ -365,9 +366,13 @@ repository validation command. External gates block only their affected task.
   appropriation and HYEFU/BEFU summary extraction using Bronze-derived test
   fixtures; cover headers, footers, blanks, formulas, duplicates, units and
   source-layout failures. [M-07, M-08, M-18; AC-03, AC-06, AC-16]
-- [ ] Create a row-level parity oracle for all five SQLite tables/312 rows and
+- [x] Create a row-level parity oracle for all five SQLite tables/312 rows and
   a repair-ledger schema requiring source coordinates and rationale for every
   deviation. [M-08, M-18; AC-06, AC-11, AC-16]
+  Delivered in PR #421 (merge `2c76fc3c`), including generated-column rejection
+  and exact source-coordinate deviation accounting. This closes oracle/schema
+  implementation only; acceptance of the 29 restorations and one precision
+  difference remains pending. See `donor-parity.md` and `ordered-delivery-20260907.md`.
 
 ### 4.2 Build source-faithful donor Silver records
 
