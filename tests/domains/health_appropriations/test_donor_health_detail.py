@@ -5,6 +5,7 @@ from pathlib import Path
 
 import pytest
 from openpyxl import Workbook
+from openpyxl.worksheet.worksheet import Worksheet
 
 from archive_govt_nz.domains.health_appropriations.donor_health_detail import (
     PROFILES,
@@ -15,6 +16,7 @@ from archive_govt_nz.domains.health_appropriations.donor_health_detail import (
 
 def test_literal_reference_chain_retains_every_step() -> None:
     sheet = Workbook().active
+    assert isinstance(sheet, Worksheet)
     sheet["K100"] = "=K86"
     sheet["K86"] = "=$K$53"
     sheet["K53"] = "=K35"
@@ -37,6 +39,7 @@ def test_literal_reference_chain_retains_every_step() -> None:
 )
 def test_unsupported_or_cyclic_header_fails(formula: str) -> None:
     sheet = Workbook().active
+    assert isinstance(sheet, Worksheet)
     sheet["K100"] = formula
     with pytest.raises(ValueError, match="donor_health_detail"):
         resolve_header(sheet, "K100")
@@ -44,6 +47,7 @@ def test_unsupported_or_cyclic_header_fails(formula: str) -> None:
 
 def test_depth_limit() -> None:
     sheet = Workbook().active
+    assert isinstance(sheet, Worksheet)
     for row in range(1, 10):
         sheet[f"A{row}"] = f"=A{row + 1}"
     sheet["A10"] = "Actual"
@@ -61,6 +65,7 @@ def test_admission(
     _, title, first = PROFILES[vintage]
     book = Workbook()
     sheet = book.active
+    assert isinstance(sheet, Worksheet)
     sheet.title = title
     sheet[f"D{first - 2}"] = "($millions)"
     for column in "FGHIJKLMNO":
@@ -114,6 +119,7 @@ def test_missing_source(tmp_path: Path) -> None:
 @pytest.mark.parametrize("value", [None, 2025, True, "=1", "#REF!"])
 def test_only_literal_text_terminal(value: str | int | None) -> None:
     sheet = Workbook().active
+    assert isinstance(sheet, Worksheet)
     sheet["K100"] = value
     with pytest.raises(ValueError, match="donor_health_detail"):
         resolve_header(sheet, "K100")
