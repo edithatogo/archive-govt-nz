@@ -27,7 +27,7 @@ def test_canonical_census_has_one_evidenced_disposition_per_source() -> None:
 
 
 @pytest.mark.parametrize(
-    (("field", "value"), [("disposition", "not-a-disposition"), ("reason", "")])
+    ("field", "value"), [("disposition", "not-a-disposition"), ("reason", "")]
 )
 def test_census_rejects_unsupported_or_unevidenced_dispositions(
     tmp_path: Path, field: str, value: str
