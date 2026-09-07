@@ -20,6 +20,47 @@ from tools.evaluate_legislation_completion import DIMENSIONS, evaluate_completio
 ROOT = Path(__file__).parents[2]
 
 
+def test_repository_operation_completion_is_bound_to_primary_proof() -> None:
+    """Actual hosted proof, not a closed issue, must resolve the old blocker."""
+    complete, evaluation = evaluate_completion(ROOT)
+    assert complete, evaluation
+    proof = json.loads(
+        (
+            ROOT / "evidence/completion-proofs/operational-state-verification.json"
+        ).read_text()
+    )
+    evidence = {}
+    for name, reference in proof["source_evidence"].items():
+        payload = (ROOT / reference["path"]).read_bytes()
+        assert hashlib.sha256(payload).hexdigest() == reference["sha256"]
+        evidence[name] = json.loads(payload)
+    first = evidence["ordered_first_cycle"]
+    second = evidence["second_cycle"]
+    recovered = evidence["post_operation_durable_recovery"]
+    assert first["status"] == "complete"
+    assert first["run"]["id"] == 33968609350
+    assert first["verification"]["ordered_source_preflight_verified"] is True
+    assert second["status"] == recovered["status"] == "verified"
+    assert second["run_id"] == proof["second_cycle_run"] == 34076094680
+    assert second["works_accounted"] == 500
+    assert second["input_objects"] == second["output_objects"] == 904
+    assert second["reconciliation_mismatches"] == 0
+    for key in (
+        "all_input_cas_preserved",
+        "checkpoint_batch_completed",
+        "preflight_before_harvest",
+        "preflight_input_state_verified",
+        "output_usable_as_parent",
+        "local_state_unchanged",
+    ):
+        assert second[key] is True
+    assert recovered["recovery"]["cas_objects_reconstructed"] == 552
+    assert recovered["recovery"]["mismatches_count"] == 0
+    assert recovered["restored_state_unchanged"] is True
+    assert recovered["fresh_anonymous_download"] is True
+    assert recovered["started_at"] > second["observed_at"]
+
+
 def _write_repo(tmp_path: Path, statuses: dict[str, str] | None = None) -> Path:
     schema = tmp_path / "schemas/legislation-evidence-index-v1.schema.json"
     schema.parent.mkdir(parents=True)

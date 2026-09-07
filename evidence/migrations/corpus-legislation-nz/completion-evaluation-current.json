@@ -1,6 +1,6 @@
 {
   "schema_version": "archive-govt-nz.completion-evaluator/v2",
-  "evaluated_at": "2026-09-03T18:33:57Z",
+  "evaluated_at": "2026-09-07T02:57:36Z",
   "evidence_index": "evidence/migrations/corpus-legislation-nz/evidence-index.json",
   "evidence_index_valid": true,
   "dimensions": {
@@ -13,12 +13,12 @@
       "rationale": "Final donor-head capability accounting and merged target contracts establish code and capability migration only."
     },
     "operational_state_migration": {
-      "status": "incomplete",
+      "status": "complete",
       "proof_ids": [
-        "target-500-work-proof"
+        "operational-state-completion-readback"
       ],
       "proof_eligible": true,
-      "rationale": "Canonical state was merged, but the target-owned 500-work execution, reconciliation, continuation and recovery proof was not dispatched and remains blocked."
+      "rationale": "Ordered 500-work run33968609350 and independently verified904-parent continuation34076094680 have complete accounting, zero reconciliation mismatches, valid custody/seals and post-operation fresh552 durable recovery."
     },
     "corpus_custody_recoverability": {
       "status": "complete",
@@ -37,13 +37,11 @@
       "rationale": "Maintainer-authorized target-origin publication and anonymous exact-revision readback verify the canonical Hugging Face identity, package, metadata, card, and rights boundary."
     }
   },
-  "status": "incomplete",
-  "blockers": [
-    "dimension_incomplete:operational_state_migration:incomplete"
-  ],
+  "status": "complete",
+  "blockers": [],
   "errors": [],
-  "evidence_index_sha256": "e23a0f1024819f3198c343f574e8cd202f25da3c77d2a477ff824fed2ec4cccf",
-  "index_id": "legislation-consolidation-evidence-20260901",
-  "target_commit": "6755e12a48536de938b6f5955fe974d4b1de1b75",
-  "donor_commit": "b40587f1b1aec7356a0f623916fcc8212397d283"
+  "evidence_index_sha256": "b6adf7618ebba4d8e76afdcb1fc6ef89226491aa36e4fd6b26f244d8f14a43e8",
+  "index_id": "legislation-consolidation-evidence-20260907-ordered",
+  "target_commit": "7afaec8e4629477aa4f18c0a35c88f815cf05a5c",
+  "donor_commit": "905f9e07c17af9d9d25dbe2b1c052fb8a290a4e3"
 }
