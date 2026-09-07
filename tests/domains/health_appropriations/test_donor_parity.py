@@ -41,7 +41,7 @@ def database(path: Path, *, extra: bool = False) -> str:
 
 
 def test_identical_rows_and_deterministic_receipt(tmp_path: Path) -> None:
-    path = tmp_path / "donor ?#.sqlite"
+    path = tmp_path / "donor # %23.sqlite"
     pin = database(path)
     snapshot = read_database(path, pin)
     result = compare_databases(snapshot, snapshot)
