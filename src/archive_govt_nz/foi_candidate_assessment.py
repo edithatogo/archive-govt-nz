@@ -92,11 +92,18 @@ def _robots(observation: dict[str, Any], pages: dict[str, Any]) -> dict[str, Any
     api_urls = sorted(
         {link["url"] for link in homepage["selected_links"] if "/api/" in link["url"]}
     )
-    # The pinned Python 3.14 parser handles wildcard/end-anchor path rules.
-    # Evaluate the default agent, never a privileged Googlebot exception.
+    # Older supported Python patch releases lack wildcard/end-anchor matching.
+    # Conservatively deny complex rule sets, even on newer parsers; evaluate
+    # the default agent, never a privileged crawler exception.
+    complex_rules = any(
+        re.match(r"\s*(?:allow|disallow)\s*:.*[*$]", line, re.IGNORECASE)
+        for line in record["text"].splitlines()
+    )
     api_allowed = None
     if record["status"] == HTTPStatus.OK and api_urls:
-        api_allowed = all(parser.can_fetch("*", url) for url in api_urls)
+        api_allowed = not complex_rules and all(
+            parser.can_fetch("*", url) for url in api_urls
+        )
     return {
         "status": "observed" if record["status"] == HTTPStatus.OK else "unverified",
         "body_sha256": record["body_sha256"],
