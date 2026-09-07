@@ -88,3 +88,31 @@ AC04/AC11/AC12: reject wildcard/end-anchor robots path rules before probe page
 admission independently of the Python 3.14 patch release. Exercise a permissive
 legacy parser mock; preserve simple rules, default-agent selectors and comments.
 Unsupported rules remain unknown access, not rights decisions or publication.
+
+
+## P2.15 guarded next-delivery acceptance
+
+AC04/AC09/AC11: retain the corrected-collector six-target outcomes separately from
+pre-fix evidence; preserve GG timeout and UM unsupported-rules blockage without
+bypass. Assess one already-linked AL older index for bounded year navigation and
+an explicit entrypoint/adapter gap contract. Do not fetch annual resources or
+infer record counts, rights, publication or country completeness. Preserve the
+frozen delivery tree and historical observations; focused tests only, parent gate.
+
+## P2.16 canonical factual join acceptance
+
+AC04/AC09/AC11: deterministically join the exact pinned rollout, candidate and
+linked dispositions into one v2 metadata index. Preserve all original 30 rows,
+all 225 dated assessments, every pinned entity and the historical rollout state.
+Reject inexact/duplicate/cross-entity joins, changed inputs, absent candidate
+receipts and factual-to-execution promotion. Generate paired schema-valid machine
+and human reports with null unknown denominators. Explicit blocked/unknown
+outcomes satisfy bounded factual disposition coverage; exhaustive discovery is
+not required. Parent owns umbrella lifecycle and full integration; no publication.
+
+## P2.17 local CLI acceptance
+
+Provide explicit --canonical-track PATH selection through the existing generator.
+Default v1 files and no-overwrite behavior remain compatible. Reproduce actual
+v2 bytes; reject invalid pins and conflicting output paths before writes. No
+network, publication, schedule/default publisher or shared lifecycle changes.

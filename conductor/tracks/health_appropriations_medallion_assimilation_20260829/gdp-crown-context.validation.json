@@ -1,0 +1,114 @@
+{
+  "schema_version": "archive-govt-nz.gdp-crown-context-validation/v1",
+  "scope": "Phase1.2_M02_M06_M12_source_bound_context_and_admission_policy",
+  "register": "gdp-crown-context.json",
+  "red": [
+    {
+      "kind": "missing_module",
+      "result": "expected_import_error"
+    },
+    {
+      "kind": "stale_preflight_gap",
+      "result": "failed_before_resolution_only_fix"
+    }
+  ],
+  "focused": {
+    "tests": 122,
+    "new_module_tests": 28,
+    "module_statements": 39,
+    "module_branches": 4,
+    "module_coverage_percent": 100,
+    "lint": "passed",
+    "format": "passed",
+    "types": "passed"
+  },
+  "mutants": {
+    "total": 18,
+    "killed": 18,
+    "survived": 0,
+    "timeout": 0,
+    "error": 0,
+    "pardoned": 0,
+    "cache_hits": 0,
+    "coverage_filter": false,
+    "workers": 2,
+    "report_sha256": "8c4b434e512fa389dbd00b4f4616aa62cd0c35027c15ac6cf78eacca7fd9710f"
+  },
+  "original_audit": {
+    "mode": "read_only_retained_bytes",
+    "network_requests": 0,
+    "raw_payloads_in_git": false,
+    "hashes_unchanged": true,
+    "formula_evaluation": false,
+    "cache_values_admitted": false,
+    "cache_presence_observed": true
+  },
+  "retained": [
+    {
+      "source": "stats",
+      "bytes": 49887,
+      "selected": 60,
+      "carrier": "literal_numeric",
+      "native_preflight": "passed",
+      "manifest": "silver/raw-stats-gdp-20260831-v1/MANIFEST.json",
+      "manifest_sha256": "639b3c7da60f2afa1b860c5f6c8f1c4c0ae24bf17aa7af63bf8a06a1f6471b35",
+      "derivative_hashes_verified": 3,
+      "counts": {
+        "facts": 60,
+        "lineage": 900,
+        "dispositions": 2287
+      }
+    },
+    {
+      "source": "fiscal",
+      "bytes": 116265,
+      "manifest": "silver/raw-historical-2025-20260831-v1/MANIFEST.json",
+      "manifest_sha256": "aee4578f1ee83f8c1ede63e36e840c6cd2140df8c6f463e71ec93da9e4e7d75a",
+      "transport_reader": "read_historical_snapshot",
+      "transport_status": "snapshot_verified",
+      "semantic_execution": "not_performed",
+      "derivative_hashes_verified": 3,
+      "retained_gdp_facts": 54,
+      "core_literal_cells": 32,
+      "total_literal_cells": 29,
+      "native_unit": "NZD_millions",
+      "source_unit": "$ millions",
+      "ISO_currency_qualification": "not_inferred_from_native_unit"
+    },
+    {
+      "source": "befu",
+      "bytes": 193830,
+      "total_formula_cells": 10,
+      "numeric_cache_presence": 10,
+      "cache_freshness": "unqualified",
+      "numeric_admission": "not_admitted"
+    },
+    {
+      "source": "hyefu",
+      "bytes": 191581,
+      "total_formula_cells": 10,
+      "numeric_cache_presence": 10,
+      "cache_freshness": "unqualified",
+      "numeric_admission": "not_admitted"
+    }
+  ],
+  "all_six_metadata_profiles": "reviewed_metadata_hash_bound",
+  "analytical_selection": "not_selected",
+  "consolidation_equivalence": "not_asserted",
+  "currency": null,
+  "rights": "not_evaluated",
+  "promotion": "not_performed",
+  "native_unknowns_overwritten": false,
+  "new_adapters": 0,
+  "new_output_packages": 0,
+  "remaining": {
+    "literal_Crown": "separate_loss_accounted_expense_adapter_contract",
+    "forecast_Crown": "formula_cache_period_and_accounting_qualification",
+    "historical_GDP": "currency_evidence_and_semantic_projection",
+    "analytics": "explicit_period_vintage_and_denominator_contract"
+  },
+  "review": "passed_scoped_self_review",
+  "full_harness": "not_run_parent_owned",
+  "shared_lifecycle_edits": false,
+  "remote_mutations": false
+}

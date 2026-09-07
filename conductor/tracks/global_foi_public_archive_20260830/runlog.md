@@ -298,6 +298,24 @@ PYTHONPATH=src /Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/python -m p
 /Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/basedpyright src/archive_govt_nz/foi_reconciliation.py tests/test_foi_reconciliation.py
 ```
 
+
+## 2026-09-07 — P2.15 isolated next-delivery worktree
+
+Retained held guarded cohort from 03:55:17–03:55:29 UTC, then made one additional
+AL year-index read 03:59:06–03:59:10 UTC under corrected guard `9ed5f491`. No annual
+resources, bypass, 223 replay or rights/publication action. Initial parser test
+failed for missing module; final focused checks pass. See `guarded-linked-20260907/README.md`.
+
+```sh
+PYTHONPATH=src /Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/python -m pytest -q tests/test_foi_year_navigation.py tests/test_foi_linked_assessment.py tests/test_foi_candidate_probe.py tests/test_foi_candidate_cohort.py tests/test_foi_candidate_assessment.py tests/test_foi_reconciliation.py tests/test_foi_catalogue.py tests/test_foi_discovery.py tests/test_foi_rollout.py tests/test_verify_foi_rollout_evidence.py --cov=archive_govt_nz.foi_year_navigation --cov-branch --cov-report=term-missing --cov-fail-under=100
+/Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/ruff check src/archive_govt_nz/foi_year_navigation.py tests/test_foi_year_navigation.py
+/Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/ruff format --check src/archive_govt_nz/foi_year_navigation.py tests/test_foi_year_navigation.py
+/Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/basedpyright src/archive_govt_nz/foi_year_navigation.py tests/test_foi_year_navigation.py
+```
+
+269 tests pass; new module 100% line/branch coverage. Parent owns full harness and
+lifecycle. Current frozen delivery worktree remains at `9ed5f491`, clean.
+
 Result: 79 focused tests passed; 100% new-module line/branch coverage; scoped
 Ruff, formatting and typing passed. Checked-in report byte reproduction is
 covered by a regression test. Full integration harness is delegated to the
@@ -416,3 +434,29 @@ PYTHONPATH=src /Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/python -m p
 /Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/ruff format --check src/archive_govt_nz/foi_candidate_probe.py tests/test_foi_candidate_probe.py
 /Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/basedpyright src/archive_govt_nz/foi_candidate_probe.py tests/test_foi_candidate_probe.py
 ```
+
+## P2.16 isolated canonical join — 2026-09-07
+
+Created codex/foi-canonical-join-20260907 in the separate canonical-join worktree
+from 383c06367f840c07bbb9d15c599a60800b30643c. Initial focused test was red
+(ModuleNotFoundError). Implemented the pinned v2 join and existing-exporter
+extension, generated canonical-index-20260907, and reviewed negative joins,
+privacy, retained evidence and schema boundaries. No source-site requests.
+
+Final focused command and bounded development failures are recorded verbatim in
+canonical-join-20260907.md: 330 passed, 100% line/branch on both changed modules,
+seven guard mutants killed. Static commands: the existing .venv/bin/ruff
+format --check and check, and .venv/bin/basedpyright, on
+src/archive_govt_nz/foi_canonical.py, src/archive_govt_nz/foi_catalogue.py,
+tests/test_foi_canonical.py and tests/test_foi_canonical_mutants.py; all passed.
+No full harness, publication, schedule change or shared lifecycle mutation.
+
+## P2.17 generator opt-in — 2026-09-07
+
+Added the explicit canonical-track option on the existing isolated branch after
+a5352fa47d60dcf44f75e3c012c4f0beba9f0367. Initial red: unrecognized option and
+identical output rewrites. Final exact pytest command in canonical-cli-20260907.md:
+86 passed, CLI 100% line/branch, seven canonical guard mutants killed. Existing
+.venv/bin/ruff format --check and check, plus .venv/bin/basedpyright, passed for
+tools/build_foi_catalogue.py and tests/test_build_foi_catalogue.py. No full harness
+or network; generated canonical255 bytes and publishing defaults unchanged.

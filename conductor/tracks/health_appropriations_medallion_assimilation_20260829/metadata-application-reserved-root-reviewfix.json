@@ -1,0 +1,22 @@
+{
+  "schema_version": "archive-govt-nz.health-metadata-reserved-root-reviewfix/v1",
+  "base_commit": "bfc531596c9fdd2c6be912b1a1a6401131e2170e",
+  "finding": "P2_case_insensitive_reserved_roots_and_descendants",
+  "reserved_roots": ["manifest.json", "ro-crate-metadata.json", "readme.md", "metadata"],
+  "red": {"failed_missing_expected_exception": 18, "passed": 4},
+  "green": {"new_regressions": 22, "module_tests": 116, "affected_tests": 164},
+  "coverage": {"statements": 139, "branches": 14, "percent": 100},
+  "mutations": {"baseline_exit": 0, "total": 28, "killed_with_pytest_exit_1": 28},
+  "lint": "passed",
+  "format": "passed",
+  "types": "passed",
+  "files": {
+    "src/archive_govt_nz/domains/health_appropriations/metadata_application.py": "0325999d5d0c18ab8f004748b8f6d7624dd4f6401477b0b88d1769fc8bc1625e",
+    "tests/domains/health_appropriations/test_metadata_application.py": "28675107dd55ce7bfc60a6ef63afe0f47dab12314689b00c1efbb7745072c665",
+    "tests/domains/health_appropriations/metadata_application_mutations.py": "3f7cb905cf1f235c1813b707351483b045ffa722c219e4994e83512d2fe93efe"
+  },
+  "full_harness": "not_run_parent_owned",
+  "shared_lifecycle_changed": false,
+  "publication_performed": false,
+  "independent_rereview": "parent_owned_pending"
+}

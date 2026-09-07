@@ -1,0 +1,28 @@
+{
+  "al_navigation_end": "2026-09-07T03:59:10.444424+00:00",
+  "al_navigation_start": "2026-09-07T03:59:06.875225+00:00",
+  "artifacts": {
+    "al-year-navigation-assessment.json": "b851ca338b1478fdd613764c2d6593d9647fd5daa7842b5a711faaae15df597c",
+    "al-year-navigation-observations.json": "999a0b821fbe9deeedc891b8ce16fc7ce3de3c0ef1c12d1bd79cff613c376fec",
+    "linked-foi-assessment.json": "cd86e3f58965a9f6478859d04058fa3883d69850fc98a01767bf264d07d18c18",
+    "linked-foi-assessment.md": "5bb9c43dadc2010913d1ca7d3da5c561d1ce38ecd42fbebeee7cb971216038c2",
+    "linked-foi-observations-20260907.json": "88204a15dea54aeb0ada03502e03e9b53b231dd965e91050bc3045c650781ad8"
+  },
+  "collector_commit": "9ed5f491fb11a952f85e8c8b19aceece88ce3617",
+  "collector_module_sha256": "479fa9fd8042461d38dcb1da76a4444648a2c8a326e915c7c14c7585803bce0b",
+  "corrected_collector_fresh_read": true,
+  "full_223_replay": false,
+  "guarded_cohort_end": "2026-09-07T03:55:29.850844+00:00",
+  "guarded_cohort_start": "2026-09-07T03:55:17.146021+00:00",
+  "historical_inputs": {
+    "candidate-observations-remaining-20260907.json": "3f5f120344b9afedb8357cbe93ed8c021377223b8533d8b07e9fafbe51a502bd",
+    "linked-foi-observations-20260907.json": "ea4fd9bf98a61c71f454282c515f559eebfb513a3a44ed66a3bdb3a94e9da2bd",
+    "linked-foi-provenance-20260907.json": "99f6690d859d19868adf8ce00dcb02935d27c434963a7b654f5b4e562cbd35b8",
+    "rights-decision-owner-20260905.json": "ff24072bd7b1d1ca314ce0d20242f836aaa933ebd8e26be54801f38baeda2525"
+  },
+  "recorded_at": "2026-09-07T04:02:35.896530+00:00",
+  "rights_publication_schedule_gates": "unchanged",
+  "schema_version": "archive-govt-nz.foi-guarded-linked-provenance/v1",
+  "scope": "six_linked_targets_plus_one_AL_index_navigation_read_no_link_fanout",
+  "transport_compliance": "bounded_guard_execution_not_general_robots_certification"
+}

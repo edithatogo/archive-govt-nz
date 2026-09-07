@@ -225,6 +225,15 @@ def _jurisdictions(
 def catalogue_files(catalogue: dict[str, Any]) -> dict[str, bytes]:
     """Build deterministic indexes and their manifest without publishing them."""
     files: dict[str, bytes] = {}
+    if "canonical_join" in catalogue["provenance"]:
+        files["registry.json"] = (
+            json.dumps(catalogue, sort_keys=True, indent=2) + "\n"
+        ).encode()
+    for name in ("rollout_state", "year_navigation_assessment"):
+        if name in catalogue:
+            files[f"{name}.json"] = (
+                json.dumps(catalogue[name], sort_keys=True, indent=2) + "\n"
+            ).encode()
     for name in ("entities", "sources", "jurisdictions"):
         files[f"{name}.jsonl"] = b"".join(
             (json.dumps(row, sort_keys=True, ensure_ascii=False) + "\n").encode()
@@ -261,6 +270,36 @@ def catalogue_files(catalogue: dict[str, Any]) -> dict[str, bytes]:
         f"{row['known_sources']} | {row['disposition']} |"
         for row in catalogue["entities"]
     )
+    if "canonical_join" in catalogue["provenance"]:
+        report.extend(
+            [
+                "",
+                "## Bounded source dispositions",
+                "",
+                (
+                    "All candidate factual assessments are dated; blocked and unknown "
+                    "outcomes are valid dispositions, not exhaustive country discovery."
+                ),
+                (
+                    "Historical transport compliance is not certified. "
+                    "Rights, schedules, raw counts and publication remain "
+                    "separate and unchanged."
+                ),
+                "",
+                "| Source | Entity | Disposition | Access | Linked findings |",
+                "| --- | --- | --- | --- | --- |",
+            ]
+        )
+        report.extend(
+            f"| {row['id']} | {row['entity_id']} | {row['disposition']} | "
+            f"{row.get('factual_assessment', {}).get('source_access', 'seed_only')} | "
+            + ", ".join(
+                item["finding"] + " (" + item["outcome"] + ")"
+                for item in row.get("linked_dispositions", [])
+            )
+            + " |"
+            for row in catalogue["sources"]
+        )
     files["coverage.md"] = ("\n".join(report) + "\n").encode()
     manifest = {
         "schema_version": catalogue["schema_version"],

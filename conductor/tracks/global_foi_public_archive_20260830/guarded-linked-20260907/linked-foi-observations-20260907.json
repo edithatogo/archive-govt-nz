@@ -1,0 +1,469 @@
+{
+  "bounds": {
+    "max_bytes": 1000000,
+    "max_redirects": 3,
+    "origin_interval": 1,
+    "request_seconds": 10,
+    "source_seconds": 40,
+    "total_seconds": 1500,
+    "workers": 8
+  },
+  "input_pins": {
+    "candidate-assessment-complete.json": "02bfc89018ac69878a8b8a6939d40287e95f8fef684ce17a2376e5e17510af7a",
+    "factual-observations-al-bh-20260907.json": "a36f3fbfeee6992d86bfa09becfc0d4790a1a30400ab7569f5cee3ee05e5a6a9"
+  },
+  "schema_version": "archive-govt-nz.foi-linked-observations/v1",
+  "sources": [
+    {
+      "entity_id": "AL",
+      "finished_at": "2026-09-07T03:55:23.629890+00:00",
+      "homepage": {
+        "body_bytes": 287040,
+        "body_sha256": "de14df9a4a7ec853857ef104b6ada413d9e798552e2f68fd4bc7ffb235479c5d",
+        "links": [
+          {
+            "kind": "catalogue",
+            "label": "OPEN DATA",
+            "url": "https://idp.al/open-data/"
+          }
+        ],
+        "media_type": "text/html",
+        "observed_at": "2026-09-07T03:55:21.742051+00:00",
+        "outcome": "observed",
+        "received_bytes": 287040,
+        "status": 200,
+        "structure": {
+          "attachment_link_counts": {
+            "docx": 6
+          },
+          "navigation_labels": [],
+          "schema_labels": [
+            "data e kerkeses",
+            "data e pergjigjes",
+            "menyra e perfundimit te kerkeses",
+            "objekti i kerkeses",
+            "pergjigje",
+            "tarifa"
+          ],
+          "table_elements": 1,
+          "table_row_elements": 26
+        },
+        "title": "REGJISTRI I KËRKESAVE DHE PËRGJIGJEVE 2026 – IDPC",
+        "url": "https://idp.al/regjistri-i-kerkesave-dhe-pergjigjeve-2026/"
+      },
+      "observed_at": "2026-09-07T03:55:17.146021+00:00",
+      "outcome": "observed",
+      "redirect_chain": [
+        {
+          "body_bytes": 287040,
+          "body_sha256": "de14df9a4a7ec853857ef104b6ada413d9e798552e2f68fd4bc7ffb235479c5d",
+          "media_type": "text/html",
+          "observed_at": "2026-09-07T03:55:21.742051+00:00",
+          "outcome": "observed",
+          "received_bytes": 287040,
+          "status": 200,
+          "structure": {
+            "attachment_link_counts": {
+              "docx": 6
+            },
+            "navigation_labels": [],
+            "schema_labels": [
+              "data e kerkeses",
+              "data e pergjigjes",
+              "menyra e perfundimit te kerkeses",
+              "objekti i kerkeses",
+              "pergjigje",
+              "tarifa"
+            ],
+            "table_elements": 1,
+            "table_row_elements": 26
+          },
+          "url": "https://idp.al/regjistri-i-kerkesave-dhe-pergjigjeve-2026/"
+        }
+      ],
+      "retained_receipt_sha256": "0f20029e62c8230af94af6f9c637a48c137e80b4366c6b666c140cb755312a59",
+      "robots": [
+        {
+          "body_bytes": 107,
+          "body_sha256": "bdbd2a0b4b8cbe7a44dcb7f29b32784307ae0579ed5081496d2dc939975e9f22",
+          "media_type": "text/plain",
+          "observed_at": "2026-09-07T03:55:17.146402+00:00",
+          "outcome": "observed",
+          "received_bytes": 107,
+          "status": 200,
+          "url": "https://idp.al/robots.txt"
+        }
+      ],
+      "robots_policy": {
+        "allowed": true,
+        "crawl_delay": null,
+        "scope": "requested_url_and_same_site_redirects"
+      },
+      "source_id": "al-idp-transparency:621820a02923",
+      "source_url": "https://idp.al/regjistri-i-kerkesave-dhe-pergjigjeve-2026/"
+    },
+    {
+      "entity_id": "AL",
+      "finished_at": "2026-09-07T03:55:25.353802+00:00",
+      "homepage": {
+        "body_bytes": 258719,
+        "body_sha256": "e59b43c2486ae84e28b209584b7662d80d6bf9a27d27675d705f15ba5693e174",
+        "links": [
+          {
+            "kind": "catalogue",
+            "label": "OPEN DATA",
+            "url": "https://idp.al/open-data/"
+          }
+        ],
+        "media_type": "text/html",
+        "observed_at": "2026-09-07T03:55:23.629969+00:00",
+        "outcome": "observed",
+        "received_bytes": 258719,
+        "status": 200,
+        "structure": {
+          "attachment_link_counts": {},
+          "navigation_labels": [],
+          "schema_labels": [],
+          "table_elements": 0,
+          "table_row_elements": 0
+        },
+        "title": "Regjistri i kerkesave dhe pergjigjeve – IDPC",
+        "url": "https://idp.al/regjistri-i-kerkesave-dhe-pergjigjeve-2015-2025/"
+      },
+      "observed_at": "2026-09-07T03:55:17.146289+00:00",
+      "outcome": "observed",
+      "redirect_chain": [
+        {
+          "body_bytes": 258719,
+          "body_sha256": "e59b43c2486ae84e28b209584b7662d80d6bf9a27d27675d705f15ba5693e174",
+          "media_type": "text/html",
+          "observed_at": "2026-09-07T03:55:23.629969+00:00",
+          "outcome": "observed",
+          "received_bytes": 258719,
+          "status": 200,
+          "structure": {
+            "attachment_link_counts": {},
+            "navigation_labels": [],
+            "schema_labels": [],
+            "table_elements": 0,
+            "table_row_elements": 0
+          },
+          "url": "https://idp.al/regjistri-i-kerkesave-dhe-pergjigjeve-2015-2025/"
+        }
+      ],
+      "retained_receipt_sha256": "0f20029e62c8230af94af6f9c637a48c137e80b4366c6b666c140cb755312a59",
+      "robots": [
+        {
+          "body_bytes": 107,
+          "body_sha256": "bdbd2a0b4b8cbe7a44dcb7f29b32784307ae0579ed5081496d2dc939975e9f22",
+          "media_type": "text/plain",
+          "observed_at": "2026-09-07T03:55:19.956412+00:00",
+          "outcome": "observed",
+          "received_bytes": 107,
+          "status": 200,
+          "url": "https://idp.al/robots.txt"
+        }
+      ],
+      "robots_policy": {
+        "allowed": true,
+        "crawl_delay": null,
+        "scope": "requested_url_and_same_site_redirects"
+      },
+      "source_id": "al-idp-transparency:7d489a0a96ac",
+      "source_url": "https://idp.al/regjistri-i-kerkesave-dhe-pergjigjeve-2015-2025/"
+    },
+    {
+      "entity_id": "GG",
+      "finished_at": "2026-09-07T03:55:29.850844+00:00",
+      "homepage": {
+        "body_bytes": 0,
+        "body_sha256": null,
+        "links": [],
+        "media_type": null,
+        "observed_at": "2026-09-07T03:55:19.847691+00:00",
+        "outcome": "timeout",
+        "received_bytes": 0,
+        "status": null,
+        "title": "",
+        "url": "https://www.gov.gg/information"
+      },
+      "observed_at": "2026-09-07T03:55:17.146315+00:00",
+      "outcome": "timeout",
+      "redirect_chain": [
+        {
+          "body_bytes": 0,
+          "body_sha256": null,
+          "media_type": null,
+          "observed_at": "2026-09-07T03:55:19.847691+00:00",
+          "outcome": "timeout",
+          "received_bytes": 0,
+          "status": null,
+          "url": "https://www.gov.gg/information"
+        }
+      ],
+      "retained_receipt_sha256": "5fe15aa00461992dd61602fe907ca62ea6255a55815c402f44e562daf15239f5",
+      "robots": [
+        {
+          "body_bytes": 0,
+          "body_sha256": null,
+          "media_type": "text/html",
+          "observed_at": "2026-09-07T03:55:17.197707+00:00",
+          "outcome": "http_error",
+          "received_bytes": 0,
+          "status": 404,
+          "url": "https://www.gov.gg/robots.txt"
+        }
+      ],
+      "source_id": "gg-government-portal:42c7a0e38afe",
+      "source_url": "https://www.gov.gg/information"
+    },
+    {
+      "entity_id": "JM",
+      "finished_at": "2026-09-07T03:55:18.890592+00:00",
+      "homepage": {
+        "body_bytes": 155769,
+        "body_sha256": "aef9db6988a03db5db44511460476e0428f18348de005e92eb9d4c6ad87ba9aa",
+        "links": [
+          {
+            "kind": "foi",
+            "label": "Access to Information",
+            "url": "https://opm.gov.jm/participate/access-to-information/"
+          }
+        ],
+        "media_type": "text/html",
+        "observed_at": "2026-09-07T03:55:18.204094+00:00",
+        "outcome": "observed",
+        "received_bytes": 155769,
+        "status": 200,
+        "structure": {
+          "attachment_link_counts": {
+            "pdf": 15
+          },
+          "navigation_labels": [
+            "access to information"
+          ],
+          "schema_labels": [],
+          "table_elements": 0,
+          "table_row_elements": 0
+        },
+        "title": "Access to Information – Office of the Prime Minister",
+        "url": "https://opm.gov.jm/participate/access-to-information/"
+      },
+      "observed_at": "2026-09-07T03:55:17.146334+00:00",
+      "outcome": "observed",
+      "redirect_chain": [
+        {
+          "body_bytes": 155769,
+          "body_sha256": "aef9db6988a03db5db44511460476e0428f18348de005e92eb9d4c6ad87ba9aa",
+          "media_type": "text/html",
+          "observed_at": "2026-09-07T03:55:18.204094+00:00",
+          "outcome": "observed",
+          "received_bytes": 155769,
+          "status": 200,
+          "structure": {
+            "attachment_link_counts": {
+              "pdf": 15
+            },
+            "navigation_labels": [
+              "access to information"
+            ],
+            "schema_labels": [],
+            "table_elements": 0,
+            "table_row_elements": 0
+          },
+          "url": "https://opm.gov.jm/participate/access-to-information/"
+        }
+      ],
+      "retained_receipt_sha256": "b624342b278df2cf7859515740dae2a866fe8ec449be1873f3346d4642485194",
+      "robots": [
+        {
+          "body_bytes": 111,
+          "body_sha256": "b31617380af6b2f02b0c56852ccd65a8ace4a8acb3bd8200ac1be7dfa3c64086",
+          "media_type": "text/plain",
+          "observed_at": "2026-09-07T03:55:17.201937+00:00",
+          "outcome": "observed",
+          "received_bytes": 111,
+          "status": 200,
+          "url": "https://opm.gov.jm/robots.txt"
+        }
+      ],
+      "robots_policy": {
+        "allowed": true,
+        "crawl_delay": null,
+        "scope": "requested_url_and_same_site_redirects"
+      },
+      "source_id": "jm-government-portal:a539c3c70671",
+      "source_url": "https://opm.gov.jm/participate/access-to-information/"
+    },
+    {
+      "entity_id": "KY",
+      "finished_at": "2026-09-07T03:55:19.379101+00:00",
+      "homepage": {
+        "body_bytes": 129608,
+        "body_sha256": "d40004db05669e9e6ac0d95d95a5f5983c5bbf62d14b6d54a8a25738fec9cf37",
+        "links": [
+          {
+            "kind": "foi",
+            "label": "Freedom of Information",
+            "url": "https://gov.ky/freedom-of-information"
+          }
+        ],
+        "media_type": "text/html",
+        "observed_at": "2026-09-07T03:55:18.208188+00:00",
+        "outcome": "observed",
+        "received_bytes": 129608,
+        "status": 200,
+        "structure": {
+          "attachment_link_counts": {
+            "pdf": 1
+          },
+          "navigation_labels": [
+            "freedom of information",
+            "publications"
+          ],
+          "schema_labels": [],
+          "table_elements": 0,
+          "table_row_elements": 0
+        },
+        "title": "FOI - GOV.KY - CIG",
+        "url": "https://gov.ky/freedom-of-information"
+      },
+      "observed_at": "2026-09-07T03:55:17.146347+00:00",
+      "outcome": "observed",
+      "redirect_chain": [
+        {
+          "body_bytes": 129608,
+          "body_sha256": "d40004db05669e9e6ac0d95d95a5f5983c5bbf62d14b6d54a8a25738fec9cf37",
+          "media_type": "text/html",
+          "observed_at": "2026-09-07T03:55:18.208188+00:00",
+          "outcome": "observed",
+          "received_bytes": 129608,
+          "status": 200,
+          "structure": {
+            "attachment_link_counts": {
+              "pdf": 1
+            },
+            "navigation_labels": [
+              "freedom of information",
+              "publications"
+            ],
+            "schema_labels": [],
+            "table_elements": 0,
+            "table_row_elements": 0
+          },
+          "url": "https://gov.ky/freedom-of-information"
+        }
+      ],
+      "retained_receipt_sha256": "91e240520f388f081ed6dd61284984cf0c41cff9c70b1a753733e137ac305921",
+      "robots": [
+        {
+          "body_bytes": 125,
+          "body_sha256": "f1c14301272a690d47b5caed7c77fd5fba82811998fe9d9fe278bfe2f87a3195",
+          "media_type": "text/plain",
+          "observed_at": "2026-09-07T03:55:17.205810+00:00",
+          "outcome": "observed",
+          "received_bytes": 125,
+          "status": 200,
+          "url": "https://gov.ky/robots.txt"
+        }
+      ],
+      "robots_policy": {
+        "allowed": true,
+        "crawl_delay": null,
+        "scope": "requested_url_and_same_site_redirects"
+      },
+      "source_id": "ky-government-portal:fae94739600a",
+      "source_url": "https://gov.ky/freedom-of-information"
+    },
+    {
+      "entity_id": "UM",
+      "finished_at": "2026-09-07T03:55:18.425298+00:00",
+      "homepage": null,
+      "observed_at": "2026-09-07T03:55:17.146358+00:00",
+      "outcome": "robots_unsupported_rules",
+      "redirect_chain": [],
+      "retained_receipt_sha256": "5290fed8b1e7a38774f68c2fb41822dc96eafdaa3934fd140f61a5d559e91ab5",
+      "robots": [
+        {
+          "body_bytes": 2289,
+          "body_sha256": "99dd399e3b5b6a2531d4e01a529cadab9a7a7f372d0173d312e01255f0b0d018",
+          "media_type": "text/plain",
+          "observed_at": "2026-09-07T03:55:17.209709+00:00",
+          "outcome": "observed",
+          "received_bytes": 2289,
+          "status": 200,
+          "url": "https://www.doi.gov/robots.txt"
+        }
+      ],
+      "robots_policy": {
+        "allowed": null,
+        "reason": "wildcard_or_end_anchor_path_rule",
+        "scope": "entire_robots_file_before_page_access"
+      },
+      "source_id": "um-government-portal:235044ff9d46",
+      "source_url": "https://www.doi.gov/foia"
+    }
+  ],
+  "targets": [
+    {
+      "entity_id": "AL",
+      "parent_observed_at": "2026-09-07T02:21:20.193850+00:00",
+      "parent_page_sha256": "d21d22904031e3162cbdfdecc1a484b1695eacebb469da852edb7cce93315e27",
+      "parent_source_id": "al-idp-transparency",
+      "retained_receipt_sha256": "0f20029e62c8230af94af6f9c637a48c137e80b4366c6b666c140cb755312a59",
+      "role": "year_register",
+      "source_id": "al-idp-transparency:621820a02923",
+      "source_url": "https://idp.al/regjistri-i-kerkesave-dhe-pergjigjeve-2026/"
+    },
+    {
+      "entity_id": "AL",
+      "parent_observed_at": "2026-09-07T02:21:20.193850+00:00",
+      "parent_page_sha256": "d21d22904031e3162cbdfdecc1a484b1695eacebb469da852edb7cce93315e27",
+      "parent_source_id": "al-idp-transparency",
+      "retained_receipt_sha256": "0f20029e62c8230af94af6f9c637a48c137e80b4366c6b666c140cb755312a59",
+      "role": "year_register",
+      "source_id": "al-idp-transparency:7d489a0a96ac",
+      "source_url": "https://idp.al/regjistri-i-kerkesave-dhe-pergjigjeve-2015-2025/"
+    },
+    {
+      "entity_id": "GG",
+      "parent_observed_at": "2026-09-07T02:49:38.652780+00:00",
+      "parent_page_sha256": "b67114dc316ad207c3da6fab1fff22c86dd6df5ceea74e6c8552893337e212e9",
+      "parent_source_id": "gg-government-portal",
+      "retained_receipt_sha256": "5fe15aa00461992dd61602fe907ca62ea6255a55815c402f44e562daf15239f5",
+      "role": "foi_navigation",
+      "source_id": "gg-government-portal:42c7a0e38afe",
+      "source_url": "https://www.gov.gg/information"
+    },
+    {
+      "entity_id": "JM",
+      "parent_observed_at": "2026-09-07T02:49:54.725538+00:00",
+      "parent_page_sha256": "16b32d658cad3e963734bfb33c9cafb977175195c9c25578fdf7749c82cb9a32",
+      "parent_source_id": "jm-government-portal",
+      "retained_receipt_sha256": "b624342b278df2cf7859515740dae2a866fe8ec449be1873f3346d4642485194",
+      "role": "foi_navigation",
+      "source_id": "jm-government-portal:a539c3c70671",
+      "source_url": "https://opm.gov.jm/participate/access-to-information/"
+    },
+    {
+      "entity_id": "KY",
+      "parent_observed_at": "2026-09-07T02:50:18.546462+00:00",
+      "parent_page_sha256": "006266261ccdd760f7a239568e4116e3f6ae1560b2e96952ab97d0b739dcbac6",
+      "parent_source_id": "ky-government-portal",
+      "retained_receipt_sha256": "91e240520f388f081ed6dd61284984cf0c41cff9c70b1a753733e137ac305921",
+      "role": "foi_navigation",
+      "source_id": "ky-government-portal:fae94739600a",
+      "source_url": "https://gov.ky/freedom-of-information"
+    },
+    {
+      "entity_id": "UM",
+      "parent_observed_at": "2026-09-07T02:51:21.242888+00:00",
+      "parent_page_sha256": "ae29df30b6081b67ba4d775f392fbd849ff8a54ee950ce460bf2c94f1ecfea22",
+      "parent_source_id": "um-government-portal",
+      "retained_receipt_sha256": "5290fed8b1e7a38774f68c2fb41822dc96eafdaa3934fd140f61a5d559e91ab5",
+      "role": "foi_navigation",
+      "source_id": "um-government-portal:235044ff9d46",
+      "source_url": "https://www.doi.gov/foia"
+    }
+  ]
+}

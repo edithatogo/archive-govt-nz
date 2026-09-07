@@ -1,0 +1,228 @@
+{
+  "sources": [
+    {
+      "entity_id": "AL",
+      "finished_at": "2026-09-07T03:59:10.444424+00:00",
+      "homepage": {
+        "body_bytes": 258719,
+        "body_sha256": "e59b43c2486ae84e28b209584b7662d80d6bf9a27d27675d705f15ba5693e174",
+        "links": [
+          {
+            "kind": "catalogue",
+            "label": "OPEN DATA",
+            "url": "https://idp.al/open-data/"
+          }
+        ],
+        "media_type": "text/html",
+        "observed_at": "2026-09-07T03:59:08.721314+00:00",
+        "outcome": "observed",
+        "received_bytes": 258719,
+        "status": 200,
+        "title": "Regjistri i kerkesave dhe pergjigjeve – IDPC",
+        "url": "https://idp.al/regjistri-i-kerkesave-dhe-pergjigjeve-2015-2025/",
+        "year_navigation": {
+          "embedded_resource_elements": 1,
+          "year_labels": [
+            2015,
+            2016,
+            2017,
+            2018,
+            2019,
+            2020,
+            2021,
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "year_links": [
+            {
+              "url": "https://idp.al/regjistri-i-kerkesave-dhe-pergjigjeve-2015-2016",
+              "years": [
+                2015,
+                2016
+              ]
+            },
+            {
+              "url": "https://idp.al/regjistri-i-kerkesave-dhe-pergjigjeve-2017",
+              "years": [
+                2017
+              ]
+            },
+            {
+              "url": "https://idp.al/regjistri-i-kerkesave-dhe-pergjigjeve-2018",
+              "years": [
+                2018
+              ]
+            },
+            {
+              "url": "https://idp.al/regjistri-i-kerkesave-dhe-pergjigjeve-2019",
+              "years": [
+                2019
+              ]
+            },
+            {
+              "url": "https://idp.al/regjistri-i-kerkesave-dhe-pergjigjeve-2020/",
+              "years": [
+                2020
+              ]
+            },
+            {
+              "url": "https://idp.al/regjistri-i-kerkesave-dhe-pergjigjeve-2021/",
+              "years": [
+                2021
+              ]
+            },
+            {
+              "url": "https://idp.al/regjistri-i-kerkesave-dhe-pergjigjeve-2022/",
+              "years": [
+                2022
+              ]
+            },
+            {
+              "url": "https://idp.al/regjistri-i-kerkesave-dhe-pergjigjeve-2023/",
+              "years": [
+                2023
+              ]
+            },
+            {
+              "url": "https://idp.al/regjistri-i-kerkesave-dhe-pergjigjeve-2024/",
+              "years": [
+                2024
+              ]
+            },
+            {
+              "url": "https://idp.al/regjistri-i-kerkesave-dhe-pergjigjeve-2025/",
+              "years": [
+                2025
+              ]
+            }
+          ]
+        }
+      },
+      "observed_at": "2026-09-07T03:59:06.875225+00:00",
+      "outcome": "observed",
+      "redirect_chain": [
+        {
+          "body_bytes": 258719,
+          "body_sha256": "e59b43c2486ae84e28b209584b7662d80d6bf9a27d27675d705f15ba5693e174",
+          "media_type": "text/html",
+          "observed_at": "2026-09-07T03:59:08.721314+00:00",
+          "outcome": "observed",
+          "received_bytes": 258719,
+          "status": 200,
+          "url": "https://idp.al/regjistri-i-kerkesave-dhe-pergjigjeve-2015-2025/",
+          "year_navigation": {
+            "embedded_resource_elements": 1,
+            "year_labels": [
+              2015,
+              2016,
+              2017,
+              2018,
+              2019,
+              2020,
+              2021,
+              2022,
+              2023,
+              2024,
+              2025
+            ],
+            "year_links": [
+              {
+                "url": "https://idp.al/regjistri-i-kerkesave-dhe-pergjigjeve-2015-2016",
+                "years": [
+                  2015,
+                  2016
+                ]
+              },
+              {
+                "url": "https://idp.al/regjistri-i-kerkesave-dhe-pergjigjeve-2017",
+                "years": [
+                  2017
+                ]
+              },
+              {
+                "url": "https://idp.al/regjistri-i-kerkesave-dhe-pergjigjeve-2018",
+                "years": [
+                  2018
+                ]
+              },
+              {
+                "url": "https://idp.al/regjistri-i-kerkesave-dhe-pergjigjeve-2019",
+                "years": [
+                  2019
+                ]
+              },
+              {
+                "url": "https://idp.al/regjistri-i-kerkesave-dhe-pergjigjeve-2020/",
+                "years": [
+                  2020
+                ]
+              },
+              {
+                "url": "https://idp.al/regjistri-i-kerkesave-dhe-pergjigjeve-2021/",
+                "years": [
+                  2021
+                ]
+              },
+              {
+                "url": "https://idp.al/regjistri-i-kerkesave-dhe-pergjigjeve-2022/",
+                "years": [
+                  2022
+                ]
+              },
+              {
+                "url": "https://idp.al/regjistri-i-kerkesave-dhe-pergjigjeve-2023/",
+                "years": [
+                  2023
+                ]
+              },
+              {
+                "url": "https://idp.al/regjistri-i-kerkesave-dhe-pergjigjeve-2024/",
+                "years": [
+                  2024
+                ]
+              },
+              {
+                "url": "https://idp.al/regjistri-i-kerkesave-dhe-pergjigjeve-2025/",
+                "years": [
+                  2025
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "retained_receipt_sha256": "0f20029e62c8230af94af6f9c637a48c137e80b4366c6b666c140cb755312a59",
+      "robots": [
+        {
+          "body_bytes": 107,
+          "body_sha256": "bdbd2a0b4b8cbe7a44dcb7f29b32784307ae0579ed5081496d2dc939975e9f22",
+          "media_type": "text/plain",
+          "observed_at": "2026-09-07T03:59:06.875516+00:00",
+          "outcome": "observed",
+          "received_bytes": 107,
+          "status": 200,
+          "url": "https://idp.al/robots.txt"
+        }
+      ],
+      "robots_policy": {
+        "allowed": true,
+        "crawl_delay": null,
+        "scope": "requested_url_and_same_site_redirects"
+      },
+      "source_id": "al-idp-transparency:7d489a0a96ac",
+      "source_url": "https://idp.al/regjistri-i-kerkesave-dhe-pergjigjeve-2015-2025/"
+    }
+  ],
+  "target": {
+    "entity_id": "AL",
+    "parent_observed_at": "2026-09-07T02:21:20.193850+00:00",
+    "parent_page_sha256": "d21d22904031e3162cbdfdecc1a484b1695eacebb469da852edb7cce93315e27",
+    "parent_source_id": "al-idp-transparency",
+    "retained_receipt_sha256": "0f20029e62c8230af94af6f9c637a48c137e80b4366c6b666c140cb755312a59",
+    "role": "year_register",
+    "source_id": "al-idp-transparency:7d489a0a96ac",
+    "source_url": "https://idp.al/regjistri-i-kerkesave-dhe-pergjigjeve-2015-2025/"
+  }
+}

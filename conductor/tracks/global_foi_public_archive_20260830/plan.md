@@ -127,6 +127,42 @@ The approved destination is archive-govt-nz; no cutover has occurred.
   249 focused tests pass, including permissive legacy-parser regressions;
   full combined harness remains with parent.
 
+### P2 next-delivery guarded observations — 2026-09-07
+
+- [x] P2.15 (AC04, AC09, AC11): Observe only the six linked targets with
+  the corrected collector at `9ed5f491` in an isolated next-delivery worktree.
+  Record unsupported robots rules as blocked/unverified access, never bypass.
+  Keep new observations distinct from the pre-fix cohort; no 223-source replay,
+  rights/publication/schedules or runtime changes to the frozen batch. Reuse the
+  existing assessor and focused tests; parent owns full integration.
+  Continue with one guarded read of AL's already-linked 2015–2025 index to
+  retain year-navigation metadata and a bounded adapter contract, without
+  fetching linked resources or inferring record counts.
+  Receipts: `guarded-linked-20260907/README.md` and paired assessments.
+  269 focused tests pass; new module has 100% line/branch coverage. GG timeout
+  and UM unsupported-rules blocks remain factual outcomes, not bypass queues.
+
+### P2 canonical factual join — 2026-09-07
+
+- [x] P2.16 (AC04, AC09, AC11): Join the pinned 255-source rollout with
+  all 225 dated candidate assessments and guarded linked/AL navigation findings.
+  Generate one canonical metadata registry and paired index/coverage reports;
+  preserve the original 30 rows, unknown denominators, historical rollout counts
+  and independent policy gates. Reject missing receipts and identity/input drift.
+  No network, publication, schedules or shared lifecycle changes; parent full gate.
+  Receipt: canonical-join-20260907.md; generated canonical-index-20260907/.
+  330 focused tests pass, seven guard mutants killed; both changed production
+  modules have 100% line/branch coverage. Parent owns P2.2/P2.3 lifecycle acceptance.
+
+### P2 local generator usability — 2026-09-07
+
+- [x] P2.17 (AC04, AC09, AC11): Add an opt-in --canonical-track path to the
+  existing local catalogue generator, preserving default v1 and no-overwrite
+  behavior. Test actual canonical byte parity, invalid pins and output conflicts
+  without network/publication. Parent owns full integration and lifecycle.
+  Receipt: canonical-cli-20260907.md. 86 focused tests pass, including seven
+  canonical guard mutants; CLI line/branch coverage is 100%.
+
 ## Phase 3 — Metadata indexes and immutable raw storage
 
 - [x] P3.1 (AC05, AC06, AC11): Add red tests for original metadata preservation, request/correspondence/attachment relationships, revisions, missing objects, synthetic/CDX rejection, unsafe archive members, private-network redirects, expansion/resource limits, active content and sensitive exports.

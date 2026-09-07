@@ -285,3 +285,31 @@ complex path rules before parser admission; [review](robots-runtime-compatibilit
 records the conservative scope. 249 focused tests pass, including legacy-allow
 mock and unchanged historical reports. No source request/replay or parent-owned
 candidate-assessment edit. Full gate pending with parent.
+
+
+## P2.15 isolated next-delivery review — 2026-09-07
+
+[Review and adapter contract](guarded-linked-20260907/README.md) binds six guarded
+outcomes and one AL index read to distinct dates. Ten register links span eleven
+year labels; no annual resource was followed and record denominators remain null.
+GG stays unverified; UM stays blocked before page access. 269 focused tests pass,
+new module 100% line/branch coverage; lint/type/format pass. Frozen delivery tree,
+existing collector, historical evidence and rights/publication gates untouched.
+
+## P2.16 local review — 2026-09-07
+
+Canonical 255-source join accepted locally: exact original identities, input and
+receipt provenance, entity equality, dated endpoint scope, restrictive metadata,
+null denominators and unchanged execution/raw state are covered. 330 focused
+tests pass; both changed production modules have 100% line/branch coverage and
+seven guard mutants are killed. Ruff/format/BasedPyright pass. See
+canonical-join-20260907.md for reproduction and development findings. No outstanding
+local finding; parent full gate and lifecycle remain separate. No remote writes.
+
+## P2.17 local CLI review — 2026-09-07
+
+86 focused tests pass, including canonical guard mutants; CLI has 100% line/branch
+coverage. Default v1 and explicit canonical v2 files reproduce exactly. Bad pins
+and path conflicts fail before writes, repeated matching files retain mtimes,
+and socket connections are prohibited by tests. Static checks pass. No outstanding
+scoped finding; parent full gate/lifecycle and raw-rights boundaries are unchanged.

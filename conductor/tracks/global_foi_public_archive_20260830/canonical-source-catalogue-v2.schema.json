@@ -1,0 +1,525 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Bounded factual source catalogue v2; no capture, execution or publication authority.",
+  "properties": {
+    "coverage": {
+      "additionalProperties": false,
+      "properties": {
+        "entities_with_explicit_dispositions": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "factually_assessed_candidates": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "geographic_entities": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "known_sources": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "payload_publication_authorized": {
+          "const": false
+        },
+        "remaining_unverified": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "retained_seed_sources": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "source_dispositions": {
+          "additionalProperties": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "type": "object"
+        },
+        "supranational_entities": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "target_regimes": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "total_requests": {
+          "type": "null"
+        },
+        "verified_complete": {
+          "const": 0
+        }
+      },
+      "required": [
+        "geographic_entities",
+        "supranational_entities",
+        "known_sources",
+        "target_regimes",
+        "remaining_unverified",
+        "verified_complete",
+        "total_requests",
+        "payload_publication_authorized",
+        "retained_seed_sources",
+        "factually_assessed_candidates",
+        "entities_with_explicit_dispositions",
+        "source_dispositions"
+      ],
+      "type": "object"
+    },
+    "entities": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "basis": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "complete_verified": {
+            "const": false
+          },
+          "disposition": {
+            "const": "bounded_source_dispositions_recorded"
+          },
+          "evidence_basis": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "exhaustive_discovery": {
+            "const": false
+          },
+          "id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "iso_alpha3": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "kind": {
+            "enum": [
+              "country_or_area",
+              "separately_tracked_jurisdiction",
+              "supranational"
+            ]
+          },
+          "known_sources": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "m49": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "name": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "region": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "source_dispositions": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "source_ids": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "total_requests": {
+            "type": "null"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "m49",
+          "iso_alpha3",
+          "region",
+          "kind",
+          "basis",
+          "source_ids",
+          "known_sources",
+          "total_requests",
+          "disposition",
+          "complete_verified",
+          "evidence_basis",
+          "source_dispositions",
+          "exhaustive_discovery"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "jurisdictions": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "capture_verified": {
+            "const": false
+          },
+          "declared_status": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "entity_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "publication_authorized": {
+            "const": false
+          }
+        },
+        "required": [
+          "id",
+          "entity_id",
+          "declared_status",
+          "capture_verified",
+          "publication_authorized"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "provenance": {
+      "type": "object"
+    },
+    "rollout_state": {
+      "type": "object"
+    },
+    "schema_version": {
+      "const": "archive-govt-nz.foi-source-catalogue/v2"
+    },
+    "sources": {
+      "items": {
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "declared_registry_status": {
+                  "const": "assessed_candidate"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "factual_assessment",
+                "linked_dispositions",
+                "evidence",
+                "pacing"
+              ]
+            }
+          }
+        ],
+        "properties": {
+          "capture_verified": {
+            "const": false
+          },
+          "declared_adapter_modes": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "declared_jurisdiction": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "declared_registry_status": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "disposition": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "entity_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "evidence": {
+            "additionalProperties": false,
+            "properties": {
+              "receipt": {
+                "type": "string"
+              },
+              "sha256": {
+                "pattern": "^[0-9a-f]{64}$",
+                "type": "string"
+              }
+            },
+            "required": [
+              "receipt",
+              "sha256"
+            ],
+            "type": "object"
+          },
+          "factual_assessment": {
+            "additionalProperties": false,
+            "properties": {
+              "access_rights": {
+                "type": "string"
+              },
+              "capture_adapter_verified": {
+                "const": false
+              },
+              "capture_rights": {
+                "type": "string"
+              },
+              "country_complete": {
+                "const": false
+              },
+              "declared_disposition": {
+                "type": "string"
+              },
+              "factual_review": {
+                "type": "string"
+              },
+              "foi_scope": {
+                "type": "string"
+              },
+              "hf_target": {
+                "type": "null"
+              },
+              "interface": {
+                "type": "string"
+              },
+              "observation_times": {
+                "items": {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "observed_pacing": {
+                "type": "object"
+              },
+              "privacy": {
+                "type": "string"
+              },
+              "publication_approved": {
+                "const": false
+              },
+              "publisher_attribution": {
+                "type": "string"
+              },
+              "redistribution": {
+                "type": "string"
+              },
+              "request_denominator": {
+                "type": "null"
+              },
+              "retention": {
+                "type": "string"
+              },
+              "schedule_active": {
+                "const": false
+              },
+              "source_access": {
+                "type": "string"
+              },
+              "source_existence": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "factual_review",
+              "source_existence",
+              "source_access",
+              "foi_scope",
+              "interface",
+              "capture_adapter_verified",
+              "publisher_attribution",
+              "access_rights",
+              "capture_rights",
+              "retention",
+              "redistribution",
+              "privacy",
+              "declared_disposition",
+              "publication_approved",
+              "schedule_active",
+              "hf_target",
+              "request_denominator",
+              "country_complete",
+              "observation_times",
+              "observed_pacing"
+            ],
+            "type": "object"
+          },
+          "hf_observed_at": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "hf_repo_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "hf_revision": {
+            "anyOf": [
+              {
+                "pattern": "^[0-9a-f]{40}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "linked_dispositions": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "finding": {
+                  "type": "string"
+                },
+                "finished_at": {
+                  "type": "string"
+                },
+                "observed_at": {
+                  "type": "string"
+                },
+                "outcome": {
+                  "type": "string"
+                },
+                "source_id": {
+                  "type": "string"
+                },
+                "source_url": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "source_id",
+                "source_url",
+                "finding",
+                "outcome",
+                "observed_at",
+                "finished_at"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "origins": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "pacing": {
+            "additionalProperties": false,
+            "properties": {
+              "execution_policy": {
+                "const": "not_authorized_by_index"
+              },
+              "verified": {
+                "const": false
+              }
+            },
+            "required": [
+              "verified",
+              "execution_policy"
+            ],
+            "type": "object"
+          },
+          "privacy_status": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "raw_publication_verified": {
+            "const": false
+          },
+          "rights_status": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "source_url": {
+            "type": ["string", "null"]
+          },
+          "total_requests": {
+            "type": "null"
+          }
+        },
+        "required": [
+          "id",
+          "entity_id",
+          "declared_jurisdiction",
+          "origins",
+          "hf_repo_id",
+          "hf_revision",
+          "hf_observed_at",
+          "declared_adapter_modes",
+          "declared_registry_status",
+          "disposition",
+          "rights_status",
+          "privacy_status",
+          "capture_verified",
+          "raw_publication_verified",
+          "total_requests"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "universe_source": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "year_navigation_assessment": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "universe_source",
+    "provenance",
+    "entities",
+    "sources",
+    "jurisdictions",
+    "coverage",
+    "rollout_state",
+    "year_navigation_assessment"
+  ],
+  "type": "object"
+}

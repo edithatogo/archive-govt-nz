@@ -1,0 +1,38 @@
+{
+  "schema_version": "archive-govt-nz.health-metadata-application-evidence/v1",
+  "base_commit": "af5a62a60996fd722641f12a49b87c1a3c1c2ef6",
+  "scope": "synthetic_local_application_subset",
+  "supported_manifest_schema": "archive-govt-nz.publication-manifest/v2",
+  "legacy_health_candidate_v1_supported": false,
+  "files": {
+    "src/archive_govt_nz/domains/health_appropriations/metadata_application.py": "876c32b21d7ba9c528c6fbb484f222ad08c8c4ddd89081a2f0d7a74288cd3497",
+    "tests/domains/health_appropriations/test_metadata_application.py": "22a1a19ffca9dfb3e31cc767793fab421e90ab202eacd841edae951b64155b4e",
+    "tests/domains/health_appropriations/metadata_application_mutations.py": "5e6106ca778b23ea685987203c220d6a622c101367a24600ddd454fd03803d92"
+  },
+  "verification": {
+    "red": "ModuleNotFoundError before module creation",
+    "new_tests": 94,
+    "affected_tests": 142,
+    "statements": 138,
+    "branches": 14,
+    "line_and_branch_coverage_percent": 100,
+    "cold_mutation_baseline_exit": 0,
+    "mutants": 25,
+    "mutants_killed_with_pytest_exit_1": 25,
+    "initial_survivors": ["dataset_identity", "duplicate_json", "path_reserved", "payload_sha"],
+    "survivor_resolution": "otherwise-consistent isolated negative fixtures",
+    "ruff_format": "passed",
+    "ruff_check": "passed",
+    "basedpyright": "passed",
+    "full_harness": "not_run_parent_owned"
+  },
+  "real_source_payloads_used": false,
+  "rights_evidence_authority_verified": false,
+  "full_standards_conformance": false,
+  "release_readiness_integration": false,
+  "publication_approval": "not_granted",
+  "generators_changed": false,
+  "shared_lifecycle_changed": false,
+  "federation_changed": false,
+  "phase_7_complete": false
+}

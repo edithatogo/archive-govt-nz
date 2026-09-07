@@ -1,0 +1,94 @@
+{
+  "cutoff": "2026-08-29",
+  "schema_version": "archive-govt-nz.health-direct-targets/v1",
+  "targets": [
+    {
+      "discovery_state": "discovered",
+      "family": "befu",
+      "source_id": "befu_2026-002",
+      "target_id": "befu_2026-002",
+      "url": "https://budget.govt.nz/budget/excel/befu2026/befu26-charts-data.xlsx",
+      "vintage": "BEFU-2026"
+    },
+    {
+      "discovery_state": "discovered",
+      "family": "befu",
+      "source_id": "befu_2026-003",
+      "target_id": "befu_2026-003",
+      "url": "https://budget.govt.nz/budget/excel/befu2026/befu26-data-expense-tables.xlsx",
+      "vintage": "BEFU-2026"
+    },
+    {
+      "discovery_state": "discovered",
+      "family": "befu",
+      "source_id": "befu_2026-004",
+      "target_id": "befu_2026-004",
+      "url": "https://budget.govt.nz/budget/excel/befu2026/befu26-economic-forecasts-data.xlsx",
+      "vintage": "BEFU-2026"
+    },
+    {
+      "discovery_state": "discovered",
+      "family": "budget",
+      "source_id": "budget_2026-000",
+      "target_id": "budget_2026-000",
+      "url": "https://budget.govt.nz/budget/excel/data/b26-expenditure-data.xlsx",
+      "vintage": "Budget-2026"
+    },
+    {
+      "discovery_state": "discovered",
+      "family": "budget",
+      "source_id": "budget_2026-001",
+      "target_id": "budget_2026-001",
+      "url": "https://budget.govt.nz/budget/excel/data/b26-revenue-data.xlsx",
+      "vintage": "Budget-2026"
+    },
+    {
+      "discovery_state": "discovered",
+      "family": "fiscal",
+      "source_id": "fiscal_time_series-007",
+      "target_id": "fiscal_time_series-007",
+      "url": "https://budget.govt.nz/budget/excel/fiscal-time-series/fiscaltimeseries1972-2025-year-end25.xlsx",
+      "vintage": "Fiscal-Time-Series-1972-2025"
+    },
+    {
+      "discovery_state": "discovered",
+      "family": "hyefu",
+      "source_id": "hyefu_2025-005",
+      "target_id": "hyefu_2025-005",
+      "url": "https://budget.govt.nz/budget/excel/hyefu2025/hyefu25-charts-data.xlsx",
+      "vintage": "HYEFU-2025"
+    },
+    {
+      "discovery_state": "discovered",
+      "family": "hyefu",
+      "source_id": "hyefu_2025-006",
+      "target_id": "hyefu_2025-006",
+      "url": "https://budget.govt.nz/budget/excel/hyefu2025/hyefu25-data-expense-tables.xlsx",
+      "vintage": "HYEFU-2025"
+    },
+    {
+      "discovery_state": "discovered",
+      "family": "ministry",
+      "source_id": "moh_vote_health-008",
+      "target_id": "moh_vote_health-008",
+      "url": "https://www.health.govt.nz/system/files/2025-08/hair2024-fig27.csv",
+      "vintage": "MoH-HAIR-2024"
+    },
+    {
+      "discovery_state": "discovered",
+      "family": "ministry",
+      "source_id": "moh_vote_health-009",
+      "target_id": "moh_vote_health-009",
+      "url": "https://www.health.govt.nz/system/files/2025-08/hair2024-fig28.csv",
+      "vintage": "MoH-HAIR-2024"
+    },
+    {
+      "discovery_state": "discovered",
+      "family": "pharmac",
+      "source_id": "pharmac_cpb-010",
+      "target_id": "pharmac_cpb-010",
+      "url": "https://www.pharmac.govt.nz/medicine-funding-and-supply/the-funding-process/setting-and-managing-the-combined-pharmaceutical-budget-cpb/budget-bid-information",
+      "vintage": "Pharmac-CPB-2026-08-07"
+    }
+  ]
+}
