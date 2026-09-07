@@ -44,3 +44,20 @@ These mocked checks verify metadata handling, not remote raw objects or rights.
 
 The first failed gate above remains part of the evidence. This completed local
 gate does not substitute for exact-head hosted checks or protected merge.
+
+## Late hosted verification-boundary finding
+
+Hosted review identified malformed non-object PLAN JSON escaping the public
+eight-stage verifier as TypeError rather than a structured CLI failure. Merge
+was paused despite the earlier green checks. Fix `7910b0ab` adds the same
+ordinary-exception redaction boundary as the legacy verifier; process interrupts
+remain uncaught. Independent review passed 37 focused tests, actual malformed
+CLI cases returned exit 2 with empty stderr, and both positive retained runs
+returned exit 0 with all 34 file hashes per run unchanged.
+
+The full locked gate at `7910b0abf21c33a059245ec181650efd00924f01` exited 0:
+6,412 tests passed, 98.03% coverage, all schema/parity/mutation/hygiene checks,
+CAS 686.37 MB/s, dependency audit, licence inventory, secret scan and validated
+112-component SBOM. This supersedes the prior local result for final delivery;
+the earlier result remains historically valid at its stated head. Exact-head
+hosted checks must run again after this fix; no earlier green run approves it.
