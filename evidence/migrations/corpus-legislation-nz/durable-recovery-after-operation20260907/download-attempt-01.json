@@ -1,0 +1,10 @@
+{
+  "status": "download_blocked",
+  "date": "2026-09-07",
+  "http_status": 429,
+  "retry_after": null,
+  "retry_after_observed": false,
+  "recovery_executed": false,
+  "software_commit": "f56f3167a34f32443c286f7484f7984063e9f579",
+  "scope": "Initial fresh anonymous durable package download was rate limited before restoration. Existing successful receipts are preserved."
+}

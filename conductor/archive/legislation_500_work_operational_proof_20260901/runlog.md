@@ -2,6 +2,14 @@
 
 ## 2026-09-07 — independently verified second parent and archival
 
+Fresh post-operation durable recovery also passed at 02:47:20Z: all 552
+published-package objects were independently downloaded and reconstructed with
+zero mismatches, no cache or Actions artifact, and unchanged restored bytes.
+See `evidence/migrations/corpus-legislation-nz/durable-recovery-after-operation20260907/proof.md`.
+The rate-limited first download and corrected local probe precondition remain
+recorded as unsuccessful attempts. No new 904-record durable publication is
+inferred from this separately scoped recovery.
+
 PR #414 merged as `4b1764bb` after the full local, three-platform hosted and
 eleven supplementary gates passed. Run `34076094680` then restored the exact
 904-record parent and revalidated all 500 governed works unchanged, with zero

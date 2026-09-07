@@ -1,0 +1,87 @@
+"""Fresh anonymous durable recovery after the independently verified second cycle."""
+import hashlib
+import json
+import os
+from pathlib import Path
+import subprocess
+import sys
+import tempfile
+from datetime import datetime, UTC
+
+import httpx
+
+ROOT = Path.cwd().resolve()
+sys.path.insert(0, str(ROOT / "tools"))
+import legislation_parent_state as P
+from run_legislation_recovery_drill import execute_recovery_drill
+
+EXPECTED_HEAD = "f56f3167a34f32443c286f7484f7984063e9f579"
+if not __debug__ or os.environ.get("GITHUB_ACTIONS"):
+    raise RuntimeError("local_unoptimized_execution_required")
+head = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
+if head != EXPECTED_HEAD:
+    raise RuntimeError("reviewed_head_required")
+out = Path(__file__).resolve().parent
+ref_path = ROOT / "config/legislation/parents/current.json"
+ref_bytes = ref_path.read_bytes()
+ref = json.loads(ref_bytes)
+P.schema(ref, "legislation-durable-parent-reference")
+P.check_durable_authority(ref)
+started = datetime.now(UTC).isoformat()
+try:
+    with httpx.Client(trust_env=False, follow_redirects=False, timeout=60) as client:
+        raw = P.durable_download(client, ref)
+except httpx.HTTPStatusError as error:
+    failure = {
+        "status": "download_blocked",
+        "observed_at": datetime.now(UTC).isoformat(),
+        "http_status": error.response.status_code,
+        "retry_after": error.response.headers.get("retry-after"),
+        "recovery_executed": False,
+        "software_commit": head,
+    }
+    P.write_new(out / "download-attempt-03.json", (json.dumps(failure, indent=2) + "\n").encode())
+    print(json.dumps(failure))
+    raise SystemExit(2) from None
+files = P.durable_files(raw, ref)
+(ROOT / ".tmp").mkdir(exist_ok=True)
+scratch = Path(tempfile.mkdtemp(prefix="post-operation-recovery-", dir=ROOT / ".tmp"))
+state = scratch / "restored"
+for name, data in files.items():
+    P.write_new(state / name, data)
+before = {name: hashlib.sha256(data).hexdigest() for name, data in P.read_state(state).items()}
+result = execute_recovery_drill(
+    state / "checkpoint.json", state / "manifest.json", state / "cas",
+    scratch / "reconstructed",
+)
+after = {name: hashlib.sha256(data).hexdigest() for name, data in P.read_state(state).items()}
+if before != after or result["status"] != "verified" or result["mismatches_count"]:
+    raise RuntimeError("durable_recovery_failed")
+if result["cas_objects_reconstructed"] != ref["durable"]["roots"]["records"]:
+    raise RuntimeError("durable_recovery_count")
+result.pop("recovery_directory")
+receipt = {
+    "schema_version": "archive-govt-nz.post-operation-durable-recovery/v1",
+    "started_at": started,
+    "completed_at": datetime.now(UTC).isoformat(),
+    "software_commit": head,
+    "reference_path": str(ref_path.relative_to(ROOT)),
+    "reference_sha256": hashlib.sha256(ref_bytes).hexdigest(),
+    "durable": ref["durable"],
+    "downloaded_sha256": hashlib.sha256(raw).hexdigest(),
+    "downloaded_bytes": len(raw),
+    "fresh_anonymous_download": True,
+    "cache_used": False,
+    "actions_artifact_used": False,
+    "authority_verified": True,
+    "restored_roots": ref["durable"]["roots"],
+    "restored_file_sha256": before,
+    "restored_state_unchanged": before == after,
+    "recovery": result,
+    "status": "verified",
+    "scope": "Published 552-record durable authority freshly recovered after first and second operational cycles; not publication of the 904-record Actions output.",
+    "remote_writes": False,
+    "probe_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+}
+P.write_new(out / "receipt.json", (json.dumps(receipt, indent=2, sort_keys=True) + "\n").encode())
+print(json.dumps({"status": receipt["status"], "recovery": result}, indent=2))
