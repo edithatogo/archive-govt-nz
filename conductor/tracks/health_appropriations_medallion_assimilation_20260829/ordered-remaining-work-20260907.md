@@ -8,13 +8,15 @@ unchecked clauses contain completed, separately evidenced components.
 
 1. Finish protected delivery of the reviewed extraction and workflow batches
    (#427 then #428). Local full-gate success is not hosted completion.
-2. Persist and verify existing chart admissions, starting with the 16 HYEFU
-   allowance observations, then the 86 BEFU and six residual-context literals.
-   Reuse existing extractors. Keep averages, totals, changes and unknown periods
-   distinct, with source tokens, field lineage and explicit remainders.
-3. Join existing receipts into a pinned family/vintage coverage register.
-   Preserve the historical 11-target report; missing supplied receipts must not
-   be reported as missing implementation or as successful extraction.
+2. Deliver the reviewed chart packages: 16 HYEFU allowance observations, 86 BEFU
+   and six residual-context literals now persist and verify with source tokens,
+   native lineage and explicit remainders. Averages, totals, changes and unknown
+   periods remain distinct. Combined full local gate passed 6,501 tests; hosted
+   delivery remains separate. Do not reimplement these extractors or packages.
+3. Deliver the reviewed pinned family/vintage coverage register. The historical
+   11-target report remains unchanged; eight stage and four chart selections are
+   overlapping evidence views, not additional unique sources or world coverage.
+   Missing supplied receipts remain distinct from missing implementation.
 4. Implement and verify the bounded historical PDF extraction profile after
    measuring column geometry. `donor-pdf-layout-qualification.md` now records a
    parsed 471-page count and visual inspection of all 16 selected pages, with

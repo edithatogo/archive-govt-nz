@@ -18,3 +18,27 @@ receipt bytes. That finding remains open until an explicit historical receipt
 contract is implemented and independently re-reviewed; pins must not be silently
 replaced. The 16, 86 and six chart package slices separately cleared independent
 source replay and regression review, without semantic or rights promotion.
+
+## Corrected combined validation
+
+The full locked gate at `bafecb48673a64c1af5ed3395aa2fbabf1ef3253` exited 0:
+6,501 tests passed, 98.0436% combined coverage, 48 schemas/38 representative
+documents, 9/9 differential cases, all configured mutation/hygiene gates,
+CAS throughput 618.35 MB/s, dependency audit, licence inventory, secret scan
+and validated 112-component SBOM. Fifteen test warnings remain disclosed;
+no scanner or coverage controls were weakened. The earlier failed gate above
+remains historical evidence, not a passing run.
+
+Independent Conductor reviews cleared all three chart packaging increments:
+205 tests for HYEFU16, 154 for BEFU86 and 197 for residual6, with actual retained
+source replay and unchanged earlier package hashes. These overlapping focused
+counts are not added together as unique tests. The combined package represents
+108 distinct raw/context observations, not additive financial amounts.
+
+The coverage P2 was fixed in `bafecb48` using an explicit schema-checked,
+hash-bound historical receipt projection in the reproduction recipe. Independent
+review passed 106 focused tests and both actual H replays reproduced the unchanged
+report hash `53c5f901bcb71ba54886b6abea5f6e6a45e2015d7deb55dd6f10b1865f5bd186`.
+No producer/package code or historical pins changed in that fix. All review
+findings are resolved; exact-head hosted validation and protected delivery remain
+separate from this completed local gate.
