@@ -272,3 +272,34 @@ PR #272 hosted Ubuntu passed 2,048 tests, 96.84 percent coverage and mutation st
 2026-09-05: Added NZ metadata-only disposition receipt. It permits only non-sensitive source/package status metadata and explicitly excludes requester identity, correspondence, attachments, personal information and third-party material. Raw publication remains pending source-specific review.
 2026-09-05: Hosted shared-controls run 33955611192 failed closed at health: one captured job remains unpublished, monitor_status attention_required, capacity/state healthy, and no state mutation occurred. Recorded in hosted-health-failure-33955611192.json; no gate was weakened.
 2026-09-05: Reconciled captured job ca-federal-atip.nil-returns.20260831-1 with the current verified public CA package. Historical shared-state evidence remains immutable; current shared health must observe the publication transition on its next authority cycle.
+
+## 2026-09-07 — P2.9 local rollout reconciliation
+
+Started an isolated codex worktree at requested base
+`0526365a48f58d241d52a301a901760147cc3eee`. Inspected immutable seed and directory
+provenance, rollout rows and source receipt types. The catalogue digest matches;
+30 pinned sources are retained within 255 rollout sources over 251 entities.
+225 additions have discovery receipts (223 use evidence_schema and two use
+schema_version). Three retained sources have other receipts; 27 retain the
+explicit pilot-receipt-required marker. No receipt assertion was reverified.
+
+Red: focused new test collection failed with the expected missing
+foi_reconciliation module. A later synthetic candidate fixture linked its source
+to the wrong entity and was correctly rejected; repaired the test's entity link.
+Initial Ruff findings were resolved without suppressions.
+
+Commands used the existing base checkout's Python 3.14.6 environment with
+`PYTHONPATH=src` to import this isolated worktree:
+
+```sh
+PYTHONPATH=src /Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/python -m pytest tests/test_foi_reconciliation.py tests/test_foi_catalogue.py tests/test_foi_discovery.py tests/test_foi_rollout.py tests/test_verify_foi_rollout_evidence.py -q --cov=archive_govt_nz.foi_reconciliation --cov-branch --cov-report=term-missing --cov-fail-under=100
+/Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/ruff check src/archive_govt_nz/foi_reconciliation.py tests/test_foi_reconciliation.py
+/Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/ruff format --check src/archive_govt_nz/foi_reconciliation.py tests/test_foi_reconciliation.py
+/Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/basedpyright src/archive_govt_nz/foi_reconciliation.py tests/test_foi_reconciliation.py
+```
+
+Result: 79 focused tests passed; 100% new-module line/branch coverage; scoped
+Ruff, formatting and typing passed. Checked-in report byte reproduction is
+covered by a regression test. Full integration harness is delegated to the
+parent by explicit user instruction; no hosted or whole-repository pass claimed.
+No remote writes, publication, rights decisions or global registry edits.

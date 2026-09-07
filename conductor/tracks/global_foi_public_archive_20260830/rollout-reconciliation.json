@@ -1,0 +1,2567 @@
+{
+  "catalogue_sha256": "0af697da220128eb13a988dc32bb987c915aaacd2ef04175ceec7a6a14892ed6",
+  "coverage_credit_granted": false,
+  "entity_ids": [
+    "AD",
+    "AE",
+    "AF",
+    "AG",
+    "AI",
+    "AL",
+    "AM",
+    "AO",
+    "AQ",
+    "AR",
+    "AS",
+    "AT",
+    "AU",
+    "AW",
+    "AX",
+    "AZ",
+    "BA",
+    "BB",
+    "BD",
+    "BE",
+    "BF",
+    "BG",
+    "BH",
+    "BI",
+    "BJ",
+    "BL",
+    "BM",
+    "BN",
+    "BO",
+    "BQ",
+    "BR",
+    "BS",
+    "BT",
+    "BV",
+    "BW",
+    "BY",
+    "BZ",
+    "CA",
+    "CC",
+    "CD",
+    "CF",
+    "CG",
+    "CH",
+    "CI",
+    "CK",
+    "CL",
+    "CM",
+    "CN",
+    "CO",
+    "CR",
+    "CU",
+    "CV",
+    "CW",
+    "CX",
+    "CY",
+    "CZ",
+    "DE",
+    "DJ",
+    "DK",
+    "DM",
+    "DO",
+    "DZ",
+    "EC",
+    "EE",
+    "EG",
+    "EH",
+    "ER",
+    "ES",
+    "ET",
+    "EU",
+    "FI",
+    "FJ",
+    "FK",
+    "FM",
+    "FO",
+    "FR",
+    "GA",
+    "GB",
+    "GD",
+    "GE",
+    "GF",
+    "GG",
+    "GH",
+    "GI",
+    "GL",
+    "GM",
+    "GN",
+    "GP",
+    "GQ",
+    "GR",
+    "GS",
+    "GT",
+    "GU",
+    "GW",
+    "GY",
+    "HK",
+    "HM",
+    "HN",
+    "HR",
+    "HT",
+    "HU",
+    "ID",
+    "IE",
+    "IL",
+    "IM",
+    "IN",
+    "IO",
+    "IQ",
+    "IR",
+    "IS",
+    "IT",
+    "JE",
+    "JM",
+    "JO",
+    "JP",
+    "KE",
+    "KG",
+    "KH",
+    "KI",
+    "KM",
+    "KN",
+    "KP",
+    "KR",
+    "KW",
+    "KY",
+    "KZ",
+    "LA",
+    "LB",
+    "LC",
+    "LI",
+    "LK",
+    "LR",
+    "LS",
+    "LT",
+    "LU",
+    "LV",
+    "LY",
+    "MA",
+    "MC",
+    "MD",
+    "ME",
+    "MF",
+    "MG",
+    "MH",
+    "MK",
+    "ML",
+    "MM",
+    "MN",
+    "MO",
+    "MP",
+    "MQ",
+    "MR",
+    "MS",
+    "MT",
+    "MU",
+    "MV",
+    "MW",
+    "MX",
+    "MY",
+    "MZ",
+    "NA",
+    "NC",
+    "NE",
+    "NF",
+    "NG",
+    "NI",
+    "NL",
+    "NO",
+    "NP",
+    "NR",
+    "NU",
+    "NZ",
+    "OM",
+    "PA",
+    "PE",
+    "PF",
+    "PG",
+    "PH",
+    "PK",
+    "PL",
+    "PM",
+    "PN",
+    "PR",
+    "PS",
+    "PT",
+    "PW",
+    "PY",
+    "QA",
+    "RE",
+    "RO",
+    "RS",
+    "RU",
+    "RW",
+    "SA",
+    "SB",
+    "SC",
+    "SD",
+    "SE",
+    "SG",
+    "SH",
+    "SI",
+    "SJ",
+    "SK",
+    "SL",
+    "SM",
+    "SN",
+    "SO",
+    "SR",
+    "SS",
+    "ST",
+    "SV",
+    "SX",
+    "SY",
+    "SZ",
+    "TC",
+    "TD",
+    "TF",
+    "TG",
+    "TH",
+    "TJ",
+    "TK",
+    "TL",
+    "TM",
+    "TN",
+    "TO",
+    "TR",
+    "TT",
+    "TV",
+    "TW",
+    "TZ",
+    "UA",
+    "UG",
+    "UM",
+    "US",
+    "UY",
+    "UZ",
+    "VA",
+    "VC",
+    "VE",
+    "VG",
+    "VI",
+    "VN",
+    "VU",
+    "WF",
+    "WS",
+    "XK",
+    "YE",
+    "YT",
+    "ZA",
+    "ZM",
+    "ZW"
+  ],
+  "next_action": "Review additional candidates against source observations, FOI scope, adapter, rights and pacing requirements before catalogue admission; continue broader discovery for all entities.",
+  "rollout_sha256": "33c46cd1b2169a18f993d581b970734fab01795d053ab12cd4ea52f4a67bf638",
+  "schema_version": "archive-govt-nz.foi-rollout-reconciliation/v1",
+  "scope": "local_lineage_only_not_review_or_publication_evidence",
+  "sources": [
+    {
+      "entity_id": "AD",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "ad-transparency-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "fb6a777747b117bd0c838febdee1d25dc075058170ab696acc4e216305a7912d",
+      "review_credit_granted": false,
+      "source_id": "ad-transparency-portal"
+    },
+    {
+      "entity_id": "AE",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "ae-government-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "3f42204588707ae5503215fa18670a535f98f3cab41af5b4d3e2a22a7a1ca9e4",
+      "review_credit_granted": false,
+      "source_id": "ae-government-open-data"
+    },
+    {
+      "entity_id": "AF",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "af-government-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "24138b19c1ca28e3925f0ee6053e8426eb73c544fe3ad0717f5f959bc1fe7f57",
+      "review_credit_granted": false,
+      "source_id": "af-government-open-data"
+    },
+    {
+      "entity_id": "AG",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "ag-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "586339d2e6259647c21e045c83c191a845986435f1ddce52ec571a641d3d15f6",
+      "review_credit_granted": false,
+      "source_id": "ag-government-portal"
+    },
+    {
+      "entity_id": "AI",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "ai-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "2107e7de20ad9a33bf99ceb21c17e33ddfcc8df6a93aea2253ac6e0d23bffddc",
+      "review_credit_granted": false,
+      "source_id": "ai-government-portal"
+    },
+    {
+      "entity_id": "AL",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "al-idp-transparency-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "0f20029e62c8230af94af6f9c637a48c137e80b4366c6b666c140cb755312a59",
+      "review_credit_granted": false,
+      "source_id": "al-idp-transparency"
+    },
+    {
+      "entity_id": "AM",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "am-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "d3ffe749d1955b9b9aaca015323be5532fa478a126b263dc2d69850fd7870e45",
+      "review_credit_granted": false,
+      "source_id": "am-open-data"
+    },
+    {
+      "entity_id": "AO",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "ao-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "cd1bf5db088dea3a2e6d6002210b0cb8426049f9ac1c4d53bf6aabe6001b33ef",
+      "review_credit_granted": false,
+      "source_id": "ao-open-data"
+    },
+    {
+      "entity_id": "AQ",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "aq-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "2fa27fa1b3198c65c6eca99c767b19a6a327694fe2423466bb07e54c34317eb9",
+      "review_credit_granted": false,
+      "source_id": "aq-government-portal"
+    },
+    {
+      "entity_id": "AR",
+      "lineage": "pinned_catalogue",
+      "receipt": null,
+      "receipt_kind": "pilot_receipt_required",
+      "receipt_sha256": null,
+      "review_credit_granted": false,
+      "source_id": "ar-derechoaldato"
+    },
+    {
+      "entity_id": "AR",
+      "lineage": "pinned_catalogue",
+      "receipt": null,
+      "receipt_kind": "pilot_receipt_required",
+      "receipt_sha256": null,
+      "review_credit_granted": false,
+      "source_id": "ar-information-publica"
+    },
+    {
+      "entity_id": "AS",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "as-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "c49eaec4db11d6b86cefc91687e64125d4240e38b642a09de6612f83d4507bc5",
+      "review_credit_granted": false,
+      "source_id": "as-government-portal"
+    },
+    {
+      "entity_id": "AT",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "at-government-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "f09b892ce2b971a440bf56a34da7e4a8e85cf568de698b807c799a636ea34bc4",
+      "review_credit_granted": false,
+      "source_id": "at-government-open-data"
+    },
+    {
+      "entity_id": "AU",
+      "lineage": "pinned_catalogue",
+      "receipt": null,
+      "receipt_kind": "pilot_receipt_required",
+      "receipt_sha256": null,
+      "review_credit_granted": false,
+      "source_id": "au-rtk"
+    },
+    {
+      "entity_id": "AW",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "aw-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "dee82388d4a2f85b027e6ff7b63981d8501119cea65abad7ac2d59d52f3f39e3",
+      "review_credit_granted": false,
+      "source_id": "aw-government-portal"
+    },
+    {
+      "entity_id": "AX",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "ax-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "251b09ee30970a44e758b5db239bf0b7b339be0ebf11273dac7f7e217365e19b",
+      "review_credit_granted": false,
+      "source_id": "ax-government-portal"
+    },
+    {
+      "entity_id": "AZ",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "az-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "5e6dc806595e98e8ecf97fcacee8061feec170ed79d221af11c2080d18192151",
+      "review_credit_granted": false,
+      "source_id": "az-open-data"
+    },
+    {
+      "entity_id": "BA",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "ba-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "d9aec8cee15edddcc2388619c907c6e1ad52c385763afa325c7771cc00be0bc2",
+      "review_credit_granted": false,
+      "source_id": "ba-open-data"
+    },
+    {
+      "entity_id": "BB",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "bb-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "054e3e32ce568707ddbfb31dd873bb4460bec1f9e76fe2f6f32e440b154dce22",
+      "review_credit_granted": false,
+      "source_id": "bb-government-portal"
+    },
+    {
+      "entity_id": "BD",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "bd-government-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "cb700701d71cb0f64378ac2b8bc90a04a07f48d1ed599d24dfb85576956c7493",
+      "review_credit_granted": false,
+      "source_id": "bd-government-open-data"
+    },
+    {
+      "entity_id": "BE",
+      "lineage": "pinned_catalogue",
+      "receipt": null,
+      "receipt_kind": "pilot_receipt_required",
+      "receipt_sha256": null,
+      "review_credit_granted": false,
+      "source_id": "be-transparencia"
+    },
+    {
+      "entity_id": "BF",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "bf-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "e17f7c1abd3c3c958ecce772865c77f6acf876cad4c1bfb2c309f78971b99da6",
+      "review_credit_granted": false,
+      "source_id": "bf-government-portal"
+    },
+    {
+      "entity_id": "BG",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "bg-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "f584b783431e4d1d8dddded7c802d30c95212b79ea7440dc8eb0be54585e8590",
+      "review_credit_granted": false,
+      "source_id": "bg-open-data"
+    },
+    {
+      "entity_id": "BH",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "bh-government-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "fe637b3837fc78ed3194d33d62cbb92154571ff1eea9b08ffc88288af60bce56",
+      "review_credit_granted": false,
+      "source_id": "bh-government-open-data"
+    },
+    {
+      "entity_id": "BI",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "bi-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "cbbb4c4acc05fafff837842c054d6d0a2e76141a62e476989c1ff2bf89b6bcc8",
+      "review_credit_granted": false,
+      "source_id": "bi-government-portal"
+    },
+    {
+      "entity_id": "BJ",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "bj-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "391da7febcbb7041fa22dd842f685e23b690ebe25f684fc283061c20a65c3740",
+      "review_credit_granted": false,
+      "source_id": "bj-government-portal"
+    },
+    {
+      "entity_id": "BL",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "bl-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "d31d03a6809739ad190f8823286b4b8bfb9f0d08f9e2c2b5aad5a513d00332ed",
+      "review_credit_granted": false,
+      "source_id": "bl-government-portal"
+    },
+    {
+      "entity_id": "BM",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "bm-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "9ec3b28a37fa60c71cbc3e2286464ebba9b42b6c082513041adf6c69e39e16bb",
+      "review_credit_granted": false,
+      "source_id": "bm-government-portal"
+    },
+    {
+      "entity_id": "BN",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "bn-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "19a3a13537611982aefaacb3c8813ec3110b89af201740ea62d21edd9469efa0",
+      "review_credit_granted": false,
+      "source_id": "bn-open-data"
+    },
+    {
+      "entity_id": "BO",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "bo-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "1a1717b83fa23f35568494051d294f7892eb92667b28fef362f2852bcb0975ad",
+      "review_credit_granted": false,
+      "source_id": "bo-government-portal"
+    },
+    {
+      "entity_id": "BQ",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "bq-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "3dff24775454791d531d9a2d6b9a9727f511ad425b7961d3639deb1d1ade3b59",
+      "review_credit_granted": false,
+      "source_id": "bq-government-portal"
+    },
+    {
+      "entity_id": "BR",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "br-transparency-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "09d31a228528f0de9f48bb7063a0a2cf20dc8b1996b47aa72b0d14a1a9feaf38",
+      "review_credit_granted": false,
+      "source_id": "br-cgu-transparency"
+    },
+    {
+      "entity_id": "BS",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "bs-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "96dab2327532d409aab4e139dfe572faf8478b267726bb261126e0f3dd96b39e",
+      "review_credit_granted": false,
+      "source_id": "bs-government-portal"
+    },
+    {
+      "entity_id": "BT",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "bt-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "7d419ea12176a7d892c6410e061330f95597c4143adefd6177beee4946968c2b",
+      "review_credit_granted": false,
+      "source_id": "bt-government-portal"
+    },
+    {
+      "entity_id": "BV",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "bv-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "7d76d6d084921780547ed40c09d8be551e759e4a89231c360cbd49aeb6d38a6c",
+      "review_credit_granted": false,
+      "source_id": "bv-government-portal"
+    },
+    {
+      "entity_id": "BW",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "bw-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "2fdd702cf7506e851e543114adf6cb01f10709406c4ad7daab175a02421b585a",
+      "review_credit_granted": false,
+      "source_id": "bw-government-portal"
+    },
+    {
+      "entity_id": "BY",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "by-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "19798ba4811deb47c77cb261bc9233ee62afce41b7a53fe6c30d00aac74ad63c",
+      "review_credit_granted": false,
+      "source_id": "by-government-portal"
+    },
+    {
+      "entity_id": "BZ",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "bz-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "626c8119236992bc2fe847c679af7f67c8543c480ff3a11b39e6d3596faaf640",
+      "review_credit_granted": false,
+      "source_id": "bz-government-portal"
+    },
+    {
+      "entity_id": "CA",
+      "lineage": "pinned_catalogue",
+      "receipt": "ca-huggingface-publication-receipt-20260905.json",
+      "receipt_kind": "other_source_receipt_not_reverified",
+      "receipt_sha256": "328abd05f6a2df1636b5553769ef6eecc774f2e6bc3572211349adadce9c1bf2",
+      "review_credit_granted": false,
+      "source_id": "ca-federal-atip"
+    },
+    {
+      "entity_id": "CC",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "cc-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "255f37116afdafa911e59a0ab0342c67ef0b6899bcc12177e5e680e1424ad855",
+      "review_credit_granted": false,
+      "source_id": "cc-government-portal"
+    },
+    {
+      "entity_id": "CD",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "cd-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "f2ee28b7fcfea1807bc5e84c047e801883d8971d5e644836e66fc187315347be",
+      "review_credit_granted": false,
+      "source_id": "cd-government-portal"
+    },
+    {
+      "entity_id": "CF",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "cf-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "27c90fe64b9968f2d108f155674e90fecf2cc0038fafc79c42b6d15f0a19fd7e",
+      "review_credit_granted": false,
+      "source_id": "cf-government-portal"
+    },
+    {
+      "entity_id": "CG",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "cg-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "55ff62496f8b9bfdecf42bcebd6dfc60ea68cd285056a0707fb4ca9383b8c24a",
+      "review_credit_granted": false,
+      "source_id": "cg-government-portal"
+    },
+    {
+      "entity_id": "CH",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "ch-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "977e86b5a3b8f5b88ba153e44ccbb274e7f93b5beb1ea2a5cbea951cf4a08549",
+      "review_credit_granted": false,
+      "source_id": "ch-open-data"
+    },
+    {
+      "entity_id": "CI",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "ci-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "ffdb033be52caa587e8f58ace9aa7622cbac57dfcee702fdb19aabcb5c35526a",
+      "review_credit_granted": false,
+      "source_id": "ci-government-portal"
+    },
+    {
+      "entity_id": "CK",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "ck-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "dc4219af44db8538bafe222daddc338671478a51e63a17c23a9d491c69bb154a",
+      "review_credit_granted": false,
+      "source_id": "ck-government-portal"
+    },
+    {
+      "entity_id": "CL",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "cl-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "29cf6e9379b160e2531c6302e2abdffbb464876e1ec93f85048436811f384680",
+      "review_credit_granted": false,
+      "source_id": "cl-open-data"
+    },
+    {
+      "entity_id": "CM",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "cm-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "95893e1acff3ff03bc08f338afd59e1d59f5d510804c28ec63dae122ba8e5b71",
+      "review_credit_granted": false,
+      "source_id": "cm-open-data"
+    },
+    {
+      "entity_id": "CN",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "cn-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "795f875ba0b2a8353b585e674ec9af593cbd9d4b83d7deb36116125cceed3c19",
+      "review_credit_granted": false,
+      "source_id": "cn-government-portal"
+    },
+    {
+      "entity_id": "CO",
+      "lineage": "pinned_catalogue",
+      "receipt": null,
+      "receipt_kind": "pilot_receipt_required",
+      "receipt_sha256": null,
+      "review_credit_granted": false,
+      "source_id": "co-queremosdatos"
+    },
+    {
+      "entity_id": "CR",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "cr-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "080da69979ce5769939e3f983a6cdeeb3e37e87a34df2ee40f01f19393217cb8",
+      "review_credit_granted": false,
+      "source_id": "cr-government-portal"
+    },
+    {
+      "entity_id": "CU",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "cu-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "26b1622df1fb221de7d02426556c1094d188d123d06e48ed4f3a8078706b07cd",
+      "review_credit_granted": false,
+      "source_id": "cu-government-portal"
+    },
+    {
+      "entity_id": "CV",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "cv-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "ca8f2d14d623f6261dd69ad55d0f037e9d44d90850094d0f4e4bf69a3ad68521",
+      "review_credit_granted": false,
+      "source_id": "cv-government-portal"
+    },
+    {
+      "entity_id": "CW",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "cw-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "4b355c0e12800b0162b4d7375a3bc52f3cbf906e04d5f2cd0cbf47344b4f3312",
+      "review_credit_granted": false,
+      "source_id": "cw-government-portal"
+    },
+    {
+      "entity_id": "CX",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "cx-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "ff76d03baa120637d0689d762601c0293485f642a5f86d0770893ba2286d9a45",
+      "review_credit_granted": false,
+      "source_id": "cx-government-portal"
+    },
+    {
+      "entity_id": "CY",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "cy-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "1b9f05976720ef0760a5093c23ed570938f6a97377be93acf81b9a46956b99db",
+      "review_credit_granted": false,
+      "source_id": "cy-open-data"
+    },
+    {
+      "entity_id": "CZ",
+      "lineage": "pinned_catalogue",
+      "receipt": null,
+      "receipt_kind": "pilot_receipt_required",
+      "receipt_sha256": null,
+      "review_credit_granted": false,
+      "source_id": "cz-infoprovsechny"
+    },
+    {
+      "entity_id": "DE",
+      "lineage": "pinned_catalogue",
+      "receipt": null,
+      "receipt_kind": "pilot_receipt_required",
+      "receipt_sha256": null,
+      "review_credit_granted": false,
+      "source_id": "de-fragdenstaat"
+    },
+    {
+      "entity_id": "DJ",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "dj-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "0b5c31261ca144a2429c40f693313e27f1bfe72d038efcddf41bece88f0e8d06",
+      "review_credit_granted": false,
+      "source_id": "dj-government-portal"
+    },
+    {
+      "entity_id": "DK",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "dk-government-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "11ff9aad6b41b69fb656a27bec642120a25d9adc6157493b8ca9e991ade65a9c",
+      "review_credit_granted": false,
+      "source_id": "dk-government-open-data"
+    },
+    {
+      "entity_id": "DM",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "dm-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "3c6a2d09b57b4755e4633b1ceb66ab48c69be6cee8138292e88d368c0e37244f",
+      "review_credit_granted": false,
+      "source_id": "dm-government-portal"
+    },
+    {
+      "entity_id": "DO",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "do-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "ed96f795f6c6efd8d584475ea978ea4aac7b8605b498c304ce5f7bd66df35f09",
+      "review_credit_granted": false,
+      "source_id": "do-government-portal"
+    },
+    {
+      "entity_id": "DZ",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "dz-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "81401b1b6cea8f6cbf1f6356e5e937fef9240c71b374b53626a166a5e26faf81",
+      "review_credit_granted": false,
+      "source_id": "dz-government-portal"
+    },
+    {
+      "entity_id": "EC",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "ec-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "dba151e9e75530892dc166b45a25fb1b19c13e538628ed64568622a3c6762524",
+      "review_credit_granted": false,
+      "source_id": "ec-government-portal"
+    },
+    {
+      "entity_id": "EE",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "ee-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "5e20059fe0c176ab7a67c80509d64b00fe306414c706407921958761b78ecc43",
+      "review_credit_granted": false,
+      "source_id": "ee-open-data"
+    },
+    {
+      "entity_id": "EG",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "eg-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "ef9743cc925ba700e65c48c23c67449b605571591ac994a901efd3c6ca835a44",
+      "review_credit_granted": false,
+      "source_id": "eg-government-portal"
+    },
+    {
+      "entity_id": "EH",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "eh-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "9684ea3ee65af6faefd5721cf6d80f6311c943f21fd7454f79cc08009905d7ca",
+      "review_credit_granted": false,
+      "source_id": "eh-government-portal"
+    },
+    {
+      "entity_id": "ER",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "er-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "0b5dc1dc36cd4234649fce846304b424b778acbf6a73be7707a3bf7a00c31b85",
+      "review_credit_granted": false,
+      "source_id": "er-open-data"
+    },
+    {
+      "entity_id": "ES",
+      "lineage": "pinned_catalogue",
+      "receipt": null,
+      "receipt_kind": "pilot_receipt_required",
+      "receipt_sha256": null,
+      "review_credit_granted": false,
+      "source_id": "es-tuderechoasaber"
+    },
+    {
+      "entity_id": "ET",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "et-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "e1397ef53c06d8f5c9965797fd587d23e1de2c4eae16eefb0680387290537662",
+      "review_credit_granted": false,
+      "source_id": "et-open-data"
+    },
+    {
+      "entity_id": "EU",
+      "lineage": "pinned_catalogue",
+      "receipt": null,
+      "receipt_kind": "pilot_receipt_required",
+      "receipt_sha256": null,
+      "review_credit_granted": false,
+      "source_id": "eu-asktheeu"
+    },
+    {
+      "entity_id": "FI",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "fi-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "6eea663fe3270308dc40aea063acdb76fb3c7d8ff6fe0c8ea638c0ecf61b755b",
+      "review_credit_granted": false,
+      "source_id": "fi-open-data"
+    },
+    {
+      "entity_id": "FJ",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "fj-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "caf3168142029258b56c11a25f0d641575bf543872f71d64664a9cb0410c7db1",
+      "review_credit_granted": false,
+      "source_id": "fj-open-data"
+    },
+    {
+      "entity_id": "FK",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "fk-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "eaf3222db82f4bbcbcaa983d398fbfaf650b9ba40e54c5ae34f476955e0e3756",
+      "review_credit_granted": false,
+      "source_id": "fk-government-portal"
+    },
+    {
+      "entity_id": "FM",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "fm-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "b1f190722f761efd14e5743a1e855328817f27964d5bfb789de0adfa766cd840",
+      "review_credit_granted": false,
+      "source_id": "fm-government-portal"
+    },
+    {
+      "entity_id": "FO",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "fo-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "089d862b4b527e949ab4556c681ba1a8a580e9dfccd478c7758cd93edfceeb60",
+      "review_credit_granted": false,
+      "source_id": "fo-government-portal"
+    },
+    {
+      "entity_id": "FR",
+      "lineage": "pinned_catalogue",
+      "receipt": null,
+      "receipt_kind": "pilot_receipt_required",
+      "receipt_sha256": null,
+      "review_credit_granted": false,
+      "source_id": "fr-madada"
+    },
+    {
+      "entity_id": "GA",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "ga-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "1f00802a93a7c0f03a41dcae7887b613722bfad2586651be239b3a4ad1ee0931",
+      "review_credit_granted": false,
+      "source_id": "ga-open-data"
+    },
+    {
+      "entity_id": "GD",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "gd-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "656276d8fe1b02ba3ccae2c8b834cd48550517cdd1b22bf2f6d6515d2bade2ae",
+      "review_credit_granted": false,
+      "source_id": "gd-government-portal"
+    },
+    {
+      "entity_id": "GE",
+      "lineage": "pinned_catalogue",
+      "receipt": null,
+      "receipt_kind": "pilot_receipt_required",
+      "receipt_sha256": null,
+      "review_credit_granted": false,
+      "source_id": "ge-askgov"
+    },
+    {
+      "entity_id": "GF",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "gf-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "ae8bb883733f22d74d567d335465a58bc5820fc0d2e4230084c8973521db0709",
+      "review_credit_granted": false,
+      "source_id": "gf-government-portal"
+    },
+    {
+      "entity_id": "GG",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "gg-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "5fe15aa00461992dd61602fe907ca62ea6255a55815c402f44e562daf15239f5",
+      "review_credit_granted": false,
+      "source_id": "gg-government-portal"
+    },
+    {
+      "entity_id": "GH",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "gh-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "cc59ad086b5b27f846fd7e5d9bc75421b7c5cfc895512de848f4037f32f83890",
+      "review_credit_granted": false,
+      "source_id": "gh-government-portal"
+    },
+    {
+      "entity_id": "GI",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "gi-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "e116c2c5837c220e37e3f480956c740957c789fbee174ad3a4e448e3a2e77493",
+      "review_credit_granted": false,
+      "source_id": "gi-government-portal"
+    },
+    {
+      "entity_id": "GL",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "gl-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "dc581891dc02da9364838043051342e2771b3d7833acdb8d9883d475c9f1bac0",
+      "review_credit_granted": false,
+      "source_id": "gl-government-portal"
+    },
+    {
+      "entity_id": "GM",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "gm-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "fedf262b31bf5c87e41cb616d712541e4656711a44697eff8c9b4dd8b3babe6d",
+      "review_credit_granted": false,
+      "source_id": "gm-government-portal"
+    },
+    {
+      "entity_id": "GN",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "gn-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "87ec3c26034f198396abada9922f52c7f5dd971f854fe18d78de5907e2a9c02d",
+      "review_credit_granted": false,
+      "source_id": "gn-government-portal"
+    },
+    {
+      "entity_id": "GP",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "gp-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "241f3f4f41d4d63a19602ef0d55aa6620c2744c910986cea7c3e7320d1ba8d7c",
+      "review_credit_granted": false,
+      "source_id": "gp-government-portal"
+    },
+    {
+      "entity_id": "GQ",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "gq-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "feccfc6bfea3d604cbbce3d33051e702f7f6eecd293ebc9a9ae8e6eab6783c7f",
+      "review_credit_granted": false,
+      "source_id": "gq-government-portal"
+    },
+    {
+      "entity_id": "GR",
+      "lineage": "pinned_catalogue",
+      "receipt": null,
+      "receipt_kind": "pilot_receipt_required",
+      "receipt_sha256": null,
+      "review_credit_granted": false,
+      "source_id": "gr-arthro5a"
+    },
+    {
+      "entity_id": "GS",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "gs-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "e5fe5cc2156f1ff40679e9e47ad755bb3434a0a34b3dc12b3a3e44a8040ecc9f",
+      "review_credit_granted": false,
+      "source_id": "gs-government-portal"
+    },
+    {
+      "entity_id": "GT",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "gt-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "7f6e417eec5dd6db25ace48a41ebf1c303c6a4157dc298c11d7b80745ead4a17",
+      "review_credit_granted": false,
+      "source_id": "gt-government-portal"
+    },
+    {
+      "entity_id": "GU",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "gu-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "16df4546b615333571a06c257c0e948b1914a3c2fca519a6af46016281df3613",
+      "review_credit_granted": false,
+      "source_id": "gu-government-portal"
+    },
+    {
+      "entity_id": "GW",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "gw-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "751d46f69ea2b3518a03080b74df9af1ef13ba69e57f09089cf64d74a343acdc",
+      "review_credit_granted": false,
+      "source_id": "gw-government-portal"
+    },
+    {
+      "entity_id": "GY",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "gy-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "0345114dcafdd39c1d18a6761fc28eb12b75e82a489e1ba36e96e3e6733ae9f7",
+      "review_credit_granted": false,
+      "source_id": "gy-government-portal"
+    },
+    {
+      "entity_id": "HK",
+      "lineage": "pinned_catalogue",
+      "receipt": null,
+      "receipt_kind": "pilot_receipt_required",
+      "receipt_sha256": null,
+      "review_credit_granted": false,
+      "source_id": "hk-accessinfo"
+    },
+    {
+      "entity_id": "HM",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "hm-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "d8642f6090826ef87919b7bdd6d79d4987b7f6e4b76ace2f58b125c99a9dfb4e",
+      "review_credit_granted": false,
+      "source_id": "hm-government-portal"
+    },
+    {
+      "entity_id": "HN",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "hn-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "1326b094b061360dda8f662c4fc33845b5cf7cee7ff0a40a8f25a5f30338a53c",
+      "review_credit_granted": false,
+      "source_id": "hn-government-portal"
+    },
+    {
+      "entity_id": "HR",
+      "lineage": "pinned_catalogue",
+      "receipt": null,
+      "receipt_kind": "pilot_receipt_required",
+      "receipt_sha256": null,
+      "review_credit_granted": false,
+      "source_id": "hr-imamopravoznati"
+    },
+    {
+      "entity_id": "HT",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "ht-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "db055dae9d84f60ed24874b4f48f74bb1c4431fcb8a58e945f275cf52301b90b",
+      "review_credit_granted": false,
+      "source_id": "ht-government-portal"
+    },
+    {
+      "entity_id": "HU",
+      "lineage": "pinned_catalogue",
+      "receipt": null,
+      "receipt_kind": "pilot_receipt_required",
+      "receipt_sha256": null,
+      "review_credit_granted": false,
+      "source_id": "hu-kimittud"
+    },
+    {
+      "entity_id": "ID",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "id-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "f75d5d776c8ef4d7d09bd646886603ec3dfa45380582e351992ccc79bce7fe0a",
+      "review_credit_granted": false,
+      "source_id": "id-open-data"
+    },
+    {
+      "entity_id": "IE",
+      "lineage": "pinned_catalogue",
+      "receipt": null,
+      "receipt_kind": "pilot_receipt_required",
+      "receipt_sha256": null,
+      "review_credit_granted": false,
+      "source_id": "ie-myrighttoknow"
+    },
+    {
+      "entity_id": "IL",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "il-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "a26152a1f45076e588cb43c3eb7defbf05440b909c51a32b07a215cde07cd187",
+      "review_credit_granted": false,
+      "source_id": "il-open-data"
+    },
+    {
+      "entity_id": "IM",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "im-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "06a77b3951b1d55f7c53ce8b3e4f7fac652cd8e75c0e9bd6b836bdf52f9fa299",
+      "review_credit_granted": false,
+      "source_id": "im-government-portal"
+    },
+    {
+      "entity_id": "IN",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "in-rti-online-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "e09f6f9833d6937bcdb72d0f86b6f1bf3b75cc72e983588e03f7e1d55807473f",
+      "review_credit_granted": false,
+      "source_id": "in-rti-online"
+    },
+    {
+      "entity_id": "IO",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "io-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "046dcd9d6781ad01ebd5ca46e0b11e8fddc431948232ff7f848ede6a37a068f5",
+      "review_credit_granted": false,
+      "source_id": "io-government-portal"
+    },
+    {
+      "entity_id": "IQ",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "iq-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "4c504a044eb83c5037d2fa17058ad261f84627c96b64b8480956e08bdbd6e29b",
+      "review_credit_granted": false,
+      "source_id": "iq-government-portal"
+    },
+    {
+      "entity_id": "IR",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "ir-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "764bf6689d8d4771b1f3341adfc9fdea7591044c05dfff130d83cdf0b174ffbc",
+      "review_credit_granted": false,
+      "source_id": "ir-government-portal"
+    },
+    {
+      "entity_id": "IS",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "is-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "20e912e239cd437dd2edad9782af1131076c8a792588efc4e8eafc3c5f487097",
+      "review_credit_granted": false,
+      "source_id": "is-open-data"
+    },
+    {
+      "entity_id": "IT",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "it-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "6516d257eb6c4fbba66c50eaf8aff7d658cc94c40fedf76fc75b857c8e48ad9f",
+      "review_credit_granted": false,
+      "source_id": "it-government-portal"
+    },
+    {
+      "entity_id": "JE",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "je-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "fcd24decd3403f477b3899fbaa90d1eaf21059b13f345ecf8394c1b7e0e4cfe7",
+      "review_credit_granted": false,
+      "source_id": "je-government-portal"
+    },
+    {
+      "entity_id": "JM",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "jm-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "b624342b278df2cf7859515740dae2a866fe8ec449be1873f3346d4642485194",
+      "review_credit_granted": false,
+      "source_id": "jm-government-portal"
+    },
+    {
+      "entity_id": "JO",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "jo-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "f3a3ce3f18e6ce64492c44117ac653ba1f0557871cc0e2be17bd9b7ef6b16a1a",
+      "review_credit_granted": false,
+      "source_id": "jo-open-data"
+    },
+    {
+      "entity_id": "JP",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "jp-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "c62a0cefcc6e524ef531bf3b820d32255ec94a6a2270d29535b1150aeb7aa055",
+      "review_credit_granted": false,
+      "source_id": "jp-open-data"
+    },
+    {
+      "entity_id": "KE",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "ke-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "291ec663f585365ee788cf48248cc54e2cc9f0cc0baad14f5557d7129c316af9",
+      "review_credit_granted": false,
+      "source_id": "ke-government-portal"
+    },
+    {
+      "entity_id": "KG",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "kg-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "7608be5c3d2d628ad880dfcc8d03336e7eb3faa46418739144656476e9a101f6",
+      "review_credit_granted": false,
+      "source_id": "kg-open-data"
+    },
+    {
+      "entity_id": "KH",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "kh-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "dd796c613233c0c69a27c753ef69784599c4ad2531317649284f8a8e5aa36166",
+      "review_credit_granted": false,
+      "source_id": "kh-government-portal"
+    },
+    {
+      "entity_id": "KI",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "ki-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "526d8a8cc3a1e954cb876a10020d1425f13e786966630a655891a9bce99fc153",
+      "review_credit_granted": false,
+      "source_id": "ki-government-portal"
+    },
+    {
+      "entity_id": "KM",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "km-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "6b2c722b45144f5a9673798387ae8648b503f1fb979c4d119dc82db5be62bfe6",
+      "review_credit_granted": false,
+      "source_id": "km-government-portal"
+    },
+    {
+      "entity_id": "KN",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "kn-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "27646add122c79b5d59bbf156b9df03116338564793fd38ce120a2ae552d947a",
+      "review_credit_granted": false,
+      "source_id": "kn-government-portal"
+    },
+    {
+      "entity_id": "KP",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "kp-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "498ccf527f5c358792cb657e4df9bd7b34b4186acbcbd14c9cbdaf1279ba10fb",
+      "review_credit_granted": false,
+      "source_id": "kp-government-portal"
+    },
+    {
+      "entity_id": "KR",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "kr-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "f6bed657d3c1c5822fa3b43fa6e779acf5bfd624a413c5761257d11f9853e85c",
+      "review_credit_granted": false,
+      "source_id": "kr-open-data"
+    },
+    {
+      "entity_id": "KW",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "kw-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "13db1623b88960f73edabd2ca380e7724df156dcf8943814e21a88a0c3b38942",
+      "review_credit_granted": false,
+      "source_id": "kw-open-data"
+    },
+    {
+      "entity_id": "KY",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "ky-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "91e240520f388f081ed6dd61284984cf0c41cff9c70b1a753733e137ac305921",
+      "review_credit_granted": false,
+      "source_id": "ky-government-portal"
+    },
+    {
+      "entity_id": "KZ",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "kz-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "2483cc29c1c2e09478dcbd29f8b97e65b16ea80b31a9437863448db2c49076c7",
+      "review_credit_granted": false,
+      "source_id": "kz-open-data"
+    },
+    {
+      "entity_id": "LA",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "la-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "fcb0045507c97cb1c13cd6149880ce2877426c844be8ede6302db1d85d5d6ce5",
+      "review_credit_granted": false,
+      "source_id": "la-government-portal"
+    },
+    {
+      "entity_id": "LB",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "lb-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "c4a10dc558686e234033d3660410fe49c19dd17b7be0c87d84466e7110dc0fca",
+      "review_credit_granted": false,
+      "source_id": "lb-open-data"
+    },
+    {
+      "entity_id": "LC",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "lc-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "0c58e8acfba68fa6f20b7d622a92da2f1743530f38a43db6f445839a33eba667",
+      "review_credit_granted": false,
+      "source_id": "lc-government-portal"
+    },
+    {
+      "entity_id": "LI",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "li-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "2061872eec5cf5321458f65c24ff368cee803c37fc9a0d66adbc7014da4880e1",
+      "review_credit_granted": false,
+      "source_id": "li-open-data"
+    },
+    {
+      "entity_id": "LK",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "lk-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "bf55ca99846a5b4a33b2048fef8bf08705703e69f14e5a50f28bfcd94df12cdc",
+      "review_credit_granted": false,
+      "source_id": "lk-open-data"
+    },
+    {
+      "entity_id": "LR",
+      "lineage": "pinned_catalogue",
+      "receipt": null,
+      "receipt_kind": "pilot_receipt_required",
+      "receipt_sha256": null,
+      "review_credit_granted": false,
+      "source_id": "lr-infolib"
+    },
+    {
+      "entity_id": "LS",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "ls-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "4def19870b8e3e0a337d75e39ffd33690b4bbbb98c8d0e0d13487b6f8560cd14",
+      "review_credit_granted": false,
+      "source_id": "ls-government-portal"
+    },
+    {
+      "entity_id": "LT",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "lt-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "83e2e72895c8fd5539a5f307b94a5d2c4916610f438a70d3a0bf2b60d6d5799e",
+      "review_credit_granted": false,
+      "source_id": "lt-open-data"
+    },
+    {
+      "entity_id": "LU",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "lu-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "502eff06ce688b4cc0168797f0da26fd7706a33fb7b05d5c4716dbbe8a98ab2d",
+      "review_credit_granted": false,
+      "source_id": "lu-open-data"
+    },
+    {
+      "entity_id": "LV",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "lv-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "9165ad59528631b85152b42b777851fdaaeb997c2b572e4439d553e2dfa4e38d",
+      "review_credit_granted": false,
+      "source_id": "lv-open-data"
+    },
+    {
+      "entity_id": "LY",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "ly-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "e9c6a2ddddd4cf63f51dfd047a0d504e05918a91029d22f6f94d62475e50d982",
+      "review_credit_granted": false,
+      "source_id": "ly-government-portal"
+    },
+    {
+      "entity_id": "MA",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "ma-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "8a8d17c43b12522141b8dfec9326474ab0b71ca08e7540dd53a0028181ed5a7a",
+      "review_credit_granted": false,
+      "source_id": "ma-open-data"
+    },
+    {
+      "entity_id": "MC",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "mc-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "6cda6597f7e81fb345af75c76ffb610dc9e087a4fad51f7f59713ae384be682a",
+      "review_credit_granted": false,
+      "source_id": "mc-government-portal"
+    },
+    {
+      "entity_id": "MD",
+      "lineage": "pinned_catalogue",
+      "receipt": null,
+      "receipt_kind": "pilot_receipt_required",
+      "receipt_sha256": null,
+      "review_credit_granted": false,
+      "source_id": "md-vreauinfo"
+    },
+    {
+      "entity_id": "ME",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "me-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "2b52836e3bf2fe5618b4b269562b88c1a7ba11274c4b0f5ef3bc10dc05606db5",
+      "review_credit_granted": false,
+      "source_id": "me-open-data"
+    },
+    {
+      "entity_id": "MF",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "mf-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "c279a287d72cf418933092fef51e6a95ce05880d76332d2fde7481e00e04ee93",
+      "review_credit_granted": false,
+      "source_id": "mf-government-portal"
+    },
+    {
+      "entity_id": "MG",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "mg-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "b5f0f268c204426928f4e982007b6e6ccc94af5d48f71d6834a26318fd5f0e5d",
+      "review_credit_granted": false,
+      "source_id": "mg-open-data"
+    },
+    {
+      "entity_id": "MH",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "mh-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "d7cfdb55145896767bff85217d1a562f1618987c59550a28553b10480df79d18",
+      "review_credit_granted": false,
+      "source_id": "mh-government-portal"
+    },
+    {
+      "entity_id": "MK",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "mk-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "7a7015e4d7d26d97beeaf239b83516a7378e6ca8cc1b7a1edc32db397c2181f5",
+      "review_credit_granted": false,
+      "source_id": "mk-open-data"
+    },
+    {
+      "entity_id": "ML",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "ml-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "0c5e9eceb0ae3dee441e9d7d7a51a588d8992218f22b25ff2a15ca6b2eccaf65",
+      "review_credit_granted": false,
+      "source_id": "ml-government-portal"
+    },
+    {
+      "entity_id": "MM",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "mm-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "2c18097d73fb12ddbb9786274cf0f11458ff0f17140843752a13f4ce06ee1790",
+      "review_credit_granted": false,
+      "source_id": "mm-government-portal"
+    },
+    {
+      "entity_id": "MN",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "mn-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "901182617c97cd243b1facb4e3bd418f34af667d0169461e42e0ae2381ba0ff9",
+      "review_credit_granted": false,
+      "source_id": "mn-open-data"
+    },
+    {
+      "entity_id": "MO",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "mo-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "af56224e6d04e41381aba16804a1b845f547ce8816b5a7cb3d83b35aa79101c3",
+      "review_credit_granted": false,
+      "source_id": "mo-open-data"
+    },
+    {
+      "entity_id": "MP",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "mp-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "c173ad18675d14a28be96627e75291e7178c348561ac31625a69db0245337177",
+      "review_credit_granted": false,
+      "source_id": "mp-government-portal"
+    },
+    {
+      "entity_id": "MQ",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "mq-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "2bc2e7ee31f54bee32d16aa73e2a5f4cb626f15d43f6c4ba16ca5b0085c973d0",
+      "review_credit_granted": false,
+      "source_id": "mq-government-portal"
+    },
+    {
+      "entity_id": "MR",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "mr-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "f37241d5731ab941051cac6823117fbaf8a2415856e59bbfeead585f8f3c334e",
+      "review_credit_granted": false,
+      "source_id": "mr-government-portal"
+    },
+    {
+      "entity_id": "MS",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "ms-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "7e68cc719e4b8e0ccbdbe9e08b5f6c8122cb68fc9477d0dc5cbd7f2b01d277ea",
+      "review_credit_granted": false,
+      "source_id": "ms-government-portal"
+    },
+    {
+      "entity_id": "MT",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "mt-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "ba0b7c6ff68fe3d7996a2b4fefab8485fa5c9928a12cd9b553bc06fed309ff3b",
+      "review_credit_granted": false,
+      "source_id": "mt-open-data"
+    },
+    {
+      "entity_id": "MU",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "mu-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "a35c657f405819724819df3e624ee88943b359a99c3852445924048c5ea3e8da",
+      "review_credit_granted": false,
+      "source_id": "mu-open-data"
+    },
+    {
+      "entity_id": "MV",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "mv-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "57c3ea55cf47845d47bf853a9538ef27e7bfe8d9d9c87998f24ef45d31409e98",
+      "review_credit_granted": false,
+      "source_id": "mv-government-portal"
+    },
+    {
+      "entity_id": "MW",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "mw-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "0fd5a423d7e6702e5cc2c2f9114d388bae60ddc11a337d7e1a8758866be39f97",
+      "review_credit_granted": false,
+      "source_id": "mw-open-data"
+    },
+    {
+      "entity_id": "MX",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "mx-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "d654d5626a6b00c9c6aaae71e74397ae0f5bcf00d1bf7dfb10a96bbe3531a47b",
+      "review_credit_granted": false,
+      "source_id": "mx-government-portal"
+    },
+    {
+      "entity_id": "MY",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "my-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "6ee8926955ae00b7646c6c5e8feab46ae0b54ecfbd3ffe7f223f0290017b4096",
+      "review_credit_granted": false,
+      "source_id": "my-open-data"
+    },
+    {
+      "entity_id": "MZ",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "mz-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "f4fa3296be68487109525b9e982c19a47d0d53e7311cf0e172d40eb76a2c5f0e",
+      "review_credit_granted": false,
+      "source_id": "mz-open-data"
+    },
+    {
+      "entity_id": "NA",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "na-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "9b4709d4f0069b469ab5876527f1706c62a551b6ce32d1543e31c98edcd32004",
+      "review_credit_granted": false,
+      "source_id": "na-government-portal"
+    },
+    {
+      "entity_id": "NC",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "nc-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "81e8247f787c3627ed1893588bc31efa83ae74e294b7118ad28348bd89fd86cd",
+      "review_credit_granted": false,
+      "source_id": "nc-government-portal"
+    },
+    {
+      "entity_id": "NE",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "ne-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "c9310837f6996404ae75f426f14aebafa072ad73ddb456a098546ec230bb4782",
+      "review_credit_granted": false,
+      "source_id": "ne-government-portal"
+    },
+    {
+      "entity_id": "NF",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "nf-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "a75b174b2908b850d9306814562635c4749d7d02ef766a07d4d6c2b214c9f03b",
+      "review_credit_granted": false,
+      "source_id": "nf-government-portal"
+    },
+    {
+      "entity_id": "NG",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "ng-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "c8141e0dd0cf3f7c6258cef6cb047d01961bad09e00e195be04178f561b62106",
+      "review_credit_granted": false,
+      "source_id": "ng-government-portal"
+    },
+    {
+      "entity_id": "NI",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "ni-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "816d54687ce07ca5e02a06567edfd4cf82b7e6b48626623685bf75a04ededa77",
+      "review_credit_granted": false,
+      "source_id": "ni-government-portal"
+    },
+    {
+      "entity_id": "NL",
+      "lineage": "pinned_catalogue",
+      "receipt": null,
+      "receipt_kind": "pilot_receipt_required",
+      "receipt_sha256": null,
+      "review_credit_granted": false,
+      "source_id": "nl-woo-knop"
+    },
+    {
+      "entity_id": "NO",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "no-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "45e1e5d39e5ce1fbea33d1fa237ad79484942b7ee140f85fe174a62ab42f8d8f",
+      "review_credit_granted": false,
+      "source_id": "no-open-data"
+    },
+    {
+      "entity_id": "NP",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "np-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "1b60443fd6098c86e3c85a33dab07ef7faf4bd9aed59d7113cb040e872217de6",
+      "review_credit_granted": false,
+      "source_id": "np-open-data"
+    },
+    {
+      "entity_id": "NR",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "nr-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "65188fc8eeb31d0038a44c5d44a4a96e38901fad9ec3f7d685af4067e0861fa3",
+      "review_credit_granted": false,
+      "source_id": "nr-government-portal"
+    },
+    {
+      "entity_id": "NU",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "nu-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "5297e666defe6ad8ac59d1dcce22e0ceb1515bee6034d7989f5703059bee7f7e",
+      "review_credit_granted": false,
+      "source_id": "nu-government-portal"
+    },
+    {
+      "entity_id": "NZ",
+      "lineage": "pinned_catalogue",
+      "receipt": "nz-metadata-disposition-20260905.json",
+      "receipt_kind": "other_source_receipt_not_reverified",
+      "receipt_sha256": "217fd0037f902717725e5ae8091dcd3857a73335f72fdb15cb9c756b27be3fd4",
+      "review_credit_granted": false,
+      "source_id": "nz-fyi"
+    },
+    {
+      "entity_id": "OM",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "om-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "2a60c431788ad64cf7bf3e4c2025dd85cbc71ded875e3790034df88738c9c434",
+      "review_credit_granted": false,
+      "source_id": "om-open-data"
+    },
+    {
+      "entity_id": "PA",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "pa-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "1b94bfc16161a4bc73efe38cb26fd603d0a9da7a87f840a10f0e8036d9b462e7",
+      "review_credit_granted": false,
+      "source_id": "pa-government-portal"
+    },
+    {
+      "entity_id": "PE",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "pe-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "15b2ca1d0aff66877e20b024f296a4e8dd473541b1d3c71747703821d470301b",
+      "review_credit_granted": false,
+      "source_id": "pe-open-data"
+    },
+    {
+      "entity_id": "PF",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "pf-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "a96c02c313cf7eb3d25dd48c853c83c37dc6f97cdfa357ff470788f8aafce2a6",
+      "review_credit_granted": false,
+      "source_id": "pf-government-portal"
+    },
+    {
+      "entity_id": "PG",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "pg-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "d26f07dfd5110401a5dc1dceb05d6f59474aa7e50f473b70c5a3b06ae2cad131",
+      "review_credit_granted": false,
+      "source_id": "pg-government-portal"
+    },
+    {
+      "entity_id": "PH",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "ph-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "f29ae2c73d2626c52b40e3c6dfc742db632df77a14aaa2a0c254ef083337b567",
+      "review_credit_granted": false,
+      "source_id": "ph-open-data"
+    },
+    {
+      "entity_id": "PK",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "pk-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "edf8283c426ad4647fd967e25019c7cb73389ff9f73fdeb96f0cb1c75e9cbe6d",
+      "review_credit_granted": false,
+      "source_id": "pk-open-data"
+    },
+    {
+      "entity_id": "PL",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "pl-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "f534448706e823142f90fd464cd35828f32790f8a3af4961098a737248a3d1fe",
+      "review_credit_granted": false,
+      "source_id": "pl-government-portal"
+    },
+    {
+      "entity_id": "PM",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "pm-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "5014863a95eb6808648edfac42b2ab76fea1c440624db235e8c59792ce1b7962",
+      "review_credit_granted": false,
+      "source_id": "pm-government-portal"
+    },
+    {
+      "entity_id": "PN",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "pn-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "dd967c5957125b183c24fd309153880df75dba6c5d6df7730c949824c5b19e45",
+      "review_credit_granted": false,
+      "source_id": "pn-government-portal"
+    },
+    {
+      "entity_id": "PR",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "pr-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "1a7e46705efd4123997deac48f43e787b8f6155b1204ef1c7eb67229486dd1e5",
+      "review_credit_granted": false,
+      "source_id": "pr-government-portal"
+    },
+    {
+      "entity_id": "PS",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "ps-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "4c00386dc64dba51126222deb6f4199cb1573c63b988a85d21311eb17f1f651a",
+      "review_credit_granted": false,
+      "source_id": "ps-open-data"
+    },
+    {
+      "entity_id": "PT",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "pt-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "846dbb31d11448ad6596808985982bc4646cb45532f33bc957d5e6fd7a2502a6",
+      "review_credit_granted": false,
+      "source_id": "pt-open-data"
+    },
+    {
+      "entity_id": "PW",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "pw-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "7221ce60e1eae430150b16a286fc2adf782953c80d24a27da9595b323b2bfe18",
+      "review_credit_granted": false,
+      "source_id": "pw-government-portal"
+    },
+    {
+      "entity_id": "PY",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "py-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "adc823966e48934521b4cc18817b11c59c0dd22fe969fdc4c2ff831aa4f5f768",
+      "review_credit_granted": false,
+      "source_id": "py-government-portal"
+    },
+    {
+      "entity_id": "QA",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "qa-government-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "f8515b4aee656bf3734001d2f1e3a70cebd5d17fa384cd31c511c4b615595e3b",
+      "review_credit_granted": false,
+      "source_id": "qa-government-open-data"
+    },
+    {
+      "entity_id": "RE",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "re-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "234cc81a3e7521d1a4e4804709675251f69527fd7c088ff3e590c3e4fc7e5fa0",
+      "review_credit_granted": false,
+      "source_id": "re-government-portal"
+    },
+    {
+      "entity_id": "RO",
+      "lineage": "pinned_catalogue",
+      "receipt": null,
+      "receipt_kind": "pilot_receipt_required",
+      "receipt_sha256": null,
+      "review_credit_granted": false,
+      "source_id": "ro-iastatullaintrebari"
+    },
+    {
+      "entity_id": "RS",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "rs-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "4dcd5c12b95700b3834197587e9637cd17505de0bf6ca05c155cf81dfe6ef8ad",
+      "review_credit_granted": false,
+      "source_id": "rs-open-data"
+    },
+    {
+      "entity_id": "RU",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "ru-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "819a3dc137da1c58253b3f31ac75a5fd697e59532001e7f8b385064aa306e43a",
+      "review_credit_granted": false,
+      "source_id": "ru-government-portal"
+    },
+    {
+      "entity_id": "RW",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "rw-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "0e480a681894491837b7e436d4277388ac616377b02e0fa39bb8950bedb77349",
+      "review_credit_granted": false,
+      "source_id": "rw-open-data"
+    },
+    {
+      "entity_id": "SA",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "sa-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "d3620f40a579673db7a7ffec55b725746904a6c18ca60b71be152cb9e437d04b",
+      "review_credit_granted": false,
+      "source_id": "sa-open-data"
+    },
+    {
+      "entity_id": "SB",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "sb-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "0a1e860c2ef7cd184359e9caa448308725deade4c64145c43e3f12c8fd4aa9d4",
+      "review_credit_granted": false,
+      "source_id": "sb-government-portal"
+    },
+    {
+      "entity_id": "SC",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "sc-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "e4095b80885016058a6f367cb92f001e228429cafa38c09012a075f777dc5658",
+      "review_credit_granted": false,
+      "source_id": "sc-open-data"
+    },
+    {
+      "entity_id": "SD",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "sd-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "d1f7274a989996e87c1a4b8b2bb2e5129477e57a574a333bac243a7f4fbc7d3c",
+      "review_credit_granted": false,
+      "source_id": "sd-government-portal"
+    },
+    {
+      "entity_id": "SE",
+      "lineage": "pinned_catalogue",
+      "receipt": null,
+      "receipt_kind": "pilot_receipt_required",
+      "receipt_sha256": null,
+      "review_credit_granted": false,
+      "source_id": "se-handlingar"
+    },
+    {
+      "entity_id": "SG",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "sg-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "c4516b95199577fd7c4e9e6c67c9a61302a197b40560a8ff7e998d6994b8d06e",
+      "review_credit_granted": false,
+      "source_id": "sg-open-data"
+    },
+    {
+      "entity_id": "SH",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "sh-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "675fba63dc539f8cc34e627d2fd9479d5b9fed3d455c29bdde217a9f20674f6e",
+      "review_credit_granted": false,
+      "source_id": "sh-government-portal"
+    },
+    {
+      "entity_id": "SI",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "si-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "e673785b06b6888f47c79d82e8bc00d472a2d2699197f6f6ec8cd7e29874ffc1",
+      "review_credit_granted": false,
+      "source_id": "si-open-data"
+    },
+    {
+      "entity_id": "SJ",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "sj-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "8b3bf3f6cc2efaf703b9134df1cc24cc39a0735af3988ca24a618bb30551ed2b",
+      "review_credit_granted": false,
+      "source_id": "sj-government-portal"
+    },
+    {
+      "entity_id": "SK",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "sk-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "b69e21ec5a1edcbc8415622f0ed048636e965ba16940886e7d3eaf5e5c289148",
+      "review_credit_granted": false,
+      "source_id": "sk-open-data"
+    },
+    {
+      "entity_id": "SL",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "sl-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "c8eea1c2f1c3bf3c72dc1ab2cdcb51eef879e566292750037e687c66bcc49a7d",
+      "review_credit_granted": false,
+      "source_id": "sl-government-portal"
+    },
+    {
+      "entity_id": "SM",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "sm-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "651f9c5e5545f6ba105430bd7a15f22276b49c6aa280ea3874943ec2f568f87b",
+      "review_credit_granted": false,
+      "source_id": "sm-government-portal"
+    },
+    {
+      "entity_id": "SN",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "sn-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "8faa4347d515e1b1dafa75d6fdad4c4cfbaea9b593431cd7d84bda539b90037b",
+      "review_credit_granted": false,
+      "source_id": "sn-government-portal"
+    },
+    {
+      "entity_id": "SO",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "so-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "f8b1aed2800464b3352623487daa1c0bc38413a688779fb066c6824eb6a6fe02",
+      "review_credit_granted": false,
+      "source_id": "so-government-portal"
+    },
+    {
+      "entity_id": "SR",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "sr-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "5fdec7aaafdfacae1635a5a1d374eef1e6e19ee1844fdfb7296a5540c9df7db7",
+      "review_credit_granted": false,
+      "source_id": "sr-government-portal"
+    },
+    {
+      "entity_id": "SS",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "ss-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "6e9685911610dfaa89289917832d7266567d9b4d408ba3dc2751e1380364d918",
+      "review_credit_granted": false,
+      "source_id": "ss-government-portal"
+    },
+    {
+      "entity_id": "ST",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "st-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "9db8915d6287c8639aa7a8ac56bfeb7000ac2b0a6f2e4aaf3583bd0a246c4608",
+      "review_credit_granted": false,
+      "source_id": "st-government-portal"
+    },
+    {
+      "entity_id": "SV",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "sv-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "79ad63aab8191950f26127c598468701676fc1a3baa2fffb6d90eb39f4a251d1",
+      "review_credit_granted": false,
+      "source_id": "sv-government-portal"
+    },
+    {
+      "entity_id": "SX",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "sx-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "e4def4979dfdefde31d0c69f21d094c873c3cee25405d3792dd9d3204d6f189e",
+      "review_credit_granted": false,
+      "source_id": "sx-government-portal"
+    },
+    {
+      "entity_id": "SY",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "sy-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "2f77a9a094617ea5d2ac42c90f55e1a7f3ae2cf048043449be7bc50aa4fa9f2f",
+      "review_credit_granted": false,
+      "source_id": "sy-government-portal"
+    },
+    {
+      "entity_id": "SZ",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "sz-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "50cc3b106639bab8fc6d4ebe500e411abed3bc25e2e1b97f4632afb194a3d53d",
+      "review_credit_granted": false,
+      "source_id": "sz-government-portal"
+    },
+    {
+      "entity_id": "TC",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "tc-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "eaa3a6ba10d8d9f3166f51eb8414f6783662790fc3f16aeb7dc5450a334e0741",
+      "review_credit_granted": false,
+      "source_id": "tc-government-portal"
+    },
+    {
+      "entity_id": "TD",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "td-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "5e34e3e9b64539baec3de34cbff88f0d4218e166949fa41b16b2136f0eaef1c7",
+      "review_credit_granted": false,
+      "source_id": "td-government-portal"
+    },
+    {
+      "entity_id": "TF",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "tf-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "995a6e5180e7611e8a1b454029f4cecfddbc1d773d0fcba34da16f79fc12d18e",
+      "review_credit_granted": false,
+      "source_id": "tf-government-portal"
+    },
+    {
+      "entity_id": "TG",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "tg-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "4483c5b41b3bd7cba409f869e6c7c48a6f1993efbe5f25b1d5018d9ae4c176e3",
+      "review_credit_granted": false,
+      "source_id": "tg-government-portal"
+    },
+    {
+      "entity_id": "TH",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "th-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "dc2de191ce023d6f47f7d86a2ad097e84cddc236e22cd4e5aa38d480b8352d9a",
+      "review_credit_granted": false,
+      "source_id": "th-government-portal"
+    },
+    {
+      "entity_id": "TJ",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "tj-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "420521be6603d584316307ffa93ed2813ff2aa20e4fd3525023a261df408433f",
+      "review_credit_granted": false,
+      "source_id": "tj-government-portal"
+    },
+    {
+      "entity_id": "TK",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "tk-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "94cc0dd38d9042423d99f94dcfbb100ff730c5ad04b8d3130e63c4f6b5583adb",
+      "review_credit_granted": false,
+      "source_id": "tk-government-portal"
+    },
+    {
+      "entity_id": "TL",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "tl-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "c3a5b0a194030ee50aaef2fbb7ce5a483b807f90f568791ea83b4cc4a2f0b1cf",
+      "review_credit_granted": false,
+      "source_id": "tl-government-portal"
+    },
+    {
+      "entity_id": "TM",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "tm-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "4e9e82698ba5a4b362edfa2f6b703f9e6e5c470432966c6306361c78e0760280",
+      "review_credit_granted": false,
+      "source_id": "tm-government-portal"
+    },
+    {
+      "entity_id": "TN",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "tn-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "20408a56837bfe2931c2a4f2562e1f36f2fa3ee230ee85ca9f42f5fea2c21126",
+      "review_credit_granted": false,
+      "source_id": "tn-open-data"
+    },
+    {
+      "entity_id": "TO",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "to-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "1984548f1ad97fb6a7efc3250769c0330aa3e99bab9edf27e6493c859b96ba02",
+      "review_credit_granted": false,
+      "source_id": "to-government-portal"
+    },
+    {
+      "entity_id": "TR",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "tr-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "f5c097b805ca90b68da74706d3aea3f35f24ca8b406d115726e98a22be304fa0",
+      "review_credit_granted": false,
+      "source_id": "tr-government-portal"
+    },
+    {
+      "entity_id": "TT",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "tt-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "20f30dc93474eacf0bbe65b472b9c58204398af391468d8f1d65627482ca3c3c",
+      "review_credit_granted": false,
+      "source_id": "tt-government-portal"
+    },
+    {
+      "entity_id": "TV",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "tv-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "a4825d8ada0b9cde90c5486677784e1e9e32ca8f489e91e4923f4daca9325ac4",
+      "review_credit_granted": false,
+      "source_id": "tv-government-portal"
+    },
+    {
+      "entity_id": "TW",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "tw-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "af117d3cd0e5e49a9eab10857ac0941aa3db477c6685bdd82b3edac96bbefd93",
+      "review_credit_granted": false,
+      "source_id": "tw-open-data"
+    },
+    {
+      "entity_id": "TZ",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "tz-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "ad5c90e1a4556a4634092a6afc0ed7f179b3946a6c79d6f45249c698eb3e8aab",
+      "review_credit_granted": false,
+      "source_id": "tz-government-portal"
+    },
+    {
+      "entity_id": "UA",
+      "lineage": "pinned_catalogue",
+      "receipt": null,
+      "receipt_kind": "pilot_receipt_required",
+      "receipt_sha256": null,
+      "review_credit_granted": false,
+      "source_id": "ua-dostup"
+    },
+    {
+      "entity_id": "UG",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "ug-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "d95c817169a3a06ec7dbd65ed4168aef408a4c30636bfb1f4700efdc7a1f9caf",
+      "review_credit_granted": false,
+      "source_id": "ug-government-portal"
+    },
+    {
+      "entity_id": "GB",
+      "lineage": "pinned_catalogue",
+      "receipt": null,
+      "receipt_kind": "pilot_receipt_required",
+      "receipt_sha256": null,
+      "review_credit_granted": false,
+      "source_id": "uk-wdtk"
+    },
+    {
+      "entity_id": "UM",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "um-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "5290fed8b1e7a38774f68c2fb41822dc96eafdaa3934fd140f61a5d559e91ab5",
+      "review_credit_granted": false,
+      "source_id": "um-government-portal"
+    },
+    {
+      "entity_id": "US",
+      "lineage": "pinned_catalogue",
+      "receipt": "us-numeric-projection-review-20260905.json",
+      "receipt_kind": "other_source_receipt_not_reverified",
+      "receipt_sha256": "6c027120fffa528d30a3005c2a91ced902644dd8e30a9ed97420ebc997d4649b",
+      "review_credit_granted": false,
+      "source_id": "us-federal-foia"
+    },
+    {
+      "entity_id": "US",
+      "lineage": "pinned_catalogue",
+      "receipt": null,
+      "receipt_kind": "pilot_receipt_required",
+      "receipt_sha256": null,
+      "review_credit_granted": false,
+      "source_id": "us-opramachine"
+    },
+    {
+      "entity_id": "UY",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "uy-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "2bdcc42e62009c6dae5d21714ed987d0a5429d387711b7cd7ad8a6ccebcae8ac",
+      "review_credit_granted": false,
+      "source_id": "uy-open-data"
+    },
+    {
+      "entity_id": "UY",
+      "lineage": "pinned_catalogue",
+      "receipt": null,
+      "receipt_kind": "pilot_receipt_required",
+      "receipt_sha256": null,
+      "review_credit_granted": false,
+      "source_id": "uy-quesabes"
+    },
+    {
+      "entity_id": "UZ",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "uz-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "a50b85deca8473fc44cc6eeb07ac1987fd28f62c889cbf0f8794086ee0e93441",
+      "review_credit_granted": false,
+      "source_id": "uz-government-portal"
+    },
+    {
+      "entity_id": "VA",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "va-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "2685a62302a8406f84995582a86629dfb2cbf96d46417ef1b85ad89b827801d9",
+      "review_credit_granted": false,
+      "source_id": "va-government-portal"
+    },
+    {
+      "entity_id": "VC",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "vc-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "24b77b96d6d75889df965f43b62cb9a0e69b56d9245593f99732dbcf42c63e39",
+      "review_credit_granted": false,
+      "source_id": "vc-government-portal"
+    },
+    {
+      "entity_id": "VE",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "ve-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "56e1bd3c3aa7a7fc0340eeb76f19c3e2cd96549d0471bc644f97cffe57a535b6",
+      "review_credit_granted": false,
+      "source_id": "ve-government-portal"
+    },
+    {
+      "entity_id": "VG",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "vg-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "50a21d864893bcaadfb211f69dae16ab476ebd16be9d41789d28ad77d0a35666",
+      "review_credit_granted": false,
+      "source_id": "vg-government-portal"
+    },
+    {
+      "entity_id": "VI",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "vi-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "1e6e722b56a620a8f137af0a304ed1206156eeac8ad9b1a9ebf29f17bf945718",
+      "review_credit_granted": false,
+      "source_id": "vi-government-portal"
+    },
+    {
+      "entity_id": "VN",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "vn-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "9f890787606182861342a6c440292851d6dd9075cc7899bc2cccb800727942a3",
+      "review_credit_granted": false,
+      "source_id": "vn-government-portal"
+    },
+    {
+      "entity_id": "VU",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "vu-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "05047e63afc48b3960319f871fad676c8ae19565fed421707473f08879b8de7e",
+      "review_credit_granted": false,
+      "source_id": "vu-government-portal"
+    },
+    {
+      "entity_id": "WF",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "wf-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "66eebe6948d03703d5ece7c56a0273173a22c83c44adf321b72c9b26616f11d9",
+      "review_credit_granted": false,
+      "source_id": "wf-government-portal"
+    },
+    {
+      "entity_id": "WS",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "ws-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "c27345c16dbb701b16955582ec627e348225b42f986bbe9215837affe48fbfa7",
+      "review_credit_granted": false,
+      "source_id": "ws-open-data"
+    },
+    {
+      "entity_id": "XK",
+      "lineage": "pinned_catalogue",
+      "receipt": null,
+      "receipt_kind": "pilot_receipt_required",
+      "receipt_sha256": null,
+      "review_credit_granted": false,
+      "source_id": "xk-dumedite"
+    },
+    {
+      "entity_id": "YE",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "ye-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "c2cc13301638d708995e16637a5465250cb1618c6075ffa83bda986e2402f82d",
+      "review_credit_granted": false,
+      "source_id": "ye-government-portal"
+    },
+    {
+      "entity_id": "YT",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "yt-government-portal-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "db1123ddd5b47474547c4844e135e9a76c1077dab51c841fc6f605422950a45e",
+      "review_credit_granted": false,
+      "source_id": "yt-government-portal"
+    },
+    {
+      "entity_id": "ZA",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "za-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "4d6719ba2317984c9f335d7c86fb1dbcc72a581d949fa0315e2961badcf83266",
+      "review_credit_granted": false,
+      "source_id": "za-open-data"
+    },
+    {
+      "entity_id": "ZA",
+      "lineage": "pinned_catalogue",
+      "receipt": null,
+      "receipt_kind": "pilot_receipt_required",
+      "receipt_sha256": null,
+      "review_credit_granted": false,
+      "source_id": "za-paia"
+    },
+    {
+      "entity_id": "ZM",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "zm-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "395cac22ea29dc54b1c2693a78b5cd4a4c20ca5439993929ae6a7234e5c116ee",
+      "review_credit_granted": false,
+      "source_id": "zm-open-data"
+    },
+    {
+      "entity_id": "ZW",
+      "lineage": "additional_candidate_not_catalogue_reviewed",
+      "receipt": "zw-open-data-discovery-20260905.json",
+      "receipt_kind": "discovery_metadata_only",
+      "receipt_sha256": "81549804897d8a2ba2a69f8dd0c2acc72ff2ebf4f8b872819d6f0f8273d9d18b",
+      "review_credit_granted": false,
+      "source_id": "zw-open-data"
+    }
+  ],
+  "summary": {
+    "additional_candidates": 225,
+    "catalogue_sources": 30,
+    "entities": 251,
+    "rollout_sources": 255,
+    "sources_with_receipt": 228,
+    "sources_without_receipt": 27
+  },
+  "total_requests": null
+}
