@@ -191,9 +191,12 @@ repository validation command. External gates block only their affected task.
   AC-01, AC-02, AC-04, AC-16]
   Audited shared/health contracts; added 23 tests and fixed identity-encoded
   HTTP length mismatch before CAS/WARC promotion. 129 affected tests pass;
-  98.99% scoped coverage, three length-guard mutants killed. Remains pending
-  for the defensive capture fallback's critical coverage and full integrated
-  assurance. Encoded transport-body length now has 11 additional executable
+  98.99% scoped coverage, three length-guard mutants killed in the initial slice.
+  The final redirect-boundary follow-up now has 169 affected tests passing and
+  100% capture line/branch coverage without exclusions; see
+  `bronze-redirect-boundary.md`. Local implementation stops at the requested
+  review boundary, pending parent full assurance and independent review only.
+  Encoded transport-body length has 11 additional executable
   cases and four killed mutants; see `bronze-wire-length.md` (161 affected
   tests pass). Cooperative per-resource resume and non-overwriting
   WARC paths now have 149 affected passing tests and 100% runner coverage;

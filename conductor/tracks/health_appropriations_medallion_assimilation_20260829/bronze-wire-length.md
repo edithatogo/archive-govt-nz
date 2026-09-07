@@ -1,5 +1,8 @@
 # Phase 2.1 — encoded response-body length contract
 
+Historical receipt: the remaining fallback coverage gap below is resolved by
+`bronze-redirect-boundary.md`; parent full assurance/review remains separate.
+
 Local-only follow-up after process-recovery commit
 `d90e878e0bf57015d2ef1996d95844ae78fc9f9a`. No live source request, parent edit,
 full harness, dependency, rights, census or Phase 3 change.

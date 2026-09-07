@@ -694,3 +694,11 @@ preconsumed encoded responses with length fail closed as unverifiable.
 Paired evidence: `bronze-wire-length.md` / `bronze-wire-length.json`. Static
 checks pass. Review retains precise framing/codec and AC-16 coverage limits;
 no weaker verification, raw-wire assurance, source promotion or full harness.
+# 2026-09-07 — Phase 2.1 local review boundary
+
+Eight valid HTTP redirect-budget characterization tests passed before the
+behavior-preserving fallback routing change. Final affected suite: 169 passed,
+capture 100% line/branch coverage, three killed mutants, static checks passed.
+Paired evidence: `bronze-redirect-boundary.md` / `.json`. Self-review found no
+remaining actionable defect in the requested slice. Stop here for parent full
+assurance and independent review; no full harness or further implementation.

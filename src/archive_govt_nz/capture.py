@@ -147,7 +147,14 @@ async def capture_url(  # noqa: PLR0915, PLR0912
                                 monotonic() - started,
                             )
                         )
-                        raise CaptureError("redirect_limit", tuple(attempt_receipts))
+                        if location is None:
+                            raise CaptureError(
+                                "redirect_limit", tuple(attempt_receipts)
+                            )
+                        # The final permitted response exhausted the finite
+                        # request budget. Close it and use the terminal failure
+                        # below the loop without issuing another request.
+                        continue
                     attempt_receipts.append(
                         CaptureAttempt(
                             redact_url(current_url),

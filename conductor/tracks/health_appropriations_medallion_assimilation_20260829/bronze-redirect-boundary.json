@@ -1,0 +1,18 @@
+{
+  "schema_version": "archive-govt-nz.health-redirect-boundary-validation/v1",
+  "date": "2026-09-07",
+  "base_commit": "ead9ca343d4d7ef819c1800afd7bdf5fd6f1308a",
+  "task": "Phase 2.1",
+  "test_basis": "eight real HTTP characterization cases passed before behavior-preserving refactor",
+  "affected_tests_passed": 169,
+  "capture_lines": [161, 161],
+  "capture_branches": [48, 48],
+  "mutant_test_failures": {"extra_request": 3, "missing_location_not_terminal": 1, "wrong_terminal_outcome": 3},
+  "static_checks": "ruff, ruff format and basedpyright passed",
+  "coverage_exclusions_added": false,
+  "full_harness_run": false,
+  "local_implementation_review": "no remaining actionable findings in bounded slice",
+  "task_complete": false,
+  "remaining": ["parent coherent full assurance", "parent independent review"],
+  "stop_boundary": "explicit user-requested Phase 2.1 review checkpoint"
+}
