@@ -15,11 +15,14 @@ unchecked clauses contain completed, separately evidenced components.
 3. Join existing receipts into a pinned family/vintage coverage register.
    Preserve the historical 11-target report; missing supplied receipts must not
    be reported as missing implementation or as successful extraction.
-4. Qualify the historical PDF's structure and selected table layouts before
-   admitting numerical records. The retained filename says 2024/25 but the
-   cover identifies Budget 2003 Supplementary Estimates. Preserve the filename
-   as provenance, not measurement vintage. Visual review of three pages is not
-   complete table qualification; lexical page markers are not a page-tree audit.
+4. Implement and verify the bounded historical PDF extraction profile after
+   measuring column geometry. `donor-pdf-layout-qualification.md` now records a
+   parsed 471-page count and visual inspection of all 16 selected pages, with
+   exact continuation rules and separate six-column B1 / three-column F1 layouts.
+   This is structural qualification, not numerical admission. The retained filename
+   says 2024/25 but the cover identifies Budget 2003 Supplementary Estimates.
+   Preserve the filename as provenance, not measurement vintage; do not silently
+   coerce dash tokens to zero or repair text-decoding differences.
 5. Complete source-qualified canonical projections and authenticated mappings
    using the existing eight record-set schemas and ten dimension contracts.
    Eight orchestration stages are not eight canonical record sets. Preserve
