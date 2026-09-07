@@ -224,6 +224,7 @@ def test_validation_wrappers_use_the_verified_parallel_lane() -> None:
         assert "--pytest-distribution loadscope" in wrapper
 
 
+@pytest.mark.skipif(sys.platform == "win32", reason="process groups are POSIX-specific")
 def test_run_command_kills_process_group_on_timeout(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
