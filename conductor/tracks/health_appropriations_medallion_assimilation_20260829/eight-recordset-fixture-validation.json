@@ -1,0 +1,31 @@
+{
+  "schema_version": "health-eight-recordset-fixture-validation/v1",
+  "date": "2026-09-07",
+  "base_commit": "0526365a48f58d241d52a301a901760147cc3eee",
+  "plan_task": "3.1 broad JSON Schema/Arrow/Parquet fixtures",
+  "requirements": ["M-05", "M-06", "M-18"],
+  "acceptance_criteria": ["AC-05", "AC-16"],
+  "recordsets": 8,
+  "new_tests": 142,
+  "affected_tests_passed": 335,
+  "red": "missing_fixture_FileNotFoundError",
+  "production_behavior": "characterization_only",
+  "lint": "passed",
+  "format": "passed",
+  "types": "passed_basedpyright",
+  "review": "passed_with_explicit_acceptance_gaps",
+  "broad_fixture_task_complete": false,
+  "whole_phase_complete": false,
+  "full_harness": "delegated_to_parent_not_run",
+  "coverage_and_mutation": "not_run_no_production_changes",
+  "unmet": [
+    "source_derived_stable_identity",
+    "source_unit_price_denominator_and_temporal_qualification",
+    "rights_evidence_validation",
+    "complete_field_lineage_and_classification_closure_to_verified_Bronze",
+    "canonical_source_projection_qualification",
+    "full_integrated_assurance"
+  ],
+  "assessment": "eight-recordset-fixture-acceptance.md",
+  "push_merge_publication": "not_attempted"
+}

@@ -632,3 +632,13 @@ mutants killed. The [negative-fixture matrix](./negative-fixture-matrix.md)
 closes the negative-fixture task for existing bounded profiles. Full combined
 checks remain assigned to the parent; broad positive semantic qualification,
 source/parity/promotion and whole-track completion remain pending.
+
+## 2026-09-07 — Full fixture-dimension assessment
+
+[Fixture matrix](./eight-recordset-fixture-acceptance.md) and
+[machine receipt](./eight-recordset-fixture-validation.json) map all Phase 3.1
+fixture dimensions to M-05/M-06/M-18 and AC-05/AC-16. All eight sets cross JSON
+Schema, Arrow and generated Parquet; 335 affected tests pass, including 142 new
+cases. Stable source-key construction, unit/time/rights qualification and
+complete verified Bronze lineage remain unmet. The broad task stays `[~]`.
+Focused lint/format/types pass; parent retains full integrated assurance.

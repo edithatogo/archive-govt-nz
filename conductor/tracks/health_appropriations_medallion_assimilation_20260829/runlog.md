@@ -2155,3 +2155,15 @@ lane. Final results are 585 tests/100% changed-module coverage and 107/107 kills
 Normalization commit `57d592dfd723c671c49265e1f4306a137c78d732` precedes this
 separate SQLite source checkpoint. The original normalization receipt was not
 edited, preserving the parent's boolean audit-field correction on integration.
+
+## 2026-09-07 — Eight-recordset fixture acceptance
+
+Created an isolated codex worktree at PR407 commit `0526365a`; left original
+checkout tests and global registry untouched. Read root AGENTS, workflow,
+autonomy/VCS, Health requirements/design/plan and Conductor implement/review
+instructions. User assigns full integrated harness to parent; did not run it.
+The exact commands and bounded failures are in
+[fixture acceptance](./eight-recordset-fixture-acceptance.md): missing-fixture
+red, 335 affected green tests (142 new), corrected Ruff regex warnings and
+passing configured basedpyright after unavailable ty. No production changes.
+Broad task remains in progress because semantic counterexamples are admitted.
