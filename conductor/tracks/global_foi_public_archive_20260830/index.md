@@ -120,3 +120,6 @@ Approved track in progress. Automation repair and source-catalogue foundations a
 
 - [Canonical disposition validation, without phase closure](canonical-disposition-validation-20260907.md)
 - [Actual offline disposition receipt](canonical-disposition-validation-20260907.json)
+
+- [Canonical child-manifest reconciliation](child-manifest-reconciliation-20260907.md)
+- [Mock-only child validation receipt](child-manifest-reconciliation-20260907.json)

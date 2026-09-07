@@ -10,6 +10,10 @@ from urllib.parse import urlsplit
 
 from archive_govt_nz.foi_canonical import build_source_index
 from archive_govt_nz.foi_catalogue import catalogue_files
+from archive_govt_nz.foi_child_manifests import (
+    bind_child_manifests,
+    reconcile_child_manifests,
+)
 from archive_govt_nz.foi_delivery import publish_snapshot
 from archive_govt_nz.foi_discovery import build_reviewed_catalogue
 from archive_govt_nz.foi_package import restore_package, sha256, verify_package
@@ -69,6 +73,10 @@ def publish_catalogue(
             or info["gated"] is not False
         ):
             _fail("child_repository_not_public")
+    if canonical_track is not None:
+        content = bind_child_manifests(
+            content, reconcile_child_manifests(hub, catalogue["sources"])
+        )
     with tempfile.TemporaryDirectory(prefix="foi-catalogue-candidate-") as temporary:
         root = Path(temporary)
         files = {}

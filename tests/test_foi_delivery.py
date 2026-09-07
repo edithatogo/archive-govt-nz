@@ -1,6 +1,8 @@
 """Immutable public snapshots are restored before the current pointer moves."""
 
+import hashlib
 import json
+import runpy
 from pathlib import Path
 from typing import TYPE_CHECKING
 
@@ -14,11 +16,18 @@ import archive_govt_nz.foi_delivery as module
 import archive_govt_nz.foi_publication as publication
 from archive_govt_nz.foi_canonical import build_source_index
 from archive_govt_nz.foi_catalogue import catalogue_files
+from archive_govt_nz.foi_child_manifests import (
+    bind_child_manifests,
+    reconcile_child_manifests,
+)
 from archive_govt_nz.foi_delivery import publish_snapshot
 from archive_govt_nz.foi_discovery import build_reviewed_catalogue
 
 TRACK = Path("conductor/tracks/global_foi_public_archive_20260830")
 SEEDS = Path("config/foi")
+CHILD_HUB = runpy.run_path(
+    str(Path(__file__).with_name("test_foi_child_manifests.py"))
+)["ChildHub"]
 
 
 class MemoryHub:
@@ -344,6 +353,28 @@ def catalogue_hub(monkeypatch: pytest.MonkeyPatch) -> MemoryHub:
     hub = MemoryHub()
     hub.identity = hub.expected_repo = publication.CATALOGUE_REPO
     original = hub.info
+    children = {
+        row["hf_repo_id"]: CHILD_HUB(row)
+        for row in build_reviewed_catalogue(SEEDS)["sources"]
+        if row["hf_repo_id"] is not None
+    }
+    original_sizes, original_download = hub.sizes, hub.download
+
+    def sizes(repo: str, revision: str, names: list[str]) -> dict:
+        return (
+            children[repo].sizes(repo, revision, names)
+            if repo in children
+            else original_sizes(repo, revision, names)
+        )
+
+    def download(repo: str, revision: str, name: str, output: Path, size: int) -> None:
+        if repo in children:
+            children[repo].download(repo, revision, name, output, size)
+        else:
+            original_download(repo, revision, name, output, size)
+
+    monkeypatch.setattr(hub, "sizes", sizes)
+    monkeypatch.setattr(hub, "download", download)
     monkeypatch.setattr(
         hub,
         "info",
@@ -368,6 +399,13 @@ def test_publisher_exact_builder_bytes(
         if canonical
         else catalogue_files(build_reviewed_catalogue(SEEDS))
     )
+    if canonical:
+        expected = bind_child_manifests(
+            expected,
+            reconcile_child_manifests(
+                hub, json.loads(expected["registry.json"])["sources"]
+            ),
+        )
     result = publication.publish_catalogue(hub, SEEDS, **options)
     prefix = f"snapshots/{result['manifest_sha256']}/"
     assert {
@@ -463,3 +501,74 @@ def test_failed_canonical_upgrade_preserves_v1_pointer(
     assert hub.files["current.json"] == pointer
     assert hub.files["README.md"] == card
     assert hub.calls == 3  # Only immutable candidate bytes were staged.
+
+
+@pytest.mark.parametrize("fault", ["missing", "forged"])
+def test_child_manifest_failure_preserves_existing_catalogue(
+    fault: str, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """No global snapshot upload or promotion precedes complete child checks."""
+    hub = catalogue_hub(monkeypatch)
+    publication.publish_catalogue(hub, SEEDS)
+    before = dict(hub.files)
+    original_sizes, original_download = hub.sizes, hub.download
+
+    def sizes(repo: str, revision: str, names: list[str]) -> dict:
+        if (
+            fault == "missing"
+            and repo != publication.CATALOGUE_REPO
+            and names[0].endswith("/manifest.json")
+        ):
+            return {}
+        return original_sizes(repo, revision, names)
+
+    def download(repo: str, revision: str, name: str, output: Path, size: int) -> None:
+        original_download(repo, revision, name, output, size)
+        if (
+            fault == "forged"
+            and repo != publication.CATALOGUE_REPO
+            and name.endswith("/manifest.json")
+        ):
+            payload = output.read_bytes()
+            output.write_bytes(payload.replace(b'"unreviewed"', b'"unapprove"'))
+
+    monkeypatch.setattr(hub, "sizes", sizes)
+    monkeypatch.setattr(hub, "download", download)
+    with pytest.raises(ValueError, match="child_manifest"):
+        publication.publish_catalogue(hub, SEEDS, canonical_track=TRACK)
+    assert hub.files == before
+    assert hub.calls == 2
+
+
+def test_canonical_child_refs_are_manifest_bound(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """All 23 child pins are covered by the immutable global manifest digest."""
+    hub = catalogue_hub(monkeypatch)
+    base = build_source_index(SEEDS, TRACK)
+    result = publication.publish_catalogue(hub, SEEDS, canonical_track=TRACK)
+    prefix = f"snapshots/{result['manifest_sha256']}/"
+    payload = hub.files[prefix + "child-manifests.json"]
+    receipt = json.loads(payload)
+    refs = {row["source_id"]: row for row in receipt["children"]}
+    children = [
+        row
+        for row in json.loads(base["registry.json"])["sources"]
+        if row["hf_repo_id"] is not None
+    ]
+    assert len(refs) == len(children) == 23
+    for source in children:
+        row = refs[source["id"]]
+        assert row["repo_id"] == source["hf_repo_id"]
+        assert row["pointer_revision"] == source["hf_revision"]
+        assert row["entity_id"] == source["entity_id"]
+    manifest = json.loads(hub.files[prefix + "manifest.json"])
+    binding = next(
+        row for row in manifest["files"] if row["path"] == "child-manifests.json"
+    )
+    assert binding["sha256"] == hashlib.sha256(payload).hexdigest()
+    assert binding["bytes"] == len(payload)
+    for name, data in base.items():
+        if name != "manifest.json":
+            assert hub.files[prefix + name] == data
+    assert receipt["raw_objects_verified"] is False

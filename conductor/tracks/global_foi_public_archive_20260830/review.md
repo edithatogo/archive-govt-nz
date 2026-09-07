@@ -342,3 +342,14 @@ Legacy validator is byte-unchanged. Canonical CLI output is exclusive; default
 legacy receipt and exit behavior remain compatible. 100 tests and ten mutant
 kills; critical changed paths 100% statement/branch; static checks pass. Parent
 AC04 audit, programme gates and plan phase statuses remain untouched.
+
+## Canonical child-manifest focused review — 2026-09-07
+
+No outstanding scoped finding. Reviewed pointer-revision immutability, exact
+repo/source/country joins, v2 schema/file/table closure, bounded reads, packaged
+schema parity and manifest-bound child references. All child checks precede
+catalogue upload/promotion; negative MemoryHub upgrades preserve previous files.
+Raw restore/rights and actual remote verification are explicitly not established.
+174 focused tests/three mutants; both modules 100% statement/branch; static gates
+pass under locked offline runtime without PYTHONPATH. Parent independent review,
+full gate and phase acceptance remain separate. Historical pins are not advanced.
