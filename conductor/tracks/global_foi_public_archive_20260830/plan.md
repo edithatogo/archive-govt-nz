@@ -73,7 +73,7 @@ The approved destination is archive-govt-nz; no cutover has occurred.
   and pacing evidence separately from rights, publication and completeness.
   Automated factual review needs no additional human approval. Preserve
   disallowed/unverified dispositions and leave broader P2.2/P2.3 gates open.
-  Local receipt: `candidate-assessment.json`, `candidate-assessment.md`, and
+  Implementation: `c6a52f60`. Local receipt: `candidate-assessment.json`, `candidate-assessment.md`, and
   `factual-observations-al-bh-20260907.json`. 114 focused tests pass with 100%
   new-module line/branch coverage. Parent owns full integration validation.
 
