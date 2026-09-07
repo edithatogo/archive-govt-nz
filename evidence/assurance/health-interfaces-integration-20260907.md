@@ -17,3 +17,12 @@ malformed-record review corrections before delivery: duplicate HTTP Content-Type
 headers and missing terminal WARC framing. This successful intermediate run
 does not close those findings or grant rights, publication, repair acceptance,
 analytical equivalence or whole-track archival.
+
+## Corrected integration
+
+At `c89296c60d7a39a9a8620a1a7fd2df2ec4c582f4`, the strict WARC follow-up
+was integrated and independently cleared (117 focused tests, including a
+redirect-plus-gzip positive). The complete locked harness exited 0 with
+6,069 passing tests, all configured follow-on gates passing, CAS throughput
+539.02 MB/s and a validated 112-component SBOM. Both malformed-record findings
+are closed in code. Hosted checks and protected merge remain separate.
