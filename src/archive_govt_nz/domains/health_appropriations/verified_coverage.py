@@ -76,6 +76,7 @@ def _literal(
     _require(len(ids) == len(facts))
     for fact in facts:
         original = json.loads(fact["source_record_json"])
+        _nested_record(original, fact, profile)
         _require(
             Decimal(original["amount"])
             == fact["amount"]
@@ -164,10 +165,55 @@ def _literal(
                     if r["sheet"] == row["sheet"]
                 )
             )
+        elif row["state"] == "excluded":
+            _require(not row["record_ids"] and not row["except_selectors"])
+            _require(
+                row["sheet"]
+                == (
+                    "Core Crown Expense Tables"
+                    if profile == "befu-detail"
+                    else "Expense Tables"
+                )
+            )
+        else:
+            _require(
+                row["reason"] == "literal_context_only" and not row["except_selectors"]
+            )
     _require(
         receipt["counts"]
         == {"facts": len(facts), "lineage": len(links), "areas": len(areas)}
     )
+
+
+def _nested_record(
+    original: dict[str, Any], fact: dict[str, Any], profile: str
+) -> None:
+    """Duplicated admission fields cannot contradict their persisted envelope."""
+    if profile == "crown":
+        required = {
+            "record_id",
+            "source_coordinate",
+            "source_object_sha256",
+            "source_locator",
+            "source_vintage",
+            "source_observation_id",
+            "observed_at",
+        }
+        _require(required <= original.keys())
+    else:
+        _require(
+            original["sheet"] + "!" + original["coordinate"]
+            == fact["source_coordinate"]
+        )
+        _require(original["source_sha256"] == fact["source_object_sha256"])
+        _require(original["source_vintage"] == fact["source_vintage"])
+    for key in original.keys() & fact.keys():
+        if key == "amount":
+            _require(Decimal(original[key]) == fact[key])
+        elif key == "observed_at":
+            _require(original[key] == str(fact[key]))
+        else:
+            _require(original[key] == fact[key])
 
 
 def verify_stage_coverage(

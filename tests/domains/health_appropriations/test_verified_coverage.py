@@ -71,6 +71,22 @@ def package(root: Path, profile: str) -> dict[str, Any]:
             "disposition": "excluded_formula_cache_not_admitted",
         },
     }
+    for record in records:
+        record["source_vintage"] = context["source_vintage"]
+        if crown:
+            record.update(
+                source_object_sha256=context["source_object_sha256"],
+                source_locator=context["source_locator"],
+            )
+        else:
+            record["source_sha256"] = context["source_object_sha256"]
+            for field in (
+                "record_id",
+                "source_observation_id",
+                "observed_at",
+                "source_coordinate",
+            ):
+                record.pop(field)
     packages.write_literal_package(root, admission, profile=profile, context=context)
     return {
         "sha256": context["source_object_sha256"],
@@ -97,16 +113,33 @@ def package(root: Path, profile: str) -> dict[str, Any]:
         "schema",
         "extra",
         "hash",
+        "nested_coordinate",
+        "nested_source",
+        "nested_id",
+        "nested_observation",
+        "nested_locator",
+        "nested_vintage",
+        "nested_observation_id",
+        "exclusion_ids",
+        "area_reason",
+        "area_exceptions",
     ],
 )
-def test_verified_package_coverage(tmp_path: Path, profile: str, fault: str) -> None:  # noqa: C901, PLR0912 -- explicit fault matrix
+def test_verified_package_coverage(tmp_path: Path, profile: str, fault: str) -> None:  # noqa: C901, PLR0912, PLR0915 -- explicit fault matrix
     """Rehashing mutable receipts cannot conceal missing facts or contradictory joins."""
     root = tmp_path / "package"
     source = package(root, profile)
     manifest_path = root / "MANIFEST.json"
     receipt = json.loads(manifest_path.read_bytes())
     filename = "literal_facts.parquet"
-    if fault in {"drop_area", "remainder", "formula"}:
+    if fault in {
+        "drop_area",
+        "remainder",
+        "formula",
+        "exclusion_ids",
+        "area_reason",
+        "area_exceptions",
+    }:
         filename = "area_dispositions.parquet"
     elif fault == "orphan":
         filename = "field_lineage.parquet"
@@ -126,6 +159,33 @@ def test_verified_package_coverage(tmp_path: Path, profile: str, fault: str) -> 
         rows[0]["amount"] = Decimal("2.25")
     elif fault == "context":
         rows[0]["source_observation_id"] = "changed"
+    elif fault.startswith("nested_"):
+        original = json.loads(rows[0]["source_record_json"])
+        key = {
+            "nested_coordinate": "source_coordinate"
+            if profile == "crown"
+            else "coordinate",
+            "nested_source": "source_object_sha256"
+            if profile == "crown"
+            else "source_sha256",
+            "nested_id": "record_id",
+            "nested_observation": "observed_at",
+            "nested_locator": "source_locator",
+            "nested_vintage": "source_vintage",
+            "nested_observation_id": "source_observation_id",
+        }[fault]
+        original[key] = (
+            "Spending!Z999" if fault == "nested_coordinate" else "contradiction"
+        )
+        rows[0]["source_record_json"] = json.dumps(original)
+    elif fault == "exclusion_ids":
+        target = next((r for r in rows if r["state"] == "excluded"), rows[-1])
+        target["record_ids"] = ["claimed-admitted-record"]
+    elif fault == "area_reason":
+        rows[0]["reason"] = "invented"
+    elif fault == "area_exceptions":
+        target = next((r for r in rows if r["state"] == "excluded"), rows[0])
+        target["except_selectors"] = ["Z999"]
     elif fault == "source":
         source["sha256"] = "b" * 64
     elif fault == "extra":
