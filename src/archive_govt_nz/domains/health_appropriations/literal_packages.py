@@ -10,6 +10,9 @@ from archive_govt_nz.domains.health_appropriations import (
     befu_chart_literals as befu_chart,
 )
 from archive_govt_nz.domains.health_appropriations import (
+    health_chart_residual_literals as residual,
+)
+from archive_govt_nz.domains.health_appropriations import (
     hyefu_allowance_literals as allowance,
 )
 from archive_govt_nz.domains.health_appropriations.donor_health_detail import (
@@ -35,6 +38,8 @@ if TYPE_CHECKING:
 SCHEMA = "archive-govt-nz.health-literal-package/v1"
 MAX_RECORDS = 1000
 PROFILES = {
+    "befu-residual": "BEFU-2025",
+    "hyefu-residual": "HYEFU-2024",
     "befu-chart": "BEFU-2025",
     "hyefu-allowance": "HYEFU-2024",
     "befu-detail": "BEFU-2025",
@@ -167,7 +172,12 @@ def write_literal_package(  # noqa: C901 -- explicit source-profile persistence 
                 "except_selectors": [],
             }
         )
-        if profile in {"hyefu-allowance", "befu-chart"}:
+        if profile in {
+            "hyefu-allowance",
+            "befu-chart",
+            "befu-residual",
+            "hyefu-residual",
+        }:
             for field, reference in sorted(record["lineage"].items()):
                 if field != "amount":
                     links.append(
@@ -264,6 +274,13 @@ def package_admitted_source(
         )
         # The source observation belongs to the admission, never the new run.
         context = {**context, "observed_at": retained["observed_at"].isoformat()}
+    elif profile in {"befu-residual", "hyefu-residual"}:
+        vintage = PROFILES[profile]
+        _require(
+            context["source_object_sha256"] == residual.PROFILES[vintage]["sha256"]
+        )
+        admission = residual.admit_health_chart_residuals(source, vintage)
+        _require(context["source_locator"] == admission["records"][0]["source_locator"])
     elif profile == "befu-chart":
         _require(context["source_object_sha256"] == befu_chart.SOURCE_SHA256)
         admission = befu_chart.admit_befu_chart_literals(source)

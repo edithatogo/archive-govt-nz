@@ -17,6 +17,7 @@ from archive_govt_nz.domains.health_appropriations import (
     budget,
     budget_revenue,
     forecast,
+    health_chart_residual_literals,
     historical,
     literal_packages,
 )
@@ -85,6 +86,11 @@ def _literal(  # noqa: C901, PLR0912, PLR0915 -- explicit profile and dispositio
             for sheet, definition in befu_chart_literals.PROFILES.items()
             for cell in definition["selected"]
         }
+    if profile in {"befu-residual", "hyefu-residual"}:
+        definition = health_chart_residual_literals.PROFILES[
+            literal_packages.PROFILES[profile]
+        ]
+        expected = {definition["sheet"] + "!" + cell for cell in definition["selected"]}
     _require(
         {r["source_coordinate"] for r in facts} == expected
         and len(facts) == len(expected)
@@ -93,6 +99,7 @@ def _literal(  # noqa: C901, PLR0912, PLR0915 -- explicit profile and dispositio
     _require(len(ids) == len(facts))
     for fact in facts:
         original = json.loads(fact["source_record_json"])
+        _require(isinstance(original.get("raw_context"), dict))
         _nested_record(original, fact, profile)
         _require(
             Decimal(original["amount"])
@@ -128,11 +135,18 @@ def _literal(  # noqa: C901, PLR0912, PLR0915 -- explicit profile and dispositio
             )
             for key, value in context.items()
         )
-        if profile in {"hyefu-allowance", "befu-chart"}:
+        if profile in {
+            "hyefu-allowance",
+            "befu-chart",
+            "befu-residual",
+            "hyefu-residual",
+        }:
             if profile == "hyefu-allowance":
                 _allowance_record(original, fact)
-            else:
+            elif profile == "befu-chart":
                 _befu_record(original, fact)
+            else:
+                _residual_record(original, fact, profile)
             expected_links = sorted(
                 expected_links
                 + [
@@ -233,6 +247,48 @@ def _literal(  # noqa: C901, PLR0912, PLR0915 -- explicit profile and dispositio
     _require(
         receipt["counts"]
         == {"facts": len(facts), "lineage": len(links), "areas": len(areas)}
+    )
+
+
+def _residual_record(
+    original: dict[str, Any], fact: dict[str, Any], profile: str
+) -> None:
+    """Retain explicit unknown periods and non-spending OBEGALx meaning."""
+    definition = health_chart_residual_literals.PROFILES[
+        literal_packages.PROFILES[profile]
+    ]
+    cell, sheet = original["coordinate"], original["sheet"]
+    anchors = definition["anchors"]
+    _require(original["raw_context"] == anchors)
+    _require(
+        original["measure"] == definition["measure"]
+        and original["period_status"] == definition["period_status"]
+    )
+    _require(
+        original["period_start"] is None
+        and original["period_end"] is None
+        and original["currency"] is None
+    )
+    _require(
+        original["label"] == anchors[definition["label_cell"]]
+        and original["unit"] == anchors[definition["unit_cell"]]
+    )
+    _require(
+        original["column_headers"]
+        == [anchors[cell[0] + str(row)] for row in definition["header_rows"]]
+    )
+    _require(
+        original["lineage"]
+        == {
+            "amount": sheet + "!" + cell,
+            **{"context:" + key: sheet + "!" + key for key in anchors},
+        }
+    )
+    _require(
+        fact["record_id"]
+        == identity(
+            literal_packages.SCHEMA, profile, fact["source_object_sha256"], sheet, cell
+        )
     )
 
 
