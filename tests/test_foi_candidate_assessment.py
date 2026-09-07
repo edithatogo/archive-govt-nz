@@ -194,12 +194,13 @@ def test_robots_policy_is_independent_and_conservative(
 def test_legacy_parser_cannot_grant_complex_rule_access(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch, rule: str
 ) -> None:
+    """Legacy prefix-only parsing cannot override conservative admission."""
     monkeypatch.setattr(
         "archive_govt_nz.foi_candidate_assessment.RobotFileParser.can_fetch",
         lambda *_args: True,
     )
     test_robots_policy_is_independent_and_conservative(
-        tmp_path, f"User-agent: *\n{rule}\n", 200, False
+        tmp_path, f"User-agent: *\n{rule}\n", 200, expected=False
     )
 
 
