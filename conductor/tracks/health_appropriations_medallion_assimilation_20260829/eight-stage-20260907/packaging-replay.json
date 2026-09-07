@@ -1,0 +1,49 @@
+{
+  "builds_identical": true,
+  "output_root": "/tmp/health-literal-packages.ISyHNf",
+  "scope": "221_admitted_literals_transport_only",
+  "stages": {
+    "befu-detail": {
+      "counts": {
+        "areas": 84,
+        "facts": 80,
+        "lineage": 832
+      },
+      "observed_at": "2026-08-30 08:58:00+00:00",
+      "output_sha256": {
+        "area_dispositions.parquet": "607f7b81ad0a23e8e4f05872b14c58c1c96697c982d07dd39a791f19224c7acf",
+        "field_lineage.parquet": "44cb3c80788aacdf5f51baffb0bf039811222f9643b8b6149ddf918b7cd363b8",
+        "literal_facts.parquet": "2e1dd6761be4a1b35495133f1494a6e4d5b9747efad205b4da9be87240c6ad9e"
+      },
+      "source_object_sha256": "dbde3256b1cbfb847f9f6caec66e7adffabca0489b218997a431220da584a3d6"
+    },
+    "crown": {
+      "counts": {
+        "areas": 69,
+        "facts": 61,
+        "lineage": 369
+      },
+      "observed_at": "2026-08-29 09:00:17+00:00",
+      "output_sha256": {
+        "area_dispositions.parquet": "89392451d57bceceb00438a05c2c1b75d3f182260be048a2e03347f4ca5fe1c4",
+        "field_lineage.parquet": "f0091899b3514e189c1a2a23e5cd9550c81a7455899f37989d07a59ccf037796",
+        "literal_facts.parquet": "a90bfdc8553ce510b69de3cd256bf8e46d06aa370052e7b0a7d49bf02890903f"
+      },
+      "source_object_sha256": "de59f9028a81a697ee66eea04861edfd8e2c3a7e472b3b8798d976951964f70f"
+    },
+    "hyefu-detail": {
+      "counts": {
+        "areas": 84,
+        "facts": 80,
+        "lineage": 832
+      },
+      "observed_at": "2026-08-30 08:58:00+00:00",
+      "output_sha256": {
+        "area_dispositions.parquet": "bb4e8b693c28ff2146b4feffda2109a94bb97e904cae90dce366d743f181f419",
+        "field_lineage.parquet": "85c9ab5374085d18be4363fe97b3a0a3c99a9204fd6e13ec7572c0861f57dac5",
+        "literal_facts.parquet": "3f59fe429e7b4c3b0dae7dda792ea312d182c007a1634f7a5906d4e89ff2c54f"
+      },
+      "source_object_sha256": "725399c09323594c921dbcc493206abe59bf7b91dd968b8c7f6f3a67d4707969"
+    }
+  }
+}
