@@ -22,6 +22,22 @@ def _fail(message: str) -> NoReturn:
     raise ValueError(message)
 
 
+def _verify_capture_framing(payload: bytes) -> None:
+    """Check the single-record writer profile, not permissive WARC EOF parsing."""
+    envelope, block = payload.split(b"\r\n\r\n", 1)
+    lengths = [
+        line.split(b":", 1)[1].strip()
+        for line in envelope.split(b"\r\n")[1:]
+        if line.split(b":", 1)[0].lower() == b"content-length"
+    ]
+    if len(lengths) != 1 or not lengths[0].isdigit():
+        _fail("resume_warc_framing_mismatch")
+    # The HTTP Content-Length may describe encoded wire bytes; only the outer
+    # WARC length frames the writer's decoded HTTP block and final terminator.
+    if block[int(lengths[0]) :] != b"\r\n\r\n":
+        _fail("resume_warc_framing_mismatch")
+
+
 def verify_response_binding(  # noqa: PLR0913 -- explicit receipt bindings
     path: Path,
     *,
@@ -56,6 +72,7 @@ def verify_response_binding(  # noqa: PLR0913 -- explicit receipt bindings
     }
     count = 0
     try:
+        _verify_capture_framing(payload)
         _verify_warc_stream(BytesIO(payload))
         for record in ArchiveIterator(BytesIO(payload)):
             count += 1
@@ -64,7 +81,12 @@ def verify_response_binding(  # noqa: PLR0913 -- explicit receipt bindings
                 or record.rec_type != "response"
                 or record.http_headers is None
                 or record.http_headers.get_statuscode() != str(status_code)
-                or record.http_headers.get_header("Content-Type") != content_type
+                or [
+                    value
+                    for key, value in record.http_headers.headers
+                    if key.lower() == "content-type"
+                ]
+                != ([] if content_type is None else [content_type])
             ):
                 _fail("resume_warc_response_mismatch")
             for key, value in expected.items():
