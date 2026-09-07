@@ -32,3 +32,12 @@ loading, offline DCAT/PROV interpretation, Parquet/SPDX identities, verified
 local DCAT generation and local provenance verification are accepted.
 Croissant/RO-Crate application profiles, complete rights statements, cards,
 federation ambiguity accounting and broader Phase 7 assurance remain open.
+
+## Corrected integrated gate
+
+All identified donor, population and FOI review defects were corrected and
+independently re-reviewed. The probe runtime compatibility guard was additionally
+inspected by the parent; its conservative rejection occurs before page access.
+The locked full harness passed at `8b878a18`: 5,523 tests, 97.608983% coverage,
+all configured mutation/supply-chain gates and validated SBOM. Exact evidence is
+`ordered-integration-validation-20260907.json`. Hosted delivery remains pending.
