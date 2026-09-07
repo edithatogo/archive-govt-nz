@@ -1,0 +1,103 @@
+{
+  "schema_version": "archive-govt-nz.price-wage-context-validation/v1",
+  "scope": "Phase1.2_M02_M06_M12_source_context_and_numeric_preflight",
+  "definition_register": "price-wage-context.json",
+  "red": {
+    "command": "PYTHONPATH=src /Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/python -m pytest tests/domains/health_appropriations/test_price_wage_context.py -q",
+    "result": "expected_ModuleNotFoundError_before_implementation"
+  },
+  "focused": {
+    "tests": 109,
+    "new_module_statements": 56,
+    "new_module_branches": 4,
+    "new_module_coverage_percent": 100,
+    "lint": "passed",
+    "format": "passed",
+    "types": "passed",
+    "test_modules": [
+      "test_price_wage_context.py",
+      "test_cpi.py",
+      "test_qes.py"
+    ]
+  },
+  "retained_replays": [
+    {
+      "family": "cpi",
+      "source_sha256": "f474a6a3bfbe9b6377c3c68cc94a4cb494335130af3940fe538f5a0dd1274e9d",
+      "manifest": "silver/raw-cpi-20260831-v1/MANIFEST.json",
+      "manifest_sha256": "edb62f4b106948502e717f5f6c5e3da00efc0a64bb10b5dcbafc48cd1a6c257e",
+      "counts": {
+        "input": 22701,
+        "selected": 449,
+        "numeric": 422,
+        "missing": 27,
+        "unselected": 22252
+      },
+      "native_status": "planned",
+      "retained_output_hashes_verified": 3
+    },
+    {
+      "family": "qes",
+      "source_sha256": "1af2e7e37f1c108a2656842cf1f519c903e1a982bcdc03ee02d0ad888ebc3a97",
+      "manifest": "silver/raw-qes-2026q2-20260831-v2/MANIFEST.json",
+      "manifest_sha256": "35114105c86085ee49aeb97ac9f8d8b696ef72692b5eea12d348496a8b920d41",
+      "counts": {
+        "normalized": 9,
+        "field_lineage": 180,
+        "inventoried_cells": 6021
+      },
+      "native_status": "passed",
+      "retained_output_hashes_verified": 3
+    }
+  ],
+  "retained_replay_method": "existing_native_adapters_dry_run_no_alternative_parser",
+  "source_hashes_unchanged": true,
+  "new_outputs_created": false,
+  "supplemental_observations": [
+    {
+      "family": "cpi",
+      "table": "CPI009AA",
+      "series": "CPIQ.SE9A",
+      "selected_period": "2026Q2",
+      "http_status": 200,
+      "content_type": "text/csv",
+      "response_bytes": 1025,
+      "response_sha256": "4dd64eafa66ceb711ab750308387a2eb72b54b44333f4d2dfb3659b1a59d4c32"
+    },
+    {
+      "family": "qes",
+      "table": "QEM003AA",
+      "series": "QEMQ.SASZ9A",
+      "selected_period": "2026Q2",
+      "http_status": 200,
+      "content_type": "text/csv",
+      "response_bytes": 695,
+      "response_sha256": "446b6fa8e0e2238eccac82207cf83d6dd4091bdaa8ba29b19e308179d9e762b9"
+    }
+  ],
+  "supplemental_observation_date": "2026-09-07",
+  "supplemental_evidence": "historical_author_observation_unretained",
+  "independent_metadata_replay": false,
+  "static_exact_metadata_export_url_verified": false,
+  "native_unknowns_overwritten": false,
+  "analytical_selection": "not_selected",
+  "annual_weighting": "not_selected",
+  "rights": "not_evaluated",
+  "promotion": "not_performed",
+  "remaining": {
+    "capture_owner": "retain_exact_metadata_response_and_HTTP_context",
+    "source_semantics": [
+      "QES_ISO_currency",
+      "QES_adjustment"
+    ],
+    "analytical_qualification": [
+      "deflator_selection",
+      "fiscal_aggregation_and_weighting",
+      "output_base_and_vintage_join"
+    ]
+  },
+  "review": "passed_scoped_self_review",
+  "full_harness": "not_run_parent_owned",
+  "remote_mutations": false,
+  "shared_files_edited": false
+}
