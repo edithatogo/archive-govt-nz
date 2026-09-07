@@ -42,3 +42,17 @@ report hash `53c5f901bcb71ba54886b6abea5f6e6a45e2015d7deb55dd6f10b1865f5bd186`.
 No producer/package code or historical pins changed in that fix. All review
 findings are resolved; exact-head hosted validation and protected delivery remain
 separate from this completed local gate.
+
+## Inherited late verifier correction
+
+After the separate workflow PR received a late hosted finding, this batch
+inherited `7910b0ab` through merge `f928a039c59ca73feaea11ef12710f2e9b2dd819`.
+The public eight-stage verifier now redacts ordinary malformed-input/read
+failures while preserving process interrupts. Independent review cleared
+37 focused tests and both unchanged positive 34-file replay runs.
+
+The full locked gate at `f928a039c59ca73feaea11ef12710f2e9b2dd819` exited 0:
+6,517 tests, 98.0441% combined coverage, all schema/parity/mutation/hygiene
+checks, CAS 645.22 MB/s, dependency audit, licence inventory, secret scan and
+validated 112-component SBOM. No known local/review findings remain. Hosted
+validation and protected merge remain separate; earlier runs above are retained.
