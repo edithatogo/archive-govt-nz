@@ -37,6 +37,7 @@ def write_response_record(
     headers: dict[str, str],
     body: bytes,
     record_id: str | None = None,
+    request_url: str | None = None,
 ) -> WarcReceipt:
     """Write one bounded WARC response record with safe URL/header evidence."""
     parsed = urlsplit(url)
@@ -53,10 +54,15 @@ def write_response_record(
     http_lines += [f"{key}: {value}" for key, value in sorted(safe_headers.items())]
     http_block = "\r\n".join(http_lines).encode("utf-8") + b"\r\n\r\n"
     content_block = http_block + body
+    request_digest = hashlib.sha256(
+        (request_url if request_url is not None else url).encode()
+    ).hexdigest()
     header_lines = [
         "WARC/1.1",
         f"WARC-Record-ID: <{identifier}>",
         f"WARC-Target-URI: {safe_url}",
+        f"WARC-Request-URL-SHA256: {request_digest}",
+        f"WARC-Final-URL-SHA256: {hashlib.sha256(url.encode()).hexdigest()}",
         "WARC-Type: response",
         "Content-Type: application/http; msgtype=response",
         f"WARC-Payload-Digest: sha256:{hashlib.sha256(body).hexdigest()}",

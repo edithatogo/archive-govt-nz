@@ -18,6 +18,7 @@ import httpx
 
 from archive_govt_nz.capture import CaptureConfig, CaptureError, capture_url
 from archive_govt_nz.object_store import ContentAddressedStore
+from archive_govt_nz.warc_binding import verify_response_binding
 
 _RIGHTS = {
     "www.treasury.govt.nz": {
@@ -152,9 +153,16 @@ def _verify_retained(
     ):
         msg = "resume_warc_path_unsafe"
         raise ValueError(msg)
-    if _digest(warc) != row["warc_sha256"]:
-        msg = "resume_warc_mismatch"
-        raise ValueError(msg)
+    verify_response_binding(
+        warc,
+        request_url=source["url"],
+        final_url=row["url"],
+        status_code=row["status_code"],
+        content_type=row["content_type"],
+        body_sha256=receipt.sha256,
+        body_bytes=receipt.byte_count,
+        warc_sha256=row["warc_sha256"],
+    )
 
 
 async def _capture_locked(args: argparse.Namespace) -> dict[str, object]:

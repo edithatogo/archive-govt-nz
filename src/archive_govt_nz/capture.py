@@ -329,6 +329,7 @@ async def capture_url(  # noqa: PLR0915, PLR0912
                                 write_response_record,
                                 transaction_warc_path,
                                 url=current_url,
+                                request_url=url,
                                 status_code=response.status_code,
                                 headers={
                                     k: str(v) for k, v in dict(response.headers).items()
