@@ -65,6 +65,10 @@ versions fail closed. Returned nested dictionaries are independent.
 
 These descriptors remain structural only: they do not prove IDs, rights,
 source precision, null-reason consistency, time alignment or lineage closure.
+The separate opt-in [normalization API](./recordset-normalization.md) now checks
+duplicate/blank IDs, known endpoint ordering and decimal/null consistency while
+converting JSON representations exactly. It leaves the descriptors unchanged;
+stable-ID derivation, source interpretation and package lineage remain pending.
 No existing source package is converted or promoted. The 51 focused tests
 include ten seeded descriptor counterexamples; these are not ten additional
 source-code mutant kills. The final unfiltered cold mutation run generated

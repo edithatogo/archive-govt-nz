@@ -1,0 +1,32 @@
+{
+  "works_count": 500,
+  "work_keys": [
+    "work_id",
+    "disposition",
+    "source_response_classifications",
+    "retry_count"
+  ],
+  "exact_seed": true,
+  "retained_files": [
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/hosted-closeout-20260906/verification.json",
+      "sha256": "d2b84bf50b5e8212738fe68850971e42e7c5f92134707190a5d6a12cf90a962a",
+      "bytes": 15302
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/hosted-closeout-20260906/500-work-target-revalidation.json",
+      "sha256": "e1383a7839cd6e07bd5e3596b3bdb906cf1c80cd925ca6afd00d3c30ab94d7b8",
+      "bytes": 4242
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/hosted-closeout-20260906/harvest.json",
+      "sha256": "768e2ee0d52aa0780505da3c38b7461e07d0c2abc2f8c076fc78666e4f8257dc",
+      "bytes": 94927
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/huggingface-publication/operational-reconciliation-20260906.json",
+      "sha256": "9aab17053438811f8c266468a80622d83e9b3d9e9b0a74b76b7afd699e6fc4ff",
+      "bytes": 2096
+    }
+  ]
+}

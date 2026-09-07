@@ -6,34 +6,56 @@
       "to_prompt": 3,
       "status": "passed",
       "artifact": "evidence/migrations/corpus-legislation-nz/final-lineage/receipt.json",
-      "boundary": "Lineage is not operational-state migration; Prompt 03 independently verifies the retained artifact."
+      "boundary": "Lineage is not operational-state migration; Prompt 03 independently verifies the retained artifact.",
+      "superseding_evidence": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json"
     },
     {
       "id": "VERIFIED-CANDIDATE-TO-MERGE",
       "from_prompt": 3,
       "to_prompt": 4,
-      "status": "blocked_external",
+      "status": "passed",
       "artifact": "evidence/migrations/corpus-legislation-nz/final-donor-state/verification-02/prompt04-inventory.json",
       "artifact_sha256": "61d054a24e39792cdef21783c68c4f5bb31903139608fc5854cdd66e9b68aa7e",
-      "boundary": "Verified local candidate only. Obtain Prompt 04, verify current target state and rehash input before any merge."
+      "boundary": "Prompt04 completed the canonical merge; approved 552-record durable package was freshly native-verified in the final audit.",
+      "superseding_evidence": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json"
     },
     {
       "id": "ZENODO-VERSION-CONCEPT-LABEL",
       "from_prompt": 1,
-      "to_prompt": null,
-      "status": "blocked_external",
+      "to_prompt": 16,
+      "status": "passed",
       "artifact": "live-observations.json",
-      "boundary": "Version DOI 20592540 was labelled concept in the old record; live concept is 20592539. Exact specialist ownership awaits missing prompt texts. No metadata mutation authorized or performed."
+      "boundary": "Fresh Zenodo readback confirms concept 20592539 and version 20592540; no mutation needed.",
+      "superseding_evidence": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json"
     },
     {
       "id": "ADDITIONAL-WORKFLOW-DIAGNOSTICS",
       "from_prompt": 3,
-      "to_prompt": null,
-      "status": "blocked_external",
+      "to_prompt": 20,
+      "status": "passed",
       "artifact": "evidence/migrations/corpus-legislation-nz/final-donor-state/workflow-lint-handoff.json",
-      "boundary": "Two unchanged SC2086 findings from additional actionlint diagnostics. Required workflow-policy checks pass. Exact specialist owner awaits missing scope; no suppression or workflow change."
+      "boundary": "SC2086 repair is integrated; current actionlint exits 0, alerts are empty and main enforcement is active.",
+      "superseding_evidence": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json"
+    },
+    {
+      "id": "P13-P15-FINAL-INTEGRATION",
+      "from_prompt": 13,
+      "to_prompt": 15,
+      "status": "in_progress",
+      "artifact": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/hosted-closeout-20260906/500-work-target-revalidation.json",
+      "artifact_sha256": "e1383a7839cd6e07bd5e3596b3bdb906cf1c80cd925ca6afd00d3c30ab94d7b8",
+      "boundary": "Verified primary evidence is prepared in parent worktree. Parent owns integration and registry/schema update."
+    },
+    {
+      "id": "TERMINAL-INDEPENDENT-ACCEPTANCE",
+      "from_prompt": 21,
+      "to_prompt": 1,
+      "status": "in_progress",
+      "artifact": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json",
+      "boundary": "Evidence acceptance is separate from integrated full harness, delivery and archival; no external action performed."
     }
   ],
-  "unique_material_defect_ownership_gate": "blocked_external",
-  "reason": "Missing specialist texts prevent exact assignment of publication and workflow findings."
+  "unique_material_defect_ownership_gate": "passed",
+  "reason": "Scopes and owners are registered from existing canonical contracts. No missing-prompt-input gate remains. HOSTED-PARENT-NAME-001 has Prompt08 ownership through the parent-delegated Lovelace compatibility agent, Prompt06 consumer and issue335 tracking. The defect, parent integration and final validation remain pending.",
+  "observed_at": "2026-09-05T14:15:00Z"
 }

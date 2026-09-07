@@ -5,5 +5,20 @@
   "status": "in_progress",
   "track_id": "legislation_final_adversarial_verification_20260902",
   "type": "assurance",
-  "updated_at": "2026-09-03T11:05:00Z"
+  "updated_at": "2026-09-05T14:25:00Z",
+  "acceptance_report": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json",
+  "gates": [
+    {
+      "id": "HOSTED-PARENT-NAME-001",
+      "kind": "integration",
+      "status": "pending",
+      "evidence": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/hosted-parent-interface-defect.json"
+    },
+    {
+      "id": "parent-final-integrated-tree",
+      "kind": "validation",
+      "status": "pending",
+      "evidence": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json"
+    }
+  ]
 }

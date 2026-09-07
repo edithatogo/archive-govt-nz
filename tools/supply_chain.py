@@ -36,6 +36,7 @@ RECEIPT_EXCLUSION_PATTERN = (
     r'|"[0-9a-f]{40}"'
     r'|"[0-9a-f]{64}"'
     r"|consolidation_revision"
+    r'|^[ \t]*"(?:secrets|audit_licenses_secrets_sbom)": "passed",[ \t]*$'
 )
 
 # Reviewed public lineage documents, not a general path or entropy exemption.

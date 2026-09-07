@@ -1,0 +1,241 @@
+{
+  "schema_version": "archive-govt-nz.independent-final-acceptance/v1",
+  "audit_id": "prompt21-prompt01-20260906",
+  "observed_at": "2026-09-05T14:20:00Z",
+  "status": "incomplete",
+  "scope": {
+    "baseline": "c5233ae7fc0beb065071cf3554596456f6575131",
+    "execution_commit": "87f65e8b37cbc16bc6c7cf8b5b93a19e48f0f207",
+    "execution_to_baseline_diff": "Six FOI track-local governance documents only; no legislation runtime or workflow changes.",
+    "owned_prompts": [
+      21,
+      1
+    ],
+    "parent_evidence_location": "archive-govt-nz-closeout-20260905b",
+    "source_verification": "Independent fresh hosted and anonymous byte readback plus native verification; parent receipt reviewed and hash-bound, never relabelled as this auditor's reconciliation execution."
+  },
+  "supersedes": [
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/post-cutover-final-verification.json",
+      "scope": "20260902 completion/failure status claims; preserved historical bytes"
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/completion-evaluation-current.json",
+      "scope": "Final acceptance status at this exact baseline only; historical evaluator output remains immutable"
+    }
+  ],
+  "dimensions": {
+    "code_capability_migration": "incomplete_hosted_parent_interface",
+    "operational_state_migration": "verified_for_500_work_run",
+    "corpus_custody_recoverability": "verified_for_approved_552_record_durable_parent",
+    "publication_identity_migration": "verified_for_existing_three_identities_and_approved_552_record_publication"
+  },
+  "criteria": [
+    {
+      "id": "donor-lineage",
+      "owner_prompt": 2,
+      "status": "passed_evidence",
+      "evidence": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/lineage-and-coverage.json",
+      "finding": "216 imported files and Git tree freshly verified; operational donor b40587f preserved; live archived presentation head 905f9e07 changes README only."
+    },
+    {
+      "id": "donor-500-work-state",
+      "owner_prompt": 3,
+      "status": "passed_evidence",
+      "evidence": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/native-verification.json",
+      "finding": "Published canonical package native verifier revalidates preserved merge parents and original state; frozen donor state is distinct from the target run."
+    },
+    {
+      "id": "donor-target-merge",
+      "owner_prompt": 4,
+      "status": "passed_evidence",
+      "evidence": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/native-verification.json",
+      "finding": "Published package verified all inner bytes and merged roots: 500 donor plus 52 target records, 552 works. No unexplained overlap or conflict."
+    },
+    {
+      "id": "governed-seed",
+      "owner_prompt": 5,
+      "status": "passed_evidence",
+      "evidence": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/native-verification.json",
+      "finding": "Exact 8,987 bytes, 500 sorted unique IDs, SHA 59923176fa34796d7673a20b880af9abe5520fe484595edb220f2bbc0e3b33e7."
+    },
+    {
+      "id": "exact-and-discovery-lanes",
+      "owner_prompt": 6,
+      "status": "incomplete_hosted_parent_compatibility",
+      "evidence": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/specialist-registration.json",
+      "finding": "Both implementations are integrated. Prompt07 explicitly prohibits live discovery in its implementation acceptance; no live-discovery gate invented. Full exact-inventory hosted proof exercised Prompt06."
+    },
+    {
+      "id": "parent-restoration",
+      "owner_prompt": 8,
+      "status": "failed_hosted_interface",
+      "evidence": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/native-verification.json",
+      "finding": "Native unpack/state_roots/check_lineage/verify_parent accept sealed output and reject one-byte CAS corruption; current v3 contract interoperates. However live hosted metadata is rejected with artifact_run_name and reference schema rejects actual artifact name. See HOSTED-PARENT-NAME-001."
+    },
+    {
+      "id": "durable-state-package",
+      "owner_prompt": 9,
+      "status": "passed_evidence",
+      "evidence": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/publication-readback.json",
+      "finding": "Anonymous exact-revision download: 71,776,346 bytes, approved SHA 2e4b7533...; native verification covers 561 original files and 552-record roots. Existing hash-bound authority is recorded."
+    },
+    {
+      "id": "independent-recovery",
+      "owner_prompt": 10,
+      "status": "passed_evidence",
+      "evidence": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/native-verification.json",
+      "finding": "Fresh remote package verifies; retained two clean independent recovery attempts and stage hashes bind the same package and roots. Scope is approved 552-record parent, not durable publication of 904-record output."
+    },
+    {
+      "id": "target-500-operation",
+      "owner_prompt": 13,
+      "status": "passed_evidence",
+      "evidence": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/parent-evidence-binding.json",
+      "finding": "Fresh six artifact ZIP readbacks match hosted sizes/SHA; 500 exact-seed outcomes, 352 changed/148 unchanged, 904 CAS. Primary ordered preflight precedes acquisition; parent fresh native reconciliation has zero mismatch."
+    },
+    {
+      "id": "historical-coverage",
+      "owner_prompt": 14,
+      "status": "passed_evidence",
+      "evidence": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/lineage-and-coverage.json",
+      "finding": "Fresh bundle Git objects reproduce all 68 batch sizes/SHA/counts and sorted unique 33,693 candidates; never reported as acquired corpus coverage."
+    },
+    {
+      "id": "hugging-face-identity",
+      "owner_prompt": 15,
+      "status": "passed_evidence",
+      "evidence": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/publication-readback.json",
+      "finding": "All three current revision/access roles match; all four approved canonical files anonymously rehashed. Parent prepared true operational-proof flag with mandatory named receipt and digest-binding test; integration pending."
+    },
+    {
+      "id": "zenodo-identity",
+      "owner_prompt": 16,
+      "status": "passed_evidence",
+      "evidence": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/publication-readback.json",
+      "finding": "Fresh Zenodo API confirms concept DOI 20592539 and version DOI 20592540. No mutation or new version required."
+    },
+    {
+      "id": "evidence-hierarchy",
+      "owner_prompt": 17,
+      "status": "passed_evidence",
+      "evidence": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/matrix.json",
+      "finding": "This dated final matrix explicitly supersedes old 20260902 final-verification and stale-current evaluator status claims for this audit only. Historical receipts and canonical index remain byte-preserved; no old status labels reused."
+    },
+    {
+      "id": "cutover-release-addendum",
+      "owner_prompt": 18,
+      "status": "passed_evidence",
+      "evidence": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/hosted-readback.json",
+      "finding": "Live same release ID retains original wording and dated correction to Cycle1 recovery 32625612739; Cycle2 remains 32626113799."
+    },
+    {
+      "id": "donor-bundle-and-presentation",
+      "owner_prompt": 19,
+      "status": "passed_evidence",
+      "evidence": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/lineage-and-coverage.json",
+      "finding": "Fresh public bundle download, Git bundle verify and clean bare clone/fsck pass. All three live branch/tag differences represent later README/final-tag presentation and are explicitly enumerated; frozen operational graph is intact."
+    },
+    {
+      "id": "integrated-assurance",
+      "owner_prompt": 20,
+      "status": "passed_evidence",
+      "evidence": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/hosted-readback.json",
+      "finding": "Exact c5233ae7 CI all three platforms, CodeQL and workflow policy pass; no open CodeQL alerts; active strict ruleset and local actionlint pass. Local full rerun and final integrated parent validation tracked separately. Green tests do not override reproduced HOSTED-PARENT-NAME-001."
+    },
+    {
+      "id": "controller-ownership",
+      "owner_prompt": 1,
+      "status": "passed_evidence",
+      "evidence": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/specialist-registration.json",
+      "finding": "Existing Prompt02-21 contracts and child issue owners now registered in track-local controller state; original dependency edges retained. Missing-input and unassigned handoff claims superseded without changing global registry."
+    }
+  ],
+  "remaining_must_defects": [
+    {
+      "id": "HOSTED-PARENT-NAME-001",
+      "priority": "high",
+      "owner_prompt": 8,
+      "consumer_prompt": 6,
+      "tracking_issue": 335,
+      "status": "reproduced_fix_delegated_by_parent",
+      "source": [
+        "conductor/tracks/legislation_parent_state_restoration_20260901/requirements.md (shared fail-closed interface across workflows)",
+        "conductor/tracks/legislation_exact_inventory_revalidation_20260903/requirements.md (complete continuation package)"
+      ],
+      "evidence": "evidence/migrations/corpus-legislation-nz/independent-final-acceptance-20260906/hosted-parent-interface-defect.json",
+      "finding": "Live producer artifact name is rejected both by parent-reference schema and check_metadata with artifact_run_name. Native verify_parent accepted inner state only; end-to-end hosted parent usability is not established.",
+      "required_resolution": "Integrate scoped workflow/name-bound compatibility fix without relaxing provenance checks, pass focused negative and full assurance, independently verify the actual hosted restoration interface. Parent owns implementation and any authorized execution."
+    }
+  ],
+  "delivery_gates": [
+    {
+      "id": "audit-full-harness",
+      "owner_prompt": 21,
+      "status": "passed",
+      "source": "conductor/workflow.md Quality gates",
+      "detail": "Second full unchanged ./scripts/validate.sh exited 0, 4799 tests and all configured stages passed; initial timing failure and exact unchanged replay preserved in validation.json."
+    },
+    {
+      "id": "parent-final-integrated-tree",
+      "owner_prompt": 1,
+      "status": "pending",
+      "source": "conductor/workflow.md Track completion",
+      "detail": "Parent owns P13/P15 schema/registry/evidence integration and final full validation. Both tracks are active and in progress with continuation review tasks; this audit does not authorize or claim hosted delivery."
+    }
+  ],
+  "limitations": [
+    {
+      "id": "second-output-continuation",
+      "classification": "deferred_should",
+      "source": "conductor/tracks/legislation_500_work_operational_proof_20260901/requirements.md Should",
+      "detail": "904-to-child second cycle not demonstrated; two full runs use same approved 552 parent."
+    },
+    {
+      "id": "904-durable-publication",
+      "classification": "outside_must_scope",
+      "detail": "904-record output is retained in Actions until 2026-12-04, not published as a new durable HF package. Existing 552-record custody/publication remains proven."
+    },
+    {
+      "id": "anonymous-source-authentication",
+      "classification": "evidence_limit",
+      "detail": "Credential-present HTTP200 does not prove rejection of anonymous source requests."
+    },
+    {
+      "id": "donor-presentation-bundle",
+      "classification": "explained_scope_difference",
+      "detail": "Frozen bundle predates redirect README and final tag; three live ref differences explicitly recorded."
+    },
+    {
+      "id": "unrelated-medallion-graph",
+      "classification": "outside_legislation_scope",
+      "detail": "Parent retains deferred graph-evaluation entry; no completion finding made here."
+    }
+  ],
+  "false_completion_probes": [
+    "all six artifacts downloaded and hashed; run success alone rejected",
+    "all 500 per-work IDs equal governed seed; totals alone rejected",
+    "904 native CAS check plus one-byte negative control; 852 scoped reconciliation not conflated",
+    "current exact-revision anonymous four-file readback; local candidates rejected",
+    "explicit 552-record authority preserved; no new permission invented",
+    "Should second cycle not promoted to Must",
+    "live donor head difference audited; archived flag alone rejected",
+    "old current-filename and old incomplete statuses not reused",
+    "parent uncommitted evidence and local archive moves not reported as merged"
+  ],
+  "actions": {
+    "hosted_read_only": true,
+    "publication": false,
+    "push": false,
+    "merge": false,
+    "archive": false,
+    "dispatch": false,
+    "hosted_issue_writes": false
+  },
+  "requirement_dispute": {
+    "pr": 406,
+    "head": "2b192f086201ccb080f712d8ac341ac135d3413e",
+    "conclusion": "No authoritative unconditional second-cycle Must found in issue335 body/comments or committed track requirement. Track says Should and issue says where possible. PR406 correctly reports missing 904-to-child execution, but its blocker label alone does not amend requirements. Separate actual hosted interface defect prevents overall acceptance.",
+    "exact_original_prompt": "No full original user Prompt13 text located in those primary repository/issue sources; no stronger wording invented."
+  }
+}

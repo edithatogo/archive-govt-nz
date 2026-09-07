@@ -1,0 +1,87 @@
+{
+  "schema_version": "archive-govt-nz.legislation-500-work-target-revalidation/v1",
+  "observed_at": "2026-09-05T14:06:49.360270+00:00",
+  "status": "complete",
+  "scope": "Prompt 13 operational acceptance, independently reverified after ordered source preflight; repository delivery is recorded separately in Conductor.",
+  "dispatch_performed": true,
+  "dispatch_performed_by_this_closeout": false,
+  "target": {
+    "repository": "edithatogo/archive-govt-nz",
+    "execution_commit": "87f65e8b37cbc16bc6c7cf8b5b93a19e48f0f207",
+    "audit_baseline": "c5233ae7fc0beb065071cf3554596456f6575131"
+  },
+  "run": {
+    "id": 33968609350,
+    "head_sha": "87f65e8b37cbc16bc6c7cf8b5b93a19e48f0f207",
+    "head_branch": "main",
+    "conclusion": "success",
+    "html_url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/33968609350",
+    "run_attempt": 1
+  },
+  "roots": {
+    "manifest_sha256": "ab4ff4fbeb5f2d5df583c513ac4afd9806ca2bacd1b7851d8a7d979b8f667004",
+    "manifest_file_sha256": "2bf2d45d1544d73c7b1ae0c0dbaf8495d294c78b7b1bd0d49155d0d7f20546f6",
+    "checkpoint_file_sha256": "de917823c8c5e8d167afa23bc3a4b72495443150df37844ce124e26dbcd19c0c",
+    "inventory_sha256": "9ca6dc505f991e015c6c997827878d8c7e9381b214a1544eb338328a285c6894",
+    "cas_root_sha256": "ed93a3f7cddac8f6bc938f1005f47cfe4c309707b34b3a511cc3b66fedb47a40",
+    "success_receipt_sha256": "768e2ee0d52aa0780505da3c38b7461e07d0c2abc2f8c076fc78666e4f8257dc"
+  },
+  "accounting": {
+    "schema_version": "archive-govt-nz.legislation-harvest-receipt/v3",
+    "candidate_works_discovered": 500,
+    "works_in_scope": 500,
+    "works_attempted": 500,
+    "newly_preserved": 0,
+    "changed_preserved": 352,
+    "unchanged_revalidated": 148,
+    "already_processed_skipped": 0,
+    "unavailable": 0,
+    "partial": 0,
+    "failed": 0,
+    "total_state_records_before": 552,
+    "total_state_records_after": 904,
+    "total_cas_objects_before": 552,
+    "total_cas_objects_after": 904,
+    "scope_digests": {
+      "resolved": "2abf0d8b76cc60e9b4e442724987b81848698dbdd98e56266f8726d468b33eaf"
+    },
+    "parent_manifest_root": "877ba501a25570a29c1aada7979562d8c62c7f043865125cf402310eabc09544",
+    "parent_checkpoint_root": "8afab0cb245c8b0f4c6e42c7d2c863a0f58e99f7c6bded70a1582b2be1a4cbf7",
+    "output_manifest_root": "ab4ff4fbeb5f2d5df583c513ac4afd9806ca2bacd1b7851d8a7d979b8f667004",
+    "output_checkpoint_root": "de917823c8c5e8d167afa23bc3a4b72495443150df37844ce124e26dbcd19c0c",
+    "software_commit": "87f65e8b37cbc16bc6c7cf8b5b93a19e48f0f207",
+    "workflow_identity": "Exact inventory legislation revalidation",
+    "run_identity": "33968609350",
+    "state_commit_status": "committed",
+    "state_commit": "de917823c8c5e8d167afa23bc3a4b72495443150df37844ce124e26dbcd19c0c",
+    "total_retry_count": 1,
+    "state_record_delta": 352,
+    "cas_object_delta": 352
+  },
+  "verification": {
+    "all_500_accounted_for": true,
+    "receipt_invariants_verified": true,
+    "complete_state_artifact_verified": true,
+    "cas_fixity_verified": true,
+    "reconciliation_zero_unexplained_mismatches": true,
+    "continuation_proven": true,
+    "durable_recovery_proven": true,
+    "ordered_source_preflight_verified": true
+  },
+  "durable_recovery_evidence": "evidence/migrations/corpus-legislation-nz/durable-recovery/independent-recovery-summary-20260903.json",
+  "supersedes": {
+    "path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/closeout-20260905/500-work-target-revalidation.json",
+    "sha256": "74e53f3caeca61e64df1e9fa3c8376bb5a404ff7d3747f31a50d30e26fc51768"
+  },
+  "primary_verification": {
+    "path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/hosted-closeout-20260906/verification.json",
+    "sha256": "d2b84bf50b5e8212738fe68850971e42e7c5f92134707190a5d6a12cf90a962a"
+  },
+  "blocking_findings": [],
+  "limitations": [
+    "Two successful full runs use the approved 552-record durable parent; a 904-to-child second cycle is not proven.",
+    "The 904-record output is retained in GitHub Actions, not published as a new durable Hugging Face state.",
+    "HTTP 200 using the configured credential does not prove rejection of anonymous requests."
+  ],
+  "publication_performed": false
+}
