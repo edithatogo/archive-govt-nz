@@ -1,0 +1,13 @@
+{
+  "tested_commit": "917cbd449678f50b2f048f799462ae1ad226ad8b",
+  "command": "PYTEST_XDIST_AUTO_NUM_WORKERS=2 ./scripts/validate.sh",
+  "status": "passed_local",
+  "exit_code": 0,
+  "tests_passed": 5560,
+  "coverage_percent": 97.61448349307774,
+  "cas_throughput_mb_s": 690.93,
+  "all_configured_mutation_suites": "passed",
+  "supply_chain_and_sbom": "passed; 112 SBOM components",
+  "review": "Meitner independently reviewed donor-SQLite boundary with 105 tests and identical retained replay; Popper independently reviewed Budget layout receipts with 77 tests, 100 percent module coverage and two identical retained replays. No actionable findings.",
+  "scope": "Bounded shared donor snapshot reader, exclusive normalization outputs and profile-bound Budget selection drift. No full area closure, factual semantic mapping, source promotion or publication approval."
+}

@@ -6,12 +6,11 @@ import hashlib
 import json
 import math
 import re
-import sqlite3
 from collections import defaultdict, deque
 from dataclasses import asdict, dataclass
 from typing import TYPE_CHECKING, Any
 
-from archive_govt_nz.domains.health_appropriations.gold import _TABLE_DEFINITIONS
+from archive_govt_nz.domains.health_appropriations.donor_sqlite import read_rows
 
 if TYPE_CHECKING:
     from pathlib import Path
@@ -86,62 +85,15 @@ def _row_digest(row: tuple[Any, ...]) -> str:
 
 
 def read_database(path: Path, expected_sha256: str) -> Database:
-    """Read capped bytes once; inspect an in-memory, query-only SQLite copy.
-
-    Exact schema and row bounds fail closed. No source URI is opened by SQLite,
-    so no journal or sidecar can be created and filename metacharacters are inert.
-    Input fixity identifies the bytes read, not future filesystem state. Native
-    SQLite parsing is bounded but is not a hostile-parser process sandbox.
-    """
-    with path.open("rb") as stream:
-        payload = stream.read(MAX_BYTES + 1)
-    if len(payload) > MAX_BYTES:
-        message = "database_size_limit"
-        raise ValueError(message)
-    digest = hashlib.sha256(payload).hexdigest()
-    if digest != expected_sha256:
-        message = "database_fixity"
-        raise ValueError(message)
-    connection = sqlite3.connect(":memory:")
-    try:
-        connection.deserialize(payload)
-        connection.execute("PRAGMA query_only=ON")
-        connection.execute("PRAGMA trusted_schema=OFF")
-        connection.setlimit(sqlite3.SQLITE_LIMIT_LENGTH, MAX_BYTES)
-        # Bound VM work as well as returned rows, including integrity checks.
-        connection.set_progress_handler(lambda: 1, 1000000)
-        if connection.execute("PRAGMA integrity_check").fetchall() != [("ok",)]:
-            message = "database_integrity"
-            raise ValueError(message)
-        objects = connection.execute(
-            "SELECT name, type FROM sqlite_master ORDER BY name"
-        ).fetchall()
-        if objects != [(name, "table") for name in sorted(_TABLE_DEFINITIONS)]:
-            message = "database_table_drift"
-            raise ValueError(message)
-        tables = []
-        total = 0
-        for table, columns in sorted(_TABLE_DEFINITIONS.items()):
-            # Names come exclusively from the existing fixed export schema.
-            schema = connection.execute(f'PRAGMA table_xinfo("{table}")').fetchall()
-            expected = [
-                (index, name, kind, 0, None, 0, 0)
-                for index, (name, kind) in enumerate(columns)
-            ]
-            if schema != expected:
-                message = "database_column_drift"
-                raise ValueError(message)
-            rows = connection.execute(
-                f'SELECT * FROM "{table}" ORDER BY rowid'  # noqa: S608
-            ).fetchmany(MAX_ROWS + 1)
-            total += len(rows)
-            if total > MAX_ROWS:
-                message = "database_row_limit"
-                raise ValueError(message)
-            tables.append((table, tuple(_row_digest(row) for row in rows)))
-        return Database(digest, tuple(tables))
-    finally:
-        connection.close()
+    """Hash rows from the same bounded, verified snapshot used by Silver."""
+    rows = read_rows(path, expected_sha256, max_bytes=MAX_BYTES, max_rows=MAX_ROWS)
+    return Database(
+        expected_sha256,
+        tuple(
+            (table, tuple(_row_digest(row) for row in values))
+            for table, values in rows.items()
+        ),
+    )
 
 
 def compare_databases(

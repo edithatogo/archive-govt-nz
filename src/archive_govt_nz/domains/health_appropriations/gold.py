@@ -12,39 +12,15 @@ import matplotlib as mpl
 import pyarrow as pa
 import pyarrow.parquet as pq
 
+from archive_govt_nz.domains.health_appropriations.donor_sqlite import (
+    TABLE_DEFINITIONS as _TABLE_DEFINITIONS,
+)
+
 mpl.use("Agg")
 from matplotlib import pyplot as plt
 from matplotlib.ticker import FuncFormatter
 
 _BREAKDOWN_YEAR = 2025
-
-_TABLE_DEFINITIONS = {
-    "gdp_historical": (
-        ("Year", "INTEGER"),
-        ("NominalGDPMillions", "INTEGER"),
-    ),
-    "health_spending_summary_befu25_data_expense_tables": (
-        ("Year", "INTEGER"),
-        ("HealthSpendingMillions", "INTEGER"),
-    ),
-    "health_spending_summary_hyefu24_data_expense_tables": (
-        ("Year", "INTEGER"),
-        ("HealthSpendingMillions", "INTEGER"),
-    ),
-    "historical_health_spending": (
-        ("Year", "INTEGER"),
-        ("HealthSpendingMillions", "REAL"),
-    ),
-    "recent_health_appropriations": (
-        ("Year", "INTEGER"),
-        ("Department", "TEXT"),
-        ("AppropriationName", "TEXT"),
-        ("FunctionalClassification", "TEXT"),
-        ("AmountThousands", "INTEGER"),
-        ("AmountType", "TEXT"),
-        ("PortfolioName", "TEXT"),
-    ),
-}
 
 
 def rebuild_compatibility_sqlite(facts_path: Path, output: Path) -> dict[str, int]:

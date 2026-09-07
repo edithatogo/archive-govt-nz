@@ -11,7 +11,7 @@ import pytest
 from hypothesis import given
 from hypothesis import strategies as st
 
-from archive_govt_nz.domains.health_appropriations import donor_parity
+from archive_govt_nz.domains.health_appropriations import donor_parity, donor_sqlite
 from archive_govt_nz.domains.health_appropriations.donor_parity import (
     Database,
     Repair,
@@ -234,6 +234,6 @@ def test_integrity_failure_closes_snapshot(
 
     # Replace this module's binding only; coverage also uses stdlib SQLite.
     proxy = SimpleNamespace(**{**vars(sqlite3), "connect": connect})
-    monkeypatch.setattr(donor_parity, "sqlite3", proxy)
+    monkeypatch.setattr(donor_sqlite, "sqlite3", proxy)
     with pytest.raises(ValueError, match="database_integrity"):
         read_database(path, pin)

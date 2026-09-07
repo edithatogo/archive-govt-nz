@@ -50,7 +50,7 @@ def _normalize(database: Path, output: Path) -> dict[str, object]:
     return normalize_donor_sqlite(
         database,
         output,
-        source_sha256="a" * 64,
+        source_sha256=hashlib.sha256(database.read_bytes()).hexdigest(),
         observation_id="obs-1",
         observed_at="2026-08-29T00:00:00Z",
     )
@@ -88,7 +88,7 @@ def test_silver_output_is_deterministic(tmp_path: Path) -> None:
 def test_silver_fails_closed_on_table_drift(tmp_path: Path) -> None:
     database = tmp_path / "donor.sqlite"
     _database(database, omit="gdp_historical")
-    with pytest.raises(ValueError, match="donor_sqlite_table_drift"):
+    with pytest.raises(ValueError, match="database_table_drift"):
         _normalize(database, tmp_path / "silver")
 
 
