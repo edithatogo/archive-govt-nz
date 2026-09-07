@@ -3,8 +3,9 @@
 Base: parent G `1521071388394ad14bec9e5967e3e46e659a8ee4`.
 Branch: `codex/health-hyefu16-package-20260907`, isolated worktree
 `/Volumes/PortableSSD/GitHub/archive-govt-nz-health-hyefu16-package-20260907`.
-Date: 2026-09-07. Conductor implement/review used; user restricted this slice to
-focused validation and dedicated evidence, with no umbrella lifecycle edits.
+Date: 2026-09-07. Conductor implement/review used; the parent assignment scoped
+this worker slice to focused validation and dedicated evidence, with no umbrella
+lifecycle edits. The parent owns combined full validation and delivery.
 
 ## Contract and implementation
 
@@ -76,3 +77,19 @@ independently verified HTTP observation attestation.
 derived total. Currency remains null. Rights remain not_evaluated, promotion
 not_performed. No repair approval, denominator decision, source rights,
 publication, whole-area closure or integrated full-gate acceptance is claimed.
+
+## Parent replay refresh after full-gate finding
+
+The parent gate at `acf06c153c1f6900262da588c0308a57bb5dd985` passed all
+6,490 tests and subsequent checks through licensing, then stopped at a secret
+scanner entropy finding on the non-secret macOS temporary output path in
+`replay.json`. The original recorded path was
+`/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/health-hyefu16-_buvf5qi`.
+Its original receipt remains in commit `8160cad0`; neither those builds nor any
+source original was removed or changed.
+
+The parent reran this existing replay script into a fresh `/tmp` directory:
+`/tmp/health-hyefu16-review.kx0oFh`. Both new builds passed native XML/value/lineage
+comparison and verification. Every output hash is identical to the first receipt;
+only `replay.json`'s local output location now identifies this new verified replay.
+No scanner configuration, threshold, blanket exemption or production code changed.
