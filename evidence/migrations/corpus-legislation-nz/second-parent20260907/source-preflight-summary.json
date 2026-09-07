@@ -1,0 +1,20 @@
+{
+  "expected_restored_state_matches_before_and_after": true,
+  "original_receipt_sha256": "4d0b435c2862539a5b0a35b62044e901b7ffa8396e6886ed6063636684dce6dc",
+  "schema_version": "archive-govt-nz.legislation-source-preflight/v1",
+  "source_probe": {
+    "credential_present": true,
+    "endpoint": "https://api.legislation.govt.nz/v0/works/act_imperial_1539_1/versions/",
+    "http_status": 200,
+    "method": "GET",
+    "payload_bytes_preserved": 0,
+    "redirects_allowed": false,
+    "request_budget": 1,
+    "requests_attempted": 1,
+    "status": "passed",
+    "timeout_seconds": 15.0
+  },
+  "state_unchanged": true,
+  "status": "passed",
+  "verified_file_count": 911
+}

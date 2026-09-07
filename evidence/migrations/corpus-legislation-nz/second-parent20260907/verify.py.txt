@@ -1,0 +1,304 @@
+"""Read-only independent verification of fixed second-parent run 34076094680.
+
+Run with uv run --locked python <this file> from the reviewed repository root.
+Only GitHub GETs are used. Payloads remain in ignored .tmp scratch.
+"""
+import copy
+import hashlib
+import io
+import json
+import os
+import stat
+import subprocess
+import sys
+import tempfile
+import zipfile
+from collections import Counter
+from datetime import UTC, datetime
+from pathlib import Path, PurePosixPath
+
+ROOT = Path.cwd()
+sys.path.insert(0, str(ROOT / "tools"))
+sys.path.insert(0, str(ROOT / "src"))
+import legislation_parent_state as parent
+from archive_govt_nz.domains.legislation.cli_state import verify_linked_state
+
+REPO = "edithatogo/archive-govt-nz"
+RUN = 34076094680
+HEAD = "4b1764bbdc275d400204e6974bcde621a8f8d037"
+BATCH = "ordered-second-parent-20260907"
+OUT = Path(__file__).resolve().parent
+SOURCES = {}
+DOWNLOADS = []
+
+
+def sha(raw):
+    return hashlib.sha256(raw).hexdigest()
+
+
+def require(condition, code):
+    if not condition:
+        raise ValueError(code)
+
+
+def save(name, value):
+    raw = (json.dumps(value, indent=2, sort_keys=True) + "\n").encode()
+    (OUT / name).write_bytes(raw)
+    return sha(raw)
+
+
+def get(path):
+    result = subprocess.run(["gh", "api", f"repos/{REPO}/{path}"],
+                            capture_output=True, timeout=120, check=False)
+    require(result.returncode == 0, "github_read_failed")
+    SOURCES[path] = sha(result.stdout)
+    return result.stdout
+
+
+def api(path):
+    return json.loads(get(path))
+
+
+def download(artifact, scratch):
+    require(not artifact["expired"], "artifact_expired")
+    require(artifact["size_in_bytes"] <= 128 * 1024**2, "artifact_size_bound")
+    raw = get(f"actions/artifacts/{artifact['id']}/zip")
+    require(len(raw) == artifact["size_in_bytes"], "zip_size")
+    require("sha256:" + sha(raw) == artifact["digest"], "zip_digest")
+    (scratch / f"{artifact['id']}.zip").write_bytes(raw)
+    files = {}
+    with zipfile.ZipFile(io.BytesIO(raw)) as zipped:
+        entries = zipped.infolist()
+        require(len(entries) <= 5000, "zip_member_bound")
+        require(sum(e.file_size for e in entries) <= 128 * 1024**2, "expanded_bound")
+        for entry in entries:
+            path = PurePosixPath(entry.filename)
+            require(not path.is_absolute() and ".." not in path.parts
+                    and "\\" not in entry.filename, "unsafe_path")
+            require(entry.filename not in files and entry.orig_filename == entry.filename, "duplicate_path")
+            require(stat.S_IFMT(entry.external_attr >> 16) in (0, stat.S_IFREG)
+                    and not entry.flag_bits & 1, "unsafe_type")
+            files[entry.filename] = zipped.read(entry)
+            require(len(files[entry.filename]) == entry.file_size, "member_size")
+    DOWNLOADS.append({
+        **{k: artifact[k] for k in ("id", "name", "digest", "size_in_bytes", "expires_at")},
+        "files": {name: {"sha256": sha(data), "size_bytes": len(data)} for name, data in sorted(files.items())},
+    })
+    return raw, files
+
+
+def unique_file(files, basename):
+    matches = [data for name, data in files.items() if PurePosixPath(name).name == basename]
+    require(len(matches) == 1, "missing_or_ambiguous_" + basename)
+    return matches[0]
+
+
+def materialize(files, destination):
+    for name, raw in files.items():
+        path = destination / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(raw)
+
+
+def main():
+    local_head = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
+    require(local_head == HEAD, "reviewed_local_head")
+    require(not os.environ.get("GITHUB_ACTIONS") and not os.environ.get("GITHUB_RUN_ID"), "local_context_required")
+    run = api(f"actions/runs/{RUN}")
+    require(run["status"] == "completed", "run_not_complete")
+    require(run["head_sha"] == HEAD and run["run_attempt"] == 1, "run_identity")
+    require(run["event"] == "workflow_dispatch" and run["head_branch"] == "main", "dispatch_identity")
+    jobs_page = api(f"actions/runs/{RUN}/attempts/1/jobs?per_page=100")
+    jobs = jobs_page["jobs"]
+    require(jobs_page["total_count"] == len(jobs) == 1, "job_count")
+    job = jobs[0]
+    save("hosted-readback.json", {
+        "observed_at": datetime.now(UTC).isoformat(),
+        "run": {k: run[k] for k in ("id", "run_attempt", "head_sha", "head_branch", "event", "status", "conclusion", "path", "created_at", "updated_at", "html_url")},
+        "job": {k: job[k] for k in ("id", "name", "head_sha", "status", "conclusion", "started_at", "completed_at", "steps")},
+    })
+    page = api(f"actions/runs/{RUN}/artifacts?per_page=100")
+    require(page["total_count"] == len(page["artifacts"]), "artifact_pagination")
+    artifacts = page["artifacts"]
+    scratch_root = ROOT / ".tmp"
+    scratch_root.mkdir(exist_ok=True)
+    subprocess.run(["git", "check-ignore", ".tmp/second-parent.zip"], check=True, capture_output=True)
+    scratch = Path(tempfile.mkdtemp(prefix="second-parent-", dir=scratch_root))
+    packs = {}
+    for artifact in artifacts:
+        require(artifact["workflow_run"]["id"] == RUN and artifact["workflow_run"]["head_sha"] == HEAD, "artifact_run_identity")
+        packs[artifact["name"]] = download(artifact, scratch)
+    save("artifact-downloads.json", DOWNLOADS)
+    if run["conclusion"] != "success":
+        # Preserve bounded JSON receipts from failed hosted attempts, never logs
+        # or source payloads. The workflow defines these as sanitized receipts.
+        for artifact_name, (_, members) in packs.items():
+            for name, raw in members.items():
+                if PurePosixPath(name).name in {
+                    "harvest.json", "reconciliation.json", "restoration-receipt.json",
+                    "lineage.json", "source-preflight.json", "continuation.json",
+                }:
+                    require(len(raw) <= 2 * 1024**2, "failure_receipt_bound")
+                    key = sha((artifact_name + "/" + name).encode())[:12]
+                    save("failed-attempt-" + key + ".json", json.loads(raw))
+        save("outcome.json", {"status": "failed", "run_id": RUN, "conclusion": run["conclusion"],
+             "target_commit": HEAD, "no_retry_or_dispatch": True,
+             "failed_steps": [s for s in job["steps"] if s["conclusion"] == "failure"],
+             "source_sha256": SOURCES})
+        return
+    expected_names = {f"legislation-{suffix}-{RUN}-1" for suffix in
+                      ("parent", "source-preflight", "exact-inventory-state", "exact-inventory-attempt")}
+    require(set(packs) == expected_names, "artifact_set")
+    reference_path = ROOT / "config/legislation/parents/ordered-500-33968609350.json"
+    reference = json.loads(reference_path.read_bytes())
+    input_artifact = api("actions/artifacts/9970365066")
+    input_run = api("actions/runs/33968609350")
+    parent.check_metadata(reference, {"artifact": input_artifact, "run": input_run}, datetime.now(UTC))
+    input_raw, _ = download(input_artifact, scratch)
+    input_files = parent.unpack(input_raw)
+    parent.verify_parent(input_files, reference)
+    input_cas = {name: raw for name, raw in input_files.items() if name.startswith("cas/")}
+    require(len(input_cas) == 904, "input_904")
+    input_manifest = json.loads(input_files["manifest.json"])
+    require(len(input_manifest["records"]) == 904, "input_records_904")
+    parent_pack = packs[f"legislation-parent-{RUN}-1"][1]
+    restoration = json.loads(unique_file(parent_pack, "restoration-receipt.json"))
+    lineage_raw = unique_file(parent_pack, "lineage.json")
+    lineage = json.loads(lineage_raw)
+    parent.check_lineage(lineage)
+    require(lineage["parent"] == reference and lineage["mode"] == "continuation", "selected_parent")
+    require(lineage["context"]["software_commit"] == HEAD and lineage["context"]["run_id"] == RUN, "restoration_context")
+    require(restoration["status"] == "verified" and restoration["parent_lineage_sha256"] == sha(lineage_raw), "restoration_verified")
+    preflight_raw = unique_file(packs[f"legislation-source-preflight-{RUN}-1"][1], "source-preflight.json")
+    preflight = json.loads(preflight_raw)
+    restored = dict(input_files)
+    for name in (parent.LINEAGE, parent.SEAL, "receipts/harvest.json"):
+        restored[parent.HISTORY + sha(restored[name]) + ".json"] = restored[name]
+        if name != "receipts/harvest.json":
+            del restored[name]
+    restored[parent.LINEAGE] = lineage_raw
+    restored_hashes = {name: sha(raw) for name, raw in restored.items()}
+    require(preflight["status"] == "passed" and preflight["state_unchanged"], "preflight_status")
+    require(preflight["state_files_before"] == preflight["state_files_after"] == restored_hashes, "preflight_exact_restored_state")
+    require(preflight["source_probe"]["status"] == "passed"
+            and preflight["source_probe"]["payload_bytes_preserved"] == 0, "source_probe")
+    steps = {s["name"]: s for s in job["steps"]}
+    chain = ["Restore and authenticate selected parent", "Verify authenticated no-write source preflight",
+             "Revalidate every governed work ID", "Reconcile exact inventory and cumulative state",
+             "Verify accounting and bounded output", "Seal verified continuation lineage",
+             "Upload complete continuation package", "Enforce fail-closed exact-inventory outcome"]
+    require(all(steps[name]["conclusion"] == "success" for name in chain), "required_steps")
+    require(all(steps[a]["completed_at"] <= steps[b]["started_at"] for a, b in zip(chain, chain[1:])), "step_order")
+    state_name = f"legislation-exact-inventory-state-{RUN}-1"
+    output_raw = packs[state_name][0]
+    output = parent.unpack(output_raw)
+    harvest = json.loads(output["receipts/harvest.json"])
+    parsed = parent.read_harvest_receipt(harvest)
+    require(parsed.accounting is not None, "v3_accounting")
+    require(harvest["software_commit"] == HEAD and harvest["run_identity"] == str(RUN), "harvest_identity")
+    require(harvest["total_state_records_before"] == harvest["total_cas_objects_before"] == 904, "harvest_input_904")
+    require(harvest["parent_manifest_root"] == reference["roots"]["manifest_sha256"]
+            and harvest["parent_checkpoint_root"] == reference["roots"]["checkpoint_file_sha256"], "harvest_parent_roots")
+    seed = (ROOT / "seeds/reviewed/historical-work-ids-0001.txt").read_bytes()
+    ids = seed.decode().splitlines()
+    require(sha(seed) == reference["source"]["seed_sha256"] and len(set(ids)) == len(ids) == 500, "seed")
+    require(len(harvest["works"]) == 500 and {w["work_id"] for w in harvest["works"]} == set(ids), "exact_500_outcomes")
+    counts = Counter(w["disposition"] for w in harvest["works"])
+    require(harvest["works_in_scope"] == harvest["works_attempted"] == 500, "all_500_attempted")
+    require(all(harvest[k] == 0 for k in ("unavailable", "partial", "failed", "already_processed_skipped")), "no_incomplete_outcomes")
+    require(sum(counts.values()) == 500 and all(harvest[k] == value for k, value in counts.items()), "accounting_counts")
+    require(sum(w["retry_count"] for w in harvest["works"]) == harvest["total_retry_count"] <= 1500, "retry_accounting")
+    require(all(output.get(name) == raw for name, raw in input_cas.items()), "all_parent_objects_retained")
+    require(output[parent.LINEAGE] == lineage_raw, "output_lineage")
+    roots = parent.state_roots(output)
+    seal = json.loads(output[parent.SEAL])
+    child_artifact = next(a for a in artifacts if a["name"] == state_name)
+    child_reference = copy.deepcopy(reference)
+    child_reference["artifact"] = {k: child_artifact[k] for k in reference["artifact"]}
+    child_reference["run"] = {k: run[k] for k in reference["run"]}
+    child_reference["roots"] = roots
+    child_reference["lineage_sha256"] = sha(output[parent.SEAL])
+    parent.schema(child_reference, "legislation-parent-reference")
+    parent.check_metadata(child_reference, {"artifact": child_artifact, "run": run}, datetime.now(UTC))
+    parent.verify_parent(output, child_reference)
+    require(seal["status"] == "complete", "seal_complete")
+    destination = scratch / "output-state"
+    materialize(output, destination)
+    object_count = verify_linked_state(destination / "cas", destination / "checkpoint.json", destination / "manifest.json")
+    require(object_count == harvest["total_cas_objects_after"] == harvest["total_state_records_after"], "output_counts")
+    require(sum(map(len, output.values())) <= 134217728, "state_byte_bound")
+    require(sum(len(v) for k, v in output.items() if k.startswith("cas/")) <= 67108864 and object_count <= 4096, "cas_bounds")
+    result_path = scratch / "reconciliation.json"
+    command = [sys.executable, "tools/reconcile_one_legislation_batch.py", "--batch-id", BATCH,
+        "--batch-path", "seeds/reviewed/historical-work-ids-0001.txt", "--expected-batch-sha256", sha(seed),
+        "--manifest-path", str(destination / "manifest.json"), "--checkpoint-path", str(destination / "checkpoint.json"),
+        "--cas-path", str(destination / "cas"), "--receipt-path", str(result_path)]
+    result = subprocess.run(command, capture_output=True, timeout=60, check=False)
+    require(result.returncode == 0, "local_reconciliation")
+    reconciliation = json.loads(result_path.read_bytes())
+    require(reconciliation["mismatch_count"] == 0 and reconciliation["reconciled_work_ids_count"] == 500, "reconciliation_accounting")
+    attempt_files = packs[f"legislation-exact-inventory-attempt-{RUN}-1"][1]
+    hosted_reconciliation = json.loads(unique_file(attempt_files, "reconciliation.json"))
+    require({k: v for k, v in reconciliation.items() if k != "evaluated_at"}
+            == {k: v for k, v in hosted_reconciliation.items() if k != "evaluated_at"}, "hosted_local_reconciliation")
+    require({p.relative_to(destination).as_posix(): sha(p.read_bytes()) for p in destination.rglob("*") if p.is_file()}
+            == {name: sha(raw) for name, raw in output.items()}, "local_state_unchanged")
+    tampered = dict(output)
+    name = next(name for name in tampered if name.startswith("cas/"))
+    tampered[name] = tampered[name] + b"x"
+    try:
+        parent.verify_parent(tampered, child_reference)
+    except parent.v.VerificationError as exc:
+        negative = str(exc)
+    else:
+        raise ValueError("corruption_accepted")
+    require(negative == "object_sha256", "corruption_failure_class")
+    save("output-parent-reference.json", child_reference)
+    save("harvest-accounting.json", harvest)
+    save("continuation.json", seal)
+    save("parent-lineage.json", lineage)
+    save("restoration-receipt.json", restoration)
+    save("local-reconciliation.json", reconciliation)
+    save("source-preflight-summary.json", {
+        **{k: v for k, v in preflight.items() if k not in ("state_files_before", "state_files_after")},
+        "original_receipt_sha256": sha(preflight_raw), "verified_file_count": len(restored_hashes),
+        "expected_restored_state_matches_before_and_after": True,
+    })
+    save("artifact-downloads.json", DOWNLOADS)
+    save("outcome.json", {
+        "status": "verified", "run_id": RUN, "run_attempt": 1, "target_commit": HEAD,
+        "batch_id": BATCH, "input_objects": 904, "output_objects": object_count,
+        "works_accounted": 500, "dispositions": dict(counts), "total_retries": harvest["total_retry_count"],
+        "parent_roots": reference["roots"], "output_roots": roots,
+        "output_seal_sha256": sha(output[parent.SEAL]), "parent_reference_file_sha256": sha(reference_path.read_bytes()),
+        "preflight_before_harvest": True, "preflight_input_state_verified": True,
+        "all_input_cas_preserved": True, "output_usable_as_parent": True,
+        "checkpoint_batch_completed": True, "reconciliation_mismatches": 0,
+        "local_state_unchanged": True, "negative_control": negative,
+        "source_sha256": SOURCES, "probe_sha256": sha(Path(__file__).read_bytes()),
+        "verification_sources_sha256": {
+            name: sha((ROOT / name).read_bytes()) for name in (
+                "tools/legislation_parent_state.py", "tools/reconcile_one_legislation_batch.py",
+                "src/archive_govt_nz/domains/legislation/cli_state.py",
+                "src/archive_govt_nz/domains/legislation/one_batch_reconciliation.py", "uv.lock")
+        },
+        "python": sys.version,
+        "reconciliation_command": command, "observed_at": datetime.now(UTC).isoformat(),
+        "execution_context": "local_read_only_independent_verification", "remote_mutations": False,
+        "limitations": ["Actions-retained output is not newly published durable custody",
+                        "No third-cycle dispatch or synthetic hosted context",
+                        "Parent follow-up correction and final integrated assurance remain separate"],
+    })
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except Exception as exc:
+        save("verification-failure.json", {"status": "failed", "exception": type(exc).__name__,
+             "reason": str(exc) if isinstance(exc, (ValueError, parent.v.VerificationError)) else "verification_exception_details_withheld",
+             "source_sha256": SOURCES, "probe_sha256": sha(Path(__file__).read_bytes()),
+             "remote_retry_or_dispatch": False})
+        raise
+    save("SHA256.json", {p.name: sha(p.read_bytes()) for p in sorted(OUT.iterdir())
+                         if p.name != "SHA256.json" and p.suffix in (".json", ".txt")})
