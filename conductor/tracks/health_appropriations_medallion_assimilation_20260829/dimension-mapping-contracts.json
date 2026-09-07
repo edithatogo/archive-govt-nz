@@ -1,0 +1,43 @@
+{
+  "schema_version": "archive-govt-nz.health-dimension-mapping-evidence/v1",
+  "base_commit": "d69b94c5d9e7ae3083c2fc24f66d814817429a90",
+  "scope": "local_synthetic_assertion_contract_only",
+  "source_sha256": "000341395318ae3736f88d40fb4b8f42f9cb14f3e45b93da6737367d5745e609",
+  "files": {
+    "src/archive_govt_nz/domains/health_appropriations/dimension_mapping.py": "000341395318ae3736f88d40fb4b8f42f9cb14f3e45b93da6737367d5745e609",
+    "tests/domains/health_appropriations/test_dimension_mapping.py": "6131c6f709fb67a6a220abc684d7655edfe508a72823a246e517d63a469ecc2f",
+    "tests/domains/health_appropriations/dimension_mapping_mutations.py": "cb2263d60b32f68c2ef315c69d9eeb0ee1b96c5441ed7cf1e2222db15a55909a"
+  },
+  "validation": {
+    "red": "ModuleNotFoundError before implementation",
+    "new_tests_passed": 50,
+    "affected_tests_passed": 443,
+    "statements": 106,
+    "branches": 28,
+    "line_and_branch_coverage_percent": 100,
+    "mutation_baseline_exit": 0,
+    "mutants": 21,
+    "killed_with_pytest_exit_1": 21,
+    "initial_survivors": ["evidence_bound", "evidence_digest"],
+    "initial_survivor_resolution": "independent mapped-state negative tests",
+    "ruff_format": "passed",
+    "ruff_check": "passed",
+    "basedpyright": "passed",
+    "full_harness": "not_run_parent_owned"
+  },
+  "factual_mappings_assigned": 0,
+  "evidence_bytes_verified": false,
+  "source_reads": false,
+  "adapters_changed": false,
+  "shared_lifecycle_changed": false,
+  "publication_performed": false,
+  "phase_3_complete": false,
+  "remaining": [
+    "source-backed identifiers and mappings",
+    "evidence binding and confidence policy",
+    "source-effective periods and drift thresholds",
+    "broader projections and fact/dimension linkage",
+    "Gold and federation contracts",
+    "parent integration and full gate"
+  ]
+}
