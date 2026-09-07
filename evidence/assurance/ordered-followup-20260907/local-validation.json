@@ -1,0 +1,44 @@
+{
+  "schema_version": "archive-govt-nz.ordered-followup-validation/v1",
+  "observed_at": "2026-09-07T02:28:29Z",
+  "tested_commit": "1f53a6e80873a99acc67c746fa6f1478b78b24aa",
+  "command": "PYTEST_XDIST_AUTO_NUM_WORKERS=2 ./scripts/validate.sh",
+  "exit_code": 0,
+  "tests_passed": 5188,
+  "coverage_percent": 97.63953331231137,
+  "conductor": {
+    "tracks": 93,
+    "errors": []
+  },
+  "schemas": 48,
+  "representative_documents": 38,
+  "parity": {
+    "passed": 9,
+    "divergences": 0
+  },
+  "registered_mutation_stages": "passed",
+  "cas_megabytes_per_second": 745.44,
+  "dependency_audit": "passed",
+  "licences": "passed",
+  "secrets": "passed",
+  "sbom_components": 112,
+  "reproducible_builds": {
+    "source_date_epoch": 1788747869,
+    "commands": [
+      "uv build --out-dir build/followup-repro-a",
+      "uv build --out-dir build/followup-repro-b"
+    ],
+    "exit_codes": [
+      0,
+      0
+    ],
+    "wheel_sha256": "e376bb4a7c175cb89cf3d0f83217d86ece45eeb06c49feb3c0c881486eb332ad",
+    "sdist_sha256": "29d54ea012a62870cd649108de217d81fac8d9e2f357549c9a82a74eed8eae8d",
+    "identical": true
+  },
+  "boundaries": [
+    "Local verification only; hosted checks and peer review remain separate.",
+    "The new second-parent run is not attested by this receipt.",
+    "No acquisition or publication was performed by these checks."
+  ]
+}
