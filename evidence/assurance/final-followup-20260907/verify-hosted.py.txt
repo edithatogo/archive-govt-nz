@@ -1,0 +1,75 @@
+"""Single bounded donor/CI/review readback; no watch loop or remote mutation."""
+import hashlib
+import json
+import subprocess
+from datetime import UTC, datetime
+from pathlib import Path
+
+OUT = Path(__file__).resolve().parent
+HEAD = "fcb8f7c89ffe18afd854f23f40c448fcc3a9efeb"
+DONOR = "905f9e07c17af9d9d25dbe2b1c052fb8a290a4e3"
+RUN = 34076444097
+SOURCES = {}
+
+
+def sha(raw):
+    return hashlib.sha256(raw).hexdigest()
+
+
+def api(endpoint):
+    result = subprocess.run(["gh", "api", endpoint], capture_output=True, timeout=60, check=True)
+    SOURCES[endpoint] = sha(result.stdout)
+    return json.loads(result.stdout)
+
+
+def save(name, value):
+    (OUT / name).write_text(json.dumps(value, indent=2, sort_keys=True) + "\n")
+
+
+def main():
+    repo = api("repos/edithatogo/corpus-legislation-nz")
+    commit = api("repos/edithatogo/corpus-legislation-nz/commits/HEAD")
+    archived = repo["archived"] is True and commit["sha"] == DONOR
+    save("donor-readback.json", {
+        "observed_at": datetime.now(UTC).isoformat(), "target_commit": HEAD,
+        "repository": {k: repo[k] for k in ("id", "full_name", "archived", "default_branch")},
+        "head": commit["sha"], "head_tree": commit["commit"]["tree"]["sha"],
+        "status": "passed" if archived else "failed", "source_sha256": dict(SOURCES),
+        "probe_sha256": sha(Path(__file__).read_bytes()), "remote_mutations": False,
+    })
+    run = api(f"repos/edithatogo/archive-govt-nz/actions/runs/{RUN}")
+    response = api(f"repos/edithatogo/archive-govt-nz/actions/runs/{RUN}/attempts/1/jobs?per_page=100")
+    jobs = response["jobs"]
+    expected = {f"Assurance ({os})" for os in ("ubuntu-latest", "macos-latest", "windows-latest")}
+    identities = (run["head_sha"] == HEAD and run["run_attempt"] == 1
+                  and run["path"] == ".github/workflows/ci.yml"
+                  and response["total_count"] == len(jobs) == 3
+                  and {job["name"] for job in jobs} == expected
+                  and all(job["head_sha"] == HEAD for job in jobs))
+    gate_success = all(any(step["name"] == "Run locked assurance gate"
+                           and step["conclusion"] == "success" for step in job["steps"])
+                       for job in jobs)
+    passed = identities and run["conclusion"] == "success" and run["status"] == "completed" and gate_success
+    status = "passed" if passed else "pending" if run["status"] != "completed" else "failed"
+    save("ci-three-os-readback.json", {
+        "status": status, "target_commit": HEAD, "observed_at": datetime.now(UTC).isoformat(),
+        "run": {k: run[k] for k in ("id", "head_sha", "event", "path", "run_attempt", "status", "conclusion", "created_at", "updated_at")},
+        "jobs": [{k: job[k] for k in ("id", "name", "head_sha", "status", "conclusion", "started_at", "completed_at", "steps")} for job in jobs],
+        "identities_verified": identities, "all_three_locked_gates_passed": gate_success,
+        "source_sha256": dict(SOURCES), "workflow_sha256": sha(Path(".github/workflows/ci.yml").read_bytes()),
+        "probe_sha256": sha(Path(__file__).read_bytes()),
+        "scope": "Exact-head hosted jobs and locked-gate step readback; not a local full harness rerun or analysis of all raw logs",
+    })
+    result = subprocess.run(["gh", "api", "graphql", "-f", "query=" +
+        'query { repository(owner:"edithatogo", name:"archive-govt-nz") { pullRequest(number:415) { headRefOid reviewThreads(first:100) { nodes { isResolved path line comments(first:10) { nodes { author { login } body } pageInfo { hasNextPage } } } pageInfo { hasNextPage } } } } }'],
+        capture_output=True, timeout=60, check=True)
+    review = json.loads(result.stdout)["data"]["repository"]["pullRequest"]
+    save("review-readback.json", {"observed_at": datetime.now(UTC).isoformat(),
+        "target_commit": HEAD, "github_review": review, "source_sha256": sha(result.stdout),
+        "peer_review_popper": "not_attested_by_this_readback",
+        "note": "Resolved GitHub syntax comment is not Popper acceptance. Final deliverability remains dependent on separately supplied peer review."})
+    print(json.dumps({"donor": "passed" if archived else "failed", "ci": status}))
+
+
+if __name__ == "__main__":
+    main()

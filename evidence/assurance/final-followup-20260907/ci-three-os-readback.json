@@ -1,0 +1,100 @@
+{
+  "interpretation": "Each hosted locked gate passed on the actual checkout tree shown in its log; a PR merge SHA is explicitly distinguished from the reviewed branch SHA.",
+  "jobs": [
+    {
+      "checkout_commit": "92410a99d6dd9b6c16fb924d3c6d88913d65ad4d",
+      "checkout_parents": [
+        "4b1764bbdc275d400204e6974bcde621a8f8d037",
+        "fcb8f7c89ffe18afd854f23f40c448fcc3a9efeb"
+      ],
+      "checkout_tree": "3b63cc340f93ce3b7dd813ab1259537926ce4bef",
+      "conclusion": "success",
+      "head_sha": "fcb8f7c89ffe18afd854f23f40c448fcc3a9efeb",
+      "id": 101603388600,
+      "locked_gate": {
+        "completed_at": "2026-09-07T02:41:37Z",
+        "conclusion": "success",
+        "name": "Run locked assurance gate",
+        "number": 5,
+        "started_at": "2026-09-07T02:29:42Z",
+        "status": "completed"
+      },
+      "log_bytes": 97675,
+      "log_retention": "digest and checkout projection only; raw logs not published",
+      "log_sha256": "d07d7584b6a87f7e9d8b3f8b223306d490ef0e331ab5356128bc08a3ef96f69f",
+      "name": "Assurance (windows-latest)",
+      "reviewed_tree_equal": true
+    },
+    {
+      "checkout_commit": "92410a99d6dd9b6c16fb924d3c6d88913d65ad4d",
+      "checkout_parents": [
+        "4b1764bbdc275d400204e6974bcde621a8f8d037",
+        "fcb8f7c89ffe18afd854f23f40c448fcc3a9efeb"
+      ],
+      "checkout_tree": "3b63cc340f93ce3b7dd813ab1259537926ce4bef",
+      "conclusion": "success",
+      "head_sha": "fcb8f7c89ffe18afd854f23f40c448fcc3a9efeb",
+      "id": 101603388847,
+      "locked_gate": {
+        "completed_at": "2026-09-07T02:35:20Z",
+        "conclusion": "success",
+        "name": "Run locked assurance gate",
+        "number": 5,
+        "started_at": "2026-09-07T02:30:10Z",
+        "status": "completed"
+      },
+      "log_bytes": 127986,
+      "log_retention": "digest and checkout projection only; raw logs not published",
+      "log_sha256": "ebc6bbec4d34acd98d07b91fde8f934ea7b49bba11e4184bf06deac07d3e5d43",
+      "name": "Assurance (ubuntu-latest)",
+      "reviewed_tree_equal": true
+    },
+    {
+      "checkout_commit": "92410a99d6dd9b6c16fb924d3c6d88913d65ad4d",
+      "checkout_parents": [
+        "4b1764bbdc275d400204e6974bcde621a8f8d037",
+        "fcb8f7c89ffe18afd854f23f40c448fcc3a9efeb"
+      ],
+      "checkout_tree": "3b63cc340f93ce3b7dd813ab1259537926ce4bef",
+      "conclusion": "success",
+      "head_sha": "fcb8f7c89ffe18afd854f23f40c448fcc3a9efeb",
+      "id": 101603388903,
+      "locked_gate": {
+        "completed_at": "2026-09-07T02:36:33Z",
+        "conclusion": "success",
+        "name": "Run locked assurance gate",
+        "number": 5,
+        "started_at": "2026-09-07T02:30:42Z",
+        "status": "completed"
+      },
+      "log_bytes": 96534,
+      "log_retention": "digest and checkout projection only; raw logs not published",
+      "log_sha256": "b7eb6165021c3adf5ada86ee868e762865e37adaa28a1d03306ba7a1e92c68a5",
+      "name": "Assurance (macos-latest)",
+      "reviewed_tree_equal": true
+    }
+  ],
+  "observed_at": "2026-09-07T02:43:37.210010+00:00",
+  "probe_sha256": "2ff29eb415a11a03252c89ae42d88c03d1a3a5e18911deb5ee176d8ed5130ba5",
+  "remote_mutations": false,
+  "reviewed_tree": "3b63cc340f93ce3b7dd813ab1259537926ce4bef",
+  "run": {
+    "conclusion": "success",
+    "event": "pull_request",
+    "head_sha": "fcb8f7c89ffe18afd854f23f40c448fcc3a9efeb",
+    "id": 34076444097,
+    "path": ".github/workflows/ci.yml",
+    "run_attempt": 1,
+    "status": "completed"
+  },
+  "source_sha256": {
+    "actions/jobs/101603388600/logs": "d07d7584b6a87f7e9d8b3f8b223306d490ef0e331ab5356128bc08a3ef96f69f",
+    "actions/jobs/101603388847/logs": "ebc6bbec4d34acd98d07b91fde8f934ea7b49bba11e4184bf06deac07d3e5d43",
+    "actions/jobs/101603388903/logs": "b7eb6165021c3adf5ada86ee868e762865e37adaa28a1d03306ba7a1e92c68a5",
+    "actions/runs/34076444097": "fa93b8d7c4ffda3f0c2dc2fd0c5ba4a2e71db877571d0fc79df4187aef2881c6",
+    "actions/runs/34076444097/attempts/1/jobs?per_page=100": "5ee19dcf386b86fa75c6f2c0334170c0c47a79bfb5c6798338769e85086e4a73",
+    "commits/92410a99d6dd9b6c16fb924d3c6d88913d65ad4d": "ec4cd5fe73d1b4528c27272785ff27e1bdb1ba4013d2c96d88bc0ad97f496c76"
+  },
+  "status": "passed",
+  "target_commit": "fcb8f7c89ffe18afd854f23f40c448fcc3a9efeb"
+}

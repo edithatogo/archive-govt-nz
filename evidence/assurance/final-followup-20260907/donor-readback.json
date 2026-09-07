@@ -1,0 +1,19 @@
+{
+  "head": "905f9e07c17af9d9d25dbe2b1c052fb8a290a4e3",
+  "head_tree": "6a34ed9c75483658f227dc09cbfc2a373a3c7362",
+  "observed_at": "2026-09-07T02:39:40.395688+00:00",
+  "probe_sha256": "7a9de578614a9d78e55e4501d7183a16221a577967319cc8b09c12526b0d2b2f",
+  "remote_mutations": false,
+  "repository": {
+    "archived": true,
+    "default_branch": "main",
+    "full_name": "edithatogo/corpus-legislation-nz",
+    "id": 1261843947
+  },
+  "source_sha256": {
+    "repos/edithatogo/corpus-legislation-nz": "815d9b4eae52cb747ba539ff6d4429eb7cdf1fa8b9cdf7ff731d272c2c22912d",
+    "repos/edithatogo/corpus-legislation-nz/commits/HEAD": "a125b0fb6fe591da90cdbbe6f3c661e0e9c89a494a723bcdb922fbf756c4863f"
+  },
+  "status": "passed",
+  "target_commit": "fcb8f7c89ffe18afd854f23f40c448fcc3a9efeb"
+}

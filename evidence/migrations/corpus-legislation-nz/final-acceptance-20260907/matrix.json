@@ -1,0 +1,369 @@
+{
+  "schema_version": "archive-govt-nz.final-programme-acceptance/v1",
+  "observed_at": "2026-09-07T03:09:50.928Z",
+  "status": "complete",
+  "supersedes": {
+    "path": "evidence/migrations/corpus-legislation-nz/post-cutover-final-verification-20260907-current.json",
+    "sha256": "7ea764ca5e8d77d0a182d8a4e24a7f2de0bb64b6ce90ed66a6acc6b913bc9e4f"
+  },
+  "target_repository": "edithatogo/archive-govt-nz",
+  "assured_target_commit": "7afaec8e4629477aa4f18c0a35c88f815cf05a5c",
+  "reviewed_implementation": "fcb8f7c89ffe18afd854f23f40c448fcc3a9efeb",
+  "donor_repository": "edithatogo/corpus-legislation-nz",
+  "donor_final_head": "905f9e07c17af9d9d25dbe2b1c052fb8a290a4e3",
+  "donor_operational_head": "b40587f1b1aec7356a0f623916fcc8212397d283",
+  "dimensions": {
+    "code_capability_migration": {
+      "status": "complete",
+      "proof_ids": [
+        "final-capability-matrix"
+      ],
+      "proof_eligible": true,
+      "rationale": "Final donor-head capability accounting and merged target contracts establish code and capability migration only."
+    },
+    "operational_state_migration": {
+      "status": "complete",
+      "proof_ids": [
+        "operational-state-completion-readback"
+      ],
+      "proof_eligible": true,
+      "rationale": "Ordered 500-work run33968609350 and independently verified904-parent continuation34076094680 have complete accounting, zero reconciliation mismatches, valid custody/seals and post-operation fresh552 durable recovery."
+    },
+    "corpus_custody_recoverability": {
+      "status": "complete",
+      "proof_ids": [
+        "durable-recovery-completion-readback"
+      ],
+      "proof_eligible": true,
+      "rationale": "Two anonymous fresh-workspace recoveries independently reproduced the exact public package, restored all 552 records and CAS objects, and returned zero reconciliation findings."
+    },
+    "publication_identity_migration": {
+      "status": "complete",
+      "proof_ids": [
+        "publication-identity-completion-readback"
+      ],
+      "proof_eligible": true,
+      "rationale": "Maintainer-authorized target-origin publication and anonymous exact-revision readback verify the canonical Hugging Face identity, package, metadata, card, and rights boundary."
+    }
+  },
+  "canonical_evaluation": {
+    "path": "evidence/migrations/corpus-legislation-nz/completion-evaluation-current.json",
+    "sha256": "3d2ce2c026edc1bb380e63addb1cdb1ddeeba66dce4a90077405393ce023e364"
+  },
+  "criteria": [
+    {
+      "owner_prompt": 2,
+      "issue": 278,
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/final-lineage/receipt.json",
+          "sha256": "7a90eed0dabd874a835d31a29c42eec52c5c6b3cd2623aa0436e563df53ac52b"
+        }
+      ]
+    },
+    {
+      "owner_prompt": 3,
+      "issue": 284,
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/final-donor-state/verification-02/prompt04-inventory.json",
+          "sha256": "61d054a24e39792cdef21783c68c4f5bb31903139608fc5854cdd66e9b68aa7e"
+        },
+        {
+          "path": "conductor/tracks/legislation_final_donor_state_verification_20260831/evidence.md",
+          "sha256": "a8befac28419e395cc93fa41b8277c2239b17587cb2c413dcde0d2bae48e6b09"
+        }
+      ]
+    },
+    {
+      "owner_prompt": 4,
+      "issue": 292,
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/final-state-merge/execution-02/final-state-merge-receipt.json",
+          "sha256": "3fc4a205ed1b8a327f0d91675951ce18a6800f1bc2bdb948b22c45c882e8e679"
+        },
+        {
+          "path": "conductor/tracks/legislation_canonical_state_merge_20260831/evidence.md",
+          "sha256": "9aac36e22875e6323fbc37fa595bead2d929d7d60a35e701b9dfb05f3ddb3178"
+        }
+      ]
+    },
+    {
+      "owner_prompt": 5,
+      "issue": 299,
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "evidence/seeds/historical-work-ids-0001/provenance-01.json",
+          "sha256": "d3629d17e2dea6e8b451244f6a180a344ed245ad5b6476b90feceaecb07ccc2b"
+        },
+        {
+          "path": "conductor/tracks/legislation_reviewed_seed_registry_20260831/evidence.md",
+          "sha256": "461a02e89791ead063a79bebf844d19114f621ad02151c17ea6e268a2cf431e8"
+        }
+      ]
+    },
+    {
+      "owner_prompt": 6,
+      "issue": 308,
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "conductor/tracks/legislation_exact_inventory_revalidation_20260903/evidence.md",
+          "sha256": "6bb76a08dec507f349900e3ecce60096cffdd42b8501662431c6e67310e27f64"
+        },
+        {
+          "path": "conductor/tracks/legislation_exact_inventory_revalidation_20260903/evidence.md",
+          "sha256": "6bb76a08dec507f349900e3ecce60096cffdd42b8501662431c6e67310e27f64"
+        }
+      ]
+    },
+    {
+      "owner_prompt": 7,
+      "issue": 310,
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "conductor/tracks/legislation_bounded_discovery_20260903/evidence.md",
+          "sha256": "fa2ac9d31e4a5b9356bda97b0d6388a06d52ad2f72c34ee25f314e3acc152837"
+        },
+        {
+          "path": "conductor/tracks/legislation_bounded_discovery_20260903/evidence.md",
+          "sha256": "fa2ac9d31e4a5b9356bda97b0d6388a06d52ad2f72c34ee25f314e3acc152837"
+        }
+      ]
+    },
+    {
+      "owner_prompt": 8,
+      "issue": 312,
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "conductor/tracks/legislation_parent_state_restoration_20260901/evidence.md",
+          "sha256": "94129dfb68631842cfe550e6a1b641bb18664e1f7193337c719db03e82533ab4"
+        },
+        {
+          "path": "conductor/tracks/legislation_parent_state_restoration_20260901/evidence.md",
+          "sha256": "94129dfb68631842cfe550e6a1b641bb18664e1f7193337c719db03e82533ab4"
+        }
+      ]
+    },
+    {
+      "owner_prompt": 9,
+      "issue": 321,
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/durable-state/integration.json",
+          "sha256": "81d36a1d95195dd6950343cff753e18f8e154c7a0cc71ff2bb0b8925e76c8286"
+        },
+        {
+          "path": "conductor/tracks/legislation_durable_state_20260901/evidence.md",
+          "sha256": "9470848b41848eba1db47465c1adfe647fb753c432fb3c18beb9cd9b5dfc89e9"
+        }
+      ]
+    },
+    {
+      "owner_prompt": 10,
+      "issue": 327,
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/durable-recovery/independent-recovery-summary-20260903.json",
+          "sha256": "c9aabd3c2e6f65e03ba420fd14a09d2030b51bdc8a2a0689ddf3960d73de763f"
+        }
+      ]
+    },
+    {
+      "owner_prompt": 11,
+      "issue": 330,
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "conductor/tracks/legislation_typed_source_set_20260901/evidence.md",
+          "sha256": "2f6797c732c2fe014c1a76f5a293f2f29c7f0d870d48807f9d2fe561e5cd1244"
+        },
+        {
+          "path": "conductor/tracks/legislation_typed_source_set_20260901/evidence.md",
+          "sha256": "2f6797c732c2fe014c1a76f5a293f2f29c7f0d870d48807f9d2fe561e5cd1244"
+        }
+      ]
+    },
+    {
+      "owner_prompt": 12,
+      "issue": 333,
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "conductor/tracks/legislation_harvest_accounting_20260901/evidence.md",
+          "sha256": "be2dbf9bbe0c1b103c011021000fa38b30fcaf257b2c56a764c520e2cdcb788b"
+        },
+        {
+          "path": "conductor/tracks/legislation_harvest_accounting_20260901/evidence.md",
+          "sha256": "be2dbf9bbe0c1b103c011021000fa38b30fcaf257b2c56a764c520e2cdcb788b"
+        }
+      ]
+    },
+    {
+      "owner_prompt": 13,
+      "issue": 335,
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "evidence/completion-proofs/operational-state-verification.json",
+          "sha256": "878bac75db8249ae61f4fc1db3d7addc1ba1c90d9e821ae880f3a179b4662fc0"
+        },
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/second-parent20260907/outcome.json",
+          "sha256": "841adade6e6edb0a9e414c0357b6477da648f5cd295bd844145bf869211a36e2"
+        },
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/durable-recovery-after-operation20260907/receipt.json",
+          "sha256": "d72d91450e5ee845651e4a051d048414b87c5912d870ee460ae2793c3c3c8c08"
+        }
+      ]
+    },
+    {
+      "owner_prompt": 14,
+      "issue": 337,
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/historical-coverage/historical-coverage-report.json",
+          "sha256": "b5c3731a800572a367cf6106d038b8ee9d3c03353c96f309866f2bc48fb99f11"
+        },
+        {
+          "path": "conductor/tracks/legislation_historical_coverage_20260901/evidence.md",
+          "sha256": "e76b8ff2a46f61962d0d593e7164e4c30905fb0532f6f12b2f4fbd01ad64f6cb"
+        }
+      ]
+    },
+    {
+      "owner_prompt": 15,
+      "issue": 341,
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/huggingface-publication/publication-readback-20260903.json",
+          "sha256": "38160c4683112d951351e20d68fe34198dcab797eb371d6cf6e6d91160ba9fed"
+        },
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/final-identity-readback-20260907/huggingface.json",
+          "sha256": "a5dd4f30da3338578e5abc5a7dccc1a05a71b218475fac437d5f5a19f2756a17"
+        }
+      ]
+    },
+    {
+      "owner_prompt": 16,
+      "issue": 343,
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/zenodo-identity-correction.json",
+          "sha256": "eb9e3fc21bad482691814a45791c5e0ca6ef43658f70d2241ec9f56f335b737a"
+        },
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/final-identity-readback-20260907/zenodo.json",
+          "sha256": "98e9e7133d0799af6cc0214f7f46a92e5104fedffa8aa0ddc5abff2f8a800b87"
+        }
+      ]
+    },
+    {
+      "owner_prompt": 17,
+      "issue": 345,
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/evidence-index.json",
+          "sha256": "b6adf7618ebba4d8e76afdcb1fc6ef89226491aa36e4fd6b26f244d8f14a43e8"
+        },
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/completion-evaluation-current.json",
+          "sha256": "3d2ce2c026edc1bb380e63addb1cdb1ddeeba66dce4a90077405393ce023e364"
+        }
+      ]
+    },
+    {
+      "owner_prompt": 18,
+      "issue": 347,
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/cutover-release-provenance/cutover-release-provenance-correction.json",
+          "sha256": "cbd657d80d9d3b83b7b3778db5b30243b530b708e98e668ead22aaa43e28a52a"
+        },
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/final-identity-readback-20260907/cutover.json",
+          "sha256": "a37dcf2e4b6e5fabef2244f51d271cddca83e4c0a290de5443a699de3db273f2"
+        }
+      ]
+    },
+    {
+      "owner_prompt": 19,
+      "issue": 349,
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/donor-git-bundle/external-action-receipt-20260903.json",
+          "sha256": "690c7ca5ee1d0854c645e072e6a1c8ac60dfd5eac49d40d286ef0d9325e25950"
+        },
+        {
+          "path": "evidence/migrations/corpus-legislation-nz/final-identity-readback-20260907/donor.json",
+          "sha256": "15107634cc4843dc3df11315945f732037a22cb33028a86cda8ce093e718d267"
+        }
+      ]
+    },
+    {
+      "owner_prompt": 20,
+      "issue": 351,
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "evidence/assurance/final-followup-20260907/acceptance.json",
+          "sha256": "4478c60c92ba354ef7bf6d88e95b912a244e6b91062b2f3d130f9e757a7f3af9"
+        },
+        {
+          "path": "evidence/assurance/final-followup-20260907/final-receipt.json",
+          "sha256": "0b705fbaaea4be1dc86e5bdb8eb866691307f263cf731dbd26a71d9f8a4a1ded"
+        }
+      ]
+    }
+  ],
+  "fresh_identity_readback": {
+    "path": "evidence/migrations/corpus-legislation-nz/final-identity-readback-20260907/summary.json",
+    "sha256": "88448266787882810f8f64c89f260253493bf8c69c15308ba41ae22325595c92"
+  },
+  "recomputed": {
+    "historical_batches": 68,
+    "candidate_lines": 33693,
+    "unique_candidates": 33693,
+    "concatenated_candidate_sha256": "6f70fa9b596be2baa77bd885df1857e9b89c04013361c9ad80af722b0cc8493b",
+    "reviewed_seed_bytes": 8987,
+    "reviewed_seed_sha256": "59923176fa34796d7673a20b880af9abe5520fe484595edb220f2bbc0e3b33e7",
+    "reviewed_seed_unique": 500,
+    "independently_verified_operational_objects": 904,
+    "published_durable_objects": 552
+  },
+  "false_completion_corrections": [
+    "Historical review bytes were separated from living reviews without changing original hashes.",
+    "Legacy synthetic recovery no longer emits verified operational cycles; correction merged in PR415.",
+    "Canonical index no longer selects the superseded not-dispatched operational blocker.",
+    "Primary file evidence replaces old report links to absent directories and closed-issue-only acceptance.",
+    "Actual904-parent continuation and subsequent fresh552 durable recovery were independently executed and verified."
+  ],
+  "unresolved_nonwaivable_gates": [],
+  "limitations": [
+    "33693 candidates are not33693 preserved works; only the governed500-work operation is accepted.",
+    "904-object Actions continuation is not newly published durable HF state; published durable selection remains552.",
+    "Historical and canonical HF surfaces are distinct, not additive corpus totals.",
+    "Immutable snapshot remains auto-gated; its RIGHTS bytes return anonymous401 and are not verified or newly cleared.",
+    "Zenodo identity is verified; no historical metadata rewrite or new release is claimed.",
+    "Later health and FOI implementation has separate acceptance and publication gates.",
+    "Final lifecycle changes require normal protected PR delivery; this receipt binds the selected implementation and primary evidence, not future commits."
+  ],
+  "remote_publication_performed": false
+}

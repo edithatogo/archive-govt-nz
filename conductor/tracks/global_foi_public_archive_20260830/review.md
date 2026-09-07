@@ -225,3 +225,26 @@ This self-review establishes the local subtask only, not phase acceptance,
 hosted validation, rights approval or publication. P2.2/P2.3 stay in progress;
 no global registry edits or remote writes were made. No unresolved in-scope
 correctness finding remains.
+
+## 2026-09-07 — P2.10 conductor self-review
+
+Pass: actual AC04/AC09/AC11 distinctions. All 225 receipts receive an evidence
+scope assessment; only the explicit AL/BH cohort receives bounded transport
+review. Unknown source scope, adapter, rate limit, rights, HF target and
+request denominator remain explicit. Factual review is automated and does not
+wait for raw-publication approval. Licence/nonpersonal-schema evidence and
+mixed-correspondence metadata-only policy remain separate and unchanged.
+
+Pass: source/receipt/rollout binding, exact cohort equality, duplicate/omitted
+observations, bounded anonymous transport records, same-site redirects,
+unsafe URLs, non-HTML/failed/empty page cases, meaningful register links,
+default-agent robots restrictions and restrictive metadata omission. Report
+claims remain bounded to the selected metadata; original HTML restoration is
+not claimed. No new dependency, acquisition scheduler or publication path.
+
+114 focused tests pass with 100% new-module line/branch coverage; generated
+JSON/Markdown reproduce exactly. Scoped Ruff, format and BasedPyright checks
+pass. Python/general guides apply. No unresolved in-scope correctness finding.
+Full harness and hosted/integration evidence remain with the parent. The diff
+adds P2.10 without changing P2.5–P2.8, global registry, rights policy, seeds or
+historical receipts. No remote writes or rights decisions occurred.

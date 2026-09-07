@@ -1,11 +1,11 @@
 {
   "schema_version": "archive-govt-nz.legislation-evidence-index/v1",
-  "index_id": "legislation-consolidation-evidence-20260901",
-  "generated_at": "2026-09-01T14:53:44Z",
+  "index_id": "legislation-consolidation-evidence-20260907-ordered",
+  "generated_at": "2026-09-07T02:56:15.070Z",
   "target_repository": "edithatogo/archive-govt-nz",
-  "target_commit": "6755e12a48536de938b6f5955fe974d4b1de1b75",
+  "target_commit": "7afaec8e4629477aa4f18c0a35c88f815cf05a5c",
   "donor_repository": "edithatogo/corpus-legislation-nz",
-  "donor_commit": "b40587f1b1aec7356a0f623916fcc8212397d283",
+  "donor_commit": "905f9e07c17af9d9d25dbe2b1c052fb8a290a4e3",
   "entries": [
     {
       "evidence_id": "inventory-2bfd3df4a8a4b6bc",
@@ -773,14 +773,15 @@
       "evidence_id": "target-500-work-proof",
       "path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/500-work-target-revalidation.json",
       "sha256": "5396f35f4f4061f0c7235414e07d685cf6b3cad1d3a03f8ba97e95216f0c5d16",
-      "classification": "incomplete",
+      "classification": "superseded",
       "artefact_type": "receipt",
       "claim_dimensions": [
         "operational_state_migration",
         "corpus_custody_recoverability"
       ],
-      "rationale": "Prompt 13 was not dispatched and records seven blockers with all operational proof booleans false.",
-      "proof_kind": "blocker_receipt"
+      "rationale": "Historical not-dispatched blocker superseded by independently verified ordered execution, second-parent continuity and fresh durable recovery.",
+      "proof_kind": "blocker_receipt",
+      "superseded_by": "operational-state-completion-readback"
     },
     {
       "evidence_id": "inventory-3a712b87a9a92bfb",
@@ -2295,6 +2296,54 @@
       ],
       "rationale": "Governed completion proof binds the approved canonical identity, target-origin card and rights files, durable package, and anonymous exact-revision readback.",
       "proof_kind": "identity_verification"
+    },
+    {
+      "evidence_id": "operational-state-completion-readback",
+      "path": "evidence/completion-proofs/operational-state-verification.json",
+      "sha256": "878bac75db8249ae61f4fc1db3d7addc1ba1c90d9e821ae880f3a179b4662fc0",
+      "classification": "active",
+      "artefact_type": "receipt",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Exact primary operational proof retained with fixity; no publication or corpus-universe inference.",
+      "proof_kind": "state_verification"
+    },
+    {
+      "evidence_id": "ordered-operation-ordered-first-cycle",
+      "path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/hosted-closeout-20260906/500-work-target-revalidation.json",
+      "sha256": "e1383a7839cd6e07bd5e3596b3bdb906cf1c80cd925ca6afd00d3c30ab94d7b8",
+      "classification": "active",
+      "artefact_type": "receipt",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Exact primary operational proof retained with fixity; no publication or corpus-universe inference.",
+      "proof_kind": "historical_record"
+    },
+    {
+      "evidence_id": "ordered-operation-second-cycle",
+      "path": "evidence/migrations/corpus-legislation-nz/second-parent20260907/outcome.json",
+      "sha256": "841adade6e6edb0a9e414c0357b6477da648f5cd295bd844145bf869211a36e2",
+      "classification": "active",
+      "artefact_type": "receipt",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Exact primary operational proof retained with fixity; no publication or corpus-universe inference.",
+      "proof_kind": "historical_record"
+    },
+    {
+      "evidence_id": "ordered-operation-post-operation-durable-recovery",
+      "path": "evidence/migrations/corpus-legislation-nz/durable-recovery-after-operation20260907/receipt.json",
+      "sha256": "d72d91450e5ee845651e4a051d048414b87c5912d870ee460ae2793c3c3c8c08",
+      "classification": "active",
+      "artefact_type": "receipt",
+      "claim_dimensions": [
+        "operational_state_migration"
+      ],
+      "rationale": "Exact primary operational proof retained with fixity; no publication or corpus-universe inference.",
+      "proof_kind": "historical_record"
     }
   ],
   "evaluator_inputs": {
@@ -2306,7 +2355,8 @@
       "canonical-state-merge",
       "canonical-state-independent-readback",
       "canonical-historical-coverage",
-      "claim-correction-manifest"
+      "claim-correction-manifest",
+      "operational-state-completion-readback"
     ],
     "corpus_custody_recoverability": [
       "canonical-state-merge",
@@ -2332,11 +2382,11 @@
       "rationale": "Final donor-head capability accounting and merged target contracts establish code and capability migration only."
     },
     "operational_state_migration": {
-      "status": "incomplete",
+      "status": "complete",
       "proof_ids": [
-        "target-500-work-proof"
+        "operational-state-completion-readback"
       ],
-      "rationale": "Canonical state was merged, but the target-owned 500-work execution, reconciliation, continuation and recovery proof was not dispatched and remains blocked."
+      "rationale": "Ordered 500-work run33968609350 and independently verified904-parent continuation34076094680 have complete accounting, zero reconciliation mismatches, valid custody/seals and post-operation fresh552 durable recovery."
     },
     "corpus_custody_recoverability": {
       "status": "complete",

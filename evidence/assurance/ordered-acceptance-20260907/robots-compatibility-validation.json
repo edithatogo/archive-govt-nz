@@ -1,0 +1,18 @@
+{
+  "tested_commit": "203ed596d07a8fd6ac0db1a30bb08c60be835a9d",
+  "status": "passed_local",
+  "command": "PYTEST_XDIST_AUTO_NUM_WORKERS=2 ./scripts/validate.sh",
+  "exit_code": 0,
+  "tests_passed": 5227,
+  "coverage_percent": 97.65600536792664,
+  "cas_throughput_mb_s": 679.14,
+  "all_configured_mutation_suites": "passed",
+  "supply_chain_and_sbom": "passed",
+  "review": "Banach independently cleared conservative robots guard and legacy-parser regressions",
+  "red_regressions": 2,
+  "focused_tests_passed": 37,
+  "prior_attempt": "e7165daf full gate stopped at lint: missing test docstring and positional boolean; corrected without changing assertions",
+  "compatibility": "Python 3.14.0 upstream RuleLine is prefix-only; tested 3.14.6 supports wildcards. Complex rules now fail closed regardless of parser version.",
+  "historical_observations": "unchanged; Bahrain linked API remains disallowed",
+  "hosted_delivery": "pending on corrected head; earlier 1edd45c2 checks and artifacts remain historical evidence"
+}

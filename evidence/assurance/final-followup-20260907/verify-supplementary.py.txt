@@ -1,0 +1,158 @@
+"""Independently GET and verify the fixed PR415 supplementary run; no dispatch."""
+
+import concurrent.futures
+import hashlib
+import io
+import json
+import stat
+import subprocess
+import tempfile
+import zipfile
+from datetime import UTC, datetime
+from pathlib import Path, PurePosixPath
+
+REPO = "edithatogo/archive-govt-nz"
+RUN = 34076444101
+HEAD = "fcb8f7c89ffe18afd854f23f40c448fcc3a9efeb"
+OUT = Path(__file__).resolve().parent
+SUITES = {
+    "parent-state": "tests/tools/run_legislation_parent_state_mutations.py",
+    "durable-state": "tests/tools/run_legislation_durable_mutations.py",
+    "seed-registry": "tests/tools/run_seed_registry_mutations.py",
+    "source-preflight": "tests/tools/run_legislation_source_preflight_mutations.py",
+    "source-sets": "tools/mutation_source_sets.py",
+    "discovery": "tools/mutation_legislation_discovery.py",
+    "zenodo-identity": "tools/mutation_zenodo_identity.py",
+    "zenodo-publication": "tools/mutation_zenodo_publication.py",
+    "donor-bundle": "tools/mutation_legislation_donor_bundle.py",
+    "evidence-index": "tools/mutation_legislation_evidence_index.py",
+    "release-correction": "tools/mutation_legislation_release_correction.py",
+}
+
+
+def sha(raw):
+    return hashlib.sha256(raw).hexdigest()
+
+
+def get(path, paginate=False):
+    args = ["gh", "api"] + (["--paginate", "--slurp"] if paginate else [])
+    args.append(f"repos/{REPO}/{path}")
+    result = subprocess.run(args, capture_output=True, timeout=120, check=False)
+    if result.returncode:
+        raise RuntimeError(f"GitHub GET failed for {path}; stderr withheld")
+    return result.stdout
+
+
+def save(name, value):
+    raw = (json.dumps(value, indent=2, sort_keys=True) + "\n").encode()
+    (OUT / name).write_bytes(raw)
+    return sha(raw)
+
+
+def main():
+    if not __debug__:
+        raise RuntimeError("assertions must be enabled")
+    raw_run = get(f"actions/runs/{RUN}")
+    run = json.loads(raw_run)
+    assert run["id"] == RUN and run["head_sha"] == HEAD
+    assert run["conclusion"] == "success" and run["status"] == "completed"
+    assert run["run_attempt"] == 1
+    assert run["repository"]["full_name"] == REPO
+    assert run["head_repository"]["full_name"] == REPO
+    assert run["path"] == ".github/workflows/legislation-integrity-assurance.yml"
+    raw_jobs = get(f"actions/runs/{RUN}/attempts/1/jobs?per_page=100", True)
+    jobs = [job for page in json.loads(raw_jobs) for job in page["jobs"]]
+    assert len(jobs) == 11
+    assert {job["name"] for job in jobs} == {f"Supplemental ({suite})" for suite in SUITES}
+    assert all(job["conclusion"] == "success" and job["head_sha"] == HEAD for job in jobs)
+    raw_artifacts = get(f"actions/runs/{RUN}/artifacts?per_page=100", True)
+    artifacts = [a for page in json.loads(raw_artifacts) for a in page["artifacts"]]
+    expected = {f"legislation-integrity-{suite}-{RUN}-1": suite for suite in SUITES}
+    assert len(artifacts) == 11 and {a["name"] for a in artifacts} == set(expected)
+    subprocess.run(["git", "check-ignore", ".tmp/supplementary.zip"], check=True, capture_output=True)
+    scratch_root = Path.cwd() / ".tmp"
+    scratch_root.mkdir(exist_ok=True)
+    scratch = Path(tempfile.mkdtemp(prefix="supplementary-34076444101-", dir=scratch_root))
+
+    def verify(artifact):
+        suite = expected[artifact["name"]]
+        assert not artifact["expired"]
+        assert datetime.fromisoformat(artifact["expires_at"].replace("Z", "+00:00")) > datetime.now(UTC)
+        assert artifact["workflow_run"]["id"] == RUN
+        assert artifact["workflow_run"]["head_sha"] == HEAD
+        assert artifact["size_in_bytes"] <= 25 * 1024**2
+        raw = get(f"actions/artifacts/{artifact['id']}/zip")
+        assert len(raw) == artifact["size_in_bytes"]
+        assert "sha256:" + sha(raw) == artifact["digest"]
+        (scratch / f"{suite}.zip").write_bytes(raw)
+        with zipfile.ZipFile(io.BytesIO(raw)) as archive:
+            entries = archive.infolist()
+            assert 1 <= len(entries) <= 101
+            assert sum(e.file_size for e in entries) <= 26 * 1024**2
+            assert len({e.filename for e in entries}) == len(entries)
+            files = {}
+            for entry in entries:
+                path = PurePosixPath(entry.filename)
+                assert len(path.parts) == 1 and not path.is_absolute()
+                assert ".." not in path.parts and "\\" not in entry.filename
+                assert entry.orig_filename == entry.filename
+                assert stat.S_IFMT(entry.external_attr >> 16) in (0, stat.S_IFREG)
+                assert not entry.flag_bits & 1 and entry.file_size <= 25 * 1024**2
+                data = archive.read(entry)
+                assert len(data) == entry.file_size
+                files[entry.filename] = data
+        receipt_raw = files.pop("execution-receipt.json")
+        receipt = json.loads(receipt_raw)
+        assert receipt["schema_version"] == "archive-govt-nz.supplementary-hosted-assurance/v1"
+        assert receipt["target_commit"] == HEAD
+        assert str(receipt["run_id"]) == str(RUN) and str(receipt["run_attempt"]) == "1"
+        assert receipt["exit_code"] == 0 and receipt["publication_performed"] is False
+        directory = suite in ("parent-state", "durable-state", "seed-registry", "source-preflight")
+        assert receipt["directory_output"] is directory
+        assert receipt["command"][:5] == ["uv", "run", "--locked", "python", SUITES[suite]]
+        assert len(receipt["command"]) == (6 if directory else 5)
+        if directory:
+            assert receipt["command"][5].endswith("/supplementary-mutants")
+        recorded = receipt["files"]
+        assert len(recorded) == len(files)
+        assert len({item["name"] for item in recorded}) == len(recorded)
+        assert {item["name"] for item in recorded} == set(files)
+        for item in recorded:
+            assert item["size_bytes"] == len(files[item["name"]])
+            assert item["sha256"] == sha(files[item["name"]])
+        return {
+            "suite": suite, "status": "verified", "artifact_id": artifact["id"],
+            "artifact_name": artifact["name"], "zip_bytes": len(raw), "zip_sha256": sha(raw),
+            "expires_at": artifact["expires_at"], "execution_receipt_sha256": sha(receipt_raw),
+            "execution_receipt": receipt, "files_verified": len(files),
+            "expanded_bytes": sum(map(len, files.values())) + len(receipt_raw),
+        }
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
+        results = sorted(executor.map(verify, artifacts), key=lambda row: row["suite"])
+    receipt_hash = save("supplementary-artifact-verification.json", {
+        "schema_version": "archive-govt-nz.independent-supplementary-verification/v1",
+        "status": "passed", "target_commit": HEAD, "run_id": RUN, "run_attempt": 1,
+        "observed_at": datetime.now(UTC).isoformat(), "execution_context": "local_read_only_verifier",
+        "hosted_execution_event": run["event"], "suites_verified": len(results),
+        "files_verified": sum(row["files_verified"] for row in results),
+        "zip_bytes": sum(row["zip_bytes"] for row in results), "artifacts": results,
+        "jobs": [{k: job[k] for k in ("id", "name", "head_sha", "status", "conclusion")} for job in jobs],
+        "source_sha256": {"run": sha(raw_run), "jobs_paginated": sha(raw_jobs), "artifacts_paginated": sha(raw_artifacts)},
+        "probe_sha256": sha(Path(__file__).read_bytes()),
+        "bounds": {"parallel_downloads": 3, "request_timeout_seconds": 120,
+                   "zip_bytes_each": 25 * 1024**2, "expanded_bytes_each": 26 * 1024**2,
+                   "members_each": 101},
+        "remote_mutations": False,
+        "scope": "Independent ZIP digest and exhaustive execution-receipt file fixity, identities, commands and successful jobs. Does not independently re-execute mutants or certify other PR checks/builds.",
+    })
+    save("supplementary-verification-index.json", {
+        "supplementary-artifact-verification.json": receipt_hash,
+        Path(__file__).name: sha(Path(__file__).read_bytes()),
+    })
+    print(json.dumps({"suites": len(results), "files": sum(row["files_verified"] for row in results), "receipt_sha256": receipt_hash}))
+
+
+if __name__ == "__main__":
+    main()
+

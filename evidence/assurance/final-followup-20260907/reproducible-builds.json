@@ -1,0 +1,69 @@
+{
+  "attempts": [
+    {
+      "command": [
+        "uv",
+        "build",
+        "/Volumes/PortableSSD/GitHub/archive-govt-nz-final-followup-20260907/.tmp/final-builds-y3svtkrx/source-1",
+        "--out-dir",
+        "/Volumes/PortableSSD/GitHub/archive-govt-nz-final-followup-20260907/.tmp/final-builds-y3svtkrx/build-1"
+      ],
+      "exit_code": 0,
+      "log_sha256": "85d2df4d20566cb4fcacfb5cab434ba76ab96eaba1182b3986a09af84b00f630",
+      "number": 1,
+      "packages": {
+        "archive_govt_nz-0.1.0-py3-none-any.whl": {
+          "sha256": "e376bb4a7c175cb89cf3d0f83217d86ece45eeb06c49feb3c0c881486eb332ad",
+          "size_bytes": 492125
+        },
+        "archive_govt_nz-0.1.0.tar.gz": {
+          "sha256": "29d54ea012a62870cd649108de217d81fac8d9e2f357549c9a82a74eed8eae8d",
+          "size_bytes": 349270
+        }
+      },
+      "seconds": 1.3866178749995015
+    },
+    {
+      "command": [
+        "uv",
+        "build",
+        "/Volumes/PortableSSD/GitHub/archive-govt-nz-final-followup-20260907/.tmp/final-builds-y3svtkrx/source-2",
+        "--out-dir",
+        "/Volumes/PortableSSD/GitHub/archive-govt-nz-final-followup-20260907/.tmp/final-builds-y3svtkrx/build-2"
+      ],
+      "exit_code": 0,
+      "log_sha256": "54b369501162bbebf8455ecbc4c729dc161ea5f56e5ee63e9d0b099b88e34926",
+      "number": 2,
+      "packages": {
+        "archive_govt_nz-0.1.0-py3-none-any.whl": {
+          "sha256": "e376bb4a7c175cb89cf3d0f83217d86ece45eeb06c49feb3c0c881486eb332ad",
+          "size_bytes": 492125
+        },
+        "archive_govt_nz-0.1.0.tar.gz": {
+          "sha256": "29d54ea012a62870cd649108de217d81fac8d9e2f357549c9a82a74eed8eae8d",
+          "size_bytes": 349270
+        }
+      },
+      "seconds": 0.8618917499989038
+    }
+  ],
+  "byte_identical": true,
+  "execution_context": "local",
+  "limitations": "Two local builds from separate git-archive exports of the same reviewed commit, same toolchain and SOURCE_DATE_EPOCH; not cross-platform reproducibility or full-harness execution.",
+  "package_publication": false,
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "probe_sha256": "ca5193b1aefb8edcee6eeab39f1bc2873f8811cfb62dd1b8a214aea932597c5a",
+  "python": "3.14.6 (main, Aug  4 2026, 19:23:56) [Clang 22.1.3 ]",
+  "source_archive_sha256": "2de1d0c103c9130d3643b4249a918d73723162ca2a13622267b790698ca89850",
+  "source_date_epoch": 1788748146,
+  "source_exports_identical": true,
+  "source_file_manifest_sha256": [
+    "e290cf7980280bcb373556a612436112d41a162b141c908c3c37df0a6f443a28",
+    "e290cf7980280bcb373556a612436112d41a162b141c908c3c37df0a6f443a28"
+  ],
+  "source_tree": "3b63cc340f93ce3b7dd813ab1259537926ce4bef",
+  "status": "passed",
+  "target_commit": "fcb8f7c89ffe18afd854f23f40c448fcc3a9efeb",
+  "uv": "uv 0.11.8 (0e961dd9a 2026-04-27 aarch64-apple-darwin)",
+  "uv_lock_sha256": "4ec74f2e62d344cfa754f7938b636d800f0527887660fbbc3d007919c965f612"
+}

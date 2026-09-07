@@ -1,0 +1,26 @@
+{
+  "boundaries": "Reference identity/fixity refresh only; parent owns durable recovery, final matrix, index and closeout",
+  "criteria": {
+    "cutover": {
+      "changes": [],
+      "status": "unchanged_verified_references"
+    },
+    "donor": {
+      "changes": [],
+      "status": "unchanged_verified_references"
+    },
+    "huggingface": {
+      "changes": [],
+      "status": "unchanged_verified_references"
+    },
+    "zenodo": {
+      "changes": [],
+      "status": "unchanged_verified_references"
+    }
+  },
+  "large_payloads_downloaded": false,
+  "matrix_index_evaluator_edited": false,
+  "observed_at": "2026-09-07T02:56:58.190802+00:00",
+  "remote_mutations": false,
+  "target_commit": "7afaec8e4629477aa4f18c0a35c88f815cf05a5c"
+}

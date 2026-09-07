@@ -33,3 +33,22 @@ Invalid provenance, duplicate links, receipt substitution and catalogue drift
 must fail. No receipt claim can grant catalogue review or coverage credit.
 This completes a repository-owned reconciliation subtask only; R04 publication,
 reviewed country dispositions and broader P2.2/P2.3 acceptance remain open.
+
+## Bounded P2.10 factual assessment — 2026-09-07
+
+Assess the evidentiary scope of all 225 retained candidate receipts and complete
+the AL/BH alternate-schema cohort using dated, source-bound observations.
+Successful factual assessment means the report states what was observed and
+what remains unknown, not that access or a FOI catalogue must succeed. Bind
+the rollout, receipt identity, observation hashes, redirect host and exact
+cohort; reject substituted, partial or malformed evidence. Reproduce JSON and
+Markdown offline. Keep access observations, source scope, adapter, pacing,
+rights, privacy, publication and denominators separate.
+
+R04 permits unknown/blocked dispositions and R09 permits null denominators.
+Neither a known request total nor public raw restoration is a prerequisite for
+this factual-review subtask. No extra human approval queue applies. The
+rights-decision-owner-20260905.json policy remains unchanged: institutional raw
+eligibility needs explicit licence and nonpersonal schema evidence; mixed
+correspondence remains metadata-only under the applicable decision boundary.
+This task does not perform those decisions or satisfy R04 catalogue publication.

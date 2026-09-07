@@ -1,0 +1,42 @@
+{
+  "schema_version": "archive-govt-nz.operational-state-verification/v1",
+  "status": "verified",
+  "verified_at": "2026-09-07T02:56:15.067Z",
+  "authority_repository": "edithatogo/archive-govt-nz",
+  "assured_target_commit": "7afaec8e4629477aa4f18c0a35c88f815cf05a5c",
+  "execution_commit": "4b1764bbdc275d400204e6974bcde621a8f8d037",
+  "governed_works": 500,
+  "first_cycle_run": 33968609350,
+  "second_cycle_run": 34076094680,
+  "first_cycle": {
+    "parent_objects": 552,
+    "child_objects": 904,
+    "changed": 352,
+    "unchanged": 148
+  },
+  "second_cycle": {
+    "parent_objects": 904,
+    "child_objects": 904,
+    "unchanged": 500,
+    "reconciliation_mismatches": 0
+  },
+  "source_evidence": {
+    "ordered_first_cycle": {
+      "path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/hosted-closeout-20260906/500-work-target-revalidation.json",
+      "sha256": "e1383a7839cd6e07bd5e3596b3bdb906cf1c80cd925ca6afd00d3c30ab94d7b8"
+    },
+    "second_cycle": {
+      "path": "evidence/migrations/corpus-legislation-nz/second-parent20260907/outcome.json",
+      "sha256": "841adade6e6edb0a9e414c0357b6477da648f5cd295bd844145bf869211a36e2"
+    },
+    "post_operation_durable_recovery": {
+      "path": "evidence/migrations/corpus-legislation-nz/durable-recovery-after-operation20260907/receipt.json",
+      "sha256": "d72d91450e5ee845651e4a051d048414b87c5912d870ee460ae2793c3c3c8c08"
+    }
+  },
+  "scope": "Exact governed 500-work execution and second-parent continuity, followed by fresh published552 durable recovery.904 child state remains Actions-retained, not newly published durable custody.",
+  "supersedes": {
+    "path": "evidence/migrations/corpus-legislation-nz/500-work-operational-proof/500-work-target-revalidation.json",
+    "sha256": "5396f35f4f4061f0c7235414e07d685cf6b3cad1d3a03f8ba97e95216f0c5d16"
+  }
+}

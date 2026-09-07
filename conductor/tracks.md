@@ -7,8 +7,8 @@ authorisation, proceed through tasks, phases, reviews, checkpoints, and the next
 approved track without asking whether to continue. Pause only at a defined
 decision or safety boundary, and continue independent work while it is pending.
 
-- [~] **Track: Prompt 21 final independent adversarial verification**
-  *Link: [tracks/legislation_final_adversarial_verification_20260902/index.md](./tracks/legislation_final_adversarial_verification_20260902/index.md)*
+- [x] **Track: Prompt 21 final independent adversarial verification**
+  *Archived: [archive/legislation_final_adversarial_verification_20260902/index.md](./archive/legislation_final_adversarial_verification_20260902/index.md)*
 
 - [x] **Track: Treasury Archive MVP**
   *Link: [tracks/treasury_archive_mvp_20260731/index.md](./tracks/treasury_archive_mvp_20260731/index.md)*
@@ -247,8 +247,8 @@ implementation has occurred under these tracks.
 - [x] **Track: Final donor operational-state verification (Prompt 03)**
   *Link: [./tracks/legislation_final_donor_state_verification_20260831/index.md](./tracks/legislation_final_donor_state_verification_20260831/index.md)*
 
-- [~] **Track: Legislation post-cutover programme controller (Prompt 01)**
-  *Link: [tracks/legislation_post_cutover_state_and_publication_integrity_20260831/index.md](./tracks/legislation_post_cutover_state_and_publication_integrity_20260831/index.md)*
+- [x] **Track: Legislation post-cutover programme controller (Prompt 01)**
+  *Archived: [archive/legislation_post_cutover_state_and_publication_integrity_20260831/index.md](./archive/legislation_post_cutover_state_and_publication_integrity_20260831/index.md)*
 
 ---
 - [x] **Track: Prompt 04 deterministic legislation canonical state merge**
@@ -276,8 +276,8 @@ implementation has occurred under these tracks.
 - [x] **Track: Historical coverage and 33,693-candidate reconciliation (Prompt 14)**
   *Link: [./tracks/legislation_historical_coverage_20260901/index.md](./tracks/legislation_historical_coverage_20260901/index.md)*
 
-- [~] **Track: Target-owned 500-work operational proof (Prompt 13)**
-  *Link: [./tracks/legislation_500_work_operational_proof_20260901/index.md](./tracks/legislation_500_work_operational_proof_20260901/index.md)*
+- [x] **Track: Target-owned 500-work operational proof (Prompt 13)**
+  *Archived: [./archive/legislation_500_work_operational_proof_20260901/index.md](./archive/legislation_500_work_operational_proof_20260901/index.md)*
 
 - [x] **Track: Hugging Face identity, metadata, reconciliation, and target-origin publication (Prompt 15)**
   *Archived: [./archive/legislation_hf_identity_reconciliation_20260901/index.md](./archive/legislation_hf_identity_reconciliation_20260901/index.md)*
@@ -306,5 +306,5 @@ implementation has occurred under these tracks.
 - [x] **Track: Independent durable legislation recovery (Prompt 10)**
   *Link: [./archive/legislation_independent_recovery_20260901/index.md](./archive/legislation_independent_recovery_20260901/index.md)*
 
-- [~] **Track: Final integrated assurance closeout (Prompt 20)**
-  *Track: [./tracks/integrated_assurance_closeout_20260905/index.md](./tracks/integrated_assurance_closeout_20260905/index.md)*
+- [x] **Track: Final integrated assurance closeout (Prompt 20)**
+  *Archived: [./archive/integrated_assurance_closeout_20260905/index.md](./archive/integrated_assurance_closeout_20260905/index.md)*

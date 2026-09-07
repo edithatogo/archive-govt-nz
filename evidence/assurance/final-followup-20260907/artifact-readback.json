@@ -1,0 +1,36 @@
+{
+  "artifact": {
+    "digest": "sha256:9f9b9bd856de05ba2a9481781564e0a49d368d1c6c2770b74b807a4845adc318",
+    "expired": false,
+    "expires_at": "2026-12-04T13:20:25Z",
+    "id": 9970365066,
+    "name": "legislation-exact-inventory-state-33968609350-1",
+    "size_in_bytes": 10628850,
+    "workflow_run": {
+      "head_branch": "main",
+      "head_repository_id": 1317899320,
+      "head_sha": "87f65e8b37cbc16bc6c7cf8b5b93a19e48f0f207",
+      "id": 33968609350,
+      "repository_id": 1317899320
+    }
+  },
+  "download_bytes": 10628850,
+  "download_seconds_excluded_from_benchmark": 5.928480667000258,
+  "download_sha256": "9f9b9bd856de05ba2a9481781564e0a49d368d1c6c2770b74b807a4845adc318",
+  "metadata_verified": true,
+  "run": {
+    "conclusion": "success",
+    "head_branch": "main",
+    "head_sha": "87f65e8b37cbc16bc6c7cf8b5b93a19e48f0f207",
+    "id": 33968609350,
+    "name": "Exact inventory legislation revalidation",
+    "path": ".github/workflows/exact-inventory.yml",
+    "run_attempt": 1,
+    "status": "completed",
+    "workflow_id": 349172482
+  },
+  "source_sha256": {
+    "actions/artifacts/9970365066": "89e94b2b4a12543e30ba6c31fabe1b7f66f81b533ee7c4ce4d3cce59a884a6eb",
+    "actions/runs/33968609350": "a22dcfa68715738cc77c0d7935340970ef1556f44f97fd776041df227bfce2c5"
+  }
+}

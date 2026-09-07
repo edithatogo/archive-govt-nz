@@ -1,0 +1,179 @@
+{
+  "job": {
+    "completed_at": "2026-09-07T02:32:22Z",
+    "conclusion": "success",
+    "head_sha": "4b1764bbdc275d400204e6974bcde621a8f8d037",
+    "id": 101602389988,
+    "name": "revalidate",
+    "started_at": "2026-09-07T02:22:59Z",
+    "status": "completed",
+    "steps": [
+      {
+        "completed_at": "2026-09-07T02:23:01Z",
+        "conclusion": "success",
+        "name": "Set up job",
+        "number": 1,
+        "started_at": "2026-09-07T02:23:00Z",
+        "status": "completed"
+      },
+      {
+        "completed_at": "2026-09-07T02:23:03Z",
+        "conclusion": "success",
+        "name": "Check out exact target revision",
+        "number": 2,
+        "started_at": "2026-09-07T02:23:01Z",
+        "status": "completed"
+      },
+      {
+        "completed_at": "2026-09-07T02:23:03Z",
+        "conclusion": "success",
+        "name": "Set up Python",
+        "number": 3,
+        "started_at": "2026-09-07T02:23:03Z",
+        "status": "completed"
+      },
+      {
+        "completed_at": "2026-09-07T02:23:12Z",
+        "conclusion": "success",
+        "name": "Install locked environment",
+        "number": 4,
+        "started_at": "2026-09-07T02:23:03Z",
+        "status": "completed"
+      },
+      {
+        "completed_at": "2026-09-07T02:23:14Z",
+        "conclusion": "success",
+        "name": "Resolve governed reviewed inventory",
+        "number": 5,
+        "started_at": "2026-09-07T02:23:12Z",
+        "status": "completed"
+      },
+      {
+        "completed_at": "2026-09-07T02:23:20Z",
+        "conclusion": "success",
+        "name": "Restore and authenticate selected parent",
+        "number": 6,
+        "started_at": "2026-09-07T02:23:14Z",
+        "status": "completed"
+      },
+      {
+        "completed_at": "2026-09-07T02:23:20Z",
+        "conclusion": "skipped",
+        "name": "Verify no-write parent preflight",
+        "number": 7,
+        "started_at": "2026-09-07T02:23:20Z",
+        "status": "completed"
+      },
+      {
+        "completed_at": "2026-09-07T02:23:23Z",
+        "conclusion": "success",
+        "name": "Verify authenticated no-write source preflight",
+        "number": 8,
+        "started_at": "2026-09-07T02:23:20Z",
+        "status": "completed"
+      },
+      {
+        "completed_at": "2026-09-07T02:23:24Z",
+        "conclusion": "success",
+        "name": "Preserve sanitized source preflight receipt",
+        "number": 9,
+        "started_at": "2026-09-07T02:23:23Z",
+        "status": "completed"
+      },
+      {
+        "completed_at": "2026-09-07T02:32:10Z",
+        "conclusion": "success",
+        "name": "Revalidate every governed work ID",
+        "number": 10,
+        "started_at": "2026-09-07T02:23:24Z",
+        "status": "completed"
+      },
+      {
+        "completed_at": "2026-09-07T02:32:12Z",
+        "conclusion": "success",
+        "name": "Reconcile exact inventory and cumulative state",
+        "number": 11,
+        "started_at": "2026-09-07T02:32:10Z",
+        "status": "completed"
+      },
+      {
+        "completed_at": "2026-09-07T02:32:12Z",
+        "conclusion": "success",
+        "name": "Verify accounting and bounded output",
+        "number": 12,
+        "started_at": "2026-09-07T02:32:12Z",
+        "status": "completed"
+      },
+      {
+        "completed_at": "2026-09-07T02:32:14Z",
+        "conclusion": "success",
+        "name": "Seal verified continuation lineage",
+        "number": 13,
+        "started_at": "2026-09-07T02:32:12Z",
+        "status": "completed"
+      },
+      {
+        "completed_at": "2026-09-07T02:32:18Z",
+        "conclusion": "success",
+        "name": "Upload complete continuation package",
+        "number": 14,
+        "started_at": "2026-09-07T02:32:14Z",
+        "status": "completed"
+      },
+      {
+        "completed_at": "2026-09-07T02:32:19Z",
+        "conclusion": "success",
+        "name": "Upload sanitized complete attempt evidence",
+        "number": 15,
+        "started_at": "2026-09-07T02:32:18Z",
+        "status": "completed"
+      },
+      {
+        "completed_at": "2026-09-07T02:32:19Z",
+        "conclusion": "success",
+        "name": "Enforce fail-closed exact-inventory outcome",
+        "number": 16,
+        "started_at": "2026-09-07T02:32:19Z",
+        "status": "completed"
+      },
+      {
+        "completed_at": "2026-09-07T02:32:19Z",
+        "conclusion": "success",
+        "name": "Post Set up Python",
+        "number": 31,
+        "started_at": "2026-09-07T02:32:19Z",
+        "status": "completed"
+      },
+      {
+        "completed_at": "2026-09-07T02:32:19Z",
+        "conclusion": "success",
+        "name": "Post Check out exact target revision",
+        "number": 32,
+        "started_at": "2026-09-07T02:32:19Z",
+        "status": "completed"
+      },
+      {
+        "completed_at": "2026-09-07T02:32:19Z",
+        "conclusion": "success",
+        "name": "Complete job",
+        "number": 33,
+        "started_at": "2026-09-07T02:32:19Z",
+        "status": "completed"
+      }
+    ]
+  },
+  "observed_at": "2026-09-07T02:32:45.991093+00:00",
+  "run": {
+    "conclusion": "success",
+    "created_at": "2026-09-07T02:22:56Z",
+    "event": "workflow_dispatch",
+    "head_branch": "main",
+    "head_sha": "4b1764bbdc275d400204e6974bcde621a8f8d037",
+    "html_url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/34076094680",
+    "id": 34076094680,
+    "path": ".github/workflows/exact-inventory.yml",
+    "run_attempt": 1,
+    "status": "completed",
+    "updated_at": "2026-09-07T02:32:22Z"
+  }
+}

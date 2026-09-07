@@ -1,0 +1,318 @@
+{
+  "all_three_locked_gates_passed": false,
+  "identities_verified": true,
+  "jobs": [
+    {
+      "completed_at": null,
+      "conclusion": null,
+      "head_sha": "fcb8f7c89ffe18afd854f23f40c448fcc3a9efeb",
+      "id": 101603388600,
+      "name": "Assurance (windows-latest)",
+      "started_at": "2026-09-07T02:29:16Z",
+      "status": "in_progress",
+      "steps": [
+        {
+          "completed_at": "2026-09-07T02:29:20Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "started_at": "2026-09-07T02:29:17Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-09-07T02:29:27Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "number": 2,
+          "started_at": "2026-09-07T02:29:20Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-09-07T02:29:27Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97",
+          "number": 3,
+          "started_at": "2026-09-07T02:29:27Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-09-07T02:29:42Z",
+          "conclusion": "success",
+          "name": "Run astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d",
+          "number": 4,
+          "started_at": "2026-09-07T02:29:27Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": null,
+          "conclusion": null,
+          "name": "Run locked assurance gate",
+          "number": 5,
+          "started_at": "2026-09-07T02:29:42Z",
+          "status": "in_progress"
+        },
+        {
+          "completed_at": null,
+          "conclusion": null,
+          "name": "Export Cobertura coverage",
+          "number": 6,
+          "started_at": null,
+          "status": "pending"
+        },
+        {
+          "completed_at": null,
+          "conclusion": null,
+          "name": "Upload coverage to Codecov",
+          "number": 7,
+          "started_at": null,
+          "status": "pending"
+        },
+        {
+          "completed_at": null,
+          "conclusion": null,
+          "name": "Post Run astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d",
+          "number": 12,
+          "started_at": null,
+          "status": "pending"
+        },
+        {
+          "completed_at": null,
+          "conclusion": null,
+          "name": "Post Run actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97",
+          "number": 13,
+          "started_at": null,
+          "status": "pending"
+        },
+        {
+          "completed_at": null,
+          "conclusion": null,
+          "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "number": 14,
+          "started_at": null,
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "completed_at": "2026-09-07T02:35:29Z",
+      "conclusion": "success",
+      "head_sha": "fcb8f7c89ffe18afd854f23f40c448fcc3a9efeb",
+      "id": 101603388847,
+      "name": "Assurance (ubuntu-latest)",
+      "started_at": "2026-09-07T02:30:00Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completed_at": "2026-09-07T02:30:03Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "started_at": "2026-09-07T02:30:01Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-09-07T02:30:05Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "number": 2,
+          "started_at": "2026-09-07T02:30:03Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-09-07T02:30:05Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97",
+          "number": 3,
+          "started_at": "2026-09-07T02:30:05Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-09-07T02:30:10Z",
+          "conclusion": "success",
+          "name": "Run astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d",
+          "number": 4,
+          "started_at": "2026-09-07T02:30:05Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-09-07T02:35:20Z",
+          "conclusion": "success",
+          "name": "Run locked assurance gate",
+          "number": 5,
+          "started_at": "2026-09-07T02:30:10Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-09-07T02:35:22Z",
+          "conclusion": "success",
+          "name": "Export Cobertura coverage",
+          "number": 6,
+          "started_at": "2026-09-07T02:35:20Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-09-07T02:35:26Z",
+          "conclusion": "success",
+          "name": "Upload coverage to Codecov",
+          "number": 7,
+          "started_at": "2026-09-07T02:35:22Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-09-07T02:35:26Z",
+          "conclusion": "success",
+          "name": "Post Run astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d",
+          "number": 12,
+          "started_at": "2026-09-07T02:35:26Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-09-07T02:35:26Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97",
+          "number": 13,
+          "started_at": "2026-09-07T02:35:26Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-09-07T02:35:26Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "number": 14,
+          "started_at": "2026-09-07T02:35:26Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-09-07T02:35:26Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 15,
+          "started_at": "2026-09-07T02:35:26Z",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "completed_at": "2026-09-07T02:36:41Z",
+      "conclusion": "success",
+      "head_sha": "fcb8f7c89ffe18afd854f23f40c448fcc3a9efeb",
+      "id": 101603388903,
+      "name": "Assurance (macos-latest)",
+      "started_at": "2026-09-07T02:30:18Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completed_at": "2026-09-07T02:30:23Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "started_at": "2026-09-07T02:30:20Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-09-07T02:30:27Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "number": 2,
+          "started_at": "2026-09-07T02:30:23Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-09-07T02:30:27Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97",
+          "number": 3,
+          "started_at": "2026-09-07T02:30:27Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-09-07T02:30:42Z",
+          "conclusion": "success",
+          "name": "Run astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d",
+          "number": 4,
+          "started_at": "2026-09-07T02:30:27Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-09-07T02:36:33Z",
+          "conclusion": "success",
+          "name": "Run locked assurance gate",
+          "number": 5,
+          "started_at": "2026-09-07T02:30:42Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-09-07T02:36:33Z",
+          "conclusion": "skipped",
+          "name": "Export Cobertura coverage",
+          "number": 6,
+          "started_at": "2026-09-07T02:36:33Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-09-07T02:36:33Z",
+          "conclusion": "skipped",
+          "name": "Upload coverage to Codecov",
+          "number": 7,
+          "started_at": "2026-09-07T02:36:33Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-09-07T02:36:34Z",
+          "conclusion": "success",
+          "name": "Post Run astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d",
+          "number": 12,
+          "started_at": "2026-09-07T02:36:33Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-09-07T02:36:34Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97",
+          "number": 13,
+          "started_at": "2026-09-07T02:36:34Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-09-07T02:36:35Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "number": 14,
+          "started_at": "2026-09-07T02:36:34Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-09-07T02:36:36Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 15,
+          "started_at": "2026-09-07T02:36:35Z",
+          "status": "completed"
+        }
+      ]
+    }
+  ],
+  "observed_at": "2026-09-07T02:39:41.767815+00:00",
+  "probe_sha256": "7a9de578614a9d78e55e4501d7183a16221a577967319cc8b09c12526b0d2b2f",
+  "run": {
+    "conclusion": null,
+    "created_at": "2026-09-07T02:29:13Z",
+    "event": "pull_request",
+    "head_sha": "fcb8f7c89ffe18afd854f23f40c448fcc3a9efeb",
+    "id": 34076444097,
+    "path": ".github/workflows/ci.yml",
+    "run_attempt": 1,
+    "status": "in_progress",
+    "updated_at": "2026-09-07T02:30:19Z"
+  },
+  "scope": "Exact-head hosted jobs and locked-gate step readback; not a local full harness rerun or analysis of all raw logs",
+  "source_sha256": {
+    "repos/edithatogo/archive-govt-nz/actions/runs/34076444097": "9de25914889c956a68ca03ea087bcaa62a8d9b99a30b20c06bf0ca164516295b",
+    "repos/edithatogo/archive-govt-nz/actions/runs/34076444097/attempts/1/jobs?per_page=100": "3d9fc9b3a2171413b45033dfc31cf44b6234b3720af96c9213dbeb9adde2b737",
+    "repos/edithatogo/corpus-legislation-nz": "815d9b4eae52cb747ba539ff6d4429eb7cdf1fa8b9cdf7ff731d272c2c22912d",
+    "repos/edithatogo/corpus-legislation-nz/commits/HEAD": "a125b0fb6fe591da90cdbbe6f3c661e0e9c89a494a723bcdb922fbf756c4863f"
+  },
+  "status": "pending",
+  "target_commit": "fcb8f7c89ffe18afd854f23f40c448fcc3a9efeb",
+  "workflow_sha256": "c4d62b01019d601951f0a5589fec5c5a5707a4bbb7dade0b76963ad9f86b1b7d"
+}

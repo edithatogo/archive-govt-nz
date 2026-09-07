@@ -1,0 +1,41 @@
+{
+  "github_review": {
+    "headRefOid": "fcb8f7c89ffe18afd854f23f40c448fcc3a9efeb",
+    "reviewThreads": {
+      "nodes": [
+        {
+          "comments": {
+            "nodes": [
+              {
+                "author": {
+                  "login": "amazon-q-developer"
+                },
+                "body": ":stop_sign: **Syntax Error**: Invalid exception handling syntax will cause a runtime crash. Use parentheses to catch multiple exception types.\n```suggestion\n    except (OSError, ValueError, KeyError, TypeError):\n```"
+              },
+              {
+                "author": {
+                  "login": "edithatogo"
+                },
+                "body": "Reviewed against the supported runtime: pyproject.toml requires Python >=3.14 and Ruff targets py314. This multiple-exception syntax is valid in Python3.14. The module compiled and executed in the full locked harness (5188 passing tests); no syntax change is needed."
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false
+            }
+          },
+          "isResolved": true,
+          "line": 167,
+          "path": "src/archive_govt_nz/foi_reconciliation.py"
+        }
+      ],
+      "pageInfo": {
+        "hasNextPage": false
+      }
+    }
+  },
+  "note": "Resolved GitHub syntax comment is not Popper acceptance. Final deliverability remains dependent on separately supplied peer review.",
+  "observed_at": "2026-09-07T02:39:42.517348+00:00",
+  "peer_review_popper": "not_attested_by_this_readback",
+  "source_sha256": "56929ffc2355bf19e16746eb64e241268f6768906ddd7d66b9a6e7537d12dcdf",
+  "target_commit": "fcb8f7c89ffe18afd854f23f40c448fcc3a9efeb"
+}

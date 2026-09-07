@@ -20,6 +20,91 @@ from tools.evaluate_legislation_completion import DIMENSIONS, evaluate_completio
 ROOT = Path(__file__).parents[2]
 
 
+def test_terminal_programme_handoff_preserves_scope_and_primary_fixity() -> None:
+    """Terminal labels require every supplied owner and its actual proof bytes."""
+    folder = (
+        ROOT
+        / "conductor/archive/legislation_post_cutover_state_and_publication_integrity_20260831"
+    )
+    handoff = json.loads((folder / "handoff-index-20260907-final.json").read_text())
+    status_bytes = (folder / handoff["programme_status"]).read_bytes()
+    assert (
+        hashlib.sha256(status_bytes).hexdigest() == handoff["programme_status_sha256"]
+    )
+    status = json.loads(status_bytes)
+    assert status["status"] == "passed"
+    assert status["remaining_gates"] == handoff["remaining_handoffs"] == []
+    assert {row["owner_prompt"] for row in status["prompts"]} == set(range(2, 22))
+    for row in status["prompts"]:
+        assert row["state"] == "passed"
+        assert row["registration"] == "scope_supplied"
+        if row["owner_prompt"] == 13:
+            chronology = row["execution_chronology"]
+            assert chronology["verified_second_parent_run"] == 34076094680
+            assert (
+                "remains unproven"
+                not in chronology["additional_post_preflight_execution_assessment"]
+            )
+        assert row["acceptance_evidence"]
+        for reference in row["acceptance_evidence"]:
+            payload = (ROOT / reference["path"]).read_bytes()
+            assert hashlib.sha256(payload).hexdigest() == reference["sha256"]
+    reference = handoff["terminal_acceptance"]
+    matrix_bytes = (ROOT / reference["path"]).read_bytes()
+    assert hashlib.sha256(matrix_bytes).hexdigest() == reference["sha256"]
+    matrix = json.loads(matrix_bytes)
+    assert matrix["status"] == "complete"
+    assert matrix["unresolved_nonwaivable_gates"] == []
+    assert len(matrix["criteria"]) == 19
+    assert matrix["recomputed"]["reviewed_seed_unique"] == 500
+    assert matrix["recomputed"]["unique_candidates"] == 33693
+    for criterion in matrix["criteria"]:
+        for reference in criterion["evidence"]:
+            payload = (ROOT / reference["path"]).read_bytes()
+            assert hashlib.sha256(payload).hexdigest() == reference["sha256"]
+
+
+def test_repository_operation_completion_is_bound_to_primary_proof() -> None:
+    """Actual hosted proof, not a closed issue, must resolve the old blocker."""
+    complete, evaluation = evaluate_completion(ROOT)
+    assert complete, evaluation
+    proof = json.loads(
+        (
+            ROOT / "evidence/completion-proofs/operational-state-verification.json"
+        ).read_text()
+    )
+    evidence = {}
+    for name, reference in proof["source_evidence"].items():
+        payload = (ROOT / reference["path"]).read_bytes()
+        assert hashlib.sha256(payload).hexdigest() == reference["sha256"]
+        evidence[name] = json.loads(payload)
+    first = evidence["ordered_first_cycle"]
+    second = evidence["second_cycle"]
+    recovered = evidence["post_operation_durable_recovery"]
+    assert first["status"] == "complete"
+    assert first["run"]["id"] == 33968609350
+    assert first["verification"]["ordered_source_preflight_verified"] is True
+    assert second["status"] == recovered["status"] == "verified"
+    assert second["run_id"] == proof["second_cycle_run"] == 34076094680
+    assert second["works_accounted"] == 500
+    assert second["input_objects"] == second["output_objects"] == 904
+    assert second["reconciliation_mismatches"] == 0
+    for key in (
+        "all_input_cas_preserved",
+        "checkpoint_batch_completed",
+        "preflight_before_harvest",
+        "preflight_input_state_verified",
+        "output_usable_as_parent",
+        "local_state_unchanged",
+    ):
+        assert second[key] is True
+    assert recovered["recovery"]["cas_objects_reconstructed"] == 552
+    assert recovered["recovery"]["mismatches_count"] == 0
+    assert recovered["restored_state_unchanged"] is True
+    assert recovered["fresh_anonymous_download"] is True
+    assert recovered["started_at"] > second["observed_at"]
+
+
 def _write_repo(tmp_path: Path, statuses: dict[str, str] | None = None) -> Path:
     schema = tmp_path / "schemas/legislation-evidence-index-v1.schema.json"
     schema.parent.mkdir(parents=True)

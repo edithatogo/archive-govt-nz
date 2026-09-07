@@ -1,0 +1,287 @@
+"""Bounded GET-only identity refresh. No large publication payload downloads."""
+import base64
+import concurrent.futures
+import hashlib
+import json
+import subprocess
+import urllib.error
+import urllib.parse
+import urllib.request
+from datetime import UTC, datetime
+from pathlib import Path
+
+ROOT = Path.cwd()
+BASE = ROOT / "evidence/migrations/corpus-legislation-nz"
+OUT = Path(__file__).resolve().parent
+HEAD = "7afaec8e4629477aa4f18c0a35c88f815cf05a5c"
+SOURCES = {}
+LIMIT = 2 * 1024**2
+
+
+def sha(raw):
+    return hashlib.sha256(raw).hexdigest()
+
+
+def load(path):
+    return json.loads(path.read_bytes())
+
+
+def save(name, value):
+    (OUT / name).write_text(json.dumps(value, indent=2, sort_keys=True) + "\n")
+
+
+def gh(endpoint):
+    result = subprocess.run(["gh", "api", endpoint], capture_output=True, timeout=60, check=True)
+    if len(result.stdout) > LIMIT:
+        raise ValueError("GitHub metadata byte bound")
+    SOURCES["https://api.github.com/" + endpoint] = {
+        "observed_at": datetime.now(UTC).isoformat(), "response_sha256": sha(result.stdout),
+        "bytes": len(result.stdout), "authentication": "existing gh read credential"}
+    return json.loads(result.stdout)
+
+
+class NoRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        return None
+
+
+def http(url, follow=True):
+    opener = urllib.request.build_opener() if follow else urllib.request.build_opener(NoRedirect)
+    request = urllib.request.Request(url, headers={"User-Agent": "archive-govt-nz-identity-readback/1", "Accept-Encoding": "identity"})
+    try:
+        response = opener.open(request, timeout=30)
+    except urllib.error.HTTPError as error:
+        response = error
+    with response:
+        raw = response.read(LIMIT + 1)
+        if len(raw) > LIMIT:
+            raise ValueError("public metadata byte bound")
+        status = response.status
+        location = response.headers.get("Location")
+        if location:
+            parsed = urllib.parse.urlsplit(location)
+            location = urllib.parse.urlunsplit((parsed.scheme, parsed.netloc, parsed.path, "", ""))
+    SOURCES[url] = {"observed_at": datetime.now(UTC).isoformat(), "status": status,
+                    "bytes": len(raw), "response_sha256": sha(raw), "authentication": "anonymous"}
+    return status, raw, location
+
+
+def public_json(url):
+    status, raw, _ = http(url)
+    if status != 200:
+        raise ValueError("public API status " + str(status))
+    return json.loads(raw)
+
+
+def hf():
+    registry = load(ROOT / "config/legislation/huggingface-publication-registry.json")
+    prior = load(BASE / "huggingface-publication/publication-readback-20260903.json")
+    observations = []
+    changes = []
+    for identity in registry["identities"]:
+        slug = identity["slug"]
+        document = public_json("https://huggingface.co/api/datasets/" + slug)
+        revision = document["sha"]
+        actual = {"revision": revision, "private": document["private"], "gated": document["gated"],
+                  "file_count": len(document["siblings"])}
+        expected = {"revision": identity["observed_revision"], "private": False,
+                    "gated": False if identity["gating"] == "none" else identity["gating"],
+                    "file_count": identity["file_count"]}
+        drift = {k: {"expected": v, "observed": actual[k]} for k, v in expected.items() if actual[k] != v}
+        if drift:
+            changes.append({"criterion": "hf_identity", "slug": slug, "drift": drift})
+        names = {row["rfilename"] for row in document["siblings"]}
+        readbacks = []
+        for name in ("README.md", "RIGHTS.md"):
+            if name not in names:
+                continue
+            url = f"https://huggingface.co/datasets/{slug}/resolve/{revision}/{name}"
+            status, raw, _ = http(url)
+            readbacks.append({"path": name, "status": status, "sha256": sha(raw) if status == 200 else None,
+                              "bytes": len(raw), "content_claim": "verified bytes" if status == 200 else "access denied; no payload claim"})
+            if status != 200 and (identity["gating"] == "none" or status not in (401, 403)):
+                changes.append({"criterion": "listed_metadata_readback", "slug": slug, "path": name, "status": status})
+        item = {"slug": slug, "role": identity["role"], **actual, "matches_registry": not drift,
+                "metadata_readbacks": readbacks, "rights_status": identity["rights_status"]}
+        if identity["role"] == "canonical_living_dataset":
+            approved = {row["path"]: row for row in prior["authority"]["permitted_files"]}
+            for readback in readbacks:
+                expected_file = approved[readback["path"]]
+                if readback["sha256"] != expected_file["sha256"] or readback["bytes"] != expected_file["size_bytes"]:
+                    changes.append({"criterion": "canonical_approved_file_fixity", "path": readback["path"]})
+            metadata_path = next(name for name in approved if name.endswith("metadata.json"))
+            status, raw, _ = http(f"https://huggingface.co/datasets/{slug}/resolve/{revision}/{metadata_path}")
+            metadata_match = status == 200 and sha(raw) == approved[metadata_path]["sha256"] and len(raw) == approved[metadata_path]["size_bytes"]
+            if not metadata_match:
+                changes.append({"criterion": "canonical_durable_metadata_fixity"})
+            directory = metadata_path.rsplit("/", 1)[0]
+            tree = public_json(f"https://huggingface.co/api/datasets/{slug}/tree/{revision}/{directory}")
+            package = next(row for row in tree if row["path"].endswith("canonical-state.zip"))
+            package_path = package["path"]
+            remote_sha = package.get("lfs", {}).get("oid")
+            package_match = remote_sha == approved[package_path]["sha256"] and package["size"] == approved[package_path]["size_bytes"]
+            if not package_match:
+                changes.append({"criterion": "canonical_durable_package_identity"})
+            item["canonical_metadata_fixity_verified"] = metadata_match
+            item["durable_package"] = {"revision": revision, "path": package_path, "size_bytes": package["size"],
+                "lfs_sha256": remote_sha, "unchanged": package_match, "payload_downloaded": False}
+            item["target_origin_readback"] = {k: document.get("cardData", {}).get(k) for k in
+                ("origin_repository", "publication_status", "work_count", "record_count", "cas_object_count")}
+        observations.append(item)
+    return {"identities": observations, "changes": changes,
+            "limitations": ["No aggregate count across distinct publication roles",
+             "Gated identity metadata visibility is not unrestricted payload access",
+             "The 71,776,346-byte durable ZIP was not redownloaded; exact revision/LFS digest/size match prior verified bytes",
+             "Parent independently owns the fresh 02:47 anonymous 552-record recovery receipt; not re-attested here"]}
+
+
+def zenodo():
+    prior = load(BASE / "zenodo-identity-correction.json")
+    concept_url = "https://zenodo.org/api/records/20592539"
+    status, _, location = http(concept_url, follow=False)
+    record = public_json("https://zenodo.org/api/records/20592540")
+    versions = public_json("https://zenodo.org/api/records/20592540/versions")
+    changes = []
+    expected = {"id": 20592540, "doi": "10.5281/zenodo.20592540", "conceptrecid": "20592539", "conceptdoi": "10.5281/zenodo.20592539"}
+    for field, value in expected.items():
+        if str(record.get(field)) != str(value):
+            changes.append({"criterion": "zenodo_identity", "field": field, "observed": record.get(field), "expected": value})
+    if status not in (301, 302, 303, 307, 308) or not (location or "").endswith("/api/records/20592540"):
+        changes.append({"criterion": "zenodo_concept_redirect", "status": status, "location": location})
+    version_ids = [row["id"] for row in versions["hits"]["hits"]]
+    if version_ids != [20592540]:
+        changes.append({"criterion": "zenodo_versions", "version_ids": version_ids})
+    files = []
+    for expected_file in prior["files"]:
+        matches = [f for f in record["files"] if f["key"] == expected_file["key"]]
+        if len(matches) != 1:
+            changes.append({"criterion": "zenodo_file_membership", "key": expected_file["key"]})
+            continue
+        file = matches[0]
+        unchanged = file["size"] == expected_file["size"] and file["checksum"] == expected_file["api_checksum"]
+        item = {"key": file["key"], "size": file["size"], "checksum": file["checksum"], "metadata_unchanged": unchanged,
+                "prior_download_sha256": expected_file["download_sha256"], "downloaded": False}
+        if file["size"] <= 10000:
+            url = file["links"]["self"]
+            require_host = urllib.parse.urlsplit(url).hostname == "zenodo.org"
+            if not require_host:
+                raise ValueError("unexpected Zenodo file host")
+            http_status, raw, _ = http(url)
+            item.update(downloaded=True, http_status=http_status, sha256=sha(raw))
+            unchanged = unchanged and http_status == 200 and sha(raw) == expected_file["download_sha256"]
+        if not unchanged:
+            changes.append({"criterion": "zenodo_file_fixity", "key": file["key"]})
+        files.append(item)
+    return {"identity": {k: record.get(k) for k in expected}, "concept_response": {"status": status, "location": location},
+        "version_ids": version_ids, "files": files, "metadata": {k: record["metadata"].get(k) for k in
+        ("title", "version", "publication_date", "access_right", "related_identifiers")}, "changes": changes,
+        "limitations": ["Immutable 2026 snapshot lineage is preserved; missing target GitHub metadata is a known historical limitation",
+                        "Archive payload reused by record/file checksum identity; no new version or metadata update performed"]}
+
+
+def donor():
+    action = load(BASE / "donor-git-bundle/external-action-receipt-20260903.json")
+    old_refs = load(BASE / "donor-git-bundle/remote-refs-readback.json")
+    prefix = "repos/edithatogo/corpus-legislation-nz/"
+    repository = gh(prefix[:-1])
+    commit = gh(prefix + "commits/HEAD")
+    release = gh("repos/edithatogo/archive-govt-nz/releases/381883563")
+    asset = gh("repos/edithatogo/archive-govt-nz/releases/assets/542511808")
+    changes = []
+    if repository["archived"] is not True or commit["sha"] != action["donor"]["current_main"]:
+        changes.append({"criterion": "donor_archived_head", "archived": repository["archived"], "head": commit["sha"]})
+    for key in ("id", "name", "size", "digest", "state"):
+        if asset[key] != action["public_release"]["asset"][key]:
+            changes.append({"criterion": "donor_bundle_asset", "field": key})
+    if release["draft"] or release["tag_name"] != action["public_release"]["tag"] or release["id"] != 381883563:
+        changes.append({"criterion": "bundle_public_release"})
+    if 542511808 not in {a["id"] for a in release["assets"]}:
+        changes.append({"criterion": "bundle_release_asset_membership"})
+    readme = gh(prefix + "contents/README.md?ref=" + commit["sha"])
+    readme_sha = sha(base64.b64decode(readme["content"]))
+    if readme_sha != action["donor"]["redirect"]["remote_readback_sha256"]:
+        changes.append({"criterion": "donor_redirect_bytes"})
+    tag = gh(prefix + "git/ref/tags/migration-final-20260821")
+    tag_object = gh(prefix + "git/tags/" + tag["object"]["sha"])
+    expected_tag = action["donor"]["annotated_tag"]
+    if (tag["object"]["sha"] != expected_tag["tag_object"] or tag_object["object"]["sha"] != expected_tag["target_commit"]
+            or sha(tag_object["message"].encode()) != expected_tag["remote_message_sha256"]):
+        changes.append({"criterion": "donor_final_tag"})
+    result = subprocess.run(["git", "ls-remote", "https://github.com/edithatogo/corpus-legislation-nz.git"],
+                            capture_output=True, timeout=60, check=True)
+    current = {line.split()[1]: line.split()[0] for line in result.stdout.decode().splitlines()}
+    baseline = {row["name"]: row["object"] for row in old_refs["refs"]}
+    differences = [{"ref": name, "bundle_baseline": baseline.get(name), "current": current.get(name)}
+                   for name in sorted(set(baseline) | set(current)) if baseline.get(name) != current.get(name)]
+    known = {"HEAD": action["donor"]["current_main"], "refs/heads/main": action["donor"]["current_main"],
+             "refs/pull/185/head": action["donor"]["redirect"]["head_commit"],
+             "refs/tags/migration-final-20260821": expected_tag["tag_object"],
+             "refs/tags/migration-final-20260821^{}": expected_tag["target_commit"]}
+    for difference in differences:
+        difference["known_presentation_change"] = known.get(difference["ref"]) == difference["current"] and difference["ref"] in known
+        if not difference["known_presentation_change"]:
+            changes.append({"criterion": "donor_unexplained_ref_difference", **difference})
+    return {"archived": repository["archived"], "head": commit["sha"], "redirect_sha256": readme_sha,
+        "release": {k: release[k] for k in ("id", "tag_name", "draft", "prerelease", "published_at", "target_commitish")},
+        "asset": {k: asset[k] for k in ("id", "name", "size", "digest", "state", "created_at", "updated_at")},
+        "tag": {"object": tag["object"]["sha"], "target": tag_object["object"], "message_sha256": sha(tag_object["message"].encode()),
+                "signature_verified": tag_object.get("verification", {}).get("verified")},
+        "refs": current, "ref_differences_from_frozen_bundle": differences, "refs_response_sha256": sha(result.stdout),
+        "changes": changes, "large_bundle_downloaded": False,
+        "limitations": ["Native bundle/clone/fsck proof reused from prior verified identical asset digest; no new native restore claimed",
+                        "Frozen bundle omits later documented redirect/tag presentation objects; all observed differences enumerated",
+                        "Public GitHub asset metadata identity does not independently prove fresh anonymous download availability"]}
+
+
+def cutover():
+    prior = load(BASE / "cutover-release-provenance/cutover-release-provenance-correction.json")
+    release = gh("repos/edithatogo/archive-govt-nz/releases/375146205")
+    tag = gh("repos/edithatogo/archive-govt-nz/git/ref/tags/legislation-cutover-v1.0.0")
+    target = tag["object"]
+    if target["type"] == "tag":
+        target = gh("repos/edithatogo/archive-govt-nz/git/tags/" + target["sha"])["object"]
+    changes = []
+    expected_body = prior["external_action"]["readback"]["body_sha256"]
+    if sha(release["body"].encode()) != expected_body:
+        changes.append({"criterion": "cutover_addendum_body"})
+    if target["sha"] != prior["release"]["tag_commit"] or release["draft"] or release["assets"]:
+        changes.append({"criterion": "cutover_release_identity"})
+    runs = []
+    for old in prior["hosted_evidence"]["runs"]:
+        run = gh(f"repos/edithatogo/archive-govt-nz/actions/runs/{old['run_id']}")
+        unchanged = run["head_sha"] == old["head_sha"] and run["conclusion"] == old["conclusion"] == "success"
+        if not unchanged:
+            changes.append({"criterion": "cutover_historical_run", "run_id": old["run_id"]})
+        runs.append({"id": run["id"], "head_sha": run["head_sha"], "conclusion": run["conclusion"], "unchanged": unchanged})
+    return {"release": {k: release[k] for k in ("id", "tag_name", "name", "draft", "prerelease", "published_at")},
+        "body_sha256": sha(release["body"].encode()), "exact_addendum_body_unchanged": sha(release["body"].encode()) == expected_body,
+        "tag_target": target, "historical_runs": runs, "changes": changes,
+        "limitations": ["Historical cycle artifacts and attestation reused from fixity-bound prior correction receipt; no fresh recovery execution"]}
+
+
+if __name__ == "__main__":
+    actual = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
+    if actual != HEAD:
+        raise RuntimeError("readback source HEAD differs")
+    results = {}
+    with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
+        pending = {pool.submit(fn): name for name, fn in (("huggingface", hf), ("zenodo", zenodo), ("donor", donor), ("cutover", cutover))}
+        for future in concurrent.futures.as_completed(pending):
+            name = pending[future]
+            try:
+                result = future.result()
+                result["status"] = "unchanged_verified_references" if not result["changes"] else "changed_criterion"
+            except Exception as error:
+                result = {"status": "readback_incomplete", "exception": type(error).__name__,
+                          "detail": str(error) if isinstance(error, ValueError) else "exception_detail_withheld",
+                          "changes": [], "limitation": "Incomplete observation is not proof of changed external state"}
+            result.update(observed_at=datetime.now(UTC).isoformat(), target_commit=HEAD,
+                          probe_sha256=sha(Path(__file__).read_bytes()), remote_mutations=False)
+            save(name + ".json", result)
+            results[name] = {"status": result["status"], "changes": result["changes"]}
+    save("sources.json", SOURCES)
+    save("summary.json", {"target_commit": HEAD, "observed_at": datetime.now(UTC).isoformat(), "criteria": results,
+         "large_payloads_downloaded": False, "matrix_index_evaluator_edited": False, "remote_mutations": False,
+         "boundaries": "Reference identity/fixity refresh only; parent owns durable recovery, final matrix, index and closeout"})
+    save("SHA256.json", {p.name: sha(p.read_bytes()) for p in sorted(OUT.iterdir()) if p.name != "SHA256.json" and p.suffix in (".json", ".txt")})
+    print(json.dumps(results))

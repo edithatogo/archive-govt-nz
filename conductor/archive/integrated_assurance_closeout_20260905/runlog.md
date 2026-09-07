@@ -1,0 +1,25 @@
+# Run log
+
+## 2026-09-07 — final integrated acceptance and archival
+
+PR #415 merged `7afaec8e` with exactly the reviewed `fcb8f7c8` tree after all
+three OS gates passed. Independent readback verified11 supplementary artifacts,
+113 files, reproducible builds,904 real-state objects with zero mismatches,
+archived donor identity, empty security alerts and the active ruleset. Popper
+returned no actionable finding on the frozen change; the parent verified merge
+and evidence hashes. `acceptance.json` closes the earlier peer-pending receipt
+without editing its bytes. Prior timeout/log-readback failures remain retained.
+Issue351 was already closed; its label was not used as acceptance evidence.
+All four acceptance criteria pass for this selected integrated revision.
+
+- 2026-09-05: Selected target f2669f1ce6ae48f3e09387608acbb8c58aa20334 and issue #351 in an isolated worktree. Donor remains archived at presentation head 905f9e07c17af9d9d25dbe2b1c052fb8a290a4e3.
+- 2026-09-05: Existing supplementary runs preserved two parent-state timing failures and a source-set child timeout. Unchanged source-set retry passed; no timeout is credited as a killed mutant. Dedicated hosted parent mutation execution was absent from CI.
+- 2026-09-05: Prepared opt-in static hosted matrix for existing suites under the independently reviewed harness-defect exception. Root and peer reviewed permission, gate, exact revision, receipt and failure semantics; fixes record full argv and check size before hashing.
+- 2026-09-05: Focused workflow/policy tests passed (8 tests), actionlint reported no findings, ruff passed, and targeted typing reported zero errors. Full and hosted validation remain pending.
+- 2026-09-05: Harness correction committed as `4e0af41b4cf8a31dcc644ce08e4e550021de70e1`; supplementary baseline evidence added separately. Parent mutations remain unverified after two timing failures. No PR, hosted run, or completion claim yet.
+- 2026-09-05: Prepared the eleventh static suite for the source-preflight runner from Prompt 13. Its file is deliberately not copied into this branch: full validation and hosted execution must wait for the dependency merge/rebase. No suite success is claimed.
+- 2026-09-05: Rebased all three preparatory commits onto live main `6579c09b4e2d167f57a36794b07bee3467148262`, yielding preparation head `ceaedf9bdd3248819879cdd71832a4eecff80953`. Focused tests: seven passed, one failed because the source-preflight runner from unmerged PR #400 is absent. Actionlint passed. Exact mapping and logs are in `evidence/assurance/final-integrated-20260905/rebase-preparation/`; no test weakened and no integrated completion claimed.
+- 2026-09-05: Rebased onto merged Prompt 13 main `87f65e8b37cbc16bc6c7cf8b5b93a19e48f0f207`; prepared head `ef79ca87849095c9e33a420e5ef6018f1aaac96f`. All 27 focused workflow/source-preflight tests passed, actionlint passed, and native Conductor reported zero errors across 93 tracks. The formerly missing eleventh runner is now present. Prior missing-dependency failure remains unchanged; Prompt 15 and final integrated assurance still pending.
+- 2026-09-05: Provisional full harness at `9fe6894d` failed three timing/slow-generation checks after 4,799 passes; exact failures preserved. Unchanged isolated diagnostics passed all three. Parent mutation baseline passed 108 tests and all 46 mutants; actual-state resource verification passed for 904 objects and 500 reviewed works with zero mismatches. Full and integrated completion remain unproven pending final P15 integration and gates.
+- 2026-09-06: Read-only audit of PR #404 at `912dc38d6f60e0884aa22e560b9dd2109fe770d5` found removal of Hypothesis deadline enforcement without replacement or contractual exception. The edited tests differ from the three actual P20 failures. PR remains open; independently read main `c5233ae7fc0beb065071cf3554596456f6575131` and confirmed neither change is present. Exact diff and handoff are preserved; no PR, test, or hosted setting was modified by this audit.
+- 2026-09-07: Rebased onto integrated main `98b6d055153d7cc0dd03b0cfdb1d80694e9bf16f`. The exact-head full harness passed after a path-and-content-hash-bound adjudication for preserved public assurance receipts; no secret was found. Final local receipt is `evidence/assurance/final-integrated-20260905/final-closeout-receipt-20260907.json`; hosted exact-head checks remain pending.

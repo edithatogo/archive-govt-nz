@@ -1,0 +1,87 @@
+{
+  "all_input_cas_preserved": true,
+  "batch_id": "ordered-second-parent-20260907",
+  "checkpoint_batch_completed": true,
+  "dispositions": {
+    "unchanged_revalidated": 500
+  },
+  "execution_context": "local_read_only_independent_verification",
+  "input_objects": 904,
+  "limitations": [
+    "Actions-retained output is not newly published durable custody",
+    "No third-cycle dispatch or synthetic hosted context",
+    "Parent follow-up correction and final integrated assurance remain separate"
+  ],
+  "local_state_unchanged": true,
+  "negative_control": "object_sha256",
+  "observed_at": "2026-09-07T02:33:10.799068+00:00",
+  "output_objects": 904,
+  "output_roots": {
+    "cas_root_sha256": "ed93a3f7cddac8f6bc938f1005f47cfe4c309707b34b3a511cc3b66fedb47a40",
+    "checkpoint_file_sha256": "f2829960be67140c61bde013ef904f6b0d6b8cc4e8af01a35b286ed8eb35eb06",
+    "inventory_sha256": "9ca6dc505f991e015c6c997827878d8c7e9381b214a1544eb338328a285c6894",
+    "manifest_file_sha256": "be2ce9c836ff802aac7471cd6614168f5618a7ec6229ca91e2b2fbf8f6df9ff6",
+    "manifest_sha256": "ab4ff4fbeb5f2d5df583c513ac4afd9806ca2bacd1b7851d8a7d979b8f667004",
+    "success_receipt_sha256": "b3a25ca6a3bd2a12719aa97d0ae2a85262ba45832462677cf8ef046e502a11a3"
+  },
+  "output_seal_sha256": "d7d82e7db94ff7528ae2354bce4c715e0cf7515816f400f3a431e5909af74579",
+  "output_usable_as_parent": true,
+  "parent_reference_file_sha256": "2201042c6e8a9b2b77165d1e2ba5269e88332f1e0c0d504e2ab04662eba1711f",
+  "parent_roots": {
+    "cas_root_sha256": "ed93a3f7cddac8f6bc938f1005f47cfe4c309707b34b3a511cc3b66fedb47a40",
+    "checkpoint_file_sha256": "de917823c8c5e8d167afa23bc3a4b72495443150df37844ce124e26dbcd19c0c",
+    "inventory_sha256": "9ca6dc505f991e015c6c997827878d8c7e9381b214a1544eb338328a285c6894",
+    "manifest_file_sha256": "2bf2d45d1544d73c7b1ae0c0dbaf8495d294c78b7b1bd0d49155d0d7f20546f6",
+    "manifest_sha256": "ab4ff4fbeb5f2d5df583c513ac4afd9806ca2bacd1b7851d8a7d979b8f667004",
+    "success_receipt_sha256": "768e2ee0d52aa0780505da3c38b7461e07d0c2abc2f8c076fc78666e4f8257dc"
+  },
+  "preflight_before_harvest": true,
+  "preflight_input_state_verified": true,
+  "probe_sha256": "59f1a1d3d3e3af446d52ca6ce1beb62373ee9454cf0bf254cbf27d89458c40f8",
+  "python": "3.14.6 (main, Aug  4 2026, 19:23:56) [Clang 22.1.3 ]",
+  "reconciliation_command": [
+    "/Volumes/PortableSSD/GitHub/archive-govt-nz-second-parent-proof-20260907/.venv/bin/python3",
+    "tools/reconcile_one_legislation_batch.py",
+    "--batch-id",
+    "ordered-second-parent-20260907",
+    "--batch-path",
+    "seeds/reviewed/historical-work-ids-0001.txt",
+    "--expected-batch-sha256",
+    "59923176fa34796d7673a20b880af9abe5520fe484595edb220f2bbc0e3b33e7",
+    "--manifest-path",
+    "/Volumes/PortableSSD/GitHub/archive-govt-nz-second-parent-proof-20260907/.tmp/second-parent-q7l6rs3b/output-state/manifest.json",
+    "--checkpoint-path",
+    "/Volumes/PortableSSD/GitHub/archive-govt-nz-second-parent-proof-20260907/.tmp/second-parent-q7l6rs3b/output-state/checkpoint.json",
+    "--cas-path",
+    "/Volumes/PortableSSD/GitHub/archive-govt-nz-second-parent-proof-20260907/.tmp/second-parent-q7l6rs3b/output-state/cas",
+    "--receipt-path",
+    "/Volumes/PortableSSD/GitHub/archive-govt-nz-second-parent-proof-20260907/.tmp/second-parent-q7l6rs3b/reconciliation.json"
+  ],
+  "reconciliation_mismatches": 0,
+  "remote_mutations": false,
+  "run_attempt": 1,
+  "run_id": 34076094680,
+  "source_sha256": {
+    "actions/artifacts/10002090245/zip": "892f743acc17f5716e19f33be332524c3793be88f89119f5bd0be59f11cb172d",
+    "actions/artifacts/10002091392/zip": "6e0ab515634456b1b7a90bc66bb42f3f983e80222e6975d5b30322fa936b66dd",
+    "actions/artifacts/10002260735/zip": "d9c9b35c29b640cdd705e5e46d66ac7f9c75727c8cd527ba48514e826f314954",
+    "actions/artifacts/10002261148/zip": "f32ae5dbe12fdc3e331b0200eb2d61326f5c9724b07a459f43966bcbae170246",
+    "actions/artifacts/9970365066": "89e94b2b4a12543e30ba6c31fabe1b7f66f81b533ee7c4ce4d3cce59a884a6eb",
+    "actions/artifacts/9970365066/zip": "9f9b9bd856de05ba2a9481781564e0a49d368d1c6c2770b74b807a4845adc318",
+    "actions/runs/33968609350": "a22dcfa68715738cc77c0d7935340970ef1556f44f97fd776041df227bfce2c5",
+    "actions/runs/34076094680": "780706f8781cd4d11f8c69ebce0089d85ad4459145c66255a870afb0d66c8804",
+    "actions/runs/34076094680/artifacts?per_page=100": "ca3a78dc977c5f31e6be5831fd41ce231439101ed75193e6eff5e7afe8ebc4dd",
+    "actions/runs/34076094680/attempts/1/jobs?per_page=100": "84a27ef7e0c74cac47f5a44151e3491b4e554ac89ccc5545f56ed4523b5bc389"
+  },
+  "status": "verified",
+  "target_commit": "4b1764bbdc275d400204e6974bcde621a8f8d037",
+  "total_retries": 0,
+  "verification_sources_sha256": {
+    "src/archive_govt_nz/domains/legislation/cli_state.py": "b26cf33678f7243bfb835567c5f23ea6286f841e2510008e4870d4bf29db0857",
+    "src/archive_govt_nz/domains/legislation/one_batch_reconciliation.py": "1187abf59b97949b01a95e7bb00cb8242ff393b5f2ec69276bb3958b54de5ba4",
+    "tools/legislation_parent_state.py": "bb715348eeea96d507e4008b6fbd4be7ede8949461136ef4dfd003f45789b1c3",
+    "tools/reconcile_one_legislation_batch.py": "9b4c94d0e7ae53e621b1909717fb10495302004f04003ecea64960a80ad08ab2",
+    "uv.lock": "4ec74f2e62d344cfa754f7938b636d800f0527887660fbbc3d007919c965f612"
+  },
+  "works_accounted": 500
+}

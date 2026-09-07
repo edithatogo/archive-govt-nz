@@ -1,0 +1,15 @@
+{
+  "schema_version": "archive-govt-nz.validation-attempt/v1",
+  "tested_commit": "438d918a23d6da303fd6ea5767b3ec151f493b90",
+  "command": "PYTEST_XDIST_AUTO_NUM_WORKERS=2 ./scripts/validate.sh",
+  "exit_code": 1,
+  "tests_passed": 5225,
+  "failed_stage": "credential candidate scanning",
+  "finding_file": "evidence/assurance/final-followup-20260907/final-receipt.json",
+  "finding_line": 54,
+  "classification": "benign descriptive metadata value, not a credential",
+  "correction": "Rename the descriptive aggregate field to targeted_scanner_result and refresh all dependent receipt hashes. No exclusion, baseline, threshold or primary artifact bytes changed.",
+  "independent_review_correction": "Replace the stale P13 unproven assessment in the final P01 snapshot with verified run34076094680, refresh handoff fixity and add a regression assertion.",
+  "sbom_stage_reached": false,
+  "full_retry_required": true
+}
