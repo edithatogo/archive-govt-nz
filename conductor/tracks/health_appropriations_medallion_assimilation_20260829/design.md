@@ -145,6 +145,12 @@ the only preservation copy.
 
 ## Bronze object and observation model
 
+The [encoded-length contract](./bronze-wire-length.md) compares advertised
+Content-Length with HTTPX's raw transport-body counter before decoded CAS
+promotion. Already-consumed encoded responses with an advertised length are
+unverifiable and rejected; absent lengths are not invented. This does not
+change the decoded payload representation or claim raw-socket preservation.
+
 Each immutable object is keyed by SHA-256 and may also carry BLAKE3 and CID.
 An observation links a source locator and observation time to an object or a
 reason-coded no-object state. Re-observing the same bytes creates a new

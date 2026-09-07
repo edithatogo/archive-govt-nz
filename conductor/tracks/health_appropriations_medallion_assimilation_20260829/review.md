@@ -1134,3 +1134,12 @@ lock. Real subprocess kill/resume passed after the recorded red failure;
 Paired evidence: `bronze-process-recovery.md` / `bronze-process-recovery.json`.
 Self-review retains legacy-lock, power-loss and filesystem boundaries. No
 parent, census, rights, registry, Phase 3 or full-harness changes.
+# 2026-09-07 — Phase 2.1 encoded length
+
+Reviewed pinned HTTPX raw-counter/decoder semantics before three red tests.
+Encoded transport-body length is now verified without comparing decoded size;
+preconsumed encoded responses with length fail closed as unverifiable.
+161 affected tests pass, with 99.02% capture coverage and four caught mutants.
+Paired evidence: `bronze-wire-length.md` / `bronze-wire-length.json`. Static
+checks pass. Review retains precise framing/codec and AC-16 coverage limits;
+no weaker verification, raw-wire assurance, source promotion or full harness.

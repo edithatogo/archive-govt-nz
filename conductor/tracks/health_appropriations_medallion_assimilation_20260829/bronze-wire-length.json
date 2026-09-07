@@ -1,0 +1,23 @@
+{
+  "schema_version": "archive-govt-nz.health-wire-length-validation/v1",
+  "date": "2026-09-07",
+  "base_commit": "d90e878e0bf57015d2ef1996d95844ae78fc9f9a",
+  "task": "Phase 2.1",
+  "red_failures": 3,
+  "new_cases_passed": 11,
+  "property_examples": 20,
+  "affected_tests_passed": 161,
+  "capture_lines": [158, 159],
+  "capture_branches": [45, 46],
+  "capture_coverage_percent": 99.02439024390245,
+  "mutant_test_failures": {"decoded_not_wire": 4, "skip_encoded_compare": 3, "skip_observability": 1, "invert_length": 7},
+  "static_checks": "ruff, ruff format and basedpyright passed",
+  "httpx_version_reviewed": "0.28.1",
+  "measurement": "encoded response-body bytes delivered by the transport before HTTPX decoding",
+  "raw_socket_or_tls_bytes_measured": false,
+  "preconsumed_encoded_response_with_length": "wire_length_unverifiable",
+  "full_harness_run": false,
+  "external_acquisition": false,
+  "task_complete": false,
+  "remaining": ["pre-existing defensive redirect-loop fallback critical coverage", "parent-owned coherent full assurance checkpoint"]
+}

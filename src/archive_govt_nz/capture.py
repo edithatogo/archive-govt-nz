@@ -247,6 +247,7 @@ async def capture_url(  # noqa: PLR0915, PLR0912
                     total = 0
                     encoded = response.headers.get("content-encoding", "").lower()
                     decompression_bound = encoded not in {"", "identity"}
+                    wire_observable = not response.is_stream_consumed
                     async for chunk in response.aiter_bytes(config.chunk_bytes):
                         if monotonic() - started >= max_duration:
                             raise CaptureError("timeout", tuple(attempt_receipts))
@@ -267,14 +268,30 @@ async def capture_url(  # noqa: PLR0915, PLR0912
                             )
                             raise CaptureError(error_class, tuple(attempt_receipts))
                         yield chunk
-                    # Content-Length describes encoded bytes. Compare only an
-                    # identity response here: aiter_bytes yields decoded bytes.
-                    # Reject before promotion so a short/overlong body cannot
-                    # acquire a successful CAS or WARC receipt.
+                    # HTTPX increments num_bytes_downloaded on raw transport
+                    # chunks before decoding. A cached response bypasses that
+                    # path; do not invent a wire count from decoded bytes.
                     if (
                         expected_length is not None
-                        and not decompression_bound
-                        and total != int(expected_length)
+                        and decompression_bound
+                        and not wire_observable
+                    ):
+                        attempt_receipts.append(
+                            CaptureAttempt(
+                                redact_url(bound_url),
+                                response.status_code,
+                                "wire_length_unverifiable",
+                                monotonic() - started,
+                            )
+                        )
+                        raise CaptureError(
+                            "wire_length_unverifiable", tuple(attempt_receipts)
+                        )
+                    actual_length = (
+                        response.num_bytes_downloaded if decompression_bound else total
+                    )
+                    if expected_length is not None and actual_length != int(
+                        expected_length
                     ):
                         attempt_receipts.append(
                             CaptureAttempt(

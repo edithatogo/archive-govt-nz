@@ -192,8 +192,10 @@ repository validation command. External gates block only their affected task.
   Audited shared/health contracts; added 23 tests and fixed identity-encoded
   HTTP length mismatch before CAS/WARC promotion. 129 affected tests pass;
   98.99% scoped coverage, three length-guard mutants killed. Remains pending
-  for encoded wire-length checking and full
-  integrated assurance. Cooperative per-resource resume and non-overwriting
+  for the defensive capture fallback's critical coverage and full integrated
+  assurance. Encoded transport-body length now has 11 additional executable
+  cases and four killed mutants; see `bronze-wire-length.md` (161 affected
+  tests pass). Cooperative per-resource resume and non-overwriting
   WARC paths now have 149 affected passing tests and 100% runner coverage;
   see `bronze-checkpoint-contracts.md`. Preceding audit:
   `bronze-ingestion-contracts.md` and `bronze-ingestion-validation.json`.
