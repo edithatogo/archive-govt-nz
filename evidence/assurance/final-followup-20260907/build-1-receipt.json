@@ -1,0 +1,23 @@
+{
+  "command": [
+    "uv",
+    "build",
+    "/Volumes/PortableSSD/GitHub/archive-govt-nz-final-followup-20260907/.tmp/final-builds-y3svtkrx/source-1",
+    "--out-dir",
+    "/Volumes/PortableSSD/GitHub/archive-govt-nz-final-followup-20260907/.tmp/final-builds-y3svtkrx/build-1"
+  ],
+  "exit_code": 0,
+  "log_sha256": "85d2df4d20566cb4fcacfb5cab434ba76ab96eaba1182b3986a09af84b00f630",
+  "number": 1,
+  "packages": {
+    "archive_govt_nz-0.1.0-py3-none-any.whl": {
+      "sha256": "e376bb4a7c175cb89cf3d0f83217d86ece45eeb06c49feb3c0c881486eb332ad",
+      "size_bytes": 492125
+    },
+    "archive_govt_nz-0.1.0.tar.gz": {
+      "sha256": "29d54ea012a62870cd649108de217d81fac8d9e2f357549c9a82a74eed8eae8d",
+      "size_bytes": 349270
+    }
+  },
+  "seconds": 1.3866178749995015
+}

@@ -1,0 +1,87 @@
+"""One CI snapshot and, only on completion, independently bind checkout logs."""
+import hashlib
+import json
+import re
+import subprocess
+from datetime import UTC, datetime
+from pathlib import Path
+
+OUT = Path(__file__).resolve().parent
+HEAD = "fcb8f7c89ffe18afd854f23f40c448fcc3a9efeb"
+RUN = 34076444097
+PREFIX = "repos/edithatogo/archive-govt-nz/"
+SOURCES = {}
+
+
+def sha(raw):
+    return hashlib.sha256(raw).hexdigest()
+
+
+def get(endpoint):
+    # Capture only: ANSI bytes never reach the terminal or published evidence.
+    flags = ["--allow-escape-sequences"] if endpoint.endswith("/logs") else []
+    result = subprocess.run(["gh", "api", *flags, PREFIX + endpoint], capture_output=True,
+                            timeout=120, check=True)
+    SOURCES[endpoint] = sha(result.stdout)
+    return result.stdout
+
+
+def main():
+    run = json.loads(get(f"actions/runs/{RUN}"))
+    jobs_page = json.loads(get(f"actions/runs/{RUN}/attempts/1/jobs?per_page=100"))
+    jobs = jobs_page["jobs"]
+    expected = {f"Assurance ({os})" for os in ("ubuntu-latest", "macos-latest", "windows-latest")}
+    assert run["head_sha"] == HEAD and run["run_attempt"] == 1
+    assert jobs_page["total_count"] == len(jobs) == 3
+    assert {job["name"] for job in jobs} == expected
+    if run["status"] != "completed":
+        print(json.dumps({"status": "pending", "run_id": RUN}))
+        return
+    reviewed_tree = subprocess.check_output(["git", "rev-parse", HEAD + "^{tree}"], text=True).strip()
+    verified = []
+    for job in jobs:
+        raw = get(f"actions/jobs/{job['id']}/logs")
+        assert len(raw) <= 32 * 1024**2
+        lines = raw.decode("utf-8", errors="replace").splitlines()
+        checked_out = []
+        for index, line in enumerate(lines):
+            if "log -1 --format=%H" in line:
+                for following in lines[index + 1:index + 4]:
+                    match = re.search(r"\b([0-9a-f]{40})\s*$", following)
+                    if match:
+                        checked_out.append(match.group(1))
+                        break
+        assert len(checked_out) == 1, "checkout SHA could not be uniquely extracted"
+        checkout = checked_out[0]
+        commit = json.loads(get("commits/" + checkout))
+        tree = commit["commit"]["tree"]["sha"]
+        steps = [step for step in job["steps"] if step["name"] == "Run locked assurance gate"]
+        assert len(steps) == 1
+        verified.append({
+            "id": job["id"], "name": job["name"], "head_sha": job["head_sha"],
+            "conclusion": job["conclusion"], "locked_gate": steps[0],
+            "checkout_commit": checkout, "checkout_tree": tree,
+            "checkout_parents": [p["sha"] for p in commit["parents"]],
+            "reviewed_tree_equal": tree == reviewed_tree,
+            "log_sha256": sha(raw), "log_bytes": len(raw),
+            "log_retention": "digest and checkout projection only; raw logs not published",
+        })
+    passed = (run["conclusion"] == "success" and all(
+        row["conclusion"] == "success" and row["locked_gate"]["conclusion"] == "success"
+        and row["head_sha"] == HEAD and row["reviewed_tree_equal"] for row in verified))
+    receipt = {
+        "status": "passed" if passed else "failed_or_different_checkout_tree",
+        "observed_at": datetime.now(UTC).isoformat(), "target_commit": HEAD,
+        "reviewed_tree": reviewed_tree,
+        "run": {k: run[k] for k in ("id", "head_sha", "event", "path", "run_attempt", "status", "conclusion")},
+        "jobs": verified, "source_sha256": SOURCES,
+        "probe_sha256": sha(Path(__file__).read_bytes()),
+        "interpretation": "Each hosted locked gate passed on the actual checkout tree shown in its log; a PR merge SHA is explicitly distinguished from the reviewed branch SHA.",
+        "remote_mutations": False,
+    }
+    (OUT / "ci-three-os-readback.json").write_text(json.dumps(receipt, indent=2, sort_keys=True) + "\n")
+    print(json.dumps({"status": receipt["status"], "jobs": len(verified)}))
+
+
+if __name__ == "__main__":
+    main()

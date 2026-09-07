@@ -1,0 +1,8 @@
+{
+  "artifact-readback.json": "b309ef587a9222684e79f7ebc57db157c8d8bd47768bab60cd703e5b480e5a4e",
+  "resource-probe.py.txt": "5f894a831ba9376e6851aa460565277dc8458ade5c27bf48852b077b95749836",
+  "resource-receipt.json": "fe09217319fc3a477177310a0e2ec7461ceb2cbc50a43569972b9f9ca0a77e48",
+  "resource-reconciliation.json": "8e0da16186ad385b02fcfc1f7b37bfa7182cbe3064d63d5cbe02ccfb75e35654",
+  "security-ruleset-readback.json": "3fe37b44a5225d86d47752f4753cabc1dc415005546bfb987688ab48a31b9849",
+  "verify-supplementary.py.txt": "bcff08d8d8c3382c0d53601e4be52fa50553d6862028d68d74201ec6cde0de75"
+}

@@ -1,0 +1,84 @@
+{
+  "schema_version": "archive-govt-nz.final-followup-assurance/v1",
+  "target_commit": "fcb8f7c89ffe18afd854f23f40c448fcc3a9efeb",
+  "target_tree": "3b63cc340f93ce3b7dd813ab1259537926ce4bef",
+  "status": "requested_assurance_passed_peer_review_pending",
+  "gates": {
+    "local_resource": {
+      "status": "passed",
+      "receipt": "resource-receipt.json"
+    },
+    "reproducible_packages": {
+      "status": "passed",
+      "receipt": "reproducible-builds.json"
+    },
+    "supplementary": {
+      "status": "passed",
+      "run_id": 34076444101,
+      "suites": 11,
+      "files_verified": 113,
+      "receipt": "supplementary-artifact-verification.json"
+    },
+    "three_os_ci": {
+      "status": "passed",
+      "run_id": 34076444097,
+      "actual_checkout_commit": "92410a99d6dd9b6c16fb924d3c6d88913d65ad4d",
+      "checkout_tree_equals_reviewed_tree": true,
+      "receipt": "ci-three-os-readback.json"
+    },
+    "donor": {
+      "status": "passed",
+      "receipt": "donor-readback.json"
+    },
+    "security_ruleset": {
+      "status": "passed",
+      "receipt": "security-ruleset-readback.json"
+    },
+    "peer_review": {
+      "status": "not_attested",
+      "owner": "Popper",
+      "finding": "No Popper finding or acceptance was supplied to this verifier; visible GitHub syntax thread is resolved."
+    }
+  },
+  "parent_local_harness": {
+    "tested_commit": "1f53a6e80873a99acc67c746fa6f1478b78b24aa",
+    "tests_passed": 5188,
+    "coverage_percent": 97.63953331231137,
+    "receipt": "evidence/assurance/ordered-followup-20260907/local-validation.json",
+    "difference_to_target": "Only that new evidence JSON; confirmed by git diff",
+    "independently_rerun": false
+  },
+  "local_delivery_checks": {
+    "probe_syntax": "passed",
+    "indexed_digests": "verified",
+    "targeted_secret_scan": "zero candidates with unchanged repository exclusions",
+    "full_local_harness_run": false
+  },
+  "receipt_sha256": {
+    "artifact-readback.json": "b309ef587a9222684e79f7ebc57db157c8d8bd47768bab60cd703e5b480e5a4e",
+    "build-1-receipt.json": "3e89a0734bd6abb3bcf6dd42a81a5ed77f815aa99b114525b2d55f2592b825be",
+    "build-2-receipt.json": "6a280a43ac384d9d2b77ad04158bb878f7edf0f9599f6249f173523675fcd9c1",
+    "ci-log-readback-attempt01.json": "3653a499a909acfccd4dcbc5741c4c82c68b542d00388cac8d4d9c930197db53",
+    "ci-three-os-observation-01.json": "ef400a7d2fc55ceef480a316266c8534a176739a6c263e910ae18fbe9345fdd4",
+    "ci-three-os-readback.json": "d64b2f483066066402bd050dc0697f347c891bc4d9ff7c1e91f71ba4142310cd",
+    "donor-readback.json": "03341cee2cb4315e67d6e3f9ff59ebb1c71f4057b2bb84cb41cfaac3dfc41166",
+    "receipt-index.json": "0a1370b8a1b9461eda240cc989e938fe41eb23d650d1ac0cdc4905c316a720d2",
+    "reproducible-builds.json": "8486b79e1859ebf141ba13d3e8809b8274e0ebcb0f6b85b3fe8b690ec7d5764a",
+    "resource-probe.py.txt": "5f894a831ba9376e6851aa460565277dc8458ade5c27bf48852b077b95749836",
+    "resource-receipt.json": "fe09217319fc3a477177310a0e2ec7461ceb2cbc50a43569972b9f9ca0a77e48",
+    "resource-reconciliation.json": "8e0da16186ad385b02fcfc1f7b37bfa7182cbe3064d63d5cbe02ccfb75e35654",
+    "review-readback.json": "fd82726303dc420678866d1c892582b1b52e39d14886f2bce8c5190b57bdee0b",
+    "review.md": "4465ecfd39fb2eab8b214f27d372aadac63b2a7e24e1bfc8cefc4123b0aaa72f",
+    "security-ruleset-readback.json": "3fe37b44a5225d86d47752f4753cabc1dc415005546bfb987688ab48a31b9849",
+    "supplementary-artifact-verification.json": "5d77d6c160219de7d6dd4c189fd51fd5ec77a2a1105fa0e8dce5030e101497bd",
+    "supplementary-verification-index.json": "79cafea904fd02c0c11096607e96a458a06770d18948784ddb2caecca90a81e5",
+    "verify-builds.py.txt": "ca5193b1aefb8edcee6eeab39f1bc2873f8811cfb62dd1b8a214aea932597c5a",
+    "verify-ci-logs-attempt01.py.txt": "8461f5da31d42309508b8f5988fd365c9cf84b0f3ca5cede706c128279392784",
+    "verify-ci-logs.py.txt": "2ff29eb415a11a03252c89ae42d88c03d1a3a5e18911deb5ee176d8ed5130ba5",
+    "verify-hosted.py.txt": "7a9de578614a9d78e55e4501d7183a16221a577967319cc8b09c12526b0d2b2f",
+    "verify-supplementary.py.txt": "bcff08d8d8c3382c0d53601e4be52fa50553d6862028d68d74201ec6cde0de75"
+  },
+  "remote_mutations": false,
+  "tracks_closed": false,
+  "boundary": "Evidence only; do not infer final programme delivery or peer approval from this receipt."
+}

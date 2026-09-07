@@ -1,0 +1,91 @@
+"""Build two independent exact-commit source exports; retain hashes, not packages."""
+import hashlib
+import io
+import json
+import os
+import platform
+import subprocess
+import sys
+import tarfile
+import tempfile
+import time
+from pathlib import Path
+
+HEAD = "fcb8f7c89ffe18afd854f23f40c448fcc3a9efeb"
+OUT = Path(__file__).resolve().parent
+
+
+def sha(raw):
+    return hashlib.sha256(raw).hexdigest()
+
+
+def git(*args):
+    return subprocess.check_output(["git", *args])
+
+
+def save(name, value):
+    (OUT / name).write_text(json.dumps(value, indent=2, sort_keys=True) + "\n")
+
+
+def main():
+    if git("rev-parse", "HEAD").decode().strip() != HEAD:
+        raise RuntimeError("reviewed HEAD required")
+    if os.environ.get("GITHUB_ACTIONS") or os.environ.get("GITHUB_RUN_ID"):
+        raise RuntimeError("local context required")
+    subprocess.run(["git", "check-ignore", ".tmp/builds"], check=True, capture_output=True)
+    scratch_root = Path.cwd() / ".tmp"
+    scratch_root.mkdir(exist_ok=True)
+    scratch = Path(tempfile.mkdtemp(prefix="final-builds-", dir=scratch_root))
+    archive = git("archive", "--format=tar", HEAD)
+    epoch = git("show", "-s", "--format=%ct", HEAD).decode().strip()
+    environment = {**os.environ, "SOURCE_DATE_EPOCH": epoch}
+    attempts = []
+    source_hashes = []
+    # Both exports consist solely of reviewed commit bytes. Untracked assurance
+    # additions and existing worktree environments cannot enter these builds.
+    for number in (1, 2):
+        source = scratch / f"source-{number}"
+        source.mkdir()
+        with tarfile.open(fileobj=io.BytesIO(archive)) as tar:
+            tar.extractall(source, filter="data")
+        hashes = {p.relative_to(source).as_posix(): sha(p.read_bytes())
+                  for p in sorted(source.rglob("*")) if p.is_file()}
+        source_hashes.append(sha(json.dumps(hashes, sort_keys=True).encode()))
+        command = ["uv", "build", str(source), "--out-dir", str(scratch / f"build-{number}")]
+        started = time.monotonic()
+        result = subprocess.run(command, env=environment, capture_output=True, timeout=300)
+        # No raw logs are published; they may expose environment index URLs.
+        log = result.stdout + result.stderr
+        (scratch / f"build-{number}.log").write_bytes(log)
+        packages = {p.name: {"sha256": sha(p.read_bytes()), "size_bytes": p.stat().st_size}
+                    for p in sorted((scratch / f"build-{number}").glob("*"))
+                    if p.name.endswith((".whl", ".tar.gz"))}
+        attempts.append({"number": number, "command": command, "exit_code": result.returncode,
+                         "seconds": time.monotonic() - started, "log_sha256": sha(log), "packages": packages})
+        save(f"build-{number}-receipt.json", attempts[-1])
+        if result.returncode or len(packages) != 2:
+            save("reproducible-builds.json", {"status": "failed", "target_commit": HEAD,
+                 "attempts": attempts, "automatic_retry": False})
+            raise RuntimeError("build failed; receipt preserved")
+    identical = attempts[0]["packages"] == attempts[1]["packages"]
+    same_sources = source_hashes[0] == source_hashes[1]
+    save("reproducible-builds.json", {
+        "status": "passed" if identical and same_sources else "failed", "target_commit": HEAD,
+        "execution_context": "local", "source_date_epoch": int(epoch),
+        "source_archive_sha256": sha(archive), "source_file_manifest_sha256": source_hashes,
+        "source_tree": git("rev-parse", HEAD + "^{tree}").decode().strip(),
+        "uv": subprocess.check_output(["uv", "--version"], text=True).strip(),
+        "python": sys.version, "platform": platform.platform(),
+        "uv_lock_sha256": sha(Path("uv.lock").read_bytes()),
+        "probe_sha256": sha(Path(__file__).read_bytes()), "attempts": attempts,
+        "byte_identical": identical, "source_exports_identical": same_sources,
+        "package_publication": False,
+        "limitations": "Two local builds from separate git-archive exports of the same reviewed commit, same toolchain and SOURCE_DATE_EPOCH; not cross-platform reproducibility or full-harness execution.",
+    })
+    if not identical or not same_sources:
+        raise RuntimeError("reproducibility mismatch; both attempts retained")
+    print(json.dumps({"status": "passed", "packages": attempts[0]["packages"]}))
+
+
+if __name__ == "__main__":
+    main()

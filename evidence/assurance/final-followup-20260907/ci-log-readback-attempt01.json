@@ -1,0 +1,11 @@
+{
+  "status": "local_verifier_failed",
+  "hosted_run": 34076444097,
+  "job": 101603388600,
+  "stage": "download_completed_job_log",
+  "cause": "gh refused output containing terminal escape sequences before returning log bytes.",
+  "original_probe_sha256": "8461f5da31d42309508b8f5988fd365c9cf84b0f3ca5cede706c128279392784",
+  "correction": "Use --allow-escape-sequences only for captured log GETs; publish only hashes and checkout projections, never raw logs or escapes.",
+  "hosted_execution_retried": false,
+  "remote_mutations": false
+}
