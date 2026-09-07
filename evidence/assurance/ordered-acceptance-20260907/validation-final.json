@@ -1,0 +1,18 @@
+{
+  "status": "passed_local",
+  "tested_commit": "4eda40143ec0bdb052d695fbe1931aca46dc7118",
+  "command": "PYTEST_XDIST_AUTO_NUM_WORKERS=2 ./scripts/validate.sh",
+  "exit_code": 0,
+  "tests_passed": 5225,
+  "coverage_percent_rounded": 97.66,
+  "cas_throughput_mb_s": 670.13,
+  "schema_and_parity": "passed",
+  "mutation_suites": "passed",
+  "dependency_audit": "no known vulnerabilities",
+  "licence_inventory": "passed",
+  "credential_scan": "passed with unchanged baseline and exclusions",
+  "sbom": "validated, 112 components",
+  "independent_review": "Meitner reviewed 4eda4014; prior P2 closed, no new findings; 80 reference and 22 nested receipt hashes checked",
+  "prior_failed_attempt": "validation-attempt01.json",
+  "delivery": "hosted checks and merge pending; local validation is not hosted acceptance"
+}
