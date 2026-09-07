@@ -99,9 +99,14 @@ def _require(condition: object) -> None:
         raise ValueError(message)
 
 
-def _selected_tokens(payload: bytes) -> dict[str, dict[str, str]]:
+def _selected_tokens(
+    payload: bytes, *, selected_sheets: frozenset[str] | None = None
+) -> dict[str, dict[str, str]]:
     # Inventory caps and whole-object fixity precede this lexical read. Unlike
     # historical._number_tokens, unrelated chart-sheet parts are not worksheets.
+    selected_sheets = (
+        frozenset(PROFILES) if selected_sheets is None else selected_sheets
+    )
     ns = "{http://schemas.openxmlformats.org/spreadsheetml/2006/main}"
     rel = "{http://schemas.openxmlformats.org/officeDocument/2006/relationships}"
     with ZipFile(BytesIO(payload)) as package:
@@ -111,7 +116,7 @@ def _selected_tokens(payload: bytes) -> dict[str, dict[str, str]]:
         result = {}
         for sheet in _xml(package, "xl/workbook.xml").findall(f"{ns}sheets/{ns}sheet"):
             title = sheet.get("name", "")
-            if title not in PROFILES:
+            if title not in selected_sheets:
                 continue
             _require(title not in result)
             relation = by_id[sheet.get(f"{rel}id")]
@@ -137,7 +142,7 @@ def _selected_tokens(payload: bytes) -> dict[str, dict[str, str]]:
                 ):
                     tokens[coordinate] = values[0].text
             result[title] = tokens
-        _require(set(result) == set(PROFILES))
+        _require(set(result) == selected_sheets)
         return result
 
 
