@@ -6,6 +6,8 @@ import json
 import socket
 from collections.abc import AsyncIterator  # noqa: TC003
 from pathlib import Path
+from types import SimpleNamespace
+from urllib.robotparser import RobotFileParser
 
 import httpx
 import pytest
@@ -301,3 +303,76 @@ def test_metadata_drops_arbitrary_personal_text_and_unsafe_links() -> None:
     assert parser.links == [
         {"url": "https://example.org/foi", "label": "FOI", "kind": "foi"}
     ]
+
+
+@pytest.mark.parametrize(("crawl_delay", "interval"), [(5, 1), (1, 5)])
+def test_every_redirect_hop_respects_shared_origin_crawl_delay(
+    monkeypatch: pytest.MonkeyPatch, crawl_delay: int, interval: int
+) -> None:
+    """Pacing applies inside the shared origin lock, not once before a chain."""
+
+    async def check() -> None:
+        clock = [100.0]
+        starts = []
+
+        async def sleep(seconds: float) -> None:
+            clock[0] += seconds
+
+        async def get(url: str, cap: int, bounds: Bounds) -> tuple[dict, bytes]:
+            assert url.startswith("https://")
+            assert cap
+            assert bounds
+            starts.append(clock[0])
+            clock[0] += 0.2
+            if len(starts) <= 2:
+                return {
+                    "outcome": "redirect",
+                    "redirect_url": f"https://www.example.org/hop{len(starts)}",
+                }, b""
+            return {"outcome": "observed"}, b"ok"
+
+        collector = probe._Collector(Bounds(origin_interval=interval), get)  # noqa: SLF001
+        monkeypatch.setattr(collector, "loop", SimpleNamespace(time=lambda: clock[0]))
+        collector.last["example.org"] = clock[0]
+        policy = RobotFileParser()
+        policy.parse(["User-agent: *", f"Crawl-delay: {crawl_delay}"])
+        monkeypatch.setattr(probe.asyncio, "sleep", sleep)
+        chain = []
+        await collector.follow("https://example.org/start", 100, chain, policy)
+        # Another request without its own policy must respect the known origin delay.
+        await collector.follow("https://example.org/robots.txt", 100, [])
+        delay = max(crawl_delay, interval)
+        assert starts == [100 + delay * i for i in range(1, 5)]
+
+    asyncio.run(check())
+
+
+@pytest.mark.parametrize(
+    "name", ["request_seconds", "source_seconds", "total_seconds", "origin_interval"]
+)
+@pytest.mark.parametrize(
+    "value", [float("inf"), float("-inf"), float("nan"), True, False, "10", None]
+)
+def test_time_budgets_reject_nonfinite_or_non_numeric(name: str, value: object) -> None:
+    """A duration cannot disable timeout/pacing through nonfinite or coerced values."""
+    with pytest.raises(ValueError, match="invalid_probe_bounds"):
+        Bounds(**{name: value})  # type: ignore[arg-type]  # Deliberately invalid input.
+
+
+@pytest.mark.parametrize("name", ["workers", "max_bytes", "max_redirects"])
+@pytest.mark.parametrize(
+    "value", [True, False, 1.5, float("inf"), float("nan"), "1", None]
+)
+def test_count_budgets_require_real_integers(name: str, value: object) -> None:
+    """Booleans and fractional/coerced counts are not meaningful resource budgets."""
+    with pytest.raises(ValueError, match="invalid_probe_bounds"):
+        Bounds(**{name: value})  # type: ignore[arg-type]  # Deliberately invalid input.
+
+
+@pytest.mark.parametrize(
+    "kwargs", [{"max_bytes": 1000001}, {"max_redirects": 4}, {"workers": 9}]
+)
+def test_count_budgets_cannot_expand_hard_caps(kwargs: dict) -> None:
+    """Configured cohorts cannot silently exceed the declared hard count caps."""
+    with pytest.raises(ValueError, match="invalid_probe_bounds"):
+        Bounds(**kwargs)

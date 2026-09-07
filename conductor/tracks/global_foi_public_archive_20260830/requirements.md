@@ -61,3 +61,11 @@ dated metadata-only observations, including access failures. Preserve AL/BH
 observations unchanged. Distinguish general catalogue interfaces out of FOI
 capture scope from FOI leads and uncertainty; no exhaustive discovery, rights,
 activation or publication inference. Evidence and review: candidate-cohort-review-20260907.md.
+
+
+## P2.13 review correction acceptance
+
+AC04/AC09/AC11/AC12: reject nonfinite/mistyped budgets before collection, honor
+known crawl delay per origin inside the lock on every hop, and reject page-success
+claims not backed by terminal 200 HTML. Preserve immutable observations and append
+an explicit historical pacing correction. No full-cohort replay or rights decision.

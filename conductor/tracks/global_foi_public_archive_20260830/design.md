@@ -159,3 +159,14 @@ claimed fenced at a publication sink until they use this authority and the sink
 serializes or conditionally rejects stale-owner writes. Privileged force-push,
 branch deletion, malicious application code and GitHub service durability are
 not solved by an optimistic CAS API. No new paid service is introduced.
+
+
+## P2.13 guard correction
+
+Every hop now shares a locked per-origin maximum learned robots delay; the earlier
+one-off sleep was insufficient for redirects. The offline assessor binds media and
+outcome to the terminal response with only an explicit observed plain-text to
+non-HTML conversion. Duration/count inputs fail before collection if nonfinite,
+mistyped or outside hard count caps. Historical collector bytes remain in an inert
+track snapshot; observation hashes and earlier reports remain unchanged. See the
+dated correction for the confirmed Italy pacing breach; no replay is implied.

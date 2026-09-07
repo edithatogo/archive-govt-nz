@@ -257,3 +257,12 @@ metadata-only evidence, determinism, restrictive policy preservation and challen
 handling. [Detailed review](candidate-cohort-review-20260907.md) records focused
 validation and coverage limits. No complete-country, rights or publication claim.
 No required human factual-review queue. Parent full integration remains pending.
+
+
+## P2.13 priority independent findings — 2026-09-07
+
+Confirmed all three findings: redirect pacing, forged AE 404 assessment and
+nonfinite budgets. Applied fixes with observed red/green regression evidence;
+[dated correction](candidate-probe-review-correction-20260907.md) withdraws the
+historical blanket pacing claim without rewriting original evidence. 208 focused
+tests pass. Full integration remains with parent; P2.12 delivery held separately.

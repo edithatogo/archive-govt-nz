@@ -6,7 +6,6 @@ import asyncio
 import hashlib
 import ipaddress
 import json
-import math
 import socket
 import unicodedata
 from dataclasses import asdict, dataclass
@@ -26,8 +25,6 @@ if TYPE_CHECKING:
     from collections.abc import Awaitable, Callable
 
 MAX_WORKERS = 8
-MAX_PAGE_BYTES = 1_000_000
-MAX_REDIRECTS = 3
 ROBOTS_BYTES = 65_536
 CHUNK_BYTES = 16_384
 MAX_LABEL = 160
@@ -96,25 +93,13 @@ class Bounds:
 
     def __post_init__(self) -> None:
         """Reject unbounded or excessive worker and transfer settings."""
-        times = (
-            self.request_seconds,
-            self.source_seconds,
-            self.total_seconds,
-            self.origin_interval,
-        )
-        counts = (self.workers, self.max_bytes, self.max_redirects)
         if (
-            any(
-                type(value) not in {int, float} or not math.isfinite(value)
-                for value in times
-            )
-            or any(type(value) is not int for value in counts)
-            or not 1 <= self.workers <= MAX_WORKERS
+            not 1 <= self.workers <= MAX_WORKERS
             or self.request_seconds <= 0
             or self.source_seconds <= 0
             or self.total_seconds <= 0
-            or not 1 <= self.max_bytes <= MAX_PAGE_BYTES
-            or not 0 <= self.max_redirects <= MAX_REDIRECTS
+            or self.max_bytes < 1
+            or self.max_redirects < 0
             or self.origin_interval < 0
         ):
             msg = "invalid_probe_bounds"
@@ -326,7 +311,6 @@ class _Collector:
         self.semaphore = asyncio.Semaphore(bounds.workers)
         self.locks: dict[str, asyncio.Lock] = {}
         self.last: dict[str, float] = {}
-        self.delays: dict[str, float] = {}
         self.loop = asyncio.get_running_loop()
         self.deadline = self.loop.time() + bounds.total_seconds
 
@@ -354,17 +338,11 @@ class _Collector:
                 return b""
             origin = str(urlsplit(url).hostname).removeprefix("www.")
             async with self.locks.setdefault(origin, asyncio.Lock()):
-                # Keep the strongest learned delay for this origin across chains.
-                # Every redirect and concurrent caller shares this locked spacing.
-                delay = float(policy.crawl_delay(USER_AGENT) or 0) if policy else 0
-                self.delays[origin] = max(
-                    self.bounds.origin_interval, self.delays.get(origin, 0), delay
-                )
                 await asyncio.sleep(
                     max(
                         0,
                         self.last.get(origin, 0)
-                        + self.delays[origin]
+                        + self.bounds.origin_interval
                         - self.loop.time(),
                     )
                 )
@@ -399,6 +377,7 @@ class _Collector:
             if not allowed:
                 result["outcome"] = "robots_disallowed"
                 return
+            await asyncio.sleep(float(robot.crawl_delay(USER_AGENT) or 0))
         elif terminal["status"] not in {HTTPStatus.NOT_FOUND, HTTPStatus.GONE}:
             result["outcome"] = "robots_unverified"
             return

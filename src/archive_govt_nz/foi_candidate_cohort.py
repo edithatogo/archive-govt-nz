@@ -96,8 +96,30 @@ def _observation(row: dict[str, Any], bounds: Bounds) -> None:
         )
         _require(bool(row["redirect_chain"]), "missing_page_trace")
         terminal = row["redirect_chain"][-1]
-        for key in ("url", "observed_at", "status", "body_bytes", "body_sha256"):
+        for key in (
+            "url",
+            "observed_at",
+            "status",
+            "body_bytes",
+            "body_sha256",
+            "media_type",
+        ):
             _require(page[key] == terminal[key], "page_trace_mismatch")
+        expected_outcome = terminal["outcome"]
+        if expected_outcome == "observed":
+            _require(terminal["status"] == HTTPStatus.OK, "unbacked_terminal_success")
+            if terminal["media_type"] == "text/plain":
+                expected_outcome = "non_html_metadata"
+                _require(
+                    not page["title"] and not page["links"],
+                    "non_html_terminal_metadata",
+                )
+            else:
+                _require(
+                    terminal["media_type"] in {"text/html", "application/xhtml+xml"},
+                    "non_html_terminal_success",
+                )
+        _require(page["outcome"] == expected_outcome, "page_terminal_outcome_mismatch")
         _require(row["outcome"] == page["outcome"], "page_outcome_mismatch")
         _require(
             len(page["title"]) <= MAX_LABEL and len(page["links"]) <= MAX_LINKS,

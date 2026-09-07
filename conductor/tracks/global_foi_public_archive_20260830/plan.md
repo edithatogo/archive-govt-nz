@@ -91,6 +91,18 @@ The approved destination is archive-govt-nz; no cutover has occurred.
   prior two assessments are unchanged. Scoped validation and limitations:
   `candidate-cohort-review-20260907.md`. Parent owns full integration.
 
+### P2 priority review corrections — 2026-09-07
+
+- [x] P2.13 (AC04, AC09, AC11, AC12): Resolve independent reviewer findings
+  before further cohort delivery: enforce learned robots crawl-delay under the
+  shared origin lock on every hop; bind successful page outcome/media to the
+  observed 200 HTML terminal; reject nonfinite/mistyped duration and count bounds.
+  Preserve historical bytes, including the Italy timing violation, and append
+  an explicit dated correction of the earlier pacing-compliance claim. No replay
+  or network reads; focused regression/mutation checks only, parent full harness.
+  Receipt: `candidate-probe-review-correction-20260907.json` / `.md`.
+  208 focused tests pass; historical pacing compliance is explicitly not certified.
+
 ## Phase 3 — Metadata indexes and immutable raw storage
 
 - [x] P3.1 (AC05, AC06, AC11): Add red tests for original metadata preservation, request/correspondence/attachment relationships, revisions, missing objects, synthetic/CDX rejection, unsafe archive members, private-network redirects, expansion/resource limits, active content and sensitive exports.

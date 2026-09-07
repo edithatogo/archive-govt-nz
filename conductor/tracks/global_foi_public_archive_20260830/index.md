@@ -80,3 +80,7 @@ Approved track in progress. Automation repair and source-catalogue foundations a
 - [Complete candidate assessment JSON](candidate-assessment-complete.json)
 - [Remaining 223 dated observations](candidate-observations-remaining-20260907.json)
 - [P2.11 cohort review and limits](candidate-cohort-review-20260907.md)
+
+
+- [Priority correction: historical pacing and assessment guards](candidate-probe-review-correction-20260907.md)
+- [Priority correction receipt](candidate-probe-review-correction-20260907.json)
