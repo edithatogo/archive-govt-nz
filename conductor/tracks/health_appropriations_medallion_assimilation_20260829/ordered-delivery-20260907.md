@@ -35,3 +35,19 @@ This delivers the bounded donor SQLite reader, exclusive output boundary and
 Budget layout-drift contracts. It does not close all normalization, mapping,
 source coverage or analytical-selection requirements. No additional whole-phase
 checkbox transition is inferred from this delivery.
+
+## Read-only and resume interfaces delivery
+
+PR #426 merged at 2026-09-07T05:57:55Z as
+`90a2140e1eeea0d1b36af13af81eaeeb0284949a`, reviewed head
+`9b5f684a2b2256340ff7ca2b52fa8d7c7a8331fc`. All required checks passed,
+including three OS checks in run `34088088699`; Windows job `101635899390`
+completed in 11m4s. The main ancestry update preserved tree
+`dbc9a8673f34d5a05f097532bbba081fa21d9096`.
+
+This delivers read-only workbook inspection, explicit local resume operations,
+61 Crown raw/context literals and the bounded FOI prerequisite receipt search.
+It does not supply the missing historical FOI raw package or changed-sync proof.
+The full local gate passed 6,069 tests and all subsequent checks; exact tested
+commit and prior evidence are in `evidence/assurance/health-interfaces-integration-20260907.md`.
+No whole-phase acceptance or rights/publication inference is made.
