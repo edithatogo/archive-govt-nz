@@ -1,0 +1,64 @@
+{
+  "body_sha256": "66617b06cce61d19b3a2dadc4e352d32af9292334bb9cae4379a82147fcfd28d",
+  "changes": [],
+  "exact_addendum_body_unchanged": true,
+  "historical_runs": [
+    {
+      "conclusion": "success",
+      "head_sha": "cd338bbce9e0d5d7b033377ac9c3794acb8b93d1",
+      "id": 32625516235,
+      "unchanged": true
+    },
+    {
+      "conclusion": "success",
+      "head_sha": "cd338bbce9e0d5d7b033377ac9c3794acb8b93d1",
+      "id": 32625566353,
+      "unchanged": true
+    },
+    {
+      "conclusion": "success",
+      "head_sha": "cd338bbce9e0d5d7b033377ac9c3794acb8b93d1",
+      "id": 32625612739,
+      "unchanged": true
+    },
+    {
+      "conclusion": "success",
+      "head_sha": "abdb814347b78caefa3402bae749a13088d6134f",
+      "id": 32625990438,
+      "unchanged": true
+    },
+    {
+      "conclusion": "success",
+      "head_sha": "949f6f6abed0cfb668fc5f163129f11e54f335a3",
+      "id": 32626071396,
+      "unchanged": true
+    },
+    {
+      "conclusion": "success",
+      "head_sha": "949f6f6abed0cfb668fc5f163129f11e54f335a3",
+      "id": 32626113799,
+      "unchanged": true
+    }
+  ],
+  "limitations": [
+    "Historical cycle artifacts and attestation reused from fixity-bound prior correction receipt; no fresh recovery execution"
+  ],
+  "observed_at": "2026-09-07T02:56:57.446195+00:00",
+  "probe_sha256": "335bf2786667c45a74ea49db08ad00e72f7f8c995c637cff7d51f32dfd7aefd3",
+  "release": {
+    "draft": false,
+    "id": 375146205,
+    "name": "Legislation consolidation cutover v1.0.0",
+    "prerelease": false,
+    "published_at": "2026-08-23T07:41:01Z",
+    "tag_name": "legislation-cutover-v1.0.0"
+  },
+  "remote_mutations": false,
+  "status": "unchanged_verified_references",
+  "tag_target": {
+    "sha": "949f6f6abed0cfb668fc5f163129f11e54f335a3",
+    "type": "commit",
+    "url": "https://api.github.com/repos/edithatogo/archive-govt-nz/git/commits/949f6f6abed0cfb668fc5f163129f11e54f335a3"
+  },
+  "target_commit": "7afaec8e4629477aa4f18c0a35c88f815cf05a5c"
+}

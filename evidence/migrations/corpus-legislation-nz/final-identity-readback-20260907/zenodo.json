@@ -1,0 +1,69 @@
+{
+  "changes": [],
+  "concept_response": {
+    "location": "/api/records/20592540",
+    "status": 302
+  },
+  "files": [
+    {
+      "checksum": "md5:a503b9a61904a836d2b45419347ae823",
+      "downloaded": true,
+      "http_status": 200,
+      "key": "nz-legislation-corpus-2026.SHA256SUMS.txt",
+      "metadata_unchanged": true,
+      "prior_download_sha256": "1910e55aa57b74c5892227ab97eeff6b706e420f782e589a013224a8404e85eb",
+      "sha256": "1910e55aa57b74c5892227ab97eeff6b706e420f782e589a013224a8404e85eb",
+      "size": 208
+    },
+    {
+      "checksum": "md5:00dee66bc1d66d52f1b31284ed11f516",
+      "downloaded": false,
+      "key": "nz-legislation-corpus-2026.tar.zst",
+      "metadata_unchanged": true,
+      "prior_download_sha256": "1b7d5b2ab27bea138eb947f5971e993de7cf0e5b6f730bb905bbd9aa033be060",
+      "size": 208721
+    },
+    {
+      "checksum": "md5:6139f4539661d50aaa47a03707f2dea0",
+      "downloaded": true,
+      "http_status": 200,
+      "key": "nz-legislation-corpus-2026.manifest.json",
+      "metadata_unchanged": true,
+      "prior_download_sha256": "ea1212f47b0848971bdf41d87ee9236221c7130a0d55924bbf368b6075adf3a9",
+      "sha256": "ea1212f47b0848971bdf41d87ee9236221c7130a0d55924bbf368b6075adf3a9",
+      "size": 3104
+    }
+  ],
+  "identity": {
+    "conceptdoi": "10.5281/zenodo.20592539",
+    "conceptrecid": "20592539",
+    "doi": "10.5281/zenodo.20592540",
+    "id": 20592540
+  },
+  "limitations": [
+    "Immutable 2026 snapshot lineage is preserved; missing target GitHub metadata is a known historical limitation",
+    "Archive payload reused by record/file checksum identity; no new version or metadata update performed"
+  ],
+  "metadata": {
+    "access_right": "open",
+    "publication_date": "2026-06-08",
+    "related_identifiers": [
+      {
+        "identifier": "https://huggingface.co/datasets/edithatogo/corpus-legislation-nz",
+        "relation": "isSupplementTo",
+        "resource_type": "dataset",
+        "scheme": "url"
+      }
+    ],
+    "title": "New Zealand Legislation Corpus: 2026 annual snapshot",
+    "version": "2026"
+  },
+  "observed_at": "2026-09-07T02:56:58.189980+00:00",
+  "probe_sha256": "335bf2786667c45a74ea49db08ad00e72f7f8c995c637cff7d51f32dfd7aefd3",
+  "remote_mutations": false,
+  "status": "unchanged_verified_references",
+  "target_commit": "7afaec8e4629477aa4f18c0a35c88f815cf05a5c",
+  "version_ids": [
+    20592540
+  ]
+}

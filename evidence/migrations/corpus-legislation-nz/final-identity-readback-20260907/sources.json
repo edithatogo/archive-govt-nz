@@ -1,0 +1,204 @@
+{
+  "https://api.github.com/repos/edithatogo/archive-govt-nz/actions/runs/32625516235": {
+    "authentication": "existing gh read credential",
+    "bytes": 13205,
+    "observed_at": "2026-09-07T02:56:53.712841+00:00",
+    "response_sha256": "b8f68816804fed81c1f92fd0d8a6940c2a85d567ef7f4c626a38ff842ce825ba"
+  },
+  "https://api.github.com/repos/edithatogo/archive-govt-nz/actions/runs/32625566353": {
+    "authentication": "existing gh read credential",
+    "bytes": 13204,
+    "observed_at": "2026-09-07T02:56:54.780657+00:00",
+    "response_sha256": "00023ca5926b1b1e6b460f74233c11658ca1b2b431f13fbc2d17fb2dde23c4c9"
+  },
+  "https://api.github.com/repos/edithatogo/archive-govt-nz/actions/runs/32625612739": {
+    "authentication": "existing gh read credential",
+    "bytes": 13200,
+    "observed_at": "2026-09-07T02:56:55.350159+00:00",
+    "response_sha256": "f81cb444cc030e474329b60dce8d82a782b52727acddb812dad29837fbf6c375"
+  },
+  "https://api.github.com/repos/edithatogo/archive-govt-nz/actions/runs/32625990438": {
+    "authentication": "existing gh read credential",
+    "bytes": 13186,
+    "observed_at": "2026-09-07T02:56:56.171963+00:00",
+    "response_sha256": "4ed7ba23b8cd949cee2841f7ebe72484b7f29b476d3ba6aeff6a5589f0ee3270"
+  },
+  "https://api.github.com/repos/edithatogo/archive-govt-nz/actions/runs/32626071396": {
+    "authentication": "existing gh read credential",
+    "bytes": 13201,
+    "observed_at": "2026-09-07T02:56:56.796339+00:00",
+    "response_sha256": "3605c3a87219606d4dc68e93707f1122f9efbe9776bb93f2948561617db3a4f4"
+  },
+  "https://api.github.com/repos/edithatogo/archive-govt-nz/actions/runs/32626113799": {
+    "authentication": "existing gh read credential",
+    "bytes": 13197,
+    "observed_at": "2026-09-07T02:56:57.445946+00:00",
+    "response_sha256": "31ae203cb3a2c0a67fc748a55f709cae082fa8f167a78844b013c217485dcef0"
+  },
+  "https://api.github.com/repos/edithatogo/archive-govt-nz/git/ref/tags/legislation-cutover-v1.0.0": {
+    "authentication": "existing gh read credential",
+    "bytes": 423,
+    "observed_at": "2026-09-07T02:56:53.138123+00:00",
+    "response_sha256": "8c81587cae596b74b2d5a7ce87bc1eb8e273669040930010f3f00c173ffa5fd4"
+  },
+  "https://api.github.com/repos/edithatogo/archive-govt-nz/releases/375146205": {
+    "authentication": "existing gh read credential",
+    "bytes": 3390,
+    "observed_at": "2026-09-07T02:56:52.527800+00:00",
+    "response_sha256": "96ec1c72bdf35c2ad5cd87180f793881a5d57f63effeb237a3726e1e6cb50696"
+  },
+  "https://api.github.com/repos/edithatogo/archive-govt-nz/releases/381883563": {
+    "authentication": "existing gh read credential",
+    "bytes": 4519,
+    "observed_at": "2026-09-07T02:56:53.799539+00:00",
+    "response_sha256": "c7906e6cd2b2ce0b10eead66717153d43acf56bcdb4c4ce5e444776c366b2b7e"
+  },
+  "https://api.github.com/repos/edithatogo/archive-govt-nz/releases/assets/542511808": {
+    "authentication": "existing gh read credential",
+    "bytes": 1597,
+    "observed_at": "2026-09-07T02:56:54.361959+00:00",
+    "response_sha256": "74ac64abfdf7a055559c9bff22dbcaa72e733de3eacc00e49a1c0a02b439bd6e"
+  },
+  "https://api.github.com/repos/edithatogo/corpus-legislation-nz": {
+    "authentication": "existing gh read credential",
+    "bytes": 6641,
+    "observed_at": "2026-09-07T02:56:52.555779+00:00",
+    "response_sha256": "815d9b4eae52cb747ba539ff6d4429eb7cdf1fa8b9cdf7ff731d272c2c22912d"
+  },
+  "https://api.github.com/repos/edithatogo/corpus-legislation-nz/commits/HEAD": {
+    "authentication": "existing gh read credential",
+    "bytes": 17837,
+    "observed_at": "2026-09-07T02:56:53.234982+00:00",
+    "response_sha256": "a125b0fb6fe591da90cdbbe6f3c661e0e9c89a494a723bcdb922fbf756c4863f"
+  },
+  "https://api.github.com/repos/edithatogo/corpus-legislation-nz/contents/README.md?ref=905f9e07c17af9d9d25dbe2b1c052fb8a290a4e3": {
+    "authentication": "existing gh read credential",
+    "bytes": 4998,
+    "observed_at": "2026-09-07T02:56:54.934485+00:00",
+    "response_sha256": "8c3314a58b2baf48ab9c0edde6a330a6f3ecdd38f0eaa204d9d09a01f90071c2"
+  },
+  "https://api.github.com/repos/edithatogo/corpus-legislation-nz/git/ref/tags/migration-final-20260821": {
+    "authentication": "existing gh read credential",
+    "bytes": 422,
+    "observed_at": "2026-09-07T02:56:55.576467+00:00",
+    "response_sha256": "3853a136a0e511d43a9f379023499e477ce81f011a9a8dfe68434139ed52692f"
+  },
+  "https://api.github.com/repos/edithatogo/corpus-legislation-nz/git/tags/cdd6a397a96773c06519e2e86bbe7a606b26bd58": {
+    "authentication": "existing gh read credential",
+    "bytes": 1568,
+    "observed_at": "2026-09-07T02:56:56.216057+00:00",
+    "response_sha256": "8b1a7c6a04509ae0318c934a18e3feba71d33171c69ca454ba4b3ffd53d7019b"
+  },
+  "https://huggingface.co/api/datasets/edithatogo/corpus-legislation-nz": {
+    "authentication": "anonymous",
+    "bytes": 8584,
+    "observed_at": "2026-09-07T02:56:52.580790+00:00",
+    "response_sha256": "d7fed0657325e790b9851f7aa75a9115eda584e95913d33385e3c5f4c23c2ff3",
+    "status": 200
+  },
+  "https://huggingface.co/api/datasets/edithatogo/corpus-legislation-nz-historical": {
+    "authentication": "anonymous",
+    "bytes": 417123,
+    "observed_at": "2026-09-07T02:56:55.619235+00:00",
+    "response_sha256": "ff56f1f47291930a134fcdb68e5a41d225ddbf4efe0437987c7dec6fb945f1f2",
+    "status": 200
+  },
+  "https://huggingface.co/api/datasets/edithatogo/corpus-legislation-nz/tree/04688f12dd687618e2085ae31f9b8a4a50a88b16/durable-state/v1/2e4b75333e947d812842147c939117fc666799e4497b80f125104f721ef68e3c": {
+    "authentication": "anonymous",
+    "bytes": 567,
+    "observed_at": "2026-09-07T02:56:54.605603+00:00",
+    "response_sha256": "2e3ba51c426fca2148c5e336972d01d33f2355b0e7c54376bb2d8afcb7f4b522",
+    "status": 200
+  },
+  "https://huggingface.co/api/datasets/edithatogo/nz-legislation-corpus": {
+    "authentication": "anonymous",
+    "bytes": 2489,
+    "observed_at": "2026-09-07T02:56:57.156586+00:00",
+    "response_sha256": "06b3333090c8894bed2e0ef894fa91813bbb413cf84fc8f9586c7831cbb9d4a4",
+    "status": 200
+  },
+  "https://huggingface.co/datasets/edithatogo/corpus-legislation-nz-historical/resolve/ea9e66fb89c3230fc478f7c6f05f1a82f4fa1174/README.md": {
+    "authentication": "anonymous",
+    "bytes": 4040,
+    "observed_at": "2026-09-07T02:56:56.159492+00:00",
+    "response_sha256": "e3d8da7c2240f87d84363803344054269d077fb4b9fe96ae3261208be387789e",
+    "status": 200
+  },
+  "https://huggingface.co/datasets/edithatogo/corpus-legislation-nz-historical/resolve/ea9e66fb89c3230fc478f7c6f05f1a82f4fa1174/RIGHTS.md": {
+    "authentication": "anonymous",
+    "bytes": 439,
+    "observed_at": "2026-09-07T02:56:56.662655+00:00",
+    "response_sha256": "b856ce52ed9a5e5963492ba4a304a0f7c55071560109b23751f99a45206eaa49",
+    "status": 200
+  },
+  "https://huggingface.co/datasets/edithatogo/corpus-legislation-nz/resolve/04688f12dd687618e2085ae31f9b8a4a50a88b16/README.md": {
+    "authentication": "anonymous",
+    "bytes": 2713,
+    "observed_at": "2026-09-07T02:56:53.076177+00:00",
+    "response_sha256": "d41be7b72c10b1e79754bed9b59deed5862d535b6ed0eead2a02df01392e8c4d",
+    "status": 200
+  },
+  "https://huggingface.co/datasets/edithatogo/corpus-legislation-nz/resolve/04688f12dd687618e2085ae31f9b8a4a50a88b16/RIGHTS.md": {
+    "authentication": "anonymous",
+    "bytes": 771,
+    "observed_at": "2026-09-07T02:56:53.684663+00:00",
+    "response_sha256": "1cf3df1c833ab9f8a44b703a7668a91b25dfa1b2626972f89d11f7607a776d03",
+    "status": 200
+  },
+  "https://huggingface.co/datasets/edithatogo/corpus-legislation-nz/resolve/04688f12dd687618e2085ae31f9b8a4a50a88b16/durable-state/v1/2e4b75333e947d812842147c939117fc666799e4497b80f125104f721ef68e3c/metadata.json": {
+    "authentication": "anonymous",
+    "bytes": 1450,
+    "observed_at": "2026-09-07T02:56:54.180060+00:00",
+    "response_sha256": "ed886263fead010a540663515b24440db59371dbd9bb0abca2138942b44f8e74",
+    "status": 200
+  },
+  "https://huggingface.co/datasets/edithatogo/nz-legislation-corpus/resolve/1dea0c678b419a9c16fe7e363488f91d293391d3/README.md": {
+    "authentication": "anonymous",
+    "bytes": 1881,
+    "observed_at": "2026-09-07T02:56:57.639706+00:00",
+    "response_sha256": "1cd10124c024499fd27b9ec331ba8b653cd371bc7f9fdbdf4397a0fbe035be89",
+    "status": 200
+  },
+  "https://huggingface.co/datasets/edithatogo/nz-legislation-corpus/resolve/1dea0c678b419a9c16fe7e363488f91d293391d3/RIGHTS.md": {
+    "authentication": "anonymous",
+    "bytes": 142,
+    "observed_at": "2026-09-07T02:56:57.990488+00:00",
+    "response_sha256": "baa41a0760b7875fd0504d375fe05ce870f4a0299242b3dc3d2927f8a7b5b1a0",
+    "status": 401
+  },
+  "https://zenodo.org/api/records/20592539": {
+    "authentication": "anonymous",
+    "bytes": 229,
+    "observed_at": "2026-09-07T02:56:53.100970+00:00",
+    "response_sha256": "77346416fdd3fe46bbfe6ec554160c6cfcbe977e598da197f027b0dfbd6f3dd3",
+    "status": 302
+  },
+  "https://zenodo.org/api/records/20592540": {
+    "authentication": "anonymous",
+    "bytes": 4601,
+    "observed_at": "2026-09-07T02:56:54.707919+00:00",
+    "response_sha256": "9c82c2d090ac5ce7d6e9240122e2b182f5f11af06db9c5901b763dc57ed4029c",
+    "status": 200
+  },
+  "https://zenodo.org/api/records/20592540/files/nz-legislation-corpus-2026.SHA256SUMS.txt/content": {
+    "authentication": "anonymous",
+    "bytes": 208,
+    "observed_at": "2026-09-07T02:56:56.976538+00:00",
+    "response_sha256": "1910e55aa57b74c5892227ab97eeff6b706e420f782e589a013224a8404e85eb",
+    "status": 200
+  },
+  "https://zenodo.org/api/records/20592540/files/nz-legislation-corpus-2026.manifest.json/content": {
+    "authentication": "anonymous",
+    "bytes": 3104,
+    "observed_at": "2026-09-07T02:56:58.189847+00:00",
+    "response_sha256": "ea1212f47b0848971bdf41d87ee9236221c7130a0d55924bbf368b6075adf3a9",
+    "status": 200
+  },
+  "https://zenodo.org/api/records/20592540/versions": {
+    "authentication": "anonymous",
+    "bytes": 4736,
+    "observed_at": "2026-09-07T02:56:55.848468+00:00",
+    "response_sha256": "a82687922c40e7f8b52f25cf10b5490333e9187f60959d0a3bf382a565985725",
+    "status": 200
+  }
+}
