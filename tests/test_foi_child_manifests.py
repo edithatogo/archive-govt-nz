@@ -279,3 +279,44 @@ def test_explicit_resource_bounds(fault: str, monkeypatch: pytest.MonkeyPatch) -
     with pytest.raises(ValueError, match="child_manifest"):
         reconcile_child_manifests(hub, sources)
     assert len(hub.reads) == (1 if fault == "manifest_limit" else 0)
+
+
+@pytest.mark.parametrize("field", ["snapshot_revision", "manifest_sha256"])
+def test_pointer_newline_rejected_before_manifest_read(
+    field: str, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """JSON Schema dollar anchors must not admit malformed remote references."""
+    hub = ChildHub()
+    hub.pointer[field] += "\n"
+    hub.files["a" * 40, "current.json"] = canonical(hub.pointer)
+    original = hub.sizes
+
+    def sizes(repo: str, revision: str, names: list[str]) -> dict:
+        assert names == ["current.json"], "malformed pointer reached manifest read"
+        return original(repo, revision, names)
+
+    monkeypatch.setattr(hub, "sizes", sizes)
+    with pytest.raises(ValueError, match="child_manifest"):
+        reconcile_child_manifests(hub, [SOURCE])
+    assert len(hub.reads) == 1
+
+
+@pytest.mark.parametrize(
+    "field",
+    [
+        "source_revision",
+        "capture_inventory_sha256",
+        "file_sha256",
+        "source_run_id",
+        "adapter_version",
+    ],
+)
+def test_manifest_identifiers_reject_trailing_newline(field: str) -> None:
+    """Even a correctly rehashed manifest must carry exact identifier strings."""
+    hub = ChildHub()
+    target = hub.manifest["files"][0] if field == "file_sha256" else hub.manifest
+    key = "sha256" if field == "file_sha256" else field
+    target[key] += "\n"
+    hub.refresh()
+    with pytest.raises(ValueError, match="child_manifest"):
+        reconcile_child_manifests(hub, [SOURCE])

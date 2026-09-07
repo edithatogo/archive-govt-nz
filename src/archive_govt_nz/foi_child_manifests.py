@@ -13,7 +13,7 @@ from typing import TYPE_CHECKING, Any, NoReturn
 from jsonschema import Draft202012Validator, FormatChecker
 
 from archive_govt_nz.foi_delivery import MAX_POINTER_BYTES, REVISION, TABLE_PATHS
-from archive_govt_nz.foi_package import BASE_TABLES, canonical, safe_path
+from archive_govt_nz.foi_package import BASE_TABLES, HASH, canonical, safe_path
 
 if TYPE_CHECKING:
     from archive_govt_nz.foi_delivery import Hub
@@ -99,7 +99,12 @@ def reconcile_child_manifests(
                     _fail()
                 pointer_bytes = _read(hub, repo, revision, "current.json", root)
                 pointer = _document(pointer_bytes, "foi-current-v1.schema.json")
-                if pointer["repo_id"] != repo or pointer.get("tables") != CHILD_TABLES:
+                if (
+                    pointer["repo_id"] != repo
+                    or pointer.get("tables") != CHILD_TABLES
+                    or not REVISION.fullmatch(pointer["snapshot_revision"])
+                    or not HASH.fullmatch(pointer["manifest_sha256"])
+                ):
                     _fail()
                 digest = pointer["manifest_sha256"]
                 name = f"snapshots/{digest}/manifest.json"
@@ -122,6 +127,15 @@ def reconcile_child_manifests(
                     manifest["source_id"] != source["id"]
                     or manifest["country"] != source["entity_id"]
                     or {row["path"] for row in manifest["files"]} != expected
+                    or not REVISION.fullmatch(manifest["source_revision"])
+                    or not HASH.fullmatch(manifest["capture_inventory_sha256"])
+                    or any(
+                        not HASH.fullmatch(row["sha256"]) for row in manifest["files"]
+                    )
+                    or not re.fullmatch(r"[0-9]+", manifest["source_run_id"])
+                    or not re.fullmatch(
+                        r"[0-9]+\.[0-9]+\.[0-9]+", manifest["adapter_version"]
+                    )
                 ):
                     _fail()
                 children.append(

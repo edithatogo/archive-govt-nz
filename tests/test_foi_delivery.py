@@ -503,7 +503,7 @@ def test_failed_canonical_upgrade_preserves_v1_pointer(
     assert hub.calls == 3  # Only immutable candidate bytes were staged.
 
 
-@pytest.mark.parametrize("fault", ["missing", "forged"])
+@pytest.mark.parametrize("fault", ["missing", "forged", "newline_revision"])
 def test_child_manifest_failure_preserves_existing_catalogue(
     fault: str, monkeypatch: pytest.MonkeyPatch
 ) -> None:
@@ -514,6 +514,12 @@ def test_child_manifest_failure_preserves_existing_catalogue(
     original_sizes, original_download = hub.sizes, hub.download
 
     def sizes(repo: str, revision: str, names: list[str]) -> dict:
+        if fault == "newline_revision" and repo != publication.CATALOGUE_REPO:
+            assert names == ["current.json"], "invalid revision reached child manifest"
+            return {
+                "current.json": original_sizes(repo, revision, names)["current.json"]
+                + 2
+            }
         if (
             fault == "missing"
             and repo != publication.CATALOGUE_REPO
@@ -523,7 +529,13 @@ def test_child_manifest_failure_preserves_existing_catalogue(
         return original_sizes(repo, revision, names)
 
     def download(repo: str, revision: str, name: str, output: Path, size: int) -> None:
-        original_download(repo, revision, name, output, size)
+        if fault == "newline_revision" and repo != publication.CATALOGUE_REPO:
+            assert name == "current.json"
+            original_download(repo, revision, name, output, size - 2)
+            payload = output.read_bytes()
+            output.write_bytes(payload.replace(b"b" * 40, b"b" * 40 + b"\\n"))
+        else:
+            original_download(repo, revision, name, output, size)
         if (
             fault == "forged"
             and repo != publication.CATALOGUE_REPO
