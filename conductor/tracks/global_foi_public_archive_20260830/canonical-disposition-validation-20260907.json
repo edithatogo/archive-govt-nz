@@ -1,0 +1,129 @@
+{
+  "canonical_inputs": {
+    "files": {
+      "candidate-assessment-complete.json": "02bfc89018ac69878a8b8a6939d40287e95f8fef684ce17a2376e5e17510af7a",
+      "candidate-assessment.json": "a3ae62f9e3fa4ad6b7e8077479140e686335533fb9c6b9f21caba4d800893f59",
+      "candidate-observations-remaining-20260907.json": "3f5f120344b9afedb8357cbe93ed8c021377223b8533d8b07e9fafbe51a502bd",
+      "candidate-probe-review-correction-20260907.json": "9069cac976a18f8ec4427da7fbbee45bfeb6517cfa5433812a14f9d8438d7167",
+      "country-rollout-20260831.json": "33c46cd1b2169a18f993d581b970734fab01795d053ab12cd4ea52f4a67bf638",
+      "factual-observations-al-bh-20260907.json": "a36f3fbfeee6992d86bfa09becfc0d4790a1a30400ab7569f5cee3ee05e5a6a9",
+      "guarded-linked-20260907/al-year-navigation-assessment.json": "b851ca338b1478fdd613764c2d6593d9647fd5daa7842b5a711faaae15df597c",
+      "guarded-linked-20260907/al-year-navigation-observations.json": "999a0b821fbe9deeedc891b8ce16fc7ce3de3c0ef1c12d1bd79cff613c376fec",
+      "guarded-linked-20260907/linked-foi-assessment.json": "cd86e3f58965a9f6478859d04058fa3883d69850fc98a01767bf264d07d18c18",
+      "guarded-linked-20260907/linked-foi-observations-20260907.json": "88204a15dea54aeb0ada03502e03e9b53b231dd965e91050bc3045c650781ad8",
+      "guarded-linked-20260907/linked-foi-provenance-20260907.json": "d927556be494bfbc66be1720be7700754f9a7362bd3b09beeb32b3afaf40675a",
+      "linked-foi-provenance-20260907.json": "99f6690d859d19868adf8ce00dcb02935d27c434963a7b654f5b4e562cbd35b8",
+      "rights-decision-owner-20260905.json": "ff24072bd7b1d1ca314ce0d20242f836aaa933ebd8e26be54801f38baeda2525",
+      "rollout-reconciliation.json": "76c357b0c096b554355467f3614dcc6a9ac8d84ca6a20c142fd8e2f2cb223434"
+    },
+    "schema_version": "archive-govt-nz.foi-canonical-inputs/v1"
+  },
+  "catalogue_schema_version": "archive-govt-nz.foi-source-catalogue/v2",
+  "coverage": {
+    "entities_with_explicit_dispositions": 251,
+    "factually_assessed_candidates": 225,
+    "geographic_entities": 250,
+    "known_sources": 255,
+    "payload_publication_authorized": false,
+    "remaining_unverified": 250,
+    "retained_seed_sources": 30,
+    "source_dispositions": {
+      "access_unverified": 118,
+      "foi_metadata_lead": 4,
+      "foi_scope_unverified": 93,
+      "not_established": 1,
+      "out_of_scope_for_foi_capture": 8,
+      "request_response_register_landing_page_observed": 1,
+      "review_required": 30
+    },
+    "supranational_entities": 1,
+    "target_regimes": 42,
+    "total_requests": null,
+    "verified_complete": 0
+  },
+  "files": {
+    "coverage.json": {
+      "bytes": 626,
+      "sha256": "2bb8ab4d2401ab2436677570bc771fb63a03b5556ea8a313d5186a8c6a660d97"
+    },
+    "coverage.md": {
+      "bytes": 34257,
+      "sha256": "8b5b091ed0d3f03fe7cc56beb6cd523af52c96f8bbac023089f32342812016fd"
+    },
+    "discovery-review.jsonl": {
+      "bytes": 48174,
+      "sha256": "9e5157e3b71313db84672dcaa43b7767b2f281ed7944221d8d235943a3e043d1"
+    },
+    "entities.jsonl": {
+      "bytes": 131324,
+      "sha256": "37a936b4cbff88c28978f84f97bcc6c142b46256c05faf74d42c636aefb45903"
+    },
+    "jurisdictions.jsonl": {
+      "bytes": 5383,
+      "sha256": "1bf19a6e79d5f313119ee1ec7b6be34fad3980aab04fe98d9e9cd55a015a201d"
+    },
+    "manifest.json": {
+      "bytes": 81860,
+      "sha256": "9643d020b039f775817046c19c72c3353390fcd1259063c2a385c9c53bea13b7"
+    },
+    "registry.json": {
+      "bytes": 942949,
+      "sha256": "2409391a667f0c39b72c6fc261af468e3c28025979fb901616021bc6db419421"
+    },
+    "rollout_state.json": {
+      "bytes": 174295,
+      "sha256": "1b9b3a790602302dc822aec15628485bb3f583ce49ea10b5b14ce77ddaac230f"
+    },
+    "sources.jsonl": {
+      "bytes": 390452,
+      "sha256": "ebd6e28326e5fb6e1b539fec5e782b7162ce90f49b33b94594f639e943657fc5"
+    },
+    "year_navigation_assessment.json": {
+      "bytes": 7220,
+      "sha256": "b851ca338b1478fdd613764c2d6593d9647fd5daa7842b5a711faaae15df597c"
+    }
+  },
+  "provenance_sha256": "02bfc52054ac56f31243d2d8707b2d4027cebf40cbaefeade17849a22cba8296",
+  "schema_version": "archive-govt-nz.foi-catalogue-disposition-validation/v1",
+  "scope": "catalogue_disposition_validation",
+  "seed_provenance": {
+    "donor_repository": "https://github.com/edithatogo/fyi-archive",
+    "donor_revision": "cba7b0dec2734bdc9ff51c69610fc55cb1fc5aa1",
+    "files": [
+      {
+        "local_file": "donor-instances.json",
+        "sha256": "35d95fffaf0d3060731a29be9448a168b7612e07a493ad67c416477282a0f537",
+        "source_path": "src/fyi_archive/config/archive_instances.json"
+      },
+      {
+        "local_file": "donor-additional-sites.json",
+        "sha256": "2a9f873ff5b45ccc02cc14cffb8a32dedd7c11ea4663f42b8f8aa5d9d746d819",
+        "source_path": "configs/additional_foi_archive_sites.json"
+      },
+      {
+        "local_file": "donor-jurisdiction-targets.json",
+        "sha256": "343c840250ed97bb190966e04bf2a2a1fee1bb4d3fd20f565010d4fd871447e5",
+        "source_path": "configs/jurisdiction_archive_targets.json"
+      }
+    ],
+    "hf_snapshot": {
+      "local_file": "hf-repository-snapshot.json",
+      "sha256": "168fb3d1c3cad278b8e384e181b5761b12e25f1bf043415503d0ab68afe8ebc8"
+    },
+    "scope": "Unmodified registry seeds only; no payload, rights promotion or capture evidence imported.",
+    "universe": {
+      "kind": "UN statistical geography plus explicit project extensions",
+      "local_file": "country-universe.json",
+      "sha256": "c8b3e1195a5160d4be94cbdf588b56dd216b3e34bf8adb86452613a546cb831d",
+      "source_url": "https://unstats.un.org/unsd/methodology/m49/overview/"
+    }
+  },
+  "separate_gates": {
+    "ac04_acceptance": "parent_audit_required",
+    "capture_completion": "not_validated",
+    "exhaustive_discovery": "not_established",
+    "programme_completion": "not_assessed",
+    "publication": "not_validated"
+  },
+  "status": "passed"
+}

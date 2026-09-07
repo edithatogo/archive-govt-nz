@@ -481,3 +481,24 @@ then 194 focused tests passed including seven canonical guard mutants; publisher
 commands, bounded transport failures and output digests are recorded in
 canonical-publisher-20260907.md/.json. All Hub operations used MemoryHub; no full
 harness, workflow change, source input change, raw approval or remote publication.
+
+## Canonical disposition validation — 2026-09-07
+
+Isolated from 70cd15b0. Added a separate recomputed-input API and optional CLI;
+legacy validator/default unchanged. TDD red missing module/option; final 100 tests,
+ten static mutant kills, new validator and CLI 100% statement/branch. Ruff,
+format and explicit-environment BasedPyright pass. Actual offline receipt matches
+retained canonical output digests. Compact provenance avoids repeated directory
+review rows. No phase closure, full harness, network, activation or publication.
+See canonical-disposition-validation-20260907.md/.json.
+
+## Canonical child manifests — 2026-09-07
+
+Isolated from G 7b1959cf. New dedicated bounded reader plus canonical-only binding;
+no Hub API extension. Missing-module and absent-binding TDD reds, then 174 focused
+tests passed, three static mutants killed, both production modules 100% line and
+branch. Final lane: actual UV_OFFLINE=true uv run --locked pytest, no PYTHONPATH;
+fresh local environment and file-loaded fixture, no tests namespace dependency.
+Ruff format/lint and BasedPyright pass. All child observations synthetic; source
+rows and default v1 remain unchanged. No remote calls, raw approval, publication,
+schedule activation or full harness. See child-manifest-reconciliation-20260907.

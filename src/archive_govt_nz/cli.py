@@ -9,7 +9,7 @@ import sys
 from collections.abc import Mapping
 from dataclasses import asdict
 from pathlib import Path
-from typing import TYPE_CHECKING, Any, Literal
+from typing import TYPE_CHECKING, Any, Literal, cast
 
 import httpx
 from cyclopts import App
@@ -206,14 +206,49 @@ def health_appropriations_rebuild(
     observed_at: str,
     output_dir: Path = Path("build/health-appropriations/raw-run"),
     dry_run: bool = True,
+    eight_stage: bool = False,
+    crown_source_sha256: str | None = None,
+    crown_receipt: Path | None = None,
+    crown_receipt_sha256: str | None = None,
 ) -> int:
     """Preflight originals; --no-dry-run builds a separate local Silver run."""
     try:
-        plan = plan_rebuild(donor_manifest, store_root, manifest_sha256, observed_at)
+        from archive_govt_nz.domains.health_appropriations.rebuild_eight import (
+            execute_eight,
+            plan_eight,
+            require,
+        )
+
+        if eight_stage:
+            require(
+                crown_source_sha256 is not None
+                and crown_receipt is not None
+                and crown_receipt_sha256 is not None
+            )
+            plan = plan_eight(
+                donor_manifest,
+                store_root,
+                manifest_sha256,
+                observed_at,
+                str(crown_source_sha256),
+                crown_receipt=cast("Path", crown_receipt),
+                crown_receipt_sha256=str(crown_receipt_sha256),
+            )
+        else:
+            require(
+                crown_source_sha256 is None
+                and crown_receipt is None
+                and crown_receipt_sha256 is None
+            )
+            plan = plan_rebuild(
+                donor_manifest, store_root, manifest_sha256, observed_at
+            )
         result = (
             {"status": "planned", "plan": plan}
             if dry_run
-            else execute_rebuild(plan, store_root, output_dir)
+            else (execute_eight if eight_stage else execute_rebuild)(
+                plan, store_root, output_dir
+            )
         )
     except (OSError, ValueError, TypeError, KeyError, ObjectStoreError) as error:
         _emit_json(
@@ -333,6 +368,8 @@ def health_appropriations_verify_rebuild(
     output_dir: Path,
     store_root: Path,
     manifest_sha256: str,
+    *,
+    eight_stage: bool = False,
 ) -> int:
     """Verify a pinned raw run without creating missing or partial state."""
     envelope: dict[str, object] = {
@@ -340,7 +377,13 @@ def health_appropriations_verify_rebuild(
         "command": "health-appropriations-verify-rebuild",
     }
     try:
-        receipt = verify_rebuild(output_dir, store_root, manifest_sha256)
+        from archive_govt_nz.domains.health_appropriations.rebuild_eight import (
+            verify_eight,
+        )
+
+        receipt = (verify_eight if eight_stage else verify_rebuild)(
+            output_dir, store_root, manifest_sha256
+        )
     except ValueError as error:
         _emit_json({**envelope, "status": "failed", "error": str(error)})
         return 2

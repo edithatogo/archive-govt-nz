@@ -78,7 +78,7 @@ def admit_donor_health_detail(source: Path, vintage: str) -> dict[str, Any]:
     digest, title, first = PROFILES[vintage]
     _require(source.is_file() and not source.is_symlink())
     payload = verified_snapshot(source, digest, max_bytes=1024 * 1024)
-    inventory_workbook(BytesIO(payload))
+    inventory = inventory_workbook(BytesIO(payload))
     tokens = _number_tokens(payload)[title]
     book = load_workbook(BytesIO(payload), data_only=False, keep_links=True)
     try:
@@ -131,6 +131,7 @@ def admit_donor_health_detail(source: Path, vintage: str) -> dict[str, Any]:
             "schema_version": "donor-health-detail-literal-context/v1",
             "status": "raw_context_only",
             "records": records,
+            "workbook_inventory": inventory,
             "formula_totals": {
                 "range": f"F{first + 9}:O{first + 9}",
                 "disposition": "excluded_formula_cache_not_admitted",

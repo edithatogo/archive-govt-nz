@@ -1,0 +1,37 @@
+{
+  "actual_publication": false,
+  "actual_remote_verification": false,
+  "base_commit": "7b1959cf0f1b23b80984d8cafafac5767547f210",
+  "basedpyright": "passed",
+  "child_module_coverage_percent": 100,
+  "date": "2026-09-07",
+  "focused_tests_passed": 174,
+  "full_harness_run": false,
+  "input_sha256": {
+    "src/archive_govt_nz/foi_child_manifests.py": "54b4ae0dc31c0a8bd26a63a70e07582e7734fa4d2fcd17b021c3b77301d058bf",
+    "src/archive_govt_nz/foi_publication.py": "83ded4338a4fc8f40dcf46eb9efaf94dda1a760d62d86349ced5d88ae6040f80",
+    "src/archive_govt_nz/schemas/foi-current-v1.schema.json": "6e7d4bf70e6f7b34264ac1db6413aded9ab540a50db9cf157963974475edd46f",
+    "src/archive_govt_nz/schemas/foi-package-v2.schema.json": "de1110db8be671b61813da6850a112b9adec736e86c5a1b88ed78417c886436b",
+    "tests/test_foi_child_manifest_mutants.py": "fadc6c6a3ac82ed97e3bcc24f343f1063fd09ec2666dd80ace11dd33d8d65de7",
+    "tests/test_foi_child_manifests.py": "4e0d93b57f9197e5cd32f1beb17522efaf3c50ed3edbe11b28e4740ef60e57bb",
+    "tests/test_foi_delivery.py": "8219adcbb9c2225b733d6286d0496b5996808948671cdd8bdbcfe698040e0899"
+  },
+  "limits": {
+    "children": 23,
+    "document_bytes": 6123520,
+    "document_downloads": 46,
+    "manifest_bytes": 262144,
+    "pointer_bytes": 4096
+  },
+  "mocked_catalogue_child_identities": 23,
+  "publisher_coverage_percent": 100,
+  "pythonpath_override": false,
+  "raw_objects_verified": false,
+  "rights_approval": false,
+  "ruff_format_lint": "passed",
+  "schedule_changes": false,
+  "schema_version": "archive-govt-nz.foi-child-manifest-local-validation/v1",
+  "scope": "mock_only_immutable_child_manifest_metadata",
+  "static_mutants_killed": 3,
+  "test_command": "UV_OFFLINE=true uv run --locked pytest tests/test_foi_child_manifests.py tests/test_foi_child_manifest_mutants.py tests/test_foi_delivery.py tests/test_foi_package.py tests/test_publish_foi_cli.py -q --cov=archive_govt_nz.foi_child_manifests --cov=archive_govt_nz.foi_publication --cov-report=term-missing"
+}

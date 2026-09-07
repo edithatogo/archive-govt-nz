@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 
 from archive_govt_nz.foi_discovery import build_reviewed_catalogue
+from archive_govt_nz.foi_disposition_validation import validate_canonical_dispositions
 from archive_govt_nz.foi_phase_validation import validate_catalogue_phase
 
 
@@ -17,12 +18,25 @@ def main() -> int:
         "--seeds", type=Path, default=Path(__file__).parents[1] / "config/foi"
     )
     parser.add_argument("--output", type=Path)
+    parser.add_argument(
+        "--canonical-track",
+        type=Path,
+        help="Validate pinned bounded dispositions only; not phase acceptance.",
+    )
     args = parser.parse_args()
-    result = validate_catalogue_phase(build_reviewed_catalogue(args.seeds))
+    result = (
+        validate_catalogue_phase(build_reviewed_catalogue(args.seeds))
+        if args.canonical_track is None
+        else validate_canonical_dispositions(args.seeds, args.canonical_track)
+    )
     rendered = json.dumps(result, indent=2, sort_keys=True) + "\n"
     if args.output is not None:
         args.output.parent.mkdir(parents=True, exist_ok=True)
-        args.output.write_text(rendered, encoding="utf-8")
+        if args.canonical_track is None:
+            args.output.write_text(rendered, encoding="utf-8")
+        else:
+            with args.output.open("x", encoding="utf-8", newline="\n") as stream:
+                stream.write(rendered)
     print(rendered, end="")
     return 0 if result["status"] == "passed" else 2
 
