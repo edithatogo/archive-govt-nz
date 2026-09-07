@@ -101,3 +101,12 @@ Approved track in progress. Automation repair and source-catalogue foundations a
 - [Guarded cohort assessment](guarded-linked-20260907/linked-foi-assessment.json)
 - [Guarded observation provenance](guarded-linked-20260907/linked-foi-provenance-20260907.json)
 - [AL year-navigation contract](guarded-linked-20260907/al-year-navigation-assessment.json)
+
+## Canonical join delivery — P2.16
+
+- [Acceptance and reproduction](canonical-join-20260907.md)
+- [Canonical registry](canonical-index-20260907/registry.json)
+- [Human index](canonical-index-20260907/coverage.md)
+- [Machine coverage](canonical-index-20260907/coverage.json)
+- [Input pins](canonical-inputs-20260907.json)
+- [V2 schema](canonical-source-catalogue-v2.schema.json)

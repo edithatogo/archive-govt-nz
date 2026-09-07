@@ -434,3 +434,19 @@ PYTHONPATH=src /Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/python -m p
 /Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/ruff format --check src/archive_govt_nz/foi_candidate_probe.py tests/test_foi_candidate_probe.py
 /Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/basedpyright src/archive_govt_nz/foi_candidate_probe.py tests/test_foi_candidate_probe.py
 ```
+
+## P2.16 isolated canonical join — 2026-09-07
+
+Created codex/foi-canonical-join-20260907 in the separate canonical-join worktree
+from 383c06367f840c07bbb9d15c599a60800b30643c. Initial focused test was red
+(ModuleNotFoundError). Implemented the pinned v2 join and existing-exporter
+extension, generated canonical-index-20260907, and reviewed negative joins,
+privacy, retained evidence and schema boundaries. No source-site requests.
+
+Final focused command and bounded development failures are recorded verbatim in
+canonical-join-20260907.md: 330 passed, 100% line/branch on both changed modules,
+seven guard mutants killed. Static commands: the existing .venv/bin/ruff
+format --check and check, and .venv/bin/basedpyright, on
+src/archive_govt_nz/foi_canonical.py, src/archive_govt_nz/foi_catalogue.py,
+tests/test_foi_canonical.py and tests/test_foi_canonical_mutants.py; all passed.
+No full harness, publication, schedule change or shared lifecycle mutation.

@@ -1,0 +1,19 @@
+{
+  "files": {
+    "candidate-assessment-complete.json": "02bfc89018ac69878a8b8a6939d40287e95f8fef684ce17a2376e5e17510af7a",
+    "candidate-assessment.json": "a3ae62f9e3fa4ad6b7e8077479140e686335533fb9c6b9f21caba4d800893f59",
+    "candidate-observations-remaining-20260907.json": "3f5f120344b9afedb8357cbe93ed8c021377223b8533d8b07e9fafbe51a502bd",
+    "candidate-probe-review-correction-20260907.json": "9069cac976a18f8ec4427da7fbbee45bfeb6517cfa5433812a14f9d8438d7167",
+    "country-rollout-20260831.json": "33c46cd1b2169a18f993d581b970734fab01795d053ab12cd4ea52f4a67bf638",
+    "factual-observations-al-bh-20260907.json": "a36f3fbfeee6992d86bfa09becfc0d4790a1a30400ab7569f5cee3ee05e5a6a9",
+    "guarded-linked-20260907/al-year-navigation-assessment.json": "b851ca338b1478fdd613764c2d6593d9647fd5daa7842b5a711faaae15df597c",
+    "guarded-linked-20260907/al-year-navigation-observations.json": "999a0b821fbe9deeedc891b8ce16fc7ce3de3c0ef1c12d1bd79cff613c376fec",
+    "guarded-linked-20260907/linked-foi-assessment.json": "cd86e3f58965a9f6478859d04058fa3883d69850fc98a01767bf264d07d18c18",
+    "guarded-linked-20260907/linked-foi-observations-20260907.json": "88204a15dea54aeb0ada03502e03e9b53b231dd965e91050bc3045c650781ad8",
+    "guarded-linked-20260907/linked-foi-provenance-20260907.json": "d927556be494bfbc66be1720be7700754f9a7362bd3b09beeb32b3afaf40675a",
+    "linked-foi-provenance-20260907.json": "99f6690d859d19868adf8ce00dcb02935d27c434963a7b654f5b4e562cbd35b8",
+    "rights-decision-owner-20260905.json": "ff24072bd7b1d1ca314ce0d20242f836aaa933ebd8e26be54801f38baeda2525",
+    "rollout-reconciliation.json": "76c357b0c096b554355467f3614dcc6a9ac8d84ca6a20c142fd8e2f2cb223434"
+  },
+  "schema_version": "archive-govt-nz.foi-canonical-inputs/v1"
+}

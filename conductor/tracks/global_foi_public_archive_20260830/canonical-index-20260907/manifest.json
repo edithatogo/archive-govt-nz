@@ -1,0 +1,2409 @@
+{
+  "files": [
+    {
+      "bytes": 626,
+      "path": "coverage.json",
+      "sha256": "2bb8ab4d2401ab2436677570bc771fb63a03b5556ea8a313d5186a8c6a660d97"
+    },
+    {
+      "bytes": 34257,
+      "path": "coverage.md",
+      "sha256": "8b5b091ed0d3f03fe7cc56beb6cd523af52c96f8bbac023089f32342812016fd"
+    },
+    {
+      "bytes": 48174,
+      "path": "discovery-review.jsonl",
+      "sha256": "9e5157e3b71313db84672dcaa43b7767b2f281ed7944221d8d235943a3e043d1"
+    },
+    {
+      "bytes": 131324,
+      "path": "entities.jsonl",
+      "sha256": "37a936b4cbff88c28978f84f97bcc6c142b46256c05faf74d42c636aefb45903"
+    },
+    {
+      "bytes": 5383,
+      "path": "jurisdictions.jsonl",
+      "sha256": "1bf19a6e79d5f313119ee1ec7b6be34fad3980aab04fe98d9e9cd55a015a201d"
+    },
+    {
+      "bytes": 942949,
+      "path": "registry.json",
+      "sha256": "2409391a667f0c39b72c6fc261af468e3c28025979fb901616021bc6db419421"
+    },
+    {
+      "bytes": 174295,
+      "path": "rollout_state.json",
+      "sha256": "1b9b3a790602302dc822aec15628485bb3f583ce49ea10b5b14ce77ddaac230f"
+    },
+    {
+      "bytes": 390452,
+      "path": "sources.jsonl",
+      "sha256": "ebd6e28326e5fb6e1b539fec5e782b7162ce90f49b33b94594f639e943657fc5"
+    },
+    {
+      "bytes": 7220,
+      "path": "year_navigation_assessment.json",
+      "sha256": "b851ca338b1478fdd613764c2d6593d9647fd5daa7842b5a711faaae15df597c"
+    }
+  ],
+  "payload_publication_authorized": false,
+  "provenance": {
+    "canonical_join": {
+      "inputs": {
+        "files": {
+          "candidate-assessment-complete.json": "02bfc89018ac69878a8b8a6939d40287e95f8fef684ce17a2376e5e17510af7a",
+          "candidate-assessment.json": "a3ae62f9e3fa4ad6b7e8077479140e686335533fb9c6b9f21caba4d800893f59",
+          "candidate-observations-remaining-20260907.json": "3f5f120344b9afedb8357cbe93ed8c021377223b8533d8b07e9fafbe51a502bd",
+          "candidate-probe-review-correction-20260907.json": "9069cac976a18f8ec4427da7fbbee45bfeb6517cfa5433812a14f9d8438d7167",
+          "country-rollout-20260831.json": "33c46cd1b2169a18f993d581b970734fab01795d053ab12cd4ea52f4a67bf638",
+          "factual-observations-al-bh-20260907.json": "a36f3fbfeee6992d86bfa09becfc0d4790a1a30400ab7569f5cee3ee05e5a6a9",
+          "guarded-linked-20260907/al-year-navigation-assessment.json": "b851ca338b1478fdd613764c2d6593d9647fd5daa7842b5a711faaae15df597c",
+          "guarded-linked-20260907/al-year-navigation-observations.json": "999a0b821fbe9deeedc891b8ce16fc7ce3de3c0ef1c12d1bd79cff613c376fec",
+          "guarded-linked-20260907/linked-foi-assessment.json": "cd86e3f58965a9f6478859d04058fa3883d69850fc98a01767bf264d07d18c18",
+          "guarded-linked-20260907/linked-foi-observations-20260907.json": "88204a15dea54aeb0ada03502e03e9b53b231dd965e91050bc3045c650781ad8",
+          "guarded-linked-20260907/linked-foi-provenance-20260907.json": "d927556be494bfbc66be1720be7700754f9a7362bd3b09beeb32b3afaf40675a",
+          "linked-foi-provenance-20260907.json": "99f6690d859d19868adf8ce00dcb02935d27c434963a7b654f5b4e562cbd35b8",
+          "rights-decision-owner-20260905.json": "ff24072bd7b1d1ca314ce0d20242f836aaa933ebd8e26be54801f38baeda2525",
+          "rollout-reconciliation.json": "76c357b0c096b554355467f3614dcc6a9ac8d84ca6a20c142fd8e2f2cb223434"
+        },
+        "schema_version": "archive-govt-nz.foi-canonical-inputs/v1"
+      },
+      "publication_or_schedule_authority": false,
+      "scope": "bounded_factual_metadata_not_exhaustive_discovery",
+      "transport_compliance": "historical_compliance_not_certified"
+    },
+    "directory_review": {
+      "directory_sha256": "518626a27878b1ad70da4e4d889317e249e399947f968385ea4db7f02be46816",
+      "entities": [
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "AD",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "AE",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "AF",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "AG",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "AI",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "AL",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "AM",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "AO",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "AQ",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "listed",
+          "directory_source_ids": [
+            "ar-derechoaldato"
+          ],
+          "entity_id": "AR",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "AS",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "AT",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "listed",
+          "directory_source_ids": [
+            "au-rtk"
+          ],
+          "entity_id": "AU",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "AW",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "AX",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "AZ",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "BA",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "BB",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "BD",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "listed",
+          "directory_source_ids": [
+            "be-transparencia"
+          ],
+          "entity_id": "BE",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "BF",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "BG",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "BH",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "BI",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "BJ",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "BL",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "BM",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "BN",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "BO",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "BQ",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "BR",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "BS",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "BT",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "BV",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "BW",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "BY",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "BZ",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "CA",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "CC",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "CD",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "CF",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "CG",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "CH",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "CI",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "CK",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "CL",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "CM",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "CN",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "listed",
+          "directory_source_ids": [
+            "co-queremosdatos"
+          ],
+          "entity_id": "CO",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "CR",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "CU",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "CV",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "CW",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "CX",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "CY",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "listed",
+          "directory_source_ids": [
+            "cz-infoprovsechny"
+          ],
+          "entity_id": "CZ",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "DE",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "DJ",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "DK",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "DM",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "DO",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "DZ",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "EC",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "EE",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "EG",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "EH",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "ER",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "ES",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "ET",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "listed",
+          "directory_source_ids": [
+            "eu-asktheeu"
+          ],
+          "entity_id": "EU",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "FI",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "FJ",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "FK",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "FM",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "FO",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "listed",
+          "directory_source_ids": [
+            "fr-madada"
+          ],
+          "entity_id": "FR",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "GA",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "listed",
+          "directory_source_ids": [
+            "uk-wdtk"
+          ],
+          "entity_id": "GB",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "GD",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "listed",
+          "directory_source_ids": [
+            "ge-askgov"
+          ],
+          "entity_id": "GE",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "GF",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "GG",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "GH",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "GI",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "GL",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "GM",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "GN",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "GP",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "GQ",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "listed",
+          "directory_source_ids": [
+            "gr-arthro5a"
+          ],
+          "entity_id": "GR",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "GS",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "GT",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "GU",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "GW",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "GY",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "listed",
+          "directory_source_ids": [
+            "hk-accessinfo"
+          ],
+          "entity_id": "HK",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "HM",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "HN",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "listed",
+          "directory_source_ids": [
+            "hr-imamopravoznati"
+          ],
+          "entity_id": "HR",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "HT",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "listed",
+          "directory_source_ids": [
+            "hu-kimittud"
+          ],
+          "entity_id": "HU",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "ID",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "IE",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "IL",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "IM",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "IN",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "IO",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "IQ",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "IR",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "IS",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "IT",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "JE",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "JM",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "JO",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "JP",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "KE",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "KG",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "KH",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "KI",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "KM",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "KN",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "KP",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "KR",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "KW",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "KY",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "KZ",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "LA",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "LB",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "LC",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "LI",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "LK",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "listed",
+          "directory_source_ids": [
+            "lr-infolib"
+          ],
+          "entity_id": "LR",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "LS",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "LT",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "LU",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "LV",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "LY",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "MA",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "MC",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "listed",
+          "directory_source_ids": [
+            "md-vreauinfo"
+          ],
+          "entity_id": "MD",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "ME",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "MF",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "MG",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "MH",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "MK",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "ML",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "MM",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "MN",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "MO",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "MP",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "MQ",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "MR",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "MS",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "MT",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "MU",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "MV",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "MW",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "MX",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "MY",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "MZ",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "NA",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "NC",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "NE",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "NF",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "NG",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "NI",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "listed",
+          "directory_source_ids": [
+            "nl-woo-knop"
+          ],
+          "entity_id": "NL",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "NO",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "NP",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "NR",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "NU",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "listed",
+          "directory_source_ids": [
+            "nz-fyi"
+          ],
+          "entity_id": "NZ",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "OM",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "PA",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "PE",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "PF",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "PG",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "PH",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "PK",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "PL",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "PM",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "PN",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "PR",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "PS",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "PT",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "PW",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "PY",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "QA",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "RE",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "listed",
+          "directory_source_ids": [
+            "ro-iastatullaintrebari"
+          ],
+          "entity_id": "RO",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "RS",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "RU",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "RW",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "SA",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "SB",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "SC",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "SD",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "listed",
+          "directory_source_ids": [
+            "se-handlingar"
+          ],
+          "entity_id": "SE",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "SG",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "SH",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "SI",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "SJ",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "SK",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "SL",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "SM",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "SN",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "SO",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "SR",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "SS",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "ST",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "SV",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "SX",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "SY",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "SZ",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "TC",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "TD",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "TF",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "TG",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "TH",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "TJ",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "TK",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "TL",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "TM",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "TN",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "TO",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "TR",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "TT",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "TV",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "TW",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "TZ",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "listed",
+          "directory_source_ids": [
+            "ua-dostup"
+          ],
+          "entity_id": "UA",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "UG",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "UM",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "listed",
+          "directory_source_ids": [
+            "us-opramachine"
+          ],
+          "entity_id": "US",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "listed",
+          "directory_source_ids": [
+            "uy-quesabes"
+          ],
+          "entity_id": "UY",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "UZ",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "VA",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "VC",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "VE",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "VG",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "VI",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "VN",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "VU",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "WF",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "WS",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "listed",
+          "directory_source_ids": [
+            "xk-dumedite"
+          ],
+          "entity_id": "XK",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "YE",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "YT",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "ZA",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "ZM",
+          "exhaustive_discovery": false
+        },
+        {
+          "broader_discovery": "still_required",
+          "capture_or_rights_approved": false,
+          "directory_presence": "not_listed",
+          "directory_source_ids": [],
+          "entity_id": "ZW",
+          "exhaustive_discovery": false
+        }
+      ],
+      "observed_at": "2026-08-30T21:19:59.739984+00:00",
+      "review_sha256": "99f1b96b3b0a4106f34f4177d74f931af06dff72a962b16120f6e1276029ba9a",
+      "scope": "Alaveteli directory only; not exhaustive national discovery",
+      "source_html_sha256": "56d942fe691a2b3f99cdd64afedcf2572b4ed7200eb69429cf653735f4c62758",
+      "source_observations": [
+        {
+          "capture_or_rights_approved": false,
+          "entity_id": "GB",
+          "observed_url": "https://www.whatdotheyknow.com",
+          "registered_origins": [
+            "https://www.whatdotheyknow.com"
+          ],
+          "scheme_matches_registry": true,
+          "source_id": "uk-wdtk"
+        },
+        {
+          "capture_or_rights_approved": false,
+          "entity_id": "EU",
+          "observed_url": "https://www.asktheeu.org",
+          "registered_origins": [
+            "https://www.asktheeu.org"
+          ],
+          "scheme_matches_registry": true,
+          "source_id": "eu-asktheeu"
+        },
+        {
+          "capture_or_rights_approved": false,
+          "entity_id": "CZ",
+          "observed_url": "https://www.infoprovsechny.cz",
+          "registered_origins": [
+            "https://www.infoprovsechny.cz"
+          ],
+          "scheme_matches_registry": true,
+          "source_id": "cz-infoprovsechny"
+        },
+        {
+          "capture_or_rights_approved": false,
+          "entity_id": "FR",
+          "observed_url": "https://madada.fr",
+          "registered_origins": [
+            "https://madada.fr"
+          ],
+          "scheme_matches_registry": true,
+          "source_id": "fr-madada"
+        },
+        {
+          "capture_or_rights_approved": false,
+          "entity_id": "SE",
+          "observed_url": "https://handlingar.se",
+          "registered_origins": [
+            "https://handlingar.se"
+          ],
+          "scheme_matches_registry": true,
+          "source_id": "se-handlingar"
+        },
+        {
+          "capture_or_rights_approved": false,
+          "entity_id": "NL",
+          "observed_url": "https://www.woo-knop.nl",
+          "registered_origins": [
+            "https://www.woo-knop.nl"
+          ],
+          "scheme_matches_registry": true,
+          "source_id": "nl-woo-knop"
+        },
+        {
+          "capture_or_rights_approved": false,
+          "entity_id": "BE",
+          "observed_url": "https://transparencia.be",
+          "registered_origins": [
+            "https://transparencia.be"
+          ],
+          "scheme_matches_registry": true,
+          "source_id": "be-transparencia"
+        },
+        {
+          "capture_or_rights_approved": false,
+          "entity_id": "HR",
+          "observed_url": "https://imamopravoznati.org",
+          "registered_origins": [
+            "https://imamopravoznati.org"
+          ],
+          "scheme_matches_registry": true,
+          "source_id": "hr-imamopravoznati"
+        },
+        {
+          "capture_or_rights_approved": false,
+          "entity_id": "HU",
+          "observed_url": "https://kimittud.hu/",
+          "registered_origins": [
+            "https://kimittud.hu"
+          ],
+          "scheme_matches_registry": true,
+          "source_id": "hu-kimittud"
+        },
+        {
+          "capture_or_rights_approved": false,
+          "entity_id": "UA",
+          "observed_url": "https://dostup.org.ua",
+          "registered_origins": [
+            "https://dostup.org.ua"
+          ],
+          "scheme_matches_registry": true,
+          "source_id": "ua-dostup"
+        },
+        {
+          "capture_or_rights_approved": false,
+          "entity_id": "GR",
+          "observed_url": "https://www.arthro5a.gr",
+          "registered_origins": [
+            "https://www.arthro5a.gr"
+          ],
+          "scheme_matches_registry": true,
+          "source_id": "gr-arthro5a"
+        },
+        {
+          "capture_or_rights_approved": false,
+          "entity_id": "MD",
+          "observed_url": "https://www.vreauinfo.md",
+          "registered_origins": [
+            "https://www.vreauinfo.md"
+          ],
+          "scheme_matches_registry": true,
+          "source_id": "md-vreauinfo"
+        },
+        {
+          "capture_or_rights_approved": false,
+          "entity_id": "HK",
+          "observed_url": "https://accessinfo.hk",
+          "registered_origins": [
+            "https://accessinfo.hk"
+          ],
+          "scheme_matches_registry": true,
+          "source_id": "hk-accessinfo"
+        },
+        {
+          "capture_or_rights_approved": false,
+          "entity_id": "AU",
+          "observed_url": "https://www.righttoknow.org.au",
+          "registered_origins": [
+            "https://www.righttoknow.org.au"
+          ],
+          "scheme_matches_registry": true,
+          "source_id": "au-rtk"
+        },
+        {
+          "capture_or_rights_approved": false,
+          "entity_id": "NZ",
+          "observed_url": "https://fyi.org.nz",
+          "registered_origins": [
+            "https://fyi.org.nz"
+          ],
+          "scheme_matches_registry": true,
+          "source_id": "nz-fyi"
+        },
+        {
+          "capture_or_rights_approved": false,
+          "entity_id": "UY",
+          "observed_url": "https://quesabes.org",
+          "registered_origins": [
+            "https://quesabes.org"
+          ],
+          "scheme_matches_registry": true,
+          "source_id": "uy-quesabes"
+        },
+        {
+          "capture_or_rights_approved": false,
+          "entity_id": "LR",
+          "observed_url": "https://infolib.org.lr",
+          "registered_origins": [
+            "https://infolib.org.lr"
+          ],
+          "scheme_matches_registry": true,
+          "source_id": "lr-infolib"
+        },
+        {
+          "capture_or_rights_approved": false,
+          "entity_id": "CO",
+          "observed_url": "https://www.queremosdatos.co",
+          "registered_origins": [
+            "https://www.queremosdatos.co"
+          ],
+          "scheme_matches_registry": true,
+          "source_id": "co-queremosdatos"
+        },
+        {
+          "capture_or_rights_approved": false,
+          "entity_id": "US",
+          "observed_url": "https://opramachine.com",
+          "registered_origins": [
+            "https://opramachine.com"
+          ],
+          "scheme_matches_registry": true,
+          "source_id": "us-opramachine"
+        },
+        {
+          "capture_or_rights_approved": false,
+          "entity_id": "AR",
+          "observed_url": "https://derechoaldato.com.ar",
+          "registered_origins": [
+            "https://derechoaldato.com.ar"
+          ],
+          "scheme_matches_registry": true,
+          "source_id": "ar-derechoaldato"
+        },
+        {
+          "capture_or_rights_approved": false,
+          "entity_id": "GE",
+          "observed_url": "https://askgov.ge",
+          "registered_origins": [
+            "https://askgov.ge"
+          ],
+          "scheme_matches_registry": true,
+          "source_id": "ge-askgov"
+        },
+        {
+          "capture_or_rights_approved": false,
+          "entity_id": "RO",
+          "observed_url": "http://iastatullaintrebari.ro",
+          "registered_origins": [
+            "https://iastatullaintrebari.ro"
+          ],
+          "scheme_matches_registry": false,
+          "source_id": "ro-iastatullaintrebari"
+        },
+        {
+          "capture_or_rights_approved": false,
+          "entity_id": "XK",
+          "observed_url": "https://dumedite.org",
+          "registered_origins": [
+            "https://dumedite.org"
+          ],
+          "scheme_matches_registry": true,
+          "source_id": "xk-dumedite"
+        }
+      ],
+      "source_url": "https://alaveteli.org/deployments/"
+    },
+    "seeds": {
+      "donor_repository": "https://github.com/edithatogo/fyi-archive",
+      "donor_revision": "cba7b0dec2734bdc9ff51c69610fc55cb1fc5aa1",
+      "files": [
+        {
+          "local_file": "donor-instances.json",
+          "sha256": "35d95fffaf0d3060731a29be9448a168b7612e07a493ad67c416477282a0f537",
+          "source_path": "src/fyi_archive/config/archive_instances.json"
+        },
+        {
+          "local_file": "donor-additional-sites.json",
+          "sha256": "2a9f873ff5b45ccc02cc14cffb8a32dedd7c11ea4663f42b8f8aa5d9d746d819",
+          "source_path": "configs/additional_foi_archive_sites.json"
+        },
+        {
+          "local_file": "donor-jurisdiction-targets.json",
+          "sha256": "343c840250ed97bb190966e04bf2a2a1fee1bb4d3fd20f565010d4fd871447e5",
+          "source_path": "configs/jurisdiction_archive_targets.json"
+        }
+      ],
+      "hf_snapshot": {
+        "local_file": "hf-repository-snapshot.json",
+        "sha256": "168fb3d1c3cad278b8e384e181b5761b12e25f1bf043415503d0ab68afe8ebc8"
+      },
+      "scope": "Unmodified registry seeds only; no payload, rights promotion or capture evidence imported.",
+      "universe": {
+        "kind": "UN statistical geography plus explicit project extensions",
+        "local_file": "country-universe.json",
+        "sha256": "c8b3e1195a5160d4be94cbdf588b56dd216b3e34bf8adb86452613a546cb831d",
+        "source_url": "https://unstats.un.org/unsd/methodology/m49/overview/"
+      }
+    },
+    "universe_retrieved_at": "2026-08-30T09:41:18.511301+00:00",
+    "universe_source_html_sha256": "b9048114f6e7f2abda83bf03d4263c9d7cd1bd7230e3d0461025ee7839a7a1fb"
+  },
+  "schema_version": "archive-govt-nz.foi-source-catalogue/v2",
+  "scope": "Source metadata and geographic coverage only; no request or raw-object index.",
+  "universe_source": "https://unstats.un.org/unsd/methodology/m49/overview/"
+}

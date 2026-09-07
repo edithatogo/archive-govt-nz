@@ -1,0 +1,22 @@
+{
+  "entities_with_explicit_dispositions": 251,
+  "factually_assessed_candidates": 225,
+  "geographic_entities": 250,
+  "known_sources": 255,
+  "payload_publication_authorized": false,
+  "remaining_unverified": 250,
+  "retained_seed_sources": 30,
+  "source_dispositions": {
+    "access_unverified": 118,
+    "foi_metadata_lead": 4,
+    "foi_scope_unverified": 93,
+    "not_established": 1,
+    "out_of_scope_for_foi_capture": 8,
+    "request_response_register_landing_page_observed": 1,
+    "review_required": 30
+  },
+  "supranational_entities": 1,
+  "target_regimes": 42,
+  "total_requests": null,
+  "verified_complete": 0
+}

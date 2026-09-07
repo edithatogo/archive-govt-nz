@@ -202,3 +202,24 @@ links form an HTML year-index entrypoint contract; the parser never follows them
 The next stage is a separately guarded resource-type observation and format-parser
 qualification, not automatic acquisition. New dated guarded evidence lives under
 `guarded-linked-20260907/`; pre-fix evidence and current-batch source stay unchanged.
+
+## P2.16 canonical metadata projection
+
+The canonical importer verifies fixed input hashes and source-bound lineage,
+reproduces the candidate/guarded linked/AL assessment reports offline, then joins
+by exact source and entity sets. Original source rows are retained unchanged;
+candidate factual fields are allowlisted, with restricted endpoint URLs omitted.
+Endpoint-specific dated linked findings do not overwrite parent observations.
+The original rollout is a separate unchanged state projection, not recalculated
+from structural HTML counts. The existing exporter accepts the resulting v2
+catalogue; the v1 scheduled publisher is unchanged.
+
+```mermaid
+flowchart LR
+  P[Pinned seeds and receipts] --> J[Exact canonical join]
+  C[Pinned candidate and guarded linked reports] --> J
+  J --> R[V2 source and entity registry]
+  R --> M[Machine coverage and human index]
+  J --> H[Unchanged historical rollout state]
+  J --> X[Reject drift or execution promotion]
+```

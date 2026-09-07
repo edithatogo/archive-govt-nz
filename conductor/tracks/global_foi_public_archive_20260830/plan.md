@@ -142,6 +142,18 @@ The approved destination is archive-govt-nz; no cutover has occurred.
   269 focused tests pass; new module has 100% line/branch coverage. GG timeout
   and UM unsupported-rules blocks remain factual outcomes, not bypass queues.
 
+### P2 canonical factual join — 2026-09-07
+
+- [x] P2.16 (AC04, AC09, AC11): Join the pinned 255-source rollout with
+  all 225 dated candidate assessments and guarded linked/AL navigation findings.
+  Generate one canonical metadata registry and paired index/coverage reports;
+  preserve the original 30 rows, unknown denominators, historical rollout counts
+  and independent policy gates. Reject missing receipts and identity/input drift.
+  No network, publication, schedules or shared lifecycle changes; parent full gate.
+  Receipt: canonical-join-20260907.md; generated canonical-index-20260907/.
+  330 focused tests pass, seven guard mutants killed; both changed production
+  modules have 100% line/branch coverage. Parent owns P2.2/P2.3 lifecycle acceptance.
+
 ## Phase 3 — Metadata indexes and immutable raw storage
 
 - [x] P3.1 (AC05, AC06, AC11): Add red tests for original metadata preservation, request/correspondence/attachment relationships, revisions, missing objects, synthetic/CDX rejection, unsafe archive members, private-network redirects, expansion/resource limits, active content and sensitive exports.

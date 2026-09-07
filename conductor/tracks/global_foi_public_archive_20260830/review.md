@@ -295,3 +295,13 @@ year labels; no annual resource was followed and record denominators remain null
 GG stays unverified; UM stays blocked before page access. 269 focused tests pass,
 new module 100% line/branch coverage; lint/type/format pass. Frozen delivery tree,
 existing collector, historical evidence and rights/publication gates untouched.
+
+## P2.16 local review — 2026-09-07
+
+Canonical 255-source join accepted locally: exact original identities, input and
+receipt provenance, entity equality, dated endpoint scope, restrictive metadata,
+null denominators and unchanged execution/raw state are covered. 330 focused
+tests pass; both changed production modules have 100% line/branch coverage and
+seven guard mutants are killed. Ruff/format/BasedPyright pass. See
+canonical-join-20260907.md for reproduction and development findings. No outstanding
+local finding; parent full gate and lifecycle remain separate. No remote writes.
