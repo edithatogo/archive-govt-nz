@@ -108,3 +108,47 @@ complete; P2.2/P2.3 and the track remain in progress. The parent must integrate
 and run the full harness. Next source work is evidence-backed candidate
 assessment of FOI scope, origin, adapter, rights and pacing before catalogue
 admission; naming every entity does not satisfy reviewed country coverage.
+
+## P2.10 — factual cohort complete locally, 2026-09-07
+
+[candidate-assessment.json](candidate-assessment.json) and
+[candidate-assessment.md](candidate-assessment.md) assess all 225 retained
+candidate receipts. The AL/BH alternate-schema cohort has completed bounded
+factual review; 223 other leads lack retained transport observations. This is
+not a blanket reviewed-source label or a change to the 30-source catalogue.
+
+Direct observations (2026-09-07 02:20–02:21 UTC) establish anonymous HTML
+access at both sources. Albania's register landing page links to year-specific
+registers. Bahrain exposes a general data-catalogue interface; FOI-response
+scope remains unestablished. Default-agent robots disallows Bahrain's /api/
+path; the API was not probed. Neither source has a verified capture adapter or
+new rights/publication decision from this assessment.
+
+Exact external inputs already obtained, not pending user input:
+
+- https://idp.al/robots.txt
+- https://www.idp.al/ (301 to https://idp.al/)
+- https://idp.al/regjistri-i-kerkesave-dhe-pergjigjeve/
+- https://data.gov.bh/robots.txt
+- https://data.gov.bh/ (302 to https://data.gov.bh/pages/homepage/)
+- https://data.gov.bh/explore/
+
+The [observation receipt](factual-observations-al-bh-20260907.json) binds each
+source and original discovery receipt to exact hashes and selected metadata.
+HTML originals are not retained; no capture or independently reconstructible
+original-body evidence is claimed. Observations are dated facts, not current
+availability promises. Reproduce offline in the locked project environment:
+
+```sh
+uv run --locked python -m archive_govt_nz.foi_candidate_assessment --seeds config/foi --rollout conductor/tracks/global_foi_public_archive_20260830/country-rollout-20260831.json --evidence-dir conductor/tracks/global_foi_public_archive_20260830 --observations conductor/tracks/global_foi_public_archive_20260830/factual-observations-al-bh-20260907.json --format json
+```
+
+Use --format md for the paired report. Exact executed focused checks are in
+runlog.md; report regeneration is tested byte-for-byte. The next safe factual
+work is a bounded assessment of the linked AL year-register representations
+and fields, or the next candidate cohort. Institutional raw admission requires
+explicit licence/nonpersonal schema evidence; mixed correspondence remains
+metadata-only. Neither requires creating an extra human factual-review queue.
+P2.2/P2.3 still need source/country disposition integration and separately
+authorized metadata publication. Parent owns full integration validation and
+must retain its accepted P2.5–P2.8 state when incorporating these additions.

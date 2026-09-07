@@ -303,3 +303,50 @@ Ruff, formatting and typing passed. Checked-in report byte reproduction is
 covered by a regression test. Full integration harness is delegated to the
 parent by explicit user instruction; no hosted or whole-repository pass claimed.
 No remote writes, publication, rights decisions or global registry edits.
+
+## 2026-09-07 — P2.10 factual assessment
+
+Continued from local `5651b482`; parent reports earlier commits integrated,
+PR415 checking reconciliation, and P2.5–P2.8 accepted after PR414. This patch
+only adds P2.10 and appends records; it does not revert parent acceptance.
+
+Inspected R04/R09/R11, phase plan, existing phase validator and
+rights-decision-owner-20260905.json. Rights/raw-publication requirements are
+separate from automated factual review; no human queue was introduced.
+
+The 225 discovery receipts contain 223 evidence_schema documents (150 general
+government portals, 70 open-data candidates, two transparency portals, one
+request portal) and two schema_version documents (AL/BH). All record publication
+as unapproved, without establishing a rights denial;
+none contains retained HTTP transport evidence. These assertions establish
+leads, not verified access, source contents, licence or exhaustive discovery.
+
+Bounded read-only HTTP observations: two robots requests followed by four
+HTML pages, eight HTTP responses including two same-site redirects. Timeout
+15 seconds; maximum three hops; HTML cap 2,000,000 decoded bytes; robots cap
+65,536 bytes; no retry, credentials, API/data export or request-record fetch.
+Exact URLs, UTC times, status chains, byte counts and SHA-256 digests are in
+factual-observations-al-bh-20260907.json. Robots were checked before HTML reads.
+Only title/link metadata is retained for HTML; body hashes do not establish
+preserved originals. The web reader also inspected public landing/catalogue/API
+documentation pages to identify bounded endpoints; those cached views are not
+used as direct-transport evidence.
+
+Red: expected missing-module collection failure. Initial negative fixtures
+used a positional candidate index; corrected them to select stable source IDs.
+A parser assumption was corrected after inspecting the installed Python 3.14
+RobotFileParser: wildcard/end-anchor rules are supported. Default-agent
+restriction, wildcard, crawl-delay and failed-robots cases now pass.
+
+Focused validation (existing base Python environment, PYTHONPATH imports this
+worktree; no lock/dependency changes):
+
+```sh
+PYTHONPATH=src /Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/python -m pytest tests/test_foi_candidate_assessment.py tests/test_foi_reconciliation.py tests/test_foi_catalogue.py tests/test_foi_discovery.py tests/test_foi_rollout.py tests/test_verify_foi_rollout_evidence.py -q --cov=archive_govt_nz.foi_candidate_assessment --cov-branch --cov-report=term-missing --cov-fail-under=100
+/Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/ruff check src/archive_govt_nz/foi_candidate_assessment.py tests/test_foi_candidate_assessment.py
+/Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/ruff format --check src/archive_govt_nz/foi_candidate_assessment.py tests/test_foi_candidate_assessment.py
+/Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/basedpyright src/archive_govt_nz/foi_candidate_assessment.py tests/test_foi_candidate_assessment.py
+```
+
+114 tests pass, 100% new-module line/branch coverage. No full harness, hosted
+pass, remote mutation, source activation or publication is claimed.

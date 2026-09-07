@@ -64,6 +64,19 @@ The approved destination is archive-govt-nz; no cutover has occurred.
   combined full local and three-platform hosted gates passed in PR #414,
   merged as `4b1764bb`. Broader source assessment remains P2.2/P2.3.
 
+### P2 factual assessment continuation — 2026-09-07
+
+- [x] P2.10 (AC04, AC09, AC11): Assess retained discovery evidence for all
+  225 additional candidates and complete bounded factual source/access review
+  for the two alternate-schema receipts (AL/BH). Bind observations to sources
+  and receipt hashes with a reusable validator; report endpoint scope, adapter
+  and pacing evidence separately from rights, publication and completeness.
+  Automated factual review needs no additional human approval. Preserve
+  disallowed/unverified dispositions and leave broader P2.2/P2.3 gates open.
+  Local receipt: `candidate-assessment.json`, `candidate-assessment.md`, and
+  `factual-observations-al-bh-20260907.json`. 114 focused tests pass with 100%
+  new-module line/branch coverage. Parent owns full integration validation.
+
 ## Phase 3 — Metadata indexes and immutable raw storage
 
 

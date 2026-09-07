@@ -1,0 +1,164 @@
+{
+  "schema_version": "archive-govt-nz.foi-factual-observations/v1",
+  "rollout_sha256": "33c46cd1b2169a18f993d581b970734fab01795d053ab12cd4ea52f4a67bf638",
+  "cohort_source_ids": [
+    "al-idp-transparency",
+    "bh-government-open-data"
+  ],
+  "cohort_reason": "Complete two-source cohort using schema_version in retained discovery receipts.",
+  "method": "Anonymous bounded HTTP GET; at most 3 hops and 2000000 decoded bytes per HTML page, 15-second timeout, no retries; selected title/link metadata only; bodies hashed in memory and not retained. Robots fetched first with 65536-byte cap; default user-agent policy respected. No API, dataset, request or response payload fetched.",
+  "sources": [
+    {
+      "source_id": "al-idp-transparency",
+      "entity_id": "AL",
+      "retained_receipt_sha256": "0f20029e62c8230af94af6f9c637a48c137e80b4366c6b666c140cb755312a59",
+      "pages": [
+        {
+          "source_id": "al-idp-transparency",
+          "role": "homepage",
+          "requested_url": "https://www.idp.al/",
+          "final_url": "https://idp.al/",
+          "observed_at": "2026-09-07T02:21:18.386622+00:00",
+          "method": "GET",
+          "authentication": "none",
+          "redirect_chain": [
+            {
+              "url": "https://www.idp.al/",
+              "status": 301
+            },
+            {
+              "url": "https://idp.al/",
+              "status": 200
+            }
+          ],
+          "status": 200,
+          "media_type": "text/html",
+          "body_sha256": "bd20729ba2c7770240425f61ad0c78100ac4d3e608fc8a202907d141a5379a4b",
+          "body_bytes": 372473,
+          "body_retained": false,
+          "title": "IDPC – Official Website",
+          "selected_links": [
+            {
+              "url": "https://idp.al/regjistri-i-kerkesave-dhe-pergjigjeve/",
+              "label": "REGJISTRI I KËRKESAVE DHE PËRGJIGJEVE I ZYRËS SË KOMISIONERIT"
+            }
+          ]
+        },
+        {
+          "source_id": "al-idp-transparency",
+          "role": "catalogue",
+          "requested_url": "https://idp.al/regjistri-i-kerkesave-dhe-pergjigjeve/",
+          "final_url": "https://idp.al/regjistri-i-kerkesave-dhe-pergjigjeve/",
+          "observed_at": "2026-09-07T02:21:20.193850+00:00",
+          "method": "GET",
+          "authentication": "none",
+          "redirect_chain": [
+            {
+              "url": "https://idp.al/regjistri-i-kerkesave-dhe-pergjigjeve/",
+              "status": 200
+            }
+          ],
+          "status": 200,
+          "media_type": "text/html",
+          "body_sha256": "d21d22904031e3162cbdfdecc1a484b1695eacebb469da852edb7cce93315e27",
+          "body_bytes": 252643,
+          "body_retained": false,
+          "title": "Regjistri i kerkesave dhe pergjigjeve – IDPC",
+          "selected_links": [
+            {
+              "url": "https://idp.al/regjistri-i-kerkesave-dhe-pergjigjeve-2026/",
+              "label": "Viti 2026"
+            },
+            {
+              "url": "https://idp.al/regjistri-i-kerkesave-dhe-pergjigjeve-2015-2025/",
+              "label": "Vitet 2015 - 2025"
+            }
+          ]
+        }
+      ],
+      "robots": {
+        "url": "https://idp.al/robots.txt",
+        "observed_at": "2026-09-07T02:20:03.335822+00:00",
+        "status": 200,
+        "body_sha256": "bdbd2a0b4b8cbe7a44dcb7f29b32784307ae0579ed5081496d2dc939975e9f22",
+        "text": "User-agent: *\nDisallow: /wp-admin/\nAllow: /wp-admin/admin-ajax.php\n\nSitemap: https://idp.al/wp-sitemap.xml\n"
+      }
+    },
+    {
+      "source_id": "bh-government-open-data",
+      "entity_id": "BH",
+      "retained_receipt_sha256": "fe637b3837fc78ed3194d33d62cbb92154571ff1eea9b08ffc88288af60bce56",
+      "pages": [
+        {
+          "source_id": "bh-government-open-data",
+          "role": "homepage",
+          "requested_url": "https://data.gov.bh/",
+          "final_url": "https://data.gov.bh/pages/homepage/",
+          "observed_at": "2026-09-07T02:21:23.335333+00:00",
+          "method": "GET",
+          "authentication": "none",
+          "redirect_chain": [
+            {
+              "url": "https://data.gov.bh/",
+              "status": 302
+            },
+            {
+              "url": "https://data.gov.bh/pages/homepage/",
+              "status": 200
+            }
+          ],
+          "status": 200,
+          "media_type": "text/html",
+          "body_sha256": "d5ccac0fe9163e7c8afd735d98bc68818c286d8738f6f189abd68b0c7974c77a",
+          "body_bytes": 108271,
+          "body_retained": false,
+          "title": "homepage — Bahrain Open Data Portal",
+          "selected_links": [
+            {
+              "url": "https://data.gov.bh/explore",
+              "label": "بيانات Data"
+            },
+            {
+              "url": "https://data.gov.bh/api/",
+              "label": "واجهة برمجة التطبيقات API"
+            }
+          ]
+        },
+        {
+          "source_id": "bh-government-open-data",
+          "role": "catalogue",
+          "requested_url": "https://data.gov.bh/explore/",
+          "final_url": "https://data.gov.bh/explore/",
+          "observed_at": "2026-09-07T02:21:25.131815+00:00",
+          "method": "GET",
+          "authentication": "none",
+          "redirect_chain": [
+            {
+              "url": "https://data.gov.bh/explore/",
+              "status": 200
+            }
+          ],
+          "status": 200,
+          "media_type": "text/html",
+          "body_sha256": "b5723ec09525a1a72a8865d2c8fc1d7e58d980a3ad0da038cd2dd57d7d8c45e0",
+          "body_bytes": 84555,
+          "body_retained": false,
+          "title": "Explore — Bahrain Open Data Portal",
+          "selected_links": [
+            {
+              "url": "https://data.gov.bh/api/",
+              "label": "واجهة برمجة التطبيقات API"
+            }
+          ]
+        }
+      ],
+      "robots": {
+        "url": "https://data.gov.bh/robots.txt",
+        "observed_at": "2026-09-07T02:20:05.508213+00:00",
+        "status": 200,
+        "body_sha256": "1b21d996318d6353d8c3b7349052c86890c4d2064b805ad37015de87b9e8e784",
+        "text": "User-agent: Twitterbot\nDisallow:\n\nUser-agent: *\nDisallow: /logout\nDisallow: /login\nDisallow: /publish\nDisallow: /backoffice\nDisallow: /explore/download\nDisallow: /explore/dataset/*/download\nDisallow: /explore/dataset/*/rss/\nDisallow: /explore/dataset/*/atom/\nDisallow: /api/\nDisallow: /p-preview/\nDisallow: /explore/form-preview/\nDisallow: /static/\n\nUser-agent: Googlebot\nAllow: /api/\nAllow: /static/\nDisallow: /api/v2/*/exports/\nDisallow: /api/explore/v2*/exports/\nDisallow: /explore/assets/\nDisallow: /glossary/\n\nSitemap: https://www.data.gov.bh/sitemap.xml\n"
+      }
+    }
+  ]
+}

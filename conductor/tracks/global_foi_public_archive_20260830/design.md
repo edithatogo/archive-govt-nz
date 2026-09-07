@@ -64,6 +64,28 @@ bounded scoped patches while it remains the active operational owner.
 
 ## Global rollout
 
+P2.10 reuses the lineage reconciler to assess every additional candidate's
+retained evidence, then validates an explicit bounded observation cohort.
+The AL/BH cohort preserves selected HTML title/link metadata and in-memory body
+digests, not original HTML payloads. Full robots text is retained as a small
+policy input. The offline assessor verifies identity, hashes, anonymous GET
+metadata, same-site redirects and endpoint links. A register-labelled landing
+page with distinct year-labelled links establishes that narrow interface;
+it does not establish record contents, coverage or redistribution rights.
+The default-agent robots result is independent of source access and rights.
+Reported restrictive privacy/dispositions retain their status and omit URLs.
+No observation changes the seed catalogue, rollout, schedules or publisher.
+
+```mermaid
+flowchart LR
+  L[Reconciled candidates and receipt hashes] --> A[Offline factual assessor]
+  O[Bounded source-bound observations] --> A
+  A --> F[Access and interface findings]
+  A --> U[Unknown and restrictive dispositions]
+  F --> R[Paired local reports]
+  U --> R
+```
+
 P2.9 adds a read-only lineage projection from the byte-verified seed/directory
 catalogue, the materialized rollout and contained source-associated receipts.
 It reuses rollout integrity checks, requires the exact catalogue pin and source

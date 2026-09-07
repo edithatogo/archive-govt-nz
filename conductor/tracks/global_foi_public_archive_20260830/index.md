@@ -17,6 +17,10 @@ Approved track in progress. Automation repair and source-catalogue foundations a
 
 ## Implementation receipts
 
+- [Candidate factual assessment](candidate-assessment.md)
+- [Machine candidate assessment](candidate-assessment.json)
+- [Bounded AL/BH observation metadata](factual-observations-al-bh-20260907.json)
+
 - [Rollout lineage reconciliation](rollout-reconciliation.md)
 - [Deterministic source lineage and receipt hashes](rollout-reconciliation.json)
 
