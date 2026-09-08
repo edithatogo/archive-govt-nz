@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive-govt-nz.org/schemas/health-repair-ledger-v1.schema.json",
+  "title": "Health Phase 4 repair decision ledger row",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "measure", "year", "reconciliation_status", "disposition", "source_record_id", "source_object_sha256", "source_coordinate", "source_value", "donor_value", "replacement_value", "publication_approved"],
+  "properties": {
+    "schema_version": {"const": "archive-govt-nz.health-repair-ledger/v1"},
+    "measure": {"enum": ["health_spending", "nominal_gdp"]},
+    "year": {"type": "integer", "minimum": 1, "maximum": 9999},
+    "reconciliation_status": {"enum": ["exact_match", "value_difference", "source_only", "donor_only"]},
+    "disposition": {"enum": ["accepted", "unsupported", "blocked"]},
+    "source_record_id": {"type": ["string", "null"]},
+    "source_object_sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
+    "source_coordinate": {"type": ["string", "null"]},
+    "source_value": {"type": ["string", "null"]},
+    "donor_value": {"type": ["string", "null"]},
+    "replacement_value": {"const": null},
+    "publication_approved": {"const": false}
+  }
+}
