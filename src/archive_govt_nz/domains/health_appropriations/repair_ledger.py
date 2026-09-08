@@ -34,11 +34,14 @@ def build_repair_ledger(
     for row in reconciliation:
         measure = row.get("measure")
         year = row.get("year")
-        key = (measure, year)
-        if measure not in {"health_spending", "nominal_gdp"} or not isinstance(
-            year, int
+        if (
+            not isinstance(measure, str)
+            or measure not in {"health_spending", "nominal_gdp"}
+            or isinstance(year, bool)
+            or not isinstance(year, int)
         ):
             raise ValueError(_ERR_KEY)
+        key = (measure, year)
         if key in seen or row.get("status") not in _STATUSES:
             raise ValueError(_ERR_STATUS)
         disposition = dispositions.get(key)
