@@ -42,6 +42,7 @@ class HealthAdapter(Protocol):
 
     def extract(self, bronze: bytes, *, source_sha256: str) -> AdapterOutput:
         """Extract without mutating Bronze bytes or silently dropping input."""
+        ...
 
 
 def preserved_only(*, source_coordinate: str, reason: str) -> AdapterOutput:
