@@ -1,0 +1,36 @@
+{
+  "schema_version": "archive-govt-nz.health-phase3-schema-foundation/v1",
+  "issue": 209,
+  "scope": "M-05 structural Silver record-set registration",
+  "status": "locally_verified",
+  "source_commit": "a5bb4e9c3a01f908787cc3720193103dd56314ab",
+  "implementation": {
+    "module": "src/archive_govt_nz/schemas/health_recordsets.py",
+    "json_transport_module": "src/archive_govt_nz/schemas/health_recordset_json.py",
+    "recordsets": [
+      "source_inventory",
+      "appropriation_fact",
+      "health_spending_fact",
+      "fiscal_context_fact",
+      "pharmaceutical_budget_fact",
+      "price_population_fact",
+      "classification_dimension",
+      "field_lineage"
+    ],
+    "version": "v1",
+    "contract_scope": "structural_only",
+    "semantic_promotion": false,
+    "rights_or_publication_claim": false
+  },
+  "validation": {
+    "command": "uv run pytest tests/schemas/test_health_recordsets.py tests/schemas/test_health_recordset_json.py -q",
+    "result": "85 passed",
+    "coverage_boundary": "schema and JSON transport contracts only",
+    "known_limits": [
+      "does not validate source identity or rights",
+      "does not validate row-level lineage closure",
+      "does not promote unknown formats or unresolved units"
+    ]
+  },
+  "handoff": "Adapter interfaces, source-layout drift detection, and semantic dimension mappings remain separate Phase 3 tasks."
+}
