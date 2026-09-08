@@ -49,3 +49,36 @@ def test_ledger_rejects_unknown_disposition() -> None:
         build_repair_ledger(
             [_row("source_only")], {("health_spending", 1976): "repair"}
         )
+
+
+@pytest.mark.parametrize(
+    "changes",
+    [
+        {"measure": "other"},
+        {"measure": None},
+        {"year": True},
+        {"year": "1976"},
+    ],
+)
+def test_ledger_rejects_malformed_keys(changes: dict[str, object]) -> None:
+    row = _row()
+    row.update(changes)
+    with pytest.raises(ValueError, match="repair_ledger_key"):
+        build_repair_ledger([row], {("health_spending", 1976): "blocked"})
+
+
+def test_ledger_rejects_unknown_status_and_duplicate_key() -> None:
+    with pytest.raises(ValueError, match="duplicate_or_status"):
+        build_repair_ledger([_row("unknown")], {("health_spending", 1976): "blocked"})
+    with pytest.raises(ValueError, match="duplicate_or_status"):
+        build_repair_ledger([_row(), _row()], {("health_spending", 1976): "blocked"})
+
+
+@pytest.mark.parametrize("disposition", ["accepted", "unsupported"])
+def test_ledger_preserves_explicit_non_blocked_dispositions(
+    disposition: str,
+) -> None:
+    ledger = build_repair_ledger(
+        [_row("exact_match")], {("health_spending", 1976): disposition}
+    )
+    assert ledger[0]["disposition"] == disposition
