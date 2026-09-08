@@ -1,0 +1,40 @@
+{
+  "schema_version": "archive-govt-nz.health-phase4-decision/v1",
+  "recorded_at": "2026-09-08",
+  "issue": 434,
+  "scope": "New Zealand Health Appropriations Medallion Assimilation Phase 4",
+  "decisions": {
+    "golden_fixtures": {
+      "rule": "derive only from existing public donor parity evidence",
+      "preserve": ["source bytes", "workbook coordinates", "source hashes", "lineage"],
+      "inference_allowed": false
+    },
+    "red_fixtures": {
+      "rule": "one declared field or structural condition mutated per fixture",
+      "production_data": false,
+      "expected_behavior": "deterministic rejection"
+    },
+    "parity_oracle": {
+      "tables": 5,
+      "rows": 312,
+      "comparison": ["canonical identifiers", "normalized types", "decimal transport", "nullability", "lineage"],
+      "silent_normalization": false
+    },
+    "repair_ledger": {
+      "required_fields": ["source coordinate", "before hash", "after hash", "rule identifier", "status", "disposition"],
+      "ambiguous_repairs": "blocked"
+    },
+    "unresolved_workbook_units": {
+      "count": 158,
+      "allowed_dispositions": ["accepted", "unsupported", "blocked"],
+      "source_evidence_required": true,
+      "semantic_inference": false,
+      "publication": false
+    }
+  },
+  "boundary": {
+    "dirty_schema_work_preserved": true,
+    "upstream_changes_authorized": false,
+    "external_comments_posted": false
+  }
+}
