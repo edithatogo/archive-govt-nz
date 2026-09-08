@@ -1,0 +1,30 @@
+{
+  "schema_version": "archive-govt-nz.foi-live-repository-identity/v1",
+  "recorded_at": "2026-09-08",
+  "repositories": {
+    "operational_owner": {
+      "repository": "edithatogo/fyi-archive",
+      "url": "https://github.com/edithatogo/fyi-archive",
+      "archived": false,
+      "visibility": "public",
+      "default_branch": "main",
+      "workflows_observed": true,
+      "status": "verified_live"
+    },
+    "legacy_references": [
+      {
+        "repository": "edithatogo/foi-source-catalogue",
+        "status": "not_resolvable_under_owner",
+        "meaning": "historical or moved publication target; no current location inferred"
+      },
+      {
+        "repository": "edithatogo/fyi-archive-nz",
+        "status": "not_resolvable_under_owner",
+        "meaning": "historical or moved dataset target; no current location inferred"
+      }
+    ]
+  },
+  "conclusion": "fyi-archive remains the active operational repository; publication and dataset destinations require an independently verified current identity before any cutover or readback claim.",
+  "external_actions": [],
+  "upstream_mutation": false
+}
