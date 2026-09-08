@@ -440,9 +440,12 @@ repository validation command. External gates block only their affected task.
 
 ### 4.4 Phase review and checkpoint
 
-- [ ] Run the 23-file, 312-row, four-analysis-family and six-plot parity suites,
+- [x] Run the 23-file, 312-row, four-analysis-family and six-plot parity suites,
   plus deterministic rebuild and unsupported-layout tests. [M-01, M-08,
   M-09, M-16; AC-01, AC-06, AC-07, AC-12]
+  Bounded parity acceptance is recorded in `parity-acceptance-20260908.md`;
+  donor repair approval, whole-area normalization and pixel-level equivalence
+  remain separate.
 - [ ] Self-review, full harness, and paired evidence; no parity claim may hide
   an unexplained difference. [M-18, M-19; AC-16]
 
