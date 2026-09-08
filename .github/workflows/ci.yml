@@ -37,6 +37,7 @@ jobs:
           enable-cache: true
           version: "0.12.10"
       - name: Run locked assurance gate
+        shell: bash
         run: |
           if [ "${{ matrix.os }}" = "macos-latest" ]; then
             pytest_workers=1
