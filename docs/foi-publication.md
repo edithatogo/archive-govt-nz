@@ -1,9 +1,17 @@
 # Verified FOI publication
 
 The public source catalogue and raw source payloads have different eligibility
-boundaries. The existing user instruction authorizes a public metadata catalogue
-at `edithatogo/foi-source-catalogue`. It does not establish redistribution rights
+boundaries. No public publication destination is currently verified. The dated
+destination review at
+`conductor/tracks/global_foi_public_archive_20260830/current-destination-review-20260908.json`
+records that the previously referenced `edithatogo/foi-source-catalogue` identity
+currently returns 404 and must not be treated as a destination. It does not establish redistribution rights
 or privacy clearance for each raw FOI source.
+
+The catalogue command below is retained as an implementation reference only. It
+must not be dispatched until a replacement destination is independently verified
+and recorded; the active `edithatogo/fyi-archive` repository is not evidence of
+that destination.
 
 ```sh
 uv run --locked python tools/publish_foi.py catalogue \

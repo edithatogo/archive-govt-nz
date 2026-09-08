@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-08T00:00:00+00:00",
+  "authority": "GitHub REST API repository metadata",
+  "active_operational_repository": {
+    "repository": "edithatogo/fyi-archive",
+    "visibility": "public",
+    "archived": false,
+    "default_branch": "main",
+    "observed_updated_at": "2026-08-31T03:20:32Z"
+  },
+  "superseded_unresolved_references": [
+    "edithatogo/foi-source-catalogue",
+    "edithatogo/fyi-archive-nz"
+  ],
+  "unresolved_reference_observation": "Both repository identities returned HTTP 404 under the owner at observation time.",
+  "publication_destination": {
+    "status": "unverified",
+    "repository": null,
+    "reason": "The active operational repository is not evidence of a public publication destination, and no replacement dataset identity was inferred."
+  },
+  "raw_payload_rights": {
+    "status": "unverified",
+    "reason": "Repository visibility does not establish redistribution or privacy clearance for raw FOI payloads."
+  },
+  "permitted_use": [
+    "reconcile target-owned references",
+    "preserve the observation and unresolved handoff",
+    "fail closed before publication or raw retention claims"
+  ],
+  "prohibited_inference": [
+    "treat fyi-archive as a publication destination",
+    "infer a moved dataset identity",
+    "claim raw retention or rights clearance"
+  ]
+}
