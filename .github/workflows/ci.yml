@@ -37,10 +37,15 @@ jobs:
           enable-cache: true
           version: "0.12.10"
       - name: Run locked assurance gate
-        run: >-
-          uv run --locked python tools/check.py
-          --pytest-workers auto
-          --pytest-distribution loadscope
+        run: |
+          if [ "${{ matrix.os }}" = "macos-latest" ]; then
+            pytest_workers=1
+          else
+            pytest_workers=auto
+          fi
+          uv run --locked python tools/check.py \
+            --pytest-workers "$pytest_workers" \
+            --pytest-distribution loadscope
       - name: Export Cobertura coverage
         if: matrix.os == 'ubuntu-latest' && always()
         run: uv run --locked coverage xml -o coverage.xml
