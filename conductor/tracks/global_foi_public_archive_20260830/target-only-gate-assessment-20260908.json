@@ -1,0 +1,44 @@
+{
+  "schema": "archive-govt-nz.foi-target-gate-assessment/v1",
+  "observed_at": "2026-09-08",
+  "authority": "github-api-readback",
+  "target_repository": "edithatogo/archive-govt-nz",
+  "operational_repository": {
+    "repository": "edithatogo/fyi-archive",
+    "url": "https://github.com/edithatogo/fyi-archive",
+    "default_branch": "main",
+    "archived": false,
+    "private": false,
+    "identity_verified": true
+  },
+  "historical_destinations": [
+    {
+      "repository": "edithatogo/foi-source-catalogue",
+      "identity_verified": false,
+      "api_observation": "repository_not_found",
+      "publication_allowed": false
+    },
+    {
+      "repository": "edithatogo/fyi-archive-nz",
+      "identity_verified": false,
+      "api_observation": "repository_not_found",
+      "publication_allowed": false
+    }
+  ],
+  "target_only_controls": {
+    "upstream_mutation": false,
+    "publication": "blocked_until_destination_and_rights_readback",
+    "raw_payload_upload": "blocked_until_source_and_privacy_decision",
+    "identity_inference": false
+  },
+  "required_next_evidence": [
+    "verified current catalogue destination",
+    "source-level rights and privacy decision",
+    "raw retention and anonymous restore receipt",
+    "lease and sync readback from operational repository"
+  ],
+  "limitations": [
+    "A live operational repository does not prove catalogue ownership, raw completeness, or publication authority.",
+    "A missing historical repository does not identify a replacement destination."
+  ]
+}
