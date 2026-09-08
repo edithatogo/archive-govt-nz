@@ -6,11 +6,17 @@ the source or donor observation and refuses to manufacture a repair value.
 
 from __future__ import annotations
 
-from collections.abc import Mapping, Sequence
-from typing import Any
+from typing import TYPE_CHECKING, Any
+
+if TYPE_CHECKING:
+    from collections.abc import Mapping, Sequence
 
 _STATUSES = frozenset(("exact_match", "value_difference", "source_only", "donor_only"))
 _DISPOSITIONS = frozenset(("accepted", "unsupported", "blocked"))
+_ERR_KEY = "repair_ledger_key"
+_ERR_STATUS = "repair_ledger_duplicate_or_status"
+_ERR_MISSING = "repair_ledger_missing_disposition"
+_ERR_EXTRA = "repair_ledger_extra_disposition"
 
 
 def build_repair_ledger(
@@ -32,12 +38,12 @@ def build_repair_ledger(
         if measure not in {"health_spending", "nominal_gdp"} or not isinstance(
             year, int
         ):
-            raise ValueError("repair_ledger_key")
+            raise ValueError(_ERR_KEY)
         if key in seen or row.get("status") not in _STATUSES:
-            raise ValueError("repair_ledger_duplicate_or_status")
+            raise ValueError(_ERR_STATUS)
         disposition = dispositions.get(key)
         if disposition not in _DISPOSITIONS:
-            raise ValueError("repair_ledger_missing_disposition")
+            raise ValueError(_ERR_MISSING)
         seen.add(key)
         result.append(
             {
@@ -56,5 +62,5 @@ def build_repair_ledger(
             }
         )
     if set(dispositions) != seen:
-        raise ValueError("repair_ledger_extra_disposition")
+        raise ValueError(_ERR_EXTRA)
     return result

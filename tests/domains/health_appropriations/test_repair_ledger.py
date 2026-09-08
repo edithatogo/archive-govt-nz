@@ -1,3 +1,5 @@
+"""Focused contracts for Health Phase 4 repair decisions."""
+
 from __future__ import annotations
 
 import json
