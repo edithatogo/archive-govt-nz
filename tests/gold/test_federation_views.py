@@ -7,6 +7,7 @@ from typing import TYPE_CHECKING
 
 import pyarrow as pa
 import pyarrow.parquet as pq
+import pytest
 
 from archive_govt_nz.core.urn import CanonicalURN
 from archive_govt_nz.gold.analytics import GoldAnalyticsEngine
@@ -174,4 +175,16 @@ def test_zero_copy_federation_views(tmp_path: Path) -> None:
     q_foi = fed_mgr.query_legislation_and_foi()
     assert q_foi.row_count == 1
 
+    engine.close()
+
+
+def test_federation_rejects_unpinned_or_missing_source(tmp_path: Path) -> None:
+    """Federation attaches only existing local files, never live URLs."""
+    engine = GoldAnalyticsEngine()
+    with pytest.raises(ValueError, match="federation_source_missing"):
+        engine.register_federation_partner(
+            "global-medicines-atlas", "https://example.invalid/live.parquet"
+        )
+    with pytest.raises(ValueError, match="federation_source_not_file"):
+        engine.register_federation_partner("global-medicines-atlas", tmp_path)
     engine.close()
