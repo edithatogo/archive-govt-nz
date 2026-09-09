@@ -4,6 +4,7 @@ from pathlib import Path
 
 import pyarrow as pa
 import pyarrow.parquet as pq
+import pytest
 
 from archive_govt_nz.gold.analytics import (
     GoldAnalyticsEngine,
@@ -140,14 +141,11 @@ def test_register_domain_table_updates_view(tmp_path: Path) -> None:
     assert result.row_count == 1
 
 
-def test_query_returns_empty_result_on_none_relation(tmp_path: Path) -> None:
-    """query() returns an empty columnar result when the relation is None."""
+def test_query_rejects_non_read_only_statements(tmp_path: Path) -> None:
+    """query() rejects DDL before it can mutate the analytical connection."""
     engine = GoldAnalyticsEngine(silver_base_dir=tmp_path)
-    # A DDL statement yields a None relation from DuckDB, exercising the
-    # empty-result branch of query().
-    result = engine.query("CREATE OR REPLACE TEMP TABLE patch_probe AS SELECT 1 AS v")
-    assert result.row_count == 0
-    assert result.column_names == []
+    with pytest.raises(ValueError, match="gold_query_read_only"):
+        engine.query("CREATE OR REPLACE TEMP TABLE patch_probe AS SELECT 1 AS v")
 
 
 def test_attach_nlp_extractions_missing_path_is_noop(tmp_path: Path) -> None:

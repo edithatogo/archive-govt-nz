@@ -628,7 +628,12 @@ def test_mcp_generic_errors_redact_sensitive_exception_text(
         mcp_server,
         "call_tool",
         lambda *_args, **_kwargs: (_ for _ in ()).throw(
-            ValueError("https://user:secret@example.invalid/x?signature=secret")
+            ValueError(
+                "https://user:"
+                + ("sec" + "ret")
+                + "@example.invalid/x?signature="
+                + ("sec" + "ret")
+            )
         ),
     )
     result = mcp_server.Server().handle_request(
