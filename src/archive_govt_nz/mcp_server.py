@@ -11,6 +11,7 @@ from typing import TYPE_CHECKING, Any
 from jsonschema import Draft202012Validator
 
 from archive_govt_nz import __version__, mcp_health_inspection
+from archive_govt_nz.ckan.redaction import redact_sensitive
 from archive_govt_nz.core.registry import AgencyRegistry
 from archive_govt_nz.domains.health_appropriations import resume_operations
 from archive_govt_nz.domains.health_appropriations.budget_operations import (
@@ -662,7 +663,9 @@ class Server:
             return _result(
                 req_id,
                 {
-                    "content": [{"type": "text", "text": str(exc)}],
+                    "content": [
+                        {"type": "text", "text": str(redact_sensitive(str(exc)))}
+                    ],
                     "isError": True,
                 },
             )
