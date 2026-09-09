@@ -617,3 +617,27 @@ def test_mcp_seeded_redaction_counterexample() -> None:
     )
     with pytest.raises(AssertionError):
         oracle(mutant)
+
+
+def test_mcp_generic_errors_redact_sensitive_exception_text(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Generic MCP errors must not expose query credentials or signed URLs."""
+    monkeypatch.setattr(
+        mcp_server,
+        "call_tool",
+        lambda *_args, **_kwargs: (_ for _ in ()).throw(
+            ValueError("https://user:secret@example.invalid/x?signature=secret")
+        ),
+    )
+    result = mcp_server.Server().handle_request(
+        {
+            "jsonrpc": "2.0",
+            "id": 1,
+            "method": "tools/call",
+            "params": {"name": "archive_status", "arguments": {}},
+        }
+    )
+    encoded = json.dumps(result)
+    assert "secret" not in encoded
+    assert "user:" not in encoded
