@@ -1,0 +1,78 @@
+{
+  "artifacts": {
+    "attempt_evidence": "legislation-exact-inventory-attempt-34397208479-1",
+    "complete_state": "legislation-exact-inventory-state-34397208479-1"
+  },
+  "claim_boundary": "This is a bounded 500-work operational result; it does not establish complete legislative coverage beyond the governed seed.",
+  "continuation": {
+    "context": {
+      "branch": "main",
+      "execution_id": "34397208479",
+      "repository": "edithatogo/archive-govt-nz",
+      "run_attempt": 1,
+      "run_id": 34397208479,
+      "software_commit": "809b98d5acea69d525557bb7b74972f016adc609",
+      "workflow": ".github/workflows/exact-inventory.yml"
+    },
+    "receipt_sha256": "3f8517d633c667951b9e20e40aa7de457de215891f45d67705ad4b9da0a4b3a4",
+    "roots": {
+      "cas_root_sha256": "ed93a3f7cddac8f6bc938f1005f47cfe4c309707b34b3a511cc3b66fedb47a40",
+      "checkpoint_file_sha256": "0bc3429c4298d07da1aa582ebea5af250c048855e7e504ca804fbbc2e406dba6",
+      "inventory_sha256": "9ca6dc505f991e015c6c997827878d8c7e9381b214a1544eb338328a285c6894",
+      "manifest_file_sha256": "7f1b5d1723ccdc5c6e0bdfff833cb122b8672ff06a8413a1b5469438fd4d14bb",
+      "manifest_sha256": "33036f157e63bd92de47b488b5c6ba9b17822fbae3d3f11a902a7e1c3dbac1b2",
+      "success_receipt_sha256": "c5028633cdc90bd3c20e6b7500c2e9c2d195a51b84b884603dfa03f02f46bcb1"
+    },
+    "status": "complete"
+  },
+  "harvest": {
+    "already_processed_skipped": 0,
+    "cas_object_delta": 352,
+    "failed": 0,
+    "output_checkpoint_root": "0bc3429c4298d07da1aa582ebea5af250c048855e7e504ca804fbbc2e406dba6",
+    "output_manifest_root": "33036f157e63bd92de47b488b5c6ba9b17822fbae3d3f11a902a7e1c3dbac1b2",
+    "partial": 0,
+    "receipt_sha256": "c5028633cdc90bd3c20e6b7500c2e9c2d195a51b84b884603dfa03f02f46bcb1",
+    "schema_version": "archive-govt-nz.legislation-harvest-receipt/v3",
+    "scope_digests": {
+      "resolved": "2abf0d8b76cc60e9b4e442724987b81848698dbdd98e56266f8726d468b33eaf"
+    },
+    "state_commit_status": "committed",
+    "state_record_delta": 352,
+    "total_cas_objects_after": 904,
+    "total_cas_objects_before": 552,
+    "total_retry_count": 0,
+    "unavailable": 0,
+    "works_attempted": 500,
+    "works_in_scope": 500
+  },
+  "observed_at": "2026-09-09T19:59:32.775008+00:00",
+  "parent": {
+    "parent_checkpoint_root": "8afab0cb245c8b0f4c6e42c7d2c863a0f58e99f7c6bded70a1582b2be1a4cbf7",
+    "parent_manifest_root": "877ba501a25570a29c1aada7979562d8c62c7f043865125cf402310eabc09544",
+    "reference": "config/legislation/parents/current.json",
+    "restore_status": "verified"
+  },
+  "reconciliation": {
+    "artifact_path": "build/legislation-attempt/reconciliation.json",
+    "batch_work_ids_count": 500,
+    "manifest_sha256": "33036f157e63bd92de47b488b5c6ba9b17822fbae3d3f11a902a7e1c3dbac1b2",
+    "mismatch_count": 0,
+    "receipt_sha256": "5dfb48175f8309e50bf59aa4314b3f98cdc64e9b2d0476bcb2fe5875786c6692",
+    "status": "passed"
+  },
+  "run": {
+    "batch_id": "exact-500-20260910-02",
+    "run_attempt": 1,
+    "run_id": "34397208479",
+    "target_commit": "809b98d5acea69d525557bb7b74972f016adc609",
+    "url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/34397208479",
+    "workflow": ".github/workflows/exact-inventory.yml"
+  },
+  "schema_version": "archive-govt-nz.500-work-operational-success/v1",
+  "source_preflight": {
+    "credential": "NZ_LEGISLATION_API_KEY accepted; secret value omitted",
+    "state_unchanged": true,
+    "status": "passed"
+  }
+}
