@@ -279,3 +279,34 @@ def plan_additive_inventory(
         "replaced_files": [],
         "removed_files": [],
     }
+
+
+def assess_release_readiness(receipt: Mapping[str, Any]) -> dict[str, Any]:
+    """Return explicit blockers for a publication candidate without publishing.
+
+    This is a local gate: a ready result is necessary evidence only and never
+    performs an upload or grants external publication approval.
+    """
+    blockers: list[str] = []
+    if receipt.get("rights_state") != "cleared":
+        blockers.append("rights_missing_or_uncleared")
+    if receipt.get("source_disposition") != "complete":
+        blockers.append("source_disposition_incomplete")
+    if receipt.get("parity_state") != "passed":
+        blockers.append("parity_not_passed")
+    if receipt.get("recovery_state") != "passed":
+        blockers.append("recovery_not_passed")
+    revision = receipt.get("source_revision")
+    if not isinstance(revision, str) or not re.fullmatch(r"[0-9a-f]{40}", revision):
+        blockers.append("source_revision_not_pinned")
+    digest = receipt.get("candidate_manifest_sha256")
+    if not isinstance(digest, str) or not re.fullmatch(r"[0-9a-f]{64}", digest):
+        blockers.append("candidate_manifest_mismatch")
+    if receipt.get("restricted_content") is not False:
+        blockers.append("restricted_content_present")
+    return {
+        "schema_version": "archive-govt-nz.health-release-readiness/v1",
+        "status": "ready_for_explicit_gate" if not blockers else "blocked",
+        "publication_approval": "not_granted",
+        "blockers": blockers,
+    }
