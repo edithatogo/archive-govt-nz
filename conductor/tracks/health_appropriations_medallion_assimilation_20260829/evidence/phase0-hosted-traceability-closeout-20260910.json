@@ -1,0 +1,25 @@
+{
+  "schema_version": "archive-govt-nz.health-phase0-closeout/v1",
+  "issue": 206,
+  "track_id": "health_appropriations_medallion_assimilation_20260829",
+  "recorded_at": "2026-09-10T00:00:00Z",
+  "status": "complete",
+  "scope": "Phase 0 activation and hosted traceability",
+  "evidence": {
+    "plan": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/plan.md",
+    "review": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/review.md",
+    "evidence": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/evidence.md",
+    "issue_hierarchy": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/evidence.jsonl"
+  },
+  "verified_claims": [
+    "The track is activated under parent issue #205.",
+    "Hosted sub-issues #206 through #216 are recorded in the issue hierarchy.",
+    "The Phase 0 implementation review records no unresolved finding.",
+    "Local readiness, hosted CI, upload, verification, collection membership, and release remain distinct states."
+  ],
+  "limitations": [
+    "This receipt does not claim external publication, upload, or release.",
+    "Later phase issues remain independently scoped and open."
+  ],
+  "authority": "target repository evidence and current issue scope"
+}
