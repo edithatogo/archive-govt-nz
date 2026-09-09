@@ -1,0 +1,48 @@
+{
+  "schema_version": "archive-govt-nz.foi-readiness-reconciliation/v1",
+  "issue": 241,
+  "phase": "P7",
+  "status": "incomplete_external_gates",
+  "observed_at": "2026-09-10T00:00:00Z",
+  "catalogue": {
+    "geographic_entities": 251,
+    "named_sources": 30,
+    "entities_with_named_sources": 28,
+    "entities_without_named_sources": 223,
+    "complete_verified_entities": 0,
+    "request_denominator": null
+  },
+  "huggingface_readback": {
+    "repositories_checked": 23,
+    "public_metadata_verified": 23,
+    "full_archive_verified": 0,
+    "raw_or_warc_paths_verified": 0,
+    "anonymous_cold_restore_verified": 0,
+    "revision_drift_repositories": ["edithatogo/fyi-archive-nz"]
+  },
+  "queue": {
+    "credited_entries": 17225,
+    "remaining_entries": 15983,
+    "total_entries": 33208,
+    "full_country_capture": false
+  },
+  "transfer": {
+    "donor_ownership_retained": true,
+    "hosted_parity_verified": false,
+    "scheduled_incremental_cycle_observed": false,
+    "cutover_performed": false
+  },
+  "claims": {
+    "full_country_capture": false,
+    "public_raw_completeness": false,
+    "ownership_cutover": false,
+    "publication_complete": false
+  },
+  "source_receipts": [
+    "conductor/tracks/global_foi_public_archive_20260830/status.md",
+    "conductor/tracks/global_foi_public_archive_20260830/live-inventory.json",
+    "conductor/tracks/global_foi_public_archive_20260830/hf-public-readback-20260910.json",
+    "conductor/tracks/global_foi_public_archive_20260830/hf-raw-verification-20260910.json",
+    "conductor/tracks/global_foi_public_archive_20260830/transfer-gate-20260910.json"
+  ]
+}
