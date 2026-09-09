@@ -1,7 +1,6 @@
 """Fail-closed negative fixtures for the eight structural record-set contracts."""
 
 import json
-from copy import deepcopy
 from pathlib import Path
 
 import jsonschema
