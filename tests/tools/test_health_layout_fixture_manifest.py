@@ -23,6 +23,7 @@ REQUIRED_FAMILIES = {
 
 
 def test_layout_fixture_manifest_is_versioned_and_complete() -> None:
+    """Require all approved source families to have versioned layout IDs."""
     data = json.loads(MANIFEST.read_text(encoding="utf-8"))
     assert data["schema_version"] == "archive-govt-nz.health-layout-fixtures/v1"
     rows = data["families"]
@@ -34,6 +35,7 @@ def test_layout_fixture_manifest_is_versioned_and_complete() -> None:
 
 @pytest.mark.parametrize("field", ["family", "layout_id", "status"])
 def test_layout_fixture_manifest_rejects_missing_contract_fields(field: str) -> None:
+    """Ensure each manifest row exposes every structural contract field."""
     data = json.loads(MANIFEST.read_text(encoding="utf-8"))
     data["families"][0].pop(field)
     with pytest.raises(KeyError):
