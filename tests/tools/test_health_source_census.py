@@ -52,3 +52,23 @@ def test_census_rejects_inconsistent_record_count(tmp_path: Path) -> None:
 
 
 """Tests for the health appropriations source census validator."""
+
+
+def test_census_rejects_captured_item_without_fixity_or_rights(tmp_path: Path) -> None:
+    """Captured observations must carry object identity and rights evidence."""
+    data = json.loads(CENSUS.read_text())
+    data["records"][0].pop("object_sha256")
+    path = tmp_path / "census.json"
+    path.write_text(json.dumps(data))
+    with pytest.raises(ValueError, match="object_sha256"):
+        validate(path)
+
+
+def test_census_rejects_captured_item_without_rights_uri(tmp_path: Path) -> None:
+    """A captured item without rights evidence is not inventory-complete."""
+    data = json.loads(CENSUS.read_text())
+    data["records"][0]["rights_uri"] = ""
+    path = tmp_path / "census.json"
+    path.write_text(json.dumps(data))
+    with pytest.raises(ValueError, match="rights_uri"):
+        validate(path)
