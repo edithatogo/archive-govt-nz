@@ -2,9 +2,12 @@
 
 from typing import Any, cast
 
+import pytest
+
 from archive_govt_nz.domains.health_appropriations.census import (
     build_census,
     extract_official_links,
+    validate_census,
 )
 
 
@@ -42,3 +45,28 @@ def test_census_is_cutoff_bound_and_disposition_complete() -> None:
         "pharmac_cpb",
         "stats_nz_cpi",
     }
+
+
+def test_census_validator_rejects_duplicate_source_ids() -> None:
+    census = build_census(
+        vote_links=[], observed_at="2026-08-29T00:00:00Z", cutoff="2026-08-29"
+    )
+    records = census["records"]
+    assert isinstance(records, list)
+    records.append(dict(records[0]))
+    census["record_count"] = len(records)
+    with pytest.raises(ValueError, match="duplicate_census_source_id"):
+        validate_census(census)
+
+
+def test_census_validator_rejects_missing_disposition() -> None:
+    census = build_census(
+        vote_links=[], observed_at="2026-08-29T00:00:00Z", cutoff="2026-08-29"
+    )
+    records = census["records"]
+    assert isinstance(records, list)
+    records[0] = {
+        key: value for key, value in records[0].items() if key != "disposition"
+    }
+    with pytest.raises(ValueError, match="invalid_census_disposition"):
+        validate_census(census)

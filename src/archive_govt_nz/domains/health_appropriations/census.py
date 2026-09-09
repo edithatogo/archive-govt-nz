@@ -6,7 +6,10 @@ import re
 from typing import TYPE_CHECKING
 from urllib.parse import urlsplit, urlunsplit
 
-from archive_govt_nz.domains.health_appropriations.inventory import normalize_url
+from archive_govt_nz.domains.health_appropriations.inventory import (
+    Disposition,
+    normalize_url,
+)
 
 if TYPE_CHECKING:
     from collections.abc import Iterable
@@ -163,3 +166,34 @@ def build_census(
         "record_count": len(records),
         "records": records,
     }
+
+
+def validate_census(census: dict[str, object]) -> None:  # noqa: C901
+    """Reject census documents with missing, duplicate, or ambiguous records."""
+    schema_error = "invalid_census_schema"
+    if census.get("schema_version") != "archive-govt-nz.health-source-census/v1":
+        raise ValueError(schema_error)
+    records = census.get("records")
+    if not isinstance(records, list):
+        raise TypeError("invalid_census_records")  # noqa: EM101
+    if census.get("record_count") != len(records):
+        raise ValueError("census_record_count_mismatch")  # noqa: EM101
+    identifiers: set[str] = set()
+    for record in records:
+        if not isinstance(record, dict):
+            raise TypeError("invalid_census_record")  # noqa: EM101
+        source_id = record.get("source_id")
+        if not isinstance(source_id, str) or not source_id:
+            raise ValueError("missing_census_source_id")  # noqa: EM101
+        if source_id in identifiers:
+            raise ValueError("duplicate_census_source_id")  # noqa: EM101
+        identifiers.add(source_id)
+        for field in ("family", "title", "url", "observed_at", "cutoff", "reason"):
+            if not isinstance(record.get(field), str) or not record[field]:
+                raise ValueError("missing_census_" + field)
+        try:
+            Disposition(record.get("disposition"))
+        except (TypeError, ValueError) as exc:
+            raise ValueError("invalid_census_disposition") from exc  # noqa: EM101
+        if normalize_url(record["url"]) != record["url"]:
+            raise ValueError("noncanonical_census_url")  # noqa: EM101
