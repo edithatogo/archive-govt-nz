@@ -195,6 +195,9 @@ line-ending = "lf"
 
 [tool.pytest.ini_options]
 addopts = ["--strict-config", "--strict-markers", "--import-mode=importlib"]
+markers = [
+  "slow: tests excluded from the bounded local fast profile; always run in CI",
+]
 testpaths = ["tests"]
 norecursedirs = [".*", "build", "data", "venv", ".venv", "tmp", "scratch"]
 
