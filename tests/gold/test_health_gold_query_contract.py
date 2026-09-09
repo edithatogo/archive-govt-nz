@@ -5,10 +5,9 @@ from __future__ import annotations
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
-import pytest
-
 import pyarrow as pa
 import pyarrow.parquet as pq
+import pytest
 
 from archive_govt_nz.gold.analytics import GoldAnalyticsEngine
 
@@ -54,6 +53,8 @@ def test_gold_query_is_deterministic_and_preserves_lineage() -> None:
 
 def test_gold_engine_does_not_allow_write_statements() -> None:
     """Analytical query entry points reject writes to the in-memory engine."""
-    with GoldAnalyticsEngine() as engine:
-        with pytest.raises(ValueError, match="gold_query_read_only"):
-            engine.query("CREATE TABLE injected (value INTEGER)")
+    with (
+        GoldAnalyticsEngine() as engine,
+        pytest.raises(ValueError, match="gold_query_read_only"),
+    ):
+        engine.query("CREATE TABLE injected (value INTEGER)")

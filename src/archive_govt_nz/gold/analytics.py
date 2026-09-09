@@ -11,10 +11,10 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Self
 
-_READ_ONLY_PREFIXES = ("SELECT", "WITH", "EXPLAIN")
-
 import duckdb
 import pyarrow as pa
+
+_READ_ONLY_PREFIXES = ("SELECT", "WITH", "EXPLAIN")
 
 
 @dataclass(frozen=True, slots=True)
@@ -159,7 +159,8 @@ class GoldAnalyticsEngine:
         """Execute a read-only SQL query and return a columnar Arrow Table."""
         statement = sql.lstrip().upper()
         if not statement.startswith(_READ_ONLY_PREFIXES):
-            raise ValueError("gold_query_read_only")
+            message = "gold_query_read_only"
+            raise ValueError(message)
         rel = self.con.sql(sql)
         if rel is None:
             empty_table = pa.Table.from_pylist([])
