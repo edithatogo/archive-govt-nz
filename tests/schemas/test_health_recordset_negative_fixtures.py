@@ -48,6 +48,8 @@ def test_negative_fixture_is_rejected(case: dict[str, object]) -> None:
         del row[field]
     else:
         row[field] = case.get("value")
-    validator = jsonschema.Draft202012Validator(recordset_json_schema(str(case["recordset"])))
+    validator = jsonschema.Draft202012Validator(
+        recordset_json_schema(str(case["recordset"]))
+    )
     with pytest.raises(jsonschema.ValidationError):
         validator.validate(row)
