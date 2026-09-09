@@ -19,6 +19,26 @@ ALLOWED = {
     "out_of_scope",
 }
 REQUIRED = {"source_id", "title", "family", "url", "disposition", "reason", "cutoff"}
+_SHA256_LENGTH = 64
+
+
+def _validate_inventory_evidence(source_id: str, row: dict[str, object]) -> None:
+    """Require fixity and rights evidence for captured inventory items."""
+    disposition = row["disposition"]
+    if disposition == "captured":
+        digest = row.get("object_sha256")
+        if (
+            not isinstance(digest, str)
+            or len(digest) != _SHA256_LENGTH
+            or any(char not in "0123456789abcdef" for char in digest)
+        ):
+            message = f"captured source {source_id} lacks a valid object_sha256"
+            raise CensusValidationError(message)
+        for field in ("license", "rights_uri"):
+            value = row.get(field)
+            if not isinstance(value, str) or not value.strip():
+                message = f"captured source {source_id} lacks {field} evidence"
+                raise CensusValidationError(message)
 
 
 class CensusValidationError(ValueError):
@@ -51,6 +71,7 @@ def validate(path: Path) -> dict[str, int]:
         if not isinstance(row["reason"], str) or not row["reason"].strip():
             message = f"record {source_id} lacks disposition evidence"
             raise CensusValidationError(message)
+        _validate_inventory_evidence(source_id, row)
     return {"records": len(rows), "families": len({r["family"] for r in rows})}
 
 
