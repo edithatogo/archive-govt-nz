@@ -1,0 +1,37 @@
+{
+  "schema_version": "archive-govt-nz.foi-target-handoff/v1",
+  "issue": 234,
+  "phase": "P0",
+  "status": "handoff_pending_external_owner",
+  "scope": "baseline_and_preservation_inventory",
+  "completed_target_work": [
+    "P0.1 approval and ownership reconciliation",
+    "P0.2 Conductor baseline reconciliation",
+    "P0.3 donor/receiver/artifact inventory",
+    "P0.4 automated contract review and validation"
+  ],
+  "blocked_acceptance": [
+    "P1.5 hosted verification of repaired active-owner automation",
+    "P2.2-P2.4 complete country/source catalogue and phase validation",
+    "P3.3 durable metadata/raw reconstruction and gap reconciliation",
+    "P6.3 hosted parity and anonymous restore before ownership transfer"
+  ],
+  "external_dependency": {
+    "repository": "fyi-archive",
+    "required_action": "active-owner lease/automation repair and hosted readback",
+    "upstream_mutation_authorized": false,
+    "reason": "target-only continuation must not fabricate donor recovery or submit upstream changes"
+  },
+  "evidence": [
+    "conductor/tracks/global_foi_public_archive_20260830/plan.md",
+    "conductor/tracks/global_foi_public_archive_20260830/runlog.md",
+    "conductor/tracks/global_foi_public_archive_20260830/operational-followup-20260830.json",
+    "conductor/tracks/global_foi_public_archive_20260830/status.md"
+  ],
+  "claims": {
+    "country_completeness": "not_claimed",
+    "raw_capture_completeness": "not_claimed",
+    "ownership_cutover": "not_claimed",
+    "public_payload_publication": "not_claimed"
+  }
+}
