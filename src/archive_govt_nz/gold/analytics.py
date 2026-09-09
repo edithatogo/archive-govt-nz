@@ -78,7 +78,14 @@ class GoldAnalyticsEngine:
     ) -> str:
         """Attach an external federated Parquet source (e.g. global-medicines-atlas)."""
         view_name = f"fed_{partner_name.replace('-', '_')}"
-        target_str = str(parquet_path_or_url)
+        target = Path(parquet_path_or_url)
+        if target.is_absolute() is False and not target.exists():
+            message = "federation_source_missing"
+            raise ValueError(message)
+        if not target.is_file():
+            message = "federation_source_not_file"
+            raise ValueError(message)
+        target_str = target.as_posix()
         self.con.execute(
             f"CREATE OR REPLACE VIEW {view_name} AS "
             f"SELECT * FROM read_parquet('{target_str}')"
