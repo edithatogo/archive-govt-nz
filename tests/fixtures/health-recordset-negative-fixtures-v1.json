@@ -1,0 +1,10 @@
+{
+  "schema_version": "archive-govt-nz.health-recordset-negative-fixtures/v1",
+  "cases": [
+    {"case": "unknown_layout", "recordset": "source_inventory", "mutation": "extra_field", "field": "unexpected", "value": "reject"},
+    {"case": "missing_lineage", "recordset": "appropriation_fact", "mutation": "remove_field", "field": "lineage_id"},
+    {"case": "ambiguous_unit", "recordset": "health_spending_fact", "mutation": "replace", "field": "unit", "value": null},
+    {"case": "duplicate_key", "recordset": "fiscal_context_fact", "mutation": "replace", "field": "record_id", "value": null},
+    {"case": "binary_as_text", "recordset": "field_lineage", "mutation": "replace", "field": "source_object_sha256", "value": "not-a-sha256"}
+  ]
+}
