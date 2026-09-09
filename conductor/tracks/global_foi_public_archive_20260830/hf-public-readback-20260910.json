@@ -1,0 +1,276 @@
+{
+  "claims": {
+    "all_revisions_match_audited_inventory": false,
+    "public_metadata_visibility": "verified",
+    "publication_or_cutover": "not_claimed",
+    "raw_archive_completeness": "not_claimed"
+  },
+  "discrepancies": [
+    {
+      "expected_revision": "bd119937c0532cc1f03ca60a7d84ca6991dab5c6",
+      "observed_revision": "ffa0c0f5d44e966418a2fc5701c3d941e1914001",
+      "reason": "remote revision differs from audited inventory",
+      "repo_id": "edithatogo/fyi-archive-nz"
+    }
+  ],
+  "observed_at": "2026-09-09T18:56:54.582233+00:00",
+  "public_metadata_verified": true,
+  "repositories": [
+    {
+      "api_sha256": "a63b336306fc9b46921d965d63ecd5478daab8065304bee6c2e8b4616e8fae38",
+      "expected_revision": "c7d04f5c59491ecef4370348693cb48adfae17fd",
+      "gated": false,
+      "http_status": 200,
+      "private": false,
+      "repo_id": "edithatogo/rtk-archive-au",
+      "revision_match": true,
+      "sha": "c7d04f5c59491ecef4370348693cb48adfae17fd",
+      "siblings": 7
+    },
+    {
+      "api_sha256": "898a2a5998e84618fc8b3daf1be577e3b13e50787f66cd761d7a331cdfe33665",
+      "expected_revision": "ff0924afab9d824a865552f7567902ea341d1df1",
+      "gated": false,
+      "http_status": 200,
+      "private": false,
+      "repo_id": "edithatogo/transparencia-archive-be",
+      "revision_match": true,
+      "sha": "ff0924afab9d824a865552f7567902ea341d1df1",
+      "siblings": 7
+    },
+    {
+      "api_sha256": "229c79bbe201bfe1e0896a048b4c0c77a6478b48602549be5d0d207e7d6dfd39",
+      "expected_revision": "cfca71f00ab38e7c9c0219791a7ce2d52cef6334",
+      "gated": false,
+      "http_status": 200,
+      "private": false,
+      "repo_id": "edithatogo/queremosdatos-archive-co",
+      "revision_match": true,
+      "sha": "cfca71f00ab38e7c9c0219791a7ce2d52cef6334",
+      "siblings": 7
+    },
+    {
+      "api_sha256": "abaaeb18b1238aac8082a806ee10b5d9f4a0196501b111cc01383dbaf1d1d463",
+      "expected_revision": "57a165e454e4ca7936c92a01da80f4a8a55a46d9",
+      "gated": false,
+      "http_status": 200,
+      "private": false,
+      "repo_id": "edithatogo/infoprovsechny-archive-cz",
+      "revision_match": true,
+      "sha": "57a165e454e4ca7936c92a01da80f4a8a55a46d9",
+      "siblings": 7
+    },
+    {
+      "api_sha256": "a8ec80956d788f447400619b27305c1bd6b1d9e9de4ad011ab5df53c5da1c567",
+      "expected_revision": "6b60fd8faa56e1b88e0fa9017944fef93fe46e35",
+      "gated": false,
+      "http_status": 200,
+      "private": false,
+      "repo_id": "edithatogo/asktheeu-archive-eu",
+      "revision_match": true,
+      "sha": "6b60fd8faa56e1b88e0fa9017944fef93fe46e35",
+      "siblings": 7
+    },
+    {
+      "api_sha256": "a98587014b76a085c1c7d024104c568530dcfdb53e5a40cdb652e3c14a8dc5c5",
+      "expected_revision": "02ed9b04d1e912a841863699ee67aa47f62c1a52",
+      "gated": false,
+      "http_status": 200,
+      "private": false,
+      "repo_id": "edithatogo/madada-archive-fr",
+      "revision_match": true,
+      "sha": "02ed9b04d1e912a841863699ee67aa47f62c1a52",
+      "siblings": 7
+    },
+    {
+      "api_sha256": "b6381118b21ea25bbdd79ff9dea787bff7ed8140450142fee63b46e13a749532",
+      "expected_revision": "843012cdd79460042850472663829c32eec0b465",
+      "gated": false,
+      "http_status": 200,
+      "private": false,
+      "repo_id": "edithatogo/askgov-archive-ge",
+      "revision_match": true,
+      "sha": "843012cdd79460042850472663829c32eec0b465",
+      "siblings": 7
+    },
+    {
+      "api_sha256": "6f85709d0f1ca405c706437541d5319fc8e0cc4254ec59d62a7659fc399156df",
+      "expected_revision": "32be246c72af6f0c1307d888471a74ccceefedd2",
+      "gated": false,
+      "http_status": 200,
+      "private": false,
+      "repo_id": "edithatogo/arthro5a-archive-gr",
+      "revision_match": true,
+      "sha": "32be246c72af6f0c1307d888471a74ccceefedd2",
+      "siblings": 7
+    },
+    {
+      "api_sha256": "9c7cf6e8891f074b6b0fbd2258ea2b54d96a828896f9f43342009b5269f33d3b",
+      "expected_revision": "1c1ab9c5fc78fd891cfdb3079b4631dbf00bdc24",
+      "gated": false,
+      "http_status": 200,
+      "private": false,
+      "repo_id": "edithatogo/accessinfo-archive-hk",
+      "revision_match": true,
+      "sha": "1c1ab9c5fc78fd891cfdb3079b4631dbf00bdc24",
+      "siblings": 7
+    },
+    {
+      "api_sha256": "890caff394e8f172b07cfbd74fbacbfadcdf82f6e252be970386c9206b0c35a4",
+      "expected_revision": "2a98b31a372113bdddac322677328757c2969a93",
+      "gated": false,
+      "http_status": 200,
+      "private": false,
+      "repo_id": "edithatogo/imamopravoznati-archive-hr",
+      "revision_match": true,
+      "sha": "2a98b31a372113bdddac322677328757c2969a93",
+      "siblings": 7
+    },
+    {
+      "api_sha256": "32a500f05464f2b57287ebdbcf7b1f3fb39a231f5d8eb6f2ae2254ef017c8a86",
+      "expected_revision": "dae563f24533fb000b873d7357a482a849a01176",
+      "gated": false,
+      "http_status": 200,
+      "private": false,
+      "repo_id": "edithatogo/kimittud-archive-hu",
+      "revision_match": true,
+      "sha": "dae563f24533fb000b873d7357a482a849a01176",
+      "siblings": 7
+    },
+    {
+      "api_sha256": "e4b74c1247024d704b4e200d936e41bbf484f8d0eff1a1be0e1d16de83b1c97f",
+      "expected_revision": "78b7870856605cfe8fd61ea07370c7e125fd50f4",
+      "gated": false,
+      "http_status": 200,
+      "private": false,
+      "repo_id": "edithatogo/mrtk-archive-ie",
+      "revision_match": true,
+      "sha": "78b7870856605cfe8fd61ea07370c7e125fd50f4",
+      "siblings": 7
+    },
+    {
+      "api_sha256": "49f6b6b2c30d17cf470e723cc3b17d4f1c947862b989e4a342c3a24d36abdb57",
+      "expected_revision": "d1049e612b633d3589c3fdd9cf3cedc1d30a0789",
+      "gated": false,
+      "http_status": 200,
+      "private": false,
+      "repo_id": "edithatogo/infolib-archive-lr",
+      "revision_match": true,
+      "sha": "d1049e612b633d3589c3fdd9cf3cedc1d30a0789",
+      "siblings": 7
+    },
+    {
+      "api_sha256": "f5122ad963335c8e47caab28afed8d8fe925eb35e648dc2047bc4fb63934259e",
+      "expected_revision": "7a4765dc1f7f927b9316882010115cb03642583a",
+      "gated": false,
+      "http_status": 200,
+      "private": false,
+      "repo_id": "edithatogo/vreauinfo-archive-md",
+      "revision_match": true,
+      "sha": "7a4765dc1f7f927b9316882010115cb03642583a",
+      "siblings": 7
+    },
+    {
+      "api_sha256": "0c1e3622055c50e728a78a9110ac9da13ea9fb559aa98b5d41500bab801413fb",
+      "expected_revision": "8a34942018440b47e2d7800d362edf6fe539abc7",
+      "gated": false,
+      "http_status": 200,
+      "private": false,
+      "repo_id": "edithatogo/woo-knop-archive-nl",
+      "revision_match": true,
+      "sha": "8a34942018440b47e2d7800d362edf6fe539abc7",
+      "siblings": 7
+    },
+    {
+      "api_sha256": "37cefdf2d7532df25dbeaa08a222952df363f17a68cda9b915ac7f3aff42e97f",
+      "expected_revision": "bd119937c0532cc1f03ca60a7d84ca6991dab5c6",
+      "gated": false,
+      "http_status": 200,
+      "private": false,
+      "repo_id": "edithatogo/fyi-archive-nz",
+      "revision_match": false,
+      "sha": "ffa0c0f5d44e966418a2fc5701c3d941e1914001",
+      "siblings": 34
+    },
+    {
+      "api_sha256": "886777844b0c4195a71070202f367bb9c098b9be77090806a9e65c87ce0a42f7",
+      "expected_revision": "a279e54174d7066b0d4d3e8163b91ad562a536e0",
+      "gated": false,
+      "http_status": 200,
+      "private": false,
+      "repo_id": "edithatogo/iastatullaintrebari-archive-ro",
+      "revision_match": true,
+      "sha": "a279e54174d7066b0d4d3e8163b91ad562a536e0",
+      "siblings": 7
+    },
+    {
+      "api_sha256": "49868c8d93a94ffa3a7dd73147475fc48350bd0d0e565533404d5f2f18e91e71",
+      "expected_revision": "2cb1bd17e9206e63839301c3d903a5f916107412",
+      "gated": false,
+      "http_status": 200,
+      "private": false,
+      "repo_id": "edithatogo/handlingar-archive-se",
+      "revision_match": true,
+      "sha": "2cb1bd17e9206e63839301c3d903a5f916107412",
+      "siblings": 7
+    },
+    {
+      "api_sha256": "0ac2052aa5b54466c16594e7d434e7ca1fe68e94935ccd45d8c02e19bf524621",
+      "expected_revision": "36beac089463fdac951adeeaec38070e707d8493",
+      "gated": false,
+      "http_status": 200,
+      "private": false,
+      "repo_id": "edithatogo/dostup-archive-ua",
+      "revision_match": true,
+      "sha": "36beac089463fdac951adeeaec38070e707d8493",
+      "siblings": 7
+    },
+    {
+      "api_sha256": "24961101759423ac237bfca76df68ebbef4d3abda385f0141d6e847e508befa5",
+      "expected_revision": "a200cb990f23e834f40bcc6543d184bab174a99e",
+      "gated": false,
+      "http_status": 200,
+      "private": false,
+      "repo_id": "edithatogo/wdtk-archive-uk",
+      "revision_match": true,
+      "sha": "a200cb990f23e834f40bcc6543d184bab174a99e",
+      "siblings": 7
+    },
+    {
+      "api_sha256": "f0303c6038e795899ee36404533e47b4034bb4b91cf8be6307f79066cb3c01be",
+      "expected_revision": "8b5e71fedbc6cdcf5a71e68dc964147aa1740255",
+      "gated": false,
+      "http_status": 200,
+      "private": false,
+      "repo_id": "edithatogo/opramachine-archive-us-nj",
+      "revision_match": true,
+      "sha": "8b5e71fedbc6cdcf5a71e68dc964147aa1740255",
+      "siblings": 7
+    },
+    {
+      "api_sha256": "773151b4450bcd57a449933a86d8fb7c71d651b035e462a6bf3d9f53c59a71f5",
+      "expected_revision": "5547a88d09d4c7b30827e885483cef07f82421d4",
+      "gated": false,
+      "http_status": 200,
+      "private": false,
+      "repo_id": "edithatogo/quesabes-archive-uy",
+      "revision_match": true,
+      "sha": "5547a88d09d4c7b30827e885483cef07f82421d4",
+      "siblings": 7
+    },
+    {
+      "api_sha256": "b3610a73d55aec9296caa9cfa2582099bdce342b412b0cf73ddc77b142801ee7",
+      "expected_revision": "466745dea2c843692fd10de920cde99b4c231768",
+      "gated": false,
+      "http_status": 200,
+      "private": false,
+      "repo_id": "edithatogo/dumedite-archive-xk",
+      "revision_match": true,
+      "sha": "466745dea2c843692fd10de920cde99b4c231768",
+      "siblings": 7
+    }
+  ],
+  "schema_version": "archive-govt-nz.foi-hf-public-readback/v1",
+  "source_inventory_sha256": "b252df479403e37a5b3381430c77456f2ac0ba4b5947e9130e8544d79959530c",
+  "status": "inconsistent_readback"
+}
