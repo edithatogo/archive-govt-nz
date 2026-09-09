@@ -2,22 +2,17 @@
 
 This is read-only diagnosis, not implementation or publication success.
 
-## Hosted prerequisites and receipt attribution — 2026-09-06
+## P5.4a bounded review-fix reconciliation — 2026-09-05
 
-[Readback](hosted-prerequisite-readback-20260906.json) binds GitHub artifacts,
-queue arithmetic and anonymous revision-pinned HF metadata to exact digests.
-No whole pending P1/P2 criterion is promoted. `7732230a` fixes the observed AR
-receipt misattribution with focused tests and explicit missing evidence.
-
-## Local FOI fixes — 2026-09-06
-
-P2.5 `337e71d9`, P2.6 `455f7d4a`, P2.7 `f5483f18` implement bounded
-provenance/accounting fixes. The final FOI suite passes 483 tests; all three
-changed modules reach 100% line/branch coverage and seven guard mutants fail.
-See [paired review](local-safe-gaps-20260906.md) and
-[machine receipt](local-safe-gaps-20260906.json). Full harness failed three
-unchanged legislation/health timing tests; one isolated recheck passed all
-three. Full/hosted acceptance remains pending. No external state was changed.
+PR #395 merged at c3504f920cfe20367687ee71668d8cf068709ab3. Live GitHub
+readback records seven successful hosted checks, including Ubuntu, macOS,
+Windows, CodeQL, workflow lint, Codecov and dependency review. The correction
+separates terminal control rehearsals from exhausted capture work, retains
+unknown corpus completion when no revision-bound catalogue denominator exists,
+and returns a nonzero monitor outcome for unpublished or otherwise actionable
+states. This completes the bounded P5.4a review fix only; P5.4 scheduled
+freshness evidence, country/source coverage, public publication, rights and
+cutover remain open.
 
 ## Private-network redirect correction — 2026-09-04
 
@@ -82,73 +77,3 @@ Attachment census and compatible package v2: attachment-package-validation-20260
 ### Durable control continuation — 2026-08-31
 
 Receipt: durable-controls-local-validation-20260831.json. The 137 focused control tests pass with complete critical line/branch coverage and six killed mutations. The full local gate remains pending after two timing-limited attempts. Local persistence is not hosted authority; raw publication and cutover remain open.
-
-## P2.9 — local lineage result, 2026-09-07
-
-The paired [machine ledger](rollout-reconciliation.json) and
-[human report](rollout-reconciliation.md) reconcile all 255 materialized sources
-with the exact 30-source pinned catalogue. Both source retention and 251-entity
-set equality pass. Every one of the 225 additions remains a candidate outside
-the pinned catalogue. A source-discovery schema label describes receipt type,
-not the truth of its claims. The three other source receipts are not reverified;
-27 catalogue sources have no pilot receipt. Unknown request totals remain null.
-
-Reproduce from the worktree root in the locked project environment (stdout only):
-
-```sh
-uv run --locked python -m archive_govt_nz.foi_reconciliation --seeds config/foi --rollout conductor/tracks/global_foi_public_archive_20260830/country-rollout-20260831.json --evidence-dir conductor/tracks/global_foi_public_archive_20260830 --format json
-```
-
-Use `--format md` for the paired human report. Exit 2 reports invalid or
-unavailable inputs without emitting a report or echoing input details. The
-library exposes `reconcile_rollout` and `reconciliation_files` for consumers.
-
-Validation: see the exact focused commands in runlog.md. P2.9 is locally
-complete; P2.2/P2.3 and the track remain in progress. The parent must integrate
-and run the full harness. Next source work is evidence-backed candidate
-assessment of FOI scope, origin, adapter, rights and pacing before catalogue
-admission; naming every entity does not satisfy reviewed country coverage.
-
-## P2.10 — factual cohort complete locally, 2026-09-07
-
-[candidate-assessment.json](candidate-assessment.json) and
-[candidate-assessment.md](candidate-assessment.md) assess all 225 retained
-candidate receipts. The AL/BH alternate-schema cohort has completed bounded
-factual review; 223 other leads lack retained transport observations. This is
-not a blanket reviewed-source label or a change to the 30-source catalogue.
-
-Direct observations (2026-09-07 02:20–02:21 UTC) establish anonymous HTML
-access at both sources. Albania's register landing page links to year-specific
-registers. Bahrain exposes a general data-catalogue interface; FOI-response
-scope remains unestablished. Default-agent robots disallows Bahrain's /api/
-path; the API was not probed. Neither source has a verified capture adapter or
-new rights/publication decision from this assessment.
-
-Exact external inputs already obtained, not pending user input:
-
-- https://idp.al/robots.txt
-- https://www.idp.al/ (301 to https://idp.al/)
-- https://idp.al/regjistri-i-kerkesave-dhe-pergjigjeve/
-- https://data.gov.bh/robots.txt
-- https://data.gov.bh/ (302 to https://data.gov.bh/pages/homepage/)
-- https://data.gov.bh/explore/
-
-The [observation receipt](factual-observations-al-bh-20260907.json) binds each
-source and original discovery receipt to exact hashes and selected metadata.
-HTML originals are not retained; no capture or independently reconstructible
-original-body evidence is claimed. Observations are dated facts, not current
-availability promises. Reproduce offline in the locked project environment:
-
-```sh
-uv run --locked python -m archive_govt_nz.foi_candidate_assessment --seeds config/foi --rollout conductor/tracks/global_foi_public_archive_20260830/country-rollout-20260831.json --evidence-dir conductor/tracks/global_foi_public_archive_20260830 --observations conductor/tracks/global_foi_public_archive_20260830/factual-observations-al-bh-20260907.json --format json
-```
-
-Use --format md for the paired report. Exact executed focused checks are in
-runlog.md; report regeneration is tested byte-for-byte. The next safe factual
-work is a bounded assessment of the linked AL year-register representations
-and fields, or the next candidate cohort. Institutional raw admission requires
-explicit licence/nonpersonal schema evidence; mixed correspondence remains
-metadata-only. Neither requires creating an extra human factual-review queue.
-P2.2/P2.3 still need source/country disposition integration and separately
-authorized metadata publication. Parent owns full integration validation and
-must retain its accepted P2.5–P2.8 state when incorporating these additions.
