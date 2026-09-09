@@ -1,0 +1,15 @@
+{
+  "schema_version": "archive-govt-nz.health-layout-fixtures/v1",
+  "purpose": "versioned structural fixtures required before health adapters are enabled",
+  "families": [
+    {"family": "vote_health", "layout_id": "vote-health-estimate/v1", "status": "required"},
+    {"family": "budget", "layout_id": "budget-expenditure-revenue/v1", "status": "required"},
+    {"family": "befu_hyefu", "layout_id": "befu-hyefu-health-summary/v1", "status": "available"},
+    {"family": "treasury_fiscal", "layout_id": "treasury-fiscal-series/v1", "status": "available"},
+    {"family": "ministry_vote_health", "layout_id": "ministry-vote-health/v1", "status": "available"},
+    {"family": "pharmac_cpb", "layout_id": "pharmac-cpb/v1", "status": "available"},
+    {"family": "cpi", "layout_id": "cpi-quarterly/v1", "status": "available"},
+    {"family": "wage", "layout_id": "qes-wage-quarterly/v1", "status": "available"},
+    {"family": "population", "layout_id": "population-annual/v1", "status": "required"}
+  ]
+}
