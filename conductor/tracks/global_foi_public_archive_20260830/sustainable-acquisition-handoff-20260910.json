@@ -1,0 +1,35 @@
+{
+  "schema_version": "archive-govt-nz.foi-sustainable-acquisition-handoff/v1",
+  "issue": 239,
+  "phase": "P5",
+  "status": "local_controls_verified_external_activation_pending",
+  "local_controls": {
+    "fair_queue_service": "implemented_and_tested",
+    "origin_exclusion": "implemented_and_tested",
+    "lease_fencing": "implemented_and_tested",
+    "retry_exhaustion": "implemented_and_tested",
+    "budget_limits": "implemented_and_tested",
+    "rights_pending_never_reserve": "implemented_and_tested",
+    "publication_credit": "requires_manifest_and_anonymous_restore"
+  },
+  "not_claimed": [
+    "full_country_acquisition",
+    "scheduled_hosted_capture",
+    "raw_publication",
+    "donor_cutover",
+    "freshness_or_backlog_completion"
+  ],
+  "external_gates": [
+    "donor lease/automation repair",
+    "source rights and privacy admission",
+    "hosted capture and durable raw retention",
+    "anonymous restore and publication readback",
+    "observed scheduled incremental cycle"
+  ],
+  "authoritative_evidence": [
+    "src/archive_govt_nz/foi_scheduler.py",
+    "tests/test_foi_scheduler.py",
+    "conductor/tracks/global_foi_public_archive_20260830/plan.md",
+    "conductor/tracks/global_foi_public_archive_20260830/status.md"
+  ]
+}
