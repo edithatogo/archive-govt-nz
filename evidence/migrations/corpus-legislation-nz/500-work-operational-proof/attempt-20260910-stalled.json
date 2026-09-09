@@ -1,0 +1,33 @@
+{
+  "credential": "NZ_LEGISLATION_API_KEY configured and accepted by source preflight; secret value not recorded.",
+  "inputs": {
+    "batch_id": "exact-500-20260910-01",
+    "confirmed_execution": true,
+    "parent_reference": "config/legislation/parents/current.json"
+  },
+  "job": {
+    "cancel_requested_at": "2026-09-09T19:45:07Z",
+    "completed_at": null,
+    "database_id": "102616677119",
+    "last_observed_status": "in_progress",
+    "last_observed_step": "Revalidate every governed work ID",
+    "name": "revalidate",
+    "started_at": "2026-09-09T19:38:39Z",
+    "updated_at_before_cancel": "2026-09-09T19:38:40Z"
+  },
+  "observed_at": "2026-09-09T19:46:18.304683+00:00",
+  "outcome": "No harvest, reconciliation, verification, seal, or publication success is claimed. The run remains externally stuck after cancellation request; any retry must use a new batch ID and preserve this attempt.",
+  "preflight": {
+    "authenticated_source_preflight": "success",
+    "harvest_started": true,
+    "harvest_terminal_receipt": false,
+    "parent_restore": "success",
+    "sanitized_preflight_receipt": "success"
+  },
+  "run_attempt": 1,
+  "run_id": "34396274963",
+  "schema_version": "archive-govt-nz.500-work-operational-attempt/v1",
+  "status": "cancel_requested_runner_stalled",
+  "target_commit": "c55c91fd50a26338920a5a875fe08c836b0527ab",
+  "workflow": ".github/workflows/exact-inventory.yml"
+}
