@@ -159,13 +159,15 @@ def build_census(
                 ),
             }
         )
-    return {
+    census: dict[str, object] = {
         "schema_version": "archive-govt-nz.health-source-census/v1",
         "observed_at": observed_at,
         "cutoff": cutoff,
         "record_count": len(records),
         "records": records,
     }
+    validate_census(census)
+    return census
 
 
 def validate_census(census: dict[str, object]) -> None:  # noqa: C901
