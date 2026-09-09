@@ -1,0 +1,275 @@
+{
+  "claims": {
+    "catalogue_metadata_public": "verified",
+    "country_completeness": "not_claimed",
+    "donor_cutover": "not_claimed",
+    "raw_archive_publication": "not_verified"
+  },
+  "inventory_sha256": "b252df479403e37a5b3381430c77456f2ac0ba4b5947e9130e8544d79959530c",
+  "observed_at": "2026-09-09T19:00:07.963181+00:00",
+  "repositories": [
+    {
+      "audited_revision": "c7d04f5c59491ecef4370348693cb48adfae17fd",
+      "full_archive_verified": false,
+      "http_status": 200,
+      "observed_revision": "c7d04f5c59491ecef4370348693cb48adfae17fd",
+      "public_metadata_verified": true,
+      "raw_path_count": 0,
+      "repo_id": "edithatogo/rtk-archive-au",
+      "revision_match": true,
+      "warc_path_count": 0
+    },
+    {
+      "audited_revision": "ff0924afab9d824a865552f7567902ea341d1df1",
+      "full_archive_verified": false,
+      "http_status": 200,
+      "observed_revision": "ff0924afab9d824a865552f7567902ea341d1df1",
+      "public_metadata_verified": true,
+      "raw_path_count": 0,
+      "repo_id": "edithatogo/transparencia-archive-be",
+      "revision_match": true,
+      "warc_path_count": 0
+    },
+    {
+      "audited_revision": "cfca71f00ab38e7c9c0219791a7ce2d52cef6334",
+      "full_archive_verified": false,
+      "http_status": 200,
+      "observed_revision": "cfca71f00ab38e7c9c0219791a7ce2d52cef6334",
+      "public_metadata_verified": true,
+      "raw_path_count": 0,
+      "repo_id": "edithatogo/queremosdatos-archive-co",
+      "revision_match": true,
+      "warc_path_count": 0
+    },
+    {
+      "audited_revision": "57a165e454e4ca7936c92a01da80f4a8a55a46d9",
+      "full_archive_verified": false,
+      "http_status": 200,
+      "observed_revision": "57a165e454e4ca7936c92a01da80f4a8a55a46d9",
+      "public_metadata_verified": true,
+      "raw_path_count": 0,
+      "repo_id": "edithatogo/infoprovsechny-archive-cz",
+      "revision_match": true,
+      "warc_path_count": 0
+    },
+    {
+      "audited_revision": "6b60fd8faa56e1b88e0fa9017944fef93fe46e35",
+      "full_archive_verified": false,
+      "http_status": 200,
+      "observed_revision": "6b60fd8faa56e1b88e0fa9017944fef93fe46e35",
+      "public_metadata_verified": true,
+      "raw_path_count": 0,
+      "repo_id": "edithatogo/asktheeu-archive-eu",
+      "revision_match": true,
+      "warc_path_count": 0
+    },
+    {
+      "audited_revision": "02ed9b04d1e912a841863699ee67aa47f62c1a52",
+      "full_archive_verified": false,
+      "http_status": 200,
+      "observed_revision": "02ed9b04d1e912a841863699ee67aa47f62c1a52",
+      "public_metadata_verified": true,
+      "raw_path_count": 0,
+      "repo_id": "edithatogo/madada-archive-fr",
+      "revision_match": true,
+      "warc_path_count": 0
+    },
+    {
+      "audited_revision": "843012cdd79460042850472663829c32eec0b465",
+      "full_archive_verified": false,
+      "http_status": 200,
+      "observed_revision": "843012cdd79460042850472663829c32eec0b465",
+      "public_metadata_verified": true,
+      "raw_path_count": 0,
+      "repo_id": "edithatogo/askgov-archive-ge",
+      "revision_match": true,
+      "warc_path_count": 0
+    },
+    {
+      "audited_revision": "32be246c72af6f0c1307d888471a74ccceefedd2",
+      "full_archive_verified": false,
+      "http_status": 200,
+      "observed_revision": "32be246c72af6f0c1307d888471a74ccceefedd2",
+      "public_metadata_verified": true,
+      "raw_path_count": 0,
+      "repo_id": "edithatogo/arthro5a-archive-gr",
+      "revision_match": true,
+      "warc_path_count": 0
+    },
+    {
+      "audited_revision": "1c1ab9c5fc78fd891cfdb3079b4631dbf00bdc24",
+      "full_archive_verified": false,
+      "http_status": 200,
+      "observed_revision": "1c1ab9c5fc78fd891cfdb3079b4631dbf00bdc24",
+      "public_metadata_verified": true,
+      "raw_path_count": 0,
+      "repo_id": "edithatogo/accessinfo-archive-hk",
+      "revision_match": true,
+      "warc_path_count": 0
+    },
+    {
+      "audited_revision": "2a98b31a372113bdddac322677328757c2969a93",
+      "full_archive_verified": false,
+      "http_status": 200,
+      "observed_revision": "2a98b31a372113bdddac322677328757c2969a93",
+      "public_metadata_verified": true,
+      "raw_path_count": 0,
+      "repo_id": "edithatogo/imamopravoznati-archive-hr",
+      "revision_match": true,
+      "warc_path_count": 0
+    },
+    {
+      "audited_revision": "dae563f24533fb000b873d7357a482a849a01176",
+      "full_archive_verified": false,
+      "http_status": 200,
+      "observed_revision": "dae563f24533fb000b873d7357a482a849a01176",
+      "public_metadata_verified": true,
+      "raw_path_count": 0,
+      "repo_id": "edithatogo/kimittud-archive-hu",
+      "revision_match": true,
+      "warc_path_count": 0
+    },
+    {
+      "audited_revision": "78b7870856605cfe8fd61ea07370c7e125fd50f4",
+      "full_archive_verified": false,
+      "http_status": 200,
+      "observed_revision": "78b7870856605cfe8fd61ea07370c7e125fd50f4",
+      "public_metadata_verified": true,
+      "raw_path_count": 0,
+      "repo_id": "edithatogo/mrtk-archive-ie",
+      "revision_match": true,
+      "warc_path_count": 0
+    },
+    {
+      "audited_revision": "d1049e612b633d3589c3fdd9cf3cedc1d30a0789",
+      "full_archive_verified": false,
+      "http_status": 200,
+      "observed_revision": "d1049e612b633d3589c3fdd9cf3cedc1d30a0789",
+      "public_metadata_verified": true,
+      "raw_path_count": 0,
+      "repo_id": "edithatogo/infolib-archive-lr",
+      "revision_match": true,
+      "warc_path_count": 0
+    },
+    {
+      "audited_revision": "7a4765dc1f7f927b9316882010115cb03642583a",
+      "full_archive_verified": false,
+      "http_status": 200,
+      "observed_revision": "7a4765dc1f7f927b9316882010115cb03642583a",
+      "public_metadata_verified": true,
+      "raw_path_count": 0,
+      "repo_id": "edithatogo/vreauinfo-archive-md",
+      "revision_match": true,
+      "warc_path_count": 0
+    },
+    {
+      "audited_revision": "8a34942018440b47e2d7800d362edf6fe539abc7",
+      "full_archive_verified": false,
+      "http_status": 200,
+      "observed_revision": "8a34942018440b47e2d7800d362edf6fe539abc7",
+      "public_metadata_verified": true,
+      "raw_path_count": 0,
+      "repo_id": "edithatogo/woo-knop-archive-nl",
+      "revision_match": true,
+      "warc_path_count": 0
+    },
+    {
+      "audited_revision": "bd119937c0532cc1f03ca60a7d84ca6991dab5c6",
+      "full_archive_verified": false,
+      "http_status": 200,
+      "observed_revision": "ffa0c0f5d44e966418a2fc5701c3d941e1914001",
+      "public_metadata_verified": true,
+      "raw_path_count": 0,
+      "repo_id": "edithatogo/fyi-archive-nz",
+      "revision_match": false,
+      "warc_path_count": 0
+    },
+    {
+      "audited_revision": "a279e54174d7066b0d4d3e8163b91ad562a536e0",
+      "full_archive_verified": false,
+      "http_status": 200,
+      "observed_revision": "a279e54174d7066b0d4d3e8163b91ad562a536e0",
+      "public_metadata_verified": true,
+      "raw_path_count": 0,
+      "repo_id": "edithatogo/iastatullaintrebari-archive-ro",
+      "revision_match": true,
+      "warc_path_count": 0
+    },
+    {
+      "audited_revision": "2cb1bd17e9206e63839301c3d903a5f916107412",
+      "full_archive_verified": false,
+      "http_status": 200,
+      "observed_revision": "2cb1bd17e9206e63839301c3d903a5f916107412",
+      "public_metadata_verified": true,
+      "raw_path_count": 0,
+      "repo_id": "edithatogo/handlingar-archive-se",
+      "revision_match": true,
+      "warc_path_count": 0
+    },
+    {
+      "audited_revision": "36beac089463fdac951adeeaec38070e707d8493",
+      "full_archive_verified": false,
+      "http_status": 200,
+      "observed_revision": "36beac089463fdac951adeeaec38070e707d8493",
+      "public_metadata_verified": true,
+      "raw_path_count": 0,
+      "repo_id": "edithatogo/dostup-archive-ua",
+      "revision_match": true,
+      "warc_path_count": 0
+    },
+    {
+      "audited_revision": "a200cb990f23e834f40bcc6543d184bab174a99e",
+      "full_archive_verified": false,
+      "http_status": 200,
+      "observed_revision": "a200cb990f23e834f40bcc6543d184bab174a99e",
+      "public_metadata_verified": true,
+      "raw_path_count": 0,
+      "repo_id": "edithatogo/wdtk-archive-uk",
+      "revision_match": true,
+      "warc_path_count": 0
+    },
+    {
+      "audited_revision": "8b5e71fedbc6cdcf5a71e68dc964147aa1740255",
+      "full_archive_verified": false,
+      "http_status": 200,
+      "observed_revision": "8b5e71fedbc6cdcf5a71e68dc964147aa1740255",
+      "public_metadata_verified": true,
+      "raw_path_count": 0,
+      "repo_id": "edithatogo/opramachine-archive-us-nj",
+      "revision_match": true,
+      "warc_path_count": 0
+    },
+    {
+      "audited_revision": "5547a88d09d4c7b30827e885483cef07f82421d4",
+      "full_archive_verified": false,
+      "http_status": 200,
+      "observed_revision": "5547a88d09d4c7b30827e885483cef07f82421d4",
+      "public_metadata_verified": true,
+      "raw_path_count": 0,
+      "repo_id": "edithatogo/quesabes-archive-uy",
+      "revision_match": true,
+      "warc_path_count": 0
+    },
+    {
+      "audited_revision": "466745dea2c843692fd10de920cde99b4c231768",
+      "full_archive_verified": false,
+      "http_status": 200,
+      "observed_revision": "466745dea2c843692fd10de920cde99b4c231768",
+      "public_metadata_verified": true,
+      "raw_path_count": 0,
+      "repo_id": "edithatogo/dumedite-archive-xk",
+      "revision_match": true,
+      "warc_path_count": 0
+    }
+  ],
+  "schema_version": "archive-govt-nz.foi-hf-raw-verification/v1",
+  "source_readback": "conductor/tracks/global_foi_public_archive_20260830/hf-public-readback-20260910.json",
+  "summary": {
+    "anonymous_cold_restore": "not_established",
+    "full_archive_verified": 0,
+    "public_metadata_verified": 23,
+    "raw_completeness_claim": "not_established",
+    "raw_or_warc_paths": 0,
+    "repositories": 23
+  }
+}
