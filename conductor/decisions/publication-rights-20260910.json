@@ -1,0 +1,30 @@
+{
+  "decision_record_id": "DEC-PUBLICATION-001",
+  "recorded_at": "2026-09-10",
+  "authority": "User in current Codex task",
+  "status": "approved",
+  "proposition": "The artefact classes listed below may be uploaded to and publicly displayed by the target's Hugging Face publication workflows.",
+  "decisions": {
+    "DEC-HEALTH-004": "approved",
+    "DEC-HEALTH-005": "approved",
+    "DEC-HEALTH-006": "approved",
+    "DEC-HEALTH-007": "approved",
+    "DEC-HEALTH-008": "approved",
+    "DEC-HEALTH-009": "approved",
+    "DEC-FOI-002": "approved",
+    "DEC-FOI-003": "approved",
+    "DEC-FOI-004": "approved",
+    "DEC-FOI-005": "approved",
+    "DEC-FOI-006": "approved",
+    "DEC-FOI-007": "approved",
+    "DEC-FOI-008": "approved"
+  },
+  "conditions": [
+    "Preserve exact source bytes, hashes, provenance, lineage and historical identities.",
+    "Do not represent user authorization as a third-party licence or waive privacy, confidentiality, trademark or takedown obligations.",
+    "Publish only artefacts actually present in the approved source packages; unknown or missing artefacts remain gap records.",
+    "Verify the remote Hugging Face revision, file hashes and anonymous readback before claiming publication."
+  ],
+  "supersedes": ["DEC-HEALTH-002", "DEC-HEALTH-003"],
+  "related": ["DEC-FOI-001"]
+}
