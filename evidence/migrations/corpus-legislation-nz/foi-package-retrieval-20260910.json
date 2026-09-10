@@ -1,0 +1,18 @@
+{
+  "recorded_at": "2026-09-10",
+  "status": "blocked_exact_package_not_found",
+  "decision_id": "DEC-PUBLICATION-001",
+  "source_id": "nz-fyi",
+  "candidate_manifest_sha256": [
+    "a78befb393cb011a2e672a78aac3a2ac30740a5ee27eabcbe4f60003947dd534",
+    "3514658895d5e26726f4d23a776a709a4c0fce165dcfb8e307ef10f4d15bb49e"
+  ],
+  "authorities_checked": [
+    {"authority": "target_checkout", "result": "no_raw_package"},
+    {"authority": "huggingface:edithatogo/foi-source-catalogue", "result": "catalogue_metadata_only"},
+    {"authority": "huggingface:edithatogo/fyi-archive-nz", "revision": "ffa0c0f5d44e966418a2fc5701c3d941e1914001", "result": "no_raw_package"},
+    {"authority": "github_actions:foi-shared-execution", "run": "33856340826", "result": "health_receipt_only"}
+  ],
+  "safe_next_step": "retrieve an exact hash-matching package from its durable authority; do not substitute a different candidate or reconstruct from metadata",
+  "publication_performed": false
+}
