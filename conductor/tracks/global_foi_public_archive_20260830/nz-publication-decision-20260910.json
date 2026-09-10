@@ -1,0 +1,23 @@
+{
+  "source_id": "nz-fyi",
+  "repo_id": "edithatogo/fyi-archive-nz",
+  "decision_id": "DEC-PUBLICATION-001",
+  "recorded_at": "2026-09-10",
+  "authority": "User in current Codex task",
+  "status": "approved_for_public_upload_and_display",
+  "manifest_candidates": [
+    "a78befb393cb011a2e672a78aac3a2ac30740a5ee27eabcbe4f60003947dd534",
+    "3514658895d5e26726f4d23a776a709a4c0fce165dcfb8e307ef10f4d15bb49e"
+  ],
+  "scope": "Approved candidate package only; not a claim of national coverage.",
+  "conditions": [
+    "Preserve exact bytes, hashes, WARC context, provenance and donor identity.",
+    "Publish only after the selected package manifest is independently verified.",
+    "Record remote revision and anonymous file-by-file readback.",
+    "Preserve prior pending decisions and historical candidates."
+  ],
+  "supersedes": [
+    "nz-publication-decision.pending.json",
+    "nz-reconstructed-publication-decision.pending.json"
+  ]
+}
