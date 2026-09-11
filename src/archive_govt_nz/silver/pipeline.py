@@ -19,6 +19,7 @@ from archive_govt_nz.silver.base import (
 from archive_govt_nz.silver.normalizers import (
     CourtsNoticesSilverNormalizer,
     GazetteSilverNormalizer,
+    HealthAppropriationsSilverNormalizer,
     HealthSilverNormalizer,
     LegislationSilverNormalizer,
     TreasurySilverNormalizer,
@@ -40,6 +41,8 @@ def get_domain_normalizer(domain: str) -> SilverNormalizer | None:
     """Return the normalizer instance for a domain, dynamically importing extensions."""
     if domain in CORE_NORMALIZERS:
         return CORE_NORMALIZERS[domain]
+    if domain == "health_appropriations":
+        return HealthAppropriationsSilverNormalizer()
     if domain == "hansard":
         from archive_govt_nz.domains.hansard.normalizer import (  # noqa: PLC0415
             HansardSilverNormalizer,
@@ -69,6 +72,7 @@ class _DomainNormalizersProxy(Mapping[str, SilverNormalizer]):
         "gazette",
         "courts",
         "health",
+        "health_appropriations",
         "treasury",
         "hansard",
         "hathi",

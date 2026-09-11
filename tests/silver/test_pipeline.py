@@ -146,13 +146,15 @@ def test_domain_normalizers_proxy() -> None:
     assert "hansard" in DOMAIN_NORMALIZERS
     assert "hathi" in DOMAIN_NORMALIZERS
     assert "medilegal" in DOMAIN_NORMALIZERS
+    assert "health_appropriations" in DOMAIN_NORMALIZERS
     assert "unknown_domain" not in DOMAIN_NORMALIZERS
-    assert len(DOMAIN_NORMALIZERS) == 8
+    assert len(DOMAIN_NORMALIZERS) == 9
     assert list(DOMAIN_NORMALIZERS) == [
         "legislation",
         "gazette",
         "courts",
         "health",
+        "health_appropriations",
         "treasury",
         "hansard",
         "hathi",
