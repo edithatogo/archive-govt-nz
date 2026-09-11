@@ -83,7 +83,10 @@ def _origin(url: str) -> str:
     return f"https://{parsed.netloc}"
 
 
-def _source(row: dict[str, Any], country: str) -> dict[str, Any]:
+def _source(
+    row: dict[str, Any], country: str, approvals: dict[str, Any] | None = None
+) -> dict[str, Any]:
+    approval = (approvals or {}).get(row["id"], {})
     restricted = row.get("rights_status") == "restricted"
     urls = (
         [row["base_url"]]
@@ -99,9 +102,9 @@ def _source(row: dict[str, Any], country: str) -> dict[str, Any]:
         "hf_repo_id": None if restricted else row.get("hf_repo_id"),
         "declared_adapter_modes": row.get("source_modes", []),
         "declared_registry_status": row.get("status", row.get("kind")),
-        "disposition": "restricted" if restricted else "review_required",
-        "rights_status": "restricted" if restricted else "pending_review",
-        "privacy_status": "pending_review",
+        "disposition": "restricted" if restricted else approval.get("disposition", "review_required"),
+        "rights_status": "restricted" if restricted else approval.get("rights_status", "pending_review"),
+        "privacy_status": "pending_review" if restricted else approval.get("privacy_status", "pending_review"),
         "capture_verified": False,
         "raw_publication_verified": False,
         "total_requests": None,
@@ -113,6 +116,7 @@ def build_catalogue(
     instances: list[Any],
     additional: list[Any],
     targets: list[Any],
+    approvals: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Cover every entity while retaining unknown denominators and rights gates."""
     entities = {entry["id"]: dict(entry) for entry in universe["entities"]}
@@ -133,7 +137,7 @@ def build_catalogue(
             raise ValueError(msg)
         if repo_id is not None:
             repositories.add(repo_id)
-        sources[row["id"]] = _source(row, country)
+        sources[row["id"]] = _source(row, country, approvals)
     _pin_repositories(sources, universe["hf_snapshot"])
     jurisdictions = _jurisdictions(targets, aliases, entities)
     for entity in entities.values():
