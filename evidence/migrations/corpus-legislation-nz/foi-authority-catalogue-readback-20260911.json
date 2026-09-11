@@ -1,0 +1,16 @@
+{
+  "recorded_at": "2026-09-11",
+  "status": "verified",
+  "source_id": "nz-fyi",
+  "source_path": "source-inputs/nz-fyi/all-authorities.csv",
+  "source_sha256": "36fb8280bee4f43ceaa262c99fe9bc0c5d9e2b1d229a87aa4c915e793c503603",
+  "source_bytes": 618139,
+  "source_lines": 4290,
+  "huggingface_dataset": "edithatogo/foi-source-catalogue",
+  "huggingface_revision": "24415ad39b195fadec987d726e0cb95de2b8de38",
+  "remote_sha256": "36fb8280bee4f43ceaa262c99fe9bc0c5d9e2b1d229a87aa4c915e793c503603",
+  "remote_bytes": 618139,
+  "anonymous_readback": true,
+  "raw_foi_package": false,
+  "decision_id": "DEC-PUBLICATION-001"
+}
