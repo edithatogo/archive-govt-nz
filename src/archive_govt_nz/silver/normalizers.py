@@ -215,6 +215,14 @@ class HealthSilverNormalizer(SilverNormalizer):
         ]
 
 
+class HealthAppropriationsSilverNormalizer(HealthSilverNormalizer):
+    """Apply the generic health preservation contract to the dedicated domain."""
+
+    @property
+    def domain(self) -> str:
+        return "health_appropriations"
+
+
 class TreasurySilverNormalizer(SilverNormalizer):
     """Normalizes NZ Treasury publications, budget releases, and economic statements."""
 
