@@ -102,9 +102,15 @@ def _source(
         "hf_repo_id": None if restricted else row.get("hf_repo_id"),
         "declared_adapter_modes": row.get("source_modes", []),
         "declared_registry_status": row.get("status", row.get("kind")),
-        "disposition": "restricted" if restricted else approval.get("disposition", "review_required"),
-        "rights_status": "restricted" if restricted else approval.get("rights_status", "pending_review"),
-        "privacy_status": "pending_review" if restricted else approval.get("privacy_status", "pending_review"),
+        "disposition": "restricted"
+        if restricted
+        else approval.get("disposition", "review_required"),
+        "rights_status": "restricted"
+        if restricted
+        else approval.get("rights_status", "pending_review"),
+        "privacy_status": "pending_review"
+        if restricted
+        else approval.get("privacy_status", "pending_review"),
         "capture_verified": False,
         "raw_publication_verified": False,
         "total_requests": None,

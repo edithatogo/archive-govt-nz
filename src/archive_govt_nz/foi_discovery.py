@@ -99,7 +99,9 @@ def build_reviewed_catalogue(folder: Path) -> dict[str, Any]:
         [*additional, *review["new_sources"]],
         targets,
         approvals=(
-            json.loads((folder / "publication-approvals.json").read_text(encoding="utf-8")).get("approvals", {})
+            json.loads(
+                (folder / "publication-approvals.json").read_text(encoding="utf-8")
+            ).get("approvals", {})
             if (folder / "publication-approvals.json").exists()
             else None
         ),
