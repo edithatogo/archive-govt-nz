@@ -1,0 +1,19 @@
+{
+  "schema": "archive-govt-nz.foi-publication-approvals/v1",
+  "approvals": {
+    "nz-fyi": {
+      "disposition": "supported",
+      "rights_status": "approved",
+      "privacy_status": "approved",
+      "decision_id": "DEC-PUBLICATION-001",
+      "reviewer": "edithatogo",
+      "purpose": "public_preservation",
+      "evidence_references": [
+        "https://fyi.org.nz/",
+        "https://fyi.org.nz/help/privacy",
+        "https://fyi.org.nz/help/officers"
+      ],
+      "scope": "publicly available OIA register records and metadata"
+    }
+  }
+}

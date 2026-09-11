@@ -94,7 +94,17 @@ def build_reviewed_catalogue(folder: Path) -> dict[str, Any]:
     review = json.loads(review_bytes)
     directory = _directory(folder, review)
     catalogue = build_catalogue(
-        universe, instances, [*additional, *review["new_sources"]], targets
+        universe,
+        instances,
+        [*additional, *review["new_sources"]],
+        targets,
+        approvals=(
+            json.loads(
+                (folder / "publication-approvals.json").read_text(encoding="utf-8")
+            ).get("approvals", {})
+            if (folder / "publication-approvals.json").exists()
+            else None
+        ),
     )
     observations = _links(catalogue, review, directory)
     entities = []
