@@ -1,9 +1,15 @@
+"""Guard programme status claims against contradictory evidence."""
+
 import json
 from pathlib import Path
 
 
 def test_status_claims_remain_separate_and_bound_to_primary_evidence() -> None:
-    root = Path(".")
+    """Require independent evidence for operational, recovery, and publication.
+
+    Claims must remain separately evidenced.
+    """
+    root = Path()
     correction = json.loads(
         (
             root / "evidence/assurance/prompt13-status-correction-20260912.json"
