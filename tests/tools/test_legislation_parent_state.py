@@ -286,24 +286,27 @@ def test_current_durable_parent_is_bound_to_merged_authorities() -> None:
     assert reference["durable"] == {
         "provider": "hugging_face_dataset",
         "dataset": "edithatogo/corpus-legislation-nz",
-        "revision": "04688f12dd687618e2085ae31f9b8a4a50a88b16",
+        "revision": "a92c138fdf6343df7278c94735b868beab03776c",
         "path_parts": [
             "durable-state",
             "v1",
-            "2e4b75333e947d812842147c939117fc666799e4497b80f125104f721ef68e3c",
+            "continuation-34669586209",
             "canonical-state.zip",
         ],
-        "sha256": "2e4b75333e947d812842147c939117fc666799e4497b80f125104f721ef68e3c",
-        "size_bytes": 71776346,
+        "sha256": "ce11ad01257529a2d54dc1812d02dbed7c0f894f0991c9a2c0c675bb09286271",
+        "size_bytes": 10652143,
         "roots": {
             "manifest_sha256": (
-                "877ba501a25570a29c1aada7979562d8c62c7f043865125cf402310eabc09544"
+                "d570871545b0242b4bc9a7fef7851981a93f7de7e46b17972ea0c791f38697fc"
             ),
             "inventory_sha256": (
                 "9ca6dc505f991e015c6c997827878d8c7e9381b214a1544eb338328a285c6894"
             ),
-            "records": 552,
+            "records": 904,
             "work_ids": 552,
+            "cas_root_sha256": "ed93a3f7cddac8f6bc938f1005f47cfe4c309707b34b3a511cc3b66fedb47a40",
+            "checkpoint_file_sha256": "158c8817109b2490f1d00925dcd7b95240375dc7b261ea5926f20d97ed919854",
+            "manifest_file_sha256": "d99d878ef1a840c176c58dc9a55cfb4e47563139a8ce34dcb29691888b7e1a0e",
         },
     }
     assert (
@@ -312,7 +315,7 @@ def test_current_durable_parent_is_bound_to_merged_authorities() -> None:
     )
     assert (
         reference["authority"]["recovery_commit"]
-        == "5745bf3e38924dc968af70842dc6ed7a776e9e05"
+        == "1d7408bed08c4d72fe37891757af2b152e8411df"
     )
 
 
