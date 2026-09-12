@@ -1,7 +1,13 @@
 """JSON transport shapes preserve exact values without granting semantics."""
 
+import json
+from copy import deepcopy
 from decimal import Decimal
-from typing import Any
+from pathlib import Path
+from typing import TYPE_CHECKING, Any
+
+if TYPE_CHECKING:
+    from collections.abc import Callable
 
 import jsonschema
 import pyarrow as pa
@@ -12,6 +18,18 @@ from hypothesis import strategies as st
 from archive_govt_nz.schemas import health_recordset_json
 from archive_govt_nz.schemas.health_recordset_json import recordset_json_schema
 from archive_govt_nz.schemas.health_recordsets import RECORDSETS, recordset_schema
+
+_ROOT = Path(__file__).resolve().parents[1]
+_FIXTURES = _ROOT / "fixtures" / "health-recordset-fixtures-v1.json"
+
+
+def _load_fixtures() -> dict[str, dict[str, Any]]:
+    payload = json.loads(_FIXTURES.read_text(encoding="utf-8"))
+    return payload["records"]
+
+
+def _fixture_row(name: str) -> dict[str, Any]:
+    return deepcopy(_load_fixtures()[name])
 
 
 def _row(name: str) -> dict[str, Any]:
@@ -126,6 +144,47 @@ def test_all_keys_required_and_extras_rejected() -> None:
     row["extra"] = "value"
     with pytest.raises(jsonschema.ValidationError):
         _validate("source_inventory", row)
+
+
+@pytest.mark.parametrize("name", tuple(RECORDSETS))
+def test_fixture_rows_validate(name: str) -> None:
+    """Stored fixture rows must remain valid transport payloads."""
+    _validate(name, _fixture_row(name))
+
+
+@pytest.mark.parametrize(
+    ("name", "mutator"),
+    [
+        (
+            "appropriation_fact",
+            lambda row: row.update({"record_id": None}),
+        ),
+        (
+            "source_inventory",
+            lambda row: row.update({"quality_flags": "not-a-list"}),
+        ),
+        (
+            "classification_dimension",
+            lambda row: row.update({"mapping_state": None}),
+        ),
+        (
+            "field_lineage",
+            lambda row: row.update({"rule": None}),
+        ),
+        (
+            "fiscal_context_fact",
+            lambda row: row.update({"amount": 1.5}),
+        ),
+    ],
+)
+def test_fixture_mutations_are_rejected(
+    name: str, mutator: Callable[[dict[str, Any]], None]
+) -> None:
+    """Fixtures must fail when critical semantic/typing assumptions drift."""
+    row = _fixture_row(name)
+    mutator(row)
+    with pytest.raises(jsonschema.ValidationError):
+        _validate(name, row)
 
 
 def test_schema_results_are_independent() -> None:
