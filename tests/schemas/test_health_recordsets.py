@@ -1,7 +1,10 @@
 """Additive record-set contracts do not mutate source-specific v1 schemas."""
 
+import json
+from datetime import date, datetime
 from decimal import Decimal
 from io import BytesIO
+from pathlib import Path
 
 import duckdb
 import pyarrow as pa
@@ -11,6 +14,22 @@ from hypothesis import given
 from hypothesis import strategies as st
 
 from archive_govt_nz.schemas.health_recordsets import RECORDSETS, recordset_schema
+
+_ROOT = Path(__file__).resolve().parents[2]
+_FIXTURES = _ROOT / "tests" / "fixtures" / "health-recordset-fixtures-v1.json"
+
+
+def _fixture(name: str) -> dict[str, object]:
+    payload = json.loads(_FIXTURES.read_text(encoding="utf-8"))
+    row = dict(payload["records"][name])
+    for key in ("valid_time_start", "valid_time_end"):
+        if row.get(key) is not None:
+            row[key] = date.fromisoformat(row[key])
+    row["observed_at"] = datetime.fromisoformat(row["observed_at"])
+    if row.get("amount") is not None:
+        row["amount"] = Decimal(row["amount"])
+    return row
+
 
 NAMES = (
     "source_inventory",
@@ -65,6 +84,16 @@ def test_versioned_shape_and_empty_parquet_roundtrip(name: str) -> None:
     pq.write_table(pa.Table.from_pylist([], schema=schema), stream)
     stream.seek(0)
     assert pq.read_table(stream).schema.equals(schema, check_metadata=True)
+
+
+@pytest.mark.parametrize("name", NAMES)
+def test_fixtures_round_trip_through_parquet(name: str) -> None:
+    """Fixture rows for every record set survive round-trip replay."""
+    table = pa.Table.from_pylist([_fixture(name)], schema=recordset_schema(name))
+    stream = BytesIO()
+    pq.write_table(table, stream)
+    stream.seek(0)
+    assert table.equals(pq.read_table(stream, schema=recordset_schema(name)))
 
 
 @pytest.mark.parametrize("name", NAMES[1:6])
