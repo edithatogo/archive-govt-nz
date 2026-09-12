@@ -1,0 +1,22 @@
+{
+  "schema_version": "archive-govt-nz.donor-lineage-worktree-observation/v1",
+  "recorded_at": "2026-09-12T04:30:00Z",
+  "donor": {
+    "repository": "edithatogo/corpus-legislation-nz",
+    "archived": true,
+    "default_branch": "main",
+    "reachable_head": "905f9e07c17af9d9d25dbe2b1c052fb8a290a4e3",
+    "reviewed_migration_tag": "b40587f1b1aec7356a0f623916fcc8212397d283",
+    "verification": "GitHub repository metadata and anonymous commit API"
+  },
+  "target_worktree": {
+    "status": "pre_existing_unrelated_changes_preserved",
+    "files": [
+      {"path":"tests/schemas/test_health_recordset_json.py","classification":"health-schema fixture tests","change":"57 added lines"},
+      {"path":"tests/schemas/test_health_recordsets.py","classification":"health-schema parquet fixture tests","change":"21 added lines"},
+      {"path":"tests/fixtures/health-recordset-fixtures-v1.json","classification":"health-schema fixture data","change":"untracked pre-existing file"}
+    ],
+    "action": "not staged, modified, deleted, or moved",
+    "cleanup": "deferred to owning Health work"
+  }
+}
