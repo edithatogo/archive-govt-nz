@@ -274,7 +274,7 @@ def test_durable_reference_rejects_revision_rights_and_scope_drift() -> None:
 
 
 def test_current_durable_parent_is_bound_to_merged_authorities() -> None:
-    """The selected parent pins Prompt 10 recovery and Prompt 15 publication."""
+    """The selected continuation parent pins recovery and publication evidence."""
     reference = P.v.load(
         (P.ROOT / "config/legislation/parents/current.json").read_bytes()
     )
@@ -304,9 +304,15 @@ def test_current_durable_parent_is_bound_to_merged_authorities() -> None:
             ),
             "records": 904,
             "work_ids": 552,
-            "cas_root_sha256": "ed93a3f7cddac8f6bc938f1005f47cfe4c309707b34b3a511cc3b66fedb47a40",
-            "checkpoint_file_sha256": "158c8817109b2490f1d00925dcd7b95240375dc7b261ea5926f20d97ed919854",
-            "manifest_file_sha256": "d99d878ef1a840c176c58dc9a55cfb4e47563139a8ce34dcb29691888b7e1a0e",
+            "cas_root_sha256": (
+                "ed93a3f7cddac8f6bc938f1005f47cfe4c309707b34b3a511cc3b66fedb47a40"
+            ),
+            "checkpoint_file_sha256": (
+                "158c8817109b2490f1d00925dcd7b95240375dc7b261ea5926f20d97ed919854"
+            ),
+            "manifest_file_sha256": (
+                "d99d878ef1a840c176c58dc9a55cfb4e47563139a8ce34dcb29691888b7e1a0e"
+            ),
         },
     }
     assert (
