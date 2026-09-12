@@ -1,0 +1,5335 @@
+{
+  "catalogue_sha256": "0af697da220128eb13a988dc32bb987c915aaacd2ef04175ceec7a6a14892ed6",
+  "entities": [
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "AD",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "ad-transparency-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "AE",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "ae-government-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "AF",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "af-government-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "AG",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "ag-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "AI",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "ai-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "AL",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "al-idp-transparency"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "AM",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "am-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "AO",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "ao-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "AQ",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "aq-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "AR",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "ar-derechoaldato",
+        "ar-information-publica"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "AS",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "as-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "AT",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "at-government-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "AU",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "au-rtk"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "AW",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "aw-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "AX",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "ax-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "AZ",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "az-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "BA",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "ba-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "BB",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "bb-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "BD",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "bd-government-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "BE",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "be-transparencia"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "BF",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "bf-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "BG",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "bg-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "BH",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "bh-government-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "BI",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "bi-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "BJ",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "bj-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "BL",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "bl-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "BM",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "bm-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "BN",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "bn-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "BO",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "bo-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "BQ",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "bq-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "BR",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "br-cgu-transparency"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "BS",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "bs-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "BT",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "bt-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "BV",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "bv-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "BW",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "bw-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "BY",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "by-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "BZ",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "bz-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "CA",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "ca-federal-atip"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "CC",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "cc-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "CD",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "cd-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "CF",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "cf-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "CG",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "cg-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "CH",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "ch-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "CI",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "ci-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "CK",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "ck-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "CL",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "cl-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "CM",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "cm-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "CN",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "cn-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "CO",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "co-queremosdatos"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "CR",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "cr-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "CU",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "cu-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "CV",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "cv-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "CW",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "cw-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "CX",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "cx-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "CY",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "cy-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "CZ",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "cz-infoprovsechny"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "DE",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "de-fragdenstaat"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "DJ",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "dj-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "DK",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "dk-government-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "DM",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "dm-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "DO",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "do-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "DZ",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "dz-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "EC",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "ec-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "EE",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "ee-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "EG",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "eg-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "EH",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "eh-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "ER",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "er-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "ES",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "es-tuderechoasaber"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "ET",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "et-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "EU",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "eu-asktheeu"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "FI",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "fi-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "FJ",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "fj-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "FK",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "fk-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "FM",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "fm-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "FO",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "fo-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "FR",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "fr-madada"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "GA",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "ga-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "GB",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "uk-wdtk"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "GD",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "gd-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "GE",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "ge-askgov"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "GF",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "gf-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "GG",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "gg-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "GH",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "gh-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "GI",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "gi-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "GL",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "gl-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "GM",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "gm-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "GN",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "gn-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "GP",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "gp-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "GQ",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "gq-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "GR",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "gr-arthro5a"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "GS",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "gs-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "GT",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "gt-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "GU",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "gu-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "GW",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "gw-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "GY",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "gy-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "HK",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "hk-accessinfo"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "HM",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "hm-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "HN",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "hn-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "HR",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "hr-imamopravoznati"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "HT",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "ht-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "HU",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "hu-kimittud"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "ID",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "id-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "IE",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "ie-myrighttoknow"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "IL",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "il-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "IM",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "im-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "IN",
+      "next_action": "verify_public_disclosure_catalogue_or_annual_statistics",
+      "source_ids": [
+        "in-rti-online"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "IO",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "io-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "IQ",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "iq-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "IR",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "ir-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "IS",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "is-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "IT",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "it-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "JE",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "je-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "JM",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "jm-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "JO",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "jo-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "JP",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "jp-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "KE",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "ke-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "KG",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "kg-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "KH",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "kh-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "KI",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "ki-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "KM",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "km-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "KN",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "kn-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "KP",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "kp-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "KR",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "kr-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "KW",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "kw-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "KY",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "ky-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "KZ",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "kz-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "LA",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "la-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "LB",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "lb-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "LC",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "lc-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "LI",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "li-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "LK",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "lk-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "LR",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "lr-infolib"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "LS",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "ls-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "LT",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "lt-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "LU",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "lu-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "LV",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "lv-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "LY",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "ly-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "MA",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "ma-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "MC",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "mc-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "MD",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "md-vreauinfo"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "ME",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "me-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "MF",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "mf-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "MG",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "mg-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "MH",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "mh-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "MK",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "mk-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "ML",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "ml-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "MM",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "mm-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "MN",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "mn-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "MO",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "mo-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "MP",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "mp-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "MQ",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "mq-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "MR",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "mr-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "MS",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "ms-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "MT",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "mt-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "MU",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "mu-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "MV",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "mv-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "MW",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "mw-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "MX",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "mx-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "MY",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "my-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "MZ",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "mz-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "NA",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "na-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "NC",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "nc-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "NE",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "ne-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "NF",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "nf-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "NG",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "ng-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "NI",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "ni-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "NL",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "nl-woo-knop"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "NO",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "no-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "NP",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "np-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "NR",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "nr-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "NU",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "nu-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "NZ",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "nz-fyi"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "OM",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "om-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "PA",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "pa-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "PE",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "pe-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "PF",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "pf-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "PG",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "pg-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "PH",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "ph-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "PK",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "pk-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "PL",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "pl-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "PM",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "pm-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "PN",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "pn-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "PR",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "pr-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "PS",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "ps-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "PT",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "pt-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "PW",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "pw-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "PY",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "py-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "QA",
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "source_ids": [
+        "qa-government-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "RE",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "re-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "RO",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "ro-iastatullaintrebari"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "RS",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "rs-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "RU",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "ru-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "RW",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "rw-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "SA",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "sa-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "SB",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "sb-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "SC",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "sc-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "SD",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "sd-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "SE",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "se-handlingar"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "SG",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "sg-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "SH",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "sh-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "SI",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "si-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "SJ",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "sj-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "SK",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "sk-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "SL",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "sl-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "SM",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "sm-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "SN",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "sn-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "SO",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "so-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "SR",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "sr-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "SS",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "ss-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "ST",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "st-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "SV",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "sv-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "SX",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "sx-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "SY",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "sy-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "SZ",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "sz-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "TC",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "tc-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "TD",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "td-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "TF",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "tf-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "TG",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "tg-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "TH",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "th-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "TJ",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "tj-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "TK",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "tk-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "TL",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "tl-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "TM",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "tm-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "TN",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "tn-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "TO",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "to-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "TR",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "tr-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "TT",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "tt-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "TV",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "tv-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "TW",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "tw-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "TZ",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "tz-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "UA",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "ua-dostup"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "UG",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "ug-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "UM",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "um-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "US",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "us-federal-foia",
+        "us-opramachine"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "UY",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "uy-quesabes",
+        "uy-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "UZ",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "uz-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "VA",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "va-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "VC",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "vc-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "VE",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "ve-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "VG",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "vg-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "VI",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "vi-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "VN",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "vn-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "VU",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "vu-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "WF",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "wf-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "WS",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "ws-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "XK",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "xk-dumedite"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "YE",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "ye-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "YT",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "yt-government-portal"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "ZA",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "za-paia",
+        "za-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "ZM",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "zm-open-data"
+      ]
+    },
+    {
+      "broader_discovery_required": true,
+      "country_complete": false,
+      "country_denominator": null,
+      "entity_id": "ZW",
+      "next_action": "review_named_sources_and_discover_gaps",
+      "source_ids": [
+        "zw-open-data"
+      ]
+    }
+  ],
+  "schema_version": "archive-govt-nz.foi-rollout/v1",
+  "scope": "planning_only_not_capture_or_publication_evidence",
+  "sources": [
+    {
+      "capture_evidence": "bd-government-open-data-discovery-20260905.json",
+      "entity_id": "BD",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "bd-government-open-data"
+    },
+    {
+      "capture_evidence": "ad-transparency-discovery-20260905.json",
+      "entity_id": "AD",
+      "group_is_candidate_only": true,
+      "next_action": "verify_publication_catalogue_and_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "ad-transparency-portal"
+    },
+    {
+      "capture_evidence": "ae-government-open-data-discovery-20260905.json",
+      "entity_id": "AE",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "ae-government-open-data"
+    },
+    {
+      "capture_evidence": "br-transparency-discovery-20260905.json",
+      "entity_id": "BR",
+      "group_is_candidate_only": true,
+      "next_action": "verify_publication_catalogue_and_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "br-cgu-transparency"
+    },
+    {
+      "capture_evidence": "af-government-open-data-discovery-20260905.json",
+      "entity_id": "AF",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "af-government-open-data"
+    },
+    {
+      "capture_evidence": "bh-government-open-data-discovery-20260905.json",
+      "entity_id": "BH",
+      "group_is_candidate_only": true,
+      "next_action": "verify_whether_portal_contains_a_public_disclosure_catalogue_or_only_general_open_data",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "bh-government-open-data"
+    },
+    {
+      "capture_evidence": "separate_pilot_receipt_required",
+      "entity_id": "AR",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "publication_approved": false,
+      "publication_group": "mixed_correspondence",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "ar-derechoaldato"
+    },
+    {
+      "capture_evidence": "separate_pilot_receipt_required",
+      "entity_id": "AR",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "publication_approved": false,
+      "publication_group": "mixed_correspondence",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "ar-information-publica"
+    },
+    {
+      "capture_evidence": "separate_pilot_receipt_required",
+      "entity_id": "AU",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "publication_approved": false,
+      "publication_group": "mixed_correspondence",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "au-rtk"
+    },
+    {
+      "capture_evidence": "separate_pilot_receipt_required",
+      "entity_id": "BE",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "publication_approved": false,
+      "publication_group": "mixed_correspondence",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "be-transparencia"
+    },
+    {
+      "capture_evidence": "ca-huggingface-publication-receipt-20260905.json",
+      "entity_id": "CA",
+      "group_is_candidate_only": false,
+      "next_action": "verify_viewer_conversion_and_schedule_refresh",
+      "publication_approved": true,
+      "publication_group": "institutional_open_data",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "ca-federal-atip"
+    },
+    {
+      "capture_evidence": "separate_pilot_receipt_required",
+      "entity_id": "CO",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "publication_approved": false,
+      "publication_group": "mixed_correspondence",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "co-queremosdatos"
+    },
+    {
+      "capture_evidence": "separate_pilot_receipt_required",
+      "entity_id": "CZ",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "publication_approved": false,
+      "publication_group": "mixed_correspondence",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "cz-infoprovsechny"
+    },
+    {
+      "capture_evidence": "separate_pilot_receipt_required",
+      "entity_id": "DE",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "publication_approved": false,
+      "publication_group": "mixed_correspondence",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "de-fragdenstaat"
+    },
+    {
+      "capture_evidence": "separate_pilot_receipt_required",
+      "entity_id": "ES",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "publication_approved": false,
+      "publication_group": "mixed_correspondence",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "es-tuderechoasaber"
+    },
+    {
+      "capture_evidence": "separate_pilot_receipt_required",
+      "entity_id": "EU",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "publication_approved": false,
+      "publication_group": "mixed_correspondence",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "eu-asktheeu"
+    },
+    {
+      "capture_evidence": "separate_pilot_receipt_required",
+      "entity_id": "FR",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "publication_approved": false,
+      "publication_group": "mixed_correspondence",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "fr-madada"
+    },
+    {
+      "capture_evidence": "separate_pilot_receipt_required",
+      "entity_id": "GE",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "publication_approved": false,
+      "publication_group": "mixed_correspondence",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "ge-askgov"
+    },
+    {
+      "capture_evidence": "separate_pilot_receipt_required",
+      "entity_id": "GR",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "publication_approved": false,
+      "publication_group": "mixed_correspondence",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "gr-arthro5a"
+    },
+    {
+      "capture_evidence": "separate_pilot_receipt_required",
+      "entity_id": "HK",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "publication_approved": false,
+      "publication_group": "mixed_correspondence",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "hk-accessinfo"
+    },
+    {
+      "capture_evidence": "separate_pilot_receipt_required",
+      "entity_id": "HR",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "publication_approved": false,
+      "publication_group": "mixed_correspondence",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "hr-imamopravoznati"
+    },
+    {
+      "capture_evidence": "separate_pilot_receipt_required",
+      "entity_id": "HU",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "publication_approved": false,
+      "publication_group": "mixed_correspondence",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "hu-kimittud"
+    },
+    {
+      "capture_evidence": "in-rti-online-discovery-20260905.json",
+      "entity_id": "IN",
+      "group_is_candidate_only": true,
+      "next_action": "verify_public_disclosure_catalogue_or_annual_statistics",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "in-rti-online"
+    },
+    {
+      "capture_evidence": "separate_pilot_receipt_required",
+      "entity_id": "IE",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "publication_approved": false,
+      "publication_group": "mixed_correspondence",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "ie-myrighttoknow"
+    },
+    {
+      "capture_evidence": "separate_pilot_receipt_required",
+      "entity_id": "LR",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "publication_approved": false,
+      "publication_group": "mixed_correspondence",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "lr-infolib"
+    },
+    {
+      "capture_evidence": "separate_pilot_receipt_required",
+      "entity_id": "MD",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "publication_approved": false,
+      "publication_group": "mixed_correspondence",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "md-vreauinfo"
+    },
+    {
+      "capture_evidence": "separate_pilot_receipt_required",
+      "entity_id": "NL",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "publication_approved": false,
+      "publication_group": "mixed_correspondence",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "nl-woo-knop"
+    },
+    {
+      "capture_evidence": "nz-metadata-disposition-20260905.json",
+      "entity_id": "NZ",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "publication_approved": false,
+      "publication_group": "mixed_correspondence",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "nz-fyi"
+    },
+    {
+      "capture_evidence": "separate_pilot_receipt_required",
+      "entity_id": "RO",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "publication_approved": false,
+      "publication_group": "mixed_correspondence",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "ro-iastatullaintrebari"
+    },
+    {
+      "capture_evidence": "separate_pilot_receipt_required",
+      "entity_id": "SE",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "publication_approved": false,
+      "publication_group": "mixed_correspondence",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "se-handlingar"
+    },
+    {
+      "capture_evidence": "separate_pilot_receipt_required",
+      "entity_id": "UA",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "publication_approved": false,
+      "publication_group": "mixed_correspondence",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "ua-dostup"
+    },
+    {
+      "capture_evidence": "separate_pilot_receipt_required",
+      "entity_id": "GB",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "publication_approved": false,
+      "publication_group": "mixed_correspondence",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "uk-wdtk"
+    },
+    {
+      "capture_evidence": "us-numeric-projection-review-20260905.json",
+      "entity_id": "US",
+      "group_is_candidate_only": false,
+      "next_action": "capture_and_publish_validated_numeric_projection_only",
+      "publication_approved": true,
+      "publication_group": "institutional_open_data",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "us-federal-foia"
+    },
+    {
+      "capture_evidence": "separate_pilot_receipt_required",
+      "entity_id": "US",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "publication_approved": false,
+      "publication_group": "mixed_correspondence",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "us-opramachine"
+    },
+    {
+      "capture_evidence": "separate_pilot_receipt_required",
+      "entity_id": "UY",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "publication_approved": false,
+      "publication_group": "mixed_correspondence",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "uy-quesabes"
+    },
+    {
+      "capture_evidence": "separate_pilot_receipt_required",
+      "entity_id": "XK",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "publication_approved": false,
+      "publication_group": "mixed_correspondence",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "xk-dumedite"
+    },
+    {
+      "capture_evidence": "separate_pilot_receipt_required",
+      "entity_id": "ZA",
+      "group_is_candidate_only": true,
+      "next_action": "assess_adapter_and_separate_content_rights",
+      "publication_approved": false,
+      "publication_group": "mixed_correspondence",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "za-paia"
+    },
+    {
+      "capture_evidence": "al-idp-transparency-discovery-20260905.json",
+      "entity_id": "AL",
+      "group_is_candidate_only": true,
+      "next_action": "verify_whether_portal_exposes_public_disclosure_catalogue",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "al-idp-transparency"
+    },
+    {
+      "capture_evidence": "at-government-open-data-discovery-20260905.json",
+      "entity_id": "AT",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "at-government-open-data"
+    },
+    {
+      "capture_evidence": "qa-government-open-data-discovery-20260905.json",
+      "entity_id": "QA",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "qa-government-open-data"
+    },
+    {
+      "capture_evidence": "ag-government-portal-discovery-20260905.json",
+      "entity_id": "AG",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "ag-government-portal"
+    },
+    {
+      "capture_evidence": "dk-government-open-data-discovery-20260905.json",
+      "entity_id": "DK",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "dk-government-open-data"
+    },
+    {
+      "capture_evidence": "fi-open-data-discovery-20260905.json",
+      "entity_id": "FI",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "fi-open-data"
+    },
+    {
+      "capture_evidence": "lu-open-data-discovery-20260905.json",
+      "entity_id": "LU",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "lu-open-data"
+    },
+    {
+      "capture_evidence": "ee-open-data-discovery-20260905.json",
+      "entity_id": "EE",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "ee-open-data"
+    },
+    {
+      "capture_evidence": "no-open-data-discovery-20260905.json",
+      "entity_id": "NO",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "no-open-data"
+    },
+    {
+      "capture_evidence": "si-open-data-discovery-20260905.json",
+      "entity_id": "SI",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "si-open-data"
+    },
+    {
+      "capture_evidence": "mt-open-data-discovery-20260905.json",
+      "entity_id": "MT",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "mt-open-data"
+    },
+    {
+      "capture_evidence": "cy-open-data-discovery-20260905.json",
+      "entity_id": "CY",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "cy-open-data"
+    },
+    {
+      "capture_evidence": "rs-open-data-discovery-20260905.json",
+      "entity_id": "RS",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "rs-open-data"
+    },
+    {
+      "capture_evidence": "mk-open-data-discovery-20260905.json",
+      "entity_id": "MK",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "mk-open-data"
+    },
+    {
+      "capture_evidence": "is-open-data-discovery-20260905.json",
+      "entity_id": "IS",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "is-open-data"
+    },
+    {
+      "capture_evidence": "lv-open-data-discovery-20260905.json",
+      "entity_id": "LV",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "lv-open-data"
+    },
+    {
+      "capture_evidence": "sk-open-data-discovery-20260905.json",
+      "entity_id": "SK",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "sk-open-data"
+    },
+    {
+      "capture_evidence": "kz-open-data-discovery-20260905.json",
+      "entity_id": "KZ",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "kz-open-data"
+    },
+    {
+      "capture_evidence": "kg-open-data-discovery-20260905.json",
+      "entity_id": "KG",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "kg-open-data"
+    },
+    {
+      "capture_evidence": "cl-open-data-discovery-20260905.json",
+      "entity_id": "CL",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "cl-open-data"
+    },
+    {
+      "capture_evidence": "pe-open-data-discovery-20260905.json",
+      "entity_id": "PE",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "pe-open-data"
+    },
+    {
+      "capture_evidence": "uy-open-data-discovery-20260905.json",
+      "entity_id": "UY",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "uy-open-data"
+    },
+    {
+      "capture_evidence": "jp-open-data-discovery-20260905.json",
+      "entity_id": "JP",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "jp-open-data"
+    },
+    {
+      "capture_evidence": "kr-open-data-discovery-20260905.json",
+      "entity_id": "KR",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "kr-open-data"
+    },
+    {
+      "capture_evidence": "id-open-data-discovery-20260905.json",
+      "entity_id": "ID",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "id-open-data"
+    },
+    {
+      "capture_evidence": "ph-open-data-discovery-20260905.json",
+      "entity_id": "PH",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "ph-open-data"
+    },
+    {
+      "capture_evidence": "my-open-data-discovery-20260905.json",
+      "entity_id": "MY",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "my-open-data"
+    },
+    {
+      "capture_evidence": "bn-open-data-discovery-20260905.json",
+      "entity_id": "BN",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "bn-open-data"
+    },
+    {
+      "capture_evidence": "rw-open-data-discovery-20260905.json",
+      "entity_id": "RW",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "rw-open-data"
+    },
+    {
+      "capture_evidence": "za-open-data-discovery-20260905.json",
+      "entity_id": "ZA",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "za-open-data"
+    },
+    {
+      "capture_evidence": "tn-open-data-discovery-20260905.json",
+      "entity_id": "TN",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "tn-open-data"
+    },
+    {
+      "capture_evidence": "ma-open-data-discovery-20260905.json",
+      "entity_id": "MA",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "ma-open-data"
+    },
+    {
+      "capture_evidence": "pt-open-data-discovery-20260905.json",
+      "entity_id": "PT",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "pt-open-data"
+    },
+    {
+      "capture_evidence": "il-open-data-discovery-20260905.json",
+      "entity_id": "IL",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "il-open-data"
+    },
+    {
+      "capture_evidence": "ch-open-data-discovery-20260905.json",
+      "entity_id": "CH",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "ch-open-data"
+    },
+    {
+      "capture_evidence": "li-open-data-discovery-20260905.json",
+      "entity_id": "LI",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "li-open-data"
+    },
+    {
+      "capture_evidence": "pk-open-data-discovery-20260905.json",
+      "entity_id": "PK",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "pk-open-data"
+    },
+    {
+      "capture_evidence": "lk-open-data-discovery-20260905.json",
+      "entity_id": "LK",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "lk-open-data"
+    },
+    {
+      "capture_evidence": "am-open-data-discovery-20260905.json",
+      "entity_id": "AM",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_discover_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "am-open-data"
+    },
+    {
+      "capture_evidence": "az-open-data-discovery-20260905.json",
+      "entity_id": "AZ",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_discover_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "az-open-data"
+    },
+    {
+      "capture_evidence": "sa-open-data-discovery-20260905.json",
+      "entity_id": "SA",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "sa-open-data"
+    },
+    {
+      "capture_evidence": "jo-open-data-discovery-20260905.json",
+      "entity_id": "JO",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "jo-open-data"
+    },
+    {
+      "capture_evidence": "om-open-data-discovery-20260905.json",
+      "entity_id": "OM",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "om-open-data"
+    },
+    {
+      "capture_evidence": "kw-open-data-discovery-20260905.json",
+      "entity_id": "KW",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "kw-open-data"
+    },
+    {
+      "capture_evidence": "lb-open-data-discovery-20260905.json",
+      "entity_id": "LB",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "lb-open-data"
+    },
+    {
+      "capture_evidence": "ps-open-data-discovery-20260905.json",
+      "entity_id": "PS",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "ps-open-data"
+    },
+    {
+      "capture_evidence": "ba-open-data-discovery-20260905.json",
+      "entity_id": "BA",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "ba-open-data"
+    },
+    {
+      "capture_evidence": "me-open-data-discovery-20260905.json",
+      "entity_id": "ME",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "me-open-data"
+    },
+    {
+      "capture_evidence": "mo-open-data-discovery-20260905.json",
+      "entity_id": "MO",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "mo-open-data"
+    },
+    {
+      "capture_evidence": "tw-open-data-discovery-20260905.json",
+      "entity_id": "TW",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "tw-open-data"
+    },
+    {
+      "capture_evidence": "mn-open-data-discovery-20260905.json",
+      "entity_id": "MN",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "mn-open-data"
+    },
+    {
+      "capture_evidence": "np-open-data-discovery-20260905.json",
+      "entity_id": "NP",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "np-open-data"
+    },
+    {
+      "capture_evidence": "fj-open-data-discovery-20260905.json",
+      "entity_id": "FJ",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "fj-open-data"
+    },
+    {
+      "capture_evidence": "ws-open-data-discovery-20260905.json",
+      "entity_id": "WS",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "ws-open-data"
+    },
+    {
+      "capture_evidence": "mu-open-data-discovery-20260905.json",
+      "entity_id": "MU",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "mu-open-data"
+    },
+    {
+      "capture_evidence": "sc-open-data-discovery-20260905.json",
+      "entity_id": "SC",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "sc-open-data"
+    },
+    {
+      "capture_evidence": "mg-open-data-discovery-20260905.json",
+      "entity_id": "MG",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "mg-open-data"
+    },
+    {
+      "capture_evidence": "mw-open-data-discovery-20260905.json",
+      "entity_id": "MW",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "mw-open-data"
+    },
+    {
+      "capture_evidence": "zm-open-data-discovery-20260905.json",
+      "entity_id": "ZM",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "zm-open-data"
+    },
+    {
+      "capture_evidence": "zw-open-data-discovery-20260905.json",
+      "entity_id": "ZW",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "zw-open-data"
+    },
+    {
+      "capture_evidence": "et-open-data-discovery-20260905.json",
+      "entity_id": "ET",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "et-open-data"
+    },
+    {
+      "capture_evidence": "er-open-data-discovery-20260905.json",
+      "entity_id": "ER",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "er-open-data"
+    },
+    {
+      "capture_evidence": "ao-open-data-discovery-20260905.json",
+      "entity_id": "AO",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "ao-open-data"
+    },
+    {
+      "capture_evidence": "mz-open-data-discovery-20260905.json",
+      "entity_id": "MZ",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "mz-open-data"
+    },
+    {
+      "capture_evidence": "cm-open-data-discovery-20260905.json",
+      "entity_id": "CM",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "cm-open-data"
+    },
+    {
+      "capture_evidence": "ga-open-data-discovery-20260905.json",
+      "entity_id": "GA",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "ga-open-data"
+    },
+    {
+      "capture_evidence": "cd-government-portal-discovery-20260905.json",
+      "entity_id": "CD",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "cd-government-portal"
+    },
+    {
+      "capture_evidence": "cg-government-portal-discovery-20260905.json",
+      "entity_id": "CG",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "cg-government-portal"
+    },
+    {
+      "capture_evidence": "bj-government-portal-discovery-20260905.json",
+      "entity_id": "BJ",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "bj-government-portal"
+    },
+    {
+      "capture_evidence": "tg-government-portal-discovery-20260905.json",
+      "entity_id": "TG",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "tg-government-portal"
+    },
+    {
+      "capture_evidence": "bf-government-portal-discovery-20260905.json",
+      "entity_id": "BF",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "bf-government-portal"
+    },
+    {
+      "capture_evidence": "ne-government-portal-discovery-20260905.json",
+      "entity_id": "NE",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "ne-government-portal"
+    },
+    {
+      "capture_evidence": "ml-government-portal-discovery-20260905.json",
+      "entity_id": "ML",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "ml-government-portal"
+    },
+    {
+      "capture_evidence": "td-government-portal-discovery-20260905.json",
+      "entity_id": "TD",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "td-government-portal"
+    },
+    {
+      "capture_evidence": "gn-government-portal-discovery-20260905.json",
+      "entity_id": "GN",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "gn-government-portal"
+    },
+    {
+      "capture_evidence": "sl-government-portal-discovery-20260905.json",
+      "entity_id": "SL",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "sl-government-portal"
+    },
+    {
+      "capture_evidence": "gm-government-portal-discovery-20260905.json",
+      "entity_id": "GM",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "gm-government-portal"
+    },
+    {
+      "capture_evidence": "gw-government-portal-discovery-20260905.json",
+      "entity_id": "GW",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "gw-government-portal"
+    },
+    {
+      "capture_evidence": "na-government-portal-discovery-20260905.json",
+      "entity_id": "NA",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "na-government-portal"
+    },
+    {
+      "capture_evidence": "bw-government-portal-discovery-20260905.json",
+      "entity_id": "BW",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "bw-government-portal"
+    },
+    {
+      "capture_evidence": "sz-government-portal-discovery-20260905.json",
+      "entity_id": "SZ",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "sz-government-portal"
+    },
+    {
+      "capture_evidence": "ls-government-portal-discovery-20260905.json",
+      "entity_id": "LS",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "ls-government-portal"
+    },
+    {
+      "capture_evidence": "km-government-portal-discovery-20260905.json",
+      "entity_id": "KM",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "km-government-portal"
+    },
+    {
+      "capture_evidence": "dj-government-portal-discovery-20260905.json",
+      "entity_id": "DJ",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "dj-government-portal"
+    },
+    {
+      "capture_evidence": "so-government-portal-discovery-20260905.json",
+      "entity_id": "SO",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "so-government-portal"
+    },
+    {
+      "capture_evidence": "ss-government-portal-discovery-20260905.json",
+      "entity_id": "SS",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "ss-government-portal"
+    },
+    {
+      "capture_evidence": "ye-government-portal-discovery-20260905.json",
+      "entity_id": "YE",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "ye-government-portal"
+    },
+    {
+      "capture_evidence": "sy-government-portal-discovery-20260905.json",
+      "entity_id": "SY",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "sy-government-portal"
+    },
+    {
+      "capture_evidence": "ir-government-portal-discovery-20260905.json",
+      "entity_id": "IR",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "ir-government-portal"
+    },
+    {
+      "capture_evidence": "iq-government-portal-discovery-20260905.json",
+      "entity_id": "IQ",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "iq-government-portal"
+    },
+    {
+      "capture_evidence": "tm-government-portal-discovery-20260905.json",
+      "entity_id": "TM",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "tm-government-portal"
+    },
+    {
+      "capture_evidence": "tj-government-portal-discovery-20260905.json",
+      "entity_id": "TJ",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "tj-government-portal"
+    },
+    {
+      "capture_evidence": "la-government-portal-discovery-20260905.json",
+      "entity_id": "LA",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "la-government-portal"
+    },
+    {
+      "capture_evidence": "kh-government-portal-discovery-20260905.json",
+      "entity_id": "KH",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "kh-government-portal"
+    },
+    {
+      "capture_evidence": "mm-government-portal-discovery-20260905.json",
+      "entity_id": "MM",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "mm-government-portal"
+    },
+    {
+      "capture_evidence": "tl-government-portal-discovery-20260905.json",
+      "entity_id": "TL",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "tl-government-portal"
+    },
+    {
+      "capture_evidence": "mv-government-portal-discovery-20260905.json",
+      "entity_id": "MV",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "mv-government-portal"
+    },
+    {
+      "capture_evidence": "bt-government-portal-discovery-20260905.json",
+      "entity_id": "BT",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "bt-government-portal"
+    },
+    {
+      "capture_evidence": "sg-open-data-discovery-20260905.json",
+      "entity_id": "SG",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "sg-open-data"
+    },
+    {
+      "capture_evidence": "pg-government-portal-discovery-20260905.json",
+      "entity_id": "PG",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "pg-government-portal"
+    },
+    {
+      "capture_evidence": "mh-government-portal-discovery-20260905.json",
+      "entity_id": "MH",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "mh-government-portal"
+    },
+    {
+      "capture_evidence": "fm-government-portal-discovery-20260905.json",
+      "entity_id": "FM",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "fm-government-portal"
+    },
+    {
+      "capture_evidence": "pw-government-portal-discovery-20260905.json",
+      "entity_id": "PW",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "pw-government-portal"
+    },
+    {
+      "capture_evidence": "nr-government-portal-discovery-20260905.json",
+      "entity_id": "NR",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "nr-government-portal"
+    },
+    {
+      "capture_evidence": "tv-government-portal-discovery-20260905.json",
+      "entity_id": "TV",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "tv-government-portal"
+    },
+    {
+      "capture_evidence": "ki-government-portal-discovery-20260905.json",
+      "entity_id": "KI",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "ki-government-portal"
+    },
+    {
+      "capture_evidence": "vu-government-portal-discovery-20260905.json",
+      "entity_id": "VU",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "vu-government-portal"
+    },
+    {
+      "capture_evidence": "sb-government-portal-discovery-20260905.json",
+      "entity_id": "SB",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "sb-government-portal"
+    },
+    {
+      "capture_evidence": "to-government-portal-discovery-20260905.json",
+      "entity_id": "TO",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "to-government-portal"
+    },
+    {
+      "capture_evidence": "nu-government-portal-discovery-20260905.json",
+      "entity_id": "NU",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "nu-government-portal"
+    },
+    {
+      "capture_evidence": "mc-government-portal-discovery-20260905.json",
+      "entity_id": "MC",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "mc-government-portal"
+    },
+    {
+      "capture_evidence": "sm-government-portal-discovery-20260905.json",
+      "entity_id": "SM",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "sm-government-portal"
+    },
+    {
+      "capture_evidence": "va-government-portal-discovery-20260905.json",
+      "entity_id": "VA",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "va-government-portal"
+    },
+    {
+      "capture_evidence": "gi-government-portal-discovery-20260905.json",
+      "entity_id": "GI",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "gi-government-portal"
+    },
+    {
+      "capture_evidence": "aw-government-portal-discovery-20260905.json",
+      "entity_id": "AW",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "aw-government-portal"
+    },
+    {
+      "capture_evidence": "cw-government-portal-discovery-20260905.json",
+      "entity_id": "CW",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "cw-government-portal"
+    },
+    {
+      "capture_evidence": "bq-government-portal-discovery-20260905.json",
+      "entity_id": "BQ",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "bq-government-portal"
+    },
+    {
+      "capture_evidence": "sx-government-portal-discovery-20260905.json",
+      "entity_id": "SX",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "sx-government-portal"
+    },
+    {
+      "capture_evidence": "vg-government-portal-discovery-20260905.json",
+      "entity_id": "VG",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "vg-government-portal"
+    },
+    {
+      "capture_evidence": "ky-government-portal-discovery-20260905.json",
+      "entity_id": "KY",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "ky-government-portal"
+    },
+    {
+      "capture_evidence": "bm-government-portal-discovery-20260905.json",
+      "entity_id": "BM",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "bm-government-portal"
+    },
+    {
+      "capture_evidence": "tc-government-portal-discovery-20260905.json",
+      "entity_id": "TC",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "tc-government-portal"
+    },
+    {
+      "capture_evidence": "fk-government-portal-discovery-20260905.json",
+      "entity_id": "FK",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "fk-government-portal"
+    },
+    {
+      "capture_evidence": "gl-government-portal-discovery-20260905.json",
+      "entity_id": "GL",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "gl-government-portal"
+    },
+    {
+      "capture_evidence": "fo-government-portal-discovery-20260905.json",
+      "entity_id": "FO",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "fo-government-portal"
+    },
+    {
+      "capture_evidence": "im-government-portal-discovery-20260905.json",
+      "entity_id": "IM",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "im-government-portal"
+    },
+    {
+      "capture_evidence": "as-government-portal-discovery-20260905.json",
+      "entity_id": "AS",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "as-government-portal"
+    },
+    {
+      "capture_evidence": "gu-government-portal-discovery-20260905.json",
+      "entity_id": "GU",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "gu-government-portal"
+    },
+    {
+      "capture_evidence": "ai-government-portal-discovery-20260905.json",
+      "entity_id": "AI",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "ai-government-portal"
+    },
+    {
+      "capture_evidence": "ax-government-portal-discovery-20260905.json",
+      "entity_id": "AX",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "ax-government-portal"
+    },
+    {
+      "capture_evidence": "bb-government-portal-discovery-20260905.json",
+      "entity_id": "BB",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "bb-government-portal"
+    },
+    {
+      "capture_evidence": "bg-open-data-discovery-20260905.json",
+      "entity_id": "BG",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "bg-open-data"
+    },
+    {
+      "capture_evidence": "bi-government-portal-discovery-20260905.json",
+      "entity_id": "BI",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "bi-government-portal"
+    },
+    {
+      "capture_evidence": "bl-government-portal-discovery-20260905.json",
+      "entity_id": "BL",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "bl-government-portal"
+    },
+    {
+      "capture_evidence": "bz-government-portal-discovery-20260905.json",
+      "entity_id": "BZ",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "bz-government-portal"
+    },
+    {
+      "capture_evidence": "bo-government-portal-discovery-20260905.json",
+      "entity_id": "BO",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "bo-government-portal"
+    },
+    {
+      "capture_evidence": "cr-government-portal-discovery-20260905.json",
+      "entity_id": "CR",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "cr-government-portal"
+    },
+    {
+      "capture_evidence": "ec-government-portal-discovery-20260905.json",
+      "entity_id": "EC",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "ec-government-portal"
+    },
+    {
+      "capture_evidence": "do-government-portal-discovery-20260905.json",
+      "entity_id": "DO",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "do-government-portal"
+    },
+    {
+      "capture_evidence": "sv-government-portal-discovery-20260905.json",
+      "entity_id": "SV",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "sv-government-portal"
+    },
+    {
+      "capture_evidence": "ht-government-portal-discovery-20260905.json",
+      "entity_id": "HT",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "ht-government-portal"
+    },
+    {
+      "capture_evidence": "hn-government-portal-discovery-20260905.json",
+      "entity_id": "HN",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "hn-government-portal"
+    },
+    {
+      "capture_evidence": "jm-government-portal-discovery-20260905.json",
+      "entity_id": "JM",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "jm-government-portal"
+    },
+    {
+      "capture_evidence": "gy-government-portal-discovery-20260905.json",
+      "entity_id": "GY",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "gy-government-portal"
+    },
+    {
+      "capture_evidence": "gt-government-portal-discovery-20260905.json",
+      "entity_id": "GT",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "gt-government-portal"
+    },
+    {
+      "capture_evidence": "gd-government-portal-discovery-20260905.json",
+      "entity_id": "GD",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "gd-government-portal"
+    },
+    {
+      "capture_evidence": "eg-government-portal-discovery-20260905.json",
+      "entity_id": "EG",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "eg-government-portal"
+    },
+    {
+      "capture_evidence": "dz-government-portal-discovery-20260905.json",
+      "entity_id": "DZ",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "dz-government-portal"
+    },
+    {
+      "capture_evidence": "gq-government-portal-discovery-20260905.json",
+      "entity_id": "GQ",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "gq-government-portal"
+    },
+    {
+      "capture_evidence": "st-government-portal-discovery-20260905.json",
+      "entity_id": "ST",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "st-government-portal"
+    },
+    {
+      "capture_evidence": "bs-government-portal-discovery-20260905.json",
+      "entity_id": "BS",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "bs-government-portal"
+    },
+    {
+      "capture_evidence": "by-government-portal-discovery-20260905.json",
+      "entity_id": "BY",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "by-government-portal"
+    },
+    {
+      "capture_evidence": "cf-government-portal-discovery-20260905.json",
+      "entity_id": "CF",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "cf-government-portal"
+    },
+    {
+      "capture_evidence": "ck-government-portal-discovery-20260905.json",
+      "entity_id": "CK",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "ck-government-portal"
+    },
+    {
+      "capture_evidence": "cn-government-portal-discovery-20260905.json",
+      "entity_id": "CN",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "cn-government-portal"
+    },
+    {
+      "capture_evidence": "cx-government-portal-discovery-20260905.json",
+      "entity_id": "CX",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "cx-government-portal"
+    },
+    {
+      "capture_evidence": "cc-government-portal-discovery-20260905.json",
+      "entity_id": "CC",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "cc-government-portal"
+    },
+    {
+      "capture_evidence": "bv-government-portal-discovery-20260905.json",
+      "entity_id": "BV",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "bv-government-portal"
+    },
+    {
+      "capture_evidence": "aq-government-portal-discovery-20260905.json",
+      "entity_id": "AQ",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "aq-government-portal"
+    },
+    {
+      "capture_evidence": "hm-government-portal-discovery-20260905.json",
+      "entity_id": "HM",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "hm-government-portal"
+    },
+    {
+      "capture_evidence": "cu-government-portal-discovery-20260905.json",
+      "entity_id": "CU",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "cu-government-portal"
+    },
+    {
+      "capture_evidence": "cv-government-portal-discovery-20260905.json",
+      "entity_id": "CV",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "cv-government-portal"
+    },
+    {
+      "capture_evidence": "dm-government-portal-discovery-20260905.json",
+      "entity_id": "DM",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "dm-government-portal"
+    },
+    {
+      "capture_evidence": "lc-government-portal-discovery-20260905.json",
+      "entity_id": "LC",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "lc-government-portal"
+    },
+    {
+      "capture_evidence": "ci-government-portal-discovery-20260905.json",
+      "entity_id": "CI",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "ci-government-portal"
+    },
+    {
+      "capture_evidence": "gh-government-portal-discovery-20260905.json",
+      "entity_id": "GH",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "gh-government-portal"
+    },
+    {
+      "capture_evidence": "gf-government-portal-discovery-20260905.json",
+      "entity_id": "GF",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "gf-government-portal"
+    },
+    {
+      "capture_evidence": "gg-government-portal-discovery-20260905.json",
+      "entity_id": "GG",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "gg-government-portal"
+    },
+    {
+      "capture_evidence": "it-government-portal-discovery-20260905.json",
+      "entity_id": "IT",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "it-government-portal"
+    },
+    {
+      "capture_evidence": "je-government-portal-discovery-20260905.json",
+      "entity_id": "JE",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "je-government-portal"
+    },
+    {
+      "capture_evidence": "ke-government-portal-discovery-20260905.json",
+      "entity_id": "KE",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "ke-government-portal"
+    },
+    {
+      "capture_evidence": "kn-government-portal-discovery-20260905.json",
+      "entity_id": "KN",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "kn-government-portal"
+    },
+    {
+      "capture_evidence": "kp-government-portal-discovery-20260905.json",
+      "entity_id": "KP",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "kp-government-portal"
+    },
+    {
+      "capture_evidence": "vc-government-portal-discovery-20260905.json",
+      "entity_id": "VC",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "vc-government-portal"
+    },
+    {
+      "capture_evidence": "ly-government-portal-discovery-20260905.json",
+      "entity_id": "LY",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "ly-government-portal"
+    },
+    {
+      "capture_evidence": "mr-government-portal-discovery-20260905.json",
+      "entity_id": "MR",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "mr-government-portal"
+    },
+    {
+      "capture_evidence": "ms-government-portal-discovery-20260905.json",
+      "entity_id": "MS",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "ms-government-portal"
+    },
+    {
+      "capture_evidence": "mq-government-portal-discovery-20260905.json",
+      "entity_id": "MQ",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "mq-government-portal"
+    },
+    {
+      "capture_evidence": "mx-government-portal-discovery-20260905.json",
+      "entity_id": "MX",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "mx-government-portal"
+    },
+    {
+      "capture_evidence": "pa-government-portal-discovery-20260905.json",
+      "entity_id": "PA",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "pa-government-portal"
+    },
+    {
+      "capture_evidence": "py-government-portal-discovery-20260905.json",
+      "entity_id": "PY",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "py-government-portal"
+    },
+    {
+      "capture_evidence": "ni-government-portal-discovery-20260905.json",
+      "entity_id": "NI",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "ni-government-portal"
+    },
+    {
+      "capture_evidence": "pr-government-portal-discovery-20260905.json",
+      "entity_id": "PR",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "pr-government-portal"
+    },
+    {
+      "capture_evidence": "pf-government-portal-discovery-20260905.json",
+      "entity_id": "PF",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "pf-government-portal"
+    },
+    {
+      "capture_evidence": "pl-government-portal-discovery-20260905.json",
+      "entity_id": "PL",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "pl-government-portal"
+    },
+    {
+      "capture_evidence": "re-government-portal-discovery-20260905.json",
+      "entity_id": "RE",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "re-government-portal"
+    },
+    {
+      "capture_evidence": "pm-government-portal-discovery-20260905.json",
+      "entity_id": "PM",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "pm-government-portal"
+    },
+    {
+      "capture_evidence": "ru-government-portal-discovery-20260905.json",
+      "entity_id": "RU",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "ru-government-portal"
+    },
+    {
+      "capture_evidence": "gs-government-portal-discovery-20260905.json",
+      "entity_id": "GS",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "gs-government-portal"
+    },
+    {
+      "capture_evidence": "sh-government-portal-discovery-20260905.json",
+      "entity_id": "SH",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "sh-government-portal"
+    },
+    {
+      "capture_evidence": "tr-government-portal-discovery-20260905.json",
+      "entity_id": "TR",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "tr-government-portal"
+    },
+    {
+      "capture_evidence": "th-government-portal-discovery-20260905.json",
+      "entity_id": "TH",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "th-government-portal"
+    },
+    {
+      "capture_evidence": "ug-government-portal-discovery-20260905.json",
+      "entity_id": "UG",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "ug-government-portal"
+    },
+    {
+      "capture_evidence": "tz-government-portal-discovery-20260905.json",
+      "entity_id": "TZ",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "tz-government-portal"
+    },
+    {
+      "capture_evidence": "ve-government-portal-discovery-20260905.json",
+      "entity_id": "VE",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "ve-government-portal"
+    },
+    {
+      "capture_evidence": "vn-government-portal-discovery-20260905.json",
+      "entity_id": "VN",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "vn-government-portal"
+    },
+    {
+      "capture_evidence": "sd-government-portal-discovery-20260905.json",
+      "entity_id": "SD",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "sd-government-portal"
+    },
+    {
+      "capture_evidence": "uz-government-portal-discovery-20260905.json",
+      "entity_id": "UZ",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "uz-government-portal"
+    },
+    {
+      "capture_evidence": "um-government-portal-discovery-20260905.json",
+      "entity_id": "UM",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "um-government-portal"
+    },
+    {
+      "capture_evidence": "vi-government-portal-discovery-20260905.json",
+      "entity_id": "VI",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "vi-government-portal"
+    },
+    {
+      "capture_evidence": "mf-government-portal-discovery-20260905.json",
+      "entity_id": "MF",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "mf-government-portal"
+    },
+    {
+      "capture_evidence": "mp-government-portal-discovery-20260905.json",
+      "entity_id": "MP",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "mp-government-portal"
+    },
+    {
+      "capture_evidence": "nf-government-portal-discovery-20260905.json",
+      "entity_id": "NF",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "nf-government-portal"
+    },
+    {
+      "capture_evidence": "nc-government-portal-discovery-20260905.json",
+      "entity_id": "NC",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "nc-government-portal"
+    },
+    {
+      "capture_evidence": "ng-government-portal-discovery-20260905.json",
+      "entity_id": "NG",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "ng-government-portal"
+    },
+    {
+      "capture_evidence": "eh-government-portal-discovery-20260905.json",
+      "entity_id": "EH",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "eh-government-portal"
+    },
+    {
+      "capture_evidence": "sr-government-portal-discovery-20260905.json",
+      "entity_id": "SR",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "sr-government-portal"
+    },
+    {
+      "capture_evidence": "sn-government-portal-discovery-20260905.json",
+      "entity_id": "SN",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "sn-government-portal"
+    },
+    {
+      "capture_evidence": "lt-open-data-discovery-20260905.json",
+      "entity_id": "LT",
+      "group_is_candidate_only": true,
+      "next_action": "verify_dataset_catalogue_and_request_disclosure_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "lt-open-data"
+    },
+    {
+      "capture_evidence": "pn-government-portal-discovery-20260905.json",
+      "entity_id": "PN",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "pn-government-portal"
+    },
+    {
+      "capture_evidence": "tt-government-portal-discovery-20260905.json",
+      "entity_id": "TT",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "tt-government-portal"
+    },
+    {
+      "capture_evidence": "tk-government-portal-discovery-20260905.json",
+      "entity_id": "TK",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "tk-government-portal"
+    },
+    {
+      "capture_evidence": "gp-government-portal-discovery-20260905.json",
+      "entity_id": "GP",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "gp-government-portal"
+    },
+    {
+      "capture_evidence": "yt-government-portal-discovery-20260905.json",
+      "entity_id": "YT",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "yt-government-portal"
+    },
+    {
+      "capture_evidence": "io-government-portal-discovery-20260905.json",
+      "entity_id": "IO",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "io-government-portal"
+    },
+    {
+      "capture_evidence": "sj-government-portal-discovery-20260905.json",
+      "entity_id": "SJ",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "sj-government-portal"
+    },
+    {
+      "capture_evidence": "tf-government-portal-discovery-20260905.json",
+      "entity_id": "TF",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "tf-government-portal"
+    },
+    {
+      "capture_evidence": "wf-government-portal-discovery-20260905.json",
+      "entity_id": "WF",
+      "group_is_candidate_only": true,
+      "next_action": "verify_transparency_or_disclosure_catalogue_scope",
+      "publication_approved": false,
+      "publication_group": "restricted_or_unclear",
+      "schedule_active": false,
+      "source_denominator": null,
+      "source_id": "wf-government-portal"
+    }
+  ],
+  "summary": {
+    "entities": 251,
+    "entities_requiring_broader_discovery": 251,
+    "entities_without_named_sources": 0,
+    "public_raw_complete_countries_verified": 0,
+    "sources": 255
+  }
+}

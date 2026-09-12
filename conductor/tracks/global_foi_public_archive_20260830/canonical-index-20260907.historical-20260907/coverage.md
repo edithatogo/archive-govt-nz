@@ -437,7 +437,7 @@ Historical transport compliance is not certified. Rights, schedules, raw counts 
 | np-open-data | NP | access_unverified | robots_unverified |  |
 | nr-government-portal | NR | access_unverified | robots_unverified |  |
 | nu-government-portal | NU | foi_scope_unverified | observed |  |
-| nz-fyi | NZ | supported | seed_only |  |
+| nz-fyi | NZ | review_required | seed_only |  |
 | om-open-data | OM | access_unverified | robots_unverified |  |
 | pa-government-portal | PA | foi_scope_unverified | observed |  |
 | pe-open-data | PE | foi_scope_unverified | observed |  |

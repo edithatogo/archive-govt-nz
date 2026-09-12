@@ -14,8 +14,7 @@
       "not_established": 1,
       "out_of_scope_for_foi_capture": 8,
       "request_response_register_landing_page_observed": 1,
-      "review_required": 29,
-      "supported": 1
+      "review_required": 30
     },
     "supranational_entities": 1,
     "target_regimes": 42,
@@ -3630,7 +3629,7 @@
       "name": "New Zealand",
       "region": "Oceania",
       "source_dispositions": {
-        "nz-fyi": "supported"
+        "nz-fyi": "review_required"
       },
       "source_ids": [
         "nz-fyi"
@@ -22813,7 +22812,7 @@
       ],
       "declared_jurisdiction": "NZ",
       "declared_registry_status": "supported",
-      "disposition": "supported",
+      "disposition": "review_required",
       "entity_id": "NZ",
       "hf_observed_at": "2026-08-30T09:06:43.775758+00:00",
       "hf_repo_id": "edithatogo/fyi-archive-nz",
@@ -22822,9 +22821,9 @@
       "origins": [
         "https://fyi.org.nz"
       ],
-      "privacy_status": "approved",
+      "privacy_status": "pending_review",
       "raw_publication_verified": false,
-      "rights_status": "approved",
+      "rights_status": "pending_review",
       "total_requests": null
     },
     {
