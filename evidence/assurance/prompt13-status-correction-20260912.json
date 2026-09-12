@@ -1,0 +1,15 @@
+{
+  "schema_version": "archive-govt-nz.prompt13-status-correction/v1",
+  "recorded_at": "2026-09-12T03:30:00Z",
+  "target_main": "8273a1dd0e9f50ff636487e25f5396b71c518928",
+  "historical_success_run": 33968609350,
+  "historical_success_receipt": "config/legislation/parents/ordered-500-33968609350.json",
+  "current_duplicate_run": 34669586209,
+  "current_duplicate_status": "in_progress",
+  "operational_proof": "verified_by_historical_success_run",
+  "durable_recovery": "verified_by_durable_recovery_readback",
+  "publication": "published_verified_for_selected_552",
+  "candidate_coverage": "search_derived_33693_not_full_coverage",
+  "correction": "Operational proof, durable recovery, publication, and candidate coverage are separate claims; the in-progress duplicate run is not used as success evidence.",
+  "supersedes": "conductor/tracks/legislation_500_work_operational_proof_20260901/evidence.md"
+}
