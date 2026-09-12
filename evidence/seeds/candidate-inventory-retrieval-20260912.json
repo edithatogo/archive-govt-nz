@@ -1,0 +1,16 @@
+{
+  "schema_version": "archive-govt-nz.candidate-inventory-retrieval/v1",
+  "recorded_at": "2026-09-12T04:00:00Z",
+  "requested_sha256": "6f70fa9b596be2baa77bd885df1857e9b89c04013361c9ad80af722b0cc8493b",
+  "requested_count": 33693,
+  "attempts": [
+    {"authority":"target_git_history","path":"seeds/work_ids.txt","result":"absent"},
+    {"authority":"huggingface","dataset":"edithatogo/corpus-legislation-nz","revisions":["main","1efa35e72c378068cfb112d060bd0502497f61b1","ae4da4ef0446f68fddd8f53279ecb1245f1529b9"],"result":"path absent from anonymous tree listings"},
+    {"authority":"github_actions","repository":"edithatogo/corpus-legislation-nz","run_id":27313765016,"artifact_id":7551433868,"artifact_name":"historical-work-id-discovery","artifact_size_bytes":483122,"result":"artifact expired"}
+  ],
+  "status":"unavailable",
+  "rights_status":"unverified",
+  "execution_seed_creation":"blocked",
+  "boundary":"The 33693 search-derived candidate universe remains metadata-only; no execution seed was created or authorized.",
+  "next_action":"Recover a hash-equivalent public artifact or explicitly review a supplied subset before seed creation."
+}
