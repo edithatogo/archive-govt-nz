@@ -286,7 +286,7 @@ def test_current_durable_parent_is_bound_to_merged_authorities() -> None:
     assert reference["durable"] == {
         "provider": "hugging_face_dataset",
         "dataset": "edithatogo/corpus-legislation-nz",
-        "revision": "ae4da4ef0446f68fddd8f53279ecb1245f1529b9",
+        "revision": "04688f12dd687618e2085ae31f9b8a4a50a88b16",
         "path_parts": [
             "durable-state",
             "v1",
