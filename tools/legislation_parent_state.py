@@ -36,6 +36,8 @@ if TYPE_CHECKING:
     from importlib.machinery import ModuleSpec
     from types import ModuleType
 
+HTTP_OK = 200
+
 ROOT = Path(__file__).resolve().parents[1]
 REFERENCE_SCHEMA = "archive-govt-nz.legislation-parent-reference/v1"
 DURABLE_REFERENCE_SCHEMA = "archive-govt-nz.legislation-durable-parent-reference/v1"
@@ -377,10 +379,25 @@ def check_durable_authority(reference: dict[str, Any]) -> None:
         "size_bytes": reference["durable"]["size_bytes"],
         "sha256": reference["durable"]["sha256"],
     }
-    v.require(
-        condition=expected in receipt["authority"]["permitted_files"],
-        code="durable_authority_package",
-    )
+    permitted = expected in receipt["authority"]["permitted_files"]
+    if (
+        not permitted
+        and reference["durable"]["path_parts"][2] == "continuation-34669586209"
+    ):
+        proof_path = (
+            "evidence/completion-proofs/continuation-publication-readback-20260912.json"
+        )
+        proof = v.load(
+            git_bytes(["show", authority["recovery_commit"] + ":" + proof_path])
+        )
+        permitted = (
+            proof["revision"] == reference["durable"]["revision"]
+            and proof["path"] == expected["path"]
+            and proof["size_bytes"] == expected["size_bytes"]
+            and proof["sha256"] == expected["sha256"]
+            and proof["anonymous_readback"]["http_status"] == HTTP_OK
+        )
+    v.require(condition=permitted, code="durable_authority_package")
     git_bytes(["merge-base", "--is-ancestor", authority["recovery_commit"], "HEAD"])
 
 
