@@ -378,9 +378,16 @@ def check_durable_authority(reference: dict[str, Any]) -> None:
         "sha256": reference["durable"]["sha256"],
     }
     permitted = expected in receipt["authority"]["permitted_files"]
-    if not permitted and reference["durable"]["path_parts"][2] == "continuation-34669586209":
-        proof_path = "evidence/completion-proofs/continuation-publication-readback-20260912.json"
-        proof = v.load(git_bytes(["show", authority["recovery_commit"] + ":" + proof_path]))
+    if (
+        not permitted
+        and reference["durable"]["path_parts"][2] == "continuation-34669586209"
+    ):
+        proof_path = (
+            "evidence/completion-proofs/continuation-publication-readback-20260912.json"
+        )
+        proof = v.load(
+            git_bytes(["show", authority["recovery_commit"] + ":" + proof_path])
+        )
         permitted = (
             proof["revision"] == reference["durable"]["revision"]
             and proof["path"] == expected["path"]
