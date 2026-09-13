@@ -1,0 +1,96 @@
+{
+  "schema_version": "archive-govt-nz.foi-missing-originals-audit/v1",
+  "observed_at": "2026-09-05T14:52:05Z",
+  "scope": "read_only_artifact_and_local_byte_verification",
+  "missing_batch": {
+    "run_id": 33305989413,
+    "head_sha": "b6e78703d871082433fb33f8fa610761c2eb4062",
+    "start_offset": 17225,
+    "end_offset": 17226,
+    "request_id": 18631,
+    "artifact_id": 9730497676,
+    "artifact_expired": false,
+    "zip_bytes": 21462,
+    "uncompressed_bytes": 55497,
+    "artifact_sha256": "67bb806bd47854b9ae6af4357f9ec6206baa0c52a1f9633bdc493579db9b17f2",
+    "member_count": 14,
+    "retained_original_members": 0,
+    "attachment_references": 8,
+    "warc_record_references": 10,
+    "expected_request_content_sha256": "5b48db2d192ad852186a0b85e5ac6537d2e7e82fd392bfafeda43d8eb1a02e84",
+    "manifest_sha256": "6f1942c43d48fee1b85e9e042641721d1bd1679634801517c2c29619831371d9",
+    "events_sha256": "ff73d2f837705d9402f6e356193c8b20a3d6e25321733476abf4dec3b824264c",
+    "attachments_sha256": "ab0df4c447a4859a77f7d715d765e29a22ab7a4712839980815cbd5ecefe2a43",
+    "sidecar_hashes_match_batch_receipt": true,
+    "raw_inventory_present": false,
+    "recovery_ready": false
+  },
+  "local_search": {
+    "roots": [
+      "/Volumes/PortableSSD/Archives/foi-preservation/nz-fyi",
+      "/Volumes/PortableSSD/GitHub/fyi-archive"
+    ],
+    "preservation_files_hashed": 31,
+    "matching_request_digest_files": 0,
+    "named_18631_files_found": 0,
+    "limitation": "Bounded named-root and artifact search; not a claim that no other backup exists."
+  },
+  "public_head_metadata_check": {
+    "url": "https://huggingface.co/api/datasets/edithatogo/fyi-archive-nz",
+    "revision": "52d747d055b00eba3f185e000efa2700e43f8c1e",
+    "listed_paths": 34,
+    "matching_original_candidate_paths": 0,
+    "limitation": "Current-head listed paths only, not all revision history or a content hash search."
+  },
+  "recoverable_candidate": {
+    "source_run_id": 33307777685,
+    "request_id": 18632,
+    "offset_range": [
+      17226,
+      17227
+    ],
+    "package": "/Volumes/PortableSSD/Archives/foi-preservation/nz-fyi/run-33307777685-reconstructed-v2",
+    "manifest_sha256": "3514658895d5e26726f4d23a776a709a4c0fce165dcfb8e307ef10f4d15bb49e",
+    "inventory_sha256": "e25240f901e74d1b37ab0685bab69fb5017c0de0ed7ffa2da7be20eee6103e92",
+    "counts": {
+      "requests": 1,
+      "responses": 2,
+      "events": 2,
+      "original_files": 8
+    },
+    "complete_verification_passed": true,
+    "fresh_cold_restore_passed": true,
+    "rebuilt_manifest_equal": true,
+    "all_rebuilt_package_files_byte_equal": true,
+    "repairs_missing_batch": false,
+    "local_recovery_ready": true,
+    "public_readiness": "existing exact-candidate decision remains pending rights/privacy review",
+    "decision": "nz-reconstructed-publication-decision.pending.json",
+    "prior_a78bef_decision_reused": false
+  },
+  "next_exact_step": {
+    "missing_batch": "Locate retained request JSON matching the recorded content SHA-256 and the original HTML/WARC/eight attachment bytes bound by the batch metadata. Verify their hashes and capture context before preparing a package; sidecar projections cannot substitute. No such retained originals were found in this bounded search.",
+    "if_originals_unavailable": "Retain explicit historical gap. Any future acquisition is a new capture with its actual observation time, not restoration of the lost 2026-08-30 bytes.",
+    "candidate": "The later 351465 candidate can be privately restored now. Public eligibility requires the existing source/repo/manifest-bound decision fields and evidence; no additional permission gate is invented."
+  },
+  "validation": {
+    "command": [
+      "uv",
+      "run",
+      "--locked",
+      "pytest",
+      "tests/test_foi_package.py",
+      "-q",
+      "--no-cov"
+    ],
+    "tests_passed": 105,
+    "production_change_needed": false,
+    "note": "Existing importer requires a trusted raw inventory; missing originals are an evidence loss, not a receiver defect found by this audit."
+  },
+  "source_acquisition": false,
+  "publication": false,
+  "dispatch": false,
+  "ownership_change": false,
+  "full_harness_started": false,
+  "pending_whole_criteria_completed": []
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": "archive-govt-nz.foi-recovery-audit-integration/v1",
+  "observed_at": "2026-09-13T06:55:38.416886+00:00",
+  "base_commit": "a816a3d17633c27a6514661a8fa6558bd8c58829",
+  "source_commit": "5f7b137e12a514f2cef7f99990f3d3483734c49e",
+  "historical_artifacts": [
+    {
+      "path": "conductor/tracks/global_foi_public_archive_20260830/missing-originals-recovery-audit-20260906.md",
+      "sha256": "cf1b00e4de4f4065e6bb9c6d982273728dd097b05da6ea42b217d88618f21e70"
+    },
+    {
+      "path": "conductor/tracks/global_foi_public_archive_20260830/missing-originals-recovery-audit-20260906.json",
+      "sha256": "bdaed1fa9db61bbb355d1a211143ee879a175fd89ad4c65a5a77cc7a65655af9"
+    }
+  ],
+  "original_bytes_preserved": true,
+  "local_cold_restore": {
+    "manifest_sha256": "3514658895d5e26726f4d23a776a709a4c0fce165dcfb8e307ef10f4d15bb49e",
+    "status": "passed",
+    "counts": {
+      "events": 2,
+      "original_files": 8,
+      "requests": 1,
+      "responses": 2
+    },
+    "public_upload": false
+  },
+  "focused_validation": {
+    "command": "uv run --locked pytest tests/test_foi_package.py -q --no-cov",
+    "tests_passed": 105
+  },
+  "missing_originals_search_repeated": false,
+  "remote_readback_repeated": false,
+  "historical_approval_superseded_by": "conductor/tracks/global_foi_public_archive_20260830/nz-publication-decision-20260910.json",
+  "later_publication_receipt": "evidence/publication/nz-fyi-raw-package-20260912.json",
+  "later_publication_is_same_candidate": false,
+  "whole_phase_completed": false
+}
