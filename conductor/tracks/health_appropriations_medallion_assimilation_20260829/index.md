@@ -149,3 +149,6 @@ they are not current-state assertions.
 - [Implementation Plan](plan.md)
 - [Read-only partial-rebuild planner](readonly-resume-planner.md)
 - [Historical Budget and forecast source register](historical-source-register.md)
+
+- [Normalization and SQLite checkpoint integration](./normalization-checkpoint-integration-20260913.md)
+- [Preserved final normalization checkpoint](./normalization-admission-checkpoint-20260906.json)

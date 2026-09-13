@@ -643,3 +643,11 @@ descriptor-only PROV helper remains assertion-only and still reports rights,
 approval and publication as unresolved. The exact Health full assurance on
 the merged follow-up passed 4,774 tests and all configured gates. This task
 does not complete Platinum metadata, rights, publication or the track.
+
+## 2026-09-13 — Normalization checkpoint integration
+
+Preserved the final September 6 admission receipt, including the SQLite commit,
+with a separate dated snapshot. All four current source/test hashes match;
+260 focused tests pass with 100% coverage of both modules. Historical mutation
+results remain separately identified. See the paired integration report and
+receipt in `normalization-checkpoint-integration-20260913.md`.
