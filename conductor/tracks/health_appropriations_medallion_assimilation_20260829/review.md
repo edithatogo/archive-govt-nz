@@ -1151,3 +1151,12 @@ capture 100% line/branch coverage, three killed mutants, static checks passed.
 Paired evidence: `bronze-redirect-boundary.md` / `.json`. Self-review found no
 remaining actionable defect in the requested slice. Stop here for parent full
 assurance and independent review; no full harness or further implementation.
+
+## 2026-09-13 — Normalization checkpoint review
+
+Plan compliance: the normalization and SQLite implementation and tests already
+match the final receipt; the missing item was its checkpoint handoff. Original
+receipts and existing ledger bytes are preserved. New source-ref verification
+and 260 focused tests support the bounded checkpoint, without reusing historical
+mutation counts as fresh results or closing broader Health acceptance. No
+actionable finding remains in the evidence integration; full gates are in the PR.

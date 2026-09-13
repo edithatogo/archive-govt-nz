@@ -2243,3 +2243,10 @@ capture 100% line/branch coverage, three killed mutants, static checks passed.
 Paired evidence: `bronze-redirect-boundary.md` / `.json`. Self-review found no
 remaining actionable defect in the requested slice. Stop here for parent full
 assurance and independent review; no full harness or further implementation.
+
+## 2026-09-13 — Normalization checkpoint handoff
+
+Reconciled the remaining worktree checkpoint onto current main. Published its
+source branch for independent provenance, verified it through a fresh fetch,
+and retained the original checkpoint bytes. Focused validation passed; the PR
+records full harness and hosted results. No production or source-payload change.

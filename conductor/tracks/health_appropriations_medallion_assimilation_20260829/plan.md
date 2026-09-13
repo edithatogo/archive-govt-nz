@@ -221,6 +221,12 @@ repository validation command. External gates block only their affected task.
 
 ### 3.1 Schema contracts first
 
+- [x] Reconcile the final normalization/SQLite checkpoint with integrated source
+  and test hashes; preserve the historical receipt and independently verify
+  its remote source. Fresh focused tests: 260 passed, both modules at 100%
+  coverage. See `normalization-checkpoint-integration-20260913.md`.
+  [M-03, M-05, M-06, M-07, M-18; AC-05, AC-16]
+
 - [x] Export independent JSON row-shape schemas from the eight Arrow contracts,
   preserving nullable fields, exact decimal strings and fixed record-set/version
   constants. Test formats and representation bounds without claiming semantic
