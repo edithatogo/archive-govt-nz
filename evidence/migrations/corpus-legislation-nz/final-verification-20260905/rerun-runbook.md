@@ -79,8 +79,9 @@ assert run["head_sha"] == seal["context"]["software_commit"]
 assert harvest["run_identity"] == str(run["id"])
 assert harvest["output_manifest_root"] == roots["manifest_sha256"]
 assert harvest["output_checkpoint_root"] == roots["checkpoint_file_sha256"]
-cas = {name.split("/")[-1]: raw for name, raw in files.items()
-       if name.startswith("cas/")}
+cas = {
+    name.split("/")[-1]: raw for name, raw in files.items() if name.startswith("cas/")
+}
 assert len(cas) == 904
 assert all(sha(raw) == digest for digest, raw in cas.items())
 assert len(manifest["records"]) == 904
@@ -88,12 +89,13 @@ assert len(checkpoint["processed_work_ids"]) == 552
 assert harvest["works_attempted"] == 500
 assert harvest["changed_preserved"] == 352
 assert harvest["unchanged_revalidated"] == 148
-assert all(harvest[key] == 0 for key in
-           ["failed", "partial", "unavailable", "already_processed_skipped"])
+assert all(
+    harvest[key] == 0
+    for key in ["failed", "partial", "unavailable", "already_processed_skipped"]
+)
 seed = (p.ROOT / "seeds/reviewed/historical-work-ids-0001.txt").read_bytes()
 assert sha(seed) == seal["source"]["seed_sha256"]
-assert set(seed.decode().splitlines()) == {
-    work["work_id"] for work in harvest["works"]}
+assert set(seed.decode().splitlines()) == {work["work_id"] for work in harvest["works"]}
 context = seal["context"]
 reference = {
     "roots": roots,
@@ -101,9 +103,12 @@ reference = {
     "state_schemas": seal["state_schemas"],
     "source": seal["source"],
     "repository": context["repository"],
-    "run": {"head_branch": context["branch"], "id": context["run_id"],
-            "run_attempt": context["run_attempt"],
-            "head_sha": context["software_commit"]},
+    "run": {
+        "head_branch": context["branch"],
+        "id": context["run_id"],
+        "run_attempt": context["run_attempt"],
+        "head_sha": context["software_commit"],
+    },
     "workflow": {"path": context["workflow"]},
 }
 p.verify_parent(files, reference)
