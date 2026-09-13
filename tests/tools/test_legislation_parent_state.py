@@ -174,11 +174,11 @@ def durable_reference(raw: bytes = b"durable") -> dict[str, Any]:
         "durable": {
             "provider": "hugging_face_dataset",
             "dataset": "edithatogo/corpus-legislation-nz",
-            "revision": "a" * 40,
+            "revision": "a92c138fdf6343df7278c94735b868beab03776c",
             "path_parts": [
                 "durable-state",
                 "v1",
-                "2e4b75333e947d812842147c939117fc666799e4497b80f125104f721ef68e3c",
+                "continuation-34669586209",
                 "canonical-state.zip",
             ],
             "sha256": P.v.sha(raw),
@@ -193,16 +193,16 @@ def durable_reference(raw: bytes = b"durable") -> dict[str, Any]:
         "parent_source": P.source_identity(""),
         "child_source": P.source_identity("historical-work-ids-0001"),
         "authority": {
-            "decision_id": "archive-govt-nz-hf-publication-20260903-selected-552-v1",
-            "publication_receipt_path": (
-                "evidence/migrations/corpus-legislation-nz/huggingface-publication/"
-                "publication-readback-20260903.json"
+            "decision_id": "maintainer-legislation-continuation-904-20260913",
+            "approval_commit": "2657a4a90161856dc7d4b41ca5bc002d9c79df8e",
+            "approval_path": (
+                "evidence/migrations/corpus-legislation-nz/durable-recovery/"
+                "authority-decision-continuation-20260913.json"
             ),
-            "publication_receipt_sha256": (
-                "38160c4683112d951351e20d68fe34198dcab797eb371d6cf6e6d91160ba9fed"
+            "approval_sha256": (
+                "e81c27c71d2750cb05c1c403506839e67aebfea12daa1538077a1866e3e6ece3"
             ),
-            "publication_commit": "d60ed58420d1fe39dc420bbe047b9bf901b0d66d",
-            "recovery_commit": "5745bf3e38924dc968af70842dc6ed7a776e9e05",
+            "recovery_commit": "1d7408bed08c4d72fe37891757af2b152e8411df",
         },
     }
 
@@ -263,6 +263,7 @@ def test_durable_reference_rejects_revision_rights_and_scope_drift() -> None:
     for path, value in (
         (("durable", "revision"), "main"),
         (("authority", "decision_id"), "unapproved"),
+        (("authority", "approval_sha256"), "0" * 64),
         (("child_source", "seed_id"), None),
     ):
         changed = copy.deepcopy(reference)
@@ -274,7 +275,7 @@ def test_durable_reference_rejects_revision_rights_and_scope_drift() -> None:
 
 
 def test_current_durable_parent_is_bound_to_merged_authorities() -> None:
-    """The selected parent pins Prompt 10 recovery and Prompt 15 publication."""
+    """The selected continuation parent pins recovery and publication evidence."""
     reference = P.v.load(
         (P.ROOT / "config/legislation/parents/current.json").read_bytes()
     )
@@ -286,34 +287,59 @@ def test_current_durable_parent_is_bound_to_merged_authorities() -> None:
     assert reference["durable"] == {
         "provider": "hugging_face_dataset",
         "dataset": "edithatogo/corpus-legislation-nz",
-        "revision": "04688f12dd687618e2085ae31f9b8a4a50a88b16",
+        "revision": "a92c138fdf6343df7278c94735b868beab03776c",
         "path_parts": [
             "durable-state",
             "v1",
-            "2e4b75333e947d812842147c939117fc666799e4497b80f125104f721ef68e3c",
+            "continuation-34669586209",
             "canonical-state.zip",
         ],
-        "sha256": "2e4b75333e947d812842147c939117fc666799e4497b80f125104f721ef68e3c",
-        "size_bytes": 71776346,
+        "sha256": "ce11ad01257529a2d54dc1812d02dbed7c0f894f0991c9a2c0c675bb09286271",
+        "size_bytes": 10652143,
         "roots": {
             "manifest_sha256": (
-                "877ba501a25570a29c1aada7979562d8c62c7f043865125cf402310eabc09544"
+                "d570871545b0242b4bc9a7fef7851981a93f7de7e46b17972ea0c791f38697fc"
             ),
             "inventory_sha256": (
                 "9ca6dc505f991e015c6c997827878d8c7e9381b214a1544eb338328a285c6894"
             ),
-            "records": 552,
+            "records": 904,
             "work_ids": 552,
         },
     }
     assert (
-        reference["authority"]["publication_commit"]
-        == "d60ed58420d1fe39dc420bbe047b9bf901b0d66d"
+        reference["authority"]["approval_commit"]
+        == "2657a4a90161856dc7d4b41ca5bc002d9c79df8e"
     )
     assert (
-        reference["authority"]["recovery_commit"]
-        == "5745bf3e38924dc968af70842dc6ed7a776e9e05"
+        reference["authority"]["decision_id"]
+        == "maintainer-legislation-continuation-904-20260913"
     )
+
+
+def test_continuation_authority_requires_recovery_commit_ancestry(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Reject recovery evidence which is absent from the current history."""
+    reference = P.v.load(
+        (P.ROOT / "config/legislation/parents/current.json").read_bytes()
+    )
+    original = P.git_bytes
+
+    def reject_recovery_ancestry(arguments: list[str]) -> bytes:
+        if arguments == [
+            "merge-base",
+            "--is-ancestor",
+            reference["authority"]["recovery_commit"],
+            "HEAD",
+        ]:
+            code = "authority_git"
+            raise P.v.VerificationError(code)
+        return original(arguments)
+
+    monkeypatch.setattr(P, "git_bytes", reject_recovery_ancestry)
+    with pytest.raises(P.v.VerificationError, match="authority_git"):
+        P.check_durable_authority(reference)
 
 
 def test_durable_inner_verifier_binds_rights_roots_and_parent_scope(

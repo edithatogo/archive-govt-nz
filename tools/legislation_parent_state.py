@@ -36,6 +36,8 @@ if TYPE_CHECKING:
     from importlib.machinery import ModuleSpec
     from types import ModuleType
 
+HTTP_OK = 200
+
 ROOT = Path(__file__).resolve().parents[1]
 REFERENCE_SCHEMA = "archive-govt-nz.legislation-parent-reference/v1"
 DURABLE_REFERENCE_SCHEMA = "archive-govt-nz.legislation-durable-parent-reference/v1"
@@ -355,6 +357,46 @@ def durable_files(raw: bytes, reference: dict[str, Any]) -> dict[str, bytes]:
 def check_durable_authority(reference: dict[str, Any]) -> None:
     """Bind later public rights approval and recovery to committed exact evidence."""
     authority = reference["authority"]
+    if authority["decision_id"] == "maintainer-legislation-continuation-904-20260913":
+        raw = git_bytes(
+            ["show", authority["approval_commit"] + ":" + authority["approval_path"]]
+        )
+        v.equal(v.sha(raw), authority["approval_sha256"], "durable_approval_hash")
+        decision = v.load(raw)
+        v.equal(raw, M.encoded(decision), "durable_approval_encoding")
+        v.equal(
+            decision["decision_id"],
+            authority["decision_id"],
+            "durable_approval_decision",
+        )
+        v.equal(
+            decision["decisions"]["harvest_or_continuation_dispatch"],
+            "approved_exact_package_restoration_only",
+            "durable_approval_scope",
+        )
+        v.equal(
+            decision["decisions"]["payload_redistribution"],
+            "not_authorized_by_this_decision",
+            "durable_approval_redistribution",
+        )
+        scope = decision["scope"]
+        expected = {
+            "dataset": reference["durable"]["dataset"],
+            "revision": reference["durable"]["revision"],
+            "package_path": "/".join(reference["durable"]["path_parts"]),
+            "package_sha256": reference["durable"]["sha256"],
+            "size_bytes": reference["durable"]["size_bytes"],
+            "manifest_sha256": reference["durable"]["roots"]["manifest_sha256"],
+            "inventory_sha256": reference["durable"]["roots"]["inventory_sha256"],
+            "record_count": reference["durable"]["roots"]["records"],
+            "work_id_count": reference["durable"]["roots"]["work_ids"],
+        }
+        v.equal(
+            {key: scope[key] for key in expected}, expected, "durable_approval_package"
+        )
+        git_bytes(["merge-base", "--is-ancestor", authority["approval_commit"], "HEAD"])
+        git_bytes(["merge-base", "--is-ancestor", authority["recovery_commit"], "HEAD"])
+        return
     path = authority["publication_receipt_path"]
     raw = git_bytes(["show", authority["publication_commit"] + ":" + path])
     v.equal(
@@ -427,6 +469,7 @@ def check_lineage(lineage: dict[str, Any]) -> None:
         parent = cast("dict[str, Any]", parent)
         if parent["schema_version"] == DURABLE_REFERENCE_SCHEMA:
             schema(parent, "legislation-durable-parent-reference")
+            check_durable_authority(parent)
         else:
             schema(parent, "legislation-parent-reference")
         if parent["schema_version"] == DURABLE_REFERENCE_SCHEMA:
