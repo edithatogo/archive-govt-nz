@@ -1,9 +1,9 @@
 {
   "authority": {
-    "decision_id": "archive-govt-nz-hf-publication-20260903-selected-552-v1",
-    "publication_commit": "d60ed58420d1fe39dc420bbe047b9bf901b0d66d",
-    "publication_receipt_path": "evidence/migrations/corpus-legislation-nz/huggingface-publication/publication-readback-20260903.json",
-    "publication_receipt_sha256": "38160c4683112d951351e20d68fe34198dcab797eb371d6cf6e6d91160ba9fed",
+    "approval_commit": "2657a4a90161856dc7d4b41ca5bc002d9c79df8e",
+    "approval_path": "evidence/migrations/corpus-legislation-nz/durable-recovery/authority-decision-continuation-20260913.json",
+    "approval_sha256": "e81c27c71d2750cb05c1c403506839e67aebfea12daa1538077a1866e3e6ece3",
+    "decision_id": "maintainer-legislation-continuation-904-20260913",
     "recovery_commit": "1d7408bed08c4d72fe37891757af2b152e8411df"
   },
   "child_source": {
@@ -22,10 +22,7 @@
     "provider": "hugging_face_dataset",
     "revision": "a92c138fdf6343df7278c94735b868beab03776c",
     "roots": {
-      "cas_root_sha256": "ed93a3f7cddac8f6bc938f1005f47cfe4c309707b34b3a511cc3b66fedb47a40",
-      "checkpoint_file_sha256": "158c8817109b2490f1d00925dcd7b95240375dc7b261ea5926f20d97ed919854",
       "inventory_sha256": "9ca6dc505f991e015c6c997827878d8c7e9381b214a1544eb338328a285c6894",
-      "manifest_file_sha256": "d99d878ef1a840c176c58dc9a55cfb4e47563139a8ce34dcb29691888b7e1a0e",
       "manifest_sha256": "d570871545b0242b4bc9a7fef7851981a93f7de7e46b17972ea0c791f38697fc",
       "records": 904,
       "work_ids": 552

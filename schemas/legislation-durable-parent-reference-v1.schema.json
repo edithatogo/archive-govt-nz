@@ -77,10 +77,7 @@
           "work_ids": {
             "type": "integer",
             "minimum": 1
-          },
-          "cas_root_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
-          "checkpoint_file_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
-          "manifest_file_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+          }
           }
         }
       }
@@ -102,32 +99,13 @@
     "authority": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "decision_id",
-        "publication_receipt_path",
-        "publication_receipt_sha256",
-        "publication_commit",
-        "recovery_commit"
-      ],
+      "required": ["decision_id", "approval_commit", "approval_path", "approval_sha256", "recovery_commit"],
       "properties": {
-        "decision_id": {
-          "const": "archive-govt-nz-hf-publication-20260903-selected-552-v1"
-        },
-        "publication_receipt_path": {
-          "const": "evidence/migrations/corpus-legislation-nz/huggingface-publication/publication-readback-20260903.json"
-        },
-        "publication_receipt_sha256": {
-          "const": "38160c4683112d951351e20d68fe34198dcab797eb371d6cf6e6d91160ba9fed"
-        },
-        "publication_commit": {
-          "const": "d60ed58420d1fe39dc420bbe047b9bf901b0d66d"
-        },
-        "recovery_commit": {
-          "anyOf": [
-            {"const": "5745bf3e38924dc968af70842dc6ed7a776e9e05"},
-            {"const": "1d7408bed08c4d72fe37891757af2b152e8411df"}
-          ]
-        }
+        "decision_id": {"const": "maintainer-legislation-continuation-904-20260913"},
+        "approval_commit": {"const": "2657a4a90161856dc7d4b41ca5bc002d9c79df8e"},
+        "approval_path": {"const": "evidence/migrations/corpus-legislation-nz/durable-recovery/authority-decision-continuation-20260913.json"},
+        "approval_sha256": {"const": "e81c27c71d2750cb05c1c403506839e67aebfea12daa1538077a1866e3e6ece3"},
+        "recovery_commit": {"const": "1d7408bed08c4d72fe37891757af2b152e8411df"}
       }
     }
   }
