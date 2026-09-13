@@ -365,14 +365,20 @@ def check_durable_authority(reference: dict[str, Any]) -> None:
         decision = v.load(raw)
         v.equal(raw, M.encoded(decision), "durable_approval_encoding")
         v.equal(
-            decision["decision_id"], authority["decision_id"], "durable_approval_decision"
+            decision["decision_id"],
+            authority["decision_id"],
+            "durable_approval_decision",
         )
         v.equal(
             decision["decisions"]["harvest_or_continuation_dispatch"],
             "approved_exact_package_restoration_only",
             "durable_approval_scope",
         )
-        v.equal(decision["decisions"]["payload_redistribution"], "not_authorized_by_this_decision", "durable_approval_redistribution")
+        v.equal(
+            decision["decisions"]["payload_redistribution"],
+            "not_authorized_by_this_decision",
+            "durable_approval_redistribution",
+        )
         scope = decision["scope"]
         expected = {
             "dataset": reference["durable"]["dataset"],
@@ -385,7 +391,9 @@ def check_durable_authority(reference: dict[str, Any]) -> None:
             "record_count": reference["durable"]["roots"]["records"],
             "work_id_count": reference["durable"]["roots"]["work_ids"],
         }
-        v.equal({key: scope[key] for key in expected}, expected, "durable_approval_package")
+        v.equal(
+            {key: scope[key] for key in expected}, expected, "durable_approval_package"
+        )
         git_bytes(["merge-base", "--is-ancestor", authority["approval_commit"], "HEAD"])
         return
     path = authority["publication_receipt_path"]
