@@ -395,6 +395,7 @@ def check_durable_authority(reference: dict[str, Any]) -> None:
             {key: scope[key] for key in expected}, expected, "durable_approval_package"
         )
         git_bytes(["merge-base", "--is-ancestor", authority["approval_commit"], "HEAD"])
+        git_bytes(["merge-base", "--is-ancestor", authority["recovery_commit"], "HEAD"])
         return
     path = authority["publication_receipt_path"]
     raw = git_bytes(["show", authority["publication_commit"] + ":" + path])
@@ -468,6 +469,7 @@ def check_lineage(lineage: dict[str, Any]) -> None:
         parent = cast("dict[str, Any]", parent)
         if parent["schema_version"] == DURABLE_REFERENCE_SCHEMA:
             schema(parent, "legislation-durable-parent-reference")
+            check_durable_authority(parent)
         else:
             schema(parent, "legislation-parent-reference")
         if parent["schema_version"] == DURABLE_REFERENCE_SCHEMA:

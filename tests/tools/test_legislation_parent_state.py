@@ -317,6 +317,31 @@ def test_current_durable_parent_is_bound_to_merged_authorities() -> None:
     )
 
 
+def test_continuation_authority_requires_recovery_commit_ancestry(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Reject recovery evidence which is absent from the current history."""
+    reference = P.v.load(
+        (P.ROOT / "config/legislation/parents/current.json").read_bytes()
+    )
+    original = P.git_bytes
+
+    def reject_recovery_ancestry(arguments: list[str]) -> bytes:
+        if arguments == [
+            "merge-base",
+            "--is-ancestor",
+            reference["authority"]["recovery_commit"],
+            "HEAD",
+        ]:
+            code = "authority_git"
+            raise P.v.VerificationError(code)
+        return original(arguments)
+
+    monkeypatch.setattr(P, "git_bytes", reject_recovery_ancestry)
+    with pytest.raises(P.v.VerificationError, match="authority_git"):
+        P.check_durable_authority(reference)
+
+
 def test_durable_inner_verifier_binds_rights_roots_and_parent_scope(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
