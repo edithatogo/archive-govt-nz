@@ -148,6 +148,7 @@ def test_output_reservation_failure_is_redacted(
         )
 
 
+@pytest.mark.skipif(os.name == "nt", reason="Windows uses the descriptorless fallback")
 def test_pin_failure_closes_descriptor(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
