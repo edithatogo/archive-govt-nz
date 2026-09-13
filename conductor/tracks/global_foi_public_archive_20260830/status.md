@@ -38,11 +38,10 @@ The initial hosted bootstrap remained queued without a runner and was cancelled 
 
 The initial Canadian organisation review is an agent conformance check, with human escalation for ambiguity. Complete US XML and NZ correspondence are not approved by that proposal. Alternatives are the current Canadian nil-return candidate only, or metadata-only publication. All policy approvals remain pending, and publication enforcement remains implementation work. No general permission to continue technical work needs to be repeated.
 
-## Remote branch retirement readback — 2026-09-03
+## Remote branch retirement — 2026-09-13
 
-The live GitHub ref `foi-execution-state` remains the active shared control
-authority and must not be retired without drain, replacement-authority
-migration, and accountable authorization. The older `backup/local-main-20260826`
-ref is also preserved: independent redundancy and object reachability have not
-yet been established. No remote ref was deleted. See the machine-readable
-[retirement readback](../../../evidence/migrations/foi-branch-retirement/remote-branch-retirement-readback-20260903.json).
+An accountable retirement authorization followed a fresh drained-state readback.
+The scheduled shared-control workflow is removed so it cannot recreate the
+authority. The historical backup is retained as an independently verified Git
+bundle release. See the [FOI retirement receipt](../../../evidence/migrations/foi-branch-retirement/foi-shared-execution-retirement-20260913.json)
+and [backup preservation receipt](../../../evidence/migrations/foi-branch-retirement/backup-local-main-retirement-20260913.json).

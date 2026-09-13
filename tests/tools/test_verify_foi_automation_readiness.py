@@ -29,14 +29,10 @@ def test_current_receiver_automation_is_fail_closed() -> None:
 
 
 def test_missing_repository_guard_is_rejected(tmp_path: Path) -> None:
-    """A workflow without the repository guard is rejected."""
-    workflow = tmp_path / "foi-shared-execution.yml"
-    workflow.write_text("github.ref == 'refs/heads/main'", encoding="utf-8")
+    """An active receiver workflow without the repository guard is rejected."""
     (tmp_path / "ca-atip-refresh.yml").write_text(
-        "github.repository == 'edithatogo/archive-govt-nz'\n"
-        "github.ref == 'refs/heads/main'",
-        encoding="utf-8",
+        "github.ref == 'refs/heads/main'", encoding="utf-8"
     )
     report = verify(TRACK, tmp_path)
     assert report["valid"] is False
-    assert "foi-shared-execution.yml:repository_guard_missing" in report["findings"]
+    assert "ca-atip-refresh.yml:repository_guard_missing" in report["findings"]

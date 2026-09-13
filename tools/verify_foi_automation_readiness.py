@@ -22,11 +22,38 @@ def _load(path: Path) -> dict[str, Any]:
     return value
 
 
+def _retirement(track: Path) -> dict[str, Any] | None:
+    """Load the recorded shared-control retirement, if one exists."""
+    path = (
+        track.parents[2]
+        / "evidence"
+        / "migrations"
+        / "foi-branch-retirement"
+        / "foi-shared-execution-retirement-20260913.json"
+    )
+    return _load(path) if path.is_file() else None
+
+
+def _required_workflows(
+    retirement: dict[str, Any] | None, findings: list[str]
+) -> set[str]:
+    """Return active receiver workflows and validate a retirement receipt."""
+    required = {"ca-atip-refresh.yml"}
+    if retirement is None:
+        required.add("foi-shared-execution.yml")
+    elif retirement.get("status") != "retired_after_drained_readback":
+        findings.append("retirement_status_not_verified")
+    elif retirement.get("authority", {}).get("branch") != "foi-execution-state":
+        findings.append("retirement_authority_mismatch")
+    return required
+
+
 def verify(track: Path, workflow_dir: Path) -> dict[str, Any]:
     """Check ownership, monitoring and workflow safety invariants."""
     metadata = _load(track / "metadata.json")
     operational = _load(track / "operational-followup-20260830.json")
     deployment = _load(track / "shared-execution-deployment-20260831.json")
+    retirement = _retirement(track)
     findings: list[str] = []
 
     ownership = metadata.get("ownership", {})
@@ -41,10 +68,7 @@ def verify(track: Path, workflow_dir: Path) -> dict[str, Any]:
     if deployment.get("donor_cutover") is not False:
         findings.append("deployment_donor_cutover_not_false")
 
-    required = {
-        "foi-shared-execution.yml",
-        "ca-atip-refresh.yml",
-    }
+    required = _required_workflows(retirement, findings)
     present = {path.name for path in workflow_dir.glob("*.yml")}
     missing = sorted(required - present)
     if missing:
@@ -68,6 +92,7 @@ def verify(track: Path, workflow_dir: Path) -> dict[str, Any]:
         == "donor_until_verified_cutover",
         "nz_monitor_disabled": monitor.get("state") == "disabled_manually",
         "required_workflows": sorted(required),
+        "shared_execution_retired": retirement is not None,
         "findings": findings,
     }
 

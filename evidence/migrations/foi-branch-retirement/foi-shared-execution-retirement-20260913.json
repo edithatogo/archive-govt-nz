@@ -1,0 +1,24 @@
+{
+  "schema_version": "archive-govt-nz.foi-shared-execution-retirement/v1",
+  "observed_at": "2026-09-13T14:45:16Z",
+  "status": "retired_after_drained_readback",
+  "authority": {
+    "repository": "edithatogo/archive-govt-nz",
+    "branch": "foi-execution-state",
+    "commit": "7e484726245f8f20fd165714ff9aa9a35b0d8c8a",
+    "state_sha256": "f903d2de5360d3b3d9f554c10ebba3781ce0e0f11aa5953ab959374bc5bda178",
+    "generation": 13
+  },
+  "drain_readback": {
+    "owners": 5,
+    "live_owners": 0,
+    "jobs": 4,
+    "nonterminal_jobs": 0,
+    "terminal_statuses": ["captured", "exhausted"]
+  },
+  "retirement_actions": [
+    "Remove the scheduled and manually dispatchable shared-control workflow from main.",
+    "Retain this receipt and the historical design documentation as provenance.",
+    "Delete the retired remote authority ref only after the workflow-removal pull request has passed required checks and merged."
+  ]
+}
