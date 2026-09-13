@@ -1,0 +1,23 @@
+{
+  "schema_version": "archive-govt-nz.backup-ref-retirement/v1",
+  "observed_at": "2026-09-13T14:44:32Z",
+  "source": {
+    "repository": "edithatogo/archive-govt-nz",
+    "ref": "backup/local-main-20260826",
+    "commit": "3ed041d1d7e5f424914442707c51055bc01c3b60"
+  },
+  "independent_restore": {
+    "bundle_sha256": "e97bf0d203229b4ba9dd2551faa368feb776c3db37562f2b8a7b4226d04fc06d",
+    "bundle_bytes": 2621326,
+    "reachable_objects": 7221,
+    "restored_commit": "3ed041d1d7e5f424914442707c51055bc01c3b60",
+    "connectivity_check": "passed"
+  },
+  "durable_retention": {
+    "release_tag": "backup-local-main-20260826-retired",
+    "release_url": "https://github.com/edithatogo/archive-govt-nz/releases/tag/backup-local-main-20260826-retired",
+    "asset": "archive-retire-3ed041d1.bundle",
+    "asset_sha256": "e97bf0d203229b4ba9dd2551faa368feb776c3db37562f2b8a7b4226d04fc06d"
+  },
+  "status": "preserved_and_ready_for_ref_deletion"
+}

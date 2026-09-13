@@ -1,4 +1,11 @@
-# Shared FOI execution controls
+# Retired shared FOI execution controls
+
+The shared control workflow and its `foi-execution-state` authority were retired
+after a fresh readback found no live owner leases and only terminal jobs. The
+[retirement receipt](../evidence/migrations/foi-branch-retirement/foi-shared-execution-retirement-20260913.json)
+records the exact authority revision and state digest. This document preserves
+the operating design as historical provenance; it is not an instruction to
+recreate the retired branch or workflow.
 
 The approved control authority is the dedicated `foi-execution-state` Git branch
 in `edithatogo/archive-govt-nz`. Every write conditionally advances its exact
