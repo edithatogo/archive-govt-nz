@@ -1,0 +1,91 @@
+{
+  "observed_at": "2026-09-05T06:43:00.607019+00:00",
+  "url": "https://zenodo.org/api/records/20592540",
+  "http_status": 200,
+  "response_sha256": "9c82c2d090ac5ce7d6e9240122e2b182f5f11af06db9c5901b763dc57ed4029c",
+  "record": {
+    "id": 20592540,
+    "doi": "10.5281/zenodo.20592540",
+    "conceptdoi": "10.5281/zenodo.20592539",
+    "conceptrecid": "20592539",
+    "metadata": {
+      "title": "New Zealand Legislation Corpus: 2026 annual snapshot",
+      "doi": "10.5281/zenodo.20592540",
+      "publication_date": "2026-06-08",
+      "description": "Annual, version-locked snapshot of the New Zealand legislation corpus. The live continuously updated corpus is maintained on Hugging Face Datasets.",
+      "access_right": "open",
+      "creators": [
+        {
+          "name": "edithatogo",
+          "affiliation": null
+        }
+      ],
+      "keywords": [
+        "New Zealand",
+        "legislation",
+        "corpus",
+        "law",
+        "open data"
+      ],
+      "related_identifiers": [
+        {
+          "identifier": "https://huggingface.co/datasets/edithatogo/corpus-legislation-nz",
+          "relation": "isSupplementTo",
+          "resource_type": "dataset",
+          "scheme": "url"
+        }
+      ],
+      "version": "2026",
+      "resource_type": {
+        "title": "Dataset",
+        "type": "dataset"
+      },
+      "license": {
+        "id": "cc-by-4.0"
+      },
+      "relations": {
+        "version": [
+          {
+            "index": 0,
+            "is_last": true,
+            "parent": {
+              "pid_type": "recid",
+              "pid_value": "20592539"
+            }
+          }
+        ]
+      }
+    },
+    "files": [
+      {
+        "id": "3a4eecdb-b254-4744-9480-eabbed07472b",
+        "key": "nz-legislation-corpus-2026.SHA256SUMS.txt",
+        "size": 208,
+        "checksum": "md5:a503b9a61904a836d2b45419347ae823",
+        "links": {
+          "self": "https://zenodo.org/api/records/20592540/files/nz-legislation-corpus-2026.SHA256SUMS.txt/content"
+        }
+      },
+      {
+        "id": "2a8f7623-6e2a-49c0-9d4a-988300ae29e7",
+        "key": "nz-legislation-corpus-2026.tar.zst",
+        "size": 208721,
+        "checksum": "md5:00dee66bc1d66d52f1b31284ed11f516",
+        "links": {
+          "self": "https://zenodo.org/api/records/20592540/files/nz-legislation-corpus-2026.tar.zst/content"
+        }
+      },
+      {
+        "id": "c8876866-65ba-428e-ae92-3431e0096d7c",
+        "key": "nz-legislation-corpus-2026.manifest.json",
+        "size": 3104,
+        "checksum": "md5:6139f4539661d50aaa47a03707f2dea0",
+        "links": {
+          "self": "https://zenodo.org/api/records/20592540/files/nz-legislation-corpus-2026.manifest.json/content"
+        }
+      }
+    ],
+    "created": "2026-06-08T11:19:15.506706+00:00",
+    "updated": "2026-06-10T09:09:41.493552+00:00"
+  }
+}

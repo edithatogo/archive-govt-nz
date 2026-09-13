@@ -1,0 +1,32 @@
+{
+  "observed_at": "2026-09-05T06:46:00.430354+00:00",
+  "method": "Fresh anonymous downloads; all API MD5 checksums and published SHA256SUMS entries independently matched. Payloads retained in memory only.",
+  "files": [
+    {
+      "name": "nz-legislation-corpus-2026.SHA256SUMS.txt",
+      "http_status": 200,
+      "bytes": 208,
+      "api_checksum": "md5:a503b9a61904a836d2b45419347ae823",
+      "sha256": "1910e55aa57b74c5892227ab97eeff6b706e420f782e589a013224a8404e85eb"
+    },
+    {
+      "name": "nz-legislation-corpus-2026.tar.zst",
+      "http_status": 200,
+      "bytes": 208721,
+      "api_checksum": "md5:00dee66bc1d66d52f1b31284ed11f516",
+      "sha256": "1b7d5b2ab27bea138eb947f5971e993de7cf0e5b6f730bb905bbd9aa033be060"
+    },
+    {
+      "name": "nz-legislation-corpus-2026.manifest.json",
+      "http_status": 200,
+      "bytes": 3104,
+      "api_checksum": "md5:6139f4539661d50aaa47a03707f2dea0",
+      "sha256": "ea1212f47b0848971bdf41d87ee9236221c7130a0d55924bbf368b6075adf3a9"
+    }
+  ],
+  "sha256sums_matched": [
+    "nz-legislation-corpus-2026.tar.zst",
+    "nz-legislation-corpus-2026.manifest.json"
+  ],
+  "external_mutations": false
+}

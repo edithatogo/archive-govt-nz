@@ -1,0 +1,106 @@
+{
+  "schema_version": "archive-govt-nz.ordered-source-preflight-probes/v1",
+  "observed_at": "2026-09-05T13:23:47.315098+00:00",
+  "scope": "Actual completed preflight before acquisition plus independent audit-predicate negative controls. This does not establish unfinished acquisition, final accounting, or terminal Prompt21 completion.",
+  "target_execution_commit": "87f65e8b37cbc16bc6c7cf8b5b93a19e48f0f207",
+  "run_id": 33968609350,
+  "observed_run_status": "in_progress",
+  "observed_run_conclusion": null,
+  "api_hashes": {
+    "run": "14f3da20328e8a2305c4aab3224b0293f4f21c4721bcb472eb8b2b1dac01b92d",
+    "jobs": "a804b2b57b151b64d527a0d6aba1fb1be30a2636772993f7a013c5bb9dcc7adf",
+    "artifacts": "1991584cd494e0ee8904d6c8d6e972413f88b17f25ce518addd09017dc779a2b"
+  },
+  "artifact": {
+    "id": 9970223837,
+    "name": "legislation-source-preflight-33968609350-1",
+    "size_in_bytes": 47326,
+    "digest": "sha256:7e4f6bf94d0ba2d597f75def74cd5959beac0e4a7db89a643fdcc6290efa6fdf",
+    "expired": false,
+    "workflow_run": {
+      "id": 33968609350,
+      "repository_id": 1317899320,
+      "head_repository_id": 1317899320,
+      "head_branch": "main",
+      "head_sha": "87f65e8b37cbc16bc6c7cf8b5b93a19e48f0f207"
+    }
+  },
+  "receipt_sha256": "3b10952662ef41415d0f671ce280a959d3e80824406b9014939d6b2c850de2cd",
+  "preflight_step": {
+    "name": "Verify authenticated no-write source preflight",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 8,
+    "started_at": "2026-09-05T13:20:51Z",
+    "completed_at": "2026-09-05T13:20:53Z"
+  },
+  "harvest_step": {
+    "name": "Revalidate every governed work ID",
+    "status": "in_progress",
+    "conclusion": null,
+    "number": 10,
+    "started_at": "2026-09-05T13:20:54Z",
+    "completed_at": null
+  },
+  "preflight_precedes_harvest": true,
+  "state_file_count": 555,
+  "same_run_receipt_bound_by_artifact_api": true,
+  "positive_control": "actual primary evidence accepted for preflight chronology only",
+  "negative_controls": [
+    {
+      "case": "missing_preflight",
+      "accepted": false,
+      "expected": "reject",
+      "result": "passed"
+    },
+    {
+      "case": "late_preflight",
+      "accepted": false,
+      "expected": "reject",
+      "result": "passed"
+    },
+    {
+      "case": "skipped_preflight",
+      "accepted": false,
+      "expected": "reject",
+      "result": "passed"
+    },
+    {
+      "case": "wrong_run_artifact",
+      "accepted": false,
+      "expected": "reject",
+      "result": "passed"
+    },
+    {
+      "case": "absent_credential",
+      "accepted": false,
+      "expected": "reject",
+      "result": "passed"
+    },
+    {
+      "case": "failed_endpoint",
+      "accepted": false,
+      "expected": "reject",
+      "result": "passed"
+    },
+    {
+      "case": "false_unchanged_flag",
+      "accepted": false,
+      "expected": "reject",
+      "result": "passed"
+    },
+    {
+      "case": "different_state_hashes",
+      "accepted": false,
+      "expected": "reject",
+      "result": "passed"
+    }
+  ],
+  "pending": [
+    "Completed newrun with independently downloaded complete/attempt artifacts",
+    "Exact500 perwork accounting,CAS,manifest/checkpoint roots and lineage",
+    "Final Prompt15 binding to named actual newrun receipt",
+    "Integrated Prompt20 then terminal16criteria/11probes"
+  ],
+  "durability_boundary": "This source receipt is Actions operational evidence. Durable recovery remains exact publicly approved552 HF package and two independently executed restores, never this Actions receipt."
+}

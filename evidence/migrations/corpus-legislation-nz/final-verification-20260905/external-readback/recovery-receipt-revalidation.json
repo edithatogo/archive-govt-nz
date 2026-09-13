@@ -1,0 +1,47 @@
+{
+  "observed_at": "2026-09-05T06:45:36.882001+00:00",
+  "method": "Rehash current persisted primary attempt/stage receipts and independently compare explicit fields, not their summary pass label. This does not claim a third recovery was executed.",
+  "checked_receipts": [
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/durable-recovery/recovery-attempt-01-20260903.json",
+      "sha256": "a79f492e51652e746d04349617e0ab6361d8c6a4a0ed9a6aace423fdfa862266"
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/durable-recovery/recovery-attempt-02-20260903.json",
+      "sha256": "a271775cf1557a299d0d7bc333393947d6f6e882dedd039c2155ba9e2b3695ca"
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/durable-recovery/stages/attempt-01-stage-receipts-20260903.json",
+      "sha256": "88bfae383d0029452bc3655adf56a5d8901e4ae8b7a432f89ff6fe9df451b2d4"
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/durable-recovery/stages/attempt-02-stage-receipts-20260903.json",
+      "sha256": "7fbdaa97abc773521243abca81896a8871f82cc9d6e7034c03886ea976d985bf"
+    },
+    {
+      "path": "evidence/migrations/corpus-legislation-nz/durable-recovery/authority-decision-20260903.json",
+      "sha256": "2a41eb63979f9276b6f30a35fd87693a51f31b9a80a0af8be9a8a6e833599fa5"
+    }
+  ],
+  "cross_attempt_package_identical": true,
+  "cross_attempt_restored_state_identical": true,
+  "both_independent_no_actions_source": true,
+  "both_no_write_preflight_tree_unchanged": true,
+  "both_internal_reconstruction_mismatches": 0,
+  "explained_metadata_handoff_requires_prompt15_resolution": [
+    "rights_inventory",
+    "rights_readback",
+    "card_metadata.origin_repository",
+    "card_metadata.origin_commit",
+    "card_metadata.publication_role",
+    "card_metadata.manifest_root_sha256",
+    "card_metadata.inventory_sha256",
+    "card_metadata.work_count",
+    "card_metadata.record_count"
+  ],
+  "original_command_exit_codes": [
+    1,
+    1
+  ],
+  "scope": "Historical recovery evidence integrity revalidation; final publication comparison pending P15."
+}
