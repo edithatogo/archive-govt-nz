@@ -123,3 +123,7 @@ Approved track in progress. Automation repair and source-catalogue foundations a
 
 - [Canonical child-manifest reconciliation](child-manifest-reconciliation-20260907.md)
 - [Mock-only child validation receipt](child-manifest-reconciliation-20260907.json)
+
+- [Missing-originals audit integration and later evidence](missing-originals-recovery-integration-20260913.md)
+- [Historical missing-originals recovery audit (September 6)](missing-originals-recovery-audit-20260906.md)
+- [Historical missing-originals byte-verification receipt](missing-originals-recovery-audit-20260906.json)

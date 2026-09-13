@@ -93,6 +93,16 @@ PUBLIC_CHECKSUM_PATH = (
     "verification-01/SHA256SUMS"
 )
 PUBLIC_CHECKSUM_PATH_CANDIDATE_DIGEST = "202980b9d847d8c9f1af423526b0383990e8e0d7"
+PUBLIC_FOI_RECOVERY_DOCUMENT = (
+    "conductor/tracks/global_foi_public_archive_20260830/"
+    "missing-originals-recovery-audit-20260906.json"
+)
+PUBLIC_FOI_RECOVERY_SHA256 = (
+    "bdaed1fa9db61bbb355d1a211143ee879a175fd89ad4c65a5a77cc7a65655af9"
+)
+# The retained local archive path is provenance, not a credential. Bind both
+# its scanner fingerprint and the complete original receipt before adjudicating.
+PUBLIC_FOI_RECOVERY_PATH_DIGEST = "e8278915da61a0aa7a8731c50a5ab27b7457f923"
 
 
 def _is_reviewed_document(
@@ -150,6 +160,14 @@ def is_reviewed_public_path(  # noqa: PLR0911
     relative = filename.replace("\\", "/")
     if _is_indexed_public_checksum_path(relative, finding):
         return True
+    if (
+        relative == PUBLIC_FOI_RECOVERY_DOCUMENT
+        and finding.get("type") == "Base64 High Entropy String"
+        and finding.get("hashed_secret") == PUBLIC_FOI_RECOVERY_PATH_DIGEST
+    ):
+        return _is_reviewed_document(
+            relative, finding, {relative: PUBLIC_FOI_RECOVERY_SHA256}
+        )
     if relative in PUBLIC_ASSURANCE_DOCUMENTS:
         return _is_reviewed_document(relative, finding, PUBLIC_ASSURANCE_DOCUMENTS)
     allowed = {

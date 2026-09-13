@@ -110,6 +110,53 @@ def test_secret_scan_is_limited_to_git_tracked_sources(
     assert "--all-files" not in observed_command
 
 
+@pytest.mark.parametrize(
+    "change",
+    [
+        "none",
+        "windows_path",
+        "document",
+        "candidate",
+        "type",
+        "line",
+        "filename",
+        "missing",
+    ],
+)
+def test_foi_recovery_adjudication_binds_original_document_and_path(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, change: str
+) -> None:
+    """Only the reviewed archive path in the unchanged historical receipt passes."""
+    filename = supply_chain.PUBLIC_FOI_RECOVERY_DOCUMENT
+    payload = (REPOSITORY_ROOT / filename).read_bytes()
+    destination = tmp_path / filename
+    destination.parent.mkdir(parents=True)
+    destination.write_bytes(payload)
+    finding: dict[str, object] = {
+        "type": "Base64 High Entropy String",
+        "line_number": 52,
+        "hashed_secret": supply_chain.PUBLIC_FOI_RECOVERY_PATH_DIGEST,
+    }
+    monkeypatch.setattr(supply_chain, "REPOSITORY_ROOT", tmp_path)
+    if change == "document":
+        destination.write_bytes(payload + b"\n")
+    elif change == "candidate":
+        finding["hashed_secret"] = "0" * 40
+    elif change == "type":
+        finding["type"] = "Secret Keyword"
+    elif change == "line":
+        finding["line_number"] = 1
+    elif change == "filename":
+        filename = "other.json"
+    elif change == "missing":
+        destination.unlink()
+    elif change == "windows_path":
+        filename = filename.replace("/", "\\")
+    assert supply_chain.is_reviewed_public_path(filename, finding) is (
+        change in {"none", "windows_path"}
+    )
+
+
 def test_licence_gate_selects_only_a_documented_package_alternative() -> None:
     """A package-specific dual licence does not become a general GPL bypass."""
     dual = (
