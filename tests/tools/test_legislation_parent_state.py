@@ -199,7 +199,9 @@ def durable_reference(raw: bytes = b"durable") -> dict[str, Any]:
                 "evidence/migrations/corpus-legislation-nz/durable-recovery/"
                 "authority-decision-continuation-20260913.json"
             ),
-            "approval_sha256": "e81c27c71d2750cb05c1c403506839e67aebfea12daa1538077a1866e3e6ece3",
+            "approval_sha256": (
+                "e81c27c71d2750cb05c1c403506839e67aebfea12daa1538077a1866e3e6ece3"
+            ),
             "recovery_commit": "1d7408bed08c4d72fe37891757af2b152e8411df",
         },
     }
