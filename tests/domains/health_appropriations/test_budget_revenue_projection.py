@@ -12,7 +12,7 @@ from typing import Any
 import pyarrow as pa
 import pyarrow.parquet as pq
 import pytest
-from tests.domains.health_appropriations.test_budget_revenue import ROW, run, source
+from openpyxl import Workbook
 
 from archive_govt_nz.domains.health_appropriations import budget_revenue as extraction
 from archive_govt_nz.domains.health_appropriations.budget_revenue_projection import (
@@ -21,13 +21,72 @@ from archive_govt_nz.domains.health_appropriations.budget_revenue_projection imp
 )
 from archive_govt_nz.schemas.health_recordsets import recordset_schema
 
+_HEADERS = [
+    "Department",
+    "Vote",
+    "App ID",
+    "Description",
+    "Revenue Type",
+    "Amount $000",
+    "Year",
+    "Amount Type",
+]
+_ROW = [
+    "Ministry of Health",
+    "Health",
+    397,
+    "Hospital reimbursement",
+    "Non-Tax Revenue",
+    58746,
+    2021,
+    "Actuals",
+]
+_DEFINITIONS = {
+    "B3": (
+        "The Revenue workbook contains details of  actual government Crown revenue "
+        "and capital receipts for the years ended 30 June 2021, 2022, 2023 and 2024; "
+        "estimated actual government Crown revenue and capital receipts for the year "
+        "ending 30 June 2025 and budgeted government Crown revenue and capital "
+        "receipts for the year ending 30 June 2026 as published in Budget 2025."
+    ),
+    "B37": "Amount $000: Amount (in thousands) for the Year as reported in the Main Estimates.",
+    "B38": "Year: Year ending that the Amount relates to (at 30 June) as reported in the Main Estimates.",
+    "B39": 'Amount Type: "Actuals" - as audited for prior Years, "Estimated Actual" - for the Year immediately prior to the current Main Estimates, "Main Estimates" - for the Main Estimates Year.',
+    "B43": "App ID: Number used to uniquely identify each Crown revenue or capital receipt line.",
+}
+
+
+def _source(tmp_path: Path) -> Path:
+    book = Workbook()
+    raw = book.active
+    assert raw is not None
+    raw.title = "Raw Data"
+    raw.append(_HEADERS)
+    raw.append(_ROW)
+    raw.append([*_ROW[:4], "Capital Receipts", 0, 2026, "Main Estimates"])
+    explanation = book.create_sheet("Explanation")
+    for cell, text in _DEFINITIONS.items():
+        explanation[cell] = text
+    intro = book.create_sheet("Intro")
+    for cell in ("A10", "A13", "A14"):
+        intro[cell] = "Synthetic notice observation; no permission asserted."
+    book.create_sheet("Pivot Trend by Vote")["A1"] = "retained"
+    path = tmp_path / "source.xlsx"
+    book.save(path)
+    book.close()
+    return path
+
 
 def inputs(tmp_path: Path) -> dict[str, Any]:
-    original = source(
-        tmp_path, [ROW, [*ROW[:4], "Capital Receipts", 0, 2026, "Main Estimates"]]
-    )
+    original = _source(tmp_path)
     root = tmp_path / "raw"
-    receipt = run(original, root)
+    receipt = extraction.normalize_budget_revenue(
+        original,
+        root,
+        expected_sha256=hashlib.sha256(original.read_bytes()).hexdigest(),
+        source_locator="data/raw/b25-revenue-data.xlsx",
+        observed_at="2026-08-30T00:00:00Z",
+    )
     return {
         "manifest": json.loads((root / "manifest.json").read_text()),
         "manifest_sha256": hashlib.sha256(
