@@ -449,10 +449,14 @@ repository validation command. External gates block only their affected task.
   (`07029cc`; PR #273 merged `d0a36f1`, seven exact-head checks;
   61 focused tests, 100% critical coverage and recovered 110/110 cold mutants)
 
-- [ ] Add versioned fixtures for each approved Vote Health, Budget,
+- [x] Add versioned fixtures for each approved Vote Health, Budget,
   BEFU/HYEFU, Treasury fiscal, Ministry Vote Health, Pharmac CPB, CPI, wage and
   population layout before enabling its adapter. [M-06, M-07, M-11, M-12,
-  M-18; AC-05, AC-09, AC-10, AC-16]
+  M-18; AC-05, AC-09, AC-10, AC-16] The v1 fixture manifest now binds every
+  enabled local operation profile to an available layout and rejects operation
+  profiles for the still-required Budget, Vote Health and population layouts.
+  Focused fixture and source-operation tests passed; full-harness evidence is
+  recorded with this implementation checkpoint.
 - [ ] Add gap, revision, supersession, incompatible-classification and
   cross-source variance tests for multi-vintage series. [M-06, M-11, M-12,
   M-18; AC-09, AC-11, AC-16]
