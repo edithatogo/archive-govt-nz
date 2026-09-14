@@ -19,6 +19,9 @@ from archive_govt_nz.domains.health_appropriations.budget_revenue_projection imp
     RULE,
     project_budget_revenue,
 )
+from archive_govt_nz.domains.health_appropriations.budget_revenue_reader import (
+    read_verified_budget_revenue,
+)
 from archive_govt_nz.schemas.health_recordsets import recordset_schema
 
 _HEADERS = [
@@ -98,13 +101,36 @@ def inputs(tmp_path: Path) -> dict[str, Any]:
         ),
         "dispositions": pq.read_table(root / "row_dispositions.parquet"),
         "receipt": receipt,
+        "root": root,
     }
+
+
+def test_reader_requires_exact_manifest_and_payload_pins(tmp_path: Path) -> None:
+    subject = inputs(tmp_path)
+    facts, lineage, dispositions, manifest = read_verified_budget_revenue(
+        subject["root"], subject["manifest_sha256"]
+    )
+    assert facts.equals(subject["facts"])
+    assert lineage.equals(subject["lineage"])
+    assert dispositions.equals(subject["dispositions"])
+    assert manifest == subject["manifest"]
+    with pytest.raises(ValueError, match=r"^budget_revenue_package_contract$"):
+        read_verified_budget_revenue(subject["root"], "a" * 64)
 
 
 def test_projects_source_labels_without_netting(tmp_path: Path) -> None:
     subject = inputs(tmp_path)
     result = project_budget_revenue(
-        **{key: subject[key] for key in subject if key != "receipt"}
+        **{
+            key: subject[key]
+            for key in (
+                "manifest",
+                "manifest_sha256",
+                "facts",
+                "lineage",
+                "dispositions",
+            )
+        }
     )
     facts = result.tables["revenue_fact"].to_pylist()
     assert {(row["revenue_type"], row["amount"]) for row in facts} == {
@@ -136,7 +162,10 @@ def test_input_order_and_decimal_context_do_not_change_projection(
     tmp_path: Path,
 ) -> None:
     subject = inputs(tmp_path)
-    kwargs = {key: subject[key] for key in subject if key != "receipt"}
+    kwargs = {
+        key: subject[key]
+        for key in ("manifest", "manifest_sha256", "facts", "lineage", "dispositions")
+    }
     expected = project_budget_revenue(**kwargs)
     copied = deepcopy(kwargs)
     for name in ("facts", "lineage", "dispositions"):
@@ -156,7 +185,10 @@ def test_rejects_inputs_before_creating_a_canonical_table(
     tmp_path: Path, change: str
 ) -> None:
     subject = inputs(tmp_path)
-    kwargs = {key: subject[key] for key in subject if key != "receipt"}
+    kwargs = {
+        key: subject[key]
+        for key in ("manifest", "manifest_sha256", "facts", "lineage", "dispositions")
+    }
     if change == "wrong_manifest":
         kwargs["manifest"] = {**kwargs["manifest"], "rights_state": "eligible"}  # type: ignore[arg-type]
     elif change == "bad_schema":
