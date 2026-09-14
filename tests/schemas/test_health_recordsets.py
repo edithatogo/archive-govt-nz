@@ -34,6 +34,7 @@ def _fixture(name: str) -> dict[str, object]:
 NAMES = (
     "source_inventory",
     "appropriation_fact",
+    "revenue_fact",
     "health_spending_fact",
     "fiscal_context_fact",
     "pharmaceutical_budget_fact",
@@ -44,7 +45,7 @@ NAMES = (
 
 
 def test_exact_immutable_registry() -> None:
-    """Only the eight planned record sets are registered."""
+    """Only the nine planned record sets are registered."""
     assert set(RECORDSETS) == set(NAMES)
     with pytest.raises(TypeError):
         RECORDSETS["unexpected"] = pa.schema([])  # type: ignore[index]
@@ -96,7 +97,7 @@ def test_fixtures_round_trip_through_parquet(name: str) -> None:
     assert table.equals(pq.read_table(stream, schema=recordset_schema(name)))
 
 
-@pytest.mark.parametrize("name", NAMES[1:6])
+@pytest.mark.parametrize("name", NAMES[1:7])
 def test_fact_precision_preserves_known_values_and_rejects_overflow(name: str) -> None:
     """Known source precision survives; wider values fail instead of rounding."""
     field = recordset_schema(name).field("amount")
@@ -145,6 +146,10 @@ def test_unknown_profile_or_version_fails(name: str, version: str) -> None:
         (
             "appropriation_fact",
             ("vote", "appropriation", "department", "portfolio", "classification_ids"),
+        ),
+        (
+            "revenue_fact",
+            ("vote", "department", "revenue_type", "source_application_id"),
         ),
         ("health_spending_fact", ("institutional_coverage", "accounting_basis")),
         (
@@ -221,7 +226,7 @@ def test_complete_ordered_field_contract(name: str, fields: tuple[str, ...]) -> 
             "amount_type",
             "source_label",
         )
-        if name in NAMES[1:6]
+        if name in NAMES[1:7]
         else ()
     )
     assert recordset_schema(name).names == [*common, *fact, *fields]
@@ -268,6 +273,7 @@ def test_all_field_types_and_nullability(name: str) -> None:
         "source_decimal_scale": pa.int16(),
         "quality_flags": pa.list_(pa.field("element", pa.string())),
         "classification_ids": pa.list_(pa.field("element", pa.string())),
+        "source_application_id": pa.int64(),
     }
     for field in recordset_schema(name):
         assert field.nullable is (field.name not in required)

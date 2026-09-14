@@ -1,7 +1,7 @@
 {
   "fixture_version": "health-eight-recordsets/v1",
   "synthetic": true,
-  "description": "Invented transport examples, not official values, source fixity, rights evidence or canonical promotion. Merge common, fact (five facts only), recordset, then observation fields.",
+  "description": "Invented transport examples, not official values, source fixity, rights evidence or canonical promotion. Merge common, fact (six facts), recordset, then observation fields.",
   "common": {
     "schema_version": "archive-govt-nz.health-recordsets/v1",
     "domain": "health_appropriations",
@@ -52,6 +52,13 @@
       "portfolio": "Synthetic portfolio",
       "classification_ids": ["fixture:classification_dimension:0"]
     },
+    "revenue_fact": {
+      "measure": "synthetic_crown_revenue",
+      "vote": "Synthetic Health",
+      "department": "Synthetic department",
+      "revenue_type": "Synthetic non-tax revenue",
+      "source_application_id": 123
+    },
     "health_spending_fact": {
       "institutional_coverage": "synthetic_public_health",
       "accounting_basis": "synthetic_accrual"
@@ -100,6 +107,7 @@
   "source_cells": {
     "source_inventory": {"disposition": "preserved_only", "reason": "synthetic_not_acquired"},
     "appropriation_fact": {"amount": "123.450", "unit": "NZD_millions", "source_label": "Synthetic health allocation"},
+    "revenue_fact": {"amount": "123.450", "unit": "NZD_millions", "revenue_type": "Synthetic non-tax revenue"},
     "health_spending_fact": {"amount": "123.450", "unit": "NZD_millions", "accounting_basis": "synthetic_accrual"},
     "fiscal_context_fact": {"amount": "123.450", "unit": "NZD_millions", "measure": "synthetic_gdp"},
     "pharmaceutical_budget_fact": {"amount": "123.450", "unit": "NZD_millions", "funding_regime": "synthetic_regime_2025"},

@@ -22,6 +22,11 @@ _TYPES = MappingProxyType(
         pa.date32(): {"type": "string", "format": "date"},
         pa.timestamp("us", tz="UTC"): {"type": "string", "format": "date-time"},
         pa.int16(): {"type": "integer", "minimum": -32768, "maximum": 32767},
+        pa.int64(): {
+            "type": "integer",
+            "minimum": -(2**63),
+            "maximum": 2**63 - 1,
+        },
         pa.decimal128(38, 18): {
             "type": "string",
             # End assertion is portable to ECMA/Python regex and rejects a

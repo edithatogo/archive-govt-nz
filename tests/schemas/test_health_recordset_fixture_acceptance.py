@@ -25,6 +25,7 @@ FIXTURE = Path(__file__).parents[1] / "fixtures/health-eight-recordsets-v1.json"
 NAMES = (
     "source_inventory",
     "appropriation_fact",
+    "revenue_fact",
     "health_spending_fact",
     "fiscal_context_fact",
     "pharmaceutical_budget_fact",
@@ -32,7 +33,7 @@ NAMES = (
     "classification_dimension",
     "field_lineage",
 )
-FACTS = NAMES[1:6]
+FACTS = NAMES[1:7]
 
 
 def rows_for(name: str) -> list[dict[str, Any]]:

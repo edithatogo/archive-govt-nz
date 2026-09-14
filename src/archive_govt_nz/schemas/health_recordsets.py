@@ -70,6 +70,13 @@ _FIELDS = MappingProxyType(
             pa.field("portfolio", pa.string()),
             pa.field("classification_ids", pa.list_(pa.field("element", pa.string()))),
         ),
+        "revenue_fact": (
+            *_FACT,
+            pa.field("vote", pa.string()),
+            pa.field("department", pa.string()),
+            pa.field("revenue_type", pa.string()),
+            pa.field("source_application_id", pa.int64()),
+        ),
         "health_spending_fact": (
             *_FACT,
             pa.field("institutional_coverage", pa.string()),
