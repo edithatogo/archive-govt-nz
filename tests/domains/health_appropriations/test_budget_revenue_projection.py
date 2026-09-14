@@ -14,6 +14,9 @@ import pyarrow.parquet as pq
 import pytest
 from openpyxl import Workbook
 
+from archive_govt_nz.domains.health_appropriations import (
+    budget_canonical_export as budget_export,
+)
 from archive_govt_nz.domains.health_appropriations import budget_revenue as extraction
 from archive_govt_nz.domains.health_appropriations import (
     budget_revenue_canonical_export as revenue_export,
@@ -218,7 +221,11 @@ def test_local_revenue_export_bounds_a_failure_marker_write(
     def fail_readback(*_args: object) -> None:
         raise ValueError
 
-    def reject_failure_marker(root: object, name: str, payload: bytes) -> None:
+    def reject_failure_marker(
+        root: budget_export._PinnedDirectory,
+        name: str,
+        payload: bytes,
+    ) -> None:
         if name == "FAILURE.json":
             raise OSError
         write(root, name, payload)
