@@ -2,7 +2,7 @@
   "schema_version": "archive-govt-nz.health-layout-fixtures/v1",
   "purpose": "versioned structural fixtures required before health adapters are enabled",
   "families": [
-    {"family": "vote_health", "layout_id": "vote-health-estimate/v1", "status": "required", "operation_profiles": []},
+    {"family": "vote_health", "layout_id": "vote-health-estimate/v1", "status": "available", "operation_profiles": ["vote-health-supplementary-2003-04-summary/v1"]},
     {"family": "budget", "layout_id": "budget-expenditure-revenue/v1", "status": "required", "operation_profiles": []},
     {"family": "befu_hyefu", "layout_id": "befu-hyefu-health-summary/v1", "status": "available", "operation_profiles": ["befu-2026/v1", "hyefu-2025/v1"]},
     {"family": "treasury_fiscal", "layout_id": "treasury-fiscal-series/v1", "status": "available", "operation_profiles": []},

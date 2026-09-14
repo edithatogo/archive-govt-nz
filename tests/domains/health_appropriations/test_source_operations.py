@@ -120,6 +120,23 @@ def test_preflight_and_explicit_local_write(
     assert request_source.source.read_bytes() == before
 
 
+def test_vote_health_summary_profile_dispatches_to_its_allowlisted_adapter(
+    request_source: source_operations.SourceRequest, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    request = replace(
+        request_source,
+        profile="vote-health-supplementary-2003-04-summary/v1",
+        source_vintage="Treasury-Vote-Health-Supplementary-2003-04",
+    )
+    expected = {"status": "planned", "counts": {"pages": 1, "facts": 4}}
+    monkeypatch.setattr(
+        source_operations.vote_health,
+        "normalize_vote_health_summary",
+        lambda *_args, **_kwargs: expected,
+    )
+    assert source_operations.operate_source(request)["status"] == "preflight_passed"
+
+
 @pytest.mark.parametrize("family", ["pharmac", "gdp"])
 def test_extended_dispatch_preserves_source_specific_package(
     tmp_path: Path, family: str
