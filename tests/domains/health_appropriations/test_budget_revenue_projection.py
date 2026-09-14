@@ -210,6 +210,30 @@ def test_local_revenue_export_records_a_bounded_failure(
     }
 
 
+def test_local_revenue_export_supports_an_unpinned_directory(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    subject = inputs(tmp_path)
+    output = tmp_path / "output"
+    io = revenue_export._io  # noqa: SLF001 - exercises the cross-platform writer path.
+
+    def unpinned(path: Path) -> budget_export._PinnedDirectory:
+        status = path.stat()
+        return budget_export._PinnedDirectory(  # noqa: SLF001
+            path, (status.st_dev, status.st_ino), None
+        )
+
+    monkeypatch.setattr(io, "_pin", unpinned)
+    export_budget_revenue(
+        subject["root"],
+        subject["manifest_sha256"],
+        subject["original"],
+        output,
+        dry_run=False,
+    )
+    assert (output / revenue_export.MARKER).is_file()
+
+
 def test_local_revenue_export_bounds_a_failure_marker_write(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
