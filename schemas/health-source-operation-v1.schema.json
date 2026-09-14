@@ -36,7 +36,8 @@
         "befu-2026/v1",
         "hyefu-2025/v1",
         "vote-health-supplementary-2003-04-summary/v1",
-        "vote-health-supplementary-2003-04-detail/v1"
+        "vote-health-supplementary-2003-04-detail/v1",
+        "vote-health-supplementary-2003-04-revenue/v1"
       ]
     },
     "source_object_sha256": {
@@ -52,7 +53,8 @@
         "stats-nz-cpi-all-groups/v1",
         "stats-nz-gdp-current-price-expenditure-actual-2026q1/v1",
         "treasury-health-expense-summary/v1",
-        "vote-health-supplementary-summary/v1"
+        "vote-health-supplementary-summary/v1",
+        "vote-health-supplementary-revenue/v1"
       ]
     },
     "counts": {
@@ -706,6 +708,60 @@
               },
               "required": [
                 "vote_health_detail_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-supplementary-2003-04-revenue/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-supplementary-revenue/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "vote_health_revenue_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_revenue_facts.parquet",
                 "field_lineage.parquet",
                 "page_dispositions.parquet"
               ]
