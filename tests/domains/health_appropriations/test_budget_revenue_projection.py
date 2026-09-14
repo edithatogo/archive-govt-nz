@@ -15,6 +15,9 @@ import pytest
 from openpyxl import Workbook
 
 from archive_govt_nz.domains.health_appropriations import budget_revenue as extraction
+from archive_govt_nz.domains.health_appropriations.budget_revenue_canonical_export import (
+    export_budget_revenue,
+)
 from archive_govt_nz.domains.health_appropriations.budget_revenue_projection import (
     RULE,
     project_budget_revenue,
@@ -103,6 +106,7 @@ def inputs(tmp_path: Path) -> dict[str, Any]:
         "dispositions": pq.read_table(root / "row_dispositions.parquet"),
         "receipt": receipt,
         "root": root,
+        "original": original,
     }
 
 
@@ -122,6 +126,41 @@ def test_reader_requires_exact_manifest_and_payload_pins(tmp_path: Path) -> None
 def test_reader_rejects_duplicate_manifest_keys() -> None:
     with pytest.raises(ValueError, match=r"^budget_revenue_package_contract$"):
         _object([("same", 1), ("same", 2)])
+
+
+def test_local_revenue_export_is_deterministic_and_local_only(tmp_path: Path) -> None:
+    subject = inputs(tmp_path)
+    first = tmp_path / "first"
+    plan = export_budget_revenue(
+        subject["root"], subject["manifest_sha256"], subject["original"], first
+    )
+    assert plan["status"] == "planned"
+    assert not first.exists()
+    written = export_budget_revenue(
+        subject["root"],
+        subject["manifest_sha256"],
+        subject["original"],
+        first,
+        dry_run=False,
+    )
+    second = tmp_path / "second"
+    export_budget_revenue(
+        subject["root"],
+        subject["manifest_sha256"],
+        subject["original"],
+        second,
+        dry_run=False,
+    )
+    assert written["status"] == "passed"
+    assert {path.name for path in first.iterdir()} == {
+        "revenue_fact.parquet",
+        "field_lineage.parquet",
+        "projection_receipt.json",
+        "LOCAL_REVENUE.json",
+    }
+    assert {path.name: path.read_bytes() for path in first.iterdir()} == {
+        path.name: path.read_bytes() for path in second.iterdir()
+    }
 
 
 def test_projects_source_labels_without_netting(tmp_path: Path) -> None:
