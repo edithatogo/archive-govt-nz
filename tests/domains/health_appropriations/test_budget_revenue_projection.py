@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import json
 from copy import deepcopy
+from dataclasses import replace
 from decimal import Decimal, localcontext
 from pathlib import Path
 from typing import Any
@@ -237,6 +238,33 @@ def test_nominal_revenue_query_preserves_source_observations(tmp_path: Path) -> 
     }
     assert receipt["aggregation"] == "none"
     assert receipt["netting"] == "prohibited"
+
+
+def test_nominal_revenue_query_rejects_invalid_or_ambiguous_packages(
+    tmp_path: Path,
+) -> None:
+    subject = inputs(tmp_path)
+    output = tmp_path / "canonical"
+    export_budget_revenue(
+        subject["root"],
+        subject["manifest_sha256"],
+        subject["original"],
+        output,
+        dry_run=False,
+    )
+    package = CanonicalPackageInput(
+        kind="revenue",
+        root=output,
+        marker_sha256=hashlib.sha256(
+            (output / revenue_export.MARKER).read_bytes()
+        ).hexdigest(),
+        original=subject["original"],
+        raw_root=subject["root"],
+        raw_manifest_sha256=subject["manifest_sha256"],
+    )
+    for value in ((), (package, package), (replace(package, kind="budget"),)):
+        with pytest.raises(ValueError, match=r"^canonical_consumer_invalid$"):
+            query_nominal_revenue(value)
 
 
 def test_local_revenue_export_rejects_an_invalid_input_before_writing(
