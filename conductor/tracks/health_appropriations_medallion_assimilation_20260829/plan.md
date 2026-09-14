@@ -457,9 +457,13 @@ repository validation command. External gates block only their affected task.
   profiles for the still-required Budget, Vote Health and population layouts.
   Focused fixture and source-operation tests passed; full-harness evidence is
   recorded with this implementation checkpoint.
-- [ ] Add gap, revision, supersession, incompatible-classification and
+- [x] Add gap, revision, supersession, incompatible-classification and
   cross-source variance tests for multi-vintage series. [M-06, M-11, M-12,
-  M-18; AC-09, AC-11, AC-16]
+  M-18; AC-09, AC-11, AC-16] The source-family guard checkpoint combines
+  historical discovery gaps, Budget vintage isolation, period/basis variance,
+  overlapping-revision rejection and unmapped-classification contracts. These
+  guardrails preserve distinct sources and versions; they do not normalize the
+  pending source families or establish semantic equivalence.
 
 ### 5.2 Normalize direct official datasets
 
