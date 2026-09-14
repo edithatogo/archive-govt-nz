@@ -20,6 +20,7 @@ from archive_govt_nz.domains.health_appropriations.budget_revenue_projection imp
     project_budget_revenue,
 )
 from archive_govt_nz.domains.health_appropriations.budget_revenue_reader import (
+    _object,
     read_verified_budget_revenue,
 )
 from archive_govt_nz.schemas.health_recordsets import recordset_schema
@@ -116,6 +117,11 @@ def test_reader_requires_exact_manifest_and_payload_pins(tmp_path: Path) -> None
     assert manifest == subject["manifest"]
     with pytest.raises(ValueError, match=r"^budget_revenue_package_contract$"):
         read_verified_budget_revenue(subject["root"], "a" * 64)
+
+
+def test_reader_rejects_duplicate_manifest_keys() -> None:
+    with pytest.raises(ValueError, match=r"^budget_revenue_package_contract$"):
+        _object([("same", 1), ("same", 2)])
 
 
 def test_projects_source_labels_without_netting(tmp_path: Path) -> None:
