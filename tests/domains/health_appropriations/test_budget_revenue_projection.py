@@ -14,7 +14,16 @@ import pyarrow.parquet as pq
 import pytest
 from openpyxl import Workbook
 
+from archive_govt_nz.domains.health_appropriations import (
+    budget_canonical_export as budget_export,
+)
 from archive_govt_nz.domains.health_appropriations import budget_revenue as extraction
+from archive_govt_nz.domains.health_appropriations import (
+    budget_revenue_canonical_export as revenue_export,
+)
+from archive_govt_nz.domains.health_appropriations.budget_revenue_canonical_export import (
+    export_budget_revenue,
+)
 from archive_govt_nz.domains.health_appropriations.budget_revenue_projection import (
     RULE,
     project_budget_revenue,
@@ -103,6 +112,7 @@ def inputs(tmp_path: Path) -> dict[str, Any]:
         "dispositions": pq.read_table(root / "row_dispositions.parquet"),
         "receipt": receipt,
         "root": root,
+        "original": original,
     }
 
 
@@ -122,6 +132,139 @@ def test_reader_requires_exact_manifest_and_payload_pins(tmp_path: Path) -> None
 def test_reader_rejects_duplicate_manifest_keys() -> None:
     with pytest.raises(ValueError, match=r"^budget_revenue_package_contract$"):
         _object([("same", 1), ("same", 2)])
+
+
+def test_local_revenue_export_is_deterministic_and_local_only(tmp_path: Path) -> None:
+    subject = inputs(tmp_path)
+    first = tmp_path / "first"
+    plan = export_budget_revenue(
+        subject["root"], subject["manifest_sha256"], subject["original"], first
+    )
+    assert plan["status"] == "planned"
+    assert not first.exists()
+    written = export_budget_revenue(
+        subject["root"],
+        subject["manifest_sha256"],
+        subject["original"],
+        first,
+        dry_run=False,
+    )
+    second = tmp_path / "second"
+    export_budget_revenue(
+        subject["root"],
+        subject["manifest_sha256"],
+        subject["original"],
+        second,
+        dry_run=False,
+    )
+    assert written["status"] == "passed"
+    assert {path.name for path in first.iterdir()} == {
+        "revenue_fact.parquet",
+        "field_lineage.parquet",
+        "projection_receipt.json",
+        "LOCAL_REVENUE.json",
+    }
+    assert {path.name: path.read_bytes() for path in first.iterdir()} == {
+        path.name: path.read_bytes() for path in second.iterdir()
+    }
+
+
+def test_local_revenue_export_rejects_an_invalid_input_before_writing(
+    tmp_path: Path,
+) -> None:
+    subject = inputs(tmp_path)
+    output = tmp_path / "output"
+    with pytest.raises(ValueError, match=r"^budget_revenue_canonical_export_input$"):
+        export_budget_revenue(subject["root"], "a" * 64, subject["original"], output)
+    assert not output.exists()
+
+
+def test_local_revenue_export_internal_guard_is_bounded() -> None:
+    invalid = 0
+    with pytest.raises(ValueError, match=r"^budget_revenue_canonical_export_contract$"):
+        revenue_export._require(invalid)  # noqa: SLF001 - exercises local contract guard.
+
+
+def test_local_revenue_export_records_a_bounded_failure(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    subject = inputs(tmp_path)
+    output = tmp_path / "output"
+
+    def fail_readback(*_args: object) -> None:
+        raise ValueError
+
+    io = revenue_export._io  # noqa: SLF001 - exercises the exporter's write verification.
+    monkeypatch.setattr(io, "_readback", fail_readback)
+    with pytest.raises(ValueError, match=r"^budget_revenue_canonical_export_write$"):
+        export_budget_revenue(
+            subject["root"],
+            subject["manifest_sha256"],
+            subject["original"],
+            output,
+            dry_run=False,
+        )
+    assert json.loads((output / "FAILURE.json").read_text()) == {
+        "schema_version": revenue_export.SCHEMA,
+        "status": "failed",
+    }
+
+
+def test_local_revenue_export_supports_an_unpinned_directory(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    subject = inputs(tmp_path)
+    output = tmp_path / "output"
+    io = revenue_export._io  # noqa: SLF001 - exercises the cross-platform writer path.
+
+    def unpinned(path: Path) -> budget_export._PinnedDirectory:
+        status = path.stat()
+        return budget_export._PinnedDirectory(  # noqa: SLF001
+            path, (status.st_dev, status.st_ino), None
+        )
+
+    monkeypatch.setattr(io, "_pin", unpinned)
+    export_budget_revenue(
+        subject["root"],
+        subject["manifest_sha256"],
+        subject["original"],
+        output,
+        dry_run=False,
+    )
+    assert (output / revenue_export.MARKER).is_file()
+
+
+def test_local_revenue_export_bounds_a_failure_marker_write(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    subject = inputs(tmp_path)
+    output = tmp_path / "output"
+    io = revenue_export._io  # noqa: SLF001 - exercises the exporter's write boundary.
+    write = io._write  # noqa: SLF001 - retains the hardened writer for regular files.
+
+    def fail_readback(*_args: object) -> None:
+        raise ValueError
+
+    def reject_failure_marker(
+        root: budget_export._PinnedDirectory,
+        name: str,
+        payload: bytes,
+    ) -> None:
+        if name == "FAILURE.json":
+            raise OSError
+        write(root, name, payload)
+
+    monkeypatch.setattr(io, "_readback", fail_readback)
+    monkeypatch.setattr(io, "_write", reject_failure_marker)
+    with pytest.raises(ValueError, match=r"^budget_revenue_canonical_export_write$"):
+        export_budget_revenue(
+            subject["root"],
+            subject["manifest_sha256"],
+            subject["original"],
+            output,
+            dry_run=False,
+        )
+    assert not (output / "FAILURE.json").exists()
 
 
 def test_projects_source_labels_without_netting(tmp_path: Path) -> None:
