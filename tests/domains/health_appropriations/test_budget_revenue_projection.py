@@ -15,6 +15,9 @@ import pytest
 from openpyxl import Workbook
 
 from archive_govt_nz.domains.health_appropriations import budget_revenue as extraction
+from archive_govt_nz.domains.health_appropriations import (
+    budget_revenue_canonical_export as revenue_export,
+)
 from archive_govt_nz.domains.health_appropriations.budget_revenue_canonical_export import (
     export_budget_revenue,
 )
@@ -160,6 +163,47 @@ def test_local_revenue_export_is_deterministic_and_local_only(tmp_path: Path) ->
     }
     assert {path.name: path.read_bytes() for path in first.iterdir()} == {
         path.name: path.read_bytes() for path in second.iterdir()
+    }
+
+
+def test_local_revenue_export_rejects_an_invalid_input_before_writing(
+    tmp_path: Path,
+) -> None:
+    subject = inputs(tmp_path)
+    output = tmp_path / "output"
+    with pytest.raises(ValueError, match=r"^budget_revenue_canonical_export_input$"):
+        export_budget_revenue(subject["root"], "a" * 64, subject["original"], output)
+    assert not output.exists()
+
+
+def test_local_revenue_export_internal_guard_is_bounded() -> None:
+    invalid = 0
+    with pytest.raises(ValueError, match=r"^budget_revenue_canonical_export_contract$"):
+        revenue_export._require(invalid)  # noqa: SLF001 - exercises local contract guard.
+
+
+def test_local_revenue_export_records_a_bounded_failure(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    subject = inputs(tmp_path)
+    output = tmp_path / "output"
+
+    def fail_readback(*_args: object) -> None:
+        raise ValueError
+
+    io = revenue_export._io  # noqa: SLF001 - exercises the exporter's write verification.
+    monkeypatch.setattr(io, "_readback", fail_readback)
+    with pytest.raises(ValueError, match=r"^budget_revenue_canonical_export_write$"):
+        export_budget_revenue(
+            subject["root"],
+            subject["manifest_sha256"],
+            subject["original"],
+            output,
+            dry_run=False,
+        )
+    assert json.loads((output / "FAILURE.json").read_text()) == {
+        "schema_version": revenue_export.SCHEMA,
+        "status": "failed",
     }
 
 
