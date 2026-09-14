@@ -32,6 +32,11 @@ from archive_govt_nz.domains.health_appropriations.budget_revenue_reader import 
     _object,
     read_verified_budget_revenue,
 )
+from archive_govt_nz.domains.health_appropriations.local_provenance_reader import (
+    CanonicalPackageInput,
+    read_local_provenance,
+    read_verified_canonical_tables,
+)
 from archive_govt_nz.schemas.health_recordsets import recordset_schema
 
 _HEADERS = [
@@ -167,6 +172,36 @@ def test_local_revenue_export_is_deterministic_and_local_only(tmp_path: Path) ->
     assert {path.name: path.read_bytes() for path in first.iterdir()} == {
         path.name: path.read_bytes() for path in second.iterdir()
     }
+
+
+def test_local_revenue_provenance_recomputes_verified_projection(
+    tmp_path: Path,
+) -> None:
+    subject = inputs(tmp_path)
+    output = tmp_path / "canonical"
+    export_budget_revenue(
+        subject["root"],
+        subject["manifest_sha256"],
+        subject["original"],
+        output,
+        dry_run=False,
+    )
+    package = CanonicalPackageInput(
+        kind="revenue",
+        root=output,
+        marker_sha256=hashlib.sha256(
+            (output / revenue_export.MARKER).read_bytes()
+        ).hexdigest(),
+        original=subject["original"],
+        raw_root=subject["root"],
+        raw_manifest_sha256=subject["manifest_sha256"],
+    )
+    tables, receipt = read_verified_canonical_tables(package)
+    assert set(tables) == {"revenue_fact", "field_lineage"}
+    assert receipt["kind"] == "revenue"
+    inventory = read_local_provenance((package,))
+    assert inventory["packages"][0]["kind"] == "revenue"
+    assert len(inventory["inventory"]["products"]) == 2
 
 
 def test_local_revenue_export_rejects_an_invalid_input_before_writing(
