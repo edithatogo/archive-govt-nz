@@ -160,6 +160,16 @@ def test_detail_normalizer_preserves_pages_without_complete_rows(
             ]
 
     monkeypatch.setattr(vote_health, "PdfReader", lambda *_args, **_kwargs: Reader())
+    planned = vote_health.normalize_vote_health_detail(
+        source,
+        tmp_path / "planned",
+        expected_sha256="41cf6794ba4200b839c53531555f0f3998df4cbb01a4d5cb0b94e3ca5e23947d",
+        source_vintage="Treasury-Vote-Health-Supplementary-2003-04",
+        source_locator="https://example.test/supp04health.pdf",
+        observed_at="2026-08-29T19:31:00Z",
+    )
+    assert planned["status"] == "planned"
+    assert not (tmp_path / "planned").exists()
     receipt = vote_health.normalize_vote_health_detail(
         source,
         tmp_path / "detail",

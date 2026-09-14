@@ -137,6 +137,23 @@ def test_vote_health_summary_profile_dispatches_to_its_allowlisted_adapter(
     assert source_operations.operate_source(request)["status"] == "preflight_passed"
 
 
+def test_vote_health_detail_profile_dispatches_to_its_allowlisted_adapter(
+    request_source: source_operations.SourceRequest, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    request = replace(
+        request_source,
+        profile="vote-health-supplementary-2003-04-detail/v1",
+        source_vintage="Treasury-Vote-Health-Supplementary-2003-04",
+    )
+    expected = {"status": "planned", "counts": {"pages": 15, "facts": 26}}
+    monkeypatch.setattr(
+        source_operations.vote_health,
+        "normalize_vote_health_detail",
+        lambda *_args, **_kwargs: expected,
+    )
+    assert source_operations.operate_source(request)["status"] == "preflight_passed"
+
+
 @pytest.mark.parametrize("family", ["pharmac", "gdp"])
 def test_extended_dispatch_preserves_source_specific_package(
     tmp_path: Path, family: str
