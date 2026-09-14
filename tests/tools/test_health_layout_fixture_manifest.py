@@ -38,7 +38,6 @@ def test_layout_fixture_manifest_is_versioned_and_complete() -> None:
     assert {row["family"] for row in rows if row["status"] == "required"} == {
         "budget",
         "population",
-        "vote_health",
     }
     assert all(
         row["status"] == "available" or not row["operation_profiles"] for row in rows

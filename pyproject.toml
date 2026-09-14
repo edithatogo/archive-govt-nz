@@ -20,6 +20,7 @@ dependencies = [
   "duckdb>=1.4.3,<2",
   "pyarrow>=23.0.1,<26",
   "pyyaml>=6.0.3,<7",
+  "pypdf>=6,<7",
   "huggingface_hub>=0.28.0,<2",
   "openpyxl>=3.1.5,<4",
   "matplotlib>=3.10.8,<4",

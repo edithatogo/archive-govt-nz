@@ -17,6 +17,7 @@ from archive_govt_nz.domains.health_appropriations import (
     moh_indicators,
     pharmac,
     qes,
+    vote_health,
 )
 from archive_govt_nz.domains.health_appropriations.workbook_common import source_context
 
@@ -82,6 +83,12 @@ PROFILES = MappingProxyType(
             ),
             "forecast_facts.parquet",
             "cell_dispositions.parquet",
+        ),
+        "vote-health-supplementary-2003-04-summary/v1": (
+            vote_health.TRANSFORMATION,
+            ("pages", "facts"),
+            "vote_health_summary_facts.parquet",
+            "page_dispositions.parquet",
         ),
     }
 )
@@ -234,7 +241,9 @@ def _validate(request: SourceRequest, *, dry_run: bool) -> None:
     )
 
 
-def _invoke(request: SourceRequest, *, dry_run: bool) -> dict[str, Any]:
+def _invoke(  # noqa: PLR0911 - explicit allowlisted profile dispatch
+    request: SourceRequest, *, dry_run: bool
+) -> dict[str, Any]:
     context = {
         "expected_sha256": request.expected_sha256,
         "observed_at": request.observed_at,
@@ -264,6 +273,10 @@ def _invoke(request: SourceRequest, *, dry_run: bool) -> dict[str, Any]:
             profile=request.profile,
             **context,
             dry_run=dry_run,
+        )
+    if request.profile == "vote-health-supplementary-2003-04-summary/v1":
+        return vote_health.normalize_vote_health_summary(
+            request.source, request.output_dir, **context, dry_run=dry_run
         )
     profile = {
         "moh-hair2024-fig27/v1": "fig27/v1",
