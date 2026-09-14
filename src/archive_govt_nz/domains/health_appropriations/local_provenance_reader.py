@@ -31,6 +31,15 @@ from archive_govt_nz.domains.health_appropriations.budget_reader import (
     DISPOSITION_SCHEMA,
     read_verified_budget,
 )
+from archive_govt_nz.domains.health_appropriations.budget_revenue_projection import (
+    RULE as REVENUE_RULE,
+)
+from archive_govt_nz.domains.health_appropriations.budget_revenue_projection import (
+    project_budget_revenue,
+)
+from archive_govt_nz.domains.health_appropriations.budget_revenue_reader import (
+    read_verified_budget_revenue,
+)
 from archive_govt_nz.domains.health_appropriations.historical_projection import (
     project_historical,
 )
@@ -59,6 +68,7 @@ _MARKERS = {
     "historical": "LOCAL_CANONICAL.json",
     "classification": "LOCAL_CLASSIFICATION.json",
     "budget": "LOCAL_BUDGET.json",
+    "revenue": "LOCAL_REVENUE.json",
 }
 _TABLES = {
     "historical": ("health_spending_fact", "fiscal_context_fact", "field_lineage"),
@@ -68,11 +78,13 @@ _TABLES = {
         "classification_dimension",
         "field_lineage",
     ),
+    "revenue": ("revenue_fact", "field_lineage"),
 }
 _EXTRA = {
     "historical": ("lineage_accounting.json",),
     "classification": ("projection_receipt.json", "lineage_accounting.jsonl"),
     "budget": ("projection_receipt.json", "lineage_accounting.jsonl"),
+    "revenue": ("projection_receipt.json",),
 }
 
 
@@ -181,6 +193,21 @@ def _projection(value: CanonicalPackageInput) -> _Projection:
             cast("int", fixity["original_bytes"]),
             fixity,
         )
+    if value.kind == "revenue":
+        facts, lineage, dispositions, manifest = read_verified_budget_revenue(
+            value.raw_root, value.raw_manifest_sha256
+        )
+        original = verified_snapshot(
+            value.original, manifest["source_object_sha256"], max_bytes=MAX_FILE
+        )
+        result = project_budget_revenue(
+            manifest=manifest,
+            manifest_sha256=value.raw_manifest_sha256,
+            facts=facts,
+            lineage=lineage,
+            dispositions=dispositions,
+        )
+        return _Projection(result.tables, result.receipt, manifest, len(original), {})
     facts, lineage, dispositions, manifest = read_verified_budget(
         value.raw_root, value.raw_manifest_sha256
     )
@@ -297,6 +324,34 @@ def _expected_marker(
             "publication": "not_performed",
             "outputs": entries,
         }
+    if value.kind == "revenue":
+        files = []
+        for name, entry in entries.items():
+            item = {"path": name, **entry}
+            table = projection.tables.get(name.removesuffix(".parquet"))
+            if table is not None:
+                item.update(
+                    rows=table.num_rows,
+                    schema_sha256=hashlib.sha256(
+                        table.schema.serialize().to_pybytes()
+                    ).hexdigest(),
+                )
+            files.append(item)
+        return {
+            "schema_version": "archive-govt-nz.health-local-budget-revenue/v1",
+            "descriptor_state": "verify_all_files_before_use",
+            "publication_state": "local_validation_only",
+            "rights_state": "not_evaluated",
+            "publication_approval": "not_granted",
+            "self_contained_archive": False,
+            "transformation_id": REVENUE_RULE,
+            "input_manifest_sha256": value.raw_manifest_sha256,
+            "input_payload_sha256": projection.manifest["output_sha256"],
+            "source_vintage": projection.manifest["source_vintage"],
+            "original_sha256": projection.manifest["source_object_sha256"],
+            "original_bytes": projection.original_bytes,
+            "files": files,
+        }
     files = []
     for name, entry in entries.items():
         item = {"path": name, **entry}
@@ -352,7 +407,7 @@ def _package(
     _require(_encoded(_decode(snapshots[receipt_name])) == _encoded(projection.receipt))
     if value.kind == "budget":
         _require(snapshots[receipt_name] == _budget_json(projection.receipt))
-    if value.kind != "historical":
+    if value.kind in {"classification", "budget"}:
         accounting = [
             _decode(line) for line in snapshots["lineage_accounting.jsonl"].splitlines()
         ]
@@ -371,6 +426,7 @@ def _package(
         "historical": "historical-health-gdp-canonical/v1",
         "classification": CLASSIFICATION_RULE,
         "budget": BUDGET_RULE,
+        "revenue": REVENUE_RULE,
     }[value.kind]
     products = []
     for name, table in sorted(projection.tables.items()):

@@ -21,6 +21,7 @@ MAX_KEY = 305
 _HISTORICAL = "historical-health-gdp-canonical/v1"
 _CLASSIFICATION = "budget-functional-classification-source-label/v1"
 _BUDGET = "budget-appropriation-canonical/v1"
+_REVENUE = "budget-revenue-canonical/v1"
 _PROFILES = {
     _HISTORICAL: (
         {"fiscal-2024", "Fiscal-Time-Series-1972-2025"},
@@ -33,6 +34,10 @@ _PROFILES = {
     _BUDGET: (
         {"Budget-2025", "Budget-2026"},
         {"appropriation_fact", "classification_dimension", "field_lineage"},
+    ),
+    _REVENUE: (
+        {"Budget-2025", "Budget-2026"},
+        {"revenue_fact", "field_lineage"},
     ),
 }
 _RESERVED = {"CON", "PRN", "AUX", "NUL"} | {
