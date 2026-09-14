@@ -56,6 +56,25 @@ HISTORICAL_NOMINAL_SCHEMA = pa.schema(
         b"query": b"historical_nominal_source_observations",
     },
 )
+NOMINAL_REVENUE_SCHEMA = pa.schema(
+    [
+        ("source_vintage", pa.string(), False),
+        ("period_token", pa.string(), False),
+        ("amount_type", pa.string(), False),
+        ("unit", pa.string(), False),
+        ("vote", pa.string(), False),
+        ("department", pa.string(), False),
+        ("revenue_type", pa.string(), False),
+        ("source_label", pa.string(), False),
+        ("amount", pa.decimal128(38, 18), False),
+        ("input_record_id", pa.string(), False),
+        ("formula_policy", pa.string(), False),
+    ],
+    metadata={
+        b"schema_version": b"archive-govt-nz.health-canonical-consumer/v1",
+        b"query": b"nominal_revenue_source_observations",
+    },
+)
 MAX_PACKAGES = 32
 
 _QUERY = """
@@ -91,6 +110,15 @@ SELECT
     'identity_projection_no_cross_source_aggregation/v1' AS formula_policy
 FROM canonical_historical
 ORDER BY source_vintage, period_token, source_label, record_id
+"""
+_REVENUE_QUERY = """
+SELECT
+    source_vintage, period_token, amount_type, unit, vote, department,
+    revenue_type, source_label, amount, record_id AS input_record_id,
+    'identity_projection_no_expenditure_netting/v1' AS formula_policy
+FROM canonical_revenue
+ORDER BY source_vintage, period_token, amount_type, unit, vote, department,
+         revenue_type, source_label, record_id
 """
 
 
@@ -229,6 +257,82 @@ def query_historical_nominal(
             "currency_state": "source_assertion_preserved",
             "price_basis_state": "unknown",
             "period_alignment": "source_token_only",
+            "rights_state": "not_evaluated",
+            "publication": "not_performed",
+        }
+    except (
+        duckdb.Error,
+        OSError,
+        ValueError,
+        TypeError,
+        KeyError,
+        AttributeError,
+        pa.ArrowException,
+    ):
+        message = "canonical_consumer_invalid"
+        raise ValueError(message) from None
+
+
+def query_nominal_revenue(
+    packages: Sequence[CanonicalPackageInput],
+) -> tuple[pa.Table, dict[str, Any]]:
+    """Expose verified revenue observations without appropriation netting."""
+    try:
+        _require(isinstance(packages, tuple) and 0 < len(packages) <= MAX_PACKAGES)
+        tables = []
+        receipts = []
+        for package in packages:
+            _require(package.kind == "revenue")
+            canonical, receipt = read_verified_canonical_tables(package)
+            table = canonical["revenue_fact"]
+            _require(
+                table.schema.equals(
+                    recordset_schema("revenue_fact"), check_metadata=True
+                )
+            )
+            tables.append(table)
+            receipts.append(receipt)
+        combined = pa.concat_tables(tables)
+        vintages = [receipt["vintage"] for receipt in receipts]
+        _require(len(vintages) == len(set(vintages)))
+        rows = combined.to_pylist()
+        ids = [row["record_id"] for row in rows]
+        _require(len(ids) == len(set(ids)))
+        _require(
+            all(
+                isinstance(row["amount"], Decimal)
+                and row["period_token"]
+                and row["amount_type"]
+                and row["unit"]
+                and row["vote"]
+                and row["department"]
+                and row["revenue_type"]
+                and row["source_label"]
+                and row["currency"] is None
+                and row["price_basis"] is None
+                for row in rows
+            )
+        )
+        with closing(duckdb.connect(":memory:")) as database:
+            database.register("canonical_revenue", combined)
+            result = database.execute(_REVENUE_QUERY).to_arrow_table()
+        result = result.cast(NOMINAL_REVENUE_SCHEMA)
+        _require(sorted(result["input_record_id"].to_pylist()) == sorted(ids))
+        return result, {
+            "schema_version": "archive-govt-nz.health-canonical-consumer/v1",
+            "status": "verified_local_query",
+            "query": "nominal_revenue_source_observations",
+            "package_marker_sha256": sorted(
+                receipt["marker_sha256"] for receipt in receipts
+            ),
+            "input_records": len(ids),
+            "output_rows": result.num_rows,
+            "aggregation": "none",
+            "netting": "prohibited",
+            "currency_state": "unknown",
+            "price_basis_state": "unknown",
+            "period_alignment": "source_token_only",
+            "classification_mapping": "not_performed",
             "rights_state": "not_evaluated",
             "publication": "not_performed",
         }
