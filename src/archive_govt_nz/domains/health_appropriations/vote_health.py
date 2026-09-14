@@ -77,6 +77,20 @@ _ROW = re.compile(
     rf"^(?P<label>[A-Za-z][A-Za-z0-9/ ]+?)\s+(?P<a>{_AMOUNT})\s+(?P<b>{_AMOUNT})\s+"
     rf"(?P<c>{_AMOUNT})\s+(?P<d>{_AMOUNT})\s+(?P<e>{_AMOUNT})$"
 )
+_DETAIL_ROW = re.compile(
+    rf"^\s*(?P<label>[A-Za-z][A-Za-z0-9/ Māori&'().,-]+?)\s+"
+    rf"(?P<main_annual>{_AMOUNT})\s+(?P<main_other>{_AMOUNT})\s+"
+    rf"(?P<supplementary_annual>{_AMOUNT})\s+(?P<supplementary_other>{_AMOUNT})\s+"
+    rf"(?P<cumulative_annual>{_AMOUNT})\s+(?P<cumulative_other>{_AMOUNT})(?:\s+.*)?$"
+)
+_DETAIL_COLUMNS = (
+    "main_annual",
+    "main_other",
+    "supplementary_annual",
+    "supplementary_other",
+    "cumulative_annual",
+    "cumulative_other",
+)
 
 
 def _require(condition: object) -> None:
@@ -114,6 +128,33 @@ def parse_summary_page(text: str) -> list[dict[str, Any]]:
     labels = [row["appropriation_type"] for row in rows]
     _require(len(rows) >= MIN_ROWS and len(labels) == len(set(labels)))
     _require("Total Appropriations for 2003/04" in labels)
+    return rows
+
+
+def parse_detail_page(text: str) -> list[dict[str, Any]]:
+    """Extract only complete Part B1 six-column rows from a single page.
+
+    Wrapped labels and reason prose have no independent numerical admission;
+    callers retain them as source pages until a continuation-aware layout is
+    separately reviewed.
+    """
+    _require(len(text) <= MAX_TEXT and "Part B1 - Details of Appropriations" in text)
+    rows = []
+    for raw_line in text.splitlines():
+        match = _DETAIL_ROW.fullmatch(raw_line)
+        if match is None:
+            continue
+        label = match.group("label").strip()
+        _require(label not in {"Appropriations", "Annual Other"})
+        rows.append(
+            {
+                "appropriation_name": label,
+                "tokens": {column: match.group(column) for column in _DETAIL_COLUMNS},
+            }
+        )
+    _require(
+        bool(rows) and len({row["appropriation_name"] for row in rows}) == len(rows)
+    )
     return rows
 
 

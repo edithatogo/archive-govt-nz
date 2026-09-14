@@ -8,6 +8,7 @@ import pytest
 from archive_govt_nz.domains.health_appropriations import vote_health
 from archive_govt_nz.domains.health_appropriations.vote_health import (
     _amount,
+    parse_detail_page,
     parse_summary_page,
 )
 
@@ -48,6 +49,20 @@ def test_summary_parser_rejects_required_layout_markers(change: str) -> None:
 def test_amount_rejects_non_numeric_token() -> None:
     with pytest.raises(ValueError, match="vote_health_pdf_contract"):
         _amount("not-a-number")
+
+
+def test_detail_parser_requires_complete_six_column_rows() -> None:
+    text = """Part B1 - Details of Appropriations
+Sector Policy 12,459 - 110 - 12,569 - Source reason prose.
+Wrapped label without numeric columns
+Ministerial Support Services 3,097 - (497) - 2,600 - More prose.
+"""
+    rows = parse_detail_page(text)
+    assert [row["appropriation_name"] for row in rows] == [
+        "Sector Policy",
+        "Ministerial Support Services",
+    ]
+    assert rows[1]["tokens"]["supplementary_annual"] == "(497)"
 
 
 def test_normalizer_writes_local_summary_only(
