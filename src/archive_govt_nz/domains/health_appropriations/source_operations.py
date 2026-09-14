@@ -293,8 +293,6 @@ def _invoke(  # noqa: PLR0911 - explicit allowlisted profile dispatch
         )
     if request.profile == "vote-health-supplementary-2003-04-detail/v1":
         return vote_health.normalize_vote_health_detail(
-    if request.profile == "vote-health-supplementary-2003-04-detail/v1":
-        return vote_health.normalize_vote_health_detail(
             request.source, request.output_dir, **context, dry_run=dry_run
         )
     if request.profile == "vote-health-supplementary-2003-04-revenue/v1":

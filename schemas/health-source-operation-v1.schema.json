@@ -53,8 +53,8 @@
         "stats-nz-cpi-all-groups/v1",
         "stats-nz-gdp-current-price-expenditure-actual-2026q1/v1",
         "treasury-health-expense-summary/v1",
-        "vote-health-supplementary-summary/v1",
-        "vote-health-supplementary-revenue/v1"
+        "vote-health-supplementary-revenue/v1",
+        "vote-health-supplementary-summary/v1"
       ]
     },
     "counts": {
@@ -744,17 +744,17 @@
               "type": "object",
               "additionalProperties": false,
               "properties": {
+                "vote_health_revenue_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
                 "field_lineage.parquet": {
                   "type": "string",
                   "pattern": "^[0-9a-f]{64}$",
                   "maxLength": 64
                 },
                 "page_dispositions.parquet": {
-                  "type": "string",
-                  "pattern": "^[0-9a-f]{64}$",
-                  "maxLength": 64
-                },
-                "vote_health_revenue_facts.parquet": {
                   "type": "string",
                   "pattern": "^[0-9a-f]{64}$",
                   "maxLength": 64
