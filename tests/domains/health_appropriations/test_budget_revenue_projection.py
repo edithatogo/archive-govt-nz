@@ -88,9 +88,9 @@ def inputs(tmp_path: Path) -> dict[str, Any]:
         observed_at="2026-08-30T00:00:00Z",
     )
     return {
-        "manifest": json.loads((root / "manifest.json").read_text()),
+        "manifest": json.loads((root / "MANIFEST.json").read_text()),
         "manifest_sha256": hashlib.sha256(
-            (root / "manifest.json").read_bytes()
+            (root / "MANIFEST.json").read_bytes()
         ).hexdigest(),
         "facts": pq.read_table(root / "revenue_facts.parquet"),
         "lineage": pq.read_table(
