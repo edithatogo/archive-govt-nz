@@ -207,6 +207,35 @@ def test_local_revenue_export_records_a_bounded_failure(
     }
 
 
+def test_local_revenue_export_bounds_a_failure_marker_write(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    subject = inputs(tmp_path)
+    output = tmp_path / "output"
+    io = revenue_export._io  # noqa: SLF001 - exercises the exporter's write boundary.
+    write = io._write  # noqa: SLF001 - retains the hardened writer for regular files.
+
+    def fail_readback(*_args: object) -> None:
+        raise ValueError
+
+    def reject_failure_marker(root: object, name: str, payload: bytes) -> None:
+        if name == "FAILURE.json":
+            raise OSError
+        write(root, name, payload)
+
+    monkeypatch.setattr(io, "_readback", fail_readback)
+    monkeypatch.setattr(io, "_write", reject_failure_marker)
+    with pytest.raises(ValueError, match=r"^budget_revenue_canonical_export_write$"):
+        export_budget_revenue(
+            subject["root"],
+            subject["manifest_sha256"],
+            subject["original"],
+            output,
+            dry_run=False,
+        )
+    assert not (output / "FAILURE.json").exists()
+
+
 def test_projects_source_labels_without_netting(tmp_path: Path) -> None:
     subject = inputs(tmp_path)
     result = project_budget_revenue(
