@@ -1,4 +1,4 @@
-"""Fail-closed extraction of the 2003/04 Vote Health summary table.
+"""Fail-closed extraction of reviewed 2003/04 Vote Health PDF layouts.
 
 This deliberately admits only the compact Part B summary from the pinned
 Supplementary Estimates layout.  Part B1 continuation pages are a separate
@@ -91,6 +91,27 @@ _DETAIL_COLUMNS = (
     "cumulative_annual",
     "cumulative_other",
 )
+DETAIL_FACT_SCHEMA = pa.schema(
+    [
+        ("record_id", pa.string()),
+        ("schema_version", pa.string()),
+        ("recordset", pa.string()),
+        ("source_object_sha256", pa.string()),
+        ("source_observation_id", pa.string()),
+        ("source_locator", pa.string()),
+        ("source_vintage", pa.string()),
+        ("observed_at", pa.timestamp("us", tz="UTC")),
+        ("source_page", pa.int64()),
+        ("appropriation_name", pa.string()),
+        *((column, pa.decimal128(20, 3)) for column in _DETAIL_COLUMNS),
+        ("unit", pa.string()),
+        ("rights_state", pa.string()),
+        ("quality_flags", pa.list_(pa.string())),
+        ("transformation_id", pa.string()),
+        ("lineage_id", pa.string()),
+        ("raw_values_json", pa.string()),
+    ]
+)
 
 
 def _require(condition: object) -> None:
@@ -131,14 +152,19 @@ def parse_summary_page(text: str) -> list[dict[str, Any]]:
     return rows
 
 
-def parse_detail_page(text: str) -> list[dict[str, Any]]:
+def parse_detail_page(
+    text: str, *, require_heading: bool = True, require_rows: bool = True
+) -> list[dict[str, Any]]:
     """Extract only complete Part B1 six-column rows from a single page.
 
     Wrapped labels and reason prose have no independent numerical admission;
     callers retain them as source pages until a continuation-aware layout is
     separately reviewed.
     """
-    _require(len(text) <= MAX_TEXT and "Part B1 - Details of Appropriations" in text)
+    _require(
+        len(text) <= MAX_TEXT
+        and (not require_heading or "Part B1 - Details of Appropriations" in text)
+    )
     rows = []
     for raw_line in text.splitlines():
         match = _DETAIL_ROW.fullmatch(raw_line)
@@ -153,9 +179,125 @@ def parse_detail_page(text: str) -> list[dict[str, Any]]:
             }
         )
     _require(
-        bool(rows) and len({row["appropriation_name"] for row in rows}) == len(rows)
+        (bool(rows) or not require_rows)
+        and len({row["appropriation_name"] for row in rows}) == len(rows)
     )
     return rows
+
+
+def normalize_vote_health_detail(  # noqa: PLR0913 - provenance is explicit
+    source: Path,
+    output_dir: Path,
+    *,
+    expected_sha256: str,
+    source_vintage: str,
+    source_locator: str,
+    observed_at: str,
+    dry_run: bool = True,
+) -> dict[str, object]:
+    """Extract complete Part B1 rows while preserving incomplete source pages."""
+    _require(source_vintage == "Treasury-Vote-Health-Supplementary-2003-04")
+    _require(not source.is_symlink() and source.is_file())
+    _require(not output_dir.exists() and not output_dir.is_symlink())
+    context = source_context(
+        expected_sha256, source_locator, source_vintage, observed_at
+    )
+    payload = verified_snapshot(source, expected_sha256, max_bytes=MAX_BYTES)
+    reader = PdfReader(BytesIO(payload), strict=True)
+    _require(not reader.is_encrypted and 0 < len(reader.pages) <= MAX_PAGES)
+    texts = [page.extract_text(extraction_mode="plain") or "" for page in reader.pages]
+    starts = [
+        number
+        for number, text in enumerate(texts)
+        if "Part B1 - Details of Appropriations" in text and "(continued)" not in text
+    ]
+    ends = [number for number, text in enumerate(texts) if "Part E -" in text]
+    _require(len(starts) == 1 and len(ends) == 1 and starts[0] < ends[0])
+    facts: list[dict[str, object]] = []
+    lineage: list[dict[str, object]] = []
+    dispositions: list[dict[str, object]] = []
+    names: set[str] = set()
+    for index in range(starts[0], ends[0]):
+        page = index + 1
+        rows = parse_detail_page(
+            texts[index], require_heading=False, require_rows=False
+        )
+        for row in rows:
+            name, tokens = row["appropriation_name"], row["tokens"]
+            _require(name not in names)
+            names.add(name)
+            record_id = identity(TRANSFORMATION, "detail", expected_sha256, page, name)
+            facts.append(
+                {
+                    **context,
+                    "record_id": record_id,
+                    "schema_version": "archive-govt-nz.vote-health-detail/v1",
+                    "recordset": "vote_health_appropriation_detail_fact",
+                    "source_page": page,
+                    "appropriation_name": name,
+                    **{key: _amount(value) for key, value in tokens.items()},
+                    "unit": "$000",
+                    "rights_state": "not_evaluated",
+                    "quality_flags": [
+                        "complete_six_value_row_only",
+                        "dash_not_converted_to_zero",
+                        "part_b1_layout_incomplete",
+                    ],
+                    "transformation_id": TRANSFORMATION,
+                    "lineage_id": identity(record_id, "lineage"),
+                    "raw_values_json": encode_json(row),
+                }
+            )
+            for column, token in tokens.items():
+                lineage.append(
+                    {
+                        "lineage_id": identity(record_id, column),
+                        "record_id": record_id,
+                        "field": column,
+                        "source_object_sha256": expected_sha256,
+                        "source_locator": source_locator,
+                        "source_coordinate": (
+                            f"pdf:page={page};part_b1:{name};column={column}"
+                        ),
+                        "raw_value": token,
+                        "normalized_value": str(_amount(token)),
+                        "rule": "vote-health-detail-complete-row/v1",
+                    }
+                )
+        dispositions.append(
+            {
+                "source_object_sha256": expected_sha256,
+                "source_locator": source_locator,
+                "source_page": page,
+                "disposition": "partially_normalized" if rows else "preserved_only",
+                "reason": "complete_six_value_rows_only"
+                if rows
+                else "no_complete_six_value_row",
+            }
+        )
+    _require(bool(facts))
+    receipt: dict[str, object] = {
+        "schema_version": "archive-govt-nz.vote-health-detail-extraction/v1",
+        "status": "planned" if dry_run else "passed",
+        "profile": "vote-health-supplementary-2003-04-detail/v1",
+        "source_object_sha256": expected_sha256,
+        "counts": {"pages": len(dispositions), "facts": len(facts)},
+    }
+    if dry_run:
+        return receipt
+    return write_workbook_outputs(
+        output_dir,
+        {
+            "vote_health_detail_facts.parquet": pa.Table.from_pylist(
+                facts, DETAIL_FACT_SCHEMA
+            ),
+            "field_lineage.parquet": pa.Table.from_pylist(lineage, LINEAGE_SCHEMA),
+            "page_dispositions.parquet": pa.Table.from_pylist(
+                dispositions, DISPOSITION_SCHEMA
+            ),
+        },
+        receipt,
+    )
 
 
 def normalize_vote_health_summary(  # noqa: PLR0913 - provenance is explicit

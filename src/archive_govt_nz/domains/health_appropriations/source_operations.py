@@ -90,6 +90,12 @@ PROFILES = MappingProxyType(
             "vote_health_summary_facts.parquet",
             "page_dispositions.parquet",
         ),
+        "vote-health-supplementary-2003-04-detail/v1": (
+            vote_health.TRANSFORMATION,
+            ("pages", "facts"),
+            "vote_health_detail_facts.parquet",
+            "page_dispositions.parquet",
+        ),
     }
 )
 _COMMON = {
@@ -276,6 +282,10 @@ def _invoke(  # noqa: PLR0911 - explicit allowlisted profile dispatch
         )
     if request.profile == "vote-health-supplementary-2003-04-summary/v1":
         return vote_health.normalize_vote_health_summary(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile == "vote-health-supplementary-2003-04-detail/v1":
+        return vote_health.normalize_vote_health_detail(
             request.source, request.output_dir, **context, dry_run=dry_run
         )
     profile = {

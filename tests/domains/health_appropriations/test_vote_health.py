@@ -130,3 +130,54 @@ def test_normalizer_dry_run_writes_nothing(
     )
     assert receipt["status"] == "planned"
     assert not (tmp_path / "out").exists()
+
+
+def test_detail_normalizer_preserves_pages_without_complete_rows(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"source")
+
+    class Page:
+        def __init__(self, text: str) -> None:
+            self.text = text
+
+        def extract_text(self, *, extraction_mode: str) -> str:
+            assert extraction_mode == "plain"
+            return self.text
+
+    class Reader:
+        def __init__(self) -> None:
+            self.is_encrypted = False
+            self.pages = [
+                Page("front matter"),
+                Page(
+                    "Part B1 - Details of Appropriations\n"
+                    "Sector Policy 12,459 - 110 - 12,569 - reason"
+                ),
+                Page("Wrapped label only"),
+                Page("Part E - Statement of Intent"),
+            ]
+
+    monkeypatch.setattr(vote_health, "PdfReader", lambda *_args, **_kwargs: Reader())
+    receipt = vote_health.normalize_vote_health_detail(
+        source,
+        tmp_path / "detail",
+        expected_sha256="41cf6794ba4200b839c53531555f0f3998df4cbb01a4d5cb0b94e3ca5e23947d",
+        source_vintage="Treasury-Vote-Health-Supplementary-2003-04",
+        source_locator="https://example.test/supp04health.pdf",
+        observed_at="2026-08-29T19:31:00Z",
+        dry_run=False,
+    )
+    facts = pq.read_table(
+        tmp_path / "detail/vote_health_detail_facts.parquet"
+    ).to_pylist()
+    dispositions = pq.read_table(
+        tmp_path / "detail/page_dispositions.parquet"
+    ).to_pylist()
+    assert receipt["counts"] == {"pages": 2, "facts": 1}
+    assert facts[0]["supplementary_annual"] == 110
+    assert [row["disposition"] for row in dispositions] == [
+        "partially_normalized",
+        "preserved_only",
+    ]
