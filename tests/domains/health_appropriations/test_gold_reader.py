@@ -33,7 +33,7 @@ def repin(root: Path, **changes: object) -> str:
 
 def test_read_complete_package(gold: tuple[Path, str]) -> None:
     tables, manifest = reader.read_verified_gold(*gold)
-    assert len(tables) == 5
+    assert len(tables) == 6
     assert manifest["selected_facts"] == 3
     assert tables["historical_yoy.parquet"][0]["yoy_percent"] is None
 

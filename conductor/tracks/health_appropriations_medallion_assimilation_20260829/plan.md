@@ -559,9 +559,9 @@ repository validation command. External gates block only their affected task.
 - [ ] Build coverage, completeness, reconciliation, source-health,
   classification-drift and revision reports with defined thresholds. [M-13,
   S-04; AC-11]
-  The local Budget comparison now emits edition-bounded Budget versus Estimated
-  Actual diagnostics with exact input identities and explicit unverified period
-  basis; it does not close the Gold mart or coverage-report work.
+  The local raw-derived Gold export now persists an edition-bounded Budget
+  versus Estimated Actual diagnostic with exact input identities and explicit
+  unverified period basis. Coverage and quality reporting remain incomplete.
 - [ ] Generate deterministic plots, structured summaries and consumer examples
   from the same queries; make source drill-through available. [M-09, M-10,
   M-13, S-06; AC-07, AC-08]

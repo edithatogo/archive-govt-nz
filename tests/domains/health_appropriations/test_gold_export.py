@@ -28,9 +28,10 @@ def test_dry_run_and_independent_gold_builds(
         "health_spending_gdp_share.parquet": 1,
         "recent_classification_trends.parquet": 1,
         "recent_functional_breakdown.parquet": 0,
+        "budget_vs_estimated_actual.parquet": 0,
     }
     assert export.export_gold(*raw_run, two, dry_run=False) == receipt
-    assert len(list(one.iterdir())) == 8
+    assert len(list(one.iterdir())) == 9
     for path in one.iterdir():
         assert path.read_bytes() == (two / path.name).read_bytes()
     for name, digest in receipt["output_sha256"].items():
@@ -40,7 +41,47 @@ def test_dry_run_and_independent_gold_builds(
     assert yoy["yoy_status"] == "no_previous_observation"
     assert str(yoy["exact_amount"]) == "605.70000000000005000"
     assert pq.read_table(one / "recent_functional_breakdown.parquet").schema.names
+    assert pq.read_table(one / "budget_vs_estimated_actual.parquet").schema.names
     assert len((one / "field_lineage.jsonl").read_text().splitlines()) == 3
+
+
+def test_gold_package_persists_source_bounded_budget_comparison(
+    raw_run: tuple[Path, Path, str], tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    read = export.read_verified_run
+
+    def with_budget_and_estimate(
+        run: Path, store: Path, pin: str
+    ) -> tuple[dict[str, list[dict]], list[dict]]:
+        facts, lineage = read(run, store, pin)
+        base = facts["budget"][0]
+        budget = {
+            **base,
+            "record_id": "budget-comparison-budget",
+            "amount_type": "Budget",
+        }
+        actual = {
+            **base,
+            "record_id": "budget-comparison-estimate",
+            "amount_type": "Estimated Actual",
+            "amount": base["amount"] + 10,
+        }
+        facts["budget"].extend([budget, actual])
+        return facts, lineage
+
+    monkeypatch.setattr(export, "read_verified_run", with_budget_and_estimate)
+    output = tmp_path / "gold-comparison"
+    export.export_gold(*raw_run, output, dry_run=False)
+    table = pq.read_table(output / "budget_vs_estimated_actual.parquet")
+    assert table.num_rows == 1
+    row = table.to_pylist()[0]
+    assert row["budget_amount"] == 123
+    assert row["estimated_actual_amount"] == 133
+    assert row["estimated_minus_budget"] == 10
+    assert row["comparison_status"] == "both_source_labels_present"
+    assert row["period_basis"] == "unverified"
+    assert row["budget_input_record_ids"] == ["budget-comparison-budget"]
+    assert row["estimated_actual_input_record_ids"] == ["budget-comparison-estimate"]
 
 
 def test_preserve_existing_output(

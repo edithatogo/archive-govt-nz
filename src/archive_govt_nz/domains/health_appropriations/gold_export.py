@@ -12,6 +12,7 @@ import pyarrow.parquet as pq
 
 from archive_govt_nz.domains.health_appropriations.appropriation_analysis import (
     analyze_appropriations,
+    compare_budget_to_estimated_actual,
 )
 from archive_govt_nz.domains.health_appropriations.historical_analysis import (
     analyze_historical,
@@ -69,11 +70,32 @@ _BUDGET_SCHEMA = pa.schema(
         ("classification_mapping", pa.string()),
     ]
 )
+_BUDGET_COMPARISON_SCHEMA = pa.schema(
+    [
+        ("source_object_sha256", pa.string()),
+        ("source_vintage", pa.string()),
+        ("year", pa.int32()),
+        ("functional_classification", pa.string()),
+        ("department", pa.string()),
+        ("portfolio_name", pa.string()),
+        ("unit", pa.string()),
+        ("budget_amount", pa.decimal128(38, 3)),
+        ("estimated_actual_amount", pa.decimal128(38, 3)),
+        ("estimated_minus_budget", pa.decimal128(38, 3)),
+        ("comparison_status", pa.string()),
+        ("budget_input_record_ids", pa.list_(pa.string())),
+        ("estimated_actual_input_record_ids", pa.list_(pa.string())),
+        ("period_basis", pa.string()),
+        ("classification_mapping", pa.string()),
+        ("formula_policy", pa.string()),
+    ]
+)
 
 GOLD_TABLE_SCHEMAS = {
     **_SCHEMAS,
     "recent_classification_trends.parquet": _BUDGET_SCHEMA,
     "recent_functional_breakdown.parquet": _BUDGET_SCHEMA,
+    "budget_vs_estimated_actual.parquet": _BUDGET_COMPARISON_SCHEMA,
 }
 
 
@@ -119,6 +141,10 @@ def _prepare(
     )
     tables["recent_functional_breakdown.parquet"] = _table(
         budget["breakdown"], _BUDGET_SCHEMA
+    )
+    comparisons = compare_budget_to_estimated_actual(by_profile["budget"])
+    tables["budget_vs_estimated_actual.parquet"] = _table(
+        comparisons, _BUDGET_COMPARISON_SCHEMA
     )
     selected = [
         {"input_profile": name, **row}
