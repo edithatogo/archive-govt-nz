@@ -23,13 +23,16 @@ from archive_govt_nz.domains.health_appropriations.budget_revenue_adapter import
 
 
 def _revenue_workbook(
-    *, definitions: dict[str, str] | None = None, year: int = 2021
+    *,
+    definitions: dict[str, str] | None = None,
+    headers: list[str] | None = None,
+    year: int = 2021,
 ) -> bytes:
     book = Workbook()
     raw = book.active
     assert raw is not None
     raw.title = "Raw Data"
-    raw.append(list(budget_revenue.FIELDS))
+    raw.append(list(budget_revenue.FIELDS) if headers is None else headers)
     raw.append(
         [
             "Ministry of Health",
@@ -150,6 +153,20 @@ def test_revenue_adapter_rejects_unknown_layouts_and_editions() -> None:
         )
     with pytest.raises(ValueError, match="source_hash_mismatch"):
         _adapter().extract(payload, source_sha256="0" * 64)
+
+
+def test_revenue_layout_probe_rejects_unreviewed_headers_and_metadata() -> None:
+    assert not _adapter().matches_layout(_revenue_workbook(headers=["Vote", "Amount"]))
+    changed_definitions = dict(budget_revenue.DEFINITIONS)
+    changed_definitions["B3"] = "different edition text"
+    assert not _adapter().matches_layout(
+        _revenue_workbook(definitions=changed_definitions)
+    )
+
+
+def test_revenue_adapter_rejects_non_bytes_payload() -> None:
+    with pytest.raises(ValueError, match="budget_revenue_source_limit_or_type"):
+        _adapter().extract(None, source_sha256="0" * 64)  # type: ignore[arg-type]
 
 
 def test_revenue_adapter_selects_the_embedded_2026_edition() -> None:

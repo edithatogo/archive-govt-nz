@@ -6,7 +6,7 @@ import hashlib
 import re
 from dataclasses import dataclass
 from io import BytesIO
-from typing import TYPE_CHECKING, Literal
+from typing import TYPE_CHECKING, Literal, cast
 from zipfile import BadZipFile
 
 from archive_govt_nz.domains.health_appropriations.adapter_protocol import (
@@ -155,11 +155,14 @@ def _select_adapter(
             return candidate, None, considered, ()
     elif any(row.layout_probe is None for row in candidates):
         return None, "adapter_selection_ambiguous", considered, ()
-    return _probe_candidates(candidates, payload, considered)
+    probed_candidates = [
+        (row, cast("Callable[[bytes], bool]", row.layout_probe)) for row in candidates
+    ]
+    return _probe_candidates(probed_candidates, payload, considered)
 
 
 def _probe_candidates(
-    candidates: list[AdapterRegistration],
+    candidates: list[tuple[AdapterRegistration, Callable[[bytes], bool]]],
     payload: bytes,
     considered: tuple[str, ...],
 ) -> tuple[
@@ -169,10 +172,8 @@ def _probe_candidates(
     tuple[str, ...],
 ]:
     matches: list[AdapterRegistration] = []
-    for candidate in candidates:
-        if candidate.layout_probe is None:
-            return None, "adapter_selection_ambiguous", considered, ()
-        probe_result = candidate.layout_probe(payload)
+    for candidate, probe in candidates:
+        probe_result = probe(payload)
         if type(probe_result) is not bool:
             message = "invalid_layout_probe_result"
             raise TypeError(message)

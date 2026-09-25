@@ -231,6 +231,16 @@ def test_invalid_xlsx_is_returned_as_preserved_only() -> None:
     assert output.losses[0].reason == "invalid_budget_workbook"
 
 
+def test_expenditure_layout_probe_rejects_invalid_and_oversized_bytes(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    adapter = BudgetExpenditureAdapter("source", "vintage", "2026-08-30T00:00:00Z")
+    monkeypatch.setattr(budget_adapter, "_MAX_SOURCE_BYTES", 0)
+    assert not adapter.matches_layout(_workbook())
+    monkeypatch.setattr(budget_adapter, "_MAX_SOURCE_BYTES", 1024 * 1024)
+    assert not adapter.matches_layout(b"not an XLSX")
+
+
 def test_unexpected_extractor_value_error_is_not_hidden(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:

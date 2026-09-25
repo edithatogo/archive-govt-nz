@@ -2377,3 +2377,16 @@ and the required full local harness passed again: 6,894 tests, 9 skipped,
 configured mutation and supply-chain checks, and a 113-component strict SBOM.
 The updated hosted run is required to confirm the Windows fix. This incidental
 cross-platform resource-lifetime correction changes no package bytes or schema.
+
+The first Codecov patch-coverage result was below threshold because newly
+changed layout-probe rejection branches were not exercised, and the dispatcher
+contained an unreachable defensive branch. Probe typing now makes the selected
+callback non-optional after registration matching; tests cover invalid and
+oversized expenditure payloads, unreviewed revenue headers and metadata, and
+invalid revenue payload types. Combined targeted coverage across dispatch,
+Budget expenditure/revenue adapters and parser, and FOI package tests passed
+182 tests; dispatcher and revenue adapter line/branch coverage are 100%.
+The required full harness passed on this revision: 6,897 tests, 9 skipped,
+98.07% coverage, 48 schemas, 38 representative documents, parity 9/9, all
+configured mutation and supply-chain checks, and a 113-component strict SBOM.
+A new exact-head Codecov run is needed to close the patch-coverage blocker.
