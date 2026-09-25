@@ -28,6 +28,7 @@
     "profile": {
       "enum": [
         "cpiq-se9a/v1",
+        "population-annual-mean-context/v1",
         "budget-revenue-2025/v1",
         "budget-revenue-2026/v1",
         "moh-hair2024-fig27/v1",
@@ -56,6 +57,7 @@
         "qes-june2026-table8-ordinary-hourly/v1",
         "stats-nz-cpi-all-groups/v1",
         "stats-nz-gdp-current-price-expenditure-actual-2026q1/v1",
+        "stats-nz-population-annual-mean-context/v1",
         "treasury-health-expense-summary/v1",
         "vote-health-supplementary-revenue/v1",
         "vote-health-supplementary-summary/v1"
@@ -171,6 +173,80 @@
               },
               "required": [
                 "cpi_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "population-annual-mean-context/v1"
+            },
+            "transformation_id": {
+              "const": "stats-nz-population-annual-mean-context/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "numeric": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "missing": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "provisional": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "lineage": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "facts",
+                "numeric",
+                "missing",
+                "provisional",
+                "lineage"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "population_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "population_facts.parquet",
                 "field_lineage.parquet",
                 "row_dispositions.parquet"
               ]

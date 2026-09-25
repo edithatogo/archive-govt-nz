@@ -61,6 +61,7 @@ every planned record set, measure or operational workflow.
 - [Annual resident-population context profile](./population-annual-context.json)
 - [Annual population export validation receipt](./population-annual-export.validation.json)
 - [Annual population export evidence and limitations](./population-annual-export.md)
+- [Annual population context Silver package](./population-annual-silver.md)
 - [Raw historical Health/GDP extraction and reconciliation](./raw-historical.md)
 - [Preserved fiscal 1972–2025 successor pilot](./fiscal-2025-pilot.md)
 - [Original-workbook orchestration](./raw-rebuild.md)
@@ -143,11 +144,10 @@ expanded normalization/analytics and operational/recovery coverage. Consult
 [the plan](./plan.md) for individual pending tasks; do not infer their completion
 from publication or green CI.
 
-The annual Stats NZ DPE056AA mean-year-ended export is now preserved in the
-external Bronze CAS with a strict exact-layout validator and bounded receipt.
-It improves population-source coverage only: resource rights, historical
-vintage coverage and denominator approval remain open, and no per-capita Gold
-measure is admitted.
+The annual Stats NZ DPE056AA mean-year-ended export is preserved in external
+Bronze CAS and admitted to a typed, context-only Silver package with facts,
+lineage and row dispositions. Rights, historical vintage coverage and
+denominator approval remain open; no per-capita Gold measure is admitted.
 
 Donor retirement remains outside this track (W-02). The donor was observed
 unarchived on 2026-08-30. Originals and the existing published candidate are not

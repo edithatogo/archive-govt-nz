@@ -17,6 +17,7 @@ from archive_govt_nz.domains.health_appropriations import (
     gdp,
     moh_indicators,
     pharmac,
+    population_annual_silver,
     qes,
     vote_health,
     vote_health_revenue,
@@ -31,6 +32,12 @@ PROFILES = MappingProxyType(
             cpi.TRANSFORMATION,
             ("input", "selected", "numeric", "missing", "unselected"),
             "cpi_facts.parquet",
+            "row_dispositions.parquet",
+        ),
+        "population-annual-mean-context/v1": (
+            population_annual_silver.TRANSFORMATION,
+            ("input", "facts", "numeric", "missing", "provisional", "lineage"),
+            "population_facts.parquet",
             "row_dispositions.parquet",
         ),
         "budget-revenue-2025/v1": (
@@ -276,7 +283,7 @@ def _validate(request: SourceRequest, *, dry_run: bool) -> None:
         raise ValueError(_INVALID_SOURCE_OPERATION)
 
 
-def _invoke(  # noqa: PLR0911 - explicit allowlisted profile dispatch
+def _invoke(  # noqa: C901, PLR0911 - explicit allowlisted profile dispatch
     request: SourceRequest, *, dry_run: bool
 ) -> dict[str, Any]:
     context = {
@@ -294,6 +301,10 @@ def _invoke(  # noqa: PLR0911 - explicit allowlisted profile dispatch
         )
     if request.profile == "cpiq-se9a/v1":
         return cpi.normalize_cpi(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile == "population-annual-mean-context/v1":
+        return population_annual_silver.normalize_population_annual(
             request.source, request.output_dir, **context, dry_run=dry_run
         )
     if request.profile == "qes-june2026-table8/v1":
