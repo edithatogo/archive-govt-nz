@@ -15,6 +15,7 @@ from archive_govt_nz.domains.health_appropriations.budget_revenue import (
     DISPOSITION_SCHEMA,
     FACT_SCHEMA,
     TRANSFORMATION,
+    TRANSFORMATION_2026,
 )
 from archive_govt_nz.domains.health_appropriations.silver import LINEAGE_SCHEMA
 from archive_govt_nz.domains.health_appropriations.workbook_common import (
@@ -85,7 +86,7 @@ def read_verified_budget_revenue(
             manifest["schema_version"]
             == "archive-govt-nz.health-budget-revenue-extraction/v1"
         )
-        _require(manifest["transformation_id"] == TRANSFORMATION)
+        _require(manifest["transformation_id"] in {TRANSFORMATION, TRANSFORMATION_2026})
         _require(manifest["status"] in {"passed", "partial"})
         _require(manifest["rights_state"] == "not_evaluated")
         _require(set(manifest["output_sha256"]) == set(SCHEMAS))

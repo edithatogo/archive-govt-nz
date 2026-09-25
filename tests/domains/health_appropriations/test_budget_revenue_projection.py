@@ -77,18 +77,34 @@ _DEFINITIONS = {
     "B39": 'Amount Type: "Actuals" - as audited for prior Years, "Estimated Actual" - for the Year immediately prior to the current Main Estimates, "Main Estimates" - for the Main Estimates Year.',
     "B43": "App ID: Number used to uniquely identify each Crown revenue or capital receipt line.",
 }
+_DEFINITIONS_2026 = {
+    **_DEFINITIONS,
+    "B3": (
+        "The Revenue workbook contains details of actual government Crown revenue "
+        "and capital receipts for the years ended 30 June 2022, 2023, 2024 and 2025; "
+        "estimated actual government Crown revenue and capital receipts for the year "
+        "ending 30 June 2026 and budgeted government Crown revenue and capital "
+        "receipts for the year ending 30 June 2027 as published in Budget 2026."
+    ),
+}
 
 
-def _source(tmp_path: Path) -> Path:
+def _source(tmp_path: Path, *, vintage: str = "Budget-2025") -> Path:
     book = Workbook()
     raw = book.active
     assert raw is not None
     raw.title = "Raw Data"
     raw.append(_HEADERS)
-    raw.append(_ROW)
-    raw.append([*_ROW[:4], "Capital Receipts", 0, 2026, "Main Estimates"])
+    if vintage == "Budget-2026":
+        raw.append([*_ROW[:5], 58746, 2022, "Actuals"])
+        raw.append([*_ROW[:5], 12345, 2026, "Estimated Actual"])
+        raw.append([*_ROW[:4], "Capital Receipts", 0, 2027, "Main Estimates"])
+    else:
+        raw.append(_ROW)
+        raw.append([*_ROW[:4], "Capital Receipts", 0, 2026, "Main Estimates"])
     explanation = book.create_sheet("Explanation")
-    for cell, text in _DEFINITIONS.items():
+    definitions = _DEFINITIONS_2026 if vintage == "Budget-2026" else _DEFINITIONS
+    for cell, text in definitions.items():
         explanation[cell] = text
     intro = book.create_sheet("Intro")
     for cell in ("A10", "A13", "A14"):
@@ -100,15 +116,20 @@ def _source(tmp_path: Path) -> Path:
     return path
 
 
-def inputs(tmp_path: Path) -> dict[str, Any]:
-    original = _source(tmp_path)
+def inputs(tmp_path: Path, *, vintage: str = "Budget-2025") -> dict[str, Any]:
+    original = _source(tmp_path, vintage=vintage)
     root = tmp_path / "raw"
     receipt = extraction.normalize_budget_revenue(
         original,
         root,
         expected_sha256=hashlib.sha256(original.read_bytes()).hexdigest(),
-        source_locator="data/raw/b25-revenue-data.xlsx",
+        source_locator=(
+            "https://budget.govt.nz/budget/excel/data/b26-revenue-data.xlsx"
+            if vintage == "Budget-2026"
+            else "data/raw/b25-revenue-data.xlsx"
+        ),
         observed_at="2026-08-30T00:00:00Z",
+        source_vintage=vintage,
     )
     return {
         "manifest": json.loads((root / "MANIFEST.json").read_text()),
@@ -207,6 +228,43 @@ def test_local_revenue_provenance_recomputes_verified_projection(
     inventory = read_local_provenance((package,))
     assert inventory["packages"][0]["kind"] == "revenue"
     assert len(inventory["inventory"]["products"]) == 2
+
+
+def test_budget_2026_revenue_roundtrips_through_canonical_query(
+    tmp_path: Path,
+) -> None:
+    subject = inputs(tmp_path, vintage="Budget-2026")
+    output = tmp_path / "canonical-2026"
+    export_budget_revenue(
+        subject["root"],
+        subject["manifest_sha256"],
+        subject["original"],
+        output,
+        dry_run=False,
+    )
+    package = CanonicalPackageInput(
+        kind="revenue",
+        root=output,
+        marker_sha256=hashlib.sha256(
+            (output / revenue_export.MARKER).read_bytes()
+        ).hexdigest(),
+        original=subject["original"],
+        raw_root=subject["root"],
+        raw_manifest_sha256=subject["manifest_sha256"],
+    )
+    tables, verified = read_verified_canonical_tables(package)
+    assert verified["vintage"] == "Budget-2026"
+    facts = tables["revenue_fact"].to_pylist()
+    assert {row["period_token"] for row in facts} == {"2022", "2026", "2027"}
+    assert {row["amount_type"] for row in facts} == {
+        "Actuals",
+        "Estimated Actual",
+        "Main Estimates",
+    }
+    query, receipt = query_nominal_revenue((package,))
+    assert query.num_rows == 3
+    assert receipt["input_records"] == 3
+    assert receipt["netting"] == "prohibited"
 
 
 def test_nominal_revenue_query_preserves_source_observations(tmp_path: Path) -> None:

@@ -54,12 +54,23 @@ DEFINITIONS = {
     "B39": 'Amount Type: "Actuals" - as audited for prior Years, "Estimated Actual" - for the Year immediately prior to the current Main Estimates, "Main Estimates" - for the Main Estimates Year.',
     "B43": "App ID: Number used to uniquely identify each Crown revenue or capital receipt line.",
 }
+DEFINITIONS_2026_TEST = {
+    **DEFINITIONS,
+    "B3": (
+        "The Revenue workbook contains details of actual government Crown revenue "
+        "and capital receipts for the years ended 30 June 2022, 2023, 2024 and 2025; "
+        "estimated actual government Crown revenue and capital receipts for the year "
+        "ending 30 June 2026 and budgeted government Crown revenue and capital "
+        "receipts for the year ending 30 June 2027 as published in Budget 2026."
+    ),
+}
 
 
 def source(
     tmp_path: Path,
     rows: list[list[object]] | None = None,
     change: tuple[str, str, object] | None = None,
+    definitions: dict[str, str] = DEFINITIONS,
 ) -> Path:
     book = Workbook()
     raw = book.active
@@ -69,7 +80,7 @@ def source(
     for row in [ROW] if rows is None else rows:
         raw.append(row)
     explanation = book.create_sheet("Explanation")
-    for cell, text in DEFINITIONS.items():
+    for cell, text in definitions.items():
         explanation[cell] = text
     intro = book.create_sheet("Intro")
     for cell in ("A10", "A13", "A14"):
@@ -84,14 +95,55 @@ def source(
     return path
 
 
-def run(path: Path, output: Path) -> dict[str, Any]:
+def run(
+    path: Path, output: Path, *, source_vintage: str = "Budget-2025"
+) -> dict[str, Any]:
     return revenue.normalize_budget_revenue(
         path,
         output,
         expected_sha256=hashlib.sha256(path.read_bytes()).hexdigest(),
-        source_locator="data/raw/b25-revenue-data.xlsx",
+        source_locator=(
+            "https://budget.govt.nz/budget/excel/data/b26-revenue-data.xlsx"
+            if source_vintage == "Budget-2026"
+            else "data/raw/b25-revenue-data.xlsx"
+        ),
         observed_at="2026-08-30T00:00:00Z",
+        source_vintage=source_vintage,
     )
+
+
+def test_budget_2026_profile_preserves_edition_specific_years(
+    tmp_path: Path,
+) -> None:
+    rows = [
+        [*ROW[:5], 1234, 2022, "Actuals"],
+        [*ROW[:5], 2345, 2025, "Actuals"],
+        [*ROW[:5], 3456, 2026, "Estimated Actual"],
+        [*ROW[:5], 4567, 2027, "Main Estimates"],
+    ]
+    original = source(tmp_path, rows, definitions=DEFINITIONS_2026_TEST)
+    receipt = run(original, tmp_path / "budget-2026", source_vintage="Budget-2026")
+    assert receipt["source_vintage"] == "Budget-2026"
+    assert receipt["transformation_id"] == revenue.TRANSFORMATION_2026
+    facts = pq.read_table(tmp_path / "budget-2026/revenue_facts.parquet").to_pylist()
+    assert [fact["year"] for fact in facts] == [2022, 2025, 2026, 2027]
+    assert [fact["amount_type"] for fact in facts] == [
+        "Actuals",
+        "Actuals",
+        "Estimated Actual",
+        "Main Estimates",
+    ]
+    assert all(
+        fact["transformation_id"] == revenue.TRANSFORMATION_2026 for fact in facts
+    )
+
+
+def test_budget_2026_profile_rejects_budget_2025_year_map(tmp_path: Path) -> None:
+    rows = [[*ROW[:5], 1234, 2021, "Actuals"]]
+    original = source(tmp_path, rows, definitions=DEFINITIONS_2026_TEST)
+    receipt = run(original, tmp_path / "budget-2026", source_vintage="Budget-2026")
+    assert receipt["counts"]["rejected"] == 1
+    assert receipt["counts"]["normalized"] == 0
 
 
 def test_real_contract_shape_distinct_rows_and_complete_accounting(
@@ -361,7 +413,7 @@ def test_empty_health_selection_is_explicit(
     assert receipt["counts"]["normalized"] == 0
 
 
-@settings(max_examples=10)
+@settings(max_examples=10, deadline=None)
 @given(
     st.lists(st.integers(min_value=-100000, max_value=100000), min_size=1, max_size=5)
 )

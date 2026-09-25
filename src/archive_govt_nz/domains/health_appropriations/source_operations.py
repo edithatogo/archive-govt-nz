@@ -11,6 +11,7 @@ from urllib.parse import urlsplit
 from jsonschema import Draft202012Validator
 
 from archive_govt_nz.domains.health_appropriations import (
+    budget_revenue,
     cpi,
     forecast,
     gdp,
@@ -23,12 +24,25 @@ from archive_govt_nz.domains.health_appropriations import (
 from archive_govt_nz.domains.health_appropriations.workbook_common import source_context
 
 MAX_CONTEXT = 2048
+_INVALID_SOURCE_OPERATION = "invalid_source_operation"
 PROFILES = MappingProxyType(
     {
         "cpiq-se9a/v1": (
             cpi.TRANSFORMATION,
             ("input", "selected", "numeric", "missing", "unselected"),
             "cpi_facts.parquet",
+            "row_dispositions.parquet",
+        ),
+        "budget-revenue-2025/v1": (
+            budget_revenue.TRANSFORMATION,
+            ("input", "normalized", "out_of_scope", "blank", "rejected"),
+            "revenue_facts.parquet",
+            "row_dispositions.parquet",
+        ),
+        "budget-revenue-2026/v1": (
+            budget_revenue.TRANSFORMATION_2026,
+            ("input", "normalized", "out_of_scope", "blank", "rejected"),
+            "revenue_facts.parquet",
             "row_dispositions.parquet",
         ),
         "moh-hair2024-fig27/v1": (
@@ -105,6 +119,10 @@ PROFILES = MappingProxyType(
         ),
     }
 )
+_REVENUE_VINTAGES = {
+    "budget-revenue-2025/v1": "Budget-2025",
+    "budget-revenue-2026/v1": "Budget-2026",
+}
 _COMMON = {
     "schema_version": "archive-govt-nz.health-source-operation/v1",
     "verification_scope": "adapter_execution_only",
@@ -252,6 +270,10 @@ def _validate(request: SourceRequest, *, dry_run: bool) -> None:
         request.source_vintage,
         request.observed_at,
     )
+    if request.profile in _REVENUE_VINTAGES and (
+        request.source_vintage != _REVENUE_VINTAGES[request.profile]
+    ):
+        raise ValueError(_INVALID_SOURCE_OPERATION)
 
 
 def _invoke(  # noqa: PLR0911 - explicit allowlisted profile dispatch
@@ -263,6 +285,13 @@ def _invoke(  # noqa: PLR0911 - explicit allowlisted profile dispatch
         "source_vintage": request.source_vintage,
         "source_locator": request.source_locator,
     }
+    if request.profile in _REVENUE_VINTAGES:
+        return budget_revenue.normalize_budget_revenue(
+            request.source,
+            request.output_dir,
+            **context,
+            dry_run=dry_run,
+        )
     if request.profile == "cpiq-se9a/v1":
         return cpi.normalize_cpi(
             request.source, request.output_dir, **context, dry_run=dry_run

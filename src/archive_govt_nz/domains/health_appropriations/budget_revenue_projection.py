@@ -16,9 +16,8 @@ import pyarrow as pa
 from archive_govt_nz.domains.health_appropriations.budget_revenue import (
     DISPOSITION_SCHEMA,
     FACT_SCHEMA,
-)
-from archive_govt_nz.domains.health_appropriations.budget_revenue import (
-    TRANSFORMATION as SOURCE_RULE,
+    TRANSFORMATION,
+    TRANSFORMATION_2026,
 )
 from archive_govt_nz.domains.health_appropriations.silver import LINEAGE_SCHEMA
 from archive_govt_nz.schemas.health_recordsets import recordset_schema
@@ -107,7 +106,7 @@ def project_budget_revenue(
     try:
         _require(isinstance(manifest_sha256, str) and len(manifest_sha256) == 64)
         _require(manifest["schema_version"] == _MANIFEST)
-        _require(manifest["transformation_id"] == SOURCE_RULE)
+        _require(manifest["transformation_id"] in {TRANSFORMATION, TRANSFORMATION_2026})
         _require(manifest["rights_state"] == "not_evaluated")
         _require(manifest["status"] in {"passed", "partial"})
         _require(
@@ -155,7 +154,7 @@ def project_budget_revenue(
             )
             _require(row["schema_version"] == _SOURCE_VERSION)
             _require(row["recordset"] == "budget_revenue_fact")
-            _require(row["transformation_id"] == SOURCE_RULE)
+            _require(row["transformation_id"] == manifest["transformation_id"])
             _require(row["revenue_type"] in {"Non-Tax Revenue", "Capital Receipts"})
             links = by_record[row["record_id"]]
             _require(
