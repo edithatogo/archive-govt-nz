@@ -18,6 +18,7 @@ from archive_govt_nz.domains.health_appropriations import (
     pharmac,
     qes,
     vote_health,
+    vote_health_revenue,
 )
 from archive_govt_nz.domains.health_appropriations.workbook_common import source_context
 
@@ -94,6 +95,12 @@ PROFILES = MappingProxyType(
             vote_health.TRANSFORMATION,
             ("pages", "facts"),
             "vote_health_detail_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        "vote-health-supplementary-2003-04-revenue/v1": (
+            vote_health_revenue.TRANSFORMATION,
+            ("pages", "facts"),
+            "vote_health_revenue_facts.parquet",
             "page_dispositions.parquet",
         ),
     }
@@ -286,6 +293,10 @@ def _invoke(  # noqa: PLR0911 - explicit allowlisted profile dispatch
         )
     if request.profile == "vote-health-supplementary-2003-04-detail/v1":
         return vote_health.normalize_vote_health_detail(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile == "vote-health-supplementary-2003-04-revenue/v1":
+        return vote_health_revenue.normalize_vote_health_revenue(
             request.source, request.output_dir, **context, dry_run=dry_run
         )
     profile = {
