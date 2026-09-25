@@ -6,7 +6,7 @@ import hashlib
 import re
 from dataclasses import dataclass
 from io import BytesIO
-from typing import Literal
+from typing import TYPE_CHECKING, Literal
 from zipfile import BadZipFile
 
 from archive_govt_nz.domains.health_appropriations.adapter_protocol import (
@@ -15,6 +15,9 @@ from archive_govt_nz.domains.health_appropriations.adapter_protocol import (
     preserved_only,
 )
 from archive_govt_nz.domains.health_appropriations.formats import inventory_workbook
+
+if TYPE_CHECKING:
+    from collections.abc import Callable
 
 MediaType = str
 
@@ -37,6 +40,7 @@ class AdapterRegistration:
     version: str
     media_type: MediaType
     adapter: HealthAdapter
+    layout_probe: Callable[[bytes], bool] | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -51,6 +55,8 @@ class AdapterSelection:
     adapter_version: str | None
     status: Literal["selected", "preserved_only"]
     reason: str | None
+    considered_adapter_ids: tuple[str, ...] = ()
+    matched_adapter_ids: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True, slots=True)
@@ -113,6 +119,7 @@ def _validate_inputs(
             or not item.version.strip()
             or item.media_type not in _MEDIA_TYPES
             or item.adapter_id in ids
+            or (item.layout_probe is not None and not callable(item.layout_probe))
         ):
             message = "invalid_adapter_registration"
             raise ValueError(message)
@@ -121,18 +128,62 @@ def _validate_inputs(
 
 
 def _select_adapter(
-    declared: str, detected: str | None, registrations: tuple[AdapterRegistration, ...]
-) -> tuple[AdapterRegistration | None, str | None]:
+    declared: str,
+    detected: str | None,
+    payload: bytes,
+    registrations: tuple[AdapterRegistration, ...],
+) -> tuple[
+    AdapterRegistration | None,
+    str | None,
+    tuple[str, ...],
+    tuple[str, ...],
+]:
     if detected is None:
-        return None, "unrecognized_or_invalid_payload"
+        return None, "unrecognized_or_invalid_payload", (), ()
     if detected != declared:
-        return None, "declared_media_type_mismatch"
-    candidates = [row for row in registrations if row.media_type == detected]
+        return None, "declared_media_type_mismatch", (), ()
+    candidates = sorted(
+        (row for row in registrations if row.media_type == detected),
+        key=lambda row: row.adapter_id,
+    )
     if not candidates:
-        return None, "no_registered_adapter"
-    if len(candidates) != 1:
-        return None, "adapter_selection_ambiguous"
-    return candidates[0], None
+        return None, "no_registered_adapter", (), ()
+    considered = tuple(row.adapter_id for row in candidates)
+    if len(candidates) == 1:
+        candidate = candidates[0]
+        if candidate.layout_probe is None:
+            return candidate, None, considered, ()
+    elif any(row.layout_probe is None for row in candidates):
+        return None, "adapter_selection_ambiguous", considered, ()
+    return _probe_candidates(candidates, payload, considered)
+
+
+def _probe_candidates(
+    candidates: list[AdapterRegistration],
+    payload: bytes,
+    considered: tuple[str, ...],
+) -> tuple[
+    AdapterRegistration | None,
+    str | None,
+    tuple[str, ...],
+    tuple[str, ...],
+]:
+    matches: list[AdapterRegistration] = []
+    for candidate in candidates:
+        if candidate.layout_probe is None:
+            return None, "adapter_selection_ambiguous", considered, ()
+        probe_result = candidate.layout_probe(payload)
+        if type(probe_result) is not bool:
+            message = "invalid_layout_probe_result"
+            raise TypeError(message)
+        if probe_result:
+            matches.append(candidate)
+    matched_ids = tuple(row.adapter_id for row in matches)
+    if not matches:
+        return None, "no_matching_layout", considered, matched_ids
+    if len(matches) != 1:
+        return None, "adapter_selection_ambiguous", considered, matched_ids
+    return matches[0], None, considered, matched_ids
 
 
 def dispatch_bronze(
@@ -151,7 +202,9 @@ def dispatch_bronze(
     """
     actual = _validate_inputs(bronze, source_sha256, registrations)
     detected = _detect(bronze, media_type) if media_type in _MEDIA_TYPES else None
-    selected, reason = _select_adapter(media_type, detected, registrations)
+    selected, reason, considered, matched = _select_adapter(
+        media_type, detected, bronze, registrations
+    )
 
     if selected is None:
         output = preserved_only(
@@ -167,6 +220,8 @@ def dispatch_bronze(
             None,
             "preserved_only",
             reason,
+            considered,
+            matched,
         )
         return DispatchResult(selection, output)
 
@@ -183,5 +238,7 @@ def dispatch_bronze(
         selected.version,
         "selected",
         None,
+        considered,
+        matched,
     )
     return DispatchResult(selection, output)
