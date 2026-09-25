@@ -162,3 +162,5 @@ they are not current-state assertions.
 
 - [Normalization and SQLite checkpoint integration](./normalization-checkpoint-integration-20260913.md)
 - [Preserved final normalization checkpoint](./normalization-admission-checkpoint-20260906.json)
+- [Bronze checkpoint durability contracts](./bronze-checkpoint-contracts.md)
+- [POSIX directory durability validation receipt](./checkpoint-directory-durability.json)

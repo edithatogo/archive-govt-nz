@@ -1,0 +1,28 @@
+{
+  "schema_version": "archive-govt-nz.health-checkpoint-directory-durability/v1",
+  "date": "2026-09-26",
+  "base_commit": "c6074fbdf01414b16553c44334ad3a5acd8c1be5",
+  "task": "Phase 2.1 / M-03 / M-15 / AC-13",
+  "scope": "fsync checkpoint parent after atomic replacement on POSIX",
+  "focused_command": "uv run --locked pytest -q tests/domains/health_appropriations/test_capture_checkpoint.py",
+  "focused_tests_passed": 33,
+  "red_test": "test_checkpoint_fsyncs_parent_after_atomic_replace failed before implementation because _fsync_directory was absent",
+  "static_checks": {
+    "ruff": "passed",
+    "ruff_format": "passed",
+    "basedpyright": "passed"
+  },
+  "full_validation_command": "./scripts/validate.sh",
+  "full_validation": "completed through all configured gates, including pytest, mutation, security and supply-chain checks",
+  "pytest_collected": 6866,
+  "sbom_components": 113,
+  "source_sha256": {
+    "tools/capture_health_resources.py": "da479db5e8989f35a1a830502b661683defe3bc742d937f1b0f0d6ea0149e937",
+    "tests/domains/health_appropriations/test_capture_checkpoint.py": "74f3aea7afa3f8d491638a40a98ac26137c287ba2cc84948f36d0eebd6c1b276"
+  },
+  "platform_boundary": "Windows skips directory fsync; rename power-loss durability is not claimed there",
+  "external_acquisition": false,
+  "rights_promotion": false,
+  "hosted_checks": "pending",
+  "task_complete": false
+}

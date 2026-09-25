@@ -2250,3 +2250,16 @@ Reconciled the remaining worktree checkpoint onto current main. Published its
 source branch for independent provenance, verified it through a fresh fetch,
 and retained the original checkpoint bytes. Focused validation passed; the PR
 records full harness and hosted results. No production or source-payload change.
+
+## 2026-09-26 — POSIX checkpoint directory durability
+
+For Phase 2.1 / M-03, M-15 / AC-13, added parent-directory `fsync` after
+atomic checkpoint replacement on POSIX. A new ordering contract first failed
+because `_write` did not sync the directory, then passed after the change. The
+focused checkpoint suite passed 33 tests; Ruff lint/format and basedpyright
+passed. `./scripts/validate.sh` completed through every gate, including the
+full 6,866-item pytest collection, configured mutation checks and final
+113-component SBOM. No hosted checks have run yet. Windows still skips
+directory `fsync`, so rename power-loss durability is not claimed there. See
+`bronze-checkpoint-contracts.md` and
+`checkpoint-directory-durability.json`.
