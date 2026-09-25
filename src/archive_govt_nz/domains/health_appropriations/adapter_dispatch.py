@@ -209,32 +209,26 @@ def _probe_candidates(
     return matches[0], None, considered, matched_ids
 
 
-def dispatch_bronze(
+def select_bronze_adapter(
     bronze: bytes,
     *,
     source_sha256: str,
     media_type: str,
     registrations: tuple[AdapterRegistration, ...],
-) -> DispatchResult:
-    """Run only an explicitly registered adapter matching verified bytes.
+) -> AdapterSelection:
+    """Select an adapter without extraction and return hash-bound evidence.
 
     A missing handler, malformed media type, unrecognized payload, or type
-    mismatch yields a located ``preserved_only`` disposition. This router does
-    not interpret CSV dialects, workbook layouts, PDF tables, or SQLite facts.
-    Those semantics belong to the registered adapter and its own contracts.
+    mismatch yields a ``preserved_only`` decision. Layout semantics remain
+    bounded by the explicitly registered probes.
     """
     actual = _validate_inputs(bronze, source_sha256, registrations)
     detected = _detect(bronze, media_type) if media_type in _MEDIA_TYPES else None
     selected, reason, considered, matched = _select_adapter(
         media_type, detected, bronze, registrations
     )
-
     if selected is None:
-        output = preserved_only(
-            source_coordinate="bronze:sha256:" + actual,
-            reason=reason or "no_registered_adapter",
-        )
-        selection = AdapterSelection(
+        return AdapterSelection(
             "archive-govt-nz.health-adapter-selection/v1",
             actual,
             media_type,
@@ -246,13 +240,7 @@ def dispatch_bronze(
             considered,
             matched,
         )
-        return DispatchResult(selection, output)
-
-    output = selected.adapter.extract(bronze, source_sha256=actual)
-    if type(output) is not AdapterOutput:
-        message = "invalid_adapter_output"
-        raise TypeError(message)
-    selection = AdapterSelection(
+    return AdapterSelection(
         "archive-govt-nz.health-adapter-selection/v1",
         actual,
         media_type,
@@ -264,4 +252,36 @@ def dispatch_bronze(
         considered,
         matched,
     )
+
+
+def dispatch_bronze(
+    bronze: bytes,
+    *,
+    source_sha256: str,
+    media_type: str,
+    registrations: tuple[AdapterRegistration, ...],
+) -> DispatchResult:
+    """Run the adapter selected by the hash-bound, fail-closed preflight."""
+    selection = select_bronze_adapter(
+        bronze,
+        source_sha256=source_sha256,
+        media_type=media_type,
+        registrations=registrations,
+    )
+    if selection.status == "preserved_only":
+        output = preserved_only(
+            source_coordinate="bronze:sha256:" + selection.source_sha256,
+            reason=selection.reason or "no_registered_adapter",
+        )
+        return DispatchResult(selection, output)
+    selected = next(
+        row
+        for row in registrations
+        if row.adapter_id == selection.adapter_id
+        and row.version == selection.adapter_version
+    )
+    output = selected.adapter.extract(bronze, source_sha256=selection.source_sha256)
+    if type(output) is not AdapterOutput:
+        message = "invalid_adapter_output"
+        raise TypeError(message)
     return DispatchResult(selection, output)

@@ -328,6 +328,11 @@ integrated parent head.
   adapter or preserved-only reason, and sorted considered/matched IDs. This is
   a receipt boundary only; persistence into normalization manifests remains
   pending. [M-05, M-07, M-18; AC-03, AC-05, AC-16]
+- [x] Persist the verified expenditure adapter-selection receipt in the raw
+  Budget extraction manifest and verify repeated builds have identical receipt
+  and Parquet bytes. Unsupported layouts retain their established fail-closed
+  parser errors and write no package. Other adapter manifests remain pending.
+  [M-05, M-07, M-10, M-16; AC-03, AC-05, AC-08, AC-12]
 - [ ] Add schema fingerprints, adapter selection evidence, deterministic
   ordering/serialization, source-layout drift reports and fail-closed unknown
   layout handling. [M-05, M-07, M-18, S-04; AC-03, AC-05, AC-16]

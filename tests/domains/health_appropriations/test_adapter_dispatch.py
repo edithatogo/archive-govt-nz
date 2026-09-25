@@ -10,6 +10,7 @@ from openpyxl import Workbook
 from archive_govt_nz.domains.health_appropriations.adapter_dispatch import (
     AdapterRegistration,
     dispatch_bronze,
+    select_bronze_adapter,
 )
 from archive_govt_nz.domains.health_appropriations.adapter_protocol import (
     AdapterOutput,
@@ -192,6 +193,21 @@ def test_selection_receipt_is_canonical_and_binds_fail_closed_evidence() -> None
     assert receipt["considered_adapter_ids"] == ["first", "second"]
     assert receipt["matched_adapter_ids"] == ["first"]
     assert json.loads(json.dumps(receipt, sort_keys=True)) == receipt
+
+
+def test_selection_preflight_never_runs_adapter_extraction() -> None:
+    payload = b"%PDF-1.7\nknown"
+    digest = hashlib.sha256(payload).hexdigest()
+    adapter = RecordingAdapter()
+    selection = select_bronze_adapter(
+        payload,
+        source_sha256=digest,
+        media_type=PDF,
+        registrations=(AdapterRegistration("known", "v1", PDF, adapter),),
+    )
+    assert selection.status == "selected"
+    assert selection.to_receipt()["adapter"] == {"id": "known", "version": "v1"}
+    assert adapter.calls == []
 
 
 def test_single_layout_probe_is_recorded_in_selection() -> None:

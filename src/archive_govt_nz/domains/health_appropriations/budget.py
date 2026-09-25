@@ -191,12 +191,47 @@ def normalize_budget_workbook(
         expected_sha256, source_locator, source_vintage, observed_at
     )
     payload = verified_snapshot(source, expected_sha256, max_bytes=_MAX_SOURCE_BYTES)
+    # Import locally because the dispatch adapter reuses this module's reviewed
+    # parser. Persist the same fail-closed selection evidence alongside outputs.
+    from archive_govt_nz.domains.health_appropriations.adapter_dispatch import (  # noqa: PLC0415
+        select_bronze_adapter,
+    )
+    from archive_govt_nz.domains.health_appropriations.budget_adapter import (  # noqa: PLC0415
+        budget_expenditure_registration,
+    )
+    from archive_govt_nz.domains.health_appropriations.budget_revenue_adapter import (  # noqa: PLC0415
+        budget_revenue_registration,
+    )
+
+    registrations = (
+        budget_expenditure_registration(
+            source_locator=source_locator,
+            source_vintage=source_vintage,
+            observed_at=observed_at,
+        ),
+        budget_revenue_registration(
+            source_locator=source_locator,
+            source_vintage=source_vintage,
+            observed_at=observed_at,
+        ),
+    )
+    selection = select_bronze_adapter(
+        payload,
+        source_sha256=expected_sha256,
+        media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        registrations=registrations,
+    )
     inventory = inventory_workbook(BytesIO(payload))
     workbook = load_workbook(BytesIO(payload), data_only=False, keep_links=True)
     try:
         if _SHEET not in workbook.sheetnames:
             raise ValueError("missing_raw_data_sheet")
         facts, lineage, dispositions = _extract(workbook[_SHEET], context)
+        if (
+            selection.status != "selected"
+            or selection.adapter_id != "nz-budget-health-expenditure"
+        ):
+            raise ValueError("unsupported_budget_dispatch_selection")
         excluded = [
             {"sheet": name, "reason": "not_budget_raw_data"}
             for name in workbook.sheetnames
@@ -228,5 +263,6 @@ def normalize_budget_workbook(
         "counts": counts,
         "excluded_sheets": excluded,
         "workbook_inventory": inventory,
+        "adapter_selection": selection.to_receipt(),
     }
     return write_workbook_outputs(output_dir, outputs, receipt)

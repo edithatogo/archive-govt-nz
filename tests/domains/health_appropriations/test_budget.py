@@ -101,6 +101,14 @@ def test_raw_budget_retains_rows_lineage_and_original_bytes(tmp_path: Path) -> N
     assert receipt["excluded_sheets"] == [
         {"sheet": "Explanation", "reason": "not_budget_raw_data"}
     ]
+    selection = receipt["adapter_selection"]
+    assert isinstance(selection, dict)
+    assert selection["status"] == "selected"
+    assert selection["adapter"] == {
+        "id": "nz-budget-health-expenditure",
+        "version": "1.0.0",
+    }
+    assert selection["source_sha256"] == digest
     assert json.loads((tmp_path / "one/MANIFEST.json").read_text()) == receipt
     assert _run(source, tmp_path / "two", digest) == receipt
     for path in (tmp_path / "one").iterdir():

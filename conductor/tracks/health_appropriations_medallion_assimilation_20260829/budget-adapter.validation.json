@@ -15,19 +15,21 @@
     "additional_sheets": "inventoried_only_and_explicitly_excluded",
     "unknown_sheet_or_headers": "preserved_only_without_facts",
     "rights_state": "not_evaluated",
-    "source_bytes_mutated": false
+    "source_bytes_mutated": false,
+    "manifest_selection_receipt": "canonical_hash_bound_dispatch_evidence"
   },
   "focused_validation": {
     "tests": "6 passed",
     "adapter_line_and_branch_coverage_percent": 100,
     "ruff_check": "passed",
     "ruff_format": "passed",
-    "basedpyright": "passed"
+    "basedpyright": "passed",
+    "manifest_persistence": "passed; repeat output manifest and Parquet bytes identical"
   },
   "full_repository_validation": {
     "command": "./scripts/validate.sh",
     "exit_code": 0,
-    "tests_passed": 6881,
+    "tests_passed": 6900,
     "tests_skipped": 9,
     "branch_coverage_percent": 98.08,
     "schemas": 48,
@@ -35,7 +37,7 @@
     "differential_parity": "9/9 passed",
     "configured_mutation_lanes": "passed",
     "hygiene": "passed",
-    "cas_benchmark_megabytes_per_second": 442.62,
+    "cas_benchmark_megabytes_per_second": 297.94,
     "dependency_audit": "passed_no_known_vulnerabilities",
     "licence_inventory": "passed",
     "secrets": "passed",
@@ -45,7 +47,8 @@
     "This adapter recognizes only the existing Raw Data named-column Budget expenditure layout",
     "Source vintage, capture locator and observation time remain explicit caller context and are not proven by the workbook bytes",
     "Other workbook, CSV, PDF-table and SQLite source layouts remain unregistered",
-    "Successful extraction does not establish source completeness, accounting interpretation, rights or publication approval"
+    "Successful extraction does not establish source completeness, accounting interpretation, rights or publication approval",
+    "Persisted dispatch receipt currently covers the Budget expenditure normalizer only"
   ],
   "publication": "not_performed"
 }
