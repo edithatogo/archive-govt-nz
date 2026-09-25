@@ -1,5 +1,25 @@
 # Run Log
 
+## 2026-09-26 — Phase 3.1 fixture evidence reconciliation
+
+Reconciled the two stale Phase 3.1 checklist items against the merged
+`eight-recordset-fixture-completion.md` and paired receipt: the linked suite
+records 673 affected tests, including all record-set transport shapes,
+normalization boundaries and source-cell fixture checks. Updated the plan and
+recordset contract to link to that original task-specific evidence. This is a
+documentation reconciliation; it does not create a new test result or claim
+the Phase 3.4 integrated checkpoint. `./scripts/validate.sh` is run on this PR
+head and is recorded separately below.
+
+`./scripts/validate.sh` exited 0 on this documentation head: 6,857 passed,
+9 skipped, 98.06% branch-aware coverage, 48 schemas, 38 representative
+documents, 9/9 parity, every configured mutation lane, hygiene, CAS throughput,
+dependency audit, licence inventory, secret scan and strict 113-component
+CycloneDX validation. The SBOM generator emitted its informational
+“Validation skipped” warning before the required strict validator passed. This
+validates the reconciliation; pending Phase 3 implementation and whole-track
+acceptance criteria remain open.
+
 ## 2026-09-07 — Bounded Phase 2.1 ingestion contracts
 
 Read-only parent follow-up review at `1f53a6e8` found no actionable diff issue;

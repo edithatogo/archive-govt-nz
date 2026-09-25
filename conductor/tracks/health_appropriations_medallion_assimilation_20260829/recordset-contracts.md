@@ -14,12 +14,14 @@ rights, quality flags, transformation and lineage slots. Unknown valid-time
 endpoints and missing original observation IDs remain nullable; a required
 status/context field allows subsequent validators to distinguish those cases.
 
-This is a structural contract only. Arrow does not enforce constant values in
-the domain/record-set/version columns, unique or correctly derived IDs,
-null-reason consistency, temporal alignment, classification evidence, rights,
-or cross-record lineage closure. Semantic row validators, stable identity
-construction, explicit source projections, fingerprints and operational
-registration remain pending tasks. Do not infer M-05 or Phase 3 completion.
+The initial registry is structural; the later opt-in JSON/Arrow normalizer adds
+typed row admission for constants, unique nonblank IDs, reason-coded nulls,
+fixed-precision amounts and ordered valid-time endpoints. Source adapters add
+source-specific identity derivation and linked lineage checks. These layers
+still do not prove that an ID is factually correct, a classification is
+equivalent, a unit or period is analytically compatible, rights are cleared,
+or an asserted observation is current. Do not infer whole M-05 or Phase 3
+completion.
 
 ## Numeric compatibility
 
@@ -63,13 +65,14 @@ rejects exponent notation, leading zeroes, nonfinite values and trailing
 newlines. It does not round source values. Unknown Arrow types, names and
 versions fail closed. Returned nested dictionaries are independent.
 
-These descriptors remain structural only: they do not prove IDs, rights,
-source precision, null-reason consistency, time alignment or lineage closure.
-The separate opt-in [normalization API](./recordset-normalization.md) now checks
+These descriptors remain structural only: they do not prove factual IDs,
+rights, source precision, null-reason consistency, time alignment or source
+truth.
+The separate opt-in [normalization API](./recordset-normalization.md) checks
 duplicate/blank IDs, known endpoint ordering and decimal/null consistency while
 converting JSON representations exactly. It leaves the descriptors unchanged;
-stable-ID derivation, source interpretation and package lineage remain pending.
-No existing source package is converted or promoted. The 51 focused tests
+source-specific stable-ID derivation and factual source interpretation remain
+separate. No existing source package is converted or promoted. The 51 focused tests
 include ten seeded descriptor counterexamples; these are not ten additional
 source-code mutant kills. The final unfiltered cold mutation run generated
 and killed two source mutants, with no survivors or cached results.
@@ -102,3 +105,21 @@ After QES delivery, main6c23ba8 was integrated with unchanged JSON source/tests.
 69focused checks passed3.47seconds; every ledger line parsed and the complete
 incoming prefix matched byte-for-byte. This second documentation integration
 does not reuse the prior head's hosted checks as evidence for its new head.
+
+## Phase 3.1 contract evidence reconciliation — 2026-09-26
+
+The previously open fixture tasks are covered by merged acceptance suites and
+their original validation evidence in `eight-recordset-fixture-completion.md`
+and `eight-recordset-fixture-completion.json`:
+`tests/schemas/test_health_recordset_fixture_acceptance.py` exercises all nine
+registered sets (eight domain shapes plus `field_lineage`) through JSON
+Schema, Arrow and Parquet; `test_health_recordsets.py` pins versioned fields,
+nullability and decimal bounds; `test_health_recordset_normalization.py`
+covers binary-as-text and duplicate-key rejection, missing contexts, null
+reasons, precision and temporal ordering; linked-fixture and source-adapter
+tests close field lineage and stable source IDs; adapter/formula tests retain
+unknown layouts and unqualified formula/cache values. Dimension-mapping tests
+require explicit evidence for mapped assertions. These are fixture evidence,
+not proof of truth or rights. See the Phase 3.1 checklist and paired completion
+receipt for exact scope and validation. The parent full validation checkpoint
+remains separate.
