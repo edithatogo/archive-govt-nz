@@ -19,6 +19,7 @@
     "row_dispositions": "blank_out_of_scope_and_rejected_rows_are_loss_accounted",
     "field_lineage": "raw_and_normalized_values_with_source_cell_coordinates",
     "other_worksheets": "inventoried_only_and_explicitly_excluded",
+    "parquet_readback_handles": "explicitly_closed_before_verified_directory_promotion",
     "currency": "unverified",
     "rights_state": "not_evaluated",
     "source_bytes_mutated": false
@@ -31,18 +32,23 @@
     "basedpyright": "passed",
     "dispatch_module_line_and_branch_coverage_percent": 99
   },
+  "cross_platform_regression_validation": {
+    "command": "uv run --locked pytest tests/test_foi_package.py -q",
+    "result": "106 passed",
+    "directory_rename_after_parquet_readback": "passed"
+  },
   "full_repository_validation": {
     "command": "./scripts/validate.sh",
     "exit_code": 0,
-    "tests_passed": 6893,
+    "tests_passed": 6894,
     "tests_skipped": 9,
-    "branch_coverage_percent": 98.03,
+    "branch_coverage_percent": 98.04,
     "schemas": 48,
     "representative_documents": 38,
     "differential_parity": "9/9 passed",
     "configured_mutation_lanes": "passed",
     "hygiene": "passed",
-    "cas_benchmark_megabytes_per_second": 574.11,
+    "cas_benchmark_megabytes_per_second": 565.35,
     "dependency_audit": "passed_no_known_vulnerabilities",
     "licence_inventory": "passed",
     "secrets": "passed",

@@ -564,7 +564,9 @@ def _read_rows(root: Path, name: str) -> list[dict[str, Any]]:
 def _verify_table_context(
     root: Path, name: str, rows: list[dict[str, Any]], manifest: dict[str, Any]
 ) -> None:
-    if pq.read_table(root / f"indexes/{name}.parquet").to_pylist() != rows:
+    with pq.ParquetFile(root / f"indexes/{name}.parquet") as parquet:
+        parquet_rows = parquet.read().to_pylist()
+    if parquet_rows != rows:
         _fail("parquet_jsonl_mismatch")
     if any(
         any(
