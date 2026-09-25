@@ -2321,3 +2321,18 @@ updating that assertion, the focused suite passed 41 tests and
 48 schemas, 38 representative documents, 9/9 parity and all configured
 mutation/supply-chain gates. See `context-census.md` and
 `population-census-integration.json`.
+
+## 2026-09-26 — Named-column Budget dispatch adapter
+
+Registered the existing named-column Budget Health expenditure extractor behind
+Bronze hash-bound dispatch. The adapter reuses the tested source classifier,
+returns typed Health facts, maps source-cell lineage into the common adapter
+contract, carries blank/out-of-scope/rejected rows as explicit losses, and records
+non-data worksheets as inventoried exclusions. Unsupported sheet/header layouts
+emit no facts and remain preserved-only. Six focused tests pass with 100% line
+and branch coverage; Ruff and basedpyright pass. The full harness passed: 6,881
+tests, 9 skipped, 98.08% branch coverage, 48 schemas, 38 representative
+documents, 9/9 parity, configured mutation and supply-chain checks, and a
+113-component strict SBOM. Hosted workflow outcomes are tracked on the PR,
+separately from this local receipt. See `budget-adapter.validation.json`; the
+plan still leaves other source families and layouts open.
