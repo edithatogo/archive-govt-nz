@@ -12,11 +12,13 @@ import tempfile
 from collections.abc import Iterator
 from contextlib import closing, contextmanager
 from datetime import UTC, datetime
+from io import BytesIO
 from pathlib import Path
 from typing import TYPE_CHECKING, Any, cast
 from urllib.parse import urlsplit
 
 import httpx
+from warcio.archiveiterator import ArchiveIterator
 
 from archive_govt_nz.capture import CaptureConfig, CaptureError, capture_url
 from archive_govt_nz.object_store import ContentAddressedStore
@@ -57,6 +59,7 @@ _RIGHTS = {
         "attribution": "Pharmac Te Pataka Whaioranga",
     },
 }
+_HTTP_ERROR_STATUS = 400
 
 
 def _digest(path: Path) -> str:
@@ -241,6 +244,8 @@ def _resume_results(
             msg = "manifest_exists_use_new_path_or_resume"
             raise ValueError(msg)
         return {}
+    if not args.manifest.exists():
+        return {}
     previous = json.loads(args.manifest.read_text(encoding="utf-8"))
     if previous.get("capture_context") != context:
         msg = "resume_context_mismatch"
@@ -259,6 +264,166 @@ def _resume_results(
         _verify_retained(row, sources[identifier], store, args.warc_dir)
         retained[identifier] = row
     return retained
+
+
+def _warc_request_digest(path: Path) -> str | None:
+    """Read the single WARC request binding without trusting sidecar state."""
+    payload = path.read_bytes()
+    if len(payload) > 65 * 1024 * 1024:
+        return None
+    try:
+        records = list(ArchiveIterator(BytesIO(payload)))
+        if len(records) != 1 or records[0].rec_type != "response":
+            return None
+        values = [
+            value
+            for key, value in records[0].rec_headers.headers
+            if key.lower() == "warc-request-url-sha256"
+        ]
+        return values[0] if len(values) == 1 else None
+    except OSError, ValueError, IndexError, StopIteration:
+        return None
+
+
+def _recover_orphan(
+    path: Path,
+    source: dict[str, Any],
+    store: ContentAddressedStore,
+    warc_dir: Path,
+) -> tuple[dict[str, object], dict[str, object]] | None:
+    """Recover only a unique, hash-bound same-URL WARC with verifiable framing."""
+    payload = path.read_bytes()
+    if len(payload) > 65 * 1024 * 1024:
+        return None
+    try:
+        records = ArchiveIterator(BytesIO(payload))
+        record = next(records)
+        if record.rec_type != "response" or record.http_headers is None:
+            return None
+        headers = record.http_headers.headers
+        statuses = [
+            int(record.http_headers.get_statuscode())
+            if record.http_headers.get_statuscode().isdigit()
+            else 0
+        ]
+        content_types = [v for k, v in headers if k.lower() == "content-type"]
+        request_hash = hashlib.sha256(source["url"].encode()).hexdigest()
+        record_headers = record.rec_headers.headers
+        request_hashes = [
+            v for k, v in record_headers if k.lower() == "warc-request-url-sha256"
+        ]
+        final_hashes = [
+            v for k, v in record_headers if k.lower() == "warc-final-url-sha256"
+        ]
+        body = record.raw_stream.read(65 * 1024 * 1024)
+        try:
+            next(records)
+        except StopIteration:
+            pass
+        else:
+            return None
+        if (
+            request_hashes != [request_hash]
+            or final_hashes != [request_hash]
+            or not statuses[0]
+            or statuses[0] >= _HTTP_ERROR_STATUS
+            or len(content_types) > 1
+        ):
+            return None
+        receipt = store.put_bytes(body)
+        relative = path.relative_to(warc_dir).as_posix()
+        digest = hashlib.sha256(payload).hexdigest()
+        verify_response_binding(
+            path,
+            request_url=source["url"],
+            final_url=source["url"],
+            status_code=statuses[0],
+            content_type=content_types[0] if content_types else None,
+            body_sha256=receipt.sha256,
+            body_bytes=receipt.byte_count,
+            warc_sha256=digest,
+        )
+        host = cast("str", urlsplit(cast("str", source["url"])).hostname)
+        etag, last_modified = _response_validators(path)
+        recovered_at = datetime.now(UTC).isoformat().replace("+00:00", "Z")
+        event: dict[str, object] = {
+            "source_id": source["source_id"],
+            "observed_at": None,
+            "recovered_at": recovered_at,
+            "observation_time_state": "not_recorded_in_warc",
+            "outcome": "recovered_orphan_warc",
+            "attempts": [],
+            "object_id": receipt.object_id,
+            "sha256": receipt.sha256,
+            "warc_path": relative,
+            "warc_sha256": digest,
+            "etag": etag,
+            "last_modified": last_modified,
+            "validator_state": "present" if etag or last_modified else "absent",
+        }
+        event["observation_id"] = _observation_id(
+            cast("str", source["source_id"]), event
+        )
+        result: dict[str, object] = {
+            "source_id": source["source_id"],
+            "request_url_sha256": request_hash,
+            "url": source["url"],
+            "state": "captured",
+            "status_code": statuses[0],
+            "content_type": content_types[0] if content_types else None,
+            "object_id": receipt.object_id,
+            "sha256": receipt.sha256,
+            "blake3": receipt.blake3,
+            "bytes": receipt.byte_count,
+            "warc_sha256": digest,
+            "warc_path": relative,
+            "observed_at": recovered_at,
+            "observation_time_state": "recovered_at_not_source_observed_at",
+            "etag": etag,
+            "last_modified": last_modified,
+            "validator_state": event["validator_state"],
+            "rights": _RIGHTS[host],
+        }
+    except OSError, ValueError, KeyError, IndexError:
+        return None
+    else:
+        return result, event
+
+
+def _recover_orphans(
+    selected: list[dict[str, Any]],
+    retained: dict[str, dict[str, Any]],
+    store: ContentAddressedStore,
+    warc_dir: Path,
+) -> tuple[dict[str, dict[str, object]], list[dict[str, object]]]:
+    """Adopt uniquely bound orphan attempts; leave ambiguity untouched."""
+    referenced = {row.get("warc_path") for row in retained.values()}
+    candidates = [
+        path
+        for path in sorted(warc_dir.glob("attempt-*/response.warc"))
+        if path.relative_to(warc_dir).as_posix() not in referenced
+    ]
+    grouped: dict[str, list[Path]] = {}
+    for path in candidates:
+        digest = _warc_request_digest(path)
+        if digest is not None:
+            grouped.setdefault(digest, []).append(path)
+    by_id: dict[str, dict[str, object]] = {}
+    events: list[dict[str, object]] = []
+    for source in selected:
+        source_id = cast("str", source["source_id"])
+        if source_id in retained:
+            continue
+        digest = hashlib.sha256(source["url"].encode()).hexdigest()
+        matches = grouped.get(digest, [])
+        if len(matches) != 1:
+            continue
+        recovered = _recover_orphan(matches[0], source, store, warc_dir)
+        if recovered is None:
+            continue
+        by_id[source_id], event = recovered
+        events.append(event)
+    return by_id, events
 
 
 def _verify_retained(
@@ -334,10 +499,17 @@ async def _capture_locked(args: argparse.Namespace) -> dict[str, object]:
     retained = _resume_results(args, context, selected, store)
     results: list[dict[str, object]] = []
     prior_events = []
-    if args.resume:
+    if args.resume and args.manifest.exists():
         previous = json.loads(args.manifest.read_text(encoding="utf-8"))
         prior_events = cast("list[dict[str, object]]", previous.get("observations", []))
     observations: list[dict[str, object]] = list(prior_events)
+    recovered, recovered_events = (
+        _recover_orphans(selected, retained, store, args.warc_dir)
+        if args.resume
+        else ({}, [])
+    )
+    retained.update(recovered)
+    observations.extend(recovered_events)
     manifest: dict[str, object] = {
         "schema_version": "archive-govt-nz.health-capture-manifest/v1",
         "capture_context": context,
@@ -347,6 +519,11 @@ async def _capture_locked(args: argparse.Namespace) -> dict[str, object]:
         "results": results,
         "observations": observations,
     }
+    if recovered:
+        manifest["results"] = list(recovered.values())
+        manifest["observations"] = observations
+        manifest["captured"] = len(recovered)
+        _write(args.manifest, manifest)
     async with httpx.AsyncClient(
         headers={"User-Agent": "archive-govt-nz/0.1.0"}, timeout=90
     ) as client:
