@@ -581,6 +581,34 @@ async def test_ambiguous_orphan_warcs_are_not_adopted(
 
 
 @pytest.mark.anyio
+async def test_invalid_orphan_body_is_rejected_before_cas_promotion(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """A WARC digest failure cannot leave its untrusted body in the CAS."""
+    execute, args, calls = setup(tmp_path, monkeypatch)
+    original = execute.__globals__["_write"]
+
+    def fail(_path: Path, _value: object) -> None:
+        msg = "synthetic_checkpoint_failure"
+        raise OSError(msg)
+
+    monkeypatch.setitem(execute.__globals__, "_write", fail)
+    with pytest.raises(OSError, match="synthetic_checkpoint_failure"):
+        await execute(args)
+    orphan = next(args.warc_dir.rglob("*.warc"))
+    orphan.write_bytes(orphan.read_bytes().replace(b"synthetic", b"tampered!"))
+    monkeypatch.setitem(execute.__globals__, "_write", original)
+    args.resume = True
+    result = await execute(args)
+    assert len(calls) == 2
+    assert result["observations"][0]["outcome"] == "captured"
+    with pytest.raises(ObjectStoreError, match="object_missing"):
+        ContentAddressedStore(args.store_root).verify(
+            "sha256:" + hashlib.sha256(b"tampered!").hexdigest()
+        )
+
+
+@pytest.mark.anyio
 async def test_retryable_checkpoint_is_retried_not_skipped(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:

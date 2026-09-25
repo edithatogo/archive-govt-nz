@@ -330,19 +330,20 @@ def _recover_orphan(
             or len(content_types) > 1
         ):
             return None
-        receipt = store.put_bytes(body)
         relative = path.relative_to(warc_dir).as_posix()
         digest = hashlib.sha256(payload).hexdigest()
+        body_digest = hashlib.sha256(body).hexdigest()
         verify_response_binding(
             path,
             request_url=source["url"],
             final_url=source["url"],
             status_code=statuses[0],
             content_type=content_types[0] if content_types else None,
-            body_sha256=receipt.sha256,
-            body_bytes=receipt.byte_count,
+            body_sha256=body_digest,
+            body_bytes=len(body),
             warc_sha256=digest,
         )
+        receipt = store.put_bytes(body)
         host = cast("str", urlsplit(cast("str", source["url"])).hostname)
         etag, last_modified = _response_validators(path)
         recovered_at = datetime.now(UTC).isoformat().replace("+00:00", "Z")
