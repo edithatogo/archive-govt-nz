@@ -70,10 +70,24 @@ PYTHONPATH=src COVERAGE_FILE=build/health-checkpoint.coverage /Volumes/PortableS
 COVERAGE_FILE=build/health-checkpoint.coverage /Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/python -m coverage report --include='*/tools/capture_health_resources.py' --show-missing --fail-under=95
 ```
 
+## Follow-up contract — encoded transfer-length mismatch (25 September 2026)
+
+The earlier expected-length limitation is now covered at the shared capture
+boundary. A streamed gzip response whose decoded payload is complete but whose
+declared wire `Content-Length` is one byte too large must fail with
+`length_mismatch`; the contract verifies the stream is consumed once and closed,
+no CAS object or temporary file is promoted, and no WARC is written. The
+existing exact gzip, empty, identity, and absent-length boundary cases remain
+green. This verifies the observable mismatch path; cached compressed responses
+with no raw wire count still fail closed as `wire_length_unverifiable`.
+
+Focused validation: `uv run --locked pytest -q
+tests/domains/health_appropriations/test_bronze_ingestion_contracts.py -k
+'length'` (7 passed), plus Ruff lint and format checks for the changed test.
+The full repository harness is run for this follow-up before hosted delivery.
+
 ## Remaining exact Phase 2.1 limits
 
-- **Expected-length mismatch:** compressed-wire length verification remains
-  unimplemented by the identity-only guard in `capture.py`.
 - **Interruption/resume (M-15/AC-13):** cooperative cancellation is executable
   acceptance; hard process termination leaves a stale fail-closed lock. Safe
   stale-owner recovery and a subprocess-kill/resume contract remain missing.
