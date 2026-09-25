@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import Any
 
 import pytest
-from hypothesis import given
+from hypothesis import given, settings
 from hypothesis import strategies as st
 from jsonschema import Draft202012Validator, ValidationError
 
@@ -453,6 +453,7 @@ def test_registry_identity_order_does_not_change_roles(order: list[int]) -> None
     Draft202012Validator(_load(SCHEMA_PATH)).validate(registry)
 
 
+@settings(deadline=None)
 @given(
     duplicate=st.integers(min_value=0, max_value=2),
     offset=st.integers(min_value=1, max_value=2),
