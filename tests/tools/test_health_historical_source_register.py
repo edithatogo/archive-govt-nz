@@ -25,10 +25,10 @@ def test_historical_source_register_retains_scope_and_discovery_boundary() -> No
     assert report["publication_authorized"] is False
     assert report["whole_history_complete"] is False
     records = report["resource_observations"]
-    assert len(records) == 15
+    assert len(records) == 23
     assert len({row["url"] for row in records}) == len(records)
     assert len({row["source_id"] for row in records}) == len(records)
-    assert len({(r["edition_year"], r["family"], r["kind"]) for r in records}) == 15
+    assert len({(r["edition_year"], r["family"], r["kind"]) for r in records}) == 23
     assert {(r["family"], r["kind"]) for r in records} == {
         ("budget", "expenditure"),
         ("budget", "revenue"),
@@ -40,6 +40,18 @@ def test_historical_source_register_retains_scope_and_discovery_boundary() -> No
         ("befu", "gaap_series_tables"),
         ("befu", "expenses"),
     }
+    budget_records = [row for row in records if row["family"] == "budget"]
+    assert {(row["edition_year"], row["kind"]) for row in budget_records} == {
+        (year, kind)
+        for year in (2020, 2021, 2022, 2023, 2024)
+        for kind in ("expenditure", "revenue")
+    }
+    by_year = {row["edition_year"]: row for row in budget_records}
+    assert by_year[2020]["rights_state"] == "not_evaluated"
+    assert by_year[2020]["rights_evidence"] == "landing_page_states_cc_by_4_0"
+    assert by_year[2022]["rights_state"] == "not_evaluated"
+    assert by_year[2022]["rights_evidence"] == "landing_page_states_cc_by_4_0"
+    assert by_year[2021]["rights_evidence"] == "licence_not_observed"
     for row in records:
         assert row["source_id"] == (
             "treasury-historical-"
