@@ -2474,3 +2474,21 @@ successful dry run reports planned without writing files. The combined revenue
 normalizer/dispatch focused run now passes 64 tests and covers the touched
 revenue normalizer at 100% line and branch coverage; Ruff and basedpyright pass.
 The updated hosted Codecov and Windows checks remain pending.
+## 2026-09-26 — Require evidence on Phase 4 repair-ledger deviations
+
+Hardened the historical repair-ledger builder and schema so every ledger row
+requires a non-empty rationale from the reconciliation reason. Source-present
+rows also require a non-empty source coordinate; donor-only rows must retain a
+null source coordinate and still require a rationale. Added red-first coverage
+for missing coordinates/reasons and valid donor-only rows. Focused repair-ledger
+tests pass (15), along with Ruff, basedpyright, schema validation (48 schemas,
+38 representative documents), Conductor-state validation, and `git diff --check`.
+This closes only the repair-ledger evidence contract: the source-backed oracle
+covering all five donor tables/312 rows remains open.
+
+
+The full repository harness for the repair-ledger evidence contract passed:
+6,906 tests, 9 skipped, 98.08% branch coverage, 48 schemas, 38 representative
+documents, differential parity 9/9, configured mutation and hygiene gates,
+CAS benchmark 524.23 MB/s, dependency/license/secret checks, and strict SBOM
+validation with 113 components.
