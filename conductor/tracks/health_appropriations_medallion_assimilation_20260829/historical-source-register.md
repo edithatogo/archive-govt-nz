@@ -61,3 +61,17 @@ sections remain unenumerated here. The [SNA introduction](https://www.treasury.g
 distinguishes Central Government coverage from the GAAP Crown reporting entity
 and discusses reconciliation differences. No cross-basis join or numerical
 extraction is performed. PDF text observation is not byte-preservation evidence.
+
+
+## Budget 2021–2022 workbook locators — 25 September 2026
+
+Read-only review of the official Treasury [Budget 2021 data page](https://www.treasury.govt.nz/publications/data/budget-2021-data-estimates-appropriations-2021-22) and [Budget 2022 data page](https://www.treasury.govt.nz/publications/data/budget-2022-data-estimates-appropriations-2022-23) found separate expenditure and revenue workbooks for each edition. The pages describe source years and warn that earlier actual/estimated-actual detail is not restated after later restructuring. Budget 2022's landing page states CC BY 4.0; the Budget 2021 page's license field was not observed, so its rights remain not evaluated.
+
+The four exact workbook URLs are in the machine register. The browser could not retrieve the XLSX payloads; hashes and byte counts therefore remain null. These four discoveries do not close either edition's source enumeration, establish captured bytes or rights eligibility, or qualify the workbooks for analysis/publication.
+
+
+## Budget 2020–2022 workbook locators — 25 September 2026
+
+Read-only review of the official Treasury [Budget 2020](https://www.treasury.govt.nz/publications/data/budget-2020-data-estimates-appropriations-2020-21), [Budget 2021](https://www.treasury.govt.nz/publications/data/budget-2021-data-estimates-appropriations-2021-22), and [Budget 2022](https://www.treasury.govt.nz/publications/data/budget-2022-data-estimates-appropriations-2022-23) data pages found separate expenditure and revenue workbooks for each edition. The [BEFU 2020 page](https://www.treasury.govt.nz/publications/efu/budget-economic-and-fiscal-update-2020) links chart/data and expense-table workbooks. The pages describe source years and warn that prior actual/estimated-actual detail is not restated after later restructuring. The Budget 2020 and 2022 landing pages state CC BY 4.0; Budget 2021's license field was not observed. Rights remain not evaluated for every resource.
+
+The eight exact workbook URLs are in the machine register. The browser could not retrieve the XLSX payloads; hashes and byte counts therefore remain null. These discoveries do not close the editions' source-family enumeration, establish captured bytes or rights eligibility, or qualify the workbooks for analysis/publication.
