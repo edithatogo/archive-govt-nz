@@ -14,7 +14,7 @@
   "status_flags": "displayed",
   "original_sha256": "a52e0344d1b6e707de04b7b968f2667fc969c0f0777b319921ff716ead82a1d9",
   "original_bytes": 1676,
-  "original_storage": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/bronze-cas/sha256/a5/a52e0344d1b6e707de04b7b968f2667fc969c0f0777b319921ff716ead82a1d9",
+  "original_storage": "external_bronze_cas_sha256",
   "export_route": "https://infoshare.stats.govt.nz/ExportDirect.aspx",
   "release_url": "https://www.stats.govt.nz/information-releases/national-population-estimates-at-30-june-2026/",
   "retrieved_at": "2026-09-25T09:37:50Z",
