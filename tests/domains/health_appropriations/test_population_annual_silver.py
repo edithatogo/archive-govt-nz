@@ -8,11 +8,24 @@ from pathlib import Path
 from typing import cast
 
 import pyarrow.parquet as pq
+import pytest
 from tests.domains.health_appropriations.test_population_annual_export import payload
 
 from archive_govt_nz.domains.health_appropriations.population_annual_silver import (
     normalize_population_annual,
 )
+
+
+def test_rejects_missing_source_before_normalization(tmp_path: Path) -> None:
+    with pytest.raises(ValueError, match="annual_population_silver_contract"):
+        normalize_population_annual(
+            tmp_path / "missing.csv",
+            tmp_path / "silver",
+            expected_sha256="a" * 64,
+            observed_at="2026-09-25T09:37:50Z",
+            source_vintage="2026-08-18",
+            source_locator="https://infoshare.stats.govt.nz/ExportDirect.aspx",
+        )
 
 
 def test_preflight_and_written_silver_package(tmp_path: Path) -> None:
