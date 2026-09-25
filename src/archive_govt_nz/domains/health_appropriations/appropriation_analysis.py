@@ -25,6 +25,14 @@ _TEXT_FIELDS = (
     "department",
     "portfolio_name",
 )
+_COMPARISON_FIELDS = (
+    "source_object_sha256",
+    "source_vintage",
+    "year",
+    "functional_classification",
+    "department",
+    "portfolio_name",
+)
 
 
 def _validate(row: dict[str, Any]) -> None:
@@ -101,3 +109,81 @@ def analyze_appropriations(
             and row["amount_type"] == "Estimated Actual"
         ],
     }
+
+
+def compare_budget_to_estimated_actual(
+    facts: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    """Compare exact Budget and Estimated Actual source labels within one edition.
+
+    This diagnostic preserves unmatched groups and exact input IDs. It does not
+    treat fiscal-year alignment, classification comparability or the estimate as
+    a final actual as verified; the arithmetic difference is source-context
+    output only.
+    """
+    groups: dict[tuple[Any, ...], dict[str, list[dict[str, Any]]]] = {}
+    identities: set[str] = set()
+    for row in facts:
+        _validate(row)
+        if row["record_id"] in identities:
+            message = "duplicate_appropriation_identity"
+            raise ValueError(message)
+        identities.add(row["record_id"])
+        if row["amount_type"] not in {"Budget", "Estimated Actual"}:
+            continue
+        key = tuple(row[field] for field in _COMPARISON_FIELDS)
+        groups.setdefault(key, {"Budget": [], "Estimated Actual": []})[
+            row["amount_type"]
+        ].append(row)
+
+    results = []
+    with localcontext(_CONTEXT):
+        for key, categories in sorted(groups.items()):
+            budget = categories["Budget"]
+            actual = categories["Estimated Actual"]
+            budget_amount = (
+                sum((row["amount"] for row in budget), Decimal(0)).quantize(_QUANTUM)
+                if budget
+                else None
+            )
+            actual_amount = (
+                sum((row["amount"] for row in actual), Decimal(0)).quantize(_QUANTUM)
+                if actual
+                else None
+            )
+            results.append(
+                {
+                    **dict(zip(_COMPARISON_FIELDS, key, strict=True)),
+                    "unit": "NZD_thousands",
+                    "budget_amount": str(budget_amount)
+                    if budget_amount is not None
+                    else None,
+                    "estimated_actual_amount": str(actual_amount)
+                    if actual_amount is not None
+                    else None,
+                    "estimated_minus_budget": (
+                        str((actual_amount - budget_amount).quantize(_QUANTUM))
+                        if actual_amount is not None and budget_amount is not None
+                        else None
+                    ),
+                    "comparison_status": (
+                        "both_source_labels_present"
+                        if budget and actual
+                        else "missing_budget"
+                        if not budget
+                        else "missing_estimated_actual"
+                    ),
+                    "budget_input_record_ids": sorted(
+                        row["record_id"] for row in budget
+                    ),
+                    "estimated_actual_input_record_ids": sorted(
+                        row["record_id"] for row in actual
+                    ),
+                    "period_basis": "unverified",
+                    "classification_mapping": "source_labels_only",
+                    "formula_policy": (
+                        "same_edition_budget_vs_estimated_actual_source_labels/v1"
+                    ),
+                }
+            )
+    return results
