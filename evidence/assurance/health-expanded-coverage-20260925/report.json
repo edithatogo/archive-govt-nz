@@ -1,0 +1,48 @@
+{
+  "qualification": "one-explicit-selection_metadata-join_only_no-phase-closure",
+  "register_sha256": "9b98964afb552761dc59815ea3912b49d95162c18abe43e396057f14f3e0875a",
+  "schema_version": "archive-govt-nz.health-expanded-coverage-replay/v1",
+  "selection_report": {
+    "capture": "not_assessed",
+    "completion_sha256": null,
+    "future_vintage_completeness": "not_claimed",
+    "gold_selection": "not_assessed",
+    "payload_verification": "not_performed",
+    "publication": "not_performed",
+    "rows": [
+      {
+        "family": "befu",
+        "implementation_state": "existing_profile",
+        "profile": "befu-core-expense",
+        "reason_counts": {
+          "context": 24,
+          "normalized": 10,
+          "preserved_only": 2341
+        },
+        "receipt_counts": {
+          "context": 24,
+          "inventoried_cells": 2375,
+          "normalized": 10,
+          "preserved_only": 2341,
+          "rejected": 0
+        },
+        "receipt_sha256": "23ddc3fb0a3d4d6dc55a4731694f7d9e26f5ace1324d4a76456f1ad761abe651",
+        "record_count": 10,
+        "remainder_state": "not_qualified_by_this_join",
+        "selection_id": "befu-core-expense-BEFU-2026",
+        "selection_state": "receipt_reported_passed_selection",
+        "source_locator": "https://budget.govt.nz/budget/excel/befu2026/befu26-data-expense-tables.xlsx",
+        "source_object_sha256": "313ee040abd9a332cc36245da5a0c2cb0d38fe2cedc013d731c1f12db463b0d1",
+        "vintage": "BEFU-2026",
+        "whole_source_qualification": "not_established"
+      }
+    ],
+    "schema_version": "archive-govt-nz.health-expanded-coverage/v1",
+    "scope": "explicit_source_family_vintage_selections_only",
+    "selection_register_sha256": "9b98964afb552761dc59815ea3912b49d95162c18abe43e396057f14f3e0875a",
+    "source_rights": "not_assessed",
+    "supplied_receipt_sha256": {
+      "befu-core-expense-BEFU-2026": "23ddc3fb0a3d4d6dc55a4731694f7d9e26f5ace1324d4a76456f1ad761abe651"
+    }
+  }
+}
