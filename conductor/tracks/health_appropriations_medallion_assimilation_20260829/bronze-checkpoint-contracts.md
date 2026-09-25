@@ -84,16 +84,29 @@ with no raw wire count still fail closed as `wire_length_unverifiable`.
 Focused validation: `uv run --locked pytest -q
 tests/domains/health_appropriations/test_bronze_ingestion_contracts.py -k
 'length'` (7 passed), plus Ruff lint and format checks for the changed test.
-The full repository harness is run for this follow-up before hosted delivery.
+The full repository harness passed before hosted delivery.
+
+## Follow-up contract — hard process termination (25 September 2026)
+
+The runner's SQLite exclusive lock is released by the kernel when its owning
+process is killed. A subprocess acceptance test now holds the actual runner
+lock helper, proves a competing owner is rejected, kills the owner, and proves
+a new owner can acquire the same lock file. The lock inode remains present and
+is never unlinked or replaced. This disproves the earlier stale-lock concern;
+it does not imply that a completed WARC from an interrupted checkpoint is
+automatically reconciled on resume.
+
+Focused validation: `tests/domains/health_appropriations/test_capture_checkpoint.py`
+(28 passed), Ruff lint/format, and strict basedpyright passed. The full
+repository harness is run for this follow-up before hosted delivery.
 
 ## Remaining exact Phase 2.1 limits
 
-- **Interruption/resume (M-15/AC-13):** cooperative cancellation is executable
-  acceptance; hard process termination leaves a stale fail-closed lock. Safe
-  stale-owner recovery and a subprocess-kill/resume contract remain missing.
-  File fsync plus atomic rename is tested; directory durability across power
-  loss is not claimed. Orphan WARC evidence is retained but not automatically
-  reconciled into a completed capture.
+- **Interruption/resume (M-15/AC-13):** hard process termination and subsequent
+  lock reacquisition are executable acceptance. File fsync plus atomic rename
+  is tested; directory durability across power loss is not claimed. Orphan
+  WARC evidence is retained but not automatically reconciled into a completed
+  capture.
 - **M-18/AC-16:** the changed runner has 100% line/branch coverage, but the
   pre-existing defensive `capture.py` redirect-loop fallback remains uncovered
   as described in the preceding audit. Parent owns full integrated assurance.

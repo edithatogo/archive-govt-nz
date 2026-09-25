@@ -6,7 +6,9 @@ import argparse
 import asyncio
 import hashlib
 import json
+import os
 import runpy
+import subprocess
 import sys
 from pathlib import Path
 from typing import IO, Any
@@ -16,6 +18,54 @@ import pytest
 from archive_govt_nz.capture import CaptureError, CaptureResult
 from archive_govt_nz.object_store import ContentAddressedStore, ObjectStoreError
 from archive_govt_nz.warc import write_response_record
+
+
+def test_process_kill_releases_runner_lock_and_preserves_lock_inode(
+    tmp_path: Path,
+) -> None:
+    """A hard-killed owner cannot strand the runner's SQLite lock."""
+    manifest = tmp_path / "checkpoint.json"
+    lock = manifest.with_name(manifest.name + ".lock")
+    code = """from pathlib import Path
+import sys, time
+from capture_health_resources import _exclusive_capture_lock
+with _exclusive_capture_lock(Path(sys.argv[1])):
+    print('locked', flush=True)
+    time.sleep(60)
+"""
+    environment = os.environ.copy()
+    paths = ["src", "tools"]
+    if environment.get("PYTHONPATH"):
+        paths.append(environment["PYTHONPATH"])
+    environment["PYTHONPATH"] = os.pathsep.join(paths)
+    child = subprocess.Popen(
+        [sys.executable, "-c", code, str(manifest)],
+        cwd=Path(__file__).parents[3],
+        env=environment,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True,
+    )
+    try:
+        assert child.stdout is not None
+        assert child.stdout.readline().strip() == "locked"
+        assert lock.is_file()
+        runner = runpy.run_path(
+            str(Path(__file__).parents[3] / "tools/capture_health_resources.py")
+        )
+        with (
+            pytest.raises(FileExistsError, match="capture_lock_unavailable"),
+            runner["_exclusive_capture_lock"](manifest),
+        ):
+            pytest.fail("competing runner entered the active lock")
+        child.kill()
+        child.wait(timeout=10)
+        with runner["_exclusive_capture_lock"](manifest):
+            assert lock.is_file()
+    finally:
+        if child.poll() is None:
+            child.kill()
+            child.wait(timeout=10)
 
 
 @pytest.mark.anyio
