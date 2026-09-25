@@ -1,0 +1,61 @@
+{
+  "schema_version": "archive-govt-nz.health-budget-source-dimensions/v1",
+  "scope": "named_column_budget_health_expenditure_profile_only",
+  "dimension_identity": {
+    "version": "health-dimension/v1",
+    "source_label_case_folding": false,
+    "cross_vintage_identity": "stable_literal_scheme_and_label; mapping assertions retain separate vintage",
+    "unknown_period_dates": "not_inferred",
+    "mapping_targets": "unresolved",
+    "mapping_evidence": "none_claimed"
+  },
+  "emitted_kinds": [
+    "vote",
+    "appropriation",
+    "department",
+    "portfolio",
+    "amount_type",
+    "functional_classification",
+    "measure",
+    "unit",
+    "period"
+  ],
+  "links": {
+    "source_label_dimensions": "exact extraction lineage cell coordinates and raw values",
+    "unit": "literal Amount $000 header coordinate; currency remains unverified",
+    "measure": "adapter rule assertion linked to Amount $000 source cell",
+    "fact_to_dimension_links": "deterministic dimension key plus source fact identity"
+  },
+  "focused_validation": {
+    "command": "uv run --locked pytest tests/domains/health_appropriations/test_budget_adapter.py tests/domains/health_appropriations/test_adapter_protocol.py -q",
+    "result": "13 passed",
+    "source_dimensions_line_and_branch_coverage_percent": 100,
+    "ruff_check": "passed",
+    "ruff_format": "passed",
+    "basedpyright": "passed"
+  },
+  "full_repository_validation": {
+    "command": "./scripts/validate.sh",
+    "exit_code": 0,
+    "tests_passed": 6884,
+    "tests_skipped": 9,
+    "branch_coverage_percent": 98.09,
+    "schemas": 48,
+    "representative_documents": 38,
+    "differential_parity": "9/9 passed",
+    "configured_mutation_lanes": "passed",
+    "hygiene": "passed",
+    "cas_benchmark_megabytes_per_second": 710.17,
+    "dependency_audit": "passed_no_known_vulnerabilities",
+    "licence_inventory": "passed",
+    "secrets": "passed",
+    "strict_cyclonedx_components": 113
+  },
+  "limitations": [
+    "No economic-classification value is present in this Budget profile",
+    "No source-backed crosswalk, mapping confidence, effective period or adjudication is asserted",
+    "Other Budget layouts and all non-Budget source families remain outside this projection",
+    "Measure is an adapter rule label and Amount $000 is a literal header; neither proves broader accounting or currency semantics"
+  ],
+  "publication": "not_performed"
+}

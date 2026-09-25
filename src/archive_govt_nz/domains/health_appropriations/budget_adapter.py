@@ -20,6 +20,9 @@ from archive_govt_nz.domains.health_appropriations.adapter_protocol import (
 )
 from archive_govt_nz.domains.health_appropriations.budget import _extract
 from archive_govt_nz.domains.health_appropriations.formats import inventory_workbook
+from archive_govt_nz.domains.health_appropriations.source_dimensions import (
+    budget_source_dimensions,
+)
 from archive_govt_nz.domains.health_appropriations.workbook_common import (
     source_context,
 )
@@ -95,21 +98,28 @@ class BudgetExpenditureAdapter:
                 for sheet in workbook.worksheets
                 if sheet.title != _SHEET
             )
+            output_records = tuple(dict(row) for row in facts)
+            output_lineage = tuple(
+                FieldLineage(
+                    record_id=str(row["record_id"]),
+                    field=str(row["field"]),
+                    source_coordinate=str(row["source_coordinate"]),
+                    raw_value=str(row["raw_value"]),
+                    normalized_value=str(row["normalized_value"]),
+                    rule=str(row["rule"]),
+                )
+                for row in lineage
+            )
+            dimensions, dimension_links = budget_source_dimensions(
+                output_records, output_lineage
+            )
             return AdapterOutput(
-                records=tuple(dict(row) for row in facts),
+                records=output_records,
                 losses=tuple(losses),
-                lineage=tuple(
-                    FieldLineage(
-                        record_id=str(row["record_id"]),
-                        field=str(row["field"]),
-                        source_coordinate=str(row["source_coordinate"]),
-                        raw_value=str(row["raw_value"]),
-                        normalized_value=str(row["normalized_value"]),
-                        rule=str(row["rule"]),
-                    )
-                    for row in lineage
-                ),
+                lineage=output_lineage,
                 layout="budget-expenditure/v1",
+                dimensions=dimensions,
+                dimension_links=dimension_links,
             )
         finally:
             workbook.close()

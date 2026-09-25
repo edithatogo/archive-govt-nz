@@ -3,7 +3,10 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Protocol
+from typing import TYPE_CHECKING, Protocol
+
+if TYPE_CHECKING:
+    from archive_govt_nz.domains.health_appropriations.dimension_mapping import Mapping
 
 
 @dataclass(frozen=True, slots=True)
@@ -35,6 +38,21 @@ class AdapterOutput:
     losses: tuple[LossAccounting, ...]
     lineage: tuple[FieldLineage, ...]
     layout: str
+    dimensions: tuple[Mapping, ...] = ()
+    dimension_links: tuple[DimensionLink, ...] = ()
+
+
+@dataclass(frozen=True, slots=True)
+class DimensionLink:
+    """Link a source fact field to an explicit literal dimension assertion."""
+
+    source_record_id: str
+    kind: str
+    dimension_key: str
+    source_coordinate: str
+    raw_value: str | None
+    normalized_value: str
+    rule: str
 
 
 class HealthAdapter(Protocol):
