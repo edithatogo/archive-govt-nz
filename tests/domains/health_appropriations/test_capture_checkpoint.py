@@ -538,12 +538,46 @@ async def test_checkpoint_write_failure_retains_orphan_warc_for_recovery(
     digest = hashlib.sha256(old.read_bytes()).hexdigest()
     assert not args.manifest.exists()
     monkeypatch.setitem(execute.__globals__, "_write", original)
+    args.resume = True
     result = await execute(args)
-    assert len(calls) == 2
+    assert len(calls) == 1
     assert hashlib.sha256(old.read_bytes()).hexdigest() == digest
     assert (
-        result["results"][0]["warc_path"] != old.relative_to(args.warc_dir).as_posix()
+        result["results"][0]["warc_path"] == old.relative_to(args.warc_dir).as_posix()
     )
+    assert result["results"][0]["observation_time_state"] == (
+        "recovered_at_not_source_observed_at"
+    )
+    assert result["observations"][0]["outcome"] == "recovered_orphan_warc"
+
+
+@pytest.mark.anyio
+async def test_ambiguous_orphan_warcs_are_not_adopted(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Two equally matching unlinked WARCs remain untouched and trigger capture."""
+    execute, args, calls = setup(tmp_path, monkeypatch)
+    original = execute.__globals__["_write"]
+
+    def fail(_path: Path, _value: object) -> None:
+        msg = "synthetic_checkpoint_failure"
+        raise OSError(msg)
+
+    monkeypatch.setitem(execute.__globals__, "_write", fail)
+    with pytest.raises(OSError, match="synthetic_checkpoint_failure"):
+        await execute(args)
+    first = next(args.warc_dir.rglob("*.warc"))
+    duplicate = args.warc_dir / "attempt-ambiguous" / "response.warc"
+    duplicate.parent.mkdir()
+    duplicate.write_bytes(first.read_bytes())
+    first_digest = hashlib.sha256(first.read_bytes()).hexdigest()
+    monkeypatch.setitem(execute.__globals__, "_write", original)
+    args.resume = True
+    result = await execute(args)
+    assert len(calls) == 2
+    assert result["observations"][0]["outcome"] == "captured"
+    assert hashlib.sha256(first.read_bytes()).hexdigest() == first_digest
+    assert duplicate.read_bytes() == first.read_bytes()
 
 
 @pytest.mark.anyio

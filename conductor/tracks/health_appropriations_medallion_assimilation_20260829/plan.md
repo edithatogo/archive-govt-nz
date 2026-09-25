@@ -205,8 +205,9 @@ repository validation command. External gates block only their affected task.
   never let a current workbook replace a historical edition. [M-02, M-04,
   M-15, S-04; AC-04, AC-09, AC-13]
   Per-attempt retry events and captured-version fixity/validators are additive
-  in the fiscal capture manifest. Scheduled heartbeats/source-discovery and
-  automatic orphan-WARC reconciliation remain open; see
+  in the fiscal capture manifest. Scheduled heartbeats/source discovery and
+  redirected-orphan WARC reconciliation remain open; unique same-URL orphan
+  attempts can be recovered on explicit resume. See
   `bronze-checkpoint-contracts.md`.
 - [x] Confirm Git contains manifests/schemas/evidence only, not source payloads
   or large generated derivatives. Verified 2,998 tracked paths against all 73

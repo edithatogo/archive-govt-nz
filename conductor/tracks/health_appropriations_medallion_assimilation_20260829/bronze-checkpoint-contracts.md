@@ -133,6 +133,30 @@ scheduled heartbeat/discovery lane, does not prove that a source remains
 current between captures, and does not automatically reconcile orphan WARCs
 left between WARC fsync and manifest checkpoint promotion.
 
+## Follow-up contract — unique orphan WARC recovery (26 September 2026)
+
+When `--resume` is explicit, the fiscal runner now scans only unreferenced
+`attempt-*/response.warc` files. It adopts a WARC only when exactly one orphan
+matches a selected census URL's request hash, the final-URL hash proves the
+response was not redirected, and response framing, status, body fixity and WARC
+binding validate. The recovered CAS object/result and additive observation are
+checkpointed before further network activity. Existing attempt bytes are never
+rewritten. A recovered event records `observed_at: null` and a separate
+`recovered_at`, since the current WARC profile has no source-observation time.
+Ambiguous, redirected, malformed, oversized or otherwise unverifiable WARCs
+remain untouched; the runner proceeds with a fresh capture. `--resume` may
+start without a manifest so it can recover the first checkpoint lost in the
+WARC-fsync/manifest-write window.
+
+Offline tests prove a unique orphan avoids a second request and an ambiguous
+pair is not adopted. Focused checkpoint suite: 30 passed; Ruff and basedpyright
+passed. The full repository harness is required before hosted delivery.
+
+This does not reconcile redirected orphan WARCs; their full final URL cannot
+be recovered from the current WARC fields. It also does not claim directory
+fsync durability across power loss or adopt arbitrary WARC locations outside
+the runner's attempt-directory layout.
+
 The original Phase 2.1 task therefore stays `[~]`. These are executable
 preservation/recovery limits, not source-census or rights-promotion gates.
 Self-review found no remaining actionable defect within this bounded
