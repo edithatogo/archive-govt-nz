@@ -9,9 +9,10 @@ import json
 import os
 import sqlite3
 import tempfile
-from contextlib import closing
+from collections.abc import Iterator
+from contextlib import closing, contextmanager
 from pathlib import Path
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 from urllib.parse import urlsplit
 
 import httpx
@@ -19,6 +20,9 @@ import httpx
 from archive_govt_nz.capture import CaptureConfig, CaptureError, capture_url
 from archive_govt_nz.object_store import ContentAddressedStore
 from archive_govt_nz.warc_binding import verify_response_binding
+
+if TYPE_CHECKING:
+    from collections.abc import Iterator
 
 _RIGHTS = {
     "www.treasury.govt.nz": {
@@ -75,10 +79,15 @@ def _write(path: Path, value: object) -> None:
 
 
 async def _capture(args: argparse.Namespace) -> dict[str, object]:
-    # The kernel releases SQLite's ownership on process death. Never unlink
-    # this file: concurrent writers must continue locking the same inode.
-    args.manifest.parent.mkdir(parents=True, exist_ok=True)
-    lock = args.manifest.with_name(args.manifest.name + ".lock")
+    with _exclusive_capture_lock(args.manifest):
+        return await _capture_locked(args)
+
+
+@contextmanager
+def _exclusive_capture_lock(manifest: Path) -> Iterator[None]:
+    """Hold a kernel-released exclusive lock without unlinking its inode."""
+    manifest.parent.mkdir(parents=True, exist_ok=True)
+    lock = manifest.with_name(manifest.name + ".lock")
     if lock.is_dir():
         message = "legacy_capture_lock_requires_review"
         raise FileExistsError(message)
@@ -88,7 +97,7 @@ async def _capture(args: argparse.Namespace) -> dict[str, object]:
         except sqlite3.OperationalError as error:
             message = "capture_lock_unavailable"
             raise FileExistsError(message) from error
-        return await _capture_locked(args)
+        yield
 
 
 def _resume_results(
