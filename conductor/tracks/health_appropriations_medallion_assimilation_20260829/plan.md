@@ -298,9 +298,12 @@ integrated parent head.
 - [x] Register the dedicated health-appropriations domain and versioned
   multi-recordset schemas without weakening other domain contracts. [M-05;
   AC-05]
-- [ ] Implement safe workbook, CSV, PDF-table and SQLite adapter interfaces
-  that consume Bronze objects and emit records plus loss-accounting and field
-  lineage. Unknown formats remain `preserved_only`. [M-05, M-07; AC-03, AC-05]
+- [~] Establish hash-bound explicit adapter selection from Bronze bytes,
+  bounded XLSX preflight, ambiguity rejection and `preserved_only` fallback.
+  The common dispatch boundary is implemented; production CSV, PDF-table,
+  SQLite and remaining source-specific workbook registrations that emit typed
+  records/loss accounting/field lineage remain open. See
+  `adapter-dispatch.validation.json`. [M-05, M-07; AC-03, AC-05]
 - [ ] Implement stable dimension and mapping contracts for vote,
   appropriation, department, portfolio, amount type, functional/economic
   classification, measure, unit and period. [M-06; AC-05, AC-11]

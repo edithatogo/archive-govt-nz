@@ -20,6 +20,29 @@ CycloneDX validation. The SBOM generator emitted its informational
 validates the reconciliation; pending Phase 3 implementation and whole-track
 acceptance criteria remain open.
 
+## 2026-09-26 — Hash-bound Bronze adapter dispatch
+
+Added an explicit adapter registry boundary for immutable Bronze bytes. It
+checks the caller's SHA-256 before routing, detects the supported XLSX/CSV/PDF/
+SQLite media types, applies the existing bounded XLSX inventory preflight,
+rejects duplicate/ambiguous registrations, and records adapter ID/version and
+source fixity. Unknown, malformed, mismatched and unregistered payloads produce
+located `preserved_only` loss records. Twenty-two focused dispatch/protocol
+tests pass with 100% line/branch coverage; Ruff, formatting and strict
+basedpyright pass. An initial full-harness retry stopped at Ruff because the
+invalid-output test fake left protocol arguments unused; those arguments were
+then consumed, with no behavior change. The final repository harness retry
+passed on the corrected head: 6,875 tests, 9 skipped, 98.07% branch-aware
+coverage, 48 schemas, 38 representative documents, 9/9 parity, all configured
+mutation lanes, hygiene, CAS throughput, dependency and licence audits, secret
+scan, and strict 113-component CycloneDX validation. The SBOM generator's
+“Validation skipped” warning preceded the required strict validator, which
+passed. The selection boundary does not
+register production extractors: CSV dialects, PDF table parsing, SQLite
+semantics and family-specific workbook projection remain open. The earlier
+failed attempts and successful exact-head result are recorded here and in
+`adapter-dispatch.validation.json`.
+
 ## 2026-09-07 — Bounded Phase 2.1 ingestion contracts
 
 Read-only parent follow-up review at `1f53a6e8` found no actionable diff issue;
