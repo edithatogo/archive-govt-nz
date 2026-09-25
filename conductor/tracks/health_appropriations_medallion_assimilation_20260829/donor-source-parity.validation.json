@@ -1,0 +1,91 @@
+{
+  "donor_database_sha256": "a2f9973846e1213823b499e4a019d314485110e80e4ee5a8984ebf3f35c85c8e",
+  "donor_identity": {
+    "commit": "4668e6c3b1b492086941d4c1ef96e299250a8301",
+    "repository": "https://github.com/edithatogo/nz_health_appropriations",
+    "tree": "c6d44ff79eda73cfc6ba7db5764e27ce01b890e1"
+  },
+  "historical_decimal_reconciliation": {
+    "all_deviations_have_rationale_and_source_location": true,
+    "deviation_dispositions": "blocked",
+    "deviation_rows": 30,
+    "ledger_rows": 106,
+    "ledger_sha256": "7d04a1a44b7bfd35b4dc898065bb426b1421f2926f269d345586874367c0c482",
+    "publication_approved": false,
+    "replacement_values": "null",
+    "rows": 106,
+    "statuses": {
+      "exact_match": 76,
+      "source_only": 29,
+      "value_difference": 1
+    }
+  },
+  "normalization_manifest_sha256": {
+    "befu": "4092c4296a31367a08550b7ffcc0ec97ea428650e3ce8521bc087c8e835df4b9",
+    "budget": "95261c0fd611350250c230396c2b553796aa6edbdab8f395ecd09ddc820eb160",
+    "historical": "843686511b5b82954a593350462363b6b70f61d54b81b03dd5ef24c585f7c9b1",
+    "hyefu": "bb3a07e4d6c916a918222c7908d8ba61b63d904c452e6ccfe4532b103b7f444e"
+  },
+  "normalized_fact_counts": {
+    "befu": 10,
+    "budget_expenditure": 215,
+    "historical_total": 106,
+    "hyefu": 10
+  },
+  "publication": "not_performed",
+  "schema_version": "archive-govt-nz.health-donor-source-parity-validation/v1",
+  "source_bytes_modified": false,
+  "source_payload_copied_to_repository": false,
+  "source_sha256": {
+    "data/processed/health_funding_nz.sqlite": "a2f9973846e1213823b499e4a019d314485110e80e4ee5a8984ebf3f35c85c8e",
+    "data/raw/b25-expenditure-data.xlsx": "d67c01b0a3f1fbee5cb5121b641bda42f91f3e5bc84e599d22d32aeacbbb3338",
+    "data/raw/befu25-data-expense-tables.xlsx": "dbde3256b1cbfb847f9f6caec66e7adffabca0489b218997a431220da584a3d6",
+    "data/raw/fiscaltimeseries1972-2024.xlsx": "769f2e7dd6000878cd29c2d913ad6979f28c5391c971292e6abf6148e83eb32d",
+    "data/raw/hyefu24-data-expense-tables.xlsx": "725399c09323594c921dbcc493206abe59bf7b91dd968b8c7f6f3a67d4707969"
+  },
+  "source_to_donor_row_comparison": {
+    "algorithm": "type-tagged SHA-256 row multiset, exact REAL hexadecimal identity, duplicate multiplicity preserved",
+    "candidate_sha256": "e596516a8e480335720552d7c1b13d045971e488c5ba5fb1df9079cb0e216986",
+    "donor_rows": 312,
+    "matched_rows": 312,
+    "status": "unresolved",
+    "table_counts": {
+      "gdp_historical": {
+        "candidate": 53,
+        "candidate_only": 0,
+        "donor": 53,
+        "donor_only": 0,
+        "matched": 53
+      },
+      "health_spending_summary_befu25_data_expense_tables": {
+        "candidate": 10,
+        "candidate_only": 0,
+        "donor": 10,
+        "donor_only": 0,
+        "matched": 10
+      },
+      "health_spending_summary_hyefu24_data_expense_tables": {
+        "candidate": 10,
+        "candidate_only": 0,
+        "donor": 10,
+        "donor_only": 0,
+        "matched": 10
+      },
+      "historical_health_spending": {
+        "candidate": 53,
+        "candidate_only": 29,
+        "donor": 24,
+        "donor_only": 0,
+        "matched": 24
+      },
+      "recent_health_appropriations": {
+        "candidate": 215,
+        "candidate_only": 0,
+        "donor": 215,
+        "donor_only": 0,
+        "matched": 215
+      }
+    },
+    "unresolved_candidate_only_rows": 29
+  }
+}

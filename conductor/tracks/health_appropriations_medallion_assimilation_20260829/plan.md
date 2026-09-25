@@ -356,10 +356,12 @@ integrated parent head.
   appropriation and HYEFU/BEFU summary extraction using Bronze-derived test
   fixtures; cover headers, footers, blanks, formulas, duplicates, units and
   source-layout failures. [M-07, M-08, M-18; AC-03, AC-06, AC-16]
-- [ ] Create a row-level parity oracle for all five SQLite tables/312 rows,
-  joined to the in-scope donor workbook source areas. Synthetic database
-  comparison contracts exist; source-to-oracle binding remains open. [M-08,
-  M-18; AC-06, AC-11, AC-16]
+- [x] Execute the type-tagged row-level parity oracle for all five donor
+  SQLite tables/312 rows against their pinned original workbook sources. All
+  312 donor rows matched; 29 additional annotated historical Health years were
+  retained as candidate-only deviations and joined to source-cell evidence.
+  `donor-source-parity.validation.json` records the exact source, database and
+  normalization-manifest pins. [M-08, M-18; AC-06, AC-11, AC-16]
 - [x] Require explicit reconciliation rationale and source coordinates for
   source-present deviations in the repair ledger; donor-only records retain a
   null source coordinate and require a reason. This records evidence only and

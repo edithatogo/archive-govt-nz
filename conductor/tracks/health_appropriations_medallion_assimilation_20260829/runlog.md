@@ -2492,3 +2492,8 @@ The full repository harness for the repair-ledger evidence contract passed:
 documents, differential parity 9/9, configured mutation and hygiene gates,
 CAS benchmark 524.23 MB/s, dependency/license/secret checks, and strict SBOM
 validation with 113 components.
+
+
+## 2026-09-26 — Reconcile live adapter outputs to all five donor tables
+
+Cloned the public donor read-only at pinned commit `4668e6c3b1b492086941d4c1ef96e299250a8301` and verified its tree `c6d44ff79eda73cfc6ba7db5764e27ce01b890e1`. Ran the existing Budget expenditure, historical, BEFU and HYEFU normalizers against the exact pinned original workbooks in a temporary directory. Their selected outputs comprise 215 appropriation rows, 106 historical facts and 10 rows in each summary package. Compared the resulting typed row multisets to the pinned five-table SQLite database: all 312 donor rows match exactly, with 29 additional candidate-only historical Health years. The separate exact-decimal historical reconciliation yields 76 exact matches, 29 source-only annotated years and one decimal-value difference; a 106-row ledger validates against the hardened schema, all 30 deviations remain blocked, and no replacement or publication approval is asserted. The payload-free receipt binds source/database hashes and normalization manifest hashes. No source payload was copied into the repository. Full harness for the ledger contract passed 6,906 tests, 9 skipped, 98.08% branch coverage, 48 schemas, 38 representative documents, parity 9/9, mutation/supply-chain gates and 113-component SBOM. Broader workbook fixture families, the remaining source areas (including Budget revenue), and acceptance of the 30 deviations remain open.
