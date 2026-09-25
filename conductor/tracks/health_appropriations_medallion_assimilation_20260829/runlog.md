@@ -2465,3 +2465,12 @@ basedpyright passed. `./scripts/validate.sh` passed: 6,901 tests, 9 skipped,
 configured mutation, hygiene, supply-chain, and strict 113-component SBOM gates.
 Other normalization packages, schema fingerprints, source-layout drift reports,
 and broader cross-family repeat identity remain open.
+
+
+The initial hosted Codecov patch gate found one untested fail-closed dispatch
+selection guard and the successful dry-run status branch. Added regression
+contracts proving a non-selected revenue adapter writes no package and a
+successful dry run reports planned without writing files. The combined revenue
+normalizer/dispatch focused run now passes 64 tests and covers the touched
+revenue normalizer at 100% line and branch coverage; Ruff and basedpyright pass.
+The updated hosted Codecov and Windows checks remain pending.
