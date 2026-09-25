@@ -2448,3 +2448,29 @@ cover both touched modules at 100% line and branch coverage. The updated full
 harness passed: 6,901 tests, 9 skipped, 98.08% total coverage, all configured
 schema, parity, mutation, hygiene, and supply-chain gates green. The new exact-head
 Codecov check remains required.
+
+
+## 2026-09-26 — Persist Budget revenue selection receipts
+
+Added the canonical hash-bound adapter selection receipt to the Budget revenue
+normalization manifest using the same verified source bytes used for extraction.
+The revenue parser retains its existing unsupported-layout behavior and writes
+no package unless the revenue registration is the unique dispatch selection.
+The red-first package contract verifies the selected adapter/version and source
+fixity in the manifest; the existing repeat-build comparison now covers the
+manifest and Parquet bytes with this receipt included. Focused dispatch and Budget
+revenue/expenditure adapter suites passed 68 tests; Ruff, formatting, and
+basedpyright passed. `./scripts/validate.sh` passed: 6,901 tests, 9 skipped,
+98.08% coverage, 48 schemas, 38 representative documents, parity 9/9, all
+configured mutation, hygiene, supply-chain, and strict 113-component SBOM gates.
+Other normalization packages, schema fingerprints, source-layout drift reports,
+and broader cross-family repeat identity remain open.
+
+
+The initial hosted Codecov patch gate found one untested fail-closed dispatch
+selection guard and the successful dry-run status branch. Added regression
+contracts proving a non-selected revenue adapter writes no package and a
+successful dry run reports planned without writing files. The combined revenue
+normalizer/dispatch focused run now passes 64 tests and covers the touched
+revenue normalizer at 100% line and branch coverage; Ruff and basedpyright pass.
+The updated hosted Codecov and Windows checks remain pending.

@@ -26,7 +26,7 @@
         "considered_adapter_ids",
         "matched_adapter_ids"
       ],
-      "serialization_only": "does_not_persist_receipt_or_attest_source_rights_or_capture"
+      "serialization_only": "canonical_receipt_is_persisted_in_budget_expenditure_and_revenue_manifests;_it_does_not_attest_source_rights_or_capture"
     }
   },
   "focused_validation": {
@@ -66,7 +66,7 @@
     "No production adapters are registered by this dispatcher change",
     "CSV dialect, PDF table extraction, SQLite schema and source-layout semantics remain adapter-specific",
     "This selection receipt does not prove extraction completeness, source truth, rights, or lineage closure",
-    "Manifest persistence is wired for the Budget expenditure normalizer; other adapters and packages remain to be integrated"
+    "Manifest persistence is wired for Budget expenditure and revenue normalizers; other adapters and packages remain to be integrated"
   ],
   "publication": "not_performed"
 }

@@ -20,6 +20,9 @@ from hypothesis import strategies as st
 from openpyxl import Workbook
 
 from archive_govt_nz.domains.health_appropriations import budget_revenue as revenue
+from archive_govt_nz.domains.health_appropriations.adapter_dispatch import (
+    AdapterSelection,
+)
 
 HEADERS = [
     "Department",
@@ -212,6 +215,14 @@ def test_real_contract_shape_distinct_rows_and_complete_accounting(
         "Pivot Trend by Vote",
     }
     assert receipt["embedded_notice"]["eligibility_state"] == "not_assessed"
+    selection = receipt["adapter_selection"]
+    assert isinstance(selection, dict)
+    assert selection["status"] == "selected"
+    assert selection["adapter"] == {
+        "id": "nz-budget-health-revenue",
+        "version": "1.0.0",
+    }
+    assert selection["source_sha256"] == hashlib.sha256(before).hexdigest()
     assert (
         receipt["embedded_notice"]["source_object_sha256"]
         == hashlib.sha256(before).hexdigest()
@@ -448,3 +459,44 @@ def test_duplicate_values_preserve_source_occurrences(amounts: list[int]) -> Non
         facts = pq.read_table(root / "out/revenue_facts.parquet").to_pylist()
         assert [r["amount"] for r in facts] == [Decimal(a) for a in amounts]
         assert len({r["record_id"] for r in facts}) == len(amounts)
+
+
+def test_dispatch_selection_mismatch_cannot_write_revenue_package(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    original = source(tmp_path)
+    digest = hashlib.sha256(original.read_bytes()).hexdigest()
+    monkeypatch.setattr(
+        "archive_govt_nz.domains.health_appropriations.adapter_dispatch.select_bronze_adapter",
+        lambda _payload, **_kwargs: AdapterSelection(
+            "archive-govt-nz.health-adapter-selection/v1",
+            digest,
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            None,
+            None,
+            "preserved_only",
+            "no_matching_layout",
+        ),
+    )
+    with pytest.raises(
+        ValueError, match="unsupported_budget_revenue_dispatch_selection"
+    ):
+        run(original, tmp_path / "out")
+    assert not (tmp_path / "out").exists()
+
+
+def test_successful_dry_run_reports_planned_without_writing_package(
+    tmp_path: Path,
+) -> None:
+    original = source(tmp_path)
+    receipt = revenue.normalize_budget_revenue(
+        original,
+        tmp_path / "dry-run",
+        expected_sha256=hashlib.sha256(original.read_bytes()).hexdigest(),
+        source_locator="data/raw/b25-revenue-data.xlsx",
+        observed_at="2026-08-30T00:00:00Z",
+        dry_run=True,
+    )
+    assert receipt["status"] == "planned"
+    assert not (tmp_path / "dry-run").exists()
