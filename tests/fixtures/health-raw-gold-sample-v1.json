@@ -15,7 +15,8 @@
     "historical_yoy.parquet": 1,
     "health_spending_gdp_share.parquet": 1,
     "recent_classification_trends.parquet": 1,
-    "recent_functional_breakdown.parquet": 0
+    "recent_functional_breakdown.parquet": 0,
+    "budget_vs_estimated_actual.parquet": 0
   },
   "pyarrow_version": "23.0.1",
   "publication_state": "local_validation_only",
@@ -25,6 +26,7 @@
     "health_spending_gdp_share.parquet": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
     "recent_classification_trends.parquet": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
     "recent_functional_breakdown.parquet": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "budget_vs_estimated_actual.parquet": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
     "input_records.jsonl": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
     "field_lineage.jsonl": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
   }
