@@ -252,14 +252,25 @@ repository validation command. External gates block only their affected task.
   Functional commit `d67bd41`; 34 focused tests, 30 cold mutant kills and a
   full local harness pass with 2,424 tests. Hosted delivery remains separate.
   [M-05, M-06, M-18; AC-05, AC-16]
-- [ ] Add failing JSON Schema/Arrow/Parquet fixtures for the eight required
+- [x] Add failing JSON Schema/Arrow/Parquet fixtures for the eight required
   `health_appropriations` record sets, versioning, stable IDs, fixed-precision
   money, null reasons, units, vintages, bitemporal fields, rights and lineage.
-  [M-05, M-06, M-18; AC-05, AC-16]
-- [ ] Add negative fixtures for binary-as-text decoding, unknown layouts,
+  Verified by the merged linked-fixture suite (673 affected tests); see
+  `eight-recordset-fixture-completion.md` and its paired JSON receipt.
+  Transport admission is not semantic source approval. [M-05, M-06, M-18;
+  AC-05, AC-16]
+- [x] Add negative fixtures for binary-as-text decoding, unknown layouts,
   ambiguous units, duplicate keys, incompatible periods, missing lineage,
   formula/cached-value ambiguity and unjustified classification mappings.
+  Existing rejection and boundary fixtures cover binary payloads, duplicate
+  JSON keys/IDs, unsupported layouts, interval conflicts, formula/cache
+  uncertainty and evidence-bearing mappings. Unknown or unjustified facts
+  remain preserved/unqualified where transport is intentionally permissive.
   [M-05, M-06, M-07, M-18; AC-05, AC-11, AC-16]
+
+The fixture tasks above are complete from their task-specific evidence. The
+full Phase 3.4 integration checkpoint remains open and must run on the
+integrated parent head.
 
 ### 3.2 Implement the domain and adapter protocol
 
