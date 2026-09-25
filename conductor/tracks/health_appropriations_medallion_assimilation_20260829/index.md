@@ -45,6 +45,7 @@ every planned record set, measure or operational workflow.
 - [Pharmac medicines-budget HTML contract](./pharmac-cpb.md)
 - [Additive eight-record-set structural contracts](./recordset-contracts.md)
 - [Hash-bound Bronze adapter dispatch and validation](./adapter-dispatch.validation.json)
+- [Named-column Budget workbook dispatch adapter validation](./budget-adapter.validation.json)
 - [Historical package snapshot verification](./historical-snapshot.md)
 - [Hash-bound embedded-notice observations](./embedded-notices.md)
 - [Standalone Budget-package operations](./budget-operations.md)
