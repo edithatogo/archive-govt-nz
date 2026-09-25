@@ -118,3 +118,8 @@ def test_transport_and_integrity_fail_closed() -> None:
     ):
         with pytest.raises(AnnualPopulationExportError):
             inspect_export(data, transport=ExportTransport(status, media, digest))
+
+
+def test_malformed_csv_is_rejected() -> None:
+    with pytest.raises(AnnualPopulationExportError, match="csv_encoding"):
+        inspect(b'"unfinished')
