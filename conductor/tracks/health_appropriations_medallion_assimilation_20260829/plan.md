@@ -511,10 +511,10 @@ repository validation command. External gates block only their affected task.
   observations required by Gold formulas, with base/definition/vintage
   metadata. [M-05, M-06, M-12; AC-05, AC-10]
   A Stats NZ DPE056AA annual mean export (1991–2026) is now preserved in Bronze
-  with displayed status flags and a strict source-profile parser. The export
-  closes this source-payload gap only; rights, historical vintages, analytical
-  selection and denominator approval remain open. See
-  `population-annual-export.md`.
+  with displayed status flags, a strict source-profile parser and typed
+  context-only Silver facts, lineage and row dispositions. Rights, historical
+  vintages, analytical selection and denominator approval remain open. See
+  `population-annual-export.md` and `population-annual-silver.md`.
   The BEFU 2026 core Crown expense formula-cache series now has a bounded
   Silver extraction with side-by-side formula/cache lineage and explicit
   unverified freshness, currency and fiscal-year basis. See

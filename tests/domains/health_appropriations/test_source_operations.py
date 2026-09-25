@@ -36,6 +36,9 @@ from tests.domains.health_appropriations.test_gdp import workbook as gdp_fixture
 from tests.domains.health_appropriations.test_pharmac import (
     fixture_source as pharmac_fixture,
 )
+from tests.domains.health_appropriations.test_population_annual_export import (
+    payload as population_annual_payload,
+)
 from tests.domains.health_appropriations.test_qes import fixture as qes_fixture
 
 from archive_govt_nz import cli, mcp_server
@@ -53,6 +56,7 @@ from archive_govt_nz.mcp_server import Server, call_tool, list_tools
 @pytest.fixture(
     params=[
         "cpiq-se9a/v1",
+        "population-annual-mean-context/v1",
         "budget-revenue-2025/v1",
         "budget-revenue-2026/v1",
         "moh-hair2024-fig27/v1",
@@ -69,7 +73,10 @@ def request_source(
 ) -> source_operations.SourceRequest:
     profile = request.param
     source = tmp_path / "source"
-    if profile == "cpiq-se9a/v1":
+    if profile == "population-annual-mean-context/v1":
+        source.write_bytes(population_annual_payload())
+        vintage = "2026-08-18"
+    elif profile == "cpiq-se9a/v1":
         source.write_bytes(
             (
                 HEADER + "CPIQ.SE9A,1914.06,1.25" + META + "CPIQ.SE9A,1914.09,NA" + META
