@@ -56,6 +56,13 @@ def test_ci_fetches_history_for_commit_bound_authority() -> None:
     assert "fetch-depth: 0" in text
 
 
+def test_ci_assurance_timeout_covers_windows_full_harness() -> None:
+    """Cross-platform gates must leave time for the final supply-chain steps."""
+    root = Path(__file__).parents[2]
+    text = (root / ".github/workflows/ci.yml").read_text(encoding="utf-8")
+    assert "timeout-minutes: 30" in text
+
+
 def test_health_discovery_preserves_failure_receipts() -> None:
     """Hosted source failures must still upload the bounded discovery receipt."""
     root = Path(__file__).parents[2]

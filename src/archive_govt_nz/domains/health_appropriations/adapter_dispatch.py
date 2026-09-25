@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import hashlib
+import json
 import re
 from dataclasses import dataclass
 from io import BytesIO
@@ -57,6 +58,27 @@ class AdapterSelection:
     reason: str | None
     considered_adapter_ids: tuple[str, ...] = ()
     matched_adapter_ids: tuple[str, ...] = ()
+
+    def to_receipt(self) -> dict[str, object]:
+        """Return canonical JSON-safe evidence bound to this exact decision."""
+        receipt: dict[str, object] = {
+            "schema_version": self.schema_version,
+            "source_sha256": self.source_sha256,
+            "declared_media_type": self.declared_media_type,
+            "detected_media_type": self.detected_media_type,
+            "adapter": None
+            if self.adapter_id is None
+            else {"id": self.adapter_id, "version": self.adapter_version},
+            "status": self.status,
+            "reason": self.reason,
+            "considered_adapter_ids": list(self.considered_adapter_ids),
+            "matched_adapter_ids": list(self.matched_adapter_ids),
+        }
+        canonical = json.dumps(
+            receipt, sort_keys=True, separators=(",", ":"), allow_nan=False
+        ).encode()
+        receipt["receipt_sha256"] = hashlib.sha256(canonical).hexdigest()
+        return receipt
 
 
 @dataclass(frozen=True, slots=True)

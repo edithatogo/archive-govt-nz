@@ -1,6 +1,7 @@
 """Fail-closed selection contracts for immutable Health Bronze payloads."""
 
 import hashlib
+import json
 from io import BytesIO
 
 import pytest
@@ -157,6 +158,40 @@ def test_multiple_layouts_require_probes_and_select_exactly_one_match() -> None:
     assert result.selection.matched_adapter_ids == ("first",)
     assert first.calls == [(payload, digest)]
     assert second.calls == []
+
+
+def test_selection_receipt_is_canonical_and_binds_fail_closed_evidence() -> None:
+    payload = b"%PDF-1.7\nlayout-a"
+    digest = hashlib.sha256(payload).hexdigest()
+    first = RecordingAdapter()
+    second = RecordingAdapter()
+    registrations = (
+        AdapterRegistration(
+            "first", "v1", PDF, first, layout_probe=lambda data: b"layout-a" in data
+        ),
+        AdapterRegistration(
+            "second", "v2", PDF, second, layout_probe=lambda data: b"layout-b" in data
+        ),
+    )
+    result = dispatch_bronze(
+        payload,
+        source_sha256=digest,
+        media_type=PDF,
+        registrations=registrations,
+    )
+
+    receipt = result.selection.to_receipt()
+    unsigned = {key: value for key, value in receipt.items() if key != "receipt_sha256"}
+    canonical = json.dumps(
+        unsigned, sort_keys=True, separators=(",", ":"), allow_nan=False
+    ).encode()
+    assert receipt["receipt_sha256"] == hashlib.sha256(canonical).hexdigest()
+    assert receipt["source_sha256"] == digest
+    assert receipt["status"] == "selected"
+    assert receipt["adapter"] == {"id": "first", "version": "v1"}
+    assert receipt["considered_adapter_ids"] == ["first", "second"]
+    assert receipt["matched_adapter_ids"] == ["first"]
+    assert json.loads(json.dumps(receipt, sort_keys=True)) == receipt
 
 
 def test_single_layout_probe_is_recorded_in_selection() -> None:
