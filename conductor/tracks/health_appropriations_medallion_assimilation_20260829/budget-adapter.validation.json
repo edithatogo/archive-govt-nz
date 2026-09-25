@@ -19,17 +19,18 @@
     "manifest_selection_receipt": "canonical_hash_bound_dispatch_evidence"
   },
   "focused_validation": {
-    "tests": "6 passed",
+    "tests": "91 passed across dispatch, expenditure, and revenue adapter suites",
     "adapter_line_and_branch_coverage_percent": 100,
     "ruff_check": "passed",
     "ruff_format": "passed",
     "basedpyright": "passed",
-    "manifest_persistence": "passed; repeat output manifest and Parquet bytes identical"
+    "manifest_persistence": "passed; repeat output manifest and Parquet bytes identical",
+    "normalizer_line_and_branch_coverage_percent": 100
   },
   "full_repository_validation": {
     "command": "./scripts/validate.sh",
     "exit_code": 0,
-    "tests_passed": 6900,
+    "tests_passed": 6901,
     "tests_skipped": 9,
     "branch_coverage_percent": 98.08,
     "schemas": 48,
@@ -37,7 +38,7 @@
     "differential_parity": "9/9 passed",
     "configured_mutation_lanes": "passed",
     "hygiene": "passed",
-    "cas_benchmark_megabytes_per_second": 297.94,
+    "cas_benchmark_megabytes_per_second": 499.3,
     "dependency_audit": "passed_no_known_vulnerabilities",
     "licence_inventory": "passed",
     "secrets": "passed",

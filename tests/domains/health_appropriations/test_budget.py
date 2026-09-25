@@ -14,6 +14,9 @@ import pytest
 from openpyxl import Workbook
 
 from archive_govt_nz.domains.health_appropriations import budget, workbook_common
+from archive_govt_nz.domains.health_appropriations.adapter_dispatch import (
+    AdapterSelection,
+)
 from archive_govt_nz.domains.health_appropriations.budget import (
     normalize_budget_workbook,
 )
@@ -198,6 +201,29 @@ def test_hash_and_existing_output_fail_closed(tmp_path: Path) -> None:
     with pytest.raises(FileExistsError):
         _run(source, tmp_path / "out", digest)
     assert list((tmp_path / "out").iterdir()) == []
+
+
+def test_dispatch_selection_mismatch_cannot_write_extraction_package(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    source = tmp_path / "book.xlsx"
+    digest = _source(source, [ROW])
+    monkeypatch.setattr(
+        "archive_govt_nz.domains.health_appropriations.adapter_dispatch.select_bronze_adapter",
+        lambda _payload, **_kwargs: AdapterSelection(
+            "archive-govt-nz.health-adapter-selection/v1",
+            digest,
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            None,
+            None,
+            "preserved_only",
+            "no_matching_layout",
+        ),
+    )
+    with pytest.raises(ValueError, match="unsupported_budget_dispatch_selection"):
+        _run(source, tmp_path / "out", digest)
+    assert not (tmp_path / "out").exists()
 
 
 @pytest.mark.parametrize("digest", ["a" * 63, "a" * 65, "A" * 64, "g" * 64, ""])
