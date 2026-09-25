@@ -25,10 +25,10 @@ def test_historical_source_register_retains_scope_and_discovery_boundary() -> No
     assert report["publication_authorized"] is False
     assert report["whole_history_complete"] is False
     records = report["resource_observations"]
-    assert len(records) == 23
+    assert len(records) == 31
     assert len({row["url"] for row in records}) == len(records)
     assert len({row["source_id"] for row in records}) == len(records)
-    assert len({(r["edition_year"], r["family"], r["kind"]) for r in records}) == 23
+    assert len({(r["edition_year"], r["family"], r["kind"]) for r in records}) == 31
     assert {(r["family"], r["kind"]) for r in records} == {
         ("budget", "expenditure"),
         ("budget", "revenue"),
@@ -43,7 +43,7 @@ def test_historical_source_register_retains_scope_and_discovery_boundary() -> No
     budget_records = [row for row in records if row["family"] == "budget"]
     assert {(row["edition_year"], row["kind"]) for row in budget_records} == {
         (year, kind)
-        for year in (2020, 2021, 2022, 2023, 2024)
+        for year in (2018, 2019, 2020, 2021, 2022, 2023, 2024)
         for kind in ("expenditure", "revenue")
     }
     by_year = {row["edition_year"]: row for row in budget_records}
@@ -52,6 +52,20 @@ def test_historical_source_register_retains_scope_and_discovery_boundary() -> No
     assert by_year[2022]["rights_state"] == "not_evaluated"
     assert by_year[2022]["rights_evidence"] == "landing_page_states_cc_by_4_0"
     assert by_year[2021]["rights_evidence"] == "licence_not_observed"
+    befu_records = [row for row in records if row["family"] == "befu"]
+    assert {
+        (row["edition_year"], row["kind"])
+        for row in befu_records
+        if row["edition_year"] in (2018, 2019)
+    } == {
+        (year, kind) for year in (2018, 2019) for kind in ("charts", "expense_tables")
+    }
+    assert all(
+        row["rights_state"] == "not_evaluated"
+        and row["rights_evidence"] == "landing_page_states_cc_by_4_0"
+        for row in records
+        if row["edition_year"] in (2018, 2019)
+    )
     for row in records:
         assert row["source_id"] == (
             "treasury-historical-"
@@ -66,7 +80,7 @@ def test_historical_source_register_retains_scope_and_discovery_boundary() -> No
         parsed = urlsplit(row["url"])
         assert parsed.scheme == "https"
         assert parsed.netloc == "www.treasury.govt.nz"
-        assert parsed.path.endswith((".xlsx", ".pdf"))
+        assert parsed.path.endswith((".xls", ".xlsx", ".pdf"))
         assert not parsed.query
         assert not parsed.fragment
     for gap in report["edition_dispositions"]:
