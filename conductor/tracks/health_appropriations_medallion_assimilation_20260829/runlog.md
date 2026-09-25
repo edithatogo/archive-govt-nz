@@ -2421,3 +2421,30 @@ policy suite passed 6 tests. The required `./scripts/validate.sh` then passed:
 representative documents, differential parity 9/9, all configured mutations,
 hygiene and supply-chain gates, and a strict 113-component SBOM. Hosted
 Windows rerun is required to verify completion under the new limit.
+
+
+## 2026-09-26 — Persist Budget selection receipts
+
+Added a non-extracting hash-bound adapter preflight and embedded its canonical
+selection receipt in the verified Budget expenditure extraction manifest. The
+normalizer uses one verified source snapshot for selection and extraction,
+retains existing missing-sheet/header error contracts, and refuses package
+creation unless the expenditure profile is the unique selection. Repeat builds
+verify identical manifest bytes and Parquet bytes. A red-first dispatch contract
+proves preflight does not run adapter extraction. Focused dispatch and Budget
+adapter/extraction suites passed 90 tests; Ruff, formatting, and basedpyright
+passed. `./scripts/validate.sh` passed: 6,900 tests, 9 skipped, 98.08%
+branch-aware coverage, 48 schemas, 38 representative documents, parity 9/9, all
+configured mutation and supply-chain gates, and a strict 113-component SBOM.
+Persisted receipts for other normalization packages, schema fingerprints, and
+repeat identity across the other source families remain open.
+
+
+Codecov initially reported 90.00% patch coverage because the selector/normalizer
+mismatch guard had no direct contract. Added a regression proving a fail-closed
+selection mismatch prevents package creation even when the independent parser
+can read the workbook. The combined dispatch/Budget tests now pass 91 tests and
+cover both touched modules at 100% line and branch coverage. The updated full
+harness passed: 6,901 tests, 9 skipped, 98.08% total coverage, all configured
+schema, parity, mutation, hygiene, and supply-chain gates green. The new exact-head
+Codecov check remains required.
