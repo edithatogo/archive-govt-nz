@@ -15,7 +15,7 @@ from typing import IO, Any
 
 import pytest
 
-from archive_govt_nz.capture import CaptureError, CaptureResult
+from archive_govt_nz.capture import CaptureAttempt, CaptureError, CaptureResult
 from archive_govt_nz.object_store import ContentAddressedStore, ObjectStoreError
 from archive_govt_nz.warc import write_response_record
 
@@ -402,6 +402,99 @@ async def test_repeated_interruption_keeps_unvisited_retained_captures(
     assert complete["captured"] == 3
     assert complete["results"][1] == two
     assert args.manifest.with_name(args.manifest.name + ".lock").is_file()
+
+
+@pytest.mark.anyio
+async def test_observation_history_retains_retry_and_immutable_source_versions(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Resume appends attempt history and never replaces captured versions."""
+    execute, args, _ = setup(tmp_path, monkeypatch)
+    census = json.loads(args.census.read_text())
+    first = census["records"][0]
+    census["records"] = [
+        dict(first, source_id="one", url="https://www.treasury.govt.nz/one.csv"),
+        dict(first, source_id="two", url="https://www.treasury.govt.nz/two.csv"),
+    ]
+    args.census.write_text(json.dumps(census))
+    phase = 0
+
+    async def observed(
+        _client: object,
+        url: str,
+        store: ContentAddressedStore,
+        _config: object,
+        *,
+        transaction_warc_path: Path,
+    ) -> CaptureResult:
+        nonlocal phase
+        payload = b"v1" if phase == 0 else b"v2"
+        receipt = store.put_bytes(payload)
+        warc_receipt = write_response_record(
+            transaction_warc_path,
+            url=url,
+            status_code=200,
+            headers={"content-type": "text/csv", "etag": f'"{payload.decode()}"'},
+            body=payload,
+        )
+        return CaptureResult(
+            url,
+            200,
+            "text/csv",
+            receipt,
+            warc_receipt,
+            attempt_receipts=(CaptureAttempt(url, 200, "captured", 0.0),),
+        )
+
+    def event(outcome: str) -> dict[str, object]:
+        value: dict[str, object] = {
+            "source_id": "one",
+            "observed_at": "2026-09-26T00:00:00Z",
+            "outcome": outcome,
+            "attempts": [{"status_code": None, "outcome": outcome}],
+        }
+        value["observation_id"] = execute.__globals__["_observation_id"]("one", value)
+        return value
+
+    args.manifest.write_text(
+        json.dumps(
+            {
+                "schema_version": "archive-govt-nz.health-capture-manifest/v1",
+                "capture_context": {
+                    "census_sha256": hashlib.sha256(
+                        args.census.read_bytes()
+                    ).hexdigest(),
+                    "max_resource_bytes": args.max_resource_bytes,
+                    "contract": "health-capture-resume/v1",
+                },
+                "results": [{"source_id": "one", "state": "retryable"}],
+                "observations": [event("transport_retryable")],
+            }
+        )
+    )
+    args.resume = True
+    phase = 0
+    monkeypatch.setitem(execute.__globals__, "capture_url", observed)
+    first = await execute(args)
+    checkpoint = json.loads(args.manifest.read_text())
+    assert [row["outcome"] for row in checkpoint["observations"]] == [
+        "transport_retryable",
+        "captured",
+        "captured",
+    ]
+    old_version = checkpoint["observations"][1]
+    monkeypatch.setitem(execute.__globals__, "capture_url", observed)
+    phase = 1
+    args.manifest = tmp_path / "next-observation.json"
+    args.resume = False
+    complete = await execute(args)
+    assert complete["observations"][0]["sha256"] != old_version["sha256"]
+    assert len({event["observation_id"] for event in complete["observations"]}) == 2
+    assert complete["observations"][0]["source_id"] == "one"
+    assert complete["observations"][1]["source_id"] == "two"
+    assert old_version["etag"] == '"v1"'
+    assert old_version["validator_state"] == "present"
+    assert (args.warc_dir / old_version["warc_path"]).is_file()
 
 
 @pytest.mark.anyio

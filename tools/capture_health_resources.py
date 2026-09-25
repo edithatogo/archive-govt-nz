@@ -11,6 +11,7 @@ import sqlite3
 import tempfile
 from collections.abc import Iterator
 from contextlib import closing, contextmanager
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import TYPE_CHECKING, Any, cast
 from urllib.parse import urlsplit
@@ -61,6 +62,135 @@ _RIGHTS = {
 def _digest(path: Path) -> str:
     with path.open("rb") as handle:
         return hashlib.file_digest(handle, "sha256").hexdigest()
+
+
+def _observation_id(source_id: str, event: dict[str, object]) -> str:
+    """Derive a stable identifier for one source observation event."""
+    encoded = json.dumps(
+        event, ensure_ascii=False, sort_keys=True, separators=(",", ":")
+    )
+    digest = hashlib.sha256(encoded.encode()).hexdigest()
+    return f"{source_id}:{digest}"
+
+
+def _response_validators(warc: Path) -> tuple[str | None, str | None]:
+    """Read only the safe version validators retained in the WARC response."""
+    response_header = (
+        warc.read_bytes().split(b"\r\n\r\n", 2)[1].split(b"\r\n\r\n", 1)[0]
+    )
+    validators = {}
+    for line in response_header.decode("latin-1").split("\r\n")[1:]:
+        name, separator, value = line.partition(":")
+        if separator and name.lower() in {"etag", "last-modified"}:
+            validators[name.lower()] = value.strip()
+    return validators.get("etag"), validators.get("last-modified")
+
+
+def _observation(
+    source_id: str,
+    observed_at: str,
+    outcome: str,
+    attempts: object,
+    **version: object,
+) -> dict[str, object]:
+    event: dict[str, object] = {
+        "source_id": source_id,
+        "observed_at": observed_at,
+        "outcome": outcome,
+        "attempts": attempts,
+        **version,
+    }
+    event["observation_id"] = _observation_id(source_id, event)
+    return event
+
+
+async def _capture_one(
+    client: httpx.AsyncClient,
+    row: dict[str, Any],
+    store: ContentAddressedStore,
+    warc_dir: Path,
+    max_resource_bytes: int,
+) -> tuple[dict[str, object], dict[str, object]]:
+    """Capture one selected source and return its result and history event."""
+    source_id = cast("str", row["source_id"])
+    host = cast("str", urlsplit(cast("str", row["url"])).hostname)
+    observed_at = datetime.now(UTC).isoformat().replace("+00:00", "Z")
+    attempt = Path(tempfile.mkdtemp(prefix="attempt-", dir=warc_dir))
+    warc = attempt / "response.warc"
+    try:
+        captured = await capture_url(
+            client,
+            cast("str", row["url"]),
+            store,
+            CaptureConfig(
+                max_bytes=max_resource_bytes,
+                timeout_seconds=90,
+                max_duration_seconds=120,
+            ),
+            transaction_warc_path=warc,
+        )
+        with warc.open("r+b") as handle:
+            os.fsync(handle.fileno())
+        etag, last_modified = _response_validators(warc)
+        validator_state = "present" if etag or last_modified else "absent"
+        warc_path = warc.relative_to(warc_dir).as_posix()
+        warc_sha256 = _digest(warc)
+        receipt = captured.receipt
+        event = _observation(
+            source_id,
+            observed_at,
+            "captured",
+            [
+                {"status_code": item.status_code, "outcome": item.outcome}
+                for item in captured.attempt_receipts
+            ],
+            object_id=receipt.object_id,
+            sha256=receipt.sha256,
+            warc_path=warc_path,
+            warc_sha256=warc_sha256,
+            etag=etag,
+            last_modified=last_modified,
+            validator_state=validator_state,
+        )
+        result: dict[str, object] = {
+            "source_id": source_id,
+            "request_url_sha256": hashlib.sha256(row["url"].encode()).hexdigest(),
+            "url": captured.url,
+            "state": "captured",
+            "status_code": captured.status_code,
+            "content_type": captured.content_type,
+            "object_id": receipt.object_id,
+            "sha256": receipt.sha256,
+            "blake3": receipt.blake3,
+            "bytes": receipt.byte_count,
+            "warc_sha256": warc_sha256,
+            "warc_path": warc_path,
+            "observed_at": observed_at,
+            "etag": etag,
+            "last_modified": last_modified,
+            "validator_state": validator_state,
+            "rights": _RIGHTS[host],
+        }
+    except CaptureError as error:
+        event = _observation(
+            source_id,
+            observed_at,
+            error.error_class,
+            [
+                {"status_code": item.status_code, "outcome": item.outcome}
+                for item in error.attempts
+            ],
+        )
+        result = {
+            "source_id": source_id,
+            "url": row["url"],
+            "state": "retryable" if "retry" in error.error_class else "unavailable",
+            "error_class": error.error_class,
+            "rights": _RIGHTS[host],
+        }
+        return result, event
+    else:
+        return result, event
 
 
 def _write(path: Path, value: object) -> None:
@@ -203,6 +333,11 @@ async def _capture_locked(args: argparse.Namespace) -> dict[str, object]:
     args.warc_dir.mkdir(parents=True, exist_ok=True)
     retained = _resume_results(args, context, selected, store)
     results: list[dict[str, object]] = []
+    prior_events = []
+    if args.resume:
+        previous = json.loads(args.manifest.read_text(encoding="utf-8"))
+        prior_events = cast("list[dict[str, object]]", previous.get("observations", []))
+    observations: list[dict[str, object]] = list(prior_events)
     manifest: dict[str, object] = {
         "schema_version": "archive-govt-nz.health-capture-manifest/v1",
         "capture_context": context,
@@ -210,6 +345,7 @@ async def _capture_locked(args: argparse.Namespace) -> dict[str, object]:
         "selected": len(selected),
         "captured": 0,
         "results": results,
+        "observations": observations,
     }
     async with httpx.AsyncClient(
         headers={"User-Agent": "archive-govt-nz/0.1.0"}, timeout=90
@@ -219,56 +355,11 @@ async def _capture_locked(args: argparse.Namespace) -> dict[str, object]:
             if source_id in retained:
                 results.append(retained[source_id])
                 continue
-            host = cast("str", urlsplit(cast("str", row["url"])).hostname)
-            # Exclusive attempt directories never replace a historical WARC,
-            # even after a crash between writing it and checkpointing results.
-            attempt = Path(tempfile.mkdtemp(prefix="attempt-", dir=args.warc_dir))
-            warc = attempt / "response.warc"
-            try:
-                captured = await capture_url(
-                    client,
-                    cast("str", row["url"]),
-                    store,
-                    CaptureConfig(
-                        max_bytes=args.max_resource_bytes,
-                        timeout_seconds=90,
-                        max_duration_seconds=120,
-                    ),
-                    transaction_warc_path=warc,
-                )
-                with warc.open("r+b") as handle:
-                    os.fsync(handle.fileno())
-                results.append(
-                    {
-                        "source_id": source_id,
-                        "request_url_sha256": hashlib.sha256(
-                            row["url"].encode()
-                        ).hexdigest(),
-                        "url": captured.url,
-                        "state": "captured",
-                        "status_code": captured.status_code,
-                        "content_type": captured.content_type,
-                        "object_id": captured.receipt.object_id,
-                        "sha256": captured.receipt.sha256,
-                        "blake3": captured.receipt.blake3,
-                        "bytes": captured.receipt.byte_count,
-                        "warc_sha256": _digest(warc),
-                        "warc_path": warc.relative_to(args.warc_dir).as_posix(),
-                        "rights": _RIGHTS[host],
-                    }
-                )
-            except CaptureError as error:
-                results.append(
-                    {
-                        "source_id": source_id,
-                        "url": row["url"],
-                        "state": "retryable"
-                        if "retry" in error.error_class
-                        else "unavailable",
-                        "error_class": error.error_class,
-                        "rights": _RIGHTS[host],
-                    }
-                )
+            result, observation = await _capture_one(
+                client, row, store, args.warc_dir, args.max_resource_bytes
+            )
+            results.append(result)
+            observations.append(observation)
             # Keep not-yet-visited verified captures across another interruption.
             checkpoint = results + [
                 item
@@ -276,11 +367,13 @@ async def _capture_locked(args: argparse.Namespace) -> dict[str, object]:
                 if key not in {result["source_id"] for result in results}
             ]
             manifest["results"] = checkpoint
+            manifest["observations"] = observations
             manifest["captured"] = sum(
                 item["state"] == "captured" for item in checkpoint
             )
             _write(args.manifest, manifest)
     manifest["results"] = results
+    manifest["observations"] = observations
     manifest["captured"] = sum(item["state"] == "captured" for item in results)
     _write(args.manifest, manifest)
     return manifest

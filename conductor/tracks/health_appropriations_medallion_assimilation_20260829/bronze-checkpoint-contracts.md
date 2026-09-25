@@ -111,6 +111,28 @@ repository harness is run for this follow-up before hosted delivery.
   pre-existing defensive `capture.py` redirect-loop fallback remains uncovered
   as described in the preceding audit. Parent owns full integrated assurance.
 
+## Follow-up contract — durable observation and version history (26 September 2026)
+
+Each non-retained resource attempt now appends a deterministic observation event
+to the capture manifest. Events retain bounded status/outcome entries, UTC
+observation time, and, for successful captures, the CAS identity, immutable
+attempt WARC path and digest, and ETag/Last-Modified when present. Validator
+absence is explicit. Resume carries prior events forward, while prior WARC
+attempt directories are never overwritten. Existing v1 result consumers remain
+compatible because the event list and result fields are additive.
+
+Offline tests prove a retry observation survives resume, subsequent successful
+observations are retained, changed payloads have distinct fixity, validators
+are bound to the right WARC response, and old WARC bytes remain available.
+Focused checkpoint suite: 29 passed. `./scripts/validate.sh`: 6,853 passed,
+9 skipped, 98.06% coverage; 48 schemas, 9/9 differential parity and all
+configured mutation/supply-chain checks passed.
+
+This implements local attempt/source-version history. It does not implement a
+scheduled heartbeat/discovery lane, does not prove that a source remains
+current between captures, and does not automatically reconcile orphan WARCs
+left between WARC fsync and manifest checkpoint promotion.
+
 The original Phase 2.1 task therefore stays `[~]`. These are executable
 preservation/recovery limits, not source-census or rights-promotion gates.
 Self-review found no remaining actionable defect within this bounded
