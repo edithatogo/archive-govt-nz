@@ -59,7 +59,35 @@
     "Budget revenue dispatch covers only the reviewed 2025 and 2026 workbook layouts",
     "Source locator and observed time remain explicit caller context; selection does not attest capture or acquisition",
     "No canonical dimension mappings, rights approval, source completeness, or publication is established",
-    "CSV, PDF-table, SQLite, other workbook layouts, and broader edition coverage remain unregistered"
+    "CSV, PDF-table, SQLite, other workbook layouts, and broader edition coverage remain unregistered",
+    "Selection evidence is persisted in the normalization manifest but does not establish capture, source truth, rights approval, completeness, or publication"
   ],
-  "publication": "not_performed"
+  "publication": "not_performed",
+  "normalization_manifest_selection_receipt": {
+    "persisted": true,
+    "fields_verified": [
+      "source_sha256",
+      "adapter_id",
+      "adapter_version",
+      "status",
+      "receipt_sha256"
+    ],
+    "repeated_build_manifest_and_parquet_identity": "passed",
+    "full_repository_validation": {
+      "command": "./scripts/validate.sh",
+      "exit_code": 0,
+      "tests_passed": 6901,
+      "tests_skipped": 9,
+      "branch_coverage_percent": 98.08,
+      "schemas": 48,
+      "representative_documents": 38,
+      "differential_parity": "9/9 passed",
+      "configured_mutation_lanes": "passed",
+      "hygiene_and_cas_benchmark": "passed",
+      "dependency_audit": "passed_no_known_vulnerabilities",
+      "licence_inventory": "passed",
+      "secrets": "passed",
+      "strict_cyclonedx_components": 113
+    }
+  }
 }

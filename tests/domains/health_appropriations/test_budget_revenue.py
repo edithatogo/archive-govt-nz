@@ -212,6 +212,14 @@ def test_real_contract_shape_distinct_rows_and_complete_accounting(
         "Pivot Trend by Vote",
     }
     assert receipt["embedded_notice"]["eligibility_state"] == "not_assessed"
+    selection = receipt["adapter_selection"]
+    assert isinstance(selection, dict)
+    assert selection["status"] == "selected"
+    assert selection["adapter"] == {
+        "id": "nz-budget-health-revenue",
+        "version": "1.0.0",
+    }
+    assert selection["source_sha256"] == hashlib.sha256(before).hexdigest()
     assert (
         receipt["embedded_notice"]["source_object_sha256"]
         == hashlib.sha256(before).hexdigest()

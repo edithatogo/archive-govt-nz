@@ -35,6 +35,7 @@ MAX_BYTES = 2 * 1024 * 1024
 MAX_ROWS = 1000
 MAX_TEXT = 4096
 MAX_ID = 2**63 - 1
+_DISPATCH_SELECTION_ERROR = "unsupported_budget_revenue_dispatch_selection"
 TRANSFORMATION = "budget-2025-health-revenue/v1"
 TRANSFORMATION_2026 = "budget-2026-health-revenue/v1"
 FIELDS = {
@@ -368,6 +369,32 @@ def normalize_budget_revenue(  # noqa: PLR0913 - source observation fields are e
         expected_sha256, source_locator, source_vintage, observed_at
     )
     payload = verified_snapshot(source, expected_sha256, max_bytes=MAX_BYTES)
+    # Local imports avoid cycles: each dispatch adapter reuses one of these
+    # source normalizers' reviewed parser contracts.
+    from archive_govt_nz.domains.health_appropriations.adapter_dispatch import (  # noqa: PLC0415
+        select_bronze_adapter,
+    )
+    from archive_govt_nz.domains.health_appropriations.budget_adapter import (  # noqa: PLC0415
+        budget_expenditure_registration,
+    )
+    from archive_govt_nz.domains.health_appropriations.budget_revenue_adapter import (  # noqa: PLC0415
+        budget_revenue_registration,
+    )
+
+    adapter_context = {
+        "source_locator": source_locator,
+        "source_vintage": source_vintage,
+        "observed_at": observed_at,
+    }
+    selection = select_bronze_adapter(
+        payload,
+        source_sha256=expected_sha256,
+        media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        registrations=(
+            budget_expenditure_registration(**adapter_context),
+            budget_revenue_registration(**adapter_context),
+        ),
+    )
     inventory = inventory_workbook(BytesIO(payload))
     tokens = _number_tokens(payload)
     book = load_workbook(BytesIO(payload), data_only=False, keep_links=False)
@@ -382,6 +409,11 @@ def normalize_budget_revenue(  # noqa: PLR0913 - source observation fields are e
                 period_types=period_types,
                 definitions=definitions,
             )
+        if (
+            selection.status != "selected"
+            or selection.adapter_id != "nz-budget-health-revenue"
+        ):
+            raise ValueError(_DISPATCH_SELECTION_ERROR)
         excluded = [
             {
                 "sheet": name,
@@ -415,6 +447,7 @@ def normalize_budget_revenue(  # noqa: PLR0913 - source observation fields are e
         "status": "partial" if counts["rejected"] else "passed" if facts else "empty",
         "counts": counts,
         "embedded_notice": notice,
+        "adapter_selection": selection.to_receipt(),
         "excluded_sheets": excluded,
         "workbook_inventory": inventory,
     }
