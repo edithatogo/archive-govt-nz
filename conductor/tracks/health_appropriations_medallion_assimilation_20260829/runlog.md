@@ -2407,3 +2407,17 @@ SBOM. The receipt is currently a deterministic serialization boundary; writing
 it into persisted normalization manifests, adapter schema fingerprints,
 additional source-family drift contracts, and repeat Parquet identity remain
 open.
+
+## 2026-09-26 — Cross-platform assurance timeout headroom
+
+PR #520's first hosted run passed Ubuntu and macOS and passed all earlier
+Windows gates, but GitHub canceled the Windows job at its 20-minute job limit
+during the dependency audit. The log ended with `The operation was canceled.`;
+there was no test or audit failure. Raised the CI assurance timeout to 30 minutes
+and added a workflow-policy contract for the required headroom. The contract
+failed against the old setting and passed after the change. The focused workflow
+policy suite passed 6 tests. The required `./scripts/validate.sh` then passed:
+6,899 tests, 9 skipped, 98.08% branch-aware coverage, 48 schemas, 38
+representative documents, differential parity 9/9, all configured mutations,
+hygiene and supply-chain gates, and a strict 113-component SBOM. Hosted
+Windows rerun is required to verify completion under the new limit.
