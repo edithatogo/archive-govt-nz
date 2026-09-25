@@ -2390,3 +2390,20 @@ The required full harness passed on this revision: 6,897 tests, 9 skipped,
 98.07% coverage, 48 schemas, 38 representative documents, parity 9/9, all
 configured mutation and supply-chain checks, and a 113-component strict SBOM.
 A new exact-head Codecov run is needed to close the patch-coverage blocker.
+
+
+## 2026-09-26 — Canonical dispatch selection receipts
+
+Added JSON-safe, deterministic selection receipts with a SHA-256 digest over
+the canonical receipt fields. The receipt binds source bytes, declared and
+detected media types, selected adapter/version or preserved-only reason, and
+sorted considered/matched adapter IDs. A red-first contract passed, including
+canonical hash verification and JSON round trip. The focused dispatch, Budget
+expenditure/revenue adapter, and layout-drift suites passed 54 tests; Ruff,
+formatting and basedpyright passed. `./scripts/validate.sh` passed: 6,898 tests,
+9 skipped, 98.08% coverage, 48 schemas, 38 representative documents, parity
+9/9, all configured mutations and supply-chain gates, and a strict 113-component
+SBOM. The receipt is currently a deterministic serialization boundary; writing
+it into persisted normalization manifests, adapter schema fingerprints,
+additional source-family drift contracts, and repeat Parquet identity remain
+open.

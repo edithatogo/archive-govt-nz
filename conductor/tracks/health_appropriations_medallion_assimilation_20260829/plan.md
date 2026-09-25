@@ -323,6 +323,11 @@ integrated parent head.
   retain existing snapshot/row/expanded-byte guards and transport-only scope.
   [M-07, M-18; AC-05, AC-16]
 
+- [x] Make dispatch selection evidence canonical-JSON serializable and SHA-256
+  bound, including exact source fixity, declared/detected media types, selected
+  adapter or preserved-only reason, and sorted considered/matched IDs. This is
+  a receipt boundary only; persistence into normalization manifests remains
+  pending. [M-05, M-07, M-18; AC-03, AC-05, AC-16]
 - [ ] Add schema fingerprints, adapter selection evidence, deterministic
   ordering/serialization, source-layout drift reports and fail-closed unknown
   layout handling. [M-05, M-07, M-18, S-04; AC-03, AC-05, AC-16]
