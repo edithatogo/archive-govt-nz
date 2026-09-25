@@ -134,4 +134,11 @@ def test_pinned_selectors_keep_denominator_boundaries() -> None:
     assert "F26:O26" in rows["core-crown-befu-2026"].selector
     assert "F25:O25" in rows["core-crown-hyefu-2025"].selector
     assert "wrong_population_universe" in rows["population-hlfs-rejected"].gaps
-    assert rows["population-national-lead"].sources == []
+    population = rows["population-national-lead"]
+    assert population.sources == []
+    assert "DPE054AA" in population.series_id
+    assert "DPE054FF" in population.selector
+    assert "Mean year ended" in population.selector
+    assert "1991Q1" in population.period
+    assert "2026Q2" in population.period
+    assert "numeric_export_not_verified" in population.gaps

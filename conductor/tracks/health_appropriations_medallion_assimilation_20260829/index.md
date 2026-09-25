@@ -33,6 +33,10 @@ every planned record set, measure or operational workflow.
 - [Explicit forecast source-validation preflight](./forecast-preflight.md)
 - [Bounded source-profile CLI/MCP operations](./source-operations.md)
 - [Exact quarterly GDP source profile](./gdp-profile.md)
+- [Health analytical-context register](./analytical-context-register.md)
+- [Source-context census](./context-census.md)
+- [Source-context census data](./context-census.json)
+- [Population census integration validation](./population-census-integration.json)
 
 - [Exclusive local classification occurrence export](./classification-export.md)
 - [Budget source-label classification occurrences](./budget-classification.md)

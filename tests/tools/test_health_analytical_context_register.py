@@ -22,8 +22,11 @@ def test_context_register_preserves_exact_ids_and_unresolved_joins() -> None:
         "stats_nz_population-806dead2a5b8ab69",
     ):
         assert text.count(source_id) == 1
-    assert "DPEQ.SG1CTOT" in text
-    assert "Metadata lead only" in text
+    assert "DPE054AA" in text
+    assert "DPE054FF" in text
+    assert "Mean year ended" in text
+    assert "Definition enumerated from Stats NZ metadata" in text
+    assert "numeric export remain unverified" in text
     assert "no unified join" in text
     assert "cannot support per-capita spending" in text
     assert "No row establishes rights" in text

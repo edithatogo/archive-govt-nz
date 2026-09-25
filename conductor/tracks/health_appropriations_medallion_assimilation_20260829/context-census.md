@@ -19,7 +19,7 @@ It did not revalidate every derivative member or historical rights claim.
 | --- | --- | --- |
 | CPI | CPIQ.SE9A, all-groups New Zealand, June-2026 vintage | Source-bound index base and fiscal average/rebase policy |
 | QES | QEMQ.SASZ9A, Table 8 total-sector ordinary-time hourly earnings, nine quarters | Currency/sex/adjustment, deflator selection and annual weighting |
-| Population | DPEQ.SG1CTOT is a prior metadata lead; retained HLFS workbook rejected | Exact national all-age resident export, census base, coverage and annual mean |
+| Population | Stats NZ DPE054AA; population C (Total), age DPE054FF (Total All Ages), estimates As at or Mean year ended | Numeric export, resource rights and fiscal-period policy selecting the two estimate bases |
 | Stats NZ GDP | SNEQ / SG03AB01GE00S900, Table 1 C27:BJ27, March-2026 vintage | Currency, annual aggregation and semantic projection |
 | Treasury GDP | Fiscal-2025 Nominal GDP sheet, C3 label, B/C year/value columns | Preserve period transitions and revision vintage in derived joins |
 | Core Crown | Fiscal-2025 Spending D27:D58, 1994–2025 | Canonical adapter and accounting/consolidation comparability |
@@ -32,11 +32,11 @@ Expenditure and percent-GDP blocks cannot substitute for expense levels.
 BEFU/HYEFU totals contain formulas. No formulas were evaluated or caches
 qualified. Both releases label 2021–2025 Actual and 2026–2030 Forecast.
 
-Population metadata comes from the already recorded
-[Stats NZ concept](https://datainfoplus.stats.govt.nz/Item/nz.govt.stats/5c91579c-9077-4553-ae9a-1e04e6bce0e7)
-and [RBNZ M12 metadata](https://www.rbnz.govt.nz/statistics/series/economic-indicators/population-and-migration)
-observation in source-schema-gaps.md. No new RBNZ or other network request was
-made. These prior links do not establish current access or a captured export.
+The exact national resident-population table and selectors are recorded in
+`population-context.json` and `population-context.md`, using Stats NZ metadata
+and a metadata-only query response. No numeric observations were in that
+response; this census does not claim payload capture, rights qualification or
+selection of an annual denominator.
 
 ## Validation and review
 
@@ -67,12 +67,32 @@ Keep the existing Phase 1.2 task in progress:
 > expense series needed for approved derived measures; reject discovery leads
 > that lack a stable definition or join. [M-02, M-12; AC-03, AC-10]
 > Context-family census and retained Crown selector enumeration are recorded
-> in context-census.json and context-census.observation.json. Population export,
-> CPI base, wage qualification and denominator joins remain explicitly
-> unqualified; no analytical admission or source promotion is claimed.
+> in context-census.json and context-census.observation.json. Population
+> definition is resolved from Stats NZ metadata; numeric export, CPI base, wage
+> qualification, rights and denominator joins remain explicitly unqualified.
+> No analytical admission or source promotion is claimed.
 
-Rationale: the full requested family inventory is now explicit and validated,
-but the exact population export and stable analytical joins required by the
-existing clause are not established. An [x] would overstate that clause.
+Rationale: the full requested family inventory is explicit and the national
+population definition is now pinned to Stats NZ metadata, but numeric export,
+rights and stable analytical joins required by the existing clause are not
+established. An [x] would overstate that clause.
 Do not split this into additional partial micro-tasks. Parent integration must
 run the combined harness and reconcile the shared records.
+
+## Parent reconciliation — Stats NZ population definition (2026-09-26)
+
+The population row is now joined to the exact Stats NZ table DPE054AA,
+population code C (Total), age code DPE054FF (Total All Ages), both estimate
+types (As at and Mean year ended), 2023-06-30 census basis, 18 August 2026
+release and selectable 1991Q1–2026Q2 coverage. The metadata query response
+contains selection metadata only, not numerical observations. The captured
+HLFS workbook remains explicitly rejected as a national all-age resident
+denominator. Update receipts and hashes are validated in `context-census.json`.
+
+The Phase 1.2 task remains open: exact numeric export and resource rights are
+unverified, period alignment must be selected against the spending-period
+contract, and CPI/QES/Crown qualification and Gold denominator joins remain
+unresolved. No population payload was requested, acquired, or promoted.
+Combined local assurance on the parent-integrated change passed 6,857 tests,
+9 skips, 48 schemas, 9/9 parity and all configured mutation and supply-chain
+gates; see `population-census-integration.json`.
