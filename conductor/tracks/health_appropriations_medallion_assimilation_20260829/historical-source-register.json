@@ -97,7 +97,11 @@
     "https://www.treasury.govt.nz/publications/data/budget-2021-data-estimates-appropriations-2021-22",
     "https://www.treasury.govt.nz/publications/data/budget-2022-data-estimates-appropriations-2022-23",
     "https://www.treasury.govt.nz/publications/data/budget-2020-data-estimates-appropriations-2020-21",
-    "https://www.treasury.govt.nz/publications/efu/budget-economic-and-fiscal-update-2020"
+    "https://www.treasury.govt.nz/publications/efu/budget-economic-and-fiscal-update-2020",
+    "https://www.treasury.govt.nz/publications/data/budget-2018-data-estimates-appropriations-2018-19",
+    "https://www.treasury.govt.nz/publications/data/budget-2019-data-estimates-appropriations-2019-20",
+    "https://www.treasury.govt.nz/publications/efu/budget-economic-and-fiscal-update-2018",
+    "https://www.treasury.govt.nz/publications/efu/budget-economic-and-fiscal-update-2019"
   ],
   "resource_observations": [
     {
@@ -135,6 +139,110 @@
       "byte_count": null,
       "rights_state": "not_evaluated",
       "source_id": "treasury-historical-9a9545a5d6ba4697"
+    },
+    {
+      "edition_year": 2018,
+      "family": "befu",
+      "kind": "charts",
+      "landing_url": "https://www.treasury.govt.nz/publications/efu/budget-economic-and-fiscal-update-2018",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2018-05/befu18-charts-data.xlsx",
+      "disposition": "discovered",
+      "sha256": null,
+      "byte_count": null,
+      "rights_state": "not_evaluated",
+      "source_id": "treasury-historical-4ccb3f3863e558b4",
+      "rights_evidence": "landing_page_states_cc_by_4_0"
+    },
+    {
+      "edition_year": 2018,
+      "family": "befu",
+      "kind": "expense_tables",
+      "landing_url": "https://www.treasury.govt.nz/publications/efu/budget-economic-and-fiscal-update-2018",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2018-05/befu18-data-expensetables.xlsx",
+      "disposition": "discovered",
+      "sha256": null,
+      "byte_count": null,
+      "rights_state": "not_evaluated",
+      "source_id": "treasury-historical-5f2d334ca5e4b362",
+      "rights_evidence": "landing_page_states_cc_by_4_0"
+    },
+    {
+      "edition_year": 2018,
+      "family": "budget",
+      "kind": "expenditure",
+      "landing_url": "https://www.treasury.govt.nz/publications/data/budget-2018-data-estimates-appropriations-2018-19",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2018-05/b18-expenditure-data.xls",
+      "disposition": "discovered",
+      "sha256": null,
+      "byte_count": null,
+      "rights_state": "not_evaluated",
+      "source_id": "treasury-historical-3dcc17c2c882e42c",
+      "rights_evidence": "landing_page_states_cc_by_4_0"
+    },
+    {
+      "edition_year": 2018,
+      "family": "budget",
+      "kind": "revenue",
+      "landing_url": "https://www.treasury.govt.nz/publications/data/budget-2018-data-estimates-appropriations-2018-19",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2018-05/b18-revenue-data.xls",
+      "disposition": "discovered",
+      "sha256": null,
+      "byte_count": null,
+      "rights_state": "not_evaluated",
+      "source_id": "treasury-historical-e6ba8a7f1451c681",
+      "rights_evidence": "landing_page_states_cc_by_4_0"
+    },
+    {
+      "edition_year": 2019,
+      "family": "befu",
+      "kind": "charts",
+      "landing_url": "https://www.treasury.govt.nz/publications/efu/budget-economic-and-fiscal-update-2019",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2019-05/befu19-charts-data.xlsx",
+      "disposition": "discovered",
+      "sha256": null,
+      "byte_count": null,
+      "rights_state": "not_evaluated",
+      "source_id": "treasury-historical-12c1d59b3d66b484",
+      "rights_evidence": "landing_page_states_cc_by_4_0"
+    },
+    {
+      "edition_year": 2019,
+      "family": "befu",
+      "kind": "expense_tables",
+      "landing_url": "https://www.treasury.govt.nz/publications/efu/budget-economic-and-fiscal-update-2019",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2019-05/befu19-data-expensetables.xls",
+      "disposition": "discovered",
+      "sha256": null,
+      "byte_count": null,
+      "rights_state": "not_evaluated",
+      "source_id": "treasury-historical-33de909cfebe4965",
+      "rights_evidence": "landing_page_states_cc_by_4_0"
+    },
+    {
+      "edition_year": 2019,
+      "family": "budget",
+      "kind": "expenditure",
+      "landing_url": "https://www.treasury.govt.nz/publications/data/budget-2019-data-estimates-appropriations-2019-20",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2019-05/b19-expenditure-data.xls",
+      "disposition": "discovered",
+      "sha256": null,
+      "byte_count": null,
+      "rights_state": "not_evaluated",
+      "source_id": "treasury-historical-75b102427fca550d",
+      "rights_evidence": "landing_page_states_cc_by_4_0"
+    },
+    {
+      "edition_year": 2019,
+      "family": "budget",
+      "kind": "revenue",
+      "landing_url": "https://www.treasury.govt.nz/publications/data/budget-2019-data-estimates-appropriations-2019-20",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2019-05/b19-revenue-data.xls",
+      "disposition": "discovered",
+      "sha256": null,
+      "byte_count": null,
+      "rights_state": "not_evaluated",
+      "source_id": "treasury-historical-3672fad7f6d51c5c",
+      "rights_evidence": "landing_page_states_cc_by_4_0"
     },
     {
       "edition_year": 2020,
