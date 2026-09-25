@@ -471,6 +471,21 @@ def test_invalid_request_creates_no_state(
     }
 
 
+def test_budget_revenue_profile_requires_matching_source_vintage(
+    request_source: source_operations.SourceRequest,
+) -> None:
+    if request_source.profile not in {
+        "budget-revenue-2025/v1",
+        "budget-revenue-2026/v1",
+    }:
+        pytest.skip("only Budget revenue profiles bind a reviewed vintage")
+    changed = replace(request_source, source_vintage="Budget-2099")
+    result = source_operations.operate_source(changed)
+    assert result["status"] == "failed"
+    assert result["error"] == "invalid_source_operation"
+    assert not changed.output_dir.exists()
+
+
 @pytest.mark.parametrize("interrupt", [False, True])
 def test_parser_failure_and_interrupt(
     request_source: source_operations.SourceRequest,
