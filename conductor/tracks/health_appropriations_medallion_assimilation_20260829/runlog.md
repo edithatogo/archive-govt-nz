@@ -2336,3 +2336,17 @@ documents, 9/9 parity, configured mutation and supply-chain checks, and a
 113-component strict SBOM. Hosted workflow outcomes are tracked on the PR,
 separately from this local receipt. See `budget-adapter.validation.json`; the
 plan still leaves other source families and layouts open.
+
+## 2026-09-26 — Budget source-literal dimension links
+
+Extended the common adapter result with explicit unresolved dimension assertions
+and deterministic source-fact links. The Budget expenditure profile now carries
+literal vote, appropriation, department, portfolio, amount-type, and functional
+classification labels; the exact year token; the Amount $000 header; and the
+adapter's measure rule. No target mappings, confidence, effective dates, currency
+or economic classification are inferred. Thirteen focused tests pass; the new
+source-dimension module has 100% line and branch coverage, and Ruff/basedpyright
+pass. The full harness passed: 6,884 tests, 9 skipped, 98.09% branch coverage,
+48 schemas, 38 representative documents, 9/9 parity, configured mutations and
+supply-chain gates, and a 113-component strict SBOM. Hosted results remain
+separate. See `budget-source-dimensions.validation.json`.

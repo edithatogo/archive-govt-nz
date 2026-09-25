@@ -305,9 +305,14 @@ integrated parent head.
   source-specific workbook registrations that emit typed records/loss
   accounting/field lineage remain open. See `adapter-dispatch.validation.json`
   and `budget-adapter.validation.json`. [M-05, M-07; AC-03, AC-05]
-- [ ] Implement stable dimension and mapping contracts for vote,
+- [~] Implement stable dimension and mapping contracts for vote,
   appropriation, department, portfolio, amount type, functional/economic
-  classification, measure, unit and period. [M-06; AC-05, AC-11]
+  classification, measure, unit and period. The Budget expenditure adapter now
+  emits source-literal assertions and field links for its observed labels,
+  period token, amount header and adapter measure rule; all mapping targets stay
+  unresolved. Economic classification, other source families, evidence-backed
+  crosswalks, confidence and effective periods remain open. See
+  `budget-source-dimensions.validation.json`. [M-06; AC-05, AC-11]
 
 ### 3.3 Determinism and drift hardening
 

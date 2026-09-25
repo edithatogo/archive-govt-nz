@@ -3,13 +3,17 @@
 from __future__ import annotations
 
 import hashlib
+from dataclasses import replace
 from io import BytesIO
 from typing import TYPE_CHECKING, Any, Never
 
 import pytest
 from openpyxl import Workbook
 
-from archive_govt_nz.domains.health_appropriations import budget_adapter
+from archive_govt_nz.domains.health_appropriations import (
+    budget_adapter,
+    source_dimensions,
+)
 from archive_govt_nz.domains.health_appropriations.adapter_dispatch import (
     DispatchResult,
     dispatch_bronze,
@@ -17,6 +21,12 @@ from archive_govt_nz.domains.health_appropriations.adapter_dispatch import (
 from archive_govt_nz.domains.health_appropriations.budget_adapter import (
     BudgetExpenditureAdapter,
     budget_expenditure_registration,
+)
+from archive_govt_nz.domains.health_appropriations.dimension_mapping import (
+    dimension_key,
+)
+from archive_govt_nz.domains.health_appropriations.source_dimensions import (
+    budget_source_dimensions,
 )
 
 if TYPE_CHECKING:
@@ -109,6 +119,53 @@ def test_dispatch_emits_budget_facts_row_losses_and_cell_lineage() -> None:
     assert amount.raw_value == "123"
     assert amount.normalized_value == "123.000"
     assert amount.rule == "budget-expenditure/v1"
+    assert {row.dimension.kind for row in result.output.dimensions} == {
+        "vote",
+        "appropriation",
+        "department",
+        "portfolio",
+        "amount_type",
+        "functional_classification",
+        "measure",
+        "unit",
+        "period",
+    }
+    assert all(
+        row.target is None
+        and row.method is None
+        and row.evidence == ()
+        and row.vintage == "Budget-2025"
+        for row in result.output.dimensions
+    )
+    period = next(
+        row.dimension
+        for row in result.output.dimensions
+        if row.dimension.kind == "period"
+    )
+    assert period.label == str(2025)
+    assert period.period_token == str(2025)
+    unit_link = next(row for row in result.output.dimension_links if row.kind == "unit")
+    assert unit_link.dimension_key == dimension_key(
+        next(
+            row.dimension
+            for row in result.output.dimensions
+            if row.dimension.kind == "unit"
+        )
+    )
+    assert unit_link.source_coordinate == "'Raw Data'!F1"
+    assert unit_link.raw_value == "Amount $000"
+    measure_link = next(
+        row for row in result.output.dimension_links if row.kind == "measure"
+    )
+    assert measure_link.normalized_value == "appropriation_amount"
+    assert measure_link.rule == "budget-expenditure/measure-rule/v1"
+    assert "economic_classification" not in {
+        row.dimension.kind for row in result.output.dimensions
+    }
+    repeated_digest, repeated = _dispatch(payload)
+    assert repeated_digest == digest
+    assert repeated.output.dimensions == result.output.dimensions
+    assert repeated.output.dimension_links == result.output.dimension_links
     assert payload == original
 
 
@@ -120,6 +177,7 @@ def test_unknown_workbook_layout_is_preserved_without_facts() -> None:
     assert result.output.layout == "unknown"
     assert result.output.records == ()
     assert result.output.lineage == ()
+    assert result.output.dimensions == ()
     assert len(result.output.losses) == 1
     assert result.output.losses[0].disposition == "preserved_only"
     assert result.output.losses[0].reason == "unsupported_budget_layout"
@@ -176,3 +234,62 @@ def test_unexpected_extractor_value_error_is_not_hidden(
     adapter = BudgetExpenditureAdapter("source", "vintage", "2026-08-30T00:00:00Z")
     with pytest.raises(ValueError, match=_EXTRACTOR_FAILURE):
         adapter.extract(payload, source_sha256=hashlib.sha256(payload).hexdigest())
+
+
+def test_source_dimensions_reject_mixed_vintages_and_fact_lineage_drift() -> None:
+    _, output = _dispatch(_workbook())
+    fact = output.output.records[0]
+    same_literals_other_vintage, _ = budget_source_dimensions(
+        ({**fact, "source_vintage": "Budget-2026"},), output.output.lineage
+    )
+    assert {dimension_key(row.dimension) for row in same_literals_other_vintage} == {
+        dimension_key(row.dimension) for row in output.output.dimensions
+    }
+    assert {row.vintage for row in same_literals_other_vintage} == {"Budget-2026"}
+
+    with pytest.raises(ValueError, match="budget_dimension_single_vintage_required"):
+        budget_source_dimensions(
+            (fact, {**fact, "record_id": "another", "source_vintage": "Budget-2026"}),
+            output.output.lineage,
+        )
+
+    changed_fact = {**fact, "department": "Different"}
+    with pytest.raises(ValueError, match="budget_dimension_fact_lineage_mismatch"):
+        budget_source_dimensions((changed_fact,), output.output.lineage)
+
+
+def test_source_dimensions_reject_missing_fields_and_bad_coordinates() -> None:
+    _, output = _dispatch(_workbook())
+    fact = output.output.records[0]
+    without_classification = tuple(
+        row for row in output.output.lineage if row.field != "functional_classification"
+    )
+    with pytest.raises(ValueError, match="budget_dimension_source_field_missing"):
+        budget_source_dimensions((fact,), without_classification)
+
+    without_period = tuple(row for row in output.output.lineage if row.field != "year")
+    with pytest.raises(ValueError, match="budget_period_source_field_missing"):
+        budget_source_dimensions((fact,), without_period)
+
+    without_amount = tuple(
+        row for row in output.output.lineage if row.field != "amount"
+    )
+    with pytest.raises(ValueError, match="budget_amount_source_field_missing"):
+        budget_source_dimensions((fact,), without_amount)
+
+    amount = next(row for row in output.output.lineage if row.field == "amount")
+    bad_amount = replace(amount, source_coordinate="'Raw Data'!$F$2")
+    bad_lineage = tuple(
+        bad_amount if row is amount else row for row in output.output.lineage
+    )
+    with pytest.raises(ValueError, match="budget_amount_coordinate_invalid"):
+        budget_source_dimensions((fact,), bad_lineage)
+
+
+def test_source_dimensions_enforce_bounded_fact_count(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    _, output = _dispatch(_workbook())
+    monkeypatch.setattr(source_dimensions, "_MAX_FACTS", 0)
+    with pytest.raises(ValueError, match="budget_dimension_fact_limit"):
+        budget_source_dimensions(output.output.records, output.output.lineage)
