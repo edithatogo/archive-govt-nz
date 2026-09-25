@@ -62,6 +62,7 @@ every planned record set, measure or operational workflow.
 - [Annual population export validation receipt](./population-annual-export.validation.json)
 - [Annual population export evidence and limitations](./population-annual-export.md)
 - [Annual population context Silver package](./population-annual-silver.md)
+- [Budget versus Estimated Actual diagnostic](./budget-actual-comparison.md)
 - [Raw historical Health/GDP extraction and reconciliation](./raw-historical.md)
 - [Preserved fiscal 1972–2025 successor pilot](./fiscal-2025-pilot.md)
 - [Original-workbook orchestration](./raw-rebuild.md)

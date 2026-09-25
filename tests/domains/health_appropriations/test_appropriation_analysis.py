@@ -7,6 +7,7 @@ import pytest
 
 from archive_govt_nz.domains.health_appropriations.appropriation_analysis import (
     analyze_appropriations,
+    compare_budget_to_estimated_actual,
 )
 
 
@@ -131,3 +132,69 @@ def test_boundary_values() -> None:
         ]
     )
     assert len(result["trends"]) == 2
+
+
+def test_budget_estimated_actual_comparison_is_exact_and_source_bounded() -> None:
+    rows = [
+        fact("budget-a", "100.001", amount_type="Budget"),
+        fact("budget-b", "0.002", amount_type="Budget"),
+        fact("actual", "97.500", amount_type="Estimated Actual"),
+        fact("forecast", "80", amount_type="Forecast"),
+        fact(
+            "other-edition-budget",
+            "10",
+            amount_type="Budget",
+            source_vintage="Budget-2024",
+        ),
+    ]
+    rows.append(
+        fact(
+            "other-edition-actual",
+            "11",
+            amount_type="Estimated Actual",
+            source_vintage="Budget-2024",
+        )
+    )
+
+    compared = compare_budget_to_estimated_actual(rows)
+    assert compared == compare_budget_to_estimated_actual(list(reversed(rows)))
+    assert len(compared) == 2
+    current = compared[0]
+    assert current["source_vintage"] == "Budget-2024"
+    assert current["budget_amount"] == "10.000"
+    assert current["estimated_actual_amount"] == "11.000"
+    assert current["estimated_minus_budget"] == "1.000"
+    assert current["comparison_status"] == "both_source_labels_present"
+    assert current["budget_input_record_ids"] == ["other-edition-budget"]
+    assert current["estimated_actual_input_record_ids"] == ["other-edition-actual"]
+    assert current["period_basis"] == "unverified"
+    assert compared[1]["source_vintage"] == "Budget-2025"
+    assert compared[1]["budget_amount"] == "100.003"
+    assert compared[1]["estimated_minus_budget"] == "-2.503"
+    assert compared[1]["estimated_actual_input_record_ids"] == ["actual"]
+
+
+@pytest.mark.parametrize(
+    ("rows", "status"),
+    [
+        ([fact("budget", "10", amount_type="Budget")], "missing_estimated_actual"),
+        (
+            [fact("actual", "10", amount_type="Estimated Actual")],
+            "missing_budget",
+        ),
+    ],
+)
+def test_budget_estimated_actual_comparison_keeps_unmatched_groups(
+    rows: list[dict[str, Any]], status: str
+) -> None:
+    result = compare_budget_to_estimated_actual(rows)
+    assert len(result) == 1
+    assert result[0]["comparison_status"] == status
+    assert result[0]["estimated_minus_budget"] is None
+
+
+def test_budget_estimated_actual_comparison_rejects_duplicate_ids() -> None:
+    with pytest.raises(ValueError, match="duplicate_appropriation_identity"):
+        compare_budget_to_estimated_actual(
+            [fact("same", "1", amount_type="Budget"), fact("same", "2")]
+        )
