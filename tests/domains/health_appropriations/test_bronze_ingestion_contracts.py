@@ -296,6 +296,42 @@ async def test_length_boundaries_do_not_compare_encoded_size_to_decoded_size(
     assert body.closed
 
 
+@pytest.mark.anyio
+async def test_gzip_wire_length_mismatch_never_promotes_decoded_payload(
+    tmp_path: Path,
+) -> None:
+    """A truncated or overstated encoded length cannot pass on decoded bytes."""
+    payload = b"health appropriations" * 10
+    wire = gzip.compress(payload)
+    body = OnePassBody((wire,))
+    store = ContentAddressedStore(tmp_path / "cas")
+    warc = tmp_path / "capture.warc"
+    async with httpx.AsyncClient(
+        transport=httpx.MockTransport(
+            lambda _: httpx.Response(
+                200,
+                headers={
+                    "content-encoding": "gzip",
+                    "content-length": str(len(wire) + 1),
+                },
+                stream=body,
+            )
+        )
+    ) as client:
+        with pytest.raises(CaptureError, match="length_mismatch"):
+            await capture_url(
+                client,
+                "https://example.test/health.csv",
+                store,
+                transaction_warc_path=warc,
+            )
+    assert body.iterations == 1
+    assert body.closed
+    assert store.verified_inventory().object_count == 0
+    assert not list(store.tmp.iterdir())
+    assert not warc.exists()
+
+
 def test_durability_failure_precedes_promotion_and_preserves_prior_objects(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
