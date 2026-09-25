@@ -1,6 +1,6 @@
 {
   "schema_version": "archive-govt-nz.health-historical-sources/v1",
-  "observed_at": "2026-09-05T07:00:07Z",
+  "observed_at": "2026-09-25T13:35:00Z",
   "observation_method": "Read-only web retrieval of official index and edition pages; spreadsheet link targets and PDF text observed, original bytes not retained or fixity-verified",
   "index_url": "https://www.treasury.govt.nz/publications/budgets/current-and-past-budgets",
   "index_last_updated": "2026-05-28",
@@ -101,7 +101,10 @@
     "https://www.treasury.govt.nz/publications/data/budget-2018-data-estimates-appropriations-2018-19",
     "https://www.treasury.govt.nz/publications/data/budget-2019-data-estimates-appropriations-2019-20",
     "https://www.treasury.govt.nz/publications/efu/budget-economic-and-fiscal-update-2018",
-    "https://www.treasury.govt.nz/publications/efu/budget-economic-and-fiscal-update-2019"
+    "https://www.treasury.govt.nz/publications/efu/budget-economic-and-fiscal-update-2019",
+    "https://www.treasury.govt.nz/publications/data/budget-2017-data-estimates-appropriations-2017-18",
+    "https://www.treasury.govt.nz/publications/efu/budget-economic-and-fiscal-update-2017",
+    "https://www.treasury.govt.nz/publications/efu/half-year-economic-and-fiscal-update-2017"
   ],
   "resource_observations": [
     {
@@ -139,6 +142,71 @@
       "byte_count": null,
       "rights_state": "not_evaluated",
       "source_id": "treasury-historical-9a9545a5d6ba4697"
+    },
+    {
+      "edition_year": 2017,
+      "family": "befu",
+      "kind": "charts",
+      "landing_url": "https://www.treasury.govt.nz/publications/efu/budget-economic-and-fiscal-update-2017",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2017-05/befu17-charts-data.xlsx",
+      "disposition": "discovered",
+      "sha256": null,
+      "byte_count": null,
+      "rights_state": "not_evaluated",
+      "source_id": "treasury-historical-31190a7dd69c13c8",
+      "rights_evidence": "landing_page_states_cc_by_4_0"
+    },
+    {
+      "edition_year": 2017,
+      "family": "befu",
+      "kind": "expense_tables",
+      "landing_url": "https://www.treasury.govt.nz/publications/efu/budget-economic-and-fiscal-update-2017",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2017-05/befu17-data-expensetables.xlsx",
+      "disposition": "discovered",
+      "sha256": null,
+      "byte_count": null,
+      "rights_state": "not_evaluated",
+      "source_id": "treasury-historical-538859d30ff97a50",
+      "rights_evidence": "landing_page_states_cc_by_4_0"
+    },
+    {
+      "edition_year": 2017,
+      "family": "budget",
+      "kind": "expenditure",
+      "landing_url": "https://www.treasury.govt.nz/publications/data/budget-2017-data-estimates-appropriations-2017-18",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2017-05/b17-expenditure-data.xls",
+      "disposition": "discovered",
+      "sha256": null,
+      "byte_count": null,
+      "rights_state": "not_evaluated",
+      "source_id": "treasury-historical-e18bb173f2a9a141",
+      "rights_evidence": "landing_page_states_cc_by_4_0"
+    },
+    {
+      "edition_year": 2017,
+      "family": "budget",
+      "kind": "revenue",
+      "landing_url": "https://www.treasury.govt.nz/publications/data/budget-2017-data-estimates-appropriations-2017-18",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2017-05/b17-revenue-data.xls",
+      "disposition": "discovered",
+      "sha256": null,
+      "byte_count": null,
+      "rights_state": "not_evaluated",
+      "source_id": "treasury-historical-1a427cbb46fcc202",
+      "rights_evidence": "landing_page_states_cc_by_4_0"
+    },
+    {
+      "edition_year": 2017,
+      "family": "hyefu",
+      "kind": "charts",
+      "landing_url": "https://www.treasury.govt.nz/publications/efu/half-year-economic-and-fiscal-update-2017",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2017-12/hyefu17-charts-data.xlsx",
+      "disposition": "discovered",
+      "sha256": null,
+      "byte_count": null,
+      "rights_state": "not_evaluated",
+      "source_id": "treasury-historical-bcebd15f75438c5d",
+      "rights_evidence": "landing_page_states_cc_by_4_0"
     },
     {
       "edition_year": 2018,
