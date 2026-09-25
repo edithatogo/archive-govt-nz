@@ -419,6 +419,7 @@ def normalize_budget_revenue(  # noqa: PLR0913 - source observation fields are e
         "workbook_inventory": inventory,
     }
     if dry_run:
-        receipt["status"] = "planned"
+        if receipt["status"] == "passed":
+            receipt["status"] = "planned"
         return receipt
     return write_workbook_outputs(output_dir, outputs, receipt)

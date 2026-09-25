@@ -146,6 +146,29 @@ def test_budget_2026_profile_rejects_budget_2025_year_map(tmp_path: Path) -> Non
     assert receipt["counts"]["normalized"] == 0
 
 
+@pytest.mark.parametrize(
+    ("rows", "expected_status"),
+    [
+        ([[*ROW[:5], "invalid", 2021, "Actuals"]], "partial"),
+        ([["Other", "Education", *ROW[2:]]], "empty"),
+    ],
+)
+def test_dry_run_preserves_non_success_extraction_status(
+    tmp_path: Path, rows: list[list[object]], expected_status: str
+) -> None:
+    original = source(tmp_path, rows)
+    receipt = revenue.normalize_budget_revenue(
+        original,
+        tmp_path / "dry-run",
+        expected_sha256=hashlib.sha256(original.read_bytes()).hexdigest(),
+        source_locator="data/raw/b25-revenue-data.xlsx",
+        observed_at="2026-08-30T00:00:00Z",
+        dry_run=True,
+    )
+    assert receipt["status"] == expected_status
+    assert not (tmp_path / "dry-run").exists()
+
+
 def test_real_contract_shape_distinct_rows_and_complete_accounting(
     tmp_path: Path,
 ) -> None:
