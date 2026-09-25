@@ -183,6 +183,9 @@ repository validation command. External gates block only their affected task.
   linkage, resume, interruption, unchanged/changed observations, corrupt ZIPs,
   withdrawal, restriction and tombstones. [M-03, M-04, M-18, S-01, S-02;
   AC-01, AC-02, AC-04, AC-16]
+- [x] Fsync the checkpoint parent directory after atomic replacement on POSIX
+  and verify ordering; retain the explicit Windows limitation. [M-03, M-15,
+  AC-13]
 - [x] Add a 23-path donor-manifest contract that fails on any omitted path,
   altered byte, wrong Git mode/blob, length mismatch or archive-digest drift.
   [M-01, M-03, M-18; AC-01, AC-16]

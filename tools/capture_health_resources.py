@@ -107,6 +107,17 @@ def _observation(
     return event
 
 
+def _fsync_directory(directory: Path) -> None:
+    """Persist a promoted directory entry where POSIX directory fsync exists."""
+    if os.name == "nt":
+        return
+    descriptor = os.open(directory, os.O_RDONLY | getattr(os, "O_DIRECTORY", 0))
+    try:
+        os.fsync(descriptor)
+    finally:
+        os.close(descriptor)
+
+
 async def _capture_one(
     client: httpx.AsyncClient,
     row: dict[str, Any],
@@ -207,6 +218,7 @@ def _write(path: Path, value: object) -> None:
             handle.flush()
             os.fsync(handle.fileno())
         temporary.replace(path)
+        _fsync_directory(path.parent)
     finally:
         temporary.unlink(missing_ok=True)
 

@@ -352,6 +352,38 @@ def test_atomic_checkpoint_failure_keeps_previous_bytes(
     assert not list(tmp_path.glob("capture-*"))
 
 
+def test_checkpoint_fsyncs_parent_after_atomic_replace(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """The directory entry is made durable only after checkpoint promotion."""
+    execute, args, _ = setup(tmp_path, monkeypatch)
+    operations: list[str] = []
+    replace = Path.replace
+
+    def record_replace(self: Path, target: Path) -> Path:
+        operations.append("replace")
+        return replace(self, target)
+
+    def record_directory_sync(directory: Path) -> None:
+        assert directory == args.manifest.parent
+        operations.append("directory_fsync")
+
+    monkeypatch.setattr(Path, "replace", record_replace)
+    monkeypatch.setitem(execute.__globals__, "_fsync_directory", record_directory_sync)
+    execute.__globals__["_write"](args.manifest, {"checkpoint": "durable"})
+
+    assert operations == ["replace", "directory_fsync"]
+    assert json.loads(args.manifest.read_text()) == {"checkpoint": "durable"}
+
+
+def test_directory_fsync_supports_existing_checkpoint_parent(tmp_path: Path) -> None:
+    """The platform directory-sync operation accepts the checkpoint parent."""
+    runner = runpy.run_path(
+        str(Path(__file__).parents[3] / "tools/capture_health_resources.py")
+    )
+    runner["_fsync_directory"](tmp_path)
+
+
 @pytest.mark.anyio
 async def test_repeated_interruption_keeps_unvisited_retained_captures(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch

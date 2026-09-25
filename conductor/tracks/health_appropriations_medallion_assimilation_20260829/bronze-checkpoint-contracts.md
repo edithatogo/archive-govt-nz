@@ -104,7 +104,8 @@ repository harness is run for this follow-up before hosted delivery.
 
 - **Interruption/resume (M-15/AC-13):** hard process termination and subsequent
   lock reacquisition are executable acceptance. File fsync plus atomic rename
-  is tested; directory durability across power loss is not claimed. Orphan
+  is tested; directory durability across power loss was not yet claimed at
+  that checkpoint. Orphan
   WARC evidence is retained but not automatically reconciled into a completed
   capture.
 - **M-18/AC-16:** the changed runner has 100% line/branch coverage, but the
@@ -153,12 +154,28 @@ pair is not adopted. Focused checkpoint suite: 30 passed; Ruff and basedpyright
 passed. The full repository harness is required before hosted delivery.
 
 This does not reconcile redirected orphan WARCs; their full final URL cannot
-be recovered from the current WARC fields. It also does not claim directory
-fsync durability across power loss or adopt arbitrary WARC locations outside
-the runner's attempt-directory layout.
+be recovered from the current WARC fields. At this checkpoint, directory
+fsync durability across power loss was still unimplemented. The runner also
+does not adopt arbitrary WARC locations outside its attempt-directory layout.
 
 The original Phase 2.1 task therefore stays `[~]`. These are executable
 preservation/recovery limits, not source-census or rights-promotion gates.
 Self-review found no remaining actionable defect within this bounded
 cooperative-resume slice. No automatic lock deletion, source eligibility
 promotion, payload publication, historical rewrite or dependency was added.
+
+## Follow-up contract — POSIX checkpoint directory durability (26 September 2026)
+
+After writing and fsyncing the temporary checkpoint, the runner atomically
+replaces the manifest and fsyncs its parent directory on POSIX. This persists
+the renamed directory entry across a power loss on filesystems that honor
+`fsync` for directories. If directory fsync fails after replacement, the
+checkpoint may already be visible although the operation reports failure;
+retry must therefore use the existing explicit resume contract. Windows skips
+this operation because the standard-library directory-open/fsync path is not
+portable there, so power-loss durability of the rename is not claimed on
+Windows.
+
+Offline tests prove replace precedes parent fsync and exercise the platform
+directory-sync helper. Focused and full repository validation are recorded in
+the paired run log and evidence receipt.
