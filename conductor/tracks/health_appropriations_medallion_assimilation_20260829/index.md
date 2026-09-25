@@ -46,6 +46,7 @@ every planned record set, measure or operational workflow.
 - [Additive eight-record-set structural contracts](./recordset-contracts.md)
 - [Hash-bound Bronze adapter dispatch and validation](./adapter-dispatch.validation.json)
 - [Named-column Budget workbook dispatch adapter validation](./budget-adapter.validation.json)
+- [Budget revenue workbook dispatch adapter validation](./budget-revenue-adapter.validation.json)
 - [Budget source-literal dimensions and unresolved mapping validation](./budget-source-dimensions.validation.json)
 - [Historical package snapshot verification](./historical-snapshot.md)
 - [Hash-bound embedded-notice observations](./embedded-notices.md)

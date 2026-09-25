@@ -808,6 +808,19 @@ def test_original_v1_package_remains_restorable(tmp_path: Path) -> None:
     assert (tmp_path / "restored/raw-package-manifest.json").is_file()
 
 
+def test_package_verification_releases_parquet_files_for_directory_rename(
+    tmp_path: Path,
+) -> None:
+    """Package verification closes Parquet resources before atomic promotion."""
+    source = tmp_path / "capture"
+    package = tmp_path / "package"
+    prepare(source, package, capture(source))
+    verify_package(package)
+    relocated = tmp_path / "relocated"
+    package.rename(relocated)
+    relocated.rename(package)
+
+
 def test_missing_attachment_survives_reconstruction(tmp_path: Path) -> None:
     """An omitted attachment remains a gap rather than fabricated retained bytes."""
     source = tmp_path / "capture"

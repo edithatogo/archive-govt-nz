@@ -2350,3 +2350,43 @@ pass. The full harness passed: 6,884 tests, 9 skipped, 98.09% branch coverage,
 48 schemas, 38 representative documents, 9/9 parity, configured mutations and
 supply-chain gates, and a 113-component strict SBOM. Hosted results remain
 separate. See `budget-source-dimensions.validation.json`.
+
+## 2026-09-26 — Budget revenue Bronze dispatch and layout selection
+
+Extended adapter registrations with bounded layout probes so multiple
+source-specific adapters can share an XLSX media type without depending on
+registration order. Selection evidence now records sorted candidates and probe
+matches; no match or multiple matches stays `preserved_only`. Registered the
+reviewed Budget-2025 and Budget-2026 Health revenue layouts, reusing their OOXML
+numeric-token parser, row classifier, typed facts, dispositions and cell
+lineage. Revenue and expenditure dispatch are tested together, including
+ unknown, invalid, and ambiguous layouts. Focused tests passed (73); Ruff,
+ formatting and basedpyright passed. The full harness passed: 6,893 tests, 9
+ skipped, 98.03% coverage, 48 schemas, 38 representative documents, parity
+ 9/9, all configured mutation and supply-chain checks, and a 113-component
+ strict SBOM. Source rights, capture attestation, other formats/layouts,
+ canonical mappings and publication remain open. See
+ `budget-revenue-adapter.validation.json`.
+
+The first exact-head hosted run exposed a Windows-only `PermissionError` when
+promoting a temporary FOI package after Parquet verification. Readback now uses
+an explicitly closed `ParquetFile`; a regression test verifies the package
+directory can be renamed after readback. The FOI package suite passed (106),
+and the required full local harness passed again: 6,894 tests, 9 skipped,
+98.04% coverage, 48 schemas, 38 representative documents, parity 9/9, all
+configured mutation and supply-chain checks, and a 113-component strict SBOM.
+The updated hosted run is required to confirm the Windows fix. This incidental
+cross-platform resource-lifetime correction changes no package bytes or schema.
+
+The first Codecov patch-coverage result was below threshold because newly
+changed layout-probe rejection branches were not exercised, and the dispatcher
+contained an unreachable defensive branch. Probe typing now makes the selected
+callback non-optional after registration matching; tests cover invalid and
+oversized expenditure payloads, unreviewed revenue headers and metadata, and
+invalid revenue payload types. Combined targeted coverage across dispatch,
+Budget expenditure/revenue adapters and parser, and FOI package tests passed
+182 tests; dispatcher and revenue adapter line/branch coverage are 100%.
+The required full harness passed on this revision: 6,897 tests, 9 skipped,
+98.07% coverage, 48 schemas, 38 representative documents, parity 9/9, all
+configured mutation and supply-chain checks, and a 113-component strict SBOM.
+A new exact-head Codecov run is needed to close the patch-coverage blocker.

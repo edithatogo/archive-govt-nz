@@ -18,7 +18,7 @@ from archive_govt_nz.domains.health_appropriations.adapter_protocol import (
     LossAccounting,
     preserved_only,
 )
-from archive_govt_nz.domains.health_appropriations.budget import _extract
+from archive_govt_nz.domains.health_appropriations.budget import _extract, _headers
 from archive_govt_nz.domains.health_appropriations.formats import inventory_workbook
 from archive_govt_nz.domains.health_appropriations.source_dimensions import (
     budget_source_dimensions,
@@ -46,6 +46,28 @@ class BudgetExpenditureAdapter:
     source_locator: str
     source_vintage: str
     observed_at: str
+
+    def matches_layout(self, bronze: bytes) -> bool:
+        """Recognize only the named-column expenditure profile."""
+        if len(bronze) > _MAX_SOURCE_BYTES:
+            return False
+        try:
+            inventory_workbook(BytesIO(bronze))
+            workbook = load_workbook(
+                BytesIO(bronze), read_only=False, data_only=False, keep_links=True
+            )
+        except BadZipFile, OSError, ValueError, KeyError, TypeError, EOFError:
+            return False
+        try:
+            if _SHEET not in workbook.sheetnames:
+                return False
+            _headers(workbook[_SHEET])
+        except ValueError:
+            return False
+        else:
+            return True
+        finally:
+            workbook.close()
 
     def extract(self, bronze: bytes, *, source_sha256: str) -> AdapterOutput:
         """Return typed records, field lineage, and losses from the profile."""
@@ -129,13 +151,15 @@ def budget_expenditure_registration(
     *, source_locator: str, source_vintage: str, observed_at: str
 ) -> AdapterRegistration:
     """Return an explicit registration for the supported Budget XLSX profile."""
+    adapter = BudgetExpenditureAdapter(
+        source_locator=source_locator,
+        source_vintage=source_vintage,
+        observed_at=observed_at,
+    )
     return AdapterRegistration(
         adapter_id="nz-budget-health-expenditure",
         version="1.0.0",
         media_type=_MEDIA_TYPE,
-        adapter=BudgetExpenditureAdapter(
-            source_locator=source_locator,
-            source_vintage=source_vintage,
-            observed_at=observed_at,
-        ),
+        adapter=adapter,
+        layout_probe=adapter.matches_layout,
     )

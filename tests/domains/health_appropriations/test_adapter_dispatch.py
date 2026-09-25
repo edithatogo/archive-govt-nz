@@ -133,6 +133,115 @@ def test_missing_or_ambiguous_selection_never_chooses_by_registration_order() ->
     assert second.calls == []
 
 
+def test_multiple_layouts_require_probes_and_select_exactly_one_match() -> None:
+    payload = b"%PDF-1.7\nlayout-a"
+    digest = hashlib.sha256(payload).hexdigest()
+    first = RecordingAdapter()
+    second = RecordingAdapter()
+    rows = (
+        AdapterRegistration(
+            "first", "v1", PDF, first, layout_probe=lambda data: b"layout-a" in data
+        ),
+        AdapterRegistration(
+            "second", "v1", PDF, second, layout_probe=lambda data: b"layout-b" in data
+        ),
+    )
+
+    result = dispatch_bronze(
+        payload, source_sha256=digest, media_type=PDF, registrations=rows
+    )
+
+    assert result.selection.status == "selected"
+    assert result.selection.adapter_id == "first"
+    assert result.selection.considered_adapter_ids == ("first", "second")
+    assert result.selection.matched_adapter_ids == ("first",)
+    assert first.calls == [(payload, digest)]
+    assert second.calls == []
+
+
+def test_single_layout_probe_is_recorded_in_selection() -> None:
+    payload = b"%PDF-1.7\nknown"
+    digest = hashlib.sha256(payload).hexdigest()
+    adapter = RecordingAdapter()
+    result = dispatch_bronze(
+        payload,
+        source_sha256=digest,
+        media_type=PDF,
+        registrations=(
+            AdapterRegistration(
+                "known",
+                "v1",
+                PDF,
+                adapter,
+                layout_probe=lambda data: b"known" in data,
+            ),
+        ),
+    )
+    assert result.selection.adapter_id == "known"
+    assert result.selection.considered_adapter_ids == ("known",)
+    assert result.selection.matched_adapter_ids == ("known",)
+
+
+def test_layout_probe_must_return_a_real_boolean() -> None:
+    payload = b"%PDF-1.7\nknown"
+    with pytest.raises(TypeError, match="invalid_layout_probe_result"):
+        dispatch_bronze(
+            payload,
+            source_sha256=hashlib.sha256(payload).hexdigest(),
+            media_type=PDF,
+            registrations=(
+                AdapterRegistration(
+                    "known",
+                    "v1",
+                    PDF,
+                    RecordingAdapter(),
+                    layout_probe=lambda _data: 1,  # type: ignore[return-value]
+                ),
+            ),
+        )
+
+
+@pytest.mark.parametrize(
+    ("payload", "expected_reason", "matches"),
+    [
+        (b"%PDF-1.7\nunknown", "no_matching_layout", ()),
+        (b"%PDF-1.7\nambiguous", "adapter_selection_ambiguous", ("first", "second")),
+    ],
+)
+def test_multiple_layout_probes_fail_closed(
+    payload: bytes, expected_reason: str, matches: tuple[str, ...]
+) -> None:
+    first = RecordingAdapter()
+    second = RecordingAdapter()
+    rows = (
+        AdapterRegistration(
+            "first",
+            "v1",
+            PDF,
+            first,
+            layout_probe=lambda data: b"unknown" not in data or b"ambiguous" in data,
+        ),
+        AdapterRegistration(
+            "second",
+            "v1",
+            PDF,
+            second,
+            layout_probe=lambda data: b"ambiguous" in data,
+        ),
+    )
+    result = dispatch_bronze(
+        payload,
+        source_sha256=hashlib.sha256(payload).hexdigest(),
+        media_type=PDF,
+        registrations=rows,
+    )
+    assert result.selection.status == "preserved_only"
+    assert result.selection.reason == expected_reason
+    assert result.selection.matched_adapter_ids == matches
+    assert first.calls == []
+    assert second.calls == []
+
+
 def test_payload_fixity_is_checked_before_adapter_runs() -> None:
     adapter = RecordingAdapter()
     with pytest.raises(ValueError, match=r"^source_hash_mismatch$"):

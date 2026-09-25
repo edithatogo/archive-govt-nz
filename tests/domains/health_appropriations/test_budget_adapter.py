@@ -22,6 +22,9 @@ from archive_govt_nz.domains.health_appropriations.budget_adapter import (
     BudgetExpenditureAdapter,
     budget_expenditure_registration,
 )
+from archive_govt_nz.domains.health_appropriations.budget_revenue_adapter import (
+    budget_revenue_registration,
+)
 from archive_govt_nz.domains.health_appropriations.dimension_mapping import (
     dimension_key,
 )
@@ -85,6 +88,11 @@ def _dispatch(payload: bytes) -> tuple[str, DispatchResult]:
         registrations=(
             budget_expenditure_registration(
                 source_locator="data/raw/b25-expenditure-data.xlsx",
+                source_vintage="Budget-2025",
+                observed_at="2026-08-30T00:00:00Z",
+            ),
+            budget_revenue_registration(
+                source_locator="data/raw/b25-revenue-data.xlsx",
                 source_vintage="Budget-2025",
                 observed_at="2026-08-30T00:00:00Z",
             ),
@@ -172,15 +180,16 @@ def test_dispatch_emits_budget_facts_row_losses_and_cell_lineage() -> None:
 def test_unknown_workbook_layout_is_preserved_without_facts() -> None:
     digest, result = _dispatch(_workbook(sheet_name="Sheet1"))
 
-    assert result.selection.status == "selected"
+    assert result.selection.status == "preserved_only"
     assert result.selection.source_sha256 == digest
+    assert result.selection.reason == "no_matching_layout"
     assert result.output.layout == "unknown"
     assert result.output.records == ()
     assert result.output.lineage == ()
     assert result.output.dimensions == ()
     assert len(result.output.losses) == 1
     assert result.output.losses[0].disposition == "preserved_only"
-    assert result.output.losses[0].reason == "unsupported_budget_layout"
+    assert result.output.losses[0].reason == "no_matching_layout"
 
 
 def test_unknown_budget_headers_are_preserved_without_facts() -> None:
@@ -192,7 +201,7 @@ def test_unknown_budget_headers_are_preserved_without_facts() -> None:
     assert result.output.records == ()
     assert result.output.lineage == ()
     assert result.output.losses[0].disposition == "preserved_only"
-    assert result.output.losses[0].reason == "unsupported_budget_headers"
+    assert result.output.losses[0].reason == "no_matching_layout"
 
 
 def test_adapter_enforces_byte_limit_and_hash_binding(
@@ -220,6 +229,16 @@ def test_invalid_xlsx_is_returned_as_preserved_only() -> None:
     assert output.lineage == ()
     assert output.losses[0].disposition == "preserved_only"
     assert output.losses[0].reason == "invalid_budget_workbook"
+
+
+def test_expenditure_layout_probe_rejects_invalid_and_oversized_bytes(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    adapter = BudgetExpenditureAdapter("source", "vintage", "2026-08-30T00:00:00Z")
+    monkeypatch.setattr(budget_adapter, "_MAX_SOURCE_BYTES", 0)
+    assert not adapter.matches_layout(_workbook())
+    monkeypatch.setattr(budget_adapter, "_MAX_SOURCE_BYTES", 1024 * 1024)
+    assert not adapter.matches_layout(b"not an XLSX")
 
 
 def test_unexpected_extractor_value_error_is_not_hidden(

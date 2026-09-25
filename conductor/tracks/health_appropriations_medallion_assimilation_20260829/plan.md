@@ -300,11 +300,13 @@ integrated parent head.
   AC-05]
 - [~] Establish hash-bound explicit adapter selection from Bronze bytes,
   bounded XLSX preflight, ambiguity rejection and `preserved_only` fallback.
-  The common dispatch boundary and a named-column Budget Health expenditure
-  registration are implemented. Production CSV, PDF-table, SQLite and remaining
-  source-specific workbook registrations that emit typed records/loss
-  accounting/field lineage remain open. See `adapter-dispatch.validation.json`
-  and `budget-adapter.validation.json`. [M-05, M-07; AC-03, AC-05]
+  The common dispatch boundary now records considered/matched adapter IDs and
+  uses bounded layout probes to select between the named-column Budget Health
+  expenditure and edition-bound revenue profiles. Production CSV, PDF-table,
+  SQLite and remaining source-specific workbook registrations that emit typed
+  records/loss accounting/field lineage remain open. See
+  `adapter-dispatch.validation.json`, `budget-adapter.validation.json`, and
+  `budget-revenue-adapter.validation.json`. [M-05, M-07; AC-03, AC-05]
 - [~] Implement stable dimension and mapping contracts for vote,
   appropriation, department, portfolio, amount type, functional/economic
   classification, measure, unit and period. The Budget expenditure adapter now
