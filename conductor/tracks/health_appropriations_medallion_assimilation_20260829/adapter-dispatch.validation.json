@@ -36,9 +36,11 @@
     "hygiene_and_cas_benchmark": "passed",
     "dependency_audit": "passed_no_known_vulnerabilities",
     "licence_inventory": "passed",
-    "secret_scan": "passed",
+    "sbom_generator_warning": "informational_validation_skipped_message_before_required_strict_validator",
+    "tracked_input_coverage": "verified",
     "strict_cyclonedx_validation": "passed_113_components",
-    "sbom_generator_warning": "informational_validation_skipped_message_before_required_strict_validator"
+    "secrets": "passed",
+    "checks_complete": true
   },
   "limitations": [
     "No production adapters are registered by this dispatcher change",
