@@ -510,6 +510,11 @@ repository validation command. External gates block only their affected task.
 - [ ] Promote exact CPI, wage, population, GDP and total/core Crown expense
   observations required by Gold formulas, with base/definition/vintage
   metadata. [M-05, M-06, M-12; AC-05, AC-10]
+  The BEFU 2026 core Crown expense formula-cache series now has a bounded
+  Silver extraction with side-by-side formula/cache lineage and explicit
+  unverified freshness, currency and fiscal-year basis. See
+  `befu-core-expense-20260925.md`; it remains context-only and does not complete
+  total/core Crown Gold denominators or this parent task.
 - [ ] If S-05 passed its scope/rights gate, add the aggregate Health Survey
   adapter and explicit time/geography alignment; otherwise record its deferred
   disposition without blocking the Must scope. [S-05; AC-10]
