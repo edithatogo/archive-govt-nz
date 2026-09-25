@@ -177,6 +177,100 @@ def test_chart_literal_is_not_packaged_or_whole_source() -> None:
         selection_report(pin(register), {row["selection_id"]: pin(receipt)}, None)
 
 
+def test_standalone_befu_core_expense_package_is_scoped() -> None:
+    register, receipt, _ = fixture()
+    row = register["selections"][0]
+    row.update(
+        selection_id="befu-core-expense-BEFU-2026",
+        profile="befu-core-expense",
+        family="befu",
+        vintage="BEFU-2026",
+        source_locator="https://budget.govt.nz/budget/excel/befu2026/befu26-data-expense-tables.xlsx",
+        source_object_sha256="c" * 64,
+    )
+    receipt.update(
+        schema_version="archive-govt-nz.health-crown-expense-extraction/v1",
+        profile="befu-core-2026/v1",
+        source_object_sha256=row["source_object_sha256"],
+        source_locator=row["source_locator"],
+        source_vintage="BEFU-2026",
+        counts={
+            "normalized": 10,
+            "context": 24,
+            "preserved_only": 2341,
+            "rejected": 0,
+            "inventoried_cells": 2375,
+        },
+        output_sha256={
+            "crown_expense_facts.parquet": "d" * 64,
+            "field_lineage.parquet": "e" * 64,
+            "cell_dispositions.parquet": "f" * 64,
+        },
+    )
+    row["receipt_sha256"] = pin(receipt).sha256
+    report = selection_report(pin(register), {row["selection_id"]: pin(receipt)}, None)
+    assert report["rows"][0]["record_count"] == 10
+    assert report["rows"][0]["reason_counts"] == {
+        "context": 24,
+        "normalized": 10,
+        "preserved_only": 2341,
+    }
+    assert report["completion_sha256"] is None
+    assert report["rows"][0]["whole_source_qualification"] == "not_established"
+    receipt["counts"]["normalized"] = 11
+    row["receipt_sha256"] = pin(receipt).sha256
+    with pytest.raises(ValueError, match=r"^expanded_coverage_contract$"):
+        selection_report(pin(register), {row["selection_id"]: pin(receipt)}, None)
+
+
+@pytest.mark.parametrize("fault", ["profile", "rights", "vintage", "outputs"])
+def test_standalone_befu_core_expense_identity_and_rights_fail_closed(
+    fault: str,
+) -> None:
+    register, receipt, _ = fixture()
+    row = register["selections"][0]
+    row.update(
+        selection_id="befu-core-expense-BEFU-2026",
+        profile="befu-core-expense",
+        family="befu",
+        vintage="BEFU-2026",
+        source_locator="https://budget.govt.nz/budget/excel/befu2026/befu26-data-expense-tables.xlsx",
+        source_object_sha256="c" * 64,
+    )
+    receipt.update(
+        schema_version="archive-govt-nz.health-crown-expense-extraction/v1",
+        profile="befu-core-2026/v1",
+        source_object_sha256=row["source_object_sha256"],
+        source_locator=row["source_locator"],
+        source_vintage="BEFU-2026",
+        counts={
+            "normalized": 10,
+            "context": 24,
+            "preserved_only": 2341,
+            "rejected": 0,
+            "inventoried_cells": 2375,
+        },
+        output_sha256={
+            "crown_expense_facts.parquet": "d" * 64,
+            "field_lineage.parquet": "e" * 64,
+            "cell_dispositions.parquet": "f" * 64,
+        },
+    )
+    if fault == "profile":
+        receipt["profile"] = "other"
+    elif fault == "rights":
+        receipt["rights_state"] = "eligible"
+    elif fault == "vintage":
+        receipt["source_vintage"] = "HYEFU-2025"
+    else:
+        receipt["output_sha256"].pop("field_lineage.parquet")
+    row["receipt_sha256"] = pin(receipt).sha256
+    with pytest.raises(ValueError, match=r"^expanded_coverage_contract$"):
+        selection_report(
+            pin(register), {row["selection_id"]: pin(receipt)}, completion=None
+        )
+
+
 @pytest.mark.parametrize("profile", ["befu-detail", "hyefu-detail", "crown"])
 def test_literal_package_profile_is_bound(profile: str) -> None:
     register, receipt, completion = fixture()

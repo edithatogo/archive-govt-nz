@@ -25,9 +25,22 @@ PROFILES = {
     "hyefu-allowance": ("hyefu", "hyefu-allowance-literal-context/v1"),
     "befu-residual": ("befu", "health-chart-residual-literal-context/v1"),
     "hyefu-residual": ("hyefu", "health-chart-residual-literal-context/v1"),
+    "befu-core-expense": (
+        "befu",
+        "archive-govt-nz.health-crown-expense-extraction/v1",
+    ),
 }
 CHARTS = frozenset({"befu-chart", "hyefu-allowance", "befu-residual", "hyefu-residual"})
 LITERALS = frozenset({"befu-detail", "hyefu-detail", "crown"})
+STANDALONE = frozenset({"befu-core-expense"})
+STANDALONE_PROFILE_IDS = {"befu-core-expense": "befu-core-2026/v1"}
+CORE_EXPENSE_COUNTS = {
+    "normalized": 10,
+    "context": 24,
+    "preserved_only": 2341,
+    "rejected": 0,
+    "inventoried_cells": 2375,
+}
 
 
 def _count(value: object) -> None:
@@ -93,6 +106,39 @@ def _stage(
         direct._text(key)
         _count(value)
     return count, dict(sorted(reasons.items()))
+
+
+def _standalone(
+    data: dict[str, Any], row: dict[str, Any]
+) -> tuple[int, dict[str, int]]:
+    """Validate a bounded Silver package that is outside the raw rebuild registry."""
+    direct._require(data["schema_version"] == PROFILES[row["profile"]][1])
+    direct._require(data["status"] == "passed")
+    direct._require(data["profile"] == STANDALONE_PROFILE_IDS[row["profile"]])
+    direct._require(data["rights_state"] == "not_evaluated")
+    _identity(data, row, "source_object_sha256")
+    counts = data["counts"]
+    direct._require(isinstance(counts, dict) and bool(counts))
+    for value in counts.values():
+        _count(value)
+    direct._require(counts == CORE_EXPENSE_COUNTS)
+    outputs = data["output_sha256"]
+    direct._require(
+        isinstance(outputs, dict)
+        and set(outputs)
+        == {
+            "crown_expense_facts.parquet",
+            "field_lineage.parquet",
+            "cell_dispositions.parquet",
+        }
+    )
+    for digest in outputs.values():
+        direct._digest(digest)
+    return counts["normalized"], {
+        "normalized": counts["normalized"],
+        "context": counts["context"],
+        "preserved_only": counts["preserved_only"],
+    }
 
 
 def _row(row: dict[str, Any]) -> None:
@@ -164,6 +210,10 @@ def selection_report(
                 if row["profile"] in CHARTS:
                     count = _chart(data, row)
                     state = "receipt_reported_raw_context_only"
+                elif row["profile"] in STANDALONE:
+                    count, reasons = _standalone(data, row)
+                    receipt_counts = dict(sorted(data["counts"].items()))
+                    state = "receipt_reported_passed_selection"
                 else:
                     count, reasons = _stage(data, row, run)
                     receipt_counts = dict(sorted(data["counts"].items()))

@@ -524,6 +524,12 @@ repository validation command. External gates block only their affected task.
 - [ ] Generate source-health, temporal coverage, layout drift, rights and
   reconciliation reports; verify every target vintage has an explicit state.
   [M-02, M-11, M-12, S-04; AC-09, AC-11]
+  The explicit selection report now accepts the BEFU-2026 core expense Silver
+  manifest with exact source identity, versioned adapter profile, counts and
+  output hashes. See
+  `../../../evidence/assurance/health-expanded-coverage-20260925/README.md`.
+  It covers one selection only; the complete target-vintage health/drift report
+  remains pending.
 - [ ] Run focused adapters, property/mutation checks, self-review and the full
   repository harness; record paired evidence. [M-18, M-19; AC-16]
 

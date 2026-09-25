@@ -1,0 +1,14 @@
+{
+  "schema_version": "archive-govt-nz.health-coverage-selections/v1",
+  "selections": [
+    {
+      "family": "befu",
+      "profile": "befu-core-expense",
+      "receipt_sha256": "23ddc3fb0a3d4d6dc55a4731694f7d9e26f5ace1324d4a76456f1ad761abe651",
+      "selection_id": "befu-core-expense-BEFU-2026",
+      "source_locator": "https://budget.govt.nz/budget/excel/befu2026/befu26-data-expense-tables.xlsx",
+      "source_object_sha256": "313ee040abd9a332cc36245da5a0c2cb0d38fe2cedc013d731c1f12db463b0d1",
+      "vintage": "BEFU-2026"
+    }
+  ]
+}
