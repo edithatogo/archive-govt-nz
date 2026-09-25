@@ -28,6 +28,8 @@
     "profile": {
       "enum": [
         "cpiq-se9a/v1",
+        "budget-revenue-2025/v1",
+        "budget-revenue-2026/v1",
         "moh-hair2024-fig27/v1",
         "moh-hair2024-fig28/v1",
         "qes-june2026-table8/v1",
@@ -47,6 +49,8 @@
     },
     "transformation_id": {
       "enum": [
+        "budget-2025-health-revenue/v1",
+        "budget-2026-health-revenue/v1",
         "moh-hair2024-published-indicators/v1",
         "pharmac-published-budget-20260807/v1",
         "qes-june2026-table8-ordinary-hourly/v1",
@@ -167,6 +171,144 @@
               },
               "required": [
                 "cpi_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "budget-revenue-2025/v1"
+            },
+            "transformation_id": {
+              "const": "budget-2025-health-revenue/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "normalized": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "out_of_scope": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "blank": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rejected": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "normalized",
+                "out_of_scope",
+                "blank",
+                "rejected"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "revenue_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "revenue_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "budget-revenue-2026/v1"
+            },
+            "transformation_id": {
+              "const": "budget-2026-health-revenue/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "normalized": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "out_of_scope": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "blank": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rejected": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "normalized",
+                "out_of_scope",
+                "blank",
+                "rejected"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "revenue_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "revenue_facts.parquet",
                 "field_lineage.parquet",
                 "row_dispositions.parquet"
               ]

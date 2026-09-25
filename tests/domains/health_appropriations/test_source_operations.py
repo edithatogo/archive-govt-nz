@@ -20,6 +20,14 @@ from hypothesis import given, settings
 from hypothesis import strategies as st
 from jsonschema import Draft202012Validator, ValidationError
 from openpyxl import load_workbook
+from tests.domains.health_appropriations.test_budget_revenue import (
+    DEFINITIONS,
+    DEFINITIONS_2026_TEST,
+    ROW,
+)
+from tests.domains.health_appropriations.test_budget_revenue import (
+    source as budget_revenue_fixture,
+)
 from tests.domains.health_appropriations.test_cpi import HEADER, META
 from tests.domains.health_appropriations.test_forecast_successors import (
     _source as forecast_fixture,
@@ -45,6 +53,8 @@ from archive_govt_nz.mcp_server import Server, call_tool, list_tools
 @pytest.fixture(
     params=[
         "cpiq-se9a/v1",
+        "budget-revenue-2025/v1",
+        "budget-revenue-2026/v1",
         "moh-hair2024-fig27/v1",
         "moh-hair2024-fig28/v1",
         "qes-june2026-table8/v1",
@@ -79,6 +89,25 @@ def request_source(
         )
         source.write_bytes(content.getvalue().encode())
         vintage = "MoH-HAIR-2024"
+    elif profile in {"budget-revenue-2025/v1", "budget-revenue-2026/v1"}:
+        budget_revenue_fixture(
+            tmp_path,
+            definitions=(
+                DEFINITIONS_2026_TEST
+                if profile == "budget-revenue-2026/v1"
+                else DEFINITIONS
+            ),
+            rows=(
+                [[*ROW[:5], 58746, 2022, "Actuals"]]
+                if profile == "budget-revenue-2026/v1"
+                else None
+            ),
+        )
+        generated = tmp_path / "source.xlsx"
+        generated.replace(source)
+        vintage = (
+            "Budget-2026" if profile == "budget-revenue-2026/v1" else "Budget-2025"
+        )
     elif profile in {"befu-2026/v1", "hyefu-2025/v1"}:
         forecast_fixture(source, 9 if profile == "befu-2026/v1" else 8)
         vintage = "BEFU-2026" if profile == "befu-2026/v1" else "HYEFU-2025"
@@ -440,6 +469,21 @@ def test_invalid_request_creates_no_state(
         for p in changed.source.parent.rglob("*")
         if p.is_file() and not p.is_symlink()
     }
+
+
+def test_budget_revenue_profile_requires_matching_source_vintage(
+    request_source: source_operations.SourceRequest,
+) -> None:
+    if request_source.profile not in {
+        "budget-revenue-2025/v1",
+        "budget-revenue-2026/v1",
+    }:
+        pytest.skip("only Budget revenue profiles bind a reviewed vintage")
+    changed = replace(request_source, source_vintage="Budget-2099")
+    result = source_operations.operate_source(changed)
+    assert result["status"] == "failed"
+    assert result["error"] == "invalid_source_operation"
+    assert not changed.output_dir.exists()
 
 
 @pytest.mark.parametrize("interrupt", [False, True])

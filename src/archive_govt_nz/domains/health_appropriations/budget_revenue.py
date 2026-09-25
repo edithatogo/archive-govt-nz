@@ -1,4 +1,4 @@
-"""Budget-2025 Health revenue/receipts, never netted into expenditure."""
+"""Budget Health revenue/receipts, never netted into expenditure."""
 
 from __future__ import annotations
 
@@ -36,6 +36,7 @@ MAX_ROWS = 1000
 MAX_TEXT = 4096
 MAX_ID = 2**63 - 1
 TRANSFORMATION = "budget-2025-health-revenue/v1"
+TRANSFORMATION_2026 = "budget-2026-health-revenue/v1"
 FIELDS = {
     "Department": "department",
     "Vote": "vote",
@@ -79,6 +80,40 @@ PERIOD_TYPES = {
     2024: "Actuals",
     2025: "Estimated Actual",
     2026: "Main Estimates",
+}
+DEFINITIONS_2026 = {
+    "B3": (
+        "The Revenue workbook contains details of actual government Crown revenue "
+        "and capital receipts for the years ended 30 June 2022, 2023, 2024 and 2025; "
+        "estimated actual government Crown revenue and capital receipts for the year "
+        "ending 30 June 2026 and budgeted government Crown revenue and capital "
+        "receipts for the year ending 30 June 2027 as published in Budget 2026."
+    ),
+    "B37": (
+        "Amount $000: Amount (in thousands) for the Year as reported "
+        "in the Main Estimates."
+    ),
+    "B38": (
+        "Year: Year ending that the Amount relates to (at 30 June) "
+        "as reported in the Main Estimates."
+    ),
+    "B39": (
+        'Amount Type: "Actuals" - as audited for prior Years, '
+        '"Estimated Actual" - for the Year immediately prior to the current '
+        'Main Estimates, "Main Estimates" - for the Main Estimates Year.'
+    ),
+    "B43": (
+        "App ID: Number used to uniquely identify each Crown revenue "
+        "or capital receipt line."
+    ),
+}
+PERIOD_TYPES_2026 = {
+    2022: "Actuals",
+    2023: "Actuals",
+    2024: "Actuals",
+    2025: "Actuals",
+    2026: "Estimated Actual",
+    2027: "Main Estimates",
 }
 FACT_SCHEMA = pa.schema(
     [
@@ -132,9 +167,11 @@ def _require(condition: object) -> None:
         raise ValueError(message)
 
 
-def _metadata(book: Workbook, digest: str) -> dict[str, object]:
+def _metadata(
+    book: Workbook, digest: str, definitions: dict[str, str]
+) -> dict[str, object]:
     _require({"Raw Data", "Explanation", "Intro"} <= set(book.sheetnames))
-    for coordinate, expected in DEFINITIONS.items():
+    for coordinate, expected in definitions.items():
         cell = book["Explanation"][coordinate]
         _require(cell.value == expected and cell.data_type not in {"f", "e"})
     observations = []
@@ -163,7 +200,9 @@ def _metadata(book: Workbook, digest: str) -> dict[str, object]:
 
 
 def _classify(
-    cells: tuple[Cell | MergedCell, ...], token: str | None
+    cells: tuple[Cell | MergedCell, ...],
+    token: str | None,
+    period_types: dict[int, str],
 ) -> tuple[str, str]:
     values = [cell.value for cell in cells]
     if all(value is None for value in values):
@@ -180,11 +219,13 @@ def _classify(
         return "rejected", "formula_not_evaluated"
     if any(cell.data_type == "e" for cell in cells):
         return "rejected", "spreadsheet_error"
-    reason = _selected_reason(values, token)
+    reason = _selected_reason(values, token, period_types)
     return ("rejected", reason) if reason else ("normalized", "named_revenue_columns")
 
 
-def _selected_reason(values: Sequence[object], token: str | None) -> str | None:
+def _selected_reason(
+    values: Sequence[object], token: str | None, period_types: dict[int, str]
+) -> str | None:
     if any(
         not isinstance(values[i], str) or not cast("str", values[i]).strip()
         for i in (0, 3)
@@ -196,8 +237,8 @@ def _selected_reason(values: Sequence[object], token: str | None) -> str | None:
         return "invalid_app_id"
     if (
         type(values[6]) is not int
-        or values[6] not in PERIOD_TYPES
-        or values[7] != PERIOD_TYPES[values[6]]
+        or values[6] not in period_types
+        or values[7] != period_types[values[6]]
     ):
         return "invalid_period_type"
     if exact_number(token) is None:
@@ -205,8 +246,14 @@ def _selected_reason(values: Sequence[object], token: str | None) -> str | None:
     return None
 
 
-def _extract(
-    sheet: Worksheet, tokens: dict[str, str], context: dict[str, Any]
+def _extract(  # noqa: PLR0913 - edition-specific source contracts are explicit.
+    sheet: Worksheet,
+    tokens: dict[str, str],
+    context: dict[str, Any],
+    *,
+    transformation: str,
+    period_types: dict[int, str],
+    definitions: dict[str, str],
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]], list[dict[str, Any]]]:
     _require(sheet.max_row <= MAX_ROWS + 1 and sheet.max_column == len(FIELDS))
     _require(tuple(c.value for c in next(sheet.iter_rows(max_row=1))) == tuple(FIELDS))
@@ -215,9 +262,9 @@ def _extract(
         _require(all(len(str(cell.value)) <= MAX_TEXT for cell in cells))
         raw = dict(zip(FIELDS, (cell.value for cell in cells), strict=True))
         token = tokens.get(cells[5].coordinate)
-        disposition, reason = _classify(cells, token)
+        disposition, reason = _classify(cells, token, period_types)
         record_id = identity(
-            TRANSFORMATION, context["source_object_sha256"], "Raw Data", number
+            transformation, context["source_object_sha256"], "Raw Data", number
         )
         dispositions.append(
             {
@@ -241,7 +288,7 @@ def _extract(
             "source_row": number,
             "schema_version": "archive-govt-nz.health-budget-revenue-fact/v1",
             "recordset": "budget_revenue_fact",
-            "transformation_id": TRANSFORMATION,
+            "transformation_id": transformation,
             "amount": exact_number(token),
             "source_number_token": token,
             "unit": "$000",
@@ -263,14 +310,14 @@ def _extract(
             for field, cell in zip(FIELDS.values(), cells, strict=True)
         ]
         links += [
-            ("source_vintage", "'Explanation'!B3", DEFINITIONS["B3"]),
-            ("amount_type", "'Explanation'!B3", DEFINITIONS["B3"]),
+            ("source_vintage", "'Explanation'!B3", definitions["B3"]),
+            ("amount_type", "'Explanation'!B3", definitions["B3"]),
             ("unit", "'Raw Data'!F1", "Amount $000"),
-            ("unit", "'Explanation'!B37", DEFINITIONS["B37"]),
+            ("unit", "'Explanation'!B37", definitions["B37"]),
             ("valid_time_end", f"'Raw Data'!G{number}", str(raw["Year"])),
-            ("valid_time_end", "'Explanation'!B38", DEFINITIONS["B38"]),
-            ("amount_type", "'Explanation'!B39", DEFINITIONS["B39"]),
-            ("app_id", "'Explanation'!B43", DEFINITIONS["B43"]),
+            ("valid_time_end", "'Explanation'!B38", definitions["B38"]),
+            ("amount_type", "'Explanation'!B39", definitions["B39"]),
+            ("app_id", "'Explanation'!B43", definitions["B43"]),
         ]
         for field, coordinate, value in links:
             lineage.append(
@@ -283,39 +330,57 @@ def _extract(
                     "source_coordinate": coordinate,
                     "raw_value": value,
                     "normalized_value": str(fact[field]),
-                    "rule": TRANSFORMATION,
+                    "rule": transformation,
                 }
             )
     return facts, lineage, dispositions
 
 
-def normalize_budget_revenue(
+def normalize_budget_revenue(  # noqa: PLR0913 - source observation fields are explicit.
     source: Path,
     output_dir: Path,
     *,
     expected_sha256: str,
     source_locator: str,
     observed_at: str,
+    source_vintage: str = "Budget-2025",
+    dry_run: bool = False,
 ) -> dict[str, Any]:
-    """Extract the fixed Budget-2025 profile into an exclusive new directory.
+    """Extract a reviewed Budget-2025 or Budget-2026 profile.
 
     Amounts come from literal OOXML numeric tokens, never formula caches or
     binary-float rendering. Notice text is only fingerprinted, not interpreted.
     No currency, netting, classification mapping or publication is inferred.
     """
-    _require(not source.is_symlink() and not output_dir.is_symlink())
+    _require(
+        type(dry_run) is bool
+        and not source.is_symlink()
+        and not output_dir.is_symlink()
+        and (not dry_run or not output_dir.exists())
+    )
+    profiles = {
+        "Budget-2025": (TRANSFORMATION, PERIOD_TYPES, DEFINITIONS),
+        "Budget-2026": (TRANSFORMATION_2026, PERIOD_TYPES_2026, DEFINITIONS_2026),
+    }
+    _require(source_vintage in profiles)
+    transformation, period_types, definitions = profiles[source_vintage]
     context = source_context(
-        expected_sha256, source_locator, "Budget-2025", observed_at
+        expected_sha256, source_locator, source_vintage, observed_at
     )
     payload = verified_snapshot(source, expected_sha256, max_bytes=MAX_BYTES)
     inventory = inventory_workbook(BytesIO(payload))
     tokens = _number_tokens(payload)
     book = load_workbook(BytesIO(payload), data_only=False, keep_links=False)
     try:
-        notice = _metadata(book, expected_sha256)
+        notice = _metadata(book, expected_sha256, definitions)
         with localcontext(Context(prec=50)):
             facts, lineage, dispositions = _extract(
-                book["Raw Data"], tokens["Raw Data"], context
+                book["Raw Data"],
+                tokens["Raw Data"],
+                context,
+                transformation=transformation,
+                period_types=period_types,
+                definitions=definitions,
             )
         excluded = [
             {
@@ -341,10 +406,10 @@ def normalize_budget_revenue(
     }
     receipt = {
         "schema_version": "archive-govt-nz.health-budget-revenue-extraction/v1",
-        "transformation_id": TRANSFORMATION,
+        "transformation_id": transformation,
         "source_object_sha256": expected_sha256,
         "source_locator": source_locator,
-        "source_vintage": "Budget-2025",
+        "source_vintage": source_vintage,
         "observed_at": context["observed_at"].isoformat(),
         "rights_state": "not_evaluated",
         "status": "partial" if counts["rejected"] else "passed" if facts else "empty",
@@ -353,4 +418,8 @@ def normalize_budget_revenue(
         "excluded_sheets": excluded,
         "workbook_inventory": inventory,
     }
+    if dry_run:
+        if receipt["status"] == "passed":
+            receipt["status"] = "planned"
+        return receipt
     return write_workbook_outputs(output_dir, outputs, receipt)

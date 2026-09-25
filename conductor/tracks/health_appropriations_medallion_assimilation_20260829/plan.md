@@ -483,6 +483,10 @@ repository validation command. External gates block only their affected task.
   annual Budget expenditure/revenue data from Bronze to Silver, preserving
   source-specific labels and explicit coverage gaps. [M-05, M-06, M-11;
   AC-05, AC-09]
+  Budget 2026 revenue now has one locally verified edition-specific extraction
+  and canonical projection; see \`budget-revenue-2026.md\`. Other Budget revenue
+  editions, Budget expenditure editions, and Vote Health Estimates remain
+  incomplete, so this parent task remains open.
 - [ ] Promote BEFU/HYEFU, historical fiscal indicators and Ministry Vote
   Health series with compatible-but-distinct series definitions and vintage
   relationships. [M-05, M-06, M-11; AC-05, AC-09, AC-11]
