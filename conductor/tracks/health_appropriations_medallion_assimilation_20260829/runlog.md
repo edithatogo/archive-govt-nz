@@ -2263,3 +2263,18 @@ full 6,866-item pytest collection, configured mutation checks and final
 directory `fsync`, so rename power-loss durability is not claimed there. See
 `bronze-checkpoint-contracts.md` and
 `checkpoint-directory-durability.json`.
+
+## 2026-09-26 — Population definition census reconciliation
+
+For Phase 1.2 / M-02 / M-12, reconciled the metadata-only census with the
+retained Stats NZ population definition: DPE054AA, Total / Total All Ages,
+As at versus Mean year ended, 2023 census basis, 18 August 2026 vintage and
+selectable 1991Q1–2026Q2. Updated the analytical register, exact-source census,
+tests and linked evidence. Numeric export, rights and spending-period alignment
+remain unqualified; no data was acquired or promoted. The first full harness
+reported one stale test requiring the former DPEQ metadata-lead label; after
+updating that assertion, the focused suite passed 41 tests and
+`./scripts/validate.sh` passed: 6,857 tests, 9 skipped, 98.06% coverage,
+48 schemas, 38 representative documents, 9/9 parity and all configured
+mutation/supply-chain gates. See `context-census.md` and
+`population-census-integration.json`.

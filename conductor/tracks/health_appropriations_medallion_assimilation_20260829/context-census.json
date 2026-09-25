@@ -74,25 +74,28 @@
     {
       "id": "population-national-lead",
       "family": "population",
-      "series_id": "DPEQ.SG1CTOT (metadata lead only)",
-      "definition": "Estimated resident population, all ages, reference-date national population; prior metadata observation, not an inspected Stats NZ export",
-      "vintage": "unqualified; prior secondary official metadata names release 18 August 2026",
-      "unit": "number of people (prior metadata only)",
-      "base": "census base unverified",
-      "period": "quarterly point-in-time; full coverage unverified",
+      "series_id": "DPE054AA — Estimated Resident Population by Age and Sex",
+      "definition": "Stats NZ estimated resident population; Total population code C, Total All Ages code DPE054FF; selectors distinguish As at from Mean year ended",
+      "vintage": "Stats NZ release 2026-08-18; current census basis 2023-06-30; prior quarters revisable",
+      "unit": "persons; no thousands multiplier",
+      "base": "2023-06-30 census basis",
+      "period": "Quarterly selectable coverage 1991Q1–2026Q2; selected metadata reference 2026Q2 / 2026-06-30; no numeric observations verified",
       "geography": "New Zealand; national aggregate",
-      "selector": "No qualified original export. Prior RBNZ M12 metadata and Stats NZ concept links are in source-schema-gaps.md",
-      "join_policy": "Blocked until exact Stats NZ export, reference dates, census base and revision vintage are qualified; annual mean cannot be replaced by a quarter-end stock",
+      "selector": "Infoshare DPE054AA; population C (Total); age DPE054FF (Total All Ages); estimate 1 (As at) or 2 (Mean year ended); metadata query selected 2026Q2 but contained no observations",
+      "join_policy": "Blocked until numeric export, rights and period alignment are qualified; select As at versus Mean year ended from the spending-period contract and never substitute a quarter-end stock for an annual mean",
       "qualification": "unqualified",
       "rights": "not_evaluated",
       "gaps": [
-        "original_export_missing",
-        "base_and_coverage_unverified",
+        "numeric_export_not_verified",
+        "rights_not_evaluated",
         "fiscal_mean_alignment_unqualified"
       ],
       "sources": [],
       "evidence": [
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-schema-gaps.md"
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-schema-gaps.md",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/population-context.json",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/population-context.md",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/analytical-context-register.md"
       ],
       "retained_manifest_sha256": null
     },
@@ -388,6 +391,18 @@
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/context-census.observation.json",
       "sha256": "9a999b8681e0ee623dc0ef3fad6804a720e5a4417eca6c20a27530034e6951a8"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/population-context.json",
+      "sha256": "b7385b0cd0ce3662f431a188a19970a30245a34b89c10b511418cf95e8fe0229"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/population-context.md",
+      "sha256": "7ad3c617d75b6839b8bde9f9a98665f83dbedc5e2892f004982a8bb6573459d9"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/analytical-context-register.md",
+      "sha256": "fdb0905a0524541010cb086663871f0997ae772ac9831a7f6216ccf3f6e4f1fa"
     }
   ]
 }

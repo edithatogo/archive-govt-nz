@@ -1,8 +1,8 @@
 # Analytical context register
 
-Observed 2026-09-05 from the pinned source census and retained source-specific
-profiles. This register defines join candidates; it is not an authorization to
-calculate or promote Gold measures.
+Reconciled 2026-09-26 against the pinned source census and retained
+source-specific profiles. This register defines join candidates; it is not an
+authorization to calculate or promote Gold measures.
 
 | Context | Exact retained identity | Period/basis | State | Join boundary |
 | --- | --- | --- | --- | --- |
@@ -10,7 +10,7 @@ calculate or promote Gold measures.
 | Wage | stats_nz_qes-faab0efe46470af8 / QEMQ.SASZ9A | Nine quarters through June 2026; ordinary-time hourly earnings, total sector | Captured and source-profiled | Currency, sex and adjustment metadata remain null; not a deflator by itself |
 | GDP | stats_nz_gdp-9fc80ed4b7f234b2 | March 2026 current-price income/expenditure workbook; quarterly observations | Captured and source-profiled | Keep quarterly basis and national-accounts vintage separate from Treasury fiscal series |
 | Working-age population | stats_nz_population-806dead2a5b8ab69 | HLFS June 2026 quarter; working-age estimate | Captured | Not a national all-age resident denominator; cannot support per-capita spending |
-| Resident population | Stats NZ national estimated resident population selector DPEQ.SG1CTOT | Quarterly point-in-time number of people | Metadata lead only | Exact permitted payload, full coverage, census base and fiscal-period alignment remain unverified |
+| Resident population | Stats NZ DPE054AA; population C (Total), age DPE054FF (Total All Ages), estimate 1 (As at) or 2 (Mean year ended) | Quarterly; persons; release 18 August 2026; 2023-06-30 census basis; selectable 1991Q1–2026Q2 | Definition enumerated from Stats NZ metadata; no numeric export captured | Rights and numeric export remain unverified; choose As at or Mean year ended against actual spending period, preserving vintage/revisions |
 | Crown expense | befu_2026-003, hyefu_2025-006, and fiscal_time_series-007 | Source-specific forecast/actual and accounting bases | Captured source material; no unified join | Require explicit measure definition, accounting basis, period and vintage before Gold use |
 
 The CPI profile source contract retains the index base as unresolved in its

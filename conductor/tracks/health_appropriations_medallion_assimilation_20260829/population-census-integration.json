@@ -1,0 +1,49 @@
+{
+  "schema_version": "archive-govt-nz.health-population-census-integration/v1",
+  "date": "2026-09-26",
+  "base_commit": "70333fec9078fbcc025dcb8b348bc6b8c1572abf",
+  "task": "Phase 1.2 / M-02 / M-12 / AC-03 / AC-10",
+  "scope": "Reconcile verified Stats NZ population definition into the metadata-only context census",
+  "red_test": "Existing register test rejected the now-obsolete DPEQ.SG1CTOT metadata-lead wording",
+  "focused_command": "uv run --locked pytest -q tests/tools/test_health_analytical_context_register.py tests/domains/health_appropriations/test_source_context_census.py tests/domains/health_appropriations/test_population_context.py",
+  "focused_tests_passed": 41,
+  "static_checks": {
+    "ruff": "passed",
+    "ruff_format": "passed",
+    "basedpyright": "passed",
+    "conductor_state": "passed"
+  },
+  "evidence_validation": "Context census Pydantic schema, source joins, and cited-file SHA-256 receipts passed",
+  "full_validation_command": "./scripts/validate.sh",
+  "full_validation": {
+    "status": "passed",
+    "tests_passed": 6857,
+    "tests_skipped": 9,
+    "coverage_percent": 98.06,
+    "schemas": 48,
+    "representative_documents": 38,
+    "parity": "9/9",
+    "configured_mutation_and_supply_chain_gates": "passed",
+    "sbom_components": 113
+  },
+  "population_definition": {
+    "table": "DPE054AA",
+    "population_code": "C (Total)",
+    "age_code": "DPE054FF (Total All Ages)",
+    "estimate_types": ["As at", "Mean year ended"],
+    "reference_period": "2026Q2 / 2026-06-30",
+    "current_census_basis": "2023-06-30",
+    "vintage": "Stats NZ release 2026-08-18",
+    "selectable_period_coverage": "1991Q1–2026Q2"
+  },
+  "remaining_gates": [
+    "No numeric population observations have been acquired or verified",
+    "Resource rights remain not evaluated",
+    "Choose As at versus Mean year ended using the spending-period contract",
+    "CPI/QES qualification and denominator joins remain unresolved"
+  ],
+  "network_acquisition": false,
+  "analytical_admission": false,
+  "source_promotion": false,
+  "task_complete": false
+}
