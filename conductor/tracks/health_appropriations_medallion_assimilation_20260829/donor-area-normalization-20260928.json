@@ -1,0 +1,243 @@
+{
+  "coverage": [
+    {
+      "disposition_reason_counts": {
+        "named_columns": 215,
+        "non_health_vote": 6289
+      },
+      "dispositions": 6504,
+      "expected_fact_count": 215,
+      "facts": 215,
+      "lineage": 3655,
+      "source_locator": "data/raw/b25-expenditure-data.xlsx",
+      "source_object_sha256": "d67c01b0a3f1fbee5cb5121b641bda42f91f3e5bc84e599d22d32aeacbbb3338",
+      "stage": "budget",
+      "stage_manifest_sha256": "f051c4f815da3085363f0a00b592b8a5e4521398a544529353781debfaf3cd3b"
+    },
+    {
+      "disposition_reason_counts": {
+        "literal_summary": 10,
+        "outside_literal_health_summary": 2300,
+        "summary_context": 22
+      },
+      "dispositions": 2332,
+      "expected_fact_count": 10,
+      "facts": 10,
+      "lineage": 60,
+      "source_locator": "data/raw/befu25-data-expense-tables.xlsx",
+      "source_object_sha256": "dbde3256b1cbfb847f9f6caec66e7adffabca0489b218997a431220da584a3d6",
+      "stage": "befu",
+      "stage_manifest_sha256": "9217b02ffb2a03e56a0a45cb7b865cb05227d6ed3a59e3f429d8faf154d3644e"
+    },
+    {
+      "disposition_reason_counts": {
+        "literal_summary": 10,
+        "outside_literal_health_summary": 2301,
+        "summary_context": 22
+      },
+      "dispositions": 2333,
+      "expected_fact_count": 10,
+      "facts": 10,
+      "lineage": 60,
+      "source_locator": "data/raw/hyefu24-data-expense-tables.xlsx",
+      "source_object_sha256": "725399c09323594c921dbcc493206abe59bf7b91dd968b8c7f6f3a67d4707969",
+      "stage": "hyefu",
+      "stage_manifest_sha256": "c1d04065992825f1e122e0c9b384cf23e94104a8e0fc2310155161c60a6fa9d6"
+    },
+    {
+      "disposition_reason_counts": {
+        "historical_context": 121,
+        "literal_historical_observation": 106,
+        "outside_historical_currency_selection": 1276
+      },
+      "dispositions": 1503,
+      "expected_fact_count": 106,
+      "facts": 106,
+      "lineage": 1143,
+      "source_locator": "data/raw/fiscaltimeseries1972-2024.xlsx",
+      "source_object_sha256": "769f2e7dd6000878cd29c2d913ad6979f28c5391c971292e6abf6148e83eb32d",
+      "stage": "historical",
+      "stage_manifest_sha256": "dbdba7dbae941e29f25fc5bc1227479107d8d1eaa8d761d6fe2d03ec63347f1f"
+    },
+    {
+      "disposition_reason_counts": {
+        "named_revenue_columns": 69,
+        "non_health_vote": 931
+      },
+      "dispositions": 1000,
+      "expected_fact_count": 69,
+      "facts": 69,
+      "lineage": 1104,
+      "source_locator": "data/raw/b25-revenue-data.xlsx",
+      "source_object_sha256": "2aef43eb419420a549fe56a946539f6e9afcbd91f95e9242457f26c97bafafaa",
+      "stage": "revenue",
+      "stage_manifest_sha256": "71b64a9ea7ebb953688f6c3b5d9c38366bb527a429ce7f9a4ad710652f4af81e"
+    },
+    {
+      "disposition_reason_counts": {
+        "excluded_formula_cache_not_admitted": 1,
+        "literal_context_only": 80,
+        "outside_admitted_literal_selection": 3
+      },
+      "dispositions": 84,
+      "expected_fact_count": 80,
+      "facts": 80,
+      "lineage": 832,
+      "source_locator": "data/raw/befu25-data-expense-tables.xlsx",
+      "source_object_sha256": "dbde3256b1cbfb847f9f6caec66e7adffabca0489b218997a431220da584a3d6",
+      "stage": "befu-detail",
+      "stage_manifest_sha256": "42cf811aef35d5adf24421c917525ae8f0d6f9d83bd6b10cdf430e64a60c287d"
+    },
+    {
+      "disposition_reason_counts": {
+        "excluded_formula_cache_not_admitted": 1,
+        "literal_context_only": 80,
+        "outside_admitted_literal_selection": 3
+      },
+      "dispositions": 84,
+      "expected_fact_count": 80,
+      "facts": 80,
+      "lineage": 832,
+      "source_locator": "data/raw/hyefu24-data-expense-tables.xlsx",
+      "source_object_sha256": "725399c09323594c921dbcc493206abe59bf7b91dd968b8c7f6f3a67d4707969",
+      "stage": "hyefu-detail",
+      "stage_manifest_sha256": "6615ca6b601283aae75b80dd15627bae32d2769b95f4b7b71f18c9fa9ce5a321"
+    },
+    {
+      "disposition_reason_counts": {
+        "formula_cache_not_admitted": 15,
+        "literal_context_only": 86,
+        "outside_admitted_literal_selection": 66
+      },
+      "dispositions": 167,
+      "expected_fact_count": 86,
+      "facts": 86,
+      "lineage": 3054,
+      "source_locator": "data/raw/befu25-charts-data.xlsx",
+      "source_object_sha256": "cf98f5e21f60c76c7d05f788df7955fb45cfdd780c12cb18e26ff8e83615e168",
+      "stage": "befu-chart",
+      "stage_manifest_sha256": "14088607bd4211104f69d1cf4553bea515705971cb47604feef8af709a2a26ea"
+    },
+    {
+      "disposition_reason_counts": {
+        "literal_context_only": 16,
+        "outside_admitted_literal_selection": 57
+      },
+      "dispositions": 73,
+      "expected_fact_count": 16,
+      "facts": 16,
+      "lineage": 288,
+      "source_locator": "data/raw/hyefu24-charts-data.xlsx",
+      "source_object_sha256": "f77bdab5ef808b0e451a52b9b448a52b07899bc4523da3c02aa5725325d6203c",
+      "stage": "hyefu-allowance",
+      "stage_manifest_sha256": "bd033aff9bb90cd60ca99b65fb1405aa8b02f488ff9e9754b3a0837af71ea0c9"
+    },
+    {
+      "disposition_reason_counts": {
+        "literal_context_only": 1,
+        "outside_admitted_literal_selection": 66
+      },
+      "dispositions": 67,
+      "expected_fact_count": 1,
+      "facts": 1,
+      "lineage": 13,
+      "source_locator": "data/raw/befu25-charts-data.xlsx",
+      "source_object_sha256": "cf98f5e21f60c76c7d05f788df7955fb45cfdd780c12cb18e26ff8e83615e168",
+      "stage": "befu-residual",
+      "stage_manifest_sha256": "888e1d70d48866a579c7c57b99f674601002ebf1dff14914efca8a00e9d3f930"
+    },
+    {
+      "disposition_reason_counts": {
+        "literal_context_only": 5,
+        "outside_admitted_literal_selection": 57
+      },
+      "dispositions": 62,
+      "expected_fact_count": 5,
+      "facts": 5,
+      "lineage": 155,
+      "source_locator": "data/raw/hyefu24-charts-data.xlsx",
+      "source_object_sha256": "f77bdab5ef808b0e451a52b9b448a52b07899bc4523da3c02aa5725325d6203c",
+      "stage": "hyefu-residual",
+      "stage_manifest_sha256": "bbedd633a5283fb29409b334196e161bd068839cb5ccb029d2eaf6af6216cc40"
+    },
+    {
+      "disposition_reason_counts": {
+        "literal_context_only": 61,
+        "outside_admitted_literal_selection": 8
+      },
+      "dispositions": 69,
+      "expected_fact_count": 61,
+      "facts": 61,
+      "lineage": 369,
+      "source_locator": "https://budget.govt.nz/budget/excel/fiscal-time-series/fiscaltimeseries1972-2025-year-end25.xlsx",
+      "source_object_sha256": "de59f9028a81a697ee66eea04861edfd8e2c3a7e472b3b8798d976951964f70f",
+      "stage": "crown",
+      "stage_manifest_sha256": "0df04c977f870a6abba4105706a7e51af179eba35234221fcbf5a13482139503"
+    }
+  ],
+  "donor_bytes_verified": 6604301,
+  "donor_manifest_sha256": "893f387e1f361400285ccc84802b497e87802d1ad913826ff7d9055b07a03b74",
+  "donor_object_count": 23,
+  "expected_fact_total": 739,
+  "first_manifest_sha256": "d905dfa6d76cbb35cf96e30b9d088be74ebcf2c846f38ed7b327e43cf46f67c5",
+  "gold_and_publication": "not_performed",
+  "output_file_count_per_build": 50,
+  "output_file_sha256_map_sha256": "cc8fb97874653e3c6cc856624bf6c44ea2f53c0697aa6708d5d8af0a53e21195",
+  "parity": {
+    "accepted_retain_both_deviations": 35,
+    "donor_gold_matched_rows": 312,
+    "five_table_donor_rows": 312,
+    "historical_counts": {
+      "exact_match": 76,
+      "source_only": 29,
+      "value_difference": 1
+    },
+    "publication_state": "no_action",
+    "raw_source_matched_rows": 312,
+    "repair_approval": "not_asserted",
+    "replacement_values": "null"
+  },
+  "repeat_builds_identical": true,
+  "rights_state": "not_evaluated",
+  "schema_version": "archive-govt-nz.health-donor-area-normalization/v1",
+  "scope": "The explicitly selected, donor-functional data areas covered by the 12 verified stages; this does not claim semantic normalization of all 152 inventoried worksheets.",
+  "second_manifest_sha256": "d905dfa6d76cbb35cf96e30b9d088be74ebcf2c846f38ed7b327e43cf46f67c5",
+  "source_workbooks": [
+    {
+      "object_id": "sha256:d67c01b0a3f1fbee5cb5121b641bda42f91f3e5bc84e599d22d32aeacbbb3338",
+      "source_locator": "data/raw/b25-expenditure-data.xlsx",
+      "source_object_sha256": "d67c01b0a3f1fbee5cb5121b641bda42f91f3e5bc84e599d22d32aeacbbb3338"
+    },
+    {
+      "object_id": "sha256:2aef43eb419420a549fe56a946539f6e9afcbd91f95e9242457f26c97bafafaa",
+      "source_locator": "data/raw/b25-revenue-data.xlsx",
+      "source_object_sha256": "2aef43eb419420a549fe56a946539f6e9afcbd91f95e9242457f26c97bafafaa"
+    },
+    {
+      "object_id": "sha256:cf98f5e21f60c76c7d05f788df7955fb45cfdd780c12cb18e26ff8e83615e168",
+      "source_locator": "data/raw/befu25-charts-data.xlsx",
+      "source_object_sha256": "cf98f5e21f60c76c7d05f788df7955fb45cfdd780c12cb18e26ff8e83615e168"
+    },
+    {
+      "object_id": "sha256:dbde3256b1cbfb847f9f6caec66e7adffabca0489b218997a431220da584a3d6",
+      "source_locator": "data/raw/befu25-data-expense-tables.xlsx",
+      "source_object_sha256": "dbde3256b1cbfb847f9f6caec66e7adffabca0489b218997a431220da584a3d6"
+    },
+    {
+      "object_id": "sha256:769f2e7dd6000878cd29c2d913ad6979f28c5391c971292e6abf6148e83eb32d",
+      "source_locator": "data/raw/fiscaltimeseries1972-2024.xlsx",
+      "source_object_sha256": "769f2e7dd6000878cd29c2d913ad6979f28c5391c971292e6abf6148e83eb32d"
+    },
+    {
+      "object_id": "sha256:f77bdab5ef808b0e451a52b9b448a52b07899bc4523da3c02aa5725325d6203c",
+      "source_locator": "data/raw/hyefu24-charts-data.xlsx",
+      "source_object_sha256": "f77bdab5ef808b0e451a52b9b448a52b07899bc4523da3c02aa5725325d6203c"
+    },
+    {
+      "object_id": "sha256:725399c09323594c921dbcc493206abe59bf7b91dd968b8c7f6f3a67d4707969",
+      "source_locator": "data/raw/hyefu24-data-expense-tables.xlsx",
+      "source_object_sha256": "725399c09323594c921dbcc493206abe59bf7b91dd968b8c7f6f3a67d4707969"
+    }
+  ],
+  "stage_count": 12
+}

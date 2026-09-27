@@ -191,7 +191,12 @@ def test_dispatch_and_completion_preserve_stage_names(
         assert root == tmp_path / name
         assert source == sources[name]
         verified.append(name)
-        return {"manifest_sha256": name, "stage": name, "record_ids": [name]}
+        return {
+            "manifest_sha256": name,
+            "stage": name,
+            "facts": rebuild_eight.EXPECTED_FACT_COUNTS[name],
+            "record_ids": [name],
+        }
 
     monkeypatch.setattr(rebuild, "_extract", legacy_extract)
     monkeypatch.setattr(rebuild_eight, "normalize_budget_revenue", extra)
@@ -208,10 +213,28 @@ def test_dispatch_and_completion_preserve_stage_names(
     assert legacy_checks == list(rebuild.PROFILES)
     assert result["stages"] == {name: name for name in rebuild_eight.STAGES}
     assert result["gold_selection"] == "not_performed"
+
+    def missing_fact(root: Path, name: str, source: dict[str, Any]) -> dict[str, Any]:
+        result = stage(root, name, source)
+        if name == "befu-detail":
+            result["facts"] -= 1
+        return result
+
     monkeypatch.setattr(
         rebuild_eight,
         "verify_stage_coverage",
-        lambda *_: {"manifest_sha256": "pin", "record_ids": ["duplicate"]},
+        missing_fact,
+    )
+    with pytest.raises(ValueError, match="eight_stage"):
+        rebuild_eight._completion(tmp_path, plan, sources)
+    monkeypatch.setattr(
+        rebuild_eight,
+        "verify_stage_coverage",
+        lambda *_: {
+            "manifest_sha256": "pin",
+            "facts": rebuild_eight.EXPECTED_FACT_COUNTS["budget"],
+            "record_ids": ["duplicate"],
+        },
     )
     with pytest.raises(ValueError, match="eight_stage"):
         rebuild_eight._completion(tmp_path, plan, sources)
@@ -285,6 +308,8 @@ def test_profiles_are_explicit_and_legacy_unchanged() -> None:
         "hyefu-residual",
         "crown",
     }
+    assert set(rebuild_eight.EXPECTED_FACT_COUNTS) == set(rebuild_eight.STAGES)
+    assert sum(rebuild_eight.EXPECTED_FACT_COUNTS.values()) == 739
 
 
 def test_chart_area_profiles_are_pinned_to_their_source_vintage(

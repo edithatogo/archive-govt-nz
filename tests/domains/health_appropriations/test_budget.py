@@ -172,6 +172,33 @@ def test_named_headers_and_nonpositive_amounts(tmp_path: Path) -> None:
     ]
 
 
+def test_footer_and_formula_rows_remain_explicitly_disposed(tmp_path: Path) -> None:
+    footer = ["TOTAL", *ROW[1:]]
+    formula = list(ROW)
+    formula[5] = "=SUM(F2:F2)"
+    source = tmp_path / "book.xlsx"
+    digest = _source(source, [ROW, footer, formula])
+
+    receipt = _run(source, tmp_path / "out", digest)
+
+    assert receipt["status"] == "partial"
+    assert receipt["counts"] == {
+        "input": 3,
+        "normalized": 1,
+        "out_of_scope": 1,
+        "blank": 0,
+        "rejected": 1,
+    }
+    dispositions = pq.read_table(tmp_path / "out/row_dispositions.parquet").to_pylist()
+    assert [
+        (row["source_row"], row["disposition"], row["reason"]) for row in dispositions
+    ] == [
+        (2, "normalized", "named_columns"),
+        (3, "out_of_scope", "non_health_vote"),
+        (4, "rejected", "formula_not_evaluated"),
+    ]
+
+
 @pytest.mark.parametrize(
     "headers",
     [

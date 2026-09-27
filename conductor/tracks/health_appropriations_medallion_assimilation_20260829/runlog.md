@@ -2671,3 +2671,33 @@ The 23-object/312-row parity and deterministic 12-stage evidence remain
 unchanged. Phase 4.1 broader workbook fixtures and Phase 4.2 complete workbook
 area normalization remain open; these dispositions do not imply completion of
 the 152-sheet structural census or approval to publish.
+
+## Donor workbook area coverage — 2026-09-28
+
+Expanded donor extraction fixtures with a Budget footer plus formula row and
+formula-backed detailed forecast totals with retained notes. The 12-stage
+integrated completion contract now pins the expected fact count for every
+source profile and rejects omission/addition in any stage. The targeted
+fixture/orchestration selection passed 194 tests; the donor, historical,
+analysis, compatibility, Gold and plot parity selection passed 253 tests.
+
+The current retained donor replay verified all 23 original objects / 6,604,301
+bytes and all 312 donor rows. The explicit historical ledger retains 76 exact,
+29 source-only and one decimal-token comparison as 30 source-backed
+retain-both dispositions, with no replacements, repair approval or publication
+approval.
+
+Two fresh 12-stage clean-room runs normalized seven donor workbook objects and
+the separately pinned Crown context into 739 observations, 11,565 lineage
+links and 14,278 reason-coded row/cell dispositions across 50 files. Both run
+manifests and every output hash matched. The 12 per-stage counts and output
+pins are in `donor-area-normalization-20260928.json`; scope and the distinction
+from the unresolved 152-sheet structural census are in
+`donor-area-normalization-20260928.md`.
+
+The required `./scripts/validate.sh` passed 6,989 tests, 9 skipped, 98.11%
+branch coverage, 49 schemas/39 representative documents, differential parity
+9/9, all configured mutation/hygiene gates, dependency/license/secret scans,
+and strict 113-component SBOM validation. This phase result does not claim
+normalization of every inventoried sheet, formula-cache admission, rights
+clearance or publication approval.
