@@ -123,3 +123,26 @@ lint exemptions; the production module has no such exemptions.
 - AC-11 broader cross-source quality/classification drift and AC-16 full
   repository/hosted assurance remain parent work. No new rights decision,
   acquisition, publication, remote mutation or donor retirement occurred.
+
+## Source-backed disposition follow-up — 2026-09-27
+
+The 30 historical deviations now have accepted, non-mutating dispositions. The
+pinned donor `process_data.py` (`0beb01bb…97d63ed3`) converts year labels with
+`pandas.to_numeric(errors="coerce")`. All 29 source-only years carry one of the
+source workbook's footnote markers (`†`, `*`, `^`, `#`), which explains why the
+donor table omits them. They remain source-only observations; no donor rows are
+manufactured or removed.
+
+The 1976 source token `605.70000000000005` and donor SQLite scalar `605.7` parse
+to the same IEEE-754 binary float. Their difference is exact-decimal lexical
+precision that SQLite `REAL` does not retain. Both stored observations remain
+separate, and the source's exact token and cell lineage remain available.
+
+The reproducible, payload-free, 30-entry disposition receipt is
+[`donor-historical-dispositions-20260927.json`](./donor-historical-dispositions-20260927.json)
+(SHA-256 `547d901ec8c4b2a467351d1a69ba6391d728b699ff05013688c3fa4de6a73ea0`).
+Its `accepted` means acceptance of the evidence-backed `retain_both_observations`
+disposition only. It does not approve a value repair or publication: every
+replacement stays null, publication approval stays false, and the 312-row
+donor-derived table remains unchanged. Full workbook-area normalization and
+broader source-layout fixture families are still open.

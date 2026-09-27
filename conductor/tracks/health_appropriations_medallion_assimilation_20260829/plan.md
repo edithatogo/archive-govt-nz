@@ -405,9 +405,15 @@ integrated parent head.
 - [ ] Normalize all in-scope donor workbook data areas into the dedicated
   record sets; attach field/cell lineage and reason-coded exclusions. [M-05,
   M-07; AC-03, AC-05]
-- [ ] Reconcile against the donor SQLite derivative, preserve the observed
+- [x] Reconcile against the donor SQLite derivative, preserve the observed
   donor tables, and resolve every difference through a test-backed repair
-  ledger. [M-08; AC-06, AC-11]
+  ledger. The 29 source-only rows have pinned footnote markers that the donor
+  transform coerces away; the 1976 decimal token and SQLite REAL have equal
+  binary-float values. All differences are accepted as retain-both
+  dispositions, with null replacements and publication approval false.
+  [M-08; AC-06, AC-11] (2026-09-27; see
+  `donor-historical-dispositions-20260927.json`; fixture guards in
+  `test_parity_replay_contracts.py`)
 
 ### 4.3 Replace donor utilities and analyses
 
@@ -448,8 +454,9 @@ integrated parent head.
   6,604,301 bytes and 29 comparison inputs reverified; five-table/312-row
   oracle, historical ledger and the complete health-appropriations domain
   suite passed. Twelve-stage Bronze replay rebuilt 739 observations into 50
-  files in two byte-identical clean runs. The 30 historical deviations remain
-  source-backed, blocked and unapproved; no replacements were made.)
+  files in two byte-identical clean runs. The 30 historical deviations now
+  have source-backed retain-both dispositions; no replacements or publication
+  approvals were made. See `donor-historical-dispositions-20260927.json`.)
 - [x] Self-review, full harness, and paired evidence; no parity claim may hide
   an unexplained difference. [M-18, M-19; AC-16] (2026-09-27: required
   `./scripts/validate.sh` passed 6,963 tests / 9 skipped at 97.95% branch

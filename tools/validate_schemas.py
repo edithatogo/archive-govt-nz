@@ -117,6 +117,14 @@ VALIDATION_PAIRS = (
         / "health-historical-reconciliation-sample-v1.json",
     ),
     (
+        REPOSITORY_ROOT / "schemas" / "health-historical-dispositions-v1.schema.json",
+        REPOSITORY_ROOT
+        / "conductor"
+        / "tracks"
+        / "health_appropriations_medallion_assimilation_20260829"
+        / "donor-historical-dispositions-20260927.json",
+    ),
+    (
         REPOSITORY_ROOT / "schemas" / "cli-envelope-v1.schema.json",
         REPOSITORY_ROOT / "tests" / "fixtures" / "cli-version-v1.json",
     ),
