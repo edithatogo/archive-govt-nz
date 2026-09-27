@@ -13,6 +13,8 @@ import pyarrow.parquet as pq
 
 from archive_govt_nz.domains.health_appropriations.canonical_consumer import (
     query_historical_observations,
+    query_nominal_budget,
+    query_nominal_revenue,
     summarize_historical_coverage,
 )
 from archive_govt_nz.domains.health_appropriations.local_provenance_reader import (
@@ -24,10 +26,12 @@ if TYPE_CHECKING:
 
 MAX_OUTPUT_BYTES = 128 * 1024 * 1024
 MAX_PACKAGES = 32
-SCHEMA = "archive-govt-nz.health-canonical-gold/v1"
+SCHEMA = "archive-govt-nz.health-canonical-gold/v2"
 _TABLES = {
     "historical_observations.parquet": "observations",
     "historical_coverage.parquet": "coverage",
+    "nominal_budget.parquet": "budget",
+    "nominal_revenue.parquet": "revenue",
 }
 
 
@@ -82,7 +86,7 @@ def _readback(path: Path, payload: bytes, table: pa.Table | None = None) -> None
     _require(observed == payload)
     if table is not None:
         restored = pq.read_table(BytesIO(observed))
-        _require(restored.equals(table, check_metadata=True))
+        _require(restored.cast(table.schema).equals(table, check_metadata=True))
 
 
 def _export(
@@ -93,15 +97,56 @@ def _export(
         isinstance(packages, tuple)
         and 0 < len(packages) <= MAX_PACKAGES
         and all(
-            isinstance(package, CanonicalPackageInput) and package.kind == "historical"
+            isinstance(package, CanonicalPackageInput)
+            and package.kind in {"historical", "budget", "revenue"}
             for package in packages
         )
     )
     _preflight(packages, output)
-    observations, query_receipt = query_historical_observations(packages)
-    coverage = summarize_historical_coverage(observations)
-    tables = {"observations": observations, "coverage": coverage}
-    payloads = {name: _table_bytes(tables[key]) for name, key in _TABLES.items()}
+    selected: dict[str, tuple[CanonicalPackageInput, ...]] = {
+        kind: tuple(package for package in packages if package.kind == kind)
+        for kind in ("historical", "budget", "revenue")
+    }
+    tables: dict[str, pa.Table] = {}
+    query_receipts: list[dict[str, Any]] = []
+    product_report: dict[str, dict[str, Any]] = {}
+    for kind, query in (
+        ("historical", query_historical_observations),
+        ("budget", query_nominal_budget),
+        ("revenue", query_nominal_revenue),
+    ):
+        family_packages = selected[kind]
+        if not family_packages:
+            continue
+        table, query_receipt = query(family_packages)
+        query_receipts.append(query_receipt)
+        if kind == "historical":
+            coverage = summarize_historical_coverage(table)
+            tables.update({"observations": table, "coverage": coverage})
+            product_report[kind] = {
+                "input_records": query_receipt["input_records"],
+                "observation_rows": table.num_rows,
+                "coverage_rows": coverage.num_rows,
+                "cross_source_join": "not_performed",
+                "vintage_pooling": "not_performed",
+            }
+        else:
+            tables[kind] = table
+            default_aggregation = "none"
+            if kind == "budget":
+                default_aggregation = "sum_within_exact_source_labels_and_unit"
+            product_report[kind] = {
+                "input_records": query_receipt["input_records"],
+                "output_rows": table.num_rows,
+                "aggregation": query_receipt.get("aggregation", default_aggregation),
+                "netting": query_receipt.get("netting", "not_applicable"),
+                "vintage_pooling": "not_performed",
+            }
+    payloads = {
+        filename: _table_bytes(tables[key])
+        for filename, key in _TABLES.items()
+        if key in tables
+    }
     _require(sum(map(len, payloads.values())) <= MAX_OUTPUT_BYTES)
     outputs = {
         name: {
@@ -114,12 +159,20 @@ def _export(
     receipt = {
         "schema_version": SCHEMA,
         "status": "dry_run" if not write else "complete",
-        "package_marker_sha256": query_receipt["package_marker_sha256"],
-        "input_records": query_receipt["input_records"],
+        "package_marker_sha256": sorted(
+            marker
+            for query_receipt in query_receipts
+            for marker in query_receipt["package_marker_sha256"]
+        ),
+        "input_records": sum(
+            query_receipt["input_records"] for query_receipt in query_receipts
+        ),
+        "products": product_report,
         "outputs": outputs,
         "period_ordering": "tokens_preserved_and_sorted_as_strings",
         "cross_source_join": "not_performed",
         "vintage_pooling": "not_performed",
+        "report_scope": "exact_canonical_inputs_and_source_separated_outputs",
         "rights_state": "not_evaluated",
         "publication": "not_performed",
     }
@@ -171,7 +224,33 @@ def export_historical_gold(
     remain protected, and the manifest does not assert rights or publication.
     """
     try:
+        _require(
+            isinstance(packages, tuple)
+            and all(package.kind == "historical" for package in packages)
+        )
         return _export(packages, output, write=write)
     except OSError, ValueError, TypeError, KeyError, AttributeError, pa.ArrowException:
+        message = "canonical_gold_export_invalid"
+        raise ValueError(message) from None
+
+
+def export_canonical_gold(
+    packages: tuple[CanonicalPackageInput, ...], output: Path, *, write: bool = False
+) -> dict[str, Any]:
+    """Build source-separated historical, appropriation and revenue Gold tables.
+
+    Each product is queried independently from pinned canonical packages. This
+    never joins source families, pools vintages, nets revenue, or publishes.
+    """
+    try:
+        return _export(packages, output, write=write)
+    except (
+        OSError,
+        ValueError,
+        TypeError,
+        KeyError,
+        AttributeError,
+        pa.ArrowException,
+    ):
         message = "canonical_gold_export_invalid"
         raise ValueError(message) from None

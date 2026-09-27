@@ -649,6 +649,14 @@ integrated parent head.
     M-13, M-18; AC-08, AC-09, AC-11, AC-16] See
     `canonical-historical-gold-20260928.md`. Remaining analytical measures and
     source families are still open.
+  - [x] Extend the verified local canonical Gold package to source-separated
+    Budget appropriation and Budget revenue marts alongside historical Health and
+    fiscal-context observations. Include exact-context coverage and a bounded
+    per-product input/output report; verify all Parquet bytes and repeat builds.
+    Preserve source IDs, avoid vintage pooling and cross-family joins, and forbid
+    revenue netting. [M-10, M-13, M-18; AC-08, AC-11, AC-16] See
+    `canonical-source-separated-gold-20260928.md`. This does not complete
+    contextual joins, remaining Silver families or plot delivery.
 - [ ] Build coverage, completeness, reconciliation, source-health,
   classification-drift and revision reports with defined thresholds. [M-13,
   S-04; AC-11]
