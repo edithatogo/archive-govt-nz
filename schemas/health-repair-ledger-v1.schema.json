@@ -4,7 +4,7 @@
   "title": "Health Phase 4 repair decision ledger row",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "measure", "year", "reconciliation_status", "disposition", "source_record_id", "source_object_sha256", "source_coordinate", "source_value", "donor_value", "replacement_value", "publication_approved"],
+  "required": ["schema_version", "measure", "year", "reconciliation_status", "disposition", "source_record_id", "source_object_sha256", "source_coordinate", "rationale", "source_value", "donor_value", "replacement_value", "publication_approved"],
   "properties": {
     "schema_version": {"const": "archive-govt-nz.health-repair-ledger/v1"},
     "measure": {"enum": ["health_spending", "nominal_gdp"]},
@@ -14,9 +14,17 @@
     "source_record_id": {"type": ["string", "null"]},
     "source_object_sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
     "source_coordinate": {"type": ["string", "null"]},
+    "rationale": {"type": "string", "minLength": 1},
     "source_value": {"type": ["string", "null"]},
     "donor_value": {"type": ["string", "null"]},
     "replacement_value": {"const": null},
     "publication_approved": {"const": false}
-  }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"reconciliation_status": {"const": "donor_only"}}},
+      "then": {"properties": {"source_coordinate": {"type": "null"}}},
+      "else": {"properties": {"source_coordinate": {"type": "string", "minLength": 1}}}
+    }
+  ]
 }

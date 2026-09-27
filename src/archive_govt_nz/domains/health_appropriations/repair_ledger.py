@@ -17,6 +17,7 @@ _ERR_KEY = "repair_ledger_key"
 _ERR_STATUS = "repair_ledger_duplicate_or_status"
 _ERR_MISSING = "repair_ledger_missing_disposition"
 _ERR_EXTRA = "repair_ledger_extra_disposition"
+_ERR_EVIDENCE = "repair_ledger_missing_evidence"
 
 
 def build_repair_ledger(
@@ -44,6 +45,19 @@ def build_repair_ledger(
         key = (measure, year)
         if key in seen or row.get("status") not in _STATUSES:
             raise ValueError(_ERR_STATUS)
+        status = row["status"]
+        rationale = row.get("reason")
+        coordinate = row.get("source_coordinate")
+        if (
+            not isinstance(rationale, str)
+            or not rationale.strip()
+            or (
+                status != "donor_only"
+                and (not isinstance(coordinate, str) or not coordinate.strip())
+            )
+            or (status == "donor_only" and coordinate is not None)
+        ):
+            raise ValueError(_ERR_EVIDENCE)
         disposition = dispositions.get(key)
         if disposition not in _DISPOSITIONS:
             raise ValueError(_ERR_MISSING)
@@ -53,7 +67,8 @@ def build_repair_ledger(
                 "schema_version": "archive-govt-nz.health-repair-ledger/v1",
                 "measure": measure,
                 "year": year,
-                "reconciliation_status": row["status"],
+                "reconciliation_status": status,
+                "rationale": rationale,
                 "disposition": disposition,
                 "source_record_id": row.get("source_record_id"),
                 "source_object_sha256": row.get("source_object_sha256"),

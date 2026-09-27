@@ -1,0 +1,57 @@
+{
+  "schema_version": "archive-govt-nz.health-repair-ledger-validation/v1",
+  "scope": "historical_reconciliation_evidence_contract",
+  "rationale": "required_nonempty_for_every_ledger_row",
+  "source_coordinate": {
+    "source_present_deviation": "required_nonempty",
+    "donor_only": "must_be_null"
+  },
+  "replacement_value": null,
+  "publication_approved": false,
+  "focused_tests": {
+    "command": "uv run --locked pytest tests/domains/health_appropriations/test_repair_ledger.py -q",
+    "result": "15 passed"
+  },
+  "ruff": "passed",
+  "basedpyright": "passed",
+  "schema_validation": {
+    "schemas": 48,
+    "representative_documents": 38,
+    "status": "passed"
+  },
+  "source_to_donor_oracle": "completed_for_all_five_pinned_source_tables; 312 donor rows matched and 29 additional historical source rows remain explicitly blocked",
+  "publication": "not_performed",
+  "full_repository_validation": {
+    "command": "./scripts/validate.sh",
+    "exit_code": 0,
+    "tests_passed": 6908,
+    "tests_skipped": 9,
+    "branch_coverage_percent": 98.08,
+    "schemas": 48,
+    "representative_documents": 38,
+    "differential_parity": "9/9 passed",
+    "configured_mutation_lanes": "passed",
+    "hygiene": "passed",
+    "cas_benchmark_megabytes_per_second": 657.66,
+    "dependency_audit": "passed_no_known_vulnerabilities",
+    "licence_inventory": "passed",
+    "secrets": "passed",
+    "strict_cyclonedx_components": 113
+  },
+  "source_backed_reconciliation": {
+    "receipt": "donor-source-parity.validation.json",
+    "donor_commit": "4668e6c3b1b492086941d4c1ef96e299250a8301",
+    "donor_tree": "c6d44ff79eda73cfc6ba7db5764e27ce01b890e1",
+    "donor_rows_exactly_matched": 312,
+    "unresolved_candidate_only_rows": 29,
+    "historical_decimal_reconciliation": {
+      "exact_match": 76,
+      "source_only": 29,
+      "value_difference": 1
+    },
+    "blocked_deviations": 30,
+    "ledger_sha256": "7d04a1a44b7bfd35b4dc898065bb426b1421f2926f269d345586874367c0c482",
+    "replacement_values": "null",
+    "publication_approved": false
+  }
+}
