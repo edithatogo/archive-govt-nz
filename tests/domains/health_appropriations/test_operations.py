@@ -4,7 +4,8 @@ from __future__ import annotations
 
 import hashlib
 import json
-from typing import TYPE_CHECKING
+import re
+from pathlib import Path
 
 import pytest
 
@@ -12,9 +13,6 @@ from archive_govt_nz.domains.health_appropriations.operations import (
     HealthAppropriationsStateError,
     inspect_archive_status,
 )
-
-if TYPE_CHECKING:
-    from pathlib import Path
 
 
 def _write_json(path: Path, value: dict[str, object]) -> None:
@@ -31,9 +29,9 @@ def _ready_archive(root: Path) -> None:
         root / "manifests" / "official-capture-2026-08-29-complete.json",
         {
             "schema_version": "capture/v1",
-            "captured": 73,
-            "selected": 73,
-            "results": [],
+            "captured": 2,
+            "selected": 2,
+            "results": [{"state": "captured"}, {"state": "captured"}],
         },
     )
     _write_json(
@@ -77,7 +75,7 @@ def test_status_distinguishes_no_state_partial_and_ready(tmp_path: Path) -> None
     ready = inspect_archive_status(tmp_path)
     candidate = tmp_path / "candidates" / "2026-08-29-v4" / "MANIFEST.json"
     assert ready["status"] == "ready"
-    assert ready["captured_resources"] == 73
+    assert ready["captured_resources"] == 2
     assert ready["silver_records"] == 312
     assert (
         ready["candidate_manifest_sha256"]
@@ -121,4 +119,72 @@ def test_status_rejects_candidate_without_dataset(tmp_path: Path) -> None:
         {"schema_version": "candidate/v1", "dataset": "", "files": []},
     )
     with pytest.raises(HealthAppropriationsStateError, match="invalid_manifest"):
+        inspect_archive_status(tmp_path)
+
+
+def test_status_rejects_incomplete_capture_as_bronze_ready(tmp_path: Path) -> None:
+    _ready_archive(tmp_path)
+    _write_json(
+        tmp_path / "manifests" / "official-capture-2026-08-29-complete.json",
+        {
+            "schema_version": "capture/v1",
+            "captured": 1,
+            "selected": 2,
+            "results": [{"state": "captured"}],
+        },
+    )
+    state = inspect_archive_status(tmp_path)
+    assert state["status"] == "partial"
+    layers = state["layers"]
+    assert isinstance(layers, dict)
+    assert layers["bronze"] is False
+
+
+def test_status_rejects_capture_with_incomplete_results(tmp_path: Path) -> None:
+    _ready_archive(tmp_path)
+    _write_json(
+        tmp_path / "manifests" / "official-capture-2026-08-29-complete.json",
+        {
+            "schema_version": "capture/v1",
+            "captured": 2,
+            "selected": 2,
+            "results": [{"state": "captured"}, {"state": "failed"}],
+        },
+    )
+    state = inspect_archive_status(tmp_path)
+    layers = state["layers"]
+    assert isinstance(layers, dict)
+    assert layers["bronze"] is False
+
+
+def test_status_reports_exact_manifest_provenance(tmp_path: Path) -> None:
+    _ready_archive(tmp_path)
+    state = inspect_archive_status(tmp_path)
+    provenance = state["manifest_provenance"]
+    assert isinstance(provenance, dict)
+    assert set(provenance) == {"donor", "capture", "silver", "gold", "platinum"}
+    for entry in provenance.values():
+        assert len(entry["sha256"]) == 64
+        assert entry["path"].startswith("manifests/") or entry["path"].startswith(
+            "candidates/"
+        )
+
+
+def test_status_fails_closed_when_manifest_cannot_be_read(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    _ready_archive(tmp_path)
+    original = Path.read_bytes
+
+    def fail_candidate(path: Path) -> bytes:
+        if path.name == "MANIFEST.json":
+            detail = "private path details"
+            raise OSError(detail)
+        return original(path)
+
+    monkeypatch.setattr(Path, "read_bytes", fail_candidate)
+    with pytest.raises(
+        HealthAppropriationsStateError,
+        match=re.escape("invalid_manifest:MANIFEST.json"),
+    ):
         inspect_archive_status(tmp_path)

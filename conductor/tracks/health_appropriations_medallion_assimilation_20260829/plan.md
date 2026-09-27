@@ -995,6 +995,12 @@ integrated parent head.
 - [x] Add the first typed, read-only health-appropriations operational status
   surface shared by CLI and MCP, with explicit no-state, partial, ready and
   corrupt-manifest contracts. [M-15, M-18; AC-13, AC-16] (`da37f79`)
+- [x] Bind each reported layer to its exact manifest path and SHA-256 from the
+  same bytes used to derive its status, and require captured/selected count and
+  result-list agreement with every result captured before reporting Bronze
+  ready. This is local manifest evidence;
+  it does not prove remote workflow health, source completeness, rights, or
+  publication. [M-15, M-18; AC-13, AC-16]
 
 ## Gate register
 

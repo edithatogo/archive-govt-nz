@@ -411,6 +411,22 @@ _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
                 "silver_records": {"type": "integer", "minimum": 0},
                 "candidate_manifest_sha256": {"type": "string"},
                 "dataset": {"type": "string"},
+                "manifest_provenance": {
+                    "type": "object",
+                    "propertyNames": {
+                        "enum": ["donor", "capture", "silver", "gold", "platinum"]
+                    },
+                    "additionalProperties": _object_schema(
+                        {
+                            "path": {"type": "string"},
+                            "sha256": {
+                                "type": "string",
+                                "pattern": "^[0-9a-f]{64}$",
+                            },
+                        },
+                        ["path", "sha256"],
+                    ),
+                },
             },
             [
                 "archive_root",
@@ -422,6 +438,7 @@ _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
                 "silver_records",
                 "candidate_manifest_sha256",
                 "dataset",
+                "manifest_provenance",
             ],
         ),
         "annotations": {
