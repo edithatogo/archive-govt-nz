@@ -593,7 +593,7 @@ integrated parent head.
   [M-05, M-06, M-12, M-18; AC-05, AC-10, AC-16] (PR #271, checked head
   f4b90ea, observed merge 4ec9920; seven checks and 1,956 hosted tests passed;
   broader context/base/population work below remains pending)
-- [ ] Promote exact CPI, wage, population, GDP and total/core Crown expense
+- [~] Promote exact CPI, wage, population, GDP and total/core Crown expense
   observations required by Gold formulas, with base/definition/vintage
   metadata. [M-05, M-06, M-12; AC-05, AC-10]
   A Stats NZ DPE056AA annual mean export (1991–2026) is now preserved in Bronze
@@ -605,7 +605,12 @@ integrated parent head.
   Silver extraction with side-by-side formula/cache lineage and explicit
   unverified freshness, currency and fiscal-year basis. See
   `befu-core-expense-20260925.md`; it remains context-only and does not complete
-  total/core Crown Gold denominators or this parent task.
+  total/core Crown Gold denominators or this parent task. A verified local
+  context Gold coverage product now includes the pinned CPI, QES, Stats NZ GDP
+  and annual population Silver packages with exact source/vintage coverage and
+  explicit excluded-value reasons. It does not approve CPI base, GDP currency,
+  population denominator, rights, or any cross-series measure. See
+  `context-gold-coverage-20260928.md`.
 - [ ] If S-05 passed its scope/rights gate, add the aggregate Health Survey
   adapter and explicit time/geography alignment; otherwise record its deferred
   disposition without blocking the Must scope. [S-05; AC-10]
@@ -657,6 +662,12 @@ integrated parent head.
     revenue netting. [M-10, M-13, M-18; AC-08, AC-11, AC-16] See
     `canonical-source-separated-gold-20260928.md`. This does not complete
     contextual joins, remaining Silver families or plot delivery.
+  - [x] Add a pinned-source contextual observation and coverage mart for CPI,
+    QES wage, current-price Stats NZ GDP and annual population. Numeric
+    observations remain context-only; missing values and unretained population
+    status evidence are excluded with reason codes, rights remain unevaluated,
+    and no denominator or cross-series calculation is performed. See
+    `context-gold-coverage-20260928.md`.
 - [ ] Build coverage, completeness, reconciliation, source-health,
   classification-drift and revision reports with defined thresholds. [M-13,
   S-04; AC-11]

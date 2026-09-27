@@ -33,6 +33,9 @@ from archive_govt_nz.domains.health_appropriations.budget_operations import (
 from archive_govt_nz.domains.health_appropriations.compatibility_export import (
     export_compatibility,
 )
+from archive_govt_nz.domains.health_appropriations.context_gold import (
+    export_context_gold,
+)
 from archive_govt_nz.domains.health_appropriations.gold_export import export_gold
 from archive_govt_nz.domains.health_appropriations.inspection import inspect_workbook
 from archive_govt_nz.domains.health_appropriations.operations import (
@@ -361,6 +364,26 @@ def health_appropriations_extract_source(
     )
     _emit_json({"command": "health-appropriations-extract-source", **result})
     return 2 if result["status"] == "failed" else 0
+
+
+@app.command(name="health-appropriations-build-context-gold")
+def health_appropriations_build_context_gold(
+    *, silver_root: Path, source_root: Path, output_dir: Path, write: bool = False
+) -> int:
+    """Build a read-only context Gold mart; writing needs the explicit --write flag."""
+    try:
+        result = export_context_gold(silver_root, source_root, output_dir, write=write)
+    except ValueError as error:
+        _emit_json(
+            {
+                "command": "health-appropriations-build-context-gold",
+                "status": "failed",
+                "error": str(error),
+            }
+        )
+        return 2
+    _emit_json({"command": "health-appropriations-build-context-gold", **result})
+    return 0
 
 
 @app.command(name="health-appropriations-verify-rebuild")
