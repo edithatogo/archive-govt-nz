@@ -8,18 +8,26 @@ from decimal import Decimal
 from pathlib import Path
 
 import pyarrow as pa
+import pyarrow.parquet as pq
 import pytest
 from tests.domains.health_appropriations.test_budget_classification import inputs
+from tests.domains.health_appropriations.test_budget_revenue_projection import (
+    inputs as revenue_inputs,
+)
 from tests.domains.health_appropriations.test_historical_snapshot import (
     _package as historical_raw_package,
 )
 
 from archive_govt_nz.domains.health_appropriations import (
+    budget_revenue_canonical_export,
     canonical_consumer,
     canonical_gold_export,
 )
 from archive_govt_nz.domains.health_appropriations.budget_export import (
     export_budget_appropriations,
+)
+from archive_govt_nz.domains.health_appropriations.budget_revenue_canonical_export import (
+    export_budget_revenue,
 )
 from archive_govt_nz.domains.health_appropriations.canonical_consumer import (
     HISTORICAL_COVERAGE_SCHEMA,
@@ -29,9 +37,11 @@ from archive_govt_nz.domains.health_appropriations.canonical_consumer import (
     query_historical_nominal,
     query_historical_observations,
     query_nominal_budget,
+    query_nominal_revenue,
     summarize_historical_coverage,
 )
 from archive_govt_nz.domains.health_appropriations.canonical_gold_export import (
+    export_canonical_gold,
     export_historical_gold,
 )
 from archive_govt_nz.domains.health_appropriations.historical_canonical_export import (
@@ -43,6 +53,7 @@ from archive_govt_nz.domains.health_appropriations.local_provenance_reader impor
 
 
 def _package(tmp_path: Path) -> CanonicalPackageInput:
+    tmp_path.mkdir(parents=True, exist_ok=True)
     source = inputs(tmp_path)
     output = tmp_path / "canonical"
     export_budget_appropriations(
@@ -64,6 +75,7 @@ def _package(tmp_path: Path) -> CanonicalPackageInput:
 
 
 def _historical_package(tmp_path: Path) -> CanonicalPackageInput:
+    tmp_path.mkdir(parents=True, exist_ok=True)
     raw, original, pin = historical_raw_package(tmp_path)
     output = tmp_path / "historical-canonical"
     export_historical_canonical(raw, original, pin, output, write=True)
@@ -75,6 +87,28 @@ def _historical_package(tmp_path: Path) -> CanonicalPackageInput:
         original=original,
         raw_root=raw,
         raw_manifest_sha256=pin,
+    )
+
+
+def _revenue_package(tmp_path: Path) -> CanonicalPackageInput:
+    tmp_path.mkdir(parents=True, exist_ok=True)
+    source = revenue_inputs(tmp_path)
+    output = tmp_path / "canonical-revenue"
+    export_budget_revenue(
+        source["root"],
+        source["manifest_sha256"],
+        source["original"],
+        output,
+        dry_run=False,
+    )
+    marker = output / budget_revenue_canonical_export.MARKER
+    return CanonicalPackageInput(
+        kind="revenue",
+        root=output,
+        marker_sha256=hashlib.sha256(marker.read_bytes()).hexdigest(),
+        original=source["original"],
+        raw_root=source["root"],
+        raw_manifest_sha256=source["manifest_sha256"],
     )
 
 
@@ -294,12 +328,64 @@ def test_historical_gold_export_records_bounded_readback_failure(
         export_historical_gold((package,), output, write=True)
     failure = json.loads((output / "FAILURE.json").read_text(encoding="utf-8"))
     assert failure == {
-        "schema_version": "archive-govt-nz.health-canonical-gold/v1",
+        "schema_version": "archive-govt-nz.health-canonical-gold/v2",
         "status": "incomplete",
         "error_type": "ValueError",
         "publication": "not_performed",
     }
     assert not (output / "MANIFEST.json").exists()
+
+
+def test_canonical_gold_builds_source_separated_facts_and_report(
+    tmp_path: Path,
+) -> None:
+    historical = _historical_package(tmp_path / "historical")
+    budget = _package(tmp_path / "budget")
+    revenue = _revenue_package(tmp_path / "revenue")
+    output = tmp_path / "combined-gold"
+    repeated = tmp_path / "combined-gold-repeat"
+
+    planned = export_canonical_gold((historical, budget, revenue), output)
+    assert planned["status"] == "dry_run"
+    assert set(planned["products"]) == {"historical", "budget", "revenue"}
+    assert not output.exists()
+
+    receipt = export_canonical_gold((historical, budget, revenue), output, write=True)
+    assert receipt["status"] == "complete"
+    assert receipt["cross_source_join"] == "not_performed"
+    assert receipt["vintage_pooling"] == "not_performed"
+    assert receipt["products"]["historical"]["cross_source_join"] == "not_performed"
+    assert (
+        receipt["products"]["budget"]["aggregation"]
+        == "sum_within_exact_source_labels_and_unit"
+    )
+    assert receipt["products"]["revenue"]["netting"] == "prohibited"
+    assert {path.name for path in output.iterdir()} == {
+        "historical_observations.parquet",
+        "historical_coverage.parquet",
+        "nominal_budget.parquet",
+        "nominal_revenue.parquet",
+        "MANIFEST.json",
+    }
+    manifest = json.loads((output / "MANIFEST.json").read_text(encoding="utf-8"))
+    assert set(manifest["outputs"]) == {
+        "historical_observations.parquet",
+        "historical_coverage.parquet",
+        "nominal_budget.parquet",
+        "nominal_revenue.parquet",
+    }
+    assert pq.read_table(output / "nominal_budget.parquet").to_pylist() == (
+        query_nominal_budget((budget,))[0].to_pylist()
+    )
+    assert pq.read_table(output / "nominal_revenue.parquet").to_pylist() == (
+        query_nominal_revenue((revenue,))[0].to_pylist()
+    )
+    export_canonical_gold((historical, budget, revenue), repeated, write=True)
+    assert {path.name: path.read_bytes() for path in output.iterdir()} == {
+        path.name: path.read_bytes() for path in repeated.iterdir()
+    }
+    with pytest.raises(ValueError, match=r"^canonical_gold_export_invalid$"):
+        export_canonical_gold((object(),), tmp_path / "invalid")  # type: ignore[arg-type]
 
 
 @pytest.mark.parametrize("packages", [[], (), [object()]])
