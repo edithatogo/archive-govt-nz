@@ -63,3 +63,22 @@ def test_context_dimensions_are_literal_unresolved_and_stably_linked() -> None:
 def test_context_dimensions_reject_unknown_family() -> None:
     with pytest.raises(ValueError, match="unknown_context_dimension_family"):
         context_source_dimensions((), (), family="unknown")
+
+
+def test_blank_dimension_values_are_not_materialized() -> None:
+    mappings, links = context_source_dimensions(
+        (
+            {
+                "record_id": "blank",
+                "source_vintage": "v1",
+                "series_reference": " ",
+                "period_token": "",
+                "unit": None,
+                "index_base": "",
+            },
+        ),
+        (),
+        family="cpi",
+    )
+    assert mappings == ()
+    assert links == ()

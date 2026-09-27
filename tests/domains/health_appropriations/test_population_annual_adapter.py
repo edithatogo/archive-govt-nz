@@ -4,14 +4,20 @@ from __future__ import annotations
 
 import hashlib
 from decimal import Decimal
+from typing import TYPE_CHECKING
 
+import pytest
 from tests.domains.health_appropriations.test_population_annual_export import payload
+
+if TYPE_CHECKING:
+    from _pytest.monkeypatch import MonkeyPatch
 
 from archive_govt_nz.domains.health_appropriations.adapter_dispatch import (
     AdapterRegistration,
     dispatch_bronze,
 )
 from archive_govt_nz.domains.health_appropriations.population_annual_adapter import (
+    PopulationAnnualAdapter,
     population_annual_registration,
 )
 
@@ -53,3 +59,22 @@ def test_population_layout_probe_rejects_unknown_csv() -> None:
     profile = registration()
     assert profile.layout_probe is not None
     assert profile.layout_probe(b"unexpected,headers\nvalue,1\n") is False
+
+
+def test_population_adapter_hash_vintage_size_and_preserved_layout(
+    monkeypatch: MonkeyPatch,
+) -> None:
+    bronze = payload()
+    digest = hashlib.sha256(bronze).hexdigest()
+    adapter = PopulationAnnualAdapter("source", "2026-08-18", "now")
+    with pytest.raises(ValueError, match="source_hash_mismatch"):
+        adapter.extract(bronze, source_sha256="0" * 64)
+    assert adapter.matches_layout(bronze)
+    assert not PopulationAnnualAdapter("source", "wrong", "now").matches_layout(bronze)
+    monkeypatch.setattr(
+        "archive_govt_nz.domains.health_appropriations.population_annual_export.MAX_BYTES",
+        1,
+    )
+    assert not adapter.matches_layout(bronze)
+    output = adapter.extract(bronze, source_sha256=digest)
+    assert output.losses[0].reason == "unsupported_population_export_layout"

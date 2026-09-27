@@ -4,11 +4,20 @@ from __future__ import annotations
 
 import hashlib
 from decimal import Decimal
+from typing import TYPE_CHECKING, Never
+
+import pytest
+
+if TYPE_CHECKING:
+    from _pytest.monkeypatch import MonkeyPatch
 
 from archive_govt_nz.domains.health_appropriations.adapter_dispatch import (
     dispatch_bronze,
 )
-from archive_govt_nz.domains.health_appropriations.cpi_adapter import cpi_registration
+from archive_govt_nz.domains.health_appropriations.cpi_adapter import (
+    CpiAdapter,
+    cpi_registration,
+)
 
 HEADER = "Series_reference,Period,Data_value,STATUS,UNITS,Subject,Group,Series_title_1,Series_title_2\n"
 META = ",FINAL,Index,CPI,CPI All Groups for New Zealand,All groups,NA\n"
@@ -61,3 +70,41 @@ def test_dispatch_preserves_unrecognized_csv_profile() -> None:
     assert result.selection.status == "preserved_only"
     assert result.selection.reason == "no_matching_layout"
     assert result.output.records == ()
+
+
+def test_cpi_adapter_hash_vintage_size_and_series_fallback(
+    monkeypatch: MonkeyPatch,
+) -> None:
+    bronze = (HEADER + "CPIQ.SE9A,2026.06,123.4" + META).encode()
+    adapter = CpiAdapter("source", "2026-Q2", "2026-08-31T00:00:00Z")
+    digest = hashlib.sha256(bronze).hexdigest()
+    with pytest.raises(ValueError, match="source_hash_mismatch"):
+        adapter.extract(bronze, source_sha256="0" * 64)
+    assert adapter.matches_layout(bronze)
+    assert not CpiAdapter("source", "wrong", "now").matches_layout(bronze)
+    assert (
+        adapter.extract(
+            b"unknown", source_sha256=hashlib.sha256(b"unknown").hexdigest()
+        )
+        .losses[0]
+        .reason
+        == "unsupported_cpi_csv_layout"
+    )
+    monkeypatch.setattr(
+        "archive_govt_nz.domains.health_appropriations.cpi.MAX_BYTES", 1
+    )
+    assert not adapter.matches_layout(bronze)
+    monkeypatch.setattr(
+        "archive_govt_nz.domains.health_appropriations.cpi.MAX_BYTES", 16 * 1024 * 1024
+    )
+
+    def unsupported(*_args: object, **_kwargs: object) -> Never:
+        message = "series drift"
+        raise KeyError(message)
+
+    monkeypatch.setattr(
+        "archive_govt_nz.domains.health_appropriations.cpi.inspect_bronze_payload",
+        unsupported,
+    )
+    output = adapter.extract(bronze, source_sha256=digest)
+    assert output.losses[0].reason == "unsupported_cpi_series_layout"

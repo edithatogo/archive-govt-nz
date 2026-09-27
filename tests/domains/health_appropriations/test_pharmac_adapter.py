@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import hashlib
 
+import pytest
+
 from archive_govt_nz.domains.health_appropriations.adapter_dispatch import (
     AdapterRegistration,
     dispatch_bronze,
@@ -13,6 +15,7 @@ from archive_govt_nz.domains.health_appropriations.pharmac import (
     HEADERS,
 )
 from archive_govt_nz.domains.health_appropriations.pharmac_adapter import (
+    PharmacBudgetAdapter,
     pharmac_budget_registration,
 )
 
@@ -87,3 +90,17 @@ def test_pharmac_dispatch_requires_exact_media_type() -> None:
         registrations=(registration(),),
     )
     assert result.selection.status == "preserved_only"
+
+
+def test_pharmac_adapter_rejects_hash_vintage_and_malformed_html() -> None:
+    bronze = payload()
+    adapter = PharmacBudgetAdapter("source", "Pharmac-CPB-2026-08-07", "now")
+    with pytest.raises(ValueError, match="source_hash_mismatch"):
+        adapter.extract(bronze, source_sha256="0" * 64)
+    assert adapter.matches_layout(bronze)
+    assert not PharmacBudgetAdapter("source", "wrong", "now").matches_layout(bronze)
+    assert not adapter.matches_layout(b"<html>\xff</html>")
+    assert not adapter.matches_layout(b"")
+    drifted = bronze.replace(b"FINANCIAL YEAR", b"FINANCIAL PERIOD", 1)
+    output = adapter.extract(drifted, source_sha256=hashlib.sha256(drifted).hexdigest())
+    assert output.losses[0].reason == "unsupported_pharmac_budget_html_layout"

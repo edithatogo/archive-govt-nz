@@ -39,6 +39,24 @@ def test_context_registration_set_is_stable_and_profile_scoped() -> None:
     }
 
 
+def test_optional_pharmac_context_adds_only_its_reviewed_profile() -> None:
+    contexts = {
+        "cpi": AdapterContext("cpi", "2026-Q2", "now"),
+        "population": AdapterContext("population", "2026-08-18", "now"),
+        "qes": AdapterContext("qes", "QES-2026-Q2", "now"),
+        "gdp": AdapterContext("gdp", "StatsNZ-GDP-2026Q1", "now"),
+    }
+    base = context_adapter_registrations(**contexts)
+    extended = context_adapter_registrations(
+        **contexts,
+        pharmac=AdapterContext("pharmac", "Pharmac-CPB-2026-08-07", "now"),
+    )
+    assert len(extended) == len(base) + 1
+    assert "pharmac-combined-pharmaceutical-budget" in {
+        row.adapter_id for row in extended
+    }
+
+
 def test_composed_registrations_select_one_exact_csv_profile() -> None:
     registrations = context_adapter_registrations(
         cpi=AdapterContext(

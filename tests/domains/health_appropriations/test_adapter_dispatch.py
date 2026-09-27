@@ -161,6 +161,54 @@ def test_multiple_layouts_require_probes_and_select_exactly_one_match() -> None:
     assert second.calls == []
 
 
+def test_probe_ambiguity_and_invalid_probe_output_fail_closed() -> None:
+    payload = b"%PDF-1.7\nlayout-a"
+    digest = hashlib.sha256(payload).hexdigest()
+
+    def matching(_data: bytes) -> bool:
+        return True
+
+    def invalid_probe(_data: bytes) -> bool:
+        return 1  # type: ignore[return-value]
+
+    ambiguous = tuple(
+        AdapterRegistration(name, "v1", PDF, RecordingAdapter(), matching)
+        for name in ("first", "second")
+    )
+    result = select_bronze_adapter(
+        payload, source_sha256=digest, media_type=PDF, registrations=ambiguous
+    )
+    assert result.reason == "adapter_selection_ambiguous"
+    with pytest.raises(TypeError, match="invalid_layout_probe_result"):
+        select_bronze_adapter(
+            payload,
+            source_sha256=digest,
+            media_type=PDF,
+            registrations=(
+                AdapterRegistration(
+                    "bad", "v1", PDF, RecordingAdapter(), invalid_probe
+                ),
+            ),
+        )
+
+
+@pytest.mark.parametrize(
+    ("payload", "declared"),
+    [(b"<html>\xff</html>", "text/html"), (b"<html>\x00</html>", "text/html")],
+)
+def test_html_detection_rejects_invalid_encoding_and_nul(
+    payload: bytes, declared: str
+) -> None:
+    selection = select_bronze_adapter(
+        payload,
+        source_sha256=hashlib.sha256(payload).hexdigest(),
+        media_type=declared,
+        registrations=(),
+    )
+    assert selection.status == "preserved_only"
+    assert selection.detected_media_type is None
+
+
 def test_selection_receipt_is_canonical_and_binds_fail_closed_evidence() -> None:
     payload = b"%PDF-1.7\nlayout-a"
     digest = hashlib.sha256(payload).hexdigest()

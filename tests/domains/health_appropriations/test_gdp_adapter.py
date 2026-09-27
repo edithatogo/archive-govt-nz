@@ -5,13 +5,17 @@ from __future__ import annotations
 import hashlib
 from pathlib import Path
 
+import pytest
 from tests.domains.health_appropriations.test_gdp import workbook
 
 from archive_govt_nz.domains.health_appropriations.adapter_dispatch import (
     dispatch_bronze,
 )
 from archive_govt_nz.domains.health_appropriations.gdp import VINTAGE
-from archive_govt_nz.domains.health_appropriations.gdp_adapter import gdp_registration
+from archive_govt_nz.domains.health_appropriations.gdp_adapter import (
+    GdpAdapter,
+    gdp_registration,
+)
 
 
 def test_dispatch_emits_quarterly_facts_and_retains_nonselected_cells(
@@ -57,3 +61,17 @@ def test_gdp_registration_rejects_other_vintage(tmp_path: Path) -> None:
     )
     assert result.selection.status == "preserved_only"
     assert result.selection.reason == "no_matching_layout"
+
+
+def test_gdp_adapter_bad_hash_and_invalid_or_wrong_vintage(tmp_path: Path) -> None:
+    source = workbook(tmp_path / "gdp.xlsx")
+    bronze = source.read_bytes()
+    adapter = GdpAdapter("source", VINTAGE, "2026-08-29T09:00:17Z")
+    with pytest.raises(ValueError, match="source_hash_mismatch"):
+        adapter.extract(bronze, source_sha256="0" * 64)
+    assert not adapter.matches_layout(b"not xlsx")
+    assert not GdpAdapter("source", "wrong", "now").matches_layout(bronze)
+    output = adapter.extract(
+        b"invalid", source_sha256=hashlib.sha256(b"invalid").hexdigest()
+    )
+    assert output.losses[0].reason == "unsupported_gdp_workbook_layout"

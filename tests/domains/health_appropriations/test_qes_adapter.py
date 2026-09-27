@@ -5,12 +5,16 @@ from __future__ import annotations
 import hashlib
 from pathlib import Path
 
+import pytest
 from tests.domains.health_appropriations.test_qes import fixture
 
 from archive_govt_nz.domains.health_appropriations.adapter_dispatch import (
     dispatch_bronze,
 )
-from archive_govt_nz.domains.health_appropriations.qes_adapter import qes_registration
+from archive_govt_nz.domains.health_appropriations.qes_adapter import (
+    QesAdapter,
+    qes_registration,
+)
 
 
 def test_dispatch_emits_nine_quarters_with_full_cell_accounting(
@@ -56,3 +60,18 @@ def test_qes_wrong_vintage_is_preserved_only(tmp_path: Path) -> None:
         ),
     )
     assert result.selection.status == "preserved_only"
+
+
+def test_qes_adapter_hash_invalid_workbook_and_vintage(tmp_path: Path) -> None:
+    source = tmp_path / "qes.xlsx"
+    fixture(source)
+    bronze = source.read_bytes()
+    adapter = QesAdapter("source", "QES-2026-Q2", "now")
+    with pytest.raises(ValueError, match="source_hash_mismatch"):
+        adapter.extract(bronze, source_sha256="0" * 64)
+    assert not adapter.matches_layout(b"not an xlsx")
+    assert not QesAdapter("source", "wrong", "now").matches_layout(bronze)
+    output = adapter.extract(
+        b"invalid", source_sha256=hashlib.sha256(b"invalid").hexdigest()
+    )
+    assert output.losses[0].reason == "unsupported_qes_workbook_layout"

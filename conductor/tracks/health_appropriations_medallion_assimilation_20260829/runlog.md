@@ -2597,3 +2597,24 @@ secret scans; and strict 113-component SBOM validation. CAS streaming benchmark
 was 624.83 MB/s. The evidence-recipe assertions were tightened and the required
 harness rerun on the final tree; all gates again reached successful completion.
 Exact-head hosted Actions and PR disposition follow this runlog update.
+
+The follow-up edge-contract coverage adds malformed payload, wrong-vintage,
+unsupported-layout, selection ambiguity, optional Pharmac registration, blank
+dimension, and invalid fingerprint cases for the new adapter paths. Focused
+tests pass (87); changed adapter/dispatch/dimension/drift modules reach 99%
+branch coverage. The final required harness passed 6,979 tests, 9 skipped,
+98.08% repository branch coverage, 48 schemas/38 representative documents,
+parity 9/9, all configured mutation and hygiene gates, a 704.82 MB/s CAS
+benchmark, dependency and license audits, secret scan, and strict SBOM
+validation with 113 components.
+
+The final read-only donor replay again verified 23 source objects / 6,604,301
+bytes and exact parity for all 312 donor rows. Historical comparison remains
+76 exact, 29 source-only and one value difference. All 30 deviations retain
+source-backed evidence and are explicitly blocked; replacement values are
+null and publication approval is false. The payload-free replay receipt hash
+is `61422058ccd75bb5be8f10aea16f8df38f13216769efea756be752bc838ec645`.
+This completes selected-profile and oracle assurance only: Phase 4.4's full
+23-workbook normalization and four-analysis/six-plot integrated parity suite,
+other unqualified areas and accountable disposition of the 30 differences
+remain open. No source values were silently replaced.
