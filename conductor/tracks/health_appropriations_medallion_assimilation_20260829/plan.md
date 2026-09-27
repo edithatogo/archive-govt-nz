@@ -674,6 +674,13 @@ integrated parent head.
   The local raw-derived Gold export now persists an edition-bounded Budget
   versus Estimated Actual diagnostic with exact input identities and explicit
   unverified period basis. Coverage and quality reporting remain incomplete.
+  - [x] Add a deterministic canonical-input identity completeness report to
+    the source-separated Gold manifest. It maps each admitted input record ID
+    to its exact product, reconciles all output identities, and explicitly
+    leaves analytical completeness, source health, classification drift,
+    revision reconciliation, and cross-source reconciliation unevaluated. This
+    is provenance accounting, not analytical promotion. See
+    `canonical-gold-quality-20260928.md`.
 - [ ] Generate deterministic plots, structured summaries and consumer examples
   from the same queries; make source drill-through available. [M-09, M-10,
   M-13, S-06; AC-07, AC-08]
