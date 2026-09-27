@@ -63,6 +63,20 @@ EXTRA_VINTAGES = {
     "befu-residual": "BEFU-2025",
     "hyefu-residual": "HYEFU-2024",
 }
+EXPECTED_FACT_COUNTS = {
+    "budget": 215,
+    "befu": 10,
+    "hyefu": 10,
+    "historical": 106,
+    "revenue": 69,
+    "befu-detail": 80,
+    "hyefu-detail": 80,
+    "befu-chart": 86,
+    "hyefu-allowance": 16,
+    "befu-residual": 1,
+    "hyefu-residual": 5,
+    "crown": 61,
+}
 MAX_PLAN_BYTES = 4 * 1024 * 1024
 
 
@@ -203,6 +217,7 @@ def _completion(
         if name in legacy.PROFILES:
             legacy._stage_receipt(root, name, plan["legacy_plan"])
         entry = verify_stage_coverage(root / name, name, sources[name])
+        require(entry["facts"] == EXPECTED_FACT_COUNTS[name])
         current = set(entry["record_ids"])
         require(not current & identities)
         identities.update(current)

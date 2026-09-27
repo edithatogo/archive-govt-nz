@@ -365,10 +365,12 @@ integrated parent head.
 
 ### 4.1 Donor normalization tests first
 
-- [ ] Create red/golden tests for the donor's fiscal spending, GDP,
+- [x] Create red/golden tests for the donor's fiscal spending, GDP,
   appropriation and HYEFU/BEFU summary extraction using Bronze-derived test
   fixtures; cover headers, footers, blanks, formulas, duplicates, units and
-  source-layout failures. [M-07, M-08, M-18; AC-03, AC-06, AC-16]
+  source-layout failures. [M-07, M-08, M-18; AC-03, AC-06, AC-16] (2026-09-28:
+  expanded footer/formula and detailed formula-total fixtures; see
+  `donor-area-normalization-20260928.md`.)
 - [x] Execute the type-tagged row-level parity oracle for all five donor
   SQLite tables/312 rows against their pinned original workbook sources. All
   312 donor rows matched; 29 additional annotated historical Health years were
@@ -402,9 +404,13 @@ integrated parent head.
   the existing donor-SQLite products. [M-05, M-07, M-08, M-09; AC-03, AC-05, AC-06]
   (`d26e769`)
 
-- [ ] Normalize all in-scope donor workbook data areas into the dedicated
+- [x] Normalize all in-scope donor workbook data areas into the dedicated
   record sets; attach field/cell lineage and reason-coded exclusions. [M-05,
-  M-07; AC-03, AC-05]
+  M-07; AC-03, AC-05] (2026-09-28: seven donor workbooks, 12 expected-count
+  guarded stages, 739 facts, 11,565 lineage links and 14,278 row/cell
+  dispositions; two 50-file replays were identical. The explicit functional
+  scope and the still-open 152-sheet census boundary are in
+  `donor-area-normalization-20260928.md` and its JSON receipt.)
 - [x] Reconcile against the donor SQLite derivative, preserve the observed
   donor tables, and resolve every difference through a test-backed repair
   ledger. The 29 source-only rows have pinned footnote markers that the donor

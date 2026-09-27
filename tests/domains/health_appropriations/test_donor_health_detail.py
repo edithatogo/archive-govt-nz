@@ -74,6 +74,14 @@ def test_admission(
         for row in range(first, first + 8):
             sheet[f"D{row}"] = f"Synthetic {row}"
             sheet[f"{column}{row}"] = 0 if column == "F" else -2
+        # The donor's visible total is formula-backed and remains outside the
+        # literal detail selection; nearby subtotal/footnote rows are context.
+        sheet[f"{column}{first + 8}"] = 999
+        sheet[f"{column}{first + 9}"] = f"=SUM({column}{first}:{column}{first + 8})"
+    for offset, note in enumerate(
+        ("† synthetic note", "* basis note", "^ restated"), 11
+    ):
+        sheet[f"D{first + offset}"] = note
     mutations = {
         "unit": (f"D{first - 2}", "% GDP"),
         "year": (f"F{first - 3}", "1999"),
@@ -103,6 +111,9 @@ def test_admission(
     assert (
         result["formula_totals"]["disposition"] == "excluded_formula_cache_not_admitted"
     )
+    assert result["formula_totals"]["range"] == f"F{first + 9}:O{first + 9}"
+    assert result["records"][0]["raw_context"][f"D{first + 11}"] == "† synthetic note"
+    assert all(record["coordinate"] != f"F{first + 9}" for record in result["records"])
     assert hashlib.sha256(path.read_bytes()).hexdigest() == digest
 
 
