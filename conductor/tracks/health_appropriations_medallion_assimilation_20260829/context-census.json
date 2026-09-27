@@ -72,32 +72,44 @@
       "retained_manifest_sha256": "35114105c86085ee49aeb97ac9f8d8b696ef72692b5eea12d348496a8b920d41"
     },
     {
-      "id": "population-national-lead",
+      "id": "population-national-annual-mean",
       "family": "population",
-      "series_id": "DPE054AA — Estimated Resident Population by Age and Sex",
-      "definition": "Stats NZ estimated resident population; Total population code C, Total All Ages code DPE054FF; selectors distinguish As at from Mean year ended",
-      "vintage": "Stats NZ release 2026-08-18; current census basis 2023-06-30; prior quarters revisable",
+      "series_id": "DPE056AA — Estimated Resident Population by Age and Sex (1991+) (Annual-Jun)",
+      "definition": "Stats NZ estimated resident population; Mean year ended; Total population; Total All Ages",
+      "vintage": "Stats NZ release 2026-08-18; current census basis 2023-06-30; provisional/revision status retained",
       "unit": "persons; no thousands multiplier",
       "base": "2023-06-30 census basis",
-      "period": "Quarterly selectable coverage 1991Q1–2026Q2; selected metadata reference 2026Q2 / 2026-06-30; no numeric observations verified",
+      "period": "Annual-Jun Mean year ended; 1991–2026; 36 source rows with flags, one unavailable '..' token and two provisional 'P' statuses",
       "geography": "New Zealand; national aggregate",
-      "selector": "Infoshare DPE054AA; population C (Total); age DPE054FF (Total All Ages); estimate 1 (As at) or 2 (Mean year ended); metadata query selected 2026Q2 but contained no observations",
-      "join_policy": "Blocked until numeric export, rights and period alignment are qualified; select As at versus Mean year ended from the spending-period contract and never substitute a quarter-end stock for an annual mean",
+      "selector": "Infoshare DPE056AA; Mean year ended; Total; Total All Ages; Annual-Jun; status flags displayed",
+      "join_policy": "Mean-year-ended annual flow denominator is the period-aligned candidate for annual June-year flows; analytical selection and denominator approval remain unselected. Preserve provisional/missing flags and source vintage; never substitute an As-at stock.",
       "qualification": "unqualified",
       "rights": "not_evaluated",
       "gaps": [
-        "numeric_export_not_verified",
-        "rights_not_evaluated",
-        "fiscal_mean_alignment_unqualified"
+        "resource_rights_not_evaluated",
+        "transport_http_warc_receipt_unavailable",
+        "analytical_selection_and_denominator_approval_not_selected",
+        "historical_export_vintages_not_retained",
+        "one_unavailable_source_observation_and_two_provisional_statuses"
       ],
-      "sources": [],
+      "sources": [
+        {
+          "source_id": "stats_nz_population-806dead2a5b8ab69",
+          "url": "https://www.stats.govt.nz/assets/Uploads/Labour-market-statistics/Labour-market-statistics-June-2026-quarter/Download-data/household-labour-force-survey-june-2026-quarter.xlsx",
+          "object_sha256": "315f48f981cb237bbd1c4834676fd030f84e7eddc7f7660402956c05ca53a8c0",
+          "observed_at": "2026-08-29T09:00:17Z"
+        }
+      ],
       "evidence": [
         "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-schema-gaps.md",
         "conductor/tracks/health_appropriations_medallion_assimilation_20260829/population-context.json",
         "conductor/tracks/health_appropriations_medallion_assimilation_20260829/population-context.md",
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/analytical-context-register.md"
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/analytical-context-register.md",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/population-annual-context.json",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/population-annual-export.md",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/evidence.jsonl"
       ],
-      "retained_manifest_sha256": null
+      "retained_manifest_sha256": "a52e0344d1b6e707de04b7b968f2667fc969c0f0777b319921ff716ead82a1d9"
     },
     {
       "id": "population-hlfs-rejected",
@@ -138,13 +150,14 @@
       "vintage": "StatsNZ-GDP-2026Q1",
       "unit": "$(million); scaling million; ISO currency unverified",
       "base": "current prices; no constant-price base",
-      "period": "60 quarters June 2011 through March 2026; release 18 June 2026",
+      "period": "Captured vintage: 60 quarters June 2011 through March 2026; newer June 2026 GDP release exists, but its exact current-price workbook and series selection are not captured in this census",
       "geography": "New Zealand; national aggregate",
       "selector": "Table 1!C27:BJ27; A27 label, B27 reference, B7 prefix; Table 2 excluded",
       "join_policy": "Blocked for annual shares: explicitly select four compatible flow quarters and vintage; no automatic annualization or Treasury-series substitution",
       "qualification": "unqualified",
       "rights": "not_evaluated",
       "gaps": [
+        "current_june_2026_workbook_and_series_not_captured",
         "annual_aggregation_not_qualified",
         "currency_code_unverified",
         "canonical_projection_not_qualified"
@@ -403,6 +416,18 @@
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/analytical-context-register.md",
       "sha256": "fdb0905a0524541010cb086663871f0997ae772ac9831a7f6216ccf3f6e4f1fa"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/population-annual-context.json",
+      "sha256": "8bea2c0624b7964b8b94ebe51afa8aa2eadcec20327c23866596dc56ad582a8a"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/population-annual-export.md",
+      "sha256": "af2550acce99b4ba7e75737c71a105080ee895a6ba48f06e38a45c97f79fd92c"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/evidence.jsonl",
+      "sha256": "72d807f2aa0c788784b81ae926f1924ba0f3a3541583f3b112cdb1ca473e8c6d"
     }
   ]
 }

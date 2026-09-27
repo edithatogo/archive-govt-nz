@@ -1,4 +1,4 @@
-# Historical edition discovery — 5 September 2026
+# Historical edition discovery — 27 September 2026
 
 The [machine register](./historical-source-register.json) records the complete
 30-edition scope listed by Treasury's [current and past Budgets index](https://www.treasury.govt.nz/publications/budgets/current-and-past-budgets):
@@ -44,6 +44,35 @@ families, reconcile duplicate locators against retained hashes, and perform
 approved immutable capture with material HTTP context. Separate forecast-file
 discovery remains open even for the 2024 edition. This advances M-02/M-11 and
 Phase 1.2 without closing AC-03 or AC-09.
+
+
+## Earlier Budget and forecast inventory — 27 September 2026
+
+The register now contains 68 locators across 21 editions (1997, 2001, 2005,
+and 2007–2024). Official Treasury release pages establish linked appropriation
+expense/revenue workbook resources for Budget 2007–2016 (where listed),
+BEFU 2001, 2005, 2007–2008 and 2010–2016, and a HYEFU 2015 charts/data
+workbook. The BEFU 2014–2016 expense tables are represented by their official
+edition pages, which publish the tables directly; these entries are page
+locators and do not claim separate spreadsheet payloads. The 2013 BEFU chart
+workbook page and older expense tables provide historic coverage for the
+Treasury core Crown expense measure.
+
+Budget workbook release pages say these workbooks support but are not part of
+the official Budget documents; the Estimates and Supplementary Estimates as
+tabled are authoritative. The listed Budget workbooks exclude the previous
+year's Supplementary Estimates, and prior detail may not reconcile after later
+restructuring. Their time columns encode actual, estimated actual and budget
+values for specific year ends, so edition vintage and status must remain
+separate. Treasury page-level CC BY 4.0 statements are retained only as rights
+leads. No locator in this register establishes item-specific rights,
+redistribution eligibility, retained bytes, or fixity.
+
+Years 1998–2000, 2002–2004, 2006, and 2025–2026 have no historical locators in
+this discovery pass. All 30 years remain pending because no edition has had
+its complete source families enumerated; a locator never marks an edition
+complete. Captured Budget 2026, BEFU 2026 and HYEFU 2025 resources remain
+separately represented in the source census.
 
 ## Follow-up edition observations
 

@@ -82,6 +82,10 @@ class Census(Contract):
         if len(paths) != len(self.evidence):
             msg = "duplicate evidence identity"
             raise ValueError(msg)
+        source_path = f"{TRACK}/source-census.json"
+        if source_path not in paths:
+            msg = "source census evidence missing"
+            raise ValueError(msg)
         if any(not set(row.evidence) <= paths for row in self.series):
             msg = "unknown evidence reference"
             raise ValueError(msg)
