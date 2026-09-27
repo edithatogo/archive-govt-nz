@@ -2629,3 +2629,14 @@ assurance, not semantic normalization of every workbook area or unqualified
 chart/PDF extraction. The 30 historical deviations still require accountable,
 source-backed dispositions; all remain blocked with null replacements and no
 publication approval. No source values were silently replaced.
+
+Follow-up provenance contracts align QES series, quarter and unit dimensions
+with cited workbook cells, restrict population dimension links to the source
+year cell, and make CPI layout selection require a valid exact-series row and
+metadata. The context census and its dependent source-measure evidence pin were
+refreshed after the QES extractor change. Regression tests cover missing and
+drifted CPI series, QES source-linked dimensions and population year lineage.
+The required validation harness passed 6,983 tests, 9 skipped, 98.11% branch
+coverage, 48 schemas/38 representative documents, parity 9/9, configured
+mutation/hygiene/supply-chain gates and the strict 113-component SBOM. Focused
+health-domain tests passed 3,599 with 9 skipped.

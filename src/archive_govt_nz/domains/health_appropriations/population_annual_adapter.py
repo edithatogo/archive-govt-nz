@@ -79,6 +79,7 @@ class PopulationAnnualAdapter:
                 {
                     **context,
                     **item,
+                    "period_token": item["reference_period"],
                     "amount": amount,
                     "series_id": (
                         "DPE056AA:Mean year ended:Total:Total All Ages:Annual-Jun"

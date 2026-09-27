@@ -176,6 +176,15 @@ def _extract(
         }
         raw = {key: sheet[cell].value for key, cell in fields.items()}
         raw["amount"] = token
+        raw["series_id"] = {
+            "series_ref": sheet["A8"].value,
+            "code": sheet["P8"].value,
+        }
+        raw["period_token"] = {
+            "year": raw_year,
+            "quarter": sheet[f"C{row}"].value,
+        }
+        raw["unit_label"] = sheet["A10"].value
         facts.append(
             {
                 **context,
@@ -186,6 +195,7 @@ def _extract(
                 "schema_version": "archive-govt-nz.qes-earnings/v1",
                 "recordset": "published_earnings_fact",
                 "series_id": "QEMQ.SASZ9A",
+                "period_token": f"{year:04d}.{month:02d}",
                 "measure": "Average hourly earnings",
                 "sector": "Total",
                 "currency": None,
@@ -219,6 +229,34 @@ def _extract(
                         "ordinary_time" if field == "earnings_basis" else raw[field]
                     ),
                     "rule": "literal_qes_source_context",
+                }
+            )
+        for field, coordinate, raw_value, normalized_value in (
+            (
+                "series_id",
+                "'Table 8'!A8+'Table 8'!P8",
+                encode_json(raw["series_id"]),
+                "QEMQ.SASZ9A",
+            ),
+            (
+                "period_token",
+                f"'Table 8'!A{row}+'Table 8'!C{row}",
+                encode_json(raw["period_token"]),
+                f"{year:04d}.{month:02d}",
+            ),
+            ("unit_label", "'Table 8'!A10", encode_json(raw["unit_label"]), "($)"),
+        ):
+            lineage.append(
+                {
+                    "lineage_id": identity(record, field),
+                    "record_id": record,
+                    "field": field,
+                    "source_object_sha256": context["source_object_sha256"],
+                    "source_locator": context["source_locator"],
+                    "source_coordinate": coordinate,
+                    "raw_value": raw_value,
+                    "normalized_value": encode_json(normalized_value),
+                    "rule": TRANSFORMATION,
                 }
             )
         lineage.extend(

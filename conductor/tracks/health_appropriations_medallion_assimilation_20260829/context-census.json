@@ -380,7 +380,7 @@
       "path": "src/archive_govt_nz/domains/health_appropriations/cpi.py"
     },
     {
-      "sha256": "ee5326d3c7436569fae67da5b910c195ffd770a935a39798cf2e48cfcb881c98",
+      "sha256": "b82a867ab6b17b58c22097d400adf15858a648cfedbd136dfe30bc995dda24dc",
       "path": "src/archive_govt_nz/domains/health_appropriations/qes.py"
     },
     {

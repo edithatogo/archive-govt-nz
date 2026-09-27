@@ -44,6 +44,15 @@ def test_dispatch_preserves_population_status_and_denominator_boundary() -> None
     assert len(result.output.records) == 36
     assert len(result.output.lineage) == 108
     assert result.output.losses == ()
+    assert result.output.dimension_links
+    assert all(
+        link.source_coordinate.startswith("csv:row=")
+        for link in result.output.dimension_links
+    )
+    assert all(
+        link.source_coordinate.endswith("column=year")
+        for link in result.output.dimension_links
+    )
     missing = next(row for row in result.output.records if row["amount"] is None)
     assert missing["missing_reason"] == "figure_not_available"
     assert missing["denominator_selected"] is False

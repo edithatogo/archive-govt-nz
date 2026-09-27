@@ -42,6 +42,16 @@ def test_dispatch_emits_nine_quarters_with_full_cell_accounting(
     assert result.output.lineage
     assert result.output.losses
     assert all(row["rights_state"] == "not_evaluated" for row in result.output.records)
+    assert result.output.dimension_links
+    assert all(
+        link.source_coordinate.startswith("'Table 8'!")
+        for link in result.output.dimension_links
+    )
+    assert {link.kind for link in result.output.dimension_links} >= {
+        "measure",
+        "period",
+        "unit",
+    }
 
 
 def test_qes_wrong_vintage_is_preserved_only(tmp_path: Path) -> None:

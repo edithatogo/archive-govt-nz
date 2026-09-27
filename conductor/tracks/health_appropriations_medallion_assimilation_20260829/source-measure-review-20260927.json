@@ -275,7 +275,7 @@
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/context-census.json",
-      "sha256": "8ea030302b304e6ed046f952c6a5518ca49209a38552210abd45b164f79d15ab"
+      "sha256": "31c15aa166d0feea67d19d38fb7bb64be58d51b548c0ef669bb611c03b8d6503"
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/population-annual-context.json",

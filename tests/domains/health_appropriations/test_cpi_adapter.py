@@ -107,4 +107,28 @@ def test_cpi_adapter_hash_vintage_size_and_series_fallback(
         unsupported,
     )
     output = adapter.extract(bronze, source_sha256=digest)
-    assert output.losses[0].reason == "unsupported_cpi_series_layout"
+    assert output.losses[0].reason == "unsupported_cpi_csv_layout"
+
+
+def test_cpi_probe_rejects_missing_or_drifted_selected_series() -> None:
+    adapter = CpiAdapter("source", "2026-Q2", "2026-08-31T00:00:00Z")
+    no_series = (HEADER + "OTHER,2026.06,10" + META).encode()
+    drifted = (
+        HEADER + "CPIQ.SE9A,2026.06,123.4" + META.replace("Index", "Percent")
+    ).encode()
+    for bronze in (no_series, drifted):
+        assert not adapter.matches_layout(bronze)
+        result = dispatch_bronze(
+            bronze,
+            source_sha256=hashlib.sha256(bronze).hexdigest(),
+            media_type="text/csv",
+            registrations=(
+                cpi_registration(
+                    source_locator="https://www.stats.govt.nz/cpi.csv",
+                    source_vintage="2026-Q2",
+                    observed_at="2026-08-31T00:00:00Z",
+                ),
+            ),
+        )
+        assert result.selection.status == "preserved_only"
+        assert result.selection.reason == "no_matching_layout"

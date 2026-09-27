@@ -34,12 +34,22 @@ class CpiAdapter:
     observed_at: str
 
     def matches_layout(self, bronze: bytes) -> bool:
-        """Recognize only the exact, bounded CPI CSV header contract."""
-        return (
-            self.source_vintage == _VINTAGE
-            and len(bronze) <= cpi.MAX_BYTES
-            and cpi.is_supported_bronze_layout(bronze)
+        """Recognize the bounded layout only when its selected series is valid."""
+        if (
+            self.source_vintage != _VINTAGE
+            or len(bronze) > cpi.MAX_BYTES
+            or not cpi.is_supported_bronze_layout(bronze)
+        ):
+            return False
+        digest = hashlib.sha256(bronze).hexdigest()
+        context = source_context(
+            digest, self.source_locator, self.source_vintage, self.observed_at
         )
+        try:
+            facts, _, _ = cpi.inspect_bronze_payload(bronze, context)
+        except ValueError, KeyError, UnicodeDecodeError:
+            return False
+        return bool(facts)
 
     def extract(self, bronze: bytes, *, source_sha256: str) -> AdapterOutput:
         """Project exact-series facts without changing original bytes."""

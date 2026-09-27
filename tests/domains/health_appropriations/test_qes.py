@@ -98,7 +98,7 @@ def test_exact_profile_and_dry_run(tmp_path: Path) -> None:
     assert source.read_bytes() == before
     lineage = pq.read_table(output / "field_lineage.parquet").to_pylist()
     dispositions = pq.read_table(output / "cell_dispositions.parquet").to_pylist()
-    assert len(lineage) == 9 * 20
+    assert len(lineage) == 9 * 23
     assert len({line["lineage_id"] for line in lineage}) == len(lineage)
     for row, fact in enumerate(facts, 13):
         assert fact["amount"] == Decimal(row) + Decimal("0.25")
@@ -110,7 +110,7 @@ def test_exact_profile_and_dry_run(tmp_path: Path) -> None:
             for line in lineage
             if line["record_id"] == fact["record_id"] and line["field"] != "period_end"
         ]
-        assert len(lines) == 18
+        assert len(lines) == 21
         assert {
             line["field"]: json.loads(line["raw_value"]) for line in lines
         } == json.loads(fact["raw_values_json"])

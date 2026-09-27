@@ -17,6 +17,49 @@ _VERSION = "context-source-literal/v1"
 _UNKNOWN_FAMILY = "unknown_context_dimension_family"
 
 
+def _source_dimension(
+    row: dict[str, object],
+    *,
+    scheme: str,
+    kind: str,
+    field: str,
+    source: FieldLineage | None,
+) -> tuple[Mapping, DimensionLink] | None:
+    """Build one assertion only when a source cell backs the literal."""
+    value = row.get(field)
+    if value is None or not str(value).strip() or source is None:
+        return None
+    record_id = str(row["record_id"])
+    value_text = str(value)
+    dimension_kind = kind
+    if kind == "period":
+        dimension_kind = "period"
+    elif kind == "series":
+        dimension_kind = "measure"
+    dimension = Dimension(
+        kind=dimension_kind,
+        scheme=scheme + "/" + kind,
+        label=value_text,
+        period_token=value_text if kind == "period" else None,
+    )
+    key = dimension_key(dimension)
+    mapping = Mapping(
+        dimension=dimension,
+        vintage=str(row["source_vintage"]),
+        version=_VERSION,
+    )
+    link = DimensionLink(
+        source_record_id=record_id,
+        kind=dimension.kind,
+        dimension_key=key,
+        source_coordinate=source.source_coordinate,
+        raw_value=source.raw_value,
+        normalized_value=value_text,
+        rule="context-source-literal/retain-exact/v1",
+    )
+    return mapping, link
+
+
 def context_source_dimensions(
     records: tuple[dict[str, object], ...],
     lineage: tuple[FieldLineage, ...],
@@ -33,19 +76,15 @@ def context_source_dimensions(
         ),
         "population": (
             "stats_nz_population_table",
-            "series_id",
-            "reference_period",
-            (
-                ("unit", "unit"),
-                ("measure", "geography"),
-                ("measure", "denominator_selected"),
-            ),
+            None,
+            "period_token",
+            (),
         ),
         "qes": (
             "stats_nz_qes_series",
-            "series_reference",
+            "series_id",
             "period_token",
-            (("unit", "unit"), ("measure", "adjustment")),
+            (("unit", "unit_label"), ("measure", "adjustment")),
         ),
         "gdp": (
             "stats_nz_gdp_series",
@@ -64,53 +103,21 @@ def context_source_dimensions(
     occurrences: list[DimensionLink] = []
     for row in records:
         record_id = str(row["record_id"])
-        vintage = str(row["source_vintage"])
-        source_fields = [("series", identifier_field), ("period", period_field)]
+        source_fields = []
+        if identifier_field is not None:
+            source_fields.append(("series", identifier_field))
+        source_fields.append(("period", period_field))
         source_fields.extend((kind, field) for kind, field in extra_fields)
         for kind, field in source_fields:
-            value = row.get(field)
-            if value is None:
-                continue
-            value_text = str(value)
-            if not value_text.strip():
-                continue
             source = lineage_by_record.get(record_id, {}).get(field)
-            coordinate = (
-                source.source_coordinate
-                if source is not None
-                else "record:" + record_id + ":" + field
+            result = _source_dimension(
+                row, scheme=scheme, kind=kind, field=field, source=source
             )
-            raw_value = source.raw_value if source is not None else value_text
-            label = value_text
-            period = str(value_text) if kind == "period" else None
-            if kind == "period":
-                dimension_kind = "period"
-            elif kind == "series":
-                dimension_kind = "measure"
-            else:
-                dimension_kind = kind
-            dimension = Dimension(
-                kind=dimension_kind,
-                scheme=scheme + "/" + kind,
-                label=label,
-                period_token=period,
-            )
-            key = dimension_key(dimension)
-            assertions.setdefault(
-                key,
-                Mapping(dimension=dimension, vintage=vintage, version=_VERSION),
-            )
-            occurrences.append(
-                DimensionLink(
-                    source_record_id=record_id,
-                    kind=dimension.kind,
-                    dimension_key=key,
-                    source_coordinate=coordinate,
-                    raw_value=raw_value,
-                    normalized_value=value_text,
-                    rule="context-source-literal/retain-exact/v1",
-                )
-            )
+            if result is None:
+                continue
+            mapping, link = result
+            assertions.setdefault(link.dimension_key, mapping)
+            occurrences.append(link)
     mappings = validate_mappings(tuple(assertions.values()))
     links = tuple(
         sorted(
