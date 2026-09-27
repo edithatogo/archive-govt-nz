@@ -23,5 +23,8 @@ readiness, or authorize publication.
   7,012 tests, 9 skipped, 98.15% branch
   coverage, 49 schemas and 39 representative documents, parity 9/9, all
   mutation gates, and dependency/licence/secret/SBOM checks.
-- Full repository validation and exact-head hosted checks after this review
-  fix: pending.
+- `./scripts/validate.sh` after the bounded-evidence review fix: passed with
+  7,013 tests, 9 skipped, 98.15% branch coverage, 49 schemas and 39
+  representative documents, parity 9/9, all mutation gates, and
+  dependency/licence/secret/SBOM checks.
+- Exact-head hosted checks after this review fix: pending.
