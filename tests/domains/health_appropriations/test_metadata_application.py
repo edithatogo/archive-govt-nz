@@ -96,7 +96,10 @@ def fixture() -> tuple[dict[str, Any], dict[str, bytes], dict[str, Any]]:
 
 
 def check(
-    manifest: dict[str, Any], payloads: dict[str, bytes], rights: dict[str, Any]
+    manifest: dict[str, Any],
+    payloads: dict[str, bytes],
+    rights: dict[str, Any],
+    evidence: dict[str, bytes] | None = None,
 ) -> dict[str, Any]:
     """Validate explicitly pinned fixture metadata."""
     raw, assertions = encoded(manifest), encoded(rights)
@@ -106,6 +109,7 @@ def check(
         payloads,
         assertions,
         hashlib.sha256(assertions).hexdigest(),
+        evidence or {},
     )
 
 
@@ -238,18 +242,73 @@ def test_each_rights_state_never_promoted() -> None:
     manifest, payloads, rights = fixture()
     for state in ("restricted", "eligible_asserted"):
         rights["resources"][0]["state"] = state
+        evidence_payloads: dict[str, bytes] = {}
         if state == "eligible_asserted":
+            evidence = b"synthetic rights evidence"
+            digest = hashlib.sha256(evidence).hexdigest()
             rights["resources"][0].update(
-                license="synthetic-licence-assertion", evidence_sha256="a" * 64
+                license="synthetic-licence-assertion", evidence_sha256=digest
             )
-        result = check(manifest, payloads, rights)
+            evidence_payloads[digest] = evidence
+        result = check(manifest, payloads, rights, evidence_payloads)
         assert result["rights_states"] == [state]
-        assert result["rights_evidence_fixity"] == "not_performed"
+        assert result["rights_evidence_fixity"] == "verified_supplied_bytes"
         assert result["release_readiness"] == "not_assessed"
         assert result["publication_approval"] == "not_granted"
     rights["resources"][0]["evidence_sha256"] = None
     with pytest.raises(ValueError, match="metadata_application_contract"):
         check(manifest, payloads, rights)
+
+
+def test_rights_evidence_bytes_are_required_and_pinned() -> None:
+    manifest, payloads, rights = fixture()
+    evidence = b"synthetic rights evidence"
+    digest = hashlib.sha256(evidence).hexdigest()
+    rights["resources"][0].update(
+        state="eligible_asserted",
+        license="CC0-1.0",
+        evidence_sha256=digest,
+    )
+    with pytest.raises(ValueError, match="metadata_application_contract"):
+        check(manifest, payloads, rights)
+    with pytest.raises(ValueError, match="metadata_application_contract"):
+        check(manifest, payloads, rights, {digest: b"tampered"})
+    result = check(manifest, payloads, rights, {digest: evidence})
+    assert result["rights_evidence_count"] == 1
+    assert result["publication_approval"] == "not_granted"
+
+
+def test_unreferenced_rights_evidence_rejected() -> None:
+    manifest, payloads, rights = fixture()
+    evidence = b"unused"
+    digest = hashlib.sha256(evidence).hexdigest()
+    with pytest.raises(ValueError, match="metadata_application_contract"):
+        check(manifest, payloads, rights, {digest: evidence})
+
+
+def test_rights_evidence_individual_and_total_limits(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    manifest, payloads, rights = fixture()
+    evidence = b"bounded evidence"
+    digest = hashlib.sha256(evidence).hexdigest()
+    rights["resources"][0].update(
+        state="eligible_asserted",
+        license="CC0-1.0",
+        evidence_sha256=digest,
+    )
+    with monkeypatch.context() as patch:
+        patch.setattr(app, "MAX_PAYLOAD", len(evidence) - 1)
+        with pytest.raises(ValueError, match="metadata_application_contract"):
+            check(manifest, payloads, rights, {digest: evidence})
+    with monkeypatch.context() as patch:
+        patch.setattr(app, "MAX_TOTAL", len(evidence) - 1)
+        with pytest.raises(ValueError, match="metadata_application_contract"):
+            check(manifest, payloads, rights, {digest: evidence})
+    assert (
+        check(manifest, payloads, rights, {digest: evidence})["rights_evidence_count"]
+        == 1
+    )
 
 
 @pytest.mark.parametrize(
@@ -274,6 +333,7 @@ def test_bad_json(raw: bytes) -> None:
             {},
             raw,
             hashlib.sha256(raw).hexdigest(),
+            {},
         )
 
 
@@ -283,7 +343,9 @@ def test_pins_and_limits(monkeypatch: pytest.MonkeyPatch) -> None:
     pins = (hashlib.sha256(raw).hexdigest(), hashlib.sha256(assertions).hexdigest())
     for first, second in (("0" * 64, pins[1]), (pins[0], "0" * 64), ("bad", pins[1])):
         with pytest.raises(ValueError, match="metadata_application_contract"):
-            app.validate_metadata_application(raw, first, payloads, assertions, second)
+            app.validate_metadata_application(
+                raw, first, payloads, assertions, second, {}
+            )
     for constant, limit in (
         ("MAX_JSON", len(raw) - 1),
         ("MAX_ITEMS", 0),
@@ -311,6 +373,7 @@ def multiple() -> tuple[dict[str, Any], dict[str, bytes], dict[str, Any]]:
     """Extend the single-member fixture with a second actual payload."""
     manifest, payloads, rights = fixture()
     first = manifest["items"][0]
+    evidence = b"multiple rights fixture evidence"
     second = {**first, "item_path": "data/second.bin"}
     manifest["items"].append(second)
     payloads[second["item_path"]] = payloads[first["item_path"]]
@@ -320,7 +383,7 @@ def multiple() -> tuple[dict[str, Any], dict[str, bytes], dict[str, Any]]:
             "path": second["item_path"],
             "state": "eligible_asserted",
             "license": "synthetic-licence-assertion",
-            "evidence_sha256": "a" * 64,
+            "evidence_sha256": hashlib.sha256(evidence).hexdigest(),
         }
     )
     items = [PublicationItem(**row) for row in manifest["items"]]
@@ -340,7 +403,9 @@ def multiple() -> tuple[dict[str, Any], dict[str, bytes], dict[str, Any]]:
 
 
 def test_mixed_rights_and_ordered_inventory() -> None:
-    result = check(*multiple())
+    evidence = b"multiple rights fixture evidence"
+    digest = hashlib.sha256(evidence).hexdigest()
+    result = check(*multiple(), {digest: evidence})
     assert result["payloads_verified"] == 2
     assert result["rights_states"] == ["eligible_asserted", "unresolved"]
     assert result["publication_approval"] == "not_granted"
@@ -452,6 +517,7 @@ def test_duplicate_member_in_otherwise_valid_manifest() -> None:
             payloads,
             assertions,
             hashlib.sha256(assertions).hexdigest(),
+            {},
         )
 
 
