@@ -209,8 +209,6 @@ def _fact_package(  # noqa: C901, PLR0912, PLR0913, PLR0915 - one fail-closed pa
             reason = str(
                 fact.get("null_reason") or fact.get("missing_reason") or "missing_value"
             )
-        elif family == "cpi" and amount is None:
-            reason = str(fact.get("missing_reason") or "missing_value")
         elif family == "cpi":
             reason = "source_value_admitted_base_unverified"
         elif family == "gdp" and (
