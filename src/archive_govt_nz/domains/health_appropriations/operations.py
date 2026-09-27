@@ -29,18 +29,25 @@ def _latest_donor_manifest(root: Path) -> Path | None:
     return matches[-1] if matches else None
 
 
-def _load_manifest(path: Path | None) -> dict[str, Any] | None:
+def _load_manifest(
+    path: Path | None, root: Path
+) -> tuple[dict[str, Any] | None, dict[str, str] | None]:
     if path is None:
-        return None
+        return None, None
     try:
-        value = json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as error:
+        payload = path.read_bytes()
+        relative = path.relative_to(root).as_posix()
+        value = json.loads(payload.decode("utf-8"))
+    except (OSError, ValueError, UnicodeDecodeError, json.JSONDecodeError) as error:
         message = f"invalid_manifest:{path.name}"
         raise HealthAppropriationsStateError(message) from error
     if not isinstance(value, dict) or not isinstance(value.get("schema_version"), str):
         message = f"invalid_manifest:{path.name}"
         raise HealthAppropriationsStateError(message)
-    return cast("dict[str, Any]", value)
+    return cast("dict[str, Any]", value), {
+        "path": relative,
+        "sha256": hashlib.sha256(payload).hexdigest(),
+    }
 
 
 def _nonnegative_integer(
@@ -55,18 +62,6 @@ def _nonnegative_integer(
     return value
 
 
-def _manifest_provenance(path: Path | None, root: Path) -> dict[str, str] | None:
-    if path is None:
-        return None
-    try:
-        payload = path.read_bytes()
-        relative = path.relative_to(root).as_posix()
-    except (OSError, ValueError) as error:
-        message = f"invalid_manifest:{path.name}"
-        raise HealthAppropriationsStateError(message) from error
-    return {"path": relative, "sha256": hashlib.sha256(payload).hexdigest()}
-
-
 def inspect_archive_status(archive_root: Path) -> dict[str, object]:
     """Inspect stable layer manifests without mutating archive state."""
     manifests_root = archive_root / "manifests"
@@ -76,21 +71,21 @@ def inspect_archive_status(archive_root: Path) -> dict[str, object]:
     gold_path = _latest(manifests_root, "gold-donor-*.json")
     candidate_path = _latest(archive_root / "candidates", "*/MANIFEST.json")
 
-    donor = _load_manifest(donor_path)
-    capture = _load_manifest(capture_path)
-    silver = _load_manifest(silver_path)
-    gold = _load_manifest(gold_path)
-    candidate = _load_manifest(candidate_path)
+    donor, donor_provenance = _load_manifest(donor_path, archive_root)
+    capture, capture_provenance = _load_manifest(capture_path, archive_root)
+    silver, silver_provenance = _load_manifest(silver_path, archive_root)
+    gold, gold_provenance = _load_manifest(gold_path, archive_root)
+    candidate, candidate_provenance = _load_manifest(candidate_path, archive_root)
     provenance = {
         name: entry
-        for name, path in (
-            ("donor", donor_path),
-            ("capture", capture_path),
-            ("silver", silver_path),
-            ("gold", gold_path),
-            ("platinum", candidate_path),
+        for name, entry in (
+            ("donor", donor_provenance),
+            ("capture", capture_provenance),
+            ("silver", silver_provenance),
+            ("gold", gold_provenance),
+            ("platinum", candidate_provenance),
         )
-        if (entry := _manifest_provenance(path, archive_root)) is not None
+        if entry is not None
     }
 
     captured = _nonnegative_integer(
@@ -99,10 +94,19 @@ def inspect_archive_status(archive_root: Path) -> dict[str, object]:
     selected = _nonnegative_integer(
         capture, "selected", capture_path.name if capture_path else "capture"
     )
+    results = capture.get("results") if capture is not None else None
+    complete_results = (
+        isinstance(results, list)
+        and len(results) == selected
+        and all(
+            isinstance(result, dict) and result.get("state") == "captured"
+            for result in results
+        )
+    )
     bronze_ready = (
         donor is not None
         and capture is not None
-        and capture.get("status") in {"complete", "captured", "success"}
+        and complete_results
         and captured == selected
     )
     layers = {
@@ -125,7 +129,7 @@ def inspect_archive_status(archive_root: Path) -> dict[str, object]:
             message = f"invalid_manifest:{candidate_path.name}"
             raise HealthAppropriationsStateError(message)
         dataset = dataset_value
-        candidate_sha256 = provenance["platinum"]["sha256"]
+        candidate_sha256 = cast("dict[str, str]", candidate_provenance)["sha256"]
 
     return {
         "archive_root": str(archive_root),

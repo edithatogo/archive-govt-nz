@@ -29,10 +29,9 @@ def _ready_archive(root: Path) -> None:
         root / "manifests" / "official-capture-2026-08-29-complete.json",
         {
             "schema_version": "capture/v1",
-            "status": "complete",
-            "captured": 73,
-            "selected": 73,
-            "results": [],
+            "captured": 2,
+            "selected": 2,
+            "results": [{"state": "captured"}, {"state": "captured"}],
         },
     )
     _write_json(
@@ -76,7 +75,7 @@ def test_status_distinguishes_no_state_partial_and_ready(tmp_path: Path) -> None
     ready = inspect_archive_status(tmp_path)
     candidate = tmp_path / "candidates" / "2026-08-29-v4" / "MANIFEST.json"
     assert ready["status"] == "ready"
-    assert ready["captured_resources"] == 73
+    assert ready["captured_resources"] == 2
     assert ready["silver_records"] == 312
     assert (
         ready["candidate_manifest_sha256"]
@@ -129,9 +128,9 @@ def test_status_rejects_incomplete_capture_as_bronze_ready(tmp_path: Path) -> No
         tmp_path / "manifests" / "official-capture-2026-08-29-complete.json",
         {
             "schema_version": "capture/v1",
-            "status": "complete",
-            "captured": 72,
-            "selected": 73,
+            "captured": 1,
+            "selected": 2,
+            "results": [{"state": "captured"}],
         },
     )
     state = inspect_archive_status(tmp_path)
@@ -141,15 +140,15 @@ def test_status_rejects_incomplete_capture_as_bronze_ready(tmp_path: Path) -> No
     assert layers["bronze"] is False
 
 
-def test_status_rejects_capture_without_success_terminal_state(tmp_path: Path) -> None:
+def test_status_rejects_capture_with_incomplete_results(tmp_path: Path) -> None:
     _ready_archive(tmp_path)
     _write_json(
         tmp_path / "manifests" / "official-capture-2026-08-29-complete.json",
         {
             "schema_version": "capture/v1",
-            "status": "partial",
-            "captured": 73,
-            "selected": 73,
+            "captured": 2,
+            "selected": 2,
+            "results": [{"state": "captured"}, {"state": "failed"}],
         },
     )
     state = inspect_archive_status(tmp_path)
