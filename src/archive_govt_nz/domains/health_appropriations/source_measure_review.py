@@ -43,7 +43,9 @@ class _Evidence(_StrictModel):
 class _Review(_StrictModel):
     schema_version: str
     observed_at: str
-    scope: str
+    scope: Literal[
+        "inventory_and_period_rights_assessment_only_no_analytical_admission_or_legal_approval"
+    ]
     series: dict[str, _Series]
     series_count: int
     source_families: dict[str, Any]
@@ -150,10 +152,12 @@ def _check_vote_history(report: _Review, records: list[dict]) -> None:
 
 
 def _check_discovered(family: dict, key: str, missing: set[int]) -> None:
-    for year, url in family[key].items():
-        if int(year) not in missing or not url.startswith(
-            "https://www.treasury.govt.nz/publications/"
-        ):
+    locators = family[key]
+    if {int(year) for year in locators} != missing:
+        msg = "invalid discovered Vote Health locator"
+        raise ValueError(msg)
+    for url in locators.values():
+        if not url.startswith("https://www.treasury.govt.nz/publications/"):
             msg = "invalid discovered Vote Health locator"
             raise ValueError(msg)
 
@@ -172,9 +176,12 @@ def _check_budget_history(report: _Review, records: list[dict], history: dict) -
     if missing != family["editions_missing_locators"]:
         msg = "historical missing edition coverage mismatch"
         raise ValueError(msg)
-    complete = bool(family["fully_enumerated_editions"])
-    if family["complete"] != complete or (
-        complete and family["fully_enumerated_editions"] != family["scoped_years"]
+    enumerated = family["fully_enumerated_editions"]
+    scoped = family["scoped_years"]
+    if (
+        enumerated != sorted(set(enumerated))
+        or not set(enumerated).issubset(scoped)
+        or family["complete"] != (enumerated == scoped)
     ):
         msg = "historical completion claim mismatch"
         raise ValueError(msg)

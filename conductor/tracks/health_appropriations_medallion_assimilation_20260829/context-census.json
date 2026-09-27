@@ -88,18 +88,12 @@
       "gaps": [
         "resource_rights_not_evaluated",
         "transport_http_warc_receipt_unavailable",
+        "export_is_hash_pinned_in_population_annual_context_not_source_census",
         "analytical_selection_and_denominator_approval_not_selected",
         "historical_export_vintages_not_retained",
         "one_unavailable_source_observation_and_two_provisional_statuses"
       ],
-      "sources": [
-        {
-          "source_id": "stats_nz_population-806dead2a5b8ab69",
-          "url": "https://www.stats.govt.nz/assets/Uploads/Labour-market-statistics/Labour-market-statistics-June-2026-quarter/Download-data/household-labour-force-survey-june-2026-quarter.xlsx",
-          "object_sha256": "315f48f981cb237bbd1c4834676fd030f84e7eddc7f7660402956c05ca53a8c0",
-          "observed_at": "2026-08-29T09:00:17Z"
-        }
-      ],
+      "sources": [],
       "evidence": [
         "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-schema-gaps.md",
         "conductor/tracks/health_appropriations_medallion_assimilation_20260829/population-context.json",

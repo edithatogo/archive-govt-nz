@@ -135,9 +135,10 @@ def test_pinned_selectors_keep_denominator_boundaries() -> None:
     assert "F25:O25" in rows["core-crown-hyefu-2025"].selector
     assert "wrong_population_universe" in rows["population-hlfs-rejected"].gaps
     population = rows["population-national-annual-mean"]
+    assert population.sources == []
     assert (
-        population.sources[0].object_sha256
-        == "315f48f981cb237bbd1c4834676fd030f84e7eddc7f7660402956c05ca53a8c0"
+        "export_is_hash_pinned_in_population_annual_context_not_source_census"
+        in population.gaps
     )
     assert "DPE056AA" in population.series_id
     assert "Total All Ages" in population.selector

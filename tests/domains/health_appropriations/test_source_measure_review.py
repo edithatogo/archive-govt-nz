@@ -106,6 +106,14 @@ def test_review_rejects_unsubstantiated_admission(tmp_path: Path) -> None:
         validate_review(path, ROOT)
 
 
+def test_review_scope_is_one_supported_literal() -> None:
+    data = json.loads(REPORT.read_text(encoding="utf-8"))
+    _Review.model_validate(data)
+    data["scope"] = "analytical_admission"
+    with pytest.raises(ValueError, match="scope"):
+        _Review.model_validate(data)
+
+
 def _fixture(tmp_path: Path) -> tuple[Path, Path, dict]:
     root = tmp_path / "fixture-root"
     track = root / TRACK
@@ -147,6 +155,12 @@ def _mutate_vote(report: dict, mutation: str) -> None:
         )
     elif mutation == "discovered_url":
         vote["discovered_estimates_urls"]["2012"] = "https://example.com/not-official"
+    elif mutation == "discovered_missing":
+        vote["discovered_estimates_urls"].pop("2012")
+    elif mutation == "discovered_extra":
+        vote["discovered_estimates_urls"]["2014"] = (
+            "https://www.treasury.govt.nz/publications/budget"
+        )
 
 
 def _mutate_history(report: dict, mutation: str) -> None:
@@ -160,7 +174,12 @@ def _mutate_history(report: dict, mutation: str) -> None:
     elif mutation == "historical_complete":
         history["complete"] = True
     elif mutation == "historical_fully_enumerated":
+        history["fully_enumerated_editions"] = [2007, 2007]
+    elif mutation == "historical_partial":
         history["fully_enumerated_editions"] = [2007]
+        history["complete"] = False
+    elif mutation == "historical_out_of_scope":
+        history["fully_enumerated_editions"] = [1900]
 
 
 def _mutate_evidence(report: dict, root: Path, mutation: str) -> None:
@@ -222,6 +241,8 @@ def _run_mutation(tmp_path: Path, mutation: str, expected: str) -> None:
         ),
         ("discovered_year", "invalid discovered Vote Health locator"),
         ("discovered_url", "invalid discovered Vote Health locator"),
+        ("discovered_missing", "invalid discovered Vote Health locator"),
+        ("discovered_extra", "invalid discovered Vote Health locator"),
         (
             "historical_locator_count",
             "historical edition locator coverage mismatch",
@@ -230,6 +251,7 @@ def _run_mutation(tmp_path: Path, mutation: str, expected: str) -> None:
         ("historical_missing", "historical missing edition coverage mismatch"),
         ("historical_complete", "historical completion claim mismatch"),
         ("historical_fully_enumerated", "historical completion claim mismatch"),
+        ("historical_out_of_scope", "historical completion claim mismatch"),
         ("captured_forecast", "captured Budget/BEFU/HYEFU edition mismatch"),
         (
             "forecast_locator_editions",
@@ -266,12 +288,21 @@ def test_review_requires_source_and_history_evidence(tmp_path: Path) -> None:
         validate_review(path, root)
 
 
+def test_partial_historical_enumeration_is_valid_when_incomplete(
+    tmp_path: Path,
+) -> None:
+    path, root, report = _fixture(tmp_path)
+    _mutate_history(report, "historical_partial")
+    path.write_text(json.dumps(report), encoding="utf-8")
+    validate_review(path, root)
+
+
 def test_family_requires_mapping() -> None:
     report = _Review.model_validate(
         {
             "schema_version": "1",
             "observed_at": "today",
-            "scope": "test",
+            "scope": "inventory_and_period_rights_assessment_only_no_analytical_admission_or_legal_approval",
             "series": {},
             "series_count": 0,
             "source_families": {"broken": []},
