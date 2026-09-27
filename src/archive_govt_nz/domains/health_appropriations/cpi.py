@@ -207,6 +207,22 @@ def _extract(
     return facts, lineage, dispositions
 
 
+def inspect_bronze_payload(
+    payload: bytes, context: dict[str, Any]
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]], list[dict[str, Any]]]:
+    """Expose the bounded CPI parser to the common Bronze adapter protocol."""
+    return _extract(_rows(payload), context)
+
+
+def is_supported_bronze_layout(payload: bytes) -> bool:
+    """Return whether a bounded CSV carries the exact CPI source header."""
+    try:
+        _rows(payload)
+    except UnicodeDecodeError, ValueError, csv.Error:
+        return False
+    return True
+
+
 def normalize_cpi(  # noqa: PLR0913 - explicit provenance plus fail-closed dry-run switch
     source: Path,
     output_dir: Path,

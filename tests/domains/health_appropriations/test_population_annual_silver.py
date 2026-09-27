@@ -93,3 +93,30 @@ def test_preflight_and_written_silver_package(tmp_path: Path) -> None:
         assert hashlib.sha256((output / name).read_bytes()).hexdigest() == expected
     disk_manifest = json.loads((output / "MANIFEST.json").read_text())
     assert disk_manifest == manifest
+
+
+def test_repeat_build_has_identical_population_manifest_and_parquet(
+    tmp_path: Path,
+) -> None:
+    source = tmp_path / "source.csv"
+    content = payload()
+    source.write_bytes(content)
+    digest = hashlib.sha256(content).hexdigest()
+    context = {
+        "expected_sha256": digest,
+        "observed_at": "2026-09-25T09:37:50Z",
+        "source_vintage": "2026-08-18",
+        "source_locator": "https://infoshare.stats.govt.nz/ExportDirect.aspx",
+        "dry_run": False,
+    }
+    first = normalize_population_annual(source, tmp_path / "silver-a", **context)
+    second = normalize_population_annual(source, tmp_path / "silver-b", **context)
+
+    assert first == second
+    assert (tmp_path / "silver-a" / "MANIFEST.json").read_bytes() == (
+        tmp_path / "silver-b" / "MANIFEST.json"
+    ).read_bytes()
+    for name in cast("dict[str, str]", first["output_sha256"]):
+        assert (tmp_path / "silver-a" / name).read_bytes() == (
+            tmp_path / "silver-b" / name
+        ).read_bytes()

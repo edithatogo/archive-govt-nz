@@ -1,0 +1,50 @@
+{
+  "schema_version": "archive-govt-nz.health-context-adapters-validation/v1",
+  "scope": "hash_bound_bronze_dispatch_literal_context_mappings_and_drift_contracts",
+  "source_profiles": [
+    "Stats NZ CPIQ.SE9A CSV",
+    "Stats NZ DPE056AA annual mean population CSV",
+    "Stats NZ QES Table 8 workbook",
+    "Stats NZ GDP Table 1 current-price workbook",
+    "Pharmac Combined Pharmaceutical Budget HTML table"
+  ],
+  "contracts": {
+    "dispatch": "exact source hash and bounded layout selection; unknown input remains preserved-only",
+    "dimensions": "literal assertions and source-coordinate links; all mapping targets unresolved",
+    "schema_drift": "serialized Arrow schema and canonical layout fingerprints with deterministic added/removed/changed report",
+    "repeat_build": "annual population manifest and Parquet byte identity for identical input/context"
+  },
+  "focused_validation": {
+    "adapter_registry_dispatch_mapping_drift_and_census_tests": "passed",
+    "tests": 120,
+    "pharmac_adapter_and_existing_parser_tests": "99 passed",
+    "bronze_stream_resume_capture_edge_tests": "passed",
+    "bronze_tests": 179,
+    "ruff": "passed",
+    "basedpyright": "passed"
+  },
+  "limitations": [
+    "Common dispatch for Vote Health PDF, SQLite and additional Treasury source-operation profiles remains unimplemented",
+    "Captured per-source schema/layout baselines and integrated drift receipts remain open",
+    "Repeat-build byte identity across every registered adapter remains open",
+    "Rights, analytical admission, crosswalk targets and publication approval remain unqualified"
+  ],
+  "full_repository_validation": {
+    "command": "./scripts/validate.sh",
+    "exit_code": 0,
+    "tests_passed": 6962,
+    "tests_skipped": 9,
+    "branch_coverage_percent": 97.95,
+    "schemas": 48,
+    "representative_documents": 38,
+    "differential_parity": "9/9 passed",
+    "configured_mutation_lanes": "passed",
+    "hygiene": "passed",
+    "cas_throughput_mib_per_s": 678.59,
+    "dependency_audit": "passed_no_known_vulnerabilities",
+    "licences": "passed",
+    "secrets": "passed",
+    "strict_sbom_components": 113,
+    "checks_complete": true
+  }
+}

@@ -2505,3 +2505,51 @@ combined main base: 6,908 tests, 9 skipped, 98.08% branch coverage, 48 schemas,
 38 representative documents, parity 9/9, all configured mutation/hygiene and
 supply-chain checks, 657.66 MB/s CAS throughput, and strict SBOM validation
 with 113 components.
+
+## 2026-09-27 — Add context adapters, unresolved mappings and drift contracts
+
+Connected exact CPIQ.SE9A, DPE056AA annual mean population, QES Table 8 and GDP
+Table 1 source layouts to explicit common-dispatch registrations. Adapter outputs
+now include deterministic source-literal dimension assertions and row/cell links;
+targets remain unresolved and no denominator, deflator, currency, or crosswalk
+is inferred. Added stable Arrow schema/layout fingerprints and deterministic
+added/removed/changed drift reports. Added an exact two-build manifest and
+Parquet byte-identity contract for the population annual context normalizer.
+
+Focused adapter, registry, mapping, drift, source census and repeat-build checks
+pass (114 tests); Bronze stream/capture/resume contracts pass (179 tests). Ruff
+and basedpyright pass. The full repository validation harness is running after
+this integrated source change. Pharmac HTML, Vote Health PDF, SQLite and further
+Treasury adapters, source-specific captured drift baselines, repeat builds for
+every adapter, rights qualification and evidence-backed crosswalks remain open.
+
+The integrated full validation completed successfully: `./scripts/validate.sh`
+passed 6,959 tests with 9 skipped and 97.98% branch coverage; 48 schemas and
+38 representative documents validated; differential parity passed 9/9; all
+configured mutation and hygiene lanes passed; CAS streaming benchmark was
+658.61 MB/s; dependency audit, licence inventory, secret scan and strict
+113-component SBOM validation passed. The shell session closed immediately after
+the final SBOM receipt, but the harness emitted successful strict validation
+and returned no reported gate failure.
+
+## 2026-09-27 — Register the exact Pharmac CPB HTML profile
+
+Added `text/html` signature detection and an explicit common-dispatch adapter for
+only the reviewed Pharmac Combined Pharmaceutical Budget profile updated
+2026-08-07. It reuses the bounded table parser, retains published budget values,
+source-cell/context lineage and padding dispositions, checks the Bronze digest,
+and returns preserved-only for layout drift. Synthetic exact-layout, changed
+layout, and media-type contracts pass with the dispatch and registry suite (30
+passed); Ruff and basedpyright pass. Vote Health PDF, SQLite and other HTML pages
+remain unsupported and are explicitly not treated as inferred layouts.
+
+The focused Pharmac adapter, existing parser, registry and common-dispatch
+regression suite passes 99 tests, with Ruff and basedpyright green. The adapter
+is the only `text/html` production registration; the detector requires strict
+UTF-8, no NUL bytes and an HTML root marker before the exact table probe runs.
+
+After adding the Pharmac dispatch adapter, the required full validation passed
+again: 6,962 tests, 9 skipped, 97.95% branch coverage; 48 schemas and 38
+representative documents; 9/9 parity; configured mutation and hygiene lanes;
+678.59 MB/s CAS throughput; dependency/license/secret checks; strict 113-component
+SBOM validation. The harness exited after its final successful SBOM receipt.

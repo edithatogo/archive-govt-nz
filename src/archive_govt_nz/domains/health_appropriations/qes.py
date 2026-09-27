@@ -31,6 +31,10 @@ if TYPE_CHECKING:
 
 MAX_BYTES = 1024 * 1024
 MAX_FIELD = 4096
+_SOURCE_BYTE_ERROR = "qes_source_byte_limit"
+_MISSING_SHEET_ERROR = "qes_missing_sheet"
+_RELEASE_ERROR = "qes_release_contract"
+_FIELD_LIMIT_ERROR = "qes_field_limit"
 TRANSFORMATION = "qes-june2026-table8-ordinary-hourly/v1"
 RELEASE_TITLE = "Quarterly Employment Survey: June 2026 quarter"
 HEADERS = MappingProxyType(
@@ -234,6 +238,41 @@ def _extract(
             for coordinate in (f"A{year_row}", f"C{row}")
         )
     return facts, lineage, selected
+
+
+def inspect_bronze_payload(
+    payload: bytes, context: dict[str, Any]
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]], list[dict[str, Any]]]:
+    """Expose the bounded QES profile to the common Bronze adapter boundary."""
+    if not 0 < len(payload) <= MAX_BYTES:
+        raise ValueError(_SOURCE_BYTE_ERROR)
+    inventory_workbook(BytesIO(payload))
+    tokens = _number_tokens(payload)
+    workbook = load_workbook(BytesIO(payload), data_only=False)
+    try:
+        if "Table 8" not in workbook.sheetnames:
+            raise ValueError(_MISSING_SHEET_ERROR)
+        if (
+            "Contents" not in workbook.sheetnames
+            or workbook["Contents"]["A1"].value != RELEASE_TITLE
+        ):
+            raise ValueError(_RELEASE_ERROR)
+        for sheet in workbook:
+            if any(len(str(cell.value)) > MAX_FIELD for row in sheet for cell in row):
+                raise ValueError(_FIELD_LIMIT_ERROR)
+        facts, lineage, selected = _extract(
+            workbook["Table 8"], tokens["Table 8"], context
+        )
+        dispositions = [
+            entry
+            for sheet in workbook
+            for entry in _dispositions(
+                sheet, tokens, selected, context["source_object_sha256"]
+            )
+        ]
+        return facts, lineage, dispositions
+    finally:
+        workbook.close()
 
 
 def _dispositions(
