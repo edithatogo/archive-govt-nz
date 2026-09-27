@@ -94,7 +94,7 @@
           "source_object_sha256": {"const": "769f2e7dd6000878cd29c2d913ad6979f28c5391c971292e6abf6148e83eb32d"},
           "source_record_id": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
           "source_value_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
-          "source_year_label": {"type": "string", "pattern": "^[0-9]{4}[†*^#]*$"},
+          "source_year_label": {"type": "string", "pattern": "^[0-9]{4}[\\u2020*^#]*$"},
           "status": {"enum": ["source_only", "value_difference"]},
           "test_reference": {"const": "test_historical_reconciliation.py::test_complete_union_and_explicit_differences"}
         },
@@ -105,7 +105,7 @@
               "properties": {
                 "reason": {"const": "annotated_year_absent_from_donor"},
                 "disposition_basis": {"const": "donor_numeric_year_coercion_drops_footnote_marker"},
-                "source_year_label": {"pattern": "^[0-9]{4}[†*^#]+$"},
+                "source_year_label": {"pattern": "^[0-9]{4}[\\u2020*^#]+$"},
                 "donor_value_sha256": {"const": "dc937b59892604f5a86ac96936cd7ff09e25f18ae6b758e8014a24c7fa039e91"}
               }
             }
