@@ -1160,3 +1160,13 @@ receipts and existing ledger bytes are preserved. New source-ref verification
 and 260 focused tests support the bounded checkpoint, without reusing historical
 mutation counts as fresh results or closing broader Health acceptance. No
 actionable finding remains in the evidence integration; full gates are in the PR.
+## Scheduled discovery heartbeat — 2026-09-28
+
+Self-review confirms the heartbeat hashes the exact bounded manifest bytes,
+redacts read/parse failure details, and reports workflow success independently
+from discovery, metadata drift, capture, normalization, validation, and
+publication. Missing, unreadable, malformed, unavailable, oversized, and
+contract-drifted inputs are covered. The workflow remains metadata-only and
+grants no additional permissions. No actionable finding remains in this
+bounded task; actual hosted heartbeat evidence is pending the next workflow
+run and is not asserted here.

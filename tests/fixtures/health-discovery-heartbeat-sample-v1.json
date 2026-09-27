@@ -1,0 +1,18 @@
+{
+  "capture_state": "not_run",
+  "dataset_count": 2,
+  "discovery_state": "observed",
+  "manifest_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "metadata_drift": {
+    "changed": 0,
+    "new": 2,
+    "state": "reported",
+    "unchanged": 0,
+    "withdrawn": 0
+  },
+  "publication_state": "not_run",
+  "schema_version": "archive-govt-nz.health-discovery-heartbeat/v1",
+  "silver_normalization_state": "not_run",
+  "validation_state": "not_run",
+  "workflow_outcome": "success"
+}

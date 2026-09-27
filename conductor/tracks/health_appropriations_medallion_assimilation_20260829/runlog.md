@@ -2701,3 +2701,17 @@ branch coverage, 49 schemas/39 representative documents, differential parity
 and strict 113-component SBOM validation. This phase result does not claim
 normalization of every inventoried sheet, formula-cache admission, rights
 clearance or publication approval.
+## Scheduled discovery heartbeat — 2026-09-28
+
+Added a bounded heartbeat receipt to the existing metadata-only scheduled
+health discovery workflow. Red phase: the focused heartbeat tests initially
+failed collection because the implementation module was absent. The final
+focused heartbeat and workflow contracts passed 18 tests; Ruff, basedpyright,
+and the explicit schema registry passed. The full `./scripts/validate.sh`
+harness passed 7,029 tests, 9 skipped, 98.14% branch coverage, 50 schemas/40
+representative documents, parity 9/9 and all configured mutation, hygiene,
+dependency, licence, secret and SBOM gates. The recorded workflow outcome,
+discovery state, and metadata drift stay separate; capture, Silver
+normalization, validation, and publication remain `not_run`. The hosted
+scheduled workflow heartbeat has not yet run; verify its artifact on a later
+scheduled/manual run after merge.

@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/edithatogo/archive-govt-nz/schemas/health-discovery-heartbeat-v1.schema.json",
+  "title": "Scheduled Health Discovery Operations Heartbeat",
+  "description": "Workflow, metadata-discovery and drift evidence kept distinct from capture, Silver normalization, validation and publication.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "workflow_outcome",
+    "discovery_state",
+    "manifest_sha256",
+    "dataset_count",
+    "metadata_drift",
+    "capture_state",
+    "silver_normalization_state",
+    "validation_state",
+    "publication_state"
+  ],
+  "properties": {
+    "schema_version": {"const": "archive-govt-nz.health-discovery-heartbeat/v1"},
+    "workflow_outcome": {"enum": ["success", "failure", "cancelled", "skipped", "unknown"]},
+    "discovery_state": {"enum": ["missing", "unreadable", "invalid", "unavailable", "observed"]},
+    "manifest_sha256": {
+      "oneOf": [
+        {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        {"type": "null"}
+      ]
+    },
+    "dataset_count": {
+      "oneOf": [
+        {"type": "integer", "minimum": 0},
+        {"type": "null"}
+      ]
+    },
+    "metadata_drift": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["state"],
+          "properties": {"state": {"const": "not_available"}}
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["state", "new", "changed", "unchanged", "withdrawn"],
+          "properties": {
+            "state": {"const": "reported"},
+            "new": {"type": "integer", "minimum": 0},
+            "changed": {"type": "integer", "minimum": 0},
+            "unchanged": {"type": "integer", "minimum": 0},
+            "withdrawn": {"type": "integer", "minimum": 0}
+          }
+        }
+      ]
+    },
+    "capture_state": {"const": "not_run"},
+    "silver_normalization_state": {"const": "not_run"},
+    "validation_state": {"const": "not_run"},
+    "publication_state": {"const": "not_run"}
+  }
+}

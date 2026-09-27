@@ -72,7 +72,12 @@ def test_health_discovery_preserves_failure_receipts() -> None:
     upload = workflow.split("uses: actions/upload-artifact@", maxsplit=1)[1]
     assert "if: always()" in upload
     assert "build/live/health-discovery.json" in upload
+    assert "build/live/health-discovery-heartbeat.json" in upload
     assert "if-no-files-found: error" in upload
+    assert "id: discovery" in workflow
+    assert "if: always()" in workflow
+    assert "steps.discovery.outcome" in workflow
+    assert "archive_govt_nz.health_heartbeat" in workflow
 
 
 def test_optional_workflow_arguments_use_shell_arrays() -> None:

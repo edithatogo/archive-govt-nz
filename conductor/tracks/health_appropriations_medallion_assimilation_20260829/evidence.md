@@ -651,3 +651,12 @@ with a separate dated snapshot. All four current source/test hashes match;
 260 focused tests pass with 100% coverage of both modules. Historical mutation
 results remain separately identified. See the paired integration report and
 receipt in `normalization-checkpoint-integration-20260913.md`.
+## Scheduled discovery heartbeat — 2026-09-28
+
+Local evidence: 18 focused heartbeat/workflow tests passed; Ruff and
+basedpyright passed. `tools/validate_schemas.py` validated 50 schemas and 40
+representative documents including the new heartbeat sample. The repository
+harness passed 7,029 tests, 9 skipped, 98.14% branch coverage, parity 9/9 and
+all configured mutation, dependency, licence, secret and SBOM gates. Hosted
+scheduled workflow execution has not been claimed; the heartbeat is attached
+to the next scheduled/manual discovery workflow run after merge.

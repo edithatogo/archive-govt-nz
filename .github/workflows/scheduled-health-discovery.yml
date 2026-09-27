@@ -22,14 +22,26 @@ jobs:
         with:
           python-version: "3.14"
       - run: python -m pip install uv
-      - run: >-
+      - name: Discover health metadata
+        id: discovery
+        run: >-
           uv run --locked python tools/discover_health_metadata.py
           --output build/live/health-discovery.json --page-size 100
+      - name: Record bounded operations heartbeat
+        if: always()
+        env:
+          WORKFLOW_OUTCOME: ${{ steps.discovery.outcome }}
+        run: >-
+          uv run --locked python -m archive_govt_nz.health_heartbeat
+          --manifest build/live/health-discovery.json
+          --workflow-outcome "$WORKFLOW_OUTCOME"
+          --output build/live/health-discovery-heartbeat.json
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         if: always()
         with:
           name: scheduled-health-discovery
           path: |
             build/live/health-discovery.json
+            build/live/health-discovery-heartbeat.json
             build/live/health-discovery-raw/
           if-no-files-found: error
