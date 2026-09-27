@@ -55,6 +55,18 @@ def _nonnegative_integer(
     return value
 
 
+def _manifest_provenance(path: Path | None, root: Path) -> dict[str, str] | None:
+    if path is None:
+        return None
+    try:
+        payload = path.read_bytes()
+        relative = path.relative_to(root).as_posix()
+    except (OSError, ValueError) as error:
+        message = f"invalid_manifest:{path.name}"
+        raise HealthAppropriationsStateError(message) from error
+    return {"path": relative, "sha256": hashlib.sha256(payload).hexdigest()}
+
+
 def inspect_archive_status(archive_root: Path) -> dict[str, object]:
     """Inspect stable layer manifests without mutating archive state."""
     manifests_root = archive_root / "manifests"
@@ -70,7 +82,18 @@ def inspect_archive_status(archive_root: Path) -> dict[str, object]:
     gold = _load_manifest(gold_path)
     candidate = _load_manifest(candidate_path)
 
-    bronze_ready = donor is not None and capture is not None
+    captured = _nonnegative_integer(
+        capture, "captured", capture_path.name if capture_path else "capture"
+    )
+    selected = _nonnegative_integer(
+        capture, "selected", capture_path.name if capture_path else "capture"
+    )
+    bronze_ready = (
+        donor is not None
+        and capture is not None
+        and capture.get("status") in {"complete", "captured", "success"}
+        and captured == selected
+    )
     layers = {
         "bronze": bronze_ready,
         "silver": silver is not None,
@@ -101,12 +124,21 @@ def inspect_archive_status(archive_root: Path) -> dict[str, object]:
         "donor_file_count": _nonnegative_integer(
             donor, "file_count", donor_path.name if donor_path else "donor"
         ),
-        "captured_resources": _nonnegative_integer(
-            capture, "captured", capture_path.name if capture_path else "capture"
-        ),
+        "captured_resources": captured,
         "silver_records": _nonnegative_integer(
             silver, "record_count", silver_path.name if silver_path else "silver"
         ),
         "candidate_manifest_sha256": candidate_sha256,
         "dataset": dataset,
+        "manifest_provenance": {
+            name: provenance
+            for name, path in (
+                ("donor", donor_path),
+                ("capture", capture_path),
+                ("silver", silver_path),
+                ("gold", gold_path),
+                ("platinum", candidate_path),
+            )
+            if (provenance := _manifest_provenance(path, archive_root)) is not None
+        },
     }

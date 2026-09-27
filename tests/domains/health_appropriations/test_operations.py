@@ -31,6 +31,7 @@ def _ready_archive(root: Path) -> None:
         root / "manifests" / "official-capture-2026-08-29-complete.json",
         {
             "schema_version": "capture/v1",
+            "status": "complete",
             "captured": 73,
             "selected": 73,
             "results": [],
@@ -122,3 +123,34 @@ def test_status_rejects_candidate_without_dataset(tmp_path: Path) -> None:
     )
     with pytest.raises(HealthAppropriationsStateError, match="invalid_manifest"):
         inspect_archive_status(tmp_path)
+
+
+def test_status_rejects_incomplete_capture_as_bronze_ready(tmp_path: Path) -> None:
+    _ready_archive(tmp_path)
+    _write_json(
+        tmp_path / "manifests" / "official-capture-2026-08-29-complete.json",
+        {
+            "schema_version": "capture/v1",
+            "status": "complete",
+            "captured": 72,
+            "selected": 73,
+        },
+    )
+    state = inspect_archive_status(tmp_path)
+    assert state["status"] == "partial"
+    layers = state["layers"]
+    assert isinstance(layers, dict)
+    assert layers["bronze"] is False
+
+
+def test_status_reports_exact_manifest_provenance(tmp_path: Path) -> None:
+    _ready_archive(tmp_path)
+    state = inspect_archive_status(tmp_path)
+    provenance = state["manifest_provenance"]
+    assert isinstance(provenance, dict)
+    assert set(provenance) == {"donor", "capture", "silver", "gold", "platinum"}
+    for entry in provenance.values():
+        assert len(entry["sha256"]) == 64
+        assert entry["path"].startswith("manifests/") or entry["path"].startswith(
+            "candidates/"
+        )
