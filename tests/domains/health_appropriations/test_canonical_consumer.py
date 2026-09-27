@@ -361,6 +361,22 @@ def test_canonical_gold_builds_source_separated_facts_and_report(
         == "sum_within_exact_source_labels_and_unit"
     )
     assert receipt["products"]["revenue"]["netting"] == "prohibited"
+    quality = receipt["quality_report"]
+    assert quality["schema_version"] == (
+        "archive-govt-nz.health-canonical-gold-quality/v1"
+    )
+    assert quality["unaccounted_input_records"] == 0
+    assert quality["input_records_with_product"] == quality["input_record_count"]
+    assert quality["unresolved_reports"] == [
+        "source_health",
+        "classification_drift",
+        "revision_reconciliation",
+        "cross_source_reconciliation",
+    ]
+    assert quality["products"]["historical"]["analytical_completeness"] == (
+        "not_evaluated"
+    )
+    assert quality["input_record_products"]
     assert {
         "historical_observations.parquet",
         "historical_coverage.parquet",

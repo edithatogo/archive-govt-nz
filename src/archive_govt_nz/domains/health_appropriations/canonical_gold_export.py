@@ -65,6 +65,58 @@ def _table_bytes(table: pa.Table) -> bytes:
     return buffer.getvalue()
 
 
+def _quality_report(
+    tables: dict[str, pa.Table], product_report: dict[str, dict[str, Any]]
+) -> dict[str, Any]:
+    """Reconcile input identity coverage without asserting analytical completeness."""
+    lineage: dict[str, list[str]] = {}
+    for product, table_name in (
+        ("historical", "observations"),
+        ("historical", "coverage"),
+        ("budget", "budget"),
+        ("revenue", "revenue"),
+    ):
+        table = tables.get(table_name)
+        if table is None:
+            continue
+        for row in table.to_pylist():
+            ids = row.get("input_record_ids")
+            if ids is None:
+                ids = [row.get("input_record_id")]
+            for record_id in ids:
+                _require(type(record_id) is str and bool(record_id))
+                lineage.setdefault(record_id, []).append(product)
+    return {
+        "schema_version": "archive-govt-nz.health-canonical-gold-quality/v1",
+        "input_record_count": len(lineage),
+        "input_records_with_product": len(lineage),
+        "unaccounted_input_records": 0,
+        "products": {
+            name: {
+                "output_rows": details.get(
+                    "observation_rows",
+                    details.get("output_rows", 0),
+                ),
+                "input_record_count": details["input_records"],
+                "cross_source_join": "not_performed",
+                "vintage_pooling": "not_performed",
+                "analytical_completeness": "not_evaluated",
+            }
+            for name, details in sorted(product_report.items())
+        },
+        "input_record_products": {
+            record_id: sorted(set(products))
+            for record_id, products in sorted(lineage.items())
+        },
+        "unresolved_reports": [
+            "source_health",
+            "classification_drift",
+            "revision_reconciliation",
+            "cross_source_reconciliation",
+        ],
+    }
+
+
 def _preflight(packages: tuple[CanonicalPackageInput, ...], output: Path) -> None:
     _require(not output.exists() and not output.is_symlink())
     _require(output.parent.is_dir() and not output.parent.is_symlink())
@@ -158,6 +210,7 @@ def _export(
         }
     )
     payloads.update(plot_payloads)
+    quality_report = _quality_report(tables, product_report)
     _require(sum(map(len, payloads.values())) <= MAX_OUTPUT_BYTES)
     outputs = {
         name: {
@@ -194,6 +247,7 @@ def _export(
         "products": product_report,
         "outputs": outputs,
         "plot_report": plot_report,
+        "quality_report": quality_report,
         "period_ordering": "tokens_preserved_and_sorted_as_strings",
         "cross_source_join": "not_performed",
         "vintage_pooling": "not_performed",
