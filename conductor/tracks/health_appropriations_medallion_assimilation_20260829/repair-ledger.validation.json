@@ -19,12 +19,12 @@
     "representative_documents": 38,
     "status": "passed"
   },
-  "source_to_donor_oracle": "open_for_all_five_tables_and_312_rows",
+  "source_to_donor_oracle": "completed_for_all_five_pinned_source_tables; 312 donor rows matched and 29 additional historical source rows remain explicitly blocked",
   "publication": "not_performed",
   "full_repository_validation": {
     "command": "./scripts/validate.sh",
     "exit_code": 0,
-    "tests_passed": 6906,
+    "tests_passed": 6908,
     "tests_skipped": 9,
     "branch_coverage_percent": 98.08,
     "schemas": 48,
@@ -32,7 +32,7 @@
     "differential_parity": "9/9 passed",
     "configured_mutation_lanes": "passed",
     "hygiene": "passed",
-    "cas_benchmark_megabytes_per_second": 524.23,
+    "cas_benchmark_megabytes_per_second": 657.66,
     "dependency_audit": "passed_no_known_vulnerabilities",
     "licence_inventory": "passed",
     "secrets": "passed",
