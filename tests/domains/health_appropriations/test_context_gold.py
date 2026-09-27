@@ -92,6 +92,7 @@ def synthetic_packages(
                 "source_vintage": vintage,
                 "source_locator": f"{family}!A1:A2",
                 "amount": Decimal("12.5"),
+                "value_token": "12.5",
                 "period_token": "FY2024" if family == "population" else "2024Q1",
                 "source_quarter_token": None,
                 "source_year_token": None,
@@ -109,6 +110,7 @@ def synthetic_packages(
                 "source_vintage": vintage,
                 "source_locator": f"{family}!A1:A2",
                 "amount": Decimal("13.5") if family != "wage" else None,
+                "value_token": None,
                 "period_token": "FY2025" if family == "population" else "2024Q2",
                 "source_quarter_token": None,
                 "source_year_token": None,
@@ -123,6 +125,33 @@ def synthetic_packages(
                 "null_reason": "not_published" if family == "wage" else None,
             },
         ]
+        if family == "population":
+            facts[1]["raw_status"] = None
+            facts[1]["raw_values_json"] = "{}"
+            facts.extend(
+                [
+                    facts[1]
+                    | {
+                        "record_id": "population-three",
+                        "amount": Decimal("14.5"),
+                        "period_token": "FY2024-PROVISIONAL",
+                        "status": "PRELIMINARY",
+                        "raw_status": "P",
+                        "raw_values_json": json.dumps({"status": "P"}),
+                        "null_reason": None,
+                    },
+                    facts[1]
+                    | {
+                        "record_id": "population-four",
+                        "amount": None,
+                        "period_token": "FY2023",
+                        "status": "FINAL",
+                        "raw_status": None,
+                        "raw_values_json": "{}",
+                        "null_reason": "figure_not_available",
+                    },
+                ]
+            )
         if family == "cpi":
             facts[1]["period_token"] = None
             facts[1]["source_quarter_token"] = None
@@ -166,16 +195,18 @@ def test_synthetic_source_packages_cover_build_contract(
     receipt = context_gold.export_context_gold(
         silver, source, tmp_path / "out", write=True
     )
-    assert receipt["input_records"] == 8
+    assert receipt["input_records"] == 10
     assert receipt["series"] == 4
     assert receipt["eligible_context_observations"] == 5
-    assert receipt["excluded_observations"] == 3
+    assert receipt["excluded_observations"] == 5
     rows = pq.read_table(tmp_path / "out" / "context_observations.parquet").to_pylist()
     assert {
         row["admission_reason"] for row in rows if row["family"] == "population"
     } == {
         "source_value_admitted",
+        "status_not_retained_in_shared_fact",
         "provisional",
+        "figure_not_available",
     }
     assert all(
         (tmp_path / "out" / name).is_file()
@@ -185,6 +216,19 @@ def test_synthetic_source_packages_cover_build_contract(
             "MANIFEST.json",
         )
     )
+
+
+def test_source_path_checks_content_addressed_cas_fixity(tmp_path: Path) -> None:
+    source = tmp_path / "original source bytes"
+    source.write_bytes(b"verified source")
+    digest = hashlib.sha256(source.read_bytes()).hexdigest()
+    cas_path = tmp_path / "cas" / digest[:2] / digest
+    cas_path.parent.mkdir(parents=True)
+    cas_path.write_bytes(source.read_bytes())
+    assert context_gold._source_path(tmp_path / "cas", digest) == cas_path  # noqa: SLF001
+    cas_path.write_bytes(b"tampered source")
+    with pytest.raises(ValueError, match=r"^context_gold_invalid$"):
+        context_gold._source_path(tmp_path / "cas", digest)  # noqa: SLF001
 
 
 def test_output_failure_writes_bounded_failure_receipt(
