@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import hashlib
+import json
 from decimal import Decimal
 from pathlib import Path
 
@@ -13,7 +14,10 @@ from tests.domains.health_appropriations.test_historical_snapshot import (
     _package as historical_raw_package,
 )
 
-from archive_govt_nz.domains.health_appropriations import canonical_consumer
+from archive_govt_nz.domains.health_appropriations import (
+    canonical_consumer,
+    canonical_gold_export,
+)
 from archive_govt_nz.domains.health_appropriations.budget_export import (
     export_budget_appropriations,
 )
@@ -205,6 +209,22 @@ def test_coverage_rejects_duplicate_identity_and_unverified_shape(
         summarize_historical_coverage(pa.table({"input_record_id": ["x"]}))
 
 
+def test_longitudinal_query_redacts_verifier_failure(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    package = _historical_package(tmp_path)
+
+    def fail_verification(_package: CanonicalPackageInput) -> object:
+        failure_message = "sensitive source path"
+        raise ValueError(failure_message)
+
+    monkeypatch.setattr(
+        canonical_consumer, "read_verified_canonical_tables", fail_verification
+    )
+    with pytest.raises(ValueError, match=r"^canonical_consumer_invalid$"):
+        query_historical_observations((package,))
+
+
 def test_historical_gold_export_is_dry_run_first_and_repeatable(
     tmp_path: Path,
 ) -> None:
@@ -255,6 +275,31 @@ def test_historical_gold_export_rejects_input_overlap_and_existing_output(
         export_historical_gold((object(),), tmp_path / "bad-package")  # type: ignore[arg-type]
     with pytest.raises(ValueError, match=r"^canonical_gold_export_invalid$"):
         export_historical_gold((), tmp_path / "empty-packages")
+
+
+def test_historical_gold_export_records_bounded_readback_failure(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    package = _historical_package(tmp_path)
+
+    def fail_readback(
+        _path: Path, _payload: bytes, _table: pa.Table | None = None
+    ) -> None:
+        failure_message = "sensitive output path"
+        raise ValueError(failure_message)
+
+    monkeypatch.setattr(canonical_gold_export, "_readback", fail_readback)
+    output = tmp_path / "failed-gold"
+    with pytest.raises(ValueError, match=r"^canonical_gold_export_invalid$"):
+        export_historical_gold((package,), output, write=True)
+    failure = json.loads((output / "FAILURE.json").read_text(encoding="utf-8"))
+    assert failure == {
+        "schema_version": "archive-govt-nz.health-canonical-gold/v1",
+        "status": "incomplete",
+        "error_type": "ValueError",
+        "publication": "not_performed",
+    }
+    assert not (output / "MANIFEST.json").exists()
 
 
 @pytest.mark.parametrize("packages", [[], (), [object()]])

@@ -18,12 +18,18 @@ the same fixture package produced byte-identical files.
 
 ## Validation
 
-- Focused consumer/export tests: 12 passed.
-- `./scripts/validate.sh`: passed on the final implementation; 6,993 passed,
-  9 skipped, 98.10% branch coverage; 49 schemas and 39 representative
+- Focused consumer/export tests: 14 passed, including redacted verifier errors
+  and a persisted readback failure receipt; the local Gold functions are fully
+  covered on the full suite.
+- `./scripts/validate.sh`: passed on the final implementation; 6,995 passed,
+  9 skipped, 98.12% branch coverage; 49 schemas and 39 representative
   documents validated; differential parity 9/9; mutation, hygiene, dependency,
   license, secret-scan, and SBOM gates passed.
 - Exact output schemas and input-ID closure are asserted in the tests.
+
+The hosted Codecov patch gate initially identified the two fail-closed error
+paths. The added tests exercise both paths and confirm the stable public error,
+the bounded incomplete receipt, and absence of a success manifest.
 
 ## Boundaries and next work
 
