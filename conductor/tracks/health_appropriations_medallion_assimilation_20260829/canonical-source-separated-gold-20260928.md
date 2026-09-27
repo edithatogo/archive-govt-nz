@@ -21,23 +21,31 @@ failure produces only a bounded failure receipt, and each family of inputs is
 protected from output overlap. Rights remain `not_evaluated` and publication is
 `not_performed`.
 
+The v2 package also includes one or more bounded display-only PNGs per eligible
+source context. Categories preserve the exact source period token and labels;
+the charts do not parse periods, connect points or imply continuity. The plot
+report binds each image to its context digest and input record IDs, records its
+hash/size, and makes limit-based omissions visible. Exact Decimal values remain
+in the Parquet tables; conversion to floating point occurs only for rendering.
+
 ## Verification
 
-- Focused canonical consumer and Gold exporter tests: 15 passed, including a
-  mixed three-family build, exact output comparisons with the verified
-  read-only consumers, dry-run behavior, repeat-build byte equality, and the
-  existing bounded failure contracts.
+- Focused canonical consumer and plot tests: 19 passed, including a mixed
+  three-family build, output comparisons with verified read-only consumers,
+  dry-run behavior, repeat-build byte equality, bounded plot omissions, and
+  fail-closed contracts. Both changed product modules have 100% branch coverage.
 - Ruff check, Ruff format, and `git diff --check`: passed.
-- `./scripts/validate.sh`: passed with 6,996 tests, 9 skipped, and 98.12%
+- `./scripts/validate.sh`: passed with 7,000 tests, 9 skipped, and 98.13%
   branch coverage; 49 schemas and 39 representative documents validated;
   differential parity 9/9; mutation, hygiene, dependency audit, licence,
   secret-scan, and SBOM gates passed.
+- Hosted PR checks: pending.
 - Hosted PR checks: pending.
 
 ## Remaining scope
 
 This package does not provide contextual denominator joins, real/per-capita or
-GDP/Crown-share measures, all source-native Silver projections, new Gold plots,
-Platinum federation, or broader CLI/MCP/scheduled build operations. Those remain
-separate acceptance work and require source and period evidence before
-analytical promotion.
+GDP/Crown-share measures, all source-native Silver projections, the full Gold
+report suite, Platinum federation, or broader CLI/MCP/scheduled build
+operations. Those remain separate acceptance work and require source and period
+evidence before analytical promotion.

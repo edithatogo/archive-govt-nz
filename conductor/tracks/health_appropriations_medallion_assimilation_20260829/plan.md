@@ -666,6 +666,13 @@ integrated parent head.
 - [ ] Generate deterministic plots, structured summaries and consumer examples
   from the same queries; make source drill-through available. [M-09, M-10,
   M-13, S-06; AC-07, AC-08]
+  - [x] Render bounded display-only PNGs from the source-separated canonical
+    historical, appropriation and revenue tables. Use exact source context and
+    discrete source-period/label categories, retain input IDs in the plot
+    report, and report bounded omissions without interpolation. Preserve exact
+    values in Parquet; numeric conversion is only for plot display. See
+    `canonical-source-separated-gold-20260928.md`. Other measures, donor
+    reports, source drill-through and consumer examples remain open.
 
 ### 6.3 Phase review and checkpoint
 
