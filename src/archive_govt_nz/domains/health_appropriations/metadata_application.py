@@ -148,7 +148,11 @@ def _items(
     return items
 
 
-def _rights(document: dict[str, Any], items: list[PublicationItem]) -> list[str]:
+def _rights(
+    document: dict[str, Any],
+    items: list[PublicationItem],
+    evidence: dict[str, bytes],
+) -> tuple[list[str], int]:
     _require(set(document) == {"schema_version", "resources"})
     _require(
         document["schema_version"]
@@ -159,6 +163,7 @@ def _rights(document: dict[str, Any], items: list[PublicationItem]) -> list[str]
     expected = {item.item_path: item.sha256 for item in items}
     seen: set[str] = set()
     states = []
+    evidence_pins: set[str] = set()
     for raw in records:
         _require(type(raw) is dict and set(raw) == _RIGHTS_FIELDS)
         row = cast("dict[str, Any]", raw)
@@ -170,11 +175,17 @@ def _rights(document: dict[str, Any], items: list[PublicationItem]) -> list[str]
         if row["state"] == "eligible_asserted":
             _text(row["license"])
             _pin(row["evidence_sha256"])
+            evidence_pins.add(row["evidence_sha256"])
         else:
             _require(row["license"] is None)
             _require(row["evidence_sha256"] is None)
         states.append(row["state"])
-    return sorted(states)
+    _require(type(evidence) is dict and set(evidence) == evidence_pins)
+    for digest, payload in evidence.items():
+        _require(
+            type(payload) is bytes and hashlib.sha256(payload).hexdigest() == digest
+        )
+    return sorted(states), len(evidence_pins)
 
 
 def _descriptors(manifest: dict[str, Any], items: list[PublicationItem]) -> None:
@@ -227,16 +238,18 @@ def _descriptors(manifest: dict[str, Any], items: list[PublicationItem]) -> None
     )
 
 
-def validate_metadata_application(
+def validate_metadata_application(  # noqa: PLR0913, PLR0917 - exact pinned manifest, payload, and rights inputs
     manifest_payload: bytes,
     manifest_sha256: str,
     payloads: dict[str, bytes],
     rights_payload: bytes,
     rights_sha256: str,
+    rights_evidence: dict[str, bytes],
 ) -> dict[str, Any]:
     """Verify local bytes and assertion consistency, never release eligibility.
 
-    Rights pins bind supplied assertions, not their authority or evidence bytes.
+    Rights pins bind supplied assertions, not their authority. Evidence bytes
+    are independently checked against their asserted SHA256 pins.
     Every payload needs exactly one rights assertion, including derivatives.
     Dataset blanket licensing, dates/actors/access URLs, enabled targets, extra
     graph nodes and richer profiles are deliberately unsupported. Relative
@@ -260,7 +273,7 @@ def validate_metadata_application(
     _require(timestamp.utcoffset() is not None)
     _pin(manifest["bundle_root_sha256"])
     items = _items(manifest, payloads)
-    states = _rights(rights, items)
+    states, evidence_count = _rights(rights, items, rights_evidence)
     _descriptors(manifest, items)
     return {
         "schema_version": "archive-govt-nz.health-metadata-application/v1",
@@ -272,7 +285,8 @@ def validate_metadata_application(
         "payloads_verified": len(items),
         "rights_states": states,
         "rights_validation": "assertion_consistency_only",
-        "rights_evidence_fixity": "not_performed",
+        "rights_evidence_fixity": "verified_supplied_bytes",
+        "rights_evidence_count": evidence_count,
         "publication_approval": "not_granted",
         "release_readiness": "not_assessed",
         "full_conformance": False,

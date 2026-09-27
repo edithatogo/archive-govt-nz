@@ -746,6 +746,11 @@ integrated parent head.
   PROV, estate cards, mixed/per-resource licensing, citations and fail-closed
   release readiness. Include missing, conflicting and incompatible rights
   states. [M-04, M-14, M-17, M-18; AC-04, AC-14, AC-16]
+  - [x] Require exact rights-evidence bytes for each per-resource
+    `eligible_asserted` assertion and verify their SHA256 pins. Reject absent,
+    changed, and unreferenced evidence while keeping authority, eligibility,
+    and release approval unasserted. See
+    `platinum-rights-evidence-fixity-20260928.md`.
 - [ ] Add federation fixtures for namespace, versioned key, mapping method,
   confidence, period and lineage; reject live-runtime or unproven mappings.
   [M-14, M-18; AC-14, AC-16]
