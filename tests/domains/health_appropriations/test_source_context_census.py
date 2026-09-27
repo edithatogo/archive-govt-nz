@@ -17,7 +17,7 @@ TRACK = ROOT / "conductor/tracks/health_appropriations_medallion_assimilation_20
 
 
 def document() -> dict:
-    return json.loads((TRACK / "context-census.json").read_text())
+    return json.loads((TRACK / "context-census.json").read_text(encoding="utf-8"))
 
 
 def test_retained_census_is_deterministic_and_evidence_bound() -> None:
@@ -134,11 +134,15 @@ def test_pinned_selectors_keep_denominator_boundaries() -> None:
     assert "F26:O26" in rows["core-crown-befu-2026"].selector
     assert "F25:O25" in rows["core-crown-hyefu-2025"].selector
     assert "wrong_population_universe" in rows["population-hlfs-rejected"].gaps
-    population = rows["population-national-lead"]
+    population = rows["population-national-annual-mean"]
     assert population.sources == []
-    assert "DPE054AA" in population.series_id
-    assert "DPE054FF" in population.selector
+    assert (
+        "export_is_hash_pinned_in_population_annual_context_not_source_census"
+        in population.gaps
+    )
+    assert "DPE056AA" in population.series_id
+    assert "Total All Ages" in population.selector
     assert "Mean year ended" in population.selector
-    assert "1991Q1" in population.period
-    assert "2026Q2" in population.period
-    assert "numeric_export_not_verified" in population.gaps
+    assert "1991" in population.period
+    assert "2026" in population.period
+    assert "transport_http_warc_receipt_unavailable" in population.gaps

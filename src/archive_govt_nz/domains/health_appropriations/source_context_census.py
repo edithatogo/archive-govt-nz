@@ -82,6 +82,10 @@ class Census(Contract):
         if len(paths) != len(self.evidence):
             msg = "duplicate evidence identity"
             raise ValueError(msg)
+        source_path = f"{TRACK}/source-census.json"
+        if source_path not in paths:
+            msg = "source census evidence missing"
+            raise ValueError(msg)
         if any(not set(row.evidence) <= paths for row in self.series):
             msg = "unknown evidence reference"
             raise ValueError(msg)
@@ -118,10 +122,10 @@ def validate_evidence(census: Census, root: Path) -> None:
     if source_path not in {item.path for item in census.evidence}:
         msg = "source census evidence missing"
         raise ValueError(msg)
-    retained = json.loads((root / source_path).read_text())["records"]
+    retained = json.loads((root / source_path).read_text(encoding="utf-8"))["records"]
     for row in census.series:
         if row.retained_manifest_sha256 is not None and not any(
-            row.retained_manifest_sha256 in (root / path).read_text()
+            row.retained_manifest_sha256 in (root / path).read_text(encoding="utf-8")
             for path in row.evidence
         ):
             message = "retained manifest lacks cited evidence"
