@@ -280,11 +280,12 @@ def test_historical_gold_export_is_dry_run_first_and_repeatable(
     assert receipt_one == receipt_two
     assert receipt_one["cross_source_join"] == "not_performed"
     assert receipt_one["rights_state"] == "not_evaluated"
-    assert {path.name for path in first.iterdir()} == {
+    assert {
         "MANIFEST.json",
         "historical_observations.parquet",
         "historical_coverage.parquet",
-    }
+    }.issubset({path.name for path in first.iterdir()})
+    assert any(path.name.startswith("plot_historical_") for path in first.iterdir())
     assert {
         name: (first / name).read_bytes()
         for name in (path.name for path in first.iterdir())
@@ -360,20 +361,35 @@ def test_canonical_gold_builds_source_separated_facts_and_report(
         == "sum_within_exact_source_labels_and_unit"
     )
     assert receipt["products"]["revenue"]["netting"] == "prohibited"
-    assert {path.name for path in output.iterdir()} == {
+    assert {
         "historical_observations.parquet",
         "historical_coverage.parquet",
         "nominal_budget.parquet",
         "nominal_revenue.parquet",
         "MANIFEST.json",
-    }
+    }.issubset({path.name for path in output.iterdir()})
+    plot_paths = list(output.glob("plot_*.png"))
+    assert any(path.name.startswith("plot_historical_") for path in plot_paths)
+    assert any(path.name.startswith("plot_budget_") for path in plot_paths)
+    assert any(path.name.startswith("plot_revenue_") for path in plot_paths)
     manifest = json.loads((output / "MANIFEST.json").read_text(encoding="utf-8"))
-    assert set(manifest["outputs"]) == {
+    assert {
         "historical_observations.parquet",
         "historical_coverage.parquet",
         "nominal_budget.parquet",
         "nominal_revenue.parquet",
-    }
+    }.issubset(set(manifest["outputs"]))
+    assert manifest["plot_report"]["temporal_interpolation"] == "not_performed"
+    assert manifest["plot_report"]["numeric_conversion"] == "float_for_display_only"
+    assert {
+        item["product"]: item["status"] for item in manifest["plot_report"]["series"]
+    } == {"historical": "rendered", "budget": "rendered", "revenue": "rendered"}
+    assert all(
+        manifest["outputs"][name]["kind"] == "plot_png"
+        and manifest["outputs"][name]["display_only"] is True
+        for name in manifest["outputs"]
+        if name.endswith(".png")
+    )
     assert pq.read_table(output / "nominal_budget.parquet").to_pylist() == (
         query_nominal_budget((budget,))[0].to_pylist()
     )

@@ -17,6 +17,9 @@ from archive_govt_nz.domains.health_appropriations.canonical_consumer import (
     query_nominal_revenue,
     summarize_historical_coverage,
 )
+from archive_govt_nz.domains.health_appropriations.canonical_gold_plots import (
+    build_discrete_plots,
+)
 from archive_govt_nz.domains.health_appropriations.local_provenance_reader import (
     CanonicalPackageInput,
 )
@@ -147,6 +150,14 @@ def _export(
         for filename, key in _TABLES.items()
         if key in tables
     }
+    plot_payloads, plot_report = build_discrete_plots(
+        {
+            filename: tables[key].to_pylist()
+            for filename, key in _TABLES.items()
+            if key in tables
+        }
+    )
+    payloads.update(plot_payloads)
     _require(sum(map(len, payloads.values())) <= MAX_OUTPUT_BYTES)
     outputs = {
         name: {
@@ -155,7 +166,20 @@ def _export(
             "rows": tables[_TABLES[name]].num_rows,
         }
         for name, payload in sorted(payloads.items())
+        if name in _TABLES
     }
+    outputs.update(
+        {
+            name: {
+                "sha256": hashlib.sha256(payload).hexdigest(),
+                "bytes": len(payload),
+                "kind": "plot_png",
+                "display_only": True,
+            }
+            for name, payload in sorted(payloads.items())
+            if name not in _TABLES
+        }
+    )
     receipt = {
         "schema_version": SCHEMA,
         "status": "dry_run" if not write else "complete",
@@ -169,6 +193,7 @@ def _export(
         ),
         "products": product_report,
         "outputs": outputs,
+        "plot_report": plot_report,
         "period_ordering": "tokens_preserved_and_sorted_as_strings",
         "cross_source_join": "not_performed",
         "vintage_pooling": "not_performed",
@@ -189,7 +214,12 @@ def _export(
                 _require(stream.write(payload) == len(payload))
         _require({path.name for path in output.iterdir()} == set(payloads))
         for name, payload in payloads.items():
-            _readback(output / name, payload, tables[_TABLES[name]])
+            table_name = _TABLES.get(name)
+            _readback(
+                output / name,
+                payload,
+                tables[table_name] if table_name is not None else None,
+            )
         with (output / "MANIFEST.json").open("xb") as stream:
             _require(stream.write(marker) == len(marker))
         _readback(output / "MANIFEST.json", marker)
