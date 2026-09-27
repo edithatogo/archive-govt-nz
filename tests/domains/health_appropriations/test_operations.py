@@ -4,7 +4,8 @@ from __future__ import annotations
 
 import hashlib
 import json
-from typing import TYPE_CHECKING
+import re
+from pathlib import Path
 
 import pytest
 
@@ -12,9 +13,6 @@ from archive_govt_nz.domains.health_appropriations.operations import (
     HealthAppropriationsStateError,
     inspect_archive_status,
 )
-
-if TYPE_CHECKING:
-    from pathlib import Path
 
 
 def _write_json(path: Path, value: dict[str, object]) -> None:
@@ -143,6 +141,23 @@ def test_status_rejects_incomplete_capture_as_bronze_ready(tmp_path: Path) -> No
     assert layers["bronze"] is False
 
 
+def test_status_rejects_capture_without_success_terminal_state(tmp_path: Path) -> None:
+    _ready_archive(tmp_path)
+    _write_json(
+        tmp_path / "manifests" / "official-capture-2026-08-29-complete.json",
+        {
+            "schema_version": "capture/v1",
+            "status": "partial",
+            "captured": 73,
+            "selected": 73,
+        },
+    )
+    state = inspect_archive_status(tmp_path)
+    layers = state["layers"]
+    assert isinstance(layers, dict)
+    assert layers["bronze"] is False
+
+
 def test_status_reports_exact_manifest_provenance(tmp_path: Path) -> None:
     _ready_archive(tmp_path)
     state = inspect_archive_status(tmp_path)
@@ -154,3 +169,23 @@ def test_status_reports_exact_manifest_provenance(tmp_path: Path) -> None:
         assert entry["path"].startswith("manifests/") or entry["path"].startswith(
             "candidates/"
         )
+
+
+def test_status_fails_closed_when_manifest_cannot_be_read(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    _ready_archive(tmp_path)
+    original = Path.read_bytes
+
+    def fail_candidate(path: Path) -> bytes:
+        if path.name == "MANIFEST.json":
+            detail = "private path details"
+            raise OSError(detail)
+        return original(path)
+
+    monkeypatch.setattr(Path, "read_bytes", fail_candidate)
+    with pytest.raises(
+        HealthAppropriationsStateError,
+        match=re.escape("invalid_manifest:MANIFEST.json"),
+    ):
+        inspect_archive_status(tmp_path)

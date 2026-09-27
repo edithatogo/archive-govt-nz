@@ -81,6 +81,17 @@ def inspect_archive_status(archive_root: Path) -> dict[str, object]:
     silver = _load_manifest(silver_path)
     gold = _load_manifest(gold_path)
     candidate = _load_manifest(candidate_path)
+    provenance = {
+        name: entry
+        for name, path in (
+            ("donor", donor_path),
+            ("capture", capture_path),
+            ("silver", silver_path),
+            ("gold", gold_path),
+            ("platinum", candidate_path),
+        )
+        if (entry := _manifest_provenance(path, archive_root)) is not None
+    }
 
     captured = _nonnegative_integer(
         capture, "captured", capture_path.name if capture_path else "capture"
@@ -114,7 +125,7 @@ def inspect_archive_status(archive_root: Path) -> dict[str, object]:
             message = f"invalid_manifest:{candidate_path.name}"
             raise HealthAppropriationsStateError(message)
         dataset = dataset_value
-        candidate_sha256 = hashlib.sha256(candidate_path.read_bytes()).hexdigest()
+        candidate_sha256 = provenance["platinum"]["sha256"]
 
     return {
         "archive_root": str(archive_root),
@@ -130,15 +141,5 @@ def inspect_archive_status(archive_root: Path) -> dict[str, object]:
         ),
         "candidate_manifest_sha256": candidate_sha256,
         "dataset": dataset,
-        "manifest_provenance": {
-            name: provenance
-            for name, path in (
-                ("donor", donor_path),
-                ("capture", capture_path),
-                ("silver", silver_path),
-                ("gold", gold_path),
-                ("platinum", candidate_path),
-            )
-            if (provenance := _manifest_provenance(path, archive_root)) is not None
-        },
+        "manifest_provenance": provenance,
     }
