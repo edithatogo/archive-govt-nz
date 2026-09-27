@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive.govt.nz/schemas/health-historical-dispositions-v1.schema.json",
+  "title": "Source-backed historical donor parity dispositions",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "source_workbook_sha256",
+    "donor_database_sha256",
+    "donor_process_script_sha256",
+    "replay_receipt_sha256",
+    "comparison_counts",
+    "disposition",
+    "acceptance_semantics",
+    "repair_approval",
+    "publication_approved",
+    "replacement_values",
+    "disposition_basis_counts",
+    "entries"
+  ],
+  "properties": {
+    "schema_version": {"const": "archive-govt-nz.health-historical-dispositions/v1"},
+    "source_workbook_sha256": {"const": "769f2e7dd6000878cd29c2d913ad6979f28c5391c971292e6abf6148e83eb32d"},
+    "donor_database_sha256": {"const": "a2f9973846e1213823b499e4a019d314485110e80e4ee5a8984ebf3f35c85c8e"},
+    "donor_process_script_sha256": {"const": "0beb01bbf6956f6ed9f5925c73199dc0a67f6022673dba78fded819597d63ed3"},
+    "replay_receipt_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "comparison_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["exact_match", "source_only", "value_difference"],
+      "properties": {
+        "exact_match": {"const": 76},
+        "source_only": {"const": 29},
+        "value_difference": {"const": 1}
+      }
+    },
+    "disposition": {"const": "accepted_retain_both_no_replacement"},
+    "acceptance_semantics": {"type": "string", "minLength": 40},
+    "repair_approval": {"const": "not_asserted"},
+    "publication_approved": {"const": false},
+    "replacement_values": {"type": "null"},
+    "disposition_basis_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "donor_numeric_year_coercion_drops_footnote_marker",
+        "sqlite_real_retains_binary_value_not_decimal_token"
+      ],
+      "properties": {
+        "donor_numeric_year_coercion_drops_footnote_marker": {"const": 29},
+        "sqlite_real_retains_binary_value_not_decimal_token": {"const": 1}
+      }
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 30,
+      "maxItems": 30,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "disposition",
+          "disposition_basis",
+          "donor_value_sha256",
+          "publication_approved",
+          "rationale",
+          "reason",
+          "replacement_value",
+          "resolution",
+          "source_coordinate",
+          "source_object_sha256",
+          "source_record_id",
+          "source_value_sha256",
+          "source_year_label",
+          "status",
+          "test_reference"
+        ],
+        "properties": {
+          "disposition": {"const": "accepted"},
+          "disposition_basis": {
+            "enum": [
+              "donor_numeric_year_coercion_drops_footnote_marker",
+              "sqlite_real_retains_binary_value_not_decimal_token"
+            ]
+          },
+          "donor_value_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "publication_approved": {"const": false},
+          "rationale": {"type": "string", "minLength": 20},
+          "reason": {"enum": ["annotated_year_absent_from_donor", "source_numeric_value_differs_from_donor"]},
+          "replacement_value": {"type": "null"},
+          "resolution": {"const": "retain_both_observations"},
+          "source_coordinate": {"type": "string", "pattern": "^'Spending'!H[1-9][0-9]*$"},
+          "source_object_sha256": {"const": "769f2e7dd6000878cd29c2d913ad6979f28c5391c971292e6abf6148e83eb32d"},
+          "source_record_id": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+          "source_value_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "source_year_label": {"type": "string", "pattern": "^[0-9]{4}[\\u2020*^#]*$"},
+          "status": {"enum": ["source_only", "value_difference"]},
+          "test_reference": {"const": "test_historical_reconciliation.py::test_complete_union_and_explicit_differences"}
+        },
+        "allOf": [
+          {
+            "if": {"properties": {"status": {"const": "source_only"}}},
+            "then": {
+              "properties": {
+                "reason": {"const": "annotated_year_absent_from_donor"},
+                "disposition_basis": {"const": "donor_numeric_year_coercion_drops_footnote_marker"},
+                "source_year_label": {"pattern": "^[0-9]{4}[\\u2020*^#]+$"},
+                "donor_value_sha256": {"const": "dc937b59892604f5a86ac96936cd7ff09e25f18ae6b758e8014a24c7fa039e91"}
+              }
+            }
+          },
+          {
+            "if": {"properties": {"status": {"const": "value_difference"}}},
+            "then": {
+              "properties": {
+                "reason": {"const": "source_numeric_value_differs_from_donor"},
+                "disposition_basis": {"const": "sqlite_real_retains_binary_value_not_decimal_token"},
+                "source_coordinate": {"const": "'Spending'!H9"},
+                "source_year_label": {"const": "1976"},
+                "source_value_sha256": {"const": "b4c001399215101442e7024d902d878f0e68db1d1a1239d38cbb903209cd8149"},
+                "donor_value_sha256": {"const": "dc9d034059eae9e3d9385900bcf28c9874547f8c96155c753acd9d8e7f8505d2"}
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

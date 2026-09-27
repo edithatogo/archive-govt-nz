@@ -2640,3 +2640,34 @@ The required validation harness passed 6,983 tests, 9 skipped, 98.11% branch
 coverage, 48 schemas/38 representative documents, parity 9/9, configured
 mutation/hygiene/supply-chain gates and the strict 113-component SBOM. Focused
 health-domain tests passed 3,599 with 9 skipped.
+
+## Source-backed historical dispositions — 2026-09-27
+
+The 30 historical deviations now have explicitly accepted, non-mutating
+dispositions. All 29 source-only years retain footnote-marked year labels;
+the pinned donor `process_data.py`
+(`0beb01bbf6956f6ed9f5925c73199dc0a67f6022673dba78fded819597d63ed3`)
+coerces year labels with `errors="coerce"`, explaining their omission from its
+SQLite derivative. The one 1976 exact-decimal difference has source token
+`605.70000000000005` and donor scalar `605.7`; both parse to the same binary
+float. The source token and SQLite observation remain distinct. No replacement
+was issued and donor or source bytes were unchanged.
+
+The payload-free receipt
+`donor-historical-dispositions-20260927.json` (SHA-256
+`547d901ec8c4b2a467351d1a69ba6391d728b699ff05013688c3fa4de6a73ea0`) binds
+each entry to source-cell lineage, the pinned transform, and a regression test.
+All 30 dispositions are `accepted` as `retain_both_observations`; replacement
+values are null, repair approval is not asserted, and publication approval is
+false. Replay is deterministic across two runs (replay receipt SHA-256
+`b20b472b361d16d9eca40ca6841ea5609fab23a1924d42491dc8af18e6237012`).
+
+Focused Phase 4 donor, analysis, plot, rebuild, schema-drift and disposition
+contracts passed 276 tests. The required `./scripts/validate.sh` passed 6,988
+tests, 9 skipped, 98.11% branch coverage, 49 schemas/39 representative
+documents, differential parity 9/9, configured mutation/hygiene gates,
+dependency/license/secret scans, and strict 113-component SBOM validation.
+The 23-object/312-row parity and deterministic 12-stage evidence remain
+unchanged. Phase 4.1 broader workbook fixtures and Phase 4.2 complete workbook
+area normalization remain open; these dispositions do not imply completion of
+the 152-sheet structural census or approval to publish.

@@ -1,7 +1,7 @@
 """Replay retained donor parity read-only; print payload-free evidence JSON."""
 
 # Standalone evidence recipe, deliberately linear for auditability.
-# ruff: noqa: INP001, C901, PLR0915
+# ruff: noqa: INP001, C901, PLR0912, PLR0915
 
 from __future__ import annotations
 
@@ -27,6 +27,9 @@ from archive_govt_nz.domains.health_appropriations.historical_reconciliation imp
 DONOR_MANIFEST = "893f387e1f361400285ccc84802b497e87802d1ad913826ff7d9055b07a03b74"
 RAW_MANIFEST = "fb405a2fdbb2809093cb03d62ddbe1fcb1a1f6f91d304666e8ef0964813f73fb"
 GOLD_SQLITE = "515f0eeb579a479f2e65dd112abf2e13879e6ee6d840c8b19d933eccf488c973"
+DONOR_PROCESS_SCRIPT = (
+    "0beb01bbf6956f6ed9f5925c73199dc0a67f6022673dba78fded819597d63ed3"
+)
 LIMIT = 16 * 1024 * 1024
 SHA256_HEX_LENGTH = 64
 
@@ -60,6 +63,7 @@ def replay(root: Path) -> dict[str, Any]:
         raise ValueError(message)
     donor_path = None
     donor_hash = None
+    process_script_verified = False
     for item in manifest["objects"]:
         digest = item["sha256"]
         path = root / "bronze-cas/sha256" / digest[:2] / digest
@@ -69,6 +73,11 @@ def replay(root: Path) -> dict[str, Any]:
             raise ValueError(message)
         if item["path"] == "data/processed/health_funding_nz.sqlite":
             donor_path, donor_hash = path, digest
+        if item["path"] == "process_data.py":
+            process_script_verified = digest == DONOR_PROCESS_SCRIPT
+    if not process_script_verified:
+        message = "replay_process_script_identity"
+        raise ValueError(message)
     if donor_path is None or donor_hash is None:
         message = "replay_missing_donor_database"
         raise ValueError(message)
@@ -153,7 +162,7 @@ def replay(root: Path) -> dict[str, Any]:
     for row in historical_comparison:
         if row["status"] == "exact_match":
             continue
-        deviations.append(block_historical_deviation(row))
+        deviations.append(disposition_historical_deviation(row))
     validate_historical_deviations(deviations)
     for path, pin in list(observed.items()):
         read(path, pin)
@@ -171,6 +180,8 @@ def replay(root: Path) -> dict[str, Any]:
             Counter(row["status"] for row in historical_comparison)
         ),
         "exact_decimal_deviations": deviations,
+        "historical_deviation_dispositions": "accepted_retain_both_no_replacement",
+        "donor_process_script_sha256": DONOR_PROCESS_SCRIPT,
         "binary_representation_flags": sum(
             row["representation_changed"] for row in records
         ),
@@ -180,8 +191,8 @@ def replay(root: Path) -> dict[str, Any]:
     }
 
 
-def block_historical_deviation(row: dict[str, Any]) -> dict[str, Any]:
-    """Record one evidence-bound difference without approving replacement."""
+def disposition_historical_deviation(row: dict[str, Any]) -> dict[str, Any]:
+    """Explain source-only and decimal-representation differences without repair."""
     if (
         row["status"] not in {"source_only", "value_difference"}
         or not isinstance(row["source_object_sha256"], str)
@@ -192,10 +203,39 @@ def block_historical_deviation(row: dict[str, Any]) -> dict[str, Any]:
     ):
         message = "unqualified_historical_deviation"
         raise ValueError(message)
+    if row["status"] == "source_only":
+        label = row.get("source_year_label")
+        if (
+            not isinstance(label, str)
+            or label[-1:] not in {"†", "*", "^", "#"}
+            or row["reason"] != "annotated_year_absent_from_donor"
+            or row["donor_value"] is not None
+        ):
+            message = "unexplained_annotated_source_only_year"
+            raise ValueError(message)
+        basis = "donor_numeric_year_coercion_drops_footnote_marker"
+        rationale = (
+            "The pinned donor transform coerces year labels with errors=coerce; "
+            "the footnote-marked source year is retained separately."
+        )
+    else:
+        try:
+            binary_equal = float(row["source_value"]) == float(row["donor_value"])
+        except TypeError, ValueError, OverflowError:
+            binary_equal = False
+        if not binary_equal:
+            message = "unexplained_historical_numeric_difference"
+            raise ValueError(message)
+        basis = "sqlite_real_retains_binary_value_not_decimal_token"
+        rationale = (
+            "The source decimal token and donor SQLite REAL parse to the same "
+            "binary float; retain the source token and donor scalar separately."
+        )
     return {
-        "disposition": "blocked",
+        "disposition": "accepted",
         "replacement_value": None,
         "publication_approved": False,
+        "disposition_basis": basis,
         **{
             key: row[key]
             for key in (
@@ -205,6 +245,7 @@ def block_historical_deviation(row: dict[str, Any]) -> dict[str, Any]:
                 "source_object_sha256",
                 "source_coordinate",
                 "resolution",
+                "source_year_label",
             )
         },
         "source_value_sha256": hashlib.sha256(
@@ -217,19 +258,24 @@ def block_historical_deviation(row: dict[str, Any]) -> dict[str, Any]:
             "test_historical_reconciliation.py::"
             "test_complete_union_and_explicit_differences"
         ),
-        "rationale": (
-            "Retain exact source and donor observations separately; "
-            "SQLite REAL equality does not prove exact decimal equality."
-        ),
+        "rationale": rationale,
     }
 
 
 def validate_historical_deviations(rows: list[dict[str, Any]]) -> None:
-    """Require the pinned source-vs-donor deviation population."""
+    """Require the evidenced population and non-mutating dispositions."""
     if Counter(row["status"] for row in rows) != Counter(
         {"source_only": 29, "value_difference": 1}
     ):
         message = "historical_deviation_count_mismatch"
+        raise ValueError(message)
+    if any(
+        row["disposition"] != "accepted"
+        or row["replacement_value"] is not None
+        or row["publication_approved"] is not False
+        for row in rows
+    ):
+        message = "historical_deviation_disposition_mismatch"
         raise ValueError(message)
 
 
