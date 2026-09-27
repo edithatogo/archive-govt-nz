@@ -56,6 +56,12 @@ _EXPECTED_VINTAGES = {
     "gdp": "StatsNZ-GDP-2026Q1",
     "population": "2026-08-18",
 }
+_EXPECTED_MANIFESTS = {
+    "cpi": "edb62f4b106948502e717f5f6c5e3da00efc0a64bb10b5dcbafc48cd1a6c257e",
+    "wage": "35114105c86085ee49aeb97ac9f8d8b696ef72692b5eea12d348496a8b920d41",
+    "gdp": "639b3c7da60f2afa1b860c5f6c8f1c4c0ae24bf17aa7af63bf8a06a1f6471b35",
+    "population": "067255c4ac18377312d0a8234dc94804c876ba68866cfba3a483a4dd89415798",
+}
 _EXPECTED_PACKAGE_COUNT = len(_EXPECTED_SOURCES)
 SCHEMA = "archive-govt-nz.health-context-gold/v1"
 OBSERVATION_SCHEMA = pa.schema(
@@ -341,6 +347,7 @@ def _source_native_packages(
             series_id=series,
             source_root=source_root,
         )
+        _require(_marker_digest == _EXPECTED_MANIFESTS[family])
         marker_digests.append(_marker_digest)
         if family == "cpi":
             profile = PRICE_WAGE_PROFILES["cpi"]

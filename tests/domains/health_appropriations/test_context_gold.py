@@ -172,16 +172,19 @@ def synthetic_packages(
                 lineage_path.read_bytes()
             ).hexdigest(),
         }
-        (directory / "MANIFEST.json").write_text(
-            json.dumps(
-                {
-                    "source_object_sha256": digest,
-                    "source_vintage": vintage,
-                    "rights_state": "not_evaluated",
-                    "output_sha256": products,
-                }
-            ),
-            encoding="utf-8",
+        manifest_bytes = json.dumps(
+            {
+                "source_object_sha256": digest,
+                "source_vintage": vintage,
+                "rights_state": "not_evaluated",
+                "output_sha256": products,
+            }
+        ).encode()
+        (directory / "MANIFEST.json").write_bytes(manifest_bytes)
+        monkeypatch.setitem(
+            context_gold._EXPECTED_MANIFESTS,  # noqa: SLF001
+            family,
+            hashlib.sha256(manifest_bytes).hexdigest(),
         )
     return silver, source
 
@@ -448,3 +451,23 @@ def test_package_context_marker_is_bound_to_the_observed_digest(
             series_id="CPIQ.SE9A",
             source_root=source,
         )
+
+
+def test_rewritten_silver_manifest_and_facts_are_rejected(
+    tmp_path: Path,
+    synthetic_packages: tuple[Path, Path],
+) -> None:
+    silver, source = synthetic_packages
+    package = silver / _PINNED_PACKAGES[0]
+    facts_path = package / "cpi_facts.parquet"
+    facts = pq.read_table(facts_path).to_pylist()
+    facts[0]["amount"] = Decimal("999.9")
+    pq.write_table(pa.Table.from_pylist(facts), facts_path)
+    manifest_path = package / "MANIFEST.json"
+    manifest = json.loads(manifest_path.read_text())
+    manifest["output_sha256"]["cpi_facts.parquet"] = hashlib.sha256(
+        facts_path.read_bytes()
+    ).hexdigest()
+    manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+    with pytest.raises(ValueError, match=r"^context_gold_invalid$"):
+        context_gold.export_context_gold(silver, source, tmp_path / "out")

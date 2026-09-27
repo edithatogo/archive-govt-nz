@@ -4,8 +4,10 @@
 Gold product from the exact retained Silver packages for CPIQ.SE9A, QEMQ.SASZ9A,
 Stats NZ current-price GDP and the DPE056AA annual mean-year-ended population
 series. It verifies each source object against Bronze CAS, checks each Silver
-manifest and Parquet hash, validates row lineage and binds source IDs/vintages
-to the reviewed profile constants.
+manifest against its reviewed digest pin and each Parquet file against the
+manifest hash, validates row lineage and binds source IDs/vintages to the
+reviewed profile constants. A coherently rewritten fact file and manifest is
+rejected because its manifest digest no longer matches the reviewed pin.
 
 The two output Parquets contain 554 observation rows and four exact-source
 coverage groups: CPI has 449 rows (422 admitted, 27 excluded missing values);
@@ -23,13 +25,14 @@ new local package requires the explicit `--write` flag.
 
 ## Verification
 
-- Four focused tests pass, including repeat-build byte equality, persisted
-  hashes/readback, status and missing-value exclusion, and tampered evidence
-  rejection.
+- Ten focused tests pass, including repeat-build byte equality, persisted
+  hashes/readback, status and missing-value exclusion, CLI behavior, CAS
+  fixity, and coherently rewritten Silver package rejection. The module has
+  100% line and branch coverage.
 - Ruff and basedpyright pass for changed code; the CLI dry-run returned the
   expected 554 observations, four series, 524 eligible context values and 30
   exclusions.
-- `./scripts/validate.sh` passed: 7,004 tests, 9 skipped, 98.05% branch
+- `./scripts/validate.sh` passed: 7,009 tests, 9 skipped, 98.15% branch
   coverage; 49 schemas/39 documents; parity 9/9; all configured mutation,
   hygiene, benchmark, audit, licence, secret-scan and 113-component SBOM gates.
 - Output remains local validation only; source rights and publication are not
