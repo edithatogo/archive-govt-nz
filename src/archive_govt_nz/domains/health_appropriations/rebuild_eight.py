@@ -34,11 +34,34 @@ if TYPE_CHECKING:
     from pathlib import Path
 
 SCHEMA = "archive-govt-nz.health-raw-rebuild/v2"
-STAGES = (*legacy.PROFILES, "revenue", "befu-detail", "hyefu-detail", "crown")
+STAGES = (
+    *legacy.PROFILES,
+    "revenue",
+    "befu-detail",
+    "hyefu-detail",
+    "befu-chart",
+    "hyefu-allowance",
+    "befu-residual",
+    "hyefu-residual",
+    "crown",
+)
 EXTRA_FILES = {
     "revenue": "b25-revenue-data.xlsx",
     "befu-detail": "befu25-data-expense-tables.xlsx",
     "hyefu-detail": "hyefu24-data-expense-tables.xlsx",
+    "befu-chart": "befu25-charts-data.xlsx",
+    "hyefu-allowance": "hyefu24-charts-data.xlsx",
+    "befu-residual": "befu25-charts-data.xlsx",
+    "hyefu-residual": "hyefu24-charts-data.xlsx",
+}
+EXTRA_VINTAGES = {
+    "revenue": "Budget-2025",
+    "befu-detail": "BEFU-2025",
+    "hyefu-detail": "HYEFU-2024",
+    "befu-chart": "BEFU-2025",
+    "hyefu-allowance": "HYEFU-2024",
+    "befu-residual": "BEFU-2025",
+    "hyefu-residual": "HYEFU-2024",
 }
 MAX_PLAN_BYTES = 4 * 1024 * 1024
 
@@ -124,11 +147,7 @@ def _sources(plan: dict[str, Any], store: Path) -> dict[str, dict[str, Any]]:
                 "sha256": row["sha256"],
                 "object_id": row["object_id"],
                 "locator": locator,
-                "vintage": "Budget-2025"
-                if name == "revenue"
-                else "BEFU-2025"
-                if name == "befu-detail"
-                else "HYEFU-2024",
+                "vintage": EXTRA_VINTAGES[name],
             }
             path = cas.verify(context["object_id"]).path
         if name != "crown":

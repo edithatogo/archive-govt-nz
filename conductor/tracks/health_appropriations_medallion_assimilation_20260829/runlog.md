@@ -2553,3 +2553,47 @@ again: 6,962 tests, 9 skipped, 97.95% branch coverage; 48 schemas and 38
 representative documents; 9/9 parity; configured mutation and hygiene lanes;
 678.59 MB/s CAS throughput; dependency/license/secret checks; strict 113-component
 SBOM validation. The harness exited after its final successful SBOM receipt.
+
+## 2026-09-27 — Integrate all selected donor workbook profiles
+
+Extended the opt-in raw rebuild to dispatch the existing hash-pinned BEFU chart,
+HYEFU allowance, BEFU Health residual and HYEFU Health residual literal
+admissions. Each selection is persisted through the existing literal package
+writer with exact cell lineage, source hash, and adapter-scoped preserved or
+formula exclusions. Unqualified chart tables remain preserved-only; no formula
+cache, period, currency, expenditure equivalence, rights or publication claim is
+inferred. Added clean-room plan routing tests for all four profiles.
+
+Updated the pinned-source replay to verify the retained candidate manifest and
+source-census receipt before a two-build 12-stage run. Both runs passed the
+existing per-stage schema, lineage, source and hash validation and matched all
+50 output files byte-for-byte. The stages contain 739 observations: 341 from
+the four original donor row-oracle sources, plus 398 additional observations
+including revenue, detailed expense areas, selected chart literals and Crown
+series. The retained replay JSON SHA-256 is
+`4dcbe5af6d029a7270b6f52c4d0c7cbc3daa2584aa6db613ad74ff08431f018c`.
+
+The separate donor replay reverified all 23 objects (6,604,301 bytes) and 29
+comparison inputs before and after running. All 312 donor SQLite rows matched
+the donor-derived Gold product. Historical source comparison remains 76 exact
+matches, 29 source-only annotated years and one exact-decimal difference; all
+30 deviations retain source coordinates, hashed values, reasons and test
+references. They remain blocked, replacement values remain null, and publication
+approval remains false. No historical value was replaced.
+
+The replay recipe now fails closed unless the full deviation population is 29
+source-only rows plus one value difference and every row has its source object
+hash, coordinate and reason. Each returned row explicitly records `blocked`, a
+null replacement and false publication approval. The repeated payload-free
+replay JSON SHA-256 is
+`61422058ccd75bb5be8f10aea16f8df38f13216769efea756be752bc838ec645`.
+
+The full health-appropriations domain suite passed 3,579 tests with 9 skipped.
+Ruff, formatting and basedpyright passed for the changed code, test and replay
+recipe. Required `./scripts/validate.sh` passed 6,963 tests, 9 skipped and
+97.95% branch coverage; 48 schemas/38 representative documents; differential
+parity 9/9; all configured mutation and hygiene checks; dependency/license/
+secret scans; and strict 113-component SBOM validation. CAS streaming benchmark
+was 624.83 MB/s. The evidence-recipe assertions were tightened and the required
+harness rerun on the final tree; all gates again reached successful completion.
+Exact-head hosted Actions and PR disposition follow this runlog update.

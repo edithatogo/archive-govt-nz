@@ -1,7 +1,7 @@
 """Replay retained donor parity read-only; print payload-free evidence JSON."""
 
 # Standalone evidence recipe, deliberately linear for auditability.
-# ruff: noqa: INP001, C901, PLR0915
+# ruff: noqa: INP001, C901, PLR0912, PLR0915
 
 from __future__ import annotations
 
@@ -152,17 +152,30 @@ def replay(root: Path) -> dict[str, Any]:
     for row in historical_comparison:
         if row["status"] == "exact_match":
             continue
+        if (
+            row["status"] not in {"source_only", "value_difference"}
+            or not row["source_object_sha256"]
+            or not row["source_coordinate"]
+            or not row["reason"]
+        ):
+            message = "unqualified_historical_deviation"
+            raise ValueError(message)
         deviations.append(
             {
-                key: row[key]
-                for key in (
-                    "status",
-                    "reason",
-                    "source_record_id",
-                    "source_object_sha256",
-                    "source_coordinate",
-                    "resolution",
-                )
+                "disposition": "blocked",
+                "replacement_value": None,
+                "publication_approved": False,
+                **{
+                    key: row[key]
+                    for key in (
+                        "status",
+                        "reason",
+                        "source_record_id",
+                        "source_object_sha256",
+                        "source_coordinate",
+                        "resolution",
+                    )
+                },
             }
             | {
                 "source_value_sha256": hashlib.sha256(
@@ -181,6 +194,11 @@ def replay(root: Path) -> dict[str, Any]:
                 ),
             }
         )
+    if Counter(row["status"] for row in deviations) != Counter(
+        {"source_only": 29, "value_difference": 1}
+    ):
+        message = "historical_deviation_count_mismatch"
+        raise ValueError(message)
     for path, pin in list(observed.items()):
         read(path, pin)
     return {

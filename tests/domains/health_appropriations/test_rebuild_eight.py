@@ -279,8 +279,31 @@ def test_profiles_are_explicit_and_legacy_unchanged() -> None:
         "revenue",
         "befu-detail",
         "hyefu-detail",
+        "befu-chart",
+        "hyefu-allowance",
+        "befu-residual",
+        "hyefu-residual",
         "crown",
     }
+
+
+def test_chart_area_profiles_are_pinned_to_their_source_vintage(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """All admitted BEFU/HYEFU chart selections enter the clean-room plan."""
+    plan, store = inputs(tmp_path, monkeypatch)
+    sources = rebuild_eight._sources(plan, store)
+    expected = {
+        "befu-chart": ("data/raw/befu25-charts-data.xlsx", "BEFU-2025"),
+        "befu-residual": ("data/raw/befu25-charts-data.xlsx", "BEFU-2025"),
+        "hyefu-allowance": ("data/raw/hyefu24-charts-data.xlsx", "HYEFU-2024"),
+        "hyefu-residual": ("data/raw/hyefu24-charts-data.xlsx", "HYEFU-2024"),
+    }
+    assert set(expected) <= set(sources)
+    for name, (locator, vintage) in expected.items():
+        assert sources[name]["locator"] == locator
+        assert sources[name]["vintage"] == vintage
+        assert sources[name]["path"].read_bytes() == Path(locator).name.encode()
 
 
 @pytest.mark.parametrize(

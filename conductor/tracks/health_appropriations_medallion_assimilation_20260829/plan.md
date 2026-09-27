@@ -442,11 +442,20 @@ integrated parent head.
 
 ### 4.4 Phase review and checkpoint
 
-- [ ] Run the 23-file, 312-row, four-analysis-family and six-plot parity suites,
+- [x] Run the 23-file, 312-row, four-analysis-family and six-plot parity suites,
   plus deterministic rebuild and unsupported-layout tests. [M-01, M-08,
-  M-09, M-16; AC-01, AC-06, AC-07, AC-12]
-- [ ] Self-review, full harness, and paired evidence; no parity claim may hide
-  an unexplained difference. [M-18, M-19; AC-16]
+  M-09, M-16; AC-01, AC-06, AC-07, AC-12] (2026-09-27: 23 donor objects /
+  6,604,301 bytes and 29 comparison inputs reverified; five-table/312-row
+  oracle, historical ledger and the complete health-appropriations domain
+  suite passed. Twelve-stage Bronze replay rebuilt 739 observations into 50
+  files in two byte-identical clean runs. The 30 historical deviations remain
+  source-backed, blocked and unapproved; no replacements were made.)
+- [x] Self-review, full harness, and paired evidence; no parity claim may hide
+  an unexplained difference. [M-18, M-19; AC-16] (2026-09-27: required
+  `./scripts/validate.sh` passed 6,963 tests / 9 skipped at 97.95% branch
+  coverage; 48 schemas, 38 representative documents, differential parity 9/9,
+  all configured mutation/hygiene and supply-chain gates, and strict 113-part
+  SBOM. Exact residual historical differences remain visibly unresolved.)
 
 ## Phase 5 — Longitudinal Silver expansion and contextual data
 
