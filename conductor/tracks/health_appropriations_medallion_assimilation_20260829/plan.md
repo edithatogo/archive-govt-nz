@@ -642,6 +642,13 @@ integrated parent head.
 - [ ] Build versioned Parquet dimensions/facts and DuckDB views for the
   approved analytical measures, retaining input record IDs and formula
   metadata. [M-10, M-13; AC-08, AC-10]
+  - [x] Add a dry-run-first local Gold observation mart and exact-context
+    coverage report for verified historical packages. Preserve source record
+    IDs and period tokens, verify readback and repeat-build bytes, and keep
+    rights/publication unasserted; no cross-source or vintage join. [M-10,
+    M-13, M-18; AC-08, AC-09, AC-11, AC-16] See
+    `canonical-historical-gold-20260928.md`. Remaining analytical measures and
+    source families are still open.
 - [ ] Build coverage, completeness, reconciliation, source-health,
   classification-drift and revision reports with defined thresholds. [M-13,
   S-04; AC-11]
