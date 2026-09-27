@@ -56,6 +56,50 @@ HISTORICAL_NOMINAL_SCHEMA = pa.schema(
         b"query": b"historical_nominal_source_observations",
     },
 )
+HISTORICAL_OBSERVATION_SCHEMA = pa.schema(
+    [
+        ("source_vintage", pa.string(), False),
+        ("recordset", pa.string(), False),
+        ("period_token", pa.string(), False),
+        ("measure", pa.string(), False),
+        ("unit", pa.string(), False),
+        ("currency", pa.string(), True),
+        ("price_basis", pa.string(), True),
+        ("base_period", pa.string(), True),
+        ("denominator_definition", pa.string(), True),
+        ("institutional_coverage", pa.string(), True),
+        ("accounting_basis", pa.string(), True),
+        ("amount", pa.decimal128(38, 18), False),
+        ("source_label", pa.string(), False),
+        ("source_locator", pa.string(), False),
+        ("input_record_id", pa.string(), False),
+        ("formula_policy", pa.string(), False),
+    ],
+    metadata={
+        b"schema_version": b"archive-govt-nz.health-canonical-consumer/v1",
+        b"query": b"historical_observation_identity_mart",
+    },
+)
+HISTORICAL_COVERAGE_SCHEMA = pa.schema(
+    [
+        ("source_vintage", pa.string(), False),
+        ("recordset", pa.string(), False),
+        ("measure", pa.string(), False),
+        ("unit", pa.string(), False),
+        ("currency", pa.string(), True),
+        ("price_basis", pa.string(), True),
+        ("base_period", pa.string(), True),
+        ("denominator_definition", pa.string(), True),
+        ("observation_count", pa.int64(), False),
+        ("period_tokens", pa.list_(pa.field("element", pa.string())), False),
+        ("input_record_ids", pa.list_(pa.field("element", pa.string())), False),
+        ("formula_policy", pa.string(), False),
+    ],
+    metadata={
+        b"schema_version": b"archive-govt-nz.health-canonical-consumer/v1",
+        b"query": b"historical_source_coverage_by_exact_context",
+    },
+)
 NOMINAL_REVENUE_SCHEMA = pa.schema(
     [
         ("source_vintage", pa.string(), False),
@@ -110,6 +154,35 @@ SELECT
     'identity_projection_no_cross_source_aggregation/v1' AS formula_policy
 FROM canonical_historical
 ORDER BY source_vintage, period_token, source_label, record_id
+"""
+_HISTORICAL_OBSERVATION_QUERY = """
+SELECT source_vintage, 'health_spending_fact' AS recordset, period_token,
+       measure, unit, currency, price_basis, base_period,
+       denominator_definition, institutional_coverage, accounting_basis,
+       amount, source_label, source_locator, record_id AS input_record_id,
+       'identity_projection_no_cross_source_aggregation/v1' AS formula_policy
+FROM canonical_health
+UNION ALL
+SELECT source_vintage, 'fiscal_context_fact' AS recordset, period_token,
+       measure, unit, currency, price_basis, base_period,
+       denominator_definition, institutional_coverage, accounting_basis,
+       amount, source_label, source_locator, record_id AS input_record_id,
+       'identity_projection_no_cross_source_aggregation/v1' AS formula_policy
+FROM canonical_context
+ORDER BY source_vintage, recordset, period_token, measure, source_label,
+         input_record_id
+"""
+_HISTORICAL_COVERAGE_QUERY = """
+SELECT source_vintage, recordset, measure, unit, currency, price_basis,
+       base_period, denominator_definition,
+       count(*)::BIGINT AS observation_count,
+       list_sort(list_distinct(list(period_token))) AS period_tokens,
+       list(input_record_id ORDER BY input_record_id) AS input_record_ids,
+       'exact_context_coverage_no_cross_source_join/v1' AS formula_policy
+FROM historical_observations
+GROUP BY ALL
+ORDER BY source_vintage, recordset, measure, unit, currency, price_basis,
+         base_period, denominator_definition
 """
 _REVENUE_QUERY = """
 SELECT
@@ -271,6 +344,140 @@ def query_historical_nominal(
     ):
         message = "canonical_consumer_invalid"
         raise ValueError(message) from None
+
+
+def query_historical_observations(
+    packages: Sequence[CanonicalPackageInput],
+) -> tuple[pa.Table, dict[str, Any]]:
+    """Expose health and fiscal-context facts without joining or pooling them."""
+    try:
+        _require(isinstance(packages, tuple) and 0 < len(packages) <= MAX_PACKAGES)
+        health_tables = []
+        context_tables = []
+        receipts = []
+        for package in packages:
+            _require(package.kind == "historical")
+            canonical, receipt = read_verified_canonical_tables(package)
+            health = canonical["health_spending_fact"]
+            context = canonical["fiscal_context_fact"]
+            _require(
+                health.schema.equals(
+                    recordset_schema("health_spending_fact"), check_metadata=True
+                )
+                and context.schema.equals(
+                    recordset_schema("fiscal_context_fact"), check_metadata=True
+                )
+            )
+            health_tables.append(health)
+            context_tables.append(context)
+            receipts.append(receipt)
+        vintages = [receipt["vintage"] for receipt in receipts]
+        _require(len(vintages) == len(set(vintages)))
+        health = pa.concat_tables(health_tables)
+        context = pa.concat_tables(context_tables)
+        source_ids = [
+            row["record_id"] for table in (health, context) for row in table.to_pylist()
+        ]
+        _require(len(source_ids) == len(set(source_ids)))
+        _require(
+            all(
+                isinstance(row["amount"], Decimal)
+                and row["period_token"]
+                and row["measure"]
+                and row["unit"]
+                and row["source_label"]
+                and row["source_locator"]
+                for table in (health, context)
+                for row in table.to_pylist()
+            )
+        )
+        with closing(duckdb.connect(":memory:")) as database:
+            database.register("canonical_health", health)
+            database.register("canonical_context", context)
+            observations = (
+                database.execute(_HISTORICAL_OBSERVATION_QUERY)
+                .to_arrow_table()
+                .cast(HISTORICAL_OBSERVATION_SCHEMA)
+            )
+        observed_ids = sorted(observations["input_record_id"].to_pylist())
+        _require(observed_ids == sorted(source_ids))
+        coverage = summarize_historical_coverage(observations)
+        return observations, {
+            "schema_version": "archive-govt-nz.health-canonical-consumer/v1",
+            "status": "verified_local_query",
+            "query": "historical_observation_identity_mart",
+            "package_marker_sha256": sorted(
+                receipt["marker_sha256"] for receipt in receipts
+            ),
+            "input_records": len(source_ids),
+            "output_rows": observations.num_rows,
+            "coverage_rows": coverage.num_rows,
+            "cross_source_join": "not_performed",
+            "vintage_pooling": "not_performed",
+            "rights_state": "not_evaluated",
+            "publication": "not_performed",
+        }
+    except (
+        duckdb.Error,
+        OSError,
+        ValueError,
+        TypeError,
+        KeyError,
+        AttributeError,
+        pa.ArrowException,
+    ):
+        message = "canonical_consumer_invalid"
+        raise ValueError(message) from None
+
+
+def summarize_historical_coverage(
+    observations: pa.Table,
+) -> pa.Table:
+    """Report period coverage while keeping exact measures and bases separate."""
+    try:
+        _require(
+            isinstance(observations, pa.Table)
+            and observations.schema.equals(
+                HISTORICAL_OBSERVATION_SCHEMA, check_metadata=True
+            )
+            and observations.num_rows > 0
+        )
+        rows = observations.to_pylist()
+        ids = [row["input_record_id"] for row in rows]
+        _require(
+            len(ids) == len(set(ids))
+            and all(
+                row["period_token"]
+                and row["source_vintage"]
+                and row["measure"]
+                and row["unit"]
+                for row in rows
+            )
+        )
+        with closing(duckdb.connect(":memory:")) as database:
+            database.register("historical_observations", observations)
+            result = database.execute(_HISTORICAL_COVERAGE_QUERY).to_arrow_table()
+        result = result.cast(HISTORICAL_COVERAGE_SCHEMA)
+        _require(
+            sorted(
+                item
+                for group in result["input_record_ids"].to_pylist()
+                for item in group
+            )
+            == sorted(ids)
+        )
+    except (
+        duckdb.Error,
+        ValueError,
+        TypeError,
+        KeyError,
+        AttributeError,
+        pa.ArrowException,
+    ):
+        message = "canonical_consumer_invalid"
+        raise ValueError(message) from None
+    else:
+        return result
 
 
 def query_nominal_revenue(
