@@ -286,6 +286,31 @@ def test_unreferenced_rights_evidence_rejected() -> None:
         check(manifest, payloads, rights, {digest: evidence})
 
 
+def test_rights_evidence_individual_and_total_limits(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    manifest, payloads, rights = fixture()
+    evidence = b"bounded evidence"
+    digest = hashlib.sha256(evidence).hexdigest()
+    rights["resources"][0].update(
+        state="eligible_asserted",
+        license="CC0-1.0",
+        evidence_sha256=digest,
+    )
+    with monkeypatch.context() as patch:
+        patch.setattr(app, "MAX_PAYLOAD", len(evidence) - 1)
+        with pytest.raises(ValueError, match="metadata_application_contract"):
+            check(manifest, payloads, rights, {digest: evidence})
+    with monkeypatch.context() as patch:
+        patch.setattr(app, "MAX_TOTAL", len(evidence) - 1)
+        with pytest.raises(ValueError, match="metadata_application_contract"):
+            check(manifest, payloads, rights, {digest: evidence})
+    assert (
+        check(manifest, payloads, rights, {digest: evidence})["rights_evidence_count"]
+        == 1
+    )
+
+
 @pytest.mark.parametrize(
     "raw",
     [

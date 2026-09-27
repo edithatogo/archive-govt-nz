@@ -181,10 +181,12 @@ def _rights(
             _require(row["evidence_sha256"] is None)
         states.append(row["state"])
     _require(type(evidence) is dict and set(evidence) == evidence_pins)
+    evidence_bytes = 0
     for digest, payload in evidence.items():
-        _require(
-            type(payload) is bytes and hashlib.sha256(payload).hexdigest() == digest
-        )
+        _require(type(payload) is bytes and len(payload) <= MAX_PAYLOAD)
+        evidence_bytes += len(payload)
+        _require(evidence_bytes <= MAX_TOTAL)
+        _require(hashlib.sha256(payload).hexdigest() == digest)
     return sorted(states), len(evidence_pins)
 
 
