@@ -26,6 +26,7 @@ _MEDIA_TYPES = frozenset(
     {
         "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
         "text/csv",
+        "text/html",
         "application/pdf",
         "application/vnd.sqlite3",
     }
@@ -92,18 +93,13 @@ class DispatchResult:
 def _detect(payload: bytes, declared: str) -> str | None:
     detected: str | None = None
     if payload.startswith(b"PK\x03\x04"):
-        try:
-            inventory_workbook(BytesIO(payload))
-        except BadZipFile, OSError, ValueError, KeyError, TypeError, EOFError:
-            detected = None
-        else:
-            detected = (
-                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-            )
+        detected = _detect_workbook(payload)
     elif payload.startswith(b"%PDF-"):
         detected = "application/pdf"
     elif payload.startswith(_SQLITE):
         detected = "application/vnd.sqlite3"
+    elif declared == "text/html":
+        detected = _detect_html(payload)
     elif declared == "text/csv":
         try:
             text = payload.decode("utf-8-sig", errors="strict")
@@ -113,6 +109,22 @@ def _detect(payload: bytes, declared: str) -> str | None:
             if "\x00" not in text:
                 detected = "text/csv"
     return detected
+
+
+def _detect_workbook(payload: bytes) -> str | None:
+    try:
+        inventory_workbook(BytesIO(payload))
+    except BadZipFile, OSError, ValueError, KeyError, TypeError, EOFError:
+        return None
+    return "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+
+
+def _detect_html(payload: bytes) -> str | None:
+    try:
+        text = payload.decode("utf-8", errors="strict")
+    except UnicodeDecodeError:
+        return None
+    return "text/html" if "\x00" not in text and "<html" in text.lower() else None
 
 
 def _validate_inputs(

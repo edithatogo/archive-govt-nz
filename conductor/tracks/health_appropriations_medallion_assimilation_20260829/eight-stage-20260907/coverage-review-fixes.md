@@ -52,3 +52,12 @@ This validates the nested/area corrections against actual admissions, not the
 separately pending Crown receipt join. Rights remain not_evaluated and Gold
 selection not_performed. Parent integrated full gate and independent review
 remain external to this focused result.
+
+
+## 2026-09-27 twelve-stage refresh
+
+The expanded replay now includes BEFU chart (86), HYEFU allowance (16), BEFU
+residual (1) and HYEFU residual (5) profiles in addition to revenue (69),
+BEFU detail (80), HYEFU detail (80) and Crown (61). Two clean-room builds
+reproduced all 50 files byte-for-byte; the eight added stages contain 398
+observations. The refreshed payload-free receipt is `orchestration-replay.json`.

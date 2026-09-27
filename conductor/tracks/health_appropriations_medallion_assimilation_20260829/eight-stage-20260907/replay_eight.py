@@ -1,4 +1,4 @@
-"""Two retained-source eight-stage builds and non-mutating pinned verification."""
+"""Two retained-source builds and non-mutating pinned verification."""
 
 # ruff: noqa: INP001
 import hashlib
@@ -13,16 +13,29 @@ from archive_govt_nz.domains.health_appropriations.rebuild_eight import (
     verify_eight,
 )
 
+CANDIDATE_MANIFEST = "9a33babda857b0aa7c60a6012000cf1e730fed729781cb8ceb6e7a4714cae40e"
+CROWN_RECEIPT = "4bea6001b0a1af4a362075508c521befe5bd6e04d20b2dd2f7c23ef8c6256964"
+
 
 def replay(archive: Path, root: Path) -> dict[str, object]:
-    """Verify all files agree and all additional observations are accounted."""
+    """Verify all outputs agree and all twelve extraction stages are accounted."""
     donor = archive / "manifests/donor-4668e6c.json"
+    source_census = archive / "candidates/2026-08-29-v4/metadata/source-census.json"
+    candidate_manifest = archive / "candidates/2026-08-29-v4/MANIFEST.json"
+    if (
+        hashlib.sha256(candidate_manifest.read_bytes()).hexdigest()
+        != CANDIDATE_MANIFEST
+    ):
+        message = "eight_stage_candidate_manifest_fixity"
+        raise ValueError(message)
     plan = plan_eight(
         donor,
         archive / "bronze-cas",
         hashlib.sha256(donor.read_bytes()).hexdigest(),
         "2026-08-30T08:58:00+00:00",
         SOURCE_SHA256,
+        crown_receipt=source_census,
+        crown_receipt_sha256=CROWN_RECEIPT,
     )
     receipts, files = [], []
     for name in ("first", "second"):
@@ -46,10 +59,17 @@ def replay(archive: Path, root: Path) -> dict[str, object]:
         message = "eight_stage_nondeterministic"
         raise ValueError(message)
     counts = {r["stage"]: r["facts"] for r in receipts[0]["coverage"]}
-    if {
-        name: counts[name]
-        for name in ("revenue", "befu-detail", "hyefu-detail", "crown")
-    } != {"revenue": 69, "befu-detail": 80, "hyefu-detail": 80, "crown": 61}:
+    expected = {
+        "revenue": 69,
+        "befu-detail": 80,
+        "hyefu-detail": 80,
+        "befu-chart": 86,
+        "hyefu-allowance": 16,
+        "befu-residual": 1,
+        "hyefu-residual": 5,
+        "crown": 61,
+    }
+    if {name: counts[name] for name in expected} != expected:
         message = "additional_record_count_mismatch"
         raise ValueError(message)
     return {
@@ -57,7 +77,7 @@ def replay(archive: Path, root: Path) -> dict[str, object]:
         "output_root": str(root),
         "builds_identical": True,
         "counts": counts,
-        "additional_observations": 290,
+        "additional_observations": sum(expected.values()),
         "files": files[0],
         "rights_state": "not_evaluated",
         "gold_selection": "not_performed",

@@ -2505,3 +2505,138 @@ combined main base: 6,908 tests, 9 skipped, 98.08% branch coverage, 48 schemas,
 38 representative documents, parity 9/9, all configured mutation/hygiene and
 supply-chain checks, 657.66 MB/s CAS throughput, and strict SBOM validation
 with 113 components.
+
+## 2026-09-27 — Add context adapters, unresolved mappings and drift contracts
+
+Connected exact CPIQ.SE9A, DPE056AA annual mean population, QES Table 8 and GDP
+Table 1 source layouts to explicit common-dispatch registrations. Adapter outputs
+now include deterministic source-literal dimension assertions and row/cell links;
+targets remain unresolved and no denominator, deflator, currency, or crosswalk
+is inferred. Added stable Arrow schema/layout fingerprints and deterministic
+added/removed/changed drift reports. Added an exact two-build manifest and
+Parquet byte-identity contract for the population annual context normalizer.
+
+Focused adapter, registry, mapping, drift, source census and repeat-build checks
+pass (114 tests); Bronze stream/capture/resume contracts pass (179 tests). Ruff
+and basedpyright pass. The full repository validation harness is running after
+this integrated source change. Pharmac HTML, Vote Health PDF, SQLite and further
+Treasury adapters, source-specific captured drift baselines, repeat builds for
+every adapter, rights qualification and evidence-backed crosswalks remain open.
+
+The integrated full validation completed successfully: `./scripts/validate.sh`
+passed 6,959 tests with 9 skipped and 97.98% branch coverage; 48 schemas and
+38 representative documents validated; differential parity passed 9/9; all
+configured mutation and hygiene lanes passed; CAS streaming benchmark was
+658.61 MB/s; dependency audit, licence inventory, secret scan and strict
+113-component SBOM validation passed. The shell session closed immediately after
+the final SBOM receipt, but the harness emitted successful strict validation
+and returned no reported gate failure.
+
+## 2026-09-27 — Register the exact Pharmac CPB HTML profile
+
+Added `text/html` signature detection and an explicit common-dispatch adapter for
+only the reviewed Pharmac Combined Pharmaceutical Budget profile updated
+2026-08-07. It reuses the bounded table parser, retains published budget values,
+source-cell/context lineage and padding dispositions, checks the Bronze digest,
+and returns preserved-only for layout drift. Synthetic exact-layout, changed
+layout, and media-type contracts pass with the dispatch and registry suite (30
+passed); Ruff and basedpyright pass. Vote Health PDF, SQLite and other HTML pages
+remain unsupported and are explicitly not treated as inferred layouts.
+
+The focused Pharmac adapter, existing parser, registry and common-dispatch
+regression suite passes 99 tests, with Ruff and basedpyright green. The adapter
+is the only `text/html` production registration; the detector requires strict
+UTF-8, no NUL bytes and an HTML root marker before the exact table probe runs.
+
+After adding the Pharmac dispatch adapter, the required full validation passed
+again: 6,962 tests, 9 skipped, 97.95% branch coverage; 48 schemas and 38
+representative documents; 9/9 parity; configured mutation and hygiene lanes;
+678.59 MB/s CAS throughput; dependency/license/secret checks; strict 113-component
+SBOM validation. The harness exited after its final successful SBOM receipt.
+
+## 2026-09-27 — Integrate all selected donor workbook profiles
+
+Extended the opt-in raw rebuild to dispatch the existing hash-pinned BEFU chart,
+HYEFU allowance, BEFU Health residual and HYEFU Health residual literal
+admissions. Each selection is persisted through the existing literal package
+writer with exact cell lineage, source hash, and adapter-scoped preserved or
+formula exclusions. Unqualified chart tables remain preserved-only; no formula
+cache, period, currency, expenditure equivalence, rights or publication claim is
+inferred. Added clean-room plan routing tests for all four profiles.
+
+Updated the pinned-source replay to verify the retained candidate manifest and
+source-census receipt before a two-build 12-stage run. Both runs passed the
+existing per-stage schema, lineage, source and hash validation and matched all
+50 output files byte-for-byte. The stages contain 739 observations: 341 from
+the four original donor row-oracle sources, plus 398 additional observations
+including revenue, detailed expense areas, selected chart literals and Crown
+series. The retained replay JSON SHA-256 is
+`4dcbe5af6d029a7270b6f52c4d0c7cbc3daa2584aa6db613ad74ff08431f018c`.
+
+The separate donor replay reverified all 23 objects (6,604,301 bytes) and 29
+comparison inputs before and after running. All 312 donor SQLite rows matched
+the donor-derived Gold product. Historical source comparison remains 76 exact
+matches, 29 source-only annotated years and one exact-decimal difference; all
+30 deviations retain source coordinates, hashed values, reasons and test
+references. They remain blocked, replacement values remain null, and publication
+approval remains false. No historical value was replaced.
+
+The replay recipe now fails closed unless the full deviation population is 29
+source-only rows plus one value difference and every row has its source object
+hash, coordinate and reason. Each returned row explicitly records `blocked`, a
+null replacement and false publication approval. The repeated payload-free
+replay JSON SHA-256 is
+`61422058ccd75bb5be8f10aea16f8df38f13216769efea756be752bc838ec645`.
+
+The full health-appropriations domain suite passed 3,579 tests with 9 skipped.
+Ruff, formatting and basedpyright passed for the changed code, test and replay
+recipe. Required `./scripts/validate.sh` passed 6,963 tests, 9 skipped and
+97.95% branch coverage; 48 schemas/38 representative documents; differential
+parity 9/9; all configured mutation and hygiene checks; dependency/license/
+secret scans; and strict 113-component SBOM validation. CAS streaming benchmark
+was 624.83 MB/s. The evidence-recipe assertions were tightened and the required
+harness rerun on the final tree; all gates again reached successful completion.
+Exact-head hosted Actions and PR disposition follow this runlog update.
+
+The follow-up edge-contract coverage adds malformed payload, wrong-vintage,
+unsupported-layout, selection ambiguity, optional Pharmac registration, blank
+dimension, and invalid fingerprint cases for the new adapter paths. Focused
+tests pass (87); changed adapter/dispatch/dimension/drift modules reach 99%
+branch coverage. The final required harness passed 6,979 tests, 9 skipped,
+98.08% repository branch coverage, 48 schemas/38 representative documents,
+parity 9/9, all configured mutation and hygiene gates, a 704.82 MB/s CAS
+benchmark, dependency and license audits, secret scan, and strict SBOM
+validation with 113 components.
+
+The final read-only donor replay again verified 23 source objects / 6,604,301
+bytes and exact parity for all 312 donor rows. Historical comparison remains
+76 exact, 29 source-only and one value difference. All 30 deviations retain
+source-backed evidence and are explicitly blocked; replacement values are
+null and publication approval is false. The payload-free replay receipt hash
+is `61422058ccd75bb5be8f10aea16f8df38f13216769efea756be752bc838ec645`.
+The selected-profile Phase 4.4 parity run also completed: 12 stages replayed
+twice into 50 byte-identical files with 739 observations; the eight added
+stages contribute 398 observations. Analysis, historical-analysis, donor,
+plot-contract, plot-export and Gold rebuild/six-plot parity tests passed (140).
+The final required `./scripts/validate.sh` passed 6,982 tests, 9 skipped,
+98.12% repository branch coverage, 48 schemas/38 representative documents,
+parity 9/9, configured mutation and hygiene gates, dependency/license/secret
+scans, and strict 113-component SBOM validation. Targeted QES and schema-drift
+tests passed 43 cases and brought both modules to 100% branch coverage.
+
+This completes the 23-file/312-row donor oracle and selected-profile parity
+assurance, not semantic normalization of every workbook area or unqualified
+chart/PDF extraction. The 30 historical deviations still require accountable,
+source-backed dispositions; all remain blocked with null replacements and no
+publication approval. No source values were silently replaced.
+
+Follow-up provenance contracts align QES series, quarter and unit dimensions
+with cited workbook cells, restrict population dimension links to the source
+year cell, and make CPI layout selection require a valid exact-series row and
+metadata. The context census and its dependent source-measure evidence pin were
+refreshed after the QES extractor change. Regression tests cover missing and
+drifted CPI series, QES source-linked dimensions and population year lineage.
+The required validation harness passed 6,983 tests, 9 skipped, 98.11% branch
+coverage, 48 schemas/38 representative documents, parity 9/9, configured
+mutation/hygiene/supply-chain gates and the strict 113-component SBOM. Focused
+health-domain tests passed 3,599 with 9 skipped.

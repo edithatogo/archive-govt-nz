@@ -302,18 +302,25 @@ integrated parent head.
   bounded XLSX preflight, ambiguity rejection and `preserved_only` fallback.
   The common dispatch boundary now records considered/matched adapter IDs and
   uses bounded layout probes to select between the named-column Budget Health
-  expenditure and edition-bound revenue profiles. Production CSV, PDF-table,
-  SQLite and remaining source-specific workbook registrations that emit typed
-  records/loss accounting/field lineage remain open. See
+  expenditure and edition-bound revenue profiles. Production registrations
+  now also cover exact CPIQ.SE9A CSV, DPE056AA annual population CSV, QES Table 8
+  earnings workbook, and GDP Table 1 workbook. These emit typed records, loss
+  accounting and source lineage through the same hash-bound dispatcher;
+  CPI/population/vintage boundaries remain explicit. Four context adapters
+  additionally emit unresolved literal dimension assertions and source-row
+  links. Common dispatch coverage for other source-operation profiles,
+  Pharmac CPB HTML is now supported through its exact-profile adapter;
+  Vote Health PDF tables and SQLite remain open. See
   `adapter-dispatch.validation.json`, `budget-adapter.validation.json`, and
-  `budget-revenue-adapter.validation.json`. [M-05, M-07; AC-03, AC-05]
+  `budget-revenue-adapter.validation.json` and
+  `context-adapters.validation.json`. [M-05, M-07; AC-03, AC-05]
 - [~] Implement stable dimension and mapping contracts for vote,
   appropriation, department, portfolio, amount type, functional/economic
   classification, measure, unit and period. The Budget expenditure adapter now
   emits source-literal assertions and field links for its observed labels,
   period token, amount header and adapter measure rule; all mapping targets stay
-  unresolved. Economic classification, other source families, evidence-backed
-  crosswalks, confidence and effective periods remain open. See
+  unresolved. Economic classification, evidence-backed crosswalks, confidence
+  and effective periods remain open. See
   `budget-source-dimensions.validation.json`. [M-06; AC-05, AC-11]
 
 ### 3.3 Determinism and drift hardening
@@ -333,12 +340,18 @@ integrated parent head.
   their established fail-closed parser errors and write no package. Other
   adapter manifests remain pending. [M-05, M-07, M-10, M-16; AC-03, AC-05,
   AC-08, AC-12]
-- [ ] Add schema fingerprints, adapter selection evidence, deterministic
+- [~] Add schema fingerprints, adapter selection evidence, deterministic
   ordering/serialization, source-layout drift reports and fail-closed unknown
-  layout handling. [M-05, M-07, M-18, S-04; AC-03, AC-05, AC-16]
+  layout handling. Dispatch selection and source-family Arrow schema/layout
+  fingerprint comparison now have deterministic contracts; per-source captured
+  layout baselines and integrated drift receipts remain open. See
+  `context-adapters.md` and its validation receipt. [M-05, M-07, M-18, S-04;
+  AC-03, AC-05, AC-16]
 - [ ] Demonstrate repeat normalization yields identical manifests and Parquet
   content identity for the same inputs/environment. [M-10, M-16; AC-08,
-  AC-12]
+  AC-12] The annual population context normalizer now has an exact two-build
+  manifest and Parquet byte-identity contract; repeat-build integration across
+  all registered adapters remains open.
 
 ### 3.4 Phase review and checkpoint
 
@@ -429,11 +442,20 @@ integrated parent head.
 
 ### 4.4 Phase review and checkpoint
 
-- [ ] Run the 23-file, 312-row, four-analysis-family and six-plot parity suites,
+- [x] Run the 23-file, 312-row, four-analysis-family and six-plot parity suites,
   plus deterministic rebuild and unsupported-layout tests. [M-01, M-08,
-  M-09, M-16; AC-01, AC-06, AC-07, AC-12]
-- [ ] Self-review, full harness, and paired evidence; no parity claim may hide
-  an unexplained difference. [M-18, M-19; AC-16]
+  M-09, M-16; AC-01, AC-06, AC-07, AC-12] (2026-09-27: 23 donor objects /
+  6,604,301 bytes and 29 comparison inputs reverified; five-table/312-row
+  oracle, historical ledger and the complete health-appropriations domain
+  suite passed. Twelve-stage Bronze replay rebuilt 739 observations into 50
+  files in two byte-identical clean runs. The 30 historical deviations remain
+  source-backed, blocked and unapproved; no replacements were made.)
+- [x] Self-review, full harness, and paired evidence; no parity claim may hide
+  an unexplained difference. [M-18, M-19; AC-16] (2026-09-27: required
+  `./scripts/validate.sh` passed 6,963 tests / 9 skipped at 97.95% branch
+  coverage; 48 schemas, 38 representative documents, differential parity 9/9,
+  all configured mutation/hygiene and supply-chain gates, and strict 113-part
+  SBOM. Exact residual historical differences remain visibly unresolved.)
 
 ## Phase 5 — Longitudinal Silver expansion and contextual data
 

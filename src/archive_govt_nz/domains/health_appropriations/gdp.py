@@ -262,6 +262,20 @@ def _extract(
     return facts, lineage, dispositions
 
 
+def inspect_bronze_payload(
+    payload: bytes, context: dict[str, Any]
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]], list[dict[str, Any]]]:
+    """Expose the bounded GDP workbook profile to the Bronze adapter boundary."""
+    _require(0 < len(payload) <= MAX_BYTES)
+    inventory_workbook(BytesIO(payload))
+    tokens = _number_tokens(payload)
+    book = load_workbook(BytesIO(payload), data_only=False, keep_links=True)
+    try:
+        return _extract(book, tokens, context)
+    finally:
+        book.close()
+
+
 def normalize_gdp(  # noqa: PLR0913 - explicit provenance and safe dry-run contract
     source: Path,
     output_dir: Path,

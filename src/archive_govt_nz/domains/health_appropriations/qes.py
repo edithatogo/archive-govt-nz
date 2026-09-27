@@ -31,6 +31,10 @@ if TYPE_CHECKING:
 
 MAX_BYTES = 1024 * 1024
 MAX_FIELD = 4096
+_SOURCE_BYTE_ERROR = "qes_source_byte_limit"
+_MISSING_SHEET_ERROR = "qes_missing_sheet"
+_RELEASE_ERROR = "qes_release_contract"
+_FIELD_LIMIT_ERROR = "qes_field_limit"
 TRANSFORMATION = "qes-june2026-table8-ordinary-hourly/v1"
 RELEASE_TITLE = "Quarterly Employment Survey: June 2026 quarter"
 HEADERS = MappingProxyType(
@@ -172,6 +176,15 @@ def _extract(
         }
         raw = {key: sheet[cell].value for key, cell in fields.items()}
         raw["amount"] = token
+        raw["series_id"] = {
+            "series_ref": sheet["A8"].value,
+            "code": sheet["P8"].value,
+        }
+        raw["period_token"] = {
+            "year": raw_year,
+            "quarter": sheet[f"C{row}"].value,
+        }
+        raw["unit_label"] = sheet["A10"].value
         facts.append(
             {
                 **context,
@@ -182,6 +195,7 @@ def _extract(
                 "schema_version": "archive-govt-nz.qes-earnings/v1",
                 "recordset": "published_earnings_fact",
                 "series_id": "QEMQ.SASZ9A",
+                "period_token": f"{year:04d}.{month:02d}",
                 "measure": "Average hourly earnings",
                 "sector": "Total",
                 "currency": None,
@@ -217,6 +231,34 @@ def _extract(
                     "rule": "literal_qes_source_context",
                 }
             )
+        for field, coordinate, raw_value, normalized_value in (
+            (
+                "series_id",
+                "'Table 8'!A8+'Table 8'!P8",
+                encode_json(raw["series_id"]),
+                "QEMQ.SASZ9A",
+            ),
+            (
+                "period_token",
+                f"'Table 8'!A{row}+'Table 8'!C{row}",
+                encode_json(raw["period_token"]),
+                f"{year:04d}.{month:02d}",
+            ),
+            ("unit_label", "'Table 8'!A10", encode_json(raw["unit_label"]), "($)"),
+        ):
+            lineage.append(
+                {
+                    "lineage_id": identity(record, field),
+                    "record_id": record,
+                    "field": field,
+                    "source_object_sha256": context["source_object_sha256"],
+                    "source_locator": context["source_locator"],
+                    "source_coordinate": coordinate,
+                    "raw_value": raw_value,
+                    "normalized_value": encode_json(normalized_value),
+                    "rule": TRANSFORMATION,
+                }
+            )
         lineage.extend(
             {
                 "lineage_id": identity(record, "period_end", coordinate),
@@ -234,6 +276,41 @@ def _extract(
             for coordinate in (f"A{year_row}", f"C{row}")
         )
     return facts, lineage, selected
+
+
+def inspect_bronze_payload(
+    payload: bytes, context: dict[str, Any]
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]], list[dict[str, Any]]]:
+    """Expose the bounded QES profile to the common Bronze adapter boundary."""
+    if not 0 < len(payload) <= MAX_BYTES:
+        raise ValueError(_SOURCE_BYTE_ERROR)
+    inventory_workbook(BytesIO(payload))
+    tokens = _number_tokens(payload)
+    workbook = load_workbook(BytesIO(payload), data_only=False)
+    try:
+        if "Table 8" not in workbook.sheetnames:
+            raise ValueError(_MISSING_SHEET_ERROR)
+        if (
+            "Contents" not in workbook.sheetnames
+            or workbook["Contents"]["A1"].value != RELEASE_TITLE
+        ):
+            raise ValueError(_RELEASE_ERROR)
+        for sheet in workbook:
+            if any(len(str(cell.value)) > MAX_FIELD for row in sheet for cell in row):
+                raise ValueError(_FIELD_LIMIT_ERROR)
+        facts, lineage, selected = _extract(
+            workbook["Table 8"], tokens["Table 8"], context
+        )
+        dispositions = [
+            entry
+            for sheet in workbook
+            for entry in _dispositions(
+                sheet, tokens, selected, context["source_object_sha256"]
+            )
+        ]
+        return facts, lineage, dispositions
+    finally:
+        workbook.close()
 
 
 def _dispositions(

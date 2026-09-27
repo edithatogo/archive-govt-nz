@@ -48,6 +48,8 @@ every planned record set, measure or operational workflow.
 - [Named-column Budget workbook dispatch adapter validation](./budget-adapter.validation.json)
 - [Budget revenue workbook dispatch adapter validation](./budget-revenue-adapter.validation.json)
 - [Budget source-literal dimensions and unresolved mapping validation](./budget-source-dimensions.validation.json)
+- [Context-source Bronze adapters](./context-adapters.md)
+- [Context-source adapter validation](./context-adapters.validation.json)
 - [Historical package snapshot verification](./historical-snapshot.md)
 - [Hash-bound embedded-notice observations](./embedded-notices.md)
 - [Standalone Budget-package operations](./budget-operations.md)

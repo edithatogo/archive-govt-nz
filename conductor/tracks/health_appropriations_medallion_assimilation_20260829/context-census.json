@@ -376,15 +376,15 @@
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-schema-gaps.md"
     },
     {
-      "sha256": "ee92ff2149af279a240268afdbfd62a484c1ab984021d806d7d4c6b4f59cc699",
+      "sha256": "563e4d49606d8461831db82b82b05e25e7821fb5fd8ddfa8ef23fa80b2876a87",
       "path": "src/archive_govt_nz/domains/health_appropriations/cpi.py"
     },
     {
-      "sha256": "e75c3d4c4c70fd6c39991779dd88c77720fca2a833cd5f9abbf05da9771a8286",
+      "sha256": "b82a867ab6b17b58c22097d400adf15858a648cfedbd136dfe30bc995dda24dc",
       "path": "src/archive_govt_nz/domains/health_appropriations/qes.py"
     },
     {
-      "sha256": "b40dfe53cfac816a48a96e8a19aba9a8cebb643e2c0e7013b0f7ca13e59899d8",
+      "sha256": "ee202c8a236fd700236e6dc0b277bfe26a9065ab55deebafdfa2043b57592033",
       "path": "src/archive_govt_nz/domains/health_appropriations/gdp.py"
     },
     {

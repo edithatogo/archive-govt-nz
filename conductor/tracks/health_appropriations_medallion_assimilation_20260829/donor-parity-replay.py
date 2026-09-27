@@ -28,6 +28,7 @@ DONOR_MANIFEST = "893f387e1f361400285ccc84802b497e87802d1ad913826ff7d9055b07a03b
 RAW_MANIFEST = "fb405a2fdbb2809093cb03d62ddbe1fcb1a1f6f91d304666e8ef0964813f73fb"
 GOLD_SQLITE = "515f0eeb579a479f2e65dd112abf2e13879e6ee6d840c8b19d933eccf488c973"
 LIMIT = 16 * 1024 * 1024
+SHA256_HEX_LENGTH = 64
 
 
 def replay(root: Path) -> dict[str, Any]:
@@ -152,35 +153,8 @@ def replay(root: Path) -> dict[str, Any]:
     for row in historical_comparison:
         if row["status"] == "exact_match":
             continue
-        deviations.append(
-            {
-                key: row[key]
-                for key in (
-                    "status",
-                    "reason",
-                    "source_record_id",
-                    "source_object_sha256",
-                    "source_coordinate",
-                    "resolution",
-                )
-            }
-            | {
-                "source_value_sha256": hashlib.sha256(
-                    str(row["source_value"]).encode()
-                ).hexdigest(),
-                "donor_value_sha256": hashlib.sha256(
-                    str(row["donor_value"]).encode()
-                ).hexdigest(),
-                "test_reference": (
-                    "test_historical_reconciliation.py::"
-                    "test_complete_union_and_explicit_differences"
-                ),
-                "rationale": (
-                    "Retain exact source and donor observations separately; "
-                    "SQLite REAL equality does not prove exact decimal equality."
-                ),
-            }
-        )
+        deviations.append(block_historical_deviation(row))
+    validate_historical_deviations(deviations)
     for path, pin in list(observed.items()):
         read(path, pin)
     return {
@@ -204,6 +178,59 @@ def replay(root: Path) -> dict[str, Any]:
         "publication_state": "no_action",
         "repair_approval": "not_asserted",
     }
+
+
+def block_historical_deviation(row: dict[str, Any]) -> dict[str, Any]:
+    """Record one evidence-bound difference without approving replacement."""
+    if (
+        row["status"] not in {"source_only", "value_difference"}
+        or not isinstance(row["source_object_sha256"], str)
+        or len(row["source_object_sha256"]) != SHA256_HEX_LENGTH
+        or not isinstance(row["source_coordinate"], str)
+        or not row["source_coordinate"]
+        or not row["reason"]
+    ):
+        message = "unqualified_historical_deviation"
+        raise ValueError(message)
+    return {
+        "disposition": "blocked",
+        "replacement_value": None,
+        "publication_approved": False,
+        **{
+            key: row[key]
+            for key in (
+                "status",
+                "reason",
+                "source_record_id",
+                "source_object_sha256",
+                "source_coordinate",
+                "resolution",
+            )
+        },
+        "source_value_sha256": hashlib.sha256(
+            str(row["source_value"]).encode()
+        ).hexdigest(),
+        "donor_value_sha256": hashlib.sha256(
+            str(row["donor_value"]).encode()
+        ).hexdigest(),
+        "test_reference": (
+            "test_historical_reconciliation.py::"
+            "test_complete_union_and_explicit_differences"
+        ),
+        "rationale": (
+            "Retain exact source and donor observations separately; "
+            "SQLite REAL equality does not prove exact decimal equality."
+        ),
+    }
+
+
+def validate_historical_deviations(rows: list[dict[str, Any]]) -> None:
+    """Require the pinned source-vs-donor deviation population."""
+    if Counter(row["status"] for row in rows) != Counter(
+        {"source_only": 29, "value_difference": 1}
+    ):
+        message = "historical_deviation_count_mismatch"
+        raise ValueError(message)
 
 
 if __name__ == "__main__":

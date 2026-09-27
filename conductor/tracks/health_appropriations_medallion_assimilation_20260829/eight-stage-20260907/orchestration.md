@@ -60,7 +60,7 @@ authenticity against coordinated rewriting of every artifact/pin. In particular,
 the verifier does not rerun a second semantic extraction from source bytes.
 Original source-specific replay evidence remains authoritative for extraction
 semantics. Rights stay `not_evaluated`; Gold selection/publication stay
-`not_performed`. The 290 additional observations are not a financial sum.
+`not_performed`. The 398 additional observations across the eight added stages are not a financial sum.
 
 ## TDD and focused validation
 
