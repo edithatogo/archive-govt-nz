@@ -37,3 +37,8 @@ def test_fingerprint_comparison_is_deterministic_and_fail_closed() -> None:
     assert compare_fingerprints(left, left)["status"] == "matching"
     with pytest.raises(ValueError, match="invalid_fingerprint_snapshot"):
         compare_fingerprints({"a": "bad"}, {})
+
+
+def test_schema_fingerprint_rejects_non_arrow_schema() -> None:
+    with pytest.raises(TypeError, match="arrow_schema_required"):
+        schema_fingerprint("not a schema")  # type: ignore[arg-type]

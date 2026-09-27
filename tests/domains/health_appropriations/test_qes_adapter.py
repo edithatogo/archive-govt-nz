@@ -6,6 +6,7 @@ import hashlib
 from pathlib import Path
 
 import pytest
+from openpyxl import Workbook, load_workbook
 from tests.domains.health_appropriations.test_qes import fixture
 
 from archive_govt_nz.domains.health_appropriations.adapter_dispatch import (
@@ -75,3 +76,40 @@ def test_qes_adapter_hash_invalid_workbook_and_vintage(tmp_path: Path) -> None:
         b"invalid", source_sha256=hashlib.sha256(b"invalid").hexdigest()
     )
     assert output.losses[0].reason == "unsupported_qes_workbook_layout"
+
+
+def test_qes_probe_rejects_empty_payload_and_missing_required_sheets(
+    tmp_path: Path,
+) -> None:
+    adapter = QesAdapter("source", "QES-2026-Q2", "now")
+    assert not adapter.matches_layout(b"")
+
+    source = tmp_path / "missing-table.xlsx"
+    book = Workbook()
+    sheet = book.active
+    assert sheet is not None
+    sheet.title = "Contents"
+    book["Contents"]["A1"] = "Quarterly Employment Survey: June 2026 quarter"
+    book.save(source)
+    book.close()
+    assert not adapter.matches_layout(source.read_bytes())
+
+    source = tmp_path / "missing-contents.xlsx"
+    fixture(source)
+    book = load_workbook(source)
+    del book["Contents"]
+    book.save(source)
+    book.close()
+    assert not adapter.matches_layout(source.read_bytes())
+
+
+def test_qes_probe_rejects_oversized_cell_text(tmp_path: Path) -> None:
+    source = tmp_path / "oversized-cell.xlsx"
+    fixture(source)
+    book = load_workbook(source)
+    book["Table 8"]["Z1"] = "x" * 4097
+    book.save(source)
+    book.close()
+    assert not QesAdapter("source", "QES-2026-Q2", "now").matches_layout(
+        source.read_bytes()
+    )

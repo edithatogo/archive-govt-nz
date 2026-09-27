@@ -2614,7 +2614,18 @@ bytes and exact parity for all 312 donor rows. Historical comparison remains
 source-backed evidence and are explicitly blocked; replacement values are
 null and publication approval is false. The payload-free replay receipt hash
 is `61422058ccd75bb5be8f10aea16f8df38f13216769efea756be752bc838ec645`.
-This completes selected-profile and oracle assurance only: Phase 4.4's full
-23-workbook normalization and four-analysis/six-plot integrated parity suite,
-other unqualified areas and accountable disposition of the 30 differences
-remain open. No source values were silently replaced.
+The selected-profile Phase 4.4 parity run also completed: 12 stages replayed
+twice into 50 byte-identical files with 739 observations; the eight added
+stages contribute 398 observations. Analysis, historical-analysis, donor,
+plot-contract, plot-export and Gold rebuild/six-plot parity tests passed (140).
+The final required `./scripts/validate.sh` passed 6,982 tests, 9 skipped,
+98.12% repository branch coverage, 48 schemas/38 representative documents,
+parity 9/9, configured mutation and hygiene gates, dependency/license/secret
+scans, and strict 113-component SBOM validation. Targeted QES and schema-drift
+tests passed 43 cases and brought both modules to 100% branch coverage.
+
+This completes the 23-file/312-row donor oracle and selected-profile parity
+assurance, not semantic normalization of every workbook area or unqualified
+chart/PDF extraction. The 30 historical deviations still require accountable,
+source-backed dispositions; all remain blocked with null replacements and no
+publication approval. No source values were silently replaced.
