@@ -17,7 +17,7 @@ TRACK = ROOT / "conductor/tracks/health_appropriations_medallion_assimilation_20
 
 
 def document() -> dict:
-    return json.loads((TRACK / "context-census.json").read_text())
+    return json.loads((TRACK / "context-census.json").read_text(encoding="utf-8"))
 
 
 def test_retained_census_is_deterministic_and_evidence_bound() -> None:
