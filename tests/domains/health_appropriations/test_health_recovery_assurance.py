@@ -6,6 +6,8 @@ import importlib.util
 from pathlib import Path
 from typing import TYPE_CHECKING
 
+import pytest
+
 if TYPE_CHECKING:
     from _pytest.monkeypatch import MonkeyPatch
 
@@ -23,6 +25,17 @@ def test_digest_and_tree_are_content_based(tmp_path: Path) -> None:
     (source / "a").write_bytes(b"bronze")
     expected = MODULE.digest(source / "a")
     assert MODULE.tree(source) == {"a": {"bytes": 6, "sha256": expected}}
+
+
+def test_repeat_build_mismatch_fails_closed(tmp_path: Path) -> None:
+    first = tmp_path / "first"
+    second = tmp_path / "second"
+    first.mkdir()
+    second.mkdir()
+    (first / "MANIFEST.json").write_bytes(b"first")
+    (second / "MANIFEST.json").write_bytes(b"second")
+    with pytest.raises(RuntimeError, match=r"^canonical_gold_repeat_mismatch$"):
+        MODULE.compare_product_outputs(first, second, "canonical_gold")
 
 
 def test_clean_room_rebuilds_supported_products_and_reports_blockers(

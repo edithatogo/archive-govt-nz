@@ -76,6 +76,15 @@ def tree(root: Path) -> dict[str, dict[str, Any]]:
     }
 
 
+def compare_product_outputs(first: Path, second: Path, product: str) -> dict[str, Any]:
+    """Return first-run pins only when a second clean build matches exactly."""
+    first_files = tree(first)
+    if first_files != tree(second):
+        message = f"{product}_repeat_mismatch"
+        raise RuntimeError(message)
+    return first_files
+
+
 def canonical_inputs() -> tuple[CanonicalPackageInput, ...]:
     """Assemble the two independently pinned historical canonical packages."""
     historical = (
@@ -211,22 +220,24 @@ def run() -> dict[str, Any]:  # noqa: PLR0915 - explicit staged recovery receipt
         cas_objects = ARCHIVE / "bronze-cas" / "sha256"
         export_context_gold(silver, cas_objects, context_one, write=True)
         export_context_gold(silver, cas_objects, context_two, write=True)
+        context_files = compare_product_outputs(
+            context_one, context_two, "context_gold"
+        )
         outputs["context_gold"] = {
-            "files": tree(context_one),
-            "repeat_identical": tree(context_one) == tree(context_two),
+            "files": context_files,
+            "repeat_identical": True,
         }
-        if not outputs["context_gold"]["repeat_identical"]:
-            message = "context_gold_repeat_mismatch"
-            raise RuntimeError(message)
         canonical = canonical_inputs()
         if canonical:
             for index in (1, 2):
                 target = root / f"canonical-{index}"
                 export_canonical_gold(canonical, target, write=True)
+            canonical_files = compare_product_outputs(
+                root / "canonical-1", root / "canonical-2", "canonical_gold"
+            )
             outputs["canonical_gold"] = {
-                "files": tree(root / "canonical-1"),
-                "repeat_identical": tree(root / "canonical-1")
-                == tree(root / "canonical-2"),
+                "files": canonical_files,
+                "repeat_identical": True,
             }
         else:
             outputs["canonical_gold"] = {

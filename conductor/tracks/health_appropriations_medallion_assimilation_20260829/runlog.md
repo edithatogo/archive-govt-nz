@@ -2796,12 +2796,17 @@ are unchanged. The receipt `clean-room-recovery-20260929.json` remains
 `partial_with_blockers`: donor/canonical reports, all source-native Silver
 families and complete validated Platinum metadata are still open.
 
-Focused contract tests pass (2); Ruff, formatting and basedpyright pass. Full
-`./scripts/validate.sh` passed 7,114 tests, 9 skipped, 98.19% branch coverage,
-52 schemas/42 representative documents, parity 9/9 and all configured mutation,
-hygiene, dependency, licence, secret and SBOM gates. Automatic Conductor
-`phase_7_gates` review passed format, lint, schema, targeted tests and mutation;
-receipt SHA-256
-`e60a64cf9b26c6a03c7668e2a286336f24829fe15eede0d47f084c851f096aea`. SQLite byte equality is asserted only within one runtime;
-prior evidence documents the header bytes that vary across runtime versions.
-Rights remain `not_evaluated`; publication remains `not_performed`.
+Review follow-up: repeated Context Gold and historical canonical Gold builds now
+fail closed on any differing file inventory or digest; a negative contract test
+proves the mismatch path raises. Focused recovery tests pass (3), as do Ruff and
+basedpyright. The required `./scripts/validate.sh` passed 7,115 tests, 9
+skipped, 52 schemas/42 representative documents, parity 9/9, all configured
+mutation and supply-chain gates, including the 113-component SBOM. Automatic
+Conductor `phase_7_gates` review passed format, lint, schema, targeted tests and
+mutation; its current receipt SHA-256 is
+`6bf102b5ad3603503008bc950c39610001badcc28338e55be3be38111d1b2ac5`. The
+committed recovery receipt SHA-256 remains
+`b052b188d6c1b08692ce349844043af6ed4bfcbc848bee10e5515239636fc28d`. SQLite
+byte equality is asserted only within one runtime; prior evidence documents
+the header bytes that vary across runtime versions. Rights remain
+`not_evaluated`; publication remains `not_performed`.
