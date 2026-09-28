@@ -18,6 +18,10 @@ evaluate rights, select a denominator, or claim publication.
 
 ## Validation
 
-- Focused Context Gold builder/verifier tests: 15 passed.
+- Focused Context Gold builder/verifier tests: 15 passed; verifier module
+  failure-path suite: 18 passed with 100% branch-aware coverage.
 - Ruff and basedpyright: passed.
-- Full local `./scripts/validate.sh` and hosted exact-head checks are pending.
+- `./scripts/validate.sh`: passed locally on `e7d6ab5`; 7,092 passed, 9
+  skipped, 98.18% branch coverage; 52 schemas/42 representative documents;
+  parity 9/9; mutation, benchmark, vulnerability, licence, secret, and SBOM
+  checks passed. Hosted exact-head assurance is pending.
