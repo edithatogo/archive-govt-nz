@@ -111,6 +111,15 @@ def test_clean_room_rebuilds_supported_products_and_reports_blockers(
         }
 
     monkeypatch.setattr(MODULE, "rebuild_eight_stage", fake_eight_stage)
+    monkeypatch.setattr(
+        MODULE,
+        "_rebuild_pharmac_canonical",
+        lambda _root, _index: {
+            "source_object_sha256": "a" * 64,
+            "canonical_fact_sha256": "facts",
+            "canonical_lineage_sha256": "lineage",
+        },
+    )
 
     def fake_context(
         _silver_root: Path, _source_root: Path, output: Path, *, write: bool = False
@@ -149,6 +158,10 @@ def test_clean_room_rebuilds_supported_products_and_reports_blockers(
     assert result["bronze_objects_unchanged"] is True
     assert result["products_rebuilt"]["canonical_gold"]["status"] == "blocked"
     assert result["products_rebuilt"]["context_gold"]["repeat_identical"] is True
+    assert (
+        result["products_rebuilt"]["pharmac_canonical_projection"]["repeat_identical"]
+        is True
+    )
     assert (
         result["products_rebuilt"]["canonical_context_consumer"]["status"]
         == "verified_read_only_projection"

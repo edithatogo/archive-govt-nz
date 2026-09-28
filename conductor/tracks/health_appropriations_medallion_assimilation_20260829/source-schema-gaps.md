@@ -19,7 +19,7 @@ rights clearance or current remote publication state.
 | QES | June2026 Table8 QEMQ.SASZ9A ordinary-time average hourly earnings, total sector;9quarters and180lineage rows retained in a source-specific package; PR#298 merged | ISOcurrency, sex and adjustment metadata not inferred; deflator selection and annual alignment remain pending |
 | Stats NZ GDP | March2026 current-price income/expenditure workbook captured; exact60quarter expenditure observations retained; PR#302 merged | Fiscal aggregation and canonical projection; Treasury GDP stays separate |
 | Ministry Vote Health | Two HAIR2024 indicator CSVs captured and source-specific pilot extracted | Unit/base/method metadata; independent real/per-capita reproduction |
-| Pharmac CPB |14published budget-allocation observations,186lineage records and64table-cell dispositions retained; PR#295 merged | Not actual expenditure; caption lag, missing2014amount and2022scope change remain explicit; canonical projection and comparison policy pending |
+| Pharmac CPB |14published budget-allocation observations,186lineage records and64table-cell dispositions retained; source-faithful `pharmaceutical_budget_fact` projection added | Not actual expenditure; caption lag, missing2014amount and2022scope change remain explicit; comparison policy, cross-source scopes and rights remain pending |
 | CPI | CPIQ.SE9A source-specific extraction | Base-metadata provenance join and derived-period policy |
 | Population | HLFS working-age workbook captured | Suitable national all-age resident original export; HLFS is not that denominator |
 | Treasury Vote Health | 66landing/discovery records and58captured PDFs | Table normalization and semantic alignment across editions |

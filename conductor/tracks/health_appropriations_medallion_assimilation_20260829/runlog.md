@@ -2870,3 +2870,34 @@ Automatic Conductor `phase_7_gates` review passed; receipt SHA-256
 Recovery still reports `partial_with_blockers`: donor/canonical reports,
 additional source profiles/adapters, and complete Platinum validation remain
 open. Rights remain `not_evaluated`; publication remains `not_performed`.
+
+## 2026-09-29 — Project Pharmac CPB allocations into canonical Silver
+
+Added a source-faithful `pharmaceutical_budget_fact` projection for the retained
+Pharmac Combined Pharmaceutical Budget table. The projection pins and rechecks
+the extraction manifest, verifies the original HTML through its Bronze CAS
+hash, reruns the reviewed parser and extractor, and rejects any mismatch in the
+three retained source products before producing canonical facts and direct
+field lineage. It preserves the 14 published budget allocations, source amount
+precision, financial-year tokens and periods, source labels and explicit
+quality flags. The 2022-07-01 funding-scope cutover is recorded as a derived
+policy field with its own lineage rule. Actual expenditure, a price basis,
+published-change recomputation, rights clearance and publication are not
+asserted. The original Silver and Bronze files are read-only inputs.
+
+The clean-room recovery runner now rebuilds Pharmac Silver twice from the
+pinned Bronze object and projects both results. Both runs matched exactly:
+14 canonical facts, 112 canonical field-lineage rows and all 64 source-cell
+dispositions. Bronze fixity remained unchanged. The full payload-free receipt
+is `pharmac-canonical-recovery-20260929.json` (SHA-256
+`9eaf54ed3050b38eef289784d773b2136867f2456390856c2a4b358002676a53`). It
+continues to report `partial_with_blockers`: donor/canonical reports, other
+source adapters and complete Platinum validation remain outstanding.
+
+Focused Pharmac, projection and recovery tests pass (77); Ruff and basedpyright
+pass. Required `./scripts/validate.sh` passes 7,127 tests, 9 skipped and 98.21%
+branch coverage; 52 schemas/42 representative documents; parity 9/9; all
+configured mutation and hygiene gates; dependency/license/secret scans; and
+strict 113-component SBOM validation. The automatic Conductor `phase_7_gates`
+review passed; receipt SHA-256 begins `1868e60e3859d674` (full digest is in the
+local build receipt).
