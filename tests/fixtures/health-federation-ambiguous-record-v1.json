@@ -1,0 +1,24 @@
+{
+  "schema_version": "archive-govt-nz.health-federation-record/v1",
+  "record_id": "fixture:health/medicines/ambiguous",
+  "observation_mode": "offline_fixture",
+  "disposition": "ambiguous",
+  "source": {
+    "namespace": "urn:archive-govt-nz:vote-health",
+    "scheme_version": "vote-health/v1",
+    "key": "fixture:appropriation-001"
+  },
+  "target": {
+    "namespace": "urn:reimbursement-atlas:product",
+    "scheme_version": "reimbursement-product/2026-01",
+    "key": null
+  },
+  "mapping": {"method": "none", "confidence": null},
+  "period": {"start": "2024", "end": "2026", "basis": "source-edition-year"},
+  "lineage": {
+    "source_manifest_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "source_record_ids": ["fixture:source:appropriation-001"],
+    "target_manifest_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "target_record_ids": ["fixture:target:candidate-a", "fixture:target:candidate-b"]
+  }
+}

@@ -98,6 +98,17 @@ VALIDATION_PAIRS = (
         / "health-discovery-heartbeat-sample-v1.json",
     ),
     (
+        REPOSITORY_ROOT / "schemas" / "health-federation-record-v1.schema.json",
+        REPOSITORY_ROOT / "tests" / "fixtures" / "health-federation-record-v1.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "health-federation-record-v1.schema.json",
+        REPOSITORY_ROOT
+        / "tests"
+        / "fixtures"
+        / "health-federation-ambiguous-record-v1.json",
+    ),
+    (
         REPOSITORY_ROOT / "schemas" / "health-raw-rebuild-v1.schema.json",
         REPOSITORY_ROOT / "tests" / "fixtures" / "health-raw-rebuild-sample-v1.json",
     ),
