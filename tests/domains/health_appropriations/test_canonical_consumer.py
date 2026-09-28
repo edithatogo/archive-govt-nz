@@ -6,6 +6,7 @@ import hashlib
 import json
 from decimal import Decimal
 from pathlib import Path
+from typing import Any
 
 import pyarrow as pa
 import pyarrow.parquet as pq
@@ -110,6 +111,26 @@ def _revenue_package(tmp_path: Path) -> CanonicalPackageInput:
         raw_root=source["root"],
         raw_manifest_sha256=source["manifest_sha256"],
     )
+
+
+def _assert_temporal_report(manifest: dict[str, Any]) -> None:
+    temporal = manifest["temporal_coverage_report"]
+    assert manifest["plot_report"]["temporal_interpolation"] == "not_performed"
+    assert manifest["plot_report"]["numeric_conversion"] == "float_for_display_only"
+    assert temporal["schema_version"] == "archive-govt-nz.health-temporal-coverage/v1"
+    assert temporal["gap_inference"] == "not_performed"
+    assert temporal["cross_source_join"] == "not_performed"
+    assert temporal["vintage_pooling"] == "not_performed"
+    assert {item["output_name"] for item in temporal["groups"]} == {
+        "historical_observations.parquet",
+        "nominal_budget.parquet",
+        "nominal_revenue.parquet",
+    }
+    for group in temporal["groups"]:
+        periods = group["observed_periods"]
+        assert periods == sorted(periods, key=lambda item: item["period_token"])
+        assert all(item["observation_count"] > 0 for item in periods)
+        assert group["context"]["source_vintage"]
 
 
 def test_exact_nominal_query_retains_source_labels_and_lineage(tmp_path: Path) -> None:
@@ -395,8 +416,7 @@ def test_canonical_gold_builds_source_separated_facts_and_report(
         "nominal_budget.parquet",
         "nominal_revenue.parquet",
     }.issubset(set(manifest["outputs"]))
-    assert manifest["plot_report"]["temporal_interpolation"] == "not_performed"
-    assert manifest["plot_report"]["numeric_conversion"] == "float_for_display_only"
+    _assert_temporal_report(manifest)
     drillthrough = manifest["source_drillthrough"]
     assert drillthrough["schema_version"] == (
         "archive-govt-nz.health-source-drillthrough/v1"
@@ -436,6 +456,35 @@ def test_canonical_gold_builds_source_separated_facts_and_report(
     }
     with pytest.raises(ValueError, match=r"^canonical_gold_export_invalid$"):
         export_canonical_gold((object(),), tmp_path / "invalid")  # type: ignore[arg-type]
+
+
+def test_temporal_coverage_keeps_historical_source_series_distinct(
+    tmp_path: Path,
+) -> None:
+    observations, _receipt = query_historical_observations(
+        (_historical_package(tmp_path),)
+    )
+    original = observations.to_pylist()[0]
+    alternate = {
+        **original,
+        "source_label": "A distinct historical source series",
+        "source_locator": "sheet=Alternate!A1",
+    }
+    table = pa.Table.from_pylist([original, alternate], schema=observations.schema)
+
+    report = canonical_gold_export.build_temporal_coverage_report(
+        {"observations": table}
+    )
+    groups = report["groups"]
+
+    assert len(groups) == 2
+    assert {
+        (group["context"]["source_label"], group["context"]["source_locator"])
+        for group in groups
+    } == {
+        (original["source_label"], original["source_locator"]),
+        (alternate["source_label"], alternate["source_locator"]),
+    }
 
 
 @pytest.mark.parametrize("packages", [[], (), [object()]])
