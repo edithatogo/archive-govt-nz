@@ -20,4 +20,8 @@ semantics remain unchanged.
   confirms the input ID is present, and verifies the file hash matches the
   manifest output inventory.
 - Canonical consumer suite: 15 passed; Ruff and basedpyright passed.
-- Full repository validation: pending.
+- The full `./scripts/validate.sh` completed successfully on the branch before
+  federation PR #541 merged. Formatting, lint, typing, full tests, schema,
+  parity, mutation, hygiene, benchmark, dependency, licence, secrets and SBOM
+  gates all completed successfully. Validation will be repeated after rebasing
+  onto the merged federation change.
