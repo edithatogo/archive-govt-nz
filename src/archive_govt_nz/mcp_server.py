@@ -106,6 +106,24 @@ _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
                 "planned_outputs": {"type": "object", "minProperties": 2},
                 "input_records": {"type": "integer", "minimum": 1},
                 "series": {"type": "integer", "minimum": 1},
+                "source_quality": _object_schema(
+                    {
+                        "status_counts_from_retained_silver": {"const": "complete"},
+                        "period_continuity": {
+                            "const": "not_assessed_source_calendar_not_supplied"
+                        },
+                        "rights": {"const": "not_evaluated"},
+                        "denominator_selection": {"const": "not_performed"},
+                        "report_rows": {"type": "integer", "minimum": 1},
+                    },
+                    [
+                        "status_counts_from_retained_silver",
+                        "period_continuity",
+                        "rights",
+                        "denominator_selection",
+                        "report_rows",
+                    ],
+                ),
                 "eligible_context_observations": {"type": "integer", "minimum": 0},
                 "excluded_observations": {"type": "integer", "minimum": 0},
                 "source_marker_sha256": {

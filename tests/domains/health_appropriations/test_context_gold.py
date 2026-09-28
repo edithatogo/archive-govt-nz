@@ -442,11 +442,32 @@ def test_retained_context_silver_build_is_repeatable_and_source_separated(
         == "source_tokens_sorted_lexically_without_cross_series_alignment"
         for row in coverage.to_pylist()
     )
+    quality = pq.read_table(first / "context_quality.parquet")
+    assert quality.num_rows == 4
+    assert {row["family"]: row["observation_count"] for row in quality.to_pylist()} == {
+        row["family"]: row["observation_count"] for row in coverage.to_pylist()
+    }
+    assert sum(row["excluded_count"] for row in quality.to_pylist()) == 30
+    assert all(
+        row["period_continuity"] == "not_assessed_source_calendar_not_supplied"
+        and row["rights_state"] == "not_evaluated"
+        and row["denominator_selection"] == "not_performed"
+        for row in quality.to_pylist()
+    )
+    population_quality = next(
+        row for row in quality.to_pylist() if row["family"] == "population"
+    )
+    assert json.loads(population_quality["exclusion_reasons_json"]) == {
+        "figure_not_available": 1,
+        "status_not_retained_in_shared_fact": 2,
+    }
+    assert len(json.loads(population_quality["period_tokens_json"])) == 36
     assert written["products"] == planned["products"]
     manifest = json.loads((first / "MANIFEST.json").read_text())
     assert set(manifest["products"]) == {
         "context_observations.parquet",
         "context_coverage.parquet",
+        "context_quality.parquet",
     }
     for name, entry in manifest["products"].items():
         payload = (first / name).read_bytes()
@@ -476,6 +497,22 @@ def test_population_provisional_and_missing_values_are_excluded(
         row["admission"] != "eligible_context_only" or row["value"] is not None
         for row in population
     )
+
+
+def test_source_quality_report_preserves_exclusions_without_inferred_gaps(
+    tmp_path: Path,
+) -> None:
+    silver, source = _roots()
+    context_gold.export_context_gold(silver, source, tmp_path / "context", write=True)
+    rows = pq.read_table(tmp_path / "context" / "context_quality.parquet").to_pylist()
+    assert len(rows) == 4
+    assert sum(row["observation_count"] for row in rows) == 554
+    assert sum(row["excluded_count"] for row in rows) == 30
+    for row in rows:
+        assert json.loads(row["period_tokens_json"])
+        assert row["period_continuity"] == "not_assessed_source_calendar_not_supplied"
+        assert row["rights_state"] == "not_evaluated"
+        assert row["denominator_selection"] == "not_performed"
 
 
 def test_any_source_package_fixity_drift_fails_closed() -> None:
