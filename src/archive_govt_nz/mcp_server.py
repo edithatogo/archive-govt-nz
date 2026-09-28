@@ -731,7 +731,11 @@ class Server:
                 ],
                 "structuredContent": structured,
                 "isError": (
-                    name == "health_appropriations_verify_budget"
+                    name
+                    in {
+                        "health_appropriations_verify_budget",
+                        "health_appropriations_verify_canonical_gold",
+                    }
                     and structured["status"] == "failed"
                 ),
             },

@@ -185,6 +185,21 @@ def test_invalid_package_fails_closed_and_redacted(
     assert str(root) not in json.dumps(receipt)
     assert "verified-output-payload" not in json.dumps(receipt)
 
+    response = _ready_server().handle_request(
+        {
+            "jsonrpc": "2.0",
+            "id": 3,
+            "method": "tools/call",
+            "params": {
+                "name": "health_appropriations_verify_canonical_gold",
+                "arguments": {"package_dir": str(root), "manifest_sha256": pin},
+            },
+        }
+    )
+    assert response is not None
+    assert response["result"]["isError"] is True
+    assert json.loads(response["result"]["content"][0]["text"]) == receipt
+
 
 def test_duplicate_manifest_keys_fail_closed(tmp_path: Path) -> None:
     root, _pin = _package(tmp_path / "gold")
