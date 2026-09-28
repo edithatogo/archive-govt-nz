@@ -1195,3 +1195,25 @@ enable drift counts. Missing or malformed baselines remain metadata-only and
 do not change discovery or downstream-stage claims. Focused contracts pass;
 the clean full harness passed 7,035 tests with all configured gates. Hosted
 assurance is pending on the corrected PR head.
+
+## 2026-09-29 — Expanded clean-room recovery review
+
+The recovery runner now executes the pinned four-profile original-to-raw
+pipeline twice, verifies each raw-run manifest, then rebuilds compatibility
+SQLite/sidecars, Gold and six plot images in separate empty directories. It also
+rebuilds population Silver, contextual Gold and historical canonical Gold.
+Repeated output file inventories match within this runtime, and the complete
+Bronze CAS inventory is unchanged. The contract is intentionally scoped to the
+pinned donor profiles and currently supported canonical/context builders.
+
+The receipt remains partial: all source-native Silver families, donor/canonical
+reports and complete validated Platinum metadata are not rebuilt. AC-12/M-16
+remain open. Prior cross-runtime SQLite header drift is preserved as a limitation;
+no database header bytes are patched. Rights are not evaluated and publication
+is not performed.
+
+
+Full `./scripts/validate.sh` passes 7,114 tests (9 skipped), 98.19% branch
+coverage, all 52 schemas/42 representative documents, parity 9/9, and configured
+mutation/supply-chain gates. The automatic `phase_7_gates` Conductor review
+also passes. The recovery test remains partial and does not close AC-12/M-16.

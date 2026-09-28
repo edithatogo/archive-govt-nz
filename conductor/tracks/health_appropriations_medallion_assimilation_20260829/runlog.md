@@ -2781,3 +2781,27 @@ writes for empty state. Focused MCP/CLI protocol suite: 35 passed; Ruff and
 basedpyright passed. This completes only the status resource slice; capture,
 normalize, reconcile, analyze and candidate-build operation contracts remain
 open.
+
+## 2026-09-29 — Expanded clean-room recovery: compatibility SQLite
+
+Extended the recovery runner to run the pinned four-profile Bronze rebuild twice
+from retained donor manifest `893f387e1f361400285ccc84802b497e87802d1ad913826ff7d9055b07a03b74`
+and Bronze CAS. Each run passes the read-only raw-run verifier, then creates a
+fresh compatibility SQLite/sidecar package, Gold package and six plots using
+versioned builders. Exact output inventories match between clean runs within
+the current runtime. Results: 341 compatibility facts, 321 selected Gold facts,
+six PNGs. Population Silver (36 rows), Context Gold and historical canonical
+Gold also rebuild; both Gold products repeat identically. All Bronze CAS objects
+are unchanged. The receipt `clean-room-recovery-20260929.json` remains
+`partial_with_blockers`: donor/canonical reports, all source-native Silver
+families and complete validated Platinum metadata are still open.
+
+Focused contract tests pass (2); Ruff, formatting and basedpyright pass. Full
+`./scripts/validate.sh` passed 7,114 tests, 9 skipped, 98.19% branch coverage,
+52 schemas/42 representative documents, parity 9/9 and all configured mutation,
+hygiene, dependency, licence, secret and SBOM gates. Automatic Conductor
+`phase_7_gates` review passed format, lint, schema, targeted tests and mutation;
+receipt SHA-256
+`e60a64cf9b26c6a03c7668e2a286336f24829fe15eede0d47f084c851f096aea`. SQLite byte equality is asserted only within one runtime;
+prior evidence documents the header bytes that vary across runtime versions.
+Rights remain `not_evaluated`; publication remains `not_performed`.
