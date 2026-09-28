@@ -22,6 +22,9 @@ from archive_govt_nz.domains.health_appropriations.canonical_gold_verification i
     CANONICAL_GOLD_VERIFICATION_SCHEMA,
     verify_canonical_gold_package,
 )
+from archive_govt_nz.domains.health_appropriations.context_gold import (
+    export_context_gold,
+)
 from archive_govt_nz.domains.health_appropriations.operations import (
     inspect_archive_status,
 )
@@ -80,6 +83,68 @@ def _object_schema(properties: dict[str, Any], required: list[str]) -> dict[str,
 _NO_ARGUMENTS = _object_schema({}, [])
 _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
     *resume_operations.MCP_TOOLS,
+    {
+        "name": "health_appropriations_preflight_context_gold",
+        "description": (
+            "Verify the pinned CPI, wage, GDP and population Silver inputs and "
+            "report planned source-separated context Gold outputs without writes. "
+            "No denominator selection, rights evaluation or publication is performed."
+        ),
+        "inputSchema": _object_schema(
+            {
+                "silver_root": {"type": "string", "minLength": 1},
+                "source_root": {"type": "string", "minLength": 1},
+                "output_dir": {"type": "string", "minLength": 1},
+            },
+            ["silver_root", "source_root", "output_dir"],
+        ),
+        "outputSchema": _object_schema(
+            {
+                "schema_version": {"const": "archive-govt-nz.health-context-gold/v1"},
+                "status": {"const": "dry_run"},
+                "products": {"type": "object", "minProperties": 2},
+                "planned_outputs": {"type": "object", "minProperties": 2},
+                "input_records": {"type": "integer", "minimum": 1},
+                "series": {"type": "integer", "minimum": 1},
+                "eligible_context_observations": {"type": "integer", "minimum": 0},
+                "excluded_observations": {"type": "integer", "minimum": 0},
+                "source_marker_sha256": {
+                    "type": "array",
+                    "minItems": 4,
+                    "maxItems": 4,
+                    "items": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+                },
+                "source_family_policy": {
+                    "const": "separate_series_vintages_no_joins_or_pooling"
+                },
+                "rights_state": {"const": "not_evaluated"},
+                "denominator_selection": {"const": "not_performed"},
+                "publication": {"const": "not_performed"},
+            },
+            [
+                "schema_version",
+                "status",
+                "products",
+                "planned_outputs",
+                "input_records",
+                "series",
+                "eligible_context_observations",
+                "excluded_observations",
+                "source_marker_sha256",
+                "source_family_policy",
+                "rights_state",
+                "denominator_selection",
+                "publication",
+            ],
+        ),
+        "annotations": {
+            "title": "Preflight contextual Health Gold",
+            "readOnlyHint": True,
+            "destructiveHint": False,
+            "idempotentHint": True,
+            "openWorldHint": False,
+        },
+    },
     {
         "name": "health_appropriations_inspect_workbook",
         "description": (
@@ -875,27 +940,36 @@ def _archive_status(arguments: dict[str, Any]) -> dict[str, Any]:
 
 
 def _health_read_only_tool(name: str, args: dict[str, Any]) -> dict[str, Any]:
-    if name == "health_appropriations_inspect_workbook":
-        return mcp_health_inspection.inspect(args)
-    if name == "health_appropriations_preflight_source":
-        return preflight_source(args)
-    if name == "health_appropriations_verify_budget":
-        return verify_budget_package(
+    if name == "health_appropriations_preflight_context_gold":
+        result = export_context_gold(
+            Path(str(args["silver_root"])),
+            Path(str(args["source_root"])),
+            Path(str(args["output_dir"])),
+            write=False,
+        )
+    elif name == "health_appropriations_inspect_workbook":
+        result = mcp_health_inspection.inspect(args)
+    elif name == "health_appropriations_preflight_source":
+        result = preflight_source(args)
+    elif name == "health_appropriations_verify_budget":
+        result = verify_budget_package(
             Path(str(args["package_dir"])), str(args["manifest_sha256"])
         )
-    if name == "health_appropriations_verify_canonical_gold":
-        return verify_canonical_gold_package(
+    elif name == "health_appropriations_verify_canonical_gold":
+        result = verify_canonical_gold_package(
             Path(str(args["package_dir"])), str(args["manifest_sha256"])
         )
-    if name == "health_appropriations_verify_rebuild":
-        return verify_rebuild(
+    elif name == "health_appropriations_verify_rebuild":
+        result = verify_rebuild(
             Path(str(args["output_dir"])),
             Path(str(args["store_root"])),
             str(args["manifest_sha256"]),
         )
-    return inspect_archive_status(
-        Path(str(args.get("archive_root", "build/health-appropriations")))
-    )
+    else:
+        result = inspect_archive_status(
+            Path(str(args.get("archive_root", "build/health-appropriations")))
+        )
+    return result
 
 
 def call_tool(name: str, arguments: dict[str, Any] | None = None) -> dict[str, Any]:
@@ -960,6 +1034,7 @@ def call_tool(name: str, arguments: dict[str, Any] | None = None) -> dict[str, A
         result = resume_operations.mcp_call(name, args)
     elif name in (
         "health_appropriations_inspect_workbook",
+        "health_appropriations_preflight_context_gold",
         "health_appropriations_preflight_source",
         "health_appropriations_verify_budget",
         "health_appropriations_verify_canonical_gold",

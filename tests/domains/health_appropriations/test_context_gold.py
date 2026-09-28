@@ -15,6 +15,7 @@ import pytest
 
 from archive_govt_nz.cli import app
 from archive_govt_nz.domains.health_appropriations import context_gold
+from archive_govt_nz.mcp_server import Server, call_tool, list_tools
 
 TRACK = Path("conductor/tracks/health_appropriations_medallion_assimilation_20260829")
 EXTERNAL = Path("/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations")
@@ -309,6 +310,63 @@ def test_context_gold_cli_dry_run_and_write_flag(
         )
     assert result.value.code == 2
     assert json.loads(capsys.readouterr().out)["status"] == "failed"
+
+
+def test_context_gold_mcp_is_cli_parity_read_only_and_schema_checked(
+    synthetic_packages: tuple[Path, Path], tmp_path: Path
+) -> None:
+    silver, source = synthetic_packages
+    output = tmp_path / "mcp-plan"
+    arguments = {
+        "silver_root": str(silver),
+        "source_root": str(source),
+        "output_dir": str(output),
+    }
+    receipt = call_tool("health_appropriations_preflight_context_gold", arguments)
+    assert receipt["status"] == "dry_run"
+    assert receipt["rights_state"] == "not_evaluated"
+    assert receipt["denominator_selection"] == "not_performed"
+    assert receipt["publication"] == "not_performed"
+    tool = next(
+        item
+        for item in list_tools()
+        if item["name"] == "health_appropriations_preflight_context_gold"
+    )
+    assert tool["annotations"]["readOnlyHint"] is True
+    assert tool["annotations"]["destructiveHint"] is False
+    assert "write" not in tool["inputSchema"]["properties"]
+    assert not output.exists()
+
+    server = Server()
+    server.handle_request(
+        {
+            "jsonrpc": "2.0",
+            "id": 0,
+            "method": "initialize",
+            "params": {
+                "protocolVersion": "2025-11-25",
+                "capabilities": {},
+                "clientInfo": {"name": "test", "version": "1"},
+            },
+        }
+    )
+    server.handle_request({"jsonrpc": "2.0", "method": "notifications/initialized"})
+    response = server.handle_request(
+        {
+            "jsonrpc": "2.0",
+            "id": 1,
+            "method": "tools/call",
+            "params": {
+                "name": "health_appropriations_preflight_context_gold",
+                "arguments": arguments,
+            },
+        }
+    )
+    assert response is not None
+    assert "result" in response
+    assert response["result"]["structuredContent"] == receipt
+    assert response["result"]["isError"] is False
+    assert not output.exists()
 
 
 def test_standalone_builder_cli(

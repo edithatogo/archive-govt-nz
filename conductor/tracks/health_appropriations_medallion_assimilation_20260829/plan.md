@@ -876,6 +876,11 @@ integrated parent head.
     existing status tool, and exercise the actual non-interactive CLI parser,
     JSON-RPC resource listing/read, output parity and no-write behavior. This
     bounded status slice does not complete the remaining operation commands.
+  - [x] Expose a typed read-only MCP preflight for the pinned contextual Gold
+    build. It verifies the declared CPI, QES wage, GDP and annual population
+    Silver inputs and returns the same dry-run receipt as the CLI, with no
+    write option or output creation. Rights and denominator selection remain
+    unevaluated. See `context-gold-mcp-preflight-20260928.md`.
 - [x] Add a read-only canonical Gold package verifier to CLI and MCP. Check the
   hash-pinned manifest, exact direct-child output inventory, byte counts and
   SHA-256 values, plus presence of the temporal report; test malformed and
