@@ -10,14 +10,21 @@ cover unmatched and ambiguous dispositions, with method `none` and confidence
 The schema accepts only `offline_fixture` observations and unresolved
 dispositions. It rejects live-runtime claims, mapped/approved dispositions,
 asserted methods or confidence without a reviewed evidence contract, invalid
-fixity, and unversioned keys. No federation table or partner link is produced.
+fixity, blank or unversioned source keys, and impossible month/day shapes. The
+semantic period validator also rejects impossible calendar dates, mixed
+precision bounds, and reversed intervals. No federation table or partner link
+is produced.
 
 ## Verification
 
-- Federation contract tests: 7 passed, including live-runtime, unproven map,
-  unsupported confidence, missing lineage fixity and unversioned-key rejection.
+- Federation contract tests: 15 passed, including live-runtime, unproven map,
+  unsupported confidence, missing lineage fixity, missing/blank source keys,
+  invalid calendar intervals, and unversioned-key rejection.
 - Schema registry: 52 schemas and 42 representative documents validated.
 - Ruff and basedpyright passed for changed Python files.
+- PR review corrections tightened source-key nullability and added strict
+  calendar/order checks for periods. The corrected full `./scripts/validate.sh`
+  completed successfully.
 
 Approved links to `reimbursement-atlas` and `global-medicines-atlas` remain
 pending source-level mapping evidence and human review. These fixtures do not

@@ -10,6 +10,10 @@ from typing import TYPE_CHECKING
 import pytest
 from jsonschema import Draft202012Validator, ValidationError
 
+from archive_govt_nz.domains.health_appropriations.health_federation_contract import (
+    validate_health_federation_period,
+)
+
 if TYPE_CHECKING:
     from collections.abc import Callable
 
@@ -66,6 +70,15 @@ def test_ambiguous_federation_fixture_keeps_all_candidate_lineage() -> None:
         pytest.param(
             lambda row: row["source"].update(scheme_version=""), id="unversioned-key"
         ),
+        pytest.param(
+            lambda row: row["source"].update(key=None), id="missing-source-key"
+        ),
+        pytest.param(
+            lambda row: row["source"].update(key="   "), id="blank-source-key"
+        ),
+        pytest.param(
+            lambda row: row["period"].update(start="2026-99"), id="invalid-month-shape"
+        ),
     ],
 )
 def test_federation_fixture_rejects_unproven_or_live_mapping(
@@ -78,3 +91,29 @@ def test_federation_fixture_rejects_unproven_or_live_mapping(
 
     with pytest.raises(ValidationError):
         Draft202012Validator(schema).validate(fixture)
+
+
+@pytest.mark.parametrize(
+    ("start", "end"),
+    [
+        pytest.param("2026-99", "2026-99", id="invalid-month"),
+        pytest.param("2025-02-29", "2025-02-29", id="invalid-day"),
+        pytest.param("2026-01", "2025-12", id="reversed-months"),
+        pytest.param("2025", "2025-12", id="mixed-precision"),
+    ],
+)
+def test_federation_period_rejects_invalid_or_unordered_intervals(
+    start: str, end: str
+) -> None:
+    """Period semantics reject impossible dates and ambiguous ordering."""
+    with pytest.raises(
+        ValueError, match=r"^health_federation_period_(?:invalid|order_invalid)$"
+    ):
+        validate_health_federation_period(start, end)
+
+
+def test_federation_period_accepts_valid_inclusive_periods() -> None:
+    """Date, month and year periods remain available at their own precision."""
+    validate_health_federation_period("2024-02-29", "2024-02-29")
+    validate_health_federation_period("2025-07", "2026-06")
+    validate_health_federation_period("1991", "2026")
