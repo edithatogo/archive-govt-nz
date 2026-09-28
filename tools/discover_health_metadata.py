@@ -6,6 +6,7 @@ import argparse
 import asyncio
 import hashlib
 import json
+import re
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any, cast
@@ -151,14 +152,13 @@ async def _discover(
         for records in scoped_records.values()
         for record in records
     }
-    previous_fingerprints = cast(
-        "dict[str, str]", (previous or {}).get("metadata_fingerprints", {})
-    )
+    baseline_state, previous_fingerprints = validate_previous_fingerprints(previous)
     return {
         "schema_version": "archive-govt-nz.health-discovery/v1",
         "observed_at": datetime.now(tz=UTC).isoformat(),
         "catalogue_url": base_url,
         "status": "observed",
+        "baseline_state": baseline_state,
         "scopes": {
             scope: sorted({str(item["id"]) for item in records})
             for scope, records in scoped_records.items()
@@ -191,6 +191,34 @@ def _policy(page_size: int) -> dict[str, object]:
         "unknown_rights_fail_closed": True,
         "sensitivity_requires_decision": True,
     }
+
+
+def validate_previous_fingerprints(
+    previous: dict[str, object] | None,
+) -> tuple[str, dict[str, str]]:
+    """Accept only a shape-consistent prior observed discovery manifest."""
+    if previous is None:
+        return "absent", {}
+    candidate_fingerprints = previous.get("metadata_fingerprints")
+    candidate_count = previous.get("dataset_count")
+    valid_baseline = (
+        previous.get("schema_version") == "archive-govt-nz.health-discovery/v1"
+        and previous.get("status") == "observed"
+        and isinstance(candidate_count, int)
+        and not isinstance(candidate_count, bool)
+        and candidate_count >= 0
+        and isinstance(candidate_fingerprints, dict)
+        and len(candidate_fingerprints) == candidate_count
+        and all(
+            isinstance(identifier, str)
+            and isinstance(fingerprint, str)
+            and re.fullmatch(r"[0-9a-f]{64}", fingerprint) is not None
+            for identifier, fingerprint in candidate_fingerprints.items()
+        )
+    )
+    if not valid_baseline:
+        return "invalid", {}
+    return "compared", cast("dict[str, str]", candidate_fingerprints)
 
 
 def main() -> int:

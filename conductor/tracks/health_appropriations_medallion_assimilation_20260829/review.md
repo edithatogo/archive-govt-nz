@@ -1177,3 +1177,13 @@ The initial hosted review flagged incomplete patch coverage. The follow-up
 covers normal CLI reads, the module entrypoint, non-object JSON, invalid UTF-8
 and excessive JSON nesting; the heartbeat module now passes all statement and
 branch cases. No behavior or workflow permission changed.
+
+## Drift baseline review correction — 2026-09-28
+
+Addressed the automated review finding: the scheduled lane supplies no prior
+manifest, so the heartbeat now reports metadata drift as unavailable. Only a
+complete, observed prior manifest with count-matched SHA-256 fingerprints can
+enable drift counts. Missing or malformed baselines remain metadata-only and
+do not change discovery or downstream-stage claims. Focused contracts pass;
+the clean full harness passed 7,035 tests with all configured gates. Hosted
+assurance is pending on the corrected PR head.

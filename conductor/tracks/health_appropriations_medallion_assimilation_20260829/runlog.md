@@ -2716,6 +2716,28 @@ normalization, validation, and publication remain `not_run`. The hosted
 scheduled workflow heartbeat has not yet run; verify its artifact on a later
 scheduled/manual run after merge.
 
+## Drift baseline review correction — 2026-09-28
+
+Automated PR review found scheduled discovery has no `--previous` manifest,
+so its generated `rerun.new` list is not a drift measurement. Added an explicit
+discovery `baseline_state` (`absent`, `compared`, or `invalid`) and accept prior
+fingerprints only from a shape-consistent observed manifest with complete
+SHA-256 entries. The heartbeat reports drift counts only for `compared`; the
+current scheduled lane therefore reports `not_available` while preserving its
+observed dataset count. Focused discovery/heartbeat/schema/workflow tests pass
+28 cases; 50-schema validation, Ruff and basedpyright pass. The first full
+correction attempt reported 7,034 passed, 9 skipped and one unrelated
+Hypothesis slow-generation health-check failure under xdist; its focused rerun
+passed. The next full `./scripts/validate.sh` passed 7,035 tests, 9 skipped,
+98.16% branch coverage, 50 schemas/40 representative documents, parity 9/9 and
+all configured mutation, hygiene, dependency, licence, secret and SBOM gates.
+The exact-head hosted assurance for this correction is pending.
+
+The first full harness attempt for this correction reported 7,034 passed,
+9 skipped and one unrelated Hypothesis `too_slow` health-check failure during
+xdist generation. Its focused rerun passed in 5.29 seconds. This is not a
+green full-harness result; another complete run is required.
+
 ## Coverage follow-up — 2026-09-28
 
 Codecov reported 90.28% patch coverage and seven missed/partial lines on the
@@ -2735,3 +2757,15 @@ licence, secret and SBOM gates. The combined heartbeat/workflow selection is
 22 passing tests and the heartbeat module has 100% statement and branch
 coverage. The only remaining operational check for this slice is its first
 post-merge hosted scheduled heartbeat artifact.
+
+## Drift baseline review correction — 2026-09-28
+
+Automated PR review found scheduled discovery has no `--previous` manifest,
+so its generated `rerun.new` list is not a drift measurement. Added an explicit
+discovery `baseline_state` (`absent`, `compared`, or `invalid`) and accept prior
+fingerprints only from a shape-consistent observed manifest with complete
+SHA-256 entries. The heartbeat reports drift counts only for `compared`; the
+current scheduled lane therefore reports `not_available` while preserving its
+observed dataset count. Focused discovery/heartbeat/schema/workflow tests pass
+28 cases; 50-schema validation, Ruff and basedpyright pass. Full local and
+updated hosted assurance remain pending.

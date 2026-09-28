@@ -16,11 +16,12 @@ from archive_govt_nz import health_heartbeat as heartbeat_module
 from archive_govt_nz.health_heartbeat import build_discovery_heartbeat
 
 
-def _manifest(*, status: str = "observed") -> bytes:
+def _manifest(*, status: str = "observed", baseline_state: str = "compared") -> bytes:
     return json.dumps(
         {
             "schema_version": "archive-govt-nz.health-discovery/v1",
             "status": status,
+            "baseline_state": baseline_state,
             "dataset_count": 2,
             "metadata_fingerprints": {"a": "1", "b": "2"},
             "rerun": {
@@ -63,6 +64,16 @@ def test_failed_workflow_remains_distinct_from_existing_discovery_evidence() -> 
     assert receipt["workflow_outcome"] == "failure"
     assert receipt["discovery_state"] == "observed"
     assert receipt["capture_state"] == "not_run"
+
+
+def test_unbaselined_discovery_does_not_claim_every_dataset_is_new() -> None:
+    """Without a previous manifest, rerun.new is not a drift measurement."""
+    receipt = build_discovery_heartbeat(
+        _manifest(baseline_state="absent"), workflow_outcome="success"
+    )
+    assert receipt["discovery_state"] == "observed"
+    assert receipt["dataset_count"] == 2
+    assert receipt["metadata_drift"] == {"state": "not_available"}
 
 
 @pytest.mark.parametrize(

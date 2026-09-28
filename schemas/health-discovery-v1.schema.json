@@ -15,6 +15,7 @@
     "observed_at": {"type": "string", "format": "date-time"},
     "catalogue_url": {"type": "string", "pattern": "^https://"},
     "status": {"enum": ["observed", "unavailable"]},
+    "baseline_state": {"enum": ["absent", "compared", "invalid"]},
     "dataset_count": {"type": "integer", "minimum": 0},
     "datasets": {
       "type": "array",
@@ -77,7 +78,7 @@
   "allOf": [
     {
       "if": {"properties": {"status": {"const": "observed"}}},
-      "then": {"required": ["dataset_count", "datasets", "scopes", "metadata_fingerprints", "rerun", "pages"]},
+      "then": {"required": ["baseline_state", "dataset_count", "datasets", "scopes", "metadata_fingerprints", "rerun", "pages"]},
       "else": {"required": ["failed_scope", "failed_start", "attempts"]}
     }
   ],

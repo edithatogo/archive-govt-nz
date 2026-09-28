@@ -67,12 +67,14 @@ def _apply_manifest(receipt: dict[str, object], document: object) -> None:
         return
 
     count = document.get("dataset_count")
+    baseline_state = document.get("baseline_state")
     fingerprints = document.get("metadata_fingerprints")
     rerun = document.get("rerun")
     if (
         isinstance(count, bool)
         or not isinstance(count, int)
         or count < 0
+        or baseline_state not in {"absent", "compared", "invalid"}
         or not isinstance(fingerprints, dict)
         or not isinstance(rerun, dict)
         or any(
@@ -86,10 +88,11 @@ def _apply_manifest(receipt: dict[str, object], document: object) -> None:
 
     receipt["discovery_state"] = "observed"
     receipt["dataset_count"] = count
-    receipt["metadata_drift"] = {
-        "state": "reported",
-        **{field: len(cast("list[Any]", rerun[field])) for field in _DRIFT_FIELDS},
-    }
+    if baseline_state == "compared":
+        receipt["metadata_drift"] = {
+            "state": "reported",
+            **{field: len(cast("list[Any]", rerun[field])) for field in _DRIFT_FIELDS},
+        }
 
 
 def main() -> int:

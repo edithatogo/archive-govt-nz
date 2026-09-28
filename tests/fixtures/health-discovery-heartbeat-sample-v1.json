@@ -4,11 +4,7 @@
   "discovery_state": "observed",
   "manifest_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
   "metadata_drift": {
-    "changed": 0,
-    "new": 2,
-    "state": "reported",
-    "unchanged": 0,
-    "withdrawn": 0
+    "state": "not_available"
   },
   "publication_state": "not_run",
   "schema_version": "archive-govt-nz.health-discovery-heartbeat/v1",
