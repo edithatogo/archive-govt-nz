@@ -145,3 +145,31 @@ def test_context_plots_keep_all_excluded_series_as_not_plotted() -> None:
     assert files == {}
     assert report["series"][0]["status"] == "no_eligible_observations"
     assert report["series"][0]["excluded_count"] == 1
+
+
+def test_context_plot_point_limit_is_reported_without_an_image(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setattr(canonical_gold_plots, "MAX_POINTS", 0)
+    row = _context_row("gdp", "SNE", "2025-Q1", "gdp-1", Decimal("9.2"))
+    files, report = canonical_gold_plots.build_context_plots([row])
+    assert files == {}
+    assert report["series"][0]["status"] == "omitted_point_limit"
+
+
+@pytest.mark.parametrize(
+    ("rows", "limit"),
+    [
+        ([], None),
+        ([_context_row("unknown", "x", "p", "r", Decimal(1))], None),
+        ([_context_row("cpi", "x", "p", "r", 1.0)], None),
+        ([_context_row("cpi", "x", "p", "r", Decimal(1))], 1),
+    ],
+)
+def test_context_plot_invalid_and_output_limit_contracts(
+    rows: list[dict[str, Any]], limit: int | None, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    if limit is not None:
+        monkeypatch.setattr(canonical_gold_plots, "MAX_OUTPUT_BYTES", limit)
+    with pytest.raises(ValueError, match=r"^canonical_gold_plot_invalid$"):
+        canonical_gold_plots.build_context_plots(rows)

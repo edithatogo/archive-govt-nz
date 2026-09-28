@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import json
 from pathlib import Path
+from typing import Any
 
 import pytest
 
@@ -55,6 +56,25 @@ def _package(root: Path) -> tuple[Path, str]:
     return root, hashlib.sha256(marker.read_bytes()).hexdigest()
 
 
+def _add_plot(root: Path, manifest: dict[str, Any]) -> None:
+    name = "plot_context_cpi_0123456789abcdef0123.png"
+    payload = b"\x89PNG\r\n\x1a\nfixture"
+    (root / name).write_bytes(payload)
+    manifest["products"][name] = {
+        "sha256": hashlib.sha256(payload).hexdigest(),
+        "bytes": len(payload),
+        "rows": 0,
+    }
+    manifest["plot_report"]["series"] = [
+        {
+            "status": "rendered",
+            "path": name,
+            "sha256": hashlib.sha256(payload).hexdigest(),
+            "bytes": len(payload),
+        }
+    ]
+
+
 def _rewrite_manifest(root: Path, manifest: dict[str, object]) -> str:
     marker = root / "MANIFEST.json"
     marker.write_text(
@@ -91,6 +111,77 @@ def test_context_gold_cli_mcp_parity_and_read_only(
     assert receipt["plot_report"] == "verified_as_declared_output"
     assert receipt["plot_count"] == 0
     assert receipt["rights_state"] == "not_evaluated"
+
+
+def test_verifier_accepts_and_reports_pinned_plot(tmp_path: Path) -> None:
+    root, _pin = _package(tmp_path / "context")
+    manifest = json.loads((root / "MANIFEST.json").read_text())
+    _add_plot(root, manifest)
+    pin = _rewrite_manifest(root, manifest)
+    receipt = verify_context_gold_package(root, pin)
+    assert receipt["status"] == "verified"
+    assert receipt["plot_count"] == 1
+    assert receipt["output_count"] == 5
+
+
+@pytest.mark.parametrize(
+    "fault",
+    [
+        "non-object",
+        "duplicate-path",
+        "missing-path",
+        "bad-digest",
+        "bad-size",
+        "unrendered-file",
+    ],
+)
+def test_verifier_rejects_inconsistent_plot_reports(tmp_path: Path, fault: str) -> None:
+    root, _pin = _package(tmp_path / "context")
+    manifest = json.loads((root / "MANIFEST.json").read_text())
+    _add_plot(root, manifest)
+    series = manifest["plot_report"]["series"]
+    if fault == "non-object":
+        manifest["plot_report"]["series"] = [None]
+    elif fault == "duplicate-path":
+        series.append(dict(series[0]))
+    elif fault == "missing-path":
+        series[0]["path"] = "plot_context_cpi_ffffffffffffffffffff.png"
+    elif fault == "bad-digest":
+        series[0]["sha256"] = "f" * 64
+    elif fault == "bad-size":
+        series[0]["bytes"] += 1
+    else:
+        series[0]["status"] = "no_eligible_observations"
+    pin = _rewrite_manifest(root, manifest)
+    assert verify_context_gold_package(root, pin)["status"] == "failed"
+
+
+@pytest.mark.parametrize("fault", ["unknown-status", "unreported-image", "valid-empty"])
+def test_verifier_checks_empty_and_unrecognized_plot_statuses(
+    tmp_path: Path, fault: str
+) -> None:
+    root, _pin = _package(tmp_path / "context")
+    manifest = json.loads((root / "MANIFEST.json").read_text())
+    if fault == "unknown-status":
+        manifest["plot_report"]["series"] = [{"status": "unknown"}]
+    elif fault == "unreported-image":
+        _add_plot(root, manifest)
+        manifest["plot_report"]["series"] = []
+    else:
+        manifest["plot_report"]["series"] = [
+            {"status": "no_eligible_observations", "path": None}
+        ]
+    pin = _rewrite_manifest(root, manifest)
+    receipt = verify_context_gold_package(root, pin)
+    assert receipt["status"] == ("verified" if fault == "valid-empty" else "failed")
+
+
+def test_verifier_rejects_non_object_product_inventory(tmp_path: Path) -> None:
+    root, _pin = _package(tmp_path / "context")
+    manifest = json.loads((root / "MANIFEST.json").read_text())
+    manifest["products"] = []
+    pin = _rewrite_manifest(root, manifest)
+    assert verify_context_gold_package(root, pin)["status"] == "failed"
 
 
 @pytest.mark.parametrize("fault", ["payload", "extra", "manifest"])
