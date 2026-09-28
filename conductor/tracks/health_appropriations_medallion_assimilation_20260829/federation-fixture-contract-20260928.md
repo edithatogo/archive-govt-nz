@@ -17,14 +17,16 @@ is produced.
 
 ## Verification
 
-- Federation contract tests: 15 passed, including live-runtime, unproven map,
+- Federation contract tests: 18 passed, including live-runtime, unproven map,
   unsupported confidence, missing lineage fixity, missing/blank source keys,
-  invalid calendar intervals, and unversioned-key rejection.
+  invalid calendar intervals, invalid tokens/year zero, and unversioned-key
+  rejection. The semantic period validator has 100% statement and branch
+  coverage.
 - Schema registry: 52 schemas and 42 representative documents validated.
 - Ruff and basedpyright passed for changed Python files.
 - PR review corrections tightened source-key nullability and added strict
   calendar/order checks for periods. The corrected full `./scripts/validate.sh`
-  completed successfully.
+  completed successfully after the additional invalid-token coverage.
 
 Approved links to `reimbursement-atlas` and `global-medicines-atlas` remain
 pending source-level mapping evidence and human review. These fixtures do not

@@ -117,3 +117,13 @@ def test_federation_period_accepts_valid_inclusive_periods() -> None:
     validate_health_federation_period("2024-02-29", "2024-02-29")
     validate_health_federation_period("2025-07", "2026-06")
     validate_health_federation_period("1991", "2026")
+
+
+@pytest.mark.parametrize("value", [None, "2026-Q1", "0000"])
+def test_federation_period_rejects_invalid_tokens(value: object) -> None:
+    """Period parsing rejects non-text, wrong shapes, and year zero."""
+    with pytest.raises(
+        (TypeError, ValueError),
+        match=r"^health_federation_period_invalid$",
+    ):
+        validate_health_federation_period(value, value)
