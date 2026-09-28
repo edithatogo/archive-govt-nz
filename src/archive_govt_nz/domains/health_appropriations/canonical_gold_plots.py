@@ -17,6 +17,7 @@ MAX_GROUPS = 32
 MAX_POINTS = 500
 MAX_TOTAL_POINTS = 4000
 MAX_OUTPUT_BYTES = 32 * 1024 * 1024
+CONTEXT_FAMILIES = frozenset({"cpi", "wage", "gdp", "population"})
 _ERROR = "canonical_gold_plot_invalid"
 
 
@@ -219,6 +220,118 @@ def build_discrete_plots(
         OverflowError,
         OSError,
     ):
+        raise ValueError(_ERROR) from None
+    else:
+        return files, report
+
+
+def _render_context_plot(context: dict[str, Any], rows: list[dict[str, Any]]) -> bytes:
+    figure, axis = plt.subplots(figsize=(14, 8), dpi=100)
+    try:
+        positions = list(range(len(rows)))
+        axis.bar(positions, [float(row["value"]) for row in rows], color="#347a67")
+        axis.set_xticks(positions, [row["period_token"] for row in rows])
+        axis.tick_params(axis="x", labelrotation=60, labelsize=7)
+        axis.set_title(
+            f"{context['family']}: {context['series_id']} — {context['source_vintage']}"
+        )
+        axis.set_xlabel("Observed source period token (discrete category)")
+        axis.set_ylabel("Value in source unit; float conversion for display only")
+        axis.grid(axis="y", alpha=0.25)
+        axis.set_axisbelow(True)
+        figure.subplots_adjust(left=0.1, right=0.98, bottom=0.42, top=0.9)
+        buffer = BytesIO()
+        figure.savefig(buffer, format="png", metadata={"Software": "archive-govt-nz"})
+        return buffer.getvalue()
+    finally:
+        plt.close(figure)
+
+
+def build_context_plots(
+    rows: list[dict[str, Any]],
+) -> tuple[dict[str, bytes], dict[str, Any]]:
+    """Plot eligible context observations as discrete categories by exact series."""
+    try:
+        _require(0 < len(rows) <= MAX_TOTAL_POINTS)
+        group_fields = (
+            "family",
+            "series_id",
+            "source_vintage",
+            "source_sha256",
+            "source_locator",
+            "unit",
+            "basis",
+        )
+        groups: dict[bytes, tuple[dict[str, Any], list[dict[str, Any]], int]] = {}
+        for row in rows:
+            _require(row["family"] in CONTEXT_FAMILIES)
+            _require(type(row["period_token"]) is str and bool(row["period_token"]))
+            key_context = {field: row[field] for field in group_fields}
+            key = _encoded(key_context)
+            if key not in groups:
+                groups[key] = (key_context, [], 0)
+            context, eligible, excluded = groups[key]
+            if row["admission"] == "eligible_context_only":
+                _require(isinstance(row["value"], Decimal))
+                eligible.append(row)
+            else:
+                groups[key] = (context, eligible, excluded + 1)
+        files: dict[str, bytes] = {}
+        report: dict[str, Any] = {
+            "schema_version": "archive-govt-nz.health-context-gold-plots/v1",
+            "status": "complete",
+            "period_axis": "discrete_source_tokens_no_continuity_inference",
+            "numeric_conversion": "float_for_display_only",
+            "excluded_observations_plotted": False,
+            "series": [],
+        }
+        total_points = 0
+        for key, (context, eligible, excluded_count) in sorted(groups.items()):
+            eligible.sort(key=lambda row: (row["period_token"], row["input_record_id"]))
+            if (
+                len(eligible) > MAX_POINTS
+                or total_points + len(eligible) > MAX_TOTAL_POINTS
+            ):
+                report["series"].append(
+                    {
+                        **context,
+                        "status": "omitted_point_limit",
+                        "eligible_count": len(eligible),
+                        "excluded_count": excluded_count,
+                    }
+                )
+                continue
+            if not eligible:
+                report["series"].append(
+                    {
+                        **context,
+                        "status": "no_eligible_observations",
+                        "eligible_count": 0,
+                        "excluded_count": excluded_count,
+                    }
+                )
+                continue
+            identity = hashlib.sha256(key).hexdigest()
+            name = f"plot_context_{context['family']}_{identity[:20]}.png"
+            payload = _render_context_plot(context, eligible)
+            _require(len(payload) <= MAX_OUTPUT_BYTES)
+            files[name] = payload
+            total_points += len(eligible)
+            report["series"].append(
+                {
+                    **context,
+                    "status": "rendered",
+                    "path": name,
+                    "context_sha256": identity,
+                    "eligible_count": len(eligible),
+                    "excluded_count": excluded_count,
+                    "input_record_ids": [row["input_record_id"] for row in eligible],
+                    "sha256": hashlib.sha256(payload).hexdigest(),
+                    "bytes": len(payload),
+                }
+            )
+        _require_size(files)
+    except KeyError, TypeError, ValueError, OverflowError, OSError:
         raise ValueError(_ERROR) from None
     else:
         return files, report

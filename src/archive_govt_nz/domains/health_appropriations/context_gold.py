@@ -17,6 +17,9 @@ from typing import TYPE_CHECKING, Any
 import pyarrow as pa
 import pyarrow.parquet as pq
 
+from archive_govt_nz.domains.health_appropriations.canonical_gold_plots import (
+    build_context_plots,
+)
 from archive_govt_nz.domains.health_appropriations.price_wage_context import (
     _PROFILES as PRICE_WAGE_PROFILES,
 )
@@ -640,20 +643,28 @@ def _export(
     quality_rows = _quality(rows)
     coverage = pa.Table.from_pylist(coverage_rows, schema=COVERAGE_SCHEMA)
     quality = pa.Table.from_pylist(quality_rows, schema=QUALITY_SCHEMA)
+    plot_payloads, plot_report = build_context_plots(rows)
     payloads = {
         "context_observations.parquet": _table(observations),
         "context_coverage.parquet": _table(coverage),
         "context_quality.parquet": _table(quality),
         "context-quality-report.md": _quality_markdown(quality_rows),
+        **plot_payloads,
     }
     _require(sum(map(len, payloads.values())) <= MAX_OUTPUT_BYTES)
     outputs = {
         name: {
             "sha256": hashlib.sha256(payload).hexdigest(),
             "bytes": len(payload),
-            "rows": observations.num_rows
-            if name.startswith("context_observations")
-            else coverage.num_rows,
+            "rows": (
+                observations.num_rows
+                if name == "context_observations.parquet"
+                else coverage.num_rows
+                if name == "context_coverage.parquet"
+                else quality.num_rows
+                if name == "context_quality.parquet"
+                else 0
+            ),
         }
         for name, payload in sorted(payloads.items())
     }
@@ -670,6 +681,7 @@ def _export(
             "denominator_selection": "not_performed",
             "report_rows": quality.num_rows,
         },
+        "plot_report": plot_report,
         "eligible_context_observations": sum(
             row["admission"] == "eligible_context_only" for row in rows
         ),

@@ -1056,6 +1056,13 @@ integrated parent head.
   it does not prove remote workflow health, source completeness, rights, or
   publication. [M-15, M-18; AC-13, AC-16]
 
+- [x] Add source-separated contextual Gold categorical plots for CPI, wage,
+  GDP and population observations. Plot only eligible Decimal values, retain
+  exact source period tokens as discrete categories, convert to float only for
+  display, and pin every image in the manifest and read-only verifier. This
+  adds context plots only; source calendar continuity, rights, denominator
+  selection and publication remain unassessed or unperformed.
+
 ## Gate register
 
 | Gate | Blocks | Safe work while pending |

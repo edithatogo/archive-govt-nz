@@ -476,12 +476,19 @@ def test_retained_context_silver_build_is_repeatable_and_source_separated(
         in report
     )
     manifest = json.loads((first / "MANIFEST.json").read_text())
-    assert set(manifest["products"]) == {
+    assert {
         "context_observations.parquet",
         "context_coverage.parquet",
         "context_quality.parquet",
         "context-quality-report.md",
-    }
+    }.issubset(manifest["products"])
+    assert len(manifest["products"]) == 4 + sum(
+        item["status"] == "rendered" for item in manifest["plot_report"]["series"]
+    )
+    assert manifest["plot_report"]["period_axis"] == (
+        "discrete_source_tokens_no_continuity_inference"
+    )
+    assert manifest["plot_report"]["excluded_observations_plotted"] is False
     for name, entry in manifest["products"].items():
         payload = (first / name).read_bytes()
         assert hashlib.sha256(payload).hexdigest() == entry["sha256"]

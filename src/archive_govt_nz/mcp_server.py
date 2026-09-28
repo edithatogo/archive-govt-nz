@@ -130,6 +130,30 @@ _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
                 ),
                 "eligible_context_observations": {"type": "integer", "minimum": 0},
                 "excluded_observations": {"type": "integer", "minimum": 0},
+                "plot_report": {
+                    "type": "object",
+                    "properties": {
+                        "schema_version": {
+                            "const": "archive-govt-nz.health-context-gold-plots/v1"
+                        },
+                        "status": {"enum": ["complete", "complete_with_omissions"]},
+                        "period_axis": {
+                            "const": "discrete_source_tokens_no_continuity_inference"
+                        },
+                        "numeric_conversion": {"const": "float_for_display_only"},
+                        "excluded_observations_plotted": {"const": False},
+                        "series": {"type": "array", "maxItems": 4},
+                    },
+                    "required": [
+                        "schema_version",
+                        "status",
+                        "period_axis",
+                        "numeric_conversion",
+                        "excluded_observations_plotted",
+                        "series",
+                    ],
+                    "additionalProperties": True,
+                },
                 "source_marker_sha256": {
                     "type": "array",
                     "minItems": 4,
@@ -152,6 +176,7 @@ _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
                 "series",
                 "eligible_context_observations",
                 "excluded_observations",
+                "plot_report",
                 "source_marker_sha256",
                 "source_family_policy",
                 "rights_state",
