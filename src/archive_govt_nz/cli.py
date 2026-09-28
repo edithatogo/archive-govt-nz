@@ -39,6 +39,9 @@ from archive_govt_nz.domains.health_appropriations.compatibility_export import (
 from archive_govt_nz.domains.health_appropriations.context_gold import (
     export_context_gold,
 )
+from archive_govt_nz.domains.health_appropriations.context_gold_verification import (
+    verify_context_gold_package,
+)
 from archive_govt_nz.domains.health_appropriations.gold_export import export_gold
 from archive_govt_nz.domains.health_appropriations.inspection import inspect_workbook
 from archive_govt_nz.domains.health_appropriations.operations import (
@@ -397,6 +400,16 @@ def health_appropriations_build_context_gold(
         return 2
     _emit_json({"command": "health-appropriations-build-context-gold", **result})
     return 0
+
+
+@app.command(name="health-appropriations-verify-context-gold")
+def health_appropriations_verify_context_gold(
+    package_dir: Path, manifest_sha256: str
+) -> int:
+    """Verify a pinned context Gold package and outputs without writes."""
+    receipt = verify_context_gold_package(package_dir, manifest_sha256)
+    _emit_json({"command": "health-appropriations-verify-context-gold", **receipt})
+    return 0 if receipt["status"] == "verified" else 2
 
 
 @app.command(name="health-appropriations-verify-rebuild")

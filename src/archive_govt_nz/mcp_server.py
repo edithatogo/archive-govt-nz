@@ -25,6 +25,10 @@ from archive_govt_nz.domains.health_appropriations.canonical_gold_verification i
 from archive_govt_nz.domains.health_appropriations.context_gold import (
     export_context_gold,
 )
+from archive_govt_nz.domains.health_appropriations.context_gold_verification import (
+    CONTEXT_GOLD_VERIFICATION_SCHEMA,
+    verify_context_gold_package,
+)
 from archive_govt_nz.domains.health_appropriations.operations import (
     inspect_archive_status,
 )
@@ -442,6 +446,31 @@ _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
         "outputSchema": CANONICAL_GOLD_VERIFICATION_SCHEMA,
         "annotations": {
             "title": "Verify canonical Health Gold package",
+            "readOnlyHint": True,
+            "destructiveHint": False,
+            "idempotentHint": True,
+            "openWorldHint": False,
+        },
+    },
+    {
+        "name": "health_appropriations_verify_context_gold",
+        "description": (
+            "Verify a hash-pinned contextual Gold manifest and all declared "
+            "outputs without writes or rights/denominator/publication claims."
+        ),
+        "inputSchema": _object_schema(
+            {
+                "package_dir": {"type": "string", "minLength": 1},
+                "manifest_sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$",
+                },
+            },
+            ["package_dir", "manifest_sha256"],
+        ),
+        "outputSchema": CONTEXT_GOLD_VERIFICATION_SCHEMA,
+        "annotations": {
+            "title": "Verify contextual Health Gold package",
             "readOnlyHint": True,
             "destructiveHint": False,
             "idempotentHint": True,
@@ -977,6 +1006,10 @@ def _health_read_only_tool(name: str, args: dict[str, Any]) -> dict[str, Any]:
         result = verify_canonical_gold_package(
             Path(str(args["package_dir"])), str(args["manifest_sha256"])
         )
+    elif name == "health_appropriations_verify_context_gold":
+        result = verify_context_gold_package(
+            Path(str(args["package_dir"])), str(args["manifest_sha256"])
+        )
     elif name == "health_appropriations_verify_rebuild":
         result = verify_rebuild(
             Path(str(args["output_dir"])),
@@ -1056,6 +1089,7 @@ def call_tool(name: str, arguments: dict[str, Any] | None = None) -> dict[str, A
         "health_appropriations_preflight_source",
         "health_appropriations_verify_budget",
         "health_appropriations_verify_canonical_gold",
+        "health_appropriations_verify_context_gold",
         "health_appropriations_verify_rebuild",
         "health_appropriations_status",
     ):

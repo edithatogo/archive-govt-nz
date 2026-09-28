@@ -876,6 +876,9 @@ integrated parent head.
 - [ ] Expose typed non-interactive CLI commands and read-only MCP resources
   over stable manifests/queries; return structured state and provenance.
   [M-15; AC-13]
+  Context Gold now has a hash-pinned CLI/MCP verifier for its closed output
+  inventory and report bytes. This verifies declared fixity only; see
+  `context-gold-verifier-20260929.md`.
   - [x] Add a finite read-only Health status MCP resource alongside the
     existing status tool, and exercise the actual non-interactive CLI parser,
     JSON-RPC resource listing/read, output parity and no-write behavior. This
