@@ -751,9 +751,12 @@ integrated parent head.
     changed, and unreferenced evidence while keeping authority, eligibility,
     and release approval unasserted. See
     `platinum-rights-evidence-fixity-20260928.md`.
-- [ ] Add federation fixtures for namespace, versioned key, mapping method,
-  confidence, period and lineage; reject live-runtime or unproven mappings.
-  [M-14, M-18; AC-14, AC-16]
+- [x] Add offline federation fixtures for namespace, versioned key, mapping
+  method, confidence, period and lineage; reject live-runtime or unproven
+  mappings. Examples cover unmatched and ambiguous records only; method and
+  confidence remain `none`/unknown until reviewed mapping evidence exists.
+  No partner links or federation tables are approved. [M-14, M-18; AC-14,
+  AC-16] See `federation-fixture-contract-20260928.md`.
 
 ### 7.2 Produce governed projections
 

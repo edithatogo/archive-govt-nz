@@ -1,0 +1,24 @@
+{
+  "schema_version": "archive-govt-nz.health-federation-record/v1",
+  "record_id": "fixture:health/reimbursement/unmatched",
+  "observation_mode": "offline_fixture",
+  "disposition": "unmatched",
+  "source": {
+    "namespace": "urn:archive-govt-nz:pharmac-cpb",
+    "scheme_version": "pharmac-cpb/v1",
+    "key": "fixture:cpb-item-001"
+  },
+  "target": {
+    "namespace": "urn:global-medicines-atlas:product",
+    "scheme_version": "gma-product/2026-01",
+    "key": null
+  },
+  "mapping": {"method": "none", "confidence": null},
+  "period": {"start": "2025-07", "end": "2026-06", "basis": "july-june-financial-year"},
+  "lineage": {
+    "source_manifest_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "source_record_ids": ["fixture:source:cpb-item-001"],
+    "target_manifest_sha256": null,
+    "target_record_ids": []
+  }
+}
