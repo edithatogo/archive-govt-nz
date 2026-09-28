@@ -117,10 +117,24 @@ def test_clean_room_rebuilds_supported_products_and_reports_blockers(
     ) -> dict[str, str]:
         _ = write
         output.mkdir()
-        (output / "manifest.json").write_bytes(b"fixed context")
+        (output / "MANIFEST.json").write_bytes(b"fixed context")
         return {"status": "complete"}
 
     monkeypatch.setattr(MODULE, "export_context_gold", fake_context)
+
+    class FakeColumn:
+        def to_pylist(self) -> list[str]:
+            return []
+
+    class FakeTable:
+        num_rows = 0
+
+        def column(self, _name: str) -> FakeColumn:
+            return FakeColumn()
+
+    monkeypatch.setattr(
+        MODULE, "query_context_observations", lambda _root, _pin: FakeTable()
+    )
     monkeypatch.setattr(
         MODULE,
         "normalize_population_annual",
@@ -135,6 +149,10 @@ def test_clean_room_rebuilds_supported_products_and_reports_blockers(
     assert result["bronze_objects_unchanged"] is True
     assert result["products_rebuilt"]["canonical_gold"]["status"] == "blocked"
     assert result["products_rebuilt"]["context_gold"]["repeat_identical"] is True
+    assert (
+        result["products_rebuilt"]["canonical_context_consumer"]["status"]
+        == "verified_read_only_projection"
+    )
     assert result["products_rebuilt"]["donor_sqlite_gold_plots"]["repeat_identical"]
     assert result["products_rebuilt"]["donor_source_native_silver"]["repeat_identical"]
     assert (

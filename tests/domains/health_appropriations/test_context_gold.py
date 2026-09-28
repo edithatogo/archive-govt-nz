@@ -8,13 +8,20 @@ import runpy
 import sys
 from decimal import Decimal
 from pathlib import Path
+from typing import cast
 
 import pyarrow as pa
 import pyarrow.parquet as pq
 import pytest
 
 from archive_govt_nz.cli import app
-from archive_govt_nz.domains.health_appropriations import context_gold
+from archive_govt_nz.domains.health_appropriations import (
+    canonical_consumer,
+    context_gold,
+)
+from archive_govt_nz.domains.health_appropriations.canonical_consumer import (
+    query_context_observations,
+)
 from archive_govt_nz.mcp_server import Server, call_tool, list_tools
 
 TRACK = Path("conductor/tracks/health_appropriations_medallion_assimilation_20260829")
@@ -220,6 +227,141 @@ def test_synthetic_source_packages_cover_build_contract(
             "MANIFEST.json",
         )
     )
+
+
+def test_canonical_consumer_reads_verified_context_without_promotion(
+    tmp_path: Path, synthetic_packages: tuple[Path, Path]
+) -> None:
+    silver, source = synthetic_packages
+    package = tmp_path / "context-gold"
+    context_gold.export_context_gold(silver, source, package, write=True)
+    manifest_hash = hashlib.sha256((package / "MANIFEST.json").read_bytes()).hexdigest()
+    observed = query_context_observations(package, manifest_hash)
+    direct = pq.read_table(package / "context_observations.parquet")
+
+    assert observed.equals(direct, check_metadata=True)
+    assert observed.num_rows == 10
+    rows = observed.to_pylist()
+    assert len({row["input_record_id"] for row in rows}) == observed.num_rows
+    assert {row["family"] for row in rows} == {"cpi", "wage", "gdp", "population"}
+    assert {row["admission"] for row in rows} == {
+        "eligible_context_only",
+        "excluded_from_numeric_series",
+    }
+    assert {row["period_token"] for row in rows}
+
+
+def test_canonical_context_consumer_fails_closed_on_changed_pin(
+    tmp_path: Path, synthetic_packages: tuple[Path, Path]
+) -> None:
+    silver, source = synthetic_packages
+    package = tmp_path / "context-gold"
+    context_gold.export_context_gold(silver, source, package, write=True)
+
+    with pytest.raises(ValueError, match="canonical_context_input_unverified"):
+        query_context_observations(package, "0" * 64)
+
+
+def test_canonical_context_consumer_rejects_invalid_root_and_pin(
+    tmp_path: Path,
+) -> None:
+    with pytest.raises(ValueError, match="canonical_context_input_invalid"):
+        query_context_observations(tmp_path / "missing", "0" * 64)
+    with pytest.raises(ValueError, match="canonical_context_input_invalid"):
+        query_context_observations(tmp_path, cast("str", object()))
+
+
+def test_canonical_context_consumer_enforces_package_limit(
+    tmp_path: Path,
+    synthetic_packages: tuple[Path, Path],
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    silver, source = synthetic_packages
+    package = tmp_path / "context-gold"
+    context_gold.export_context_gold(silver, source, package, write=True)
+    manifest_hash = hashlib.sha256((package / "MANIFEST.json").read_bytes()).hexdigest()
+    monkeypatch.setattr(canonical_consumer, "_MAX_CONTEXT_PACKAGE", 1)
+
+    with pytest.raises(ValueError, match="canonical_context_input_limit"):
+        query_context_observations(package, manifest_hash)
+
+
+def test_canonical_context_consumer_rejects_unreadable_parquet(
+    tmp_path: Path,
+    synthetic_packages: tuple[Path, Path],
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    silver, source = synthetic_packages
+    package = tmp_path / "context-gold"
+    context_gold.export_context_gold(silver, source, package, write=True)
+    manifest_hash = hashlib.sha256((package / "MANIFEST.json").read_bytes()).hexdigest()
+    monkeypatch.setattr(
+        canonical_consumer,
+        "verify_context_gold_package",
+        lambda *_args: {"status": "verified"},
+    )
+
+    def fail_read(*_args: object, **_kwargs: object) -> pa.Table:
+        raise pa.ArrowInvalid
+
+    monkeypatch.setattr(canonical_consumer.pq, "read_table", fail_read)
+    with pytest.raises(ValueError, match="canonical_context_input_invalid"):
+        query_context_observations(package, manifest_hash)
+
+
+def test_canonical_context_product_digest_fails_closed_on_bad_manifest(
+    tmp_path: Path,
+) -> None:
+    assert (
+        canonical_consumer._context_product_digest(  # noqa: SLF001
+            tmp_path, "context_observations.parquet"
+        )
+        is None
+    )
+    manifest = tmp_path / "MANIFEST.json"
+    manifest.write_text("{invalid", encoding="utf-8")
+    assert (
+        canonical_consumer._context_product_digest(  # noqa: SLF001
+            tmp_path, "context_observations.parquet"
+        )
+        is None
+    )
+
+
+def test_canonical_context_consumer_rejects_schema_and_identity_drift(
+    tmp_path: Path,
+    synthetic_packages: tuple[Path, Path],
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    silver, source = synthetic_packages
+    package = tmp_path / "context-gold"
+    context_gold.export_context_gold(silver, source, package, write=True)
+    manifest_hash = hashlib.sha256((package / "MANIFEST.json").read_bytes()).hexdigest()
+    valid = pq.read_table(package / "context_observations.parquet")
+    monkeypatch.setattr(
+        canonical_consumer,
+        "verify_context_gold_package",
+        lambda *_args: {"status": "verified"},
+    )
+    monkeypatch.setattr(
+        canonical_consumer, "_context_product_digest", lambda *_args: "0" * 64
+    )
+    monkeypatch.setattr(
+        canonical_consumer.pq,
+        "read_table",
+        lambda *_args: pa.table({"unexpected": ["value"]}),
+    )
+    with pytest.raises(ValueError, match="canonical_context_input_schema_invalid"):
+        query_context_observations(package, manifest_hash)
+
+    rows = valid.to_pylist()
+    rows[1]["input_record_id"] = rows[0]["input_record_id"]
+    duplicate_ids = pa.Table.from_pylist(rows, schema=context_gold.OBSERVATION_SCHEMA)
+    monkeypatch.setattr(
+        canonical_consumer.pq, "read_table", lambda *_args: duplicate_ids
+    )
+    with pytest.raises(ValueError, match="canonical_context_input_identity_invalid"):
+        query_context_observations(package, manifest_hash)
 
 
 def test_source_path_checks_content_addressed_cas_fixity(tmp_path: Path) -> None:

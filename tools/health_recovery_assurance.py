@@ -10,6 +10,9 @@ from pathlib import Path
 from typing import Any, cast
 
 from archive_govt_nz.domains.health_appropriations import cpi, gdp, qes
+from archive_govt_nz.domains.health_appropriations.canonical_consumer import (
+    query_context_observations,
+)
 from archive_govt_nz.domains.health_appropriations.canonical_gold_export import (
     export_canonical_gold,
 )
@@ -362,6 +365,18 @@ def rebuild_donor_products(root: Path, index: int) -> dict[str, Any]:
     }
 
 
+def _query_context_consumer(root: Path) -> dict[str, Any]:
+    """Exercise the pinned canonical projection and return bounded evidence."""
+    manifest_sha256 = digest(root / "MANIFEST.json")
+    table = query_context_observations(root, manifest_sha256)
+    return {
+        "status": "verified_read_only_projection",
+        "manifest_sha256": manifest_sha256,
+        "observation_count": table.num_rows,
+        "source_families": sorted(set(table.column("family").to_pylist())),
+    }
+
+
 def run() -> dict[str, Any]:
     """Rebuild supported products in a disposable derivative root."""
     if not ARCHIVE.is_dir():
@@ -443,6 +458,7 @@ def run() -> dict[str, Any]:
             "files": context_files,
             "repeat_identical": True,
         }
+        outputs["canonical_context_consumer"] = _query_context_consumer(context_one)
         canonical = canonical_inputs()
         if canonical:
             for index in (1, 2):
