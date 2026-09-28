@@ -697,6 +697,11 @@ integrated parent head.
     Silver identities within the canonical package; source coordinates,
     source rights and other reports remain open. See
     `canonical-gold-drillthrough-20260928.md`.
+  - [x] Add a temporal coverage report to the canonical Gold manifest, listing
+    exact observed period tokens and counts by full source context for each
+    available historical, Budget and revenue mart. Do not infer gaps, join
+    sources or pool vintages. See
+    `canonical-temporal-coverage-20260928.md`.
 
 ### 6.3 Phase review and checkpoint
 

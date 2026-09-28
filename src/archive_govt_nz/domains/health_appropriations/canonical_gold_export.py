@@ -159,6 +159,86 @@ def _source_drillthrough(
     }
 
 
+def _temporal_coverage_report(tables: dict[str, pa.Table]) -> dict[str, Any]:
+    """List observed period tokens by exact source context without gap inference."""
+    definitions = {
+        "historical_observations.parquet": (
+            "observations",
+            (
+                "source_vintage",
+                "recordset",
+                "measure",
+                "unit",
+                "currency",
+                "price_basis",
+                "base_period",
+                "denominator_definition",
+                "institutional_coverage",
+                "accounting_basis",
+            ),
+        ),
+        "nominal_budget.parquet": (
+            "budget",
+            (
+                "source_vintage",
+                "amount_type",
+                "unit",
+                "vote",
+                "department",
+                "portfolio",
+                "source_label",
+            ),
+        ),
+        "nominal_revenue.parquet": (
+            "revenue",
+            (
+                "source_vintage",
+                "amount_type",
+                "unit",
+                "vote",
+                "department",
+                "revenue_type",
+                "source_label",
+            ),
+        ),
+    }
+    groups: list[dict[str, Any]] = []
+    for output_name, (table_name, context_fields) in definitions.items():
+        table = tables.get(table_name)
+        if table is None:
+            continue
+        grouped: dict[tuple[Any, ...], dict[str, int]] = {}
+        for row in table.to_pylist():
+            period = row["period_token"]
+            _require(type(period) is str and bool(period))
+            context = tuple(row[field] for field in context_fields)
+            periods = grouped.setdefault(context, {})
+            periods[period] = periods.get(period, 0) + 1
+        for context, periods in sorted(
+            grouped.items(),
+            key=lambda item: tuple("" if value is None else value for value in item[0]),
+        ):
+            groups.append(
+                {
+                    "output_name": output_name,
+                    "context": dict(zip(context_fields, context, strict=True)),
+                    "observed_periods": [
+                        {"period_token": token, "observation_count": periods[token]}
+                        for token in sorted(periods)
+                    ],
+                }
+            )
+    return {
+        "schema_version": "archive-govt-nz.health-temporal-coverage/v1",
+        "scope": "observed_period_tokens_by_exact_source_context",
+        "ordering": "period_tokens_sorted_as_strings",
+        "gap_inference": "not_performed",
+        "cross_source_join": "not_performed",
+        "vintage_pooling": "not_performed",
+        "groups": groups,
+    }
+
+
 def _preflight(packages: tuple[CanonicalPackageInput, ...], output: Path) -> None:
     _require(not output.exists() and not output.is_symlink())
     _require(output.parent.is_dir() and not output.parent.is_symlink())
@@ -289,6 +369,7 @@ def _export(
         "products": product_report,
         "outputs": outputs,
         "source_drillthrough": _source_drillthrough(tables, outputs),
+        "temporal_coverage_report": _temporal_coverage_report(tables),
         "plot_report": plot_report,
         "quality_report": quality_report,
         "period_ordering": "tokens_preserved_and_sorted_as_strings",

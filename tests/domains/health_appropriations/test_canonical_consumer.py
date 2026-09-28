@@ -6,6 +6,7 @@ import hashlib
 import json
 from decimal import Decimal
 from pathlib import Path
+from typing import Any
 
 import pyarrow as pa
 import pyarrow.parquet as pq
@@ -110,6 +111,26 @@ def _revenue_package(tmp_path: Path) -> CanonicalPackageInput:
         raw_root=source["root"],
         raw_manifest_sha256=source["manifest_sha256"],
     )
+
+
+def _assert_temporal_report(manifest: dict[str, Any]) -> None:
+    temporal = manifest["temporal_coverage_report"]
+    assert manifest["plot_report"]["temporal_interpolation"] == "not_performed"
+    assert manifest["plot_report"]["numeric_conversion"] == "float_for_display_only"
+    assert temporal["schema_version"] == "archive-govt-nz.health-temporal-coverage/v1"
+    assert temporal["gap_inference"] == "not_performed"
+    assert temporal["cross_source_join"] == "not_performed"
+    assert temporal["vintage_pooling"] == "not_performed"
+    assert {item["output_name"] for item in temporal["groups"]} == {
+        "historical_observations.parquet",
+        "nominal_budget.parquet",
+        "nominal_revenue.parquet",
+    }
+    for group in temporal["groups"]:
+        periods = group["observed_periods"]
+        assert periods == sorted(periods, key=lambda item: item["period_token"])
+        assert all(item["observation_count"] > 0 for item in periods)
+        assert group["context"]["source_vintage"]
 
 
 def test_exact_nominal_query_retains_source_labels_and_lineage(tmp_path: Path) -> None:
@@ -395,8 +416,7 @@ def test_canonical_gold_builds_source_separated_facts_and_report(
         "nominal_budget.parquet",
         "nominal_revenue.parquet",
     }.issubset(set(manifest["outputs"]))
-    assert manifest["plot_report"]["temporal_interpolation"] == "not_performed"
-    assert manifest["plot_report"]["numeric_conversion"] == "float_for_display_only"
+    _assert_temporal_report(manifest)
     drillthrough = manifest["source_drillthrough"]
     assert drillthrough["schema_version"] == (
         "archive-govt-nz.health-source-drillthrough/v1"
