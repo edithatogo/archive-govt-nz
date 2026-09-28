@@ -117,6 +117,48 @@ def _quality_report(
     }
 
 
+def _source_drillthrough(
+    tables: dict[str, pa.Table], outputs: dict[str, dict[str, Any]]
+) -> dict[str, Any]:
+    """Map each admitted input identity to exact, hash-pinned Gold rows."""
+    by_record: dict[str, list[dict[str, Any]]] = {}
+    for output_name, table_name in sorted(_TABLES.items()):
+        table = tables.get(table_name)
+        output = outputs.get(output_name)
+        if table is None or output is None:
+            continue
+        for row_index, row in enumerate(table.to_pylist()):
+            record_ids = row.get("input_record_ids")
+            if record_ids is None:
+                record_ids = [row.get("input_record_id")]
+            _require(isinstance(record_ids, list) and bool(record_ids))
+            for record_id in record_ids:
+                _require(type(record_id) is str and bool(record_id))
+                by_record.setdefault(record_id, []).append(
+                    {
+                        "output_name": output_name,
+                        "output_sha256": output["sha256"],
+                        "row_index": row_index,
+                    }
+                )
+    return {
+        "schema_version": "archive-govt-nz.health-source-drillthrough/v1",
+        "scope": "exact_row_lineage_lookup_only",
+        "row_identity": "output_sha256_and_zero_based_sorted_row_index",
+        "cross_source_join": "not_performed",
+        "records": [
+            {
+                "input_record_id": record_id,
+                "output_rows": sorted(
+                    output_rows,
+                    key=lambda item: (item["output_name"], item["row_index"]),
+                ),
+            }
+            for record_id, output_rows in sorted(by_record.items())
+        ],
+    }
+
+
 def _preflight(packages: tuple[CanonicalPackageInput, ...], output: Path) -> None:
     _require(not output.exists() and not output.is_symlink())
     _require(output.parent.is_dir() and not output.parent.is_symlink())
@@ -246,6 +288,7 @@ def _export(
         ),
         "products": product_report,
         "outputs": outputs,
+        "source_drillthrough": _source_drillthrough(tables, outputs),
         "plot_report": plot_report,
         "quality_report": quality_report,
         "period_ordering": "tokens_preserved_and_sorted_as_strings",

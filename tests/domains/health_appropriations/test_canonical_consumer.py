@@ -397,6 +397,24 @@ def test_canonical_gold_builds_source_separated_facts_and_report(
     }.issubset(set(manifest["outputs"]))
     assert manifest["plot_report"]["temporal_interpolation"] == "not_performed"
     assert manifest["plot_report"]["numeric_conversion"] == "float_for_display_only"
+    drillthrough = manifest["source_drillthrough"]
+    assert drillthrough["schema_version"] == (
+        "archive-govt-nz.health-source-drillthrough/v1"
+    )
+    output_by_record = {
+        row["input_record_id"]: row["output_rows"] for row in drillthrough["records"]
+    }
+    assert set(output_by_record) == set(quality["input_record_products"])
+    for input_record_id, output_rows in output_by_record.items():
+        assert output_rows
+        for output_row in output_rows:
+            metadata = manifest["outputs"][output_row["output_name"]]
+            assert metadata["sha256"] == output_row["output_sha256"]
+            rows = pq.read_table(output / output_row["output_name"]).to_pylist()
+            row = rows[output_row["row_index"]]
+            assert input_record_id in row.get(
+                "input_record_ids", [row.get("input_record_id")]
+            )
     assert {
         item["product"]: item["status"] for item in manifest["plot_report"]["series"]
     } == {"historical": "rendered", "budget": "rendered", "revenue": "rendered"}
