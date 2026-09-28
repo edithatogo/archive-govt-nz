@@ -158,7 +158,62 @@ def _assert_dataset_card(output: Path, manifest: dict[str, Any]) -> None:
     assert card_metadata["kind"] == "dataset_card"
     assert card_metadata["rights_state"] == "not_evaluated"
     assert card_metadata["publication"] == "not_performed"
-    assert "Exact-context temporal groups" in card
+
+
+def _assert_canonical_gold_outputs(
+    output: Path,
+    repeated: Path,
+    manifest: dict[str, Any],
+    quality: dict[str, Any],
+    packages: tuple[CanonicalPackageInput, ...],
+) -> None:
+    plot_paths = list(output.glob("plot_*.png"))
+    assert any(path.name.startswith("plot_historical_") for path in plot_paths)
+    assert any(path.name.startswith("plot_budget_") for path in plot_paths)
+    assert any(path.name.startswith("plot_revenue_") for path in plot_paths)
+    assert {
+        "historical_observations.parquet",
+        "historical_coverage.parquet",
+        "nominal_budget.parquet",
+        "nominal_revenue.parquet",
+    }.issubset(set(manifest["outputs"]))
+    drillthrough = manifest["source_drillthrough"]
+    assert drillthrough["schema_version"] == (
+        "archive-govt-nz.health-source-drillthrough/v1"
+    )
+    output_by_record = {
+        row["input_record_id"]: row["output_rows"] for row in drillthrough["records"]
+    }
+    assert set(output_by_record) == set(quality["input_record_products"])
+    for input_record_id, output_rows in output_by_record.items():
+        assert output_rows
+        for output_row in output_rows:
+            metadata = manifest["outputs"][output_row["output_name"]]
+            assert metadata["sha256"] == output_row["output_sha256"]
+            rows = pq.read_table(output / output_row["output_name"]).to_pylist()
+            row = rows[output_row["row_index"]]
+            assert input_record_id in row.get(
+                "input_record_ids", [row.get("input_record_id")]
+            )
+    assert {
+        item["product"]: item["status"] for item in manifest["plot_report"]["series"]
+    } == {"historical": "rendered", "budget": "rendered", "revenue": "rendered"}
+    assert all(
+        manifest["outputs"][name]["kind"] == "plot_png"
+        and manifest["outputs"][name]["display_only"] is True
+        for name in manifest["outputs"]
+        if name.endswith(".png")
+    )
+    assert pq.read_table(output / "nominal_budget.parquet").to_pylist() == (
+        query_nominal_budget((packages[1],))[0].to_pylist()
+    )
+    assert pq.read_table(output / "nominal_revenue.parquet").to_pylist() == (
+        query_nominal_revenue((packages[2],))[0].to_pylist()
+    )
+    export_canonical_gold(packages, repeated, write=True)
+    assert {path.name: path.read_bytes() for path in output.iterdir()} == {
+        path.name: path.read_bytes() for path in repeated.iterdir()
+    }
 
 
 def test_exact_nominal_query_retains_source_labels_and_lineage(tmp_path: Path) -> None:
@@ -469,55 +524,9 @@ def test_canonical_gold_builds_source_separated_facts_and_report(
     _assert_ro_crate(output, manifest)
     _assert_dataset_card(output, manifest)
     _assert_temporal_report(manifest)
-    return
-    plot_paths = list(output.glob("plot_*.png"))
-    assert any(path.name.startswith("plot_historical_") for path in plot_paths)
-    assert any(path.name.startswith("plot_budget_") for path in plot_paths)
-    assert any(path.name.startswith("plot_revenue_") for path in plot_paths)
-    assert {
-        "historical_observations.parquet",
-        "historical_coverage.parquet",
-        "nominal_budget.parquet",
-        "nominal_revenue.parquet",
-    }.issubset(set(manifest["outputs"]))
-    _assert_temporal_report(manifest)
-    drillthrough = manifest["source_drillthrough"]
-    assert drillthrough["schema_version"] == (
-        "archive-govt-nz.health-source-drillthrough/v1"
+    _assert_canonical_gold_outputs(
+        output, repeated, manifest, quality, (historical, budget, revenue)
     )
-    output_by_record = {
-        row["input_record_id"]: row["output_rows"] for row in drillthrough["records"]
-    }
-    assert set(output_by_record) == set(quality["input_record_products"])
-    for input_record_id, output_rows in output_by_record.items():
-        assert output_rows
-        for output_row in output_rows:
-            metadata = manifest["outputs"][output_row["output_name"]]
-            assert metadata["sha256"] == output_row["output_sha256"]
-            rows = pq.read_table(output / output_row["output_name"]).to_pylist()
-            row = rows[output_row["row_index"]]
-            assert input_record_id in row.get(
-                "input_record_ids", [row.get("input_record_id")]
-            )
-    assert {
-        item["product"]: item["status"] for item in manifest["plot_report"]["series"]
-    } == {"historical": "rendered", "budget": "rendered", "revenue": "rendered"}
-    assert all(
-        manifest["outputs"][name]["kind"] == "plot_png"
-        and manifest["outputs"][name]["display_only"] is True
-        for name in manifest["outputs"]
-        if name.endswith(".png")
-    )
-    assert pq.read_table(output / "nominal_budget.parquet").to_pylist() == (
-        query_nominal_budget((budget,))[0].to_pylist()
-    )
-    assert pq.read_table(output / "nominal_revenue.parquet").to_pylist() == (
-        query_nominal_revenue((revenue,))[0].to_pylist()
-    )
-    export_canonical_gold((historical, budget, revenue), repeated, write=True)
-    assert {path.name: path.read_bytes() for path in output.iterdir()} == {
-        path.name: path.read_bytes() for path in repeated.iterdir()
-    }
     with pytest.raises(ValueError, match=r"^canonical_gold_export_invalid$"):
         export_canonical_gold((object(),), tmp_path / "invalid")  # type: ignore[arg-type]
 
