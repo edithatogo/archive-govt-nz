@@ -18,6 +18,10 @@ from archive_govt_nz.domains.health_appropriations.budget_operations import (
     BUDGET_VERIFICATION_SCHEMA,
     verify_budget_package,
 )
+from archive_govt_nz.domains.health_appropriations.canonical_gold_verification import (
+    CANONICAL_GOLD_VERIFICATION_SCHEMA,
+    verify_canonical_gold_package,
+)
 from archive_govt_nz.domains.health_appropriations.operations import (
     inspect_archive_status,
 )
@@ -330,6 +334,31 @@ _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
         "outputSchema": BUDGET_VERIFICATION_SCHEMA,
         "annotations": {
             "title": "Verify standalone Budget package",
+            "readOnlyHint": True,
+            "destructiveHint": False,
+            "idempotentHint": True,
+            "openWorldHint": False,
+        },
+    },
+    {
+        "name": "health_appropriations_verify_canonical_gold",
+        "description": (
+            "Verify a hash-pinned canonical Gold manifest and all declared "
+            "outputs without writing state or asserting rights or publication."
+        ),
+        "inputSchema": _object_schema(
+            {
+                "package_dir": {"type": "string", "minLength": 1},
+                "manifest_sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$",
+                },
+            },
+            ["package_dir", "manifest_sha256"],
+        ),
+        "outputSchema": CANONICAL_GOLD_VERIFICATION_SCHEMA,
+        "annotations": {
+            "title": "Verify canonical Health Gold package",
             "readOnlyHint": True,
             "destructiveHint": False,
             "idempotentHint": True,
@@ -850,6 +879,10 @@ def _health_read_only_tool(name: str, args: dict[str, Any]) -> dict[str, Any]:
         return verify_budget_package(
             Path(str(args["package_dir"])), str(args["manifest_sha256"])
         )
+    if name == "health_appropriations_verify_canonical_gold":
+        return verify_canonical_gold_package(
+            Path(str(args["package_dir"])), str(args["manifest_sha256"])
+        )
     if name == "health_appropriations_verify_rebuild":
         return verify_rebuild(
             Path(str(args["output_dir"])),
@@ -925,6 +958,7 @@ def call_tool(name: str, arguments: dict[str, Any] | None = None) -> dict[str, A
         "health_appropriations_inspect_workbook",
         "health_appropriations_preflight_source",
         "health_appropriations_verify_budget",
+        "health_appropriations_verify_canonical_gold",
         "health_appropriations_verify_rebuild",
         "health_appropriations_status",
     ):
