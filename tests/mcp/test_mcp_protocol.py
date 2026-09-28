@@ -202,7 +202,11 @@ def test_mcp_subprocess_resources_and_errors() -> None:
             proc, {"jsonrpc": "2.0", "id": 10, "method": "resources/list"}
         )
         assert res_list is not None
-        assert len(res_list["result"]["resources"]) == 3
+        resources = res_list["result"]["resources"]
+        assert len(resources) == 4
+        assert "archive://health-appropriations/status" in {
+            resource["uri"] for resource in resources
+        }
 
         res_read = _send_rpc(
             proc,

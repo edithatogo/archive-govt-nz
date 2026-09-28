@@ -9,7 +9,7 @@ from typing import TYPE_CHECKING
 
 import pytest
 
-from archive_govt_nz.cli import capabilities, doctor, sources
+from archive_govt_nz.cli import app, capabilities, doctor, sources
 from archive_govt_nz.mcp_server import (
     MCP_RESOURCE_NOT_FOUND,
     PROTOCOL_VERSION,
@@ -71,6 +71,7 @@ def test_mcp_metadata_and_capabilities() -> None:
     assert "archive://capabilities" in uris
     assert "archive://sources" in uris
     assert "archive://status" in uris
+    assert "archive://health-appropriations/status" in uris
 
 
 def test_stdio_server_transport() -> None:
@@ -312,6 +313,69 @@ def test_read_resource_and_errors() -> None:
 
     with pytest.raises(KeyError, match="Resource not found"):
         read_resource("archive://unknown")
+
+
+def test_health_status_resource_matches_readonly_tool(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """The finite status resource returns the same bounded receipt as its tool."""
+    monkeypatch.chdir(tmp_path)
+    before = sorted(str(path.relative_to(tmp_path)) for path in tmp_path.rglob("*"))
+    resource = read_resource("archive://health-appropriations/status")
+    receipt = json.loads(resource["text"])
+    tool_receipt = call_tool(
+        "health_appropriations_status",
+        {"archive_root": "build/health-appropriations"},
+    )
+    after = sorted(str(path.relative_to(tmp_path)) for path in tmp_path.rglob("*"))
+
+    assert resource["mimeType"] == "application/json"
+    assert resource["uri"] == "archive://health-appropriations/status"
+    assert receipt["status"] == "no_state"
+    assert receipt["manifest_provenance"] == {}
+    assert receipt == tool_receipt
+    assert after == before
+
+    response = _ready_server().handle_request(
+        {
+            "jsonrpc": "2.0",
+            "id": 2,
+            "method": "resources/read",
+            "params": {"uri": "archive://health-appropriations/status"},
+        }
+    )
+    assert response is not None
+    assert "error" not in response
+    contents = response["result"]["contents"]
+    assert json.loads(contents[0]["text"]) == tool_receipt
+
+
+def test_health_status_cli_is_noninteractive_json_and_readonly(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    """The real command parser emits the stable JSON status without writes."""
+    before = sorted(str(path.relative_to(tmp_path)) for path in tmp_path.rglob("*"))
+    result = app(
+        [
+            "health-appropriations-status",
+            "--archive-root",
+            str(tmp_path),
+            "--format",
+            "json",
+        ],
+        exit_on_error=False,
+        result_action="return_value",
+    )
+    receipt = json.loads(capsys.readouterr().out)
+    after = sorted(str(path.relative_to(tmp_path)) for path in tmp_path.rglob("*"))
+
+    assert result == 1
+    assert receipt["command"] == "health-appropriations-status"
+    assert (
+        receipt["schema_version"] == "archive-govt-nz.health-appropriations-status/v1"
+    )
+    assert receipt["status"] == "no_state"
+    assert after == before
 
 
 def test_unknown_mcp_tool_raises_error() -> None:

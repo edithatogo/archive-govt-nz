@@ -749,6 +749,15 @@ def list_resources() -> list[dict[str, Any]]:
             "mimeType": "application/json",
             "description": "Verified local CAS evidence, or explicit no state.",
         },
+        {
+            "uri": "archive://health-appropriations/status",
+            "name": "Health Appropriations Status",
+            "mimeType": "application/json",
+            "description": (
+                "Read-only local Health medallion state and hash-pinned manifest "
+                "provenance; no capture, transformation or publication."
+            ),
+        },
     ]
 
 
@@ -758,6 +767,7 @@ def read_resource(uri: str) -> dict[str, Any]:
         "archive://capabilities": "archive_capabilities",
         "archive://sources": "archive_sources",
         "archive://status": "archive_status",
+        "archive://health-appropriations/status": "health_appropriations_status",
     }
     name = tool_by_uri.get(uri)
     if name is None:
