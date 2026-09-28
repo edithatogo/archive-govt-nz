@@ -774,6 +774,12 @@ integrated parent head.
 - [ ] Generate and validate metadata, cards, citations, changelogs, catalogue
   and source drill-through records from actual layer manifests. [M-14, S-06;
   AC-14]
+  - [x] Generate a deterministic RO-Crate 1.1 metadata file alongside each
+    local canonical Gold package, enumerating every actual Parquet and plot
+    payload with its byte size, media type and SHA-256. Keep the crate itself
+    in the package fixity inventory, omit it from its own `hasPart` list, and
+    do not add licensing, publication, date or publisher claims. This does not
+    complete broader Platinum metadata or standards-processor validation.
 - [ ] Add rebuildable federation tables for approved links to
   `reimbursement-atlas` and `global-medicines-atlas`; preserve unmatched and
   ambiguous mappings. [M-14; AC-14]
