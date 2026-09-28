@@ -40,6 +40,7 @@ def test_manifest_schema_rejects_payload_eligibility() -> None:
         "observed_at": "2026-08-11T08:00:00Z",
         "catalogue_url": "https://catalogue.data.govt.nz",
         "status": "observed",
+        "baseline_state": "absent",
         "dataset_count": 1,
         "datasets": [
             {
@@ -77,3 +78,12 @@ def test_manifest_schema_rejects_payload_eligibility() -> None:
         ).iter_errors(manifest)
     )
     assert any(error.validator == "const" for error in errors)
+
+    validator = Draft202012Validator(schema, format_checker=FormatChecker())
+    manifest["datasets"][0]["payload_eligible"] = False
+    assert list(validator.iter_errors(manifest)) == []
+    manifest.pop("baseline_state")
+    assert any(
+        error.validator == "required" and "baseline_state" in error.message
+        for error in validator.iter_errors(manifest)
+    )

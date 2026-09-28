@@ -793,9 +793,12 @@ integrated parent head.
   analyze, rebuild, candidate-build and status commands, including JSON output,
   dry-run, idempotency, cancellation, partial state, retry/resume, missing
   credentials and redaction. [M-15, M-18; AC-13, AC-16]
-- [ ] Add scheduled-source heartbeat and drift tests that do not equate a
+- [x] Add scheduled-source heartbeat and drift tests that do not equate a
   successful workflow with capture, validation or publication. [M-04, M-15,
   M-19, S-04; AC-04, AC-09, AC-13]
+  The heartbeat marks drift unavailable unless a complete hash-pinned prior
+  discovery manifest was compared; the scheduled lane currently has no such
+  baseline.
 
 ### 8.2 Implement bounded operations
 

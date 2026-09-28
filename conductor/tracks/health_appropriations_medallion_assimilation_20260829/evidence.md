@@ -651,3 +651,40 @@ with a separate dated snapshot. All four current source/test hashes match;
 260 focused tests pass with 100% coverage of both modules. Historical mutation
 results remain separately identified. See the paired integration report and
 receipt in `normalization-checkpoint-integration-20260913.md`.
+## Scheduled discovery heartbeat — 2026-09-28
+
+Local evidence: 22 focused heartbeat/workflow tests passed; the heartbeat
+module has 100% branch coverage. Ruff and basedpyright passed.
+`tools/validate_schemas.py` validated 50 schemas and 40 representative
+documents including the new heartbeat sample. The first full repository
+harness passed 7,029 tests, 9 skipped, 98.14% branch coverage, parity 9/9 and
+all configured mutation, dependency, licence, secret and SBOM gates. The
+coverage follow-up is undergoing a fresh full harness run. Hosted scheduled
+workflow execution has not been claimed; the heartbeat is attached to the
+next scheduled/manual discovery workflow run after merge.
+
+Two full-harness attempts had transient unrelated failures under xdist; focused
+reruns passed all affected cases. The third clean `./scripts/validate.sh`
+passed 7,033 tests, 9 skipped, 98.16% branch coverage, 50 schemas/40
+representative documents, parity 9/9 and every configured mutation, hygiene,
+dependency, licence, secret and SBOM gate. This is local assurance; the hosted
+scheduled discovery workflow still needs a post-merge run to produce its first
+heartbeat artifact.
+
+## Drift baseline review correction — 2026-09-28
+
+The scheduled discovery command omits `--previous`, so no baseline comparison
+is available. The source manifest now carries explicit baseline state, and the
+heartbeat leaves drift unavailable unless the prior manifest is observed,
+complete and hash-shaped. Focused discovery/heartbeat/schema/workflow tests
+passed 28 cases; all 50 schemas/40 samples validated, and Ruff/basedpyright
+passed. The first full correction attempt had one unrelated Hypothesis
+slow-generation failure under xdist; the focused rerun passed. The subsequent
+full `./scripts/validate.sh` passed 7,035 tests, 9 skipped, 98.16% branch
+coverage, 50 schemas/40 representative documents, parity 9/9 and every
+configured mutation, hygiene, dependency, licence, secret and SBOM gate.
+Exact-head hosted checks for the correction are pending.
+
+The first full correction run reported 7,034 passed, 9 skipped and one
+unrelated Hypothesis slow-generation health-check failure under xdist; its
+focused rerun passed. This remains a candidate result, not full assurance.

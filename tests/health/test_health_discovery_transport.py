@@ -17,6 +17,11 @@ class _DiscoveryModule(Protocol):
         client: object, params: dict[str, object]
     ) -> tuple[object, str, dict[str, object] | None]: ...
 
+    @staticmethod
+    def validate_previous_fingerprints(
+        previous: dict[str, object] | None,
+    ) -> tuple[str, dict[str, str]]: ...
+
 
 _MODULE_PATH = Path(__file__).parents[2] / "tools" / "discover_health_metadata.py"
 _SPEC = importlib.util.spec_from_file_location("discover_health_metadata", _MODULE_PATH)
@@ -27,6 +32,9 @@ _SPEC.loader.exec_module(_MODULE)
 page_with_fallback = cast(
     "_DiscoveryModule", cast("object", _MODULE)
 ).page_with_fallback
+previous_fingerprints = cast(
+    "_DiscoveryModule", cast("object", _MODULE)
+).validate_previous_fingerprints
 
 
 class _Client:
@@ -73,3 +81,19 @@ async def test_post_failure_uses_get_with_deterministic_receipt(
         "status_code": status_code,
         "error_class": error_class,
     }
+
+
+def test_previous_manifest_must_be_observed_and_fingerprint_complete() -> None:
+    """Only a complete hash-pinned prior discovery can support drift counts."""
+    assert previous_fingerprints(None) == ("absent", {})
+    valid = {
+        "schema_version": "archive-govt-nz.health-discovery/v1",
+        "status": "observed",
+        "dataset_count": 1,
+        "metadata_fingerprints": {"one": "a" * 64},
+    }
+    assert previous_fingerprints(valid) == ("compared", {"one": "a" * 64})
+    assert previous_fingerprints({**valid, "dataset_count": 2}) == ("invalid", {})
+    assert previous_fingerprints(
+        {**valid, "metadata_fingerprints": {"one": "unverified"}}
+    ) == ("invalid", {})
