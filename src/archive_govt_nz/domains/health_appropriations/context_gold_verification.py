@@ -18,6 +18,7 @@ _OUTPUTS = {
     "context_observations.parquet",
     "context_coverage.parquet",
     "context_quality.parquet",
+    "context-quality-report.md",
 }
 _SOURCE_MARKER_COUNT = 4
 _ERROR = "invalid_context_gold_package"
@@ -37,7 +38,7 @@ CONTEXT_GOLD_VERIFICATION_SCHEMA: dict[str, Any] = {
         "status": {"enum": ["verified", "failed"]},
         "error": {"const": "invalid_context_gold_package"},
         "manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
-        "output_count": {"type": "integer", "const": 3},
+        "output_count": {"type": "integer", "const": 4},
         "output_bytes": {"type": "integer", "minimum": 0},
         "source_marker_count": {"type": "integer", "const": 4},
         "quality_report": {"const": "verified_as_declared_output"},
