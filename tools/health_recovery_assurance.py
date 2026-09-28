@@ -9,7 +9,13 @@ import tempfile
 from pathlib import Path
 from typing import Any, cast
 
-from archive_govt_nz.domains.health_appropriations import cpi, gdp, qes
+from archive_govt_nz.domains.health_appropriations import (
+    cpi,
+    gdp,
+    pharmac,
+    pharmac_canonical_projection,
+    qes,
+)
 from archive_govt_nz.domains.health_appropriations.canonical_consumer import (
     query_context_observations,
 )
@@ -25,6 +31,9 @@ from archive_govt_nz.domains.health_appropriations.context_gold import (
 from archive_govt_nz.domains.health_appropriations.gold_export import export_gold
 from archive_govt_nz.domains.health_appropriations.local_provenance_reader import (
     CanonicalPackageInput,
+)
+from archive_govt_nz.domains.health_appropriations.pharmac_canonical_projection import (
+    project_pharmac_cpb,
 )
 from archive_govt_nz.domains.health_appropriations.plot_export import render_plots
 from archive_govt_nz.domains.health_appropriations.population_annual_silver import (
@@ -88,11 +97,15 @@ SOURCE_CENSUS_SHA256 = (
     "4bea6001b0a1af4a362075508c521befe5bd6e04d20b2dd2f7c23ef8c6256964"
 )
 CONTEXT_CENSUS_SHA256 = (
-    "31c15aa166d0feea67d19d38fb7bb64be58d51b548c0ef669bb611c03b8d6503"
+    "f5314e7b766b9f1871e8db9c70706bda03bb8b933bb3053ee96168e25bc8890f"
 )
 POPULATION_SOURCE_SHA256 = (
     "a52e0344d1b6e707de04b7b968f2667fc969c0f0777b319921ff716ead82a1d9"
 )
+PHARMAC_SOURCE_SHA256 = (
+    "eaf5801b819321f8aed7544fb16e6348779267fd3d5f8fb1d59410803acffbea"
+)
+PHARMAC_SOURCE_OBSERVED_AT = "2026-08-29T09:00:17Z"
 
 
 def require_evidence(condition: object, message: str) -> None:
@@ -377,6 +390,66 @@ def _query_context_consumer(root: Path) -> dict[str, Any]:
     }
 
 
+def _rebuild_pharmac_canonical(root: Path, index: int) -> dict[str, Any]:
+    """Rebuild pinned Pharmac Silver from Bronze and project canonical facts."""
+    source_cas = ARCHIVE / "bronze-cas" / "sha256"
+    source = source_cas / PHARMAC_SOURCE_SHA256[:2] / PHARMAC_SOURCE_SHA256
+    silver = root / f"pharmac-silver-{index}"
+    pharmac.normalize_pharmac_budget(
+        source,
+        silver,
+        expected_sha256=PHARMAC_SOURCE_SHA256,
+        source_locator=pharmac_canonical_projection.SOURCE_LOCATOR,
+        source_vintage=pharmac_canonical_projection.SOURCE_VINTAGE,
+        observed_at=PHARMAC_SOURCE_OBSERVED_AT,
+        dry_run=False,
+    )
+    pin = digest(silver / "MANIFEST.json")
+    facts, lineage, receipt = project_pharmac_cpb(
+        silver, pin, source_cas, PHARMAC_SOURCE_SHA256
+    )
+    encode = lambda table: json.dumps(  # noqa: E731 - same canonical evidence codec.
+        table.to_pylist(),
+        default=str,
+        sort_keys=True,
+        ensure_ascii=False,
+        separators=(",", ":"),
+    ).encode("utf-8")
+    return {
+        "silver_files": tree(silver),
+        "source_manifest_sha256": pin,
+        "source_object_sha256": PHARMAC_SOURCE_SHA256,
+        "canonical_fact_sha256": hashlib.sha256(encode(facts)).hexdigest(),
+        "canonical_lineage_sha256": hashlib.sha256(encode(lineage)).hexdigest(),
+        "projection": receipt,
+    }
+
+
+def _pharmac_recovery_report(root: Path) -> dict[str, Any]:
+    """Require two matching Bronze-to-canonical Pharmac projections."""
+    runs = {str(index): _rebuild_pharmac_canonical(root, index) for index in (1, 2)}
+    if runs["1"] != runs["2"]:
+        message = "pharmac_canonical_projection_repeat_mismatch"
+        raise RuntimeError(message)
+    return {**runs["1"], "repeat_identical": True}
+
+
+def _canonical_gold_recovery_report(root: Path) -> dict[str, Any]:
+    """Rebuild and compare canonical Gold or retain its binding blocker."""
+    canonical = canonical_inputs()
+    if not canonical:
+        return {
+            "status": "blocked",
+            "reason": "no_retained_canonical_inputs_passed_independent_source_binding",
+        }
+    for index in (1, 2):
+        export_canonical_gold(canonical, root / f"canonical-{index}", write=True)
+    files = compare_product_outputs(
+        root / "canonical-1", root / "canonical-2", "canonical_gold"
+    )
+    return {"files": files, "repeat_identical": True}
+
+
 def run() -> dict[str, Any]:
     """Rebuild supported products in a disposable derivative root."""
     if not ARCHIVE.is_dir():
@@ -459,25 +532,8 @@ def run() -> dict[str, Any]:
             "repeat_identical": True,
         }
         outputs["canonical_context_consumer"] = _query_context_consumer(context_one)
-        canonical = canonical_inputs()
-        if canonical:
-            for index in (1, 2):
-                target = root / f"canonical-{index}"
-                export_canonical_gold(canonical, target, write=True)
-            canonical_files = compare_product_outputs(
-                root / "canonical-1", root / "canonical-2", "canonical_gold"
-            )
-            outputs["canonical_gold"] = {
-                "files": canonical_files,
-                "repeat_identical": True,
-            }
-        else:
-            outputs["canonical_gold"] = {
-                "status": "blocked",
-                "reason": (
-                    "no_retained_canonical_inputs_passed_independent_source_binding"
-                ),
-            }
+        outputs["pharmac_canonical_projection"] = _pharmac_recovery_report(root)
+        outputs["canonical_gold"] = _canonical_gold_recovery_report(root)
     unchanged = original_snapshot == tree(ARCHIVE / "bronze-cas")
     if not unchanged:
         message = "bronze_mutation_detected"
