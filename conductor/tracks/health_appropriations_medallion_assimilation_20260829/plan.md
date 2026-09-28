@@ -865,6 +865,12 @@ integrated parent head.
     existing status tool, and exercise the actual non-interactive CLI parser,
     JSON-RPC resource listing/read, output parity and no-write behavior. This
     bounded status slice does not complete the remaining operation commands.
+- [x] Add a read-only canonical Gold package verifier to CLI and MCP. Check the
+  hash-pinned manifest, exact direct-child output inventory, byte counts and
+  SHA-256 values, plus presence of the temporal report; test malformed and
+  tampered packages, redaction, JSON parity and no writes. This proves package
+  fixity only, not Parquet semantics, source completeness, rights, or
+  publication. See `canonical-gold-verification-20260928.md`.
 - [ ] Add fast-first scheduled discovery/capture/normalization lanes with
   heavier reconciliation and reconstruction behind explicit triggers and
   bounded resource limits. [M-15, M-18; AC-13, AC-16]

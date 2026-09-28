@@ -1,0 +1,186 @@
+"""Read-only fixity verification for canonical Health Gold packages."""
+
+from __future__ import annotations
+
+import hashlib
+import json
+import re
+from typing import TYPE_CHECKING, Any, NoReturn
+
+if TYPE_CHECKING:
+    from pathlib import Path
+
+MAX_MANIFEST_BYTES = 4 * 1024 * 1024
+MAX_PACKAGE_BYTES = 128 * 1024 * 1024
+MAX_OUTPUTS = 512
+_DIGEST = re.compile(r"^[0-9a-f]{64}$")
+_SCHEMA_VERSION = "archive-govt-nz.health-canonical-gold/v2"
+_COMMON = {
+    "schema_version": "archive-govt-nz.health-canonical-gold-verification/v1",
+    "verification_scope": "manifest_declared_output_fixity",
+    "rights_state": "not_evaluated",
+    "publication": "not_performed",
+}
+
+
+def _fail(message: str) -> NoReturn:
+    raise ValueError(message)
+
+
+def _fail_type(message: str) -> NoReturn:
+    raise TypeError(message)
+
+
+CANONICAL_GOLD_VERIFICATION_SCHEMA: dict[str, Any] = {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+        **{key: {"const": value} for key, value in _COMMON.items()},
+        "status": {"enum": ["verified", "failed"]},
+        "error": {"const": "invalid_canonical_gold_package"},
+        "manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "output_count": {"type": "integer", "minimum": 0},
+        "output_bytes": {"type": "integer", "minimum": 0},
+        "products": {"type": "array", "items": {"type": "string"}},
+        "temporal_coverage_groups": {"type": "integer", "minimum": 0},
+    },
+    "required": [*_COMMON, "status"],
+    "additionalProperties": False,
+    "oneOf": [
+        {
+            "properties": {"status": {"const": "verified"}},
+            "required": [
+                "manifest_sha256",
+                "output_count",
+                "output_bytes",
+                "products",
+                "temporal_coverage_groups",
+            ],
+            "not": {"required": ["error"]},
+        },
+        {
+            "properties": {"status": {"const": "failed"}},
+            "required": ["error"],
+            "maxProperties": len(_COMMON) + 2,
+        },
+    ],
+}
+
+
+def _unique_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    result = dict(pairs)
+    if len(result) != len(pairs):
+        _fail("duplicate_manifest_key")
+    return result
+
+
+def _read_manifest(path: Path) -> tuple[bytes, dict[str, Any]]:
+    if path.is_symlink() or not path.is_file():
+        _fail("invalid_manifest_file")
+    with path.open("rb") as stream:
+        payload = stream.read(MAX_MANIFEST_BYTES + 1)
+    if len(payload) > MAX_MANIFEST_BYTES:
+        _fail("manifest_byte_limit")
+    value = json.loads(payload, object_pairs_hook=_unique_object)
+    if not isinstance(value, dict):
+        _fail_type("invalid_manifest")
+    return payload, value
+
+
+def _output_name_is_safe(name: object) -> bool:
+    return (
+        type(name) is str
+        and bool(name)
+        and name not in {".", "..", "MANIFEST.json", "FAILURE.json"}
+        and "/" not in name
+        and "\\" not in name
+    )
+
+
+def _verify_outputs(root: Path, outputs: object) -> tuple[int, int]:
+    if not isinstance(outputs, dict) or not 0 < len(outputs) <= MAX_OUTPUTS:
+        _fail("invalid_outputs")
+    if any(not _output_name_is_safe(name) for name in outputs):
+        _fail("invalid_output_name")
+    if {path.name for path in root.iterdir()} != {*outputs, "MANIFEST.json"}:
+        _fail("output_inventory_mismatch")
+
+    total_bytes = 0
+    for name, metadata in outputs.items():
+        if not isinstance(metadata, dict):
+            _fail("invalid_output_metadata")
+        digest = metadata.get("sha256")
+        size = metadata.get("bytes")
+        if (
+            type(digest) is not str
+            or _DIGEST.fullmatch(digest) is None
+            or type(size) is not int
+            or not 0 <= size <= MAX_PACKAGE_BYTES
+        ):
+            _fail("invalid_output_metadata")
+        path = root / name
+        if path.is_symlink() or not path.is_file() or path.stat().st_size != size:
+            _fail("output_size_mismatch")
+        with path.open("rb") as stream:
+            actual_digest = hashlib.file_digest(stream, "sha256").hexdigest()
+        if actual_digest != digest:
+            _fail("output_digest_mismatch")
+        total_bytes += size
+        if total_bytes > MAX_PACKAGE_BYTES:
+            _fail("package_byte_limit")
+    return len(outputs), total_bytes
+
+
+def _verify(root: Path, manifest_sha256: str) -> dict[str, Any]:
+    if (
+        type(manifest_sha256) is not str
+        or _DIGEST.fullmatch(manifest_sha256) is None
+        or root.is_symlink()
+        or not root.is_dir()
+    ):
+        _fail("invalid_package_root")
+    manifest_bytes, manifest = _read_manifest(root / "MANIFEST.json")
+    if hashlib.sha256(manifest_bytes).hexdigest() != manifest_sha256:
+        _fail("manifest_digest_mismatch")
+    if manifest.get("schema_version") != _SCHEMA_VERSION:
+        _fail("invalid_manifest_schema")
+    outputs = manifest.get("outputs")
+    output_count, output_bytes = _verify_outputs(root, outputs)
+    products = manifest.get("products")
+    temporal_report = manifest.get("temporal_coverage_report")
+    if (
+        not isinstance(products, dict)
+        or not isinstance(temporal_report, dict)
+        or temporal_report.get("schema_version")
+        != "archive-govt-nz.health-temporal-coverage/v1"
+        or not isinstance(temporal_report.get("groups"), list)
+        or any(type(name) is not str or not name for name in products)
+    ):
+        _fail("invalid_gold_reports")
+    return {
+        **_COMMON,
+        "status": "verified",
+        "manifest_sha256": manifest_sha256,
+        "output_count": output_count,
+        "output_bytes": output_bytes,
+        "products": sorted(products),
+        "temporal_coverage_groups": len(temporal_report["groups"]),
+    }
+
+
+def verify_canonical_gold_package(root: Path, manifest_sha256: str) -> dict[str, Any]:
+    """Verify a pinned manifest and every declared direct-child output.
+
+    This checks package fixity and basic report presence only. It neither
+    rereads Parquet semantics nor establishes source completeness, rights,
+    analytical approval, or publication. Failures return a fixed redacted
+    receipt and never create or modify local state.
+    """
+    try:
+        return _verify(root, manifest_sha256)
+    except Exception:  # noqa: BLE001 - keep paths, bytes and parser errors private
+        return {
+            **_COMMON,
+            "status": "failed",
+            "error": "invalid_canonical_gold_package",
+        }
