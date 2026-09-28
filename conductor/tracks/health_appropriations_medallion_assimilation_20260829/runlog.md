@@ -2843,3 +2843,30 @@ checks and validated 113-component SBOM. Automatic Conductor `phase_7_gates`
 review passed; receipt SHA-256 `6f272a309d0d3c7d3185e72a963da141164a79587e9e59f32c51ac56ad9df509`.
 The clean-room receipt SHA-256 is
 `007fa1e84e04aa4444cc5cdc345b5249ea71577623d19ebcaf9fadb1eab1f57d`.
+
+## 2026-09-29 — Canonical contextual consumer bridge
+
+Added a read-only canonical consumer for verified Context Gold. It verifies the
+pinned manifest and declared package fixity before returning the exact
+source-separated observation table, enforcing schema, row-count and unique
+input-record identity contracts. The consumer preserves the original family,
+period, unit, source label, admission and exclusion fields; it performs no joins,
+unit conversion, denominator selection or analytical promotion. The clean-room
+recovery runner now exercises that consumer against its repeat-built Context
+Gold package and emits the exact manifest pin, observation count and families.
+
+Focused Context Gold, canonical consumer and recovery contracts pass (35).
+Ruff and basedpyright pass. Required `./scripts/validate.sh` passes 7,119
+tests, 9 skipped, 52 schemas/42 representative documents, parity 9/9, all
+configured mutation gates, and supply-chain checks; branch coverage is 98.16%.
+The clean-room replay rebuilds Context Gold twice and verifies all 554 rows
+through the canonical consumer at manifest pin
+`cfb34c6d2ca525d8080f5a3d886273290599a4cceefca66414efd17f9a2db268`; all four
+families are present and the Bronze CAS is unchanged. The bounded receipt is
+`canonical-context-consumer-recovery-20260929.json` (SHA-256
+`d013f5317937d671e61aba3b698959429ae82ccf2869af9cf17b3f5388a8521d`).
+Automatic Conductor `phase_7_gates` review passed; receipt SHA-256
+`96e8c1b7046c3b7d...` (full digest recorded in the generated build receipt).
+Recovery still reports `partial_with_blockers`: donor/canonical reports,
+additional source profiles/adapters, and complete Platinum validation remain
+open. Rights remain `not_evaluated`; publication remains `not_performed`.

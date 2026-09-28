@@ -2,13 +2,26 @@
 
 from __future__ import annotations
 
+import json
 from contextlib import closing
 from decimal import Decimal
+from hashlib import sha256
+from io import BytesIO
 from typing import TYPE_CHECKING, Any
 
 import duckdb
 import pyarrow as pa
+import pyarrow.parquet as pq
 
+from archive_govt_nz.domains.health_appropriations.context_gold import (
+    MAX_ROWS as MAX_CONTEXT_ROWS,
+)
+from archive_govt_nz.domains.health_appropriations.context_gold import (
+    OBSERVATION_SCHEMA as CONTEXT_OBSERVATION_SCHEMA,
+)
+from archive_govt_nz.domains.health_appropriations.context_gold_verification import (
+    verify_context_gold_package,
+)
 from archive_govt_nz.domains.health_appropriations.local_provenance_reader import (
     CanonicalPackageInput,
     read_verified_canonical_tables,
@@ -17,6 +30,14 @@ from archive_govt_nz.schemas.health_recordsets import recordset_schema
 
 if TYPE_CHECKING:
     from collections.abc import Sequence
+    from pathlib import Path
+
+_MAX_CONTEXT_PACKAGE = 64 * 1024 * 1024
+_CONTEXT_INPUT_INVALID = "canonical_context_input_invalid"
+_CONTEXT_INPUT_UNVERIFIED = "canonical_context_input_unverified"
+_CONTEXT_INPUT_LIMIT = "canonical_context_input_limit"
+_CONTEXT_SCHEMA_INVALID = "canonical_context_input_schema_invalid"
+_CONTEXT_IDENTITY_INVALID = "canonical_context_input_identity_invalid"
 
 NOMINAL_BUDGET_SCHEMA = pa.schema(
     [
@@ -56,6 +77,46 @@ HISTORICAL_NOMINAL_SCHEMA = pa.schema(
         b"query": b"historical_nominal_source_observations",
     },
 )
+
+
+def query_context_observations(root: Path, manifest_sha256: str) -> pa.Table:
+    """Read exact source-separated context observations from a pinned package."""
+    if root.is_symlink() or not root.is_dir() or type(manifest_sha256) is not str:
+        raise ValueError(_CONTEXT_INPUT_INVALID)
+    receipt = verify_context_gold_package(root, manifest_sha256)
+    if receipt.get("status") != "verified":
+        raise ValueError(_CONTEXT_INPUT_UNVERIFIED)
+    path = root / "context_observations.parquet"
+    try:
+        if path.stat().st_size > _MAX_CONTEXT_PACKAGE:
+            raise ValueError(_CONTEXT_INPUT_LIMIT)
+        payload = path.read_bytes()
+        table = pq.read_table(BytesIO(payload))
+    except (OSError, pa.ArrowException) as exc:
+        raise ValueError(_CONTEXT_INPUT_INVALID) from exc
+    if table.schema != CONTEXT_OBSERVATION_SCHEMA or table.num_rows > MAX_CONTEXT_ROWS:
+        raise ValueError(_CONTEXT_SCHEMA_INVALID)
+    identities = [row["input_record_id"] for row in table.to_pylist()]
+    if (
+        any(type(identity) is not str or not identity for identity in identities)
+        or len(set(identities)) != len(identities)
+        or sha256(payload).hexdigest()
+        != _context_product_digest(root, "context_observations.parquet")
+    ):
+        raise ValueError(_CONTEXT_IDENTITY_INVALID)
+    return table
+
+
+def _context_product_digest(root: Path, name: str) -> str | None:
+    """Read a product digest only from an already verified package manifest."""
+    try:
+        manifest = json.loads((root / "MANIFEST.json").read_text(encoding="utf-8"))
+        digest = manifest["products"][name]["sha256"]
+    except OSError, json.JSONDecodeError, KeyError, TypeError:
+        return None
+    return digest if type(digest) is str else None
+
+
 HISTORICAL_OBSERVATION_SCHEMA = pa.schema(
     [
         ("source_vintage", pa.string(), False),

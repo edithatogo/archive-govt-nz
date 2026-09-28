@@ -15,6 +15,9 @@ import pytest
 
 from archive_govt_nz.cli import app
 from archive_govt_nz.domains.health_appropriations import context_gold
+from archive_govt_nz.domains.health_appropriations.canonical_consumer import (
+    query_context_observations,
+)
 from archive_govt_nz.mcp_server import Server, call_tool, list_tools
 
 TRACK = Path("conductor/tracks/health_appropriations_medallion_assimilation_20260829")
@@ -220,6 +223,40 @@ def test_synthetic_source_packages_cover_build_contract(
             "MANIFEST.json",
         )
     )
+
+
+def test_canonical_consumer_reads_verified_context_without_promotion(
+    tmp_path: Path, synthetic_packages: tuple[Path, Path]
+) -> None:
+    silver, source = synthetic_packages
+    package = tmp_path / "context-gold"
+    context_gold.export_context_gold(silver, source, package, write=True)
+    manifest_hash = hashlib.sha256((package / "MANIFEST.json").read_bytes()).hexdigest()
+
+    observed = query_context_observations(package, manifest_hash)
+    direct = pq.read_table(package / "context_observations.parquet")
+
+    assert observed.equals(direct, check_metadata=True)
+    assert observed.num_rows == 10
+    rows = observed.to_pylist()
+    assert len({row["input_record_id"] for row in rows}) == observed.num_rows
+    assert {row["family"] for row in rows} == {"cpi", "wage", "gdp", "population"}
+    assert {row["admission"] for row in rows} == {
+        "eligible_context_only",
+        "excluded_from_numeric_series",
+    }
+    assert {row["period_token"] for row in rows}
+
+
+def test_canonical_context_consumer_fails_closed_on_changed_pin(
+    tmp_path: Path, synthetic_packages: tuple[Path, Path]
+) -> None:
+    silver, source = synthetic_packages
+    package = tmp_path / "context-gold"
+    context_gold.export_context_gold(silver, source, package, write=True)
+
+    with pytest.raises(ValueError, match="canonical_context_input_unverified"):
+        query_context_observations(package, "0" * 64)
 
 
 def test_source_path_checks_content_addressed_cas_fixity(tmp_path: Path) -> None:
