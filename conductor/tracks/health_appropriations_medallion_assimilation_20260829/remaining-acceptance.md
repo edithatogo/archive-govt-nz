@@ -30,6 +30,15 @@ and local-inventory replays matched all retained canonical bytes; no standards
 processor or publication was invoked. See `resume-execution.md` and the local
 provenance reader receipt for exact scope; hosted delivery is recorded separately.
 
+The 2026-09-29 expanded clean-room receipt adds two repeat-identical runs of
+the 12-profile donor Silver chain (739 facts), four context-source Silver
+packages (including QES v3), Context Gold, donor SQLite/Gold/six plots and
+historical canonical Gold. The external Bronze CAS remained unchanged. This
+closes those specific recovery slices only: additional profile/adapters,
+reports, complete Platinum validation, rights, and publication remain open.
+QES v3 supersedes the stale v2 pin for current Context Gold reproduction while
+preserving v2 and all originals; see `qes-silver-v3-recovery-20260929.md`.
+
 ## Acceptance boundaries and next executable work
 
 | Criterion | Evidence already available | Remaining boundary / next action |
@@ -45,7 +54,7 @@ provenance reader receipt for exact scope; hosted delivery is recorded separatel
 | AC-09 longitudinal coverage | Bounded successor Budget/forecast/fiscal and contextual source profiles | Enumerate all target editions/source families with explicit unavailable/restricted/superseded dispositions; no silent backfill or cross-vintage pooling. |
 | AC-10 contextual measures | Guarded source-specific analytical inputs | Exact population denominator and reviewed Crown expense cells remain unresolved; CPI basis and other unknown semantics must stay unknown. No inferred per-capita/Crown-share values. |
 | AC-11 quality | Deterministic source/lineage/count/layout and analytical guards | Compose coverage, cross-source variance and classification-drift reports without treating unmapped labels as authoritative mappings. |
-| AC-12 recovery | Two original-to-raw/SQLite/Gold/plot builds plus retained controlled-interruption/exclusive-resume pilot | Compose canonical consumers and validated Platinum output into the same clean-room recovery chain. The bounded raw resume pilot does not close the full criterion. |
+| AC-12 recovery | Two original-to-raw/SQLite/Gold/six-plot builds, repeat-identical 12-profile donor Silver, four context Silver packages, Context Gold and historical canonical Gold; retained controlled-interruption/exclusive-resume pilot | Add remaining source profiles/adapters and reports, then compose validated Platinum output into the same clean-room recovery chain. The bounded raw resume pilot and this expanded but incomplete product set do not close the full criterion. |
 | AC-13 operability | Typed source CLI and forced-read-only MCP for eight explicit profiles | Wire reviewed recovery APIs into typed operations, then bounded scheduling/failure evidence; configured schedules are not observed successful captures. |
 | AC-14 Platinum | Pure inventory, scoped pinned-package verifier/replay and bounded asserted PROV entity projection | Extend package coverage, compose observed fixity separately from assertions, then validate DCAT/Croissant/RO-Crate/PROV projections with explicit mandatory inputs. No full standards completion is claimed. |
 | AC-15 publication | Historical v4 publication evidence remains distinct | Any changed candidate needs its own exact manifest, rights join and approval before upload, then independent remote readback/collection verification. No current execution HF claim. |
@@ -57,9 +66,10 @@ provenance reader receipt for exact scope; hosted delivery is recorded separatel
    projection; keep their already-passed local/pilot evidence distinct. Executor
    #323 merged as `1edd022c6cb0233a7807ebddd46c8b6d3fbf7394` at
    2026-08-31T18:17:38Z after seven successful checks at `f866da40`.
-2. Complete the canonical consumer/metadata/recovery bridge before considering a
-   changed candidate. Keep contextual sources with unresolved identity, access,
-   units or rights out of analytical promotion while working other sources.
+2. Complete remaining source profiles/adapters, reports and the
+   canonical consumer/metadata/recovery bridge before considering a changed
+   candidate. Keep contextual sources with unresolved identity, access, units
+   or rights out of analytical promotion while working other sources.
 3. Reconcile the remaining criteria against exact evidence before opening a
    publication gate. The existing candidate approval covers only its existing
    bytes. Donor retirement and Zenodo remain outside this approved track.
