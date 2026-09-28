@@ -690,7 +690,13 @@ integrated parent head.
     report, and report bounded omissions without interpolation. Preserve exact
     values in Parquet; numeric conversion is only for plot display. See
     `canonical-source-separated-gold-20260928.md`. Other measures, donor
-    reports, source drill-through and consumer examples remain open.
+    reports, source-coordinate drill-through and consumer examples remain open.
+  - [x] Add a manifest index from each admitted source record ID to its exact
+    Parquet output row, bound by table-byte SHA-256 and deterministic sorted
+    row position. Verify every link through Parquet readback. This links only
+    Silver identities within the canonical package; source coordinates,
+    source rights and other reports remain open. See
+    `canonical-gold-drillthrough-20260928.md`.
 
 ### 6.3 Phase review and checkpoint
 
