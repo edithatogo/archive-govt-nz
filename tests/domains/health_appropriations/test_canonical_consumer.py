@@ -458,6 +458,35 @@ def test_canonical_gold_builds_source_separated_facts_and_report(
         export_canonical_gold((object(),), tmp_path / "invalid")  # type: ignore[arg-type]
 
 
+def test_temporal_coverage_keeps_historical_source_series_distinct(
+    tmp_path: Path,
+) -> None:
+    observations, _receipt = query_historical_observations(
+        (_historical_package(tmp_path),)
+    )
+    original = observations.to_pylist()[0]
+    alternate = {
+        **original,
+        "source_label": "A distinct historical source series",
+        "source_locator": "sheet=Alternate!A1",
+    }
+    table = pa.Table.from_pylist([original, alternate], schema=observations.schema)
+
+    report = canonical_gold_export.build_temporal_coverage_report(
+        {"observations": table}
+    )
+    groups = report["groups"]
+
+    assert len(groups) == 2
+    assert {
+        (group["context"]["source_label"], group["context"]["source_locator"])
+        for group in groups
+    } == {
+        (original["source_label"], original["source_locator"]),
+        (alternate["source_label"], alternate["source_locator"]),
+    }
+
+
 @pytest.mark.parametrize("packages", [[], (), [object()]])
 def test_exact_tuple_boundary(packages: object) -> None:
     with pytest.raises(ValueError, match=r"^canonical_consumer_invalid$"):

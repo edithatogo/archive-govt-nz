@@ -159,7 +159,7 @@ def _source_drillthrough(
     }
 
 
-def _temporal_coverage_report(tables: dict[str, pa.Table]) -> dict[str, Any]:
+def build_temporal_coverage_report(tables: dict[str, pa.Table]) -> dict[str, Any]:
     """List observed period tokens by exact source context without gap inference."""
     definitions = {
         "historical_observations.parquet": (
@@ -175,6 +175,8 @@ def _temporal_coverage_report(tables: dict[str, pa.Table]) -> dict[str, Any]:
                 "denominator_definition",
                 "institutional_coverage",
                 "accounting_basis",
+                "source_label",
+                "source_locator",
             ),
         ),
         "nominal_budget.parquet": (
@@ -369,7 +371,7 @@ def _export(
         "products": product_report,
         "outputs": outputs,
         "source_drillthrough": _source_drillthrough(tables, outputs),
-        "temporal_coverage_report": _temporal_coverage_report(tables),
+        "temporal_coverage_report": build_temporal_coverage_report(tables),
         "plot_report": plot_report,
         "quality_report": quality_report,
         "period_ordering": "tokens_preserved_and_sorted_as_strings",
