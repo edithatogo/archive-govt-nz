@@ -780,6 +780,11 @@ integrated parent head.
     in the package fixity inventory, omit it from its own `hasPart` list, and
     do not add licensing, publication, date or publisher claims. This does not
     complete broader Platinum metadata or standards-processor validation.
+  - [x] Generate a deterministic dataset card from canonical Gold product
+    rows, exact-context temporal group counts and pinned input package markers.
+    Include the card in the manifest and RO-Crate while preserving explicit
+    source-health, classification, reconciliation, rights and publication
+    boundaries. See `canonical-gold-dataset-card-20260928.md`.
 - [ ] Add rebuildable federation tables for approved links to
   `reimbursement-atlas` and `global-medicines-atlas`; preserve unmatched and
   ambiguous mappings. [M-14; AC-14]

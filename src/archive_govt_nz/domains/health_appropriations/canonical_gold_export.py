@@ -72,9 +72,11 @@ def _ro_crate_metadata(payloads: dict[str, bytes]) -> dict[str, Any]:
     for name, payload in sorted(payloads.items()):
         if name.endswith(".parquet"):
             media_type = "application/vnd.apache.parquet"
-        else:
-            _require(name.endswith(".png"))
+        elif name.endswith(".png"):
             media_type = "image/png"
+        else:
+            _require(name.endswith(".md"))
+            media_type = "text/markdown"
         parts.append({"@id": name})
         files.append(
             {
@@ -108,6 +110,58 @@ def _ro_crate_metadata(payloads: dict[str, bytes]) -> dict[str, Any]:
             *files,
         ],
     }
+
+
+def _dataset_card(
+    products: dict[str, dict[str, Any]],
+    temporal_report: dict[str, Any],
+    package_markers: list[str],
+) -> bytes:
+    rows = [
+        "# Health Appropriations canonical Gold dataset card",
+        "",
+        "This local derivative preserves source-separated products. It does not",
+        "assess analytical completeness, establish rights, or perform publication.",
+        "",
+        "## Products",
+        "",
+        "| Product | Input records | Output rows | Exact-context temporal groups |",
+        "| --- | ---: | ---: | ---: |",
+    ]
+    groups = temporal_report["groups"]
+    for name, details in sorted(products.items()):
+        row_count = details.get("observation_rows", details.get("output_rows", 0))
+        output_names = {
+            "historical": "historical_observations.parquet",
+            "budget": "nominal_budget.parquet",
+            "revenue": "nominal_revenue.parquet",
+        }
+        group_count = sum(
+            group["output_name"] == output_names[name] for group in groups
+        )
+        rows.append(
+            f"| {name} | {details['input_records']} | {row_count} | {group_count} |"
+        )
+    rows.extend(
+        [
+            "",
+            "## Input package marker SHA-256 pins",
+            "",
+            *[f"- `{marker}`" for marker in sorted(package_markers)],
+            "",
+            "## Assessment boundaries",
+            "",
+            "- Analytical completeness: not evaluated.",
+            "- Source health: unresolved.",
+            "- Classification drift: unresolved.",
+            "- Revision reconciliation: unresolved.",
+            "- Cross-source reconciliation: not performed.",
+            "- Rights: not evaluated.",
+            "- Publication: not performed.",
+            "",
+        ]
+    )
+    return "\n".join(rows).encode("utf-8")
 
 
 def _quality_report(
@@ -228,16 +282,28 @@ def _output_inventory(
             if name not in _TABLES and name.endswith(".png")
         }
     )
-    crate = payloads["ro-crate-metadata.json"]
-    outputs["ro-crate-metadata.json"] = {
-        "sha256": hashlib.sha256(crate).hexdigest(),
-        "bytes": len(crate),
-        "kind": "ro_crate_metadata",
-        "standards_profile": "RO-Crate 1.1",
-        "rights_state": "not_evaluated",
-        "publication": "not_performed",
-    }
+    for name, kind, profile in (
+        ("dataset-card.md", "dataset_card", None),
+        ("ro-crate-metadata.json", "ro_crate_metadata", "RO-Crate 1.1"),
+    ):
+        payload = payloads[name]
+        outputs[name] = {
+            "sha256": hashlib.sha256(payload).hexdigest(),
+            "bytes": len(payload),
+            "kind": kind,
+            **({"standards_profile": profile} if profile else {}),
+            "rights_state": "not_evaluated",
+            "publication": "not_performed",
+        }
     return outputs
+
+
+def _package_markers(query_receipts: list[dict[str, Any]]) -> list[str]:
+    return sorted(
+        marker
+        for query_receipt in query_receipts
+        for marker in query_receipt["package_marker_sha256"]
+    )
 
 
 def build_temporal_coverage_report(tables: dict[str, pa.Table]) -> dict[str, Any]:
@@ -349,6 +415,33 @@ def _readback(path: Path, payload: bytes, table: pa.Table | None = None) -> None
         _require(restored.cast(table.schema).equals(table, check_metadata=True))
 
 
+def _build_payloads(
+    tables: dict[str, pa.Table],
+    products: dict[str, dict[str, Any]],
+    query_receipts: list[dict[str, Any]],
+) -> tuple[dict[str, bytes], dict[str, Any], dict[str, Any]]:
+    table_payloads = {
+        filename: _table_bytes(tables[key])
+        for filename, key in _TABLES.items()
+        if key in tables
+    }
+    plot_payloads, plot_report = build_discrete_plots(
+        {
+            filename: tables[key].to_pylist()
+            for filename, key in _TABLES.items()
+            if key in tables
+        }
+    )
+    payloads = {**table_payloads, **plot_payloads}
+    temporal_report = build_temporal_coverage_report(tables)
+    package_markers = _package_markers(query_receipts)
+    payloads["dataset-card.md"] = _dataset_card(
+        products, temporal_report, package_markers
+    )
+    payloads["ro-crate-metadata.json"] = _encoded(_ro_crate_metadata(payloads))
+    return payloads, plot_report, temporal_report
+
+
 def _export(
     packages: tuple[CanonicalPackageInput, ...], output: Path, *, write: bool
 ) -> dict[str, Any]:
@@ -402,38 +495,24 @@ def _export(
                 "netting": query_receipt.get("netting", "not_applicable"),
                 "vintage_pooling": "not_performed",
             }
-    payloads = {
-        filename: _table_bytes(tables[key])
-        for filename, key in _TABLES.items()
-        if key in tables
-    }
-    plot_payloads, plot_report = build_discrete_plots(
-        {
-            filename: tables[key].to_pylist()
-            for filename, key in _TABLES.items()
-            if key in tables
-        }
+    payloads, plot_report, temporal_report = _build_payloads(
+        tables, product_report, query_receipts
     )
-    payloads.update(plot_payloads)
-    payloads["ro-crate-metadata.json"] = _encoded(_ro_crate_metadata(payloads))
+    package_markers = _package_markers(query_receipts)
     quality_report = _quality_report(tables, product_report)
     _require(sum(map(len, payloads.values())) <= MAX_OUTPUT_BYTES)
     outputs = _output_inventory(payloads, tables)
     receipt = {
         "schema_version": SCHEMA,
         "status": "dry_run" if not write else "complete",
-        "package_marker_sha256": sorted(
-            marker
-            for query_receipt in query_receipts
-            for marker in query_receipt["package_marker_sha256"]
-        ),
+        "package_marker_sha256": package_markers,
         "input_records": sum(
             query_receipt["input_records"] for query_receipt in query_receipts
         ),
         "products": product_report,
         "outputs": outputs,
         "source_drillthrough": _source_drillthrough(tables, outputs),
-        "temporal_coverage_report": build_temporal_coverage_report(tables),
+        "temporal_coverage_report": temporal_report,
         "plot_report": plot_report,
         "quality_report": quality_report,
         "period_ordering": "tokens_preserved_and_sorted_as_strings",
