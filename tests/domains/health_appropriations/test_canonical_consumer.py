@@ -45,6 +45,9 @@ from archive_govt_nz.domains.health_appropriations.canonical_gold_export import 
     export_canonical_gold,
     export_historical_gold,
 )
+from archive_govt_nz.domains.health_appropriations.canonical_gold_verification import (
+    verify_canonical_gold_package,
+)
 from archive_govt_nz.domains.health_appropriations.historical_canonical_export import (
     export_historical_canonical,
 )
@@ -358,6 +361,42 @@ def test_historical_gold_export_records_bounded_readback_failure(
     assert not (output / "MANIFEST.json").exists()
 
 
+def _assert_ro_crate(output: Path, manifest: dict[str, Any]) -> None:
+    crate = json.loads((output / "ro-crate-metadata.json").read_text(encoding="utf-8"))
+    assert crate["@context"] == "https://w3id.org/ro/crate/1.1/context"
+    assert crate["@graph"][0] == {
+        "@id": "ro-crate-metadata.json",
+        "@type": "CreativeWork",
+        "conformsTo": {"@id": "https://w3id.org/ro/crate/1.1"},
+        "about": {"@id": "./"},
+    }
+    nodes = {node["@id"]: node for node in crate["@graph"]}
+    root = nodes["./"]
+    assert root["@type"] == "Dataset"
+    assert {item["@id"] for item in root["hasPart"]} == {
+        name for name in manifest["outputs"] if name != "ro-crate-metadata.json"
+    }
+    document = json.dumps(crate)
+    assert all(
+        f'"{field}"' not in document
+        for field in ("license", "publisher", "datePublished", "accessURL")
+    )
+    for part in root["hasPart"]:
+        node = nodes[part["@id"]]
+        payload = (output / part["@id"]).read_bytes()
+        assert node["@type"] == "File"
+        assert node["contentSize"] == len(payload)
+        assert node["sha256"] == hashlib.sha256(payload).hexdigest()
+        assert manifest["outputs"][part["@id"]]["sha256"] == node["sha256"]
+    assert manifest["outputs"]["ro-crate-metadata.json"]["kind"] == (
+        "ro_crate_metadata"
+    )
+    manifest_pin = hashlib.sha256((output / "MANIFEST.json").read_bytes()).hexdigest()
+    verification = verify_canonical_gold_package(output, manifest_pin)
+    assert verification["status"] == "verified"
+    assert verification["output_count"] == len(manifest["outputs"])
+
+
 def test_canonical_gold_builds_source_separated_facts_and_report(
     tmp_path: Path,
 ) -> None:
@@ -410,6 +449,7 @@ def test_canonical_gold_builds_source_separated_facts_and_report(
     assert any(path.name.startswith("plot_budget_") for path in plot_paths)
     assert any(path.name.startswith("plot_revenue_") for path in plot_paths)
     manifest = json.loads((output / "MANIFEST.json").read_text(encoding="utf-8"))
+    _assert_ro_crate(output, manifest)
     assert {
         "historical_observations.parquet",
         "historical_coverage.parquet",

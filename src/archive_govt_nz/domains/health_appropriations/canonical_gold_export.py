@@ -65,6 +65,51 @@ def _table_bytes(table: pa.Table) -> bytes:
     return buffer.getvalue()
 
 
+def _ro_crate_metadata(payloads: dict[str, bytes]) -> dict[str, Any]:
+    """Describe actual Gold payload bytes without licensing or publication claims."""
+    parts: list[dict[str, str]] = []
+    files: list[dict[str, Any]] = []
+    for name, payload in sorted(payloads.items()):
+        if name.endswith(".parquet"):
+            media_type = "application/vnd.apache.parquet"
+        else:
+            _require(name.endswith(".png"))
+            media_type = "image/png"
+        parts.append({"@id": name})
+        files.append(
+            {
+                "@id": name,
+                "@type": "File",
+                "contentSize": len(payload),
+                "encodingFormat": media_type,
+                "sha256": hashlib.sha256(payload).hexdigest(),
+            }
+        )
+    return {
+        "@context": "https://w3id.org/ro/crate/1.1/context",
+        "@graph": [
+            {
+                "@id": "ro-crate-metadata.json",
+                "@type": "CreativeWork",
+                "conformsTo": {"@id": "https://w3id.org/ro/crate/1.1"},
+                "about": {"@id": "./"},
+            },
+            {
+                "@id": "./",
+                "@type": "Dataset",
+                "name": "Health Appropriations canonical Gold local package",
+                "description": (
+                    "A source-separated local analytical derivative. Inclusion "
+                    "in this inventory does not evaluate rights or perform publication."
+                ),
+                "version": SCHEMA,
+                "hasPart": parts,
+            },
+            *files,
+        ],
+    }
+
+
 def _quality_report(
     tables: dict[str, pa.Table], product_report: dict[str, dict[str, Any]]
 ) -> dict[str, Any]:
@@ -157,6 +202,42 @@ def _source_drillthrough(
             for record_id, output_rows in sorted(by_record.items())
         ],
     }
+
+
+def _output_inventory(
+    payloads: dict[str, bytes], tables: dict[str, pa.Table]
+) -> dict[str, dict[str, Any]]:
+    outputs = {
+        name: {
+            "sha256": hashlib.sha256(payload).hexdigest(),
+            "bytes": len(payload),
+            "rows": tables[_TABLES[name]].num_rows,
+        }
+        for name, payload in sorted(payloads.items())
+        if name in _TABLES
+    }
+    outputs.update(
+        {
+            name: {
+                "sha256": hashlib.sha256(payload).hexdigest(),
+                "bytes": len(payload),
+                "kind": "plot_png",
+                "display_only": True,
+            }
+            for name, payload in sorted(payloads.items())
+            if name not in _TABLES and name.endswith(".png")
+        }
+    )
+    crate = payloads["ro-crate-metadata.json"]
+    outputs["ro-crate-metadata.json"] = {
+        "sha256": hashlib.sha256(crate).hexdigest(),
+        "bytes": len(crate),
+        "kind": "ro_crate_metadata",
+        "standards_profile": "RO-Crate 1.1",
+        "rights_state": "not_evaluated",
+        "publication": "not_performed",
+    }
+    return outputs
 
 
 def build_temporal_coverage_report(tables: dict[str, pa.Table]) -> dict[str, Any]:
@@ -334,29 +415,10 @@ def _export(
         }
     )
     payloads.update(plot_payloads)
+    payloads["ro-crate-metadata.json"] = _encoded(_ro_crate_metadata(payloads))
     quality_report = _quality_report(tables, product_report)
     _require(sum(map(len, payloads.values())) <= MAX_OUTPUT_BYTES)
-    outputs = {
-        name: {
-            "sha256": hashlib.sha256(payload).hexdigest(),
-            "bytes": len(payload),
-            "rows": tables[_TABLES[name]].num_rows,
-        }
-        for name, payload in sorted(payloads.items())
-        if name in _TABLES
-    }
-    outputs.update(
-        {
-            name: {
-                "sha256": hashlib.sha256(payload).hexdigest(),
-                "bytes": len(payload),
-                "kind": "plot_png",
-                "display_only": True,
-            }
-            for name, payload in sorted(payloads.items())
-            if name not in _TABLES
-        }
-    )
+    outputs = _output_inventory(payloads, tables)
     receipt = {
         "schema_version": SCHEMA,
         "status": "dry_run" if not write else "complete",
