@@ -61,7 +61,7 @@ _EXPECTED_VINTAGES = {
 }
 _EXPECTED_MANIFESTS = {
     "cpi": "edb62f4b106948502e717f5f6c5e3da00efc0a64bb10b5dcbafc48cd1a6c257e",
-    "wage": "35114105c86085ee49aeb97ac9f8d8b696ef72692b5eea12d348496a8b920d41",
+    "wage": "0bf89bd6c10a0458ef4c578b209c3252292961976d2f50b3c27fe92907c3cb04",
     "gdp": "639b3c7da60f2afa1b860c5f6c8f1c4c0ae24bf17aa7af63bf8a06a1f6471b35",
     "population": "067255c4ac18377312d0a8234dc94804c876ba68866cfba3a483a4dd89415798",
 }
@@ -339,7 +339,7 @@ def _source_native_packages(
             "CPIQ.SE9A",
         ),
         (
-            "raw-qes-2026q2-20260831-v2",
+            "raw-qes-2026q2-20260831-v3",
             "qes_facts.parquet",
             qes_pin,
             "wage",

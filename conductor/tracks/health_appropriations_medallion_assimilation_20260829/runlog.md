@@ -2810,3 +2810,36 @@ committed recovery receipt SHA-256 remains
 byte equality is asserted only within one runtime; prior evidence documents
 the header bytes that vary across runtime versions. Rights remain
 `not_evaluated`; publication remains `not_performed`.
+
+## 2026-09-29 — Context and 12-profile clean-room recovery
+
+The recovery runner now binds CPI, QES and GDP Bronze objects to the pinned
+context census and population to its retained export metadata; it rebuilds all
+four source-native Silver packages twice and requires exact manifest pins. QES
+adapter output had drifted from retained v2 after PR #525 added three lineage
+rows per quarter. Preserved v2 unchanged, created an external v3 Silver package
+from the pinned original, and updated Context Gold to the v3 package hash. The
+new QES package has 9 facts, 207 lineage rows and 6,021 inventoried cells; two
+clean-room builds match. No semantic, rights or analytical qualification was
+added.
+
+Two full clean-room runs also rebuilt the 12-profile donor Silver chain (739
+facts), donor compatibility SQLite (341 facts), donor Gold (321 selected
+facts), six plots, Context Gold and historical canonical Gold. Each repeated
+product inventory matched within its runtime and Bronze CAS was unchanged. The
+current receipt remains `partial_with_blockers`; remaining categories are
+source-native profiles/canonical adapters, donor and canonical reports, and a
+complete validated DCAT/Croissant/RO-Crate/PROV profile. Rights remain
+`not_evaluated`; publication remains `not_performed`.
+
+Focused recovery/context/QES tests passed (52), Ruff and basedpyright passed.
+The first full validation exposed a stale index digest in the immutable
+2026-09-27 source-measure review because that index had been edited; restoring
+the index preserved its recorded historical evidence and the isolated test
+passed (36). The required `./scripts/validate.sh` then passed: 7,117 tests, 9
+skipped, 98.19% branch coverage, 52 schemas/42 representative documents,
+parity 9/9, configured mutation/resource gates, dependency/licence/secret
+checks and validated 113-component SBOM. Automatic Conductor `phase_7_gates`
+review passed; receipt SHA-256 `6f272a309d0d3c7d3185e72a963da141164a79587e9e59f32c51ac56ad9df509`.
+The clean-room receipt SHA-256 is
+`007fa1e84e04aa4444cc5cdc345b5249ea71577623d19ebcaf9fadb1eab1f57d`.

@@ -21,7 +21,7 @@ TRACK = Path("conductor/tracks/health_appropriations_medallion_assimilation_2026
 EXTERNAL = Path("/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations")
 _PINNED_PACKAGES = (
     "raw-cpi-20260831-v1",
-    "raw-qes-2026q2-20260831-v2",
+    "raw-qes-2026q2-20260831-v3",
     "raw-stats-gdp-20260831-v1",
     "population-annual-mean-context-20260925-v1",
 )
@@ -54,7 +54,7 @@ def synthetic_packages(
             "Stats-NZ-CPI-2026-Q2",
         ),
         (
-            "raw-qes-2026q2-20260831-v2",
+            "raw-qes-2026q2-20260831-v3",
             "qes_facts.parquet",
             "wage",
             "QEMQ.SASZ9A",

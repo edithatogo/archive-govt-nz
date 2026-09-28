@@ -5,11 +5,11 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-import shutil
 import tempfile
 from pathlib import Path
 from typing import Any, cast
 
+from archive_govt_nz.domains.health_appropriations import cpi, gdp, qes
 from archive_govt_nz.domains.health_appropriations.canonical_gold_export import (
     export_canonical_gold,
 )
@@ -32,6 +32,11 @@ from archive_govt_nz.domains.health_appropriations.rebuild import (
     plan_rebuild,
     verify_rebuild,
 )
+from archive_govt_nz.domains.health_appropriations.rebuild_eight import (
+    execute_eight,
+    plan_eight,
+    verify_eight,
+)
 
 TRACK = Path("conductor/tracks/health_appropriations_medallion_assimilation_20260829")
 ARCHIVE = Path("/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations")
@@ -41,8 +46,8 @@ CONTEXT = {
         "edb62f4b106948502e717f5f6c5e3da00efc0a64bb10b5dcbafc48cd1a6c257e",
     ),
     "wage": (
-        "raw-qes-2026q2-20260831-v2",
-        "35114105c86085ee49aeb97ac9f8d8b696ef72692b5eea12d348496a8b920d41",
+        "raw-qes-2026q2-20260831-v3",
+        "0bf89bd6c10a0458ef4c578b209c3252292961976d2f50b3c27fe92907c3cb04",
     ),
     "gdp": (
         "raw-stats-gdp-20260831-v1",
@@ -53,6 +58,44 @@ CONTEXT = {
         "067255c4ac18377312d0a8234dc94804c876ba68866cfba3a483a4dd89415798",
     ),
 }
+CONTEXT_SERIES = {
+    "cpi": (
+        "cpi-2026q2",
+        "cpi",
+        "stats_nz_cpi-053a0705526fac8d",
+        "f474a6a3bfbe9b6377c3c68cc94a4cb494335130af3940fe538f5a0dd1274e9d",
+    ),
+    "wage": (
+        "qes-2026q2",
+        "qes",
+        "stats_nz_qes-faab0efe46470af8",
+        "1af2e7e37f1c108a2656842cf1f519c903e1a982bcdc03ee02d0ad888ebc3a97",
+    ),
+    "gdp": (
+        "gdp-stats-2026q1",
+        "gdp",
+        "stats_nz_gdp-9fc80ed4b7f234b2",
+        "a7326e84e7704446a18e5c8942f99901a452b2170af4228e8a5c242a5532ed21",
+    ),
+}
+DONOR_MANIFEST_SHA256 = (
+    "893f387e1f361400285ccc84802b497e87802d1ad913826ff7d9055b07a03b74"
+)
+SOURCE_CENSUS_SHA256 = (
+    "4bea6001b0a1af4a362075508c521befe5bd6e04d20b2dd2f7c23ef8c6256964"
+)
+CONTEXT_CENSUS_SHA256 = (
+    "31c15aa166d0feea67d19d38fb7bb64be58d51b548c0ef669bb611c03b8d6503"
+)
+POPULATION_SOURCE_SHA256 = (
+    "a52e0344d1b6e707de04b7b968f2667fc969c0f0777b319921ff716ead82a1d9"
+)
+
+
+def require_evidence(condition: object, message: str) -> None:
+    """Fail closed when a recorded source binding is missing or changed."""
+    if not condition:
+        raise RuntimeError(message)
 
 
 def digest(path: Path) -> str:
@@ -83,6 +126,173 @@ def compare_product_outputs(first: Path, second: Path, product: str) -> dict[str
         message = f"{product}_repeat_mismatch"
         raise RuntimeError(message)
     return first_files
+
+
+def context_source_binding(family: str) -> dict[str, str]:
+    """Join a context Silver input to its exact captured census and Bronze pin."""
+    context_bytes = (TRACK / "context-census.json").read_bytes()
+    require_evidence(
+        hashlib.sha256(context_bytes).hexdigest() == CONTEXT_CENSUS_SHA256,
+        "context_census_pin_mismatch",
+    )
+    context = json.loads(context_bytes)
+    population = json.loads((TRACK / "population-annual-context.json").read_text())
+    if family == "population":
+        source_hash = population["original_sha256"]
+        require_evidence(
+            source_hash == POPULATION_SOURCE_SHA256
+            and population["original_storage"] == "external_bronze_cas_sha256"
+            and population["rights"] == "not_evaluated",
+            "population_context_source_binding_invalid",
+        )
+        return {
+            "source_object_sha256": source_hash,
+            "source_locator": population["export_route"],
+            "source_vintage": population["release_date"],
+            "observed_at": population["retrieved_at"],
+        }
+    require_evidence(family in CONTEXT_SERIES, f"unknown_context_family:{family}")
+    series_id, source_family, source_id, pinned_hash = CONTEXT_SERIES[family]
+    matches = [entry for entry in context["series"] if entry["id"] == series_id]
+    require_evidence(
+        len(matches) == 1 and matches[0]["family"] == source_family,
+        f"context_series_binding_invalid:{family}",
+    )
+    selected = matches[0]
+    sources = selected["sources"]
+    require_evidence(len(sources) == 1, f"context_source_count_invalid:{family}")
+    source = sources[0]
+    require_evidence(
+        source["source_id"] == source_id and source["object_sha256"] == pinned_hash,
+        f"context_source_metadata_drift:{family}",
+    )
+    census_bytes = (TRACK / "source-census.json").read_bytes()
+    require_evidence(
+        hashlib.sha256(census_bytes).hexdigest() == SOURCE_CENSUS_SHA256,
+        "source_census_pin_mismatch",
+    )
+    census = json.loads(census_bytes)
+    observed = [row for row in census["records"] if row["source_id"] == source_id]
+    require_evidence(
+        len(observed) == 1,
+        f"captured_source_missing_or_ambiguous:{family}",
+    )
+    row = observed[0]
+    require_evidence(
+        all(
+            row.get(key) == expected
+            for key, expected in {
+                "disposition": "captured",
+                "object_sha256": pinned_hash,
+                "url": source["url"],
+                "observed_at": source["observed_at"],
+            }.items()
+        ),
+        f"captured_source_binding_mismatch:{family}",
+    )
+    return {
+        "source_object_sha256": pinned_hash,
+        "source_locator": source["url"],
+        "source_vintage": selected["vintage"],
+        "observed_at": source["observed_at"],
+    }
+
+
+def rebuild_context_silver(root: Path, family: str) -> dict[str, Any]:
+    """Rebuild one context Silver package directly from its pinned Bronze bytes."""
+    package, expected_manifest = CONTEXT[family]
+    binding = context_source_binding(family)
+    source_hash = binding["source_object_sha256"]
+    source = ARCHIVE / "bronze-cas" / "sha256" / source_hash[:2] / source_hash
+    output = root / package
+    if family == "cpi":
+        receipt = cpi.normalize_cpi(
+            source,
+            output,
+            expected_sha256=source_hash,
+            **{
+                key: binding[key]
+                for key in ("source_locator", "source_vintage", "observed_at")
+            },
+            dry_run=False,
+        )
+    elif family == "wage":
+        receipt = qes.normalize_qes(
+            source,
+            output,
+            expected_sha256=source_hash,
+            **{
+                key: binding[key]
+                for key in ("source_locator", "source_vintage", "observed_at")
+            },
+            dry_run=False,
+        )
+    elif family == "gdp":
+        receipt = gdp.normalize_gdp(
+            source,
+            output,
+            expected_sha256=source_hash,
+            **{
+                key: binding[key]
+                for key in ("source_locator", "source_vintage", "observed_at")
+            },
+            dry_run=False,
+        )
+    elif family == "population":
+        receipt = normalize_population_annual(
+            source,
+            output,
+            expected_sha256=source_hash,
+            source_locator=binding["source_locator"],
+            source_vintage=binding["source_vintage"],
+            observed_at=binding["observed_at"],
+            dry_run=False,
+        )
+    else:
+        message = f"unknown_context_family:{family}"
+        raise RuntimeError(message)
+    manifest = output / "MANIFEST.json"
+    manifest_hash = digest(manifest)
+    if manifest_hash != expected_manifest:
+        message = f"context_silver_manifest_drift:{family}:{manifest_hash}"
+        raise RuntimeError(message)
+    return {
+        "files": tree(output),
+        "manifest_sha256": manifest_hash,
+        "source_object_sha256": source_hash,
+        "counts": cast("dict[str, Any]", receipt["counts"]),
+    }
+
+
+def rebuild_eight_stage(root: Path, index: int) -> dict[str, Any]:
+    """Rebuild the 12-profile source-native raw Silver run from Bronze CAS."""
+    donor_manifest = ARCHIVE / "manifests" / "donor-4668e6c.json"
+    output = root / f"eight-stage-{index}"
+    plan = plan_eight(
+        donor_manifest,
+        ARCHIVE / "bronze-cas",
+        DONOR_MANIFEST_SHA256,
+        "2026-08-30T08:58:00+00:00",
+        "de59f9028a81a697ee66eea04861edfd8e2c3a7e472b3b8798d976951964f70f",
+        crown_receipt=TRACK / "source-census.json",
+        crown_receipt_sha256=SOURCE_CENSUS_SHA256,
+    )
+    completion = execute_eight(plan, ARCHIVE / "bronze-cas", output)
+    verified = verify_eight(
+        output, ARCHIVE / "bronze-cas", digest(output / "MANIFEST.json")
+    )
+    if completion != verified:
+        message = "eight_stage_readback_mismatch"
+        raise RuntimeError(message)
+    return {
+        "files": tree(output),
+        "manifest_sha256": digest(output / "MANIFEST.json"),
+        "profile_count": len(completion["stages"]),
+        "fact_count": sum(row["facts"] for row in completion["coverage"]),
+        "rights_state": completion["rights_state"],
+        "gold_selection": completion["gold_selection"],
+        "publication": completion["publication"],
+    }
 
 
 def canonical_inputs() -> tuple[CanonicalPackageInput, ...]:
@@ -152,7 +362,7 @@ def rebuild_donor_products(root: Path, index: int) -> dict[str, Any]:
     }
 
 
-def run() -> dict[str, Any]:  # noqa: PLR0915 - explicit staged recovery receipt
+def run() -> dict[str, Any]:
     """Rebuild supported products in a disposable derivative root."""
     if not ARCHIVE.is_dir():
         message = "pinned_external_bronze_unavailable"
@@ -161,40 +371,29 @@ def run() -> dict[str, Any]:  # noqa: PLR0915 - explicit staged recovery receipt
     outputs: dict[str, dict[str, Any]] = {}
     with tempfile.TemporaryDirectory(prefix="health-recovery-clean-") as temporary:
         root = Path(temporary)
-        silver = root / "silver"
-        gold = root / "gold"
-        silver.mkdir()
-        gold.mkdir()
-        population_hash = (
-            "a52e0344d1b6e707de04b7b968f2667fc969c0f0777b319921ff716ead82a1d9"
-        )
-        population_source = (
-            ARCHIVE / "bronze-cas" / "sha256" / population_hash[:2] / population_hash
-        )
-        census = json.loads((TRACK / "population-annual-context.json").read_text())
-        population_output = root / "population-rebuilt"
-        silver_receipt = normalize_population_annual(
-            population_source,
-            population_output,
-            expected_sha256=population_hash,
-            observed_at=census["retrieved_at"],
-            source_vintage=census["release_date"],
-            source_locator=census["export_route"],
-            dry_run=False,
-        )
-        counts = cast("dict[str, Any]", silver_receipt["counts"])
-        outputs["population_silver"] = tree(population_output) | {
-            "records": counts["facts"]
-        }
-        for family, (package, pin) in CONTEXT.items():
-            existing = ARCHIVE / "silver" / package
-            if not existing.is_dir():
-                message = f"missing_pinned_silver:{family}"
+        silver_roots = (root / "silver-one", root / "silver-two")
+        for silver in silver_roots:
+            silver.mkdir()
+        context_silver: dict[str, Any] = {}
+        for family, (package, _pin) in CONTEXT.items():
+            first = rebuild_context_silver(silver_roots[0], family)
+            second = rebuild_context_silver(silver_roots[1], family)
+            files = compare_product_outputs(
+                silver_roots[0] / package,
+                silver_roots[1] / package,
+                f"{family}_silver",
+            )
+            context_silver[family] = {
+                "files": files,
+                "manifest_sha256": first["manifest_sha256"],
+                "source_object_sha256": first["source_object_sha256"],
+                "counts": first["counts"],
+                "repeat_identical": first == second,
+            }
+            if first != second:
+                message = f"{family}_silver_repeat_mismatch"
                 raise RuntimeError(message)
-            if digest(existing / "MANIFEST.json") != pin:
-                message = f"silver_manifest_pin_mismatch:{family}"
-                raise RuntimeError(message)
-            shutil.copytree(existing, silver / package)
+        outputs["context_source_native_silver"] = context_silver
         donor_products = {
             str(index): rebuild_donor_products(root, index) for index in (1, 2)
         }
@@ -216,10 +415,27 @@ def run() -> dict[str, Any]:  # noqa: PLR0915 - explicit staged recovery receipt
             "gold_selected_facts": donor_products["1"]["gold_selected_facts"],
             "plot_count": donor_products["1"]["plot_count"],
         }
+        eight_stage = {str(index): rebuild_eight_stage(root, index) for index in (1, 2)}
+        eight_stage_files = compare_product_outputs(
+            root / "eight-stage-1", root / "eight-stage-2", "eight_stage_silver"
+        )
+        outputs["donor_source_native_silver"] = {
+            "files": eight_stage_files,
+            "manifest_sha256": eight_stage["1"]["manifest_sha256"],
+            "profile_count": eight_stage["1"]["profile_count"],
+            "fact_count": eight_stage["1"]["fact_count"],
+            "rights_state": eight_stage["1"]["rights_state"],
+            "gold_selection": eight_stage["1"]["gold_selection"],
+            "publication": eight_stage["1"]["publication"],
+            "repeat_identical": eight_stage["1"] == eight_stage["2"],
+        }
+        if eight_stage["1"] != eight_stage["2"]:
+            message = "eight_stage_repeat_mismatch"
+            raise RuntimeError(message)
         context_one, context_two = root / "context-one", root / "context-two"
         cas_objects = ARCHIVE / "bronze-cas" / "sha256"
-        export_context_gold(silver, cas_objects, context_one, write=True)
-        export_context_gold(silver, cas_objects, context_two, write=True)
+        export_context_gold(silver_roots[0], cas_objects, context_one, write=True)
+        export_context_gold(silver_roots[1], cas_objects, context_two, write=True)
         context_files = compare_product_outputs(
             context_one, context_two, "context_gold"
         )
@@ -259,7 +475,7 @@ def run() -> dict[str, Any]:  # noqa: PLR0915 - explicit staged recovery receipt
         "bronze_objects_unchanged": unchanged,
         "required_but_not_rebuilt": [
             "donor_and_canonical_reports",
-            "all_source_native_silver",
+            "additional_source_native_silver_profiles_and_canonical_adapters",
             "platinum_dcat_croissant_ro_crate_prov_complete_profile",
         ],
         "rights": "not_evaluated",

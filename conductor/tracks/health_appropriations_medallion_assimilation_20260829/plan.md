@@ -924,12 +924,14 @@ integrated parent head.
   (38 files per run, byte-identical; all 23 donor objects unchanged;
   `originals-product-replay.md`)
 - [~] Add a failing recovery contract for empty derivative state, then rebuild
-  Silver, Gold, SQLite, all plots/reports and Platinum metadata from Bronze,
-  locked code and parameters. [M-10, M-16, M-18; AC-08, AC-12, AC-16] Two fresh
-  pinned donor replays now rebuild Silver, compatibility SQLite, Gold and plots;
-  separate builders cover contextual Silver/Gold and historical canonical Gold.
-  See `clean-room-recovery-20260929.json`. Donor/canonical reports, all source-
-  native Silver families and complete validated Platinum remain open.
+  Silver, Gold, SQLite, plots/reports and Platinum metadata from Bronze, locked
+  code and parameters. [M-10, M-16, M-18; AC-08, AC-12, AC-16] Two fresh pinned
+  donor replays rebuild 12 source-native profiles, compatibility SQLite, donor
+  Gold and six plots; separate builders rebuild CPI/QES/GDP/population Silver,
+  Context Gold and historical canonical Gold. See
+  `clean-room-recovery-20260929.json`. Donor/canonical reports, additional
+  source-native profiles and canonical adapters, and complete validated
+  Platinum remain open.
 - [~] Compare output manifests/digests and explain permitted rendering-only
   variation; prove original objects were not mutated. [M-03, M-16; AC-02,
   AC-12] Repeat output inventories match within this runtime across raw, SQLite,
