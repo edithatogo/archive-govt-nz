@@ -111,6 +111,28 @@ COVERAGE_SCHEMA = pa.schema(
     },
 )
 
+QUALITY_SCHEMA = pa.schema(
+    [
+        ("family", pa.string(), False),
+        ("series_id", pa.string(), False),
+        ("source_vintage", pa.string(), False),
+        ("source_sha256", pa.string(), False),
+        ("source_locator", pa.string(), False),
+        ("observation_count", pa.int64(), False),
+        ("eligible_count", pa.int64(), False),
+        ("excluded_count", pa.int64(), False),
+        ("exclusion_reasons_json", pa.string(), False),
+        ("period_tokens_json", pa.string(), False),
+        ("period_continuity", pa.string(), False),
+        ("rights_state", pa.string(), False),
+        ("denominator_selection", pa.string(), False),
+    ],
+    metadata={
+        b"schema_version": SCHEMA.encode(),
+        b"query": b"exact_source_series_status_and_period_quality",
+    },
+)
+
 
 def _require(value: object) -> None:
     if not value:
@@ -446,6 +468,62 @@ def _coverage(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return output
 
 
+def _quality(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Summarize exact source-series status and observed period tokens only."""
+    grouped: dict[tuple[object, ...], list[dict[str, Any]]] = {}
+    for row in rows:
+        key = tuple(
+            row[field]
+            for field in (
+                "family",
+                "series_id",
+                "source_vintage",
+                "source_sha256",
+                "source_locator",
+            )
+        )
+        grouped.setdefault(key, []).append(row)
+    output = []
+    for key, members in sorted(grouped.items(), key=lambda item: item[0]):
+        reasons: dict[str, int] = {}
+        for row in members:
+            if row["admission"] != "eligible_context_only":
+                reason = row["admission_reason"]
+                reasons[reason] = reasons.get(reason, 0) + 1
+        output.append(
+            {
+                **dict(
+                    zip(
+                        (
+                            "family",
+                            "series_id",
+                            "source_vintage",
+                            "source_sha256",
+                            "source_locator",
+                        ),
+                        key,
+                        strict=True,
+                    )
+                ),
+                "observation_count": len(members),
+                "eligible_count": sum(
+                    row["admission"] == "eligible_context_only" for row in members
+                ),
+                "excluded_count": sum(
+                    row["admission"] != "eligible_context_only" for row in members
+                ),
+                "exclusion_reasons_json": _json(dict(sorted(reasons.items()))).decode(),
+                "period_tokens_json": _json(
+                    sorted({row["period_token"] for row in members})
+                ).decode(),
+                "period_continuity": "not_assessed_source_calendar_not_supplied",
+                "rights_state": "not_evaluated",
+                "denominator_selection": "not_performed",
+            }
+        )
+    return output
+
+
 def _validate_rows(rows: list[dict[str, Any]]) -> None:
     _require(0 < len(rows) <= MAX_ROWS)
     ids = [row["input_record_id"] for row in rows]
@@ -503,9 +581,11 @@ def _export(
     _require(len(marker_digests) == _EXPECTED_PACKAGE_COUNT)
     observations = pa.Table.from_pylist(rows, schema=OBSERVATION_SCHEMA)
     coverage = pa.Table.from_pylist(_coverage(rows), schema=COVERAGE_SCHEMA)
+    quality = pa.Table.from_pylist(_quality(rows), schema=QUALITY_SCHEMA)
     payloads = {
         "context_observations.parquet": _table(observations),
         "context_coverage.parquet": _table(coverage),
+        "context_quality.parquet": _table(quality),
     }
     _require(sum(map(len, payloads.values())) <= MAX_OUTPUT_BYTES)
     outputs = {
@@ -524,6 +604,13 @@ def _export(
         "products": outputs,
         "input_records": len(rows),
         "series": len(coverage.to_pylist()),
+        "source_quality": {
+            "status_counts_from_retained_silver": "complete",
+            "period_continuity": "not_assessed_source_calendar_not_supplied",
+            "rights": "not_evaluated",
+            "denominator_selection": "not_performed",
+            "report_rows": quality.num_rows,
+        },
         "eligible_context_observations": sum(
             row["admission"] == "eligible_context_only" for row in rows
         ),
@@ -548,7 +635,11 @@ def _export(
             _require((output / name).read_bytes() == payload)
             restored = pq.read_table(output / name)
             expected = (
-                observations if name.startswith("context_observations") else coverage
+                observations
+                if name == "context_observations.parquet"
+                else coverage
+                if name == "context_coverage.parquet"
+                else quality
             )
             _require(restored.equals(expected, check_metadata=True))
         with (output / "MANIFEST.json").open("xb") as handle:

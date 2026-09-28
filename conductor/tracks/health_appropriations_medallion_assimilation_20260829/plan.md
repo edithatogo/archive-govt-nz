@@ -620,6 +620,10 @@ integrated parent head.
 - [ ] Generate source-health, temporal coverage, layout drift, rights and
   reconciliation reports; verify every target vintage has an explicit state.
   [M-02, M-11, M-12, S-04; AC-09, AC-11]
+  The source-separated Context Gold output now includes quality summaries for
+  its four exact pinned context series (observed tokens and retained Silver
+  exclusion reasons); calendars and whole-census target-vintage status remain
+  unassessed. See `context-gold-quality-20260928.md`.
   The explicit selection report now accepts the BEFU-2026 core expense Silver
   manifest with exact source identity, versioned adapter profile, counts and
   output hashes. See
