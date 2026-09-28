@@ -1171,6 +1171,14 @@ grants no additional permissions. No actionable finding remains in this
 bounded task; actual hosted heartbeat evidence is pending the next workflow
 run and is not asserted here.
 
+## Read-only Health status resource — 2026-09-28
+
+Self-review confirms the resource is a fixed local URI, delegates to the
+existing schema-validated read-only status query, performs no writes and
+preserves exact manifest digests and paths. Tests exercise MCP protocol
+listing/read and the non-interactive CLI parser. No capture or publication
+behavior is added. Remaining operation families are outside this slice.
+
 ## Coverage follow-up — 2026-09-28
 
 The initial hosted review flagged incomplete patch coverage. The follow-up

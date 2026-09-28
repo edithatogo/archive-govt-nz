@@ -847,6 +847,10 @@ integrated parent head.
 - [ ] Expose typed non-interactive CLI commands and read-only MCP resources
   over stable manifests/queries; return structured state and provenance.
   [M-15; AC-13]
+  - [x] Add a finite read-only Health status MCP resource alongside the
+    existing status tool, and exercise the actual non-interactive CLI parser,
+    JSON-RPC resource listing/read, output parity and no-write behavior. This
+    bounded status slice does not complete the remaining operation commands.
 - [ ] Add fast-first scheduled discovery/capture/normalization lanes with
   heavier reconciliation and reconstruction behind explicit triggers and
   bounded resource limits. [M-15, M-18; AC-13, AC-16]

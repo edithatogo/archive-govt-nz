@@ -688,3 +688,12 @@ Exact-head hosted checks for the correction are pending.
 The first full correction run reported 7,034 passed, 9 skipped and one
 unrelated Hypothesis slow-generation health-check failure under xdist; its
 focused rerun passed. This remains a candidate result, not full assurance.
+
+## Read-only Health status resource — 2026-09-28
+
+The finite status resource returns the same schema-validated, hash-pinned
+manifest provenance receipt as the read-only tool. Direct resource reads and
+JSON-RPC `resources/list`/`resources/read` pass; the real Cyclopts command
+returns structured JSON for no-state and does not create files. The focused
+CLI/MCP protocol suite passed 35 tests, with Ruff and basedpyright clean. No
+state is promoted to capture, normalization or publication readiness.

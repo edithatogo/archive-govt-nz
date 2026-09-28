@@ -2769,3 +2769,15 @@ current scheduled lane therefore reports `not_available` while preserving its
 observed dataset count. Focused discovery/heartbeat/schema/workflow tests pass
 28 cases; 50-schema validation, Ruff and basedpyright pass. Full local and
 updated hosted assurance remain pending.
+
+## Read-only Health status resource — 2026-09-28
+
+Red phase: the resource registration and exact-URI read tests failed because
+only the Health status tool existed. Added the finite
+`archive://health-appropriations/status` JSON resource using the same typed
+status tool implementation. The real CLI parser and JSON-RPC resource
+read/list now verify stable receipts, tool/resource parity and no filesystem
+writes for empty state. Focused MCP/CLI protocol suite: 35 passed; Ruff and
+basedpyright passed. This completes only the status resource slice; capture,
+normalize, reconcile, analyze and candidate-build operation contracts remain
+open.
