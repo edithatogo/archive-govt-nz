@@ -2781,3 +2781,32 @@ writes for empty state. Focused MCP/CLI protocol suite: 35 passed; Ruff and
 basedpyright passed. This completes only the status resource slice; capture,
 normalize, reconcile, analyze and candidate-build operation contracts remain
 open.
+
+## 2026-09-29 — Expanded clean-room recovery: compatibility SQLite
+
+Extended the recovery runner to run the pinned four-profile Bronze rebuild twice
+from retained donor manifest `893f387e1f361400285ccc84802b497e87802d1ad913826ff7d9055b07a03b74`
+and Bronze CAS. Each run passes the read-only raw-run verifier, then creates a
+fresh compatibility SQLite/sidecar package, Gold package and six plots using
+versioned builders. Exact output inventories match between clean runs within
+the current runtime. Results: 341 compatibility facts, 321 selected Gold facts,
+six PNGs. Population Silver (36 rows), Context Gold and historical canonical
+Gold also rebuild; both Gold products repeat identically. All Bronze CAS objects
+are unchanged. The receipt `clean-room-recovery-20260929.json` remains
+`partial_with_blockers`: donor/canonical reports, all source-native Silver
+families and complete validated Platinum metadata are still open.
+
+Review follow-up: repeated Context Gold and historical canonical Gold builds now
+fail closed on any differing file inventory or digest; a negative contract test
+proves the mismatch path raises. Focused recovery tests pass (3), as do Ruff and
+basedpyright. The required `./scripts/validate.sh` passed 7,115 tests, 9
+skipped, 52 schemas/42 representative documents, parity 9/9, all configured
+mutation and supply-chain gates, including the 113-component SBOM. Automatic
+Conductor `phase_7_gates` review passed format, lint, schema, targeted tests and
+mutation; its current receipt SHA-256 is
+`6bf102b5ad3603503008bc950c39610001badcc28338e55be3be38111d1b2ac5`. The
+committed recovery receipt SHA-256 remains
+`b052b188d6c1b08692ce349844043af6ed4bfcbc848bee10e5515239636fc28d`. SQLite
+byte equality is asserted only within one runtime; prior evidence documents
+the header bytes that vary across runtime versions. Rights remain
+`not_evaluated`; publication remains `not_performed`.
