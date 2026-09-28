@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import runpy
 import sys
 from pathlib import Path
 from typing import IO, Any
@@ -66,7 +67,13 @@ def test_failed_workflow_remains_distinct_from_existing_discovery_evidence() -> 
 
 @pytest.mark.parametrize(
     ("payload", "expected"),
-    [(None, "missing"), (b"not-json", "invalid")],
+    [
+        (None, "missing"),
+        (b"not-json", "invalid"),
+        (b"\xff", "invalid"),
+        (b"[" * 1200 + b"]" * 1200, "invalid"),
+        (b"null", "invalid"),
+    ],
 )
 def test_missing_and_invalid_manifests_create_bounded_heartbeats(
     payload: bytes | None, expected: str
@@ -186,3 +193,32 @@ def test_cli_writes_atomic_missing_and_unreadable_heartbeats(
     assert receipt["discovery_state"] == "unreadable"
     assert receipt["manifest_sha256"] is None
     assert "private filesystem detail" not in output.read_text(encoding="utf-8")
+
+
+def test_cli_reads_manifest_and_module_entrypoint_writes_heartbeat(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """The module entrypoint handles a normal observed receipt."""
+    manifest = tmp_path / "manifest.json"
+    output = tmp_path / "heartbeat.json"
+    payload = _manifest()
+    manifest.write_bytes(payload)
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        [
+            "health-heartbeat",
+            "--manifest",
+            str(manifest),
+            "--workflow-outcome",
+            "success",
+            "--output",
+            str(output),
+        ],
+    )
+    with pytest.raises(SystemExit) as exit_info:
+        runpy.run_path(str(Path(heartbeat_module.__file__)), run_name="__main__")
+    assert exit_info.value.code == 0
+    receipt = json.loads(output.read_text(encoding="utf-8"))
+    assert receipt["discovery_state"] == "observed"
+    assert receipt["manifest_sha256"] == hashlib.sha256(payload).hexdigest()

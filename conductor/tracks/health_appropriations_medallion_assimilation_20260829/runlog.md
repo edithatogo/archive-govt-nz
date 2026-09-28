@@ -2715,3 +2715,15 @@ discovery state, and metadata drift stay separate; capture, Silver
 normalization, validation, and publication remain `not_run`. The hosted
 scheduled workflow heartbeat has not yet run; verify its artifact on a later
 scheduled/manual run after merge.
+
+## Coverage follow-up — 2026-09-28
+
+Codecov reported 90.28% patch coverage and seven missed/partial lines on the
+initial PR head. Added explicit tests for non-object, invalid-UTF-8, recursive
+JSON, successful CLI-read and module-entrypoint paths. All 16 heartbeat module
+tests pass at 100% statement and branch coverage; the combined heartbeat and
+workflow selection passes 22 tests. The first fresh full harness attempt
+reported 7,028 passed, 9 skipped and five unrelated failures in FOI mutation,
+redaction CLI and capture-process recovery tests (98.16% total coverage). A
+focused rerun of all failed selections passed 24 tests. A clean full rerun is
+required before the updated PR head can be considered validated.
