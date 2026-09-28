@@ -624,6 +624,10 @@ integrated parent head.
   its four exact pinned context series (observed tokens and retained Silver
   exclusion reasons); calendars and whole-census target-vintage status remain
   unassessed. See `context-gold-quality-20260928.md`.
+  A generated Markdown report now accompanies the four series with exact
+  source counts and non-assessment boundaries; it is included in the product
+  hash closure and read-only verifier. Whole-census source health remains open.
+  See `context-gold-readable-report-20260929.md`.
   The explicit selection report now accepts the BEFU-2026 core expense Silver
   manifest with exact source identity, versioned adapter profile, counts and
   output hashes. See

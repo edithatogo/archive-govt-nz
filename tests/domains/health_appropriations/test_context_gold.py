@@ -463,11 +463,24 @@ def test_retained_context_silver_build_is_repeatable_and_source_separated(
     }
     assert len(json.loads(population_quality["period_tokens_json"])) == 36
     assert written["products"] == planned["products"]
+    report = (first / "context-quality-report.md").read_text(encoding="utf-8")
+    assert report.startswith("# Health Appropriations contextual Gold quality report")
+    assert (
+        "Period continuity: not assessed; source calendars were not supplied." in report
+    )
+    assert "Cross-source joins and denominator selection: not performed." in report
+    assert "Rights: not evaluated." in report
+    assert "Publication: not performed." in report
+    assert (
+        "| population | DPE056AA:Mean year ended:Total:Total All Ages:Annual-Jun |"
+        in report
+    )
     manifest = json.loads((first / "MANIFEST.json").read_text())
     assert set(manifest["products"]) == {
         "context_observations.parquet",
         "context_coverage.parquet",
         "context_quality.parquet",
+        "context-quality-report.md",
     }
     for name, entry in manifest["products"].items():
         payload = (first / name).read_bytes()

@@ -23,6 +23,7 @@ def _package(root: Path) -> tuple[Path, str]:
         "context_observations.parquet",
         "context_coverage.parquet",
         "context_quality.parquet",
+        "context-quality-report.md",
     ):
         payload = ("fixture:" + name).encode()
         (root / name).write_bytes(payload)

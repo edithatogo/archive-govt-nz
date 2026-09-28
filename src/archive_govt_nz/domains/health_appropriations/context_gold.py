@@ -524,6 +524,62 @@ def _quality(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return output
 
 
+def _quality_markdown(rows: list[dict[str, Any]]) -> bytes:
+    """Render exact source-series quality counts without inferring gaps."""
+    lines = [
+        "# Health Appropriations contextual Gold quality report",
+        "",
+        "This report describes four explicitly pinned, source-separated Silver",
+        "series. Period tokens are reported as observed; chronology, continuity,",
+        "and missing-period inference are not assessed.",
+        "",
+        "| Family | Series | Vintage | Observations | Eligible | Excluded |",
+        "| --- | --- | --- | ---: | ---: | ---: |",
+    ]
+    for row in sorted(rows, key=lambda item: (item["family"], item["series_id"])):
+        table_row = (
+            "| {family} | {series} | {vintage} | {observations} | "
+            "{eligible} | {excluded} |"
+        ).format(
+            family=row["family"],
+            series=row["series_id"].replace("|", "\\|"),
+            vintage=row["source_vintage"].replace("|", "\\|"),
+            observations=row["observation_count"],
+            eligible=row["eligible_count"],
+            excluded=row["excluded_count"],
+        )
+        lines.append(table_row)
+        exclusions = json.loads(row["exclusion_reasons_json"])
+        tokens = json.loads(row["period_tokens_json"])
+        lines.extend(
+            [
+                "",
+                f"### {row['family']} — {row['source_vintage']}",
+                "",
+                f"Observed period tokens: {len(tokens)} distinct.",
+                "Exclusion reasons: "
+                + (
+                    ", ".join(f"`{key}` ({value})" for key, value in exclusions.items())
+                    if exclusions
+                    else "none recorded"
+                ),
+            ]
+        )
+    lines.extend(
+        [
+            "",
+            "## Boundaries",
+            "",
+            "- Period continuity: not assessed; source calendars were not supplied.",
+            "- Cross-source joins and denominator selection: not performed.",
+            "- Rights: not evaluated.",
+            "- Publication: not performed.",
+            "",
+        ]
+    )
+    return "\n".join(lines).encode("utf-8")
+
+
 def _validate_rows(rows: list[dict[str, Any]]) -> None:
     _require(0 < len(rows) <= MAX_ROWS)
     ids = [row["input_record_id"] for row in rows]
@@ -580,12 +636,15 @@ def _export(
     _validate_rows(rows)
     _require(len(marker_digests) == _EXPECTED_PACKAGE_COUNT)
     observations = pa.Table.from_pylist(rows, schema=OBSERVATION_SCHEMA)
-    coverage = pa.Table.from_pylist(_coverage(rows), schema=COVERAGE_SCHEMA)
-    quality = pa.Table.from_pylist(_quality(rows), schema=QUALITY_SCHEMA)
+    coverage_rows = _coverage(rows)
+    quality_rows = _quality(rows)
+    coverage = pa.Table.from_pylist(coverage_rows, schema=COVERAGE_SCHEMA)
+    quality = pa.Table.from_pylist(quality_rows, schema=QUALITY_SCHEMA)
     payloads = {
         "context_observations.parquet": _table(observations),
         "context_coverage.parquet": _table(coverage),
         "context_quality.parquet": _table(quality),
+        "context-quality-report.md": _quality_markdown(quality_rows),
     }
     _require(sum(map(len, payloads.values())) <= MAX_OUTPUT_BYTES)
     outputs = {
@@ -633,15 +692,16 @@ def _export(
             with (output / name).open("xb") as handle:
                 _require(handle.write(payload) == len(payload))
             _require((output / name).read_bytes() == payload)
-            restored = pq.read_table(output / name)
-            expected = (
-                observations
-                if name == "context_observations.parquet"
-                else coverage
-                if name == "context_coverage.parquet"
-                else quality
-            )
-            _require(restored.equals(expected, check_metadata=True))
+            if name.endswith(".parquet"):
+                restored = pq.read_table(output / name)
+                expected = (
+                    observations
+                    if name == "context_observations.parquet"
+                    else coverage
+                    if name == "context_coverage.parquet"
+                    else quality
+                )
+                _require(restored.equals(expected, check_metadata=True))
         with (output / "MANIFEST.json").open("xb") as handle:
             _require(handle.write(marker) == len(marker))
         _require((output / "MANIFEST.json").read_bytes() == marker)
