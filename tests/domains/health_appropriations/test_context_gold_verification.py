@@ -35,6 +35,14 @@ def _package(root: Path) -> tuple[Path, str]:
     manifest = {
         "schema_version": "archive-govt-nz.health-context-gold/v1",
         "products": products,
+        "plot_report": {
+            "schema_version": "archive-govt-nz.health-context-gold-plots/v1",
+            "status": "complete",
+            "period_axis": "discrete_source_tokens_no_continuity_inference",
+            "numeric_conversion": "float_for_display_only",
+            "excluded_observations_plotted": False,
+            "series": [],
+        },
         "source_marker_sha256": ["a" * 64] * 4,
         "rights_state": "not_evaluated",
         "denominator_selection": "not_performed",
@@ -80,6 +88,8 @@ def test_context_gold_cli_mcp_parity_and_read_only(
     assert {path.name: path.read_bytes() for path in root.iterdir()} == before
     assert receipt["status"] == "verified"
     assert receipt["quality_report"] == "verified_as_declared_output"
+    assert receipt["plot_report"] == "verified_as_declared_output"
+    assert receipt["plot_count"] == 0
     assert receipt["rights_state"] == "not_evaluated"
 
 
@@ -103,7 +113,7 @@ def test_context_gold_verifier_fails_closed_without_writes(
 
 @pytest.mark.parametrize(
     "fault",
-    ["schema", "boundary", "products", "marker-count", "marker-digest"],
+    ["schema", "boundary", "products", "marker-count", "marker-digest", "plots"],
 )
 def test_context_gold_verifier_rejects_manifest_contract_drift(
     tmp_path: Path, fault: str
@@ -119,6 +129,8 @@ def test_context_gold_verifier_rejects_manifest_contract_drift(
         del manifest["products"]["context_quality.parquet"]
     elif fault == "marker-count":
         manifest["source_marker_sha256"] = ["a" * 64]
+    elif fault == "plots":
+        manifest["plot_report"]["period_axis"] = "continuous_time"
     else:
         manifest["source_marker_sha256"][0] = "invalid"
     pin = _rewrite_manifest(root, manifest)

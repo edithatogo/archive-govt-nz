@@ -4,11 +4,12 @@
 
 Added a read-only verifier for contextual Gold packages. It requires an
 independently supplied SHA-256 pin for the exact manifest bytes; checks the
-closed three-file inventory (`context_observations.parquet`,
-`context_coverage.parquet`, and `context_quality.parquet`); and verifies each
-declared file size and digest. CLI and read-only MCP return the same compact
-receipt. Tampering, extra files, duplicate manifest keys, and an invalid pin
-fail closed without writing a failure file.
+closed inventory of four core outputs plus up to four per-series plots; and
+verifies every declared file size and digest. It also checks that rendered
+plots correspond one-to-one with the plot report and its declared digest/size.
+CLI and read-only MCP return the same compact receipt. Tampering, extra files,
+duplicate manifest keys, and an invalid pin fail closed without writing a
+failure file.
 
 ## Boundary
 
@@ -18,10 +19,9 @@ evaluate rights, select a denominator, or claim publication.
 
 ## Validation
 
-- Focused Context Gold builder/verifier tests: 15 passed; verifier module
-  failure-path suite: 18 passed with 100% branch-aware coverage.
+- Focused Context Gold plotting, builder and verifier tests: 37 passed.
 - Ruff and basedpyright: passed.
-- `./scripts/validate.sh`: passed locally on `e7d6ab5`; 7,092 passed, 9
-  skipped, 98.18% branch coverage; 52 schemas/42 representative documents;
-  parity 9/9; mutation, benchmark, vulnerability, licence, secret, and SBOM
-  checks passed. Hosted exact-head assurance is pending.
+- `./scripts/validate.sh`: passed locally on this change; 7,096 passed, 9
+  skipped, 98.09% branch coverage; 52 schemas/42 representative documents;
+  parity 9/9; all mutation, benchmark, vulnerability, licence, secret, and
+  SBOM checks passed. Hosted exact-head assurance is pending.

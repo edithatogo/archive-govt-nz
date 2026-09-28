@@ -20,7 +20,10 @@ _OUTPUTS = {
     "context_quality.parquet",
     "context-quality-report.md",
 }
+_PLOT_NAME = re.compile(r"^plot_context_(?:cpi|wage|gdp|population)_[0-9a-f]{20}\.png$")
+_PLOT_SCHEMA = "archive-govt-nz.health-context-gold-plots/v1"
 _SOURCE_MARKER_COUNT = 4
+_MAX_PLOTS = 4
 _ERROR = "invalid_context_gold_package"
 _COMMON = {
     "schema_version": "archive-govt-nz.health-context-gold-verification/v1",
@@ -38,10 +41,12 @@ CONTEXT_GOLD_VERIFICATION_SCHEMA: dict[str, Any] = {
         "status": {"enum": ["verified", "failed"]},
         "error": {"const": "invalid_context_gold_package"},
         "manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
-        "output_count": {"type": "integer", "const": 4},
+        "output_count": {"type": "integer", "minimum": 4, "maximum": 8},
+        "plot_count": {"type": "integer", "minimum": 0, "maximum": 4},
         "output_bytes": {"type": "integer", "minimum": 0},
         "source_marker_count": {"type": "integer", "const": 4},
         "quality_report": {"const": "verified_as_declared_output"},
+        "plot_report": {"const": "verified_as_declared_output"},
     },
     "required": [*_COMMON, "status"],
     "additionalProperties": False,
@@ -54,6 +59,8 @@ CONTEXT_GOLD_VERIFICATION_SCHEMA: dict[str, Any] = {
                 "output_bytes",
                 "source_marker_count",
                 "quality_report",
+                "plot_count",
+                "plot_report",
             ],
             "not": {"required": ["error"]},
         },
@@ -102,15 +109,76 @@ def _read_manifest(root: Path, digest: str) -> dict[str, Any]:
     return manifest
 
 
-def _verify_products(root: Path, manifest: dict[str, Any]) -> tuple[int, int]:
+def _verify_plot_report(
+    products: dict[str, Any], names: set[str], plots: set[str], manifest: dict[str, Any]
+) -> None:
+    plot_report = manifest.get("plot_report")
+    if (
+        not isinstance(plot_report, dict)
+        or plot_report.get("schema_version") != _PLOT_SCHEMA
+        or plot_report.get("period_axis")
+        != "discrete_source_tokens_no_continuity_inference"
+        or plot_report.get("numeric_conversion") != "float_for_display_only"
+        or plot_report.get("excluded_observations_plotted") is not False
+        or not isinstance(plot_report.get("series"), list)
+        or len(cast("list[Any]", plot_report.get("series"))) > _SOURCE_MARKER_COUNT
+    ):
+        _fail("invalid_plot_report")
+    declared_plots: set[str] = set()
+    series = cast("list[Any]", cast("dict[str, Any]", plot_report).get("series"))
+    for plot in series:
+        if not isinstance(plot, dict):
+            _fail("invalid_plot_report")
+        status, path = plot.get("status"), plot.get("path")
+        if status == "rendered":
+            if type(path) is not str or not _valid_rendered_plot(
+                path, plot, products, plots, declared_plots
+            ):
+                _fail("invalid_plot_report")
+            declared_plots.add(cast("str", path))
+        elif status in {"no_eligible_observations", "omitted_point_limit"}:
+            if path is not None:
+                _fail("invalid_plot_report")
+        else:
+            _fail("invalid_plot_report")
+    if declared_plots != plots or len(names) != len(products):
+        _fail("invalid_plot_report")
+
+
+def _valid_rendered_plot(
+    path: str,
+    plot: dict[str, Any],
+    products: dict[str, Any],
+    plots: set[str],
+    declared_plots: set[str],
+) -> bool:
+    return (
+        path in plots
+        and path not in declared_plots
+        and isinstance(products.get(path), dict)
+        and plot.get("sha256") == products[path].get("sha256")
+        and plot.get("bytes") == products[path].get("bytes")
+    )
+
+
+def _verify_products(root: Path, manifest: dict[str, Any]) -> tuple[int, int, int]:
     products = manifest.get("products")
-    if not isinstance(products, dict) or set(products) != _OUTPUTS:
+    if not isinstance(products, dict):
         _fail("invalid_products")
     product_entries = cast("dict[str, Any]", products)
-    if {path.name for path in root.iterdir()} != {*_OUTPUTS, "MANIFEST.json"}:
+    names = set(product_entries)
+    plots = names - _OUTPUTS
+    if (
+        not _OUTPUTS.issubset(names)
+        or len(plots) > _MAX_PLOTS
+        or any(_PLOT_NAME.fullmatch(name) is None for name in plots)
+    ):
+        _fail("invalid_products")
+    if {path.name for path in root.iterdir()} != {*names, "MANIFEST.json"}:
         _fail("output_inventory_mismatch")
+    _verify_plot_report(product_entries, names, plots, manifest)
     total = 0
-    for name in sorted(_OUTPUTS):
+    for name in sorted(names):
         entry = product_entries[name]
         if not isinstance(entry, dict):
             _fail("invalid_product_metadata")
@@ -135,7 +203,7 @@ def _verify_products(root: Path, manifest: dict[str, Any]) -> tuple[int, int]:
         total += cast("int", size)
         if total > MAX_PACKAGE_BYTES:
             _fail("package_byte_limit")
-    return len(_OUTPUTS), total
+    return len(names), len(plots), total
 
 
 def _verify(root: Path, manifest_sha256: str) -> dict[str, Any]:
@@ -147,7 +215,7 @@ def _verify(root: Path, manifest_sha256: str) -> dict[str, Any]:
     ):
         _fail("invalid_package_root")
     manifest = _read_manifest(root, manifest_sha256)
-    output_count, total = _verify_products(root, manifest)
+    output_count, plot_count, total = _verify_products(root, manifest)
     markers = manifest.get("source_marker_sha256")
     if (
         not isinstance(markers, list)
@@ -163,9 +231,11 @@ def _verify(root: Path, manifest_sha256: str) -> dict[str, Any]:
         "status": "verified",
         "manifest_sha256": manifest_sha256,
         "output_count": output_count,
+        "plot_count": plot_count,
         "output_bytes": total,
         "source_marker_count": _SOURCE_MARKER_COUNT,
         "quality_report": "verified_as_declared_output",
+        "plot_report": "verified_as_declared_output",
     }
 
 
