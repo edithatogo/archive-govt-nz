@@ -2725,5 +2725,13 @@ tests pass at 100% statement and branch coverage; the combined heartbeat and
 workflow selection passes 22 tests. The first fresh full harness attempt
 reported 7,028 passed, 9 skipped and five unrelated failures in FOI mutation,
 redaction CLI and capture-process recovery tests (98.16% total coverage). A
-focused rerun of all failed selections passed 24 tests. A clean full rerun is
-required before the updated PR head can be considered validated.
+focused rerun of all failed selections passed 24 tests. The second full
+attempt reported 7,030 passed, 9 skipped and three failures: one Hypothesis
+200ms deadline overrun and two FOI mutation cases. A focused rerun of those 16
+parametrized cases passed. The third clean `./scripts/validate.sh` passed
+7,033 tests, 9 skipped, 98.16% branch coverage, 50 schemas/40 representative
+documents, parity 9/9 and all configured mutation, hygiene, dependency,
+licence, secret and SBOM gates. The combined heartbeat/workflow selection is
+22 passing tests and the heartbeat module has 100% statement and branch
+coverage. The only remaining operational check for this slice is its first
+post-merge hosted scheduled heartbeat artifact.

@@ -663,8 +663,10 @@ coverage follow-up is undergoing a fresh full harness run. Hosted scheduled
 workflow execution has not been claimed; the heartbeat is attached to the
 next scheduled/manual discovery workflow run after merge.
 
-The first coverage-follow-up harness attempt reported five failures in
-unrelated FOI mutation, Health redaction CLI and capture-process recovery
-tests; a focused rerun passed all 24 test cases. This is recorded as a
-transient candidate result, not a green full-harness receipt; clean full
-validation remains required.
+Two full-harness attempts had transient unrelated failures under xdist; focused
+reruns passed all affected cases. The third clean `./scripts/validate.sh`
+passed 7,033 tests, 9 skipped, 98.16% branch coverage, 50 schemas/40
+representative documents, parity 9/9 and every configured mutation, hygiene,
+dependency, licence, secret and SBOM gate. This is local assurance; the hosted
+scheduled discovery workflow still needs a post-merge run to produce its first
+heartbeat artifact.
