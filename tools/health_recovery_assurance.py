@@ -15,6 +15,7 @@ from archive_govt_nz.domains.health_appropriations import (
     pharmac,
     pharmac_canonical_projection,
     qes,
+    qes_canonical_projection,
 )
 from archive_govt_nz.domains.health_appropriations.canonical_consumer import (
     query_context_observations,
@@ -38,6 +39,9 @@ from archive_govt_nz.domains.health_appropriations.pharmac_canonical_projection 
 from archive_govt_nz.domains.health_appropriations.plot_export import render_plots
 from archive_govt_nz.domains.health_appropriations.population_annual_silver import (
     normalize_population_annual,
+)
+from archive_govt_nz.domains.health_appropriations.qes_canonical_projection import (
+    project_qes_earnings,
 )
 from archive_govt_nz.domains.health_appropriations.rebuild import (
     execute_rebuild,
@@ -97,7 +101,7 @@ SOURCE_CENSUS_SHA256 = (
     "4bea6001b0a1af4a362075508c521befe5bd6e04d20b2dd2f7c23ef8c6256964"
 )
 CONTEXT_CENSUS_SHA256 = (
-    "f5314e7b766b9f1871e8db9c70706bda03bb8b933bb3053ee96168e25bc8890f"
+    "2e4b1ed2aa3091f83b076e9ebd62dab4bee09bf518d78a65bcc391c984bd2a9c"
 )
 POPULATION_SOURCE_SHA256 = (
     "a52e0344d1b6e707de04b7b968f2667fc969c0f0777b319921ff716ead82a1d9"
@@ -425,11 +429,54 @@ def _rebuild_pharmac_canonical(root: Path, index: int) -> dict[str, Any]:
     }
 
 
+def _rebuild_qes_canonical(root: Path, index: int) -> dict[str, Any]:
+    """Rebuild pinned QES Silver from Bronze and project canonical earnings."""
+    source_cas = ARCHIVE / "bronze-cas" / "sha256"
+    source = source_cas / qes_canonical_projection.SOURCE_SHA256[:2]
+    source = source / qes_canonical_projection.SOURCE_SHA256
+    silver = root / f"qes-silver-{index}"
+    qes.normalize_qes(
+        source,
+        silver,
+        expected_sha256=qes_canonical_projection.SOURCE_SHA256,
+        source_locator=qes_canonical_projection.SOURCE_LOCATOR,
+        source_vintage=qes_canonical_projection.SOURCE_VINTAGE,
+        observed_at=qes_canonical_projection.OBSERVED_AT,
+        dry_run=False,
+    )
+    pin = digest(silver / "MANIFEST.json")
+    facts, lineage, receipt = project_qes_earnings(silver, pin, source_cas)
+    encode = lambda table: json.dumps(  # noqa: E731 - stable recovery evidence codec.
+        table.to_pylist(),
+        default=str,
+        sort_keys=True,
+        ensure_ascii=False,
+        separators=(",", ":"),
+    ).encode("utf-8")
+    return {
+        "silver_files": tree(silver),
+        "source_manifest_sha256": pin,
+        "source_object_sha256": qes_canonical_projection.SOURCE_SHA256,
+        "canonical_fact_sha256": hashlib.sha256(encode(facts)).hexdigest(),
+        "canonical_lineage_sha256": hashlib.sha256(encode(lineage)).hexdigest(),
+        "projection": receipt,
+    }
+
+
 def _pharmac_recovery_report(root: Path) -> dict[str, Any]:
     """Require two matching Bronze-to-canonical Pharmac projections."""
     runs = {str(index): _rebuild_pharmac_canonical(root, index) for index in (1, 2)}
     if runs["1"] != runs["2"]:
         message = "pharmac_canonical_projection_repeat_mismatch"
+        raise RuntimeError(message)
+    return {**runs["1"], "repeat_identical": True}
+
+
+def _qes_recovery_report(root: Path) -> dict[str, Any]:
+    """Require two matching Bronze-to-canonical QES projections."""
+    runs = {str(index): _rebuild_qes_canonical(root, index) for index in (1, 2)}
+    if runs["1"] != runs["2"]:
+        message = "qes_canonical_projection_repeat_mismatch"
         raise RuntimeError(message)
     return {**runs["1"], "repeat_identical": True}
 
@@ -532,6 +579,7 @@ def run() -> dict[str, Any]:
             "repeat_identical": True,
         }
         outputs["canonical_context_consumer"] = _query_context_consumer(context_one)
+        outputs["qes_canonical_projection"] = _qes_recovery_report(root)
         outputs["pharmac_canonical_projection"] = _pharmac_recovery_report(root)
         outputs["canonical_gold"] = _canonical_gold_recovery_report(root)
     unchanged = original_snapshot == tree(ARCHIVE / "bronze-cas")
