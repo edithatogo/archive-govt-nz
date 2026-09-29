@@ -608,7 +608,11 @@ integrated parent head.
   financial-year boundaries, accounting basis and rights remain unqualified.
   See `befu-core-expense-20260925.md` and
   `crown-expense-canonical-projection-20260929.md`; this is context-only and
-  does not complete historical/total Crown projections or Gold denominators.
+  does not qualify accounting comparability or Gold denominators. The historical
+  Fiscal Time Series source now has a separate 61-fact Core/Total Crown canonical
+  projection with 671 direct lineage rows and repeat-identical Bronze recovery;
+  measure comparison, period starts, currency, rights and denominators remain
+  unqualified. See `fiscal-crown-canonical-projection-20260929.md`.
   The captured HYEFU-2025 core Crown source now has a separate 10-fact Silver
   package and Bronze-bound canonical projection; it remains a distinct release
   vintage with the same unresolved cache, unit/currency, period, basis and

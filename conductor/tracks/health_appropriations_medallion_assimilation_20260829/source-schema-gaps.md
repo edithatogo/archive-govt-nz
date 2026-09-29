@@ -15,7 +15,7 @@ rights clearance or current remote publication state.
 | --- | --- | --- |
 | Annual Budget | 2026 expenditure/revenue captured; 2025 donor and 2026 expenditure extracted | Earlier annual editions unenumerated here; revenue normalization; retrospective rows do not replace edition history |
 | BEFU/HYEFU | 2026 BEFU charts/expenses/economic forecasts; 2025 HYEFU charts/expenses captured; two literal Health-summary editions each extracted | Earlier editions and other expense/chart/forecast areas |
-| Fiscal/Crown expenses | 1972–2025 workbook captured; 2024 and 2025 Health/GDP source pilots retained; BEFU-2026 and HYEFU-2025 Core Crown expenses extracted and projected into separate canonical fiscal-context vintages with cache/formula lineage | Historical/total Crown projections, other fiscal measures and complete edition history |
+| Fiscal/Crown expenses | 1972–2025 workbook captured; 2024 and 2025 Health/GDP source pilots retained; BEFU-2026 and HYEFU-2025 Core Crown expenses extracted and projected into separate canonical fiscal-context vintages with cache/formula lineage | Other fiscal measures and complete edition history |
 | QES | June2026 Table8 QEMQ.SASZ9A ordinary-time average hourly earnings; 9 canonical v2 `earnings_fact` rows with 90 lineage rows; repeat-identical Bronze recovery verified | ISOcurrency, sex and adjustment remain unknown; deflator selection, rights and annual alignment remain pending |
 | Stats NZ GDP | March2026 current-price income/expenditure workbook captured; exact60quarter expenditure observations retained; PR#302 merged | Fiscal aggregation and canonical projection; Treasury GDP stays separate |
 | Ministry Vote Health | Two HAIR2024 indicator CSVs captured and source-specific pilot extracted | Unit/base/method metadata; independent real/per-capita reproduction |
@@ -64,8 +64,8 @@ scheduling remain separate acceptance tasks.
    preserving each source-specific schema. Persist classification occurrences
    only through verified immutable source packages and exclusive local output.
 3. Add the remaining canonical semantic projections and source-area adapters:
-   Budget/forecast facts, fiscal/Crown expenses, published indicators and
-   contextual series. Keep source facts and every unmapped field available;
+   Budget/forecast facts, published indicators and contextual series. Keep source
+   facts and every unmapped field available;
    registry membership alone does not satisfy M-05.
 4. Build denominator-qualified Gold measures and metadata from those contracts.
    Population-dependent measures remain blocked on a suitable original and

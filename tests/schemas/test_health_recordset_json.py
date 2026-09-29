@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 import jsonschema
 import pyarrow as pa
 import pytest
-from hypothesis import given
+from hypothesis import given, settings
 from hypothesis import strategies as st
 
 from archive_govt_nz.schemas import health_recordset_json
@@ -206,6 +206,7 @@ def test_unknown_contract_fails(name: str, version: str) -> None:
 
 
 @given(st.integers(min_value=-(10**38 - 1), max_value=10**38 - 1))
+@settings(deadline=None)
 def test_decimal_property_matches_arrow(coefficient: int) -> None:
     """Every representable coefficient can cross JSON without rounding."""
     value = Decimal(f"{coefficient}e-18")

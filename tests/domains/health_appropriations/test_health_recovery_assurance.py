@@ -147,6 +147,17 @@ def test_clean_room_rebuilds_supported_products_and_reports_blockers(
             "canonical_lineage_sha256": "hyefu-crown-lineage",
         },
     )
+    monkeypatch.setattr(
+        MODULE,
+        "_rebuild_fiscal_crown_canonical",
+        lambda _root, _index: {
+            "source_object_sha256": "e" * 64,
+            "canonical_fact_sha256": "fiscal-crown-facts",
+            "canonical_lineage_sha256": "fiscal-crown-lineage",
+            "projection": {"status": "verified_source_faithful_projection"},
+            "build_index": _index,
+        },
+    )
 
     def fake_context(
         _silver_root: Path, _source_root: Path, output: Path, *, write: bool = False
@@ -199,6 +210,12 @@ def test_clean_room_rebuilds_supported_products_and_reports_blockers(
     )
     assert (
         result["products_rebuilt"]["hyefu_crown_canonical_projection"][
+            "repeat_identical"
+        ]
+        is True
+    )
+    assert (
+        result["products_rebuilt"]["historical_fiscal_crown_canonical_projection"][
             "repeat_identical"
         ]
         is True
