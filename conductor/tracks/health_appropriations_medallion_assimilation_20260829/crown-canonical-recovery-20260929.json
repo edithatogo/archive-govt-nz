@@ -1,0 +1,766 @@
+{
+  "bronze_objects_unchanged": true,
+  "clean_derivative_root": "temporary_directory_removed_after_run",
+  "final_gate": "blocked_until_all_required_products_are_built_from_bronze_and_validated",
+  "products_rebuilt": {
+    "canonical_context_consumer": {
+      "manifest_sha256": "cfb34c6d2ca525d8080f5a3d886273290599a4cceefca66414efd17f9a2db268",
+      "observation_count": 554,
+      "source_families": [
+        "cpi",
+        "gdp",
+        "population",
+        "wage"
+      ],
+      "status": "verified_read_only_projection"
+    },
+    "canonical_gold": {
+      "files": {
+        "MANIFEST.json": {
+          "bytes": 142888,
+          "sha256": "9bd33be34445cc013deb70d0f441cca8d8c39a83a5471b0a7ee15e7111ac9f53"
+        },
+        "dataset-card.md": {
+          "bytes": 798,
+          "sha256": "4d7018ce9eada9f37f3fd133ca0f513b4b34689a2de4fa1e529ab527d571fd39"
+        },
+        "historical_coverage.parquet": {
+          "bytes": 11890,
+          "sha256": "35f4b977cfccc1e669b785dee31d2f31faa2b5551d1af29d881a1fb2c8a27917"
+        },
+        "historical_observations.parquet": {
+          "bytes": 14205,
+          "sha256": "b7070aa4f7651794e3da59521579d495402291d9d09369708b3bc6d0b84ea1c6"
+        },
+        "plot_historical_0110612a35c0bf230b18.png": {
+          "bytes": 140874,
+          "sha256": "8c4030a3ceaf1939fcf3abb23656bf559b97ddbc16458f15eee08fa4f986d96e"
+        },
+        "plot_historical_22c05a464921e6a49c13.png": {
+          "bytes": 135049,
+          "sha256": "d3a7f37196457b9fe845698a3b1c18ca09b9ea13614268edba384fd00f931ef6"
+        },
+        "plot_historical_423981e75d32ebd10d12.png": {
+          "bytes": 84506,
+          "sha256": "df761f1399b2ac8021d0714dab9bc420a6e2f0688921d8febfc1437608cd8d69"
+        },
+        "plot_historical_959f44ae6a4e923aa28b.png": {
+          "bytes": 141747,
+          "sha256": "606f1e0de4e8d0e34d7fb0a8d299ff1dd8847ead9cd4a6ddfc5bfefaa0b0e994"
+        },
+        "plot_historical_a2a298f5a61c5c88bcc9.png": {
+          "bytes": 258989,
+          "sha256": "a12f59f90cbb85dd3064297b08e4cfb1b16454aa482fa3c90610fb080aa6877c"
+        },
+        "plot_historical_ba67687f1fc0668a24e6.png": {
+          "bytes": 260615,
+          "sha256": "b6a15f74a37782940bfe1e906f579306b7728512045e64d4aa885f4baebf8228"
+        },
+        "plot_historical_c8b40593627d1af24daa.png": {
+          "bytes": 49041,
+          "sha256": "ea18e6e69e9d21c829c9c7ad43d5d6dd8493da0db5babca929338a0076bfc346"
+        },
+        "plot_historical_cf6ce572cdbea34320c6.png": {
+          "bytes": 143169,
+          "sha256": "9bb05d79f6d4e66c4edc7e3e510b7782603e9158c7a967b00c368ce1a51589d0"
+        },
+        "plot_historical_f7a9ddaef13d1f087d40.png": {
+          "bytes": 86519,
+          "sha256": "6872d9c9042fd0b635709093bd58586169a24242243da6512272c5a834419ec3"
+        },
+        "plot_historical_fd563e67f0fdf7300a56.png": {
+          "bytes": 51060,
+          "sha256": "8b5b658d79d6139237c633297295441b62767046e3d0455cb163baa81407c1cb"
+        },
+        "ro-crate-metadata.json": {
+          "bytes": 3593,
+          "sha256": "edb6b3ea6e04cf1a6d93c6635b9072c7e2c7eed210f730af866da5f7ccc3fa1b"
+        }
+      },
+      "repeat_identical": true
+    },
+    "context_gold": {
+      "files": {
+        "MANIFEST.json": {
+          "bytes": 43862,
+          "sha256": "cfb34c6d2ca525d8080f5a3d886273290599a4cceefca66414efd17f9a2db268"
+        },
+        "context-quality-report.md": {
+          "bytes": 1314,
+          "sha256": "e8fcd81969699fdd06003340bdc0e75bb90a28eb08b3ac26d8e65066ca6e055d"
+        },
+        "context_coverage.parquet": {
+          "bytes": 25391,
+          "sha256": "0aa7f81662e3e6ae173f638dd21ad81bcca47b9543dd2c638812b52fbe9c8600"
+        },
+        "context_observations.parquet": {
+          "bytes": 33918,
+          "sha256": "1f5f81ff449be533051b7ea8902b4d1c9d000a5c24766027e37fbf33012c62ee"
+        },
+        "context_quality.parquet": {
+          "bytes": 6861,
+          "sha256": "3c1fd3d7251e257982c969cf290803ec064c29ae54c03bbb05fd4854805d2f8b"
+        },
+        "plot_context_cpi_aa7965280b00e6d1ee74.png": {
+          "bytes": 83569,
+          "sha256": "42dd20367a44966807b0143750a0f5f74f26461b02af67763d9e4910f1183456"
+        },
+        "plot_context_gdp_a8d0c46e361f1bb82ef4.png": {
+          "bytes": 58166,
+          "sha256": "b642aeb3749f3d86cfc88bea1fa49ea9c9c480e35a2a43859f983f98bb78ac48"
+        },
+        "plot_context_population_52069ad9fc611e3aeddb.png": {
+          "bytes": 51214,
+          "sha256": "6ffaa530f9513cb8840bb2d6b978ab9dc92af6b4f4c3e27396a87e382e8215b9"
+        },
+        "plot_context_wage_81d910fdcdfaf0891fe3.png": {
+          "bytes": 32205,
+          "sha256": "df6d79c02d9c5cd2cb1f0944b98b9b1637770c4c96bc1fc64d4048e3b1e33ea9"
+        }
+      },
+      "repeat_identical": true
+    },
+    "context_source_native_silver": {
+      "cpi": {
+        "counts": {
+          "input": 22701,
+          "missing": 27,
+          "numeric": 422,
+          "selected": 449,
+          "unselected": 22252
+        },
+        "files": {
+          "MANIFEST.json": {
+            "bytes": 988,
+            "sha256": "edb62f4b106948502e717f5f6c5e3da00efc0a64bb10b5dcbafc48cd1a6c257e"
+          },
+          "cpi_facts.parquet": {
+            "bytes": 98613,
+            "sha256": "0dfed3330c379af6c08dfcac0235149b81fa76f3131b32865ae92ddc98911560"
+          },
+          "field_lineage.parquet": {
+            "bytes": 111499,
+            "sha256": "948e0533cd941f08401026bb71b577c6a1e145ac0d1882e31125aa8d06ae6df5"
+          },
+          "row_dispositions.parquet": {
+            "bytes": 766994,
+            "sha256": "bc4c5af889ff01bae782c9c6321bfdd31afa03433998c178d2af1357e71643d0"
+          }
+        },
+        "manifest_sha256": "edb62f4b106948502e717f5f6c5e3da00efc0a64bb10b5dcbafc48cd1a6c257e",
+        "repeat_identical": true,
+        "source_object_sha256": "f474a6a3bfbe9b6377c3c68cc94a4cb494335130af3940fe538f5a0dd1274e9d"
+      },
+      "gdp": {
+        "counts": {
+          "dispositions": 2287,
+          "facts": 60,
+          "lineage": 900
+        },
+        "files": {
+          "MANIFEST.json": {
+            "bytes": 1076,
+            "sha256": "639b3c7da60f2afa1b860c5f6c8f1c4c0ae24bf17aa7af63bf8a06a1f6471b35"
+          },
+          "cell_dispositions.parquet": {
+            "bytes": 37136,
+            "sha256": "453d5c0114be80cf2c1abf6eda7512638f00112c7f5ffb2abe5c12ed4d7864bd"
+          },
+          "field_lineage.parquet": {
+            "bytes": 17694,
+            "sha256": "45c0dc5b317bf76d6e6d1c7980040ab37be38d6cd032cb5ac304e2b62e20f587"
+          },
+          "gdp_facts.parquet": {
+            "bytes": 29270,
+            "sha256": "9b9fbb51323654b84982666bc278d4b7068ab4bdc93b533bf1e0a6ecfc44363d"
+          }
+        },
+        "manifest_sha256": "639b3c7da60f2afa1b860c5f6c8f1c4c0ae24bf17aa7af63bf8a06a1f6471b35",
+        "repeat_identical": true,
+        "source_object_sha256": "a7326e84e7704446a18e5c8942f99901a452b2170af4228e8a5c242a5532ed21"
+      },
+      "population": {
+        "counts": {
+          "facts": 36,
+          "input": 36,
+          "lineage": 72,
+          "missing": 1,
+          "numeric": 35,
+          "provisional": 2
+        },
+        "files": {
+          "MANIFEST.json": {
+            "bytes": 880,
+            "sha256": "067255c4ac18377312d0a8234dc94804c876ba68866cfba3a483a4dd89415798"
+          },
+          "field_lineage.parquet": {
+            "bytes": 10335,
+            "sha256": "f91b093e37a13a1f6de6cc2d862eba976df1e9ec5d0ef481a2f403cc66a98717"
+          },
+          "population_facts.parquet": {
+            "bytes": 21296,
+            "sha256": "564a02a2c28865da1cfac461d83baaa705419fb8a14ea1aebda5b3f362c5ffa8"
+          },
+          "row_dispositions.parquet": {
+            "bytes": 6505,
+            "sha256": "ff8ebd57263ebc05ed9da1632d20ad30b0dabe13aff44323aab960e13469e96f"
+          }
+        },
+        "manifest_sha256": "067255c4ac18377312d0a8234dc94804c876ba68866cfba3a483a4dd89415798",
+        "repeat_identical": true,
+        "source_object_sha256": "a52e0344d1b6e707de04b7b968f2667fc969c0f0777b319921ff716ead82a1d9"
+      },
+      "wage": {
+        "counts": {
+          "field_lineage": 207,
+          "inventoried_cells": 6021,
+          "normalized": 9
+        },
+        "files": {
+          "MANIFEST.json": {
+            "bytes": 11047,
+            "sha256": "0bf89bd6c10a0458ef4c578b209c3252292961976d2f50b3c27fe92907c3cb04"
+          },
+          "cell_dispositions.parquet": {
+            "bytes": 59155,
+            "sha256": "978125c7011649db91d8898c20c780da1f6a66b728c820c82178dba41d0c0d8e"
+          },
+          "field_lineage.parquet": {
+            "bytes": 21010,
+            "sha256": "355e73cb2424ada938b6a8f40213b841be2511cb5b60173074452d412d8c0150"
+          },
+          "qes_facts.parquet": {
+            "bytes": 16198,
+            "sha256": "7fe02c2e6126a46c2fd5427cef37924a202d5292ce56520437f320ef26012e87"
+          }
+        },
+        "manifest_sha256": "0bf89bd6c10a0458ef4c578b209c3252292961976d2f50b3c27fe92907c3cb04",
+        "repeat_identical": true,
+        "source_object_sha256": "1af2e7e37f1c108a2656842cf1f519c903e1a982bcdc03ee02d0ad888ebc3a97"
+      }
+    },
+    "crown_canonical_projection": {
+      "canonical_fact_sha256": "b5cd15fbfec5d0bf2331de0299088dec775f6e5c4e7f47c77bf6c84c46f61ae1",
+      "canonical_lineage_sha256": "feab5c89f78d1b8b0ddc07ba58724ef38ec7ac077eab1d8252d8e33c429d9f00",
+      "projection": {
+        "accounting_basis": "unknown",
+        "currency": "unknown",
+        "denominator_selection": "not_performed",
+        "financial_year_boundaries": "unqualified",
+        "formula_cache_freshness": "unverified",
+        "input_identity_closed": true,
+        "input_records": 10,
+        "output_lineage_rows": 80,
+        "output_records": 10,
+        "publication": "not_performed",
+        "rights_state": "not_evaluated",
+        "schema_version": "archive-govt-nz.health-crown-canonical-projection/v1",
+        "source_manifest_sha256": "23ddc3fb0a3d4d6dc55a4731694f7d9e26f5ace1324d4a76456f1ad761abe651",
+        "source_object_sha256": "313ee040abd9a332cc36245da5a0c2cb0d38fe2cedc013d731c1f12db463b0d1",
+        "source_vintage": "BEFU-2026",
+        "status": "verified_source_faithful_projection"
+      },
+      "repeat_identical": true,
+      "silver_files": {
+        "MANIFEST.json": {
+          "bytes": 33470,
+          "sha256": "23ddc3fb0a3d4d6dc55a4731694f7d9e26f5ace1324d4a76456f1ad761abe651"
+        },
+        "cell_dispositions.parquet": {
+          "bytes": 36211,
+          "sha256": "36e36826d950fadc0e17aa2c2b301c4f138eb1d2b0f01e55d719a63bc9c85da3"
+        },
+        "crown_expense_facts.parquet": {
+          "bytes": 12499,
+          "sha256": "b564e070b0ae61e3eb96fe497ebc3a36c7a1c69cb5424864732e736079f1e66a"
+        },
+        "field_lineage.parquet": {
+          "bytes": 6441,
+          "sha256": "634792876c5f69d8354bbb68c44946df7adf16282f63e047e3dbdc2ddef62814"
+        }
+      },
+      "source_manifest_sha256": "23ddc3fb0a3d4d6dc55a4731694f7d9e26f5ace1324d4a76456f1ad761abe651",
+      "source_object_sha256": "313ee040abd9a332cc36245da5a0c2cb0d38fe2cedc013d731c1f12db463b0d1"
+    },
+    "donor_source_native_silver": {
+      "fact_count": 739,
+      "files": {
+        "MANIFEST.json": {
+          "bytes": 66047,
+          "sha256": "d905dfa6d76cbb35cf96e30b9d088be74ebcf2c846f38ed7b327e43cf46f67c5"
+        },
+        "PLAN.json": {
+          "bytes": 117726,
+          "sha256": "626aa4987f852a64705c49a444fb68a0270973acb118e4f48f74e409285988f9"
+        },
+        "befu-chart/MANIFEST.json": {
+          "bytes": 117905,
+          "sha256": "14088607bd4211104f69d1cf4553bea515705971cb47604feef8af709a2a26ea"
+        },
+        "befu-chart/area_dispositions.parquet": {
+          "bytes": 10100,
+          "sha256": "c50ae4cb20626b5e087ec7cb2622eeadf46077aa6058c74e5e53eeaa7dd7f410"
+        },
+        "befu-chart/field_lineage.parquet": {
+          "bytes": 12736,
+          "sha256": "fa377f7c881e098d2098ed9045e39acb9a4cd884ae3b89e0f5e132b3297843a3"
+        },
+        "befu-chart/literal_facts.parquet": {
+          "bytes": 33392,
+          "sha256": "38a9728ca4daf15a48eed360faea7f0ffc144e7d7528892f287e156746c38123"
+        },
+        "befu-detail/MANIFEST.json": {
+          "bytes": 36225,
+          "sha256": "42cf811aef35d5adf24421c917525ae8f0d6f9d83bd6b10cdf430e64a60c287d"
+        },
+        "befu-detail/area_dispositions.parquet": {
+          "bytes": 9456,
+          "sha256": "607f7b81ad0a23e8e4f05872b14c58c1c96697c982d07dd39a791f19224c7acf"
+        },
+        "befu-detail/field_lineage.parquet": {
+          "bytes": 10821,
+          "sha256": "44cb3c80788aacdf5f51baffb0bf039811222f9643b8b6149ddf918b7cd363b8"
+        },
+        "befu-detail/literal_facts.parquet": {
+          "bytes": 23158,
+          "sha256": "e4d5b5370c014f99c8a92da6168d955502587ea591a73c6a858166f1a2cf66c2"
+        },
+        "befu-residual/MANIFEST.json": {
+          "bytes": 117904,
+          "sha256": "888e1d70d48866a579c7c57b99f674601002ebf1dff14914efca8a00e9d3f930"
+        },
+        "befu-residual/area_dispositions.parquet": {
+          "bytes": 3506,
+          "sha256": "e663afad8745e4c106605aa3bde8e36dca4245f9baa8554ac81cb7091b3fc279"
+        },
+        "befu-residual/field_lineage.parquet": {
+          "bytes": 2519,
+          "sha256": "8f35c94e3549af49a6c67b9a16ed04ea76f11bff3d40c1c31b2ff64e227ff985"
+        },
+        "befu-residual/literal_facts.parquet": {
+          "bytes": 9648,
+          "sha256": "b2c3cd26c7f8e73cfb5a8edf747e0c387da3c5e73346ff884ee0b6876cf366cb"
+        },
+        "befu/MANIFEST.json": {
+          "bytes": 36552,
+          "sha256": "9217b02ffb2a03e56a0a45cb7b865cb05227d6ed3a59e3f429d8faf154d3644e"
+        },
+        "befu/cell_dispositions.parquet": {
+          "bytes": 35124,
+          "sha256": "628bcd8ff81387a8a9ad459c8d738e60652b5566b5de12b6a99399d273de609f"
+        },
+        "befu/field_lineage.parquet": {
+          "bytes": 5993,
+          "sha256": "2b1bcb2eddd10cd52d964b2f3f07690dd8126a714aac24ac6efcadce44be7df4"
+        },
+        "befu/forecast_facts.parquet": {
+          "bytes": 11628,
+          "sha256": "349e7e8372b6bef0e5f364c2e2923625f0fabab627004f54742b42814f1bceb5"
+        },
+        "budget/MANIFEST.json": {
+          "bytes": 7120,
+          "sha256": "f051c4f815da3085363f0a00b592b8a5e4521398a544529353781debfaf3cd3b"
+        },
+        "budget/budget_facts.parquet": {
+          "bytes": 64493,
+          "sha256": "4de50276340292f659bdc70795fe70c352e428f6012d1a4c4108a07a59649165"
+        },
+        "budget/field_lineage.parquet": {
+          "bytes": 81832,
+          "sha256": "f8d80b30e5d4641707e7c39cbb435de97bb4b44a49fd8c5ae705072ed867ad9c"
+        },
+        "budget/row_dispositions.parquet": {
+          "bytes": 682366,
+          "sha256": "dabc8533c1ff8b49ff46b4301374225315771a76c27e64020526ebcda6486397"
+        },
+        "crown/MANIFEST.json": {
+          "bytes": 127373,
+          "sha256": "0df04c977f870a6abba4105706a7e51af179eba35234221fcbf5a13482139503"
+        },
+        "crown/area_dispositions.parquet": {
+          "bytes": 7889,
+          "sha256": "89392451d57bceceb00438a05c2c1b75d3f182260be048a2e03347f4ca5fe1c4"
+        },
+        "crown/field_lineage.parquet": {
+          "bytes": 9086,
+          "sha256": "f0091899b3514e189c1a2a23e5cd9550c81a7455899f37989d07a59ccf037796"
+        },
+        "crown/literal_facts.parquet": {
+          "bytes": 34879,
+          "sha256": "a90bfdc8553ce510b69de3cd256bf8e46d06aa370052e7b0a7d49bf02890903f"
+        },
+        "historical/MANIFEST.json": {
+          "bytes": 125982,
+          "sha256": "dbdba7dbae941e29f25fc5bc1227479107d8d1eaa8d761d6fe2d03ec63347f1f"
+        },
+        "historical/cell_dispositions.parquet": {
+          "bytes": 31132,
+          "sha256": "79bb5cad2f1f8f612d930acb5405070af8f7a20fe357c4560d96d220deedf960"
+        },
+        "historical/field_lineage.parquet": {
+          "bytes": 27102,
+          "sha256": "506debdaf2b5b54e5f0d6677fb4969aa589946296be748cdc5b793e8d6beb4cf"
+        },
+        "historical/historical_facts.parquet": {
+          "bytes": 32847,
+          "sha256": "959f5d6a2c2d3f6717cef44c25b1b54df03e8a4498d56c9376f97f5934b6e135"
+        },
+        "hyefu-allowance/MANIFEST.json": {
+          "bytes": 101702,
+          "sha256": "bd033aff9bb90cd60ca99b65fb1405aa8b02f488ff9e9754b3a0837af71ea0c9"
+        },
+        "hyefu-allowance/area_dispositions.parquet": {
+          "bytes": 4629,
+          "sha256": "d6246416c5a02702850126a89eebb76df1d3a60fd7afd237bb1f4b73a0d3ce08"
+        },
+        "hyefu-allowance/field_lineage.parquet": {
+          "bytes": 4200,
+          "sha256": "d6b91f67e116bc96daa654b04b56625733e9c53f6706e5fe698d371497d1caaf"
+        },
+        "hyefu-allowance/literal_facts.parquet": {
+          "bytes": 12735,
+          "sha256": "52deff2d2ef9b967f73b01a6566377ce173ab9a0b2f177b1896ea6f9454ab06b"
+        },
+        "hyefu-detail/MANIFEST.json": {
+          "bytes": 36237,
+          "sha256": "6615ca6b601283aae75b80dd15627bae32d2769b95f4b7b71f18c9fa9ce5a321"
+        },
+        "hyefu-detail/area_dispositions.parquet": {
+          "bytes": 9396,
+          "sha256": "bb4e8b693c28ff2146b4feffda2109a94bb97e904cae90dce366d743f181f419"
+        },
+        "hyefu-detail/field_lineage.parquet": {
+          "bytes": 10862,
+          "sha256": "85c9ab5374085d18be4363fe97b3a0a3c99a9204fd6e13ec7572c0861f57dac5"
+        },
+        "hyefu-detail/literal_facts.parquet": {
+          "bytes": 22980,
+          "sha256": "16922fd583074c1dd3b7316177b4486432cae0065bde3dd7fd39c4ce744908d8"
+        },
+        "hyefu-residual/MANIFEST.json": {
+          "bytes": 101700,
+          "sha256": "bbedd633a5283fb29409b334196e161bd068839cb5ccb029d2eaf6af6216cc40"
+        },
+        "hyefu-residual/area_dispositions.parquet": {
+          "bytes": 3738,
+          "sha256": "41aa998414cbf4687d0c0c1acbb9994f559a296f550c5c866ff9738c82e74ec4"
+        },
+        "hyefu-residual/field_lineage.parquet": {
+          "bytes": 3222,
+          "sha256": "efdb4e67798c8a17413ee008d25c0d02a08e6974afed1ae0ae4a06142c69448e"
+        },
+        "hyefu-residual/literal_facts.parquet": {
+          "bytes": 12543,
+          "sha256": "620e6462dc122c4dbfa4e3bdcd13594fa7e873d5f6a1adcea1962a9f3d0da316"
+        },
+        "hyefu/MANIFEST.json": {
+          "bytes": 36553,
+          "sha256": "c1d04065992825f1e122e0c9b384cf23e94104a8e0fc2310155161c60a6fa9d6"
+        },
+        "hyefu/cell_dispositions.parquet": {
+          "bytes": 34875,
+          "sha256": "975762236cc39fa1bf5b9e5261008c0caf5ff2ccd621c934639688765f36e143"
+        },
+        "hyefu/field_lineage.parquet": {
+          "bytes": 5954,
+          "sha256": "9d15ad1cd35a8f195e3e061b719c58e88224f6296e5dbd99ca58a7779776f99e"
+        },
+        "hyefu/forecast_facts.parquet": {
+          "bytes": 11651,
+          "sha256": "21d0edebace4a92a15cd2393e603224501f0ffd2364d1e050b3bb482293cd53e"
+        },
+        "revenue/MANIFEST.json": {
+          "bytes": 7210,
+          "sha256": "71b64a9ea7ebb953688f6c3b5d9c38366bb527a429ce7f9a4ad710652f4af81e"
+        },
+        "revenue/field_lineage.parquet": {
+          "bytes": 21292,
+          "sha256": "d7def4793cfcb893a73c51be66cba8fb910508685e9ce257626f2cacf2ba27b7"
+        },
+        "revenue/revenue_facts.parquet": {
+          "bytes": 24299,
+          "sha256": "85a77d643bc4aac22b193f10e79b225eb91ac2aa42a224078cd454efc5e3e7f9"
+        },
+        "revenue/row_dispositions.parquet": {
+          "bytes": 52700,
+          "sha256": "588434c96f9a83e2d2b0b60589a8df8d866d880d24d3ba511bab97ca06e4173b"
+        }
+      },
+      "gold_selection": "not_performed",
+      "manifest_sha256": "d905dfa6d76cbb35cf96e30b9d088be74ebcf2c846f38ed7b327e43cf46f67c5",
+      "profile_count": 12,
+      "publication": "not_performed",
+      "repeat_identical": true,
+      "rights_state": "not_evaluated"
+    },
+    "donor_sqlite_gold_plots": {
+      "compatibility_facts": 341,
+      "gold_selected_facts": 321,
+      "plot_count": 6,
+      "products": {
+        "compatibility": {
+          "MANIFEST.json": {
+            "bytes": 892,
+            "sha256": "557f31e3bc2c3340a18768542dfcb1e5c3071d34442cb8334d8e9b9c9815c2ed"
+          },
+          "compatibility.sqlite": {
+            "bytes": 49152,
+            "sha256": "a6a293fee24c3c3802bfa9208fefce3ca3995639e5316f44131f5d2272cf2299"
+          },
+          "field_lineage.jsonl": {
+            "bytes": 2510630,
+            "sha256": "67acefc1dbc70e5dd5885ad63b5bf1b01a52bb5869771d40aeeecf4d0a74f8d1"
+          },
+          "records.jsonl": {
+            "bytes": 701239,
+            "sha256": "3feb8a836cc98aac61acb0e5ebe31595ff9ece75f8e59d1ee46a99b1175019f1"
+          }
+        },
+        "gold": {
+          "MANIFEST.json": {
+            "bytes": 1545,
+            "sha256": "5c6c4a634adb5303d17a0cc0b7c8072dc5778fc53439f2bf1bc41ae5b78f1a17"
+          },
+          "budget_vs_estimated_actual.parquet": {
+            "bytes": 7369,
+            "sha256": "71bbddc5a9cc9eda045346bbaf469a5143880a711df07e2dbf055d5b136fe094"
+          },
+          "field_lineage.jsonl": {
+            "bytes": 2449810,
+            "sha256": "75a8859da950af9b0db6b3744258dcaeb8686e79ffeda2ed26aa2ba253bfdeb3"
+          },
+          "health_spending_gdp_share.parquet": {
+            "bytes": 24270,
+            "sha256": "51d7023d056fdf45b1f903572ad9fede5cbcabffe133212f6a410e638bd02c1c"
+          },
+          "historical_nominal.parquet": {
+            "bytes": 17847,
+            "sha256": "afec134cd1545c04129505ed04070e4a2794272415257e5ba2bddc578a5d3a4d"
+          },
+          "historical_yoy.parquet": {
+            "bytes": 22572,
+            "sha256": "0268a5dd4ae1c997d4578c69250bec2e8bf3107415a54a6aa3432059e9124aea"
+          },
+          "input_records.jsonl": {
+            "bytes": 577490,
+            "sha256": "badfdeaa8a77f9bb7f062edff4326e450d9e9587965a5a150079b9a8f288970c"
+          },
+          "recent_classification_trends.parquet": {
+            "bytes": 14000,
+            "sha256": "9ad2ce472d61e0b356c0e3cd4c9fe2b5f4a00bc6ba3c8e87e3b5808782c4ba6d"
+          },
+          "recent_functional_breakdown.parquet": {
+            "bytes": 7097,
+            "sha256": "5ef66dea4b58c52f793946a7c649b5d4a95c89d25a4f7c958073e8d28f3923fa"
+          }
+        },
+        "plots": {
+          "CONTRACTS.json": {
+            "bytes": 79088,
+            "sha256": "bc294eecaefe62e7f248148ffc4efef8a9d061f0db53e2a5211dd9545afa471c"
+          },
+          "MANIFEST.json": {
+            "bytes": 1940,
+            "sha256": "a8e36f1889e77c577bf601e149b9fd096c36ba89e3fedb411bc00503e8054e95"
+          },
+          "health_spending_vs_gdp.png": {
+            "bytes": 73149,
+            "sha256": "273213b6ae5835c8941cb79aa4e777a086cf1ca17132077fb35e340ebb62d495"
+          },
+          "historical_health_spending_nominal.png": {
+            "bytes": 62116,
+            "sha256": "1d3a556923ca9e0064314977a4d02b696f9a6027716064cd758ec811c58d25f8"
+          },
+          "historical_health_spending_yoy_growth.png": {
+            "bytes": 74602,
+            "sha256": "a5225136bf7416cfbbb6f6e8c459be20bfc264294a11ef4c355d4f26a6ea6afd"
+          },
+          "recent_appropriations_functional_breakdown_2025_Estimated_Actual.png": {
+            "bytes": 48564,
+            "sha256": "acfcf94eca4bc4ba07cd1155090529e8fe2f9e4e7f61e9583ded42850dc4348e"
+          },
+          "recent_trends_health_classification.png": {
+            "bytes": 64751,
+            "sha256": "6ebbfa3f15f99db16b733d7967170c107a85376d88c63cd5b6e1f04d62064721"
+          },
+          "recent_trends_no_classification.png": {
+            "bytes": 64787,
+            "sha256": "ebc83f3d04e5be2bc0a31d018a560679ee32561ee9150d3aebf605fc4efb04c2"
+          }
+        },
+        "raw": {
+          "MANIFEST.json": {
+            "bytes": 534,
+            "sha256": "76e41b2445cf8412ea272bdf9e7c34ba99b63e4bea5c74ffc470a8576a9bb653"
+          },
+          "PLAN.json": {
+            "bytes": 1238,
+            "sha256": "60514f07ed25c6680800dd8e95f7a90a99ce063d5cb56a4aea85dd460d59e309"
+          },
+          "befu/MANIFEST.json": {
+            "bytes": 36552,
+            "sha256": "9217b02ffb2a03e56a0a45cb7b865cb05227d6ed3a59e3f429d8faf154d3644e"
+          },
+          "befu/cell_dispositions.parquet": {
+            "bytes": 35124,
+            "sha256": "628bcd8ff81387a8a9ad459c8d738e60652b5566b5de12b6a99399d273de609f"
+          },
+          "befu/field_lineage.parquet": {
+            "bytes": 5993,
+            "sha256": "2b1bcb2eddd10cd52d964b2f3f07690dd8126a714aac24ac6efcadce44be7df4"
+          },
+          "befu/forecast_facts.parquet": {
+            "bytes": 11628,
+            "sha256": "349e7e8372b6bef0e5f364c2e2923625f0fabab627004f54742b42814f1bceb5"
+          },
+          "budget/MANIFEST.json": {
+            "bytes": 7120,
+            "sha256": "f051c4f815da3085363f0a00b592b8a5e4521398a544529353781debfaf3cd3b"
+          },
+          "budget/budget_facts.parquet": {
+            "bytes": 64493,
+            "sha256": "4de50276340292f659bdc70795fe70c352e428f6012d1a4c4108a07a59649165"
+          },
+          "budget/field_lineage.parquet": {
+            "bytes": 81832,
+            "sha256": "f8d80b30e5d4641707e7c39cbb435de97bb4b44a49fd8c5ae705072ed867ad9c"
+          },
+          "budget/row_dispositions.parquet": {
+            "bytes": 682366,
+            "sha256": "dabc8533c1ff8b49ff46b4301374225315771a76c27e64020526ebcda6486397"
+          },
+          "historical/MANIFEST.json": {
+            "bytes": 125982,
+            "sha256": "dbdba7dbae941e29f25fc5bc1227479107d8d1eaa8d761d6fe2d03ec63347f1f"
+          },
+          "historical/cell_dispositions.parquet": {
+            "bytes": 31132,
+            "sha256": "79bb5cad2f1f8f612d930acb5405070af8f7a20fe357c4560d96d220deedf960"
+          },
+          "historical/field_lineage.parquet": {
+            "bytes": 27102,
+            "sha256": "506debdaf2b5b54e5f0d6677fb4969aa589946296be748cdc5b793e8d6beb4cf"
+          },
+          "historical/historical_facts.parquet": {
+            "bytes": 32847,
+            "sha256": "959f5d6a2c2d3f6717cef44c25b1b54df03e8a4498d56c9376f97f5934b6e135"
+          },
+          "hyefu/MANIFEST.json": {
+            "bytes": 36553,
+            "sha256": "c1d04065992825f1e122e0c9b384cf23e94104a8e0fc2310155161c60a6fa9d6"
+          },
+          "hyefu/cell_dispositions.parquet": {
+            "bytes": 34875,
+            "sha256": "975762236cc39fa1bf5b9e5261008c0caf5ff2ccd621c934639688765f36e143"
+          },
+          "hyefu/field_lineage.parquet": {
+            "bytes": 5954,
+            "sha256": "9d15ad1cd35a8f195e3e061b719c58e88224f6296e5dbd99ca58a7779776f99e"
+          },
+          "hyefu/forecast_facts.parquet": {
+            "bytes": 11651,
+            "sha256": "21d0edebace4a92a15cd2393e603224501f0ffd2364d1e050b3bb482293cd53e"
+          }
+        }
+      },
+      "raw_manifest_sha256": "76e41b2445cf8412ea272bdf9e7c34ba99b63e4bea5c74ffc470a8576a9bb653",
+      "repeat_identical": true
+    },
+    "pharmac_canonical_projection": {
+      "canonical_fact_sha256": "c14a42beafb0956639261589426849c4f59d8c02d9f94e90585985f5a684969a",
+      "canonical_lineage_sha256": "f768105a89b12e01c0aee5bd26803195425ec1188b673777f90129cfd62df3fe",
+      "projection": {
+        "actual_expenditure": "not_asserted",
+        "input_identity_closed": true,
+        "input_records": 14,
+        "output_lineage_rows": 112,
+        "output_records": 14,
+        "price_basis": "unknown",
+        "publication": "not_performed",
+        "published_change_recalculation": "not_performed",
+        "rights_state": "not_evaluated",
+        "schema_version": "archive-govt-nz.health-pharmac-canonical-projection/v1",
+        "source_cell_dispositions": 64,
+        "source_manifest_sha256": "5eea323f1f9360fb7a92b7c2d9f92f1922dfb6f447a8252c8ca8b3ebf64ff248",
+        "source_object_sha256": "eaf5801b819321f8aed7544fb16e6348779267fd3d5f8fb1d59410803acffbea",
+        "source_package_unchanged": true,
+        "source_vintage": "Pharmac-CPB-2026-08-07",
+        "status": "verified_source_faithful_projection"
+      },
+      "repeat_identical": true,
+      "silver_files": {
+        "MANIFEST.json": {
+          "bytes": 1339,
+          "sha256": "5eea323f1f9360fb7a92b7c2d9f92f1922dfb6f447a8252c8ca8b3ebf64ff248"
+        },
+        "cell_dispositions.parquet": {
+          "bytes": 4822,
+          "sha256": "7afa3b40bcfd67b29997d6937625f3d67bc440bf4292d94450ec156ca9f42bac"
+        },
+        "field_lineage.parquet": {
+          "bytes": 9162,
+          "sha256": "a5ac686f5374c319d598a455bc62921330edf14b998db554c63c65da2e469277"
+        },
+        "pharmaceutical_budget_facts.parquet": {
+          "bytes": 16323,
+          "sha256": "ad585e7ae6ddcc846e5134d4dae78f005f7d3a8fa467be252cef9e4a377203d2"
+        }
+      },
+      "source_manifest_sha256": "5eea323f1f9360fb7a92b7c2d9f92f1922dfb6f447a8252c8ca8b3ebf64ff248",
+      "source_object_sha256": "eaf5801b819321f8aed7544fb16e6348779267fd3d5f8fb1d59410803acffbea"
+    },
+    "qes_canonical_projection": {
+      "canonical_fact_sha256": "56ce86c7dfa0a14c0da565169ef10f2ff0aa4a3d6da58dc9b4626f5bd52b3c93",
+      "canonical_lineage_sha256": "9dc4d32a64eea2f20ed20cac9446df00b40273a6c50e31850b4683af99aade24",
+      "projection": {
+        "adjustment": "not_supplied",
+        "currency": "unknown",
+        "deflator_selection": "not_performed",
+        "input_identity_closed": true,
+        "input_records": 9,
+        "output_lineage_rows": 90,
+        "output_records": 9,
+        "publication": "not_performed",
+        "rights_state": "not_evaluated",
+        "schema_version": "archive-govt-nz.health-qes-canonical-projection/v1",
+        "sex": "not_supplied",
+        "source_manifest_sha256": "0bf89bd6c10a0458ef4c578b209c3252292961976d2f50b3c27fe92907c3cb04",
+        "source_object_sha256": "1af2e7e37f1c108a2656842cf1f519c903e1a982bcdc03ee02d0ad888ebc3a97",
+        "source_package_unchanged": true,
+        "source_vintage": "QES-2026-Q2",
+        "status": "verified_source_faithful_projection"
+      },
+      "repeat_identical": true,
+      "silver_files": {
+        "MANIFEST.json": {
+          "bytes": 11047,
+          "sha256": "0bf89bd6c10a0458ef4c578b209c3252292961976d2f50b3c27fe92907c3cb04"
+        },
+        "cell_dispositions.parquet": {
+          "bytes": 59155,
+          "sha256": "978125c7011649db91d8898c20c780da1f6a66b728c820c82178dba41d0c0d8e"
+        },
+        "field_lineage.parquet": {
+          "bytes": 21010,
+          "sha256": "355e73cb2424ada938b6a8f40213b841be2511cb5b60173074452d412d8c0150"
+        },
+        "qes_facts.parquet": {
+          "bytes": 16198,
+          "sha256": "7fe02c2e6126a46c2fd5427cef37924a202d5292ce56520437f320ef26012e87"
+        }
+      },
+      "source_manifest_sha256": "0bf89bd6c10a0458ef4c578b209c3252292961976d2f50b3c27fe92907c3cb04",
+      "source_object_sha256": "1af2e7e37f1c108a2656842cf1f519c903e1a982bcdc03ee02d0ad888ebc3a97"
+    }
+  },
+  "publication": "not_performed",
+  "required_but_not_rebuilt": [
+    "donor_and_canonical_reports",
+    "additional_source_native_silver_profiles_and_canonical_adapters",
+    "platinum_dcat_croissant_ro_crate_prov_complete_profile"
+  ],
+  "rights": "not_evaluated",
+  "schema_version": "archive-govt-nz.health-clean-room-recovery/v1",
+  "source": "pinned external Bronze CAS and reviewed retained Silver packages",
+  "status": "partial_with_blockers"
+}

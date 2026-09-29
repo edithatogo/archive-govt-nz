@@ -285,14 +285,13 @@
       "base": "accounting/consolidation basis unqualified",
       "period": "2021-2030: Actual 2021-2025, Forecast 2026-2030; financial-year basis unverified",
       "geography": "New Zealand; national aggregate",
-      "selector": "Core Crown Expense Tables!F26:O26; years F5:O5; status F6:O6; formula cells; no evaluation or cache qualification",
-      "join_policy": "Blocked: qualify aggregate label and period basis; keep Actual/Forecast and release vintages distinct",
+      "selector": "Core Crown Expense Tables!F26:O26; years F5:O5; status F6:O6; source formulas and stored numeric caches retained without recalculation",
+      "join_policy": "Blocked: formula-cache freshness, financial-year boundaries, currency and accounting/consolidation basis remain unqualified; keep Actual/Forecast and release vintages distinct",
       "qualification": "unqualified",
       "rights": "not_evaluated",
       "gaps": [
         "formula_cache_not_qualified",
-        "financial_year_basis_unverified",
-        "canonical_total_adapter_missing"
+        "financial_year_basis_unverified"
       ],
       "sources": [
         {
@@ -306,9 +305,10 @@
         "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census.json",
         "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-schema-gaps.md",
         "conductor/tracks/health_appropriations_medallion_assimilation_20260829/next-source-ranges.md",
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/context-census.observation.json"
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/context-census.observation.json",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/crown-expense-canonical-projection-20260929.md"
       ],
-      "retained_manifest_sha256": null
+      "retained_manifest_sha256": "23ddc3fb0a3d4d6dc55a4731694f7d9e26f5ace1324d4a76456f1ad761abe651"
     },
     {
       "id": "core-crown-hyefu-2025",
@@ -372,7 +372,7 @@
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/next-source-ranges.md"
     },
     {
-      "sha256": "889e737d113d7f979464b8a64cced11c2707b529fb77cfcf6a4370c7d77b2505",
+      "sha256": "c4ac72a98306f40db2094299285698a0d84b2e281d0341aaa7ec6081d535f027",
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-schema-gaps.md"
     },
     {
@@ -422,6 +422,10 @@
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/evidence.jsonl",
       "sha256": "72d807f2aa0c788784b81ae926f1924ba0f3a3541583f3b112cdb1ca473e8c6d"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/crown-expense-canonical-projection-20260929.md",
+      "sha256": "8f15569ca56a555cbdb5f416532e6a499ca0df6ef734a2511a54c5798d0d4035"
     }
   ]
 }

@@ -601,11 +601,15 @@ integrated parent head.
   context-only Silver facts, lineage and row dispositions. Rights, historical
   vintages, analytical selection and denominator approval remain open. See
   `population-annual-export.md` and `population-annual-silver.md`.
-  The BEFU 2026 core Crown expense formula-cache series now has a bounded
-  Silver extraction with side-by-side formula/cache lineage and explicit
-  unverified freshness, currency and fiscal-year basis. See
-  `befu-core-expense-20260925.md`; it remains context-only and does not complete
-  total/core Crown Gold denominators or this parent task. A verified local
+  The BEFU 2026 core Crown expense formula-cache series has a bounded Silver
+  extraction with side-by-side formula/cache lineage and a Bronze-bound
+  canonical fiscal-context projection (10 facts, 80 direct lineage rows). A
+  clean-room two-run rebuild matched, but cache freshness, currency,
+  financial-year boundaries, accounting basis and rights remain unqualified.
+  See `befu-core-expense-20260925.md` and
+  `crown-expense-canonical-projection-20260929.md`; this is context-only and
+  does not complete historical/total Crown projections or Gold denominators.
+  A verified local
   context Gold coverage product now includes the pinned CPI, QES, Stats NZ GDP
   and annual population Silver packages with exact source/vintage coverage and
   explicit excluded-value reasons. It does not approve CPI base, GDP currency,

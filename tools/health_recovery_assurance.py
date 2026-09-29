@@ -11,6 +11,8 @@ from typing import Any, cast
 
 from archive_govt_nz.domains.health_appropriations import (
     cpi,
+    crown_expense,
+    crown_expense_canonical_projection,
     gdp,
     pharmac,
     pharmac_canonical_projection,
@@ -101,7 +103,7 @@ SOURCE_CENSUS_SHA256 = (
     "4bea6001b0a1af4a362075508c521befe5bd6e04d20b2dd2f7c23ef8c6256964"
 )
 CONTEXT_CENSUS_SHA256 = (
-    "2e4b1ed2aa3091f83b076e9ebd62dab4bee09bf518d78a65bcc391c984bd2a9c"
+    "0e38ef9bfa447c58b9c4d71ece47c299600af285ba5c9969445000081ba62f47"
 )
 POPULATION_SOURCE_SHA256 = (
     "a52e0344d1b6e707de04b7b968f2667fc969c0f0777b319921ff716ead82a1d9"
@@ -110,6 +112,7 @@ PHARMAC_SOURCE_SHA256 = (
     "eaf5801b819321f8aed7544fb16e6348779267fd3d5f8fb1d59410803acffbea"
 )
 PHARMAC_SOURCE_OBSERVED_AT = "2026-08-29T09:00:17Z"
+CROWN_SOURCE_OBSERVED_AT = "2026-08-29T09:00:17Z"
 
 
 def require_evidence(condition: object, message: str) -> None:
@@ -463,6 +466,44 @@ def _rebuild_qes_canonical(root: Path, index: int) -> dict[str, Any]:
     }
 
 
+def _rebuild_crown_canonical(root: Path, index: int) -> dict[str, Any]:
+    """Rebuild the retained BEFU Crown package and canonical context from Bronze."""
+    source_cas = ARCHIVE / "bronze-cas" / "sha256"
+    source = source_cas / crown_expense.SOURCE_SHA256[:2]
+    source = source / crown_expense.SOURCE_SHA256
+    silver = root / f"crown-silver-{index}"
+    crown_expense.normalize_befu_core_expense(
+        source,
+        silver,
+        expected_sha256=crown_expense.SOURCE_SHA256,
+        source_locator=crown_expense.SOURCE_LOCATOR,
+        source_vintage=crown_expense.SOURCE_VINTAGE,
+        observed_at=CROWN_SOURCE_OBSERVED_AT,
+        dry_run=False,
+    )
+    pin = digest(silver / "MANIFEST.json")
+    facts, lineage, receipt = (
+        crown_expense_canonical_projection.project_befu_core_expense(
+            silver, pin, source_cas
+        )
+    )
+    encode = lambda table: json.dumps(  # noqa: E731 - stable recovery evidence codec.
+        table.to_pylist(),
+        default=str,
+        sort_keys=True,
+        ensure_ascii=False,
+        separators=(",", ":"),
+    ).encode("utf-8")
+    return {
+        "silver_files": tree(silver),
+        "source_manifest_sha256": pin,
+        "source_object_sha256": crown_expense.SOURCE_SHA256,
+        "canonical_fact_sha256": hashlib.sha256(encode(facts)).hexdigest(),
+        "canonical_lineage_sha256": hashlib.sha256(encode(lineage)).hexdigest(),
+        "projection": receipt,
+    }
+
+
 def _pharmac_recovery_report(root: Path) -> dict[str, Any]:
     """Require two matching Bronze-to-canonical Pharmac projections."""
     runs = {str(index): _rebuild_pharmac_canonical(root, index) for index in (1, 2)}
@@ -477,6 +518,15 @@ def _qes_recovery_report(root: Path) -> dict[str, Any]:
     runs = {str(index): _rebuild_qes_canonical(root, index) for index in (1, 2)}
     if runs["1"] != runs["2"]:
         message = "qes_canonical_projection_repeat_mismatch"
+        raise RuntimeError(message)
+    return {**runs["1"], "repeat_identical": True}
+
+
+def _crown_recovery_report(root: Path) -> dict[str, Any]:
+    """Require two matching Bronze-to-canonical Crown projections."""
+    runs = {str(index): _rebuild_crown_canonical(root, index) for index in (1, 2)}
+    if runs["1"] != runs["2"]:
+        message = "crown_canonical_projection_repeat_mismatch"
         raise RuntimeError(message)
     return {**runs["1"], "repeat_identical": True}
 
@@ -580,6 +630,7 @@ def run() -> dict[str, Any]:
         }
         outputs["canonical_context_consumer"] = _query_context_consumer(context_one)
         outputs["qes_canonical_projection"] = _qes_recovery_report(root)
+        outputs["crown_canonical_projection"] = _crown_recovery_report(root)
         outputs["pharmac_canonical_projection"] = _pharmac_recovery_report(root)
         outputs["canonical_gold"] = _canonical_gold_recovery_report(root)
     unchanged = original_snapshot == tree(ARCHIVE / "bronze-cas")

@@ -2927,3 +2927,33 @@ profiles and complete Platinum validation are still outstanding.
 
 Focused QES, canonical projection, recovery and recordset contract tests pass
 (271); Ruff and basedpyright pass. Required `./scripts/validate.sh` passed on retry: 7,130 tests passed, 9 skipped, 98.22% coverage, 52 schemas, 42 documentation schemas, 9/9 parity checks, configured mutation and hygiene gates, dependency/license/secret scans and strict 113-component SBOM validation. The automatic Conductor `phase_7_gates` review passed format, lint, schema, targeted test and mutation gates; receipt SHA-256 begins `dc91a36dd264fdcd` (full digest is in the local build receipt). The recovery gate remains partial with the blockers listed above.
+
+
+## 2026-09-29 — Project BEFU Core Crown expense into canonical context
+
+Added `crown_expense_canonical_projection.py`, which verifies the exact retained
+BEFU-2026 Crown Silver manifest and product hashes, rehashes and reparses its
+Bronze workbook, and compares every regenerated Silver table before projection.
+It emits 10 existing `fiscal_context_fact` rows and 80 direct lineage records;
+source year labels remain unqualified tokens, actual/forecast stays separated,
+and the source `($millions)` unit label is preserved with currency unknown.
+Formula-cache freshness, financial-year boundaries, accounting basis and rights
+remain unqualified; no denominator, Crown share, comparison or publication is
+performed.
+
+Integrated clean-room recovery rebuilt the Bronze-to-Silver-to-canonical path
+twice with identical outputs. The source Silver manifest remains
+`23ddc3fb0a3d4d6dc55a4731694f7d9e26f5ace1324d4a76456f1ad761abe651`; canonical
+fact digest `b5cd15fbfec5d0bf2331de0299088dec775f6e5c4e7f47c77bf6c84c46f61ae1`;
+lineage digest `feab5c89f78d1b8b0ddc07ba58724ef38ec7ac077eab1d8252d8e33c429d9f00`.
+The payload-free recovery receipt is
+`crown-canonical-recovery-20260929.json` (SHA-256
+`4a414f09bbfe8a09c4d9792dc077bfdd13abafce877fb9f50f6b4cf4616f498f`); it
+records Bronze unchanged and the full recovery gate still partial. Focused
+source/census/recovery tests pass (98); Ruff and basedpyright pass. Required
+`./scripts/validate.sh` passed: 7,133 tests passed, 9 skipped, 98.22% coverage,
+52 schemas, 42 representative documents, 9/9 parity checks, configured mutation
+and hygiene gates, dependency/license/secret scans, and strict 113-component
+SBOM validation. Automatic Conductor `phase_7_gates` review passed formatting,
+lint, schema/fixture, targeted test and mutation gates; receipt SHA-256
+`738dd03e09fa24e0a1775e6dcc69192cc2a001450b0ddb90089d2a20da675224`.

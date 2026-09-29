@@ -57,8 +57,8 @@ def test_context_source_binding_uses_captured_source_census() -> None:
 def test_context_source_binding_rejects_changed_census_pin(
     monkeypatch: MonkeyPatch,
 ) -> None:
-    monkeypatch.setattr(MODULE, "SOURCE_CENSUS_SHA256", "0" * 64)
-    with pytest.raises(RuntimeError, match=r"^source_census_pin_mismatch$"):
+    monkeypatch.setattr(MODULE, "CONTEXT_CENSUS_SHA256", "0" * 64)
+    with pytest.raises(RuntimeError, match=r"^context_census_pin_mismatch$"):
         MODULE.context_source_binding("wage")
 
 
@@ -129,6 +129,15 @@ def test_clean_room_rebuilds_supported_products_and_reports_blockers(
             "canonical_lineage_sha256": "qes-lineage",
         },
     )
+    monkeypatch.setattr(
+        MODULE,
+        "_rebuild_crown_canonical",
+        lambda _root, _index: {
+            "source_object_sha256": "c" * 64,
+            "canonical_fact_sha256": "crown-facts",
+            "canonical_lineage_sha256": "crown-lineage",
+        },
+    )
 
     def fake_context(
         _silver_root: Path, _source_root: Path, output: Path, *, write: bool = False
@@ -173,6 +182,10 @@ def test_clean_room_rebuilds_supported_products_and_reports_blockers(
     )
     assert (
         result["products_rebuilt"]["qes_canonical_projection"]["repeat_identical"]
+        is True
+    )
+    assert (
+        result["products_rebuilt"]["crown_canonical_projection"]["repeat_identical"]
         is True
     )
     assert (
