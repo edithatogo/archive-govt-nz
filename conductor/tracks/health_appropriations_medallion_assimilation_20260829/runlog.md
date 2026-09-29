@@ -3091,7 +3091,12 @@ unchanged. Receipt `clean-room-recovery-20260930-gdp.json` remains
 `partial_with_blockers`. Automatic Phase 7 review passed with receipt SHA-256
 `8152571c5a55f5143c4ed64e5e4b5b07f7234e40c73e4bd4e3780769a0156249`.
 Focused tests, Ruff and basedpyright pass. Full required repository validation
-is pending.
+`./scripts/validate.sh` passed: 7,149 tests, 9 skipped, 98.26% branch-aware
+coverage (80% required floor), 52 schemas, 9/9 parity, all mutation gates,
+dependency audit, license inventory, secret scan and SBOM validation. The
+automatic Phase 7 review passed. Hosted Windows and macOS assurance checks are
+still running; the hosted Ubuntu assurance, lint, analyze and CodeQL checks
+passed.
 
 ## 2026-09-30 — Bronze-bound annual population canonical context
 
