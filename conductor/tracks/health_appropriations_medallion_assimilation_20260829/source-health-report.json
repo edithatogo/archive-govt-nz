@@ -98,10 +98,10 @@
         "annual_aggregation_not_qualified",
         "canonical_projection_not_qualified",
         "currency_code_unverified",
-        "current_june_2026_workbook_and_series_not_captured"
+        "current_june_2026_quarter_workbook_and_series_not_captured"
       ],
       "layout_drift_state": "not_assessed_per_vintage_baseline_not_in_census",
-      "period_description": "Captured vintage: 60 quarters June 2011 through March 2026; newer June 2026 GDP release exists, but its exact current-price workbook and series selection are not captured in this census",
+      "period_description": "Captured vintage: 60 quarters June 2011 through March 2026; the June 2026-quarter GDP release was published 17 September 2026, but its exact current-price workbook and series selection are not captured in this census",
       "qualification_state": "unqualified",
       "rights": {
         "state": "not_evaluated"
@@ -215,7 +215,7 @@
   "inputs": {
     "capture_manifest_sha256": "04145e4030bfddaecade1af542e12cb8a56a187c9c924b7a4c135537ccae9dab",
     "context_census_base_commit": "fcb8f7c89ffe18afd854f23f40c448fcc3a9efeb",
-    "context_census_sha256": "1bcf135f9b569d50598e213dcaf6ac3c173fd204cca29a8fa0adc6f8e45e0bd8",
+    "context_census_sha256": "97d18a98f282d20c5bfaade2ee8c6dc1a351a19a79f8718e5aff89178c65524e",
     "source_census_cutoff": "2026-08-29",
     "source_census_observed_at": "2026-08-29T09:00:17Z",
     "source_census_sha256": "4bea6001b0a1af4a362075508c521befe5bd6e04d20b2dd2f7c23ef8c6256964"

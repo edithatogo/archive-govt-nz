@@ -146,3 +146,18 @@ def test_pinned_selectors_keep_denominator_boundaries() -> None:
     assert "1991" in population.period
     assert "2026" in population.period
     assert "transport_http_warc_receipt_unavailable" in population.gaps
+
+
+def test_gdp_release_date_is_bound_to_official_page_observation() -> None:
+    rows = {row.id: row for row in Census.model_validate(document()).series}
+    gdp = rows["gdp-stats-2026q1"]
+    assert "published 17 September 2026" in gdp.period
+    observation_path = (
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/"
+        "gdp-release-observation-20260930.json"
+    )
+    assert observation_path in gdp.evidence
+    observation = json.loads((ROOT / observation_path).read_text(encoding="utf-8"))
+    assert observation["publication_date_string"] == "17 September 2026"
+    assert observation["workbook_capture_state"] == "not_captured"
+    assert observation["rights_decision"] == "not_evaluated"

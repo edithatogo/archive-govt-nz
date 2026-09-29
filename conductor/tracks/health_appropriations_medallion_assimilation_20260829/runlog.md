@@ -3240,3 +3240,40 @@ vintage discovery is incomplete, so regeneration is deferred until that
 manifest is available. No workbook was downloaded or admitted, and no rights
 or analytical selection was inferred. Official release page:
 https://www.stats.govt.nz/information-releases/gross-domestic-product-june-2026-quarter/
+
+## 2026-09-30 — Recovery gap closed and release-date correction
+
+Correction to the preceding GDP note: the official Stats NZ page's embedded
+publication fields report `17 September 2026` and `2026-09-17 10:45:00`; the
+earlier 18 September date was incorrect. The exact release page, response hash,
+workbook locator, and the page's general copyright metadata are recorded in
+`gdp-release-observation-20260930.json`. The workbook itself remains uncaptured,
+and its series selection, rights, and analytical admission remain unresolved.
+
+The external Bronze CAS lacked the `befu_2026-002` object named in the pinned
+capture manifest. A bounded GET of its official Treasury locator returned HTTP
+200 and 2,126,154 bytes. Both SHA-256 and BLAKE3 match the exact manifest; the
+object is restored at its content-addressed path, and a new response WARC is
+stored separately. The historical capture manifest was not changed. The
+payload-free receipt is `bronze-object-recovery-20260930.json`.
+
+With the object restored, clean-room assurance rebuilt 12 donor Silver
+profiles, donor SQLite/Gold/plots, four context Silver packages, Context Gold,
+and canonical historical Gold in two runs; output inventories matched and the
+Bronze store remained unchanged. The refreshed source-health report verified
+73/73 captured objects (38,877,606 bytes) across the 141-row census. This closes
+the missing-object obstacle to recovery/report verification. The recovery
+receipt still correctly leaves donor and canonical report products, additional
+source-native profiles/adapters, complete validated Platinum, rights review,
+and publication out of scope or blocked; assimilation is not complete. The
+required local repository harness is being rerun on this correction.
+
+
+The focused suites then passed 89 tests; Ruff, Ruff format, and basedpyright
+passed. The required `./scripts/validate.sh` passed all gates: 7,180 tests,
+9 skipped, 98.27% branch coverage against the 80% floor, 53 schemas/43
+representative documents, 9/9 parity, configured mutation gates, and all
+supply-chain checks. CAS streaming measured 591.41 MB/s. Conductor validation
+found 93 tracks and no errors. The revalidation receipt records report hashes
+and clean-room state in `source-health-revalidation-20260930.json`; hosted
+checks remain pending.

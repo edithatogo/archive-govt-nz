@@ -1,0 +1,20 @@
+{
+  "schema_version": "archive-govt-nz.health-gdp-release-observation/v1",
+  "observed_at": "2026-09-29T20:31:20Z",
+  "mode": "read_only_official_release_page",
+  "requested_url": "https://www.stats.govt.nz/information-releases/gross-domestic-product-june-2026-quarter/",
+  "final_url": "https://www.stats.govt.nz/information-releases/gross-domestic-product-june-2026-quarter/",
+  "http_status": 200,
+  "page_bytes": 121803,
+  "page_sha256": "ad203feaf3c15a5ce558338fc128d4bb2fca227e418da64f197c316b5be61d2a",
+  "publication_date_string": "17 September 2026",
+  "publication_timestamp_string": "2026-09-17 10:45:00",
+  "publication_timestamp_timezone": "not_supplied",
+  "exact_current_price_workbook_url": "https://www.stats.govt.nz/assets/Uploads/Gross-domestic-product/Gross-domestic-product-June-2026-quarter/Download-data/gross-domestic-product-june-2026-quarter-current-price-income-and-expenditure.xlsx",
+  "workbook_title": "Gross domestic product: June 2026 quarter – current price income and expenditure",
+  "workbook_capture_state": "not_captured",
+  "page_copyright_metadata": "Unless noted otherwise, all content on stats.govt.nz is licensed under the Creative Commons 4.0 International Licence.",
+  "rights_decision": "not_evaluated",
+  "analytical_selection": "not_performed",
+  "raw_page_body_committed": false
+}
